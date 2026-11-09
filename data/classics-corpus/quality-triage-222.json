@@ -1,0 +1,4947 @@
+{
+  "schema": "vitruvius-classics-quality-triage-v1",
+  "generated": "2026-11-09",
+  "method": "Based only on inventory and version manifest. Counts are actionable triage flags, not judgements of actual source fidelity; absence of a local translation is not a textual error. Per-work identifiers are provisional. No automated claim of peer-review or manuscript collation.",
+  "counts": {
+    "works": 222,
+    "originalsIndexed": 181,
+    "noLocalTranslation": 163,
+    "missingOriginals": 41,
+    "perseusClaims": 142,
+    "unverifiedWorks": 222,
+    "issues": {
+      "no_work_identifier_candidate": 19,
+      "edition_details_need_review": 90,
+      "no_local_translation": 163,
+      "perseus_source_claim_needs_edition_verification": 142,
+      "original_not_indexed": 41
+    }
+  },
+  "works": [
+    {
+      "id": "vitruvius",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 4,
+      "originalPaths": [
+        "data/structured/recensio-es.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-officiis",
+      "author": "Cicerón",
+      "title": "De officiis",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "corpus/cicero-de-officiis-la.html"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi055"
+      ],
+      "issues": [
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-oratore",
+      "author": "Cicerón",
+      "title": "De oratore",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-oratore-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi037"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-republica",
+      "author": "Cicerón",
+      "title": "De re publica",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-republica-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi043"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "caesar-gallico",
+      "author": "Julio César",
+      "title": "Commentarii de bello Gallico",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/caesar-gallico-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0448.phi001"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "caesar-civili",
+      "author": "Julio César",
+      "title": "Commentarii de bello civili",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/caesar-civili-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0448.phi002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sallust-catiline",
+      "author": "Salustio",
+      "title": "Bellum Catilinae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/sallust-catiline-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0631.phi001"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sallust-iugurtha",
+      "author": "Salustio",
+      "title": "Bellum Iugurthinum",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/sallust-iugurtha-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0631.phi002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "varro-rustica",
+      "author": "Varrón",
+      "title": "Rerum rusticarum libri tres",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/lexicon/fontes/varro-rustica-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "lucretius",
+      "author": "Lucrecio",
+      "title": "De rerum natura",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 3,
+      "originalPaths": [
+        "corpus/lucretius-de-rerum-natura-la.html"
+      ],
+      "candidateWorkCodes": [
+        "phi0550.phi001"
+      ],
+      "issues": [
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "virgil-aeneid",
+      "author": "Virgilio",
+      "title": "Aeneis",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/virgil-aeneid-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0690.phi003"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "virgil-georgica",
+      "author": "Virgilio",
+      "title": "Georgica",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/virgil-georgica-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0690.phi002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "horace-odes",
+      "author": "Horacio",
+      "title": "Carmina",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/horace-odes-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0893.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "livy",
+      "author": "Tito Livio",
+      "title": "Ab urbe condita",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/livy-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0914.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ovid",
+      "author": "Ovidio",
+      "title": "Metamorphoses",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/ovid-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0959.phi006"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ovid-fasti",
+      "author": "Ovidio",
+      "title": "Fasti",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/ovid-fasti-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0959.phi007"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "nepos",
+      "author": "Cornelio Nepote",
+      "title": "De viris illustribus",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/nepos-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "diodorus",
+      "author": "Diodoro Sículo",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/diodorus-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0060.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/dionysius-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0081.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/strabo-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0099.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/philo-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0018.tlg001"
+      ],
+      "issues": [],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "seneca-epistulae",
+      "author": "Séneca",
+      "title": "Epistulae morales ad Lucilium",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/seneca-epistulae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1017.phi015"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "language": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "lucan",
+      "author": "Lucano",
+      "title": "Bellum civile",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/lucan-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0917.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "pliny",
+      "author": "Plinio el Viejo",
+      "title": "Naturalis historia",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/lexicon/fontes/pliny-naturalis-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0978.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/dioscorides-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0656.tlg001"
+      ],
+      "issues": [
+        "no_local_translation"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "josephus-war",
+      "author": "Flavio Josefo",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/josephus-war-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0526.tlg004"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/josephus-antiquities-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0526.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "quintilian",
+      "author": "Quintiliano",
+      "title": "Institutio oratoria",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/quintilian-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1002.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "martial",
+      "author": "Marcial",
+      "title": "Epigrammata",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/martial-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1294.phi002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "tacitus-agricola",
+      "author": "Tácito",
+      "title": "Agricola",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/tacitus-agricola-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1351.phi001"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "tacitus-germania",
+      "author": "Tácito",
+      "title": "Germania",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/tacitus-germania-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1351.phi002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "frontinus",
+      "author": "Frontino",
+      "title": "De aquaeductu urbis Romae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/lexicon/fontes/frontinus-aquaeductu-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "mark",
+      "author": "Evangelio según Marcos",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/mark-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0031.tlg002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/clement-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1271.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "didache",
+      "author": "Anónimo",
+      "title": "Διδαχή · Didaché",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/didache-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1311.tlg001"
+      ],
+      "issues": [
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/pastor-hermas-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1419.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "faventinus",
+      "author": "Marco Cetio Faventino",
+      "title": "Artis architectonicae privatis usibus adbreviatus liber",
+      "language": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "barnabas",
+      "author": "Anónimo",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/barnabas-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1216.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/ignatius-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1443.tlg001"
+      ],
+      "issues": [
+        "no_local_translation"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/polycarp-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1622.tlg001"
+      ],
+      "issues": [
+        "no_local_translation"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/clement-2-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1271.tlg002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/diognetus-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0646.tlg004"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/justin-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0645.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/irenaeus-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1447.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "tertullian",
+      "author": "Tertuliano",
+      "title": "Apologeticum",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/tertullian-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "origenes",
+      "author": "Orígenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "language": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/eusebio-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg2018.tlg002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "columella",
+      "author": "Columela",
+      "title": "De re rustica",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/columella-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0845.phi002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "celsus",
+      "author": "Aulo Cornelio Celso",
+      "title": "De medicina",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/celsus-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0836.phi002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "frontinus-strategemata",
+      "author": "Frontino",
+      "title": "Strategemata",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/frontinus-strategemata-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "language": "grc",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0007.tlg001",
+        "tlg0007.tlg002",
+        "tlg0007.tlg003",
+        "tlg0007.tlg004",
+        "tlg0007.tlg005",
+        "tlg0007.tlg006",
+        "tlg0007.tlg007",
+        "tlg0007.tlg008",
+        "tlg0007.tlg009",
+        "tlg0007.tlg010",
+        "tlg0007.tlg011",
+        "tlg0007.tlg012",
+        "tlg0007.tlg013",
+        "tlg0007.tlg014",
+        "tlg0007.tlg015",
+        "tlg0007.tlg016",
+        "tlg0007.tlg017",
+        "tlg0007.tlg018",
+        "tlg0007.tlg019",
+        "tlg0007.tlg020",
+        "tlg0007.tlg021",
+        "tlg0007.tlg022",
+        "tlg0007.tlg023",
+        "tlg0007.tlg024",
+        "tlg0007.tlg025",
+        "tlg0007.tlg026",
+        "tlg0007.tlg027",
+        "tlg0007.tlg028",
+        "tlg0007.tlg029",
+        "tlg0007.tlg030",
+        "tlg0007.tlg031",
+        "tlg0007.tlg032",
+        "tlg0007.tlg033",
+        "tlg0007.tlg034",
+        "tlg0007.tlg035",
+        "tlg0007.tlg036",
+        "tlg0007.tlg037",
+        "tlg0007.tlg038",
+        "tlg0007.tlg039",
+        "tlg0007.tlg040",
+        "tlg0007.tlg041",
+        "tlg0007.tlg042",
+        "tlg0007.tlg043",
+        "tlg0007.tlg044",
+        "tlg0007.tlg045",
+        "tlg0007.tlg046",
+        "tlg0007.tlg047",
+        "tlg0007.tlg048",
+        "tlg0007.tlg049",
+        "tlg0007.tlg050",
+        "tlg0007.tlg051",
+        "tlg0007.tlg052",
+        "tlg0007.tlg053",
+        "tlg0007.tlg054",
+        "tlg0007.tlg055",
+        "tlg0007.tlg056",
+        "tlg0007.tlg057",
+        "tlg0007.tlg058",
+        "tlg0007.tlg059",
+        "tlg0007.tlg060",
+        "tlg0007.tlg061",
+        "tlg0007.tlg062",
+        "tlg0007.tlg063",
+        "tlg0007.tlg064",
+        "tlg0007.tlg065",
+        "tlg0007.tlg066"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "language": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/hero-pneumatica-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0559.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/hero-automata-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0559.tlg002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "language": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "language": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "language": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "language": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "krohn-1912-pdf",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/text/krohn-1912.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plautus-amphitruo",
+      "author": "Plauto",
+      "title": "Amphitruo",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/plautus-amphitruo-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0119.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plautus-aulularia",
+      "author": "Plauto",
+      "title": "Aulularia",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/plautus-aulularia-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0119.phi003"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "terentius-andria",
+      "author": "Terencio",
+      "title": "Andria",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/terentius-andria-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0134.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "terentius-heautontimorumenos",
+      "author": "Terencio",
+      "title": "Heautontimorumenos",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/terentius-heautontimorumenos-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0134.phi002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cato-agri-cultura",
+      "author": "Catón el Viejo",
+      "title": "De agri cultura",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cato-agri-cultura-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-catilinariae",
+      "author": "Cicerón",
+      "title": "In Catilinam (Orationes Catilinariae)",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/cicero-catilinariae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi013"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "catullus-carmina",
+      "author": "Catulo",
+      "title": "Carmina",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "corpus/catullus-carmina-la.html"
+      ],
+      "candidateWorkCodes": [
+        "phi0472.phi001"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "horace-sermones",
+      "author": "Horacio",
+      "title": "Sermones (Satirae)",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/horace-sermones-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0893.phi004"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "horace-ars-poetica",
+      "author": "Horacio",
+      "title": "Ars poetica",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/horace-ars-poetica-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0893.phi006"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ovid-ars-amatoria",
+      "author": "Ovidio",
+      "title": "Ars amatoria",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/ovid-ars-amatoria-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0959.phi004"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "seneca-tragoediae",
+      "author": "Séneca (atribuciones individuales por cotejar)",
+      "title": "Tragoediae (colección)",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/seneca-tragoediae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1017.phi001",
+        "phi1017.phi002",
+        "phi1017.phi003",
+        "phi1017.phi004",
+        "phi1017.phi005",
+        "phi1017.phi006",
+        "phi1017.phi007",
+        "phi1017.phi008",
+        "phi1017.phi009",
+        "phi1017.phi010"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "petronius-satyrica",
+      "author": "Petronio (atribución tradicional)",
+      "title": "Satyrica",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/petronius-satyrica-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "tacitus-annales",
+      "author": "Tácito",
+      "title": "Annales",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/tacitus-annales-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1351.phi005"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "tacitus-historiae",
+      "author": "Tácito",
+      "title": "Historiae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/tacitus-historiae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1351.phi004"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "suetonius-caesares",
+      "author": "Suetonio",
+      "title": "De vita Caesarum",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/suetonius-caesares-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "juvenal-saturae",
+      "author": "Juvenal",
+      "title": "Saturae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/juvenal-saturae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1276.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "apuleius-metamorphoses",
+      "author": "Apuleyo",
+      "title": "Metamorphoses (Asinus aureus)",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 3,
+      "originalPaths": [
+        "data/classics-corpus/apuleius-metamorphoses-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1212.phi002"
+      ],
+      "issues": [
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "varro-de-lingua-latina",
+      "author": "Varrón",
+      "title": "De lingua Latina",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/varro-de-lingua-latina-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "tibullus-elegiae",
+      "author": "Tibulo",
+      "title": "Elegiae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/tibullus-elegiae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0660.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "propertius-elegiae",
+      "author": "Propercio",
+      "title": "Elegiae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/propertius-elegiae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0620.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "phraedrus-fabulae",
+      "author": "Fedro",
+      "title": "Fabulae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/phraedrus-fabulae-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "statius-thebais",
+      "author": "Estacio",
+      "title": "Thebais",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/statius-thebais-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1020.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "pliny-younger-epistulae",
+      "author": "Plinio el Joven",
+      "title": "Epistulae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/pliny-younger-epistulae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1318.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aulus-gellius-noctes",
+      "author": "Aulo Gelio",
+      "title": "Noctes Atticae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aulus-gellius-noctes-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1254.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "valerius-maximus-facta",
+      "author": "Valerio Máximo",
+      "title": "Facta et dicta memorabilia",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/valerius-maximus-facta-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1038.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "language": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "silius-punica",
+      "author": "Silio Itálico",
+      "title": "Punica",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/silius-punica-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1345.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "polybius-historiae",
+      "author": "Polibio",
+      "title": "Ἱστορίαι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/polybius-historiae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0543.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "pseudo-apollodorus-bibliotheca",
+      "author": "Pseudo-Apolodoro",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0548.tlg001",
+        "tlg0548.tlg002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/philo-legum-allegoriae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0018.tlg002"
+      ],
+      "issues": [
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/philo-de-vita-mosis-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0018.tlg022"
+      ],
+      "issues": [
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "language": "grc",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0007.tlg067",
+        "tlg0007.tlg068",
+        "tlg0007.tlg069",
+        "tlg0007.tlg070",
+        "tlg0007.tlg071",
+        "tlg0007.tlg072",
+        "tlg0007.tlg073",
+        "tlg0007.tlg074",
+        "tlg0007.tlg075",
+        "tlg0007.tlg076",
+        "tlg0007.tlg077",
+        "tlg0007.tlg078",
+        "tlg0007.tlg079",
+        "tlg0007.tlg080",
+        "tlg0007.tlg081",
+        "tlg0007.tlg082",
+        "tlg0007.tlg083",
+        "tlg0007.tlg085",
+        "tlg0007.tlg086",
+        "tlg0007.tlg087",
+        "tlg0007.tlg088",
+        "tlg0007.tlg089",
+        "tlg0007.tlg090",
+        "tlg0007.tlg091",
+        "tlg0007.tlg092",
+        "tlg0007.tlg093",
+        "tlg0007.tlg094",
+        "tlg0007.tlg095",
+        "tlg0007.tlg096",
+        "tlg0007.tlg097",
+        "tlg0007.tlg098",
+        "tlg0007.tlg099",
+        "tlg0007.tlg100",
+        "tlg0007.tlg101",
+        "tlg0007.tlg102",
+        "tlg0007.tlg103",
+        "tlg0007.tlg104",
+        "tlg0007.tlg105",
+        "tlg0007.tlg106",
+        "tlg0007.tlg107",
+        "tlg0007.tlg108",
+        "tlg0007.tlg109",
+        "tlg0007.tlg110",
+        "tlg0007.tlg111",
+        "tlg0007.tlg112",
+        "tlg0007.tlg113",
+        "tlg0007.tlg114",
+        "tlg0007.tlg115",
+        "tlg0007.tlg116",
+        "tlg0007.tlg117",
+        "tlg0007.tlg118",
+        "tlg0007.tlg119",
+        "tlg0007.tlg120",
+        "tlg0007.tlg121",
+        "tlg0007.tlg122",
+        "tlg0007.tlg123",
+        "tlg0007.tlg125",
+        "tlg0007.tlg126",
+        "tlg0007.tlg127",
+        "tlg0007.tlg128",
+        "tlg0007.tlg129",
+        "tlg0007.tlg130",
+        "tlg0007.tlg131",
+        "tlg0007.tlg132",
+        "tlg0007.tlg133",
+        "tlg0007.tlg134",
+        "tlg0007.tlg135",
+        "tlg0007.tlg136",
+        "tlg0007.tlg137",
+        "tlg0007.tlg138",
+        "tlg0007.tlg139",
+        "tlg0007.tlg140",
+        "tlg0007.tlg141",
+        "tlg0007.tlg146",
+        "tlg0007.tlg147"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/lucian-dialogi-mortuorum-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0062.tlg066"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "lucian-verae-historiae",
+      "author": "Luciano de Samósata",
+      "title": "Ἀληθῆ διηγήματα",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/lucian-verae-historiae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0062.tlg012"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "pausanias-periegesis",
+      "author": "Pausanias",
+      "title": "Ἑλλάδος περιήγησις",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/pausanias-periegesis-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0525.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "galen-ars-medica",
+      "author": "Galeno",
+      "title": "Τέχνη ἰατρική",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/galen-ars-medica-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0057.tlg007"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "galen-de-usu-partium",
+      "author": "Galeno",
+      "title": "Περὶ χρείας μορίων",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/galen-de-usu-partium-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0057.tlg017"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ptolemy-almagest",
+      "author": "Claudio Ptolomeo",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/ptolemy-almagest-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0363.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "language": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "appian-romaika",
+      "author": "Apiano",
+      "title": "Ῥωμαϊκά",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/appian-romaika-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0551.tlg002",
+        "tlg0551.tlg003",
+        "tlg0551.tlg004",
+        "tlg0551.tlg005",
+        "tlg0551.tlg006",
+        "tlg0551.tlg007",
+        "tlg0551.tlg008",
+        "tlg0551.tlg009",
+        "tlg0551.tlg010",
+        "tlg0551.tlg011",
+        "tlg0551.tlg012",
+        "tlg0551.tlg013",
+        "tlg0551.tlg014",
+        "tlg0551.tlg017"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "marcus-aurelius-meditations",
+      "author": "Marco Aurelio",
+      "title": "Τὰ εἰς ἑαυτόν",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/marcus-aurelius-meditations-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0562.tlg001"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "homer-iliad",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ἰλιάς",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/homer-iliad-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0012.tlg001"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "homer-odyssey",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ὀδύσσεια",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/homer-odyssey-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0012.tlg002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "hesiod-theogony",
+      "author": "Hesíodo",
+      "title": "Θεογονία",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/hesiod-theogony-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0020.tlg001"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "hesiod-works-days",
+      "author": "Hesíodo",
+      "title": "Ἔργα καὶ Ἡμέραι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/hesiod-works-days-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0020.tlg002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aeschylus-oresteia",
+      "author": "Esquilo",
+      "title": "Ὀρέστεια",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aeschylus-oresteia-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0085.tlg005",
+        "tlg0085.tlg006",
+        "tlg0085.tlg007"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/sophocles-oedipus-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0011.tlg004"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/euripides-medea-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0006.tlg003"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/aristophanes-clouds-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0019.tlg003"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "herodotus-historiae",
+      "author": "Heródoto",
+      "title": "Ἱστορίαι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/herodotus-historiae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0016.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0003.tlg001"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "xenophon-anabasis",
+      "author": "Jenofonte",
+      "title": "Ἀνάβασις",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/xenophon-anabasis-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0032.tlg006"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/plato-republic-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg030"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-apology",
+      "author": "Platón",
+      "title": "Ἀπολογία Σωκράτους",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/plato-apology-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristotle-poetics",
+      "author": "Aristóteles",
+      "title": "Περὶ ποιητικῆς",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/aristotle-poetics-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0086.tlg034"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/aristotle-politics-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0086.tlg035"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/hippocrates-aphorisms-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0627.tlg012"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "epictetus-discourses",
+      "author": "Epicteto (recopilación de Arriano)",
+      "title": "Διατριβαί",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/epictetus-discourses-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0557.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "arrian-anabasis-alexandri",
+      "author": "Arriano",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/arrian-anabasis-alexandri-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0074.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0385.tlg001"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0008.tlg001"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/aeschylus-persae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0085.tlg002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/aeschylus-seven-thebes-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0085.tlg004"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/aeschylus-suppliants-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0085.tlg001"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/aeschylus-prometheus-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0085.tlg003"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/sophocles-antigone-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0011.tlg002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/sophocles-ajax-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0011.tlg003"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/sophocles-electra-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0011.tlg005"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/sophocles-philoctetes-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0011.tlg006"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/sophocles-oedipus-colonus-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0011.tlg007"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/sophocles-trachiniae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0011.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/euripides-bacchae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0006.tlg017"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/euripides-hippolytus-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0006.tlg005"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/euripides-alcestis-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0006.tlg002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/euripides-electra-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0006.tlg012"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/euripides-troades-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0006.tlg011"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/euripides-hecuba-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0006.tlg007"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/euripides-iphigenia-aulid-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0006.tlg018"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristophanes-aves-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0019.tlg006"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristophanes-ranae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0019.tlg009"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristophanes-lysistrata-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0019.tlg007"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristophanes-vespae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0019.tlg004"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristophanes-pax-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0019.tlg005"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristophanes-acharnenses-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0019.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/plato-symposium-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg011"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/plato-phaedo-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg004"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/plato-gorgias-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg023"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/plato-timaeus-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg031"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/plato-meno-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg024"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/plato-phaedrus-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg012"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/plato-laws-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg034"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/plato-crito-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0059.tlg003"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/aristotle-nicomachean-ethics-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0086.tlg010"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristotle-metaphysics-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0086.tlg025"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristotle-physics-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0086.tlg031"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristotle-rhetoric-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0086.tlg038"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristotle-de-anima-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0086.tlg002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/xenophon-memorabilia-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0032.tlg002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/xenophon-hellenica-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0032.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Περὶ τοῦ στεφάνου",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/demosthenes-de-corona-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0014.tlg018"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/demosthenes-philippicae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0014.tlg004",
+        "tlg0014.tlg006",
+        "tlg0014.tlg009",
+        "tlg0014.tlg010"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/pindar-olympian-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0033.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/pindar-pythian-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0033.tlg002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/homeric-hymns-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0013.tlg001",
+        "tlg0013.tlg002",
+        "tlg0013.tlg003",
+        "tlg0013.tlg004",
+        "tlg0013.tlg005",
+        "tlg0013.tlg006",
+        "tlg0013.tlg007",
+        "tlg0013.tlg008",
+        "tlg0013.tlg009",
+        "tlg0013.tlg010",
+        "tlg0013.tlg011",
+        "tlg0013.tlg012",
+        "tlg0013.tlg013",
+        "tlg0013.tlg014",
+        "tlg0013.tlg015",
+        "tlg0013.tlg016",
+        "tlg0013.tlg017",
+        "tlg0013.tlg018",
+        "tlg0013.tlg019",
+        "tlg0013.tlg020",
+        "tlg0013.tlg021",
+        "tlg0013.tlg022",
+        "tlg0013.tlg023",
+        "tlg0013.tlg024",
+        "tlg0013.tlg025",
+        "tlg0013.tlg026",
+        "tlg0013.tlg027",
+        "tlg0013.tlg028",
+        "tlg0013.tlg029",
+        "tlg0013.tlg030",
+        "tlg0013.tlg031",
+        "tlg0013.tlg032",
+        "tlg0013.tlg033"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "theophrastus-characters",
+      "author": "Teofrasto",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/theophrastus-characters-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0093.tlg009"
+      ],
+      "issues": [
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0093.tlg001"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/diogenes-laertius-vitae-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0004.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-pro-archia",
+      "author": "Cicerón",
+      "title": "Pro Archia poeta",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-pro-archia-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi016"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-de-finibus",
+      "author": "Cicerón",
+      "title": "De finibus bonorum et malorum",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-de-finibus-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi048"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-tusculanae",
+      "author": "Cicerón",
+      "title": "Tusculanae disputationes",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-tusculanae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi049"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-de-natura-deorum",
+      "author": "Cicerón",
+      "title": "De natura deorum",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-de-natura-deorum-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi050"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-de-amicitia",
+      "author": "Cicerón",
+      "title": "Laelius de amicitia",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-de-amicitia-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi052"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-de-senectute",
+      "author": "Cicerón",
+      "title": "Cato Maior de senectute",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-de-senectute-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi051"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-de-divinatione",
+      "author": "Cicerón",
+      "title": "De divinatione",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-de-divinatione-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi053"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-brutus",
+      "author": "Cicerón",
+      "title": "Brutus",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-brutus-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi039"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cicero-philippicae",
+      "author": "Cicerón",
+      "title": "Philippicae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cicero-philippicae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0474.phi035"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 4,
+      "originalPaths": [
+        "data/classics-corpus/seneca-de-brevitate-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "language": "la",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "seneca-de-clementia",
+      "author": "Séneca",
+      "title": "De clementia",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/seneca-de-clementia-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1017.phi014"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "language": "la",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "horace-epodi",
+      "author": "Horacio",
+      "title": "Epodi",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/horace-epodi-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0893.phi003"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "horace-epistulae",
+      "author": "Horacio",
+      "title": "Epistulae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/horace-epistulae-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0893.phi005"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ovid-tristia",
+      "author": "Ovidio",
+      "title": "Tristia",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/ovid-tristia-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0959.phi008"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ovid-heroides",
+      "author": "Ovidio",
+      "title": "Heroides",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/ovid-heroides-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0959.phi002"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ovid-remedia-amoris",
+      "author": "Ovidio",
+      "title": "Remedia amoris",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/ovid-remedia-amoris-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0959.phi005"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ovid-ex-ponto",
+      "author": "Ovidio",
+      "title": "Epistulae ex Ponto",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/ovid-ex-ponto-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi0959.phi009"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "tacitus-dialogus",
+      "author": "Tácito (atribución tradicional)",
+      "title": "Dialogus de oratoribus",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/tacitus-dialogus-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1351.phi003"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "apuleius-apologia",
+      "author": "Apuleyo",
+      "title": "Apologia",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/apuleius-apologia-la.json"
+      ],
+      "candidateWorkCodes": [
+        "phi1212.phi001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "language": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "vegetius-epitoma",
+      "author": "Vegecio",
+      "title": "Epitoma rei militaris",
+      "language": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "augustine-confessiones",
+      "author": "Agustín de Hipona",
+      "title": "Confessiones",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/augustine-confessiones-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "augustine-civitate-dei",
+      "author": "Agustín de Hipona",
+      "title": "De civitate Dei",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/augustine-civitate-dei-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "boethius-consolatio",
+      "author": "Boecio",
+      "title": "De consolatione philosophiae",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/boethius-consolatio-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "language": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "epictetus-enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/epictetus-enchiridion-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0557.tlg002"
+      ],
+      "issues": [
+        "perseus_source_claim_needs_edition_verification",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/cebes-tabula-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1247.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aristoxenus-harmonica-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0088.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0552.tlg008"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aratus-phaenomena-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0653.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "language": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "language": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0086.tlg023"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg0058.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "language": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "language": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "language": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "augustus-res-gestae",
+      "author": "Augusto",
+      "title": "Res gestae divi Augusti",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/augustus-res-gestae-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "language": "grc",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": false,
+      "localVersionCount": 1,
+      "originalPaths": [
+        "data/classics-corpus/euclid-elementa-grc.json"
+      ],
+      "candidateWorkCodes": [
+        "tlg1799.tlg001"
+      ],
+      "issues": [
+        "no_local_translation",
+        "perseus_source_claim_needs_edition_verification"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg1799.tlg009"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "language": "grc",
+      "sourceReadiness": "correspondencia_bibliografica_ambigua",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg1799.tlg012",
+        "tlg1799.tlg015"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0361.tlg001"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0559.tlg012"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "language": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "language": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg1383.tlg001"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg1181.tlg001"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg0550.tlg001"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "language": "grc",
+      "sourceReadiness": "tei_perseus_candidato_por_verificar",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [
+        "tlg2032.tlg001"
+      ],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "language": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "language": "la",
+      "sourceReadiness": "requiere_fuente_no_canonica_o_edicion_especifica",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "language": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "originalIndexed": false,
+      "hasLocalTranslation": false,
+      "localVersionCount": 0,
+      "originalPaths": [],
+      "candidateWorkCodes": [],
+      "issues": [
+        "original_not_indexed",
+        "no_local_translation",
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    },
+    {
+      "id": "sulpicia-elegiae",
+      "author": "Sulpicia",
+      "title": "Elegiae · Corpus Tibullianum 3.13–18",
+      "language": "la",
+      "sourceReadiness": "original_local_documentado",
+      "originalIndexed": true,
+      "hasLocalTranslation": true,
+      "localVersionCount": 2,
+      "originalPaths": [
+        "data/classics-corpus/sulpicia-elegiae-la.json"
+      ],
+      "candidateWorkCodes": [],
+      "issues": [
+        "no_work_identifier_candidate",
+        "edition_details_need_review"
+      ],
+      "evidenceStatus": "catalogue_inventory_only",
+      "reviewStatus": "not_externally_verified"
+    }
+  ]
+}
