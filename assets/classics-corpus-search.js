@@ -313,6 +313,10 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
  const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
  const targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language)&&
   (e.format!=="remote-json-passages"||(e.language==="grc"?(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries):e.language==="la"?(!hasGreek||e.workId===workId)&&window.ClassicsOffsiteLatin?.mightContain(e,queries):false)));
+ // Search the probable original language first, but do not omit translations
+ // or other editions. This makes Latin aedes/domus and Greek λόγος visible early.
+ const preferred=hasGreek?"grc":/^[\\p{Script=Latin}\\p{M}\\s-]+$/u.test(queries[0])?"la":null;
+ if(preferred)targets.sort((a,b)=>(a.language===preferred?-1:0)-(b.language===preferred?-1:0));
  const rows=[];let loaded=0,failed=0,failures=[];
  for(let offset=0;offset<targets.length;offset+=4){
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
