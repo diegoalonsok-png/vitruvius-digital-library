@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Programa de revisión filológica, ecdótica y exegética — Vitruvius Digital Library</title>
+<meta name="description" content="Protocolo auditable para revisión de lecturas, variantes, traducciones, morfología, sintaxis, exégesis y fuentes de Vitruvius Digital Library.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/programa-revision-academica.html">
+<style>:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#111113;color:#ededf1;font:15px/1.7 system-ui,Arial,sans-serif}main{max-width:1050px;margin:auto;padding:26px 24px 90px}header{border-bottom:1px solid #45454d;padding:14px max(24px,calc((100vw - 1050px)/2));display:flex;gap:18px;flex-wrap:wrap}header a{color:#e0e1e5;text-decoration:none}h1,h2{font-family:Georgia,serif;font-weight:400;line-height:1.2}h1{font-size:clamp(34px,5vw,54px);margin:22px 0}h2{font-size:29px;margin:40px 0 15px}h3{font-size:18px}a{color:#e2d6b9}section{border-top:1px solid #3e3e44}p,li{max-width:90ch}ul{padding-left:22px}.intro{color:#bfc0c7;font-size:17px}.pill{display:inline-block;border:1px solid #6a6c71;border-radius:99px;padding:3px 10px;color:#e6e7e9;font-size:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.metric,.panel{background:#1c1c20;border:1px solid #45464e;border-radius:12px;padding:16px}.metric strong{display:block;font-size:31px;line-height:1.2}.metric small{color:#bebfc6}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border-bottom:1px solid #484850;padding:10px;text-align:left;vertical-align:top}th{color:#d5d5db}.note{color:#b1b2bd;font-size:13px}code{overflow-wrap:anywhere}button{background:#26262b;color:white;border:1px solid #747780;border-radius:8px;padding:9px 13px;cursor:pointer}a:focus-visible,button:focus-visible{outline:2px solid #ffdb6b;outline-offset:3px}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Programa de revisión filológica, ecdótica y exegética","author":{"@type":"Person","name":"Diego A. Kurilo"},"dateModified":"2026-11-09","isPartOf":{"@type":"WebSite","name":"Vitruvius Digital Library","identifier":"https://doi.org/10.5281/zenodo.23868911"},"url":"https://diegoalonsok-png.github.io/vitruvius-digital-library/programa-revision-academica.html"}</script>
+</head><body>
+<header><a href="index.html"><b>VITRVVIVS</b> Digital Library</a><a href="status-textus.html">Status textus</a><a href="registro-ecdotico.html">Registro ecdótico</a><a href="como-citar.html">Cómo citar</a></header>
+<main>
+<p class="pill">POLÍTICA DE CONTROL · EDICIONES Y CORPUS</p><h1>Programa de revisión académica</h1>
+<p class="intro">Protocolo para filología, ecdótica, codicología, lexicografía, sintaxis, exégesis y edición digital. Distingue información alojada, anotación automática, hipótesis y verificación humana. No atribuye una revisión por pares o collatio autóptica no documentada.</p>
+<div class="grid" aria-label="Cobertura según instantánea del repositorio">
+<div class="metric"><strong>222</strong><small>Obras clásicas catalogadas en el inventario</small></div>
+<div class="metric"><strong>181</strong><small>Originales locales marcados como indexados</small></div>
+<div class="metric"><strong>246</strong><small>Versiones textuales locales</small></div>
+<div class="metric"><strong>0</strong><small>Decisiones estructuradas en data/ecdotic-decisions.json al corte de esta ficha</small></div>
+</div>
+<p class="note">Los recuentos son un corte del inventario y pueden cambiar. Una versión indexada puede ser incompleta; las 23 incorporaciones externas requieren validación separada. Ninguna cifra prueba por sí misma la fidelidad del texto.</p>
+<section><h2>1. Registro de variantes y decisiones ecdóticas</h2>
+<p>Cada unidad de decisión debe anclar un locus, lectura base, lectura adoptada si la hay, fuente primaria o referencia secundaria, siglas de testigos, institución, signatura, folio, evidencia y justificación. El registro disponible contiene actualmente un esquema y una instantánea de notas extraídas, no decisiones ficticias.</p>
+<table><thead><tr><th>Estado</th><th>Requisito mínimo</th><th>Prohibición editorial</th></tr></thead><tbody>
+<tr><td>Autóptica verificada</td><td>Folio concreto, imagen institucional, lectura comprobada, responsable y fecha</td><td>No atribuir a todo el códice una lectura comprobada en un único folio</td></tr>
+<tr><td>Reportada</td><td>Editor, año, locus y página de fuente crítica</td><td>No presentarla como consulta directa del manuscrito</td></tr>
+<tr><td>Propuesta editorial</td><td>Lectura anterior, propuesta, evidencia, razonamiento y discusión</td><td>No transformar coincidencia automática en variante acreditada</td></tr>
+<tr><td>Sin verificar</td><td>Fuente y problema expresamente identificados</td><td>No ocultar incertidumbre</td></tr>
+</tbody></table>
+<p><a href="registro-ecdotico.html">Consultar registro estructurado</a> · <a href="modelo-critico-prefacio.html">Caso H f. 1r: lectura de demostración</a>.</p></section>
+<section><h2>2. Verificación lexicográfica, morfológica y sintáctica</h2>
+<p>Protocolo para la primera muestra de 100 términos prioritarios, como <i>symmetria</i>, <i>ordinatio</i>, <i>decor</i>, <i>domus</i>, <i>locus</i>, <i>μέτρον</i> y <i>λόγος</i>. La cifra es una meta de revisión, no un conjunto de 100 entradas ya aprobadas.</p>
+<ul><li>Conservar forma gráfica original, grafía politónica, normalizaciones y locus.</li><li>Registrar lema y análisis morfológico con alternativas ambiguas.</li><li>Comprobar función sintáctica sobre oración completa; nunca inferirla del lema solamente.</li><li>Identificar glosa y diccionario fuente con versión o edición.</li><li>Separar etimología documentada de conjeturas y asociaciones semánticas.</li><li>Registrar aprobador, fecha, evidencia y corrección cuando la revisión exista.</li></ul></section>
+<section><h2>3. Comentario hermenéutico y exégesis</h2>
+<p>Las anotaciones deben distinguir <i>apparatus criticus</i> (lecturas y variantes), <i>apparatus fontium</i> (fuentes y paralelos), <i>commentarius</i> (explicación) y nota de traducción. La mera coincidencia de palabras entre dos autores no acredita dependencia textual o vínculo histórico.</p>
+<table><thead><tr><th>Capa</th><th>Evidencia requerida</th></tr></thead><tbody>
+<tr><td>Literal</td><td>Sintaxis y traducción cotejada con el texto</td></tr><tr><td>Histórica</td><td>Fuente datada y contexto documentado</td></tr>
+<tr><td>Intertextual</td><td>Ambos loci identificados, naturaleza de la relación y grado de certeza</td></tr>
+<tr><td>Técnica</td><td>Materiales, geometría, construcción o mecanismo con pruebas históricas</td></tr>
+<tr><td>Hermenéutica</td><td>Hipótesis interpretativa argumentada, separada de la lectura textual</td></tr>
+<tr><td>Recepción</td><td>Edición o comentarista concreto, fecha, página y concepto discutido</td></tr>
+</tbody></table></section>
+<section><h2>4. TEI-XML: interoperabilidad sin variantes inventadas</h2>
+<p>Primera muestra codificada a partir de V514: <a href="data/tei/v514-I-praef-1-example.xml">De architectura I.praef.1 — XML TEI</a>. Conserva el locus, texto latino, traducción y procedencia. Es una muestra de codificación, no una colación manuscrita ni la validación de todo el libro I.</p>
+<p>La extensión al libro I completo debe comprobar identificación de pasajes, correspondencia estructural, documentación de ediciones, licencias y validación formal del XML. Solo se agregarán elementos TEI de aparato crítico (<code>app</code>, <code>lem</code>, <code>rdg</code>) cuando existan lecturas sustentadas por testimonios y fuentes.</p></section>
+<section><h2>5. Citación, cuatro DOI y páginas accesibles</h2>
+<p>El DOI del proyecto <a href="https://doi.org/10.5281/zenodo.23868911">10.5281/zenodo.23868911</a> identifica el portal; los identificadores de V514 (<a href="https://doi.org/10.5281/zenodo.23884757">23884757</a>), V554 (<a href="https://doi.org/10.5281/zenodo.23885110">23885110</a>) y V297 (<a href="https://doi.org/10.5281/zenodo.23885404">23885404</a>) identifican ediciones distintas. El DOI nunca sustituye al locus ni a la página de la edición.</p>
+<p>Las consultas académicas deben conservar su texto esencial sin requerir carga de miles de registros. Muestra pública: <a href="domus-en-vitruvio.html">Domus en Vitruvio</a>. Guía completa de citación: <a href="como-citar.html">Cómo citar</a>.</p>
+</section>
+<section><h2>6. Control técnico y revisión independiente</h2><p>Los tests de manifiestos, referencias y sintaxis comprueban consistencia informática. No son equivalentes a evaluación externa de paleografía, sintaxis o traducción. Para una acreditación académica más alta se requieren revisores especializados, muestras públicas verificadas, informes con nombre/fecha y seguimiento de correcciones.</p><p class="note">Sin revisión humana documentada, el estado de las decisiones permanece sin verificar. No usar la existencia de esta página como prueba de arbitraje académico.</p></section>
+<p><a href="metodologia.html">Política editorial</a> · <a href="auditoria-textos-clasicos.html">Cobertura del corpus</a> · <a href="aparato-critico.html">Notas y aparato</a> · <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library">Código e historial</a>.</p>
+</main></body></html>
