@@ -405,7 +405,7 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
       Number(x.section)<=Number(section)&&Number(x.section_end)>=Number(section));
     }
     const value=String(p?.translation||"").trim();
-    const apparatus=/^(?:apparatus\\s+criticus|critical\\s+apparatus)\\s*\\(/i.test(value);
+    const apparatus=/^(?:apparatus\s+criticus|critical\s+apparatus)\s*\(/i.test(value);
     return {language:src.lang,edition:src.id,text:apparatus?"":value,available:!!value&&!apparatus,
      note:apparatus?"Aparato crítico, no traducción":!value?"Traducción alineada no disponible":""};
    });
