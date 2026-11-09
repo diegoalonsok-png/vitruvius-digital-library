@@ -39,6 +39,8 @@ jobs:
           python -m py_compile scripts/build-offsite-latin-agrimensura-historia.py
           node --check assets/bibliotheca-offsite-latin.js
           node scripts/test-offsite-latin-two-works.mjs
+          node scripts/test-offsite-latin-originals.mjs
+          node scripts/test-classics-corpus-counters.mjs
           node scripts/test-seneca-naturales-offsite.mjs
           node scripts/test-classics-latin-supplement.mjs
           node scripts/test-shared-semantic-index-usage.mjs
