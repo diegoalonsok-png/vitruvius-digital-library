@@ -350,3 +350,15 @@ html body.indices-lexicon .index-greek-policy p{font:14px/1.75 "Gentium Book Plu
 html body.indices-lexicon .index-greek-policy [lang="grc"]{font-family:"Gentium Book Plus","Cardo",Georgia,serif;color:#f0f0f2}
 html body.indices-lexicon .index-greek-policy .index-greek-sources{font:12px/1.65 system-ui,sans-serif;color:#a9aaae}
 html body.indices-lexicon .index-greek-policy a{color:#dadce0;text-decoration:underline;text-underline-offset:3px}
+
+/* Los loci que exceden los 45 iniciales siguen disponibles en la misma ficha. */
+html body.indices-lexicon .index-loci-extra{
+ margin:10px 0 0;padding:9px 11px;
+ border:1px solid #444449;border-radius:7px;background:#202024;color:#e5e5e8;
+}
+html body.indices-lexicon .index-loci-extra summary{
+ cursor:pointer;color:#dedee2;
+ font:600 12px/1.5 system-ui,sans-serif;
+}
+html body.indices-lexicon .index-loci-extra[open] summary{margin-bottom:10px}
+html body.indices-lexicon .index-loci-extra .index-loci{margin:6px 0;gap:6px}
