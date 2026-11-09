@@ -12,11 +12,13 @@ const greek=["thucydides-war","cassius-dio-historia","athenaeus-deipnosophistae"
 "euclid-optica","euclid-phaenomena","cleonides-harmonica","hero-belopoeica",
 "geminus-isagoge","aristarchus-magnitudines","apollonius-conica","pappus-synagoge"];
 const latin=["seneca-de-ira","seneca-de-tranquillitate"];
+const normalized=["biton-kataskeuai","apollodorus-poliorcetics","procopius-aedificiis"];
+const normalizedNames={"biton-kataskeuai":"biton-war-machines-catapults-lsg-aa.grc.md","apollodorus-poliorcetics":"apollodorus-damascus-siegecraft-owo-aa.grc.md","procopius-aedificiis":"procopius-caesarea-buildings-unc-ac.grc.md"};
 assert.equal(greek.length,14);
-for(const id of greek.concat(latin))assert(missing.has(id),"Remote source must have a catalogue entry not locally indexed: "+id);
+for(const id of greek.concat(latin,normalized))assert(missing.has(id),"Remote source must have a catalogue entry not locally indexed: "+id);
 const specs=[
 {branch:"corpus-originales-griegos-20261108",path:"data/offsite-originals/manifest.json",
- schema:"vitruvius-offsite-greek-originals-manifest-v1",lang:"grc",source:"OpenGreekAndLatin/First1KGreek",ids:greek,prefix:"data/offsite-originals/"},
+ schema:"vitruvius-offsite-greek-originals-manifest-v1",lang:"grc",source:"OpenGreekAndLatin/First1KGreek",ids:greek.concat(normalized),prefix:"data/offsite-originals/"},
 {branch:"corpus-originales-latinos-20261108",path:"data/offsite-latin/manifest.json",
  schema:"vitruvius-offsite-latin-originals-manifest-v1",lang:"la",source:"PerseusDL/canonical-latinLit",ids:latin,prefix:"data/offsite-latin/"}
 ];
@@ -24,7 +26,9 @@ const manifests=specs.map(v=>({
 schema:v.schema,branch:v.branch,count:v.ids.length,
 entries:v.ids.map(id=>({workId:id,language:v.lang,
  path:v.prefix+id+"-"+v.lang+".json",
- sourceSha256:"f".repeat(64),source:"https://raw.githubusercontent.com/"+v.source+"/master/data/example.xml",
+ sourceSha256:"f".repeat(64),source:normalizedNames[id]?"https://raw.githubusercontent.com/eulogikon/ancient-greek-texts/main/grc/"+normalizedNames[id]:"https://raw.githubusercontent.com/"+v.source+"/master/data/example.xml",
+ sourceType:normalizedNames[id]?"normalized-greek-reading":"edited-greek-tei",
+ editorialStatus:normalizedNames[id]?"NO edición crítica; lectura pública normalizada":"Edición TEI",
  passages:10}))
 }));
 const els=new Map();
@@ -47,9 +51,9 @@ const value=k=>els.get(k)?.textContent;
 assert.equal(host.dataset.state,"verified");
 assert.equal(value("catalog"),"222");
 assert.equal(value("local"),"181");
-assert.equal(value("remote"),"16");
-assert.equal(value("searchable"),"197");
-assert.equal(value("pending"),"25");
+assert.equal(value("remote"),"19");
+assert.equal(value("searchable"),"200");
+assert.equal(value("pending"),"22");
 assert.equal(value("translations"),"59");
 assert.equal(value("versions"),"246");
 assert.equal(requested.length,3);
@@ -58,4 +62,4 @@ for(const file of ["index.html","bibliotheca-graeca-latina.html"]){
  assert(html.includes('id="classics-audit-coverage"'),file+" missing counter");
  assert(html.includes('assets/classics-audited-coverage.js'),file+" missing linked script");
 }
-console.log("PASS inventory 222, original local 181, remote 16, searchable 197, missing 25; metadata provenance checked.");
+console.log("PASS inventory 222, local 181, Greek TEI 14, normalized 3, Latin 2, searchable 200, missing 22; provenance tiers checked.");
