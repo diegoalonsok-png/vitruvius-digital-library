@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="la">
+ <teiHeader>
+  <fileDesc>
+   <titleStmt><title>Vitruvius, De architectura I.praef.1: muestra TEI de transcripción editorial V514</title><editor>Diego A. Kurilo</editor></titleStmt>
+   <publicationStmt><publisher>Vitruvius Digital Library</publisher><date when="2026-11-09">2026</date><availability><p>Archivo de demostración estructural; las condiciones de reproducción remiten a la edición fuente. No se declara revisión por pares.</p></availability><idno type="DOI">10.5281/zenodo.23884757</idno></publicationStmt>
+   <sourceDesc><bibl>Kurilo, Diego A., ed. <title>Vitruvio. De architectura. Nueva recensio académica bilingüe</title>, V514 (2026). <ref target="https://doi.org/10.5281/zenodo.23884757">DOI: 10.5281/zenodo.23884757</ref>. Transcripción estructurada tomada de <ref target="https://diegoalonsok-png.github.io/vitruvius-digital-library/data/structured/recensio-es.json">data/structured/recensio-es.json</ref>, locus 1.praef.1.</bibl></sourceDesc>
+  </fileDesc>
+  <encodingDesc><editorialDecl><p>Esta muestra preserva el texto de la transcripción estructurada V514. No es una edición diplomática de Harley MS 2767, no contiene variantes manuscritas cotejadas y no representa un aparato crítico reconstruido.</p></editorialDecl><p>La codificación identifica el locus y la traducción en archivos paralelos con correspondencia de unidad editorial; no presupone alineación palabra por palabra.</p></encodingDesc>
+  <profileDesc><langUsage><language ident="la">Latín</language><language ident="es">Castellano</language></langUsage></profileDesc>
+  <revisionDesc><change when="2026-11-09">Prototipo TEI derivado de un pasaje efectivamente registrado en V514; sin variantes inventadas.</change></revisionDesc>
+ </teiHeader>
+ <text><body>
+  <div type="book" n="1"><div type="preface" n="praef"><p xml:id="vitr-1-praef-1" n="1" xml:lang="la">Cum divina tua mens et numen, imperator Caesar, imperio potiretur orbis terrarum invictaque virtute cunctis hostibus stratis triumpho victoriaque tua cives gloriarentur et gentes omnes subactae tuum spectarent nutum populusque Romanus et senatus liberatus timore amplissimis tuis cogitationibus consiliisque gubernaretur, non audebam, tantis occupationibus, de architectura scripta et magnis cogitationibus explicata edere, metuens, ne non apto tempore interpellans subirem tui animi offensionem.</p></div></div>
+  <div type="translation" xml:lang="es" corresp="#vitr-1-praef-1"><p xml:id="vitr-es-1-praef-1" n="1">Cuando tu mente divina y tu numen, emperador César, se adueñaban del dominio del orbe terrestre, y, abatidos todos los enemigos por tu virtud invencible, los ciudadanos se gloriaban de tu triunfo y de tu victoria, y todos los pueblos sometidos estaban pendientes de tu gesto, y el pueblo romano y el senado, libres de temor, eran gobernados por tus amplísimos pensamientos y designios, no me atrevía, en medio de tan grandes ocupaciones, a publicar mis escritos sobre la arquitectura, desarrollados con grandes reflexiones, temiendo incurrir en el desagrado de tu ánimo al interrumpirte en un momento inoportuno.</p></div>
+ </body></text>
+</TEI>
