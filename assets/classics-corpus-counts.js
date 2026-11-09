@@ -24,7 +24,12 @@ function style(){
  ".classics-tally .tally-details{margin-top:8px;border-top:1px solid #7775;padding-top:5px}",
  ".classics-tally .tally-details summary{cursor:pointer;font:500 11px/1.4 Arial,Helvetica,sans-serif;list-style:revert;color:inherit}",
  ".classics-tally .tally-details[open]{grid-column:1/-1}",
- ".classics-tally .tally-details ol{margin:7px 0 0;padding:0 0 0 18px;max-height:245px;overflow-y:auto;overflow-x:hidden;font:11px/1.55 Arial,Helvetica,sans-serif}",
+ ".classics-tally .tally-details ol{margin:7px 0 0;padding:0 11px 0 18px;max-height:245px;overflow-y:auto;overflow-x:hidden;scrollbar-width:auto;scrollbar-color:#929399 #25272c;scrollbar-gutter:stable;font:11px/1.55 Arial,Helvetica,sans-serif}",
+ ".classics-tally .tally-details ol::-webkit-scrollbar{width:14px}",
+ ".classics-tally .tally-details ol::-webkit-scrollbar-track{background:#25272c;border-radius:9px}",
+ ".classics-tally .tally-details ol::-webkit-scrollbar-thumb{background:#929399;border:2px solid #25272c;border-radius:9px;min-height:36px}",
+ ".classics-tally .tally-details ol::-webkit-scrollbar-thumb:hover{background:#c1c3c7}",
+ ".classics-tally .tally-details ol:focus-visible{outline:2px solid #c1c3c7;outline-offset:2px}",
  ".classics-tally .tally-details li{margin-bottom:5px;overflow-wrap:anywhere}",
  ".classics-tally .tally-details li small{opacity:.75}",
  ".classics-tally .tally-details a{color:inherit;text-decoration:underline;text-underline-offset:2px}",
@@ -69,6 +74,8 @@ function paint(a,data){
   const details=document.createElement("details");details.className="tally-details";
   const summary=document.createElement("summary");summary.textContent="Ver listado académico";details.append(summary);
   const ol=document.createElement("ol");
+  ol.tabIndex=0;
+  ol.setAttribute("aria-label","Lista desplazable de "+metricLabels[i]+"; utilice las flechas o la rueda del ratón");
   const records=detailGroup(i,data);
   records.sort((a,b)=>a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
   for(const rec of records){
