@@ -221,17 +221,34 @@ function render(){
    card.append(note);
   }
   const locs=document.createElement('div');locs.className='index-loci';
-  for(const p of entry.loci.slice(0,45)){const a=document.createElement('a');
-   const witnessed=passageForms.get(entry.key)?.get(p.locus);
-   const linked=mode==='greek'?greekWitnesses.get(entry.key)?.latinForms.get(p.locus):null;
-   const linkedSurface=linked&&[...String(p.latin||'').matchAll(/[\\p{L}\\p{M}]+/gu)]
-    .map(m=>m[0]).find(t=>norm(t)===norm(linked));
-   const evidence=witnessed||linkedSurface||linked||entry.key;
-   a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(mode==='math'?raw:evidence);
-   a.textContent=roman(p.book)+'.'+p.chapter+'.'+p.section;a.title='Abrir pasaje '+p.locus;locs.append(a)}
-  card.append(locs);
+  const appendLoci=(list,container)=>{
+   for(const p of list){
+    const a=document.createElement('a');
+    const witnessed=passageForms.get(entry.key)?.get(p.locus);
+    const linked=mode==='greek'?greekWitnesses.get(entry.key)?.latinForms.get(p.locus):null;
+    const linkedSurface=linked&&[...String(p.latin||'').matchAll(/[\\p{L}\\p{M}]+/gu)]
+     .map(m=>m[0]).find(t=>norm(t)===norm(linked));
+    const evidence=witnessed||linkedSurface||linked||entry.key;
+    a.href='lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(p.locus)+'&q='+encodeURIComponent(mode==='math'?raw:evidence);
+    a.textContent=roman(p.book)+'.'+p.chapter+'.'+p.section;
+    a.title='Abrir pasaje '+p.locus;
+    container.append(a);
+   }
+  };
+  appendLoci(entry.loci.slice(0,45),locs);card.append(locs);
+  if(entry.loci.length>45){
+   const extra=document.createElement('details');extra.className='index-loci-extra';
+   const summary=document.createElement('summary');
+   summary.textContent='Ver los '+(entry.loci.length-45)+' loci restantes de esta entrada';
+   const rest=document.createElement('div');rest.className='index-loci';
+   extra.append(summary,rest);
+   let loaded=false;
+   extra.addEventListener('toggle',()=>{
+    if(extra.open&&!loaded){loaded=true;appendLoci(entry.loci.slice(45),rest)}
+   });
+   card.append(extra);
+  }
   if(mode!=='math')dictionary(card,entry);
-  if(entry.loci.length>45){const d=document.createElement('p');d.className='index-meta';d.textContent='Se muestran 45 loci; filtra por libro para acotar. La concordancia en contexto los incluye todos.';card.append(d)}
   root.append(card);
  }
  const from=valid.length?(page-1)*perPage+1:0,to=Math.min(page*perPage,valid.length);
