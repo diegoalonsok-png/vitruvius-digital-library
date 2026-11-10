@@ -289,6 +289,7 @@ function switchLanguage(k){
  window.ClassicsUploadedDocuments?.refresh();
  updateLexicon();
  try{localStorage.setItem("vitruvius-ui-lang",locale)}catch{}
+ document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:locale,origin:"bibliotheca"}}));
 }
 function updateLexicon(){
  const q=input.value.trim();bar.hidden=!q;
