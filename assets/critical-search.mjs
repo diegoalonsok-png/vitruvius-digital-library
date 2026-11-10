@@ -1,10 +1,12 @@
 import {parseLocus,findMatches,roman} from './search-core.mjs?v=20261109-prefacion-v2';
+import {canonicalLocus,ocrCandidate,ocrExcerptForLocus,pdfPage} from './krohn-locus-sync.mjs?v=20261110-krohn-synced-loci-v1';
 const $=s=>document.querySelector(s);
 const editions=[{id:'recensio-es',name:'V514 · Diego Kurilo · Latín / Castellano',pdf:'documents/kurilo-recensio-es.pdf'},{id:'recensio-fr',name:'V554 · Diego Kurilo · Latín / Francés',pdf:'documents/kurilo-recensio-fr.pdf'},{id:'theory-en',name:'V297 · Diego Kurilo · Latín / Inglés',pdf:'documents/kurilo-theory-en.pdf'}];
-const cache=new Map();let krohnCache=null;let notesCache=null;let results=[],shown=0,revision=0,lastQuery='';
+const cache=new Map();let krohnCache=null;let krohnIndexCache=null;let compareRevision=0;let notesCache=null;let results=[],shown=0,revision=0,lastQuery='';
 function escape(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 async function getNotes(){if(!notesCache)notesCache=fetch('data/critical-notes.json').then(r=>r.ok?r.json():{entries:[]}).catch(()=>({entries:[]}));return notesCache;}
 async function getKrohn(){if(!krohnCache)krohnCache=fetch('data/text/krohn-1912.json').then(r=>{if(!r.ok)throw Error('No se pudo cargar Krohn');return r.json()}).catch(e=>{krohnCache=null;throw e});return krohnCache;}
+async function getKrohnIndex(){if(!krohnIndexCache)krohnIndexCache=fetch('data/structured/krohn-1912-ocr-locus-candidates.json').then(r=>{if(!r.ok)throw Error('Índice de loci Krohn no disponible');return r.json()}).catch(e=>{krohnIndexCache=null;throw e});return krohnIndexCache;}
 async function getCorpus(e){if(!cache.has(e.id))cache.set(e.id,fetch('data/structured/'+e.id+'.json').then(r=>{if(!r.ok)throw Error('No se puede abrir '+e.id);return r.json()}).catch(err=>{cache.delete(e.id);throw err}));return cache.get(e.id);}
 function highlight(text,q){const matches=findMatches(text,q,{phrase:false});if(!matches.length)return escape(text);const spans=matches.slice(0,120).sort((a,b)=>a.start-b.start);let at=0,s='';for(const m of spans){if(m.start<at)continue;s+=escape(text.slice(at,m.start))+'<mark>'+escape(text.slice(m.start,m.end))+'</mark>';at=m.end;}return s+escape(text.slice(at));}
 function norm(s){return String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();}
@@ -53,10 +55,11 @@ async function appendKrohnComparison(sources,latin){
  }catch(error){status.textContent='No se pudo consultar el OCR de Krohn: '+error.message;}
 }
 async function compareLocus(locus){
+ const compareId=++compareRevision;
  const panel=$('#critical-comparison');if(!panel)return;
  panel.hidden=false;panel.replaceChildren();const title=document.createElement('h2');title.textContent='Cotejo paralelo · '+locus;panel.append(title);
- const notes=await getNotes();const locusRef=parseLocus(locus);const noteEntries=(notes.entries||[]).filter(n=>locusRef&&sameReference(n.locus||n.candidate_locus,locusRef));
- const datasets=await Promise.allSettled(editions.map(getCorpus));
+ const notes=await getNotes();if(compareId!==compareRevision)return;const locusRef=parseLocus(locus);const noteEntries=(notes.entries||[]).filter(n=>locusRef&&sameReference(n.locus||n.candidate_locus,locusRef));
+ const datasets=await Promise.allSettled(editions.map(getCorpus));if(compareId!==compareRevision)return;
  const grid=document.createElement('div');grid.className='critical-parallel';
  let referenceLatin='';
  const ref=parseLocus(locus);
@@ -77,13 +80,40 @@ async function compareLocus(locus){
  // Tramo del OCR que mejor coincide con el latín del locus (ventana de palabras con más coincidencias).
  const fold=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
  async function ocrPassage(id){
-  const pages=await ocrPages(id);const want=new Set((fold(referenceLatin).match(/[a-z]{5,}/g)||[]));if(!want.size||!pages.length)return null;
+  const pages=await ocrPages(id);
+  if(!pages.length||!referenceLatin)return null;
+  if(id==="krohn-1912"){
+   // A saved, locus-specific OCR candidate is always preferred to an unbounded
+   // full-volume fuzzy search: otherwise nearby chapters may displace I.4.1.
+   const index=await getKrohnIndex().catch(()=>null);
+   const anchor=ocrCandidate(index,locus);
+   if(!anchor)return null;
+   const pg=pages.find(item=>item.page===anchor.page);
+   if(!pg)return null;
+   const excerpt=ocrExcerptForLocus(pg.text,referenceLatin);
+   return {...anchor,share:Math.round(100*anchor.overlap),
+    text:excerpt?.text||"",excerptOverlap:excerpt?.overlapPercent||0};
+  }
+  // Other historical editions (Rose) have no locus index yet and remain
+  // explicitly labelled as provisional whole-OCR search results.
+  const want=new Set((fold(referenceLatin).match(/[a-z]{5,}/g)||[]));
+  if(!want.size)return null;
   let best=null;
-  for(const pg of pages){const words=String(pg.text||'').split(/\s+/);const hits=words.map(w=>want.has(fold(w).replace(/[^a-z]/g,''))?1:0);
-   const span=Math.max(40,Math.round(referenceLatin.split(/\s+/).length*1.15));let sum=0;
-   for(let i=0;i<words.length;i++){sum+=hits[i];if(i>=span)sum-=hits[i-span];if(!best||sum>best.sum)best={sum,page:pg.page,words,end:i,span}}}
-  if(!best||best.sum<Math.max(4,want.size*0.3))return null;
-  const a=Math.max(0,best.end-best.span+1);const win=best.words.slice(a,best.end+1);const got=new Set(win.map(w=>fold(w).replace(/[^a-z]/g,'')).filter(w=>want.has(w)));return {page:best.page,text:win.join(' '),share:Math.min(100,Math.round(100*got.size/want.size))};
+  for(const pg of pages){
+   const words=String(pg.text||"").split(/\s+/);
+   const hit=words.map(w=>want.has(fold(w).replace(/[^a-z]/g,""))?1:0);
+   const span=Math.max(40,Math.round(referenceLatin.split(/\s+/).length*1.15));
+   let sum=0;
+   for(let i=0;i<words.length;i++){
+    sum+=hit[i];if(i>=span)sum-=hit[i-span];
+    if(!best||sum>best.sum)best={sum,page:pg.page,words,end:i,span};
+   }
+  }
+  if(!best||best.sum<Math.max(4,want.size*.3))return null;
+  const from=Math.max(0,best.end-best.span+1);
+  const win=best.words.slice(from,best.end+1);
+  const got=new Set(win.map(w=>fold(w).replace(/[^a-z]/g,"")).filter(w=>want.has(w)));
+  return {page:best.page,text:win.join(" "),share:Math.min(100,Math.round(100*got.size/want.size)),confidence:"unindexed"};
  }
  function cardFor(slot){
   const card=document.createElement('article');card.className='critical-parallel-edition';
@@ -118,7 +148,7 @@ async function compareLocus(locus){
     function navigate(page){
      const value=Math.max(1,Math.min(10000,Math.round(Number(page)||1)));
      number.value=String(value);
-     const target=pdfBase+'#page='+value+'&zoom=page-width';
+     const target=pdfPage(pdfBase,value);
      frame.src=target;full.href=target;
     }
     prev.addEventListener('click',()=>navigate(Number(number.value)-1));
@@ -128,15 +158,33 @@ async function compareLocus(locus){
     // No inventar equivalencia locus-página: si el OCR no da un candidato
     // inequívoco, comenzar en la página 1 y dejar navegación manual.
     navigate(1);
-    const hit=await ocrPassage(v.ocr);if(sel.value!==v.id||!body.isConnected)return;
+    const hit=await ocrPassage(v.ocr);if(compareId!==compareRevision||sel.value!==v.id||!body.isConnected)return;
     if(!hit){
      status.textContent='No se identificó una página fiable para '+locus+'. El PDF está disponible desde el comienzo; selecciona manualmente el folio. No se presume alineación entre OCR y locus.';
      return;
     }
-    status.textContent='Página candidata '+hit.page+' del PDF · '+hit.share+' % de coincidencia OCR. Ubicación orientativa, no cotejo filológico verificado.';
+    const synced=v.ocr==="krohn-1912";
+    const strong=hit.confidence==="strong";
+    status.textContent=synced
+     ?("Krohn 1912 · Vitr., De arch. "+(canonicalLocus(locus)||locus)+
+       " · página digital candidata "+hit.page+
+       " · "+hit.share+" % de trigramas latinos coincidentes ("+
+       (strong?"anclaje textual fuerte":"anclaje ambiguo")+
+       "). Coincidencia OCR orientativa, NO cotejo filológico verificado."+
+       (hit.runnerUpPage?" Otra página candidata: "+hit.runnerUpPage+".":""))
+     :"Página candidata "+hit.page+" del PDF · "+hit.share+" % de similitud OCR. Edición sin índice de loci; ubicación orientativa no verificada.";
     navigate(hit.page);
-    const excerpt=document.createElement('details');const title=document.createElement('summary');title.textContent='Ver fragmento OCR no revisado';excerpt.append(title);
-    const para=document.createElement('p');para.lang='la';para.textContent=hit.text;excerpt.append(para);body.append(excerpt);
+    if(hit.text){
+     const excerpt=document.createElement('details');
+     excerpt.open=synced&&strong;
+     const title=document.createElement('summary');
+     title.textContent=synced
+      ?"Texto latino OCR situado junto al locus "+(canonicalLocus(locus)||locus)+" (sin revisión editorial)"
+      :"Ver fragmento OCR no revisado";
+     excerpt.append(title);
+     const para=document.createElement('p');para.lang='la';para.textContent=hit.text;
+     excerpt.append(para);body.append(excerpt);
+    }
     return;
    }
    const p=passages[v.ed];
