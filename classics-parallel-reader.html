@@ -77,6 +77,7 @@ html::-webkit-scrollbar-thumb:hover,body::-webkit-scrollbar-thumb:hover{backgrou
 html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427}
 @media(prefers-reduced-motion:reduce){html body button{transition:none!important;transform:none!important}}
 
+.appearance[hidden]{display:none!important}
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 </head>
@@ -92,7 +93,7 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <output id="sync-position">Sin sincronizar</output>
 </div>
 <p id="status" role="status" aria-live="polite">Cargando las versiones documentadas…</p>
-<div class="panes"><section class="pane"><strong>01 · Texto original · navegación independiente</strong><label class="pane-version">Versión del visor izquierdo <select id="left-pane-language" aria-label="Cambiar versión del visor izquierdo"></select></label><div class="appearance" role="group" aria-label="Estilo del visor izquierdo">
+<div class="panes"><section class="pane"><strong>01 · Texto original · navegación independiente</strong><label class="pane-version">Versión del visor izquierdo <select id="left-pane-language" aria-label="Cambiar versión del visor izquierdo"></select></label><div class="appearance" id="left-appearance" role="group" aria-label="Estilo del visor izquierdo">
 <button type="button" id="left-ivory" aria-label="Tema marfil en visor left" title="Marfil">◧ Marfil</button>
 <button type="button" id="left-sepia" aria-label="Tema sepia en visor left" title="Sepia">◩ Sepia</button>
 <button type="button" id="left-invert" title="Invertir colores del visor" aria-label="Invertir colores del visor left">◐ Invertir</button>
@@ -104,7 +105,7 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <span class="zoom-level" id="left-size">20 px</span>
 <button type="button" id="left-larger" aria-label="Aumentar texto del visor left" title="Lupa más">⌕+</button>
 <button type="button" id="left-reset" aria-label="Restablecer colores y tipografía del visor left">↺</button>
-</div><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>02 · Traducción · navegación independiente</strong><label class="pane-version">Versión del visor derecho <select id="right-pane-language" aria-label="Cambiar versión del visor derecho"></select></label><div class="appearance" role="group" aria-label="Estilo del visor derecho">
+</div><iframe id="pane-left" title="Original o primera edición"></iframe></section><section class="pane"><strong>02 · Traducción · navegación independiente</strong><label class="pane-version">Versión del visor derecho <select id="right-pane-language" aria-label="Cambiar versión del visor derecho"></select></label><div class="appearance" id="right-appearance" role="group" aria-label="Estilo del visor derecho">
 <button type="button" id="right-ivory" aria-label="Tema marfil en visor right" title="Marfil">◧ Marfil</button>
 <button type="button" id="right-sepia" aria-label="Tema sepia en visor right" title="Sepia">◩ Sepia</button>
 <button type="button" id="right-invert" title="Invertir colores del visor" aria-label="Invertir colores del visor right">◐ Invertir</button>
@@ -131,6 +132,7 @@ const AUTO_TARGETS=["auto-es","auto-en","auto-fr"];
 const isAuto=lang=>AUTO_TARGETS.includes(lang);
 if(!/^[a-z0-9-]{3,60}$/.test(work)){status.textContent="Identificador de obra inválido.";return;}
 let files={},editions={},versions={},position=0,ready={left:false,right:false},generation={left:0,right:0},previous={left:"",right:""};
+let htmlComparison=false;
 const pendingNavigation={left:null,right:null};
 
 const defaults={background:"#fffdf7",foreground:"#202b35",font:"serif",size:20};
@@ -352,6 +354,7 @@ function sendQuery(side){
  },location.origin);
 }
 window.addEventListener("message",event=>{
+ if(htmlComparison)return;
  if(event.origin!==location.origin||![$("pane-left").contentWindow,$("pane-right").contentWindow].includes(event.source))return;
  const msg=event.data;if(!msg||msg.work!==work)return;
  const side=event.source===$("pane-left").contentWindow?"left":"right";
@@ -401,7 +404,59 @@ Promise.all([
  fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro de textos inaccesible");return r.json()})
 ]).then(async ([c,registry])=>{
  const rec=(c.works||[]).find(w=>w.id===work);
- const rows=(registry.entries||[]).filter(e=>e.workId===work&&
+ 
+  /* HTML-only/mixed classical editions: accessible, but no invented locus pairing. */
+  const htmlEntries=(registry.entries||[]).filter(e=>e.workId===work&&e.format==="html-text"&&
+   Object.hasOwn(LANG,e.language)&&/^corpus\/[a-z0-9/_-]+\.html$/.test(e.path||""));
+  if(htmlEntries.length){
+   const allEntries=(registry.entries||[]).filter(e=>e.workId===work&&
+    ["json-passages","structured-bilingual","html-text"].includes(e.format)&&Object.hasOwn(LANG,e.language));
+   const available=new Map();
+   for(const e of allEntries){
+    if(e.format==="html-text"&&!/^corpus\/[a-z0-9/_-]+\.html$/.test(e.path||""))continue;
+    if(e.format!=="html-text"&&!/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(e.path||""))continue;
+    if(!available.has(e.language)||e.format==="json-passages")available.set(e.language,e);
+   }
+   if(available.size>=2){
+    htmlComparison=true;
+    const ordered=["la","grc","es","en","fr","it","de","pt"].filter(lang=>available.has(lang));
+    fill(left,ordered);fill(right,ordered);
+    fill($("left-pane-language"),ordered);fill($("right-pane-language"),ordered);
+    const first=ordered.find(lang=>["la","grc"].includes(lang))||ordered[0];
+    left.value=available.has(params.get("left"))?params.get("left"):first;
+    right.value=available.has(params.get("right"))&&params.get("right")!==left.value?
+     params.get("right"):(ordered.find(lang=>lang!==left.value&&!["la","grc"].includes(lang))||ordered.find(lang=>lang!==left.value));
+    function htmlFrame(side){
+     const lang=$(side).value,entry=available.get(lang);
+     if(!entry)return;
+     $(side+"-pane-language").value=lang;
+     const u=new URL(entry.format==="html-text"?entry.path:"classics-text-reader.html",location.href);
+     if(entry.format!=="html-text"){
+      u.searchParams.set("work",work);u.searchParams.set("lang",lang);
+      if(params.get("locus"))u.searchParams.set("locus",params.get("locus"));
+     }
+     $("pane-"+side).src=u.href;
+     params.set(side,lang);history.replaceState(null,"",location.pathname+"?"+params.toString());
+     const origin=available.get(left.value);
+     const read=new URL(origin.format==="html-text"?origin.path:"classics-text-reader.html",location.href);
+     if(origin.format!=="html-text"){read.searchParams.set("work",work);read.searchParams.set("lang",left.value);}
+     $("single").href=read.href;
+    }
+    for(const side of ["left","right"]){
+     $(side+"-pane-language").addEventListener("change",()=>{$(side).value=$(side+"-pane-language").value;htmlFrame(side)});
+     $(side).addEventListener("change",()=>{$(side+"-pane-language").value=$(side).value;htmlFrame(side)});
+     $(side+"-query").disabled=true;$(side+"-query").placeholder="Buscar dentro del visor";
+    }
+    for(const id of ["parallel-find","parallel-clear","sync-start","sync-prev","sync-next","same-locus"])$(id).disabled=true;
+    $("sync-position").textContent="Ediciones HTML · navegación independiente";
+    status.textContent=(rec?.author||htmlEntries[0]?.author||"")+" · "+(rec?.title||htmlEntries[0]?.title||work)+
+     ". Dos ediciones abiertas en paralelo; sin sincronización ni equivalencia por locus certificada para archivos HTML.";
+    $("left-appearance").hidden=true;$("right-appearance").hidden=true;
+    htmlFrame("left");htmlFrame("right");
+    return;
+   }
+  }
+  const rows=(registry.entries||[]).filter(e=>e.workId===work&&
   ["json-passages","structured-bilingual"].includes(e.format)&&Object.hasOwn(LANG,e.language));
  for(const e of rows){
   if(editions[e.language]&&editions[e.language].format==="json-passages")continue;
