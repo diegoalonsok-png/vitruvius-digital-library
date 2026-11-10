@@ -21,7 +21,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:""};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null};
  const article=document.getElementById("vitruvia-article");
  const articleGrid=article?.querySelector(".article-grid");
  const body=document.getElementById("article-body");
@@ -196,7 +196,7 @@
     lastEnds[level]=x;levelMax=Math.max(levelMax,level);
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
-    button.style.left=position(e.year);button.style.top=(27+level*79)+"px";
+    button.style.left=Math.max(82,Math.min(mapWidth-82,x))+"px";button.style.top=(27+level*79)+"px";
     button.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)));
     button.append(el("strong",null,e.title));
     if(e.end!=null&&e.end!==e.year){
@@ -220,13 +220,13 @@
  }
  function reset(q){
   state.token++;state.query=String(q||"").trim().slice(0,160);
-  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";
+  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
   place();draw();
   if(!state.query)return;
   const token=state.token;
   if(window.VitruviaEntityResolver?.resolve){
    const safe=window.VitruviaEntityResolver.resolve(state.query,lang()).catch(()=>null);
-   safe.then(a=>{if(token!==state.token||!a)return;state.authority=a;draw()});
+   safe.then(a=>{if(token!==state.token||!a)return;state.authority=a;const pending=state.pendingWorks;if(pending&&pending.wikidataId===a.wikidataId)state.works=pending.works;draw()});
   }
  }
  window.addEventListener("vitruvia:search",e=>reset(e.detail?.query||""));
@@ -240,12 +240,16 @@
  });
  window.addEventListener("vitruvia:cultural-works",e=>{
   const d=e.detail||{},qid=state.authority?.wikidataId;
-  if(!qid||d.wikidataId!==qid)return;
-  state.works=Array.isArray(d.works)?d.works:[];draw();
+  if(!d.wikidataId||!/^Q\d+$/.test(d.wikidataId))return;
+  const works=Array.isArray(d.works)?d.works:[];
+  if(!qid){state.pendingWorks={wikidataId:d.wikidataId,works};return}
+  if(d.wikidataId!==qid)return;
+  state.works=works;draw();
  });
  window.addEventListener("vitruvia:albums",e=>{
   const d=e.detail||{};
-  if(normalize(d.query)!==normalize(state.query)&&normalize(d.query)!==normalize(state.authority?.canonical))return;
+  const subject=s=>normalize(s).replace(/^(the|el|la|los|las|le|les) /,"");
+  if(subject(d.query)!==subject(state.query)&&subject(d.query)!==subject(state.authority?.canonical)&&subject(d.query)!==subject(state.authority?.catalogName))return;
   state.albums=Array.isArray(d.albums)?d.albums:[];draw();
  });
  new MutationObserver(changes=>{
