@@ -281,7 +281,7 @@ function renderAuto(){
    const note=widget.querySelector(".academic-inline-translation-note");
    if(output){
     const pending=document.createElement("p");pending.className="auto-pending";
-    pending.textContent="El original está en el visor izquierdo. Pulsá «Traducir este pasaje aquí» para ver en esta columna una versión automática orientativa.";
+    pending.textContent="El original está en el visor izquierdo. Pulsa «Traducir este pasaje aquí» para ver en esta columna una versión automática orientativa.";
     output.append(pending);
     if(note)widget.insertBefore(output,note);
    }
