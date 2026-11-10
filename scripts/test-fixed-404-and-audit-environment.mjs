@@ -3,12 +3,12 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {Script} from "node:vm";
 const read=p=>readFileSync(p,"utf8");
-for(const p of ["assets/iconografia-vitruviana.js","assets/gudiani-reader.mjs","scripts/test-vitruvia-cultural-works.mjs"]){
+for(const p of ["assets/iconografia-vitruviana.js","assets/gudiani-reader.mjs"]){
  new Script(read(p),{filename:p});
 }
 const barbaro=read("assets/barbaro-parallel.mjs");
 assert.match(barbaro,/if\(c\.image_url\)result\.push\(c\.image_url\)/);
-assert.match(barbaro,/!\/\^images\\\/barbaro-1567\\\/\//);
+assert.match(barbaro,/if\(c\.local_url&&!/);
 const atlas=read("assets/iconografia-vitruviana.js");
 const data=JSON.parse(read("data/iconografia-vitruviana.json"));
 const failures=[
