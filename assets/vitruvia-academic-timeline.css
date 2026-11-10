@@ -1,0 +1,30 @@
+/* Documentary chronology in existing right rail; horizontal bands with reading panels */
+#vitruvia-context .vat-timeline{display:block;max-width:100%;min-width:0;border-top:1px solid #555;margin-top:18px;padding-top:15px}
+#vitruvia-context .vat-timeline[hidden]{display:none!important}
+#vitruvia-context .vat-head h4{font:500 20px/1.35 Georgia,serif;margin:0 0 6px}
+#vitruvia-context .vat-method{font:12px/1.55 system-ui,sans-serif;opacity:.85;margin:0 0 14px}
+#vitruvia-context .vat-lane{margin:0 0 17px}
+#vitruvia-context .vat-lane-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+#vitruvia-context .vat-lane-header h5{font:600 11px/1.4 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;margin:0}
+#vitruvia-context .vat-navigation{display:flex;gap:5px}
+#vitruvia-context .vat-navigation button{width:33px;height:30px;border:1px solid #666;background:transparent;color:inherit;border-radius:4px;cursor:pointer}
+#vitruvia-context .vat-rail{display:flex;gap:10px;align-items:stretch;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:auto;scrollbar-color:#858585 #242424;padding:3px 1px 13px;position:relative}
+#vitruvia-context .vat-rail:before{content:"";position:absolute;left:3px;right:3px;top:26px;height:2px;background:#777;z-index:0}
+#vitruvia-context .vat-event{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:5px;flex:0 0 154px;min-width:154px;min-height:110px;padding:8px;background:#272728;border:1px solid #686868;border-radius:5px;color:inherit;cursor:pointer;position:relative;z-index:1;scroll-snap-align:start}
+#vitruvia-context .vat-event[aria-pressed=true]{border-color:#d3b47d;background:#363228}
+#vitruvia-context .vat-event .vat-date{font:600 11px/1.35 system-ui,sans-serif;color:#d3bf8c;font-variant-numeric:tabular-nums}
+#vitruvia-context .vat-event strong{font:600 12px/1.35 Georgia,serif}
+#vitruvia-context .vat-event img{width:100%;height:85px;object-fit:contain}
+#vitruvia-context .vat-detail{border:1px solid #676767;background:#242425;border-radius:5px;padding:12px;margin:6px 0 12px}
+#vitruvia-context .vat-detail[hidden]{display:none!important}
+#vitruvia-context .vat-detail h5{font:600 16px/1.4 Georgia,serif;margin:0 0 8px}
+#vitruvia-context .vat-detail p{font:13px/1.65 system-ui,sans-serif;margin:0 0 9px}
+#vitruvia-context .vat-detail small{display:block;font:11px/1.4 system-ui,sans-serif;opacity:.8;margin:0 0 7px}
+#vitruvia-context .vat-detail a{color:#d8c58f;text-decoration:underline;text-underline-offset:3px}
+#vitruvia-context :is(.vat-event,.vat-navigation button,.vat-detail a):focus-visible{outline:2px solid #dfc185;outline-offset:3px}
+html[data-theme=light] #vitruvia-context .vat-event{background:#f3f2ef;border-color:#b4b4b4}
+html[data-theme=light] #vitruvia-context .vat-event .vat-date{color:#665026}
+html[data-theme=light] #vitruvia-context .vat-detail{background:#f7f5ef;border-color:#aaa}
+html[data-theme=light] #vitruvia-context .vat-detail a{color:#365d74}
+@media(prefers-reduced-motion:reduce){#vitruvia-context .vat-rail{scroll-behavior:auto!important}}
+@media print{#vitruvia-context .vat-rail{overflow:visible;flex-wrap:wrap}#vitruvia-context .vat-navigation{display:none}}
