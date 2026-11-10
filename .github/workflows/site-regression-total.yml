@@ -10,6 +10,10 @@ on:
       - 'scripts/test-indexacion-academica.mjs'
       - 'scripts/test-search-url-contract.mjs'
       - 'assets/vitruvia-search.js'
+      - 'assets/secondary-reader-controls.js'
+      - 'assets/secondary-reader-controls.css'
+      - 'assets/site-bar.js'
+      - 'scripts/test-secondary-controls-browser.mjs'
       - 'assets/bibliotheca-simple.js'
       - 'scripts/browser-smoke-audit.mjs'
       - 'scripts/test-lexicon-query-contract.mjs'
@@ -26,6 +30,10 @@ on:
       - 'indice-busquedas-academicas.html'
       - 'scripts/test-search-url-contract.mjs'
       - 'assets/vitruvia-search.js'
+      - 'assets/secondary-reader-controls.js'
+      - 'assets/secondary-reader-controls.css'
+      - 'assets/site-bar.js'
+      - 'scripts/test-secondary-controls-browser.mjs'
       - 'assets/bibliotheca-simple.js'
       - 'scripts/browser-smoke-audit.mjs'
       - 'scripts/test-lexicon-query-contract.mjs'
@@ -139,6 +147,14 @@ jobs:
             echo "::error title=Geometría de Vitruvia::Fallo de navegador o disposición de resultados"
           else
             echo "PASS scripts/test-vitruvia-search-geometry.mjs"
+          fi
+          node scripts/test-secondary-controls-browser.mjs
+          controls=$?
+          if [ "$controls" -ne 0 ]; then
+            echo "FAIL scripts/test-secondary-controls-browser.mjs (exit $controls)" >> reports/site-regression-failures.txt
+            echo "::error title=Controles de lectura::Fallan botones ES/EN/FR o claro/oscuro en Chromium"
+          else
+            echo "PASS scripts/test-secondary-controls-browser.mjs"
           fi
           exit 0
       - name: Interacciones de buscadores, lectores y botones
