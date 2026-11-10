@@ -4,10 +4,13 @@ on:
   push:
     paths:
       - 'scripts/codicology_auditor.py'
+      - 'scripts/codicology_spotcheck.py'
       - 'tests/test_codicology_auditor.py'
+      - 'tests/test_codicology_spotcheck.py'
       - '.github/workflows/codicology-self-audit.yml'
   schedule:
-    - cron: '23 9 * * *'
+    - cron: '23 9 * * *'  # daily: all 222 structural records
+    - cron: '43 10 * * 3' # weekly: rotate 12 manuscripts
 
 permissions:
   contents: read
@@ -18,6 +21,7 @@ concurrency:
 
 jobs:
   metadata-only-audit:
+    if: github.event_name != 'schedule' || github.event.schedule == '23 9 * * *'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -69,4 +73,61 @@ jobs:
           ])
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as out:
               out.write(message + '\n')
+          PY
+
+  weekly-codicology-spotcheck:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && github.event.schedule == '43 10 * * 3')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out codicological records
+        uses: actions/checkout@v4
+
+      - name: Python (no external paid packages)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Test the periodic reviewer and source-safety rules
+        run: |
+          python -m unittest discover -s tests -p 'test_codicology_auditor.py' -v
+          python -m unittest discover -s tests -p 'test_codicology_spotcheck.py' -v
+
+      - name: Review 12 manuscript records and their external references
+        run: |
+          python scripts/codicology_spotcheck.py \
+            --batch-size 12 \
+            --output reports/codicology-weekly
+
+      - name: Preserve lightweight scholarly review report only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: codicology-weekly-spotcheck-json
+          path: reports/codicology-weekly/weekly-review.json
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Publish audit report summary (no catalogue modifications)
+        if: success()
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report=json.loads(Path('reports/codicology-weekly/weekly-review.json').read_text(encoding='utf-8'))
+          summary=report['summary']
+          lines=[
+            '## Revisión codicológica semanal — Vitruvius',
+            f"- Testimonios revisados: {summary['witnessesReviewed']}",
+            f"- Asociaciones a obras: {summary['workAssociations']}",
+            f"- Problemas estructurales: {summary['blocking']}",
+            f"- Casos que requieren revisión editorial: {summary['editorialReview']}",
+            f"- Accesos HTTP 404/410: {summary['linksMissing']}",
+            f"- Accesos no concluyentes: {summary['linksIndeterminate']}",
+            '',
+            'Estas comprobaciones NO equivalen a una collatio codicum paleográfica.',
+            'Los enlaces no disponibles se señalan para revisión; ninguna ficha se edita automáticamente.',
+          ]
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as dst:
+              dst.write('\n'.join(lines)+'\n')
           PY
