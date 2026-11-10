@@ -74,7 +74,7 @@ async function externalTranslation(text,source,target){
  return {text:translated.join(" "),provider:"MyMemory / Translated · traducción automática externa",
   partial:fragments.join("").replace(/\s+/g,"")!==text.trim().replace(/\s+/g,"")};
 }
-function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceLabel}={}){
+function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceLanguage,referenceLabel}={}){
  if(!(sourceNode instanceof Element)||sourceNode.dataset.inlineTranslationReady==="1")return false;
  const source=String(sourceLanguage||sourceNode.lang||"").toLowerCase().split("-")[0];
  if(!Object.hasOwn(LANGS,source))return false;
@@ -94,7 +94,7 @@ function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceL
  button.type="button";
  button.style.cssText="background:#252528;color:#fff;border:1px solid #777;border-radius:4px;padding:6px 10px;cursor:pointer;font:12px system-ui,Arial,sans-serif";
  const info=el("p","academic-inline-translation-note");
- info.textContent="La fuente permanece visible. Al pulsar Traducir, puede enviarse solo este fragmento a MyMemory (servicio externo gratuito) si no hay traducción local del navegador; no se envía nada antes de pulsar.";
+ info.textContent="El original y las traducciones editoriales permanecen visibles. Solo al solicitar una versión adicional puede enviarse un fragmento a MyMemory; el texto no se envía antes del clic. El servicio externo es orientativo y no está validado filológicamente.";
  info.style.cssText="margin:4px 0;color:inherit;opacity:.75;font-size:11px";
  const output=el("div","academic-inline-translation-output");output.setAttribute("role","status");
  output.style.cssText="margin-top:7px;white-space:pre-wrap;overflow-wrap:anywhere";
@@ -108,7 +108,7 @@ function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceL
   if(source===target){
    output.textContent="El texto ya está en el idioma seleccionado.";return;
   }
-  if(referenceText&&target===uiLang()){
+  if(referenceText&&TARGETS.includes(referenceLanguage)&&target===referenceLanguage){
    const p=el("p","",String(referenceText));
    p.lang=target;output.append(el("strong","","Traducción documentada: "),p,
     el("small","",referenceLabel||"Edición existente; verificar fuente y locus"));
