@@ -4,7 +4,7 @@ import vm from 'node:vm';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const source=read('assets/vitruvia-search.js');
 const elements=new Map();
-const $=id=>{if(!elements.has(id))elements.set(id,{textContent:''});return elements.get(id)};
+const $=id=>{if(!elements.has(id))elements.set(id,{textContent:'',dataset:{},setAttribute(name,value){this[name]=value}});return elements.get(id)};
 const S={};
 const context=vm.createContext({S,$,document:{body:{classList:{contains:()=>false}}},verified:()=>true,fetchJSON:async url=>{
  if(url.includes('bibliotheca-graeca-latina'))throw Error('offline');
@@ -12,10 +12,16 @@ const context=vm.createContext({S,$,document:{body:{classList:{contains:()=>fals
  if(url.includes('testimonia'))return {records:[{title:'Codex'}],editions:[{title:'Edition'}]};
  return {};
 }});
-vm.runInContext(source.slice(source.indexOf('async function load(){'),source.indexOf('const dataPaths='))+';globalThis.load=load',context);
+vm.runInContext(source.slice(source.indexOf('function showCatalogueMetric('),source.indexOf('const dataPaths='))+';globalThis.load=load',context);
 await context.load();
 assert.equal(S.ready,true);assert.equal(S.works.length,0);assert.equal(S.pages.length,1);assert.equal(S.witnesses.length,1);assert.equal(S.editions.length,1);
 assert.match($('result-state').textContent,/1 índices no disponibles/);
+assert.equal($('metric-works').textContent,'N/D','Failed catalogue is not zero works');
+assert.equal($('metric-works').dataset.verification,'sin-verificar');
+assert.equal($('metric-pages').textContent,'1');
+assert.equal($('metric-pages').dataset.verification,'cargado');
+assert.equal($('metric-witnesses').textContent,'1');
+assert.equal($('metrics')['data-verification'],'parcial');
 const resolver=read('assets/vitruvia-entity-resolver.js');
 const local=vm.createContext({mediaWiki:()=>"https://example.test",get:async()=>({query:{pages:{1:{langlinks:[{lang:'es','*':'Pitágoras'}]}}}}),lookupTitle:async()=>({canonical:'Pitágoras',language:'es'})});
 vm.runInContext(resolver.slice(resolver.indexOf('async function localize('),resolver.indexOf('// Disambiguate'))+';globalThis.localize=localize',local);
