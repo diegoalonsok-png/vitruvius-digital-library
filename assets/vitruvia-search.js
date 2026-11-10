@@ -438,7 +438,10 @@ function livePassages(ps,q,concept){
  const rows=[];for(const p of ps){const a=score(p.latin,q,concept),b=score(p.translation,q,concept),l=score(p.locus,q,concept);
  const rating=Math.max(a,b,l);if(rating<4)continue;
  const text=(b>a?p.translation:p.latin)||p.translation;
- rows.push({type:"passage",title:"Vitruvio · De architectura · "+p.locus,author:p.lang.toUpperCase()+" · "+p.edition,excerpt:brief(text,335),meta:"Locus "+p.locus+" · latín + versión "+p.lang.toUpperCase(),rating,link:"lector-bilingue.html?edition="+encodeURIComponent(p.edition)+"&locus="+encodeURIComponent(p.locus)});
+ rows.push({type:"passage",title:"Vitruvio · De architectura · "+p.locus,author:p.lang.toUpperCase()+" · "+p.edition,
+  excerpt:brief(text,335),meta:"Locus "+p.locus+" · latín + versión "+p.lang.toUpperCase(),
+  latin:p.latin,translation:p.translation,translationLanguage:p.lang,edition:p.edition,locus:p.locus,
+  rating,link:"lector-bilingue.html?edition="+encodeURIComponent(p.edition)+"&locus="+encodeURIComponent(p.locus)});
  }return rows.sort((a,b)=>b.rating-a.rating).slice(0,18)
 }
 const htmlText=s=>new DOMParser().parseFromString(String(s||""),"text/html").body.textContent||"";
@@ -741,12 +744,17 @@ function renderCard(d){
   const bilingual=node("div","passage-bilingual");
   const latin=node("p","passage-latin",d.latin.slice(0,700));
   const translation=node("p","passage-translation",d.translation.slice(0,700));
-  bilingual.append(node("div","passage-language","LATÍN"),latin,node("div","passage-language","TRADUCCIÓN"),translation);
+  latin.lang="la";translation.lang=d.translationLanguage||"es";
+  const languageName=({es:"CASTELLANO",en:"ENGLISH",fr:"FRANÇAIS"})[d.translationLanguage]||"EDICIÓN";
+  bilingual.append(node("div","passage-language","LATÍN"),latin,
+    node("div","passage-language","TRADUCCIÓN EDITORIAL · "+languageName),translation);
   card.append(bilingual);
-  // Users may choose a different reading language; the curated counterpart
-  // remains separate, identified and visible above this optional tool.
-  window.VitruviaInlineTranslation?.attach(translation,{
-   sourceLanguage:"la",originalText:d.latin.slice(0,1200)
+  // Display the real edition and language; the original and editorial
+  // translation remain visible. Machine translation is only an optional aid.
+  window.VitruviaInlineTranslation?.attach(latin,{
+   sourceLanguage:"la",originalText:d.latin.slice(0,1200),
+   referenceLanguage:d.translationLanguage,referenceText:d.translation,
+   referenceLabel:"Traducción de la edición "+(d.edition||"documentada")+" · locus "+(d.locus||"")
   });
  }
  if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · búsqueda textual de respaldo"))}
