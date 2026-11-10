@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-external-index-reconciliation-v1",
-  "updated": "2026-11-09",
-  "scope": "Metadatos de índices remotos existentes, no textos alojados en GitHub Pages. Verifica solo la existencia de los manifiestos y su integridad estructural declarada, no cotejo filológico ni prueba de lectura en navegador. Tres fichas pendientes son versiones editoriales de Vitruvio ya indexado en otras ediciones; requieren enlace de procedencia pero no son obras antiguas independientes. El índice añadido de Sículo Flaco deriva de 31 párrafos de Wikisource (edición de base no identificada): se documenta como transcripción accesible, no como edición crítica cotejada.",
+  "updated": "2026-11-10",
+  "scope": "Metadatos de índices remotos existentes, no textos alojados en GitHub Pages. Verifica solo la existencia de los manifiestos y su integridad estructural declarada, no cotejo filológico ni prueba de lectura en navegador. Tres fichas pendientes son versiones editoriales de Vitruvio ya indexado en otras ediciones; requieren enlace de procedencia pero no son obras antiguas independientes. El índice añadido de Sículo Flaco deriva de 31 párrafos de Wikisource (edición de base no identificada): se documenta como transcripción accesible, no como edición crítica cotejada. El índice remoto de Ennio, Annales, corresponde a 31 fragmentos en una transcripción CLTK/Latin Library; no se confunde con edición crítica ni obra íntegra.",
   "sourceManifests": [
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-griegos-20261108/data/offsite-originals/manifest.json",
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-latinos-20261108/data/offsite-latin/manifest.json"
@@ -9,15 +9,15 @@
   "counts": {
     "worksCatalogued": 222,
     "hostedOriginalsIndexed": 181,
-    "remoteOriginalsIndexed": 24,
-    "combinedOriginalsIndexed": 205,
-    "originalsStillWithoutIndex": 17,
+    "remoteOriginalsIndexed": 25,
+    "combinedOriginalsIndexed": 206,
+    "originalsStillWithoutIndex": 16,
     "remoteGreek": 14,
-    "remoteLatin": 10,
+    "remoteLatin": 11,
     "hostedTranslations": 59,
     "hostedTextVersions": 246,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 14
+    "distinctAncientWorksStillMissingOriginalIndex": 13
   },
   "remoteEntries": [
     {
@@ -107,6 +107,17 @@
       "sourceSha256": "28728f3cde1654a435d55e500906fe76eb1433393610520e9be5eec5282f6057",
       "passages": 59,
       "editorialAttribution": "Cleónides (transmitido bajo el nombre de Euclides), Εἰσαγωγὴ ἁρμονική. Musici scriptores Graeci Karl von Jan Cleonides Teubner Leipzig 1895 HathiTrust"
+    },
+    {
+      "workId": "ennius-annales",
+      "language": "la",
+      "branch": "corpus-originales-latinos-20261108",
+      "manifestPath": "data/offsite-latin/manifest.json",
+      "textPath": "data/offsite-latin/ennius-annales-la.json",
+      "sourceUrl": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/enn.txt",
+      "sourceSha256": "8321f3a0a2e34654750feeac679de6e5680cd8dcd16200e286ac0b1c50b58bd4",
+      "passages": 31,
+      "editorialAttribution": "Quintus Ennius, Annalium fragmenta. Transcripción digital en Ennius, Fragmenta, The Latin Library, archivada por CLTK (enn.txt); edición crítica y filiación manuscrita no declaradas en el archivo. Fragmentos seleccionados de Annales, sin aparato crítico ni correspondencia garantizada con ediciones modernas"
     },
     {
       "workId": "euclid-optica",
@@ -506,13 +517,6 @@
     },
     {
       "workId": "macrobius-saturnalia",
-      "originalLanguage": "la",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": [],
-      "recordKind": "independent-work"
-    },
-    {
-      "workId": "ennius-annales",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
