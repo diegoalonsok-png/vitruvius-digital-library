@@ -32,3 +32,9 @@ No modificar, eliminar ni sobrescribir DOCX, PDF, folios, códices, manuscritos,
 En V514 existen los loci VII.7.2, VII.7.3 y VII.7.5 que no aparecen **con esos identificadores** en el índice V297. Hay indicios de segmentación diferente del capítulo VII.7. No deben declararse «tres párrafos ingleses faltantes» ni repararse automáticamente; se necesita cotejo por contenido y contexto.
 
 La comparación automática futura no podrá certificar por sí misma la fidelidad crítica: requerirá cotejar los textos completos y, si corresponde, los PDF/DOCX originales y el aparato crítico.
+
+## Regla editorial de corrección posterior (confirmada por el autor)
+
+**Primero identificar y listar; después corregir.** La auditoría emitirá dos grupos claramente separados: (a) discrepancias o posibles errores que requieren cotejo de los originales y (b) errores confirmados documentalmente. Cada incidencia deberá contener edición, libro, capítulo, locus, evidencia contrastada, categoría y grado de certeza. Los errores confirmados se presentarán en una lista antes de preparar cualquier modificación. **Ningún cambio automático en ES V514, FR V554 ni EN V297**; tampoco se tocarán folios, códices, notas críticas o PDFs. Toda propuesta correctiva será reversible, documentada y requerirá aprobación editorial expresa del autor.
+
+Archivo de salida previsto: `reports/vitruvius-trilingual-incidencias.md`. El inventario de candidatos no se presentará como catálogo de errores confirmados.
