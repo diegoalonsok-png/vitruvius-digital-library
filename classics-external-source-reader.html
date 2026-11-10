@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ennio · Annales fragmentarios · Lector externo | Bibliotheca</title>
+<meta name="description" content="Lectura bajo demanda de fragmentos latinos de Ennio con búsqueda literal, procedencia y acceso a la transcripción externa.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/fonts-ancient.css">
+<style>
+:root{color-scheme:dark;background:#0d0d0e;color:#efefef;font-family:Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0}main{max-width:1040px;margin:auto;padding:22px 24px 90px}
+nav{display:flex;gap:19px;flex-wrap:wrap;border-bottom:1px solid #444;padding:12px 0 22px;font-size:13px}
+h1{font:400 clamp(32px,5vw,52px)/1.15 "Cardo",Georgia,serif}
+h2{font:400 24px "Cardo",Georgia,serif}a{color:#e1c086;text-underline-offset:3px}
+p,li{line-height:1.7}.muted{color:#aaa}.note{font:13px/1.7 Arial,sans-serif;color:#c5c5c5}
+.notice{border-left:3px solid #c4a26a;background:#191816;padding:12px 16px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:20px 0}
+label{display:flex;flex-direction:column;gap:6px;color:#bbb;font-size:13px}
+input,button{border:1px solid #555;background:#1b1b1d;color:#eee;border-radius:4px;padding:10px;min-height:42px}
+input{min-width:min(370px,90vw)}button{cursor:pointer}button:hover{background:#333}
+article{font:18px/1.9 "Gentium Book Plus","Cardo",Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}
+article section{border-bottom:1px solid #393939;padding:15px 0}article h2{font-size:21px;color:#ddd}
+mark{background:#dfaa52;color:#15100b;padding:0 1px}a:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid #ddbb7d;outline-offset:3px}
+@media print{nav,.controls{display:none}body,article{color:black;background:white}mark{background:#ffe8a6}}
+</style></head><body><main>
+<nav aria-label="Navegación"><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="auditoria-academica.html">Auditoría</a></nav>
+<header><h1>Ennio · <i>Annales (fragmenta)</i></h1>
+<p class="muted">Latín · lectura documental remota · testimonio fragmentario</p>
+<p class="notice">El texto se consulta directamente desde el repositorio externo de CLTK (transcripción derivada de The Latin Library). No se conserva otra copia en Vitruvius ni se presenta como edición crítica, fuente manuscrita cotejada o reconstrucción exhaustiva de los <i>Annales</i>. Los encabezados de libros y los números de verso son los de la transcripción y requieren comprobación bibliográfica antes de citarse.</p>
+<p class="note">Fuente: <a id="source" href="https://github.com/cltk/lat_text_latin_library/blob/76229acaf02efd1964ac32009408a90b6f279758/enn.txt" target="_blank" rel="noopener noreferrer">CLTK Latin Text Library · enn.txt · revisión identificada</a>. Para citar filológicamente, contrastar el fragmento con una edición crítica académica.</p></header>
+<div class="controls" role="search"><label>Buscar palabra o frase literal en los fragmentos latinos<input type="search" id="q" maxlength="100" placeholder="Romulus, vita, fortuna" autocomplete="off"></label>
+<button type="button" id="search">Buscar y subrayar</button><button type="button" id="clear">Limpiar</button></div>
+<p id="status" role="status" class="note">Accediendo a la transcripción externa…</p>
+<article id="passages" lang="la" aria-label="Fragmentos latinos de los Annales de Ennio"></article>
+<script>
+(()=>{"use strict";
+const rawUrl="https://raw.githubusercontent.com/cltk/lat_text_latin_library/76229acaf02efd1964ac32009408a90b6f279758/enn.txt";
+const source=document.getElementById("source"),list=document.getElementById("passages"),
+ status=document.getElementById("status"),input=document.getElementById("q");
+const params=new URLSearchParams(location.search);
+let chapters=[];
+const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+function highlight(text,q){
+ const out=document.createDocumentFragment(),value=fold(text),term=fold(q).trim();
+ if(!term){out.append(document.createTextNode(text));return {out,n:0}}
+ let pos=0,count=0,at=value.indexOf(term);
+ while(at>=0&&count<2000){
+  out.append(document.createTextNode(text.slice(pos,at)));
+  const mark=document.createElement("mark");mark.textContent=text.slice(at,at+term.length);out.append(mark);
+  pos=at+term.length;count++;at=value.indexOf(term,pos);
+ }
+ out.append(document.createTextNode(text.slice(pos)));return {out,n:count};
+}
+function render(){
+ list.replaceChildren();let total=0;
+ for(const ch of chapters){
+  const block=document.createElement("section"),title=document.createElement("h2");
+  title.textContent=ch.heading;block.append(title);
+  const p=document.createElement("div"),hit=highlight(ch.text,input.value);
+  p.append(hit.out);block.append(p);list.append(block);total+=hit.n;
+ }
+ status.textContent="Fragmentos consultados directamente en la fuente externa · "+chapters.length+" secciones · "+(input.value.trim()?total+" coincidencias literales resaltadas":"sin filtro")+". La segmentación por encabezados no equivale a una numeración crítica certificada.";
+ const u=new URL(location.href);if(input.value.trim())u.searchParams.set("q",input.value.trim());else u.searchParams.delete("q");history.replaceState(null,"",u.pathname+u.search);
+}
+document.getElementById("search").addEventListener("click",render);
+document.getElementById("clear").addEventListener("click",()=>{input.value="";render()});
+input.addEventListener("keydown",e=>{if(e.key==="Enter")render()});
+(async()=>{try{
+ const resp=await fetch(rawUrl,{mode:"cors",cache:"force-cache"});
+ if(!resp.ok)throw Error("HTTP "+resp.status);
+ const raw=await resp.text();
+ if(!raw.includes("Annalium Liber I")||raw.length<4000||raw.length>250000)throw Error("La fuente no coincide con la estructura documentada");
+ const start=raw.indexOf("Annalium Liber I"),end=raw.lastIndexOf("The Latin Library");
+ const body=raw.slice(start,end>start?end:undefined).trim();
+ const chunks=body.split(/(?=Annalium Liber [IVX]+\b)/g).map(s=>s.trim()).filter(Boolean);
+ chapters=chunks.map((x,i)=>{
+  const [head,...rest]=x.split("\n");return{heading:head.trim()||"Fragmentos "+(i+1),text:rest.join("\n").trim()};
+ }).filter(x=>x.text.length>0);
+ if(!chapters.length)throw Error("Ningún segmento legible en la fuente");
+ input.value=(params.get("q")||"").slice(0,100);render();
+ }catch(err){status.textContent="La lectura remota no está disponible en este navegador: "+err.message+". Utilice el enlace directo a la fuente CLTK; no se sustituye por texto inventado.";}})();
+})();
+</script>
+</main></body></html>
