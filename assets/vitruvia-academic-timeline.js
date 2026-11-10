@@ -1,0 +1,240 @@
+/* Vitruvia · Universal documentary chronology.
+ * Every query uses sourced years from Wikidata entity properties, linked
+ * cultural works, catalogued albums, and bibliographic result records.
+ * We do not infer a person's life, historical influence or a work's first release
+ * from a search-result rank. Undated searches receive an explicit empty state.
+ */
+(()=>{
+ "use strict";
+ const root=document.getElementById("vitruvia-academic-timeline");
+ if(!root)return;
+ const normalize=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
+ const lang=()=>["en","fr"].includes(document.documentElement.lang)?document.documentElement.lang:"es";
+ const L=(es,en,fr)=>lang()==="en"?en:lang()==="fr"?fr:es;
+ const el=(name,cls,text)=>{const n=document.createElement(name);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
+ const year=x=>typeof x==="number"&&Number.isInteger(x)&&x>=-4000&&x<=2026?x:null;
+ const normUrl=u=>typeof u==="string"&&/^https:\/\/[^\s]+$/i.test(u)?u:"";
+ const showYear=x=>x<0?Math.abs(x)+" "+L("a. C.","BCE","av. J.-C."):String(x);
+ const types={
+  life:[L("Vida e instituciones","Life and institutions","Vie et institutions"),"♔"],
+  events:[L("Acontecimientos","Historical events","Événements"),"⚑"],
+  works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
+  documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
+ };
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:""};
+ let request=0;
+ function event(item){
+  const y=year(item.year),end=item.end==null?null:year(item.end);
+  if(y===null||end!==null&&end<y)return null;
+  const title=String(item.title||"").trim().slice(0,130),url=normUrl(item.url);
+  if(!title||!url||!types[item.lane])return null;
+  return {...item,year:y,end,title,url,detail:String(item.detail||"").slice(0,600),source:String(item.source||"").slice(0,140)};
+ }
+ function matchedTitle(q,title){
+  const terms=normalize(q).split(" ").filter(w=>w.length>2&&!["the","que","los","las","del","des","una","and"].includes(w));
+  const t=normalize(title);
+  return terms.length>0&&terms.every(w=>t.split(" ").some(x=>x===w||w.length>5&&x.startsWith(w)));
+ }
+ function collect(){
+  let ev=[],a=state.authority;
+  // All Wikidata authority properties keep their distinct meanings.
+  if(a&&/^Q\d+$/.test(a.wikidataId||"")){
+   const metadata=[
+    ["birthYear","life",L("Nacimiento","Birth","Naissance"),"P569"],
+    ["deathYear","life",L("Muerte","Death","Décès"),"P570"],
+    ["inceptionYear","life",L("Fundación o inicio","Foundation or inception","Fondation ou début"),"P571"],
+    ["dissolutionYear","life",L("Disolución o final","Dissolution or end","Dissolution ou fin"),"P576"],
+    ["eventYear","events",L("Acontecimiento fechado","Dated event","Événement daté"),"P585"],
+    ["startYear","events",L("Comienzo del acontecimiento","Event begins","Début de l'événement"),"P580"],
+    ["endYear","events",L("Final del acontecimiento","Event ends","Fin de l'événement"),"P582"],
+    ["publicationYear","works",L("Publicación documentada","Documented publication","Publication attestée"),"P577"],
+    ["discoveryYear","events",L("Descubrimiento","Discovery","Découverte"),"P575"],
+    ["openingYear","works",L("Inauguración","Opening","Inauguration"),"P1619"]
+   ];
+   const url="https://www.wikidata.org/wiki/"+a.wikidataId;
+   for(const [field,lane,title,p] of metadata){
+    const y=year(a[field]);if(y==null)continue;
+    ev.push({year:y,lane,title,source:"Wikidata · "+p,url,
+      detail:L("Fecha registrada en la ficha de autoridad ("+p+"). Debe cotejarse la precisión y la referencia del enunciado antes de utilizarla como prueba historiográfica.",
+       "Date recorded in the authority record ("+p+"). Verify the statement's precision and references before scholarly use.",
+       "Date inscrite dans la notice d'autorité ("+p+"). Vérifier précision et sources.")});
+   }
+  }
+  // Attributed cultural works: source relation and typed date, not editorial importance.
+  for(const w of state.works.slice(0,35)){
+   const y=year(w.year);if(y==null||!/^Q\d+$/.test(w.id||""))continue;
+   const type=String(w.dateKind||"undated"),property=String(w.dateProperty||"");
+   ev.push({year:y,lane:"works",title:w.title,url:"https://www.wikidata.org/wiki/"+w.id,
+    source:"Wikidata · "+(property||type),
+    detail:String(w.description||L("Obra atribuida por relaciones del catálogo.","Work attributed by catalogue relationships.","Œuvre attribuée par les relations du catalogue.")).slice(0,350)+
+     " · "+L("Fecha catalogada: ","Catalogued date: ","Date cataloguée : ")+type+
+     ". "+L("El registro no demuestra una atribución historiográfica independiente.","The record is not independent proof of attribution.","La notice ne prouve pas à elle seule l'attribution."),
+    image:normUrl(w.image)});
+  }
+  // Recorded album releaseDate is an edition's date, potentially a reissue.
+  for(const a of state.albums.slice(0,30)){
+   const y=Number(String(a.releaseDate||"").slice(0,4));
+   if(year(y)==null||!normUrl(a.url))continue;
+   ev.push({year:y,lane:"documents",title:a.title,url:a.url,source:"Apple Music · catálogo de ediciones",
+    detail:L("Fecha de edición en el catálogo musical. Puede corresponder a una reedición; no se presenta como año de lanzamiento original.",
+     "Music catalogue edition date. It may refer to a reissue; not necessarily first release.",
+     "Date d'une édition musicale, parfois une réédition ; pas nécessairement la sortie originale."),
+    image:normUrl(a.image)});
+  }
+  // Documents are not biographical milestones. Require strong title match.
+  for(const r of state.rows.slice(0,90)){
+   if(!["book","openlibrary","googlebook","article","edition","manuscript"].includes(r.type))continue;
+   if(!matchedTitle(state.query,r.title))continue;
+   const y=Number(r.editionYear??r.year??r.codexDate??null);
+   if(year(y)==null||!normUrl(r.link))continue;
+   ev.push({year:y,lane:"documents",title:r.title,url:r.link,source:String(r.source||"Catálogo").slice(0,80),
+    detail:L("Fecha del documento o edición recuperada. No debe confundirse con el acontecimiento que estudia ni con la fecha de composición de una obra antigua.",
+     "Record or edition date, not the date of the event it studies or the composition of an ancient text.",
+     "Date de la notice ou de l'édition, distincte de l'événement étudié et de la composition de l'œuvre.")});
+  }
+  const seen=new Set();
+  ev=ev.map(event).filter(Boolean).filter(e=>{
+   const key=normalize(e.title)+"|"+e.year+"|"+e.lane;
+   if(seen.has(key))return false;seen.add(key);return true
+  }).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title)).slice(0,48);
+  return ev;
+ }
+ function highlightButton(button,detail,event){
+  for(const active of root.querySelectorAll(".vat-event[aria-pressed=true]"))active.setAttribute("aria-pressed","false");
+  button.setAttribute("aria-pressed","true");
+  state.selected=[event.title,event.year,event.lane].join("|");
+  const heading=el("h4",null,(event.approx?"c. ":"")+showYear(event.year)+" · "+event.title);
+  const body=el("p",null,event.detail);
+  const source=el("small","vat-evidence",event.source||L("Registro original","Source record","Notice source"));
+  const link=el("a","vat-source-link",L("Consultar fuente y metadatos","Open source and metadata","Consulter la source"));
+  link.href=event.url;link.target="_blank";link.rel="noopener noreferrer";
+  const contents=el("div","vat-detail-text");contents.append(heading,body,source,link);
+  detail.replaceChildren();
+  if(event.image){
+   const img=el("img","vat-detail-image");img.src=event.image;img.alt=event.title;
+   img.loading="lazy";img.decoding="async";img.referrerPolicy="no-referrer";
+   img.onerror=()=>img.remove();detail.append(img)
+  }
+  detail.append(contents);detail.hidden=false;
+ }
+ function draw(){
+  if(!state.query){root.hidden=true;root.replaceChildren();return}
+  const events=collect();
+  root.replaceChildren();root.hidden=false;
+  const head=el("div","vat-header");
+  const left=el("div","vat-title");
+  left.append(el("h2",null,L("Cronología interactiva","Interactive chronology","Chronologie interactive")));
+  left.append(el("p",null,state.authority?.canonical||state.authority?.catalogName||state.query));
+  const controls=el("div","vat-controls");
+  const prev=el("button",null,"←"),next=el("button",null,"→");
+  prev.type=next.type="button";
+  prev.setAttribute("aria-label",L("Retroceder","Previous dates","Dates précédentes"));
+  next.setAttribute("aria-label",L("Avanzar","Next dates","Dates suivantes"));
+  controls.append(prev,next);
+  left.append(el("small","vat-subtitle",L(
+    "Fechas documentadas · obras · ediciones · fuentes",
+    "Documented dates · works · editions · sources",
+    "Dates documentées · œuvres · éditions · sources")));
+  head.append(left,controls);root.append(head);
+  const method=el("p","vat-method",L(
+   "Cada hito abre una ficha de lectura y su fuente. Los años de una edición no representan necesariamente la creación de la obra ni el acontecimiento histórico.",
+   "Select a milestone to read its record. Edition dates do not necessarily indicate first publication or historical events.",
+   "Chaque jalon ouvre sa notice. Les dates d'édition ne sont pas nécessairement celles des œuvres ou des événements."));
+  root.append(method);
+  if(!events.length){
+   const empty=el("p","vat-empty",L(
+    "Todavía no se recuperaron acontecimientos con fecha y fuente acreditada para esta consulta. Los demás resultados del buscador siguen disponibles.",
+    "No sourced dated records have been retrieved for this query yet. Other search results remain available.",
+    "Aucun jalon daté avec source pour cette recherche ; les autres résultats restent disponibles."));
+   root.append(empty);return;
+  }
+  const minYear=events[0].year,maxYear=Math.max(...events.map(e=>e.end??e.year));
+  const span=Math.max(1,maxYear-minYear),padding=Math.max(1,Math.ceil(span*.04));
+  const low=minYear-padding,high=maxYear+padding,range=Math.max(1,high-low);
+  const mapWidth=Math.max(960,Math.min(5200,Math.round(events.length*160*state.zoom)));
+  const position=y=>((y-low)/range*100).toFixed(4)+"%";
+  const viewport=el("div","vat-viewport");viewport.tabIndex=0;
+  viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente","Horizontal chronological timeline","Frise chronologique horizontale"));
+  const map=el("div","vat-map");map.style.width=mapWidth+"px";
+  const axis=el("div","vat-axis");
+  const ticks=Math.min(13,Math.max(3,Math.ceil(mapWidth/160)));
+  for(let i=0;i<=ticks;i++){
+   const y=Math.round(low+i*range/ticks);
+   const tick=el("span","vat-tick",showYear(y));
+   tick.style.left=(i/ticks*100)+"%";axis.append(tick)
+  }
+  map.append(axis);
+  const detail=el("div","vat-detail");detail.hidden=true;detail.setAttribute("aria-live","polite");
+  for(const [lane,[label,icon]] of Object.entries(types)){
+   const items=events.filter(x=>x.lane===lane);if(!items.length)continue;
+   const band=el("section","vat-band");band.setAttribute("aria-label",label);
+   const title=el("div","vat-band-title");title.append(el("span","vat-icon",icon),el("strong",null,label));
+   const track=el("div","vat-track");track.style.width=mapWidth+"px";
+   const line=el("div","vat-line");track.append(line);
+   const lastEnds=[-Infinity,-Infinity,-Infinity,-Infinity];let levelMax=0;
+   for(const e of items){
+    const x=(e.year-low)/range*mapWidth;
+    let level=lastEnds.findIndex(end=>x-end>=170);
+    if(level<0)level=lastEnds.indexOf(Math.min(...lastEnds));
+    lastEnds[level]=x;levelMax=Math.max(levelMax,level);
+    const button=el("button","vat-event");
+    button.type="button";button.setAttribute("aria-pressed","false");
+    button.style.left=position(e.year);button.style.top=(27+level*79)+"px";
+    button.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)));
+    button.append(el("strong",null,e.title));
+    if(e.end!=null&&e.end!==e.year){
+     const dur=el("span","vat-duration","– "+showYear(e.end));button.append(dur);
+    }
+    button.addEventListener("click",()=>highlightButton(button,detail,e));
+    const key=[e.title,e.year,e.lane].join("|");
+    if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
+    track.append(button);
+   }
+   track.style.height=(112+levelMax*79)+"px";
+   band.append(title,track);map.append(band);
+  }
+  viewport.append(map);root.append(viewport,detail);
+  prev.onclick=()=>viewport.scrollBy({left:-460,behavior:"smooth"});
+  next.onclick=()=>viewport.scrollBy({left:460,behavior:"smooth"});
+  viewport.addEventListener("keydown",e=>{
+   if(e.target!==viewport||!["ArrowLeft","ArrowRight"].includes(e.key))return;
+   e.preventDefault();viewport.scrollBy({left:e.key==="ArrowRight"?280:-280,behavior:"smooth"});
+  });
+ }
+ function reset(q){
+  state.token++;state.query=String(q||"").trim().slice(0,160);
+  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";
+  draw();
+  if(!state.query)return;
+  const token=state.token;
+  if(window.VitruviaEntityResolver?.resolve){
+   const safe=window.VitruviaEntityResolver.resolve(state.query,lang()).catch(()=>null);
+   safe.then(a=>{if(token!==state.token||!a)return;state.authority=a;draw()});
+  }
+ }
+ window.addEventListener("vitruvia:search",e=>reset(e.detail?.query||""));
+ window.addEventListener("vitruvia:clear",()=>reset(""));
+ window.addEventListener("vitruvia:results",e=>{
+  if(normalize(e.detail?.query)!==normalize(state.query))return;
+  const rows=Array.isArray(e.detail.rows)?e.detail.rows:[];
+  const sig=rows.map(r=>[r.title,r.year,r.editionYear,r.codexDate].join("|")).join(";").slice(0,5000);
+  if(sig===state.rowSignature)return;
+  state.rowSignature=sig;state.rows=rows;draw();
+ });
+ window.addEventListener("vitruvia:cultural-works",e=>{
+  const d=e.detail||{},qid=state.authority?.wikidataId;
+  if(!qid||d.wikidataId!==qid)return;
+  state.works=Array.isArray(d.works)?d.works:[];draw();
+ });
+ window.addEventListener("vitruvia:albums",e=>{
+  const d=e.detail||{};
+  if(normalize(d.query)!==normalize(state.query)&&normalize(d.query)!==normalize(state.authority?.canonical))return;
+  state.albums=Array.isArray(d.albums)?d.albums:[];draw();
+ });
+ new MutationObserver(changes=>{
+  if(changes.some(c=>c.attributeName==="lang")&&state.query)draw();
+ }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+ const snapshot=window.VitruviaSearchSnapshot;
+ if(snapshot?.query)reset(snapshot.query);
+ window.VitruviaAcademicTimeline={collect,version:"2.0-universal-sourced"};
+})();
