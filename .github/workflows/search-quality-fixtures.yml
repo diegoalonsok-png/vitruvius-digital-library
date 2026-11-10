@@ -3,6 +3,12 @@ on:
   push:
     paths:
       - 'scripts/test-search-quality-fixtures.mjs'
+      - 'scripts/test-vitruvia-search-contract.mjs'
+      - 'assets/vitruvia-ai.js'
+      - 'assets/vitruvia-search.js'
+      - 'assets/vitruvia-research-engine.js'
+      - 'assets/vitruvia-result-filters.js'
+      - 'vitruvia.html'
       - 'data/academic-evaluation/search-fixtures.json'
       - 'data/classics-corpus/search-registry.json'
       - 'data/classics-alignment/manifest.json'
@@ -12,6 +18,12 @@ on:
   pull_request:
     paths:
       - 'scripts/test-search-quality-fixtures.mjs'
+      - 'scripts/test-vitruvia-search-contract.mjs'
+      - 'assets/vitruvia-ai.js'
+      - 'assets/vitruvia-search.js'
+      - 'assets/vitruvia-research-engine.js'
+      - 'assets/vitruvia-result-filters.js'
+      - 'vitruvia.html'
       - 'data/academic-evaluation/search-fixtures.json'
       - 'data/classics-corpus/search-registry.json'
       - 'data/classics-alignment/manifest.json'
@@ -32,6 +44,8 @@ jobs:
           node-version: '22'
       - run: node --check scripts/test-search-quality-fixtures.mjs
       - run: node scripts/test-search-quality-fixtures.mjs
+      - run: node --check scripts/test-vitruvia-search-contract.mjs
+      - run: node scripts/test-vitruvia-search-contract.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
