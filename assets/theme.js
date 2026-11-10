@@ -37,7 +37,7 @@
  }
  // Bibliotheca has a fixed Lexicon monochrome interface. Do not inject a
  // light/dark page button that visibly has no effect under its locked dark CSS.
- if(location.pathname.split('/').pop()!=='bibliotheca-graeca-latina.html'){
+ if(!['bibliotheca-graeca-latina.html','cobertura-traducciones-clasicas.html'].includes(location.pathname.split('/').pop())){
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
  }
  /* Shared usability enhancements: keyboard navigation, semantics and reading comfort. */
