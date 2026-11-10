@@ -1,0 +1,103 @@
+{
+  "schema": "vitruvius-external-collation-review-v1",
+  "updated": "2026-11-10",
+  "source": {
+    "fileName": "catalogo_clasicos_ecdotico_codicologico_corregido.xlsx",
+    "sheets": {
+      "1_Catalogo_Obras": 22,
+      "2_Fichas_Ecdoticas": 9,
+      "3_Fichas_Codicologicas": 9,
+      "4_Auditoria_Correcciones": 5
+    },
+    "classification": "unreviewed_scholarly_proposals_not_source_of_truth"
+  },
+  "workIds": [
+    "vitruvius",
+    "cicero-officiis",
+    "cicero-oratore",
+    "cicero-republica",
+    "caesar-gallico",
+    "caesar-civili",
+    "sallust-catiline",
+    "sallust-iugurtha",
+    "lucretius",
+    "virgil-aeneid",
+    "virgil-georgica",
+    "horace-odes",
+    "livy",
+    "ovid",
+    "didache",
+    "homer-iliad",
+    "homer-odyssey",
+    "plato-republic",
+    "plato-apology",
+    "aristotle-poetics",
+    "augustine-confessiones",
+    "seneca-de-brevitate"
+  ],
+  "counts": {
+    "worksInSample": 22,
+    "ecdoticProposals": 9,
+    "codicologicalProposals": 9,
+    "masterCatalogWorks": 222
+  },
+  "policies": [
+    "Do not promote self-declared 'verified', 'established' or level 2/3 without primary catalog and edition evidence.",
+    "Keep manuscript material IDs unique; per-work worksheet repetitions denote relationships.",
+    "Reading status reflects indexed material, not entire text completeness.",
+    "Edition-specific CTS URN cannot identify original Vitruvius author's independent V514/V554/V297 editions.",
+    "Do not infer families or stemma from metadata; cite page and edition for each stemmatic edge."
+  ],
+  "verifiedFindings": [
+    {
+      "workId": "vitruvius",
+      "witnessId": "vitruvius-h",
+      "source": "https://searcharchives.bl.uk/catalog/040-002048598",
+      "findings": [
+        "Caroline minuscule script",
+        "probable Cologne or Aachen origin",
+        "rare marginal notes",
+        "winds diagram folio 16v",
+        "two detached folios in Oxford"
+      ]
+    },
+    {
+      "workId": "didache",
+      "witnessId": "didache-elbasan-82",
+      "source": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/",
+      "findings": [
+        "probable direct copy of Hierosolymitanus 54 based on Guida's philological and palaeographical study"
+      ]
+    }
+  ],
+  "reviewAlerts": [
+    {
+      "workId": "vitruvius",
+      "field": "diagrammaticEvidence",
+      "problem": "Spreadsheet says diagrams absent, whereas BL explicitly records winds diagram on f.16v.",
+      "status": "corrected_with_institutional_source"
+    },
+    {
+      "workId": "vitruvius",
+      "field": "stemmaCodicum",
+      "problem": "Proposed Gudianus 69 family unverified; avoid established status.",
+      "status": "quarantined"
+    },
+    {
+      "field": "readings",
+      "problem": "Spreadsheet marks 22 entries locally complete without a full integrity audit.",
+      "status": "rejected_auto_promotion"
+    },
+    {
+      "field": "authority",
+      "problem": "Some work-level CTS URNs are presented as verified edition URNs; edition identity requires separate check.",
+      "status": "pending"
+    }
+  ],
+  "nextActions": [
+    "For each candidate verify the exact scholarly source and cited pages",
+    "Separate text genealogy hypotheses from verified manuscript catalog facts",
+    "Review nine detailed manuscripts against official holdings records",
+    "Only then incorporate status into published ecdotic-level calculations"
+  ]
+}
