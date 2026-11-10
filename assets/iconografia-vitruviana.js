@@ -25,7 +25,7 @@ function createDatasetItems(source,info){
       graphic:kind==="opening"?"Página de preliminares. Se requiere inspección individual para atribuirla como portada o cubierta.":source.notes,
       iconography:book===3?"Sección del libro III: proporción humana y templos; la imagen concreta NO ha sido identificada como representación del cuerpo.":book===4?"Sección del libro IV: órdenes arquitectónicos; el motivo gráfico concreto requiere cotejo.":book===10?"Sección del libro X: maquinaria y asedio; no se afirma que la página ilustrada represente una máquina.":book===5?"Sección del libro V: arquitectura pública y basílicas; imagen sin atribución iconográfica individual.":"Folio de una sección del tratado; no se atribuye motivo visual sin inspección.",
       status:"Número y secuencia de imagen tomados del manifiesto IIIF institucional. Tema general derivado del índice; identificación iconográfica provisional.",
-      image:canvas.local_url||canvas.image_url,fallbackImage:canvas.local_url?canvas.image_url:null,record:source.record,viewer:source.iiif_manifest,manifest:source.iiif_manifest,rights:source.rights||"Consultar condiciones de la institución conservadora.",
+      image:canvas.local_url&&!canvas.local_url.startsWith("images/barbaro-1567/")?canvas.local_url:canvas.image_url,fallbackImage:canvas.local_url&&!canvas.local_url.startsWith("images/barbaro-1567/")?canvas.image_url:null,record:source.record,viewer:source.iiif_manifest,manifest:source.iiif_manifest,rights:source.rights||"Consultar condiciones de la institución conservadora.",
       notes:"Impreso: corresponde una ficha de bibliografía material, no codicología de manuscritos. "+(source.notes||""),
       sort:kind==="opening"?0:(book||11),pageNumber:canvas.page,originalCanvas:canvas.canvas_id,iiifLabel:label
     });
@@ -108,7 +108,7 @@ async function start(){
  const meta=await response.json();
  const jobs=meta.datasets.map(async ds=>{try{const [r,s]=await Promise.all([fetch(ds.file),ds.sections?fetch(ds.sections):Promise.resolve(null)]);if(!r.ok||s&&!s.ok)throw Error("HTTP datos");const data=await r.json();const section=s?await s.json():null;return createDatasetItems({...data,...ds},section).map(x=>({...x,source:ds.id}));}catch(err){console.warn("Fuente IIIF no incluida:",ds.id,err);return []}});
  const derived=(await Promise.all(jobs)).flat();
- items=[...meta.primaryRecords.filter(x=>!!(x.image||x.localImage)).map(x=>({...x,image:x.localImage||x.image,fallbackImage:x.localImage?x.image:null,source:x.source||"registros"})),...derived]; // Fichas sin reproducción se conservan en JSON, pero no se muestran como imagen vacía.
+ items=[...meta.primaryRecords.filter(x=>!!(x.image||x.localImage)).map(x=>({...x,image:x.image||null,fallbackImage:null,source:x.source||"registros"})),...derived]; // Fichas sin reproducción se conservan en JSON, pero no se muestran como imagen vacía.
 for(const x of items){if(x.book===3&&["giocondo-1511","cesariano-1521","barbaro-1567"].includes(x.source)){x.tags=[...(x.tags||[]),"Libro III: antropometría vitruviana; motivo exacto de la lámina aún no cotejado"];}}
  for(const x of items){if(!x.book){const label=String(x.locus||"");const roman=label.match(/\b(X|IX|IV|V?I{1,3}|V|VIII|VII|VI)\.(?:\d+|praef)/i);const arabic=label.match(/\b(?:Libro\s+|Book\s+)(\d{1,2})\b/i);if(arabic&&+arabic[1]>=1&&+arabic[1]<=10)x.book=+arabic[1];else if(roman){const vals={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};x.book=vals[roman[1].toUpperCase()]||null;}}}
  const editions=[...new Set(derived.map(x=>x.source))];

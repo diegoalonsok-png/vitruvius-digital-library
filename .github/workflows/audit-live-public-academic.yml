@@ -1,0 +1,38 @@
+name: Auditoría pública · tiempos de búsqueda, formularios y filología
+on:
+  push:
+    paths:
+      - 'scripts/audit-live-public-academic.mjs'
+      - '.github/workflows/audit-live-public-academic.yml'
+  pull_request:
+    paths:
+      - 'scripts/audit-live-public-academic.mjs'
+      - '.github/workflows/audit-live-public-academic.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar Chromium sin actualizar corpus
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Visitar el sitio publicado, medir y probar siete páginas
+        run: node scripts/audit-live-public-academic.mjs
+      - name: Conservar resultados y errores para examen académico
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-publica-tiempos-y-lexicos
+          path: reports/academic-live-browser.json
+          if-no-files-found: warn
+          retention-days: 30

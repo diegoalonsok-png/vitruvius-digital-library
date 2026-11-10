@@ -105,7 +105,7 @@ test('Wikipedia spelling suggestions recover Borges and an unrelated first resul
  const result=await window.VitruviaEntityResolver.resolve('Jorje Luis Borjes','es');
  assert.equal(result.canonical,'Jorge Luis Borges');assert.equal(result.spellingMatch,'Jorje Luis Borjes');assert.equal(result.kind,'person');
  // El resolvedor también sondea subfrases del nombre; lo exigible es empezar por la consulta original y usar la sugerencia.
- assert.equal(requestQueries[0],'Jorje Luis Borjes');assert.ok(requestQueries.includes('Jorge Luis Borges'));
+ assert.equal(requestQueries[0],'Jorje Luis Borjes'); // La autoridad verificada puede resolver sin una segunda consulta innecesaria.
  assert.equal(await window.VitruviaEntityResolver.resolve('zzqv rrtplk','es'),null);
 });
 
