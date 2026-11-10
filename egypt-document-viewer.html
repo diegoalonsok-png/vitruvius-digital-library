@@ -91,6 +91,20 @@ async function load(){
  $("document-title").textContent=ruler.name+" · documentación gráfica";
  $("document-meta").textContent=[ruler.dynasty,ruler.dates].filter(Boolean).join(" · ");
  rulerNames(ruler,data);
+ if(p.get("document")==="papyrus-hunefer"&&ID==="ramesses-ii"){
+  $("document-title").textContent="Papiro de Hunefer · documento de la dinastía XIX";
+  $("document-meta").textContent="Contexto histórico del período ramésida; no es un texto redactado por Ramsés II.";
+  $("translation-note").textContent="No hay transcripción ni traducción completa y alineada de este papiro incorporada al visor. Consultar la edición facsimilar y los estudios bibliográficos.";
+  $("image-source").href="https://www.britishmuseum.org/collection/object/Y_EA9901-3";
+  $("image-source").textContent="British Museum · papiro EA 9901,3 · consultar original";
+  $("image-attribution").textContent="Fotografía de referencia por Wikimedia Commons. Comprobar autor, procedencia y licencia en la ficha del archivo; objeto original en British Museum.";
+  $("academic-links").append(link("Ficha de imagen y licencia en Wikimedia Commons","https://commons.wikimedia.org/wiki/File:Papiro_de_Hunefer.jpg"));
+  const img=$("photo");img.alt="Papiro funerario de Hunefer · dinastía XIX";
+  img.onload=()=>{$("image-note").hidden=true};
+  img.onerror=()=>{img.hidden=true;$("image-note").textContent="Vista previa no accesible. Abrir la ficha del British Museum."};
+  img.src="https://commons.wikimedia.org/wiki/Special:FilePath/Papiro_de_Hunefer.jpg?width=1800";
+  img.hidden=false;return;
+ }
  if(!obj||!(allowed[ID]||[]).includes(Number(obj))){
   $("image-note").textContent="No se ha vinculado una fotografía de objeto a esta ficha. Consultá la transliteración de los nombres y los catálogos institucionales.";
   $("image-source").href="https://www.metmuseum.org/art/collection/search?q="+encodeURIComponent(ruler.name);
