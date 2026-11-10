@@ -100,7 +100,7 @@
   pane.setAttribute("role","group");
   pane.setAttribute("aria-label","Idioma y apariencia / Language and appearance");
   const label=document.createElement("label");
-  label.className="site-global-language vitruvius-secondary-selector";
+  label.className="vitruvius-secondary-selector";
   const sr=document.createElement("span");
   sr.className="vitruvius-secondary-sr";sr.textContent="Idioma de interfaz";
   const select=document.createElement("select");
