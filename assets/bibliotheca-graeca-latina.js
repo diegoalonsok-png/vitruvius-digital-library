@@ -3,6 +3,48 @@ No fabricated digitization, translation, ISBN or PDF links. */
 (function(){
 "use strict";
 const $=id=>document.getElementById(id);
+
+/* Acceso a traducciones documentadas sin alojar copias ni atribuirles alineación filológica. */
+let externalTranslations=[];
+const EXTERNAL_READING_HOSTS=new Set(["penelope.uchicago.edu","www.gutenberg.org","archive.org"]);
+function showExternalTranslations(work,box){
+ if(!work||!box)return;
+ box.querySelector(".classic-remote-translations")?.remove();
+ const links=externalTranslations.filter(e=>e.workId===work.id&&typeof e.url==="string"&&e.status==="external-only"&&e.indexedLocally===false);
+ if(!links.length)return;
+ const lang=language();
+ const section=document.createElement("section");section.className="classic-remote-translations";section.setAttribute("aria-label","Traducciones académicas externas");
+ const title=document.createElement("h3");
+ title.textContent=lang==="en"?"External translations · read at source":lang==="fr"?"Traductions externes · lecture à la source":"Traducciones externas · leer en origen";
+ section.append(title);
+ const desc=document.createElement("p");desc.className="classic-ref";
+ desc.textContent=lang==="en"?"External reading links are not indexed, hosted, or aligned by locus here. Partial editions are labeled.":lang==="fr"?"Liens externes, ni hébergés ni alignés par locus ici; les éditions partielles sont identifiées.":"Enlaces de lectura externos; no se alojan, indexan ni cotejan por locus aquí. Se identifican las ediciones parciales.";
+ section.append(desc);
+ for(const e of links){
+  let url;try{url=new URL(e.url)}catch{continue}
+  if(url.protocol!=="https:"||!EXTERNAL_READING_HOSTS.has(url.hostname))continue;
+  const row=document.createElement("p");row.className="classic-linkline";
+  const a=document.createElement("a");a.href=url.href;a.target="_blank";a.rel="noopener noreferrer";
+  a.textContent=(lang==="en"?"Read translation":lang==="fr"?"Lire la traduction":"Leer traducción")+" · "+(e.language||"idioma")+ " · "+(e.host||"fuente externa");
+  row.append(a);
+  const meta=document.createElement("small");meta.textContent=" · "+[e.translator,e.edition].filter(Boolean).join(" · ");row.append(meta);
+  section.append(row);
+  if(e.note){const note=document.createElement("p");note.className="classic-ref";note.textContent=e.note;section.append(note)}
+ }
+ if(!section.querySelector("a"))return;
+ const tabs=box.querySelector(".classic-tabstrip");
+ if(tabs)tabs.before(section);else box.prepend(section);
+}
+fetch("data/classics-corpus/remote-translations.json?v=20261110-verified-links-v2")
+ .then(res=>{if(!res.ok)throw Error("No se pudo leer el registro de traducciones externas");return res.json()})
+ .then(doc=>{
+  if(doc.schema!=="vitruvius-classics-remote-translations-v1"||!Array.isArray(doc.entries))return;
+  externalTranslations=doc.entries;
+  const chosen=works.find(w=>w.id===selected);
+  if(chosen)showExternalTranslations(chosen,$("classic-detail"));
+ })
+ .catch(error=>{console.warn("Enlaces de traducciones externas no disponibles",error.message)});
+
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fold=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
 const searchFold=s=>fold(s).replace(/[^\p{L}\p{N}]+/gu," ").trim();
@@ -557,6 +599,7 @@ function detail(){const w=works.find(x=>x.id===selected),box=$("classic-detail")
 const origin=sourceType(w);
 const tabs=labels.map(([id,label])=>'<button type="button" data-tab="'+id+'" aria-pressed="'+(id===tab)+'">'+safe(label)+'</button>').join("");
 box.innerHTML='<div class="classic-tag" title="'+safe(origin.title)+'">'+safe(origin.label)+'</div><div class="classic-tag">'+safe(w.language==="la"?"LATINE · LATÍN":"ΕΛΛΗΝΙΚΑ · GRIEGO")+'</div><div class="classic-tag">'+safe(w.genre)+'</div><h2 lang="'+w.language+'">'+safe(w.title)+'</h2><p><strong>'+safe(w.author)+'</strong> · '+safe(w.dating)+'</p><p class="classic-detail-status '+(isLocal(w)?"is-local":hasSource(w)?"is-external":"is-catalog")+'">'+statusLabel(w)+'</p><div class="classic-tabstrip" role="group" aria-label="Modos de lectura">'+tabs+'</div><div id="classic-panel" class="classic-viewer" role="region" aria-live="polite"></div><div class="classic-linkline">'+navLink(w.links.scaife,t.scaife)+navLink(w.links.gallica,t.gallica)+navLink(w.links.archive,t.archive)+'</div><p class="classic-ref"><strong>Nota editorial:</strong> '+safe(w.translation?.status||"Traducción sin cotejar.")+' '+safe(w.manuscript?.status||"Sin facsímil identificado.")+'</p>';
+showExternalTranslations(w,box);
 if(w.corpusFiles&&Object.keys(w.corpusFiles).some(l=>["la","grc"].includes(l))&&Object.keys(w.corpusFiles).some(l=>["es","en","fr","it","pt","de"].includes(l))){
  const bar=document.createElement("p");bar.className="classic-linkline";
  const link=document.createElement("a");
