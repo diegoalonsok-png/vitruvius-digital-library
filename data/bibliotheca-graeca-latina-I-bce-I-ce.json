@@ -247,7 +247,7 @@
         "archive": "https://archive.org/search?query=De%20oratore%20Cicer%C3%B3n",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20oratore"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "aliases": [
         "Cicerón",
@@ -264,6 +264,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-oratore-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -309,7 +317,7 @@
         "archive": "https://archive.org/search?query=De%20re%20publica%20Cicer%C3%B3n",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20re%20publica"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -320,6 +328,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-republica-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -590,7 +606,7 @@
         "archive": "https://archive.org/search?query=Rerum%20rusticarum%20libri%20tres%20Varr%C3%B3n",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Rerum%20rusticarum%20libri%20tres"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -603,7 +619,15 @@
       "corpusFiles": {
         "la": "data/lexicon/fontes/varro-rustica-la.json"
       },
-      "localOriginalCoverage": "Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente."
+      "localOriginalCoverage": "Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente.",
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "lucretius",
@@ -1014,7 +1038,7 @@
         "archive": "https://archive.org/search?query=Carmina%20Horacio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Carmina"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "aliases": [
         "Odas",
@@ -1024,6 +1048,14 @@
       ],
       "corpusFiles": {
         "la": "data/classics-corpus/horace-odes-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1066,7 +1098,7 @@
         "archive": "https://archive.org/search?query=Ab%20urbe%20condita%20Tito%20Livio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Ab%20urbe%20condita"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "aliases": [
         "Tito Livio",
@@ -1077,6 +1109,14 @@
       ],
       "corpusFiles": {
         "la": "data/classics-corpus/livy-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1179,10 +1219,18 @@
         "archive": "https://archive.org/search?query=Fasti%20Ovidio",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Fasti"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/ovid-fasti-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1224,10 +1272,18 @@
         "archive": "https://archive.org/search?query=De%20viris%20illustribus%20Cornelio%20Nepote",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20viris%20illustribus"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/nepos-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1269,7 +1325,7 @@
         "archive": "https://archive.org/search?query=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%20Diodoro%20S%C3%ADculo",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "aliases": [
         "Diodoro Sículo",
@@ -1279,6 +1335,14 @@
       ],
       "corpusFiles": {
         "grc": "data/classics-corpus/diodorus-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1320,7 +1384,7 @@
         "archive": "https://archive.org/search?query=%E1%BF%AC%CF%89%CE%BC%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1%20Dionisio%20de%20Halicarnaso",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%E1%BF%AC%CF%89%CE%BC%CE%B1%CF%8A%CE%BA%E1%BD%B4%20%E1%BC%80%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "aliases": [
         "Antigüedades romanas",
@@ -1329,6 +1393,14 @@
       ],
       "corpusFiles": {
         "grc": "data/classics-corpus/dionysius-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1485,7 +1557,7 @@
         "archive": "https://archive.org/search?query=Epistulae%20morales%20ad%20Lucilium%20S%C3%A9neca",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Epistulae%20morales%20ad%20Lucilium"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "aliases": [
         "Séneca",
@@ -1500,6 +1572,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/seneca-epistulae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1589,10 +1669,18 @@
         "archive": "https://archive.org/search?query=Bellum%20civile%20Lucano",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Bellum%20civile"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/lucan-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1849,10 +1937,18 @@
         "archive": "https://archive.org/search?query=Institutio%20oratoria%20Quintiliano",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Institutio%20oratoria"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/quintilian-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1894,10 +1990,18 @@
         "archive": "https://archive.org/search?query=Epigrammata%20Marcial",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Epigrammata"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/martial-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -1939,7 +2043,7 @@
         "archive": "https://archive.org/search?query=Agricola%20T%C3%A1cito",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Agricola"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/tacitus-agricola-la.json",
@@ -1961,6 +2065,14 @@
         "translationSource": "data/classics-corpus/tacitus-agricola-en.json",
         "isbn": null,
         "method": "Traducción y original proceden de ediciones distintas con segmentación propia; no se atribuye correspondencia por loci sin verificación."
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -2002,10 +2114,18 @@
         "archive": "https://archive.org/search?query=Germania%20T%C3%A1cito",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Germania"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/tacitus-germania-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -2047,7 +2167,7 @@
         "archive": "https://archive.org/search?query=De%20aquaeductu%20urbis%20Romae%20Frontino",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20aquaeductu%20urbis%20Romae"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "aliases": [
         "Frontino",
@@ -2063,7 +2183,15 @@
       "corpusFiles": {
         "la": "data/lexicon/fontes/frontinus-aquaeductu-la.json"
       },
-      "localOriginalCoverage": "130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio."
+      "localOriginalCoverage": "130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio.",
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "mark",
@@ -2920,10 +3048,18 @@
         "archive": "https://archive.org/search?query=De%20re%20rustica%20Columela",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20re%20rustica"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/columella-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -2968,10 +3104,18 @@
         "archive": "https://archive.org/search?query=De%20medicina%20Aulo%20Cornelio%20Celso",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=De%20medicina"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/celsus-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3168,10 +3312,18 @@
         "archive": "https://archive.org/details/heronisalexandri01hero",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%A0%CE%BD%CE%B5%CF%85%CE%BC%CE%B1%CF%84%CE%B9%CE%BA%CE%AC%20%C2%B7%20Pneumatica"
       },
-      "publicStatus": "fuente-externa-identificada",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/hero-pneumatica-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "fuente-externa-identificada",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3216,10 +3368,18 @@
         "archive": "https://archive.org/details/heronisalexandri01hero",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%91%E1%BD%90%CF%84%CE%BF%CE%BC%CE%B1%CF%84%CE%BF%CF%80%CE%BF%CE%B9%CE%B7%CF%84%CE%B9%CE%BA%CE%AE%20%C2%B7%20Automata"
       },
-      "publicStatus": "fuente-externa-identificada",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/hero-automata-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "fuente-externa-identificada",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3467,7 +3627,7 @@
       "language": "la",
       "genre": "Comedia",
       "dating": "siglo II a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/plautus.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -3502,6 +3662,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/plautus-amphitruo-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3511,7 +3679,7 @@
       "language": "la",
       "genre": "Comedia",
       "dating": "siglo II a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/plautus.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -3546,6 +3714,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/plautus-aulularia-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3555,7 +3731,7 @@
       "language": "la",
       "genre": "Comedia",
       "dating": "166 a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/ter.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -3590,6 +3766,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/terentius-andria-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3599,7 +3783,7 @@
       "language": "la",
       "genre": "Comedia",
       "dating": "163 a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/ter.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -3634,6 +3818,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/terentius-heautontimorumenos-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3643,7 +3835,7 @@
       "language": "la",
       "genre": "Agricultura",
       "dating": "siglo II a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cato/De_Agricultura/home.html",
         "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
@@ -3678,6 +3870,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cato-agri-cultura-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3687,7 +3887,7 @@
       "language": "la",
       "genre": "Oratoria",
       "dating": "63 a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/cicero",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -3740,7 +3940,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Cicerón. In Catilinam (Orationes Catilinariae). Translated by Charles Duke Yonge. Henry G. Bohn, London, 1856. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "catullus-carmina",
@@ -3833,7 +4041,7 @@
       "language": "la",
       "genre": "Sátira",
       "dating": "siglo I a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/hor.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -3869,6 +4077,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/horace-sermones-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3878,7 +4094,7 @@
       "language": "la",
       "genre": "Poética",
       "dating": "siglo I a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/hor.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -3914,6 +4130,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/horace-ars-poetica-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3923,7 +4147,7 @@
       "language": "la",
       "genre": "Poesía didáctica",
       "dating": "siglo I a. C.–siglo I d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/ovid.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -3958,6 +4182,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/ovid-ars-amatoria-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -3967,7 +4199,7 @@
       "language": "la",
       "genre": "Tragedia",
       "dating": "siglo I d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/sen.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4002,6 +4234,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/seneca-tragoediae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4085,7 +4325,7 @@
       "language": "la",
       "genre": "Historiografía",
       "dating": "siglo II d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/tac.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4128,6 +4368,14 @@
       ],
       "corpusFiles": {
         "la": "data/classics-corpus/tacitus-annales-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4137,7 +4385,7 @@
       "language": "la",
       "genre": "Historiografía",
       "dating": "siglo II d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/tac.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4179,6 +4427,14 @@
       ],
       "corpusFiles": {
         "la": "data/classics-corpus/tacitus-historiae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4188,7 +4444,7 @@
       "language": "la",
       "genre": "Biografía",
       "dating": "siglo II d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Suetonius/12Caesars/home.html",
         "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
@@ -4234,6 +4490,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/suetonius-caesares-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4243,7 +4507,7 @@
       "language": "la",
       "genre": "Sátira",
       "dating": "siglos I–II d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/juvenal.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4279,6 +4543,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/juvenal-saturae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4427,7 +4699,7 @@
       "language": "la",
       "genre": "Elegía",
       "dating": "siglo I a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/tib.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4462,6 +4734,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/tibullus-elegiae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4471,7 +4751,7 @@
       "language": "la",
       "genre": "Elegía",
       "dating": "siglo I a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/prop.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4506,6 +4786,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/propertius-elegiae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4557,7 +4845,7 @@
       "language": "la",
       "genre": "Épica",
       "dating": "siglo I d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/statius.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4592,6 +4880,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/statius-thebais-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4601,7 +4897,7 @@
       "language": "la",
       "genre": "Epistolografía",
       "dating": "siglos I–II d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/pliny.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4636,6 +4932,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/pliny-younger-epistulae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4645,7 +4949,7 @@
       "language": "la",
       "genre": "Miscelánea erudita",
       "dating": "siglo II d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Gellius/home.html",
         "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
@@ -4680,6 +4984,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/aulus-gellius-noctes-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4689,7 +5001,7 @@
       "language": "la",
       "genre": "Historia ejemplar",
       "dating": "siglo I d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/valmax.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4724,6 +5036,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/valerius-maximus-facta-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4778,7 +5098,7 @@
       "language": "la",
       "genre": "Épica",
       "dating": "siglo I d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://thelatinlibrary.com/silius.html",
         "status": "Texto latino en The Latin Library (página del autor: elegir la obra). Fuente externa de lectura; la fuente no declara la edición crítica de base."
@@ -4813,6 +5133,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/silius-punica-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -4822,7 +5150,7 @@
       "language": "grc",
       "genre": "Historiografía",
       "dating": "siglo II a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": null,
         "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
@@ -4863,6 +5191,14 @@
       ],
       "corpusFiles": {
         "grc": "data/classics-corpus/polybius-historiae-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -5427,7 +5763,7 @@
       "language": "grc",
       "genre": "Historiografía",
       "dating": "siglo II d. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": null,
         "status": "Sin edición completa incorporada, cotejada y publicada en este sitio."
@@ -5462,6 +5798,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/appian-romaika-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -6095,7 +6439,7 @@
       "language": "grc",
       "genre": "Historia",
       "dating": "siglo V a. C.",
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Herodotus/home.html",
         "status": "Texto original de la edición Loeb Classical Library (dominio público), transcrito en LacusCurtius, Universidad de Chicago. Fuente externa de lectura; no alojada en este sitio."
@@ -6148,6 +6492,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/herodotus-historiae-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -6256,7 +6608,7 @@
       "language": "grc",
       "genre": "Filosofía",
       "dating": "siglo IV a. C.",
-      "publicStatus": "fuente-externa-identificada",
+      "publicStatus": "lectura-local-parcial",
       "reading": {
         "url": "https://atlas.perseus.tufts.edu/library/urn%3Acts%3AgreekLit%3Atlg0059.tlg030.perseus-grc2/",
         "status": "Texto original griego en Scaife ATLAS / Perseus; edición identificada, alojada en sitio académico externo. No es transcripción diplomática del códice medieval."
@@ -6319,6 +6671,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/plato-republic-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "fuente-externa-identificada",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -6888,7 +7248,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Esquilo%20Persas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -6909,7 +7269,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Esquilo. Πέρσαι. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "aeschylus-seven-thebes",
@@ -6958,7 +7326,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Esquilo%20Siete%20contra%20Tebas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -6979,7 +7347,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Esquilo. Ἑπτὰ ἐπὶ Θήβας. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "aeschylus-suppliants",
@@ -7028,7 +7404,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Esquilo%20Las%20suplicantes&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -7049,7 +7425,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Esquilo. Ἱκέτιδες. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "aeschylus-prometheus",
@@ -7098,7 +7482,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Esquilo%20(atribuci%C3%B3n%20debatida)%20Prometeo%20encadenado&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/aeschylus-prometheus-grc.json",
@@ -7112,7 +7496,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Esquilo (atribución debatida). Προμηθεὺς Δεσμώτης. Translated by Herbert Weir Smyth. William Heinemann / G. P. Putnam's Sons, 1922. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "sophocles-antigone",
@@ -7161,7 +7553,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Ant%C3%ADgona&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/sophocles-antigone-grc.json",
@@ -7175,7 +7567,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Sófocles. Ἀντιγόνη. Translated by Richard Jebb. Cambridge University Press, 1891. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "sophocles-ajax",
@@ -7224,10 +7624,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20%C3%81yax&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/sophocles-ajax-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -7277,7 +7685,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Electra&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/sophocles-electra-grc.json",
@@ -7291,7 +7699,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Sófocles. Ἠλέκτρα. Translated by Richard Jebb. Cambridge University Press, 1894. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "sophocles-philoctetes",
@@ -7340,7 +7756,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Filoctetes&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/sophocles-philoctetes-grc.json",
@@ -7354,7 +7770,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Sófocles. Φιλοκτήτης. Translated by Richard Jebb. Cambridge University Press, 1898. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "sophocles-oedipus-colonus",
@@ -7403,7 +7827,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Edipo%20en%20Colono&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/sophocles-oedipus-colonus-grc.json",
@@ -7417,7 +7841,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Sófocles. Οἰδίπους ἐπὶ Κολωνῷ. Translated by Richard Jebb. Cambridge University Press, 1889. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "sophocles-trachiniae",
@@ -7466,10 +7898,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=S%C3%B3focles%20Las%20traquinias&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/sophocles-trachiniae-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -7519,7 +7959,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Las%20bacantes&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -7542,7 +7982,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Eurípides. Βάκχαι. Translated by T. A. Buckley. Henry G. Bohn, London, 1850. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "euripides-hippolytus",
@@ -7591,7 +8039,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Hip%C3%B3lito&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -7614,7 +8062,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Eurípides. Ἱππόλυτος. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "euripides-alcestis",
@@ -7663,7 +8119,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Alcestis&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -7686,7 +8142,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Eurípides. Ἄλκηστις. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "euripides-electra",
@@ -7735,7 +8199,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Electra&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -7758,7 +8222,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Eurípides. Ἠλέκτρα. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "euripides-troades",
@@ -7807,7 +8279,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Las%20troyanas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -7830,7 +8302,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Eurípides. Τρῳάδες. Translated by Edward P. Coleridge. George Bell and Sons, London, 1906. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "euripides-hecuba",
@@ -7879,7 +8359,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20H%C3%A9cuba&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -7902,7 +8382,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Eurípides. Ἑκάβη. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "euripides-iphigenia-aulid",
@@ -7951,7 +8439,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Eur%C3%ADpides%20Ifigenia%20en%20%C3%81ulide&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -7974,7 +8462,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Eurípides. Ἰφιγένεια ἐν Αὐλίδι. Translated by Edward P. Coleridge. George Bell and Sons, London, 1891. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "aristophanes-aves",
@@ -8023,7 +8519,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Las%20aves&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8037,6 +8533,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristophanes-aves-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -8086,7 +8590,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Las%20ranas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8100,6 +8604,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristophanes-ranae-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -8149,7 +8661,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Lis%C3%ADstrata&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8163,6 +8675,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristophanes-lysistrata-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -8212,7 +8732,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Las%20avispas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8226,6 +8746,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristophanes-vespae-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -8275,7 +8803,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20La%20paz&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8289,6 +8817,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristophanes-pax-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -8338,7 +8874,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3fanes%20Los%20acarnienses&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8352,6 +8888,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristophanes-acharnenses-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -8402,7 +8946,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20El%20banquete%20Symposium&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8427,7 +8971,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Platón. Συμπόσιον. Translated by Walter Rangeley Maitland Lamb. Harvard University Press / William Heinemann, 1925. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "plato-phaedo",
@@ -8477,7 +9029,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Fed%C3%B3n&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8502,7 +9054,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Platón. Φαίδων. Translated by Harold North Fowler. Harvard University Press / William Heinemann, 1914. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "plato-gorgias",
@@ -8552,7 +9112,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Gorgias&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8577,7 +9137,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Platón. Γοργίας. Translated by Walter Rangeley Maitland Lamb. Harvard University Press / William Heinemann, 1925. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "plato-timaeus",
@@ -8627,7 +9195,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Timeo&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "fuente-externa-identificada",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "sourceRegistration": {
         "status": "fuentes-externas-identificadas",
@@ -8660,7 +9228,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Platón. Τίμαιος. Translated by Robert Gregg Bury. Harvard University Press / William Heinemann Ltd., 1929. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "fuente-externa-identificada",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "plato-meno",
@@ -8710,7 +9286,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Men%C3%B3n&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8735,7 +9311,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Platón. Μένων. Translated by Walter Rangeley Maitland Lamb. Harvard University Press / William Heinemann, 1924. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "plato-phaedrus",
@@ -8785,7 +9369,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Fedro&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8810,7 +9394,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Platón. Φαῖδρος. Translated by Harold North Fowler. Harvard University Press / William Heinemann Ltd., 1914. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "plato-laws",
@@ -8860,7 +9452,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Las%20leyes&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "fuente-externa-identificada",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "sourceRegistration": {
         "status": "fuentes-externas-identificadas",
@@ -8883,6 +9475,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/plato-laws-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "fuente-externa-identificada",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -8933,7 +9533,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Plat%C3%B3n%20Crit%C3%B3n&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -8958,7 +9558,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Platón. Κρίτων. Translated by Harold North Fowler. Harvard University Press / William Heinemann, 1914. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "aristotle-nicomachean-ethics",
@@ -9007,7 +9615,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20%C3%89tica%20a%20Nic%C3%B3maco&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -9029,7 +9637,15 @@
           "kind": "historical-translation",
           "citationChicago18": "Aristóteles. Ἠθικὰ Νικομάχεια. Translated by Harris Rackham. William Heinemann Ltd. / G. P. Putnam's Sons, 1926. Perseus Digital Library, TEI."
         }
-      ]
+      ],
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 2,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
+      }
     },
     {
       "id": "aristotle-metaphysics",
@@ -9078,7 +9694,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20Metaf%C3%ADsica&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -9090,6 +9706,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristotle-metaphysics-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9139,7 +9763,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20F%C3%ADsica&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -9151,6 +9775,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristotle-physics-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9200,7 +9832,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20Ret%C3%B3rica&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -9212,6 +9844,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristotle-rhetoric-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9261,7 +9901,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3teles%20Acerca%20del%20alma&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -9273,6 +9913,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristotle-de-anima-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9322,10 +9970,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Jenofonte%20Recuerdos%20de%20S%C3%B3crates&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/xenophon-memorabilia-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9375,10 +10031,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Jenofonte%20Hel%C3%A9nicas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/xenophon-hellenica-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9428,10 +10092,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Dem%C3%B3stenes%20Sobre%20la%20corona&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/demosthenes-de-corona-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9481,10 +10153,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Dem%C3%B3stenes%20Fil%C3%ADpicas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/demosthenes-philippicae-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9534,10 +10214,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=P%C3%ADndaro%20Odas%20ol%C3%ADmpicas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/pindar-olympian-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9587,10 +10275,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=P%C3%ADndaro%20Odas%20p%C3%ADticas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/pindar-pythian-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9640,10 +10336,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=An%C3%B3nimo%20(atribuci%C3%B3n%20antigua%20a%20Homero)%20Himnos%20hom%C3%A9ricos%20(colecci%C3%B3n)&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/homeric-hymns-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9839,10 +10543,18 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Di%C3%B3genes%20Laercio%20Vidas%20de%20los%20fil%C3%B3sofos%20ilustres&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/diogenes-laertius-vitae-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9892,7 +10604,7 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20En%20defensa%20del%20poeta%20Arqu%C3%ADas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -9903,6 +10615,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-pro-archia-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -9952,7 +10672,7 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20los%20fines%20del%20bien%20y%20del%20mal&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -9967,6 +10687,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-de-finibus-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10016,7 +10744,7 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Disputaciones%20tusculanas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -10027,6 +10755,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-tusculanae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10076,7 +10812,7 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20la%20naturaleza%20de%20los%20dioses&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -10087,6 +10823,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-de-natura-deorum-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10136,7 +10880,7 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20la%20amistad&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -10151,6 +10895,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-de-amicitia-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10200,7 +10952,7 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20la%20vejez&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -10215,6 +10967,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-de-senectute-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10264,7 +11024,7 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Sobre%20la%20adivinaci%C3%B3n&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -10279,6 +11039,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-de-divinatione-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10328,7 +11096,7 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Bruto%20historia%20de%20la%20oratoria%20romana&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -10339,6 +11107,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-brutus-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10388,7 +11164,7 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Cicer%C3%B3n%20Fil%C3%ADpicas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -10399,6 +11175,14 @@
       },
       "corpusFiles": {
         "la": "data/classics-corpus/cicero-philippicae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10612,10 +11396,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=S%C3%A9neca%20Sobre%20la%20clemencia&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/seneca-de-clementia-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10716,10 +11508,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Horacio%20%C3%89podos&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/horace-epodi-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10770,10 +11570,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Horacio%20Ep%C3%ADstolas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/horace-epistulae-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10823,10 +11631,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Ovidio%20Tristes&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/ovid-tristia-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10876,10 +11692,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Ovidio%20Heroidas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/ovid-heroides-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10929,10 +11753,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Ovidio%20Remedios%20de%20amor&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/ovid-remedia-amoris-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -10982,10 +11814,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Ovidio%20P%C3%B3nticas&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/ovid-ex-ponto-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -11035,10 +11875,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=T%C3%A1cito%20(atribuci%C3%B3n%20tradicional)%20Di%C3%A1logo%20de%20los%20oradores&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/tacitus-dialogus-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -11088,10 +11936,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Apuleyo%20Apolog%C3%ADa%20o%20De%20magia&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/apuleius-apologia-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -11354,10 +12210,18 @@
         "wikisource": "https://la.wikisource.org/w/index.php?search=Boecio%20Consolaci%C3%B3n%20de%20la%20filosof%C3%ADa&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "la": "data/classics-corpus/boethius-consolatio-la.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -11581,7 +12445,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arist%C3%B3xeno%20de%20Tarento%20Elementa%20harmonica&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -11598,6 +12462,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aristoxenus-harmonica-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -11713,7 +12585,7 @@
         "wikisource": "https://el.wikisource.org/w/index.php?search=Arato%20de%20Solos%20Phaenomena&title=Special%3ASearch&fulltext=1",
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "vitruvianLoci": {
         "loci": [
@@ -11728,6 +12600,14 @@
       },
       "corpusFiles": {
         "grc": "data/classics-corpus/aratus-phaenomena-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -11939,10 +12819,18 @@
         "archive": "https://archive.org/search?query=Eneas%20el%20T%C3%A1ctico%20Poliorcetica",
         "gallica": "https://gallica.bnf.fr/Search?q=Eneas%20el%20T%C3%A1ctico%20Poliorcetica"
       },
-      "publicStatus": "repertoriado-busqueda-externa",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "corpusFiles": {
         "grc": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "repertoriado-busqueda-externa",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
@@ -12203,11 +13091,19 @@
         "archive": "https://archive.org/search?query=Elementa%20Euclides",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Elementa%20Euclides"
       },
-      "publicStatus": "fuente-externa-identificada",
+      "publicStatus": "lectura-local-parcial",
       "localReader": null,
       "addedBy": "ampliación 2026-11-05 · tratados técnicos y científicos",
       "corpusFiles": {
         "grc": "data/classics-corpus/euclid-elementa-grc.json"
+      },
+      "indexationAudit": {
+        "previousPublicStatus": "fuente-externa-identificada",
+        "registryVersionCount": 1,
+        "verifiedAgainst": "data/classics-corpus/search-registry.json",
+        "auditDate": "2026-11-10",
+        "integrity": "not_verified",
+        "note": "Indexed passage availability does not demonstrate complete original text or a critically validated edition."
       }
     },
     {
