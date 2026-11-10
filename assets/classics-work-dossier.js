@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json",witness:"data/bibliotheca-testimonia-verified.json",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-institutional-witnesses-v2",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -115,10 +115,13 @@ function msBlock(dest,ms,i){
  row(item,"Institución y signatura",[ms.library,ms.shelfmark].filter(Boolean).join(" · "));
  row(item,"Datación del testimonio",ms.date);
  row(item,"Cobertura material",ms.coverage);
+ if(ms.accessStatus)row(item,"Disponibilidad de imágenes",ms.accessStatus);
+ if(ms.viewerRole)row(item,"Tipo de enlace visual",ms.viewerRole);
  if(ms.verification)row(item,"Control de procedencia",ms.verification);
  if(ms.rights)row(item,"Derechos de la digitalización",ms.rights);
+ if(ms.verificationUrl){const c=html("p","cwd-links");addA(c,"Control de procedencia institucional ↗",ms.verificationUrl);item.append(c)}
  const links=html("p","cwd-links");
- addA(links,"Abrir visor del archivo ↗",ms.localViewer||ms.viewer);
+ addA(links,ms.viewerRole?"Portal documental / facsímil ↗":"Abrir visor del archivo ↗",ms.localViewer||ms.viewer);
  addA(links,"Ficha del códice / signatura ↗",ms.record);
  addA(links,"Manifest IIIF (JSON) ↗",ms.manifest);
  if(ms.localViewer&&ms.viewer)addA(links,"Visor institucional ↗",ms.viewer);
