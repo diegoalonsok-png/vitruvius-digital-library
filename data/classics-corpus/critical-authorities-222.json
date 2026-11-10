@@ -3315,12 +3315,14 @@
       },
       "integrity": {
         "status": "books_present_not_collated",
-        "description": "Dieciséis capítulos de lectura indexados; no colación propia del Hierosolymitanus.",
+        "description": "Edición griega de lectura: 16 capítulos y 100 loci de versículo extraídos por numeración editorial; NO es edición diplomática ni cotejo integral con H54.",
         "indexed": true,
         "storage": "main_repository",
         "offsitePassages": null,
-        "action": "Preparar collatio de pasajes y variantes.",
-        "classificationBasis": "Separar supervivencia del texto antiguo, integridad del archivo indexado y alcance del manuscrito."
+        "action": "Control visual de P. Oxy. XV 1782, H54, y de Did. 2.7–3.2; normalizar lectura griega y colación con editoriales críticas, después publicar aparato propio.",
+        "classificationBasis": "Separar supervivencia del texto antiguo, integridad del archivo indexado y alcance del manuscrito.",
+        "verseIndexed": 100,
+        "chapterIndexed": 16
       },
       "manuscript": {
         "earliestInVerifiedRegister": {
@@ -3337,7 +3339,7 @@
           "rights": "Consultar condiciones de la imagen; no se guardan copias en GitHub.",
           "dateStart": 350
         },
-        "earliestScope": "Más antiguo en el registro griego material: P. Oxy. XV 1782 (fragmentario, s. IV ex.). H (1056) es el principal testigo completo y Elbasan 82 (s. XVI) otro completo probablemente descriptus de H. La dependencia se atribuye al estudio de Guida, no a colación propia.",
+        "earliestScope": "P. Oxy. XV 1782 (finales del IV) es el testigo DIRECTO griego más antiguo identificado; Or. 9271 es una versión copta indirecta (s. IV–V) y no entra en el orden del texto griego. H54 (1056) es la base griega completa, Elbasan 82 (s. XVI) probable apógrafo.",
         "witnesses": [
           {
             "id": "didache-poxy-xv-1782",
@@ -3382,7 +3384,17 @@
             "dateStart": 1551
           }
         ],
-        "collationStatus": "Se identifican tres testigos materiales (dos completos en griego; el de Elbasan probablemente descriptus de H). Sin collatio diplomática ni stemma independiente realizado por Vitruvius."
+        "collationStatus": "Se identifican tres testigos materiales (dos completos en griego; el de Elbasan probablemente descriptus de H). Sin collatio diplomática ni stemma independiente realizado por Vitruvius.",
+        "ancientIndirectVersions": [
+          {
+            "id": "didache-coptic-or9271",
+            "type": "translation_not_greek",
+            "language": "cop",
+            "dating": "s. IV–V, c. 301–450",
+            "coverage": "Did. 10.3b–12.2a",
+            "catalogue": "https://4care-skos.mf.no/4care-artefacts/39/"
+          }
+        ]
       },
       "earlyEditions": {
         "earliestDatedInCatalogue": null,
@@ -3391,14 +3403,22 @@
       },
       "ecdotics": {
         "textualSource": "Texto griego completo de lectura en dieciséis capítulos, indexado por capítulos; no cotejado con el Codex Hierosolymitanus.",
-        "variantReadings": "No registradas en aparato propio salvo referencias verificadas por obra.",
+        "variantReadings": "Cinco comparaciones de lectura secundarias publicadas (H54 / P. Oxy. XV 1782, Did. 1.3–1.4). Did. 2.7–3.2 y resto sin collatio propia.",
         "stemmaCodicum": "No establecido.",
-        "bibliography": [],
+        "bibliography": [
+          "Wilhite, Shawn J. Introduction to the Didache, en The Didache: A Commentary (James Clarke & Co, 2020), 8, tabla H54 / P. Oxy. XV 1782.",
+          "Grenfell, Bernard P., y Arthur S. Hunt. The Oxyrhynchus Papyri XV (1922), 12–15, n.º 1782."
+        ],
         "bibliographyStandard": "Chicago 18: no completar con datos no acreditados.",
         "references": {
           "externalReading": "classics-text-reader.html?work=didache&lang=grc",
           "facsimile": null
-        }
+        },
+        "apparatusFile": "data/classics-corpus/didache-poxy1782-apparatus.json",
+        "apparatusPage": "classics-collation.html?work=didache&locus=1.3",
+        "verseIndexFile": "data/classics-corpus/didache-grc-verse-index.json",
+        "apparatusEntries": 5,
+        "apparatusStatus": "Cinco variantes de Did. 1.3–1.4 cotejadas a partir de una tabla crítica publicada por S. J. Wilhite (2020, p. 8); NO lectura autóptica de ambos originales."
       },
       "audit": {
         "date": "2026-11-10",
@@ -3412,7 +3432,9 @@
           "4CARE artefact 260 / Trismegistos TM 64596",
           "Library of Congress 00279389694-jo",
           "A. Guida, Un nuovo manoscritto della Didache (2022 [2023])",
-          "Cambridge manuscript description / TEI msDesc; Yale DCRM(MSS) cataloguing model"
+          "Cambridge manuscript description / TEI msDesc; Yale DCRM(MSS) cataloguing model",
+          "4CARE artefact 39 / TM 107982, fragmento copto Or. 9271",
+          "Wilhite (2020), p. 8, cotejo H54 / P. Oxy. XV 1782"
         ],
         "confidence": "identified_scholarly_witness_priority_limited_to_register"
       }
