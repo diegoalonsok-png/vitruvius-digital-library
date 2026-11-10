@@ -11,7 +11,9 @@
  const frontKey='vitruvius-front-color-mode';
  /* La portada tiene negro por defecto; el tema del resto del sitio queda independiente. */
  const isFront=!!document.querySelector('.hero-academic .hero-latin-title');
- let choice=isFront?'dark':'light';
+ // The Aparato Crítico is editorially dark by default; a saved reader choice still wins.
+ const apparatusPage=location.pathname.split('/').pop()==='aparato-critico.html';
+ let choice=isFront||apparatusPage?'dark':'light';
  try{const saved=localStorage.getItem(isFront?frontKey:key);if(saved==='dark'||saved==='light')choice=saved;}catch{}
  document.documentElement.dataset.theme=choice;
  function mount(){
