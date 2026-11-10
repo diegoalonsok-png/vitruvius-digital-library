@@ -1025,7 +1025,18 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 }
 .navtools .site-typeface-button:focus-visible{outline:2px solid #dedee1!important;outline-offset:3px!important}
 </style><link rel="stylesheet" href="assets/vitruvia-full-width-reading.css?v=20261107-wide-v3">
-<link rel="stylesheet" href="assets/vitruvia-heritage-gallery.css?v=20261108-full-library-v2"><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261109-v1"></head><body>
+<link rel="stylesheet" href="assets/vitruvia-heritage-gallery.css?v=20261108-full-library-v2"><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261109-v1"><style id="vitruvia-featured-title-autofit">
+/* Títulos largos del panel destacado: ajustar el tamaño antes de romper palabras. */
+.hero .featured #featured-title{
+  display:block;min-width:0;max-width:100%;
+  font-size:var(--featured-title-fit,clamp(26px,2.8vw,46px))!important;
+  line-height:1.14!important;
+  overflow-wrap:normal!important;word-break:normal!important;
+  hyphens:manual;text-wrap:balance;
+}
+.hero .featured #featured-title.featured-title-break{overflow-wrap:anywhere!important}
+</style>
+</head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
 <nav class="navlinks" aria-label="Navegación"><a data-i18n="navLibrary" href="index.html">Biblioteca Vitruviana</a><a href="laboratorio-escrituras.html" title="Griego politónico, variantes de grafía y normalización filológica" class="nav-writing-lab" style="color:inherit;text-decoration:none">Laboratorio de escrituras</a><a data-i18n="navAuthors" href="bibliotheca-graeca-latina.html">Autores y libros</a><a data-i18n="navCodices" href="index-codicum.html#codices" title="Abrir el índice general de todos los códices">Códices</a><a data-i18n="navMethod" href="metodologia-filologica.html">Método académico</a><a href="auditoria-academica.html" title="Cobertura reproducible, fuentes, traducciones y limitaciones">Auditoría académica</a></nav>
@@ -2008,6 +2019,48 @@ body.vitruvia-reading .hero .featured{align-self:start!important}
 }
 </style>
 <script defer src="assets/hiero-render.js?v=20261109-quadrats-v1"></script><script defer src="assets/vitruvia-egypt-script-viewer.js?v=20261109-titulary-v2"></script>
+<script id="vitruvia-featured-title-fit-script">
+/* Ajuste optico, sin alterar nombres o fichas academicas. */
+(()=>{"use strict";
+ const title=document.getElementById("featured-title");
+ if(!title)return;
+ const parent=title.closest(".featured-copy")||title.parentElement;
+ const context=document.createElement("canvas").getContext("2d");
+ if(!parent||!context)return;
+ let pending=false,lastWidth=-1;
+ function fit(){
+  pending=false;
+  title.style.removeProperty("--featured-title-fit");
+  title.classList.remove("featured-title-break");
+  const width=Math.floor(title.clientWidth||parent.clientWidth)-6;
+  if(width<35||!title.getClientRects().length)return;
+  const style=getComputedStyle(title),base=parseFloat(style.fontSize);
+  const words=(title.textContent||"").trim().split(/\s+/u).filter(Boolean);
+  if(!words.length||!(base>0))return;
+  context.font=style.fontStyle+" "+style.fontWeight+" "+base+"px "+style.fontFamily;
+  const widest=Math.max(...words.map(word=>context.measureText(word).width));
+  let size=Math.max(20,Math.min(base,Math.floor(base*width/Math.max(1,widest+4))));
+  title.style.setProperty("--featured-title-fit",size+"px");
+  if(widest*size/base>width)title.classList.add("featured-title-break");
+  for(let step=0;step<12&&size>20;step++){
+   const lineHeight=parseFloat(getComputedStyle(title).lineHeight);
+   if(!(lineHeight>0)||title.getBoundingClientRect().height<=lineHeight*3.25)break;
+   size=Math.max(20,size-2);
+   title.style.setProperty("--featured-title-fit",size+"px");
+  }
+ }
+ function schedule(){if(pending)return;pending=true;requestAnimationFrame(fit)}
+ new MutationObserver(schedule).observe(title,{childList:true,characterData:true,subtree:true});
+ if("ResizeObserver" in window){
+  new ResizeObserver(entries=>{
+   const width=Math.round(entries[0]?.contentRect.width||parent.clientWidth);
+   if(width!==lastWidth){lastWidth=width;schedule()}
+  }).observe(parent);
+ }else window.addEventListener("resize",schedule,{passive:true});
+ if(document.fonts?.ready)document.fonts.ready.then(schedule).catch(()=>{});
+ schedule();
+})();
+</script>
 </body></html>
 
 
