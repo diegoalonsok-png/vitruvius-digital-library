@@ -448,6 +448,11 @@ function hitCard(D,h){
  actions.append(citeMenu(D,p,cite,text.slice(k.a,k.b)));
  card.append(coins(D,p));
  card.append(actions);
+ // Existing documented translations take precedence; an optional alternative
+ // translation may be requested explicitly without altering the evidence.
+ window.VitruviaInlineTranslation?.attach(snippet,{
+  sourceLanguage:D.l,originalText:text.slice(k.a,k.b)
+ });
  if(p[0]==="vitruvius"){const v=el("p",{class:"lx-vlinks"},"Vitruvio "+p[1]+": ");vitruvianLinks(p[1]).forEach(([t,u],i)=>{if(i)v.append(" · ");v.append(el("a",{href:u},t))});card.append(v)}
  return card;
 }
