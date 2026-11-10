@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="es" class="classic-reader-scrollbars" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="referrer" content="strict-origin-when-cross-origin"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -96,6 +96,8 @@ html[data-parallel-view="true"] .reader-appearance{display:none}
 @media(max-width:700px){.reader-appearance{gap:6px;padding:9px}.reader-appearance :is(button,select){min-height:39px}html body #passages{font-size:var(--reader-size,18px)}}
 @media print{.reader-appearance{display:none!important}html body .reader,html body #passages{background:#fff!important;color:#111!important}}
 </style>
+<link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1">
+<link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v2">
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261107-academic-v4"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/classics-text-reader.html">
 <meta name="citation_title" content="Texto griego o latino y traducciones · Bibliotheca Graeca et Latina"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/classics-text-reader.html"><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head>
@@ -137,13 +139,14 @@ html[data-parallel-view="true"] .reader-appearance{display:none}
 <div id="results" role="status" aria-live="polite"></div>
 <div id="hit-nav" class="hit-nav" hidden><button id="hit-prev" type="button" aria-label="Coincidencia anterior">↑</button><span id="hit-count"></span><button id="hit-next" type="button" aria-label="Coincidencia siguiente">↓</button></div>
 <div id="passages" class="passages" lang="la"></div>
-<div id="lexicon" role="status">Haz clic en una palabra griega o latina para consultar el diccionario (lema, morfología y glosa), con enlaces a Logeion, Perseus y Wiktionary.</div>
+<div id="lexicon" role="status">Haz clic en una palabra griega o latina para consultar el diccionario. Las palabras resaltadas en amarillo abren una ficha con significado, fuentes e imágenes documentadas cuando existen.</div>
 </article>
 </div>
 <footer id="attribution"></footer>
 </main>
-<script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script>
+<script defer src="assets/classical-lexicon.js?v=20261110-cato-glossaries-v1"></script>
 <script defer src="assets/classics-text-reader.js?v=20261110-locus-auto-v2"></script>
+<script defer src="assets/classics-lexical-popup.js?v=20261110-highlight-word-v2"></script>
 <script>
 (()=>{"use strict";
  const now=new URLSearchParams(location.search);
