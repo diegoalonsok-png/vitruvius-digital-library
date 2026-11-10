@@ -8,6 +8,9 @@ on:
       - 'scripts/test-reference-asset-fallback.mjs'
       - 'scripts/test-vitruvia-cultural-works.mjs'
       - 'scripts/test-indexacion-academica.mjs'
+      - 'scripts/test-lexicon-query-contract.mjs'
+      - 'assets/vitruvia-lexicon.js'
+      - 'vitruvia-lexicon.html'
       - 'indice-busquedas-academicas.html'
       - 'sitemap.xml'
       - 'scripts/test-vitruvia-search-geometry.mjs'
@@ -17,6 +20,9 @@ on:
     paths:
       - 'scripts/test-indexacion-academica.mjs'
       - 'indice-busquedas-academicas.html'
+      - 'scripts/test-lexicon-query-contract.mjs'
+      - 'assets/vitruvia-lexicon.js'
+      - 'vitruvia-lexicon.html'
       - 'sitemap.xml'
       - 'domus-en-vitruvio.html'
       - 'aedes-en-vitruvio.html'
@@ -71,6 +77,7 @@ jobs:
             "scripts/test-classics-integration.mjs"
             "scripts/test-classics-corpus-counters.mjs"
             "scripts/test-lexicon-orthography.mjs"
+            "scripts/test-lexicon-query-contract.mjs"
             "scripts/test-lexicon-integrated-dictionaries.mjs"
             "scripts/test-query-discovery.mjs"
             "scripts/test-shared-semantic-index-usage.mjs"
