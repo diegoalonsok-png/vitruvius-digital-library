@@ -1,0 +1,46 @@
+name: Lexicon · diccionarios, acepciones y traducción optativa
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/lexicon-dictionaries-integrated.js'
+      - 'assets/academic-inline-translation.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'assets/vitruvia-search.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'data/lexicon/senses-vitruvianos.json'
+      - 'scripts/test-lexicon-meaning-search.mjs'
+      - 'vitruvia-lexicon.html'
+      - 'vitruvia.html'
+      - 'bibliotheca-graeca-latina.html'
+      - '.github/workflows/lexicon-scholar-dictionaries.yml'
+  pull_request:
+    paths:
+      - 'assets/lexicon-dictionaries-integrated.js'
+      - 'assets/academic-inline-translation.js'
+      - 'data/lexicon/senses-vitruvianos.json'
+      - 'scripts/test-lexicon-meaning-search.mjs'
+      - '.github/workflows/lexicon-scholar-dictionaries.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dictionary-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar sintaxis de las mejoras
+        run: |
+          node --check assets/lexicon-dictionaries-integrated.js
+          node --check assets/academic-inline-translation.js
+          node --check assets/bibliotheca-simple.js
+          node --check assets/vitruvia-lexicon.js
+          node --check assets/vitruvia-search.js
+      - name: Verificar búsquedas, diccionarios y loci documentados
+        run: node scripts/test-lexicon-meaning-search.mjs
