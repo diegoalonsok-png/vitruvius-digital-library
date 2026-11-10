@@ -187,3 +187,35 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-coverage{color:#595b5d;b
  #vitruvia-academic-timeline .vat-title{min-width:0}
  #vitruvia-academic-timeline .vat-controls{flex-wrap:wrap}
 }
+
+/* Editorial hierarchy and compact, accessible controls. */
+#vitruvia-academic-timeline .vat-controls{flex-wrap:wrap;justify-content:flex-end;align-items:center}
+#vitruvia-academic-timeline .vat-controls .vat-extra-toggle{
+  font:500 11px/1.35 Arial,Helvetica,sans-serif!important;
+  letter-spacing:.01em;
+  width:auto!important;
+  min-width:0!important;
+  padding:7px 12px!important;
+  min-height:36px!important;
+  background:#242527!important;
+  color:#e0e0e0!important;
+  border:1px solid #616266!important;
+}
+#vitruvia-academic-timeline .vat-controls .vat-extra-toggle:hover{background:#37393b!important}
+#vitruvia-academic-timeline .vat-tick{
+  overflow:visible;
+  font-variant-numeric:tabular-nums;
+  pointer-events:none;
+}
+#vitruvia-academic-timeline .vat-band-title{
+  position:relative;
+  z-index:2;
+  background:inherit;
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-controls .vat-extra-toggle{
+  background:#eaeaea!important;color:#292929!important;border-color:#b1b1b1!important;
+}
+@media(max-width:680px){
+ #vitruvia-academic-timeline .vat-header{gap:9px}
+ #vitruvia-academic-timeline .vat-controls .vat-extra-toggle{min-width:125px!important}
+}
