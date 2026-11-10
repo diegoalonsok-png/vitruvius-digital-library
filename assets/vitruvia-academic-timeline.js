@@ -97,6 +97,8 @@
    const url="https://www.wikidata.org/wiki/"+a.wikidataId;
    for(const [field,lane,title,p] of metadata){
     const y=year(a[field]);if(y==null||hasVerifiedInYear(lane,y))continue;
+    // A historically checked formation year supersedes contradictory raw catalogue inception metadata.
+    if(field==="inceptionYear"&&state.verified.some(e=>e.lane==="life"&&/formacion|formation|fondation|foundation/.test(normalize(e.title))))continue;
     ev.push({year:y,lane,title,source:"Wikidata · "+p,url,
       detail:L("Fecha registrada en la ficha de autoridad ("+p+"). Debe cotejarse la precisión y la referencia del enunciado antes de utilizarla como prueba historiográfica.",
        "Date recorded in the authority record ("+p+"). Verify the statement's precision and references before scholarly use.",
@@ -208,13 +210,14 @@
   const minYear=events[0].year,maxYear=Math.max(...events.map(e=>e.end??e.year));
   const span=Math.max(1,maxYear-minYear),padding=Math.max(1,Math.ceil(span*.04));
   const low=minYear-padding,high=maxYear+padding,range=Math.max(1,high-low);
-  const labelWidth=170;
+  const labelWidth=(root.clientWidth||1100)<=680?132:170;
   const availableWidth=Math.max(360,(root.clientWidth||1100)-labelWidth-52);
   const mapWidth=Math.max(availableWidth,Math.min(5400,Math.round(events.length*146*state.zoom)));
   const pxAt=y=>(y-low)/range*mapWidth;
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
   viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente","Horizontal chronological timeline","Frise chronologique horizontale"));
   const map=el("div","vat-map");map.style.width=(mapWidth+labelWidth)+"px";
+  map.style.setProperty?.("--vat-label-width",labelWidth+"px");
   const axis=el("div","vat-axis");
   const ticks=Math.min(13,Math.max(3,Math.ceil(mapWidth/160)));
   for(let i=0;i<=ticks;i++){
