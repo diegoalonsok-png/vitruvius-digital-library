@@ -69,6 +69,10 @@ const clean=q=>{
  // Los cargos y oficios califican a la persona; no forman parte de su nombre.
  const suffix=/\s+(?:obras|obra|arquitectura|edificios|proyectos|construcciones|puentes|planos|fachadas|buildings|projects|works|architecture|architectural works|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|pinturas|paintings|bibliografia|bibliografía|politico|político|politica|política|politician|politician argentino|militar|general|libertador|liberator|revolucionario|revolutionary|estadista|statesman|emperador|emperor|santo|saint|presidente|president|historico|histórico|historical|futbolista|footballer|soccer player|football player|deportista|arquero|goalkeeper|atleta|athlete|cantante|singer|musico|músico|musician|compositor|composer)$/i;
  let subject=cleaned;
+ // Royal epithets are intent qualifiers, not parts of a person's given name.
+ // The original form is still queried through multilingual authority aliases.
+ const royal=subject.match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
+ if(royal&&royal[1].trim().length>=3)subject=royal[1].trim();
  for(let i=0;i<2;i++){
   const next=subject.replace(suffix,"").trim();
   if(next===subject||norm(next).length<3)break;
@@ -196,17 +200,22 @@ function occupationFit(description,intent){
  };
  return patterns[intent]?.test(d)?850:-450;
 }
-async function authorityCandidates(q,lang,intent=""){
+async function authorityCandidates(q,lang,intent="",originalQuery=""){
  const languages=[...new Set([lang,"es","en"])];
  const shortName=honorificVariant(q);
- const variants=shortName?[q,shortName]:[q];
+ // Honorifics and their translated equivalents are searched as *aliases*,
+ // never as evidence that a restaurant, street or shop is the named ruler.
+ const royalty=String(originalQuery||q).trim().match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
+ const variants=[...new Set([q,...(shortName?[shortName]:[]),
+   ...(royalty?[String(originalQuery).trim(),royalty[1].trim(),"King "+royalty[1].trim(),"Rey "+royalty[1].trim()]:[])
+  ].filter(Boolean))].slice(0,5);
  const probes=languages.flatMap(language=>variants.map(term=>({language,term})));
  const hits=(await Promise.allSettled(probes.map(({language,term})=>
   get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
    action:"wbsearchentities",search:term,language,type:"item",limit:"12",format:"json",origin:"*"
   }))
  ))).flatMap((v,i)=>v.status==="fulfilled"?(v.value.search||[]).map((x,j)=>({...x,rank:j,searchLang:probes[i].language})):[]);
- const ids=[...new Set(hits.map(x=>x.id).filter(x=>/^Q\d+$/.test(x)))].slice(0,24);
+ const ids=[...new Set(hits.map(x=>x.id).filter(x=>/^Q\d+$/.test(x)))].slice(0,16);
  if(!ids.length)return null;
  const d=await get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
   action:"wbgetentities",ids:ids.join("|"),props:"labels|aliases|descriptions|sitelinks|claims",
@@ -239,12 +248,21 @@ async function authorityCandidates(q,lang,intent=""){
   // Humanidades: ante dos personas homónimas, preferir la figura histórica
   // identificada y con amplia documentación. Un nombre moderno explícito sigue válido.
   const historicalHuman=human&&Number.isFinite(bornYear)&&bornYear<1900;
+  // A short surname (Dalí, Miró, etc.) is normally an incomplete name.
+  // Prefer a well-attested creator with that surname over incidental
+  // commercial or geographic homonyms, but do not promote shared first names.
+  const singleName=!norm(q).includes(" ");
+  const surnameCreator=human&&singleName&&[...labels,...aliases].some(name=>{
+   const parts=norm(name).split(" ").filter(Boolean);
+   return parts.length>=2&&parts.at(-1)===norm(q);
+  })&&/\b(pintor|painter|artista|artist|sculptor|escultor|architect|arquitecto|writer|escritor|poet|poeta|composer|compositor|musician|musico)\b/.test(norm(occupation));
+  const surnameBonus=surnameCreator?460:0;
   const historicallyAttested=human&&/\b(ancient roman|roman general|roman statesman|roman dictator|military leader|independence|libertador|procer|historian|filosofo|philosopher|saint|santo|santa|religious figure|revolutionary|revolucionario|politico argentino|militar argentino)\b/.test(norm(occupation));
   const historicBonus=historicalHuman?660:historicallyAttested?280:0;
   const personBonus=human&&norm(q).split(" ").length>=2?430:0;
   const namedInstitution=!human&&/\b(liceo|escuela|colegio|instituto|universidad|hospital|school|college|university|church|iglesia|distrito|district|estacion|calle)\b/.test(norm([...labels.slice(0,3),occupation].join(" ")));
   const institutionPenalty=namedInstitution&&!exactLabel?-160:0;
-  const score=occupationFit(occupation,intent)+(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+personBonus+historicBonus+institutionPenalty+
+  const score=occupationFit(occupation,intent)+(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+personBonus+historicBonus+surnameBonus+institutionPenalty+
    Math.min(coverage,180)*3+
    (site.site===lang+"wiki"?35:0)+
    Math.max(0,25-Math.min(...searches.map(x=>x.rank),20)*4);
@@ -320,7 +338,7 @@ async function resolve(query,preferredLang="es"){
  // Wikidata has aliases such as "Virgen María" for the historical figure.
  // Direct page-title matching on another language can instead return a DJ.
  try{
-  const authority=await authorityCandidates(q,lang,creatorIntent(query));
+  const authority=await authorityCandidates(q,lang,creatorIntent(query),query);
   if(authority&&(!personRole||authority.kind==="person"))return await localize(authority,lang);
  }catch{}
  const langs=[...new Set([lang,"es","en"])];
