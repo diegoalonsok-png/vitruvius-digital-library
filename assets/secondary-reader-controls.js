@@ -88,6 +88,7 @@
   const script=document.createElement("script");
   script.src=scriptURL("global-language.js?v=20261110-secondary-v1");
   script.dataset.secondaryI18n="1";
+  script.dataset.globalLanguage="1";
   script.addEventListener("load",()=>{
    document.dispatchEvent(new CustomEvent("vitruvius:interface-mounted",{detail:{root:document.body}}));
    emitLanguage();
