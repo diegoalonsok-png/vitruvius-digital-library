@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-222-academic-autoverifier-v9",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-222-academic-autoverifier-v9",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-222-academic-autoverifier-v9"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-university-codicology-precise-v10",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-university-codicology-precise-v10",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-university-codicology-precise-v10"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -114,7 +114,7 @@ function witnessesFor(d,id){
 }
 function msBlock(dest,ms,i){
  const item=html("div","cwd-ms");
- const label=i===0?"Primer testimonio directo identificado en este registro (no prioridad mundial)":"Otro testimonio vinculado";
+ const label=i===0?"Primer testimonio de lengua original en el registro (si consta; no prioridad mundial)":"Otro testimonio vinculado";
  if(ms.witnessKind==="ancient_translation_coptic")row(item,"Clasificación ecdótica","Traducción antigua indirecta en copto; NO es lectura original griega");
  else if(ms.witnessKind==="direct_original_greek")row(item,"Clasificación ecdótica","Testimonio original griego");
  else if(ms.witnessKind)row(item,"Clasificación ecdótica",ms.witnessKind);
@@ -135,9 +135,9 @@ function msBlock(dest,ms,i){
  if(ms.bibliography)row(item,"Bibliografía codicológica",ms.bibliography);
  if(ms.cataloguingStatus)row(item,"Control del dato / reservas",ms.cataloguingStatus);
  if(ms.citation)row(item,"Cita recomendada del testimonio",ms.citation);
- if(ms.accessStatus)row(item,"Disponibilidad de imágenes",ms.accessStatus);
+ if(ms.accessStatus)row(item,"Acceso fotográfico declarado (sujeto a comprobación)",ms.accessStatus);
  if(ms.viewerRole)row(item,"Tipo de enlace visual",ms.viewerRole);
- if(ms.verification)row(item,"Control de procedencia",ms.verification);
+ if(ms.verification)row(item,"Fuente declarada para comprobar procedencia",ms.verification);
  if(ms.rights)row(item,"Derechos de la digitalización",ms.rights);
  if(ms.verificationUrl){const c=html("p","cwd-links");addA(c,"Control de procedencia institucional ↗",ms.verificationUrl);item.append(c)}
  const links=html("p","cwd-links");
@@ -165,7 +165,7 @@ function renderWitness(dest,w,d){
  }
  const list=witnessesFor(d,w.id);
  if(list.length){
-  row(dest,"Cobertura verificada",list.length+" testimonio(s) vinculado(s) en el registro de Vitruvia");
+  row(dest,"Cobertura documental",list.length+" testimonio(s) identificados en el registro; la verificación de cada enlace, signatura y folio puede continuar pendiente");
   dest.append(html("p","cwd-muted","La prioridad cronológica de este listado solo compara los registros actualmente vinculados. No certifica que el primero sea el manuscrito conservado más antiguo del mundo, ni que el volumen sea íntegro."));
   list.forEach((ms,i)=>msBlock(dest,ms,i));
  }else{
@@ -346,7 +346,7 @@ function renderAcademicSummary(dest,w,d){
  row(sec,"Cobertura del texto original",integrity.indexed?"Existe una transcripción o índice textual asociado; la integridad se documenta por separado":"Texto original no acreditado en el índice principal");
  if(integrity.description)row(sec,"Reservas de integridad",integrity.description);
  row(sec,"Testigos materiales individualizados",String(witnesses.length)+"; "+direct.length+" directos o sin clasificar, "+indirect+" traducción(es) antigua(s) indirecta(s)");
- row(sec,"Acceso a imágenes o folios",facsimiles.length+" testimonio(s) con enlace visual externo o visor local ya existente; la disponibilidad se controla por proveedor");
+ row(sec,"Acceso a imágenes o folios",facsimiles.length+" testimonio(s) con dirección de visor o imagen registrada; la carga y la identificación precisa se auditan por separado");
  row(sec,"Alcance de verificación","Metadatos de catálogos; ninguna concordancia por título equivale a una collatio codicum.");
  row(sec,"Control automático","Auditoría Python de las 222 fichas; candidatos nuevos quedan en cuarentena hasta verificar signatura, contenido y fuentes.");
  const refs=html("p","cwd-links");
