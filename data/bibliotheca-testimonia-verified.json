@@ -30,7 +30,14 @@
       },
       "hostedImageNote": "341 fotografías en la biblioteca de GitHub; identificación y derechos de la digitalización: British Library. Imagen digital y folio histórico no son equivalentes.",
       "dateStart": 800,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "cataloguingStatus": "Verificado contra la ficha institucional de British Library (10-11-2026). La biblioteca lo identifica explícitamente como la copia conservada más antigua conocida de De architectura; no implica colación paleográfica independiente de Vitruvius Digital Library.",
+      "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002048598",
+      "folioRange": "ff. 1r–162v (Harley MS 2767); dos hojas desprendidas en Oxford, Rawlinson MS D. 893, ff. 135–136.",
+      "material": "Pergamino; códice.",
+      "datingBasis": "British Library: primer cuarto del siglo IX (800–824 d. C.).",
+      "verificationLevel": "institutional_catalogue_checked_2026-11-10",
+      "priorityClaim": "oldest_known_extant_copy_explicitly_claimed_by_holding_institution"
     },
     {
       "id": "cicero-officiis-geneva",
@@ -49,7 +56,12 @@
       "rights": "e-codices: atribuir y consultar la licencia específica de las imágenes.",
       "verification": "e-codices institutional record",
       "dateStart": 1401,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "cataloguingStatus": "Verificado en e-codices (10-11-2026). Manuscrito del siglo XV, no el testigo más antiguo de De officiis.",
+      "verificationUrl": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
+      "datingBasis": "e-codices: siglo XV.",
+      "verificationLevel": "institutional_catalogue_checked_2026-11-10",
+      "priorityClaim": "digitized_later_witness"
     },
     {
       "id": "lucretius-oblongus",
@@ -879,8 +891,8 @@
       "date": "s. IX med., c. 836 (Lupo de Ferrières)",
       "dateStart": 825,
       "coverage": "De oratore, ff. 1r–106v; ff. 17–24 desordenados y dos cuadernos ausentes tras f. 24. No es completo.",
-      "folioRange": "ff. 1r–106v",
-      "material": "Pergamino; 109 ff.",
+      "folioRange": "ff. 1r–106v; ff. 17–24 encuadernados fuera de secuencia; faltan dos cuadernos después de f. 24.",
+      "material": "Pergamino; códice.",
       "script": "Minúscula carolina",
       "origin": "Fulda o Ferrières (según British Library)",
       "record": "https://searcharchives.bl.uk/catalog/040-002048567",
@@ -892,7 +904,7 @@
       "accessStatus": "Visor BL anunciado por catálogo; la carga de imágenes puede verse afectada por la disponibilidad del servicio.",
       "language": "la",
       "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
-      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "cataloguingStatus": "Verificado contra catálogo British Library (10-11-2026). Testigo carolingio relevante, NO certificado como más antiguo entre todos los códices de De oratore.",
       "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
       "alternativeLinks": [
         {
@@ -907,7 +919,11 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002048567",
+      "datingBasis": "British Library: segundo cuarto del siglo IX (825–849); copia atribuida a Lupo de Ferrières hacia 836.",
+      "verificationLevel": "institutional_catalogue_checked_2026-11-10",
+      "priorityClaim": "early_witness_not_global_oldest"
     },
     {
       "id": "cicero-de-oratore-nls-18-3-16",
@@ -1057,8 +1073,8 @@
       "date": "s. X ex., 975–999",
       "dateStart": 975,
       "coverage": "Codex compositus: Catilinariae ff. 1r–24r; De officiis ff. 34r–74r; dos unidades producidas en Alemania occidental.",
-      "folioRange": "ff. 1r–24r; 34r–74r",
-      "material": "Pergamino",
+      "folioRange": "ff. 34r–74r: De officiis; unidad de producción separada del resto del códice.",
+      "material": "Pergamino; escritura minúscula carolina.",
       "record": "https://searcharchives.bl.uk/catalog/040-002048547",
       "viewer": null,
       "viewerKind": "catalogue_only",
@@ -1066,7 +1082,7 @@
       "accessStatus": "No figura digitalización total disponible en la ficha consultada.",
       "language": "la",
       "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
-      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "cataloguingStatus": "Verificado contra catálogo British Library (10-11-2026). Códice facticio de dos unidades; De officiis aparece en ff. 34r–74r. NO acreditado como el más antiguo conservado.",
       "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
       "alternativeLinks": [
         {
@@ -1075,7 +1091,11 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002048547",
+      "datingBasis": "British Library: último cuarto del siglo X (975–999), Alemania occidental.",
+      "verificationLevel": "institutional_catalogue_checked_2026-11-10",
+      "priorityClaim": "early_witness_not_global_oldest"
     },
     {
       "id": "horace-works-harley2724",
