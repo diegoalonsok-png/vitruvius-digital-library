@@ -397,6 +397,14 @@ function liveBooks(q,concept){return S.works.map(w=>{
 
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=9000,signal){if(window.VitruviaData){const local=new URL(url,location.href).origin===location.origin;return local?window.VitruviaData.json(url,{timeoutMs:ms}):window.VitruviaData.remoteJSON(url,{timeoutMs:ms,signal})}const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
+/* A failed source is not a measured zero: preserve the distinction. */
+function showCatalogueMetric(id,result,value){
+ const element=$(id);if(!element)return;
+ const verified=result?.status==="fulfilled"&&Number.isInteger(value);
+ element.textContent=verified?value.toLocaleString("es-AR"):"N/D";
+ element.dataset.verification=verified?"cargado":"sin-verificar";
+ element.title=verified?"Recuento del índice cargado; alcance definido por su fuente.":"No fue posible verificar esta cifra: no significa cero.";
+}
 async function load(){try{
  const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
  const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
@@ -406,15 +414,18 @@ async function load(){try{
  S.currentAuthorities=results[5]?.status==="fulfilled"?(results[5].value.currentAuthorities||[]):[];S.ready=true;
  (typeof window!=="undefined"?window.VitruviaUnderstand:null)?.setVocabulary([...S.works.flatMap(w=>[w.title,w.author,...(w.aliases||[])]),...S.witnesses.map(w=>w.title),...(S.people||[]).flatMap(p=>[p.name,p.label,...(p.aliases||[])]),
   "Vitruvio","Vitruvius","Palladio","Alberti","Serlio","Vignola","Cesariano","Giocondo","Barbaro","Sulpizio","Perrault","Piranesi","Leonardo","Miguel Ángel","Brunelleschi","Bramante","Le Corbusier","Gaudí","Wright","Mies","Gropius","Niemeyer","Fuller","Borromini","Bernini","Augusto","Julio César","Cicerón","Lucrecio","Virgilio","Homero","Platón","Aristóteles","Teofrasto","Epicteto","Plinio","Frontino","Arquímedes","Euclides","Ptolomeo","Herón","Ctesibio"]);
- $("metric-works").textContent=S.works.length;$("metric-pages").textContent=S.pages.length;$("metric-read").textContent=S.works.filter(verified).length;
- const mw=$("metric-witnesses"),me=$("metric-editions");
- if(mw)mw.textContent=S.witnesses.length;if(me)me.textContent=S.editions.length;
+ showCatalogueMetric("metric-works",results[0],S.works.length);
+ showCatalogueMetric("metric-pages",results[1],S.pages.length);
+ showCatalogueMetric("metric-read",results[0],S.works.filter(verified).length);
+ showCatalogueMetric("metric-witnesses",results[2],S.witnesses.length);
+ showCatalogueMetric("metric-editions",results[2],S.editions.length);
+ $("metrics")?.setAttribute("data-verification",results.slice(0,3).every(x=>x.status==="fulfilled")?"completo":"parcial");
  if(!document.body.classList.contains("vitruvia-reading")){
   $("result-state").textContent=S.works.length+" obras · "+S.witnesses.length+" códices · "+S.editions.length+" ediciones y "+S.pages.length+" secciones documentales";
   const unavailable=results.flatMap((r,i)=>r.status==="rejected"?[urls[i]]:[]);
   if(unavailable.length)$("result-state").textContent+=" · "+unavailable.length+" índices no disponibles";
  }
- }catch(e){$("result-state").textContent="Índice de la biblioteca no disponible: "+e.message}}
+ }catch(e){for(const id of ["metric-works","metric-pages","metric-read","metric-witnesses","metric-editions"])showCatalogueMetric(id,null,null);$("metrics")?.setAttribute("data-verification","no-disponible");$("result-state").textContent="Índice de la biblioteca no disponible: "+e.message}}
 
 const dataPaths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json"];
 function passages(){if(S.passages)return Promise.resolve(S.passages);if(S.passagePromise)return S.passagePromise;
