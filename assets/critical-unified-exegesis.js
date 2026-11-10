@@ -71,6 +71,11 @@ const locusKey=value=>{
   const b=bookNumber(prefFirst[1]),sec=Number(prefFirst[2]||0);
   return b&&(!prefFirst[2]||sec>0)?b+'.praef.'+(sec||'*'):null;
  }
+ const bookWordFirst=raw.match(new RegExp('^(?:libro|liber|book|livre)\\s+('+numeral+')\\s+('+pre+')(?:[.\\s-]+(\\d{1,3}))?$','i'));
+ if(bookWordFirst){
+  const b=bookNumber(bookWordFirst[1]),sec=Number(bookWordFirst[3]||0);
+  return b&&(!bookWordFirst[3]||sec>0)?b+'.praef.'+(sec||'*'):null;
+ }
  const bookFirst=raw.match(new RegExp('^('+numeral+')[.\\s-]+('+pre+'|\\d{1,2})(?:[.\\s-]+(\\d{1,3}))?$','i'));
  if(!bookFirst)return null;
  const b=bookNumber(bookFirst[1]),sec=Number(bookFirst[3]||0);
