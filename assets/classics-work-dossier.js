@@ -138,7 +138,12 @@ function msBlock(dest,ms,i){
  addA(links,viewLabel,ms.localViewer||ms.viewer);
  addA(links,"Ficha del códice / signatura ↗",ms.record);
  addA(links,"Manifest IIIF (JSON) ↗",ms.manifest);
- if(ms.localViewer&&ms.viewer)addA(links,"Visor institucional ↗",ms.viewer);
+ if(ms.localViewer&&ms.viewer)addA(links,"Acceso externo al archivo ↗",ms.viewer);
+ if(ms.imageViews?.length)for(const view of ms.imageViews)addA(links,"Fotografía original · "+(view.id||view.title)+" ↗",view.sourceUrl);
+ if(ms.alternativeLinks?.length)for(const link of ms.alternativeLinks){
+  if(!link.url||[ms.localViewer,ms.viewer,ms.record,ms.manifest].includes(link.url))continue;
+  addA(links,(link.title||"Acceso alternativo")+(link.status==="official_general_collection"?" (colección general)":link.status==="external_collected_images"?" (imágenes externas)":"")+" ↗",link.url);
+ }
  if(links.childNodes.length)item.append(links);
  dest.append(item);
 }
@@ -166,6 +171,7 @@ function renderWitness(dest,w,d){
   }
  }else if(ms.status&&list.length===0)row(dest,"Estado documental",ms.status);
  if(!list.length){
+  dest.append(html("p","cwd-muted","Sin manuscrito individual acreditado en esta ficha. Los enlaces de búsqueda siguientes NO equivalen a visores ni a testigos asignados."));
   const links=html("p","cwd-links");
   addA(links,"Buscar códices en Biblissima ↗","https://portail.biblissima.fr/");
   addA(links,"Consultar Gallica / BnF (búsqueda, no códice asignado) ↗",w.links?.gallica);
