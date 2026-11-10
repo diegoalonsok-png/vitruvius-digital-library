@@ -330,6 +330,31 @@ async function commonsBuildings(root,name,valid){
  host.append(link(localized('Ver colección completa ↗','View full collection ↗','Voir toute la collection ↗'),
   'https://commons.wikimedia.org/wiki/'+encodeURIComponent(category.replace(/ /g,'_'))));
 }
+function palladioPortrait(section,valid){
+ const box=el('figure','architecture-subject-portrait');
+ const status=el('figcaption','context-note',localized('Retratos y bustos documentados de Andrea Palladio','Documented portraits and busts of Andrea Palladio','Portraits et bustes documentés d’Andrea Palladio'));
+ box.append(status);section.append(box);
+ const search='https://commons.wikimedia.org/w/index.php?'+new URLSearchParams({title:'Special:MediaSearch',type:'image',search:'Andrea Palladio bust portrait'});
+ void commonsSearch('"Andrea Palladio" bust portrait').then(items=>{
+  if(!valid()||!box.isConnected)return;
+  const selected=items.find(item=>{
+   const name=normalize(item.title);
+   return name.includes('palladio')&&/(bust|busto|ritratto|portrait|retrato)/.test(name);
+  });
+  if(selected){
+   const anchor=link('',selected.source);
+   const img=el('img','architecture-subject-image');
+   img.src=selected.preview;img.loading='lazy';img.decoding='async';
+   img.alt='Busto o retrato atribuido a Andrea Palladio · ver ficha documental';
+   img.addEventListener('error',()=>anchor.remove());anchor.append(img);box.prepend(anchor);
+   status.textContent=selected.title;
+   box.append(link(localized('Autor, procedencia y licencia ↗','Creator, provenance and license ↗','Auteur, provenance et licence ↗'),selected.source));
+  }else status.textContent=localized('No se recuperó un retrato verificable; consulte la búsqueda documental.',
+   'No verifiable portrait retrieved; browse the image catalogue.',
+   'Aucun portrait vérifiable; consulter le catalogue documentaire.');
+  box.append(link(localized('Buscar retratos en Commons ↗','Browse Commons portraits ↗','Parcourir les portraits sur Commons ↗'),search));
+ }).catch(()=>{if(box.isConnected)status.textContent='Fuente iconográfica externa temporalmente no disponible.'});
+}
 function listConstructedWorks(root,name,id,valid){
  const section=el('section','architecture-built-list');
  heading(section,localized('Obras de arquitectura','Architectural works','Œuvres architecturales'));
@@ -337,6 +362,7 @@ function listConstructedWorks(root,name,id,valid){
  const list=el('ol','architecture-work-stack');section.append(list);
  void commonsBuildings(section,name,valid).catch(()=>{});
  const certified=certifiedSites[normalize(name)];
+ if(certified===palladioProfile)palladioPortrait(section,valid);
  const seen=new Set();
  function addWork(work,provenance){
   const title=normalize(work.title||'');
