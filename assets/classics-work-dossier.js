@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-manuscript-batch-60-v7",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-manuscript-batch-60-v7",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-manuscript-batch-60-v7"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-didache-ecdotic-61-v8",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-didache-ecdotic-61-v8",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-didache-ecdotic-61-v8"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -106,12 +106,19 @@ function store(){if(P.ready)return P.ready;
  return P.ready;
 }
 function witnessesFor(d,id){
+ // Direct original-language witnesses precede translations; sort chronologically within each class.
+ const rank=w=>String(w.witnessKind||"").startsWith("ancient_translation")?1:0;
  return (d.witness.get(id)||[]).slice().sort((a,b)=>
+ (rank(a)-rank(b))||
  ((typeof a.dateStart==="number"?a.dateStart:100000)-(typeof b.dateStart==="number"?b.dateStart:100000))||N(a.id).localeCompare(N(b.id)));
 }
 function msBlock(dest,ms,i){
  const item=html("div","cwd-ms");
- const label=i===0?"Testimonio de datación más temprana dentro del registro verificado":"Otro testimonio manuscrito verificado";
+ const label=i===0?"Primer testimonio directo identificado en este registro (no prioridad mundial)":"Otro testimonio vinculado";
+ if(ms.witnessKind==="ancient_translation_coptic")row(item,"Clasificación ecdótica","Traducción antigua indirecta en copto; NO es lectura original griega");
+ else if(ms.witnessKind==="direct_original_greek")row(item,"Clasificación ecdótica","Testimonio original griego");
+ else if(ms.witnessKind)row(item,"Clasificación ecdótica",ms.witnessKind);
+ if(ms.language)row(item,"Lengua documental",langLabel[ms.language]||ms.language);
  row(item,label,ms.title||ms.shelfmark||ms.id);
  row(item,"Custodia / signatura actual",[ms.library,ms.shelfmark].filter(Boolean).join(" · "));
  if(ms.siglum)row(item,"Siglum / abreviatura documentada",ms.siglum);
@@ -264,6 +271,12 @@ function renderCriticalAuthority(dest,w,d){
  }else row(dest,"Edición histórica más temprana documentada","No determinada en los registros fechados; no implica ausencia de ediciones anteriores");
  dest.append(html("p","cwd-muted",E.disclaimer||"La edición impresa más antigua registrada no es necesariamente la editio princeps. La versión más antigua conservada y la primera traducción requieren fuentes específicas."));
  section(dest,"Estado del aparato crítico y de la collatio codicum");
+ if(X.apparatusPage){
+  const refs=html("p","cwd-links");addA(refs,"Abrir Taller Ecdótico · loci griegos y variantes ↗",X.apparatusPage);dest.append(refs);
+  row(dest,"Variantes descritas en el aparato",String(X.apparatusEntries||"Pendiente de recuento"));
+  row(dest,"Tipo de cotejo",X.apparatusStatus);
+ }
+ if(X.verseIndexFile)row(dest,"Índice de loci del original",String(I.verseIndexed||0)+" versículos en "+String(I.chapterIndexed||0)+" capítulos; edición de lectura, no autopsia manuscrita");
  row(dest,"Base textual",X.textualSource);
  row(dest,"Variantes y lecturas",X.variantReadings);
  row(dest,"Stemma codicum",X.stemmaCodicum);
