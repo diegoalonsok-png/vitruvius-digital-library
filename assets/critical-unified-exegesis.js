@@ -52,17 +52,41 @@ let visible=[],shown=0,revision=0,currentQuery='',currentLocusQuery=null;
 // Identifying the same locus does not establish a critical variant or an
 // alignment among separate editorial translations.
 const locusKey=value=>{
- const raw=String(value??'').normalize('NFKC').trim()
-  .replace(/^locus\s+/i,'').replace(/^vitr(?:uvius|uvio)?\.?(?:,?\s*de\s*arch(?:itectura)?\.?)?\s*/i,'');
- const match=raw.match(/^(10|[1-9]|X|IX|VIII|VII|VI|V|IV|III|II|I)\s*[.\-]\s*(praef(?:atio)?|pr|\d{1,2})\s*[.\-]\s*(\d{1,3})$/i);
- if(!match)return null;
- const roman={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
- const book=roman[match[1].toUpperCase()]||Number(match[1]);
- const chapter=/^pr/i.test(match[2])?'praef':Number(match[2]);
- const section=Number(match[3]);
- if(book<1||book>10||chapter!=='praef'&&(chapter<1||chapter>30)||section<1)return null;
- return book+'.'+chapter+'.'+section;
+ const raw=String(value??'').normalize('NFD').replace(/\p{M}/gu,'').trim()
+  .replace(/^locus\s+/i,'')
+  .replace(/^vitr(?:uvius|uvio)?\.?(?:,?\s*de\s*arch(?:itectura)?\.?)?\s*/i,'')
+  .replace(/\.$/,'').trim();
+ // A reader may type "prefacion" instead of "prefacio" or "praefatio".
+ // All these are search aliases; the edition's wording is never rewritten.
+ const pre='(?:pr|pref|praef|praefatio|praefationes|prefacio|prefacios|prefacion|prefaciones|preface|prefaces|prefazione|prologo|prologue|proemio|proemium|prooemium)';
+ const numeral='(?:10|[1-9]|X|IX|VIII|VII|VI|V|IV|III|II|I)';
+ const romans={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
+ const bookNumber=rawBook=>{
+  const n=romans[String(rawBook).toUpperCase()]||Number(rawBook);
+  return n>=1&&n<=10?n:null;
+ };
+ if(new RegExp('^'+pre+'$','i').test(raw))return '*.praef.*';
+ const prefFirst=raw.match(new RegExp('^'+pre+'\\s+(?:(?:de(?:l)?\\s+)?(?:libro|liber|book|livre)\\s+)?('+numeral+')(?:[.\\s-]+(\\d{1,3}))?$','i'));
+ if(prefFirst){
+  const b=bookNumber(prefFirst[1]),sec=Number(prefFirst[2]||0);
+  return b&&(!prefFirst[2]||sec>0)?b+'.praef.'+(sec||'*'):null;
+ }
+ const bookFirst=raw.match(new RegExp('^('+numeral+')[.\\s-]+('+pre+'|\\d{1,2})(?:[.\\s-]+(\\d{1,3}))?$','i'));
+ if(!bookFirst)return null;
+ const b=bookNumber(bookFirst[1]),sec=Number(bookFirst[3]||0);
+ if(!b||bookFirst[3]&&sec<1)return null;
+ if(new RegExp('^'+pre+'$','i').test(bookFirst[2]))
+  return b+'.praef.'+(sec||'*');
+ const chapter=Number(bookFirst[2]);
+ return chapter>=1&&chapter<=30&&sec>=1?b+'.'+chapter+'.'+sec:null;
 };
+function locusMatches(value,query){
+ const exact=locusKey(value);
+ if(!exact||exact.includes('*')||!query)return false;
+ if(query==='*.praef.*')return /^\d+\.praef\.\d+$/.test(exact);
+ if(query.endsWith('.praef.*'))return exact.startsWith(query.slice(0,-1))&&/^\d+\.praef\.\d+$/.test(exact);
+ return exact===query;
+}
 function pdfLink(e,page){
  const n=Number(page);return e.pdf+(Number.isFinite(n)&&n>0?'#page='+Math.floor(n):'');
 }
@@ -71,7 +95,7 @@ function record(source,e,content,opts){
  if(currentLocusQuery){
   // A passage matches by its verified structural locus. A note or PDF block
   // must ALSO explicitly attribute that locus; candidates stay excluded.
-  if(!opts?.locus||locusKey(opts.locus)!==currentLocusQuery)return null;
+  if(!opts?.locus||!locusMatches(opts.locus,currentLocusQuery))return null;
   if(source!=='passage'&&!opts.verified)return null;
   return {source,edition:e,content,matches:[],locusMatch:true,...opts};
  }
