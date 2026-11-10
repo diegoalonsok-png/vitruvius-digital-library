@@ -1079,15 +1079,17 @@
       "workIds": [
         "horace-odes",
         "horace-ars-poetica",
-        "horace-sermones"
+        "horace-sermones",
+        "horace-epodi",
+        "horace-epistulae"
       ],
       "title": "Horacio, Carmina / Ars poetica / Sermones — Harley MS 2724",
       "library": "Londres, British Library",
       "shelfmark": "Harley MS 2724",
       "date": "s. XI",
       "dateStart": 1001,
-      "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Sermones ff. 94v–130r; otros textos horacianos.",
-      "folioRange": "ff. 2r–46r; 47r–54v; 94v–130r",
+      "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
+      "folioRange": "ff. 2r–130r (por sección del corpus)",
       "material": "Pergamino",
       "record": "https://searcharchives.bl.uk/catalog/040-002048555",
       "viewer": null,
@@ -1643,6 +1645,79 @@
           "status": "catalogue"
         }
       ]
+    },
+    {
+      "id": "horace-harley3997",
+      "workIds": [
+        "horace-odes",
+        "horace-sermones",
+        "horace-ars-poetica",
+        "horace-epodi",
+        "horace-epistulae"
+      ],
+      "title": "Horacio, Carmina / Sermones / Ars poetica / Epodi / Epistulae — Harley MS 3997",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 3997",
+      "date": "s. XV (según registro institucional; fecha exacta pendiente de cotejo)",
+      "dateStart": 1401,
+      "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
+      "folioRange": "ff. 3r–162v",
+      "record": "https://searcharchives.bl.uk/catalog/040-002049834",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library Harley MS 3997",
+      "accessStatus": "Catálogo institucional verificado; visor completo no confirmado.",
+      "language": "la",
+      "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+      "dateStartBasis": "Año aproximado de ordenación, no fecha exacta.",
+      "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global."
+    },
+    {
+      "id": "strabo-bnf-grec1393",
+      "workIds": [
+        "strabo"
+      ],
+      "title": "Estrabón, Γεωγραφικά (libros I–XVII) — Parisinus gr. 1393",
+      "library": "París, Bibliothèque nationale de France",
+      "shelfmark": "Grec 1393",
+      "date": "s. XIII–XIV",
+      "dateStart": 1201,
+      "coverage": "Strabonis rerum geographicarum libri XVII, según ficha BnF; 260 folios de códice griego.",
+      "material": "Papel oriental (bombycin); 260 folios, formato atlas",
+      "record": "https://iiif.biblissima.fr/collections/manifest/1d904e660eea62e5b3dfb26cfec5cfdc34956c75",
+      "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b8468312f",
+      "manifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8468312f/manifest.json",
+      "viewerKind": "institutional_iiif",
+      "verification": "BnF, Grec 1393; registro y manifiesto Biblissima",
+      "accessStatus": "Visor Gallica con reproducción del códice.",
+      "academicId": "Biblissima Q53474",
+      "language": "grc",
+      "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+      "dateStartBasis": "Año aproximado de ordenación, no fecha exacta.",
+      "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global."
+    },
+    {
+      "id": "juvenal-harley2772",
+      "workIds": [
+        "juvenal-saturae"
+      ],
+      "title": "Juvenal, Saturae (fragmentos) — Harley MS 2772",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 2772, ff. 16r–27v",
+      "date": "s. XI",
+      "dateStart": 1000,
+      "coverage": "Satirae XI.154–XIV.160 ff. 16r–25v y XIII.234–XIV.110 ff. 26r–27v; fragmentos glosados y encuadernados con textos de Virgilio, Sedulio y Macrobio.",
+      "folioRange": "ff. 16r–27v",
+      "material": "Pergamino, manuscrito compuesto de 90 folios",
+      "record": "https://searcharchives.bl.uk/catalog/040-002048603",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library, Harley MS 2772",
+      "accessStatus": "British Library indica expresamente imágenes digitales no disponibles.",
+      "language": "la",
+      "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+      "dateStartBasis": "Año aproximado de ordenación, no fecha exacta.",
+      "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global."
     }
   ],
   "editions": [
