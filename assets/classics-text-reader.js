@@ -100,6 +100,9 @@ function select(i){
  if(hitMarks.length)requestAnimationFrame(()=>focusHit(1));
  for(const [j,btn] of Array.from($("toc").querySelectorAll("button")).entries())btn.setAttribute("aria-current",String(j===active));
  const u=new URL(location.href);u.searchParams.set("locus",rec.locus);if(search)u.searchParams.set("q",search);else u.searchParams.delete("q");history.replaceState(null,"",u);
+ if(p.get("parallel")==="1"&&window.parent!==window){
+  window.parent.postMessage({type:"vitruvia-parallel-position",work,lang:data.language,index:active,locus:rec.locus},location.origin);
+ }
 }
 function renderSearch(){
  const target=$("results");target.replaceChildren();
@@ -208,17 +211,7 @@ input.addEventListener("keydown",e=>{if(e.key==="Enter"){$("find").click()}});
 $("hit-prev")?.addEventListener("click",()=>focusHit(-1));$("hit-next")?.addEventListener("click",()=>focusHit(1));
 $("clear").addEventListener("click",()=>{setQuery("");renderSearch();if(data)select(active)});
 $("print").addEventListener("click",()=>window.print());
-// Reader stays dark like Lexicon; independent per-text palettes still work.
-
-const COLOR_KEY="vitruvia.classic.colors."+work;
-const invertHex=hex=>"#"+[1,3,5].map(i=>(255-parseInt(hex.slice(i,i+2),16)).toString(16).padStart(2,"0")).join("");
-function colors(bg,fg){
- const valid=x=>typeof x==="string"&&/^#[0-9a-f]{6}$/i.test(x);
- if(!valid(bg)||!valid(fg))return;
- $("reader-bg").value=bg;$("reader-fg").value=fg;
- const pane=document.querySelector(".reader"),text=$("passages");
- if(pane)pane.style.background=bg;
- if(text){text.style.background=bg;t// Apariencia funcional: variables CSS compartidas por lector independiente y panel comparado.
+// Apariencia funcional: variables CSS compartidas por lector independiente y panel comparado.
 const READER_STYLE_KEY="vitruvia.classic.appearance.v3."+work;
 const OLD_COLOR_KEY="vitruvia.classic.colors."+work;
 const APPEARANCE_DEFAULTS=Object.freeze({background:"#000000",foreground:"#e2e2e3",font:"serif",size:20,italic:false,align:"justify"});
