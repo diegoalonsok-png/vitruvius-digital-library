@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-perseus-provenance-audit-v1",
-  "generated": "2026-11-09",
+  "generated": "2026-11-10",
   "scope": "local catalogue and search registry only",
   "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented.",
   "counts": {
@@ -8,7 +8,7 @@
     "worksWithCandidateWorkCodes": 179,
     "versions": 246,
     "worksWithPerseusSourceDescription": 142,
-    "verifiedEditionUrns": 0
+    "verifiedEditionUrns": 1
   },
   "links": {
     "scaife": "https://scaife.perseus.org/",
@@ -4787,9 +4787,11 @@
           "reader": "classics-text-reader.html?work=augustine-confessiones&lang=la"
         }
       ],
-      "ctsEditionUrn": null,
-      "ctsStatus": "not_verified",
-      "perseusAffiliation": false
+      "ctsEditionUrn": "urn:cts:latinLit:stoa0040.stoa001.opp-lat1",
+      "ctsStatus": "declared_and_checked_in_source_tei_header",
+      "perseusAffiliation": false,
+      "ctsEvidence": "TEI XML, div[@type=edition]/@n, OpenGreekAndLatin/CSEL stoa0040.stoa001.opp-lat1.xml, reviewed 2026-11-10",
+      "ctsNote": "URN de edición declarado en el archivo TEI original. No implica resolver CTS público ni cotejo de manuscritos."
     },
     {
       "workId": "augustine-civitate-dei",
