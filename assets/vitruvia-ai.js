@@ -11,6 +11,11 @@ const normalize=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerC
 const terms=s=>normalize(s).split(" ").filter(t=>t.length>1&&!stop.has(t));
 const asString=s=>String(s||"").replace(/\s+/g," ").trim();
 let corpusPromise=null,modelPromise=null;
+// Reduce bandwidth when the visitor explicitly enabled their browser's
+// data-saver preference. Unsupported browsers keep the existing behavior.
+function prefersReducedData(){
+ return typeof navigator!=="undefined"&&navigator.connection?.saveData===true;
+}
 const notify=(message,phase="working")=>{
  const el=document.getElementById("ai-status");
  if(el){el.textContent=message;el.hidden=false;el.dataset.phase=phase}
@@ -168,6 +173,12 @@ async function search(query){
  const candidates=diversity(ranked);
  if(!candidates.length)return {rows:[],mode:"empty",stats:{chunks:data.documents.length,works:data.works}};
  const fallback=candidates.filter(x=>x.score>0).slice(0,35).map(x=>renderRow(x.doc,q,x.score*25));
+ if(prefersReducedData()){
+  const warning="Ahorro de datos activo: se omite la descarga del modelo E5; resultados BM25 sobre textos indexados, sin afirmar análisis neuronal.";
+  notify(warning,"fallback");
+  return {rows:fallback,mode:"bm25-fallback",
+   stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works},warning};
+ }
  try{
   const model=await getModel();
   notify("Modelo cargado. Comparando significado; los textos clásicos conservan búsquedas literales comprobables…");
@@ -203,6 +214,11 @@ async function rank(query,docs,{limit=30,candidates=40}={}){
  const pool=scored.filter(x=>x.score>0).slice(0,candidates);
  const fill=scored.filter(x=>x.score<=0).slice(0,Math.max(0,Math.min(12,candidates-pool.length)));
  const cand=[...pool,...fill];if(!cand.length)return {mode:"empty",rows:[]};
+ if(prefersReducedData()){
+  const warning="Ahorro de datos activo: se usa BM25 sin descargar E5.";
+  notify(warning,"fallback");
+  return {mode:"bm25-fallback",rows:pool.slice(0,limit),warning};
+ }
  try{
   const model=await getModel();
   const vecs=await vectors(model,["query: "+q,...cand.map(x=>"passage: "+String(x.doc.text).slice(0,1100))]);const qv=vecs.shift();
