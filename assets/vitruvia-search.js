@@ -1102,7 +1102,7 @@ function verifiedPersonEvidence(row,query,identity){
   .map(norm).filter(name=>name.length>=4);
  const unique=[...new Set(names)];
  const direct=unique.some(name=>title===name||title.startsWith(name+" ")||(" "+text+" ").includes(" "+name+" "));
- if(row.preferredWiki)return row.wikidataId===identity.wikidataId;
+ if(row.preferredWiki||row.preferredAuthority)return row.wikidataId===identity.wikidataId;
  if(row.type==="wikidata"&&row.author===identity.wikidataId)return true;
  if(["wikipedia","wikidata"].includes(row.type))return direct;
  if(["openlibrary","googlebook","museum","article","archive-portal"].includes(row.type))return direct;
@@ -1125,7 +1125,7 @@ function display(rows,query,phase){
  const contextualRows=guard?guard.filter(rows,query,S.identifiedSubject):rows;
  const relevantRows=contextualRows.filter(row=>verifiedPersonEvidence(row,query,S.identifiedSubject));
  const scored=relevantRows.filter(r=>r&&r.title&&(
-  !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||
+  !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||r.preferredAuthority||
   queryTokens(query).length<2||entityEvidence(r,query)
  )&&(!["passage","book","edition","manuscript","preface","section"].includes(r.type)||
   documentarySubjectEvidence(r,query))).slice().sort((a,b)=>
@@ -1232,7 +1232,7 @@ function display(rows,query,phase){
  // songs, streets or businesses. The original rows remain available below.
  const authorityId=resolved?.wikidataId;
  if(/^Q[0-9]+$/.test(authorityId||"")){
-  const index=ordered.findIndex(r=>r.preferredWiki&&r.wikidataId===authorityId&&r.type==="wikipedia");
+  const index=ordered.findIndex(r=>(r.preferredWiki||r.preferredAuthority)&&r.wikidataId===authorityId&&["wikipedia","wikidata"].includes(r.type));
   if(index>0){ordered=[ordered[index],...ordered.slice(0,index),...ordered.slice(index+1)];}
  }
  const titles=RESULT_TEXT[S.lang]||RESULT_TEXT.es;
@@ -1340,6 +1340,32 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  for(const [label,url] of links){const a=makeLink(label+" ↗",url);if(a)parent.append(a)}
  const p=node("p",null,RESULT_TEXT[S.lang].sourceNote);parent.append(p)
 }
+/* Sourced identity row for progressive and final results. A Wikidata
+ * sitelink alone must never be misrepresented as a Wikipedia extract.
+ */
+function authorityResult(identity){
+ const wikidataOnly=!!identity.authorityOnly;
+ const name=identity.canonical||identity.catalogName||"";
+ const link=wikidataOnly&&/^Q\d+$/.test(identity.wikidataId||"")?
+  "https://www.wikidata.org/wiki/"+identity.wikidataId:identity.url;
+ return {type:wikidataOnly?"wikidata":"wikipedia",title:name,
+  author:wikidataOnly?"Wikidata · "+identity.wikidataId:"Wikipedia · "+(identity.language||"es").toUpperCase(),
+  excerpt:identity.description||identity.authorityDescription||"",
+  fullExtract:wikidataOnly?"":identity.extract||"",
+  meta:wikidataOnly?"Identidad identificada mediante Wikidata · ficha de autoridad":
+   "Entidad identificada mediante Wikipedia · "+(identity.language||"es").toUpperCase(),
+  rating:identity.kind==="person"?5200:280,link,
+  source:wikidataOnly?"Wikidata · datos enlazados":"Wikipedia ("+(identity.language||"es").toUpperCase()+")",
+  pageid:wikidataOnly?null:identity.pageid,
+  wikiLang:identity.language||"es",entityCanonical:name,entityKind:identity.kind,
+  entityBirthYear:identity.birthYear,entityInceptionYear:identity.inceptionYear,
+  entityPublicationYear:identity.publicationYear,
+  entityDescription:identity.authorityDescription||identity.description,
+  entityHistorical:identity.kind==="person"&&Number.isFinite(identity.birthYear)&&identity.birthYear<1900,
+  wikidataId:identity.wikidataId||null,preferredWiki:!wikidataOnly,
+  preferredAuthority:wikidataOnly,sourceLanguage:identity.language||"es"};
+}
+
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
  // Start authority lookup immediately, in parallel with loading the large
@@ -1347,8 +1373,23 @@ async function search(){
  const earlyIdentity=!/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&
   ["all","wiki","external","ai"].includes(S.mode)&&window.VitruviaEntityResolver?
   window.VitruviaEntityResolver.resolve(q,S.lang).catch(()=>null):null;
- // Requests may arrive before the static catalogue is fully loaded.
- // Wait once for the shared promise; a newer query supersedes this one.
+ // Display the verified subject independently of six large local indices.
+ // The catalogue remains necessary for reading its actual manuscripts.
+ let previewIdentity=null;
+ if(earlyIdentity&&!S.ready&&cataloguePromise){
+  earlyIdentity.then(identity=>{
+   if(!identity||id!==S.searchId||searchSignal.aborted||S.ready)return;
+   previewIdentity=identity;
+   S.identifiedSubject=identity;
+   document.body.classList.add("vitruvia-reading");
+   $("results-heading").textContent=T().heading;
+   display([authorityResult(identity)],q,
+    S.lang==="en"?"Authority identified · loading local catalogue":
+    S.lang==="fr"?"Autorité identifiée · chargement du catalogue":
+    "Identidad identificada · cargando catálogo local");
+  }).catch(()=>{});
+ }
+ // Wait for the library before assembling its verified local holdings.
  if(!S.ready&&cataloguePromise){
   $("result-state").textContent="Cargando índices del catálogo antes de buscar…";
   await cataloguePromise;
@@ -1381,7 +1422,8 @@ async function search(){
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
  if(window.VitruviaArticles)window.VitruviaArticles.begin?.(q);
  sourceLinks(generalQuery);
- let rows=[...onomasticonSubjectRows(q),...authorCatalogueRows(q),...associatedClassicalWorks(q),...classicalSubjectRows(q)];
+ let rows=[...onomasticonSubjectRows(q),...authorCatalogueRows(q),...associatedClassicalWorks(q),...classicalSubjectRows(q),
+  ...(previewIdentity?[authorityResult(previewIdentity)]:[])];
  if(rows.length)display(rows,q,T().searching);
  if(internal){
   rows.push(...(focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:[...academicRows(q),...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)]));
@@ -1435,15 +1477,8 @@ async function search(){
  if(window.VitruviaEntityResolver&&wikiEnabled){
   pending.push((earlyIdentity||window.VitruviaEntityResolver.resolve(q,S.lang)).then(identity=>{
    if(!identity)return {name:"No se resolvió una entidad enciclopédica",rows:[]};
-   const link=identity.url;
-   return {name:"Entidad enciclopédica · "+identity.canonical,rows:[{
-    type:"wikipedia",title:identity.canonical,author:"Wikipedia · "+identity.language.toUpperCase(),
-    excerpt:identity.description,fullExtract:identity.extract,
-    meta:"Entidad identificada mediante Wikipedia · "+identity.language.toUpperCase(),
-    rating:identity.kind==="person"?(Number.isFinite(identity.birthYear)&&identity.birthYear<1900?5200:2100):280,link,source:"Wikipedia ("+identity.language.toUpperCase()+")",
-    pageid:identity.pageid,wikiLang:identity.language,entityCanonical:identity.canonical,entityKind:identity.kind,entityBirthYear:identity.birthYear,
-    entityInceptionYear:identity.inceptionYear,entityPublicationYear:identity.publicationYear,entityDescription:identity.authorityDescription||identity.description,entityHistorical:identity.kind==="person"&&Number.isFinite(identity.birthYear)&&identity.birthYear<1900,wikidataId:identity.wikidataId||null,preferredWiki:true,sourceLanguage:identity.language
-   }],identity};
+   return {name:"Autoridad enciclopédica · "+identity.canonical,
+    rows:[authorityResult(identity)],identity};
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
  if(internal&&window.VitruviaAgentic){
