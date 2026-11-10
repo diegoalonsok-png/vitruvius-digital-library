@@ -24,6 +24,7 @@ const entries=[
 ["A = nota extraída del DOCX con locus explícito (no implica colación manuscrita); B = locus candidato pendiente de cotejo; C = nota sin locus comprobado. Los bloques procedentes de PDF se etiquetan aparte.","A = note extracted from DOCX with an explicit locus (not manuscript collation); B = proposed locus awaiting verification; C = note without a verified locus. PDF-derived blocks are labelled separately.","A = note extraite du DOCX avec locus explicite (sans collation manuscrite) ; B = locus proposé à vérifier ; C = note sans locus vérifié. Les blocs issus de PDF sont signalés séparément."],
 ["Ninguno de estos niveles acredita por sí mismo una variante autóptica H/G.","None of these levels independently establishes an autoptically verified H/G manuscript variant.","Aucun de ces niveaux ne démontre à lui seul une variante H/G vérifiée par examen direct."],
 ["Consultar","Consult","Consulter"],
+["Buscar","Search","Rechercher"],
 ["Registro ecdótico documentado","Documented textual-critical record","Registre ecdotique documenté"],
 ["y el ejemplo","and the example","et l’exemple"],
 ["folio H / texto / traducción","folio H / text / translation","folio H / texte / traduction"],
@@ -173,6 +174,21 @@ function refresh(){
  document.querySelectorAll(rootsSelector).forEach(translateText);
  translateAttrs();
  document.documentElement.lang=lang;
+ const titles={
+  es:"Índice textual y notas editoriales · Vitruvius Digital Library",
+  en:"Textual Index and Editorial Notes · Vitruvius Digital Library",
+  fr:"Index textuel et notes éditoriales · Vitruvius Digital Library"
+ };
+ document.title=titles[lang]||titles.es;
+ const meta=document.querySelector('meta[name="description"]');
+ if(meta){
+  const descriptions={
+   es:"Consulta crítica de De architectura por locus, palabra y edición, con enlaces a las fuentes de Diego Kurilo.",
+   en:"Critical search of De architectura by passage, word and edition, with links to Diego Kurilo's source editions.",
+   fr:"Recherche critique dans le De architectura par locus, mot et édition, avec des liens vers les éditions sources de Diego Kurilo."
+  };
+  meta.setAttribute("content",descriptions[lang]||descriptions.es);
+ }
 }
 document.addEventListener("vitruvius:language-changed",event=>{
  const value=event.detail?.language;
