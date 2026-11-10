@@ -288,7 +288,10 @@ function applyUI(){
 }
 
 /* ---------- Ejecución ---------- */
+let runRevision=0;
 async function run(push=true){
+ const revision=++runRevision;
+ const isCurrent=()=>revision===runRevision;
  syncSearchLanguageSelector();
  let q=$("#lx-q").value.trim();
  // Canonical Greek headword for the common Latin-letter transliteration.
@@ -347,32 +350,39 @@ async function run(push=true){
   if(S.mode==="palabra"&&S.lang==="auto"&&!/[\s@"\[*?~#=:√]/.test(q)&&!GREEK.test(q)&&!HEBREW.test(q)){const c=await findConcept(q);if(c&&Object.values(c.modern).flat().some(m=>fold(m)===fold(q))){await renderModernWord(q,null);const b=el("p",{class:"lx-small"},el("button",{type:"button",class:"lx-btn",onclick:()=>{S.lang="la";$("#lx-lang").value="la";run()}},`Buscar «${q}» como palabra latina`)," ",el("button",{type:"button",class:"lx-btn",onclick:()=>{S.lang="grc";$("#lx-lang").value="grc";run()}},"como transliteración griega"));$("#lx-entry").append(b);return}}
   const l=resolveLang(q);
   if(l==="he")return renderHebrew(q);
-  const D=await lang(l);S.D=D;fillWorks(D);if(l==="la")await loadContext();
+  const D=await lang(l);if(!isCurrent())return;
+  S.D=D;fillWorks(D);if(l==="la"){await loadContext();if(!isCurrent())return;}
    if(S.mode==="palabra"||S.mode==="lema"){const info=lemmaInfo(D,fold(q).replace(/^@/,""));if(info.g)window.VitruviaEncyclopedia?.update(q.replace(/^@/,""),{ancient:true,gloss:"Glosa histórica del índice latino (Lewis & Short): "+info.g.split(/;\s*/)[0]});}
   const parsed=parseQuery(q,S.mode);
   const opts={lemmatize:S.mode==="lema"||S.mode==="palabra"&&$("#lx-lemmatize").checked,variants:$("#lx-variants").checked,work:S.work,defaultGap:S.mode==="frase"?0:6};
   if(S.mode==="lema")parsed.steps.forEach(s=>{if(s.term.type==="form")s.term={type:"lemma",v:s.term.v,fallback:true}});
   let res=execute(D,parsed,opts);
   if(S.mode==="lema"&&!res.hits.length){/* el usuario escribió una forma: se resuelve su lema */parsed.steps.forEach(s=>{if(s.term.fallback)s.term={type:"form",v:s.term.v}});res=execute(D,parsed,{...opts,lemmatize:true})}
-  if(!res.hits.length&&l==="la"&&S.lang==="auto"&&!/[\[@"]/.test(q)){const G=await lang("grc");const r2=execute(G,parseQuery(q,S.mode),opts);if(r2.hits.length){S.D=G;fillWorks(G);res=r2}}
+  if(!res.hits.length&&l==="la"&&S.lang==="auto"&&!/[\[@"]/.test(q)){const G=await lang("grc");if(!isCurrent())return;
+   const r2=execute(G,parseQuery(q,S.mode),opts);if(r2.hits.length){S.D=G;fillWorks(G);res=r2}}
   /* Búsqueda por lema en latín: se descartan las coincidencias en las que el análisis contextual eligió otro lema. */
   let ctxDropped=0;
-  if(S.D.l==="la"&&parsed.steps.length===1&&parsed.steps[0].term.type==="lemma"){await loadContext();const want=fold(lemmaDisplay(parsed.steps[0].term.v)).replace(/^@/,"");
+  if(S.D.l==="la"&&parsed.steps.length===1&&parsed.steps[0].term.type==="lemma"){await loadContext();if(!isCurrent())return;
+   const want=fold(lemmaDisplay(parsed.steps[0].term.v)).replace(/^@/,"");
    if(!S.ctxAll){const kept=[];for(const h of res.hits){const p=S.D.corpus.passages[h.i];const c=ctxLemma(S.D,p,h.spans[0][0]);if(c&&fold(lemmaDisplay(c))!==want){ctxDropped++;continue}kept.push(h)}if(ctxDropped)res={...res,hits:kept}}}
   S.allHits=S.work?execute(S.D,parsed,{...opts,work:""}).hits:res.hits;
  S.result={...res,parsed};
-  if(S.D.l==="la"&&S.lang==="auto"&&S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&res.hits.length&&res.hits.length<25)setTimeout(async()=>{const G=await lang("grc",true);const g=transIndex(G).get(latinTranslitKey(q));if(g?.length){const lems=[...new Set(g.flatMap(k=>analyses(G,k).map(a=>lemmaDisplay(a[0]))))].slice(0,3);const st=$("#lx-state");st.append(" ",el("button",{type:"button",class:"lx-btn",lang:"grc",onclick:()=>{$("#lx-q").value=lems[0]||g[0];S.lang="grc";$("#lx-lang").value="grc";run()}},`¿Griego? ${(lems.length?lems:g.slice(0,3)).join(", ")}`))}},0);
+  if(S.D.l==="la"&&S.lang==="auto"&&S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&res.hits.length&&res.hits.length<25)setTimeout(async()=>{const G=await lang("grc",true);if(!isCurrent())return;
+   const g=transIndex(G).get(latinTranslitKey(q));if(g?.length){const lems=[...new Set(g.flatMap(k=>analyses(G,k).map(a=>lemmaDisplay(a[0]))))].slice(0,3);const st=$("#lx-state");st.append(" ",el("button",{type:"button",class:"lx-btn",lang:"grc",onclick:()=>{$("#lx-q").value=lems[0]||g[0];S.lang="grc";$("#lx-lang").value="grc";run()}},`¿Griego? ${(lems.length?lems:g.slice(0,3)).join(", ")}`))}},0);
   // Para toda palabra o lema, en latín o griego, mostrar siempre la ficha
   // y su frecuencia. No depender de una ficha Conceptus preexistente.
   if(["palabra","lema"].includes(S.mode)&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern")await renderEntry(S.D,parsed.steps[0].term,res);
+  if(!isCurrent())return;
   if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const qq=q;findConcept(q).then(c=>{if(!c||$("#lx-q").value.trim()!==qq)return;const body=$("#lx-entry .article-body");if(body)body.prepend(conceptCard(c,qq))})}
   if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!GREEK.test(q)){const qq=q;findPerson(q).then(P=>{if(!P||$("#lx-q").value.trim()!==qq)return;const b=el("p",{class:"lx-person-banner"},"¿Buscaba al personaje ",el("b",{},P.name),"? ",P.greek[0]?el("span",{lang:"grc"},P.greek[0]+" · "):"",P.latin[0]||"",". ",el("button",{type:"button",class:"lx-btn",onclick:()=>renderPerson(P,qq)},"Ver sus pasajes en griego y latín"));$("#lx-entry").prepend(b)}).catch(()=>{})}
   if(S.mode==="sintaxis")renderCollocations(S.D,res);
   renderHits(S.D,res);
   if(ctxDropped||S.ctxAll){const b=el("p",{class:"lx-small lx-ctx-note"},S.ctxAll?T("Se muestran todas las coincidencias de la tabla, sin el filtro contextual. "):`${ctxDropped} ${T("coincidencias descartadas: el análisis contextual (Stanza) asigna allí otro lema.")} `,el("button",{type:"button",class:"lx-btn",onclick:()=>{S.ctxAll=!S.ctxAll;run(false)}},S.ctxAll?T("Aplicar el filtro contextual"):T("Mostrarlas también")));$("#lx-results").prepend(b)}
-  if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!/^\*/.test(q)){const P=await findPerson(q);if(P){await renderPerson(P,q);return}}
-  if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · ETYMOLOGIA"),el("h2",{},q),el("p",{class:"article-byline"},"Sin pasajes en el corpus antiguo local: se ofrecen su etimología y su raíz semántica antigua.")));const cc=await findConcept(q);if(cc)box.append(conceptCard(cc,q));renderEtymTree(q,null,box)}
- }catch(err){console.error(err);setState("No se pudo completar la búsqueda: "+err.message)}
+  if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!/^\*/.test(q)){const P=await findPerson(q);if(!isCurrent())return;
+   if(P){await renderPerson(P,q);return}}
+  if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · ETYMOLOGIA"),el("h2",{},q),el("p",{class:"article-byline"},"Sin pasajes en el corpus antiguo local: se ofrecen su etimología y su raíz semántica antigua.")));const cc=await findConcept(q);if(!isCurrent())return;
+   if(cc)box.append(conceptCard(cc,q));renderEtymTree(q,null,box)}
+ }catch(err){console.error(err);if(isCurrent())setState("No se pudo completar la búsqueda: "+err.message)}
 }
 function resolveLang(q){if(S.lang!=="auto")return S.lang;const rest=q.replace(/\[[^\]]*\]/g,"").replace(/\b(NEAR\/\d+)\b|\.\.\d+/g,"");if(/\[/.test(q)&&!/[a-z]/i.test(rest.replace(/[^\p{L}]/gu,"")))return "grc";return detectLang(rest)}
 function fillWorks(D){const sel=$("#lx-work");const cur=S.work;sel.replaceChildren(el("option",{value:""},"Todas las obras"));for(const [id,w] of Object.entries(D.corpus.works).sort((a,b)=>(CHRONO[a[0]]??0)-(CHRONO[b[0]]??0)))sel.append(el("option",{value:id,selected:id===cur},`${w.author} · ${w.title}`));if(!D.corpus.works[cur]){S.work="";sel.value=""}}
