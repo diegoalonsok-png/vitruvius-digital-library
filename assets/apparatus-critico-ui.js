@@ -120,10 +120,72 @@ const entries=[
 ["Índice de aparato crítico (JSON)","Critical apparatus index (JSON)","Index de l’apparat critique (JSON)"]
 ];
 const en=new Map(entries.map(([es,en])=>[es,en])),fr=new Map(entries.map(([es,,fr])=>[es,fr]));
+
+// Only presentation labels are translated; the academic text stays verbatim.
+const interfaceDynamic=[
+ ["Latín.","Latin.","Latin."],["Traducción.","Translation.","Traduction."],
+ ["Nota del autor.","Author's note.","Note de l’auteur."],
+ ["Argumento o contexto de la edición.","Argument or context in the edition.","Argument ou contexte de l’édition."],
+ ["OCR no revisado:","Unreviewed OCR:","OCR non révisé :"],
+ ["Desplegar párrafo y traducción","Expand paragraph and translation","Déplier le paragraphe et la traduction"],
+ ["Desplegar nota completa","Expand full note","Déplier la note complète"],
+ ["Desplegar explicación completa","Expand full explanation","Déplier l’explication complète"],
+ ["Texto latino de esta edición","Latin text of this edition","Texte latin de cette édition"],
+ ["Traducción de esta edición","Translation in this edition","Traduction de cette édition"],
+ ["Consultar fuente original ↗","Consult original source ↗","Consulter la source originale ↗"],
+ ["Abrir locus en el lector","Open locus in reader","Ouvrir le locus dans le lecteur"],
+ ["Comparar con ediciones y Krohn","Compare editions and Krohn","Comparer les éditions et Krohn"],
+ ["Consultar edición fuente (PDF) ↗","Consult source edition (PDF) ↗","Consulter l’édition source (PDF) ↗"],
+ ["Leer pasaje →","Read passage →","Lire le passage →"],
+ ["Leer el locus en el lector →","Read locus in reader →","Lire le locus dans le lecteur →"],
+ ["No hay notas vinculadas a este locus en el índice actual de esta edición.","No notes are linked to this locus in the current edition index.","Aucune note n’est liée à ce locus dans l’index actuel de cette édition."],
+ ["No fue posible cargar esta edición.","This edition could not be loaded.","Impossible de charger cette édition."],
+ ["Locus no individualizado en esta edición.","Locus not identified in this edition.","Locus non identifié dans cette édition."],
+ ["Fuente:","Source:","Source :"],
+ ["Cotejo con ediciones críticas históricas","Comparison with historical critical editions","Comparaison avec les éditions critiques historiques"],
+ ["Texto latino","Latin text","Texte latin"],
+ ["Traducción","Translation","Traduction"],
+ ["Ver fragmento OCR no revisado","View unreviewed OCR excerpt","Voir l’extrait OCR non révisé"],
+ ["Abrir PDF completo ↗","Open complete PDF ↗","Ouvrir le PDF intégral ↗"],
+ ["Registro y visor de Internet Archive ↗","Internet Archive catalogue and viewer ↗","Notice et lecteur d’Internet Archive ↗"]
+];
+for(const [es,enValue,frValue] of interfaceDynamic){en.set(es,enValue);fr.set(es,frValue);}
+const templateTokens={
+ es:[
+  [/^Mostrar más \((\d+) de (\d+)(.*)\)$/,"Mostrar más ($1 de $2$3)"],
+  [/^(\d+) pasajes encontrados en los índices disponibles\./,"$1 pasajes encontrados en los índices disponibles."]
+ ],
+ en:[
+  [/^Mostrar más \((\d+) de (\d+)(.*)\)$/,"Show more ($1 of $2$3)"],
+  [/^(\d+) pasajes encontrados en los índices disponibles\./,"$1 passages found in the available indexes."],
+  [/^(\d+) notas críticas encontradas en el corpus de 811 notas\./,"$1 critical notes found in the corpus of 811 notes."],
+  [/^(\d+) registros encontrados\./,"$1 records found."],
+  [/^(\d+) registros asociados exactamente al locus /,"$1 records explicitly linked to locus "],
+  [/^Cargando índices textuales…$/,"Loading textual indexes…"],
+  [/^Buscador preparado\.$/,"Search ready."]
+ ],
+ fr:[
+  [/^Mostrar más \((\d+) de (\d+)(.*)\)$/,"Afficher plus ($1 sur $2$3)"],
+  [/^(\d+) pasajes encontrados en los índices disponibles\./,"$1 passages trouvés dans les index disponibles."],
+  [/^(\d+) notas críticas encontradas en el corpus de 811 notas\./,"$1 notes critiques trouvées dans le corpus de 811 notes."],
+  [/^(\d+) registros encontrados\./,"$1 notices trouvées."],
+  [/^(\d+) registros asociados exactamente al locus /,"$1 notices explicitement liées au locus "],
+  [/^Cargando índices textuales…$/,"Chargement des index textuels…"],
+  [/^Buscador preparado\.$/,"Recherche prête."]
+ ]
+};
+function localizeDynamic(base){
+ if(lang==="es")return base;
+ const exact=(lang==="en"?en:fr).get(base);
+ if(exact!==undefined)return exact;
+ for(const [pattern,replacement] of templateTokens[lang])if(pattern.test(base))return base.replace(pattern,replacement);
+ return base;
+}
+
 const initial=new WeakMap();
 const attributes=new WeakMap();
 const rootsSelector="main.critical-wrap,header.site-header nav,footer,.institution-bar";
-const excludes="script,style,template,code,pre,textarea,svg,[lang=la],[lang=grc],[lang=el],[lang=gr],.critical-result,.critical-parallel-edition .critical-original-text,#critical-unified-results,#critical-result-list,#critical-note-results,#critical-note-list,#critical-results,#apparatus-catalog-results";
+const excludes="script,style,template,code,pre,textarea,svg,[lang=la],[lang=grc],[lang=el],[lang=gr],.critical-unified-text,.critical-original-text,.critical-pdf-frame,.critical-parallel-edition iframe,.site-typeface-panel";
 let lang="es";
 try{const saved=localStorage.getItem(LANGUAGE_KEY);if(["es","en","fr"].includes(saved))lang=saved;}catch{}
 function translateText(root){
@@ -136,8 +198,7 @@ function translateText(root){
   if(!raw.trim())continue;
   let base=initial.get(text);
   if(base===undefined){base=raw.trim();initial.set(text,base);}
-  const value=lang==="en"?en.get(base):lang==="fr"?fr.get(base):base;
-  if(value===undefined)continue;
+  const value=localizeDynamic(base);
   const start=raw.match(/^\s*/)?.[0]||"",end=raw.match(/\s*$/)?.[0]||"";
   const next=start+value+end;
   if(raw!==next)text.nodeValue=next;
@@ -195,8 +256,50 @@ document.addEventListener("vitruvius:language-changed",event=>{
  if(!["es","en","fr"].includes(value))return;
  lang=value;refresh();
 });
-function init(){
+const editionByLang={es:"recensio-es",en:"theory-en",fr:"recensio-fr"};
+function chooseEdition(language,{rerun=false}={}){
+ const chosen=editionByLang[language];
+ // Language buttons select the *edition language*, not merely translated labels.
+ const targets=["critical-unified-edition","critical-edition","apparatus-catalog-edition"];
+ for(const id of targets){
+  const select=document.getElementById(id);
+  if(!select||![...select.options].some(option=>option.value===chosen))continue;
+  if(select.value!==chosen){
+   select.value=chosen;
+   if(rerun)select.dispatchEvent(new Event("change",{bubbles:true}));
+  }
+ }
+ // Preserve selected compare language without changing a single original text.
+ if(rerun)try{
+  const variants=language==="en"?["en-la","en-tr","krohn"]:
+   language==="fr"?["fr-la","fr-tr","krohn"]:["es-la","es-tr","krohn"];
+  localStorage.setItem("vitruvius-cotejo-versiones",JSON.stringify(variants));
+ }catch{}
+ if(rerun){
+  for(const [formId,queryId] of [["critical-unified-form","critical-unified-query"],["critical-form","critical-query"]]){
+   const form=document.getElementById(formId),query=document.getElementById(queryId);
+   if(form&&query?.value.trim())form.requestSubmit();
+  }
+ }
+}
+function chooseLanguage(next,{rerun=false}={}){
+ if(!["es","en","fr"].includes(next))return;
+ lang=next;
+ try{localStorage.setItem(LANGUAGE_KEY,lang);}catch{}
  refresh();
+ for(const button of document.querySelectorAll("[data-apparatus-lang]")){
+  const active=button.dataset.apparatusLang===lang;
+  button.setAttribute("aria-pressed",String(active));
+  button.setAttribute("aria-current",active?"true":"false");
+ }
+ chooseEdition(lang,{rerun});
+ document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:lang,origin:"apparatus"}}));
+}
+function init(){
+ document.querySelectorAll("[data-apparatus-lang]").forEach(button=>{
+  button.addEventListener("click",()=>chooseLanguage(button.dataset.apparatusLang,{rerun:true}));
+ });
+ chooseLanguage(lang);
  const controls=document.querySelector("header.site-header .critical-header-tools");
  if(controls){
   const label=controls.querySelector(".site-global-language");
@@ -216,6 +319,21 @@ function init(){
  }
  const observer=new MutationObserver(()=>translateAttrs());
  observer.observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+ // Result interfaces are rendered after asynchronous searches and need labels
+ // localized without touching original Latin/Greek passages or scholarly notes.
+ const resultIds=["critical-results","critical-note-results","critical-unified-results","critical-comparison","apparatus-catalog-results"];
+ for(const id of resultIds){
+  const target=document.getElementById(id);
+  if(!target)continue;
+  let busy=false;
+  const viewObserver=new MutationObserver(()=>{
+   if(busy)return;
+   busy=true;
+   translateText(target);
+   busy=false;
+  });
+  viewObserver.observe(target,{childList:true,subtree:true});
+ }
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();

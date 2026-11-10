@@ -149,7 +149,7 @@ ready(()=>{
  // Allow other deferred controls to mount before placing the typography button.
  // The bilingual text reader has its own controls INSIDE the Latin and translation panels.
  // Do not insert another Aa control in the page header.
- if(page!=='lector-bilingue.html')setTimeout(ensureTypography,0);
+ if(!['lector-bilingue.html','aparato-critico.html'].includes(page))setTimeout(ensureTypography,0);
  paint();new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:["class","data-theme","style"]});
  new MutationObserver(paint).observe(document.body,{attributes:true,attributeFilter:["class","data-theme","style"]});
 });

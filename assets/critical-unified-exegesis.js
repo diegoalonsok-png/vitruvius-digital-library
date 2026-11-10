@@ -126,6 +126,9 @@ function renderNext(){
   const h=el('h3','',r.source==='passage'?'Vitr., De architectura · '+r.locus:r.source==='note'?'Nota editorial DOCX · '+(r.noteId||'sin número'):'Aparato / comentario en PDF · '+(r.page?'p. '+r.page:'referencia de página no disponible'));
   const counts=el('p','critical-unified-meta',(r.locusMatch?'Locus documental exacto':'Coincidencias léxicas en la unidad: '+r.matches.length)+' · '+(r.source==='passage'?'Texto latino/traducción':r.source==='note'?'Nota escrita del autor':'Bloque del aparato, transcrito del PDF'));
   const details=el('details','critical-unified-detail');
+  // A locus lookup must immediately expose the source text and its edition's
+  // actual translation (V514 Spanish, V554 French, V297 English).
+  if(currentLocusQuery&&r.source==='passage')details.open=true;
   const summary=el('summary','',r.source==='passage'?'Desplegar párrafo y traducción':r.source==='note'?'Desplegar nota completa':'Desplegar explicación completa');
   details.append(summary);
   const full=el('div','critical-unified-full');
