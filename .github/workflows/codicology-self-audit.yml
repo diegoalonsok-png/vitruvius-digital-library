@@ -1,6 +1,11 @@
 name: Codicology self-audit · 222 classics
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/codicology_auditor.py'
+      - 'tests/test_codicology_auditor.py'
+      - '.github/workflows/codicology-self-audit.yml'
   schedule:
     - cron: '23 9 * * *'
 
@@ -27,7 +32,7 @@ jobs:
       - name: Run source-identity and safety regression tests
         run: python -m unittest discover -s tests -p 'test_codicology_auditor.py' -v
 
-      - name: Inspect all 222 works and 24 external discovery queries
+      - name: Inspect all 222 works and 24 external queries per source
         run: |
           python scripts/codicology_auditor.py \
             --live --batch-size 24 \
