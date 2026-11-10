@@ -18,10 +18,13 @@ button:hover,button:focus-visible,select:focus-visible,a:focus-visible{outline:2
 button[aria-pressed=true]{background:#555}
 #photo-stage{height:min(67vh,760px);min-height:340px;overflow:auto;background:#121212;border:1px solid #454545;scrollbar-width:auto;scrollbar-color:#888 #222;position:relative;text-align:center}
 #photo-stage img{display:block;width:100%;height:auto;max-width:none;margin:auto;transform-origin:center center;filter:var(--filter,none)}
+#photo-stage::-webkit-scrollbar{width:16px;height:16px}#photo-stage::-webkit-scrollbar-track{background:#242424}
+#photo-stage::-webkit-scrollbar-thumb{background:#888;border:2px solid #242424;border-radius:10px;min-height:42px}
+#photo-stage::-webkit-scrollbar-thumb:hover{background:#bbb}
 #photo-stage img[hidden]{display:none}
 #image-note{padding:20px;max-width:55ch;margin:auto}
 #image-source,#ruler-source{color:#ddd}a{color:inherit;text-underline-offset:3px}
-dl{margin:0}.name-row{border-top:1px solid #454545;padding:11px 0}.name-row dt{font-size:12px;font-weight:650;opacity:.8}
+dl{margin:0}.name-row{border-top:1px solid #454545;padding:11px 0}.name-row:target,.name-row.selected-name{border-left:3px solid #bba57a;padding-left:10px;background:rgba(188,166,122,.08)}.name-row dt{font-size:12px;font-weight:650;opacity:.8}
 .name-row dd{margin:3px 0}.glyphs{display:block;font:normal clamp(30px,5vw,60px)/1.7 'Noto Sans Egyptian Hieroglyphs','Egyptian Text',serif;overflow-wrap:anywhere}
 .cartouche{display:inline-block;border:2px solid currentColor;border-radius:46% / 34%;padding:9px 18px;margin:5px 0}
 .meta{font-size:12px;opacity:.85}.caution{font-size:12px;line-height:1.7;opacity:.84}
@@ -68,6 +71,8 @@ function rulerNames(ruler,data){
  for(const [key,label] of Object.entries(chapters)){
   const rec=ruler.names?.[key];
   const box=create("div","name-row"),dt=create("dt",null,label),dd=create("dd");
+  box.id="royal-name-"+key;
+  if(p.get("name")===key)box.classList.add("selected-name");
   box.append(dt);
   if(rec){
    if(rec.glyphs){const glyphs=create("div","glyphs"+(["prenomen","nomen"].includes(key)?" cartouche":""),rec.glyphs);glyphs.lang="egy";if(window.HieroRender?.render)glyphs.replaceChildren(window.HieroRender.render(rec.glyphs,{size:"50px"}));dd.append(glyphs);}
@@ -79,6 +84,7 @@ function rulerNames(ruler,data){
   box.append(dd);dl.append(box);
  }
  $("royal-names").replaceChildren(dl);
+ if(Object.hasOwn(chapters,p.get("name")))requestAnimationFrame(()=>document.getElementById("royal-name-"+p.get("name"))?.scrollIntoView({block:"center"}));
  const sources=$("academic-links");sources.replaceChildren(create("h3",null,"Fuentes y estudios"));
  for(const s of (data.sources||[]).filter(x=>x.url))sources.append(link(s.citation,s.url));
  sources.append(link("Thesaurus Linguae Aegyptiae · corpus", "https://thesaurus-linguae-aegyptiae.de/"));
