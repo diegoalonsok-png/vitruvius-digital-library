@@ -83,38 +83,74 @@ async function prepareTranslation(workId,editions){
  const data=await translationEdition(workId,language,editions);
  return {workId,language,...(data||{edition:null,map:new Map(),duplicate:0})};
 }
-function appendTranslation(card,row){
- if(!translationContext||translationContext.workId!==row.workId||!["la","grc"].includes(row.language))return;
- const info=translationContext,block=document.createElement("section");
- block.className="lx-library-parallel";block.lang=info.language;
- const title=document.createElement("p");title.className="lx-library-translation-title";
- title.textContent="Traducción al "+(translationNames[info.language]||info.language)+" · locus "+(row.locus||"no identificado");
- block.append(title);
- const translated=info.map.get(String(row.locus||"").trim());
- if(translated){
-  const passage=document.createElement("p");passage.className="lx-library-translation-text";passage.textContent=translated;
-  block.append(passage);
-  const note=document.createElement("p");note.className="lx-library-translation-note";
-  note.textContent="Coincidencia por identificador editorial; no certifica equivalencia léxica ni cotejo de manuscritos. "+(info.edition?.sourceDescription||"");
-  block.append(note);
-  const url=translationUrl(info.edition,String(row.locus||""));
-  if(url){const a=document.createElement("a");a.href=url;a.textContent="Leer traducción en su edición";block.append(a);}
- }else{
-  const note=document.createElement("p");note.className="lx-library-translation-note";
-  note.textContent=info.edition?
-   "No existe correspondencia única de locus con la traducción seleccionada. Se conserva el pasaje original; no se inventa una equivalencia.":
-   "No hay traducción textual consultable en este idioma dentro del registro de esta obra.";
-  block.append(note);
-  if(info.edition){const url=translationUrl(info.edition,"");if(url){const a=document.createElement("a");a.href=url;a.textContent="Consultar edición sin alineación";block.append(a);}}
- }
- const comparison=new URL("classics-parallel-reader.html",location.href);
- comparison.searchParams.set("work",row.workId);comparison.searchParams.set("left",row.language);
- comparison.searchParams.set("right",info.language);
- if(row.locus)comparison.searchParams.set("locus",row.locus);
- const compare=document.createElement("a");compare.href=comparison.href;compare.textContent=" · Lectura enfrentada";block.append(compare);
+function appendTranslation(card,row,editions){
+ if(!["la","grc"].includes(row.language)||row.ocr)return;
+ const block=document.createElement("section");
+ block.className="lx-library-parallel";
+ block.lang=translationSelect.value;
+ block.setAttribute("aria-label","Traducción vinculada al pasaje original");
+ const note=document.createElement("p");
+ note.className="lx-library-translation-note";
+ note.textContent="Consultando traducción editorial por obra y locus…";
+ block.append(note);
  card.append(block);
-}
 
+ // Consult only visible passages: never download dozens of translation volumes
+ // during the first search. Individual source/target/locus matches are required.
+ const populate=async()=>{
+  if(!card.isConnected)return;
+  const language=translationSelect.value;
+  let info=null;
+  try{
+   info=translationContext?.workId===row.workId&&translationContext.language===language
+    ?translationContext:await prepareTranslation(row.workId,editions);
+  }catch{}
+  if(!card.isConnected||translationSelect.value!==language)return;
+  block.lang=language;block.replaceChildren();
+  const title=document.createElement("p");title.className="lx-library-translation-title";
+  title.textContent="Traducción al "+(translationNames[language]||language)+" · locus "+(row.locus||"no identificado");
+  block.append(title);
+  const translated=info?.map?.get(String(row.locus||"").trim());
+  if(translated){
+   const passage=document.createElement("p");passage.className="lx-library-translation-text";
+   passage.lang=language;passage.textContent=translated;
+   block.append(passage);
+   const provenance=document.createElement("p");provenance.className="lx-library-translation-note";
+   provenance.textContent="Traducción editorial identificada por obra y locus compartido; la equivalencia léxica y la crítica textual requieren cotejo. "+(info.edition?.sourceDescription||"");
+   block.append(provenance);
+   const url=translationUrl(info.edition,String(row.locus||""));
+   if(url){const a=document.createElement("a");a.href=url;a.textContent="Leer traducción en su edición";block.append(a);}
+  }else{
+   const caveat=document.createElement("p");caveat.className="lx-library-translation-note";
+   caveat.textContent=info?.edition?
+    "No existe correspondencia única de locus con la traducción seleccionada. No se inventa una equivalencia.":
+    "No hay traducción textual consultable en este idioma dentro del registro de esta obra.";
+   block.append(caveat);
+   if(info?.edition){const url=translationUrl(info.edition,"");if(url){const a=document.createElement("a");a.href=url;a.textContent="Consultar edición sin alineación";block.append(a);}}
+   // The provider receives a fragment only after a voluntary button click.
+   // Never publish a machine rendering as if it were a critical translation.
+   const anchor=document.createElement("p");anchor.className="lx-library-translation-note";
+   anchor.textContent="Traducción automática orientativa del pasaje original (opcional):";
+   block.append(anchor);
+   window.VitruviaInlineTranslation?.attach(anchor,{
+    sourceLanguage:row.language,originalText:row.originalText||row.excerpt
+   });
+  }
+  const comparison=new URL("classics-parallel-reader.html",location.href);
+  comparison.searchParams.set("work",row.workId);
+  comparison.searchParams.set("left",row.language);
+  comparison.searchParams.set("right",language);
+  if(row.locus)comparison.searchParams.set("locus",row.locus);
+  const compare=document.createElement("a");compare.href=comparison.href;compare.textContent=" · Lectura enfrentada";block.append(compare);
+ };
+ if(typeof IntersectionObserver!=="undefined"){
+  const observer=new IntersectionObserver(entries=>{
+   if(!card.isConnected){observer.disconnect();return}
+   if(entries.some(entry=>entry.isIntersecting)){observer.disconnect();void populate()}
+  },{rootMargin:"220px"});
+  observer.observe(card);
+ }else queueMicrotask(()=>{void populate()});
+}
 const safeUrl=value=>{try{const u=new URL(value,location.href);return ["http:","https:"].includes(u.protocol)?u.href:null}catch{return null}};
 let editionRegistryTask=null;
 const safeLocalUrl=value=>{try{const u=new URL(String(value||""),location.href);return u.origin===location.origin&&/^https?:$/.test(u.protocol)?u.href:null}catch{return null}};
@@ -186,7 +222,7 @@ function addResult(row,editions){
   try{if(!navigator.clipboard?.writeText)throw Error("Clipboard unavailable");await navigator.clipboard.writeText(text);copy.textContent="Referencia copiada";}
   catch{window.prompt("Copiar referencia y pasaje:",text)}
  });
- card.append(passage,count,top,excerpt);appendTranslation(card,row);card.append(source,copy,editionConnections(row,editions));list.append(card);
+ card.append(passage,count,top,excerpt);appendTranslation(card,row,editions);card.append(source,copy,editionConnections(row,editions));list.append(card);
 }
 function addSummaryResult(row){
  const card=document.createElement("article");card.className="lx-library-result";
@@ -327,7 +363,7 @@ async function execute(mode="literal"){
  finally{if(token===serial){button.disabled=false;semantic.disabled=false}}
 }
 translationSelect.addEventListener("change",async()=>{
- const workId=selectedWorkId;if(!workId||!selectedLiteralRows.length)return;
+ const workId=selectedWorkId;if(!workId||!selectedLiteralRows.length){if(currentLiteralRows.length)showLiteralRows(currentLiteralRows,currentEditions);return;}
  const token=++serial;
  status.textContent="Consultando traducción al "+(translationNames[translationSelect.value]||translationSelect.value)+"…";
  translationContext=await prepareTranslation(workId,currentEditions);
