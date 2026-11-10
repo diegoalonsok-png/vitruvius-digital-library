@@ -54,10 +54,10 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           lfs: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Preparar Playwright antes de las pruebas que importan Chromium
@@ -154,7 +154,7 @@ jobs:
           exit 0
       - name: Publicar informe de auditoría incluso si hay fallos
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: auditoria-integral-sitio-y-buscadores
           path: |

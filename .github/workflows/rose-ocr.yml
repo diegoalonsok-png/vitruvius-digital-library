@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Descargar OCR de páginas de Rose desde Internet Archive
         run: |
           curl --fail --location --retry 4 --retry-all-errors --connect-timeout 25 --max-time 1200 'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0_djvu.xml' -o /tmp/rose.xml
