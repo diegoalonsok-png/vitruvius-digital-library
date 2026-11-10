@@ -27,7 +27,12 @@ const records=[
  ["Q17","Le Corbusier",["Charles-Édouard Jeanneret"],1887,"arquitecto",130],
  ["Q18","Julio César",["Julius Caesar"],-100,"general romano",140],
  ["Q19","Cleopatra",["Cleopatra VII"],-69,"reina egipcia",140],
- ["Q20","Miró",[],2020,"marca comercial de muebles",3]
+ ["Q20","Miró",[],2020,"marca comercial de muebles",3],
+ ["Q21","Sócrates",["Socrates"],-470,"filósofo griego",135],
+ ["Q22","Aristóteles",["Aristoteles","Aristotle"],-384,"filósofo griego",145],
+ ["Q23","Isaac Newton",["Newton"],1643,"físico y científico británico",155],
+ ["Q24","Lionel Messi",["Messi"],1987,"futbolista argentino",155],
+ ["Q25","Taylor Swift",[],1989,"cantante y compositora",155]
 ];
 const db={};
 for(const [id,name,aliases,born,description,coverage] of records){
@@ -88,7 +93,13 @@ const cases=[
  ["Madonna","Madonna"],["Le Corbusier","Le Corbusier"],
  ["Julio César","Julio César"],["Cleopatra","Cleopatra"],
  ["Obras de Dalí","Salvador Dalí"],["Miró pinturas","Joan Miró"],
- ["Palladio arquitectura","Andrea Palladio"],["quién fue Ramses II","Ramsés II"]
+ ["Dalí pintor","Salvador Dalí"],["el pintor Dalí","Salvador Dalí"],
+ ["Picasso artista","Pablo Picasso"],["el rey Tut","Tutankamón"],
+ ["Ramsés II faraón","Ramsés II"],["Sócrates filósofo","Sócrates"],
+ ["Aristóteles filósofo","Aristóteles"],["Isaac Newton","Isaac Newton"],
+ ["Newton","Isaac Newton"],["Messi","Lionel Messi"],
+ ["Taylor Swift","Taylor Swift"],["Palladio arquitectura","Andrea Palladio"],
+ ["quién fue Ramses II","Ramsés II"]
 ];
 let checks=0;
 for(const [query,expected] of cases){
