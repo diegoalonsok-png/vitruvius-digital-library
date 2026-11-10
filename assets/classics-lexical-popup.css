@@ -1,0 +1,86 @@
+/* Classical highlighted-word dictionary. Contained in the reader iframe. */
+#classics-lexical-popup{
+ box-sizing:border-box;width:min(840px,calc(100vw - 24px));max-height:min(88dvh,820px);
+ margin:auto;padding:0;border:1px solid #72757a;border-radius:12px;
+ color:#eaeaec;background:#151619;box-shadow:0 22px 65px #000b;
+ overflow:auto;color-scheme:dark;scrollbar-color:#81858b #27282b;
+ scrollbar-width:auto;
+}
+#classics-lexical-popup::backdrop{background:rgba(0,0,0,.74)}
+#classics-lexical-popup .cl-popup-head{
+ position:sticky;top:0;z-index:2;background:#1b1c20;
+ display:flex;justify-content:space-between;align-items:center;gap:14px;
+ padding:16px 21px;border-bottom:1px solid #47494f;
+}
+#classics-lexical-popup .cl-popup-kicker{
+ margin:0 0 5px;color:#bbbdbf;text-transform:uppercase;
+ font:600 11px/1.4 system-ui;letter-spacing:.09em;
+}
+#classics-lexical-popup h2{margin:0;color:#f5f4f1;font:normal clamp(25px,4vw,35px)/1.2 Georgia,serif}
+#classics-lexical-popup .cl-popup-close{
+ flex:none;cursor:pointer;border:1px solid #85878c;border-radius:7px;
+ background:#303137;color:#f2f2f2;font:600 13px/1.3 system-ui;padding:10px 14px;
+}
+#classics-lexical-popup .cl-popup-close:hover{background:#484b52}
+#classics-lexical-popup .cl-popup-content{padding:16px 22px 23px}
+#classics-lexical-popup .cl-dict{margin:0;padding:0;border:none;color:#e6e6e8}
+#classics-lexical-popup .cl-dict .cl-word{font-size:27px}
+#classics-lexical-popup .cl-dict .cl-entry{border-left-color:#c8ac62;padding-left:12px}
+#classics-lexical-popup .cl-dict .cl-morph,
+#classics-lexical-popup .cl-dict .cl-note,
+#classics-lexical-popup .cl-dict .cl-src{color:#c4c5c9}
+#classics-lexical-popup a{color:#d3dfee;text-underline-offset:3px}
+#classics-lexical-popup .cl-popup-media{
+ border-top:1px solid #44464a;margin-top:18px;padding-top:16px
+}
+#classics-lexical-popup .cl-popup-media h3{
+ font:600 15px/1.3 system-ui;margin:0 0 9px;color:#e9e7e2
+}
+#classics-lexical-popup .cl-popup-media figure{max-width:430px;margin:6px 0 14px}
+#classics-lexical-popup .cl-popup-media img{
+ width:100%;max-height:260px;object-fit:contain;display:block;
+ border:1px solid #555960;border-radius:5px;background:#222428
+}
+#classics-lexical-popup figcaption{font:12px/1.6 system-ui;color:#c7c8ca;margin:8px 0}
+#classics-lexical-popup .cl-popup-note{font:13px/1.6 system-ui;color:#cacbd0}
+#classics-lexical-popup .cl-popup-commons{display:inline-block;margin:2px 0 8px}
+#classics-lexical-popup .cl-popup-navigation{
+ margin-top:10px;border-top:1px solid #44464a;padding-top:14px;
+ display:flex;gap:10px;flex-wrap:wrap;font:13px/1.4 system-ui
+}
+#classics-lexical-popup::-webkit-scrollbar{width:18px}
+#classics-lexical-popup::-webkit-scrollbar-track{background:#27282b;border-radius:10px}
+#classics-lexical-popup::-webkit-scrollbar-thumb{
+ min-height:52px;border-radius:10px;background:#81858b;
+ border:2px solid #27282b
+}
+#classics-lexical-popup::-webkit-scrollbar-thumb:hover{background:#a2a6ac}
+#passages mark.cl-hit,#passages mark.cl-parallel-hit{
+ cursor:pointer;touch-action:manipulation
+}
+#passages mark.cl-hit:hover,#passages mark.cl-parallel-hit:hover{
+ outline:2px solid #f6f2b5;outline-offset:1px
+}
+#passages mark.cl-hit:focus-visible,#passages mark.cl-parallel-hit:focus-visible{
+ outline:3px solid #fff;border-radius:2px;outline-offset:3px
+}
+@media(max-width:550px){
+ #classics-lexical-popup{width:calc(100vw - 12px);max-height:94dvh}
+ #classics-lexical-popup .cl-popup-head{padding:12px 14px}
+ #classics-lexical-popup .cl-popup-content{padding:12px 14px 18px}
+}
+@media print{#classics-lexical-popup{display:none!important}}
+
+/* The outer Lexicon dialog also displays document-wide yellow marks. */
+#lx-viewer .lx-viewer-origin mark.w,
+#lx-viewer .lx-viewer-col mark.w{
+ cursor:pointer;touch-action:manipulation
+}
+#lx-viewer .lx-viewer-origin mark.w:hover,
+#lx-viewer .lx-viewer-col mark.w:hover{
+ outline:2px solid #ead7a2;outline-offset:2px
+}
+#lx-viewer .lx-viewer-origin mark.w:focus-visible,
+#lx-viewer .lx-viewer-col mark.w:focus-visible{
+ outline:3px solid #f7f7f7;outline-offset:3px;border-radius:2px
+}
