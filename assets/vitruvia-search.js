@@ -11,7 +11,7 @@ const lex={
  arte:"art arte ars artist artista painting pintura sculpture escultura scultura",
  agua:"aqua aquae aquarum agua water eau hidráulica hydraulica aqueduct acueducto fontem fuentes",
  acueducto:"aquaeductus aquaeductus aqua agua water aqueducts aqueduc acueductos conducción",
- simetria:"symmetria symmetry simetría simetria proporción proportio proportion symétrie modulus",
+ simetria:"symmetria symetria symmetry simetría simetria proporción proportio proportion symétrie modulus συμμετρία",
  templo:"templum temple templo temples sanctuary santuario aedes sagrado",
  columna:"columna columnae columns column colonne capital capitel capiteles",
  ciudad:"urbs civitas urbanismo urban plan città ciudad city cities ville polis",
@@ -828,6 +828,17 @@ function renderCard(d){
   const oldest=earliestSourceFor(d.workId);
   if(oldest){const a=makeLink(oldest.label,oldest.url);if(a)acts.append(a)}
  }
+ if(d.type==="passage"){
+  const word=$("query")?.value.trim()||"";
+  if(/^[\p{L}\p{M}]{2,40}$/u.test(word)){
+   const lex=makeLink(S.lang==="en"?"Analyze word in Lexicon":S.lang==="fr"?"Analyser dans Lexicon":"Analizar palabra en Lexicon","vitruvia-lexicon.html?"+new URLSearchParams({q:word,mode:"palabra"}));
+   if(lex)acts.append(lex);
+  }
+  if(d.workId==="vitruvius"&&/^\d{1,2}\.(?:praef\.)?\d{1,3}(?:\.\d{1,3})?$/.test(String(d.locus||""))){
+   const evidence=makeLink(S.lang==="en"?"Check folio correspondence":S.lang==="fr"?"Vérifier la correspondance des folios":"Verificar correspondencia con folio","concordancia-folios.html?locus="+encodeURIComponent(d.locus));
+   if(evidence)acts.append(evidence);
+  }
+ }
  if(d.type==="book"&&!d.link)acts.append(node("span","disabled",T().unpublished));
  if(d.pdf){const a=makeLink(T().pdf,d.pdf);if(a)acts.append(a)}
  if(d.citationText&&navigator.clipboard?.writeText){
@@ -1405,7 +1416,7 @@ async function search(){
  $("result-list").replaceChildren(node("div","empty","Cargando ficha y testimonios documentados…"));
  $("answer").hidden=true;
  window.VitruviaArticles?.begin?.(q);
- history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
+ history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(S.mode==="ai"&&$("ai-method").value==="neural"?{engine:"e5"}:{})}));
  // Start authority lookup immediately, in parallel with loading the large
  // static catalogue; the main results are still rendered in the usual place.
  const earlyIdentity=!/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&
@@ -1516,8 +1527,9 @@ async function search(){
   }).catch(e=>({name:"Catálogos de manuscritos no disponibles",rows:[],warnings:[String(e.message||e)]})));
  }
  if(mode==="ai"&&window.VitruviaAI){
-  pending.push(window.VitruviaAI.search(generalQuery).then(v=>({
-   name:v.mode==="neural"?"IA semántica multilingüe · BM25 + embeddings":v.mode==="bm25-fallback"?"BM25: modelo de IA no disponible":"Búsqueda de documentos",
+  const method=$("ai-method")?.value==="neural"?"neural":"bm25";
+  pending.push(window.VitruviaAI.search(generalQuery,{method}).then(v=>({
+   name:v.mode==="neural"?"E5 + BM25 · orden neuronal experimental":v.method==="bm25"?"BM25 · coincidencias textuales indexadas":v.mode==="bm25-fallback"?"BM25 · E5 no disponible":"Búsqueda de documentos",
    rows:v.rows||[],warnings:v.warning?[v.warning]:[]
   })).catch(e=>({name:"Modo IA · índice no disponible",rows:[],warnings:[String(e.message||e)]})));
  }
@@ -1642,8 +1654,14 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  const t=T();$("lead").textContent=t.lead;$("query").placeholder=t.placeholder;$("submit").textContent=t.submit;
  document.querySelectorAll("button.tab").forEach((b,i)=>{if(t.modes[i])b.textContent=t.modes[i]});
  $("mode-note").textContent=S.mode==="ai"
-  ?(S.lang==="en"?"Experimental multilingual semantic search over indexed documents. Web catalogues are not part of the local AI model.":S.lang==="fr"?"Recherche sémantique multilingue expérimentale sur les documents indexés. Les catalogues web ne font pas partie du modèle local.":"Búsqueda semántica multilingüe experimental sobre documentos indexados. Los catálogos web no forman parte del modelo local.")
+  ?(S.lang==="en"?"Choose BM25 or experimental E5 reranking. Only sources in the AI manifest are included; other catalogues use separate search routes.":S.lang==="fr"?"Choisir BM25 ou le reclassement E5 expérimental. Seules les sources du manifeste IA sont couvertes; les autres catalogues sont interrogés séparément.":"Seleccione BM25 o la reordenación experimental E5. Solo se incluyen las fuentes del manifiesto IA; los demás catálogos usan otras vías.")
   :(t.explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||t.explain[0]);
+ const methodTexts={es:["Motor de búsqueda","BM25 · rápido, sin modelo","E5 · neuronal, descarga opcional"],en:["Search method","BM25 · fast, no model","E5 · neural, optional download"],fr:["Méthode de recherche","BM25 · rapide, sans modèle","E5 · neuronal, téléchargement facultatif"]};
+ const methodLabels=methodTexts[S.lang]||methodTexts.es;
+ $("ai-method-label").textContent=methodLabels[0];
+ $("ai-method").options[0].textContent=methodLabels[1];
+ $("ai-method").options[1].textContent=methodLabels[2];
+ $("ai-help").textContent=({es:"BM25 busca sin descargar IA. E5 multilingüe es opcional y experimental (descarga inicial estimada ≈120 MB, modelo q8). El corpus neuronal se limita a las fuentes declaradas en data/ai-corpora.json.",en:"BM25 searches without a neural download. Multilingual E5 is optional and experimental (first estimated download ≈120 MB, q8 model). Neural coverage is limited to sources listed in data/ai-corpora.json.",fr:"BM25 recherche sans téléchargement neuronal. E5 multilingue est facultatif et expérimental (premier téléchargement estimé ≈120 Mo, modèle q8). La couverture dépend du manifeste data/ai-corpora.json."})[S.lang];
  const ui=UI_TEXT[S.lang]||UI_TEXT.es;
  document.querySelectorAll("[data-i18n]").forEach(el=>{
   const value=ui[el.dataset.i18n];if(value)el.textContent=value;
@@ -1665,7 +1683,7 @@ function mode(m){S.mode=["all","site","wiki","external","concept","ai"].includes
  if(S.mode!=="ai"){const status=document.getElementById("ai-status");if(status)status.hidden=true;}
  document.querySelectorAll("button.tab").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===S.mode)));
  $("mode-note").textContent=S.mode==="ai"?
- (S.lang==="en"?"Optional E5 semantic search of indexed documents; first download ≈120 MB only in AI mode. Data saver uses BM25 without a model download. External catalogues are not part of the neural model.":S.lang==="fr"?"Recherche E5 facultative sur les documents indexés : premier téléchargement ≈120 Mo seulement en mode IA. Économie de données : BM25 sans téléchargement du modèle. Les catalogues externes sont exclus.":"IA semántica opcional sobre documentos indexados: primera descarga E5 ≈120 MB solo al buscar en modo IA. Ahorro de datos: BM25 sin descarga neuronal. Los catálogos externos no forman parte del modelo."):
+ (S.lang==="en"?"BM25 is the default in AI mode; E5 reranking requires a separate opt-in (first download ≈120 MB). Neural ranking is not philological verification.":S.lang==="fr"?"BM25 est le mode par défaut; reclassement E5 sur demande (premier téléchargement ≈120 Mo). Le classement n’est pas une vérification philologique.":"BM25 es el modo predeterminado; E5 requiere selección expresa (primera descarga ≈120 MB). La clasificación neuronal no equivale a cotejo filológico."):
  (T().explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||T().explain[0]);
 }
 function theme(th){S.theme=th;document.documentElement.dataset.theme=th;
@@ -1885,20 +1903,21 @@ privacy.addEventListener("click",()=>{
  S.privateMode=!S.privateMode;
  try{localStorage.setItem("vitruvia-private-url",S.privateMode?"1":"0")}catch{}
  const q=searchInput.value.trim();
- history.replaceState(null,"",S.privateMode?"vitruvia.html":q?"vitruvia.html?"+new URLSearchParams({q,mode:S.mode}):"vitruvia.html");
+ history.replaceState(null,"",S.privateMode?"vitruvia.html":q?"vitruvia.html?"+new URLSearchParams({q,mode:S.mode,...(S.mode==="ai"&&$("ai-method").value==="neural"?{engine:"e5"}:{})}):"vitruvia.html");
  renderPrivacy();
 });
 updateClearControl();renderPrivacy();
 
 bindAcademia();
 $("search-form").addEventListener("submit",e=>{e.preventDefault();search()});
+$("ai-method").addEventListener("change",()=>{if(S.mode==="ai"&&$("query").value.trim())search()});
 $("ui-language").addEventListener("change",e=>{language(e.target.value);if($("query").value.trim())search()});
 $("theme").addEventListener("click",()=>theme(S.theme==="dark"?"light":"dark"));
 document.querySelectorAll("button.tab").forEach(b=>b.addEventListener("click",()=>{mode(b.dataset.mode);if($("query").value.trim())search()}));
 document.querySelectorAll("button[data-q]").forEach(b=>b.addEventListener("click",()=>{$("query").value=b.dataset.q;search();document.querySelector("#results").scrollIntoView({behavior:"smooth",block:"start"})}));
 try{const saved=localStorage.getItem("vitruvius-ui-lang");if(I18N[saved])S.lang=saved;const savedTheme=localStorage.getItem("vitruvia-theme");if(savedTheme==="light")S.theme="light";S.privateMode=localStorage.getItem("vitruvia-private-url")==="1"}catch{}
 theme(S.theme);
-const params=new URLSearchParams(location.search);mode(params.get("mode")||"all");language(S.lang);
+const params=new URLSearchParams(location.search);mode(params.get("mode")||"all");$("ai-method").value=params.get("engine")==="e5"?"neural":"bm25";language(S.lang);
 // Show a linked search immediately; never overwrite what the reader typed
 // during asynchronous loading of the local catalogues.
 const initialQuery=params.get("q")||"";
@@ -1912,6 +1931,7 @@ cataloguePromise.catch(e=>{console.error("Catálogo no disponible:",e)});
 window.addEventListener("popstate",()=>{
  const p=new URLSearchParams(location.search);
  mode(p.get("mode")||"all");
+ $("ai-method").value=p.get("engine")==="e5"?"neural":"bm25";
  const q=p.get("q")||"";
  $("query").value=q;
  if(q)void search();
