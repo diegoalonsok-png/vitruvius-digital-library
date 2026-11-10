@@ -497,6 +497,43 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    await p.locator('#sync-prev').count();
   }finally{await p.close()}
  });
+ await check('Aristophanes: parallel Greek and optional English translation share one reading row',async()=>{
+  const locus='urn:cts:greekLit:tlg0019_tlg005_perseus-grc2.288-297';
+  const path='classics-parallel-reader.html?work=aristophanes-pax&left=grc&right=auto-en&locus='+
+   encodeURIComponent(locus)+'&q='+encodeURIComponent('τέκτονες');
+  const p=await open(path);
+  try{
+   await p.route('https://api.mymemory.translated.net/get?**',route=>route.fulfill({
+    status:200,
+    headers:{'content-type':'application/json','access-control-allow-origin':'*'},
+    body:JSON.stringify({responseStatus:200,responseData:{translatedText:'Craftsmen and builders work together.'}})
+   }));
+   await p.waitForFunction(()=>{
+    const source=document.querySelector('#pane-left')?.contentDocument?.querySelector('#passages');
+    return source?.textContent?.includes('τέκτονες') &&
+      !document.querySelector('#auto-translation')?.hidden &&
+      !!document.querySelector('#auto-content .academic-inline-translate-button');
+   },null,{timeout:30000});
+   const left=await p.frameLocator('#pane-left').locator('#passages').innerText();
+   assert.match(left,/τέκτονες/);
+   assert.equal(await p.locator('#auto-content .auto-source').isVisible(),false,
+    'A duplicate source must not appear in the translation column');
+   assert(!/ἐγὼ δὲ/.test(await p.locator('#auto-content').innerText()),
+    'Greek text is duplicated in the right reader');
+   const top=await p.frameLocator('#pane-left').locator('.reader').evaluate(el=>el.getBoundingClientRect().top);
+   assert(top<240,'The duplicated inner header pushed the Greek original below its translation');
+   await p.locator('#right-night').click();
+   await p.waitForFunction(()=>getComputedStyle(document.getElementById('auto-translation')).backgroundColor==='rgb(23, 38, 51)',
+    null,{timeout:6000});
+   await p.locator('#right-ivory').click();
+   await p.locator('#auto-content .academic-inline-translate-button').click();
+   await p.waitForFunction(()=>document.querySelector('#auto-content .academic-inline-translation-output')?.textContent?.includes('Craftsmen and builders'),
+    null,{timeout:16000});
+   assert.match(await p.locator('#auto-content .academic-inline-translation-output').innerText(),/Versión automática orientativa/);
+   assert.equal(await p.locator('#auto-translation').isVisible(),true);
+   assert.equal(await p.locator('#pane-left').isVisible(),true);
+  }finally{await p.close()}
+ });
  await check('Papyrology image upload, magnifiers, colors, contrast and character editor',async()=>{
   const p=await open('papyrologia-ostraca.html');
   try{
