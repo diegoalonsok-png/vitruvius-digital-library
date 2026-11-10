@@ -12,7 +12,8 @@ assert.match(css,/overflow-x:auto/);
 new Script(js,{filename:"vitruvia-reading-shelf.js"});
 
 class MockElement{
- constructor(tag="div"){this.tagName=tag;this.children=[];this.dataset={};this.attributes={};this.textContent="";this.hidden=false;}
+ constructor(tag="div"){this.tagName=tag;this.children=[];this.dataset={};this.attributes={};this.textContent="";this.hidden=false;this.className="";this.classList={add(){},remove(){}};}
+ querySelector(selector){const clazz=selector.startsWith(".")?selector.slice(1):null;const walk=e=>{if(clazz&&String(e.className||"").split(" ").includes(clazz))return e;for(const c of e.children||[]){const found=walk(c);if(found)return found}return null};return walk(this)}
  setAttribute(a,b){this.attributes[a]=b}
  append(...items){this.children.push(...items)}
  replaceChildren(...items){this.children=[...items]}
