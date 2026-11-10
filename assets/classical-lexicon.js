@@ -134,7 +134,7 @@ async function lookupGreek(word,work){
   if(!an)continue;
   const seen=new Set(),entries=[];
   for(const [lemma,tag] of an){const key=lemma+"|"+tag;if(seen.has(key))continue;seen.add(key);
-   const L=g.data.lemmas[lemma]||{};entries.push({lemma:L.probable||lemma,morph:L.probable?"lema probable (forma "+lemma+"; verificar)":morph(tag),gloss:L.g||"",lang:"grc",source:"LSJ (glosa inglesa) · lematización Celano",lsjId:L.id||""})}
+   const L=g.data.lemmas[lemma]||{};entries.push({lemma:L.probable||lemma,morph:L.probable?"lema probable (forma "+lemma+"; verificar)":morph(tag),gloss:L.g||"",es:L.es||"",lang:"grc",source:g.data.verifiedForms?"LSJ · cotejo morfológico puntual":"LSJ (glosa inglesa) · lematización Celano",lsjId:L.id||""})}
   return{entries,via,sources:g.data.sources,note:g.data.note};
  }
  /* Sin forma atestiguada: lema probable por raíz común en los glosarios (orientativo). */
@@ -237,7 +237,7 @@ async function renderPanel(container,word,opts={}){
  const w=document.createElement("p");w.className="cl-word";w.textContent=clean(word);w.lang=detectLang(word)==="grc"?"grc":"la";container.append(w);
  const wait=document.createElement("p");wait.className="cl-note";wait.textContent="Consultando el glosario local…";container.append(wait);
  const res=await lookup(word,opts);wait.remove();
- if(!res.entries.length){const p=document.createElement("p");p.textContent="Sin entrada en los glosarios locales ni respuesta del diccionario en línea. Consulta los léxicos enlazados.";container.append(p)}
+ if(!res.entries.length){const p=document.createElement("p");p.textContent="Esta forma puede estar documentada en el pasaje, pero aún no tiene una ficha lexicográfica recuperable. La falta de glosa no equivale a ausencia del texto: consulta los diccionarios enlazados.";container.append(p)}
  for(const e of res.entries){
   const box=document.createElement("div");box.className="cl-entry";
   const l=document.createElement("span");l.className="cl-lemma";l.lang=e.lang==="grc"?"grc":"la";l.textContent=e.lemma;box.append(l);
