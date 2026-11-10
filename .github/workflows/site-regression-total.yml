@@ -111,6 +111,7 @@ jobs:
           path: |
             reports/site-audit-unified.json
             reports/vitruvius-trilingual-alignment.json
+            reports/vitruvius-trilingual-incidencias.md
             reports/indices-locorum-battery.json
             reports/site-regression-failures.txt
           if-no-files-found: warn
