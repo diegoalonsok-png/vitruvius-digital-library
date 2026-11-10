@@ -7,7 +7,7 @@ pdfs={"es":"documents/kurilo-recensio-es.pdf","en":"documents/kurilo-theory-en.p
 def tok(s):
  s=unicodedata.normalize("NFD",str(s or "")).lower()
  s="".join(c for c in s if unicodedata.category(c)!="Mn")
- return re.findall(r"[^\\W_]+",s.replace("v","u").replace("j","i"))
+ return re.findall(r"[^\W_]+",s.replace("v","u").replace("j","i"))
 def overlap(needle,hay,n=4):
  a=[tuple(needle[i:i+n]) for i in range(max(0,len(needle)-n+1))]
  b={tuple(hay[i:i+n]) for i in range(max(0,len(hay)-n+1))}
