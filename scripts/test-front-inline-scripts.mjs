@@ -102,16 +102,25 @@ const perseusPage=readFileSync("perseus-procedencia-textual.html","utf8");
 const siteMap=readFileSync("sitemap.xml","utf8");
 assert.equal(perseusAudit.records.length,222,"Cobertura de procedencia debe incluir 222 obras");
 assert.equal(perseusAudit.counts.versions,246,"El inventario debe conservar 246 versiones");
-assert.equal(perseusAudit.counts.verifiedEditionUrns,0,
- "Una URN candidata no equivale a una edición CTS validada");
-assert(perseusAudit.records.every(x=>x.ctsStatus==="not_verified"&&x.ctsEditionUrn===null),
- "No inventar citas CTS de edición");
+/* A verified TEI-header edition URN is not the same as a candidate work code.
+   This asserts source evidence, not that a public CTS resolver was tested. */
+const declaredCts=perseusAudit.records.filter(x=>x.ctsEditionUrn!==null);
+assert.equal(perseusAudit.counts.verifiedEditionUrns,declaredCts.length,
+ "El recuento CTS debe corresponder exactamente a URN de edición documentadas");
+assert(declaredCts.every(x=>
+ x.ctsStatus==="declared_and_checked_in_source_tei_header" &&
+ /^urn:cts:[a-zA-Z][a-zA-Z0-9]*:[a-zA-Z0-9._-]+$/.test(x.ctsEditionUrn) &&
+ /TEI XML/.test(x.ctsEvidence||"") &&
+ x.perseusAffiliation===false),
+ "Solo citar una URN de edición con evidencia en el encabezado TEI y sin atribuir aval de Perseus");
+assert(perseusAudit.records.filter(x=>x.ctsEditionUrn===null).every(x=>x.ctsStatus==="not_verified"),
+ "Los códigos candidatos PHI/TLG no deben pasar por ediciones CTS verificadas");
 assert(perseusPage.includes("https://scaife.perseus.org/")&&
  perseusPage.includes("data/perseus-provenance-audit.json"),
  "Auditoría Perseus debe enlazar fuentes y datos");
 assert(siteMap.includes("perseus-procedencia-textual.html")&&siteMap.trimEnd().endsWith("</urlset>"),
  "Sitemap académico debe estar íntegro y cerrar XML");
-console.log("PASS procedencia Perseus: 222 obras, códigos candidatos y sin URN inventadas");
+console.log("PASS procedencia Perseus: 222 obras, códigos candidatos y URN de edición con evidencia TEI diferenciada");
 
 /* University readiness: the five search frontends must offer source-aware
  * citation, stable query links and an accessible non-JavaScript alternative. */
