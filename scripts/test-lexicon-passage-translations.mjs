@@ -19,7 +19,7 @@ assert.match(bridge,/IntersectionObserver/);
 assert.match(read("assets/classics-corpus-search.js"),/originalText:p\.text/);
 assert.match(read("assets/vitruvia-lexicon.js"),/function addUnverifiedTranslationOption\(D,p,box\)/);
 assert.match(read("assets/vitruvia-lexicon.js"),/vitruvia-lexicon-translation-default-v2/);
-assert.match(read("vitruvia-lexicon.html"),/lexicon-classics-bridge\\.js\\?v=[^"\x27<>]+/,"Lexicon must load its attested passage translation bridge");
+assert.match(read("vitruvia-lexicon.html"),/lexicon-classics-bridge\.js\?v=[^"'<>]+/,"Lexicon must load its attested passage translation bridge");
 
 const reg=JSON.parse(read("data/classics-corpus/search-registry.json"));
 const entries=reg.entries||[];
