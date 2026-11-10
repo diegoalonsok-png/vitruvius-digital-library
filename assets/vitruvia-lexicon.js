@@ -41,7 +41,19 @@ const cache=new Map();
 /* Los datos del Lexicon llevan la huella de versión de la página (meta lx-data-version): el service
    worker los guarda y no se vuelven a descargar mientras no cambien. */
 const DATA_VER=document.querySelector('meta[name="lx-data-version"]')?.content||"";
-function load(path){const url=ROOT+path+(DATA_VER&&path.startsWith("data/lexicon/")?(path.includes("?")?"&":"?")+"v="+DATA_VER:"");if(!cache.has(path))cache.set(path,fetch(url,{cache:"force-cache"}).then(r=>{if(!r.ok)throw new Error(path+" · HTTP "+r.status);return r.json()}).catch(err=>{cache.delete(path);throw err}));return cache.get(path)}
+function load(path){
+ const url=ROOT+path+(DATA_VER&&path.startsWith("data/lexicon/")?(path.includes("?")?"&":"?")+"v="+DATA_VER:"");
+ if(!cache.has(path)){
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),30000);
+  const pending=fetch(url,{cache:"force-cache",signal:controller.signal})
+   .then(r=>{if(!r.ok)throw new Error(path+" · HTTP "+r.status);return r.json()})
+   .catch(err=>{cache.delete(path);
+    throw new Error(err?.name==="AbortError"?"Tiempo agotado al cargar "+path+"; reintente la búsqueda.":path+": "+(err?.message||err))})
+   .finally(()=>clearTimeout(timer));
+  cache.set(path,pending);
+ }
+ return cache.get(path);
+}
 const L={};
 async function lang(l,silent=false){
  if(l==="la")loadContext();
@@ -49,6 +61,10 @@ async function lang(l,silent=false){
  L[l]=(async()=>{
   if(!silent)setState(l==="grc"?"Cargando el corpus griego y su índice léxico…":"Cargando el corpus latino y su índice léxico…");
   const [corpus,forms]=await Promise.all([load(`data/lexicon/corpus-${l}.json`),load(`data/lexicon/forms-${l}.json`)]);
+  if(!Array.isArray(corpus?.passages)||!corpus.passages.length||
+     !forms?.forms||typeof forms.forms!=="object"||!forms?.lemmas)
+   throw new Error("Índice "+l+" incompleto o incompatible. La consulta puede reintentarse.");
+
   const post=new Map(), freq=new Map(), workFreq=new Map(), workTokens={};
   corpus.passages.forEach((p,i)=>{
    const seen=new Set();
