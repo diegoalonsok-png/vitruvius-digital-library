@@ -11,11 +11,12 @@ const keys=new Set();
 for(const e of m.entries){
  assert(known.has(e.workId),"Unknown classical work "+e.workId);
  assert.equal(e.status,"external-only");
- assert.equal(e.language,"en");
+ assert(["en","fr"].includes(e.language),"Unsupported external translation language "+e.language);
  assert(e.translator&&e.edition&&e.host);
  const u=new URL(e.url);
  assert.equal(u.protocol,"https:");
- assert.equal(u.hostname,"penelope.uchicago.edu");
+ assert(["penelope.uchicago.edu","www.gutenberg.org","archive.org"].includes(u.hostname),"Unexpected external source "+u.hostname);
+ assert(!u.username&&!u.password,"External source URL cannot contain credentials");
  const key=e.workId+"|"+e.language+"|"+e.edition;
  assert(!keys.has(key),"Duplicated external translation "+key);
  keys.add(key);

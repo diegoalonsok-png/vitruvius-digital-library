@@ -254,11 +254,11 @@ function attachWordDictionary(excerpt,card,row){
   panel.addEventListener("toggle",()=>{if(selected===wordButton)wordButton.setAttribute("aria-expanded",String(panel.open))});
   const lex=window.ClassicalLexicon;
   if(!lex?.renderPanel){
-   content.textContent="El diccionario integrado no está disponible. Consultá la ficha completa de Lexicon.";
+   content.textContent="El diccionario integrado no está disponible. Consulta la ficha completa de Lexicon.";
    return;
   }
   void lex.renderPanel(content,word,{lang:row.language,work:row.workId,online:true}).catch(()=>{
-   if(content.isConnected)content.textContent="No se pudo recuperar la entrada. Consultá el repertorio académico mediante el enlace.";
+   if(content.isConnected)content.textContent="No se pudo recuperar la entrada. Consulta el repertorio académico mediante el enlace.";
   });
  });
 }

@@ -20,7 +20,9 @@ assert.equal(code.length,1);
 new vm.Script(code[0][1]);
 new vm.Script(bib);
 const work=inventory.items.find(x=>x.id==="ennius-annales");
-assert(work&&!work.originalIndexed&&!work.effectiveOriginalIndexed,"La fuente solo permite lectura; no declarar indexación global");
+assert(work&&!work.originalIndexed&&work.offsiteOriginalIndexed&&work.effectiveOriginalIndexed,
+ "El índice remoto de 31 fragmentos se reconoce como externo, sin convertirlo en corpus local");
+assert.equal(work.offsiteIndex?.sourceSha256,"8321f3a0a2e34654750feeac679de6e5680cd8dcd16200e286ac0b1c50b58bd4","La fuente remota debe conservar su huella documental");
 assert(!registry.entries.some(x=>x.workId==="ennius-annales"),"No añadir índice ficticio");
 assert(!existsSync("data/classics-corpus/ennius-annales-la.json"),"No copiar la obra al corpus local");
-console.log("PASS: Ennio se lee bajo demanda desde CLTK sin copiar, cotejar ni declarar el original indexado");
+console.log("PASS: Ennio se lee bajo demanda desde CLTK sin copiar ni cotejar; índice remoto parcial separado del corpus alojado");
