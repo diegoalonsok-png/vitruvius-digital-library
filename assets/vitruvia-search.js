@@ -449,12 +449,12 @@ const htmlText=s=>new DOMParser().parseFromString(String(s||""),"text/html").bod
 function culturalWeight(title,description){const s=norm(title+" "+description);const all=["architecture","arquitectura","architect","history","historia","histoire","arte","artist","artistic","roman","romano","ancient","antiguo","greek","griego","archaeology","arqueologia","patrimonio","heritage","cultural","medieval","renaissance","renacimiento","manuscript","manuscrito","architecture"];return all.some(x=>s.includes(x))?7:0}
 async function wiki(q,language){const providerSignal=S.searchController?.signal;const request=(url,ms)=>fetchJSON(url,ms,providerSignal);
  const lang=["es","en","fr"].includes(language)?language:"es";
- const p=new URLSearchParams({action:"query",list:"search",srsearch:q,srlimit:"15",srprop:"snippet|wordcount",format:"json",utf8:"1",origin:"*"});
+ const p=new URLSearchParams({action:"query",list:"search",srsearch:q,srlimit:"10",srprop:"snippet|wordcount",format:"json",utf8:"1",origin:"*"});
  const d=await request("https://"+lang+".wikipedia.org/w/api.php?"+p);
  const found=(d.query?.search||[]).filter(w=>Number.isInteger(w.pageid)&&w.pageid>0);
  let pictures={};
  if(found.length){
-  const picturesParams=new URLSearchParams({action:"query",prop:"pageimages",pageids:found.map(x=>x.pageid).join("|"),piprop:"thumbnail|name",pithumbsize:"720",format:"json",origin:"*"});
+  const picturesParams=new URLSearchParams({action:"query",prop:"pageimages",pageids:found.slice(0,6).map(x=>x.pageid).join("|"),piprop:"thumbnail|name",pithumbsize:"720",format:"json",origin:"*"});
   const photos=await request("https://"+lang+".wikipedia.org/w/api.php?"+picturesParams,2000).catch(()=>null);
   pictures=photos?.query?.pages||{};
  }
@@ -1220,9 +1220,13 @@ function display(rows,query,phase){
  // An identified historical or artistic figure is the answer to a name
  // lookup, even when the site has many unrelated local text matches.
  // Keep source-first order for actual classical, philological and codex intents.
+ // A short personal-name query leads with the identified person, even when
+ // local books by that author exist. Explicit textual and codex searches
+ // continue to prioritize the primary manuscript/edition/passage.
+ const textualIntent=/\b(?:manuscrit|codex|c[oó]dice|folio|locus|pasaje|passage|vers[ií]culo|lectio|aparato|apparatus|texto latino|original griego|latin text|greek text|traducci[oó]n|translation|sigla|collatio|recensi[oó]n)\b/i.test(query);
  const personFirst=resolved?.kind==="person"&&/^Q[0-9]+$/.test(resolved.wikidataId||"")&&
   !window.VitruviaLocalPriority?.plan(query,S.lexicon)?.focused&&
-  !matchingAuthorWorks(query).length&&!codexIntent&&!locusIntent;
+  !codexIntent&&!locusIntent&&!textualIntent;
  const siteFirst=S.mode==="all"&&!personFirst;
  const firstOrdered=siteFirst?
   [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
@@ -1534,14 +1538,18 @@ async function search(){
   if(S.lang!=="en")pending.push(wiki(person?person.name:generalQuery,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
  }
  if(academicEnabled){
+  // Pick sources by subject: an art name should not wait on biomedical APIs.
+  const medicalTopic=/\b(?:medicin|m[eé]dic|cl[ií]nic|enfermedad|patolog|biology|biolog|biomed|disease|health|epidem|virus|vaccin|genetic|anatom|pharmac|epidemiolog|salud|sanitaria)\w*/i.test(q);
+  const exactPerson=!!(S.identifiedSubject?.kind==="person"||person||/^\s*(?:rey|reina|king|queen|fara[oó]n|pharaoh)\b/i.test(q));
+  const conceptLookup=/\b(?:arte|art|architecture|arquitectura|painting|pintura|sculpture|escultura|orden|order|tecnica|t[eé]cnica|material|estilo|style|ornament|t[eé]rmino|term|concepto|concept|motif|iconograf)\w*/i.test(q);
   pending.push(wikidata(q).then(rows=>({name:"Wikidata",rows})).catch(e=>({name:"Wikidata sin respuesta: "+e.message,rows:[]})));
   pending.push(openLibrary(q).then(rows=>({name:"Open Library",rows})).catch(e=>({name:"Open Library sin respuesta: "+e.message,rows:[]})));
    pending.push(googleBooks(q).then(rows=>({name:"Google Books",rows})).catch(e=>({name:"Google Books sin respuesta: "+e.message,rows:[]})));
   pending.push(museum(q).then(rows=>({name:"The Met",rows})).catch(e=>({name:"The Met sin respuesta: "+e.message,rows:[]})));
   pending.push(crossref(q).then(rows=>({name:"Crossref",rows})).catch(e=>({name:"Crossref sin respuesta: "+e.message,rows:[]})));
-  pending.push(europePmc(q).then(rows=>({name:"Europe PMC",rows})).catch(e=>({name:"Europe PMC sin respuesta: "+e.message,rows:[]})));
+  if(medicalTopic)pending.push(europePmc(q).then(rows=>({name:"Europe PMC",rows})).catch(e=>({name:"Europe PMC sin respuesta: "+e.message,rows:[]})));
   pending.push(openAlex(q).then(rows=>({name:"OpenAlex",rows})).catch(e=>({name:"OpenAlex sin respuesta: "+e.message,rows:[]})));
-  pending.push(gettyAat(generalQuery).then(rows=>({name:"Getty AAT",rows})).catch(e=>({name:"Getty AAT sin respuesta: "+e.message,rows:[]})));
+  if(conceptLookup&&!exactPerson)pending.push(gettyAat(generalQuery).then(rows=>({name:"Getty AAT",rows})).catch(e=>({name:"Getty AAT sin respuesta: "+e.message,rows:[]})));
  }
  if(!pending.length){S.searchComplete=true;display(rows,q,"Índice interno");return}
  let completed=0,updateTimer=null;
@@ -1603,6 +1611,9 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  $("ui-language").value=S.lang;
  if(typeof renderPrivacy==="function")renderPrivacy();
  try{localStorage.setItem("vitruvius-ui-lang",S.lang)}catch{}
+ // Keep language, tooltips and downstream reading panels synchronized.
+ theme(S.theme);
+ document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:S.lang,origin:"vitruvia"}}));
 }
 function mode(m){S.mode=["all","site","wiki","external","concept","ai"].includes(m)?m:"all";
  document.body.classList.toggle("vitruvia-ai-active",S.mode==="ai");
@@ -1622,8 +1633,15 @@ function theme(th){S.theme=th;document.documentElement.dataset.theme=th;
  const path=document.createElementNS("http://www.w3.org/2000/svg","path");
  path.setAttribute("d",th==="dark"?"M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z":"M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6l1.4 1.4m10 10 1.4 1.4m0-12.8L17 7m-10 10-1.4 1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z");
  icon.append(path);control.append(icon);
- control.setAttribute("aria-label",th==="dark"?"Activar modo claro":"Activar modo oscuro");
- control.setAttribute("title",th==="dark"?"Modo claro":"Modo oscuro");
+ const descriptions={
+  es:th==="dark"?["Activar modo claro","Modo claro"]:["Activar modo oscuro","Modo oscuro"],
+  en:th==="dark"?["Switch to light mode","Light mode"]:["Switch to dark mode","Dark mode"],
+  fr:th==="dark"?["Activer le mode clair","Mode clair"]:["Activer le mode sombre","Mode sombre"]
+ };
+ const [name,title]=descriptions[S.lang]||descriptions.es;
+ control.setAttribute("aria-label",name);
+ control.setAttribute("title",title);
+ control.setAttribute("aria-pressed",String(th==="dark"));
  try{localStorage.setItem("vitruvia-theme",th)}catch{}
 }
 

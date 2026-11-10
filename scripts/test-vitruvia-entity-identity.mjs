@@ -152,8 +152,9 @@ checks+=4;
 assert(searchSource.includes("let previewIdentity=null;")&&
  searchSource.includes("display([authorityResult(identity)],q,"),
  "A verified identity must be displayed before the local catalogue finishes");
-assert(searchSource.includes("!matchingAuthorWorks(query).length&&!codexIntent&&!locusIntent"),
- "Classical author texts, manuscripts and loci must keep their own priorities");
+assert(searchSource.includes("!codexIntent&&!locusIntent&&!textualIntent")&&
+ searchSource.includes("const textualIntent="),
+ "Manuscripts, explicit editions and passage lookups must retain priority over biographies");
 const articleSource=readFileSync("assets/vitruvia-article.js","utf8");
 assert(articleSource.includes("if(!wiki&&verifiedAuthority)")&&
  articleSource.includes("verifiedAuthority?null:await topicWikiData"),

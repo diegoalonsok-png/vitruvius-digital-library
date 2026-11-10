@@ -1,0 +1,87 @@
+/* Secondary editorial pages: shared monochrome Lexicon controls.
+ * Scoped to pages explicitly mounting secondary-reader-controls.js.
+ */
+.vitruvius-secondary-sr{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+body.vitruvius-secondary-controls{scroll-padding-top:64px}
+body.vitruvius-secondary-controls #vitruvius-secondary-toolbar{
+ position:fixed!important;z-index:9000;top:9px;right:11px;display:inline-flex!important;
+ gap:6px;align-items:center;justify-content:center;white-space:nowrap;
+ padding:5px 7px;border:1px solid #62646b;border-radius:10px;
+ background:#1d1e23!important;color:#f4f4f5!important;
+ box-shadow:0 3px 12px rgba(0,0,0,.22);font:500 12px/1.3 system-ui,Arial,sans-serif;
+}
+body.vitruvius-secondary-controls #vitruvius-secondary-toolbar .vitruvius-secondary-selector{
+ position:relative;display:inline-flex!important;margin:0;padding:0;flex:none;z-index:1;
+}
+body.vitruvius-secondary-controls #vitruvius-secondary-toolbar select,
+body.vitruvius-secondary-controls #vitruvius-secondary-toolbar button{
+ appearance:auto;display:inline-flex!important;align-items:center;justify-content:center;
+ min-height:37px;min-width:49px;max-width:88px;border:1px solid #62666c!important;
+ border-radius:6px!important;padding:5px 9px!important;background:#292b30!important;
+ color:#f3f3f4!important;cursor:pointer;
+ font:700 12px/1.3 system-ui,Arial,sans-serif!important;
+}
+body.vitruvius-secondary-controls #vitruvius-secondary-toolbar select{min-width:67px}
+body.vitruvius-secondary-controls #vitruvius-secondary-toolbar :is(button,select):hover{background:#393b42!important;border-color:#b0b3b7!important}
+body.vitruvius-secondary-controls #vitruvius-secondary-toolbar :is(button,select):focus-visible{
+ outline:3px solid #e8dbbd!important;outline-offset:2px!important
+}
+/* Existing legacy widgets stay installed for page logic, but never display
+ * a second color or language toolbar beside the unified visible control.
+ */
+body.vitruvius-secondary-controls .theme-switch:not(#secondary-theme),
+body.vitruvius-secondary-controls .site-global-language:not(.vitruvius-secondary-selector){display:none!important}
+html[data-theme="light"]:has(body.vitruvius-secondary-controls){
+ background:#f7f6f1!important;color:#222b35!important;color-scheme:light!important;
+}
+html[data-theme="dark"]:has(body.vitruvius-secondary-controls){
+ background:#111317!important;color:#e9edf0!important;color-scheme:dark!important;
+}
+/* Genuine light rendering even for pages that hardcode a black body. */
+html[data-theme="light"] body.vitruvius-secondary-controls,
+html[data-theme="light"] body.vitruvius-secondary-controls :is(main,header,footer,nav,aside,.site,.library,.wrap,.container,.content,.section-wrapper){
+ background-color:#f7f6f1!important;color:#222b35!important;color-scheme:light!important;
+}
+html[data-theme="light"] body.vitruvius-secondary-controls :is(article,section.panel,.panel,.card,.passage,.cite,.stat,.tool,.result,.box,.note,.entry,.editorial-note,.source-panel,.academic-card,details,.toolbar,.searchform,.result-card){
+ background-color:#fffefa!important;color:#222b35!important;border-color:#c7c7c1!important;
+}
+html[data-theme="light"] body.vitruvius-secondary-controls :is(p,li,dt,dd,blockquote,figcaption,small,label,th,td,summary,span,em,strong,h1,h2,h3,h4,h5){
+ color:#25313d!important;
+}
+html[data-theme="light"] body.vitruvius-secondary-controls :is(a,a:visited){color:#245175!important}
+html[data-theme="light"] body.vitruvius-secondary-controls :is(input,textarea,select,button){
+ background-color:#fffefa!important;color:#1e2c38!important;border-color:#9da5ad!important;color-scheme:light!important;
+}
+html[data-theme="light"] body.vitruvius-secondary-controls :is(.top,.site-header,.institution-bar,header.site-header,.nav,.hero){
+ border-color:#c6c5bf!important;
+}
+html[data-theme="light"] body.vitruvius-secondary-controls #vitruvius-secondary-toolbar{
+ background:#e5e5e1!important;color:#233240!important;border-color:#aab0b5!important
+}
+html[data-theme="light"] body.vitruvius-secondary-controls #vitruvius-secondary-toolbar :is(select,button){
+ background:#f9f8f4!important;color:#243443!important;border-color:#a5acb2!important;
+}
+html[data-theme="light"] body.vitruvius-secondary-controls #vitruvius-secondary-toolbar :is(select,button):hover{background:#ebece9!important}
+/* Genuine dark rendering for originally light-authored secondary pages. */
+html[data-theme="dark"] body.vitruvius-secondary-controls,
+html[data-theme="dark"] body.vitruvius-secondary-controls :is(main,header,footer,nav,aside,.site,.library,.wrap,.container,.content,.section-wrapper){
+ background-color:#111317!important;color:#e9edf0!important;color-scheme:dark!important;
+}
+html[data-theme="dark"] body.vitruvius-secondary-controls :is(article,section.panel,.panel,.card,.passage,.cite,.stat,.tool,.result,.box,.note,.entry,.editorial-note,.source-panel,.academic-card,details,.toolbar,.searchform,.result-card){
+ background-color:#1c1e23!important;color:#e9edf0!important;border-color:#454950!important;
+}
+html[data-theme="dark"] body.vitruvius-secondary-controls :is(p,li,dt,dd,blockquote,figcaption,small,label,th,td,summary,span,em,strong,h1,h2,h3,h4,h5){
+ color:#e7e9ec!important;
+}
+html[data-theme="dark"] body.vitruvius-secondary-controls :is(a,a:visited){color:#d7e5f1!important}
+html[data-theme="dark"] body.vitruvius-secondary-controls :is(input,textarea,select,button){
+ background-color:#24262b!important;color:#edf0f2!important;border-color:#6b6e73!important;color-scheme:dark!important;
+}
+@media(max-width:670px){
+ body.vitruvius-secondary-controls{padding-top:49px!important}
+ body.vitruvius-secondary-controls #vitruvius-secondary-toolbar{top:4px;right:4px;gap:4px;padding:4px}
+ body.vitruvius-secondary-controls #vitruvius-secondary-toolbar :is(button,select){min-height:34px!important;padding:5px 7px!important}
+}
+@media print{
+ body.vitruvius-secondary-controls #vitruvius-secondary-toolbar{display:none!important}
+}

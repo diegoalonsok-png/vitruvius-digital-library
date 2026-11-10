@@ -243,3 +243,45 @@ html body mark.lexical-hit:focus-visible{outline:2px solid #fff!important;outlin
 .genre-work-version{color:#d8d8df!important;text-underline-offset:3px;overflow-wrap:anywhere}
 .genre-work-parallel{font-weight:700;color:#ece4cc!important}
 @media(max-width:600px){.genre-work-editions{gap:8px 15px}}
+
+/* Bibliotheca · true light mode while preserving the original dark Lexicon design. */
+#bibliotheca-theme{min-width:44px;min-height:38px;font-size:18px;line-height:1}
+html[data-theme="light"]{
+ color-scheme:light;--lx:#f7f6f1;--paper:#222b36;--muted:#52616c;--stroke:#c7c9c7;
+ background:#f7f6f1!important;color:#222b36!important;
+}
+html[data-theme="light"] body,
+html[data-theme="light"] :is(main.library,.top,header.hero,.searcharea,.result,.group,.hit,footer){
+ background:#f7f6f1!important;color:#26323c!important;border-color:#c5c8c8!important;
+}
+html[data-theme="light"] :is(h1,h2,h3,h4,.group h3,.results-heading,.intro,.coverage,.search-status,.eyebrow,
+ .toplinks a,.brand,.group .meta,.group .bibliography,.hit .locus,.hit .label,.hit p,
+ p,li,dt,dd,figcaption,small,label,strong,span,summary,blockquote){
+ color:#26343e!important;
+}
+html[data-theme="light"] :is(a,a:visited){color:#285478!important;text-decoration-color:#718da4!important}
+html[data-theme="light"] :is(.searchform,.workrow select,.language-toggle,.searchform button,.more,
+ .bibliotheca-suite-links>a,.parallel-attested,.group .hits,.hit){
+ background:#fffefa!important;color:#21303d!important;border-color:#b9bfc2!important;
+}
+html[data-theme="light"] :is(input,select,button,textarea){
+ background-color:#fffefa!important;color:#253340!important;border-color:#9da8ad!important;color-scheme:light!important;
+}
+html[data-theme="light"] input::placeholder{color:#62717b!important}
+html[data-theme="light"] :is(.bibliotheca-suite,.bibliotheca-suite-links,.parallel-attested-language,.bibliotheca-filters){
+ background:#f7f6f1!important;color:#28353e!important;border-color:#c1c4c4!important;
+}
+html[data-theme="light"] .bibliotheca-suite-heading :is(strong,span,p){color:#2b3840!important}
+html[data-theme="light"] :is(.parallel-attested strong,.parallel-attested p,.parallel-attested-language strong,.parallel-unavailable){
+ color:#28353d!important;
+}
+html[data-theme="light"] .hit mark{text-decoration-color:#2a4d67!important}
+html[data-theme="light"] :is(.language-toggle:hover,.searchform button:hover,.more:hover,.bibliotheca-suite-links>a:hover){
+ background:#e5e9e9!important;color:#1b2b35!important;
+}
+html[data-theme="light"] .bibliotheca-suite-links>a{background:#fffefa!important;color:#285478!important;border-color:#bbc5c6!important}
+html[data-theme="light"] .classics-tally{
+ color:#24313b!important;background:#fafaf7!important;border-color:#c1c6c6!important;
+}
+html[data-theme="light"] .classics-tally :is(span,strong,small,p,li,summary){color:#26343f!important}
+@media print{#bibliotheca-theme{display:none!important}}
