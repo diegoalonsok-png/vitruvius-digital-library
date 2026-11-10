@@ -7,7 +7,7 @@
 const base="data/";
 const catalogPaths=["structured/recensio-es.json","structured/recensio-fr.json","structured/theory-en.json"];
 let corporaPromise=null,codicesPromise=null;
-const flat=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").replace(/\s+/g," ").trim();
+const flat=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/ς/g,"σ").replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();
 const stop=new Set("de del los las el la lo en un una y e o a por para que como con the and from of in on or by for et le la les des du sur de aus der die das".split(" "));
 const terms=s=>flat(s).split(" ").filter(t=>t.length>2&&!stop.has(t));
 const unique=a=>[...new Set(a)];
