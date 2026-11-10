@@ -1047,6 +1047,23 @@ function entityEvidence(row,query){
  if(coverage<1)return false;
  return !!description||!!author;
 }
+/* Un nombre compuesto no debe recuperarse mediante una sola palabra genérica
+ * de un pasaje: evita que Roma por sí sola responda a "Panteón de Roma".
+ * La coincidencia textual real o la vinculación catalográfica explícita se conserva.
+ * No aplica a consultas de un solo vocablo (domus, numerus, Nilo).
+ */
+function documentarySubjectEvidence(row,query){
+ const terms=queryTokens(topicQuery(query));
+ if(terms.length<2)return true;
+ if(row.externalFulltext)return true;
+ try{
+  const ids=matchingWorkIds(topicQuery(query));
+  if(row.workId&&ids.includes(row.workId))return true;
+ }catch{}
+ const txt=queryTokens([row.title,row.author,row.excerpt,row.meta,row.entityCanonical,
+  ...(row.aliases||[])].filter(Boolean).join(" "));
+ return terms.every(term=>txt.includes(term));
+}
 function authorityWeight(row){
  if(row.type==="wikipedia")return 35;
  if(row.type==="wikidata")return 20;
@@ -1065,7 +1082,8 @@ function display(rows,query,phase){
  const scored=relevantRows.filter(r=>r&&r.title&&(
   !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||
   queryTokens(query).length<2||entityEvidence(r,query)
- )).slice().sort((a,b)=>
+ )&&(!["passage","book","edition","manuscript","preface","section"].includes(r.type)||
+  documentarySubjectEvidence(r,query))).slice().sort((a,b)=>
   ((b.rating||0)+titleMatch(b,query)+(S.mode==="ai"&&b.aiEvidence?2800:0))-
   ((a.rating||0)+titleMatch(a,query)+(S.mode==="ai"&&a.aiEvidence?2800:0)));
  const deduped=[],seen=new Set();

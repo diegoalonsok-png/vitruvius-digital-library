@@ -1,0 +1,26 @@
+name: Relevancia de sujetos compuestos en Vitruvia
+on:
+  push:
+    paths:
+      - 'assets/vitruvia-search.js'
+      - 'scripts/test-vitruvia-subject-evidence.mjs'
+      - '.github/workflows/vitruvia-subject-evidence.yml'
+  pull_request:
+    paths:
+      - 'assets/vitruvia-search.js'
+      - 'scripts/test-vitruvia-subject-evidence.mjs'
+      - '.github/workflows/vitruvia-subject-evidence.yml'
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/vitruvia-search.js
+      - run: node scripts/test-vitruvia-subject-evidence.mjs
+      - run: node --test scripts/test-query-discovery.mjs
