@@ -38,3 +38,16 @@ La comparación automática futura no podrá certificar por sí misma la fidelid
 **Primero identificar y listar; después corregir.** La auditoría emitirá dos grupos claramente separados: (a) discrepancias o posibles errores que requieren cotejo de los originales y (b) errores confirmados documentalmente. Cada incidencia deberá contener edición, libro, capítulo, locus, evidencia contrastada, categoría y grado de certeza. Los errores confirmados se presentarán en una lista antes de preparar cualquier modificación. **Ningún cambio automático en ES V514, FR V554 ni EN V297**; tampoco se tocarán folios, códices, notas críticas o PDFs. Toda propuesta correctiva será reversible, documentada y requerirá aprobación editorial expresa del autor.
 
 Archivo de salida previsto: `reports/vitruvius-trilingual-incidencias.md`. El inventario de candidatos no se presentará como catálogo de errores confirmados.
+
+
+## Cuarto control editorial: Budé / Pierre Gros
+
+Se incorpora la *Collection des universités de France*, serie latina (Budé, Les Belles Lettres), para los diez libros, más la **Editio Minor** de Pierre Gros (2015) como otra referencia editorial, distinta de los diez tomos. Los registros bibliográficos con libro, editor, año, ISBN y enlace oficial están en `data/structured/bude-bibliographic-witnesses.json`.
+
+- **Krohn 1912** y **Rose 1899**: cotejar el OCR con las páginas reales y registrar variantes frente al texto latino de las tres ediciones.
+- **Budé, volúmenes I–X**: contrastar lecturas latinas, conjeturas, testimonios manuscritos, siglas y aparato crítico cuando se disponga de acceso legítimo. No equiparar las propuestas editoriales de Budé con un error de las ediciones de Kurilo.
+- **Editio Minor (Pierre Gros, 2015)**: control adicional para los diez libros, claramente diferenciado de la serie Budé en tomos.
+- **Copyright**: no copiar ni subir texto integral, PDFs o escaneos de Budé sin autorización o base legal adecuada. La ficha y enlaces públicos sí pueden incluirse en los registros de la auditoría.
+- **Evidencia**: toda futura incidencia debe atribuir la lectura específica a su editor, libro, locus, página y fuente consultada. Mientras no haya texto cotejable, marcar `pendiente de consulta`, nunca calcular un supuesto porcentaje Budé–Kurilo.
+
+El umbral orientativo de **97 %** sirve para localizar posibles divergencias, pero la calidad filológica no se determina exclusivamente por similitud de cadenas. Se conservan variantes críticas justificadas y la decisión final requiere aprobación editorial.
