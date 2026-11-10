@@ -131,6 +131,7 @@ const AUTO_TARGETS=["auto-es","auto-en","auto-fr"];
 const isAuto=lang=>AUTO_TARGETS.includes(lang);
 if(!/^[a-z0-9-]{3,60}$/.test(work)){status.textContent="Identificador de obra inválido.";return;}
 let files={},editions={},versions={},position=0,ready={left:false,right:false},generation={left:0,right:0},previous={left:"",right:""};
+const pendingNavigation={left:null,right:null};
 
 const defaults={background:"#fffdf7",foreground:"#202b35",font:"serif",size:20};
 const palettes={left:{...defaults},right:{...defaults}};
@@ -199,7 +200,7 @@ for(const side of ["left","right"]){
 
 function fill(sel,langs){sel.replaceChildren();for(const l of langs){const o=document.createElement("option");o.value=l;o.textContent=LANG[l]||l;sel.append(o);}}
 function pair(){return [versions[left.value],isAuto(right.value)?null:versions[right.value]];}
-function count(){const [a,b]=pair();return Math.max(a?.passages?.length||0,b?.passages?.length||0);}
+function count(){return versions[left.value]?.passages?.length||0;}
 /* Use document loci rather than ordinal positions where evidence permits.
    Exact equality is an editorial identifier match, not proof of semantic alignment.
    For a verse range or a paragraph within a book, use only the same higher-level
@@ -256,12 +257,20 @@ function renderAuto(){
   else content.append("Este idioma no dispone de traducción automática compatible.");
  }else content.append("Servicio de traducción automática no disponible; utilice el lector del original.");
 }
-function goto(){const [a,b]=pair();if(!a||(!b&&!isAuto(right.value)))return;const target=destination();
- if(ready.left)$("pane-left").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:left.value,index:target.left},location.origin);
+function navigatePane(side,index){
+ if(!ready[side])return;
+ pendingNavigation[side]=index;
+ $("pane-"+side).contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:$(side).value,index},location.origin);
+}
+function goto(originSide=null){
+ const [a,b]=pair();
+ if(!a||(!b&&!isAuto(right.value)))return;
+ const target=destination();
+ if(originSide!=="left")navigatePane("left",target.left);
  const currentLocus=a.passages[target.left]?.locus;
  if(currentLocus){params.set("locus",currentLocus);history.replaceState(null,"",location.pathname+"?"+params.toString());}
  if(isAuto(right.value))renderAuto();
- else if(ready.right)$("pane-right").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:right.value,index:target.right},location.origin);
+ else if(originSide!=="right")navigatePane("right",target.right);
  buttons();
  const labels={locus:"Mismo identificador de locus · cotejo filológico pendiente","book-approx":"Mismo libro / segmento próximo · alineación aproximada",ordinal:"Posición ordinal · equivalencia textual no verificada",auto:"Locus original · traducción automática opcional"};
  $("sync-position").textContent=(position+1)+" / "+count()+" · "+labels[target.quality];
@@ -289,7 +298,7 @@ function frame(side,lang){
  u.searchParams.set("parallel","1");u.searchParams.set("literal","1");
  const requestedLocus=params.get("locus");if(requestedLocus)u.searchParams.set("locus",requestedLocus);
  const q=$(side+"-query").value.trim();if(q)u.searchParams.set("q",q);
- ready[side]=false;$("pane-"+side).src=u.href;
+ ready[side]=false;pendingNavigation[side]=null;$("pane-"+side).src=u.href;
  params.set(side,lang);history.replaceState(null,"",location.pathname+"?"+params.toString());buttons();
 }
 function versionsFor(languages){return Promise.all(languages.map(async lang=>{
@@ -348,13 +357,19 @@ window.addEventListener("message",event=>{
  const side=event.source===$("pane-left").contentWindow?"left":"right";
  if(msg.lang!==$(side).value)return;
  if(msg.type==="vitruvia-parallel-position"){
-  if(side==="left"&&ready.left&&Number.isInteger(msg.index)&&
-    msg.index>=0&&msg.index<(versions[left.value]?.passages?.length||0)){
-   position=msg.index;
-   const locus=versions[left.value]?.passages?.[position]?.locus;
-   if(locus){params.set("locus",locus);history.replaceState(null,"",location.pathname+"?"+params.toString());}
-   if(isAuto(right.value))renderAuto();
-   buttons();store();
+  if(!ready[side]||!Number.isInteger(msg.index))return;
+  if(pendingNavigation[side]===msg.index){pendingNavigation[side]=null;return;}
+  pendingNavigation[side]=null;
+  if(side==="left"){
+   if(msg.index<0||msg.index>=count())return;
+   position=msg.index;goto("left");
+  }else if(!isAuto(right.value)){
+   const rightPassages=versions[right.value]?.passages||[];
+   if(msg.index<0||msg.index>=rightPassages.length)return;
+   const thisLocus=locusKey(rightPassages[msg.index]?.locus);
+   const leftPassages=versions[left.value]?.passages||[];
+   const matched=thisLocus?leftPassages.findIndex(p=>locusKey(p.locus)===thisLocus):-1;
+   position=matched>=0?matched:Math.min(msg.index,Math.max(0,count()-1));goto("right");
   }
   return;
  }
