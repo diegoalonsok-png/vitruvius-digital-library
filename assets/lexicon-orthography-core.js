@@ -27,22 +27,33 @@ function mapText(source,mode,language){
  map.push(src.length);
  return {text,map};
 }
-function attestations(source,query,mode="exact",language="grc",limit=30){
+// Comparación literal o normalizada: cuenta todas las ocurrencias y sólo
+// conserva las muestras solicitadas, sin confundir frecuencia con lematización.
+function scanAttestations(source,query,mode,language,sampleLimit,countAll){
  const q=norm(query,mode,language);
- if(!q||q.length<2)return [];
+ if(!q||q.length<2)return {hits:[],count:0};
  const {text,map}=mapText(source,mode,language);
- const out=[];let from=0;
- while(out.length<limit){
+ const hits=[];let from=0,count=0;
+ while(countAll||hits.length<sampleLimit){
   const i=text.indexOf(q,from);
   if(i<0)break;
   const before=i>0?text[i-1]:"",after=text[i+q.length]||"";
   if(!letter.test(before)&&!letter.test(after)){
    const start=map[i],end=map[Math.min(i+q.length,map.length-1)];
-   if(end>start)out.push({start,end,form:String(source).slice(start,end)});
+   if(end>start){
+    count++;
+    if(hits.length<sampleLimit)hits.push({start,end,form:String(source).slice(start,end)});
+   }
   }
   from=i+Math.max(1,q.length);
  }
- return out;
+ return {hits,count};
+}
+function attestations(source,query,mode="exact",language="grc",limit=30){
+ return scanAttestations(source,query,mode,language,limit,false).hits;
+}
+function attestationStats(source,query,mode="exact",language="grc",sampleLimit=3){
+ return scanAttestations(source,query,mode,language,sampleLimit,true);
 }
 function diagnosis(term){
  const x=String(term||"");
@@ -70,5 +81,5 @@ function suggestedVariants(term){
  if(d.language==="la")results.push({label:"u/v e i/j editorial",value:norm(x,"editorial","la"),kind:"recuperación"});
  return results;
 }
-return {norm,mapText,attestations,diagnosis,suggestedVariants,version:"1.0"};
+return {norm,mapText,attestations,attestationStats,diagnosis,suggestedVariants,version:"1.1"};
 });
