@@ -15,7 +15,7 @@ const extract=(a,b)=>{
 const near=extract("function previewPassagesNearWork(","function renderGroups(");
 const viewer=extract("async function openViewer(","/* ---------- Citas en lenguaje natural");
 assert(!near.includes('$("#results").scrollIntoView'),"No saltar al encabezado lejano de resultados");
-assert(html.includes("assets/vitruvia-lexicon.js?v=20261109-dictionary-translation-inline-v4"));
+assert(html.includes("assets/vitruvia-lexicon.js?v="),"El Lexicon debe cargar su motor con versión de caché, sin fijar una versión obsoleta");
 assert(html.includes(".lx-inline-passage-preview"));
 assert(html.includes(".lx-viewer-origin"));
 

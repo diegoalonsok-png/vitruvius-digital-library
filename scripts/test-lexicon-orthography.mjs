@@ -21,6 +21,13 @@ const latin=o.attestations("VIRTUS, uirtus, virtutibus","uirtus","editorial","la
 assert.equal(latin.length,2);
 assert.equal(o.attestations("domusticus","domus","editorial","la").length,0);
 assert.equal(o.attestations("Ἀθηνῶν","Αθηναι","editorial","grc").length,0);
+const stats=o.attestationStats("VIRTUS, uirtus, virtutibus","uirtus","editorial","la",1);
+assert.equal(stats.count,2,"Las formas editoriales cuentan todas las ocurrencias");
+assert.equal(stats.hits.length,1,"La muestra visible debe ser acotada");
+assert.equal(stats.hits[0].form,"VIRTUS","La fuente original no se normaliza visualmente");
+assert.equal(o.attestationStats("λόγοϲ λόγος λόγῳ","λογος","editorial","grc",1).count,2);
+assert.equal(o.attestationStats("domusticus domus","domus","editorial","la").count,1);
+assert.equal(o.attestationStats("ἀνθρωπος","a","editorial","grc").count,0);
 assert.equal(o.diagnosis("Ἀθῆναι").language,"grc");
 assert.ok(o.suggestedVariants("λόγος").some(v=>v.label.includes("Sigma")));
-console.log("Orthography tests passed: polytonic Greek, sigma, source offsets, Latin u/v, word boundaries.");
+console.log("Orthography tests passed: polytonic Greek, sigma, Latin u/v, original forms, frequency and sample limits.");

@@ -7,6 +7,9 @@ const allowed=[
  {status:"A",path:"scripts/audit-new-edition.mjs"},
  {status:"M",path:"data/classics-corpus/search-registry.json"},
  {status:"M",path:"data/ecdotic-decisions.json"},
+ {status:"M",path:"documents/edicion-v514.html"},
+ {status:"M",path:"documents/edicion-v554.html"},
+ {status:"M",path:"documents/edicion-v297.html"},
 ];
 assert.equal(inspect(allowed).length,0,"Indexing Greek/Latin originals and improving the live interfaces must remain possible");
 const forbidden=[
@@ -15,6 +18,8 @@ const forbidden=[
  {status:"M",path:"images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/folio-1r.jpg"},
  {status:"D",path:"images/old-medieval-codex.png"},
  {status:"A",path:"documents/new-translation-en.pdf"},
+ {status:"A",path:"documents/edicion-v297.html"},
+ {status:"M",path:"documents/edicion-uncatalogued.html"},
  {status:"A",path:"downloads/book-spanish.docx"},
  {status:"M",path:"documents/kurilo-recensio-es.pdf"},
  {status:"M",path:"data/codex-h/folio-index.json"},
@@ -30,4 +35,4 @@ const forbidden=[
 assert.equal(inspect(forbidden).length,forbidden.length,"All corpus master, folio and heavy-document violations must be caught");
 for(const item of forbidden)assert.ok(violation(item.status,item.path),item.path);
 assert.ok(violation("R100","index.html"),"Renames must be reviewed manually");
-console.log("PASS: no deletion, replacement or new bulky document is allowed, while original-text indexation and scholarly metadata remain writable.");
+console.log("PASS: folios, documents and masters remain protected; only existing edition HTML metadata cards are writable.");
