@@ -2,7 +2,7 @@
   "schema": 1,
   "updated": "2026-11-10",
   "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores. Ampliación: tres manuscritos institucionalmente documentados con cobertura particular y límites de acceso.",
-  "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor.",
+  "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto.",
   "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
   "records": [
     {
@@ -564,7 +564,7 @@
       "verificationUrl": "https://www.sds.ox.ac.uk/oxyrhynchus-papyri",
       "verification": "4CARE/Trismegistos; catálogo de Oxford/Egypt Exploration Society; fotografías de consulta en Wikimedia Commons",
       "viewerRole": "Fotografías de referencia externas (no visor IIIF institucional verificado)",
-      "accessStatus": "Fotografías de ambas caras disponibles en Wikimedia Commons; consultar derechos y atribución antes de reproducir.",
+      "accessStatus": "Dos fotografías específicas comprobadas (caras A y B) y galería local por carga remota. Catálogo de Oxford y ficha 4CARE. No se aloja copia en GitHub.",
       "rights": "Consultar condiciones de la imagen; no se guardan copias en GitHub.",
       "dateStartBasis": "Siglo IV tardío aproximado; 350 es clave de ordenación, no fecha exacta.",
       "datingBasis": "Paleografía; The Oxyrhynchus Papyri XV (1922); 4CARE artefact 260",
@@ -574,7 +574,52 @@
       "cataloguingStatus": "Datos de soporte y datación fundamentados; el lugar exacto de producción no está acreditado.",
       "datingNotation": "s. IV ex.",
       "citation": "Oxford, Bodleian Art, Archaeology and Ancient World Library, P. Oxy. XV 1782 (TM 64596), s. IV ex.; Did. 1.3d–1.4a; 2.7b–3.2b.",
-      "viewerKind": "external_images"
+      "viewerKind": "external_images",
+      "imageViews": [
+        {
+          "id": "a",
+          "title": "P. Oxy. XV 1782 · cara A",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b4/POxy_1782_a.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:POxy_1782_a.jpg",
+          "provider": "Wikimedia Commons / reproducción de colección de Oxford",
+          "rights": "Archivo Commons identificado como Public Domain Mark; verificar contexto de reutilización."
+        },
+        {
+          "id": "b",
+          "title": "P. Oxy. XV 1782 · cara B",
+          "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/POxy_1782_b.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:POxy_1782_b.jpg",
+          "provider": "Wikimedia Commons / reproducción de colección de Oxford",
+          "rights": "Archivo Commons identificado como Public Domain Mark; verificar contexto de reutilización."
+        }
+      ],
+      "localViewer": "classics-facsimile-gallery.html?ms=didache-poxy-xv-1782",
+      "alternativeLinks": [
+        {
+          "title": "Fotografía lado A — archivo individual",
+          "url": "https://commons.wikimedia.org/wiki/File:POxy_1782_a.jpg",
+          "type": "image",
+          "status": "verified_item_page"
+        },
+        {
+          "title": "Fotografía lado B — archivo individual",
+          "url": "https://commons.wikimedia.org/wiki/File:POxy_1782_b.jpg",
+          "type": "image",
+          "status": "verified_item_page"
+        },
+        {
+          "title": "Catálogo Oxford — colección Oxyrhynchus",
+          "url": "https://www.sds.ox.ac.uk/oxyrhynchus-papyri",
+          "type": "collection",
+          "status": "official_general_collection"
+        },
+        {
+          "title": "4CARE: artefacto 260 / TM 64596",
+          "url": "https://4care-skos.mf.no/4care-artefacts/260/",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
     },
     {
       "id": "didache-hierosolymitanus-54",
@@ -609,7 +654,27 @@
       "cataloguingStatus": "Signatura, contenido, datación, soporte y escritura acreditados por Pinakes; reproducción de microfilme LoC.",
       "datingNotation": "1056",
       "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54 (Codex Hierosolymitanus, H), ff. 76–81, 1056.",
-      "viewerKind": "institutional_microfilm"
+      "viewerKind": "institutional_microfilm",
+      "alternativeLinks": [
+        {
+          "title": "Digitalización microfilmada — Library of Congress",
+          "url": "https://www.loc.gov/item/00279389694-jo/",
+          "type": "viewer",
+          "status": "verified_item_page"
+        },
+        {
+          "title": "Signatura y contenido — Pinakes 35291",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+          "type": "catalog",
+          "status": "verified_item_page"
+        },
+        {
+          "title": "Categoría de imágenes de H54 (copia complementaria)",
+          "url": "https://commons.wikimedia.org/wiki/Category:Codex_Hierosolymitanus",
+          "type": "images",
+          "status": "external_collected_images"
+        }
+      ]
     },
     {
       "id": "didache-elbasan-82",
@@ -644,7 +709,21 @@
       "cataloguingStatus": "Signatura, datación aproximada y relación con H fundamentadas; sin visor institucional público de folios comprobado.",
       "datingNotation": "s. XVI 3/4",
       "citation": "Tirana, Arkivi Qëndror i Shtetit, Kodikët e Shqipërisë 488, Dosja 082 (Elbasan 82), s. XVI 3/4.",
-      "viewerKind": "catalogue_only"
+      "viewerKind": "catalogue_only",
+      "alternativeLinks": [
+        {
+          "title": "Catálogo del códice — Pinakes 63441",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/63441/",
+          "type": "catalog",
+          "status": "verified_item_page"
+        },
+        {
+          "title": "Ficha bibliográfica del estudio de Guida",
+          "url": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/",
+          "type": "bibliography",
+          "status": "verified_item_page"
+        }
+      ]
     },
     {
       "library": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
