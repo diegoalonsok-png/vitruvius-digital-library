@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-isidore-boethius-v18",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-isidore-boethius-v18",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-isidore-boethius-v18"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-vitruvius-standard-v19",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-vitruvius-standard-v19",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-vitruvius-standard-v19",standard:"data/classics-corpus/vitruvius-standard-222.json?v=20261110-vitruvius-standard-v19"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -95,13 +95,14 @@ function store(){if(P.ready)return P.ready;
  fetch(PATHS.witness).then(x=>{if(!x.ok)throw Error("Testimonios no disponibles");return x.json()}).catch(()=>({records:[]})),
  fetch(PATHS.text).then(x=>x.ok?x.json():{entries:[]}).catch(()=>({entries:[]})),
  fetch(PATHS.authority).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
-  fetch(PATHS.critical).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]}))
- ]).then(([c,t,r,audit,critical])=>{
+  fetch(PATHS.critical).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
+  fetch(PATHS.standard).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]}))
+ ]).then(([c,t,r,audit,critical,standard])=>{
  if(!Array.isArray(c.works))throw Error("Catálogo sin registros");
  const docs=new Map(c.works.map(w=>[w.id,w]));
  const witness=new Map();for(const rec of t.records||[])for(const id of rec.workIds||[]){if(!witness.has(id))witness.set(id,[]);witness.get(id).push(rec)}
  const texts=new Map();for(const rec of r.entries||[]){if(!texts.has(rec.workId))texts.set(rec.workId,[]);texts.get(rec.workId).push(rec)}
- return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),critical:new Map((critical.schema==="vitruvius-critical-authority-222-v1"&&critical.records?.length===222?critical.records:[]).map(e=>[e.workId,e])),count:c.works.length,witnessCount:(t.records||[]).length};
+ return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),critical:new Map((critical.schema==="vitruvius-critical-authority-222-v1"&&critical.records?.length===222?critical.records:[]).map(e=>[e.workId,e])),standard:new Map((standard.records||[]).map(e=>[e.workId,e])),count:c.works.length,witnessCount:(t.records||[]).length};
  });
  return P.ready;
 }
@@ -329,6 +330,46 @@ function renderBibliography(dest,w){
   document.createTextNode(citation));
  dest.append(c);
 }
+function renderVitruviusStandard(dest,w,d){
+ const rec=d.standard.get(w.id);
+ section(dest,"Estándar Vitruvius · autoridad, cronología y control codicológico");
+ if(!rec){dest.append(html("p","cwd-muted","Matriz normalizada pendiente de cargar. La ficha tradicional sigue disponible."));return}
+ const id=rec.authority||{},meta=rec.work||{},ws=rec.witnesses||[];
+ row(dest,"Canon de autoridad",id.system);
+ row(dest,"Códigos de obra PHI / TLG propuestos",(id.candidateWorkCodes||[]).join(" · ")||"Pendiente de identificación canónica");
+ row(dest,"Estado de autoridad","Los códigos propuestos no son una identidad bibliográfica confirmada hasta cotejar autor y título.");
+ row(dest,"CTS URN de edición",id.ctsEditionUrn||"Pendiente de verificar una edición individual publicada; no se fabrica a partir del código de obra");
+ row(dest,"Composición de la obra",meta.compositionDating||"Sin fecha acreditada");
+ row(dest,"Género / materia",meta.genre||"Pendiente");
+ row(dest,"Datación de los códices","Independiente de la fecha de composición (véanse testimonios individualizados)");
+ if(!ws.length)row(dest,"Testimonios individualizados","Pendiente");
+ for(const m of ws){
+  const item=html("div","cwd-ms");
+  row(item,"Repositorio y signatura",[m.repository,m.shelfmark].filter(Boolean).join(" · "));
+  row(item,"Siglum para aparato crítico",m.siglum||"Sin siglum crítico acreditado");
+  if(m.siglum)row(item,"Reserva sobre siglum","Comprobar su uso en la edición crítica de control de esta obra");
+  row(item,"Datación paleográfica",m.paleographicDating||"Pendiente");
+  row(item,"Soporte",m.material||"No documentado");
+  row(item,"Extensión / folios",m.folios||"Sin folios acreditados");
+  row(item,"Texto conservado, daños y lagunas",m.coverage||"Pendiente");
+  row(item,"Observaciones codicológicas",m.physicalCondition);
+  row(item,"Edición crítica de control para este testigo",m.criticalEditionReference||"No individualizada todavía");
+  row(item,"Grado de verificación",m.sourceStatus);
+  const l=html("p","cwd-links");
+  addA(l,"Catálogo de manuscrito ↗",m.registryRecord);
+  addA(l,"Digitalización institucional ↗",m.officialDigitization);
+  addA(l,"Manifest IIIF registrado ↗",m.iiifManifest);
+  addA(l,"Referencia de verificación ↗",m.verificationUrl);
+  if(l.childNodes.length)item.append(l);
+  dest.append(item);
+ }
+ const refs=rec.editorialControl?.chicago18References||[];
+ if(refs.length){row(dest,"Referencias editoriales registradas (revisar formato Chicago 18)",refs.join(" | "))}
+ else row(dest,"Edición crítica y cita Chicago 18","Pendiente de cotejo contra datos bibliográficos reales; no se generan campos ausentes");
+ const a=html("p","cwd-links");
+ addA(a,"Consultar matriz de las 222 fichas ↗","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/data/classics-corpus/vitruvius-standard-222.json");
+ dest.append(a);
+}
 function renderAcademicSummary(dest,w,d){
  const critical=d.critical.get(w.id)||{};
  const integrity=critical.integrity||{};
@@ -408,6 +449,7 @@ function renderInto(target,id,opts={}){
   if(/atribuci[oó]n|debati|discuti|fragment/i.test(w.author+" "+w.dating+" "+w.title)){
    target.append(html("p","cwd-muted","Advertencia filológica: la atribución, la datación o la transmisión de esta obra puede ser discutida o fragmentaria; cotejar estudios especializados."));
   }
+  renderVitruviusStandard(target,w,d);
   renderAcademicSummary(target,w,d);
   renderCriticalAuthority(target,w,d);
   renderWitness(target,w,d);
