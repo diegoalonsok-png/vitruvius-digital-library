@@ -28,24 +28,51 @@ function commonsPlate(item,src,caption,cls){
  return fig;
 }
 async function photo(item,work){
- // Imagen declarada en Wikidata (P18) para esta misma obra: prioridad sobre la búsqueda por título.
+ // Image on a precisely identified Wikidata building takes precedence.
  if(/^https:\/\/commons\.wikimedia\.org\/wiki\/Special:FilePath\//.test(work.image||'')){
   const fig=commonsPlate(item,work.image,localized('Foto documentada de ','Documentary photo of ','Photo documentaire de ')+work.title,'architecture-work-photo-link');
   item.insertBefore(fig,item.querySelector('.architecture-work-content')||item.firstChild);return;
  }
  const title=work.photoTitle||work.title;
  if(!title||!item.isConnected)return;
+ let thumbnail='',source='';
  const api='https://en.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',titles:title,redirects:'1',prop:'pageimages',piprop:'thumbnail|name',pithumbsize:'480',pilicense:'any',format:'json',origin:'*'});
- const data=await read(api);if(!item.isConnected)return;
+ const data=await read(api).catch(()=>null);
+ if(!item.isConnected)return;
  const target=norm(title),redirection=(data?.query?.redirects||[]).find(x=>norm(x.from)===target);
  const final=norm(redirection?.to||title);
  const page=Object.values(data?.query?.pages||{}).find(x=>norm(x.title)===final&&x.thumbnail?.source);
- if(!page||!/^https:\/\//.test(page.thumbnail.source))return;
- const source=page.pageimage?'https://en.wikipedia.org/wiki/File:'+encodeURIComponent(page.pageimage.replace(/ /g,'_')):
-  'https://en.wikipedia.org/wiki/'+encodeURIComponent(page.title.replace(/ /g,'_'));
+ if(page&&/^https:\/\//.test(page.thumbnail.source)){
+  thumbnail=page.thumbnail.source;
+  source=page.pageimage?'https://en.wikipedia.org/wiki/File:'+encodeURIComponent(page.pageimage.replace(/ /g,'_')):
+   'https://en.wikipedia.org/wiki/'+encodeURIComponent(page.title.replace(/ /g,'_'));
+ }
+ if(!thumbnail){
+  // Fallback only to a Commons file whose own filename identifies this work;
+  // a merely similar-looking building is not evidence of attribution.
+  const query='intitle:"'+title.replace(/["“”]/g,'')+'"';
+  const json=await read('https://commons.wikimedia.org/w/api.php?'+new URLSearchParams({
+   action:'query',generator:'search',gsrsearch:query,gsrnamespace:'6',gsrlimit:'12',
+   prop:'imageinfo',iiprop:'url|mime',iiurlwidth:'480',format:'json',origin:'*'
+  })).catch(()=>null);
+  if(!item.isConnected)return;
+  const nameTerms=words(title),items=Object.values(json?.query?.pages||{});
+  const selected=items.map(x=>{
+   const info=x.imageinfo?.[0],caption=String(x.title||'').replace(/^File:/,'');
+   const hits=nameTerms.filter(term=>words(caption).includes(term)).length;
+   const enough=nameTerms.length>=2&&hits>=2||
+    nameTerms.length===1&&nameTerms[0].length>=8&&hits===1;
+   return enough&&/^image\/(jpeg|png|webp)$/.test(info?.mime||'')&&
+    /^https:\/\//.test(info?.thumburl||'')&&
+    /^https:\/\/commons\.wikimedia\.org\//.test(info?.descriptionurl||'')?
+    {image:info.thumburl,url:info.descriptionurl}:null;
+  }).find(Boolean);
+  if(selected){thumbnail=selected.image;source=selected.url;}
+ }
+ if(!thumbnail||!item.isConnected)return;
  const fig=a('',source);fig.className='architecture-work-photo-link';
  const image=element('img','architecture-work-photo');
- image.src=page.thumbnail.source;image.alt=localized('Foto documentada de ','Documentary photo of ','Photo documentaire de ')+work.title;
+ image.src=thumbnail;image.alt=localized('Foto documentada de ','Documentary photo of ','Photo documentaire de ')+work.title;
  image.loading='lazy';image.decoding='async';
  image.addEventListener('error',()=>fig.remove());fig.append(image);
  const body=item.querySelector('.architecture-work-content');
