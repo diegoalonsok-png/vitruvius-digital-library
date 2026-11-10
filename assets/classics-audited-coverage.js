@@ -28,7 +28,7 @@ async function remote(spec,known,local){
      e.language!==spec.language||e.path!==spec.prefix+e.workId+spec.suffix||
      !/^[0-9a-f]{64}$/.test(e.sourceSha256||"")||
      typeof e.source!=="string"||
-     !/^https:\/\/raw\.githubusercontent\.com\/(?:PerseusDL|OpenGreekAndLatin|cltk)\//.test(e.source)||
+     !(/^(?:https:\/\/raw\.githubusercontent\.com\/(?:PerseusDL|OpenGreekAndLatin|cltk)\/|https:\/\/la\.wikisource\.org\/wiki\/De_condicionibus_agrorum$)/).test(e.source)||
      !Number.isInteger(e.passages)||e.passages<1)
    throw Error("Original remoto incompatible con el catálogo");
   seen.add(e.workId);
