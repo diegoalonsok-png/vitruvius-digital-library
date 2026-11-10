@@ -1,7 +1,7 @@
 /* VITRUVIA RESEARCH ENGINE · client-only, verifiable.
  * Three cooperating retrieval routes: locus / concept / bibliography & codices.
  * Concept retrieval uses explicit synonym expansion; vector embeddings are optional,
- * and MUST NOT be claimed active until a published checked matrix exists.
+ * and MUST NOT be claimed validated merely because E5 runs in the browser.
  */
 (()=>{"use strict";
 const base="data/";
@@ -12,7 +12,7 @@ const stop=new Set("de del los las el la lo en un una y e o a por para que como 
 const terms=s=>flat(s).split(" ").filter(t=>t.length>2&&!stop.has(t));
 const unique=a=>[...new Set(a)];
 const SYNONYMS={
- symmetria:"symmetria simetria symetria proportion proportio proporcion modular modulus razon armonia harmony proportion",
+ symmetria:"symmetria symetria simetria συμμετρία proportion proportio proporcion modular modulus razon armonia harmony proportion",
  templo:"templo templum temple aedes sacrum santuario sanctuary templo temple templos",
  toscano:"toscano tuscano tuscan tuscanica tuscanicum etrusco etruscan etrusca",
  arquitect:"architectura architecturae arquitectura architecture building edilizia construir construcción",
@@ -288,5 +288,5 @@ async function query(q,opts={}){
  result.rows.sort((a,b)=>b.rating-a.rating);
  return result
 }
-window.VitruviaResearchEngine={canonical,classify,prefaceIntent,prefaceRows,query,lexicalScore,manuscriptRows,passageRows,getCorpora,version:"1.2-context-panel"};
+window.VitruviaResearchEngine={canonical,parseReference,classify,prefaceIntent,prefaceRows,query,lexicalScore,manuscriptRows,passageRows,getCorpora,version:"1.3-reference-cases"};
 })();
