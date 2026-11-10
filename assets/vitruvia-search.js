@@ -1519,7 +1519,7 @@ function mode(m){S.mode=["all","site","wiki","external","concept","ai"].includes
  if(S.mode!=="ai"){const status=document.getElementById("ai-status");if(status)status.hidden=true;}
  document.querySelectorAll("button.tab").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===S.mode)));
  $("mode-note").textContent=S.mode==="ai"?
- (S.lang==="en"?"Experimental multilingual semantic search of indexed documents. Initial model download ≈120 MB. External catalogues are not part of the neural model.":S.lang==="fr"?"Recherche sémantique multilingue expérimentale sur les documents indexés. Premier téléchargement ≈120 Mo. Les catalogues externes ne font pas partie du modèle.":"Búsqueda semántica multilingüe experimental sobre documentos indexados; primera descarga ≈120 MB. Los catálogos externos no forman parte del modelo."):
+ (S.lang==="en"?"Optional E5 semantic search of indexed documents; first download ≈120 MB only in AI mode. Data saver uses BM25 without a model download. External catalogues are not part of the neural model.":S.lang==="fr"?"Recherche E5 facultative sur les documents indexés : premier téléchargement ≈120 Mo seulement en mode IA. Économie de données : BM25 sans téléchargement du modèle. Les catalogues externes sont exclus.":"IA semántica opcional sobre documentos indexados: primera descarga E5 ≈120 MB solo al buscar en modo IA. Ahorro de datos: BM25 sin descarga neuronal. Los catálogos externos no forman parte del modelo."):
  (T().explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||T().explain[0]);
 }
 function theme(th){S.theme=th;document.documentElement.dataset.theme=th;
