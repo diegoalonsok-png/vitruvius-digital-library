@@ -1,4 +1,4 @@
-import {parseLocus,findMatches,roman} from './search-core.mjs?v=20261105-prefacio-aliases-v1';
+import {parseLocus,findMatches,roman} from './search-core.mjs?v=20261109-prefacion-v2';
 const $=s=>document.querySelector(s);
 const editions=[{id:'recensio-es',name:'V514 · Diego Kurilo · Latín / Castellano',pdf:'https://drive.google.com/file/d/19qZMjNezQqAdrzH9aLt3N4PN_UfxfxwZ/view'},{id:'recensio-fr',name:'V554 · Diego Kurilo · Latín / Francés',pdf:'https://drive.google.com/file/d/12P4-4hADEpR67DfeqOfN9DVntgnOx0DE/view'},{id:'theory-en',name:'V297 · Diego Kurilo · Latín / Inglés',pdf:'https://drive.google.com/file/d/1b5sSpZuxpp3QUyradY_l-OJaY09rbir1/view'}];
 const cache=new Map();let krohnCache=null;let notesCache=null;let results=[],shown=0,revision=0,lastQuery='';
