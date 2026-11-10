@@ -4,15 +4,15 @@
   "method": "Cada registro separa autoría, título uniforme, nomenclatura PHI/TLG/CTS, integridad de conservación e indexación, manuscritos individuales y sus signaturas, versión impresa más temprana en los datos verificados y bibliografía. El primer testimonio de este registro no se confunde con el más antiguo universal. No se inventan variantes ni stemmata.",
   "counts": {
     "total": 222,
-    "manuscriptRecords": 57,
-    "worksWithManuscripts": 54,
+    "manuscriptRecords": 60,
+    "worksWithManuscripts": 58,
     "withoutOriginalIndex": 10,
     "modernEditions": 3,
     "explicitlyPartial": 11,
     "unverifiedIndexCompleteness": 196,
     "withDatedEdition": 18,
-    "withTwoOrMoreWitnesses": 24,
-    "withVerifiedViewer": 49
+    "withTwoOrMoreWitnesses": 29,
+    "withVerifiedViewer": 50
   },
   "records": [
     {
@@ -55,7 +55,7 @@
           "date": "800–824 d. C. · siglo IX",
           "coverage": "Testimonio completo del tratado; dos folios separados se conservan en Oxford (Rawlinson MS D. 893, ff. 135–136).",
           "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048598",
-          "viewerUrl": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
+          "viewerUrl": "codex-h-folios-local.html?folio=f.1r",
           "iiifManifestUrl": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
           "verification": "British Library archive catalogue; published IIIF viewer",
           "rights": "British Library: consultar y respetar condiciones institucionales.",
@@ -71,7 +71,7 @@
             "date": "800–824 d. C. · siglo IX",
             "coverage": "Testimonio completo del tratado; dos folios separados se conservan en Oxford (Rawlinson MS D. 893, ff. 135–136).",
             "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048598",
-            "viewerUrl": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
+            "viewerUrl": "codex-h-folios-local.html?folio=f.1r",
             "iiifManifestUrl": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
             "verification": "British Library archive catalogue; published IIIF viewer",
             "rights": "British Library: consultar y respetar condiciones institucionales.",
@@ -182,7 +182,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 975
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "cicero-catilina-harley2716",
@@ -315,7 +315,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 825
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "cicero-de-oratore-harley2736",
@@ -418,7 +418,7 @@
           "rights": "Biblioteca Apostolica Vaticana: consulta personal y estudio; consultar permisos de reproducción.",
           "dateStart": 300
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "cicero-republica-vat5757",
@@ -512,7 +512,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 1075
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "caesar-add-ms-10084",
@@ -637,7 +637,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 1075
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "caesar-add-ms-10084",
@@ -720,7 +720,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -788,7 +788,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -854,7 +854,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -941,7 +941,7 @@
           "rights": "Universidad de Leiden: revisar condiciones de reutilización.",
           "dateStart": 800
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "lucretius-oblongus",
@@ -1060,7 +1060,7 @@
           "rights": "Biblioteca Vaticana: imágenes para estudio personal; solicitar autorización para reproducción pública.",
           "dateStart": 301
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "vergil-vaticanus-aeneid",
@@ -1179,7 +1179,7 @@
           "rights": "Biblioteca Vaticana: imágenes para estudio personal; autorización para reproducción pública.",
           "dateStart": 301
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "vergil-vaticanus-georgica",
@@ -1290,7 +1290,7 @@
           "repository": "Londres, British Library",
           "shelfmark": "Harley MS 2724",
           "date": "s. XI",
-          "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Sermones ff. 94v–130r; otros textos horacianos.",
+          "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
           "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
           "viewerUrl": null,
           "iiifManifestUrl": null,
@@ -1298,7 +1298,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 1001
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "horace-works-harley2724",
@@ -1306,13 +1306,27 @@
             "repository": "Londres, British Library",
             "shelfmark": "Harley MS 2724",
             "date": "s. XI",
-            "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Sermones ff. 94v–130r; otros textos horacianos.",
+            "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
             "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
             "viewerUrl": null,
             "iiifManifestUrl": null,
             "verification": "British Library, lista de Harley manuscripts (Harley MS 2724); código de ficha individual por confirmar",
             "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
             "dateStart": 1001
+          },
+          {
+            "id": "horace-harley3997",
+            "title": "Horacio, Carmina / Sermones / Ars poetica / Epodi / Epistulae — Harley MS 3997",
+            "repository": "Londres, British Library",
+            "shelfmark": "Harley MS 3997",
+            "date": "s. XV (según registro institucional; fecha exacta pendiente de cotejo)",
+            "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
+            "recordUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
+            "viewerUrl": null,
+            "iiifManifestUrl": null,
+            "verification": "British Library Harley MS 3997",
+            "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+            "dateStart": 1401
           }
         ],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
@@ -1393,7 +1407,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 301
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "livy-pal-lat24-palimp",
@@ -1529,7 +1543,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 1175
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "ovid-fasti-harley2737",
@@ -1655,7 +1669,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 1175
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "ovid-fasti-harley2737",
@@ -1743,7 +1757,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -1809,7 +1823,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -1881,7 +1895,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -1954,9 +1968,37 @@
         "classificationBasis": "Separar supervivencia del texto antiguo, integridad del archivo indexado y alcance del manuscrito."
       },
       "manuscript": {
-        "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
-        "witnesses": [],
+        "earliestInVerifiedRegister": {
+          "id": "strabo-bnf-grec1393",
+          "title": "Estrabón, Γεωγραφικά (libros I–XVII) — Parisinus gr. 1393",
+          "repository": "París, Bibliothèque nationale de France",
+          "shelfmark": "Grec 1393",
+          "date": "s. XIII–XIV",
+          "coverage": "Strabonis rerum geographicarum libri XVII, según ficha BnF; 260 folios de códice griego.",
+          "recordUrl": "https://iiif.biblissima.fr/collections/manifest/1d904e660eea62e5b3dfb26cfec5cfdc34956c75",
+          "viewerUrl": "https://gallica.bnf.fr/ark:/12148/btv1b8468312f",
+          "iiifManifestUrl": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8468312f/manifest.json",
+          "verification": "BnF, Grec 1393; registro y manifiesto Biblissima",
+          "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+          "dateStart": 1201
+        },
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
+        "witnesses": [
+          {
+            "id": "strabo-bnf-grec1393",
+            "title": "Estrabón, Γεωγραφικά (libros I–XVII) — Parisinus gr. 1393",
+            "repository": "París, Bibliothèque nationale de France",
+            "shelfmark": "Grec 1393",
+            "date": "s. XIII–XIV",
+            "coverage": "Strabonis rerum geographicarum libri XVII, según ficha BnF; 260 folios de códice griego.",
+            "recordUrl": "https://iiif.biblissima.fr/collections/manifest/1d904e660eea62e5b3dfb26cfec5cfdc34956c75",
+            "viewerUrl": "https://gallica.bnf.fr/ark:/12148/btv1b8468312f",
+            "iiifManifestUrl": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8468312f/manifest.json",
+            "verification": "BnF, Grec 1393; registro y manifiesto Biblissima",
+            "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+            "dateStart": 1201
+          }
+        ],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
       "earlyEditions": {
@@ -2022,7 +2064,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -2089,7 +2131,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -2155,7 +2197,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -2216,7 +2258,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -2296,7 +2338,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 901
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "pliny-naturalis-bamberg42",
@@ -2405,7 +2447,7 @@
           "rights": "ÖNB: imágenes institucionales sujetas a condiciones de reutilización.",
           "dateStart": 512
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "dioscorides-vienna",
@@ -2515,7 +2557,7 @@
           "rights": "Biblioteca Vaticana: imágenes para estudio personal, reproducción sujeta a autorización.",
           "dateStart": 1354
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "josephus-vat-gr-984",
@@ -2610,7 +2652,7 @@
           "rights": "Biblioteca Vaticana: imágenes para estudio personal, reproducción sujeta a autorización.",
           "dateStart": 901
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "josephus-pal-gr-14",
@@ -2713,7 +2755,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 1001
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "quintilian-harley2664",
@@ -2810,7 +2852,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -2871,7 +2913,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -2934,7 +2976,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -2999,7 +3041,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -3082,7 +3124,7 @@
           "rights": "Codex Sinaiticus Project / British Library y socios: derechos de imágenes y transcripción según proyecto; sin copia de imágenes en Vitruvia.",
           "dateStart": 301
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "sinaiticus-gospels-apostolic",
@@ -3185,7 +3227,7 @@
           "rights": "British Library, Royal Collection: consultar restricciones y derechos de digitalización del archivo.",
           "dateStart": 401
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "alexandrinus-nt-clement",
@@ -3289,7 +3331,7 @@
           "date": "s. IV ex. (finales del siglo IV, datación paleográfica aproximada)",
           "coverage": "Dos hojas de pergamino de un códice miniatura; Did. 1.3d–1.4a y 2.7b–3.2b según Layton (1968); la delimitación varía ligeramente entre ediciones. Fragmentario.",
           "recordUrl": "https://4care-skos.mf.no/4care-artefacts/260/",
-          "viewerUrl": "https://commons.wikimedia.org/wiki/Category:Papyrus_Oxyrhynchus_1782",
+          "viewerUrl": "classics-facsimile-gallery.html?ms=didache-poxy-xv-1782",
           "iiifManifestUrl": null,
           "verification": "4CARE/Trismegistos; catálogo de Oxford/Egypt Exploration Society; fotografías de consulta en Wikimedia Commons",
           "rights": "Consultar condiciones de la imagen; no se guardan copias en GitHub.",
@@ -3305,7 +3347,7 @@
             "date": "s. IV ex. (finales del siglo IV, datación paleográfica aproximada)",
             "coverage": "Dos hojas de pergamino de un códice miniatura; Did. 1.3d–1.4a y 2.7b–3.2b según Layton (1968); la delimitación varía ligeramente entre ediciones. Fragmentario.",
             "recordUrl": "https://4care-skos.mf.no/4care-artefacts/260/",
-            "viewerUrl": "https://commons.wikimedia.org/wiki/Category:Papyrus_Oxyrhynchus_1782",
+            "viewerUrl": "classics-facsimile-gallery.html?ms=didache-poxy-xv-1782",
             "iiifManifestUrl": null,
             "verification": "4CARE/Trismegistos; catálogo de Oxford/Egypt Exploration Society; fotografías de consulta en Wikimedia Commons",
             "rights": "Consultar condiciones de la imagen; no se guardan copias en GitHub.",
@@ -3421,7 +3463,7 @@
           "rights": "Codex Sinaiticus Project / British Library y socios: derechos de imágenes y transcripción según proyecto; sin copia de imágenes en Vitruvia.",
           "dateStart": 301
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "sinaiticus-gospels-apostolic",
@@ -3513,7 +3555,7 @@
           "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
           "dateStart": 801
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "faventinus-gudianus-132",
@@ -3622,7 +3664,7 @@
           "rights": "Codex Sinaiticus Project / British Library y socios: derechos de imágenes y transcripción según proyecto; sin copia de imágenes en Vitruvia.",
           "dateStart": 301
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "sinaiticus-gospels-apostolic",
@@ -3727,7 +3769,7 @@
           "rights": "LoC califica la colección de microfilmes como dominio público; citar su procedencia.",
           "dateStart": 1056
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "ignatius-hierosolymitanus-54",
@@ -3806,7 +3848,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -3880,7 +3922,7 @@
           "rights": "British Library, Royal Collection: consultar restricciones y derechos de digitalización del archivo.",
           "dateStart": 401
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "alexandrinus-nt-clement",
@@ -3972,7 +4014,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4033,7 +4075,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4094,7 +4136,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4153,7 +4195,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4212,7 +4254,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4278,7 +4320,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4339,7 +4381,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4407,7 +4449,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4486,7 +4528,7 @@
           "rights": "Conservar créditos y términos de la British Library; el enlace no transfiere derechos de reproducción",
           "dateStart": 825
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "frontinus-strategemata-harley2666",
@@ -4641,7 +4683,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4707,7 +4749,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4768,7 +4810,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4829,7 +4871,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4888,7 +4930,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -4947,7 +4989,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5006,7 +5048,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5065,7 +5107,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5124,7 +5166,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5185,7 +5227,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5246,7 +5288,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5307,7 +5349,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5368,7 +5410,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5427,7 +5469,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5508,7 +5550,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 800
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "cicero-catilina-add47678",
@@ -5617,7 +5659,7 @@
           "rights": "Consultar condiciones de la BnF.",
           "dateStart": 800
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "catullus-thuaneus-8071",
@@ -5726,7 +5768,7 @@
           "repository": "Londres, British Library",
           "shelfmark": "Harley MS 2724",
           "date": "s. XI",
-          "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Sermones ff. 94v–130r; otros textos horacianos.",
+          "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
           "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
           "viewerUrl": null,
           "iiifManifestUrl": null,
@@ -5734,7 +5776,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 1001
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "horace-works-harley2724",
@@ -5742,13 +5784,27 @@
             "repository": "Londres, British Library",
             "shelfmark": "Harley MS 2724",
             "date": "s. XI",
-            "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Sermones ff. 94v–130r; otros textos horacianos.",
+            "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
             "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
             "viewerUrl": null,
             "iiifManifestUrl": null,
             "verification": "British Library, lista de Harley manuscripts (Harley MS 2724); código de ficha individual por confirmar",
             "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
             "dateStart": 1001
+          },
+          {
+            "id": "horace-harley3997",
+            "title": "Horacio, Carmina / Sermones / Ars poetica / Epodi / Epistulae — Harley MS 3997",
+            "repository": "Londres, British Library",
+            "shelfmark": "Harley MS 3997",
+            "date": "s. XV (según registro institucional; fecha exacta pendiente de cotejo)",
+            "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
+            "recordUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
+            "viewerUrl": null,
+            "iiifManifestUrl": null,
+            "verification": "British Library Harley MS 3997",
+            "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+            "dateStart": 1401
           }
         ],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
@@ -5815,7 +5871,7 @@
           "repository": "Londres, British Library",
           "shelfmark": "Harley MS 2724",
           "date": "s. XI",
-          "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Sermones ff. 94v–130r; otros textos horacianos.",
+          "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
           "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
           "viewerUrl": null,
           "iiifManifestUrl": null,
@@ -5823,7 +5879,7 @@
           "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
           "dateStart": 1001
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "horace-works-harley2724",
@@ -5831,13 +5887,27 @@
             "repository": "Londres, British Library",
             "shelfmark": "Harley MS 2724",
             "date": "s. XI",
-            "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Sermones ff. 94v–130r; otros textos horacianos.",
+            "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
             "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
             "viewerUrl": null,
             "iiifManifestUrl": null,
             "verification": "British Library, lista de Harley manuscripts (Harley MS 2724); código de ficha individual por confirmar",
             "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
             "dateStart": 1001
+          },
+          {
+            "id": "horace-harley3997",
+            "title": "Horacio, Carmina / Sermones / Ars poetica / Epodi / Epistulae — Harley MS 3997",
+            "repository": "Londres, British Library",
+            "shelfmark": "Harley MS 3997",
+            "date": "s. XV (según registro institucional; fecha exacta pendiente de cotejo)",
+            "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
+            "recordUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
+            "viewerUrl": null,
+            "iiifManifestUrl": null,
+            "verification": "British Library Harley MS 3997",
+            "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+            "dateStart": 1401
           }
         ],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
@@ -5899,7 +5969,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -5969,7 +6039,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6039,7 +6109,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6119,7 +6189,7 @@
           "rights": "Biblioteca Laurenziana: consultar políticas del visor institucional.",
           "dateStart": 1001
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "tacitus-mediceus-1",
@@ -6234,7 +6304,7 @@
           "rights": "Biblioteca Laurenziana: consultar condiciones institucionales.",
           "dateStart": 1001
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "tacitus-mediceus-2",
@@ -6321,7 +6391,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6390,9 +6460,37 @@
         "classificationBasis": "Separar supervivencia del texto antiguo, integridad del archivo indexado y alcance del manuscrito."
       },
       "manuscript": {
-        "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
-        "witnesses": [],
+        "earliestInVerifiedRegister": {
+          "id": "juvenal-harley2772",
+          "title": "Juvenal, Saturae (fragmentos) — Harley MS 2772",
+          "repository": "Londres, British Library",
+          "shelfmark": "Harley MS 2772, ff. 16r–27v",
+          "date": "s. XI",
+          "coverage": "Satirae XI.154–XIV.160 ff. 16r–25v y XIII.234–XIV.110 ff. 26r–27v; fragmentos glosados y encuadernados con textos de Virgilio, Sedulio y Macrobio.",
+          "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048603",
+          "viewerUrl": null,
+          "iiifManifestUrl": null,
+          "verification": "British Library, Harley MS 2772",
+          "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+          "dateStart": 1000
+        },
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
+        "witnesses": [
+          {
+            "id": "juvenal-harley2772",
+            "title": "Juvenal, Saturae (fragmentos) — Harley MS 2772",
+            "repository": "Londres, British Library",
+            "shelfmark": "Harley MS 2772, ff. 16r–27v",
+            "date": "s. XI",
+            "coverage": "Satirae XI.154–XIV.160 ff. 16r–25v y XIII.234–XIV.110 ff. 26r–27v; fragmentos glosados y encuadernados con textos de Virgilio, Sedulio y Macrobio.",
+            "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048603",
+            "viewerUrl": null,
+            "iiifManifestUrl": null,
+            "verification": "British Library, Harley MS 2772",
+            "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+            "dateStart": 1000
+          }
+        ],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
       "earlyEditions": {
@@ -6462,7 +6560,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6521,7 +6619,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6584,7 +6682,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6645,7 +6743,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6704,7 +6802,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6765,7 +6863,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6826,7 +6924,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6887,7 +6985,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -6948,7 +7046,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7007,7 +7105,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7077,7 +7175,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7143,7 +7241,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7212,7 +7310,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7278,7 +7376,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7344,7 +7442,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7484,7 +7582,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7557,7 +7655,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7623,7 +7721,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7688,7 +7786,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7749,7 +7847,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7810,7 +7908,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7876,7 +7974,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -7940,7 +8038,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -8014,7 +8112,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -8101,7 +8199,7 @@
           "rights": "Biblioteca Apostolica Vaticana: consulta personal y estudio; consultar permisos de reproducción.",
           "dateStart": 1301
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "marcus-aurelius-vat1950",
@@ -8210,7 +8308,7 @@
           "rights": "Imágenes del Homer Multitext / Biblioteca Nazionale Marciana: verificar licencia CC BY-NC-SA y condiciones institucionales; no se redistribuyen en GitHub.",
           "dateStart": 975
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "homer-iliad-venetus-a",
@@ -8292,7 +8390,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -8371,7 +8469,7 @@
           "rights": "Consultar licencia y condiciones del custodio antes de reproducir imágenes.",
           "dateStart": 101
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "hesiod-theogony-suppl-gr1099",
@@ -8481,7 +8579,7 @@
           "rights": "Consultar licencia y condiciones del custodio antes de reproducir imágenes.",
           "dateStart": 1450
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "hesiod-works-bnf2708",
@@ -8566,7 +8664,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -8633,7 +8731,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -8698,7 +8796,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -8764,7 +8862,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -8843,7 +8941,7 @@
           "rights": "Consultar licencia y condiciones del custodio antes de reproducir imágenes.",
           "dateStart": 901
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "herodotus-laur-plut70-3",
@@ -8960,7 +9058,7 @@
           "rights": "Consultar licencia y condiciones del custodio antes de reproducir imágenes.",
           "dateStart": 901
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "thucydides-laur-plut69-2",
@@ -9042,7 +9140,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -9123,7 +9221,7 @@
           "rights": "Bibliothèque nationale de France / Gallica: consultar condiciones de uso y reproducción. Se enlaza el facsímil externo; imágenes no copiadas al repositorio.",
           "dateStart": 850
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-parisinus-graecus-1807",
@@ -9234,7 +9332,7 @@
           "rights": "Digital Bodleian / Bodleian Libraries, University of Oxford: CC BY-NC 4.0 según registro Biblissima; consultar condiciones del archivo.",
           "dateStart": 895
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-clarke-39",
@@ -9339,7 +9437,7 @@
           "rights": "Consultar licencia y condiciones del custodio antes de reproducir imágenes.",
           "dateStart": 901
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "aristotle-poetics-paris-gr1741",
@@ -9437,7 +9535,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -9503,7 +9601,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -9570,7 +9668,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -9636,7 +9734,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -9702,7 +9800,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -9775,7 +9873,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -9838,7 +9936,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -9901,7 +9999,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -9964,7 +10062,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10027,7 +10125,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10090,7 +10188,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10153,7 +10251,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10216,7 +10314,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10279,7 +10377,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10342,7 +10440,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10405,7 +10503,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10468,7 +10566,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10531,7 +10629,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10594,7 +10692,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10657,7 +10755,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10720,7 +10818,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10783,7 +10881,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10846,7 +10944,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10909,7 +11007,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -10972,7 +11070,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -11035,7 +11133,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -11098,7 +11196,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -11161,7 +11259,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -11224,7 +11322,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -11300,7 +11398,7 @@
           "rights": "Digital Bodleian / Bodleian Libraries, University of Oxford: CC BY-NC 4.0 según registro Biblissima; consultar condiciones del archivo.",
           "dateStart": 895
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-clarke-39",
@@ -11391,7 +11489,7 @@
           "rights": "Digital Bodleian / Bodleian Libraries, University of Oxford: CC BY-NC 4.0 según registro Biblissima; consultar condiciones del archivo.",
           "dateStart": 895
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-clarke-39",
@@ -11482,7 +11580,7 @@
           "rights": "Digital Bodleian / Bodleian Libraries, University of Oxford: CC BY-NC 4.0 según registro Biblissima; consultar condiciones del archivo.",
           "dateStart": 895
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-clarke-39",
@@ -11573,7 +11671,7 @@
           "rights": "Bibliothèque nationale de France / Gallica: consultar condiciones de uso y reproducción. Se enlaza el facsímil externo; imágenes no copiadas al repositorio.",
           "dateStart": 850
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-parisinus-graecus-1807",
@@ -11681,7 +11779,7 @@
           "rights": "Digital Bodleian / Bodleian Libraries, University of Oxford: CC BY-NC 4.0 según registro Biblissima; consultar condiciones del archivo.",
           "dateStart": 895
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-clarke-39",
@@ -11772,7 +11870,7 @@
           "rights": "Digital Bodleian / Bodleian Libraries, University of Oxford: CC BY-NC 4.0 según registro Biblissima; consultar condiciones del archivo.",
           "dateStart": 895
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-clarke-39",
@@ -11863,7 +11961,7 @@
           "rights": "Bibliothèque nationale de France / Gallica: consultar condiciones de uso y reproducción. Se enlaza el facsímil externo; imágenes no copiadas al repositorio.",
           "dateStart": 850
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-parisinus-graecus-1807",
@@ -11971,7 +12069,7 @@
           "rights": "Digital Bodleian / Bodleian Libraries, University of Oxford: CC BY-NC 4.0 según registro Biblissima; consultar condiciones del archivo.",
           "dateStart": 895
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "plato-clarke-39",
@@ -12049,7 +12147,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12112,7 +12210,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12175,7 +12273,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12238,7 +12336,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12301,7 +12399,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12364,7 +12462,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12427,7 +12525,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12490,7 +12588,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12556,7 +12654,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12619,7 +12717,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12682,7 +12780,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12777,7 +12875,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12844,7 +12942,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12918,7 +13016,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -12983,7 +13081,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13046,7 +13144,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13109,7 +13207,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13181,7 +13279,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13244,7 +13342,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13307,7 +13405,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13379,7 +13477,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13451,7 +13549,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13523,7 +13621,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13586,7 +13684,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13647,7 +13745,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13710,7 +13808,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13773,7 +13871,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13834,7 +13932,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -13896,9 +13994,51 @@
         "classificationBasis": "Separar supervivencia del texto antiguo, integridad del archivo indexado y alcance del manuscrito."
       },
       "manuscript": {
-        "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
-        "witnesses": [],
+        "earliestInVerifiedRegister": {
+          "id": "horace-works-harley2724",
+          "title": "Horacio, Carmina / Ars poetica / Sermones — Harley MS 2724",
+          "repository": "Londres, British Library",
+          "shelfmark": "Harley MS 2724",
+          "date": "s. XI",
+          "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
+          "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
+          "viewerUrl": null,
+          "iiifManifestUrl": null,
+          "verification": "British Library, lista de Harley manuscripts (Harley MS 2724); código de ficha individual por confirmar",
+          "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+          "dateStart": 1001
+        },
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
+        "witnesses": [
+          {
+            "id": "horace-works-harley2724",
+            "title": "Horacio, Carmina / Ars poetica / Sermones — Harley MS 2724",
+            "repository": "Londres, British Library",
+            "shelfmark": "Harley MS 2724",
+            "date": "s. XI",
+            "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
+            "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
+            "viewerUrl": null,
+            "iiifManifestUrl": null,
+            "verification": "British Library, lista de Harley manuscripts (Harley MS 2724); código de ficha individual por confirmar",
+            "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+            "dateStart": 1001
+          },
+          {
+            "id": "horace-harley3997",
+            "title": "Horacio, Carmina / Sermones / Ars poetica / Epodi / Epistulae — Harley MS 3997",
+            "repository": "Londres, British Library",
+            "shelfmark": "Harley MS 3997",
+            "date": "s. XV (según registro institucional; fecha exacta pendiente de cotejo)",
+            "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
+            "recordUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
+            "viewerUrl": null,
+            "iiifManifestUrl": null,
+            "verification": "British Library Harley MS 3997",
+            "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+            "dateStart": 1401
+          }
+        ],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
       "earlyEditions": {
@@ -13959,9 +14099,51 @@
         "classificationBasis": "Separar supervivencia del texto antiguo, integridad del archivo indexado y alcance del manuscrito."
       },
       "manuscript": {
-        "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
-        "witnesses": [],
+        "earliestInVerifiedRegister": {
+          "id": "horace-works-harley2724",
+          "title": "Horacio, Carmina / Ars poetica / Sermones — Harley MS 2724",
+          "repository": "Londres, British Library",
+          "shelfmark": "Harley MS 2724",
+          "date": "s. XI",
+          "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
+          "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
+          "viewerUrl": null,
+          "iiifManifestUrl": null,
+          "verification": "British Library, lista de Harley manuscripts (Harley MS 2724); código de ficha individual por confirmar",
+          "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+          "dateStart": 1001
+        },
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
+        "witnesses": [
+          {
+            "id": "horace-works-harley2724",
+            "title": "Horacio, Carmina / Ars poetica / Sermones — Harley MS 2724",
+            "repository": "Londres, British Library",
+            "shelfmark": "Harley MS 2724",
+            "date": "s. XI",
+            "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
+            "recordUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
+            "viewerUrl": null,
+            "iiifManifestUrl": null,
+            "verification": "British Library, lista de Harley manuscripts (Harley MS 2724); código de ficha individual por confirmar",
+            "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+            "dateStart": 1001
+          },
+          {
+            "id": "horace-harley3997",
+            "title": "Horacio, Carmina / Sermones / Ars poetica / Epodi / Epistulae — Harley MS 3997",
+            "repository": "Londres, British Library",
+            "shelfmark": "Harley MS 3997",
+            "date": "s. XV (según registro institucional; fecha exacta pendiente de cotejo)",
+            "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
+            "recordUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
+            "viewerUrl": null,
+            "iiifManifestUrl": null,
+            "verification": "British Library Harley MS 3997",
+            "rights": "Consultar los derechos de las imágenes en el proveedor original.",
+            "dateStart": 1401
+          }
+        ],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
       "earlyEditions": {
@@ -14023,7 +14205,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14086,7 +14268,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14149,7 +14331,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14212,7 +14394,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14275,7 +14457,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14338,7 +14520,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14399,7 +14581,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14460,7 +14642,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14521,7 +14703,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14584,7 +14766,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14645,7 +14827,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14706,7 +14888,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14774,7 +14956,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14852,7 +15034,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14928,7 +15110,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -14995,7 +15177,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15060,7 +15242,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15125,7 +15307,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15188,7 +15370,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15253,7 +15435,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15325,7 +15507,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15395,7 +15577,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15465,7 +15647,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15527,7 +15709,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15597,7 +15779,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15683,7 +15865,7 @@
           "rights": "Biblioteca Vaticana: imágenes sujetas a autorización de reproducción.",
           "dateStart": 801
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "euclid-vat-gr-190",
@@ -15763,7 +15945,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15829,7 +16011,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15894,7 +16076,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -15959,7 +16141,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -16022,7 +16204,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -16084,7 +16266,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -16149,7 +16331,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -16214,7 +16396,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -16279,7 +16461,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -16344,7 +16526,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
@@ -16420,7 +16602,7 @@
           "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
           "dateStart": 501
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "agrimensores-arcerianus",
@@ -16524,7 +16706,7 @@
           "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
           "dateStart": 501
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "agrimensores-arcerianus",
@@ -16628,7 +16810,7 @@
           "rights": "Bibliotheca Palatina digital (UB Heidelberg / BAV): consultar condiciones.",
           "dateStart": 840
         },
-        "earliestScope": "Solo el testimonio de fecha más temprana del registro actual. NO se equipara con el manuscrito conservado más antiguo del mundo; manuscritos incompletos y recensiones se distinguen.",
+        "earliestScope": "Testimonio más temprano solo dentro de los registros identificados; no implica ser el más antiguo global. Revisar fragmentos y recensiones.",
         "witnesses": [
           {
             "id": "agrimensores-pal-lat-1564",
@@ -16707,7 +16889,7 @@
       },
       "manuscript": {
         "earliestInVerifiedRegister": null,
-        "earliestScope": "Sin testimonio individual acreditado todavía en nuestro registro; no se deduce que no exista.",
+        "earliestScope": "Sin testimonio manuscrito individual acreditado actualmente.",
         "witnesses": [],
         "collationStatus": "El registro documental identifica el códice y la fuente, pero no constituye una colación exhaustiva de sus lecturas."
       },
