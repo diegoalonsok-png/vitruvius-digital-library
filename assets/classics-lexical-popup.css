@@ -84,3 +84,14 @@
 #lx-viewer .lx-viewer-col mark.w:focus-visible{
  outline:3px solid #f7f7f7;outline-offset:3px;border-radius:2px
 }
+
+/* The Perseus/TEI classical reader encloses yellow marks in lexical spans. */
+#original .txt mark{
+ cursor:pointer;touch-action:manipulation
+}
+#original .txt mark:hover{
+ outline:2px solid #f6f2b5;outline-offset:2px
+}
+#original .txt mark:focus-visible{
+ outline:3px solid #fff;outline-offset:3px;border-radius:2px
+}
