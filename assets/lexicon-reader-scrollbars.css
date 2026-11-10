@@ -1,0 +1,75 @@
+/* Visores de Lexicon y Bibliotheca: barras grises de agarre cómodo.
+   En una página dentro de iframe la barra pertenece al documento hijo,
+   por eso este mismo archivo se carga también en classics-text-reader.html.
+   No afecta a manuscritos, imágenes de folios ni aplicaciones ajenas. */
+.lx-viewer{
+  --lx-scroll-track:#292a2d;
+  --lx-scroll-thumb:#81858b;
+  --lx-scroll-hover:#a2a6ac;
+  --lx-scroll-active:#c0c4ca;
+  color-scheme:dark;
+}
+html[data-theme="light"] .lx-viewer{
+  --lx-scroll-track:#dedfe1;
+  --lx-scroll-thumb:#777b82;
+  --lx-scroll-hover:#555b64;
+  --lx-scroll-active:#3c424a;
+  color-scheme:light;
+}
+html.classic-reader-scrollbars{
+  --lx-scroll-track:#27282b;
+  --lx-scroll-thumb:#85898f;
+  --lx-scroll-hover:#a7abb1;
+  --lx-scroll-active:#c3c7ce;
+  color-scheme:dark;
+}
+html.classic-reader-scrollbars[data-theme="light"]{
+  --lx-scroll-track:#dedfe1;
+  --lx-scroll-thumb:#757b83;
+  --lx-scroll-hover:#565d67;
+  --lx-scroll-active:#414952;
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc){
+  scrollbar-width:auto;
+  scrollbar-color:var(--lx-scroll-thumb) var(--lx-scroll-track);
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar{
+  width:18px;
+  height:16px;
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-track{
+  background:var(--lx-scroll-track);
+  border-radius:10px;
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-thumb{
+  background:var(--lx-scroll-thumb);
+  border:2px solid var(--lx-scroll-track);
+  border-radius:10px;
+  min-height:52px;
+  background-clip:padding-box;
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-thumb:hover{
+  background:var(--lx-scroll-hover);
+  border-color:var(--lx-scroll-track);
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-thumb:active{
+  background:var(--lx-scroll-active);
+  border-color:var(--lx-scroll-track);
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-corner{
+  background:var(--lx-scroll-track);
+}

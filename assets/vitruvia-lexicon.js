@@ -1330,7 +1330,7 @@ async function openViewer(D,p,spans,q){
   const draw=async()=>{
    const data=await load(VIT_ED[ed][0]);const ps=data.passages;let i=ps.findIndex(x=>x.locus===locus);if(i<0)i=0;const x=ps[i];locus=x.locus;
    const ks=new Set(fold(q||"").split(/\s+/).filter(Boolean));const sp=[];for(const m of x.latin.matchAll(TOKEN))if(ks.has(fold(m[0])))sp.push([m.index,m.index+m[0].length]);
-   const la=el("div",{class:"lx-viewer-col",lang:"la"},el("p",{class:"lx-small"},"Latín · V514 · Vitr. "+x.locus),el("p",{class:"lx-passage"}));la.lastChild.append(linkWords(x.latin,sp));
+   const la=el("div",{class:"lx-viewer-col",lang:"la","data-work":"vitruvius"},el("p",{class:"lx-small"},"Latín · V514 · Vitr. "+x.locus),el("p",{class:"lx-passage"}));la.lastChild.append(linkWords(x.latin,sp));
    const tr=el("div",{class:"lx-viewer-col",lang:ed},el("p",{class:"lx-small"},VIT_ED[ed][1]," · ",el("a",{href:"https://doi.org/"+EDITION_DOI[ed][0],target:"_blank",rel:"noopener"},"DOI "+EDITION_DOI[ed][0])),el("p",{class:"lx-tr"},x.translation||"—"));
    grid.replaceChildren(la,tr);
    bar.replaceChildren(el("button",{type:"button",disabled:i===0,onclick:()=>{locus=ps[i-1].locus;draw()}},"‹ "+(ps[i-1]?.locus||"")),...Object.entries(VIT_ED).map(([k,v])=>el("button",{type:"button","aria-pressed":String(k===ed),onclick:()=>{ed=k;draw()}},k.toUpperCase())),el("button",{type:"button",disabled:i>=ps.length-1,onclick:()=>{locus=ps[i+1].locus;draw()}},(ps[i+1]?.locus||"")+" ›"),...vitruvianLinks(x.locus).map(([t,u])=>el("a",{href:u},t)));
@@ -1339,8 +1339,9 @@ async function openViewer(D,p,spans,q){
  }
  const id=LECTOR_IDS[p[0]];const body=viewerShell(`${w.author}, ${w.title} · ${p[1]}`);
  if(!id){const c=el("p",{class:"lx-passage",lang:D.l});c.append(linkWords(p[2],spans));body.append(c);return}
- const u=`lector-clasico.html?obra=${encodeURIComponent(id)}&loc=${encodeURIComponent(p[1])}${q?"&q="+encodeURIComponent(q):""}&embed=1${D.l==="grc"||!["phi0474.phi055","phi0448.phi001","phi0550.phi001","phi0690.phi002","phi0690.phi003","phi1212.phi002","phi0472.phi001","phi0972.phi001"].includes(id)?"&extra=1":""}`;
- const original=el("section",{class:"lx-viewer-origin",role:"region","aria-label":T("Pasaje encontrado")},
+ const wordQuery=String(q||"").trim().replace(/^=(?=\p{L})/u,"");
+ const u=`lector-clasico.html?obra=${encodeURIComponent(id)}&loc=${encodeURIComponent(p[1])}${wordQuery?"&q="+encodeURIComponent(wordQuery):""}&embed=1${D.l==="grc"||!["phi0474.phi055","phi0448.phi001","phi0550.phi001","phi0690.phi002","phi0690.phi003","phi1212.phi002","phi0472.phi001","phi0972.phi001"].includes(id)?"&extra=1":""}`;
+ const original=el("section",{class:"lx-viewer-origin",role:"region","data-work":p[0],"aria-label":T("Pasaje encontrado")},
   el("h4",{},T("Pasaje encontrado")+" · "+p[1]));
  const selected=el("p",{class:"lx-passage",lang:D.l});selected.append(linkWords(p[2],spans));
  original.append(selected,el("p",{class:"lx-src"},w.edition||"",w.license?" · "+w.license:""));
