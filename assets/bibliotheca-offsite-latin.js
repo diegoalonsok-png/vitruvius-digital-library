@@ -15,7 +15,8 @@ const SOURCE_PATHS={
  "frontinus-gromatica":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/frontinus/qualitate.txt",
  "isidore-etymologiae":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/isidore/1.txt",
  "siculus-flaccus":"https://la.wikisource.org/wiki/De_condicionibus_agrorum",
- "ennius-annales":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/enn.txt"
+ "ennius-annales":"https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/enn.txt",
+ "macrobius-saturnalia":"https://raw.githubusercontent.com/cltk/latin_text_lacus_curtius/master/html/Macrobius/Saturnalia/1*.html"
 };
 const ALLOWED=new Set(Object.keys(SOURCE_PATHS));
 let manifestTask=null;
