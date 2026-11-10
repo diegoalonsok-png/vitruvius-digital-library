@@ -1,5 +1,5 @@
 import {parseLocus,findMatches,roman} from './search-core.mjs?v=20261109-prefacion-v2';
-import {canonicalLocus,ocrCandidate,ocrExcerptForLocus,pdfPage} from './krohn-locus-sync.mjs?v=20261110-krohn-synced-loci-v1';
+import {canonicalLocus,ocrCandidate,ocrBlocksForLocus,pdfPage} from './krohn-locus-sync.mjs?v=20261110-long-ocr-blocks-v2';
 const $=s=>document.querySelector(s);
 const editions=[{id:'recensio-es',name:'V514 · Diego Kurilo · Latín / Castellano',pdf:'documents/kurilo-recensio-es.pdf'},{id:'recensio-fr',name:'V554 · Diego Kurilo · Latín / Francés',pdf:'documents/kurilo-recensio-fr.pdf'},{id:'theory-en',name:'V297 · Diego Kurilo · Latín / Inglés',pdf:'documents/kurilo-theory-en.pdf'}];
 const cache=new Map();let krohnCache=null;let krohnIndexCache=null;let compareRevision=0;let notesCache=null;let results=[],shown=0,revision=0,lastQuery='';
@@ -90,9 +90,11 @@ async function compareLocus(locus){
    if(!anchor)return null;
    const pg=pages.find(item=>item.page===anchor.page);
    if(!pg)return null;
-   const excerpt=ocrExcerptForLocus(pg.text,referenceLatin);
-   return {...anchor,share:Math.round(100*anchor.overlap),
-    text:excerpt?.text||"",excerptOverlap:excerpt?.overlapPercent||0};
+   const blocks=ocrBlocksForLocus(pages,referenceLatin,anchor.page);
+   if(!blocks.length)return null;
+   return {...anchor,page:blocks[0].page,primaryPage:anchor.page,
+    share:Math.round(100*anchor.overlap),text:blocks.map(b=>b.text).join("\n\n"),
+    blocks};
   }
   // Other historical editions (Rose) have no locus index yet and remain
   // explicitly labelled as provisional whole-OCR search results.
@@ -168,19 +170,33 @@ async function compareLocus(locus){
     status.textContent=synced
      ?("Krohn 1912 · Vitr., De arch. "+(canonicalLocus(locus)||locus)+
        " · página digital candidata "+hit.page+
+       (hit.blocks?.length>1?"–"+hit.blocks[hit.blocks.length-1].page:"")+
        " · "+hit.share+" % de trigramas latinos coincidentes ("+
        (strong?"anclaje textual fuerte":"anclaje ambiguo")+
-       "). Coincidencia OCR orientativa, NO cotejo filológico verificado."+
+       "). Bloques OCR por párrafo con posibles cortes de página; NO cotejo filológico verificado."+
        (hit.runnerUpPage?" Otra página candidata: "+hit.runnerUpPage+".":""))
      :"Página candidata "+hit.page+" del PDF · "+hit.share+" % de similitud OCR. Edición sin índice de loci; ubicación orientativa no verificada.";
     navigate(hit.page);
-    if(hit.text){
-     const excerpt=document.createElement('details');
-     excerpt.open=synced&&strong;
-     const title=document.createElement('summary');
-     title.textContent=synced
-      ?"Texto latino OCR situado junto al locus "+(canonicalLocus(locus)||locus)+" (sin revisión editorial)"
-      :"Ver fragmento OCR no revisado";
+    if(synced&&hit.blocks?.length){
+     const explanation=document.createElement('p');explanation.className='source-note';
+     explanation.textContent='Bloques OCR localizados por coincidencias de tres palabras consecutivas del latín V514. '
+      +'La numeración es la página digital del PDF, no la página impresa; se conservan los defectos de reconocimiento.';
+     body.append(explanation);
+     for(const block of hit.blocks){
+      const excerpt=document.createElement('details');excerpt.open=strong;
+      const title=document.createElement('summary');
+      title.textContent='Locus '+(canonicalLocus(locus)||locus)+' · OCR de Krohn · página PDF '+block.page+
+       ' · '+block.referenceCoverage+' % de palabras del locus respaldadas por secuencias coincidentes';
+      excerpt.append(title);
+      const goPage=document.createElement('button');goPage.type='button';
+      goPage.className='button outline';goPage.textContent='Mostrar página '+block.page+' en el facsímil';
+      goPage.addEventListener('click',()=>navigate(block.page));excerpt.append(goPage);
+      const para=document.createElement('p');para.lang='la';para.className='critical-ocr-locus-block';
+      para.textContent=block.text;excerpt.append(para);body.append(excerpt);
+     }
+    }else if(hit.text){
+     const excerpt=document.createElement('details');const title=document.createElement('summary');
+     title.textContent='Fragmento OCR no revisado (sin índice de locus)';
      excerpt.append(title);
      const para=document.createElement('p');para.lang='la';para.textContent=hit.text;
      excerpt.append(para);body.append(excerpt);
