@@ -262,17 +262,31 @@ function renderAuto(){
  if(!record?.text){
   content.textContent="El texto original todavía no está disponible para traducir.";return;
  }
+ /* El original ya se lee en el visor izquierdo: no duplicarlo aquí.
+    Solo se envía texto al servicio externo después de pulsar traducir. */
  const sourceLine=document.createElement("p");sourceLine.className="auto-source";
- sourceLine.lang=left.value;
- sourceLine.textContent=record.text.length>420?record.text.slice(0,420)+"…":record.text;
+ sourceLine.lang=left.value;sourceLine.hidden=true;
+ sourceLine.setAttribute("aria-hidden","true");sourceLine.textContent=record.text;
  content.append(sourceLine);
- const note=document.createElement("p");
- note.textContent="Solo una muestra del original es visible aquí. La traducción automática es voluntaria y parcial para pasajes extensos: no es una edición crítica ni una traducción acreditada.";
- content.append(note);
  if(window.VitruviaInlineTranslation?.attach){
   const added=window.VitruviaInlineTranslation.attach(sourceLine,{sourceLanguage:left.value,originalText:record.text});
-  if(added){const select=content.querySelector(".academic-inline-translation select");if(select)select.value=target;}
-  else content.append("Este idioma no dispone de traducción automática compatible.");
+  if(added){
+   const widget=content.querySelector(".academic-inline-translation");
+   widget.classList.add("parallel-auto-translation");
+   const select=widget.querySelector("select");
+   if(select)select.value=target;
+   const button=widget.querySelector(".academic-inline-translate-button");
+   if(button)button.textContent="Traducir este pasaje aquí";
+   const output=widget.querySelector(".academic-inline-translation-output");
+   const note=widget.querySelector(".academic-inline-translation-note");
+   if(output){
+    const pending=document.createElement("p");pending.className="auto-pending";
+    pending.textContent="El original está en el visor izquierdo. Pulsá «Traducir este pasaje aquí» para ver en esta columna una versión automática orientativa.";
+    output.append(pending);
+    if(note)widget.insertBefore(output,note);
+   }
+   if(note)note.textContent="El fragmento solo se envía al proveedor externo después del clic. El griego antiguo se procesa como griego moderno; esta traducción puede ser parcial y no está validada filológicamente.";
+  }else content.append("Este idioma no dispone de traducción automática compatible.");
  }else content.append("Servicio de traducción automática no disponible; utilice el lector del original.");
 }
 function navigatePane(side,index){
