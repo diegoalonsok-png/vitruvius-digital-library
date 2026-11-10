@@ -5,8 +5,8 @@
 <title>Ficha crítica de obra clásica · Bibliotheca Graeca et Latina · Vitruvius Digital Library</title>
 <meta name="description" content="Fichas críticas de obras clásicas: título antiguo, contexto, edición, testigos manuscritos, signatura, visores IIIF y bibliografía Chicago 18.">
 <style>
-:root{color-scheme:dark;--bg:#101011;--ink:#eeeeef;--line:#545457}*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.65 system-ui,Arial,sans-serif}
+:root{color-scheme:dark;--bg:#101011;--ink:#eeeeef;--line:#545457}html[data-theme=light]{color-scheme:light;--bg:#f6f4ee;--ink:#222;--line:#aaa}html{background:var(--cwd-bg,var(--bg))}body{background:var(--cwd-bg,var(--bg))!important;color:var(--cwd-ink,var(--ink))!important}*{box-sizing:border-box}
+body{margin:0;background:var(--cwd-bg,var(--bg));color:var(--cwd-ink,var(--ink));font:14px/1.65 system-ui,Arial,sans-serif}
 main,header,footer{max-width:1300px;padding:14px clamp(14px,3vw,40px);margin:auto}
 header{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
 header strong{font:italic 27px/1.1 Georgia,serif;letter-spacing:-.03em}header a,footer a{color:inherit;text-underline-offset:3px}
@@ -17,6 +17,26 @@ h1{font:400 clamp(24px,3vw,32px)/1.25 Georgia,serif;margin:18px 0 10px}
 .actionbar label{font-size:13px}
 .actionbar select,.actionbar button{border:1px solid #707078;background:#272729;color:#eee;border-radius:6px;padding:9px 12px;min-height:40px;font:13px system-ui;cursor:pointer}
 .actionbar select{max-width:min(100%,510px)}
+.cwd-toolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:8px 0 20px}
+.cwd-toolbar select,.cwd-toolbar button,.cwd-toolbar summary{min-height:40px;border:1px solid #666;border-radius:7px;background:#272729;color:#f0f0f0;font:13px system-ui;padding:8px 12px;cursor:pointer}
+.cwd-toolbar select{min-width:76px}
+.cwd-palette{position:relative}
+.cwd-palette summary{list-style:none;display:flex;align-items:center;gap:7px}
+.cwd-palette summary::-webkit-details-marker{display:none}
+.cwd-palette-panel{position:absolute;z-index:30;top:45px;right:0;display:grid;grid-template-columns:repeat(4,34px);align-items:center;gap:9px;padding:12px;background:#1a1a1b;border:1px solid #777;border-radius:9px;box-shadow:0 12px 28px #0007;min-width:205px}
+.cwd-swatch{width:34px;height:34px;min-height:34px!important;padding:0!important;border-radius:50%!important;border:2px solid #888!important}
+.cwd-palette-panel label{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:8px;color:#eee;font-size:12px}
+.cwd-palette-panel input{width:43px;height:33px}
+.cwd-palette-panel #cwd-reset{grid-column:1/-1}
+html[data-theme=light] .cwd-toolbar select,html[data-theme=light] .cwd-toolbar button,html[data-theme=light] .cwd-toolbar summary{background:#efede7;color:#1b211e;border-color:#9d9a92}
+html[data-theme=light] .cwd-palette-panel{background:#f3f0e8;border-color:#999}
+html[data-theme=light] .cwd-palette-panel label{color:#222}
+html[data-theme=light] .intro,html[data-theme=light] footer,html[data-theme=light] #work-record-status{color:#555}
+html[data-theme=light] .actionbar select,html[data-theme=light] .actionbar button{background:#f3f0e8;color:#222;border-color:#999}
+.classic-work-dossier{background:var(--cwd-panel,#151517)!important;color:var(--cwd-ink,#e8e8e9)!important;border-color:var(--cwd-line,#505056)!important}
+.classic-work-dossier .cwd-overview,.classic-work-dossier .cwd-ms{background:transparent!important}
+@media print{.cwd-toolbar{display:none}.classic-work-dossier{background:#fff!important;color:#111!important}}
+
 #work-record-status{font-size:12px;color:#bbb}
 footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30px}
 @media print{.actionbar,nav{display:none}body{color:#111;background:#fff}}
@@ -25,6 +45,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 <script defer src="assets/analytics-config.js?v=20261110-shared-v1"></script>
 <script defer src="assets/analytics.js?v=20261110-shared-v1"></script>
 <script defer src="assets/bibliotheca-export-xlsx.js?v=20261110-xlsx-222-v1"></script>
+<script defer src="assets/classics-work-toolbar.js?v=20261110-bibliotheca-toolbar-v2"></script>
 </head>
 <body><header><strong>Bibliotheca</strong><nav>
 <a href="index.html">Vitruvius Digital Library</a>
@@ -33,7 +54,13 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 <a href="classics-manuscript-coverage.html">Control de 222 obras</a>
 <a href="vitruvia-lexicon.html">Lexicon</a>
 </nav></header>
-<main><h1>Fichas críticas de obras clásicas</h1>
+<main>
+<div class="cwd-toolbar" id="cwd-toolbar" role="group" aria-label="Idioma y apariencia, controles compartidos con Lexicon">
+ <details class="cwd-palette" id="cwd-palette"><summary aria-label="Color de fondo">◉ Fondo</summary><div class="cwd-palette-panel" id="cwd-palette-panel"><label><span id="cwd-custom-label">Personalizado</span><input id="cwd-custom" type="color" value="#101011" aria-label="Color de fondo personalizado"></label><button id="cwd-reset" type="button">Restablecer</button></div></details>
+ <select id="cwd-lang" aria-label="Idioma de la interfaz" title="Idioma de la interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
+ <button type="button" id="cwd-theme" title="Cambiar apariencia" aria-label="Cambiar apariencia">☀</button>
+</div>
+<h1>Fichas críticas de obras clásicas</h1>
 <p class="intro">Datos de autoría, género, fecha de composición, denominaciones antiguas, transmisión manuscrita, variantes editoriales y bibliografía. La cita de una edición se distingue de la identidad de la obra; la antigüedad de un códice se presenta solamente en relación con el corpus de testimonios verificados.</p>
 <p class="intro">Criterios de descripción de manuscritos inspirados en TEI P5, DCRM(MSS) y Chicago 18: <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/docs/protocolo-filologico-codicologico-tei-chicago18.md" target="_blank" rel="noopener noreferrer">consultar protocolo y límites de verificación</a>.</p>
 <div class="actionbar"><label for="record-work">Seleccionar una obra</label>
