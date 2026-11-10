@@ -13,7 +13,7 @@
  const el=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=String(txt);return n};
  const official="Pink Floyd · bibliografía oficial";
  const pinkFloyd=[
-  {kind:"about",title:"Inside Out: A Personal History of Pink Floyd",author:"Nick Mason",year:2004,
+  {kind:"about",title:"Inside Out: A Personal History of Pink Floyd",author:"Nick Mason",year:2004,coverISBN:"0297843877",
    note:{es:"Memorias del baterista: los orígenes del grupo, la trayectoria de Syd Barrett, la evolución musical y las tensiones posteriores.",
     en:"The drummer's memoir traces the band's beginnings, Syd Barrett, its musical evolution and later tensions.",
     fr:"Mémoires du batteur sur les débuts du groupe, Syd Barrett, l'évolution musicale et les tensions ultérieures."},
@@ -33,12 +33,12 @@
     en:"The visual story of Pink Floyd album sleeves and graphic identity.",
     fr:"L'histoire visuelle des pochettes et de l'identité graphique des disques de Pink Floyd."},
    source:official,url:"https://archive.pinkfloyd.com/history/books_mind_over_matter"},
-  {kind:"era",title:"The Electric Kool-Aid Acid Test",author:"Tom Wolfe",year:1968,
+  {kind:"era",title:"The Electric Kool-Aid Acid Test",author:"Tom Wolfe",year:1968,coverISBN:"9780312427597",
    note:{es:"Crónica de la contracultura estadounidense de los sesenta. Contexto histórico, no una influencia acreditada sobre Pink Floyd.",
     en:"An account of 1960s American counterculture. Historical context, not a documented influence on Pink Floyd.",
     fr:"Récit de la contre-culture américaine des années 1960 ; contexte historique, non influence démontrée sur Pink Floyd."},
    source:"WorldCat · edición de 1968",url:"https://search.worldcat.org/title/168063"},
-  {kind:"era",title:"The Making of a Counter Culture",author:"Theodore Roszak",year:1969,
+  {kind:"era",title:"The Making of a Counter Culture",author:"Theodore Roszak",year:1969,coverISBN:"9780520201224",
    note:{es:"Estudio de las ideas y movimientos juveniles de finales de los sesenta. Lectura contextual, sin atribuir influencia directa.",
     en:"A study of ideas and youth movements in the late 1960s. Contextual reading without claiming direct influence.",
     fr:"Étude des idées et mouvements de jeunesse de la fin des années 1960, sans présumer d'influence directe."},
@@ -68,16 +68,17 @@
   }
   return found;
  }
- function coverUrl(id){
-  return Number.isInteger(id)&&id>0&&id<1e10?"https://covers.openlibrary.org/b/id/"+id+"-M.jpg?default=false":"";
+ function coverUrl(id,isbn){
+  if(Number.isInteger(id)&&id>0&&id<1e10)return "https://covers.openlibrary.org/b/id/"+id+"-M.jpg?default=false";
+  return /^\d{10}(?:\d{3})?$/.test(String(isbn||""))?"https://covers.openlibrary.org/b/isbn/"+isbn+"-M.jpg?default=false":"";
  }
- function addCover(card,id,title){
+ function addCover(card,id,title,isbn){
   const box=card.querySelector(".vrs-cover");
   if(!box)return;
-  const url=coverUrl(id);if(!url)return;
+  const url=coverUrl(id,isbn);if(!url)return;
   const img=el("img");img.src=url;img.alt=t("Cubierta catalogada: ","Catalogued cover: ","Couverture cataloguée : ")+title;
   img.loading="lazy";img.decoding="async";img.referrerPolicy="no-referrer";img.width=96;img.height=138;
-  img.onerror=()=>{img.remove();box.classList.remove("has-image")};
+  let retried=false;img.onerror=()=>{if(!retried&&isbn&&Number(id)){retried=true;img.src=coverUrl(null,isbn);return}img.remove();box.classList.remove("has-image")};
   box.replaceChildren(img);box.classList.add("has-image");
  }
  function card(item,group,detail){
@@ -101,7 +102,7 @@
    detail.replaceChildren(h,p,link);detail.hidden=false;
   });
   wrapper.append(button);
-  if(item.coverId)addCover(wrapper,item.coverId,item.title);
+  if(item.coverId||item.coverISBN)addCover(wrapper,item.coverId,item.title,item.coverISBN);
   return wrapper;
  }
  function group(items,title){
@@ -160,7 +161,7 @@
    });
    if(!best)continue;
    item.coverId=Number(best.cover_i);
-   for(const c of root.querySelectorAll(".vrs-card"))if(c.dataset.bookTitle===normalize(item.title))addCover(c,item.coverId,item.title);
+   for(const c of root.querySelectorAll(".vrs-card"))if(c.dataset.bookTitle===normalize(item.title))addCover(c,item.coverId,item.title,item.coverISBN);
   }
  }
  async function books(q,signal){
