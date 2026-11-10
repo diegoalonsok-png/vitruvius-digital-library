@@ -894,6 +894,8 @@ html[data-theme=light] .article-reference-books .principal-reference-work strong
 .tab.ai-mode-tab{border-color:#597864;color:#cee9d5}
 .tab.ai-mode-tab[aria-pressed=true]{background:#274536;border-color:#a8ca9d;color:#fff}
 .ai-mode-help{display:none;font-size:11px;color:var(--muted);margin:0 0 9px}body.vitruvia-ai-active .ai-mode-help{display:block}
+.ai-mode-method{display:none;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 12px;font:500 12px system-ui;color:var(--ink)}body.vitruvia-ai-active .ai-mode-method{display:flex}
+.ai-mode-method select{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:8px 11px;min-height:38px;max-width:100%}
 .ai-mode-status{font:500 12px/1.55 system-ui,sans-serif;padding:11px 14px;border-radius:6px;border:1px solid #536a54;background:#1a2820;color:#d6e9d4;margin:10px 0 12px;max-width:95ch}
 .ai-mode-status[hidden]{display:none}.ai-mode-status[data-phase=fallback]{border-color:#86683f;color:#eee3ca}
 .ai-mode-status[data-phase=success]{border-color:#61936a;color:#d5eace}
@@ -1106,7 +1108,8 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <button type="button" class="image-search-trigger" id="search-images-button" aria-controls="vitruvia-images" aria-label="Buscar imágenes de la consulta" title="Buscar imágenes de la consulta"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.6"/><path d="m4 17 5-5 3.5 3.5 2.7-2.7L20 18"/></svg><span>Imágenes</span></button>
 </div>
 <p class="explain" id="mode-note">Busca cualquier tema en Wikipedia, Wikidata y catálogos abiertos; prioriza arte, historia y arquitectura y también consulta esta biblioteca.</p>
-<p class="ai-mode-help" id="ai-help">IA opcional: el modelo E5 se descarga (aprox. 120 MB) solo al buscar en modo IA. Con ahorro de datos activado se usa BM25 sin descargar el modelo; los resultados BM25 no se presentan como búsqueda neuronal.</p>
+<p class="ai-mode-help" id="ai-help">Motor BM25 sin descarga neuronal; E5 opcional (primera descarga estimada: 120 MB, cuantización q8). Solo busca los textos del manifiesto semántico; el resto de Bibliotheca utiliza otros índices.</p>
+<label class="ai-mode-method" for="ai-method"><span id="ai-method-label">Motor de búsqueda</span><select id="ai-method" aria-describedby="ai-help"><option value="bm25">BM25 · rápido, sin modelo</option><option value="neural">E5 · neuronal, descarga opcional</option></select></label>
 <div class="ai-mode-status" id="ai-status" role="status" aria-live="polite" hidden></div>
 <div class="suggestions"><span data-i18n="explore">Explorar</span><button type="button" data-q="symmetria">symmetria</button><button type="button" data-q="acueductos romanos">acueductos romanos</button><button type="button" data-q="Lucrecio">Lucrecio</button><button type="button" data-q="Codex H">Codex H</button></div>
 <div class="academic-pills" aria-label="Buscar en universidades y repositorios">
@@ -1278,7 +1281,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/search-agentic.js?v=20261105-academic-navigation-2" defer></script>
 <script src="assets/vitruvia-archives.js?v=20261104-linked-authorities-v1" defer></script>
 <script src="assets/vitruvia-text-discovery.js?v=20261104-universal-wikisource-v1" defer></script>
-<script src="assets/vitruvia-ai.js?v=20261109-datasaver-bm25-v3" defer></script>
+<script src="assets/vitruvia-ai.js?v=20261110-bm25-optin-e5-v1" defer></script>
 <script src="assets/codicological-query.js?v=20261105-cq-v1" defer></script>
 <script src="assets/kurilo-apparatus.js?v=20261105-academic-navigation-2" defer></script>
 <script src="assets/classical-lexicon.js?v=20261105-lex-v3" defer></script>
@@ -1300,8 +1303,8 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/vitruvia-historical-names.js?v=20261105-1" defer></script>
 <script src="assets/vitruvia-context-guard.js?v=20261106-modern-academic-gate-v1" defer></script>
 <script src="assets/vitruvia-scholarly-export.js?v=20261109-chicago18-loci-v1" defer></script>
-<script src="assets/academic-inline-translation.js?v=20261109-v1" defer></script><script src="assets/vitruvia-search.js?v=20261110-relevance-fast-v3&amp;patch=progressive-works-v1" defer></script>
-<script src="assets/vitruvia-result-filters.js?v=20261106-orden-v1" defer></script>
+<script src="assets/academic-inline-translation.js?v=20261109-v1" defer></script><script src="assets/vitruvia-search.js?v=20261110-academic-controls-progressive-v1" defer></script>
+<script src="assets/vitruvia-result-filters.js?v=20261110-facets-loci-v1" defer></script>
 <script src="assets/page-autotranslate.js?v=20261106-v1" defer></script>
 <script src="assets/vitruvia-term-panel.js?v=20261106-strict-identities-v1" defer></script>
 <script src="assets/vitruvia-featured-bio.js?v=20261107-portrait-identity-v2" defer></script>
