@@ -1,0 +1,26 @@
+name: Verify edition discoverability
+on:
+  push:
+    paths:
+      - "documents/edicion-v*.html"
+      - "documents/kurilo-*.pdf"
+      - "scripts/audit-edition-discoverability.mjs"
+      - ".github/workflows/edition-discoverability.yml"
+  pull_request:
+    paths:
+      - "documents/edicion-v*.html"
+      - "documents/kurilo-*.pdf"
+      - "scripts/audit-edition-discoverability.mjs"
+      - ".github/workflows/edition-discoverability.yml"
+permissions:
+  contents: read
+jobs:
+  verify-editions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check three edition landing pages and PDF metadata
+        run: node scripts/audit-edition-discoverability.mjs
