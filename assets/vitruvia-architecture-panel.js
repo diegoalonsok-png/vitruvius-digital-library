@@ -18,7 +18,8 @@ function classify(query,rows=[]){
  // A resolved person's biography takes precedence over similarly named
  // buildings (e.g. Andrea Palladio versus Andrea Palladio power station).
  const primary=rows.find(x=>x.preferredWiki&&x.entityKind==='person'&&x.link);
- if(primary)return /architect|arquitect|architet|architecte|ingenier|engineer/i.test(String(primary.entityDescription||primary.excerpt||''))?
+ if(primary)return (/architect|arquitect|architet|architecte|ingenier|engineer/i.test(String(primary.entityDescription||primary.excerpt||''))||
+  !!certifiedSites[q])?
   {kind:'person',subject:short(primary.title),identity:primary}:null;
  const qt=tokens(query);
  // Resolve an actual identified building before reading architect names in its description.
