@@ -406,27 +406,48 @@ function showCatalogueMetric(id,result,value){
  element.dataset.verification=verified?"cargado":"sin-verificar";
  element.title=verified?"Recuento del índice cargado; alcance definido por su fuente.":"No fue posible verificar esta cifra: no significa cero.";
 }
+/* Dos etapas: recuperar documentos nucleares antes que repertorios auxiliares.
+   El sitio nunca presenta un indice no recibido como inventario completo. */
 async function load(){try{
  const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
- const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
- const books=results[0].status==="fulfilled"?results[0].value:{works:[]},pages=results[1].status==="fulfilled"?results[1].value:{pages:[]},testimonia=results[2].status==="fulfilled"?results[2].value:{records:[],editions:[]};
+ const core=await Promise.allSettled(urls.slice(0,3).map(u=>fetchJSON(u)));
+ const books=core[0].status==="fulfilled"?core[0].value:{works:[]},pages=core[1].status==="fulfilled"?core[1].value:{pages:[]},testimonia=core[2].status==="fulfilled"?core[2].value:{records:[],editions:[]};
  S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];
- S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];S.historical=results[4]?.status==="fulfilled"&&Array.isArray(results[4].value)?results[4].value.filter(x=>x.category==="historical"):[];S.people=results[3].status==="fulfilled"?(results[3].value.entities||[]).filter(x=>x.kind==="person"):[];S.academicRecords=results[5]?.status==="fulfilled"?(results[5].value.records||[]):[];
- S.currentAuthorities=results[5]?.status==="fulfilled"?(results[5].value.currentAuthorities||[]):[];S.ready=true;
- (typeof window!=="undefined"?window.VitruviaUnderstand:null)?.setVocabulary([...S.works.flatMap(w=>[w.title,w.author,...(w.aliases||[])]),...S.witnesses.map(w=>w.title),...(S.people||[]).flatMap(p=>[p.name,p.label,...(p.aliases||[])]),
-  "Vitruvio","Vitruvius","Palladio","Alberti","Serlio","Vignola","Cesariano","Giocondo","Barbaro","Sulpizio","Perrault","Piranesi","Leonardo","Miguel Ángel","Brunelleschi","Bramante","Le Corbusier","Gaudí","Wright","Mies","Gropius","Niemeyer","Fuller","Borromini","Bernini","Augusto","Julio César","Cicerón","Lucrecio","Virgilio","Homero","Platón","Aristóteles","Teofrasto","Epicteto","Plinio","Frontino","Arquímedes","Euclides","Ptolomeo","Herón","Ctesibio"]);
- showCatalogueMetric("metric-works",results[0],S.works.length);
- showCatalogueMetric("metric-pages",results[1],S.pages.length);
- showCatalogueMetric("metric-read",results[0],S.works.filter(verified).length);
- showCatalogueMetric("metric-witnesses",results[2],S.witnesses.length);
- showCatalogueMetric("metric-editions",results[2],S.editions.length);
- $("metrics")?.setAttribute("data-verification",results.slice(0,3).every(x=>x.status==="fulfilled")?"completo":"parcial");
+ S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];
+ S.ready=true;S.supplementalReady=false;
+ showCatalogueMetric("metric-works",core[0],S.works.length);
+ showCatalogueMetric("metric-pages",core[1],S.pages.length);
+ showCatalogueMetric("metric-read",core[0],S.works.filter(verified).length);
+ showCatalogueMetric("metric-witnesses",core[2],S.witnesses.length);
+ showCatalogueMetric("metric-editions",core[2],S.editions.length);
+ $("metrics")?.setAttribute("data-verification",core.every(x=>x.status==="fulfilled")?"completo":"parcial");
  if(!document.body.classList.contains("vitruvia-reading")){
   $("result-state").textContent=S.works.length+" obras · "+S.witnesses.length+" códices · "+S.editions.length+" ediciones y "+S.pages.length+" secciones documentales";
-  const unavailable=results.flatMap((r,i)=>r.status==="rejected"?[urls[i]]:[]);
+  const unavailable=core.flatMap((r,i)=>r.status==="rejected"?[urls[i]]:[]);
   if(unavailable.length)$("result-state").textContent+=" · "+unavailable.length+" índices no disponibles";
  }
- }catch(e){for(const id of ["metric-works","metric-pages","metric-read","metric-witnesses","metric-editions"])showCatalogueMetric(id,null,null);$("metrics")?.setAttribute("data-verification","no-disponible");$("result-state").textContent="Índice de la biblioteca no disponible: "+e.message}}
+ // Se aprovecha la misma descarga compartida; no se repite la busqueda externa.
+ void Promise.allSettled(urls.slice(3).map(u=>fetchJSON(u))).then(rest=>{
+  S.people=rest[0].status==="fulfilled"?(rest[0].value.entities||[]).filter(x=>x.kind==="person"):[];
+  S.historical=rest[1].status==="fulfilled"&&Array.isArray(rest[1].value)?rest[1].value.filter(x=>x.category==="historical"):[];
+  S.academicRecords=rest[2].status==="fulfilled"?(rest[2].value.records||[]):[];
+  S.currentAuthorities=rest[2].status==="fulfilled"?(rest[2].value.currentAuthorities||[]):[];
+  (typeof window!=="undefined"?window.VitruviaUnderstand:null)?.setVocabulary([
+   ...S.works.flatMap(w=>[w.title,w.author,...(w.aliases||[])]),
+   ...S.witnesses.map(w=>w.title),
+   ...S.people.flatMap(p=>[p.name,p.label,...(p.aliases||[])]),
+   "Vitruvio","Vitruvius","Palladio","Alberti","Serlio","Vignola","Cesariano","Giocondo","Barbaro","Sulpizio","Perrault","Piranesi","Leonardo","Miguel Ángel","Brunelleschi","Bramante","Le Corbusier","Gaudí","Wright","Mies","Gropius","Niemeyer","Fuller","Borromini","Bernini","Augusto","Julio César","Cicerón","Lucrecio","Virgilio","Homero","Platón","Aristóteles","Teofrasto","Epicteto","Plinio","Frontino","Arquímedes","Euclides","Ptolomeo","Herón","Ctesibio"
+  ]);
+  S.supplementalReady=true;
+  if(typeof window!=="undefined")window.dispatchEvent(new CustomEvent("vitruvia:catalogue-supplemental",{detail:{
+   unavailable:rest.flatMap((x,i)=>x.status==="rejected"?[urls[i+3]]:[])
+  }}));
+ }).catch(e=>console.warn("Índices auxiliares no disponibles:",e));
+}catch(e){
+ for(const id of ["metric-works","metric-pages","metric-read","metric-witnesses","metric-editions"])showCatalogueMetric(id,null,null);
+ $("metrics")?.setAttribute("data-verification","no-disponible");
+ $("result-state").textContent="Índice de la biblioteca no disponible: "+e.message;
+}}
 
 const dataPaths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json"];
 function passages(){if(S.passages)return Promise.resolve(S.passages);if(S.passagePromise)return S.passagePromise;
@@ -1372,6 +1393,19 @@ function authorityResult(identity){
 
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ // Mostrar la ficha inicial sin esperar bibliotecas extensas ni APIs secundarias.
+ document.body.classList.add("vitruvia-reading");
+ window.VitruviaSearchSnapshot={query:q,rows:[]};
+ window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:q}}));
+ $("clear-search").hidden=false;
+ restoreFeature();
+ $("results-heading").textContent=T().heading;
+ $("result-state").textContent="Identificando el tema y preparando fuentes académicas…";
+ $("result-list").setAttribute("aria-busy","true");
+ $("result-list").replaceChildren(node("div","empty","Cargando ficha y testimonios documentados…"));
+ $("answer").hidden=true;
+ window.VitruviaArticles?.begin?.(q);
+ history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
  // Start authority lookup immediately, in parallel with loading the large
  // static catalogue; the main results are still rendered in the usual place.
  const earlyIdentity=!/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&
@@ -1380,17 +1414,19 @@ async function search(){
  // Display the verified subject independently of six large local indices.
  // The catalogue remains necessary for reading its actual manuscripts.
  let previewIdentity=null;
- if(earlyIdentity&&!S.ready&&cataloguePromise){
+ if(earlyIdentity){
   earlyIdentity.then(identity=>{
-   if(!identity||id!==S.searchId||searchSignal.aborted||S.ready)return;
+   if(!identity||id!==S.searchId||searchSignal.aborted)return;
    previewIdentity=identity;
    S.identifiedSubject=identity;
-   document.body.classList.add("vitruvia-reading");
-   $("results-heading").textContent=T().heading;
-   display([authorityResult(identity)],q,
-    S.lang==="en"?"Authority identified · loading local catalogue":
-    S.lang==="fr"?"Autorité identifiée · chargement du catalogue":
-    "Identidad identificada · cargando catálogo local");
+   const row=authorityResult(identity);
+   // La identidad documentada se dibuja primero. La fotografía se verifica por
+   // origen y derechos en el módulo iconográfico, nunca por semejanza textual.
+   applyFeatured(row,identity.wikidataId?10000:700,q,q);
+   if(!S.ready)display([row],q,
+    S.lang==="en"?"Verified identity · loading documentary indexes":
+    S.lang==="fr"?"Identité documentée · chargement des index":
+    "Identidad documentada · ampliando fuentes");
   }).catch(()=>{});
  }
  // Wait for the library before assembling its verified local holdings.
@@ -1405,13 +1441,8 @@ async function search(){
  const authority=currentAuthorityFor(q);
  const person=identifyHistoricalPerson(q)||(authority?{id:authority.id,name:authority.personName}:null);
  const generalQuery=authority?authority.personName:(window.VitruviaEntityResolver?.subject(topicQuery(q))||topicQuery(q));
- document.body.classList.add("vitruvia-reading");
- window.VitruviaSearchSnapshot={query:q,rows:[]};
- window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:q}}));
- $("clear-search").hidden=false;
- restoreFeature();
+ // Conservar la primera imagen/ficha mientras se integran las fuentes.
  promotePrimaryManuscript(q);
- history.replaceState(null,"",S.privateMode?"vitruvia.html":"vitruvia.html?"+new URLSearchParams({q,mode:S.mode}));
  const mode=S.mode,concept=(mode==="concept"||mode==="all"),internal=["all","site","concept","ai"].includes(mode);
  const engine=window.VitruviaResearchEngine;
  const intent=engine?.classify(q);
@@ -1424,11 +1455,25 @@ async function search(){
   delete $("result-state").dataset.firstResultMs;delete $("result-state").dataset.completeMs;
   $("result-list").setAttribute("aria-busy","true");
  $("result-list").replaceChildren(node("div","empty",T().waiting));$("answer").hidden=true;
- if(window.VitruviaArticles)window.VitruviaArticles.begin?.(q);
  sourceLinks(generalQuery);
  let rows=[...onomasticonSubjectRows(q),...authorCatalogueRows(q),...associatedClassicalWorks(q),...classicalSubjectRows(q),
   ...(previewIdentity?[authorityResult(previewIdentity)]:[])];
  if(rows.length)display(rows,q,T().searching);
+ // Los repertorios auxiliares actualizan la misma búsqueda sin disparar
+ // una segunda ronda de llamadas a Wikipedia, Google Books o Crossref.
+ let supplementApplied=false;
+ function integrateSupplement(){
+  if(supplementApplied||id!==S.searchId||searchSignal.aborted)return;
+  supplementApplied=true;
+  rows.push(...onomasticonSubjectRows(q),...authorCatalogueRows(q),
+   ...(internal?[...academicRows(q),...liveBooks(q,concept)]:[]));
+  display(rows,q,S.searchComplete?"Catálogo ampliado · fuentes completadas":"Catálogo ampliado · buscando otras fuentes");
+ }
+ if(S.supplementalReady)integrateSupplement();
+ else{
+  window.addEventListener("vitruvia:catalogue-supplemental",integrateSupplement,{once:true});
+  searchSignal.addEventListener("abort",()=>window.removeEventListener("vitruvia:catalogue-supplemental",integrateSupplement),{once:true});
+ }
  if(internal){
   rows.push(...(focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:[...academicRows(q),...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)]));
   if(intent?.preface){
