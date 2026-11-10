@@ -1269,7 +1269,7 @@ function parseCitation(q){
  for(let k=0;k<toks.length;k++){const t=toks[k],t2=k+1<toks.length?t+" "+toks[k+1]:null;
   const hit=CITE_WORKS.find(([,re])=>re.test(t)||(t2&&re.test(t2)));
   if(hit&&(!wid||late[hit[0]]||(wid==="homer-iliad"&&hit[0]==="homer-odyssey")||(wid==="virgil-aeneid"&&hit[0]==="virgil-georgica"))){wid=hit[0];if(t2&&hit[1].test(t2)&&!hit[1].test(t))k++;continue}
-  if(/^(pr|pref|praef|praefatio|prefacio|proemio|prooemium|prologo|prologus|preface|proem)$/.test(t)){praef=true;continue}
+  if(/^(pr|pref|praef|praefatio|prefacio|prefacion|prefaciones|proemio|prooemium|prologo|prologus|preface|proem)$/.test(t)){praef=true;continue}
   if(/^\d+[a-e]?$/.test(t)){nums.push(t);continue}
   const r=romanVal(t);if(r){nums.push(String(r));continue}
  }
