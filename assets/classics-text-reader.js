@@ -20,6 +20,15 @@ window.addEventListener("message",event=>{
  select(cmd.index);
 });
 
+/* Recover iframe initialization if the parent missed the initial ready event.
+   Same-origin parent only; the source edition and active locus are never changed. */
+window.addEventListener("message",event=>{
+ if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
+ const cmd=event.data;
+ if(!cmd||cmd.type!=="vitruvia-parallel-probe"||cmd.work!==work||cmd.lang!==data?.language)return;
+ window.parent.postMessage({type:"vitruvia-parallel-ready",work,lang:data.language,count:data.passages.length},location.origin);
+});
+
 /* Appearance controls supplied by the same-origin twin reader; editorial text is unchanged. */
 const PARALLEL_FONTS={serif:'Georgia, "Times New Roman", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace',classic:'"Palatino Linotype", "Book Antiqua", Palatino, serif'};
 window.addEventListener("message",event=>{
