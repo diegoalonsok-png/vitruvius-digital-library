@@ -43,7 +43,7 @@ function workRecord(entity,notable,coverage=0){
  const title=label(entity),instances=ids(entity,'P31');
  if(!qid(entity?.id)||!title||/^Q\d+$/.test(title)||instances.some(id=>['Q5','Q4167410','Q4167836','Q13406463'].includes(id)))return null;
  const desc=description(entity),claims=entity.claims||{};
- const building=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|villa|tower|skyscraper)\b/.test(norm(desc));
+ const building=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|templo|iglesia|church|chapel|capilla|teatro|theatre|theater|villa|tower|torre|skyscraper|palais|eglise|chiesa|basilica|basilique|palazzo|biblioteca|library|teatre|theatre)\b/.test(norm(desc));
  // A date is meaningful only with its Wikidata property. An inauguration
  // (P1619) must not be silently treated as the year of design or construction.
  const dateProps=building?['P571','P1619','P577']:['P577','P571','P575'];
