@@ -53,7 +53,7 @@ let visible=[],shown=0,revision=0,currentQuery='',currentLocusQuery=null;
 // alignment among separate editorial translations.
 const locusKey=value=>{
  const raw=String(value??'').normalize('NFKC').trim()
-  .replace(/^locus\s+/i,'').replace(/^vitr(?:uvius|uvio)?(?:,?\s*de\s*arch(?:itectura)?\.?)?\s*/i,'');
+  .replace(/^locus\s+/i,'').replace(/^vitr(?:uvius|uvio)?\.?(?:,?\s*de\s*arch(?:itectura)?\.?)?\s*/i,'');
  const match=raw.match(/^(10|[1-9]|X|IX|VIII|VII|VI|V|IV|III|II|I)\s*[.\-]\s*(praef(?:atio)?|pr|\d{1,2})\s*[.\-]\s*(\d{1,3})$/i);
  if(!match)return null;
  const roman={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
