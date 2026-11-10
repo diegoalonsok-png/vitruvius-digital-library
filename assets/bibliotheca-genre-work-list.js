@@ -39,7 +39,7 @@ function hostedVersions(w){
  const hosted=registry.filter(r=>r.workId===w.id&&
   ["json-passages","structured-bilingual"].includes(r.format)&&
   ["la","grc","es","en","fr","it","de","pt"].includes(r.language)&&
-  typeof r.reader==="string"&&r.reader.startsWith("classics-text-reader.html?"));
+  typeof r.reader==="string"&&(r.reader.startsWith("classics-text-reader.html?")||r.workId==="vitruvius"&&r.reader.startsWith("lector-bilingue.html?")));
  const versions=[...new Map(hosted.map(r=>[r.language,r])).values()];
  const original=versions.find(r=>["la","grc"].includes(r.language));
  const translated=versions.filter(r=>!["la","grc"].includes(r.language));
@@ -94,7 +94,8 @@ function render(){
    }
    if(versions.original&&versions.translated.length){
     const original=versions.original,first=versions.translated[0];
-    const href="classics-parallel-reader.html?work="+encodeURIComponent(w.id)+
+    const href=w.id==="vitruvius"?first.reader:
+     "classics-parallel-reader.html?work="+encodeURIComponent(w.id)+
      "&left="+encodeURIComponent(original.language)+"&right="+encodeURIComponent(first.language);
     const pair=document.createElement("a");pair.className="genre-work-version genre-work-parallel";
     pair.href=safeLocal(href);pair.textContent=labels.parallel;editions.append(pair);
