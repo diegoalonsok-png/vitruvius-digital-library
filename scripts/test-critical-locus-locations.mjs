@@ -31,6 +31,10 @@ for(const [input,expected] of [
  ["II.pr.1","2.praef.1"],["2.praef.1","2.praef.1"],
  ["X.16.1","10.16.1"],["10.16.1","10.16.1"],
  ["Vitr. III.1.2","3.1.2"],
+ ["prefacion","*.praef.*"],["prefación","*.praef.*"],
+ ["prefacio","*.praef.*"],["praefatio","*.praef.*"],
+ ["prefacion II","2.praef.*"],["prefación del libro II","2.praef.*"],
+ ["prefacion II.1","2.praef.1"],["II.prefacion.1","2.praef.1"],
  ["domus",null],["III.1.2.3",null],["XI.1.2",null],
  ["3.0.1",null],["3.1.0",null],["3.1.2000",null]
 ])assert.equal(normalize(input),expected,input);
@@ -42,6 +46,13 @@ assert(sandbox.match("note",ed,"documented note",{locus:"III.1.2",verified:true}
 assert.equal(sandbox.match("note",ed,"candidate note",{locus:"III.1.2",verified:false}),null,"Candidate note must not be treated as verified");
 assert(sandbox.match("apparatus",ed,"documented heading",{locus:"III.1.2",verified:true}),"Explicit PDF heading should match");
 assert.equal(sandbox.match("apparatus",ed,"incidental mention",{locus:"III.1.2",verified:false}),null,"Incidental PDF mention must not be treated as verified");
+sandbox.setQuery("prefacion");
+assert(sandbox.match("passage",ed,"prefacio latino",{locus:"1.praef.1"}),"Bare prefacion must find prefatory passages");
+assert.equal(sandbox.match("passage",ed,"ordinary chapter",{locus:"1.1.1"}),null,"Bare prefacion cannot match non-preface chapters");
+assert.equal(sandbox.match("note",ed,"unverified candidate",{locus:"1.praef.1",verified:false}),null,"Preface candidates must not be promoted");
+sandbox.setQuery("prefacion II");
+assert(sandbox.match("passage",ed,"book II preface",{locus:"2.praef.1"}),"Prefacion II must select book II");
+assert.equal(sandbox.match("passage",ed,"book I preface",{locus:"1.praef.1"}),null,"Prefacion II cannot select book I");
 sandbox.setQuery("domus");
 assert(sandbox.match("passage",ed,"domus romana",{locus:"3.1.2"}),"Literal search should still work");
 assert.equal(sandbox.match("passage",ed,"symmetria",{locus:"3.1.2"}),null,"Literal search should not fabricate matches");
