@@ -11,7 +11,7 @@ assert.match(html,/raw\.githubusercontent\.com\/cltk\/lat_text_latin_library\/76
 assert.match(html,/fetch\(rawUrl/);
 assert.match(html,/document\.createTextNode/);
 assert.match(html,/mark\.textContent/);
-assert.match(html,/no se conserva otra copia/);
+assert.match(html,/no se conserva otra copia/i);
 assert.match(html,/El texto se consulta directamente/);
 assert.match(bib,/sourceBox\.hidden=id!=="ennius-annales"/);
 assert.match(bib,/classics-external-source-reader\.html\?work=ennius-annales/);
