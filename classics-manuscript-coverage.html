@@ -22,7 +22,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 <main><h1>Matriz codicológica de 222 obras</h1>
 <p class="intro">Cada registro representa una obra catalogada, no un códice. Un vínculo a un catálogo acredita únicamente un objeto identificado; se distingue del visor de imágenes y de la demostración filológica de que sea el manuscrito conservado más antiguo. Esta matriz actualiza su cobertura directamente desde el repositorio, sin inferir signaturas ni afirmar la integridad del texto a partir de una digitalización.</p>
 <div class="summary" id="summary"></div>
-<div class="controls"><label for="filter">Buscar obra o autor</label><input type="search" id="filter" placeholder="Ej. Cicerón, Hesíodo, Plinio…"><label for="status">Cobertura</label><select id="status"><option value="all">Todas las obras</option><option value="none">Sin manuscrito asignado</option><option value="one">Un testimonio</option><option value="many">Dos o más testimonios</option><option value="viewer">Con reproducción enlazada</option></select></div>
+<div class="controls"><label for="filter">Buscar obra o autor</label><input type="search" id="filter" placeholder="Ej. Cicerón, Hesíodo, Plinio…"><label for="status">Cobertura</label><select id="status"><option value="all">Todas las obras</option><option value="none">Obra antigua sin manuscrito asignado</option><option value="modern">Edición o estudio moderno</option><option value="one">Un testimonio</option><option value="many">Dos o más testimonios</option><option value="viewer">Con reproducción enlazada</option></select></div>
 <p id="progress" role="status" aria-live="polite">Cargando registros académicos…</p>
 <div class="scroll"><table><thead><tr><th>Autor y obra</th><th>Estado documental</th><th>Testimonios individualizados / signaturas</th><th>Acceso al documento</th></tr></thead><tbody id="rows"></tbody></table></div>
 </main><footer>Vitruvius Digital Library · Catálogo de manuscritos y control de acceso · TEI P5 / Chicago 18 como criterios de descripción; no constituyen certificación externa.</footer>
@@ -35,13 +35,13 @@ let data=[];
 const stats=(label,value)=>{const el=txt("div");el.className="stat";el.append(txt("b",String(value)),txt("span",label));$("summary").append(el)};
 function draw(){
  const q=$("filter").value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim(),sel=$("status").value;
- const hits=data.filter(x=>(x.author+" "+x.title+" "+x.id).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().includes(q)&&(sel==="all"||sel==="none"&&!x.list.length||sel==="one"&&x.list.length===1||sel==="many"&&x.list.length>=2||sel==="viewer"&&x.list.some(w=>w.viewer||w.localViewer)));
+ const hits=data.filter(x=>(x.author+" "+x.title+" "+x.id).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().includes(q)&&(sel==="all"||sel==="none"&&!x.list.length&&x.manuscript?.isIndependentAncientWork!==false||sel==="one"&&x.list.length===1||sel==="many"&&x.list.length>=2||sel==="viewer"&&x.list.some(w=>w.viewer||w.localViewer)||sel==="modern"&&x.manuscript?.isIndependentAncientWork===false));
  const body=$("rows");body.replaceChildren();
  for(const w of hits){
   const tr=txt("tr");
   const name=txt("td");name.append(txt("strong",w.author+" · "+w.title),txt("small",w.id));anchor(name,"Ver ficha crítica →","classics-work-record.html?work="+encodeURIComponent(w.id));tr.append(name);
   const status=txt("td");status.className=w.list.length>=2?"yes":w.list.length?"warn":"pending";
-  status.textContent=w.list.length?(w.list.length+" testimonio(s) registrado(s)"):"Pendiente de asignación documental";
+  status.textContent=w.manuscript?.isIndependentAncientWork===false?"Edición o estudio moderno; códices de la obra matriz":w.list.length?(w.list.length+" testimonio(s) registrado(s)"):"Pendiente de identificación documental";
   status.append(txt("small",w.list.some(v=>v.viewer||v.localViewer)?"Contiene acceso a imágenes o visor; su carga puede depender de terceros":"No consta visor individual confirmado"));tr.append(status);
   const shelf=txt("td");for(const ms of w.list.slice(0,4))shelf.append(txt("small",(ms.shelfmark||ms.id)+" · "+(ms.date||"s. d.")));
   if(w.list.length>4)shelf.append(txt("small","+"+(w.list.length-4)+" testimonios en la ficha"));tr.append(shelf);
@@ -51,16 +51,16 @@ function draw(){
    else if(ms.viewer)anchor(links,"Ver · "+(ms.shelfmark||ms.id),ms.viewer);
    else if(ms.record)anchor(links,"Catálogo · "+(ms.shelfmark||ms.id),ms.record);
   }
-  if(!w.list.length)links.append(txt("small","No publicar un códice supuesto: localizar antes signatura y fuente"));
+  if(w.manuscript?.isIndependentAncientWork===false){links.append(txt("small","No es una obra manuscrita independiente"));anchor(links,"Consultar De architectura →","classics-work-record.html?work=vitruvius")}else if(!w.list.length)links.append(txt("small","No publicar un códice supuesto: localizar antes signatura y fuente"));
   tr.append(links);body.append(tr);
  }
  $("progress").textContent=hits.length+" obras visibles de "+data.length+" catalogadas.";
 }
-Promise.all([read("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-coverage-v2"),read("data/bibliotheca-testimonia-verified.json?v=20261110-coverage-v2")])
+Promise.all([read("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-coverage-v3"),read("data/bibliotheca-testimonia-verified.json?v=20261110-coverage-v3")])
 .then(([c,t])=>{
  const map=new Map();for(const ms of t.records||[])for(const id of ms.workIds||[]){if(!map.has(id))map.set(id,[]);map.get(id).push(ms)}
  data=(c.works||[]).map(x=>({...x,list:(map.get(x.id)||[]).slice().sort((a,b)=>(a.dateStart??999999)-(b.dateStart??999999))}));
- $("summary").replaceChildren();stats("Obras catalogadas",data.length);stats("Con testigo individual",data.filter(x=>x.list.length).length);stats("Con dos o más",data.filter(x=>x.list.length>=2).length);stats("Sin testigo asignado",data.filter(x=>!x.list.length).length);stats("Registros de manuscritos",(t.records||[]).length);
+ $("summary").replaceChildren();stats("Obras catalogadas",data.length);stats("Con testigo individual",data.filter(x=>x.list.length).length);stats("Con dos o más",data.filter(x=>x.list.length>=2).length);stats("Obras antiguas sin testigo",data.filter(x=>!x.list.length&&x.manuscript?.isIndependentAncientWork!==false).length);stats("Ediciones/estudios modernos",data.filter(x=>x.manuscript?.isIndependentAncientWork===false).length);stats("Registros de manuscritos",(t.records||[]).length);
  draw();
 }).catch(e=>$("progress").textContent="No pudo cargarse la matriz: "+e.message);
 $("filter").addEventListener("input",draw);$("status").addEventListener("change",draw);
