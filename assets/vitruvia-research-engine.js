@@ -239,6 +239,8 @@ function passageRows(q,corpora,{concept=false,limit=18}={}){
   const pageLabel=Number.isInteger(page)&&page>0?"página PDF "+page:"página PDF sin cotejo";
   const editionURL=({"recensio-es":"documents/kurilo-recensio-es.pdf","recensio-fr":"documents/kurilo-recensio-fr.pdf","theory-en":"documents/kurilo-theory-en.pdf"})[p.edition];
   const link=editionURL&&Number.isInteger(page)&&page>0?editionURL+"#page="+page:editionURL||null;
+  const links=[{label:"Leer en paralelo · locus "+p.locus,url:"lector-bilingue.html?"+new URLSearchParams({edition:p.edition,locus:p.locus})},
+    {label:"Comprobar correspondencia de folios (sin asignación automática)",url:"concordancia-folios.html?locus="+encodeURIComponent(p.locus)}];
   const body=String(p.translation||p.latin);
   const hay=canonical(body),searchTerms=tokens(q,concept);
   let at=hay.indexOf(canonical(q));
@@ -246,7 +248,7 @@ function passageRows(q,corpora,{concept=false,limit=18}={}){
   const excerpt=at<0?body.slice(0,420):body.slice(Math.max(0,at-145),Math.min(body.length,at+330));
   rows.push({type:"passage",title:"Vitruvio · De architectura "+p.locus+" · "+p.version,author:p.language.toUpperCase()+" · "+p.version+" · "+where,
     excerpt,meta:"Locus "+p.locus+" · "+pageLabel+" · "+p.method,rating:rating+(p.edition==="recensio-es"?0.2:0),
-    link,source:p.edition,edition:p.edition,locus:p.locus,pdfPage:Number.isInteger(page)&&page>0?page:null,latin:p.latin,translation:p.translation,method:concept&&!loc?"Expansión terminológica (sin vectores)":where})
+    link,links,source:p.edition,edition:p.edition,locus:p.locus,pdfPage:Number.isInteger(page)&&page>0?page:null,latin:p.latin,translation:p.translation,method:concept&&!loc?"Expansión terminológica (sin vectores)":where})
  }
  return rows.sort((a,b)=>b.rating-a.rating).slice(0,limit)
 }
