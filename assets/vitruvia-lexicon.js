@@ -1306,7 +1306,17 @@ async function openViewer(D,p,spans,q){
  const id=LECTOR_IDS[p[0]];const body=viewerShell(`${w.author}, ${w.title} · ${p[1]}`);
  if(!id){const c=el("p",{class:"lx-passage",lang:D.l});c.append(linkWords(p[2],spans));body.append(c);return}
  const u=`lector-clasico.html?obra=${encodeURIComponent(id)}&loc=${encodeURIComponent(p[1])}${q?"&q="+encodeURIComponent(q):""}&embed=1${D.l==="grc"||!["phi0474.phi055","phi0448.phi001","phi0550.phi001","phi0690.phi002","phi0690.phi003","phi1212.phi002","phi0472.phi001","phi0972.phi001"].includes(id)?"&extra=1":""}`;
- body.append(el("p",{class:"lx-small"},T("Original y traducción en el lector clásico del sitio (Perseus Digital Library). Si el lector no encuentra el mismo locus, abre la obra al comienzo: el pasaje de esta búsqueda se muestra debajo.")),el("iframe",{class:"lx-viewer-frame",src:u,title:`${w.author}, ${w.title}`,loading:"lazy"}),el("details",{},el("summary",{},T("Pasaje de esta búsqueda")),(()=>{const c=el("p",{class:"lx-passage",lang:D.l});c.append(linkWords(p[2],spans));return c})()),el("p",{},el("a",{href:u.replace("&embed=1",""),target:"_blank",rel:"noopener"},T("Abrir el lector en una pestaña")+" ↗")));
+ const original=el("section",{class:"lx-viewer-origin",role:"region","aria-label":T("Pasaje encontrado")},
+  el("h4",{},T("Pasaje encontrado")+" · "+p[1]));
+ const selected=el("p",{class:"lx-passage",lang:D.l});selected.append(linkWords(p[2],spans));
+ original.append(selected,el("p",{class:"lx-src"},w.edition||"",w.license?" · "+w.license:""));
+ const source=el("details",{class:"lx-viewer-extended"},
+  el("summary",{},T("Abrir lector de la obra con traducción")+" ↗"),
+  el("p",{class:"lx-small"},T("Lector externo o edición vinculada: confirme el locus y la traducción. Si no está alineado, el original seleccionado permanece arriba.")),
+  el("iframe",{class:"lx-viewer-frame",src:u,title:`${w.author}, ${w.title}`,loading:"lazy"}),
+  el("p",{},el("a",{href:u.replace("&embed=1",""),target:"_blank",rel:"noopener"},T("Abrir el lector en una pestaña")+" ↗")));
+ body.append(original,source);
+ body.scrollTop=0;
 }
 
 
