@@ -4,8 +4,8 @@
   "method": "Cada registro separa autoría, título uniforme, nomenclatura PHI/TLG/CTS, integridad de conservación e indexación, manuscritos individuales y sus signaturas, versión impresa más temprana en los datos verificados y bibliografía. El primer testimonio de este registro no se confunde con el más antiguo universal. No se inventan variantes ni stemmata.",
   "counts": {
     "total": 222,
-    "manuscriptRecords": 30,
-    "worksWithManuscripts": 37,
+    "manuscriptRecords": 34,
+    "worksWithManuscripts": 38,
     "withoutOriginalIndex": 10,
     "modernEditions": 3,
     "explicitlyPartial": 11,
@@ -2819,7 +2819,7 @@
           "rights": "British Library, Royal Collection: consultar restricciones y derechos de digitalización del archivo.",
           "dateStart": 401
         },
-        "earliestScope": "Solo el testimonio más temprano del registro verificado de Vitruvius; NO afirmar que sea el códice más antiguo mundialmente conocido.",
+        "earliestScope": "Testimonio de fecha más temprana únicamente entre los registrados en Vitruvius. No se ha determinado la prioridad global; según obra, se distinguen los testimonios fragmentarios, las recensiones y los códices completos.",
         "witnesses": [
           {
             "id": "alexandrinus-nt-clement",
@@ -2834,9 +2834,23 @@
             "verification": "British Library Archives and Manuscripts Catalogue, Royal MS 1 D VIII, contenido folio a folio.",
             "rights": "British Library, Royal Collection: consultar restricciones y derechos de digitalización del archivo.",
             "dateStart": 401
+          },
+          {
+            "id": "clement-hierosolymitanus-54",
+            "title": "Primera carta de Clemente (Πρὸς Κορινθίους Αʹ) — Hierosolymitanus 54",
+            "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
+            "shelfmark": "Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54",
+            "date": "1056 d. C. (colofón fechado, Λέων νοτάριος)",
+            "coverage": "Primera carta a los Corintios atribuida a Clemente; CPG 1001; no desplaza a otros testigos griegos más antiguos.",
+            "recordUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+            "viewerUrl": "https://www.loc.gov/item/00279389694-jo/",
+            "iiifManifestUrl": null,
+            "verification": "Pinakes/IRHT CNRS (diktyon 35291) y Library of Congress (ítem 00279389694-jo)",
+            "rights": "LoC califica la colección de microfilmes como dominio público; citar su procedencia.",
+            "dateStart": 1056
           }
         ],
-        "collationStatus": "Sin collatio exhaustiva ni stemma codicum validado por este registro."
+        "collationStatus": "Identificación de testigos, datación y loci basada en catálogos; no constituye collatio codicum ni stemma crítico."
       },
       "earlyEditions": {
         "earliestDatedInCatalogue": null,
@@ -2861,9 +2875,11 @@
           "registro de 27 testigos institucionales",
           "Perseus authority audit",
           "índice local",
-          "manifiestos de ramas griega y latina"
+          "manifiestos de ramas griega y latina",
+          "Pinakes/IRHT diktyon 35291",
+          "Library of Congress 00279389694-jo"
         ],
-        "confidence": "documented_witness_in_register"
+        "confidence": "institutional_witness_identified_not_full_collation"
       }
     },
     {
@@ -3240,7 +3256,7 @@
           "rights": "Codex Sinaiticus Project / British Library y socios: derechos de imágenes y transcripción según proyecto; sin copia de imágenes en Vitruvia.",
           "dateStart": 301
         },
-        "earliestScope": "Solo el testimonio más temprano del registro verificado de Vitruvius; NO afirmar que sea el códice más antiguo mundialmente conocido.",
+        "earliestScope": "Testimonio de fecha más temprana únicamente entre los registrados en Vitruvius. No se ha determinado la prioridad global; según obra, se distinguen los testimonios fragmentarios, las recensiones y los códices completos.",
         "witnesses": [
           {
             "id": "sinaiticus-gospels-apostolic",
@@ -3255,9 +3271,23 @@
             "verification": "British Library Add MS 43725, ff. 200r–347v; Codex Sinaiticus Project, contenido y transmisión.",
             "rights": "Codex Sinaiticus Project / British Library y socios: derechos de imágenes y transcripción según proyecto; sin copia de imágenes en Vitruvia.",
             "dateStart": 301
+          },
+          {
+            "id": "barnabas-hierosolymitanus-54",
+            "title": "Epistula Barnabae (Βαρνάβα ἐπιστολή) — Hierosolymitanus 54",
+            "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
+            "shelfmark": "Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54",
+            "date": "1056 d. C. (colofón fechado, Λέων νοτάριος)",
+            "coverage": "Texto griego de Epistula Barnabae; testimonio distinto del Codex Sinaiticus, s. IV.",
+            "recordUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+            "viewerUrl": "https://www.loc.gov/item/00279389694-jo/",
+            "iiifManifestUrl": null,
+            "verification": "Pinakes/IRHT CNRS (diktyon 35291) y Library of Congress (ítem 00279389694-jo)",
+            "rights": "LoC califica la colección de microfilmes como dominio público; citar su procedencia.",
+            "dateStart": 1056
           }
         ],
-        "collationStatus": "Sin collatio exhaustiva ni stemma codicum validado por este registro."
+        "collationStatus": "Identificación de testigos, datación y loci basada en catálogos; no constituye collatio codicum ni stemma crítico."
       },
       "earlyEditions": {
         "earliestDatedInCatalogue": null,
@@ -3282,9 +3312,11 @@
           "registro de 27 testigos institucionales",
           "Perseus authority audit",
           "índice local",
-          "manifiestos de ramas griega y latina"
+          "manifiestos de ramas griega y latina",
+          "Pinakes/IRHT diktyon 35291",
+          "Library of Congress 00279389694-jo"
         ],
-        "confidence": "documented_witness_in_register"
+        "confidence": "institutional_witness_identified_not_full_collation"
       }
     },
     {
@@ -3315,10 +3347,38 @@
         "classificationBasis": "Separar supervivencia del texto antiguo, integridad del archivo indexado y alcance del manuscrito."
       },
       "manuscript": {
-        "earliestInVerifiedRegister": null,
-        "earliestScope": "No hay testimonio material acreditado en el registro local; no inventar la signatura ni la cronología.",
-        "witnesses": [],
-        "collationStatus": "Sin collatio exhaustiva ni stemma codicum validado por este registro."
+        "earliestInVerifiedRegister": {
+          "id": "ignatius-hierosolymitanus-54",
+          "title": "Cartas de Ignacio de Antioquía — recensión larga, Hierosolymitanus 54",
+          "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
+          "shelfmark": "Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54",
+          "date": "1056 d. C. (colofón fechado, Λέων νοτάριος)",
+          "coverage": "Recensión larga griega de las cartas ignacianas. NO es testigo idéntico del corpus de siete cartas de la recensión media; la transmisión es distinta.",
+          "recordUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+          "viewerUrl": "https://www.loc.gov/item/00279389694-jo/",
+          "iiifManifestUrl": null,
+          "verification": "Pinakes/IRHT CNRS (diktyon 35291) y Library of Congress (ítem 00279389694-jo)",
+          "rights": "LoC califica la colección de microfilmes como dominio público; citar su procedencia.",
+          "dateStart": 1056
+        },
+        "earliestScope": "Testimonio de fecha más temprana únicamente entre los registrados en Vitruvius. No se ha determinado la prioridad global; según obra, se distinguen los testimonios fragmentarios, las recensiones y los códices completos.",
+        "witnesses": [
+          {
+            "id": "ignatius-hierosolymitanus-54",
+            "title": "Cartas de Ignacio de Antioquía — recensión larga, Hierosolymitanus 54",
+            "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
+            "shelfmark": "Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54",
+            "date": "1056 d. C. (colofón fechado, Λέων νοτάριος)",
+            "coverage": "Recensión larga griega de las cartas ignacianas. NO es testigo idéntico del corpus de siete cartas de la recensión media; la transmisión es distinta.",
+            "recordUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+            "viewerUrl": "https://www.loc.gov/item/00279389694-jo/",
+            "iiifManifestUrl": null,
+            "verification": "Pinakes/IRHT CNRS (diktyon 35291) y Library of Congress (ítem 00279389694-jo)",
+            "rights": "LoC califica la colección de microfilmes como dominio público; citar su procedencia.",
+            "dateStart": 1056
+          }
+        ],
+        "collationStatus": "Identificación de testigos, datación y loci basada en catálogos; no constituye collatio codicum ni stemma crítico."
       },
       "earlyEditions": {
         "earliestDatedInCatalogue": null,
@@ -3343,9 +3403,12 @@
           "registro de 27 testigos institucionales",
           "Perseus authority audit",
           "índice local",
-          "manifiestos de ramas griega y latina"
+          "manifiestos de ramas griega y latina",
+          "Pinakes/IRHT diktyon 35291",
+          "Library of Congress 00279389694-jo",
+          "University of Helsinki, The Apostolic Fathers — Ignatius"
         ],
-        "confidence": "unverified_manuscript_evidence"
+        "confidence": "institutional_witness_identified_not_full_collation"
       }
     },
     {
@@ -3451,7 +3514,7 @@
           "rights": "British Library, Royal Collection: consultar restricciones y derechos de digitalización del archivo.",
           "dateStart": 401
         },
-        "earliestScope": "Solo el testimonio más temprano del registro verificado de Vitruvius; NO afirmar que sea el códice más antiguo mundialmente conocido.",
+        "earliestScope": "Testimonio de fecha más temprana únicamente entre los registrados en Vitruvius. No se ha determinado la prioridad global; según obra, se distinguen los testimonios fragmentarios, las recensiones y los códices completos.",
         "witnesses": [
           {
             "id": "alexandrinus-nt-clement",
@@ -3466,9 +3529,23 @@
             "verification": "British Library Archives and Manuscripts Catalogue, Royal MS 1 D VIII, contenido folio a folio.",
             "rights": "British Library, Royal Collection: consultar restricciones y derechos de digitalización del archivo.",
             "dateStart": 401
+          },
+          {
+            "id": "clement2-hierosolymitanus-54",
+            "title": "Segunda carta de Clemente (homilía anónima) — Hierosolymitanus 54",
+            "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
+            "shelfmark": "Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54",
+            "date": "1056 d. C. (colofón fechado, Λέων νοτάριος)",
+            "coverage": "Texto griego tradicionalmente denominado 2 Clemente, pero de autor anónimo; CPG 1003; distinguir del Codex Alexandrinus, s. V, con cobertura incompleta.",
+            "recordUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+            "viewerUrl": "https://www.loc.gov/item/00279389694-jo/",
+            "iiifManifestUrl": null,
+            "verification": "Pinakes/IRHT CNRS (diktyon 35291) y Library of Congress (ítem 00279389694-jo)",
+            "rights": "LoC califica la colección de microfilmes como dominio público; citar su procedencia.",
+            "dateStart": 1056
           }
         ],
-        "collationStatus": "Sin collatio exhaustiva ni stemma codicum validado por este registro."
+        "collationStatus": "Identificación de testigos, datación y loci basada en catálogos; no constituye collatio codicum ni stemma crítico."
       },
       "earlyEditions": {
         "earliestDatedInCatalogue": null,
@@ -3493,9 +3570,11 @@
           "registro de 27 testigos institucionales",
           "Perseus authority audit",
           "índice local",
-          "manifiestos de ramas griega y latina"
+          "manifiestos de ramas griega y latina",
+          "Pinakes/IRHT diktyon 35291",
+          "Library of Congress 00279389694-jo"
         ],
-        "confidence": "documented_witness_in_register"
+        "confidence": "institutional_witness_identified_not_full_collation"
       }
     },
     {
