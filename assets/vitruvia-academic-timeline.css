@@ -116,3 +116,74 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-detail :is(h4,p,small,a)
 }
 @media(prefers-reduced-motion:reduce){#vitruvia-academic-timeline *{scroll-behavior:auto!important}}
 @media print{#vitruvia-academic-timeline .vat-controls{display:none}#vitruvia-academic-timeline .vat-viewport{overflow:visible}#vitruvia-academic-timeline .vat-map{width:100%!important}}
+
+/* 2026-11-10 · Contained timeline repair.
+   Only the inner rail may scroll; the academic board and subsequent text
+   never acquire its width, and year labels stay within both endpoints. */
+#vitruvia-academic-timeline{
+  display:block!important;
+  inline-size:100%!important;
+  max-inline-size:100%!important;
+  min-inline-size:0!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+#vitruvia-academic-timeline .vat-header,
+#vitruvia-academic-timeline .vat-method,
+#vitruvia-academic-timeline .vat-coverage,
+#vitruvia-academic-timeline .vat-detail{
+  max-inline-size:100%;
+  min-inline-size:0;
+  box-sizing:border-box;
+}
+#vitruvia-academic-timeline .vat-coverage{
+  font:11px/1.5 Arial,Helvetica,sans-serif;
+  letter-spacing:.02em;
+  color:#b2b5b8;
+  border-top:1px solid #393b3d;
+  padding:10px 0;
+  margin:0 0 12px;
+}
+#vitruvia-academic-timeline .vat-viewport{
+  position:relative!important;
+  display:block!important;
+  min-inline-size:0!important;
+  inline-size:100%!important;
+  max-inline-size:100%!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  overscroll-behavior-x:contain!important;
+  scrollbar-gutter:stable;
+  box-sizing:border-box!important;
+}
+#vitruvia-academic-timeline .vat-map{
+  display:block!important;
+  position:relative!important;
+  min-width:0!important;
+  max-width:none!important;
+  box-sizing:border-box!important;
+}
+#vitruvia-academic-timeline .vat-axis{
+  box-sizing:border-box;
+  min-width:0;
+  max-width:none;
+}
+#vitruvia-academic-timeline .vat-tick-start{transform:none!important}
+#vitruvia-academic-timeline .vat-tick-end{transform:translateX(-100%)!important}
+#vitruvia-academic-timeline .vat-band{
+  overflow:hidden;
+  box-sizing:border-box;
+}
+#vitruvia-academic-timeline .vat-track{max-width:100%!important;overflow:hidden;box-sizing:border-box}
+#vitruvia-academic-timeline .vat-event{box-sizing:border-box}
+#vitruvia-academic-timeline .vat-controls button:disabled{
+  opacity:.35;
+  cursor:default;
+  border-color:#484a4c;
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-coverage{color:#595b5d;border-color:#c8c8c8}
+@media(max-width:680px){
+ #vitruvia-academic-timeline .vat-header{flex-wrap:wrap}
+ #vitruvia-academic-timeline .vat-title{min-width:0}
+ #vitruvia-academic-timeline .vat-controls{flex-wrap:wrap}
+}
