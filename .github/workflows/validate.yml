@@ -257,6 +257,9 @@ jobs:
       - name: Test 3 · node scripts/test-no-voseo.mjs
         if: always()
         run: node scripts/test-no-voseo.mjs
+      - name: Regression · Vitruvia progressive sourced search
+        if: always()
+        run: node scripts/test-vitruvia-progressive-results.mjs
       - name: Test 4 · node scripts/test-search.mjs
         if: always()
         run: node scripts/test-search.mjs
