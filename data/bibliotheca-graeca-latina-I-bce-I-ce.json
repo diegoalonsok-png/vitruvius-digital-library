@@ -2876,10 +2876,13 @@
       "manuscript": {
         "manifest": null,
         "status": "Edición impresa moderna; no se trata de un manuscrito antiguo.",
-        "researchStatus": "pending_verified_material_witness",
+        "researchStatus": "modern_publication_not_independent_ancient_codex",
         "witnessCount": 0,
         "witnessWithViewerCount": 0,
-        "needsAdditionalWitnesses": true
+        "needsAdditionalWitnesses": false,
+        "isIndependentAncientWork": false,
+        "referencedAncientWorkId": "vitruvius",
+        "researchNote": "Edición moderna del texto vitruviano en latín y castellano; vincular los códices a De architectura, no atribuir manuscritos autónomos a la edición de 2026."
       },
       "translation": {
         "status": "Consultar la información bibliográfica y el documento PDF."
@@ -2915,10 +2918,13 @@
       "manuscript": {
         "manifest": null,
         "status": "Edición impresa moderna; no se trata de un manuscrito antiguo.",
-        "researchStatus": "pending_verified_material_witness",
+        "researchStatus": "modern_publication_not_independent_ancient_codex",
         "witnessCount": 0,
         "witnessWithViewerCount": 0,
-        "needsAdditionalWitnesses": true
+        "needsAdditionalWitnesses": false,
+        "isIndependentAncientWork": false,
+        "referencedAncientWorkId": "vitruvius",
+        "researchNote": "Edición moderna del texto vitruviano en latín y francés; vincular los códices a De architectura, no inventar testigos medievales de la publicación de 2026."
       },
       "translation": {
         "status": "Consultar la información bibliográfica y el documento PDF."
@@ -2954,10 +2960,13 @@
       "manuscript": {
         "manifest": null,
         "status": "Edición impresa moderna; no se trata de un manuscrito antiguo.",
-        "researchStatus": "pending_verified_material_witness",
+        "researchStatus": "modern_publication_not_independent_ancient_codex",
         "witnessCount": 0,
         "witnessWithViewerCount": 0,
-        "needsAdditionalWitnesses": true
+        "needsAdditionalWitnesses": false,
+        "isIndependentAncientWork": false,
+        "referencedAncientWorkId": "vitruvius",
+        "researchNote": "Estudio moderno derivado de Vitruvio, no obra clásica antigua con transmisión manuscrita propia."
       },
       "translation": {
         "status": "Consultar la información bibliográfica y el documento PDF."
@@ -2993,10 +3002,13 @@
       "manuscript": {
         "manifest": null,
         "status": "Edición impresa moderna; no se trata de un manuscrito antiguo.",
-        "researchStatus": "pending_verified_material_witness",
+        "researchStatus": "modern_publication_not_independent_ancient_codex",
         "witnessCount": 0,
         "witnessWithViewerCount": 0,
-        "needsAdditionalWitnesses": true
+        "needsAdditionalWitnesses": false,
+        "isIndependentAncientWork": false,
+        "referencedAncientWorkId": "vitruvius",
+        "researchNote": "Edición crítica impresa de 1912 del texto de Vitruvio; testigos medievales se registran en la ficha de De architectura."
       },
       "translation": {
         "status": "Consultar la información bibliográfica y el documento PDF."
