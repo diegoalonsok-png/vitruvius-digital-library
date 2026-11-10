@@ -2,7 +2,7 @@
   "schema": 1,
   "updated": "2026-11-10",
   "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores. Ampliación: tres manuscritos institucionalmente documentados con cobertura particular y límites de acceso.",
-  "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional.",
+  "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor.",
   "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
   "records": [
     {
@@ -541,6 +541,84 @@
       "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002048497",
       "earliestAttestationStatus": "oldest_known_extant_copy_in_institutional_catalogue",
       "rights": "Conservar créditos y términos de la British Library; el enlace no transfiere derechos de reproducción"
+    },
+    {
+      "id": "didache-poxy-xv-1782",
+      "workIds": [
+        "didache"
+      ],
+      "title": "Διδαχή — P. Oxy. XV 1782 (fragmentos antiguos)",
+      "siglum": "P. Oxy. XV 1782",
+      "academicId": "Trismegistos TM 64596 · 4CARE artefact 260",
+      "library": "Oxford, Bodleian Art, Archaeology and Ancient World Library (colección EES)",
+      "shelfmark": "P. Oxy. XV 1782",
+      "date": "finales del siglo IV d. C. (datación paleográfica, aproximada)",
+      "dateStart": 350,
+      "coverage": "Dos pequeños folios de pergamino; Did. 1.3c–1.4a y 2.7b–3.2a; la lectura de los límites varía ligeramente por edición; no contiene la obra íntegra.",
+      "folioRange": "Did. 1.3c–1.4a; 2.7b–3.2a",
+      "material": "Pergamino (dos folios de códice miniatura; «P. Oxy.» es la signatura editorial, no su soporte)",
+      "language": "grc",
+      "record": "https://4care-skos.mf.no/4care-artefacts/260/",
+      "viewer": "https://commons.wikimedia.org/wiki/Category:Papyrus_Oxyrhynchus_1782",
+      "manifest": null,
+      "verificationUrl": "https://www.sds.ox.ac.uk/oxyrhynchus-papyri",
+      "verification": "4CARE/Trismegistos; catálogo de Oxford/Egypt Exploration Society; fotografías de consulta en Wikimedia Commons",
+      "viewerRole": "Fotografías de referencia externas (no visor IIIF institucional verificado)",
+      "accessStatus": "Fotografías de ambas caras disponibles en Wikimedia Commons; consultar derechos y atribución antes de reproducir.",
+      "rights": "Consultar condiciones de la imagen; no se guardan copias en GitHub.",
+      "dateStartBasis": "Siglo IV tardío aproximado; 350 es clave de ordenación, no fecha exacta."
+    },
+    {
+      "id": "didache-hierosolymitanus-54",
+      "workIds": [
+        "didache"
+      ],
+      "title": "Διδαχή — Codex Hierosolymitanus 54 (H)",
+      "siglum": "H · Hieros. Pan. Taphou 54",
+      "academicId": "Pinakes diktyon 35291 · Arca 100037833 · LoC 00279389694-jo",
+      "library": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
+      "shelfmark": "Παναγίου Τάφου 54 / Panagios Taphos 54",
+      "date": "1056 d. C. (colofón fechado)",
+      "dateStart": 1056,
+      "coverage": "Texto griego continuo de Did. 1–16, ff. 76r–80v; testimonio completo de referencia, pero no el testimonio griego más antiguo conservado.",
+      "folioRange": "ff. 76r–80v · Didaché 1–16",
+      "material": "Pergamino; códice de 120 folios",
+      "language": "grc",
+      "record": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+      "viewer": "https://www.loc.gov/item/00279389694-jo/",
+      "manifest": null,
+      "verificationUrl": "https://www.loc.gov/item/00279389694-jo/",
+      "verification": "Pinakes/IRHT CNRS, ficha diktyon 35291; Library of Congress: microfilm digitalizado del códice (123 imágenes)",
+      "viewerRole": "Visor institucional de reproducción microfilmada del manuscrito",
+      "accessStatus": "123 imágenes accesibles mediante Library of Congress; la correlación exacta imagen↔folio requiere revisión de la secuencia.",
+      "rights": "Library of Congress: colección de microfilmes de Jerusalén; citar fuente y respetar las condiciones del archivo.",
+      "dateStartBasis": "Datación explícita de 1056 en colofón."
+    },
+    {
+      "id": "didache-elbasan-82",
+      "workIds": [
+        "didache"
+      ],
+      "title": "Διδαχή — Elbasan 82 (apógrafo griego completo)",
+      "siglum": "Elbasan 82 · AQSH Dosja 082",
+      "academicId": "Pinakes diktyon 63441 · Arca 100076577",
+      "library": "Tirana, Arkivi Qëndror i Shtetit (Archivo Central del Estado, Albania)",
+      "shelfmark": "Kodikët e Shqipërisë 488, Dosja 082",
+      "date": "tercer cuarto del siglo XVI (descripción paleográfica de A. Guida)",
+      "dateStart": 1551,
+      "coverage": "Texto griego completo de la Didaché; según Guida (2022 [2023]), copia probablemente directa del Hierosolymitanus 54, por lo que no es testigo independiente de una rama antigua.",
+      "folioRange": "Didaché completa; foliación específica pendiente de contraste con inventario archivístico",
+      "material": "Códice griego compuesto por varias unidades codicológicas",
+      "language": "grc",
+      "record": "https://pinakes.irht.cnrs.fr/notices/cote/63441/",
+      "viewer": null,
+      "manifest": null,
+      "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/",
+      "verification": "Pinakes/IRHT CNRS; A. Guida, «Un nuovo manoscritto della Didache», Νέα Ῥώμη, 2022 [2023], pp. 49–63",
+      "viewerRole": "Sin visor público de folios acreditado",
+      "accessStatus": "No se localizó un visor público directo de los folios; se enlaza la ficha catalográfica y la descripción académica.",
+      "rights": "No se presume autorización para reproducir imágenes del archivo de Tirana.",
+      "dateStartBasis": "Tercer cuarto del XVI; 1551 sirve solo para ordenar aproximadamente."
     }
   ],
   "editions": [
