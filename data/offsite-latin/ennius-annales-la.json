@@ -1,0 +1,207 @@
+{
+  "schema": "vitruvius-offsite-latin-original-v1",
+  "workId": "ennius-annales",
+  "author": "Quinto Ennio",
+  "title": "Annales (fragmenta)",
+  "language": "la",
+  "source": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/enn.txt",
+  "sourceFiles": [
+    {
+      "url": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/enn.txt",
+      "sha256": "8321f3a0a2e34654750feeac679de6e5680cd8dcd16200e286ac0b1c50b58bd4"
+    }
+  ],
+  "sourceSha256": "8321f3a0a2e34654750feeac679de6e5680cd8dcd16200e286ac0b1c50b58bd4",
+  "sourceLicense": "https://raw.githubusercontent.com/cltk/lat_text_latin_library/master/LICENSE.md",
+  "attribution": "Quintus Ennius, Annalium fragmenta. Transcripción digital en Ennius, Fragmenta, The Latin Library, archivada por CLTK (enn.txt); edición crítica y filiación manuscrita no declaradas en el archivo.",
+  "editorialStatus": "Colección digital fragmentaria parcial (libros I, VI–XI, XVII–XVIII y fragmentos de sede incierta); no edición crítica ni colación de códices",
+  "alignment": "Los loci liberN.fragmentumN son identificadores técnicos por bloque de transcripción, no equivalencias con numeración de Vahlen/Skutsch",
+  "manuscriptCollated": false,
+  "sourceDigestBasis": "SHA-256 del archivo fuente enn.txt en su totalidad; la extracción se limita al apartado Annales",
+  "passages": [
+    {
+      "locus": "liberi.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Ilia Aoneae filia sororem adloquitur",
+      "text": "Excita cum tremulis anus attulit artubus lumen,    32\nTalia commemorat lacrimans, exterrita somno:\n'Eurudica prognata pater quam noster amavit,\nVires vitaque corpus meum nunc deserit omne.    35\nNam me visus homo pulcher per amoena salicta\nEt ripas raptare locosque novos: ita sola\nPostilla germana soror, errare videbar\nTardaque vestigare et quaerere te, neque posse\nCorde capessere: semita nulla pedem stabilibat.    40\nExin compellare pater me voce videtur\nHis verbis: \"o gnata, tibi sunt ante ferendae\nAerumnae, post ex fluvio fortuna resistet.\"\nHaec ecfatus pater, germana, repente recessit\nNec sese dedit in conspectum corde cupitus,    45\nQuamquam multa manus ad caeli caerula templa\nTendebam lacrumans et blanda voce vocabam.\nVix aegro cum corde meo me somnus reliquit.'"
+    },
+    {
+      "locus": "liberi.fragmentum2",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Romulo auspicia data",
+      "text": "Curantes magna cum cura cumcupientes    80\nRegni dant operam simul auspicio augurioque."
+    },
+    {
+      "locus": "liberi.fragmentum3",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "text": "[Hinc] Remus auspicio se devovet atque secundam\nSolus avem servat. at Romulus pulcher in alto\nQuaerit Aventino, servat genus altivolantum.     85\nCertabant urbem Romam Remoramne vocarent.\nOmnibus cura viris uter esset induperator.\nExpectant vel uti, consul cum mittere signum\nVolt, omnes avidi spectant ad carceris oras,\nQuam mox emittat pictis e faucibus currus:    90\nSic expectabat populus atque ora tenebat\nRebus, utri magni victoria sit data regni.\nInterea sol albus recessit in infera noctis.\nExin candida se radiis dedit icta foras lux.\nEt simul ex alto longe pulcherruma praepes    95\nLaeva volavit avis: simul aureus exoritur sol.\nCedunt de caelo ter quattor corpora sancta\nAvium, praepetibus sese pulchrisque locis dant.\nConspicit inde sibi data Romulus esse priora,\nAuspicio regni stabilita scamna locumque."
+    },
+    {
+      "locus": "liberi.fragmentum4",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Romuli nenia",
+      "text": "Pectora diu tenet desiderium, simul inter    117\nSese sic memorant, ' o Romule, Romule die,\nQualem te patriae custodem di genuerunt!\nO pater o genitor o sanguen dis oriundum,\nTu produxisti nos intra luminis oras.\nRomulus in caelo cum dis genitalibus aevum    116\nDegit."
+    },
+    {
+      "locus": "libervi.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Bellum cum Pyrrho Epiri rege",
+      "text": "Quis potis ingentis oras evolvere belli?    173\nTum cum corde suo divum pater atque hominum rex\nEffatur."
+    },
+    {
+      "locus": "libervi.fragmentum2",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Postumius apud Tarentinos",
+      "text": "Contra carinantes verba atque obscena profatus."
+    },
+    {
+      "locus": "libervi.fragmentum3",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Tarentini Pyrrhum arcessunt",
+      "text": "Navus repertus homo Graio patre Graius homo rex,    178\nNomine Burrus uti memorant a stirpe supremo.\nIntus in occulto mussabant . . . . .     179"
+    },
+    {
+      "locus": "libervi.fragmentum4",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Oraculum Apollinis Pyrrho datum",
+      "text": "Aio te Aeacida Romanos vincere posse.    174\n stolidum genus Aeacidarum\n Bellipotentes sunt magis quam sapientipotentes."
+    },
+    {
+      "locus": "libervi.fragmentum5",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Proletarii armantur",
+      "text": "Proletarius publicitus scuteisque feroque\nOrnatur ferro, muros urbemque forumque\nExcubiis curant.\nBalantum pecudes quatit: omnes arma requirunt.    180"
+    },
+    {
+      "locus": "libervi.fragmentum6",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Arbores ad rogos faciendos caeduntur",
+      "text": "Incedunt arbusta per alta, securibus caedunt,    181\nPercellunt magnas quercus, exciditur ilex,\nFraxinus frangitur atque abies consternitur alta.\nPinus proceras pervortunt: omne sonabat\nArbustum fremitu silvai frondosai."
+    },
+    {
+      "locus": "libervi.fragmentum7",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Epigramma Pyrrhi in templo Tarentini Iovis",
+      "text": "Qui antehae invicti fuerunt, pater optime Olympi,\n Hos et ego in pugna vici victusque sum ab isdem,"
+    },
+    {
+      "locus": "libervi.fragmentum8",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Pyrrhi de captivis reddendis praeclara sententia",
+      "text": "Nec mi aurum posco nec mi pretium dederitis:    186\nNon cauponantes bellum sed belligerantes,\nFerro non auro vitam cernamus utrique.\nVosne velit an me regnare, era quidve ferat Fors\nVirtute experiamur. Et hoc simul accipe dictum:\nQuorum virtutei belli fortuna pepercit,\nEorundem libertati me parcere certumust.\nDono ducite, doque volentibus cum magnis Dis."
+    },
+    {
+      "locus": "libervi.fragmentum9",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Sententia ab Appio dicta",
+      "text": "Quo vobis mentes rectae quae stare solebant    194\nAntehac, dementes sese flexere viai?\nSed quid ego hic animo lamentor?"
+    },
+    {
+      "locus": "libervi.fragmentum10",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Cineas redit re infecta",
+      "text": "Orator sine pace redit regique refert rem."
+    },
+    {
+      "locus": "libervi.fragmentum11",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Cineas rem Pyrrho refert",
+      "text": ". . . ast animo superant atque aspera prima\n Volnera belli despernunt.\n decretum est fossari corpora telis.\nDum quidem lmus homo Romanus toga superescit."
+    },
+    {
+      "locus": "libervi.fragmentum12",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Decius nepos apud Asculum se devovet",
+      "text": ". . . . . . . . divi hoc audite parumper,    200\nUt pro Romano populo prognariter armis\nCertando prudens animam de corpore mitto."
+    },
+    {
+      "locus": "libervi.fragmentum13",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "De rebus ad Beneventum gestis",
+      "text": "Lumen . . . . . . . . . . . . . . . scitus agaso    203\nVertitur interea caelum cum ingentibus signis.    205\nUt primum tenebris abiectis indalbabat."
+    },
+    {
+      "locus": "libervii.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Ennii de Naevio sententia",
+      "text": "scripsere alii rem    231\nVersibus quos olim Faunei vatesque canebant;\nCum neque Musarum scopulos quisquam superarat\nNec dicti studiosus erat,\n ante hunc\nNos ausi reserare . . . ."
+    },
+    {
+      "locus": "libervii.fragmentum2",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Gemini Servilii amicus describitur",
+      "text": "Haece locutus vocat quocum bene saepe libenter    210\nMensam sermonesque suos rerumque suarum\nComiter impartit, magnam cum lassus diei\nPartem fuisset de summis rebus regundis\nConsilio iudu foro lato sanctoque senatu:\nCui res audacter magnas parvasque iocumque    215\nEloqueretur, et cuncta malaque et bona dictu\nEvomeret, si qui vellet, tutoque locaret.\nQuocum multa volup ac gaudia clamque palamque.\nIngenium cui nulla malum sententia suadet\nUt faceret facinus, levis, haut malus, doctus, fidelis,    220\nSuavis homo, facundus, suo contentus, beatus,\nScitus, secunda loquens in tempore, commodus verbum\nPaucum, multa tenens antiqua sepulta, vestutas\nQuem facit et mores veteresque novosque tenentem,\nMultorum veterum leges divumque hominumque;    225\nPrudenter qui dicta loquive tacereve possit:\nHunc inter pugnas compellat Servilius sic:"
+    },
+    {
+      "locus": "liberviii.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "De bello Hannibalico",
+      "text": "postquam Discordia taetra    258\nBelli ferratos postes portasque refregit.\nPellitur e medio sapientia, vi geritur res,    263\nSpernitur orator bonus, horridus miles amatur.\nHaut doctis dictis certantes sed maledictis\nMiscent inter sese inimicitiam a~itantes.\nNon ex iure manu consertum sed magis ferro\nRem repetunt, regnumque petunt, vadunt solida vi."
+    },
+    {
+      "locus": "liberix.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "De consulatu Cethegi et Tuditani",
+      "text": "Additur orator Cornelius saviloquenti    300\nOre Cethegus Marcus Tuditano conlega\nMarci filius\n. . . is dictust ollis popularibus olim,\nQui tum vivebant homines atque aevum agitabant,\nFlos delibatus populi suadaeque medulla."
+    },
+    {
+      "locus": "liberix.fragmentum2",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Fabiu Cunctatoris elogium",
+      "text": "Unus homo nobis cunctando restituit rem.\nNon enim rumores ponebat ante salutem.\nErgo postque magisque viri nunc gloria claret."
+    },
+    {
+      "locus": "liberix.fragmentum3",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "De Hannibale",
+      "text": ". . . . mortalem summum fortuna repente    313\nReddidit, e summo regno ut famul infimus esset."
+    },
+    {
+      "locus": "liberx.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Bellum Maoedonicum",
+      "text": "Insece Musa manu Romanorum induperator    322\nQuod quisque in bello gessit cum rege Philippo.\nEgregie cordatus homo catus Aelius Sextus.    326"
+    },
+    {
+      "locus": "liberx.fragmentum2",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Charopi Epirotae pastor T. Quinctium adloquitur",
+      "text": "Sollicitari te Tite sic noctesque diesque\n* * * * * *\nO Tite si quid ego adiuero curamve levasso,    327\nQuae nunc te coquit et versat in pectore fixa,\nEcquid erit praemi ?\n* * * * * *\nIlle vir haud magna cum re, set plenus fidei."
+    },
+    {
+      "locus": "liberx.fragmentum3",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "T. Quinctius ante pugnam ad Cynoscephalas",
+      "text": "Aspectabat virtutem legionis suai,    333\nExpectans si mussaret quae denique pausa\nPugnandi fieret aut duri finis laboris."
+    },
+    {
+      "locus": "liberxi.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "text": "Quae neque Dardaniis campis potuere perire,    349\nNec cum capta capi, nec cum combusta cremari."
+    },
+    {
+      "locus": "liberxvii.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Res gestae A.V.C. 572, 573",
+      "text": "Concurrunt vel uti venti cum spiritus austri    430\nImbricitor aquiloque suo cum flamine contra\nIndu mari magno fluctus extollere certant."
+    },
+    {
+      "locus": "liberxviii.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Pugna C. Aelii tribuni",
+      "text": "Undique conveniunt vel ut imber tela tribuno:    409\nConfigunt parmam, tinnit astilibus umbo\nAerato sonitu galeae: sed nec pote quisquam\nUndique nitendo corpus discerpere ferro.\nSemper obundantes hastas frangitque quatitque:\nTotum sudor habet corpus multumque laborat,\nNec respirandi fit copia: praepete ferro\nHistri tela manu iacientes sollicitabant."
+    },
+    {
+      "locus": "liberxviii.fragmentum2",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "De se ipso",
+      "text": "Nos sumus Romani qui fuimus ante Rudini.\nSicut fortis equus, spatio qui saepe supremo\nVicit Olimpia, nunc senio confectus quiescit."
+    },
+    {
+      "locus": "incerta.fragmentum1",
+      "locusKind": "Identificador técnico de transcripción; no numeración crítica",
+      "editorialHeading": "Fragmenta incertae sedis",
+      "text": "Moribus antiquis res stat Romana virisque.\nSeptingenti sunt paulo plus aut minus anni\nAugusto augurio postquam inclita condita Roma est.\nEt tum sic ut equus, qui de praesepibus fartus\nVincla suis magnis animis abrupit, et inde\nFert sese campi per caerula laetaque prata\nCelso pectore, saepe iubam quassat simul altam,\nSpiritus ex anima calida spumas agit albas.\nPerque fabam repunt et mollia crura reponunt."
+    }
+  ]
+}
