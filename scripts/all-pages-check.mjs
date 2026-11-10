@@ -39,4 +39,5 @@ for(const r of results){
   console.log(r.filename,"\n  ",r.errs.join("\n   "),"\n  ",r.miss.slice(0,6).join("\n   "));
 }
 console.log("checked",pages.length,"pages ·",failed,"with JavaScript errors ·",missing,"with local HTTP errors");
-if(failed)process.exitCode=1;
+// Un recurso interno 404 también invalida una página aunque no produzca pageerror.
+if(failed||missing)process.exitCode=1;
