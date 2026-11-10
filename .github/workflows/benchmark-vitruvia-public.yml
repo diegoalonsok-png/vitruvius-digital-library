@@ -1,0 +1,39 @@
+name: Vitruvia · evaluación de 12 consultas públicas y latencias
+on:
+  push:
+    paths:
+      - 'scripts/benchmark-vitruvia-public-search.mjs'
+      - '.github/workflows/benchmark-vitruvia-public.yml'
+  pull_request:
+    paths:
+      - 'scripts/benchmark-vitruvia-public-search.mjs'
+      - '.github/workflows/benchmark-vitruvia-public.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-query-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalación del navegador de pruebas
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Comprobar sintaxis y medir consultas publicadas
+        run: |
+          node --check scripts/benchmark-vitruvia-public-search.mjs
+          node scripts/benchmark-vitruvia-public-search.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vitruvia-search-quality-benchmark
+          path: reports/vitruvia-search-benchmark.json
+          if-no-files-found: warn
+          retention-days: 30
