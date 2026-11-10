@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
   "updated": "2026-11-10",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. · Los registros parciales de Plutarco documentan solo tratados seleccionados, sin afirmar cobertura completa. · Macrobio, Saturnalia I–VII: secciones editoriales latinas en rama auxiliar con fuente CLTK-LacusCurtius (L. von Jan 1852), sin asignación de variantes manuscritas.",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot.",
   "targetWorks": 222,
   "counts": {
     "originalsIndexed": 181,
@@ -1166,8 +1166,7 @@
       "offsiteIndex": {
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
-        "sourceSha256": "ae75f9d7accf097919eca0cb1412a02b5bb375593d761d149f9723af8529fe0f",
-        "scope": "Parcial: Teseo, Rómulo, Comparación"
+        "sourceSha256": "ae75f9d7accf097919eca0cb1412a02b5bb375593d761d149f9723af8529fe0f"
       }
     },
     {
@@ -2058,8 +2057,7 @@
       "offsiteIndex": {
         "branch": "corpus-originales-griegos-20261108",
         "manifestPath": "data/offsite-originals/manifest.json",
-        "sourceSha256": "03ef6158a8902f3aab555811819a85986f9d2983125d775ff005499466206198",
-        "scope": "Parcial: Περὶ τοῦ ἀκούειν"
+        "sourceSha256": "03ef6158a8902f3aab555811819a85986f9d2983125d775ff005499466206198"
       }
     },
     {
@@ -4210,8 +4208,7 @@
       "offsiteIndex": {
         "branch": "corpus-originales-latinos-20261108",
         "manifestPath": "data/offsite-latin/manifest.json",
-        "sourceSha256": "326a6087ac22bacec4d2a4425aec68f1c57a2273a3c024fa59c3b5e036328f73",
-        "scope": "Libri I–VII · 2106 secciones; lagunas de transmisión y marcadores duplicados documentados"
+        "sourceSha256": "326a6087ac22bacec4d2a4425aec68f1c57a2273a3c024fa59c3b5e036328f73"
       }
     },
     {
