@@ -17,7 +17,9 @@
  const chips=document.createElement('div');chips.className='vef-chips';
  const tools=document.createElement('div');tools.className='vef-tools';
  bar.append(chips,tools);
- let current='all',order='rel';
+ let current='all',order='rel',currentEdition='',currentLanguage='';
+ const editionOf=c=>String(c._vitruviaRecord?.edition||'').trim();
+ const languageOf=c=>String(c._vitruviaRecord?.language||c._vitruviaRecord?.translationLanguage||'').trim().toLowerCase();
  const style=document.createElement('style');style.textContent=
   '.vitruvia-evidence-filter{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin:0 0 14px}.vitruvia-evidence-filter[hidden]{display:none}'+
   '.vef-chips,.vef-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center}'+
@@ -25,13 +27,16 @@
   '.vitruvia-evidence-filter select option{color:#111}'+
   '.vitruvia-evidence-filter button[aria-pressed=true]{background:#e9e4d8;color:#151515;border-color:#e9e4d8}'+
   '.vitruvia-evidence-filter small{opacity:.7;margin-left:4px}.vef-tools span{font:12px Arial,Helvetica,sans-serif;opacity:.8}'+
-  '#result-list[data-evidence-filter] .result-card:not(.vef-on){display:none}';
+  '#result-list[data-evidence-filter] .result-card:not(.vef-on){display:none}'+
+  '#result-list .result-card.vef-subhidden{display:none}';
  document.head.append(style);list.before(bar);
  const cards=()=>[...list.querySelectorAll('.result-card')];
  const group=c=>GROUP[c.dataset.evidence]||'other';
  function apply(){
   const cs=cards();
-  if(current==='all')list.removeAttribute('data-evidence-filter');else{list.setAttribute('data-evidence-filter',current);cs.forEach(c=>c.classList.toggle('vef-on',group(c)===current))}
+  if(current==='all')list.removeAttribute('data-evidence-filter');else list.setAttribute('data-evidence-filter',current);
+  cs.forEach(c=>{c.classList.toggle('vef-on',current==='all'||group(c)===current);
+   c.classList.toggle('vef-subhidden',Boolean((currentEdition&&editionOf(c)!==currentEdition)||(currentLanguage&&languageOf(c)!==currentLanguage)))});
  }
  function sort(){
   const cs=cards();if(!cs.length)return;
@@ -55,7 +60,7 @@
   [['TI',d.title],['T2',d.journal],['PB',d.publisher],['PY',d.year],['VL',d.volume],['IS',d.issue],['SP',d.pages],['DO',d.doi],['UR',d.link]].forEach(x=>x[1]&&out.push(x));out.push(['ER','']);return out.map(([k,v])=>`${k}  - ${v}`).join('\r\n')}).join('\r\n\r\n')+'\r\n'}
  function save(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},600)}
  function paint(){
-  const cs=cards();bar.hidden=cs.length<4;
+  const cs=cards();bar.hidden=cs.length===0;
   const count=k=>k==='all'?cs.length:cs.filter(c=>group(c)===k).length;
   chips.replaceChildren(...['all','primary','edition','study','reference','institution'].filter(k=>k==='all'||count(k)).map(k=>{
    const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',String(k===current));b.textContent=t(k);const n=document.createElement('small');n.textContent=count(k);b.append(n);
@@ -65,6 +70,19 @@
   const sel=document.createElement('select');sel.setAttribute('aria-label',t('sort'));
   for(const k of ['rel','cited','new','old']){const o=document.createElement('option');o.value=k;o.textContent=t('sort')+': '+t(k);o.selected=k===order;sel.append(o)}
   sel.onchange=()=>{order=sel.value;sort()};tools.append(sel);
+  const facet=(title,values,chosen,onChange)=>{
+   if(values.length<2)return;
+   const control=document.createElement('select');control.setAttribute('aria-label',title);
+   const all=document.createElement('option');all.value='';all.textContent=title+' · '+t('all');control.append(all);
+   for(const value of values){const o=document.createElement('option');o.value=value;o.textContent=value;control.append(o)}
+   control.value=chosen;control.addEventListener('change',()=>{onChange(control.value);apply();paint()});tools.append(control)
+  };
+  const editions=[...new Set(cs.map(editionOf).filter(Boolean))].sort();
+  const languages=[...new Set(cs.map(languageOf).filter(Boolean))].sort();
+  if(currentEdition&&!editions.includes(currentEdition))currentEdition='';
+  if(currentLanguage&&!languages.includes(currentLanguage))currentLanguage='';
+  facet('Edición',editions,currentEdition,v=>currentEdition=v);
+  facet('Idioma',languages,currentLanguage,v=>currentLanguage=v);
   const n=records().length;
   if(n){const lab=document.createElement('span');lab.textContent=t('exp')+' '+n;tools.append(lab);
    for(const [fmt,ext,type,fn] of [['BibTeX','bib','application/x-bibtex',bib],['RIS','ris','application/x-research-info-systems',ris]]){const b=document.createElement('button');b.type='button';b.textContent=fmt;b.onclick=()=>save('vitruvia-resultados.'+ext,fn(records()),type);tools.append(b)}}
@@ -84,9 +102,23 @@
     tools.append(btn);
    }
   }
+  const loci=indexedRecords().filter(r=>r.locus&&r.title&&(r.link||r.viewerUrl));
+  if(loci.length){
+   const btn=document.createElement('button');btn.type='button';btn.textContent='Loci Markdown';
+   btn.title='Exportar referencias de loci recuperados; no implica colación con folios';
+   btn.onclick=()=>{
+    const clean=x=>String(x||'').replace(/[\r\n]+/g,' ').replace(/\s+/g,' ').trim();
+    const lines=loci.map(r=>{
+     const label=[r.author,r.title,r.edition,r.locus].map(clean).filter(Boolean).join(' · ');
+     return '- '+label+' — '+String(r.link||r.viewerUrl||'').trim();
+    });
+    save('vitruvia-loci.md','# Loci recuperados · Vitruvia\n\n> Índice documental; no certifica colación de manuscritos.\n\n'+lines.join('\n')+'\n','text/markdown;charset=utf-8');
+   };
+   tools.append(btn);
+  }
 
  }
  let tm=0;const observer=new MutationObserver(()=>{clearTimeout(tm);tm=setTimeout(()=>{paint();apply();if(order!=='rel')sort()},150)});
  const observe=()=>observer.observe(list,{childList:true,subtree:true});observe();
- window.addEventListener('vitruvia:search',()=>{current='all';order='rel';apply()});
+ window.addEventListener('vitruvia:search',()=>{current='all';order='rel';currentEdition='';currentLanguage='';apply()});
 })();
