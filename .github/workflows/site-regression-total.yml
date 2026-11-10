@@ -55,6 +55,7 @@ jobs:
             "scripts/test-vitruvia-performance.mjs"
             "scripts/test-vitruvia-author-reading.mjs"
             "scripts/test-vitruvia-cultural-works.mjs"
+            "scripts/test-reference-asset-fallback.mjs"
             "scripts/test-bibliotheca-offsite-greek.mjs"
             "scripts/test-offsite-siculus-flaccus.mjs"
           )
