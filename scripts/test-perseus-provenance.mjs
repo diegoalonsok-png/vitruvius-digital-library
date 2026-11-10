@@ -15,10 +15,12 @@ const candidateWorks=records.filter(r=>Array.isArray(r.candidateWorkCodes)&&r.ca
 const textVersions=records.reduce((sum,r)=>sum+(r.versions?.length||0),0);
 const describedWorks=records.filter(r=>r.versions?.some(v=>/Perseus/i.test(v.sourceDescription||""))).length;
 const verified=records.filter(r=>r.ctsStatus==="verified");
+const documentedHeader=records.filter(r=>r.ctsStatus==="declared_and_checked_in_source_tei_header");
+const documented=verified.concat(documentedHeader);
 assert.equal(report.counts.worksWithCandidateWorkCodes,candidateWorks);
 assert.equal(report.counts.versions,textVersions);
 assert.equal(report.counts.worksWithPerseusSourceDescription,describedWorks);
-assert.equal(report.counts.verifiedEditionUrns,verified.length);
+assert.equal(report.counts.verifiedEditionUrns,documented.length,"Documented TEI-header URNs are distinct from externally resolved editions");
 for(const r of records){
   assert.ok(typeof r.workId==="string"&&r.workId);
   assert.ok(Array.isArray(r.versions),"Version list missing for "+r.workId);
@@ -27,6 +29,10 @@ for(const r of records){
     assert.match(r.ctsEditionUrn||"",/^urn:cts:[a-z0-9-]+:[A-Za-z0-9_.-]+$/i,"Malformed verified edition URN: "+r.workId);
     assert.match(r.ctsSourceUri||"",/^https:\/\//i,"A verified edition requires a citable source: "+r.workId);
     assert.ok(typeof r.sourceRights==="string"&&r.sourceRights.trim(),"A verified edition requires a rights statement: "+r.workId);
+  }else if(r.ctsStatus==="declared_and_checked_in_source_tei_header"){
+    assert.match(r.ctsEditionUrn||"",/^urn:cts:[a-z0-9-]+:[A-Za-z0-9_.-]+$/i,"Malformed TEI-declared URN: "+r.workId);
+    assert.match(r.ctsEvidence||"",/TEI/i,"TEI-header evidence must be explicit: "+r.workId);
+    assert.match(r.ctsNote||"",/no implica|not verified|not proof/i,"TEI declaration is not public CTS resolution: "+r.workId);
   }else{
     assert.equal(r.ctsEditionUrn,null,"An unverified edition must not publish a confirmed CTS URN: "+r.workId);
   }
@@ -36,7 +42,7 @@ assert.match(page,/fetch\('data\/perseus-provenance-audit\.json'/);
 assert.match(page,/Scaife Viewer/);
 assert.match(page,/canonical-latinLit\/wiki/);
 assert.match(page,/actualización de licencias de Perseus/);
-for(const [id,count] of [["prov-works",report.counts.works],["prov-candidates",candidateWorks],["prov-mentions",describedWorks],["prov-verified",verified.length]]){
+for(const [id,count] of [["prov-works",report.counts.works],["prov-candidates",candidateWorks],["prov-mentions",describedWorks],["prov-verified",documented.length]]){
   assert.ok(page.includes('id="'+id+'">'+count+'</b>'),"Fallback count is stale for "+id);
 }
-console.log("PASS: "+records.length+" provenance records, "+textVersions+" versions, "+candidateWorks+" work-code candidates, "+verified.length+" verified edition URNs (not asserted without evidence).");
+console.log("PASS: "+records.length+" provenance records, "+textVersions+" versions, "+candidateWorks+" work-code candidates, "+documented.length+" TEI-documented edition URNs ("+verified.length+" externally verified).");
