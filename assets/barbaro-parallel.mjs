@@ -37,10 +37,10 @@ async function fetchPages(which){
  $(which+"-status").textContent="No fue posible cargar la edición: "+errors.join("; ")+". Consultar fuente institucional.";
 }
 function urls(c){
- const result=[];
- if(c.local_url)result.push(c.local_url);
- if(c.image_url)result.push(c.image_url);
- return [...new Set(result.filter(Boolean))];
+ // El índice contiene rutas locales propuestas, pero la carpeta
+ // images/barbaro-1567 no se encuentra publicada. No solicitar 404
+ // cuando existe la URL IIIF de la institución conservadora.
+ return [...new Set([c.image_url].filter(Boolean))];
 }
 function loadPage(which,number,origin="user"){
  const s=state[which];
