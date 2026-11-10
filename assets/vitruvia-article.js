@@ -1243,7 +1243,7 @@ function appendDocumentedLegacy(rows,query){
 }
 
 async function renderTopic(top,rows,query,token,person=null){
- const authority=rows.find(r=>r.preferredWiki);
+ const authority=rows.find(r=>r.preferredWiki||r.preferredAuthority);
  const topicPlan=window.VitruviaDiscovery?.plan(query,{canonical:authority?.entityCanonical,kind:authority?.entityKind,authorityDescription:authority?.entityDescription})||{kind:"topic"};
  const quotation=String(query).trim().split(/\s+/).length>=4;
  const identified=(!quotation||authority||["person","object"].includes(topicPlan.kind))?null:(rows||[]).filter(r=>r.type==="passage"&&r.exactTextMatch&&r.workId).sort((a,b)=>(b.rating||0)-(a.rating||0))[0];
@@ -1263,10 +1263,16 @@ async function renderTopic(top,rows,query,token,person=null){
   Number(y.wikiLang===wanted)-Number(x.wikiLang===wanted)||
   relevance(y,person?.name||query)-relevance(x,person?.name||query))[0];
  if(wiki?.preferredWiki&&wiki.title)$("article-title").textContent=wiki.title;
+ const verifiedAuthority=rows.find(r=>r.preferredAuthority&&r.wikidataId);
+ if(!wiki&&verifiedAuthority?.title)$("article-title").textContent=verifiedAuthority.title;
  const profile=wanted==="es"?await biographyProfile(person?.name||query):null;
  if(token!==active)return;
  if(profile)renderVerifiedBiography(profile);
- else paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
+ else if(!wiki&&verifiedAuthority){
+  paragraph(verifiedAuthority.excerpt||verifiedAuthority.entityDescription||"Identidad verificada en Wikidata.","article-lead");
+  const source=href(verifiedAuthority.link,phrase("Wikidata · consultar identificación y referencias","Wikidata · identity and source references","Wikidata · identité et références"));
+  if(source)$("article-body").append(source);
+ }else paragraph(phrase("Estudio introductorio organizado por temas. Se distinguen las fuentes históricas, los datos verificables y las interpretaciones modernas.","A topic-based introduction distinguishing historical sources, verified evidence and modern interpretations.","Étude introductive distinguant sources historiques, preuves vérifiées et interprétations modernes."),"article-lead");
  if(deity){for(const [sectionTitle,body] of deityDossier){heading(sectionTitle);paragraph(body)}}
  if(ark){for(const [sectionTitle,body] of arkSections){heading(sectionTitle);paragraph(body)}}
  if(person?.id==="cicero"){for(const [sectionTitle,body] of ciceroChapters){heading(sectionTitle);paragraph(body)}}
@@ -1278,7 +1284,7 @@ async function renderTopic(top,rows,query,token,person=null){
   const source=href(identified.link,"Leer el pasaje en la edición de origen");
   if(source)$("article-body").append(source);
  }
- const data=identified?null:wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):await topicWikiData(person?.name||query);
+ const data=identified?null:wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):verifiedAuthority?null:await topicWikiData(person?.name||query);
  if(token!==active)return;
  appendDocumentedLegacy(rows,documentaryQuery);
  if(data?.extract){
@@ -1701,7 +1707,7 @@ function render(rows,q,person=null,options={}){
  const exact=found.find(x=>x.type==="passage"&&x.exactTextMatch&&x.workId);
  // While source discovery runs, do not start a duplicate encyclopedia search for
  // every partial result. Local result cards remain usable throughout.
- if(options.progressive&&!options.final&&!specialized&&!wiki&&!exact)return;
+ if(options.progressive&&!options.final&&!specialized&&!wiki&&!exact&&!found.some(x=>x.preferredAuthority))return;
  const key=JSON.stringify([q,wanted,person?.id,specialized?top:null,wiki?[wiki.pageid,wiki.wikiLang,wiki.fullExtract||wiki.excerpt]:null,exact?.link]);
  if(key===renderedKey||key===renderingKey){
   if(key===renderedKey&&renderedTopic)refreshArticleSources(found,q,person);
