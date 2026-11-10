@@ -55,8 +55,12 @@ for(const work of road.items){
   ["json-passages","structured-bilingual"].includes(e.format));
  if(source.length&&translated.length){
   assert(v.pair,"Available hosted translation must have an explicit two-viewer link: "+work.id);
-  assert(v.pair.url.startsWith("classics-parallel-reader.html?work="));
-  assert(v.pair.url.includes("left=")&&v.pair.url.includes("right="));
+  if(work.id==="vitruvius"){
+   assert(v.pair.url.startsWith("lector-bilingue.html?edition="),"Vitruvius has its own two-column original/translation reader");
+  }else{
+   assert(v.pair.url.startsWith("classics-parallel-reader.html?work="));
+   assert(v.pair.url.includes("left=")&&v.pair.url.includes("right="));
+  }
   const languages=new Set(v.links.map(e=>e.language));
   assert(languages.has(source[0].language),"Original must be listed: "+work.id);
   assert(translated.some(e=>languages.has(e.language)),"Translation must be listed: "+work.id);
