@@ -237,3 +237,9 @@ html body mark.lexical-hit:focus-visible{outline:2px solid #fff!important;outlin
 .genre-work-note,.genre-work-empty{font:11px/1.55 Arial,sans-serif;color:#99999d;margin:12px 0 0}
 @media(max-width:600px){.genre-work-item{align-items:flex-start;flex-direction:column}.genre-work-open{width:100%}.genre-work-list{padding:13px}}
 @media print{.genre-work-list{display:none!important}}
+
+/* Local version links and original/translation twin reading — same visual family. */
+.genre-work-editions{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:5px;font:12px/1.45 Arial,sans-serif}
+.genre-work-version{color:#d8d8df!important;text-underline-offset:3px;overflow-wrap:anywhere}
+.genre-work-parallel{font-weight:700;color:#ece4cc!important}
+@media(max-width:600px){.genre-work-editions{gap:8px 15px}}
