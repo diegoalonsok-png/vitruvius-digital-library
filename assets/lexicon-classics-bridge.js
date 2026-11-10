@@ -141,6 +141,8 @@ function appendTranslation(card,row,editions){
   comparison.searchParams.set("left",row.language);
   comparison.searchParams.set("right",language);
   if(row.locus)comparison.searchParams.set("locus",row.locus);
+  const searched=String(row.matchedTerm||input.value||"").trim().replace(/^=/,"");
+  if(searched)comparison.searchParams.set("q",searched.slice(0,120));
   const compare=document.createElement("a");compare.href=comparison.href;compare.textContent=" · Lectura enfrentada";block.append(compare);
  };
  if(typeof IntersectionObserver!=="undefined"){
