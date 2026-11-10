@@ -7,7 +7,14 @@ const a=src.indexOf(' const resolved=S.identifiedSubject;',src.indexOf('function
 const b=src.indexOf(' const titles=RESULT_TEXT',a);
 assert(a>0&&b>a,'Verified entity ranking block must exist');
 function reorder(rows,identity){
- const context={ordered:rows.slice(),S:{identifiedSubject:identity}};
+ const grouped=new Map([['results',rows.slice()]]);
+ const context={
+  ordered:rows.slice(),deduped:rows.slice(),grouped,
+  query:'test de identidad histórica',codexIntent:false,locusIntent:false,
+  matchingAuthorWorks:()=>[],blockOf:()=> 'web',
+  window:{VitruviaLocalPriority:{plan:()=>({focused:false}),promote:()=>null}},
+  S:{mode:'all',lexicon:null,identifiedSubject:identity}
+ };
  vm.runInNewContext(src.slice(a,b)+';this.output=ordered;',context);
  return context.output;
 }
