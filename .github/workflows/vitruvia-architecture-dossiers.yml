@@ -1,0 +1,38 @@
+name: Dossiers académicos de arquitectura · CISA y Palladio
+on:
+  push:
+    paths:
+      - 'assets/vitruvia-architecture-panel.js'
+      - 'assets/vitruvia-architect-visuals.js'
+      - 'assets/vitruvia-web-dossier.js'
+      - 'assets/vitruvia-context-panel.css'
+      - 'vitruvia.html'
+      - 'scripts/test-vitruvia-palladio-academic-dossier.mjs'
+      - '.github/workflows/vitruvia-architecture-dossiers.yml'
+  pull_request:
+    paths:
+      - 'assets/vitruvia-architecture-panel.js'
+      - 'assets/vitruvia-architect-visuals.js'
+      - 'assets/vitruvia-web-dossier.js'
+      - 'assets/vitruvia-context-panel.css'
+      - 'vitruvia.html'
+      - 'scripts/test-vitruvia-palladio-academic-dossier.mjs'
+      - '.github/workflows/vitruvia-architecture-dossiers.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/vitruvia-architecture-panel.js
+      - run: node --check assets/vitruvia-architect-visuals.js
+      - run: node --check assets/vitruvia-web-dossier.js
+      - run: node scripts/test-vitruvia-palladio-academic-dossier.mjs
+      - run: node --test scripts/test-vitruvia-cultural-works.mjs
