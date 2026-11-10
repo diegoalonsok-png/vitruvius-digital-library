@@ -1,0 +1,104 @@
+{
+  "schema": "vitruvia-classics-partial-integrity-review-v1",
+  "date": "2026-11-10",
+  "source": "GitHub connector reading the current main branch of diegoalonsok-png/vitruvius-digital-library",
+  "method": "Cada una de las 246 entradas del registro se intentó abrir. Para JSON legibles se comprobó parseo, workId y lengua (admitiendo sourceWorkId de fuente), existencia de texto y locus en cada pasaje y ausencia de locus duplicado. Esta prueba no coteja críticamente el texto con el códice ni garantiza integridad de traducción. Los archivos grandes no devueltos por el conector se mantienen pendientes de prueba local con el auditor Node.",
+  "registry": {
+    "cataloguedWorks": 222,
+    "registeredWorkIds": 181,
+    "registeredTextVersions": 246
+  },
+  "fileReadAudit": {
+    "attempted": 246,
+    "jsonParsed": 213,
+    "unreadableViaConnector": 26,
+    "otherFormatsNotInspected": 7,
+    "jsonMetadataMismatchesAfterRecognizedAliases": 0,
+    "emptyLocusOrTextInReadFiles": 0,
+    "duplicateLocusInReadFiles": 0,
+    "limitations": "Los 26 archivos no retornaron contenido desde la API y los 7 formatos HTML/OCR requieren validación especializada. No es correcto deducir que están corruptos ni que están libres de problemas."
+  },
+  "unreadableWorkIds": [
+    "appian-romaika",
+    "arrian-anabasis-alexandri",
+    "augustine-civitate-dei",
+    "aulus-gellius-noctes",
+    "diodorus",
+    "diogenes-laertius-vitae",
+    "dionysius",
+    "dioscorides",
+    "epictetus-discourses",
+    "euclid-elementa",
+    "eusebio",
+    "galen-de-usu-partium",
+    "herodotus-historiae",
+    "homer-iliad",
+    "homer-odyssey",
+    "josephus-antiquities",
+    "josephus-war",
+    "livy",
+    "pausanias-periegesis",
+    "plato-laws",
+    "plato-republic",
+    "polybius-historiae",
+    "ptolemy-almagest",
+    "quintilian",
+    "strabo",
+    "vitruvius"
+  ],
+  "structuralStatus": "Validación parcial de estructuras y enlaces internos, NO aprobación filológica del corpus",
+  "manuscriptAudit": {
+    "recordsAfterExpansion": 26,
+    "worksWithLinkedRecords": 35,
+    "worksWithoutVerifiedWitnessInRegistry": 187,
+    "iiifManifestLinks": 15
+  },
+  "addedWitnesses": [
+    {
+      "id": "plato-clarke-39",
+      "institution": "Bodleian Library",
+      "year": "895",
+      "works": 7,
+      "iiif": true
+    },
+    {
+      "id": "sinaiticus-gospels-apostolic",
+      "institution": "British Library / Codex Sinaiticus Project",
+      "century": "IV",
+      "works": 3,
+      "iiif": false
+    },
+    {
+      "id": "alexandrinus-nt-clement",
+      "institution": "British Library",
+      "century": "V",
+      "works": 3,
+      "iiif": false,
+      "images": "temporarily unavailable according to BL"
+    }
+  ],
+  "philologicalChanges": {
+    "confirmedOCRCorrections": 3,
+    "workId": "augustine-confessiones",
+    "loci": [
+      "1.2",
+      "1.3"
+    ],
+    "ledger": "data/classics-corpus/philological-corrigenda.json",
+    "source": "Pius Knöll, Confessiones, CSEL 33 (1896), OpenGreekAndLatin TEI",
+    "importance": "La TEI fuente conserva OCR defectuoso. Las correcciones locales se registran y son revisables, no constituyen variantes de manuscritos."
+  },
+  "coveragePending": {
+    "worksWithoutTextVersionInSearchRegistry": 41,
+    "bibliographicEditionRecordsWithSpecificCitationObject": 25,
+    "verifiedEditionCTSURN": 0,
+    "note": "La cobertura local no mide automáticamente los enlaces externos, los PDF ni los originales accesibles por otros visores. Se requieren verificaciones independientes para esos materiales."
+  },
+  "priorityNext": [
+    "Ejecutar el auditor Node en un checkout completo para cubrir las 26 versiones grandes y los registros en otros formatos.",
+    "Cotejar contra TEI y primeras ediciones/facsímiles las lecturas sospechosas; no corregir automáticamente variantes de crítica textual.",
+    "Registrar testigos antiguos en las 187 obras pendientes tras verificar catálogo institucional, datación, signatura, cobertura y acceso real.",
+    "Completar identificadores CTS a nivel de edición únicamente con fuente primaria o catálogo institucional; PHI/TLG son códigos de obra.",
+    "Corregir la cobertura de bibliografía Chicago 18 edición por edición; el título de una obra no sustituye la referencia de su edición."
+  ]
+}
