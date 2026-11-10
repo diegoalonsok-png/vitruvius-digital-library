@@ -1922,26 +1922,6 @@ function injectJsonLd(e){
  document.head.append(s);
 }
 
-/* ---------- Teclados virtuales ---------- */
-const KB={
- grc:{label:"Griego politónico",rows:["ς ε ρ τ υ θ ι ο π","α σ δ φ γ η ξ κ λ","ζ χ ψ ω β ν μ ; ·"],marks:[["᾿","̓","espíritu suave"],["῾","̔","espíritu áspero"],["´","́","agudo"],["`","̀","grave"],["῀","͂","circunflejo"],["ͺ","ͅ","iota suscrita"],["¨","̈","diéresis"]]},
- he:{label:"Hebreo bíblico",rows:["ק ר א ט ו ן ם פ","ש ד ג כ ע י ח ל ך ף","ז ס ב ה נ מ צ ת ץ ־"],marks:[["שׁ","ׁ","punto de shin"],["שׂ","ׂ","punto de sin"],["בּ","ּ","dagesh"],["ָ","ָ","qamets"],["ַ","ַ","pataḥ"],["ֶ","ֶ","segol"],["ֵ","ֵ","tsere"],["ִ","ִ","ḥireq"],["ֹ","ֹ","ḥolam"],["ֻ","ֻ","qibbuts"],["ְ","ְ","shewa"]]},
- la:{label:"Latín (cantidades)",rows:["ā ē ī ō ū ȳ","ă ĕ ĭ ŏ ŭ","æ œ ë ï ⟨ ⟩ † [ ]"],marks:[["¯","̄","macrón"],["˘","̆","breve"]]}
-};
-function renderKeyboard(which){
- const box=$("#lx-kb");box.replaceChildren();const k=KB[which];let caps=false;
- const head=el("div",{class:"lx-kb-head"});for(const [id,v] of Object.entries(KB))head.append(el("button",{type:"button",class:"tab","aria-pressed":String(id===which),onclick:()=>renderKeyboard(id)},v.label));
- head.append(el("button",{type:"button",class:"tab lx-kb-close",onclick:()=>{box.hidden=true;$("#lx-kb-toggle").setAttribute("aria-expanded","false")}},"Cerrar ×"));box.append(head);
- const input=$("#lx-q");
- const insert=t=>{const s=input.selectionStart??input.value.length,e=input.selectionEnd??s;input.value=input.value.slice(0,s)+t+input.value.slice(e);input.setSelectionRange(s+t.length,s+t.length);input.focus()};
- const mark=m=>{const s=input.selectionStart??input.value.length;if(!s){insert(m);return}const before=input.value.slice(0,s);const after=input.value.slice(s);const nb=(before+m).normalize("NFC");input.value=nb+after;input.setSelectionRange(nb.length,nb.length);input.focus()};
- for(const r of k.rows){const row=el("div",{class:"lx-kb-row"});for(const ch of r.split(" "))row.append(el("button",{type:"button",class:"lx-key",lang:which,onclick:()=>insert(caps&&which==="grc"?ch.toUpperCase():ch)},ch));box.append(row)}
- const mrow=el("div",{class:"lx-kb-row"});for(const [g,m,t] of k.marks)mrow.append(el("button",{type:"button",class:"lx-key lx-mark",title:t,"aria-label":t,onclick:()=>mark(m)},g));
- if(which==="grc")mrow.append(el("button",{type:"button",class:"lx-key",onclick:e=>{caps=!caps;e.target.setAttribute("aria-pressed",String(caps))},"aria-pressed":"false"},"⇧ Mayús."));
- mrow.append(el("button",{type:"button",class:"lx-key",onclick:()=>insert(" ")},"espacio"),el("button",{type:"button",class:"lx-key",onclick:()=>{const s=input.selectionStart??input.value.length;if(s){const chars=[...input.value.slice(0,s)];chars.pop();const nb=chars.join("");input.value=nb+input.value.slice(s);input.setSelectionRange(nb.length,nb.length)}input.focus()}},"⌫"));
- box.append(mrow,el("p",{class:"explain"},which==="grc"?"Escriba la vocal y luego el diacrítico: se combinan en un solo carácter (NFC). También puede escribir en caracteres latinos: «anthropos» encuentra ἄνθρωπος.":which==="he"?"El hebreo se escribe de derecha a izquierda; los puntos vocálicos se añaden tras la consonante.":"Signos críticos: ⟨ ⟩ adición, [ ] supresión, † crux."));
-}
-
 /* ---------- Taller ecdótico: colación de testimonios ---------- */
 function tokenizeWit(t,opts){return [...String(t).matchAll(TOKEN)].map(m=>{let k=m[0];if(opts.case)k=k.toLowerCase();if(opts.uv)k=fold(k);if(opts.ortho)k=variantKey(fold(k),detectLang(k)==="grc"?"grc":"la");return{w:m[0],k}})}
 function lcsAlign(a,b){const n=a.length,m=b.length;const dp=Array.from({length:n+1},()=>new Uint16Array(m+1));for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)dp[i][j]=a[i].k===b[j].k?dp[i+1][j+1]+1:Math.max(dp[i+1][j],dp[i][j+1]);const ops=[];let i=0,j=0;while(i<n&&j<m){if(a[i].k===b[j].k){ops.push(["=",i,j]);i++;j++}else if(dp[i+1][j]>=dp[i][j+1]){ops.push(["-",i,null]);i++}else{ops.push(["+",i,j]);j++}}while(i<n)ops.push(["-",i++,null]);while(j<m)ops.push(["+",n,j++]);return ops}
@@ -2271,7 +2251,6 @@ async function init(){
    },180);
   });
   document.addEventListener("keydown",e=>{if(e.key==="/"&&!/input|textarea|select/i.test(document.activeElement?.tagName||"")){e.preventDefault();$("#lx-q").focus()}});}
- $("#lx-kb-toggle").addEventListener("click",e=>{const kb=$("#lx-kb");kb.hidden=!kb.hidden;e.currentTarget.setAttribute("aria-expanded",String(!kb.hidden));if(!kb.hidden&&!kb.childNodes.length)renderKeyboard(detectLang($("#lx-q").value)==="he"?"he":"grc")});
  $$(".suggestions [data-q]").forEach(b=>b.addEventListener("click",()=>{$("#lx-q").value=b.dataset.q;if(b.dataset.mode){S.mode=b.dataset.mode;renderTabs()}run();$("#results").scrollIntoView({behavior:"smooth",block:"start"})}));
  $$("[data-tool-mode]").forEach(a=>a.addEventListener("click",e=>{const m=a.dataset.toolMode;if(MODES[m]){e.preventDefault();S.mode=m;renderTabs();if(m==="sententiae")run();$("#lx-q").focus()}}));
  /* Interconexión: toda palabra de una cita abre su propia ficha. */
