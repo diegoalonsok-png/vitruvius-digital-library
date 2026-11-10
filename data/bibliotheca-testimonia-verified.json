@@ -1897,6 +1897,93 @@
           "type": "catalog"
         }
       ]
+    },
+    {
+      "id": "ovid-ars-parisinus-lat7311",
+      "workIds": [
+        "ovid-ars-amatoria",
+        "ovid-remedia-amoris"
+      ],
+      "title": "Ovidio, Ars amatoria y Remedia amoris — Parisinus latinus 7311 (R)",
+      "library": "París, Bibliothèque nationale de France",
+      "shelfmark": "Latin 7311",
+      "date": "siglo IX, primera mitad",
+      "dateStart": 800,
+      "language": "la",
+      "witnessKind": "direct_original_latin",
+      "coverage": "Contiene Ars amatoria y Remedia amoris; también fragmentos de Amores. Alcance por folios pendiente de comprobación contra catálogo BnF.",
+      "record": "https://www.persee.fr/doc/dirht_0073-8212_2014_mon_26_42?pageId=T1_454",
+      "verification": "Munk Olsen, La réception de la littérature classique (IRHT, Persée); Huelsenbeck, Dickinson College Commentaries",
+      "verificationUrl": "https://dcc.dickinson.edu/pl/ovid-amores/manuscript-tradition-ovids-amores",
+      "cataloguingStatus": "Identificación, contenido y datación avalados por bibliografía académica; enlace dirige al estudio, NO a un visor institucional ni a ficha BnF. Antigüedad mundial no declarada de manera exclusiva.",
+      "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
+      "priorityClaim": "one_of_earliest_documented_witnesses",
+      "rights": "No se alojan reproducciones; consultar derechos de BnF."
+    },
+    {
+      "id": "ovid-ars-bodleian-auct-f4-32",
+      "workIds": [
+        "ovid-ars-amatoria"
+      ],
+      "title": "Ovidio, Ars amatoria I — St Dunstan's Classbook",
+      "library": "Oxford, Bodleian Libraries",
+      "shelfmark": "Auct. F. 4.32 (2176)",
+      "date": "finales del siglo IX",
+      "dateStart": 875,
+      "language": "la",
+      "witnessKind": "direct_original_latin",
+      "coverage": "Cuaderno de diez hojas con el libro I de Ars amatoria dentro de un manuscrito misceláneo; NO contiene necesariamente los tres libros.",
+      "record": "https://www.historyofinformation.com/detail.php?entryid=1887",
+      "verification": "R. W. Hunt, The Survival of Ancient Literature (1975), núm. 117, citado en History of Information; Munk Olsen (2014).",
+      "verificationUrl": "https://www.persee.fr/doc/dirht_0073-8212_2014_mon_26_42?pageId=T1_454",
+      "cataloguingStatus": "Signatura y datación documentadas por bibliografía secundaria. Falta sustituir enlace por registro institucional individual de Bodleian; NO se atribuye visor IIIF.",
+      "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
+      "priorityClaim": "one_of_earliest_documented_witnesses",
+      "rights": "Bodleian Libraries; consultar condiciones institucionales."
+    },
+    {
+      "id": "apuleius-laurentianus-68-2",
+      "workIds": [
+        "apuleius-metamorphoses",
+        "apuleius-apologia"
+      ],
+      "title": "Apuleyo, Metamorphoses, Apologia y Florida — Laurentianus 68.2 (F)",
+      "library": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 68.2 (Laur. 68.2)",
+      "date": "siglo XI, c. 1050–1080",
+      "dateStart": 1050,
+      "language": "la",
+      "witnessKind": "direct_original_latin",
+      "coverage": "Transmite Metamorphoses, Apologia y Florida de Apuleyo; volumen misceláneo que también contiene obras de Tácito. Foliación exacta de Apuleyo pendiente de catálogo institucional.",
+      "record": "https://read.uolpress.co.uk/read/the-afterlife-of-apuleius/section/3daa2b8e-04f4-407f-a144-ce658dad393f",
+      "verification": "Robert H. F. Carver, The Afterlife of Apuleius, University of London Press; E. A. Lowe, Classical Quarterly 14 (1920):150–155, doi:10.1017/S0009838800021571.",
+      "verificationUrl": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
+      "cataloguingStatus": "Testimonio fundamental F acreditado por investigación textual especializada. URL enlaza estudio universitario, no facsímil ni catálogo individual. No se afirma ser el manuscrito absoluto más antiguo de todos los escritos de Apuleyo.",
+      "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
+      "priorityClaim": "earliest_principal_surviving_witness_in_studied_tradition",
+      "rights": "No se han incorporado imágenes."
+    },
+    {
+      "id": "apuleius-laurentianus-29-2",
+      "workIds": [
+        "apuleius-metamorphoses",
+        "apuleius-apologia"
+      ],
+      "title": "Apuleyo, Metamorphoses / Apologia — Laurentianus 29.2 (φ)",
+      "library": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 29.2 (Laur. 29.2)",
+      "date": "siglos XII–XIII, copia de F",
+      "dateStart": 1150,
+      "language": "la",
+      "witnessKind": "direct_original_latin",
+      "coverage": "Copia medieval de la sección apuleyana de Laur. 68.2; útil donde el modelo F está dañado o ilegible.",
+      "record": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
+      "verification": "E. A. Lowe, The Classical Quarterly 14 (1920):150–155; D. S. Robertson, Classical Quarterly 18 (1924):27–42.",
+      "verificationUrl": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/manuscripts-of-the-metamorphoses-of-apvleivs-i/88C29964AB669E5E33CAAF37A52C46E0",
+      "cataloguingStatus": "Testimonio de control dependiente de F, no códice más antiguo. Enlace a publicación académica, no al visor institucional.",
+      "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
+      "priorityClaim": "later_copy",
+      "rights": "No se han incorporado imágenes."
     }
   ],
   "editions": [
