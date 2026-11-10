@@ -1392,7 +1392,7 @@ async function search(){
  // Wait for the library before assembling its verified local holdings.
  if(!S.ready&&cataloguePromise){
   $("result-state").textContent="Cargando índices del catálogo antes de buscar…";
-  await cataloguePromise;
+  try{await cataloguePromise}catch(e){console.warn("Catálogo parcial; se mantienen las fuentes externas:",e)}
   if(id!==S.searchId||searchSignal.aborted)return;
  }
  // Voz griega con equivalente latino documentado en el léxico (εὐρυθμία → eurythmia): se busca también la forma latina.
@@ -1842,10 +1842,10 @@ const initialQuery=params.get("q")||"";
 if(initialQuery)$("query").value=initialQuery;
 const bootSearchId=S.searchId;
 cataloguePromise=load();
-cataloguePromise.then(()=>{
- if(initialQuery&&S.searchId===bootSearchId&&$("query").value.trim()===initialQuery)
-  void search();
-}).catch(e=>{console.error("Catálogo no disponible:",e)});
+// A linked query must identify the subject immediately, while heavy local
+// holdings load independently. search() will reconcile those indices later.
+if(initialQuery&&S.searchId===bootSearchId&&$("query").value.trim()===initialQuery)void search();
+cataloguePromise.catch(e=>{console.error("Catálogo no disponible:",e)});
 window.addEventListener("popstate",()=>{
  const p=new URLSearchParams(location.search);
  mode(p.get("mode")||"all");
