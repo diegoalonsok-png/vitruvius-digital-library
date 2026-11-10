@@ -1089,6 +1089,25 @@ function documentarySubjectEvidence(row,query){
   ...(row.aliases||[])].filter(Boolean).join(" "));
  return terms.every(term=>txt.includes(term));
 }
+/* Once a person is identified by Wikidata, a venue or a homonymous
+ * business must not replace that person's biography. This rule is generic,
+ * not a manual whitelist of prominent names.
+ */
+function verifiedPersonEvidence(row,query,identity){
+ if(identity?.kind!=="person"||!/^Q[0-9]+$/.test(identity.wikidataId||""))return true;
+ const title=norm(row.title||""),text=norm([row.title,row.author,row.excerpt,row.meta].join(" "));
+ const isCommercial=/\b(?:pizzeria|pizzaria|pizza|restaurant|restaurante|resto|hotel|hostal|hostel|cafe|cafeteria|bar|shop|store|tienda|boutique|comercio|commercial business)\b/;
+ if(isCommercial.test(title)&&!isCommercial.test(norm(query)))return false;
+ const names=[identity.canonical,identity.catalogName,identity.originalCanonical,...(identity.aliases||[])]
+  .map(norm).filter(name=>name.length>=4);
+ const unique=[...new Set(names)];
+ const direct=unique.some(name=>title===name||title.startsWith(name+" ")||(" "+text+" ").includes(" "+name+" "));
+ if(row.preferredWiki)return row.wikidataId===identity.wikidataId;
+ if(row.type==="wikidata"&&row.author===identity.wikidataId)return true;
+ if(["wikipedia","wikidata"].includes(row.type))return direct;
+ if(["openlibrary","googlebook","museum","article","archive-portal"].includes(row.type))return direct;
+ return true;
+}
 function authorityWeight(row){
  if(row.type==="wikipedia")return 35;
  if(row.type==="wikidata")return 20;
@@ -1103,7 +1122,8 @@ function display(rows,query,phase){
  // No se eliminan resultados por umbrales de coincidencia en el título:
  // los textos, alias, autores y metadatos documentales también cuentan.
  const guard=window.VitruviaContextGuard;
- const relevantRows=guard?guard.filter(rows,query,S.identifiedSubject):rows;
+ const contextualRows=guard?guard.filter(rows,query,S.identifiedSubject):rows;
+ const relevantRows=contextualRows.filter(row=>verifiedPersonEvidence(row,query,S.identifiedSubject));
  const scored=relevantRows.filter(r=>r&&r.title&&(
   !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||
   queryTokens(query).length<2||entityEvidence(r,query)
@@ -1196,14 +1216,20 @@ function display(rows,query,phase){
  // su orden propio dentro de su bloque.
  const blockOf=r=>libraryTypes.has(r.type)&&r.type!=="manuscript"&&r.type!=="edition"?"site":
   (r.localViewer||(r.link&&!/^https?:\/\//i.test(r.link)))?"site":"web";
- const siteFirst=S.mode==="all";
+ const resolved=S.identifiedSubject;
+ // An identified historical or artistic figure is the answer to a name
+ // lookup, even when the site has many unrelated local text matches.
+ // Keep source-first order for actual classical, philological and codex intents.
+ const personFirst=resolved?.kind==="person"&&/^Q[0-9]+$/.test(resolved.wikidataId||"")&&
+  !window.VitruviaLocalPriority?.plan(query,S.lexicon)?.focused&&
+  !matchingAuthorWorks(query).length&&!codexIntent&&!locusIntent;
+ const siteFirst=S.mode==="all"&&!personFirst;
  const firstOrdered=siteFirst?
   [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
   S.mode==="ai"?[...grouped.values()].flat():deduped;
  let ordered=window.VitruviaLocalPriority?.promote(firstOrdered,query,S.lexicon)||firstOrdered;
  // An identity established by Wikidata must precede title coincidences in books,
  // songs, streets or businesses. The original rows remain available below.
- const resolved=S.identifiedSubject;
  const authorityId=resolved?.wikidataId;
  if(/^Q[0-9]+$/.test(authorityId||"")){
   const index=ordered.findIndex(r=>r.preferredWiki&&r.wikidataId===authorityId&&r.type==="wikipedia");
@@ -1316,6 +1342,11 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
 }
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ // Start authority lookup immediately, in parallel with loading the large
+ // static catalogue; the main results are still rendered in the usual place.
+ const earlyIdentity=!/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&
+  ["all","wiki","external","ai"].includes(S.mode)&&window.VitruviaEntityResolver?
+  window.VitruviaEntityResolver.resolve(q,S.lang).catch(()=>null):null;
  // Requests may arrive before the static catalogue is fully loaded.
  // Wait once for the shared promise; a newer query supersedes this one.
  if(!S.ready&&cataloguePromise){
@@ -1402,7 +1433,7 @@ async function search(){
  // Resolve the subject independently of matching catalog titles.
  // Wikipedia titles and redirects supply canonical names for external retrieval.
  if(window.VitruviaEntityResolver&&wikiEnabled){
-  pending.push(window.VitruviaEntityResolver.resolve(q,S.lang).then(identity=>{
+  pending.push((earlyIdentity||window.VitruviaEntityResolver.resolve(q,S.lang)).then(identity=>{
    if(!identity)return {name:"No se resolvió una entidad enciclopédica",rows:[]};
    const link=identity.url;
    return {name:"Entidad enciclopédica · "+identity.canonical,rows:[{
