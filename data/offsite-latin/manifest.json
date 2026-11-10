@@ -1,8 +1,8 @@
 {
   "schema": "vitruvius-offsite-latin-originals-manifest-v1",
   "branch": "corpus-originales-latinos-20261108",
-  "count": 11,
-  "totalBytes": 2869562,
+  "count": 12,
+  "totalBytes": 3630127,
   "method": "Single editorial TEI reading; explicit technical paragraph locators; no reconstructed or invented ancient text",
   "entries": [
     {
@@ -485,6 +485,20 @@
       "attribution": "Quintus Ennius, Annalium fragmenta. Transcripción digital en Ennius, Fragmenta, The Latin Library, archivada por CLTK (enn.txt); edición crítica y filiación manuscrita no declaradas en el archivo.",
       "bloom": null,
       "scope": "Fragmentos seleccionados de Annales, sin aparato crítico ni correspondencia garantizada con ediciones modernas"
+    },
+    {
+      "workId": "macrobius-saturnalia",
+      "author": "Ambrosius Theodosius Macrobius",
+      "title": "Saturnalia · Libri I–VII",
+      "language": "la",
+      "path": "data/offsite-latin/macrobius-saturnalia-la.json",
+      "passages": 2106,
+      "bytes": 760565,
+      "source": "https://raw.githubusercontent.com/cltk/latin_text_lacus_curtius/master/html/Macrobius/Saturnalia/1*.html",
+      "sourceSha256": "326a6087ac22bacec4d2a4425aec68f1c57a2273a3c024fa59c3b5e036328f73",
+      "attribution": "Macrobius, Saturnalia, libri I–VII, edición de Ludwig von Jan, Leipzig 1852, transcripción digital de LacusCurtius preservada por CLTK (repositorio en dominio público).",
+      "bloom": null,
+      "scope": "Seven Latin books; section numbering inherited from LacusCurtius/Jan 1852; source has lacunae and 4 duplicated anchors merged"
     }
   ],
   "supplementalMethod": "Transcripciones latinas CLTK/The Latin Library; no edición crítica, códice autógrafo ni colación manuscrita",
