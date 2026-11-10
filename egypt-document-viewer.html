@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Visor documental egipcio · Vitruvia</title>
+<meta name="description" content="Visor académico de titulaturas, cartuchos, papiros e inscripciones documentadas, con controles de lectura y fuentes originales.">
+<style>
+:root{color-scheme:dark;--bg:#101011;--fg:#ededed;--panel:#1b1b1d;--stroke:#555}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 system-ui,sans-serif}
+header,main{max-width:1400px;margin:auto;padding:17px clamp(14px,3vw,36px)}
+header{display:flex;gap:18px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--stroke)}
+header a{color:inherit}h1{font:normal clamp(24px,3.5vw,41px)/1.15 Georgia,serif;margin:2px 0}
+h2{font:normal 25px Georgia,serif;margin:24px 0 10px}h3{font:normal 19px Georgia,serif;margin:0 0 8px}
+.note{border-left:3px solid #a6a6a6;padding:10px 14px;background:var(--panel);font-size:13px}
+.reading{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(275px,1fr);gap:18px;align-items:start}
+.plate,.edition{border:1px solid var(--stroke);border-radius:8px;min-width:0;padding:14px;background:var(--panel)}
+.tools{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:12px 0}
+button,select{background:#28282b;color:#f4f4f4;border:1px solid #727278;border-radius:5px;padding:9px 11px;cursor:pointer;min-height:40px}
+button:hover,button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #b5b5b5;outline-offset:2px}
+button[aria-pressed=true]{background:#555}
+#photo-stage{height:min(67vh,760px);min-height:340px;overflow:auto;background:#121212;border:1px solid #454545;scrollbar-width:auto;scrollbar-color:#888 #222;position:relative;text-align:center}
+#photo-stage img{display:block;width:100%;height:auto;max-width:none;margin:auto;transform-origin:center center;filter:var(--filter,none)}
+#photo-stage img[hidden]{display:none}
+#image-note{padding:20px;max-width:55ch;margin:auto}
+#image-source,#ruler-source{color:#ddd}a{color:inherit;text-underline-offset:3px}
+dl{margin:0}.name-row{border-top:1px solid #454545;padding:11px 0}.name-row dt{font-size:12px;font-weight:650;opacity:.8}
+.name-row dd{margin:3px 0}.glyphs{display:block;font:normal clamp(30px,5vw,60px)/1.7 'Noto Sans Egyptian Hieroglyphs','Egyptian Text',serif;overflow-wrap:anywhere}
+.cartouche{display:inline-block;border:2px solid currentColor;border-radius:46% / 34%;padding:9px 18px;margin:5px 0}
+.meta{font-size:12px;opacity:.85}.caution{font-size:12px;line-height:1.7;opacity:.84}
+.source-list a{display:block;padding:8px 0;border-top:1px solid #333}
+@media(max-width:850px){.reading{grid-template-columns:1fr}#photo-stage{height:53vh}}
+@media print{.tools,header nav{display:none!important}#photo-stage{height:auto;min-height:0;overflow:visible}#photo-stage img{width:100%!important}}
+</style></head><body>
+<header><h1>Vitruvia · visor egipcio</h1><nav><a href="vitruvia.html">Volver al buscador</a> · <a href="bibliotheca-graeca-latina.html">Bibliotheca</a></nav></header>
+<main><p class="note">Edición de consulta: los dibujos, las fotografías de objetos y las transcripciones editoriales son testimonios distintos. Las glosas de nombres no equivalen a traducciones de inscripciones o papiros completos. Si no hay traducción verificada, se conserva únicamente la lectura disponible.</p>
+<h2 id="document-title">Preparando testimonio…</h2><p id="document-meta" class="meta" role="status"></p>
+<div class="reading"><section class="plate" aria-label="Visor gráfico de documento">
+<h3>Imagen de la inscripción o del papiro</h3>
+<div class="tools"><button id="zoom-out" type="button" aria-label="Reducir imagen">−</button><output id="zoom-label">100%</output><button id="zoom-in" type="button" aria-label="Ampliar imagen">+</button><button id="zoom-reset" type="button">Restablecer</button><button id="invert" type="button" aria-pressed="false">Invertir</button><button id="gray" type="button" aria-pressed="false">Escala de grises</button><button id="contrast" type="button" aria-pressed="false">Alto contraste</button><select id="background" aria-label="Fondo de lectura"><option value="#121212">Negro</option><option value="#3b3b3b">Gris</option><option value="#e8dcc8">Sepia</option><option value="#f7f7f7">Blanco</option></select><button id="fullscreen" type="button">Pantalla completa</button></div>
+<div id="photo-stage"><img id="photo" alt="" hidden><p id="image-note">Seleccioná un testimonio para abrir la imagen disponible.</p></div>
+<p id="image-attribution" class="meta"></p><p><a id="image-source" href="https://www.metmuseum.org/art/collection" target="_blank" rel="noopener noreferrer">Abrir ficha y fotografía originales en el museo</a></p>
+</section><section class="edition"><h3>Lectura, transliteración y sentido</h3><div id="royal-names" lang="egy"></div><p class="caution">Solo se incluyen signos y transliteraciones cargados en el repertorio local con procedencia. Para los nombres sin edición, se señala la ausencia en lugar de reconstruir signos. El cartucho se usa únicamente para prenomen y nomen; el nombre de Horus se identifica por su serej.</p><p id="translation-note" class="note">La traducción íntegra del documento no está acreditada en este visor.</p>
+<div class="source-list" id="academic-links"></div></section></div></main>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id),p=new URLSearchParams(location.search);
+const ID=p.get("king")||"",obj=p.get("object")||"";
+const allowed={akhenaten:[550057,550052,550050,549207],tutankhamun:[567851,573511,558596],"ramesses-ii":[550673],"ramesses-iii":[549250]};
+const chapters={horus:"Horus · serej",nebty:"Dos Señoras (Nebty)",golden:"Horus de Oro",prenomen:"Prenomen · cartucho real",nomen:"Nomen · cartucho real"};
+const link=(name,href)=>{const a=document.createElement("a");a.textContent=name;a.href=href;a.target="_blank";a.rel="noopener noreferrer";return a};
+let zoom=100,inv=false,gray=false,contrast=false;
+function render(){
+ const img=$("photo");
+ img.style.width=zoom+"%";img.style.filter=[inv?"invert(1)":"",gray?"grayscale(1)":"",contrast?"contrast(1.8)":"",].filter(Boolean).join(" ")||"none";
+ $("zoom-label").textContent=zoom+"%";
+ for(const [id,value] of [["invert",inv],["gray",gray],["contrast",contrast]])$(id).setAttribute("aria-pressed",String(value));
+}
+$("zoom-in").onclick=()=>{zoom=Math.min(400,zoom+25);render()};
+$("zoom-out").onclick=()=>{zoom=Math.max(50,zoom-25);render()};
+$("zoom-reset").onclick=()=>{zoom=100;inv=gray=contrast=false;render()};
+$("invert").onclick=()=>{inv=!inv;render()};
+$("gray").onclick=()=>{gray=!gray;render()};
+$("contrast").onclick=()=>{contrast=!contrast;render()};
+$("background").onchange=()=>{$("photo-stage").style.background=$("background").value};
+$("fullscreen").onclick=()=>{$("photo-stage").requestFullscreen?.().catch(()=>{})};
+function create(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function rulerNames(ruler,data){
+ const dl=create("dl");
+ for(const [key,label] of Object.entries(chapters)){
+  const rec=ruler.names?.[key];
+  const box=create("div","name-row"),dt=create("dt",null,label),dd=create("dd");
+  box.append(dt);
+  if(rec){
+   if(rec.glyphs){const glyphs=create("div","glyphs"+(["prenomen","nomen"].includes(key)?" cartouche":""),rec.glyphs);glyphs.lang="egy";dd.append(glyphs);}
+   else dd.append(create("p","meta","Grafía jeroglífica pendiente de edición."));
+   if(rec.trans)dd.append(create("p",null,"Transliteración: "+rec.trans));
+   if(rec.gloss)dd.append(create("p",null,"Sentido del nombre: "+rec.gloss));
+   if(rec.witness)dd.append(create("p","meta","Testimonio: "+rec.witness));
+  }else dd.append(create("p","meta","Este nombre no está acreditado en el repertorio local; consultar una edición especializada."));
+  box.append(dd);dl.append(box);
+ }
+ $("royal-names").replaceChildren(dl);
+ const sources=$("academic-links");sources.replaceChildren(create("h3",null,"Fuentes y estudios"));
+ for(const s of (data.sources||[]).filter(x=>x.url))sources.append(link(s.citation,s.url));
+ sources.append(link("Thesaurus Linguae Aegyptiae · corpus", "https://thesaurus-linguae-aegyptiae.de/"));
+ sources.append(link("UCL Digital Egypt · cronología y materiales", "https://www.ucl.ac.uk/museums-static/digitalegypt/"));
+}
+async function load(){
+ const response=await fetch("data/vitruvia/titulaturae.json");
+ if(!response.ok)throw Error("No se pudo abrir el repertorio de titulaturas.");
+ const data=await response.json(),ruler=(data.rulers||[]).find(r=>r.id===ID);
+ if(!ruler)throw Error("Faraón no presente en el catálogo local. Consultar Vitruvia.");
+ $("document-title").textContent=ruler.name+" · documentación gráfica";
+ $("document-meta").textContent=[ruler.dynasty,ruler.dates].filter(Boolean).join(" · ");
+ rulerNames(ruler,data);
+ if(!obj||!(allowed[ID]||[]).includes(Number(obj))){
+  $("image-note").textContent="No se ha vinculado una fotografía de objeto a esta ficha. Consultá la transliteración de los nombres y los catálogos institucionales.";
+  $("image-source").href="https://www.metmuseum.org/art/collection/search?q="+encodeURIComponent(ruler.name);
+  return;
+ }
+ const catalog="https://www.metmuseum.org/art/collection/search/"+encodeURIComponent(obj);
+ $("image-source").href=catalog;
+ $("image-note").textContent="Consultando fotografía de acceso abierto del Metropolitan Museum…";
+ try{
+  const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),9000);
+  let result;try{const res=await fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/"+obj,{signal:ctl.signal});
+   if(!res.ok)throw Error("Servicio de imágenes no disponible");
+   result=await res.json();
+  }finally{clearTimeout(timer)}
+  $("document-meta").textContent=[ruler.name,result.title,result.period,result.objectDate].filter(Boolean).join(" · ");
+  if(result.isPublicDomain&&(result.primaryImage||result.primaryImageSmall)){
+   const src=result.primaryImage||result.primaryImageSmall,url=new URL(src);
+   if(url.protocol!=="https:")throw Error("Dirección de imagen no segura");
+   const img=$("photo");img.alt=result.title+" · Metropolitan Museum · objeto "+obj;img.onerror=()=>{img.hidden=true;$("image-note").textContent="No se pudo visualizar la imagen; abrir la ficha del museo."};
+   img.onload=()=>{$("image-note").hidden=true};
+   img.src=url.href;img.hidden=false;
+   $("image-attribution").textContent="The Metropolitan Museum of Art · Open Access / dominio público · número de objeto "+obj+".";
+  }else $("image-note").textContent="La ficha institucional no ofrece fotografía abierta para integrar. Consultá el original en el museo.";
+ }catch{$("image-note").textContent="La imagen del museo no pudo cargarse aquí. La ficha externa conserva el acceso a los datos verificados.";}
+}
+render();load().catch(err=>{$("document-title").textContent="Documento no disponible";$("document-meta").textContent=err.message});
+})();
+</script></body></html>
