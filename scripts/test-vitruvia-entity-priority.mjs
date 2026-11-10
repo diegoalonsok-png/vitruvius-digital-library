@@ -56,3 +56,6 @@ console.log('Qualified modern intent checks passed without overriding humanities
 
 // Execute the broader deterministic integration suite in the existing CI path.
 await import("./test-vitruvia-entity-identity.mjs");
+
+// Ensure the Aparato Crítico controls work independently of the textual corpus.
+await import("./test-apparatus-controls.mjs");
