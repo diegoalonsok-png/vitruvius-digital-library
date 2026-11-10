@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Taller Ecdótico · Collatio testium | Vitruvius Digital Library</title>
+<meta name="description" content="Cotejo de testimonios de originales clásicos: lectura griega por loci, variantes publicadas y fuentes documentadas, con reservas filológicas explícitas.">
+<style>
+:root{color-scheme:dark;--bg:#101011;--panel:#1c1c1e;--ink:#eaeaec;--sub:#bfc0c3;--line:#55565c;--gold:#e3c78f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.65 system-ui,Arial,sans-serif}
+header,main,footer{max-width:1320px;margin:0 auto;padding:15px clamp(14px,3vw,40px)}
+header{display:flex;gap:18px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+header strong{font:italic 27px/1.2 Georgia,serif}nav{display:flex;gap:15px;flex-wrap:wrap}nav a{font-size:13px}
+a{color:var(--gold);text-underline-offset:3px}a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #e4e4e4;outline-offset:2px}
+h1{font:400 clamp(24px,2.7vw,33px)/1.25 Georgia,serif;margin:14px 0 8px}h2{font:400 18px/1.4 Georgia,serif;margin:0 0 14px}
+p{margin:8px 0}.eyebrow{font-size:11px;letter-spacing:.12em;color:var(--sub)}
+.lead{max-width:100ch;color:var(--sub)}
+.notice{border-left:3px solid #909090;padding:7px 14px;background:#1a1a1a;margin:18px 0;font-size:13px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:16px 0}
+.toolbar label{font-size:13px;color:var(--sub)}
+input,select,button{font:inherit;border:1px solid #777;background:#252528;color:var(--ink);padding:9px 12px;border-radius:5px}
+button{cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}
+input[type=search]{min-width:220px;flex:1}
+.layout{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:16px}
+.panel{background:var(--panel);border:1px solid var(--line);padding:18px;border-radius:6px;min-width:0}
+#verse-content{font:18px/1.85 'Gentium Book Plus','Noto Serif',Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere;padding:10px 0}
+.muted{color:var(--sub);font-size:12px}.variants{display:flex;flex-direction:column;gap:12px}
+.variant{border-top:1px solid var(--line);padding-top:12px}
+.variant strong{font-size:13px}.reading-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.reading{border:1px solid #505055;padding:10px;border-radius:4px;min-width:0}
+.reading b{display:block;font-size:11px;color:var(--sub);letter-spacing:.04em;margin-bottom:4px}
+.reading span{display:block;overflow-wrap:anywhere;font:16px/1.65 'Gentium Book Plus',Georgia,serif}
+#matches{max-height:220px;overflow:auto;display:grid;gap:5px}#matches button{text-align:left;font-size:12px;padding:7px;background:#232326}
+.links{display:flex;flex-wrap:wrap;gap:8px 16px;margin:15px 0;font-size:13px}
+.audit{border-top:1px solid var(--line);margin-top:20px;padding-top:18px}
+.audit p{font-size:13px;color:var(--sub)}
+footer{border-top:1px solid var(--line);margin-top:28px;font-size:12px;color:var(--sub)}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.panel{padding:13px}.reading-grid{grid-template-columns:1fr}}
+@media print{body{background:#fff;color:#111}.panel,.notice,.reading{background:#fff;color:#111;border-color:#bbb}input,button,select,nav{display:none}a{color:#111}}
+</style>
+</head><body>
+<header><strong>Bibliotheca · Taller Ecdótico</strong>
+<nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="classics-work-record.html?work=didache">Ficha crítica</a><a href="classics-manuscript-coverage.html">Matriz de códices</a><a href="vitruvia-lexicon.html">Lexicon</a></nav></header>
+<main>
+<div class="eyebrow">COLLATIO TESTIUM · EDICIÓN DE LECTURA · APARATO DE VARIANTES</div>
+<h1 id="title">Cotejo de originales y testimonios</h1>
+<p class="lead" id="scope">Consultando el índice de textos originales y los registros de testigos…</p>
+<div class="notice" id="qualification">La comparación de una edición publicada con un fragmento manuscrito no equivale a una colación autóptica de los originales. Se indica el grado de verificación de cada lectura.</div>
+<div class="toolbar">
+<label for="locus">Locus griego</label><select id="locus" aria-label="Seleccionar locus"><option value="">Cargando…</option></select>
+<button type="button" id="previous">Anterior</button><button type="button" id="next">Siguiente</button>
+<label for="search">Buscar en el original</label><input id="search" type="search" placeholder="Griego con o sin acentos; ej. ἀγαπᾶτε">
+</div>
+<div class="layout">
+<section class="panel"><h2>Texto griego indexado</h2><p class="muted" id="reading-source">Edición de lectura; no transcripción diplomática.</p>
+<p class="eyebrow" id="locus-title"></p><div id="verse-content" lang="grc" aria-live="polite"></div>
+<div class="links"><a href="classics-text-reader.html?work=didache&lang=grc">Lectura del original completo</a><a href="classics-facsimile-gallery.html?ms=didache-poxy-xv-1782">Fotografías de P. Oxy. XV 1782</a></div>
+<h2>Resultados en 100 loci</h2><p class="muted" id="match-count">Use el buscador para localizar formas originales.</p><div id="matches"></div></section>
+<section class="panel"><h2>Aparato crítico documentado</h2><p class="muted" id="app-status">Sin aparato autóptico disponible.</p><div id="variants" class="variants" aria-live="polite"></div>
+<div class="audit"><h2>Testigos y referencias</h2><div class="links" id="witness-links"></div>
+<p id="method-note"></p><div class="links" id="source-links"></div></div></section>
+</div>
+<section class="audit"><h2>Estado del trabajo ecdótico</h2><p id="remaining">Las variantes registradas se limitan a los pasajes contrastados en bibliografía especializada. Las lagunas no se rellenan por conjetura.</p></section>
+</main><footer>Vitruvius Digital Library · Fuente, testimonio, lectura, conjetura y evidencia secundaria se registran por separado. Chicago 18 · TEI P5 como modelos descriptivos.</footer>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id);
+const q=new URLSearchParams(location.search),work=q.get("work")||"didache";
+const simple=(s)=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase();
+const el=(tag,cl,t)=>{const e=document.createElement(tag);if(cl)e.className=cl;if(t!==undefined)e.textContent=String(t);return e};
+const link=(node,t,u)=>{try{const a=el("a",null,t),r=new URL(u,location.href);if(!["https:","http:"].includes(r.protocol))return;a.href=r.href;if(r.origin!==location.origin){a.target="_blank";a.rel="noopener noreferrer"}node.append(a)}catch{}};
+const get=(url)=>fetch(url,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error(url+": "+r.status);return r.json()});
+let verses=[],apparatus=null;
+function selectLocus(value,push=true){
+ const idx=verses.findIndex(p=>p.locus===value);
+ if(idx<0)return;
+ $("locus").value=value;$("locus-title").textContent="DIDACHÉ "+value;
+ $("verse-content").textContent=verses[idx].text;
+ $("previous").disabled=idx===0;$("next").disabled=idx===verses.length-1;
+ const variants=(apparatus?.variants||[]).filter(v=>v.locus===value);
+ const target=$("variants");target.replaceChildren();
+ $("app-status").textContent=variants.length?variants.length+" variante(s) descrita(s) en este locus, procedentes de colación bibliográfica publicada.":"Sin variantes cotejadas e incorporadas para este locus. No implica que los manuscritos concuerden.";
+ for(const v of variants){
+  const card=el("article","variant");card.append(el("strong",null,v.locusRange+" · "+v.category));
+  const grid=el("div","reading-grid");
+  for(const [sig,reading] of [[v.baseWitness,v.baseReading],[v.otherWitness,v.otherReading]]){
+   const rd=el("div","reading");rd.append(el("b",null,sig),el("span",null,reading));grid.append(rd);
+  }
+  card.append(grid,el("p","muted",v.note),el("p","muted",v.citation+" · Certeza: "+v.certainty));target.append(card);
+ }
+ if(push){const u=new URL(location.href);u.searchParams.set("work",work);u.searchParams.set("locus",value);history.replaceState(null,"",u);}
+}
+$("locus").addEventListener("change",v=>selectLocus(v.target.value));
+$("previous").addEventListener("click",()=>{let i=verses.findIndex(p=>p.locus===$("locus").value);if(i>0)selectLocus(verses[i-1].locus)});
+$("next").addEventListener("click",()=>{let i=verses.findIndex(p=>p.locus===$("locus").value);if(i>=0&&i<verses.length-1)selectLocus(verses[i+1].locus)});
+$("search").addEventListener("input",()=>{
+ const t=simple($("search").value).trim(),target=$("matches");target.replaceChildren();
+ if(t.length<2){$("match-count").textContent="Ingrese al menos dos letras.";return}
+ const hits=verses.filter(p=>simple(p.text).includes(t));
+ $("match-count").textContent=hits.length+" de "+verses.length+" loci contienen la expresión.";
+ for(const v of hits.slice(0,75)){const b=el("button",null,"Did. "+v.locus+" · "+v.text.slice(0,125));b.type="button";b.addEventListener("click",()=>selectLocus(v.locus));target.append(b)}
+});
+if(work!=="didache"){$("scope").textContent="Todavía no se ha publicado un aparato propio para esta obra. La versión actual del taller documenta Didaché como prueba del método.";return}
+Promise.all([get("data/classics-corpus/didache-grc-verse-index.json?v=20261110-grc-100-v1"),get("data/classics-corpus/didache-poxy1782-apparatus.json?v=20261110-variants-published-v1")]).then(([idx,app])=>{
+ if(!Array.isArray(idx.passages)||idx.passages.length!==100||!Array.isArray(app.variants))throw Error("Índice o aparato incompleto");
+ verses=idx.passages;apparatus=app;
+ $("title").textContent="Διδαχή · Collatio testium";
+ $("scope").textContent=idx.unitCount+" loci indexados del original griego en "+idx.chapterCount+" capítulos. Aparato bibliográfico: "+app.variants.length+" variantes de Did. 1.3–1.4; no se infiere una colación del resto del texto.";
+ $("reading-source").textContent=idx.editorialStatus;
+ $("qualification").textContent=app.editorialCaution;
+ const sel=$("locus");sel.replaceChildren();
+ for(const p of verses){const option=document.createElement("option");option.value=p.locus;option.textContent="Did. "+p.locus;sel.append(option)}
+ const req=q.get("locus");selectLocus(verses.some(x=>x.locus===req)?req:"1.3",false);
+ const refs=$("witness-links");
+ for(const w of app.witnesses){link(refs,w.label+" · catálogo",w.catalogue);link(refs,w.label+" · imágenes",w.viewer)}
+ $("method-note").textContent=app.methods.disclaimers.join(" ");
+ const sources=$("source-links");link(sources,"Fuente de las variantes (Wilhite, p. 8)",app.comparisonSource.url);
+ for(const r of app.comparisonSource.supportingReferences)link(sources,r.label,r.url);
+ $("remaining").textContent=app.untreatedRanges.map(r=>r.locus+": "+r.why).join(" ");
+}).catch(err=>{$("scope").textContent="Error documental: "+err.message;$("qualification").textContent="No se mostrarán lecturas que no hayan podido recuperarse de las fuentes registradas."});
+})();
+</script>
+</body></html>
