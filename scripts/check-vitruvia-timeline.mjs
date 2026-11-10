@@ -9,6 +9,9 @@ assert.match(html,/assets\/vitruvia-academic-timeline\.js/);
 assert.match(html,/assets\/vitruvia-academic-timeline\.css/);
 assert.match(css,/vat-viewport/);
 assert.match(css,/overflow-x:auto/);
+assert.match(css,/Standalone chronology across the full board/);
+assert.doesNotMatch(css,/\.article-grid:has\(> #vitruvia-academic-timeline/);
+assert.match(html,/<section id="vitruvia-academic-timeline"[^>]*hidden><\/section><div class="results-grid">/);
 class E {
  constructor(tag="div",id=""){
   Object.assign(this,{tagName:tag,id,className:"",children:[],dataset:{},attributes:{},style:{},
@@ -28,11 +31,11 @@ class E {
 const article=new E("section","vitruvia-article"),articleGrid=new E();
 articleGrid.className="article-grid";article.hidden=true;article.append(articleGrid);
 const body=new E("div","article-body");articleGrid.append(body);
-const resultsGrid=new E();resultsGrid.className="results-grid";
+const resultsSection=new E("section","results"),resultsGrid=new E();resultsGrid.className="results-grid";
 const resultList=new E("div","result-list");resultsGrid.append(resultList);
-const root=new E("section","vitruvia-academic-timeline");resultsGrid.insertBefore(root,resultList);
+const root=new E("section","vitruvia-academic-timeline");resultsSection.append(root,resultsGrid);
 const ids={"vitruvia-academic-timeline":root,"vitruvia-article":article,"article-body":body,"result-list":resultList};
-const callbacks={}, win={
+const callbacks={}, observers=[],win={
  addEventListener:(name,callback)=>{callbacks[name]=callback},
  VitruviaSearchSnapshot:null,
  VitruviaEntityResolver:{resolve:async q=>({wikidataId:q==="Pink Floyd"?"Q1":"Q2",
@@ -40,7 +43,7 @@ const callbacks={}, win={
 };
 const doc={documentElement:{lang:"es"},getElementById:id=>ids[id]||null,
  querySelector:q=>q==="#results .results-grid"?resultsGrid:null,createElement:tag=>new E(tag)};
-runInNewContext(source,{window:win,document:doc,MutationObserver:class{observe(){}},queueMicrotask},{filename:"vitruvia-academic-timeline.js"});
+runInNewContext(source,{window:win,document:doc,MutationObserver:class{constructor(callback){this.callback=callback;observers.push(this)}observe(target){this.target=target}},queueMicrotask},{filename:"vitruvia-academic-timeline.js"});
 const emit=(name,detail)=>callbacks[name]({detail});
 emit("vitruvia:search",{query:"Pink Floyd"});
 emit("vitruvia:cultural-works",{wikidataId:"Q1",works:[{id:"Q3",year:1973,title:"An attributed work",dateKind:"publication",dateProperty:"P577"}]});
@@ -50,7 +53,16 @@ const events=win.VitruviaAcademicTimeline.collect();
 assert.deepEqual([...events.map(x=>x.year)].sort((a,b)=>a-b),[1965,1973,1980]);
 assert.ok(events.some(x=>x.lane==="works"&&x.year===1973));
 assert.ok(events.some(x=>x.lane==="documents"&&x.year===1980));
-assert.equal(root.nextElementSibling,resultList);
+assert.equal(root.nextElementSibling,resultsGrid,"Timeline must stand above both result columns");
+assert.equal(root.parentElement,resultsSection,"Timeline is no longer a grid child");
+article.hidden=false;for(const observer of observers)if(observer.target===article)observer.callback([]);
+await Promise.resolve();
+assert.equal(root.parentElement,article,"Timeline moves above the article grid");
+assert.equal(root.nextElementSibling,articleGrid);
+article.hidden=true;for(const observer of observers)if(observer.target===article)observer.callback([]);
+await Promise.resolve();
+assert.equal(root.parentElement,resultsSection,"Timeline returns above search results");
+assert.equal(root.nextElementSibling,resultsGrid);
 const find=cls=>{const out=[];const visit=x=>{if(x.className===cls)out.push(x);for(const n of x.children)visit(n)};visit(root);return out};
 const button=find("vat-event")[0],detail=find("vat-detail")[0];
 assert.ok(button&&detail);
@@ -62,4 +74,4 @@ assert.deepEqual(win.VitruviaAcademicTimeline.collect().map(x=>x.year),[-1303]);
 emit("vitruvia:clear",{});
 assert.equal(root.hidden,true);
 assert.equal(win.VitruviaAcademicTimeline.collect().length,0);
-console.log("Vitruvia universal chronology: all searches, source dates, async identity, albums, clicks, reset PASS");
+console.log("Vitruvia universal chronology: sources, clicks, standalone placement in article/results, zero grid overlap, reset PASS");

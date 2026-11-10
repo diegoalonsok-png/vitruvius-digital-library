@@ -24,15 +24,19 @@
  const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null};
  const article=document.getElementById("vitruvia-article");
  const articleGrid=article?.querySelector(".article-grid");
- const body=document.getElementById("article-body");
  const resultsGrid=document.querySelector("#results .results-grid");
- const resultList=document.getElementById("result-list");
  let queued=false;
+ /* Never insert the timeline inside an editorial grid. Later inline CSS owns
+    those grids and assigns rows 1 and 2 to article and side panels; a fourth
+    grid item caused timeline cards to overlap the text in production.
+    Keep chronology a standalone, full-width sibling before either grid. */
  function place(){
-  const visible=article&&!article.hidden&&articleGrid;
-  const parent=visible?articleGrid:resultsGrid;
-  const target=visible?body:resultList;
-  if(parent&&target&&(root.parentElement!==parent||root.nextElementSibling!==target))parent.insertBefore(root,target);
+  const visible=Boolean(article&&!article.hidden&&articleGrid);
+  const anchor=visible?articleGrid:resultsGrid;
+  const parent=visible?article:resultsGrid?.parentElement;
+  if(parent&&anchor&&(root.parentElement!==parent||root.nextElementSibling!==anchor)){
+   parent.insertBefore(root,anchor);
+  }
  }
  function queuePlacement(){
   if(queued)return;queued=true;
