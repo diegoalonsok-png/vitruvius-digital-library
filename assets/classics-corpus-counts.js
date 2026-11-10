@@ -45,7 +45,7 @@ function style(){
 }
 function recordLabel(w){return [w?.author,w?.title].filter(Boolean).join(" — ") || w?.id || "Registro sin título";}
 const sourceLanguageLabels={la:"latín",grc:"griego antiguo",es:"castellano",en:"inglés",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"};
-const trustedReader=/^(?:classics-text-reader|classics-remote-[a-z-]+-reader)\.html\?/;
+const trustedReader=/^(?:classics-text-reader|classics-remote-[a-z-]+-reader|lector-bilingue)\.html\?/;
 function detailLink(entry){
  const link=entry?.reader;
  return typeof link==="string" && trustedReader.test(link)?link:null;
@@ -65,7 +65,9 @@ function workVersions(id,data){
  }));
  // Only offer two viewers when there really are two hosted text editions.
  const pair=originals[0]&&translations[0]?{
-  url:"classics-parallel-reader.html?work="+encodeURIComponent(id)+
+  // Vitruvius editions use the dedicated two-column Latin/translation reader.
+  url:id==="vitruvius"?detailLink(translations[0]):
+   "classics-parallel-reader.html?work="+encodeURIComponent(id)+
    "&left="+encodeURIComponent(originals[0].language)+
    "&right="+encodeURIComponent(translations[0].language),
   label:"Leer original y traducción en dos visores"
