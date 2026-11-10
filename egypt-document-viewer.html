@@ -39,6 +39,7 @@ dl{margin:0}.name-row{border-top:1px solid #454545;padding:11px 0}.name-row dt{f
 <p id="image-attribution" class="meta"></p><p><a id="image-source" href="https://www.metmuseum.org/art/collection" target="_blank" rel="noopener noreferrer">Abrir ficha y fotografía originales en el museo</a></p>
 </section><section class="edition"><h3>Lectura, transliteración y sentido</h3><div id="royal-names" lang="egy"></div><p class="caution">Solo se incluyen signos y transliteraciones cargados en el repertorio local con procedencia. Para los nombres sin edición, se señala la ausencia en lugar de reconstruir signos. El cartucho se usa únicamente para prenomen y nomen; el nombre de Horus se identifica por su serej.</p><p id="translation-note" class="note">La traducción íntegra del documento no está acreditada en este visor.</p>
 <div class="source-list" id="academic-links"></div></section></div></main>
+<script src="assets/hiero-render.js?v=20261109-quadrats-v1"></script>
 <script>
 (()=>{"use strict";
 const $=id=>document.getElementById(id),p=new URLSearchParams(location.search);
@@ -69,7 +70,7 @@ function rulerNames(ruler,data){
   const box=create("div","name-row"),dt=create("dt",null,label),dd=create("dd");
   box.append(dt);
   if(rec){
-   if(rec.glyphs){const glyphs=create("div","glyphs"+(["prenomen","nomen"].includes(key)?" cartouche":""),rec.glyphs);glyphs.lang="egy";dd.append(glyphs);}
+   if(rec.glyphs){const glyphs=create("div","glyphs"+(["prenomen","nomen"].includes(key)?" cartouche":""),rec.glyphs);glyphs.lang="egy";if(window.HieroRender?.render)glyphs.replaceChildren(window.HieroRender.render(rec.glyphs,{size:"50px"}));dd.append(glyphs);}
    else dd.append(create("p","meta","Grafía jeroglífica pendiente de edición."));
    if(rec.trans)dd.append(create("p",null,"Transliteración: "+rec.trans));
    if(rec.gloss)dd.append(create("p",null,"Sentido del nombre: "+rec.gloss));
