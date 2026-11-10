@@ -356,6 +356,19 @@ function renderAcademicSummary(dest,w,d){
  sec.append(refs);
  dest.append(sec);
 }
+/* Consulta complementaria: Google IA puede orientar el descubrimiento, no certifica manuscritos. */
+function renderResearchAssist(dest,w){
+ const sec=html("section","cwd-research-assist");
+ section(sec,"Investigación asistida · manuscrito más antiguo");
+ sec.append(html("p","cwd-muted","Consulta externa orientativa. Las respuestas de Google Modo IA NO se importan como datos verificados: compruebe catálogo de la institución, signatura, datación, contenido, folios y permiso de reproducción antes de incorporarlas a la ficha."));
+ const q="¿Cuál es el códice más antiguo conservado de "+w.title+" de "+w.author+"? Distingue el testimonio material más antiguo (papiro o fragmento) del códice más antiguo, identifica biblioteca, signatura, siglo, folios, fuente institucional y URL del visor digital. Si hay incertidumbre, indícala.";
+ const links=html("p","cwd-links");
+ addA(links,"Consultar en Google Modo IA ↗","https://www.google.com/search?udm=50&q="+encodeURIComponent(q));
+ addA(links,"Búsqueda web de catálogos ↗","https://www.google.com/search?q="+encodeURIComponent(w.author+" "+w.title+" oldest manuscript codex shelfmark library"));
+ sec.append(links);
+ row(sec,"Ficha pendiente de verificación externa","Una respuesta generada por IA es una hipótesis de trabajo y no equivale a un testigo documentado.");
+ dest.append(sec);
+}
 function renderInto(target,id,opts={}){
  if(!target)return Promise.resolve(null);
  target.replaceChildren(html("p","cwd-muted","Cargando ficha crítica…"));
@@ -396,6 +409,7 @@ function renderInto(target,id,opts={}){
   renderAcademicSummary(target,w,d);
   renderCriticalAuthority(target,w,d);
   renderWitness(target,w,d);
+  renderResearchAssist(target,w);
   renderCodicology(target,w);
   renderEditions(target,w,d);
   renderBibliography(target,w);
