@@ -79,6 +79,38 @@ for(const [source,target] of [[eds[0],eds[2]],[eds[1],eds[2]],[eds[2],eds[0]]]){
    status:'SIN LOCUS HOMÓNIMO; revisar contenido, no equivale a omisión'});
  }
 }
+// Inventario revisable: las diferencias automáticas NO son errores confirmados.
+const incidences=[];
+for(const x of unmatched){
+ incidences.push({
+  id:'CAND-'+String(incidences.length+1).padStart(4,'0'),
+  priority:'P1',classification:'locus sin identificador homónimo',
+  sourceEdition:x.edition,locus:x.locus,targetEdition:x.target,
+  sameChapterCandidates:x.candidateSameChapter,
+  status:'PENDIENTE_DE_COTEJO',
+  isConfirmedError:false,
+  proposedCorrection:null,
+  evidence:'Falta coincidencia exacta de ID; verificar si la división del capítulo es distinta.'
+ });
+}
+for(const p of pairing){
+ const gap=p.normalizedLatinDifferentAtSharedId;
+ if(gap){
+  incidences.push({
+   id:'CAND-'+String(incidences.length+1).padStart(4,'0'),
+   priority:'P1',classification:'lecturas latinas divergentes',
+   sourceEdition:p.left,targetEdition:p.right,
+   locus:'varios ('+gap+' loci)',
+   status:'PENDIENTE_DE_COTEJO',
+   isConfirmedError:false,
+   proposedCorrection:null,
+   evidence:'Variaciones normalizadas de texto latino en IDs compartidos. No implica errores: distintas ediciones o segmentaciones.',
+   sample:p.differenceSamples
+  });
+ }
+}
+const confirmedErrors=incidences.filter(i=>i.isConfirmedError);
+
 const report={
  schema:'vitruvius-trilingual-alignment-preliminary-v1',
  generatedAt:new Date().toISOString(),
@@ -90,6 +122,11 @@ const report={
   editorialPriority:e.editorialPriority})),
  pairwiseLocusComparisons:pairing,
  unmatchedLociCandidates:unmatched,
+ incidenceRegister:incidences,
+ confirmedErrors,
+ approvedCorrections:[],
+ correctionsApplied:0,
+ editorialApprovalRequired:true,
  policy:{
   noAutomaticEdits:true,noManuscriptEdits:true,
   priorityOrder:['pasaje omitido realmente','traducción asociada a otro pasaje','segmentación diferente','aparato crítico y notas'],
@@ -105,4 +142,43 @@ for(const edition of report.editions)
  console.log(edition.id+' '+edition.passages+' loci / '+edition.chapters+' capítulos; transcripciones latinas vacías '+edition.emptyLatin.length);
 for(const c of pairing)console.log(c.left+' vs '+c.right+': '+c.sharedLocusIds+' ID comunes; '+c.uniqueToLeftCount+' exclusivos izquierda, '+c.uniqueToRightCount+' exclusivos derecha; '+c.normalizedLatinDifferentAtSharedId+' lecturas latinas distintas (no son errores confirmados).');
 console.log('Casos con ID no coincidente para revisión: '+unmatched.length);
+const mdLines=[
+ '# Registro de incidencias del cotejo trilingüe de Vitruvio',
+ '',
+ '> Inventario automático de **candidatos a revisión**, no de errores demostrados.',
+ '> No se ha modificado ninguna versión textual ni el aparato crítico.',
+ '',
+ '## Estado de la revisión',
+ '',
+ '- **Errores confirmados:** '+confirmedErrors.length,
+ '- **Incidencias pendientes de cotejo:** '+incidences.length,
+ '- **Correcciones aplicadas:** 0',
+ '- **Regla editorial:** listar, cotejar con ES V514 y FR V554, contrastar EN V297 y aprobar cualquier corrección antes de editar.',
+ '',
+ '## Diferencias sin identificador homónimo',
+ '',
+ '| ID | Edición | Locus | Contraste | Estado |',
+ '| --- | --- | --- | --- | --- |'
+];
+for(const x of incidences.filter(i=>i.classification==='locus sin identificador homónimo')){
+ mdLines.push('| '+x.id+' | '+x.sourceEdition+' | '+x.locus+' | '+x.targetEdition+
+  ' | Pendiente de cotejo; NO equivale a omisión |');
+}
+mdLines.push('','## Diferencias de lectura latina agrupadas',
+ '| ID | Ediciones | Loci discrepantes | Estado |','| --- | --- | ---: | --- |');
+for(const x of incidences.filter(i=>i.classification==='lecturas latinas divergentes')){
+ mdLines.push('| '+x.id+' | '+x.sourceEdition+' / '+x.targetEdition+
+ ' | '+x.locus+' | Pendiente de colación filológica |');
+}
+mdLines.push('','## Antes de corregir',
+ '1. Localizar el pasaje exacto y su contexto en los originales.',
+ '2. Establecer si es una segmentación, una variante de edición o un error textual real.',
+ '3. Registrar la lectura actual, fuente, propuesta y justificación.',
+ '4. Presentar al autor la lista de errores **confirmados**; aplicar cambios únicamente después de su aprobación.',
+ '',
+ 'Los datos detallados y las coincidencias de capítulos figuran en `reports/vitruvius-trilingual-alignment.json`.'
+);
+const markdownPath=path.join(root,'reports','vitruvius-trilingual-incidencias.md');
+fs.writeFileSync(markdownPath,mdLines.join('\n')+'\n','utf8');
+console.log('Incidencias por cotejar: '+incidences.length+'; errores confirmados: '+confirmedErrors.length+'; correcciones: 0.');
 console.log('Informe: reports/vitruvius-trilingual-alignment.json. No hubo modificaciones textuales.');
