@@ -204,7 +204,7 @@ async function compareLocus(locus){
  panel.append(grid);
  const sources=document.createElement('section');sources.className='critical-parallel-edition';
  const sourceTitle=document.createElement('h3');sourceTitle.textContent='Cotejo con ediciones críticas históricas';sources.append(sourceTitle);
- const details=document.createElement('p');details.textContent='Krohn (1912): consultar la edición crítica y su aparato original. La transcripción OCR del sitio no posee una correspondencia de locus verificada, por lo que no se atribuyen variantes automáticamente.';sources.append(details);
+ const details=document.createElement('p');details.textContent='Krohn (1912): la página digital del facsímil se propone a partir del locus y de una coincidencia textual OCR reproducible. El anclaje es aproximado y no constituye cotejo filológico verificado ni identificación de variantes; consultar siempre el original de la edición crítica.';sources.append(details);
  const krohn=document.createElement('a');krohn.href='https://archive.org/details/vitruviidearchit00vitr';krohn.target='_blank';krohn.rel='noopener';krohn.textContent='Consultar Krohn 1912 (facsímil) ↗';sources.append(krohn);
  const budeTitle=document.createElement('p');budeTitle.textContent='Collection Budé: consultar el volumen correspondiente al libro '+locus.split('.')[0]+' y cotejar las referencias citadas en las notas de Kurilo. No se reproducen textos protegidos.';sources.append(budeTitle);
  const bude=document.createElement('a');bude.href='bibliografia.html#chicago-18';bude.textContent='Ver referencias bibliográficas y Budé →';sources.append(bude);panel.append(sources);
