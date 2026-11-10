@@ -1,0 +1,67 @@
+name: Codicology self-audit · 222 classics
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 9 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: codicology-scholarly-audit
+  cancel-in-progress: false
+
+jobs:
+  metadata-only-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out registered scholarly catalogue
+        uses: actions/checkout@v4
+
+      - name: Set up Python (no paid API or extra packages)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run source-identity and safety regression tests
+        run: python -m unittest discover -s tests -p 'test_codicology_auditor.py' -v
+
+      - name: Inspect all 222 works and 24 external discovery queries
+        run: |
+          python scripts/codicology_auditor.py \
+            --live --batch-size 24 \
+            --output reports/codicology
+
+      - name: Publish audit artifacts (do not commit anything)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: codicology-222-metadata-only
+          path: reports/codicology/*.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Show summary in GitHub Actions
+        if: success()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path('reports/codicology/summary.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          message = '\n'.join([
+            '## Auditoría codicológica de Vitruvius',
+            f"- Obras revisadas estructuralmente: {d['catalogueWorks']}",
+            f"- Registros manuscritos: {d['registryManuscripts']}",
+            f"- Obras con testimonios: {d['worksWithWitnesses']}",
+            f"- Sin testigos vinculados: {d['worksWithoutWitnesses']}",
+            f"- Candidatos retenidos en cuarentena: {d['candidatesQuarantined']}",
+            f"- Alertas estructurales: {d['structuralErrors']}",
+            '',
+            'Ningún codex ni fotografía se descarga; ninguna propuesta se incorpora automáticamente.',
+          ])
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as out:
+              out.write(message + '\n')
+          PY
