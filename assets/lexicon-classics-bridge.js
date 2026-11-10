@@ -39,6 +39,16 @@ let serial=0;
 let translationContext=null,selectedLiteralRows=[];
 const translationNames={es:"castellano",en:"inglés",fr:"francés"};
 const translationDataCache=new Map();
+const externalTranslationHosts=new Set(["penelope.uchicago.edu","www.gutenberg.org","archive.org","adfonteslibrary.org"]);
+let externalTranslationsTask=null;
+function verifiedExternalTranslations(workId){
+ if(!externalTranslationsTask)externalTranslationsTask=fetch("data/classics-corpus/remote-translations.json?v=20261110-verified-links-v3")
+  .then(r=>{if(!r.ok)throw Error("Registro externo no disponible");return r.json()})
+  .then(j=>j?.schema==="vitruvius-classics-remote-translations-v1"&&Array.isArray(j.entries)?j.entries:[])
+  .catch(()=>[]);
+ return externalTranslationsTask.then(rows=>rows.filter(e=>e.workId===workId&&e.status==="external-only"&&e.indexedLocally===false));
+}
+
 function translationUrl(e,locus){
  let raw=e.reader||("classics-text-reader.html?work="+encodeURIComponent(e.workId)+"&lang="+encodeURIComponent(e.language));
  const href=safeLocalUrl(raw);if(!href)return null;
@@ -136,6 +146,19 @@ function appendTranslation(card,row,editions){
    window.VitruviaInlineTranslation?.attach(anchor,{
     sourceLanguage:row.language,originalText:row.originalText||row.excerpt
    });
+  }
+  // External editions are links, not claims of verified locus alignment.
+  const external=await verifiedExternalTranslations(row.workId);
+  if(!card.isConnected||translationSelect.value!==language)return;
+  for(const e of external){
+   let u;try{u=new URL(e.url)}catch{continue}
+   if(u.protocol!=="https:"||!externalTranslationHosts.has(u.hostname))continue;
+   const line=document.createElement("p");line.className="lx-library-translation-note";
+   const a=document.createElement("a");a.href=u.href;a.target="_blank";a.rel="noopener noreferrer";
+   a.textContent="Leer traducción externa · "+(translationNames[e.language]||e.language)+" · "+(e.host||"fuente académica");
+   line.append(a);
+   if(e.note){const caveat=document.createElement("small");caveat.textContent=" · "+e.note;line.append(caveat);}
+   block.append(line);
   }
   const comparison=new URL("classics-parallel-reader.html",location.href);
   comparison.searchParams.set("work",row.workId);
