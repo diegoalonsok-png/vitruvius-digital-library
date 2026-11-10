@@ -35,6 +35,7 @@ for(const [input,expected] of [
  ["prefacio","*.praef.*"],["praefatio","*.praef.*"],
  ["prefacion II","2.praef.*"],["prefación del libro II","2.praef.*"],
  ["prefacion II.1","2.praef.1"],["II.prefacion.1","2.praef.1"],
+ ["libro 2 prefacion","2.praef.*"],["libro II prefación 1","2.praef.1"],
  ["domus",null],["III.1.2.3",null],["XI.1.2",null],
  ["3.0.1",null],["3.1.0",null],["3.1.2000",null]
 ])assert.equal(normalize(input),expected,input);
