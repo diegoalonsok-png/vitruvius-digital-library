@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'assets/lexicon-classics-bridge.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'assets/classics-corpus-search.js'
       - 'vitruvia-lexicon.html'
       - 'scripts/test-lexicon-passage-translations.mjs'
       - '.github/workflows/lexicon-passage-translations.yml'
@@ -10,6 +12,8 @@ on:
     branches: [main]
     paths:
       - 'assets/lexicon-classics-bridge.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'assets/classics-corpus-search.js'
       - 'vitruvia-lexicon.html'
       - 'scripts/test-lexicon-passage-translations.mjs'
       - '.github/workflows/lexicon-passage-translations.yml'

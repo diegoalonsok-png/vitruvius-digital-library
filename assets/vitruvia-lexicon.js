@@ -466,7 +466,7 @@ function hitCard(D,h){
   el("a",{href:"bibliotheca-graeca-latina.html?"+new URLSearchParams({work:p[0]}).toString()},"Ficha de obra"));
  card.append(provenance);
  {const amb=ambiguity(D,text,h.spans,p);if(amb)card.append(amb)}
- const trBox=el("div",{class:"lx-hit-tr",hidden:!READ.tr});card.append(trBox);card._tr=()=>fillTranslation(D,p,trBox);if(READ.tr)card._tr();
+ const trBox=el("div",{class:"lx-hit-tr",hidden:!READ.tr});card.insertBefore(trBox,full);card._tr=()=>fillTranslation(D,p,trBox);if(READ.tr)card._tr();
  const also=alsoIn(D,p);if(also)card.append(also);
  if(p[0]==="vitruvius"){card.append(vitruviusWitnessLine())}
  if(p[0]==="vitruvius"&&D.l==="la"){const par=paralleliBox(D,p);if(par)card.append(par)}
@@ -482,11 +482,6 @@ function hitCard(D,h){
  actions.append(citeMenu(D,p,cite,text.slice(k.a,k.b)));
  card.append(coins(D,p));
  card.append(actions);
- // Existing documented translations take precedence; an optional alternative
- // translation may be requested explicitly without altering the evidence.
- window.VitruviaInlineTranslation?.attach(snippet,{
-  sourceLanguage:D.l,originalText:text.slice(k.a,k.b)
- });
  if(p[0]==="vitruvius"){const v=el("p",{class:"lx-vlinks"},"Vitruvio "+p[1]+": ");vitruvianLinks(p[1]).forEach(([t,u],i)=>{if(i)v.append(" · ");v.append(el("a",{href:u},t))});card.append(v)}
  return card;
 }
@@ -1501,11 +1496,37 @@ async function translationOf(D,p){
  if(p[0]==="vitruvius"){const ed=S.ui==="fr"?"fr":S.ui==="en"?"en":"es";const data=await load(VIT_ED[ed][0]);const x=data.passages.find(z=>z.locus===p[1]);if(x?.translation)return{text:x.translation,src:"Vitruvio · "+VIT_ED[ed][1]+" · https://doi.org/"+EDITION_DOI[ed][0]};if(p[4])return{text:p[4],src:"Vitruvio · Castellano · Kurilo V514"};return null}
  const U=await perseusUnits(p[0]);const t=alignTranslation(U,p);if(!t)return null;const G={exacta:T("alineación exacta por locus"),verso:T("alineación por número de verso"),tramo:T("alineación por tramo de versos (aproximada)"),"capítulo":T("alineación por capítulo (aproximada)"),proporcional:T("alineación proporcional dentro del libro (orientativa)")};return{text:t.text,src:T("Traducción inglesa · Perseus Digital Library (CC BY-SA 4.0)")+(t.locus?" · "+T("sección")+" "+t.locus:"")+" · "+G[t.grade],grade:t.grade};
 }
+function addUnverifiedTranslationOption(D,p,box){
+ const raw=String(p[2]||"");
+ const source=el("p",{class:"lx-passage",lang:D.l},raw.slice(0,2400)+(raw.length>2400?" …":""));
+ box.append(el("p",{class:"lx-small"},"Pasaje original. Se puede solicitar una traducción automática orientativa; el texto solo se envía al proveedor externo después de pulsar el botón."),source);
+ window.VitruviaInlineTranslation?.attach(source,{sourceLanguage:D.l,originalText:raw});
+ if(raw.length>2400)box.append(el("p",{class:"lx-small"},"Fragmento original abreviado; consulte el visor para leer el pasaje íntegro."));
+}
 async function fillTranslation(D,p,box){
- if(box.dataset.done)return;box.dataset.done="1";box.replaceChildren(el("p",{class:"lx-small"},T("Cargando traducción…")));
- try{const r=await translationOf(D,p);if(!r){box.replaceChildren(el("p",{class:"lx-small"},T("No hay traducción disponible para este pasaje en el sitio.")));return}
-  const t=r.text.length>1400?r.text.slice(0,1400)+" …":r.text;box.replaceChildren(el("p",{class:"lx-tr",lang:p[0]==="vitruvius"?(S.ui==="fr"?"fr":S.ui==="en"?"en":"es"):"en"},t),el("p",{class:"lx-small"+(r.grade&&r.grade!=="exacta"&&r.grade!=="verso"?" lx-approx":"")},r.src))}
- catch(err){box.dataset.done="";box.replaceChildren(el("p",{class:"lx-small"},T("No se pudo cargar la traducción")+" ("+err.message+")."))}
+ if(box.dataset.done)return;box.dataset.done="1";
+ box.replaceChildren(el("p",{class:"lx-small"},T("Cargando traducción…")));
+ try{
+  const r=await translationOf(D,p);
+  if(!box.isConnected)return;
+  if(!r){
+   box.replaceChildren(el("p",{class:"lx-small"},T("No hay traducción disponible para este pasaje en el sitio.")));
+   addUnverifiedTranslationOption(D,p,box);
+   return;
+  }
+  const t=r.text.length>1400?r.text.slice(0,1400)+" …":r.text;
+  box.replaceChildren(el("p",{class:"lx-tr",lang:p[0]==="vitruvius"?(S.ui==="fr"?"fr":S.ui==="en"?"en":"es"):"en"},t),
+   el("p",{class:"lx-small"+(r.grade&&r.grade!=="exacta"&&r.grade!=="verso"?" lx-approx":"")},r.src));
+  if(p[0]!=="vitruvius"&&S.ui!=="en"){
+   box.append(el("p",{class:"lx-small"},"La traducción editorial identificada está en inglés. También puede solicitar una versión automática orientativa al castellano o al francés."));
+   addUnverifiedTranslationOption(D,p,box);
+  }
+ }catch(err){
+  box.dataset.done="";
+  if(!box.isConnected)return;
+  box.replaceChildren(el("p",{class:"lx-small"},T("No se pudo cargar la traducción")+" ("+err.message+")."));
+  addUnverifiedTranslationOption(D,p,box);
+ }
 }
 /* ---------- Lemas ambiguos y correcciones verificadas ----------
    La lematización es por tabla de formas (sin contexto): cuando una forma admite varios lemas se
@@ -1605,7 +1626,7 @@ function alsoIn(D,p){
  return det;
 }
 /* ---------- Herramientas de lectura: traducción, tamaño, color del resaltado, lupa ---------- */
-const READ=(()=>{try{return Object.assign({tr:false,fs:17,mark:"",lupa:false},JSON.parse(localStorage.getItem("vitruvia-lexicon-read")||"{}"))}catch{return{tr:false,fs:17,mark:"",lupa:false}}})();
+const READ=(()=>{try{const value=Object.assign({tr:true,fs:17,mark:"",lupa:false},JSON.parse(localStorage.getItem("vitruvia-lexicon-read")||"{}"));if(!localStorage.getItem("vitruvia-lexicon-translation-default-v2")){value.tr=true;localStorage.setItem("vitruvia-lexicon-translation-default-v2","1")}return value}catch{return{tr:true,fs:17,mark:"",lupa:false}}})();
 const MARKS=[["","Gris"],["#7a5c12","Oro"],["#6b1f1f","Rojo"],["#1f4f6b","Azul"],["#2f5d36","Verde"],["#5a2f6b","Violeta"]];
 function applyRead(){const r=$("#lx-results");if(!r)return;r.style.setProperty("--lx-fs",READ.fs+"px");if(READ.mark)r.style.setProperty("--lx-mark",READ.mark);else r.style.removeProperty("--lx-mark");r.classList.toggle("lx-lupa-on",!!READ.lupa);r.classList.toggle("lx-marked",!!READ.mark);try{localStorage.setItem("vitruvia-lexicon-read",JSON.stringify(READ))}catch{}}
 function readingToolbar(){
