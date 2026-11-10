@@ -18,6 +18,29 @@ if(!document.querySelector('script[data-research-crosslinks]')){
  bridge.defer=true;bridge.dataset.researchCrosslinks="";
  document.head.append(bridge);
 }
+/* Mount the common Lexicon-style language and black/white control on secondary
+ * editorial pages that already use this shared navigation bar.
+ * The module skips embedded readers, folios, the main apps and other bespoke
+ * manuscript views on its own; never insert two copies.
+ */
+const secondaryPage=(location.pathname.split("/").pop()||"index.html").toLowerCase();
+const secondarySkip=new Set([
+ "index.html","vitruvia.html","vitruvia-lexicon.html","aparato-critico.html",
+ "bibliotheca-graeca-latina.html","onomasticon.html","atlas-geographicus.html",
+ "lector-bilingue.html","lector-clasico.html","lector-textual-rapido.html",
+ "codex-h-doble-folio.html","codex-h-folios-local.html","visor-codex.html",
+ "laboratorio-h.html","papyrologia-ostraca.html",
+ "classics-text-reader.html","classics-parallel-reader.html",
+ "classics-document-parallel.html","classics-external-source-reader.html",
+ "classics-remote-latin-reader.html","classics-remote-text-reader.html"
+]);
+if(!secondarySkip.has(secondaryPage)&&!document.querySelector("script[data-secondary-controls]")){
+ const control=document.createElement("script");
+ control.src=root+"assets/secondary-reader-controls.js?v=20261110-unified-v1";
+ control.dataset.secondaryControls="1";
+ control.defer=true;
+ document.head.append(control);
+}
 const LINKS=[
  ["Biblioteca","Inicio","index.html"],
  ["Lector bilingüe","Lector","lector-bilingue.html"],
