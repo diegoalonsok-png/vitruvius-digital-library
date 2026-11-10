@@ -304,7 +304,7 @@ async function run(push=true){
  window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""),{ancient:["palabra","lema","etimologia"].includes(S.mode)});
  renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
- if(push){const u=new URL(location.href);u.searchParams.delete("qb");u.searchParams.delete("qb_lang");u.searchParams.delete("qb_filters");u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{history.replaceState(null,"",u)}catch{}}
+ if(push){const u=new URL(location.href);u.searchParams.delete("qb");u.searchParams.delete("qb_lang");u.searchParams.delete("qb_filters");u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{if(u.href!==location.href)history.pushState(null,"",u)}catch{}}
  if(!q&&S.mode!=="sententiae"){setState("Escriba una palabra, una frase o un patrón.");return}
  try{
   if(["palabra","frase","grupo","lema"].includes(S.mode)&&!/["\[@*?~#=√]/.test(q)){const c=parseCitation(q);if(c)return openCitation(c,q)}
@@ -2140,8 +2140,60 @@ function setupPalette(){
  panel.append(el("label",{class:"lx-small"},"Personalizado ",custom),el("button",{type:"button",class:"lx-btn",onclick:()=>{applyBg(null);try{localStorage.removeItem("vitruvia-lexicon-bg")}catch{}}},"Restablecer"));
  try{const v=JSON.parse(localStorage.getItem("vitruvia-lexicon-bg")||"null");if(v)applyBg(v[0],v[1])}catch{}
 }
+/* The same URL resolver serves direct links and browser Back/Forward.
+   Query parameters are restored without assuming a server-side router. */
+let routeRevision=0;
+async function applyLexiconLocation(){
+ const rev=++routeRevision;
+ ++runRevision; // invalidate results from older asynchronous searches
+ const p=new URLSearchParams(location.search);
+ S.mode=MODES[p.get("mode")]?p.get("mode"):"palabra";
+ S.lang=["auto","la","grc","he","es","en","fr","de"].includes(p.get("lang"))?p.get("lang"):"auto";
+ S.work=p.get("work")||"";
+ S.result=null;
+ const q=p.get("q")||"";
+ $("#lx-q").value=q;
+ $("#lx-lang").value=S.lang;
+ $("#lx-results").replaceChildren();
+ $("#lx-entry").replaceChildren();
+ $("#lx-entry").hidden=true;
+ $("#lx-side-extra").replaceChildren();
+ renderTabs();
+ if(p.get("work")&&p.get("locus")){
+  if(q)await run(false);
+  if(rev!==routeRevision)return;
+  const token=runRevision;
+  await openLocus(p.get("work"),p.get("locus"),q);
+  if(rev!==routeRevision||token!==runRevision)return;
+  const dv=p.get("dv");
+  if(dv&&DATA_VER&&dv!==DATA_VER)
+   $("#lx-results").prepend(el("p",{class:"lx-person-banner"},
+    T("Este enlace se citó con la versión de datos")+" "+dv+"; "+
+    T("ahora se consulta la versión")+" "+DATA_VER+". "+
+    T("El texto del pasaje puede haber sido corregido desde entonces; el historial completo está en el repositorio.")+" ",
+    el("a",{href:"https://github.com/diegoalonsok-png/vitruvius-digital-library/commits/main/data/lexicon",target:"_blank",rel:"noopener"},T("Historial de cambios")+" ↗")));
+ }else if(p.get("qb")==="1"&&q){
+  let f={};try{f=JSON.parse(p.get("qb_filters")||"{}")}catch{}
+  await qbLexicalSearch(q,f,p.get("qb_lang")||"both",false);
+ }else if(q){
+  await run(false);
+ }else if(S.mode==="sententiae"){
+  await run(false);
+ }else{
+  setState("Escriba una palabra, una frase o un patrón. El índice se carga al primer uso.");
+ }
+}
 /* ---------- Arranque ---------- */
 async function init(){
+ // Show the deep-linked query and mode before asynchronous metadata arrives.
+ const initialParams=new URLSearchParams(location.search);
+ const initialMode=initialParams.get("mode"),initialLang=initialParams.get("lang");
+ if(MODES[initialMode])S.mode=initialMode;
+ if(["auto","la","grc","he","es","en","fr","de"].includes(initialLang))S.lang=initialLang;
+ if(initialParams.get("q"))$("#lx-q").value=initialParams.get("q");
+ if(initialParams.get("work"))S.work=initialParams.get("work");
+ $("#lx-lang").value=S.lang;
+ window.addEventListener("popstate",()=>{applyLexiconLocation().catch(err=>setState("No se pudo restaurar la consulta de la URL: "+err.message))});
  try{const u=localStorage.getItem("vitruvius-ui-lang");if(["es","en","fr"].includes(u))S.ui=u}catch{}
  const uiSel=$("#lx-ui");if(uiSel){uiSel.value=S.ui;uiSel.addEventListener("change",()=>{S.ui=uiSel.value;try{localStorage.setItem("vitruvius-ui-lang",S.ui)}catch{};applyUI()})}
  try{const th=localStorage.getItem("vitruvia-theme");if(["light","dark"].includes(th))document.documentElement.dataset.theme=th}catch{}
@@ -2201,12 +2253,12 @@ async function init(){
   if(!slow&&!new URLSearchParams(location.search).get("q")){const idle=window.requestIdleCallback||(f=>setTimeout(f,1200));idle(()=>lang("la",true).catch(()=>{}),{timeout:4000})}}
  renderInstrumenta();renderScriptoria().catch(err=>console.error('Escrituras:',err));renderNotebook();renderDaily();renderQueryBuilder();applyUI();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
- const p=new URLSearchParams(location.search);
- if(p.get("mode")&&MODES[p.get("mode")])S.mode=p.get("mode");if(p.get("lang"))S.lang=p.get("lang");$("#lx-lang").value=S.lang;if(p.get("work"))S.work=p.get("work");renderTabs();
- if(p.get("work")&&p.get("locus")){if(p.get("q"))$("#lx-q").value=p.get("q");(p.get("q")?run(false):Promise.resolve()).then(()=>openLocus(p.get("work"),p.get("locus"),p.get("q")||"")).then(()=>{
-  /* Reproducibilidad: el enlace citado se creó con otra versión de los datos. */
-  const dv=p.get("dv");if(dv&&DATA_VER&&dv!==DATA_VER)$("#lx-results").prepend(el("p",{class:"lx-person-banner"},`${T("Este enlace se citó con la versión de datos")} ${dv}; ${T("ahora se consulta la versión")} ${DATA_VER}. ${T("El texto del pasaje puede haber sido corregido desde entonces; el historial completo está en el repositorio.")} `,el("a",{href:"https://github.com/diegoalonsok-png/vitruvius-digital-library/commits/main/data/lexicon",target:"_blank",rel:"noopener"},T("Historial de cambios")+" ↗")))});}
- else if(p.get("qb")==="1"&&p.get("q")){let f={};try{f=JSON.parse(p.get("qb_filters")||"{}")}catch{}qbLexicalSearch(p.get("q"),f,p.get("qb_lang")||"both",false).catch(e=>setState(e.message))}else if(p.get("q")){$("#lx-q").value=p.get("q");run(false)}else if(S.mode==="sententiae")run(false);else setState("Escriba una palabra, una frase o un patrón. El índice se carga al primer uso.");
+
+ if(runRevision===0&&$("#lx-q").value.trim()===(initialParams.get("q")||"").trim()){
+  await applyLexiconLocation();
+ } else if(runRevision===0){
+  setState("Escriba la consulta y pulse Buscar. Los datos se cargan bajo demanda.");
+ }
 }
 function renderDaily(){
  const s=S.sent?.sententiae;if(!s?.length)return;const d=new Date();const i=(d.getFullYear()*372+d.getMonth()*31+d.getDate())%s.length;const x=s[i];
