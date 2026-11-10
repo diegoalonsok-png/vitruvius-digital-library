@@ -157,12 +157,12 @@ async function compareLocus(locus){
     next.addEventListener('click',()=>navigate(Number(number.value)+1));
     go.addEventListener('click',()=>navigate(number.value));
     number.addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();navigate(number.value)}});
-    // No inventar equivalencia locus-página: si el OCR no da un candidato
-    // inequívoco, comenzar en la página 1 y dejar navegación manual.
-    navigate(1);
+    // Avoid loading the wrong first page before OCR alignment finishes.
+    // If no candidate is found, the manual PDF viewer starts at page 1.
     const hit=await ocrPassage(v.ocr);if(compareId!==compareRevision||sel.value!==v.id||!body.isConnected)return;
     if(!hit){
      status.textContent='No se identificó una página fiable para '+locus+'. El PDF está disponible desde el comienzo; selecciona manualmente el folio. No se presume alineación entre OCR y locus.';
+     navigate(1);
      return;
     }
     const synced=v.ocr==="krohn-1912";
