@@ -6,7 +6,7 @@ const $=id=>document.getElementById(id);
 
 /* Acceso a traducciones documentadas sin alojar copias ni atribuirles alineación filológica. */
 let externalTranslations=[];
-const EXTERNAL_READING_HOSTS=new Set(["penelope.uchicago.edu","www.gutenberg.org","archive.org"]);
+const EXTERNAL_READING_HOSTS=new Set(["penelope.uchicago.edu","www.gutenberg.org","archive.org","adfonteslibrary.org"]);
 function showExternalTranslations(work,box){
  if(!work||!box)return;
  box.querySelector(".classic-remote-translations")?.remove();
@@ -35,7 +35,7 @@ function showExternalTranslations(work,box){
  const tabs=box.querySelector(".classic-tabstrip");
  if(tabs)tabs.before(section);else box.prepend(section);
 }
-fetch("data/classics-corpus/remote-translations.json?v=20261110-verified-links-v2")
+fetch("data/classics-corpus/remote-translations.json?v=20261110-verified-links-v3")
  .then(res=>{if(!res.ok)throw Error("No se pudo leer el registro de traducciones externas");return res.json()})
  .then(doc=>{
   if(doc.schema!=="vitruvius-classics-remote-translations-v1"||!Array.isArray(doc.entries))return;
