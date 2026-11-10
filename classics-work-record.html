@@ -24,6 +24,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 <script defer src="assets/classics-work-dossier.js?v=20261110-vitruvius-standard-v19"></script>
 <script defer src="assets/analytics-config.js?v=20261110-shared-v1"></script>
 <script defer src="assets/analytics.js?v=20261110-shared-v1"></script>
+<script defer src="assets/bibliotheca-export-xlsx.js?v=20261110-xlsx-222-v1"></script>
 </head>
 <body><header><strong>Bibliotheca</strong><nav>
 <a href="index.html">Vitruvius Digital Library</a>
@@ -38,7 +39,9 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 <div class="actionbar"><label for="record-work">Seleccionar una obra</label>
 <select id="record-work"><option value="">Cargando 222 registros…</option></select>
 <button id="print-record" type="button">Imprimir / guardar PDF</button>
-<button id="copy-record" type="button">Copiar ficha y procedencia</button></div>
+<button id="copy-record" type="button">Copiar ficha y procedencia</button>
+<button id="bibliotheca-download-xlsx" type="button" title="Descargar 222 obras, códices, ecdótica, ediciones, fuentes y bibliografía en un libro Excel">Descargar Excel · 222 obras y ecdótica</button></div>
+<p id="bibliotheca-xlsx-status" role="status" aria-live="polite" class="intro"></p>
 <p id="work-record-status" role="status" aria-live="polite">Consultando el catálogo académico…</p>
 <article id="work-record"></article></main>
 <footer>Bibliotheca Graeca et Latina · Vitruvius Digital Library · Catálogo de ediciones y testimonios documentados · Chicago 18 (metadatos condicionados a fuentes verificadas).</footer>
