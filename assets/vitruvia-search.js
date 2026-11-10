@@ -1609,13 +1609,14 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  const t=T();$("lead").textContent=t.lead;$("query").placeholder=t.placeholder;$("submit").textContent=t.submit;
  document.querySelectorAll("button.tab").forEach((b,i)=>{if(t.modes[i])b.textContent=t.modes[i]});
  $("mode-note").textContent=S.mode==="ai"
-  ?(S.lang==="en"?"Experimental multilingual semantic search over indexed documents. Web catalogues are not part of the local AI model.":S.lang==="fr"?"Recherche sémantique multilingue expérimentale sur les documents indexés. Les catalogues web ne font pas partie du modèle local.":"Búsqueda semántica multilingüe experimental sobre documentos indexados. Los catálogos web no forman parte del modelo local.")
+  ?(S.lang==="en"?"Choose BM25 or experimental E5 reranking. Only sources in the AI manifest are included; other catalogues use separate search routes.":S.lang==="fr"?"Choisir BM25 ou le reclassement E5 expérimental. Seules les sources du manifeste IA sont couvertes; les autres catalogues sont interrogés séparément.":"Elegí BM25 o reordenación E5 experimental. Solo se incluyen las fuentes del manifiesto IA; los demás catálogos usan otras vías.")
   :(t.explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||t.explain[0]);
  const methodTexts={es:["Motor de búsqueda","BM25 · rápido, sin modelo","E5 · neuronal, descarga opcional"],en:["Search method","BM25 · fast, no model","E5 · neural, optional download"],fr:["Méthode de recherche","BM25 · rapide, sans modèle","E5 · neuronal, téléchargement facultatif"]};
  const methodLabels=methodTexts[S.lang]||methodTexts.es;
  $("ai-method-label").textContent=methodLabels[0];
  $("ai-method").options[0].textContent=methodLabels[1];
  $("ai-method").options[1].textContent=methodLabels[2];
+ $("ai-help").textContent=({es:"BM25 busca sin descargar IA. E5 multilingüe es opcional y experimental (descarga inicial estimada ≈120 MB, modelo q8). El corpus neuronal se limita a las fuentes declaradas en data/ai-corpora.json.",en:"BM25 searches without a neural download. Multilingual E5 is optional and experimental (first estimated download ≈120 MB, q8 model). Neural coverage is limited to sources listed in data/ai-corpora.json.",fr:"BM25 recherche sans téléchargement neuronal. E5 multilingue est facultatif et expérimental (premier téléchargement estimé ≈120 Mo, modèle q8). La couverture dépend du manifeste data/ai-corpora.json."})[S.lang];
  const ui=UI_TEXT[S.lang]||UI_TEXT.es;
  document.querySelectorAll("[data-i18n]").forEach(el=>{
   const value=ui[el.dataset.i18n];if(value)el.textContent=value;
@@ -1637,7 +1638,7 @@ function mode(m){S.mode=["all","site","wiki","external","concept","ai"].includes
  if(S.mode!=="ai"){const status=document.getElementById("ai-status");if(status)status.hidden=true;}
  document.querySelectorAll("button.tab").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===S.mode)));
  $("mode-note").textContent=S.mode==="ai"?
- (S.lang==="en"?"Optional E5 semantic search of indexed documents; first download ≈120 MB only in AI mode. Data saver uses BM25 without a model download. External catalogues are not part of the neural model.":S.lang==="fr"?"Recherche E5 facultative sur les documents indexés : premier téléchargement ≈120 Mo seulement en mode IA. Économie de données : BM25 sans téléchargement du modèle. Les catalogues externes sont exclus.":"IA semántica opcional sobre documentos indexados: primera descarga E5 ≈120 MB solo al buscar en modo IA. Ahorro de datos: BM25 sin descarga neuronal. Los catálogos externos no forman parte del modelo."):
+ (S.lang==="en"?"BM25 is the default in AI mode; E5 reranking requires a separate opt-in (first download ≈120 MB). Neural ranking is not philological verification.":S.lang==="fr"?"BM25 est le mode par défaut; reclassement E5 sur demande (premier téléchargement ≈120 Mo). Le classement n’est pas une vérification philologique.":"BM25 es el modo predeterminado; E5 requiere selección expresa (primera descarga ≈120 MB). La clasificación neuronal no equivale a cotejo filológico."):
  (T().explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||T().explain[0]);
 }
 function theme(th){S.theme=th;document.documentElement.dataset.theme=th;
