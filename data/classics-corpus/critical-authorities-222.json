@@ -2904,8 +2904,8 @@
           "title": "P. Oxy. XV 1782 — fragmentos de la Didaché",
           "repository": "Oxford, Bodleian Art, Archaeology and Ancient World Library",
           "shelfmark": "P. Oxy. XV 1782 · TM 64596",
-          "date": "finales del siglo IV d. C. (paleografía)",
-          "coverage": "Fragmentos de pergamino de Did. 1.3c–1.4a y 2.7b–3.2a. No es un testimonio completo.",
+          "date": "s. IV ex. (paleografía)",
+          "coverage": "Dos hojas de pergamino, Did. 1.3d–1.4a; 2.7b–3.2b (Layton 1968; límites según edición).",
           "recordUrl": "https://4care-skos.mf.no/4care-artefacts/260/",
           "viewerUrl": "https://commons.wikimedia.org/wiki/Category:Papyrus_Oxyrhynchus_1782",
           "iiifManifestUrl": null,
@@ -2913,15 +2913,15 @@
           "rights": "Fotografías de terceros: consultar atribución/licencia",
           "dateStart": 350
         },
-        "earliestScope": "Más temprano ENTRE ESTOS TESTIMONIOS GRIEGOS acreditados: P. Oxy. XV 1782 (fragmentario, s. IV). El códice H (1056) conserva el texto griego continuo completo; Elbasan 82 (s. XVI) es probablemente su apógrafo. No se infiere un arquetipo ni un stemma completo.",
+        "earliestScope": "Más antiguo en el registro griego material: P. Oxy. XV 1782 (fragmentario, s. IV ex.). H (1056) es el principal testigo completo y Elbasan 82 (s. XVI) otro completo probablemente descriptus de H. La dependencia se atribuye al estudio de Guida, no a colación propia.",
         "witnesses": [
           {
             "id": "didache-poxy-xv-1782",
             "title": "P. Oxy. XV 1782 — fragmentos de la Didaché",
             "repository": "Oxford, Bodleian Art, Archaeology and Ancient World Library",
             "shelfmark": "P. Oxy. XV 1782 · TM 64596",
-            "date": "finales del siglo IV d. C. (paleografía)",
-            "coverage": "Fragmentos de pergamino de Did. 1.3c–1.4a y 2.7b–3.2a. No es un testimonio completo.",
+            "date": "s. IV ex. (paleografía)",
+            "coverage": "Dos hojas de pergamino, Did. 1.3d–1.4a; 2.7b–3.2b (Layton 1968; límites según edición).",
             "recordUrl": "https://4care-skos.mf.no/4care-artefacts/260/",
             "viewerUrl": "https://commons.wikimedia.org/wiki/Category:Papyrus_Oxyrhynchus_1782",
             "iiifManifestUrl": null,
@@ -2933,14 +2933,14 @@
             "id": "didache-hierosolymitanus-54",
             "title": "Codex Hierosolymitanus 54 (H) — texto griego completo",
             "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
-            "shelfmark": "Panagios Taphos 54 · Pinakes diktyon 35291",
+            "shelfmark": "Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54 · Pinakes 35291",
             "date": "1056 d. C. (colofón)",
-            "coverage": "Didaché 1–16, ff. 76r–80v. Testimonio griego completo de referencia. La reproducción de la Library of Congress es de microfilme.",
+            "coverage": "Didaché 1–16, ff. 76–81 según Pinakes. El índice imagen/folio del microfilme aún no está cotejado.",
             "recordUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
             "viewerUrl": "https://www.loc.gov/item/00279389694-jo/",
             "iiifManifestUrl": null,
             "verification": "Pinakes IRHT/CNRS + Library of Congress",
-            "rights": "Library of Congress: citar procedencia",
+            "rights": "Microfilmes de Library of Congress: dominio público según la ficha; atribuir la colección.",
             "dateStart": 1056
           },
           {
@@ -2948,8 +2948,8 @@
             "title": "Elbasan 82 — texto griego completo (apógrafo de H)",
             "repository": "Tirana, Arkivi Qëndror i Shtetit",
             "shelfmark": "Kodikët e Shqipërisë 488, Dosja 082 · Pinakes diktyon 63441",
-            "date": "tercer cuarto del siglo XVI",
-            "coverage": "Didaché completa; A. Guida (2022 [2023]) lo identifica como copia probablemente directa del Hierosolymitanus 54. Sin visor de folios público comprobado.",
+            "date": "s. XVI 3/4",
+            "coverage": "Didaché completa; probable apógrafo directo de H, según A. Guida (2022 [2023]). Sin visor público de folios identificado.",
             "recordUrl": "https://pinakes.irht.cnrs.fr/notices/cote/63441/",
             "viewerUrl": null,
             "iiifManifestUrl": null,
@@ -2987,7 +2987,8 @@
           "Pinakes diktyon 35291 / 63441",
           "4CARE artefact 260 / Trismegistos TM 64596",
           "Library of Congress 00279389694-jo",
-          "A. Guida, Un nuovo manoscritto della Didache (2022 [2023])"
+          "A. Guida, Un nuovo manoscritto della Didache (2022 [2023])",
+          "Cambridge manuscript description / TEI msDesc; Yale DCRM(MSS) cataloguing model"
         ],
         "confidence": "three_identified_witnesses_with_viewer_limits"
       }
