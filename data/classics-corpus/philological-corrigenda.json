@@ -1,0 +1,89 @@
+{
+  "schema": "vitruvia-classics-philological-corrigenda-v1",
+  "updated": "2026-11-10",
+  "method": "Cada emendación local exige coincidencia literal única, locus exacto, motivo, fuente de base, control independiente y distinción expresa respecto de variantes del aparato crítico; una lista de correcciones no demuestra que la obra completa esté cotejada.",
+  "corrections": [
+    {
+      "id": "aug-conf-1-2-ocr-n-u",
+      "workId": "augustine-confessiones",
+      "language": "la",
+      "locus": "1.2",
+      "kind": "transcription-ocr-error",
+      "sourceReading": "unde nenias in me?",
+      "correctedReading": "unde uenias in me?",
+      "explanation": "OCR interpreta u latina como n. Corregido conforme al contexto y otras transcripciones de la obra; no es variante de códice.",
+      "baseEdition": "Pius Knöll, CSEL 33 (1896), TEI OpenGreekAndLatin/CSEL",
+      "upstream": "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/data/stoa0040/stoa001/stoa0040.stoa001.opp-lat1.xml",
+      "controlSources": [
+        "https://www.ub.uni-freiburg.de/fileadmin/ub/referate/04/augustinus/august01.htm",
+        "https://ww.thelatinlibrary.com/augustine/conf1.shtml"
+      ],
+      "editorialConfidence": "alta",
+      "scope": "Solo frase señalada; libro completo no colacionado"
+    },
+    {
+      "id": "aug-conf-1-3-ocr-o-c",
+      "workId": "augustine-confessiones",
+      "language": "la",
+      "locus": "1.3",
+      "kind": "transcription-ocr-error",
+      "sourceReading": "Oapiunt ergone te caelum et terra",
+      "correctedReading": "Capiunt ergone te caelum et terra",
+      "explanation": "Reconocimiento equivocado de la letra capital C como O; 'capiunt' confirmado en transcripciones latinas independientes.",
+      "baseEdition": "Pius Knöll, CSEL 33 (1896), TEI OpenGreekAndLatin/CSEL",
+      "upstream": "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/data/stoa0040/stoa001/stoa0040.stoa001.opp-lat1.xml",
+      "controlSources": [
+        "https://www.ub.uni-freiburg.de/fileadmin/ub/referate/04/augustinus/august01.htm",
+        "https://reader.lombardpress.org/text/augustineconfessiones/aconf-l1"
+      ],
+      "editorialConfidence": "alta",
+      "scope": "Solo frase señalada; libro completo no colacionado"
+    },
+    {
+      "id": "aug-conf-1-3-ocr-star-question",
+      "workId": "augustine-confessiones",
+      "language": "la",
+      "locus": "1.3",
+      "kind": "transcription-ocr-error",
+      "sourceReading": "quoniam tu imples ea* an imples",
+      "correctedReading": "quoniam tu imples ea? an imples",
+      "explanation": "Puntuación interrogativa reconocida como asterisco, no referencia a una nota crítica.",
+      "baseEdition": "Pius Knöll, CSEL 33 (1896), TEI OpenGreekAndLatin/CSEL",
+      "upstream": "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/data/stoa0040/stoa001/stoa0040.stoa001.opp-lat1.xml",
+      "controlSources": [
+        "https://www.ub.uni-freiburg.de/fileadmin/ub/referate/04/augustinus/august01.htm",
+        "https://reader.lombardpress.org/text/augustineconfessiones/aconf-l1"
+      ],
+      "editorialConfidence": "alta",
+      "scope": "Solo puntuación señalada; libro completo no colacionado"
+    }
+  ],
+  "reviewQueue": [
+    {
+      "workId": "augustine-confessiones",
+      "locus": "1.11",
+      "sample": "abundante1",
+      "issue": "posible nota/superíndice incrustado en texto: requiere examen del TEI, no emendar automáticamente"
+    },
+    {
+      "workId": "augustine-confessiones",
+      "locus": "1.26",
+      "sample": "deus1",
+      "issue": "posible nota/superíndice incrustado en texto: requiere examen del TEI, no emendar automáticamente"
+    },
+    {
+      "workId": "augustine-confessiones",
+      "locus": "2.12",
+      "sample": "facinus1",
+      "issue": "posible nota/superíndice incrustado en texto: requiere examen del TEI, no emendar automáticamente"
+    },
+    {
+      "workId": "cicero-republica",
+      "locus": "urn:cts:latinLit:phi0474_phi043_perseus-lat2.1.1.segment-1",
+      "sample": "im petu liberavissent",
+      "issue": "fragmento textual y locus generado en datos Perseus; no sustituir por un locus crítico sin cotejo de TEI"
+    }
+  ],
+  "referencesStyle": "Chicago Manual of Style, 18th ed. (2024) para citas finales de edición; las citas de control aquí son enlaces de consulta, no referencias normalizadas completas.",
+  "guarantee": "Una corrección verificada no habilita a declarar que una edición, traducción o manuscrito entero esté revisado."
+}
