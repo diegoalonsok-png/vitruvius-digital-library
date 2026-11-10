@@ -190,3 +190,46 @@ assert(railSrc.includes("books.sort((a,b)")&&
 assert(railSrc.includes("manuscripts.slice(0,12)")&&railSrc.includes("codexDate"),
  "Códice display must use documented manuscript dates");
 console.log("PASS cultural rail: visible search/reading layout, books and codices sorted from documented dates");
+
+
+/* Regression: an identified historical figure or artist cannot be displaced
+ * by a business homonym; royal titles are query qualifiers, not entity names.
+ * These tests use fixed fixtures and no live third-party API/network.
+ */
+const entityResolverSrc=readFileSync("assets/vitruvia-entity-resolver.js","utf8");
+const vitruviaSearchSrc=readFileSync("assets/vitruvia-search.js","utf8");
+const relevanceNorm=value=>String(value||"").normalize("NFD")
+ .replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^\p{L}\p{N}.]+/gu," ")
+ .replace(/\s+/g," ").trim();
+const resolverStart=entityResolverSrc.indexOf("const clean=q=>{");
+const resolverEnd=entityResolverSrc.indexOf("const invalid=p=>");
+assert(resolverStart>0&&resolverEnd>resolverStart,"Missing generic name-cleaning function");
+const cleanSubject=new Function("norm",entityResolverSrc.slice(resolverStart,resolverEnd)+"\nreturn clean;")(relevanceNorm);
+assert.equal(cleanSubject("Rey Tut"),"Tut");
+assert.equal(cleanSubject("Rey Herodes"),"Herodes");
+assert.equal(cleanSubject("Faraón Ramsés II"),"Ramsés II");
+assert.equal(cleanSubject("Tutancamon"),"Tutancamon");
+const evidenceStart=vitruviaSearchSrc.indexOf("function verifiedPersonEvidence(");
+const evidenceEnd=vitruviaSearchSrc.indexOf("function authorityWeight(",evidenceStart);
+assert(evidenceStart>0&&evidenceEnd>evidenceStart,"Missing verified person result filter");
+const personEvidence=new Function("norm",vitruviaSearchSrc.slice(evidenceStart,evidenceEnd)+"\nreturn verifiedPersonEvidence;")(relevanceNorm);
+const tutIdentity={kind:"person",wikidataId:"Q12154",canonical:"Tutankamón",aliases:["King Tut","Rey Tut"]};
+const daliIdentity={kind:"person",wikidataId:"Q5577",canonical:"Salvador Dalí",aliases:["Dalí"]};
+assert(!personEvidence({type:"wikipedia",title:"King Tut Pizzeria",excerpt:"Restaurant in Cairo"},"Rey Tut",tutIdentity),
+ "A homonymous pizzeria must not replace Tutankhamun");
+assert(personEvidence({type:"wikipedia",title:"Tutankamón",preferredWiki:true,wikidataId:"Q12154"},"Rey Tut",tutIdentity),
+ "The verified Tutankhamun biography must remain visible");
+assert(!personEvidence({type:"openlibrary",title:"Dalí Pizza",excerpt:"Menu"},"Dalí",daliIdentity),
+ "Commercial Dalí homonyms must be removed");
+assert(personEvidence({type:"openlibrary",title:"Salvador Dalí: His Art",excerpt:"Biography"},"Dalí",daliIdentity),
+ "Books about the actual artist must remain visible");
+assert(personEvidence({type:"wikipedia",title:"Joan Miró",preferredWiki:true,wikidataId:"Q200"},"Miró",
+ {kind:"person",wikidataId:"Q200",canonical:"Joan Miró",aliases:["Miró"]}),
+ "A Wikidata-verified artist must remain first-class");
+assert(personEvidence({type:"wikipedia",title:"Ramsés II",preferredWiki:true,wikidataId:"Q1523"},"Ramsés II",
+ {kind:"person",wikidataId:"Q1523",canonical:"Ramsés II",aliases:["Ramesses II"]}),
+ "A Wikidata-verified pharaoh must remain first-class");
+assert(vitruviaSearchSrc.includes("const personFirst=resolved?.kind===")&&
+ vitruviaSearchSrc.includes("const earlyIdentity="),
+ "General searches must promote verified people and start lookup alongside catalogue loading");
+console.log("PASS Vitruvia personas: Dalí, Miró, Ramsés II, Herodes y Rey Tut sin homónimos comerciales");
