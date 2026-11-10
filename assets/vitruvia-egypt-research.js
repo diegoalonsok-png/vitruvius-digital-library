@@ -222,7 +222,8 @@ function dynastyTree(section,groups,labels,subjectId,subjectName){
  const children=byProp['Descendencia']||[];
  const center=node('li');center.className='lx-tree-node';
  const centerHead=node('span');centerHead.className='lx-tree-head';
- centerHead.append(node('strong',subjectName||subjectId));center.append(centerHead);
+ centerHead.append(node('small','Faraón consultado · '));
+  centerHead.append(node('strong',subjectName||subjectId));center.append(centerHead);
  const branch=node('ul');branch.className='lx-tree-list';
  for(const id of spouses)leaf(branch,'Cónyuge · ',id,display(id));
  for(const id of siblings)leaf(branch,'Hermano/a · ',id,display(id));
@@ -232,12 +233,15 @@ function dynastyTree(section,groups,labels,subjectId,subjectName){
   const group=node('li');group.className='lx-tree-node';
   group.append(node('strong','Progenitores documentados'));
   const parentList=node('ul');parentList.className='lx-tree-list';
-  for(const id of parents)leaf(parentList,'Padre / madre · ',id,display(id));
+  for(const id of (byProp['Padre']||[]))leaf(parentList,'Padre · ',id,display(id));
+   for(const id of (byProp['Madre']||[]))leaf(parentList,'Madre · ',id,display(id));
   group.append(parentList);
   roots.append(group);
  }
  roots.append(center);
- tree.append(roots);
+ const explanation=node('p','Lectura: progenitores documentados → faraón consultado → cónyuges, hermanos e hijos. No expresa sucesión política ni supone vínculos genealógicos no registrados.');
+  explanation.className='article-note';
+  tree.append(explanation,roots);
  const styleId='vitruvia-dynasty-tree-style';
  if(!document.getElementById(styleId)){
   const style=node('style');style.id=styleId;
