@@ -1,0 +1,197 @@
+{
+  "schema": "vitruvia-lexicon-evidence-network-v1",
+  "version": "2026-11-10",
+  "language": "es",
+  "scope": "Network of seven existing public Latin lexical entry pages. Not a full lemmatized concordance.",
+  "method": {
+    "textBase": "V514: data/structured/recensio-es.json",
+    "citationRule": "Cite Vitruvius, De architectura, locus and the exact editorial edition; never use the project's DOI as an independent DOI for a lexical page.",
+    "evidenceTypes": {
+      "enumeration_in_editorial_text": "Co-enumeration in the indicated passage of the published editorial Latin text; does not attest a manuscript variant.",
+      "editorial_semantic_relation": "Conceptual relationship assigned as scholarly interpretation, informed by the stated locus.",
+      "editorial_topic": "Thematic linkage without an attested shared locus."
+    },
+    "manuscriptsVerified": false,
+    "variantCollationVerified": false,
+    "frequencyClaim": "No full lemmatized frequencies inferred from these seven entries.",
+    "semanticVersusEtymological": "Related concepts are not presumed to have a common etymology."
+  },
+  "nodes": [
+    {
+      "id": "ordinatio",
+      "label": "Ordenación y proporción modular",
+      "loci": [
+        "1.2.1",
+        "1.2.2"
+      ],
+      "greek": {
+        "form": "τάξις",
+        "basis": "explicit_equivalence",
+        "locus": "1.2.1"
+      },
+      "status": "editorial_analysis",
+      "language": "la",
+      "entryPage": "ordinatio-en-vitruvio.html",
+      "searchUrl": "vitruvia-lexicon.html?q=ordinatio&mode=palabra&lang=la",
+      "sourceEdition": "V514",
+      "sourceId": "data/structured/recensio-es.json"
+    },
+    {
+      "id": "dispositio",
+      "label": "Disposición y representación del proyecto",
+      "loci": [
+        "1.2.1",
+        "1.2.2"
+      ],
+      "greek": {
+        "form": "διάθεσις",
+        "basis": "explicit_equivalence",
+        "locus": "1.2.1"
+      },
+      "status": "editorial_analysis",
+      "language": "la",
+      "entryPage": "dispositio-en-vitruvio.html",
+      "searchUrl": "vitruvia-lexicon.html?q=dispositio&mode=palabra&lang=la",
+      "sourceEdition": "V514",
+      "sourceId": "data/structured/recensio-es.json"
+    },
+    {
+      "id": "symmetria",
+      "label": "Conmensurabilidad y relación de las partes",
+      "loci": [
+        "1.2.1",
+        "1.2.4"
+      ],
+      "greek": null,
+      "status": "edition_passage",
+      "language": "la",
+      "entryPage": "symmetria-en-vitruvio.html",
+      "searchUrl": "vitruvia-lexicon.html?q=symmetria&mode=palabra&lang=la",
+      "sourceEdition": "V514",
+      "sourceId": "data/structured/recensio-es.json"
+    },
+    {
+      "id": "architectura",
+      "label": "Disciplina arquitectónica",
+      "loci": [
+        "1.1.1",
+        "1.2.1"
+      ],
+      "greek": null,
+      "status": "edition_passage",
+      "language": "la",
+      "entryPage": "architectura-en-vitruvio.html",
+      "searchUrl": "vitruvia-lexicon.html?q=architectura&mode=palabra&lang=la",
+      "sourceEdition": "V514",
+      "sourceId": "data/structured/recensio-es.json"
+    },
+    {
+      "id": "domus",
+      "label": "Vivienda y espacio doméstico",
+      "loci": [
+        "1.2.9"
+      ],
+      "greek": null,
+      "status": "edition_passage",
+      "language": "la",
+      "entryPage": "domus-en-vitruvio.html",
+      "searchUrl": "vitruvia-lexicon.html?q=domus&mode=palabra&lang=la",
+      "sourceEdition": "V514",
+      "sourceId": "data/structured/recensio-es.json"
+    },
+    {
+      "id": "aedes",
+      "label": "Edificios y templos",
+      "loci": [
+        "1.2.5"
+      ],
+      "greek": null,
+      "status": "edition_passage",
+      "language": "la",
+      "entryPage": "aedes-en-vitruvio.html",
+      "searchUrl": "vitruvia-lexicon.html?q=aedes&mode=palabra&lang=la",
+      "sourceEdition": "V514",
+      "sourceId": "data/structured/recensio-es.json"
+    },
+    {
+      "id": "locus",
+      "label": "Lugar y emplazamiento",
+      "loci": [
+        "1.6.6"
+      ],
+      "greek": null,
+      "status": "edition_passage",
+      "language": "la",
+      "entryPage": "locus-en-vitruvio.html",
+      "searchUrl": "vitruvia-lexicon.html?q=locus&mode=palabra&lang=la",
+      "sourceEdition": "V514",
+      "sourceId": "data/structured/recensio-es.json"
+    }
+  ],
+  "edges": [
+    {
+      "from": "ordinatio",
+      "to": "dispositio",
+      "kind": "coenumerated",
+      "locus": "1.2.1",
+      "evidence": "enumeration_in_editorial_text",
+      "note": "Se enumeran como componentes distintos de la arquitectura."
+    },
+    {
+      "from": "ordinatio",
+      "to": "symmetria",
+      "kind": "coenumerated",
+      "locus": "1.2.1",
+      "evidence": "enumeration_in_editorial_text",
+      "note": "Ambas aparecen en la enumeración de I.2.1; el detalle conceptual se interpreta en I.2.2–4."
+    },
+    {
+      "from": "dispositio",
+      "to": "symmetria",
+      "kind": "coenumerated",
+      "locus": "1.2.1",
+      "evidence": "enumeration_in_editorial_text",
+      "note": "Coincidencia contextual, no sinonimia."
+    },
+    {
+      "from": "architectura",
+      "to": "ordinatio",
+      "kind": "context",
+      "locus": "1.2.1",
+      "evidence": "editorial_semantic_relation",
+      "note": "Ordinatio es uno de los conceptos enumerados al caracterizar la arquitectura."
+    },
+    {
+      "from": "architectura",
+      "to": "dispositio",
+      "kind": "context",
+      "locus": "1.2.1",
+      "evidence": "editorial_semantic_relation",
+      "note": "Dispositio es uno de los conceptos enumerados al caracterizar la arquitectura."
+    },
+    {
+      "from": "architectura",
+      "to": "symmetria",
+      "kind": "context",
+      "locus": "1.2.1",
+      "evidence": "editorial_semantic_relation",
+      "note": "Symmetria es uno de los conceptos enumerados al caracterizar la arquitectura."
+    },
+    {
+      "from": "domus",
+      "to": "aedes",
+      "kind": "thematic",
+      "locus": null,
+      "evidence": "editorial_topic",
+      "note": "Conexión orientativa entre vocablos de edificios; no se afirma coocurrencia en un locus específico."
+    },
+    {
+      "from": "locus",
+      "to": "domus",
+      "kind": "thematic",
+      "locus": null,
+      "evidence": "editorial_topic",
+      "note": "Relación temática entre emplazamiento y espacio doméstico."
+    }
+  ]
+}
