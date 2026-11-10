@@ -100,3 +100,94 @@ body.critical-lexicon-theme :is(.font-controls,.font-size-controls,.reading-font
  body.critical-lexicon-theme .site-header nav a{font-size:11px!important}
  body.critical-lexicon-theme .site-header .critical-header-tools{gap:6px}
 }
+
+
+/* Aparato Crítico: true reader-selectable light palette.
+ * The original Lexicon dark palette above is preserved without alteration.
+ * Scope every override to this page, avoiding effects on codices and folios.
+ */
+html[data-theme="light"]:has(body.critical-lexicon-theme){
+ background:#f4f2ec!important;color-scheme:light!important;
+ --ink:#202833;--line:#c7c6bf;--gold:#8e7c59;
+}
+html[data-theme="light"] body.critical-lexicon-theme{
+ --ink:#202833;--line:#c7c6bf;--gold:#8e7c59;
+ background:#f4f2ec!important;color:#252c34!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme :is(.institution-bar,.site-header,.site-header .wrap){
+ background:#e9e7e1!important;color:#27323d!important;border-color:#c5c4be!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme :is(.wordmark-name,.critical-wrap h1,.critical-wrap h2,.critical-wrap h3,.critical-wrap h4){
+ color:#242c35!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme :is(.wordmark-sub,.site-header nav a,.site-header nav a:hover){
+ color:#344450!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme .site-header{
+ border-bottom-color:#b7b8b5!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme .critical-wrap :is(p,li,label,summary,.critical-intro,.source-note,.meta,.critical-status){
+ color:#38434d!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme :is(.critical-form,.critical-parallel-edition,#apparatus-catalog,.critical-caution){
+ background:#fffefa!important;border-color:#c7c5bc!important;color:#252b32!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme .critical-caution{border-left-color:#917e5d!important}
+html[data-theme="light"] body.critical-lexicon-theme :is(
+ .critical-form input,.critical-form select,.critical-unified-form input,.critical-unified-form select,
+ #apparatus-catalog input,#apparatus-catalog select,.critical-version-head select,.critical-pdf-tools input){
+ background:#fff!important;color:#222a33!important;border-color:#a5a9ad!important;color-scheme:light!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme :is(input,textarea)::placeholder{color:#68727b!important}
+html[data-theme="light"] body.critical-lexicon-theme :is(
+ .critical-controls button,.critical-wrap .button,.critical-pdf-tools button,
+ .critical-unified-options button,#critical-unified-more,#critical-more,#apparatus-catalog-more,
+ .critical-result .actions button,.critical-version-head select,.examples button){
+ background:#e9e8e3!important;color:#28313a!important;border-color:#a9aaab!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme :is(
+ .critical-controls button,.critical-wrap .button,.critical-pdf-tools button,
+ .critical-unified-options button,#critical-unified-more,#critical-more,#apparatus-catalog-more,
+ .critical-result .actions button,.examples button):hover{
+ background:#dad9d3!important;border-color:#777f87!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme :is(.critical-wrap a,.critical-unified-actions a){color:#265078!important;text-decoration-color:#74899e!important}
+html[data-theme="light"] body.critical-lexicon-theme :is(.critical-result,.critical-parallel-edition,.critical-result p,.critical-parallel-edition p){
+ color:#29323c!important;border-color:#c2c1ba!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme .critical-unified{
+ background:#fffefa!important;color:#252b32!important;border-color:#c9c8c0!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme .critical-unified :is(
+ h2,h3,p,label,small,.critical-unified-intro,.critical-unified-disclaimer,
+ .critical-unified-meta,.critical-unified-text,.critical-unified-detail>summary,
+ .critical-unified-notes>summary,#critical-unified-status){
+ color:#303943!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme :is(.critical-unified-detail,.critical-unified-card,.critical-unified-notes,.critical-unified-counterpart){
+ background:#f8f7f2!important;color:#29323b!important;border-color:#c1c0b7!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme #critical-unified-query{
+ background:#fff!important;color:#242e36!important;border-color:#9fa6ac!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme .site-header .critical-header-tools :is(select,button){
+ background:#fffefa!important;color:#26313a!important;border-color:#a9adae!important;color-scheme:light!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme .site-header .critical-header-tools :is(select,button):hover{
+ background:#e7e9e9!important;border-color:#848a91!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme .site-header .site-global-language select{
+ background:#fffefa!important;color:#26313a!important;border-color:#a9adae!important;color-scheme:light!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme :is(footer,.footer-main){
+ background:#e9e7e1!important;color:#303b45!important;border-color:#babcb8!important;
+}
+html[data-theme="light"] body.critical-lexicon-theme .examples span{color:#485560!important}
+html[data-theme="light"] body.critical-lexicon-theme :is(.critical-pdf-frame,.critical-parallel-edition .critical-pdf-frame){
+ border-color:#a4a7a9!important;background:#f8f8f5!important;
+}
+@media print{
+ html[data-theme="light"] body.critical-lexicon-theme,
+ body.critical-lexicon-theme{background:#fff!important;color:#111!important}
+ html[data-theme="light"] body.critical-lexicon-theme .critical-unified{background:#fff!important;color:#111!important}
+}
