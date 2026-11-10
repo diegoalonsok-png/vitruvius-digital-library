@@ -65,6 +65,15 @@ html body :is(button,a,input,select):focus-visible{outline:2px solid #999!import
 .parallel-search{display:flex;gap:10px;align-items:end;flex-wrap:wrap;padding:10px 0 14px}.parallel-search label{display:flex;flex:1 1 190px;gap:5px;flex-direction:column;font-size:12px;color:#ddd}.parallel-search input{width:100%;min-width:0;border:1px solid #555;background:#171718;color:#f4f4f4;padding:10px;font:14px system-ui;border-radius:4px}.parallel-search button{border:1px solid #505053;background:#242426;color:#eee;padding:10px;border-radius:4px;cursor:pointer;min-height:40px}.parallel-search button:hover{background:#333336}.parallel-search input:focus-visible{outline:2px solid #d49a43!important}
 @media(prefers-reduced-motion:reduce){html body button{transition:none!important;transform:none!important}}
 
+
+/* Barra de desplazamiento externa: consistente con ambos visores del lector. */
+html{scrollbar-width:auto;scrollbar-color:#77777e #242427}
+html::-webkit-scrollbar,body::-webkit-scrollbar{width:16px;height:16px}
+html::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#242427}
+html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#77777e;border:2px solid #242427;border-radius:10px;min-height:48px}
+html::-webkit-scrollbar-thumb:hover,body::-webkit-scrollbar-thumb:hover{background:#a0a0a6}
+html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427}
+
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 </head>
