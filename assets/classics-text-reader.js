@@ -26,13 +26,7 @@ window.addEventListener("message",event=>{
  if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
  const cmd=event.data;
  if(!cmd||cmd.type!=="vitruvia-parallel-style"||cmd.work!==work||cmd.lang!==data?.language)return;
- const validColor=x=>typeof x==="string"&&/^#[0-9a-f]{6}$/i.test(x);
- const reader=document.querySelector(".reader"),passages=$("passages");
- if(!reader||!passages)return;
- if(validColor(cmd.background)){reader.style.background=cmd.background;passages.style.background=cmd.background;}
- if(validColor(cmd.foreground)){reader.style.color=cmd.foreground;passages.style.color=cmd.foreground;}
- if(Object.hasOwn(PARALLEL_FONTS,cmd.font))passages.style.fontFamily=PARALLEL_FONTS[cmd.font];
- if(Number.isFinite(cmd.size)&&cmd.size>=14&&cmd.size<=38)passages.style.fontSize=cmd.size+"px";
+ applyParentAppearance(cmd);
 });
 const fold=s=>LEX?LEX.fold(s):String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase().replaceAll("j","i");
 const tokenize=s=>fold(s).match(/[\p{L}]{3,}/gu)||[];
@@ -224,15 +218,72 @@ function colors(bg,fg){
  $("reader-bg").value=bg;$("reader-fg").value=fg;
  const pane=document.querySelector(".reader"),text=$("passages");
  if(pane)pane.style.background=bg;
- if(text){text.style.background=bg;text.style.color=fg;}
- try{localStorage.setItem(COLOR_KEY,JSON.stringify({bg,fg}));}catch{}
+ if(text){text.style.background=bg;t// Apariencia funcional: variables CSS compartidas por lector independiente y panel comparado.
+const READER_STYLE_KEY="vitruvia.classic.appearance.v3."+work;
+const OLD_COLOR_KEY="vitruvia.classic.colors."+work;
+const APPEARANCE_DEFAULTS=Object.freeze({background:"#000000",foreground:"#e2e2e3",font:"serif",size:20,italic:false,align:"justify"});
+const appearance={...APPEARANCE_DEFAULTS};
+const validHex=x=>typeof x==="string"&&/^#[0-9a-f]{6}$/i.test(x);
+const invertHex=x=>"#"+[1,3,5].map(i=>(255-parseInt(x.slice(i,i+2),16)).toString(16).padStart(2,"0")).join("");
+function validAppearance(obj){
+ if(!obj||typeof obj!=="object")return;
+ if(validHex(obj.background))appearance.background=obj.background;
+ if(validHex(obj.foreground))appearance.foreground=obj.foreground;
+ if(Object.hasOwn(PARALLEL_FONTS,obj.font))appearance.font=obj.font;
+ if(Number.isInteger(obj.size)&&obj.size>=14&&obj.size<=38)appearance.size=obj.size;
+ if(typeof obj.italic==="boolean")appearance.italic=obj.italic;
+ if(["justify","left"].includes(obj.align))appearance.align=obj.align;
+}
+function paintAppearance(persist=true){
+ const reader=document.querySelector(".reader");
+ if(!reader)return;
+ const vars={
+  "--reader-bg":appearance.background,"--reader-fg":appearance.foreground,
+  "--reader-font":PARALLEL_FONTS[appearance.font],"--reader-size":appearance.size+"px",
+  "--reader-italic":appearance.italic?"italic":"normal","--reader-align":appearance.align
+ };
+ for(const [key,value] of Object.entries(vars))reader.style.setProperty(key,value);
+ $("reader-bg").value=appearance.background;$("reader-fg").value=appearance.foreground;
+ $("reader-font").value=appearance.font;$("reader-size").textContent=appearance.size+" px";
+ $("reader-italic").setAttribute("aria-pressed",String(appearance.italic));
+ $("reader-align").setAttribute("aria-pressed",String(appearance.align==="justify"));
+ $("reader-align").textContent=appearance.align==="justify"?"Justificado":"Alineado a izquierda";
+ if(persist)try{localStorage.setItem(READER_STYLE_KEY,JSON.stringify(appearance))}catch{}
+}
+function applyParentAppearance(cmd){
+ // La barra del lector paralelo controla únicamente el panel correspondiente.
+ if(validHex(cmd.background))appearance.background=cmd.background;
+ if(validHex(cmd.foreground))appearance.foreground=cmd.foreground;
+ if(Object.hasOwn(PARALLEL_FONTS,cmd.font))appearance.font=cmd.font;
+ if(Number.isInteger(cmd.size)&&cmd.size>=14&&cmd.size<=38)appearance.size=cmd.size;
+ paintAppearance(false);
 }
 try{
- const saved=JSON.parse(localStorage.getItem(COLOR_KEY)||"null");
- if(saved)colors(saved.bg,saved.fg);
+ const saved=JSON.parse(localStorage.getItem(READER_STYLE_KEY)||"null");
+ if(saved)validAppearance(saved);
+ else{
+  const legacy=JSON.parse(localStorage.getItem(OLD_COLOR_KEY)||"null");
+  if(legacy)validAppearance({background:legacy.bg,foreground:legacy.fg});
+ }
 }catch{}
-for(const id of ["reader-bg","reader-fg"])$(id)?.addEventListener("input",()=>colors($("reader-bg").value,$("reader-fg").value));
-$("reader-invert")?.addEventListener("click",()=>colors(invertHex($("reader-bg").value),invertHex($("reader-fg").value)));
+if(p.get("parallel")==="1")document.documentElement.dataset.parallelView="true";
+paintAppearance(false);
+for(const [id,bg,fg] of [
+ ["reader-ivory","#fffdf7","#202b35"],["reader-sepia","#e6d5b7","#463526"],["reader-night","#000000","#e2e2e3"]
+]){
+ $(id).addEventListener("click",()=>{appearance.background=bg;appearance.foreground=fg;paintAppearance()});
+}
+$("reader-invert").addEventListener("click",()=>{
+ appearance.background=invertHex(appearance.background);appearance.foreground=invertHex(appearance.foreground);paintAppearance();
+});
+$("reader-bg").addEventListener("input",e=>{if(validHex(e.target.value)){appearance.background=e.target.value;paintAppearance()}});
+$("reader-fg").addEventListener("input",e=>{if(validHex(e.target.value)){appearance.foreground=e.target.value;paintAppearance()}});
+$("reader-font").addEventListener("change",e=>{if(Object.hasOwn(PARALLEL_FONTS,e.target.value)){appearance.font=e.target.value;paintAppearance()}});
+$("reader-smaller").addEventListener("click",()=>{appearance.size=Math.max(14,appearance.size-2);paintAppearance()});
+$("reader-larger").addEventListener("click",()=>{appearance.size=Math.min(38,appearance.size+2);paintAppearance()});
+$("reader-italic").addEventListener("click",()=>{appearance.italic=!appearance.italic;paintAppearance()});
+$("reader-align").addEventListener("click",()=>{appearance.align=appearance.align==="justify"?"left":"justify";paintAppearance()});
+$("reader-reset").addEventListener("click",()=>{Object.assign(appearance,APPEARANCE_DEFAULTS);paintAppearance()});
 
 $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListener("click",()=>select(active+1));
 (async()=>{
