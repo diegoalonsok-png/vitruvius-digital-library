@@ -1,0 +1,30 @@
+name: Lexicon · pasajes visibles junto a la obra
+on:
+  push:
+    paths:
+      - 'assets/vitruvia-lexicon.js'
+      - 'vitruvia-lexicon.html'
+      - 'scripts/test-lexicon-passage-navigation.mjs'
+      - '.github/workflows/lexicon-passage-navigation.yml'
+  pull_request:
+    paths:
+      - 'assets/vitruvia-lexicon.js'
+      - 'vitruvia-lexicon.html'
+      - 'scripts/test-lexicon-passage-navigation.mjs'
+      - '.github/workflows/lexicon-passage-navigation.yml'
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/vitruvia-lexicon.js
+      - run: node scripts/test-lexicon-passage-navigation.mjs
+      - run: node --test scripts/test-lexicon-passage-translations.mjs
