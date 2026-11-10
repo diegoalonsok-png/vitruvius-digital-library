@@ -17,9 +17,10 @@
  const chips=document.createElement('div');chips.className='vef-chips';
  const tools=document.createElement('div');tools.className='vef-tools';
  bar.append(chips,tools);
- let current='all',order='rel',currentEdition='',currentLanguage='';
+ let current='all',order='rel',currentEdition='',currentLanguage='',currentBook='';
  const editionOf=c=>String(c._vitruviaRecord?.edition||'').trim();
  const languageOf=c=>String(c._vitruviaRecord?.language||c._vitruviaRecord?.translationLanguage||'').trim().toLowerCase();
+ const bookOf=c=>{const r=c._vitruviaRecord||{};const m=String(r.locus||'').match(/^(10|[1-9])(?:\.|$)/);return m?String(Number(m[1])):Number.isInteger(r.book)&&r.book>=1&&r.book<=10?String(r.book):''};
  const style=document.createElement('style');style.textContent=
   '.vitruvia-evidence-filter{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin:0 0 14px}.vitruvia-evidence-filter[hidden]{display:none}'+
   '.vef-chips,.vef-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center}'+
@@ -36,7 +37,7 @@
   const cs=cards();
   if(current==='all')list.removeAttribute('data-evidence-filter');else list.setAttribute('data-evidence-filter',current);
   cs.forEach(c=>{c.classList.toggle('vef-on',current==='all'||group(c)===current);
-   c.classList.toggle('vef-subhidden',Boolean((currentEdition&&editionOf(c)!==currentEdition)||(currentLanguage&&languageOf(c)!==currentLanguage)))});
+   c.classList.toggle('vef-subhidden',Boolean((currentEdition&&editionOf(c)!==currentEdition)||(currentLanguage&&languageOf(c)!==currentLanguage)||(currentBook&&bookOf(c)!==currentBook)))});
  }
  function sort(){
   const cs=cards();if(!cs.length)return;
@@ -79,10 +80,13 @@
   };
   const editions=[...new Set(cs.map(editionOf).filter(Boolean))].sort();
   const languages=[...new Set(cs.map(languageOf).filter(Boolean))].sort();
+  const books=[...new Set(cs.map(bookOf).filter(Boolean))].sort((a,b)=>Number(a)-Number(b));
   if(currentEdition&&!editions.includes(currentEdition))currentEdition='';
   if(currentLanguage&&!languages.includes(currentLanguage))currentLanguage='';
+  if(currentBook&&!books.includes(currentBook))currentBook='';
   facet('Edición',editions,currentEdition,v=>currentEdition=v);
   facet('Idioma',languages,currentLanguage,v=>currentLanguage=v);
+  facet('Libro',books,currentBook,v=>currentBook=v);
   const n=records().length;
   if(n){const lab=document.createElement('span');lab.textContent=t('exp')+' '+n;tools.append(lab);
    for(const [fmt,ext,type,fn] of [['BibTeX','bib','application/x-bibtex',bib],['RIS','ris','application/x-research-info-systems',ris]]){const b=document.createElement('button');b.type='button';b.textContent=fmt;b.onclick=()=>save('vitruvia-resultados.'+ext,fn(records()),type);tools.append(b)}}
