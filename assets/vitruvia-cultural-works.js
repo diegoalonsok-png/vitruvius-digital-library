@@ -31,19 +31,36 @@ async function entities(list){
  return data?.entities||{};
 }
 const relationships={architect:['P84','P287'],author:['P50'],music:['P175'],composer:['P86'],visual:['P170','P110','P14574'],cinema:['P57','P58','P162','P161'],general:['P50','P84','P86','P170','P175','P57','P287','P61','P178']};
-async function related(id,kind){
- const properties=relationships[kind]||relationships.general;
+async function related(id,kind,offset=0){
+ const properties=[...new Set([...(relationships[kind]||relationships.general),'P50','P170','P86','P175','P110','P84'])];
+ const page=Math.max(0,Math.min(2000,Number(offset)||0));
  const query='SELECT DISTINCT ?work ?coverage WHERE { VALUES ?relation { '+properties.map(p=>'wdt:'+p).join(' ')+' } '+
-  '?work ?relation wd:'+id+' . OPTIONAL { ?work wikibase:sitelinks ?coverage . } } ORDER BY DESC(?coverage) LIMIT 40';
+  '?work ?relation wd:'+id+' . OPTIONAL { ?work wikibase:sitelinks ?coverage . } } ORDER BY DESC(?coverage) ?work LIMIT 40 OFFSET '+page;
  const data=await get('https://query.wikidata.org/sparql?'+new URLSearchParams({query,format:'json'}));
  const records=(data?.results?.bindings||[]).map(row=>({id:String(row.work?.value||'').match(/^https?:\/\/www\.wikidata\.org\/entity\/(Q\d+)$/)?.[1],coverage:Number(row.coverage?.value)||0})).filter(row=>qid(row.id));
  return {records,available:!!data};
+}
+// Genres are inferred only from the recorded P31 class or the source description.
+// Unidentified material is never forced into a misleading discipline.
+function mediumOf(entity,description,building){
+ const types=ids(entity,'P31'),d=norm(description);
+ const has=(...values)=>values.some(v=>d.includes(v));
+ if(building)return 'architecture';
+ if(types.includes('Q3305213')||has('painting','pintura','cuadro','tableau','fresco','watercolor','watercolour','aquarelle','dibujo','drawing','etching','engraving','grabado','lithograph'))return 'painting';
+ if(types.includes('Q860861')||has('sculpture','escultura','statue','estatua','bust','busto','relief'))return 'sculpture';
+ if(has('installation art','instalacion artistica','art installation','performance art','happening','assemblage'))return 'installation';
+ if(has('opera','operetta','stage play','theatrical play','theatre play','ballet','obra teatral','musical theatre'))return 'theatre';
+ if(types.includes('Q482994')||has('music album','studio album','album musical','album de musica','live album','album by','soundtrack album'))return 'album';
+ if(has('symphony','sinfonia','sonata','concerto','concierto','chamber music','musical composition','musical work','cantata','requiem','song','cancion','oratorio','quartet','cuarteto','partitura'))return 'music';
+ if(types.includes('Q571')||has('book','libro','novel','novela','poem','poema','treatise','tratado','essay','ensayo','literary work','manuscript','manuscrito'))return 'literature';
+ if(types.includes('Q11424')||has('film','pelicula','movie','documentary','documental','audiovisual'))return 'cinema';
+ return 'other';
 }
 function workRecord(entity,notable,coverage=0){
  const title=label(entity),instances=ids(entity,'P31');
  if(!qid(entity?.id)||!title||/^Q\d+$/.test(title)||instances.some(id=>['Q5','Q4167410','Q4167836','Q13406463'].includes(id)))return null;
  const desc=description(entity),claims=entity.claims||{};
- const building=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|templo|iglesia|church|chapel|capilla|teatro|theatre|theater|villa|tower|torre|skyscraper|palais|eglise|chiesa|basilica|basilique|palazzo|biblioteca|library|teatre|theatre)\b/.test(norm(desc));
+ const building=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|templo|iglesia|church|chapel|capilla|villa|tower|torre|skyscraper|palais|eglise|chiesa|basilica|basilique|palazzo|biblioteca|library)\b/.test(norm(desc));
  // A date is meaningful only with its Wikidata property. An inauguration
  // (P1619) must not be silently treated as the year of design or construction.
  const dateProps=building?['P571','P1619','P577']:['P577','P571','P575'];
@@ -65,23 +82,23 @@ function workRecord(entity,notable,coverage=0){
  const commonsFile=file=>file?'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file.replace(/ /g,'_')):'';
  return {id:entity.id,title,description:desc,year:numericYear,date:numericYear===null?'':numericYear<0?Math.abs(numericYear)+' '+L('a. C.','BCE','av. J.-C.'):String(numericYear),
   dateKind,dateProperty,dateReferenced,
-  href,picture,image:commonsFile(picture),plan:commonsFile(planFile),notable,coverage:Math.max(coverage,Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length),building,
+  href,picture,image:commonsFile(picture),plan:commonsFile(planFile),notable,coverage:Math.max(coverage,Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length),building,medium:mediumOf(entity,desc,building),
   photoTitle:entity.sitelinks?.enwiki?.title||site?.title||title,wikiLang,wikiTitle:site?.title||'',aliases:Object.values(entity.labels||{}).map(x=>x.value)};
 }
 function compare(a,b,order='year'){
  if(order==='year')return (a.year??99999)-(b.year??99999)||a.title.localeCompare(b.title);
  return Number(b.notable)-Number(a.notable)||b.coverage-a.coverage||(a.year??99999)-(b.year??99999)||a.title.localeCompare(b.title);
 }
-async function catalogue(identity,kind){
+async function catalogue(identity,kind,offset=0){
  if(!qid(identity?.wikidataId))return {works:[],available:false};
  const id=identity.wikidataId;
- const [subject,reverse]=await Promise.all([entities([id]),related(id,kind)]);
+ const [subject,reverse]=await Promise.all([offset?Promise.resolve({}):entities([id]),related(id,kind,offset)]);
  const creator=subject[id];
- const notable=[...new Set([...ids(creator,'P800'),...(identity.notableWorkIds||[]).filter(qid)])].slice(0,40);
+ const notable=offset?[]:[...new Set([...ids(creator,'P800'),...(identity.notableWorkIds||[]).filter(qid)])].slice(0,40);
  const all=[...new Set([...notable,...reverse.records.map(x=>x.id)])].slice(0,50);
  const records=await entities(all);
  const works=all.map(work=>workRecord(records[work],notable.includes(work),reverse.records.find(x=>x.id===work)?.coverage)).filter(Boolean).sort((a,b)=>compare(a,b,'year'));
- return {works,available:!!creator||reverse.available,partial:!creator||!reverse.available};
+ return {works,available:!!creator||reverse.available,partial:!creator||!reverse.available,hasMore:reverse.available&&reverse.records.length===40};
 }
 async function preview(item,work,valid){
  let source='',href=work.href;
@@ -144,26 +161,75 @@ function showWorks(root,works,valid){
   }
   item.hidden=cards.size>=limit;cards.set(work.id,item);
  }
- function arrange(){[...works].sort((a,b)=>compare(a,b,select.value)).forEach((work,index)=>{const item=cards.get(work.id);item.hidden=!expanded&&index>=limit;stack.append(item)})}
- select.addEventListener('change',arrange);
- if(works.length>limit){const more=el('button','context-biblio-more');more.type='button';
-  const update=()=>{more.textContent=expanded?L('Mostrar menos obras','Show fewer works','Afficher moins d’œuvres'):L('Ver las '+works.length+' obras','Show all '+works.length+' works','Afficher les '+works.length+' œuvres');more.setAttribute('aria-expanded',String(expanded))};
-  more.addEventListener('click',()=>{expanded=!expanded;arrange();update()});update();root.append(more);
+ function arrange(){
+  stack.replaceChildren();
+  const order=['painting','sculpture','installation','theatre','music','album','literature','cinema','architecture','other'];
+  const labels={
+   painting:L('Pinturas, dibujos y grabados','Paintings, drawings and prints','Peintures, dessins et estampes'),
+   sculpture:L('Esculturas y relieves','Sculptures and reliefs','Sculptures et reliefs'),
+   installation:L('Instalaciones y acciones artísticas','Installations and performances','Installations et performances'),
+   theatre:L('Ópera, teatro y ballet','Opera, theatre and ballet','Opéra, théâtre et ballet'),
+   music:L('Composiciones y obras musicales','Musical compositions','Compositions musicales'),
+   album:L('Álbumes y registros sonoros','Albums and recordings','Albums et enregistrements'),
+   literature:L('Libros, poesía y escritos','Books and writings','Livres et écrits'),
+   cinema:L('Cine y audiovisuales','Cinema and audiovisual','Cinéma et audiovisuel'),
+   architecture:L('Arquitectura y construcciones','Architecture and buildings','Architecture et bâtiments'),
+   other:L('Otras obras sin género determinado','Other works with unspecified genre','Autres œuvres sans genre défini')
+  };
+  const groups=new Map();
+  for(const work of [...works].sort((a,b)=>compare(a,b,select.value))){
+   const key=order.includes(work.medium)?work.medium:'other';
+   if(!groups.has(key))groups.set(key,[]);
+   groups.get(key).push(work);
+  }
+  for(const key of order){
+   const groupWorks=groups.get(key);
+   if(!groupWorks?.length)continue;
+   const section=el('section','cultural-medium-group');
+   section.append(el('h5','context-section-title',labels[key]+' · '+groupWorks.length));
+   for(const work of groupWorks)section.append(cards.get(work.id));
+   stack.append(section);
+  }
  }
+ select.addEventListener('change',arrange);
+ arrange();
 }
 async function render(root,identity,kind,valid){
  const section=el('section','cultural-notable-works');
- section.append(el('h4','context-section-title',kind==='architect'?L('Obras de arquitectura e ingeniería','Architecture and engineering works','Architecture et ingénierie'):L('Obras destacadas','Notable works','Œuvres notables')));
+ section.append(el('h4','context-section-title',kind==='architect'?L('Obras de arquitectura e ingeniería','Architecture and engineering works','Architecture et ingénierie'):L('Obras documentadas por género y fecha','Documented works by medium and date','Œuvres documentées par genre et date')));
  const status=el('p','context-note',L('Buscando obras e imágenes documentadas…','Finding documented works and images…','Recherche des œuvres et images documentées…'));section.append(status);root.append(section);
  const result=await catalogue(identity,kind);
  if(!valid()||!section.isConnected)return [];
  status.remove();
- if(result.works.length)showWorks(section,result.works,valid);
- else{
-  section.append(el('p','context-note',result.available?L('No se recuperaron obras con atribución directa en este catálogo.','No directly attributed works were retrieved from this catalogue.','Aucune œuvre directement attribuée retrouvée dans ce catalogue.'):L('El catálogo de obras no está disponible ahora.','Works catalogue temporarily unavailable.','Catalogue des œuvres temporairement indisponible.')));
+ const works=result.works.slice();
+ const content=el('div','cultural-works-recovered');section.append(content);
+ if(works.length)showWorks(content,works,valid);
+ else content.append(el('p','context-note',result.available?
+  L('No se recuperaron obras con atribución directa en este catálogo.','No directly attributed works were retrieved from this catalogue.','Aucune œuvre directement attribuée retrouvée dans ce catalogue.'):
+  L('El catálogo de obras no está disponible ahora.','Works catalogue temporarily unavailable.','Catalogue des œuvres temporairement indisponible.')));
+ if(result.hasMore){
+  const more=el('button','context-biblio-more',L('Cargar más obras documentadas','Load more sourced works','Charger plus d’œuvres documentées'));
+  more.type='button';let offset=40;
+  more.addEventListener('click',async()=>{
+   if(more.disabled)return;more.disabled=true;
+   more.textContent=L('Consultando más obras…','Finding more works…','Recherche d’autres œuvres…');
+   try{
+    const next=await catalogue(identity,kind,offset);
+    if(!valid())return;
+    if(!next.available)throw Error('Source temporarily unavailable');
+    const seen=new Set(works.map(w=>w.id));
+    for(const item of next.works)if(!seen.has(item.id)){works.push(item);seen.add(item.id)}
+    offset+=40;
+    if(next.works.length){content.replaceChildren();showWorks(content,works,valid)}
+    more.hidden=!next.hasMore||next.works.length===0||offset>2000;
+    if(!more.hidden)more.textContent=L('Cargar más obras documentadas','Load more sourced works','Charger plus d’œuvres documentées');
+   }catch(_){if(valid())more.textContent=L('Fuente no disponible · reintentar','Source unavailable · retry','Source indisponible · réessayer')}
+   finally{if(valid())more.disabled=false}
+  });
+  section.append(more);
  }
  section.append(link(L('Consultar el catálogo de origen ↗','Open source catalogue ↗','Consulter le catalogue source ↗'),'https://www.wikidata.org/wiki/'+identity.wikidataId));
- return result.works;
+ return works;
 }
 window.VitruviaCulturalWorks={render,catalogue,compare};
 })();

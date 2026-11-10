@@ -357,6 +357,19 @@ async function resolve(query,preferredLang="es"){
  // La provincia, el liceo o el municipio homónimo no son respuestas a "político/militar".
  const personRole=/\b(politic[oa]|politician|militar|general|libertador|liberator|estadista|statesman|emperador|emperor|revolucionario|revolutionary|santo|saint|presidente|president)\b/i.test(norm(query));
  try{const creator=await qualifiedCreator(query,lang);if(creator)return await localize(creator,lang)}catch{}
+ // Fast path for a single exact Wikipedia title or sourced redirect
+ // (e.g. Dalí -> Salvador Dalí). Validate P31=human before avoiding the
+ // slower multi-language search; do not infer identity from text mentions.
+ if(norm(q).split(" ").length===1&&norm(q).length>=4&&!creatorIntent(query)){
+  try{
+   const direct=await lookupTitle(q,lang);
+   if(direct?.wikidataId&&(norm(direct.canonical)===norm(q)||
+      (direct.aliases||[]).some(alias=>norm(alias)===norm(q)))){
+    const verified=await completeIdentity(direct);
+    if(verified?.kind==="person")return await localize(verified,lang);
+   }
+  }catch{}
+ }
  // Common, strongly identifiable shorthand for the 1968 film, not a generic year search.
  // Keep date-only queries ambiguous; 2001 film specifically refers to the title in this catalogue.
  const shorthand=norm(q);
