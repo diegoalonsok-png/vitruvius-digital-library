@@ -35,6 +35,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Preparar Playwright antes de las pruebas que importan Chromium
+        run: npm install --no-save playwright@1.56.1
       - name: Integridad, navegación, léxicos, corpus y referencias
         shell: bash
         run: |
