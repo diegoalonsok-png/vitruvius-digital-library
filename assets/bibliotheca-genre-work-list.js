@@ -85,6 +85,9 @@ function render(){
   meta.textContent=[w.author,w.dating].filter(Boolean).join(" · ");
   const title=document.createElement("span");title.className="genre-work-title";title.textContent=w.title;
   const info=document.createElement("div");info.className="genre-work-info";info.append(title,meta);
+  const academic=document.createElement("a");academic.className="genre-work-version";academic.href="classics-work-record.html?work="+encodeURIComponent(w.id);
+  academic.textContent=language==="en"?"Academic work record · codices / IIIF":language==="fr"?"Fiche critique · codex / IIIF":"Ficha crítica · códices / IIIF";
+  info.append(academic);
   const target=reader(w);
   const versions=hostedVersions(w);
   const labels=({es:{original:"Original",translation:"Traducción",parallel:"Dos visores"},en:{original:"Original",translation:"Translation",parallel:"Two viewers"},fr:{original:"Original",translation:"Traduction",parallel:"Deux lecteurs"}})[language]||({original:"Original",translation:"Traducción",parallel:"Dos visores"});
