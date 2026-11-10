@@ -21,7 +21,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,verified:[]};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,verified:[],displayMode:"main"};
  let verifiedTopics=null,verifiedRequest=null;
  const topicKey=q=>normalize(q).replace(/^(the|el|la|los|las|le|les) /,"");
  const verifiedFor=(q,topics)=>{
@@ -168,7 +168,11 @@
  }
  function draw(){
   if(!state.query){root.hidden=true;root.replaceChildren();return}
-  const events=collect();
+  const allEvents=collect();
+  const curated=state.verified.length>0;
+  const events=curated&&state.displayMode==="main"?
+   allEvents.filter(item=>item.editoriallyVerified||item.lane==="life"&&item.source.startsWith("Wikidata · ")):allEvents;
+  const hiddenCount=allEvents.length-events.length;
   root.replaceChildren();root.hidden=false;
   const head=el("div","vat-header");
   const left=el("div","vat-title");
@@ -186,6 +190,15 @@
   zoomOut.title=L("Reducir escala","Reduce scale","Réduire l’échelle");
   zoomIn.title=L("Ampliar escala","Increase scale","Agrandir l’échelle");
   controls.append(prev,zoomOut,zoomIn,next);
+  if(curated&&(hiddenCount||state.displayMode==="all")){
+   const toggle=el("button","vat-extra-toggle",
+    state.displayMode==="all"?L("Hitos principales","Key milestones","Jalons essentiels"):
+     L("Otros registros ("+hiddenCount+")","Other records ("+hiddenCount+")","Autres notices ("+hiddenCount+")"));
+   toggle.type="button";
+   toggle.title=L("Alternar hechos y bibliografía adicional","Toggle milestone and catalogue records","Afficher les notices complémentaires");
+   toggle.onclick=()=>{state.displayMode=state.displayMode==="all"?"main":"all";draw()};
+   controls.append(toggle);
+  }
   left.append(el("small","vat-subtitle",L(
     "Fechas documentadas · obras · ediciones · fuentes",
     "Documented dates · works · editions · sources",
@@ -212,7 +225,7 @@
   const low=minYear-padding,high=maxYear+padding,range=Math.max(1,high-low);
   const labelWidth=(root.clientWidth||1100)<=680?132:170;
   const availableWidth=Math.max(360,(root.clientWidth||1100)-labelWidth-52);
-  const mapWidth=Math.max(availableWidth,Math.min(5400,Math.round(events.length*146*state.zoom)));
+  const mapWidth=Math.max(availableWidth,Math.min(5400,Math.round(events.length*190*state.zoom)));
   const pxAt=y=>(y-low)/range*mapWidth;
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
   viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente","Horizontal chronological timeline","Frise chronologique horizontale"));
@@ -285,7 +298,7 @@
   });
  }
  function reset(q){
-  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
+  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;state.displayMode="main";
   state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.verified=[];
   place();draw();
   if(!state.query)return;
