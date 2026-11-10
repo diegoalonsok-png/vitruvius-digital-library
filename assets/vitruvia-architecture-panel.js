@@ -205,7 +205,39 @@ function constructedWorks(id){
 /* A verified first page when external Wikidata or Commons APIs fail.
    UNESCO World Heritage Centre entry 1496 gives these eight component sites.
    This is a *curated verified subset*, not a claim of complete works. */
+/* Editorial work identifiers are from CISA Andrea Palladio / Palladio Museum.
+ * Project and building dates are DISTINCT; undated/unverified works are not
+ * silently assigned a construction year. Pictures stay on their source sites.
+ */
+const palladioProfile={
+ source:'Centro Internazionale di Studi di Architettura Andrea Palladio · Palladio Museum / Mediateca',
+ url:'https://mediateca.palladiomuseum.org/palladio/opere.php',
+ archive:'https://www.palladiomuseum.org/en/mediateca',
+ unesco:'https://whc.unesco.org/en/list/712/',
+ items:[
+  ['Villa Godi','1537 · proyecto; 1539–1557 · construcción','Lugo Vicentino, Véneto','https://mediateca.palladiomuseum.org/palladio/opera.php?id=54',
+   'Una de las primeras villas documentadas: su organización simétrica combina residencia señorial y funcionamiento agrícola.','Villa Godi'],
+  ['Villa Gazzotti','antes de 1542 · proyecto; 1542–1543 y c. 1555 · obras','Bertesina, Vicenza','https://mediateca.palladiomuseum.org/palladio/opera.php?id=53',
+   'Residencia de Taddeo Gazzotti; el registro distingue distintas campañas de construcción.','Villa Gazzotti'],
+  ['Villa Pisani, Bagnolo','1542 · proyecto; 1542–1545 · construcción','Lonigo, Vicenza','https://mediateca.palladiomuseum.org/palladio/opera.php?id=59',
+   'La organización racional de la casa, los anexos agrícolas y el patio anuncia una síntesis tipológica de la villa palladiana.','Villa Pisani, Bagnolo'],
+  ['Logge della Basilica Palladiana','1546–1549 · proyecto; 1549–1614 · construcción','Vicenza','https://mediateca.palladiomuseum.org/palladio/opera.php?id=13',
+   'Intervención sobre el Palazzo della Ragione, con el célebre sistema de logias y arcos serlianos.','Basilica Palladiana'],
+  ['Villa Pisani, Montagnana','c. 1552 · proyecto; 1552–1555 · construcción','Montagnana, Padua','https://mediateca.palladiomuseum.org/palladio/opera_bibliografia.php?id=58',
+   'Villa suburbana para Francesco Pisani: los órdenes clásicos articulan la composición del frente.','Villa Pisani, Montagnana'],
+  ['Villa Barbaro','c. 1554 · proyecto; 1554–1558 · construcción','Maser, Treviso','https://mediateca.palladiomuseum.org/palladio/opera_bibliografia.php?id=45',
+   'Residencia para los Barbaro, integrada con sus alas agrícolas y el programa pictórico de Paolo Veronese.','Villa Barbaro'],
+  ['Villa Emo','anterior a 1556 · proyecto; 1559–1565 · construcción','Fanzolo, Vedelago','https://mediateca.palladiomuseum.org/palladio/opera.php?id=50',
+   'Integra vivienda y barchesse agrícolas en una composición monumental y funcional.','Villa Emo'],
+  ['Villa Almerico Capra · La Rotonda','1566–1567 · proyecto; 1567–1605 · construcción','Vicenza','https://mediateca.palladiomuseum.org/palladio/opera.php?id=41',
+   'Villa suburbana de sala central y cuatro pórticos; su recepción exige distinguir proyecto, obra y transformaciones posteriores.','Villa Capra La Rotonda'],
+  ['Teatro Olimpico','1580 · proyecto; 1580–1584 · construcción','Vicenza','https://mediateca.palladiomuseum.org/palladio/opera.php?id=39',
+   'Teatro para la Accademia Olimpica. Palladio murió en 1580, antes de la conclusión del edificio.','Teatro Olimpico']
+ ]
+};
 const certifiedSites={
+ 'palladio':palladioProfile,
+ 'andrea palladio':palladioProfile,
  'frank lloyd wright':{
   source:'UNESCO · World Heritage Centre · n.º 1496 (2019)',
   url:'https://whc.unesco.org/en/list/1496',
@@ -328,16 +360,31 @@ function listConstructedWorks(root,name,id,valid){
   window.VitruviaArchitectVisuals?.enhance(item,{...work,eagerPhoto:year!==99999&&year<1950});
  }
  if(certified){
-  section.append(el('p','context-note',localized(
-   'Selección documental: ocho edificios incluidos en la Lista del Patrimonio Mundial de la UNESCO (2019). No es el catálogo completo del arquitecto.',
-   'Documented selection: eight buildings inscribed on the UNESCO World Heritage List (2019). This is not a complete catalogue.',
-   'Sélection documentaire : huit édifices inscrits au patrimoine mondial de l’UNESCO en 2019. Il ne s’agit pas d’un catalogue complet.'
-  )));
-  for(const [title,date,place] of certified.items){
-   const [description,photoTitle]=architecturalNotes[normalize(title)]||[];
-   addWork({title,date,place,description,photoTitle,url:certified.url},null);
+  const palladio=certified===palladioProfile;
+  section.append(el('p','context-note',palladio?
+   localized('Selección cronológica de nueve proyectos con fecha y ficha del Palladio Museum (CISA). Proyecto, obra material y fases posteriores no son fechas equivalentes; no se afirma que sean las 87 obras del catálogo.',
+    'Nine documented projects in chronological order, dated by the CISA/Palladio Museum. Design, construction and later changes are distinct; this is not the full 87-work catalogue.',
+    'Neuf projets datés d’après le Palladio Museum (CISA), non le catalogue complet de 87 œuvres. Projet et construction sont distincts.') :
+   localized('Selección documental: ocho edificios incluidos en la Lista del Patrimonio Mundial de UNESCO (2019), no el catálogo completo.',
+    'Documented selection of eight UNESCO-inscribed buildings (2019), not a complete catalogue.',
+    'Sélection de huit bâtiments inscrits à l’UNESCO en 2019, non le catalogue complet.')
+  ));
+  for(const [title,date,place,sourceUrl,descriptionText,sourcePhoto] of certified.items){
+   const [note,defaultPhoto]=architecturalNotes[normalize(title)]||[];
+   addWork({title,date,place,description:descriptionText||note,
+    photoTitle:sourcePhoto||defaultPhoto,url:sourceUrl||certified.url},
+    palladio?'CISA · Palladio Museum · ficha de obra':'UNESCO · componente protegido');
   }
-  section.append(link(localized('Fuente: ficha oficial de UNESCO ↗','Source: UNESCO official record ↗','Source : fiche officielle UNESCO ↗'),certified.url));
+  section.append(link(
+   palladio?localized('Catálogo completo del Palladio Museum (87 fichas) ↗','Palladio Museum full catalogue (87 records) ↗','Catalogue complet du Palladio Museum (87 notices) ↗'):
+   localized('Fuente: ficha oficial UNESCO ↗','Source: UNESCO official record ↗','Source : fiche officielle UNESCO ↗'),
+   certified.url));
+  if(palladio){
+   section.append(link(localized('Fotos, relevamientos, plantas y modelos 3D · Mediateca CISA ↗',
+    'Photographs, surveys, floor plans and 3-D models · CISA ↗',
+    'Photographies, relevés, plans et modèles 3D · CISA ↗'),certified.archive));
+   section.append(link('UNESCO · Ciudad de Vicenza y villas palladianas ↗',certified.unesco));
+  }
  }
  const status=el('p','context-note',localized('Consultando otras obras documentadas…','Checking additional documented works…','Recherche d’autres œuvres documentées…'));
  section.append(status);
