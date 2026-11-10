@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-didache-ecdotic-61-v8",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-didache-ecdotic-61-v8",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-didache-ecdotic-61-v8"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-222-academic-autoverifier-v9",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-222-academic-autoverifier-v9",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-222-academic-autoverifier-v9"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -329,6 +329,33 @@ function renderBibliography(dest,w){
   document.createTextNode(citation));
  dest.append(c);
 }
+function renderAcademicSummary(dest,w,d){
+ const critical=d.critical.get(w.id)||{};
+ const integrity=critical.integrity||{};
+ const authority=critical.authority||{};
+ const original=w.language;
+ const witnesses=witnessesFor(d,w.id);
+ const direct=witnesses.filter(ms=>!String(ms.witnessKind||"").startsWith("ancient_translation"));
+ const indirect=witnesses.length-direct.length;
+ const facsimiles=witnesses.filter(ms=>Boolean(ms.viewer||ms.localViewer));
+ const isModern=w.manuscript?.isIndependentAncientWork===false;
+ const sec=html("section","cwd-overview");
+ sec.append(html("h3",null,"Estado de investigación y fuentes primarias"));
+ row(sec,"Unidad bibliográfica",isModern?"Edición / estudio moderno vinculado a una obra antigua":"Obra antigua; distintas versiones y testimonios no se confunden");
+ row(sec,"Identificador de obra",w.id+(authority.candidateWorkCodes?.length?" · códigos propuestos: "+authority.candidateWorkCodes.join(", "):""));
+ row(sec,"Cobertura del texto original",integrity.indexed?"Existe una transcripción o índice textual asociado; la integridad se documenta por separado":"Texto original no acreditado en el índice principal");
+ if(integrity.description)row(sec,"Reservas de integridad",integrity.description);
+ row(sec,"Testigos materiales individualizados",String(witnesses.length)+"; "+direct.length+" directos o sin clasificar, "+indirect+" traducción(es) antigua(s) indirecta(s)");
+ row(sec,"Acceso a imágenes o folios",facsimiles.length+" testimonio(s) con enlace visual externo o visor local ya existente; la disponibilidad se controla por proveedor");
+ row(sec,"Alcance de verificación","Metadatos de catálogos; ninguna concordancia por título equivale a una collatio codicum.");
+ row(sec,"Control automático","Auditoría Python de las 222 fichas; candidatos nuevos quedan en cuarentena hasta verificar signatura, contenido y fuentes.");
+ const refs=html("p","cwd-links");
+ addA(refs,"Matriz codicológica de 222 obras ↗","classics-manuscript-coverage.html");
+ addA(refs,"Informe de auditorías Python en GitHub ↗","https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/workflows/codicology-self-audit.yml");
+ addA(refs,"Norma descriptiva TEI / DCRM(MSS) / Chicago 18 ↗","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/docs/protocolo-filologico-codicologico-tei-chicago18.md");
+ sec.append(refs);
+ dest.append(sec);
+}
 function renderInto(target,id,opts={}){
  if(!target)return Promise.resolve(null);
  target.replaceChildren(html("p","cwd-muted","Cargando ficha crítica…"));
@@ -366,6 +393,7 @@ function renderInto(target,id,opts={}){
   if(/atribuci[oó]n|debati|discuti|fragment/i.test(w.author+" "+w.dating+" "+w.title)){
    target.append(html("p","cwd-muted","Advertencia filológica: la atribución, la datación o la transmisión de esta obra puede ser discutida o fragmentaria; cotejar estudios especializados."));
   }
+  renderAcademicSummary(target,w,d);
   renderCriticalAuthority(target,w,d);
   renderWitness(target,w,d);
   renderCodicology(target,w);
@@ -394,6 +422,8 @@ function css(){
  ".classic-work-dossier [lang=grc]{font-family:'Gentium Book Plus',Cardo,Georgia,serif}",
  ".classic-work-dossier .cwd-original{font-size:15px}",
  ".classic-work-dossier .cwd-ms{border-left:3px solid #777;padding:6px 12px;margin:13px 0;background:rgba(120,120,120,.07)}",
+ ".classic-work-dossier .cwd-overview{padding:10px 14px 14px;border:1px solid #585858;border-radius:4px;background:rgba(130,130,130,.06);margin:16px 0}",
+ ".classic-work-dossier .cwd-overview h3{margin-top:0;padding-top:0;border-top:0}",
  ".classic-work-dossier .cwd-versions{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:9px;margin:12px 0}",
  ".classic-work-dossier .cwd-edition{border:1px solid #555;padding:10px}",
  ".classic-work-dossier .cwd-edition small{display:block;font:11px/1.5 system-ui;color:#bababa;margin-top:4px}",
