@@ -1,0 +1,51 @@
+/* Vitruvia: compact first search viewport, without altering the landing page.
+   Main evidence stays in the document; no panels or academic links are removed. */
+@media screen {
+ body.vitruvia-reading .hero{
+  padding-top:clamp(18px,2.7vw,38px)!important;
+  padding-bottom:clamp(12px,1.8vw,26px)!important;
+  gap:clamp(16px,2.5vw,38px)!important;
+  min-height:0!important;
+  align-items:start!important;
+ }
+ body.vitruvia-reading #featured{
+  min-height:0!important;
+  align-self:start!important;
+  padding-top:8px!important;
+  padding-bottom:8px!important;
+ }
+ body.vitruvia-reading #featured .featured-copy{
+  min-width:0;
+  overflow-wrap:anywhere;
+ }
+ body.vitruvia-reading #featured-documentary-visual{
+  margin:6px 0 12px;
+  max-width:100%;
+ }
+ body.vitruvia-reading #featured-documentary-visual img{
+  height:clamp(150px,17vw,240px)!important;
+ }
+ body.vitruvia-reading #results{
+  padding-top:clamp(12px,2vw,28px)!important;
+  min-height:0!important;
+ }
+ body.vitruvia-reading #result-list{
+  min-height:0!important;
+  align-content:start!important;
+ }
+ body.vitruvia-reading #vitruvia-article[hidden],
+ body.vitruvia-reading #vitruvia-context[hidden]{
+  display:none!important;
+ }
+}
+@media screen and (max-width:1020px){
+ body.vitruvia-reading .hero{
+  grid-template-columns:minmax(0,1fr)!important;
+  padding-top:18px!important;
+  gap:16px!important;
+ }
+ body.vitruvia-reading #featured{max-width:none!important}
+}
+@media (prefers-reduced-motion:reduce){
+ body.vitruvia-reading #featured-documentary-visual img{transition:none!important}
+}
