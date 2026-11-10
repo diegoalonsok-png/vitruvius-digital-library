@@ -11,7 +11,7 @@ export function parseLocus(value){
  // Treat an appended author credit as context, not part of the locus.
  input=input.replace(/\s+(?:(?:de|del|por|by|of|di|da|do)\s+)?(?:marco\s+)?(?:marcus\s+)?vitruvi(?:o|us|i|e)(?:\s+pol(?:l)?io?n?)?\s*\.?$/i,'').trim();
  // Shorthand pref 1.2 refers to book I, preface, section 2.
- const shortPref=input.match(/^(?:pr|pref|praef|prefacio|preface|praefatio|prefazione|prologo|prologue|proemio|proemium|prooemium)\.?\s+(10|[1-9]|x|ix|viii|vii|vi|iv|iii|ii|i)\s*[.:/\s-]\s*(\d{1,3})\.?$/i);
+ const shortPref=input.match(/^(?:pr|pref|praef|prefacio|prefacion|prefaciones|preface|praefatio|prefazione|prologo|prologue|proemio|proemium|prooemium)\.?\s+(10|[1-9]|x|ix|viii|vii|vi|iv|iii|ii|i)\s*[.:/\s-]\s*(\d{1,3})\.?$/i);
  if(shortPref){
   const romanNumbers={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
   const book=romanNumbers[shortPref[1]]||Number(shortPref[1]),section=Number(shortPref[2]);
@@ -19,6 +19,11 @@ export function parseLocus(value){
  }
 
  if(!input)return null;
+ // "prefacion" (accented or unaccented), "prefacio" and scholarly
+ // variants refer to the prefaces of all ten books when no book is given.
+ // This is a structural search alias, not a change to the original text.
+ if(/^(?:pr|pref|praef|praefatio|praefationes|prefacio|prefacion|prefaciones|prefacios|preface|prefaces|prefazione|prologo|prologue|proemio|proemium|prooemium)$/.test(input))
+  return {book:null,chapter:'praef',section:null};
  const roman={i:1,ii:2,iii:3,iv:4,v:5,vi:6,vii:7,viii:8,ix:9,x:10};
  const ordinals={primer:1,primero:1,primera:1,first:1,primus:1,primo:1,premier:1,premiere:1,
  segundo:2,segunda:2,second:2,secondo:2,secundus:2,deuxieme:2,
@@ -40,7 +45,7 @@ export function parseLocus(value){
  };
  const number='(?:10|[1-9]|viii|vii|vi|iv|iii|ii|ix|i|v|x|primero|primera|primer|segundo|segunda|tercero|tercera|cuarto|cuarta|quinto|quinta|sexto|sexta|septimo|septima|octavo|octava|noveno|novena|decimo|decima|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|premier|premiere|deuxieme|troisieme|quatrieme|cinquieme|sixieme|septieme|huitieme|neuvieme|dixieme|primo|secondo|terzo|quarto|quinto|sesto|settimo|ottavo|nono)';
  const bookWord='(?:libro|libros|liber|libri|lib\\.?|livre|livro|book|tomo|volumen|volume)';
- const preface='(?:pr|praef|praefatio|praefationes|pref|prefacio|prefacios|preface|prefaces|prefazione|prologo|prologue|prologus|proemio|proemium|prooemium)';
+ const preface='(?:pr|praef|praefatio|praefationes|pref|prefacio|prefacion|prefaciones|prefacios|preface|prefaces|prefazione|prologo|prologue|prologus|proemio|proemium|prooemium)';
  const sep='(?:\\s*[.:/,-]\\s*|\\s+)';
  const full=new RegExp('^('+number+')'+sep+'('+preface+'|\\d{1,2})(?:'+sep+'(\\d{1,3}))?\\.?$','i');
  const stripped=input.replace(new RegExp('^'+bookWord+'\\s+','i'),'').trim();
