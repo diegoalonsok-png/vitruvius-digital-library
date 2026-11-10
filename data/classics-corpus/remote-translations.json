@@ -212,6 +212,51 @@
       "verifiedIndexOn": "2026-11-10",
       "indexedLocally": false,
       "alignedLocally": false
+    },
+    {
+      "workId": "augustine-confessiones",
+      "language": "en",
+      "translator": "Edward Bouverie Pusey",
+      "edition": "The Confessions of St. Augustine, traducción inglesa histórica (1838)",
+      "url": "https://www.gutenberg.org/ebooks/3296",
+      "host": "Project Gutenberg",
+      "scopeVerified": "full-historic-english-translation",
+      "note": "Traducción inglesa histórica externa. Los 453 loci latinos TEI del catálogo no han sido cotejados ni alineados con esta edición.",
+      "status": "external-only",
+      "access": "external-reading-index",
+      "verifiedIndexOn": "2026-11-10",
+      "indexedLocally": false,
+      "alignedLocally": false
+    },
+    {
+      "workId": "pliny",
+      "language": "en",
+      "translator": "John Bostock y Henry Thomas Riley",
+      "edition": "The Natural History of Pliny, vol. VI de VI (1855–1857), libros finales incluida la materia del libro XXXV",
+      "url": "https://www.gutenberg.org/ebooks/62704",
+      "host": "Project Gutenberg",
+      "scopeVerified": "historic-english-translation-volume-six-partial",
+      "note": "El vínculo apunta únicamente al tomo VI. Es una lectura inglesa histórica externa, no una traducción local sincronizada del locus 35.129.",
+      "status": "external-only",
+      "access": "external-reading-index",
+      "verifiedIndexOn": "2026-11-10",
+      "indexedLocally": false,
+      "alignedLocally": false
+    },
+    {
+      "workId": "origenes",
+      "language": "en",
+      "translator": "Frederick Crombie, tradición de Ante-Nicene Fathers",
+      "edition": "Origen, De principiis / On First Principles, versión inglesa histórica basada mayormente en la transmisión latina de Rufino",
+      "url": "https://adfonteslibrary.org/work-origen-de-principiis",
+      "host": "Ad Fontes Library",
+      "scopeVerified": "historical-english-reading-from-latin-transmission",
+      "note": "El original griego no se conserva íntegro; la obra sobrevive principalmente en traducción latina de Rufino y fragmentos griegos. Este enlace NO equivale a un original griego indexado.",
+      "status": "external-only",
+      "access": "external-reading-index",
+      "verifiedIndexOn": "2026-11-10",
+      "indexedLocally": false,
+      "alignedLocally": false
     }
   ],
   "checkedOn": "2026-11-10"
