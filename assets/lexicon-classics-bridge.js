@@ -206,6 +206,8 @@ function editionConnections(row,editions){
  const workUrl=new URL("bibliotheca-graeca-latina.html",location.href);
  workUrl.searchParams.set("work",row.workId);workUrl.searchParams.set("q",input.value.trim());
  const bibliotheca=document.createElement("a");bibliotheca.href=workUrl.href;bibliotheca.textContent="Buscar esta palabra en todas las ediciones de la obra";actions.append(bibliotheca);
+ const academicUrl=new URL("classics-work-record.html",location.href);academicUrl.searchParams.set("work",row.workId);
+ const academic=document.createElement("a");academic.href=academicUrl.href;academic.textContent="Ficha crítica de obra · códices e IIIF";actions.append(academic);
  const vitruviaUrl=new URL("vitruvia.html",location.href);
  vitruviaUrl.searchParams.set("q",input.value.trim());
  vitruviaUrl.searchParams.set("mode","all");
