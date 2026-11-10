@@ -536,6 +536,13 @@ function render(rows,q,details){
     li.append(lexeme);
    }
    const p=el("p","");decorate(p,r.passageText||r.excerpt||"",r.term||q);li.append(p);
+   // Optional micro-translation: original and documented parallels stay intact.
+   // No external request happens until the reader presses the translation button.
+   if(["la","grc"].includes(r.language)){
+    window.VitruviaInlineTranslation?.attach(p,{
+     sourceLanguage:r.language,originalText:r.passageText||r.excerpt||""
+    });
+   }
    if(r.parallelTranslations?.length){
     const panel=el("div","parallel-attested");
     for(const tr of r.parallelTranslations){
