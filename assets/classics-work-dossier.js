@@ -65,6 +65,7 @@ const sources=(w)=>{const out=[];const push=(label,v)=>{if(typeof v==="string"&&
  push("Edición original",w.bibliography?.originalEditionCitation);
  push("Traducción publicada",w.bibliography?.translationCitation);
  push("Edición",w.bibliography?.chicago18Bibliography);
+ push("Cita del manuscrito",w.bibliography?.manuscriptCitation);
  push("Traducción",w.translation?.chicago18Bibliography);
  push("Publicación",w.pdf?.citationChicago18);
  for(const e of w.localVersions||[])push("Versión "+(langLabel[e.language]||e.language||""),e.citationChicago18);
@@ -155,6 +156,32 @@ function renderWitness(dest,w,d){
   dest.append(links);
  }
 }
+function renderCodicology(dest,w){
+ const detail=w.codicology;
+ if(!detail?.witnesses?.length)return;
+ section(dest,"Ficha codicológica especializada");
+ if(detail.earlierWitnessNote)dest.append(html("p","cwd-muted",detail.earlierWitnessNote));
+ for(const ms of detail.witnesses){
+  const item=html("div","cwd-ms");
+  row(item,"Manuscrito",ms.name||ms.shelfmark||"Testimonio identificado");
+  if(ms.siglum)row(item,"Sigla o signatura (no se presupone siglum crítico)",ms.siglum);
+  row(item,"Custodia",[ms.institution,ms.city,ms.shelfmark].filter(Boolean).join(" · "));
+  for(const [label,val] of [
+   ["Datación paleográfica",ms.dating],["Fundamento de la datación",ms.dateKind],
+   ["Origen",ms.origin],["Material",ms.material],["Extensión",ms.extent],
+   ["Foliación",ms.folioRange],["Formato",ms.format],["Composición de página",ms.layout],
+   ["Escritura",ms.script],["Procedencia histórica",ms.provenance],
+   ["Relación imagen-folio",ms.digitization],["Derechos",ms.rights],
+   ["Verificación",ms.verification],["Alcance del testimonio",ms.role],["DOI del facsímil",ms.doi]
+  ])if(val)row(item,label,val);
+  const refs=html("p","cwd-links");
+  addA(refs,"Catálogo institucional ↗",ms.catalogue);
+  addA(refs,"Ficha codicológica complementaria ↗",ms.catalogueOther);
+  addA(refs,"Manifest IIIF ↗",ms.manifest);
+  if(refs.childNodes.length)item.append(refs);
+  dest.append(item);
+ }
+}
 function renderEditions(dest,w,d){
  section(dest,"Versiones, ediciones y acceso a la lectura");
  const editions=d.texts.get(w.id)||[];
@@ -177,11 +204,16 @@ function renderEditions(dest,w,d){
  if(w.id==="vitruvius")addA(links,"Cotejo de códices vitruvianos ↗","index-codicum.html");
  if(links.childNodes.length)dest.append(links);
  if(w.pdf?.status)row(dest,"Edición impresa / PDF",w.pdf.status);
+ if(w.localOriginalCoverage)row(dest,"Cobertura del original local",w.localOriginalCoverage);
+ if(w.localEdition?.completeness)row(dest,"Integridad de la versión",w.localEdition.completeness);
+ if(w.localEdition?.source)row(dest,"Procedencia de la edición local",w.localEdition.source);
+ for(const pdf of w.pdfEditions||[]){const rowPdf=html("p","cwd-links");addA(rowPdf,(pdf.label||"Edición histórica en PDF")+" ↗",pdf.url);if(rowPdf.childNodes.length)dest.append(rowPdf);if(pdf.status)row(dest,"Descripción del PDF",pdf.status)}
  if(w.translation?.status)row(dest,"Traducciones",w.translation.status);
 }
 function renderBibliography(dest,w){
  section(dest,"Ediciones y referencias · Chicago 18");
  const bibliography=sources(w);
+ if(w.bibliography?.method)row(dest,"Método editorial declarado",w.bibliography.method);
  if(bibliography.length){
   dest.append(html("p","cwd-muted","Se conservan los datos editoriales de las referencias existentes. La adecuación definitiva a Chicago 18 requiere comprobar la portada y la fuente de cada edición; no se completan automáticamente datos ausentes."));
   const ul=html("ol","cwd-citations");
@@ -207,7 +239,7 @@ function renderInto(target,id,opts={}){
   head.append(html("p","cwd-kicker","BIBLIOTHECA · FICHA CRÍTICA · CHICAGO 18 · TRADICIÓN MANUSCRITA"));
   const h=html("h2",null,w.title);h.lang=w.language==="grc"?"grc":"la";head.append(h);
   row(head,"Autor del catálogo",w.author);
-  const originalAuthor=AUTHOR[w.author];
+  const originalAuthor=w.bibliography?.originalAuthor||AUTHOR[w.author];
   if(originalAuthor){const r=html("p");r.append(html("strong",null,"Nombre antiguo normalizado: "));const name=html("span",null,originalAuthor);name.lang=greek.test(originalAuthor)?"grc":"la";r.append(name);head.append(r)}
   const form=title(w);
   if(form.title){const r=html("p");r.append(html("strong",null,"Título en lengua original / título uniforme: "));const span=html("i","cwd-original",form.title);span.lang=w.language==="grc"?"grc":"la";r.append(span);head.append(r)}
@@ -215,6 +247,8 @@ function renderInto(target,id,opts={}){
   head.append(html("p","cwd-muted",form.description));
   row(head,"Lengua",[langLabel[w.language]||w.language,w.genre].filter(Boolean).join(" · "));
   row(head,"Datación de composición",w.dating||"Pendiente de cotejo");
+  if(w.century)row(head,"Siglo editorial del registro",w.century);
+  if(w.period&&w.period!==w.century)row(head,"Período catalográfico",w.period);
   if(w.aliases?.length)row(head,"Formas y títulos alternativos",w.aliases.join(" · "));
   row(head,"ID estable del catálogo",w.id);
   const authority=d.audit.get(w.id);
@@ -232,6 +266,7 @@ function renderInto(target,id,opts={}){
    target.append(html("p","cwd-muted","Advertencia filológica: la atribución, la datación o la transmisión de esta obra puede ser discutida o fragmentaria; cotejar estudios especializados."));
   }
   renderWitness(target,w,d);
+  renderCodicology(target,w);
   renderEditions(target,w,d);
   renderBibliography(target,w);
   section(target,"Metodología de la ficha");
