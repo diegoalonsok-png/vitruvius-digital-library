@@ -833,6 +833,63 @@ function lemmaFormsFor(D,word){
 }
 function groupHits(D,forms,workId){const hits=[];for(const k of forms)for(const i of (D.post.get(k)||[])){const p=D.corpus.passages[i];if(workId&&p[0]!==workId)continue;for(const m of p[2].matchAll(TOKEN))if(fold(m[0]).replace(/'+$/,"")===k)hits.push({i,spans:[[m.index,m.index+m[0].length]],tok:0})}
  const seen=new Set();return hits.filter(h=>{const id=h.i+":"+h.spans[0][0];if(seen.has(id))return false;seen.add(id);return true}).sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i)}
+/* A concordance table may be several screens above the main results.
+ * Keep selected classical passages immediately beside the chosen work.
+ * The full concordance remains available without losing the starting point.
+ */
+function previewPassagesNearWork(button,g){
+ const anchor=button?.closest("tr"),parent=anchor?.parentElement;
+ if(!anchor||!parent){renderGroups([g]);$("#lx-results")?.scrollIntoView({block:"start"});return}
+ const previous=parent.querySelector(".lx-inline-passage-row");
+ if(previous){
+  const same=previous.previousElementSibling===anchor&&previous.dataset.work===g.work;
+  previous._trigger?.setAttribute("aria-expanded","false");
+  previous._trigger&&(previous._trigger.textContent=T("Ver pasajes"));
+  previous.remove();
+  if(same){button.focus({preventScroll:true});return}
+ }
+ const hits=groupHits(g.D,g.forms,g.work),w=work(g.D,g.work);
+ const row=el("tr",{class:"lx-inline-passage-row","data-work":g.work});
+ const cell=el("td",{colspan:String(anchor.cells.length)});
+ const region=el("section",{class:"lx-inline-passage-preview",role:"region",
+  "aria-label":T("Pasajes de la obra")+" · "+w.author+" · "+w.title});
+ const head=el("div",{class:"lx-inline-passage-head"},
+  el("h4",{},w.author+" · "+w.title+" · "+hits.length+" "+T("pasajes")),
+  el("button",{type:"button",class:"lx-btn",onclick:()=>{
+   row.remove();button.setAttribute("aria-expanded","false");
+   button.textContent=T("Ver pasajes");button.focus({preventScroll:true});
+  }},T("Cerrar")+" ×"));
+ region.append(head);
+ if(!hits.length)region.append(el("p",{class:"lx-small"},T("No se encontraron pasajes en el corpus local.")));
+ const results=el("div",{class:"lx-inline-passage-cards"});region.append(results);
+ let shown=0;
+ const more=el("button",{type:"button",class:"lx-more"},"");
+ const showMore=()=>{
+  const next=Math.min(shown+3,hits.length);
+  for(;shown<next;shown++)results.append(hitCard(g.D,hits[shown]));
+  more.textContent=T("Mostrar más pasajes")+" ("+(hits.length-shown)+")";
+  more.hidden=shown>=hits.length;
+ };
+ more.addEventListener("click",showMore);
+ if(hits.length){showMore();region.append(more)}
+ if(hits.length>3){
+  region.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{
+   renderGroups([g]);
+   const list=$("#lx-results");
+   const back=el("div",{class:"lx-inline-return"},
+    el("button",{type:"button",class:"lx-btn",onclick:()=>{
+     if(row.isConnected){row.scrollIntoView({block:"center",behavior:"auto"});button.focus({preventScroll:true})}
+    }},T("Volver a la obra")+" · "+w.title));
+   list?.prepend(back);
+   list?.querySelector(".lx-hit")?.scrollIntoView({block:"start",
+    behavior:window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches?"auto":"smooth"});
+  }},T("Ver la concordancia completa")+" ("+hits.length+")"));
+ }
+ cell.append(region);row.append(cell);parent.insertBefore(row,anchor.nextSibling);
+ row._trigger=button;button.setAttribute("aria-expanded","true");
+ button.textContent=T("Ocultar pasajes");
+ // No cambiar de página ni desplazarse a otra sección.
+}
 function renderGroups(groups){
  const list=$("#lx-results");list.replaceChildren();$("#lx-side-extra").replaceChildren();let total=0;
  for(const g of groups){
@@ -1177,10 +1234,9 @@ function frequencyTable(c,F){
   body.append(el("tr",{},title,el("td",{},vitruvius?"siglo I a. C.":DATING[r.id]||""),
    el("td",{lang:r.lang},r.lemmas.map((x,i)=>r.counts[i]?`${x.w} ${r.counts[i]}`:"").filter(Boolean).join(" · ")),
    el("td",{},el("b",{},String(r.total))),el("td",{},r.per10k.toFixed(1)),
-   el("td",{},el("button",{type:"button",class:"lx-btn",onclick:()=>{
+   el("td",{},el("button",{type:"button",class:"lx-btn","aria-expanded":"false",onclick:e=>{
     const forms=new Set(r.lemmas.flatMap(x=>[...x.forms]));
-    renderGroups([{D:r.D,forms,label:vitruvius?"Vitruvio, De architectura (latín digitalizado)":w.author+", "+w.title,words:r.lemmas.map(x=>x.w),work:r.id}]);
-    $("#results").scrollIntoView({behavior:"smooth"});
+    previewPassagesNearWork(e.currentTarget,{D:r.D,forms,label:vitruvius?"Vitruvio, De architectura (latín digitalizado)":w.author+", "+w.title,words:r.lemmas.map(x=>x.w),work:r.id});
    }},"Ver pasajes"))));
  }
  // La transcripción de un testimonio medieval no se puede reconstruir
