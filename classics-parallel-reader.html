@@ -12,7 +12,7 @@ main{padding:14px clamp(10px,2vw,30px)}.note{border-left:4px solid #9b8055;backg
 .controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 10px}.controls label{display:flex;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--line);padding:9px;font-weight:600;font-size:13px}
 .controls select{width:100%;min-width:0;font:14px system-ui;padding:9px;background:#fff;color:#20364c;border:1px solid var(--line)}
 .panes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pane{min-width:0;background:#000;color:#f3f3f3;border:1px solid var(--line)}.pane strong{display:block;background:#d8ccba;padding:7px 12px;font-size:12px}
-iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:480px;background:#000}
+iframe{display:block;border:0;width:100%;height:calc(100dvh - 236px);min-height:480px;background:#000}iframe[hidden]{display:none}
 #status{font-size:13px;min-height:20px;margin:5px 0 10px}
 @media(max-width:700px){.controls,.panes{grid-template-columns:1fr}iframe{height:65dvh;min-height:360px}}
 
@@ -63,9 +63,11 @@ html body .appearance :is(label,.zoom-level){color:#c9c9cb!important}
 html body .appearance input[type=color]{background:#1a1a1b;border-color:#55555a!important;border-radius:4px!important}
 html body :is(button,a,input,select):focus-visible{outline:2px solid #999!important;outline-offset:2px!important}
 .parallel-search{display:flex;gap:10px;align-items:end;flex-wrap:wrap;padding:10px 0 14px}.parallel-search label{display:flex;flex:1 1 190px;gap:5px;flex-direction:column;font-size:12px;color:#ddd}.parallel-search input{width:100%;min-width:0;border:1px solid #555;background:#171718;color:#f4f4f4;padding:10px;font:14px system-ui;border-radius:4px}.parallel-search button{border:1px solid #505053;background:#242426;color:#eee;padding:10px;border-radius:4px;cursor:pointer;min-height:40px}.parallel-search button:hover{background:#333336}.parallel-search input:focus-visible{outline:2px solid #d49a43!important}
-@media(prefers-reduced-motion:reduce){html body button{transition:none!important;transform:none!important}}
-
-
+.auto-translation{padding:16px;min-height:480px;background:#141415;color:#dedee0;overflow-wrap:anywhere}
+.auto-translation[hidden]{display:none}
+.auto-translation .auto-source{max-height:180px;overflow:auto;border-left:3px solid #9b8055;padding:9px 12px;background:#1b1b1d;font:15px/1.7 Georgia,serif;white-space:pre-wrap}
+.auto-translation .auto-title{font:600 15px/1.5 system-ui;color:#dfc28c}
+.auto-translation a{color:#dfc28c}
 /* Barra de desplazamiento externa: consistente con ambos visores del lector. */
 @supports (-moz-appearance:none){html{scrollbar-width:auto;scrollbar-color:#77777e #242427}}
 html::-webkit-scrollbar,body::-webkit-scrollbar{width:16px;height:16px}
@@ -73,6 +75,7 @@ html::-webkit-scrollbar-track,body::-webkit-scrollbar-track{background:#242427}
 html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb{background:#77777e;border:2px solid #242427;border-radius:10px;min-height:48px}
 html::-webkit-scrollbar-thumb:hover,body::-webkit-scrollbar-thumb:hover{background:#a0a0a6}
 html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427}
+@media(prefers-reduced-motion:reduce){html body button{transition:none!important;transform:none!important}}
 
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
@@ -80,7 +83,7 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <body>
 <header><h1>Bibliotheca · lectura lado a lado</h1><nav><a href="bibliotheca-graeca-latina.html">Volver al catálogo</a><a id="single" href="classics-text-reader.html">Lector individual</a><a href="classics-document-parallel.html">PDF enfrentados</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav></header>
 <main>
-<p class="note">Lectura secuencial enfrentada de dos versiones disponibles de una misma obra, en cualquier combinación de griego, latín, castellano, francés o inglés. Cada columna permite una búsqueda literal independiente. La posición ordinal y un locus común no acreditan equivalencia de traducción ni colación filológica.</p>
+<p class="note">Lectura secuencial enfrentada de originales y traducciones disponibles, en griego, latín, castellano, francés o inglés. Cuando no hay una traducción local, el segundo visor ofrece una versión automática orientativa, solo a petición del lector. Las versiones alojadas permiten búsquedas independientes. Un locus común no acredita equivalencia de traducción ni colación filológica.</p>
 <div class="controls"><label>Visor 1 · elegir versión <select id="left" aria-label="Versión para el primer visor"></select></label><label>Visor 2 · elegir versión <select id="right" aria-label="Versión para el segundo visor"></select></label></div>
 <div class="parallel-search" role="search" aria-label="Búsqueda literal independiente por versión"><label>Buscar en visor 1 <input id="left-query" type="search" placeholder="domus / λόγος / casa" maxlength="120"></label><label>Buscar en visor 2 <input id="right-query" type="search" placeholder="casa / maison / house" maxlength="120"></label><button type="button" id="parallel-find">Buscar y subrayar en ámbar</button><button type="button" id="parallel-clear">Limpiar búsqueda</button></div>
 <div class="syncbar" aria-label="Navegación conjunta">
@@ -113,15 +116,19 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <span class="zoom-level" id="right-size">20 px</span>
 <button type="button" id="right-larger" aria-label="Aumentar texto del visor right" title="Lupa más">⌕+</button>
 <button type="button" id="right-reset" aria-label="Restablecer colores y tipografía del visor right">↺</button>
-</div><iframe id="pane-right" title="Traducción o segunda edición"></iframe></section></div>
+</div><iframe id="pane-right" title="Traducción o segunda edición"></iframe><div id="auto-translation" class="auto-translation" hidden role="region" aria-label="Traducción automática opcional"><p id="auto-title" class="auto-title"></p><div id="auto-content"></div></div></section></div>
 </main>
+<script src="assets/academic-inline-translation.js?v=20261109-v1"></script>
 <script>
 
 (()=>{
 "use strict";
 const params=new URLSearchParams(location.search),work=params.get("work")||"didache";
 const $=id=>document.getElementById(id),status=$("status"),left=$("left"),right=$("right");
-const LANG={grc:"Griego original",la:"Latín original",es:"Castellano",en:"English",fr:"Français",it:"Italiano",de:"Deutsch",pt:"Português"};
+const LANG={grc:"Griego original",la:"Latín original",es:"Castellano",en:"English",fr:"Français",it:"Italiano",de:"Deutsch",pt:"Português",
+ "auto-es":"Traducción automática orientativa · Español","auto-en":"Traducción automática orientativa · English","auto-fr":"Traducción automática orientativa · Français"};
+const AUTO_TARGETS=["auto-es","auto-en","auto-fr"];
+const isAuto=lang=>AUTO_TARGETS.includes(lang);
 if(!/^[a-z0-9-]{3,60}$/.test(work)){status.textContent="Identificador de obra inválido.";return;}
 let files={},editions={},versions={},position=0,ready={left:false,right:false},generation={left:0,right:0},previous={left:"",right:""};
 
@@ -191,7 +198,7 @@ for(const side of ["left","right"]){
 }
 
 function fill(sel,langs){sel.replaceChildren();for(const l of langs){const o=document.createElement("option");o.value=l;o.textContent=LANG[l]||l;sel.append(o);}}
-function pair(){return [versions[left.value],versions[right.value]];}
+function pair(){return [versions[left.value],isAuto(right.value)?null:versions[right.value]];}
 function count(){const [a,b]=pair();return Math.max(a?.passages?.length||0,b?.passages?.length||0);}
 /* Use document loci rather than ordinal positions where evidence permits.
    Exact equality is an editorial identifier match, not proof of semantic alignment.
@@ -202,7 +209,7 @@ function destination(){
  const [a,b]=pair();
  const index=Math.max(0,Math.min(position,Math.max(0,(a?.passages?.length||1)-1)));
  let second=Math.max(0,Math.min(position,Math.max(0,(b?.passages?.length||1)-1)));
- let quality="ordinal";
+ let quality=isAuto(right.value)?"auto":"ordinal";
  if($("same-locus").checked&&a?.passages?.[index]&&b?.passages?.length){
   const wanted=locusKey(a.passages[index].locus);
   const exact=wanted?b.passages.findIndex(p=>locusKey(p.locus)===wanted):-1;
@@ -223,23 +230,64 @@ function destination(){
  }
  return {left:index,right:second,quality};
 }
-function buttons(){const n=count(),ok=Boolean(n&&ready.left&&ready.right);
+function buttons(){const n=count(),ok=Boolean(n&&ready.left&&(isAuto(right.value)||ready.right));
  $("sync-start").disabled=!ok;$("sync-prev").disabled=!ok||position===0;$("sync-next").disabled=!ok||position>=n-1;
  $("sync-position").textContent=n?(position+1)+" / "+n+" pasos de lectura":"Sin datos comparables";
 }
-function goto(){const [a,b]=pair();if(!a||!b)return;const target=destination();
+function renderAuto(){
+ if(!isAuto(right.value))return;
+ const source=versions[left.value],record=source?.passages?.[Math.max(0,Math.min(position,(source?.passages?.length||1)-1))];
+ const content=$("auto-content");content.replaceChildren();
+ const title=$("auto-title"),target=right.value.slice(5);
+ title.textContent="Locus "+(record?.locus||"no disponible")+" · "+(LANG[right.value]||"traducción automática");
+ if(!record?.text){
+  content.textContent="El texto original todavía no está disponible para traducir.";return;
+ }
+ const sourceLine=document.createElement("p");sourceLine.className="auto-source";
+ sourceLine.lang=left.value;
+ sourceLine.textContent=record.text.length>420?record.text.slice(0,420)+"…":record.text;
+ content.append(sourceLine);
+ const note=document.createElement("p");
+ note.textContent="Solo una muestra del original es visible aquí. La traducción automática es voluntaria y parcial para pasajes extensos: no es una edición crítica ni una traducción acreditada.";
+ content.append(note);
+ if(window.VitruviaInlineTranslation?.attach){
+  const added=window.VitruviaInlineTranslation.attach(sourceLine,{sourceLanguage:left.value,originalText:record.text});
+  if(added){const select=content.querySelector(".academic-inline-translation select");if(select)select.value=target;}
+  else content.append("Este idioma no dispone de traducción automática compatible.");
+ }else content.append("Servicio de traducción automática no disponible; utilice el lector del original.");
+}
+function goto(){const [a,b]=pair();if(!a||(!b&&!isAuto(right.value)))return;const target=destination();
  if(ready.left)$("pane-left").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:left.value,index:target.left},location.origin);
- if(ready.right)$("pane-right").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:right.value,index:target.right},location.origin);
+ const currentLocus=a.passages[target.left]?.locus;
+ if(currentLocus){params.set("locus",currentLocus);history.replaceState(null,"",location.pathname+"?"+params.toString());}
+ if(isAuto(right.value))renderAuto();
+ else if(ready.right)$("pane-right").contentWindow?.postMessage({type:"vitruvia-parallel-goto",work,lang:right.value,index:target.right},location.origin);
  buttons();
- const labels={locus:"Mismo identificador de locus · cotejo filológico pendiente","book-approx":"Mismo libro / segmento próximo · alineación aproximada",ordinal:"Posición ordinal · equivalencia textual no verificada"};
+ const labels={locus:"Mismo identificador de locus · cotejo filológico pendiente","book-approx":"Mismo libro / segmento próximo · alineación aproximada",ordinal:"Posición ordinal · equivalencia textual no verificada",auto:"Locus original · traducción automática opcional"};
  $("sync-position").textContent=(position+1)+" / "+count()+" · "+labels[target.quality];
  store();
 }
 function frame(side,lang){
+ if(side==="right"&&isAuto(lang)){
+  ready.right=true;
+  $("pane-right").hidden=true;$("pane-right").removeAttribute("src");
+  $("auto-translation").hidden=false;
+  $("right-query").disabled=true;$("right-query").placeholder="No disponible para traducción automática";
+  $("same-locus").disabled=true;
+  params.set(side,lang);history.replaceState(null,"",location.pathname+"?"+params.toString());
+  renderAuto();buttons();if(ready.left)goto();
+  return;
+ }
  if(!files[lang])return;
+ if(side==="right"){
+  $("auto-translation").hidden=true;$("pane-right").hidden=false;
+  $("right-query").disabled=false;$("right-query").placeholder="casa / maison / house";
+  $("same-locus").disabled=false;
+ }
  const u=new URL("classics-text-reader.html",location.href);
  u.searchParams.set("work",work);u.searchParams.set("lang",lang);
  u.searchParams.set("parallel","1");u.searchParams.set("literal","1");
+ const requestedLocus=params.get("locus");if(requestedLocus)u.searchParams.set("locus",requestedLocus);
  const q=$(side+"-query").value.trim();if(q)u.searchParams.set("q",q);
  ready[side]=false;$("pane-"+side).src=u.href;
  params.set(side,lang);history.replaceState(null,"",location.pathname+"?"+params.toString());buttons();
@@ -261,21 +309,22 @@ function versionsFor(languages){return Promise.all(languages.map(async lang=>{
  }catch{}
 }));}
 async function changed(side,lang){
- if(!files[lang])return;
+ if(!files[lang]&&!(side==="right"&&isAuto(lang)))return;
  const other=side==="left"?"right":"left";
  const oldOther=$(other).value;
  if(lang===oldOther){
-  const replacement=previous[side]&&previous[side]!==lang?previous[side]:
-   Object.keys(files).find(l=>l!==lang);
-  if(!replacement){status.textContent="Se necesitan dos versiones distintas para comparar.";return}
-  $(other).value=replacement;$(other+"-pane-language").value=replacement;
+  if(side==="right"){lang="auto-es";right.value=lang;}
+  else{
+   const replacement=Object.keys(files).find(l=>l!==lang)||"auto-es";
+   $(other).value=replacement;$(other+"-pane-language").value=replacement;
+  }
  }
  const current=++generation[side];
  $(side+"-pane-language").value=lang;
  status.textContent="Cargando "+(LANG[lang]||lang)+" en el visor "+(side==="left"?"izquierdo":"derecho")+"…";
  await versionsFor([lang,$(other).value]);
  if(current!==generation[side]||$(side).value!==lang)return;
- if(!versions[lang]){
+ if(!versions[lang]&&!isAuto(lang)){
   status.textContent="Esta versión no tiene texto legible verificado; la anterior sigue disponible.";
   return;
  }
@@ -283,10 +332,12 @@ async function changed(side,lang){
  previous[side]=lang;previous[other]=$(other).value;
  position=Math.min(position,Math.max(0,count()-1));
  frame(side,lang);buttons();store();
- status.textContent="Versiones: "+(LANG[left.value]||left.value)+" / "+(LANG[right.value]||right.value)+". Navegación sincronizada orientativa; búsquedas independientes.";
+ status.textContent=isAuto(right.value)?
+  "Texto original en "+(LANG[left.value]||left.value)+". El locus se conserva; puede solicitar una traducción automática orientativa de un fragmento en el segundo visor.":
+  "Versiones: "+(LANG[left.value]||left.value)+" / "+(LANG[right.value]||right.value)+". Navegación sincronizada orientativa; búsquedas independientes.";
 }
 function sendQuery(side){
- if(!ready[side])return;
+ if(!ready[side]||(side==="right"&&isAuto(right.value)))return;
  $("pane-"+side).contentWindow?.postMessage({
   type:"vitruvia-parallel-find",work,lang:$(side).value,query:$(side+"-query").value.trim()
  },location.origin);
@@ -296,6 +347,17 @@ window.addEventListener("message",event=>{
  const msg=event.data;if(!msg||msg.work!==work)return;
  const side=event.source===$("pane-left").contentWindow?"left":"right";
  if(msg.lang!==$(side).value)return;
+ if(msg.type==="vitruvia-parallel-position"){
+  if(side==="left"&&ready.left&&Number.isInteger(msg.index)&&
+    msg.index>=0&&msg.index<(versions[left.value]?.passages?.length||0)){
+   position=msg.index;
+   const locus=versions[left.value]?.passages?.[position]?.locus;
+   if(locus){params.set("locus",locus);history.replaceState(null,"",location.pathname+"?"+params.toString());}
+   if(isAuto(right.value))renderAuto();
+   buttons();store();
+  }
+  return;
+ }
  if(msg.type==="vitruvia-parallel-search-result"){
   const found=Number.isInteger(msg.sections)?msg.sections:0;
   $(side+"-query").title=found+" secciones coincidentes";
@@ -331,21 +393,30 @@ Promise.all([
   editions[e.language]=e;files[e.language]=e.path;
  }
  const langs=Object.keys(files);
- if(langs.length<2)throw Error("Esta obra aún no tiene dos versiones textuales verificables para enfrentar.");
+ if(!langs.length)throw Error("Esta obra no tiene un texto local verificable para leer.");
  const ordered=["la","grc","es","en","fr","it","de","pt"].filter(l=>langs.includes(l));
- fill(left,ordered);fill(right,ordered);
- fill($("left-pane-language"),ordered);fill($("right-pane-language"),ordered);
+ fill(left,ordered);fill(right,[...ordered,...AUTO_TARGETS]);
+ fill($("left-pane-language"),ordered);fill($("right-pane-language"),[...ordered,...AUTO_TARGETS]);
  const first=ordered.find(x=>["la","grc"].includes(x))||ordered[0];
  left.value=langs.includes(params.get("left"))?params.get("left"):first;
- right.value=langs.includes(params.get("right"))&&params.get("right")!==left.value?
-  params.get("right"):(ordered.find(x=>x!==left.value&& !["grc","la"].includes(x))||ordered.find(x=>x!==left.value));
- if(left.value===right.value)right.value=ordered.find(x=>x!==left.value);
+ const requestedRight=params.get("right");
+ const wantedAuto=isAuto(requestedRight)?requestedRight:
+  (["es","en","fr"].includes(requestedRight)&&!langs.includes(requestedRight)?"auto-"+requestedRight:null);
+ right.value=wantedAuto||(
+  langs.includes(requestedRight)&&requestedRight!==left.value?requestedRight:
+  (ordered.find(x=>x!==left.value&&!["grc","la"].includes(x))||ordered.find(x=>x!==left.value)||"auto-es")
+ );
+ if(left.value===right.value)right.value=ordered.find(x=>x!==left.value)||"auto-es";
  previous={left:left.value,right:right.value};
  $("left-pane-language").value=left.value;$("right-pane-language").value=right.value;
  const query=params.get("q")||"";
  $("left-query").value=(params.get("qLeft")||(["grc","la"].includes(left.value)?query:"")).slice(0,120);
  $("right-query").value=(params.get("qRight")||(!["grc","la"].includes(right.value)?query:"")).slice(0,120);
  await versionsFor([left.value,right.value]);
+ if(!versions[left.value])throw Error("La edición original no pudo cargarse; se conserva el acceso al lector individual.");
+ if(!isAuto(right.value)&&!versions[right.value]){
+  right.value="auto-es";$("right-pane-language").value=right.value;
+ }
  const locus=params.get("locus");
  if(locus){
   const found=versions[left.value]?.passages?.findIndex(p=>String(p.locus)===locus);
@@ -353,9 +424,15 @@ Promise.all([
   if(found>=0)position=found;else if(secondary>=0)position=secondary;
  }
  position=Math.min(position,Math.max(0,count()-1));
- $("single").href="classics-text-reader.html?work="+encodeURIComponent(work)+"&lang="+encodeURIComponent(left.value);
+ const single=new URL("classics-text-reader.html",location.href);
+ single.searchParams.set("work",work);single.searchParams.set("lang",left.value);
+ if(locus)single.searchParams.set("locus",locus);
+ if(query)single.searchParams.set("q",query);
+ $("single").href=single.href;
  status.textContent=(rec?.author||rows[0]?.author||"")+" · "+(rec?.title||rows[0]?.title||work)+
-  ". Comparación entre versiones documentadas; vínculos por locus cuando existen, sin prometer equivalencia semántica.";
+  (isAuto(right.value)?
+   ". El pasaje original se recupera por locus. Traducción automática opcional y claramente identificada.":
+   ". Comparación entre versiones documentadas; vínculos por locus cuando existen, sin prometer equivalencia semántica.");
  frame("left",left.value);frame("right",right.value);
  for(const side of ["left","right"]){
   $(side).addEventListener("change",()=>changed(side,$(side).value));
