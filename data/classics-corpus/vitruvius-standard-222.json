@@ -46,7 +46,12 @@
           "verificationSource": "British Library archive catalogue; published IIIF viewer",
           "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002048598",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "criticalEditionReference": null
+          "criticalEditionReference": null,
+          "script": "Minúscula carolina; rúbricas rojas en uncial y primeros renglones en uncial roja o negra.",
+          "origin": "¿Colonia o Aquisgrán (Alemania occidental)? Atribución geográfica no segura; posible scriptorium palatino de Carlomagno según bibliografía citada por British Library.",
+          "provenance": "Abadía benedictina de San Pantaleón, Colonia (anotación Goderamnus prepositus, f. 145r); colección Johann Georg Graevius; posteriormente colección Harley.",
+          "scholia": "Notas marginales raras; no hay base para describir un aparato escoliástico sistemático.",
+          "diagrammaticEvidence": "Diagrama de los vientos en tinta parda, f. 16v; la afirmación de ausencia total de diagramas es errónea."
         }
       ],
       "editorialControl": {
@@ -1831,7 +1836,11 @@
           "verificationSource": "Pinakes/IRHT CNRS, ficha diktyon 35291; Library of Congress: microfilm digitalizado del códice (123 imágenes)",
           "verificationUrl": "https://www.loc.gov/item/00279389694-jo/",
           "sourceStatus": "needs_review",
-          "criticalEditionReference": null
+          "criticalEditionReference": null,
+          "script": "Minúscula griega del siglo XI (Pinakes)",
+          "origin": "Lugar de copia no asegurado en esta ficha; conservación actual en el Patriarcado Griego de Jerusalén",
+          "provenance": "Copiado en 1056 por Λέων νοτάριος (colofón); hallado por Filoteo Bryennios en 1873",
+          "transmissionReference": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/"
         },
         {
           "id": "didache-elbasan-82",
@@ -1850,7 +1859,12 @@
           "verificationSource": "Pinakes/IRHT CNRS; A. Guida, «Un nuovo manoscritto della Didache», Νέα Ῥώμη, 2022 [2023], pp. 49–63",
           "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/",
           "sourceStatus": "needs_review",
-          "criticalEditionReference": null
+          "criticalEditionReference": null,
+          "script": "Escritura griega postbizantina; descripción paleográfica de Guida (sin especificar mano ni tipo en esta ficha)",
+          "origin": "Lugar exacto de copia pendiente de documentación",
+          "provenance": "Conservación en el Archivo Central del Estado de Albania, Tirana",
+          "copyOf": "didache-hierosolymitanus-54",
+          "copyOfUrl": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/"
         },
         {
           "id": "didache-coptic-or9271",
