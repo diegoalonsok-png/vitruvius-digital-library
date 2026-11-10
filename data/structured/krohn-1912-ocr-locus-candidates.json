@@ -1,0 +1,6597 @@
+{
+  "schema": "vitruvius-krohn-ocr-locus-candidates-v1",
+  "source_edition": "Fritz Krohn, ed., Vitruvii De architectura libri decem (Leipzig: Teubner, 1912)",
+  "source_ocr": "data/text/krohn-1912.json",
+  "source_pdf": "documents/krohn-1912.pdf",
+  "reference_latin": "data/structured/recensio-es.json (V514)",
+  "note": "Algorithmic OCR candidates by identical normalized contiguous 3-word sequences, folding u/v and i/j. Overlap and runner-up margin are heuristics, NOT verified page-to-locus anchors, not autoptic manuscript collation, and not proof of identical editorial readings. Page is PDF digital page index, not printed pagination.",
+  "strong_rule": ">= 5 matching unique 3-grams; >= 15% overlap with V514 paragraph trigrams; (hits+1)/(runner-up hits+1) >= 1.35",
+  "ambiguous_rule": ">= 3 matching unique 3-grams and >= 8% overlap",
+  "counts": {
+    "loci": 731,
+    "strong_textual_candidate": 698,
+    "ambiguous_textual_candidate": 33,
+    "unresolved": 0
+  },
+  "loci": {
+    "1.praef.1": {
+      "page": 19,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 54,
+      "overlap": 0.815,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.praef.2": {
+      "page": 19,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 82,
+      "total_trigrams": 101,
+      "overlap": 0.812,
+      "runner_up_page": 20,
+      "runner_up_trigrams": 5
+    },
+    "1.praef.3": {
+      "page": 20,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 56,
+      "overlap": 0.857,
+      "runner_up_page": 232,
+      "runner_up_trigrams": 1
+    },
+    "1.1.1": {
+      "page": 20,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 48,
+      "overlap": 0.875,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.1.2": {
+      "page": 20,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 41,
+      "overlap": 0.951,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.1.3": {
+      "page": 20,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 82,
+      "overlap": 0.549,
+      "runner_up_page": 21,
+      "runner_up_trigrams": 18
+    },
+    "1.1.4": {
+      "page": 21,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 66,
+      "total_trigrams": 78,
+      "overlap": 0.846,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.1.5": {
+      "page": 21,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 117,
+      "overlap": 0.547,
+      "runner_up_page": 22,
+      "runner_up_trigrams": 36
+    },
+    "1.1.6": {
+      "page": 22,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 89,
+      "overlap": 0.798,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.1.7": {
+      "page": 22,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 67,
+      "total_trigrams": 115,
+      "overlap": 0.583,
+      "runner_up_page": 23,
+      "runner_up_trigrams": 37
+    },
+    "1.1.8": {
+      "page": 23,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 65,
+      "overlap": 0.862,
+      "runner_up_page": 263,
+      "runner_up_trigrams": 1
+    },
+    "1.1.9": {
+      "page": 23,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 57,
+      "overlap": 0.86,
+      "runner_up_page": 14,
+      "runner_up_trigrams": 5
+    },
+    "1.1.10": {
+      "page": 24,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 109,
+      "overlap": 0.55,
+      "runner_up_page": 23,
+      "runner_up_trigrams": 26
+    },
+    "1.1.11": {
+      "page": 24,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 24,
+      "total_trigrams": 33,
+      "overlap": 0.727,
+      "runner_up_page": 214,
+      "runner_up_trigrams": 1
+    },
+    "1.1.12": {
+      "page": 24,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 88,
+      "overlap": 0.67,
+      "runner_up_page": 25,
+      "runner_up_trigrams": 9
+    },
+    "1.1.13": {
+      "page": 25,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 69,
+      "overlap": 0.87,
+      "runner_up_page": 154,
+      "runner_up_trigrams": 1
+    },
+    "1.1.14": {
+      "page": 25,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 70,
+      "overlap": 0.871,
+      "runner_up_page": 26,
+      "runner_up_trigrams": 1
+    },
+    "1.1.15": {
+      "page": 25,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 70,
+      "overlap": 0.729,
+      "runner_up_page": 26,
+      "runner_up_trigrams": 17
+    },
+    "1.1.16": {
+      "page": 26,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 75,
+      "overlap": 0.76,
+      "runner_up_page": 14,
+      "runner_up_trigrams": 8
+    },
+    "1.1.17": {
+      "page": 26,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 64,
+      "overlap": 0.688,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.1.18": {
+      "page": 27,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 97,
+      "overlap": 0.515,
+      "runner_up_page": 26,
+      "runner_up_trigrams": 27
+    },
+    "1.2.1": {
+      "page": 27,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 12,
+      "total_trigrams": 16,
+      "overlap": 0.75,
+      "runner_up_page": 181,
+      "runner_up_trigrams": 1
+    },
+    "1.2.2": {
+      "page": 27,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 119,
+      "overlap": 0.513,
+      "runner_up_page": 28,
+      "runner_up_trigrams": 33
+    },
+    "1.2.3": {
+      "page": 28,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 12,
+      "total_trigrams": 22,
+      "overlap": 0.545,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.2.4": {
+      "page": 28,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 59,
+      "overlap": 0.695,
+      "runner_up_page": 80,
+      "runner_up_trigrams": 1
+    },
+    "1.2.5": {
+      "page": 28,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 112,
+      "overlap": 0.455,
+      "runner_up_page": 29,
+      "runner_up_trigrams": 43
+    },
+    "1.2.6": {
+      "page": 29,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 54,
+      "overlap": 0.778,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.2.7": {
+      "page": 29,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 66,
+      "total_trigrams": 92,
+      "overlap": 0.717,
+      "runner_up_page": 30,
+      "runner_up_trigrams": 5
+    },
+    "1.2.8": {
+      "page": 30,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 79,
+      "overlap": 0.81,
+      "runner_up_page": 37,
+      "runner_up_trigrams": 1
+    },
+    "1.2.9": {
+      "page": 30,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 49,
+      "overlap": 0.735,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.3.1": {
+      "page": 30,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 76,
+      "overlap": 0.671,
+      "runner_up_page": 31,
+      "runner_up_trigrams": 5
+    },
+    "1.3.2": {
+      "page": 31,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 55,
+      "overlap": 0.836,
+      "runner_up_page": 141,
+      "runner_up_trigrams": 1
+    },
+    "1.4.1": {
+      "page": 31,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 78,
+      "total_trigrams": 87,
+      "overlap": 0.897,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.4.2": {
+      "page": 31,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 65,
+      "overlap": 0.615,
+      "runner_up_page": 32,
+      "runner_up_trigrams": 14
+    },
+    "1.4.3": {
+      "page": 32,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 48,
+      "overlap": 0.875,
+      "runner_up_page": 192,
+      "runner_up_trigrams": 1
+    },
+    "1.4.4": {
+      "page": 32,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 63,
+      "overlap": 0.81,
+      "runner_up_page": 49,
+      "runner_up_trigrams": 1
+    },
+    "1.4.5": {
+      "page": 32,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 36,
+      "overlap": 0.917,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.4.6": {
+      "page": 32,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 75,
+      "overlap": 0.48,
+      "runner_up_page": 33,
+      "runner_up_trigrams": 25
+    },
+    "1.4.7": {
+      "page": 33,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 97,
+      "total_trigrams": 106,
+      "overlap": 0.915,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.4.8": {
+      "page": 33,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 33,
+      "overlap": 0.667,
+      "runner_up_page": 49,
+      "runner_up_trigrams": 1
+    },
+    "1.4.9": {
+      "page": 34,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 73,
+      "overlap": 0.534,
+      "runner_up_page": 33,
+      "runner_up_trigrams": 23
+    },
+    "1.4.10": {
+      "page": 34,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 81,
+      "total_trigrams": 86,
+      "overlap": 0.942,
+      "runner_up_page": 55,
+      "runner_up_trigrams": 1
+    },
+    "1.4.11": {
+      "page": 34,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 86,
+      "overlap": 0.663,
+      "runner_up_page": 35,
+      "runner_up_trigrams": 11
+    },
+    "1.4.12": {
+      "page": 35,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 78,
+      "total_trigrams": 114,
+      "overlap": 0.684,
+      "runner_up_page": 81,
+      "runner_up_trigrams": 1
+    },
+    "1.5.1": {
+      "page": 35,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 61,
+      "overlap": 0.836,
+      "runner_up_page": 86,
+      "runner_up_trigrams": 8
+    },
+    "1.5.2": {
+      "page": 36,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 84,
+      "total_trigrams": 87,
+      "overlap": 0.966,
+      "runner_up_page": 144,
+      "runner_up_trigrams": 1
+    },
+    "1.5.3": {
+      "page": 36,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 74,
+      "total_trigrams": 77,
+      "overlap": 0.961,
+      "runner_up_page": 59,
+      "runner_up_trigrams": 1
+    },
+    "1.5.4": {
+      "page": 36,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 70,
+      "overlap": 0.486,
+      "runner_up_page": 37,
+      "runner_up_trigrams": 27
+    },
+    "1.5.5": {
+      "page": 37,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 44,
+      "overlap": 0.864,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.5.6": {
+      "page": 37,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 32,
+      "total_trigrams": 44,
+      "overlap": 0.727,
+      "runner_up_page": 30,
+      "runner_up_trigrams": 1
+    },
+    "1.5.7": {
+      "page": 37,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 62,
+      "total_trigrams": 68,
+      "overlap": 0.912,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.5.8": {
+      "page": 38,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 74,
+      "overlap": 0.446,
+      "runner_up_page": 37,
+      "runner_up_trigrams": 30
+    },
+    "1.6.1": {
+      "page": 38,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 76,
+      "overlap": 0.921,
+      "runner_up_page": 161,
+      "runner_up_trigrams": 1
+    },
+    "1.6.2": {
+      "page": 38,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 77,
+      "overlap": 0.818,
+      "runner_up_page": 39,
+      "runner_up_trigrams": 2
+    },
+    "1.6.3": {
+      "page": 39,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 91,
+      "total_trigrams": 115,
+      "overlap": 0.791,
+      "runner_up_page": 59,
+      "runner_up_trigrams": 1
+    },
+    "1.6.4": {
+      "page": 39,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 76,
+      "overlap": 0.645,
+      "runner_up_page": 40,
+      "runner_up_trigrams": 6
+    },
+    "1.6.5": {
+      "page": 40,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 52,
+      "overlap": 0.885,
+      "runner_up_page": 281,
+      "runner_up_trigrams": 2
+    },
+    "1.6.6": {
+      "page": 40,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 71,
+      "overlap": 0.789,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.6.7": {
+      "page": 41,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 92,
+      "overlap": 0.522,
+      "runner_up_page": 40,
+      "runner_up_trigrams": 32
+    },
+    "1.6.8": {
+      "page": 41,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 44,
+      "overlap": 0.932,
+      "runner_up_page": 23,
+      "runner_up_trigrams": 1
+    },
+    "1.6.9": {
+      "page": 41,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 78,
+      "overlap": 0.808,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.6.10": {
+      "page": 42,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 57,
+      "overlap": 0.86,
+      "runner_up_page": 41,
+      "runner_up_trigrams": 3
+    },
+    "1.6.11": {
+      "page": 42,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 75,
+      "overlap": 0.84,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.6.12": {
+      "page": 42,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 136,
+      "overlap": 0.463,
+      "runner_up_page": 43,
+      "runner_up_trigrams": 54
+    },
+    "1.6.13": {
+      "page": 43,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 94,
+      "total_trigrams": 134,
+      "overlap": 0.701,
+      "runner_up_page": 44,
+      "runner_up_trigrams": 32
+    },
+    "1.7.1": {
+      "page": 44,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 123,
+      "total_trigrams": 141,
+      "overlap": 0.872,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "1.7.2": {
+      "page": 45,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 74,
+      "overlap": 0.5,
+      "runner_up_page": 44,
+      "runner_up_trigrams": 22
+    },
+    "2.praef.1": {
+      "page": 45,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 86,
+      "overlap": 0.814,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.praef.2": {
+      "page": 45,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 52,
+      "overlap": 0.769,
+      "runner_up_page": 46,
+      "runner_up_trigrams": 1
+    },
+    "2.praef.3": {
+      "page": 46,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 76,
+      "total_trigrams": 91,
+      "overlap": 0.835,
+      "runner_up_page": 215,
+      "runner_up_trigrams": 1
+    },
+    "2.praef.4": {
+      "page": 46,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 67,
+      "overlap": 0.955,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.praef.5": {
+      "page": 47,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 32,
+      "total_trigrams": 93,
+      "overlap": 0.344,
+      "runner_up_page": 46,
+      "runner_up_trigrams": 27
+    },
+    "2.1.1": {
+      "page": 47,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 73,
+      "total_trigrams": 86,
+      "overlap": 0.849,
+      "runner_up_page": 23,
+      "runner_up_trigrams": 1
+    },
+    "2.1.2": {
+      "page": 48,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 75,
+      "overlap": 0.587,
+      "runner_up_page": 47,
+      "runner_up_trigrams": 20
+    },
+    "2.1.3": {
+      "page": 48,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 61,
+      "overlap": 0.705,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.1.4": {
+      "page": 48,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 79,
+      "total_trigrams": 114,
+      "overlap": 0.693,
+      "runner_up_page": 49,
+      "runner_up_trigrams": 20
+    },
+    "2.1.5": {
+      "page": 49,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 86,
+      "total_trigrams": 101,
+      "overlap": 0.851,
+      "runner_up_page": 32,
+      "runner_up_trigrams": 1
+    },
+    "2.1.6": {
+      "page": 49,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 80,
+      "overlap": 0.638,
+      "runner_up_page": 50,
+      "runner_up_trigrams": 19
+    },
+    "2.1.7": {
+      "page": 50,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 71,
+      "overlap": 0.803,
+      "runner_up_page": 58,
+      "runner_up_trigrams": 1
+    },
+    "2.1.8": {
+      "page": 50,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 67,
+      "total_trigrams": 80,
+      "overlap": 0.838,
+      "runner_up_page": 45,
+      "runner_up_trigrams": 1
+    },
+    "2.1.9": {
+      "page": 51,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 73,
+      "overlap": 0.836,
+      "runner_up_page": 57,
+      "runner_up_trigrams": 1
+    },
+    "2.2.1": {
+      "page": 51,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 72,
+      "overlap": 0.806,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.2.2": {
+      "page": 51,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 42,
+      "overlap": 0.857,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.3.1": {
+      "page": 52,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 65,
+      "overlap": 0.815,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.3.2": {
+      "page": 52,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 113,
+      "total_trigrams": 125,
+      "overlap": 0.904,
+      "runner_up_page": 288,
+      "runner_up_trigrams": 3
+    },
+    "2.3.3": {
+      "page": 52,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 23,
+      "total_trigrams": 58,
+      "overlap": 0.397,
+      "runner_up_page": 53,
+      "runner_up_trigrams": 23
+    },
+    "2.3.4": {
+      "page": 53,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 90,
+      "total_trigrams": 115,
+      "overlap": 0.783,
+      "runner_up_page": 71,
+      "runner_up_trigrams": 1
+    },
+    "2.4.1": {
+      "page": 53,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 55,
+      "overlap": 0.691,
+      "runner_up_page": 54,
+      "runner_up_trigrams": 8
+    },
+    "2.4.2": {
+      "page": 54,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 49,
+      "overlap": 0.816,
+      "runner_up_page": 287,
+      "runner_up_trigrams": 2
+    },
+    "2.4.3": {
+      "page": 54,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 62,
+      "total_trigrams": 77,
+      "overlap": 0.805,
+      "runner_up_page": 287,
+      "runner_up_trigrams": 2
+    },
+    "2.5.1": {
+      "page": 54,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 70,
+      "overlap": 0.814,
+      "runner_up_page": 55,
+      "runner_up_trigrams": 9
+    },
+    "2.5.2": {
+      "page": 55,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 77,
+      "overlap": 0.922,
+      "runner_up_page": 224,
+      "runner_up_trigrams": 3
+    },
+    "2.5.3": {
+      "page": 55,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 75,
+      "overlap": 0.813,
+      "runner_up_page": 126,
+      "runner_up_trigrams": 1
+    },
+    "2.6.1": {
+      "page": 56,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 117,
+      "overlap": 0.504,
+      "runner_up_page": 55,
+      "runner_up_trigrams": 41
+    },
+    "2.6.2": {
+      "page": 56,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 71,
+      "overlap": 0.859,
+      "runner_up_page": 32,
+      "runner_up_trigrams": 1
+    },
+    "2.6.3": {
+      "page": 56,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 56,
+      "overlap": 0.857,
+      "runner_up_page": 30,
+      "runner_up_trigrams": 1
+    },
+    "2.6.4": {
+      "page": 57,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 60,
+      "overlap": 0.617,
+      "runner_up_page": 56,
+      "runner_up_trigrams": 9
+    },
+    "2.6.5": {
+      "page": 57,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 87,
+      "total_trigrams": 99,
+      "overlap": 0.879,
+      "runner_up_page": 186,
+      "runner_up_trigrams": 2
+    },
+    "2.6.6": {
+      "page": 57,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 76,
+      "overlap": 0.658,
+      "runner_up_page": 58,
+      "runner_up_trigrams": 15
+    },
+    "2.7.1": {
+      "page": 58,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 73,
+      "overlap": 0.89,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.7.2": {
+      "page": 58,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 87,
+      "total_trigrams": 104,
+      "overlap": 0.837,
+      "runner_up_page": 59,
+      "runner_up_trigrams": 3
+    },
+    "2.7.3": {
+      "page": 59,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 64,
+      "overlap": 0.906,
+      "runner_up_page": 31,
+      "runner_up_trigrams": 1
+    },
+    "2.7.4": {
+      "page": 59,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 62,
+      "overlap": 0.855,
+      "runner_up_page": 32,
+      "runner_up_trigrams": 1
+    },
+    "2.7.5": {
+      "page": 59,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 68,
+      "overlap": 0.779,
+      "runner_up_page": 39,
+      "runner_up_trigrams": 1
+    },
+    "2.8.1": {
+      "page": 60,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 32,
+      "total_trigrams": 45,
+      "overlap": 0.711,
+      "runner_up_page": 59,
+      "runner_up_trigrams": 8
+    },
+    "2.8.2": {
+      "page": 60,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 66,
+      "overlap": 0.909,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.8.3": {
+      "page": 60,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 23,
+      "total_trigrams": 30,
+      "overlap": 0.767,
+      "runner_up_page": 31,
+      "runner_up_trigrams": 2
+    },
+    "2.8.4": {
+      "page": 60,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 58,
+      "overlap": 0.948,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.8.5": {
+      "page": 61,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 27,
+      "total_trigrams": 47,
+      "overlap": 0.574,
+      "runner_up_page": 60,
+      "runner_up_trigrams": 13
+    },
+    "2.8.6": {
+      "page": 61,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 57,
+      "overlap": 0.947,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.8.7": {
+      "page": 61,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 85,
+      "overlap": 0.835,
+      "runner_up_page": 75,
+      "runner_up_trigrams": 1
+    },
+    "2.8.8": {
+      "page": 62,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 71,
+      "overlap": 0.803,
+      "runner_up_page": 61,
+      "runner_up_trigrams": 6
+    },
+    "2.8.9": {
+      "page": 62,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 89,
+      "overlap": 0.798,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.8.10": {
+      "page": 62,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 54,
+      "overlap": 0.741,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.8.11": {
+      "page": 63,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 86,
+      "total_trigrams": 92,
+      "overlap": 0.935,
+      "runner_up_page": 57,
+      "runner_up_trigrams": 1
+    },
+    "2.8.12": {
+      "page": 63,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 93,
+      "total_trigrams": 116,
+      "overlap": 0.802,
+      "runner_up_page": 64,
+      "runner_up_trigrams": 11
+    },
+    "2.8.13": {
+      "page": 64,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 62,
+      "total_trigrams": 68,
+      "overlap": 0.912,
+      "runner_up_page": 139,
+      "runner_up_trigrams": 1
+    },
+    "2.8.14": {
+      "page": 64,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 89,
+      "total_trigrams": 95,
+      "overlap": 0.937,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.8.15": {
+      "page": 65,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 77,
+      "overlap": 0.623,
+      "runner_up_page": 64,
+      "runner_up_trigrams": 15
+    },
+    "2.8.16": {
+      "page": 65,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 58,
+      "overlap": 0.983,
+      "runner_up_page": 193,
+      "runner_up_trigrams": 1
+    },
+    "2.8.17": {
+      "page": 65,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 94,
+      "overlap": 0.553,
+      "runner_up_page": 66,
+      "runner_up_trigrams": 13
+    },
+    "2.8.18": {
+      "page": 66,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 82,
+      "overlap": 0.854,
+      "runner_up_page": 132,
+      "runner_up_trigrams": 1
+    },
+    "2.8.19": {
+      "page": 66,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 64,
+      "overlap": 0.906,
+      "runner_up_page": 179,
+      "runner_up_trigrams": 1
+    },
+    "2.8.20": {
+      "page": 67,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 117,
+      "overlap": 0.47,
+      "runner_up_page": 66,
+      "runner_up_trigrams": 38
+    },
+    "2.9.1": {
+      "page": 67,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 84,
+      "total_trigrams": 102,
+      "overlap": 0.824,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.9.2": {
+      "page": 68,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 38,
+      "overlap": 0.921,
+      "runner_up_page": 170,
+      "runner_up_trigrams": 2
+    },
+    "2.9.3": {
+      "page": 68,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 45,
+      "overlap": 0.8,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.9.4": {
+      "page": 68,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 64,
+      "overlap": 0.766,
+      "runner_up_page": 131,
+      "runner_up_trigrams": 3
+    },
+    "2.9.5": {
+      "page": 68,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 47,
+      "overlap": 0.851,
+      "runner_up_page": 77,
+      "runner_up_trigrams": 1
+    },
+    "2.9.6": {
+      "page": 69,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 55,
+      "overlap": 0.8,
+      "runner_up_page": 68,
+      "runner_up_trigrams": 6
+    },
+    "2.9.7": {
+      "page": 69,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 54,
+      "overlap": 0.796,
+      "runner_up_page": 57,
+      "runner_up_trigrams": 1
+    },
+    "2.9.8": {
+      "page": 69,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 41,
+      "overlap": 0.854,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.9.9": {
+      "page": 69,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 84,
+      "overlap": 0.643,
+      "runner_up_page": 70,
+      "runner_up_trigrams": 20
+    },
+    "2.9.10": {
+      "page": 70,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 61,
+      "overlap": 0.852,
+      "runner_up_page": 140,
+      "runner_up_trigrams": 1
+    },
+    "2.9.11": {
+      "page": 70,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 63,
+      "overlap": 0.81,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.9.12": {
+      "page": 71,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 92,
+      "overlap": 0.587,
+      "runner_up_page": 70,
+      "runner_up_trigrams": 27
+    },
+    "2.9.13": {
+      "page": 71,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 62,
+      "overlap": 0.952,
+      "runner_up_page": 73,
+      "runner_up_trigrams": 1
+    },
+    "2.9.14": {
+      "page": 71,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 62,
+      "total_trigrams": 104,
+      "overlap": 0.596,
+      "runner_up_page": 72,
+      "runner_up_trigrams": 22
+    },
+    "2.9.15": {
+      "page": 72,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 78,
+      "total_trigrams": 92,
+      "overlap": 0.848,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.9.16": {
+      "page": 72,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 119,
+      "overlap": 0.454,
+      "runner_up_page": 73,
+      "runner_up_trigrams": 13
+    },
+    "2.9.17": {
+      "page": 73,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 71,
+      "overlap": 0.915,
+      "runner_up_page": 57,
+      "runner_up_trigrams": 1
+    },
+    "2.10.1": {
+      "page": 73,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 90,
+      "total_trigrams": 105,
+      "overlap": 0.857,
+      "runner_up_page": 74,
+      "runner_up_trigrams": 6
+    },
+    "2.10.2": {
+      "page": 74,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 56,
+      "overlap": 0.786,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "2.10.3": {
+      "page": 74,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 66,
+      "overlap": 0.909,
+      "runner_up_page": 77,
+      "runner_up_trigrams": 2
+    },
+    "3.praef.1": {
+      "page": 75,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 88,
+      "total_trigrams": 128,
+      "overlap": 0.688,
+      "runner_up_page": 74,
+      "runner_up_trigrams": 20
+    },
+    "3.praef.2": {
+      "page": 75,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 72,
+      "total_trigrams": 123,
+      "overlap": 0.585,
+      "runner_up_page": 76,
+      "runner_up_trigrams": 35
+    },
+    "3.praef.3": {
+      "page": 76,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 83,
+      "total_trigrams": 83,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.praef.4": {
+      "page": 76,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 90,
+      "overlap": 0.533,
+      "runner_up_page": 77,
+      "runner_up_trigrams": 28
+    },
+    "3.1.1": {
+      "page": 77,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 48,
+      "overlap": 0.688,
+      "runner_up_page": 68,
+      "runner_up_trigrams": 1
+    },
+    "3.1.2": {
+      "page": 77,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 86,
+      "total_trigrams": 98,
+      "overlap": 0.878,
+      "runner_up_page": 78,
+      "runner_up_trigrams": 1
+    },
+    "3.1.3": {
+      "page": 78,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 77,
+      "overlap": 0.545,
+      "runner_up_page": 77,
+      "runner_up_trigrams": 21
+    },
+    "3.1.4": {
+      "page": 78,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 44,
+      "overlap": 0.841,
+      "runner_up_page": 77,
+      "runner_up_trigrams": 1
+    },
+    "3.1.5": {
+      "page": 78,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 87,
+      "overlap": 0.747,
+      "runner_up_page": 58,
+      "runner_up_trigrams": 1
+    },
+    "3.1.6": {
+      "page": 79,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 29,
+      "total_trigrams": 87,
+      "overlap": 0.333,
+      "runner_up_page": 78,
+      "runner_up_trigrams": 2
+    },
+    "3.1.7": {
+      "page": 79,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 71,
+      "overlap": 0.507,
+      "runner_up_page": 32,
+      "runner_up_trigrams": 1
+    },
+    "3.1.8": {
+      "page": 80,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 75,
+      "overlap": 0.653,
+      "runner_up_page": 79,
+      "runner_up_trigrams": 2
+    },
+    "3.1.9": {
+      "page": 80,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 37,
+      "overlap": 0.676,
+      "runner_up_page": 28,
+      "runner_up_trigrams": 1
+    },
+    "3.2.1": {
+      "page": 80,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 15,
+      "total_trigrams": 23,
+      "overlap": 0.652,
+      "runner_up_page": 121,
+      "runner_up_trigrams": 1
+    },
+    "3.2.2": {
+      "page": 80,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 28,
+      "total_trigrams": 35,
+      "overlap": 0.8,
+      "runner_up_page": 137,
+      "runner_up_trigrams": 1
+    },
+    "3.2.3": {
+      "page": 81,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 21,
+      "total_trigrams": 25,
+      "overlap": 0.84,
+      "runner_up_page": 272,
+      "runner_up_trigrams": 1
+    },
+    "3.2.4": {
+      "page": 81,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 4,
+      "total_trigrams": 10,
+      "overlap": 0.4,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.2.5": {
+      "page": 81,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 45,
+      "overlap": 0.822,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.2.6": {
+      "page": 81,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 48,
+      "overlap": 0.708,
+      "runner_up_page": 82,
+      "runner_up_trigrams": 3
+    },
+    "3.2.7": {
+      "page": 81,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 20,
+      "total_trigrams": 20,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.2.8": {
+      "page": 81,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 21,
+      "total_trigrams": 45,
+      "overlap": 0.467,
+      "runner_up_page": 82,
+      "runner_up_trigrams": 14
+    },
+    "3.3.1": {
+      "page": 82,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 17,
+      "total_trigrams": 28,
+      "overlap": 0.607,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.3.2": {
+      "page": 82,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 54,
+      "overlap": 0.815,
+      "runner_up_page": 114,
+      "runner_up_trigrams": 1
+    },
+    "3.3.3": {
+      "page": 82,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 26,
+      "total_trigrams": 36,
+      "overlap": 0.722,
+      "runner_up_page": 87,
+      "runner_up_trigrams": 1
+    },
+    "3.3.4": {
+      "page": 82,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 23,
+      "total_trigrams": 26,
+      "overlap": 0.885,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.3.5": {
+      "page": 83,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 39,
+      "overlap": 0.564,
+      "runner_up_page": 82,
+      "runner_up_trigrams": 12
+    },
+    "3.3.6": {
+      "page": 83,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 49,
+      "overlap": 0.939,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.3.7": {
+      "page": 83,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 81,
+      "overlap": 0.716,
+      "runner_up_page": 130,
+      "runner_up_trigrams": 2
+    },
+    "3.3.8": {
+      "page": 84,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 55,
+      "overlap": 0.636,
+      "runner_up_page": 83,
+      "runner_up_trigrams": 9
+    },
+    "3.3.9": {
+      "page": 84,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 54,
+      "overlap": 0.944,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.3.10": {
+      "page": 84,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 75,
+      "overlap": 0.853,
+      "runner_up_page": 90,
+      "runner_up_trigrams": 2
+    },
+    "3.3.11": {
+      "page": 85,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 76,
+      "overlap": 0.803,
+      "runner_up_page": 84,
+      "runner_up_trigrams": 2
+    },
+    "3.3.12": {
+      "page": 85,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 102,
+      "total_trigrams": 106,
+      "overlap": 0.962,
+      "runner_up_page": 90,
+      "runner_up_trigrams": 3
+    },
+    "3.3.13": {
+      "page": 86,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 50,
+      "overlap": 0.68,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.4.1": {
+      "page": 86,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 63,
+      "overlap": 0.857,
+      "runner_up_page": 35,
+      "runner_up_trigrams": 8
+    },
+    "3.4.2": {
+      "page": 86,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 43,
+      "overlap": 0.86,
+      "runner_up_page": 138,
+      "runner_up_trigrams": 1
+    },
+    "3.4.3": {
+      "page": 87,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 67,
+      "overlap": 0.567,
+      "runner_up_page": 86,
+      "runner_up_trigrams": 9
+    },
+    "3.4.4": {
+      "page": 87,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 64,
+      "overlap": 0.953,
+      "runner_up_page": 131,
+      "runner_up_trigrams": 1
+    },
+    "3.4.5": {
+      "page": 87,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 52,
+      "overlap": 1,
+      "runner_up_page": 90,
+      "runner_up_trigrams": 1
+    },
+    "3.5.1": {
+      "page": 87,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 31,
+      "overlap": 0.806,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.5.2": {
+      "page": 88,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 41,
+      "overlap": 0.805,
+      "runner_up_page": 148,
+      "runner_up_trigrams": 1
+    },
+    "3.5.3": {
+      "page": 88,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 67,
+      "total_trigrams": 90,
+      "overlap": 0.744,
+      "runner_up_page": 85,
+      "runner_up_trigrams": 2
+    },
+    "3.5.4": {
+      "page": 88,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 50,
+      "overlap": 0.82,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.5.5": {
+      "page": 89,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 79,
+      "overlap": 0.797,
+      "runner_up_page": 88,
+      "runner_up_trigrams": 8
+    },
+    "3.5.6": {
+      "page": 89,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 79,
+      "overlap": 0.886,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.5.7": {
+      "page": 90,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 68,
+      "total_trigrams": 117,
+      "overlap": 0.581,
+      "runner_up_page": 89,
+      "runner_up_trigrams": 32
+    },
+    "3.5.8": {
+      "page": 90,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 90,
+      "total_trigrams": 105,
+      "overlap": 0.857,
+      "runner_up_page": 85,
+      "runner_up_trigrams": 3
+    },
+    "3.5.9": {
+      "page": 91,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 61,
+      "overlap": 0.82,
+      "runner_up_page": 90,
+      "runner_up_trigrams": 6
+    },
+    "3.5.10": {
+      "page": 91,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 58,
+      "overlap": 0.897,
+      "runner_up_page": 89,
+      "runner_up_trigrams": 1
+    },
+    "3.5.11": {
+      "page": 91,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 77,
+      "overlap": 0.818,
+      "runner_up_page": 195,
+      "runner_up_trigrams": 1
+    },
+    "3.5.12": {
+      "page": 92,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 65,
+      "overlap": 0.738,
+      "runner_up_page": 97,
+      "runner_up_trigrams": 2
+    },
+    "3.5.13": {
+      "page": 92,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 71,
+      "overlap": 0.69,
+      "runner_up_page": 103,
+      "runner_up_trigrams": 2
+    },
+    "3.5.14": {
+      "page": 92,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 36,
+      "overlap": 0.833,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "3.5.15": {
+      "page": 93,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 89,
+      "overlap": 0.539,
+      "runner_up_page": 92,
+      "runner_up_trigrams": 30
+    },
+    "4.praef.1": {
+      "page": 93,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 70,
+      "overlap": 0.8,
+      "runner_up_page": 76,
+      "runner_up_trigrams": 1
+    },
+    "4.praef.2": {
+      "page": 93,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 19,
+      "total_trigrams": 22,
+      "overlap": 0.864,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.1.1": {
+      "page": 93,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 19,
+      "total_trigrams": 41,
+      "overlap": 0.463,
+      "runner_up_page": 94,
+      "runner_up_trigrams": 14
+    },
+    "4.1.2": {
+      "page": 94,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 45,
+      "overlap": 0.8,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.1.3": {
+      "page": 94,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 60,
+      "overlap": 0.9,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.1.4": {
+      "page": 95,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 95,
+      "overlap": 0.4,
+      "runner_up_page": 94,
+      "runner_up_trigrams": 37
+    },
+    "4.1.5": {
+      "page": 95,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 32,
+      "total_trigrams": 41,
+      "overlap": 0.78,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.1.6": {
+      "page": 95,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 61,
+      "overlap": 0.754,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.1.7": {
+      "page": 96,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 28,
+      "total_trigrams": 68,
+      "overlap": 0.412,
+      "runner_up_page": 95,
+      "runner_up_trigrams": 23
+    },
+    "4.1.8": {
+      "page": 96,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 51,
+      "overlap": 0.667,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.1.9": {
+      "page": 96,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 75,
+      "overlap": 0.773,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.1.10": {
+      "page": 97,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 21,
+      "total_trigrams": 36,
+      "overlap": 0.583,
+      "runner_up_page": 96,
+      "runner_up_trigrams": 6
+    },
+    "4.1.11": {
+      "page": 97,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 66,
+      "overlap": 0.909,
+      "runner_up_page": 92,
+      "runner_up_trigrams": 2
+    },
+    "4.1.12": {
+      "page": 97,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 94,
+      "total_trigrams": 100,
+      "overlap": 0.94,
+      "runner_up_page": 101,
+      "runner_up_trigrams": 2
+    },
+    "4.2.1": {
+      "page": 98,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 66,
+      "total_trigrams": 76,
+      "overlap": 0.868,
+      "runner_up_page": 97,
+      "runner_up_trigrams": 1
+    },
+    "4.2.2": {
+      "page": 98,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 79,
+      "total_trigrams": 102,
+      "overlap": 0.775,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.2.3": {
+      "page": 99,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 51,
+      "overlap": 0.784,
+      "runner_up_page": 98,
+      "runner_up_trigrams": 2
+    },
+    "4.2.4": {
+      "page": 99,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 85,
+      "overlap": 0.824,
+      "runner_up_page": 157,
+      "runner_up_trigrams": 1
+    },
+    "4.2.5": {
+      "page": 100,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 106,
+      "overlap": 0.481,
+      "runner_up_page": 99,
+      "runner_up_trigrams": 33
+    },
+    "4.2.6": {
+      "page": 100,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 43,
+      "overlap": 0.581,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.3.1": {
+      "page": 100,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 61,
+      "overlap": 0.803,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.3.2": {
+      "page": 100,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 29,
+      "total_trigrams": 73,
+      "overlap": 0.397,
+      "runner_up_page": 101,
+      "runner_up_trigrams": 26
+    },
+    "4.3.3": {
+      "page": 101,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 59,
+      "overlap": 0.763,
+      "runner_up_page": 103,
+      "runner_up_trigrams": 3
+    },
+    "4.3.4": {
+      "page": 101,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 82,
+      "total_trigrams": 117,
+      "overlap": 0.701,
+      "runner_up_page": 102,
+      "runner_up_trigrams": 15
+    },
+    "4.3.5": {
+      "page": 102,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 73,
+      "overlap": 0.781,
+      "runner_up_page": 54,
+      "runner_up_trigrams": 1
+    },
+    "4.3.6": {
+      "page": 102,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 82,
+      "overlap": 0.793,
+      "runner_up_page": 86,
+      "runner_up_trigrams": 2
+    },
+    "4.3.7": {
+      "page": 103,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 26,
+      "total_trigrams": 32,
+      "overlap": 0.813,
+      "runner_up_page": 101,
+      "runner_up_trigrams": 3
+    },
+    "4.3.8": {
+      "page": 103,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 32,
+      "total_trigrams": 38,
+      "overlap": 0.842,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.3.9": {
+      "page": 103,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 61,
+      "overlap": 0.754,
+      "runner_up_page": 95,
+      "runner_up_trigrams": 1
+    },
+    "4.3.10": {
+      "page": 103,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 19,
+      "total_trigrams": 29,
+      "overlap": 0.655,
+      "runner_up_page": 119,
+      "runner_up_trigrams": 1
+    },
+    "4.4.1": {
+      "page": 104,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 78,
+      "overlap": 0.577,
+      "runner_up_page": 103,
+      "runner_up_trigrams": 21
+    },
+    "4.4.2": {
+      "page": 104,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 79,
+      "total_trigrams": 88,
+      "overlap": 0.898,
+      "runner_up_page": 62,
+      "runner_up_trigrams": 1
+    },
+    "4.4.3": {
+      "page": 104,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 75,
+      "overlap": 0.68,
+      "runner_up_page": 105,
+      "runner_up_trigrams": 10
+    },
+    "4.4.4": {
+      "page": 105,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 56,
+      "overlap": 0.786,
+      "runner_up_page": 62,
+      "runner_up_trigrams": 1
+    },
+    "4.5.1": {
+      "page": 105,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 66,
+      "overlap": 0.818,
+      "runner_up_page": 154,
+      "runner_up_trigrams": 1
+    },
+    "4.5.2": {
+      "page": 105,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 49,
+      "overlap": 0.755,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.6.1": {
+      "page": 106,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 104,
+      "total_trigrams": 117,
+      "overlap": 0.889,
+      "runner_up_page": 148,
+      "runner_up_trigrams": 2
+    },
+    "4.6.2": {
+      "page": 106,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 47,
+      "total_trigrams": 80,
+      "overlap": 0.588,
+      "runner_up_page": 107,
+      "runner_up_trigrams": 11
+    },
+    "4.6.3": {
+      "page": 107,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 65,
+      "overlap": 0.862,
+      "runner_up_page": 91,
+      "runner_up_trigrams": 2
+    },
+    "4.6.4": {
+      "page": 107,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 54,
+      "overlap": 0.852,
+      "runner_up_page": 274,
+      "runner_up_trigrams": 1
+    },
+    "4.6.5": {
+      "page": 107,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 68,
+      "overlap": 0.603,
+      "runner_up_page": 108,
+      "runner_up_trigrams": 20
+    },
+    "4.6.6": {
+      "page": 108,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 61,
+      "overlap": 0.885,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.7.1": {
+      "page": 108,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 36,
+      "overlap": 0.694,
+      "runner_up_page": 149,
+      "runner_up_trigrams": 1
+    },
+    "4.7.2": {
+      "page": 108,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 73,
+      "overlap": 0.795,
+      "runner_up_page": 41,
+      "runner_up_trigrams": 1
+    },
+    "4.7.3": {
+      "page": 109,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 50,
+      "overlap": 0.84,
+      "runner_up_page": 101,
+      "runner_up_trigrams": 3
+    },
+    "4.7.4": {
+      "page": 109,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 42,
+      "overlap": 0.833,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.7.5": {
+      "page": 109,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 23,
+      "total_trigrams": 35,
+      "overlap": 0.657,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.8.1": {
+      "page": 109,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 60,
+      "overlap": 0.65,
+      "runner_up_page": 110,
+      "runner_up_trigrams": 13
+    },
+    "4.8.2": {
+      "page": 110,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 48,
+      "overlap": 0.792,
+      "runner_up_page": 48,
+      "runner_up_trigrams": 2
+    },
+    "4.8.3": {
+      "page": 110,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 37,
+      "overlap": 0.676,
+      "runner_up_page": 176,
+      "runner_up_trigrams": 2
+    },
+    "4.8.4": {
+      "page": 110,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 66,
+      "overlap": 0.909,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.8.5": {
+      "page": 111,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 14,
+      "total_trigrams": 28,
+      "overlap": 0.5,
+      "runner_up_page": 110,
+      "runner_up_trigrams": 4
+    },
+    "4.8.6": {
+      "page": 111,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 49,
+      "overlap": 0.898,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.8.7": {
+      "page": 111,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 37,
+      "overlap": 0.595,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "4.9.1": {
+      "page": 111,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 47,
+      "total_trigrams": 61,
+      "overlap": 0.77,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.praef.1": {
+      "page": 112,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 73,
+      "overlap": 0.767,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.praef.2": {
+      "page": 112,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 63,
+      "overlap": 0.635,
+      "runner_up_page": 198,
+      "runner_up_trigrams": 1
+    },
+    "5.praef.3": {
+      "page": 112,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 26,
+      "total_trigrams": 45,
+      "overlap": 0.578,
+      "runner_up_page": 113,
+      "runner_up_trigrams": 11
+    },
+    "5.praef.4": {
+      "page": 113,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 64,
+      "overlap": 0.766,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.praef.5": {
+      "page": 113,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 76,
+      "overlap": 0.658,
+      "runner_up_page": 45,
+      "runner_up_trigrams": 1
+    },
+    "5.1.1": {
+      "page": 113,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 17,
+      "total_trigrams": 34,
+      "overlap": 0.5,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.1.2": {
+      "page": 114,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 61,
+      "overlap": 0.836,
+      "runner_up_page": 54,
+      "runner_up_trigrams": 1
+    },
+    "5.1.3": {
+      "page": 114,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 61,
+      "overlap": 0.721,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.1.4": {
+      "page": 114,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 29,
+      "total_trigrams": 46,
+      "overlap": 0.63,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.1.5": {
+      "page": 114,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 23,
+      "total_trigrams": 61,
+      "overlap": 0.377,
+      "runner_up_page": 115,
+      "runner_up_trigrams": 7
+    },
+    "5.1.6": {
+      "page": 115,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 86,
+      "overlap": 0.744,
+      "runner_up_page": 8,
+      "runner_up_trigrams": 2
+    },
+    "5.1.7": {
+      "page": 115,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 56,
+      "overlap": 0.607,
+      "runner_up_page": 8,
+      "runner_up_trigrams": 1
+    },
+    "5.1.8": {
+      "page": 116,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 20,
+      "total_trigrams": 53,
+      "overlap": 0.377,
+      "runner_up_page": 115,
+      "runner_up_trigrams": 14
+    },
+    "5.1.9": {
+      "page": 116,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 45,
+      "overlap": 0.867,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.1.10": {
+      "page": 116,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 42,
+      "overlap": 0.714,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.2.1": {
+      "page": 116,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 32,
+      "total_trigrams": 47,
+      "overlap": 0.681,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.2.2": {
+      "page": 116,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 40,
+      "overlap": 0.625,
+      "runner_up_page": 117,
+      "runner_up_trigrams": 9
+    },
+    "5.3.1": {
+      "page": 117,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 62,
+      "overlap": 0.871,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.3.2": {
+      "page": 117,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 35,
+      "overlap": 0.714,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.3.3": {
+      "page": 117,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 26,
+      "total_trigrams": 35,
+      "overlap": 0.743,
+      "runner_up_page": 131,
+      "runner_up_trigrams": 1
+    },
+    "5.3.4": {
+      "page": 117,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 57,
+      "overlap": 0.719,
+      "runner_up_page": 39,
+      "runner_up_trigrams": 1
+    },
+    "5.3.5": {
+      "page": 118,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 54,
+      "overlap": 0.815,
+      "runner_up_page": 168,
+      "runner_up_trigrams": 1
+    },
+    "5.3.6": {
+      "page": 118,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 50,
+      "overlap": 0.7,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.3.7": {
+      "page": 118,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 42,
+      "overlap": 0.857,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.3.8": {
+      "page": 118,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 27,
+      "total_trigrams": 46,
+      "overlap": 0.587,
+      "runner_up_page": 119,
+      "runner_up_trigrams": 8
+    },
+    "5.4.1": {
+      "page": 119,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 49,
+      "overlap": 0.878,
+      "runner_up_page": 103,
+      "runner_up_trigrams": 1
+    },
+    "5.4.2": {
+      "page": 119,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 95,
+      "total_trigrams": 110,
+      "overlap": 0.864,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.4.3": {
+      "page": 120,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 108,
+      "overlap": 0.657,
+      "runner_up_page": 119,
+      "runner_up_trigrams": 7
+    },
+    "5.4.4": {
+      "page": 120,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 23,
+      "total_trigrams": 32,
+      "overlap": 0.719,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.4.5": {
+      "page": 121,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 87,
+      "overlap": 0.414,
+      "runner_up_page": 120,
+      "runner_up_trigrams": 24
+    },
+    "5.4.6": {
+      "page": 121,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 47,
+      "overlap": 0.936,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.4.7": {
+      "page": 121,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 42,
+      "overlap": 0.595,
+      "runner_up_page": 23,
+      "runner_up_trigrams": 1
+    },
+    "5.4.8": {
+      "page": 122,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 17,
+      "total_trigrams": 31,
+      "overlap": 0.548,
+      "runner_up_page": 121,
+      "runner_up_trigrams": 10
+    },
+    "5.4.9": {
+      "page": 122,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 43,
+      "overlap": 0.767,
+      "runner_up_page": 103,
+      "runner_up_trigrams": 2
+    },
+    "5.5.1": {
+      "page": 122,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 70,
+      "overlap": 0.871,
+      "runner_up_page": 156,
+      "runner_up_trigrams": 1
+    },
+    "5.5.2": {
+      "page": 122,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 64,
+      "overlap": 0.516,
+      "runner_up_page": 123,
+      "runner_up_trigrams": 16
+    },
+    "5.5.3": {
+      "page": 123,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 49,
+      "overlap": 0.816,
+      "runner_up_page": 107,
+      "runner_up_trigrams": 1
+    },
+    "5.5.4": {
+      "page": 123,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 43,
+      "overlap": 0.767,
+      "runner_up_page": 68,
+      "runner_up_trigrams": 1
+    },
+    "5.5.5": {
+      "page": 123,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 31,
+      "total_trigrams": 56,
+      "overlap": 0.554,
+      "runner_up_page": 124,
+      "runner_up_trigrams": 3
+    },
+    "5.5.6": {
+      "page": 124,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 27,
+      "total_trigrams": 36,
+      "overlap": 0.75,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.5.7": {
+      "page": 124,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 70,
+      "overlap": 0.743,
+      "runner_up_page": 31,
+      "runner_up_trigrams": 1
+    },
+    "5.5.8": {
+      "page": 124,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 54,
+      "overlap": 0.796,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.6.1": {
+      "page": 125,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 70,
+      "overlap": 0.686,
+      "runner_up_page": 124,
+      "runner_up_trigrams": 14
+    },
+    "5.6.2": {
+      "page": 125,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 62,
+      "total_trigrams": 62,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.6.3": {
+      "page": 125,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 55,
+      "overlap": 0.673,
+      "runner_up_page": 36,
+      "runner_up_trigrams": 1
+    },
+    "5.6.4": {
+      "page": 125,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 14,
+      "total_trigrams": 34,
+      "overlap": 0.412,
+      "runner_up_page": 126,
+      "runner_up_trigrams": 8
+    },
+    "5.6.5": {
+      "page": 126,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 31,
+      "overlap": 0.71,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.6.6": {
+      "page": 126,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 73,
+      "total_trigrams": 86,
+      "overlap": 0.849,
+      "runner_up_page": 8,
+      "runner_up_trigrams": 1
+    },
+    "5.6.7": {
+      "page": 126,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 99,
+      "overlap": 0.394,
+      "runner_up_page": 127,
+      "runner_up_trigrams": 28
+    },
+    "5.6.8": {
+      "page": 127,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 67,
+      "overlap": 0.761,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.6.9": {
+      "page": 127,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 54,
+      "overlap": 0.852,
+      "runner_up_page": 52,
+      "runner_up_trigrams": 1
+    },
+    "5.7.1": {
+      "page": 128,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 82,
+      "overlap": 0.524,
+      "runner_up_page": 127,
+      "runner_up_trigrams": 15
+    },
+    "5.7.2": {
+      "page": 128,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 72,
+      "overlap": 0.764,
+      "runner_up_page": 70,
+      "runner_up_trigrams": 1
+    },
+    "5.8.1": {
+      "page": 128,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 71,
+      "overlap": 0.493,
+      "runner_up_page": 129,
+      "runner_up_trigrams": 22
+    },
+    "5.8.2": {
+      "page": 129,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 74,
+      "total_trigrams": 85,
+      "overlap": 0.871,
+      "runner_up_page": 275,
+      "runner_up_trigrams": 1
+    },
+    "5.9.1": {
+      "page": 129,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 75,
+      "overlap": 0.44,
+      "runner_up_page": 130,
+      "runner_up_trigrams": 23
+    },
+    "5.9.2": {
+      "page": 130,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 53,
+      "overlap": 0.717,
+      "runner_up_page": 142,
+      "runner_up_trigrams": 1
+    },
+    "5.9.3": {
+      "page": 130,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 91,
+      "overlap": 0.659,
+      "runner_up_page": 83,
+      "runner_up_trigrams": 2
+    },
+    "5.9.4": {
+      "page": 131,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 72,
+      "overlap": 0.597,
+      "runner_up_page": 130,
+      "runner_up_trigrams": 17
+    },
+    "5.9.5": {
+      "page": 131,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 59,
+      "overlap": 0.729,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.9.6": {
+      "page": 131,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 69,
+      "overlap": 0.812,
+      "runner_up_page": 68,
+      "runner_up_trigrams": 3
+    },
+    "5.9.7": {
+      "page": 132,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 60,
+      "overlap": 0.867,
+      "runner_up_page": 131,
+      "runner_up_trigrams": 5
+    },
+    "5.9.8": {
+      "page": 132,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 57,
+      "overlap": 0.789,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.9.9": {
+      "page": 132,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 55,
+      "overlap": 0.818,
+      "runner_up_page": 35,
+      "runner_up_trigrams": 1
+    },
+    "5.10.1": {
+      "page": 133,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 47,
+      "total_trigrams": 82,
+      "overlap": 0.573,
+      "runner_up_page": 132,
+      "runner_up_trigrams": 24
+    },
+    "5.10.2": {
+      "page": 133,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 63,
+      "overlap": 0.841,
+      "runner_up_page": 272,
+      "runner_up_trigrams": 2
+    },
+    "5.10.3": {
+      "page": 133,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 67,
+      "total_trigrams": 98,
+      "overlap": 0.684,
+      "runner_up_page": 134,
+      "runner_up_trigrams": 17
+    },
+    "5.10.4": {
+      "page": 134,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 67,
+      "overlap": 0.821,
+      "runner_up_page": 291,
+      "runner_up_trigrams": 4
+    },
+    "5.10.5": {
+      "page": 134,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 43,
+      "overlap": 0.86,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.11.1": {
+      "page": 134,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 56,
+      "overlap": 0.679,
+      "runner_up_page": 35,
+      "runner_up_trigrams": 1
+    },
+    "5.11.2": {
+      "page": 135,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 74,
+      "total_trigrams": 103,
+      "overlap": 0.718,
+      "runner_up_page": 86,
+      "runner_up_trigrams": 2
+    },
+    "5.11.3": {
+      "page": 135,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 67,
+      "overlap": 0.627,
+      "runner_up_page": 107,
+      "runner_up_trigrams": 1
+    },
+    "5.11.4": {
+      "page": 136,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 77,
+      "overlap": 0.649,
+      "runner_up_page": 135,
+      "runner_up_trigrams": 12
+    },
+    "5.12.1": {
+      "page": 136,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 56,
+      "overlap": 0.732,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "5.12.2": {
+      "page": 136,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 64,
+      "overlap": 0.719,
+      "runner_up_page": 39,
+      "runner_up_trigrams": 1
+    },
+    "5.12.3": {
+      "page": 137,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 77,
+      "total_trigrams": 88,
+      "overlap": 0.875,
+      "runner_up_page": 122,
+      "runner_up_trigrams": 3
+    },
+    "5.12.4": {
+      "page": 137,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 67,
+      "overlap": 0.866,
+      "runner_up_page": 195,
+      "runner_up_trigrams": 1
+    },
+    "5.12.5": {
+      "page": 137,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 69,
+      "overlap": 0.739,
+      "runner_up_page": 138,
+      "runner_up_trigrams": 10
+    },
+    "5.12.6": {
+      "page": 138,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 49,
+      "overlap": 0.816,
+      "runner_up_page": 86,
+      "runner_up_trigrams": 1
+    },
+    "5.12.7": {
+      "page": 138,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 75,
+      "overlap": 0.76,
+      "runner_up_page": 93,
+      "runner_up_trigrams": 1
+    },
+    "6.praef.1": {
+      "page": 139,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 78,
+      "overlap": 0.513,
+      "runner_up_page": 138,
+      "runner_up_trigrams": 23
+    },
+    "6.praef.2": {
+      "page": 139,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 75,
+      "overlap": 0.8,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.praef.3": {
+      "page": 139,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 72,
+      "total_trigrams": 88,
+      "overlap": 0.818,
+      "runner_up_page": 140,
+      "runner_up_trigrams": 7
+    },
+    "6.praef.4": {
+      "page": 140,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 88,
+      "overlap": 0.807,
+      "runner_up_page": 70,
+      "runner_up_trigrams": 1
+    },
+    "6.praef.5": {
+      "page": 140,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 79,
+      "total_trigrams": 91,
+      "overlap": 0.868,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.praef.6": {
+      "page": 141,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 69,
+      "total_trigrams": 88,
+      "overlap": 0.784,
+      "runner_up_page": 140,
+      "runner_up_trigrams": 5
+    },
+    "6.praef.7": {
+      "page": 141,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 58,
+      "overlap": 0.931,
+      "runner_up_page": 168,
+      "runner_up_trigrams": 1
+    },
+    "6.1.1": {
+      "page": 141,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 77,
+      "overlap": 0.844,
+      "runner_up_page": 31,
+      "runner_up_trigrams": 1
+    },
+    "6.1.2": {
+      "page": 142,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 50,
+      "overlap": 0.78,
+      "runner_up_page": 130,
+      "runner_up_trigrams": 1
+    },
+    "6.1.3": {
+      "page": 142,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 78,
+      "overlap": 0.718,
+      "runner_up_page": 195,
+      "runner_up_trigrams": 1
+    },
+    "6.1.4": {
+      "page": 142,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 61,
+      "overlap": 0.836,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.1.5": {
+      "page": 143,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 73,
+      "overlap": 0.822,
+      "runner_up_page": 68,
+      "runner_up_trigrams": 1
+    },
+    "6.1.6": {
+      "page": 143,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 71,
+      "overlap": 0.831,
+      "runner_up_page": 267,
+      "runner_up_trigrams": 1
+    },
+    "6.1.7": {
+      "page": 143,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 54,
+      "overlap": 0.407,
+      "runner_up_page": 144,
+      "runner_up_trigrams": 18
+    },
+    "6.1.8": {
+      "page": 144,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 68,
+      "total_trigrams": 77,
+      "overlap": 0.883,
+      "runner_up_page": 36,
+      "runner_up_trigrams": 1
+    },
+    "6.1.9": {
+      "page": 144,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 69,
+      "overlap": 0.826,
+      "runner_up_page": 68,
+      "runner_up_trigrams": 2
+    },
+    "6.1.10": {
+      "page": 145,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 70,
+      "overlap": 0.543,
+      "runner_up_page": 49,
+      "runner_up_trigrams": 2
+    },
+    "6.1.11": {
+      "page": 145,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 60,
+      "overlap": 0.65,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.1.12": {
+      "page": 145,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 71,
+      "overlap": 0.507,
+      "runner_up_page": 146,
+      "runner_up_trigrams": 14
+    },
+    "6.2.1": {
+      "page": 146,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 53,
+      "overlap": 0.774,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.2.2": {
+      "page": 146,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 93,
+      "total_trigrams": 103,
+      "overlap": 0.903,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.2.3": {
+      "page": 146,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 14,
+      "total_trigrams": 22,
+      "overlap": 0.636,
+      "runner_up_page": 101,
+      "runner_up_trigrams": 1
+    },
+    "6.2.4": {
+      "page": 147,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 26,
+      "total_trigrams": 42,
+      "overlap": 0.619,
+      "runner_up_page": 65,
+      "runner_up_trigrams": 1
+    },
+    "6.2.5": {
+      "page": 147,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 50,
+      "overlap": 0.76,
+      "runner_up_page": 22,
+      "runner_up_trigrams": 1
+    },
+    "6.3.1": {
+      "page": 147,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 70,
+      "overlap": 0.629,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.3.2": {
+      "page": 148,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 63,
+      "overlap": 0.587,
+      "runner_up_page": 147,
+      "runner_up_trigrams": 17
+    },
+    "6.3.3": {
+      "page": 148,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 49,
+      "overlap": 0.694,
+      "runner_up_page": 214,
+      "runner_up_trigrams": 1
+    },
+    "6.3.4": {
+      "page": 148,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 95,
+      "overlap": 0.663,
+      "runner_up_page": 149,
+      "runner_up_trigrams": 13
+    },
+    "6.3.5": {
+      "page": 149,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 66,
+      "total_trigrams": 69,
+      "overlap": 0.957,
+      "runner_up_page": 108,
+      "runner_up_trigrams": 1
+    },
+    "6.3.6": {
+      "page": 149,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 60,
+      "overlap": 0.85,
+      "runner_up_page": 62,
+      "runner_up_trigrams": 1
+    },
+    "6.3.7": {
+      "page": 150,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 45,
+      "overlap": 0.933,
+      "runner_up_page": 114,
+      "runner_up_trigrams": 4
+    },
+    "6.3.8": {
+      "page": 150,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 72,
+      "overlap": 0.792,
+      "runner_up_page": 116,
+      "runner_up_trigrams": 1
+    },
+    "6.3.9": {
+      "page": 150,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 80,
+      "overlap": 0.5,
+      "runner_up_page": 151,
+      "runner_up_trigrams": 3
+    },
+    "6.3.10": {
+      "page": 151,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 53,
+      "overlap": 0.717,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.3.11": {
+      "page": 151,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 44,
+      "overlap": 0.818,
+      "runner_up_page": 147,
+      "runner_up_trigrams": 1
+    },
+    "6.4.1": {
+      "page": 151,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 75,
+      "overlap": 0.72,
+      "runner_up_page": 152,
+      "runner_up_trigrams": 12
+    },
+    "6.4.2": {
+      "page": 152,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 59,
+      "overlap": 0.881,
+      "runner_up_page": 32,
+      "runner_up_trigrams": 2
+    },
+    "6.5.1": {
+      "page": 152,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 82,
+      "total_trigrams": 88,
+      "overlap": 0.932,
+      "runner_up_page": 147,
+      "runner_up_trigrams": 1
+    },
+    "6.5.2": {
+      "page": 153,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 85,
+      "overlap": 0.6,
+      "runner_up_page": 152,
+      "runner_up_trigrams": 23
+    },
+    "6.5.3": {
+      "page": 153,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 68,
+      "total_trigrams": 80,
+      "overlap": 0.85,
+      "runner_up_page": 35,
+      "runner_up_trigrams": 1
+    },
+    "6.6.1": {
+      "page": 153,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 75,
+      "overlap": 0.64,
+      "runner_up_page": 154,
+      "runner_up_trigrams": 14
+    },
+    "6.6.2": {
+      "page": 154,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 67,
+      "overlap": 0.94,
+      "runner_up_page": 105,
+      "runner_up_trigrams": 1
+    },
+    "6.6.3": {
+      "page": 154,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 83,
+      "total_trigrams": 83,
+      "overlap": 1,
+      "runner_up_page": 25,
+      "runner_up_trigrams": 1
+    },
+    "6.6.4": {
+      "page": 155,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 32,
+      "total_trigrams": 65,
+      "overlap": 0.492,
+      "runner_up_page": 154,
+      "runner_up_trigrams": 22
+    },
+    "6.6.5": {
+      "page": 155,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 57,
+      "overlap": 0.895,
+      "runner_up_page": 290,
+      "runner_up_trigrams": 1
+    },
+    "6.6.6": {
+      "page": 155,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 66,
+      "overlap": 0.864,
+      "runner_up_page": 93,
+      "runner_up_trigrams": 1
+    },
+    "6.6.7": {
+      "page": 156,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 29,
+      "total_trigrams": 77,
+      "overlap": 0.377,
+      "runner_up_page": 155,
+      "runner_up_trigrams": 28
+    },
+    "6.7.1": {
+      "page": 156,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 73,
+      "overlap": 0.89,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.7.2": {
+      "page": 156,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 39,
+      "overlap": 0.923,
+      "runner_up_page": 270,
+      "runner_up_trigrams": 1
+    },
+    "6.7.3": {
+      "page": 156,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 79,
+      "overlap": 0.418,
+      "runner_up_page": 157,
+      "runner_up_trigrams": 19
+    },
+    "6.7.4": {
+      "page": 157,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 72,
+      "total_trigrams": 94,
+      "overlap": 0.766,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.7.5": {
+      "page": 157,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 95,
+      "overlap": 0.642,
+      "runner_up_page": 158,
+      "runner_up_trigrams": 12
+    },
+    "6.7.6": {
+      "page": 158,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 68,
+      "overlap": 0.809,
+      "runner_up_page": 19,
+      "runner_up_trigrams": 1
+    },
+    "6.7.7": {
+      "page": 158,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 47,
+      "overlap": 0.809,
+      "runner_up_page": 74,
+      "runner_up_trigrams": 2
+    },
+    "6.8.1": {
+      "page": 158,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 60,
+      "overlap": 0.583,
+      "runner_up_page": 159,
+      "runner_up_trigrams": 13
+    },
+    "6.8.2": {
+      "page": 159,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 36,
+      "overlap": 0.917,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "6.8.3": {
+      "page": 159,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 39,
+      "overlap": 0.872,
+      "runner_up_page": 252,
+      "runner_up_trigrams": 1
+    },
+    "6.8.4": {
+      "page": 159,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 45,
+      "overlap": 0.8,
+      "runner_up_page": 107,
+      "runner_up_trigrams": 1
+    },
+    "6.8.5": {
+      "page": 159,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 62,
+      "overlap": 0.871,
+      "runner_up_page": 32,
+      "runner_up_trigrams": 1
+    },
+    "6.8.6": {
+      "page": 160,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 55,
+      "overlap": 0.745,
+      "runner_up_page": 159,
+      "runner_up_trigrams": 9
+    },
+    "6.8.7": {
+      "page": 160,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 63,
+      "overlap": 0.81,
+      "runner_up_page": 102,
+      "runner_up_trigrams": 1
+    },
+    "6.8.8": {
+      "page": 160,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 43,
+      "overlap": 0.86,
+      "runner_up_page": 158,
+      "runner_up_trigrams": 1
+    },
+    "6.8.9": {
+      "page": 160,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 68,
+      "overlap": 0.515,
+      "runner_up_page": 161,
+      "runner_up_trigrams": 16
+    },
+    "6.8.10": {
+      "page": 161,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 77,
+      "overlap": 0.844,
+      "runner_up_page": 240,
+      "runner_up_trigrams": 2
+    },
+    "7.praef.1": {
+      "page": 161,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 47,
+      "overlap": 0.745,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.praef.2": {
+      "page": 162,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 24,
+      "total_trigrams": 57,
+      "overlap": 0.421,
+      "runner_up_page": 161,
+      "runner_up_trigrams": 19
+    },
+    "7.praef.3": {
+      "page": 162,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 61,
+      "overlap": 0.787,
+      "runner_up_page": 185,
+      "runner_up_trigrams": 2
+    },
+    "7.praef.4": {
+      "page": 162,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 55,
+      "overlap": 0.782,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.praef.5": {
+      "page": 162,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 66,
+      "overlap": 0.591,
+      "runner_up_page": 163,
+      "runner_up_trigrams": 18
+    },
+    "7.praef.6": {
+      "page": 163,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 45,
+      "overlap": 0.8,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.praef.7": {
+      "page": 163,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 66,
+      "overlap": 0.833,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.praef.8": {
+      "page": 163,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 52,
+      "overlap": 0.942,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.praef.9": {
+      "page": 164,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 76,
+      "overlap": 0.645,
+      "runner_up_page": 163,
+      "runner_up_trigrams": 19
+    },
+    "7.praef.10": {
+      "page": 164,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 55,
+      "overlap": 0.818,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.praef.11": {
+      "page": 164,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 63,
+      "overlap": 0.952,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.praef.12": {
+      "page": 165,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 67,
+      "total_trigrams": 79,
+      "overlap": 0.848,
+      "runner_up_page": 164,
+      "runner_up_trigrams": 3
+    },
+    "7.praef.13": {
+      "page": 165,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 49,
+      "overlap": 0.776,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.praef.14": {
+      "page": 166,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 74,
+      "overlap": 0.527,
+      "runner_up_page": 165,
+      "runner_up_trigrams": 15
+    },
+    "7.praef.15": {
+      "page": 166,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 85,
+      "overlap": 0.753,
+      "runner_up_page": 24,
+      "runner_up_trigrams": 1
+    },
+    "7.praef.16": {
+      "page": 167,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 29,
+      "total_trigrams": 73,
+      "overlap": 0.397,
+      "runner_up_page": 166,
+      "runner_up_trigrams": 21
+    },
+    "7.praef.17": {
+      "page": 167,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 89,
+      "overlap": 0.787,
+      "runner_up_page": 103,
+      "runner_up_trigrams": 2
+    },
+    "7.praef.18": {
+      "page": 168,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 24,
+      "total_trigrams": 49,
+      "overlap": 0.49,
+      "runner_up_page": 167,
+      "runner_up_trigrams": 19
+    },
+    "7.1.1": {
+      "page": 168,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 73,
+      "total_trigrams": 81,
+      "overlap": 0.901,
+      "runner_up_page": 118,
+      "runner_up_trigrams": 1
+    },
+    "7.1.2": {
+      "page": 168,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 78,
+      "overlap": 0.821,
+      "runner_up_page": 293,
+      "runner_up_trigrams": 3
+    },
+    "7.1.3": {
+      "page": 169,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 68,
+      "overlap": 0.706,
+      "runner_up_page": 293,
+      "runner_up_trigrams": 4
+    },
+    "7.1.4": {
+      "page": 169,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 79,
+      "total_trigrams": 79,
+      "overlap": 1,
+      "runner_up_page": 294,
+      "runner_up_trigrams": 1
+    },
+    "7.1.5": {
+      "page": 169,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 31,
+      "total_trigrams": 65,
+      "overlap": 0.477,
+      "runner_up_page": 170,
+      "runner_up_trigrams": 21
+    },
+    "7.1.6": {
+      "page": 170,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 59,
+      "overlap": 0.847,
+      "runner_up_page": 103,
+      "runner_up_trigrams": 2
+    },
+    "7.1.7": {
+      "page": 170,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 69,
+      "total_trigrams": 82,
+      "overlap": 0.841,
+      "runner_up_page": 36,
+      "runner_up_trigrams": 1
+    },
+    "7.2.1": {
+      "page": 170,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 64,
+      "overlap": 0.469,
+      "runner_up_page": 171,
+      "runner_up_trigrams": 24
+    },
+    "7.2.2": {
+      "page": 171,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 61,
+      "overlap": 0.885,
+      "runner_up_page": 29,
+      "runner_up_trigrams": 1
+    },
+    "7.3.1": {
+      "page": 171,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 71,
+      "overlap": 0.915,
+      "runner_up_page": 36,
+      "runner_up_trigrams": 1
+    },
+    "7.3.2": {
+      "page": 172,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 72,
+      "overlap": 0.597,
+      "runner_up_page": 171,
+      "runner_up_trigrams": 24
+    },
+    "7.3.3": {
+      "page": 172,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 73,
+      "overlap": 0.959,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.3.4": {
+      "page": 172,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 50,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.3.5": {
+      "page": 173,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 18,
+      "total_trigrams": 44,
+      "overlap": 0.409,
+      "runner_up_page": 172,
+      "runner_up_trigrams": 10
+    },
+    "7.3.6": {
+      "page": 173,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 60,
+      "overlap": 0.6,
+      "runner_up_page": 295,
+      "runner_up_trigrams": 1
+    },
+    "7.3.7": {
+      "page": 173,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 68,
+      "overlap": 0.588,
+      "runner_up_page": 287,
+      "runner_up_trigrams": 1
+    },
+    "7.3.8": {
+      "page": 173,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 23,
+      "total_trigrams": 61,
+      "overlap": 0.377,
+      "runner_up_page": 174,
+      "runner_up_trigrams": 20
+    },
+    "7.3.9": {
+      "page": 174,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 66,
+      "overlap": 0.818,
+      "runner_up_page": 162,
+      "runner_up_trigrams": 1
+    },
+    "7.3.10": {
+      "page": 174,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 26,
+      "total_trigrams": 47,
+      "overlap": 0.553,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.3.11": {
+      "page": 174,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 47,
+      "total_trigrams": 81,
+      "overlap": 0.58,
+      "runner_up_page": 175,
+      "runner_up_trigrams": 13
+    },
+    "7.4.1": {
+      "page": 175,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 99,
+      "overlap": 0.646,
+      "runner_up_page": 158,
+      "runner_up_trigrams": 1
+    },
+    "7.4.2": {
+      "page": 175,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 62,
+      "overlap": 0.806,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.4.3": {
+      "page": 176,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 45,
+      "overlap": 0.667,
+      "runner_up_page": 175,
+      "runner_up_trigrams": 4
+    },
+    "7.4.4": {
+      "page": 176,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 71,
+      "overlap": 0.775,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.4.5": {
+      "page": 176,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 68,
+      "overlap": 0.868,
+      "runner_up_page": 296,
+      "runner_up_trigrams": 3
+    },
+    "7.5.1": {
+      "page": 177,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 59,
+      "overlap": 0.712,
+      "runner_up_page": 255,
+      "runner_up_trigrams": 1
+    },
+    "7.5.2": {
+      "page": 177,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 82,
+      "overlap": 0.524,
+      "runner_up_page": 243,
+      "runner_up_trigrams": 1
+    },
+    "7.5.3": {
+      "page": 178,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 62,
+      "overlap": 0.355,
+      "runner_up_page": 177,
+      "runner_up_trigrams": 21
+    },
+    "7.5.4": {
+      "page": 178,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 94,
+      "total_trigrams": 105,
+      "overlap": 0.895,
+      "runner_up_page": 31,
+      "runner_up_trigrams": 1
+    },
+    "7.5.5": {
+      "page": 178,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 71,
+      "overlap": 0.577,
+      "runner_up_page": 179,
+      "runner_up_trigrams": 2
+    },
+    "7.5.6": {
+      "page": 179,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 74,
+      "total_trigrams": 98,
+      "overlap": 0.755,
+      "runner_up_page": 66,
+      "runner_up_trigrams": 1
+    },
+    "7.5.7": {
+      "page": 179,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 63,
+      "overlap": 0.952,
+      "runner_up_page": 127,
+      "runner_up_trigrams": 1
+    },
+    "7.5.8": {
+      "page": 179,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 27,
+      "total_trigrams": 66,
+      "overlap": 0.409,
+      "runner_up_page": 180,
+      "runner_up_trigrams": 26
+    },
+    "7.6.1": {
+      "page": 180,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 76,
+      "total_trigrams": 97,
+      "overlap": 0.784,
+      "runner_up_page": 296,
+      "runner_up_trigrams": 2
+    },
+    "7.7.1": {
+      "page": 180,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 57,
+      "overlap": 0.649,
+      "runner_up_page": 181,
+      "runner_up_trigrams": 4
+    },
+    "7.7.2": {
+      "page": 181,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 23,
+      "total_trigrams": 26,
+      "overlap": 0.885,
+      "runner_up_page": 32,
+      "runner_up_trigrams": 1
+    },
+    "7.7.3": {
+      "page": 181,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 16,
+      "total_trigrams": 17,
+      "overlap": 0.941,
+      "runner_up_page": 296,
+      "runner_up_trigrams": 8
+    },
+    "7.7.4": {
+      "page": 181,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 20,
+      "total_trigrams": 22,
+      "overlap": 0.909,
+      "runner_up_page": 296,
+      "runner_up_trigrams": 3
+    },
+    "7.7.5": {
+      "page": 181,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 11,
+      "total_trigrams": 16,
+      "overlap": 0.688,
+      "runner_up_page": 121,
+      "runner_up_trigrams": 1
+    },
+    "7.8.1": {
+      "page": 181,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 50,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.8.2": {
+      "page": 181,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 47,
+      "total_trigrams": 56,
+      "overlap": 0.839,
+      "runner_up_page": 182,
+      "runner_up_trigrams": 3
+    },
+    "7.8.3": {
+      "page": 182,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 46,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.8.4": {
+      "page": 182,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 67,
+      "total_trigrams": 70,
+      "overlap": 0.957,
+      "runner_up_page": 297,
+      "runner_up_trigrams": 4
+    },
+    "7.9.1": {
+      "page": 182,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 37,
+      "overlap": 0.892,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.9.2": {
+      "page": 183,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 72,
+      "overlap": 0.486,
+      "runner_up_page": 182,
+      "runner_up_trigrams": 25
+    },
+    "7.9.3": {
+      "page": 183,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 52,
+      "overlap": 0.788,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.9.4": {
+      "page": 183,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 51,
+      "overlap": 0.882,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.9.5": {
+      "page": 183,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 48,
+      "overlap": 0.75,
+      "runner_up_page": 184,
+      "runner_up_trigrams": 4
+    },
+    "7.9.6": {
+      "page": 184,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 20,
+      "total_trigrams": 23,
+      "overlap": 0.87,
+      "runner_up_page": 195,
+      "runner_up_trigrams": 1
+    },
+    "7.10.1": {
+      "page": 184,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 17,
+      "total_trigrams": 26,
+      "overlap": 0.654,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.10.2": {
+      "page": 184,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 57,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.10.3": {
+      "page": 184,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 29,
+      "total_trigrams": 32,
+      "overlap": 0.906,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.10.4": {
+      "page": 184,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 27,
+      "total_trigrams": 30,
+      "overlap": 0.9,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.11.1": {
+      "page": 185,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 77,
+      "overlap": 0.662,
+      "runner_up_page": 184,
+      "runner_up_trigrams": 7
+    },
+    "7.11.2": {
+      "page": 185,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 18,
+      "total_trigrams": 21,
+      "overlap": 0.857,
+      "runner_up_page": 298,
+      "runner_up_trigrams": 1
+    },
+    "7.12.1": {
+      "page": 185,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 46,
+      "overlap": 0.739,
+      "runner_up_page": 162,
+      "runner_up_trigrams": 2
+    },
+    "7.12.2": {
+      "page": 185,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 25,
+      "overlap": 0.88,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.13.1": {
+      "page": 186,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 43,
+      "overlap": 0.512,
+      "runner_up_page": 185,
+      "runner_up_trigrams": 11
+    },
+    "7.13.2": {
+      "page": 186,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 48,
+      "overlap": 0.813,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.13.3": {
+      "page": 186,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 36,
+      "overlap": 0.833,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "7.14.1": {
+      "page": 186,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 49,
+      "overlap": 1,
+      "runner_up_page": 298,
+      "runner_up_trigrams": 10
+    },
+    "7.14.2": {
+      "page": 186,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 24,
+      "total_trigrams": 46,
+      "overlap": 0.522,
+      "runner_up_page": 187,
+      "runner_up_trigrams": 11
+    },
+    "7.14.3": {
+      "page": 187,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 52,
+      "overlap": 0.885,
+      "runner_up_page": 206,
+      "runner_up_trigrams": 1
+    },
+    "8.praef.1": {
+      "page": 187,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 88,
+      "overlap": 0.67,
+      "runner_up_page": 188,
+      "runner_up_trigrams": 3
+    },
+    "8.praef.2": {
+      "page": 188,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 72,
+      "overlap": 0.875,
+      "runner_up_page": 74,
+      "runner_up_trigrams": 1
+    },
+    "8.praef.3": {
+      "page": 188,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 84,
+      "total_trigrams": 99,
+      "overlap": 0.848,
+      "runner_up_page": 140,
+      "runner_up_trigrams": 1
+    },
+    "8.praef.4": {
+      "page": 188,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 27,
+      "total_trigrams": 66,
+      "overlap": 0.409,
+      "runner_up_page": 189,
+      "runner_up_trigrams": 25
+    },
+    "8.1.1": {
+      "page": 189,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 73,
+      "total_trigrams": 82,
+      "overlap": 0.89,
+      "runner_up_page": 54,
+      "runner_up_trigrams": 1
+    },
+    "8.1.2": {
+      "page": 189,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 124,
+      "overlap": 0.484,
+      "runner_up_page": 190,
+      "runner_up_trigrams": 42
+    },
+    "8.1.3": {
+      "page": 190,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 69,
+      "overlap": 0.826,
+      "runner_up_page": 283,
+      "runner_up_trigrams": 6
+    },
+    "8.1.4": {
+      "page": 190,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 55,
+      "overlap": 0.691,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.1.5": {
+      "page": 191,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 86,
+      "overlap": 0.488,
+      "runner_up_page": 190,
+      "runner_up_trigrams": 26
+    },
+    "8.1.6": {
+      "page": 191,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 68,
+      "overlap": 0.676,
+      "runner_up_page": 87,
+      "runner_up_trigrams": 1
+    },
+    "8.1.7": {
+      "page": 191,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 83,
+      "overlap": 0.639,
+      "runner_up_page": 192,
+      "runner_up_trigrams": 2
+    },
+    "8.2.1": {
+      "page": 192,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 63,
+      "overlap": 0.905,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.2.2": {
+      "page": 192,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 51,
+      "overlap": 0.765,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.2.3": {
+      "page": 192,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 51,
+      "overlap": 0.784,
+      "runner_up_page": 198,
+      "runner_up_trigrams": 1
+    },
+    "8.2.4": {
+      "page": 193,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 82,
+      "overlap": 0.524,
+      "runner_up_page": 192,
+      "runner_up_trigrams": 15
+    },
+    "8.2.5": {
+      "page": 193,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 45,
+      "overlap": 0.556,
+      "runner_up_page": 65,
+      "runner_up_trigrams": 1
+    },
+    "8.2.6": {
+      "page": 193,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 117,
+      "overlap": 0.333,
+      "runner_up_page": 194,
+      "runner_up_trigrams": 37
+    },
+    "8.2.7": {
+      "page": 194,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 19,
+      "total_trigrams": 28,
+      "overlap": 0.679,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.2.8": {
+      "page": 194,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 60,
+      "overlap": 0.85,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.2.9": {
+      "page": 194,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 52,
+      "overlap": 0.827,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.3.1": {
+      "page": 195,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 69,
+      "overlap": 0.797,
+      "runner_up_page": 137,
+      "runner_up_trigrams": 1
+    },
+    "8.3.2": {
+      "page": 195,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 74,
+      "total_trigrams": 98,
+      "overlap": 0.755,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.3.3": {
+      "page": 196,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 97,
+      "overlap": 0.423,
+      "runner_up_page": 195,
+      "runner_up_trigrams": 34
+    },
+    "8.3.4": {
+      "page": 196,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 60,
+      "overlap": 0.75,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.3.5": {
+      "page": 196,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 87,
+      "overlap": 0.816,
+      "runner_up_page": 197,
+      "runner_up_trigrams": 3
+    },
+    "8.3.6": {
+      "page": 197,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 77,
+      "total_trigrams": 89,
+      "overlap": 0.865,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.3.7": {
+      "page": 197,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 80,
+      "overlap": 0.813,
+      "runner_up_page": 42,
+      "runner_up_trigrams": 1
+    },
+    "8.3.8": {
+      "page": 198,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 112,
+      "overlap": 0.527,
+      "runner_up_page": 197,
+      "runner_up_trigrams": 28
+    },
+    "8.3.9": {
+      "page": 198,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 67,
+      "overlap": 0.94,
+      "runner_up_page": 112,
+      "runner_up_trigrams": 1
+    },
+    "8.3.10": {
+      "page": 198,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 68,
+      "overlap": 0.794,
+      "runner_up_page": 199,
+      "runner_up_trigrams": 8
+    },
+    "8.3.11": {
+      "page": 199,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 53,
+      "overlap": 0.83,
+      "runner_up_page": 85,
+      "runner_up_trigrams": 1
+    },
+    "8.3.12": {
+      "page": 199,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 77,
+      "total_trigrams": 86,
+      "overlap": 0.895,
+      "runner_up_page": 57,
+      "runner_up_trigrams": 1
+    },
+    "8.3.13": {
+      "page": 200,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 79,
+      "overlap": 0.544,
+      "runner_up_page": 199,
+      "runner_up_trigrams": 19
+    },
+    "8.3.14": {
+      "page": 200,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 71,
+      "overlap": 0.915,
+      "runner_up_page": 31,
+      "runner_up_trigrams": 1
+    },
+    "8.3.15": {
+      "page": 200,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 69,
+      "overlap": 0.507,
+      "runner_up_page": 201,
+      "runner_up_trigrams": 19
+    },
+    "8.3.16": {
+      "page": 201,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 95,
+      "overlap": 0.6,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.3.17": {
+      "page": 201,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 57,
+      "overlap": 0.596,
+      "runner_up_page": 202,
+      "runner_up_trigrams": 1
+    },
+    "8.3.18": {
+      "page": 202,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 66,
+      "overlap": 0.545,
+      "runner_up_page": 201,
+      "runner_up_trigrams": 13
+    },
+    "8.3.19": {
+      "page": 202,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 57,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.3.20": {
+      "page": 202,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 29,
+      "total_trigrams": 32,
+      "overlap": 0.906,
+      "runner_up_page": 195,
+      "runner_up_trigrams": 1
+    },
+    "8.3.21": {
+      "page": 202,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 58,
+      "overlap": 0.741,
+      "runner_up_page": 201,
+      "runner_up_trigrams": 1
+    },
+    "8.3.22": {
+      "page": 203,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 29,
+      "overlap": 0.862,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.3.23": {
+      "page": 204,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 34,
+      "overlap": 0.735,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.3.24": {
+      "page": 204,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 95,
+      "overlap": 0.484,
+      "runner_up_page": 205,
+      "runner_up_trigrams": 30
+    },
+    "8.3.25": {
+      "page": 205,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 68,
+      "overlap": 0.574,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.3.26": {
+      "page": 205,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 68,
+      "overlap": 0.632,
+      "runner_up_page": 144,
+      "runner_up_trigrams": 1
+    },
+    "8.3.27": {
+      "page": 206,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 28,
+      "total_trigrams": 68,
+      "overlap": 0.412,
+      "runner_up_page": 205,
+      "runner_up_trigrams": 20
+    },
+    "8.3.28": {
+      "page": 206,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 61,
+      "overlap": 0.902,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.4.1": {
+      "page": 206,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 68,
+      "total_trigrams": 77,
+      "overlap": 0.883,
+      "runner_up_page": 285,
+      "runner_up_trigrams": 3
+    },
+    "8.4.2": {
+      "page": 206,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 52,
+      "overlap": 0.654,
+      "runner_up_page": 207,
+      "runner_up_trigrams": 7
+    },
+    "8.5.1": {
+      "page": 207,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 79,
+      "overlap": 0.81,
+      "runner_up_page": 247,
+      "runner_up_trigrams": 1
+    },
+    "8.5.2": {
+      "page": 207,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 42,
+      "overlap": 0.857,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.5.3": {
+      "page": 207,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 105,
+      "overlap": 0.524,
+      "runner_up_page": 208,
+      "runner_up_trigrams": 43
+    },
+    "8.6.1": {
+      "page": 208,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 66,
+      "overlap": 0.742,
+      "runner_up_page": 285,
+      "runner_up_trigrams": 2
+    },
+    "8.6.2": {
+      "page": 208,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 45,
+      "overlap": 0.956,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.6.3": {
+      "page": 209,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 52,
+      "overlap": 0.654,
+      "runner_up_page": 208,
+      "runner_up_trigrams": 13
+    },
+    "8.6.4": {
+      "page": 209,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 88,
+      "overlap": 0.795,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.6.5": {
+      "page": 209,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 63,
+      "total_trigrams": 77,
+      "overlap": 0.818,
+      "runner_up_page": 210,
+      "runner_up_trigrams": 2
+    },
+    "8.6.6": {
+      "page": 210,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 52,
+      "overlap": 0.942,
+      "runner_up_page": 122,
+      "runner_up_trigrams": 1
+    },
+    "8.6.7": {
+      "page": 210,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 39,
+      "overlap": 0.769,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.6.8": {
+      "page": 210,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 71,
+      "overlap": 0.915,
+      "runner_up_page": 286,
+      "runner_up_trigrams": 6
+    },
+    "8.6.9": {
+      "page": 211,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 58,
+      "overlap": 0.431,
+      "runner_up_page": 210,
+      "runner_up_trigrams": 22
+    },
+    "8.6.10": {
+      "page": 211,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 52,
+      "overlap": 0.769,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "8.6.11": {
+      "page": 211,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 59,
+      "overlap": 0.746,
+      "runner_up_page": 286,
+      "runner_up_trigrams": 1
+    },
+    "8.6.12": {
+      "page": 211,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 88,
+      "overlap": 0.625,
+      "runner_up_page": 212,
+      "runner_up_trigrams": 22
+    },
+    "8.6.13": {
+      "page": 212,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 48,
+      "overlap": 0.708,
+      "runner_up_page": 66,
+      "runner_up_trigrams": 1
+    },
+    "8.6.14": {
+      "page": 212,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 58,
+      "overlap": 0.897,
+      "runner_up_page": 284,
+      "runner_up_trigrams": 5
+    },
+    "8.6.15": {
+      "page": 212,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 72,
+      "overlap": 0.583,
+      "runner_up_page": 213,
+      "runner_up_trigrams": 22
+    },
+    "9.praef.1": {
+      "page": 213,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 77,
+      "total_trigrams": 91,
+      "overlap": 0.846,
+      "runner_up_page": 57,
+      "runner_up_trigrams": 1
+    },
+    "9.praef.2": {
+      "page": 213,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 72,
+      "overlap": 0.722,
+      "runner_up_page": 214,
+      "runner_up_trigrams": 9
+    },
+    "9.praef.3": {
+      "page": 214,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 37,
+      "total_trigrams": 49,
+      "overlap": 0.755,
+      "runner_up_page": 24,
+      "runner_up_trigrams": 1
+    },
+    "9.praef.4": {
+      "page": 214,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 82,
+      "total_trigrams": 85,
+      "overlap": 0.965,
+      "runner_up_page": 90,
+      "runner_up_trigrams": 1
+    },
+    "9.praef.5": {
+      "page": 214,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 47,
+      "total_trigrams": 69,
+      "overlap": 0.681,
+      "runner_up_page": 215,
+      "runner_up_trigrams": 14
+    },
+    "9.praef.6": {
+      "page": 215,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 76,
+      "total_trigrams": 76,
+      "overlap": 1,
+      "runner_up_page": 97,
+      "runner_up_trigrams": 1
+    },
+    "9.praef.7": {
+      "page": 215,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 52,
+      "overlap": 0.885,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.praef.8": {
+      "page": 215,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 29,
+      "total_trigrams": 51,
+      "overlap": 0.569,
+      "runner_up_page": 216,
+      "runner_up_trigrams": 11
+    },
+    "9.praef.9": {
+      "page": 216,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 55,
+      "overlap": 0.891,
+      "runner_up_page": 40,
+      "runner_up_trigrams": 1
+    },
+    "9.praef.10": {
+      "page": 216,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 69,
+      "total_trigrams": 80,
+      "overlap": 0.863,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.praef.11": {
+      "page": 216,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 64,
+      "overlap": 0.781,
+      "runner_up_page": 217,
+      "runner_up_trigrams": 11
+    },
+    "9.praef.12": {
+      "page": 217,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 64,
+      "overlap": 0.906,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.praef.13": {
+      "page": 217,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 51,
+      "overlap": 0.784,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.praef.14": {
+      "page": 217,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 28,
+      "total_trigrams": 45,
+      "overlap": 0.622,
+      "runner_up_page": 218,
+      "runner_up_trigrams": 6
+    },
+    "9.praef.15": {
+      "page": 218,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 31,
+      "total_trigrams": 37,
+      "overlap": 0.838,
+      "runner_up_page": 132,
+      "runner_up_trigrams": 1
+    },
+    "9.praef.16": {
+      "page": 218,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 71,
+      "overlap": 0.915,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.praef.17": {
+      "page": 218,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 61,
+      "overlap": 0.836,
+      "runner_up_page": 32,
+      "runner_up_trigrams": 1
+    },
+    "9.praef.18": {
+      "page": 218,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 14,
+      "total_trigrams": 32,
+      "overlap": 0.438,
+      "runner_up_page": 219,
+      "runner_up_trigrams": 10
+    },
+    "9.1.1": {
+      "page": 219,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 69,
+      "overlap": 0.58,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.1.2": {
+      "page": 219,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 78,
+      "overlap": 0.59,
+      "runner_up_page": 141,
+      "runner_up_trigrams": 1
+    },
+    "9.1.3": {
+      "page": 220,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 58,
+      "overlap": 0.517,
+      "runner_up_page": 219,
+      "runner_up_trigrams": 7
+    },
+    "9.1.4": {
+      "page": 220,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 64,
+      "overlap": 0.641,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.1.5": {
+      "page": 220,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 31,
+      "total_trigrams": 59,
+      "overlap": 0.525,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.1.6": {
+      "page": 221,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 21,
+      "total_trigrams": 65,
+      "overlap": 0.323,
+      "runner_up_page": 220,
+      "runner_up_trigrams": 13
+    },
+    "9.1.7": {
+      "page": 221,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 75,
+      "overlap": 0.707,
+      "runner_up_page": 68,
+      "runner_up_trigrams": 1
+    },
+    "9.1.8": {
+      "page": 221,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 19,
+      "total_trigrams": 33,
+      "overlap": 0.576,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.1.9": {
+      "page": 221,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 46,
+      "overlap": 0.478,
+      "runner_up_page": 222,
+      "runner_up_trigrams": 7
+    },
+    "9.1.10": {
+      "page": 222,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 88,
+      "overlap": 0.807,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.1.11": {
+      "page": 222,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 84,
+      "total_trigrams": 90,
+      "overlap": 0.933,
+      "runner_up_page": 188,
+      "runner_up_trigrams": 1
+    },
+    "9.1.12": {
+      "page": 223,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 53,
+      "overlap": 0.623,
+      "runner_up_page": 222,
+      "runner_up_trigrams": 6
+    },
+    "9.1.13": {
+      "page": 223,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 82,
+      "overlap": 0.854,
+      "runner_up_page": 188,
+      "runner_up_trigrams": 1
+    },
+    "9.1.14": {
+      "page": 223,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 56,
+      "overlap": 0.589,
+      "runner_up_page": 224,
+      "runner_up_trigrams": 8
+    },
+    "9.1.15": {
+      "page": 224,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 76,
+      "overlap": 0.934,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.1.16": {
+      "page": 224,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 89,
+      "total_trigrams": 101,
+      "overlap": 0.881,
+      "runner_up_page": 55,
+      "runner_up_trigrams": 3
+    },
+    "9.2.1": {
+      "page": 225,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 79,
+      "overlap": 0.646,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.2.2": {
+      "page": 225,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 109,
+      "overlap": 0.651,
+      "runner_up_page": 226,
+      "runner_up_trigrams": 3
+    },
+    "9.2.3": {
+      "page": 226,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 88,
+      "total_trigrams": 100,
+      "overlap": 0.88,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.2.4": {
+      "page": 226,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 85,
+      "overlap": 0.824,
+      "runner_up_page": 225,
+      "runner_up_trigrams": 2
+    },
+    "9.3.1": {
+      "page": 227,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 71,
+      "overlap": 0.845,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.3.2": {
+      "page": 227,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 61,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.3.3": {
+      "page": 227,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 96,
+      "overlap": 0.552,
+      "runner_up_page": 228,
+      "runner_up_trigrams": 29
+    },
+    "9.4.1": {
+      "page": 228,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 47,
+      "overlap": 0.894,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.4.2": {
+      "page": 228,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 56,
+      "overlap": 0.893,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.4.3": {
+      "page": 229,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 81,
+      "overlap": 0.556,
+      "runner_up_page": 228,
+      "runner_up_trigrams": 28
+    },
+    "9.4.4": {
+      "page": 229,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 46,
+      "overlap": 0.87,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.4.5": {
+      "page": 229,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 65,
+      "overlap": 0.815,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.4.6": {
+      "page": 230,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 89,
+      "total_trigrams": 105,
+      "overlap": 0.848,
+      "runner_up_page": 229,
+      "runner_up_trigrams": 5
+    },
+    "9.5.1": {
+      "page": 230,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 63,
+      "overlap": 0.905,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.5.2": {
+      "page": 231,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 61,
+      "overlap": 0.492,
+      "runner_up_page": 230,
+      "runner_up_trigrams": 26
+    },
+    "9.5.3": {
+      "page": 231,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 61,
+      "overlap": 0.738,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.5.4": {
+      "page": 231,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 80,
+      "total_trigrams": 89,
+      "overlap": 0.899,
+      "runner_up_page": 80,
+      "runner_up_trigrams": 1
+    },
+    "9.6.1": {
+      "page": 232,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 13,
+      "total_trigrams": 26,
+      "overlap": 0.5,
+      "runner_up_page": 231,
+      "runner_up_trigrams": 5
+    },
+    "9.6.2": {
+      "page": 232,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 67,
+      "overlap": 0.806,
+      "runner_up_page": 20,
+      "runner_up_trigrams": 1
+    },
+    "9.6.3": {
+      "page": 232,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 45,
+      "total_trigrams": 74,
+      "overlap": 0.608,
+      "runner_up_page": 233,
+      "runner_up_trigrams": 12
+    },
+    "9.7.1": {
+      "page": 233,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 61,
+      "overlap": 0.852,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.7.2": {
+      "page": 233,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 61,
+      "overlap": 0.918,
+      "runner_up_page": 43,
+      "runner_up_trigrams": 1
+    },
+    "9.7.3": {
+      "page": 234,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 66,
+      "overlap": 0.53,
+      "runner_up_page": 233,
+      "runner_up_trigrams": 27
+    },
+    "9.7.4": {
+      "page": 234,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 71,
+      "overlap": 0.915,
+      "runner_up_page": 43,
+      "runner_up_trigrams": 10
+    },
+    "9.7.5": {
+      "page": 234,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 57,
+      "overlap": 0.737,
+      "runner_up_page": 43,
+      "runner_up_trigrams": 2
+    },
+    "9.7.6": {
+      "page": 235,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 69,
+      "total_trigrams": 76,
+      "overlap": 0.908,
+      "runner_up_page": 234,
+      "runner_up_trigrams": 6
+    },
+    "9.7.7": {
+      "page": 235,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 75,
+      "total_trigrams": 90,
+      "overlap": 0.833,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.8.1": {
+      "page": 236,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 72,
+      "total_trigrams": 78,
+      "overlap": 0.923,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.8.2": {
+      "page": 236,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 52,
+      "total_trigrams": 61,
+      "overlap": 0.852,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.8.3": {
+      "page": 236,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 21,
+      "total_trigrams": 46,
+      "overlap": 0.457,
+      "runner_up_page": 237,
+      "runner_up_trigrams": 17
+    },
+    "9.8.4": {
+      "page": 237,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 47,
+      "overlap": 0.745,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.8.5": {
+      "page": 237,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 62,
+      "overlap": 0.952,
+      "runner_up_page": 238,
+      "runner_up_trigrams": 1
+    },
+    "9.8.6": {
+      "page": 237,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 73,
+      "overlap": 0.699,
+      "runner_up_page": 238,
+      "runner_up_trigrams": 11
+    },
+    "9.8.7": {
+      "page": 238,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 51,
+      "overlap": 0.902,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.8.8": {
+      "page": 238,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 66,
+      "total_trigrams": 81,
+      "overlap": 0.815,
+      "runner_up_page": 237,
+      "runner_up_trigrams": 1
+    },
+    "9.8.9": {
+      "page": 238,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 61,
+      "overlap": 0.492,
+      "runner_up_page": 239,
+      "runner_up_trigrams": 19
+    },
+    "9.8.10": {
+      "page": 239,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 45,
+      "overlap": 0.867,
+      "runner_up_page": 66,
+      "runner_up_trigrams": 1
+    },
+    "9.8.11": {
+      "page": 239,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 45,
+      "overlap": 0.8,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.8.12": {
+      "page": 239,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 69,
+      "overlap": 0.942,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.8.13": {
+      "page": 240,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 67,
+      "overlap": 0.806,
+      "runner_up_page": 239,
+      "runner_up_trigrams": 5
+    },
+    "9.8.14": {
+      "page": 240,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 62,
+      "total_trigrams": 71,
+      "overlap": 0.873,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "9.8.15": {
+      "page": 240,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 27,
+      "total_trigrams": 46,
+      "overlap": 0.587,
+      "runner_up_page": 241,
+      "runner_up_trigrams": 6
+    },
+    "10.praef.1": {
+      "page": 241,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 71,
+      "overlap": 0.915,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.praef.2": {
+      "page": 241,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 69,
+      "total_trigrams": 90,
+      "overlap": 0.767,
+      "runner_up_page": 179,
+      "runner_up_trigrams": 2
+    },
+    "10.praef.3": {
+      "page": 242,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 57,
+      "overlap": 0.842,
+      "runner_up_page": 241,
+      "runner_up_trigrams": 4
+    },
+    "10.praef.4": {
+      "page": 242,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 62,
+      "overlap": 0.903,
+      "runner_up_page": 75,
+      "runner_up_trigrams": 1
+    },
+    "10.1.1": {
+      "page": 242,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 60,
+      "overlap": 0.733,
+      "runner_up_page": 243,
+      "runner_up_trigrams": 2
+    },
+    "10.1.2": {
+      "page": 243,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 45,
+      "overlap": 0.733,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.1.3": {
+      "page": 243,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 52,
+      "overlap": 0.885,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.1.4": {
+      "page": 243,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 72,
+      "overlap": 0.639,
+      "runner_up_page": 244,
+      "runner_up_trigrams": 9
+    },
+    "10.1.5": {
+      "page": 244,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 66,
+      "overlap": 0.818,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.1.6": {
+      "page": 244,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 51,
+      "overlap": 0.941,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.2.1": {
+      "page": 244,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 28,
+      "total_trigrams": 78,
+      "overlap": 0.359,
+      "runner_up_page": 245,
+      "runner_up_trigrams": 27
+    },
+    "10.2.2": {
+      "page": 245,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 60,
+      "overlap": 0.8,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.2.3": {
+      "page": 245,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 67,
+      "overlap": 0.642,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.2.4": {
+      "page": 246,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 70,
+      "overlap": 0.586,
+      "runner_up_page": 245,
+      "runner_up_trigrams": 17
+    },
+    "10.2.5": {
+      "page": 246,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 30,
+      "overlap": 0.733,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.2.6": {
+      "page": 246,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 68,
+      "total_trigrams": 77,
+      "overlap": 0.883,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.2.7": {
+      "page": 246,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 23,
+      "total_trigrams": 52,
+      "overlap": 0.442,
+      "runner_up_page": 247,
+      "runner_up_trigrams": 15
+    },
+    "10.2.8": {
+      "page": 247,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 82,
+      "overlap": 0.707,
+      "runner_up_page": 272,
+      "runner_up_trigrams": 2
+    },
+    "10.2.9": {
+      "page": 247,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 61,
+      "overlap": 0.59,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.2.10": {
+      "page": 248,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 40,
+      "total_trigrams": 70,
+      "overlap": 0.571,
+      "runner_up_page": 247,
+      "runner_up_trigrams": 11
+    },
+    "10.2.11": {
+      "page": 248,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 73,
+      "total_trigrams": 76,
+      "overlap": 0.961,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.2.12": {
+      "page": 249,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 95,
+      "overlap": 0.6,
+      "runner_up_page": 248,
+      "runner_up_trigrams": 26
+    },
+    "10.2.13": {
+      "page": 249,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 50,
+      "overlap": 0.96,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.2.14": {
+      "page": 249,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 65,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.2.15": {
+      "page": 250,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 92,
+      "overlap": 0.63,
+      "runner_up_page": 249,
+      "runner_up_trigrams": 19
+    },
+    "10.3.1": {
+      "page": 250,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 47,
+      "overlap": 0.745,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.3.2": {
+      "page": 250,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 60,
+      "total_trigrams": 79,
+      "overlap": 0.759,
+      "runner_up_page": 251,
+      "runner_up_trigrams": 8
+    },
+    "10.3.3": {
+      "page": 251,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 100,
+      "total_trigrams": 112,
+      "overlap": 0.893,
+      "runner_up_page": 86,
+      "runner_up_trigrams": 2
+    },
+    "10.3.4": {
+      "page": 251,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 55,
+      "total_trigrams": 61,
+      "overlap": 0.902,
+      "runner_up_page": 63,
+      "runner_up_trigrams": 1
+    },
+    "10.3.5": {
+      "page": 252,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 69,
+      "overlap": 0.768,
+      "runner_up_page": 251,
+      "runner_up_trigrams": 7
+    },
+    "10.3.6": {
+      "page": 252,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 70,
+      "total_trigrams": 76,
+      "overlap": 0.921,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.3.7": {
+      "page": 252,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 47,
+      "total_trigrams": 62,
+      "overlap": 0.758,
+      "runner_up_page": 159,
+      "runner_up_trigrams": 1
+    },
+    "10.3.8": {
+      "page": 253,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 53,
+      "total_trigrams": 74,
+      "overlap": 0.716,
+      "runner_up_page": 252,
+      "runner_up_trigrams": 2
+    },
+    "10.3.9": {
+      "page": 253,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 62,
+      "overlap": 0.935,
+      "runner_up_page": 191,
+      "runner_up_trigrams": 1
+    },
+    "10.4.1": {
+      "page": 253,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 63,
+      "overlap": 0.651,
+      "runner_up_page": 254,
+      "runner_up_trigrams": 11
+    },
+    "10.4.2": {
+      "page": 254,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 57,
+      "overlap": 0.842,
+      "runner_up_page": 221,
+      "runner_up_trigrams": 1
+    },
+    "10.4.3": {
+      "page": 254,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 47,
+      "overlap": 0.936,
+      "runner_up_page": 261,
+      "runner_up_trigrams": 1
+    },
+    "10.4.4": {
+      "page": 254,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 42,
+      "overlap": 0.786,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.5.1": {
+      "page": 254,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 28,
+      "total_trigrams": 39,
+      "overlap": 0.718,
+      "runner_up_page": 255,
+      "runner_up_trigrams": 6
+    },
+    "10.5.2": {
+      "page": 255,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 62,
+      "overlap": 0.903,
+      "runner_up_page": 262,
+      "runner_up_trigrams": 2
+    },
+    "10.6.1": {
+      "page": 255,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 93,
+      "total_trigrams": 99,
+      "overlap": 0.939,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.6.2": {
+      "page": 256,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 62,
+      "total_trigrams": 86,
+      "overlap": 0.721,
+      "runner_up_page": 255,
+      "runner_up_trigrams": 14
+    },
+    "10.6.3": {
+      "page": 256,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 64,
+      "overlap": 0.906,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.6.4": {
+      "page": 256,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 51,
+      "total_trigrams": 72,
+      "overlap": 0.708,
+      "runner_up_page": 257,
+      "runner_up_trigrams": 10
+    },
+    "10.7.1": {
+      "page": 257,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 47,
+      "overlap": 0.872,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.7.2": {
+      "page": 257,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 42,
+      "overlap": 0.929,
+      "runner_up_page": 179,
+      "runner_up_trigrams": 1
+    },
+    "10.7.3": {
+      "page": 257,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 46,
+      "overlap": 0.935,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.7.4": {
+      "page": 257,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 22,
+      "total_trigrams": 39,
+      "overlap": 0.564,
+      "runner_up_page": 258,
+      "runner_up_trigrams": 12
+    },
+    "10.7.5": {
+      "page": 258,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 31,
+      "overlap": 0.806,
+      "runner_up_page": 31,
+      "runner_up_trigrams": 1
+    },
+    "10.8.1": {
+      "page": 258,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 64,
+      "total_trigrams": 72,
+      "overlap": 0.889,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.8.2": {
+      "page": 258,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 50,
+      "overlap": 0.6,
+      "runner_up_page": 259,
+      "runner_up_trigrams": 6
+    },
+    "10.8.3": {
+      "page": 259,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 62,
+      "overlap": 0.774,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.8.4": {
+      "page": 259,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 69,
+      "total_trigrams": 69,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.8.5": {
+      "page": 259,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 62,
+      "overlap": 0.677,
+      "runner_up_page": 260,
+      "runner_up_trigrams": 8
+    },
+    "10.8.6": {
+      "page": 260,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 62,
+      "overlap": 0.806,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.9.1": {
+      "page": 260,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 65,
+      "overlap": 0.908,
+      "runner_up_page": 127,
+      "runner_up_trigrams": 1
+    },
+    "10.9.2": {
+      "page": 260,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 41,
+      "total_trigrams": 54,
+      "overlap": 0.759,
+      "runner_up_page": 261,
+      "runner_up_trigrams": 1
+    },
+    "10.9.3": {
+      "page": 261,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 68,
+      "total_trigrams": 74,
+      "overlap": 0.919,
+      "runner_up_page": 262,
+      "runner_up_trigrams": 3
+    },
+    "10.9.4": {
+      "page": 261,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 68,
+      "total_trigrams": 74,
+      "overlap": 0.919,
+      "runner_up_page": 262,
+      "runner_up_trigrams": 2
+    },
+    "10.9.5": {
+      "page": 261,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 31,
+      "total_trigrams": 73,
+      "overlap": 0.425,
+      "runner_up_page": 262,
+      "runner_up_trigrams": 26
+    },
+    "10.9.6": {
+      "page": 262,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 62,
+      "total_trigrams": 68,
+      "overlap": 0.912,
+      "runner_up_page": 261,
+      "runner_up_trigrams": 5
+    },
+    "10.9.7": {
+      "page": 262,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 79,
+      "total_trigrams": 93,
+      "overlap": 0.849,
+      "runner_up_page": 261,
+      "runner_up_trigrams": 1
+    },
+    "10.10.1": {
+      "page": 263,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 28,
+      "total_trigrams": 45,
+      "overlap": 0.622,
+      "runner_up_page": 265,
+      "runner_up_trigrams": 1
+    },
+    "10.10.2": {
+      "page": 263,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 61,
+      "overlap": 0.82,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.10.3": {
+      "page": 263,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 80,
+      "overlap": 0.488,
+      "runner_up_page": 264,
+      "runner_up_trigrams": 18
+    },
+    "10.10.4": {
+      "page": 264,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 65,
+      "overlap": 0.708,
+      "runner_up_page": 267,
+      "runner_up_trigrams": 2
+    },
+    "10.10.5": {
+      "page": 264,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 43,
+      "total_trigrams": 60,
+      "overlap": 0.717,
+      "runner_up_page": 267,
+      "runner_up_trigrams": 3
+    },
+    "10.10.6": {
+      "page": 265,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 75,
+      "overlap": 0.613,
+      "runner_up_page": 264,
+      "runner_up_trigrams": 12
+    },
+    "10.11.1": {
+      "page": 265,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 57,
+      "overlap": 0.842,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.11.2": {
+      "page": 265,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 56,
+      "total_trigrams": 66,
+      "overlap": 0.848,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.11.3": {
+      "page": 266,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 39,
+      "total_trigrams": 54,
+      "overlap": 0.722,
+      "runner_up_page": 265,
+      "runner_up_trigrams": 5
+    },
+    "10.11.4": {
+      "page": 266,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 67,
+      "total_trigrams": 77,
+      "overlap": 0.87,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.11.5": {
+      "page": 266,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 31,
+      "total_trigrams": 44,
+      "overlap": 0.705,
+      "runner_up_page": 267,
+      "runner_up_trigrams": 1
+    },
+    "10.11.6": {
+      "page": 267,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 41,
+      "overlap": 0.732,
+      "runner_up_page": 264,
+      "runner_up_trigrams": 1
+    },
+    "10.11.7": {
+      "page": 267,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 42,
+      "total_trigrams": 59,
+      "overlap": 0.712,
+      "runner_up_page": 108,
+      "runner_up_trigrams": 1
+    },
+    "10.11.8": {
+      "page": 267,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 28,
+      "total_trigrams": 38,
+      "overlap": 0.737,
+      "runner_up_page": 264,
+      "runner_up_trigrams": 1
+    },
+    "10.11.9": {
+      "page": 267,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 69,
+      "overlap": 0.435,
+      "runner_up_page": 268,
+      "runner_up_trigrams": 10
+    },
+    "10.12.1": {
+      "page": 268,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 35,
+      "total_trigrams": 38,
+      "overlap": 0.921,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.12.2": {
+      "page": 268,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 58,
+      "total_trigrams": 74,
+      "overlap": 0.784,
+      "runner_up_page": 50,
+      "runner_up_trigrams": 1
+    },
+    "10.13.1": {
+      "page": 268,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 16,
+      "total_trigrams": 44,
+      "overlap": 0.364,
+      "runner_up_page": 269,
+      "runner_up_trigrams": 10
+    },
+    "10.13.2": {
+      "page": 269,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 60,
+      "overlap": 0.95,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.13.3": {
+      "page": 269,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 46,
+      "total_trigrams": 59,
+      "overlap": 0.78,
+      "runner_up_page": 307,
+      "runner_up_trigrams": 1
+    },
+    "10.13.4": {
+      "page": 269,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 33,
+      "total_trigrams": 41,
+      "overlap": 0.805,
+      "runner_up_page": 270,
+      "runner_up_trigrams": 6
+    },
+    "10.13.5": {
+      "page": 270,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 36,
+      "overlap": 1,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.13.6": {
+      "page": 270,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 73,
+      "total_trigrams": 81,
+      "overlap": 0.901,
+      "runner_up_page": 264,
+      "runner_up_trigrams": 1
+    },
+    "10.13.7": {
+      "page": 271,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 29,
+      "total_trigrams": 71,
+      "overlap": 0.408,
+      "runner_up_page": 270,
+      "runner_up_trigrams": 28
+    },
+    "10.13.8": {
+      "page": 271,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 38,
+      "total_trigrams": 49,
+      "overlap": 0.776,
+      "runner_up_page": 264,
+      "runner_up_trigrams": 1
+    },
+    "10.14.1": {
+      "page": 271,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 71,
+      "total_trigrams": 86,
+      "overlap": 0.826,
+      "runner_up_page": 27,
+      "runner_up_trigrams": 1
+    },
+    "10.14.2": {
+      "page": 272,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 48,
+      "total_trigrams": 68,
+      "overlap": 0.706,
+      "runner_up_page": 271,
+      "runner_up_trigrams": 14
+    },
+    "10.14.3": {
+      "page": 272,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 49,
+      "total_trigrams": 58,
+      "overlap": 0.845,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.15.1": {
+      "page": 272,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 88,
+      "total_trigrams": 101,
+      "overlap": 0.871,
+      "runner_up_page": 273,
+      "runner_up_trigrams": 9
+    },
+    "10.15.2": {
+      "page": 273,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 71,
+      "overlap": 0.915,
+      "runner_up_page": 242,
+      "runner_up_trigrams": 1
+    },
+    "10.15.3": {
+      "page": 273,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 44,
+      "total_trigrams": 59,
+      "overlap": 0.746,
+      "runner_up_page": 272,
+      "runner_up_trigrams": 1
+    },
+    "10.15.4": {
+      "page": 274,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 30,
+      "total_trigrams": 56,
+      "overlap": 0.536,
+      "runner_up_page": 273,
+      "runner_up_trigrams": 16
+    },
+    "10.15.5": {
+      "page": 274,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 42,
+      "overlap": 0.857,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.15.6": {
+      "page": 274,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 59,
+      "total_trigrams": 72,
+      "overlap": 0.819,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.15.7": {
+      "page": 274,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 25,
+      "total_trigrams": 65,
+      "overlap": 0.385,
+      "runner_up_page": 275,
+      "runner_up_trigrams": 24
+    },
+    "10.16.1": {
+      "page": 275,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 54,
+      "total_trigrams": 63,
+      "overlap": 0.857,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.16.2": {
+      "page": 275,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 50,
+      "total_trigrams": 56,
+      "overlap": 0.893,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.16.3": {
+      "page": 275,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 24,
+      "total_trigrams": 55,
+      "overlap": 0.436,
+      "runner_up_page": 276,
+      "runner_up_trigrams": 22
+    },
+    "10.16.4": {
+      "page": 276,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 61,
+      "total_trigrams": 73,
+      "overlap": 0.836,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.16.5": {
+      "page": 276,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 57,
+      "total_trigrams": 66,
+      "overlap": 0.864,
+      "runner_up_page": 74,
+      "runner_up_trigrams": 1
+    },
+    "10.16.6": {
+      "page": 277,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 43,
+      "overlap": 0.837,
+      "runner_up_page": 276,
+      "runner_up_trigrams": 2
+    },
+    "10.16.7": {
+      "page": 277,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 82,
+      "total_trigrams": 88,
+      "overlap": 0.932,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.16.8": {
+      "page": 277,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 34,
+      "total_trigrams": 37,
+      "overlap": 0.919,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.16.9": {
+      "page": 278,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 65,
+      "total_trigrams": 85,
+      "overlap": 0.765,
+      "runner_up_page": 277,
+      "runner_up_trigrams": 9
+    },
+    "10.16.10": {
+      "page": 278,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 74,
+      "total_trigrams": 79,
+      "overlap": 0.937,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    },
+    "10.16.11": {
+      "page": 278,
+      "status": "ambiguous_textual_candidate",
+      "matched_trigrams": 36,
+      "total_trigrams": 74,
+      "overlap": 0.486,
+      "runner_up_page": 279,
+      "runner_up_trigrams": 30
+    },
+    "10.16.12": {
+      "page": 279,
+      "status": "strong_textual_candidate",
+      "matched_trigrams": 88,
+      "total_trigrams": 97,
+      "overlap": 0.907,
+      "runner_up_page": null,
+      "runner_up_trigrams": 0
+    }
+  }
+}
