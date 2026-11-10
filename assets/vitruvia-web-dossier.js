@@ -536,7 +536,11 @@ function render(panel,query,rows,isCurrent){
   if(topic.kind==='literary-work')void literaryEditions(section,topic,valid);
   const relationKind=topic.kind==='music'&&/compos/.test(normalized(topic.person?.entityDescription))&&
    !/cantante|singer|band|grupo|banda|rapper/.test(normalized(topic.person?.entityDescription))?'composer':topic.kind;
-  if(creator&&topic.person?.wikidataId&&window.VitruviaCulturalWorks)
+  // For identified architects, the architectural catalogue already includes
+  // directly attributed buildings, photos, dates and technical drawings.
+  // Do not repeat the same works in a second generic "cultural works" block.
+  const architectureOwnWorks=architectural?.kind==='person'&&topic.kind==='architect';
+  if(creator&&topic.person?.wikidataId&&window.VitruviaCulturalWorks&&!architectureOwnWorks)
    void window.VitruviaCulturalWorks.render(section,{...(sameIdentity?authority:{}),wikidataId:topic.person.wikidataId},relationKind,valid).catch(()=>{});
   
   relatedImages(section,topic,records);
