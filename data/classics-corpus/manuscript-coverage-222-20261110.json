@@ -1,13 +1,13 @@
 {
   "schema": "vitruvius-manuscript-coverage-222-v1",
   "updated": "2026-11-10",
-  "scope": "All catalog works. A manuscript linked to multiple works is counted once in total witnesses. Evidence of a codex is not proof of oldest global witness.",
+  "scope": "All catalog works; manuscript count is not oldest-global-certification. Disputed date values are not asserted precise.",
   "counts": {
     "catalogued": 222,
-    "witnesses": 71,
-    "worksWithWitnesses": 90,
-    "worksWithoutWitnesses": 132,
-    "worksWithThisBatchSourceReview": 35
+    "witnesses": 79,
+    "worksWithWitnesses": 100,
+    "worksWithoutWitnesses": 122,
+    "worksWithThisBatchSourceReview": 46
   },
   "records": [
     {
@@ -81,20 +81,26 @@
     },
     {
       "workId": "sallust-catiline",
-      "witnessCount": 0,
+      "witnessCount": 2,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 2,
+      "witnessIds": [
+        "sallust-paris16024",
+        "sallust-paris16025"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "sallust-iugurtha",
-      "witnessCount": 0,
+      "witnessCount": 2,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 2,
+      "witnessIds": [
+        "sallust-paris16024",
+        "sallust-paris16025"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -988,20 +994,25 @@
     },
     {
       "workId": "ptolemy-almagest",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessCount": 2,
+      "verifiedInstitutionalCount": 1,
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "ptolemy-almagest-vatgr1594",
+        "ptolemy-almagest-paris2389"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "ptolemy-geographia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "ptolemy-geography-urbgr82"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -1171,22 +1182,25 @@
     },
     {
       "workId": "aristotle-poetics",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 2,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
       "witnessIds": [
-        "aristotle-poetics-paris-gr1741"
+        "aristotle-poetics-paris-gr1741",
+        "aristotle-parisinus-gr1741"
       ],
       "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristotle-politics",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "aristotle-vatgr1298-politics"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -1577,47 +1591,57 @@
     },
     {
       "workId": "aristotle-nicomachean-ethics",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristotle-parisinus-gr1853"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristotle-metaphysics",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristotle-parisinus-gr1853"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristotle-physics",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristotle-parisinus-gr1853"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristotle-rhetoric",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristotle-parisinus-gr1741"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristotle-de-anima",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristotle-parisinus-gr1853"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
