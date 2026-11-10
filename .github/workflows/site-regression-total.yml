@@ -1,5 +1,14 @@
 name: Batería integral · sitio, buscadores y fidelidad textual
 on:
+  pull_request:
+    paths:
+      - 'assets/barbaro-parallel.mjs'
+      - 'assets/iconografia-vitruviana.js'
+      - 'assets/gudiani-reader.mjs'
+      - 'scripts/test-reference-asset-fallback.mjs'
+      - 'scripts/test-vitruvia-cultural-works.mjs'
+      - 'scripts/test-vitruvia-search-geometry.mjs'
+      - '.github/workflows/site-regression-total.yml'
   push:
     branches: [main]
     paths:
