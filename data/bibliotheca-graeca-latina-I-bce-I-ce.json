@@ -1769,8 +1769,8 @@
       },
       "manuscript": {
         "manifest": null,
-        "record": null,
-        "status": "Hierosolymitanus 54, copiado en 1056; no es manuscrito del siglo I"
+        "record": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+        "status": "H = Hierosolymitanus 54 (1056, griego completo, ff. 76r–80v; Pinakes diktyon 35291); P. Oxy. XV 1782 (fragmentos griegos, s. IV, TM 64596); Elbasan 82 (griego completo, s. XVI, Pinakes diktyon 63441, probablemente copia de H). Imágenes del H: Library of Congress. Elbasan sin visor público de folios verificado."
       },
       "pdf": {
         "url": null,
@@ -1825,7 +1825,17 @@
         "originalLanguage": "griego antiguo",
         "source": "https://el.wikisource.org/wiki/Διδαχή_των_Δώδεκα_Αποστόλων",
         "accessed": "2026-11-06",
-        "method": "Transcripción de lectura procedente de Wikisource, licencia CC BY-SA. No reproducción ni colación del manuscrito Hierosolymitanus 54."
+        "method": "Transcripción de lectura procedente de Wikisource, licencia CC BY-SA. No reproducción ni colación del manuscrito Hierosolymitanus 54.",
+        "manuscriptCitation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Panagios Taphos 54 (Codex Hierosolymitanus, H), ff. 76r–80v, 1056. Facsímil microfilmado: Library of Congress, ítem 00279389694-jo.",
+        "manuscriptSources": [
+          "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+          "https://4care-skos.mf.no/4care-artefacts/260/",
+          "https://pinakes.irht.cnrs.fr/notices/cote/63441/",
+          "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/"
+        ]
+      },
+      "codicology": {
+        "earlierWitnessNote": "El testimonio material más antiguo de la Didaché aquí acreditado es fragmentario (P. Oxy. XV 1782, siglo IV); H54 (1056) ofrece el texto griego completo principal; Elbasan 82 (siglo XVI) es otro completo, probablemente derivado de H. No confundir fecha de composición con fecha del testimonio."
       }
     },
     {
