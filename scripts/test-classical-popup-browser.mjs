@@ -68,6 +68,33 @@ try{
   console.log("PASS Latin highlighted term, real glossary and modal close: repetition",round);
  }
 
+ // Aristófanes, Eirene 288–297: a word present in the TEI must not fail
+ // the dictionary merely because the inflected form was absent from local data.
+ {
+  const ar=await browser.newPage({viewport:{width:1200,height:850}});
+  await ar.route('https://**',route=>route.abort());
+  const urn="urn:cts:greekLit:tlg0019_tlg005_perseus-grc2.288-297";
+  const u=new URL("classics-text-reader.html",base);
+  u.searchParams.set("work","aristophanes-pax");u.searchParams.set("lang","grc");
+  u.searchParams.set("locus",urn);u.searchParams.set("q","τέκτονες");
+  await ar.goto(u.href,{waitUntil:"domcontentloaded",timeout:30000});
+  await ar.waitForFunction(()=>document.querySelector("#passages mark.cl-hit")?.textContent?.includes("τέκτονες"),
+   null,{timeout:25000});
+  const entry=await ar.evaluate(()=>window.ClassicalLexicon.lookup("τέκτονες",{
+   lang:"grc",work:"aristophanes-pax",online:false
+  }));
+  assert.equal(entry.entries[0]?.lemma,"τέκτων","El plural debe derivar del lema documentado τέκτων");
+  assert.match(entry.entries[0]?.morph||"",/nominativo.*plural|plural.*nominativo/);
+  assert.match(entry.entries[0]?.es||"",/artesano|constructor|carpintero/);
+  await ar.locator("#passages mark.cl-hit").first().click();
+  await ar.waitForFunction(()=>document.querySelector("#classics-lexical-popup .cl-lemma")?.textContent==="τέκτων",
+   null,{timeout:12000});
+  assert.match(await ar.locator("#classics-lexical-popup .cl-gloss").first().innerText(),/Castellano:/);
+  assert.equal(await ar.locator("#classics-lexical-popup h2").textContent(),"τέκτονες");
+  await ar.close();checked+=5;
+  console.log("PASS Aristófanes: τέκτονες → τέκτων, nominativo plural, LSJ y glosa castellana.");
+ }
+
  // For verified architectural terms, show the existing source-attributed
  // Pompeii photograph; never replace it with a generic generated image.
  await page.evaluate(()=>{

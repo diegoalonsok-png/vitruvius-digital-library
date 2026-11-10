@@ -63,11 +63,18 @@ html body .appearance :is(label,.zoom-level){color:#c9c9cb!important}
 html body .appearance input[type=color]{background:#1a1a1b;border-color:#55555a!important;border-radius:4px!important}
 html body :is(button,a,input,select):focus-visible{outline:2px solid #999!important;outline-offset:2px!important}
 .parallel-search{display:flex;gap:10px;align-items:end;flex-wrap:wrap;padding:10px 0 14px}.parallel-search label{display:flex;flex:1 1 190px;gap:5px;flex-direction:column;font-size:12px;color:#ddd}.parallel-search input{width:100%;min-width:0;border:1px solid #555;background:#171718;color:#f4f4f4;padding:10px;font:14px system-ui;border-radius:4px}.parallel-search button{border:1px solid #505053;background:#242426;color:#eee;padding:10px;border-radius:4px;cursor:pointer;min-height:40px}.parallel-search button:hover{background:#333336}.parallel-search input:focus-visible{outline:2px solid #d49a43!important}
-.auto-translation{padding:16px;min-height:480px;background:#141415;color:#dedee0;overflow-wrap:anywhere}
+.auto-translation{padding:16px;min-height:480px;background:var(--auto-bg,#fffdf7);color:var(--auto-fg,#202b35);overflow-wrap:anywhere}
 .auto-translation[hidden]{display:none}
-.auto-translation .auto-source{max-height:180px;overflow:auto;border-left:3px solid #9b8055;padding:9px 12px;background:#1b1b1d;font:15px/1.7 Georgia,serif;white-space:pre-wrap}
-.auto-translation .auto-title{font:600 15px/1.5 system-ui;color:#dfc28c}
-.auto-translation a{color:#dfc28c}
+.auto-translation .auto-source[hidden]{display:none!important}
+.auto-translation .auto-title{font:700 15px/1.5 system-ui;color:inherit}
+.auto-translation a{color:inherit}
+.auto-translation .parallel-auto-translation{margin-top:10px!important;padding-top:10px!important}
+.auto-translation .parallel-auto-translation .academic-inline-translation-output{min-height:180px;white-space:pre-wrap;overflow-wrap:anywhere;font:var(--auto-size,20px)/1.8 var(--auto-font,Georgia,serif);color:inherit;padding:12px 4px;border-top:1px solid #7775}
+.auto-translation .parallel-auto-translation .academic-inline-translation-output p{font:inherit;line-height:inherit!important;margin:8px 0 12px}
+.auto-translation .parallel-auto-translation .academic-inline-translation-output strong{display:block;font:700 12px/1.5 system-ui,sans-serif;letter-spacing:.02em;margin-bottom:8px}
+.auto-translation .parallel-auto-translation .academic-inline-translation-output small{display:block;font:12px/1.5 system-ui,sans-serif;margin-top:16px;opacity:.85}
+.auto-translation .parallel-auto-translation .academic-inline-translation-output .auto-pending{font:15px/1.65 system-ui,sans-serif;opacity:.88}
+.auto-translation .parallel-auto-translation .academic-inline-translation-note{max-width:66ch}
 /* Barra de desplazamiento externa: consistente con ambos visores del lector. */
 @supports (-moz-appearance:none){html{scrollbar-width:auto;scrollbar-color:#77777e #242427}}
 html::-webkit-scrollbar,body::-webkit-scrollbar{width:16px;height:16px}
@@ -165,8 +172,17 @@ for(const side of ["left","right"]){
 
 function sendAppearance(side){
  if(!ready[side])return;
- const lang=$(side).value;
  store();
+ if(side==="right"&&isAuto(right.value)){
+  const panel=$("auto-translation"),p=palettes.right;
+  const families={serif:'Georgia, "Times New Roman", serif',classic:'Palatino, "Book Antiqua", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace'};
+  panel.style.setProperty("--auto-bg",p.background);
+  panel.style.setProperty("--auto-fg",p.foreground);
+  panel.style.setProperty("--auto-font",families[p.font]||families.serif);
+  panel.style.setProperty("--auto-size",p.size+"px");
+  return;
+ }
+ const lang=$(side).value;
  $("pane-"+side).contentWindow?.postMessage({type:"vitruvia-parallel-style",work,lang,...palettes[side]},location.origin);
 }
 for(const side of ["left","right"]){
@@ -246,17 +262,31 @@ function renderAuto(){
  if(!record?.text){
   content.textContent="El texto original todavía no está disponible para traducir.";return;
  }
+ /* El original ya se lee en el visor izquierdo: no duplicarlo aquí.
+    Solo se envía texto al servicio externo después de pulsar traducir. */
  const sourceLine=document.createElement("p");sourceLine.className="auto-source";
- sourceLine.lang=left.value;
- sourceLine.textContent=record.text.length>420?record.text.slice(0,420)+"…":record.text;
+ sourceLine.lang=left.value;sourceLine.hidden=true;
+ sourceLine.setAttribute("aria-hidden","true");sourceLine.textContent=record.text;
  content.append(sourceLine);
- const note=document.createElement("p");
- note.textContent="Solo una muestra del original es visible aquí. La traducción automática es voluntaria y parcial para pasajes extensos: no es una edición crítica ni una traducción acreditada.";
- content.append(note);
  if(window.VitruviaInlineTranslation?.attach){
   const added=window.VitruviaInlineTranslation.attach(sourceLine,{sourceLanguage:left.value,originalText:record.text});
-  if(added){const select=content.querySelector(".academic-inline-translation select");if(select)select.value=target;}
-  else content.append("Este idioma no dispone de traducción automática compatible.");
+  if(added){
+   const widget=content.querySelector(".academic-inline-translation");
+   widget.classList.add("parallel-auto-translation");
+   const select=widget.querySelector("select");
+   if(select)select.value=target;
+   const button=widget.querySelector(".academic-inline-translate-button");
+   if(button)button.textContent="Traducir este pasaje aquí";
+   const output=widget.querySelector(".academic-inline-translation-output");
+   const note=widget.querySelector(".academic-inline-translation-note");
+   if(output){
+    const pending=document.createElement("p");pending.className="auto-pending";
+    pending.textContent="El original está en el visor izquierdo. Pulsa «Traducir este pasaje aquí» para ver en esta columna una versión automática orientativa.";
+    output.append(pending);
+    if(note)widget.insertBefore(output,note);
+   }
+   if(note)note.textContent="El fragmento solo se envía al proveedor externo después del clic. El griego antiguo se procesa como griego moderno; esta traducción puede ser parcial y no está validada filológicamente.";
+  }else content.append("Este idioma no dispone de traducción automática compatible.");
  }else content.append("Servicio de traducción automática no disponible; utilice el lector del original.");
 }
 function navigatePane(side,index){
@@ -283,6 +313,7 @@ function frame(side,lang){
   ready.right=true;
   $("pane-right").hidden=true;$("pane-right").removeAttribute("src");
   $("auto-translation").hidden=false;
+  sendAppearance("right");
   $("right-query").disabled=true;$("right-query").placeholder="No disponible para traducción automática";
   $("same-locus").disabled=true;
   params.set(side,lang);history.replaceState(null,"",location.pathname+"?"+params.toString());
