@@ -207,6 +207,8 @@ async function render(root,identity,kind,valid){
  else content.append(el('p','context-note',result.available?
   L('No se recuperaron obras con atribución directa en este catálogo.','No directly attributed works were retrieved from this catalogue.','Aucune œuvre directement attribuée retrouvée dans ce catalogue.'):
   L('El catálogo de obras no está disponible ahora.','Works catalogue temporarily unavailable.','Catalogue des œuvres temporairement indisponible.')));
+ // Non-blocking chronology: dates and attributed works retain Wikidata provenance.
+ window.dispatchEvent(new CustomEvent("vitruvia:cultural-works",{detail:{wikidataId:identity.wikidataId,works:works.slice()}}));
  if(result.hasMore){
   const more=el('button','context-biblio-more',L('Cargar más obras documentadas','Load more sourced works','Charger plus d’œuvres documentées'));
   more.type='button';let offset=40;
@@ -221,6 +223,7 @@ async function render(root,identity,kind,valid){
     for(const item of next.works)if(!seen.has(item.id)){works.push(item);seen.add(item.id)}
     offset+=40;
     if(next.works.length){content.replaceChildren();showWorks(content,works,valid)}
+    window.dispatchEvent(new CustomEvent("vitruvia:cultural-works",{detail:{wikidataId:identity.wikidataId,works:works.slice()}}));
     more.hidden=!next.hasMore||next.works.length===0||offset>2000;
     if(!more.hidden)more.textContent=L('Cargar más obras documentadas','Load more sourced works','Charger plus d’œuvres documentées');
    }catch(_){if(valid())more.textContent=L('Fuente no disponible · reintentar','Source unavailable · retry','Source indisponible · réessayer')}
