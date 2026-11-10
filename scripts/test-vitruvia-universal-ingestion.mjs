@@ -77,3 +77,20 @@ test("Right rail reuses the ingestion model and does not borrow a homonym's firs
  assert(html.indexOf("assets/vitruvia-source-model.js")<html.indexOf("assets/vitruvia-context-panel.js"));
  assert(html.includes("assets/vitruvia-cultural-works.js?v=20261109-typed-chronology-v1"));
 });
+
+test("DOI forms and canonical URL identity preserve academic records",()=>{
+ const r=model.organize("Vitruvius",[
+  {title:"Vitruvius - edición",link:"https://doi.org/10.1234/ABC"},
+  {title:"Vitruvius - edición",link:"https://archive.example.org/item/123",doi:"DOI:10.1234/abc"},
+  {title:"Vitruvius - edición",link:"https://archive.example.org/item/456",doi:"https://doi.org/10.1234/ABC"},
+  {title:"Vitruvius codex folio",type:"manuscript",link:"https://archive.example.org/CodexA",year:null},
+  {title:"Vitruvius codex folio",type:"manuscript",link:"https://archive.example.org/codexa",year:""},
+  {title:"Vitruvius codex folio",type:"manuscript",link:"https://archive.example.org/CodexA?utm_source=search"}
+ ]);
+ assert.equal(r.total,3,"DOI variants and tracking URLs must collapse, case-sensitive paths must survive");
+ assert.equal(r.records.filter(x=>x.doi==="10.1234/abc").length,1);
+ assert.equal(r.records.find(x=>x.href.includes("/CodexA")).year,null,"Missing year is not the year zero");
+ assert.equal(model.canonicalDOI("https://doi.org/10.1234/ABC"),"10.1234/abc");
+ assert.equal(model.sourceType({link:"https://doi.org/10.1234/ABC"}),"scholarly-record");
+ assert.equal(model.organize("Vitruvius",[{title:"Vitruvius",link:"https://user:password@archive.example.org/X"}]).total,0);
+});
