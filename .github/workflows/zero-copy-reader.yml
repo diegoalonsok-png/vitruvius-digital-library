@@ -1,0 +1,26 @@
+name: Lector remoto sin duplicar fuentes
+on:
+  push:
+    paths:
+      - 'classics-external-source-reader.html'
+      - 'assets/bibliotheca-simple.js'
+      - 'scripts/test-ennius-external-reader.mjs'
+      - '.github/workflows/zero-copy-reader.yml'
+  pull_request:
+    paths:
+      - 'classics-external-source-reader.html'
+      - 'assets/bibliotheca-simple.js'
+      - 'scripts/test-ennius-external-reader.mjs'
+      - '.github/workflows/zero-copy-reader.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-ennius-external-reader.mjs

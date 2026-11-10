@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+import assert from "node:assert/strict";
+import {readFileSync,existsSync} from "node:fs";
+import vm from "node:vm";
+const html=readFileSync("classics-external-source-reader.html","utf8");
+const bib=readFileSync("assets/bibliotheca-simple.js","utf8");
+const registry=JSON.parse(readFileSync("data/classics-corpus/search-registry.json","utf8"));
+const inventory=JSON.parse(readFileSync("data/classics-corpus/indexation-roadmap-222.json","utf8"));
+assert.match(html,/Fragments of Ennius|Annales fragmentarios|Annales \(fragmenta\)/i);
+assert.match(html,/raw\.githubusercontent\.com\/cltk\/lat_text_latin_library\/76229acaf02efd1964ac32009408a90b6f279758\/enn\.txt/);
+assert.match(html,/fetch\(rawUrl/);
+assert.match(html,/document\.createTextNode/);
+assert.match(html,/mark\.textContent/);
+assert.match(html,/no se conserva otra copia/i);
+assert.match(html,/El texto se consulta directamente/);
+assert.match(bib,/sourceBox\.hidden=id!=="ennius-annales"/);
+assert.match(bib,/classics-external-source-reader\.html\?work=ennius-annales/);
+const code=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+assert.equal(code.length,1);
+new vm.Script(code[0][1]);
+new vm.Script(bib);
+const work=inventory.items.find(x=>x.id==="ennius-annales");
+assert(work&&!work.originalIndexed&&!work.effectiveOriginalIndexed,"La fuente solo permite lectura; no declarar indexación global");
+assert(!registry.entries.some(x=>x.workId==="ennius-annales"),"No añadir índice ficticio");
+assert(!existsSync("data/classics-corpus/ennius-annales-la.json"),"No copiar la obra al corpus local");
+console.log("PASS: Ennio se lee bajo demanda desde CLTK sin copiar, cotejar ni declarar el original indexado");
