@@ -3,6 +3,7 @@
    NO un modelo generativo de lenguaje. */
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
+let cataloguePromise=null;
 const S={mode:"all",lang:"es",theme:"dark",works:[],pages:[],witnesses:[],editions:[],passages:null,passagePromise:null,searchId:0,ready:false,privateMode:false,visibleResultCount:60,people:[],historical:[],academicRecords:[],currentAuthorities:[]};
 const lex={
  arquitectura:"architectura architecture arquitectura architecturae edificios aedificia edificaciones construcción building architettura",
@@ -1299,6 +1300,13 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
 }
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ // Requests may arrive before the static catalogue is fully loaded.
+ // Wait once for the shared promise; a newer query supersedes this one.
+ if(!S.ready&&cataloguePromise){
+  $("result-state").textContent="Cargando índices del catálogo antes de buscar…";
+  await cataloguePromise;
+  if(id!==S.searchId||searchSignal.aborted)return;
+ }
  // Voz griega con equivalente latino documentado en el léxico (εὐρυθμία → eurythmia): se busca también la forma latina.
  if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&q.split(/\s+/).length<=3){try{S.lexiconPromise=S.lexiconPromise||((window.VitruviaData?window.VitruviaData.json("data/latin-lexicon.json"):fetch("data/latin-lexicon.json").then(r=>r.json())).then(d=>d.entries||[]).catch(e=>{S.lexiconPromise=null;throw e}));S.lexicon=S.lexicon||await S.lexiconPromise;if(searchSignal.aborted||id!==S.searchId)return;
   const fg=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const hit=S.lexicon.find(e=>e.greek&&fg(e.greek)===fg(q));if(hit&&!q.includes(hit.lemma))q=q+" "+hit.lemma}catch{}}
@@ -1700,7 +1708,8 @@ function updateClearControl(){
  const empty=!searchInput.value.trim();
  clearControl.hidden=empty;clearAll.hidden=empty;
 }
-function clearSearch(){
+function clearSearch(options){
+ const preserveUrl=options?.preserveUrl===true;
  S.searchController?.abort();
  ++S.searchId;searchInput.value="";updateClearControl();
  window.VitruviaSearchSnapshot=null;
@@ -1708,7 +1717,7 @@ function clearSearch(){
  searchInput.setAttribute("aria-expanded","false");searchInput.removeAttribute("aria-activedescendant");
  document.body.classList.remove("vitruvia-reading");
  window.dispatchEvent(new Event("vitruvia:clear"));
- history.replaceState(null,"","vitruvia.html");
+ if(!preserveUrl)history.replaceState(null,"","vitruvia.html");
  $("result-list").replaceChildren(node("div","empty",T().idle));
  $("result-list").setAttribute("aria-busy","false");
  $("results-heading").textContent=T().idle;
@@ -1716,7 +1725,7 @@ function clearSearch(){
  $("source-links").replaceChildren();
  $("answer").hidden=true;
  if(window.VitruviaArticles)window.VitruviaArticles.render([],"");
- restoreFeature();searchInput.focus();
+ restoreFeature();if(!preserveUrl)searchInput.focus();
 }
 function renderPrivacy(){
  privacy.setAttribute("aria-pressed",String(S.privateMode));
@@ -1745,6 +1754,23 @@ document.querySelectorAll("button[data-q]").forEach(b=>b.addEventListener("click
 try{const saved=localStorage.getItem("vitruvius-ui-lang");if(I18N[saved])S.lang=saved;const savedTheme=localStorage.getItem("vitruvia-theme");if(savedTheme==="light")S.theme="light";S.privateMode=localStorage.getItem("vitruvia-private-url")==="1"}catch{}
 theme(S.theme);
 const params=new URLSearchParams(location.search);mode(params.get("mode")||"all");language(S.lang);
-load().then(()=>{const q=params.get("q");if(q){$("query").value=q;search()}}) ;
+// Show a linked search immediately; never overwrite what the reader typed
+// during asynchronous loading of the local catalogues.
+const initialQuery=params.get("q")||"";
+if(initialQuery)$("query").value=initialQuery;
+const bootSearchId=S.searchId;
+cataloguePromise=load();
+cataloguePromise.then(()=>{
+ if(initialQuery&&S.searchId===bootSearchId&&$("query").value.trim()===initialQuery)
+  void search();
+}).catch(e=>{console.error("Catálogo no disponible:",e)});
+window.addEventListener("popstate",()=>{
+ const p=new URLSearchParams(location.search);
+ mode(p.get("mode")||"all");
+ const q=p.get("q")||"";
+ $("query").value=q;
+ if(q)void search();
+ else clearSearch({preserveUrl:true});
+});
 })();
 
