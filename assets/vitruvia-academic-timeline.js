@@ -144,10 +144,16 @@
   left.append(el("p",null,state.authority?.canonical||state.authority?.catalogName||state.query));
   const controls=el("div","vat-controls");
   const prev=el("button",null,"←"),next=el("button",null,"→");
+  const zoomOut=el("button",null,"−"),zoomIn=el("button",null,"+");
   prev.type=next.type="button";
   prev.setAttribute("aria-label",L("Retroceder","Previous dates","Dates précédentes"));
   next.setAttribute("aria-label",L("Avanzar","Next dates","Dates suivantes"));
-  controls.append(prev,next);
+  zoomOut.type=zoomIn.type="button";
+  zoomOut.setAttribute("aria-label",L("Alejar cronología","Zoom out timeline","Dézoomer la chronologie"));
+  zoomIn.setAttribute("aria-label",L("Acercar cronología","Zoom in timeline","Zoomer la chronologie"));
+  zoomOut.title=L("Reducir escala","Reduce scale","Réduire l’échelle");
+  zoomIn.title=L("Ampliar escala","Increase scale","Agrandir l’échelle");
+  controls.append(prev,zoomOut,zoomIn,next);
   left.append(el("small","vat-subtitle",L(
     "Fechas documentadas · obras · ediciones · fuentes",
     "Documented dates · works · editions · sources",
@@ -188,11 +194,11 @@
    const title=el("div","vat-band-title");title.append(el("span","vat-icon",icon),el("strong",null,label));
    const track=el("div","vat-track");track.style.width=mapWidth+"px";
    const line=el("div","vat-line");track.append(line);
-   const lastEnds=[-Infinity,-Infinity,-Infinity,-Infinity];let levelMax=0;
+   const lastEnds=[];let levelMax=0;
    for(const e of items){
     const x=(e.year-low)/range*mapWidth;
     let level=lastEnds.findIndex(end=>x-end>=170);
-    if(level<0)level=lastEnds.indexOf(Math.min(...lastEnds));
+    if(level<0){level=lastEnds.length;lastEnds.push(-Infinity)}
     lastEnds[level]=x;levelMax=Math.max(levelMax,level);
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
@@ -211,6 +217,8 @@
    band.append(title,track);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
+  zoomOut.onclick=()=>{state.zoom=Math.max(.75,Math.round((state.zoom-.25)*100)/100);draw()};
+  zoomIn.onclick=()=>{state.zoom=Math.min(2.5,Math.round((state.zoom+.25)*100)/100);draw()};
   prev.onclick=()=>viewport.scrollBy({left:-460,behavior:"smooth"});
   next.onclick=()=>viewport.scrollBy({left:460,behavior:"smooth"});
   viewport.addEventListener("keydown",e=>{
@@ -219,7 +227,7 @@
   });
  }
  function reset(q){
-  state.token++;state.query=String(q||"").trim().slice(0,160);
+  state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
   state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
   place();draw();
   if(!state.query)return;
