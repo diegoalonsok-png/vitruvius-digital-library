@@ -15,6 +15,26 @@ try{
  for(const path of ['index.html','scriptorium.html','facsimiles.html','bibliografia.html','ediciones-historicas.html','concordancia-historica.html','estudios.html','harleianus.html']){
   await test('Carga '+path,async()=>{const page=await pageFor(path);await page.waitForTimeout(1500);await page.close()});
  }
+ await test('Lexicon: búsqueda enlazada ?q=, resultado local y restauración con Atrás',async()=>{
+  const page=await pageFor('vitruvia-lexicon.html?q=symmetria&mode=palabra&lang=la');
+  await page.waitForFunction(()=>document.querySelector('#lx-q')?.value==='symmetria'
+   &&document.querySelector('#lx-lang')?.value==='la',null,{timeout:15000});
+  await page.waitForFunction(()=>{
+   const text=document.querySelector('#lx-state')?.textContent||'';
+   return /coincidenc|sin coincidencias|No se pudo completar/i.test(text)
+  },null,{timeout:45000});
+  const first=await page.locator('#lx-state').innerText();
+  assert(!/No se pudo completar/i.test(first),'La búsqueda enlazada quedó sin índice: '+first);
+  assert.equal(await page.locator('#lx-tabs button[data-mode="palabra"]').getAttribute('aria-pressed'),'true',
+   'El parámetro mode=palabra no seleccionó la pestaña correspondiente');
+  await page.locator('#lx-q').fill('domus');
+  await page.locator('#lx-form button[type=submit]').click();
+  await page.waitForFunction(()=>new URLSearchParams(location.search).get('q')==='domus',null,{timeout:10000});
+  await page.goBack({waitUntil:'domcontentloaded',timeout:15000});
+  await page.waitForFunction(()=>new URLSearchParams(location.search).get('q')==='symmetria'
+   &&document.querySelector('#lx-q')?.value==='symmetria',null,{timeout:15000});
+  await page.close();
+ });
  await test('Cesariano 1521: galería visual, libro IV y búsqueda por imagen exacta',async()=>{
   const page=await pageFor('cesariano-1521.html');
   await page.locator('#ces-gallery-panel').waitFor({state:'visible',timeout:15000});
