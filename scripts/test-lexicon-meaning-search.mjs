@@ -26,7 +26,7 @@ const scope=createContext({
   .map(c=>({λ:"l",ο:"o",γ:"g",σ:"s",α:"a",ρ:"r",χ:"ch",ι:"i",τ:"t",ε:"e",κ:"k",υ:"y",μ:"m"}[c]||c)).join("")
 });
 new Script(dict.slice(start,end)+
- "\nthis.lookup=matchEntries;this.suggest=suggestions;this.clean=cleanQuery;").runInContext(scope);
+ "\nthis.lookup=matchEntries;this.suggest=suggestions;this.clean=cleanQuery;this.meanings=meaningMentions;").runInContext(scope);
 const la={
  entries:{domus:{lemma:"domus",gloss:"house"},architectura:{lemma:"architectura",gloss:"architecture"},iustitia:{lemma:"iustitia",gloss:"justice"}},
  forms:{domibus:["domus"],domorum:["domus"]}
@@ -48,6 +48,15 @@ const edition=JSON.parse(read("data/structured/recensio-es.json"));
 const loci=new Map(edition.passages.map(p=>[p.locus,p]));
 assert.equal(senses.schema,"vitruvia-lexicon-contextual-senses-v1");
 assert.equal(senses.entries.length,20);
+assert(scope.meanings(senses.entries,"planta","la").some(x=>x.lemma==="ichnographia"),
+ "A literal architectural meaning must recover the cited Latin lemma");
+assert(scope.meanings(senses.entries,"casa","la").some(x=>x.lemma==="domus"),
+ "A recorded contextual meaning must be searchable");
+assert(scope.meanings(senses.entries,"ordenación","grc").some(x=>x.lemma==="τάξις"),
+ "A Greek equivalence must be supported by its contextual wording");
+assert.equal(scope.meanings(senses.entries,"silla","la").length,0,
+ "Unattested meanings must not create new dictionary entries");
+
 const keys=new Set();
 const norm=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"")
  .toLowerCase().replace(/[ςϲ]/g,"σ");
