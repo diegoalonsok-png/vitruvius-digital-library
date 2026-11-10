@@ -57,9 +57,9 @@
  body.vitruvia-reading #vitruvia-article .article-grid > #vitruvia-academic-timeline:not([hidden]){
   grid-column:1!important;grid-row:1!important;align-self:start!important;width:100%!important;
  }
- body.vitruvia-reading #vitruvia-article .article-grid > #article-body{grid-column:1!important;grid-row:2!important}
- body.vitruvia-reading #vitruvia-article .article-grid > #article-aside{grid-column:1!important;grid-row:3!important}
- body.vitruvia-reading #vitruvia-article .article-grid > #vitruvia-context:not([hidden]){
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-academic-timeline:not([hidden])) > #article-body{grid-column:1!important;grid-row:2!important}
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-academic-timeline:not([hidden])) > #article-aside{grid-column:1!important;grid-row:3!important}
+ body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-academic-timeline:not([hidden])) > #vitruvia-context:not([hidden]){
   grid-column:2!important;grid-row:1 / span 3!important;align-self:start!important;
  }
  body.vitruvia-reading #results .results-grid:has(> #vitruvia-academic-timeline:not([hidden])){
@@ -69,11 +69,11 @@
  body.vitruvia-reading #results .results-grid > #vitruvia-academic-timeline:not([hidden]){
   grid-column:1!important;grid-row:1!important;width:100%!important
  }
- body.vitruvia-reading #results .results-grid > #result-list{grid-column:1!important;grid-row:2!important}
- body.vitruvia-reading #results .results-grid > #vitruvia-context:not([hidden]){
+ body.vitruvia-reading #results .results-grid:has(> #vitruvia-academic-timeline:not([hidden])) > #result-list{grid-column:1!important;grid-row:2!important}
+ body.vitruvia-reading #results .results-grid:has(> #vitruvia-academic-timeline:not([hidden])) > #vitruvia-context:not([hidden]){
   grid-column:2!important;grid-row:1 / span 2!important
  }
- body.vitruvia-reading #results .results-grid > .sidebar{grid-column:1 / -1!important;grid-row:3!important}
+ body.vitruvia-reading #results .results-grid:has(> #vitruvia-academic-timeline:not([hidden])) > .sidebar{grid-column:1 / -1!important;grid-row:3!important}
 }
 @media screen and (max-width:1099px){
  body.vitruvia-reading #vitruvia-article .article-grid:has(> #vitruvia-academic-timeline:not([hidden])),
