@@ -1609,7 +1609,7 @@ function language(lang){S.lang=I18N[lang]?lang:"es";document.documentElement.lan
  const t=T();$("lead").textContent=t.lead;$("query").placeholder=t.placeholder;$("submit").textContent=t.submit;
  document.querySelectorAll("button.tab").forEach((b,i)=>{if(t.modes[i])b.textContent=t.modes[i]});
  $("mode-note").textContent=S.mode==="ai"
-  ?(S.lang==="en"?"Choose BM25 or experimental E5 reranking. Only sources in the AI manifest are included; other catalogues use separate search routes.":S.lang==="fr"?"Choisir BM25 ou le reclassement E5 expérimental. Seules les sources du manifeste IA sont couvertes; les autres catalogues sont interrogés séparément.":"Elegí BM25 o reordenación E5 experimental. Solo se incluyen las fuentes del manifiesto IA; los demás catálogos usan otras vías.")
+  ?(S.lang==="en"?"Choose BM25 or experimental E5 reranking. Only sources in the AI manifest are included; other catalogues use separate search routes.":S.lang==="fr"?"Choisir BM25 ou le reclassement E5 expérimental. Seules les sources du manifeste IA sont couvertes; les autres catalogues sont interrogés séparément.":"Seleccione BM25 o la reordenación experimental E5. Solo se incluyen las fuentes del manifiesto IA; los demás catálogos usan otras vías.")
   :(t.explain[["all","site","wiki","external","concept"].indexOf(S.mode)]||t.explain[0]);
  const methodTexts={es:["Motor de búsqueda","BM25 · rápido, sin modelo","E5 · neuronal, descarga opcional"],en:["Search method","BM25 · fast, no model","E5 · neural, optional download"],fr:["Méthode de recherche","BM25 · rapide, sans modèle","E5 · neuronal, téléchargement facultatif"]};
  const methodLabels=methodTexts[S.lang]||methodTexts.es;
