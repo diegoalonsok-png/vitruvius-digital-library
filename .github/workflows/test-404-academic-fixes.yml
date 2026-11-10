@@ -1,0 +1,33 @@
+name: Verificar correcciones de auditoría y enlaces
+on:
+  push:
+    paths:
+      - 'assets/barbaro-parallel.mjs'
+      - 'assets/iconografia-vitruviana.js'
+      - 'assets/gudiani-reader.mjs'
+      - 'scripts/test-vitruvia-cultural-works.mjs'
+      - 'scripts/test-fixed-404-and-audit-environment.mjs'
+      - '.github/workflows/site-regression-total.yml'
+      - '.github/workflows/test-404-academic-fixes.yml'
+  pull_request:
+    paths:
+      - 'assets/barbaro-parallel.mjs'
+      - 'assets/iconografia-vitruviana.js'
+      - 'assets/gudiani-reader.mjs'
+      - 'scripts/test-vitruvia-cultural-works.mjs'
+      - 'scripts/test-fixed-404-and-audit-environment.mjs'
+      - '.github/workflows/site-regression-total.yml'
+      - '.github/workflows/test-404-academic-fixes.yml'
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-fixed-404-and-audit-environment.mjs
+      - run: node --test scripts/test-vitruvia-cultural-works.mjs
