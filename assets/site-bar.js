@@ -172,7 +172,9 @@ ready(()=>{
  // Allow other deferred controls to mount before placing the typography button.
  // The bilingual text reader has its own controls INSIDE the Latin and translation panels.
  // Do not insert another Aa control in the page header.
- if(!['lector-bilingue.html','aparato-critico.html'].includes(page))setTimeout(ensureTypography,0);
+ // This coverage inventory is a data table, not a reading viewer. The floating
+ // Aa control otherwise appears detached below the table; keep it in readers.
+ if(!['lector-bilingue.html','aparato-critico.html','cobertura-traducciones-clasicas.html'].includes(page))setTimeout(ensureTypography,0);
  paint();new MutationObserver(paint).observe(document.documentElement,{attributes:true,attributeFilter:["class","data-theme","style"]});
  new MutationObserver(paint).observe(document.body,{attributes:true,attributeFilter:["class","data-theme","style"]});
 });
