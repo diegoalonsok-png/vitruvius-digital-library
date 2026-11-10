@@ -72,7 +72,7 @@ try{
  // the dictionary merely because the inflected form was absent from local data.
  {
   const ar=await browser.newPage({viewport:{width:1200,height:850}});
-  await ar.route(/^https?:\\/\\/(?!127\\.0\\.0\\.1|localhost)/,route=>route.abort());
+  await ar.route('https://**',route=>route.abort());
   const urn="urn:cts:greekLit:tlg0019_tlg005_perseus-grc2.288-297";
   const u=new URL("classics-text-reader.html",base);
   u.searchParams.set("work","aristophanes-pax");u.searchParams.set("lang","grc");
