@@ -124,7 +124,7 @@ function sourceExcerpt(doc,query,max=420){
 }
 function renderRow(doc,query,score,semantic=false){
  const exact=normalize(doc.excerptText).includes(normalize(query));
- const kind=semantic?(exact?"IA + texto literal":"Coincidencia semántica; verificar el pasaje"):"BM25 · texto documentado";
+ const kind=semantic?(exact?"E5 + coincidencia textual · cotejo pendiente":"Reordenación E5 + BM25 · comprobar pertinencia"):"BM25 · coincidencia textual indexada";
  return {type:"passage",title:doc.workTitle+" · "+doc.locus,
   author:doc.author+" · "+doc.edition+" · "+doc.language,
   excerpt:sourceExcerpt(doc,query),latin:doc.original,translation:doc.translation,
@@ -166,18 +166,18 @@ async function vectors(pipe,texts){
  }
  return out;
 }
-async function search(query){
+async function search(query,{method="neural"}={}){
  const q=asString(query);if(!q)return {rows:[],mode:"empty"};
  notify("Indexando los textos disponibles y calculando coincidencias exactas…");
  const data=await corpus(),ranked=lexicalRanking(q,data);
  const candidates=diversity(ranked);
  if(!candidates.length)return {rows:[],mode:"empty",stats:{chunks:data.documents.length,works:data.works}};
  const fallback=candidates.filter(x=>x.score>0).slice(0,35).map(x=>renderRow(x.doc,q,x.score*25));
- if(prefersReducedData()){
-  const warning="Ahorro de datos activo: se omite la descarga del modelo E5; resultados BM25 sobre textos indexados, sin afirmar análisis neuronal.";
+ if(method==="bm25"||prefersReducedData()){
+  const warning=method==="bm25"?"Motor BM25 elegido: búsqueda textual indexada, sin descarga E5 ni similitud neuronal.":"Ahorro de datos activo: se omite la descarga del modelo E5; resultados BM25 sobre textos indexados, sin afirmar análisis neuronal.";
   notify(warning,"fallback");
   return {rows:fallback,mode:"bm25-fallback",
-   stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works},warning};
+   stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works},warning,method:"bm25"};
  }
  try{
   const model=await getModel();
@@ -195,7 +195,7 @@ async function search(query){
    return {...entry,score:fused*16000};
   }).sort((a,b)=>b.score-a.score).slice(0,35);
   notify("IA semántica activa · "+data.documents.length+" fragmentos disponibles; "+candidates.length+" cotejados con embeddings.","success");
-  return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works}};
+  return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",method:"e5",stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works}};
  }catch(e){
   notify("No se pudo cargar el modelo ("+String(e.message||"error").slice(0,90)+"). Se muestran coincidencias BM25, sin afirmar IA semántica.","fallback");
   return {rows:fallback,mode:"bm25-fallback",stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works},warning:String(e.message||e)};
