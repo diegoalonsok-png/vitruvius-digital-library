@@ -1,7 +1,7 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-08",
-  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto.",
+  "updated": "2026-11-10",
+  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
   "count": 246,
   "works": 181,
   "entries": [
@@ -2471,6 +2471,27 @@
       "path": "data/classics-corpus/xenophon-memorabilia-grc.json",
       "reader": "classics-text-reader.html?work=xenophon-memorabilia&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    }
+  ],
+  "auxiliaryIndexes": [
+    {
+      "workId": "didache",
+      "language": "grc",
+      "kind": "verse_segmentation",
+      "path": "data/classics-corpus/didache-grc-verse-index.json",
+      "unitCount": 100,
+      "chapterCount": 16,
+      "editorialStatus": "indexado desde edición de lectura griega; no diplomático"
+    }
+  ],
+  "criticalApparatus": [
+    {
+      "workId": "didache",
+      "path": "data/classics-corpus/didache-poxy1782-apparatus.json",
+      "viewer": "classics-collation.html?work=didache&locus=1.3",
+      "variants": 5,
+      "sourceKind": "published_secondary_collation",
+      "status": "not_autoptic"
     }
   ]
 }
