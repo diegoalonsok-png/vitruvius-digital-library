@@ -342,7 +342,7 @@ async function searchPassages(terms,{limit=600,workId="",language="",maxPerEditi
     else {const quote=p.text.slice(Math.max(0,hit[0]-24),Math.min(p.text.length,hit[1]+36)).trim();
      if(quote)href+="#:~:text="+encodeURIComponent(quote)}
     rows.push({workId:e.workId,author:e.author,title:e.title,language:e.language,edition:e.edition||"",
-      source:e.path,locus:String(p.locus||""),term,hitsInPassage,excerpt:snippet(p.text,hit),link:href,
+      source:e.path,locus:String(p.locus||""),term,hitsInPassage,excerpt:snippet(p.text,hit),originalText:p.text,link:href,
       ocr:e.format==="historical-ocr-pages",attribution:d.attribution||e.sourceDescription||""});
     editionMatches+=hitsInPassage;
     if(++editionUnits>=maxPerEdition&&!allMatches)break;
