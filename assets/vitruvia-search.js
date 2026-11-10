@@ -432,14 +432,14 @@ async function load(){try{
   S.historical=rest[1].status==="fulfilled"&&Array.isArray(rest[1].value)?rest[1].value.filter(x=>x.category==="historical"):[];
   S.academicRecords=rest[2].status==="fulfilled"?(rest[2].value.records||[]):[];
   S.currentAuthorities=rest[2].status==="fulfilled"?(rest[2].value.currentAuthorities||[]):[];
-  window.VitruviaUnderstand?.setVocabulary([
+  (typeof window!=="undefined"?window.VitruviaUnderstand:null)?.setVocabulary([
    ...S.works.flatMap(w=>[w.title,w.author,...(w.aliases||[])]),
    ...S.witnesses.map(w=>w.title),
    ...S.people.flatMap(p=>[p.name,p.label,...(p.aliases||[])]),
    "Vitruvio","Vitruvius","Palladio","Alberti","Serlio","Vignola","Cesariano","Giocondo","Barbaro","Sulpizio","Perrault","Piranesi","Leonardo","Miguel Ángel","Brunelleschi","Bramante","Le Corbusier","Gaudí","Wright","Mies","Gropius","Niemeyer","Fuller","Borromini","Bernini","Augusto","Julio César","Cicerón","Lucrecio","Virgilio","Homero","Platón","Aristóteles","Teofrasto","Epicteto","Plinio","Frontino","Arquímedes","Euclides","Ptolomeo","Herón","Ctesibio"
   ]);
   S.supplementalReady=true;
-  window.dispatchEvent(new CustomEvent("vitruvia:catalogue-supplemental",{detail:{
+  if(typeof window!=="undefined")window.dispatchEvent(new CustomEvent("vitruvia:catalogue-supplemental",{detail:{
    unavailable:rest.flatMap((x,i)=>x.status==="rejected"?[urls[i+3]]:[])
   }}));
  }).catch(e=>console.warn("Índices auxiliares no disponibles:",e));
