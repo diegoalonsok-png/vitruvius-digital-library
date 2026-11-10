@@ -47,12 +47,12 @@ fetch("data/bibliotheca-testimonia-verified.json?v=20261110-gallery-images-v1",{
  const ms=(d.records||[]).find(r=>r.id===msId);
  if(!ms){$("status").textContent="No se encontró la signatura solicitada.";return}
  $("heading").textContent=ms.title||ms.shelfmark||"Testimonio manuscrito";
- if(!ms.imageViews?.length){$("status").textContent="El registro existe pero todavía no tiene imágenes externas comprobadas. Consultá su catálogo desde la ficha.";const back=text("p");addLink(back,"Ver registro del códice ↗",ms.record);$("frames").append(back);return}
+ if(!ms.imageViews?.length){$("status").textContent="El registro existe pero todavía no tiene imágenes externas comprobadas. Consulta su catálogo desde la ficha.";const back=text("p");addLink(back,"Ver registro del códice ↗",ms.record);$("frames").append(back);return}
  $("status").textContent=ms.shelfmark+" · "+ms.date+" · "+ms.imageViews.length+" vista(s) externa(s) identificada(s).";
  for(const view of ms.imageViews){
   const article=text("article","plate"),heading=text("h2",null,view.title);article.append(heading);
   const pan=text("div","pan"),im=document.createElement("img");im.src=view.imageUrl;im.alt=view.title+": fotografía de un testimonio manuscrito";im.loading="lazy";im.decoding="async";
-  im.addEventListener("error",()=>{pan.append(text("p","caption","La imagen externa no pudo cargarse. Abrí el archivo original mediante el enlace de esta tarjeta."))});
+  im.addEventListener("error",()=>{pan.append(text("p","caption","La imagen externa no pudo cargarse. Abre el archivo original mediante el enlace de esta tarjeta."))});
   pan.append(im);article.append(pan);
   const caption=text("p","caption",view.provider+". "+view.rights);article.append(caption);
   const links=text("p","links");addLink(links,"Abrir ficha de la imagen original ↗",view.sourceUrl);addLink(links,"Abrir imagen sin el visor ↗",view.imageUrl);article.append(links);$("frames").append(article)
