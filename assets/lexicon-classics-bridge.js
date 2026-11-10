@@ -30,6 +30,7 @@ translationSelect.value=["es","en","fr"].includes(document.getElementById("lx-ui
 translationLabel.append(translationSelect);controls.append(translationLabel);
 const styles=document.createElement("style");
 styles.textContent=".lx-library-translation-label{display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;font:12px system-ui;color:inherit}.lx-library-translation-label select{border:1px solid #555;background:#19191b;color:#eee;border-radius:4px;padding:7px}.lx-library-parallel{border-left:2px solid #ab8648;padding:6px 12px;margin:8px 0 16px;background:rgba(80,70,50,.10)}.lx-library-parallel .lx-library-translation-text{white-space:pre-wrap;line-height:1.65;margin:6px 0;color:inherit}.lx-library-parallel .lx-library-translation-title{font:600 12px system-ui;color:#d9ae67;margin:2px 0}.lx-library-parallel .lx-library-translation-note{font:11px/1.5 system-ui;color:#aaa}.lx-library-parallel a{font-size:12px;text-decoration:underline;text-underline-offset:3px}";
+styles.textContent+="\n#lx-classics-bridge .lx-library-highlight .lx-library-word{display:inline;position:relative;vertical-align:baseline;font:inherit;color:inherit;background:transparent;border:0;border-radius:2px;padding:0;margin:0;text-align:inherit;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:#7b5100}\n#lx-classics-bridge .lx-library-highlight .lx-library-word:hover,#lx-classics-bridge .lx-library-highlight .lx-library-word:focus-visible{background:#f7bb31;color:#17100a;outline:2px solid #9d6a00;outline-offset:2px}\n#lx-classics-bridge .lx-library-dictionary{border:1px solid #5a5242;border-left:3px solid #e6bc61;border-radius:6px;background:#181819;padding:10px 14px;margin:11px 0 15px;color:#ededed;min-width:0}\n#lx-classics-bridge .lx-library-dictionary>summary{cursor:pointer;font:600 13px/1.5 system-ui;color:#f1d38c;overflow-wrap:anywhere}\n#lx-classics-bridge .lx-library-dictionary .cl-dict{margin-top:8px;color:inherit;--muted:#bababa;--line:#4b4b4d}\n#lx-classics-bridge .lx-library-dictionary .cl-dict .cl-entry{border-left-color:#cfa94d}\n#lx-classics-bridge .lx-library-dictionary .cl-dict .cl-gloss{line-height:1.6;overflow-wrap:anywhere}\n#lx-classics-bridge .lx-library-dictionary .lx-library-dictionary-footer{border-top:1px solid #404040;padding-top:10px;display:flex;flex-wrap:wrap;gap:9px 16px}\n#lx-classics-bridge .lx-library-dictionary a{color:#ebd29b;font-size:12px}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary{background:#faf8f4;color:#222;border-color:#a49b88}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary>summary,html[data-theme=light] #lx-classics-bridge .lx-library-dictionary a{color:#624713}\nhtml[data-theme=light] #lx-classics-bridge .lx-library-dictionary .cl-dict{--muted:#5c5c5c;--line:#b1a99b}\n";
 parent.append(styles);
 parent.append(title,note,controls,status,list);
 const grid=results.closest(".results-grid");
@@ -194,15 +195,72 @@ function editionConnections(row,editions){
  panel.append(actions);
  return panel;
 }
-function markedExcerpt(node,excerpt){
- // «...» are generated from source text by the literal search engine.
- // Put markup only around the actual attested fragment, never treat it as HTML.
+/* Preservar el resaltado literal y permitir consulta individual de palabras griegas y latinas.
+ * Una coincidencia de varias palabras se divide en controles independientes, sin alterar el texto. */
+const LEXICAL_WORD=/[\p{L}\p{M}]+(?:['ʼ’][\p{L}\p{M}]+)*/gu;
+function markedExcerpt(node,excerpt,language){
+ const isClassical=["la","grc"].includes(language);
  const parts=String(excerpt||"").split(/(«[^»]+»)/g);
  for(const part of parts){
-  if(/^«[^»]+»$/.test(part)){
-   const mark=document.createElement("mark");mark.className="lx-library-highlight";mark.textContent=part.slice(1,-1);node.append(mark);
-  }else node.append(document.createTextNode(part));
+  if(!/^«[^»]+»$/.test(part)){node.append(document.createTextNode(part));continue;}
+  const mark=document.createElement("mark");mark.className="lx-library-highlight";
+  const fragment=part.slice(1,-1);
+  if(!isClassical){mark.textContent=fragment;node.append(mark);continue;}
+  let last=0;
+  for(const match of fragment.matchAll(LEXICAL_WORD)){
+   const index=match.index||0;
+   if(index>last)mark.append(document.createTextNode(fragment.slice(last,index)));
+   const button=document.createElement("button");button.type="button";
+   button.className="lx-library-word";button.lang=language;
+   button.textContent=match[0];button.dataset.word=match[0];
+   button.title="Consultar diccionario: "+match[0];
+   button.setAttribute("aria-label","Consultar significado y morfología de "+match[0]);
+   mark.append(button);last=index+match[0].length;
+  }
+  if(last<fragment.length)mark.append(document.createTextNode(fragment.slice(last)));
+  node.append(mark);
  }
+}
+/* Panel desplegable documentado para el término seleccionado en este locus. */
+function attachWordDictionary(excerpt,card,row){
+ if(!["la","grc"].includes(row.language))return;
+ let panel=null,selected=null;
+ excerpt.addEventListener("click",event=>{
+  const wordButton=event.target.closest?.("button.lx-library-word");
+  if(!wordButton||!excerpt.contains(wordButton))return;
+  const word=wordButton.dataset.word||wordButton.textContent;
+  if(!word)return;
+  if(selected===wordButton&&panel?.isConnected){
+   panel.open=!panel.open;
+   wordButton.setAttribute("aria-expanded",String(panel.open));
+   return;
+  }
+  if(selected)selected.removeAttribute("aria-expanded");
+  selected=wordButton;
+  if(panel)panel.remove();
+  panel=document.createElement("details");panel.className="lx-library-dictionary";panel.open=true;
+  panel.id="lx-library-dict-"+Math.random().toString(36).slice(2,10);
+  const summary=document.createElement("summary");
+  summary.textContent=(row.language==="grc"?"Diccionario griego":"Diccionario latino")+" · "+word+" · "+(row.locus||"pasaje");
+  const content=document.createElement("div");
+  const footer=document.createElement("div");footer.className="lx-library-dictionary-footer";
+  const full=document.createElement("a");full.href="vitruvia-lexicon.html?"+new URLSearchParams({q:word,mode:"palabra",lang:row.language});
+  full.textContent="Abrir análisis completo en Lexicon ↗";
+  footer.append(full);
+  panel.append(summary,content,footer);
+  excerpt.insertAdjacentElement("afterend",panel);
+  wordButton.setAttribute("aria-controls",panel.id);
+  wordButton.setAttribute("aria-expanded","true");
+  panel.addEventListener("toggle",()=>{if(selected===wordButton)wordButton.setAttribute("aria-expanded",String(panel.open))});
+  const lex=window.ClassicalLexicon;
+  if(!lex?.renderPanel){
+   content.textContent="El diccionario integrado no está disponible. Consultá la ficha completa de Lexicon.";
+   return;
+  }
+  void lex.renderPanel(content,word,{lang:row.language,work:row.workId,online:true}).catch(()=>{
+   if(content.isConnected)content.textContent="No se pudo recuperar la entrada. Consultá el repertorio académico mediante el enlace.";
+  });
+ });
 }
 function addResult(row,editions){
  const card=document.createElement("article");card.className="lx-library-result";
@@ -214,7 +272,8 @@ function addResult(row,editions){
  const count=document.createElement("small");count.className="lx-library-count";
  count.textContent=" · "+row.hitsInPassage+" coincidencia"+(row.hitsInPassage===1?"":"s")+" en este pasaje";
  const excerpt=document.createElement("p");excerpt.className="lx-library-excerpt";excerpt.lang=row.language==="grc"?"grc":row.language==="la"?"la":row.language||"";
- markedExcerpt(excerpt,row.excerpt);
+ markedExcerpt(excerpt,row.excerpt,row.language);
+ attachWordDictionary(excerpt,card,row);
  const source=document.createElement("p");source.className="lx-library-meta";
  source.textContent="Fuente digital: "+(row.attribution||row.source||"Registro sin atribución detallada");
  const copy=document.createElement("button");copy.type="button";copy.className="lx-library-cite-button";
