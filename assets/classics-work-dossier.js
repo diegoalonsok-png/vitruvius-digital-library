@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-institutional-witnesses-v2",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-institutional-witnesses-v2",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-ecdotic-v1"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -94,13 +94,14 @@ function store(){if(P.ready)return P.ready;
  fetch(PATHS.catalog).then(x=>{if(!x.ok)throw Error("Catálogo no disponible");return x.json()}),
  fetch(PATHS.witness).then(x=>{if(!x.ok)throw Error("Testimonios no disponibles");return x.json()}).catch(()=>({records:[]})),
  fetch(PATHS.text).then(x=>x.ok?x.json():{entries:[]}).catch(()=>({entries:[]})),
- fetch(PATHS.authority).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]}))
- ]).then(([c,t,r,audit])=>{
+ fetch(PATHS.authority).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
+  fetch(PATHS.critical).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]}))
+ ]).then(([c,t,r,audit,critical])=>{
  if(!Array.isArray(c.works))throw Error("Catálogo sin registros");
  const docs=new Map(c.works.map(w=>[w.id,w]));
  const witness=new Map();for(const rec of t.records||[])for(const id of rec.workIds||[]){if(!witness.has(id))witness.set(id,[]);witness.get(id).push(rec)}
  const texts=new Map();for(const rec of r.entries||[]){if(!texts.has(rec.workId))texts.set(rec.workId,[]);texts.get(rec.workId).push(rec)}
- return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),count:c.works.length,witnessCount:(t.records||[]).length};
+ return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),critical:new Map((critical.schema==="vitruvius-critical-authority-222-v1"&&critical.records?.length===222?critical.records:[]).map(e=>[e.workId,e])),count:c.works.length,witnessCount:(t.records||[]).length};
  });
  return P.ready;
 }
@@ -185,6 +186,55 @@ function renderCodicology(dest,w){
   dest.append(item);
  }
 }
+function renderCriticalAuthority(dest,w,d){
+ const record=d.critical.get(w.id);
+ if(!record){
+  section(dest,"Estado filológico y ecdótico");
+  dest.append(html("p","cwd-muted","La ficha básica permanece disponible; el inventario de integridad no pudo cargarse. No se infiere una edición completa ni un manuscrito más antiguo."));
+  return;
+ }
+ const A=record.authority||{},I=record.integrity||{},M=record.manuscript||{},E=record.earlyEditions||{},X=record.ecdotics||{};
+ section(dest,"Autoridad textual y nomenclatura crítica");
+ row(dest,"Autor normalizado, con reserva de atribución",A.normalizedAuthor||A.author);
+ row(dest,"Título uniforme de referencia",A.uniformTitle);
+ row(dest,"Estatus del título y rúbricas",A.nomenclatureNote);
+ row(dest,"Identificadores TLG/PHI (candidatos; no constituyen una URN de edición)",(A.candidateWorkCodes||[]).join(" · ")||"No acreditados");
+ row(dest,"CTS de edición acreditada",A.ctsEditionUrn||"Sin URN CTS de edición verificada; no se construye por conjetura");
+ section(dest,"Integridad de la obra y cobertura del original");
+ const statusLabel={not_indexed:"Original pendiente de indexación",modern_manifestation:"Edición o estudio moderno, distinto de la obra clásica",partial_index:"Original indexado parcialmente",ancient_fragmentary:"Obra antigua transmitida fragmentariamente",original_greek_fragmentary:"Original griego perdido en parte; transmisión latina diferenciada",witness_partial:"Testigo más antiguo aquí documentado incompleto",collection_selected:"Colección seleccionada, sin cotejo global",books_present_not_collated:"Libros registrados; integridad ecdótica sin verificar",scope_unverified:"Integridad de la indexación no acreditada"};
+ row(dest,"Estado documentado",statusLabel[I.status]||I.status);
+ row(dest,"Alcance textual",I.description);
+ row(dest,"Lugar de indexación",I.indexed?(I.storage==="auxiliary_branch"?"Índice auxiliar fuera de GitHub Pages":"Corpus local del repositorio"):"No consta original indexado");
+ if(Number.isInteger(I.offsitePassages))row(dest,"Pasajes del índice auxiliar",I.offsitePassages);
+ row(dest,"Trabajo ecdótico pendiente",I.action);
+ section(dest,"Códices y testimonio más temprano acreditado");
+ const first=M.earliestInVerifiedRegister;
+ if(first){
+  row(dest,"Testimonio más temprano de nuestro registro",first.title);
+  row(dest,"Biblioteca, ciudad y signatura",[first.repository,first.shelfmark].filter(Boolean).join(" · "));
+  row(dest,"Datación",first.date);
+  row(dest,"Contenido y límites",first.coverage);
+  row(dest,"Alcance de la afirmación de antigüedad",M.earliestScope);
+  const links=html("p","cwd-links");
+  addA(links,"Catálogo y signatura institucional ↗",first.recordUrl);
+  addA(links,"Abrir códice / facsímil ↗",first.viewerUrl);
+  addA(links,"Manifiesto IIIF ↗",first.iiifManifestUrl);
+  if(links.childNodes.length)dest.append(links);
+ }else dest.append(html("p","cwd-muted","No consta aún un códice individual con signatura, datación y enlace verificables para esta obra. No se inventa un testigo antiguo ni se declara su inexistencia."));
+ section(dest,"Versiones y ediciones antiguas / ediciones impresas");
+ const dated=E.earliestDatedInCatalogue;
+ if(dated){
+  row(dest,"Edición fechada más temprana de los enlaces verificados",dated.title+" ("+dated.year+")");
+  const links=html("p","cwd-links");addA(links,"Consultar edición documentada ↗",dated.url);if(links.childNodes.length)dest.append(links);
+ }else row(dest,"Edición histórica más temprana documentada","No determinada en los registros fechados; no implica ausencia de ediciones anteriores");
+ dest.append(html("p","cwd-muted",E.disclaimer||"La edición impresa más antigua registrada no es necesariamente la editio princeps. La versión más antigua conservada y la primera traducción requieren fuentes específicas."));
+ section(dest,"Estado del aparato crítico y de la collatio codicum");
+ row(dest,"Base textual",X.textualSource);
+ row(dest,"Variantes y lecturas",X.variantReadings);
+ row(dest,"Stemma codicum",X.stemmaCodicum);
+ row(dest,"Norma de referencia",X.bibliographyStandard);
+ dest.append(html("p","cwd-muted","Fuente, testigo material, versión, recensión y lectura conjetural se documentan por separado. Un enlace externo no acredita aval institucional ni derechos de reproducción."));
+}
 function renderEditions(dest,w,d){
  section(dest,"Versiones, ediciones y acceso a la lectura");
  const editions=d.texts.get(w.id)||[];
@@ -268,6 +318,7 @@ function renderInto(target,id,opts={}){
   if(/atribuci[oó]n|debati|discuti|fragment/i.test(w.author+" "+w.dating+" "+w.title)){
    target.append(html("p","cwd-muted","Advertencia filológica: la atribución, la datación o la transmisión de esta obra puede ser discutida o fragmentaria; cotejar estudios especializados."));
   }
+  renderCriticalAuthority(target,w,d);
   renderWitness(target,w,d);
   renderCodicology(target,w);
   renderEditions(target,w,d);
