@@ -1,0 +1,51 @@
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import {canonicalLocus,ocrCandidate,ocrExcerptForLocus,pdfPage} from "../assets/krohn-locus-sync.mjs";
+
+const read=path=>readFileSync(new URL("../"+path,import.meta.url),"utf8");
+const index=JSON.parse(read("data/structured/krohn-1912-ocr-locus-candidates.json"));
+const krohn=JSON.parse(read("data/text/krohn-1912.json"));
+const v514=JSON.parse(read("data/structured/recensio-es.json"));
+const page=number=>krohn.find(p=>p.page===number);
+const content=read("assets/critical-search.mjs");
+const html=read("aparato-critico.html");
+
+assert.equal(index.schema,"vitruvius-krohn-ocr-locus-candidates-v1");
+assert.equal(index.counts.loci,v514.passages.length);
+assert.equal(index.counts.loci,Object.keys(index.loci).length);
+assert.ok(index.counts.strong_textual_candidate>=.9*v514.passages.length,"Not enough OCR loci reach a strong textual-candidate threshold");
+assert.match(index.note,/NOT verified page-to-locus anchors/);
+assert.match(content,/ocrCandidate\(index,locus\)/);
+assert.match(content,/ocrExcerptForLocus\(pg.text,referenceLatin\)/);
+assert.match(content,/compareId!==compareRevision/);
+assert.match(content,/Krohn 1912 · Vitr\., De arch\./);
+assert.match(html,/assets\/critical-search\.mjs\?v=/);
+const example=ocrCandidate(index,"I.4.1");
+assert.ok(example);
+assert.equal(example.page,31,"I.4.1 should locate the original scanned PDF page 31");
+assert.equal(example.confidence,"strong");
+assert.equal(example.locus,"1.4.1");
+const latin=v514.passages.find(x=>x.locus==="1.4.1").latin;
+const excerpt=ocrExcerptForLocus(page(example.page).text,latin);
+assert.ok(excerpt?.text,"An OCR passage must be read near the aligned reference locus");
+assert.match(excerpt.text,/In ipsis vero moenibus/i);
+assert.ok(excerpt.overlapPercent>75,"The candidate must share distinctive Latin words");
+assert.equal(canonicalLocus("III.1.2"),"3.1.2");
+assert.equal(canonicalLocus("2.pr.5"),"2.praef.5");
+assert.equal(ocrCandidate(index,"III.1.2")?.page,77);
+assert.equal(ocrCandidate(index,"X.1.1")?.page,242);
+assert.equal(ocrCandidate(index,"unexpected"),null);
+assert.equal(pdfPage("/documents/krohn-1912.pdf",31),"/documents/krohn-1912.pdf#page=31&zoom=page-width");
+assert.equal(pdfPage("https://example.edu/krohn.pdf#page=1",31),"https://example.edu/krohn.pdf#page=31&zoom=page-width");
+assert.equal(pdfPage("/documents/krohn.pdf",-1),null);
+let previous=0;
+for(const p of v514.passages){
+ const item=ocrCandidate(index,p.locus);
+ assert.ok(item,"Unresolved page candidate: "+p.locus);
+ assert.ok(page(item.page),"PDF page missing from registered OCR: "+p.locus);
+ assert.ok(item.page>=previous,"Page sequence is not monotonic at "+p.locus);
+ previous=item.page;
+}
+const unrelated=ocrExcerptForLocus("altera omnia alio loco","domus atrium parietes fenestra");
+assert.equal(unrelated,null);
+console.log("PASS Krohn: 731 cautiously labelled OCR locus candidates, I.4.1 → digital PDF p.31, III.1.2 → p.77, one locus per synchronized comparison and full monotonic page sequence.");
