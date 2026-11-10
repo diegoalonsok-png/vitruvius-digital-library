@@ -24,7 +24,7 @@
  };
  const langs=["es","en","fr"];
  const root=document.documentElement;
- let language="es",theme="dark";
+ let language=langs.includes(root.lang)?root.lang:"es",theme="dark";
  try{
   const saved=localStorage.getItem(LANG);if(langs.includes(saved))language=saved;
   const choice=localStorage.getItem(KEY);if(choice==="light"||choice==="dark")theme=choice;
@@ -75,7 +75,9 @@
  }
  function setLanguage(next){
   if(!langs.includes(next))return;
-  language=next;save(LANG,language);updateButtons();emitLanguage();
+  language=next;save(LANG,language);updateButtons();
+  if(window.PhilologyUI?.select&&window.PhilologyUI.getLanguage?.()!==next)window.PhilologyUI.select(next);
+  emitLanguage();
  }
  function loadLocalization(){
   // Pages that already have a scholarly ES/EN/FR translator keep it.
