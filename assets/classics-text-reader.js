@@ -106,6 +106,9 @@ function select(i){
  if(hitMarks.length)requestAnimationFrame(()=>focusHit(1));
  for(const [j,btn] of Array.from($("toc").querySelectorAll("button")).entries())btn.setAttribute("aria-current",String(j===active));
  const u=new URL(location.href);u.searchParams.set("locus",rec.locus);if(search)u.searchParams.set("q",search);else u.searchParams.delete("q");history.replaceState(null,"",u);
+ if(p.get("parallel")==="1"&&window.parent!==window){
+  window.parent.postMessage({type:"vitruvia-parallel-position",work,lang:data.language,index:active,locus:rec.locus},location.origin);
+ }
 }
 function renderSearch(){
  const target=$("results");target.replaceChildren();
