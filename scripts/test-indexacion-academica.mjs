@@ -57,5 +57,40 @@ for(const engine of engines){
 }
 assert(!/sin (?:cotejo|fuente) documentad[ao].*verificad[ao]/i.test(hubHtml),
  "Do not treat unsupported source claims as verified");
+
+// Source consistency: compare excerpts by exact V514 locus, not by a shared
+// label alone. This checks publication against its editorial master, but
+// DOES NOT certify readings against manuscripts, Rose or Krohn.
+const editorial=JSON.parse(read("data/structured/recensio-es.json"));
+assert.equal(editorial.version,"V514","Unexpected editorial baseline");
+const originals=new Map(editorial.passages.map(p=>[p.locus,p]));
+const plain=s=>String(s||"").replace(/<[^>]*>/g,"")
+ .replace(/&[a-z]+;/g," ").replace(/…/g," ")
+ .replace(/\\s+/g," ").trim();
+const normalized=s=>plain(s).toLowerCase().normalize("NFC").replace(/\\s+/g," ");
+const excerptOK=(fragment,whole)=>{
+ const head=normalized(fragment).split(" ").filter(Boolean).slice(0,10).join(" ");
+ return Boolean(head)&&normalized(whole).includes(head);
+};
+let checked=0;
+for(const word of terms){
+ const source=read(word+"-en-vitruvio.html");
+ const articles=[...source.matchAll(/<article class="passage"[^>]*>[\\s\\S]*?<\\/article>/g)];
+ for(const match of articles){
+  const article=match[0],id=(article.match(/id="locus-([^"]+)"/)||[])[1];
+  assert(id,"Passage without a locus ID in "+word);
+  const locus=id.replace(/-/g,".");
+  const base=originals.get(locus);
+  assert(base,word+": locus absent in V514: "+locus);
+  const latin=(article.match(/<p lang="la"[^>]*>([\\s\\S]*?)<\\/p>/)||[])[1];
+  const spanish=(article.match(/<p lang="es"[^>]*>([\\s\\S]*?)<\\/p>/)||[])[1];
+  assert(latin&&spanish,word+": incomplete bilingual excerpt at "+locus);
+  assert(excerptOK(latin,base.latin),word+": Latin excerpt differs at "+locus);
+  assert(excerptOK(spanish,base.translation),word+": Spanish excerpt differs at "+locus);
+  checked++;
+ }
+}
+assert(checked>=48,"The original 48 evidenced excerpt pairs were reduced");
+
 console.log("PASS: "+terms.length+" cited static studies; "+
- engines.length+" engine entrypoints; valid unique sitemap and canonical links.");
+ engines.length+" engine entrypoints; "+checked+" V514 bilingual excerpts; valid unique sitemap.");
