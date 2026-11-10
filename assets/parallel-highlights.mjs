@@ -85,7 +85,8 @@ export function parallelExcerpt(text,{query="",lang="es",latin="",max=1700}={}){
  const direct=tokens.find(w=>w.norm===normalize(query));
  const alt=direct||tokens.find(w=>set?.has(w.norm));
  if(!alt)return t.slice(0,max)+" …";
- const begin=Math.max(0,Math.min(alt.start-250,t.length-max)),end=Math.min(t.length,begin+max);
+ const preceding=Math.min(250,Math.floor(max*.3));
+ const begin=Math.max(0,Math.min(alt.start-preceding,t.length-max)),end=Math.min(t.length,begin+max);
  return (begin?"… ":"")+t.slice(begin,end)+(end<t.length?" …":"")
 }
 /** Documented variants for a query, in a particular language.
