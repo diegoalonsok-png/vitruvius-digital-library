@@ -9047,7 +9047,18 @@
         "description": "Búsqueda de fuente externa, no lectura directa verificada."
       },
       "publicStatus": "lectura-local-completa",
-      "localReader": "classics-text-reader.html?work=augustine-confessiones&lang=la"
+      "localReader": "classics-text-reader.html?work=augustine-confessiones&lang=la",
+      "bibliography": {
+        "citationStyle": "The Chicago Manual of Style, 18th ed. (2024)",
+        "uniformTitle": "Confessiones / Confessionum libri XIII",
+        "originalAuthor": "Aurelius Augustinus",
+        "workDate": "c. 397–400 d. C.",
+        "originalLanguage": "latín",
+        "editionCitation": "Augustinus, Aurelius. Confessiones. Edited by Pius Knöll. Corpus Scriptorum Ecclesiasticorum Latinorum 33, sectio I, pars I. Prague and Vienna: F. Tempsky; Leipzig: G. Freytag, 1896. Digital TEI transcription, University of Leipzig, 2014, OpenGreekAndLatin, CC BY-SA 4.0.",
+        "method": "Cita basada en el encabezado bibliográfico de la edición TEI declarada por OpenGreekAndLatin/CSEL. No es colación manuscrita. Las tres enmiendas OCR locales de 2026-11-10 figuran en data/classics-corpus/philological-corrigenda.json.",
+        "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/data/stoa0040/stoa001/stoa0040.stoa001.opp-lat1.xml",
+        "sourceEditionUrn": "urn:cts:latinLit:stoa0040.stoa001.opp-lat1"
+      }
     },
     {
       "id": "augustine-civitate-dei",
