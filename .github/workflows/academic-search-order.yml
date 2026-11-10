@@ -1,0 +1,34 @@
+name: Orden académico y procedencia de concordancias
+on:
+  push:
+    paths:
+      - 'assets/vitruvia-academic-order.js'
+      - 'assets/vitruvia-search.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'vitruvia.html'
+      - 'scripts/test-academic-result-order.mjs'
+      - '.github/workflows/academic-search-order.yml'
+  pull_request:
+    paths:
+      - 'assets/vitruvia-academic-order.js'
+      - 'assets/vitruvia-search.js'
+      - 'assets/vitruvia-lexicon.js'
+      - 'vitruvia.html'
+      - 'scripts/test-academic-result-order.mjs'
+      - '.github/workflows/academic-search-order.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-order:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check assets/vitruvia-academic-order.js
+      - run: node --check assets/vitruvia-search.js
+      - run: node --check assets/vitruvia-lexicon.js
+      - run: node scripts/test-academic-result-order.mjs

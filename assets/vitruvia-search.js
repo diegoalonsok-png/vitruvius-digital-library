@@ -1160,9 +1160,12 @@ function display(rows,query,phase){
   r.type==="edition"?"editions":
   textExternalTypes.has(r.type)?"external-texts":
   libraryTypes.has(r.type)?"library":"research";
- const groupOrder=S.mode==="ai"?
-  ["encyclopedia","semantic","universities","manuscripts","apparatus","fragments","editions","scholars","library","external-texts","research"]:
-  ["encyclopedia","universities","manuscripts","apparatus","fragments","editions","scholars","library","external-texts","research"];
+ // Shared scholarly-first source hierarchy; an explicitly selected Wikipedia mode
+ // still gives encyclopedic hits priority. A Wikidata-verified identity can
+ // be promoted separately without treating its summary as a primary source.
+ const groupOrder=window.VitruviaAcademicOrder?.groups(S.mode)||[
+  "library","apparatus","manuscripts","editions","fragments","universities",
+  "scholars","external-texts","encyclopedia","research"];
  // Consulta sin intención codicológica (concepto, autor, lugar): los pasajes, obras y el
  // aparato preceden a los códices. Con signatura, sigla o folio, los códices van primero.
  const codexIntent=(()=>{try{const CQ=window.CodexQuery,cq=CQ&&CQ.parse(query);
@@ -1223,6 +1226,19 @@ function display(rows,query,phase){
   list.append(bar);
  }
  const shown=S.facet?ordered.filter(r=>byGroup(r)===S.facet):ordered;
+ // Explain source-type precedence and the limits of automatic ranking.
+ // A higher position does not certify a manuscript reading or peer review.
+ if(shown.length){
+  const note=node("p","vitruvia-order-method-note");
+  note.style.cssText="font:12px/1.5 system-ui,sans-serif;opacity:.78;margin:10px 0 18px";
+  note.append(document.createTextNode(S.lang==="en"?
+   "Source order: documents and scholarship before encyclopedic summaries; ranking is not scholarly verification. ":
+   S.lang==="fr"?"Ordre des sources : documents et recherches avant les résumés encyclopédiques ; classement sans certification philologique. ":
+   "Orden de fuentes: documentos y estudios antes que síntesis enciclopédicas; la posición no certifica una lectura filológica. "));
+  const method=makeLink(S.lang==="en"?"Evaluation method":S.lang==="fr"?"Méthode d'évaluation":"Método de evaluación","evaluacion-buscadores.html");
+  if(method)note.append(method);
+  list.append(note);
+ }
  if(!shown.length)list.append(node("div","empty",T().none));
  else {
   let lastGroup="",lastBlock="";
