@@ -123,7 +123,7 @@ async function greekGlossary(work){
  glossaryIndex.set(path,p);return p;
 }
 const GREEK_GLOSSARIES=["vitruvius","theophrastus-characters","plato-apology","aristotle-poetics"];
-const LATIN_GLOSSARIES=new Set(["vitruvius","caesar-gallico","virgil-aeneid","virgil-georgica","petronius-satyrica","apuleius-metamorphoses","cicero-officiis","lucretius","catullus-carmina"]);
+const LATIN_GLOSSARIES=new Set(["vitruvius","caesar-gallico","virgil-aeneid","virgil-georgica","petronius-satyrica","apuleius-metamorphoses","cicero-officiis","lucretius","catullus-carmina","cato-agricultura","columella-rustica","frontinus-aquaeductu","pliny-naturalis","varro-rustica"]);
 async function lookupGreek(word,work){
  const works=[...new Set([work,...GREEK_GLOSSARIES].filter(Boolean))];
  const w=word.normalize("NFC").toLowerCase(),k=fold(word);

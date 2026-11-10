@@ -2,6 +2,13 @@ name: Batería integral · sitio, buscadores y fidelidad textual
 on:
   pull_request:
     paths:
+      - 'scripts/test-classical-popup-browser.mjs'
+      - 'assets/classics-lexical-popup.js'
+      - 'assets/classics-lexical-popup.css'
+      - 'assets/lexicon-reader-scrollbars.css'
+      - 'assets/classical-lexicon.js'
+      - 'classics-text-reader.html'
+      - 'lector-clasico.html'
       - 'assets/barbaro-parallel.mjs'
       - 'assets/iconografia-vitruviana.js'
       - 'assets/gudiani-reader.mjs'
@@ -26,6 +33,13 @@ on:
   push:
     branches: [main]
     paths:
+      - 'scripts/test-classical-popup-browser.mjs'
+      - 'assets/classics-lexical-popup.js'
+      - 'assets/classics-lexical-popup.css'
+      - 'assets/lexicon-reader-scrollbars.css'
+      - 'assets/classical-lexicon.js'
+      - 'classics-text-reader.html'
+      - 'lector-clasico.html'
       - 'scripts/test-indexacion-academica.mjs'
       - 'indice-busquedas-academicas.html'
       - 'scripts/test-search-url-contract.mjs'
@@ -147,6 +161,14 @@ jobs:
             echo "::error title=Geometría de Vitruvia::Fallo de navegador o disposición de resultados"
           else
             echo "PASS scripts/test-vitruvia-search-geometry.mjs"
+          fi
+          node scripts/test-classical-popup-browser.mjs
+          popup=$?
+          if [ "$popup" -ne 0 ]; then
+            echo "FAIL scripts/test-classical-popup-browser.mjs (exit $popup)" >> reports/site-regression-failures.txt
+            echo "::error title=Lexicon contextual::No funciona la ficha léxica sobre palabras resaltadas"
+          else
+            echo "PASS scripts/test-classical-popup-browser.mjs"
           fi
           node scripts/test-secondary-controls-browser.mjs
           controls=$?
