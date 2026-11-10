@@ -432,12 +432,28 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
  await check('Parallel reader buttons, independent colors, zoom and synchronized chapter navigation',async()=>{
   const p=await open('classics-parallel-reader.html?work=didache&left=grc&right=en');
   try{
-   await p.waitForFunction(()=>{
-    const l=document.getElementById('pane-left'),r=document.getElementById('pane-right');
-    return l?.contentDocument?.getElementById('current-locus')?.textContent?.includes('1') &&
-      r?.contentDocument?.getElementById('current-locus')?.textContent?.includes('1') &&
-      !document.getElementById('sync-next')?.disabled;
-   },null,{timeout:30000});
+   try{
+    await p.waitForFunction(()=>{
+     const l=document.getElementById('pane-left'),r=document.getElementById('pane-right');
+     return l?.contentDocument?.getElementById('current-locus')?.textContent?.includes('1') &&
+       r?.contentDocument?.getElementById('current-locus')?.textContent?.includes('1') &&
+       !document.getElementById('sync-next')?.disabled;
+    },null,{timeout:30000});
+   }catch(err){
+    const state=await p.evaluate(()=>{
+     const inspect=id=>{const frame=document.getElementById(id);try{return {
+      url:frame?.contentWindow?.location?.href||null,
+      locus:frame?.contentDocument?.getElementById('current-locus')?.textContent||null,
+      text:frame?.contentDocument?.body?.innerText?.slice(0,220)||null
+     }}catch(e){return {error:String(e)}}};
+     return {status:document.getElementById('status')?.textContent,
+      languages:[document.getElementById('left')?.value,document.getElementById('right')?.value],
+      syncNextDisabled:document.getElementById('sync-next')?.disabled,
+      syncPosition:document.getElementById('sync-position')?.textContent,
+      left:inspect('pane-left'),right:inspect('pane-right')};
+    });
+    throw new Error(err.message+'; diagnostic='+JSON.stringify(state));
+   }
    const old=await p.frameLocator('#pane-left').locator('#current-locus').innerText();
    await p.locator('#sync-next').click();
    await p.waitForFunction((previous)=>{
