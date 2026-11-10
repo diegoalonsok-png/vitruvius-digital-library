@@ -2,10 +2,10 @@ name: Verificar Vitruvia Lexicon
 on:
   push:
     branches: [main]
-    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/test-lexicon-integrated-dictionaries.mjs", "assets/lexicon-dictionaries-integrated.js", "assets/lexicon-dictionaries-integrated.css", "scripts/annotate-latin-context.py", "sw.js", ".github/workflows/lexicon-check.yml"]
+    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/test-lexicon-integrated-dictionaries.mjs", "assets/lexicon-dictionaries-integrated.js", "assets/lexicon-dictionaries-integrated.css", "assets/lexicon-orthography-core.js", "assets/lexicon-orthography-research.js", "scripts/test-lexicon-orthography.mjs", "scripts/annotate-latin-context.py", "sw.js", ".github/workflows/lexicon-check.yml"]
   pull_request:
     branches: [main]
-    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/test-lexicon-integrated-dictionaries.mjs", "assets/lexicon-dictionaries-integrated.js", "assets/lexicon-dictionaries-integrated.css", "scripts/annotate-latin-context.py", "sw.js", ".github/workflows/lexicon-check.yml"]
+    paths: ["vitruvia-lexicon.html", "assets/vitruvia-lexicon.js", "assets/lectura-lexica.js", "assets/lector-clasico.js", "lector-clasico.html", "data/lexicon/**", "scripts/*lexicon*", "scripts/test-lexicon-integrated-dictionaries.mjs", "assets/lexicon-dictionaries-integrated.js", "assets/lexicon-dictionaries-integrated.css", "assets/lexicon-orthography-core.js", "assets/lexicon-orthography-research.js", "scripts/test-lexicon-orthography.mjs", "scripts/annotate-latin-context.py", "sw.js", ".github/workflows/lexicon-check.yml"]
   workflow_dispatch:
 permissions:
   contents: read
@@ -26,6 +26,10 @@ jobs:
           node --check assets/lector-clasico.js
           node --check sw.js
           node --check assets/lexicon-dictionaries-integrated.js
+          node --check assets/lexicon-orthography-core.js
+          node --check assets/lexicon-orthography-research.js
+      - name: Frecuencias ortográficas y límites de muestras griego-latinas
+        run: node scripts/test-lexicon-orthography.mjs
       - name: Datos JSON válidos
         run: |
           python - <<'PY'
