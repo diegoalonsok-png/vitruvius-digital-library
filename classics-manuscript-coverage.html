@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Control codicológico de 222 obras · Vitruvius Digital Library</title>
+<meta name="description" content="Matriz de cobertura de manuscritos clásicos, con estado verificable por obra, visores y catálogos.">
+<style>
+:root{--bg:#101011;--ink:#eeeeef;--muted:#bcbcbc;--line:#4c4c50;--panel:#1a1a1c;--gold:#e3c78f;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 system-ui,sans-serif}
+header,main,footer{max-width:1450px;margin:auto;padding:16px clamp(14px,3vw,38px)}
+header{display:flex;align-items:center;gap:18px;flex-wrap:wrap;border-bottom:1px solid var(--line)}header strong{font:italic 27px Georgia,serif}
+nav{display:flex;gap:17px;flex-wrap:wrap}nav a{font-size:13px}a{color:var(--gold);text-underline-offset:3px}
+h1{font:400 clamp(23px,2.8vw,33px)/1.25 Georgia,serif;margin:15px 0 8px}
+.intro{max-width:105ch;color:var(--muted)}.summary{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.stat{border:1px solid var(--line);background:var(--panel);padding:10px 14px;min-width:130px;border-radius:5px}.stat b{font:25px/1.25 Georgia,serif;display:block}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:18px 0}input,select{background:var(--panel);border:1px solid #888;color:var(--ink);padding:10px;font:inherit;border-radius:4px}input{width:min(420px,100%)}button{background:#303033;color:var(--ink);border:1px solid #888;padding:9px 12px;cursor:pointer}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:840px}th{text-align:left;font-weight:650;position:sticky;top:0;background:#252527;z-index:1}th,td{padding:10px 12px;vertical-align:top;border-bottom:1px solid var(--line)}
+td:first-child{min-width:230px}td a{display:inline-block;margin:2px 10px 2px 0;font-size:12px}td small{display:block;color:var(--muted)}
+.pending{color:#cecece}.yes{color:#c1ddc4}.warn{color:#ead2a5}
+footer{border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+</style></head><body>
+<header><strong>Bibliotheca</strong><nav><a href="bibliotheca-graeca-latina.html">Obras clásicas</a><a href="index-codicum.html">Index codicum</a><a href="classics-work-record.html?work=didache">Ficha de Didaché</a></nav></header>
+<main><h1>Matriz codicológica de 222 obras</h1>
+<p class="intro">Cada registro representa una obra catalogada, no un códice. Un vínculo a un catálogo acredita únicamente un objeto identificado; se distingue del visor de imágenes y de la demostración filológica de que sea el manuscrito conservado más antiguo. Esta matriz actualiza su cobertura directamente desde el repositorio, sin inferir signaturas ni afirmar la integridad del texto a partir de una digitalización.</p>
+<div class="summary" id="summary"></div>
+<div class="controls"><label for="filter">Buscar obra o autor</label><input type="search" id="filter" placeholder="Ej. Cicerón, Hesíodo, Plinio…"><label for="status">Cobertura</label><select id="status"><option value="all">Todas las obras</option><option value="none">Sin manuscrito asignado</option><option value="one">Un testimonio</option><option value="many">Dos o más testimonios</option><option value="viewer">Con reproducción enlazada</option></select></div>
+<p id="progress" role="status" aria-live="polite">Cargando registros académicos…</p>
+<div class="scroll"><table><thead><tr><th>Autor y obra</th><th>Estado documental</th><th>Testimonios individualizados / signaturas</th><th>Acceso al documento</th></tr></thead><tbody id="rows"></tbody></table></div>
+</main><footer>Vitruvius Digital Library · Catálogo de manuscritos y control de acceso · TEI P5 / Chicago 18 como criterios de descripción; no constituyen certificación externa.</footer>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id),txt=(tag,str)=>{const e=document.createElement(tag);e.textContent=str||"";return e};
+const anchor=(parent,label,url)=>{try{const u=new URL(url,location.href);if(!["https:","http:"].includes(u.protocol))return;const a=txt("a",label);a.href=u.href;if(u.origin!==location.origin){a.target="_blank";a.rel="noopener noreferrer"}parent.append(a)}catch{}};
+const read=path=>fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error(path+" (HTTP "+r.status+")");return r.json()});
+let data=[];
+const stats=(label,value)=>{const el=txt("div");el.className="stat";el.append(txt("b",String(value)),txt("span",label));$("summary").append(el)};
+function draw(){
+ const q=$("filter").value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim(),sel=$("status").value;
+ const hits=data.filter(x=>(x.author+" "+x.title+" "+x.id).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().includes(q)&&(sel==="all"||sel==="none"&&!x.list.length||sel==="one"&&x.list.length===1||sel==="many"&&x.list.length>=2||sel==="viewer"&&x.list.some(w=>w.viewer||w.localViewer)));
+ const body=$("rows");body.replaceChildren();
+ for(const w of hits){
+  const tr=txt("tr");
+  const name=txt("td");name.append(txt("strong",w.author+" · "+w.title),txt("small",w.id));anchor(name,"Ver ficha crítica →","classics-work-record.html?work="+encodeURIComponent(w.id));tr.append(name);
+  const status=txt("td");status.className=w.list.length>=2?"yes":w.list.length?"warn":"pending";
+  status.textContent=w.list.length?(w.list.length+" testimonio(s) registrado(s)"):"Pendiente de asignación documental";
+  status.append(txt("small",w.list.some(v=>v.viewer||v.localViewer)?"Contiene acceso a imágenes o visor; su carga puede depender de terceros":"No consta visor individual confirmado"));tr.append(status);
+  const shelf=txt("td");for(const ms of w.list.slice(0,4))shelf.append(txt("small",(ms.shelfmark||ms.id)+" · "+(ms.date||"s. d.")));
+  if(w.list.length>4)shelf.append(txt("small","+"+(w.list.length-4)+" testimonios en la ficha"));tr.append(shelf);
+  const links=txt("td");
+  for(const ms of w.list.slice(0,3)){
+   if(ms.localViewer)anchor(links,"Galería · "+(ms.shelfmark||ms.id),ms.localViewer);
+   else if(ms.viewer)anchor(links,"Ver · "+(ms.shelfmark||ms.id),ms.viewer);
+   else if(ms.record)anchor(links,"Catálogo · "+(ms.shelfmark||ms.id),ms.record);
+  }
+  if(!w.list.length)links.append(txt("small","No publicar un códice supuesto: localizar antes signatura y fuente"));
+  tr.append(links);body.append(tr);
+ }
+ $("progress").textContent=hits.length+" obras visibles de "+data.length+" catalogadas.";
+}
+Promise.all([read("data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-coverage-v2"),read("data/bibliotheca-testimonia-verified.json?v=20261110-coverage-v2")])
+.then(([c,t])=>{
+ const map=new Map();for(const ms of t.records||[])for(const id of ms.workIds||[]){if(!map.has(id))map.set(id,[]);map.get(id).push(ms)}
+ data=(c.works||[]).map(x=>({...x,list:(map.get(x.id)||[]).slice().sort((a,b)=>(a.dateStart??999999)-(b.dateStart??999999))}));
+ $("summary").replaceChildren();stats("Obras catalogadas",data.length);stats("Con testigo individual",data.filter(x=>x.list.length).length);stats("Con dos o más",data.filter(x=>x.list.length>=2).length);stats("Sin testigo asignado",data.filter(x=>!x.list.length).length);stats("Registros de manuscritos",(t.records||[]).length);
+ draw();
+}).catch(e=>$("progress").textContent="No pudo cargarse la matriz: "+e.message);
+$("filter").addEventListener("input",draw);$("status").addEventListener("change",draw);
+})();
+</script>
+</body></html>
