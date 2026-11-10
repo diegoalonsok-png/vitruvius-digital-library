@@ -165,9 +165,11 @@ targetRoot.addEventListener("click",event=>{
   event.stopImmediatePropagation();
   void openMark(mark);
  }else{
-  // Let the existing in-passage dictionary click handler run first while
-  // coordinates still refer to this word. Then open the expanded lexical view.
-  queueMicrotask(()=>{if(mark.isConnected)void openMark(mark)});
+  // Single owner for highlighted-word clicks. The general wordAt handler can
+  // otherwise race with this modal and overwrite the inline dictionary with
+  // a neighbouring word; openMark renders both panels from the same lemma.
+  event.stopImmediatePropagation();
+  void openMark(mark);
  }
 },true);
 targetRoot.addEventListener("keydown",event=>{
