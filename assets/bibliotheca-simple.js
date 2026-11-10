@@ -487,6 +487,9 @@ function render(rows,q,details){
   if(last!==r.workId){
    last=r.workId;const w=byId.get(last)||{};section=el("section","group");
    section.append(el("h3","",w.title||r.title));
+   const academic=el("a","passage-link",locale==="en"?"Academic work dossier · manuscripts / IIIF / Chicago 18":locale==="fr"?"Dossier académique · manuscrits / IIIF / Chicago 18":"Ficha académica de obra · códices / IIIF / Chicago 18");
+   academic.href="classics-work-record.html?work="+encodeURIComponent(last);
+   academic.style.display="inline-block";academic.style.margin="3px 0 10px";section.append(academic);
    section.append(el("p","meta",[w.author||r.author,w.dating||t.noDate,t.groupCount(groupCounts.get(last)||0)].filter(Boolean).join(" · ")));
    // Un libro puede contener más de una edición o lengua: no se confunden sus recuentos.
    const relevant=sorted.filter(z=>z.workId===last);
