@@ -90,9 +90,15 @@
   },
   "coveragePending": {
     "worksWithoutTextVersionInSearchRegistry": 41,
-    "bibliographicEditionRecordsWithSpecificCitationObject": 25,
-    "verifiedEditionCTSURN": 0,
-    "note": "La cobertura local no mide automáticamente los enlaces externos, los PDF ni los originales accesibles por otros visores. Se requieren verificaciones independientes para esos materiales."
+    "bibliographicEditionRecordsWithSpecificCitationObject": 26,
+    "verifiedEditionCTSURN": 1,
+    "note": "La cobertura local no mide automáticamente los enlaces externos, los PDF ni los originales accesibles por otros visores. Se requieren verificaciones independientes para esos materiales.",
+    "verifiedEditionCTSURNExample": {
+      "workId": "augustine-confessiones",
+      "urn": "urn:cts:latinLit:stoa0040.stoa001.opp-lat1",
+      "proof": "OpenGreekAndLatin/CSEL TEI source, div[@type=edition]/@n, 2026-11-10",
+      "note": "Declarado en fuente TEI; no se ha probado resolubilidad de un servicio CTS externo."
+    }
   },
   "priorityNext": [
     "Ejecutar el auditor Node en un checkout completo para cubrir las 26 versiones grandes y los registros en otros formatos.",
@@ -100,5 +106,6 @@
     "Registrar testigos antiguos en las 187 obras pendientes tras verificar catálogo institucional, datación, signatura, cobertura y acceso real.",
     "Completar identificadores CTS a nivel de edición únicamente con fuente primaria o catálogo institucional; PHI/TLG son códigos de obra.",
     "Corregir la cobertura de bibliografía Chicago 18 edición por edición; el título de una obra no sustituye la referencia de su edición."
-  ]
+  ],
+  "revision": "2026-11-10: Updated after direct TEI edition-URN header verification and Chicago 18 source transcription for Augustine."
 }
