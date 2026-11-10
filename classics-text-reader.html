@@ -41,7 +41,8 @@ footer{border-top:1px solid var(--line);margin-top:35px;padding-top:16px;font:12
  --line:#414144;--muted:#aaa;--gold:#6c6c70;--mark:#b3b3b7;
 }
 html body{background:#09090a;color:#e3e3e4}
-html body :is(header,.tools,aside,.reader,.notice,.reader-toolbar,#lexicon){background:#111112!important;color:#e3e3e4!important;border-color:#414144!important}
+/* :where avoids the ID specificity of #lexicon blocking the user's --reader-bg/--reader-fg overrides. */
+html body :where(header,.tools,aside,.reader,.notice,.reader-toolbar,#lexicon){background:#111112!important;color:#e3e3e4!important;border-color:#414144!important}
 html body :is(.tools input,.tools select,.tools button,.tools a,.reader-toolbar button,
 #toc li button,.hit-nav button){
  background:#202021!important;color:#dadada!important;border:1px solid #393939!important;
