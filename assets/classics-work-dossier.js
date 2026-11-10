@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-apostolic-fathers-h54-v5",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-apostolic-fathers-h54-v5",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-apostolic-fathers-h54-v5"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-222-codices-sources-v6",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-222-codices-sources-v6",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-222-codices-sources-v6"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -141,7 +141,7 @@ function msBlock(dest,ms,i){
  if(ms.localViewer&&ms.viewer)addA(links,"Acceso externo al archivo ↗",ms.viewer);
  if(ms.imageViews?.length)for(const view of ms.imageViews)addA(links,"Fotografía original · "+(view.id||view.title)+" ↗",view.sourceUrl);
  if(ms.alternativeLinks?.length)for(const link of ms.alternativeLinks){
-  if(!link.url||[ms.localViewer,ms.viewer,ms.record,ms.manifest].includes(link.url))continue;
+  if(!link.url||[ms.localViewer,ms.viewer,ms.record,ms.manifest,...(ms.imageViews||[]).map(v=>v.sourceUrl)].includes(link.url))continue;
   addA(links,(link.title||"Acceso alternativo")+(link.status==="official_general_collection"?" (colección general)":link.status==="external_collected_images"?" (imágenes externas)":"")+" ↗",link.url);
  }
  if(links.childNodes.length)item.append(links);
@@ -344,6 +344,7 @@ function renderInto(target,id,opts={}){
   renderBibliography(target,w);
   section(target,"Metodología de la ficha");
   target.append(html("p","cwd-muted","Los loci clásicos identifican lugares del texto; un número de página de edición y un folio físico son sistemas de referencia diferentes. Un manuscrito puede contener solo fragmentos. Los datos manuscritos provienen del registro de testimonios verificados; la bibliografía, del catálogo editorial. Enlaces a recursos externos no implican derechos de reproducción ni aval institucional."));
+  const coverage=html("p","cwd-links");addA(coverage,"Consultar la matriz completa de las 222 obras ↗","classics-manuscript-coverage.html");target.append(coverage);
   const version=html("p","cwd-muted","Procedencia interna: catálogo Bibliotheca (222 registros en esta versión); testimonios validados ("+d.witnessCount+"); índice de versiones textuales. Estilo de descripción bibliográfica: The Chicago Manual of Style, 18.ª ed. (2024), notas y bibliografía, en la medida de los metadatos disponibles.");
   target.append(version);
   return w;
