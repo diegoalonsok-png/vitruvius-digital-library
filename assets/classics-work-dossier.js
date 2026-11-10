@@ -276,6 +276,8 @@ function initBibliotheca(){
  select.addEventListener("change",render);
  window.addEventListener("popstate",render);
  document.addEventListener("vitruvius:language-changed",render);
+ let scheduled=false;
+ new MutationObserver(()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;render()})}).observe(select,{childList:true});
  window.setTimeout(render,0);
 }
 window.ClassicsWorkDossier={data:store,render:(target,id,opts)=>{css();return renderInto(target,id,opts)},initBibliotheca,witnessesFor,title};
