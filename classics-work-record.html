@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ficha crítica de obra clásica · Bibliotheca Graeca et Latina · Vitruvius Digital Library</title>
+<meta name="description" content="Fichas críticas de obras clásicas: título antiguo, contexto, edición, testigos manuscritos, signatura, visores IIIF y bibliografía Chicago 18.">
+<style>
+:root{color-scheme:dark;--bg:#101011;--ink:#eeeeef;--line:#545457}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,Arial,sans-serif}
+main,header,footer{max-width:1300px;padding:14px clamp(14px,3vw,40px);margin:auto}
+header{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+header strong{font:italic 34px/1.1 Georgia,serif;letter-spacing:-.03em}header a,footer a{color:inherit;text-underline-offset:3px}
+nav{display:flex;flex-wrap:wrap;gap:9px 18px}nav a{font-size:13px}
+h1{font:400 clamp(26px,3.8vw,45px)/1.2 Georgia,serif;margin:22px 0 10px}
+.intro{max-width:90ch;color:#bcbcbc;font-size:13px}
+.actionbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:18px 0}
+.actionbar label{font-size:13px}
+.actionbar select,.actionbar button{border:1px solid #707078;background:#272729;color:#eee;border-radius:6px;padding:9px 12px;min-height:40px;font:13px system-ui;cursor:pointer}
+.actionbar select{max-width:min(100%,510px)}
+#work-record-status{font-size:12px;color:#bbb}
+footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30px}
+@media print{.actionbar,nav{display:none}body{color:#111;background:#fff}}
+</style>
+<script defer src="assets/classics-work-dossier.js?v=20261110-academic-all-v1"></script>
+</head>
+<body><header><strong>Bibliotheca</strong><nav>
+<a href="index.html">Vitruvius Digital Library</a>
+<a href="bibliotheca-graeca-latina.html">Bibliotheca Graeca et Latina</a>
+<a href="index-codicum.html">Index codicum</a>
+<a href="vitruvia-lexicon.html">Lexicon</a>
+</nav></header>
+<main><h1>Fichas críticas de obras clásicas</h1>
+<p class="intro">Datos de autoría, género, fecha de composición, denominaciones antiguas, transmisión manuscrita, variantes editoriales y bibliografía. La cita de una edición se distingue de la identidad de la obra; la antigüedad de un códice se presenta solamente en relación con el corpus de testimonios verificados.</p>
+<div class="actionbar"><label for="record-work">Seleccionar una obra</label>
+<select id="record-work"><option value="">Cargando 222 registros…</option></select>
+<button id="print-record" type="button">Imprimir / guardar PDF</button>
+<button id="copy-record" type="button">Copiar ficha y procedencia</button></div>
+<p id="work-record-status" role="status" aria-live="polite">Consultando el catálogo académico…</p>
+<article id="work-record"></article></main>
+<footer>Bibliotheca Graeca et Latina · Vitruvius Digital Library · Catálogo de ediciones y testimonios documentados · Chicago 18 (metadatos condicionados a fuentes verificadas).</footer>
+<script>
+(()=>{"use strict";
+const $=id=>document.getElementById(id);
+const requested=new URLSearchParams(location.search).get("work")||"";
+async function ready(){
+ const API=window.ClassicsWorkDossier;
+ if(!API){$("work-record-status").textContent="El módulo de ficha crítica no se ha cargado.";return}
+ try{
+  const data=await API.data(),selected=$("record-work");
+  selected.replaceChildren(new Option("Elegir una obra del repertorio",""));
+  for(const work of data.docs.values())selected.append(new Option(work.author+" · "+work.title,work.id));
+  function show(){
+   const id=selected.value;
+   const url=new URL(location.href);
+   if(id)url.searchParams.set("work",id);else url.searchParams.delete("work");
+   history.replaceState(null,"",url);
+   if(!id){$("work-record").replaceChildren();$("work-record-status").textContent="Seleccione una obra para consultar su ficha.";return}
+   $("work-record-status").textContent="Obra: "+id+" · testimonios del registro local y citas con estado documental.";
+   void API.render($("work-record"),id);
+  }
+  selected.value=data.docs.has(requested)?requested:"";
+  if(!selected.value){$("work-record-status").textContent="Elija una de las "+data.count+" obras catalogadas."; }
+  selected.addEventListener("change",show);
+  $("print-record").addEventListener("click",()=>window.print());
+  $("copy-record").addEventListener("click",async()=>{
+   const text=$("work-record").innerText||"";
+   if(!text.trim())return;
+   try{await navigator.clipboard.writeText(text+"\n"+location.href);$("work-record-status").textContent="Ficha copiada con enlace permanente."}
+   catch{$("work-record-status").textContent="No se pudo copiar automáticamente; use selección e impresión."}
+  });
+  if(selected.value)show();
+ }catch(err){$("work-record-status").textContent="No pudo abrirse el catálogo: "+err.message}
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",ready,{once:true});else ready();
+})();
+</script>
+</body></html>
