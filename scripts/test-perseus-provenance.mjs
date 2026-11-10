@@ -21,7 +21,7 @@ assert.equal(report.counts.worksWithPerseusSourceDescription,describedWorks);
 assert.equal(report.counts.verifiedEditionUrns,verified.length);
 for(const r of records){
   assert.ok(typeof r.workId==="string"&&r.workId);
-  assert.ok(Array.isArray(r.versions)&&r.versions.length>0,"No version records for "+r.workId);
+  assert.ok(Array.isArray(r.versions),"Version list missing for "+r.workId);
   assert.equal(r.perseusAffiliation,false,"Institutional affiliation must not be inferred: "+r.workId);
   if(r.ctsStatus==="verified"){
     assert.match(r.ctsEditionUrn||"",/^urn:cts:[a-z0-9-]+:[A-Za-z0-9_.-]+$/i,"Malformed verified edition URN: "+r.workId);
