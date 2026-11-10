@@ -30,6 +30,10 @@ function style(){
  ".classics-tally .tally-details ol::-webkit-scrollbar-thumb{background:#929399;border:2px solid #25272c;border-radius:9px;min-height:36px}",
  ".classics-tally .tally-details li{margin-bottom:5px;overflow-wrap:anywhere}",
  ".classics-tally .tally-details li small{opacity:.75}",
+ ".classics-tally .tally-editions{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin:2px 0 8px;font:11px/1.5 Arial,Helvetica,sans-serif}",
+ ".classics-tally .tally-editions a{display:inline-block;white-space:normal;overflow-wrap:anywhere}",
+ ".classics-tally .tally-editions .tally-parallel{font-weight:700;text-decoration:underline}",
+ ".classics-tally .tally-editions small{opacity:.75}",
  ".classics-tally .tally-details a{color:inherit;text-decoration:underline;text-underline-offset:2px}",
   "body:has(.bibliotheca-suite) .classics-tally{background:#121214;color:#e9e9ea}",
  "body:has(.bibliotheca-suite) .classics-tally dl>div{border-color:#45454a;background:#19191b}",
@@ -40,9 +44,33 @@ function style(){
  ].join("\n");document.head.append(el);
 }
 function recordLabel(w){return [w?.author,w?.title].filter(Boolean).join(" — ") || w?.id || "Registro sin título";}
+const sourceLanguageLabels={la:"latín",grc:"griego antiguo",es:"castellano",en:"inglés",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"};
+const trustedReader=/^(?:classics-text-reader|classics-remote-[a-z-]+-reader)\.html\?/;
 function detailLink(entry){
  const link=entry?.reader;
- return typeof link==="string" && /^(?:classics-text-reader|classics-remote-[a-z-]+-reader)\.html\?/.test(link)?link:null;
+ return typeof link==="string" && trustedReader.test(link)?link:null;
+}
+function workVersions(id,data){
+ const rows=data.registry.entries.filter(e=>e.workId===id && detailLink(e) &&
+  ["json-passages","structured-bilingual"].includes(e.format) &&
+  sourceLanguageLabels[e.language]);
+ const byLanguage=new Map();
+ for(const entry of rows)if(!byLanguage.has(entry.language))byLanguage.set(entry.language,entry);
+ const originals=[...byLanguage.values()].filter(e=>["la","grc"].includes(e.language));
+ const translations=[...byLanguage.values()].filter(e=>!["la","grc"].includes(e.language));
+ const links=[...originals,...translations].map(e=>({
+  url:detailLink(e),language:e.language,
+  label:(["la","grc"].includes(e.language)?"Original: ":"Traducción: ")+
+   (sourceLanguageLabels[e.language]||e.language)
+ }));
+ // Only offer two viewers when there really are two hosted text editions.
+ const pair=originals[0]&&translations[0]?{
+  url:"classics-parallel-reader.html?work="+encodeURIComponent(id)+
+   "&left="+encodeURIComponent(originals[0].language)+
+   "&right="+encodeURIComponent(translations[0].language),
+  label:"Leer original y traducción en dos visores"
+ }:null;
+ return {links,pair,translationHosted:!!translations.length};
 }
 function detailGroup(i,data){
  const rows=i===0?data.road.items:i===1?data.road.items.filter(w=>w.originalIndexed||data.extraIds.has(w.id)):
@@ -51,10 +79,17 @@ function detailGroup(i,data){
  data.road.items.filter(w=>!w.originalIndexed&&!data.extraIds.has(w.id));
  return rows.map(w=>{
   const id=w.workId||w.id;
-  const title=recordLabel(w.author? w:data.byId.get(id)||w);
-  const edition=i===3?(" · "+(w.language||"idioma no consignado")):"";
-  const url=detailLink(w) || (i===3?null:detailLink(data.registry.entries.find(e=>e.workId===id && (i!==2||e.language!==(data.byId.get(id)?.originalLanguage)))));
-  return {title:title+edition,url,meta:i===4?"Pendiente de original indexado":(i===3?(w.sourceDescription||"Versión textual"):(w.dating||""))};
+  const main=data.byId.get(id)||w;
+  const title=recordLabel(w.author?w:main);
+  const edition=i===3?(" · "+(sourceLanguageLabels[w.language]||w.language||"idioma no consignado")):"";
+  const url=detailLink(w)|| (i===3?null:detailLink(data.registry.entries.find(e=>e.workId===id)));
+  const versions=i===3||i===4?null:workVersions(id,data);
+  return {
+   title:title+edition,url,versions,
+   meta:i===4?"Pendiente de original indexado":
+    i===3?(w.sourceDescription||"Versión textual"):
+    (w.dating||"")
+  };
  });
 }
 function paint(a,data){
@@ -78,9 +113,26 @@ function paint(a,data){
   records.sort((a,b)=>a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
   for(const rec of records){
    const li=document.createElement("li");
-   if(rec.url){const link=document.createElement("a");link.href=rec.url;link.textContent=rec.title;li.append(link);}
-   else li.append(document.createTextNode(rec.title));
+   const strong=document.createElement("span");strong.textContent=rec.title;li.append(strong);
    if(rec.meta){const meta=document.createElement("small");meta.textContent=" · "+rec.meta;li.append(meta);}
+   if(rec.versions?.links.length){
+    const versions=document.createElement("div");versions.className="tally-editions";
+    for(const edition of rec.versions.links){
+     const a=document.createElement("a");a.href=edition.url;
+     a.textContent=edition.label;versions.append(a);
+    }
+    if(rec.versions.pair){
+     const together=document.createElement("a");
+     together.href=rec.versions.pair.url;
+     together.className="tally-parallel";
+     together.textContent=rec.versions.pair.label;versions.append(together);
+    }else if(!rec.versions.translationHosted){
+     const note=document.createElement("small");note.textContent="Traducción: no alojada en el sitio";versions.append(note);
+    }
+    li.append(versions);
+   }else if(rec.url){
+    const link=document.createElement("a");link.href=rec.url;link.textContent="Abrir versión";li.append(" ",link);
+   }
    ol.append(li);
   }
   const note=document.createElement("p");note.textContent=records.length+" registros listados (según inventarios consultados).";details.append(note,ol);
