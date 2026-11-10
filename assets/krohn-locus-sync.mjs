@@ -52,3 +52,81 @@ export function pdfPage(base,page){
  if(!Number.isInteger(page)||page<1||page>10000)return null;
  return String(base||"").split("#")[0]+"#page="+page+"&zoom=page-width";
 }
+
+/** Find coherent OCR blocks (often larger than a printed paragraph).
+ * This operates on the EXISTING whole-page OCR. A paragraph can cross a PDF
+ * page boundary; adjacent pages are included only when they carry substantial,
+ * disjoint parts of the same Latin locus. OCR spelling and line breaks remain
+ * untouched; this is a reading guide, not an edited Latin witness.
+ */
+export function ocrBlocksForLocus(pages,referenceLatin,candidatePage){
+ if(!Array.isArray(pages)||!Number.isInteger(candidatePage)||candidatePage<1)return [];
+ const sourceWords=text=>[...String(text||"").matchAll(/[A-Za-zÀ-ÿ]+/g)]
+  .map(m=>({word:fold(m[0]),start:m.index,end:m.index+m[0].length}))
+  .filter(w=>w.word.length>=2);
+ const ref=sourceWords(referenceLatin),size=ref.length;
+ if(size<5)return [];
+ const referenceMap=new Map();
+ for(let i=0;i<size-2;i++){
+  const term=ref[i].word+" "+ref[i+1].word+" "+ref[i+2].word;
+  const at=referenceMap.get(term)||[];at.push(i);referenceMap.set(term,at);
+ }
+ const available=new Map(pages.filter(p=>Number.isInteger(p?.page)).map(p=>[p.page,p]));
+ const candidates=[];
+ for(const pg of [candidatePage-1,candidatePage,candidatePage+1]){
+  const page=available.get(pg);if(!page)continue;
+  const text=String(page.text||"");const words=sourceWords(text);
+  const anchors=[];
+  for(let j=0;j<words.length-2;j++){
+   const key=words[j].word+" "+words[j+1].word+" "+words[j+2].word;
+   for(const i of referenceMap.get(key)||[])anchors.push({i,j});
+  }
+  if(anchors.length<4)continue;
+  // Printed notes may repeat a phrase from another part of the locus.
+  // Use one monotonically ordered sequence so OCR starts never follow ends.
+  anchors.sort((a,b)=>a.i-b.i||a.j-b.j);
+  const chainScores=anchors.map(()=>1),previous=anchors.map(()=>-1);
+  for(let k=0;k<anchors.length;k++){
+   for(let j=0;j<k;j++){
+    const left=anchors[j],right=anchors[k];
+    if(left.i>=right.i||left.j>=right.j)continue;
+    if(chainScores[j]+1>chainScores[k]){
+     chainScores[k]=chainScores[j]+1;previous[k]=j;
+    }
+   }
+  }
+  let best=0;
+  for(let k=1;k<anchors.length;k++)if(chainScores[k]>chainScores[best])best=k;
+  const coherent=[];
+  for(let k=best;k>=0;k=previous[k]){coherent.push(anchors[k]);if(previous[k]<0)break}
+  coherent.reverse();
+  if(coherent.length<4)continue;
+  const first=coherent[0],last=coherent[coherent.length-1];
+  candidates.push({page:pg,text,words,anchors:coherent,minRef:first.i,maxRef:last.i,
+   matches:coherent.length,primary:pg===candidatePage});
+ }
+ const primary=candidates.find(p=>p.primary);
+ if(!primary)return [];
+ // Adjacent OCR pages must provide evidence of a different part of the
+ // reference paragraph (not a repeated note or a stray shared phrase).
+ const included=candidates.filter(p=>p.primary||
+  p.page===candidatePage-1&&p.minRef<primary.minRef-4&&p.maxRef<=primary.maxRef+4||
+  p.page===candidatePage+1&&p.maxRef>primary.maxRef+4&&p.minRef>=primary.minRef-4
+ ).sort((a,b)=>a.page-b.page);
+ return included.map(p=>{
+  const first=p.anchors[0],last=p.anchors[p.anchors.length-1];
+  const contextualMargin=5;
+  const start=Math.max(0,first.j-Math.min(contextualMargin,first.i)-contextualMargin);
+  const end=Math.min(p.words.length,last.j+3+
+   Math.min(contextualMargin,Math.max(0,size-3-last.i))+contextualMargin);
+  const excerpt=p.text.slice(p.words[start]?.start||0,p.words[end-1]?.end||0).trim();
+  const covered=new Set();
+  for(const a of p.anchors){covered.add(a.i);covered.add(a.i+1);covered.add(a.i+2)}
+  return {
+   page:p.page,primary:p.primary,text:excerpt,matchedTrigrams:p.matches,
+   firstReferenceToken:p.minRef,lastReferenceToken:Math.min(size-1,p.maxRef+2),
+   referenceTokenCount:size,
+   referenceCoverage:Math.round(100*covered.size/size)
+  };
+ });
+}
