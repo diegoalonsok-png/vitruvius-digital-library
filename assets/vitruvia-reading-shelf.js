@@ -184,11 +184,11 @@
   const items=curated?pinkFloyd.map(item=>({...item})):[];
   lastCurated=curated;lastItems=items;
   if(items.length)draw(q,items,true);else{root.hidden=true;root.replaceChildren()}
-  controller=new AbortController();const signal=controller.signal;
+  const activeController=new AbortController();controller=activeController;const signal=activeController.signal;
   // Independent, bounded request: never block Vitruvia's primary search.
   setTimeout(async()=>{
    if(token!==request||signal.aborted)return;
-   const timeout=setTimeout(()=>controller?.abort(),6500);
+   const timeout=setTimeout(()=>activeController.abort(),6500);
    try{
     const docs=await books(curated?"Pink Floyd":q,signal);
     if(token!==request||signal.aborted)return;
