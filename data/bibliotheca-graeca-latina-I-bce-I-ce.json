@@ -1934,10 +1934,10 @@
       "manuscript": {
         "manifest": null,
         "record": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
-        "status": "P. Oxy. XV 1782 (Oxford, s. IV ex., dos hojas fragmentarias de pergamino, TM 64596); H = Hierosolymitanus, Panagios Taphos 54 (Jerusalén, 1056, ff. 76–81 según Pinakes, texto griego completo; Pinakes 35291, CPG 1735); Elbasan 82 (Tirana, s. XVI 3/4, completo, probable apógrafo de H; Pinakes 63441). Enlaces externos documentados; sin visor público confirmado de Elbasan.",
-        "researchStatus": "linked_to_witness",
-        "witnessCount": 3,
-        "witnessWithViewerCount": 2,
+        "status": "P. Oxy. XV 1782 (Oxford, s. IV ex., dos hojas fragmentarias de pergamino, TM 64596); H = Hierosolymitanus, Panagios Taphos 54 (Jerusalén, 1056, ff. 76–81 según Pinakes, texto griego completo; Pinakes 35291, CPG 1735); Elbasan 82 (Tirana, s. XVI 3/4, completo, probable apógrafo de H; Pinakes 63441). Enlaces externos documentados; sin visor público confirmado de Elbasan. Cuarto testimonio añadido: British Library Or. 9271 / P.Lond.Copt. II 189, papiro copto fragmentario (Did. 10.3b–12.2a), 4CARE artefact 39; texto indirecto, no se equipara con lectura griega.",
+        "researchStatus": "four_material_witnesses_three_greek_one_coptic",
+        "witnessCount": 4,
+        "witnessWithViewerCount": 3,
         "needsAdditionalWitnesses": false
       },
       "pdf": {
@@ -1962,7 +1962,11 @@
         "translations": [
           "data/classics-corpus/didache-en.json"
         ],
-        "verified": true
+        "verified": true,
+        "verseIndex": "data/classics-corpus/didache-grc-verse-index.json",
+        "verseCount": 100,
+        "editorialApparatus": "data/classics-corpus/didache-poxy1782-apparatus.json",
+        "collationViewer": "classics-collation.html?work=didache&locus=1.3"
       },
       "aliases": [
         "Didaché",
@@ -1999,8 +2003,10 @@
           "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
           "https://4care-skos.mf.no/4care-artefacts/260/",
           "https://pinakes.irht.cnrs.fr/notices/cote/63441/",
-          "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/"
-        ]
+          "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/",
+          "https://4care-skos.mf.no/4care-artefacts/39/"
+        ],
+        "collationCitation": "Wilhite, Shawn J. Introduction to the Didache, en The Didache: A Commentary (James Clarke & Co, 2020), 8, tabla comparativa H54 / P. Oxy. XV 1782."
       },
       "codicology": {
         "earlierWitnessNote": "La edición de lectura no es una transcripción diplomática. P. Oxy. XV 1782 (s. IV ex.) es fragmentario y anterior a H; H (1056) transmite el texto completo; Elbasan 82 (s. XVI 3/4) es probablemente apógrafo de H. Se registra la distinción entre fecha de composición, datación material, estado textual y dependencia."
