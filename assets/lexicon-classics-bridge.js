@@ -140,6 +140,7 @@ function appendTranslation(card,row,editions){
   comparison.searchParams.set("work",row.workId);
   comparison.searchParams.set("left",row.language);
   comparison.searchParams.set("right",language);
+   comparison.searchParams.set("rev","20261110-parallel-sync-v4");
   if(row.locus)comparison.searchParams.set("locus",row.locus);
   const searched=String(row.matchedTerm||input.value||"").trim().replace(/^=/,"");
   if(searched)comparison.searchParams.set("q",searched.slice(0,120));
