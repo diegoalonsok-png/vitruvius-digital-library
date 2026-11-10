@@ -126,6 +126,17 @@ function suggestions(doc,q,lang){
  }
  return out;
 }
+function meaningMentions(senses,q,lang){
+ // Search text in the twenty cited Spanish explanations, not in the ancient
+ // dictionary itself. Literal text match does not imply semantic equivalence.
+ const spanish=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"")
+  .toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim();
+ const term=spanish(cleanQuery(q));
+ if(!term||term.length<4||term.length>60||
+    /^(de|del|los|las|una|uno|para|sobre|el|la|por|con|and|the)$/i.test(term))return [];
+ return (senses||[]).filter(x=>x.language===lang&&
+   (" "+spanish(x.meaning)+" ").includes(" "+term+" ")).slice(0,8);
+}
 function external(entry,lang){
  const heading=entry.lemma;
  if(lang==="he")return link("Consultar fuentes hebreas (Sefaria)","https://www.sefaria.org/search?q="+encodeURIComponent(heading));
@@ -185,6 +196,20 @@ async function search(forced=false){
    :"No existe una correspondencia exacta de lema o forma documentada para «"+q+"» en "+names[lang]+". No se muestran definiciones de palabras parecidas.";
   for(const hit of list)output.append(card(hit.entry,lang,hit.kind,senses));
   if(!list.length){
+   const inDefinitions=meaningMentions(senses,q,lang);
+   if(inDefinitions.length){
+    const context=node("section","lx-dict-meaning-hits");
+    context.style.cssText="border-top:1px solid #7775;padding:12px 0;margin:12px 0";
+    context.append(node("h3","","Palabra encontrada en explicaciones contextuales · "+inDefinitions.length));
+    context.append(node("p","lx-dict-meta","Esta consulta busca palabras del castellano dentro de veinte paráfrasis editoriales de Vitruvio. No identifica automáticamente un lema griego o latino ni demuestra sinonimia."));
+    for(const sense of inDefinitions){
+     const line=node("p","lx-dict-gloss");
+     const a=link(sense.lemma+" · Vitr. "+sense.locus,"vitruvia-lexicon.html?q="+encodeURIComponent(sense.lemma)+"&mode=palabra");
+     a.lang=sense.language;line.append(a,document.createTextNode(" — "+sense.meaning));
+     context.append(line);
+    }
+    output.append(context);
+   }
    const near=suggestions(doc,q,lang);
    if(near.length){
     const label=node("p","lx-dict-meta","Sugerencias ortográficas · NO son definiciones ni coincidencias verificadas:");
