@@ -406,27 +406,48 @@ function showCatalogueMetric(id,result,value){
  element.dataset.verification=verified?"cargado":"sin-verificar";
  element.title=verified?"Recuento del índice cargado; alcance definido por su fuente.":"No fue posible verificar esta cifra: no significa cero.";
 }
+/* Dos etapas: recuperar documentos nucleares antes que repertorios auxiliares.
+   El sitio nunca presenta un indice no recibido como inventario completo. */
 async function load(){try{
  const urls=["data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1","data/onomasticon-vitruvianum.json","data/catalog-completo.json","data/vitruvia-academic-authorities.json"];
- const results=await Promise.allSettled(urls.map(u=>fetchJSON(u)));
- const books=results[0].status==="fulfilled"?results[0].value:{works:[]},pages=results[1].status==="fulfilled"?results[1].value:{pages:[]},testimonia=results[2].status==="fulfilled"?results[2].value:{records:[],editions:[]};
+ const core=await Promise.allSettled(urls.slice(0,3).map(u=>fetchJSON(u)));
+ const books=core[0].status==="fulfilled"?core[0].value:{works:[]},pages=core[1].status==="fulfilled"?core[1].value:{pages:[]},testimonia=core[2].status==="fulfilled"?core[2].value:{records:[],editions:[]};
  S.works=(books.works||[]).filter(w=>w.id&&w.title);S.pages=pages.pages||[];
- S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];S.historical=results[4]?.status==="fulfilled"&&Array.isArray(results[4].value)?results[4].value.filter(x=>x.category==="historical"):[];S.people=results[3].status==="fulfilled"?(results[3].value.entities||[]).filter(x=>x.kind==="person"):[];S.academicRecords=results[5]?.status==="fulfilled"?(results[5].value.records||[]):[];
- S.currentAuthorities=results[5]?.status==="fulfilled"?(results[5].value.currentAuthorities||[]):[];S.ready=true;
- (typeof window!=="undefined"?window.VitruviaUnderstand:null)?.setVocabulary([...S.works.flatMap(w=>[w.title,w.author,...(w.aliases||[])]),...S.witnesses.map(w=>w.title),...(S.people||[]).flatMap(p=>[p.name,p.label,...(p.aliases||[])]),
-  "Vitruvio","Vitruvius","Palladio","Alberti","Serlio","Vignola","Cesariano","Giocondo","Barbaro","Sulpizio","Perrault","Piranesi","Leonardo","Miguel Ángel","Brunelleschi","Bramante","Le Corbusier","Gaudí","Wright","Mies","Gropius","Niemeyer","Fuller","Borromini","Bernini","Augusto","Julio César","Cicerón","Lucrecio","Virgilio","Homero","Platón","Aristóteles","Teofrasto","Epicteto","Plinio","Frontino","Arquímedes","Euclides","Ptolomeo","Herón","Ctesibio"]);
- showCatalogueMetric("metric-works",results[0],S.works.length);
- showCatalogueMetric("metric-pages",results[1],S.pages.length);
- showCatalogueMetric("metric-read",results[0],S.works.filter(verified).length);
- showCatalogueMetric("metric-witnesses",results[2],S.witnesses.length);
- showCatalogueMetric("metric-editions",results[2],S.editions.length);
- $("metrics")?.setAttribute("data-verification",results.slice(0,3).every(x=>x.status==="fulfilled")?"completo":"parcial");
+ S.witnesses=testimonia.records||[];S.editions=testimonia.editions||[];
+ S.ready=true;S.supplementalReady=false;
+ showCatalogueMetric("metric-works",core[0],S.works.length);
+ showCatalogueMetric("metric-pages",core[1],S.pages.length);
+ showCatalogueMetric("metric-read",core[0],S.works.filter(verified).length);
+ showCatalogueMetric("metric-witnesses",core[2],S.witnesses.length);
+ showCatalogueMetric("metric-editions",core[2],S.editions.length);
+ $("metrics")?.setAttribute("data-verification",core.every(x=>x.status==="fulfilled")?"completo":"parcial");
  if(!document.body.classList.contains("vitruvia-reading")){
   $("result-state").textContent=S.works.length+" obras · "+S.witnesses.length+" códices · "+S.editions.length+" ediciones y "+S.pages.length+" secciones documentales";
-  const unavailable=results.flatMap((r,i)=>r.status==="rejected"?[urls[i]]:[]);
+  const unavailable=core.flatMap((r,i)=>r.status==="rejected"?[urls[i]]:[]);
   if(unavailable.length)$("result-state").textContent+=" · "+unavailable.length+" índices no disponibles";
  }
- }catch(e){for(const id of ["metric-works","metric-pages","metric-read","metric-witnesses","metric-editions"])showCatalogueMetric(id,null,null);$("metrics")?.setAttribute("data-verification","no-disponible");$("result-state").textContent="Índice de la biblioteca no disponible: "+e.message}}
+ // Se aprovecha la misma descarga compartida; no se repite la busqueda externa.
+ void Promise.allSettled(urls.slice(3).map(u=>fetchJSON(u))).then(rest=>{
+  S.people=rest[0].status==="fulfilled"?(rest[0].value.entities||[]).filter(x=>x.kind==="person"):[];
+  S.historical=rest[1].status==="fulfilled"&&Array.isArray(rest[1].value)?rest[1].value.filter(x=>x.category==="historical"):[];
+  S.academicRecords=rest[2].status==="fulfilled"?(rest[2].value.records||[]):[];
+  S.currentAuthorities=rest[2].status==="fulfilled"?(rest[2].value.currentAuthorities||[]):[];
+  window.VitruviaUnderstand?.setVocabulary([
+   ...S.works.flatMap(w=>[w.title,w.author,...(w.aliases||[])]),
+   ...S.witnesses.map(w=>w.title),
+   ...S.people.flatMap(p=>[p.name,p.label,...(p.aliases||[])]),
+   "Vitruvio","Vitruvius","Palladio","Alberti","Serlio","Vignola","Cesariano","Giocondo","Barbaro","Sulpizio","Perrault","Piranesi","Leonardo","Miguel Ángel","Brunelleschi","Bramante","Le Corbusier","Gaudí","Wright","Mies","Gropius","Niemeyer","Fuller","Borromini","Bernini","Augusto","Julio César","Cicerón","Lucrecio","Virgilio","Homero","Platón","Aristóteles","Teofrasto","Epicteto","Plinio","Frontino","Arquímedes","Euclides","Ptolomeo","Herón","Ctesibio"
+  ]);
+  S.supplementalReady=true;
+  window.dispatchEvent(new CustomEvent("vitruvia:catalogue-supplemental",{detail:{
+   unavailable:rest.flatMap((x,i)=>x.status==="rejected"?[urls[i+3]]:[])
+  }}));
+ }).catch(e=>console.warn("Índices auxiliares no disponibles:",e));
+}catch(e){
+ for(const id of ["metric-works","metric-pages","metric-read","metric-witnesses","metric-editions"])showCatalogueMetric(id,null,null);
+ $("metrics")?.setAttribute("data-verification","no-disponible");
+ $("result-state").textContent="Índice de la biblioteca no disponible: "+e.message;
+}}
 
 const dataPaths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json"];
 function passages(){if(S.passages)return Promise.resolve(S.passages);if(S.passagePromise)return S.passagePromise;
