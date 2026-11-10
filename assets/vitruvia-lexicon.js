@@ -1339,7 +1339,8 @@ async function openViewer(D,p,spans,q){
  }
  const id=LECTOR_IDS[p[0]];const body=viewerShell(`${w.author}, ${w.title} · ${p[1]}`);
  if(!id){const c=el("p",{class:"lx-passage",lang:D.l});c.append(linkWords(p[2],spans));body.append(c);return}
- const u=`lector-clasico.html?obra=${encodeURIComponent(id)}&loc=${encodeURIComponent(p[1])}${q?"&q="+encodeURIComponent(q):""}&embed=1${D.l==="grc"||!["phi0474.phi055","phi0448.phi001","phi0550.phi001","phi0690.phi002","phi0690.phi003","phi1212.phi002","phi0472.phi001","phi0972.phi001"].includes(id)?"&extra=1":""}`;
+ const wordQuery=String(q||"").trim().replace(/^=(?=\p{L})/u,"");
+ const u=`lector-clasico.html?obra=${encodeURIComponent(id)}&loc=${encodeURIComponent(p[1])}${wordQuery?"&q="+encodeURIComponent(wordQuery):""}&embed=1${D.l==="grc"||!["phi0474.phi055","phi0448.phi001","phi0550.phi001","phi0690.phi002","phi0690.phi003","phi1212.phi002","phi0472.phi001","phi0972.phi001"].includes(id)?"&extra=1":""}`;
  const original=el("section",{class:"lx-viewer-origin",role:"region","data-work":p[0],"aria-label":T("Pasaje encontrado")},
   el("h4",{},T("Pasaje encontrado")+" · "+p[1]));
  const selected=el("p",{class:"lx-passage",lang:D.l});selected.append(linkWords(p[2],spans));
