@@ -203,19 +203,37 @@ function occupationFit(description,intent){
 async function authorityCandidates(q,lang,intent="",originalQuery=""){
  const languages=[...new Set([lang,"es","en"])];
  const shortName=honorificVariant(q);
- // Honorifics and their translated equivalents are searched as *aliases*,
- // never as evidence that a restaurant, street or shop is the named ruler.
- const royalty=String(originalQuery||q).trim().match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
- const variants=[...new Set([q,...(shortName?[shortName]:[]),
-   ...(royalty?[String(originalQuery).trim(),royalty[1].trim(),"King "+royalty[1].trim(),"Rey "+royalty[1].trim()]:[])
-  ].filter(Boolean))].slice(0,5);
- const probes=languages.flatMap(language=>variants.map(term=>({language,term})));
- const hits=(await Promise.allSettled(probes.map(({language,term})=>
+ const royal=String(originalQuery||q).trim().match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
+ // Rank a full royal designation ahead of incidental uses of a short name
+ // (e.g. King Tut must not be displaced by a shop merely called Tut).
+ const variants=[...new Set([...(royal?[String(originalQuery).trim(),"King "+royal[1].trim(),"Rey "+royal[1].trim()]:[]),
+  q,...(shortName?[shortName]:[])].filter(Boolean))].slice(0,4);
+ // Up to four distinct authority lookups, rather than three languages times
+ // every alias. This also avoids Wikidata API bursts while typing.
+ const probes=royal?
+  [...new Map([{language:lang,term:variants[0]},
+    {language:"en",term:variants.find(x=>/^king /i.test(x))||variants[0]},
+    {language:"es",term:q},{language:"en",term:q}].map(x=>[x.language+":"+norm(x.term),x])).values()]:
+  [...new Map(languages.flatMap(language=>[q,...(shortName?[shortName]:[])].map(term=>({language,term})))
+   .map(x=>[x.language+":"+norm(x.term),x])).values()].slice(0,4);
+ const responses=await Promise.allSettled(probes.map(({language,term})=>
   get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
-   action:"wbsearchentities",search:term,language,type:"item",limit:"12",format:"json",origin:"*"
+   action:"wbsearchentities",search:term,language,type:"item",limit:"8",format:"json",origin:"*"
   }))
- ))).flatMap((v,i)=>v.status==="fulfilled"?(v.value.search||[]).map((x,j)=>({...x,rank:j,searchLang:probes[i].language})):[]);
- const ids=[...new Set(hits.map(x=>x.id).filter(x=>/^Q\d+$/.test(x)))].slice(0,16);
+ ));
+ const hitGroups=responses.map((response,i)=>response.status==="fulfilled"?
+  (response.value.search||[]).map((x,rank)=>({...x,rank,searchLang:probes[i].language,probe:probes[i].term})):[]);
+ const hits=hitGroups.flat();
+ // Interleave candidate rank across variants so results for a common surname
+ // cannot exhaust the cap before the complete name ("Rey Tut") is examined.
+ const ids=[],seenIds=new Set();
+ for(let rank=0;rank<8&&ids.length<20;rank++){
+  for(const group of hitGroups){
+   const id=group[rank]?.id;
+   if(/^Q\d+$/.test(id||"")&&!seenIds.has(id)){seenIds.add(id);ids.push(id)}
+   if(ids.length>=20)break;
+  }
+ }
  if(!ids.length)return null;
  const d=await get("https://www.wikidata.org/w/api.php?"+new URLSearchParams({
   action:"wbgetentities",ids:ids.join("|"),props:"labels|aliases|descriptions|sitelinks|claims",
@@ -248,6 +266,7 @@ async function authorityCandidates(q,lang,intent="",originalQuery=""){
   // Humanidades: ante dos personas homónimas, preferir la figura histórica
   // identificada y con amplia documentación. Un nombre moderno explícito sigue válido.
   const historicalHuman=human&&Number.isFinite(bornYear)&&bornYear<1900;
+  const royalIntent=!!royal;
   // A short surname (Dalí, Miró, etc.) is normally an incomplete name.
   // Prefer a well-attested creator with that surname over incidental
   // commercial or geographic homonyms, but do not promote shared first names.
@@ -258,11 +277,14 @@ async function authorityCandidates(q,lang,intent="",originalQuery=""){
   })&&/\b(pintor|painter|artista|artist|sculptor|escultor|architect|arquitecto|writer|escritor|poet|poeta|composer|compositor|musician|musico)\b/.test(norm(occupation));
   const surnameBonus=surnameCreator?460:0;
   const historicallyAttested=human&&/\b(ancient roman|roman general|roman statesman|roman dictator|military leader|independence|libertador|procer|historian|filosofo|philosopher|saint|santo|santa|religious figure|revolutionary|revolucionario|politico argentino|militar argentino)\b/.test(norm(occupation));
-  const historicBonus=historicalHuman?660:historicallyAttested?280:0;
+  // Historical relevance matters, but must not outrank an exact modern
+  // identity by default (e.g. Madonna, a singer, versus a religious epithet).
+  const historicBonus=historicalHuman?260:historicallyAttested?150:0;
+  const royalBonus=royalIntent?(human?650:-650):0;
   const personBonus=human&&norm(q).split(" ").length>=2?430:0;
   const namedInstitution=!human&&/\b(liceo|escuela|colegio|instituto|universidad|hospital|school|college|university|church|iglesia|distrito|district|estacion|calle)\b/.test(norm([...labels.slice(0,3),occupation].join(" ")));
   const institutionPenalty=namedInstitution&&!exactLabel?-160:0;
-  const score=occupationFit(occupation,intent)+(exactLabel?500:exactAlias?130:similarity?360*similarity:0)+(searchMatch?45:0)+personBonus+historicBonus+surnameBonus+institutionPenalty+
+  const score=occupationFit(occupation,intent)+(exactLabel?740:exactAlias?230:similarity?360*similarity:0)+(searchMatch?45:0)+personBonus+historicBonus+royalBonus+surnameBonus+institutionPenalty+
    Math.min(coverage,180)*3+
    (site.site===lang+"wiki"?35:0)+
    Math.max(0,25-Math.min(...searches.map(x=>x.rank),20)*4);
@@ -280,8 +302,17 @@ async function authorityCandidates(q,lang,intent="",originalQuery=""){
  ]);
  const resolved=page.status==="fulfilled"?page.value:null;
  const entity={...best.entity,claims:details.status==="fulfilled"?details.value.entities?.[best.id]?.claims:undefined};
- return resolved&&resolved.wikidataId===best.id?{...resolved,...entityMetadata(entity),wikidataId:best.id,authorityDescription:best.description,
-  authorityCoverage:best.coverage,spellingMatch:best.spellingMatch,disambiguated:true}:null;
+ // A Wikipedia extract is desirable but not required to acknowledge a
+ // verified Wikidata identity. Wikidata's sitelink stays a verifiable source.
+ const metadata=entityMetadata(entity);
+ const verifiedPage=resolved&&resolved.wikidataId===best.id?resolved:null;
+ const wikiPage=best.entity.sitelinks?.[best.lang+"wiki"]?.title||best.title;
+ const fallback={canonical:best.title,description:best.description||"",extract:"",
+  pageid:null,language:best.lang,url:"https://"+best.lang+".wikipedia.org/wiki/"+encodeURIComponent(wikiPage.replace(/ /g,"_")),
+  aliases:[],type:"wikidata-authority"};
+ return {...(verifiedPage||fallback),...metadata,wikidataId:best.id,
+  authorityDescription:best.description,authorityCoverage:best.coverage,
+  spellingMatch:best.spellingMatch,disambiguated:true,authorityOnly:!verifiedPage};
 }
 /* A surname + cultural discipline denotes a creator, not a dictionary topic.
    Inspect occupation in Wikidata search descriptions before selecting a namesake. */
