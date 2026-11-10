@@ -2,7 +2,7 @@
   "schema": 1,
   "updated": "2026-11-10",
   "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores. Ampliación: tres manuscritos institucionalmente documentados con cobertura particular y límites de acceso.",
-  "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto.",
+  "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto. Tanda latina de fuentes institucionales: los enlaces no acreditan prioridad cronológica global ni completitud textual; distinción expresa entre visor publicado y catálogo sin imágenes.",
   "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
   "records": [
     {
@@ -864,6 +864,571 @@
       "folioRange": "ff. 81r–120r (recensión larga; carta de María y respuestas incluidas; Helsinki); Pinakes resume ff. 82–120",
       "coverage": "Recensión larga griega de las cartas ignacianas. NO es testigo idéntico del corpus de siete cartas de la recensión media; la transmisión es distinta.",
       "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54, ff. 81r–120r (recensión larga), 1056."
+    },
+    {
+      "id": "cicero-de-oratore-harley2736",
+      "workIds": [
+        "cicero-oratore"
+      ],
+      "title": "Cicerón, De oratore — Harley MS 2736",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 2736",
+      "date": "s. IX med., c. 836 (Lupo de Ferrières)",
+      "dateStart": 825,
+      "coverage": "De oratore, ff. 1r–106v; ff. 17–24 desordenados y dos cuadernos ausentes tras f. 24. No es completo.",
+      "folioRange": "ff. 1r–106v",
+      "material": "Pergamino; 109 ff.",
+      "script": "Minúscula carolina",
+      "origin": "Fulda o Ferrières (según British Library)",
+      "record": "https://searcharchives.bl.uk/catalog/040-002048567",
+      "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038199.0x000001",
+      "manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038199.0x000001",
+      "viewerKind": "institutional_iiif",
+      "verification": "British Library, catálogo Harley MS 2736 y enlace IIIF publicado",
+      "academicId": "BL archive record 040-002048567",
+      "accessStatus": "Visor BL anunciado por catálogo; la carga de imágenes puede verse afectada por la disponibilidad del servicio.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Facsímil en institución",
+          "url": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038199.0x000001",
+          "type": "viewer",
+          "status": "provider_link"
+        },
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-002048567",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "cicero-de-oratore-nls-18-3-16",
+      "workIds": [
+        "cicero-oratore"
+      ],
+      "title": "Cicerón, De oratore / Orator — Adv.MS.18.3.16",
+      "library": "Edimburgo, National Library of Scotland",
+      "shelfmark": "Adv.MS.18.3.16",
+      "date": "s. XV",
+      "dateStart": 1401,
+      "coverage": "De oratore y Orator; falta I.1–9 del De oratore; copia indirecta relacionada con el perdido codex Laudensis; otros cortes en Orator.",
+      "record": "https://manuscripts.nls.uk/repositories/2/resources/15184",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "National Library of Scotland, Archives and Manuscripts catalogue",
+      "accessStatus": "Sin visor de folios público comprobado para esta signatura.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://manuscripts.nls.uk/repositories/2/resources/15184",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "caesar-add-ms-10084",
+      "workIds": [
+        "caesar-gallico",
+        "caesar-civili"
+      ],
+      "title": "César, Bellum Gallicum y Bellum Civile — Add MS 10084",
+      "library": "Londres, British Library",
+      "shelfmark": "Add MS 10084",
+      "date": "s. XI ex., 1075–1099",
+      "dateStart": 1075,
+      "coverage": "Bellum Gallicum ff. 2r–60r; Bellum Civile ff. 60r–94r; contiene también Bella Alexandrinum et Africanum (atribución distinta de la de César).",
+      "folioRange": "ff. 2r–94r (obras de César)",
+      "material": "Pergamino; códice 112 ff.",
+      "script": "Minúscula carolina",
+      "record": "https://searcharchives.bl.uk/catalog/032-002107866",
+      "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100055964761.0x000001",
+      "manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100055964761.0x000001",
+      "viewerKind": "institutional_iiif",
+      "verification": "British Library, catálogo Add MS 10084",
+      "accessStatus": "Visor IIIF incluido en la ficha institucional; posible indisponibilidad técnica.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Facsímil en institución",
+          "url": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100055964761.0x000001",
+          "type": "viewer",
+          "status": "provider_link"
+        },
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/032-002107866",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "caesar-gallico-harley4834",
+      "workIds": [
+        "caesar-gallico"
+      ],
+      "title": "César, De bello Gallico — Harley MS 4834",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 4834",
+      "date": "s. XV, 3/4",
+      "dateStart": 1450,
+      "coverage": "Bellum Gallicum; códice latino de pergamino, tercer cuarto del s. XV.",
+      "record": "https://searcharchives.bl.uk/catalog/040-002050677",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library, Harley MS 4834",
+      "accessStatus": "No consta digitalización accesible en el registro consultado.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-002050677",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "cicero-catilina-add47678",
+      "workIds": [
+        "cicero-catilinariae"
+      ],
+      "title": "Cicerón, In Catilinam — Add MS 47678",
+      "library": "Londres, British Library",
+      "shelfmark": "Add MS 47678",
+      "date": "s. IX in., 800–824",
+      "dateStart": 800,
+      "coverage": "In Catilinam ff. 1r–18v, testimonio imperfecto, copiado en Tours; contiene otras oraciones ciceronianas.",
+      "folioRange": "ff. 1r–18v",
+      "material": "Pergamino",
+      "record": "https://searcharchives.bl.uk/catalog/040-002104026",
+      "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056002648.0x000001",
+      "manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056002648.0x000001",
+      "viewerKind": "institutional_iiif",
+      "verification": "British Library Add MS 47678, catálogo y enlace digital",
+      "accessStatus": "IIIF enlazado desde catálogo BL.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Facsímil en institución",
+          "url": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056002648.0x000001",
+          "type": "viewer",
+          "status": "provider_link"
+        },
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-002104026",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "cicero-catilina-harley2716",
+      "workIds": [
+        "cicero-catilinariae",
+        "cicero-officiis"
+      ],
+      "title": "Cicerón, Orationes in Catilinam / De officiis — Harley MS 2716",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 2716",
+      "date": "s. X ex., 975–999",
+      "dateStart": 975,
+      "coverage": "Codex compositus: Catilinariae ff. 1r–24r; De officiis ff. 34r–74r; dos unidades producidas en Alemania occidental.",
+      "folioRange": "ff. 1r–24r; 34r–74r",
+      "material": "Pergamino",
+      "record": "https://searcharchives.bl.uk/catalog/040-002048547",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library, Harley MS 2716",
+      "accessStatus": "No figura digitalización total disponible en la ficha consultada.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-002048547",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "horace-works-harley2724",
+      "workIds": [
+        "horace-odes",
+        "horace-ars-poetica",
+        "horace-sermones"
+      ],
+      "title": "Horacio, Carmina / Ars poetica / Sermones — Harley MS 2724",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 2724",
+      "date": "s. XI",
+      "dateStart": 1001,
+      "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Sermones ff. 94v–130r; otros textos horacianos.",
+      "folioRange": "ff. 2r–46r; 47r–54v; 94v–130r",
+      "material": "Pergamino",
+      "record": "https://searcharchives.bl.uk/catalog/040-002048555",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library, lista de Harley manuscripts (Harley MS 2724); código de ficha individual por confirmar",
+      "accessStatus": "Sin visor de imágenes individuales confirmado.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-002048555",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "ovid-fasti-harley2737",
+      "workIds": [
+        "ovid-fasti",
+        "ovid"
+      ],
+      "title": "Ovidio, Fasti / Metamorphoses — Harley MS 2737",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 2737",
+      "date": "c. 1175–1250",
+      "dateStart": 1175,
+      "coverage": "Metamorphoses ff. 1r–103r incompleta; Fasti I.1–II.156 ff. 104r–111v; VI.365–812 ff. 111v–115v.",
+      "folioRange": "ff. 1r–115v",
+      "material": "Pergamino",
+      "record": "https://searcharchives.bl.uk/catalog/040-002048568",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library, Harley MS 2737",
+      "accessStatus": "Catálogo identifica contenido; no ofrece imágenes en la ficha.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-002048568",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "ovid-fasti-harley2738",
+      "workIds": [
+        "ovid-fasti"
+      ],
+      "title": "Ovidio, Fasti — Harley MS 2738",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 2738",
+      "date": "s. XII ex., 1175–1200",
+      "dateStart": 1175,
+      "coverage": "Fasti ff. 2r–48v, glosado pero imperfecto: laguna III.577–IV.416 (posibles 8 folios perdidos).",
+      "folioRange": "ff. 2r–48v",
+      "material": "Pergamino",
+      "record": "https://searcharchives.bl.uk/catalog/040-002048569",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library Harley MS 2738; colección institucional",
+      "accessStatus": "Sin digitalización total confirmada.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-002048569",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "pliny-naturalis-bamberg42",
+      "workIds": [
+        "pliny"
+      ],
+      "title": "Plinio el Viejo, Naturalis historia XXXII–XXXVII — Msc.Class.42",
+      "library": "Bamberg, Staatsbibliothek Bamberg",
+      "shelfmark": "Msc.Class.42",
+      "date": "s. X",
+      "dateStart": 901,
+      "coverage": "Libros XXXII–XXXVII únicamente (no toda Naturalis historia); 165 folios.",
+      "folioRange": "Libri XXXII–XXXVII",
+      "material": "Pergamino; 165 hojas, 25,7 × 21,6 cm",
+      "record": "https://handschriftenportal.de/?id=HSP-ca46031b-642a-3460-b9b1-9e823df6a7d9",
+      "viewer": "https://mdz-nbn-resolving.de/urn:nbn:de:bvb:12-bsb00140752-2",
+      "viewerKind": "institutional_facsimile",
+      "academicId": "HSP-ca46031b-642a-3460-b9b1-9e823df6a7d9 · urn:nbn:de:bvb:12-bsb00140752-2",
+      "verification": "Handschriftenportal, Msc.Class.42; Bayerische Staatsbibliothek, digitalización 2009",
+      "accessStatus": "Enlace de facsímil digital de la Bayerische Staatsbibliothek.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Facsímil en institución",
+          "url": "https://mdz-nbn-resolving.de/urn:nbn:de:bvb:12-bsb00140752-2",
+          "type": "viewer",
+          "status": "provider_link"
+        },
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://handschriftenportal.de/?id=HSP-ca46031b-642a-3460-b9b1-9e823df6a7d9",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "pliny-naturalis-harley2676",
+      "workIds": [
+        "pliny"
+      ],
+      "title": "Plinio el Viejo, Naturalis historia — Harley MS 2676",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 2676",
+      "date": "1465–1467",
+      "dateStart": 1465,
+      "coverage": "Naturalis historia (manuscrito humanístico); 356 folios. No se presupone que todos los libros se encuentren intactos sin inspección.",
+      "material": "Pergamino; 356 folios",
+      "record": "https://searcharchives.bl.uk/catalog/040-001609021",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library, Harley MS 2676",
+      "accessStatus": "Imágenes digitales indicadas como actualmente no disponibles por British Library.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-001609021",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "livy-pal-lat24-palimp",
+      "workIds": [
+        "livy"
+      ],
+      "title": "Livio, Ab urbe condita XCI (fragmento) — Pal. lat. 24",
+      "library": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. lat. 24, ff. 73, 75, 76, 78 (scriptio inferior)",
+      "date": "s. IV",
+      "dateStart": 301,
+      "coverage": "Fragmentos palimpsestos del libro XCI; NO transmiten los libros 1–10 ni la obra completa.",
+      "folioRange": "ff. 73, 75, 76, 78 (capa inferior)",
+      "material": "Pergamino reutilizado (palimpsesto)",
+      "script": "Capital rústica",
+      "record": "https://elmss.universityofgalway.ie/catalogue/86",
+      "viewer": "https://digi.vatlib.it/view/MSS_Pal.lat.24/0320",
+      "viewerKind": "institutional_facsimile",
+      "academicId": "CLA I 75 · Trismegistos TM 66171",
+      "verification": "Earlier Latin Manuscripts, vol. 1, n.º 75; DigiVatLib (Pal. lat. 24)",
+      "accessStatus": "Visor Vaticano abre el códice; lectura de texto inferior necesita edición paleográfica especializada.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Facsímil en institución",
+          "url": "https://digi.vatlib.it/view/MSS_Pal.lat.24/0320",
+          "type": "viewer",
+          "status": "provider_link"
+        },
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://elmss.universityofgalway.ie/catalogue/86",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "livy-verona-palimp",
+      "workIds": [
+        "livy"
+      ],
+      "title": "Livio, Ab urbe condita III.6–VI.7 — Verona, Biblioteca Capitolare XL (38)",
+      "library": "Verona, Biblioteca Capitolare",
+      "shelfmark": "XL (38), ff. 267–314, etc. (scriptio inferior)",
+      "date": "s. V in., 401–425",
+      "dateStart": 401,
+      "coverage": "Palimpsesto parcial de libros III.6–VI.7, no obra completa.",
+      "material": "Pergamino palimpsesto",
+      "script": "Uncial",
+      "record": "https://elmss.universityofgalway.ie/catalogue/847",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "academicId": "CLA IV 499 · TM 66606",
+      "verification": "Earlier Latin Manuscripts, vol. 4, n.º 499",
+      "accessStatus": "No consta visor público de estos folios en fuente consultada.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://elmss.universityofgalway.ie/catalogue/847",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "livy-pal-lat878",
+      "workIds": [
+        "livy"
+      ],
+      "title": "Livio, Ab urbe condita — Pal. lat. 878",
+      "library": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. lat. 878",
+      "date": "s. XIV",
+      "dateStart": 1301,
+      "coverage": "Ab urbe condita, ff. 1r–218v (cobertura y libros exactos: revisar descripción del códice).",
+      "folioRange": "ff. 1r–218v",
+      "record": "https://iiif.biblissima.fr/collections/manifest/cc2a508d191e5f37982f907e3531b2644b4e74cc",
+      "viewer": "https://iiif.biblissima.fr/collections/manifest/cc2a508d191e5f37982f907e3531b2644b4e74cc",
+      "viewerKind": "iiif_catalogue",
+      "verification": "Biblissima, descripción de Pal. lat. 878",
+      "accessStatus": "Manifiesto Biblissima con acceso al visor desde ficha; corroborar carga efectiva del visor.",
+      "academicId": "Biblissima entity Q89016",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://iiif.biblissima.fr/collections/manifest/cc2a508d191e5f37982f907e3531b2644b4e74cc",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "livy-pal-lat873",
+      "workIds": [
+        "livy"
+      ],
+      "title": "Livio, Ab urbe condita (decas I) — Pal. lat. 873",
+      "library": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. lat. 873",
+      "date": "s. XV",
+      "dateStart": 1401,
+      "coverage": "Década I de Ab urbe condita, manuscrito italiano del siglo XV; no todos los libros sobrevivientes.",
+      "record": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_873/0330",
+      "viewer": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_873/0330",
+      "viewerKind": "institutional_facsimile",
+      "verification": "Universitätsbibliothek Heidelberg / Bibliotheca Palatina digital",
+      "accessStatus": "Imagen digital reproducida por Universitätsbibliothek Heidelberg.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_873/0330",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "quintilian-harley2664",
+      "workIds": [
+        "quintilian"
+      ],
+      "title": "Quintiliano, Institutio oratoria — Harley MS 2664",
+      "library": "Londres, British Library",
+      "shelfmark": "Harley MS 2664",
+      "date": "s. XI",
+      "dateStart": 1001,
+      "coverage": "Institutio oratoria ff. 1v–188r; ff. 90r–91v añadidos de reemplazo más tardíos.",
+      "folioRange": "ff. 1v–188r (con sustituciones)",
+      "material": "Pergamino",
+      "record": "https://searcharchives.bl.uk/catalog/040-002048495",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library, Harley MS 2664; texto y estratos descritos en catálogo",
+      "accessStatus": "Digitalización total no indicada; imágenes seleccionadas en otros catálogos, sin visor directo comprobado.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-002048495",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
+    },
+    {
+      "id": "quintilian-burney244",
+      "workIds": [
+        "quintilian"
+      ],
+      "title": "Quintiliano, Institutio oratoria — Burney MS 244",
+      "library": "Londres, British Library",
+      "shelfmark": "Burney MS 244",
+      "date": "c. 1440–1450",
+      "dateStart": 1440,
+      "coverage": "Institutio oratoria; manuscrito italiano renacentista; verificar límites textuales antes de declararlo completo.",
+      "material": "Pergamino",
+      "record": "https://searcharchives.bl.uk/catalog/040-002237125",
+      "viewer": null,
+      "viewerKind": "catalogue_only",
+      "verification": "British Library, Burney MS 244",
+      "accessStatus": "Sin enlace digital público documentado en el registro de catálogo.",
+      "language": "la",
+      "rights": "Consultar la institución propietaria antes de reproducir imágenes. Los enlaces no autorizan alojamiento.",
+      "cataloguingStatus": "Testimonio individual localizado y vinculado a ficha de institución; NO prueba del más antiguo de toda la tradición.",
+      "dateStartBasis": "Año inicial orientativo para ordenar cronológicamente; usar el campo date para citar.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha académica / signatura",
+          "url": "https://searcharchives.bl.uk/catalog/040-002237125",
+          "type": "catalog",
+          "status": "verified_item_page"
+        }
+      ]
     }
   ],
   "editions": [
