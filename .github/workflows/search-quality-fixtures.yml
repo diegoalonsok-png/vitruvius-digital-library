@@ -1,0 +1,40 @@
+name: Evaluación filológica reproducible de búsquedas
+on:
+  push:
+    paths:
+      - 'scripts/test-search-quality-fixtures.mjs'
+      - 'data/academic-evaluation/search-fixtures.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-alignment/manifest.json'
+      - 'data/structured/**'
+      - 'data/classics-corpus/**'
+      - '.github/workflows/search-quality-fixtures.yml'
+  pull_request:
+    paths:
+      - 'scripts/test-search-quality-fixtures.mjs'
+      - 'data/academic-evaluation/search-fixtures.json'
+      - 'data/classics-corpus/search-registry.json'
+      - 'data/classics-alignment/manifest.json'
+      - 'data/structured/**'
+      - 'data/classics-corpus/**'
+      - '.github/workflows/search-quality-fixtures.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check scripts/test-search-quality-fixtures.mjs
+      - run: node scripts/test-search-quality-fixtures.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: academic-search-quality-fixtures
+          path: reports/search-quality-fixtures.json
+          if-no-files-found: warn
