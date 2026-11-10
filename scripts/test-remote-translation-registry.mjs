@@ -15,7 +15,7 @@ for(const e of m.entries){
  assert(e.translator&&e.edition&&e.host);
  const u=new URL(e.url);
  assert.equal(u.protocol,"https:");
- assert(["penelope.uchicago.edu","www.gutenberg.org","archive.org"].includes(u.hostname),"Unexpected external source "+u.hostname);
+ assert(["penelope.uchicago.edu","www.gutenberg.org","archive.org","adfonteslibrary.org"].includes(u.hostname),"Unexpected external source "+u.hostname);
  assert(!u.username&&!u.password,"External source URL cannot contain credentials");
  const key=e.workId+"|"+e.language+"|"+e.edition;
  assert(!keys.has(key),"Duplicated external translation "+key);
