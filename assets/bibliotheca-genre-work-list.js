@@ -34,6 +34,17 @@ function dating(w){
 }
 function eraOf(w){const y=dating(w);if(!Number.isFinite(y))return "uncertain";if(y< -500)return "archaic";if(y< -322)return "classical";if(y< -30)return "hellenistic";if(y<=284)return "imperial";if(y<=700)return "late";return "later"}
 let works=[],registry=[];
+const languageTitles={la:"Latín",grc:"Griego",es:"Castellano",en:"Inglés",fr:"Francés",it:"Italiano",de:"Alemán",pt:"Portugués"};
+function hostedVersions(w){
+ const hosted=registry.filter(r=>r.workId===w.id&&
+  ["json-passages","structured-bilingual"].includes(r.format)&&
+  ["la","grc","es","en","fr","it","de","pt"].includes(r.language)&&
+  typeof r.reader==="string"&&r.reader.startsWith("classics-text-reader.html?"));
+ const versions=[...new Map(hosted.map(r=>[r.language,r])).values()];
+ const original=versions.find(r=>["la","grc"].includes(r.language));
+ const translated=versions.filter(r=>!["la","grc"].includes(r.language));
+ return {original,translated,versions};
+}
 function safeLocal(path){
  if(typeof path!=="string"||!path||path.startsWith("//")||/^[a-z][\w+.-]*:/i.test(path))return null;
  try{const url=new URL(path,location.href);return url.origin===location.origin&&url.pathname.startsWith(new URL(".",location.href).pathname)?url.href:null}catch{return null}
@@ -73,6 +84,23 @@ function render(){
   const title=document.createElement("span");title.className="genre-work-title";title.textContent=w.title;
   const info=document.createElement("div");info.className="genre-work-info";info.append(title,meta);
   const target=reader(w);
+  const versions=hostedVersions(w);
+  const labels=({es:{original:"Original",translation:"Traducción",parallel:"Dos visores"},en:{original:"Original",translation:"Translation",parallel:"Two viewers"},fr:{original:"Original",translation:"Traduction",parallel:"Deux lecteurs"}})[language]||({original:"Original",translation:"Traducción",parallel:"Dos visores"});
+  if(versions.versions.length){
+   const editions=document.createElement("div");editions.className="genre-work-editions";
+   for(const rec of [versions.original,...versions.translated].filter(Boolean)){
+    const a=document.createElement("a");a.className="genre-work-version";a.href=safeLocal(rec.reader);
+    a.textContent=(rec===versions.original?labels.original:labels.translation)+" · "+(languageTitles[rec.language]||rec.language);editions.append(a);
+   }
+   if(versions.original&&versions.translated.length){
+    const original=versions.original,first=versions.translated[0];
+    const href="classics-parallel-reader.html?work="+encodeURIComponent(w.id)+
+     "&left="+encodeURIComponent(original.language)+"&right="+encodeURIComponent(first.language);
+    const pair=document.createElement("a");pair.className="genre-work-version genre-work-parallel";
+    pair.href=safeLocal(href);pair.textContent=labels.parallel;editions.append(pair);
+   }
+   info.append(editions);
+  }
   if(target){
    const titleLink=document.createElement("a");titleLink.className="genre-work-title genre-work-title-link";titleLink.textContent=w.title;titleLink.href=target.url;
    if(target.external){titleLink.target="_blank";titleLink.rel="noopener noreferrer"}
