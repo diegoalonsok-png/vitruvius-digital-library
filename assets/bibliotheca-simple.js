@@ -576,7 +576,7 @@ function render(rows,q,details){
  list.append(frag);
  $("unindexed").textContent=t.outside(works.length-indexed.size)+(details?.failed?" "+t.failed:"");
 }
-async function search(){
+async function search(updateHistory=true){
  const id=++serial,q=input.value.trim();updateLexicon();root.hidden=true;list.replaceChildren();
  window.ClassicsUploadedDocuments?.clear();
  if(q.length>180||fold(q).replace(/[^\p{L}\p{N}]/gu,"").length<2){status.textContent=dict[locale].short;return}
@@ -596,7 +596,7 @@ async function search(){
     "Búsqueda en documento DOCX subido (sin locus manuscrito cotejado).";
    void added.search(q,selectedWork,()=>id===serial);
    const docUrl=new URL(location.href);docUrl.searchParams.set("q",q);docUrl.searchParams.set("work",selectedWork);
-   history.replaceState(null,"",docUrl);return;
+   if(updateHistory&&docUrl.href!==location.href)history.pushState(null,"",docUrl);return;
   }
   if(selectedWork&&!indexed.has(selectedWork)){
    if(added?.workIds?.has(workId)){
@@ -631,7 +631,7 @@ async function search(){
   if(selectedWork)url.searchParams.set("work",selectedWork);else url.searchParams.delete("work");
   if(era.value)url.searchParams.set("era",era.value);else url.searchParams.delete("era");
   if(genre.value)url.searchParams.set("genre",genre.value);else url.searchParams.delete("genre");
-  history.replaceState(null,"",url);
+  if(updateHistory&&url.href!==location.href)history.pushState(null,"",url);
  }catch{if(id===serial)status.textContent=dict[locale].unavailable}
  finally{if(id===serial)$("search-submit").disabled=false}
 }
@@ -652,6 +652,34 @@ switchLanguage(params.get("ui")||stored);updateLexicon();
 metadata.then(()=>{
  if(initialEra&&[...era.options].some(x=>x.value===initialEra))era.value=initialEra;
  if(initialGenre&&[...genre.options].some(x=>x.value===initialGenre))genre.value=initialGenre;
- refresh();window.dispatchEvent(new Event("bibliotheca:filters-ready"));if(initial)void search();
+ refresh();window.dispatchEvent(new Event("bibliotheca:filters-ready"));
+ if(initial&&serial===0&&input.value.trim()===initial)void search(false);
 }).catch(()=>{});
+// GitHub Pages needs client-side URL restoration when a reader navigates
+// between search queries without reloading the document.
+window.addEventListener("popstate",()=>{
+ const params=new URLSearchParams(location.search);
+ const q=(params.get("q")||params.get("term")||"").trim();
+ const restore=++serial; // invalidate pending searches and progressive paints
+ input.value=q;
+ updateLexicon();
+ metadata.then(()=>{
+  if(restore!==serial)return;
+  const eraValue=params.get("era")||"",genreValue=params.get("genre")||"";
+  if(params.get("ui"))switchLanguage(params.get("ui"));
+  if([...era.options].some(x=>x.value===eraValue))era.value=eraValue;
+  if([...genre.options].some(x=>x.value===genreValue))genre.value=genreValue;
+  refresh();
+  const workValue=params.get("work")||"";
+  if([...work.options].some(x=>x.value===workValue))work.value=workValue;
+  drawRemote();
+  if(q)void search(false);
+  else{
+   root.hidden=true;
+   list.replaceChildren();
+   status.textContent="";
+   $("search-submit").disabled=false;
+  }
+ }).catch(()=>{if(restore===serial)status.textContent=dict[locale].unavailable});
+});
 })();
