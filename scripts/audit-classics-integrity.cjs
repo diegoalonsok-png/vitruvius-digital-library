@@ -39,7 +39,7 @@ for(const e of editions){
  let data;try{data=JSON.parse(fs.readFileSync(file,"utf8"))}catch(err){failedFiles++;flag("error","json-parse",id,e.path+": "+err.message);continue}
  scanned++;
  if(e.format==="structured-bilingual")continue;
- if(data.workId!==id||data.language!==e.language)flag("error","work-or-language-mismatch",id,e.path);
+ if(data.workId!==(e.sourceWorkId||id)||data.language!==e.language)flag("error","work-or-language-mismatch",id,e.path);
  if(!data.source&&!data.attribution)flag("review","missing-source",id,e.path);
  if(!data.license)flag("review","missing-license",id,e.path);
  if(!Array.isArray(data.passages)){flag("error","passages-array",id,e.path);continue}
