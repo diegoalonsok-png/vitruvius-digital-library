@@ -17,6 +17,7 @@ import json
 from pathlib import Path
 import re
 import unicodedata
+import xml.etree.ElementTree as ET
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
@@ -190,6 +191,70 @@ def review_manifest(work, witness, response):
     return findings
 
 
+def fetch_xml_metadata(url):
+    """Gallica/BnF returns XML-SRU bibliographic METADATA, not scans or OCR."""
+    if not trusted(url):
+        return {"status": "untrusted_domain"}
+    req = Request(url, headers={"User-Agent": UA, "Accept": "application/xml,text/xml"})
+    try:
+        with urlopen(req, timeout=12) as res:
+            mime = res.headers.get("Content-Type", "").lower()
+            if "xml" not in mime:
+                return {"status": "not_xml", "mime": mime[:100]}
+            raw = res.read(MAX_META_BYTES + 1)
+            if len(raw) > MAX_META_BYTES:
+                return {"status": "metadata_too_large"}
+            return {"status": "ok", "root": ET.fromstring(raw)}
+    except (HTTPError, URLError, TimeoutError, OSError,
+            ValueError, ET.ParseError) as exc:
+        return {"status": "unavailable", "reason": type(exc).__name__}
+
+
+def discover_gallica(work):
+    """BnF SRU manuscript-title search. All hits quarantined, never published."""
+    original = (work.get("bibliography") or {}).get("uniformTitle") or work.get("title", "")
+    term = str(original).split(" · ")[0].strip()[:90]
+    term = term.replace('"', " ").replace("\\", " ")
+    cql = 'dc.title all "' + term + '" and dc.type adj "manuscrits"'
+    url = "https://gallica.bnf.fr/SRU?" + urlencode({
+        "operation": "searchRetrieve", "version": "1.2",
+        "maximumRecords": "6", "query": cql
+    })
+    response = fetch_xml_metadata(url)
+    if response["status"] != "ok":
+        return [], response["status"]
+    root = response["root"]
+    entries = []
+    for node in root.iter():
+        if node.tag.rsplit("}", 1)[-1] != "recordData":
+            continue
+        titles, links, types = [], [], []
+        for element in node.iter():
+            key = element.tag.rsplit("}", 1)[-1].lower()
+            if key == "title" and element.text:
+                titles.append(element.text.strip())
+            elif key == "identifier" and element.text:
+                links.append(element.text.strip())
+            elif key == "type" and element.text:
+                types.append(element.text.strip().lower())
+        if types and not any("manuscrit" in value or "manuscript" in value for value in types):
+            continue
+        title = " · ".join(titles)
+        if not title or title_match(work, title) == "contradiction":
+            continue
+        ark = next((u for u in links if u.startswith("https://gallica.bnf.fr/ark:/")), None)
+        if not ark:
+            continue
+        entries.append({
+            "workId": work["id"], "candidateTitle": title,
+            "provider": "Gallica BnF SRU (metadata XML)",
+            "source": ark, "status": "unverified_sru_hit",
+            "shelfmark": None, "manifest": None, "viewer": None,
+            "date": None, "corroboratingSources": [],
+        })
+    return entries[:6], "ok"
+
+
 def discover_loc(work):
     """Library of Congress metadata keyword search: candidates, never approvals."""
     full_title = (work.get("bibliography") or {}).get("uniformTitle") or work.get("title", "")
@@ -302,10 +367,12 @@ def build_report(catalog, registry, *, live=False, batch_size=12, offset=0):
             work = works[(offset + i) % len(works)]
             if work.get("manuscript", {}).get("isIndependentAncientWork") is False:
                 continue
-            hits, status = discover_loc(work)
-            proposals.extend(hits)
-            discovery_statuses.append({"workId": work["id"], "status": status,
-                                       "candidateCount": len(hits)})
+            for provider, finder in (("Library of Congress", discover_loc),
+                                     ("Gallica/BnF SRU", discover_gallica)):
+                hits, status = finder(work)
+                proposals.extend(hits)
+                discovery_statuses.append({"workId": work["id"], "provider": provider,
+                                           "status": status, "candidateCount": len(hits)})
     quarantine = independent_guard(proposals, by_id)
     return {
         "schema": "vitruvius-codicology-audit-v1",
@@ -327,7 +394,7 @@ def build_report(catalog, registry, *, live=False, batch_size=12, offset=0):
         },
         "globalIssues": global_issues, "works": entries,
         "discovery": {"offset": offset, "batchSize": batch_size,
-                      "providers": ["Library of Congress official JSON API"],
+                      "providers": ["Library of Congress official JSON API", "Gallica/BnF official XML-SRU"],
                       "results": discovery_statuses},
         "quarantine": quarantine,
     }
