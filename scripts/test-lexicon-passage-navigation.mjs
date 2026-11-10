@@ -34,6 +34,7 @@ class Node {
  setAttribute(k,v){this.attrs[k]=String(v)}
  getAttribute(k){return this.attrs[k]}
  focus(){this.focused=true}
+ addEventListener(type,fn){this.handlers??={};this.handlers[type]=fn}
  scrollIntoView(){}
 }
 
