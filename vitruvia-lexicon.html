@@ -260,6 +260,24 @@ html[data-theme=light] .lx-cite-menu summary,html[data-theme=light] .lx-cite-box
 .lx-viewer-frame{width:100%;height:65vh;border:1px solid #333;border-radius:8px;background:#fff}
 .lx-viewer .actions button[aria-pressed=true]{background:#3a3a3c;color:#fff}
 @media(max-width:800px){.lx-viewer-grid{grid-template-columns:1fr}}
+/* Pasaje en contexto: el lector permanece junto a la obra que se seleccionó. */
+.lx-inline-passage-row>td{padding:0!important;vertical-align:top;background:#121314}
+.lx-inline-passage-preview{border-left:3px solid #c39c56;background:#171718;padding:15px 17px;margin:8px 0 15px;max-width:100%;overflow-wrap:anywhere}
+.lx-inline-passage-head{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:9px}
+.lx-inline-passage-head h4{margin:0;font:400 19px Georgia,serif;color:#e5cc91}
+.lx-inline-passage-cards{display:grid;gap:10px}
+.lx-inline-passage-preview .result-card{margin:0;max-width:100%;border:1px solid #45403b}
+.lx-inline-passage-preview button{cursor:pointer}
+.lx-inline-passage-preview button:focus-visible,.lx-viewer-extended summary:focus-visible{outline:2px solid #e5bf73;outline-offset:3px}
+.lx-inline-return{padding:9px 13px;margin:8px 0 15px;border-left:3px solid #b79a69;background:#1a1a1b}
+.lx-viewer-origin{padding:12px 14px;border:1px solid #504433;border-left:3px solid #c39c56;background:#1b1a17;border-radius:5px}
+.lx-viewer-origin h4{margin:0 0 9px;font:400 18px Georgia,serif;color:#e5cc91}
+.lx-viewer-origin .lx-passage{max-height:48vh;overflow-y:auto;white-space:pre-wrap}
+.lx-viewer-extended{margin-top:14px;border:1px solid #444;border-radius:6px;padding:10px}
+.lx-viewer-extended>summary{cursor:pointer;color:#e5c788}
+html[data-theme=light] .lx-inline-passage-preview,html[data-theme=light] .lx-viewer-origin{background:#fffaf0;color:#252520}
+html[data-theme=light] .lx-inline-passage-head h4,html[data-theme=light] .lx-viewer-origin h4{color:#694e29}
+html[data-theme=light] .lx-inline-passage-row>td{background:#f7f3e9}
 html[data-theme=light] .lx-palette summary,html[data-theme=light] #lx-ui{background:#fff;color:#28302c;border-color:#c5c3ba}html[data-theme=light] .lx-palette-panel,html[data-theme=light] .lx-viewer{background:#fff;color:#1d2421;border-color:#d4d0c4}
 /* Tema claro (misma convención que Vitruvia) */
 html[data-theme=light]{--bg:#f7f5ef;--ink:#1d2421}
@@ -786,7 +804,7 @@ html[data-theme=light] .lx-attestations .lx-attestation-row{border-bottom-color:
 <script src="assets/bibliotheca-offsite-greek.js?v=20261108-14-originals" defer></script>
 <script defer src="assets/bibliotheca-offsite-latin.js?v=20261109-isidore-20books-v4"></script>
 <script src="assets/classics-corpus-search.js?v=20261108-conceptus-index-v2" defer></script>
-<script src="assets/hiero-render.js?v=20261109-quadrats-v1" defer></script><script src="assets/lexicon-hiero-enhance.js?v=20261109-v1" defer></script><script src="assets/academic-inline-translation.js?v=20261109-v1" defer></script><script src="assets/vitruvia-lexicon.js?v=20261109-dictionary-translation-v3" defer></script>
+<script src="assets/hiero-render.js?v=20261109-quadrats-v1" defer></script><script src="assets/lexicon-hiero-enhance.js?v=20261109-v1" defer></script><script src="assets/academic-inline-translation.js?v=20261109-v1" defer></script><script src="assets/vitruvia-lexicon.js?v=20261109-dictionary-translation-inline-v4" defer></script>
 <script src="assets/lexicon-classics-bridge.js?v=20261109-translation-by-locus-v1" defer></script>
 <script defer src="assets/multilingual-academic-search.js?v=20261107-ui-v3"></script>
 <script defer src="assets/lexicon-orthography-core.js?v=20261107-v1"></script>

@@ -838,6 +838,63 @@ function lemmaFormsFor(D,word){
 }
 function groupHits(D,forms,workId){const hits=[];for(const k of forms)for(const i of (D.post.get(k)||[])){const p=D.corpus.passages[i];if(workId&&p[0]!==workId)continue;for(const m of p[2].matchAll(TOKEN))if(fold(m[0]).replace(/'+$/,"")===k)hits.push({i,spans:[[m.index,m.index+m[0].length]],tok:0})}
  const seen=new Set();return hits.filter(h=>{const id=h.i+":"+h.spans[0][0];if(seen.has(id))return false;seen.add(id);return true}).sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i)}
+/* A concordance table may be several screens above the main results.
+ * Keep selected classical passages immediately beside the chosen work.
+ * The full concordance remains available without losing the starting point.
+ */
+function previewPassagesNearWork(button,g){
+ const anchor=button?.closest("tr"),parent=anchor?.parentElement;
+ if(!anchor||!parent){renderGroups([g]);$("#lx-results")?.scrollIntoView({block:"start"});return}
+ const previous=parent.querySelector(".lx-inline-passage-row");
+ if(previous){
+  const same=previous.previousElementSibling===anchor&&previous.dataset.work===g.work;
+  previous._trigger?.setAttribute("aria-expanded","false");
+  previous._trigger&&(previous._trigger.textContent=T("Ver pasajes"));
+  previous.remove();
+  if(same){button.focus({preventScroll:true});return}
+ }
+ const hits=groupHits(g.D,g.forms,g.work),w=work(g.D,g.work);
+ const row=el("tr",{class:"lx-inline-passage-row","data-work":g.work});
+ const cell=el("td",{colspan:String(anchor.cells.length)});
+ const region=el("section",{class:"lx-inline-passage-preview",role:"region",
+  "aria-label":T("Pasajes de la obra")+" · "+w.author+" · "+w.title});
+ const head=el("div",{class:"lx-inline-passage-head"},
+  el("h4",{},w.author+" · "+w.title+" · "+hits.length+" "+T("pasajes")),
+  el("button",{type:"button",class:"lx-btn",onclick:()=>{
+   row.remove();button.setAttribute("aria-expanded","false");
+   button.textContent=T("Ver pasajes");button.focus({preventScroll:true});
+  }},T("Cerrar")+" ×"));
+ region.append(head);
+ if(!hits.length)region.append(el("p",{class:"lx-small"},T("No se encontraron pasajes en el corpus local.")));
+ const results=el("div",{class:"lx-inline-passage-cards"});region.append(results);
+ let shown=0;
+ const more=el("button",{type:"button",class:"lx-more"},"");
+ const showMore=()=>{
+  const next=Math.min(shown+3,hits.length);
+  for(;shown<next;shown++)results.append(hitCard(g.D,hits[shown]));
+  more.textContent=T("Mostrar más pasajes")+" ("+(hits.length-shown)+")";
+  more.hidden=shown>=hits.length;
+ };
+ more.addEventListener("click",showMore);
+ if(hits.length){showMore();region.append(more)}
+ if(hits.length>3){
+  region.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{
+   renderGroups([g]);
+   const list=$("#lx-results");
+   const back=el("div",{class:"lx-inline-return"},
+    el("button",{type:"button",class:"lx-btn",onclick:()=>{
+     if(row.isConnected){row.scrollIntoView({block:"center",behavior:"auto"});button.focus({preventScroll:true})}
+    }},T("Volver a la obra")+" · "+w.title));
+   list?.prepend(back);
+   list?.querySelector(".lx-hit")?.scrollIntoView({block:"start",
+    behavior:window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches?"auto":"smooth"});
+  }},T("Ver la concordancia completa")+" ("+hits.length+")"));
+ }
+ cell.append(region);row.append(cell);parent.insertBefore(row,anchor.nextSibling);
+ row._trigger=button;button.setAttribute("aria-expanded","true");
+ button.textContent=T("Ocultar pasajes");
+ // No cambiar de página ni desplazarse a otra sección.
+}
 function renderGroups(groups){
  const list=$("#lx-results");list.replaceChildren();$("#lx-side-extra").replaceChildren();let total=0;
  for(const g of groups){
@@ -1182,10 +1239,9 @@ function frequencyTable(c,F){
   body.append(el("tr",{},title,el("td",{},vitruvius?"siglo I a. C.":DATING[r.id]||""),
    el("td",{lang:r.lang},r.lemmas.map((x,i)=>r.counts[i]?`${x.w} ${r.counts[i]}`:"").filter(Boolean).join(" · ")),
    el("td",{},el("b",{},String(r.total))),el("td",{},r.per10k.toFixed(1)),
-   el("td",{},el("button",{type:"button",class:"lx-btn",onclick:()=>{
+   el("td",{},el("button",{type:"button",class:"lx-btn","aria-expanded":"false",onclick:e=>{
     const forms=new Set(r.lemmas.flatMap(x=>[...x.forms]));
-    renderGroups([{D:r.D,forms,label:vitruvius?"Vitruvio, De architectura (latín digitalizado)":w.author+", "+w.title,words:r.lemmas.map(x=>x.w),work:r.id}]);
-    $("#results").scrollIntoView({behavior:"smooth"});
+    previewPassagesNearWork(e.currentTarget,{D:r.D,forms,label:vitruvius?"Vitruvio, De architectura (latín digitalizado)":w.author+", "+w.title,words:r.lemmas.map(x=>x.w),work:r.id});
    }},"Ver pasajes"))));
  }
  // La transcripción de un testimonio medieval no se puede reconstruir
@@ -1255,7 +1311,17 @@ async function openViewer(D,p,spans,q){
  const id=LECTOR_IDS[p[0]];const body=viewerShell(`${w.author}, ${w.title} · ${p[1]}`);
  if(!id){const c=el("p",{class:"lx-passage",lang:D.l});c.append(linkWords(p[2],spans));body.append(c);return}
  const u=`lector-clasico.html?obra=${encodeURIComponent(id)}&loc=${encodeURIComponent(p[1])}${q?"&q="+encodeURIComponent(q):""}&embed=1${D.l==="grc"||!["phi0474.phi055","phi0448.phi001","phi0550.phi001","phi0690.phi002","phi0690.phi003","phi1212.phi002","phi0472.phi001","phi0972.phi001"].includes(id)?"&extra=1":""}`;
- body.append(el("p",{class:"lx-small"},T("Original y traducción en el lector clásico del sitio (Perseus Digital Library). Si el lector no encuentra el mismo locus, abre la obra al comienzo: el pasaje de esta búsqueda se muestra debajo.")),el("iframe",{class:"lx-viewer-frame",src:u,title:`${w.author}, ${w.title}`,loading:"lazy"}),el("details",{},el("summary",{},T("Pasaje de esta búsqueda")),(()=>{const c=el("p",{class:"lx-passage",lang:D.l});c.append(linkWords(p[2],spans));return c})()),el("p",{},el("a",{href:u.replace("&embed=1",""),target:"_blank",rel:"noopener"},T("Abrir el lector en una pestaña")+" ↗")));
+ const original=el("section",{class:"lx-viewer-origin",role:"region","aria-label":T("Pasaje encontrado")},
+  el("h4",{},T("Pasaje encontrado")+" · "+p[1]));
+ const selected=el("p",{class:"lx-passage",lang:D.l});selected.append(linkWords(p[2],spans));
+ original.append(selected,el("p",{class:"lx-src"},w.edition||"",w.license?" · "+w.license:""));
+ const source=el("details",{class:"lx-viewer-extended"},
+  el("summary",{},T("Abrir lector de la obra con traducción")+" ↗"),
+  el("p",{class:"lx-small"},T("Lector externo o edición vinculada: confirme el locus y la traducción. Si no está alineado, el original seleccionado permanece arriba.")),
+  el("iframe",{class:"lx-viewer-frame",src:u,title:`${w.author}, ${w.title}`,loading:"lazy"}),
+  el("p",{},el("a",{href:u.replace("&embed=1",""),target:"_blank",rel:"noopener"},T("Abrir el lector en una pestaña")+" ↗")));
+ body.append(original,source);
+ body.scrollTop=0;
 }
 
 
