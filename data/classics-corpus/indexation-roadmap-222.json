@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
   "updated": "2026-11-10",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot.",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. · Los registros parciales de Plutarco documentan solo tratados seleccionados, sin afirmar cobertura completa.",
   "targetWorks": 222,
   "counts": {
     "originalsIndexed": 181,
@@ -9,12 +9,12 @@
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 163,
     "textVersions": 246,
-    "offsiteOriginalsIndexed": 25,
-    "effectiveOriginalsIndexed": 206,
-    "effectiveOriginalsMissing": 16,
+    "offsiteOriginalsIndexed": 27,
+    "effectiveOriginalsIndexed": 208,
+    "effectiveOriginalsMissing": 14,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 13,
-    "offsiteTextVersionsOutsidePages": 25,
+    "distinctAncientWorksStillMissingOriginalIndex": 11,
+    "offsiteTextVersionsOutsidePages": 27,
     "states": {
       "original_pendiente": 41,
       "original_sin_traduccion_local": 122,
@@ -1161,8 +1161,14 @@
         "tlg0007.tlg066"
       ],
       "translationSourceClaim": true,
-      "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "ae75f9d7accf097919eca0cb1412a02b5bb375593d761d149f9723af8529fe0f",
+        "scope": "Parcial: Teseo, Rómulo, Comparación"
+      }
     },
     {
       "id": "apollodorus-poliorcetics",
@@ -2047,8 +2053,14 @@
         "tlg0007.tlg147"
       ],
       "translationSourceClaim": true,
-      "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-griegos-20261108",
+        "manifestPath": "data/offsite-originals/manifest.json",
+        "sourceSha256": "03ef6158a8902f3aab555811819a85986f9d2983125d775ff005499466206198",
+        "scope": "Parcial: Περὶ τοῦ ἀκούειν"
+      }
     },
     {
       "id": "lucian-dialogi-mortuorum",
