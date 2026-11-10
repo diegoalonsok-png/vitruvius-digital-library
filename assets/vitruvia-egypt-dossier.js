@@ -84,6 +84,9 @@ function gallery(box,ruler){
   });
  }
  box.append(grid);
+ if(ruler.id==="ramesses-ii"){
+  box.append(anchor("Papiro de Hunefer · dinastía XIX · abrir visor, ampliar e invertir (contexto de época; no autógrafo regio)","egypt-document-viewer.html?king=ramesses-ii&document=papyrus-hunefer"));
+ }
 }
 function names(box,ruler){
  box.append(make("h4","Protocolo de los cinco nombres · edición disponible"));
