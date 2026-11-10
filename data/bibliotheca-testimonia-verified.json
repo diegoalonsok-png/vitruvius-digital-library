@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated": "2026-11-05",
-  "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores.",
+  "updated": "2026-11-10",
+  "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores. Ampliación: tres manuscritos institucionalmente documentados con cobertura particular y límites de acceso.",
   "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional.",
   "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
   "records": [
@@ -448,6 +448,78 @@
       "verification": "Heidelberg, Bibliotheca Palatina digital; contenidos según Leges (Univ. Köln)",
       "dateStart": 840,
       "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+    },
+    {
+      "id": "plato-clarke-39",
+      "workIds": [
+        "plato-apology",
+        "plato-crito",
+        "plato-phaedo",
+        "plato-symposium",
+        "plato-phaedrus",
+        "plato-gorgias",
+        "plato-meno"
+      ],
+      "title": "Platonis dialogi — Codex Clarkianus (B), Tetralogiae I–VI",
+      "library": "Oxford, Bodleian Library",
+      "shelfmark": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
+      "date": "895 d. C. · siglo IX; copia encargada por Aretas de Cesarea",
+      "coverage": "24 diálogos de las tetralogías I–VI, entre ellos Apología, Critón, Fedón, Banquete, Fedro, Gorgias y Menón. NO contiene República, Timeo ni Leyes. Incluye escolios marginales. Otros testimonios papiráceos pueden ser anteriores.",
+      "language": "grc",
+      "record": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
+      "viewer": "https://digital.bodleian.ox.ac.uk/inquire/p/f57d074b-cff1-4172-8236-797c7b8f0403",
+      "manifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/f57d074b-cff1-4172-8236-797c7b8f0403.json",
+      "rights": "Digital Bodleian / Bodleian Libraries, University of Oxford: CC BY-NC 4.0 según registro Biblissima; consultar condiciones del archivo.",
+      "verification": "Digital Bodleian / Bodleian Medieval Manuscripts / Biblissima IIIF Collections, ficha de MS. E. D. Clarke 39",
+      "verificationUrl": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
+      "dateStart": 895,
+      "dateStartBasis": "Fecha de copia 895 registrada en Bodleian/Biblissima; no constituye la fecha de composición de los diálogos."
+    },
+    {
+      "id": "sinaiticus-gospels-apostolic",
+      "workIds": [
+        "mark",
+        "barnabas",
+        "pastor-hermas"
+      ],
+      "title": "Codex Sinaiticus (ℵ / GA 01) — Evangelium secundum Marcum; Barnabae epistula; Pastor Hermae",
+      "library": "British Library (Londres), con fragmentos en Leipzig, San Petersburgo y Santa Catalina del Sinaí",
+      "shelfmark": "Add MS 43725, ff. 200r–347v; Codex Sinaiticus GA 01 (ℵ)",
+      "date": "siglo IV d. C. (datación paleográfica)",
+      "coverage": "El volumen incluye el Evangelio de Marcos, la Epístola de Bernabé y solo partes de El Pastor de Hermas (Herm. 1:1–27:6 y 28:5–30:3 según catálogo BL). La transmisión es manuscrita, no una edición crítica ni traducción moderna.",
+      "language": "grc",
+      "record": "https://searcharchives.bl.uk/catalog/040-002169730",
+      "viewer": "https://codexsinaiticus.org.uk/en/codex/content.aspx",
+      "viewerRole": "Portal oficial con navegación a facsímiles y transcripciones; no se declara alineación exacta folio-locus.",
+      "manifest": null,
+      "rights": "Codex Sinaiticus Project / British Library y socios: derechos de imágenes y transcripción según proyecto; sin copia de imágenes en Vitruvia.",
+      "verification": "British Library Add MS 43725, ff. 200r–347v; Codex Sinaiticus Project, contenido y transmisión.",
+      "verificationUrl": "https://codexsinaiticus.org.uk/en/codex/content.aspx",
+      "dateStart": 301,
+      "dateStartBasis": "Cota cronológica aproximada del siglo IV; no se afirma fecha de producción exacta."
+    },
+    {
+      "id": "alexandrinus-nt-clement",
+      "workIds": [
+        "mark",
+        "clement",
+        "clement-2"
+      ],
+      "title": "Codex Alexandrinus (A / GA 02) — Novo Testamento, Prima et Secunda Clementis",
+      "library": "Londres, British Library",
+      "shelfmark": "Royal MS 1 D VIII (Codex Alexandrinus, GA 02 / A)",
+      "date": "siglo V d. C. (datación paleográfica)",
+      "coverage": "Marcos: ff. 6r–18v. 1 Clemente: ff. 134r–143r, con pérdida de un folio correspondiente a 57:7–63:4. 2 Clemente: ff. 143r–144v, solo 1:1–12:5 (final incompleto). No se atribuye la segunda homilía al mismo autor de 1 Clemente.",
+      "language": "grc",
+      "record": "https://searcharchives.bl.uk/catalog/040-002353500",
+      "viewer": null,
+      "manifest": null,
+      "rights": "British Library, Royal Collection: consultar restricciones y derechos de digitalización del archivo.",
+      "accessStatus": "Imágenes digitales indicadas como temporalmente no disponibles en el catálogo de British Library a 2026-11-10. Se proporciona ficha verificable, NO enlace ficticio a visor.",
+      "verification": "British Library Archives and Manuscripts Catalogue, Royal MS 1 D VIII, contenido folio a folio.",
+      "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002353500",
+      "dateStart": 401,
+      "dateStartBasis": "Cota inicial indicativa del siglo V; no es datación exacta."
     }
   ],
   "editions": [
