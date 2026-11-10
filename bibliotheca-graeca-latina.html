@@ -57,14 +57,16 @@
 .bibliotheca-suite-heading>p{margin:0;color:#a6a6a8;font:12px/1.5 Arial,sans-serif}
 .bibliotheca-suite-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:19px}
 .bibliotheca-suite-links>a{display:inline-flex;align-items:center;min-height:38px;padding:7px 12px;border:1px solid #3e3e41;border-radius:6px;background:#19191b;color:#e0e0e1;text-decoration:none;font:500 12px/1.3 Arial,sans-serif}
+.bibliotheca-suite-links>.bibliotheca-suite-export{display:inline-flex;align-items:center;min-height:38px;padding:7px 12px;border:1px solid #3e3e41;border-radius:6px;background:#19191b;color:#e0e0e1;cursor:pointer;font:500 12px/1.3 Arial,sans-serif}
+.bibliotheca-suite-links>.bibliotheca-suite-export:hover,.bibliotheca-suite-links>.bibliotheca-suite-export:focus-visible{background:#303033;border-color:#777;color:#fff}
+.bibliotheca-suite-export-status{align-self:center;color:#a6a6a8;font:12px/1.4 Arial,sans-serif}
+.bibliotheca-suite-export-status:empty{display:none}
 .bibliotheca-suite-links>a:hover,.bibliotheca-suite-links>a:focus-visible{background:#303033;border-color:#777;color:#fff}
 @media(max-width:600px){.bibliotheca-suite{padding:18px 0}.bibliotheca-suite-links>a{flex:1 1 auto;justify-content:center}}
 @media print{.bibliotheca-suite{display:none!important}}
 </style><script defer src="assets/bibliotheca-export-xlsx.js?v=20261110-xlsx-222-v1"></script>
 </head>
 <body>
-<div class="biblio-codices-entry" style="max-width:1300px;margin:8px auto;padding:0 16px;font-size:13px"><button type="button" id="bibliotheca-download-xlsx" style="border:1px solid #797979;border-radius:6px;background:#272729;color:#fff;padding:10px 15px;cursor:pointer;font:13px system-ui" title="Exporta obras, manuscritos, edición digital, ecdótica, filología, fuentes y citas">Descargar Excel académico · 222 obras</button><span id="bibliotheca-xlsx-status" role="status" aria-live="polite" style="display:inline-block;margin-left:12px;color:#b6b6b7"></span></div>
-<div class="biblio-codices-entry" style="max-width:1300px;margin:8px auto;padding:0 16px;font-size:13px"><a href="classics-manuscript-coverage.html" title="Cobertura de manuscritos por obra (222 registros)">Matriz codicológica de 222 obras</a></div>
 <main class="library">
 <nav class="top" aria-label="Navegación de Bibliotheca">
 <a class="brand" href="index.html">VITRVVIVS <span style="color:#888">/ Bibliotheca</span></a>
@@ -91,6 +93,9 @@
   <a href="cobertura-traducciones-clasicas.html">Traducciones y cobertura</a>
   <a href="auditoria-academica.html">Auditoría académica</a>
   <a href="tablas-explicativas.html">Tablas explicativas · V297</a>
+  <a href="classics-manuscript-coverage.html" title="Cobertura de manuscritos por obra (222 registros)">Matriz codicológica · 222 obras</a>
+  <button type="button" id="bibliotheca-download-xlsx" class="bibliotheca-suite-export" title="Exporta obras, manuscritos, edición digital, ecdótica, filología, fuentes y citas">Descargar Excel académico · 222 obras</button>
+  <span id="bibliotheca-xlsx-status" class="bibliotheca-suite-export-status" role="status" aria-live="polite"></span>
  </nav>
 </section>
 <header class="hero">
