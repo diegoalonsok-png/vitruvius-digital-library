@@ -54,6 +54,22 @@ function load(path){
  }
  return cache.get(path);
 }
+/* Correcciones OCR cotejadas: versión de lectura de la concordancia, sin borrar la fuente TEI.
+   Registro con loci y justificación: data/classics-corpus/philological-corrigenda.json.
+   Solo se sustituye una coincidencia literal en el locus y obra previstos. */
+const REVIEWED_OCR=[
+ ["augustine-confessiones","1.2","unde nenias in me?","unde uenias in me?"],
+ ["augustine-confessiones","1.3","Oapiunt ergone te caelum et terra","Capiunt ergone te caelum et terra"],
+ ["augustine-confessiones","1.3","quoniam tu imples ea* an imples","quoniam tu imples ea? an imples"]
+];
+function applyReviewedOCR(corpus,l){
+ if(l!=="la"||!Array.isArray(corpus?.passages))return;
+ for(const p of corpus.passages){
+  if(!Array.isArray(p)||typeof p[2]!=="string")continue;
+  for(const [work,locus,from,to] of REVIEWED_OCR)
+   if(p[0]===work&&String(p[1])===locus&&p[2].includes(from))p[2]=p[2].replace(from,to);
+ }
+}
 const L={};
 async function lang(l,silent=false){
  if(l==="la")loadContext();
@@ -64,6 +80,7 @@ async function lang(l,silent=false){
   if(!Array.isArray(corpus?.passages)||!corpus.passages.length||
      !forms?.forms||typeof forms.forms!=="object"||!forms?.lemmas)
    throw new Error("Índice "+l+" incompleto o incompatible. La consulta puede reintentarse.");
+  applyReviewedOCR(corpus,l);
 
   const post=new Map(), freq=new Map(), workFreq=new Map(), workTokens={};
   corpus.passages.forEach((p,i)=>{
