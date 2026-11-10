@@ -732,6 +732,11 @@ function renderCard(d){
   const translation=node("p","passage-translation",d.translation.slice(0,700));
   bilingual.append(node("div","passage-language","LATÍN"),latin,node("div","passage-language","TRADUCCIÓN"),translation);
   card.append(bilingual);
+  // Users may choose a different reading language; the curated counterpart
+  // remains separate, identified and visible above this optional tool.
+  window.VitruviaInlineTranslation?.attach(translation,{
+   sourceLanguage:"la",originalText:d.latin.slice(0,1200)
+  });
  }
  if(d.aiEvidence){card.classList.add("ai-evidence-card");card.append(node("div","ai-evidence-label",d.aiSemantic?"Reranking neuronal + texto documentado":"BM25 · búsqueda textual de respaldo"))}
  if(d.meta)card.append(node("div","meta-line",d.meta));
