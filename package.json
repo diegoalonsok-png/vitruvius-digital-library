@@ -3,6 +3,7 @@
   "scripts": {
     "check:site": "node scripts/site-check.mjs",
     "check:reading-shelf": "node scripts/check-reading-shelf.mjs",
-    "check:parallel-highlights": "node scripts/check-parallel-highlights.mjs"
+    "check:parallel-highlights": "node scripts/check-parallel-highlights.mjs",
+    "check:krohn-loci": "node scripts/test-krohn-locus-sync.mjs"
   }
 }
