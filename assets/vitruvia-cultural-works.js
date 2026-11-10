@@ -43,11 +43,20 @@ function workRecord(entity,notable,coverage=0){
  const title=label(entity),instances=ids(entity,'P31');
  if(!qid(entity?.id)||!title||/^Q\d+$/.test(title)||instances.some(id=>['Q5','Q4167410','Q4167836','Q13406463'].includes(id)))return null;
  const desc=description(entity),claims=entity.claims||{};
- const building=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|villa|tower|skyscraper)\b/.test(norm(desc));
- const dates=building?['P1619','P571','P577']:['P577','P571','P575'];
- const date=dates.flatMap(p=>values(entity,p)).map(v=>v.time).find(Boolean)||'';
- const year=date.match(/^([+-])(\d+)/);
+ const building=!!claims.P84||/\b(building|house|museum|bridge|cathedral|edificio|casa|museo|puente|catedral|palacio|stadium|temple|templo|iglesia|church|chapel|capilla|teatro|theatre|theater|villa|tower|torre|skyscraper|palais|eglise|chiesa|basilica|basilique|palazzo|biblioteca|library|teatre|theatre)\b/.test(norm(desc));
+ // A date is meaningful only with its Wikidata property. An inauguration
+ // (P1619) must not be silently treated as the year of design or construction.
+ const dateProps=building?['P571','P1619','P577']:['P577','P571','P575'];
+ const candidate=dateProps.map(property=>{
+  const statement=(entity.claims?.[property]||[]).find(c=>c.rank!=='deprecated'&&
+   typeof c.mainsnak?.datavalue?.value?.time==='string');
+  return statement?{property,statement,time:statement.mainsnak.datavalue.value.time}:null;
+ }).find(Boolean);
+ const year=candidate?.time.match(/^([+-])(\d+)/);
  const numericYear=year?Number(year[2])*(year[1]==='-'?-1:1):null;
+ const dateProperty=candidate?.property||'';
+ const dateKind=dateProperty==='P1619'?'opening':dateProperty==='P571'?'inception':dateProperty==='P577'?'publication':dateProperty==='P575'?'discovery':'undated';
+ const dateReferenced=!!candidate?.statement?.references?.length;
  const site=entity.sitelinks?.[lang()+'wiki']||entity.sitelinks?.enwiki||entity.sitelinks?.eswiki;
  const wikiLang=site?.site?.replace(/wiki$/,'');
  const href=site?.url||(wikiLang&&site?.title?'https://'+wikiLang+'.wikipedia.org/wiki/'+encodeURIComponent(site.title.replace(/ /g,'_')):'https://www.wikidata.org/wiki/'+entity.id);
@@ -55,6 +64,7 @@ function workRecord(entity,notable,coverage=0){
  const planFile=values(entity,'P3311').find(x=>typeof x==='string')||'';
  const commonsFile=file=>file?'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file.replace(/ /g,'_')):'';
  return {id:entity.id,title,description:desc,year:numericYear,date:numericYear===null?'':numericYear<0?Math.abs(numericYear)+' '+L('a. C.','BCE','av. J.-C.'):String(numericYear),
+  dateKind,dateProperty,dateReferenced,
   href,picture,image:commonsFile(picture),plan:commonsFile(planFile),notable,coverage:Math.max(coverage,Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length),building,
   photoTitle:entity.sitelinks?.enwiki?.title||site?.title||title,wikiLang,wikiTitle:site?.title||'',aliases:Object.values(entity.labels||{}).map(x=>x.value)};
 }
@@ -94,7 +104,10 @@ function showWorks(root,works,valid){
  const select=el('select');select.setAttribute('aria-label',L('Orden de las obras culturales','Cultural works order','Ordre des œuvres culturelles'));
  for(const [value,text] of [['year',L('Más antiguas primero','Oldest first','Plus anciennes d’abord')],['importance',L('Importancia documental','Documentary prominence','Importance documentaire')]]){const option=el('option',null,text);option.value=value;select.append(option)}
  controls.append(select);root.append(controls);
- root.append(el('p','web-dossier-count',L('Obras ordenadas por aparición: primera a última; las obras sin fecha van al final.','Works ordered from earliest to latest; undated records follow.','Œuvres classées de la plus ancienne à la plus récente ; œuvres non datées à la fin.')));
+ root.append(el('p','web-dossier-count',L(
+  'Registros recuperados: '+works.length+'. Orden por la primera fecha tipificada disponible (inicio, apertura o publicación); las obras sin fecha van al final. No es un catálogo exhaustivo.',
+  'Retrieved records: '+works.length+'. Ordered by earliest available typed date (inception, opening or publication); undated works follow. Not an exhaustive catalogue.',
+  'Notices récupérées : '+works.length+'. Classées par date qualifiée (conception, ouverture ou publication) ; notices non datées en dernier. Catalogue non exhaustif.')));
  const stack=el('div','web-dossier-stack cultural-work-stack');root.append(stack);
  const cards=new Map();let expanded=true;
  const limit=works.length;
@@ -102,14 +115,26 @@ function showWorks(root,works,valid){
   let item;
   if(work.building){
    item=el('article','architecture-work-item cultural-building');item.append(link(work.title+' ↗',work.href));
-   if(work.date)item.append(el('p','architecture-work-meta',work.date));
+   if(work.date)item.append(el('p','architecture-work-meta',
+    (work.dateKind==='opening'?L('Apertura','Opening','Ouverture'):
+     work.dateKind==='inception'?L('Inicio / concepción','Inception','Conception'):
+     work.dateKind==='publication'?L('Publicación','Publication','Publication'):
+     work.dateKind==='discovery'?L('Hallazgo','Discovery','Découverte'):
+     L('Fecha registrada','Recorded date','Date enregistrée'))+': '+work.date+
+    ' · Wikidata '+work.dateProperty+(work.dateReferenced?' · '+L('con referencia','with citation','avec référence'):
+     ' · '+L('sin referencia de origen en el dato','no cited source in this claim','sans source citée dans la déclaration'))));
    if(work.notable)item.append(el('span','cultural-notable',L('Obra destacada','Notable work','Œuvre notable')));
    item.append(link('Wikidata ↗','https://www.wikidata.org/wiki/'+work.id));stack.append(item);
    window.VitruviaArchitectVisuals?.enhance(item,{...work,previewDrawings:cards.size===0});
   }else{
    item=el('article','web-dossier-card cultural-work');const body=el('div','web-dossier-card-body');
    body.append(link(work.title+' ↗',work.href));
-   body.append(el('p','web-dossier-meta',[work.date,work.notable?L('Obra destacada','Notable work','Œuvre notable'):'', 'Wikidata'].filter(Boolean).join(' · ')));
+   const dateValue=work.date?
+    (work.dateKind==='publication'?L('Publicación','Publication','Publication'):
+     work.dateKind==='inception'?L('Inicio','Inception','Conception'):
+     work.dateKind==='opening'?L('Apertura','Opening','Ouverture'):L('Fecha','Date','Date'))+
+    ': '+work.date+' · '+work.dateProperty:'';
+   body.append(el('p','web-dossier-meta',[dateValue,work.notable?L('Obra destacada','Notable work','Œuvre notable'):'','Wikidata · '+work.id].filter(Boolean).join(' · ')));
    if(work.description)body.append(el('p','web-dossier-description',work.description));
    body.append(link(L('Ficha y fuentes ↗','Record and sources ↗','Fiche et sources ↗'),'https://www.wikidata.org/wiki/'+work.id));item.append(body);stack.append(item);
    // A bounded number of image requests, including the first visible cards.
