@@ -641,7 +641,7 @@ async function initialize(){
     event.preventDefault();
     searchInternet($('#internet-query').value,$('#internet-provider').value,$('#internet-vitruvio').checked);
   });
-  const loads=await Promise.allSettled([fetchJSON('data/catalog.json?v=20261030-citations'),fetchJSON('data/historical.json'),fetchJSON('data/supplements.json'),fetchJSON('data/site-metrics.json?v=20261102-audit')]);
+  const loads=await Promise.allSettled([fetchJSON('data/catalog.json?v=20261110-repo-pdfs-v1'),fetchJSON('data/historical.json'),fetchJSON('data/supplements.json'),fetchJSON('data/site-metrics.json?v=20261102-audit')]);
   if(loads[0].status!=='fulfilled'){showError($('#catalog-status'),'No se pudo cargar el catálogo. Recarga la página para intentarlo de nuevo.');return;}
   catalog=loads[0].value;records=[...catalog.editions,...(loads[1].status==='fulfilled'?loads[1].value:[])];
   for(const e of records)if(e.id.startsWith('gudianus'))e.category='manuscripts';
