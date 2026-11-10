@@ -10,7 +10,8 @@ const ROOT="https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital
 const ALLOWED=new Set(["thucydides-war","cassius-dio-historia","athenaeus-deipnosophistae",
  "theophrastus-historia-plantarum","archimedes-fluitantibus","ps-aristotle-mechanica",
  "euclid-optica","euclid-phaenomena","cleonides-harmonica","hero-belopoeica","geminus-isagoge",
- "aristarchus-magnitudines","apollonius-conica","pappus-synagoge"]);
+ "aristarchus-magnitudines","apollonius-conica","pappus-synagoge",
+ "plutarch-lives","plutarch-moralia"]);
 const BITS=262144;
 let manifestTask=null;
 const cache=new Map();
