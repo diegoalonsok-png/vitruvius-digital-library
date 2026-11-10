@@ -1,0 +1,70 @@
+{
+  "schema": "vitruvia-greek-glossary-v1",
+  "workId": "aristophanes-pax",
+  "language": "grc",
+  "method": "revisión filológica puntual de la forma y el lema; no lematización automática general",
+  "verifiedForms": true,
+  "sources": [
+    {
+      "label": "Liddell–Scott–Jones (LSJ), τέκτων; Scaife ATLAS / Perseus",
+      "url": "https://atlas.perseus.tufts.edu/dictionaries/entry/urn%3Acite2%3Ascaife-viewer%3Adictionaries.v1%3Alsj-n102909/",
+      "license": "Referencia lexicográfica; se reproducen glosas breves, no el artículo completo"
+    },
+    {
+      "label": "Paradigma de τέκτων y análisis de τέκτονες (nominativo plural)",
+      "url": "https://greekdoc.com/lexicon/tek.html",
+      "license": "Referencia de comprobación morfológica"
+    }
+  ],
+  "note": "Microglosario controlado para Aristófanes, Εἰρήνη: la forma τέκτονες está en el pasaje consultado y se vincula a τέκτων; no implica revisión íntegra del TEI ni de otros vocablos. Téktōn designa artesano/carpintero/constructor; ἀρχιτέκτων significa maestro de obras/arquitecto y no debe confundirse automáticamente.",
+  "stats": {
+    "forms": 6,
+    "lemmas": 1,
+    "glossed": 1
+  },
+  "lemmas": {
+    "τέκτων": {
+      "g": "worker in wood; carpenter; joiner; craftsman; builder",
+      "es": "artesano, carpintero, constructor (no necesariamente arquitecto o maestro de obras)",
+      "id": "n102909"
+    }
+  },
+  "forms": {
+    "τέκτονες": [
+      [
+        "τέκτων",
+        "n--p---mn-"
+      ]
+    ],
+    "τέκτων": [
+      [
+        "τέκτων",
+        "n--s---mn-"
+      ]
+    ],
+    "τέκτονος": [
+      [
+        "τέκτων",
+        "n--s---mg-"
+      ]
+    ],
+    "τέκτονα": [
+      [
+        "τέκτων",
+        "n--s---ma-"
+      ]
+    ],
+    "τέκτονας": [
+      [
+        "τέκτων",
+        "n--p---ma-"
+      ]
+    ],
+    "τεκτόνων": [
+      [
+        "τέκτων",
+        "n--p---mg-"
+      ]
+    ]
+  }
+}
