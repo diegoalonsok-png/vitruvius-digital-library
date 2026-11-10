@@ -205,6 +205,8 @@ const link=(href,label)=>{const a=node('a',label);a.href=href;a.target='_blank';
  * Relaciones sin declaración no se dibujan. La sucesión política NO equivale
  * automáticamente a filiación, por lo que no se infiere de una lista de reyes. */
 function dynastyTree(section,groups,labels,subjectId,subjectName){
+ // Shared authentic genealogical layout; retain original source-data path as fallback.
+ if(window.VitruviaKinshipTree?.render)return window.VitruviaKinshipTree.render(section,groups,labels,subjectId,subjectName);
  const byProp=Object.fromEntries(groups.map(g=>[g.label,g.ids]));
  const display=id=>labels[id]?.labels?.es?.value||labels[id]?.labels?.en?.value||id;
  const tree=node('div');tree.className='vitruvia-dynasty-tree';
