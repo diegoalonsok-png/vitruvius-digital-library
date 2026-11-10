@@ -78,6 +78,23 @@ html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,#toc::-webkit-scroll
 html::-webkit-scrollbar-thumb:hover,body::-webkit-scrollbar-thumb:hover,#toc::-webkit-scrollbar-thumb:hover{background:#a0a0a6}
 html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner,#toc::-webkit-scrollbar-corner{background:#242427}
 
+/* Panel de lectura con controles accesibles, consistente con Vitruvia Lexicon. */
+.reader-appearance{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:12px;margin:0 0 14px;background:#141415;border:1px solid #414144;border-radius:6px;color:#dedee0;font:12px/1.4 system-ui,sans-serif}
+.reader-appearance-title{color:#c4c4c8;font-weight:700;letter-spacing:.02em;margin-right:5px}
+.reader-appearance :is(button,select){background:#202021;color:#e4e4e5;border:1px solid #55555a;border-radius:4px;min-height:35px;padding:6px 10px;cursor:pointer;font:600 12px system-ui,sans-serif}
+.reader-appearance :is(button,select):hover{background:#343438;border-color:#8d8d93}
+.reader-appearance button[aria-pressed="true"]{background:#444449;border-color:#aaaab0;color:#fff}
+.reader-appearance label{display:flex;align-items:center;gap:5px;color:#c6c6c8;font-weight:600}
+.reader-appearance input[type="color"]{appearance:auto;box-sizing:border-box;width:36px;height:35px;border:1px solid #5c5c61;border-radius:4px;background:#242426;padding:3px;cursor:pointer}
+.reader-appearance #reader-size{min-width:42px;text-align:center;font-variant-numeric:tabular-nums;color:#dedee0}
+.reader-appearance :is(button,select,input):focus-visible{outline:2px solid #c3c3c8!important;outline-offset:2px!important}
+html body .reader{background:var(--reader-bg,#000000)!important;color:var(--reader-fg,#e2e2e3)!important}
+html body #passages{background:var(--reader-bg,#000000)!important;color:var(--reader-fg,#e2e2e3)!important;font-family:var(--reader-font,Georgia,serif);font-size:var(--reader-size,20px);font-style:var(--reader-italic,normal);line-height:1.8}
+html body #passages p{text-align:var(--reader-align,justify);text-align-last:start;hyphens:auto;overflow-wrap:break-word}
+html body #passages .locus{text-align:left;hyphens:none;font-style:normal}
+html[data-parallel-view="true"] .reader-appearance{display:none}
+@media(max-width:700px){.reader-appearance{gap:6px;padding:9px}.reader-appearance :is(button,select){min-height:39px}html body #passages{font-size:var(--reader-size,18px)}}
+@media print{.reader-appearance{display:none!important}html body .reader,html body #passages{background:#fff!important;color:#111!important}}
 </style>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261107-academic-v4"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/classics-text-reader.html">
@@ -94,9 +111,24 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner,#toc::-webkit-scro
 <button id="find" type="button">Buscar en esta edición</button>
 <button id="clear" type="button">Borrar</button>
 <button id="print" type="button">Imprimir</button>
-<label for="reader-bg">Fondo</label><input id="reader-bg" type="color" value="#fffdfa" title="Elegir cualquier color de fondo" aria-label="Elegir color de fondo" style="flex:0 0 42px;min-width:42px;padding:3px">
-<label for="reader-fg">Texto</label><input id="reader-fg" type="color" value="#202b35" title="Elegir cualquier color de texto" aria-label="Elegir color de texto" style="flex:0 0 42px;min-width:42px;padding:3px">
-<button id="reader-invert" type="button" title="Invertir los colores de lectura">◐ Invertir colores</button>
+</div>
+<div class="reader-appearance" role="group" aria-label="Apariencia y tipografía del lector">
+  <span class="reader-appearance-title">Estilo de lectura</span>
+  <button type="button" id="reader-ivory" title="Fondo marfil y texto oscuro">◧ Marfil</button>
+  <button type="button" id="reader-sepia" title="Lectura sepia">◩ Sepia</button>
+  <button type="button" id="reader-night" title="Lectura nocturna">◼ Noche</button>
+  <button type="button" id="reader-invert" title="Intercambiar luminosidad del fondo y el texto">◐ Invertir</button>
+  <label>Fondo <input id="reader-bg" type="color" value="#000000" aria-label="Elegir color del fondo del texto"></label>
+  <label>Texto <input id="reader-fg" type="color" value="#e2e2e3" aria-label="Elegir color del texto"></label>
+  <label>Fuente <select id="reader-font" aria-label="Fuente del texto">
+    <option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Monoespaciada</option>
+  </select></label>
+  <button type="button" id="reader-smaller" title="Reducir tamaño de letra" aria-label="Reducir tamaño de letra">A−</button>
+  <output id="reader-size" aria-live="polite">20 px</output>
+  <button type="button" id="reader-larger" title="Aumentar tamaño de letra" aria-label="Aumentar tamaño de letra">A+</button>
+  <button type="button" id="reader-italic" aria-pressed="false" title="Alternar cursiva">Cursiva</button>
+  <button type="button" id="reader-align" aria-pressed="true" title="Alternar texto justificado y alineación izquierda">Justificado</button>
+  <button type="button" id="reader-reset" title="Restablecer la apariencia de lectura">↺ Restablecer</button>
 </div>
 <div class="reader-grid">
 <aside><strong id="toc-title">Capítulos / unidades editoriales</strong><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc"></ol></aside>
