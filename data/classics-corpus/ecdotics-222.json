@@ -57,15 +57,16 @@
             "shelfmark": "Harley MS 2767",
             "paleographicDate": "800–824 d. C. · siglo IX",
             "support": "Pergamino; códice.",
-            "script": null,
+            "script": "Minúscula carolina; rúbricas rojas en uncial y primeros renglones en uncial roja o negra.",
             "hands": null,
             "correctors": null,
-            "scholia": null,
+            "scholia": "Notas marginales raras; no hay base para describir un aparato escoliástico sistemático.",
             "interlinearGlosses": null,
             "subscriptiones": null,
-            "origin": null,
-            "provenance": null,
-            "foliation": "ff. 1r–162v (Harley MS 2767); dos hojas desprendidas en Oxford, Rawlinson MS D. 893, ff. 135–136."
+            "origin": "¿Colonia o Aquisgrán (Alemania occidental)? Atribución geográfica no segura; posible scriptorium palatino de Carlomagno según bibliografía citada por British Library.",
+            "provenance": "Abadía benedictina de San Pantaleón, Colonia (anotación Goderamnus prepositus, f. 145r); colección Johann Georg Graevius; posteriormente colección Harley.",
+            "foliation": "ff. 1r–162v (Harley MS 2767); dos hojas desprendidas en Oxford, Rawlinson MS D. 893, ff. 135–136.",
+            "diagrams": "Diagrama de los vientos en tinta parda, f. 16v; la afirmación de ausencia total de diagramas es errónea."
           },
           "textualIntegrity": {
             "coverage": "Testimonio completo del tratado; dos folios separados se conservan en Oxford (Rawlinson MS D. 893, ff. 135–136).",
@@ -80,7 +81,7 @@
             "catalogue": null,
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://searcharchives.bl.uk/catalog/040-002048598",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
           }
@@ -4076,7 +4077,7 @@
             "catalogue": null,
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.loc.gov/item/00279389694-jo/",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
           }
@@ -4091,8 +4092,10 @@
             "editorialSiglum": "Elbasan 82 (designación catalográfica; sin sigla crítica universal acreditada)",
             "siglumSourceEdition": null,
             "stemmaPosition": null,
-            "copyOf": null,
-            "indirectSourceType": null
+            "copyOf": "didache-hierosolymitanus-54",
+            "indirectSourceType": null,
+            "copyOfStatus": "probable_direct_apograph_according_to_scholarly_study",
+            "copyOfSource": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/"
           },
           "codicology": {
             "repository": "Tirana, Arkivi Qëndror i Shtetit (Archivo Central del Estado, Albania)",
@@ -4122,7 +4125,7 @@
             "catalogue": null,
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
           }
