@@ -14,7 +14,12 @@
     "manuscriptsVerified": false,
     "variantCollationVerified": false,
     "frequencyClaim": "No full lemmatized frequencies inferred from these seven entries.",
-    "semanticVersusEtymological": "Related concepts are not presumed to have a common etymology."
+    "semanticVersusEtymological": "Related concepts are not presumed to have a common etymology.",
+    "formEvidenceTypes": {
+      "exact_form": "Coincidencia exacta de la forma gráfica, ignorando mayúsculas.",
+      "inflected_form": "Forma flexionada del mismo lema, que debe distinguirse de coincidencia literal.",
+      "related_derived_form": "Voz de la misma familia derivativa; no se contabiliza como ocurrencia del lema consultado."
+    }
   },
   "nodes": [
     {
@@ -34,7 +39,19 @@
       "entryPage": "ordinatio-en-vitruvio.html",
       "searchUrl": "vitruvia-lexicon.html?q=ordinatio&mode=palabra&lang=la",
       "sourceEdition": "V514",
-      "sourceId": "data/structured/recensio-es.json"
+      "sourceId": "data/structured/recensio-es.json",
+      "attestations": [
+        {
+          "locus": "1.2.1",
+          "form": "ordinatione",
+          "relationship": "inflected_form"
+        },
+        {
+          "locus": "1.2.2",
+          "form": "Ordinatio",
+          "relationship": "exact_form"
+        }
+      ]
     },
     {
       "id": "dispositio",
@@ -53,7 +70,19 @@
       "entryPage": "dispositio-en-vitruvio.html",
       "searchUrl": "vitruvia-lexicon.html?q=dispositio&mode=palabra&lang=la",
       "sourceEdition": "V514",
-      "sourceId": "data/structured/recensio-es.json"
+      "sourceId": "data/structured/recensio-es.json",
+      "attestations": [
+        {
+          "locus": "1.2.1",
+          "form": "dispositione",
+          "relationship": "inflected_form"
+        },
+        {
+          "locus": "1.2.2",
+          "form": "Dispositio",
+          "relationship": "exact_form"
+        }
+      ]
     },
     {
       "id": "symmetria",
@@ -68,7 +97,19 @@
       "entryPage": "symmetria-en-vitruvio.html",
       "searchUrl": "vitruvia-lexicon.html?q=symmetria&mode=palabra&lang=la",
       "sourceEdition": "V514",
-      "sourceId": "data/structured/recensio-es.json"
+      "sourceId": "data/structured/recensio-es.json",
+      "attestations": [
+        {
+          "locus": "1.2.1",
+          "form": "symmetria",
+          "relationship": "exact_form"
+        },
+        {
+          "locus": "1.2.4",
+          "form": "symmetria",
+          "relationship": "exact_form"
+        }
+      ]
     },
     {
       "id": "architectura",
@@ -83,7 +124,19 @@
       "entryPage": "architectura-en-vitruvio.html",
       "searchUrl": "vitruvia-lexicon.html?q=architectura&mode=palabra&lang=la",
       "sourceEdition": "V514",
-      "sourceId": "data/structured/recensio-es.json"
+      "sourceId": "data/structured/recensio-es.json",
+      "attestations": [
+        {
+          "locus": "1.1.1",
+          "form": "Architecti",
+          "relationship": "related_derived_form"
+        },
+        {
+          "locus": "1.2.1",
+          "form": "Architectura",
+          "relationship": "exact_form"
+        }
+      ]
     },
     {
       "id": "domus",
@@ -97,7 +150,14 @@
       "entryPage": "domus-en-vitruvio.html",
       "searchUrl": "vitruvia-lexicon.html?q=domus&mode=palabra&lang=la",
       "sourceEdition": "V514",
-      "sourceId": "data/structured/recensio-es.json"
+      "sourceId": "data/structured/recensio-es.json",
+      "attestations": [
+        {
+          "locus": "1.2.9",
+          "form": "domos",
+          "relationship": "inflected_form"
+        }
+      ]
     },
     {
       "id": "aedes",
@@ -111,7 +171,14 @@
       "entryPage": "aedes-en-vitruvio.html",
       "searchUrl": "vitruvia-lexicon.html?q=aedes&mode=palabra&lang=la",
       "sourceEdition": "V514",
-      "sourceId": "data/structured/recensio-es.json"
+      "sourceId": "data/structured/recensio-es.json",
+      "attestations": [
+        {
+          "locus": "1.2.5",
+          "form": "aedes",
+          "relationship": "exact_form"
+        }
+      ]
     },
     {
       "id": "locus",
@@ -125,7 +192,14 @@
       "entryPage": "locus-en-vitruvio.html",
       "searchUrl": "vitruvia-lexicon.html?q=locus&mode=palabra&lang=la",
       "sourceEdition": "V514",
-      "sourceId": "data/structured/recensio-es.json"
+      "sourceId": "data/structured/recensio-es.json",
+      "attestations": [
+        {
+          "locus": "1.6.6",
+          "form": "locus",
+          "relationship": "exact_form"
+        }
+      ]
     }
   ],
   "edges": [
