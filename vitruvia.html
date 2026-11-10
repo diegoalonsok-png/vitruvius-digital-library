@@ -1095,7 +1095,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <button type="button" class="image-search-trigger" id="search-images-button" aria-controls="vitruvia-images" aria-label="Buscar imágenes de la consulta" title="Buscar imágenes de la consulta"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.6"/><path d="m4 17 5-5 3.5 3.5 2.7-2.7L20 18"/></svg><span>Imágenes</span></button>
 </div>
 <p class="explain" id="mode-note">Busca cualquier tema en Wikipedia, Wikidata y catálogos abiertos; prioriza arte, historia y arquitectura y también consulta esta biblioteca.</p>
-<p class="ai-mode-help" id="ai-help">IA opcional, sin clave ni servidor: analiza textos indexados; la primera carga del modelo puede descargar ~120 MB.</p>
+<p class="ai-mode-help" id="ai-help">IA opcional: el modelo E5 se descarga (aprox. 120 MB) solo al buscar en modo IA. Con ahorro de datos activado se usa BM25 sin descargar el modelo; los resultados BM25 no se presentan como búsqueda neuronal.</p>
 <div class="ai-mode-status" id="ai-status" role="status" aria-live="polite" hidden></div>
 <div class="suggestions"><span data-i18n="explore">Explorar</span><button type="button" data-q="symmetria">symmetria</button><button type="button" data-q="acueductos romanos">acueductos romanos</button><button type="button" data-q="Lucrecio">Lucrecio</button><button type="button" data-q="Codex H">Codex H</button></div>
 <div class="academic-pills" aria-label="Buscar en universidades y repositorios">
@@ -1139,7 +1139,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
  </nav>
 </aside>
 </section>
-<div class="metrics" id="metrics"><span><b id="metric-works">—</b> <span data-i18n="metricWorks">fichas de obras</span></span><span><b id="metric-pages">—</b> <span data-i18n="metricPages">secciones documentadas</span></span><span><b>341</b> <span data-i18n="metricImages">imágenes del Codex H</span></span><span><b id="metric-read">—</b> <span data-i18n="metricRead">lecturas disponibles</span></span><span><b id="metric-witnesses">—</b> testimonios manuscritos</span><span><b id="metric-editions">—</b> ediciones vinculadas</span></div>
+<div class="metrics" id="metrics" role="status" aria-label="Indicadores del catálogo: datos en carga" aria-live="polite" aria-atomic="false"><span><b id="metric-works">—</b> <span data-i18n="metricWorks">fichas de obras</span></span><span><b id="metric-pages">—</b> <span data-i18n="metricPages">secciones documentadas</span></span><span><b>341</b> <span data-i18n="metricImages">imágenes del Codex H</span></span><span><b id="metric-read">—</b> <span data-i18n="metricRead">lecturas disponibles</span></span><span><b id="metric-witnesses">—</b> testimonios manuscritos</span><span><b id="metric-editions">—</b> ediciones vinculadas</span></div>
 <section class="results" id="results" aria-live="polite">
 <div class="section-head"><h2 id="results-heading" data-i18n="headingIdle">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span></div>
 
@@ -1265,7 +1265,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/search-agentic.js?v=20261105-academic-navigation-2" defer></script>
 <script src="assets/vitruvia-archives.js?v=20261104-linked-authorities-v1" defer></script>
 <script src="assets/vitruvia-text-discovery.js?v=20261104-universal-wikisource-v1" defer></script>
-<script src="assets/vitruvia-ai.js?v=20261104-evidence-links-v2" defer></script>
+<script src="assets/vitruvia-ai.js?v=20261109-datasaver-bm25-v3" defer></script>
 <script src="assets/codicological-query.js?v=20261105-cq-v1" defer></script>
 <script src="assets/kurilo-apparatus.js?v=20261105-academic-navigation-2" defer></script>
 <script src="assets/classical-lexicon.js?v=20261105-lex-v3" defer></script>
