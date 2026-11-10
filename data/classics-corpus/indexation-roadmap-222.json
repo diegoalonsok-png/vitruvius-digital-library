@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
   "updated": "2026-11-10",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. · Los registros parciales de Plutarco documentan solo tratados seleccionados, sin afirmar cobertura completa.",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. · Los registros parciales de Plutarco documentan solo tratados seleccionados, sin afirmar cobertura completa. · Macrobio, Saturnalia I–VII: secciones editoriales latinas en rama auxiliar con fuente CLTK-LacusCurtius (L. von Jan 1852), sin asignación de variantes manuscritas.",
   "targetWorks": 222,
   "counts": {
     "originalsIndexed": 181,
@@ -9,12 +9,12 @@
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 163,
     "textVersions": 246,
-    "offsiteOriginalsIndexed": 27,
-    "effectiveOriginalsIndexed": 208,
-    "effectiveOriginalsMissing": 14,
+    "offsiteOriginalsIndexed": 28,
+    "effectiveOriginalsIndexed": 209,
+    "effectiveOriginalsMissing": 13,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 11,
-    "offsiteTextVersionsOutsidePages": 27,
+    "distinctAncientWorksStillMissingOriginalIndex": 10,
+    "offsiteTextVersionsOutsidePages": 28,
     "states": {
       "original_pendiente": 41,
       "original_sin_traduccion_local": 122,
@@ -4205,8 +4205,14 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
-      "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "offsiteOriginalIndexed": true,
+      "effectiveOriginalIndexed": true,
+      "offsiteIndex": {
+        "branch": "corpus-originales-latinos-20261108",
+        "manifestPath": "data/offsite-latin/manifest.json",
+        "sourceSha256": "326a6087ac22bacec4d2a4425aec68f1c57a2273a3c024fa59c3b5e036328f73",
+        "scope": "Libri I–VII · 2106 secciones; lagunas de transmisión y marcadores duplicados documentados"
+      }
     },
     {
       "id": "epictetus-enchiridion",
