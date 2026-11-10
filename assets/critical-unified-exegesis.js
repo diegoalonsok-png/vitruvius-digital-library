@@ -47,17 +47,43 @@ async function getJson(path){
 }
 const q=by('critical-unified-query'),edition=by('critical-unified-edition'),field=by('critical-unified-field'),
  phrase=by('critical-unified-phrase'),status=by('critical-unified-status'),more=by('critical-unified-more');
-let visible=[],shown=0,revision=0,currentQuery='';
-const locusKey=v=>String(v||'').toLowerCase().replace(/^0+/,'').replace(/\s+/g,'');
+let visible=[],shown=0,revision=0,currentQuery='',currentLocusQuery=null;
+// Normalize ONLY complete, unambiguous book.chapter.section citations.
+// Identifying the same locus does not establish a critical variant or an
+// alignment among separate editorial translations.
+const locusKey=value=>{
+ const raw=String(value??'').normalize('NFKC').trim()
+  .replace(/^locus\s+/i,'').replace(/^vitr(?:uvius|uvio)?(?:,?\s*de\s*arch(?:itectura)?\.?)?\s*/i,'');
+ const match=raw.match(/^(10|[1-9]|X|IX|VIII|VII|VI|V|IV|III|II|I)\s*[.\-]\s*(praef(?:atio)?|pr|\d{1,2})\s*[.\-]\s*(\d{1,3})$/i);
+ if(!match)return null;
+ const roman={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
+ const book=roman[match[1].toUpperCase()]||Number(match[1]);
+ const chapter=/^pr/i.test(match[2])?'praef':Number(match[2]);
+ const section=Number(match[3]);
+ if(book<1||book>10||chapter!=='praef'&&(chapter<1||chapter>30)||section<1)return null;
+ return book+'.'+chapter+'.'+section;
+};
 function pdfLink(e,page){
  const n=Number(page);return e.pdf+(Number.isFinite(n)&&n>0?'#page='+Math.floor(n):'');
 }
 function sourceTitle(e){return e.version+' · '+e.label+' · Diego A. Kurilo'}
 function record(source,e,content,opts){
+ if(currentLocusQuery){
+  // A passage matches by its verified structural locus. A note or PDF block
+  // must ALSO explicitly attribute that locus; candidates stay excluded.
+  if(!opts?.locus||locusKey(opts.locus)!==currentLocusQuery)return null;
+  if(source!=='passage'&&!opts.verified)return null;
+  return {source,edition:e,content,matches:[],locusMatch:true,...opts};
+ }
  const matches=positions(content,currentQuery,phrase.checked);if(!matches.length)return null;
  return {source,edition:e,content,matches,...opts};
 }
 function countAndList(){
+ if(currentLocusQuery){
+  status.textContent=visible.length+' registros asociados exactamente al locus '+currentLocusQuery+
+  '. Solo se incluyen notas con anclaje explícito y bloques del aparato cuyo encabezado declara ese locus. Las demás correspondencias son hipótesis no verificadas; el cotejo manuscrito sigue siendo independiente.';
+  return;
+ }
  const counts=new Map(),freq=visible.reduce((n,x)=>n+x.matches.length,0);
  for(const x of visible){const key=x.edition.id+'|'+x.source;const c=counts.get(key)||{passages:0,count:0};c.passages++;c.count+=x.matches.length;counts.set(key,c)}
  status.textContent=visible.length+' unidades textuales y '+freq+' apariciones documentadas de «'+currentQuery+'». '+
@@ -69,7 +95,7 @@ function renderNext(){
  for(const r of batch){
   const card=el('article','critical-unified-card'),head=el('div','critical-unified-meta',sourceTitle(r.edition));
   const h=el('h3','',r.source==='passage'?'Vitr., De architectura · '+r.locus:r.source==='note'?'Nota editorial DOCX · '+(r.noteId||'sin número'):'Aparato / comentario en PDF · '+(r.page?'p. '+r.page:'referencia de página no disponible'));
-  const counts=el('p','critical-unified-meta',r.matches.length+' coincidencia(s) en esta unidad · '+(r.source==='passage'?'Texto latino/traducción':r.source==='note'?'Nota escrita del autor':'Bloque del aparato, transcrito del PDF'));
+  const counts=el('p','critical-unified-meta',(r.locusMatch?'Locus documental exacto':'Coincidencias léxicas en la unidad: '+r.matches.length)+' · '+(r.source==='passage'?'Texto latino/traducción':r.source==='note'?'Nota escrita del autor':'Bloque del aparato, transcrito del PDF'));
   const details=el('details','critical-unified-detail');
   const summary=el('summary','',r.source==='passage'?'Desplegar párrafo y traducción':r.source==='note'?'Desplegar nota completa':'Desplegar explicación completa');
   details.append(summary);
@@ -116,7 +142,7 @@ function renderNext(){
 }
 async function run(){
  const query=q.value.trim();if(!query)return;
- const id=++revision;visible=[];shown=0;target.replaceChildren();more.hidden=true;currentQuery=query;
+ const id=++revision;visible=[];shown=0;target.replaceChildren();more.hidden=true;currentQuery=query;currentLocusQuery=locusKey(query);
  status.textContent='Leyendo textos, notas y comentarios de las ediciones seleccionadas…';
  const chosen=EDITIONS.filter(e=>!edition.value||e.id===edition.value);
  const paths=chosen.map(e=>'data/structured/'+e.id+'.json');
@@ -129,13 +155,15 @@ async function run(){
  const notesByLocus=new Map();
  for(const n of notes){
   if(!n.locus||n.mapping_status!=='explicit_in_anchor')continue;
-  const k=n.edition+'|'+locusKey(n.locus);const list=notesByLocus.get(k)||[];list.push(n);notesByLocus.set(k,list);
+  const clean=locusKey(n.locus);if(!clean)continue;
+  const k=n.edition+'|'+clean;const list=notesByLocus.get(k)||[];list.push(n);notesByLocus.set(k,list);
  }
  for(const e of chosen){
   const corpus=data.get('data/structured/'+e.id+'.json');
   if(!corpus)continue;
   for(const p of corpus.passages||[]){
    for(const [fieldName,text,other] of [['latin',p.latin,p.translation],['translation',p.translation,p.latin]]){
+    if(currentLocusQuery&&['all','passages'].includes(field.value)&&fieldName==='translation')continue;
     if(field.value!=='all'&&field.value!=='passages'&&field.value!==fieldName)continue;
     if(field.value==='passages'||field.value==='all'||field.value===fieldName){
      const rec=record('passage',e,text,{field:fieldName,other,locus:p.locus,
@@ -168,7 +196,9 @@ async function run(){
   (a.page||0)-(b.page||0));
  countAndList();
  if(failures.length)status.textContent+=' Atención: '+failures.length+' fuente(s) no cargaron ('+failures.join(', ')+'); el recuento es parcial.';
- if(!visible.length)target.append(el('p','critical-unified-empty','No se registran coincidencias en los textos accesibles para la consulta y filtros actuales.'));
+ if(!visible.length)target.append(el('p','critical-unified-empty',currentLocusQuery?
+  'No se registran textos ni anotaciones con atribución explícita al locus '+currentLocusQuery+' en las fuentes disponibles. No se han inferido relaciones de notas por similitud de palabras.':
+  'No se registran coincidencias en los textos accesibles para la consulta y filtros actuales.'));
  renderNext();
 }
 form.addEventListener('submit',event=>{event.preventDefault();void run()});
