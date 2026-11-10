@@ -457,6 +457,14 @@ function hitCard(D,h){
  const card=el("article",{class:"result-card lx-hit"},
   el("div",{class:"result-head"},el("div",{},el("div",{class:"kind"},`${w.author} · ${DATING[p[0]]||""}`),el("h3",{},el("i",{},w.title)," ",el("span",{class:"lx-cite"},cite))),el("span",{class:"meta-line"},D.l==="grc"?"griego":"latín")),
   snippet,full);
+ // Per-hit source metadata is visible without opening the full passage.
+ // It describes the indexed edition, never an unverified manuscript reading.
+ const declaredEdition=typeof w.edition==="string"?w.edition.trim():"";
+ const provenance=el("p",{class:"lx-small lx-hit-provenance"},
+  "Texto indexado · ",declaredEdition?"Edición declarada: "+declaredEdition:"Edición no especificada en la ficha local",
+  " · La coincidencia no acredita una variante manuscrita. ",
+  el("a",{href:"bibliotheca-graeca-latina.html?"+new URLSearchParams({work:p[0]}).toString()},"Ficha de obra"));
+ card.append(provenance);
  {const amb=ambiguity(D,text,h.spans,p);if(amb)card.append(amb)}
  const trBox=el("div",{class:"lx-hit-tr",hidden:!READ.tr});card.append(trBox);card._tr=()=>fillTranslation(D,p,trBox);if(READ.tr)card._tr();
  const also=alsoIn(D,p);if(also)card.append(also);
