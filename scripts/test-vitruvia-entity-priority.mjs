@@ -59,3 +59,6 @@ await import("./test-vitruvia-entity-identity.mjs");
 
 // Ensure the Aparato Crítico controls work independently of the textual corpus.
 await import("./test-apparatus-controls.mjs");
+
+// Validate real hosted PDFs and all original/translation twin-reader links.
+await import("./test-apparatus-bibliotheca-pdfs.mjs");
