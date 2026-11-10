@@ -93,7 +93,7 @@ function names(box,ruler){
  for(const [key,label] of keys){
   const rec=ruler.names?.[key],item=make("div",null,"v-ed-name");
   item.append(make("b",label));
-  if(rec?.glyphs){const g=make("span",rec.glyphs,"v-ed-glyph"+(["nomen","prenomen"].includes(key)?" cartouche":""));g.lang="egy";item.append(g)}
+  if(rec?.glyphs){const g=make("span",rec.glyphs,"v-ed-glyph"+(["nomen","prenomen"].includes(key)?" cartouche":""));g.lang="egy";if(window.HieroRender?.render)g.replaceChildren(window.HieroRender.render(rec.glyphs,{size:"35px"}));item.append(g)}
   if(rec?.trans)item.append(make("p","Transliteración: "+rec.trans));
   if(rec?.gloss)item.append(make("p","Sentido: "+rec.gloss));
   if(rec?.witness)item.append(make("p","Testimonio: "+rec.witness,"v-ed-note"));
