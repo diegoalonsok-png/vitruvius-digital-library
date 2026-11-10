@@ -21,8 +21,25 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:""};
- let request=0;
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:""};
+ const article=document.getElementById("vitruvia-article");
+ const articleGrid=article?.querySelector(".article-grid");
+ const body=document.getElementById("article-body");
+ const resultsGrid=document.querySelector("#results .results-grid");
+ const resultList=document.getElementById("result-list");
+ let queued=false;
+ function place(){
+  const visible=article&&!article.hidden&&articleGrid;
+  const parent=visible?articleGrid:resultsGrid;
+  const target=visible?body:resultList;
+  if(parent&&target&&(root.parentElement!==parent||root.nextElementSibling!==target))parent.insertBefore(root,target);
+ }
+ function queuePlacement(){
+  if(queued)return;queued=true;
+  queueMicrotask(()=>{queued=false;place()});
+ }
+ if(article)new MutationObserver(queuePlacement).observe(article,{attributes:true,attributeFilter:["hidden","style","class"]});
+ place();
  function event(item){
   const y=year(item.year),end=item.end==null?null:year(item.end);
   if(y===null||end!==null&&end<y)return null;
@@ -155,7 +172,7 @@
   const position=y=>((y-low)/range*100).toFixed(4)+"%";
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
   viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente","Horizontal chronological timeline","Frise chronologique horizontale"));
-  const map=el("div","vat-map");map.style.width=mapWidth+"px";
+  const map=el("div","vat-map");map.style.width=(mapWidth+170)+"px";
   const axis=el("div","vat-axis");
   const ticks=Math.min(13,Math.max(3,Math.ceil(mapWidth/160)));
   for(let i=0;i<=ticks;i++){
@@ -203,8 +220,8 @@
  }
  function reset(q){
   state.token++;state.query=String(q||"").trim().slice(0,160);
-  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";
-  draw();
+  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";
+  place();draw();
   if(!state.query)return;
   const token=state.token;
   if(window.VitruviaEntityResolver?.resolve){
