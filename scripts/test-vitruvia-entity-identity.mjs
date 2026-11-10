@@ -150,7 +150,8 @@ assert.equal(accepted({type:"wikipedia",title:"Tutankamón",preferredWiki:true,w
 checks+=4;
 
 assert(searchSource.includes("let previewIdentity=null;")&&
- searchSource.includes("display([authorityResult(identity)],q,"),
+ searchSource.includes("applyFeatured(row,identity.wikidataId?10000:700,q,q)")&&
+ searchSource.includes("display([row],q,"),
  "A verified identity must be displayed before the local catalogue finishes");
 assert(searchSource.includes("!codexIntent&&!locusIntent&&!textualIntent")&&
  searchSource.includes("const textualIntent="),
