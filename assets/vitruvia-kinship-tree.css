@@ -1,0 +1,36 @@
+/* Genealogical diagram. Data nodes use links and documented kinship labels. */
+.vkt-tree{border:1px solid #494949;border-radius:7px;padding:12px;max-width:100%;margin:10px 0 18px;box-sizing:border-box}
+.vkt-nav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.vkt-nav h5{font:600 15px/1.4 Georgia,serif;margin:0}
+.vkt-controls{display:flex;gap:5px}
+.vkt-controls button{border:1px solid #686868;background:transparent;color:inherit;border-radius:5px;min-height:32px;min-width:35px;cursor:pointer}
+.vkt-viewport{overflow-x:auto;scrollbar-width:auto;scrollbar-color:#888 #272728;overscroll-behavior-x:contain;padding:8px 0 15px;outline-offset:2px}
+.vkt-board{width:max-content;min-width:100%;display:flex;flex-direction:column;align-items:center;padding:2px 14px 10px;box-sizing:border-box}
+.vkt-tier{display:flex;flex-direction:column;align-items:center;position:relative;width:100%;padding-bottom:25px}
+.vkt-tier-caption{display:block;font:11px/1.5 system-ui,sans-serif;color:#b9b9b9;margin-bottom:9px;text-align:center}
+.vkt-people{display:flex;justify-content:center;align-items:flex-start;gap:15px;flex-wrap:nowrap;position:relative}
+.vkt-person{box-sizing:border-box;display:flex;flex-direction:column;gap:4px;min-height:68px;min-width:116px;max-width:170px;padding:10px 9px;background:rgba(135,130,120,.13);border:1px solid #777;border-radius:6px;text-align:center;position:relative;white-space:normal}
+.vkt-person small{font:10px/1.25 system-ui,sans-serif;opacity:.78}
+.vkt-person a{font:600 12px/1.35 Georgia,serif;color:inherit;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.vkt-focus{border-color:#baa070;background:rgba(186,160,112,.22)}
+.vkt-focus-row{display:flex;gap:14px;align-items:center;justify-content:center}
+.vkt-spouse-block{display:flex;gap:9px;flex-wrap:nowrap;align-items:center;border-left:2px dashed #85817a;padding-left:12px}
+.vkt-spouse-block .vkt-relation-note{font:10px/1.35 system-ui,sans-serif;max-width:100px;opacity:.75}
+.vkt-parents:after{content:"";position:absolute;left:50%;bottom:0;height:25px;border-left:2px solid #9f987f}
+.vkt-generation:before{content:"";position:absolute;left:50%;top:-1px;height:12px;border-left:2px solid #9f987f}
+.vkt-generation:has(+ .vkt-children):after{content:"";position:absolute;left:50%;bottom:0;height:26px;border-left:2px solid #9f987f}
+.vkt-children{padding-top:13px}
+.vkt-children .vkt-people:before{content:"";position:absolute;left:calc(58px);right:calc(58px);top:-18px;border-top:2px solid #9f987f}
+.vkt-children .vkt-person:before{content:"";position:absolute;left:50%;height:18px;top:-18px;border-left:2px solid #9f987f}
+.vkt-children .vkt-people:has(> .vkt-person:only-child):before{display:none}
+.vkt-siblings{width:100%;border-top:1px dashed #777;padding-top:14px;margin-top:4px}
+.vkt-siblings h6{margin:0 0 9px;font:500 11px/1.4 system-ui,sans-serif;text-align:center;opacity:.9}
+.vkt-caveat{font:11px/1.55 system-ui,sans-serif;opacity:.8;margin:4px 0 0}
+.vkt-viewport:focus-visible,.vkt-tree :focus-visible{outline:2px solid #c9a84c;outline-offset:3px}
+@media (max-width:620px){.vkt-tree{padding:8px}.vkt-person{min-width:98px;max-width:130px}.vkt-board{padding-inline:9px}}
+html[data-theme=light] .vkt-tree{border-color:#bbb}
+html[data-theme=light] .vkt-tier-caption{color:#494949}
+html[data-theme=light] .vkt-person{background:#f6f3eb;border-color:#999}
+html[data-theme=light] .vkt-focus{background:#ead9b8;border-color:#a58a59}
+@media(prefers-reduced-motion:reduce){.vkt-viewport{scroll-behavior:auto!important}}
+@media print{.vkt-viewport{overflow:visible}.vkt-controls{display:none}}
