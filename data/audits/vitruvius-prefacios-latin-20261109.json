@@ -1,0 +1,1314 @@
+{
+  "schema": "vitruvius-preface-critical-collation-2026-11-09-v1",
+  "generated": "2026-11-09",
+  "editions": [
+    {
+      "edition": "recensio-es",
+      "version": "V514",
+      "passages": 731
+    },
+    {
+      "edition": "recensio-fr",
+      "version": "V554",
+      "passages": 731
+    },
+    {
+      "edition": "theory-en",
+      "version": "V297",
+      "passages": 728
+    }
+  ],
+  "sourceTexts": [
+    {
+      "path": "data/structured/recensio-es.json",
+      "sha": "ae5fbfeb031e459f8d7886e1bc9c0fe3954c4782"
+    },
+    {
+      "path": "data/structured/recensio-fr.json",
+      "sha": "a1933250cd344ead6c4ed0df34d022e7e4e209e4"
+    },
+    {
+      "path": "data/structured/theory-en.json",
+      "sha": "baff60993fb41bb81e7d07077b0577de1b261e51"
+    }
+  ],
+  "method": "NFD Unicode, remove combining marks, lower-case Latin, normalize u/v and i/j, token-by-token sequence comparison per locus and full preface. OCR Krohn/Rose four-gram support is only supplementary; PDF/DOCX has not been checked. No files edited.",
+  "summary": {
+    "prefaceLoci": 70,
+    "esFrPrefacesExactNormalized": 70,
+    "esEnPrefacesExactNormalized": 65,
+    "prefaceBooksWithENFullSequenceAligned": 7,
+    "prefaceIssues": 5,
+    "allESFRLociExactNormalized": 731,
+    "allESENLociExactNormalized": 632,
+    "allESENUnalignedSameID": 96,
+    "missingEnglishLocusIDs": [
+      "7.7.2",
+      "7.7.3",
+      "7.7.5"
+    ]
+  },
+  "byBook": [
+    {
+      "book": 1,
+      "loci": 3,
+      "exactPerLocus": {
+        "esFr": 3,
+        "esEn": 3
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": true
+      },
+      "wordCounts": [
+        260,
+        260,
+        260
+      ]
+    },
+    {
+      "book": 2,
+      "loci": 5,
+      "exactPerLocus": {
+        "esFr": 5,
+        "esEn": 4
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": false
+      },
+      "wordCounts": [
+        464,
+        464,
+        464
+      ]
+    },
+    {
+      "book": 3,
+      "loci": 4,
+      "exactPerLocus": {
+        "esFr": 4,
+        "esEn": 4
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": true
+      },
+      "wordCounts": [
+        498,
+        498,
+        498
+      ]
+    },
+    {
+      "book": 4,
+      "loci": 2,
+      "exactPerLocus": {
+        "esFr": 2,
+        "esEn": 2
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": true
+      },
+      "wordCounts": [
+        114,
+        114,
+        114
+      ]
+    },
+    {
+      "book": 5,
+      "loci": 5,
+      "exactPerLocus": {
+        "esFr": 5,
+        "esEn": 5
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": true
+      },
+      "wordCounts": [
+        379,
+        379,
+        379
+      ]
+    },
+    {
+      "book": 6,
+      "loci": 7,
+      "exactPerLocus": {
+        "esFr": 7,
+        "esEn": 7
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": true
+      },
+      "wordCounts": [
+        643,
+        643,
+        643
+      ]
+    },
+    {
+      "book": 7,
+      "loci": 18,
+      "exactPerLocus": {
+        "esFr": 18,
+        "esEn": 16
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": true
+      },
+      "wordCounts": [
+        1344,
+        1344,
+        1344
+      ]
+    },
+    {
+      "book": 8,
+      "loci": 4,
+      "exactPerLocus": {
+        "esFr": 4,
+        "esEn": 3
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": false
+      },
+      "wordCounts": [
+        388,
+        388,
+        341
+      ]
+    },
+    {
+      "book": 9,
+      "loci": 18,
+      "exactPerLocus": {
+        "esFr": 18,
+        "esEn": 17
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": false
+      },
+      "wordCounts": [
+        1320,
+        1320,
+        1296
+      ]
+    },
+    {
+      "book": 10,
+      "loci": 4,
+      "exactPerLocus": {
+        "esFr": 4,
+        "esEn": 4
+      },
+      "wholePrefaceNormalizedSequence": {
+        "esFr": true,
+        "esEn": true
+      },
+      "wordCounts": [
+        332,
+        332,
+        332
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "locus": "2.praef.5",
+      "book": 2,
+      "wordCounts": [
+        111,
+        111,
+        111
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 390,
+      "kind": "Latin textual variation / possible transcription mistakes",
+      "priority": "P1",
+      "status": "needs source PDF/critical witness verification",
+      "differenceDescription": "Four token alignment operations including ES/FR 'materiae rationibus' vs EN 'materiationibus', and ES/FR 'naturae' vs EN 'natura e', plus reversed wording later in the sentence.",
+      "latinMissingFromEnglishIndexed": "Not a simple omitted tail: both versions have 111 tokens, but content differs.",
+      "englishTranslationReviewNeeded": true,
+      "englishTranslationPdfPage": 390
+    },
+    {
+      "locus": "7.praef.12",
+      "book": 7,
+      "wordCounts": [
+        98,
+        98,
+        105
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 692,
+      "kind": "Segmentation shift only",
+      "priority": "P2",
+      "status": "confirmed full Latin present after combining adjacent EN loci",
+      "differenceDescription": "The final 7 Latin words of ES/FR 7.praef.13 appear at the end of EN 7.praef.12.",
+      "wordsMoved": 7,
+      "englishTranslationReviewNeeded": true,
+      "englishTranslationPdfPage": 692
+    },
+    {
+      "locus": "7.praef.13",
+      "book": 7,
+      "wordCounts": [
+        56,
+        56,
+        49
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 693,
+      "kind": "Segmentation shift only",
+      "priority": "P2",
+      "status": "confirmed full Latin present after combining adjacent EN loci",
+      "differenceDescription": "EN 7.praef.13 begins after its first 7 words, which are instead at the end of EN 7.praef.12.",
+      "wordsMoved": 7,
+      "englishTranslationReviewNeeded": true,
+      "englishTranslationPdfPage": 693
+    },
+    {
+      "locus": "8.praef.4",
+      "book": 8,
+      "wordCounts": [
+        85,
+        85,
+        38
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 738,
+      "kind": "English indexed Latin truncated",
+      "priority": "P0",
+      "status": "confirmed absent from V297 structured Latin, pending PDF/DOCX verification",
+      "differenceDescription": "The final 47 Latin words of the ES/FR preface paragraph are absent from English indexed Latin and not found in any other V297 Latin locus. Krohn OCR page 189, Rose OCR page 219 show overlapping four-word anchors from the omitted span.",
+      "missingWords": 47,
+      "englishTranslationReviewNeeded": true,
+      "englishTranslationPdfPage": 738
+    },
+    {
+      "locus": "9.praef.3",
+      "book": 9,
+      "wordCounts": [
+        56,
+        56,
+        32
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 782,
+      "kind": "English indexed Latin truncated",
+      "priority": "P0",
+      "status": "confirmed absent from V297 structured Latin, pending PDF/DOCX verification",
+      "differenceDescription": "The final 24 Latin words of the ES/FR preface paragraph are absent from English indexed Latin and not found in any other V297 Latin locus. Krohn OCR page 214, Rose OCR page 246 show overlapping four-word anchors from the omitted span.",
+      "missingWords": 24,
+      "englishTranslationReviewNeeded": true,
+      "englishTranslationPdfPage": 782
+    }
+  ],
+  "loci": [
+    {
+      "locus": "1.praef.1",
+      "book": 1,
+      "wordCounts": [
+        62,
+        62,
+        62
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "1.praef.2",
+      "book": 1,
+      "wordCounts": [
+        128,
+        128,
+        128
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "1.praef.3",
+      "book": 1,
+      "wordCounts": [
+        70,
+        70,
+        70
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 223
+    },
+    {
+      "locus": "2.praef.1",
+      "book": 2,
+      "wordCounts": [
+        106,
+        106,
+        106
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "2.praef.2",
+      "book": 2,
+      "wordCounts": [
+        65,
+        65,
+        65
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 381
+    },
+    {
+      "locus": "2.praef.3",
+      "book": 2,
+      "wordCounts": [
+        103,
+        103,
+        103
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "2.praef.4",
+      "book": 2,
+      "wordCounts": [
+        79,
+        79,
+        79
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "2.praef.5",
+      "book": 2,
+      "wordCounts": [
+        111,
+        111,
+        111
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 390
+    },
+    {
+      "locus": "3.praef.1",
+      "book": 3,
+      "wordCounts": [
+        145,
+        145,
+        145
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 475
+    },
+    {
+      "locus": "3.praef.2",
+      "book": 3,
+      "wordCounts": [
+        145,
+        145,
+        145
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "3.praef.3",
+      "book": 3,
+      "wordCounts": [
+        96,
+        96,
+        96
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "3.praef.4",
+      "book": 3,
+      "wordCounts": [
+        112,
+        112,
+        112
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 478
+    },
+    {
+      "locus": "4.praef.1",
+      "book": 4,
+      "wordCounts": [
+        86,
+        86,
+        86
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 526
+    },
+    {
+      "locus": "4.praef.2",
+      "book": 4,
+      "wordCounts": [
+        28,
+        28,
+        28
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 527
+    },
+    {
+      "locus": "5.praef.1",
+      "book": 5,
+      "wordCounts": [
+        86,
+        86,
+        86
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 566
+    },
+    {
+      "locus": "5.praef.2",
+      "book": 5,
+      "wordCounts": [
+        77,
+        77,
+        77
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 567
+    },
+    {
+      "locus": "5.praef.3",
+      "book": 5,
+      "wordCounts": [
+        51,
+        51,
+        51
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "5.praef.4",
+      "book": 5,
+      "wordCounts": [
+        75,
+        75,
+        75
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "5.praef.5",
+      "book": 5,
+      "wordCounts": [
+        90,
+        90,
+        90
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 569
+    },
+    {
+      "locus": "6.praef.1",
+      "book": 6,
+      "wordCounts": [
+        93,
+        93,
+        93
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "6.praef.2",
+      "book": 6,
+      "wordCounts": [
+        84,
+        84,
+        84
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 630
+    },
+    {
+      "locus": "6.praef.3",
+      "book": 6,
+      "wordCounts": [
+        97,
+        97,
+        97
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "6.praef.4",
+      "book": 6,
+      "wordCounts": [
+        100,
+        100,
+        100
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": null
+    },
+    {
+      "locus": "6.praef.5",
+      "book": 6,
+      "wordCounts": [
+        100,
+        100,
+        100
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 632
+    },
+    {
+      "locus": "6.praef.6",
+      "book": 6,
+      "wordCounts": [
+        103,
+        103,
+        103
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 633
+    },
+    {
+      "locus": "6.praef.7",
+      "book": 6,
+      "wordCounts": [
+        66,
+        66,
+        66
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 634
+    },
+    {
+      "locus": "7.praef.1",
+      "book": 7,
+      "wordCounts": [
+        52,
+        52,
+        52
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 687
+    },
+    {
+      "locus": "7.praef.2",
+      "book": 7,
+      "wordCounts": [
+        63,
+        63,
+        63
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 687
+    },
+    {
+      "locus": "7.praef.3",
+      "book": 7,
+      "wordCounts": [
+        64,
+        64,
+        64
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 687
+    },
+    {
+      "locus": "7.praef.4",
+      "book": 7,
+      "wordCounts": [
+        63,
+        63,
+        63
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 688
+    },
+    {
+      "locus": "7.praef.5",
+      "book": 7,
+      "wordCounts": [
+        77,
+        77,
+        77
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 688
+    },
+    {
+      "locus": "7.praef.6",
+      "book": 7,
+      "wordCounts": [
+        53,
+        53,
+        53
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 689
+    },
+    {
+      "locus": "7.praef.7",
+      "book": 7,
+      "wordCounts": [
+        79,
+        79,
+        79
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 689
+    },
+    {
+      "locus": "7.praef.8",
+      "book": 7,
+      "wordCounts": [
+        65,
+        65,
+        65
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 690
+    },
+    {
+      "locus": "7.praef.9",
+      "book": 7,
+      "wordCounts": [
+        86,
+        86,
+        86
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 690
+    },
+    {
+      "locus": "7.praef.10",
+      "book": 7,
+      "wordCounts": [
+        66,
+        66,
+        66
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 691
+    },
+    {
+      "locus": "7.praef.11",
+      "book": 7,
+      "wordCounts": [
+        80,
+        80,
+        80
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 692
+    },
+    {
+      "locus": "7.praef.12",
+      "book": 7,
+      "wordCounts": [
+        98,
+        98,
+        105
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 692
+    },
+    {
+      "locus": "7.praef.13",
+      "book": 7,
+      "wordCounts": [
+        56,
+        56,
+        49
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 693
+    },
+    {
+      "locus": "7.praef.14",
+      "book": 7,
+      "wordCounts": [
+        89,
+        89,
+        89
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 693
+    },
+    {
+      "locus": "7.praef.15",
+      "book": 7,
+      "wordCounts": [
+        101,
+        101,
+        101
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 694
+    },
+    {
+      "locus": "7.praef.16",
+      "book": 7,
+      "wordCounts": [
+        84,
+        84,
+        84
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 695
+    },
+    {
+      "locus": "7.praef.17",
+      "book": 7,
+      "wordCounts": [
+        108,
+        108,
+        108
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 695
+    },
+    {
+      "locus": "7.praef.18",
+      "book": 7,
+      "wordCounts": [
+        60,
+        60,
+        60
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 696
+    },
+    {
+      "locus": "8.praef.1",
+      "book": 8,
+      "wordCounts": [
+        108,
+        108,
+        108
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 737
+    },
+    {
+      "locus": "8.praef.2",
+      "book": 8,
+      "wordCounts": [
+        81,
+        81,
+        81
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 737
+    },
+    {
+      "locus": "8.praef.3",
+      "book": 8,
+      "wordCounts": [
+        114,
+        114,
+        114
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 738
+    },
+    {
+      "locus": "8.praef.4",
+      "book": 8,
+      "wordCounts": [
+        85,
+        85,
+        38
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 738
+    },
+    {
+      "locus": "9.praef.1",
+      "book": 9,
+      "wordCounts": [
+        104,
+        104,
+        104
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 780
+    },
+    {
+      "locus": "9.praef.2",
+      "book": 9,
+      "wordCounts": [
+        78,
+        78,
+        78
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 781
+    },
+    {
+      "locus": "9.praef.3",
+      "book": 9,
+      "wordCounts": [
+        56,
+        56,
+        32
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "discrepant",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 782
+    },
+    {
+      "locus": "9.praef.4",
+      "book": 9,
+      "wordCounts": [
+        107,
+        107,
+        107
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 782
+    },
+    {
+      "locus": "9.praef.5",
+      "book": 9,
+      "wordCounts": [
+        84,
+        84,
+        84
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 783
+    },
+    {
+      "locus": "9.praef.6",
+      "book": 9,
+      "wordCounts": [
+        90,
+        90,
+        90
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 784
+    },
+    {
+      "locus": "9.praef.7",
+      "book": 9,
+      "wordCounts": [
+        67,
+        67,
+        67
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 785
+    },
+    {
+      "locus": "9.praef.8",
+      "book": 9,
+      "wordCounts": [
+        63,
+        63,
+        63
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 786
+    },
+    {
+      "locus": "9.praef.9",
+      "book": 9,
+      "wordCounts": [
+        67,
+        67,
+        67
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 787
+    },
+    {
+      "locus": "9.praef.10",
+      "book": 9,
+      "wordCounts": [
+        99,
+        99,
+        99
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 788
+    },
+    {
+      "locus": "9.praef.11",
+      "book": 9,
+      "wordCounts": [
+        79,
+        79,
+        79
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 789
+    },
+    {
+      "locus": "9.praef.12",
+      "book": 9,
+      "wordCounts": [
+        80,
+        80,
+        80
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 790
+    },
+    {
+      "locus": "9.praef.13",
+      "book": 9,
+      "wordCounts": [
+        64,
+        64,
+        64
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 791
+    },
+    {
+      "locus": "9.praef.14",
+      "book": 9,
+      "wordCounts": [
+        52,
+        52,
+        52
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 791
+    },
+    {
+      "locus": "9.praef.15",
+      "book": 9,
+      "wordCounts": [
+        42,
+        42,
+        42
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 792
+    },
+    {
+      "locus": "9.praef.16",
+      "book": 9,
+      "wordCounts": [
+        76,
+        76,
+        76
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 792
+    },
+    {
+      "locus": "9.praef.17",
+      "book": 9,
+      "wordCounts": [
+        69,
+        69,
+        69
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 793
+    },
+    {
+      "locus": "9.praef.18",
+      "book": 9,
+      "wordCounts": [
+        43,
+        43,
+        43
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 794
+    },
+    {
+      "locus": "10.praef.1",
+      "book": 10,
+      "wordCounts": [
+        85,
+        85,
+        85
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 847
+    },
+    {
+      "locus": "10.praef.2",
+      "book": 10,
+      "wordCounts": [
+        105,
+        105,
+        105
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": false,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 848
+    },
+    {
+      "locus": "10.praef.3",
+      "book": 10,
+      "wordCounts": [
+        70,
+        70,
+        70
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": true,
+      "englishPdfPage": 849
+    },
+    {
+      "locus": "10.praef.4",
+      "book": 10,
+      "wordCounts": [
+        72,
+        72,
+        72
+      ],
+      "esFr": "identical_normalized",
+      "esEn": "identical_normalized",
+      "rawIdenticalESFR": true,
+      "rawIdenticalESEN": false,
+      "englishPdfPage": 849
+    }
+  ],
+  "editorialPolicy": "List first; verify Krohn/Rose and original English PDF/DOCX; then draft corrections after author's approval. The two English Latin truncations are verified in structured JSON only. The French and Spanish texts agree normalized across all 731 loci; do not equate that with manuscript-critical accuracy.",
+  "integrity": "No source corpora, editions, folios, manuscripts or PDFs changed."
+}
