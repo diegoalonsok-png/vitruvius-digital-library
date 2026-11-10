@@ -114,6 +114,10 @@ function msBlock(dest,ms,i){
  const label=i===0?"Testimonio de datación más temprana dentro del registro verificado":"Otro testimonio manuscrito verificado";
  row(item,label,ms.title||ms.shelfmark||ms.id);
  row(item,"Institución y signatura",[ms.library,ms.shelfmark].filter(Boolean).join(" · "));
+ if(ms.siglum)row(item,"Sigla crítica",ms.siglum);
+ if(ms.academicId)row(item,"Identificadores académicos",ms.academicId);
+ if(ms.folioRange)row(item,"Folios / pasajes",ms.folioRange);
+ if(ms.material)row(item,"Soporte material",ms.material);
  row(item,"Datación del testimonio",ms.date);
  row(item,"Cobertura material",ms.coverage);
  if(ms.accessStatus)row(item,"Disponibilidad de imágenes",ms.accessStatus);
@@ -333,9 +337,9 @@ function renderInto(target,id,opts={}){
 function css(){
  if(document.getElementById("cwd-style"))return;
  const style=html("style");style.id="cwd-style";style.textContent=[
- ".classic-work-dossier{background:#151517;color:#e8e8e9;border:1px solid #505056;border-radius:6px;padding:18px 20px;min-width:0;overflow-wrap:anywhere;margin:14px 0}",
- ".classic-work-dossier h2{font:400 clamp(24px,3vw,35px)/1.2 'Gentium Book Plus',Georgia,serif;margin:5px 0 13px}",
- ".classic-work-dossier h3{font:400 20px/1.35 Georgia,serif;margin:22px 0 10px;border-top:1px solid #48484c;padding-top:16px}",
+ ".classic-work-dossier{background:#151517;color:#e8e8e9;border:1px solid #505056;border-radius:6px;padding:16px 18px;min-width:0;overflow-wrap:anywhere;margin:14px 0}",
+ ".classic-work-dossier h2{font:400 clamp(21px,2.2vw,26px)/1.25 'Gentium Book Plus',Georgia,serif;margin:4px 0 10px}",
+ ".classic-work-dossier h3{font:400 16px/1.4 Georgia,serif;margin:18px 0 8px;border-top:1px solid #48484c;padding-top:12px}",
  ".classic-work-dossier p{font:13px/1.7 system-ui,Arial,sans-serif;margin:7px 0}",
  ".classic-work-dossier strong{font-weight:650}",
  ".classic-work-dossier .cwd-kicker{font:600 11px/1.5 system-ui;letter-spacing:.10em;opacity:.83}",
@@ -343,7 +347,7 @@ function css(){
  ".classic-work-dossier .cwd-links{display:flex;gap:7px 18px;flex-wrap:wrap}",
  ".classic-work-dossier a{color:#e3c78f;text-decoration:underline;text-underline-offset:3px}",
  ".classic-work-dossier [lang=grc]{font-family:'Gentium Book Plus',Cardo,Georgia,serif}",
- ".classic-work-dossier .cwd-original{font-size:17px}",
+ ".classic-work-dossier .cwd-original{font-size:15px}",
  ".classic-work-dossier .cwd-ms{border-left:3px solid #777;padding:6px 12px;margin:13px 0;background:rgba(120,120,120,.07)}",
  ".classic-work-dossier .cwd-versions{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:9px;margin:12px 0}",
  ".classic-work-dossier .cwd-edition{border:1px solid #555;padding:10px}",
