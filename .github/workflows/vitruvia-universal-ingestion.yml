@@ -1,0 +1,38 @@
+name: Vitruvia · ingestión documental universal y trazabilidad
+on:
+  push:
+    paths:
+      - 'assets/vitruvia-source-model.js'
+      - 'assets/vitruvia-context-panel.js'
+      - 'assets/vitruvia-cultural-works.js'
+      - 'vitruvia.html'
+      - 'scripts/test-vitruvia-universal-ingestion.mjs'
+      - '.github/workflows/vitruvia-universal-ingestion.yml'
+  pull_request:
+    paths:
+      - 'assets/vitruvia-source-model.js'
+      - 'assets/vitruvia-context-panel.js'
+      - 'assets/vitruvia-cultural-works.js'
+      - 'vitruvia.html'
+      - 'scripts/test-vitruvia-universal-ingestion.mjs'
+      - '.github/workflows/vitruvia-universal-ingestion.yml'
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validar sintaxis
+        run: |
+          node --check assets/vitruvia-source-model.js
+          node --check assets/vitruvia-context-panel.js
+          node --check assets/vitruvia-cultural-works.js
+      - name: Validar relevancia y trazabilidad de todo tipo de resultados
+        run: node --test scripts/test-vitruvia-universal-ingestion.mjs scripts/test-vitruvia-cultural-works.mjs

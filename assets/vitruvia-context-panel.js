@@ -77,7 +77,13 @@ function origin(query){
   if(entry.greek)panel.append(mk('div','context-greek',entry.greek));
   panel.append(mk('p','context-note',entry[lang()]||entry.es));
  }else{
-  const wiki=currentRows.find(x=>x.type==='wikipedia'&&x.link&&(norm(x.title)===norm(query)||norm(x.title).includes(norm(query))))||currentRows.find(x=>x.type==='wikipedia'&&x.link&&norm(x.title).includes(norm(query).split(' ')[0]));
+  const q=norm(query),qTerms=q.split(' ').filter(t=>t.length>=3&&!['del','las','los','the','and','con','por','para','una','uno','historia','vida','obras'].includes(t));
+  const exactIdentity=window.VitruviaCurrentEntity?.qid||'';
+  const candidates=currentRows.filter(x=>x.type==='wikipedia'&&x.link);
+  const wiki=candidates.find(x=>norm(x.title)===q||norm(x.entityCanonical||'')===q||
+    (exactIdentity&&x.wikidataId===exactIdentity))||
+   candidates.find(x=>qTerms.length>=2&&qTerms.every(t=>norm(x.title).split(' ').includes(t)))||
+   (qTerms.length===1?candidates.find(x=>norm(x.title).split(' ').includes(qTerms[0])):null);
   if(wiki){
    panel.append(mk('p','context-note',String(wiki.fullExtract||wiki.excerpt||'').replace(/\s+/g,' ').slice(0,320)+(String(wiki.fullExtract||wiki.excerpt||'').length>320?'…':'')));
    panel.append(link('Wikipedia · '+wiki.title+' ↗',wiki.link));
@@ -202,6 +208,45 @@ function universityLinks(query){
  }
  panel.append(area,mk('p','context-disclaimer',d.notice));
 }
+function sourceLedger(query,rows){
+ const ingest=window.VitruviaSourceModel;
+ if(!ingest||!Array.isArray(rows)||!rows.length)return;
+ const snapshot=window.VitruviaCurrentEntity;
+ const entity=snapshot&&[snapshot.query,snapshot.corrected,snapshot.label].some(x=>x&&norm(x)===norm(query))?snapshot:null;
+ const result=ingest.organize(query,rows,entity,15);
+ if(!result.records.length)return;
+ heading(lang()==='en'?'Sources by evidence type':lang()==='fr'?'Sources par type de preuve':'Fuentes organizadas por tipo de evidencia');
+ panel.append(mk('p','context-note',(lang()==='en'?'Identified records: ':lang()==='fr'?'Notices repérées : ':'Registros identificados: ')+result.total+
+  (lang()==='en'?'. Classified by record type; these links do not prove endorsement or peer review.':
+   lang()==='fr'?'. Leur classement ne vaut ni validation scientifique ni caution institutionnelle.':
+   '. La clasificación no equivale a revisión por pares ni aval institucional.')));
+ const translations={
+  'primary':['Fuente primaria o testimonio','Primary text or witness','Source primaire ou témoin'],
+  'scholarly-record':['Registro con DOI o revista','DOI or journal record','Notice DOI ou revue'],
+  'institution':['Institución o archivo','Institution or archive','Institution ou archive'],
+  'catalogue':['Edición y catálogo','Edition and catalogue','Édition et catalogue'],
+  'encyclopedia':['Enciclopedia y autoridad','Encyclopedia and authority','Encyclopédie et autorité'],
+  'external':['Fuente externa por contrastar','External reference to check','Référence externe à vérifier']
+ };
+ const list=mk('div','context-source-ledger');panel.append(list);
+ const renderSource=(row,root)=>{
+  const item=mk('div','context-bibliography-item');
+  const a=link(row.title+' ↗',row.href);a.className='context-biblio-title';item.append(a);
+  const label=translations[row.category]||translations.external;
+  item.append(mk('p','context-biblio-meta',label[lang()==='en'?1:lang()==='fr'?2:0]+
+   (row.year?' · '+row.year:'')+(row.doi?' · DOI '+row.doi:'')));
+  if(row.source)item.append(mk('p','context-biblio-meta',row.source));
+  root.append(item);
+ };
+ for(const row of result.records.slice(0,5))renderSource(row,list);
+ if(result.records.length>5){
+  const details=mk('details','context-source-more');
+  details.append(mk('summary',null,(lang()==='en'?'See additional references':lang()==='fr'?'Voir les autres références':'Ver más fuentes documentadas')+' ('+(result.records.length-5)+')'));
+  const rest=mk('div','context-source-ledger-more');details.append(rest);
+  for(const row of result.records.slice(5))renderSource(row,rest);
+  panel.append(details);
+ }
+}
 function redraw(keepPosition=true){
  if(!lastQuery){panel.hidden=true;return}
  const scroll=keepPosition?panel.scrollTop:0;
@@ -209,6 +254,7 @@ function redraw(keepPosition=true){
  frame(lastQuery);
  // The subject's own creations lead the right-hand panel in every discipline.
  window.VitruviaWebDossier?.render(panel,lastQuery,currentRows,()=>token===requestId);
+ sourceLedger(lastQuery,currentRows);
  origin(lastQuery);
  const lexical=lexicalNeedles(lastQuery);
  if(lexical.length)void loci(lastQuery,token);
