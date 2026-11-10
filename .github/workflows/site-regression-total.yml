@@ -53,7 +53,6 @@ jobs:
             "scripts/test-shared-semantic-index-usage.mjs"
             "scripts/test-vitruvia-resilience.mjs"
             "scripts/test-vitruvia-performance.mjs"
-            "scripts/test-vitruvia-search-geometry.mjs"
             "scripts/test-vitruvia-author-reading.mjs"
             "scripts/test-vitruvia-cultural-works.mjs"
             "scripts/test-bibliotheca-offsite-greek.mjs"
@@ -90,6 +89,16 @@ jobs:
           if [ "$code" -ne 0 ]; then
             echo "FAIL scripts/all-pages-check.mjs (exit $code)" >> reports/site-regression-failures.txt
             echo "::error title=Navegador::Errores de carga, scripts o peticiones locales en las páginas"
+          fi
+          # Esta prueba requiere Playwright Y servidor HTTP local activo:
+          # no debe ejecutarse en el grupo Node puro sin navegador ni servidor.
+          node scripts/test-vitruvia-search-geometry.mjs
+          geometry=$?
+          if [ "$geometry" -ne 0 ]; then
+            echo "FAIL scripts/test-vitruvia-search-geometry.mjs (exit $geometry)" >> reports/site-regression-failures.txt
+            echo "::error title=Geometría de Vitruvia::Fallo de navegador o disposición de resultados"
+          else
+            echo "PASS scripts/test-vitruvia-search-geometry.mjs"
           fi
           exit 0
       - name: Interacciones de buscadores, lectores y botones
