@@ -36,12 +36,32 @@ function transfer(){
  // El módulo central mantiene su propio render; recargar permite que lo lea sin alterar sus interfaces.
  location.href=location.pathname+location.search+"#exegesis";location.reload();
 }
+function downloadDossier(name,data,type){
+ const url=URL.createObjectURL(new Blob([data],{type:type+";charset=utf-8"}));
+ const a=document.createElement("a");a.href=url;a.download=name;document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+const escapeXML=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c]));
+function exportLinkedDossiers(format){
+ const entries=load().filter(x=>/^Vitr\. (?:[1-9]|10)\.\d+\.\d+$/.test(x.cite||"")&&x.collationEvidence);
+ if(!entries.length)return status("No hay expedientes de colación vinculados para exportar.");
+ if(format==="json")return downloadDossier("lexicon-expedientes.json",JSON.stringify({schema:"vitruvia-dossier-v1",status:"unverified",entries},null,2),"application/json");
+ const divisions=entries.map(x=>'<div type="commentary"><head>'+escapeXML(x.cite)+'</head><p xml:lang="la">'+escapeXML(x.text)+'</p><note type="collation" subtype="unverified">'+escapeXML(x.collationEvidence)+'</note>'+Object.entries(x.notes||{}).filter(([,v])=>typeof v==="string"&&v.trim()).map(([k,v])=>'<note type="exegesis" subtype="'+escapeXML(k)+'">'+escapeXML(v)+'</note>').join("")+'</div>').join("");
+ const tei='<?xml version="1.0" encoding="UTF-8"?>\n<TEI xmlns="http://www.tei-c.org/ns/1.0"><teiHeader><fileDesc><titleStmt><title>Expedientes de Vitruvia Lexicon</title></titleStmt><publicationStmt><p>Documento de trabajo sin revisión filológica certificada</p></publicationStmt><sourceDesc><p>Fuentes de cada testimonio pendientes de cotejo con signatura y folio.</p></sourceDesc></fileDesc></teiHeader><text><body>'+divisions+'</body></text></TEI>';
+ downloadDossier("lexicon-expedientes.tei.xml",tei,"application/xml");
+}
 function init(){
  const sec=$("#collatio"),buttons=sec?.querySelector(".actions");if(!buttons||$("#ecdotic-bridge-transfer"))return;
  const b=create("button",{type:"button",id:"ecdotic-bridge-transfer",class:"lx-btn"},"Transferir al Cuaderno Exegético");
  b.addEventListener("click",transfer);buttons.append(b);
  const help=create("p",{class:"explain",id:"ecdotic-bridge-status","aria-live":"polite"},"Vinculación por locus; una diferencia de OCR o de edición no es una variante manuscrita certificada.");
  buttons.after(help);
+ const actions=$("#exegesis .actions");if(actions&&!$("#ecdotic-dossier-json")){
+  for(const [id,label,format] of [["ecdotic-dossier-json","Expediente integrado JSON","json"],["ecdotic-dossier-tei","Expediente integrado TEI","tei"]]){
+   const btn=create("button",{type:"button",id,class:"lx-btn"},label);
+   btn.addEventListener("click",()=>exportLinkedDossiers(format));actions.append(btn);
+  }
+ }
  const notebook=$("#nb-list");if(!notebook)return;
  const decorate=()=>{
   const all=load();for(const art of notebook.querySelectorAll(".lx-nb-item")){
