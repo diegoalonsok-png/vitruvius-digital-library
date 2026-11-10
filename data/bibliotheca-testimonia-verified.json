@@ -2,7 +2,7 @@
   "schema": 1,
   "updated": "2026-11-10",
   "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores. Ampliación: tres manuscritos institucionalmente documentados con cobertura particular y límites de acceso.",
-  "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto. Tanda latina de fuentes institucionales: los enlaces no acreditan prioridad cronológica global ni completitud textual; distinción expresa entre visor publicado y catálogo sin imágenes.",
+  "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto. Tanda latina de fuentes institucionales: los enlaces no acreditan prioridad cronológica global ni completitud textual; distinción expresa entre visor publicado y catálogo sin imágenes. Se incorpora Or. 9271 como versión copta indirecta de la Didaché: puede ser más antiguo que H, pero no se colaciona carácter por carácter como griego sin retroversión filológica.",
   "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
   "records": [
     {
@@ -619,7 +619,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "witnessKind": "direct_original_greek"
     },
     {
       "id": "didache-hierosolymitanus-54",
@@ -674,7 +675,8 @@
           "type": "images",
           "status": "external_collected_images"
         }
-      ]
+      ],
+      "witnessKind": "direct_original_greek"
     },
     {
       "id": "didache-elbasan-82",
@@ -723,7 +725,8 @@
           "type": "bibliography",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "witnessKind": "direct_original_greek"
     },
     {
       "library": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -1718,6 +1721,55 @@
       "rights": "Consultar los derechos de las imágenes en el proveedor original.",
       "dateStartBasis": "Año aproximado de ordenación, no fecha exacta.",
       "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global."
+    },
+    {
+      "id": "didache-coptic-or9271",
+      "workIds": [
+        "didache"
+      ],
+      "title": "Διδαχή (traducción copta fayúmica) — P. Lond. Copt. II 189 / Or. 9271",
+      "witnessKind": "ancient_translation_coptic",
+      "language": "cop",
+      "library": "Londres, British Library",
+      "shelfmark": "Or. 9271 · P. Lond. Copt. II 189",
+      "siglum": "Or. 9271 / P.Lond.Copt. II 189 (signatura y número de publicación, no siglum griego)",
+      "academicId": "Trismegistos TM 107982 · LDAB 107982 · PAThs CLM 841 · 4CARE artefact 39",
+      "date": "s. IV–V (rango c. 301–450; datación paleográfica con reservas)",
+      "dateStart": 301,
+      "dateStartBasis": "4CARE artefact 39: intervalo paleográfico 301–450; año inicial solo ordena, no es datación exacta",
+      "datingBasis": "4CARE (Ghica y Suciu): forma de grafías coptas, comparación paleográfica con otros códices del s. IV",
+      "datingNotation": "s. IV–V",
+      "material": "Papiro; fragmento de hoja del extremo interior de un rollo",
+      "script": "Copto fayúmico, subdialecto V5 según 4CARE",
+      "coverage": "Traducción copta fragmentaria de Didaché 10.3b–12.2a; contiene la oración del myron no transmitida en el griego H. No se debe equiparar un testimonio de traducción con el texto griego original.",
+      "folioRange": "Una hoja, recto/verso; Did. 10.3b–12.2a; disposición de columnas descrita por Jefford",
+      "origin": "Procedencia exacta incierta; posible zona oxirrinquita sugerida por el dialecto; no probado",
+      "record": "https://4care-skos.mf.no/4care-artefacts/39/",
+      "viewer": "https://4care-skos.mf.no/4care-artefacts/39/",
+      "viewerKind": "scholarly_catalogue_with_image",
+      "viewerRole": "Catálogo académico 4CARE con imágenes de referencia atribuidas a British Library; no visor completo IIIF",
+      "accessStatus": "Galería de imágenes incluida en 4CARE; no se confirmó un visor institucional independiente ni un manifiesto IIIF.",
+      "manifest": null,
+      "verification": "4CARE artefact 39, TM 107982, P.Lond.Copt. II 189; Homer, 'A New Papyrus Fragment of the Didaché in Coptic' (1924)",
+      "verificationUrl": "https://libraryguides.helsinki.fi/apostolicfathers/didache",
+      "bibliography": "Horner, George William. «A New Papyrus Fragment of the Didaché in Coptic». Journal of Theological Studies 25, n.º 99 (1924): 225–231; Layton, Bentley, Catalogue of Coptic Literary Manuscripts in the British Library (1987), n.º 189; 4CARE artefact 39.",
+      "rights": "Fotografías © The British Library Board según 4CARE; no guardar copias ni reproducir imágenes sin autorización.",
+      "cataloguingStatus": "Testimonio de versión indirecta (copia en copto), nunca contabilizar como prueba de una lectura griega exacta sin retroversión documentada.",
+      "citation": "Londres, British Library, Or. 9271 (P. Lond. Copt. II 189), s. IV–V, Did. 10.3b–12.2a, versión copta fayúmica.",
+      "alternativeLinks": [
+        {
+          "title": "4CARE artefacto 39 con fotografías acreditadas",
+          "url": "https://4care-skos.mf.no/4care-artefacts/39/",
+          "type": "catalogue_images",
+          "status": "identified"
+        },
+        {
+          "title": "Guía Universidad de Helsinki, tradición copta",
+          "url": "https://libraryguides.helsinki.fi/apostolicfathers/didache",
+          "type": "academic_bibliography",
+          "status": "identified"
+        }
+      ]
     }
   ],
   "editions": [
