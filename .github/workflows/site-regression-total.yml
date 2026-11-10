@@ -19,6 +19,12 @@ on:
       - 'scripts/test-lexicon-query-contract.mjs'
       - 'assets/vitruvia-lexicon.js'
       - 'vitruvia-lexicon.html'
+      - 'classics-text-reader.html'
+      - 'assets/classics-lexical-popup.js'
+      - 'assets/classics-lexical-popup.css'
+      - 'assets/lexicon-reader-scrollbars.css'
+      - 'assets/classical-lexicon.js'
+      - 'scripts/test-classical-popup-browser.mjs'
       - 'indice-busquedas-academicas.html'
       - 'sitemap.xml'
       - 'scripts/test-vitruvia-search-geometry.mjs'
@@ -39,6 +45,12 @@ on:
       - 'scripts/test-lexicon-query-contract.mjs'
       - 'assets/vitruvia-lexicon.js'
       - 'vitruvia-lexicon.html'
+      - 'classics-text-reader.html'
+      - 'assets/classics-lexical-popup.js'
+      - 'assets/classics-lexical-popup.css'
+      - 'assets/lexicon-reader-scrollbars.css'
+      - 'assets/classical-lexicon.js'
+      - 'scripts/test-classical-popup-browser.mjs'
       - 'sitemap.xml'
       - 'domus-en-vitruvio.html'
       - 'aedes-en-vitruvio.html'
@@ -155,6 +167,14 @@ jobs:
             echo "::error title=Controles de lectura::Fallan botones ES/EN/FR o claro/oscuro en Chromium"
           else
             echo "PASS scripts/test-secondary-controls-browser.mjs"
+          fi
+          node scripts/test-classical-popup-browser.mjs
+          dictionary=$?
+          if [ "$dictionary" -ne 0 ]; then
+            echo "FAIL scripts/test-classical-popup-browser.mjs (exit $dictionary)" >> reports/site-regression-failures.txt
+            echo "::error title=Lector clásico::Falló el visor léxico contextual o los desplazadores"
+          else
+            echo "PASS scripts/test-classical-popup-browser.mjs"
           fi
           exit 0
       - name: Interacciones de buscadores, lectores y botones
