@@ -470,13 +470,12 @@ Promise.all([
  const first=ordered.find(x=>["la","grc"].includes(x))||ordered[0];
  left.value=langs.includes(params.get("left"))?params.get("left"):first;
  const requestedRight=params.get("right");
- const wantedAuto=isAuto(requestedRight)?requestedRight:
-  (["es","en","fr"].includes(requestedRight)&&!langs.includes(requestedRight)?"auto-"+requestedRight:null);
- right.value=wantedAuto||(
-  langs.includes(requestedRight)&&requestedRight!==left.value?requestedRight:
-  (ordered.find(x=>x!==left.value&&!["grc","la"].includes(x))||ordered.find(x=>x!==left.value)||"auto-es")
- );
- if(left.value===right.value)right.value=ordered.find(x=>x!==left.value)||"auto-es";
+ const hostedTranslation=ordered.find(x=>x!==left.value&&!["la","grc"].includes(x));
+ const autoPreference=["es","en","fr"].includes(requestedRight)?"auto-"+requestedRight:"auto-es";
+ right.value=isAuto(requestedRight)?requestedRight:
+  (langs.includes(requestedRight)&&requestedRight!==left.value?requestedRight:
+   (hostedTranslation||autoPreference));
+ if(left.value===right.value)right.value=hostedTranslation||autoPreference;
  previous={left:left.value,right:right.value};
  $("left-pane-language").value=left.value;$("right-pane-language").value=right.value;
  const query=params.get("q")||"";
@@ -499,7 +498,11 @@ Promise.all([
  if(locus)single.searchParams.set("locus",locus);
  if(query)single.searchParams.set("q",query);
  $("single").href=single.href;
+ const alternativeLanguage=requestedRight&&requestedRight!==right.value&&!isAuto(requestedRight)&&
+  !langs.includes(requestedRight)&&!isAuto(right.value);
  status.textContent=(rec?.author||rows[0]?.author||"")+" · "+(rec?.title||rows[0]?.title||work)+
+  (alternativeLanguage?". No hay versión local en "+(LANG[requestedRight]||requestedRight)+
+   "; se muestra la edición documentada en "+(LANG[right.value]||right.value)+".":"")+
   (isAuto(right.value)?
    ". El pasaje original se recupera por locus. Traducción automática opcional y claramente identificada.":
    ". Comparación entre versiones documentadas; vínculos por locus cuando existen, sin prometer equivalencia semántica.");
