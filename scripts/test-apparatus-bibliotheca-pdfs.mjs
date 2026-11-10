@@ -34,7 +34,7 @@ for(const [id,file] of Object.entries(ids)){
 }
 assert.doesNotMatch(read("assets/critical-search.mjs"),/drive\.google\.com/);
 assert.match(app,/data\/catalog\.json\?v=20261110-repo-pdfs-v1/);
-assert.match(home,/assets\/app\.js\?v=20261110-repo-pdfs-v1/);
+assert.match(home,/assets\/app\.js\?v=[a-z0-9-]+\" type=\"module\"/i,'Main application must load its current versioned module');
 assert.match(apparatus,/data-apparatus-lang="es"/);
 assert.match(apparatus,/data-apparatus-lang="fr"/);
 assert.match(apparatus,/data-apparatus-lang="en"/);
