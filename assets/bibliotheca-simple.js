@@ -242,7 +242,7 @@ function drawRemote(){
  for(const e of rows){
   let target;
   try{target=new URL(e.url)}catch{continue}
-  if(target.protocol!=="https:"||!["penelope.uchicago.edu","www.gutenberg.org","archive.org"].includes(target.hostname))continue;
+  if(target.protocol!=="https:"||!["penelope.uchicago.edu","www.gutenberg.org","archive.org","adfonteslibrary.org"].includes(target.hostname))continue;
   const line=el("p","remote-row");
   const a=el("a","remote-link",labels.open+" · "+(languages[e.language]||e.language));
   a.href=target.href;a.target="_blank";a.rel="noopener noreferrer";
@@ -252,7 +252,7 @@ function drawRemote(){
  }
  remoteBox.append(el("p","remote-note",labels.note));
 }
-fetch("data/classics-corpus/remote-translations.json?v=20261110-verified-links-v2")
+fetch("data/classics-corpus/remote-translations.json?v=20261110-verified-links-v3")
  .then(r=>{if(!r.ok)throw Error("remote catalogue");return r.json()})
  .then(d=>{if(d.schema!=="vitruvius-classics-remote-translations-v1"||!Array.isArray(d.entries))throw Error("registry malformed");remoteEntries=d.entries;drawRemote()})
  .catch(()=>{remoteEntries=[];remoteBox.hidden=true});
