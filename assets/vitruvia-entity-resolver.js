@@ -67,8 +67,8 @@ const clean=q=>{
  // Search intent at the end belongs to a creator, not to the title of a
  // similarly named UNESCO collection, book or other subject.
  // Los cargos y oficios califican a la persona; no forman parte de su nombre.
- const suffix=/\s+(?:obras|obra|arquitectura|edificios|proyectos|construcciones|puentes|planos|fachadas|buildings|projects|works|architecture|architectural works|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|pinturas|paintings|bibliografia|bibliografía|politico|político|politica|política|politician|politician argentino|militar|general|libertador|liberator|revolucionario|revolutionary|estadista|statesman|emperador|emperor|santo|saint|presidente|president|historico|histórico|historical|futbolista|footballer|soccer player|football player|deportista|arquero|goalkeeper|atleta|athlete|cantante|singer|musico|músico|musician|compositor|composer)$/i;
- let subject=cleaned;
+ const suffix=/\s+(?:obras|obra|arquitectura|edificios|proyectos|construcciones|puentes|planos|fachadas|buildings|projects|works|architecture|architectural works|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|pinturas|paintings|pintor|pintora|painter|artist|artista|sculptor|escultor|escultora|filosofo|filósofo|philosopher|poeta|poet|historiador|historian|cientifico|científico|scientist|fisico|físico|physicist|faraon|faraón|pharaoh|rey|king|bibliografia|bibliografía|politico|político|politica|política|politician|politician argentino|militar|general|libertador|liberator|revolucionario|revolutionary|estadista|statesman|emperador|emperor|santo|saint|presidente|president|historico|histórico|historical|futbolista|footballer|soccer player|football player|deportista|arquero|goalkeeper|atleta|athlete|cantante|singer|musico|músico|musician|compositor|composer)$/i;
+ let subject=cleaned.replace(/^(?:el|la|the|le)\s+(?:rey|reina|king|queen|fara[oó]n|pharaoh|pintor|pintora|painter|artista|artist|fil[oó]sofo|philosopher|arquitecto|architect)\s+/i,"");
  // Royal epithets are intent qualifiers, not parts of a person's given name.
  // The original form is still queried through multilingual authority aliases.
  const royal=subject.match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
@@ -183,8 +183,8 @@ function creatorIntent(raw){
  if(/\b(albumes|albums|album|discos|discografia|discography|canciones|songs|musica|music|conciertos|cantante|singer|musico|musician|compositor|composer)\b/.test(q))return "music";
  if(/\b(peliculas|films|movies|filmografia|filmography|cine)\b/.test(q))return "cinema";
  if(/\b(arquitectura|arquitecto|architecture|architect|edificios|buildings|planos|fachadas)\b/.test(q))return "architect";
- if(/\b(libros|books|bibliografia|novelas|novels|poemas|poems)\b/.test(q))return "author";
- if(/\b(pinturas|paintings|cuadros|esculturas|sculptures)\b/.test(q))return "visual";
+ if(/\b(libros|books|bibliografia|novelas|novels|poemas|poems|filosofo|philosopher|poeta|poet|historiador|historian)\b/.test(q))return "author";
+ if(/\b(pinturas|paintings|cuadros|esculturas|sculptures|pintor|pintora|painter|artist|artista|escultor|escultora|sculptor)\b/.test(q))return "visual";
  return "";
 }
 function occupationFit(description,intent){
@@ -203,7 +203,7 @@ function occupationFit(description,intent){
 async function authorityCandidates(q,lang,intent="",originalQuery=""){
  const languages=[...new Set([lang,"es","en"])];
  const shortName=honorificVariant(q);
- const royal=String(originalQuery||q).trim().match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
+ const royal=String(originalQuery||q).trim().replace(/^(?:el|la|the|le)\s+/i,"").match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
  // Rank a full royal designation ahead of incidental uses of a short name
  // (e.g. King Tut must not be displaced by a shop merely called Tut).
  const variants=[...new Set([...(royal?[String(originalQuery).trim(),"King "+royal[1].trim(),"Rey "+royal[1].trim()]:[]),
