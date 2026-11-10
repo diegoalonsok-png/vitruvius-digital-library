@@ -38,7 +38,7 @@ dl{margin:0}.name-row{border-top:1px solid #454545;padding:11px 0}.name-row:targ
 <div class="reading"><section class="plate" aria-label="Visor gráfico de documento">
 <h3>Imagen de la inscripción o del papiro</h3>
 <div class="tools"><button id="zoom-out" type="button" aria-label="Reducir imagen">−</button><output id="zoom-label">100%</output><button id="zoom-in" type="button" aria-label="Ampliar imagen">+</button><button id="zoom-reset" type="button">Restablecer</button><button id="invert" type="button" aria-pressed="false">Invertir</button><button id="gray" type="button" aria-pressed="false">Escala de grises</button><button id="contrast" type="button" aria-pressed="false">Alto contraste</button><select id="background" aria-label="Fondo de lectura"><option value="#121212">Negro</option><option value="#3b3b3b">Gris</option><option value="#e8dcc8">Sepia</option><option value="#f7f7f7">Blanco</option></select><button id="fullscreen" type="button">Pantalla completa</button></div>
-<div id="photo-stage"><img id="photo" alt="" hidden><p id="image-note">Seleccioná un testimonio para abrir la imagen disponible.</p></div>
+<div id="photo-stage"><img id="photo" alt="" hidden><p id="image-note">Selecciona un testimonio para abrir la imagen disponible.</p></div>
 <p id="image-attribution" class="meta"></p><p><a id="image-source" href="https://www.metmuseum.org/art/collection" target="_blank" rel="noopener noreferrer">Abrir ficha y fotografía originales en el museo</a></p>
 </section><section class="edition"><h3>Lectura, transliteración y sentido</h3><div id="royal-names" lang="egy"></div><p class="caution">Solo se incluyen signos y transliteraciones cargados en el repertorio local con procedencia. Para los nombres sin edición, se señala la ausencia en lugar de reconstruir signos. El cartucho se usa únicamente para prenomen y nomen; el nombre de Horus se identifica por su serej.</p><p id="translation-note" class="note">La traducción íntegra del documento no está acreditada en este visor.</p>
 <div class="source-list" id="academic-links"></div></section></div></main>
@@ -113,7 +113,7 @@ async function load(){
   img.hidden=false;return;
  }
  if(!obj||!(allowed[ID]||[]).includes(Number(obj))){
-  $("image-note").textContent="No se ha vinculado una fotografía de objeto a esta ficha. Consultá la transliteración de los nombres y los catálogos institucionales.";
+  $("image-note").textContent="No se ha vinculado una fotografía de objeto a esta ficha. Consulta la transliteración de los nombres y los catálogos institucionales.";
   $("image-source").href="https://www.metmuseum.org/art/collection/search?q="+encodeURIComponent(ruler.name);
   return;
  }
@@ -134,7 +134,7 @@ async function load(){
    img.onload=()=>{$("image-note").hidden=true};
    img.src=url.href;img.hidden=false;
    $("image-attribution").textContent="The Metropolitan Museum of Art · Open Access / dominio público · número de objeto "+obj+".";
-  }else $("image-note").textContent="La ficha institucional no ofrece fotografía abierta para integrar. Consultá el original en el museo.";
+  }else $("image-note").textContent="La ficha institucional no ofrece fotografía abierta para integrar. Consulta el original en el museo.";
  }catch{$("image-note").textContent="La imagen del museo no pudo cargarse aquí. La ficha externa conserva el acceso a los datos verificados.";}
 }
 render();load().catch(err=>{$("document-title").textContent="Documento no disponible";$("document-meta").textContent=err.message});
