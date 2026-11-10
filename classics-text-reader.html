@@ -69,6 +69,15 @@ html body :is(button,a,select,input):focus-visible{outline:2px solid #999!import
 @media(prefers-reduced-motion:reduce){html body button{transition:none!important;transform:none!important}}
 @media print{html body .reader{background:#fff!important;color:#111!important}html body .passages{color:#111!important}}
 
+
+/* Scrollbars del visor y su índice: gris visible y agarre amplio con el mouse. */
+html, #toc{scrollbar-width:auto;scrollbar-color:#77777e #242427}
+html::-webkit-scrollbar,body::-webkit-scrollbar,#toc::-webkit-scrollbar{width:16px;height:16px}
+html::-webkit-scrollbar-track,body::-webkit-scrollbar-track,#toc::-webkit-scrollbar-track{background:#242427}
+html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,#toc::-webkit-scrollbar-thumb{background:#77777e;border:2px solid #242427;border-radius:10px;min-height:48px}
+html::-webkit-scrollbar-thumb:hover,body::-webkit-scrollbar-thumb:hover,#toc::-webkit-scrollbar-thumb:hover{background:#a0a0a6}
+html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner,#toc::-webkit-scrollbar-corner{background:#242427}
+
 </style>
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261107-academic-v4"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/classics-text-reader.html">
