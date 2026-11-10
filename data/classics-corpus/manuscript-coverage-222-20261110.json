@@ -1,13 +1,13 @@
 {
   "schema": "vitruvius-manuscript-coverage-222-v1",
   "updated": "2026-11-10",
-  "scope": "All catalog works; manuscript count is not oldest-global-certification. Disputed date values are not asserted precise.",
+  "scope": "Manuscript identification is not proof of globally earliest text witness. Catalog data may refer to partial manuscripts.",
   "counts": {
     "catalogued": 222,
-    "witnesses": 79,
-    "worksWithWitnesses": 100,
-    "worksWithoutWitnesses": 122,
-    "worksWithThisBatchSourceReview": 46
+    "witnesses": 83,
+    "worksWithWitnesses": 102,
+    "worksWithoutWitnesses": 120,
+    "worksWithThisBatchSourceReview": 48
   },
   "records": [
     {
@@ -1972,11 +1972,13 @@
     },
     {
       "workId": "boethius-consolatio",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "boethius-harley-2685"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -2080,11 +2082,15 @@
     },
     {
       "workId": "isidore-etymologiae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 3,
+      "verifiedInstitutionalCount": 3,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "isidore-stgall-1394-fragment",
+        "isidore-stgall-233",
+        "isidore-stgall-231"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
