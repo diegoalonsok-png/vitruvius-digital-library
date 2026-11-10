@@ -13,6 +13,12 @@ assert.match(bridge,/translationContext\.map\.has/);
 assert.match(bridge,/No existe correspondencia única de locus/);
 assert.match(bridge,/No hay traducción textual consultable/);
 assert.match(bridge,/classics-parallel-reader\.html/);
+assert.match(bridge,/function appendTranslation\(card,row,editions\)/);
+assert.match(bridge,/window\.VitruviaInlineTranslation\?\.attach\(anchor/);
+assert.match(bridge,/IntersectionObserver/);
+assert.match(read("assets/classics-corpus-search.js"),/originalText:p\.text/);
+assert.match(read("assets/vitruvia-lexicon.js"),/function addUnverifiedTranslationOption\(D,p,box\)/);
+assert.match(read("assets/vitruvia-lexicon.js"),/vitruvia-lexicon-translation-default-v2/);
 assert.match(read("vitruvia-lexicon.html"),/translation-by-locus-v1/);
 
 const reg=JSON.parse(read("data/classics-corpus/search-registry.json"));
