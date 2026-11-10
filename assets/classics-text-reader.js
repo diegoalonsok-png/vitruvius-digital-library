@@ -96,6 +96,12 @@ function select(i){
  label.className="locus";label.textContent=unitLabel()+" "+rec.locus+(rec.title?" · "+rec.title:"");
  p1.append(label);const txt=document.createElement("span");hitMarks=markText(txt,rec.text,search)||[];hitAt=-1;p1.append(txt);
  target.replaceChildren(p1);target.setAttribute("lang",data.language);
+ // Original-only editions: on-demand machine translation of ONE selected passage.
+ // Never replace the source or count generated output as an accredited translation.
+ const localTranslationAvailable=hostedEditions.some(e=>e.workId===work&&["es","en","fr","it","de","pt"].includes(e.language));
+ if(p.get("parallel")!=="1"&&["la","grc"].includes(data.language)&&!localTranslationAvailable){
+  window.VitruviaInlineTranslation?.attach(p1,{sourceLanguage:data.language,originalText:rec.text});
+ }
  const nav=$("hit-nav");if(nav){nav.hidden=!hitMarks.length;$("hit-count").textContent=hitMarks.length?hitMarks.length+" en este pasaje":"";}
  if(hitMarks.length)requestAnimationFrame(()=>focusHit(1));
  for(const [j,btn] of Array.from($("toc").querySelectorAll("button")).entries())btn.setAttribute("aria-current",String(j===active));
