@@ -29,7 +29,8 @@ class MockElement{
 const callbacks={},timeouts=[],root=new MockElement("section"),document={
  documentElement:{lang:"es"},
  getElementById(id){return id==="vitruvia-reading-shelf"?root:null},
- createElement(tag){return new MockElement(tag)}
+ createElement(tag){return new MockElement(tag)},
+ createTextNode(text){const n=new MockElement("#text");n.textContent=String(text);return n}
 };
 const window={
  addEventListener(name,cb){callbacks[name]=cb},
