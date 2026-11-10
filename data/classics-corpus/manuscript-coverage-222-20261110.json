@@ -1,13 +1,13 @@
 {
   "schema": "vitruvius-manuscript-coverage-222-v1",
   "updated": "2026-11-10",
-  "scope": "All catalog works. Metadata coverage is NOT textual completeness or global oldest-manuscript verification.",
+  "scope": "All catalog works. A manuscript linked to multiple works is counted once in total witnesses. Evidence of a codex is not proof of oldest global witness.",
   "counts": {
     "catalogued": 222,
-    "witnesses": 68,
-    "worksWithWitnesses": 63,
-    "worksWithoutWitnesses": 159,
-    "worksWithThisBatchSourceReview": 8
+    "witnesses": 71,
+    "worksWithWitnesses": 90,
+    "worksWithoutWitnesses": 132,
+    "worksWithThisBatchSourceReview": 35
   },
   "records": [
     {
@@ -1073,38 +1073,46 @@
     },
     {
       "workId": "aeschylus-oresteia",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "sophocles-oedipus",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "euripides-medea",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "euripides-laurentianus-32-2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristophanes-clouds",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristophanes-ravennas-429"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -1228,209 +1236,255 @@
     },
     {
       "workId": "aeschylus-persae",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aeschylus-seven-thebes",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aeschylus-suppliants",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aeschylus-prometheus",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "sophocles-antigone",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "sophocles-ajax",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "sophocles-electra",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "sophocles-philoctetes",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "sophocles-oedipus-colonus",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "sophocles-trachiniae",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "euripides-bacchae",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "euripides-laurentianus-32-2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "euripides-hippolytus",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "euripides-laurentianus-32-2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "euripides-alcestis",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "euripides-laurentianus-32-2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "euripides-electra",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "euripides-laurentianus-32-2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "euripides-troades",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "euripides-laurentianus-32-2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "euripides-hecuba",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "euripides-laurentianus-32-2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "euripides-iphigenia-aulid",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "euripides-laurentianus-32-2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristophanes-aves",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristophanes-ravennas-429"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristophanes-ranae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristophanes-ravennas-429"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristophanes-lysistrata",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristophanes-ravennas-429"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristophanes-vespae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristophanes-ravennas-429"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristophanes-pax",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristophanes-ravennas-429"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aristophanes-acharnenses",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aristophanes-ravennas-429"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
