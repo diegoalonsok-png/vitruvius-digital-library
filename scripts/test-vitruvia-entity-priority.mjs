@@ -38,7 +38,8 @@ assert.equal(names.clean('San Martín político'),'San Martín','Person qualifie
 assert.equal(names.clean('Julio César militar'),'Julio César','Historical military role must be a qualifier, not the entity title');
 assert.equal(names.clean('Lionel Messi'),'Lionel Messi','Modern unambiguous names must remain searchable');
 assert.equal(names.clean('Taylor Swift'),'Taylor Swift','Musicians must remain searchable');
-assert.match(resolverSource,/historicBonus=historicalHuman\?660/,'Historical humans must receive a documented precedence boost');
+assert.match(resolverSource,/historicBonus=historicalHuman\?260/,'Historical identities keep a proportional relevance boost');
+assert.match(resolverSource,/royalBonus=royalIntent\?/, 'Royal qualifiers must disambiguate rulers from namesake businesses');
 assert.match(resolverSource,/resolved&&resolved\.wikidataId===best\.id/,'Authority must verify page and Wikidata ID agree');
 assert.match(rankingSource,/rating:identity\.kind==="person"\?/,'Humanities-first ordering must rank resolved biographies');
 assert.match(rankingSource,/nameLike&&r\.type!=="manuscript"&&!\(r\.preferredWiki&&r\.wikidataId\)/,'Unverified namesakes must not occupy Featured');
@@ -52,3 +53,6 @@ assert.equal(names.creatorIntent('José de San Martín'),'');
 assert.equal(names.clean('Julio César futbolista'),'Julio César');
 assert.equal(names.clean('Taylor Swift cantante'),'Taylor Swift');
 console.log('Qualified modern intent checks passed without overriding humanities-first defaults.');
+
+// Execute the broader deterministic integration suite in the existing CI path.
+await import("./test-vitruvia-entity-identity.mjs");
