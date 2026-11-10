@@ -60,6 +60,36 @@ class CodicologyTests(unittest.TestCase):
                                        {"shelfmark": "Plut. 32.24"}, obj)
         self.assertIn("iiif_has_no_canvas", [x["code"] for x in issues])
 
+    def test_gallica_sru_metadata_is_never_auto_accepted(self):
+        import xml.etree.ElementTree as ET
+        xml = ('''<searchRetrieveResponse xmlns="http://www.loc.gov/zing/srw/">'''
+               '''<records><record><recordData><dc xmlns="http://purl.org/dc/elements/1.1/">'''
+               '''<title>Homeri Odyssea, manuscrit grec</title>'''
+               '''<type>manuscrits</type>'''
+               '''<identifier>https://gallica.bnf.fr/ark:/12148/btv1b12345</identifier>'''
+               '''</dc></recordData></record></records></searchRetrieveResponse>''')
+        with patch.object(audit, "fetch_xml_metadata",
+                          return_value={"status": "ok", "root": ET.fromstring(xml)}):
+            proposals, status = audit.discover_gallica(self.by_id["homer-odyssey"])
+        self.assertEqual(status, "ok")
+        self.assertEqual(len(proposals), 1)
+        self.assertIsNone(proposals[0]["shelfmark"])
+        quarantined = audit.independent_guard(proposals, self.by_id)
+        self.assertEqual(quarantined[0]["secondPass"]["status"],
+                         "quarantined_for_human_review")
+
+    def test_gallica_rejects_wrong_epic(self):
+        import xml.etree.ElementTree as ET
+        xml = ('''<response><recordData><dc:title xmlns:dc="http://purl.org/dc/elements/1.1/">'''
+               '''Homeri Ilias</dc:title><dc:type xmlns:dc="http://purl.org/dc/elements/1.1/">'''
+               '''manuscrits</dc:type><dc:identifier xmlns:dc="http://purl.org/dc/elements/1.1/">'''
+               '''https://gallica.bnf.fr/ark:/12148/btv1b12345</dc:identifier></recordData></response>''')
+        with patch.object(audit, "fetch_xml_metadata",
+                          return_value={"status": "ok", "root": ET.fromstring(xml)}):
+            proposals, status = audit.discover_gallica(self.by_id["homer-odyssey"])
+        self.assertEqual(status, "ok")
+        self.assertEqual(proposals, [])
+
     def test_independent_auditor_quarantines_keyword_hit(self):
         x = {"workId": "homer-odyssey",
              "candidateTitle": "Homeri Odyssea", "provider": "Library of Congress",
