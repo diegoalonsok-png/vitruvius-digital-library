@@ -38,6 +38,7 @@ for(const [q,book,chapter,section] of [
  assert.equal(found.section,section,q+": section");
 }
 assert.equal(parse("unrelated-query"),null);
+assert.equal(context.window.VitruviaResearchEngine.canonical("συμμετρία"),"συμμετρια","Greek accents should normalize without deleting Greek letters");
 const manifest={sources:[{
  url:"data/structured/fixture.json",workId:"vitruvius",workTitle:"De architectura",
  author:"Vitruvio",edition:"V514",language:"es",
