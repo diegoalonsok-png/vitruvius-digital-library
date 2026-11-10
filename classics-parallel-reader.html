@@ -331,7 +331,13 @@ function frame(side,lang){
  u.searchParams.set("parallel","1");u.searchParams.set("literal","1");
  const requestedLocus=params.get("locus");if(requestedLocus)u.searchParams.set("locus",requestedLocus);
  const q=$(side+"-query").value.trim();if(q)u.searchParams.set("q",q);
- ready[side]=false;pendingNavigation[side]=null;$("pane-"+side).src=u.href;
+ ready[side]=false;pendingNavigation[side]=null;
+ const pane=$("pane-"+side);
+ pane.addEventListener("load",()=>{
+  if(pane.src!==u.href||ready[side])return;
+  pane.contentWindow?.postMessage({type:"vitruvia-parallel-probe",work,lang},location.origin);
+ },{once:true});
+ pane.src=u.href;
  params.set(side,lang);history.replaceState(null,"",location.pathname+"?"+params.toString());buttons();
 }
 function versionsFor(languages){return Promise.all(languages.map(async lang=>{
