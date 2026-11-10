@@ -503,11 +503,15 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    encodeURIComponent(locus)+'&q='+encodeURIComponent('τέκτονες');
   const p=await open(path);
   try{
-   await p.route('https://api.mymemory.translated.net/get?**',route=>route.fulfill({
+   let providerRequests=0;
+   await p.route('https://api.mymemory.translated.net/get?**',route=>{
+    providerRequests++;
+    return route.fulfill({
     status:200,
     headers:{'content-type':'application/json','access-control-allow-origin':'*'},
     body:JSON.stringify({responseStatus:200,responseData:{translatedText:'Craftsmen and builders work together.'}})
-   }));
+    });
+   });
    await p.waitForFunction(()=>{
     const source=document.querySelector('#pane-left')?.contentDocument?.querySelector('#passages');
     return source?.textContent?.includes('τέκτονες') &&
@@ -526,9 +530,11 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    await p.waitForFunction(()=>getComputedStyle(document.getElementById('auto-translation')).backgroundColor==='rgb(23, 38, 51)',
     null,{timeout:6000});
    await p.locator('#right-ivory').click();
+   assert.equal(providerRequests,0,'The parallel reader must not send text to an external translator before consent');
    await p.locator('#auto-content .academic-inline-translate-button').click();
    await p.waitForFunction(()=>document.querySelector('#auto-content .academic-inline-translation-output')?.textContent?.includes('Craftsmen and builders'),
     null,{timeout:16000});
+   assert(providerRequests>0,'User-requested translation was not sent to the mocked external provider');
    assert.match(await p.locator('#auto-content .academic-inline-translation-output').innerText(),/Versión automática orientativa/);
    assert.equal(await p.locator('#auto-translation').isVisible(),true);
    assert.equal(await p.locator('#pane-left').isVisible(),true);
