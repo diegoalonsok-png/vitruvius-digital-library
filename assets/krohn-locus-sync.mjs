@@ -82,10 +82,28 @@ export function ocrBlocksForLocus(pages,referenceLatin,candidatePage){
    for(const i of referenceMap.get(key)||[])anchors.push({i,j});
   }
   if(anchors.length<4)continue;
+  // Printed notes may repeat a phrase from another part of the locus.
+  // Use one monotonically ordered sequence so OCR starts never follow ends.
   anchors.sort((a,b)=>a.i-b.i||a.j-b.j);
-  const first=anchors[0],last=anchors[anchors.length-1];
-  candidates.push({page:pg,text,words,anchors,minRef:first.i,maxRef:last.i,
-   matches:anchors.length,primary:pg===candidatePage});
+  const chainScores=anchors.map(()=>1),previous=anchors.map(()=>-1);
+  for(let k=0;k<anchors.length;k++){
+   for(let j=0;j<k;j++){
+    const left=anchors[j],right=anchors[k];
+    if(left.i>=right.i||left.j>=right.j)continue;
+    if(chainScores[j]+1>chainScores[k]){
+     chainScores[k]=chainScores[j]+1;previous[k]=j;
+    }
+   }
+  }
+  let best=0;
+  for(let k=1;k<anchors.length;k++)if(chainScores[k]>chainScores[best])best=k;
+  const coherent=[];
+  for(let k=best;k>=0;k=previous[k]){coherent.push(anchors[k]);if(previous[k]<0)break}
+  coherent.reverse();
+  if(coherent.length<4)continue;
+  const first=coherent[0],last=coherent[coherent.length-1];
+  candidates.push({page:pg,text,words,anchors:coherent,minRef:first.i,maxRef:last.i,
+   matches:coherent.length,primary:pg===candidatePage});
  }
  const primary=candidates.find(p=>p.primary);
  if(!primary)return [];
