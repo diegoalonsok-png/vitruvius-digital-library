@@ -214,10 +214,22 @@ document.querySelector(".searcharea")?.append(morphControl);
 const remoteBox=el("aside","remote-translations");
 remoteBox.hidden=true;
 document.querySelector(".searcharea")?.append(remoteBox);
+const sourceBox=el("aside","remote-original-source");
+sourceBox.hidden=true;document.querySelector(".searcharea")?.append(sourceBox);
 let remoteEntries=[];
 function drawRemote(){
  remoteBox.replaceChildren();
  const id=work.value||new URLSearchParams(location.search).get("work")||"";
+ sourceBox.replaceChildren();sourceBox.hidden=id!=="ennius-annales";
+ if(id==="ennius-annales"){
+  const heading=el("p","remote-title",({es:"Original latino fragmentario · acceso externo bajo demanda",en:"Fragmentary Latin original · on-demand external source",fr:"Original latin fragmentaire · source externe à la demande"})[locale]||"Original latino fragmentario");
+  const line=el("p","remote-row");
+  const reader=el("a","remote-link",({es:"Leer y buscar en los fragmentos de Ennio",en:"Read and search Ennius fragments",fr:"Lire et chercher les fragments d’Ennius"})[locale]||"Leer fragmentos");
+  reader.href="classics-external-source-reader.html?work=ennius-annales";line.append(reader);
+  const note=el("p","remote-note","Transcripción alojada por CLTK, sin copia en Vitruvius. Lectura externa sin índice central ni edición crítica cotejada; los números de verso requieren comprobación.");
+  sourceBox.append(heading,line,note);
+ }
+
  const rows=remoteEntries.filter(e=>e.workId===id);
  remoteBox.hidden=!rows.length;
  if(!rows.length)return;
