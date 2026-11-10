@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-institutional-verified-v14",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-institutional-verified-v14",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-institutional-verified-v14"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-codicology-coverage-v15",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-codicology-coverage-v15",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-codicology-coverage-v15"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -346,6 +346,8 @@ function renderAcademicSummary(dest,w,d){
  row(sec,"Cobertura del texto original",integrity.indexed?"Existe una transcripción o índice textual asociado; la integridad se documenta por separado":"Texto original no acreditado en el índice principal");
  if(integrity.description)row(sec,"Reservas de integridad",integrity.description);
  row(sec,"Testigos materiales individualizados",String(witnesses.length)+"; "+direct.length+" directos o sin clasificar, "+indirect+" traducción(es) antigua(s) indirecta(s)");
+ row(sec,"Estado de comprobación para esta obra",witnesses.some(ms=>ms.priorityClaim==="oldest_known_extant_copy_explicitly_claimed_by_holding_institution")?"La institución identifica expresamente el testimonio como copia conservada más antigua conocida":witnesses.some(ms=>/^institutional_catalogue_checked/.test(ms.verificationLevel||""))?"Existe al menos un registro revisado contra catálogo institucional; NO se ha determinado prioridad mundial":witnesses.some(ms=>/^secondary_scholarly_source_checked/.test(ms.verificationLevel||""))?"Testigos identificados mediante publicaciones académicas; pendiente corroboración institucional y comparación global":witnesses.length?"Testimonios registrados; prioridad mundial no demostrada":"Sin testigo individual documentado en este inventario; investigación pendiente");
+
  row(sec,"Acceso a imágenes o folios",facsimiles.length+" testimonio(s) con dirección de visor o imagen registrada; la carga y la identificación precisa se auditan por separado");
  row(sec,"Alcance de verificación","Metadatos de catálogos; ninguna concordancia por título equivale a una collatio codicum.");
  row(sec,"Control automático","Auditoría Python de las 222 fichas; candidatos nuevos quedan en cuarentena hasta verificar signatura, contenido y fuentes.");
