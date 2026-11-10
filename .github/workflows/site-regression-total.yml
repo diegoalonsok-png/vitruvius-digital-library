@@ -7,11 +7,22 @@ on:
       - 'assets/gudiani-reader.mjs'
       - 'scripts/test-reference-asset-fallback.mjs'
       - 'scripts/test-vitruvia-cultural-works.mjs'
+      - 'scripts/test-indexacion-academica.mjs'
+      - 'indice-busquedas-academicas.html'
+      - 'sitemap.xml'
       - 'scripts/test-vitruvia-search-geometry.mjs'
       - '.github/workflows/site-regression-total.yml'
   push:
     branches: [main]
     paths:
+      - 'scripts/test-indexacion-academica.mjs'
+      - 'indice-busquedas-academicas.html'
+      - 'sitemap.xml'
+      - 'domus-en-vitruvio.html'
+      - 'aedes-en-vitruvio.html'
+      - 'symmetria-en-vitruvio.html'
+      - 'locus-en-vitruvio.html'
+      - 'architectura-en-vitruvio.html'
       - 'scripts/audit-site-cross-data.mjs'
       - 'scripts/audit-vitruvius-trilingual-alignment.mjs'
       - 'scripts/test-indices-locorum-battery.mjs'
@@ -44,6 +55,7 @@ jobs:
           mkdir -p reports
           : > reports/site-regression-failures.txt
           checks=(
+            "scripts/test-indexacion-academica.mjs"
             "scripts/audit-site-cross-data.mjs"
             "scripts/audit-vitruvius-trilingual-alignment.mjs"
             "scripts/audit-site-links.mjs"
