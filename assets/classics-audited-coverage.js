@@ -28,7 +28,7 @@ async function remote(spec,known,local){
      e.language!==spec.language||e.path!==spec.prefix+e.workId+spec.suffix||
      !/^[0-9a-f]{64}$/.test(e.sourceSha256||"")||
      typeof e.source!=="string"||
-     !/^https:\/\/raw\.githubusercontent\.com\/(?:PerseusDL|OpenGreekAndLatin)\//.test(e.source)||
+     !/^https:\/\/raw\.githubusercontent\.com\/(?:PerseusDL|OpenGreekAndLatin|cltk)\//.test(e.source)||
      !Number.isInteger(e.passages)||e.passages<1)
    throw Error("Original remoto incompatible con el catálogo");
   seen.add(e.workId);
@@ -75,7 +75,7 @@ async function remote(spec,known,local){
   set("remote",fmt(external.size));
   set("searchable",fmt(local.size+external.size));
   set("pending",fmt(j.targetWorks-local.size-external.size));
-  set("method","Originales indexados significa que existe texto original buscable, en ocasiones parcial; no implica obra completa, alineación con traducciones ni colación manuscrita. Los registros externos residen fuera de GitHub Pages.");
+  set("method","Originales indexados = texto griego o latino buscable (algunos registros conservan solo fragmentos o tratados seleccionados). Traducciones externas enlazadas no se cuentan como alojadas. Fuente: inventario y manifiestos auditables, no colación manuscrita.");
   host.dataset.state="verified";
  }catch(error){
   host.dataset.state="unavailable";
