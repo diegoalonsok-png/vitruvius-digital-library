@@ -38,8 +38,10 @@ async function fetchPages(which){
 }
 function urls(c){
  const result=[];
- if(c.local_url)result.push(c.local_url);
+ // La colección local de Barbaro 1567 no está alojada: abrir directamente el IIIF.
+ // No solicitar cientos de imágenes /images/barbaro-1567/* inexistentes.
  if(c.image_url)result.push(c.image_url);
+ if(c.local_url&&!/^images\/barbaro-1567\//.test(c.local_url))result.push(c.local_url);
  return [...new Set(result.filter(Boolean))];
 }
 function loadPage(which,number,origin="user"){
