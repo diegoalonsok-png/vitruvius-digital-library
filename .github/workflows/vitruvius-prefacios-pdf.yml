@@ -1,0 +1,32 @@
+name: Cotejo de prefacios latinos contra PDF editado
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-vitruvius-preface-pdf.py'
+      - '.github/workflows/vitruvius-prefacios-pdf.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prefaces:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar extracción textual PDF
+        run: |
+          if ! command -v pdftotext >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y poppler-utils
+          fi
+          python3 -m py_compile scripts/audit-vitruvius-preface-pdf.py
+      - name: Cotejar PDF castellano e inglés sin modificarlos
+        run: python3 scripts/audit-vitruvius-preface-pdf.py
+      - name: Guardar informe sobre las lecturas de los prefacios
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cotejo-prefacios-pdf-es-en
+          path: reports/prefaces-pdf-evidence.json
+          if-no-files-found: error
