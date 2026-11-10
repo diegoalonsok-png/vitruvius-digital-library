@@ -15,7 +15,7 @@ try{
   status:200,contentType:"image/png",
   body:Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScL/nwAAAABJRU5ErkJggg==","base64")
  }));
- const response=await page.goto(base+"classics-text-reader.html?work=cato-agricultura&lang=la&locus=2&q=deus",
+ const response=await page.goto(base+"classics-text-reader.html?work=caesar-gallico&lang=la&q=virtute",
   {waitUntil:"domcontentloaded",timeout:30000});
  assert.equal(response?.status(),200);
  await page.waitForFunction(()=>!!window.ClassicalLexicon&&!!window.VitruviaClassicalWordPopup);
@@ -44,7 +44,7 @@ try{
   passages.append(p);
  },{word,lang});
  for(let round=1;round<=3;round++){
-  await fixture("deus");
+  await fixture("virtute");
   const word=page.locator("#passages mark.cl-hit");
   await word.waitFor();
   await page.waitForFunction(()=>document.querySelector("#passages mark")?.getAttribute("role")==="button");
@@ -52,10 +52,10 @@ try{
   await word.click();
   const popup=page.locator("#classics-lexical-popup");
   await popup.waitFor({state:"visible",timeout:8000});
-  assert.equal(await popup.locator("h2").textContent(),"deus");
+  assert.equal(await popup.locator("h2").textContent(),"virtute");
   await popup.locator(".cl-lemma").first().waitFor({state:"visible",timeout:18000});
   // Existing dictionary beneath the passage must still receive the click.
-  await page.waitForFunction(()=>document.querySelector("#lexicon .cl-lemma")?.textContent?.toLowerCase().includes("deus"),null,{timeout:18000});
+  await page.waitForFunction(()=>/virt[uū]s/i.test(document.querySelector("#lexicon")?.textContent||""),null,{timeout:18000});
   await popup.locator(".cl-popup-commons").waitFor({state:"attached",timeout:18000});
   assert.match(await popup.locator(".cl-links").textContent(),/Logeion/);
   assert.equal(await popup.locator(".cl-popup-media img").count(),0,
@@ -111,6 +111,38 @@ try{
  assert.equal(layout.wordCursor,"pointer");
  checked+=3;
  await page.close();
+
+ // The actual Caton reader from the supplied screenshot uses the separate
+ // lector-clasico.html UI, not classics-text-reader.html.
+ {
+  const cato=await browser.newPage({viewport:{width:1100,height:820}});
+  await cato.route(/^https?:\/\/(?!127\.0\.0\.1|localhost)/,route=>route.abort());
+  await cato.goto(base+"lector-clasico.html?obra=stoa0079.stoa001&loc=2&q=deus",{
+   waitUntil:"domcontentloaded",timeout:30000});
+  await cato.waitForFunction(()=>!!window.ClassicalLexicon&&!!window.VitruviaClassicalWordPopup);
+  assert.equal(await cato.locator("html").getAttribute("class"),"classic-reader-scrollbars");
+  assert.equal(await cato.locator("link[href*='lexicon-reader-scrollbars.css']").count(),1);
+  for(let round=0;round<3;round++){
+   await cato.evaluate(()=>{
+    const host=document.getElementById("original");
+    const section=document.getElementById("reader");
+    section.hidden=false;host.hidden=false;
+    host.innerHTML='<div class="txt" lang="la"><span class="lw" data-l="la"><mark>deus</mark></span> testis</div>';
+   });
+   const m=cato.locator("#original .txt mark");
+   await cato.waitForFunction(()=>document.querySelector("#original .txt mark")?.getAttribute("role")==="button");
+   await m.click();
+   const popup=cato.locator("#classics-lexical-popup");
+   await popup.waitFor({state:"visible",timeout:9000});
+   assert.equal(await popup.locator("h2").textContent(),"deus");
+   await popup.locator(".cl-lemma").first().waitFor({state:"visible",timeout:18000});
+   assert.equal(await cato.locator(".lw-pop").count(),0,
+    "Highlighted words should not open competing small popups");
+   await popup.locator(".cl-popup-close").click();
+   checked+=5;
+  }
+  await cato.close();
+ }
 
  // Parent Lexicon's own modal has the same grey track; iframe is handled above.
  const lexicon=await browser.newPage({viewport:{width:1200,height:850}});
