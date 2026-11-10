@@ -1,0 +1,124 @@
+name: Batería integral · sitio, buscadores y fidelidad textual
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-site-cross-data.mjs'
+      - 'scripts/test-indices-locorum-battery.mjs'
+      - '.github/workflows/site-regression-total.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '19 8 * * 1'
+permissions:
+  contents: read
+concurrency:
+  group: site-regression-total-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Integridad, navegación, léxicos, corpus y referencias
+        shell: bash
+        run: |
+          set +e
+          mkdir -p reports
+          : > reports/site-regression-failures.txt
+          checks=(
+            "scripts/audit-site-cross-data.mjs"
+            "scripts/audit-site-links.mjs"
+            "scripts/test-public-site-integrity.mjs"
+            "scripts/test-classical-catalogue-integrity.mjs"
+            "scripts/test-indices-locorum-battery.mjs"
+            "scripts/test-search.mjs"
+            "scripts/test-historical.mjs"
+            "scripts/test-navigation.mjs"
+            "scripts/test-pwa.mjs"
+            "scripts/test-citations.mjs"
+            "scripts/test-apparatus-exact-words.mjs"
+            "scripts/test-classics-integration.mjs"
+            "scripts/test-classics-corpus-counters.mjs"
+            "scripts/test-lexicon-orthography.mjs"
+            "scripts/test-lexicon-integrated-dictionaries.mjs"
+            "scripts/test-query-discovery.mjs"
+            "scripts/test-shared-semantic-index-usage.mjs"
+            "scripts/test-vitruvia-resilience.mjs"
+            "scripts/test-vitruvia-performance.mjs"
+            "scripts/test-vitruvia-search-geometry.mjs"
+            "scripts/test-vitruvia-author-reading.mjs"
+            "scripts/test-vitruvia-cultural-works.mjs"
+            "scripts/test-bibliotheca-offsite-greek.mjs"
+            "scripts/test-offsite-siculus-flaccus.mjs"
+          )
+          for script in "${checks[@]}"; do
+            echo "::group::Prueba $script"
+            node "$script"
+            code=$?
+            echo "::endgroup::"
+            if [ "$code" -ne 0 ]; then
+              printf 'FAIL %s (exit %s)\n' "$script" "$code" >> reports/site-regression-failures.txt
+              echo "::error title=Prueba académica::Falló $script (exit $code)"
+            else
+              echo "PASS $script"
+            fi
+          done
+          echo "TOTAL: ${#checks[@]} pruebas independientes · errores: $(wc -l < reports/site-regression-failures.txt)"
+      - name: Preparar Chromium para prueba real de todas las páginas
+        shell: bash
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Recorrer todas las páginas HTML con navegador real
+        shell: bash
+        run: |
+          set +e
+          python3 -m http.server 8766 --bind 127.0.0.1 > /tmp/vitruvius-audit-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          sleep 2
+          node scripts/all-pages-check.mjs
+          code=$?
+          if [ "$code" -ne 0 ]; then
+            echo "FAIL scripts/all-pages-check.mjs (exit $code)" >> reports/site-regression-failures.txt
+            echo "::error title=Navegador::Errores de carga, scripts o peticiones locales en las páginas"
+          fi
+          exit 0
+      - name: Interacciones de buscadores, lectores y botones
+        shell: bash
+        run: |
+          set +e
+          node scripts/browser-smoke-audit.mjs
+          code=$?
+          if [ "$code" -ne 0 ]; then
+            echo "FAIL scripts/browser-smoke-audit.mjs (exit $code)" >> reports/site-regression-failures.txt
+            echo "::error title=Interacción::Errores detectados en los flujos reales de usuario"
+          fi
+          exit 0
+      - name: Publicar informe de auditoría incluso si hay fallos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-integral-sitio-y-buscadores
+          path: |
+            reports/site-audit-unified.json
+            reports/indices-locorum-battery.json
+            reports/site-regression-failures.txt
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Fallar la ejecución si hay errores confirmados
+        if: always()
+        shell: bash
+        run: |
+          if [ -s reports/site-regression-failures.txt ]; then
+            echo "::error title=Auditoría integral::Hay fallos; revisar reporte del artefacto"
+            cat reports/site-regression-failures.txt
+            exit 1
+          fi
+          echo "Batería integral sin fallos confirmados."
