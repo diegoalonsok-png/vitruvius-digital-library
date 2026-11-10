@@ -178,8 +178,8 @@ try{
  {name:"Versiones textuales locales",value:reg.entries.length,status:reg.entries.length===reg.count?"pass":"fail"},
  {name:"Pares con alineación semántica certificada",value:pairs.pairs.filter(p=>p.status==="verified-semantic-alignment").length,status:"reported"},
  {name:"Apuleyo: no atribuir equivalencias ficticias",value:pairs.pairs.filter(p=>p.workId==="apuleius-metamorphoses").map(p=>({sharedLoci:p.sharedLoci,status:p.status})),status:pairs.pairs.filter(p=>p.workId==="apuleius-metamorphoses").every(p=>p.sharedLoci===0)?"pass":"fail"});
- const cases=read("data/academic-evaluation/search-fixtures.json");
- report.academicChecks.push({name:"Casos documentales definidos",value:cases.cases.length,status:"reported"});
+ const benchmarkFixtures=read("data/academic-evaluation/search-fixtures.json");
+ report.academicChecks.push({name:"Casos documentales definidos",value:benchmarkFixtures.cases.length,status:"reported"});
 }finally{
  for(const page of pages)await page.close().catch(()=>{});
  for(const context of contexts)await context.close().catch(()=>{});
