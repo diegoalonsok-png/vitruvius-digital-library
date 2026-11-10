@@ -194,6 +194,10 @@
    "Select a milestone to read its record. Edition dates do not necessarily indicate first publication or historical events.",
    "Chaque jalon ouvre sa notice. Les dates d'édition ne sont pas nécessairement celles des œuvres ou des événements."));
   root.append(method);
+  root.append(el("p","vat-coverage",L(
+   events.length+" hitos con fecha y fuente · "+(state.verified.length?"cronología editorial verificada y catálogos externos":"registros catalogados; cobertura todavía parcial"),
+   events.length+" dated sourced milestones · "+(state.verified.length?"editorially verified chronology and catalogues":"catalogue records; partial coverage"),
+   events.length+" jalons datés et sourcés · "+(state.verified.length?"chronologie éditoriale vérifiée et catalogues":"notices de catalogue ; couverture partielle"))));
   if(!events.length){
    const empty=el("p","vat-empty",L(
     "Todavía no se recuperaron acontecimientos con fecha y fuente acreditada para esta consulta. Los demás resultados del buscador siguen disponibles.",
@@ -204,17 +208,22 @@
   const minYear=events[0].year,maxYear=Math.max(...events.map(e=>e.end??e.year));
   const span=Math.max(1,maxYear-minYear),padding=Math.max(1,Math.ceil(span*.04));
   const low=minYear-padding,high=maxYear+padding,range=Math.max(1,high-low);
-  const mapWidth=Math.max(960,Math.min(5200,Math.round(events.length*160*state.zoom)));
-  const position=y=>((y-low)/range*100).toFixed(4)+"%";
+  const labelWidth=170;
+  const availableWidth=Math.max(360,(root.clientWidth||1100)-labelWidth-52);
+  const mapWidth=Math.max(availableWidth,Math.min(5400,Math.round(events.length*146*state.zoom)));
+  const pxAt=y=>(y-low)/range*mapWidth;
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
   viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente","Horizontal chronological timeline","Frise chronologique horizontale"));
-  const map=el("div","vat-map");map.style.width=(mapWidth+170)+"px";
+  const map=el("div","vat-map");map.style.width=(mapWidth+labelWidth)+"px";
   const axis=el("div","vat-axis");
   const ticks=Math.min(13,Math.max(3,Math.ceil(mapWidth/160)));
   for(let i=0;i<=ticks;i++){
    const y=Math.round(low+i*range/ticks);
    const tick=el("span","vat-tick",showYear(y));
-   tick.style.left=(i/ticks*100)+"%";axis.append(tick)
+   tick.style.left=(i/ticks*100)+"%";
+   if(i===0)tick.className+=" vat-tick-start";
+   if(i===ticks)tick.className+=" vat-tick-end";
+   axis.append(tick)
   }
   map.append(axis);
   const detail=el("div","vat-detail");detail.hidden=true;detail.setAttribute("aria-live","polite");
@@ -226,13 +235,13 @@
    const line=el("div","vat-line");track.append(line);
    const lastEnds=[];let levelMax=0;
    for(const e of items){
-    const x=(e.year-low)/range*mapWidth;
+    const x=pxAt(e.year);
     let level=lastEnds.findIndex(end=>x-end>=170);
     if(level<0){level=lastEnds.length;lastEnds.push(-Infinity)}
     lastEnds[level]=x;levelMax=Math.max(levelMax,level);
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
-    button.style.left=Math.max(82,Math.min(mapWidth-82,x))+"px";button.style.top=(27+level*79)+"px";
+    button.style.left=Math.max(80,Math.min(mapWidth-80,x))+"px";button.style.top=(27+level*79)+"px";
     button.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)));
     button.append(el("strong",null,e.title));
     if(e.end!=null&&e.end!==e.year){
@@ -243,17 +252,33 @@
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
    }
-   track.style.height=(112+levelMax*79)+"px";
+   track.style.height=(125+levelMax*79)+"px";
    band.append(title,track);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
+  // The internal navigation may never overscroll beyond the chronology.
+  viewport.scrollLeft=0;
+  const maxScroll=()=>Math.max(0,(viewport.scrollWidth||0)-(viewport.clientWidth||0));
+  const syncEdges=()=>{
+   const max=maxScroll(),left=Math.max(0,viewport.scrollLeft||0);
+   prev.disabled=max<=1||left<=1;
+   next.disabled=max<=1||left>=max-1;
+  };
+  const scrollInside=step=>{
+   const max=maxScroll(),start=Math.max(0,Math.min(max,viewport.scrollLeft||0));
+   const destination=Math.max(0,Math.min(max,start+step));
+   if(typeof viewport.scrollTo==="function")viewport.scrollTo({left:destination,behavior:"smooth"});
+   else viewport.scrollLeft=destination;
+  };
+  viewport.addEventListener("scroll",syncEdges,{passive:true});
+  queueMicrotask(syncEdges);
   zoomOut.onclick=()=>{state.zoom=Math.max(.75,Math.round((state.zoom-.25)*100)/100);draw()};
   zoomIn.onclick=()=>{state.zoom=Math.min(2.5,Math.round((state.zoom+.25)*100)/100);draw()};
-  prev.onclick=()=>viewport.scrollBy({left:-460,behavior:"smooth"});
-  next.onclick=()=>viewport.scrollBy({left:460,behavior:"smooth"});
+  prev.onclick=()=>scrollInside(-460);
+  next.onclick=()=>scrollInside(460);
   viewport.addEventListener("keydown",e=>{
    if(e.target!==viewport||!["ArrowLeft","ArrowRight"].includes(e.key))return;
-   e.preventDefault();viewport.scrollBy({left:e.key==="ArrowRight"?280:-280,behavior:"smooth"});
+   e.preventDefault();scrollInside(e.key==="ArrowRight"?280:-280);
   });
  }
  function reset(q){
