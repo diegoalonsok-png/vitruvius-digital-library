@@ -23,7 +23,7 @@ async function boot(){
    const h=document.createElement("h3");h.textContent=n.id;output.append(h,para("Alcance:",n.label));
    if(n.greek)output.append(para("Equivalente griego en "+n.greek.locus+":",n.greek.form));
    const loc=document.createElement("p");const b=document.createElement("strong");b.textContent="Loci asociados en esta ficha: ";loc.append(b);
-   n.loci.forEach((l,i)=>{if(i)loc.append(document.createTextNode(" · "));loc.append(anchor("lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(l),l))});output.append(loc);
+   n.loci.forEach((l,i)=>{if(i)loc.append(document.createTextNode(" · "));loc.append(anchor("lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(l),l));const a=(n.attestations||[]).find(x=>x.locus===l);if(a){const kind=a.relationship==="exact_form"?"forma exacta":a.relationship==="inflected_form"?"forma flexionada":"familia derivativa (otro lema)";loc.append(document.createTextNode(" ["+a.form+": "+kind+"]"))}});output.append(loc);
    const refs=document.createElement("p");refs.append(anchor(n.entryPage,"Ficha y documentación"),document.createTextNode(" · "),anchor(n.searchUrl,"Buscar en Lexicon"));output.append(refs);
    const rel=data.edges.filter(e=>e.from===n.id||e.to===n.id);
    const h4=document.createElement("h4");h4.textContent="Relaciones documentadas y editoriales ("+rel.length+")";output.append(h4);
