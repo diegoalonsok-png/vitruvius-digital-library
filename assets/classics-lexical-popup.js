@@ -6,9 +6,29 @@
 "use strict";
 const passages=document.getElementById("passages");
 const inLexiconViewer=!passages&&!!document.getElementById("lx-results");
-const targetRoot=passages||document;
+const classicalOriginal=document.getElementById("original");
+const inClassicalReader=!passages&&!inLexiconViewer&&!!classicalOriginal;
+const targetRoot=passages||classicalOriginal||document;
 const lexicon=window.ClassicalLexicon;
-if((!passages&&!inLexiconViewer)||!lexicon)return;
+if((!passages&&!inLexiconViewer&&!inClassicalReader)||!lexicon)return;
+const classicalWorkIds={
+ "stoa0079.stoa001":"cato-agricultura",
+ "phi0845.phi002":"columella-rustica",
+ "ll.varro-rustica":"varro-rustica",
+ "ll.frontinus":"frontinus-aquaeductu",
+ "phi0474.phi055":"cicero-officiis",
+ "phi0448.phi001":"caesar-gallico",
+ "phi0550.phi001":"lucretius",
+ "phi0690.phi002":"virgil-georgica",
+ "phi0690.phi003":"virgil-aeneid",
+ "phi1212.phi002":"apuleius-metamorphoses",
+ "phi0472.phi001":"catullus-carmina",
+ "phi0972.phi001":"petronius-satyrica",
+ "phi0978.phi001":"pliny-naturalis",
+ "tlg0093.tlg009":"theophrastus-characters",
+ "tlg0059.tlg002":"plato-apology",
+ "tlg0086.tlg034":"aristotle-poetics"
+};
 
 const imageCatalog={
  domus:{
@@ -108,8 +128,9 @@ async function openMark(mark){
  const slot=el("div",null,"cl-popup-dictionary");
  contents.replaceChildren(slot);
  try{
+  const params=new URLSearchParams(location.search);
   const edition=mark.closest("[data-work]")?.getAttribute("data-work")||
-   new URLSearchParams(location.search).get("work")||"";
+   params.get("work")||classicalWorkIds[params.get("obra")]||"";
   await lexicon.renderPanel(slot,word,{lang,work:edition,online:true});
   if(id!==current)return;
   contents.append(historicalMedia(word),linksFor(word,lang));
@@ -120,6 +141,7 @@ async function openMark(mark){
  }
 }
 const markSelector=passages?"mark.cl-hit,mark.cl-parallel-hit":
+ inClassicalReader?".txt mark":
  "#lx-viewer .lx-viewer-origin mark.w,#lx-viewer .lx-viewer-col mark.w";
 function markOf(target){
  return target instanceof Element?target.closest(markSelector):null;
@@ -130,8 +152,9 @@ targetRoot.addEventListener("click",event=>{
  // The original reader's general word-click handler remains available on
  // unhighlighted text. Highlighted terms use this self-contained viewer.
  event.preventDefault();
- if(inLexiconViewer){
-  // In the outer Lexicon dialog, suppress competing page navigation.
+ if(inLexiconViewer||inClassicalReader){
+  // These readers already have link/navigation or small lexical popups:
+  // yellow-word clicks open the larger viewer without competing overlays.
   event.stopImmediatePropagation();
   void openMark(mark);
  }else{
