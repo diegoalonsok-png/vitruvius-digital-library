@@ -133,6 +133,13 @@ async function openMark(mark){
    params.get("work")||classicalWorkIds[params.get("obra")]||"";
   await lexicon.renderPanel(slot,word,{lang,work:edition,online:true});
   if(id!==current)return;
+  // Preserve the reader's existing inline dictionary as a synchronized
+  // secondary view. A modal focus change must not leave its content stale.
+  const inline=document.getElementById("lexicon");
+  if(inline&&inline.isConnected&&inline!==slot){
+   await lexicon.renderPanel(inline,word,{lang,work:edition,online:true});
+   if(id!==current)return;
+  }
   contents.append(historicalMedia(word),linksFor(word,lang));
  }catch{
   if(id!==current)return;
