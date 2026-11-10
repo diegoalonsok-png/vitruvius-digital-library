@@ -18,7 +18,12 @@
       },
       "manuscript": {
         "manifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b9066098j/manifest.json",
-        "status": "BnF Latin 10277: testimonio medieval (no autógrafo)"
+        "status": "BnF Latin 10277: testimonio medieval (no autógrafo)",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://searcharchives.bl.uk/catalog/040-002048598"
       },
       "pdf": {
         "url": null,
@@ -72,7 +77,11 @@
         "index": "data/manuscripts/cicero-de-officiis-geneve-lat88.json",
         "oldest": {
           "status": "pendiente de identificar y conectar un testigo temprano del siglo VIII o IX con digitalización verificable"
-        }
+        },
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": false
       },
       "pdf": {
         "url": "documents/classics/cicero-de-officiis-miller-1913.pdf",
@@ -197,7 +206,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": false,
+        "record": "https://searcharchives.bl.uk/catalog/040-002048567"
       },
       "pdf": {
         "url": null,
@@ -248,7 +262,11 @@
         "record": "https://spotlight.vatlib.it/overview/catalog/Vat_lat_5757",
         "institution": "Biblioteca Apostolica Vaticana",
         "shelfmark": "Vat. lat. 5757",
-        "dating": "siglos IV–V (texto inferior); siglo VII (texto superior)"
+        "dating": "siglos IV–V (texto inferior); siglo VII (texto superior)",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -289,7 +307,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": false,
+        "record": "https://searcharchives.bl.uk/catalog/032-002107866"
       },
       "pdf": {
         "url": "documents/classics/caesar-de-bello-gallico-smith-1842.pdf",
@@ -346,7 +369,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://searcharchives.bl.uk/catalog/032-002107866"
       },
       "pdf": {
         "url": null,
@@ -393,7 +421,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -431,7 +463,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -472,7 +508,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -525,7 +565,7 @@
       "manuscript": {
         "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4151064/manifest",
         "record": "https://iiif.biblissima.fr/collections/manifest/7e530b9cd2003778e7fe262054b5c9c20d8b99a4",
-        "status": "Tradición carolingia: O = Codex Oblongus (Leiden, Voss. Lat. F. 30), ca. 825; Q = Codex Quadratus (Leiden, Voss. Lat. Q. 94), siglo IX. Ambos identificados; cotejo folio-verso pendiente.",
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
         "institution": "Universiteitsbibliotheek Leiden",
         "shelfmark": "Voss. Lat. Q. 94",
         "dating": "Primera mitad del siglo IX",
@@ -534,7 +574,11 @@
           "name": "Codex Oblongus",
           "shelfmark": "Voss. Lat. F. 30",
           "manifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4127827/manifest"
-        }
+        },
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": "documents/classics/lucretius-de-rerum-natura-latin-1813.pdf",
@@ -713,7 +757,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false,
+        "record": "https://digi.vatlib.it/view/MSS_Vat.lat.3225"
       },
       "pdf": {
         "url": "documents/classics/virgil-aeneid-book-i-walpole-1893.pdf",
@@ -772,7 +821,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false,
+        "record": "https://digi.vatlib.it/view/MSS_Vat.lat.3225"
       },
       "pdf": {
         "url": "documents/classics/virgil-georgica-latin-forbiger-1849.pdf",
@@ -849,7 +903,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true,
+        "record": "https://searcharchives.bl.uk/catalog/040-002048555"
       },
       "pdf": {
         "url": null,
@@ -889,7 +948,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "4 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 4,
+        "witnessWithViewerCount": 3,
+        "needsAdditionalWitnesses": false,
+        "record": "https://elmss.universityofgalway.ie/catalogue/86"
       },
       "pdf": {
         "url": null,
@@ -930,7 +994,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Testimonio identificado: Vat. lat. 2781, siglos XIV–XV, ff. 1r–185v. Manifiesto IIIF oficial Vaticano en «Manuscrito»."
+        "status": "Testimonio identificado: Vat. lat. 2781, siglos XIV–XV, ff. 1r–185v. Manifiesto IIIF oficial Vaticano en «Manuscrito».",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": false,
+        "record": "https://digi.vatlib.it/mss/detail/Vat.lat.2781"
       },
       "pdf": {
         "url": null,
@@ -978,7 +1047,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": false,
+        "record": "https://searcharchives.bl.uk/catalog/040-002048568"
       },
       "pdf": {
         "url": null,
@@ -1012,7 +1086,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1046,7 +1124,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1086,7 +1168,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1125,7 +1211,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1166,7 +1256,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1217,7 +1311,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1262,7 +1360,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1299,7 +1401,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1333,7 +1439,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": false,
+        "record": "https://handschriftenportal.de/?id=HSP-ca46031b-642a-3460-b9b1-9e823df6a7d9"
       },
       "pdf": {
         "url": null,
@@ -1375,7 +1486,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false,
+        "record": "https://onb.digital/search/811603"
       },
       "pdf": {
         "url": null,
@@ -1416,7 +1532,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://digi.vatlib.it/view/MSS_Vat.gr.984"
       },
       "pdf": {
         "url": null,
@@ -1458,7 +1579,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false,
+        "record": "https://digi.vatlib.it/view/MSS_Pal.gr.14"
       },
       "pdf": {
         "url": null,
@@ -1499,7 +1625,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": false,
+        "record": "https://searcharchives.bl.uk/catalog/040-002048495"
       },
       "pdf": {
         "url": null,
@@ -1533,7 +1664,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1567,7 +1702,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1619,7 +1758,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1653,7 +1796,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "Sin facsímil de testimonio concreto validado",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1699,7 +1846,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin facsímil de testimonio concreto validado"
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": false,
+        "record": "https://searcharchives.bl.uk/catalog/040-002169730"
       },
       "pdf": {
         "url": null,
@@ -1734,7 +1886,11 @@
       "manuscript": {
         "manifest": null,
         "status": "Testimonio H = Hierosolymitanus, Παναγίου Τάφου 54 (Jerusalén, 1056; ff. 51v–70 (Pinakes)). No es necesariamente el testimonio más antiguo conservado. Visor: microfilme Library of Congress.",
-        "record": "https://pinakes.irht.cnrs.fr/notices/cote/35291/"
+        "record": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": false
       },
       "pdf": {
         "url": null,
@@ -1777,7 +1933,11 @@
       "manuscript": {
         "manifest": null,
         "record": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
-        "status": "P. Oxy. XV 1782 (Oxford, s. IV ex., dos hojas fragmentarias de pergamino, TM 64596); H = Hierosolymitanus, Panagios Taphos 54 (Jerusalén, 1056, ff. 76–81 según Pinakes, texto griego completo; Pinakes 35291, CPG 1735); Elbasan 82 (Tirana, s. XVI 3/4, completo, probable apógrafo de H; Pinakes 63441). Enlaces externos documentados; sin visor público confirmado de Elbasan."
+        "status": "P. Oxy. XV 1782 (Oxford, s. IV ex., dos hojas fragmentarias de pergamino, TM 64596); H = Hierosolymitanus, Panagios Taphos 54 (Jerusalén, 1056, ff. 76–81 según Pinakes, texto griego completo; Pinakes 35291, CPG 1735); Elbasan 82 (Tirana, s. XVI 3/4, completo, probable apógrafo de H; Pinakes 63441). Enlaces externos documentados; sin visor público confirmado de Elbasan.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 3,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false
       },
       "pdf": {
         "url": null,
@@ -1860,8 +2020,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "record": null,
-        "status": "Codex Sinaiticus conserva una parte; también hay otras copias griegas y versiones latinas"
+        "record": "https://searcharchives.bl.uk/catalog/040-002169730",
+        "status": "Codex Sinaiticus conserva una parte; también hay otras copias griegas y versiones latinas",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1907,7 +2071,11 @@
         "fragmentariumRecord": "https://fragmentarium.ms/overview/F-lz0u",
         "iiifWitness": "Bern, Burgerbibliothek, Cod. 722.3 (Fulda, 826–850 d. C.; fragmento de un bifolio, NO testimonio completo)",
         "accessStatus": "Enlace externo a facsímil fragmentario IIIF; sin transcripción íntegra ni cotejo filológico; respetar condiciones de imagen de la institución custodia.",
-        "verifiedFrom": "Fragmentarium F-lz0u y e-codices Burgerbibliothek Cod. 722.3 (verificación bibliográfica 2026-11-09)"
+        "verifiedFrom": "Fragmentarium F-lz0u y e-codices Burgerbibliothek Cod. 722.3 (verificación bibliográfica 2026-11-09)",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -1952,7 +2120,11 @@
       "manuscript": {
         "manifest": null,
         "record": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
-        "status": "Testimonio H = Hierosolymitanus, Παναγίου Τάφου 54 (Jerusalén, 1056; ff. 39–51 (Pinakes); 39r–51v (descripción especializada)). No es necesariamente el testimonio más antiguo conservado. Visor: microfilme Library of Congress."
+        "status": "Testimonio H = Hierosolymitanus, Παναγίου Τάφου 54 (Jerusalén, 1056; ff. 39–51 (Pinakes); 39r–51v (descripción especializada)). No es necesariamente el testimonio más antiguo conservado. Visor: microfilme Library of Congress.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false
       },
       "pdf": {
         "url": null,
@@ -1995,7 +2167,11 @@
       "manuscript": {
         "manifest": null,
         "record": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
-        "status": "Testimonio H = Hierosolymitanus, Παναγίου Τάφου 54 (Jerusalén, 1056; ff. 81r–120r (recensión larga; carta de María y respuestas incluidas; Helsinki); Pinakes resume ff. 82–120). Recensión larga; no confundir con las siete cartas de la recensión media. Visor: microfilme Library of Congress."
+        "status": "Testimonio H = Hierosolymitanus, Παναγίου Τάφου 54 (Jerusalén, 1056; ff. 81r–120r (recensión larga; carta de María y respuestas incluidas; Helsinki); Pinakes resume ff. 82–120). Recensión larga; no confundir con las siete cartas de la recensión media. Visor: microfilme Library of Congress.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2038,7 +2214,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Tradición fragmentaria griega y latina"
+        "status": "Tradición fragmentaria griega y latina",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2075,7 +2255,11 @@
       "manuscript": {
         "manifest": null,
         "record": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
-        "status": "Testimonio H = Hierosolymitanus, Παναγίου Τάφου 54 (Jerusalén, 1056; ff. 70–76 (Pinakes)). No es necesariamente el testimonio más antiguo conservado. Visor: microfilme Library of Congress."
+        "status": "Testimonio H = Hierosolymitanus, Παναγίου Τάφου 54 (Jerusalén, 1056; ff. 70–76 (Pinakes)). No es necesariamente el testimonio más antiguo conservado. Visor: microfilme Library of Congress.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": false
       },
       "pdf": {
         "url": null,
@@ -2118,7 +2302,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Tradición textual singular; manuscrito principal perdido"
+        "status": "Tradición textual singular; manuscrito principal perdido",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2155,7 +2343,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "La tradición manuscrita ha de cotejarse edición por edición"
+        "status": "La tradición manuscrita ha de cotejarse edición por edición",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2192,7 +2384,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Original griego conservado fragmentariamente; texto sustancial en traducción latina"
+        "status": "Original griego conservado fragmentariamente; texto sustancial en traducción latina",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2229,7 +2425,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Tratado latino; ejemplar histórico por identificar"
+        "status": "Tratado latino; ejemplar histórico por identificar",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2266,7 +2466,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Conservado sustancialmente en traducción latina de Rufino; griego fragmentario"
+        "status": "Conservado sustancialmente en traducción latina de Rufino; griego fragmentario",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2300,7 +2504,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Manuscritos griegos y traducciones posteriores; cotejo individual pendiente"
+        "status": "Manuscritos griegos y traducciones posteriores; cotejo individual pendiente",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2343,7 +2551,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Tradición manuscrita medieval por identificar"
+        "status": "Tradición manuscrita medieval por identificar",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2380,7 +2592,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Tratado médico latino; edición histórica por cotejar"
+        "status": "Tratado médico latino; edición histórica por cotejar",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2417,8 +2633,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "record": null,
-        "status": "Tratado militar latino, original antiguo no conservado"
+        "record": "https://searcharchives.bl.uk/catalog/040-002048497",
+        "status": "Tratado militar latino, original antiguo no conservado",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2462,7 +2682,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Obra griega extensa; múltiples testigos medievales"
+        "status": "Obra griega extensa; múltiples testigos medievales",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2502,7 +2726,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Texto técnico de máquinas de asedio transmitido mediante copias tardías"
+        "status": "Texto técnico de máquinas de asedio transmitido mediante copias tardías",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2536,7 +2764,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Tradición técnica griega y traducciones posteriores; separar obras auténticas y dudosas"
+        "status": "Tradición técnica griega y traducciones posteriores; separar obras auténticas y dudosas",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2573,7 +2805,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Transmitida en manuscritos técnicos posteriores; ilustraciones requieren cotejo"
+        "status": "Transmitida en manuscritos técnicos posteriores; ilustraciones requieren cotejo",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2610,7 +2846,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Tratado de máquinas de guerra conocido por manuscritos bizantinos"
+        "status": "Tratado de máquinas de guerra conocido por manuscritos bizantinos",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2634,7 +2874,11 @@
       "dating": "Edición editorial, 2026",
       "manuscript": {
         "manifest": null,
-        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo."
+        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "translation": {
         "status": "Consultar la información bibliográfica y el documento PDF."
@@ -2669,7 +2913,11 @@
       "dating": "Edición editorial, 2026",
       "manuscript": {
         "manifest": null,
-        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo."
+        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "translation": {
         "status": "Consultar la información bibliográfica y el documento PDF."
@@ -2704,7 +2952,11 @@
       "dating": "Edición editorial, 2026",
       "manuscript": {
         "manifest": null,
-        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo."
+        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "translation": {
         "status": "Consultar la información bibliográfica y el documento PDF."
@@ -2739,7 +2991,11 @@
       "dating": "Edición crítica impresa, 1912",
       "manuscript": {
         "manifest": null,
-        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo."
+        "status": "Edición impresa moderna; no se trata de un manuscrito antiguo.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "translation": {
         "status": "Consultar la información bibliográfica y el documento PDF."
@@ -2779,7 +3035,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2812,7 +3072,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2845,7 +3109,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2878,7 +3146,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2911,7 +3183,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -2944,7 +3220,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": false,
+        "record": "https://searcharchives.bl.uk/catalog/040-002104026"
       },
       "pdf": {
         "url": null,
@@ -2998,7 +3279,11 @@
         "record": "https://iiif.biblissima.fr/collections/manifest/c691ed800d5576a3f70898d3d0dd0eaa4f375c18",
         "institution": "Bodleian Libraries, University of Oxford",
         "shelfmark": "MS. Canon. Class. Lat. 30",
-        "dating": "siglo XIV, tercer cuarto (1351–1375)"
+        "dating": "siglo XIV, tercer cuarto (1351–1375)",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false
       },
       "pdf": {
         "url": null,
@@ -3067,7 +3352,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true,
+        "record": "https://searcharchives.bl.uk/catalog/040-002048555"
       },
       "pdf": {
         "url": null,
@@ -3100,7 +3390,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true,
+        "record": "https://searcharchives.bl.uk/catalog/040-002048555"
       },
       "pdf": {
         "url": null,
@@ -3133,7 +3428,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3166,7 +3465,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3199,7 +3502,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3262,7 +3569,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false,
+        "record": "https://iiif.biblissima.fr/collections/manifest/62b4f03e4446b2d1df4529cb493ce95ed92bac55"
       },
       "pdf": {
         "url": null,
@@ -3302,7 +3614,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23"
       },
       "pdf": {
         "url": null,
@@ -3341,7 +3658,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3385,7 +3706,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3418,7 +3743,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3489,7 +3818,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3535,7 +3868,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3568,7 +3905,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3602,7 +3943,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3632,7 +3977,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3665,7 +4014,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3698,7 +4051,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3731,7 +4088,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3764,7 +4125,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3798,7 +4163,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3831,7 +4200,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3870,7 +4243,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3903,7 +4280,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -3952,7 +4333,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4001,7 +4386,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4037,7 +4426,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4076,7 +4469,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4125,7 +4522,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4163,7 +4564,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4196,7 +4601,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4229,7 +4638,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4268,7 +4681,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4304,7 +4721,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4341,7 +4762,11 @@
         "record": "https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2",
         "institution": "Biblioteca Apostolica Vaticana",
         "shelfmark": "Vat. gr. 1950, parte 2",
-        "dating": "siglo XIV, antes de mediados de siglo"
+        "dating": "siglo XIV, antes de mediados de siglo",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4410,7 +4835,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://www.homermultitext.org/manuscripts/venetusA/"
       },
       "pdf": {
         "url": null,
@@ -4474,7 +4904,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4532,7 +4966,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4589,7 +5027,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4646,7 +5088,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4692,7 +5138,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4742,7 +5192,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4799,7 +5253,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4858,7 +5316,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4908,7 +5370,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4944,7 +5410,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -4984,7 +5454,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Testimonio identificado: BnF Grec 1807 (siglo IX), con República. Gallica en pestaña «Manuscrito»; no se dispone aquí de manifiesto IIIF comprobado."
+        "status": "Testimonio identificado: BnF Grec 1807 (siglo IX), con República. Gallica en pestaña «Manuscrito»; no se dispone aquí de manifiesto IIIF comprobado.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f"
       },
       "pdf": {
         "url": null,
@@ -5044,7 +5519,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004"
       },
       "pdf": {
         "url": "documents/classics/plato-apologia-socratis-adam-1891.pdf",
@@ -5111,7 +5591,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": "documents/classics/aristotle-poetics-greek-christ-1893.pdf",
@@ -5210,7 +5694,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5267,7 +5755,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5323,7 +5815,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5363,7 +5859,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5402,7 +5902,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5438,7 +5942,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada."
+        "status": "Pendiente de verificar manuscrito testigo más antiguo conservado, institución, signatura, fecha, soporte y folios; no se ofrece visor sin imagen comprobada.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5476,7 +5984,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5535,7 +6047,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5594,7 +6110,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5653,7 +6173,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5705,7 +6229,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5757,7 +6285,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5799,7 +6331,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5851,7 +6387,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5903,7 +6443,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5955,7 +6499,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -5997,7 +6545,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6058,7 +6610,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6119,7 +6675,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6180,7 +6740,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6241,7 +6805,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6302,7 +6870,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6363,7 +6935,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6424,7 +7000,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6476,7 +7056,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6528,7 +7112,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6580,7 +7168,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6632,7 +7224,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6684,7 +7280,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -6736,7 +7336,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004"
       },
       "pdf": {
         "url": null,
@@ -6799,7 +7404,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004"
       },
       "pdf": {
         "url": null,
@@ -6862,7 +7472,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004"
       },
       "pdf": {
         "url": null,
@@ -6925,7 +7540,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Testimonio identificado: BnF Grec 1807 (siglo IX), con Timeo. Gallica en pestaña «Manuscrito»; no se dispone aquí de manifiesto IIIF comprobado."
+        "status": "Testimonio identificado: BnF Grec 1807 (siglo IX), con Timeo. Gallica en pestaña «Manuscrito»; no se dispone aquí de manifiesto IIIF comprobado.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f"
       },
       "pdf": {
         "url": null,
@@ -6996,7 +7616,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004"
       },
       "pdf": {
         "url": null,
@@ -7059,7 +7684,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004"
       },
       "pdf": {
         "url": null,
@@ -7122,7 +7752,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Testimonio identificado: BnF Grec 1807 (siglo IX), con Leyes. Gallica en pestaña «Manuscrito»; no se dispone aquí de manifiesto IIIF comprobado."
+        "status": "Testimonio identificado: BnF Grec 1807 (siglo IX), con Leyes. Gallica en pestaña «Manuscrito»; no se dispone aquí de manifiesto IIIF comprobado.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f"
       },
       "pdf": {
         "url": null,
@@ -7183,7 +7818,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true,
+        "record": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004"
       },
       "pdf": {
         "url": null,
@@ -7246,7 +7886,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7306,7 +7950,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7356,7 +8004,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7406,7 +8058,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7456,7 +8112,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7506,7 +8166,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7548,7 +8212,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7590,7 +8258,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7632,7 +8304,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7674,7 +8350,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7716,7 +8396,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7758,7 +8442,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7804,7 +8492,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
@@ -7873,7 +8565,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7924,7 +8620,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -7966,7 +8666,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8015,7 +8719,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8068,7 +8776,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8117,7 +8829,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8166,7 +8882,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8219,7 +8939,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8272,7 +8996,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8325,7 +9053,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8374,7 +9106,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8423,7 +9159,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8526,7 +9266,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8565,7 +9309,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8607,7 +9355,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8646,7 +9398,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8688,7 +9444,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8730,7 +9490,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8772,7 +9536,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8814,7 +9582,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8856,7 +9628,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8898,7 +9674,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8940,7 +9720,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -8982,7 +9766,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9021,7 +9809,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9061,7 +9853,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9112,7 +9908,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9151,7 +9951,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9193,7 +9997,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9239,7 +10047,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Sin testimonio manuscrito individual asociado a esta ficha; PDF impreso de 1870, no códice."
+        "status": "Sin testimonio manuscrito individual asociado a esta ficha; PDF impreso de 1870, no códice.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
@@ -9290,7 +10102,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "El PDF es una edición impresa, no un manuscrito antiguo."
+        "status": "El PDF es una edición impresa, no un manuscrito antiguo.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": "documents/classics/epictetus-theophrastus-greek-1870.pdf",
@@ -9334,7 +10150,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9391,7 +10211,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9444,7 +10268,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9499,7 +10327,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9547,7 +10379,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9595,7 +10431,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9631,7 +10471,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9670,7 +10514,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9706,7 +10554,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9741,7 +10593,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9777,7 +10633,11 @@
       },
       "manuscript": {
         "manifest": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9840,7 +10700,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Tradición manuscrita griega (p. ej., Vat. gr. 190; Oxford, Bodleian, MS. D'Orville 301); cotejo no realizado en este sitio."
+        "status": "Tradición manuscrita griega (p. ej., Vat. gr. 190; Oxford, Bodleian, MS. D'Orville 301); cotejo no realizado en este sitio.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9883,7 +10747,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9923,7 +10791,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -9963,7 +10835,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -10003,7 +10879,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -10043,7 +10923,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -10089,7 +10973,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -10129,7 +11017,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -10169,7 +11061,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -10218,7 +11114,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -10266,7 +11166,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -10305,8 +11209,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "record": null,
-        "status": "Tradición ilustrada del Corpus agrimensorum (p. ej., Wolfenbüttel, Cod. Guelf. 36.23 Aug. 2°, «Arcerianus»); cotejo no realizado."
+        "record": "https://diglib.hab.de/?db=mss&list=ms&id=36-23-aug-2f",
+        "status": "Tradición ilustrada del Corpus agrimensorum (p. ej., Wolfenbüttel, Cod. Guelf. 36.23 Aug. 2°, «Arcerianus»); cotejo no realizado.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false
       },
       "pdf": {
         "url": null,
@@ -10344,8 +11252,12 @@
       },
       "manuscript": {
         "manifest": null,
-        "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "record": "https://diglib.hab.de/?db=mss&list=ms&id=36-23-aug-2f",
+        "status": "2 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 2,
+        "witnessWithViewerCount": 2,
+        "needsAdditionalWitnesses": false
       },
       "pdf": {
         "url": null,
@@ -10384,7 +11296,11 @@
       "manuscript": {
         "manifest": null,
         "record": null,
-        "status": "Códice específico pendiente de identificación y cotejo. Sin vinculación automática a folios."
+        "status": "1 testimonio(s) localizado(s) y asignado(s); distinguir fichas institucionales de visores disponibles. No hay colación integral ni prueba de que sean los más antiguos del mundo.",
+        "researchStatus": "linked_to_institutional_or_scholarly_record",
+        "witnessCount": 1,
+        "witnessWithViewerCount": 1,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
@@ -10415,7 +11331,11 @@
         "status": "Seis elegías latinas disponibles en el lector local, con loci 3.13–3.18."
       },
       "manuscript": {
-        "status": "Testigos manuscritos del Corpus Tibullianum pendientes de identificación y validación institucional; no se atribuye un códice específico."
+        "status": "Testigos manuscritos del Corpus Tibullianum pendientes de identificación y validación institucional; no se atribuye un códice específico.",
+        "researchStatus": "individual_witness_pending",
+        "witnessCount": 0,
+        "witnessWithViewerCount": 0,
+        "needsAdditionalWitnesses": true
       },
       "pdf": {
         "url": null,
