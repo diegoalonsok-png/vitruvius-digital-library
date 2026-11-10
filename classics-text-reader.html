@@ -71,7 +71,7 @@ html body :is(button,a,select,input):focus-visible{outline:2px solid #999!import
 
 
 /* Scrollbars del visor y su índice: gris visible y agarre amplio con el mouse. */
-html, #toc{scrollbar-width:auto;scrollbar-color:#77777e #242427}
+@supports (-moz-appearance:none){html, #toc{scrollbar-width:auto;scrollbar-color:#77777e #242427}}
 html::-webkit-scrollbar,body::-webkit-scrollbar,#toc::-webkit-scrollbar{width:16px;height:16px}
 html::-webkit-scrollbar-track,body::-webkit-scrollbar-track,#toc::-webkit-scrollbar-track{background:#242427}
 html::-webkit-scrollbar-thumb,body::-webkit-scrollbar-thumb,#toc::-webkit-scrollbar-thumb{background:#77777e;border:2px solid #242427;border-radius:10px;min-height:48px}
