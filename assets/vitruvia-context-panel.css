@@ -270,3 +270,29 @@ html[data-theme=light] body.vitruvia-reading #vitruvia-context .cultural-notable
 body.vitruvia-reading #vitruvia-context .cultural-work-stack>[hidden]{display:none!important}
 body.vitruvia-reading #vitruvia-context .cultural-correction{padding:10px;border-left:3px solid #cbb994;background:#242422;color:#e7ddc7;font:500 12px/1.6 Arial,sans-serif;overflow-wrap:anywhere}
 html[data-theme=light] body.vitruvia-reading #vitruvia-context .cultural-correction{background:#ede8db;color:#41351f}
+
+/* A portrait or bust is a traceable source, never a decorative stand-in.
+ * Keep the established Lexicon black/gold palette and right-rail proportions. */
+body.vitruvia-reading #vitruvia-context .architecture-subject-portrait{
+ margin:10px 0 15px;padding:9px 0 13px;border-bottom:1px solid #38383b;
+ display:grid;grid-template-columns:minmax(0,84px) minmax(0,1fr);column-gap:10px;
+ align-items:start;min-width:0;
+}
+body.vitruvia-reading #vitruvia-context .architecture-subject-portrait>a:first-child{
+ grid-column:1;grid-row:1 / span 2;display:block;max-width:84px;
+}
+body.vitruvia-reading #vitruvia-context .architecture-subject-image{
+ width:100%;height:auto;max-height:118px;object-fit:contain;border:1px solid #444;
+}
+body.vitruvia-reading #vitruvia-context .architecture-subject-portrait figcaption{
+ grid-column:2;grid-row:1;max-width:100%;overflow-wrap:anywhere;margin:0;
+}
+body.vitruvia-reading #vitruvia-context .architecture-subject-portrait>a:not(:first-child){
+ grid-column:2;font:11px/1.6 Arial,sans-serif;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-drawings summary{
+ cursor:pointer;list-style:disclosure-closed;text-underline-offset:3px;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-drawings summary:focus-visible{
+ outline:2px solid #d8ba79;outline-offset:4px;
+}
