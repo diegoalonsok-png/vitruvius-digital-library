@@ -21,7 +21,26 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,verified:[]};
+ let verifiedTopics=null,verifiedRequest=null;
+ const topicKey=q=>normalize(q).replace(/^(the|el|la|los|las|le|les) /,"");
+ const verifiedFor=(q,topics)=>{
+  const key=topicKey(q);
+  if(!key)return [];
+  const topic=(topics||[]).find(item=>Array.isArray(item.aliases)&&item.aliases.some(alias=>topicKey(alias)===key));
+  return Array.isArray(topic?.events)?topic.events:[];
+ };
+ function loadVerified(query,token){
+  if(verifiedTopics){state.verified=verifiedFor(query,verifiedTopics);draw();return}
+  if(!verifiedRequest)verifiedRequest=fetch("data/timelines/verified-topics.json",{cache:"force-cache"})
+    .then(r=>{if(!r.ok)throw Error("verified chronology unavailable");return r.json()})
+    .then(j=>{verifiedTopics=Array.isArray(j?.topics)?j.topics:[];return verifiedTopics})
+    .catch(()=>{verifiedRequest=null;return []});
+  verifiedRequest.then(topics=>{
+   if(token!==state.token)return;
+   state.verified=verifiedFor(query,topics);draw();
+  });
+ }
  const article=document.getElementById("vitruvia-article");
  const articleGrid=article?.querySelector(".article-grid");
  const resultsGrid=document.querySelector("#results .results-grid");
@@ -49,7 +68,9 @@
   if(y===null||end!==null&&end<y)return null;
   const title=String(item.title||"").trim().slice(0,130),url=normUrl(item.url);
   if(!title||!url||!types[item.lane])return null;
-  return {...item,year:y,end,title,url,detail:String(item.detail||"").slice(0,600),source:String(item.source||"").slice(0,140)};
+  const desc=item.detail&&typeof item.detail==="object"?
+    (item.detail[lang()]||item.detail.es||item.detail.en||""):item.detail;
+  return {...item,year:y,end,title,url,detail:String(desc||"").slice(0,600),source:String(item.source||"").slice(0,140)};
  }
  function matchedTitle(q,title){
   const terms=normalize(q).split(" ").filter(w=>w.length>2&&!["the","que","los","las","del","des","una","and"].includes(w));
@@ -57,7 +78,8 @@
   return terms.length>0&&terms.every(w=>t.split(" ").some(x=>x===w||w.length>5&&x.startsWith(w)));
  }
  function collect(){
-  let ev=[],a=state.authority;
+  let ev=state.verified.map(e=>({...e,editoriallyVerified:true})),a=state.authority;
+  const hasVerifiedInYear=(lane,y)=>ev.some(e=>e.lane===lane&&e.year===y);
   // All Wikidata authority properties keep their distinct meanings.
   if(a&&/^Q\d+$/.test(a.wikidataId||"")){
    const metadata=[
@@ -74,7 +96,7 @@
    ];
    const url="https://www.wikidata.org/wiki/"+a.wikidataId;
    for(const [field,lane,title,p] of metadata){
-    const y=year(a[field]);if(y==null)continue;
+    const y=year(a[field]);if(y==null||hasVerifiedInYear(lane,y))continue;
     ev.push({year:y,lane,title,source:"Wikidata · "+p,url,
       detail:L("Fecha registrada en la ficha de autoridad ("+p+"). Debe cotejarse la precisión y la referencia del enunciado antes de utilizarla como prueba historiográfica.",
        "Date recorded in the authority record ("+p+"). Verify the statement's precision and references before scholarly use.",
@@ -93,9 +115,11 @@
     image:normUrl(w.image)});
   }
   // Recorded album releaseDate is an edition's date, potentially a reissue.
-  for(const a of state.albums.slice(0,30)){
+  for(const a of state.albums.slice(0,state.verified.length?6:22)){
    const y=Number(String(a.releaseDate||"").slice(0,4));
    if(year(y)==null||!normUrl(a.url))continue;
+   // Verified original-release events take precedence over catalogue reissues.
+   if(state.verified.some(e=>e.lane==="works"&&normalize(e.title)===normalize(a.title)))continue;
    ev.push({year:y,lane:"documents",title:a.title,url:a.url,source:"Apple Music · catálogo de ediciones",
     detail:L("Fecha de edición en el catálogo musical. Puede corresponder a una reedición; no se presenta como año de lanzamiento original.",
      "Music catalogue edition date. It may refer to a reissue; not necessarily first release.",
@@ -103,11 +127,13 @@
     image:normUrl(a.image)});
   }
   // Documents are not biographical milestones. Require strong title match.
+  let bibliographicAdded=0;
   for(const r of state.rows.slice(0,90)){
    if(!["book","openlibrary","googlebook","article","edition","manuscript"].includes(r.type))continue;
    if(!matchedTitle(state.query,r.title))continue;
    const y=Number(r.editionYear??r.year??r.codexDate??null);
-   if(year(y)==null||!normUrl(r.link))continue;
+   if(year(y)==null||!normUrl(r.link)||bibliographicAdded>=10)continue;
+   bibliographicAdded++;
    ev.push({year:y,lane:"documents",title:r.title,url:r.link,source:String(r.source||"Catálogo").slice(0,80),
     detail:L("Fecha del documento o edición recuperada. No debe confundirse con el acontecimiento que estudia ni con la fecha de composición de una obra antigua.",
      "Record or edition date, not the date of the event it studies or the composition of an ancient text.",
@@ -232,9 +258,10 @@
  }
  function reset(q){
   state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
-  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
+  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;state.verified=[];
   place();draw();
   if(!state.query)return;
+  loadVerified(state.query,state.token);
   const token=state.token;
   if(window.VitruviaEntityResolver?.resolve){
    const safe=window.VitruviaEntityResolver.resolve(state.query,lang()).catch(()=>null);
@@ -269,5 +296,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,version:"2.0-universal-sourced"};
+ window.VitruviaAcademicTimeline={collect,version:"2.1-universal-source-bounds"};
 })();
