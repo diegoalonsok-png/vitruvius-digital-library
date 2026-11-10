@@ -144,7 +144,7 @@ def create_overlay(catalog, registry, authorities, standard):
                     "criticalEditionChicago18": None,
                 },
             })
-        editor_refs = base.get("editorialControl", {}).get("chicago18References", [])
+        editor_refs = list(dict.fromkeys(ref.strip() for ref in base.get("editorialControl", {}).get("chicago18References", []) if isinstance(ref, str) and ref.strip()))
         # Do not infer an edition type, stemma or level solely from manuscripts.
         has_l1 = bool(cts and editor_refs and base["authority"]["candidateWorkCodes"])
         # L2 requires a cited editor's explicit siglum and manuscript position.
