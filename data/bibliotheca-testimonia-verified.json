@@ -2264,6 +2264,101 @@
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "early_medieval_witness_not_oldest_certified",
       "rights": "Sin imágenes incorporadas."
+    },
+    {
+      "id": "isidore-stgall-1394-fragment",
+      "workIds": [
+        "isidore-etymologiae"
+      ],
+      "title": "Isidoro, Etymologiae I.37.5–10 — Cod. Sang. 1394, fragmento",
+      "library": "St. Gallen, Stiftsbibliothek",
+      "shelfmark": "Cod. Sang. 1394, pp. 123–124",
+      "date": "finales del siglo VIII o principios del IX (c. 780–820)",
+      "dateStart": 780,
+      "language": "la",
+      "witnessKind": "direct_original_latin",
+      "material": "Pergamino; un folio fragmentario; minúscula anglosajona",
+      "folioRange": "pp. 123–124 (fragmento reencuadernado)",
+      "coverage": "Etymologiae I.37.5–10 únicamente. No es un códice completo de la obra.",
+      "record": "https://www.e-codices.ch/en/description/csg/1394/",
+      "viewer": "https://www.e-codices.ch/en/list/one/csg/1394",
+      "verificationUrl": "https://www.e-codices.ch/en/description/csg/1394/",
+      "verification": "Stiftsbibliothek St. Gallen, catálogo e-codices; Earlier Latin Manuscripts, CLA VII 983.",
+      "cataloguingStatus": "Catalogado por institución y Earlier Latin Manuscripts; uno de los fragmentos tempranos documentados, NO probado como el más antiguo del mundo.",
+      "verificationLevel": "institutional_catalogue_checked_2026-11-10",
+      "priorityClaim": "early_fragment_not_absolute_oldest",
+      "rights": "e-codices: revisar licencia de la imagen antes de reproducción."
+    },
+    {
+      "id": "isidore-stgall-233",
+      "workIds": [
+        "isidore-etymologiae"
+      ],
+      "title": "Isidoro, Etymologiae VI–VIII y XII–XV — Cod. Sang. 233",
+      "library": "St. Gallen, Stiftsbibliothek",
+      "shelfmark": "Cod. Sang. 233",
+      "date": "principios del siglo IX, hacia 800",
+      "dateStart": 800,
+      "language": "la",
+      "witnessKind": "direct_original_latin",
+      "coverage": "Etymologiae VI–VIII y XII–XV; otros libros no presentes en este códice.",
+      "record": "https://www.e-codices.ch/en/list/one/csg/0233",
+      "viewer": "https://www.e-codices.ch/en/list/one/csg/0233",
+      "manifest": "https://www.e-codices.unifr.ch/metadata/iiif/csg-0233/manifest.json",
+      "verificationUrl": "https://iiif.biblissima.fr/collections/manifest/ffad3acb5fa8c3fbeeb2254bc9d618ef5b0cbc60",
+      "verification": "Biblissima IIIF record, source e-codices, manuscript dated in or shortly after 800.",
+      "cataloguingStatus": "Testimonio carolingio temprano, de cobertura parcial; visor digital y manifest identificados. No se equipara con los veinte libros completos.",
+      "verificationLevel": "institutional_catalogue_checked_2026-11-10",
+      "priorityClaim": "early_partial_codex_not_global_oldest",
+      "rights": "e-codices / Stiftsbibliothek St. Gallen; licencia indicada CC BY-NC 4.0 en agregador."
+    },
+    {
+      "id": "isidore-stgall-231",
+      "workIds": [
+        "isidore-etymologiae"
+      ],
+      "title": "Isidoro, Etymologiae I–X — Cod. Sang. 231",
+      "library": "St. Gallen, Stiftsbibliothek",
+      "shelfmark": "Cod. Sang. 231",
+      "date": "c. 880–890",
+      "dateStart": 880,
+      "language": "la",
+      "witnessKind": "direct_original_latin",
+      "material": "Pergamino; 378 páginas; 27 × 21,5 cm; minúscula carolina",
+      "folioRange": "pp. 4–375: Etymologiae I–X",
+      "coverage": "Libros I–X; forma unidad codicológica con Cod. Sang. 232, no debe describirse como obra completa por sí solo.",
+      "record": "https://www.e-codices.ch/en/list/one/csg/0231",
+      "viewer": "https://www.e-codices.ch/en/list/one/csg/0231",
+      "manifest": "https://e-codices.ch/metadata/iiif/csg-0231/manifest.json",
+      "verificationUrl": "https://e-codices.ch/en/description/csg/0231/Hendrix",
+      "verification": "e-codices, descripción de Anton von Euw (2008); Evina Steinová, Two Carolingian Redactions of Isidore's Etymologiae (2021).",
+      "cataloguingStatus": "Digitalización y catálogo institucional confirmados, con DOI 10.5076/e-codices-csg-0231. Datación 880–890. No confundir páginas digitalizadas y folios.",
+      "verificationLevel": "institutional_catalogue_checked_2026-11-10",
+      "priorityClaim": "later_partial_carolingian_codex",
+      "rights": "e-codices: revisar términos para cualquier reproducción comercial."
+    },
+    {
+      "id": "boethius-harley-2685",
+      "workIds": [
+        "boethius-consolatio"
+      ],
+      "title": "Boecio, Consolatio philosophiae I–V — Harley MS 2685",
+      "library": "London, British Library",
+      "shelfmark": "Harley MS 2685",
+      "date": "último cuarto del siglo IX (c. 875–899)",
+      "dateStart": 875,
+      "language": "la",
+      "witnessKind": "direct_original_latin",
+      "material": "Códice de pergamino",
+      "folioRange": "ff. 1r–23v",
+      "coverage": "Los cinco libros de Consolatio philosophiae, con glosas contemporáneas y del siglo X; otros textos de Fulgencio y Marciano Capela siguen en el volumen.",
+      "record": "https://searcharchives.bl.uk/?f%5Blanguage_ssim%5D%5B%5D=Latin&f%5Bmaterial_type_si%5D%5B%5D=Archives+and+Manuscripts&f%5Brelated_places_ssim%5D%5B%5D=Western+Germany&f%5Brelated_subjects_ssim%5D%5B%5D=Philosophy&f%5Burl_non_blank_si%5D%5B%5D=Yes+%28available%29&f%5Burl_stub_si%5D%5B%5D=iiif.bl.uk&per_page=50&search_field=all_fields&sort=title_for_sort_si+asc%2C+scope_and_content_for_sort_si+asc%2C+reference_for_sort_si+asc",
+      "verificationUrl": "https://searcharchives.bl.uk/?f%5Brelated_subjects_ssim%5D%5B%5D=Philosophy&f%5Burl_non_blank_si%5D%5B%5D=Yes+%28available%29&f%5Burl_stub_si%5D%5B%5D=iiif.bl.uk&per_page=20&search_field=all_fields&sort=title_for_sort_si+asc%2C+scope_and_content_for_sort_si+asc%2C+reference_for_sort_si+asc",
+      "verification": "British Library Archives and Manuscripts Catalogue, Harley MS 2685; Cambridge University, Restoring Lost Songs Boethius Manuscript Index.",
+      "cataloguingStatus": "Signatura, fecha y folios acreditados en búsqueda institucional individualizada; URL proporcionada es página de resultados, no ficha individual ni manifest IIIF. No se declara el más antiguo sin comparar todos los testigos.",
+      "verificationLevel": "institutional_catalogue_checked_2026-11-10",
+      "priorityClaim": "early_medieval_witness_not_absolute_oldest",
+      "rights": "British Library; digitalización y reproducción sujetas a condiciones."
     }
   ],
   "editions": [
