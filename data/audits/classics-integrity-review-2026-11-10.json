@@ -48,10 +48,10 @@
   ],
   "structuralStatus": "Validación parcial de estructuras y enlaces internos, NO aprobación filológica del corpus",
   "manuscriptAudit": {
-    "recordsAfterExpansion": 26,
-    "worksWithLinkedRecords": 35,
-    "worksWithoutVerifiedWitnessInRegistry": 187,
-    "iiifManifestLinks": 15
+    "recordsAfterExpansion": 27,
+    "worksWithLinkedRecords": 36,
+    "worksWithoutVerifiedWitnessInRegistry": 186,
+    "iiifManifestLinks": 16
   },
   "addedWitnesses": [
     {
@@ -107,5 +107,5 @@
     "Completar identificadores CTS a nivel de edición únicamente con fuente primaria o catálogo institucional; PHI/TLG son códigos de obra.",
     "Corregir la cobertura de bibliografía Chicago 18 edición por edición; el título de una obra no sustituye la referencia de su edición."
   ],
-  "revision": "2026-11-10: Updated after direct TEI edition-URN header verification and Chicago 18 source transcription for Augustine."
+  "revision": "2026-11-10: Updated after direct TEI edition-URN header verification and Chicago 18 source transcription for Augustine. Updated dynamically against concurrently expanded manuscript registry."
 }
