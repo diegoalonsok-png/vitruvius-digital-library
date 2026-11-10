@@ -36,6 +36,26 @@ test('all book-label forms retrieve the same actual Book IV corpus',()=>{
   assert.deepEqual(result.results.map(p=>p.locus),expected,query);
  }
 });
+test('prefacion, prefación and prefacio resolve to real prefatory loci',()=>{
+ const corpus=JSON.parse(readFileSync(new URL('../data/structured/recensio-es.json',import.meta.url)));
+ const all=corpus.passages.filter(p=>p.chapter==='praef').map(p=>p.locus);
+ const second=corpus.passages.filter(p=>p.book===2&&p.chapter==='praef').map(p=>p.locus);
+ for(const query of ['prefacion','prefación','prefacio','praefatio','proemio']){
+  assert.deepEqual(parseLocus(query),{book:null,chapter:'praef',section:null},query);
+  const result=searchCorpus([corpus],{query,kind:'words',language:'la'});
+  assert.deepEqual(result.results.map(p=>p.locus),all,query);
+ }
+ for(const query of ['prefacion libro II','prefación del libro II','libro 2 prefacion','II.prefacion','2.praef']){
+  assert.deepEqual(parseLocus(query),{book:2,chapter:'praef',section:null},query);
+  assert.deepEqual(searchCorpus([corpus],{query,kind:'words',language:'la'}).results.map(p=>p.locus),second,query);
+ }
+ for(const query of ['II.prefacion.1','II.prefación.1','prefacion II.1','2.praef.1']){
+  assert.deepEqual(parseLocus(query),{book:2,chapter:'praef',section:1},query);
+  const result=searchCorpus([corpus],{query,kind:'locus',language:'la'});
+  assert.deepEqual(result.results.map(p=>p.locus),['2.praef.1'],query);
+ }
+});
+
 test('a modern homonymous author is not bibliography about the ancient Lucretius',()=>{
  assert.equal(accepts({type:'article',title:'Inteligencia artificial y Derechos fundamentales',author:'Lucrecio Rebollo Delgado'},'Lucrecio'),false);
  assert.equal(accepts({type:'article',title:'Jurisprudencia constitucional',author:'Lucrecio Rebollo Delgado'},'Lucrecio'),false);
