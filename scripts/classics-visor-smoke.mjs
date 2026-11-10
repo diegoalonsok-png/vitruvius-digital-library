@@ -465,7 +465,10 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    await p.locator('#sync-start').click();
    assert((await p.locator('#sync-position').innerText()).startsWith('1 / '),'Return to beginning failed');
    await p.locator('#left-night').click();
-   await p.waitForFunction(()=>document.getElementById('pane-left')?.contentDocument?.querySelector('.reader')?.style.backgroundColor==='rgb(23, 38, 51)',{timeout:7000});
+   await p.waitForFunction(()=>{
+    const reader=document.getElementById('pane-left')?.contentDocument?.querySelector('.reader');
+    return reader&&reader.ownerDocument.defaultView.getComputedStyle(reader).backgroundColor==='rgb(23, 38, 51)';
+   },null,{timeout:7000});
    await p.locator('#left-invert').click();
    assert.notEqual(await p.locator('#left-bg').inputValue(),'#172633','Invert colors button does not change the background');
    await p.locator('#right-larger').click();
