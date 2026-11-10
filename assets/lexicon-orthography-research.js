@@ -81,7 +81,7 @@ async function run(){
  if(!["grc","la"].includes(language)){status.textContent="Seleccione griego antiguo o latín. La escritura hebrea y aramea se consulta por separado en Conceptus.";return}
  showVariants(q);status.textContent="Consultando las transcripciones alojadas y sus referencias…";
  const go=$("lx-orth-go");go.disabled=true;
- let failed=0,processed=0,count=0;
+ let failed=0,processed=0,count=0,occurrences=0,matchingEditions=0;
  try{
   const registry=await registered();if(id!==serial)return;
   const entries=(registry.entries||[]).filter(e=>e.language===language&&["json-passages","structured-bilingual","html-text"].includes(e.format));
@@ -99,15 +99,18 @@ async function run(){
     processed++;
     const hits=[];
     for(const p of item.passages){
-     const m=engine.attestations(p.text,q,mode,language,3);
-     if(!m.length)continue;
-     hits.push({p,m});
+     const stats=engine.attestationStats(p.text,q,mode,language,3);
+     if(!stats.count)continue;
+     hits.push({p,m:stats.hits,occurrences:stats.count});
     }
     if(!hits.length)continue;
     count+=hits.length;
+    matchingEditions++;
+    const editionOccurrences=hits.reduce((sum,hit)=>sum+hit.occurrences,0);
+    occurrences+=editionOccurrences;
     const article=element("article",undefined,"lx-orth-edition");
     article.append(element("h4",item.entry.author+" · "+item.entry.title+" · "+langNames[language]));
-    article.append(element("p",hits.length+" pasajes con coincidencia · edición: "+(item.entry.edition||"ver fuente editorial"),"lx-orth-meta"));
+    article.append(element("p",editionOccurrences+" ocurrencias en "+hits.length+" pasajes · edición: "+(item.entry.edition||"ver fuente editorial"),"lx-orth-meta"));
     for(const hit of hits.slice(0,6)){
      const excerpt=element("div",undefined,"lx-orth-excerpt");
      const a=element("a","Locus "+(hit.p.locus||"sin locus editorial")+" · abrir fuente");
@@ -122,12 +125,21 @@ async function run(){
    }
   }
   results.replaceChildren(output);
-  status.textContent=processed+" ediciones leídas · "+count+" pasajes coincidentes · "+failed+" ediciones no disponibles. "+(count?"Cada vínculo conduce al texto fuente.":"No hallar la forma no demuestra ausencia en ediciones no indexadas.");
+  status.textContent=processed+" ediciones leídas · "+matchingEditions+" con coincidencias · "+occurrences+" ocurrencias en "+count+" pasajes · "+failed+" ediciones no disponibles. "+(count?"Frecuencia de formas buscadas en transcripciones, no de lemas; cada vínculo conduce a la fuente.":"La ausencia en textos consultados no demuestra ausencia en todo el corpus.");
  }catch(error){if(id===serial)status.textContent="No fue posible completar la consulta: "+error.message}
  finally{if(id===serial)go.disabled=false}
 }
 $("lx-orth-go").addEventListener("click",run);
-input.addEventListener("input",()=>{serial++;status.textContent="La consulta cambió. Pulse «Consultar ediciones registradas» para actualizar.";results.replaceChildren()});
+function invalidate(){
+ serial++;
+ $("lx-orth-go").disabled=false;
+ status.textContent="La consulta cambió. Pulse «Consultar ediciones registradas» para actualizar.";
+ results.replaceChildren();
+ variants.replaceChildren();
+}
+input.addEventListener("input",invalidate);
+$("lx-orth-mode").addEventListener("change",invalidate);
+$("lx-orth-lang").addEventListener("change",invalidate);
 const p=new URLSearchParams(location.search);
 if(p.get("orth")==="1"&&p.get("q")){$("lx-orth-details").open=true;const set=()=>{if(!input.value)input.value=p.get("q");run()};setTimeout(set,80)}
 })();
