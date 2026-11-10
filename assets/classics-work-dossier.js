@@ -149,6 +149,13 @@ function msBlock(dest,ms,i){
 }
 function renderWitness(dest,w,d){
  section(dest,"Testimonios, códices e imágenes");
+ if(w.manuscript?.isIndependentAncientWork===false){
+  dest.append(html("p","cwd-muted",w.manuscript.researchNote||"Edición moderna o estudio; no es un códice antiguo independiente."));
+  const back=html("p","cwd-links");
+  if(w.manuscript.referencedAncientWorkId)addA(back,"Consultar códices de la obra clásica de referencia ↗","classics-work-record.html?work="+encodeURIComponent(w.manuscript.referencedAncientWorkId));
+  dest.append(back);
+  return;
+ }
  const list=witnessesFor(d,w.id);
  if(list.length){
   row(dest,"Cobertura verificada",list.length+" testimonio(s) vinculado(s) en el registro de Vitruvia");
@@ -170,6 +177,15 @@ function renderWitness(dest,w,d){
    dest.append(block);
   }
  }else if(ms.status&&list.length===0)row(dest,"Estado documental",ms.status);
+ const supplemental=html("p","cwd-links");
+ addA(supplemental,"Biblissima · exploración general de otros testigos ↗","https://portail.biblissima.fr/");
+ if(w.language==="grc")addA(supplemental,"Pinakes · catálogo de manuscritos griegos ↗","https://pinakes.irht.cnrs.fr/");
+ if(w.links?.gallica)addA(supplemental,"Gallica · búsqueda bibliográfica, no codex asignado ↗",w.links.gallica);
+ if(list.length&&supplemental.childNodes.length){
+  section(dest,"Fuentes alternativas para buscar otros testigos");
+  dest.append(html("p","cwd-muted","Estos enlaces sirven para ampliar la investigación, pero no acreditan un códice individual hasta comprobar su signatura y contenido."));
+  dest.append(supplemental);
+ }
  if(!list.length){
   dest.append(html("p","cwd-muted","Sin manuscrito individual acreditado en esta ficha. Los enlaces de búsqueda siguientes NO equivalen a visores ni a testigos asignados."));
   const links=html("p","cwd-links");
