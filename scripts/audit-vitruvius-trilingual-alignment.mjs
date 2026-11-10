@@ -34,6 +34,9 @@ const parse=source=>{
   emptyLatin:d.passages.filter(x=>!x.latin?.trim()).map(x=>x.locus),
   emptyTranslation:d.passages.filter(x=>!x.translation?.trim()).map(x=>x.locus)};
 };
+const edeReference=JSON.parse(fs.readFileSync(path.join(root,'data/structured/bude-bibliographic-witnesses.json'),'utf8'));
+if(edeReference.volumes?.length!==10||edeReference.fullLatinTextAvailableInRepository!==false)
+ throw new Error('Registro Budé incompleto o estado del texto incorrecto');
 const eds=sources.map(parse);
 const commonWords=(a,b)=>{
  const A=new Set(wordTokens(a)),B=new Set(wordTokens(b));
@@ -115,6 +118,15 @@ const report={
  schema:'vitruvius-trilingual-alignment-preliminary-v1',
  generatedAt:new Date().toISOString(),
  editorialRule:'Castellano V514 como referencia inicial; francés V554 edición consolidada; inglés V297 más breve y con menor revisión. Las tres lecturas latinas necesitan cotejo de edición antes de resolver discrepancias.',
+ independentCriticalWitnesses:{
+  krohn:'data/text/krohn-1912.json',rose:'data/text/rose-1899.json',
+  bude:{registry:'data/structured/bude-bibliographic-witnesses.json',
+   tenVolumes:edeReference.volumes.length,compactEdition:edeReference.independentCompactEdition.year,
+   contentStatus:edeReference.textCollationStatus,
+   scoresCalculated:false,
+   scope:'Budé es referencia bibliográfica para cotejar lecturas puntuales con acceso autorizado. No se comparó su texto protegido.'
+  }
+ },
  scope:'Comparación de JSON segmentados por locus y latín; NO analiza aún de forma exhaustiva el aparato crítico de DOCX/PDF y NO certifica traducciones.',
  editions:eds.map(e=>({id:e.id,language:e.language,version:e.version,
   passages:e.passages.length,chapters:e.chapters.size,emptyLatin:e.emptyLatin,
@@ -138,6 +150,7 @@ const output=path.join(root,'reports','vitruvius-trilingual-alignment.json');
 fs.mkdirSync(path.dirname(output),{recursive:true});
 fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n','utf8');
 console.log('COTEJO PRELIMINAR ES/FR/EN');
+console.log('Testigos: Krohn y Rose OCR indexados; Budé I–X + Gros 2015 catalogados, pendiente de cotejo textual autorizado.');
 for(const edition of report.editions)
  console.log(edition.id+' '+edition.passages+' loci / '+edition.chapters+' capítulos; transcripciones latinas vacías '+edition.emptyLatin.length);
 for(const c of pairing)console.log(c.left+' vs '+c.right+': '+c.sharedLocusIds+' ID comunes; '+c.uniqueToLeftCount+' exclusivos izquierda, '+c.uniqueToRightCount+' exclusivos derecha; '+c.normalizedLatinDifferentAtSharedId+' lecturas latinas distintas (no son errores confirmados).');
