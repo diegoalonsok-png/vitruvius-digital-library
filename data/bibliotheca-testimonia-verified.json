@@ -1770,6 +1770,113 @@
           "status": "identified"
         }
       ]
+    },
+    {
+      "id": "homer-odyssey-laur-plut32-24",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "title": "Homeri Odyssea — Laurentianus Plut. 32.24",
+      "library": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 32.24",
+      "language": "grc",
+      "date": "s. X (0901–1000)",
+      "dateStart": 901,
+      "dateStartBasis": "Datación catalográfica 0901–1000; no es datación autógrafa.",
+      "coverage": "Ὀδύσσεια (Odisea); el registro identifica el poema. La integridad versículo a versículo y las lagunas requieren colación independiente.",
+      "material": "Pergamino (membrana); 234 hojas (cc.); 145 × 200 mm",
+      "record": "https://iiif.biblissima.fr/collections/manifest/0458bd9b9a6ac2ab339571c823145a36b8a3fc7e",
+      "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/735325",
+      "manifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:735325/manifest.json",
+      "verification": "Biblissima IIIF Collections: autor Homère, título Homeri Odyssea, Plut. 32.24, siglo X, 234 cc.; catálogo digital Biblioteca Medicea Laurenziana",
+      "verificationUrl": "https://iiif.biblissima.fr/collections/manifest/0458bd9b9a6ac2ab339571c823145a36b8a3fc7e",
+      "viewerKind": "institutional_facsimile",
+      "accessStatus": "Visor de institución con manifiesto IIIF publicado; disponibilidad externa sujeta al servidor.",
+      "witnessKind": "direct_original_greek",
+      "rights": "Descripción Biblissima «Pubblico»; consultar condiciones del custodio antes de reutilizar imágenes. No alojar imágenes en GitHub.",
+      "cataloguingStatus": "Signatura, título, datación y descripción material confirmados en metadatos de biblioteca. No se declara testigo más antiguo del mundo.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha en Biblissima",
+          "url": "https://iiif.biblissima.fr/collections/manifest/0458bd9b9a6ac2ab339571c823145a36b8a3fc7e",
+          "type": "catalog"
+        },
+        {
+          "title": "Manifiesto IIIF del custodio",
+          "url": "https://cdm21059.contentdm.oclc.org/iiif/plutei:735325/manifest.json",
+          "type": "iiif"
+        }
+      ]
+    },
+    {
+      "id": "homer-odyssey-heidelberg-cpg45",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "title": "Homeri Odyssea — Codex Palatinus graecus 45",
+      "library": "Heidelberg, Universitätsbibliothek Heidelberg",
+      "shelfmark": "Cod. Pal. graec. 45",
+      "language": "grc",
+      "date": "s. XIV",
+      "dateStart": 1301,
+      "dateStartBasis": "Catálogo codicológico y agregador Biblissima, «14. Jahrhundert».",
+      "coverage": "Odisea libros I–XXIV, desde f. 1r (libro I) hasta f. 214v (libro XXIV), con escolios; se enumeran inicios de libros; no se infiere integridad de cada verso.",
+      "folioRange": "f. 1r – al menos f. 224v; libro XXIV desde f. 214v; material anexo en ff. 225r ss.",
+      "record": "https://iiif.biblissima.fr/collections/manifest/65a6a766bf90f053758b546ac44f29f074a32057",
+      "viewer": "https://digi.ub.uni-heidelberg.de/diglit/cpgraec45",
+      "manifest": "https://digi.ub.uni-heidelberg.de/diglit/iiif/cpgraec45/manifest.json",
+      "verification": "Biblissima y Universitätsbibliothek Heidelberg: la ficha desglosa los 24 libros por foliación.",
+      "verificationUrl": "https://iiif.biblissima.fr/collections/manifest/65a6a766bf90f053758b546ac44f29f074a32057",
+      "academicId": "Pinakes diktyon 32456",
+      "witnessKind": "direct_original_greek",
+      "viewerKind": "institutional_facsimile",
+      "accessStatus": "Visor Heidelberg y manifiesto IIIF publicados.",
+      "rights": "Consultas y reutilización según UB Heidelberg; no alojar facsímil en GitHub.",
+      "cataloguingStatus": "Contenido y comienzos de los 24 cantos descritos en catálogo; foliación terminal exacta por comprobar.",
+      "alternativeLinks": [
+        {
+          "title": "Catálogo Pinakes",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/32456/",
+          "type": "catalog"
+        },
+        {
+          "title": "Ficha Biblissima",
+          "url": "https://iiif.biblissima.fr/collections/manifest/65a6a766bf90f053758b546ac44f29f074a32057",
+          "type": "catalog"
+        }
+      ]
+    },
+    {
+      "id": "homer-odyssey-laur-plut32-23",
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "title": "Homeri Odyssea — Laurentianus Plut. 32.23",
+      "library": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 32.23",
+      "language": "grc",
+      "date": "s. XV (1401–1500)",
+      "dateStart": 1401,
+      "dateStartBasis": "Biblissima, datación de manuscrito en el intervalo 1401–1500.",
+      "coverage": "Ὀδύσσεια (Odisea) en copia manuscrita griega; alcance y variantes no sometidos a collatio propia.",
+      "material": "Papel (carta); 282 hojas; 135 × 215 mm",
+      "record": "https://iiif.biblissima.fr/collections/manifest/6045dff3bafa36133d66808966041fc118746e54",
+      "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/631374",
+      "manifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:631374/manifest.json",
+      "verification": "Biblissima IIIF Collections, Plut.32.23; Biblioteca Medicea Laurenziana, digitalización publicada.",
+      "verificationUrl": "https://iiif.biblissima.fr/collections/manifest/6045dff3bafa36133d66808966041fc118746e54",
+      "witnessKind": "direct_original_greek",
+      "viewerKind": "institutional_facsimile",
+      "accessStatus": "Visor BML y manifiesto IIIF enlazados; su disponibilidad se comprobará periódicamente.",
+      "rights": "Consultar derechos de reproducción de BML; no almacenar imágenes ni códices localmente.",
+      "cataloguingStatus": "No se confunde copia humanística del siglo XV con testimonio más antiguo.",
+      "alternativeLinks": [
+        {
+          "title": "Ficha bibliográfica Biblissima",
+          "url": "https://iiif.biblissima.fr/collections/manifest/6045dff3bafa36133d66808966041fc118746e54",
+          "type": "catalog"
+        }
+      ]
     }
   ],
   "editions": [
