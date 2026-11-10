@@ -84,7 +84,7 @@ function applyLanguage(){
  const reset=$("cwd-reset");if(reset)reset.textContent=t.reset;
  const custom=$("cwd-custom-label");if(custom)custom.textContent=t.custom;
  const status=$("work-record-status");if(status&&/^(Consultando el catálogo|Loading the academic catalogue|Chargement du catalogue)/.test(status.textContent))status.textContent=t.loading;
- for(const r of document.querySelectorAll("#work-record h3,#work-record .cwd-row strong")){if(!r.dataset.cwdOriginal)r.dataset.cwdOriginal=r.textContent;const original=r.dataset.cwdOriginal.replace(/:\s*$/,"");const trans=labels[original];r.textContent=lang==="es"?r.dataset.cwdOriginal:trans?trans[lang==="en"?0:1]+(r.dataset.cwdOriginal.endsWith(": ")||r.dataset.cwdOriginal.endsWith(":")?": ":""):r.dataset.cwdOriginal}
+ for(const r of document.querySelectorAll("#work-record h3,#work-record .cwd-row strong")){if(!r.dataset.cwdOriginal)r.dataset.cwdOriginal=r.textContent;const original=r.dataset.cwdOriginal.replace(/:\s*$/,"");const trans=labels[original];{const next=lang==="es"?r.dataset.cwdOriginal:trans?trans[lang==="en"?0:1]+(r.dataset.cwdOriginal.endsWith(": ")||r.dataset.cwdOriginal.endsWith(":")?": ":""):r.dataset.cwdOriginal;if(r.textContent!==next)r.textContent=next}}
  themePaint();
  document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:lang}}));
 }
@@ -96,7 +96,7 @@ function translateDossier(){
   const orig=node.dataset.cwdOriginal;
   const raw=orig.replace(/:\s*$/,"");const trans=labels[raw];
   const suffix=/\:\s*$/.test(orig)?": ":"";
-  node.textContent=lang==="es"?orig:(trans?trans[lang==="en"?0:1]+suffix:orig);
+  {const next=lang==="es"?orig:(trans?trans[lang==="en"?0:1]+suffix:orig);if(node.textContent!==next)node.textContent=next;}
  }
  applying=false;
 }
