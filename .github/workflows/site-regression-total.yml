@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/audit-site-cross-data.mjs'
+      - 'scripts/audit-vitruvius-trilingual-alignment.mjs'
       - 'scripts/test-indices-locorum-battery.mjs'
       - '.github/workflows/site-regression-total.yml'
   workflow_dispatch:
@@ -33,6 +34,7 @@ jobs:
           : > reports/site-regression-failures.txt
           checks=(
             "scripts/audit-site-cross-data.mjs"
+            "scripts/audit-vitruvius-trilingual-alignment.mjs"
             "scripts/audit-site-links.mjs"
             "scripts/test-public-site-integrity.mjs"
             "scripts/test-classical-catalogue-integrity.mjs"
@@ -108,6 +110,7 @@ jobs:
           name: auditoria-integral-sitio-y-buscadores
           path: |
             reports/site-audit-unified.json
+            reports/vitruvius-trilingual-alignment.json
             reports/indices-locorum-battery.json
             reports/site-regression-failures.txt
           if-no-files-found: warn
