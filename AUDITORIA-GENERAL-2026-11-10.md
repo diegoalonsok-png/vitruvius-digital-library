@@ -17,6 +17,7 @@
 | Cobertura de originales | El manifiesto de conciliación declara **222 obras**, **181 originales alojados indexados**, **28 originales remotos** y **13 originales sin índice** | Son métricas del manifiesto, no garantía de integridad de cada obra ni de edición crítica |
 | Manuscritos / facsímiles | Navegación IIIF y PDF comprobada en casos del conjunto de regresión | Resta validar signaturas, disponibilidad de proveedores y derechos individualmente |
 | Interfaz secundaria | Barra compartida de idioma / tema existe en el código de páginas secundarias | Su cobertura y calidad visual integral en móvil no están acreditadas |
+| Contraste WCAG | El barrido automatizado de tema claro/oscuro reportó **5.890 instancias** por debajo del umbral de 3:1; incluye repeticiones entre vistas y no constituye auditoría manual | Priorizar estilos de textos secundarios, enlaces y controles; no alterar globalmente el aspecto de folios ni la personalización del lector |
 | Buscador semántico | Integración y fallback existen en el proyecto | No se certifica funcionamiento E5 universal, precisión ni tiempos de descarga por dispositivo |
 
 ## Acciones aplicadas en esta revisión
