@@ -465,10 +465,27 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    await p.locator('#sync-start').click();
    assert((await p.locator('#sync-position').innerText()).startsWith('1 / '),'Return to beginning failed');
    await p.locator('#left-night').click();
-   await p.waitForFunction(()=>{
-    const reader=document.getElementById('pane-left')?.contentDocument?.querySelector('.reader');
-    return reader&&reader.ownerDocument.defaultView.getComputedStyle(reader).backgroundColor==='rgb(23, 38, 51)';
-   },null,{timeout:7000});
+   try{
+    await p.waitForFunction(()=>{
+     const reader=document.getElementById('pane-left')?.contentDocument?.querySelector('.reader');
+     return reader&&reader.ownerDocument.defaultView.getComputedStyle(reader).backgroundColor==='rgb(23, 38, 51)';
+    },null,{timeout:7000});
+   }catch(error){
+    const state=await p.evaluate(()=>{
+     const frame=document.getElementById('pane-left');
+     const doc=frame?.contentDocument;
+     const reader=doc?.querySelector('.reader');
+     const style=reader&&doc.defaultView.getComputedStyle(reader);
+     return {colorInput:document.getElementById('left-bg')?.value,
+      leftLanguage:document.getElementById('left')?.value,
+      frameUrl:frame?.src,frameLang:doc?.getElementById('language')?.value,
+      currentLocus:doc?.getElementById('current-locus')?.textContent,
+      cssColor:style?.backgroundColor,cssVariable:style?.getPropertyValue('--reader-bg'),
+      inlineVariable:reader?.style.getPropertyValue('--reader-bg'),
+      status:document.getElementById('status')?.textContent};
+    });
+    throw new Error(error.message+'; reader-appearance-diagnostic='+JSON.stringify(state));
+   }
    await p.locator('#left-invert').click();
    assert.notEqual(await p.locator('#left-bg').inputValue(),'#172633','Invert colors button does not change the background');
    await p.locator('#right-larger').click();
