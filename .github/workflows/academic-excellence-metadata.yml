@@ -5,6 +5,9 @@ on:
   push:
     branches: [main]
     paths:
+      - 'scripts/test-perseus-provenance.mjs'
+      - 'data/perseus-provenance-audit.json'
+      - 'perseus-procedencia-textual.html'
       - 'scripts/audit-academic-excellence.mjs'
       - 'data/classics-corpus/translation-availability-222.json'
       - 'data/classics-corpus/search-registry.json'
@@ -18,6 +21,9 @@ on:
       - '.github/workflows/academic-excellence-metadata.yml'
   pull_request:
     paths:
+      - 'scripts/test-perseus-provenance.mjs'
+      - 'data/perseus-provenance-audit.json'
+      - 'perseus-procedencia-textual.html'
       - 'scripts/audit-academic-excellence.mjs'
       - 'data/classics-corpus/translation-availability-222.json'
       - 'data/classics-corpus/search-registry.json'
@@ -46,6 +52,8 @@ jobs:
         run: node --check scripts/audit-academic-excellence.mjs
       - name: Auditar originales, notas, DOI, visores y bibliografía
         run: node scripts/audit-academic-excellence.mjs
+      - name: Validar trazabilidad CTS, atribución y recuentos Perseus
+        run: node scripts/test-perseus-provenance.mjs
       - name: Guardar informe reproducible, incluso con advertencias editoriales
         if: always()
         uses: actions/upload-artifact@v4
