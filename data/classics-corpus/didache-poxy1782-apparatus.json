@@ -1,0 +1,149 @@
+{
+  "schema": "vitruvius-manuscript-collatio-v1",
+  "workId": "didache",
+  "title": "Διδαχὴ τῶν δώδεκα ἀποστόλων",
+  "status": "published_secondary_collation_reviewed_not_direct_transcription",
+  "updated": "2026-11-10",
+  "scope": "Tanda de Did. 1.3d–1.4; otras zonas de P. Oxy. XV 1782, incluidos Did. 2.7b–3.2a, sin lecturas propias cotejadas.",
+  "editorialCaution": "Comparación de lecturas impresas tomadas del cuadro académico de S. J. Wilhite. No significa cotejo autóptico de los originales H54 y P. Oxy. XV 1782, ni reproducción diplomática del fragmento ni reconstrucción integral del aparato.",
+  "baseText": {
+    "id": "wikisource-grc",
+    "title": "Διδαχή, transcripción de lectura griega en Wikisource",
+    "source": "data/classics-corpus/didache-grc-verse-index.json",
+    "editorialStatus": "lectura_editada_no_diplomatica"
+  },
+  "witnesses": [
+    {
+      "id": "H",
+      "label": "H",
+      "msId": "didache-hierosolymitanus-54",
+      "name": "Codex Hierosolymitanus 54",
+      "date": "1056",
+      "language": "grc",
+      "extent": "Did. 1–16, ff. 76–81 según Pinakes",
+      "sourceType": "manuscript_transcribed_in_published_scholarship",
+      "viewer": "https://www.loc.gov/item/00279389694-jo/",
+      "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/35291/"
+    },
+    {
+      "id": "Poxy",
+      "label": "P. Oxy. XV 1782",
+      "msId": "didache-poxy-xv-1782",
+      "name": "Codicillus Oxyrhynchus 1782 (pergamino)",
+      "date": "s. IV ex.",
+      "language": "grc",
+      "extent": "Dos hojas; Did. 1.3c–1.4a, 2.7b–3.2a",
+      "sourceType": "secondary_published_transcription",
+      "viewer": "classics-facsimile-gallery.html?ms=didache-poxy-xv-1782",
+      "catalogue": "https://4care-skos.mf.no/4care-artefacts/260/"
+    }
+  ],
+  "comparisonSource": {
+    "title": "Shawn J. Wilhite, Introduction to the Didache, in The Didache: A Commentary",
+    "authors": "Shawn J. Wilhite",
+    "publication": "James Clarke & Co, 2020 (extracto público)",
+    "page": "p. 8, tabla comparativa H54 / POxy 1782, líneas 1–15",
+    "url": "https://www.jamesclarke.co/storage/extracts/didache-ch1.pdf",
+    "supportingReferences": [
+      {
+        "label": "4CARE artefact 260 — identificación material y edición príncipe",
+        "url": "https://4care-skos.mf.no/4care-artefacts/260/"
+      },
+      {
+        "label": "Bentley Layton, The Sources, Date and Transmission of Didache 1.3b–2.1",
+        "url": "https://www.cambridge.org/core/journals/harvard-theological-review/article/abs/sources-date-and-transmission-of-didache-13b21/88EA36C9320BC22D892A2755EAB072C0"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "id": "did-1-3-a",
+      "locus": "1.3",
+      "locusRange": "Did. 1.3d",
+      "category": "sustitución léxica",
+      "baseWitness": "H",
+      "baseReading": "τὸ αὐτό",
+      "otherWitness": "Poxy",
+      "otherReading": "τοῦτο",
+      "certainty": "alta_lectura_impresa",
+      "note": "La edición comparativa contrapone τὸ αὐτό (H) con τοῦτο (fragmento; letras impresas sin acentuación editorial). No se ha inspeccionado directamente el facsímil.",
+      "citation": "Wilhite 2020, p. 8, tabla H54 / POxy, fol. 1r."
+    },
+    {
+      "id": "did-1-3-b",
+      "locus": "1.3",
+      "locusRange": "Did. 1.3d",
+      "category": "sustitución verbal",
+      "baseWitness": "H",
+      "baseReading": "ἀγαπᾶτε",
+      "otherWitness": "Poxy",
+      "otherReading": "φιλεῖτε",
+      "certainty": "alta_lectura_impresa",
+      "note": "El texto griego local usa ἀγαπᾶτε; el cuadro de Wilhite registra en el fragmento φιλεῖτε, con partición física entre renglones.",
+      "citation": "Wilhite 2020, p. 8, tabla H54 / POxy, fol. 1r."
+    },
+    {
+      "id": "did-1-3-c",
+      "locus": "1.3",
+      "locusRange": "Transición Did. 1.3d–1.4a",
+      "category": "adición en testimonio fragmentario",
+      "baseWitness": "H",
+      "baseReading": "Sin exhortación adicional entre ἐχθρόν y ἀπέχου",
+      "otherWitness": "Poxy",
+      "otherReading": "Pasaje adicional: «escucha qué debes hacer para salvar tu espíritu; primero...» (paráfrasis española, texto griego con lagunas)",
+      "certainty": "media_reconstruccion_secundaria",
+      "note": "La secuencia del fol. 1v (líneas 8–12) se presenta como material no recogido en H. Las reconstrucciones entre corchetes son editoriales: no se adopta aquí una lectura griega continua no examinada.",
+      "citation": "Wilhite 2020, p. 8, tabla H54 / POxy, fol. 1v, ll. 8–12."
+    },
+    {
+      "id": "did-1-4-a",
+      "locus": "1.4",
+      "locusRange": "Did. 1.4a",
+      "category": "sustitución verbal",
+      "baseWitness": "H",
+      "baseReading": "ἀπέχου",
+      "otherWitness": "Poxy",
+      "otherReading": "ἀπόσχου",
+      "certainty": "alta_lectura_impresa",
+      "note": "Distinto imperativo en P. Oxy. según la colación impresa; no se infiere solo por ello prioridad autoral de una variante.",
+      "citation": "Wilhite 2020, p. 8, tabla H54 / POxy, fol. 1v, l. 13."
+    },
+    {
+      "id": "did-1-4-b",
+      "locus": "1.4",
+      "locusRange": "Did. 1.4a",
+      "category": "omisión / abreviación posible",
+      "baseWitness": "H",
+      "baseReading": "σαρκικῶν καὶ σωματικῶν ἐπιθυμιῶν",
+      "otherWitness": "Poxy",
+      "otherReading": "σαρκικῶν … ἐπιθυμιῶν; no consta καὶ σωματικῶν en las líneas conservadas de la tabla",
+      "certainty": "media_no_autopsia",
+      "note": "Lectura editorial abreviada para consulta: el tramo del fragmento es parcialmente reconstruido. No es una transcripción diplomática independiente, ni permite decidir si el códice miniatura transmitía extractos.",
+      "citation": "Wilhite 2020, p. 8, tabla H54 / POxy, fol. 1v, ll. 14–15."
+    }
+  ],
+  "untreatedRanges": [
+    {
+      "locus": "2.7–3.2",
+      "why": "Se reconoce la existencia física del pasaje en el testimonio, pero no se registran variantes sin transcripción contrastada."
+    },
+    {
+      "locus": "resto de Didaché 1–16",
+      "why": "El fragmento P. Oxy. XV 1782 no conserva esos tramos; comparar con H no equivale a ponerles atestiguación en P."
+    }
+  ],
+  "methods": {
+    "disclaimers": [
+      "α) Correspondencia literaria ≠ lectura autóptica del papiro/pergamino.",
+      "β) La ausencia de texto en una hoja rota no constituye variante de omisión salvo que haya continuidad material reconocible.",
+      "γ) La prioridad cronológica de un testigo no demuestra una lectura original.",
+      "δ) Las recensiones y traducciones antiguas se distinguen de testimonios directos griegos."
+    ],
+    "nextSteps": [
+      "Cotejar visualmente línea por línea las dos hojas de P. Oxy. XV 1782 y localizar ambas manos/fotografías verificadas.",
+      "Verificar la numeración imagen/folio del H54 digitalizado.",
+      "Cotejar Did. 2.7b–3.2a contra edición príncipe y una transcripción crítica actual.",
+      "Marcar variantes autópticas solo cuando exista transcripción controlada y bibliografía explícita."
+    ]
+  }
+}
