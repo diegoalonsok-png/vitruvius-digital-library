@@ -177,3 +177,56 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-track .vat-event[aria-pr
  #vitruvia-academic-timeline .vat-event strong{font-size:11px}
  #vitruvia-academic-timeline .vat-tick{font-size:10px}
 }
+
+
+/* Compact interactive timeline: dots stay visible, documentary labels reveal on hover/focus. */
+#vitruvia-academic-timeline .vat-track{overflow:visible!important}
+#vitruvia-academic-timeline .vat-band{overflow:visible!important}
+#vitruvia-academic-timeline .vat-viewport{overflow:visible!important}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker{
+ width:24px!important;height:24px!important;min-width:24px!important;max-width:24px!important;
+ min-height:24px!important;max-height:24px!important;padding:0!important;
+ border:2px solid #e5e5e5!important;border-radius:50%!important;
+ background:var(--vat-tag-color,#d4e5f2)!important;box-shadow:0 0 0 3px #383a3a!important;
+ transform:translateX(-50%)!important;display:block!important;overflow:visible!important;
+ transition:transform .18s ease,filter .18s ease!important;z-index:2;
+}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+1){--vat-tag-color:#e9d8ef}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+2){--vat-tag-color:#d4e5f2}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+3){--vat-tag-color:#f5e3c5}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+4){--vat-tag-color:#d6ead9}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+5){--vat-tag-color:#f3d7d8}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n){--vat-tag-color:#d9e6e1}
+#vitruvia-academic-timeline.vat-custom-color .vat-track .vat-event.vat-event-marker{
+ background:var(--vat-tag-color)!important;
+}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:is(:hover,:focus-visible,[aria-pressed=true]){
+ z-index:50;filter:saturate(1.12);transform:translateX(-50%) scale(1.17)!important;
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop{
+ position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(6px);
+ box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+ width:var(--vat-popup-width,134px);min-width:0;max-width:none;max-height:none;
+ padding:10px 9px!important;border:1px solid #687177;border-radius:9px;
+ color:#25303a!important;background:var(--vat-tag-color,#d4e5f2)!important;
+ box-shadow:0 5px 18px #0006;opacity:0;visibility:hidden;pointer-events:none;
+ transition:opacity .17s ease,transform .17s ease,visibility .17s;
+ text-align:center;white-space:normal;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-event-marker:is(:hover,:focus-visible,[aria-pressed=true]) .vat-event-pop{
+ opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop :is(.vat-year,strong,.vat-duration){color:#25303a!important}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop strong{display:block!important;-webkit-line-clamp:unset!important;overflow:visible!important}
+#vitruvia-academic-timeline .vat-color-control{display:flex;align-items:center;gap:6px;font:12px/1.3 Arial,sans-serif;color:inherit}
+#vitruvia-academic-timeline .vat-color-control input{width:32px;height:33px;padding:2px;border:1px solid #777;border-radius:6px;background:transparent;cursor:pointer}
+#vitruvia-academic-timeline .vat-controls{flex-wrap:wrap;align-items:center}
+#vitruvia-academic-timeline .vat-controls button{font-size:15px}
+html[data-theme=light] #vitruvia-academic-timeline .vat-event-marker{box-shadow:0 0 0 3px #c9cdcb!important}
+@media(hover:none){
+ #vitruvia-academic-timeline .vat-event-marker[aria-pressed=true] .vat-event-pop,
+ #vitruvia-academic-timeline .vat-event-marker:focus-visible .vat-event-pop{opacity:1;visibility:visible}
+}
+@media(prefers-reduced-motion:reduce){
+ #vitruvia-academic-timeline .vat-event-marker,#vitruvia-academic-timeline .vat-event-pop{transition:none!important}
+}
