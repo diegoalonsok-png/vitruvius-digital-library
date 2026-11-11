@@ -2456,7 +2456,7 @@
       "period": "III–IV",
       "reading": {
         "url": "https://www.gutenberg.org/ebooks/51812",
-        "status": "Original latino de M. Ceti Faventini Liber artis architectonicae, apéndice de la edición de Vitruvio preparada por Valentin Rose, pp. 283–304 (Project Gutenberg, 1899). Lectura externa verificable; NO indexado por loci en esta biblioteca."
+        "status": "Texto latino del apéndice de Faventino en la edición de Valentin Rose (1899), pp. 283–304, indexado localmente en 32 párrafos de la transcripción Project Gutenberg 51812. Etiquetas secuenciales no canónicas; sin cotejo autóptico, variantes o traducción alojada."
       },
       "manuscript": {
         "manifest": "https://fragmentarium.ms/metadata/iiif/F-lz0u/manifest.json",
@@ -2491,8 +2491,12 @@
         "archive": "https://archive.org/search?query=Artis%20architectonicae%20privatis%20usibus%20adbreviatus%20liber%20Marco%20Cetio%20Faventino",
         "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=Artis%20architectonicae%20privatis%20usibus%20adbreviatus%20liber"
       },
-      "publicStatus": "pendiente-de-incorporar",
-      "localReader": null,
+      "publicStatus": "lectura-local-parcial",
+      "localReader": {
+        "original": "data/classics-corpus/faventinus-la.json",
+        "translations": [],
+        "verified": true
+      },
       "aliases": [
         "De diversis fabricis architectonicae",
         "Cetius Faventinus",
@@ -2503,6 +2507,9 @@
         "editionCitation": "Cetius Faventinus. Abrégé d'architecture privée. Texte établi, traduit et commenté par Marie-Thérèse Cam. Collection des Universités de France, Série latine 363. Paris: Les Belles Lettres, 2001. ISBN 978-2-251-01423-4.",
         "preferredCitation": "Plommer, Hugh. Vitruvius and Later Roman Building Manuals. Cambridge: Cambridge University Press, 1973. ISBN 0-521-20141-1.",
         "method": "Edición crítica de referencia: Cam 2001 (CUF). Plommer 1973 ofrece texto, traducción inglesa y comparación con Vitruvio. Ninguna de las dos se aloja en este sitio."
+      },
+      "corpusFiles": {
+        "la": "data/classics-corpus/faventinus-la.json"
       }
     },
     {
