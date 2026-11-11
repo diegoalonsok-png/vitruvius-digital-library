@@ -39,7 +39,7 @@ textarea::placeholder{color:#85878d}.toolbar{border-top:1px solid var(--line);pa
 <div class="toolbar">
 <label class="attachment" for="file" role="button" tabindex="0" title="Adjuntar documento">＋ Adjuntar PDF, DOCX o TXT</label>
 <input id="file" type="file" accept=".pdf,.docx,.txt,.xml,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-<span class="hint">Enter para consultar · Shift+Enter para nueva línea · Máximo 15 MB</span>
+<span class="hint">Enter: consultar · «web:» busca en internet · «ia:» solicita análisis local (si está disponible) · Máx. 15 MB</span>
 <button id="clear" class="clear" type="button">Borrar sesión</button>
 </div>
 </div>
@@ -142,7 +142,24 @@ async function webResearch(question,box,token){
  link(nav,'https://search.worldcat.org/search?q='+encodeURIComponent(question),'WorldCat');nav.append(document.createTextNode(' · '));
  link(nav,'https://www.perseus.tufts.edu/hopper/searchresults?q='+encodeURIComponent(question),'Perseus');
 }
-async function ask(){const question=q.value.trim();if(!question)return;q.value='';const token=session,box=entry(question);if(documentData){searchDocument(question,box)}else{await webResearch(question,box,token)}}
+async function optionalLocalAI(question,box){
+ const API=window.LanguageModel;
+ if(!API?.create){
+  addText(box,'p','El modelo generativo local no está disponible en este navegador. Se muestran los pasajes recuperados literalmente, sin simular respuestas de IA.','caption');return;
+ }
+ const source=(documentData?.pages||[]).slice(0,24).map(x=>x.label+': '+x.text).join('\n').slice(0,10500);
+ if(!source.trim())return;
+ const status=addText(box,'p','Consultando el modelo de IA local del navegador…','pending');
+ let model=null;
+ try{
+  model=await API.create();
+  const answer=await model.prompt('Analiza exclusivamente este texto. No inventes citas, folios ni autorías. Identifica incertidumbres. Responde en español en 3 párrafos; explica cuáles fragmentos sustentan tus afirmaciones. Consulta: '+question+'\n\nDOCUMENTO LOCAL:\n'+source);
+  status.textContent='Interpretación generada por el modelo local del navegador; requiere cotejo filológico.';
+  addText(box,'div',String(answer||''),'quote');
+ }catch{status.textContent='No pudo iniciarse la IA local; los pasajes extraídos siguen disponibles.'}
+ finally{try{model?.destroy?.()}catch{}}
+}
+async function ask(){const question=q.value.trim();if(!question)return;q.value='';const token=session,box=entry(question);if(/^web\s*:/i.test(question)){await webResearch(question.replace(/^web\s*:/i,''),box,token)}else if(documentData){searchDocument(question,box);if(/^ia\s*:/i.test(question))await optionalLocalAI(question.replace(/^ia\s*:/i,''),box)}else{await webResearch(question,box,token)}}
 q.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();void ask()}});
 window.addEventListener('pagehide',()=>{documentData=null;fileInput.value='';output.replaceChildren()});
 </script>
