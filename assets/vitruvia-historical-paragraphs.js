@@ -140,7 +140,7 @@ function rankRows(units,query,mode="literal",limit=50){
    const idf=Math.log(1+(number-(df.get(term)||0)+.5)/((df.get(term)||0)+.5));
    bm25+=weight*idf*(tf*2.2)/(tf+1.2*(.25+.75*x.length/avgLength));
   }
-  if(!primaryHits)continue; // Never return purely synonym-generated hits.
+  if(!primaryHits&&!mappedConcept)continue; // Only known, explicitly mapped concepts can match by synonym alone.
   if(primary.length>1&&primaryHits===1)bm25*=.5;
   if(phrase.length>=7&&norm(x.u.text).includes(phrase))bm25+=3;
   if(bm25>0)scored.push({...x.u,score:+bm25.toFixed(5),matchedPrimary:primaryHits,
