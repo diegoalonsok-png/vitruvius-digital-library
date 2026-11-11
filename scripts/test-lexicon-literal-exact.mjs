@@ -5,7 +5,7 @@ import {readFileSync} from "node:fs";
 import vm from "node:vm";
 const src=readFileSync("assets/vitruvia-lexicon.js","utf8");
 const begin=src.indexOf("function strictForm(");
-const end=src.indexOf("/* ---------- Citas y enlaces */",begin);
+const end=src.indexOf("function work(D,id)",begin);
 assert(begin>=0&&end>begin,"No se encontró la ruta literal del motor Lexicon");
 const fold=t=>String(t).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[ςϲ]/g,"σ");
 const context=vm.createContext({fold,TOKEN:/[\p{L}\p{M}]+/gu,MAX_HITS:100});
