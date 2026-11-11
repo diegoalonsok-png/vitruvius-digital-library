@@ -156,31 +156,51 @@ async function openMark(mark){
    params.get("work")||classicalWorkIds[params.get("obra")]||"";
   // Bibliotheca uses the curated Etymologicum JSON: show that lightweight
   // entry first, without waiting for corpus morphology, Wiktionary, or translation.
-  // Both local layers start together: a slow Etymologicum download
-  // must never delay the morphological dictionary or the visible dialog.
+  // Prefer the dictionary already resident in the Lexicon corpus index.
+  // A detailed dictionary is deliberately opt-in: loading it on every word
+  // click caused multi-second stalls, particularly on first access.
+  const fast=window.VitruviaLexicon?.quickWord?.(word,lang);
+  if(fast?.gloss){
+   const quick=el("section",null,"cl-popup-quick");
+   quick.append(el("h3","Significado · diccionario del corpus"));
+   quick.append(el("p",fast.lemma||word,"cl-popup-quick-lemma"));
+   quick.append(el("p",fast.gloss));
+   contents.insertBefore(quick,slot);
+   status.textContent="Definición local disponible. Análisis completo opcional.";
+  }
   const quickTask=fastEntry(word,lang).then(quick=>{
    if(id!==current||!quick)return;
-   contents.insertBefore(quick,slot);
-   status.textContent="Ficha editorial lista. Consultando análisis complementario…";
+   const prior=contents.querySelector(".cl-popup-quick");
+   if(!prior)contents.insertBefore(quick,slot);
   }).catch(()=>{});
-  await lexicon.renderPanel(slot,word,{lang,work:edition,online:false});
+  const detail=el("button","Cargar análisis morfológico completo","cl-popup-detail-button");
+  detail.type="button";
+  detail.addEventListener("click",async()=>{
+   if(id!==current)return;
+   detail.disabled=true;detail.textContent="Consultando morfología…";
+   try{
+    await lexicon.renderPanel(slot,word,{lang,work:edition,online:false});
+    if(id!==current)return;
+    status.remove();detail.remove();
+    const glosses=[...slot.querySelectorAll(".cl-entry .cl-gloss")].map(x=>x.textContent.trim()).filter(Boolean).join(" · ").slice(0,1050);
+    if(glosses&&window.VitruviaInlineTranslation?.attach){
+     const glossNode=el("p",glosses,"cl-popup-note");glossNode.lang=glosses.startsWith("Castellano:")?"es":"en";
+     const wrapper=el("section",null,"cl-popup-gloss-translation");
+     wrapper.append(el("h3","Traducción orientativa de la explicación lexicográfica"),glossNode);
+     contents.insertBefore(wrapper,contents.querySelector(".cl-popup-media"));
+     window.VitruviaInlineTranslation.attach(glossNode,{sourceLanguage:glossNode.lang,originalText:glosses});
+    }
+   }catch{
+    if(id!==current)return;
+    status.textContent="No se pudo cargar la morfología. Consulte los enlaces externos.";
+    detail.disabled=false;detail.textContent="Reintentar análisis";
+   }
+  });
+  contents.insertBefore(detail,contents.querySelector(".cl-popup-media"));
   void quickTask;
-  if(id!==current)return;
-  status.remove();
-  const glosses=[...slot.querySelectorAll(".cl-entry .cl-gloss")].map(x=>x.textContent.trim())
-   .filter(Boolean).join(" · ").slice(0,1050);
-  if(glosses&&window.VitruviaInlineTranslation?.attach){
-   const glossNode=el("p",glosses,"cl-popup-note");
-   glossNode.lang=glosses.startsWith("Castellano:")?"es":"en";
-   const wrapper=el("section",null,"cl-popup-gloss-translation");
-   wrapper.append(el("h3","Traducción orientativa de la explicación lexicográfica"));
-   wrapper.append(glossNode);
-   contents.insertBefore(wrapper,contents.querySelector(".cl-popup-media"));
-   window.VitruviaInlineTranslation.attach(glossNode,{sourceLanguage:glossNode.lang,originalText:glosses});
-  }
+
  }catch{
-  if(id!==current)return;
-  status.textContent="No se pudo consultar el glosario local. Los enlaces de referencia siguen disponibles.";
+  if(id===current)status.textContent="No se pudo recuperar el diccionario rápido; los enlaces siguen disponibles.";
  }
 }
 const markSelector=passages?"mark.cl-hit,mark.cl-parallel-hit":
