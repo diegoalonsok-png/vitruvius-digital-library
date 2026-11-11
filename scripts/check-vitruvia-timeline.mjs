@@ -82,7 +82,7 @@ arrowNext.onclick();
 assert.equal(find("vat-detail")[0].hidden,false);
 emit("vitruvia:search",{query:"Ramses II"});
 for(let i=0;i<4;i++)await Promise.resolve();
-assert.deepEqual(win.VitruviaAcademicTimeline.collect().map(x=>x.year),[-1303]);
+assert.deepEqual([...win.VitruviaAcademicTimeline.collect().map(x=>x.year)],[-1303]);
 // The lifetime chart must never stretch to posthumous scholarly publications.
 emit("vitruvia:search",{query:"Mozart"});
 for(let i=0;i<4;i++)await Promise.resolve();
