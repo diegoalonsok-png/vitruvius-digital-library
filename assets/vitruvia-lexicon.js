@@ -177,7 +177,7 @@ function execute(D,parsed,opts={}){
  // lemma/pattern/semantic machinery, and avoid building token arrays.
  if(opts.literalOriginal&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){
   const wanted=String(parsed.steps[0].term.v||"");
-  const key=fold(wanted).replace(/[^\\p{L}']/gu,"");
+  const key=fold(wanted).replace(/[^\p{L}']/gu,"");
   const candidates=D.post.get(key)||[],hits=[],workId=opts.work||"";
   for(const i of candidates){
    const passage=D.corpus.passages[i];
