@@ -22,7 +22,35 @@ function init(){
  const note=make('p','vr-ab-note','Las imágenes de cubierta son orientativas y pertenecen a ediciones identificadas por catálogos externos. Los enlaces de búsqueda no constituyen localizaciones verificadas de códices.');
  root.append(head,cards,note);
  body.append(root);
- let active='',request=0,observerLock=false;
+ let active='',request=0,observerLock=false,coverController=null;
+ async function enrich(person,token){
+  if(coverController)coverController.abort();
+  const activeController=new AbortController();coverController=activeController;
+  const books=person.items.filter(e=>e.kind!=='manuscrito').slice(0,5);
+  for(const entry of books){
+   if(token!==request||activeController.signal.aborted)return;
+   const card=[...cards.children][person.items.indexOf(entry)];
+   if(!card)continue;
+   try{
+    const params=new URLSearchParams({title:entry.title,limit:'4',fields:'key,title,cover_i,author_name,first_publish_year'});
+    const response=await fetch('https://openlibrary.org/search.json?'+params,{signal:activeController.signal,referrerPolicy:'no-referrer'});
+    if(!response.ok)continue;
+    const json=await response.json();
+    if(token!==request||activeController.signal.aborted)return;
+    const item=(json.docs||[]).find(d=>Number.isInteger(d.cover_i)&&normalize(d.title).includes(normalize(entry.title).slice(0,12)));
+    if(!item)continue;
+    const cover=card.querySelector('.vr-ab-cover');
+    const img=make('img',null);img.loading='lazy';img.decoding='async';
+    img.alt='Cubierta catalogada de '+item.title+'; edición concreta por verificar';
+    img.src='https://covers.openlibrary.org/b/id/'+item.cover_i+'-M.jpg';
+    img.onerror=()=>img.remove();
+    cover.append(img);cover.classList.add('vr-ab-cover-found');
+    const anchor=make('a',null,'Ficha Open Library');
+    const key=String(item.key||'');
+    if(/^\\/works\\/OL[0-9]+W$/.test(key)){anchor.href='https://openlibrary.org'+key;anchor.target='_blank';anchor.rel='noopener noreferrer';card.querySelector('.vr-ab-links').append(anchor)}
+   }catch(e){if(activeController.signal.aborted)return}
+  }
+ }
  function itemCard(entry,i){
   const card=make('article','vr-ab-card');
   const cover=make('div','vr-ab-cover');
@@ -44,11 +72,12 @@ function init(){
   const person=RECORDS.find(p=>p.keys.some(k=>term.includes(normalize(k))));
   const key=person?.name||'';
   if(key===active)return;
-  active=key;cards.replaceChildren();root.hidden=!person;
+  active=key;if(coverController)coverController.abort();cards.replaceChildren();root.hidden=!person;
   if(!person)return;
   heading.textContent='Libros, tratados y códices · '+person.name;
   person.items.forEach((e,i)=>cards.append(itemCard(e,i)));
   if(root.parentElement!==body){observerLock=true;body.append(root);observerLock=false}
+  const token=++request;void enrich(person,token);
  }
  function current(){return new URLSearchParams(location.search).get('q')||document.getElementById('query')?.value||''}
  let queued=false;
