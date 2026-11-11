@@ -3,8 +3,8 @@
   "updated": "2026-11-10",
   "sourceRegistry": "data/bibliotheca-testimonia-verified.json",
   "policy": "A witness record is a textual attribution. canonicalPhysicalId identifies its underlying physical artifact. This reconciliation is based on holdings signatures and is not an ecdotic stemma.",
-  "witnessRecords": 94,
-  "physicalObjects": 87,
+  "witnessRecords": 100,
+  "physicalObjects": 93,
   "groups": [
     {
       "canonicalPhysicalId": "codex-vitruvius-h",
@@ -1136,6 +1136,83 @@
       "repository": "Leiden, Universitaire Bibliotheken",
       "shelfmark": "Vulc. 002",
       "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/38230/"
+    },
+    {
+      "canonicalPhysicalId": "codex-pal-gr-283",
+      "witnessRecordIds": [
+        "plutarch-pal-gr283"
+      ],
+      "workIds": [
+        "plutarch-lives",
+        "plutarch-moralia"
+      ],
+      "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
+      "shelfmark": "Cod. Pal. graec. 283",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/32471/"
+    },
+    {
+      "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+      "witnessRecordIds": [
+        "plutarch-diogenes-bnf-suppl134"
+      ],
+      "workIds": [
+        "plutarch-lives",
+        "plutarch-moralia",
+        "diogenes-laertius-vitae"
+      ],
+      "repository": "Paris, Bibliothèque nationale de France",
+      "shelfmark": "Supplément grec 134",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/52904/"
+    },
+    {
+      "canonicalPhysicalId": "codex-urb-gr-118",
+      "witnessRecordIds": [
+        "lucian-urb-gr118"
+      ],
+      "workIds": [
+        "lucian-dialogi-mortuorum",
+        "lucian-verae-historiae"
+      ],
+      "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Urb. gr. 118",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/66585/"
+    },
+    {
+      "canonicalPhysicalId": "codex-laur-plut-9-32",
+      "witnessRecordIds": [
+        "arrian-procopius-laur-plut9-32"
+      ],
+      "workIds": [
+        "arrian-anabasis-alexandri",
+        "procopius-aedificiis"
+      ],
+      "repository": "Firenze, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 9.32",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/16120/"
+    },
+    {
+      "canonicalPhysicalId": "codex-harley-ms-4859",
+      "witnessRecordIds": [
+        "aulus-gellius-harley4859"
+      ],
+      "workIds": [
+        "aulus-gellius-noctes"
+      ],
+      "repository": "London, British Library",
+      "shelfmark": "Harley MS 4859",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002050702"
+    },
+    {
+      "canonicalPhysicalId": "codex-burney-ms-174",
+      "witnessRecordIds": [
+        "aulus-gellius-burney174"
+      ],
+      "workIds": [
+        "aulus-gellius-noctes"
+      ],
+      "repository": "London, British Library",
+      "shelfmark": "Burney MS 174",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002237055"
     }
   ]
 }
