@@ -236,14 +236,9 @@ for(const btn of buttons)btn.addEventListener("click",()=>{
  setLanguage(btn.dataset.ldLang);void search(true);
 });
 root.querySelector("#lx-dict-refresh")?.addEventListener("click",()=>void search(true));
-form?.addEventListener("submit",()=>{
- const q=query.value.trim();
- if(/[\u0590-\u05ff]/.test(q))setLanguage("he");
- else if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q))setLanguage("grc");
- void search(false);
-});
+// Diccionarios auxiliares: consulta solo al pulsar sus controles propios.
 const initial=new URLSearchParams(location.search).get("q");
-if(initial){
+if(false&&initial){
  if(!query.value)query.value=initial;
  if(/[\u0590-\u05ff]/.test(initial))setLanguage("he");
  else if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(initial))setLanguage("grc");
