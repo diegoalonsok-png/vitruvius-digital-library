@@ -64,7 +64,7 @@ async function run(){
   render(candidates,edition,"búsqueda textual BM25");
   status.textContent=candidates.length+" candidatos textuales entre "+rows.length+" bloques. Revise siempre el facsímil.";
   if(!candidates.length||!$("hpar-neural").checked)return;
-  status.textContent+=" Solicitaste IA: preparando reordenación semántica de hasta 24 candidatos…";
+  status.textContent+=" Se solicitó IA: preparando reordenación semántica de hasta 24 candidatos…";
   try{
    const reranked=await semanticRerank(query,candidates);if(mine!==serial)return;
    render(reranked,edition,"IA E5 · reordenación de candidatos literales, no búsqueda semántica exhaustiva");
@@ -77,4 +77,4 @@ $("hpar-edition").addEventListener("change",()=>{++serial;$("hpar-source").textC
 const args=new URLSearchParams(location.search);
 if(SOURCES[args.get("edition")])$("hpar-edition").value=args.get("edition");
 if(args.get("q")){$("hpar-query").value=args.get("q");run();}
-else $("hpar-status").textContent="Elija una edición y escribí una consulta. Todo el procesamiento textual es local en tu navegador.";
+else $("hpar-status").textContent="Elija una edición y escriba una consulta. Todo el procesamiento textual se realiza localmente en el navegador.";
