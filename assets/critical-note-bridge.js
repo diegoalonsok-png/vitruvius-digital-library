@@ -8,11 +8,21 @@ const input=document.getElementById(page==="vitruvia-lexicon.html"?"lx-q":"query
 const form=document.getElementById(page==="vitruvia-lexicon.html"?"lx-form":page==="vitruvia.html"?"search-form":"none");
 if(!input||document.getElementById("notes-critical-bridge"))return;
 const wrap=document.createElement("section");wrap.id="notes-critical-bridge";wrap.className="notes-critical-bridge";
-wrap.innerHTML='<details><summary>Aparato crítico original · consultar notas de V514, V554 y V297</summary><div class="notes-critical-content"><p>Las fichas consultan <strong>811 notas reales extraídas de los documentos originales de las ediciones</strong>. Una coincidencia dentro del texto de una nota no demuestra que esté anclada al pasaje buscado. Las notas con locus explícito se identifican por separado.</p><button id="notes-critical-search" type="button">Buscar notas para el término actual</button><p id="notes-critical-status" role="status">Cargue las notas cuando sea necesario; el buscador principal no descarga este archivo automáticamente.</p><div id="notes-critical-results"></div><p class="notes-critical-caution">La evidencia de aparato procede de los libros V514/V554/V297. El vínculo de una nota con un locus y la verificación de una variante manuscrita son dos controles distintos. Para consulta del aparato por página PDF, utilice <a href="aparato-critico.html">el catálogo integral</a> y el <a href="registro-ecdotico.html">registro ecdótico</a>.</p></div></details>';
+wrap.innerHTML='<details><summary>Aparato crítico original · consultar notas de V514, V554 y V297</summary><div class="notes-critical-content"><p>Las fichas consultan <strong>811 notas reales extraídas de los documentos originales de las ediciones</strong>. Una coincidencia dentro del texto de una nota no demuestra que esté anclada al pasaje buscado. Las notas con locus explícito se identifican por separado.</p><button id="notes-critical-search" type="button">Buscar notas para el término actual</button><p id="notes-critical-status" role="status">Cargue las notas cuando sea necesario; el buscador principal no descarga este archivo automáticamente.</p><div id="notes-critical-results"></div><p><a id="notes-critical-inventory-link" href="inventario-aparato-autoral.html">Explorar los 811 registros originales por locus y fuente citada →</a></p><p class="notes-critical-caution">La evidencia de aparato procede de los libros V514/V554/V297. El vínculo de una nota con un locus y la verificación de una variante manuscrita son dos controles distintos. Para consulta del aparato por página PDF, utilice <a href="aparato-critico.html">el catálogo integral</a> y el <a href="registro-ecdotico.html">registro ecdótico</a>.</p></div></details>';
 (form||input).insertAdjacentElement("afterend",wrap);
 const find=()=>document.getElementById("notes-critical-results");
 const status=()=>document.getElementById("notes-critical-status");
 const btn=document.getElementById("notes-critical-search");
+const inventoryLink=document.getElementById("notes-critical-inventory-link");
+function updateInventoryLink(){
+ if(!inventoryLink)return;
+ const q=input.value.trim().slice(0,200);
+ const isLocus=/^(?:[ivx]+|\d{1,2})[.,\s]+(?:praef(?:atio)?|\d{1,2})(?:[.,\s]+\d{1,2})?$/i.test(q);
+ const params=new URLSearchParams();
+ if(q)params.set(isLocus?"locus":"q",q);
+ inventoryLink.href="inventario-aparato-autoral.html"+(params.size?"?"+params:"");
+}
+updateInventoryLink();
 let pending=null,sequence=0;
 const editionNames={"recensio-es":"V514 · Castellano","recensio-fr":"V554 · Français","theory-en":"V297 · English"};
 function item(tag,text,cls){const x=document.createElement(tag);if(text!==undefined)x.textContent=String(text);if(cls)x.className=cls;return x}
@@ -67,5 +77,5 @@ async function run(){
  finally{if(request===sequence)btn.disabled=false}
 }
 btn.addEventListener("click",run);
-input.addEventListener("input",()=>{sequence++;status().textContent="Pulse «Buscar notas» para actualizar la consulta.";find().replaceChildren()});
+input.addEventListener("input",()=>{sequence++;status().textContent="Pulse «Buscar notas» para actualizar la consulta.";find().replaceChildren();updateInventoryLink()});
 })();
