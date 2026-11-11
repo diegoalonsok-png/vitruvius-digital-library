@@ -52,5 +52,23 @@ for(const r of [h,c]){
   assert.equal(f.sourceUrl,check.source,'Institutional reference required: '+r.witnessId+' '+key);
  }
 }
-assert.equal(allMissing,1752,'Verify the seven grounded additions and stale-key correction');
-console.log('PASS: 222 original works untouched; 100 codicological records, 22 fields, 1752 genuinely empty, no stale counters; institutionally sourced Harley facts');
+const ciceroGeneva=matrix.records.find(r=>r.witnessId==='cicero-officiis-geneva');
+assert.ok(ciceroGeneva,'Geneva Cicero codex dossier must remain present');
+const genevaPaths=[
+ ['physical','material'],['physical','dimensions'],['physical','collationFormula'],
+ ['physical','ruling'],['physical','binding'],['physical','watermarks'],
+ ['scribal','script'],['paratext','glosses'],['history','provenance'],['text','folioRange']
+];
+const genevaSource='https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger';
+for(const [group,key] of genevaPaths){
+ const field=ciceroGeneva.fields[group][key];
+ assert.ok(typeof field.value==='string'&&field.value.trim().length>=24,
+  'Detailed source-supported codicological value missing: '+group+'.'+key);
+ assert.equal(field.status,'institutional_catalogue_verified','Unverified Geneva status: '+group+'.'+key);
+ assert.equal(field.sourceUrl,genevaSource,'Original Geneva catalogue link missing: '+group+'.'+key);
+ assert.equal(field.verificationMethod,'institutional_catalogue_metadata_not_autoptic',
+  'The catalogue record must not be mislabeled as an autoptic examination');
+}
+assert.equal(ciceroGeneva.missingCount,8,'No unsupported completion of other Geneva codicological fields');
+assert.equal(allMissing,1742,'Ten sourced Geneva fields should reduce the outstanding research backlog by exactly ten');
+console.log('PASS: 222 works untouched; 100 codicological records, 22 fields, 1742 genuinely pending; Harley and ten Geneva fields sourced to institutional catalogues');
