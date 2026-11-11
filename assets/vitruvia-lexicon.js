@@ -72,7 +72,6 @@ function applyReviewedOCR(corpus,l){
 }
 const L={};
 async function lang(l,silent=false){
- if(l==="la")loadContext();
  if(L[l])return L[l];
  L[l]=(async()=>{
   if(!silent)setState(l==="grc"?"Cargando el corpus griego y su índice léxico…":"Cargando el corpus latino y su índice léxico…");
@@ -409,12 +408,16 @@ async function run(push=true){
    const g=transIndex(G).get(latinTranslitKey(q));if(g?.length){const lems=[...new Set(g.flatMap(k=>analyses(G,k).map(a=>lemmaDisplay(a[0]))))].slice(0,3);const st=$("#lx-state");st.append(" ",el("button",{type:"button",class:"lx-btn",lang:"grc",onclick:()=>{$("#lx-q").value=lems[0]||g[0];S.lang="grc";$("#lx-lang").value="grc";run()}},`¿Griego? ${(lems.length?lems:g.slice(0,3)).join(", ")}`))}},0);
   // Para toda palabra o lema, en latín o griego, mostrar siempre la ficha
   // y su frecuencia. No depender de una ficha Conceptus preexistente.
-  if(["palabra","lema"].includes(S.mode)&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern")await renderEntry(S.D,parsed.steps[0].term,res);
+  // First results take precedence over the slower full dictionary dossier.
+  renderHits(S.D,res);
   if(!isCurrent())return;
+  if(["palabra","lema"].includes(S.mode)&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern"){
+   await renderEntry(S.D,parsed.steps[0].term,res);
+   if(!isCurrent())return;
+  }
   if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const qq=q;findConcept(q).then(c=>{if(!c||$("#lx-q").value.trim()!==qq)return;const body=$("#lx-entry .article-body");if(body)body.prepend(conceptCard(c,qq))})}
   if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!GREEK.test(q)){const qq=q;findPerson(q).then(P=>{if(!P||$("#lx-q").value.trim()!==qq)return;const b=el("p",{class:"lx-person-banner"},"¿Buscaba al personaje ",el("b",{},P.name),"? ",P.greek[0]?el("span",{lang:"grc"},P.greek[0]+" · "):"",P.latin[0]||"",". ",el("button",{type:"button",class:"lx-btn",onclick:()=>renderPerson(P,qq)},"Ver sus pasajes en griego y latín"));$("#lx-entry").prepend(b)}).catch(()=>{})}
   if(S.mode==="sintaxis")renderCollocations(S.D,res);
-  renderHits(S.D,res);
   if(ctxDropped||S.ctxAll){const b=el("p",{class:"lx-small lx-ctx-note"},S.ctxAll?T("Se muestran todas las coincidencias de la tabla, sin el filtro contextual. "):`${ctxDropped} ${T("coincidencias descartadas: el análisis contextual (Stanza) asigna allí otro lema.")} `,el("button",{type:"button",class:"lx-btn",onclick:()=>{S.ctxAll=!S.ctxAll;run(false)}},S.ctxAll?T("Aplicar el filtro contextual"):T("Mostrarlas también")));$("#lx-results").prepend(b)}
   if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){
    const box=$("#lx-entry");box.hidden=false;box.replaceChildren(
@@ -2313,13 +2316,15 @@ async function init(){
     if(v.length<2||/[\s"@\[*?~]/.test(v)){if(unchanged())dl.replaceChildren();return}
     const l=S.lang!=="auto"?S.lang:detectLang(v);
     if(l==="he"||!["la","grc"].includes(l)){if(unchanged())dl.replaceChildren();return}
+    // Autocompletion must never start downloading or indexing a corpus.
+    if(!L[l]){if(unchanged())dl.replaceChildren();return}
     try{
-     const D=await lang(l,true);if(!unchanged())return;
+     const D=await L[l];if(!unchanged())return;
      const k=fold(v),out=new Set();
      for(const e of (S.etym?.entries||[]))if(e.l===l&&fold(e.lemma).startsWith(k))out.add(e.lemma);
      for(const lem of Object.keys(D.forms.lemmas)){if(out.size>=12)break;if(fold(lemmaDisplay(lem)).startsWith(k))out.add(lemmaDisplay(lem))}
-     if(out.size<4&&!GREEK.test(v)&&S.lang==="auto"){
-      const G=await lang("grc",true);if(!unchanged())return;
+     if(out.size<4&&!GREEK.test(v)&&S.lang==="auto"&&L.grc){
+      const G=await L.grc;if(!unchanged())return;
       const tk=latinTranslitKey(v);
       for(const [t,fs] of transIndex(G)){if(out.size>=12)break;if(t.startsWith(tk))for(const f of fs){const a=analyses(G,f)[0];out.add(a?lemmaDisplay(a[0]):f)}}
      }
