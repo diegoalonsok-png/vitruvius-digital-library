@@ -138,6 +138,7 @@ async function search(q,{limit=8}={}){
  for(let offset=0;offset<targets.length;offset+=8){
   await Promise.all(targets.slice(offset,offset+8).map(async e=>{
    const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
+   if(isCancelled())return;
    if(!d?.passages?.length){failed++;return}loaded++;
    let total=0,units=0,first=null;
    for(const p of d.passages){
@@ -336,6 +337,12 @@ function completeMatches(text,term){
    La concordancia permanece documental; sin worker se conserva el algoritmo anterior. */
 let matcherWorker=null,workerSeq=0;
 const workerPending=new Map();
+function cancelPendingSearches(){
+ if(matcherWorker){matcherWorker.terminate();matcherWorker=null;}
+ for(const pending of workerPending.values())pending.resolve(null);
+ workerPending.clear();
+}
+
 function batchMatches(passages,queries,allMatches){
  if(!('Worker' in window))return Promise.resolve(null);
  try{
@@ -361,17 +368,21 @@ function batchMatches(passages,queries,allMatches){
 }
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,language="",edition="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true,onProgress=null}={}){
+async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,language="",edition="",maxPerEdition=200,allMatches=false,includeFullText=false,includeOCR=true,onProgress=null,isCancelled=()=>false}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>fold(q).length>=2))].slice(0,12);
  if(!queries.length)return [];
+ if(isCancelled())return [];
  const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
+ if(isCancelled())return [];
  const approved=allowedWorkIds==null?null:new Set(allowedWorkIds);
  const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(!workId||e.workId===workId)&&(!approved||approved.has(e.workId))&&(!language||e.language===language)&&(!edition||e.edition===edition)&&(includeOCR||e.format!=="historical-ocr-pages")&&
   (e.format!=="remote-json-passages"||(e.language==="grc"?(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries):e.language==="la"?(!hasGreek||e.workId===workId)&&window.ClassicsOffsiteLatin?.mightContain(e,queries):false)))
   .sort((a,b)=>(a.workId==="vitruvius"?0:a.language==="la"?1:a.language==="grc"?2:3)-(b.workId==="vitruvius"?0:b.language==="la"?1:b.language==="grc"?2:3));
  const rows=[];let loaded=0,failed=0,failures=[];
  for(let offset=0;offset<targets.length;offset+=4){
+  if(isCancelled())return [];
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
+   if(isCancelled())return;
    let d;
    try {d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e)}
    catch(err){failed++;failures.push({workId:e.workId,language:e.language,path:e.path});return}
@@ -379,7 +390,9 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
    loaded++;
    let editionUnits=0,editionMatches=0;
    const workerHits=await batchMatches(d.passages,queries,allMatches);
+   if(isCancelled())return;
    for(let passageIndex=0;passageIndex<d.passages.length;passageIndex++){
+    if(isCancelled())return;
     const p=d.passages[passageIndex];
     if(typeof p?.text!=="string")continue;
     let hit=null,term=null,hitsInPassage=0;
@@ -406,11 +419,13 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
     if(++editionUnits>=maxPerEdition&&!allMatches)break;
    }
   }));
+  if(isCancelled())return [];
   // Reveal attested passages as editions finish; do not wait for the entire corpus.
   if(typeof onProgress==="function"){
    try{onProgress(rows.slice(),{targeted:targets.length,examined:Math.min(offset+8,targets.length),loaded,failed,complete:offset+8>=targets.length})}catch(error){console.warn("Bibliotheca progress callback",error)}
   }
  }
+ if(isCancelled())return [];
  lastDiagnostics={mode:"passages",registrySource:registered===LEGACY?"fallback":"verified-registry",
   targeted:targets.length,loaded,failed,failures,matchedPassages:rows.length};
  // Add real parallel translations only for Vitruvius' indexed, attested loci.
@@ -426,6 +441,7 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
     return {lang,id,passages:d?.edition===id&&Array.isArray(d.passages)?d.passages:[]};
    }catch{return {lang,id,passages:[]}}
   }));
+  if(isCancelled())return [];
   const maps=sources.map(x=>({...x,byLocus:new Map(x.passages.map(p=>[p.locus,p]))}));
   for(const row of rows){
    if(row.workId!=="vitruvius"||row.language!=="la")continue;
@@ -450,7 +466,7 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
  return allMatches?rows:rows.slice(0,Math.max(1,Math.min(600,limit)));
 }
 window.ClassicsCorpusSearch={
- search:cached("literal",search),semanticSearch:cached("semantic",semanticSearch),searchPassages,
+ search:cached("literal",search),semanticSearch:cached("semantic",semanticSearch),searchPassages,cancelPendingSearches,
  works:LEGACY.map(e=>({id:e.workId,lang:e.language,author:e.author,title:e.title})),
  registry,diagnostics:()=>({...lastDiagnostics})
 };
