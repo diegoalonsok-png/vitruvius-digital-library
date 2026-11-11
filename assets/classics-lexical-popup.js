@@ -156,14 +156,15 @@ async function openMark(mark){
    params.get("work")||classicalWorkIds[params.get("obra")]||"";
   // Bibliotheca uses the curated Etymologicum JSON: show that lightweight
   // entry first, without waiting for corpus morphology, Wiktionary, or translation.
-  const quick=await fastEntry(word,lang).catch(()=>null);
-  if(id!==current)return;
-  if(quick){
+  // Both local layers start together: a slow Etymologicum download
+  // must never delay the morphological dictionary or the visible dialog.
+  const quickTask=fastEntry(word,lang).then(quick=>{
+   if(id!==current||!quick)return;
    contents.insertBefore(quick,slot);
-   status.textContent="Ficha editorial lista. Cargando análisis morfológico complementario…";
-  }
-  // Keep full scholarly morphology; never run an online request on click.
+   status.textContent="Ficha editorial lista. Consultando análisis complementario…";
+  }).catch(()=>{});
   await lexicon.renderPanel(slot,word,{lang,work:edition,online:false});
+  void quickTask;
   if(id!==current)return;
   status.remove();
   const glosses=[...slot.querySelectorAll(".cl-entry .cl-gloss")].map(x=>x.textContent.trim())
