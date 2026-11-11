@@ -331,6 +331,8 @@ async function run(push=true){
  const isCurrent=()=>revision===runRevision;
  syncSearchLanguageSelector();
  let q=$("#lx-q").value.trim();
+ // A historic =word deep link must use the exact written form in Word mode.
+ if(S.mode==="palabra"&&q.startsWith("=")){q=q.slice(1).trim();$("#lx-q").value=q;}
  // Conservar la forma escrita por el usuario, sin sustitución automática.
  S.q=q;S.page=0;
  // Búsquedas secundarias únicamente al pulsar sus botones.
@@ -418,7 +420,8 @@ async function run(push=true){
   // Let the first results actually paint before any expensive lexical dossier.
   await new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0)));
   if(!isCurrent())return;
-  if(["palabra","lema"].includes(S.mode)&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern"){
+  if(S.mode==="palabra")renderExactEntry(D,q,res);
+  else if(S.mode==="lema"&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern"){
    await renderEntry(S.D,parsed.steps[0].term,res);
    if(!isCurrent())return;
   }
@@ -476,8 +479,10 @@ if(!n){list.append(el("div",{class:"empty"},"No hay pasajes que cumplan la consu
    if(amb)$("#lx-state").append(" ",el("span",{class:"lx-small",title:T("Pasajes cuya forma hallada admite varios lemas en la tabla automática")},`· ${amb.toLocaleString("es")} ${T("con lema ambiguo")} (${Math.round(amb/Math.min(hits.length,3000)*100)} %)`));
   }catch(error){console.warn("Estadísticas complementarias no disponibles:",error)}
  };
- if(typeof requestIdleCallback==="function")requestIdleCallback(enrich,{timeout:1800});
- else setTimeout(enrich,80);
+ if(S.mode!=="palabra"){
+  if(typeof requestIdleCallback==="function")requestIdleCallback(enrich,{timeout:1800});
+  else setTimeout(enrich,80);
+ }
 }
 /* La fecha de composición, la datación del testimonio y la edición moderna
    corresponden a entidades bibliográficas diferentes. Nunca datar V514 como antigua. */
@@ -775,6 +780,34 @@ function morphologyFrequency(D,term,lemmas){
   (ids.length?"Lemas analizados: "+ids.map(lemmaDisplay).join(" / ")+". ":"Si la forma no tiene análisis morfológico, se cuenta únicamente su grafía documentada.")),
   section.querySelector(".lx-freq-table-scroll")||section.querySelector("table")||section.lastChild);
  return section;
+}
+function renderExactEntry(D,word,res){
+ const box=$("#lx-entry");box.replaceChildren();box.hidden=false;
+ const key=fold(word).replace(/[^\p{L}']/gu,""),an=analyses(D,key);
+ const lemmas=[...new Set(an.map(a=>a[0]))];
+ const header=el("header",{class:"lx-entry-head"},
+  el("div",{class:"article-kicker"},"LEXICON · FORMA EXACTA"),
+  el("h2",{lang:D.l},word),
+  el("p",{class:"article-byline"},"Coincidencias literales de «"+word+"»: "+res.hits.length+(res.capped?"+":"")+". No se incluyen sinónimos, flexiones ni traducciones."));
+ box.append(header);
+ if(lemmas.length){
+  const body=el("section",{class:"lx-lemma"});
+  for(const lemma of lemmas.slice(0,3)){
+   const info=lemmaInfo(D,lemma);
+   if(info.g)body.append(el("p",{},el("b",{},lemmaDisplay(lemma)+": "),info.g.split(/;\s*/).slice(0,3).join("; ")));
+  }
+  if(body.childNodes.length)box.append(body);
+ }
+}
+function quickWord(word,language){
+ const D=L[language==="grc"?"grc":"la"];
+ if(!D||typeof D.then==="function")return null;
+ const key=fold(word).replace(/[^\p{L}']/gu,"");
+ for(const [lem] of analyses(D,key)){
+  const info=lemmaInfo(D,lem);
+  if(info?.g)return{lemma:lemmaDisplay(lem),gloss:info.g.split(/;\s*/).slice(0,3).join("; ")};
+ }
+ return null;
 }
 async function renderEntry(D,term,res){
  const box=$("#lx-entry");box.replaceChildren();box.hidden=false;
@@ -2408,5 +2441,5 @@ function renderDaily(){
  $("#featured-link").onclick=e=>{e.preventDefault();$("#lx-q").value=x.text;S.mode=x.lang==="he"?"sententiae":"analizar";renderTabs();run();$("#results").scrollIntoView({behavior:"smooth"})};
 }
 document.readyState==="loading"?document.addEventListener("DOMContentLoaded",init):init();
-window.VitruviaLexicon={fold,variantKey,greekToLatin,latinTranslitKey,parseQuery,decodeTag,version:"1.0"};
+window.VitruviaLexicon={fold,variantKey,greekToLatin,latinTranslitKey,parseQuery,decodeTag,quickWord,version:"1.1"};
 })();
