@@ -801,7 +801,7 @@ let stagedQuery="";
 function clearStage(){stagedQuery=""}
 function stageImages(snapshot){
  const q=String(snapshot?.query||"").trim();
- if(!q||!snapshot?.rows?.length||q!==document.getElementById("query")?.value?.trim()||stagedQuery===q)return;
+ if(!q||q!==document.getElementById("query")?.value?.trim()||stagedQuery===q)return;
  stagedQuery=q;void searchImages(q);
 }
 window.addEventListener("vitruvia:search",()=>{clearStage();reset()});
