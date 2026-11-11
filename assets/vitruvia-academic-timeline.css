@@ -384,3 +384,36 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-peek :is(strong,p,.vat-p
 @media print{
  #vitruvia-academic-timeline .vat-peek{display:none!important}
 }
+
+/* Responsive site-width chronology: dense dates become in-flow cards. */
+#vitruvia-academic-timeline .vat-viewport,
+#vitruvia-academic-timeline .vat-map{
+ width:100%!important;max-width:100%!important;min-width:0!important;
+ overflow-x:hidden!important;box-sizing:border-box!important;
+}
+#vitruvia-academic-timeline .vat-band-body{min-width:0!important;max-width:100%!important}
+#vitruvia-academic-timeline .vat-dense-list{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));
+ gap:8px;padding:12px 10px;max-width:100%;box-sizing:border-box;
+}
+#vitruvia-academic-timeline .vat-list-event{
+ display:flex;flex-direction:column;align-items:flex-start;gap:4px;
+ min-width:0;max-width:100%;padding:11px;text-align:left;
+ background:#293237;color:#f0f1f2;border:1px solid #66767e;
+ border-radius:8px;cursor:pointer;overflow-wrap:anywhere;
+ font:13px/1.4 system-ui,sans-serif;
+}
+#vitruvia-academic-timeline .vat-list-event .vat-year{font-weight:700;font-size:12px;color:#d0e8f2}
+#vitruvia-academic-timeline .vat-list-event:is(:hover,:focus-visible,[aria-pressed=true]){
+ outline:2px solid #9cc4d7;outline-offset:1px;background:#3c505a;
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-list-event{
+ background:#e8eef0;color:#263238;border-color:#9baeb7;
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-list-event .vat-year{color:#334d60}
+html[data-theme=light] #vitruvia-academic-timeline .vat-list-event:is(:hover,:focus-visible,[aria-pressed=true]){background:#d4e3e9}
+@media(max-width:560px){
+ #vitruvia-academic-timeline .vat-band{grid-template-columns:76px minmax(0,1fr)!important}
+ #vitruvia-academic-timeline{--vat-label-width:76px!important}
+ #vitruvia-academic-timeline .vat-dense-list{grid-template-columns:1fr;padding:8px 5px}
+}
