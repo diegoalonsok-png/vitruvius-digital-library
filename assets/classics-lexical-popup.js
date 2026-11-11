@@ -61,6 +61,28 @@ const contents=root.querySelector(".cl-popup-content");
 const close=root.querySelector(".cl-popup-close");
 let current=0,lastFocus=null;
 const supported=new Set(["la","grc"]);
+let quickLexiconPromise=null;
+function quickLexicon(){
+ if(!quickLexiconPromise)quickLexiconPromise=fetch("data/lexicon/etymologicum.json",{cache:"force-cache"})
+  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+  .then(j=>Array.isArray(j.entries)?j.entries:[])
+  .catch(err=>{quickLexiconPromise=null;throw err});
+ return quickLexiconPromise;
+}
+function fastEntry(word,lang){
+ return quickLexicon().then(entries=>{
+  const key=fold(word),entry=entries.find(e=>(e.l===lang)&&[e.lemma,e.id,e.head].some(v=>fold(v||"")===key));
+  if(!entry)return null;
+  const section=el("section",null,"cl-popup-quick");
+  section.append(el("h3","Diccionario académico · ficha editorial"));
+  section.append(el("p",entry.lemma||word,"cl-popup-quick-lemma"));
+  if(entry.pos||entry.morph)section.append(el("p",[entry.pos,entry.morph].filter(Boolean).join(" · "),"cl-popup-note"));
+  for(const sense of (entry.sens||[]).slice(0,5))section.append(el("p",sense));
+  if(entry.etym)section.append(el("p","Etimología: "+entry.etym,"cl-popup-note"));
+  return section;
+ });
+}
+
 const langCode=mark=>passages?.getAttribute("lang")||
  mark?.closest("[lang]")?.getAttribute("lang")||"";
 const fold=word=>lexicon.fold(word).replace(/[^\p{L}\p{N}]/gu,"");
@@ -132,7 +154,15 @@ async function openMark(mark){
   const params=new URLSearchParams(location.search);
   const edition=mark.closest("[data-work]")?.getAttribute("data-work")||
    params.get("work")||classicalWorkIds[params.get("obra")]||"";
-  // Do not block the panel on online lookups or duplicate dictionary rendering.
+  // Bibliotheca uses the curated Etymologicum JSON: show that lightweight
+  // entry first, without waiting for corpus morphology, Wiktionary, or translation.
+  const quick=await fastEntry(word,lang).catch(()=>null);
+  if(id!==current)return;
+  if(quick){
+   contents.insertBefore(quick,slot);
+   status.textContent="Ficha editorial lista. Cargando análisis morfológico complementario…";
+  }
+  // Keep full scholarly morphology; never run an online request on click.
   await lexicon.renderPanel(slot,word,{lang,work:edition,online:false});
   if(id!==current)return;
   status.remove();
