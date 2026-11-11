@@ -447,6 +447,59 @@ async function songAlbumRelations(root,topic,valid){
   section.append(media);
  }catch{if(valid())status.textContent=L('No fue posible recuperar el catálogo de canciones.','Song catalogue currently unavailable.','Catalogue des chansons indisponible.')}
 }
+/* Film adaptations of a writer's books. Each displayed relationship is a
+ * direct Wikidata P144 ("based on") claim joining a film to a P50-authored work.
+ * Similar titles, keyword matches and unverified recommendations are excluded. */
+async function literaryFilmAdaptations(root,topic,valid){
+ if(!topic.person||!['author','literature'].includes(topic.kind))return;
+ const id=topic.person.wikidataId;
+ if(!/^Q\\d+$/.test(id||''))return;
+ const section=el('section','web-dossier-film-adaptations');
+ header(section,L('Adaptaciones cinematográficas de sus libros','Film adaptations of their books','Adaptations cinématographiques de ses livres'));
+ const status=el('p','context-note',L('Consultando relaciones documentadas libro–película…','Checking documented book-to-film links…','Vérification des liens documentés livre–film…'));
+ section.append(status);root.append(section);
+ const sparql=[
+  'SELECT DISTINCT ?book ?bookLabel ?film ?filmLabel ?filmDate ?directorLabel ?poster WHERE {',
+  '?book wdt:P50 wd:'+id+' .',
+  '?film wdt:P144 ?book ; wdt:P31 wd:Q11424 .',
+  'OPTIONAL { ?film wdt:P577 ?filmDate . }',
+  'OPTIONAL { ?film wdt:P57 ?director . }',
+  'OPTIONAL { ?film wdt:P18 ?poster . }',
+  'SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en,fr" . }',
+  '} LIMIT 32'
+ ].join(' ');
+ try{
+  const url='https://query.wikidata.org/sparql?'+new URLSearchParams({query:sparql,format:'json'});
+  const response=await cached(url);
+  if(!valid()||!section.isConnected)return;
+  const items=(response?.results?.bindings||[]).map(v=>{
+   const bookId=String(v.book?.value||'').match(/\\/(Q\\d+)$/)?.[1];
+   const filmId=String(v.film?.value||'').match(/\\/(Q\\d+)$/)?.[1];
+   return {bookId,filmId,book:v.bookLabel?.value||'',film:v.filmLabel?.value||'',
+    date:v.filmDate?.value||'',director:v.directorLabel?.value||'',
+    poster:v.poster?.value||''};
+  }).filter(x=>/^Q\\d+$/.test(x.bookId||'')&&/^Q\\d+$/.test(x.filmId||'')&&x.book&&!/^Q\\d+$/.test(x.book)&&x.film&&!/^Q\\d+$/.test(x.film));
+  const seen=new Set();
+  const movies=items.filter(x=>{const key=x.filmId+'|'+x.bookId;if(seen.has(key))return false;seen.add(key);return true})
+   .sort((a,b)=>String(a.date||'9999').localeCompare(String(b.date||'9999'))).slice(0,24);
+  status.textContent=movies.length?
+   L('Relaciones obra literaria–película registradas explícitamente en Wikidata (P144 y P50). Las fechas, imágenes y directores son metadatos del catálogo; comprobar referencias primarias antes de citar.','Explicit work-to-film relationships recorded in Wikidata (P144 and P50); verify primary sources before citation.','Liens livre–film explicites dans Wikidata (P144 et P50) ; vérifier les sources primaires.'):
+   L('No hay adaptaciones libro–película recuperadas con relación directa verificable en este catálogo; eso no implica que no existan.','No directly linked adaptations were returned; this does not prove none exist.','Aucune adaptation directement liée n’a été retrouvée ; cela ne prouve pas leur absence.');
+  if(!movies.length)return;
+  const cards=el('div','web-dossier-stack');section.append(cards);
+  for(const movie of movies){
+   const href='https://www.wikidata.org/wiki/'+movie.filmId;
+   const cover=movie.poster.startsWith('http')&&movie.poster.includes('commons.wikimedia.org')?movie.poster:'';
+   const year=movie.date.slice(0,4);
+   const description=L('Adaptación basada en «','Adaptation based on “','Adaptation de «')+movie.book+'»';
+   const metadata=[year,movie.director?L('Dirección: ','Director: ','Réalisation : ')+movie.director:'','Wikidata · P144'].filter(Boolean).join(' · ');
+   const item=card(cards,movie.film,href,description,cover,metadata,
+    L('Ver ficha y fuentes de la película','Film record and sources','Voir film et sources'));
+   const body=item.querySelector('.web-dossier-card-body');
+   body.append(link(L('Libro original · ficha','Source book record','Livre original · notice'),'https://www.wikidata.org/wiki/'+movie.bookId));
+  }
+ }catch{if(valid())status.textContent=L('El catálogo de adaptaciones no respondió; las portadas de libros siguen disponibles.','Adaptation catalogue unavailable; book covers remain accessible.','Catalogue d’adaptations indisponible ; couvertures de livres toujours accessibles.')}
+}
 /* Literary WORK queries show documented editions, not unrelated books.
    Publication chronology is bibliographic and distinct from composition date. */
 function titleEquals(a,b){
@@ -582,6 +635,7 @@ function render(panel,query,rows,isCurrent){
   if(topic.kind==='music')void songAlbumRelations(section,topic,valid);
   if(topic.person&&['author','literature'].includes(topic.kind))manuscriptWitnesses(section,topic,records);
   if(topic.person&&['author','literature','architect','cinema','visual','general'].includes(topic.kind))void books(section,topic,valid);
+  if(topic.person&&['author','literature'].includes(topic.kind))void literaryFilmAdaptations(section,topic,valid);
   if(topic.kind==='literary-work')void literaryEditions(section,topic,valid);
   const relationKind=topic.kind==='music'&&/compos/.test(normalized(topic.person?.entityDescription))&&
    !/cantante|singer|band|grupo|banda|rapper/.test(normalized(topic.person?.entityDescription))?'composer':topic.kind;
