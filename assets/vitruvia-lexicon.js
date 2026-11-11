@@ -160,7 +160,7 @@ function resolveTerm(D,t,opts={}){
  if(t.type==="form"){const k=fold(t.v).replace(/[^\p{L}']/gu,"");add(k);
   if(opts.lemmatize){for(const a of analyses(D,k))for(const f of (D.lemmaForms.get(a[0])||[]))add(f)}
   if(opts.variants){for(const f of (variantIndex(D).get(variantKey(k,D.l))||[]))add(f)}
-  if(!out.size&&D.l==="grc"&&!GREEK.test(t.v)){for(const f of (transIndex(D).get(latinTranslitKey(t.v))||[]))add(f)}
+  /* Coincidencia literal estricta: sin transliteración automática. */
  }else if(t.type==="lemma"){const lk=fold(t.v);const exact=/\d$/.test(lk);for(const [lem,fs] of D.lemmaForms){if(exact?fold(lem)===lk:fold(lemmaDisplay(lem))===lk)for(const f of fs)add(f)}
   if(!out.size)add(lk);
  }else if(t.type==="wild"){let pat=fold(t.v);if(D.l==="grc"&&!GREEK.test(t.v)){/* comodín transliterado */const rx=new RegExp("^"+latinTranslitKey(t.v).replace(/[.+^${}()|[\]\\]/g,"\\$&").replace(/\*/g,".*").replace(/\?/g,".")+"$");for(const [tk,fs] of transIndex(D))if(rx.test(tk))fs.forEach(add)}
@@ -330,14 +330,10 @@ async function run(push=true){
  const isCurrent=()=>revision===runRevision;
  syncSearchLanguageSelector();
  let q=$("#lx-q").value.trim();
- // Canonical Greek headword for the common Latin-letter transliteration.
- // Preserve normal Latin searches when the user explicitly selected Latin.
- if(["auto","grc"].includes(S.lang)&&/^logos$/i.test(q)&&["palabra","lema","etimologia"].includes(S.mode)){
-  q="λόγος";$("#lx-q").value=q;S.lang="grc";$("#lx-lang").value="grc";
- }
+ // Conservar la forma escrita por el usuario, sin sustitución automática.
  S.q=q;S.page=0;
  if(["palabra","lema"].includes(S.mode))window.dispatchEvent(new CustomEvent("vitruvia:lexicon-search",{detail:{query:q,mode:S.mode,language:S.lang}}));
- window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""),{ancient:["palabra","lema","etimologia"].includes(S.mode)});
+ if(S.mode!=="palabra")window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""),{ancient:["lema","etimologia"].includes(S.mode)});
  renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
  if(push){const u=new URL(location.href);u.searchParams.delete("qb");u.searchParams.delete("qb_lang");u.searchParams.delete("qb_filters");u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{if(u.href!==location.href)history.pushState(null,"",u)}catch{}}
@@ -354,7 +350,7 @@ async function run(push=true){
   if(/^(√|raiz_he:|raíz_he:)/i.test(q))return renderHebrewRoot(q.replace(/^(√|raiz_he:|raíz_he:)\s*/i,""));
   /* Remisión ortográfica: eclesia/ekklesia no son lemas distintos de
      gr. ἐκκλησία y lat. ecclesia. Mantener la grafía consultada visible. */
-  if(S.mode==="palabra"&&S.lang==="auto"&&["eclesia","ekklesia","ekklesía","ekklesia"].includes(fold(q))){
+  if(false&&S.mode==="palabra"&&S.lang==="auto"&&["eclesia","ekklesia","ekklesía","ekklesia"].includes(fold(q))){
    const entry=(S.etym?.entries||[]).find(e=>e.id==="ecclesia"&&e.l==="grc");
    if(entry){
     const box=$("#lx-entry");box.hidden=false;
@@ -408,7 +404,7 @@ async function run(push=true){
    if(!S.ctxAll){const kept=[];for(const h of res.hits){const p=S.D.corpus.passages[h.i];const c=ctxLemma(S.D,p,h.spans[0][0]);if(c&&fold(lemmaDisplay(c))!==want){ctxDropped++;continue}kept.push(h)}if(ctxDropped)res={...res,hits:kept}}}
   S.allHits=S.work?execute(S.D,parsed,{...opts,work:""}).hits:res.hits;
  S.result={...res,parsed};
-  if(S.D.l==="la"&&S.lang==="auto"&&S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&res.hits.length&&res.hits.length<25)setTimeout(async()=>{const G=await lang("grc",true);if(!isCurrent())return;
+  if(false&&S.D.l==="la"&&S.lang==="auto"&&S.mode==="palabra"&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&res.hits.length&&res.hits.length<25)setTimeout(async()=>{const G=await lang("grc",true);if(!isCurrent())return;
    const g=transIndex(G).get(latinTranslitKey(q));if(g?.length){const lems=[...new Set(g.flatMap(k=>analyses(G,k).map(a=>lemmaDisplay(a[0]))))].slice(0,3);const st=$("#lx-state");st.append(" ",el("button",{type:"button",class:"lx-btn",lang:"grc",onclick:()=>{$("#lx-q").value=lems[0]||g[0];S.lang="grc";$("#lx-lang").value="grc";run()}},`¿Griego? ${(lems.length?lems:g.slice(0,3)).join(", ")}`))}},0);
   // Para toda palabra o lema, en latín o griego, mostrar siempre la ficha
   // y su frecuencia. No depender de una ficha Conceptus preexistente.
@@ -422,8 +418,8 @@ async function run(push=true){
    await renderEntry(S.D,parsed.steps[0].term,res);
    if(!isCurrent())return;
   }
-  if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const qq=q;findConcept(q).then(c=>{if(!c||$("#lx-q").value.trim()!==qq)return;const body=$("#lx-entry .article-body");if(body)body.prepend(conceptCard(c,qq))})}
-  if(S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!GREEK.test(q)){const qq=q;findPerson(q).then(P=>{if(!P||$("#lx-q").value.trim()!==qq)return;const b=el("p",{class:"lx-person-banner"},"¿Buscaba al personaje ",el("b",{},P.name),"? ",P.greek[0]?el("span",{lang:"grc"},P.greek[0]+" · "):"",P.latin[0]||"",". ",el("button",{type:"button",class:"lx-btn",onclick:()=>renderPerson(P,qq)},"Ver sus pasajes en griego y latín"));$("#lx-entry").prepend(b)}).catch(()=>{})}
+  if(false&&S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const qq=q;findConcept(q).then(c=>{if(!c||$("#lx-q").value.trim()!==qq)return;const body=$("#lx-entry .article-body");if(body)body.prepend(conceptCard(c,qq))})}
+  if(false&&S.mode==="palabra"&&res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!GREEK.test(q)){const qq=q;findPerson(q).then(P=>{if(!P||$("#lx-q").value.trim()!==qq)return;const b=el("p",{class:"lx-person-banner"},"¿Buscaba al personaje ",el("b",{},P.name),"? ",P.greek[0]?el("span",{lang:"grc"},P.greek[0]+" · "):"",P.latin[0]||"",". ",el("button",{type:"button",class:"lx-btn",onclick:()=>renderPerson(P,qq)},"Ver sus pasajes en griego y latín"));$("#lx-entry").prepend(b)}).catch(()=>{})}
   if(S.mode==="sintaxis")renderCollocations(S.D,res);
   if(ctxDropped||S.ctxAll){const b=el("p",{class:"lx-small lx-ctx-note"},S.ctxAll?T("Se muestran todas las coincidencias de la tabla, sin el filtro contextual. "):`${ctxDropped} ${T("coincidencias descartadas: el análisis contextual (Stanza) asigna allí otro lema.")} `,el("button",{type:"button",class:"lx-btn",onclick:()=>{S.ctxAll=!S.ctxAll;run(false)}},S.ctxAll?T("Aplicar el filtro contextual"):T("Mostrarlas también")));$("#lx-results").prepend(b)}
   if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){
@@ -2304,7 +2300,7 @@ async function init(){
   try{localStorage.setItem("vitruvia-theme",t);localStorage.removeItem("vitruvia-lexicon-bg")}catch{}
   themeIcon();
  });
- $("#lx-form").addEventListener("submit",e=>{e.preventDefault();run().then(()=>$("#results").scrollIntoView({behavior:"smooth",block:"start"}))});
+ $("#lx-form").addEventListener("submit",e=>{e.preventDefault();const submitted=$("#lx-q").value.trim();run().then(()=>{if($("#lx-q").value.trim()===submitted)$("#results").scrollIntoView({behavior:"smooth",block:"start"})})});
  $("#lx-lang").addEventListener("change",e=>{S.lang=e.target.value;syncSearchLanguageSelector();if(S.q)run()});
  $("#lx-lang-quick")?.addEventListener("change",e=>{
   const primary=$("#lx-lang");primary.value=e.target.value;
@@ -2313,11 +2309,12 @@ async function init(){
  $("#lx-work").addEventListener("change",e=>{S.work=e.target.value;if(S.q)run()});
  $("#lx-order").addEventListener("change",()=>{if(S.result&&S.D){S.page=0;$("#lx-results").replaceChildren();$("#lx-side-extra").replaceChildren();if(S.mode==="sintaxis")renderCollocations(S.D,S.result);renderHits(S.D,S.result)}});
  ["#lx-variants","#lx-lemmatize"].forEach(id=>$(id).addEventListener("change",()=>{if(S.q)run()}));
- $("#lx-clear").addEventListener("click",()=>{$("#lx-q").value="";$("#lx-q").focus()});
+ $("#lx-clear").addEventListener("click",()=>{++runRevision;$("#lx-q").value="";$("#lx-results").replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;setState("Introduzca una nueva búsqueda.");$("#lx-q").focus()});
  /* Autocompletado de lemas y formas atestiguadas; atajo «/» para ir al buscador. */
  {const dl=document.createElement("datalist");dl.id="lx-suggest";document.body.append(dl);$("#lx-q").setAttribute("list","lx-suggest");let timer=0,revision=0;
   $("#lx-q").addEventListener("input",()=>{
-   clearTimeout(timer);const current=++revision;
+   ++runRevision; // invalidar consultas previas al editar
+    clearTimeout(timer);const current=++revision;
    timer=setTimeout(async()=>{
     const v=$("#lx-q").value.trim(),unchanged=()=>current===revision&&v===$("#lx-q").value.trim();
     if(v.length<2||/[\s"@\[*?~]/.test(v)){if(unchanged())dl.replaceChildren();return}
