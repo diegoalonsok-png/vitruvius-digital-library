@@ -130,6 +130,7 @@ function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceL
    const caution=el("small","",result.provider+
     (result.partial?" · Traducción parcial: consulte el texto completo en su fuente.":"")+
     (source==="grc"?" · El proveedor trata el griego antiguo como griego moderno; interpretación especialmente incierta.":"")+
+    ((source==="he"||source==="hbo")?" · El servicio traduce como hebreo moderno; el hebreo bíblico requiere cotejo filológico.":"")+
     " · No constituye traducción filológica, edición crítica ni texto citado.");
    output.append(label,p,caution);
   }catch(_){
