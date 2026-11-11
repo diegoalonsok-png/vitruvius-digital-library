@@ -485,6 +485,23 @@ async function searchImages(query){
  const q=String(query||"").trim();reset();currentImageQuery=q;if(!q)return;
  const earlyJewishChristianity=isEarlyJewishChristianity(q);
  const id=++active;section.hidden=false;
+ // Philological sense disambiguation: λόγος is not a corporate logo.
+ // Do not send a bare Greek lexical headword to general image/entity search;
+ // Wikimedia's generic "logos" matches unrelated company marks.
+ const lexicalHeadword=/^(?:logos|λόγος|λογοσ)$/iu.test(q.normalize("NFC").trim());
+ if(lexicalHeadword){
+  const lexicalVisual=documentedLexicalVisual(q);
+  heading.textContent=locale("λόγος · fuentes filológicas","λόγος · philological sources","λόγος · sources philologiques");
+  if(lexicalVisual)displayGroups([lexicalVisual],{kind:"topic",subject:"λόγος",aliases:["λόγος"]});
+  else{grid.replaceChildren();grid.hidden=true}
+  status.textContent=locale(
+   "Consulta interpretada como λόγος (griego antiguo): palabra, razón, discurso. Se excluyen logotipos comerciales. Para buscar marcas, escribí «logos de empresas».",
+   "Interpreted as ancient Greek λόγος (word, reason, discourse). Corporate logos are excluded. Search for 'company logos' to see trademarks.",
+   "Recherche interprétée comme λόγος en grec ancien (parole, raison, discours). Logos commerciaux exclus."
+  );
+  external("Wikimedia Commons · λόγος (griego)","https://commons.wikimedia.org/w/index.php?search="+encodeURIComponent("λόγος ancient greek philosophy manuscript")+"&title=Special:MediaSearch&type=image");
+  return;
+ }
  const historicalSubject=await verifiedHistoricalSubject(q);
  if(id!==active)return;
  if(historicalSubject){
