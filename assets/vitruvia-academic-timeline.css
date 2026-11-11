@@ -116,3 +116,26 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-detail :is(h4,p,small,a)
 }
 @media(prefers-reduced-motion:reduce){#vitruvia-academic-timeline *{scroll-behavior:auto!important}}
 @media print{#vitruvia-academic-timeline .vat-controls{display:none}#vitruvia-academic-timeline .vat-viewport{overflow:visible}#vitruvia-academic-timeline .vat-map{width:100%!important}}
+
+
+/* Pastel documentary event palette. Each dated record gets a gentle,
+   distinguishable color while retaining readable ink in both themes. */
+#vitruvia-academic-timeline .vat-track .vat-event{
+ color:#25303a!important;border-color:rgba(40,49,55,.35)!important;
+ background:#d4e5f2!important;transition:filter .16s ease,box-shadow .16s ease,border-color .16s ease;
+}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+1){background:#e9d8ef!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+2){background:#d4e5f2!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+3){background:#f5e3c5!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+4){background:#d6ead9!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+5){background:#f3d7d8!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n){background:#d9e6e1!important}
+#vitruvia-academic-timeline .vat-track .vat-event :is(.vat-year,strong,.vat-duration),
+html[data-theme=light] #vitruvia-academic-timeline .vat-track .vat-event :is(.vat-year,strong,.vat-duration){color:#283039!important}
+#vitruvia-academic-timeline .vat-track .vat-event:hover{
+ filter:brightness(1.055);border-color:#364956!important;box-shadow:0 4px 13px #0005;
+}
+#vitruvia-academic-timeline .vat-track .vat-event[aria-pressed=true],
+html[data-theme=light] #vitruvia-academic-timeline .vat-track .vat-event[aria-pressed=true]{
+ filter:saturate(1.08);border-color:#243f56!important;box-shadow:0 0 0 3px #7da5be,0 4px 13px #0005;
+}
