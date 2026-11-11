@@ -15,10 +15,10 @@ const ARCHITECTS=[
  {keys:["calatrava","santiago calatrava"],name:"Santiago Calatrava",works:["Auditorio de Tenerife","Puente de la Mujer","Turning Torso"]}
 ];
 const TYPES=[
- {id:"planta",name:"Plantas",terms:"floor plan architectural plan",note:"Planta arquitectónica o dibujo de distribución"},
- {id:"corte",name:"Cortes",terms:"architectural section cross section",note:"Sección o corte del edificio"},
- {id:"vista",name:"Vistas",terms:"architectural elevation facade drawing",note:"Alzado o vista arquitectónica"},
- {id:"foto",name:"Fotografías",terms:"architecture building exterior photograph",note:"Fotografía del edificio"}
+ {id:"planta",name:"Plantas",terms:"floor plan",note:"Planta arquitectónica o dibujo de distribución"},
+ {id:"corte",name:"Cortes",terms:"section drawing",note:"Sección o corte del edificio"},
+ {id:"vista",name:"Vistas",terms:"elevation",note:"Alzado o vista arquitectónica"},
+ {id:"foto",name:"Fotografías",terms:"photograph",note:"Fotografía del edificio"}
 ];
 const normalize=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
 const structural=/(arquitect|architect|ingenier|engineer|edificio|building|museo|museum|villa|casa|house|palacio|palace|catedral|cathedral|pabellon|pavilion|puente|bridge|torre|tower|templo|temple|iglesia|church|skyscraper|rascacielos|basilica|estadio|stadium|biblioteca|library|teatro|theatre|viaducto|viaduct|construccion|construction|estacion|station|farnsworth|fallingwater|savoye|rotonda|petronas|burj khalifa)/i;
@@ -46,58 +46,73 @@ function init(){
  tools.append(uploadLabel,external,clear);
  const status=node("p","vr-ad-note");status.setAttribute("role","status");
  const viewer=node("div","vr-ad-viewer");
+ const zoomRow=node("div","vr-ad-row"),zoomLabel=node("label",null,"Zoom"),zoom=node("input"),zoomValue=node("output",null,"100 %");
+ zoom.type="range";zoom.min="75";zoom.max="220";zoom.value="100";zoom.step="5";zoom.setAttribute("aria-label","Ampliación del plano");
+ zoomLabel.append(zoom);zoomRow.append(zoomLabel,zoomValue);
+ zoom.addEventListener("input",()=>{zoomValue.textContent=zoom.value+" %";viewer.style.setProperty("--vr-ad-zoom",zoom.value+"%")});
  const cards=node("div","vr-ad-cards");
  const foot=node("p","vr-ad-note","Los archivos de terceros se muestran únicamente con referencia a su página fuente. La escala, autoría, fecha y fidelidad del plano deben confirmarse documentalmente. La carga local no se sube al servidor.");
- panel.append(heading,description,row,nav,tools,status,viewer,cards,foot);
+ panel.append(heading,description,row,nav,tools,status,zoomRow,viewer,cards,foot);
  article.insertAdjacentElement("afterend",panel);
- let selected=TYPES[0],artist="",currentWork="",fetchToken=0,objectURL=null;
+ let selected=TYPES[0],artist="",fetchToken=0,objectURL=null,controller=null;
  const paperTerms={planta:"floor plan",corte:"section drawing",vista:"elevation architectural drawing",foto:"building"};
  function selectedWork(){return custom.value.trim()||workSelect.value.trim()||artist}
  function updateExternal(){const name=selectedWork();external.href="https://commons.wikimedia.org/wiki/Special:MediaSearch?"+new URLSearchParams({type:"image",search:[name,paperTerms[selected.id]].filter(Boolean).join(" ")})}
  function activeTab(type){selected=TYPES.find(x=>x.id===type)||TYPES[0];tabs.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.type===selected.id)));updateExternal();loadDocs()}
  function safeUrl(raw){try{const u=new URL(raw);return u.protocol==="https:"?u.href:null}catch{return null}}
  function clearViewer(){viewer.replaceChildren();if(objectURL){URL.revokeObjectURL(objectURL);objectURL=null}}
+ function cancel(){++fetchToken;if(controller){controller.abort();controller=null}}
+ const strip=s=>String(s||"").replace(/<[^>]*>/g," ").replace(/\\s+/g," ").trim().slice(0,200);
+ const isType=(title,id)=>{const t=normalize(title);return id==="planta"?/(plan|planta|grundriss|floorplan|planimetr)/.test(t):id==="corte"?/(section|seccion|schnitt|corte|sezione)/.test(t):id==="vista"?/(elevation|elevacion|alzato|facade|fachada|fassade)/.test(t):/(photo|foto|view|exterior|vista)/.test(t)};
  function metadata(item){
   const ext=item.imageinfo?.[0]?.extmetadata||{};
-  const t=ext.ImageDescription?.value||"";
+  const author=strip(ext.Artist?.value||"no indicado"),date=strip(ext.DateTimeOriginal?.value||ext.DateTime?.value||"no indicada");
   const container=node("div","vr-ad-meta");
   const heading=node("strong",null,item.title.replace(/^File:/,""));
   const source=node("a",null,"Ficha y derechos en Wikimedia Commons ↗");source.href="https://commons.wikimedia.org/wiki/"+encodeURIComponent(item.title.replaceAll(" ","_"));source.target="_blank";source.rel="noopener noreferrer";
-  const license=String(ext.LicenseShortName?.value||"Licencia no comprobada");
+  const license=strip(ext.LicenseShortName?.value||"Licencia no comprobada");
   const text=node("small",null,"Licencia declarada: "+license+" · Comprobar autoría, escala y procedencia en la ficha original.");
-  container.append(heading,text,source);return container;
+  container.append(heading,text,node("small",null,"Metadatos: autor "+author+" · fecha "+date+"; verificar con ficha de origen."),source);return container;
  }
  function showItem(item){
-  clearViewer();const inf=item.imageinfo?.[0];const url=safeUrl(inf?.url);if(!url)return;
+  clearViewer();const inf=item.imageinfo?.[0];const url=safeUrl(inf?.thumburl||inf?.url);if(!url)return;
   const img=node("img");img.src=url;img.alt="Candidato documental: "+item.title+"; identificación por verificar";img.loading="lazy";
   const wrapper=node("div","vr-ad-mainimage");wrapper.append(img);viewer.append(wrapper,metadata(item));viewer.scrollIntoView({block:"nearest",behavior:"smooth"});
  }
  async function loadDocs(){
-  const work=selectedWork();const token=++fetchToken;
+  cancel();const work=selectedWork();const token=fetchToken;
   cards.replaceChildren();clearViewer();
   if(!work){status.textContent="Seleccioná una obra o escribí su nombre.";return}
   status.textContent="Consultando archivos relacionados con «"+work+"»…";
   updateExternal();
-  const search=[work,selected.terms].join(" ");
-  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),12000);
+  controller=new AbortController();const activeController=controller;
+  const timer=setTimeout(()=>activeController.abort(),12000);
   try{
-   const url="https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({
-    action:"query",generator:"search",gsrsearch:search,gsrnamespace:"6",gsrlimit:"12",prop:"imageinfo",
-    iiprop:"url|extmetadata",iiurlwidth:"420",format:"json",origin:"*"
-   });
-   const res=await fetch(url,{signal:controller.signal,referrerPolicy:"no-referrer"});
-   if(!res.ok)throw Error("HTTP "+res.status);
-   const json=await res.json();if(token!==fetchToken)return;
-   const options=Object.values(json.query?.pages||{}).filter(x=>x.imageinfo?.[0]?.url&&/\.(?:jpe?g|png|webp|svg)$/i.test(x.title));
+   async function getFiles(search){
+    const url="https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({
+     action:"query",generator:"search",gsrsearch:search,gsrnamespace:"6",gsrlimit:"20",prop:"imageinfo",
+     iiprop:"url|extmetadata",iiurlwidth:"1200",format:"json",origin:"*"
+    });
+    const res=await fetch(url,{signal:activeController.signal,referrerPolicy:"no-referrer"});
+    if(!res.ok)throw Error("HTTP "+res.status);
+    const json=await res.json();
+    return Object.values(json.query?.pages||{}).filter(x=>x.imageinfo?.[0]?.url&&/\\.(?:jpe?g|png|webp|svg)$/i.test(x.title));
+   }
+   let options=await getFiles(work+" "+selected.terms);
+   if(!options.length)options=await getFiles(work);
+   if(token!==fetchToken)return;
+   const keywords=normalize(work).split(/\\s+/).filter(w=>w.length>3);
+   const rank=x=>(isType(x.title,selected.id)?10:0)+keywords.filter(w=>normalize(x.title).includes(w)).length*3;
+   options.sort((a,b)=>rank(b)-rank(a));
    status.textContent=options.length?options.length+" archivos candidatos de Wikimedia Commons. Verificá la tipología y autoría de cada documento antes de citarlo.":"No se localizaron archivos para esta combinación. Probá otro título o abrí la búsqueda externa.";
    options.slice(0,8).forEach(item=>{
     const card=node("button","vr-ad-card");card.type="button";
     const img=node("img");img.loading="lazy";img.alt=item.title.replace(/^File:/,"");img.src=safeUrl(item.imageinfo[0].thumburl||item.imageinfo[0].url)||"";
     card.append(img,node("span",null,item.title.replace(/^File:/,"")));card.addEventListener("click",()=>showItem(item));cards.append(card);
    });
-   if(options.length)showItem(options[0]);
+   if(options.length&&isType(options[0].title,selected.id))showItem(options[0]);
   }catch(error){if(token===fetchToken)status.textContent="No se pudieron cargar imágenes externas. Podés consultar la fuente mediante el enlace de Wikimedia Commons o abrir un archivo local."}
-  finally{clearTimeout(timer)}
+  finally{clearTimeout(timer);if(controller===activeController)controller=null}
  }
  tabs.forEach(b=>b.addEventListener("click",()=>activeTab(b.dataset.type)));
  go.addEventListener("click",loadDocs);
@@ -106,7 +121,7 @@ function init(){
  file.addEventListener("change",()=>{
   const f=file.files?.[0];if(!f)return;
   if(!["image/png","image/jpeg","image/webp","image/svg+xml","application/pdf"].includes(f.type)||f.size>10000000){status.textContent="Formato no admitido o tamaño superior a 10 MB.";return}
-  ++fetchToken;clearViewer();cards.replaceChildren();objectURL=URL.createObjectURL(f);
+  cancel();clearViewer();cards.replaceChildren();objectURL=URL.createObjectURL(f);
   if(f.type==="application/pdf"){
    const iframe=node("iframe");iframe.title="Documento PDF local: "+f.name;iframe.src=objectURL;iframe.setAttribute("sandbox","allow-same-origin");viewer.append(iframe);
   }else{const img=node("img");img.src=objectURL;img.alt="Documento local: "+f.name;viewer.append(img)}
@@ -121,7 +136,7 @@ function init(){
   const lower=normalize(q),p=ARCHITECTS.find(a=>a.keys.some(k=>lower.includes(normalize(k))));
   const relevant=!!p||structural.test(lower);
   panel.hidden=!relevant;
-  if(!relevant){++fetchToken;clearViewer();cards.replaceChildren();return}
+  if(!relevant){cancel();clearViewer();cards.replaceChildren();return}
   artist=p?.name||q.replace(OMIT,"");
   workSelect.replaceChildren();
   const defaults=p?.works||[q.replace(OMIT,"")];
