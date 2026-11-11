@@ -173,6 +173,23 @@ function resolveTerm(D,t,opts={}){
 /* Ejecuta la consulta: postings → verificación posicional → coincidencias con desplazamientos. */
 function strictForm(w){return String(w||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[ςϲ]/g,"σ").replace(/[ʼ’]/g,"\u0027")}
 function execute(D,parsed,opts={}){
+ // Exact-word concordance: walk only this form's postings, not the
+ // lemma/pattern/semantic machinery, and avoid building token arrays.
+ if(opts.literalOriginal&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){
+  const wanted=String(parsed.steps[0].term.v||"");
+  const key=fold(wanted).replace(/[^\\p{L}']/gu,"");
+  const candidates=D.post.get(key)||[],hits=[],workId=opts.work||"";
+  for(const i of candidates){
+   const passage=D.corpus.passages[i];
+   if(workId&&passage[0]!==workId)continue;
+   for(const m of passage[2].matchAll(TOKEN)){
+    if(strictForm(m[0])!==strictForm(wanted))continue;
+    hits.push({i,spans:[[m.index,m.index+m[0].length]],tok:0});
+    if(hits.length>=MAX_HITS)return{hits,sets:[new Set([key])],capped:true};
+   }
+  }
+  return{hits,sets:[new Set(candidates.length?[key]:[])]};
+ }
  const sets=parsed.steps.map(s=>resolveTerm(D,s.term,opts));
  if(!sets.length||sets.some(s=>!s.size))return{hits:[],sets};
  /* Candidatos: intersección de las uniones de postings. */
@@ -800,8 +817,8 @@ function renderExactEntry(D,word,res){
  }
 }
 function quickWord(word,language){
- const D=L[language==="grc"?"grc":"la"];
- if(!D||typeof D.then==="function")return null;
+ const expected=language==="grc"?"grc":"la",D=S.D;
+ if(!D||D.l!==expected)return null;
  const key=fold(word).replace(/[^\p{L}']/gu,"");
  for(const [lem] of analyses(D,key)){
   const info=lemmaInfo(D,lem);
