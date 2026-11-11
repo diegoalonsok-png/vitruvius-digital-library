@@ -223,14 +223,16 @@ function markOf(target){
  return target instanceof Element?target.closest(markSelector):null;
 }
 targetRoot.addEventListener("click",event=>{
- // Bibliotheca and the text reader already own their inline dictionaries.
- if(inBibliotheca||passages)return;
+ // Keep both viewers: this academic modal and the reader’s inline dictionary.
  const mark=markOf(event.target);
  if(!mark||!targetRoot.contains(mark)||!supported.has(langCode(mark)))return;
  // The original reader's general word-click handler remains available on
  // unhighlighted text. Highlighted terms use this self-contained viewer.
  event.preventDefault();
- if(inLexiconViewer||inClassicalReader){
+ if(inBibliotheca||passages){
+  // Do not swallow the bubbling event used by the in-page dictionary.
+  void openMark(mark);
+ }else if(inLexiconViewer||inClassicalReader){
   // These readers already have link/navigation or small lexical popups:
   // yellow-word clicks open the larger viewer without competing overlays.
   event.stopImmediatePropagation();
@@ -244,11 +246,11 @@ targetRoot.addEventListener("click",event=>{
  }
 },true);
 targetRoot.addEventListener("keydown",event=>{
- if(inBibliotheca||passages)return;
  if(event.key!=="Enter"&&event.key!==" ")return;
  const mark=markOf(event.target);
  if(!mark||!supported.has(langCode(mark)))return;
- event.preventDefault();event.stopImmediatePropagation();
+ event.preventDefault();
+ if(!inBibliotheca&&!passages)event.stopImmediatePropagation();
  void openMark(mark);
 },true);
 function prepareMark(mark){
