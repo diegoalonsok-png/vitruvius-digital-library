@@ -33,7 +33,7 @@ const CONCEPTS={
  manuscrito:["codex","codices","codice","manuscriptum"]
 };
 function norm(value){return String(value||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase()
- .replace(/ſ/g,"s").replace(/j/g,"i").replace(/v/g,"u")
+ .replace(/[Ææ]/g,"ae").replace(/[Œœ]/g,"oe").replace(/ſ/g,"s").replace(/j/g,"i").replace(/v/g,"u")
  .replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();}
 function tokens(text){return norm(text).split(" ").filter(t=>t.length>2&&!STOP.has(t));}
 function wordCount(text){return String(text||"").trim().split(/\s+/).filter(Boolean).length;}
@@ -92,8 +92,9 @@ function paragraphIndex(edition,pages){
 }
 function pageURL(entry){
  const source=SOURCES[entry.edition];if(!source)return "";
- return source.mode==="image"?
-  source.viewer+"?image="+encodeURIComponent(entry.page):
+ // Cesariano's OCR page number has not been verified against its IIIF
+ // image sequence; never silently convert one into the other.
+ return source.mode==="image"?source.viewer:
   source.viewer+"#page="+encodeURIComponent(entry.page);
 }
 async function load(edition){
@@ -164,7 +165,7 @@ async function search(query,options={}){
  });
  return {query:String(query||""),mode,results:rankRows(all,query,mode,options.limit||50),
   sources:sourceStatus,unitsSearched:all.length,complete:ids.every(id=>sourceStatus[id].status==="loaded"),
-  warning:"Coincidencia algorítmica de unidades OCR. No es una colación filológica; modo conceptual = BM25 y equivalencias controladas, no IA neuronal. Los números son páginas digitales, no folios."};
+  warning:"Coincidencia algorítmica de unidades OCR, no colación filológica. Modo conceptual: BM25 + equivalencias controladas (no IA neuronal). Los números son páginas de origen OCR; en Cesariano no identifican imágenes IIIF ni folios cotejados."};
 }
 window.VitruviaHistoricalParagraphs={SOURCES,norm,tokens,segmentPage,paragraphIndex,queryWeights,rankRows,search,pageURL,
  version:"2026-11-11-ocr-paragraphs-v1"};
