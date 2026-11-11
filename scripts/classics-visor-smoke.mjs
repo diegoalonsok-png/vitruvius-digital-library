@@ -418,7 +418,7 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
     {timeout:20000});
    const LOCI=/Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/;
    try{
-    await page.waitForFunction(()=>document.querySelector('#article-body')?.textContent.includes('Biografía de prueba')&&
+    await page.waitForFunction(()=>/Marco Tulio Cicerón \(106|Biografía de prueba/.test(document.querySelector('#article-body')?.textContent||'')&&
     /Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/.test(document.querySelector('#article-body')?.textContent||''),{timeout:20000});
    }catch(error){
     const diagnostic=await page.evaluate(()=>({
@@ -432,7 +432,7 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
     throw new Error(error.message+'; diagnostic='+JSON.stringify(diagnostic));
    }
    const text=await page.locator('#article-body').innerText();
-   assert(text.indexOf('Biografía de prueba')<text.search(LOCI),
+   assert((text.includes('Marco Tulio Cicerón (106')?text.indexOf('Marco Tulio Cicerón (106'):text.indexOf('Biografía de prueba'))<text.search(LOCI),
     'The biography must precede the relevant Vitruvius passages');
    assert.match(await page.locator('#article-title').innerText(),/Cicerón/);
    const passages=await page.locator('.person-locus-entry').count();
