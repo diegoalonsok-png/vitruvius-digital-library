@@ -1357,6 +1357,7 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  ["Stanford Encyclopedia of Philosophy","https://www.google.com/search?"+new URLSearchParams({q:"site:plato.stanford.edu "+query})],
  ["World History Encyclopedia","https://www.google.com/search?"+new URLSearchParams({q:"site:worldhistory.org "+query})],
  ["Internet Archive","https://archive.org/search?"+new URLSearchParams({query})],
+ ["Krohn · Rose · Cesariano · párrafos OCR","buscador-parrafos-vitruvio.html?"+new URLSearchParams({q:query})],
  ["Google · búsqueda web","https://www.google.com/search?"+new URLSearchParams({q:query})],
  ["Google · Modo IA","https://www.google.com/search?"+new URLSearchParams({q:query,udm:"50"})],
  ["Grok · consulta externa","https://grok.com/"],
