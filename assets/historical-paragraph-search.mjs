@@ -3,7 +3,7 @@ const $=id=>document.getElementById(id);
 const SOURCES={
  "krohn-1912":{label:"Krohn 1912 · texto latino OCR",link:p=>"documents/krohn-1912.pdf#page="+p,linkLabel:p=>"Abrir PDF · página "+p},
  "rose-1899":{label:"Rose 1899 · texto latino OCR",link:p=>"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page="+p,linkLabel:p=>"Abrir PDF externo · página "+p},
- "cesariano-1521":{label:"Cesariano 1521 · italiano histórico OCR",link:p=>"cesariano-1521.html?image="+p,linkLabel:p=>"Consultar imagen aproximada "+p+" (no cotejada con foliación)"}
+ "cesariano-1521":{label:"Cesariano 1521 · italiano histórico OCR",link:()=>"cesariano-1521.html",linkLabel:()=>"Abrir visor (OCR no alineado con imágenes IIIF)"}
 };
 const caches=new Map();let serial=0,modelPromise;
 const el=(tag,content,cls)=>{const node=document.createElement(tag);if(content!==undefined)node.textContent=String(content);if(cls)node.className=cls;return node;};
@@ -29,9 +29,21 @@ function render(rows,edition,kind) {
   const item=el("article",undefined,"result");
   item.append(el("h3",SOURCES[edition].label+" · página OCR "+row.page+" · bloque "+row.sequence));
   item.append(el("p","OCR sin verificar · "+(row.segmentation==="approximate_length_window"?"división aproximada por extensión":"separación aproximada por blancos")+" · "+kind,"meta"));
-  item.append(el("p",row.text.slice(0,1050)+(row.text.length>1050?" […]":"")));
+  const text=row.text.slice(0,1050)+(row.text.length>1050?" […]":"");
+  const p=el("p");
+  if(edition==="rose-1899"||edition==="cesariano-1521"){
+   if(window.VitruviaOCRHighlight?.decorate)window.VitruviaOCRHighlight.decorate(p,text,$("hpar-query").value);
+   else {p.classList.add("vdl-ocr-highlight");p.textContent=text;}
+  }else p.textContent=text;
+  item.append(p);
   const links=el("div",undefined,"row");
   link(links,SOURCES[edition].link(row.page),SOURCES[edition].linkLabel(row.page));
+  if(edition==="rose-1899"||edition==="cesariano-1521"){
+   const q=$("hpar-query").value.trim();
+   const href=edition==="rose-1899"?"concordancia-historica.html?"+new URLSearchParams({ed:edition,page:String(row.page),q}):
+    "cesariano-1521.html?"+new URLSearchParams({ocr_q:q,ocr_page:String(row.page)});
+   link(links,href,"Leer el fragmento OCR resaltado en amarillo");
+  }
   link(links,"concordancia-historica.html?q="+encodeURIComponent($("hpar-query").value),"Comparar con la concordancia");
   item.append(links);out.append(item);
  }
