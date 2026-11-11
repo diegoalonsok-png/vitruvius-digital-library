@@ -417,11 +417,29 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    await page.waitForFunction(()=>/BIOGRAF|Dossier/i.test(document.querySelector('#article-kicker')?.textContent||''),
     {timeout:20000});
    const LOCI=/Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/;
-   await page.waitForFunction(()=>document.querySelector('#article-body')?.textContent.includes('Biografía de prueba')&&
+   try{
+    await page.waitForFunction(()=>/Marco Tulio Cicerón \(106|Biografía de prueba/.test(document.querySelector('#article-body')?.textContent||'')&&
     /Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/.test(document.querySelector('#article-body')?.textContent||''),{timeout:20000});
-   const text=await page.locator('#article-body').innerText();
-   assert(text.indexOf('Biografía de prueba')<text.search(LOCI),
-    'The biography must precede the relevant Vitruvius passages');
+   }catch(error){
+    const diagnostic=await page.evaluate(()=>({
+     title:document.querySelector('#article-title')?.textContent||'',
+     kicker:document.querySelector('#article-kicker')?.textContent||'',
+     body:(document.querySelector('#article-body')?.textContent||'').slice(0,2200),
+     hasBiography:(document.querySelector('#article-body')?.textContent||'').includes('Biografía de prueba'),
+     hasLoci:/Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/.test(document.querySelector('#article-body')?.textContent||''),
+     verifiedEntries:document.querySelectorAll('.person-locus-entry').length
+    }));
+    throw new Error(error.message+'; diagnostic='+JSON.stringify(diagnostic));
+   }
+   const order=await page.evaluate(()=>{
+    const body=document.getElementById('article-body');
+    const bio=[...body.querySelectorAll('p')].find(p=>/Marco Tulio Cicerón \(106|Biografía de prueba/.test(p.textContent||''));
+    const first=body.querySelector('.person-locus-entry');
+    return {hasBiography:!!bio,hasLocus:!!first,
+     biographyBeforeLocus:!!bio&&!!first&&!!(bio.compareDocumentPosition(first)&Node.DOCUMENT_POSITION_FOLLOWING)};
+   });
+   assert(order.hasBiography&&order.hasLocus&&order.biographyBeforeLocus,
+    'Documented biography must precede verified Vitruvian passages: '+JSON.stringify(order));
    assert.match(await page.locator('#article-title').innerText(),/Cicerón/);
    const passages=await page.locator('.person-locus-entry').count();
    console.log('CICERO VERIFIED LOCI',passages);

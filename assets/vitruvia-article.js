@@ -404,6 +404,37 @@ function appendAcademicLinks(query){
  $("article-body").append(group);
  paragraph("Estos enlaces abren búsquedas externas; no se presentan como documentos ya cotejados.","article-note");
 }
+async function verifiedPersonCorpusRows(rows,person,token){
+ // A site-mode person dossier must recover attested Vitruvian mentions even
+ // when the main search has not requested textual concordances.
+ if(!person||rows.some(r=>r.type==="passage"&&r.locus&&r.latin))return rows;
+ const corpus=window.ClassicsCorpusSearch;
+ if(!corpus?.searchPassages)return rows;
+ const forms=person.id==="cicero"
+  ?["Cicero","Ciceronis","Ciceronem","Cicerone","Ciceroni"]
+  :(person.latin_forms||[]).filter(x=>typeof x==="string"&&x.length>=4).slice(0,6);
+ if(!forms.length)return rows;
+ try{
+  const matches=await corpus.searchPassages(forms,{
+   workId:"vitruvius",language:"la",limit:48,includeFullText:true,
+   includeOCR:false,isCancelled:()=>token!==active
+  });
+  if(token!==active||!Array.isArray(matches))return rows;
+  const additions=[];
+  for(const hit of matches){
+   if(!hit?.locus||!hit.passageText||hit.ocr||hit.workId!=="vitruvius")continue;
+   const link=hit.link||"";
+   additions.push({type:"passage",locus:hit.locus,latin:hit.passageText,
+    translation:"",edition:hit.edition||"recensio-es",link});
+   for(const parallel of hit.parallelTranslations||[]){
+    if(!parallel.available||!parallel.text)continue;
+    additions.push({type:"passage",locus:hit.locus,latin:hit.passageText,
+     translation:parallel.text,edition:parallel.edition,link});
+   }
+  }
+  return [...rows,...additions];
+ }catch{return rows}
+}
 function appendPersonLoci(rows,person){
  const verified=matchingPersonPassages(rows,person);
  if(!verified.length)return false;
@@ -558,6 +589,33 @@ function optionalManuscriptAccess(rows){
  return true;
 }
 
+/* Fill the principal reading column with attributed biographical text,
+ * while preserving the complete optional article and the cultural right rail. */
+function appendMainBiographyOverview(data,person,profile,topicPlan){
+ if(profile||!(person||topicPlan?.kind==="person")||!data?.extract)return false;
+ const blocks=window.VitruviaDiscovery?.parseExtract?.(data.extract)||[{type:"paragraph",text:String(data.extract)}];
+ const snippets=blocks.filter(b=>b.type==="paragraph"&&String(b.text||"").trim().length>=80)
+  .map(b=>String(b.text||"").replace(/\s+/g," ").trim()).slice(0,5);
+ if(!snippets.length)return false;
+ const section=make("section",undefined,"vitruvia-biography-overview");
+ section.setAttribute("aria-label","Biografía documentada");
+ section.append(make("h3",phrase("Biografía · vida y contexto","Biography · life and context","Biographie · vie et contexte")));
+ let total=0;
+ for(const paragraphText of snippets){
+  if(total>=3200)break;
+  const text=paragraphText.slice(0,Math.min(1600,3200-total));
+  section.append(make("p",text,total===0?"article-lead":undefined));
+  total+=text.length;
+ }
+ const source=String(data.fullurl||"");
+ if(/^https:\/\/[a-z-]+\.wikipedia\.org\//i.test(source)){
+  section.append(make("p",phrase("Texto enciclopédico atribuido · Wikipedia, CC BY-SA.","Attributed encyclopedic text · Wikipedia, CC BY-SA.","Texte encyclopédique attribué · Wikipédia, CC BY-SA."),"article-note"));
+  const original=href(source,phrase("Fuente original y referencias","Original source and references","Source originale et références"));
+  if(original)section.append(original);
+ }
+ $("article-body").append(section);
+ return true;
+}
 function appendBiographyExtract(raw,sourceURL=""){
  const blocks=window.VitruviaDiscovery?.parseExtract(raw)||[{type:"paragraph",text:String(raw||"")}];
  const body=$("article-body");
@@ -1286,6 +1344,7 @@ async function renderTopic(top,rows,query,token,person=null){
  }
  const data=identified?null:wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):verifiedAuthority?null:await topicWikiData(person?.name||query);
  if(token!==active)return;
+ appendMainBiographyOverview(data,person,profile,topicPlan);
  appendDocumentedLegacy(rows,documentaryQuery);
  if(data?.extract){
   const reading=make("details",undefined,"article-wikipedia-optional");
@@ -1322,7 +1381,11 @@ async function renderTopic(top,rows,query,token,person=null){
  const list=make("ul",undefined,"article-related");
  for(const row of sources.slice(0,14)){const li=make("li"),link=href(row.link,row.title);if(link)li.append(link);if(li.childNodes.length)list.append(li)}
  if(list.childNodes.length)$("article-body").append(list);
- if(person)appendPersonLoci(rows,person);else appendVerifiedTopicPassages(rows,query);
+ if(person){
+   const attested=await verifiedPersonCorpusRows(rows,person,token);
+   if(token!==active)return;
+   appendPersonLoci(attested,person);
+  }else appendVerifiedTopicPassages(rows,query);
  appendAcademicLinks(person?.name||query);
  aside(sources);optionalManuscriptAccess(rows);
  references([...(data?.fullurl?[{title:(data.title||query)+" · Wikipedia",link:data.fullurl}]:[]),...contextSources,...rows]);buildContents();

@@ -36,6 +36,27 @@ const links=[
 ];
 let q=new URLSearchParams(location.search).get("q")||"",row=null,registry=null,pending=false,generation=0;
 const cached=new Map();
+const ROYAL_ARCHITECTURE={
+ akhenaten:[
+  {name:"Gran Templo de Atón (Ajetatón)",query:"Great Aten Temple Amarna",attribution:"Arquitectura religiosa del período de Akenatón; los dibujos modernos deben identificarse como reconstrucciones."},
+  {name:"Ajetatón · trazado de la ciudad",query:"Amarna Akhetaten city archaeological plan",attribution:"Capital fundada durante el reinado; planos arqueológicos y fotografías de yacimientos."}
+ ],
+ tutankhamun:[
+  {name:"Tumba KV62 · Valle de los Reyes",query:"Tutankhamun tomb KV62",attribution:"Sepultura del rey, no prueba de que ordenara su construcción; distinguir planta levantada y reconstrucción."},
+  {name:"Relieves de la columnata de Luxor",query:"Luxor Temple Tutankhamun colonnade relief",attribution:"Decoración vinculada al reinado; el templo no es una construcción íntegra de Tutankamón."}
+ ],
+ "ramesses-ii":[
+  {name:"Gran Templo de Abu Simbel",query:"Abu Simbel Great Temple Ramses II",attribution:"Templo rupestre del reinado de Ramsés II."},
+  {name:"Ramesseum · templo funerario",query:"Ramesseum Ramesses II",attribution:"Complejo funerario asociado a Ramsés II."},
+  {name:"Templo de Luxor · ampliaciones",query:"Luxor Temple Ramesses II pylon courtyard",attribution:"Patio y pilono del reinado; no se atribuye a Ramsés II el templo completo."}
+ ]
+};
+const ROYAL_DRAWING_TYPES=[
+ {label:"Plantas",suffix:"architectural plan"},
+ {label:"Cortes",suffix:"section drawing"},
+ {label:"Vistas",suffix:"elevation reconstruction"},
+ {label:"Fotografías",suffix:"photograph"}
+];
 function style(){
  if(document.getElementById("v-egypt-dossier-style"))return;
  const css=make("style");css.id="v-egypt-dossier-style";
@@ -88,6 +109,68 @@ function gallery(box,ruler){
   box.append(anchor("Papiro de Hunefer · dinastía XIX · abrir visor, ampliar e invertir (contexto de época; no autógrafo regio)","egypt-document-viewer.html?king=ramesses-ii&document=papyrus-hunefer"));
  }
 }
+function royalBuildingCatalogue(box,ruler){
+ box.append(make("h4","Construcciones del reinado · plantas, cortes y fotografías"));
+ const items=ROYAL_ARCHITECTURE[ruler.id]||[];
+ if(!items.length){
+  box.append(make("p","No hay edificios atribuidos y cotejados en el repertorio local para esta identidad. No se atribuyen monumentos por semejanza del nombre.","v-ed-note"));
+  return;
+ }
+ const wrap=make("div",null,"v-ed-buildings");
+ for(const item of items){
+  const block=make("section",null,"v-ed-building"),title=make("h5",item.name);
+  block.append(title,make("p",item.attribution,"v-ed-note"));
+  const buttons=make("div",null,"v-ed-building-tools");
+  const gallery=make("div",null,"v-ed-building-gallery");
+  const status=make("p","Elige un tipo de documento. Cada imagen deberá verificarse en su ficha de origen.","v-ed-note");
+  block.append(buttons,status,gallery);wrap.append(block);
+  let version=0;
+  for(const kind of ROYAL_DRAWING_TYPES){
+   const btn=make("button",kind.label);btn.type="button";
+   btn.addEventListener("click",async()=>{
+    const my=++version;
+    gallery.replaceChildren();
+    status.textContent="Consultando el archivo de imágenes…";
+    for(const b of buttons.children)b.setAttribute("aria-pressed",String(b===btn));
+    const term=item.query+" "+kind.suffix;
+    const searchLink="https://commons.wikimedia.org/wiki/Special:MediaSearch?"+new URLSearchParams({type:"image",search:term});
+    const api="https://commons.wikimedia.org/w/api.php?"+new URLSearchParams({
+     action:"query",generator:"search",gsrsearch:term,gsrnamespace:"6",gsrlimit:"12",
+     prop:"imageinfo",iiprop:"url|extmetadata",iiurlwidth:"320",format:"json",origin:"*"
+    });
+    try{
+     const resp=await fetch(api);if(!resp.ok)throw Error("HTTP "+resp.status);
+     const data=await resp.json();if(my!==version||!block.isConnected)return;
+     const words=item.query.toLowerCase().split(/\s+/).filter(w=>w.length>4);
+     const found=Object.values(data.query?.pages||{}).filter(p=>{
+      const title=String(p.title||"").toLowerCase(),img=p.imageinfo?.[0];
+      return img?.url&&/\.(jpe?g|png|webp|svg)$/i.test(title)&&words.some(w=>title.includes(w));
+     }).slice(0,4);
+     status.replaceChildren();
+     status.append(document.createTextNode(found.length?
+      "Archivos candidatos · comprobar monumento, autoría, fecha, escala y licencia. ":
+      "No se hallaron documentos atribuibles con suficiente precisión. "));
+     status.append(anchor("Consultar catálogo completo",searchLink));
+     for(const entry of found){
+      const figure=make("figure",null,"v-ed-building-figure"),img=make("img");
+      img.src=entry.imageinfo[0].thumburl||entry.imageinfo[0].url;
+      img.loading="lazy";img.alt="Documento candidato: "+entry.title;
+      const link=anchor("Ficha original y licencia","https://commons.wikimedia.org/wiki/"+encodeURIComponent(entry.title.replace(/ /g,"_")));
+      figure.append(img,make("figcaption",entry.title.replace(/^File:/,"")+" · sin autenticación editorial del plano"),link);
+      gallery.append(figure);
+     }
+    }catch{
+     if(my===version){status.replaceChildren();status.append(document.createTextNode("Archivo temporalmente no disponible. "),anchor("Explorar documentos",searchLink))}
+    }
+   });
+   buttons.append(btn);
+  }
+  const styles=make("style");
+  styles.textContent="#vitruvia-context .v-ed-building{padding:12px 0;border-top:1px solid #444}#vitruvia-context .v-ed-building h5{font:500 16px/1.4 Georgia,serif;margin:0 0 7px}#vitruvia-context .v-ed-building-tools{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0}#vitruvia-context .v-ed-building-tools button{background:transparent;color:inherit;border:1px solid #6a6a6a;border-radius:5px;padding:7px 9px;cursor:pointer}#vitruvia-context .v-ed-building-tools button[aria-pressed=true]{background:#454545;color:#fff}#vitruvia-context .v-ed-building-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}#vitruvia-context .v-ed-building-figure{margin:0;min-width:0}#vitruvia-context .v-ed-building-figure img{display:block;width:100%;height:130px;object-fit:contain}#vitruvia-context .v-ed-building-figure figcaption{font-size:11px;line-height:1.5}";
+  block.append(styles);
+ }
+ box.append(wrap);
+}
 function names(box,ruler){
  box.append(make("h4","Protocolo de los cinco nombres · edición disponible"));
  for(const [key,label] of keys){
@@ -125,7 +208,7 @@ async function render(){
   const box=make("section",null,"v-egypt-dossier");box.id="v-egypt-scholar-dossier";
   box.append(make("h3",ruler.name+" · dossier real"));
   box.append(make("p",[ruler.dynasty,ruler.dates].filter(Boolean).join(" · "),"v-ed-note"));
-  names(box,ruler);gallery(box,ruler);books(box,ruler);
+  names(box,ruler);gallery(box,ruler);royalBuildingCatalogue(box,ruler);books(box,ruler);
   const before=rail.querySelector("#v-egypt-side");
   if(before)before.insertAdjacentElement("afterend",box);else rail.prepend(box);
   rail.hidden=false;

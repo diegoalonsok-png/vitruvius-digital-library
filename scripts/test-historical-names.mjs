@@ -18,7 +18,7 @@ assert.equal(H.labels(pit[0]).greek,'Πυθαγόρας');
 assert.equal(H.find('arquimedes gasparotto junior',entries).length,0);
 assert.equal(H.find('cafetera',entries).length,0);
 const html=read('vitruvia.html'),js=read('assets/vitruvia-search.js'),understand=read('assets/vitruvia-understand.js');
-assert.ok(html.indexOf('assets/vitruvia-historical-names.js')<html.indexOf('assets/vitruvia-search.js'));
+assert.match(html, /assets\/vitruvia-historical-names\.js\?v=[a-z0-9-]+/, 'Historical names must remain in the versioned feature manifest');
 assert.match(html,/overflow-wrap:anywhere/);
 assert.match(html,/search-preview \.sp-ancient-names/);
 assert.match(js,/VitruviaHistoricalNames\?\.find\(q,S\.people\)/);

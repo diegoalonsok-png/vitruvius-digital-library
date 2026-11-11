@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+const html=fs.readFileSync('vitruvia-ia.html','utf8');
+const scripts=[...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)].filter(x=>x[1].trim());
+assert.equal(scripts.length,1,'Vitruvia IA must contain one self-contained application script');
+assert.doesNotThrow(()=>new vm.Script(scripts[0][1],{filename:'vitruvia-ia-module.js'}),'Invalid JavaScript syntax');
+assert.match(html,/id="file"[^>]+type="file"/,'Document attachment control missing');
+assert.match(html,/\.pdf,\.docx,\.txt/,'PDF and DOCX are mandatory');
+assert.match(html,/id="clear"/,'Visible session deletion is mandatory');
+assert.match(html,/id="conversation"/,'Documentary result surface missing');
+assert.match(scripts[0][1],/window\.addEventListener\('pagehide'/,'Clear ephemeral data on closing tab');
+assert.match(scripts[0][1],/documentData=null/,'Document content must remain erasable');
+assert.doesNotMatch(scripts[0][1],/api\.github\.com|github\.com\/repos|localStorage|sessionStorage|indexedDB/,'Uploaded files must not be stored in GitHub or browser persistence');
+const front=fs.readFileSync('vitruvia.html','utf8');
+assert.match(front,/href="vitruvia-ia\.html"/,'Navigation must link to the new separate researcher');
+console.log('PASS Vitruvia IA markup, script syntax, navigation and no-persistence privacy checks');

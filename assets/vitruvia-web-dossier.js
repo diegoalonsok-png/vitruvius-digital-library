@@ -406,6 +406,100 @@ async function albums(root,topic,valid){
  }catch{if(valid()){section.replaceChildren();info(section,L('Catálogo musical no disponible ahora.','Music catalogue unavailable at the moment.','Catalogue musical temporairement indisponible.'))}}
 }
 
+/* Catalogued tracks are linked to their actual album releases. Cross-media
+ * references require explicit source evidence; generic searches are discovery only. */
+async function songAlbumRelations(root,topic,valid){
+ if(topic.kind!=='music')return;
+ const artistName=topic.name;
+ const section=el('section','web-dossier-song-relations');
+ header(section,L('Canciones, letras y álbumes relacionados','Songs, lyrics and related albums','Chansons, paroles et albums associés'));
+ info(section,L('Cada canción se vincula únicamente al álbum identificado en el catálogo de música. Las letras completas se consultan en fuentes autorizadas; para traducir utiliza el lector de textos con un fragmento permitido.','Songs are linked only to catalogue-identified albums. Consult licensed lyrics and translate authorized excerpts in the text reader.','Les chansons ne sont liées qu’aux albums identifiés. Consultez les paroles autorisées et traduisez les extraits permis.'));
+ const status=el('p','context-note',L('Recuperando grabaciones catalogadas…','Retrieving catalogued recordings…','Recherche des enregistrements…'));section.append(status);root.append(section);
+ try{
+  const params=new URLSearchParams({term:artistName,entity:'song',limit:'120',country:'US',media:'music'});
+  const payload=await cached('https://itunes.apple.com/search?'+params);
+  if(!valid()||!section.isConnected)return;
+  const normalizeArtist=s=>normalized(s).replace(/^(the|los|las|el|la) /,'');
+  const aliases=new Set([artistName,...(topic.aliases||[])].map(normalizeArtist));
+  const tracks=(payload?.results||[]).filter(x=>x.wrapperType==='track'&&x.kind==='song'&&x.trackName&&x.artistName&&aliases.has(normalizeArtist(x.artistName))&&x.trackViewUrl&&x.collectionName)
+   .sort((a,b)=>String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999')));
+  const seen=new Set(),verified=tracks.filter(x=>{const key=normalized(x.trackName)+'|'+normalized(x.collectionName);if(seen.has(key))return false;seen.add(key);return true}).slice(0,30);
+  status.textContent=verified.length?L('Grabaciones y álbumes documentados en Apple Music/iTunes. La fecha puede corresponder a una reedición.','Recordings and albums documented by Apple Music/iTunes; dates may refer to reissues.','Enregistrements et albums attestés par Apple Music/iTunes ; dates parfois celles des rééditions.'):L('No se encontraron asociaciones verificables entre canciones y álbumes en el catálogo consultado.','No reliable song-to-album associations were returned.','Aucune relation chanson-album fiable retrouvée.');
+  const stack=el('div','web-dossier-stack');section.append(stack);
+  for(const track of verified){
+   const cover=String(track.artworkUrl100||'').replace(/100x100bb/,'200x200bb');
+   const year=String(track.releaseDate||'').slice(0,4);
+   const meta=[year,track.collectionName,track.trackNumber?'Pista '+track.trackNumber:''].filter(Boolean).join(' · ');
+   const item=card(stack,track.trackName,track.trackViewUrl,
+    L('Grabación incluida en «','Recording listed on “','Enregistrement figurant dans «')+track.collectionName+'»',
+    cover,meta,L('Escuchar o consultar la grabación ↗','Listen or view track ↗','Écouter ou consulter ↗'));
+   const body=item.querySelector('.web-dossier-card-body');
+   if(track.collectionViewUrl)body.append(link(L('Ver álbum y portada','Album and cover','Album et pochette'),track.collectionViewUrl));
+   const lyricUrl='https://www.google.com/search?'+new URLSearchParams({q:artistName+' '+track.trackName+' lyrics official publisher'});
+   const lyrics=link(L('Buscar letra en fuente autorizada','Find licensed lyrics','Paroles auprès d’une source autorisée'),lyricUrl);
+   lyrics.className='web-dossier-purchase-link';body.append(lyrics);
+  }
+  const media=el('div','context-note');
+  media.append(el('strong',null,L('Cine, series y musicales','Film, television and musicals','Cinéma, télévision et comédies musicales')));
+  media.append(el('p',null,L('Las relaciones con películas, series o teatro musical deben acreditarse mediante créditos, banda sonora o fuentes de producción. Enlaces de investigación, no atribuciones automáticas.','Film, television and stage-musical uses require credited soundtracks or production records; the following are research links, not automatic claims.','Les utilisations audiovisuelles demandent des génériques ou des sources de production vérifiables.')));
+  const q=artistName+' soundtrack film television musical';
+  media.append(link(L('Investigar bandas sonoras acreditadas','Research soundtrack credits','Rechercher les génériques des bandes sonores'),'https://musicbrainz.org/search?'+new URLSearchParams({query:q,type:'release',method:'indexed'})));
+  section.append(media);
+ }catch{if(valid())status.textContent=L('No fue posible recuperar el catálogo de canciones.','Song catalogue currently unavailable.','Catalogue des chansons indisponible.')}
+}
+/* Film adaptations of a writer's books. Each displayed relationship is a
+ * direct Wikidata P144 ("based on") claim joining a film to a P50-authored work.
+ * Similar titles, keyword matches and unverified recommendations are excluded. */
+async function literaryFilmAdaptations(root,topic,valid){
+ if(!topic.person||!['author','literature'].includes(topic.kind))return;
+ const id=topic.person.wikidataId;
+ if(!/^Q\d+$/.test(id||''))return;
+ const section=el('section','web-dossier-film-adaptations');
+ header(section,L('Adaptaciones cinematográficas de sus libros','Film adaptations of their books','Adaptations cinématographiques de ses livres'));
+ const status=el('p','context-note',L('Consultando relaciones documentadas libro–película…','Checking documented book-to-film links…','Vérification des liens documentés livre–film…'));
+ section.append(status);root.append(section);
+ const sparql=[
+  'SELECT DISTINCT ?book ?bookLabel ?film ?filmLabel ?filmDate ?directorLabel ?poster WHERE {',
+  '?book wdt:P50 wd:'+id+' .',
+  '?film wdt:P144 ?book ; wdt:P31 wd:Q11424 .',
+  'OPTIONAL { ?film wdt:P577 ?filmDate . }',
+  'OPTIONAL { ?film wdt:P57 ?director . }',
+  'OPTIONAL { ?film wdt:P18 ?poster . }',
+  'SERVICE wikibase:label { bd:serviceParam wikibase:language "es,en,fr" . }',
+  '} LIMIT 32'
+ ].join(' ');
+ try{
+  const url='https://query.wikidata.org/sparql?'+new URLSearchParams({query:sparql,format:'json'});
+  const response=await cached(url);
+  if(!valid()||!section.isConnected)return;
+  const items=(response?.results?.bindings||[]).map(v=>{
+   const bookId=String(v.book?.value||'').match(/\/(Q\d+)$/)?.[1];
+   const filmId=String(v.film?.value||'').match(/\/(Q\d+)$/)?.[1];
+   return {bookId,filmId,book:v.bookLabel?.value||'',film:v.filmLabel?.value||'',
+    date:v.filmDate?.value||'',director:v.directorLabel?.value||'',
+    poster:v.poster?.value||''};
+  }).filter(x=>/^Q\d+$/.test(x.bookId||'')&&/^Q\d+$/.test(x.filmId||'')&&x.book&&!/^Q\d+$/.test(x.book)&&x.film&&!/^Q\d+$/.test(x.film));
+  const seen=new Set();
+  const movies=items.filter(x=>{const key=x.filmId+'|'+x.bookId;if(seen.has(key))return false;seen.add(key);return true})
+   .sort((a,b)=>String(a.date||'9999').localeCompare(String(b.date||'9999'))).slice(0,24);
+  status.textContent=movies.length?
+   L('Relaciones obra literaria–película registradas explícitamente en Wikidata (P144 y P50). Las fechas, imágenes y directores son metadatos del catálogo; comprobar referencias primarias antes de citar.','Explicit work-to-film relationships recorded in Wikidata (P144 and P50); verify primary sources before citation.','Liens livre–film explicites dans Wikidata (P144 et P50) ; vérifier les sources primaires.'):
+   L('No hay adaptaciones libro–película recuperadas con relación directa verificable en este catálogo; eso no implica que no existan.','No directly linked adaptations were returned; this does not prove none exist.','Aucune adaptation directement liée n’a été retrouvée ; cela ne prouve pas leur absence.');
+  if(!movies.length)return;
+  const cards=el('div','web-dossier-stack');section.append(cards);
+  for(const movie of movies){
+   const href='https://www.wikidata.org/wiki/'+movie.filmId;
+   const cover=movie.poster.startsWith('http')&&movie.poster.includes('commons.wikimedia.org')?movie.poster:'';
+   const year=movie.date.slice(0,4);
+   const description=L('Adaptación basada en «','Adaptation based on “','Adaptation de «')+movie.book+'»';
+   const metadata=[year,movie.director?L('Dirección: ','Director: ','Réalisation : ')+movie.director:'','Wikidata · P144'].filter(Boolean).join(' · ');
+   const item=card(cards,movie.film,href,description,cover,metadata,
+    L('Ver ficha y fuentes de la película','Film record and sources','Voir film et sources'));
+   const body=item.querySelector('.web-dossier-card-body');
+   body.append(link(L('Libro original · ficha','Source book record','Livre original · notice'),'https://www.wikidata.org/wiki/'+movie.bookId));
+  }
+ }catch{if(valid())status.textContent=L('El catálogo de adaptaciones no respondió; las portadas de libros siguen disponibles.','Adaptation catalogue unavailable; book covers remain accessible.','Catalogue d’adaptations indisponible ; couvertures de livres toujours accessibles.')}
+}
 /* Literary WORK queries show documented editions, not unrelated books.
    Publication chronology is bibliographic and distinct from composition date. */
 function titleEquals(a,b){
@@ -538,8 +632,10 @@ function render(panel,query,rows,isCurrent){
   const creator=authority?.kind==='person'||['author','architect','music','visual','cinema'].includes(topic.kind);
   // The requested media lead: album covers for musicians, book covers for authors.
   if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid);
+  if(topic.kind==='music')void songAlbumRelations(section,topic,valid);
   if(topic.person&&['author','literature'].includes(topic.kind))manuscriptWitnesses(section,topic,records);
   if(topic.person&&['author','literature','architect','cinema','visual','general'].includes(topic.kind))void books(section,topic,valid);
+  if(topic.person&&['author','literature'].includes(topic.kind))void literaryFilmAdaptations(section,topic,valid);
   if(topic.kind==='literary-work')void literaryEditions(section,topic,valid);
   const relationKind=topic.kind==='music'&&/compos/.test(normalized(topic.person?.entityDescription))&&
    !/cantante|singer|band|grupo|banda|rapper/.test(normalized(topic.person?.entityDescription))?'composer':topic.kind;

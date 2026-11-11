@@ -22,6 +22,6 @@ const main=read('assets/vitruvia-search.js'),html=read('vitruvia.html');
 assert.match(main,/VitruviaEvidence\?\.classify\(d\)/);
 assert.match(main,/VitruviaEvidence\?\.label\(d,S\.lang\)/);
 assert.ok(html.includes('assets/vitruvia-evidence.js'));
-assert.ok(html.indexOf('assets/vitruvia-evidence.js')<html.indexOf('assets/vitruvia-search.js'));
+assert.match(html, /assets\/vitruvia-evidence\.js\?v=[a-z0-9-]+/, 'Source evidence must remain in the versioned feature manifest');
 new vm.Script(main);
 console.log('PASS: source-level evidence labels distinguish records, translations, identified texts and original witnesses');

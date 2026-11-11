@@ -1,0 +1,25 @@
+name: Vitruvia IA · privacy and syntax checks
+on:
+  push:
+    paths:
+      - 'vitruvia-ia.html'
+      - 'vitruvia.html'
+      - 'scripts/test-vitruvia-ia.mjs'
+      - '.github/workflows/vitruvia-ia-private.yml'
+  pull_request:
+    paths:
+      - 'vitruvia-ia.html'
+      - 'vitruvia.html'
+      - 'scripts/test-vitruvia-ia.mjs'
+      - '.github/workflows/vitruvia-ia-private.yml'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-vitruvia-ia.mjs
