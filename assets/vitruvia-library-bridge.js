@@ -10,7 +10,7 @@
   en:["Search in Vitruvia ↗","Open Lexicon ↗","Classical library ↗","Research sources ↗"],
   fr:["Rechercher dans Vitruvia ↗","Consulter Lexicon ↗","Bibliotheca classique ↗","Étudier les sources ↗"]
  };
- const container=link.closest(".search-destinations");
+ const container=link.closest?.(".search-destinations")||null;
  const routeNames=["vitruvia.html","vitruvia-lexicon.html","bibliotheca-graeca-latina.html","investigacion-conectada.html"];
  const links=[link];
  if(container){
