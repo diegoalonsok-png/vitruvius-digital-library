@@ -406,6 +406,47 @@ async function albums(root,topic,valid){
  }catch{if(valid()){section.replaceChildren();info(section,L('Catálogo musical no disponible ahora.','Music catalogue unavailable at the moment.','Catalogue musical temporairement indisponible.'))}}
 }
 
+/* Catalogued tracks are linked to their actual album releases. Cross-media
+ * references require explicit source evidence; generic searches are discovery only. */
+async function songAlbumRelations(root,topic,valid){
+ if(topic.kind!=='music')return;
+ const artistName=topic.name;
+ const section=el('section','web-dossier-song-relations');
+ header(section,L('Canciones, letras y álbumes relacionados','Songs, lyrics and related albums','Chansons, paroles et albums associés'));
+ info(section,L('Cada canción se vincula únicamente al álbum identificado en el catálogo de música. Las letras completas se consultan en fuentes autorizadas; para traducir utiliza el lector de textos con un fragmento permitido.','Songs are linked only to catalogue-identified albums. Consult licensed lyrics and translate authorized excerpts in the text reader.','Les chansons ne sont liées qu’aux albums identifiés. Consultez les paroles autorisées et traduisez les extraits permis.'));
+ const status=el('p','context-note',L('Recuperando grabaciones catalogadas…','Retrieving catalogued recordings…','Recherche des enregistrements…'));section.append(status);root.append(section);
+ try{
+  const params=new URLSearchParams({term:artistName,entity:'song',limit:'120',country:'US',media:'music'});
+  const payload=await cached('https://itunes.apple.com/search?'+params);
+  if(!valid()||!section.isConnected)return;
+  const normalizeArtist=s=>normalized(s).replace(/^(the|los|las|el|la) /,'');
+  const aliases=new Set([artistName,...(topic.aliases||[])].map(normalizeArtist));
+  const tracks=(payload?.results||[]).filter(x=>x.wrapperType==='track'&&x.kind==='song'&&x.trackName&&x.artistName&&aliases.has(normalizeArtist(x.artistName))&&x.trackViewUrl&&x.collectionName)
+   .sort((a,b)=>String(a.releaseDate||'9999').localeCompare(String(b.releaseDate||'9999')));
+  const seen=new Set(),verified=tracks.filter(x=>{const key=normalized(x.trackName)+'|'+normalized(x.collectionName);if(seen.has(key))return false;seen.add(key);return true}).slice(0,30);
+  status.textContent=verified.length?L('Grabaciones y álbumes documentados en Apple Music/iTunes. La fecha puede corresponder a una reedición.','Recordings and albums documented by Apple Music/iTunes; dates may refer to reissues.','Enregistrements et albums attestés par Apple Music/iTunes ; dates parfois celles des rééditions.'):L('No se encontraron asociaciones verificables entre canciones y álbumes en el catálogo consultado.','No reliable song-to-album associations were returned.','Aucune relation chanson-album fiable retrouvée.');
+  const stack=el('div','web-dossier-stack');section.append(stack);
+  for(const track of verified){
+   const cover=String(track.artworkUrl100||'').replace(/100x100bb/,'200x200bb');
+   const year=String(track.releaseDate||'').slice(0,4);
+   const meta=[year,track.collectionName,track.trackNumber?'Pista '+track.trackNumber:''].filter(Boolean).join(' · ');
+   const item=card(stack,track.trackName,track.trackViewUrl,
+    L('Grabación incluida en «','Recording listed on “','Enregistrement figurant dans «')+track.collectionName+'»',
+    cover,meta,L('Escuchar o consultar la grabación ↗','Listen or view track ↗','Écouter ou consulter ↗'));
+   const body=item.querySelector('.web-dossier-card-body');
+   if(track.collectionViewUrl)body.append(link(L('Ver álbum y portada','Album and cover','Album et pochette'),track.collectionViewUrl));
+   const lyricUrl='https://www.google.com/search?'+new URLSearchParams({q:artistName+' '+track.trackName+' lyrics official publisher'});
+   const lyrics=link(L('Buscar letra en fuente autorizada','Find licensed lyrics','Paroles auprès d’une source autorisée'),lyricUrl);
+   lyrics.className='web-dossier-purchase-link';body.append(lyrics);
+  }
+  const media=el('div','context-note');
+  media.append(el('strong',null,L('Cine, series y musicales','Film, television and musicals','Cinéma, télévision et comédies musicales')));
+  media.append(el('p',null,L('Las relaciones con películas, series o teatro musical deben acreditarse mediante créditos, banda sonora o fuentes de producción. Enlaces de investigación, no atribuciones automáticas.','Film, television and stage-musical uses require credited soundtracks or production records; the following are research links, not automatic claims.','Les utilisations audiovisuelles demandent des génériques ou des sources de production vérifiables.')));
+  const q=artistName+' soundtrack film television musical';
+  media.append(link(L('Investigar bandas sonoras acreditadas','Research soundtrack credits','Rechercher les génériques des bandes sonores'),'https://musicbrainz.org/search?'+new URLSearchParams({query:q,type:'release',method:'indexed'})));
+  section.append(media);
+ }catch{if(valid())status.textContent=L('No fue posible recuperar el catálogo de canciones.','Song catalogue currently unavailable.','Catalogue des chansons indisponible.')}
+}
 /* Literary WORK queries show documented editions, not unrelated books.
    Publication chronology is bibliographic and distinct from composition date. */
 function titleEquals(a,b){
@@ -538,6 +579,7 @@ function render(panel,query,rows,isCurrent){
   const creator=authority?.kind==='person'||['author','architect','music','visual','cinema'].includes(topic.kind);
   // The requested media lead: album covers for musicians, book covers for authors.
   if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid);
+  if(topic.kind==='music')void songAlbumRelations(section,topic,valid);
   if(topic.person&&['author','literature'].includes(topic.kind))manuscriptWitnesses(section,topic,records);
   if(topic.person&&['author','literature','architect','cinema','visual','general'].includes(topic.kind))void books(section,topic,valid);
   if(topic.kind==='literary-work')void literaryEditions(section,topic,valid);
