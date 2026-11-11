@@ -85,7 +85,7 @@ async function lang(l,silent=false){
   // Process the full inverted index in small batches so the browser can
   // paint and respond to input rather than freezing during the first search.
   for(let i=0;i<corpus.passages.length;i++){
-   if(i>0&&i%300===0)await new Promise(resolve=>setTimeout(resolve,0));
+   if(i>0&&i%1500===0)await new Promise(resolve=>setTimeout(resolve,0));
    const p=corpus.passages[i];
    const seen=new Set();
    for(const m of p[2].matchAll(TOKEN)){const k=fold(m[0]).replace(/'+$/,"");if(!k)continue;workTokens[p[0]]=(workTokens[p[0]]||0)+1;freq.set(k,(freq.get(k)||0)+1);
