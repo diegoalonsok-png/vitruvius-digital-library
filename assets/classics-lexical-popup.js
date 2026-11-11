@@ -140,7 +140,7 @@ async function openMark(mark){
  const lang=langCode(mark);
  if(!supported.has(lang))return;
  const word=lexicon.wordOfMark(mark)||mark.textContent?.trim();
- if(!word||!/^[\\p{L}\\p{M}ʼ’'-]{2,80}$/u.test(word))return;
+ if(!word||!/^[\p{L}\p{M}ʼ’'-]{2,80}$/u.test(word))return;
  const id=++current;
  lastFocus=mark;
  title.textContent=word;
