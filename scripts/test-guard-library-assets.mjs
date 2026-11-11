@@ -6,6 +6,10 @@ const allowed=[
  {status:"M",path:"assets/bibliotheca-simple.js"},
  {status:"A",path:"scripts/audit-new-edition.mjs"},
  {status:"M",path:"data/classics-corpus/search-registry.json"},
+ {status:"M",path:"data/classics-corpus/coverage-audit.json"},
+ {status:"M",path:"data/academic-integrity.json"},
+ {status:"M",path:"investigacion-conectada.html"},
+ {status:"M",path:"assets/academia-conexiones.js"},
  {status:"M",path:"data/ecdotic-decisions.json"},
  {status:"M",path:"documents/edicion-v514.html"},
  {status:"M",path:"documents/edicion-v554.html"},
@@ -30,9 +34,25 @@ const forbidden=[
  {status:"M",path:"data/structured/recensio-fr.json"},
  {status:"M",path:"data/structured/theory-en.json"},
  {status:"M",path:"data/structured/manifest.json"},
+ {status:"M",path:"data/bibliotheca-graeca-latina-I-bce-I-ce.json"},
+ {status:"M",path:"data/bibliotheca-testimonia-verified.json"},
+ {status:"M",path:"data/classics-corpus/cicero-oratore-la.json"},
+ {status:"M",path:"data/classics-corpus/plato-apology-grc.json"},
+ {status:"M",path:"data/classics-corpus/seneca-de-brevitate-en.json"},
+ {status:"M",path:"data/lexicon/fontes/frontinus-aquaeductu-la.json"},
+ {status:"M",path:"corpus/some-classical-original.html"},
+ {status:"M",path:"data/text/krohn-1912.json"},
+ {status:"M",path:"data/ocr/barbaro-1567.json"},
+ {status:"M",path:"data/tei/vitruvius.xml"},
+ {status:"M",path:"data/classics-documents/source.html"},
+ {status:"M",path:"data/classics-historical-pages/source.json"},
+ {status:"M",path:"data/kurilo-libros/source.json"},
+ {status:"M",path:"data/recensio-es-pages.json"},
+ {status:"M",path:"data/recensio-fr-pages.json"},
+ {status:"M",path:"data/theory-en-pages.json"},
  {status:"A",path:"storage/new-book.odt"},
 ];
 assert.equal(inspect(forbidden).length,forbidden.length,"All corpus master, folio and heavy-document violations must be caught");
 for(const item of forbidden)assert.ok(violation(item.status,item.path),item.path);
 assert.ok(violation("R100","index.html"),"Renames must be reviewed manually");
-console.log("PASS: folios, documents and masters remain protected; only existing edition HTML metadata cards are writable.");
+console.log("PASS: no deletes; all 222 catalogue records, existing originals, translations, folios and source data are immutable; interface and derived metadata updates remain possible.");

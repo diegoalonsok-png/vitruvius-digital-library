@@ -7,6 +7,12 @@ const parsed=file=>JSON.parse(read(file));
 const html=read("investigacion-conectada.html");
 const script=read("assets/academia-conexiones.js");
 const method=read("docs/protocolo-investigacion-interconectada.md");
+const crosslinks=read("assets/research-crosslinks.js");
+new vm.Script(crosslinks,{filename:"assets/research-crosslinks.js"});
+assert.match(crosslinks,/Investigación por obra","investigacion-conectada\.html"/,
+ "Common navigation should expose the existing research workbench");
+assert.match(crosslinks,/if\(i===5\)[\s\S]+searchParams\.set\("locus",locus\)/,
+ "Crosslinks preserve the user's locus when opening connected research");
 new vm.Script(script,{filename:"assets/academia-conexiones.js"});
 assert.match(html,/assets\/bibliotheca-simple\.css/,"Preserve existing Bibliotheca visual system");
 assert.match(html,/assets\/academia-conexiones\.js/,"Scholarly bridge script must load");
