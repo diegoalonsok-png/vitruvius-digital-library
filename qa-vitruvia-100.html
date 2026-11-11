@@ -84,8 +84,9 @@ async function runOne(c,mode,timeout){
  let last=null,settled=false,loadFailure=false;
  try{
   await new Promise(resolve=>{
-   const timer=setTimeout(resolve,timeout);
-   const poll=setInterval(()=>{
+   let poll;
+   const timer=setTimeout(()=>{clearInterval(poll);resolve()},timeout);
+   poll=setInterval(()=>{
     if(stop){clearTimeout(timer);clearInterval(poll);resolve();return}
     try{
      const doc=frame.contentDocument;
