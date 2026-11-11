@@ -7,6 +7,15 @@ const css=readFileSync(new URL("../assets/vitruvia-academic-timeline.css",import
 assert.match(html,/id="vitruvia-academic-timeline"/);
 assert.match(html,/assets\/vitruvia-academic-timeline\.js/);
 assert.match(html,/assets\/vitruvia-academic-timeline\.css/);
+assert.match(source,/amarnaproject\.com\/amarna-the-place\/boundary-stelae\//,
+ "Ajetatón milestones must link their epigraphic source");
+assert.match(source,/primera proclamación sobre Ajetatón \(año regnal 5\)/,
+ "Do not conflate the fifth-year boundary proclamation with the sixth year");
+assert.match(source,/segunda proclamación corresponde al año 6/,
+ "Retain the sixth-year proclamation distinctly");
+assert.doesNotMatch(source,/Cambio de nombre y fundación de Ajetatón/,
+ "Avoid asserting a single certain sixth-year foundation date");
+
 assert.match(css,/vat-viewport/);
 assert.match(css,/overflow-x:auto/);
 assert.match(css,/Standalone chronology across the full board/);

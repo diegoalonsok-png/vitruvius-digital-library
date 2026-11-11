@@ -89,9 +89,13 @@
    {year:-1353,lane:"life",title:L("Acceso al trono como Amenhotep IV","Accession as Amenhotep IV","Avènement d'Amenhotep IV"),
     source:"PBS · Egypt's Golden Empire / UCL Digital Egypt",url:pbs,approx:true,
     detail:L("Comienzo aproximado del reinado de Amenhotep IV; cronologías alternativas varían varios años.","Approximate start of the reign, with competing chronologies.","Début approximatif du règne; chronologies variables.")},
-   {year:-1348,lane:"events",title:L("Cambio de nombre y fundación de Ajetatón","Name change and foundation of Akhetaten","Changement de nom et fondation d'Akhetaton"),
-    source:"UCL Digital Egypt · año 6 del reinado",url:ucl,approx:true,
-    detail:L("UCL sitúa el nuevo nombre real y la creación de la residencia de Ajetatón en el sexto año de reinado. El año absoluto es aproximado y depende de la cronología adoptada.","Year six of the reign, converted approximately to BCE.","An six du règne, conversion absolue approximative.")},
+   {year:-1348,lane:"events",title:L("Ajetatón · proclamaciones de los años 5 y 6","Akhetaten · year 5 and year 6 proclamations","Akhetaton · proclamations des ans 5 et 6"),
+    source:"Amarna Project · estelas fronterizas; UCL Digital Egypt",url:"https://www.amarnaproject.com/amarna-the-place/boundary-stelae/",approx:true,
+    detail:L(
+     "Las estelas K, M y X transmiten la primera proclamación sobre Ajetatón (año regnal 5); una segunda proclamación corresponde al año 6 y fue reafirmada en el 8. UCL sitúa el cambio de nombre y la residencia en el año 6; existen diferencias de interpretación y cronología. La posición hacia 1348 a. C. es una escala aproximada, no una fecha absoluta certificada.",
+     "Boundary stelae K, M and X preserve the first Akhetaten proclamation (regnal year 5); the second dates to year 6 and was reaffirmed in year 8. UCL places the name change and royal residence in year 6; sources and absolute chronologies differ. Placement near 1348 BCE is approximate, not an exact historical date.",
+     "Les stèles K, M et X transmettent la première proclamation d'Akhetaton (an 5); une seconde date de l'an 6 et fut réaffirmée en l'an 8. UCL situe le changement de nom et la résidence à l'an 6; les chronologies divergent. La position vers 1348 av. J.-C. reste approximative."
+    )},
    {year:-1336,lane:"life",title:L("Muerte de Akenatón · fin de la línea biográfica","Death of Akhenaten · end of biography","Mort d'Akhenaton · fin de la chronologie"),
     source:"PBS · Egypt's Golden Empire; cronología aproximada",url:pbs,approx:true,
     detail:L("Muerte hacia 1336 a. C., tras un reinado de alrededor de diecisiete años. La edad exacta al morir no está establecida con certeza.","Approximate death around 1336 BCE; exact age unknown.","Décès vers 1336 av. J.-C.; âge exact incertain.")}
