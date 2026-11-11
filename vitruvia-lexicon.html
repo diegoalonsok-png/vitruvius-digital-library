@@ -813,9 +813,15 @@ html[data-theme=light] .lx-attestations .lx-attestation-row{border-bottom-color:
 <script defer src="assets/lexicon-toponymicon.js?v=20261107-quiet-v1"></script>
 <script defer src="assets/critical-note-bridge.js?v=20261107-v1"></script>
 <script defer src="assets/research-crosslinks.js?v=20261107-quiet-v1"></script><script defer src="assets/lexicon-ecdotic-exegesis-bridge.js?v=20261109-v1"></script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><style id="lx-search-feedback-style">
-@keyframes lx-search-confirm {0%{transform:scale(1);box-shadow:0 0 0 0 transparent}30%{transform:scale(.955);box-shadow:0 0 0 3px rgba(127,127,127,.28)}65%{transform:scale(1.035);box-shadow:0 0 0 5px rgba(127,127,127,.10)}100%{transform:scale(1);box-shadow:0 0 0 0 transparent}}
-#lx-form .lx-search-feedback-motion.lx-search-confirming{animation:lx-search-confirm .42s ease-out}
-@media(prefers-reduced-motion:reduce){#lx-form .lx-search-feedback-motion.lx-search-confirming{animation:none;outline:2px solid currentColor;outline-offset:3px}}
+@keyframes lx-search-confirm {
+  0% {transform:translateY(0) scale(1);filter:brightness(1);box-shadow:0 0 0 0 rgba(110,145,180,0)}
+  24% {transform:translateY(2px) scale(.94);filter:brightness(1.28);box-shadow:0 0 0 4px rgba(110,145,180,.32)}
+  58% {transform:translateY(-2px) scale(1.055);filter:brightness(1.14);box-shadow:0 0 0 7px rgba(110,145,180,.12)}
+  100% {transform:translateY(0) scale(1);filter:brightness(1);box-shadow:0 0 0 0 rgba(110,145,180,0)}
+}
+#lx-form .lx-search-feedback-motion{transform-origin:center;will-change:transform}
+#lx-form .lx-search-feedback-motion.lx-search-confirming{animation:lx-search-confirm .72s cubic-bezier(.22,.61,.36,1) both !important}
+@media(prefers-reduced-motion:reduce){#lx-form .lx-search-feedback-motion.lx-search-confirming{animation:none!important;outline:2px solid currentColor;outline-offset:3px}}
 </style>
 <script>
 (function(){
@@ -823,11 +829,13 @@ html[data-theme=light] .lx-attestations .lx-attestation-row{border-bottom-color:
   const form=document.getElementById('lx-form');
   const button=form?.querySelector('.lx-search-feedback-motion');
   if(!form||!button)return;
-  form.addEventListener('submit',function(){
+  function activate(){
    button.classList.remove('lx-search-confirming');
    void button.offsetWidth;
    button.classList.add('lx-search-confirming');
-  },true);
+  }
+  button.addEventListener('pointerdown',activate,{capture:true});
+  form.addEventListener('submit',activate,true);
   button.addEventListener('animationend',function(){button.classList.remove('lx-search-confirming')});
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
