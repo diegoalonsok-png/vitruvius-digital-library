@@ -17,7 +17,7 @@ function setup(){
  if(!article||!title||document.getElementById('vr-textual-reader'))return;
  const panel=elm('section','vr-textual-reader');panel.id='vr-textual-reader';panel.hidden=true;
  const heading=elm('h3','','Biblioteca textual · lectura y traducción');
- const intro=elm('p','vr-text-note','Seleccioná un texto de la lista. Los títulos son orientativos: no implican que el sitio posea una transcripción. Se pueden incorporar textos propios, de dominio público o con autorización.');
+ const intro=elm('p','vr-text-note','Selecciona un texto de la lista. Los títulos son orientativos: no implican que el sitio posea una transcripción. Se pueden incorporar textos propios, de dominio público o con autorización.');
  const top=elm('div','vr-text-row'),select=elm('select'),manual=elm('input'),source=elm('a','','Consultar fuentes externas ↗');
  select.setAttribute('aria-label','Seleccionar texto o documento');
  manual.placeholder='O escribir otro título';manual.setAttribute('aria-label','Título de otro texto');manual.type='text';
@@ -28,7 +28,7 @@ function setup(){
  [minus,plus,clear].forEach(b=>b.type='button');
  const palette=elm('div','vr-text-palette'),label=elm('span','','Resaltado:');
  controls.append(upload,minus,plus,label,palette,clear);
- const textarea=elm('textarea','vr-text-content');textarea.rows=10;textarea.placeholder='Pegá aquí un documento, poema o letra autorizado, o importá un archivo .txt para leerlo. El texto permanece en esta sesión del navegador.';textarea.setAttribute('aria-label','Texto para lectura y traducción');
+ const textarea=elm('textarea','vr-text-content');textarea.rows=10;textarea.placeholder='Pega aquí un documento, poema o letra autorizado, o importa un archivo .txt para leerlo. El texto permanece en esta sesión del navegador.';textarea.setAttribute('aria-label','Texto para lectura y traducción');
  const trans=elm('div','vr-text-row'),lang=elm('select'),target=elm('select'),translate=elm('button','','Traducir automáticamente');
  lang.setAttribute('aria-label','Idioma de origen');target.setAttribute('aria-label','Idioma de destino');translate.type='button';
  [['en','Inglés'],['es','Español'],['fr','Francés'],['de','Alemán'],['it','Italiano'],['pt','Portugués']].forEach(([k,v])=>{const o=elm('option','',v);o.value=k;lang.append(o)});
@@ -43,7 +43,7 @@ function setup(){
  textarea.style.setProperty('--vr-selected-color',paletteColors[1]);
  let size=17,recordKey='',current='',saved=new Map();
  function link(){let work=manual.value.trim()||select.value;let query=[recordKey,work,'fuente primaria texto edición digital'].filter(Boolean).join(' ');source.href='https://www.google.com/search?'+new URLSearchParams({q:query})}
- function choose(){current=manual.value.trim()||select.value;textarea.value=saved.get(current)||'';output.textContent='';status.textContent=current?'Documento seleccionado; agregá una transcripción verificable para leerlo.':'';link()}
+ function choose(){current=manual.value.trim()||select.value;textarea.value=saved.get(current)||'';output.textContent='';status.textContent=current?'Documento seleccionado; agrega una transcripción verificable para leerlo.':'';link()}
  select.addEventListener('change',()=>{manual.value='';choose()});manual.addEventListener('change',choose);
  textarea.addEventListener('input',()=>{if(current)saved.set(current,textarea.value)});
  minus.addEventListener('click',()=>{size=Math.max(13,size-2);textarea.style.fontSize=size+'px';output.style.fontSize=size+'px'});
@@ -96,8 +96,8 @@ function setup(){
  }
  translate.addEventListener('click',async()=>{
    const raw=textarea.value.trim();
-   if(!raw){status.textContent='Primero cargá o pegá un texto autorizado.';return}
-   if(lang.value===target.value){status.textContent='Elegí un idioma de destino diferente.';return}
+   if(!raw){status.textContent='Primero carga o pega un texto autorizado.';return}
+   if(lang.value===target.value){status.textContent='Elige un idioma de destino diferente.';return}
    translate.disabled=true;status.textContent='Traduciendo…';output.textContent='';
    const truncated=raw.length>1050;const input=raw.slice(0,1050);
    try{
@@ -107,7 +107,7 @@ function setup(){
      if(!result)result=await externalTranslate(input,lang.value,target.value);
      output.textContent=result||'No se recibió una traducción.';
      status.textContent=(isLocal?'Traducción local del navegador.':'Traducción mediante MyMemory.')+(truncated?' Solo se tradujeron los primeros 1050 caracteres; el documento completo permanece intacto.':'');
-   }catch(e){status.textContent='No fue posible traducir automáticamente. Podés seguir leyendo el original.'}
+   }catch(e){status.textContent='No fue posible traducir automáticamente. Puedes seguir leyendo el original.'}
    finally{translate.disabled=false}
  });
 }
