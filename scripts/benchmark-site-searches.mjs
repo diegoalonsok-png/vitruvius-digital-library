@@ -31,7 +31,9 @@ for(const item of CASES){
   await page.locator(item.input).waitFor({timeout:14000});
   await page.locator(item.input).fill(item.q);
   const start=Date.now();
-  await page.evaluate(selector=>{const form=document.querySelector(selector);if(!form)throw Error("Formulario no encontrado: "+selector);if(form.requestSubmit)form.requestSubmit();else form.dispatchEvent(new Event("submit",{bubbles:true,cancelable:true}))},item.form);
+  // Click the visible submit button as a user would; no synthetic submission.
+  const searchButton=page.locator(item.form+" button[type=submit]").first();
+  await searchButton.click({timeout:12000});
   try{
    await page.waitForFunction(({result,state})=>{
     const els=document.querySelectorAll(result);
