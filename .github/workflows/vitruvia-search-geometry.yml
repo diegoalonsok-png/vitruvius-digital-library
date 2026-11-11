@@ -8,6 +8,7 @@ on:
       - 'assets/vitruvia-egypt-research.js'
       - 'assets/vitruvia-egypt-script-viewer.js'
       - 'scripts/test-vitruvia-search-geometry.mjs'
+      - 'scripts/test-vitruvia-timeline-geometry.mjs'
       - '.github/workflows/vitruvia-search-geometry.yml'
   pull_request:
     paths:
@@ -17,6 +18,7 @@ on:
       - 'assets/vitruvia-egypt-research.js'
       - 'assets/vitruvia-egypt-script-viewer.js'
       - 'scripts/test-vitruvia-search-geometry.mjs'
+      - 'scripts/test-vitruvia-timeline-geometry.mjs'
       - '.github/workflows/vitruvia-search-geometry.yml'
   workflow_dispatch:
 permissions:
@@ -39,6 +41,7 @@ jobs:
           python3 -m http.server 8766 --bind 127.0.0.1 >/tmp/vitruvia-geometry-http.log 2>&1 &
           sleep 2
           node scripts/test-vitruvia-search-geometry.mjs
+          node scripts/test-vitruvia-timeline-geometry.mjs
       - name: Save layout screenshots
         if: always()
         uses: actions/upload-artifact@v4
