@@ -1207,6 +1207,7 @@ function display(rows,query,phase){
   r.type==="university"?"universities":
   r.type==="manuscript"?"manuscripts":
   r.type==="apparatus"?"apparatus":
+  r.type==="historical-ocr"?"external-texts":
   r.type==="fragment"?"fragments":
   r.type==="scholar"?"scholars":
   r.type==="edition"?"editions":
