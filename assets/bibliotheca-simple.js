@@ -587,6 +587,16 @@ function render(rows,q,details){
 }
 async function search(updateHistory=true){
  const id=++serial,q=input.value.trim();updateLexicon();root.hidden=true;list.replaceChildren();
+ // Synchronize the address with the user's new term before any network waits.
+ // This prevents a stale ?q= from appearing to be the current search.
+ if(updateHistory&&q){
+  const immediateUrl=new URL(location.href);
+  immediateUrl.searchParams.set("q",q);
+  immediateUrl.searchParams.delete("term");
+  if(work.value)immediateUrl.searchParams.set("work",work.value);
+  else immediateUrl.searchParams.delete("work");
+  if(immediateUrl.href!==location.href)history.pushState(null,"",immediateUrl);
+ }
  window.ClassicsUploadedDocuments?.clear();
  if(q.length>180||fold(q).replace(/[^\p{L}\p{N}]/gu,"").length<2){status.textContent=dict[locale].short;return}
  status.textContent=dict[locale].loading;$("search-submit").disabled=true;
@@ -648,7 +658,17 @@ async function search(updateHistory=true){
 $("search-form").addEventListener("submit",ev=>{ev.preventDefault();void search()});
 work.addEventListener("change",()=>{drawRemote();if(input.value.trim())void search()});
 for(const facet of [era,genre])facet.addEventListener("change",()=>{refresh();if(input.value.trim())void search()});
-input.addEventListener("input",updateLexicon);
+input.addEventListener("input",()=>{
+ // Editing a new term cancels the visual authority of the preceding search.
+ // The old asynchronous scan may finish, but its serial can no longer paint.
+ ++serial;
+ $("search-submit").disabled=false;
+ root.hidden=true;
+ list.replaceChildren();
+ status.textContent="";
+ window.ClassicsUploadedDocuments?.clear();
+ updateLexicon();
+});
 morphCheckbox.addEventListener("change",()=>{if(input.value.trim())void search()});
 $("language-toggle").addEventListener("click",()=>{
  const next=({es:"en",en:"fr",fr:"es"})[locale]||"es";
