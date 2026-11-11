@@ -200,6 +200,7 @@ async function searchOCR(){
     const p=Number(hit.p.page);
     const link=Number.isInteger(p)&&p>0?GETTY+'/page/n'+(p-1)+'/mode/1up':GETTY;
     article.innerHTML='<h4>Getty · imagen OCR '+escape(hit.p.page)+'</h4><p>'+excerpt(hit.p.text,hit.match)+'</p><p><a href="'+escape(link)+'" target="_blank" rel="noopener noreferrer">Examinar el facsímil Getty ↗</a></p>';
+    article.querySelector('p')?.classList.add('vdl-ocr-highlight');
     $('ces-ocr-results').append(article);
    }
    count=Math.min(hits.length,count+12);
