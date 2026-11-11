@@ -13,12 +13,15 @@ function init(){
  note.style.cssText="font:12px/1.4 system-ui;opacity:.82";
  panel.append(a,note);form.after(panel);
  function refresh(){
-  const q=input.value.trim();
-  a.href="codex-h-folios-local.html"+(q?"?"+new URLSearchParams({q}):"#h-chapter-terms");
-  a.textContent=q?"Examinar folios candidatos del códice H para «"+q.slice(0,45)+(q.length>45?"…":"")+"»":
+  const q=input.value.trim().replace(/^[@=#*]+/,"");
+  const language=document.getElementById("lx-lang")?.value||"auto";
+  const validLatin=!!q&&["la","auto"].includes(language)&&/^[\p{Script=Latin}\p{M}\s\u0027.\-]+$/u.test(q);
+  a.href="codex-h-folios-local.html"+(validLatin?"?"+new URLSearchParams({q}):"#h-chapter-terms");
+  a.textContent=validLatin?"Examinar folios candidatos del códice H para «"+q.slice(0,45)+(q.length>45?"…":"")+"»":
    "Ver índice de términos y folios del códice H";
  }
  input.addEventListener("input",refresh);
+ document.getElementById("lx-lang")?.addEventListener("change",refresh);
  form.addEventListener("submit",refresh);
  refresh();
 }
