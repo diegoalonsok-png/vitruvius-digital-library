@@ -27,6 +27,8 @@ for(const term of ['ordinatio','numen','domus','symmetria']){
  const result=await api.lookup(term,{lang:'la',online:false});
  assert.equal(result.entries[0]?.lemma,term);
  assert(result.entries[0]?.gloss.length>3);
+ assert(Array.isArray(result.sources),"Dictionary sources must render as a source list");
+ assert(result.sources.every(source=>typeof source.label==="string"));
 }
 assert.equal(fetched,0);
 assert.equal(lexical.quick('dimus','la'),null);

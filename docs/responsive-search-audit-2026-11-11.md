@@ -1,6 +1,6 @@
 # Búsquedas y fichas · 11 de noviembre de 2026
 
-La carga inicial de Vitruvia pasa de 80 scripts (1.264.089 bytes) a 34 (607.612 bytes). Se conserva el diseño; las imágenes se activan al pulsar Imágenes y las fuentes adicionales al ampliar la consulta. Los módulos y textos se conservan. La respuesta inicial consulta una edición estructurada; la ampliación incorpora las demás y las fuentes académicas.
+La carga inicial de Vitruvia pasa de 80 scripts (1.264.089 bytes) a 36 (625.726 bytes). Se conserva el diseño; las imágenes se activan al pulsar Imágenes y las fuentes adicionales al ampliar la consulta. Los módulos y textos se conservan. La respuesta inicial consulta una edición estructurada; la ampliación incorpora las demás y las fuentes académicas.
 
 La ordenación calcula una puntuación por registro. Las concordancias descartan los textos sin el término antes de construir mapas Unicode. No se agregan índices masivos. La biblioteca limpia el estado anterior al editar y presenta un primer lote sin esperar todas las ediciones; conserva la paginación de sesenta pasajes. Lexicon usa coincidencia literal y reutiliza las definiciones residentes al pulsar palabras.
 
@@ -19,3 +19,5 @@ Se recuperó el enrutamiento de consultas del commit d6a86bada86d3ece49f3fac9dde
 El diccionario contextual ahora atiende los resultados normales y los DOCX de la Bibliotheca. Se verificó numen en las Odas de Horacio. Micenas incorpora una ficha geográfica con fuentes UNESCO y Cambridge.
 
 En Chrome sobre la vista previa estática local se observaron primeras respuestas de Vitruvia de 227 ms (domus), 357 ms (numen) y 352 ms (symmetria), sin imágenes en los resultados. El diccionario numen del DOCX se mostró en 11 ms. Son mediciones sintéticas de este entorno, no garantías de descarga en GitHub Pages. Resultados y límites en reports/responsive-browser-observations-2026-11-11.json.
+
+La verificación pública registró la primera respuesta de Bibliotheca para NUMEN en 498 ms, su diccionario en el DOCX de Horacio en 174 ms y la primera respuesta de Vitruvia para symmetria en 318 ms. La captura se conserva en reports/responsive-numen-dictionary.png. Las fuentes del diccionario residente se normalizan a una lista antes de renderizarlas: el índice almacenaba una cadena y ello provocaba un error al terminar el panel.
