@@ -2360,11 +2360,8 @@ async function init(){
   console.info("Vitruvia Lexicon metadata ready in "+Math.round(performance.now()-t0)+" ms");
 }
  if($("#comp-go")){$("#comp-go").addEventListener("click",()=>renderComparatio().catch(e=>$("#comp-out").replaceChildren(el("p",{},e.message))));$("#comp-lang").addEventListener("change",()=>{$("#comp-a").dataset.l="";renderComparatio()})}
- /* Precarga silenciosa: mientras el lector mira la página se prepara el corpus latino (y el griego en
-    conexiones rápidas), para que la primera búsqueda sea inmediata. No se hace con ahorro de datos ni
-    en redes lentas; si ya hay una consulta en la dirección, la búsqueda misma carga lo que necesita. */
- {const c=navigator.connection||{};const slow=c.saveData||/(^|-)2g|3g/.test(c.effectiveType||"");
-  if(!slow&&!new URLSearchParams(location.search).get("q")){const idle=window.requestIdleCallback||(f=>setTimeout(f,1200));idle(()=>lang("la",true).catch(()=>{}),{timeout:4000})}}
+ /* No automatic full-corpus indexing on idle: it can freeze the landing page.
+    An explicit search loads the required corpus, yielding between batches. */
  renderInstrumenta();renderScriptoria().catch(err=>console.error('Escrituras:',err));renderNotebook();renderDaily();renderQueryBuilder();applyUI();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
  const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
 
