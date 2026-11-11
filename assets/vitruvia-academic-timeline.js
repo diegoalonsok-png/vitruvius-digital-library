@@ -255,13 +255,16 @@
   const outer=Number(root.clientWidth)||Number(root.getBoundingClientRect?.().width)||760;
   const available=Math.max(1,Math.floor(outer)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)-3);
   const labelWidth=Math.min(Math.round(available*.33),available<420?88:available<740?124:170);
-  const mapWidth=Math.max(1,available-labelWidth-2);
+  // Preserve chronological spacing rather than stacking dozens of markers
+  // vertically in a narrow viewport. The canvas scrolls *inside* its panel.
+  const naturalWidth=Math.min(2400,Math.max(720,visibleEvents.length*48));
+  const mapWidth=Math.max(1,available-labelWidth-2,naturalWidth);
   const cardWidth=Math.min(Math.round(134*state.zoom),Math.max(1,mapWidth-12));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
   viewport.setAttribute("aria-label",L("Cronología adaptada al ancho del visor","Chronology fitted to reader width","Chronologie adaptée à la largeur du lecteur"));
-  const map=el("div","vat-map");map.style.width=available+"px";
+  const map=el("div","vat-map");map.style.width=(labelWidth+mapWidth)+"px";
   const axis=el("div","vat-axis");
   const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
   for(let i=0;i<=ticks;i++){
