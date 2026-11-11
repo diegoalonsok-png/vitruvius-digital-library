@@ -56,7 +56,31 @@
   const t=normalize(title);
   return terms.length>0&&terms.every(w=>t.split(" ").some(x=>x===w||w.length>5&&x.startsWith(w)));
  }
+ const isAkhenaten=()=>/^(?:akhenaten|akhenaton|akhenat[oó]n|ajenaton|ajenat[oó]n|akenaton|akenat[oó]n|amenhotep iv|amenofis iv|amenophis iv)$/.test(normalize(state.query));
+ // Akhenaten has a biographical scale: c. 1370–1336 BCE. Birth is not
+ // attested precisely and these milestones are approximate, not regnal-date
+ // conversions presented as certainties. Bibliography remains outside it.
+ const akhenatenBounds={birth:-1370,death:-1336};
+ function akhenatenEvents(){
+  const ucl="https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/akhnaton.html";
+  const pbs="https://www.pbs.org/empires/egypt/special/timeline/akenhaten.html";
+  return [
+   {year:-1370,lane:"life",title:L("Nacimiento estimado","Estimated birth","Naissance estimée"),
+    source:"Estimación biográfica; fecha de nacimiento no documentada",url:ucl,approx:true,
+    detail:L("Nacimiento aproximado hacia 1370 a. C., inferido y discutido. No se conoce una fecha de nacimiento contemporánea verificable.","Approximate inferred birth, not securely attested.","Naissance approximative, non attestée avec certitude.")},
+   {year:-1353,lane:"life",title:L("Acceso al trono como Amenhotep IV","Accession as Amenhotep IV","Avènement d'Amenhotep IV"),
+    source:"PBS · Egypt's Golden Empire / UCL Digital Egypt",url:pbs,approx:true,
+    detail:L("Comienzo aproximado del reinado de Amenhotep IV; cronologías alternativas varían varios años.","Approximate start of the reign, with competing chronologies.","Début approximatif du règne; chronologies variables.")},
+   {year:-1348,lane:"events",title:L("Cambio de nombre y fundación de Ajetatón","Name change and foundation of Akhetaten","Changement de nom et fondation d'Akhetaton"),
+    source:"UCL Digital Egypt · año 6 del reinado",url:ucl,approx:true,
+    detail:L("UCL sitúa el nuevo nombre real y la creación de la residencia de Ajetatón en el sexto año de reinado. El año absoluto es aproximado y depende de la cronología adoptada.","Year six of the reign, converted approximately to BCE.","An six du règne, conversion absolue approximative.")},
+   {year:-1336,lane:"life",title:L("Muerte de Akenatón · fin de la línea biográfica","Death of Akhenaten · end of biography","Mort d'Akhenaton · fin de la chronologie"),
+    source:"PBS · Egypt's Golden Empire; cronología aproximada",url:pbs,approx:true,
+    detail:L("Muerte hacia 1336 a. C., tras un reinado de alrededor de diecisiete años. La edad exacta al morir no está establecida con certeza.","Approximate death around 1336 BCE; exact age unknown.","Décès vers 1336 av. J.-C.; âge exact incertain.")}
+  ];
+ }
  function collect(){
+  if(isAkhenaten())return akhenatenEvents();
   let ev=[],a=state.authority;
   // All Wikidata authority properties keep their distinct meanings.
   if(a&&/^Q\d+$/.test(a.wikidataId||"")){
@@ -158,7 +182,10 @@
   zoomOut.title=L("Reducir escala","Reduce scale","Réduire l’échelle");
   zoomIn.title=L("Ampliar escala","Increase scale","Agrandir l’échelle");
   controls.append(prev,zoomOut,zoomIn,next);
-  left.append(el("small","vat-subtitle",L(
+  left.append(el("small","vat-subtitle",isAkhenaten()?L(
+    "Vida aproximada · c. 1370–1336 a. C. · sin publicaciones posteriores",
+    "Approximate lifetime · c. 1370–1336 BCE · no later publications",
+    "Vie approximative · v. 1370–1336 av. J.-C. · sans publications postérieures"):L(
     "Fechas documentadas · obras · ediciones · fuentes",
     "Documented dates · works · editions · sources",
     "Dates documentées · œuvres · éditions · sources")));
@@ -167,6 +194,10 @@
    "Cada hito abre una ficha de lectura y su fuente. Los años de una edición no representan necesariamente la creación de la obra ni el acontecimiento histórico.",
    "Select a milestone to read its record. Edition dates do not necessarily indicate first publication or historical events.",
    "Chaque jalon ouvre sa notice. Les dates d'édition ne sont pas nécessairement celles des œuvres ou des événements."));
+  if(isAkhenaten())method.textContent=L(
+    "Escala biográfica exclusivamente hasta la muerte aproximada. El nacimiento es estimado y los años absolutos del reinado pueden variar según la cronología egiptológica. Libros y estudios modernos no son hitos biográficos.",
+    "Biographical scale stops at approximate death. Birth and absolute reign dates are uncertain; modern studies are excluded.",
+    "L'échelle biographique s'arrête au décès approximatif. Dates discutées; les études modernes sont exclues.");
   root.append(method);
   if(!events.length){
    const empty=el("p","vat-empty",L(
@@ -176,8 +207,10 @@
    root.append(empty);return;
   }
   const minYear=events[0].year,maxYear=Math.max(...events.map(e=>e.end??e.year));
-  const span=Math.max(1,maxYear-minYear),padding=Math.max(1,Math.ceil(span*.04));
-  const low=minYear-padding,high=maxYear+padding,range=Math.max(1,high-low);
+  const span=Math.max(1,maxYear-minYear),padding=isAkhenaten()?0:Math.max(1,Math.ceil(span*.04));
+  const low=isAkhenaten()?akhenatenBounds.birth:minYear-padding;
+  const high=isAkhenaten()?akhenatenBounds.death:maxYear+padding;
+  const range=Math.max(1,high-low);
   const mapWidth=Math.max(960,Math.min(5200,Math.round(events.length*160*state.zoom)));
   const position=y=>((y-low)/range*100).toFixed(4)+"%";
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
