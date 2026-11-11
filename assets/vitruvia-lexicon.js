@@ -396,8 +396,8 @@ async function run(push=true){
   if(S.mode==="lema")parsed.steps.forEach(s=>{if(s.term.type==="form")s.term={type:"lemma",v:s.term.v,fallback:true}});
   let res=execute(D,parsed,opts);
   if(S.mode==="lema"&&!res.hits.length){/* el usuario escribió una forma: se resuelve su lema */parsed.steps.forEach(s=>{if(s.term.fallback)s.term={type:"form",v:s.term.v}});res=execute(D,parsed,{...opts,lemmatize:true})}
-  if(!res.hits.length&&l==="la"&&S.lang==="auto"&&!/[\[@"]/.test(q)){const G=await lang("grc");if(!isCurrent())return;
-   const r2=execute(G,parseQuery(q,S.mode),opts);if(r2.hits.length){S.D=G;fillWorks(G);res=r2}}
+  // Do not silently switch from Latin to Greek for a literal query: the user
+  // must select Greek explicitly, to avoid unrelated transliterated results.
   /* Búsqueda por lema en latín: se descartan las coincidencias en las que el análisis contextual eligió otro lema. */
   let ctxDropped=0;
   if(S.D.l==="la"&&parsed.steps.length===1&&parsed.steps[0].term.type==="lemma"){await loadContext();if(!isCurrent())return;
