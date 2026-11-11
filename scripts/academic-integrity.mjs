@@ -45,13 +45,52 @@ const works=read('data/bibliotheca-graeca-latina-I-bce-I-ce.json').works;
 assert.equal(new Set(works.map(w=>w.id)).size,works.length,'Duplicate work identifiers');
 const local=works.filter(w=>/^lectura-local-/.test(w.publicStatus||''));
 const extra=read('data/clasicos-perseus-extra.json').works;
+// Metrics are derived from existing immutable sources; never fill an empty
+// manuscript field with invented data just to improve an academic score.
+const matrix=read('data/classics-corpus/tei-codicology-research-matrix-89.json');
+assert.equal(matrix.records.length,witnesses.records.length,
+  'The codicological research matrix and witness register must describe the same number of records');
+const matrixFields=matrix.records.map(r=>Object.values(r.fields||{}).flatMap(g=>Object.values(g)));
+assert.ok(matrixFields.every(f=>f.length===matrix.fieldCount),
+  'The codicological field matrix is structurally incomplete');
+const missingCodicologicalFields=matrixFields.reduce((n,fields)=>n+
+ fields.filter(f=>f?.value==null||String(f.value).trim()==='').length,0);
+const linkedIds=new Set(witnesses.records.flatMap(w=>w.workIds||[]));
+const worksWithWitness=works.filter(w=>linkedIds.has(w.id)).length;
+const directWitnessKinds=new Set(['direct_original_latin','direct_original_greek']);
+const directOriginalWitnesses=witnesses.records.filter(w=>directWitnessKinds.has(w.witnessKind)).length;
 const fingerprint=createHash('sha256').update(JSON.stringify(corpora)).digest('hex');
 const hasLocalTranslation=w=>w.localVersions?.some(v=>/translation/.test(v.kind||''))||w.localReader?.translations?.length||paths.includes(w.localReader?.original);
-const report={schema:1,generated:'2026-11-05',scope:'Integridad del índice y trazabilidad editorial; no certifica cotejo filológico, calidad de traducción ni disponibilidad de servidores externos.',sourceFingerprint:fingerprint,sourceFingerprintMethod:'SHA-256 de JSON.stringify([recensio-es, recensio-fr, theory-en]); sin dependencia de espacios o saltos de línea.',
+const report={schema:2,generated:new Date().toISOString().slice(0,10),scope:'Integridad del índice y trazabilidad editorial; no certifica cotejo filológico, calidad de traducción ni disponibilidad de servidores externos.',sourceFingerprint:fingerprint,sourceFingerprintMethod:'SHA-256 de JSON.stringify([recensio-es, recensio-fr, theory-en]); sin dependencia de espacios o saltos de línea.',
  editions,canonicalLoci:canonical.length,canonicalReferences:canonical,
- manuscripts:{records:witnesses.records.length,withRepositoryShelfmarkDateAndSource:witnesses.records.length-incompleteWitnesses.length},
+ manuscripts:{
+  records:witnesses.records.length,
+  withRepositoryShelfmarkDateAndSource:witnesses.records.length-incompleteWitnesses.length,
+  catalogueWorksWithLinkedWitness:worksWithWitness,
+  catalogueWorksWithoutLinkedWitness:works.length-worksWithWitness,
+  directOriginalWitnesses,
+  note:'Una signatura documentada no acredita por sí sola que el códice sea el más antiguo conservado ni el testigo crítico más importante.'
+ },
  apparatus:{entries:apparatus.entries.length,relations,method:apparatus.method},
- catalogue:{records:works.length,declaredLocalReadings:local.length,withLocalTranslation:local.filter(hasLocalTranslation).length,withExplicitEditionCitation:local.filter(w=>w.bibliography?.editionCitation).length},
+ catalogue:{
+  records:works.length,
+  declaredLocalReadings:local.length,
+  declaredCompleteLocalReadings:works.filter(w=>w.publicStatus==='lectura-local-completa').length,
+  declaredPartialLocalReadings:works.filter(w=>w.publicStatus==='lectura-local-parcial').length,
+  withLocalTranslation:local.filter(hasLocalTranslation).length,
+  withExplicitEditionCitation:local.filter(w=>w.bibliography?.editionCitation).length,
+  caveat:'El estado público de lectura es un dato de catálogo; no equivale a verificar el texto completo contra una edición crítica.'
+ },
+ codicology:{
+  registeredWitnessRecords:matrix.records.length,
+  uniquePhysicalObjects:matrix.uniquePhysicalObjects,
+  fieldsPerWitness:matrix.fieldCount,
+  fieldSlots:matrixFields.reduce((n,f)=>n+f.length,0),
+  filledFieldSlots:matrixFields.reduce((n,f)=>n+f.length,0)-missingCodicologicalFields,
+  pendingFieldSlots:missingCodicologicalFields,
+  allFieldsFilled:matrixFields.filter(f=>f.every(x=>x?.value!=null&&String(x.value).trim()!=='')).length,
+  caveat:'Pendiente no significa necesariamente aplicable; por ejemplo, la filigrana puede no corresponder al pergamino. Datos no comprobados no se infieren.'
+ },
  externalClassicalRepertory:{records:extra.length,withTranslationLinks:extra.filter(w=>w.translations?.length).length,availability:'Fuentes enlazadas; este recuento no prueba lectura local completa ni cotejo de cada traducción.'},
  priorities:[
   'Cotejar los vínculos candidatos del aparato antes de elevarlos a correspondencias explícitas.',
@@ -60,6 +99,19 @@ const report={schema:1,generated:'2026-11-05',scope:'Integridad del índice y tr
   'Resolver las dudas vitruvianas mediante testimonio manuscrito y controles de Krohn y Budé, documentando las variantes.',
   'Revisar muestras de traducción por disciplina y por obra con fuentes críticas identificadas.'
  ]};
-if(process.argv.includes('--write'))writeFileSync(new URL('../data/academic-integrity.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
+if(process.argv.includes('--write')&&process.argv.includes('--check'))throw Error('Use --write or --check, not both');
+if(process.argv.includes('--write')){
+ writeFileSync(new URL('../data/academic-integrity.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
+}
+if(process.argv.includes('--check')){
+ const saved=read('data/academic-integrity.json');
+ const {generated:ignoredSavedDate,...published}=saved;
+ const {generated:ignoredFreshDate,...current}=report;
+ assert.match(saved.generated||'',/^\d{4}-\d{2}-\d{2}$/,
+  'Published integrity report needs an explicit generation date');
+ assert.deepEqual(published,current,
+  'The published academic integrity report is stale. Run: node scripts/academic-integrity.mjs --write');
+ console.log('PASS: published academic integrity report agrees with catalogue, manuscripts, codicological matrix, apparatus and original-edition fingerprints.');
+}
 console.log(JSON.stringify({...report,canonicalReferences:undefined},null,2));
 console.log('PASS: 731 canonical references in each edition, grouped English passages preserved, source identity and manuscript identification checked.');
