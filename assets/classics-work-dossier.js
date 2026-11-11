@@ -353,6 +353,14 @@ function renderCodicologicalTree(dest,w,d){
  }
  dest.append(box);
  dest.append(html("p","cwd-muted","Las conexiones de la obra a los códices significan 'transmite esta obra', NO copia directa ni familia genealógica. El orden de los testigos no representa su fiabilidad ecdótica."));
+ if(tree.families?.length){
+  section(dest,"Recensiones o familias documentadas (sin parentesco de copia inferido)");
+  for(const group of tree.families){
+   row(dest,"Recensión acreditada",group.label+" · testigos: "+group.memberWitnessIds.join(", "));
+   if(group.warning)dest.append(html("p","cwd-muted",group.warning));
+   const refs=html("p","cwd-links");addA(refs,"Investigación que sustenta la clasificación ↗",group.source);if(group.secondarySource)addA(refs,"Otra fuente crítica ↗",group.secondarySource);if(refs.childNodes.length)dest.append(refs);
+  }
+ }
  if(tree.documentedFiliation?.length){
   section(dest,"Filiaciones publicadas en investigaciones");
   for(const edge of tree.documentedFiliation){
@@ -361,7 +369,7 @@ function renderCodicologicalTree(dest,w,d){
    const link=html("p","cwd-links");addA(link,"Estudio que documenta esta filiación ↗",edge.sourceUrl);dest.append(link);
   }
  }
- row(dest,"Estado del stemma codicum",tree.stemmaStatus==="not_established"?"No establecido: no inventar árbol de familias ni arquetipos":"Relación parcial entre testigos; NO constituye stemma completo");
+ row(dest,"Estado del stemma codicum",tree.stemmaStatus==="not_established"?"No establecido: no inventar árbol de familias ni arquetipos":"Relación o clasificación recensional parcial; NO constituye stemma completo");
  const links=html("p","cwd-links");addA(links,"Datos y relaciones de las 222 obras ↗","data/classics-corpus/codicological-trees-222.json");dest.append(links);
 }
 function renderVitruviusStandard(dest,w,d){
