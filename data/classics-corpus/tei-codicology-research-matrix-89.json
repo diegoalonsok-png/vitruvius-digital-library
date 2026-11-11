@@ -163,12 +163,15 @@
           "collationFormula": {
             "value": null,
             "status": "missing_requires_source",
-            "scholarlyQuestion": "Fórmula de cuadernos y estructura de la encuadernación"
+            "scholarlyQuestion": "Fórmula de cuadernos y estructura de la encuadernación",
+            "note": "Signaturas de cuaderno presentes; fórmula completa de colación no establecida.",
+            "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048598"
           },
           "ruling": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Pautado, picado y número de líneas por página"
+            "value": "Pautado a punta seca (hardpoint), según British Library Archives and Manuscripts Catalogue.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Pautado, picado y número de líneas por página",
+            "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048598"
           },
           "binding": {
             "value": null,
@@ -287,7 +290,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-vitruvius-h"
     },
     {
       "witnessId": "cicero-officiis-geneva",
@@ -443,7 +447,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-cicero-officiis-geneva"
     },
     {
       "witnessId": "lucretius-oblongus",
@@ -599,7 +604,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-lucretius-oblongus"
     },
     {
       "witnessId": "vergil-vaticanus-aeneid",
@@ -755,7 +761,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-vat-lat-3225"
     },
     {
       "witnessId": "vergil-vaticanus-georgica",
@@ -911,7 +918,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-vat-lat-3225"
     },
     {
       "witnessId": "vergil-romanus",
@@ -1068,7 +1076,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-vergil-romanus"
     },
     {
       "witnessId": "tacitus-mediceus-1",
@@ -1224,7 +1233,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-tacitus-mediceus-1"
     },
     {
       "witnessId": "tacitus-mediceus-2",
@@ -1382,7 +1392,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-laur-plut-68-2"
     },
     {
       "witnessId": "josephus-pal-gr-14",
@@ -1538,7 +1549,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-josephus-pal-gr-14"
     },
     {
       "witnessId": "josephus-vat-gr-984",
@@ -1695,7 +1707,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-josephus-vat-gr-984"
     },
     {
       "witnessId": "dioscorides-vienna",
@@ -1852,7 +1865,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-dioscorides-vienna"
     },
     {
       "witnessId": "dioscorides-paris",
@@ -2009,7 +2023,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-dioscorides-paris"
     },
     {
       "witnessId": "homer-iliad-venetus-a",
@@ -2166,7 +2181,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-homer-iliad-venetus-a"
     },
     {
       "witnessId": "catullus-thuaneus-8071",
@@ -2323,7 +2339,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-catullus-thuaneus-8071"
     },
     {
       "witnessId": "catullus-oxford-o",
@@ -2479,7 +2496,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-catullus-oxford-o"
     },
     {
       "witnessId": "cicero-republica-vat5757",
@@ -2635,7 +2653,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-cicero-republica-vat5757"
     },
     {
       "witnessId": "marcus-aurelius-vat1950",
@@ -2791,7 +2810,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-marcus-aurelius-vat1950"
     },
     {
       "witnessId": "plato-parisinus-graecus-1807",
@@ -2950,7 +2970,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807"
     },
     {
       "witnessId": "ovid-metamorphoses-vat-lat-2781",
@@ -3106,7 +3127,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-ovid-metamorphoses-vat-lat-2781"
     },
     {
       "witnessId": "faventinus-gudianus-132",
@@ -3263,7 +3285,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-faventinus-gudianus-132"
     },
     {
       "witnessId": "euclid-vat-gr-190",
@@ -3420,7 +3443,8 @@
         "palimpsest",
         "record"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-euclid-vat-gr-190"
     },
     {
       "witnessId": "agrimensores-arcerianus",
@@ -3578,7 +3602,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-agrimensores-arcerianus"
     },
     {
       "witnessId": "agrimensores-pal-lat-1564",
@@ -3738,7 +3763,8 @@
         "record",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564"
     },
     {
       "witnessId": "plato-clarke-39",
@@ -3900,7 +3926,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-plato-clarke-39"
     },
     {
       "witnessId": "sinaiticus-gospels-apostolic",
@@ -4059,7 +4086,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic"
     },
     {
       "witnessId": "alexandrinus-nt-clement",
@@ -4219,7 +4247,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-alexandrinus-nt-clement"
     },
     {
       "witnessId": "frontinus-strategemata-harley2666",
@@ -4375,7 +4404,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-frontinus-strategemata-harley2666"
     },
     {
       "witnessId": "didache-poxy-xv-1782",
@@ -4528,7 +4558,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-didache-poxy-xv-1782"
     },
     {
       "witnessId": "didache-hierosolymitanus-54",
@@ -4680,7 +4711,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54"
     },
     {
       "witnessId": "didache-elbasan-82",
@@ -4833,7 +4865,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-didache-elbasan-82"
     },
     {
       "witnessId": "barnabas-hierosolymitanus-54",
@@ -4985,7 +5018,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54"
     },
     {
       "witnessId": "clement-hierosolymitanus-54",
@@ -5137,7 +5171,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54"
     },
     {
       "witnessId": "clement2-hierosolymitanus-54",
@@ -5289,7 +5324,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54"
     },
     {
       "witnessId": "ignatius-hierosolymitanus-54",
@@ -5441,7 +5477,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54"
     },
     {
       "witnessId": "cicero-de-oratore-harley2736",
@@ -5593,7 +5630,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-cicero-de-oratore-harley2736"
     },
     {
       "witnessId": "cicero-de-oratore-nls-18-3-16",
@@ -5751,7 +5789,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-cicero-de-oratore-nls-18-3-16"
     },
     {
       "witnessId": "caesar-add-ms-10084",
@@ -5905,7 +5944,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-caesar-add-ms-10084"
     },
     {
       "witnessId": "caesar-gallico-harley4834",
@@ -6063,7 +6103,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-caesar-gallico-harley4834"
     },
     {
       "witnessId": "cicero-catilina-add47678",
@@ -6217,7 +6258,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-cicero-catilina-add47678"
     },
     {
       "witnessId": "cicero-catilina-harley2716",
@@ -6374,7 +6416,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-cicero-catilina-harley2716"
     },
     {
       "witnessId": "horace-works-harley2724",
@@ -6534,7 +6577,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-horace-works-harley2724"
     },
     {
       "witnessId": "ovid-fasti-harley2737",
@@ -6691,7 +6735,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-ovid-fasti-harley2737"
     },
     {
       "witnessId": "ovid-fasti-harley2738",
@@ -6847,7 +6892,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-ovid-fasti-harley2738"
     },
     {
       "witnessId": "pliny-naturalis-bamberg42",
@@ -7002,7 +7048,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-pliny-naturalis-bamberg42"
     },
     {
       "witnessId": "pliny-naturalis-harley2676",
@@ -7159,7 +7206,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-pliny-naturalis-harley2676"
     },
     {
       "witnessId": "livy-pal-lat24-palimp",
@@ -7313,7 +7361,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-livy-pal-lat24-palimp"
     },
     {
       "witnessId": "livy-verona-palimp",
@@ -7469,7 +7518,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-livy-verona-palimp"
     },
     {
       "witnessId": "livy-pal-lat878",
@@ -7625,7 +7675,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-livy-pal-lat878"
     },
     {
       "witnessId": "livy-pal-lat873",
@@ -7782,7 +7833,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-livy-pal-lat873"
     },
     {
       "witnessId": "quintilian-harley2664",
@@ -7938,7 +7990,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-quintilian-harley2664"
     },
     {
       "witnessId": "quintilian-burney244",
@@ -8095,7 +8148,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-quintilian-burney244"
     },
     {
       "witnessId": "herodotus-laur-plut70-3",
@@ -8250,7 +8304,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-herodotus-laur-plut70-3"
     },
     {
       "witnessId": "herodotus-laur-plut70-32",
@@ -8405,7 +8460,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-herodotus-laur-plut70-32"
     },
     {
       "witnessId": "thucydides-laur-plut69-2",
@@ -8560,7 +8616,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-thucydides-laur-plut69-2"
     },
     {
       "witnessId": "hesiod-theogony-suppl-gr1099",
@@ -8714,7 +8771,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-hesiod-theogony-suppl-gr1099"
     },
     {
       "witnessId": "hesiod-works-bnf2708",
@@ -8871,7 +8929,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-hesiod-works-bnf2708"
     },
     {
       "witnessId": "aristotle-poetics-paris-gr1741",
@@ -9028,7 +9087,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-aristotle-poetics-paris-gr1741"
     },
     {
       "witnessId": "horace-harley3997",
@@ -9189,7 +9249,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-horace-harley3997"
     },
     {
       "witnessId": "strabo-bnf-grec1393",
@@ -9344,7 +9405,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-strabo-bnf-grec1393"
     },
     {
       "witnessId": "juvenal-harley2772",
@@ -9500,7 +9562,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-juvenal-harley2772"
     },
     {
       "witnessId": "didache-coptic-or9271",
@@ -9653,7 +9716,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-didache-coptic-or9271"
     },
     {
       "witnessId": "homer-odyssey-laur-plut32-24",
@@ -9808,7 +9872,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-24"
     },
     {
       "witnessId": "homer-odyssey-heidelberg-cpg45",
@@ -9963,7 +10028,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-homer-odyssey-heidelberg-cpg45"
     },
     {
       "witnessId": "homer-odyssey-laur-plut32-23",
@@ -10118,7 +10184,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-23"
     },
     {
       "witnessId": "ovid-ars-parisinus-lat7311",
@@ -10277,7 +10344,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311"
     },
     {
       "witnessId": "ovid-ars-bodleian-auct-f4-32",
@@ -10435,7 +10503,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-ovid-ars-bodleian-auct-f4-32"
     },
     {
       "witnessId": "apuleius-laurentianus-68-2",
@@ -10594,7 +10663,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-laur-plut-68-2"
     },
     {
       "witnessId": "apuleius-laurentianus-29-2",
@@ -10753,7 +10823,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2"
     },
     {
       "witnessId": "sophocles-aeschylus-laurentianus-32-9",
@@ -10919,7 +10990,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
     },
     {
       "witnessId": "aristophanes-ravennas-429",
@@ -11081,7 +11153,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
     },
     {
       "witnessId": "euripides-laurentianus-32-2",
@@ -11245,7 +11318,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
     },
     {
       "witnessId": "aristotle-parisinus-gr1853",
@@ -11405,7 +11479,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
     },
     {
       "witnessId": "aristotle-parisinus-gr1741",
@@ -11563,7 +11638,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741"
     },
     {
       "witnessId": "aristotle-vatgr1298-politics",
@@ -11721,7 +11797,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-aristotle-vatgr1298-politics"
     },
     {
       "witnessId": "ptolemy-almagest-vatgr1594",
@@ -11878,7 +11955,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-ptolemy-almagest-vatgr1594"
     },
     {
       "witnessId": "ptolemy-almagest-paris2389",
@@ -12036,7 +12114,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-ptolemy-almagest-paris2389"
     },
     {
       "witnessId": "ptolemy-geography-urbgr82",
@@ -12191,7 +12270,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-ptolemy-geography-urbgr82"
     },
     {
       "witnessId": "sallust-paris16024",
@@ -12350,7 +12430,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-sallust-paris16024"
     },
     {
       "witnessId": "sallust-paris16025",
@@ -12509,7 +12590,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-sallust-paris16025"
     },
     {
       "witnessId": "isidore-stgall-1394-fragment",
@@ -12664,7 +12746,8 @@
         "palimpsest",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-isidore-stgall-1394-fragment"
     },
     {
       "witnessId": "isidore-stgall-233",
@@ -12820,7 +12903,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-isidore-stgall-233"
     },
     {
       "witnessId": "isidore-stgall-231",
@@ -12974,7 +13058,8 @@
         "transpositions",
         "palimpsest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-isidore-stgall-231"
     },
     {
       "witnessId": "boethius-harley-2685",
@@ -13130,7 +13215,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-boethius-harley-2685"
     },
     {
       "witnessId": "xenophon-anabasis-vatgr1335",
@@ -13286,7 +13372,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-xenophon-anabasis-vatgr1335"
     },
     {
       "witnessId": "xenophon-anabasis-paris1640",
@@ -13443,7 +13530,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-xenophon-anabasis-paris1640"
     },
     {
       "witnessId": "xenophon-hellenica-paris1738",
@@ -13598,7 +13686,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-xenophon-hellenica-paris1738"
     },
     {
       "witnessId": "demosthenes-paris2934",
@@ -13757,7 +13846,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-demosthenes-paris2934"
     },
     {
       "witnessId": "pindar-vatgr1312",
@@ -13913,7 +14003,8 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-pindar-vatgr1312"
     },
     {
       "witnessId": "pindar-ambros-c222inf",
@@ -14072,7 +14163,10 @@
         "viewer",
         "manifest"
       ],
-      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios."
+      "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
+      "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
     }
-  ]
+  ],
+  "uniquePhysicalObjects": 83,
+  "note": "89 witness-source records include 83 canonical physical identities; do not count duplicated manuscript shelfmarks as distinct."
 }
