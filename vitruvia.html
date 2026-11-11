@@ -1040,6 +1040,8 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 }
 .hero .featured #featured-title.featured-title-break{overflow-wrap:anywhere!important}
 </style>
+<link rel="preload" as="script" href="assets/vitruvia-search.js?v=20261111-historical-ocr-v1" fetchpriority="high">
+<link rel="preload" as="script" href="assets/vitruvia-entity-resolver.js?v=20261110-identity-engine-v2&amp;patch=surname-fast-v1" fetchpriority="high">
 </head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
@@ -1268,10 +1270,10 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/vitruvia-image-engine-v2.js?v=20261111-greek-logos-disambiguation-v1" defer></script>
 <script src="assets/vitruvia-featured-documentary.js?v=20261107-humanidades-v5" defer></script>
 <script src="assets/vitruvia-reading.js?v=20261106-theme-wins-v1" defer></script>
-<script src="assets/vitruvia-photo-background.js?v=20261104-photo-bg-v1" defer></script>
-<script src="assets/vitruvia-floating-reader.js?v=20261104-draggable-v3" defer></script>
+<script src="assets/vitruvia-photo-background.js?v=20261104-photo-bg-v1" defer fetchpriority="low"></script>
+<script src="assets/vitruvia-floating-reader.js?v=20261104-draggable-v3" defer fetchpriority="low"></script>
 <script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script>
-<script src="assets/vitruvia-selection-speech.js?v=20261104-selected-paragraph-audio-v1" defer></script>
+<script src="assets/vitruvia-selection-speech.js?v=20261104-selected-paragraph-audio-v1" defer fetchpriority="low"></script>
 <script src="assets/vitruvia-research-engine.js?v=20261105-academic-navigation-2" defer></script>
 <script src="assets/vitruvia-local-manuscripts.js?v=20261105-merge2-v1" defer></script>
 <script src="assets/vitruvia-author-reading.js?v=20261109-dated-witness-v5" defer></script>
@@ -1305,7 +1307,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/vitruvia-classics-viewer.js?v=20261105-1" defer></script>
 <script src="assets/vitruvia-historical-names.js?v=20261105-1" defer></script>
 <script src="assets/vitruvia-context-guard.js?v=20261106-modern-academic-gate-v1" defer></script>
-<script src="assets/vitruvia-scholarly-export.js?v=20261109-chicago18-loci-v1" defer></script>
+<script src="assets/vitruvia-scholarly-export.js?v=20261109-chicago18-loci-v1" defer fetchpriority="low"></script>
 <script src="assets/academic-inline-translation.js?v=20261109-v1" defer></script><script src="assets/vitruvia-web-routing.js?v=20261111-topic-v1" defer></script><script src="assets/vitruvia-historical-paragraphs.js?v=20261111-ocr-paragraphs-v1" defer></script>
 <script src="assets/vitruvia-search.js?v=20261111-historical-ocr-v1" defer></script>
 <script src="assets/vitruvia-result-filters.js?v=20261110-facets-loci-v1" defer></script>
@@ -1317,10 +1319,10 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 <script src="assets/vitruvia-featured-bio.js?v=20261107-portrait-identity-v2" defer></script>
 <script src="assets/vitruvia-button-feedback.js?v=20261111-press-loading-v1" defer></script>
 <script src="assets/vitruvia-compact-nav.js?v=20261106-lexicon-v1" defer></script>
-<script src="assets/vitruvia-academic-reader.js?v=20261104-sidebar-ai-v3" defer></script>
-<script src="assets/vitruvia-dictation.js?v=20261104-microphone-v1" defer></script>
-<script src="assets/vitruvia-pdf-local.js?v=20261109-egypt-mesopotamia-v4" defer></script>
-<script src="assets/vitruvia-visual-import.js?v=20261104-private-pdf-v2" defer></script>
+<script src="assets/vitruvia-academic-reader.js?v=20261104-sidebar-ai-v3" defer fetchpriority="low"></script>
+<script src="assets/vitruvia-dictation.js?v=20261104-microphone-v1" defer fetchpriority="low"></script>
+<script src="assets/vitruvia-pdf-local.js?v=20261109-egypt-mesopotamia-v4" defer fetchpriority="low"></script>
+<script src="assets/vitruvia-visual-import.js?v=20261104-private-pdf-v2" defer fetchpriority="low"></script>
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
@@ -2030,7 +2032,7 @@ body.vitruvia-reading .hero .featured{align-self:start!important}
 }
 </style>
 <link rel="stylesheet" href="assets/vitruvia-progressive-results.css?v=20261110-first-fold-v1">
-<script defer src="assets/hiero-render.js?v=20261109-quadrats-v1"></script><script defer src="assets/vitruvia-egypt-script-viewer.js?v=20261109-titulary-v2"></script>
+<script defer src="assets/hiero-render.js?v=20261109-quadrats-v1" fetchpriority="low"></script><script defer src="assets/vitruvia-egypt-script-viewer.js?v=20261109-titulary-v2" fetchpriority="low"></script>
 <script id="vitruvia-featured-title-fit-script">
 /* Ajuste optico, sin alterar nombres o fichas academicas. */
 (()=>{"use strict";
