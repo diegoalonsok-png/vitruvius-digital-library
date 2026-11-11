@@ -285,3 +285,65 @@ html[data-theme="light"] .classics-tally{
 }
 html[data-theme="light"] .classics-tally :is(span,strong,small,p,li,summary){color:#26343f!important}
 @media print{#bibliotheca-theme{display:none!important}}
+
+/* Tema claro: tarjetas de métricas inyectadas por classics-corpus-counts.js.
+   Especificidad deliberada para prevalecer sobre el estilo oscuro inyectado más tarde.
+   No afecta al texto de los documentos, facsímiles ni lectores incrustados. */
+html[data-theme="light"] body:has(.bibliotheca-suite) .classics-tally,
+html[data-theme="light"] body .classics-tally{
+ background:#f8f8f5!important;color:#26343e!important;border-color:#c3c9cc!important;
+}
+html[data-theme="light"] body:has(.bibliotheca-suite) .classics-tally dl>div,
+html[data-theme="light"] body .classics-tally dl>div{
+ background:#fffefa!important;color:#26343e!important;border-color:#b8c1c6!important;
+}
+html[data-theme="light"] body .classics-tally :is(h2,p,dd,dt,span,strong,small,li,summary){
+ color:#26343e!important;opacity:1;
+}
+html[data-theme="light"] body .classics-tally :is(a,a:visited){
+ color:#24577a!important;text-decoration-color:#567b94!important;
+}
+html[data-theme="light"] body .classics-tally .tally-details{
+ border-color:#b8c1c6!important;color:#26343e!important;
+}
+html[data-theme="light"] body .classics-tally .tally-details ol{
+ scrollbar-color:#7a858e #e6e9e8!important;
+}
+html[data-theme="light"] body .classics-tally .tally-details ol::-webkit-scrollbar-track{background:#e6e9e8!important}
+html[data-theme="light"] body .classics-tally .tally-details ol::-webkit-scrollbar-thumb{
+ background:#7a858e!important;border-color:#e6e9e8!important;
+}
+@media(hover:hover){
+ html[data-theme="light"] body .classics-tally dl>div:hover{
+  background:#edf2f2!important;border-color:#6d8491!important;
+ }
+}
+/* Componentes académicos complementarios que antes retenían negro y gris oscuro. */
+html[data-theme="light"] body :is(.genre-work-list,.bibliotheca-dictionary,.remote-translations){
+ background:#fffefa!important;color:#26343e!important;border-color:#b8c1c6!important;
+}
+html[data-theme="light"] body :is(.genre-work-list,.bibliotheca-dictionary,.remote-translations)
+ :is(h2,h3,p,span,strong,small,li,.genre-work-title,.genre-work-meta,.genre-work-note,.genre-work-empty,.dictionary-definition,.dictionary-meta,.dictionary-status,.remote-title,.remote-note){
+ color:#26343e!important;
+}
+html[data-theme="light"] body :is(.genre-work-open,.dictionary-close,.passage-action,.genre-work-list .genre-work-open){
+ background:#f0f3f3!important;color:#24577a!important;border-color:#a7b4bb!important;
+}
+html[data-theme="light"] body :is(.genre-work-open,.dictionary-close,.passage-action):hover{
+ background:#e2e9ec!important;color:#173f5a!important;
+}
+html[data-theme="light"] body .genre-work-item{border-color:#d0d6d8!important}
+html[data-theme="light"] body .genre-work-items{scrollbar-color:#7a858e #e6e9e8!important}
+html[data-theme="light"] body .bibliotheca-suite-links>.bibliotheca-suite-export{
+ background:#fffefa!important;color:#24577a!important;border-color:#b8c1c6!important;
+}
+html[data-theme="light"] body .bibliotheca-suite-export-status{color:#415361!important}
+html[data-theme="light"] body :is(.parallel-attested,.parallel-attested-language){
+ background:#fffefa!important;color:#26343e!important;border-color:#b8c1c6!important;
+}
+html[data-theme="light"] body :is(.lexeme-attested,.remote-link,.genre-work-version,.genre-work-parallel){
+ color:#24577a!important;
+}
+html[data-theme="light"] body :is(button,a,select,input):focus-visible{
+ outline:2px solid #215a82!important;outline-offset:2px;
+}
