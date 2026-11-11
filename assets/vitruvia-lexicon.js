@@ -389,7 +389,7 @@ async function run(push=true){
   const l=resolveLang(q);
   if(l==="he")return renderHebrew(q);
   const D=await lang(l);if(!isCurrent())return;
-  S.D=D;fillWorks(D);if(l==="la"){await loadContext();if(!isCurrent())return;}
+  S.D=D;fillWorks(D);if(l==="la"&&S.mode==="lema"){await loadContext();if(!isCurrent())return;}
    if(S.mode==="palabra"||S.mode==="lema"){const info=lemmaInfo(D,fold(q).replace(/^@/,""));if(info.g)window.VitruviaEncyclopedia?.update(q.replace(/^@/,""),{ancient:true,gloss:"Glosa histórica del índice latino (Lewis & Short): "+info.g.split(/;\s*/)[0]});}
   const parsed=parseQuery(q,S.mode);
   const opts={lemmatize:S.mode==="lema",variants:false,work:S.work,defaultGap:S.mode==="frase"?0:6};
@@ -414,6 +414,9 @@ async function run(push=true){
   // y su frecuencia. No depender de una ficha Conceptus preexistente.
   // First results take precedence over the slower full dictionary dossier.
   renderHits(S.D,res);
+  if(!isCurrent())return;
+  // Let the first results actually paint before any expensive lexical dossier.
+  await new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0)));
   if(!isCurrent())return;
   if(["palabra","lema"].includes(S.mode)&&parsed.steps.length===1&&parsed.steps[0].term.type!=="pattern"){
    await renderEntry(S.D,parsed.steps[0].term,res);
