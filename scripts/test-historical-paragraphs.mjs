@@ -7,7 +7,7 @@ assert.equal(parts.length,2,"Two OCR blank-line blocks expected");
 for(const row of parts){assert.equal(example.text.slice(row.startOffset,row.endOffset),row.text);assert.equal(row.status,"ocr_unverified");assert.equal(row.locus,null);}
 assert.equal(fold("Ædificatio ſymmetria VITRVVIVS"),"aedificatio symmetria uitruuius");
 assert.ok(searchParagraphCandidates(parts,"columnae architectura",3)[0].text.includes("basilica"));
-assert.deepEqual(searchParagraphCandidates(parts,"inexistente","test").length,0);
+assert.deepEqual(searchParagraphCandidates(parts,"inexistente",3).length,0);
 const long=segmentOcrPage("test",{page:10,text:"architectura ".repeat(340)},600);
 assert.ok(long.length>=2);
 for(const id of ["krohn-1912","rose-1899","cesariano-1521"]){
