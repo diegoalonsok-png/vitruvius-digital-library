@@ -10,7 +10,7 @@ const CASES=[
  {name:"Vitruvia / general",url:"vitruvia.html",input:"#query",form:"#search-form",q:"Vitruvio",result:"#result-list .result-card, #article-body p",state:"#result-state"},
  {name:"Lexicon / palabra exacta",url:"vitruvia-lexicon.html",input:"#lx-q",form:"#lx-form",q:"domus",result:"#lx-results .lx-hit",state:"#lx-state"},
  {name:"Aparato / índice textual",url:"aparato-critico.html",input:"#critical-query",form:"#critical-form",q:"domus",result:"#critical-results .critical-result",state:"#critical-status"},
- {name:"Bibliotheca / palabras",url:"bibliotheca-graeca-latina.html",input:"#classic-query",form:"#search-form",q:"domus",result:"#classic-results article, #classic-results .classic-hit, #classic-results li",state:"#search-status"},
+ {name:"Bibliotheca / palabras",url:"bibliotheca-graeca-latina.html",input:"#classic-query",form:"#search-form",q:"domus",result:"#classic-results li.hit",state:"#search-status"},
  {name:"Index locorum",url:"index-locorum.html",input:"#query",form:"#form",q:"domus",result:"#results article, #results li, #results .card",state:"#status"},
  {name:"Párrafos históricos",url:"buscador-parrafos-vitruvio.html",input:"#hp-query",form:"#hp-form",q:"symmetria",result:"#hp-results .hp-card",state:"#hp-status"}
 ];
@@ -51,6 +51,17 @@ for(const item of CASES){
    controls:document.querySelectorAll("button,[role=button],input[type=submit]").length
   }),{result:item.result,state:item.state});
   row.resultElements=body.count;row.state=body.status;row.controls=body.controls;
+  if(item.url==="vitruvia-lexicon.html")row.literalDomusFound=body.count>0;
+  if(item.url==="bibliotheca-graeca-latina.html"){
+   const expand=page.locator("#classic-results .bibliotheca-show-more").first();
+   row.firstBatchPassages=await page.locator("#classic-results li.hit").count();
+   row.firstBatchBounded=row.firstBatchPassages<=60;
+   if(await expand.count()){
+    await expand.click({timeout:5000});
+    row.expandedPassages=await page.locator("#classic-results li.hit").count();
+    row.showMoreWorks=row.expandedPassages>row.firstBatchPassages;
+   }else row.showMoreWorks="No more button visible";
+  }
   // Verify the formerly broken yellow-highlight dictionary interaction.
   if(item.url==="index.html"||item.url==="aparato-critico.html"){
    const markSelector=item.url==="index.html"
