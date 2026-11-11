@@ -260,9 +260,9 @@
   const range=Math.max(1,high-low);
   // Universal fitted scale: time always spans the visible reader, not a fixed 960–5200px canvas.
   const cs=typeof getComputedStyle==="function"?getComputedStyle(root):{paddingLeft:"0",paddingRight:"0"};
-  const available=Math.max(250,Math.floor(Number(root.clientWidth)||850)-parseFloat(cs.paddingLeft||0)-parseFloat(cs.paddingRight||0)-3);
-  const labelWidth=available<490?94:available<740?128:170;
-  const mapWidth=Math.max(150,available-labelWidth-2);
+  const available=Math.max(120,Math.floor(Number(root.clientWidth)||850)-parseFloat(cs.paddingLeft||0)-parseFloat(cs.paddingRight||0)-3);
+  const labelWidth=available<370?Math.max(62,Math.round(available*.30)):available<740?128:170;
+  const mapWidth=Math.max(40,available-labelWidth-2);
   const cardWidth=Math.min(Math.max(110,Math.round(162*state.zoom)),Math.max(98,mapWidth-10));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
