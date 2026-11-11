@@ -1,12 +1,238 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<meta http-equiv="refresh" content="0; url=vitruvia.html">
-<title>Vitruvia · Biblioteca digital</title>
-<style>html{background:#111;color:#ddd;font:16px system-ui,sans-serif}body{margin:0;min-height:100vh;display:grid;place-items:center}a{color:#ddd}</style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Vitruvia IA · consulta documental privada, corpus clásicos y fuentes web.">
+<title>Buscar hoy · Vitruvia IA</title>
+
+<style>
+
+:root{color-scheme:dark;--ia-paper:#0d0d0e;--bg:#0d0d0e;--box:#19191b;--line:#343436;--fg:#eeedeb;--muted:#969696;--accent:#d4d0c8}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;width:100%;overflow-x:hidden}html{scroll-behavior:smooth}
+body{background:var(--ia-paper);color:var(--fg);font:400 15px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;min-height:100dvh}
+a{color:var(--fg);text-underline-offset:3px}button,input,textarea{font:inherit}button{cursor:pointer}
+button:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible,label[role=button]:focus-visible{outline:2px solid #d2c8b8;outline-offset:3px}
+.assistive{position:absolute;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;width:1px;height:1px}
+.header{position:fixed;inset:0 0 auto;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px clamp(20px,4vw,54px);min-height:82px;pointer-events:none}.header>*{pointer-events:auto}
+.ia-brand{color:var(--fg);text-decoration:none;letter-spacing:-.055em;font:italic 400 28px/1 Georgia,"Times New Roman",serif}
+.ia-brand span{font:400 10px/1.5 system-ui,sans-serif;letter-spacing:.22em;color:var(--muted);vertical-align:middle;margin-left:9px}
+.appearance{display:flex;align-items:center;gap:8px}.ia-palette{position:relative}
+.ia-palette summary,.ia-theme{list-style:none;display:grid;place-items:center;width:42px;height:42px;border:1px solid #414144;background:#1c1c1f;color:var(--fg);border-radius:50%;font-size:20px;cursor:pointer}
+.ia-palette summary::-webkit-details-marker{display:none}.ia-palette summary span{display:none}
+.ia-palette-panel{position:absolute;z-index:60;right:0;top:53px;display:grid;grid-template-columns:repeat(3,34px);gap:10px;padding:16px;background:var(--box);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px #0008;width:170px}
+.ia-palette-panel label,.ia-palette-panel input{grid-column:1/-1}.ia-palette-panel label{color:var(--muted);font-size:11px}.ia-palette-panel input{width:100%;min-height:36px}
+.ia-swatch{display:block;width:34px;height:34px;padding:0;border:2px solid #777;background:var(--swatch);border-radius:50%}.ia-swatch[aria-pressed=true]{outline:2px solid var(--fg);outline-offset:3px}
+main{width:min(100%,1060px);max-width:none;min-height:100dvh;margin:auto;padding:130px clamp(17px,4vw,38px) 60px;display:flex;flex-direction:column;align-items:stretch;justify-content:center}
+.intro{text-align:center;margin:0 0 clamp(29px,4.6vh,53px)}
+.intro h1{font:italic 400 clamp(58px,9.2vw,116px)/.99 Georgia,"Times New Roman",serif;letter-spacing:-.085em;margin:0;color:var(--fg);text-wrap:balance}
+.surface{position:relative;width:100%;max-width:980px;align-self:center;background:var(--box);border:1px solid #404044;border-radius:27px;padding:12px 14px 10px;transition:border-color .2s;box-shadow:0 12px 54px #0002}
+.surface:focus-within{border-color:#777579}
+textarea{display:block;width:100%;min-height:86px;max-height:35vh;padding:13px 13px 6px;background:transparent;color:var(--fg);border:0;outline:none!important;resize:vertical;font:400 clamp(16px,1.6vw,19px)/1.6 system-ui,Arial,sans-serif}textarea::placeholder{color:#96969b;opacity:1}
+.toolbar{display:flex;align-items:center;flex-wrap:nowrap;gap:10px;padding:3px 6px 3px}
+.attachment{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;background:#303034;color:#f5f5f5;border:1px solid #424246;border-radius:50%;cursor:pointer;font:300 31px/1 system-ui,sans-serif}.attachment:hover{background:#414146}
+#file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.toolbar-caption{font-size:11px;color:var(--muted);letter-spacing:.04em;white-space:nowrap}
+.clear{margin-left:auto;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:var(--muted);font-size:21px}.clear:hover{background:#2c2c30;color:var(--fg)}
+.send{display:grid;place-items:center;width:43px;height:43px;flex:0 0 43px;border:0;border-radius:50%;background:#e4e3df;color:#171719;font-size:25px;line-height:1}.send:hover{background:#fff}
+.file-line{display:none;padding:7px 13px 10px;color:#d9d3c4;font-size:12px;overflow-wrap:anywhere}.file-line.on{display:block}
+.privacy-note{text-align:center;margin:17px 0 0;color:#77777d;font-size:11px;letter-spacing:.025em}
+#conversation{display:flex;flex-direction:column;gap:4px;width:100%;max-width:980px;align-self:center;margin:0 0 22px;min-height:0}#conversation:empty{display:none}
+.entry{padding:21px 8px 25px;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.entry h2{font:400 26px/1.3 Georgia,serif;color:var(--fg);margin:0 0 14px}.entry h3{font:400 20px/1.35 Georgia,serif;color:var(--fg);margin:18px 0 8px}
+.entry p,.entry li{font-size:14px;line-height:1.8;color:var(--fg);opacity:.88;margin:9px 0}.entry small,.caption,.pending{font-size:12px;color:var(--muted)}
+.quote{background:#1c1c1f;border-left:2px solid #8c8b89;color:var(--fg);white-space:pre-wrap;overflow-wrap:anywhere;padding:12px 17px;margin:14px 0;font:14px/1.8 Georgia,serif}
+.source{border-top:1px solid var(--line);padding:14px 0}.source strong,.source small{display:block}.source a{color:#d8c5a3}.out{max-width:980px}
+body:has(#conversation:not(:empty)) main{justify-content:flex-start;padding-top:105px;padding-bottom:100px}
+body:has(#conversation:not(:empty)) .intro{display:none}body:has(#conversation:not(:empty)) #conversation{order:1}
+body:has(#conversation:not(:empty)) .surface{order:2;position:sticky;bottom:16px;z-index:8;box-shadow:0 5px 30px #0009}body:has(#conversation:not(:empty)) .privacy-note{order:3}
+html[data-theme=light]{color-scheme:light;--bg:#f7f5ef;--box:#ffffff;--line:#d4d1cd;--fg:#292b2c;--muted:#656569;--accent:#555451}
+html[data-theme=light] .surface{border-color:#cbc9c6}
+html[data-theme=light] .ia-palette summary,html[data-theme=light] .ia-theme{background:#f8f7f4;border-color:#d1ceca;color:#303033}
+html[data-theme=light] .attachment{background:#e8e7e4;border-color:#d2d0cc;color:#343435}html[data-theme=light] .clear:hover{background:#ebebe8}
+html[data-theme=light] .send{background:#25262a;color:#fff}html[data-theme=light] textarea::placeholder{color:#777}
+html[data-theme=light] .file-line{color:#484849}html[data-theme=light] .privacy-note{color:#707074}html[data-theme=light] .quote{background:#f0efed}
+@media(max-width:700px){.header{padding:17px 20px}.ia-brand{font-size:24px}main{padding:112px 14px 50px}.intro{margin-bottom:32px}.intro h1{font-size:clamp(55px,13vw,77px)}.surface{border-radius:24px;padding:10px 10px 8px}.toolbar-caption{font-size:10px}.entry{padding:18px 3px}.entry h2{font-size:24px}}
+@media(max-width:390px){.toolbar-caption{font-size:9px;letter-spacing:0}.header{padding:14px}.appearance{gap:6px}.ia-palette summary,.ia-theme{width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.surface,.attachment{transition:none}}
+
+</style>
 </head>
-<body><p><a href="vitruvia.html">Ir al buscador Vitruvia</a></p></body>
-</html>
+<body>
+<header class="header" aria-label="Vitruvia IA y apariencia"><a class="ia-brand" href="vitruvia.html" aria-label="Volver a Vitruvia">Vitruvia<span>IA</span></a>
+ <div class="appearance"><details class="ia-palette" id="ia-palette"><summary aria-label="Color de fondo" title="Color de fondo">◉ <span>Fondo</span></summary>
+   <div class="ia-palette-panel" role="group" aria-label="Elegir color de fondo">
+    <button type="button" class="ia-swatch" data-color="#0d0e10" style="--swatch:#0d0e10" aria-label="Negro"></button>
+    <button type="button" class="ia-swatch" data-color="#202d35" style="--swatch:#202d35" aria-label="Azul pizarra"></button>
+    <button type="button" class="ia-swatch" data-color="#203329" style="--swatch:#203329" aria-label="Verde oscuro"></button>
+    <button type="button" class="ia-swatch" data-color="#32272c" style="--swatch:#32272c" aria-label="Borravino"></button>
+    <button type="button" class="ia-swatch" data-color="#f7f5ef" style="--swatch:#f7f5ef" aria-label="Marfil"></button>
+    <button type="button" class="ia-swatch" data-color="#f2efe6" style="--swatch:#f2efe6" aria-label="Papel"></button>
+    <button type="button" class="ia-swatch" data-color="#e3eaf0" style="--swatch:#e3eaf0" aria-label="Azul claro"></button>
+    <button type="button" class="ia-swatch" data-color="#e9e7dc" style="--swatch:#e9e7dc" aria-label="Gris cálido"></button>
+    <button type="button" class="ia-swatch" data-color="#ffffff" style="--swatch:#ffffff" aria-label="Blanco"></button>
+    <label for="ia-custom-color">Color personalizado</label><input id="ia-custom-color" type="color" value="#0d0e10" aria-label="Elegir color personalizado">
+   </div>
+  </details>
+  <button id="ia-theme" class="ia-theme" type="button" aria-label="Cambiar modo claro u oscuro" title="Cambiar modo claro u oscuro">☾</button>
+ </div>
+</header>
+<main>
+ <section class="intro"><h1>Buscar hoy</h1></section>
+ <section id="conversation" class="out" aria-live="polite" aria-label="Conversación y resultados"></section>
+ <div class="surface" role="group" aria-label="Nueva consulta">
+  <label class="assistive" for="question">Escribir consulta</label>
+  <textarea id="question" rows="1" placeholder="Pregunta, investiga o analiza un documento…" aria-label="Consulta" spellcheck="true"></textarea>
+  <div class="file-line" id="file-info" aria-live="polite"></div>
+  <div class="toolbar">
+   <label class="attachment" for="file" role="button" tabindex="0" title="Adjuntar PDF, DOCX o TXT" aria-label="Adjuntar PDF o documento">+</label>
+   <input id="file" type="file" accept=".pdf,.docx,.txt,.xml,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-label="Seleccionar PDF o documento">
+   <span class="toolbar-caption" aria-hidden="true">PDF · DOCX · TXT</span>
+   <button id="clear" class="clear" type="button" title="Borrar sesión" aria-label="Borrar sesión">↺</button>
+   <button id="send" class="send" type="button" aria-label="Enviar consulta" title="Enviar consulta">↑</button>
+  </div>
+ </div>
+ <p class="privacy-note">Documentos procesados localmente en esta pestaña · sin almacenamiento permanente</p>
+</main>
+<script type="module">
+const q=document.getElementById('question'),fileInput=document.getElementById('file'),info=document.getElementById('file-info'),output=document.getElementById('conversation');
+let documentData=null,session=0,pdfLibrary=null,zipLoader=null;
+
+// Palette copied from Lexicon's background-control interaction: 3x3 swatches,
+// plus an explicit light/dark control. Preferences stay in this tab only.
+const root=document.documentElement;
+const palette=document.getElementById('ia-palette');
+function setAppearance(color){
+ const hex=String(color||'').toLowerCase();
+ if(!/^#[0-9a-f]{6}$/.test(hex))return;
+ const channels=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255);
+ const brightness=.2126*channels[0]+.7152*channels[1]+.0722*channels[2];
+ root.dataset.theme=brightness>.62?'light':'dark';
+ root.style.setProperty('--ia-paper',hex);
+ document.querySelectorAll('.ia-swatch').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.color===hex)));
+ document.getElementById('ia-custom-color').value=hex;
+ document.getElementById('ia-theme').textContent=brightness>.62?'☀':'☾';
+}
+document.querySelectorAll('.ia-swatch').forEach(b=>b.addEventListener('click',()=>{setAppearance(b.dataset.color);palette.open=false}));
+document.getElementById('ia-custom-color').addEventListener('input',e=>setAppearance(e.target.value));
+document.getElementById('ia-theme').addEventListener('click',()=>setAppearance(root.dataset.theme==='light'?'#0d0e10':'#f7f5ef'));
+setAppearance('#0d0e10');
+
+const el=(tag,text,klass)=>{const n=document.createElement(tag);if(text!=null)n.textContent=text;if(klass)n.className=klass;return n};
+const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLocaleLowerCase().replace(/ς/g,'σ').replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+const tokens=s=>fold(s).split(/\s+/).filter(x=>x.length>=3);
+const frequent=s=>{const stop=new Set('que para como una unos unas por los las del con este esta ese esa son fue the and for was were from into about quod quae atque enim etiam sed cum est sunt per qui qua non eius illius hoc haec hunc quod deum deos τους και του την των μεν δε γαρ προς οτι'.split(' '));const scores=new Map();for(const x of tokens(s))if(!stop.has(x))scores.set(x,(scores.get(x)||0)+1);return [...scores].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,18)};
+const describeScript=text=>{const greek=[...text.matchAll(/[\u0370-\u03ff\u1f00-\u1fff]/gu)].length,latin=[...text.matchAll(/[A-Za-zÀ-ÿ]/g)].length,egypt=[...text.matchAll(/[\u{13000}-\u{1345F}]/gu)].length;return egypt>=3?'jeroglíficos egipcios':greek>latin*.15?'griego':'latín o lengua de alfabeto latino'};
+const shorten=(s,n=600)=>String(s||'').replace(/\s+/g,' ').slice(0,n);
+function addText(parent,tag,value,klass){const n=el(tag,value,klass);parent.append(n);return n}
+function link(parent,url,label){const a=el('a',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';parent.append(a);return a}
+function chicagoWebCitation(title,url){
+ const access=new Intl.DateTimeFormat('es-AR',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date());
+ return 'Wikipedia contributors. “'+title+'.” Wikipedia. Consultado el '+access+'. '+url+'.';
+}
+function entry(title){const n=el('article',null,'entry');output.prepend(n);addText(n,'h2',title);return n}
+function clear(){++session;documentData=null;pdfLibrary=null;zipLoader=null;fileInput.value='';info.textContent='';info.classList.remove('on');output.replaceChildren();q.value='';q.focus()}
+document.getElementById('clear').addEventListener('click',clear);
+document.querySelector('.attachment').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fileInput.click()}});
+async function pdfText(file,token){
+ if(!pdfLibrary)pdfLibrary=import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs');
+ const pdfjs=await pdfLibrary;pdfjs.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
+ const bytes=new Uint8Array(await file.arrayBuffer());const task=pdfjs.getDocument({data:bytes,isEvalSupported:false});
+ try{
+  const pdf=await task.promise,pages=[],limit=Math.min(pdf.numPages,150);let remaining=350000,empty=0;
+  for(let i=1;i<=limit&&remaining>0;i++){
+   if(token!==session)throw Error('Lectura cancelada');
+   const page=await pdf.getPage(i),tc=await page.getTextContent(),text=(tc.items||[]).map(x=>x.str||'').join(' ').slice(0,remaining);
+   if(text.trim())pages.push({label:'Página '+i,text});else empty++;remaining-=text.length;
+   page.cleanup();
+  }
+  if(!pages.length)throw Error('El PDF no contiene una capa de texto extraíble. Necesita OCR; no se inventará una transcripción.');
+  return {pages,partial:limit<pdf.numPages,notes:empty+' páginas examinadas sin texto. PDF.js no ejecuta OCR.'};
+ }finally{try{await task.destroy()}catch{}}
+}
+async function docxText(file,token){
+ if(!zipLoader){zipLoader=new Promise((resolve,reject)=>{if(window.JSZip)return resolve(window.JSZip);const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';script.onload=()=>window.JSZip?resolve(window.JSZip):reject(Error('No se pudo cargar el lector DOCX'));script.onerror=()=>reject(Error('Lector DOCX no disponible'));document.head.append(script)})}
+ const JSZip=await zipLoader,zip=await JSZip.loadAsync(await file.arrayBuffer());if(token!==session)throw Error('Lectura cancelada');
+ const xml=await zip.file('word/document.xml')?.async('string');if(!xml)throw Error('DOCX inválido o sin documento principal');
+ const parser=new DOMParser(),doc=parser.parseFromString(xml,'application/xml');
+ if(doc.querySelector('parsererror'))throw Error('XML inválido en el DOCX');
+ const ps=[...doc.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main','p')];
+ let left=350000;const pages=[];
+ for(let i=0;i<ps.length&&left>0;i++){const parts=ps[i].getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main','t');const value=[...parts].map(x=>x.textContent||'').join('').slice(0,left);if(value.trim()){pages.push({label:'Párrafo '+(i+1),text:value});left-=value.length}}
+ if(!pages.length)throw Error('No se extrajo texto del DOCX');
+ return {pages,partial:left<=0,notes:'Extracción de párrafos OOXML; no acredita variantes editoriales ni folios manuscritos.'};
+}
+async function textFile(file){const text=await file.text();if(!text.trim())throw Error('Archivo sin texto');return {pages:text.slice(0,350000).split(/\n\s*\n/).filter(Boolean).map((t,i)=>({label:'Párrafo '+(i+1),text:t})),partial:text.length>350000,notes:'Texto local sin atribución editorial automática.'}}
+fileInput.addEventListener('change',async()=>{
+ const file=fileInput.files?.[0];if(!file)return;
+ const token=++session;documentData=null;info.classList.add('on');info.textContent='Leyendo «'+file.name+'» en esta pestaña…';
+ if(file.size>15*1024*1024){info.textContent='El archivo supera el límite de 15 MB.';fileInput.value='';return}
+ try{
+  let parsed;if(/\.pdf$/i.test(file.name))parsed=await pdfText(file,token);
+  else if(/\.docx$/i.test(file.name))parsed=await docxText(file,token);
+  else if(/\.(txt|xml)$/i.test(file.name))parsed=await textFile(file);
+  else throw Error('Solo se admiten PDF, DOCX, TXT o XML.');
+  if(token!==session)return;
+  documentData={name:file.name,...parsed};
+  const size=parsed.pages.reduce((n,p)=>n+p.text.length,0);
+  info.textContent='✓ '+file.name+' · '+parsed.pages.length+' unidades de texto · '+size.toLocaleString('es-AR')+' caracteres'+(parsed.partial?' · extracción parcial':'')+'. Puedes preguntar por el documento.';
+  fileInput.value='';
+  const box=entry('Documento cargado de manera privada');addText(box,'p','Texto disponible solo en esta pestaña. '+parsed.notes);addText(box,'p','No se enviará el documento a GitHub ni al buscador web. Cierra o borra la sesión para descartarlo.', 'caption');
+ }catch(error){if(token===session){info.textContent='No se pudo leer: '+error.message;fileInput.value=''}}
+});
+function searchDocument(question,box){
+ const data=documentData;const full=data.pages.map(p=>p.text).join('\n');
+ const allTokens=tokens(full),freq=frequent(full),queryTerms=tokens(question).filter(w=>w.length>=3);
+ addText(box,'p','Documento: '+data.name+' · '+data.pages.length+' unidades de lectura · '+allTokens.length.toLocaleString('es-AR')+' tokens aproximados · escritura predominante: '+describeScript(full)+'.');
+ if(/frecuen|palabras|vocabulario|estad[ií]stica|lexic|analiz|resumen|síntesis|sintesis|estructura/i.test(question)||!queryTerms.length){
+  addText(box,'h3','Distribución léxica descriptiva');
+  addText(box,'p',freq.map(([t,n])=>t+' ('+n+')').join(' · '));
+  addText(box,'p','La frecuencia no es análisis morfológico ni lematización. En griego y latín las flexiones permanecen separadas.','caption');
+ }
+ const terms=queryTerms.filter(w=>!new Set(['este','esta','texto','documento','obra','pasaje','sobre','donde','cual','cuáles','cuales','porque','encontrar','buscar','quiero','analizar','resumen','tiene','como','cuando']).has(w));
+ const rank=data.pages.map((p,i)=>{const hay=' '+fold(p.text)+' ';const count=terms.reduce((n,t)=>n+hay.split(' '+t+' ').length-1,0);return {...p,index:i,count}}).filter(p=>p.count>0).sort((a,b)=>b.count-a.count).slice(0,16);
+ if(rank.length){addText(box,'h3','Pasajes recuperados literalmente');for(const p of rank){addText(box,'small',p.label+' · '+p.count+' coincidencias');addText(box,'div',shorten(p.text,1800),'quote')}}
+ else if(terms.length){addText(box,'p','No encontré esas palabras de manera literal en el texto extraído. Prueba otra grafía o una forma flexiva.');}
+ else{addText(box,'h3','Fragmentos iniciales');for(const p of data.pages.slice(0,8)){addText(box,'small',p.label);addText(box,'div',shorten(p.text,1300),'quote')}}
+ addText(box,'p','La respuesta se basa en texto extraído y coincidencias verificables, no en una interpretación generativa. No se asigna ningún folio o traducción sin cotejo.','caption');
+}
+async function webResearch(question,box,token){
+ addText(box,'p','Consulta pública: '+question+'. Se buscan fichas y descripciones documentadas; los resultados no equivalen a una síntesis crítica automática.');
+ const status=addText(box,'p','Buscando referencias web…','pending');
+ const query=question.replace(/^(?:busca|buscar|investiga|quien fue|quién fue|que es|qué es|dime|explica)\s+/i,'').slice(0,140);
+ const encycl='https://es.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:query,srlimit:'15',format:'json',origin:'*'});
+ try{
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),8500);
+  let data;try{const r=await fetch(encycl,{signal:controller.signal});if(!r.ok)throw Error('HTTP '+r.status);data=await r.json()}finally{clearTimeout(timeout)}
+  if(token!==session)return;
+  const records=data.query?.search||[];status.textContent=records.length?'Referencias enciclopédicas identificadas (verificar las fuentes originales):':'Sin resultados enciclopédicos directos.';
+  for(const rec of records){const block=el('div',null,'source');box.append(block);const title=rec.title||'Ficha';const url='https://es.wikipedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_'));const strong=el('strong');block.append(strong);link(strong,url,title);const clean=new DOMParser().parseFromString(rec.snippet||'','text/html').body.textContent||'';addText(block,'p',clean);addText(block,'small','Fuente secundaria · referencia Chicago 18 orientativa:');addText(block,'small',chicagoWebCitation(title,url))}
+ }catch{if(token===session)status.textContent='La consulta directa no está disponible. Puedes continuar con los catálogos externos.'}
+ const nav=el('p');box.append(nav);
+ link(nav,'https://www.google.com/search?'+new URLSearchParams({q:question}),'Google');nav.append(document.createTextNode(' · '));
+ link(nav,'https://scholar.google.com/scholar?'+new URLSearchParams({q:question}),'Google Scholar');nav.append(document.createTextNode(' · '));
+ link(nav,'https://search.worldcat.org/search?q='+encodeURIComponent(question),'WorldCat');nav.append(document.createTextNode(' · '));
+ link(nav,'https://www.perseus.tufts.edu/hopper/searchresults?q='+encodeURIComponent(question),'Perseus');
+}
+async function optionalLocalAI(question,box){
+ const API=window.LanguageModel;
+ if(!API?.create){
+  addText(box,'p','El modelo generativo local no está disponible en este navegador. Se muestran los pasajes recuperados literalmente, sin simular respuestas de IA.','caption');return;
+ }
+ const source=(documentData?.pages||[]).slice(0,24).map(x=>x.label+': '+x.text).join('\n').slice(0,10500);
+ if(!source.trim())return;
+ const status=addText(box,'p','Consultando el modelo de IA local del navegador…','pending');
+ let model=null;
+ try{
+  model=await API.create();
+  const answer=await model.prompt('Analiza exclusivamente este texto. No inventes citas, folios ni autorías. Identifica incertidumbres. Responde en español extensamente según la evidencia disponible, sin inventar datos. Explica qué fragmentos sustentan las afirmaciones e incorpora referencias en estilo Chicago 18 solo con metadatos verificables. Consulta: '+question+'\n\nDOCUMENTO LOCAL:\n'+source);
+  status.textContent='Interpretación generada por el modelo local del navegador; requiere cotejo filológico.';
+  addText(box,'div',String(answer||''),'quote');
+ }catch{status.textContent='No pudo iniciarse la IA local; los pasajes extraídos siguen disponibles.'}
+ finally{try{model?.destroy?.()}catch{}}
+}
+async function ask(){const question=q.value.trim();if(!question)return;q.value='';const token=session,box=entry(question);if(/^web\s*:/i.test(question)){await webResearch(question.replace(/^web\s*:/i,''),box,token)}else if(documentData){searchDocument(question,box);if(/^ia\s*:/i.test(question))await optionalLocalAI(question.replace(/^ia\s*:/i,''),box)}else{await webResearch(question,box,token)}}
+document.getElementById('send').addEventListener('click',()=>void ask());
+q.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();void ask()}});
+window.addEventListener('pagehide',()=>{documentData=null;fileInput.value='';output.replaceChildren()});
+</script>
+</body></html>
