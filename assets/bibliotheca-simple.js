@@ -486,8 +486,14 @@ function render(rows,q,details){
   (details?.transliterations?.length?" · "+t.translit(details.transliterations):"")+
   (details?.failed?" · "+t.failed:"");
  if(!sorted.length)list.append(el("p","",t.none));
- let last="",section=null,passages=null;const frag=document.createDocumentFragment();
- for(const r of sorted){
+ // Progressive concordances: render only the first sixty passages before
+ // exposing the remainder, preserving whole-corpus totals and book groupings.
+ const PAGE_SIZE=60;
+ let cursor=0,last="",section=null,passages=null;
+ const drawNext=()=>{
+  const frag=document.createDocumentFragment();
+  const batch=sorted.slice(cursor,cursor+PAGE_SIZE);
+  for(const r of batch){
   if(last!==r.workId){
    last=r.workId;const w=byId.get(last)||{};section=el("section","group");
    section.append(el("h3","",w.title||r.title));
@@ -581,8 +587,20 @@ function render(rows,q,details){
   }
   li.append(passageActions(r,byId.get(r.workId)||{},p));
   passages.append(li);
- }
- list.append(frag);
+  }
+  cursor+=batch.length;
+  list.append(frag);
+  if(cursor<sorted.length){
+   const button=el("button","bibliotheca-show-more",
+    (locale==="en"?"Show more passages":locale==="fr"?"Afficher davantage de passages":"Mostrar más pasajes")+
+    " ("+cursor+" / "+sorted.length+")");
+   button.type="button";
+   button.setAttribute("aria-label","Mostrar los siguientes "+PAGE_SIZE+" pasajes");
+   button.addEventListener("click",()=>{button.remove();drawNext()});
+   list.append(button);
+  }
+ };
+ drawNext();
  $("unindexed").textContent=t.outside(works.length-indexed.size)+(details?.failed?" "+t.failed:"");
 }
 async function search(updateHistory=true){
