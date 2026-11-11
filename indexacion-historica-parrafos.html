@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Indexación por párrafos · Krohn, Rose y Cesariano | Vitruvius</title>
+<meta name="description" content="Investigación por fragmentos OCR de los impresos históricos de Vitruvio, con búsqueda literal y reordenación semántica experimental optativa.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/indexacion-historica-parrafos.html">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+.hpar{max-width:1130px;margin:auto;padding:35px 18px 95px;color:var(--ink,#273844)}
+.hpar h1{font:400 clamp(30px,4vw,48px)/1.18 Georgia,serif}
+.hpar h2{font:400 24px Georgia,serif;margin-top:30px}
+.hpar .lead{max-width:86ch;line-height:1.7}
+.hpar .warn{border-left:3px solid #b48e55;padding:12px 17px;line-height:1.6;margin:20px 0;background:transparent}
+.hpar form{border:1px solid #908777;padding:18px;border-radius:7px;display:grid;gap:13px}
+.hpar label{display:grid;gap:6px;font:13px/1.5 system-ui}
+.hpar select,.hpar input[type=search]{width:100%;padding:11px 12px;border:1px solid #89817b;border-radius:5px;background:var(--paper,#fffdf9);color:var(--ink,#273844);font:16px system-ui}
+.hpar button{padding:11px 17px;border:1px solid #8a7762;border-radius:5px;background:#354956;color:#fff;font:14px system-ui;cursor:pointer}
+.hpar .row{display:flex;gap:15px;align-items:center;flex-wrap:wrap}
+.hpar .inline{display:flex;gap:7px;align-items:center}
+.hpar .result{border:1px solid #b7aea1;border-radius:7px;padding:17px;margin:13px 0;background:var(--paper,#fffdfa);color:var(--ink,#273844)}
+.hpar .result h3{font:600 19px Georgia,serif;margin:0 0 8px}.hpar .result p{line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.hpar .meta,.hpar #hpar-status{font:13px/1.5 system-ui}.hpar .meta{opacity:.8}
+.hpar a{text-decoration:underline;text-underline-offset:3px}
+.hpar :focus-visible{outline:3px solid #b48e55;outline-offset:2px}
+@media(prefers-color-scheme:dark){.hpar{color:#f4f0e9}.hpar .result{background:#22292f;color:#f4f0e9;border-color:#656d72}.hpar select,.hpar input[type=search]{background:#262d32;color:#f4f0e9}}
+</style></head><body>
+<main class="hpar">
+<nav aria-label="Navegación académica"><a href="index.html">Inicio</a> · <a href="concordancia-historica.html">Concordancia histórica</a> · <a href="aparato-critico.html">Aparato crítico</a> · <a href="inventario-aparato-autoral.html">Notas de las ediciones</a></nav>
+<h1>Fragmentos históricos de Vitruvio</h1>
+<p class="lead">Explorador de bloques textuales aproximados derivados del OCR de <em>De architectura</em> editado por Krohn (1912), Rose (1899) y Cesariano (1521). Conserva la edición, el número de página del archivo OCR y el vínculo a su facsímil. No reescribe el texto histórico.</p>
+<p class="warn"><strong>Importante:</strong> la segmentación en «párrafos» es automática y aproximada: el OCR no siempre conserva la separación de párrafos, y puede confundir notas, columnas y texto principal. La búsqueda por IA es experimental y solo reordena resultados textuales candidatos; <strong>no</strong> establece lecturas críticas, concordancias de loci ni parentescos de manuscritos. En Cesariano, la posición OCR no debe confundirse automáticamente con la foliación o el número de imagen IIIF.</p>
+<form id="hpar-form">
+<label>Edición histórica
+<select id="hpar-edition"><option value="krohn-1912">F. Krohn · 1912 · latín</option><option value="rose-1899">V. Rose · 1899 · latín</option><option value="cesariano-1521">C. Cesariano · 1521 · italiano histórico</option></select>
+</label>
+<label>Palabra, frase o tema de investigación
+<input id="hpar-query" type="search" placeholder="symmetria, fabrica, proportione, columna..." required minlength="3">
+</label>
+<div class="row"><label class="inline"><input type="checkbox" id="hpar-neural"> Reordenar candidatos con IA local E5 (descarga voluntaria de modelo, aprox. 120 MB)</label></div>
+<div class="row"><button type="submit">Buscar fragmentos</button><span class="meta" id="hpar-source">Seleccioná una edición para cargar su OCR.</span></div>
+</form>
+<p id="hpar-status" role="status" aria-live="polite">Preparando buscador…</p>
+<section id="hpar-results" aria-label="Coincidencias de la consulta"></section>
+<p><a href="metodologia-filologica.html">Metodología de cotejo y edición</a> · <a href="index-codicum.html">Catálogo de códices</a></p>
+</main>
+<script type="module" src="assets/historical-paragraph-search.mjs?v=20261111-1"></script>
+<script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script>
+</body></html>
