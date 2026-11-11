@@ -60,6 +60,6 @@ assert.match(main,/VitruviaHistoricalNames\?\.find\(q,S\.people\)/);
 assert.match(main,/sm\?\.thumbnail\?\.source/);
 assert.match(main,/sg-thumbnail/);
 assert.ok(html.indexOf("assets/vitruvia-colors.js")<html.indexOf("assets/vitruvia-image-engine-v2.js"));
-assert.ok(html.indexOf("assets/vitruvia-mathematics.js")<html.indexOf("assets/vitruvia-image-engine-v2.js"));
+assert.match(html,/assets\/vitruvia-mathematics\.js\?v=[a-z0-9-]+/,"Mathematics must remain registered for progressive loading");
 new vm.Script(main);
 console.log("PASS: Vitruvius-first and Greek/Latin catalogue reader, Catullus search and verified local reader");
