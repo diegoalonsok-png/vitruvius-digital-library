@@ -4,10 +4,10 @@
   "scope": "Manuscript identification is not proof of globally earliest text witness. Catalog data may refer to partial manuscripts.",
   "counts": {
     "catalogued": 222,
-    "witnesses": 94,
-    "worksWithWitnesses": 114,
-    "worksWithoutWitnesses": 108,
-    "worksWithThisBatchSourceReview": 61
+    "witnesses": 98,
+    "worksWithWitnesses": 121,
+    "worksWithoutWitnesses": 101,
+    "worksWithThisBatchSourceReview": 68
   },
   "records": [
     {
@@ -560,11 +560,14 @@
     },
     {
       "workId": "plutarch-lives",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 2,
+      "verifiedInstitutionalCount": 2,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "plutarch-pal-gr283",
+        "plutarch-diogenes-bnf-suppl134"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -949,29 +952,36 @@
     },
     {
       "workId": "plutarch-moralia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 2,
+      "verifiedInstitutionalCount": 2,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "plutarch-pal-gr283",
+        "plutarch-diogenes-bnf-suppl134"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "lucian-dialogi-mortuorum",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "lucian-urb-gr118"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "lucian-verae-historiae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "lucian-urb-gr118"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -1239,11 +1249,13 @@
     },
     {
       "workId": "arrian-anabasis-alexandri",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "arrian-procopius-laur-plut9-32"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -1760,11 +1772,13 @@
     },
     {
       "workId": "diogenes-laertius-vitae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "plutarch-diogenes-bnf-suppl134"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -2106,11 +2120,13 @@
     },
     {
       "workId": "procopius-aedificiis",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "arrian-procopius-laur-plut9-32"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
