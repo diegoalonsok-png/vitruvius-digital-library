@@ -211,13 +211,19 @@
   const low=isAkhenaten()?akhenatenBounds.birth:minYear-padding;
   const high=isAkhenaten()?akhenatenBounds.death:maxYear+padding;
   const range=Math.max(1,high-low);
-  const mapWidth=Math.max(960,Math.min(5200,Math.round(events.length*160*state.zoom)));
-  const position=y=>((y-low)/range*100).toFixed(4)+"%";
+  // Universal fitted scale: time always spans the visible reader, not a fixed 960–5200px canvas.
+  const cs=getComputedStyle(root);
+  const available=Math.max(250,Math.floor(root.clientWidth)-parseFloat(cs.paddingLeft||0)-parseFloat(cs.paddingRight||0)-3);
+  const labelWidth=available<490?94:available<740?128:170;
+  const mapWidth=Math.max(150,available-labelWidth-2);
+  const cardWidth=Math.min(Math.max(106,Math.round(134*state.zoom)),Math.max(96,mapWidth-10));
+  root.style.setProperty("--vat-label-width",labelWidth+"px");
+  root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
-  viewport.setAttribute("aria-label",L("Cronología desplazable horizontalmente","Horizontal chronological timeline","Frise chronologique horizontale"));
-  const map=el("div","vat-map");map.style.width=(mapWidth+170)+"px";
+  viewport.setAttribute("aria-label",L("Cronología adaptada al ancho del visor","Chronology fitted to reader width","Chronologie adaptée à la largeur du lecteur"));
+  const map=el("div","vat-map");map.style.width=available+"px";
   const axis=el("div","vat-axis");
-  const ticks=Math.min(13,Math.max(3,Math.ceil(mapWidth/160)));
+  const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
   for(let i=0;i<=ticks;i++){
    const y=Math.round(low+i*range/ticks);
    const tick=el("span","vat-tick",showYear(y));
@@ -234,12 +240,13 @@
    const lastEnds=[];let levelMax=0;
    for(const e of items){
     const x=(e.year-low)/range*mapWidth;
-    let level=lastEnds.findIndex(end=>x-end>=170);
+    const center=Math.max(cardWidth/2+3,Math.min(mapWidth-cardWidth/2-3,x));
+    let level=lastEnds.findIndex(end=>center-end>=cardWidth+9);
     if(level<0){level=lastEnds.length;lastEnds.push(-Infinity)}
-    lastEnds[level]=x;levelMax=Math.max(levelMax,level);
+    lastEnds[level]=center;levelMax=Math.max(levelMax,level);
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
-    button.style.left=Math.max(82,Math.min(mapWidth-82,x))+"px";button.style.top=(27+level*79)+"px";
+    button.style.left=center+"px";button.style.top=(27+level*108)+"px";button.style.width=cardWidth+"px";
     button.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)));
     button.append(el("strong",null,e.title));
     if(e.end!=null&&e.end!==e.year){
@@ -250,18 +257,30 @@
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
    }
-   track.style.height=(112+levelMax*79)+"px";
+   track.style.height=(140+levelMax*108)+"px";
    band.append(title,track);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
-  zoomOut.onclick=()=>{state.zoom=Math.max(.75,Math.round((state.zoom-.25)*100)/100);draw()};
-  zoomIn.onclick=()=>{state.zoom=Math.min(2.5,Math.round((state.zoom+.25)*100)/100);draw()};
+  zoomOut.onclick=()=>{state.zoom=Math.max(.8,Math.round((state.zoom-.1)*100)/100);draw()};
+  zoomIn.onclick=()=>{state.zoom=Math.min(1.35,Math.round((state.zoom+.1)*100)/100);draw()};
   prev.onclick=()=>viewport.scrollBy({left:-460,behavior:"smooth"});
   next.onclick=()=>viewport.scrollBy({left:460,behavior:"smooth"});
   viewport.addEventListener("keydown",e=>{
    if(e.target!==viewport||!["ArrowLeft","ArrowRight"].includes(e.key))return;
    e.preventDefault();viewport.scrollBy({left:e.key==="ArrowRight"?280:-280,behavior:"smooth"});
   });
+ }
+ // Redraw only when the available width changes, not when card height grows.
+ let fittedWidth=0;
+ if(typeof ResizeObserver!=="undefined"){
+  new ResizeObserver(entries=>{
+   const width=Math.round(entries[0]?.contentRect?.width||0);
+   if(!width||Math.abs(width-fittedWidth)<2)return;
+   fittedWidth=width;
+   if(!root.hidden&&state.query)requestAnimationFrame(()=>{if(!root.hidden)draw()});
+  }).observe(root);
+ }else{
+  window.addEventListener("resize",()=>{if(!root.hidden&&state.query)draw()},{passive:true});
  }
  function reset(q){
   state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
