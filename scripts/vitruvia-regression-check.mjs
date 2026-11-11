@@ -97,7 +97,7 @@ const search=sourceFile("assets/vitruvia-search.js");
 assert.ok(search.includes('S={mode:"all"'),"Universal mode not default");
 assert.ok(search.includes("window.VitruviaEntityResolver?.subject(topicQuery(q))"),"Universal subject not connected");
 assert.ok(search.includes("pending.push(wiki("),"Encyclopedia discovery not wired");
-assert.ok(search.includes("pending.push(crossref("),"Academic publications not wired");
+assert.ok(search.includes("crossref:()=>crossref(q)")&&search.includes("window.VitruviaWebRouting?.plan(q,S.identifiedSubject)")&&sourceFile("assets/vitruvia-web-routing.js").includes("providers=['wikidata','crossref','openAlex']"),"Academic publications not wired through topic-aware Crossref routing");
 const images=sourceFile("assets/vitruvia-image-engine-v2.js");
 assert.match(images,/generator:"categorymembers"/,"Topic image collections not wired");
 
