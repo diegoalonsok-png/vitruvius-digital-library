@@ -1,0 +1,1088 @@
+{
+  "schema": "vitruvius-physical-codex-identity-v1",
+  "updated": "2026-11-10",
+  "sourceRegistry": "data/bibliotheca-testimonia-verified.json",
+  "policy": "A witness record is a textual attribution. canonicalPhysicalId identifies its underlying physical artifact. This reconciliation is based on holdings signatures and is not an ecdotic stemma.",
+  "witnessRecords": 89,
+  "physicalObjects": 83,
+  "groups": [
+    {
+      "canonicalPhysicalId": "codex-vitruvius-h",
+      "witnessRecordIds": [
+        "vitruvius-h"
+      ],
+      "workIds": [
+        "vitruvius"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2767",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002048598"
+    },
+    {
+      "canonicalPhysicalId": "codex-cicero-officiis-geneva",
+      "witnessRecordIds": [
+        "cicero-officiis-geneva"
+      ],
+      "workIds": [
+        "cicero-officiis"
+      ],
+      "repository": "Ginebra, Bibliothèque de Genève",
+      "shelfmark": "Ms. lat. 88",
+      "identitySource": "https://e-codices.unifr.ch/en/list/one/bge/lat0088"
+    },
+    {
+      "canonicalPhysicalId": "codex-lucretius-oblongus",
+      "witnessRecordIds": [
+        "lucretius-oblongus"
+      ],
+      "workIds": [
+        "lucretius"
+      ],
+      "repository": "Leiden, Universiteitsbibliotheek",
+      "shelfmark": "VLF 30 (Voss. lat. F. 30)",
+      "identitySource": "https://portail.biblissima.fr/en/ark:/43093/mdataf212112b405b61b0e8e15847a6636ba25c322e9a"
+    },
+    {
+      "canonicalPhysicalId": "codex-vat-lat-3225",
+      "witnessRecordIds": [
+        "vergil-vaticanus-aeneid",
+        "vergil-vaticanus-georgica"
+      ],
+      "workIds": [
+        "virgil-aeneid",
+        "virgil-georgica"
+      ],
+      "repository": "Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. lat. 3225",
+      "identitySource": "https://digi.vatlib.it/view/MSS_Vat.lat.3225"
+    },
+    {
+      "canonicalPhysicalId": "codex-vergil-romanus",
+      "witnessRecordIds": [
+        "vergil-romanus"
+      ],
+      "workIds": [
+        "virgil-aeneid",
+        "virgil-georgica"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. lat. 3867",
+      "identitySource": "https://spotlight.vatlib.it/latin-paleography/catalog/Vat_lat_3867"
+    },
+    {
+      "canonicalPhysicalId": "codex-tacitus-mediceus-1",
+      "witnessRecordIds": [
+        "tacitus-mediceus-1"
+      ],
+      "workIds": [
+        "tacitus-annales"
+      ],
+      "repository": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 68.1",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/62b4f03e4446b2d1df4529cb493ce95ed92bac55"
+    },
+    {
+      "canonicalPhysicalId": "codex-laur-plut-68-2",
+      "witnessRecordIds": [
+        "tacitus-mediceus-2",
+        "apuleius-laurentianus-68-2"
+      ],
+      "workIds": [
+        "tacitus-annales",
+        "tacitus-historiae",
+        "apuleius-metamorphoses",
+        "apuleius-apologia"
+      ],
+      "repository": "Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 68.2",
+      "identitySource": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A"
+    },
+    {
+      "canonicalPhysicalId": "codex-josephus-pal-gr-14",
+      "witnessRecordIds": [
+        "josephus-pal-gr-14"
+      ],
+      "workIds": [
+        "josephus-antiquities"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. gr. 14",
+      "identitySource": "https://digi.vatlib.it/view/MSS_Pal.gr.14"
+    },
+    {
+      "canonicalPhysicalId": "codex-josephus-vat-gr-984",
+      "witnessRecordIds": [
+        "josephus-vat-gr-984"
+      ],
+      "workIds": [
+        "josephus-war",
+        "josephus-antiquities"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 984",
+      "identitySource": "https://digi.vatlib.it/view/MSS_Vat.gr.984"
+    },
+    {
+      "canonicalPhysicalId": "codex-dioscorides-vienna",
+      "witnessRecordIds": [
+        "dioscorides-vienna"
+      ],
+      "workIds": [
+        "dioscorides"
+      ],
+      "repository": "Viena, Österreichische Nationalbibliothek",
+      "shelfmark": "Cod. med. gr. 1",
+      "identitySource": "https://onb.digital/search/811603"
+    },
+    {
+      "canonicalPhysicalId": "codex-dioscorides-paris",
+      "witnessRecordIds": [
+        "dioscorides-paris"
+      ],
+      "workIds": [
+        "dioscorides"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Grec 2179",
+      "identitySource": "https://gallica.bnf.fr/ark:/12148/btv1b525002505"
+    },
+    {
+      "canonicalPhysicalId": "codex-homer-iliad-venetus-a",
+      "witnessRecordIds": [
+        "homer-iliad-venetus-a"
+      ],
+      "workIds": [
+        "homer-iliad"
+      ],
+      "repository": "Venecia, Biblioteca Nazionale Marciana",
+      "shelfmark": "Marc. gr. Z. 454 (= 822)",
+      "identitySource": "https://www.homermultitext.org/manuscripts/venetusA/"
+    },
+    {
+      "canonicalPhysicalId": "codex-catullus-thuaneus-8071",
+      "witnessRecordIds": [
+        "catullus-thuaneus-8071"
+      ],
+      "workIds": [
+        "catullus-carmina"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Latin 8071",
+      "identitySource": "https://www.gutenberg.org/files/23294/23294-h/23294-h.htm"
+    },
+    {
+      "canonicalPhysicalId": "codex-catullus-oxford-o",
+      "witnessRecordIds": [
+        "catullus-oxford-o"
+      ],
+      "workIds": [
+        "catullus-carmina"
+      ],
+      "repository": "Oxford, Bodleian Library",
+      "shelfmark": "MS. Canon. Class. Lat. 30",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/c691ed800d5576a3f70898d3d0dd0eaa4f375c18"
+    },
+    {
+      "canonicalPhysicalId": "codex-cicero-republica-vat5757",
+      "witnessRecordIds": [
+        "cicero-republica-vat5757"
+      ],
+      "workIds": [
+        "cicero-republica"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. lat. 5757",
+      "identitySource": "https://spotlight.vatlib.it/overview/catalog/Vat_lat_5757"
+    },
+    {
+      "canonicalPhysicalId": "codex-marcus-aurelius-vat1950",
+      "witnessRecordIds": [
+        "marcus-aurelius-vat1950"
+      ],
+      "workIds": [
+        "marcus-aurelius-meditations"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 1950, parte 2",
+      "identitySource": "https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2"
+    },
+    {
+      "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807",
+      "witnessRecordIds": [
+        "plato-parisinus-graecus-1807"
+      ],
+      "workIds": [
+        "plato-republic",
+        "plato-timaeus",
+        "plato-laws"
+      ],
+      "repository": "Bibliothèque nationale de France, París",
+      "shelfmark": "Grec 1807",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f"
+    },
+    {
+      "canonicalPhysicalId": "codex-ovid-metamorphoses-vat-lat-2781",
+      "witnessRecordIds": [
+        "ovid-metamorphoses-vat-lat-2781"
+      ],
+      "workIds": [
+        "ovid"
+      ],
+      "repository": "Biblioteca Apostolica Vaticana, Ciudad del Vaticano",
+      "shelfmark": "Vat. lat. 2781",
+      "identitySource": "https://digi.vatlib.it/mss/detail/Vat.lat.2781"
+    },
+    {
+      "canonicalPhysicalId": "codex-faventinus-gudianus-132",
+      "witnessRecordIds": [
+        "faventinus-gudianus-132"
+      ],
+      "workIds": [
+        "faventinus"
+      ],
+      "repository": "Wolfenbüttel, Herzog August Bibliothek",
+      "shelfmark": "Cod. Guelf. 132 Gud. lat.",
+      "identitySource": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms"
+    },
+    {
+      "canonicalPhysicalId": "codex-euclid-vat-gr-190",
+      "witnessRecordIds": [
+        "euclid-vat-gr-190"
+      ],
+      "workIds": [
+        "euclid-elementa"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 190, pt. 1",
+      "identitySource": null
+    },
+    {
+      "canonicalPhysicalId": "codex-agrimensores-arcerianus",
+      "witnessRecordIds": [
+        "agrimensores-arcerianus"
+      ],
+      "workIds": [
+        "hyginus-gromaticus",
+        "frontinus-gromatica"
+      ],
+      "repository": "Wolfenbüttel, Herzog August Bibliothek",
+      "shelfmark": "Cod. Guelf. 36.23 Aug. 2°",
+      "identitySource": "https://diglib.hab.de/?db=mss&list=ms&id=36-23-aug-2f"
+    },
+    {
+      "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564",
+      "witnessRecordIds": [
+        "agrimensores-pal-lat-1564"
+      ],
+      "workIds": [
+        "hyginus-gromaticus",
+        "frontinus-gromatica",
+        "siculus-flaccus"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. lat. 1564",
+      "identitySource": null
+    },
+    {
+      "canonicalPhysicalId": "codex-plato-clarke-39",
+      "witnessRecordIds": [
+        "plato-clarke-39"
+      ],
+      "workIds": [
+        "plato-apology",
+        "plato-crito",
+        "plato-phaedo",
+        "plato-symposium",
+        "plato-phaedrus",
+        "plato-gorgias",
+        "plato-meno"
+      ],
+      "repository": "Oxford, Bodleian Library",
+      "shelfmark": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
+      "identitySource": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004"
+    },
+    {
+      "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic",
+      "witnessRecordIds": [
+        "sinaiticus-gospels-apostolic"
+      ],
+      "workIds": [
+        "mark",
+        "barnabas",
+        "pastor-hermas"
+      ],
+      "repository": "British Library (Londres), con fragmentos en Leipzig, San Petersburgo y Santa Catalina del Sinaí",
+      "shelfmark": "Add MS 43725, ff. 200r–347v; Codex Sinaiticus GA 01 (ℵ)",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002169730"
+    },
+    {
+      "canonicalPhysicalId": "codex-alexandrinus-nt-clement",
+      "witnessRecordIds": [
+        "alexandrinus-nt-clement"
+      ],
+      "workIds": [
+        "mark",
+        "clement",
+        "clement-2"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Royal MS 1 D VIII (Codex Alexandrinus, GA 02 / A)",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002353500"
+    },
+    {
+      "canonicalPhysicalId": "codex-frontinus-strategemata-harley2666",
+      "witnessRecordIds": [
+        "frontinus-strategemata-harley2666"
+      ],
+      "workIds": [
+        "frontinus-strategemata"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2666",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002048497"
+    },
+    {
+      "canonicalPhysicalId": "codex-didache-poxy-xv-1782",
+      "witnessRecordIds": [
+        "didache-poxy-xv-1782"
+      ],
+      "workIds": [
+        "didache"
+      ],
+      "repository": "Oxford, Bodleian Art, Archaeology and Ancient World Library (colección EES)",
+      "shelfmark": "P. Oxy. XV 1782",
+      "identitySource": "https://4care-skos.mf.no/4care-artefacts/260/"
+    },
+    {
+      "canonicalPhysicalId": "codex-hierosolymitanus-54",
+      "witnessRecordIds": [
+        "didache-hierosolymitanus-54",
+        "barnabas-hierosolymitanus-54",
+        "clement-hierosolymitanus-54",
+        "clement2-hierosolymitanus-54",
+        "ignatius-hierosolymitanus-54"
+      ],
+      "workIds": [
+        "didache",
+        "barnabas",
+        "clement",
+        "clement-2",
+        "ignatius"
+      ],
+      "repository": "Greek Orthodox Patriarchal Library of Jerusalem",
+      "shelfmark": "Panagiou Taphou 54",
+      "identitySource": "https://pinakes.irht.cnrs.fr/"
+    },
+    {
+      "canonicalPhysicalId": "codex-didache-elbasan-82",
+      "witnessRecordIds": [
+        "didache-elbasan-82"
+      ],
+      "workIds": [
+        "didache"
+      ],
+      "repository": "Tirana, Arkivi Qëndror i Shtetit (Archivo Central del Estado, Albania)",
+      "shelfmark": "Kodikët e Shqipërisë 488, Dosja 082",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/63441/"
+    },
+    {
+      "canonicalPhysicalId": "codex-cicero-de-oratore-harley2736",
+      "witnessRecordIds": [
+        "cicero-de-oratore-harley2736"
+      ],
+      "workIds": [
+        "cicero-oratore"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2736",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002048567"
+    },
+    {
+      "canonicalPhysicalId": "codex-cicero-de-oratore-nls-18-3-16",
+      "witnessRecordIds": [
+        "cicero-de-oratore-nls-18-3-16"
+      ],
+      "workIds": [
+        "cicero-oratore"
+      ],
+      "repository": "Edimburgo, National Library of Scotland",
+      "shelfmark": "Adv.MS.18.3.16",
+      "identitySource": "https://manuscripts.nls.uk/repositories/2/resources/15184"
+    },
+    {
+      "canonicalPhysicalId": "codex-caesar-add-ms-10084",
+      "witnessRecordIds": [
+        "caesar-add-ms-10084"
+      ],
+      "workIds": [
+        "caesar-gallico",
+        "caesar-civili"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Add MS 10084",
+      "identitySource": "https://searcharchives.bl.uk/catalog/032-002107866"
+    },
+    {
+      "canonicalPhysicalId": "codex-caesar-gallico-harley4834",
+      "witnessRecordIds": [
+        "caesar-gallico-harley4834"
+      ],
+      "workIds": [
+        "caesar-gallico"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 4834",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002050677"
+    },
+    {
+      "canonicalPhysicalId": "codex-cicero-catilina-add47678",
+      "witnessRecordIds": [
+        "cicero-catilina-add47678"
+      ],
+      "workIds": [
+        "cicero-catilinariae"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Add MS 47678",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002104026"
+    },
+    {
+      "canonicalPhysicalId": "codex-cicero-catilina-harley2716",
+      "witnessRecordIds": [
+        "cicero-catilina-harley2716"
+      ],
+      "workIds": [
+        "cicero-catilinariae",
+        "cicero-officiis"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2716",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002048547"
+    },
+    {
+      "canonicalPhysicalId": "codex-horace-works-harley2724",
+      "witnessRecordIds": [
+        "horace-works-harley2724"
+      ],
+      "workIds": [
+        "horace-odes",
+        "horace-ars-poetica",
+        "horace-sermones",
+        "horace-epodi",
+        "horace-epistulae"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2724",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002048555"
+    },
+    {
+      "canonicalPhysicalId": "codex-ovid-fasti-harley2737",
+      "witnessRecordIds": [
+        "ovid-fasti-harley2737"
+      ],
+      "workIds": [
+        "ovid-fasti",
+        "ovid"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2737",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002048568"
+    },
+    {
+      "canonicalPhysicalId": "codex-ovid-fasti-harley2738",
+      "witnessRecordIds": [
+        "ovid-fasti-harley2738"
+      ],
+      "workIds": [
+        "ovid-fasti"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2738",
+      "identitySource": "https://searcharchives.bl.uk/?f%5Blevel_ssi%5D%5B%5D=%5B40%5D+File&f%5Bproject_collections_ssim%5D%5B%5D=Harley+Collection&f%5Broot_ancestor_reference_ssi%5D%5B%5D=Harley+MS+1-7661&page=22&per_page=100&sort=relevance"
+    },
+    {
+      "canonicalPhysicalId": "codex-pliny-naturalis-bamberg42",
+      "witnessRecordIds": [
+        "pliny-naturalis-bamberg42"
+      ],
+      "workIds": [
+        "pliny"
+      ],
+      "repository": "Bamberg, Staatsbibliothek Bamberg",
+      "shelfmark": "Msc.Class.42",
+      "identitySource": "https://handschriftenportal.de/?id=HSP-ca46031b-642a-3460-b9b1-9e823df6a7d9"
+    },
+    {
+      "canonicalPhysicalId": "codex-pliny-naturalis-harley2676",
+      "witnessRecordIds": [
+        "pliny-naturalis-harley2676"
+      ],
+      "workIds": [
+        "pliny"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2676",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-001609021"
+    },
+    {
+      "canonicalPhysicalId": "codex-livy-pal-lat24-palimp",
+      "witnessRecordIds": [
+        "livy-pal-lat24-palimp"
+      ],
+      "workIds": [
+        "livy"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. lat. 24, ff. 73, 75, 76, 78 (scriptio inferior)",
+      "identitySource": "https://elmss.universityofgalway.ie/catalogue/86"
+    },
+    {
+      "canonicalPhysicalId": "codex-livy-verona-palimp",
+      "witnessRecordIds": [
+        "livy-verona-palimp"
+      ],
+      "workIds": [
+        "livy"
+      ],
+      "repository": "Verona, Biblioteca Capitolare",
+      "shelfmark": "XL (38), ff. 267–314, etc. (scriptio inferior)",
+      "identitySource": "https://elmss.universityofgalway.ie/catalogue/847"
+    },
+    {
+      "canonicalPhysicalId": "codex-livy-pal-lat878",
+      "witnessRecordIds": [
+        "livy-pal-lat878"
+      ],
+      "workIds": [
+        "livy"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. lat. 878",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/cc2a508d191e5f37982f907e3531b2644b4e74cc"
+    },
+    {
+      "canonicalPhysicalId": "codex-livy-pal-lat873",
+      "witnessRecordIds": [
+        "livy-pal-lat873"
+      ],
+      "workIds": [
+        "livy"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Pal. lat. 873",
+      "identitySource": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_873/0330"
+    },
+    {
+      "canonicalPhysicalId": "codex-quintilian-harley2664",
+      "witnessRecordIds": [
+        "quintilian-harley2664"
+      ],
+      "workIds": [
+        "quintilian"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2664",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002048495"
+    },
+    {
+      "canonicalPhysicalId": "codex-quintilian-burney244",
+      "witnessRecordIds": [
+        "quintilian-burney244"
+      ],
+      "workIds": [
+        "quintilian"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Burney MS 244",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002237125"
+    },
+    {
+      "canonicalPhysicalId": "codex-herodotus-laur-plut70-3",
+      "witnessRecordIds": [
+        "herodotus-laur-plut70-3"
+      ],
+      "workIds": [
+        "herodotus-historiae"
+      ],
+      "repository": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut.70.3",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/16568/"
+    },
+    {
+      "canonicalPhysicalId": "codex-herodotus-laur-plut70-32",
+      "witnessRecordIds": [
+        "herodotus-laur-plut70-32"
+      ],
+      "workIds": [
+        "herodotus-historiae"
+      ],
+      "repository": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut.70.32",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/c6a20f9dcfdd1f5a7110d3f909ea4fc6a432022e"
+    },
+    {
+      "canonicalPhysicalId": "codex-thucydides-laur-plut69-2",
+      "witnessRecordIds": [
+        "thucydides-laur-plut69-2"
+      ],
+      "workIds": [
+        "thucydides-war"
+      ],
+      "repository": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut.69.2",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/16529/"
+    },
+    {
+      "canonicalPhysicalId": "codex-hesiod-theogony-suppl-gr1099",
+      "witnessRecordIds": [
+        "hesiod-theogony-suppl-gr1099"
+      ],
+      "workIds": [
+        "hesiod-theogony"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Supplément grec 1099, ff. I–II",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/eec0b144514155ac2debf3a3a455f5a6a90dcbc6"
+    },
+    {
+      "canonicalPhysicalId": "codex-hesiod-works-bnf2708",
+      "witnessRecordIds": [
+        "hesiod-works-bnf2708"
+      ],
+      "workIds": [
+        "hesiod-theogony",
+        "hesiod-works-days"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Grec 2708",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/52343/"
+    },
+    {
+      "canonicalPhysicalId": "codex-aristotle-poetics-paris-gr1741",
+      "witnessRecordIds": [
+        "aristotle-poetics-paris-gr1741"
+      ],
+      "workIds": [
+        "aristotle-poetics"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Grec 1741",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/51367/"
+    },
+    {
+      "canonicalPhysicalId": "codex-horace-harley3997",
+      "witnessRecordIds": [
+        "horace-harley3997"
+      ],
+      "workIds": [
+        "horace-odes",
+        "horace-sermones",
+        "horace-ars-poetica",
+        "horace-epodi",
+        "horace-epistulae"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 3997",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002049834"
+    },
+    {
+      "canonicalPhysicalId": "codex-strabo-bnf-grec1393",
+      "witnessRecordIds": [
+        "strabo-bnf-grec1393"
+      ],
+      "workIds": [
+        "strabo"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Grec 1393",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/1d904e660eea62e5b3dfb26cfec5cfdc34956c75"
+    },
+    {
+      "canonicalPhysicalId": "codex-juvenal-harley2772",
+      "witnessRecordIds": [
+        "juvenal-harley2772"
+      ],
+      "workIds": [
+        "juvenal-saturae"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Harley MS 2772, ff. 16r–27v",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002048603"
+    },
+    {
+      "canonicalPhysicalId": "codex-didache-coptic-or9271",
+      "witnessRecordIds": [
+        "didache-coptic-or9271"
+      ],
+      "workIds": [
+        "didache"
+      ],
+      "repository": "Londres, British Library",
+      "shelfmark": "Or. 9271 · P. Lond. Copt. II 189",
+      "identitySource": "https://4care-skos.mf.no/4care-artefacts/39/"
+    },
+    {
+      "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-24",
+      "witnessRecordIds": [
+        "homer-odyssey-laur-plut32-24"
+      ],
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "repository": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 32.24",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/0458bd9b9a6ac2ab339571c823145a36b8a3fc7e"
+    },
+    {
+      "canonicalPhysicalId": "codex-homer-odyssey-heidelberg-cpg45",
+      "witnessRecordIds": [
+        "homer-odyssey-heidelberg-cpg45"
+      ],
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
+      "shelfmark": "Cod. Pal. graec. 45",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/65a6a766bf90f053758b546ac44f29f074a32057"
+    },
+    {
+      "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-23",
+      "witnessRecordIds": [
+        "homer-odyssey-laur-plut32-23"
+      ],
+      "workIds": [
+        "homer-odyssey"
+      ],
+      "repository": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 32.23",
+      "identitySource": "https://iiif.biblissima.fr/collections/manifest/6045dff3bafa36133d66808966041fc118746e54"
+    },
+    {
+      "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311",
+      "witnessRecordIds": [
+        "ovid-ars-parisinus-lat7311"
+      ],
+      "workIds": [
+        "ovid-ars-amatoria",
+        "ovid-remedia-amoris"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Latin 7311",
+      "identitySource": "https://www.persee.fr/doc/dirht_0073-8212_2014_mon_26_42?pageId=T1_454"
+    },
+    {
+      "canonicalPhysicalId": "codex-ovid-ars-bodleian-auct-f4-32",
+      "witnessRecordIds": [
+        "ovid-ars-bodleian-auct-f4-32"
+      ],
+      "workIds": [
+        "ovid-ars-amatoria"
+      ],
+      "repository": "Oxford, Bodleian Libraries",
+      "shelfmark": "Auct. F. 4.32 (2176)",
+      "identitySource": "https://www.historyofinformation.com/detail.php?entryid=1887"
+    },
+    {
+      "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2",
+      "witnessRecordIds": [
+        "apuleius-laurentianus-29-2"
+      ],
+      "workIds": [
+        "apuleius-metamorphoses",
+        "apuleius-apologia"
+      ],
+      "repository": "Florencia, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 29.2 (Laur. 29.2)",
+      "identitySource": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A"
+    },
+    {
+      "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
+      "witnessRecordIds": [
+        "sophocles-aeschylus-laurentianus-32-9"
+      ],
+      "workIds": [
+        "sophocles-oedipus",
+        "sophocles-antigone",
+        "sophocles-ajax",
+        "sophocles-electra",
+        "sophocles-philoctetes",
+        "sophocles-oedipus-colonus",
+        "sophocles-trachiniae",
+        "aeschylus-oresteia",
+        "aeschylus-persae",
+        "aeschylus-seven-thebes",
+        "aeschylus-suppliants",
+        "aeschylus-prometheus"
+      ],
+      "repository": "Firenze, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 32.9",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/16274/"
+    },
+    {
+      "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
+      "witnessRecordIds": [
+        "aristophanes-ravennas-429"
+      ],
+      "workIds": [
+        "aristophanes-clouds",
+        "aristophanes-aves",
+        "aristophanes-ranae",
+        "aristophanes-lysistrata",
+        "aristophanes-vespae",
+        "aristophanes-pax",
+        "aristophanes-acharnenses"
+      ],
+      "repository": "Ravenna, Biblioteca Classense",
+      "shelfmark": "Ms. 429",
+      "identitySource": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/"
+    },
+    {
+      "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
+      "witnessRecordIds": [
+        "euripides-laurentianus-32-2"
+      ],
+      "workIds": [
+        "euripides-bacchae",
+        "euripides-hippolytus",
+        "euripides-alcestis",
+        "euripides-electra",
+        "euripides-troades",
+        "euripides-hecuba",
+        "euripides-iphigenia-aulid",
+        "euripides-medea"
+      ],
+      "repository": "Firenze, Biblioteca Medicea Laurenziana",
+      "shelfmark": "Plut. 32.2",
+      "identitySource": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html"
+    },
+    {
+      "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853",
+      "witnessRecordIds": [
+        "aristotle-parisinus-gr1853"
+      ],
+      "workIds": [
+        "aristotle-physics",
+        "aristotle-metaphysics",
+        "aristotle-de-anima",
+        "aristotle-nicomachean-ethics"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Grec 1853",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/51479/"
+    },
+    {
+      "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741",
+      "witnessRecordIds": [
+        "aristotle-parisinus-gr1741"
+      ],
+      "workIds": [
+        "aristotle-rhetoric",
+        "aristotle-poetics"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Grec 1741",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/51367/"
+    },
+    {
+      "canonicalPhysicalId": "codex-aristotle-vatgr1298-politics",
+      "witnessRecordIds": [
+        "aristotle-vatgr1298-politics"
+      ],
+      "workIds": [
+        "aristotle-politics"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 1298",
+      "identitySource": "https://plato.stanford.edu/archives/win2025/entries/aristotle-text/"
+    },
+    {
+      "canonicalPhysicalId": "codex-ptolemy-almagest-vatgr1594",
+      "witnessRecordIds": [
+        "ptolemy-almagest-vatgr1594"
+      ],
+      "workIds": [
+        "ptolemy-almagest"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 1594",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/68225/"
+    },
+    {
+      "canonicalPhysicalId": "codex-ptolemy-almagest-paris2389",
+      "witnessRecordIds": [
+        "ptolemy-almagest-paris2389"
+      ],
+      "workIds": [
+        "ptolemy-almagest"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Grec 2389",
+      "identitySource": "https://journals.sagepub.com/doi/full/10.1177/00218286221140848"
+    },
+    {
+      "canonicalPhysicalId": "codex-ptolemy-geography-urbgr82",
+      "witnessRecordIds": [
+        "ptolemy-geography-urbgr82"
+      ],
+      "workIds": [
+        "ptolemy-geographia"
+      ],
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Urb. gr. 82",
+      "identitySource": "https://digi.vatlib.it/view/MSS_Urb.gr.82"
+    },
+    {
+      "canonicalPhysicalId": "codex-sallust-paris16024",
+      "witnessRecordIds": [
+        "sallust-paris16024"
+      ],
+      "workIds": [
+        "sallust-catiline",
+        "sallust-iugurtha"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Latin 16024 (olim Sorbonnensis 500)",
+      "identitySource": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html"
+    },
+    {
+      "canonicalPhysicalId": "codex-sallust-paris16025",
+      "witnessRecordIds": [
+        "sallust-paris16025"
+      ],
+      "workIds": [
+        "sallust-catiline",
+        "sallust-iugurtha"
+      ],
+      "repository": "París, Bibliothèque nationale de France",
+      "shelfmark": "Latin 16025 (olim Sorbonnensis 1576)",
+      "identitySource": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html"
+    },
+    {
+      "canonicalPhysicalId": "codex-isidore-stgall-1394-fragment",
+      "witnessRecordIds": [
+        "isidore-stgall-1394-fragment"
+      ],
+      "workIds": [
+        "isidore-etymologiae"
+      ],
+      "repository": "St. Gallen, Stiftsbibliothek",
+      "shelfmark": "Cod. Sang. 1394, pp. 123–124",
+      "identitySource": "https://www.e-codices.ch/en/description/csg/1394/"
+    },
+    {
+      "canonicalPhysicalId": "codex-isidore-stgall-233",
+      "witnessRecordIds": [
+        "isidore-stgall-233"
+      ],
+      "workIds": [
+        "isidore-etymologiae"
+      ],
+      "repository": "St. Gallen, Stiftsbibliothek",
+      "shelfmark": "Cod. Sang. 233",
+      "identitySource": "https://www.e-codices.ch/en/list/one/csg/0233"
+    },
+    {
+      "canonicalPhysicalId": "codex-isidore-stgall-231",
+      "witnessRecordIds": [
+        "isidore-stgall-231"
+      ],
+      "workIds": [
+        "isidore-etymologiae"
+      ],
+      "repository": "St. Gallen, Stiftsbibliothek",
+      "shelfmark": "Cod. Sang. 231",
+      "identitySource": "https://www.e-codices.ch/en/list/one/csg/0231"
+    },
+    {
+      "canonicalPhysicalId": "codex-boethius-harley-2685",
+      "witnessRecordIds": [
+        "boethius-harley-2685"
+      ],
+      "workIds": [
+        "boethius-consolatio"
+      ],
+      "repository": "London, British Library",
+      "shelfmark": "Harley MS 2685",
+      "identitySource": "https://searcharchives.bl.uk/?f%5Blanguage_ssim%5D%5B%5D=Latin&f%5Bmaterial_type_si%5D%5B%5D=Archives+and+Manuscripts&f%5Brelated_places_ssim%5D%5B%5D=Western+Germany&f%5Brelated_subjects_ssim%5D%5B%5D=Philosophy&f%5Burl_non_blank_si%5D%5B%5D=Yes+%28available%29&f%5Burl_stub_si%5D%5B%5D=iiif.bl.uk&per_page=50&search_field=all_fields&sort=title_for_sort_si+asc%2C+scope_and_content_for_sort_si+asc%2C+reference_for_sort_si+asc"
+    },
+    {
+      "canonicalPhysicalId": "codex-xenophon-anabasis-vatgr1335",
+      "witnessRecordIds": [
+        "xenophon-anabasis-vatgr1335"
+      ],
+      "workIds": [
+        "xenophon-anabasis"
+      ],
+      "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 1335",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/67966/"
+    },
+    {
+      "canonicalPhysicalId": "codex-xenophon-anabasis-paris1640",
+      "witnessRecordIds": [
+        "xenophon-anabasis-paris1640"
+      ],
+      "workIds": [
+        "xenophon-anabasis"
+      ],
+      "repository": "Paris, Bibliothèque nationale de France",
+      "shelfmark": "Grec 1640",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/oeuvre/559/"
+    },
+    {
+      "canonicalPhysicalId": "codex-xenophon-hellenica-paris1738",
+      "witnessRecordIds": [
+        "xenophon-hellenica-paris1738"
+      ],
+      "workIds": [
+        "xenophon-hellenica"
+      ],
+      "repository": "Paris, Bibliothèque nationale de France",
+      "shelfmark": "Grec 1738",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/51364/"
+    },
+    {
+      "canonicalPhysicalId": "codex-demosthenes-paris2934",
+      "witnessRecordIds": [
+        "demosthenes-paris2934"
+      ],
+      "workIds": [
+        "demosthenes-de-corona",
+        "demosthenes-philippicae"
+      ],
+      "repository": "Paris, Bibliothèque nationale de France",
+      "shelfmark": "Grec 2934",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/oeuvre/5953/"
+    },
+    {
+      "canonicalPhysicalId": "codex-pindar-vatgr1312",
+      "witnessRecordIds": [
+        "pindar-vatgr1312"
+      ],
+      "workIds": [
+        "pindar-olympian",
+        "pindar-pythian"
+      ],
+      "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+      "shelfmark": "Vat. gr. 1312",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/67943/"
+    },
+    {
+      "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
+      "witnessRecordIds": [
+        "pindar-ambros-c222inf"
+      ],
+      "workIds": [
+        "pindar-olympian",
+        "hesiod-works-days",
+        "aristophanes-clouds",
+        "aristophanes-ranae",
+        "aeschylus-persae",
+        "aeschylus-seven-thebes"
+      ],
+      "repository": "Milano, Biblioteca Ambrosiana",
+      "shelfmark": "C 222 inf.",
+      "identitySource": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/"
+    }
+  ]
+}
