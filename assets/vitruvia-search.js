@@ -421,6 +421,8 @@ async function load(){try{
  showCatalogueMetric("metric-witnesses",core[2],S.witnesses.length);
  showCatalogueMetric("metric-editions",core[2],S.editions.length);
  $("metrics")?.setAttribute("data-verification",core.every(x=>x.status==="fulfilled")?"completo":"parcial");
+ // Notify active searches that the first, authoritative catalogue stage is ready.
+ window.dispatchEvent(new CustomEvent("vitruvia:catalogue-core",{detail:{complete:core.every(x=>x.status==="fulfilled")}}));
  if(!document.body.classList.contains("vitruvia-reading")){
   $("result-state").textContent=S.works.length+" obras · "+S.witnesses.length+" códices · "+S.editions.length+" ediciones y "+S.pages.length+" secciones documentales";
   const unavailable=core.flatMap((r,i)=>r.status==="rejected"?[urls[i]]:[]);
@@ -447,6 +449,8 @@ async function load(){try{
  for(const id of ["metric-works","metric-pages","metric-read","metric-witnesses","metric-editions"])showCatalogueMetric(id,null,null);
  $("metrics")?.setAttribute("data-verification","no-disponible");
  $("result-state").textContent="Índice de la biblioteca no disponible: "+e.message;
+ S.catalogueFailed=true;S.ready=true;
+ window.dispatchEvent(new CustomEvent("vitruvia:catalogue-core",{detail:{complete:false,error:String(e.message||e)}}));
 }}
 
 const dataPaths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json"];
@@ -1117,9 +1121,12 @@ function documentarySubjectEvidence(row,query){
   const ids=matchingWorkIds(topicQuery(query));
   if(row.workId&&ids.includes(row.workId))return true;
  }catch{}
- const txt=queryTokens([row.title,row.author,row.excerpt,row.meta,row.entityCanonical,
-  ...(row.aliases||[])].filter(Boolean).join(" "));
- return terms.every(term=>txt.includes(term));
+ // Actual passage evidence is in its indexed Latin or translation, not necessarily
+ // in the short excerpt used by the card.
+ const fields=[row.title,row.author,row.excerpt,row.meta,row.entityCanonical,...(row.aliases||[])];
+ if(row.type==="passage")fields.push(row.latin,row.translation);
+ const tokens=new Set(queryTokens(fields.filter(Boolean).join(" ")));
+ return terms.every(term=>tokens.has(term));
 }
 /* Once a person is identified by Wikidata, a venue or a homonymous
  * business must not replace that person's biography. This rule is generic,
@@ -1148,7 +1155,14 @@ function authorityWeight(row){
  if(row.type==="manuscript")return 25;
  return 0;
 }
-function titleMatch(row,query){return rankedTitle(row,query)+authorityWeight(row)}
+function documentaryRelevance(row,query){
+ if(row.type!=="passage")return 0;
+ const q=norm(topicQuery(query));
+ if(q&&q===norm(row.locus||""))return 2400;
+ const source=norm([row.latin,row.translation].join(" "));
+ return q.length>=5&&source.includes(q)?1400:0;
+}
+function titleMatch(row,query){return rankedTitle(row,query)+authorityWeight(row)+documentaryRelevance(row,query)}
 
 function display(rows,query,phase){
  // No se eliminan resultados por umbrales de coincidencia en el título:
@@ -1165,7 +1179,12 @@ function display(rows,query,phase){
   ((a.rating||0)+titleMatch(a,query)+(S.mode==="ai"&&a.aiEvidence?2800:0)));
  const deduped=[],seen=new Set();
  for(const r of scored){
-  const k=r.type+":"+norm(r.title)+":"+(r.type==="wikipedia"?String(r.wikiLang||""):r.type==="passage"?norm(r.edition||r.author||r.meta||""):r.externalFulltext?norm(r.author||""):"");
+  const id=r.type==="passage"?[r.edition,r.locus,r.workId,r.link].filter(Boolean).join("|"):
+   r.type==="historical-ocr"?[r.ocrPage,r.author,r.link].filter(Boolean).join("|"):
+   r.type==="apparatus"?r.apparatusId||r.link||"":
+   ["edition","book"].includes(r.type)?r.workId||r.link||r.source||"":
+   r.type==="wikipedia"?String(r.wikiLang||""):r.externalFulltext?String(r.author||""):"";
+  const k=r.type+":"+norm(r.title)+":"+norm(id);
   if(seen.has(k))continue;
   seen.add(k);deduped.push(r);
  }
@@ -1442,12 +1461,8 @@ async function search(){
     "Identidad documentada · ampliando fuentes");
   }).catch(()=>{});
  }
- // Wait for the library before assembling its verified local holdings.
- if(!S.ready&&cataloguePromise){
-  $("result-state").textContent="Cargando índices del catálogo antes de buscar…";
-  try{await cataloguePromise}catch(e){console.warn("Catálogo parcial; se mantienen las fuentes externas:",e)}
-  if(id!==S.searchId||searchSignal.aborted)return;
- }
+ // Initial search does not wait for the large catalogue.
+ // Primary holdings merge after vitruvia:catalogue-core, without restarting external providers.
  // Voz griega con equivalente latino documentado en el léxico (εὐρυθμία → eurythmia): se busca también la forma latina.
  if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&q.split(/\s+/).length<=3){try{S.lexiconPromise=S.lexiconPromise||((window.VitruviaData?window.VitruviaData.json("data/latin-lexicon.json"):fetch("data/latin-lexicon.json").then(r=>r.json())).then(d=>d.entries||[]).catch(e=>{S.lexiconPromise=null;throw e}));S.lexicon=S.lexicon||await S.lexiconPromise;if(searchSignal.aborted||id!==S.searchId)return;
   const fg=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const hit=S.lexicon.find(e=>e.greek&&fg(e.greek)===fg(q));if(hit&&!q.includes(hit.lemma))q=q+" "+hit.lemma}catch{}}
@@ -1474,7 +1489,7 @@ async function search(){
  if(rows.length)display(rows,q,T().searching);
  // Los repertorios auxiliares actualizan la misma búsqueda sin disparar
  // una segunda ronda de llamadas a Wikipedia, Google Books o Crossref.
- let supplementApplied=false;
+ let supplementApplied=false,coreApplied=false,remoteFinished=false;
  function integrateSupplement(){
   if(supplementApplied||id!==S.searchId||searchSignal.aborted)return;
   supplementApplied=true;
@@ -1487,19 +1502,32 @@ async function search(){
   window.addEventListener("vitruvia:catalogue-supplemental",integrateSupplement,{once:true});
   searchSignal.addEventListener("abort",()=>window.removeEventListener("vitruvia:catalogue-supplemental",integrateSupplement),{once:true});
  }
- if(internal){
-  rows.push(...(focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:[...academicRows(q),...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)]));
-  if(intent?.preface){
-   const book=intent.preface.book;
-   const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
-   rows.push({type:"preface",prefacePlaceholder:true,book,prefaceBook:book,
-    title:book?"De architectura · Prefacio del Libro "+roman[book]:"De architectura · Prefacios de los diez libros",
-    author:"Marco Vitruvio Polión · Biblioteca Vitruviana",
-    excerpt:"Consultando el índice filológico de los prefacios…",
-    meta:"Texto latino y traducciones editoriales V514 / V554 / V297",
-    rating:7000,link:"lector-bilingue.html?edition=recensio-es&locus="+(book||1)+".praef.1"});
+ // Second stage: merge the first validated catalogue after it has loaded.
+ function integrateCore(){
+  if(coreApplied||!S.ready||id!==S.searchId||searchSignal.aborted)return;
+  coreApplied=true;
+  if(internal){
+   rows.push(...(focused?[...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q)]:
+    [...academicRows(q),...liveBooks(q,concept),...liveManuscripts(q),...liveHistoricalEditions(q),...liveEditions(q),...livePages(q,concept)]));
+   if(intent?.preface){
+    const book=intent.preface.book;
+    const roman=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
+    rows.push({type:"preface",prefacePlaceholder:true,book,prefaceBook:book,
+     title:book?"De architectura · Prefacio del Libro "+roman[book]:"De architectura · Prefacios de los diez libros",
+     author:"Marco Vitruvio Polión · Biblioteca Vitruviana",
+     excerpt:"Consultando el índice filológico de los prefacios…",
+     meta:"Texto latino y traducciones editoriales V514 / V554 / V297",
+     rating:7000,link:"lector-bilingue.html?edition=recensio-es&locus="+(book||1)+".praef.1"});
+   }
   }
-  if(rows.length)display(rows,q,T().searching)
+  if(remoteFinished)S.searchComplete=true;
+  if(rows.length)display(rows,q,remoteFinished?"Catálogo integrado · búsqueda finalizada":"Catálogo local integrado · ampliando fuentes");
+ }
+ if(S.ready)integrateCore();
+ else{
+  window.addEventListener("vitruvia:catalogue-core",integrateCore,{once:true});
+  searchSignal.addEventListener("abort",()=>window.removeEventListener("vitruvia:catalogue-core",integrateCore),{once:true});
+  if(S.ready)integrateCore();
  }
  // Official current-figure disambiguation works in every search mode, including Wikipedia.
  const official=authorityRows(q);
@@ -1640,7 +1668,7 @@ async function search(){
    }).catch(e=>({name:"Fuentes especializadas no disponibles",rows:[],warnings:[String(e.message||e)]})));
   }
  }
- if(!pending.length){S.searchComplete=true;display(rows,q,"Índice interno");return}
+ if(!pending.length){remoteFinished=true;S.searchComplete=!!S.ready;display(rows,q,"Índice interno");return}
  let completed=0,updateTimer=null;
  const sourceWarnings=[];
  await Promise.all(pending.map(p=>p.then(value=>{
@@ -1673,7 +1701,7 @@ async function search(){
  })));
  clearTimeout(updateTimer);
  if(id===S.searchId){
-  S.searchComplete=true;
+  remoteFinished=true;S.searchComplete=!!S.ready;
   const failed=sourceWarnings.length;
   const phase=S.lang==="en"?`Search complete · ${completed-failed}/${pending.length} sources responded${failed?" · some sources unavailable":""}`:
    S.lang==="fr"?`Recherche terminée · ${completed-failed}/${pending.length} sources disponibles${failed?" · certaines sources indisponibles":""}`:
