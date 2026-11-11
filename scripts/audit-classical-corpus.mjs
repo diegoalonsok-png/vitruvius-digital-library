@@ -200,6 +200,24 @@ for(const w of works){
  assert.deepEqual([...p.indexedTextFiles].sort(),expected,"Public indexed-file list is stale: "+w.id);
 }
 
+
+// CTS provenance guard: edition identifiers are not generated from PHI/TLG candidates.
+// A recorded CTS edition must be a source-attested edition URN, not a local
+// search slug or a made-up Perseus derivative, following Perseus guidance.
+const provenance=read("data/perseus-provenance-audit.json");
+assert.equal(provenance.records.length,works.length,"CTS provenance register does not cover the catalogue");
+for(const record of provenance.records){
+ const urn=record.ctsEditionUrn;
+ if(!urn)continue;
+ assert.match(urn,/^urn:cts:(?:latinLit|greekLit):[A-Za-z0-9]+(?:[._-][A-Za-z0-9]+)*\.[A-Za-z0-9]+(?:[._-][A-Za-z0-9]+)*\.[A-Za-z0-9]+(?:[._-][A-Za-z0-9]+)*(?::[\w.]+)?$/,
+  "Invalid edition-level CTS syntax: "+record.workId);
+ assert(!/\.segment-\d+/i.test(urn),"Noncanonical CTS passage separator: "+record.workId);
+ assert(record.ctsEvidence&&record.ctsStatus==="declared_and_checked_in_source_tei_header",
+  "No documented source evidence for CTS edition: "+record.workId);
+ assert(record.perseusAffiliation!==true,
+  "A local catalogue's CTS reference is not Perseus institutional endorsement");
+}
+
 const summary={parallelLocusCoverage:verifiedParallel,explicitlyUnalignedTranslations:explicitlyUnaligned,cataloguedWorks:works.length,distinctAuthorLabels:new Set(works.map(w=>w.author)).size,status:groups,
  localReadingRecords:localWorks.length,checkedFileReferences:checked.length,
  fulltextSearchWorks:new Set(registry.entries.map(e=>e.workId)).size,fulltextSearchVersions:registry.entries.length,
