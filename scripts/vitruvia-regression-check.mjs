@@ -148,8 +148,9 @@ assert.equal(contextGuard.allows(classicalRow,"Juan Domingo Perón y Roma antigu
  "An explicit comparative historical query is allowed");
 assert.equal(contextGuard.allows(classicalRow,"iPhone 15",{kind:"topic",canonical:"iPhone 15",inceptionYear:2023}),false,
  "Modern technology must not inherit ancient codices");
-assert.ok(vitruviaHTML.indexOf("assets/vitruvia-context-guard.js")>=0&&
- vitruviaHTML.indexOf("assets/vitruvia-context-guard.js")<vitruviaHTML.indexOf("assets/vitruvia-search.js"),
+const executableScripts=[...vitruviaHTML.matchAll(/<script\b[^>]*src=["']([^"']+)/gi)].map(m=>m[1].split("?")[0]);
+assert.ok(executableScripts.indexOf("assets/vitruvia-context-guard.js")>=0&&
+ executableScripts.indexOf("assets/vitruvia-context-guard.js")<executableScripts.indexOf("assets/vitruvia-search.js"),
  "Classical-context gate must load before the search engine");
 assert.match(search,/guard\.filter\(rows,query,S\.identifiedSubject\)/,
  "The ancient-context gate must run before search results reach article and documentary cards");

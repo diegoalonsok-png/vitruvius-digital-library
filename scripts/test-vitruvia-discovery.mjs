@@ -124,7 +124,7 @@ test('the library forwards the exact query to Vitruvia without adding Vitruvius'
  input.value='';input.listeners.input();assert.equal(new URL(link.href).search,'');
 });
 test('new assets are wired before their consumers and original manuscript/dictation entry points survive',()=>{
- const html=source('vitruvia.html');assert.ok(html.indexOf('src="assets/vitruvia-discovery.js')<html.indexOf('src="assets/vitruvia-image-engine-v2.js'));
+ const html=source('vitruvia.html');const optional=JSON.parse(html.match(/id="vitruvia-feature-manifest">([^<]+)</)[1]);assert(optional.images.some(x=>x.includes('vitruvia-image-engine-v2.js')));assert(html.includes('src="assets/vitruvia-discovery.js'));assert(!html.includes('src="assets/vitruvia-image-engine-v2.js'),'Photos load only when requested');
  assert.match(html,/id="article-image-preview"/);assert.match(html,/assets\/vitruvia-dictation.js/);assert.match(html,/assets\/vitruvia-local-manuscripts.js/);
  const index=source('index.html');assert.match(index,/id="search-in-vitruvia"/);assert.match(index,/assets\/vitruvia-library-bridge.js/);
  for(const file of ['assets/vitruvia-discovery.js','assets/vitruvia-image-engine-v2.js','assets/vitruvia-entity-resolver.js','assets/vitruvia-article.js','assets/vitruvia-search.js','assets/vitruvia-library-bridge.js'])new Script(source(file),{filename:file});

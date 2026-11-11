@@ -372,7 +372,9 @@ async function combinedSearch(q,{limit=6,semantic=false}={}){
  for(const result of [literal,conceptual]){
   if(result.status!=="fulfilled")continue;
   for(const row of result.value){
-   const key=[row.workId,row.language,row.locus,row.source].join("|");
+   const target=new URL(row.link,"https://vitruvius.invalid/");target.searchParams.delete("q");
+   const sourcePath=String(row.source||"").split(" · ").at(-1);
+   const key=[row.workId,row.language,sourcePath,target.pathname,target.search,target.hash].join("|");
    if(seen.has(key))continue;
    seen.add(key);out.push(row);
   }

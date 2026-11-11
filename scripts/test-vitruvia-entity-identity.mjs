@@ -124,7 +124,7 @@ checks++;
 
 const searchSource=readFileSync("assets/vitruvia-search.js","utf8");
 const start=searchSource.indexOf("function authorityResult(");
-const end=searchSource.indexOf("async function search()",start);
+const end=searchSource.indexOf("\ndocument.getElementById(\"expand-search-sources\")",start);
 assert(start>0&&end>start,"Missing fast authority rendering function");
 const authorityResult=new Function(searchSource.slice(start,end)+"\nreturn authorityResult;")();
 const wikidataCard=authorityResult(fallback);

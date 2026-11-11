@@ -1,7 +1,7 @@
 name: Responsive literal search and editorial records
 on:
   push:
-    branches: ['codex/responsive-search-*']
+    branches: ['main', 'codex/responsive-search-*']
   workflow_dispatch:
 permissions:
   contents: read

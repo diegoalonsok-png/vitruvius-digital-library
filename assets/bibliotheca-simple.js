@@ -61,10 +61,11 @@ const romanizeGreek=s=>[...String(s||"").normalize("NFD").replace(/\p{M}/gu,"").
 let greekFormsTask=null;
 async function attestedGreekForms(query){
  if(!/^[a-z]{3,35}$/i.test(query))return [];
- if(!greekFormsTask)greekFormsTask=fetch("data/lexicon/conceptus.json")
+ if(!greekFormsTask)greekFormsTask=fetch("data/lexicon/conceptus.json?v=20261111-restored-r2")
   .then(r=>{if(!r.ok)throw Error("Conceptus unavailable");return r.json()})
-  .then(j=>Array.isArray(j?.concepts)?j.concepts:[]).catch(()=>[]);
- const concepts=await greekFormsTask,found=new Set(),key=fold(query);
+  .then(j=>({concepts:Array.isArray(j?.concepts)?j.concepts:[],aliases:j.queryAliases||[]})).catch(()=>({concepts:[],aliases:[]}));
+ const {concepts,aliases}=await greekFormsTask,found=new Set(),key=fold(query);
+ for(const a of aliases)if(a.language==="grc"&&(a.queries||[]).some(q=>fold(q)===key))for(const g of a.terms||[])found.add(g);
  for(const c of concepts)for(const g of (Array.isArray(c.grc)?c.grc:[])){
   if(typeof g==="string"&&/^[\p{Script=Greek}\p{M}]+$/u.test(g)&&fold(romanizeGreek(g))===key)found.add(g);
  }
@@ -661,7 +662,7 @@ async function search(updateHistory=true){
    status.after(extra);extra.dataset.extraSearch=String(id);
   }
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
-  const transliterations=[]; // Las equivalencias y transliteraciones no se incorporan a la búsqueda literal.
+  const transliterations=await attestedGreekForms(q); // Solo la misma voz griega transliterada; no conceptos relacionados.
   if(id!==serial)return;
   let lastPaint=0,painted=false;
   const onProgress=(partial,progress)=>{
@@ -679,7 +680,7 @@ async function search(updateHistory=true){
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
     (!progress.complete?" · buscando…":"");
   };
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress,isCancelled:()=>id!==serial});
+  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress,isCancelled:()=>id!==serial});
   if(id!==serial)return;
   const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
   const url=new URL(location.href);url.searchParams.set("q",q);

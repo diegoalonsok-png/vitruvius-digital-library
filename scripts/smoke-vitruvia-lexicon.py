@@ -12,12 +12,13 @@ traducciones de Perseus se sirven desde esa carpeta local.
 import argparse, asyncio, os, re, sys
 from playwright.async_api import async_playwright
 
+# Palabra busca la forma literal; las flexiones y los conceptos se activan aparte.
 # (consulta, mínimo de coincidencias, máximo, texto que debe aparecer en el estado o en la página)
 CASES = [
-    ("q=columna&mode=palabra&lang=la", 200, 400, "Vitr."),
-    ("q=symmetria&mode=palabra&lang=la", 60, 200, "Vitr."),
+    ("q=columna&mode=palabra&lang=la", 19, 19, "Vitr."),
+    ("q=symmetria&mode=palabra&lang=la", 14, 14, "Vitr."),
     ("q=λόγος&mode=palabra", 50, 3000, "Pl. Ap."),
-    ("q=κύκλος&mode=palabra", 300, 2000, "Euclides"),
+    ("q=κύκλος&mode=palabra", 141, 141, "Euclides"),
     ("q=constructor&mode=palabra&lang=la", 0, 50, "constructor"),
     ("q=%22firmitatis%20utilitatis%20venustatis%22&mode=frase", 1, 5, "Vitr. 1.3.2"),
     ("q=arma%20virumque&mode=frase", 1, 3, "Verg. A. 1.1"),

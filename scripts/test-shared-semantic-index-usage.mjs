@@ -90,8 +90,8 @@ function run(index){
  await engine.semanticSearch("casa",{limit:10});
  assert.equal(engine.diagnostics().staticIndexUsed,false,"Missing postings must disable filter");
 }
-// The general search must include all documentary search routes even when
-// an attested literal hit exists (domus in Latin AND οἶκος in Greek).
+// Literal searches keep the requested term; explicit semantic expansion adds
+// documented translations, preserving provenance and deduplicating loci.
 {
  data["data/classics-corpus/people-grc.json"].passages=[{locus:"1",text:"Ὁ οἶκος ἐστίν."}];
  const withGreek={
@@ -105,7 +105,9 @@ function run(index){
  assert.equal(literal.some(r=>r.language==="la"),true);
  assert.equal(literal.some(r=>r.language==="grc"),false);
  assert.equal(semantic.some(r=>r.language==="grc"),true);
- const both=await engine.combinedSearch("domus",{limit:6});
+ const exact=await engine.combinedSearch("domus",{limit:6});
+ assert.deepEqual([...new Set(exact.map(r=>r.language))],["la"],"Default search must not add a different term");
+ const both=await engine.combinedSearch("domus",{limit:6,semantic:true});
  assert.deepEqual([...new Set(both.map(r=>r.language))].sort(),["grc","la"]);
  assert.equal(both.length,2,"Identical Latin locus may not appear twice");
  assert(both.some(r=>r.language==="grc"&&r.meta.includes("SEMÁNTICA EDITORIAL")));
