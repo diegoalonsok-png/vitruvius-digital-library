@@ -51,6 +51,22 @@ for(const item of CASES){
    controls:document.querySelectorAll("button,[role=button],input[type=submit]").length
   }),{result:item.result,state:item.state});
   row.resultElements=body.count;row.state=body.status;row.controls=body.controls;
+  // Verify the formerly broken yellow-highlight dictionary interaction.
+  if(item.url==="index.html"||item.url==="aparato-critico.html"){
+   const markSelector=item.url==="index.html"
+    ?"#lexical-occurrences mark.lexical-query-hit, #search-results mark.search-hit"
+    :"#critical-results p[lang=la] mark";
+   try{
+    const highlighted=page.locator(markSelector).first();
+    await highlighted.waitFor({state:"visible",timeout:3500});
+    await highlighted.click({timeout:3500});
+    await page.locator("#vitruvius-lexical-card:not([hidden])").waitFor({state:"visible",timeout:4000});
+    row.lexicalPopup="PASS";
+    const close=page.locator("#vitruvius-lexical-card .vlc-close");
+    await close.click();
+    row.lexicalPopupClose=(await page.locator("#vitruvius-lexical-card").getAttribute("hidden"))!==null?"PASS":"FAIL";
+   }catch(e){row.lexicalPopup="FAIL: "+String(e.message||e).slice(0,120)}
+  }
  }catch(e){row.reason=String(e.message||e).slice(0,240)}
  await context.close();
  records.push(row);
