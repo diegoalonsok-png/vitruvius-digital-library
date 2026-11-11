@@ -490,6 +490,24 @@ function hitCard(D,h){
  const actions=el("div",{class:"actions"});
  actions.append(el("button",{type:"button",onclick:()=>{full.hidden=!full.hidden;if(!full.childNodes.length){const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(text,h.spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));full.append(el("p",{class:"lx-src"},w.edition||""," ",w.license?"· "+w.license:""))}}},"Pasaje completo"));
  actions.append(el("button",{type:"button",class:"lx-primary",onclick:()=>openViewer(D,p,h.spans,S.q)},p[0]==="vitruvius"?"Leer con traducción (ES · FR · EN)":"Leer con traducción"));
+ // Opt-in translation for every concordance hit; the original and scholarly edition remain intact.
+ const automatic=el("div",{class:"lx-hit-auto-translation",hidden:true});
+ const autoButton=el("button",{type:"button",class:"lx-btn","aria-expanded":"false",onclick:()=>{
+  const opening=automatic.hidden;automatic.hidden=!opening;
+  autoButton.setAttribute("aria-expanded",String(opening));
+  if(!opening||automatic.dataset.prepared)return;
+  automatic.dataset.prepared="1";
+  automatic.append(el("p",{class:"lx-small"},"Traducción automática orientativa. La traducción de lenguas antiguas puede ser imprecisa; el fragmento solo se envía al proveedor al pulsar «Traducir fragmento»."));
+  const sample=el("p",{class:"lx-passage",lang:D.l},String(text).slice(0,1200));
+  automatic.append(sample);
+  if(!window.VitruviaInlineTranslation?.attach(sample,{sourceLanguage:D.l,originalText:text})){
+   automatic.append(el("p",{class:"lx-small"},"El servicio de traducción no está disponible para este pasaje."));
+  }
+  if(text.length>1200)automatic.append(el("p",{class:"lx-small"},"Pasaje extenso: se traduce solo el primer fragmento; consulte el texto completo en el lector."));
+ }},"Traducción automática · ES / EN / FR");
+ actions.append(autoButton);
+ card.append(automatic);
+
  const rl=readerLink(D,p);if(rl)actions.append(el("a",{href:rl},"Leer en el visor"));
  if(p[0]==="vitruvius")actions.append(el("button",{type:"button",onclick:e=>showApparatus(p[1],full,e.target)},"Aparato y colación"));
  actions.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=text.slice(k.a,k.b).replace(/\s+/g," ").slice(0,400);S.mode="paralelos";renderTabs();run()}},"Paralelos"));
@@ -1313,7 +1331,7 @@ function frequencyTable(c,F){
     $("#lx-q").value=F.es[0];S.lang="la";$("#lx-lang").value="la";S.work="vitruvius";showTranslationHits(F.es);
    }},"Ver pasajes"))));
  }
- sec.append(F.rows.length||F.trN?tb:el("p",{class:"lx-small"},"Sin ocurrencias en el corpus local."));
+ if(F.rows.length||F.trN){const viewport=el("div",{class:"lx-freq-table-scroll",role:"region",tabindex:"0","aria-label":"Tabla de frecuencias con desplazamiento horizontal"});viewport.append(tb);sec.append(viewport)}else sec.append(el("p",{class:"lx-small"},"Sin ocurrencias en el corpus local."));
  return sec;
 }
 async function showTranslationHits(words){
