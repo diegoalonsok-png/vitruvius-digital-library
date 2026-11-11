@@ -128,6 +128,25 @@ try{
     item.buttons=observation.count;item.disabledButtons=observation.disabled;
     item.unnamedButtons=observation.unnamed;item.suspectButtons=observation.candidates;
     await p.waitForTimeout(450);
+    // Only non-destructive theme, language, tab and disclosure controls.
+    // Record observable state changes rather than claiming that all buttons work.
+    const allowed=p.locator("button[aria-expanded],button[aria-pressed],button[data-theme],button[data-lang],button[data-tab]");
+    let tested=0;
+    for(let index=0;index<Math.min(allowed.count?await allowed.count():0,12)&&tested<2;index++){
+     const control=allowed.nth(index);
+     if(!await control.isVisible().catch(()=>false)||!await control.isEnabled().catch(()=>false))continue;
+     const label=(await control.getAttribute("aria-label")||await control.innerText().catch(()=>"")).trim().slice(0,90);
+     if(/eliminar|borrar|delete|remove|comprar|purchase|enviar|send|descargar|download|print|imprimir/i.test(label))continue;
+     const state=()=>p.evaluate(()=>[document.documentElement.getAttribute("lang"),
+      document.documentElement.getAttribute("data-theme"),document.body.className,
+      [...document.querySelectorAll("button[aria-pressed],button[aria-expanded]")].slice(0,30)
+       .map(b=>b.getAttribute("aria-pressed")+":"+b.getAttribute("aria-expanded")).join("|")].join("||"));
+     const before=await state();let clickError=null;
+     try{await control.click({timeout:1300});await p.waitForTimeout(100)}catch(e){clickError=String(e.message||e).slice(0,130)}
+     const after=await state().catch(()=>before);
+     siteAudit.buttonTests.push({page:filename,label,clicked:!clickError,stateChanged:before!==after,error:clickError});
+     tested++;
+    }
    }catch(error){item.error=String(error.message||error).slice(0,180)}
    finally{item.jsErrors=[...new Set(errors)].slice(0,8);item.internalMissing=[...new Set(missing)].slice(0,8);siteAudit.pages.push(item);await context.close()}
   }
@@ -201,6 +220,9 @@ try{
   pagesWithJsErrors:siteAudit.pages.filter(x=>x.jsErrors.length).length,
   pagesWithLocalHTTPFailures:siteAudit.pages.filter(x=>x.internalMissing.length).length,
   pagesWithNavigationErrors:siteAudit.pages.filter(x=>x.error||x.status!==200).length,
+  safeButtonsClicked:siteAudit.buttonTests.filter(x=>x.clicked).length,
+  safeButtonsWithObservableChange:siteAudit.buttonTests.filter(x=>x.stateChanged).length,
+  safeButtonClickErrors:siteAudit.buttonTests.filter(x=>x.error).length,
   searchesAudited:siteAudit.searches.length,searchesObserved:siteAudit.searches.filter(x=>x.submitToResponseMs!==null).length,
   p50SearchMs:pct("submitToResponseMs",.5),p95SearchMs:pct("submitToResponseMs",.95),
   searchFailures:siteAudit.searches.filter(x=>x.error||x.jsErrors.length).map(x=>({name:x.name,error:x.error,js:x.jsErrors.slice(0,2)}))
