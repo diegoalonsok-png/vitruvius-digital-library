@@ -2,7 +2,7 @@
   "schema": "vitruvius-codicological-trees-222-v1",
   "updated": "2026-11-10",
   "count": 222,
-  "physicalWitnessCount": 91,
+  "physicalWitnessCount": 93,
   "interpretation": "All work-to-manuscript lines express attestations, not copying. Only separately documented manuscript-to-manuscript lines support filiations. No family or lost archetype is invented.",
   "method": "physicalWitnessCount counts unique canonicalPhysicalId, not individual text transmissions. Every work has its own attestation link; family trees require source-backed relations.",
   "records": [
@@ -3857,8 +3857,54 @@
         "type": "classical_work",
         "label": "Aulo Gelio · Noctes Atticae"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "aulus-gellius-harley4859",
+          "canonicalPhysicalId": "codex-harley-ms-4859",
+          "type": "physical_witness",
+          "label": "Harley MS 4859",
+          "repository": "London, British Library",
+          "dating": "último cuarto del siglo XIV – primer cuarto del XV (1375–1424)",
+          "material": "Pergamino; 206 folios; 255 × 175 mm; caja de escritura 165 × 110 mm.",
+          "folioRange": "ff. 1r–201r: Noctes Atticae; ff. 201v–205r: índice latino; ff. 205v–206v: definiciones y etimologías.",
+          "coverage": "Texto de Noctes Atticae, con notas marginales, índices de voces y frases; no se afirma integridad crítica ni prioridad cronológica mundial.",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002050702",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        },
+        {
+          "id": "aulus-gellius-burney174",
+          "canonicalPhysicalId": "codex-burney-ms-174",
+          "type": "physical_witness",
+          "label": "Burney MS 174",
+          "repository": "London, British Library",
+          "dating": "tercer cuarto del siglo XV (1450–1474)",
+          "material": "Pergamino; 295 × 200 mm, caja de escritura 205 × 110 mm; 36 líneas.",
+          "folioRange": "ff. 2r–237v Noctes Atticae; ff. 237v–239v prefacio (orden material posterior al texto).",
+          "coverage": "Noctes Atticae con prefacio colocado a continuación; iniciales y rúbricas ornamentadas; estado de integridad de cada libro requiere cotejo textual.",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002237055",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "aulus-gellius-noctes",
+          "target": "aulus-gellius-harley4859",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002050702"
+        },
+        {
+          "source": "aulus-gellius-noctes",
+          "target": "aulus-gellius-burney174",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002237055"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -9714,5 +9760,5 @@
       }
     }
   ],
-  "textualWitnessRecordCount": 98
+  "textualWitnessRecordCount": 100
 }
