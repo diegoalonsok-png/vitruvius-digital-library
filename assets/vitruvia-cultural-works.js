@@ -30,9 +30,25 @@ async function entities(list){
  const data=await get('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:unique.join('|'),props:'labels|aliases|descriptions|claims|sitelinks',languages:'es|en|fr',format:'json',origin:'*'}));
  return data?.entities||{};
 }
-const relationships={architect:['P84','P287'],author:['P50'],music:['P175'],composer:['P86'],visual:['P170','P110','P14574'],cinema:['P57','P58','P162','P161'],general:['P50','P84','P86','P170','P175','P57','P287','P61','P178']};
+// All people use the same cross-disciplinary, source-backed relationships.
+// The person's primary profession MUST NOT hide their books, paintings,
+// architecture, compositions, designs or discoveries.
+const CROSS_DISCIPLINARY_RELATIONS=['P50','P170','P84','P287','P86','P175','P110','P57','P58','P162','P161','P61'];
+const CONTRIBUTOR_ROLES={
+ P50:['Autor/a','Author','Auteur'],P170:['Creador/a','Creator','Créateur'],
+ P84:['Arquitecto/a','Architect','Architecte'],P287:['Diseñador/a','Designer','Concepteur'],
+ P86:['Compositor/a','Composer','Compositeur'],P175:['Intérprete','Performer','Interprète'],
+ P110:['Ilustrador/a','Illustrator','Illustrateur'],P57:['Dirección','Director','Réalisation'],
+ P58:['Guion','Screenwriter','Scénario'],P162:['Producción','Producer','Production'],
+ P161:['Participación actoral','Cast member','Interprétation'],P61:['Descubrimiento o invención','Discoverer / inventor','Découvreur / inventeur']
+};
+function rolesOf(work,subjectId){
+ if(!qid(subjectId))return [];
+ return Object.entries(CONTRIBUTOR_ROLES).filter(([property])=>ids(work,property).includes(subjectId))
+  .map(([property,names])=>({property,label:L(...names)}));
+}
 async function related(id,kind,offset=0){
- const properties=[...new Set([...(relationships[kind]||relationships.general),'P50','P170','P86','P175','P110','P84'])];
+ const properties=CROSS_DISCIPLINARY_RELATIONS;
  const page=Math.max(0,Math.min(2000,Number(offset)||0));
  const query='SELECT DISTINCT ?work ?coverage WHERE { VALUES ?relation { '+properties.map(p=>'wdt:'+p).join(' ')+' } '+
   '?work ?relation wd:'+id+' . OPTIONAL { ?work wikibase:sitelinks ?coverage . } } ORDER BY DESC(?coverage) ?work LIMIT 40 OFFSET '+page;
@@ -54,9 +70,14 @@ function mediumOf(entity,description,building){
  if(has('symphony','sinfonia','sonata','concerto','concierto','chamber music','musical composition','musical work','cantata','requiem','song','cancion','oratorio','quartet','cuarteto','partitura'))return 'music';
  if(types.includes('Q571')||has('book','libro','novel','novela','poem','poema','treatise','tratado','essay','ensayo','literary work','manuscript','manuscrito'))return 'literature';
  if(types.includes('Q11424')||has('film','pelicula','movie','documentary','documental','audiovisual'))return 'cinema';
+ // The following are catalogue subject classifications, not assertions that
+ // a complete mathematical derivation or scientific proof is available.
+ if(has('mathematical theorem','theorem','teorema','mathematical formula','formula matematica','equation','ecuacion','conjecture','conjetura','mathematical identity'))return 'mathematics';
+ if(has('scientific discovery','scientific theory','physical law','scientific law','scientific concept','chemical element','descubrimiento cientifico','teoria cientifica','ley fisica'))return 'science';
+ if(has('invention','invencion','invento','patent','patente','engineered device','scientific instrument','mechanical device','machine','maquina','engineering project','proyecto de ingenieria'))return 'technology';
  return 'other';
 }
-function workRecord(entity,notable,coverage=0){
+function workRecord(entity,notable,coverage=0,subjectId=''){
  const title=label(entity),instances=ids(entity,'P31');
  if(!qid(entity?.id)||!title||/^Q\d+$/.test(title)||instances.some(id=>['Q5','Q4167410','Q4167836','Q13406463'].includes(id)))return null;
  const desc=description(entity),claims=entity.claims||{};
@@ -83,7 +104,7 @@ function workRecord(entity,notable,coverage=0){
  return {id:entity.id,title,description:desc,year:numericYear,date:numericYear===null?'':numericYear<0?Math.abs(numericYear)+' '+L('a. C.','BCE','av. J.-C.'):String(numericYear),
   dateKind,dateProperty,dateReferenced,
   href,picture,image:commonsFile(picture),plan:commonsFile(planFile),notable,coverage:Math.max(coverage,Object.keys(entity.sitelinks||{}).filter(x=>/wiki$/.test(x)).length),building,medium:mediumOf(entity,desc,building),
-  photoTitle:entity.sitelinks?.enwiki?.title||site?.title||title,wikiLang,wikiTitle:site?.title||'',aliases:Object.values(entity.labels||{}).map(x=>x.value)};
+  roles:rolesOf(entity,subjectId),photoTitle:entity.sitelinks?.enwiki?.title||site?.title||title,wikiLang,wikiTitle:site?.title||'',aliases:Object.values(entity.labels||{}).map(x=>x.value)};
 }
 function compare(a,b,order='year'){
  if(order==='year')return (a.year??99999)-(b.year??99999)||a.title.localeCompare(b.title);
@@ -97,7 +118,7 @@ async function catalogue(identity,kind,offset=0){
  const notable=offset?[]:[...new Set([...ids(creator,'P800'),...(identity.notableWorkIds||[]).filter(qid)])].slice(0,40);
  const all=[...new Set([...notable,...reverse.records.map(x=>x.id)])].slice(0,50);
  const records=await entities(all);
- const works=all.map(work=>workRecord(records[work],notable.includes(work),reverse.records.find(x=>x.id===work)?.coverage)).filter(Boolean).sort((a,b)=>compare(a,b,'year'));
+ const works=all.map(work=>workRecord(records[work],notable.includes(work),reverse.records.find(x=>x.id===work)?.coverage,id)).filter(Boolean).sort((a,b)=>compare(a,b,'year'));
  return {works,available:!!creator||reverse.available,partial:!creator||!reverse.available,hasMore:reverse.available&&reverse.records.length===40};
 }
 async function preview(item,work,valid){
@@ -125,6 +146,11 @@ function showWorks(root,works,valid){
   'Registros recuperados: '+works.length+'. Orden por la primera fecha tipificada disponible (inicio, apertura o publicación); las obras sin fecha van al final. No es un catálogo exhaustivo.',
   'Retrieved records: '+works.length+'. Ordered by earliest available typed date (inception, opening or publication); undated works follow. Not an exhaustive catalogue.',
   'Notices récupérées : '+works.length+'. Classées par date qualifiée (conception, ouverture ou publication) ; notices non datées en dernier. Catalogue non exhaustif.')));
+ root.append(el('p','context-note',L(
+  'Las categorías se calculan a partir de datos y descripciones de Wikidata. Las relaciones de autoría, diseño, interpretación o descubrimiento se indican por separado y pueden carecer de referencias de origen.',
+  'Categories are inferred from Wikidata descriptions and types. Authorship, design, performance and discovery are shown as distinct roles; individual statements may lack citations.',
+  'Catégories déduites de Wikidata. Auteur, conception, interprétation et découverte sont distingués ; certaines déclarations peuvent manquer de références.'
+ )));
  const stack=el('div','web-dossier-stack cultural-work-stack');root.append(stack);
  const cards=new Map();let expanded=true;
  const limit=works.length;
@@ -140,6 +166,7 @@ function showWorks(root,works,valid){
      L('Fecha registrada','Recorded date','Date enregistrée'))+': '+work.date+
     ' · Wikidata '+work.dateProperty+(work.dateReferenced?' · '+L('con referencia','with citation','avec référence'):
      ' · '+L('sin referencia de origen en el dato','no cited source in this claim','sans source citée dans la déclaration'))));
+   if(work.roles?.length)item.append(el('p','architecture-work-meta',L('Relación registrada: ','Recorded role: ','Relation attestée : ')+work.roles.map(x=>x.label+' · '+x.property).join(' / ')));
    if(work.notable)item.append(el('span','cultural-notable',L('Obra destacada','Notable work','Œuvre notable')));
    item.append(link('Wikidata ↗','https://www.wikidata.org/wiki/'+work.id));stack.append(item);
    window.VitruviaArchitectVisuals?.enhance(item,{...work,previewDrawings:cards.size===0});
@@ -152,6 +179,7 @@ function showWorks(root,works,valid){
      work.dateKind==='opening'?L('Apertura','Opening','Ouverture'):L('Fecha','Date','Date'))+
     ': '+work.date+' · '+work.dateProperty:'';
    body.append(el('p','web-dossier-meta',[dateValue,work.notable?L('Obra destacada','Notable work','Œuvre notable'):'','Wikidata · '+work.id].filter(Boolean).join(' · ')));
+   if(work.roles?.length)body.append(el('p','web-dossier-meta',L('Relación registrada: ','Recorded role: ','Relation attestée : ')+work.roles.map(x=>x.label+' · '+x.property).join(' / ')));
    if(work.description)body.append(el('p','web-dossier-description',work.description));
    body.append(link(L('Ficha y fuentes ↗','Record and sources ↗','Fiche et sources ↗'),'https://www.wikidata.org/wiki/'+work.id));item.append(body);stack.append(item);
    // A bounded number of image requests, including the first visible cards.
@@ -163,7 +191,7 @@ function showWorks(root,works,valid){
  }
  function arrange(){
   stack.replaceChildren();
-  const order=['painting','sculpture','installation','theatre','music','album','literature','cinema','architecture','other'];
+  const order=['painting','sculpture','installation','theatre','music','album','literature','cinema','architecture','mathematics','science','technology','other'];
   const labels={
    painting:L('Pinturas, dibujos y grabados','Paintings, drawings and prints','Peintures, dessins et estampes'),
    sculpture:L('Esculturas y relieves','Sculptures and reliefs','Sculptures et reliefs'),
@@ -174,6 +202,9 @@ function showWorks(root,works,valid){
    literature:L('Libros, poesía y escritos','Books and writings','Livres et écrits'),
    cinema:L('Cine y audiovisuales','Cinema and audiovisual','Cinéma et audiovisuel'),
    architecture:L('Arquitectura y construcciones','Architecture and buildings','Architecture et bâtiments'),
+   mathematics:L('Matemática · teoremas y fórmulas','Mathematics · theorems and formulae','Mathématiques · théorèmes et formules'),
+   science:L('Ciencias · teorías y descubrimientos','Sciences · theories and discoveries','Sciences · théories et découvertes'),
+   technology:L('Ingeniería · inventos y dispositivos','Engineering · inventions and devices','Ingénierie · inventions et dispositifs'),
    other:L('Otras obras sin género determinado','Other works with unspecified genre','Autres œuvres sans genre défini')
   };
   const groups=new Map();
