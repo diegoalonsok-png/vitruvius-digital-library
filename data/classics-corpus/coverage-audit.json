@@ -7,14 +7,14 @@
     "cataloguedWorks": 222,
     "catalogueStatuses": {
       "lectura-local-completa": 32,
-      "lectura-local-parcial": 113,
-      "pendiente-de-incorporar": 44,
+      "lectura-local-parcial": 114,
+      "pendiente-de-incorporar": 43,
       "repertoriado-busqueda-externa": 18,
       "fuente-externa-identificada": 15
     },
-    "locallyReadableClaims": 145,
-    "indexedTextVersions": 246,
-    "indexedDistinctWorks": 181,
+    "locallyReadableClaims": 146,
+    "indexedTextVersions": 247,
+    "indexedDistinctWorks": 182,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -930,12 +930,16 @@
       "originalLanguage": "la",
       "genre": "Arquitectura e ingeniería",
       "dating": "Finales del siglo III – comienzos del IV d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/faventinus-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
       "manuscriptRecords": [
         {
@@ -943,8 +947,8 @@
           "shelfmark": "Cod. Guelf. 132 Gud. lat."
         }
       ],
-      "hasDeclaredExternalReading": false,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "hasDeclaredExternalReading": true,
+      "notes": "Texto original latino de la edición de Rose (1899) indexado en 32 párrafos editoriales consecutivos; transcripción Project Gutenberg 51812. Los loci secuenciales NO son loci críticos ni folios ni una lectura diplomática."
     },
     {
       "id": "barnabas",
