@@ -71,15 +71,17 @@ function entityMetadata(entity){
 // Remove generic *intent* expressions but do not hard-code personalities.
 const clean=q=>{
  const full=String(q||"").trim();
- const cleaned=full.replace(/^(?:(?:qué|que|quién|quien|who|what)\s+(?:es|fue|is|was)\s+|(?:biograf[ií]a|historia|vida|vida y obra|obras|pinturas|cuadros|retratos|fotograf[ií]as|fotos|im[aá]genes|pel[ií]culas|filmograf[ií]a|libros|tratados|[aá]lbumes|discos|discograf[ií]a|planos|plantas|cortes|fachadas)\s+(?:de|del|sobre)\s+|(?:paintings|artworks|pictures|photographs|photos|images|films|movies|works|biography|history|albums|discography|plans)\s+(?:of|by|about)\s+)/i,"").trim();
- // Search intent at the end belongs to a creator, not to the title of a
- // similarly named UNESCO collection, book or other subject.
- // Los cargos y oficios califican a la persona; no forman parte de su nombre.
- const suffix=/\s+(?:obras|obra|arquitectura|edificios|proyectos|construcciones|puentes|planos|fachadas|buildings|projects|works|architecture|architectural works|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|pinturas|paintings|pintor|pintora|painter|artist|artista|sculptor|escultor|escultora|filosofo|filósofo|philosopher|poeta|poet|historiador|historian|cientifico|científico|scientist|fisico|físico|physicist|faraon|faraón|pharaoh|rey|king|bibliografia|bibliografía|politico|político|politica|política|politician|politician argentino|militar|general|libertador|liberator|revolucionario|revolutionary|estadista|statesman|emperador|emperor|santo|saint|presidente|president|historico|histórico|historical|futbolista|footballer|soccer player|football player|deportista|arquero|goalkeeper|atleta|athlete|cantante|singer|musico|músico|musician|compositor|composer)$/i;
+ // Search intent is separated from the referenced person or work, not erased
+ // from the original query that drives vertical filters (books, music, plans).
+ // Multilingual prefixes are matched only when followed by a meaningful subject.
+ const prefix=/^(?:(?:qué|que|quién|quien|who|what)\s+(?:es|fue|is|was)\s+|(?:vida y obra|biograf[ií]a|bibliograf[ií]a|historia|vida|obras|pinturas|cuadros|retratos|fotograf[ií]as|fotos|im[aá]genes|esculturas|grabados|dibujos|instalaciones|museos|pel[ií]culas|filmograf[ií]a|libros|novelas|poemas|poes[ií]a|ensayos|manuscritos|tratados|[aá]lbumes|discos|discograf[ií]a|canciones|v[ií]deos|videos|m[uú]sica|conciertos|composiciones|planos|plantas|cortes|fachadas|edificios|secciones|proyectos|arquitectura)\s+(?:de|del|sobre)\s+|(?:floor plans|books|poetry|songs|albums|discs|records|music|concerts|compositions|paintings|artworks|pictures|photographs|photos|images|sculptures|drawings|films|movies|works|biography|history|architecture|plans|novels|essays|manuscripts|discography)\s+(?:of|by|about)\s+)/i;
+ const cleaned=full.replace(prefix,"").trim();
+ const suffix=/\s+(?:obras|obra|arquitectura|arquitecto|arquitecta|edificios|proyectos|construcciones|puentes|planos|plantas|cortes|secciones|fachadas|buildings|projects|works|architecture|architect|architectural works|floor plans|filmografia|discografia|discography|albumes|álbumes|albums|peliculas|películas|films|movies|libros|books|novelas|poemas|poesía|ensayos|manuscritos|pinturas|paintings|dibujos|grabados|esculturas|instalaciones|pintor|pintora|painter|artist|artista|sculptor|escultor|escultora|filosofo|filósofo|philosopher|poeta|poet|historiador|historian|cientifico|científico|scientist|fisico|físico|physicist|faraon|faraón|pharaoh|rey|king|bibliografia|bibliografía|politico|político|politica|política|politician|politician argentino|militar|general|libertador|liberator|revolucionario|revolutionary|estadista|statesman|emperador|emperor|santo|saint|presidente|president|historico|histórico|historical|futbolista|footballer|soccer player|football player|deportista|arquero|goalkeeper|atleta|athlete|cantante|singer|musico|músico|musician|música|music|compositor|composer)$/i;
  let subject=cleaned.replace(/^(?:el|la|the|le)\s+(?:rey|reina|king|queen|fara[oó]n|pharaoh|pintor|pintora|painter|artista|artist|fil[oó]sofo|philosopher|arquitecto|architect)\s+/i,"");
- // Royal epithets are intent qualifiers, not parts of a person's given name.
- // The original form is still queried through multilingual authority aliases.
- const royal=subject.match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
+ // Some cultural names really begin with "King" or "Rey": never rewrite
+ // them into the isolated remainder as if they were royal titles.
+ const protectedName=/^(?:king crimson|rey sol)$/i.test(norm(subject));
+ const royal=!protectedName&&subject.match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
  if(royal&&royal[1].trim().length>=3)subject=royal[1].trim();
  for(let i=0;i<2;i++){
   const next=subject.replace(suffix,"").trim();
@@ -190,9 +192,9 @@ function creatorIntent(raw){
  if(/\b(futbolista|footballer|deportista|arquero|goalkeeper|atleta|athlete|soccer player|football player)\b/.test(q))return "sports";
  if(/\b(albumes|albums|album|discos|discografia|discography|canciones|songs|musica|music|conciertos|cantante|singer|musico|musician|compositor|composer)\b/.test(q))return "music";
  if(/\b(peliculas|films|movies|filmografia|filmography|cine)\b/.test(q))return "cinema";
- if(/\b(arquitectura|arquitecto|architecture|architect|edificios|buildings|planos|fachadas)\b/.test(q))return "architect";
- if(/\b(libros|books|bibliografia|novelas|novels|poemas|poems|filosofo|philosopher|poeta|poet|historiador|historian)\b/.test(q))return "author";
- if(/\b(pinturas|paintings|cuadros|esculturas|sculptures|pintor|pintora|painter|artist|artista|escultor|escultora|sculptor)\b/.test(q))return "visual";
+ if(/\b(arquitectura|arquitecto|arquitecta|architecture|architect|edificios|buildings|planos|plantas|cortes|secciones|proyectos|fachadas|floor plans|sections|elevations)\b/.test(q))return "architect";
+ if(/\b(libros|books|bibliografia|novelas|novels|poemas|poems|poetry|poesia|ensayos|essays|manuscritos|manuscripts|filosofo|philosopher|poeta|poet|historiador|historian)\b/.test(q))return "author";
+ if(/\b(pinturas|paintings|cuadros|esculturas|sculptures|grabados|drawings|dibujos|instalaciones|installations|retratos|museos|pintor|pintora|painter|artist|artista|escultor|escultora|sculptor)\b/.test(q))return "visual";
  return "";
 }
 function occupationFit(description,intent){
@@ -211,7 +213,8 @@ function occupationFit(description,intent){
 async function authorityCandidates(q,lang,intent="",originalQuery=""){
  const languages=[...new Set([lang,"es","en"])];
  const shortName=honorificVariant(q);
- const royal=String(originalQuery||q).trim().replace(/^(?:el|la|the|le)\s+/i,"").match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
+ const royalText=String(originalQuery||q).trim().replace(/^(?:el|la|the|le)\s+/i,"");
+ const royal=!/^(?:king crimson|rey sol)$/i.test(norm(royalText))&&royalText.match(/^(?:rey|reina|king|queen|fara[oó]n|pharaoh|pharaon|emperador|emperor)\s+(.+)$/i);
  // Rank a full royal designation ahead of incidental uses of a short name
  // (e.g. King Tut must not be displaced by a shop merely called Tut).
  const variants=[...new Set([...(royal?[String(originalQuery).trim(),"King "+royal[1].trim(),"Rey "+royal[1].trim()]:[]),
