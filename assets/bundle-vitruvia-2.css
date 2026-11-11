@@ -1,6 +1,6 @@
 /* Paquete generado por scripts/build-style-bundles.mjs — no editar a mano.
-   Página: vitruvia.html · tramo 2 de 3 · 3 hojas en el orden original.
-   Editar los archivos fuente y volver a ejecutar el script. */
+   Página: vitruvia.html · 3 hojas en el orden original.
+   Editar los archivos fuente y volver a ejecutar el script con --refresh. */
 /* ===== assets/vitruvia-full-width-reading.css ===== */
 /* Vitruvia: full-page reading and search results.
    Avoid a narrow right rail and the large unused empty left region.
@@ -232,3 +232,44 @@ html[data-theme=light] .vhg-caption,html[data-theme=light] .vhg-detail{color:#55
    Noto Sans Egyptian Hieroglyphs · SIL Open Font License 1.1 · véase assets/fonts/LICENSE-noto-sans-egyptian-hieroglyphs.txt */
 @font-face{font-family:'Noto Sans Egyptian Hieroglyphs';font-style:normal;font-weight:400;font-display:swap;src:local('Noto Sans Egyptian Hieroglyphs'),url('fonts/noto-sans-egyptian-hieroglyphs-400.woff2') format('woff2');unicode-range:U+13000-1345F}
 [lang="egy"],.lx-hiero,.v-script-glyphs,.hg{font-family:'Noto Sans Egyptian Hieroglyphs','Egyptian Text','Segoe UI Historic',sans-serif}
+
+/* ───────── Griego politónico y ático ─────────
+   Los diacríticos del politónico —espíritu suave y áspero, los tres acentos,
+   la iota suscrita y sus combinaciones sobre mayúscula— se descolocan o se
+   cortan por tres causas, y las tres se atienden aquí:
+
+   1. Familia tipográfica. Muchas familias de interfaz no resuelven bien las
+      combinaciones raras (ᾖ, ῷ, ᾅ). Se declara una pila de familias con
+      cobertura politónica comprobada; si ninguna está instalada, se cae en
+      Palatino o Times, que también la tienen. No se descarga ninguna fuente:
+      en las páginas que ya cargan Cardo y Gentium, se usan.
+   2. Altura de línea. Un espíritu con acento sobre una mayúscula ocupa por
+      encima de la altura de las capitales, y una iota suscrita por debajo de
+      la línea base. Con interlínea ajustada, el navegador los recorta.
+   3. Mayúsculas automáticas. text-transform:uppercase aplicado a griego
+      politónico destruye los diacríticos: el paso a mayúscula en griego los
+      suprime o los recoloca, y lo que queda no es ni el texto ni su versión
+      mayúscula correcta. Por eso aquí se anula, incluso frente a reglas más
+      específicas: no es una preferencia estética sino un defecto. */
+[lang="grc"],[lang^="grc-"],[lang="grc-x-polytonic"],.grc,.lx-grc,.greek-text{
+ font-family:'Cardo','Gentium Book Plus','Gentium Plus','GFS Didot','New Athena Unicode',
+  'Galatia SIL','IFAO-Grec Unicode','Palatino Linotype','Palatino','Times New Roman',serif;
+ line-height:1.72;
+ text-transform:none!important;
+ font-variant-ligatures:none;
+ font-kerning:normal;
+}
+/* Hebreo con puntuación masorética y cantilación: necesita más aire todavía. */
+[lang="he"],[lang="hbo"],[lang^="he-"],.he,.hebrew-text{
+ font-family:'Noto Serif Hebrew','SBL Hebrew','Ezra SIL','Taamey Frank CLM','David Libre',
+  'Times New Roman',serif;
+ line-height:1.95;
+ text-transform:none!important;
+}
+/* Una marca combinante no debe quedar cortada por un contenedor ajustado. */
+[lang="grc"],[lang^="grc-"],[lang="he"],[lang="hbo"]{padding-block-start:.05em}
+/* El griego dentro de un título o de un rótulo tampoco se pasa a mayúsculas. */
+:is(h1,h2,h3,h4,h5,h6,.meta,.eyebrow,caption,legend,th) :is([lang="grc"],[lang="he"],[lang="hbo"]){
+ text-transform:none!important;
+ letter-spacing:normal;
+}
