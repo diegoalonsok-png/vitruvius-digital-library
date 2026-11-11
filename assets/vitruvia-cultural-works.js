@@ -194,10 +194,49 @@ function showWorks(root,works,valid){
  select.addEventListener('change',arrange);
  arrange();
 }
+/* Institutional multidisciplinary catalogue supplement, never an invented work. */
+const ACADEMIC_DOSSIERS={
+ Q4724:{
+  heading:"Le Corbusier · pintura, escultura, libros y arquitectura",
+  notice:"UNESCO reconoce 17 sitios arquitectónicos (2016); la inscripción no incluye toda la obra plástica. La Fundación distingue su producción personal y las esculturas realizadas con Joseph Savina.",
+  groups:[
+   ["Pintura","Más de 450 pinturas realizadas","https://www.fondationlecorbusier.fr/en/le-corbusier/works/art-works/painting/",["La Cheminée (1918)","Nature morte au siphon (1921)","Taureau I (1952)"]],
+   ["Escultura","44 esculturas creadas junto con Joseph Savina","https://www.fondationlecorbusier.fr/en/le-corbusier/works/art-works/sculpture/",["Demi relief (1946)","Eau, ciel, terre (1954)","Femme dansant (1954)"]],
+   ["Libros del autor","Cerca de 40 libros publicados","https://www.fondationlecorbusier.fr/en/le-corbusier/works/books/",["Vers une architecture (1923)","La Ville radieuse (1935)","Le Modulor (1950)","Le poème de l’angle droit (1955)"]],
+   ["Patrimonio Mundial · arquitectura","17 sitios UNESCO inscritos en 2016","https://whc.unesco.org/en/list/1321/",["Villa Savoye","Unité d’habitation de Marseille","Casa Curutchet (La Plata)"]]
+  ]
+ },
+ Q177692:{
+  heading:"Andrea Palladio · libros, tratados y arquitectura",
+  notice:"Separar las obras escritas por Palladio de su trabajo como editor y de la bibliografía posterior sobre él.",
+  groups:[
+   ["Libros del autor · 1554","Guías históricas de Roma","https://mediateca.palladiomuseum.org/palladio/oggetto.php?id=67",["L’antichità di Roma (1554)","Descritione de le chiese di Roma (1554)"]],
+   ["Tratado del autor · 1570","Primera edición, ejemplar documentado","https://mediateca.palladiomuseum.org/palladio/oggetto.php?id=3",["I quattro libri dell’architettura (1570)"]],
+   ["Actividad editorial","Catálogo de impresos antiguos","https://mediateca.palladiomuseum.org/palladio/oggetti.php?TSK=L",["I commentari di C. Giulio Cesare (1575) · edición, no autoría de Palladio"]]
+  ]
+ }
+};
+function renderInstitutionalDossier(root,id){
+ const data=ACADEMIC_DOSSIERS[id]||ACADEMIC_DOSSIERS[id==='Q12829680'?'Q177692':id];if(!data)return;
+ const section=el('section','cultural-academic-dossier');
+ section.append(el('h4','context-section-title',data.heading),el('p','context-note',data.notice));
+ for(const [heading,summary,url,examples] of data.groups){
+  const group=el('div','cultural-academic-group');
+  group.append(el('h5','context-section-title',heading),el('p','context-note',summary));
+  const list=el('ul','cultural-academic-examples');
+  for(const title of examples)list.append(el('li',null,title));
+  group.append(list,link(L('Catálogo institucional · imágenes y cubiertas ↗','Institutional catalogue · images and covers ↗','Catalogue institutionnel · images et couvertures ↗'),url));
+  section.append(group);
+ }
+ section.append(el('p','context-note',L('Selección documentada, no inventario exhaustivo; las imágenes, tapas y licencias se consultan en la fuente.','Documented selection, not a complete inventory; consult the source for images, covers and licenses.','Sélection documentaire non exhaustive ; images, couvertures et licences à la source.')));
+ root.append(section);
+}
+
 async function render(root,identity,kind,valid){
  const section=el('section','cultural-notable-works');
  section.append(el('h4','context-section-title',kind==='architect'?L('Obras de arquitectura e ingeniería','Architecture and engineering works','Architecture et ingénierie'):L('Obras documentadas por género y fecha','Documented works by medium and date','Œuvres documentées par genre et date')));
  const status=el('p','context-note',L('Buscando obras e imágenes documentadas…','Finding documented works and images…','Recherche des œuvres et images documentées…'));section.append(status);root.append(section);
+ renderInstitutionalDossier(root,identity?.wikidataId);
  const result=await catalogue(identity,kind);
  if(!valid()||!section.isConnected)return [];
  status.remove();
