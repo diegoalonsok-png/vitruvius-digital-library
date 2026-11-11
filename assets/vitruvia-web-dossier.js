@@ -68,7 +68,8 @@ function topicType(query,rows){
    {kind:'visual',pattern:/\b(painter|sculptor|photographer|illustrator|artist|pintor|pintora|escultor|escultora|fotografo|fotografa|ilustrador|ilustradora|artista visual|peintre|sculpteur|photographe)\b/},
    {kind:'cinema',pattern:/\b(film director|filmmaker|cinematographer|director de cine|directora de cine|cineasta|realisateur|realisatrice|acteur|actrice|actor|actriz)\b/},
    {kind:'architect',pattern:/\b(architect|arquitecto|arquitecta|urbanista|engineer|ingeniero|ingeniera)\b/},
-   {kind:'author',pattern:/\b(writer|author|poet|poeta|escritor|escritora|novelist|filosofo|philosopher|humanist|historiador|historian|dramaturgo|playwright)\b/}
+   {kind:'author',pattern:/\b(writer|author|poet|poeta|escritor|escritora|novelist|filosofo|philosopher|humanist|historiador|historian|dramaturgo|playwright)\b/},
+   {kind:'researcher',pattern:/\b(mathematician|matematico|matematica|mathematicien|physicist|fisico|fisica|physicien|scientist|cientifico|cientifica|chemist|quimico|quimica|inventor|inventora|inventeur|astronomer|astronomo|astronoma)\b/}
   ].map(role=>({...role,position:desc.search(role.pattern)})).filter(role=>role.position>=0).sort((a,b)=>a.position-b.position);
   if(roles[0])return {kind:roles[0].kind,name:personName,person};
  }
@@ -516,6 +517,7 @@ function render(panel,query,rows,isCurrent){
    else if(/\b(film director|filmmaker|cineasta|director de cine|screenwriter|actor|actress|actriz)\b/.test(role))topic.kind='cinema';
    else if(/\b(architect|arquitecto|arquitecta|engineer|ingeniero|ingeniera)\b/.test(role))topic.kind='architect';
    else if(/\b(writer|author|novelist|poet|poeta|escritor|escritora)\b/.test(role))topic.kind='author';
+   else if(/\b(mathematician|matematico|matematica|physicist|fisico|fisica|scientist|cientifico|cientifica|chemist|quimico|quimica|inventor|astronomer|astronomo)\b/.test(role))topic.kind='researcher';
   }
   const sameIdentity=!authority?.wikidataId||!topic.person?.wikidataId||authority.wikidataId===topic.person.wikidataId;
   topic.aliases=sameIdentity?(authority?.aliases||[]):[];
@@ -535,11 +537,14 @@ function render(panel,query,rows,isCurrent){
    if(architectural&&(architectural.kind==='person'||
      architectural.kind!=='person'&&topic.kind!=='architect'&&topic.person?.entityKind!=='person'))
     window.VitruviaArchitecture?.render(section,query,records,valid);
-  const creator=authority?.kind==='person'||['author','architect','music','visual','cinema'].includes(topic.kind);
+  const creator=authority?.kind==='person'||['author','architect','music','visual','cinema','researcher'].includes(topic.kind);
   // The requested media lead: album covers for musicians, book covers for authors.
   if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid);
   if(topic.person&&['author','literature'].includes(topic.kind))manuscriptWitnesses(section,topic,records);
-  if(topic.person&&['author','literature','architect','cinema','visual','general'].includes(topic.kind))void books(section,topic,valid);
+  // Documented publications must not disappear because the person is primarily
+  // a musician, painter, physicist or engineer; author-name checks prevent
+  // unrelated books ABOUT that individual from being presented as authored.
+  if(topic.person&&creator&&topic.kind!=='literary-work')void books(section,topic,valid);
   if(topic.kind==='literary-work')void literaryEditions(section,topic,valid);
   const relationKind=topic.kind==='music'&&/compos/.test(normalized(topic.person?.entityDescription))&&
    !/cantante|singer|band|grupo|banda|rapper/.test(normalized(topic.person?.entityDescription))?'composer':topic.kind;
