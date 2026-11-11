@@ -141,10 +141,10 @@ function royalBuildingCatalogue(box,ruler){
     try{
      const resp=await fetch(api);if(!resp.ok)throw Error("HTTP "+resp.status);
      const data=await resp.json();if(my!==version||!block.isConnected)return;
-     const words=item.query.toLowerCase().split(/\\s+/).filter(w=>w.length>4);
+     const words=item.query.toLowerCase().split(/\s+/).filter(w=>w.length>4);
      const found=Object.values(data.query?.pages||{}).filter(p=>{
       const title=String(p.title||"").toLowerCase(),img=p.imageinfo?.[0];
-      return img?.url&&/\\.(jpe?g|png|webp|svg)$/i.test(title)&&words.some(w=>title.includes(w));
+      return img?.url&&/\.(jpe?g|png|webp|svg)$/i.test(title)&&words.some(w=>title.includes(w));
      }).slice(0,4);
      status.replaceChildren();
      status.append(document.createTextNode(found.length?
