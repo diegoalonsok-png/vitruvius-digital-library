@@ -122,7 +122,7 @@ function init(data){
  chapterSelect.addEventListener("change",render);
  render();
 }
-fetch("data/codex-h/terminos-capitulos-v514.json").then(r=>{
+fetch("data/codex-h/terminos-capitulos-v514.json?v=20261111-priority-v2").then(r=>{
  if(!r.ok)throw Error("HTTP "+r.status);return r.json();
 }).then(init).catch(e=>{status.textContent="Índice de términos no disponible: "+String(e.message||e)});
 })();
