@@ -2,7 +2,7 @@
    Source text and source page sequence remain untouched. */
 export function fold(input) {
  return String(input ?? "").normalize("NFKD").replace(/[\u0300-\u036f]/g,"")
-  .replace(/ſ/g,"s").replace(/æ/g,"ae").replace(/œ/g,"oe")
+  .replace(/ſ/g,"s").replace(/[Ææ]/g,"ae").replace(/[Œœ]/g,"oe")
   .toLocaleLowerCase().replace(/j/g,"i").replace(/v/g,"u")
   .replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ");
 }
