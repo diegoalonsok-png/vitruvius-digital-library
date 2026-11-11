@@ -21,7 +21,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,view:"life",selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
  const article=document.getElementById("vitruvia-article");
  const articleGrid=article?.querySelector(".article-grid");
  const resultsGrid=document.querySelector("#results .results-grid");
@@ -61,6 +61,21 @@
  // attested precisely and these milestones are approximate, not regnal-date
  // conversions presented as certainties. Bibliography remains outside it.
  const akhenatenBounds={birth:-1370,death:-1336};
+ // Use verified authority birth and death only for the biographical scale.
+ // Posthumous editions and later scholarship are still accessible in a
+ // separate chronology, never silently discarded or folded into the lifetime.
+ function biographyBounds(){
+  if(isAkhenaten())return akhenatenBounds;
+  const a=state.authority||{},birth=year(a.birthYear),death=year(a.deathYear);
+  if(birth===null||death===null||death<birth||death-birth>125)return null;
+  return {birth,death};
+ }
+ function dividePeriods(events){
+  const bounds=biographyBounds();
+  if(!bounds)return {bounds:null,life:events,outside:[]};
+  const inLife=e=>e.year>=bounds.birth&&(e.end??e.year)<=bounds.death;
+  return {bounds,life:events.filter(inLife),outside:events.filter(e=>!inLife(e))};
+ }
  function akhenatenEvents(){
   const ucl="https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/akhnaton.html";
   const pbs="https://www.pbs.org/empires/egypt/special/timeline/akenhaten.html";
@@ -164,7 +179,9 @@
  }
  function draw(){
   if(!state.query){root.hidden=true;root.replaceChildren();return}
-  const events=collect();
+  const periods=dividePeriods(collect());
+  const lifeMode=Boolean(periods.bounds)&&state.view!=="outside";
+  const events=periods.bounds?(lifeMode?periods.life:periods.outside):periods.life;
   root.replaceChildren();root.hidden=false;
   const head=el("div","vat-header");
   const left=el("div","vat-title");
@@ -198,6 +215,25 @@
     "Documented dates · works · editions · sources",
     "Dates documentées · œuvres · éditions · sources")));
   head.append(left,controls);root.append(head);
+  if(periods.bounds&&periods.outside.length){
+   const tabs=el("div","vat-period-tabs");
+   tabs.setAttribute("role","group");
+   tabs.setAttribute("aria-label",L("Tipo de cronología","Timeline period","Période chronologique"));
+   for(const [key,text] of [
+    ["life",L("Vida · "+showYear(periods.bounds.birth)+"–"+showYear(periods.bounds.death),
+     "Lifetime · "+showYear(periods.bounds.birth)+"–"+showYear(periods.bounds.death),
+     "Vie · "+showYear(periods.bounds.birth)+"–"+showYear(periods.bounds.death))],
+    ["outside",L("Documentos de otra época ("+periods.outside.length+")",
+     "Other-period sources ("+periods.outside.length+")",
+     "Sources d’autres époques ("+periods.outside.length+")")]
+   ]){
+    const tab=el("button",null,text);
+    tab.type="button";tab.setAttribute("aria-pressed",String(state.view===key));
+    tab.addEventListener("click",()=>{if(state.view!==key){state.view=key;state.selected="";draw()}});
+    tabs.append(tab);
+   }
+   root.append(tabs);
+  }
   const method=el("p","vat-method",L(
    "Cada hito abre una ficha de lectura y su fuente. Los años de una edición no representan necesariamente la creación de la obra ni el acontecimiento histórico.",
    "Select a milestone to read its record. Edition dates do not necessarily indicate first publication or historical events.",
@@ -206,6 +242,10 @@
     "Escala biográfica exclusivamente hasta la muerte aproximada. El nacimiento es estimado y los años absolutos del reinado pueden variar según la cronología egiptológica. Libros y estudios modernos no son hitos biográficos.",
     "Biographical scale stops at approximate death. Birth and absolute reign dates are uncertain; modern studies are excluded.",
     "L'échelle biographique s'arrête au décès approximatif. Dates discutées; les études modernes sont exclues.");
+  if(periods.bounds&&!lifeMode)method.textContent=L(
+   "Fuentes, ediciones o hitos fuera de las fechas biográficas: escala independiente. No representan acontecimientos de la vida del personaje.",
+   "Sources and editions outside the lifetime: a separate scale, not biographical events.",
+   "Sources et éditions hors de la vie : échelle indépendante, sans confusion biographique.");
   root.append(method);
   if(!events.length){
    const empty=el("p","vat-empty",L(
@@ -215,9 +255,9 @@
    root.append(empty);return;
   }
   const minYear=events[0].year,maxYear=Math.max(...events.map(e=>e.end??e.year));
-  const span=Math.max(1,maxYear-minYear),padding=isAkhenaten()?0:Math.max(1,Math.ceil(span*.04));
-  const low=isAkhenaten()?akhenatenBounds.birth:minYear-padding;
-  const high=isAkhenaten()?akhenatenBounds.death:maxYear+padding;
+  const span=Math.max(1,maxYear-minYear),padding=lifeMode?0:Math.max(1,Math.ceil(span*.04));
+  const low=lifeMode?periods.bounds.birth:minYear-padding;
+  const high=lifeMode?periods.bounds.death:maxYear+padding;
   const range=Math.max(1,high-low);
   // Universal fitted scale: time always spans the visible reader, not a fixed 960–5200px canvas.
   const cs=getComputedStyle(root);
@@ -231,7 +271,7 @@
   viewport.setAttribute("aria-label",L("Cronología adaptada al ancho del visor","Chronology fitted to reader width","Chronologie adaptée à la largeur du lecteur"));
   const map=el("div","vat-map");map.style.width=available+"px";
   const axis=el("div","vat-axis");
-  const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
+  const ticks=Math.max(1,Math.min(9,range,Math.floor(mapWidth/120)));
   for(let i=0;i<=ticks;i++){
    const y=Math.round(low+i*range/ticks);
    const tick=el("span","vat-tick",showYear(y));
@@ -239,6 +279,7 @@
   }
   map.append(axis);
   const detail=el("div","vat-detail");detail.hidden=true;detail.setAttribute("aria-live","polite");
+  const navigable=[];
   for(const [lane,[label,icon]] of Object.entries(types)){
    const items=events.filter(x=>x.lane===lane);if(!items.length)continue;
    const band=el("section","vat-band");band.setAttribute("aria-label",label);
@@ -248,7 +289,10 @@
    const lastEnds=[];let levelMax=0;
    for(const e of items){
     const x=(e.year-low)/range*mapWidth;
-    const center=Math.max(cardWidth/2+3,Math.min(mapWidth-cardWidth/2-3,x));
+    // Markers are 24px wide: clamping them by the width of their popovers
+    // previously collapsed both ends of a short lifetime into one position.
+    const center=Math.max(14,Math.min(mapWidth-14,x));
+    const popCenter=Math.max(cardWidth/2+4,Math.min(mapWidth-cardWidth/2-4,center));
     let level=lastEnds.findIndex(end=>center-end>=26);
     if(level<0){level=lastEnds.length;lastEnds.push(-Infinity)}
     lastEnds[level]=center;levelMax=Math.max(levelMax,level);
@@ -257,6 +301,7 @@
     button.classList.add("vat-event-marker");
     button.style.left=center+"px";button.style.top=(27+level*40)+"px";
     button.style.setProperty("--vat-popup-width",cardWidth+"px");
+    button.style.setProperty("--vat-popup-shift",Math.round(popCenter-center)+"px");
     button.setAttribute("aria-label",(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
     button.title=L("Pasar el mouse o pulsar para ver la ficha","Hover or select to see the record","Survoler ou sélectionner pour voir la notice");
     const popup=el("span","vat-event-pop");
@@ -267,6 +312,7 @@
     }
     button.append(popup);
     button.addEventListener("click",()=>highlightButton(button,detail,e));
+    navigable.push({event:e,button});
     const key=[e.title,e.year,e.lane].join("|");
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
@@ -275,13 +321,27 @@
    band.append(title,track);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
+  zoomOut.setAttribute("aria-label",L("Reducir tamaño de fichas","Smaller record labels","Réduire les étiquettes"));
+  zoomIn.setAttribute("aria-label",L("Aumentar tamaño de fichas","Larger record labels","Agrandir les étiquettes"));
   zoomOut.onclick=()=>{state.zoom=Math.max(.8,Math.round((state.zoom-.1)*100)/100);draw()};
   zoomIn.onclick=()=>{state.zoom=Math.min(1.35,Math.round((state.zoom+.1)*100)/100);draw()};
-  prev.onclick=()=>viewport.scrollBy({left:-460,behavior:"smooth"});
-  next.onclick=()=>viewport.scrollBy({left:460,behavior:"smooth"});
+  // The timeline is fitted to the screen; it is not horizontally scrollable.
+  // Previous/next therefore select actual chronological milestones.
+  navigable.sort((a,b)=>a.event.year-b.event.year||a.event.title.localeCompare(b.event.title));
+  function stepMilestone(delta){
+   if(!navigable.length)return;
+   let i=navigable.findIndex(x=>[x.event.title,x.event.year,x.event.lane].join("|")===state.selected);
+   if(i<0)i=delta>0?-1:navigable.length;
+   i=Math.max(0,Math.min(navigable.length-1,i+delta));
+   const found=navigable[i];
+   highlightButton(found.button,detail,found.event);
+   found.button.focus?.({preventScroll:true});
+  }
+  prev.onclick=()=>stepMilestone(-1);
+  next.onclick=()=>stepMilestone(1);
   viewport.addEventListener("keydown",e=>{
    if(e.target!==viewport||!["ArrowLeft","ArrowRight"].includes(e.key))return;
-   e.preventDefault();viewport.scrollBy({left:e.key==="ArrowRight"?280:-280,behavior:"smooth"});
+   e.preventDefault();stepMilestone(e.key==="ArrowRight"?1:-1);
   });
  }
  // Redraw only when the available width changes, not when card height grows.
@@ -298,7 +358,7 @@
  }
  function reset(q){
   state.token++;state.query=String(q||"").trim().slice(0,160);state.zoom=1;
-  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.selected="";state.rowSignature="";state.pendingWorks=null;
+  state.authority=null;state.works=[];state.albums=[];state.rows=[];state.view="life";state.selected="";state.rowSignature="";state.pendingWorks=null;
   place();draw();
   if(!state.query)return;
   const token=state.token;
@@ -335,5 +395,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,version:"2.0-universal-sourced"};
+ window.VitruviaAcademicTimeline={collect,dividePeriods,biographyBounds,version:"2.1-period-separated"};
 })();
