@@ -1,0 +1,16 @@
+{
+ "generated": "2026-11-11",
+ "note": "Instantánea precalculada de los índices locales. No sustituye la verificación contra las fuentes; la página la reemplaza por el recuento del índice cargado.",
+ "sources": [
+  "data/bibliotheca-graeca-latina-I-bce-I-ce.json",
+  "data/witruvia-pages.json",
+  "data/bibliotheca-testimonia-verified.json"
+ ],
+ "metrics": {
+  "metric-works": 222,
+  "metric-pages": 62,
+  "metric-read": 52,
+  "metric-witnesses": 100,
+  "metric-editions": 63
+ }
+}

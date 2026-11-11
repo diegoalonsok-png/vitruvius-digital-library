@@ -400,6 +400,27 @@ function liveBooks(q,concept){return S.works.map(w=>{
 
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
 async function fetchJSON(url,ms=9000,signal){if(window.VitruviaData){const local=new URL(url,location.href).origin===location.origin;return local?window.VitruviaData.json(url,{timeoutMs:ms}):window.VitruviaData.remoteJSON(url,{timeoutMs:ms,signal})}const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
+/* Recuentos precalculados: se muestran de inmediato y quedan rotulados como
+   instantánea. En cuanto llega el índice vivo, showCatalogueMetric los
+   sustituye por la cifra verificada. Una instantánea nunca se presenta como
+   recuento comprobado contra la fuente. */
+function paintMetricSnapshot(){
+ const node=document.getElementById("vitruvia-metrics-snapshot");
+ if(!node)return;
+ let snapshot=null;
+ try{snapshot=JSON.parse(node.textContent||"{}")}catch{return}
+ const metrics=snapshot&&snapshot.metrics;
+ if(!metrics)return;
+ for(const [id,value] of Object.entries(metrics)){
+  const element=$(id);
+  if(!element||!Number.isInteger(value))continue;
+  element.textContent=value.toLocaleString("es-AR");
+  element.dataset.verification="precalculado";
+  element.title="Instantánea precalculada del "+(snapshot.generated||"")+"; el recuento del índice cargado la reemplaza al terminar la descarga.";
+ }
+ $("metrics")?.setAttribute("data-verification","precalculado");
+}
+
 /* A failed source is not a measured zero: preserve the distinction. */
 function showCatalogueMetric(id,result,value){
  const element=$(id);if(!element)return;
@@ -2035,7 +2056,26 @@ const params=new URLSearchParams(location.search);mode(params.get("mode")||"all"
 const initialQuery=params.get("q")||"";
 if(initialQuery)$("query").value=initialQuery;
 const bootSearchId=S.searchId;
-cataloguePromise=load();
+paintMetricSnapshot();
+/* Arranque del catálogo sin bloquear el primer pintado.
+   Una consulta enlazada (?q=) necesita los índices ya: se piden en el acto.
+   Si no, se espera a que el navegador quede libre —con tope de 1,5 s— o a la
+   primera señal de que el lector va a buscar, lo que ocurra antes. El contrato
+   de eventos no cambia: `vitruvia:catalogue-core` sigue emitiéndose igual,
+   sólo un instante más tarde. */
+function bootCatalogue(){
+ if(initialQuery)return load();
+ return new Promise(resolve=>{
+  let started=false;
+  const begin=()=>{if(started)return;started=true;resolve(load())};
+  const field=$("query");
+  for(const event of ["focus","pointerdown","keydown"])field?.addEventListener(event,begin,{once:true,passive:true});
+  for(const event of ["pointerdown","keydown","wheel","touchstart"])window.addEventListener(event,begin,{once:true,passive:true});
+  if(typeof requestIdleCallback==="function")requestIdleCallback(begin,{timeout:1500});
+  else setTimeout(begin,1200);
+ });
+}
+cataloguePromise=bootCatalogue();
 // A linked query must identify the subject immediately, while heavy local
 // holdings load independently. search() will reconcile those indices later.
 if(initialQuery&&S.searchId===bootSearchId&&$("query").value.trim()===initialQuery)void search();

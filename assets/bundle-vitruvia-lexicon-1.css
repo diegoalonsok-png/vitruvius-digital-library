@@ -1,0 +1,86 @@
+/* Paquete generado por scripts/build-style-bundles.mjs — no editar a mano.
+   Página: vitruvia-lexicon.html · tramo 1 de 2 · 2 hojas en el orden original.
+   Editar los archivos fuente y volver a ejecutar el script. */
+/* ===== assets/lexicon-orthography-research.css ===== */
+/* Academic orthographic evidence panel; respects Lexicon's theme */
+#lx-orthography{max-width:1200px;margin:16px auto 22px;padding:0 18px;color:var(--text,inherit);font:14px/1.6 system-ui,sans-serif}
+#lx-orthography details{border:1px solid #a88f6d;border-radius:13px;background:var(--panel,#161e23);box-shadow:0 3px 16px rgba(0,0,0,.10)}
+#lx-orthography summary{padding:14px 18px;cursor:pointer;font:700 15px/1.5 system-ui,sans-serif;list-style-position:inside}
+#lx-orthography summary:focus-visible{outline:3px solid #bc985c;outline-offset:2px}
+.lx-orth-chip{font:600 11px/1.3 system-ui,sans-serif;border:1px solid #9a8a70;border-radius:999px;padding:5px 9px;margin-left:10px;white-space:nowrap}
+.lx-orth-inner{padding:16px 20px 23px;border-top:1px solid #a88f6d75}
+.lx-orth-inner>p{margin:0 0 14px;max-width:1050px}
+.lx-orth-form{display:flex;align-items:end;flex-wrap:wrap;gap:10px;margin-bottom:13px}
+.lx-orth-form label{display:grid;gap:5px;font:600 13px system-ui,sans-serif}
+.lx-orth-form select,.lx-orth-form button{min-height:39px;box-sizing:border-box;padding:8px 11px;border:1px solid #a88f6d;border-radius:8px;font:600 13px system-ui,sans-serif}
+.lx-orth-form select{color:#233b4b;background:#fffdf8}
+.lx-orth-form button{color:#fff;background:#2b4b61;cursor:pointer}
+.lx-orth-form button:disabled{opacity:.5;cursor:wait}
+.lx-orth-table{width:100%;border-collapse:collapse;margin:13px 0 18px}
+.lx-orth-table th,.lx-orth-table td{padding:9px 12px;border-bottom:1px solid #a88f6d55;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.lx-orth-table th:nth-child(1){width:27%}.lx-orth-table th:nth-child(2){width:33%}
+.lx-orth-warning{font-style:italic;opacity:.85}
+.lx-orth-attestations{display:grid;gap:13px}
+.lx-orth-edition{padding:14px;border:1px solid #a88f6d77;border-radius:10px}
+.lx-orth-edition h4{font-size:15px;margin:0 0 8px}
+.lx-orth-excerpt{border-top:1px solid #a88f6d66;margin-top:10px;padding-top:9px}
+.lx-orth-excerpt a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.lx-orth-excerpt p{margin:7px 0}
+.lx-orth-excerpt p[lang=grc]{font-size:17px;line-height:1.75}
+.lx-orth-meta,.lx-orth-method{font-size:12px;opacity:.8}
+#lx-orth-status{min-height:23px;font-size:13px}
+html[data-theme=light] #lx-orthography details{background:#fffdf8;color:#243846}
+@media(max-width:680px){#lx-orthography{padding:0 10px}.lx-orth-inner{padding:12px}.lx-orth-chip{display:inline-block;margin-top:7px}.lx-orth-table{font-size:12px}.lx-orth-table th,.lx-orth-table td{padding:7px 5px}.lx-orth-form label,.lx-orth-form button{width:100%}}
+
+/* Optional research instruments: neutral academic styling, no ornate CTA. */
+#lx-orthography{max-width:none;margin:8px auto 16px;padding:0 6px}
+#lx-orthography details{background:transparent!important;border:0!important;border-top:1px solid rgba(140,146,150,.25)!important;border-radius:0!important;box-shadow:none!important}
+#lx-orthography summary{padding:10px 4px!important;font:500 12px/1.55 system-ui,sans-serif!important;color:inherit;opacity:.83}
+#lx-orthography summary:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+#lx-orthography :is(.lx-topo-inner,.lx-orth-inner){border-top:1px solid rgba(140,146,150,.18)!important}
+#lx-orthography :is(button,input,select){border-color:rgba(135,143,150,.55)!important;box-shadow:none!important}
+#lx-orthography button{background:#2c3035!important;color:#f2f2f0!important}
+html[data-theme=light] #lx-orthography button{background:#e7e8e7!important;color:#25292c!important}
+
+/* ===== assets/lexicon-toponymicon.css ===== */
+/* Toponymicon: scholarly ancient-place evidence and cartographic provenance */
+#lx-toponymicon{max-width:1200px;margin:15px auto 22px;padding:0 18px;font:14px/1.65 system-ui,sans-serif}
+#lx-toponymicon details{border:1px solid #aa9473;border-radius:13px;background:var(--panel,#172027);color:inherit;box-shadow:0 3px 16px rgba(0,0,0,.10)}
+#lx-toponymicon summary{padding:14px 18px;font:700 15px/1.5 system-ui,sans-serif;cursor:pointer;list-style-position:inside}
+#lx-toponymicon summary:focus-visible{outline:2px solid #c2a271;outline-offset:2px}
+.lx-topo-kicker{display:inline-block;margin-left:10px;padding:4px 10px;border:1px solid #a99372;border-radius:99px;font:600 11px system-ui,sans-serif}
+.lx-topo-inner{padding:18px 22px 23px;border-top:1px solid #aa947377}
+.lx-topo-inner>p{max-width:950px;margin:0 0 14px}
+.lx-topo-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 13px}
+.lx-topo-row label{font-weight:700}
+.lx-topo-row input{flex:1 1 230px;background:#fffdf8;color:#253748;border:1px solid #aa9473;border-radius:8px;padding:11px;font:16px Georgia,serif;min-width:180px}
+.lx-topo-row button{padding:11px 14px;border:1px solid #aa9473;border-radius:8px;background:#2a4960;color:white;font:650 13px system-ui,sans-serif;cursor:pointer}
+#lx-topo-state{min-height:22px;margin:14px 0;font-size:13px;opacity:.84}
+.lx-topo-card{border-top:1px solid #aa947366;padding-top:13px}
+.lx-topo-card h3{margin:5px 0 10px;font:normal 27px Georgia,serif}
+.lx-topo-card h4{font:700 16px system-ui,sans-serif;margin:23px 0 12px}
+.lx-topo-card p{line-height:1.6}
+.lx-topo-forms{font-size:13px;overflow-wrap:anywhere}
+.lx-topo-method,.lx-topo-citation{font:12px/1.6 system-ui,sans-serif;opacity:.8}
+.lx-topo-links{display:flex;flex-wrap:wrap;gap:8px 11px;margin:16px 0}
+.lx-topo-links a{border:1px solid #aa9473;border-radius:9px;padding:9px 13px;color:inherit;text-decoration:none;font:600 13px system-ui,sans-serif}
+.lx-topo-links a:hover{background:rgba(148,132,104,.14)}
+.lx-topo-attestations{display:grid;gap:13px}
+.lx-topo-edition{border:1px solid #aa947377;border-radius:11px;padding:15px;margin:12px 0}
+.lx-topo-edition h5{font:700 15px system-ui,sans-serif;margin:0 0 7px}
+.lx-topo-locus{border-top:1px solid #aa947355;margin:10px 0 0;padding:10px 0 0}
+.lx-topo-locus a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.lx-topo-locus p{margin:6px 0}
+.lx-topo-locus small{opacity:.77}
+html[data-theme=light] #lx-toponymicon details{background:#fffcf6;color:#263747}
+@media(max-width:700px){#lx-toponymicon{padding:0 9px}.lx-topo-inner{padding:12px}.lx-topo-kicker{margin-top:5px}.lx-topo-row button,.lx-topo-row input{width:100%}}
+
+/* Optional research instruments: neutral academic styling, no ornate CTA. */
+#lx-toponymicon{max-width:none;margin:8px auto 16px;padding:0 6px}
+#lx-toponymicon details{background:transparent!important;border:0!important;border-top:1px solid rgba(140,146,150,.25)!important;border-radius:0!important;box-shadow:none!important}
+#lx-toponymicon summary{padding:10px 4px!important;font:500 12px/1.55 system-ui,sans-serif!important;color:inherit;opacity:.83}
+#lx-toponymicon summary:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+#lx-toponymicon :is(.lx-topo-inner,.lx-orth-inner){border-top:1px solid rgba(140,146,150,.18)!important}
+#lx-toponymicon :is(button,input,select){border-color:rgba(135,143,150,.55)!important;box-shadow:none!important}
+#lx-toponymicon button{background:#2c3035!important;color:#f2f2f0!important}
+html[data-theme=light] #lx-toponymicon button{background:#e7e8e7!important;color:#25292c!important}

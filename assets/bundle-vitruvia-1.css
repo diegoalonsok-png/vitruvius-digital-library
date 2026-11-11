@@ -1,0 +1,2034 @@
+/* Paquete generado por scripts/build-style-bundles.mjs — no editar a mano.
+   Página: vitruvia.html · tramo 1 de 3 · 15 hojas en el orden original.
+   Editar los archivos fuente y volver a ejecutar el script. */
+/* ===== assets/vitruvia-reading.css ===== */
+/* Reading controls are scoped to Vitruvia; preferences never restyle navigation. */
+:root{--vitruvia-reading-zoom:1}
+#article-body,#article-aside,#article-sources,#article-evidence,#result-list,#article-title,#answer{zoom:var(--vitruvia-reading-zoom)}
+.nav{position:relative;z-index:100}
+.reading-options{position:relative;color:#ededee;font:400 13px/1.5 Arial,Helvetica,sans-serif}
+.reading-options summary{display:flex;align-items:center;gap:9px;min-height:42px;padding:7px 11px;list-style:none;cursor:pointer;background:#262628;border:1px solid #505053;border-radius:7px;white-space:nowrap}
+.reading-options summary::-webkit-details-marker{display:none}
+.reading-options summary:hover,.reading-options[open] summary{background:#333336;border-color:#77777b}
+.reading-options summary:focus-visible{outline:2px solid #dedee1;outline-offset:3px}
+.reading-aa{font:22px/1 Georgia,serif;letter-spacing:-.05em}
+.reading-options :is(output,#reading-font-value){font:500 11px/1.5 Arial,sans-serif;font-variant-numeric:tabular-nums;min-width:31px;color:#ededee}
+.reading-chevron{color:#b7b7bb}
+.reading-options[open] .reading-chevron{transform:rotate(180deg)}
+.reading-options-panel{position:absolute;right:0;top:calc(100% + 9px);z-index:200;width:304px;padding:20px;background:#242426;color:#ededee;border:1px solid #505053;border-radius:10px;box-shadow:0 16px 45px #0007;max-height:calc(100dvh - 105px);overflow-y:auto;white-space:normal}
+.reading-options-panel>strong{display:block;margin-bottom:17px;font:600 15px/1.4 Arial,sans-serif}
+.reading-options-panel>label{display:block;margin:15px 0 7px;font-size:12px;color:#c5c5c9}
+.reading-size-row,.reading-style-row,.reading-color-row{display:flex;align-items:center;gap:12px}
+.reading-size-row>span{color:#bcbcc0;font-family:Georgia,serif}
+.reading-size-row>span:nth-of-type(2){font-size:19px}
+.reading-options input[type=range]{flex:1;width:100%;min-width:0;padding:0;margin:0;accent-color:#c9c9ce;cursor:pointer;min-height:32px}
+.reading-options #reading-font-family{width:100%;min-height:40px;padding:7px 10px;border:1px solid #5d5d63;border-radius:6px;background:#303033;color:#f1f1f2;font:14px Arial,sans-serif;color-scheme:dark}
+.reading-style-row{justify-content:space-between;margin-top:17px;color:#c5c5c9;font-size:12px}
+.reading-options button{min-height:38px;border:1px solid #5d5d63;border-radius:6px;padding:7px 12px;background:#303033;color:#eeeef0;font:12px/1.5 Arial,sans-serif}
+.reading-options button:hover{border-color:#a5a5ad;background:#3b3b40}
+.reading-options button[aria-pressed=true]{border-color:#babac2;background:#e2e2e5;color:#202023}
+#reading-italic i{font:italic 18px/1 Georgia,serif;margin-right:5px}
+.reading-options input[type=color]{width:56px;height:38px;padding:3px;border:1px solid #5d5d63;border-radius:6px;background:#303033;cursor:pointer}
+.reading-options :is(button,input,select):focus-visible{outline:2px solid #dedee1;outline-offset:3px}
+.reading-options .reading-preview{margin:17px 0 8px;padding:12px;border:1px solid #505053;border-radius:6px;background:#0d0d0e;color:var(--vitruvia-reading-color,#d0d0ce);font:400 calc(15px * var(--vitruvia-reading-zoom))/1.6 var(--vitruvia-reading-family,Arial,Helvetica,sans-serif);overflow-wrap:anywhere}
+html[data-theme=light] .reading-options .reading-preview{background:#f7f5ef;color:var(--vitruvia-reading-color,#242424)}
+html[data-reading-italic=true] .reading-options .reading-preview{font-style:italic}
+.reading-options-hint{font:11px/1.5 Arial,sans-serif;color:#b2b2b7;margin:8px 0 17px}
+#reading-font-reset{width:100%}
+html[data-reading-font] body :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title,#result-list,#answer),
+html[data-reading-font] body :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title,#result-list,#answer) :where(*){font-family:var(--vitruvia-reading-family)!important}
+html[data-reading-italic=true] body :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title,#result-list,#answer),
+html[data-reading-italic=true] body :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title,#result-list,#answer) :where(*){font-style:italic!important}
+/* Preserve readable search highlights and apply custom ink only on screen. */
+@media screen{
+ html[data-reading-color=custom] body #vitruvia-article :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title),
+ html[data-reading-color=custom] body #vitruvia-article :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title) :where(*),
+ html[data-reading-color=custom] body :is(#result-list,#answer),
+ html[data-reading-color=custom] body :is(#result-list,#answer) :where(*){color:var(--vitruvia-reading-color)!important}
+ html[data-reading-color=custom] body :is(#vitruvia-article,#result-list,#answer) mark,
+ html[data-reading-color=custom] body :is(#vitruvia-article,#result-list,#answer) mark :where(*){color:#191919!important;background:#ffe36c!important}
+}
+@media(max-width:1100px){.nav{flex-wrap:wrap}.navtools{flex-wrap:wrap}}
+@media(max-width:700px){
+ .reading-options summary{min-height:44px}
+ .reading-options-panel{position:fixed;left:16px;right:16px;top:76px;width:auto;max-width:360px;margin-left:auto;max-height:calc(100dvh - 92px)}
+}
+@media(max-width:380px){.reading-options summary{gap:5px;padding-inline:9px}.reading-options summary #reading-font-value{display:none}}
+@media print{.reading-options{display:none!important}}
+
+/* Contrast repair, Nov 2026: article, title and contents remain readable in light mode.
+   The background picker changes the search page, never the browser print stylesheet. */
+html{
+ --vr-page-ink:#f4f4f4;
+ --vr-page-muted:#ececec;
+ --vr-control-bg:#28282a;
+ --vr-control-ink:#fafafa;
+ --vr-control-border:#77777a;
+ --vr-control-hover:#414144;
+ --vr-active-bg:#dedee0;
+ --vr-active-ink:#161617;
+ --vr-panel-bg:#202021;
+}
+html:is([data-theme=light]:not([data-reading-background-tone=dark]),[data-reading-background-tone=light]){
+ --vr-page-ink:#161616;
+ --vr-page-muted:#292929;
+ --vr-control-bg:#eeeeed;
+ --vr-control-ink:#202020;
+ --vr-control-border:#828282;
+ --vr-control-hover:#dddddc;
+ --vr-active-bg:#29292b;
+ --vr-active-ink:#fff;
+ --vr-panel-bg:#f1f1f0;
+}
+@media screen{
+ /* The color picker is a page background control, not a search-result background-only workaround. */
+ html[data-reading-background=custom] body,
+ html[data-reading-background=custom] .site-shell,
+ html[data-reading-background=custom] body.vitruvia-reading .nav{
+  background:var(--vitruvia-reading-background)!important;
+ }
+ html[data-reading-background=custom] .reading-options .reading-preview{
+  background:var(--vitruvia-reading-background)!important;
+  color:var(--vitruvia-reading-color,var(--vr-page-ink))!important;
+  border-color:var(--vr-control-border)!important;
+ }
+ /* Existing article headers and the TOC retained dark-mode inks on white surfaces. */
+ html body #vitruvia-article,
+ html body #vitruvia-article :is(.scholar-article-header,.article-grid,.article-body,.article-aside,.article-sources,.article-evidence,.article-kicker,.article-byline,.article-lead,.article-contents,.article-contents-link,.article-contents h3,.article-contents-link a),
+ html body #vitruvia-article :is(h2,h3,h4,h5,h6,p,li,span,strong,small,blockquote,summary,dt,dd,a),
+ html body #vitruvia-article :is(.article-contents,.article-aside,.article-sources,.article-evidence) :where(*),
+ html body :is(#result-list,#answer) :is(h2,h3,h4,p,li,span,strong,small,a),
+ html body .sidebar :is(h3,p,a,small),
+ html body #vitruvia-article .article-kicker,
+ html body #vitruvia-article .article-byline{
+  color:var(--vitruvia-reading-color,var(--vr-page-ink))!important;
+ }
+ html body #vitruvia-article :is(a,.article-contents-link,.article-aside a){
+  text-decoration-color:var(--vr-control-border)!important;
+ }
+ /* Keep source/TOC rules, borders and scrolling legible in both themes. */
+ html body #vitruvia-article :is(.article-aside,.article-aside .article-index-link,.article-contents-link,.article-sources,.scholar-article-header,.article-body h3,.article-evidence,.evidence-entry){
+  border-color:var(--vr-control-border)!important;
+ }
+ /* Markdown quotation, citations and cards should never create pale-on-pale islands. */
+ html[data-reading-background=custom] body #vitruvia-article :is(.preface-entry,.person-locus-entry,.principal-reference-work,.vitruvius-edition,.article-research-item,.evidence-entry),
+ html[data-reading-background=custom] body :is(#answer,.result-card,.empty){
+  background:var(--vr-panel-bg)!important;
+  border-color:var(--vr-control-border)!important;
+ }
+ html[data-reading-background=custom] body .sidebar{
+  border-color:var(--vr-control-border)!important;
+ }
+ /* Every control is neutral gray: no legacy dark-green buttons on a light page. */
+ html body :where(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit){
+  background:var(--vr-control-bg)!important;
+  color:var(--vr-control-ink)!important;
+  border-color:var(--vr-control-border)!important;
+ }
+ html body :where(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit):hover,
+ html body :where(.tab,.suggestions button,.academic-pill,#search-images-button,.article-print,.article-share,.result-card .actions a,.result-card .actions button,.show-more-results,.vitruvius-edition-links a,#submit):focus-visible{
+  background:var(--vr-control-hover)!important;
+  color:var(--vr-control-ink)!important;
+ }
+ html body .tab[aria-pressed=true]{
+  background:var(--vr-active-bg)!important;
+  color:var(--vr-active-ink)!important;
+  border-color:var(--vr-control-border)!important;
+ }
+ html body .searchform{
+  background:var(--vr-panel-bg)!important;
+  border-color:var(--vr-control-border)!important;
+  color:var(--vr-page-ink)!important;
+ }
+ html body .searchform input{color:var(--vr-page-ink)!important}
+ html body .searchform input::placeholder{color:var(--vr-page-muted)!important;opacity:1}
+ html body .searchform .icon-search{color:var(--vr-page-ink)!important}
+ html body :is(.section-head h2,#result-state,.vitruvia-result-group,.vitruvia-gallery-heading){color:var(--vr-page-ink)!important}
+ html body :is(#article-body,#article-aside,#article-sources,#article-evidence,#result-list) :is(mark,.query-hit){
+  background:#ffe36c!important;
+  color:#181818!important;
+ }
+ /* Maintain contrast even if an old custom ink preference was white on a white page. */
+ html[data-reading-color=custom] body #vitruvia-article :is(#article-body,#article-aside,#article-sources,#article-evidence,#article-title) :where(mark,.query-hit),
+ html[data-reading-color=custom] body #vitruvia-article :is(#article-body,#article-aside,#article-sources,#article-evidence) :where(mark,.query-hit) :where(*){
+  background:#ffe36c!important;color:#181818!important;
+ }
+}
+
+/* Visible background palette: one shared preference with the existing reading panel. */
+.background-palette{position:relative;z-index:120;font:400 13px/1.4 Arial,Helvetica,sans-serif}
+.background-palette>summary{
+ display:flex;align-items:center;justify-content:center;gap:8px;
+ min-height:42px;padding:7px 12px;cursor:pointer;list-style:none;white-space:nowrap;
+ background:#252527;color:#f7f7f7;border:1px solid #77777b;border-radius:8px;
+}
+.background-palette>summary::-webkit-details-marker{display:none}
+.background-palette>summary:before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--selected-color,#0d0d0e);border:1px solid #888;flex:none}
+.background-palette>summary svg{flex:none}
+.background-palette[open]>summary,.background-palette>summary:hover{background:#3a3a3d;border-color:#aaa}
+.background-palette>summary:focus-visible{outline:2px solid #777;outline-offset:3px}
+.background-palette[open] .reading-chevron{transform:rotate(180deg)}
+.background-palette-panel{
+ position:absolute;z-index:300;right:0;top:calc(100% + 9px);
+ width:min(308px,calc(100vw - 32px));padding:18px;box-sizing:border-box;
+ border:1px solid #777;box-shadow:0 14px 32px #0007;border-radius:10px;
+ background:#262628;color:#f8f8f8;
+}
+.background-palette-panel strong{display:block;font:600 14px/1.4 Arial,sans-serif;margin-bottom:15px}
+.background-palette-swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.background-palette-swatches button{
+ cursor:pointer;display:block;width:100%;height:43px;min-height:43px;
+ background:var(--swatch)!important;border:2px solid #8e8e8e!important;
+ border-radius:7px;box-shadow:inset 0 0 0 1px #0003;
+}
+.background-palette-swatches button:hover{border-color:#fff!important;transform:translateY(-1px)}
+.background-palette-swatches button[aria-pressed=true]{outline:3px solid #fff;outline-offset:2px}
+.background-palette :is(button,input,summary):focus-visible{outline:3px solid #a8a8c0!important;outline-offset:3px}
+.background-palette-custom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:19px 0 13px;font-size:12px;color:#f4f4f4}
+.background-palette-custom input{width:53px;height:34px;min-width:53px;border:1px solid #aaa;border-radius:6px;background:#242424;padding:2px;cursor:pointer}
+.background-palette-reset{width:100%;padding:11px;border:1px solid #999;border-radius:7px;background:#303033;color:#f8f8f8;cursor:pointer}
+.background-palette-reset:hover,.background-palette-reset:focus-visible{background:#48484a}
+html[data-theme=light] .background-palette>summary,
+html[data-reading-background-tone=light] .background-palette>summary{background:#efefed;color:#1b1b1b;border-color:#777}
+html[data-theme=light] .background-palette>summary:hover,
+html[data-reading-background-tone=light] .background-palette>summary:hover{background:#dededb}
+html[data-theme=light] .background-palette-panel,
+html[data-reading-background-tone=light] .background-palette-panel{background:#f5f5f3;color:#181818;border-color:#999;box-shadow:0 15px 36px #0003}
+html[data-theme=light] .background-palette-custom,
+html[data-reading-background-tone=light] .background-palette-custom{color:#202020}
+html[data-theme=light] .background-palette-reset,
+html[data-reading-background-tone=light] .background-palette-reset{background:#e4e4e2;color:#171717;border-color:#909090}
+html[data-theme=light] .background-palette-swatches button[aria-pressed=true],
+html[data-reading-background-tone=light] .background-palette-swatches button[aria-pressed=true]{outline-color:#333}
+@media(max-width:700px){.background-palette-panel{position:fixed;top:79px;left:auto;right:14px;width:min(310px,calc(100vw - 28px))}.background-palette>summary{min-height:44px;padding:7px 10px}}
+@media print{.background-palette{display:none!important}}
+
+/* Custom backgrounds also restyle the landing page's editorial ink and divisions. */
+@media screen{
+ html[data-reading-background=custom] body :is(.logo-small,.navlinks a,.hero h1,.hero .eyebrow,.hero .lead,.hero .explain,.hero .featured h2,.hero .featured .featured-copy .meta,.hero .featured p,.hero .featured a.featured-reading-item,.hero .featured .featured-credit,.hero .featured .featured-number,.metrics,.metrics b,.results .section-head h2,.footer,.footer h3,.footer a,.footer p,#vitruvia-welcome h3,#vitruvia-welcome .welcome-aside strong,#vitruvia-welcome .welcome-entry>a,#vitruvia-welcome .welcome-kicker,#vitruvia-welcome .welcome-examples a){
+  color:var(--vr-page-ink)!important;
+ }
+ html[data-reading-background=custom] body :is(.hero .suggestions,.hero .featured .meta,.hero .featured p,.hero .featured .featured-credit,.footer-legal,#vitruvia-welcome p,.welcome-examples,.welcome-kicker){
+  color:var(--vr-page-ink)!important;
+ }
+ html[data-reading-background=custom] body :is(.nav,.hero .featured,.hero .featured-reading-list,.hero a.featured-reading-item,.metrics,.footer,.welcome-intro,.welcome-entry,.welcome-examples,#vitruvia-welcome .welcome-aside){
+  border-color:var(--vr-control-border)!important;
+ }
+ html[data-reading-background=custom] body .hero .featured a.featured-reading-item:hover{
+  background:var(--vr-control-hover)!important;
+  color:var(--vr-control-ink)!important;
+ }
+ html[data-reading-background=custom] body .hero .featured a.featured-reading-item:hover span{
+  color:inherit!important;
+ }
+}
+
+/* All top-bar controls follow the selected background instead of the OLD theme only.
+   With a light custom background, a dark #theme/#ui-language formerly looked black. */
+@media screen{
+ html[data-reading-background-tone=light] body :is(.navtools #theme,.navtools #ui-language,.reading-options>summary,.background-palette>summary){
+  background:#eeeeed!important;color:#202024!important;border:1px solid #85858a!important;
+ }
+ html[data-reading-background-tone=dark] body :is(.navtools #theme,.navtools #ui-language,.reading-options>summary,.background-palette>summary){
+  background:#303035!important;color:#f8f8fa!important;border:1px solid #a3a3aa!important;
+ }
+ html[data-reading-background-tone=light] body :is(.navtools #theme,.navtools #ui-language,.reading-options>summary,.background-palette>summary):is(:hover,:focus-visible){
+  background:#d9d9dd!important;color:#151518!important;
+ }
+ html[data-reading-background-tone=dark] body :is(.navtools #theme,.navtools #ui-language,.reading-options>summary,.background-palette>summary):is(:hover,:focus-visible){
+  background:#48484f!important;color:#fff!important;
+ }
+ html[data-reading-background-tone=light] body :is(.reading-options #reading-font-value,.reading-options .reading-aa,.reading-options .reading-chevron,.background-palette .reading-chevron),
+ html[data-reading-background-tone=light] body #theme svg{color:#202024!important;stroke:currentColor!important}
+ html[data-reading-background-tone=dark] body :is(.reading-options #reading-font-value,.reading-options .reading-aa,.reading-options .reading-chevron,.background-palette .reading-chevron),
+ html[data-reading-background-tone=dark] body #theme svg{color:#f8f8fa!important;stroke:currentColor!important}
+ html[data-reading-background-tone=light] body :is(.ai-platforms .ai-platform-link,.hero button[data-q]){
+  color:#17171a!important;background:#eeeeed!important;border-color:#98989b!important;
+ }
+ html[data-reading-background-tone=dark] body :is(.ai-platforms .ai-platform-link,.hero button[data-q]){
+  color:#f8f8fa!important;background:#313136!important;border-color:#82828b!important;
+ }
+ html[data-reading-background-tone=light] body :is(.ai-platforms .ai-platform-link,.hero button[data-q]):hover{background:#dadadc!important;color:#111!important}
+ html[data-reading-background-tone=dark] body :is(.ai-platforms .ai-platform-link,.hero button[data-q]):hover{background:#4a4a50!important;color:#fff!important}
+ /* Clear-search icon remains legible, never a solid black opaque circle. */
+ html[data-reading-background=custom] body .searchform button#clear-search{
+  background:transparent!important;color:var(--vr-page-ink)!important;border:0!important;
+ }
+ html[data-reading-background=custom] body .searchform button#clear-search:hover{background:var(--vr-control-hover)!important;color:var(--vr-control-ink)!important}
+}
+
+/* Fix: the feature CTA was dark-on-dark because general landing ink overrode its
+   button ink. Its colors follow the actual selected background, not only theme. */
+@media screen {
+ html body .hero .featured a#featured-link{
+  background:#303034!important;
+  color:#f8f8f9!important;
+  border:1px solid #89898e!important;
+  text-decoration:none!important;
+ }
+ html body .hero .featured a#featured-link :is(span,svg){
+  color:inherit!important;
+ }
+ html body .hero .featured a#featured-link:is(:hover,:focus-visible){
+  background:#4c4c51!important;
+  color:#fff!important;
+  border-color:#bcbcc0!important;
+ }
+ html[data-theme=light]:not([data-reading-background-tone=dark]) body .hero .featured a#featured-link,
+ html[data-reading-background-tone=light] body .hero .featured a#featured-link{
+  background:#ededee!important;
+  color:#1b1b1f!important;
+  border-color:#7e7e84!important;
+ }
+ html[data-theme=light]:not([data-reading-background-tone=dark]) body .hero .featured a#featured-link:is(:hover,:focus-visible),
+ html[data-reading-background-tone=light] body .hero .featured a#featured-link:is(:hover,:focus-visible){
+  background:#d6d6d9!important;
+  color:#101014!important;
+  border-color:#55555a!important;
+ }
+ html[data-reading-background-tone=dark] body .hero .featured a#featured-link{
+  background:#303034!important;
+  color:#f8f8f9!important;
+  border-color:#89898e!important;
+ }
+ html[data-reading-background-tone=dark] body .hero .featured a#featured-link:is(:hover,:focus-visible){
+  background:#4c4c51!important;
+  color:#fff!important;
+ }
+}
+
+/* Vitruvia local manuscript dialog: same-origin manuscript reader (Codex H). */
+.vitruvia-manuscript-dialog{
+ width:min(1460px,97vw);max-width:97vw;height:min(97vh,1050px);max-height:97vh;
+ padding:0;border:1px solid #777;border-radius:10px;
+ background:#1b1c1e;color:#f8f8f8;box-shadow:0 24px 90px #0009;
+}
+.vitruvia-manuscript-dialog::backdrop{background:rgba(0,0,0,.88)}
+.vitruvia-manuscript-panel{display:flex;flex-direction:column;height:100%;min-height:0}
+.vitruvia-manuscript-toolbar{
+ display:flex;align-items:center;justify-content:space-between;gap:12px;
+ background:#252629;color:#fff;padding:13px 17px;border-bottom:1px solid #777;
+}
+.vitruvia-manuscript-toolbar strong{font:400 clamp(16px,1.8vw,23px)/1.3 Georgia,serif;color:#fafafa}
+.vitruvia-manuscript-actions{display:flex;align-items:center;gap:10px}
+.vitruvia-manuscript-open,.vitruvia-manuscript-close{
+ display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+ background:#45464c!important;color:#fff!important;border:1px solid #999!important;
+ border-radius:6px;text-decoration:none!important;padding:8px 11px;font:500 12px/1.4 Arial,sans-serif;
+}
+.vitruvia-manuscript-close{font-size:23px;padding:4px 12px}
+.vitruvia-manuscript-open:hover,.vitruvia-manuscript-close:hover{background:#62636a!important}
+.vitruvia-manuscript-note{font:12px/1.55 Arial,sans-serif;color:#f1f1f1;margin:0;padding:9px 15px;background:#242426}
+.vitruvia-manuscript-iframe{flex:1;min-height:0;width:100%;border:none;background:#f6f2e8}
+#result-list .codex-local-open,#result-list .citation-copy,
+#vitruvia-article .article-local-viewer,#vitruvia-article .article-copy-source{
+ display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+ padding:9px 14px;border-radius:6px;border:1px solid #a3a3a3;
+ background:#e7e5df!important;color:#191919!important;
+ font:600 12px/1.4 Arial,sans-serif;
+}
+#result-list .codex-local-open:hover,#result-list .citation-copy:hover,
+#vitruvia-article .article-local-viewer:hover,#vitruvia-article .article-copy-source:hover{
+ background:#fff!important;color:#111!important;
+}
+.article-local-library{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,295px),1fr));gap:12px;margin:17px 0 26px}
+.article-local-resource,.article-local-reader-feature{border:1px solid #8888;background:rgba(130,130,130,.08);padding:16px 18px;border-radius:8px;margin:9px 0}
+.article-local-resource h4,.article-local-reader-feature h3{font:400 clamp(18px,2vw,24px)/1.3 Georgia,serif;margin:0 0 10px}
+.article-local-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+.article-local-actions a{font:600 12px/1.4 Arial,sans-serif;padding:9px 12px;text-decoration:none!important;border:1px solid #888;border-radius:6px;color:var(--vitruvia-reading-color,var(--vr-page-ink))!important}
+.article-local-actions a:hover{background:rgba(140,140,140,.21)}
+@media(max-width:650px){
+ .vitruvia-manuscript-dialog{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;border:0;border-radius:0}
+ .vitruvia-manuscript-toolbar{padding:8px 11px}.vitruvia-manuscript-open{padding:6px}
+ .vitruvia-manuscript-note{padding:7px 11px}.article-local-library{grid-template-columns:1fr}
+}
+@media print{.vitruvia-manuscript-dialog{display:none!important}}
+
+/* ===== assets/vitruvia-photo-background.css ===== */
+/* Photo backgrounds are optional and local to the reader's preferences. */
+.vr-photo-options{
+ display:flex;flex-direction:column;gap:9px;
+ margin-top:18px;padding:15px 0 3px;
+ border-top:1px solid #82828280;color:inherit;
+ font:400 12px/1.5 Arial,Helvetica,sans-serif;
+}
+.vr-photo-options h3{font:600 14px/1.4 Arial,Helvetica,sans-serif;margin:0 0 3px}
+.vr-photo-options a{color:inherit!important;text-decoration:underline;text-underline-offset:3px}
+.vr-photo-options label{color:inherit!important;opacity:.95}
+.vr-photo-url-row,.vr-photo-opacity-row{display:flex;align-items:center;gap:7px;min-width:0}
+.vr-photo-options input[type=url]{
+ flex:1;min-width:0;width:100%;box-sizing:border-box;
+ padding:8px;border:1px solid #777;border-radius:7px;
+ color:var(--vr-control-ink,#eee);background:var(--vr-control-bg,#353537);
+ font:12px/1.4 Arial,Helvetica,sans-serif;
+}
+.vr-photo-options input[type=file]{
+ width:100%;min-width:0;box-sizing:border-box;font:11px/1.5 Arial,Helvetica,sans-serif;
+}
+.vr-photo-options input[type=file]::file-selector-button{
+ background:var(--vr-control-bg,#353537);color:inherit;
+ border:1px solid #777;border-radius:6px;padding:7px 10px;
+}
+.vr-photo-options input[type=range]{flex:1;min-width:0;accent-color:#aeb1b4}
+.vr-photo-options output{min-width:40px;font-size:11px}
+.vr-photo-options button{
+ border:1px solid #797b80;border-radius:7px;padding:8px 11px;
+ background:var(--vr-control-bg,#353537);color:inherit;cursor:pointer;
+ font:500 12px/1.4 Arial,Helvetica,sans-serif;
+}
+.vr-photo-options #vr-photo-message{
+ font:400 11px/1.5 Arial,Helvetica,sans-serif!important;
+ color:inherit!important;opacity:.8;margin:0!important;
+}
+@media screen{
+ html[data-reading-photo=true] body,
+ html[data-reading-photo=true] .site-shell,
+ html[data-reading-photo=true] body.vitruvia-reading .nav{
+  background-image:linear-gradient(var(--vr-photo-veil),var(--vr-photo-veil)),var(--vr-photo-image)!important;
+  background-size:cover,cover!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-position:center,center!important;
+  background-attachment:fixed,fixed!important;
+ }
+}
+@media print{
+ html[data-reading-photo=true] body,
+ html[data-reading-photo=true] .site-shell{background-image:none!important}
+}
+
+/* ===== assets/academic-links.css ===== */
+/* Referencias académicas externas y catálogos patrimoniales (front y Vitruvia).
+   Símbolos neutros, no logotipos institucionales. */
+/* Academic external citations — neutral symbols, not official institutional marks. */
+.academic-links-footer{border-top:1px solid rgba(55,64,68,.19);padding:19px 0 22px}
+.academic-links-footer .academic-links-title{margin:0 0 12px;font:600 10px/1.55 Arial,Helvetica,sans-serif;letter-spacing:1.4px;text-transform:uppercase;color:inherit}
+.academic-links-footer .academic-links-grid{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap}
+.academic-links-footer .academic-links-item{display:inline-flex;align-items:center;gap:12px;min-width:255px;max-width:430px;flex:1 1 280px;padding:13px 15px;border:1px solid rgba(55,64,68,.24);background:rgba(255,255,255,.075);text-decoration:none;color:inherit}
+.academic-links-footer .academic-links-item:hover{border-color:var(--gold,#a18b59);color:inherit;background:rgba(146,126,89,.09)}
+.academic-links-footer .academic-links-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border:1px solid currentColor;border-radius:2px;opacity:.76}
+.academic-links-footer .academic-links-icon svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.45;stroke-linejoin:round;stroke-linecap:round}
+.academic-links-footer .academic-links-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
+.academic-links-footer .academic-links-copy strong{font:600 13px/1.45 Arial,Helvetica,sans-serif;color:inherit}
+.academic-links-footer .academic-links-copy small{font:11px/1.45 Arial,Helvetica,sans-serif;color:inherit;opacity:.75}
+.academic-links-footer .academic-links-arrow{margin-left:auto;font-size:15px;opacity:.74;flex-shrink:0}
+.academic-links-footer .academic-links-note{margin:11px 0 0;font:10px/1.55 Arial,Helvetica,sans-serif;opacity:.72}
+@media(max-width:580px){.academic-links-footer .academic-links-grid{gap:9px}.academic-links-footer .academic-links-item{max-width:none;min-width:0;flex-basis:100%;padding:12px}.academic-links-footer .academic-links-icon{width:38px;height:38px;flex-basis:38px}}
+.academic-links-footer .academic-links-subtitle{font:600 10px/1.5 Arial,Helvetica,sans-serif;letter-spacing:1.1px;text-transform:uppercase;color:inherit;margin:22px 0 10px;padding-top:16px;border-top:1px solid rgba(55,64,68,.16)}
+.academic-links-footer .academic-links-intro{font:11px/1.65 Arial,Helvetica,sans-serif;opacity:.79;margin:0 0 12px}
+.academic-links-footer .academic-links-grid--sources .academic-links-item{padding:11px 13px;min-width:235px;flex-basis:250px}
+.academic-links-footer .academic-links-grid--sources .academic-links-icon{flex-basis:38px;width:38px;height:38px}
+
+/* ===== assets/vitruvia-discovery.css ===== */
+/* Reading navigation and a small, source-linked visual introduction. */
+#vitruvia-article .article-inline-contents{border:1px solid var(--line,#666);border-radius:10px;padding:12px 16px;margin:22px 0 30px;color:inherit;background:transparent}
+#vitruvia-article .article-inline-contents>summary{cursor:pointer;font-weight:600}
+#vitruvia-article .article-inline-contents .article-contents{display:block!important;max-height:320px;overflow:auto;margin:12px 0 0;padding:0;border:0;scrollbar-width:thin}
+#vitruvia-article .article-inline-contents .article-contents>h3{display:none}
+#vitruvia-article .article-inline-contents .article-contents-link{font-size:13px;line-height:1.55;color:inherit;padding:6px 0}
+#vitruvia-article .article-inline-contents .article-contents-subsection{padding-left:16px;font-size:12px}
+#vitruvia-article .article-body h4{font-size:1.05em;line-height:1.5;font-weight:600;color:inherit;margin:26px 0 12px;scroll-margin-top:110px}
+#vitruvia-article .article-image-preview{margin:12px 0 28px;color:inherit}
+#vitruvia-article .article-image-preview[hidden]{display:none}
+.article-image-preview-heading{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;margin:0 0 9px}
+.article-image-preview-heading a{font-weight:600}
+.article-image-preview-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.article-image-preview-grid .vitruvia-image-card{width:100%;text-align:left;cursor:pointer;padding:0;font:inherit}
+.article-image-preview-grid .vitruvia-image-card img{height:145px}
+.article-image-preview-grid .vitruvia-image-card .image-caption{font-size:11px;line-height:1.4;padding:8px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.article-image-preview-grid .image-origin{display:none}
+@media(max-width:700px){.article-image-preview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.article-image-preview-grid .vitruvia-image-card img{height:125px}}
+@media(max-width:420px){.article-image-preview-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#vitruvia-article .article-inline-contents{padding:10px 12px}}
+@media print{#vitruvia-article .article-inline-contents{display:none}.article-image-preview-grid{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.search-destinations .vitruvia-query-link{display:inline-flex;align-items:center;font-size:13px;min-height:38px;padding:8px 12px;text-decoration:none}
+
+.article-author-reading{border-top:1px solid var(--line,#777);border-bottom:1px solid var(--line,#777);margin:30px 0;padding:16px 0}.article-author-reading li{margin:14px 0}.article-author-reading li>a{font-weight:600}.article-author-reading small{display:block;line-height:1.6}.article-author-reading h4{margin-top:22px}
+
+/* Editorial typesetting · source-backed universal encyclopedia.
+   Use the available article width; do not cap the whole page at 77ch. */
+body.vitruvia-reading #vitruvia-article .article-body{
+ max-width:none!important;
+ width:100%;
+}
+body.vitruvia-reading #vitruvia-article .article-body p:not(.article-note){
+ max-width:100%!important;
+ margin:0 0 1.35em!important;
+ text-align:justify!important;
+ text-justify:inter-word;
+ hyphens:auto!important;
+ -webkit-hyphens:auto!important;
+ line-height:1.85!important;
+}
+#vitruvia-article .article-bibliography-list{
+ list-style:none;
+ padding:0;
+ margin:12px 0 32px;
+ max-width:100%;
+}
+#vitruvia-article .article-bibliography-list>li{
+ display:list-item;
+ list-style:none;
+ padding-left:1.65em;
+ text-indent:-1.65em;
+ margin:0 0 1.3em;
+ line-height:1.8;
+ hyphens:manual;
+ -webkit-hyphens:manual;
+ overflow-wrap:anywhere;
+}
+#vitruvia-article .article-bibliography-list>li:last-child{margin-bottom:0}
+@media(max-width:700px){
+ body.vitruvia-reading #vitruvia-article .article-body{max-width:100%!important}
+ #vitruvia-article .article-bibliography-list>li{padding-left:1.15em;text-indent:-1.15em}
+}
+@media print{
+ body.vitruvia-reading #vitruvia-article .article-body{max-width:none!important}
+ #vitruvia-article .article-bibliography-list>li{
+  color:#111!important;
+  break-inside:avoid-page;
+  page-break-inside:avoid;
+  orphans:3;widows:3;
+ }
+}
+
+
+/* Classical reading: a prominent edition link, not just an inline text link.
+   Never use a "Read" CTA for catalogue-only records. */
+#vitruvia-article .article-original-readings{
+ display:grid;gap:11px;padding:15px 0 20px;max-width:100%;
+}
+#vitruvia-article .article-original-readings>h4{
+ margin:0 0 6px!important;font-size:1.15rem!important;
+}
+#vitruvia-article .article-original-reading-card{
+ display:flex;align-items:center;justify-content:space-between;gap:17px;
+ padding:17px 19px;margin:0!important;
+ border:1px solid var(--vr-control-border,#515357);
+ border-left:3px solid #9b9996;
+ border-radius:9px;
+ background:var(--vr-control-bg,#1c1d1f);
+ color:var(--vr-page-ink,#eee);
+ font-family:Arial,Helvetica,sans-serif;
+}
+#vitruvia-article .article-original-reading-details{
+ display:flex;flex-direction:column;align-items:flex-start;gap:5px;
+ flex:1 1 45%;min-width:0;
+}
+#vitruvia-article .article-original-reading-eyebrow{
+ font:600 10px/1.5 Arial,Helvetica,sans-serif!important;
+ letter-spacing:.10em;color:var(--vr-page-muted,#b1b3b5);
+}
+#vitruvia-article .article-original-reading-title{
+ font:600 clamp(17px,1.4vw,22px)/1.35 Georgia,'Times New Roman',serif!important;
+ overflow-wrap:break-word;
+}
+#vitruvia-article .article-original-reading-note{
+ font:400 11px/1.5 Arial,Helvetica,sans-serif!important;
+ color:var(--vr-page-muted,#b1b3b5);
+}
+#vitruvia-article .article-original-reading-actions{
+ display:flex;flex:0 0 auto;flex-direction:column;
+ justify-content:center;align-items:flex-end;gap:8px;
+ max-width:min(50%,330px);
+}
+#vitruvia-article .article-original-reading-cta{
+ display:inline-flex;justify-content:center;align-items:center;
+ border:1px solid #858789;border-radius:7px;
+ padding:10px 14px;text-decoration:none!important;
+ font:600 13px/1.4 Arial,Helvetica,sans-serif!important;
+ color:var(--vr-page-ink,#f5f5f5)!important;
+ background:rgba(135,139,142,.14);
+ min-height:41px;text-align:center;
+}
+#vitruvia-article .article-original-reading-cta:is(:hover,:focus-visible){
+ background:rgba(135,139,142,.29);border-color:#b3b6b8;
+}
+#vitruvia-article .article-original-reading-record{
+ color:var(--vr-page-muted,#b5b7b8)!important;
+ font:400 11px/1.4 Arial,Helvetica,sans-serif!important;
+ text-decoration:underline;text-underline-offset:3px;
+}
+#vitruvia-article .article-original-reading-card.is-contextual{
+ margin:12px 0 25px!important;
+ padding:14px 17px;max-width:100%;
+}
+#vitruvia-article .article-original-reading-card.is-contextual .article-original-reading-title{
+ font-size:18px!important;
+}
+@media(max-width:700px){
+ #vitruvia-article .article-original-reading-card{
+  flex-direction:column;align-items:stretch;padding:13px;gap:12px;
+ }
+ #vitruvia-article .article-original-reading-actions{
+  align-items:stretch;max-width:100%;width:100%;
+ }
+ #vitruvia-article .article-original-reading-cta{
+  width:100%;box-sizing:border-box;
+ }
+}
+@media print{
+ #vitruvia-article .article-original-reading-card{break-inside:avoid-page;background:transparent!important;border-color:#777!important}
+ #vitruvia-article .article-original-reading-cta{color:#111!important;border-color:#555!important;background:transparent!important}
+}
+
+/* ===== assets/vitruvia-floating-reader.css ===== */
+/* Vitruvia · discreet scrolling reading controls */
+.vitruvia-reading-float{
+ position:fixed;right:clamp(9px,1.7vw,24px);top:clamp(155px,37vh,340px);
+ z-index:120;display:none;isolation:isolate;
+ font:400 13px/1.4 Arial,Helvetica,sans-serif;
+ color:var(--vr-control-ink,#f3f2ef);
+}
+.vitruvia-reading-float[data-visible="true"]{display:block}
+.vrf-rail{
+ display:flex;flex-direction:column;align-items:stretch;gap:3px;
+ border:1px solid var(--vr-control-border,#656568);border-radius:22px;
+ padding:5px;background:var(--vr-panel-bg,#222326);box-shadow:0 9px 24px #0005;
+}
+.vrf-key{
+ width:40px;height:39px;display:grid;place-items:center;
+ border:0;border-radius:16px;cursor:pointer;color:inherit;
+ background:transparent;font:600 13px/1 Arial,Helvetica,sans-serif;
+}
+.vrf-key-main{font:italic 19px/1 Georgia,serif}
+.vrf-key:hover,.vrf-key:focus-visible,.vrf-key[aria-expanded="true"]{
+ background:var(--vr-control-hover,#47474a);
+}
+.vrf-ink-dot{
+ width:18px;height:18px;border-radius:50%;
+ border:2px solid var(--vr-control-border,#999);
+ box-shadow:inset 0 0 0 1px #0005;
+}
+.vrf-panel{
+ position:absolute;right:calc(100% + 12px);top:0;
+ width:300px;max-width:calc(100vw - 90px);
+ max-height:calc(100dvh - 125px);overflow-y:auto;
+ padding:17px;border:1px solid var(--vr-control-border,#666);
+ border-radius:12px;background:var(--vr-panel-bg,#222326);
+ color:var(--vr-control-ink,#f4f4f4);box-shadow:0 15px 43px #0007;
+}
+.vrf-panel[hidden]{display:none!important}
+.vrf-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 13px}
+.vrf-head strong{font:600 16px/1.2 Georgia,serif}
+.vrf-panel label{display:block;font-size:12px;margin:14px 0 6px}
+.vrf-size-row,.vrf-color-row{display:flex;align-items:center;gap:10px}
+.vrf-size-row output{min-width:39px;font-variant-numeric:tabular-nums;text-align:right}
+.vrf-panel input[type="range"]{width:100%;min-width:0;accent-color:#b8b6b3;cursor:pointer}
+.vrf-panel select{
+ display:block;width:100%;min-height:38px;padding:7px;
+ color:var(--vr-control-ink,#f4f4f4);background:var(--vr-control-bg,#343438);
+ border:1px solid var(--vr-control-border,#666);border-radius:7px;
+}
+.vrf-panel input[type="color"]{
+ width:53px;height:38px;min-width:53px;padding:3px;
+ border:1px solid var(--vr-control-border,#666);border-radius:7px;
+ background:var(--vr-control-bg,#343438);cursor:pointer;
+}
+.vrf-panel button:not(.vrf-key){
+ cursor:pointer;min-height:37px;padding:7px 10px;
+ border:1px solid var(--vr-control-border,#666);border-radius:7px;
+ background:var(--vr-control-bg,#343438);color:inherit;font:inherit;
+}
+.vrf-head #vrf-close{min-width:35px;font-size:22px;padding:3px}
+.vrf-color-row #vrf-automatic{flex:1}
+.vrf-actions{display:flex;gap:8px;margin-top:18px}
+.vrf-actions button{flex:1}
+.vrf-panel button[aria-pressed="true"]{outline:1px solid currentColor}
+.vitruvia-reading-float :is(button,input,select):focus-visible{
+ outline:2px solid currentColor;outline-offset:2px;
+}
+@media(min-width:701px) and (max-width:1120px){
+ body.vitruvia-reading #vitruvia-article .article-grid{padding-right:52px}
+}
+@media print{
+ .vitruvia-reading-float{display:none!important}
+ body.vitruvia-reading #vitruvia-article .article-grid{padding-right:0!important}
+}
+
+/* Resilient visibility: show the reader for every open result, regardless of
+   how the article was reached or how its scroll geometry changes. */
+@media screen{
+ body.vitruvia-reading #vitruvia-reading-float{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+ }
+ /* If JavaScript failed to create the enhanced rail, the native Aa settings
+    still follow the user down the page, never hiding the only reading control. */
+ body.vitruvia-reading:not(:has(#vitruvia-reading-float)) #reading-options{
+  position:fixed!important;
+  top:clamp(150px,33vh,310px)!important;
+  right:clamp(12px,2vw,30px)!important;
+  z-index:400!important;
+  margin:0!important;
+  box-shadow:0 10px 32px #0007!important;
+ }
+ body.vitruvia-reading:not(:has(#vitruvia-reading-float)) #reading-options .reading-options-panel{
+  right:0!important;
+ }
+}
+
+
+/* Drag grip for the existing Aa reading rail; compatible with its panel controls. */
+.vitruvia-reading-float .vrf-drag{
+ font:500 20px/1 Arial,Helvetica,sans-serif;
+ color:var(--vr-control-ink,#d5d5d5);
+ opacity:.74;cursor:grab;
+ touch-action:none;user-select:none;-webkit-user-select:none;
+ border-bottom:1px solid var(--vr-control-border,#444);
+ border-radius:13px 13px 8px 8px;
+}
+.vitruvia-reading-float .vrf-drag:hover,
+.vitruvia-reading-float .vrf-drag:focus-visible{
+ opacity:1;background:var(--vr-control-hover,#47474a);
+}
+.vitruvia-reading-float.vrf-dragging .vrf-drag{cursor:grabbing}
+.vitruvia-reading-float.vrf-user-positioned{
+ right:auto!important;
+ bottom:auto!important;
+}
+.vitruvia-reading-float .vrf-panel.vrf-panel-right{
+ left:calc(100% + 12px);
+ right:auto;
+}
+/* A desktop drag position must not cover mobile paragraphs or the search box.
+   Keep all reading controls in a compact dock above the bottom navigation. */
+@media screen and (max-width:700px){
+ #vitruvia-reading-float{
+  left:50%!important;right:auto!important;top:auto!important;
+  bottom:calc(56px + env(safe-area-inset-bottom,0px))!important;
+  transform:translateX(-50%);
+ }
+ #vitruvia-reading-float .vrf-rail{flex-direction:row;padding:4px;border-radius:25px}
+ #vitruvia-reading-float .vrf-key{width:44px;height:44px;font-size:13px}
+ #vitruvia-reading-float .vrf-key-main{font-size:19px}
+ #vitruvia-reading-float .vrf-drag{display:none}
+ #vitruvia-reading-float .vrf-panel,
+ #vitruvia-reading-float .vrf-panel.vrf-panel-right{
+  right:50%;left:auto;top:auto;bottom:calc(100% + 8px);
+  transform:translateX(50%);max-width:calc(100vw - 24px);max-height:65dvh;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid{padding-right:0;padding-bottom:76px}
+}
+
+/* ===== assets/vitruvia-paragraph-magnifier.css ===== */
+/* Optional paragraph magnification, with a consistent scholarly grey style. */
+#vr-pm-trigger{font-size:24px;line-height:1;cursor:zoom-in}
+#vr-pm-trigger[aria-pressed="true"]{background:var(--vr-control-hover,#52555b)!important;color:#fff!important;outline:1px solid #92969c;outline-offset:-2px}
+#vr-pm-trigger.vr-pm-floating-trigger{
+ position:fixed;right:17px;bottom:20vh;z-index:105;
+ width:51px;height:51px;border:1px solid #72767b;border-radius:50%;
+ color:#eee;background:#282a2d;box-shadow:0 9px 23px #0005;
+ display:grid;place-items:center;padding:0;
+}
+#vr-pm-trigger.vr-pm-floating-trigger:hover{background:#42464a}
+body.vr-pm-active #article-body p:not(:has(a:hover)),
+body.vr-pm-active #classic-detail :is(p,li),
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) section p.poem,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) main p,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) pre{
+ cursor:zoom-in;
+}
+body.vr-pm-active #article-body p:hover,
+body.vr-pm-active #classic-detail :is(p,li):hover,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) section p.poem:hover,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) main p:hover,
+body.vr-pm-active:has(#vr-pm-trigger.vr-pm-floating-trigger):not(:has(#classic-detail)) pre:hover{
+ outline:1px dashed #96999d;outline-offset:4px;
+}
+.vr-pm-backdrop{
+ position:fixed;inset:0;z-index:15000;
+ display:grid;place-items:center;padding:clamp(10px,3vw,30px);
+ background:rgba(5,7,10,.72);backdrop-filter:blur(3px);
+}
+.vr-pm-backdrop[hidden]{display:none!important}
+.vr-pm-dialog{
+ width:min(780px,96vw);max-height:min(85dvh,850px);
+ box-sizing:border-box;padding:clamp(17px,3vw,30px);
+ border:1px solid #6c6f73;border-radius:15px;
+ background:#202225;color:#f4f1e9;box-shadow:0 20px 70px #0009;
+ display:flex;flex-direction:column;min-height:0;gap:12px;
+ font-family:Arial,Helvetica,sans-serif;
+}
+.vr-pm-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.vr-pm-eyebrow{display:block;color:#a5a8ad;font-size:10px;letter-spacing:.09em;font-weight:600;margin-bottom:7px}
+.vr-pm-header h2{font:500 24px/1.18 Georgia,serif;color:inherit!important;margin:0!important}
+.vr-pm-control{
+ background:#35383d;color:inherit;min-width:38px;min-height:37px;
+ border:1px solid #666a70;border-radius:7px;cursor:pointer;
+ font:600 14px/1 Arial,Helvetica,sans-serif;
+}
+.vr-pm-close{font-size:25px;min-width:42px;min-height:42px}
+.vr-pm-zoom-controls{display:flex;align-items:center;gap:12px;padding:8px 0 10px;border-bottom:1px solid #505459}
+.vr-pm-zoom-controls input[type="range"]{accent-color:#bec0c2;flex:1;min-width:30px;cursor:pointer}
+#vr-pm-size-label{min-width:42px;text-align:right;font:12px/1.4 Arial,Helvetica,sans-serif;font-variant-numeric:tabular-nums}
+.vr-pm-text-scroll{overflow:auto;min-height:0;overscroll-behavior:contain;scrollbar-color:#737780 #36383b;scrollbar-width:auto;padding:5px 7px 5px 0}
+.vr-pm-text{
+ font:400 26px/1.75 Georgia,'Times New Roman',serif;
+ white-space:pre-wrap;overflow-wrap:anywhere;hyphens:auto;text-align:left;
+ direction:auto;max-width:100%;
+}
+.vr-pm-excerpt-note{margin:0!important;color:#bdc0c4;font:400 11px/1.5 Arial,Helvetica,sans-serif}
+.vr-pm-dialog :is(button,input):focus-visible,#vr-pm-trigger:focus-visible{outline:2px solid #e3cc91;outline-offset:3px}
+html[data-theme="light"] .vr-pm-dialog{background:#f9f7f1;color:#20242a;border-color:#a5a8aa}
+html[data-theme="light"] .vr-pm-eyebrow,html[data-theme="light"] .vr-pm-excerpt-note{color:#58616a}
+html[data-theme="light"] .vr-pm-control{background:#e5e6e7;color:#20242a;border-color:#a6adb1}
+html[data-theme="light"] .vr-pm-zoom-controls{border-bottom-color:#bfc2c4}
+@media(max-width:700px){
+ .vr-pm-dialog{width:calc(100vw - 20px);max-height:88dvh;padding:16px;border-radius:11px}
+ .vr-pm-header h2{font-size:21px}
+ .vr-pm-zoom-controls{gap:8px}
+ #vr-pm-trigger.vr-pm-floating-trigger{right:9px;bottom:14vh;width:44px;height:44px}
+}
+@media print{#vr-pm-trigger,.vr-pm-backdrop{display:none!important}}
+
+/* ===== assets/vitruvia-selection-speech.css ===== */
+/* Only after the reader marks a fragment: unobtrusive contextual voice player */
+.vr-selection-speech{
+ position:fixed;z-index:15020;display:flex;align-items:center;
+ box-sizing:border-box;gap:5px;
+ max-width:calc(100vw - 14px);
+ padding:5px 7px;border:1px solid #75777b;border-radius:13px;
+ background:#242527;color:#f0efec;
+ box-shadow:0 8px 26px #0007;
+ font:400 11px/1.2 Arial,Helvetica,sans-serif;
+}
+.vr-selection-speech[hidden],.vr-selection-speech [hidden]{display:none!important}
+.vr-selection-speech button{
+ box-sizing:border-box;border:0!important;background:transparent!important;
+ color:inherit!important;box-shadow:none!important;
+ display:inline-grid;place-items:center;min-height:27px;
+ min-width:30px;padding:4px 7px!important;
+ border-radius:8px!important;cursor:pointer;
+ font:500 14px/1 Arial,Helvetica,sans-serif!important;
+}
+.vr-selection-speech button:hover,.vr-selection-speech button:focus-visible{
+ background:#424447!important;color:#fff!important;
+}
+.vr-selection-speech button:disabled{opacity:.45;cursor:default}
+.vr-selection-speech .vr-selection-speech-status{
+ font:400 10px/1.3 Arial,Helvetica,sans-serif;color:#b8babc;
+ white-space:nowrap;max-width:160px;overflow:hidden;text-overflow:ellipsis;
+ padding-right:5px;
+}
+html[data-theme="light"] .vr-selection-speech,
+html[data-reading-background-tone="light"] .vr-selection-speech{
+ color:#22262a;background:#f5f5f3;border-color:#8b8d91;
+ box-shadow:0 8px 22px #0003;
+}
+html[data-theme="light"] .vr-selection-speech .vr-selection-speech-status,
+html[data-reading-background-tone="light"] .vr-selection-speech .vr-selection-speech-status{
+ color:#4b4d52;
+}
+html[data-theme="light"] .vr-selection-speech button:is(:hover,:focus-visible),
+html[data-reading-background-tone="light"] .vr-selection-speech button:is(:hover,:focus-visible){
+ background:#dddfdf!important;color:#171717!important;
+}
+@media(max-width:600px){
+ .vr-selection-speech{gap:4px;padding:4px 5px;border-radius:12px}
+ .vr-selection-speech button{min-height:35px;min-width:35px}
+}
+@media print{.vr-selection-speech{display:none!important}}
+
+/* ===== assets/vitruvia-academic-reader.css ===== */
+/* Vitruvia · university-style section navigation and documented in-article search. */
+#vr-academic-tools{box-sizing:border-box;font:400 12px/1.48 Arial,Helvetica,sans-serif;color:var(--vr-page-ink,#e9e9e8);min-width:0;margin:0 0 22px}
+.vr-study-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 9px}
+.vr-study-heading strong{font:600 13px/1.45 Arial,sans-serif}
+#vr-progress{font-size:11px;opacity:.7;font-variant-numeric:tabular-nums}
+.vr-progress-track{height:3px;background:var(--vr-control-border,#555);border-radius:2px;overflow:hidden}
+.vr-source-snapshot{font:400 10px/1.5 Arial,Helvetica,sans-serif;color:var(--vr-page-muted,#aaa);padding:9px 0 3px}
+.vr-source-snapshot .vr-original-link{display:block;color:var(--vr-page-ink,#ddd);text-decoration:underline;text-underline-offset:3px;margin:6px 0 1px;font-size:11px}
+
+#vr-progress-fill{height:100%;width:0;background:var(--vr-page-ink,#ddd);transition:width .1s ease}
+#vr-academic-tools #vr-summary{cursor:pointer;font-weight:600;font-size:12px;padding:12px 0}
+.vr-study-inner{padding:0 0 10px}
+#vr-academic-tools label{display:block;font-size:11px;margin:3px 0 7px}
+.vr-find-row{display:flex;align-items:stretch;gap:4px}
+.vr-find-row input{box-sizing:border-box;min-width:0;flex:1 1 auto;width:100%;min-height:37px;border:1px solid var(--vr-control-border,#555);background:var(--vr-control-bg,#242426);color:inherit;border-radius:7px;padding:7px 10px;font:inherit}
+#vr-academic-tools button{border:1px solid var(--vr-control-border,#555);border-radius:6px;background:var(--vr-control-bg,#242426);color:inherit;cursor:pointer;min-width:31px;min-height:31px;font:inherit}
+#vr-academic-tools button:disabled{opacity:.4;cursor:default}
+#vr-academic-tools :is(button,input,a,summary):focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.vr-find-nav{display:flex;align-items:center;justify-content:space-between;gap:5px;margin:7px 0 11px;color:var(--vr-page-muted,#aaa)}
+.vr-find-nav button{font-size:15px!important}
+#vr-count{font-size:11px;font-variant-numeric:tabular-nums}
+#vr-index{display:flex;flex-direction:column;gap:1px;max-height:38vh;overflow-y:auto;scrollbar-width:thin;margin:5px 0 18px}
+#vr-index .vr-section{display:block;text-decoration:none;color:inherit;border-left:2px solid transparent;font:400 12px/1.43 Arial,Helvetica,sans-serif;opacity:.78;padding:7px 7px 7px 9px;overflow-wrap:break-word}
+#vr-index .vr-subsection{font-size:11px;padding-left:19px}
+#vr-index .vr-section:hover,#vr-index .vr-section.is-active{opacity:1;border-left-color:currentColor;background:rgba(130,130,130,.1)}
+#vr-index .vr-section.is-active{font-weight:600}
+.vr-source-footer{padding-top:12px;border-top:1px solid var(--vr-control-border,#555)}
+.vr-source-footer a{display:block;color:inherit;text-underline-offset:3px;font-size:11px}
+.vr-source-footer small{display:block;color:var(--vr-page-muted,#aaa);font-size:10px;line-height:1.5;margin-top:8px}
+#vitruvia-article .vr-source-citation{font:400 10px/1.4 Arial,Helvetica,sans-serif!important;text-decoration:none!important;border-bottom:1px dotted currentColor;color:var(--vr-page-muted,#aaa)!important;white-space:nowrap;letter-spacing:0}
+#vitruvia-article .vr-source-citation:hover{text-decoration:underline!important}
+#vitruvia-article mark.vr-study-match{background:#d8bd67!important;color:#131313!important;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+#vitruvia-article mark.vr-study-match.vr-study-current{background:#ffdd72!important;color:#080808!important;outline:2px solid #b98735;outline-offset:1px}
+#vitruvia-article #article-body :is(h3,h4){scroll-margin-top:120px}
+#vitruvia-article #article-sources{scroll-margin-top:110px}
+@media(min-width:1021px){body.vitruvia-reading #vitruvia-article .article-aside>#vr-academic-tools{border-bottom:1px solid var(--vr-control-border,#555);padding:0 0 14px;margin:0 0 18px}}
+@media(max-width:1020px){
+ body.vitruvia-reading #vitruvia-article>#vr-academic-tools{position:sticky;top:6px;z-index:65;margin:12px 48px 18px 0;padding:10px 14px 8px;border:1px solid var(--vr-control-border,#555);border-radius:9px;background:var(--vr-panel-bg,#222326);color:var(--vr-control-ink,#e7e7e7);box-shadow:0 8px 20px #0004}
+ #vr-index{max-height:25vh}
+}
+@media(max-width:700px){body.vitruvia-reading #vitruvia-article>#vr-academic-tools{margin-right:44px}.vr-study-heading strong{font-size:12px}}
+@media print{
+ #vr-academic-tools{display:none!important}
+ #vitruvia-article .vr-source-citation{color:#333!important;text-decoration:underline!important}
+ #vitruvia-article mark.vr-study-match{background:transparent!important;color:inherit!important;outline:none!important}
+}
+
+
+/* Movable navigation · neutral charcoal manuscript-reader control. */
+#vr-academic-tools .vr-study-controls{display:inline-flex;align-items:center;justify-content:flex-end;gap:4px;flex-shrink:0}
+#vr-academic-tools .vr-drag-handle,
+#vr-academic-tools .vr-dock-button{
+ display:inline-grid;place-items:center;cursor:grab;
+ min-width:30px;min-height:29px;padding:2px 4px;border-radius:8px;
+ border:1px solid var(--vr-control-border,#5a5a5d);
+ background:var(--vr-control-bg,#292a2d);color:inherit;font-size:18px;
+ touch-action:none;user-select:none;-webkit-user-select:none;
+}
+#vr-academic-tools .vr-drag-handle:active{cursor:grabbing}
+#vr-academic-tools .vr-dock-button{cursor:pointer;font-size:17px}
+#vr-academic-tools .vr-dock-button[hidden]{display:none!important}
+#vr-academic-tools.vr-is-floating{
+ position:fixed!important;z-index:180!important;
+ display:block!important;box-sizing:border-box!important;
+ right:auto!important;bottom:auto!important;
+ max-width:calc(100vw - 16px);
+ max-height:calc(100dvh - 20px);
+ padding:14px 15px 8px!important;
+ overflow-y:auto!important;overscroll-behavior:contain;
+ background:var(--vr-panel-bg,#242527)!important;
+ color:var(--vr-control-ink,#f0f0f0)!important;
+ border:1px solid var(--vr-control-border,#666)!important;
+ border-radius:12px!important;
+ box-shadow:0 14px 35px #0007!important;
+}
+#vr-academic-tools.vr-is-dragging{user-select:none;-webkit-user-select:none}
+#vr-academic-tools.vr-is-floating #vr-index{max-height:min(43vh,370px)}
+/* Grey track, thick rounded graphite scrollbar, rather than the browser white bar. */
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside),
+#vr-academic-tools.vr-is-floating,
+#vr-academic-tools.vr-is-floating #vr-index{
+ scrollbar-width:auto!important;
+ scrollbar-color:#62676d #303338!important;
+}
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar,
+#vr-academic-tools.vr-is-floating::-webkit-scrollbar,
+#vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar{
+ width:14px;height:14px;
+}
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-track,
+#vr-academic-tools.vr-is-floating::-webkit-scrollbar-track,
+#vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-track{
+ background:#303338;border-radius:999px;
+}
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-thumb,
+#vr-academic-tools.vr-is-floating::-webkit-scrollbar-thumb,
+#vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-thumb{
+ background:#62676d;border-radius:999px;
+ border:3px solid #303338;min-height:38px;
+}
+body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-thumb:hover,
+#vr-academic-tools.vr-is-floating::-webkit-scrollbar-thumb:hover,
+#vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-thumb:hover{
+ background:#868d94;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside),
+html[data-theme=light] #vr-academic-tools.vr-is-floating,
+html[data-theme=light] #vr-academic-tools.vr-is-floating #vr-index{
+ scrollbar-color:#50555b #bfc3c6!important;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-track,
+html[data-theme=light] #vr-academic-tools.vr-is-floating::-webkit-scrollbar-track,
+html[data-theme=light] #vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-track{
+ background:#bfc3c6;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-article :is(#vr-index,.article-aside)::-webkit-scrollbar-thumb,
+html[data-theme=light] #vr-academic-tools.vr-is-floating::-webkit-scrollbar-thumb,
+html[data-theme=light] #vr-academic-tools.vr-is-floating #vr-index::-webkit-scrollbar-thumb{
+ background:#50555b;border-color:#bfc3c6;
+}
+@media print{#vr-academic-tools.vr-is-floating{display:none!important}}
+
+
+/* AI mode from the compact movable navigation. Literal search remains separate. */
+#vr-academic-tools .vr-ai-row{
+ display:flex;flex-direction:column;align-items:stretch;gap:6px;
+ border-top:1px solid var(--vr-control-border,#53565a);
+ border-bottom:1px solid var(--vr-control-border,#53565a);
+ padding:11px 0;margin:0 0 14px;
+}
+#vr-academic-tools #vr-ask-ai{
+ display:block;width:100%;min-height:38px;
+ padding:8px 11px;background:var(--vr-control-bg,#35373b);
+ border:1px solid var(--vr-control-border,#656a71);
+ border-radius:8px;color:inherit;
+ font:600 12px/1.35 Arial,Helvetica,sans-serif;
+ text-align:left;letter-spacing:.015em;
+}
+#vr-academic-tools #vr-ask-ai:hover,
+#vr-academic-tools #vr-ask-ai:focus-visible{
+ background:var(--vr-control-hover,#4b4f54);
+}
+#vr-academic-tools #vr-ask-ai-detail{
+ display:block;font:400 10px/1.55 Arial,Helvetica,sans-serif;
+ color:var(--vr-page-muted,#aaa);overflow-wrap:anywhere;
+}
+@media print{#vr-academic-tools .vr-ai-row{display:none!important}}
+
+/* ===== assets/vitruvia-featured-documentary.css ===== */
+/* Prominent yet restrained documentary image in the Wikipedia feature. */
+#featured-documentary-visual{margin:0 0 4px;width:100%;max-width:520px;min-width:0;align-self:flex-start}
+#featured-documentary-visual[hidden]{display:none!important}
+#featured-documentary-visual .featured-documentary-photo{
+ display:block!important;width:100%;margin:0!important;
+ background:#191b1d;border:1px solid #42454a;border-radius:8px;
+ overflow:hidden;text-decoration:none;line-height:0;padding:0!important;
+}
+#featured-documentary-visual img{
+ display:block;width:100%;height:clamp(190px,19vw,300px);
+ object-fit:contain;object-position:center;background:#1d2023;
+ filter:none;transition:filter .2s ease;
+}
+#featured-documentary-visual .featured-documentary-photo:hover img{filter:brightness(1.07)}
+#featured-documentary-visual figcaption{
+ margin:8px 1px 0;text-align:left!important;
+ font:400 11px/1.52 Arial,Helvetica,sans-serif!important;
+ color:#a9aaad;max-width:100%;
+}
+#featured-documentary-visual .featured-documentary-caption{display:block;overflow-wrap:anywhere}
+#featured-documentary-visual .featured-documentary-credit{
+ display:inline-block!important;margin:5px 0 0!important;
+ font:400 10px/1.5 Arial,Helvetica,sans-serif!important;
+ text-decoration:underline;text-underline-offset:2px;color:#bdbec1;
+}
+html[data-theme=light] #featured-documentary-visual .featured-documentary-photo{
+ background:#e5e5e5;border-color:#b5b6b9;
+}
+html[data-theme=light] #featured-documentary-visual img{background:#ececec}
+html[data-theme=light] #featured-documentary-visual figcaption,
+html[data-theme=light] #featured-documentary-visual .featured-documentary-credit{color:#44464a}
+@media(max-width:800px){
+ #featured-documentary-visual{max-width:100%}
+ #featured-documentary-visual img{height:min(58vw,225px)}
+}
+@media print{
+ #featured-documentary-visual{max-width:280px}
+ #featured-documentary-visual img{height:180px}
+}
+
+/* Diagramas químicos (PubChem, modelos de Bohr): fondo claro para que se lean las líneas. */
+#featured-documentary-visual.is-diagram img{background:#f4f2ec;padding:10px;box-sizing:border-box}
+html[data-theme=light] #featured-documentary-visual.is-diagram img{background:#fff}
+
+/* ===== assets/vitruvia-compact-nav.css ===== */
+/* Unobtrusive search categories next to ◇ Private query.
+   Original search tabs are retained for existing event handlers and disabled
+   visually only after the compact controls are available. */
+body:has(#vitruvia-compact-nav) .hero .tabs{
+ display:none!important;
+}
+.search-wrap .search-utility:has(#vitruvia-compact-nav){
+ display:flex!important;
+ align-items:center!important;
+ justify-content:flex-start!important;
+ gap:12px!important;
+ flex-flow:row nowrap!important;
+ overflow-x:auto;
+ overflow-y:hidden;
+ max-width:100%;
+ min-width:0;
+ scrollbar-width:thin;
+ scrollbar-color:#48494b transparent;
+ padding:3px 2px 5px;
+}
+.search-wrap .search-utility:has(#vitruvia-compact-nav)>#search-privacy{
+ order:0;flex:0 0 auto;
+ white-space:nowrap;
+ padding:4px 0!important;
+ text-decoration:none!important;
+ font:400 11px/1.5 Arial,Helvetica,sans-serif!important;
+ color:#9b9b9f!important;
+}
+.search-wrap .search-utility:has(#vitruvia-compact-nav)>#clear-all{
+ order:2;flex:0 0 auto;white-space:nowrap;margin-left:auto;
+}
+#vitruvia-compact-nav{
+ order:1;display:flex;align-items:center;gap:clamp(9px,1.1vw,19px);
+ flex:0 0 auto;white-space:nowrap;min-width:0;
+}
+#vitruvia-compact-nav :is(.vitruvia-compact-item,.vitruvia-compact-more){
+ position:relative;display:inline-flex;align-items:center;justify-content:center;
+ padding:4px 0!important;margin:0!important;
+ border:0!important;border-radius:0!important;
+ background:transparent!important;
+ color:#a0a1a5!important;
+ font:400 11px/1.6 Arial,Helvetica,sans-serif!important;
+ text-decoration:none!important;letter-spacing:0!important;
+ min-height:27px!important;white-space:nowrap;box-shadow:none!important;
+ cursor:pointer;
+}
+#vitruvia-compact-nav .vitruvia-compact-item[aria-current="page"]{
+ color:#ecebea!important;
+ border-bottom:1px solid #b4b5b7!important;
+ font-weight:600!important;
+}
+#vitruvia-compact-nav :is(.vitruvia-compact-item,.vitruvia-compact-more):hover{
+ color:#f2f0ec!important;
+}
+#vitruvia-compact-nav :is(.vitruvia-compact-item,.vitruvia-compact-more):focus-visible{
+ outline:1px solid currentColor!important;outline-offset:3px!important;
+}
+/* Do not render the OS-native white select rectangle around “Más / More”.
+   The displayed first option already supplies the small down-arrow glyph. */
+#vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more{
+ appearance:none!important;-webkit-appearance:none!important;-moz-appearance:none!important;
+ display:inline-block!important;
+ box-sizing:content-box!important;
+ width:auto!important;max-width:95px!important;
+ min-width:0!important;
+ padding:4px 0!important;
+ margin:0!important;
+ border:0!important;border-radius:0!important;
+ background:none!important;background-color:transparent!important;background-image:none!important;
+ box-shadow:none!important;-webkit-box-shadow:none!important;
+ color:#a0a1a5!important;-webkit-text-fill-color:#a0a1a5!important;
+ font:400 11px/1.6 Arial,Helvetica,sans-serif!important;
+ outline:0;cursor:pointer;
+ color-scheme:dark;
+}
+#vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more:focus-visible{
+ outline:1px solid currentColor!important;outline-offset:4px!important;
+}
+#vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more:is(:hover,:focus){
+ background:transparent!important;background-color:transparent!important;
+ box-shadow:none!important;border:0!important;
+}
+#vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more:hover{
+ color:#f2f0ec!important;-webkit-text-fill-color:#f2f0ec!important;
+}
+html[data-theme="light"] #vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more{
+ color:#62666b!important;-webkit-text-fill-color:#62666b!important;
+ color-scheme:light;
+}
+html[data-theme="light"] #vitruvia-compact-nav select#vitruvia-compact-more.vitruvia-compact-more:hover{
+ color:#202124!important;-webkit-text-fill-color:#202124!important;
+}
+#vitruvia-compact-nav .vitruvia-compact-more option{
+ background:#28292b;color:#e6e6e6;
+}
+html[data-theme="light"] #vitruvia-compact-nav :is(.vitruvia-compact-item,.vitruvia-compact-more){
+ color:#62666b!important;
+}
+html[data-theme="light"] #vitruvia-compact-nav .vitruvia-compact-item[aria-current="page"]{
+ color:#202124!important;border-bottom-color:#323538!important;
+}
+html[data-theme="light"] #vitruvia-compact-nav .vitruvia-compact-more option{
+ background:#fafafa;color:#202124;
+}
+html[data-theme="light"] .search-wrap .search-utility:has(#vitruvia-compact-nav)>#search-privacy{
+ color:#62666b!important;
+}
+@media(max-width:640px){
+ .search-wrap .search-utility:has(#vitruvia-compact-nav){gap:10px!important;justify-content:flex-start!important}
+ #vitruvia-compact-nav{gap:12px}
+}
+@media print{#vitruvia-compact-nav{display:none!important}}
+
+/* ===== assets/vitruvia-reading-shelf.css ===== */
+/* Reading shelf: full-width, horizontally scrollable, without redesigning Vitruvia. */
+#vitruvia-reading-shelf{margin:24px auto 28px;max-width:1180px;padding:17px 20px 18px;background:#141516;color:#e7e4df;border:1px solid #3f4042;border-radius:9px}
+#vitruvia-reading-shelf[hidden]{display:none!important}
+#vitruvia-reading-shelf .vrs-header{margin-bottom:15px}
+#vitruvia-reading-shelf .vrs-header h2{font:600 clamp(18px,2.2vw,23px)/1.25 Georgia,serif;margin:0 0 6px;color:inherit}
+#vitruvia-reading-shelf .vrs-header p{font:13px/1.6 system-ui,sans-serif;opacity:.8;margin:0;max-width:970px}
+#vitruvia-reading-shelf .vrs-group+.vrs-group{margin-top:19px;padding-top:16px;border-top:1px solid #444}
+#vitruvia-reading-shelf .vrs-group-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+#vitruvia-reading-shelf .vrs-group-head h3{font:600 12px/1.4 system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;margin:0}
+#vitruvia-reading-shelf .vrs-nav{display:flex;gap:5px}
+#vitruvia-reading-shelf .vrs-nav button{width:33px;height:32px;padding:0;background:#262729;color:#eee;border:1px solid #555;border-radius:5px;cursor:pointer}
+#vitruvia-reading-shelf .vrs-nav button:hover{background:#37393d}
+#vitruvia-reading-shelf .vrs-rail{display:flex;gap:11px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x proximity;scrollbar-width:auto;scrollbar-color:#77777e #242427;padding:3px 2px 12px;outline-offset:2px}
+#vitruvia-reading-shelf .vrs-rail::-webkit-scrollbar{height:11px}
+#vitruvia-reading-shelf .vrs-rail::-webkit-scrollbar-thumb{background:#77777e;border-radius:8px}
+#vitruvia-reading-shelf .vrs-card{flex:0 0 240px;max-width:240px;scroll-snap-align:start;background:#1c1d20;border:1px solid #434448;border-radius:6px}
+#vitruvia-reading-shelf .vrs-card-open{display:flex;width:100%;min-height:150px;align-items:flex-start;gap:10px;padding:9px;text-align:left;background:transparent;color:inherit;border:0;cursor:pointer}
+#vitruvia-reading-shelf .vrs-card-open:hover,#vitruvia-reading-shelf .vrs-card-open[aria-expanded=true]{background:#2a2b2f}
+#vitruvia-reading-shelf .vrs-cover{display:flex;align-items:center;justify-content:center;flex:0 0 83px;width:83px;height:121px;background:#333437;border:1px solid #555;color:#b9b8b7;font:34px Georgia,serif;border-radius:3px;overflow:hidden}
+#vitruvia-reading-shelf .vrs-cover img{width:100%;height:100%;object-fit:contain;background:#242427}
+#vitruvia-reading-shelf .vrs-card-body{display:flex;min-width:0;flex-direction:column;gap:7px}
+#vitruvia-reading-shelf .vrs-book-title{font:600 13px/1.35 Georgia,serif;overflow-wrap:anywhere}
+#vitruvia-reading-shelf .vrs-author{font:12px/1.4 system-ui,sans-serif;color:#c8c8c8}
+#vitruvia-reading-shelf .vrs-source{font:10px/1.35 system-ui,sans-serif;color:#aeb9b6}
+#vitruvia-reading-shelf .vrs-detail{padding:12px 14px;margin-top:9px;background:#1e2022;border:1px solid #53545a;border-radius:5px}
+#vitruvia-reading-shelf .vrs-detail[hidden]{display:none}
+#vitruvia-reading-shelf .vrs-detail h4{font:600 16px/1.4 Georgia,serif;margin:0 0 7px}
+#vitruvia-reading-shelf .vrs-detail p{font:13px/1.65 system-ui,sans-serif;margin:0 0 9px}
+#vitruvia-reading-shelf a{color:#d9c18e;text-decoration:underline;text-underline-offset:3px}
+#vitruvia-reading-shelf .vrs-footer{margin:14px 0 0;font:11px/1.6 system-ui,sans-serif;opacity:.8}
+#vitruvia-reading-shelf button:focus-visible,#vitruvia-reading-shelf a:focus-visible{outline:2px solid #e4c77e;outline-offset:2px}
+html[data-theme=light] #vitruvia-reading-shelf{background:#f7f6f2;color:#222;border-color:#c2c1bd}
+html[data-theme=light] #vitruvia-reading-shelf .vrs-card{background:#fff;border-color:#bbb}
+html[data-theme=light] #vitruvia-reading-shelf .vrs-card-open:hover,
+html[data-theme=light] #vitruvia-reading-shelf .vrs-card-open[aria-expanded=true]{background:#eeeae1}
+html[data-theme=light] #vitruvia-reading-shelf .vrs-author{color:#454545}
+html[data-theme=light] #vitruvia-reading-shelf .vrs-source{color:#555}
+html[data-theme=light] #vitruvia-reading-shelf .vrs-detail{background:#f0ede6;border-color:#bbb}
+html[data-theme=light] #vitruvia-reading-shelf .vrs-nav button{background:#eee;color:#222;border-color:#bbb}
+html[data-theme=light] #vitruvia-reading-shelf a{color:#295d71}
+@media(max-width:720px){#vitruvia-reading-shelf{padding:13px 10px;margin:16px 0}#vitruvia-reading-shelf .vrs-card{flex-basis:215px;max-width:215px}}
+@media(prefers-reduced-motion:reduce){#vitruvia-reading-shelf *{scroll-behavior:auto!important;transition:none!important}}
+@media print{#vitruvia-reading-shelf .vrs-rail{overflow:visible;flex-wrap:wrap}#vitruvia-reading-shelf .vrs-nav{display:none}}
+
+/* ===== assets/vitruvia-academic-timeline.css ===== */
+/* Vitruvia · academic chronological bands. Neutral graphite, no gold.
+ * Responsive left-column placement with existing sourced cultural rail at right.
+ */
+#vitruvia-academic-timeline{
+ display:block!important;box-sizing:border-box!important;min-width:0!important;max-width:100%!important;
+ background:#101011;color:#e5e5e4;border:1px solid #45474a;border-radius:7px;
+ padding:clamp(12px,1.5vw,22px);margin:6px 0 23px!important;overflow:hidden;
+}
+#vitruvia-academic-timeline[hidden]{display:none!important}
+#vitruvia-academic-timeline .vat-header{display:flex;align-items:start;justify-content:space-between;gap:16px}
+#vitruvia-academic-timeline .vat-title h2{font:400 clamp(21px,2.3vw,30px)/1.2 Georgia,serif;margin:0 0 3px;color:inherit}
+#vitruvia-academic-timeline .vat-title p{font:14px/1.4 Georgia,serif;color:#c7c7c7;margin:0 0 3px}
+#vitruvia-academic-timeline .vat-subtitle{font:11px/1.5 Arial,sans-serif;color:#aaa;letter-spacing:.02em}
+#vitruvia-academic-timeline .vat-controls{display:flex;gap:6px;flex:none}
+#vitruvia-academic-timeline .vat-controls button{min-width:37px;min-height:36px;background:#202123;color:#e2e2e2;border:1px solid #606167;border-radius:6px;font:20px Arial,sans-serif;cursor:pointer}
+#vitruvia-academic-timeline .vat-controls button:hover{background:#353638}
+#vitruvia-academic-timeline .vat-method{font:12px/1.55 Arial,sans-serif;color:#aeafb1;margin:11px 0 16px;max-width:110ch}
+#vitruvia-academic-timeline .vat-empty{padding:18px 14px;border-top:1px solid #343536;font:13px/1.6 Arial,sans-serif;color:#aaa;margin:0}
+#vitruvia-academic-timeline .vat-viewport{width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:none;scrollbar-width:auto;scrollbar-color:#777 #252526;padding:0 0 14px;outline-offset:2px}
+#vitruvia-academic-timeline .vat-viewport::-webkit-scrollbar{height:11px}
+#vitruvia-academic-timeline .vat-viewport::-webkit-scrollbar-thumb{background:#74777b;border-radius:7px}
+#vitruvia-academic-timeline .vat-map{min-width:960px;position:relative}
+#vitruvia-academic-timeline .vat-axis{height:54px;position:relative;margin:0 0 7px 170px;border-bottom:1px solid #515357}
+#vitruvia-academic-timeline .vat-tick{position:absolute;bottom:7px;white-space:nowrap;transform:translateX(-50%);font:11px/1.3 Georgia,serif;color:#bdbdbd}
+#vitruvia-academic-timeline .vat-tick:after{content:"";display:block;position:absolute;left:50%;top:19px;height:10px;border-left:1px solid #797b7d}
+#vitruvia-academic-timeline .vat-band{display:grid;grid-template-columns:170px minmax(0,1fr);border:1px solid #343638;border-bottom:0;align-items:stretch;box-sizing:border-box}
+#vitruvia-academic-timeline .vat-band:last-of-type{border-bottom:1px solid #343638}
+#vitruvia-academic-timeline .vat-band-title{padding:15px 8px 8px 5px;font:13px/1.4 Georgia,serif;display:flex;align-items:flex-start;gap:9px}
+#vitruvia-academic-timeline .vat-band-title .vat-icon{font:21px Georgia,serif;color:#d0d2d2;width:24px;text-align:center;line-height:1}
+#vitruvia-academic-timeline .vat-band-title strong{font-weight:400}
+#vitruvia-academic-timeline .vat-track{position:relative;min-height:110px;max-width:100%;box-sizing:border-box}
+#vitruvia-academic-timeline .vat-line{position:absolute;top:48px;left:0;right:0;border-top:1px solid #66696b;pointer-events:none}
+#vitruvia-academic-timeline .vat-event{position:absolute;z-index:1;transform:translateX(-50%);
+ display:flex;flex-direction:column;gap:3px;justify-content:center;align-items:center;
+ min-width:135px;max-width:153px;min-height:58px;padding:8px 9px;box-sizing:border-box;
+ border:1px solid #67696b;border-radius:6px;background:#292a2c;color:#e8e8e7;
+ text-align:center;cursor:pointer;box-shadow:0 2px 8px #0003}
+#vitruvia-academic-timeline .vat-event:hover,#vitruvia-academic-timeline .vat-event[aria-pressed=true]{background:#46484a;border-color:#babbbc}
+#vitruvia-academic-timeline .vat-event .vat-year{font:11px/1.3 Georgia,serif;white-space:nowrap;color:#d1d1d1}
+#vitruvia-academic-timeline .vat-event strong{font:500 12px/1.3 Georgia,serif;color:#f0efec}
+#vitruvia-academic-timeline .vat-event .vat-duration{font:10px/1.3 Georgia,serif;color:#bababa}
+#vitruvia-academic-timeline .vat-detail{display:flex;align-items:flex-start;gap:21px;margin:17px 0 0;padding:17px;background:#1e1f20;border:1px solid #4b4d50;border-radius:7px}
+#vitruvia-academic-timeline .vat-detail[hidden]{display:none!important}
+#vitruvia-academic-timeline .vat-detail-image{width:min(32%,265px);min-width:120px;max-height:195px;object-fit:contain;filter:grayscale(1)}
+#vitruvia-academic-timeline .vat-detail-text{min-width:0;flex:1}
+#vitruvia-academic-timeline .vat-detail-text h4{font:italic 400 clamp(18px,1.9vw,25px)/1.35 Georgia,serif;margin:0 0 12px;color:inherit}
+#vitruvia-academic-timeline .vat-detail-text p{font:14px/1.68 Georgia,serif;color:#dedede;margin:0 0 12px}
+#vitruvia-academic-timeline .vat-evidence{display:block;font:11px/1.5 Arial,sans-serif;color:#bbb;border-top:1px solid #48494b;padding-top:10px;margin-bottom:8px}
+#vitruvia-academic-timeline .vat-source-link{font:12px/1.5 Arial,sans-serif;color:#e1e1e1;text-decoration:underline;text-underline-offset:3px}
+#vitruvia-academic-timeline :is(button,a,.vat-viewport):focus-visible{outline:2px solid #d4d5d6;outline-offset:3px}
+/* Standalone chronology across the full board. Do not override existing
+   article-grid/results-grid placement: both grids have late !important rules
+   maintained by the editorial reading system. */
+#vitruvia-article > #vitruvia-academic-timeline,
+#results > #vitruvia-academic-timeline{
+  position:relative!important;
+  display:block!important;
+  grid-column:auto!important;
+  grid-row:auto!important;
+  float:none!important;
+  clear:both!important;
+  isolation:isolate;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:clamp(26px,3vw,40px) 0 clamp(28px,3vw,44px)!important;
+  contain:layout;
+}
+#vitruvia-article > #vitruvia-academic-timeline[hidden],
+#results > #vitruvia-academic-timeline[hidden]{display:none!important}
+#vitruvia-academic-timeline .vat-header{margin-bottom:14px}
+#vitruvia-academic-timeline .vat-map{display:block}
+#vitruvia-academic-timeline .vat-band{
+  grid-template-columns:170px minmax(0,1fr);
+  position:relative;
+  min-height:130px;
+  padding:10px 0;
+}
+#vitruvia-academic-timeline .vat-track{
+  min-height:114px;
+  position:relative;
+  align-self:start;
+}
+#vitruvia-academic-timeline .vat-viewport{
+  display:block;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-height:180px;
+}
+#vitruvia-academic-timeline .vat-event{
+  max-width:148px;
+  min-height:62px;
+}
+@media(max-width:680px){
+  #vitruvia-article > #vitruvia-academic-timeline,
+  #results > #vitruvia-academic-timeline{
+    margin:22px 0 30px!important;
+  }
+  #vitruvia-academic-timeline .vat-band{grid-template-columns:132px minmax(0,1fr)}
+  #vitruvia-academic-timeline .vat-band-title{padding:13px 4px 8px 6px;font-size:12px}
+}
+html[data-theme=light] #vitruvia-academic-timeline{background:#f8f8f7;color:#27282a;border-color:#c5c5c5}
+html[data-theme=light] #vitruvia-academic-timeline :is(.vat-title p,.vat-subtitle,.vat-method,.vat-tick){color:#555}
+html[data-theme=light] #vitruvia-academic-timeline .vat-event{background:#e8e8e6;color:#252525;border-color:#888}
+html[data-theme=light] #vitruvia-academic-timeline .vat-event :is(.vat-year,strong,.vat-duration){color:#222}
+html[data-theme=light] #vitruvia-academic-timeline .vat-event[aria-pressed=true]{background:#cacaca}
+html[data-theme=light] #vitruvia-academic-timeline .vat-detail{background:#eeeeec;color:#272727;border-color:#aaa}
+html[data-theme=light] #vitruvia-academic-timeline .vat-detail :is(h4,p,small,a){color:#303030}
+@media(max-width:600px){
+ #vitruvia-academic-timeline{padding:12px 9px}
+ #vitruvia-academic-timeline .vat-detail{flex-direction:column}
+ #vitruvia-academic-timeline .vat-detail-image{width:100%;min-width:0;max-height:170px}
+}
+@media(prefers-reduced-motion:reduce){#vitruvia-academic-timeline *{scroll-behavior:auto!important}}
+@media print{#vitruvia-academic-timeline .vat-controls{display:none}#vitruvia-academic-timeline .vat-viewport{overflow:visible}#vitruvia-academic-timeline .vat-map{width:100%!important}}
+
+
+/* Pastel documentary event palette. Each dated record gets a gentle,
+   distinguishable color while retaining readable ink in both themes. */
+#vitruvia-academic-timeline .vat-track .vat-event{
+ color:#25303a!important;border-color:rgba(40,49,55,.35)!important;
+ background:#d4e5f2!important;transition:filter .16s ease,box-shadow .16s ease,border-color .16s ease;
+}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+1){background:#e9d8ef!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+2){background:#d4e5f2!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+3){background:#f5e3c5!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+4){background:#d6ead9!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n+5){background:#f3d7d8!important}
+#vitruvia-academic-timeline .vat-track .vat-event:nth-of-type(6n){background:#d9e6e1!important}
+#vitruvia-academic-timeline .vat-track .vat-event :is(.vat-year,strong,.vat-duration),
+html[data-theme=light] #vitruvia-academic-timeline .vat-track .vat-event :is(.vat-year,strong,.vat-duration){color:#283039!important}
+#vitruvia-academic-timeline .vat-track .vat-event:hover{
+ filter:brightness(1.055);border-color:#364956!important;box-shadow:0 4px 13px #0005;
+}
+#vitruvia-academic-timeline .vat-track .vat-event[aria-pressed=true],
+html[data-theme=light] #vitruvia-academic-timeline .vat-track .vat-event[aria-pressed=true]{
+ filter:saturate(1.08);border-color:#243f56!important;box-shadow:0 0 0 3px #7da5be,0 4px 13px #0005;
+}
+
+
+/* Universal fit-to-reader chronology: no wide canvas, all cards remain accessible. */
+#vitruvia-academic-timeline .vat-viewport{
+ width:100%!important;max-width:100%!important;
+ overflow-x:hidden!important;overflow-y:visible!important;min-height:0!important;
+ padding:0!important;
+}
+#vitruvia-academic-timeline .vat-map{min-width:0!important;max-width:100%!important}
+#vitruvia-academic-timeline .vat-axis{
+ margin-left:var(--vat-label-width,170px)!important;max-width:calc(100% - var(--vat-label-width,170px));
+ box-sizing:border-box!important;
+}
+#vitruvia-academic-timeline .vat-band{
+ grid-template-columns:var(--vat-label-width,170px) minmax(0,1fr)!important;
+ padding:6px 0!important;min-height:0!important;
+}
+#vitruvia-academic-timeline .vat-track{
+ min-width:0!important;max-width:100%!important;min-height:0!important;
+}
+#vitruvia-academic-timeline .vat-track .vat-event{
+ min-width:0!important;max-width:var(--vat-card-width,134px)!important;
+ min-height:66px!important;max-height:102px!important;
+ overflow:hidden;overflow-wrap:anywhere;
+ padding:7px 6px!important;
+}
+#vitruvia-academic-timeline .vat-event strong{
+ display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;
+ overflow:hidden;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-axis .vat-tick:first-child{transform:translateX(0)}
+#vitruvia-academic-timeline .vat-axis .vat-tick:last-child{transform:translateX(-100%)}
+@media(max-width:560px){
+ #vitruvia-academic-timeline .vat-band-title{font-size:11px;gap:4px;padding:10px 3px!important}
+ #vitruvia-academic-timeline .vat-band-title .vat-icon{width:15px;font-size:15px}
+ #vitruvia-academic-timeline .vat-event strong{font-size:11px}
+ #vitruvia-academic-timeline .vat-tick{font-size:10px}
+}
+
+
+/* Compact interactive timeline: dots stay visible, documentary labels reveal on hover/focus. */
+#vitruvia-academic-timeline .vat-track{overflow:visible!important}
+#vitruvia-academic-timeline .vat-band{overflow:visible!important}
+#vitruvia-academic-timeline .vat-viewport{overflow:visible!important}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker{
+ width:24px!important;height:24px!important;min-width:24px!important;max-width:24px!important;
+ min-height:24px!important;max-height:24px!important;padding:0!important;
+ border:2px solid #e5e5e5!important;border-radius:50%!important;
+ background:var(--vat-tag-color,#d4e5f2)!important;box-shadow:0 0 0 3px #383a3a!important;
+ transform:translateX(-50%)!important;display:block!important;overflow:visible!important;
+ transition:transform .18s ease,filter .18s ease!important;z-index:2;
+}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+1){--vat-tag-color:#e9d8ef}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+2){--vat-tag-color:#d4e5f2}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+3){--vat-tag-color:#f5e3c5}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+4){--vat-tag-color:#d6ead9}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+5){--vat-tag-color:#f3d7d8}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n){--vat-tag-color:#d9e6e1}
+#vitruvia-academic-timeline.vat-custom-color .vat-track .vat-event.vat-event-marker{
+ background:var(--vat-user-color)!important;
+}
+#vitruvia-academic-timeline.vat-custom-color .vat-event-marker .vat-event-pop{background:var(--vat-user-color)!important}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:is(:hover,:focus-visible,[aria-pressed=true]){
+ z-index:50;filter:saturate(1.12);transform:translateX(-50%) scale(1.17)!important;
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop{
+ position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(6px);
+ box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+ width:var(--vat-popup-width,134px);min-width:0;max-width:none;max-height:none;
+ padding:10px 9px!important;border:1px solid #687177;border-radius:9px;
+ color:#25303a!important;background:var(--vat-tag-color,#d4e5f2)!important;
+ box-shadow:0 5px 18px #0006;opacity:0;visibility:hidden;pointer-events:none;
+ transition:opacity .17s ease,transform .17s ease,visibility .17s;
+ text-align:center;white-space:normal;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-event-marker:is(:hover,:focus-visible,[aria-pressed=true]) .vat-event-pop{
+ opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop :is(.vat-year,strong,.vat-duration){color:#25303a!important}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop strong{display:block!important;-webkit-line-clamp:unset!important;overflow:visible!important}
+#vitruvia-academic-timeline .vat-color-control{display:flex;align-items:center;gap:6px;font:12px/1.3 Arial,sans-serif;color:inherit}
+#vitruvia-academic-timeline .vat-color-control input{width:32px;height:33px;padding:2px;border:1px solid #777;border-radius:6px;background:transparent;cursor:pointer}
+#vitruvia-academic-timeline .vat-controls{flex-wrap:wrap;align-items:center}
+#vitruvia-academic-timeline .vat-controls button{font-size:15px}
+html[data-theme=light] #vitruvia-academic-timeline .vat-event-marker{box-shadow:0 0 0 3px #c9cdcb!important}
+@media(hover:none){
+ #vitruvia-academic-timeline .vat-event-marker[aria-pressed=true] .vat-event-pop,
+ #vitruvia-academic-timeline .vat-event-marker:focus-visible .vat-event-pop{opacity:1;visibility:visible}
+}
+@media(prefers-reduced-motion:reduce){
+ #vitruvia-academic-timeline .vat-event-marker,#vitruvia-academic-timeline .vat-event-pop{transition:none!important}
+}
+
+/* Allow event popovers to float above the timeline without being cut off. */
+#vitruvia-academic-timeline{overflow:visible!important}
+#vitruvia-academic-timeline .vat-map{overflow:visible!important}
+#vitruvia-academic-timeline .vat-event-marker:focus-visible{outline:3px solid #8da9cc!important;outline-offset:4px}
+
+/* 2026-11 responsive chronological atlas: bounded labels, no lateral canvas.
+   Added as an override; existing site theme and manuscript materials untouched. */
+#vitruvia-academic-timeline{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  border-radius:13px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+#vitruvia-academic-timeline :is(.vat-header,.vat-controls,.vat-title){
+  min-width:0;
+}
+#vitruvia-academic-timeline .vat-header{
+  flex-wrap:wrap;gap:12px 18px;
+}
+#vitruvia-academic-timeline .vat-controls{
+  flex-wrap:wrap;flex:1 1 270px;justify-content:flex-end;
+}
+#vitruvia-academic-timeline .vat-controls button{
+  border-radius:9px;
+  transition:background-color .15s ease,box-shadow .15s ease;
+}
+#vitruvia-academic-timeline .vat-axis{
+  min-width:0!important;
+  overflow:visible;
+  border-bottom:2px solid #8d989e;
+}
+#vitruvia-academic-timeline .vat-viewport,
+#vitruvia-academic-timeline .vat-map,
+#vitruvia-academic-timeline .vat-band,
+#vitruvia-academic-timeline .vat-track{
+  box-sizing:border-box!important;min-width:0!important;
+  max-width:100%!important;
+}
+#vitruvia-academic-timeline .vat-viewport{
+  overflow-x:visible!important;overflow-y:visible!important;
+}
+#vitruvia-academic-timeline .vat-band{
+  background:linear-gradient(90deg,rgba(124,141,152,.07),rgba(124,141,152,.025));
+  border-color:rgba(132,138,146,.30);
+  border-radius:6px;margin-top:7px;
+}
+#vitruvia-academic-timeline .vat-band-title{
+  align-items:center;max-width:100%;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker{
+  outline-offset:4px;touch-action:manipulation;
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop{
+  /* The JS clamps the popup shift within the actual track width. */
+  left:calc(50% + var(--vat-popup-shift,0px))!important;
+  bottom:auto!important;
+  top:calc(100% + 10px)!important;
+  max-height:122px!important;overflow-y:auto!important;
+  overscroll-behavior:contain;
+  border-radius:11px;
+  box-shadow:0 8px 22px rgba(0,0,0,.33);
+}
+#vitruvia-academic-timeline .vat-event-marker:is(:hover,:focus-visible) .vat-event-pop{
+  transform:translateX(-50%) translateY(0)!important;
+}
+#vitruvia-academic-timeline .vat-event-marker[aria-pressed=true]:not(:hover):not(:focus-visible) .vat-event-pop{
+  opacity:0!important;visibility:hidden!important;
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop strong{
+  line-height:1.35;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-detail{
+  width:100%;max-width:100%;min-width:0;box-sizing:border-box;
+  border-radius:11px;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-outside{
+  margin-top:14px;padding:11px 14px;
+  border:1px solid #5e6970;border-radius:9px;
+  color:inherit;font:13px/1.55 system-ui,sans-serif;
+}
+#vitruvia-academic-timeline .vat-outside summary{
+  cursor:pointer;font-weight:600;list-style-position:inside;
+}
+#vitruvia-academic-timeline .vat-outside-list{
+  margin:10px 0 0;padding-left:20px;
+}
+#vitruvia-academic-timeline .vat-outside-list li{margin:5px 0;overflow-wrap:anywhere}
+#vitruvia-academic-timeline .vat-outside-list a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+html[data-theme=light] #vitruvia-academic-timeline .vat-band{
+  background:linear-gradient(90deg,#edf1f4,#f9f8f6);
+  border-color:#b8bdc0;
+}
+@media(max-width:700px){
+ #vitruvia-academic-timeline{padding:12px 10px!important}
+ #vitruvia-academic-timeline .vat-controls{justify-content:flex-start;flex-basis:100%}
+ #vitruvia-academic-timeline .vat-controls button{min-width:40px;min-height:40px}
+ #vitruvia-academic-timeline .vat-axis{height:44px}
+ #vitruvia-academic-timeline .vat-band-title{line-height:1.32}
+ #vitruvia-academic-timeline .vat-event-marker .vat-event-pop{
+   padding:8px 7px!important;font-size:11px;
+ }
+}
+@media(hover:none){
+ #vitruvia-academic-timeline .vat-event-marker[aria-pressed=true]:not(:focus-visible) .vat-event-pop{
+   opacity:0!important;visibility:hidden!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #vitruvia-academic-timeline .vat-controls button{transition:none}
+}
+
+
+/* Bounded in-flow event previews: no tooltip can cover another marker,
+   neighbouring academic panel, codex image, or the edge of the viewport. */
+#vitruvia-academic-timeline{overflow:hidden!important}
+#vitruvia-academic-timeline .vat-map,
+#vitruvia-academic-timeline .vat-viewport{overflow:hidden!important}
+#vitruvia-academic-timeline .vat-band{overflow:hidden!important}
+#vitruvia-academic-timeline .vat-band-body{
+ display:flex;flex-direction:column;min-width:0;max-width:100%;
+ width:100%;box-sizing:border-box;overflow:hidden
+}
+#vitruvia-academic-timeline .vat-band-body .vat-track{
+ box-sizing:border-box;min-width:0!important;max-width:100%!important;
+ overflow:hidden!important
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop{display:none!important}
+#vitruvia-academic-timeline .vat-peek{
+ display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;
+ box-sizing:border-box;min-width:0;width:100%;max-width:100%;
+ margin:3px 0 8px;padding:9px 11px;
+ border:1px solid #74818a;border-left:3px solid #a6cddd;border-radius:9px;
+ background:#25333b;color:#f5f5f4;overflow-wrap:anywhere
+}
+#vitruvia-academic-timeline .vat-peek[hidden]{display:none!important}
+#vitruvia-academic-timeline .vat-peek-year{font:700 12px/1.4 Georgia,serif;color:#c7e1ef}
+#vitruvia-academic-timeline .vat-peek strong{font:600 13px/1.4 system-ui,sans-serif;min-width:0}
+#vitruvia-academic-timeline .vat-peek p{flex-basis:100%;font:12px/1.5 system-ui,sans-serif;margin:2px 0 0;color:#dce7e9}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:is(:hover,:focus-visible,[aria-pressed=true]){
+ z-index:5;box-shadow:0 0 0 4px #93bac9,0 0 0 7px #2c454e!important
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-peek{
+ background:#e7f0f3;color:#293b43;border-color:#9ab5c0
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-peek :is(strong,p,.vat-peek-year){color:#293b43}
+@media(max-width:650px){
+ #vitruvia-academic-timeline .vat-peek{padding:8px 7px;gap:3px 6px}
+}
+@media print{
+ #vitruvia-academic-timeline .vat-peek{display:none!important}
+}
+
+/* ===== assets/vitruvia-button-feedback.css ===== */
+/* Respuesta visual sutil de los botones del buscador Vitruvia: estado activo, pulsación y foco.
+   Solo afecta al aspecto de los botones; no cambia la disposición ni el comportamiento. */
+:is(.tab,.academic-pill,.suggestions button,#submit,.search-privacy,.image-search-trigger,.clear-all){
+  transition:transform .08s ease,border-color .2s ease,box-shadow .2s ease}
+:is(.tab,.academic-pill,.suggestions button,#submit,.search-privacy,.image-search-trigger,.clear-all):active{
+  transform:scale(.98)}
+html body .tab[aria-pressed="true"]{box-shadow:inset 0 -2px 0 #C9A84C}
+:is(.tab,.academic-pill,.suggestions button,#submit,.search-privacy):focus-visible{
+  outline:1px solid #C9A84C;outline-offset:2px}
+html body :is(.academic-pill,.suggestions button).is-clicked{border-color:#C9A84C;box-shadow:0 0 0 1px rgba(201,168,76,.45)}
+@media (prefers-reduced-motion:reduce){:is(.tab,.academic-pill,.suggestions button,#submit):active{transform:none}}
+
+/* ===== assets/vitruvia-visual-import.css ===== */
+/* Discreet camera and attachments on the Vitruvia search bar. */
+html body #search-form button.vr-visual-icon{
+ box-sizing:border-box!important;display:inline-flex!important;
+ align-items:center!important;justify-content:center!important;
+ flex:0 0 34px!important;width:34px!important;height:34px!important;
+ min-width:34px!important;min-height:34px!important;
+ padding:0!important;margin:0!important;border:1px solid transparent!important;
+ border-radius:50%!important;background:transparent!important;
+ box-shadow:none!important;color:#aaa!important;
+ cursor:pointer;
+}
+html body #search-form button.vr-visual-icon svg{width:20px;height:20px;display:block;stroke:currentColor}
+html body #search-form button.vr-visual-add{
+ flex-basis:25px!important;width:25px!important;min-width:25px!important;
+ font:400 24px/1 Arial,Helvetica,sans-serif!important;
+}
+html body #search-form button.vr-visual-icon:is(:hover,:focus-visible),
+html body #search-form button.vr-visual-icon[aria-expanded=true]{
+ background:#353638!important;border-color:#73767a!important;color:#f7f6f4!important;
+}
+html[data-theme=light] body #search-form button.vr-visual-icon{color:#555!important}
+html[data-theme=light] body #search-form button.vr-visual-icon:is(:hover,:focus-visible),
+html[data-theme=light] body #search-form button.vr-visual-icon[aria-expanded=true]{
+ background:#e5e5e5!important;border-color:#888!important;color:#151515!important
+}
+.vr-visual-panel{
+ position:absolute;left:0;top:calc(100% + 6px);z-index:700;
+ box-sizing:border-box;width:min(580px,100%);
+ padding:19px;border:1px solid #676a6d;border-radius:17px;
+ box-shadow:0 15px 45px #0009;background:#222325;color:#f1f1ef;
+ font:400 13px/1.45 Arial,Helvetica,sans-serif;
+}
+.vr-visual-panel[hidden],.vr-visual-panel [hidden]{display:none!important}
+.vr-visual-panel .vr-visual-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:12px}
+.vr-visual-panel .vr-visual-head strong{font:600 17px/1.3 Georgia,serif}
+.vr-visual-panel button,.vr-visual-panel a{
+ box-sizing:border-box;min-height:35px;padding:8px 10px;
+ border:1px solid #696b6f;border-radius:8px;
+ background:#37383a;color:inherit;text-decoration:none;
+ font:500 12px/1.3 Arial,Helvetica,sans-serif;
+ display:inline-flex;align-items:center;justify-content:center;
+ cursor:pointer;
+}
+.vr-visual-panel .vr-visual-close{width:34px;min-height:34px;font-size:22px;padding:2px}
+.vr-visual-panel button:is(:hover,:focus-visible),.vr-visual-panel a:is(:hover,:focus-visible){
+ background:#45474b;border-color:#999;
+}
+.vr-visual-panel .vr-visual-actions{
+ display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:12px;
+}
+.vr-visual-panel label{display:block;margin:12px 0 6px;color:#c5c6c8;font-size:12px}
+.vr-visual-panel input:not([type=file]){
+ display:block;box-sizing:border-box;width:100%;min-width:0;
+ padding:10px 11px;border-radius:8px;border:1px solid #777a80;
+ font:400 13px/1.3 Arial,Helvetica,sans-serif;
+ background:#171819;color:#f0f0ee;
+}
+.vr-visual-panel .vr-visual-url-row{display:flex;align-items:center;gap:8px}
+.vr-visual-panel .vr-visual-url-row input{flex:1 1 auto}
+.vr-visual-panel .vr-visual-url-row button{flex:0 0 auto}
+.vr-visual-panel .vr-visual-preview{
+ display:flex;gap:12px;align-items:center;
+ padding:10px;border:1px solid #616369;border-radius:10px;
+ background:#303135;
+}
+.vr-visual-panel .vr-visual-preview img{
+ width:75px;height:65px;object-fit:contain;border-radius:6px;background:#171819;
+}
+.vr-visual-panel .vr-visual-file-copy{display:flex;flex-direction:column;flex:1 1 auto;gap:4px;min-width:0}
+.vr-visual-panel .vr-visual-file-copy strong{
+ font:500 12px/1.5 Arial,Helvetica,sans-serif;overflow-wrap:anywhere;
+}
+.vr-visual-panel .vr-visual-file-copy small{color:#c4c4c5;font:400 11px/1.4 Arial,Helvetica,sans-serif}
+.vr-visual-panel .vr-visual-preview #vr-visual-remove{font-size:20px;padding:5px;width:33px;min-width:33px}
+.vr-visual-panel .vr-visual-submit{
+ display:flex;justify-content:center;width:100%;margin-top:12px;
+ border-color:#a1a3a7;background:#44464a;font-weight:650;
+}
+.vr-visual-panel .vr-visual-note{
+ font:400 11px/1.5 Arial,Helvetica,sans-serif;
+ color:#c0c1c3;margin:12px 0 5px!important;
+}
+.vr-visual-panel .vr-visual-status{
+ min-height:13px;font:500 11px/1.4 Arial,Helvetica,sans-serif;
+ color:#e4d7bd;margin:8px 0 0!important;
+}
+.vr-visual-panel :is(button,input,a):focus-visible{outline:2px solid #e8cfa1;outline-offset:2px}
+html[data-theme=light] .vr-visual-panel,html[data-reading-background-tone=light] .vr-visual-panel{
+ background:#f5f5f3;color:#202124;border-color:#9d9fa3;box-shadow:0 12px 32px #0003;
+}
+html[data-theme=light] .vr-visual-panel :is(button,a),html[data-reading-background-tone=light] .vr-visual-panel :is(button,a){
+ background:#e3e4e5;color:#202124;border-color:#a9aeb1;
+}
+html[data-theme=light] .vr-visual-panel label,html[data-reading-background-tone=light] .vr-visual-panel label{color:#50545a}
+html[data-theme=light] .vr-visual-panel input:not([type=file]),html[data-reading-background-tone=light] .vr-visual-panel input:not([type=file]){
+ background:white;color:#1e1e20;border-color:#a0a4ab;
+}
+html[data-theme=light] .vr-visual-panel .vr-visual-preview,html[data-reading-background-tone=light] .vr-visual-panel .vr-visual-preview{
+ background:#ececed;border-color:#aaa;
+}
+html[data-theme=light] .vr-visual-panel .vr-visual-note,html[data-reading-background-tone=light] .vr-visual-panel .vr-visual-note,
+html[data-theme=light] .vr-visual-panel .vr-visual-file-copy small,html[data-reading-background-tone=light] .vr-visual-panel .vr-visual-file-copy small{color:#52565d}
+@media(max-width:620px){
+ html body #search-form button.vr-visual-icon{
+  width:30px!important;min-width:30px!important;flex-basis:30px!important;
+ }
+ html body #search-form button.vr-visual-add{
+  width:23px!important;min-width:23px!important;flex-basis:23px!important;
+ }
+ .vr-visual-panel{padding:13px;border-radius:13px;max-height:72dvh;overflow-y:auto}
+ .vr-visual-panel .vr-visual-url-row{flex-wrap:wrap}
+ .vr-visual-panel .vr-visual-url-row button{min-width:100%}
+}
+@media print{.vr-visual-panel,#vr-visual-camera,#vr-visual-add{display:none!important}}
+
+
+/* Separate private, in-browser full-text search for temporary PDF attachments. */
+.vr-visual-panel .vr-visual-pdf-search{
+ margin:13px 0;padding:13px;border:1px solid #707379;
+ border-radius:10px;background:#2b2e32;max-width:100%;
+}
+.vr-visual-panel .vr-visual-pdf-search[hidden]{display:none!important}
+.vr-visual-panel .vr-visual-pdf-search>strong{
+ display:block;color:inherit;font:600 14px/1.4 Georgia,serif;margin-bottom:7px;
+}
+.vr-visual-panel .vr-visual-pdf-search label{margin:6px 0;font-size:12px}
+.vr-visual-panel .vr-visual-pdf-line{display:flex;align-items:center;gap:7px}
+.vr-visual-panel .vr-visual-pdf-line input{
+ flex:1 1 auto;width:0;min-width:0;
+}
+.vr-visual-panel .vr-visual-pdf-line button{
+ flex:0 0 auto;font-weight:600;
+}
+.vr-visual-panel .vr-visual-pdf-search #vr-visual-pdf-info{
+ margin:9px 0 2px!important;
+ color:#c6c7c9;font:400 11px/1.5 Arial,Helvetica,sans-serif;
+}
+.vr-visual-panel .vr-visual-pdf-results{
+ max-height:min(42vh,330px);overflow-y:auto;
+ margin:9px 0 0;padding:0 0 0 17px;
+ scrollbar-color:#7d8085 #36383b;
+}
+.vr-visual-panel .vr-visual-pdf-results:empty{display:none!important}
+.vr-visual-panel .vr-visual-pdf-results li{
+ padding:10px 4px 10px 0;border-top:1px solid #6669;
+ font:400 12px/1.55 Arial,Helvetica,sans-serif;
+}
+.vr-visual-panel .vr-visual-pdf-results li strong{
+ font:650 11px/1.5 Arial,Helvetica,sans-serif;
+ color:#e4dfd5;
+}
+.vr-visual-panel .vr-visual-pdf-results li p{
+ margin:5px 0 0!important;overflow-wrap:anywhere;
+ font:400 12px/1.6 Arial,Helvetica,sans-serif;color:inherit;
+}
+html[data-theme=light] .vr-visual-panel .vr-visual-pdf-search,
+html[data-reading-background-tone=light] .vr-visual-panel .vr-visual-pdf-search{
+ background:#ebebeb;border-color:#999;
+}
+html[data-theme=light] .vr-visual-panel .vr-visual-pdf-search #vr-visual-pdf-info,
+html[data-reading-background-tone=light] .vr-visual-panel .vr-visual-pdf-search #vr-visual-pdf-info{
+ color:#41454b;
+}
+html[data-theme=light] .vr-visual-panel .vr-visual-pdf-results li strong,
+html[data-reading-background-tone=light] .vr-visual-panel .vr-visual-pdf-results li strong{
+ color:#202124;
+}
+@media(max-width:620px){
+ .vr-visual-panel .vr-visual-pdf-search{padding:10px}
+ .vr-visual-panel .vr-visual-pdf-line{flex-wrap:wrap}
+ .vr-visual-panel .vr-visual-pdf-line input{flex:1 1 100%!important;width:100%!important}
+ .vr-visual-panel .vr-visual-pdf-line button{width:100%}
+}
+
+/* ===== assets/vitruvia-context-panel.css ===== */
+/* Vitruvia — context column for source-checked classical and general searches. */
+#vitruvia-context[hidden]{display:none!important}
+body.vitruvia-reading #vitruvia-context{color:#bebdb9;min-width:0;overflow-wrap:anywhere;font:400 12px/1.65 Arial,Helvetica,sans-serif;border-left:1px solid #383839;padding:0 0 12px 20px;align-self:start}
+body.vitruvia-reading #vitruvia-context .context-kicker{color:#b7a27c;font:600 10px/1.5 Arial,sans-serif;letter-spacing:.12em;margin:0 0 9px}
+body.vitruvia-reading #vitruvia-context .context-term{font:italic 400 25px/1.2 Georgia,serif;color:#eeeae2;margin:0 0 21px;letter-spacing:-.025em}
+body.vitruvia-reading #vitruvia-context .context-section-title{font:400 18px/1.3 Georgia,serif;color:#e8e6df;margin:24px 0 9px;padding-top:12px;border-top:1px solid #343436}
+body.vitruvia-reading #vitruvia-context .context-note{font:400 12px/1.72 Arial,sans-serif;color:#bebeba;margin:6px 0 13px}
+body.vitruvia-reading #vitruvia-context .context-greek{font:italic 26px/1.2 Georgia,serif;color:#d8c6a7}
+body.vitruvia-reading #vitruvia-context a{color:#d3bd96;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+body.vitruvia-reading #vitruvia-context .context-minor-link{display:block;font-size:11px;margin:9px 0}
+body.vitruvia-reading #vitruvia-context .context-locus{border-bottom:1px solid #353538;padding:11px 0 13px}
+body.vitruvia-reading #vitruvia-context .context-locus>a{display:block;font:600 12px/1.4 Arial,sans-serif;margin-bottom:7px}
+body.vitruvia-reading #vitruvia-context .context-latin{font:italic 13px/1.66 Georgia,serif;color:#e5e1d7;margin:6px 0}
+body.vitruvia-reading #vitruvia-context .context-translation{font:400 12px/1.56 Arial,sans-serif;color:#a6a6a6;margin:6px 0}
+body.vitruvia-reading #vitruvia-context mark.context-match{background:#f4dd5f!important;color:#181818!important;border-radius:2px;padding:1px 2px}
+body.vitruvia-reading #vitruvia-context .context-bibliography-item{border-bottom:1px solid #333;padding:9px 0 11px;display:grid;gap:4px}
+body.vitruvia-reading #vitruvia-context .context-bibliography-item>a{font-size:12px;line-height:1.5}
+body.vitruvia-reading #vitruvia-context .context-biblio-meta{font-size:11px;color:#aaa;margin:0}
+body.vitruvia-reading #vitruvia-context .context-identifier{font:500 10px/1.5 Arial,sans-serif;color:#b8c2bc;overflow-wrap:anywhere}
+body.vitruvia-reading #vitruvia-context .context-universities{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+body.vitruvia-reading #vitruvia-context .context-universities>a{display:block;text-align:center;text-decoration:none;font-size:11px;padding:7px 3px;border:1px solid #444;border-radius:5px;background:#202021;color:#dad5c8}
+body.vitruvia-reading #vitruvia-context .context-disclaimer{color:#999;font:400 10px/1.55 Arial,sans-serif;margin:10px 0}
+/* Reading sources are stacked below the encyclopaedia, never in competing side rails. */
+@media screen {
+ body.vitruvia-reading #vitruvia-article .article-grid {
+   display:block!important;grid-template-columns:none!important;
+   width:100%!important;max-width:none!important;min-width:0!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-body {
+   display:block!important;width:100%!important;max-width:none!important;min-width:0!important;
+   grid-column:auto!important;grid-row:auto!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-aside,
+ body.vitruvia-reading #vitruvia-article #vitruvia-context {
+   display:block!important;position:static!important;float:none!important;
+   width:100%!important;max-width:none!important;min-width:0!important;
+   max-height:none!important;overflow:visible!important;grid-column:auto!important;grid-row:auto!important;
+   border-left:0!important;border-right:0!important;
+   border-top:1px solid #454b51!important;
+   padding:20px 0!important;margin:20px 0 0!important;
+ }
+ body.vitruvia-reading #vitruvia-article :is(#vitruvia-context,.article-aside)[hidden]{display:none!important}
+ body.vitruvia-reading #vitruvia-article .scholar-article-header{padding-left:0!important}
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context{color:#333;border-color:#c1c1bd}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context :is(.context-term,.context-section-title,.context-latin){color:#222}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context :is(.context-note,.context-translation,.context-disclaimer,.context-biblio-meta){color:#565656}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context a{color:#594a32}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .context-universities>a{color:#333;background:#eee9df}
+@media print{body.vitruvia-reading #vitruvia-article #vitruvia-context{display:none!important}body.vitruvia-reading #vitruvia-article .article-grid{display:block!important}body.vitruvia-reading #vitruvia-article .article-body{width:100%!important}}
+/* Bibliographic reader: comfortable scrollbar and complete, wrapping references. */
+body.vitruvia-reading #vitruvia-article #vitruvia-context{
+ box-sizing:border-box;min-width:0;max-width:100%;padding-right:13px;
+}
+body.vitruvia-reading #vitruvia-context::-webkit-scrollbar{width:17px;height:17px}
+body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-track{background:#1a1b1e;border-radius:9px}
+body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-thumb{
+ background:#747981;border:3px solid #1a1b1e;border-radius:12px;min-height:64px;
+}
+body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-thumb:hover{background:#afb3ba}
+body.vitruvia-reading #vitruvia-context :is(.context-bibliography-list,.context-bibliography-item,.context-locus){
+ min-width:0;width:100%;max-width:100%;overflow:visible;box-sizing:border-box;
+}
+body.vitruvia-reading #vitruvia-context .context-bibliography-item{
+ display:flex;flex-direction:column;align-items:stretch;gap:5px;
+ padding:14px 0 16px;min-height:0;max-height:none;
+}
+body.vitruvia-reading #vitruvia-context .context-bibliography-item .context-biblio-title{
+ display:block;width:100%;max-width:100%;white-space:normal!important;
+ overflow:visible!important;text-overflow:clip!important;
+ overflow-wrap:anywhere;word-break:normal;hyphens:auto;line-height:1.55;font-size:13px;
+}
+body.vitruvia-reading #vitruvia-context :is(.context-biblio-meta,.context-biblio-source,.context-identifier){
+ display:block;max-width:100%;white-space:normal!important;
+ overflow-wrap:anywhere;word-break:normal;line-height:1.55;margin:0;
+}
+body.vitruvia-reading #vitruvia-context .context-biblio-source{
+ color:#a7aaa9;font:400 10px/1.5 Arial,Helvetica,sans-serif;
+}
+body.vitruvia-reading #vitruvia-context .context-bibliography-count{
+ font:500 11px/1.5 Arial,sans-serif;color:#a3a6a8;margin:7px 0 10px;
+}
+body.vitruvia-reading #vitruvia-context .context-biblio-more{
+ display:block;width:100%;min-height:42px;margin:15px 0 20px;padding:10px 12px;
+ border:1px solid #60646a;border-radius:7px;background:#242629;
+ color:#e8e8e8;font:500 12px/1.4 Arial,sans-serif;text-align:center;
+ cursor:pointer;white-space:normal;
+}
+body.vitruvia-reading #vitruvia-context .context-biblio-more:hover,
+body.vitruvia-reading #vitruvia-context .context-biblio-more:focus-visible{
+ background:#383b40;border-color:#a2a6ad;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context{scrollbar-color:#777b80 #e3e1dc}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-track{background:#e3e1dc}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context::-webkit-scrollbar-thumb{
+ background:#898e95;border-color:#e3e1dc;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .context-biblio-more{
+ color:#333;background:#f1eee7;border-color:#969696;
+}
+@media(max-width:1249px){
+ body.vitruvia-reading #vitruvia-article #vitruvia-context{
+  max-height:none!important;overflow:visible!important;scrollbar-gutter:auto;padding-right:0;
+ }
+}
+
+/* Architectural profiles / manuscript-like image plates. */
+body.vitruvia-reading #vitruvia-context .architecture-sources{width:100%;max-width:100%;min-width:0;overflow-wrap:anywhere}
+body.vitruvia-reading #vitruvia-context .architecture-facts{margin:8px 0 14px}
+body.vitruvia-reading #vitruvia-context .architecture-fact{
+ display:block;font:400 12px/1.65 Arial,Helvetica,sans-serif;
+ margin:0 0 8px;color:#d0c8b8;
+}
+body.vitruvia-reading #vitruvia-context .architecture-gallery{
+ display:flex;flex-direction:column;gap:17px;min-width:0;width:100%;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing{
+ display:block;box-sizing:border-box;width:100%;max-width:100%;min-width:0;
+ margin:0;padding:0 0 14px;border-bottom:1px solid #3a3c40;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing>a{
+ display:block;width:100%;background:#252629;border:1px solid #343638;
+ border-radius:5px;overflow:hidden;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing img{
+ display:block;width:100%;height:auto;max-height:390px;object-fit:contain;
+ background:#e6e2d8;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing figcaption{
+ display:flex;flex-direction:column;gap:3px;padding-top:8px;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing-type{
+ color:#d4c49f;font:600 10px/1.5 Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.07em;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing-title{
+ color:#c5c4c0;font:400 12px/1.55 Arial,Helvetica,sans-serif;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .architecture-drawing figcaption>a{
+ font:400 11px/1.55 Arial,Helvetica,sans-serif;overflow-wrap:anywhere;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-fact,
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-drawing-title{color:#444}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-drawing-type{color:#655738}
+
+/* Source-grounded vertical lists of works and books in the context panel. */
+body.vitruvia-reading #vitruvia-context .architecture-work-stack{
+ margin:10px 0 20px;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-item{
+ margin:0;padding:0 0 12px;border-bottom:1px solid #343638;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-item>a{
+ display:block;font:500 13px/1.55 Georgia,serif;white-space:normal!important;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-meta{
+ color:#a8aaac;margin:4px 0 0;font:400 11px/1.5 Arial,sans-serif;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier{
+ min-width:0;width:100%;max-width:100%;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-stack{
+ display:flex;flex-direction:column;gap:14px;min-width:0;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-card{
+ min-width:0;max-width:100%;display:flex;align-items:flex-start;gap:11px;
+ padding:0 0 15px;margin:0;border-bottom:1px solid #353638;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-card-body{
+ flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:4px;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-card-body>a:first-child{
+ font:500 13px/1.5 Georgia,serif;color:#e1d6c2;
+ white-space:normal!important;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-meta{
+ font:400 11px/1.45 Arial,sans-serif;color:#a7aaab;margin:0;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-description{
+ font:400 11px/1.5 Arial,sans-serif;color:#c4c2bb;margin:0;
+ white-space:normal!important;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-cover-link{
+ display:block;flex:0 0 60px;max-width:60px;overflow:hidden;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-cover{
+ display:block;width:60px;height:auto;max-height:92px;object-fit:contain;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-count{
+ font:500 11px/1.5 Arial,sans-serif;color:#a5a5a5;margin:4px 0 13px;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .web-dossier-description,
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-work-meta{
+ color:#555;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .web-dossier-card-body>a:first-child{
+ color:#463a2b;
+}
+
+/* Universal researched item cards: photographic architectural works, literary
+   covers, and album artwork in one accessible stacked catalogue layout. */
+body.vitruvia-reading #vitruvia-context .architecture-work-visual {
+ display:grid;grid-template-columns:78px minmax(0,1fr);
+ gap:8px 11px;align-items:start;width:100%;min-width:0;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-photo-link {
+ display:block;grid-column:1;grid-row:1;max-width:78px;width:100%;
+ overflow:hidden;border:1px solid #454548;border-radius:4px;
+ background:#252729;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-photo {
+ display:block;width:100%;height:auto;max-height:108px;object-fit:cover;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-content {
+ grid-column:2;grid-row:1;min-width:0;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-visual:not(:has(.architecture-work-photo-link)) .architecture-work-content {
+ grid-column:1 / -1;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-review {
+ font:400 12px/1.55 Arial,Helvetica,sans-serif;color:#c8c4bd;
+ margin:6px 0 3px;white-space:normal!important;overflow-wrap:anywhere;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-drawings {
+ grid-column:1 / -1;border:1px solid #38383b;border-radius:5px;
+ padding:6px 8px;min-width:0;margin:2px 0 0;
+}
+body.vitruvia-reading #vitruvia-context .architecture-work-drawings summary{
+ cursor:pointer;color:#c2c6c8;font:500 11px/1.6 Arial,Helvetica,sans-serif;
+}
+body.vitruvia-reading #vitruvia-context .architecture-plate-stack{
+ display:flex;flex-direction:column;gap:10px;padding:8px 0;
+ min-width:0;max-width:100%;
+}
+body.vitruvia-reading #vitruvia-context .architecture-plate{
+ display:flex;flex-direction:column;gap:5px;margin:0;padding:0 0 10px;
+ max-width:100%;min-width:0;border-bottom:1px solid #343638;
+}
+body.vitruvia-reading #vitruvia-context .architecture-plate img {
+ display:block;width:100%;height:auto;max-height:330px;object-fit:contain;
+ background:#e6e0d4;
+}
+body.vitruvia-reading #vitruvia-context .architecture-plate figcaption {
+ overflow-wrap:anywhere;font:400 11px/1.55 Arial,sans-serif;color:#c8c4bd;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-card .web-dossier-cover-link {
+ flex:0 0 73px;max-width:73px;
+}
+body.vitruvia-reading #vitruvia-context .web-dossier-card .web-dossier-cover {
+ width:73px;max-height:110px;object-fit:contain;
+}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .architecture-work-review {color:#505050}
+
+/* The cultural catalogue leads the panel, independent of the subject's field. */
+body.vitruvia-reading #vitruvia-context .cultural-dossier>.context-section-title:first-child{margin-top:7px;font-size:15px;letter-spacing:.02em}
+body.vitruvia-reading #vitruvia-context .cultural-order{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:10px 0 13px;font:400 11px/1.5 Arial,sans-serif;color:#bfc2c3}
+body.vitruvia-reading #vitruvia-context .cultural-order select{box-sizing:border-box;max-width:100%;min-height:36px;background:#242629;color:#eee9df;border:1px solid #61666b;border-radius:5px;padding:6px 7px;font:400 11px/1.5 Arial,sans-serif}
+body.vitruvia-reading #vitruvia-context .cultural-order select:focus-visible{outline:2px solid #d3bd96;outline-offset:2px}
+body.vitruvia-reading #vitruvia-context .cultural-notable{display:inline-block;color:#d5c39f;font:500 10px/1.5 Arial,sans-serif;margin:4px 0}
+body.vitruvia-reading #vitruvia-context .cultural-building{padding-bottom:16px;border-bottom:1px solid #414348}
+body.vitruvia-reading #vitruvia-context .cultural-building .architecture-work-photo-link{max-width:none}
+body.vitruvia-reading #vitruvia-context .cultural-building .architecture-work-photo{max-height:150px;object-fit:contain}
+body.vitruvia-reading #vitruvia-context .cultural-album .web-dossier-cover{aspect-ratio:1;object-fit:contain}
+body.vitruvia-reading #vitruvia-context .web-dossier-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:18px}
+body.vitruvia-reading #vitruvia-context .web-dossier-image{margin:0;min-width:0}
+body.vitruvia-reading #vitruvia-context .web-dossier-image img{display:block;width:100%;height:120px;object-fit:contain}
+body.vitruvia-reading #vitruvia-context .web-dossier-image figcaption{font:400 10px/1.5 Arial,sans-serif;color:#b7b5b0;margin-top:5px}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .cultural-order{color:#4c4c4c}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .cultural-order select{background:#f4f1ea;color:#252525;border-color:#919598}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .cultural-notable{color:#69502c}
+body.vitruvia-reading #vitruvia-context .cultural-work-stack>[hidden]{display:none!important}
+body.vitruvia-reading #vitruvia-context .cultural-correction{padding:10px;border-left:3px solid #cbb994;background:#242422;color:#e7ddc7;font:500 12px/1.6 Arial,sans-serif;overflow-wrap:anywhere}
+html[data-theme=light] body.vitruvia-reading #vitruvia-context .cultural-correction{background:#ede8db;color:#41351f}

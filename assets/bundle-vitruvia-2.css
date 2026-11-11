@@ -1,0 +1,234 @@
+/* Paquete generado por scripts/build-style-bundles.mjs — no editar a mano.
+   Página: vitruvia.html · tramo 2 de 3 · 3 hojas en el orden original.
+   Editar los archivos fuente y volver a ejecutar el script. */
+/* ===== assets/vitruvia-full-width-reading.css ===== */
+/* Vitruvia: full-page reading and search results.
+   Avoid a narrow right rail and the large unused empty left region.
+   Keep all sources, controls and editorial material; only relocate layout. */
+@media screen {
+ body.vitruvia-reading .site-shell {
+   width:100%!important;max-width:none!important;
+   padding-inline:clamp(16px,2.4vw,52px)!important;
+ }
+ body.vitruvia-reading .results,
+ body.vitruvia-reading #results,
+ body.vitruvia-reading #result-list,
+ body.vitruvia-reading #vitruvia-article {
+   width:100%;max-width:none;min-width:0;
+ }
+ body.vitruvia-reading .results-grid {
+   display:grid!important;
+   grid-template-columns:minmax(0,1fr)!important;
+   gap:28px!important;align-items:start;
+ }
+ body.vitruvia-reading .results-grid > #result-list {
+   grid-column:1!important;width:100%!important;
+   max-width:none!important;min-width:0;
+ }
+ body.vitruvia-reading .results-grid > .sidebar {
+   grid-column:1!important;width:100%!important;max-width:none!important;
+   border-left:0!important;border-top:1px solid #454b51!important;
+   padding:20px 0 0!important;margin-top:14px!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid {
+   display:grid!important;
+   grid-template-columns:minmax(0,1fr)!important;
+   gap:22px!important;align-items:start!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-body {
+   grid-column:1!important;grid-row:1!important;
+   width:100%!important;max-width:none!important;min-width:0!important;
+   padding:0!important;overflow-wrap:anywhere;
+ }
+ body.vitruvia-reading #vitruvia-article .article-body :is(p,blockquote,ul,ol,table,pre) {
+   max-width:none;
+ }
+ body.vitruvia-reading #vitruvia-article .article-aside {
+   grid-column:1!important;grid-row:2!important;
+   position:static!important;top:auto!important;
+   width:100%!important;max-width:none!important;
+   max-height:none!important;overflow:visible!important;
+   border-left:0!important;border-right:0!important;
+   border-top:1px solid #454b51!important;
+   padding:17px 0!important;margin:0!important;
+ }
+ body.vitruvia-reading #vitruvia-article #vitruvia-context {
+   grid-column:1!important;grid-row:3!important;
+   position:static!important;top:auto!important;
+   display:block!important;width:100%!important;max-width:none!important;
+   max-height:none!important;overflow:visible!important;
+   border-left:0!important;border-right:0!important;
+   border-top:1px solid #454b51!important;
+   padding:20px 0!important;margin:0!important;
+ }
+ body.vitruvia-reading #vitruvia-article #vitruvia-context[hidden],
+ body.vitruvia-reading #vitruvia-article .article-aside[hidden] {display:none!important}
+ body.vitruvia-reading #vitruvia-article .scholar-article-header {
+   padding-left:0!important;width:100%!important;max-width:none!important;
+ }
+ body.vitruvia-reading #vitruvia-article :is(.article-sources,.article-evidence) {
+   width:100%!important;max-width:none!important;
+ }
+ body.vitruvia-reading #vitruvia-context .context-bibliography-list {
+   display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+   column-gap:clamp(18px,3vw,50px)!important;
+ }
+ body.vitruvia-reading #vitruvia-context :is(.context-bibliography-item,.context-section,.vu-card) {
+   min-width:0!important;max-width:none!important;
+ }
+}
+@media screen and (max-width:900px){
+ body.vitruvia-reading #vitruvia-context .context-bibliography-list {
+   grid-template-columns:minmax(0,1fr)!important;
+ }
+}
+
+/* The highlighted encyclopaedic text is a full-width reading section,
+   not an embedded narrow sidebar card. */
+@media screen {
+ body.vitruvia-reading #vitruvia-article,
+ body.vitruvia-reading #vitruvia-article .article-grid,
+ body.vitruvia-reading #vitruvia-article :is(.article-body,.article-aside,#vitruvia-context){
+   box-sizing:border-box!important;justify-self:stretch!important;
+   min-width:0!important;max-width:100%!important;
+ }
+ body.vitruvia-reading #vitruvia-context > :is(h2,h3,h4,p,section,article,div),
+ body.vitruvia-reading #vitruvia-context :is(.context-term,.context-latin,.context-translation,.context-note,.web-dossier,.context-loci,.context-bibliography-list,.context-bibliography-item){
+   width:100%!important;max-width:none!important;min-width:0!important;
+   box-sizing:border-box!important;overflow-wrap:anywhere;
+ }
+ body.vitruvia-reading #vitruvia-context :is(.context-term,h3){
+   line-height:1.2!important;
+ }
+ body.vitruvia-reading #vitruvia-context :is(.context-latin,.context-translation,.context-note){
+   font-size:clamp(14px,1.1vw,18px)!important;
+   line-height:1.75!important;
+ }
+ body.vitruvia-reading #vitruvia-context mark,
+ body.vitruvia-reading #vitruvia-context .context-match{
+   box-decoration-break:clone;-webkit-box-decoration-break:clone;
+ }
+}
+@media print {
+ body.vitruvia-reading #vitruvia-article .article-grid {
+   display:block!important;
+ }
+ body.vitruvia-reading #vitruvia-article #vitruvia-context {
+   width:100%!important;max-width:none!important;
+   position:static!important;overflow:visible!important;
+ }
+}
+
+
+/* 2026-11-07 · Vitruvia encyclopaedia geometry regression
+   The historical two-/three-column and 77ch reader styles must not reserve
+   an empty dark rail on the right of a search article. The source panels
+   remain available below the article instead of occupying invisible columns. */
+@media screen {
+ body.vitruvia-reading #vitruvia-article,
+ body.vitruvia-reading #vitruvia-article .scholar-article-header,
+ body.vitruvia-reading #vitruvia-article #article-image-preview,
+ body.vitruvia-reading #vitruvia-images {
+   box-sizing:border-box!important;
+   width:100%!important;
+   max-width:none!important;
+   min-width:0!important;
+   margin-inline:0!important;
+ }
+ body.vitruvia-reading #vitruvia-article .article-grid {
+   display:flex!important;
+   flex-direction:column!important;
+   align-items:stretch!important;
+   width:100%!important;
+   max-width:none!important;
+   min-width:0!important;
+   grid-template-columns:none!important;
+   gap:24px!important;
+ }
+ body.vitruvia-reading #vitruvia-article #article-body,
+ body.vitruvia-reading #vitruvia-article #article-aside,
+ body.vitruvia-reading #vitruvia-article #vitruvia-context {
+   box-sizing:border-box!important;
+   display:block;
+   flex:0 0 auto!important;
+   align-self:stretch!important;
+   width:100%!important;
+   max-width:none!important;
+   min-width:0!important;
+   margin-inline:0!important;
+   grid-column:auto!important;
+   grid-row:auto!important;
+ }
+ body.vitruvia-reading #vitruvia-article #article-body > :is(p,section,div,blockquote,ul,ol,table,pre),
+ body.vitruvia-reading #vitruvia-article #article-body .article-academic-expansion p,
+ body.vitruvia-reading #vitruvia-article #article-body .article-lead {
+   box-sizing:border-box!important;
+   width:100%!important;
+   max-width:none!important;
+   min-width:0!important;
+ }
+ body.vitruvia-reading #vitruvia-article #article-aside,
+ body.vitruvia-reading #vitruvia-article #vitruvia-context {
+   position:static!important;
+   max-height:none!important;
+   overflow:visible!important;
+   border-left:0!important;
+   border-right:0!important;
+   border-top:1px solid #454b51!important;
+   padding:20px 0!important;
+ }
+ body.vitruvia-reading #vitruvia-article #vitruvia-context[hidden],
+ body.vitruvia-reading #vitruvia-article #article-aside[hidden] {
+   display:none!important;
+ }
+ body.vitruvia-reading #vitruvia-images,
+ body.vitruvia-reading #vitruvia-quick-images {
+   width:100%!important;
+   max-width:none!important;
+   min-width:0!important;
+ }
+ #vitruvia-image-grid[hidden] {display:none!important}
+ #vitruvia-quick-images[hidden] {display:none!important}
+}
+
+/* ===== assets/vitruvia-heritage-gallery.css ===== */
+/* Galería contextual: tarjetas discretas, fondo negro tipo Lexicon. */
+#vitruvia-heritage-gallery{margin:20px 0 27px;padding:19px 0 15px;border-top:1px solid #454547;border-bottom:1px solid #373739;color:#e9e9e9}
+#vitruvia-heritage-gallery[hidden]{display:none!important}
+.vhg-header{margin:0 0 18px}
+.vhg-header h3{font:normal clamp(23px,2.3vw,30px)/1.3 Georgia,serif;letter-spacing:-.02em;margin:0 0 9px;color:#f0f0ee}
+.vhg-caption{font:12px/1.6 Arial,Helvetica,sans-serif;color:#a6a6a8;margin:0 0 12px;max-width:100ch}
+.vhg-block{margin:18px 0}
+.vhg-block h4{font:normal 19px/1.4 Georgia,serif;color:#e8e7e6;margin:0 0 12px}
+.vhg-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.vhg-card{display:flex;flex-direction:column;min-width:0;border:1px solid #3d3d41;border-radius:7px;background:#171719;overflow:hidden}
+.vhg-image-link{display:flex;align-items:center;justify-content:center;height:156px;background:#101011;border-bottom:1px solid #3d3d41;text-decoration:none;overflow:hidden}
+.vhg-image{display:block;width:100%;height:100%;object-fit:contain}
+.vhg-placeholder{font:normal 50px/1 Georgia,serif;color:#a5a6a8}
+.vhg-info{padding:12px 12px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
+.vhg-name{font:normal 16px/1.35 Georgia,serif;color:#efefef!important;text-decoration:none;overflow-wrap:anywhere}
+.vhg-name:hover,.vhg-source:hover{text-decoration:underline}
+.vhg-detail{font:12px/1.5 Arial,sans-serif;color:#aaa;margin:0;overflow-wrap:anywhere}
+.vhg-source{font:11px/1.5 Arial,sans-serif;color:#d2d2d2!important;text-decoration:none;margin-top:auto}
+html[data-theme=light] #vitruvia-heritage-gallery{color:#222;border-color:#bbb}
+html[data-theme=light] .vhg-header h3,html[data-theme=light] .vhg-block h4{color:#252525}
+html[data-theme=light] .vhg-card{background:#f6f5f1;border-color:#c5c5c5}
+html[data-theme=light] .vhg-name,html[data-theme=light] .vhg-source{color:#242424!important}
+html[data-theme=light] .vhg-caption,html[data-theme=light] .vhg-detail{color:#555}
+@media(max-width:650px){.vhg-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.vhg-image-link{height:128px}.vhg-info{padding:9px}.vhg-name{font-size:14px}}
+@media(max-width:370px){.vhg-cards{grid-template-columns:minmax(0,1fr)}}
+@media print{#vitruvia-heritage-gallery .vhg-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.vhg-card{break-inside:avoid}}
+
+/* Impedir superposición de portadas y rótulos heredada del diseño general. */
+#vitruvia-heritage-gallery .vhg-card{position:relative;isolation:isolate;overflow:hidden;min-width:0}
+#vitruvia-heritage-gallery .vhg-image-link{position:relative;display:flex!important;flex:0 0 auto;width:100%;height:172px;overflow:hidden;min-width:0}
+#vitruvia-heritage-gallery .vhg-image-link .vhg-image{display:block!important;position:static!important;width:100%!important;max-width:100%!important;height:100%!important;object-fit:contain!important;float:none!important;margin:0!important}
+#vitruvia-heritage-gallery .vhg-info{position:relative;z-index:1;background:#171719;min-width:0}
+#vitruvia-heritage-gallery .vhg-catalogue-link{display:inline-block;color:#e6e6e6;text-decoration:underline;text-underline-offset:3px;font:13px/1.5 Arial,sans-serif;margin:5px 0 20px}
+@media(max-width:650px){#vitruvia-heritage-gallery .vhg-image-link{height:138px}}
+
+/* ===== assets/fonts-ancient.css ===== */
+/* Fuentes para escrituras antiguas alojadas en el propio sitio (sin depender de Google Fonts).
+   Noto Sans Egyptian Hieroglyphs · SIL Open Font License 1.1 · véase assets/fonts/LICENSE-noto-sans-egyptian-hieroglyphs.txt */
+@font-face{font-family:'Noto Sans Egyptian Hieroglyphs';font-style:normal;font-weight:400;font-display:swap;src:local('Noto Sans Egyptian Hieroglyphs'),url('fonts/noto-sans-egyptian-hieroglyphs-400.woff2') format('woff2');unicode-range:U+13000-1345F}
+[lang="egy"],.lx-hiero,.v-script-glyphs,.hg{font-family:'Noto Sans Egyptian Hieroglyphs','Egyptian Text','Segoe UI Historic',sans-serif}

@@ -17,7 +17,12 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="assets/fonts-ancient.css?v=20261109-v1">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Hebrew:wght@400;600&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Cuneiform&family=Noto+Sans+Phoenician&display=swap">
+<!-- Las familias antiguas se piden sin bloquear el primer pintado: el texto
+     aparece con la familia de reserva y se recompone al llegar la fuente
+     (display=swap ya estaba declarado). -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Hebrew:wght@400;600&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Cuneiform&family=Noto+Sans+Phoenician&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Hebrew:wght@400;600&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Cuneiform&family=Noto+Sans+Phoenician&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Hebrew:wght@400;600&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Cuneiform&family=Noto+Sans+Phoenician&display=swap"></noscript>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"WebPage","@id":"https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia-lexicon.html#webpage","name":"Vitruvia Lexicon","url":"https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia-lexicon.html","inLanguage":"es","isPartOf":{"@id":"https://diegoalonsok-png.github.io/vitruvius-digital-library/#website"},"about":["Ancient Greek lexicography","Latin lexicography","Etymology","Textual criticism"],"creator":{"@type":"Person","name":"Diego A. Kurilo"}},
@@ -311,8 +316,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 <script defer src="assets/pwa.js?v=20261105-mobile-install-front-4"></script>
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <meta name="lx-data-version" content="20261111-restored-r2">
-<link rel="stylesheet" href="assets/lexicon-orthography-research.css?v=20261107-quiet-v1">
-<link rel="stylesheet" href="assets/lexicon-toponymicon.css?v=20261107-quiet-v1">
+<link rel="stylesheet" href="assets/bundle-vitruvia-lexicon-1.css?v=946d49e4">
 <style id="lx-writing-lab-placement">
 /* Acceso bajo el selector de lengua: aspecto negro neutro y moderno. */
 .navtools{display:grid!important;grid-template-columns:auto auto auto auto;align-items:center;gap:9px!important}
@@ -339,7 +343,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 #multilingual-academic-search button,#notes-critical-search{background:#31363b!important;border:1px solid #59616a!important;color:#eeeeec!important;box-shadow:none!important}
 #multilingual-academic-search button:hover,#notes-critical-search:hover{background:#42484e!important}
 .site-typeface-button,.navtools button,.navtools summary{border-color:#565d64!important;box-shadow:none!important}
-</style><link rel="stylesheet" href="assets/lexicon-header-unified.css?v=20261107-unified-1"><link rel="stylesheet" href="assets/lexicon-library-unified.css?v=20261107-quiet-v1"><link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1"><link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261111-snippet-popup-v4">
+</style><link rel="stylesheet" href="assets/bundle-vitruvia-lexicon-2.css?v=6d08daa4">
 <style id="lx-library-work-priority">
 #lx-classics-bridge .lx-library-work-group{margin:18px 0 28px;border-top:1px solid #505054;padding:13px 0 0;scroll-margin-top:22px}
 #lx-classics-bridge .lx-library-work-group:first-child{border-top:0}

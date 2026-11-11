@@ -1,0 +1,350 @@
+/* Paquete generado por scripts/build-style-bundles.mjs — no editar a mano.
+   Página: vitruvia-lexicon.html · tramo 2 de 2 · 4 hojas en el orden original.
+   Editar los archivos fuente y volver a ejecutar el script. */
+/* ===== assets/lexicon-header-unified.css ===== */
+/* Lexicon navigation and theme harmony — scoped to this page. */
+.site-shell > .nav {
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:10px 18px!important;
+  align-items:center!important;
+  background:var(--lx-bg,var(--bg))!important;
+  color:var(--ink)!important;
+  border-bottom:1px solid rgba(135,141,147,.32)!important;
+  padding:16px 0!important;
+}
+.site-shell > .nav .logo-small{grid-column:1;grid-row:1;color:var(--ink)!important}
+.site-shell > .nav .navlinks {
+  grid-column:2;grid-row:1;
+  display:grid!important;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:6px 10px!important;
+  align-content:center;
+  min-width:0;max-width:none;
+  font:500 10.5px/1.25 system-ui,sans-serif;
+}
+.site-shell > .nav .navlinks a{
+  display:block;min-width:0;
+  color:var(--ink)!important;opacity:.75;
+  overflow-wrap:normal;hyphens:none;
+  text-decoration:none!important;
+  padding:3px 2px!important;
+  background:transparent!important;
+  border:0!important;box-shadow:none!important;
+}
+.site-shell > .nav .navlinks a:hover,.site-shell > .nav .navlinks a:focus-visible{opacity:1;text-decoration:underline!important}
+.site-shell > .nav .navtools{
+  grid-column:3;grid-row:1;
+  display:flex!important;flex-wrap:nowrap!important;
+  justify-content:flex-end;align-items:center!important;align-self:center;
+  gap:6px!important;width:auto!important;min-width:0;
+  background:transparent!important;
+}
+.site-shell > .nav .navtools > * {grid-column:auto!important;grid-row:auto!important;align-self:center!important;flex:0 0 auto}
+.site-shell > .nav .navtools :is(#lx-lang,#lx-ui,#theme,.lx-writing-lab-link,.lx-palette>summary,.site-typeface-button) {
+  display:inline-flex!important;align-items:center!important;justify-content:center;
+  height:39px!important;min-height:39px!important;
+  margin:0!important;padding:0 10px!important;
+  border:1px solid #777c84!important;border-radius:9px!important;
+  background:var(--lx-control-bg,#292b30)!important;
+  color:var(--lx-control-ink,#f4f4f2)!important;
+  box-shadow:none!important;
+  font:500 11.5px/1.2 system-ui,sans-serif!important;
+  text-decoration:none!important;white-space:nowrap!important;
+}
+.site-shell > .nav .navtools #lx-lang {min-width:124px!important;max-width:149px!important}
+.site-shell > .nav .navtools #lx-ui{min-width:61px!important}
+.site-shell > .nav .navtools #theme{width:42px!important;min-width:42px!important;padding:0!important}
+.site-shell > .nav .navtools #lx-palette{position:relative}
+.site-shell > .nav .navtools .lx-palette>summary{gap:5px!important;list-style:none}
+.site-shell > .nav .navtools .lx-writing-lab-link{font-size:11px!important;max-width:none!important}
+.site-shell > .nav .navtools .site-typeface-tool{position:relative!important;display:inline-flex!important;margin:0!important}
+.site-shell > .nav .navtools .site-typeface-button{
+  width:42px!important;min-width:42px!important;padding:0!important;
+  font:italic 600 20px/1 Georgia,serif!important;
+}
+.site-shell > .nav .navtools :is(#lx-lang,#lx-ui,#theme,.lx-writing-lab-link,.lx-palette>summary,.site-typeface-button):hover{
+  background:var(--lx-control-hover,#393c42)!important;border-color:#a5a8ae!important;
+}
+.site-shell > .nav .navtools .lx-palette-panel{
+  z-index:500;right:0;left:auto;top:45px;
+  background:var(--lx-panel-bg,#26292d)!important;
+  color:var(--lx-panel-ink,#f5f5f3)!important;
+  border-color:var(--lx-panel-border,#74777d)!important;
+}
+html[data-theme="light"]{
+  --lx-control-bg:#eeece7;--lx-control-ink:#23292d;
+  --lx-control-hover:#dcdedb;--lx-panel-bg:#fbfaf6;
+  --lx-panel-ink:#23292d;--lx-panel-border:#9ea3a5;
+}
+html[data-theme="dark"]{
+  --lx-control-bg:#292b30;--lx-control-ink:#f4f4f2;
+  --lx-control-hover:#393c42;--lx-panel-bg:#26292d;
+  --lx-panel-ink:#f5f5f3;--lx-panel-border:#74777d;
+}
+html[data-theme="light"] .site-shell>.nav{
+  background:var(--lx-bg,#f7f5ef)!important;color:#23292d!important;
+}
+html[data-theme="light"] .site-shell>.nav :is(.logo-small,.navlinks a){
+  color:#23292d!important;
+}
+html[data-theme="light"] .site-shell>.nav .navlinks a:hover{color:#111!important}
+html[data-theme="light"] .site-shell>.nav .logo-small small{color:#59616a!important}
+@media(max-width:1699px){
+ .site-shell>.nav{grid-template-columns:auto minmax(0,1fr)!important}
+ .site-shell>.nav .navtools{grid-column:2;grid-row:1;justify-self:end}
+ .site-shell>.nav .navlinks{grid-column:1/-1;grid-row:2;grid-template-columns:repeat(7,minmax(0,1fr));}
+}
+@media(max-width:880px){
+ .site-shell>.nav{grid-template-columns:minmax(0,1fr)!important}
+ .site-shell>.nav .logo-small{grid-column:1;grid-row:1}
+ .site-shell>.nav .navtools{grid-column:1;grid-row:2;justify-content:flex-start!important;flex-wrap:wrap!important;justify-self:stretch}
+ .site-shell>.nav .navlinks{grid-column:1;grid-row:3;grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media(max-width:480px){
+ .site-shell>.nav .navlinks{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .site-shell>.nav .navtools .lx-writing-lab-link{max-width:170px!important;white-space:normal!important;text-align:center}
+}
+
+/* ===== assets/lexicon-library-unified.css ===== */
+/* Lexicon · Bibliotheca: sombre editorial design, no colored or gilded controls. */
+#lx-classics-bridge.lx-library-bridge{
+  box-sizing:border-box;width:100%;max-width:none;margin:18px 0 26px;padding:18px 0 10px;
+  background:transparent;color:inherit;border:0;border-top:1px solid rgba(148,153,158,.3);
+  border-radius:0;box-shadow:none;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+#lx-classics-bridge .lx-library-heading{margin:0 0 8px;font:500 clamp(19px,1.7vw,25px)/1.3 Georgia,"Times New Roman",serif;letter-spacing:0;color:inherit}
+#lx-classics-bridge .lx-library-note{margin:0 0 14px;font:400 13px/1.65 system-ui,sans-serif;color:inherit;opacity:.74;max-width:105ch}
+#lx-classics-bridge .lx-library-actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+#lx-classics-bridge .lx-library-button{
+  appearance:none;min-height:36px;padding:7px 13px;border:1px solid #757b82;border-radius:7px;
+  background:#292c31;color:#ecebe8;box-shadow:none;text-decoration:none;
+  font:500 12px/1.4 system-ui,sans-serif;cursor:pointer;transition:background .15s,border-color .15s;
+}
+#lx-classics-bridge .lx-library-button:hover{background:#383c41;border-color:#a2a8af}
+#lx-classics-bridge .lx-library-button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+#lx-classics-bridge .lx-library-button:disabled{opacity:.5;cursor:wait}
+#lx-classics-bridge .lx-library-status{margin:10px 0 12px;color:inherit;opacity:.72;font:400 12px/1.5 system-ui,sans-serif}
+#lx-classics-bridge .lx-library-list{display:grid;gap:0}
+#lx-classics-bridge .lx-library-result{
+  display:block;box-sizing:border-box;min-width:0;margin:0;padding:13px 0 15px;
+  background:transparent;border:0;border-bottom:1px solid rgba(145,150,155,.23);
+  border-radius:0;box-shadow:none;color:inherit;
+}
+#lx-classics-bridge .lx-library-result-link{
+  color:inherit;text-decoration:underline;text-decoration-color:rgba(170,176,180,.55);
+  text-underline-offset:3px;font:600 15px/1.5 Georgia,"Times New Roman",serif;
+}
+#lx-classics-bridge .lx-library-result-link:hover{text-decoration-color:currentColor}
+#lx-classics-bridge .lx-library-meta{margin:5px 0;color:inherit;opacity:.65;font:400 11px/1.5 system-ui,sans-serif}
+#lx-classics-bridge .lx-library-excerpt{margin:5px 0;font:400 14px/1.7 Georgia,"Times New Roman",serif;color:inherit;overflow-wrap:anywhere}
+#lx-classics-bridge mark,#lx-classics-bridge .query-hit{
+  background:#ffe25b!important;color:#171717!important;
+  padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+}
+html[data-theme=light] #lx-classics-bridge .lx-library-button{background:#eeece7;color:#25292d;border-color:#969da2}
+html[data-theme=light] #lx-classics-bridge .lx-library-button:hover{background:#dededc}
+@media(max-width:600px){#lx-classics-bridge .lx-library-actions{align-items:stretch}#lx-classics-bridge .lx-library-button{flex:1 1 180px}}
+
+/* Automatic lexical attestations: yellow across Latin, Greek and translations.
+   Explicit researcher-selected highlight color (--lx-mark) has precedence. */
+#lx-results:not(.lx-marked) mark,
+#lx-results:not(.lx-marked) mark.w,
+#lx-classics-bridge mark,
+#lx-orthography mark,
+#lx-toponymicon mark,
+#lx-encyclopedia mark,
+#lx-classics-bridge .query-hit {
+  background:#ffe25b!important;
+  color:#171717!important;
+  text-decoration:none!important;
+  border-radius:2px;
+  padding:0 .12em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+#lx-results.lx-marked mark,
+#lx-results.lx-marked mark.w {
+  background:var(--lx-mark,#ffe25b)!important;
+  color:#fff!important;
+}
+#lx-results.lx-marked[style*="#7a5c12"] mark,
+#lx-results.lx-marked[style*="#7a5c12"] mark.w {
+  color:#fff!important;
+}
+
+/* ===== assets/lexicon-reader-scrollbars.css ===== */
+/* Visores de Lexicon y Bibliotheca: barras grises de agarre cómodo.
+   En una página dentro de iframe la barra pertenece al documento hijo,
+   por eso este mismo archivo se carga también en classics-text-reader.html.
+   No afecta a manuscritos, imágenes de folios ni aplicaciones ajenas. */
+.lx-viewer{
+  --lx-scroll-track:#292a2d;
+  --lx-scroll-thumb:#81858b;
+  --lx-scroll-hover:#a2a6ac;
+  --lx-scroll-active:#c0c4ca;
+  color-scheme:dark;
+}
+html[data-theme="light"] .lx-viewer{
+  --lx-scroll-track:#dedfe1;
+  --lx-scroll-thumb:#777b82;
+  --lx-scroll-hover:#555b64;
+  --lx-scroll-active:#3c424a;
+  color-scheme:light;
+}
+html.classic-reader-scrollbars{
+  --lx-scroll-track:#27282b;
+  --lx-scroll-thumb:#85898f;
+  --lx-scroll-hover:#a7abb1;
+  --lx-scroll-active:#c3c7ce;
+  color-scheme:dark;
+}
+html.classic-reader-scrollbars[data-theme="light"]{
+  --lx-scroll-track:#dedfe1;
+  --lx-scroll-thumb:#757b83;
+  --lx-scroll-hover:#565d67;
+  --lx-scroll-active:#414952;
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc){
+  scrollbar-width:auto;
+  scrollbar-color:var(--lx-scroll-thumb) var(--lx-scroll-track);
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar{
+  width:18px;
+  height:16px;
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-track{
+  background:var(--lx-scroll-track);
+  border-radius:10px;
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-thumb{
+  background:var(--lx-scroll-thumb);
+  border:2px solid var(--lx-scroll-track);
+  border-radius:10px;
+  min-height:52px;
+  background-clip:padding-box;
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-thumb:hover{
+  background:var(--lx-scroll-hover);
+  border-color:var(--lx-scroll-track);
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-thumb:active{
+  background:var(--lx-scroll-active);
+  border-color:var(--lx-scroll-track);
+}
+:is(.lx-viewer,.lx-viewer-body,.lx-viewer-origin .lx-passage,
+  html.classic-reader-scrollbars,html.classic-reader-scrollbars body,
+  html.classic-reader-scrollbars #toc)::-webkit-scrollbar-corner{
+  background:var(--lx-scroll-track);
+}
+
+/* ===== assets/classics-lexical-popup.css ===== */
+/* Classical highlighted-word dictionary. Contained in the reader iframe. */
+#classics-lexical-popup{
+ box-sizing:border-box;width:min(840px,calc(100vw - 24px));max-height:min(88dvh,820px);
+ margin:auto;padding:0;border:1px solid #72757a;border-radius:12px;
+ color:#eaeaec;background:#151619;box-shadow:0 22px 65px #000b;
+ overflow:auto;color-scheme:dark;scrollbar-color:#81858b #27282b;
+ scrollbar-width:auto;
+}
+#classics-lexical-popup::backdrop{background:rgba(0,0,0,.74)}
+#classics-lexical-popup .cl-popup-head{
+ position:sticky;top:0;z-index:2;background:#1b1c20;
+ display:flex;justify-content:space-between;align-items:center;gap:14px;
+ padding:16px 21px;border-bottom:1px solid #47494f;
+}
+#classics-lexical-popup .cl-popup-kicker{
+ margin:0 0 5px;color:#bbbdbf;text-transform:uppercase;
+ font:600 11px/1.4 system-ui;letter-spacing:.09em;
+}
+#classics-lexical-popup h2{margin:0;color:#f5f4f1;font:normal clamp(25px,4vw,35px)/1.2 Georgia,serif}
+#classics-lexical-popup .cl-popup-close{
+ flex:none;cursor:pointer;border:1px solid #85878c;border-radius:7px;
+ background:#303137;color:#f2f2f2;font:600 13px/1.3 system-ui;padding:10px 14px;
+}
+#classics-lexical-popup .cl-popup-close:hover{background:#484b52}
+#classics-lexical-popup .cl-popup-content{padding:16px 22px 23px}
+#classics-lexical-popup .cl-dict{margin:0;padding:0;border:none;color:#e6e6e8}
+#classics-lexical-popup .cl-dict .cl-word{font-size:27px}
+#classics-lexical-popup .cl-dict .cl-entry{border-left-color:#c8ac62;padding-left:12px}
+#classics-lexical-popup .cl-dict .cl-morph,
+#classics-lexical-popup .cl-dict .cl-note,
+#classics-lexical-popup .cl-dict .cl-src{color:#c4c5c9}
+#classics-lexical-popup a{color:#d3dfee;text-underline-offset:3px}
+#classics-lexical-popup .cl-popup-media{
+ border-top:1px solid #44464a;margin-top:18px;padding-top:16px
+}
+#classics-lexical-popup .cl-popup-media h3{
+ font:600 15px/1.3 system-ui;margin:0 0 9px;color:#e9e7e2
+}
+#classics-lexical-popup .cl-popup-media figure{max-width:430px;margin:6px 0 14px}
+#classics-lexical-popup .cl-popup-media img{
+ width:100%;max-height:260px;object-fit:contain;display:block;
+ border:1px solid #555960;border-radius:5px;background:#222428
+}
+#classics-lexical-popup figcaption{font:12px/1.6 system-ui;color:#c7c8ca;margin:8px 0}
+#classics-lexical-popup .cl-popup-note{font:13px/1.6 system-ui;color:#cacbd0}
+#classics-lexical-popup .cl-popup-commons{display:inline-block;margin:2px 0 8px}
+#classics-lexical-popup .cl-popup-navigation{
+ margin-top:10px;border-top:1px solid #44464a;padding-top:14px;
+ display:flex;gap:10px;flex-wrap:wrap;font:13px/1.4 system-ui
+}
+#classics-lexical-popup::-webkit-scrollbar{width:18px}
+#classics-lexical-popup::-webkit-scrollbar-track{background:#27282b;border-radius:10px}
+#classics-lexical-popup::-webkit-scrollbar-thumb{
+ min-height:52px;border-radius:10px;background:#81858b;
+ border:2px solid #27282b
+}
+#classics-lexical-popup::-webkit-scrollbar-thumb:hover{background:#a2a6ac}
+#passages mark.cl-hit,#passages mark.cl-parallel-hit{
+ cursor:pointer;touch-action:manipulation
+}
+#passages mark.cl-hit:hover,#passages mark.cl-parallel-hit:hover{
+ outline:2px solid #f6f2b5;outline-offset:1px
+}
+#passages mark.cl-hit:focus-visible,#passages mark.cl-parallel-hit:focus-visible{
+ outline:3px solid #fff;border-radius:2px;outline-offset:3px
+}
+@media(max-width:550px){
+ #classics-lexical-popup{width:calc(100vw - 12px);max-height:94dvh}
+ #classics-lexical-popup .cl-popup-head{padding:12px 14px}
+ #classics-lexical-popup .cl-popup-content{padding:12px 14px 18px}
+}
+@media print{#classics-lexical-popup{display:none!important}}
+
+/* The outer Lexicon dialog also displays document-wide yellow marks. */
+#lx-viewer .lx-viewer-origin mark.w,
+#lx-viewer .lx-viewer-col mark.w{
+ cursor:pointer;touch-action:manipulation
+}
+#lx-viewer .lx-viewer-origin mark.w:hover,
+#lx-viewer .lx-viewer-col mark.w:hover{
+ outline:2px solid #ead7a2;outline-offset:2px
+}
+#lx-viewer .lx-viewer-origin mark.w:focus-visible,
+#lx-viewer .lx-viewer-col mark.w:focus-visible{
+ outline:3px solid #f7f7f7;outline-offset:3px;border-radius:2px
+}
+
+/* The Perseus/TEI classical reader encloses yellow marks in lexical spans. */
+#original .txt mark{
+ cursor:pointer;touch-action:manipulation
+}
+#original .txt mark:hover{
+ outline:2px solid #f6f2b5;outline-offset:2px
+}
+#original .txt mark:focus-visible{
+ outline:3px solid #fff;outline-offset:3px;border-radius:2px
+}

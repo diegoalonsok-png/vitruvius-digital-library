@@ -1,9 +1,13 @@
 <!doctype html>
-<html lang="es"><head><script defer src="assets/vitruvia-data.js?v=20261111-responsive-literal-v1"></script>
+<html lang="es"><head>
 <meta charset="utf-8">
-<link rel="preload" as="fetch" href="data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1" crossorigin="anonymous">
-<link rel="preload" as="fetch" href="data/witruvia-pages.json" crossorigin="anonymous">
-<link rel="preload" as="fetch" href="data/bibliotheca-testimonia-verified.json?v=20261104-readings-v1" crossorigin="anonymous">
+<script defer src="assets/vitruvia-data.js?v=20261111-responsive-literal-v1"></script>
+<!-- Los tres indices del catalogo (836 KB) ya no se precargan: competian con
+     el texto y los estilos por el ancho de banda antes del primer pintado.
+     assets/vitruvia-search.js los pide en cuanto el navegador queda libre, o
+     antes si el lector toca el campo de busqueda o llega con ?q= en la URL.
+     Los recuentos se muestran mientras tanto desde la instantanea
+     precalculada por scripts/build-vitruvia-metrics.mjs. -->
 
 <meta name="referrer" content="strict-origin-when-cross-origin"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>VITRUVIA · Buscador académico de Vitruvio, arquitectura y cultura</title>
@@ -980,21 +984,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 
 .vitruvia-image-grid[hidden]{display:none!important}
 </style>
-<script defer src="assets/vitruvia-fetch-cache.js?v=20261111-responsive-literal-v1"></script><link rel="preconnect" href="https://es.wikipedia.org" crossorigin><link rel="preconnect" href="https://www.wikidata.org" crossorigin><link rel="preconnect" href="https://commons.wikimedia.org" crossorigin><link rel="preconnect" href="https://upload.wikimedia.org"><link rel="stylesheet" href="assets/vitruvia-reading.css?v=20261104-local-codex-v7">
-<link rel="stylesheet" href="assets/vitruvia-photo-background.css?v=20261104-photo-bg-v1">
-<link rel="stylesheet" href="assets/academic-links.css?v=20261105-v1">
-<link rel="stylesheet" href="assets/vitruvia-discovery.css?v=20261107-editorial-width-v4">
-<link rel="stylesheet" href="assets/vitruvia-floating-reader.css?v=20261105-mobile-reader-5">
-<link rel="stylesheet" href="assets/vitruvia-paragraph-magnifier.css?v=20261104-paragraph-loupe-v1">
-<link rel="stylesheet" href="assets/vitruvia-selection-speech.css?v=20261104-selected-paragraph-audio-v1">
-<link rel="stylesheet" href="assets/vitruvia-academic-reader.css?v=20261104-sidebar-ai-v3">
-<link rel="stylesheet" href="assets/vitruvia-featured-documentary.css?v=20261105-hero-v1">
-<link rel="stylesheet" href="assets/vitruvia-compact-nav.css?v=20261104-text-more-no-box-v2">
-<link rel="stylesheet" href="assets/vitruvia-reading-shelf.css?v=20261110-related-reading-v1">
-<link rel="stylesheet" href="assets/vitruvia-academic-timeline.css?v=20261111-contained-hover-v7">
-<link rel="stylesheet" href="assets/vitruvia-button-feedback.css?v=20261104-feedback-v1">
-<link rel="stylesheet" href="assets/vitruvia-visual-import.css?v=20261104-private-pdf-v2">
-<link rel="stylesheet" href="assets/vitruvia-context-panel.css?v=20261107-context-flow-v9">
+<script defer src="assets/vitruvia-fetch-cache.js?v=20261111-responsive-literal-v1"></script><link rel="preconnect" href="https://es.wikipedia.org" crossorigin><link rel="preconnect" href="https://www.wikidata.org" crossorigin><link rel="preconnect" href="https://commons.wikimedia.org" crossorigin><link rel="preconnect" href="https://upload.wikimedia.org"><link rel="stylesheet" href="assets/bundle-vitruvia-1.css?v=bbb8689e">
 
 <link rel="manifest" href="vitruvia.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/vitruvia-apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvia"><script defer src="assets/pwa.js?v=20261105-mobile-install-front-4"></script>
 <script defer src="assets/site-bar.js?v=20261107-academic-v4"></script><style>.pwa-front-entry{margin:0 0 18px;display:flex;flex-wrap:wrap;gap:10px}.pwa-front-entry a{display:inline-flex;align-items:center;min-height:42px;padding:9px 18px;border:1px solid var(--gold,#c6ad7b);border-radius:24px;color:var(--ink,#f6f4ed);text-decoration:none;font:600 13px system-ui,sans-serif}.pwa-front-entry a:hover{background:var(--surface2,#1c2925)}.pwa-front-entry a:focus-visible{outline:3px solid var(--gold,#c6ad7b);outline-offset:3px}@media print{.pwa-front-entry{display:none}}</style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
@@ -1028,8 +1018,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
  background:#333336!important;border-color:#77777b!important;
 }
 .navtools .site-typeface-button:focus-visible{outline:2px solid #dedee1!important;outline-offset:3px!important}
-</style><link rel="stylesheet" href="assets/vitruvia-full-width-reading.css?v=20261107-wide-v3">
-<link rel="stylesheet" href="assets/vitruvia-heritage-gallery.css?v=20261108-full-library-v2"><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261109-v1"><style id="vitruvia-featured-title-autofit">
+</style><link rel="stylesheet" href="assets/bundle-vitruvia-2.css?v=e8bdcd9a"><style id="vitruvia-featured-title-autofit">
 /* Títulos largos del panel destacado: ajustar el tamaño antes de romper palabras. */
 .hero .featured #featured-title{
   display:block;min-width:0;max-width:100%;
@@ -1157,6 +1146,8 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
  </nav>
 </aside>
 </section>
+<!-- instantánea de recuentos · scripts/build-vitruvia-metrics.mjs -->
+<script type="application/json" id="vitruvia-metrics-snapshot">{"generated":"2026-11-11","note":"Instantánea precalculada de los índices locales. No sustituye la verificación contra las fuentes; la página la reemplaza por el recuento del índice cargado.","sources":["data/bibliotheca-graeca-latina-I-bce-I-ce.json","data/witruvia-pages.json","data/bibliotheca-testimonia-verified.json"],"metrics":{"metric-works":222,"metric-pages":62,"metric-read":52,"metric-witnesses":100,"metric-editions":63}}</script>
 <div class="metrics" id="metrics" role="status" aria-label="Indicadores del catálogo: datos en carga" aria-live="polite" aria-atomic="false"><span><b id="metric-works">—</b> <span data-i18n="metricWorks">fichas de obras</span></span><span><b id="metric-pages">—</b> <span data-i18n="metricPages">secciones documentadas</span></span><span><b>341</b> <span data-i18n="metricImages">imágenes del Codex H</span></span><span><b id="metric-read">—</b> <span data-i18n="metricRead">lecturas disponibles</span></span><span><b id="metric-witnesses">—</b> testimonios manuscritos</span><span><b id="metric-editions">—</b> ediciones vinculadas</span></div>
 <section class="results" id="results" aria-live="polite">
 <div class="section-head"><h2 id="results-heading" data-i18n="headingIdle">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span><button id="expand-search-sources" type="button" class="tab" hidden>Ampliar fuentes y bibliografía</button></div>
@@ -1499,8 +1490,7 @@ else{voice.disabled=true;status.textContent="No se pudo cargar el dictado. Recar
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
 </script>
-<link rel="stylesheet" href="assets/vitruvia-right-panel.css?v=20261105-v2">
-<link rel="stylesheet" href="assets/vitruvia-reading-layout-repair.css?v=20261107-singlecolumn-2">
+<link rel="stylesheet" href="assets/bundle-vitruvia-3.css?v=f3561bc5">
 
 
 <!-- Consulta filológica multilingüe: módulo experimental temporalmente desactivado en Vitruvia. Se conserva el archivo para una futura integración validada. -->
