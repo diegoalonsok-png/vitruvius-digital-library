@@ -204,12 +204,18 @@ async function semanticSearch(q,{limit=6}={}){
  const unanchored=new Set((staticIndex?.notIndexedFormats||[])
    .filter(x=>x.format==="html-text"&&/no stable passage anchor/i.test(x.reason||""))
    .map(x=>x.path));
+ // The 1899 Faventinus appendix is an additive edition outside the last
+ // static Conceptus snapshot. Preserve its factual lookup on demand without
+ // invalidating the accelerated postings of the 246 pre-existing versions.
+ // Rebuilding the static index will naturally fold it into the snapshot.
+ const onDemandAdditions=registeredAll.filter(e=>e.workId==="faventinus"&&e.language==="la"&&
+  e.format==="json-passages"&&e.path==="data/classics-corpus/faventinus-la.json"&&!posted.has(indexKey(e)));
  const indexValid=Boolean(staticIndex&&registeredAll.length&&
-   staticIndex.registryEditionCount===registeredAll.length&&
+   staticIndex.registryEditionCount===registeredAll.length-onDemandAdditions.length&&
    staticIndex.indexedEditions===staticIndex.versions.length&&
    staticIndex.indexedEditions+unanchored.size===staticIndex.eligibleEditions&&
    !staticIndex.errors?.length&&
-   registeredAll.filter(e=>eligible.has(e.format))
+   registeredAll.filter(e=>eligible.has(e.format)&&!onDemandAdditions.includes(e))
      .every(e=>posted.has(indexKey(e))||(e.format==="html-text"&&unanchored.has(e.path))));
  const indexed=new Map(indexValid?staticIndex.versions.map(v=>[
   [v.workId,v.language,v.source,v.edition||""].join("|"),v

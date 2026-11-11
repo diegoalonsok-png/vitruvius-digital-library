@@ -13,8 +13,8 @@
       "fuente-externa-identificada": 15
     },
     "locallyReadableClaims": 145,
-    "indexedTextVersions": 246,
-    "indexedDistinctWorks": 181,
+    "indexedTextVersions": 247,
+    "indexedDistinctWorks": 182,
     "manuscriptWitnesses": 23
   },
   "works": [
@@ -931,11 +931,15 @@
       "genre": "Arquitectura e ingeniería",
       "dating": "Finales del siglo III – comienzos del IV d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
+      "indexedTextFiles": [
+        "data/classics-corpus/faventinus-la.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
-      "hasDedicatedReader": false,
+      "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
       "manuscriptRecords": [
         {
@@ -944,7 +948,7 @@
         }
       ],
       "hasDeclaredExternalReading": false,
-      "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
+      "notes": "Índice derivado en 32 párrafos del apéndice latino de Rose 1899 / Project Gutenberg; el catálogo maestro mantiene su clasificación original. Texto no cotejado con manuscrito ni foliación canónica."
     },
     {
       "id": "barnabas",

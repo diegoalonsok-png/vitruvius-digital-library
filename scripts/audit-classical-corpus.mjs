@@ -33,6 +33,22 @@ for(const w of works){
  for(const v of w.pdfEditions||[])fileReference(w.id,"pdfEdition",v.url);
 }
 assert.deepEqual(invalid,[],"Broken local references: "+JSON.stringify(invalid));
+/* Preserve Rose/Vitruvius as an already indexed ancient work; its separately
+ * authored Faventinus appendix must never be folded into Vitruvius loci. */
+const faventinus=registry.entries.filter(e=>e.workId==="faventinus");
+assert.equal(faventinus.length,1,"Faventinus must be a single independent original, not a duplicate of Rose's Vitruvius index");
+assert.equal(faventinus[0].language,"la");
+assert.equal(faventinus[0].path,"data/classics-corpus/faventinus-la.json");
+const favText=read(faventinus[0].path);
+assert.equal(favText.workId,"faventinus");
+assert.equal(favText.language,"la");
+assert.equal(favText.passages.length,32,"The 1899 Faventinus appendix must retain all 32 indexed reading paragraphs");
+assert.match(favText.passages[0].text,/^De artis architectonicae peritia/);
+assert.match(favText.passages.at(-1).text,/Quantum ergo ad privatum usum/);
+assert(favText.passages.every((p,i)=>p.locus===`faventinus.rose1899.paragraph.${String(i+1).padStart(3,"0")}`&&p.text.length>80),
+ "No invented canonical loci or empty paragraphs may enter the search index");
+assert.equal(favText.sourceBlobSha,"8103380371d27dd1fd954b77e61b3d6df68e4f3a","Source blob provenance changed");
+assert(registry.entries.some(e=>e.workId==="vitruvius"),"The already indexed De architectura must remain intact");
 const unique=new Set(),languages={},formats={};
 for(const entry of registry.entries){
  assert(byId.has(entry.workId),"Search record has unknown work "+entry.workId);

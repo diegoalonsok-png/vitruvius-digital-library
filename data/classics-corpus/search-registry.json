@@ -1,9 +1,9 @@
 {
   "schema": "vitruvia-classics-search-registry-v1",
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
-  "count": 246,
-  "works": 181,
+  "count": 247,
+  "works": 182,
   "entries": [
     {
       "workId": "aeneas-tacticus-poliorketika",
@@ -994,6 +994,16 @@
       "path": "data/classics-corpus/eusebio-grc.json",
       "reader": "classics-text-reader.html?work=eusebio&lang=grc",
       "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+    },
+    {
+      "workId": "faventinus",
+      "author": "Marco Cetio Faventino",
+      "title": "Liber artis architectonicae",
+      "language": "la",
+      "format": "json-passages",
+      "path": "data/classics-corpus/faventinus-la.json",
+      "reader": "classics-text-reader.html?work=faventinus&lang=la",
+      "sourceDescription": "M. Ceti Faventini Liber artis architectonicae, ed. Valentin Rose (1899), pp. 283–304, transcripción Project Gutenberg 51812; 32 bloques editoriales; sin cotejo autóptico ni loci canónicos."
     },
     {
       "workId": "frontinus",
