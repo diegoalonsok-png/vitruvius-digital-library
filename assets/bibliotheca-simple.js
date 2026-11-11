@@ -586,7 +586,9 @@ function render(rows,q,details){
  $("unindexed").textContent=t.outside(works.length-indexed.size)+(details?.failed?" "+t.failed:"");
 }
 async function search(updateHistory=true){
- const id=++serial,q=input.value.trim();updateLexicon();root.hidden=true;list.replaceChildren();
+ const id=++serial,q=input.value.trim();
+ window.ClassicsCorpusSearch?.cancelPendingSearches?.();
+ updateLexicon();root.hidden=true;list.replaceChildren();
  // Synchronize the address with the user's new term before any network waits.
  // This prevents a stale ?q= from appearing to be the current search.
  if(updateHistory&&q){
@@ -644,7 +646,7 @@ async function search(updateHistory=true){
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
     (!progress.complete?" · buscando…":"");
   };
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress});
+  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress,isCancelled:()=>id!==serial});
   if(id!==serial)return;
   const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
   const url=new URL(location.href);url.searchParams.set("q",q);
@@ -662,6 +664,7 @@ input.addEventListener("input",()=>{
  // Editing a new term cancels the visual authority of the preceding search.
  // The old asynchronous scan may finish, but its serial can no longer paint.
  ++serial;
+ window.ClassicsCorpusSearch?.cancelPendingSearches?.();
  $("search-submit").disabled=false;
  root.hidden=true;
  list.replaceChildren();
@@ -691,6 +694,7 @@ window.addEventListener("popstate",()=>{
  const params=new URLSearchParams(location.search);
  const q=(params.get("q")||params.get("term")||"").trim();
  const restore=++serial; // invalidate pending searches and progressive paints
+ window.ClassicsCorpusSearch?.cancelPendingSearches?.();
  input.value=q;
  updateLexicon();
  metadata.then(()=>{
