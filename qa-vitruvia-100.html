@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Vitruvia · prueba de 100 búsquedas</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,Arial,sans-serif;background:#111516;color:#e5e8e7}
+*{box-sizing:border-box}body{max-width:1120px;margin:auto;padding:28px 20px;line-height:1.55}
+a{color:#bde0d1}h1{font-family:Georgia,serif;font-size:clamp(27px,4vw,48px);margin:4px 0 14px}
+p{max-width:83ch;color:#c6d0cc}button,select{border:1px solid #7d978a;border-radius:6px;padding:10px 14px;background:#1c302a;color:#fff;font:600 14px system-ui;cursor:pointer;min-height:44px}
+button:disabled{opacity:.35;cursor:not-allowed}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+.metrics{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0}
+.metrics div{border:1px solid #35463f;border-radius:7px;padding:10px 18px;background:#18201d}
+.metrics strong{display:block;font-size:24px}
+.metrics span{font-size:12px;color:#adbbb5}
+#progress{width:100%;height:12px}table{border-collapse:collapse;width:100%;font-size:12px}
+th,td{text-align:left;border-bottom:1px solid #3b4843;padding:8px;vertical-align:top}
+th{position:sticky;top:0;background:#17201d;z-index:2}
+tbody tr:nth-child(even){background:#171d1b}
+.good{color:#8fd5a9}.warn{color:#f2d28e}.bad{color:#e4a6a0}
+.output{overflow:auto;max-height:600px;border:1px solid #374940;border-radius:7px}
+iframe.probe{position:fixed;left:-20000px;top:0;width:1340px;height:900px;border:0;visibility:hidden}
+details{margin:18px 0}.help{font-size:12px;color:#acbab3}
+</style>
+</head><body>
+<nav><a href="vitruvia.html">Volver a Vitruvia</a></nav>
+<h1>Auditoría de 100 búsquedas</h1>
+<p>Prueba de integración ejecutada en el <strong>navegador</strong> sobre la versión publicada de Vitruvia. Comprueba si la consulta inicia, si aparecen resultados o artículos, qué identidad se muestra, si existen enlaces y cuánto tarda la respuesta. Las fichas requieren revisión humana: <strong>un resultado visible no demuestra exactitud académica</strong>.</p>
+<p class="help">Se consultan páginas de este mismo sitio. El modo «Web y biblioteca» puede comunicarse con Wikipedia, Wikidata, Open Library y otras API públicas: las respuestas pueden ser lentas o variar por disponibilidad. No utiliza una clave comercial. La prueba se inicia solo al pulsar Ejecutar.</p>
+<div class="controls">
+<label>Fuentes
+<select id="mode"><option value="site">Biblioteca interna (menos peticiones externas)</option><option value="all">Web y biblioteca (prueba integral)</option></select></label>
+<label>Máximo de espera por consulta
+<select id="timeout"><option value="10000">10 segundos</option><option value="16000">16 segundos</option><option value="22000">22 segundos</option></select></label>
+<button id="start">Ejecutar 100 búsquedas</button>
+<button id="stop" disabled>Detener</button>
+<button id="export" disabled>Exportar CSV</button>
+</div>
+<progress id="progress" value="0" max="100"></progress>
+<div class="metrics">
+<div><strong id="done">0</strong><span>Examinadas</span></div>
+<div><strong id="withResults">0</strong><span>Con resultados observados</span></div>
+<div><strong id="matching">0</strong><span>Con referencia textual al sujeto</span></div>
+<div><strong id="timeoutCount">0</strong><span>Sin respuesta dentro del plazo</span></div>
+<div><strong id="elapsed">0</strong><span>Segundos acumulados</span></div>
+</div>
+<p id="state" role="status" aria-live="polite">Preparado. Faltan ejecutar las pruebas sobre el sitio publicado.</p>
+<div class="output"><table><thead><tr><th>#</th><th>Consulta</th><th>Estado</th><th>Artículo / primer resultado</th><th>Resultados</th><th>Tiempo</th></tr></thead><tbody id="rows"></tbody></table></div>
+<details><summary>Cómo interpretar el informe</summary>
+<p>«Con resultados» significa que se observó una ficha o resultados de búsqueda, no que estos sean correctos. «Sujeto detectado» requiere que el nombre esperado figure en el artículo o en los primeros resultados. «Sin respuesta» indica que no hubo resultados observables dentro del límite elegido; puede deberse a red lenta, API externa o un fallo del buscador. Exportá el CSV para auditar manualmente falsos positivos, imágenes, portadas, planos y citas. Esta prueba no modifica documentos ni la línea de tiempo.</p>
+</details>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+const esc=s=>String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+let running=false,records=[],suite=[],stop=false,elapsed=0;
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+async function load(){
+ const r=await fetch('tests/vitruvia-100-subjects.json?v=20261111-v1',{cache:'no-store'});
+ if(!r.ok)throw Error('No se pudo obtener la batería: HTTP '+r.status);
+ const v=await r.json();
+ if(!Array.isArray(v.cases)||v.cases.length!==100)throw Error('Se esperaban 100 consultas documentadas');
+ suite=v.cases;return suite;
+}
+function update(){
+ $('progress').value=records.length;
+ $('done').textContent=String(records.length);
+ $('withResults').textContent=String(records.filter(r=>r.resultCount>0||r.article).length);
+ $('matching').textContent=String(records.filter(r=>r.subjectMatch).length);
+ $('timeoutCount').textContent=String(records.filter(r=>r.status==='sin respuesta').length);
+ $('elapsed').textContent=(elapsed/1000).toFixed(1);
+ $('export').disabled=!records.length;
+}
+async function runOne(c,mode,timeout){
+ const frame=document.createElement('iframe');frame.className='probe';frame.title='Prueba '+c.id;
+ const started=performance.now();
+ // Same-origin iframe: no remote automation, no privileged external access.
+ frame.src='vitruvia.html?'+new URLSearchParams({q:c.query,mode});
+ document.body.append(frame);
+ let last=null,settled=false,loadFailure=false;
+ try{
+  await new Promise(resolve=>{
+   const timer=setTimeout(resolve,timeout);
+   const poll=setInterval(()=>{
+    if(stop){clearTimeout(timer);clearInterval(poll);resolve();return}
+    try{
+     const doc=frame.contentDocument;
+     if(!doc)return;
+     const heading=doc.getElementById('article-title')?.textContent?.trim()||'';
+     const results=[...doc.querySelectorAll('#result-list .result-card')];
+     const first=results[0]?.textContent?.trim().slice(0,150)||'';
+     const state=doc.getElementById('result-state')?.textContent?.trim()||'';
+     const signature=String(frame.contentWindow?.VitruviaSearchSnapshot?.query||'');
+     if(!signature||fold(signature)!==fold(c.query))return;
+     const links=results.reduce((n,r)=>n+r.querySelectorAll('a[href]').length,0);
+     const extract=(heading+' '+results.slice(0,5).map(x=>x.textContent).join(' ')).slice(0,3000);
+     last={article:heading,firstResult:first,resultCount:results.length,links,subjectMatch:fold(extract).includes(fold(c.expectedSubject)),phase:state};
+     if((results.length>0||heading)&&/(complete|complet|finalizad|finaliz|sources)/i.test(state)){
+      settled=true;clearTimeout(timer);clearInterval(poll);resolve();
+     }
+    }catch(e){loadFailure=true}
+   },400);
+  });
+ }finally{frame.remove()}
+ const duration=Math.round(performance.now()-started);
+ const observed=!!(last?.article||last?.resultCount);
+ return {id:c.id,category:c.category,query:c.query,expectedSubject:c.expectedSubject,mode,
+  status:stop?'interrumpida':loadFailure?'error de acceso':observed?(settled?'respondió':'respuesta parcial'):'sin respuesta',
+  ...last,article:last?.article||'',firstResult:last?.firstResult||'',resultCount:last?.resultCount||0,links:last?.links||0,
+  subjectMatch:!!last?.subjectMatch,phase:last?.phase||'',durationMs:duration};
+}
+function addRow(r){
+ const row=document.createElement('tr');
+ const cls=r.status==='respondió'?'good':r.status==='sin respuesta'?'bad':'warn';
+ row.innerHTML='<td>'+r.id+'</td><td>'+esc(r.query)+'</td><td class="'+cls+'">'+esc(r.status)+(r.subjectMatch?' · sujeto reconocido':'')+'</td><td>'+esc(r.article||r.firstResult||'—')+'</td><td>'+r.resultCount+' (enlaces: '+r.links+')</td><td>'+r.durationMs+' ms</td>';
+ $('rows').append(row);
+}
+$('start').addEventListener('click',async()=>{
+ if(running)return;running=true;stop=false;elapsed=0;records=[];$('rows').replaceChildren();
+ $('start').disabled=true;$('stop').disabled=false;$('mode').disabled=true;$('timeout').disabled=true;update();
+ try{
+  await load();
+  const mode=$('mode').value,timeout=Number($('timeout').value);
+  for(const c of suite){
+   if(stop)break;
+   $('state').textContent='Examinando '+c.id+'/100: '+c.query;
+   const result=await runOne(c,mode,timeout);
+   records.push(result);elapsed+=result.durationMs;addRow(result);update();
+   await wait(120);
+  }
+  $('state').textContent=stop?'Pruebas detenidas: '+records.length+' de 100.':'Pruebas terminadas: '+records.length+' de 100. Revisá los casos sin respuesta y exportá el CSV.';
+ }catch(e){$('state').textContent='Error al ejecutar: '+String(e.message||e)}
+ finally{running=false;$('start').disabled=false;$('stop').disabled=true;$('mode').disabled=false;$('timeout').disabled=false}
+});
+$('stop').addEventListener('click',()=>{stop=true;$('state').textContent='Deteniendo después de la consulta actual…'});
+$('export').addEventListener('click',()=>{
+ const columns=['id','category','query','expectedSubject','mode','status','subjectMatch','article','firstResult','resultCount','links','phase','durationMs'];
+ const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+ const content=[columns.join(','),...records.map(row=>columns.map(c=>q(row[c])).join(','))].join('\r\n');
+ const file=new Blob(['\ufeff'+content],{type:'text/csv;charset=utf-8'});
+ const url=URL.createObjectURL(file);const a=document.createElement('a');a.href=url;a.download='auditoria-vitruvia-100-busquedas.csv';a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),3000);
+});
+})();
+</script>
+</body></html>
