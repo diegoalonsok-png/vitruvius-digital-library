@@ -2,140 +2,140 @@
   "schema": "vitruvius-tei-codicology-research-matrix-v1",
   "updated": "2026-11-10",
   "model": "TEI P5 msDesc: msIdentifier, msContents, physDesc (objectDesc, handDesc, decoDesc, bindingDesc), history (origin, provenance, acquisition), additional; source status attached per field",
-  "registeredWitnesses": 89,
+  "registeredWitnesses": 94,
   "fieldCount": 22,
   "globalMissing": [
     {
       "category": "physical",
       "key": "material",
-      "label": "Soporte material y composición de bifolios",
-      "missing": 52
+      "label": "Soporte material",
+      "missing": 54
     },
     {
       "category": "physical",
       "key": "dimensions",
-      "label": "Dimensiones del bloque y de la caja escrita",
-      "missing": 89
+      "label": "Dimensiones y caja escrita",
+      "missing": 92
     },
     {
       "category": "physical",
       "key": "collationFormula",
-      "label": "Fórmula de cuadernos y estructura de la encuadernación",
-      "missing": 89
+      "label": "Fórmula de cuadernos",
+      "missing": 94
     },
     {
       "category": "physical",
       "key": "ruling",
-      "label": "Pautado, picado y número de líneas por página",
-      "missing": 89
+      "label": "Pautado",
+      "missing": 93
     },
     {
       "category": "physical",
       "key": "binding",
-      "label": "Encuadernación y restauraciones",
-      "missing": 89
+      "label": "Encuadernación",
+      "missing": 92
     },
     {
       "category": "physical",
       "key": "watermarks",
-      "label": "Filigranas para testimonios en papel",
-      "missing": 89
+      "label": "Filigranas",
+      "missing": 94
     },
     {
       "category": "scribal",
       "key": "script",
-      "label": "Escritura y fecha paleográfica",
-      "missing": 74
+      "label": "Tipo de escritura",
+      "missing": 77
     },
     {
       "category": "scribal",
       "key": "hands",
-      "label": "Número de manos y distribución por folios",
-      "missing": 89
+      "label": "Manos",
+      "missing": 94
     },
     {
       "category": "scribal",
       "key": "corrections",
-      "label": "Manos correctoras M¹/M² y sus lecturas",
-      "missing": 89
+      "label": "Correctores",
+      "missing": 94
     },
     {
       "category": "paratext",
       "key": "scholia",
-      "label": "Escolios marginales",
-      "missing": 87
+      "label": "Escolios",
+      "missing": 92
     },
     {
       "category": "paratext",
       "key": "glosses",
-      "label": "Glosas interlineales",
-      "missing": 89
+      "label": "Glosas",
+      "missing": 94
     },
     {
       "category": "paratext",
       "key": "subscriptiones",
-      "label": "Subscriptiones y colofones",
-      "missing": 89
+      "label": "Subscriptiones",
+      "missing": 94
     },
     {
       "category": "history",
       "key": "origin",
-      "label": "Origen / scriptorium",
-      "missing": 77
+      "label": "Origen",
+      "missing": 80
     },
     {
       "category": "history",
       "key": "provenance",
-      "label": "Historia de propietarios y transferencias",
-      "missing": 80
+      "label": "Procedencia",
+      "missing": 83
     },
     {
       "category": "text",
       "key": "folioRange",
-      "label": "Folios y distribución por libros",
+      "label": "Folios",
       "missing": 49
     },
     {
       "category": "text",
       "key": "coverage",
-      "label": "Inc./expl., lagunas y cobertura exacta",
+      "label": "Cobertura",
       "missing": 0
     },
     {
       "category": "text",
       "key": "lacunae",
-      "label": "Lagunas localizadas por locus",
-      "missing": 89
+      "label": "Lagunas",
+      "missing": 94
     },
     {
       "category": "text",
       "key": "transpositions",
-      "label": "Desorden de folios y sus causas",
-      "missing": 89
+      "label": "Transposiciones",
+      "missing": 94
     },
     {
       "category": "text",
       "key": "palimpsest",
-      "label": "Escritura inferior, superior y técnica de lectura",
-      "missing": 89
+      "label": "Palimpsesto",
+      "missing": 94
     },
     {
       "category": "digital",
       "key": "record",
-      "label": "Ficha institucional",
+      "label": "Catálogo",
       "missing": 2
     },
     {
       "category": "digital",
       "key": "viewer",
-      "label": "Visor institucional o colección verificada",
-      "missing": 35
+      "label": "Visor",
+      "missing": 40
     },
     {
       "category": "digital",
       "key": "manifest",
-      "label": "IIIF Manifest cotejado con el registro",
-      "missing": 59
+      "label": "IIIF",
+      "missing": 64
     }
   ],
   "records": [
@@ -14165,8 +14165,788 @@
       ],
       "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
       "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+    },
+    {
+      "witnessId": "seneca-epistulae-harley2752",
+      "canonicalPhysicalId": "codex-seneca-harley-2752",
+      "workIds": [
+        "seneca-epistulae"
+      ],
+      "shelfmark": "Harley MS 2752",
+      "repository": "London, British Library",
+      "repositoryUrl": "https://searcharchives.bl.uk/catalog/040-002048583",
+      "verificationSource": "British Library, Harley MS 2752, catálogo Archives and Manuscripts; Reynolds, The Medieval Tradition of Seneca's Letters (1965), 74; Fohlen, Les manuscrits des Epistulae ad Lucilium (1998), 74–75.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": "Pergamino; códice de 89 folios; 260 × 175 mm; caja de escritura 190 × 120 mm",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": "260 × 175 mm; caja escrita 190 × 120 mm",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": "Encuadernación posterior a 1600, cuero rojo decorado y guardas jaspeadas.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": "Gótica",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": "Países Bajos septentrionales",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": "John Chamberlayne; colección Harley; adquirido por el Estado británico en 1753.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "ff. 1r–89r; f. 89v en blanco",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Epistulae morales ad Lucilium, colección de 124 cartas según registro British Library; no se ha auditado la integridad de cada carta.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://searcharchives.bl.uk/catalog/040-002048583",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 13,
+      "missingKeys": [
+        "collationFormula",
+        "ruling",
+        "watermarks",
+        "hands",
+        "corrections",
+        "scholia",
+        "glosses",
+        "subscriptiones",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only accept original library catalogue or specialist studies; empty is not a negative fact."
+    },
+    {
+      "witnessId": "seneca-tragedies-epistulae-harley5006",
+      "canonicalPhysicalId": "codex-seneca-harley-5006",
+      "workIds": [
+        "seneca-tragoediae",
+        "seneca-epistulae"
+      ],
+      "shelfmark": "Harley MS 5006",
+      "repository": "London, British Library",
+      "repositoryUrl": "https://searcharchives.bl.uk/catalog/040-002050850",
+      "verificationSource": "British Library Archives and Manuscripts, Harley MS 5006; Reynolds, The Medieval Tradition of Seneca's Letters (1965), 72; MacGregor (1985), 1171.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": "Pergamino, 78 folios; 305 × 225 mm; caja escrita 245 × 155 mm",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": "305 × 225 mm; caja escrita 245 × 155 mm",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": "Encuadernación posterior a 1600, cuero marrón jaspeado con decoración dorada",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": "Gótica",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": "Italia septentrional o central, localización alternativa sin precisar",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": "Colegio jesuita de Agen, Francia, anotación del siglo XVII; colección Harley.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "Tragedias ff. 1r–30v y fragmento 77r–78v; Epistulae morales ff. 31r–76v.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Tragedias de Séneca (ff. 1r–30v y fragmento final 77r–78v); cartas morales (ff. 31r–76v), precedidas por la correspondencia apócrifa entre Séneca y san Pablo. No atribuir esta última correspondencia a Séneca auténtico.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://searcharchives.bl.uk/catalog/040-002050850",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 13,
+      "missingKeys": [
+        "collationFormula",
+        "ruling",
+        "watermarks",
+        "hands",
+        "corrections",
+        "scholia",
+        "glosses",
+        "subscriptiones",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only accept original library catalogue or specialist studies; empty is not a negative fact."
+    },
+    {
+      "witnessId": "xenophon-memorabilia-paris1642",
+      "canonicalPhysicalId": "codex-bnf-grec-1642",
+      "workIds": [
+        "xenophon-memorabilia"
+      ],
+      "shelfmark": "Grec 1642",
+      "repository": "Paris, Bibliothèque nationale de France",
+      "repositoryUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/",
+      "verificationSource": "IRHT–CNRS Pinakes, notice 51265, Paris BnF Grec 1642, inventario por folios.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "ff. 65r–107v (Pinakes: 065–107v)",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Memorabilia de Jenofonte; el códice contiene también Hellenica y obras de Platón. No se afirma ser el testimonio más antiguo de Memorabilia.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://pinakes.irht.cnrs.fr/notices/cote/51265/",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 19,
+      "missingKeys": [
+        "material",
+        "dimensions",
+        "collationFormula",
+        "ruling",
+        "binding",
+        "watermarks",
+        "script",
+        "hands",
+        "corrections",
+        "scholia",
+        "glosses",
+        "subscriptiones",
+        "origin",
+        "provenance",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only accept original library catalogue or specialist studies; empty is not a negative fact."
+    },
+    {
+      "witnessId": "xenophon-polybius-leiden-vulc2",
+      "canonicalPhysicalId": "codex-leiden-vulc-2",
+      "workIds": [
+        "xenophon-memorabilia",
+        "polybius-historiae"
+      ],
+      "shelfmark": "Vulc. 002",
+      "repository": "Leiden, Universitaire Bibliotheken",
+      "repositoryUrl": "https://pinakes.irht.cnrs.fr/notices/cote/38230/",
+      "verificationSource": "IRHT–CNRS Pinakes, Diktyon 38230, Leiden Vulc. 002.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": "Papel; manuscrito misceláneo",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "Memorabilia ff. 7v–51r; Historiae de Polibio ff. 87r–110r (f. 110v en blanco).",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Jenofonte, Memorabilia, y sección de Historiae de Polibio; la integridad de la obra de Polibio no está demostrada por el catálogo.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://pinakes.irht.cnrs.fr/notices/cote/38230/",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 18,
+      "missingKeys": [
+        "dimensions",
+        "collationFormula",
+        "ruling",
+        "binding",
+        "watermarks",
+        "script",
+        "hands",
+        "corrections",
+        "scholia",
+        "glosses",
+        "subscriptiones",
+        "origin",
+        "provenance",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only accept original library catalogue or specialist studies; empty is not a negative fact."
+    },
+    {
+      "witnessId": "appian-diodorus-paris1642",
+      "canonicalPhysicalId": "codex-bnf-grec-1642",
+      "workIds": [
+        "appian-romaika",
+        "diodorus"
+      ],
+      "shelfmark": "Grec 1642",
+      "repository": "Paris, Bibliothèque nationale de France",
+      "repositoryUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/",
+      "verificationSource": "IRHT–CNRS Pinakes, notice 51265, apartados Appianus y Diodorus Siculus.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "Apiano, Bellum civile ff. 263r–264v y Celtica ff. 264v–275v; Diodoro, Bibliotheca historica ff. 275v–276v.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Testimonios fragmentarios: Apiano, Bellum civile y Celtica, en extractos; Diodoro, pasajes del libro XVIII (18.1.1–5 y 18.26.1–28.4 según Pinakes). NO representa ejemplar completo.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://pinakes.irht.cnrs.fr/notices/cote/51265/",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 19,
+      "missingKeys": [
+        "material",
+        "dimensions",
+        "collationFormula",
+        "ruling",
+        "binding",
+        "watermarks",
+        "script",
+        "hands",
+        "corrections",
+        "scholia",
+        "glosses",
+        "subscriptiones",
+        "origin",
+        "provenance",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only accept original library catalogue or specialist studies; empty is not a negative fact."
     }
   ],
-  "uniquePhysicalObjects": 83,
-  "note": "89 witness-source records include 83 canonical physical identities; do not count duplicated manuscript shelfmarks as distinct."
+  "uniquePhysicalObjects": 87,
+  "note": "Maintains 94 textual witness entries but 87 unique physical objects. Earlier filename reflects creation at 89."
 }
