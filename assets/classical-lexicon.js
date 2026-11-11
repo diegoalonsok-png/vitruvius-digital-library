@@ -156,8 +156,30 @@ async function lookupLatinGlossary(word,work){
  if(!lem)return null;
  return{entries:lem.map(l=>{const L=d.lemmas[l]||{};return{lemma:L.h||l.replace(/\d+$/,""),morph:"",gloss:L.g||"",lang:"la",source:"Lewis & Short · lematización CLTK"}}),via:"form",sources:d.sources,note:d.note};
 }
+/* Resolución conservadora de vocativos latinos de segunda declinación:
+   solo se propone -us si el lema existe en un glosario local documentado.
+   No se transforma automáticamente cualquier palabra terminada en -e. */
+async function lookupLatinVocative(word,work){
+ const form=fold(word);
+ if(!/^[a-z]{4,}e$/.test(form))return null;
+ const candidate=form.slice(0,-1)+"us";
+ for(const id of [...new Set([work,"vitruvius"].filter(x=>LATIN_GLOSSARIES.has(x)))]){
+  const d=await json("data/classics-lexicon/"+id+"-la.json");
+  const lemma=d?.lemmas?.[candidate];
+  if(!lemma?.g)continue;
+  return{entries:[{
+   lemma:candidate,
+   morph:"Vocativo singular de "+candidate+" (segunda declinación; análisis morfológico propuesto)",
+   gloss:lemma.g,lang:"la",source:"Lewis & Short · lema documentado en glosario local",
+   ...(candidate==="dominus"?{es:"señor; amo; dueño"}:{})
+  }],via:"verified-lemma-inflection",sources:d.sources||[],
+  note:"Resolución de forma flexionada mediante lema local. La glosa castellana, cuando aparece, es una equivalencia editorial orientativa; el sentido preciso depende del contexto."};
+ }
+ return null;
+}
 async function lookupLatin(word,work){
  const g=await lookupLatinGlossary(word,work);if(g)return g;
+ const vocative=await lookupLatinVocative(word,work);if(vocative)return vocative;
  const d=await json("data/classical-dictionary.json");if(!d?.latin)return null;
  const lower=word.toLowerCase();
  const variants=[...new Set([lower,lower.replace(/j/g,"i"),lower.replace(/v/g,"u"),lower.replace(/u/g,"v"),lower.replace(/j/g,"i").replace(/v/g,"u"),lower.normalize("NFD").replace(/\p{M}/gu,"")])];
