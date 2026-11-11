@@ -7,6 +7,54 @@ const special={
  geometria:{meaning:"Geometría: estudio de figuras, magnitudes y sus relaciones.",grammar:"Sustantivo femenino.",etymology:"Del griego γεωμετρία: γῆ (tierra) y μέτρον (medida).",use:"Disciplina indispensable en la formación del arquitecto según Vitruvio."},
  littera:{meaning:"Letra; en plural, letras, escritura o literatura según el contexto.",grammar:"Sustantivo femenino, 1.ª declinación.",etymology:"La etimología última de littera no está demostrada.",use:"Litteras puede ser acusativo plural; requiere lectura contextual."}
 };
+/* Curated brief meanings; translations are distinct from critical dictionary entries. */
+const briefTranslations={
+ domus:{es:"Casa, vivienda, hogar; también familia o grupo doméstico según el contexto.",
+        en:"House, home or dwelling; also household or family, depending on context.",
+        fr:"Maison, demeure ou habitation ; également maisonnée ou famille selon le contexte."},
+ geometria:{es:"Geometría: estudio de figuras y magnitudes.",en:"Geometry: study of figures and magnitudes.",fr:"Géométrie : étude des figures et des grandeurs."},
+ littera:{es:"Letra; en plural, escritura, letras o literatura según el contexto.",en:"Letter; in the plural, writing or literature according to context.",fr:"Lettre ; au pluriel, écriture ou littérature selon le contexte."}
+};
+function translatedMeaning(lemma,spanish){
+ const meanings=briefTranslations[normalize(lemma)];
+ if(!spanish&&!meanings)return;
+ const section=document.createElement("section");
+ const label=document.createElement("p");label.textContent="Significado orientativo · ES / EN / FR";
+ label.style.fontWeight="600";section.append(label);
+ const choices=document.createElement("div");choices.className="vlc-lang-options";
+ const output=document.createElement("p");output.setAttribute("role","status");
+ const buttons=[];
+ for(const [lang,name] of [["es","Español"],["en","English"],["fr","Français"]]){
+  const button=document.createElement("button");button.type="button";button.textContent=name;
+  button.setAttribute("aria-pressed",String(lang==="es"));choices.append(button);buttons.push([lang,button]);
+  button.addEventListener("click",async()=>{
+   for(const [code,b] of buttons)b.setAttribute("aria-pressed",String(code===lang));
+   if(lang==="es"){output.textContent=meanings?.es||spanish;return}
+   if(meanings?.[lang]){output.textContent=meanings[lang];return}
+   output.textContent="Esta glosa no tiene traducción editorial verificada. Traducción automática disponible bajo solicitud.";
+   const request=document.createElement("button");request.type="button";request.textContent="Traducir automáticamente";
+   request.style.cssText="margin-left:8px;padding:5px 8px;border:1px solid #777;border-radius:5px;background:#333;color:#fff;cursor:pointer";
+   request.addEventListener("click",async()=>{
+    request.disabled=true;request.textContent="Traduciendo…";
+    try{
+     const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),7000);
+     let response;
+     try{response=await fetch("https://api.mymemory.translated.net/get?"+new URLSearchParams({q:String(spanish).slice(0,400),langpair:"es|"+lang,mt:"1"}),{signal:controller.signal,referrerPolicy:"no-referrer"})}
+     finally{clearTimeout(timeout)}
+     if(!response.ok)throw Error("Servicio no disponible");
+     const json=await response.json(),translated=json?.responseData?.translatedText;
+     if(json?.responseStatus!==200||!translated||/MYMEMORY WARNING|DAILY LIMIT|QUERY LENGTH/i.test(translated))throw Error("Traducción no disponible");
+     output.textContent=translated+" (traducción automática orientativa, no edición crítica)";
+    }catch{output.textContent="No se pudo traducir. La glosa castellana permanece disponible."}
+   },{once:true});
+   output.append(" ",request);
+  });
+ }
+ output.textContent=meanings?.es||spanish;
+ section.append(choices,output);
+ if(!meanings)section.append(Object.assign(document.createElement("small"),{textContent:"Las traducciones no verificadas se solicitan expresamente a un servicio externo; no se envían textos sin pulsar el botón."}));
+ content.append(section);
+}
 const image={domus:{
  src:"https://commons.wikimedia.org/wiki/Special:FilePath/Atrium%20with%20impluvium%20in%20the%20House%20of%20the%20Vetti%20Pompeii.jpg?width=450",
  url:"https://commons.wikimedia.org/wiki/File:Atrium_with_impluvium_in_the_House_of_the_Vetti_Pompeii.jpg",
@@ -47,6 +95,7 @@ async function show(term,rect){
  line("Gramática:",e?.pos||extra?.grammar);
  const form=e?.morphology&&Object.entries(e.morphology).find(([k])=>normalize(k)===token);if(form)line("Forma:",form[1]);
  line("Definición:",e?.es||extra?.meaning);
+ translatedMeaning(lemma,e?.es||extra?.meaning);
  for(const sense of (e?.senses||[]).slice(0,3))line("Acepción:",sense);
  line("Etimología:",extra?.etymology||(e?.greek?"Forma griega relacionada: "+e.greek+". No implica por sí sola derivación etimológica.":""));
  line("Uso en Vitruvio:",e?.vitruvian||extra?.use);
