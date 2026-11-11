@@ -14,7 +14,7 @@ permissions:
 jobs:
   public-query-quality:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,6 +34,8 @@ jobs:
         if: always()
         with:
           name: vitruvia-search-quality-benchmark
-          path: reports/vitruvia-search-benchmark.json
+          path: |
+            reports/vitruvia-search-benchmark.json
+            reports/vitruvius-total-public-audit.json
           if-no-files-found: warn
           retention-days: 30
