@@ -133,7 +133,7 @@ $('start').addEventListener('click',async()=>{
    records.push(result);elapsed+=result.durationMs;addRow(result);update();
    await wait(120);
   }
-  $('state').textContent=stop?'Pruebas detenidas: '+records.length+' de 100.':'Pruebas terminadas: '+records.length+' de 100. Revisá los casos sin respuesta y exportá el CSV.';
+  $('state').textContent=stop?'Pruebas detenidas: '+records.length+' de 100.':'Pruebas terminadas: '+records.length+' de 100. Revise los casos sin respuesta y exporte el CSV.';
  }catch(e){$('state').textContent='Error al ejecutar: '+String(e.message||e)}
  finally{running=false;$('start').disabled=false;$('stop').disabled=true;$('mode').disabled=false;$('timeout').disabled=false}
 });
