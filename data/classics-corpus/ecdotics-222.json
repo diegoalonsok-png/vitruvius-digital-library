@@ -5732,7 +5732,102 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "plutarch-pal-gr283",
+          "canonicalPhysicalId": "codex-pal-gr-283",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
+            "shelfmark": "Cod. Pal. graec. 283",
+            "paleographicDate": "mediados o tercer cuarto del siglo X",
+            "support": null,
+            "script": "Minúscula griega de tipo Ephrem (según Irigoin)",
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Vidas paralelas ff. 1r–195v; opúsculos morales ff. 195v–207r."
+          },
+          "textualIntegrity": {
+            "coverage": "Selección de Vidas paralelas y tratados morales, incluida De latenter vivendo, An vitiositas, De amore prolis, De invidia et odio, An virtus doceri possit y Aetia physica; no es la totalidad de Moralia.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "plutarch-diogenes-bnf-suppl134",
+          "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Paris, Bibliothèque nationale de France",
+            "shelfmark": "Supplément grec 134",
+            "paleographicDate": "primera mitad del siglo XIV",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v."
+          },
+          "textualIntegrity": {
+            "coverage": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -5754,7 +5849,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -8942,7 +9037,102 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "plutarch-pal-gr283",
+          "canonicalPhysicalId": "codex-pal-gr-283",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
+            "shelfmark": "Cod. Pal. graec. 283",
+            "paleographicDate": "mediados o tercer cuarto del siglo X",
+            "support": null,
+            "script": "Minúscula griega de tipo Ephrem (según Irigoin)",
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Vidas paralelas ff. 1r–195v; opúsculos morales ff. 195v–207r."
+          },
+          "textualIntegrity": {
+            "coverage": "Selección de Vidas paralelas y tratados morales, incluida De latenter vivendo, An vitiositas, De amore prolis, De invidia et odio, An virtus doceri possit y Aetia physica; no es la totalidad de Moralia.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "plutarch-diogenes-bnf-suppl134",
+          "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Paris, Bibliothèque nationale de France",
+            "shelfmark": "Supplément grec 134",
+            "paleographicDate": "primera mitad del siglo XIV",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v."
+          },
+          "textualIntegrity": {
+            "coverage": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -8964,7 +9154,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -8999,7 +9189,55 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "lucian-urb-gr118",
+          "canonicalPhysicalId": "codex-urb-gr-118",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+            "shelfmark": "Urb. gr. 118",
+            "paleographicDate": "testimonios compilados entre siglos XIII y XVI; unidad específica pendiente",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Dialogi mortuorum ff. 18v–25r; Verae historiae ff. 37r–49r."
+          },
+          "textualIntegrity": {
+            "coverage": "Diálogos de muertos seleccionados en orden no canónico (13, 12, 26, etc.); Verae historiae libros I–II según repertorio. La unidad paleográfica debe cotejarse; no se aplica una fecha única a todo el volumen.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -9021,7 +9259,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -9056,7 +9294,55 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "lucian-urb-gr118",
+          "canonicalPhysicalId": "codex-urb-gr-118",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+            "shelfmark": "Urb. gr. 118",
+            "paleographicDate": "testimonios compilados entre siglos XIII y XVI; unidad específica pendiente",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Dialogi mortuorum ff. 18v–25r; Verae historiae ff. 37r–49r."
+          },
+          "textualIntegrity": {
+            "coverage": "Diálogos de muertos seleccionados en orden no canónico (13, 12, 26, etc.); Verae historiae libros I–II según repertorio. La unidad paleográfica debe cotejarse; no se aplica una fecha única a todo el volumen.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -9078,7 +9364,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -11839,7 +12125,55 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "arrian-procopius-laur-plut9-32",
+          "canonicalPhysicalId": "codex-laur-plut-9-32",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Firenze, Biblioteca Medicea Laurenziana",
+            "shelfmark": "Plut. 9.32",
+            "paleographicDate": "c. 1430–1450 (unidad principal)",
+            "support": "Papel",
+            "script": "Griego tardobizantino; copista identificado como Ἰωάννης Καναβούτζης",
+            "hands": null,
+            "correctors": null,
+            "scholia": "Escolios documentados en ambas obras",
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Arriano Anabasis Alexandri ff. 19r–149r; Procopio De aedificiis ff. 177r–214r."
+          },
+          "textualIntegrity": {
+            "coverage": "Arriano con escolios y laguna; Procopio De aedificiis con escolios. Ambos transmitidos en la misma unidad miscelánea, no declarados códices más antiguos.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -11861,7 +12195,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -16867,7 +17201,55 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "plutarch-diogenes-bnf-suppl134",
+          "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Paris, Bibliothèque nationale de France",
+            "shelfmark": "Supplément grec 134",
+            "paleographicDate": "primera mitad del siglo XIV",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v."
+          },
+          "textualIntegrity": {
+            "coverage": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -16889,7 +17271,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -19349,7 +19731,55 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "arrian-procopius-laur-plut9-32",
+          "canonicalPhysicalId": "codex-laur-plut-9-32",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Firenze, Biblioteca Medicea Laurenziana",
+            "shelfmark": "Plut. 9.32",
+            "paleographicDate": "c. 1430–1450 (unidad principal)",
+            "support": "Papel",
+            "script": "Griego tardobizantino; copista identificado como Ἰωάννης Καναβούτζης",
+            "hands": null,
+            "correctors": null,
+            "scholia": "Escolios documentados en ambas obras",
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Arriano Anabasis Alexandri ff. 19r–149r; Procopio De aedificiis ff. 177r–214r."
+          },
+          "textualIntegrity": {
+            "coverage": "Arriano con escolios y laguna; Procopio De aedificiis con escolios. Ambos transmitidos en la misma unidad miscelánea, no declarados códices más antiguos.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -19371,7 +19801,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
