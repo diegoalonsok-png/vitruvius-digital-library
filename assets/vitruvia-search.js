@@ -1485,6 +1485,10 @@ document.getElementById("expand-search-sources")?.addEventListener("click",async
 });
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ /* Comprension de la consulta antes de preguntar a ninguna fuente: grafia,
+    flexion, escritura cruzada, onomastica y citas. Si el modulo no estuviera
+    disponible, el buscador sigue funcionando como antes. */
+ S.expansion=window.VitruviaPhilology?window.VitruviaPhilology.expand(q,{onomastica:onomastica()}):null;
  // Ordinary searches include books, primary texts and cultural works again.
  // Load their tools in parallel with the first identity; do not restart the query.
  const expanded=S.expandedFor===q||["all","external","ai","concept"].includes(S.mode);

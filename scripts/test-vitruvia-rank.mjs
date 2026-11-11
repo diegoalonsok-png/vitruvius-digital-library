@@ -93,5 +93,25 @@ ok("año exacto antes de la era",R.yearOf({dating:"23 a. C."}),-23);
 ok("año de edición",R.yearOf({published:"1567"}),1567);
 ok("sin año",R.yearOf({title:"sin fecha"}),null);
 
+group("adjust(): señales sobre la ordenación que ya existía");
+const pizza={title:"Pizzería Alejandro Magno",excerpt:"Menú del día, reservar mesa.",source:"Google Books"};
+const rey={title:"Alejandro Magno",excerpt:"Rey de Macedonia (356–323 a. C.).",source:"Wikipedia"};
+const expA=P.expand("Alejandro Magno");
+const basePizza=R.adjust(pizza,1000,expA),baseRey=R.adjust(rey,1000,expA);
+yes("con la misma base, el rey supera a la pizzería",baseRey>basePizza,
+ "rey "+baseRey.toFixed(0)+" · pizzería "+basePizza.toFixed(0));
+yes("la pizzería se hunde, no desaparece",basePizza>0&&basePizza<200);
+yes("la escala se respeta",baseRey>1000&&baseRey<3000);
+ok("sin señales no cambia nada",R.adjust({title:"Nota",excerpt:"",source:""},500,P.expand("nota")),500);
+
+group("Frase sin comillas");
+const frase=[
+ {title:"Ordinatio dispositio eurythmia",excerpt:"Los términos vitruvianos.",source:"Wikipedia"},
+ {title:"Dispositio",excerpt:"La ordinatio aparece en otro capítulo, y la dispositio en uno distinto.",source:"Wikipedia"}
+];
+const rankedFrase=R.rank(frase,P.expand("ordinatio dispositio"));
+yes("el bloque contiguo gana",/^Ordinatio/.test(rankedFrase[0].title),"primera: "+rankedFrase[0].title);
+yes("se declara en el desglose",/consulta completa/.test(R.explain(rankedFrase[0])));
+
 console.log("\n"+pass+" correctas · "+fail+" fallidas");
 process.exit(fail?1:0);

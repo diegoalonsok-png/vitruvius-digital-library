@@ -150,7 +150,10 @@ function score(row,profile,terms,stats,expansion,phrases){
  }
 
  /* Frase literal: lo que el lector puso entre comillas vale más que sus
-    palabras por separado. */
+    palabras por separado. Y una consulta de dos o más palabras se prueba
+    también como bloque, aunque no venga entre comillas: quien escribe
+    «ordinatio dispositio» espera ese orden antes que las dos palabras
+    separadas en párrafos distintos. */
  const haystack=P.fold(profile.text);
  for(const phrase of phrases){
   const folded=P.fold(phrase);
@@ -167,6 +170,12 @@ function score(row,profile,terms,stats,expansion,phrases){
    const spread=Math.max(...positions)-Math.min(...positions);
    if(spread<=5){relevance+=2.5;parts.push("proximidad +2,5")}
   }
+ }
+
+ if(expansion&&expansion.folded&&(expansion.tokens||[]).length>1&&!phrases.length){
+  const whole=expansion.folded;
+  if(P.fold(row.title||"").includes(whole)){relevance+=6;parts.push("consulta completa en título +6")}
+  else if(haystack.includes(whole)){relevance+=3;parts.push("consulta completa +3")}
  }
 
  const prior=sourcePrior(row);
@@ -378,9 +387,38 @@ function group(rows,expansion){
  return sections;
 }
 
+/* Ajuste multiplicativo sobre una puntuación ya calculada por otra vía.
+ * Se usa para incorporar las señales de materia a la ordenación que ya tenía
+ * el buscador, sin sustituir su escala ni sus prioridades académicas: lo que
+ * cambia es que el ruido comercial se hunde y la materia antigua sube.
+ * Es multiplicativo a propósito: así funciona igual con cualquier escala. */
+function adjust(row,base,expansion){
+ const value=Number(base)||0;
+ const text=[row&&row.title,row&&row.author,row&&row.excerpt,row&&row.meta,row&&row.source].filter(Boolean).join(" · ");
+ const parts=[];
+ let factor=1;
+ if(NOISE.test(text)){factor*=0.12;parts.push("ruido comercial ×0,12")}
+ if(NOISE_LEGAL.test(text)){factor*=0.45;parts.push("forma societaria ×0,45")}
+ if(NOISE_CONTACT.test(text)){factor*=0.4;parts.push("datos de contacto ×0,4")}
+ if(ANCIENT.test(text)){factor*=1.25;parts.push("señal de antigüedad ×1,25")}
+ if(expansion&&expansion.type==="person"&&PERSON_SIGNAL.test(text)){factor*=1.3;parts.push("indicio de persona histórica ×1,3")}
+ if(row&&row.qid&&expansion&&expansion.qid&&row.qid===expansion.qid){factor*=1.4;parts.push("entidad resuelta ×1,4")}
+ if(expansion&&expansion.folded&&(expansion.tokens||[]).length>1){
+  const title=P.fold((row&&row.title)||"");
+  if(title.includes(expansion.folded)){factor*=1.3;parts.push("consulta completa en título ×1,3")}
+ }
+ for(const phrase of (expansion&&expansion.phrases)||[]){
+  const folded=P.fold(phrase);
+  if(folded&&P.fold(text).includes(folded)){factor*=1.35;parts.push("frase literal ×1,35");break}
+ }
+ if(row&&parts.length)row.scoreParts=[...(row.scoreParts||[]),...parts];
+ /* Una ficha con ruido no debe quedar negativa ni desaparecer: baja y punto. */
+ return value*factor;
+}
+
 const explain=row=>row&&row.scoreParts?row.scoreParts.join(" · "):"";
 
-return {rank,group,explain,dedupe,diversify,orderWithin,groupOf,yearOf,sourcePrior,
+return {rank,adjust,group,explain,dedupe,diversify,orderWithin,groupOf,yearOf,sourcePrior,
  signals:{NOISE,NOISE_LEGAL,NOISE_CONTACT,ANCIENT,PERSON_SIGNAL},
  groups:GROUPS,groupOrder:GROUP_ORDER,fields:FIELDS,tiers:TIER};
 });
