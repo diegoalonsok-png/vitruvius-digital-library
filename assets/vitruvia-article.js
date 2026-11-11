@@ -589,6 +589,33 @@ function optionalManuscriptAccess(rows){
  return true;
 }
 
+/* Fill the principal reading column with attributed biographical text,
+ * while preserving the complete optional article and the cultural right rail. */
+function appendMainBiographyOverview(data,person,profile,topicPlan){
+ if(profile||!(person||topicPlan?.kind==="person")||!data?.extract)return false;
+ const blocks=window.VitruviaDiscovery?.parseExtract?.(data.extract)||[{type:"paragraph",text:String(data.extract)}];
+ const snippets=blocks.filter(b=>b.type==="paragraph"&&String(b.text||"").trim().length>=80)
+  .map(b=>String(b.text||"").replace(/\s+/g," ").trim()).slice(0,5);
+ if(!snippets.length)return false;
+ const section=make("section",undefined,"vitruvia-biography-overview");
+ section.setAttribute("aria-label","Biografía documentada");
+ section.append(make("h3",phrase("Biografía · vida y contexto","Biography · life and context","Biographie · vie et contexte")));
+ let total=0;
+ for(const paragraphText of snippets){
+  if(total>=3200)break;
+  const text=paragraphText.slice(0,Math.min(1600,3200-total));
+  section.append(make("p",text,total===0?"article-lead":undefined));
+  total+=text.length;
+ }
+ const source=String(data.fullurl||"");
+ if(/^https:\/\/[a-z-]+\.wikipedia\.org\//i.test(source)){
+  section.append(make("p",phrase("Texto enciclopédico atribuido · Wikipedia, CC BY-SA.","Attributed encyclopedic text · Wikipedia, CC BY-SA.","Texte encyclopédique attribué · Wikipédia, CC BY-SA."),"article-note"));
+  const original=href(source,phrase("Fuente original y referencias","Original source and references","Source originale et références"));
+  if(original)section.append(original);
+ }
+ $("article-body").append(section);
+ return true;
+}
 function appendBiographyExtract(raw,sourceURL=""){
  const blocks=window.VitruviaDiscovery?.parseExtract(raw)||[{type:"paragraph",text:String(raw||"")}];
  const body=$("article-body");
@@ -1317,6 +1344,7 @@ async function renderTopic(top,rows,query,token,person=null){
  }
  const data=identified?null:wiki?.fullExtract?{extract:wiki.fullExtract,fullurl:wiki.link,title:wiki.title,lang:wiki.wikiLang}:wiki?await wikiSummary(wiki):verifiedAuthority?null:await topicWikiData(person?.name||query);
  if(token!==active)return;
+ appendMainBiographyOverview(data,person,profile,topicPlan);
  appendDocumentedLegacy(rows,documentaryQuery);
  if(data?.extract){
   const reading=make("details",undefined,"article-wikipedia-optional");
