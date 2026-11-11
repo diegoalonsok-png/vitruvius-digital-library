@@ -30,6 +30,8 @@ jobs:
           node --check assets/lexicon-orthography-research.js
       - name: Frecuencias ortográficas y límites de muestras griego-latinas
         run: node scripts/test-lexicon-orthography.mjs
+      - name: Regresión de coincidencias literales latinas y griegas
+        run: node scripts/test-lexicon-literal-exact.mjs
       - name: Datos JSON válidos
         run: |
           python - <<'PY'
