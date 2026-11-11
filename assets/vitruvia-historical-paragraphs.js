@@ -10,6 +10,7 @@ const SOURCES=Object.freeze({
  cesariano:{title:"Cesare Cesariano · 1521",edition:"Cesariano 1521",file:"data/text/cesariano-1521.json",language:"it",mode:"image",viewer:"cesariano-1521.html"}
 });
 const cache=new Map();
+const CRITICAL_EDITIONS=Object.freeze(['krohn','rose']);
 const STOP=new Set("a ad al alla alle allo and con cum da de del della delle di do e ed en et for from he in inque into is la le les lo los na ne nel non of on or per por que qui quae quod se su the to una uno un una ut y il et quia in ad ab ex ab eo".split(" "));
 const CONCEPTS={
  arquitectura:["architectura","architectus","architettura","aedificatio","edificio"],
@@ -143,15 +144,19 @@ function rankRows(units,query,mode="literal",limit=50){
   }
   if(!primaryHits&&!mappedConcept)continue; // Only known, explicitly mapped concepts can match by synonym alone.
   if(primary.length>1&&primaryHits===1)bm25*=.5;
-  if(phrase.length>=7&&norm(x.u.text).includes(phrase))bm25+=3;
+  const phraseMatch=phrase.length>=7&&norm(x.u.text).includes(phrase);
+ if(phraseMatch)bm25+=12; // Give a continuous, normalized historical phrase priority over loose terms.
+ else if(primary.length>1&&primaryHits===primary.length)bm25+=2;
   if(bm25>0)scored.push({...x.u,score:+bm25.toFixed(5),matchedPrimary:primaryHits,
+    matchKind:phraseMatch?'frase_ocr_normalizada':'terminos_ocr',
     method:mode==="conceptual"?"bm25_multilingual_expansion":"bm25_ocr_text",
     url:pageURL(x.u)});
  }
  return scored.sort((a,b)=>b.score-a.score||a.page-b.page||a.block-b.block).slice(0,Math.min(100,Math.max(1,limit)));
 }
 async function search(query,options={}){
- const ids=options.edition&&options.edition!=="all"?[options.edition]:Object.keys(SOURCES);
+ const ids=options.edition==='critical'?CRITICAL_EDITIONS:
+  options.edition&&options.edition!=='all'?[options.edition]:Object.keys(SOURCES);
  const mode=options.mode==="conceptual"?"conceptual":"literal";
  const settled=await Promise.allSettled(ids.map(load));
  const sourceStatus={},all=[];
@@ -168,5 +173,5 @@ async function search(query,options={}){
   warning:"Coincidencia algorítmica de unidades OCR, no colación filológica. Modo conceptual: BM25 + equivalencias controladas (no IA neuronal). Los números son páginas de origen OCR; en Cesariano no identifican imágenes IIIF ni folios cotejados."};
 }
 window.VitruviaHistoricalParagraphs={SOURCES,norm,tokens,segmentPage,paragraphIndex,queryWeights,rankRows,search,pageURL,
- version:"2026-11-11-ocr-paragraphs-v1"};
+ version:"2026-11-11-krohn-rose-critical-v2"};
 })();
