@@ -75,7 +75,7 @@ test("Right rail reuses the ingestion model and does not borrow a homonym's firs
  assert(!contextScript.includes("norm(query).split(' ')[0]"));
  assert(/assets\/vitruvia-source-model\.js\?v=[a-z0-9-]+/.test(html),"The versioned ingestion model must be loaded");
  assert(html.indexOf("assets/vitruvia-source-model.js")<html.indexOf("assets/vitruvia-context-panel.js"));
- assert(html.includes("assets/vitruvia-cultural-works.js?v=20261109-typed-chronology-v1"));
+ assert(/assets\/vitruvia-cultural-works\.js\?v=[a-z0-9-]+/.test(html),"The chronological cultural works module must be versioned and loaded");
 });
 
 test("DOI forms and canonical URL identity preserve academic records",()=>{
