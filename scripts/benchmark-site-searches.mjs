@@ -14,7 +14,7 @@ const CASES=[
  {name:"Index locorum",url:"index-locorum.html",input:"#query",form:"#form",q:"domus",result:"#results article, #results li, #results .card",state:"#status"},
  {name:"Párrafos históricos",url:"buscador-parrafos-vitruvio.html",input:"#hp-query",form:"#hp-form",q:"symmetria",result:"#hp-results .hp-card",state:"#hp-status"}
 ];
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.CHROME?{executablePath:process.env.CHROME}:{})});
 const records=[];
 for(const item of CASES){
  const context=await browser.newContext({viewport:{width:1280,height:900},locale:"es-AR"});
