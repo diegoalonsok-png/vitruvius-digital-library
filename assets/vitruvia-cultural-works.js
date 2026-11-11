@@ -206,7 +206,7 @@ const ACADEMIC_DOSSIERS={
    ["Patrimonio Mundial · arquitectura","17 sitios UNESCO inscritos en 2016","https://whc.unesco.org/en/list/1321/",["Villa Savoye","Unité d’habitation de Marseille","Casa Curutchet (La Plata)"]]
   ]
  },
- Q12829680:{
+ Q177692:{
   heading:"Andrea Palladio · libros, tratados y arquitectura",
   notice:"Separar las obras escritas por Palladio de su trabajo como editor y de la bibliografía posterior sobre él.",
   groups:[
@@ -217,7 +217,7 @@ const ACADEMIC_DOSSIERS={
  }
 };
 function renderInstitutionalDossier(root,id){
- const data=ACADEMIC_DOSSIERS[id];if(!data)return;
+ const data=ACADEMIC_DOSSIERS[id]||ACADEMIC_DOSSIERS[id==='Q12829680'?'Q177692':id];if(!data)return;
  const section=el('section','cultural-academic-dossier');
  section.append(el('h4','context-section-title',data.heading),el('p','context-note',data.notice));
  for(const [heading,summary,url,examples] of data.groups){
