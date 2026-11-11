@@ -202,11 +202,11 @@ try{
     item.submitToResponseMs=Date.now()-started;
     item.firstMatchingNodes=c.ready?await p.locator(c.ready).count():null;
     if(c.page==="aparato-critico.html"){
-     const marks=p.locator("#critical-results p[lang='la'] mark,#critical-unified-results [lang='la'] mark");
+     const marks=p.locator("#critical-results p[lang='la'] mark:visible,#critical-unified-results [lang='la'] mark:visible");
      if(await marks.count()){
       await marks.first().click({timeout:4000});
       item.lexicalPopupVisible=await p.locator("#vitruvius-lexical-card:not([hidden])").isVisible().catch(()=>false);
-     }
+     }else item.lexicalPopupVisible="No visible highlighted term in active pane";
     }
    }catch(error){item.error=String(error.message||error).slice(0,280)}
    finally{item.jsErrors=jsErrors.slice(0,10);siteAudit.searches.push(item);await context.close()}
