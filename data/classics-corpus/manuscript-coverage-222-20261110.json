@@ -4,10 +4,10 @@
   "scope": "Manuscript identification is not proof of globally earliest text witness. Catalog data may refer to partial manuscripts.",
   "counts": {
     "catalogued": 222,
-    "witnesses": 83,
-    "worksWithWitnesses": 102,
-    "worksWithoutWitnesses": 120,
-    "worksWithThisBatchSourceReview": 48
+    "witnesses": 89,
+    "worksWithWitnesses": 108,
+    "worksWithoutWitnesses": 114,
+    "worksWithThisBatchSourceReview": 55
   },
   "records": [
     {
@@ -1073,11 +1073,12 @@
     },
     {
       "workId": "hesiod-works-days",
-      "witnessCount": 1,
+      "witnessCount": 2,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
+      "scholarlySourceCount": 1,
       "witnessIds": [
-        "hesiod-works-bnf2708"
+        "hesiod-works-bnf2708",
+        "pindar-ambros-c222inf"
       ],
       "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
@@ -1117,11 +1118,12 @@
     },
     {
       "workId": "aristophanes-clouds",
-      "witnessCount": 1,
+      "witnessCount": 2,
       "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
+      "scholarlySourceCount": 1,
       "witnessIds": [
-        "aristophanes-ravennas-429"
+        "aristophanes-ravennas-429",
+        "pindar-ambros-c222inf"
       ],
       "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
@@ -1151,11 +1153,14 @@
     },
     {
       "workId": "xenophon-anabasis",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessCount": 2,
+      "verifiedInstitutionalCount": 1,
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "xenophon-anabasis-vatgr1335",
+        "xenophon-anabasis-paris1640"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -1250,22 +1255,24 @@
     },
     {
       "workId": "aeschylus-persae",
-      "witnessCount": 1,
+      "witnessCount": 2,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
+      "scholarlySourceCount": 2,
       "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
+        "sophocles-aeschylus-laurentianus-32-9",
+        "pindar-ambros-c222inf"
       ],
       "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "aeschylus-seven-thebes",
-      "witnessCount": 1,
+      "witnessCount": 2,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
+      "scholarlySourceCount": 2,
       "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
+        "sophocles-aeschylus-laurentianus-32-9",
+        "pindar-ambros-c222inf"
       ],
       "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
@@ -1448,11 +1455,12 @@
     },
     {
       "workId": "aristophanes-ranae",
-      "witnessCount": 1,
+      "witnessCount": 2,
       "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
+      "scholarlySourceCount": 1,
       "witnessIds": [
-        "aristophanes-ravennas-429"
+        "aristophanes-ravennas-429",
+        "pindar-ambros-c222inf"
       ],
       "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
@@ -1655,47 +1663,58 @@
     },
     {
       "workId": "xenophon-hellenica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "xenophon-hellenica-paris1738"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "demosthenes-de-corona",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "demosthenes-paris2934"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "demosthenes-philippicae",
-      "witnessCount": 0,
+      "witnessCount": 1,
       "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "demosthenes-paris2934"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "pindar-olympian",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessCount": 2,
+      "verifiedInstitutionalCount": 1,
+      "scholarlySourceCount": 1,
+      "witnessIds": [
+        "pindar-vatgr1312",
+        "pindar-ambros-c222inf"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
       "workId": "pindar-pythian",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "pindar-vatgr1312"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
