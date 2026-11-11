@@ -1604,10 +1604,26 @@ async function search(){
   };
   const names={wikidata:"Wikidata",openLibrary:"Open Library",googleBooks:"Google Books",museum:"The Met",
    crossref:"Crossref",openAlex:"OpenAlex",gettyAat:"Getty AAT",europePmc:"Europe PMC"};
+  const started=new Set(route.providers);
   for(const provider of route.providers){
    if(!providers[provider])continue;
    pending.push(providers[provider]().then(rows=>({name:names[provider],rows}))
     .catch(e=>({name:names[provider]+" sin respuesta: "+e.message,rows:[],warnings:[String(e.message||e)]})));
+  }
+  // La profesión documentada puede conocerse después de mostrar la ficha
+  // inicial. Ampliar las fuentes especializadas entonces, sin volver a consultar
+  // los proveedores ya iniciados ni inventar la ocupación de la persona.
+  if(earlyIdentity&&window.VitruviaWebRouting){
+   pending.push(earlyIdentity.then(async identity=>{
+    if(!identity||searchSignal.aborted)return {name:"Sin ampliación temática",rows:[]};
+    const relevant=window.VitruviaWebRouting.plan(q,identity).providers
+     .filter(provider=>providers[provider]&&!started.has(provider));
+    const replies=await Promise.allSettled(relevant.map(provider=>providers[provider]()));
+    if(searchSignal.aborted)return {name:"Consulta cancelada",rows:[]};
+    return {name:"Fuentes especializadas por entidad",rows:replies.flatMap(reply=>
+     reply.status==="fulfilled"?reply.value:[]),
+     warnings:replies.flatMap((reply,i)=>reply.status==="rejected"?[names[relevant[i]]+": "+String(reply.reason?.message||reply.reason)]:[])};
+   }).catch(e=>({name:"Fuentes especializadas no disponibles",rows:[],warnings:[String(e.message||e)]})));
   }
  }
  if(!pending.length){S.searchComplete=true;display(rows,q,"Índice interno");return}
