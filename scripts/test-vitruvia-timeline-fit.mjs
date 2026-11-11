@@ -6,7 +6,7 @@ const source=readFileSync(new URL("../assets/vitruvia-academic-timeline.js",impo
 const css=readFileSync(new URL("../assets/vitruvia-academic-timeline.css",import.meta.url),"utf8");
 assert.match(css,/vat-event-marker.*vat-event-pop/s,"The marker popover should be styled");
 assert.match(source,/const scope=timelineScope\(events\)/,"Chronology uses a separate historic scope");
-assert.match(source,/x-previous\.lastX<34/,"Dense markers should be merged before layout");
+assert.match(source,/x-previous\.x<34/,"Dense markers should be merged before layout");
 class E{
  constructor(tag="div",id=""){
   this.tagName=tag;this.id=id;this.className="";this.children=[];this.attributes={};
@@ -72,7 +72,7 @@ assert.equal(scope.low,1900);assert.equal(scope.high,1970);
 assert.ok(scope.references.some(x=>x.year===2025),"Modern edition should not extend a person's lifetime");
 assert.ok(scope.timeline.every(x=>x.year<=1970));
 const markers=env.find("vat-event-marker");
-assert.equal(markers.length,2,"Close dates are grouped into one accessible marker");
+assert.equal(markers.length,4,"Birth, work cluster, late work and death remain distinct markers");
 assert.ok(env.find("vat-event-cluster").length===1);
 const map=env.find("vat-map")[0],track=env.find("vat-track")[0];
 const mapWidth=parseFloat(track.style.width);
@@ -86,7 +86,7 @@ for(const mark of markers){
 }
 assert.ok(parseFloat(map.style.width)<=env.root.clientWidth,"Timeline must fit inside the screen");
 assert.ok(env.find("vat-references").length===1,"Later editions have a separate accessible panel");
-markers[0].click();
+env.find("vat-event-cluster")[0].click();
 const detail=env.find("vat-detail")[0];assert.equal(detail.hidden,false);
 assert.equal(env.find("vat-detail-item").length,3,"Opening a cluster reveals every event and source");
 const navButtons=env.find("vat-controls")[0].children.filter(x=>x.tagName==="button");
