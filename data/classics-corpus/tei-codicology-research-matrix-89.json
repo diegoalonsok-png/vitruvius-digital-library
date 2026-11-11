@@ -2,92 +2,92 @@
   "schema": "vitruvius-tei-codicology-research-matrix-v1",
   "updated": "2026-11-10",
   "model": "TEI P5 msDesc: msIdentifier, msContents, physDesc (objectDesc, handDesc, decoDesc, bindingDesc), history (origin, provenance, acquisition), additional; source status attached per field",
-  "registeredWitnesses": 94,
+  "registeredWitnesses": 100,
   "fieldCount": 22,
   "globalMissing": [
     {
       "category": "physical",
       "key": "material",
       "label": "Soporte material",
-      "missing": 54
+      "missing": 57
     },
     {
       "category": "physical",
       "key": "dimensions",
       "label": "Dimensiones y caja escrita",
-      "missing": 92
+      "missing": 96
     },
     {
       "category": "physical",
       "key": "collationFormula",
       "label": "Fórmula de cuadernos",
-      "missing": 94
+      "missing": 99
     },
     {
       "category": "physical",
       "key": "ruling",
       "label": "Pautado",
-      "missing": 93
+      "missing": 99
     },
     {
       "category": "physical",
       "key": "binding",
       "label": "Encuadernación",
-      "missing": 92
+      "missing": 96
     },
     {
       "category": "physical",
       "key": "watermarks",
       "label": "Filigranas",
-      "missing": 94
+      "missing": 100
     },
     {
       "category": "scribal",
       "key": "script",
       "label": "Tipo de escritura",
-      "missing": 77
+      "missing": 79
     },
     {
       "category": "scribal",
       "key": "hands",
       "label": "Manos",
-      "missing": 94
+      "missing": 99
     },
     {
       "category": "scribal",
       "key": "corrections",
       "label": "Correctores",
-      "missing": 94
+      "missing": 100
     },
     {
       "category": "paratext",
       "key": "scholia",
       "label": "Escolios",
-      "missing": 92
+      "missing": 96
     },
     {
       "category": "paratext",
       "key": "glosses",
       "label": "Glosas",
-      "missing": 94
+      "missing": 100
     },
     {
       "category": "paratext",
       "key": "subscriptiones",
       "label": "Subscriptiones",
-      "missing": 94
+      "missing": 100
     },
     {
       "category": "history",
       "key": "origin",
       "label": "Origen",
-      "missing": 80
+      "missing": 84
     },
     {
       "category": "history",
       "key": "provenance",
       "label": "Procedencia",
-      "missing": 83
+      "missing": 87
     },
     {
       "category": "text",
@@ -105,19 +105,19 @@
       "category": "text",
       "key": "lacunae",
       "label": "Lagunas",
-      "missing": 94
+      "missing": 100
     },
     {
       "category": "text",
       "key": "transpositions",
       "label": "Transposiciones",
-      "missing": 94
+      "missing": 100
     },
     {
       "category": "text",
       "key": "palimpsest",
       "label": "Palimpsesto",
-      "missing": 94
+      "missing": 100
     },
     {
       "category": "digital",
@@ -129,13 +129,13 @@
       "category": "digital",
       "key": "viewer",
       "label": "Visor",
-      "missing": 40
+      "missing": 46
     },
     {
       "category": "digital",
       "key": "manifest",
       "label": "IIIF",
-      "missing": 64
+      "missing": 70
     }
   ],
   "records": [
@@ -14945,8 +14945,942 @@
         "manifest"
       ],
       "sourcePolicy": "Only accept original library catalogue or specialist studies; empty is not a negative fact."
+    },
+    {
+      "witnessId": "plutarch-pal-gr283",
+      "canonicalPhysicalId": "codex-pal-gr-283",
+      "workIds": [
+        "plutarch-lives",
+        "plutarch-moralia"
+      ],
+      "shelfmark": "Cod. Pal. graec. 283",
+      "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
+      "repositoryUrl": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+      "verificationSource": "IRHT–CNRS Pinakes, Diktyon 32471; Jacques Irigoin, La formation d'un corpus: un problème d'histoire des textes dans la tradition des Vies parallèles de Plutarque, Revue d'histoire des textes 12–13 (1982–83):1–12.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": "Minúscula griega de tipo Ephrem (según Irigoin)",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "Vidas paralelas ff. 1r–195v; opúsculos morales ff. 195v–207r.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Selección de Vidas paralelas y tratados morales, incluida De latenter vivendo, An vitiositas, De amore prolis, De invidia et odio, An virtus doceri possit y Aetia physica; no es la totalidad de Moralia.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 18,
+      "missingKeys": [
+        "material",
+        "dimensions",
+        "collationFormula",
+        "ruling",
+        "binding",
+        "watermarks",
+        "hands",
+        "corrections",
+        "scholia",
+        "glosses",
+        "subscriptiones",
+        "origin",
+        "provenance",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only fill missing properties after institutional catalogue or specialist description."
+    },
+    {
+      "witnessId": "plutarch-diogenes-bnf-suppl134",
+      "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+      "workIds": [
+        "plutarch-lives",
+        "plutarch-moralia",
+        "diogenes-laertius-vitae"
+      ],
+      "shelfmark": "Supplément grec 134",
+      "repository": "Paris, Bibliothèque nationale de France",
+      "repositoryUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+      "verificationSource": "Pinakes, notice 52904, BnF Supplément grec 134; estudios sobre la tradición abreviada del Diógenes Laercio.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 19,
+      "missingKeys": [
+        "material",
+        "dimensions",
+        "collationFormula",
+        "ruling",
+        "binding",
+        "watermarks",
+        "script",
+        "hands",
+        "corrections",
+        "scholia",
+        "glosses",
+        "subscriptiones",
+        "origin",
+        "provenance",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only fill missing properties after institutional catalogue or specialist description."
+    },
+    {
+      "witnessId": "lucian-urb-gr118",
+      "canonicalPhysicalId": "codex-urb-gr-118",
+      "workIds": [
+        "lucian-dialogi-mortuorum",
+        "lucian-verae-historiae"
+      ],
+      "shelfmark": "Urb. gr. 118",
+      "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+      "repositoryUrl": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+      "verificationSource": "IRHT–CNRS Pinakes, Diktyon 66585, Vatican Urb. gr. 118.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "Dialogi mortuorum ff. 18v–25r; Verae historiae ff. 37r–49r.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Diálogos de muertos seleccionados en orden no canónico (13, 12, 26, etc.); Verae historiae libros I–II según repertorio. La unidad paleográfica debe cotejarse; no se aplica una fecha única a todo el volumen.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 19,
+      "missingKeys": [
+        "material",
+        "dimensions",
+        "collationFormula",
+        "ruling",
+        "binding",
+        "watermarks",
+        "script",
+        "hands",
+        "corrections",
+        "scholia",
+        "glosses",
+        "subscriptiones",
+        "origin",
+        "provenance",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only fill missing properties after institutional catalogue or specialist description."
+    },
+    {
+      "witnessId": "arrian-procopius-laur-plut9-32",
+      "canonicalPhysicalId": "codex-laur-plut-9-32",
+      "workIds": [
+        "arrian-anabasis-alexandri",
+        "procopius-aedificiis"
+      ],
+      "shelfmark": "Plut. 9.32",
+      "repository": "Firenze, Biblioteca Medicea Laurenziana",
+      "repositoryUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+      "verificationSource": "IRHT–CNRS Pinakes, Diktyon 16120; B. Flusin, Remarques sur la tradition manuscrite du De Aedificiis, Antiquité tardive 8 (2000):9–17.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": "Papel",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": "Griego tardobizantino; copista identificado como Ἰωάννης Καναβούτζης",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": "Escolios documentados en ambas obras",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "Arriano Anabasis Alexandri ff. 19r–149r; Procopio De aedificiis ff. 177r–214r.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Arriano con escolios y laguna; Procopio De aedificiis con escolios. Ambos transmitidos en la misma unidad miscelánea, no declarados códices más antiguos.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 16,
+      "missingKeys": [
+        "dimensions",
+        "collationFormula",
+        "ruling",
+        "binding",
+        "watermarks",
+        "hands",
+        "corrections",
+        "glosses",
+        "subscriptiones",
+        "origin",
+        "provenance",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only fill missing properties after institutional catalogue or specialist description."
+    },
+    {
+      "witnessId": "aulus-gellius-harley4859",
+      "canonicalPhysicalId": "codex-harley-ms-4859",
+      "workIds": [
+        "aulus-gellius-noctes"
+      ],
+      "shelfmark": "Harley MS 4859",
+      "repository": "London, British Library",
+      "repositoryUrl": "https://searcharchives.bl.uk/catalog/040-002050702",
+      "verificationSource": "British Library Archives and Manuscripts Catalogue, Harley MS 4859, descripción material, foliación, escritura y contenido.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": "Pergamino; 206 folios; 255 × 175 mm; caja de escritura 165 × 110 mm.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": "255 × 175 mm; caja de escritura 165 × 110 mm.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": "Encuadernación posterior a 1600, cuero marrón moteado con decoración dorada.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": "Escritura gótica; denominación institucional genérica.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": "Numerosas notas marginales, según catálogo BL.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": "Nordeste de Italia, posiblemente Padua o Bolonia (atribución de BL).",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": "Colección Harley; antes de nacionalización en 1753.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "ff. 1r–201r: Noctes Atticae; ff. 201v–205r: índice latino; ff. 205v–206v: definiciones y etimologías.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Texto de Noctes Atticae, con notas marginales, índices de voces y frases; no se afirma integridad crítica ni prioridad cronológica mundial.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://searcharchives.bl.uk/catalog/040-002050702",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 12,
+      "missingKeys": [
+        "collationFormula",
+        "ruling",
+        "watermarks",
+        "hands",
+        "corrections",
+        "glosses",
+        "subscriptiones",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only fill missing properties after institutional catalogue or specialist description."
+    },
+    {
+      "witnessId": "aulus-gellius-burney174",
+      "canonicalPhysicalId": "codex-burney-ms-174",
+      "workIds": [
+        "aulus-gellius-noctes"
+      ],
+      "shelfmark": "Burney MS 174",
+      "repository": "London, British Library",
+      "repositoryUrl": "https://searcharchives.bl.uk/catalog/040-002237055",
+      "verificationSource": "British Library Archives and Manuscripts Catalogue, Burney MS 174, descripción codicológica, folios, colación, escritura y procedencia.",
+      "fields": {
+        "physical": {
+          "material": {
+            "value": "Pergamino; 295 × 200 mm, caja de escritura 205 × 110 mm; 36 líneas.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Soporte material"
+          },
+          "dimensions": {
+            "value": "295 × 200 mm; caja de escritura 205 × 110 mm.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Dimensiones y caja escrita"
+          },
+          "collationFormula": {
+            "value": "i–xxiii¹⁰ (ff. 2–231); xxiv⁸ (ff. 232–239), según catálogo institucional; reclamos verticales.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Fórmula de cuadernos"
+          },
+          "ruling": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Pautado"
+          },
+          "binding": {
+            "value": "Encuadernación Askew posterior a 1600 en cuero marrón; restaurada en 1962.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Encuadernación"
+          },
+          "watermarks": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Filigranas"
+          }
+        },
+        "scribal": {
+          "script": {
+            "value": "Escritura humanística, por encima de la primera línea; griego añadido por otras manos.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Tipo de escritura"
+          },
+          "hands": {
+            "value": "Mano principal humanística; griego insertado por varias manos, sin distribución de manos por locus documentada aquí.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Manos"
+          },
+          "corrections": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Correctores"
+          }
+        },
+        "paratext": {
+          "scholia": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Escolios"
+          },
+          "glosses": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Glosas"
+          },
+          "subscriptiones": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Subscriptiones"
+          }
+        },
+        "history": {
+          "origin": {
+            "value": "Italia central, Roma (atribución BL).",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Origen"
+          },
+          "provenance": {
+            "value": "Mario Maffei; Anthony Askew; duque de Grafton; Charles Burney; adquirida por el British Museum en 1818.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Procedencia"
+          }
+        },
+        "text": {
+          "folioRange": {
+            "value": "ff. 2r–237v Noctes Atticae; ff. 237v–239v prefacio (orden material posterior al texto).",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Folios"
+          },
+          "coverage": {
+            "value": "Noctes Atticae con prefacio colocado a continuación; iniciales y rúbricas ornamentadas; estado de integridad de cada libro requiere cotejo textual.",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Cobertura"
+          },
+          "lacunae": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Lagunas"
+          },
+          "transpositions": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Transposiciones"
+          },
+          "palimpsest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Palimpsesto"
+          }
+        },
+        "digital": {
+          "record": {
+            "value": "https://searcharchives.bl.uk/catalog/040-002237055",
+            "status": "recorded_not_individually_collated",
+            "scholarlyQuestion": "Catálogo"
+          },
+          "viewer": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "Visor"
+          },
+          "manifest": {
+            "value": null,
+            "status": "missing_requires_source",
+            "scholarlyQuestion": "IIIF"
+          }
+        }
+      },
+      "missingCount": 11,
+      "missingKeys": [
+        "ruling",
+        "watermarks",
+        "corrections",
+        "scholia",
+        "glosses",
+        "subscriptiones",
+        "lacunae",
+        "transpositions",
+        "palimpsest",
+        "viewer",
+        "manifest"
+      ],
+      "sourcePolicy": "Only fill missing properties after institutional catalogue or specialist description."
     }
   ],
-  "uniquePhysicalObjects": 87,
-  "note": "Maintains 94 textual witness entries but 87 unique physical objects. Earlier filename reflects creation at 89."
+  "uniquePhysicalObjects": 93,
+  "note": "Counted by witness records; shared canonicalPhysicalId groups indicate one codex with multiple texts."
 }
