@@ -62,11 +62,36 @@ const highlight=(target,text,needle)=>{
  target.append(document.createTextNode(t.slice(last)));
 };
 let lastQuery='',currentRows=[],requestId=0,expandedBibliography=false;
+let subjectPortrait=null;
+function placePortrait(){
+ const p=subjectPortrait;if(!p||!/^https:\/\//.test(p.preview||'')||!/^https:\/\//.test(p.page||''))return;
+ panel.querySelector('.context-subject-portrait')?.remove();
+ const figure=mk('figure','context-subject-portrait');
+ const source=link('',p.page),image=mk('img');
+ image.src=p.preview;image.alt=p.caption||lastQuery;image.decoding='async';
+ image.addEventListener('error',()=>figure.remove());source.append(image);
+ const caption=mk('figcaption');caption.append(link(p.caption||lastQuery,p.page));
+ figure.append(source,caption);panel.querySelector('.context-term')?.after(figure);
+}
+function receivePortrait(query,item,weight){
+ if(!lastQuery||norm(query)!==norm(lastQuery)||!item?.preview||!item?.page)return;
+ if(subjectPortrait&&(subjectPortrait.weight||0)>weight)return;
+ subjectPortrait={...item,weight};placePortrait();
+}
+window.addEventListener('vitruvia:hero-visual',e=>receivePortrait(e.detail?.query,e.detail?.item,e.detail?.weight||100));
+window.addEventListener('vitruvia:documentary-images',e=>{
+ const d=e.detail||{};
+ if(!['person','music-group'].includes(d.kind))return;
+ const items=(d.items||[]).filter(x=>!['book','architecture'].includes(x.group));
+ const item=items.find(x=>x.verifiedIdentity)||items.find(x=>/portrait|sculpture|photo|painting/.test(x.group||''))||items[0];
+ receivePortrait(d.query,item,item?.verifiedIdentity?200:50);
+});
 function frame(query){
  panel.replaceChildren();
  const d=dict();
  panel.append(mk('p','context-kicker','VITRUVIA · ' + d.title.toUpperCase()));
  panel.append(mk('h3','context-term',query));
+ placePortrait();
  panel.hidden=false;
 }
 function heading(text){const h=mk('h4','context-section-title',text);panel.append(h);return h}
@@ -263,7 +288,7 @@ function redraw(keepPosition=true){
  else panel.scrollTop=0;
 }
 window.addEventListener('vitruvia:search',e=>{
- const next=String(e.detail?.query||'').trim();if(norm(next)!==norm(lastQuery))expandedBibliography=false;lastQuery=next;currentRows=[];redraw(false);
+ const next=String(e.detail?.query||'').trim();subjectPortrait=null;if(norm(next)!==norm(lastQuery))expandedBibliography=false;lastQuery=next;currentRows=[];redraw(false);
 });
 window.addEventListener('vitruvia:results',e=>{
  const q=String(e.detail?.query||'').trim();
@@ -271,10 +296,12 @@ window.addEventListener('vitruvia:results',e=>{
  if(q&&!lastQuery&&norm(q)===norm($('query')?.value)){lastQuery=q;expandedBibliography=false}
  if(!q||norm(q)!==norm(lastQuery))return;
  currentRows=Array.isArray(e.detail.rows)?e.detail.rows:[];
+ if(!subjectPortrait){const identity=currentRows.find(r=>r.preferredWiki&&r.image&&r.imageRights);
+  if(identity)subjectPortrait={preview:identity.image,page:identity.imageRights,caption:identity.title,weight:150};}
  redraw();
 });
 window.addEventListener('vitruvia:entity',e=>{if(lastQuery&&[e.detail?.query,e.detail?.corrected].some(q=>q&&norm(q)===norm(lastQuery)))redraw()});
-window.addEventListener('vitruvia:clear',()=>{lastQuery='';currentRows=[];expandedBibliography=false;requestId++;panel.hidden=true;panel.replaceChildren();panel.scrollTop=0});
+window.addEventListener('vitruvia:clear',()=>{lastQuery='';subjectPortrait=null;currentRows=[];expandedBibliography=false;requestId++;panel.hidden=true;panel.replaceChildren();panel.scrollTop=0});
 new MutationObserver(records=>{if(records.some(r=>r.attributeName==='lang')&&lastQuery)redraw()}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 // Deferred modules may finish downloading after the first results. Replay only
 // the current in-memory search; nothing is stored across sessions.

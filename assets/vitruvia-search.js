@@ -213,6 +213,8 @@ function liveManuscripts(q){
    localViewer:ms.localViewer||null,
    localFolioCount:ms.localFolioCount||null,
    localFolioStart:ms.localFolioStart||null,
+   image:ms.id==="vitruvius-h"?"images/miniaturas/codex-h/H_009_f-1r.jpg":ms.thumbnail||null,
+   imageRights:ms.record,imageCredit:ms.library,
    iiifManifest:ms.manifest||null,
    codexViewer:ms.localViewer||(ms.manifest?"visor-codex.html?"+new URLSearchParams({manifest:ms.manifest,title:ms.title,official:ms.viewer||ms.record,...(ms.startFolio?{folio:ms.startFolio}:{})}).toString():(ms.viewer||ms.record||null)),
    citationText:[ms.library,ms.shelfmark,ms.title,ms.date,ms.record].filter(Boolean).join(". "),
@@ -478,8 +480,8 @@ async function wiki(q,language){const providerSignal=S.searchController?.signal;
  const d=await request("https://"+lang+".wikipedia.org/w/api.php?"+p);
  const found=(d.query?.search||[]).filter(w=>Number.isInteger(w.pageid)&&w.pageid>0);
  let pictures={};
- if(found.length&&S.imagesRequested){
-  const picturesParams=new URLSearchParams({action:"query",prop:"pageimages",pageids:found.slice(0,6).map(x=>x.pageid).join("|"),piprop:"thumbnail|name",pithumbsize:"720",format:"json",origin:"*"});
+ if(found.length){
+  const picturesParams=new URLSearchParams({action:"query",prop:"pageimages",pageids:found.slice(0,6).map(x=>x.pageid).join("|"),piprop:"thumbnail|name",pithumbsize:"240",format:"json",origin:"*"});
   const photos=await request("https://"+lang+".wikipedia.org/w/api.php?"+picturesParams,2000).catch(()=>null);
   pictures=photos?.query?.pages||{};
  }
@@ -756,6 +758,14 @@ function markTerms(root,query){
 }
 function renderCard(d){
  const card=node("article","result-card"+(d.primaryWitness?" primary-codex-card":"")+(d.historicalEdition?" historical-edition-card":"")),head=node("div","result-head"),title=node("div");
+ if(typeof d.image==="string"&&/^(?:https:\/\/|images\/)/.test(d.image)){
+  const imageLink=makeLink("",d.imageRights||d.link);
+  if(imageLink){
+   imageLink.className="result-thumbnail";imageLink.title=d.imageCredit||d.title;
+   const image=node("img");image.src=d.image;image.alt=d.title;image.loading="lazy";image.decoding="async";
+   image.addEventListener("error",()=>imageLink.remove());imageLink.append(image);card.append(imageLink);
+  }
+ }
  if(d.primaryWitness){card.setAttribute("aria-label","Testimonio manuscrito destacado: "+d.title);title.append(node("span","primary-codex-label",d.primaryLabel||"Testimonio principal"))}
  const kindLabels={manuscript:"CÓDICE · TESTIMONIO MANUSCRITO",apparatus:"APARATO CRÍTICO · EDICIONES DE DIEGO KURILO",authority:"FUENTE OFICIAL · AUTORIDAD ACTUAL",fragment:"PAPIRO · TESTIMONIO FRAGMENTARIO",university:"UNIVERSIDAD · INVESTIGACIÓN",scholar:"INVESTIGADOR · ESTUDIOS ESPECIALIZADOS"};
  // Nivel de evidencia: qué clase de fuente es, para que el lector pondere el resultado.
@@ -793,7 +803,12 @@ function renderCard(d){
  }
  if(d.type==="manuscript"&&d.localViewer){
   const open=node("button","codex-local-open",S.lang==="en"?"Read codex here · "+d.localFolioCount+" images":S.lang==="fr"?"Lire le codex ici · "+d.localFolioCount+" images":"Leer códice aquí · "+d.localFolioCount+" imágenes");
-  open.type="button";open.addEventListener("click",()=>window.VitruviaLocalManuscripts?.open(d.localViewer,d.title));
+  open.dataset.viewerUrl=d.localViewer;
+  open.type="button";open.addEventListener("click",async()=>{
+   open.disabled=true;open.setAttribute("aria-busy","true");
+   try{if(!window.VitruviaLocalManuscripts)await window.VitruviaFeatures?.load("reader");open.dataset.readerState=window.VitruviaLocalManuscripts?.open(d.localViewer,d.title)?"open":"unavailable"}
+   finally{open.disabled=false;open.removeAttribute("aria-busy")}
+  });
   acts.append(open);
  }
  if(d.type==="manuscript"&&(d.codexViewer||d.viewerUrl)){
@@ -1119,7 +1134,7 @@ function documentarySubjectEvidence(row,query){
  if(row.externalFulltext)return true;
  try{
   const ids=matchingWorkIds(topicQuery(query));
-  if(row.workId&&ids.includes(row.workId))return true;
+  if(row.workId&&ids.has(row.workId))return true;
  }catch{}
  // Actual passage evidence is in its indexed Latin or translation, not necessarily
  // in the short excerpt used by the card.
@@ -1162,7 +1177,14 @@ function documentaryRelevance(row,query){
  const source=norm([row.latin,row.translation].join(" "));
  return q.length>=5&&source.includes(q)?1400:0;
 }
-function titleMatch(row,query){return rankedTitle(row,query)+authorityWeight(row)+documentaryRelevance(row,query)}
+function creatorWorkRelevance(row,identity){
+ if(identity?.kind!=="person"||!["book","openlibrary","googlebook"].includes(row.type))return 0;
+ const author=norm(row.author||"");if(!author)return 0;
+ const names=[identity.canonical,identity.catalogName,identity.originalCanonical,...(identity.aliases||[])]
+  .map(norm).filter(name=>name&&(name.split(" ").length>1||name===norm(identity.canonical)));
+ return names.some(name=>author===name||(" "+author+" ").includes(" "+name+" "))?1900:0;
+}
+function titleMatch(row,query){return rankedTitle(row,query)+authorityWeight(row)+documentaryRelevance(row,query)+creatorWorkRelevance(row,S.identifiedSubject)}
 
 function display(rows,query,phase){
  // No se eliminan resultados por umbrales de coincidencia en el título:
@@ -1280,7 +1302,8 @@ function display(rows,query,phase){
  const personFirst=resolved?.kind==="person"&&/^Q[0-9]+$/.test(resolved.wikidataId||"")&&
   !window.VitruviaLocalPriority?.plan(query,S.lexicon)?.focused&&
   !codexIntent&&!locusIntent&&!textualIntent;
- const siteFirst=S.mode==="all"&&!personFirst;
+ const siteFirst=S.mode==="all"&&!personFirst&&(codexIntent||locusIntent||textualIntent||
+  window.VitruviaLocalPriority?.plan(query,S.lexicon)?.focused);
  const firstOrdered=siteFirst?
   [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
   S.mode==="ai"?[...grouped.values()].flat():deduped;
@@ -1348,7 +1371,8 @@ function display(rows,query,phase){
     }
    }
   
-   list.append(cardFor(r))
+   const card=cardFor(r);card.dataset.rank=String(ordered.indexOf(r));
+   list.append(card)
   }
  }
  // Never open a codex, PDF or classical-text viewer as a side effect of search.
@@ -1406,6 +1430,7 @@ function authorityResult(identity){
  const name=identity.canonical||identity.catalogName||"";
  const link=wikidataOnly&&/^Q\d+$/.test(identity.wikidataId||"")?
   "https://www.wikidata.org/wiki/"+identity.wikidataId:identity.url;
+ const imageFile=identity.imageFiles?.[0];
  return {type:wikidataOnly?"wikidata":"wikipedia",title:name,
   author:wikidataOnly?"Wikidata · "+identity.wikidataId:"Wikipedia · "+(identity.language||"es").toUpperCase(),
   excerpt:identity.description||identity.authorityDescription||"",
@@ -1413,6 +1438,9 @@ function authorityResult(identity){
   meta:wikidataOnly?"Identidad identificada mediante Wikidata · ficha de autoridad":
    "Entidad identificada mediante Wikipedia · "+(identity.language||"es").toUpperCase(),
   rating:identity.kind==="person"?5200:280,link,
+  image:imageFile?"https://commons.wikimedia.org/wiki/Special:FilePath/"+encodeURIComponent(imageFile)+"?width=240":null,
+  imageRights:imageFile?"https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(imageFile):null,
+  imageCredit:"Wikimedia Commons · consultar autoría y licencia",
   source:wikidataOnly?"Wikidata · datos enlazados":"Wikipedia ("+(identity.language||"es").toUpperCase()+")",
   pageid:wikidataOnly?null:identity.pageid,
   wikiLang:identity.language||"es",entityCanonical:name,entityKind:identity.kind,
@@ -1436,11 +1464,10 @@ document.getElementById("expand-search-sources")?.addEventListener("click",async
 });
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
- const expanded=S.expandedFor===q||["external","ai","concept"].includes(S.mode);
- if(expanded&&window.VitruviaFeatures){
-  await window.VitruviaFeatures.load("research").catch(()=>{});
-  if(id!==S.searchId||searchSignal.aborted)return;
- }
+ // Ordinary searches include books, primary texts and cultural works again.
+ // Load their tools in parallel with the first identity; do not restart the query.
+ const expanded=S.expandedFor===q||["all","external","ai","concept"].includes(S.mode);
+ const researchReady=expanded?window.VitruviaFeatures?.load("research").catch(()=>{}):null;
  const expandedButton=$("expand-search-sources");
  if(expandedButton){expandedButton.hidden=expanded;expandedButton.disabled=false;}
  // Mostrar la ficha inicial sin esperar bibliotecas extensas ni APIs secundarias.
@@ -1450,6 +1477,7 @@ async function search(){
  $("clear-search").hidden=false;
  restoreFeature();
  $("results-heading").textContent=T().heading;
+ $("result-state").title="";
  $("result-state").textContent="Identificando el tema y preparando fuentes académicas…";
  $("result-list").setAttribute("aria-busy","true");
  $("result-list").replaceChildren(node("div","empty","Cargando ficha y testimonios documentados…"));
@@ -1473,11 +1501,16 @@ async function search(){
    // La identidad documentada se dibuja primero. La fotografía se verifica por
    // origen y derechos en el módulo iconográfico, nunca por semejanza textual.
    applyFeatured(row,identity.wikidataId?10000:700,q,q);
-   if(!S.ready)display([row],q,
+   if(!window.VitruviaSearchSnapshot?.rows?.length)display([row],q,
     S.lang==="en"?"Verified identity · loading documentary indexes":
     S.lang==="fr"?"Identité documentée · chargement des index":
     "Identidad documentada · ampliando fuentes");
   }).catch(()=>{});
+ }
+ if(researchReady){
+  await researchReady;
+  if(id!==S.searchId||searchSignal.aborted)return;
+  S.cardCache.clear(); // Source classifications are now available to early cards.
  }
  // Initial search does not wait for the large catalogue.
  // Primary holdings merge after vitruvia:catalogue-core, without restarting external providers.

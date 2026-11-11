@@ -41,8 +41,9 @@ function setup(){
  const paletteColors=['#4e4e4e','#9c7516','#8e3434','#1f5b7a','#2b6944','#6b3c7b'];
  paletteColors.forEach((color,i)=>{let b=elm('button','vr-text-swatch');b.type='button';b.style.background=color;b.title='Color '+(i+1);b.setAttribute('aria-label','Color de selección '+(i+1));b.addEventListener('click',()=>{palette.querySelectorAll('button').forEach(n=>n.setAttribute('aria-pressed',String(n===b)));textarea.style.setProperty('--vr-selected-color',color)});b.setAttribute('aria-pressed',String(i===1));palette.append(b)});
  textarea.style.setProperty('--vr-selected-color',paletteColors[1]);
- let size=17,recordKey='',current='',saved=new Map();
- function link(){let work=manual.value.trim()||select.value;let query=[recordKey,work,'fuente primaria texto edición digital'].filter(Boolean).join(' ');source.href='https://www.google.com/search?'+new URLSearchParams({q:query})}
+ let size=17,recordKey='',recordLabel='',current='',saved=new Map();
+ let sourcedTexts=[];
+ function link(){let work=manual.value.trim()||select.value;const found=sourcedTexts.find(r=>r.title===work);let query=[recordLabel,work,'fuente primaria texto edición digital'].filter(Boolean).join(' ');source.href=found&&/^https:\/\//.test(found.link||'')?found.link:'https://www.google.com/search?'+new URLSearchParams({q:query})}
  function choose(){current=manual.value.trim()||select.value;textarea.value=saved.get(current)||'';output.textContent='';status.textContent=current?'Documento seleccionado; agrega una transcripción verificable para leerlo.':'';link()}
  select.addEventListener('change',()=>{manual.value='';choose()});manual.addEventListener('change',choose);
  textarea.addEventListener('input',()=>{if(current)saved.set(current,textarea.value)});
@@ -52,25 +53,40 @@ function setup(){
  upload.addEventListener('change',async()=>{const f=upload.files?.[0];if(!f)return;if(f.size>200000){status.textContent='Archivo demasiado grande (máximo 200 KB).';return}textarea.value=await f.text();if(current)saved.set(current,textarea.value);status.textContent='Documento cargado localmente.';output.textContent=''});
  function sync(){
    const q=new URLSearchParams(location.search).get('q')||document.getElementById('query')?.value||'';
-   const context=normalize(q+' '+title.textContent);
+   const snapshot=window.VitruviaSearchSnapshot;
+   const rows=normalize(snapshot?.query)===normalize(q)?snapshot.rows||[]:[];
+   const identity=rows.find(r=>r.preferredWiki||r.preferredAuthority);
+   const role=normalize(identity?.entityDescription||identity?.excerpt||'');
+   const musical=/\b(music|musica|musico|musician|singer|cantante|composer|compositor|band|banda|grupo musical)\b/.test(role);
+   const literary=/\b(poeta|poet|writer|escritor|escritora|novelist|literatura)\b/.test(role);
+   const context=normalize(q);
    const matched=DATA.find(row=>row.keys.some(k=>context.includes(normalize(k))));
-   const genericMatch=generic.test(q)||generic.test(title.textContent);
+   const genericMatch=generic.test(q)||musical||literary;
    panel.hidden=!(matched||genericMatch);
    if(panel.hidden)return;
-   const key=matched?.name||q||title.textContent;
+   sourcedTexts=rows.filter(r=>r.type==='text-external'&&r.title&&/^https:\/\//.test(r.link||''));
+   const subject=matched?.name||q||title.textContent;
+   const key=subject+'|'+musical+'|'+literary+'|'+sourcedTexts.map(r=>r.link).join('|');
    if(recordKey!==key){
+     const priorWork=recordLabel===subject?(manual.value.trim()||select.value):'';
      recordKey=key;
+     recordLabel=subject;
      select.replaceChildren();
      const empty=elm('option','','Seleccionar canción, poema o documento');empty.value='';select.append(empty);
-     (matched?.items||[]).forEach(v=>{const o=elm('option','',v);o.value=v;select.append(o)});
-     heading.textContent=matched?matched.type+' · visor de lectura':'Textos y documentos · visor de lectura';
-     manual.value='';choose();
+     [...new Set([...(matched?.items||[]),...sourcedTexts.map(r=>r.title)])].forEach(v=>{const o=elm('option','',v);o.value=v;select.append(o)});
+     heading.textContent=(matched?matched.type:musical?'Música · letras':literary?'Literatura · poesía y textos':'Textos y documentos')+' · visor de lectura';
+     manual.value='';
+     if(priorWork){if([...select.options].some(o=>o.value===priorWork))select.value=priorWork;else manual.value=priorWork}
+     choose();
    }
  }
  let delay;
  new MutationObserver(()=>{clearTimeout(delay);delay=setTimeout(sync,180)}).observe(title,{childList:true,characterData:true,subtree:true});
  document.getElementById('search-form')?.addEventListener('submit',()=>setTimeout(sync,500));
  window.addEventListener('popstate',sync);sync();
+ window.addEventListener('vitruvia:search',()=>{recordKey='';sync()});
+ window.addEventListener('vitruvia:results',sync);
+ window.addEventListener('vitruvia:clear',()=>{recordKey='';recordLabel='';sourcedTexts=[];saved.clear();panel.hidden=true;select.replaceChildren();textarea.value='';output.textContent=''});
  async function localTranslate(value,src,dst){
    if(!window.Translator?.create)return null;
    if(window.Translator.availability&&await window.Translator.availability({sourceLanguage:src,targetLanguage:dst})==='unavailable')return null;
