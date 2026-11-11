@@ -55,13 +55,18 @@ origins.length=0;
 const stale=scope.tree("verbum",()=>false);await stale;
 assert.equal(origins.length,0,"A stale query must not populate the next tree");
 
+let headings=["Russian"];
 const languageScope=vm.createContext({
- WK_LANG:{la:["Latin","latín"],ar:["Arabic","árabe"]},WK_ORDER:["la"],
- wkPage:async()=>({}),wkLanguages:()=>["Russian"],wkSection:()=>[],wkGloss:()=>"",wkHeadword:()=>"",wkEtymParagraphs:()=>[],
+ WK_LANG:{la:["Latin","latín"],ar:["Arabic","árabe"],nl:["Dutch","neerlandés"],"ML.":["Latin","latín medieval"]},WK_ORDER:["la"],
+ wkPage:async()=>({}),wkLanguages:()=>headings,wkSection:()=>[],wkGloss:()=>"",wkHeadword:()=>"",wkEtymParagraphs:()=>[],
 });
 vm.runInContext(segment("async function buildEtymTree(word,","function wkDescendants(")+"\nthis.build=buildEtymTree;",languageScope);
 const unknown=await languageScope.build("слово",null);
 assert.equal(unknown.chain[0].word,"слово");
 assert.equal(unknown.code,"source:Russian","Use the source's language heading outside the selector");
+headings=["Latin","Dutch","Russian","Ukrainian"];
+const multiple=await languageScope.build("verbum","la");
+assert.equal(multiple.available.length,4,"Show each source language once, including those outside the selector");
+assert(!multiple.available.includes("ML."),"Do not relabel a Latin section as separate historical languages");
 assert(source.includes("Origen no documentado en las fuentes consultadas."),"Never invent an unattested origin");
 console.log("PASS origin branches: immediate tree before corpus, verbum/verbo/domibus/λόγου, "+checked+" further indexed forms, unknown language and stale queries.");

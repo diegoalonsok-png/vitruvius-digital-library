@@ -1946,10 +1946,11 @@ async function buildEtymTree(word,langCode){
  let doc=null,title=null;for(const t of [...new Set(tryTitles)]){doc=await wkPage(t);if(doc){title=t;break}}
  if(!doc)return{error:"Wiktionary no tiene entrada para «"+word+"»."};
  const langsOnPage=wkLanguages(doc);
- const candidates=(langCode&&WK_LANG[langCode]?[langCode]:[]).concat(WK_ORDER,Object.keys(WK_LANG)).filter((c,i,a)=>a.indexOf(c)===i&&langsOnPage.includes(WK_LANG[c][0]));
- // A language outside the selector is still supported when the source has
- // an actual language section. Keep its own heading, without inventing a code.
- if(!candidates.length&&langsOnPage.length){const section=langsOnPage[0],code="source:"+section;WK_LANG[code]=[section,section.replace(/_/g," ")];candidates.push(code)}
+ const candidates=(langCode&&WK_LANG[langCode]?[langCode]:[]).concat(WK_ORDER,Object.keys(WK_LANG)).filter((c,i,a)=>a.indexOf(c)===i&&langsOnPage.includes(WK_LANG[c][0])&&a.findIndex(k=>WK_LANG[k][0]===WK_LANG[c][0])===i);
+ // Include every actual language heading, including languages outside the
+ // selector. Aliases of one heading must not appear as different languages.
+ const sections=new Set(candidates.map(c=>WK_LANG[c][0]));
+ for(const section of langsOnPage){if(sections.has(section))continue;const code="source:"+section;WK_LANG[code]=[section,section.replace(/_/g," ")];candidates.push(code);sections.add(section)}
  if(!candidates.length)return{error:"La fuente no permite identificar la lengua ni el origen de «"+word+"».",available:langsOnPage};
  const code=candidates[0];const nodes=wkSection(doc,WK_LANG[code][0]);
  const root={lang:code,word:title,gloss:wkGloss(nodes),head:wkHeadword(nodes),href:"/wiki/"+encodeURIComponent(title)+"#"+WK_LANG[code][0],cognates:[]};
