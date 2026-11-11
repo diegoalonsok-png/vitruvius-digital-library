@@ -9889,6 +9889,52 @@
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
           }
+        },
+        {
+          "witnessId": "pindar-ambros-c222inf",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Milano, Biblioteca Ambrosiana",
+            "shelfmark": "C 222 inf.",
+            "paleographicDate": "siglo XIII (núcleo), intervención de restauración posterior",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": "Escolios y glosas marginales e interlineales en distintas secciones.",
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": "Constantinopla, según investigación codicológica moderna.",
+            "provenance": "Permaneció en Oriente al menos hasta la década de 1420; restaurador posterior añadió folios e índice.",
+            "foliation": "Píndaro, Olímpicas ff. 181v–206v; Hesíodo, Trabajos y días ff. 222v–252v; Aristófanes, Nubes ff. 61v–78v y Ranas ff. 82r–105v; Esquilo, Persas ff. 20r–39v y Siete contra Tebas ff. 1r–12v."
+          },
+          "textualIntegrity": {
+            "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
         }
       ],
       "digitalEdition": {
@@ -9914,7 +9960,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 1,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -10309,6 +10355,52 @@
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
           }
+        },
+        {
+          "witnessId": "pindar-ambros-c222inf",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Milano, Biblioteca Ambrosiana",
+            "shelfmark": "C 222 inf.",
+            "paleographicDate": "siglo XIII (núcleo), intervención de restauración posterior",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": "Escolios y glosas marginales e interlineales en distintas secciones.",
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": "Constantinopla, según investigación codicológica moderna.",
+            "provenance": "Permaneció en Oriente al menos hasta la década de 1420; restaurador posterior añadió folios e índice.",
+            "foliation": "Píndaro, Olímpicas ff. 181v–206v; Hesíodo, Trabajos y días ff. 222v–252v; Aristófanes, Nubes ff. 61v–78v y Ranas ff. 82r–105v; Esquilo, Persas ff. 20r–39v y Siete contra Tebas ff. 1r–12v."
+          },
+          "textualIntegrity": {
+            "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
         }
       ],
       "digitalEdition": {
@@ -10332,7 +10424,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 1,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -10623,7 +10715,100 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "xenophon-anabasis-vatgr1335",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": "F (según clasificación usada en algunos estudios; comprobar en cada edición)",
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+            "shelfmark": "Vat. gr. 1335",
+            "paleographicDate": "siglo X, tercer cuarto, c. 960 (unidad pertinente)",
+            "support": "Pergamino, códice compuesto con restauraciones en distintos siglos",
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "ff. 116v–205v"
+          },
+          "textualIntegrity": {
+            "coverage": "Anabasis, libros I–VII, en ff. 116v–205v. Volumen contiene también otros tratados de Jenofonte. Partes del volumen fueron restauradas entre los siglos XI–XIV.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/67966/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/67966/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "xenophon-anabasis-paris1640",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": "C (según ediciones tradicionales)",
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Paris, Bibliothèque nationale de France",
+            "shelfmark": "Grec 1640",
+            "paleographicDate": "1320 (colofón/datación registrada)",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "ff. 124r–205r (ff. 205v–206v vacíos)"
+          },
+          "textualIntegrity": {
+            "coverage": "Anabasis; testimonio importante de la familia tradicionalmente llamada codices meliores, pero más tardío que Vat. gr. 1335. Familia pendiente de reconstrucción propia.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/oeuvre/559/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/oeuvre/559/",
+            "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -10645,7 +10830,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -11473,6 +11658,52 @@
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
           }
+        },
+        {
+          "witnessId": "pindar-ambros-c222inf",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Milano, Biblioteca Ambrosiana",
+            "shelfmark": "C 222 inf.",
+            "paleographicDate": "siglo XIII (núcleo), intervención de restauración posterior",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": "Escolios y glosas marginales e interlineales en distintas secciones.",
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": "Constantinopla, según investigación codicológica moderna.",
+            "provenance": "Permaneció en Oriente al menos hasta la década de 1420; restaurador posterior añadió folios e índice.",
+            "foliation": "Píndaro, Olímpicas ff. 181v–206v; Hesíodo, Trabajos y días ff. 222v–252v; Aristófanes, Nubes ff. 61v–78v y Ranas ff. 82r–105v; Esquilo, Persas ff. 20r–39v y Siete contra Tebas ff. 1r–12v."
+          },
+          "textualIntegrity": {
+            "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
         }
       ],
       "digitalEdition": {
@@ -11496,7 +11727,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 1,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -11577,6 +11808,52 @@
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
           }
+        },
+        {
+          "witnessId": "pindar-ambros-c222inf",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Milano, Biblioteca Ambrosiana",
+            "shelfmark": "C 222 inf.",
+            "paleographicDate": "siglo XIII (núcleo), intervención de restauración posterior",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": "Escolios y glosas marginales e interlineales en distintas secciones.",
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": "Constantinopla, según investigación codicológica moderna.",
+            "provenance": "Permaneció en Oriente al menos hasta la década de 1420; restaurador posterior añadió folios e índice.",
+            "foliation": "Píndaro, Olímpicas ff. 181v–206v; Hesíodo, Trabajos y días ff. 222v–252v; Aristófanes, Nubes ff. 61v–78v y Ranas ff. 82r–105v; Esquilo, Persas ff. 20r–39v y Siete contra Tebas ff. 1r–12v."
+          },
+          "textualIntegrity": {
+            "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
         }
       ],
       "digitalEdition": {
@@ -11600,7 +11877,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 1,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -13345,6 +13622,52 @@
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
           }
+        },
+        {
+          "witnessId": "pindar-ambros-c222inf",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Milano, Biblioteca Ambrosiana",
+            "shelfmark": "C 222 inf.",
+            "paleographicDate": "siglo XIII (núcleo), intervención de restauración posterior",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": "Escolios y glosas marginales e interlineales en distintas secciones.",
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": "Constantinopla, según investigación codicológica moderna.",
+            "provenance": "Permaneció en Oriente al menos hasta la década de 1420; restaurador posterior añadió folios e índice.",
+            "foliation": "Píndaro, Olímpicas ff. 181v–206v; Hesíodo, Trabajos y días ff. 222v–252v; Aristófanes, Nubes ff. 61v–78v y Ranas ff. 82r–105v; Esquilo, Persas ff. 20r–39v y Siete contra Tebas ff. 1r–12v."
+          },
+          "textualIntegrity": {
+            "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
         }
       ],
       "digitalEdition": {
@@ -13368,7 +13691,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 1,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -15228,7 +15551,54 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "xenophon-hellenica-paris1738",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": "B (en ediciones de Hellenica; verificar correspondencia editorial)",
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Paris, Bibliothèque nationale de France",
+            "shelfmark": "Grec 1738",
+            "paleographicDate": "siglo XIV, primera mitad",
+            "support": null,
+            "script": "Escritura griega bizantina, clase paleográfica precisa pendiente de edición o descripción institucional.",
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": "Pudo pertenecer a Palla Strozzi y abadía de Santa Giustina en Padua; más tarde familia De Mesmes y colección Colbert.",
+            "foliation": "ff. 1r–74v"
+          },
+          "textualIntegrity": {
+            "coverage": "Hellenica con lagunas textuales declaradas por catálogo; no es testimonio completo y no se afirma prioridad cronológica mundial.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51364/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/51364/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -15250,7 +15620,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -15285,7 +15655,54 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "demosthenes-paris2934",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": "S (tradición de Demóstenes)",
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Paris, Bibliothèque nationale de France",
+            "shelfmark": "Grec 2934",
+            "paleographicDate": "siglo IX o entre IX y X, según estudio",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Gran colección de discursos demosténicos (59 discursos, falta el discurso 12); contiene el discurso 18 De corona y los discursos 1–4 tradicionalmente asociados a las Filípicas/Olínticas. El alcance de cada serie debe precisarse por loci.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/oeuvre/5953/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://clahresearch.wordpress.com/wp-content/uploads/2020/05/demosthenesv5finalweb.pdf",
+            "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -15307,7 +15724,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -15345,7 +15762,54 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "demosthenes-paris2934",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": "S (tradición de Demóstenes)",
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Paris, Bibliothèque nationale de France",
+            "shelfmark": "Grec 2934",
+            "paleographicDate": "siglo IX o entre IX y X, según estudio",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Gran colección de discursos demosténicos (59 discursos, falta el discurso 12); contiene el discurso 18 De corona y los discursos 1–4 tradicionalmente asociados a las Filípicas/Olínticas. El alcance de cada serie debe precisarse por loci.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/oeuvre/5953/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://clahresearch.wordpress.com/wp-content/uploads/2020/05/demosthenesv5finalweb.pdf",
+            "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -15367,7 +15831,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -15402,7 +15866,100 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "pindar-vatgr1312",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": "B (en algunas ediciones pindáricas)",
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+            "shelfmark": "Vat. gr. 1312",
+            "paleographicDate": "segunda mitad del siglo XII; último tercio o cuarto según Canart–Perria",
+            "support": "Papel, códice con escolios",
+            "script": "Cursiva griega de bajo contraste, ámbito de Tzetzes (Canart–Perria); determinación específica para la unidad del códice",
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Olímpicas ff. 11r–95v; Píticas ff. 95v–174v; también Nemeas ff. 175v–251 e Ístmicas ff. 253v–282v, con lagunas."
+          },
+          "textualIntegrity": {
+            "coverage": "Olímpicas acephala en el inicio (falta Olímpica I.1–106), con escolios; Píticas comienza en Pítica II.105, faltan partes del comienzo. Textos Nemeas e Ístmicas presentes, pero no figuran como obras independientes en la matriz actual.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/67943/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/67943/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "pindar-ambros-c222inf",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Milano, Biblioteca Ambrosiana",
+            "shelfmark": "C 222 inf.",
+            "paleographicDate": "siglo XIII (núcleo), intervención de restauración posterior",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": "Escolios y glosas marginales e interlineales en distintas secciones.",
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": "Constantinopla, según investigación codicológica moderna.",
+            "provenance": "Permaneció en Oriente al menos hasta la década de 1420; restaurador posterior añadió folios e índice.",
+            "foliation": "Píndaro, Olímpicas ff. 181v–206v; Hesíodo, Trabajos y días ff. 222v–252v; Aristófanes, Nubes ff. 61v–78v y Ranas ff. 82r–105v; Esquilo, Persas ff. 20r–39v y Siete contra Tebas ff. 1r–12v."
+          },
+          "textualIntegrity": {
+            "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
+            "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -15424,7 +15981,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -15459,7 +16016,54 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "pindar-vatgr1312",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_greek",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": "B (en algunas ediciones pindáricas)",
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+            "shelfmark": "Vat. gr. 1312",
+            "paleographicDate": "segunda mitad del siglo XII; último tercio o cuarto según Canart–Perria",
+            "support": "Papel, códice con escolios",
+            "script": "Cursiva griega de bajo contraste, ámbito de Tzetzes (Canart–Perria); determinación específica para la unidad del códice",
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": "Olímpicas ff. 11r–95v; Píticas ff. 95v–174v; también Nemeas ff. 175v–251 e Ístmicas ff. 253v–282v, con lagunas."
+          },
+          "textualIntegrity": {
+            "coverage": "Olímpicas acephala en el inicio (falta Olímpica I.1–106), con escolios; Píticas comienza en Pítica II.105, faltan partes del comienzo. Textos Nemeas e Ístmicas presentes, pero no figuran como obras independientes en la matriz actual.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/67943/",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/67943/",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -15481,7 +16085,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -19649,5 +20253,6 @@
         "isManuscriptAgePriorityProven": false
       }
     }
-  ]
+  ],
+  "updated": "2026-11-10"
 }
