@@ -261,9 +261,9 @@
   const range=Math.max(1,high-low);
   // Universal fitted scale: time always spans the visible reader, not a fixed 960–5200px canvas.
   const cs=getComputedStyle(root);
-  const available=Math.max(250,Math.floor(root.clientWidth)-parseFloat(cs.paddingLeft||0)-parseFloat(cs.paddingRight||0)-3);
+  const available=Math.max(170,Math.floor(root.clientWidth)-parseFloat(cs.paddingLeft||0)-parseFloat(cs.paddingRight||0)-3);
   const labelWidth=available<490?94:available<740?128:170;
-  const mapWidth=Math.max(150,available-labelWidth-2);
+  const mapWidth=Math.max(72,available-labelWidth-2);
   const cardWidth=Math.min(Math.max(106,Math.round(134*state.zoom)),Math.max(96,mapWidth-10));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
@@ -284,7 +284,18 @@
    const items=events.filter(x=>x.lane===lane);if(!items.length)continue;
    const band=el("section","vat-band");band.setAttribute("aria-label",label);
    const title=el("div","vat-band-title");title.append(el("span","vat-icon",icon),el("strong",null,label));
+   const laneBody=el("div","vat-band-body");
    const track=el("div","vat-track");track.style.width=mapWidth+"px";
+   const preview=el("div","vat-peek");
+   preview.hidden=true;preview.setAttribute("aria-live","polite");
+   const previewText=e=>{
+    preview.replaceChildren(
+     el("span","vat-peek-year",(e.approx?"c. ":"")+showYear(e.year)),
+     el("strong",null,e.title),
+     el("p",null,e.detail.slice(0,280))
+    );
+    preview.hidden=false;
+   };
    const line=el("div","vat-line");track.append(line);
    const lastEnds=[];let levelMax=0;
    for(const e of items){
@@ -293,13 +304,13 @@
     // previously collapsed both ends of a short lifetime into one position.
     const center=Math.max(14,Math.min(mapWidth-14,x));
     const popCenter=Math.max(cardWidth/2+4,Math.min(mapWidth-cardWidth/2-4,center));
-    let level=lastEnds.findIndex(end=>center-end>=26);
+    let level=lastEnds.findIndex(end=>center-end>=30);
     if(level<0){level=lastEnds.length;lastEnds.push(-Infinity)}
     lastEnds[level]=center;levelMax=Math.max(levelMax,level);
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
     button.classList.add("vat-event-marker");
-    button.style.left=center+"px";button.style.top=(27+level*40)+"px";
+    button.style.left=center+"px";button.style.top=(23+level*36)+"px";
     button.style.setProperty("--vat-popup-width",cardWidth+"px");
     button.style.setProperty("--vat-popup-shift",Math.round(popCenter-center)+"px");
     button.setAttribute("aria-label",(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
@@ -311,14 +322,22 @@
      const dur=el("span","vat-duration","– "+showYear(e.end));popup.append(dur);
     }
     button.append(popup);
-    button.addEventListener("click",()=>highlightButton(button,detail,e));
+    button.addEventListener("mouseenter",()=>previewText(e));
+    button.addEventListener("focus",()=>previewText(e));
+    button.addEventListener("mouseleave",()=>{preview.hidden=true});
+    button.addEventListener("blur",()=>{preview.hidden=true});
+    button.addEventListener("click",()=>{
+     highlightButton(button,detail,e);
+     detail.scrollIntoView?.({behavior:"smooth",block:"nearest"});
+    });
     navigable.push({event:e,button});
     const key=[e.title,e.year,e.lane].join("|");
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
    }
-   track.style.height=(74+levelMax*40)+"px";
-   band.append(title,track);map.append(band);
+   track.style.height=(65+levelMax*36)+"px";
+   laneBody.append(track,preview);
+   band.append(title,laneBody);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
   zoomOut.setAttribute("aria-label",L("Reducir tamaño de fichas","Smaller record labels","Réduire les étiquettes"));
@@ -336,6 +355,7 @@
    const found=navigable[i];
    highlightButton(found.button,detail,found.event);
    found.button.focus?.({preventScroll:true});
+   detail.scrollIntoView?.({behavior:"smooth",block:"nearest"});
   }
   prev.onclick=()=>stepMilestone(-1);
   next.onclick=()=>stepMilestone(1);
