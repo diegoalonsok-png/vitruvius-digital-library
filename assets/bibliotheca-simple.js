@@ -474,8 +474,12 @@ function render(rows,q,details){
    (originalRank(a.language)-originalRank(b.language));
  });
  root.hidden=false;list.replaceChildren();
- const groupCounts=new Map();
- for(const r of sorted)groupCounts.set(r.workId,(groupCounts.get(r.workId)||0)+(r.hitsInPassage||1));
+ const groupCounts=new Map(), rowsByWork=new Map();
+ for(const r of sorted){
+  groupCounts.set(r.workId,(groupCounts.get(r.workId)||0)+(r.hitsInPassage||1));
+  if(!rowsByWork.has(r.workId))rowsByWork.set(r.workId,[]);
+  rowsByWork.get(r.workId).push(r);
+ }
  const total=[...groupCounts.values()].reduce((sum,n)=>sum+n,0);
   const originalTotal=sorted.filter(r=>["la","grc"].includes(r.language)).reduce((n,r)=>n+(r.hitsInPassage||1),0);
  status.textContent=(locale==="fr"?"Original grec/latin : ":locale==="en"?"Original Greek/Latin: ":"Original griego/latino: ")+originalTotal+" · "+t.stats(total,sorted.length,new Set(sorted.map(r=>r.workId)).size)+
@@ -492,7 +496,7 @@ function render(rows,q,details){
    academic.style.display="inline-block";academic.style.margin="3px 0 10px";section.append(academic);
    section.append(el("p","meta",[w.author||r.author,w.dating||t.noDate,t.groupCount(groupCounts.get(last)||0)].filter(Boolean).join(" · ")));
    // Un libro puede contener más de una edición o lengua: no se confunden sus recuentos.
-   const relevant=sorted.filter(z=>z.workId===last);
+   const relevant=rowsByWork.get(last)||[];
    const countsByVersion=new Map(),references=new Map();
    for(const edition of relevant){
     const key=[edition.language,edition.source,edition.edition].join("|");
@@ -623,7 +627,8 @@ async function search(updateHistory=true){
    const now=Date.now();if(!progress.complete&&progress.examined>4&&now-lastPaint<600)return;
    lastPaint=now;
    if(id!==serial)return;
-   render(partial,q,{...progress,partial:true,transliterations});
+   // Progress must not destroy inline translations or scroll position.
+   // Results are rendered once when search completes.
    status.textContent=dict[locale].stats(partial.reduce((n,row)=>n+(row.hitsInPassage||1),0),partial.length,new Set(partial.map(row=>row.workId)).size)+
     " · "+progress.examined+"/"+progress.targeted+" versiones examinadas"+
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
