@@ -33,8 +33,14 @@
   catch{document.getElementById('result-state').textContent='No se pudieron cargar las imágenes. Vuelva a pulsar Imágenes.'}
   finally{button.removeAttribute('aria-busy')}
  },true);
+ // Image discovery must not depend on local text rows. A generic web query
+ // (e.g. "puentes romanos") can have no local corpus hits and still have photos.
+ window.addEventListener('vitruvia:search',event=>{
+  if(!String(event.detail?.query||'').trim())return;
+  void load('images').catch(()=>{});
+ });
  window.addEventListener('vitruvia:results',event=>{
-  if(!event.detail?.query||!event.detail?.rows?.length)return;
+  if(!event.detail?.query)return;
   void load('images').catch(()=>{});
  });
  // Reader controls do not compete with the first result or start remote searches.
