@@ -23,7 +23,7 @@ Editor and project lead: **Diego A. Kurilo**, architect and urbanist (Buenos Air
 [Vitruvia Lexicon](vitruvia-lexicon.html) is reached from the **Lexicon** category in Vitruvia's search bar. It searches only Greek and Latin vocabulary, syntax and phrases, entirely in the browser over structured JSON indexes (no server):
 
 - **Lexical entries**: form → lemma (CLTK for Latin; G. Celano's lemmatised Greek with AGDT morphology), Lewis & Short / LSJ senses (Perseus DL, CC BY-SA 4.0), attested forms, diachronic distribution by work, collocations and a KWIC concordance in which every word links to its own entry.
-- **Etymologicum** (`data/lexicon/etymologicum.json`, 108 editorial entries): PIE roots, Old Latin forms with their epigraphic source (Duenos, Lapis Niger, Scipionic epitaphs, SC de Bacchanalibus…), Greek/Latin/Biblical Hebrew equivalents (Hebrew Bible · LXX · Vulgate), cognates, bibliography (de Vaan, Ernout–Meillet, Beekes, Chantraine, BDB, HALOT) and loci; on-demand Wiktionary etymology.
+- **Etymologicum** (`data/lexicon/etymologicum.json`, editorial entries with bibliographic citations): PIE roots, Old Latin forms with their epigraphic source (Duenos, Lapis Niger, Scipionic epitaphs, SC de Bacchanalibus…), Greek/Latin/Biblical Hebrew equivalents (Hebrew Bible · LXX · Vulgate), cognates, bibliography (de Vaan, Ernout–Meillet, Beekes, Chantraine, BDB, HALOT) and loci; on-demand Wiktionary etymology.
 - **Search syntax**: `"exact phrase"`, `@lemma`, `aedi*`, `t?xis`, `~fuzzy`, `prefijo:` (orthographic), `pie:*dem-` (reconstructed PIE root), `concepto:justice` (reverse multilingual search by meaning), `A ..3 B`, `A NEAR/5 B`, Greek morphosyntactic patterns `[mood=ptc case=gen] [case=gen]`, Latin→Greek transliteration (`anthropos` → ἄνθρωπος) and phonetic/orthographic approximation (ae/e, ph/f, itacism).
 - **Etymological tree** for any Latin, Greek, Spanish, English, French or German word (Wiktionary, built in the reader's browser: ancestors, borrowings, compounds, cognates, root descendants), with the editorial entry as fallback.
 - **Loci and first attestation**: every hit has a permanent link to its exact locus (`?work=vitruvius&locus=1.2.4&q=symmetria`); entries show the earliest attestation found in the local corpus (explicitly not the absolute first historical occurrence).
@@ -36,6 +36,12 @@ Editor and project lead: **Diego A. Kurilo**, architect and urbanist (Buenos Air
 - **Open data and citation**: every entry, concordance and analysis exports to CSV, JSON and XML-TEI; citations in Chicago, APA, MLA and BibTeX; Schema.org `DefinedTermSet` / `DefinedTerm` markup; virtual keyboards for polytonic Greek, Biblical Hebrew and Latin quantities; Gentium Book Plus / Cardo / Noto web fonts.
 
 Data build: `python3 scripts/build-vitruvia-lexicon.py && python3 scripts/render-vitruvia-lexicon-page.py`. Integrity test: `python3 scripts/test-vitruvia-lexicon.py` (all citations attributed to local works are verified literally in the corpus). Lemmatisation is automatic and must be checked in context; the editorial etymologies summarise the cited reference works.
+
+## Evidentiary coverage integrity · Integridad de cobertura documental
+
+The [public catalogue counters](bibliotheca-graeca-latina.html) now reconcile three independently inspectable layers: the [local indexation roadmap](data/classics-corpus/indexation-roadmap-222.json), the two external Greek/Latin branch manifests, and the [editorial reconciliation snapshot](data/classics-corpus/external-index-reconciliation.json). External indexes are distinct from locally hosted texts. If manifests are unavailable or differ from the snapshot, their totals are **not certified** by the interface. CI tests normal, drift and offline scenarios using the published metadata; the test does **not** perform a live scholarly collation or prove that all passages are complete or correctly translated.
+
+Before citing coverage totals, verify the original work, textual extent, attributed edition, the relevant document and access status. A passing structural test is neither a peer-reviewed edition nor evidence of a manuscript variant.
 
 ## Historical OCR paragraph research (experimental)
 

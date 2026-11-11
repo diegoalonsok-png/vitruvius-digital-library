@@ -4,6 +4,8 @@ on:
     paths:
       - 'assets/classics-audited-coverage.js'
       - 'scripts/test-classics-audited-coverage.mjs'
+      - 'data/classics-corpus/indexation-roadmap-222.json'
+      - 'data/classics-corpus/external-index-reconciliation.json'
       - 'index.html'
       - 'bibliotheca-graeca-latina.html'
       - '.github/workflows/classics-audited-coverage.yml'
@@ -12,6 +14,8 @@ on:
     paths:
       - 'assets/classics-audited-coverage.js'
       - 'scripts/test-classics-audited-coverage.mjs'
+      - 'data/classics-corpus/indexation-roadmap-222.json'
+      - 'data/classics-corpus/external-index-reconciliation.json'
       - 'index.html'
       - 'bibliotheca-graeca-latina.html'
 jobs:

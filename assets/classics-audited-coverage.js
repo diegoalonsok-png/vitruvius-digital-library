@@ -22,7 +22,7 @@ async function remote(spec,known,local){
  if(doc?.schema!==spec.schema||doc.branch!==spec.branch||
    !Array.isArray(doc.entries)||doc.entries.length!==doc.count||doc.entries.length<1)
    throw Error("Manifiesto remoto inválido");
- const seen=new Set();
+ const seen=new Map();
  for(const e of doc.entries){
   if(!e||!known.has(e.workId)||local.has(e.workId)||seen.has(e.workId)||
      e.language!==spec.language||e.path!==spec.prefix+e.workId+spec.suffix||
@@ -31,7 +31,7 @@ async function remote(spec,known,local){
      !(/^(?:https:\/\/raw\.githubusercontent\.com\/(?:PerseusDL|OpenGreekAndLatin|cltk)\/|https:\/\/la\.wikisource\.org\/wiki\/De_condicionibus_agrorum$)/).test(e.source)||
      !Number.isInteger(e.passages)||e.passages<1)
    throw Error("Original remoto incompatible con el catálogo");
-  seen.add(e.workId);
+  seen.set(e.workId,{language:e.language,path:e.path,source:e.source,sourceSha256:e.sourceSha256,passages:e.passages});
  }
  return seen;
 }
@@ -65,21 +65,46 @@ async function remote(spec,known,local){
    host.dataset.state="remote-unavailable";
    return;
   }
-  const external=new Set();
+  const snapshot=await lookup("data/classics-corpus/external-index-reconciliation.json");
+  if(snapshot?.schema!=="vitruvius-classics-external-index-reconciliation-v1"||
+    !snapshot.counts||!Array.isArray(snapshot.remoteEntries))
+    throw Error("No hay conciliación documental válida");
+  const external=new Map();
   for(const r of responses){
-   for(const id of r.value){
+   for(const [id,entry] of r.value){
     if(external.has(id))throw Error("Duplicación de ID entre manifiestos");
-    external.add(id);
+    external.set(id,entry);
    }
+  }
+  const claims=snapshot.remoteEntries;
+  const expected=new Map(claims.map(e=>[e.workId,e]));
+  if(expected.size!==claims.length||external.size!==claims.length||
+    j.counts.offsiteOriginalsIndexed!==external.size||
+    j.counts.effectiveOriginalsIndexed!==local.size+external.size||
+    j.counts.effectiveOriginalsMissing!==j.targetWorks-local.size-external.size||
+    snapshot.counts.hostedOriginalsIndexed!==local.size||
+    snapshot.counts.remoteOriginalsIndexed!==external.size||
+    snapshot.counts.combinedOriginalsIndexed!==local.size+external.size||
+    snapshot.counts.originalsStillWithoutIndex!==j.targetWorks-local.size-external.size)
+    throw Error("Diferencia entre inventario, conciliación y manifiestos externos");
+  for(const [id,entry] of external){
+   const claim=expected.get(id);
+   if(!claim||claim.language!==entry.language||claim.textPath!==entry.path||
+      claim.sourceUrl!==entry.source||claim.sourceSha256!==entry.sourceSha256||
+      claim.passages!==entry.passages)
+    throw Error("Fuente remota discrepante: "+id);
   }
   set("remote",fmt(external.size));
   set("searchable",fmt(local.size+external.size));
   set("pending",fmt(j.targetWorks-local.size-external.size));
-  set("method","Originales indexados = texto griego o latino buscable (algunos registros conservan solo fragmentos o tratados seleccionados). Traducciones externas enlazadas no se cuentan como alojadas. Fuente: inventario y manifiestos auditables, no colación manuscrita.");
+  set("method","Cobertura documental: índices locales y dos manifiestos externos contrastados con la conciliación editorial. Los textos externos no están alojados en Pages. La coincidencia de metadatos NO certifica integridad, lectura en navegador, traducción ni colación de manuscritos.");
   host.dataset.state="verified";
  }catch(error){
   host.dataset.state="unavailable";
-  set("method","No fue posible verificar el inventario: "+error.message+". Consultar el informe de cobertura antes de citar cifras.");
+  set("remote","Sin certificar");
+  set("searchable","Sin certificar");
+  set("pending","Sin certificar");
+  set("method","No fue posible certificar la conciliación documental: "+error.message+". Los números pendientes no deben citarse hasta comprobar los inventarios.");
  }
 })();
 })();
