@@ -198,8 +198,9 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-track .vat-event[aria-pr
 #vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n+5){--vat-tag-color:#f3d7d8}
 #vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:nth-of-type(6n){--vat-tag-color:#d9e6e1}
 #vitruvia-academic-timeline.vat-custom-color .vat-track .vat-event.vat-event-marker{
- background:var(--vat-tag-color)!important;
+ background:var(--vat-user-color)!important;
 }
+#vitruvia-academic-timeline.vat-custom-color .vat-event-marker .vat-event-pop{background:var(--vat-user-color)!important}
 #vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:is(:hover,:focus-visible,[aria-pressed=true]){
  z-index:50;filter:saturate(1.12);transform:translateX(-50%) scale(1.17)!important;
 }
