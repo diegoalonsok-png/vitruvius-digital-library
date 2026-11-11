@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-tei-codicology-research-matrix-v1",
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "model": "TEI P5 msDesc: msIdentifier, msContents, physDesc (objectDesc, handDesc, decoDesc, bindingDesc), history (origin, provenance, acquisition), additional; source status attached per field",
   "registeredWitnesses": 100,
   "fieldCount": 22,
@@ -15,7 +15,7 @@
       "category": "physical",
       "key": "dimensions",
       "label": "Dimensiones y caja escrita",
-      "missing": 96
+      "missing": 94
     },
     {
       "category": "physical",
@@ -33,7 +33,7 @@
       "category": "physical",
       "key": "binding",
       "label": "Encuadernación",
-      "missing": 96
+      "missing": 94
     },
     {
       "category": "physical",
@@ -45,7 +45,7 @@
       "category": "scribal",
       "key": "script",
       "label": "Tipo de escritura",
-      "missing": 79
+      "missing": 78
     },
     {
       "category": "scribal",
@@ -81,13 +81,13 @@
       "category": "history",
       "key": "origin",
       "label": "Origen",
-      "missing": 84
+      "missing": 83
     },
     {
       "category": "history",
       "key": "provenance",
       "label": "Procedencia",
-      "missing": 87
+      "missing": 86
     },
     {
       "category": "text",
@@ -156,9 +156,11 @@
             "scholarlyQuestion": "Soporte material y composición de bifolios"
           },
           "dimensions": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Dimensiones del bloque y de la caja escrita"
+            "value": "280 × 200 mm; caja escrita 210 × 145 mm. Fuente: British Library, Harley MS 2767.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Dimensiones del bloque y de la caja escrita",
+            "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048598",
+            "verificationDate": "2026-11-11"
           },
           "collationFormula": {
             "value": null,
@@ -174,9 +176,11 @@
             "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048598"
           },
           "binding": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Encuadernación y restauraciones"
+            "value": "Reencuadernación por British Museum / British Library en 1977. No se infiere la encuadernación medieval original.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Encuadernación y restauraciones",
+            "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048598",
+            "verificationDate": "2026-11-11"
           },
           "watermarks": {
             "value": null,
@@ -275,12 +279,9 @@
           }
         }
       },
-      "missingCount": 12,
+      "missingCount": 9,
       "missingKeys": [
-        "dimensions",
         "collationFormula",
-        "ruling",
-        "binding",
         "watermarks",
         "hands",
         "corrections",
@@ -6279,9 +6280,11 @@
             "scholarlyQuestion": "Soporte material y composición de bifolios"
           },
           "dimensions": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Dimensiones del bloque y de la caja escrita"
+            "value": "255 × 215 mm; caja escrita 180 × 140/145 mm. Fuente: British Library, Harley MS 2716.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Dimensiones del bloque y de la caja escrita",
+            "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048547",
+            "verificationDate": "2026-11-11"
           },
           "collationFormula": {
             "value": null,
@@ -6294,9 +6297,11 @@
             "scholarlyQuestion": "Pautado, picado y número de líneas por página"
           },
           "binding": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Encuadernación y restauraciones"
+            "value": "Encuadernación 'Harleian' posterior a 1600 en marroquín rojo dorado, atribuida a Thomas Elliott; lomo restaurado. Fuente: British Library.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Encuadernación y restauraciones",
+            "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048547",
+            "verificationDate": "2026-11-11"
           },
           "watermarks": {
             "value": null,
@@ -6306,9 +6311,11 @@
         },
         "scribal": {
           "script": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Escritura y fecha paleográfica"
+            "value": "Minúscula carolina, según el catálogo de la British Library (Harley MS 2716).",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Escritura y fecha paleográfica",
+            "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048547",
+            "verificationDate": "2026-11-11"
           },
           "hands": {
             "value": null,
@@ -6340,14 +6347,18 @@
         },
         "history": {
           "origin": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Origen / scriptorium"
+            "value": "Alemania occidental; volumen compuesto de dos unidades manuscritas elaboradas en el último cuarto del siglo X (975–999), sin atribución segura a un scriptorium específico.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Origen / scriptorium",
+            "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048547",
+            "verificationDate": "2026-11-11"
           },
           "provenance": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Historia de propietarios y transferencias"
+            "value": "Monasterio benedictino de San Ulrico y Santa Afra (Augsburgo); colección Johann Georg Graevius; posteriormente colección Harley. Fuente: British Library, Harley MS 2716.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Historia de propietarios y transferencias",
+            "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048547",
+            "verificationDate": "2026-11-11"
           }
         },
         "text": {
@@ -6395,21 +6406,16 @@
           }
         }
       },
-      "missingCount": 18,
+      "missingCount": 13,
       "missingKeys": [
-        "dimensions",
         "collationFormula",
         "ruling",
-        "binding",
         "watermarks",
-        "script",
         "hands",
         "corrections",
         "scholia",
         "glosses",
         "subscriptiones",
-        "origin",
-        "provenance",
         "lacunae",
         "transpositions",
         "palimpsest",
