@@ -20,7 +20,7 @@ const testCases=[
  {term:"Nilo",type:"geography",aliases:["Nilo","Nile"]},
  {term:"Julius Caesar",type:"historical-person",aliases:["Julius Caesar","Julio César","César"]}
 ];
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.CHROME?{executablePath:process.env.CHROME}:{})});
 const now=new Date().toISOString(),report={schema:"vitruvia-public-query-benchmark-v1",date:now,
  origin:"GitHub Actions Chromium · hosted Vitruvia · one cold navigation per query",
  caveat:"No son estadísticas de usuarios reales ni evaluación independiente de veracidad. Las coincidencias de nombre son pistas de relevancia, no un juicio filológico. Fuentes externas pueden tener disponibilidad variable.",
