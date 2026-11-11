@@ -2072,6 +2072,33 @@ body.vitruvia-reading .hero .featured{align-self:start!important}
  schedule();
 })();
 </script>
+
+<style id="vr-text-reader-style">
+.vr-textual-reader{margin:20px 0 28px;padding:20px;border:1px solid #68746b;border-radius:12px;background:#181d1b;color:#ecefe9;max-width:100%;box-sizing:border-box}
+.vr-textual-reader[hidden]{display:none!important}
+.vr-textual-reader h3{font:normal 28px/1.25 Georgia,serif;margin:0 0 12px;color:inherit}
+.vr-text-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0}
+.vr-text-row select,.vr-text-row input[type=text]{flex:1 1 185px;min-width:0;padding:10px;border:1px solid #808680;border-radius:7px;color:inherit;background:#202824;font:15px/1.3 system-ui}
+.vr-text-row a{color:#bad8cc;text-decoration:underline;overflow-wrap:anywhere}
+.vr-text-row button{padding:9px 13px;border:1px solid #8d938c;border-radius:7px;background:#343d37;color:inherit;cursor:pointer}
+.vr-text-row button:hover{filter:brightness(1.23)}
+.vr-text-palette{display:flex;gap:6px;align-items:center}
+.vr-text-palette .vr-text-swatch{padding:0;width:25px;height:25px;border-radius:50%;border:2px solid #ddd;cursor:pointer}
+.vr-text-palette .vr-text-swatch[aria-pressed=true]{outline:2px solid currentColor;outline-offset:2px}
+.vr-text-content,.vr-text-output{display:block;box-sizing:border-box;width:100%;min-height:210px;max-width:100%;padding:17px;border:1px solid #869084;border-radius:9px;background:#101713;color:#e8ece6;font:17px/1.8 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto}
+.vr-text-content::selection{background:var(--vr-selected-color,#9c7516);color:white}
+.vr-text-note{margin:9px 0;font:13px/1.65 system-ui;color:#bbc4bb}
+.vr-text-output{min-height:0;margin:12px 0 0}
+.vr-text-output:empty{display:none}
+html[data-theme=light] .vr-textual-reader{background:#f4f2ec;color:#222a24;border-color:#cbc8bf}
+html[data-theme=light] .vr-text-row select,html[data-theme=light] .vr-text-row input[type=text]{background:#fff;color:#202822;border-color:#bdbbb3}
+html[data-theme=light] .vr-text-row button{background:#fff;color:#222;border-color:#bdbbb3}
+html[data-theme=light] .vr-text-content,html[data-theme=light] .vr-text-output{background:#fff;color:#252b26;border-color:#cbc8bf}
+html[data-theme=light] .vr-text-note{color:#5f685f}
+html[data-theme=light] .vr-text-row a{color:#214d39}
+@media(max-width:680px){.vr-textual-reader{padding:13px}.vr-textual-reader h3{font-size:22px}.vr-text-row>*{max-width:100%}}
+</style>
+<script defer src="assets/vitruvia-texts-reader.js?v=20261110-contextual-reader-v1"></script>
 </body></html>
 
 
