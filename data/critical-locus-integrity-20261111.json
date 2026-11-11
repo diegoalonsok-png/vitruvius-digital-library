@@ -1,0 +1,113 @@
+{
+  "schema": "vitruvius-critical-loci-integrity/1.0",
+  "date": "2026-11-11",
+  "scope": "Authorial DOCX note-to-locus metadata; no palaeographic or textual correctness certification.",
+  "sources": {
+    "notes": "data/critical-notes.json",
+    "canonicalReferences": "data/academic-integrity.json",
+    "sourceFingerprint": "3464acce3ca8ea2d14492935a249bb5950f90fd46932281f033b338d98ef7c0d"
+  },
+  "counts": {
+    "canonical_loci": 731,
+    "notes": 811,
+    "explicit_note_loci": 41,
+    "explicit_valid": 41,
+    "candidate_note_loci": 519,
+    "candidate_valid": 509,
+    "candidate_noncanonical": 10,
+    "unmapped": 251
+  },
+  "policy": "Keep original DOCX notes and existing candidate_locus unchanged. Flag noncanonical candidates; do not suggest that closest known loci are equivalent. Printed edition paragraph boundaries can differ.",
+  "noncanonical_candidates": [
+    {
+      "edition": "recensio-fr",
+      "footnote_id": "45",
+      "candidate_locus": "10.12.3",
+      "source_paragraph": 1403,
+      "source_file": "Vitruvio_V554_FRANCAIS_MASTER_IMPRESSION_2026-10-02(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "113",
+      "candidate_locus": "10.1.17",
+      "source_paragraph": 1860,
+      "source_file": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "114",
+      "candidate_locus": "10.1.17",
+      "source_paragraph": 1860,
+      "source_file": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "115",
+      "candidate_locus": "10.1.17",
+      "source_paragraph": 1860,
+      "source_file": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "116",
+      "candidate_locus": "10.1.17",
+      "source_paragraph": 1860,
+      "source_file": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "147",
+      "candidate_locus": "10.8.7",
+      "source_paragraph": 2972,
+      "source_file": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "148",
+      "candidate_locus": "10.8.10",
+      "source_paragraph": 2981,
+      "source_file": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "149",
+      "candidate_locus": "10.8.11",
+      "source_paragraph": 2984,
+      "source_file": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "162",
+      "candidate_locus": "10.6.5",
+      "source_paragraph": 4374,
+      "source_file": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    },
+    {
+      "edition": "theory-en",
+      "footnote_id": "164",
+      "candidate_locus": "10.1.10",
+      "source_paragraph": 4445,
+      "source_file": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "reason": "candidate_locus_not_in_731_canonical_references",
+      "review_status": "requires_manual_collation"
+    }
+  ]
+}
