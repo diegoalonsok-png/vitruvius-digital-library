@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-source-reviewed-v20",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-source-reviewed-v20",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-source-reviewed-v20",standard:"data/classics-corpus/vitruvius-standard-222.json?v=20261110-source-reviewed-v20"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-source-reviewed-v20",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-source-reviewed-v20",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-source-reviewed-v20",standard:"data/classics-corpus/vitruvius-standard-222.json?v=20261110-source-reviewed-v20",trees:"data/classics-corpus/codicological-trees-222.json?v=20261110-trees-v21"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -96,13 +96,14 @@ function store(){if(P.ready)return P.ready;
  fetch(PATHS.text).then(x=>x.ok?x.json():{entries:[]}).catch(()=>({entries:[]})),
  fetch(PATHS.authority).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
   fetch(PATHS.critical).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
-  fetch(PATHS.standard).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]}))
- ]).then(([c,t,r,audit,critical,standard])=>{
+  fetch(PATHS.standard).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]})),
+  fetch(PATHS.trees).then(x=>x.ok?x.json():{records:[]}).catch(()=>({records:[]}))
+ ]).then(([c,t,r,audit,critical,standard,trees])=>{
  if(!Array.isArray(c.works))throw Error("Catálogo sin registros");
  const docs=new Map(c.works.map(w=>[w.id,w]));
  const witness=new Map();for(const rec of t.records||[])for(const id of rec.workIds||[]){if(!witness.has(id))witness.set(id,[]);witness.get(id).push(rec)}
  const texts=new Map();for(const rec of r.entries||[]){if(!texts.has(rec.workId))texts.set(rec.workId,[]);texts.get(rec.workId).push(rec)}
- return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),critical:new Map((critical.schema==="vitruvius-critical-authority-222-v1"&&critical.records?.length===222?critical.records:[]).map(e=>[e.workId,e])),standard:new Map((standard.records||[]).map(e=>[e.workId,e])),count:c.works.length,witnessCount:(t.records||[]).length};
+ return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),critical:new Map((critical.schema==="vitruvius-critical-authority-222-v1"&&critical.records?.length===222?critical.records:[]).map(e=>[e.workId,e])),standard:new Map((standard.records||[]).map(e=>[e.workId,e])),trees:new Map((trees.records||[]).map(e=>[e.workId,e])),count:c.works.length,witnessCount:(t.records||[]).length};
  });
  return P.ready;
 }
@@ -330,6 +331,39 @@ function renderBibliography(dest,w){
   document.createTextNode(citation));
  dest.append(c);
 }
+function renderCodicologicalTree(dest,w,d){
+ section(dest,"Árbol codicológico · tradición y filiación verificable");
+ const tree=d.trees.get(w.id);
+ if(!tree){dest.append(html("p","cwd-muted","El árbol de testimonios no está disponible; no se infieren familias o arquetipos."));return}
+ const box=html("div","cwd-tree");
+ const work=html("div","cwd-tree-work",w.author+" · "+w.title);
+ box.append(work);
+ if(!tree.witnesses.length){box.append(html("p","cwd-muted","Sin manuscrito individual identificado todavía: investigar Pinakes, Biblissima y catálogos institucionales."))}
+ else {
+  const list=html("ul","cwd-tree-list");
+  for(const x of tree.witnesses){
+   const li=html("li","cwd-tree-item"),strong=html("strong",null,x.label||x.id);
+   li.append(strong);
+   const meta=html("p","cwd-muted",[x.repository,x.dating,x.folioRange].filter(Boolean).join(" · "));
+   li.append(meta);
+   const linked=html("p","cwd-links");addA(linked,"Consultar fuente de la signatura ↗",x.sourceUrl);if(linked.childNodes.length)li.append(linked);
+   list.append(li);
+  }
+  box.append(list);
+ }
+ dest.append(box);
+ dest.append(html("p","cwd-muted","Las conexiones de la obra a los códices significan 'transmite esta obra', NO copia directa ni familia genealógica. El orden de los testigos no representa su fiabilidad ecdótica."));
+ if(tree.documentedFiliation?.length){
+  section(dest,"Filiaciones publicadas en investigaciones");
+  for(const edge of tree.documentedFiliation){
+   row(dest,"Relación documentada",edge.source+" → "+edge.target+" · "+edge.certainty);
+   if(edge.scholarlyBasis)row(dest,"Fundamento",edge.scholarlyBasis);
+   const link=html("p","cwd-links");addA(link,"Estudio que documenta esta filiación ↗",edge.sourceUrl);dest.append(link);
+  }
+ }
+ row(dest,"Estado del stemma codicum",tree.stemmaStatus==="not_established"?"No establecido: no inventar árbol de familias ni arquetipos":"Relación parcial entre testigos; NO constituye stemma completo");
+ const links=html("p","cwd-links");addA(links,"Datos y relaciones de las 222 obras ↗","data/classics-corpus/codicological-trees-222.json");dest.append(links);
+}
 function renderVitruviusStandard(dest,w,d){
  const rec=d.standard.get(w.id);
  section(dest,"Estándar Vitruvius · autoridad, cronología y control codicológico");
@@ -453,6 +487,7 @@ function renderInto(target,id,opts={}){
   renderAcademicSummary(target,w,d);
   renderCriticalAuthority(target,w,d);
   renderWitness(target,w,d);
+  renderCodicologicalTree(target,w,d);
   renderResearchAssist(target,w);
   renderCodicology(target,w);
   renderEditions(target,w,d);
@@ -477,6 +512,12 @@ function css(){
  ".classic-work-dossier .cwd-muted{color:#b8b8bb;font-size:12px}",
  ".classic-work-dossier .cwd-links{display:flex;gap:7px 18px;flex-wrap:wrap}",
  ".classic-work-dossier a{color:#e3c78f;text-decoration:underline;text-underline-offset:3px}",
+ ".cwd-tree{margin:12px 0;padding:15px;border:1px solid #67676a;border-radius:9px}",
+ ".cwd-tree-work{font-weight:700;padding:11px 13px;border:1px solid #747476;border-radius:6px;text-align:center;max-width:490px;margin:0 auto}",
+ ".cwd-tree-list{margin:0 auto;padding:24px 0 0;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:14px;border-top:0}",
+ ".cwd-tree-item{position:relative;flex:1 1 210px;max-width:420px;min-width:180px;padding:12px;border:1px solid #666;border-radius:7px;overflow-wrap:anywhere}",
+ ".cwd-tree-item:before{content:'';position:absolute;top:-11px;left:50%;height:10px;border-left:1px dashed #888}",
+ "html[data-theme=light] .cwd-tree,html[data-theme=light] .cwd-tree-item,html[data-theme=light] .cwd-tree-work{border-color:#949494}",
  ".classic-work-dossier [lang=grc]{font-family:'Gentium Book Plus',Cardo,Georgia,serif}",
  ".classic-work-dossier .cwd-original{font-size:15px}",
  ".classic-work-dossier .cwd-ms{border-left:3px solid #777;padding:6px 12px;margin:13px 0;background:rgba(120,120,120,.07)}",
