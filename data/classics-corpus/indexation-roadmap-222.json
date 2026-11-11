@@ -4,26 +4,26 @@
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. Cruce editorial V514/V554/V297 (reutilización sin doble conteo); fuentes de Ptolomeo y Procopio registradas con estatus de original/traducción diferenciado.",
   "targetWorks": 222,
   "counts": {
-    "originalsIndexed": 181,
-    "originalsMissing": 41,
+    "originalsIndexed": 182,
+    "originalsMissing": 40,
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 163,
-    "textVersions": 246,
+    "textVersions": 247,
     "offsiteOriginalsIndexed": 28,
-    "effectiveOriginalsIndexed": 209,
-    "effectiveOriginalsMissing": 13,
+    "effectiveOriginalsIndexed": 210,
+    "effectiveOriginalsMissing": 12,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 10,
+    "distinctAncientWorksStillMissingOriginalIndex": 9,
     "offsiteTextVersionsOutsidePages": 28,
     "states": {
-      "original_pendiente": 41,
-      "original_sin_traduccion_local": 122,
+      "original_pendiente": 40,
+      "original_sin_traduccion_local": 123,
       "original_y_traduccion_local": 59
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
       "requiere_fuente_no_canonica_o_edicion_especifica": 7,
-      "sin_fuente_en_mapa_perseus": 16,
+      "sin_fuente_en_mapa_perseus": 15,
       "tei_perseus_candidato_por_verificar": 15
     }
   },
@@ -815,32 +815,24 @@
       "title": "Artis architectonicae privatis usibus adbreviatus liber",
       "originalLanguage": "la",
       "dating": "Finales del siglo III – comienzos del IV d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
+      "effectiveOriginalIndexed": true,
       "sourceDiscovery": {
         "checked": "2026-11-11",
-        "status": "modern-editorial-transcription-identified-not-hosted",
-        "sources": [
-          {
-            "url": "https://monumenta.ch/latein/textsyn.php?tabelle=Marcus_Cetius_Faventinus",
-            "kind": "modern-transcription",
-            "edition": "Marie-Thérèse Cam, edición moderna; cotejar fecha exacta del ejemplar",
-            "language": "la"
-          },
-          {
-            "url": "https://www.bv.ipzs.it/bv-pdf/007/MOD-VP-20-01-005_4803_1.pdf",
-            "kind": "manuscript-catalogue",
-            "description": "Biblioteca Vallicelliana, Roma, ms. D 31 (s. XV), fols. 2r–39r, catálogo de Elisabetta Caldelli (2021)"
-          }
-        ],
-        "caution": "No reproducir la transcripción editorial moderna sin comprobación de licencia. El manuscrito contiene texto añadido de Vitruvio según el catálogo; el testimonio no debe considerarse automáticamente puro ni completo."
+        "status": "latino_rose_1899_transcripcion_hospedada",
+        "source": "https://www.gutenberg.org/ebooks/51812",
+        "index": "data/classics-corpus/faventinus-la.json",
+        "units": 32,
+        "method": "Párrafos editoriales consecutivos de la edición Rose 1899, sin locus canónico; no certificado contra facsímil ni códice."
       }
     },
     {
