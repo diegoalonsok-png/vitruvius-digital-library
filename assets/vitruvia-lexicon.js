@@ -2362,19 +2362,36 @@ async function init(){
  $("#nb-add").addEventListener("click",()=>{const text=prompt("Texto del pasaje (latín, griego o hebreo):");if(!text)return;const cite=prompt("Referencia (p. ej. Vitr. 1.1.1):")||"Pasaje";addToNotebook({cite,text,lang:detectLang(text)})});
  $$("[data-nb-export]").forEach(b=>b.addEventListener("click",()=>nbExport(b.dataset.nbExport)));
  $("#site-cite")?.append(citeBox("Vitruvia Lexicon",PAGE));
- {
+ // Auxiliary editorial metadata must not hold up the initial search form or
+ // a deep-linked literal lookup. It fills in asynchronously after first paint.
+ const editorialReady=(async()=>{
   const t0=performance.now(),files=["etymologicum","sententiae","philologia"];
   const results=await Promise.allSettled(files.map(n=>load("data/lexicon/"+n+".json")));
   [S.etym,S.sent,S.phil]=results.map((r,i)=>{if(r.status==="fulfilled")return r.value;console.warn("Lexicon index unavailable: "+files[i],r.reason);return null});
-  console.info("Vitruvia Lexicon metadata ready in "+Math.round(performance.now()-t0)+" ms");
-}
+  renderDaily();
+  const metrics=$("#lx-metrics");
+  if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;
+  if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
+  console.info("Vitruvia Lexicon editorial metadata ready in "+Math.round(performance.now()-t0)+" ms");
+ })();
  if($("#comp-go")){$("#comp-go").addEventListener("click",()=>renderComparatio().catch(e=>$("#comp-out").replaceChildren(el("p",{},e.message))));$("#comp-lang").addEventListener("change",()=>{$("#comp-a").dataset.l="";renderComparatio()})}
  /* No automatic full-corpus indexing on idle: it can freeze the landing page.
     An explicit search loads the required corpus, yielding between batches. */
- renderInstrumenta();renderScriptoria().catch(err=>console.error('Escrituras:',err));renderNotebook();renderDaily();renderQueryBuilder();applyUI();heRoots();conceptus();thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))});
- const metrics=$("#lx-metrics");if(metrics&&S.etym)metrics.querySelector("[data-m=etym]").textContent=S.etym.entries.length;if(metrics&&S.sent)metrics.querySelector("[data-m=sent]").textContent=S.sent.sententiae.length;
+ renderNotebook();renderQueryBuilder();applyUI();
+ // Secondary dossiers, palaeographic panels and thematic chips start after
+ // the visible search is ready rather than competing with first rendering.
+ const loadSecondary=()=>{
+  renderInstrumenta();
+  renderScriptoria().catch(err=>console.error('Escrituras:',err));
+  heRoots();
+  conceptus();
+  thesaurus().then(T=>{const box=$("#lx-themes-home");if(box)box.replaceWith(themeChips(T))}).catch(()=>{});
+ };
+ if(typeof requestIdleCallback==="function")requestIdleCallback(loadSecondary,{timeout:3500});
+ else setTimeout(loadSecondary,700);
 
  if(runRevision===0&&$("#lx-q").value.trim()===(initialParams.get("q")||"").trim()){
+  if(!initialParams.get("q")||!["palabra","lema","frase","sintaxis"].includes(S.mode))await editorialReady;
   await applyLexiconLocation();
  } else if(runRevision===0){
   setState("Escriba la consulta y pulse Buscar. Los datos se cargan bajo demanda.");
