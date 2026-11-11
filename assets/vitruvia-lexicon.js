@@ -358,6 +358,8 @@ async function run(push=true){
  if(S.expanded)window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""),{ancient:["palabra","lema","etimologia"].includes(S.mode)});
  if(S.expanded)renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
+ resetWordTree();
+ if(["palabra","lema"].includes(S.mode)&&/^@?[\p{L}\p{M}]+(?:[-'’][\p{L}\p{M}]+)*$/u.test(q))void renderWordTree(q,isCurrent);
  if(push){const u=new URL(location.href);u.searchParams.delete("qb");u.searchParams.delete("qb_lang");u.searchParams.delete("qb_filters");u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{if(u.href!==location.href)history.pushState(null,"",u)}catch{}}
  if(!q&&S.mode!=="sententiae"){setState("Escriba una palabra, una frase o un patrón.");return}
  try{
@@ -441,7 +443,7 @@ async function run(push=true){
   if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!/^\*/.test(q)){const P=await findPerson(q);if(!isCurrent())return;
    if(P){await renderPerson(P,q);return}}
   if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · ETYMOLOGIA"),el("h2",{},q),el("p",{class:"article-byline"},"Sin pasajes en el corpus antiguo local: se ofrecen su etimología y su raíz semántica antigua.")));const cc=await findConcept(q);if(!isCurrent())return;
-   if(S.expanded&&cc)box.append(conceptCard(cc,q));renderEtymTree(q,resolveLang(q),box);box.append(el("p",{class:"lx-small"},"Sin coincidencia documentada para esta forma. Puede probar Búsqueda ampliada sin modificar la consulta original."))}
+   if(S.expanded&&cc)box.append(conceptCard(cc,q));if(!wordTreeVisible())renderEtymTree(q,resolveLang(q),box);box.append(el("p",{class:"lx-small"},"Sin coincidencia documentada para esta forma. Puede probar Búsqueda ampliada sin modificar la consulta original."))}
  }catch(err){console.error(err);if(isCurrent())setState("No se pudo completar la búsqueda: "+err.message)}
  if(isCurrent())$("#lx-state").dataset.completeQuery=q;
 }
@@ -781,6 +783,79 @@ function morphologyFrequency(D,term,lemmas){
   section.querySelector(".lx-freq-table-scroll")||section.querySelector("table")||section.lastChild);
  return section;
 }
+/* The origin branch belongs to the query, not to the completed corpus scan.
+   Dictionary forms and editorial records can resolve it independently. */
+function wordTreeVisible(){return $("#lx-word-tree")?.hidden===false}
+function wordTreeLanguage(word){return GREEK.test(word)?"grc":HEBREW.test(word)?"he":/\p{Script=Latin}/u.test(word)?"la":null}
+function resetWordTree(){const box=$("#lx-word-tree");if(box){box.replaceChildren();box.hidden=true}}
+async function renderWordTree(query,isCurrent){
+ const word=query.replace(/^@/,""),language=S.lang;
+ let box=$("#lx-word-tree");
+ if(!box){box=el("section",{id:"lx-word-tree",class:"lx-tree-wrap","aria-label":"Árbol de términos y origen"});$("#lx-entry").before(box)}
+ box.hidden=false;box.dataset.query=query;
+ const root=el("ul",{class:"lx-tree-list"});
+ const status=el("p",{class:"lx-small",role:"status"},"Consultando el origen y los lemas documentados…");
+ const origins=el("div",{class:"lx-word-origins"});
+ box.replaceChildren(el("h3",{},"Árbol de términos · "+word),root,
+  el("h4",{},"Rama de origen"),status,origins);
+ const active=()=>isCurrent()&&box.isConnected&&box.dataset.query===query;
+ const choose=(term,code)=>{if(!active())return;$("#lx-q").value=term;S.lang=["la","grc","he","es","en","fr","de"].includes(code)?code:"auto";$("#lx-lang").value=S.lang;S.mode="palabra";renderTabs();run()};
+ const branch=(label,terms,code)=>{
+  const items=terms.map(t=>typeof t==="string"?{w:t}:t).filter(t=>t?.w);
+  if(!items.length)return;
+  const leaves=el("ul",{class:"lx-tree-list"});
+  for(const term of items)leaves.append(el("li",{class:"lx-tree-node"},
+   el("button",{type:"button",class:"lx-formlink lx-tree-word",lang:code,onclick:()=>choose(term.w,code)},term.w),
+   term.g?el("span",{class:"lx-tree-gloss"}," · "+term.g):null));
+  root.append(el("li",{class:"lx-tree-node"},el("strong",{},label),leaves));
+ };
+ branch("Forma consultada",[word],language==="auto"?null:language);
+ const rendered=new Set();
+ const origin=(term,code)=>{
+  const key=code+"|"+fold(term);if(rendered.has(key)||!active())return;rendered.add(key);
+  void renderEtymTree(term,code,origins).catch(()=>{
+   if(active())status.textContent="Origen no documentado en las fuentes disponibles para esta forma.";
+  });
+ };
+ try{
+  const [etym,concepts]=await Promise.all([load("data/lexicon/etymologicum.json"),conceptus()]);
+  if(!active())return;S.etym=etym;
+  const mapped=(language==="auto"||["es","en","fr","de"].includes(language))?exactModernConcept(word,concepts,CONC_ALIASES):null;
+  if(mapped){
+   for(const [code,label] of [["la","Equivalentes documentados · latín"],["grc","Equivalentes documentados · griego antiguo"]]){
+    branch(label,mapped[code]||[],code);for(const term of mapped[code]||[])origin(term,code);
+   }
+   status.textContent="Orígenes de los equivalentes documentados. Las equivalencias de significado no implican parentesco etimológico.";
+   // Keep the origin of the original modern word as well as its translations.
+   if(mapped.id!=="query-alias")origin(word,["es","en","fr","de"].includes(language)?language:null);
+   return;
+  }
+  let editorial=findCurated([word]);
+  if(editorial){
+   branch("Lema de la ficha editorial",[editorial.lemma],editorial.l);
+   branch("Términos griegos de la ficha",editorial.gr||[],"grc");
+   branch("Términos latinos de la ficha",editorial.la||[],"la");
+   branch("Correspondencias hebreas",editorial.he||[],"he");
+   origin(editorial.lemma,editorial.l);
+  }
+  const code=["la","grc"].includes(language)?language:language==="auto"?wordTreeLanguage(word):null;
+  if(code==="la"||code==="grc"){
+   // Share the small forms request with lang(); never await lang() itself.
+   const forms=await load("data/lexicon/forms-"+code+".json");if(!active())return;
+   const lemmas=[...new Set((forms.forms?.[fold(word)]||[]).map(a=>lemmaDisplay(a[0])))];
+   if(lemmas.length){
+    if(!editorial||lemmas.some(l=>fold(l)!==fold(editorial.lemma)))branch("Lemas del índice morfológico",lemmas,code);
+    for(const lemma of lemmas)origin(lemma,code);
+   }
+  }
+  if(!rendered.size)origin(word,language==="auto"?wordTreeLanguage(word):language);
+  if(active())status.textContent="Origen y relaciones de las fuentes consultadas. Las formas reconstruidas se marcan con *; un origen desconocido se indica expresamente.";
+ }catch(error){
+  if(!active())return;
+  status.textContent="El índice local no está disponible; se consulta la fuente etimológica en línea.";
+  origin(word,language==="auto"?wordTreeLanguage(word):language);
+ }
+}
 function renderExactEntry(D,word,res){
  const box=$("#lx-entry");box.replaceChildren();box.hidden=false;
  const key=fold(word).replace(/[^\p{L}']/gu,""),an=analyses(D,key);
@@ -798,7 +873,7 @@ function renderExactEntry(D,word,res){
   }
   if(body.childNodes.length)box.append(body);
  }
- renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):word,D.l,box);
+ if(!wordTreeVisible())renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):word,D.l,box);
 }
 function quickWord(word,language){
  const expected=language==="grc"?"grc":"la",D=residentLanguages[expected]||S.D;
@@ -853,7 +928,7 @@ async function renderEntry(D,term,res){
  if(curated)body.append(etymCard(curated));
 
  /* Etimología en línea */
- renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):term.v,D.l,body);
+ if(!wordTreeVisible())renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):term.v,D.l,body);
  /* Aside: frecuencia, colocaciones, exportación */
  const total=lemmas.reduce((a,lem)=>a+[...(D.lemmaForms.get(lem)||[])].reduce((s,f)=>s+(D.freq.get(f)||0),0),0);
  renderComparativeAttestations(aside,term.v,D);
@@ -1335,6 +1410,7 @@ async function renderModernEquivalents(word,concept,isCurrent){
   for(const term of concept[code]||[])terms.append(el("button",{type:"button",class:"lx-formlink",lang:code,onclick:()=>{$("#lx-q").value=term;S.lang=code;$("#lx-lang").value=code;run()}},term));
  }
  entry.append(terms);if(concept.note)entry.append(el("p",{class:"article-note"},concept.note));
+ if(!wordTreeVisible()){
  const trees=el("section",{class:"lx-concept-trees"},el("h3",{},"Árbol de términos · "+word),
   el("p",{class:"article-note"},"Ramas de equivalencias documentadas para elegir una palabra y consultar sus pasajes. La equivalencia de significado no implica parentesco etimológico."));
  const branches=el("ul",{class:"lx-tree-list"});
@@ -1349,6 +1425,7 @@ async function renderModernEquivalents(word,concept,isCurrent){
  }
  trees.append(branches);entry.append(trees);
  for(const code of ["la","grc"])for(const term of concept[code]||[])renderEtymTree(term,code,trees);
+ }
  list.replaceChildren();setState("Buscando los equivalentes documentados en ambas lenguas…");
  let total=0,finished=0;
  const languages=[["la","Latín"],["grc","Griego"]].filter(([code])=>concept[code]?.length);
@@ -1869,8 +1946,11 @@ async function buildEtymTree(word,langCode){
  let doc=null,title=null;for(const t of [...new Set(tryTitles)]){doc=await wkPage(t);if(doc){title=t;break}}
  if(!doc)return{error:"Wiktionary no tiene entrada para «"+word+"»."};
  const langsOnPage=wkLanguages(doc);
- const candidates=(langCode&&WK_LANG[langCode]?[langCode]:[]).concat(WK_ORDER).filter((c,i,a)=>a.indexOf(c)===i&&langsOnPage.includes(WK_LANG[c][0]));
- if(!candidates.length)return{error:"La entrada «"+word+"» de Wiktionary no tiene sección en latín, griego, castellano, inglés, francés ni alemán.",available:langsOnPage};
+ const candidates=(langCode&&WK_LANG[langCode]?[langCode]:[]).concat(WK_ORDER,Object.keys(WK_LANG)).filter((c,i,a)=>a.indexOf(c)===i&&langsOnPage.includes(WK_LANG[c][0]));
+ // A language outside the selector is still supported when the source has
+ // an actual language section. Keep its own heading, without inventing a code.
+ if(!candidates.length&&langsOnPage.length){const section=langsOnPage[0],code="source:"+section;WK_LANG[code]=[section,section.replace(/_/g," ")];candidates.push(code)}
+ if(!candidates.length)return{error:"La fuente no permite identificar la lengua ni el origen de «"+word+"».",available:langsOnPage};
  const code=candidates[0];const nodes=wkSection(doc,WK_LANG[code][0]);
  const root={lang:code,word:title,gloss:wkGloss(nodes),head:wkHeadword(nodes),href:"/wiki/"+encodeURIComponent(title)+"#"+WK_LANG[code][0],cognates:[]};
  const chain=[root];const seen=new Set([code+"|"+title]);
@@ -1906,7 +1986,9 @@ async function renderEtymTree(word,langCode,box,{auto=true,online=false,tree=nul
  if(!t){try{t=await buildEtymTree(word,langCode)}catch(err){t={error:"No se pudo consultar Wiktionary ("+err.message+")."}}}
  if(!sec.isConnected)return sec;
  out.replaceChildren();
- if(t.error){const c=curatedTree(findCurated([word]));if(c){out.append(el("p",{class:"lx-small"},t.error+" Se muestra el árbol de la ficha editorial."));t=c}else{out.append(el("p",{class:"empty"},t.error));return sec}}
+ if(t.error){const c=curatedTree(findCurated([word]));if(c){out.append(el("p",{class:"lx-small"},t.error+" Se muestra el árbol de la ficha editorial."));t=c}else{
+  out.append(el("ol",{class:"lx-tree-list"},el("li",{class:"lx-tree-node lx-tree-leaf"},el("div",{class:"lx-tree-head"},el("span",{class:"lx-tree-word"},word)),el("p",{class:"lx-tree-rel"},"Origen no documentado en las fuentes consultadas."))),
+   el("p",{class:"lx-small"},t.error),el("a",{href:"https://en.wiktionary.org/wiki/"+encodeURIComponent(word),target:"_blank",rel:"noopener noreferrer"},"Consultar la entrada de origen"));return sec}}
  if(t.available?.length>1){const sw=el("p",{class:"lx-small"},"Otras lenguas con esta palabra: ");t.available.slice(1).forEach(c=>sw.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{sec.remove();renderEtymTree(word,c,box)}},wkName(c))," "));out.append(sw)}
  const ol=el("ol",{class:"lx-tree-list"});
  const nodes=t.chain.slice().reverse();
@@ -2368,6 +2450,7 @@ async function applyLexiconLocation(){
  $("#lx-entry").replaceChildren();
  $("#lx-entry").hidden=true;
  $("#lx-side-extra").replaceChildren();
+ resetWordTree();
  renderTabs();
  if(p.get("work")&&p.get("locus")){
   if(q)await run(false);
@@ -2432,7 +2515,7 @@ async function init(){
  $("#lx-work").addEventListener("change",e=>{S.work=e.target.value;if(S.q)run()});
  $("#lx-order").addEventListener("change",()=>{if(S.result&&S.D){S.page=0;$("#lx-results").replaceChildren();$("#lx-side-extra").replaceChildren();if(S.mode==="sintaxis")renderCollocations(S.D,S.result);renderHits(S.D,S.result)}});
  ["#lx-variants","#lx-lemmatize"].forEach(id=>$(id).addEventListener("change",()=>{if(S.q)run()}));
- $("#lx-clear").addEventListener("click",()=>{++runRevision;$("#lx-q").value="";$("#lx-results").replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;setState("Introduzca una nueva búsqueda.");$("#lx-q").focus()});
+ $("#lx-clear").addEventListener("click",()=>{++runRevision;$("#lx-q").value="";$("#lx-results").replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;resetWordTree();setState("Introduzca una nueva búsqueda.");$("#lx-q").focus()});
  /* Autocompletado de lemas y formas atestiguadas; atajo «/» para ir al buscador. */
  {const dl=document.createElement("datalist");dl.id="lx-suggest";document.body.append(dl);$("#lx-q").setAttribute("list","lx-suggest");let timer=0,revision=0;
   $("#lx-q").addEventListener("input",()=>{
