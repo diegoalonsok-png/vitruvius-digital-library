@@ -78,6 +78,15 @@ html[data-reader-theme="dark"] body #stage{color:#172b3a}
 footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 @media(max-width:650px){#grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card img{height:108px}.card{padding:4px}#stage{min-height:360px;height:65vh}}
 @media print{.toolbar,.gallery,nav{display:none}#stage{height:auto;overflow:visible}}
+.h-preface-panel{border:1px solid #b79e77;background:#fffdf8;color:#213b51;padding:16px 20px;margin:18px 0;border-radius:8px}
+.h-preface-panel h2{margin:0 0 8px;font-size:clamp(22px,3vw,30px)}
+.h-preface-panel p{margin:8px 0}
+.h-preface-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px;margin:12px 0}
+.h-preface-card{display:flex;flex-direction:column;gap:5px;border:1px solid #cfbca0;border-radius:5px;padding:10px;background:#f8f4ed}
+.h-preface-card a{font-size:14px;text-decoration:underline;text-underline-offset:3px}
+.h-preface-card small{font-size:12px;line-height:1.35;color:#5e4a38}
+.h-preface-panel button{min-height:36px;padding:6px 11px;margin:4px 8px 4px 0}
+@media print{.h-preface-panel{break-inside:avoid}}
 </style><script src="assets/vitruvia-fetch-cache.js?v=20261105-v2"></script><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
 <link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html"><meta name="citation_title" content="Codex Harleianus (Harley MS 2767) · lectura por folios y concordancia"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html">
@@ -87,6 +96,14 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 <p>Vitruvio, <em>De architectura</em>. The British Library, Harley MS 2767, primer cuarto del siglo IX. Galería local ordenada según la secuencia y las etiquetas originales de su digitalización.</p></header>
 <p class="note"><strong>Identificación académica:</strong> el número de imagen digital no equivale necesariamente al número de folio. Las cubiertas y guardas conservan su posición original; <em>f.1r</em> corresponde a la imagen digital 9 del manifiesto.</p>
 <p id="state" role="status">Comprobando que la colección de fotografías esté publicada en GitHub…</p>
+<section id="h-preface-concordance" class="h-preface-panel" aria-label="Concordancia de prefacios de Vitruvio con Codex H">
+<h2>Los diez prefacios · anclas de folio de H</h2>
+<p>Primero se identifica dónde empieza cada prefacio en el manuscrito. Una rúbrica o un comienzo de texto documentado no acredita automáticamente cada palabra del folio. Consulta también el texto latino de V514 y sus traducciones.</p>
+<p id="h-preface-status" role="status">Cargando el mapa de los diez prefacios…</p>
+<div id="h-preface-links" class="h-preface-cards"></div>
+<p><strong>Concordancia léxica de trabajo:</strong> busca formas latinas en V514 y consulta el folio de H <em>documentado o estimado</em>. La presencia de una palabra en H solo puede afirmarse después de leerla en la fotografía.</p>
+<div role="group" aria-label="Buscar palabras latinas en V514"><button type="button" data-h-latin="symmetria">Buscar symmetria</button><button type="button" data-h-latin="decor">Buscar decor</button><button type="button" data-h-latin="ordinatio">Buscar ordinatio</button><button type="button" data-h-latin="dispositio">Buscar dispositio</button><button type="button" data-h-latin="eurythmia">Buscar eurythmia</button><button type="button" data-h-latin="firmitas">Buscar firmitas</button><button type="button" data-h-latin="utilitas">Buscar utilitas</button><button type="button" data-h-latin="venustas">Buscar venustas</button></div>
+</section>
 <section aria-label="Lector de folios"><h2>Leer el códice en grande</h2>
 <div class="toolbar"><strong id="label">Folio: —</strong><button id="prev" disabled>← Anterior</button><button id="next" disabled>Siguiente →</button><label>Imagen <input type="number" id="number" min="1" value="9" disabled></label><span id="total"></span><label>Elegir folio <select id="folio-select" aria-label="Elegir por folio o número de imagen" disabled><option value="">Cargando los folios…</option></select></label>
 <button id="minus" disabled>−</button><label>Zoom <input id="zoom" type="range" min="50" max="500" step="25" value="100" disabled></label><output id="percent">100%</output><button id="plus" disabled>+ Ampliar</button><button id="fit" disabled>Ajustar</button></div>
@@ -170,7 +187,7 @@ async function latinSearch(raw){const C=window.CodexHConcordance;if(!C)return;co
  if(!hits.length){box.textContent="«"+raw+"» no aparece en el latín de V514.";return}
  const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"],groups=new Map();
  for(const h of hits){const k=h.book+"|"+(h.locus.includes(".praef.")?"praef":"cap");if(!groups.has(k))groups.set(k,[]);groups.get(k).push(h)}
- const head=document.createElement("p");head.style.cssText="font-weight:600;margin:0 0 6px";head.textContent="«"+raw+"» en el latín de V514: "+hits.length+" pasajes, ordenados por libro y por prefacio / capítulos, con su folio en H.";box.append(head);const tl=document.createElement("a");tl.href="termino.html?t="+encodeURIComponent(raw.trim());tl.textContent="Ficha del término «"+raw.trim()+"» →";tl.style.cssText="display:inline-block;margin:0 0 8px";box.append(tl);
+ const head=document.createElement("p");head.style.cssText="font-weight:600;margin:0 0 6px";head.textContent="«"+raw+"» en el latín de V514: "+hits.length+" pasajes, ordenados por libro y por prefacio / capítulos, con posibles folios de H (documentados o estimados; lectura manuscrita pendiente).";box.append(head);const tl=document.createElement("a");tl.href="termino.html?t="+encodeURIComponent(raw.trim());tl.textContent="Ficha del término «"+raw.trim()+"» →";tl.style.cssText="display:inline-block;margin:0 0 8px";box.append(tl);
  let gi=0;for(const [k,list] of groups){const [b,part]=k.split("|"),br=d.bookRanges.get(+b);
   const det=document.createElement("details");det.open=groups.size<=4||gi++===0;const sum=document.createElement("summary");
   sum.textContent="Libro "+R[b]+" · "+(part==="praef"?"Prefacio":"Capítulos")+(br?" (H, ff. "+(part==="praef"?br.start+"–"+(br.chapter1||br.end):(br.chapter1||br.start)+"–"+br.end)+")":"")+" · "+list.length;det.append(sum);
@@ -181,7 +198,7 @@ async function latinSearch(raw){const C=window.CodexHConcordance;if(!C)return;co
    const btn=document.createElement("button");btn.type="button";btn.textContent="Ver en H";btn.style.cssText="min-height:32px;padding:4px 10px";
    btn.addEventListener("click",async()=>{const c=await C.locate(h.locus);const ex=c.exact.find(x=>x.status!=="catalogue"),f=ex?ex.folio:c.estimate&&c.estimate.folio;
     const idx=f?folios.findIndex(x=>window.CodexQuery.labelKey(x.etiquetaOriginal)===f):-1;if(idx>=0)open(idx,true);
-    btn.textContent=f?"f. "+f+(ex?" · verificado":" · estimado"):"sin folio"});
+    btn.textContent=f?"f. "+f+(ex?(ex.status==="provisional"?" · provisional":ex.status==="visual_rubric"?" · rúbrica documentada":ex.status==="visual_text"?" · texto documentado":" · vínculo documental"):" · estimado, sin cotejo"):"sin folio"});
    const rd=document.createElement("a");rd.href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(h.locus)+"&q="+encodeURIComponent(raw);rd.textContent="Leer →";
    row.append(snip,btn,rd);det.append(row)}
   if(list.length>40){const more=document.createElement("p");more.textContent="… y "+(list.length-40)+" pasajes más en este grupo.";det.append(more)}
@@ -207,7 +224,7 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
  fetch("data/codex-h/folio-locus-map.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null).then(m=>{locusMap=m;go()});
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
-</script><script src="assets/codex-h-single-controls.js?v=20261105-a11y-v1" defer></script><script>
+</script><script src="assets/codex-h-preface-search.js?v=20261111-prefacios-v1" defer></script><script src="assets/codex-h-single-controls.js?v=20261105-a11y-v1" defer></script><script>
 /* Codex H folio reader: translate the actual interface without translating manuscript data.
    UI languages: ES, EN, FR, IT, DE, PT. No external translation calls. */
 (()=>{'use strict';
