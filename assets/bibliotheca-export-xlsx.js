@@ -106,7 +106,7 @@ async function exportAll(button,statusNode){
    for(const t of ms){
     const source=wMap.get(t.witnessId)||{};
     testigos.push({
-     "ID obra":w.id,"Título":w.title,"ID manuscrito":t.witnessId,
+     "ID obra":w.id,"Título":w.title,"ID manuscrito":t.witnessId,"ID códice físico":t.canonicalPhysicalId||source.canonicalPhysicalId||"",
      "Testimonio":source.title||"",
      "Tradición":raw(t,["transmission","type"]),
      "Familia":raw(t,["transmission","family"]),
@@ -140,6 +140,7 @@ async function exportAll(button,statusNode){
    arboles.push({
      "ID obra":w.id,"Título":w.title,"Tipo de árbol":tree.kind,
      "Número de testimonios":tree.witnesses.length,
+     "Códices físicos únicos en obra":new Set(tree.witnesses.map(x=>x.canonicalPhysicalId||x.id)).size,
      "Relaciones de atestación":tree.links.length,
      "Filiaciones documentadas":tree.documentedFiliation.length,
      "Estado del stemma":tree.stemmaStatus,
