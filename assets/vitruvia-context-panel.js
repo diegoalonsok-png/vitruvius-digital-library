@@ -63,7 +63,47 @@ const highlight=(target,text,needle)=>{
 };
 let lastQuery='',currentRows=[],requestId=0,expandedBibliography=false;
 let subjectPortrait=null;
+const articlePortraitHost=$('article-image-preview');
+function clearArticlePortrait(){
+ if(!articlePortraitHost)return;
+ articlePortraitHost.hidden=true;
+ articlePortraitHost.replaceChildren();
+ delete articlePortraitHost.dataset.vrPortraitKey;
+}
+function placeArticlePortrait(){
+ if(!articlePortraitHost)return;
+ const p=subjectPortrait;
+ const verifiedPerson=!!p&&(
+  /^Q\d+$/.test(String(p.entityId||''))||
+  (p.verifiedIdentity===true&&currentRows.some(row=>row.entityKind==='person'&&row.wikidataId))
+ );
+ if(!verifiedPerson||!lastQuery||!/^https:\/\//.test(p.preview||'')||!/^https:\/\//.test(p.page||'')){
+  clearArticlePortrait();return;
+ }
+ const key=[norm(lastQuery),p.preview,p.page,p.entityId||''].join('|');
+ if(articlePortraitHost.dataset.vrPortraitKey===key&&articlePortraitHost.firstElementChild)return;
+ const figure=mk('figure','article-identity-portrait');
+ const source=link('',p.page);
+ const image=mk('img');
+ image.src=p.preview;
+ image.alt=p.alt||p.caption||lastQuery;
+ image.loading='eager';
+ image.decoding='async';
+ image.referrerPolicy='no-referrer';
+ image.addEventListener('error',()=>{
+  if(articlePortraitHost.dataset.vrPortraitKey===key)clearArticlePortrait();
+ },{once:true});
+ source.append(image);
+ const caption=mk('figcaption');
+ caption.append(mk('strong',null,p.caption||lastQuery));
+ caption.append(link(' · '+(lang()==='en'?'Source, author and license':lang()==='fr'?'Source, auteur et licence':'Fuente, autor y licencia'),p.page));
+ figure.append(source,caption);
+ articlePortraitHost.replaceChildren(figure);
+ articlePortraitHost.dataset.vrPortraitKey=key;
+ articlePortraitHost.hidden=false;
+}
 function placePortrait(){
+ placeArticlePortrait();
  const p=subjectPortrait;if(!p||!/^https:\/\//.test(p.preview||'')||!/^https:\/\//.test(p.page||''))return;
  panel.querySelector('.context-subject-portrait')?.remove();
  const figure=mk('figure','context-subject-portrait');
@@ -84,7 +124,7 @@ window.addEventListener('vitruvia:documentary-images',e=>{
  if(!['person','music-group'].includes(d.kind))return;
  const items=(d.items||[]).filter(x=>!['book','architecture'].includes(x.group));
  const item=items.find(x=>x.verifiedIdentity)||items.find(x=>/portrait|sculpture|photo|painting/.test(x.group||''))||items[0];
- receivePortrait(d.query,item,item?.verifiedIdentity?200:50);
+ receivePortrait(d.query,item?{...item,verifiedIdentity:!!item.verifiedIdentity&&d.kind==='person'}:null,item?.verifiedIdentity?200:50);
 });
 function frame(query){
  panel.replaceChildren();
@@ -288,7 +328,7 @@ function redraw(keepPosition=true){
  else panel.scrollTop=0;
 }
 window.addEventListener('vitruvia:search',e=>{
- const next=String(e.detail?.query||'').trim();subjectPortrait=null;if(norm(next)!==norm(lastQuery))expandedBibliography=false;lastQuery=next;currentRows=[];redraw(false);
+ const next=String(e.detail?.query||'').trim();subjectPortrait=null;clearArticlePortrait();if(norm(next)!==norm(lastQuery))expandedBibliography=false;lastQuery=next;currentRows=[];redraw(false);
 });
 window.addEventListener('vitruvia:results',e=>{
  const q=String(e.detail?.query||'').trim();
@@ -297,11 +337,11 @@ window.addEventListener('vitruvia:results',e=>{
  if(!q||norm(q)!==norm(lastQuery))return;
  currentRows=Array.isArray(e.detail.rows)?e.detail.rows:[];
  if(!subjectPortrait){const identity=currentRows.find(r=>r.preferredWiki&&r.image&&r.imageRights);
-  if(identity)subjectPortrait={preview:identity.image,page:identity.imageRights,caption:identity.title,weight:150};}
+  if(identity)subjectPortrait={preview:identity.image,page:identity.imageRights,caption:identity.title,weight:150,entityId:identity.entityKind==='person'?identity.wikidataId:null};}
  redraw();
 });
 window.addEventListener('vitruvia:entity',e=>{if(lastQuery&&[e.detail?.query,e.detail?.corrected].some(q=>q&&norm(q)===norm(lastQuery)))redraw()});
-window.addEventListener('vitruvia:clear',()=>{lastQuery='';subjectPortrait=null;currentRows=[];expandedBibliography=false;requestId++;panel.hidden=true;panel.replaceChildren();panel.scrollTop=0});
+window.addEventListener('vitruvia:clear',()=>{lastQuery='';subjectPortrait=null;clearArticlePortrait();currentRows=[];expandedBibliography=false;requestId++;panel.hidden=true;panel.replaceChildren();panel.scrollTop=0});
 new MutationObserver(records=>{if(records.some(r=>r.attributeName==='lang')&&lastQuery)redraw()}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 // Deferred modules may finish downloading after the first results. Replay only
 // the current in-memory search; nothing is stored across sessions.
