@@ -1,0 +1,606 @@
+{
+  "version": 1,
+  "description": "100 regression cases for interpreting subject in broad humanistic and scholarly queries; no claim of live provider search verification.",
+  "cases": [
+    {
+      "id": 1,
+      "category": 1,
+      "query": "rey Tut",
+      "expectedSubject": "Tut"
+    },
+    {
+      "id": 2,
+      "category": 1,
+      "query": "King Tut",
+      "expectedSubject": "Tut"
+    },
+    {
+      "id": 3,
+      "category": 1,
+      "query": "faraón Tutankamón",
+      "expectedSubject": "Tutankamón"
+    },
+    {
+      "id": 4,
+      "category": 1,
+      "query": "el rey Tut",
+      "expectedSubject": "Tut"
+    },
+    {
+      "id": 5,
+      "category": 1,
+      "query": "reina Nefertiti",
+      "expectedSubject": "Nefertiti"
+    },
+    {
+      "id": 6,
+      "category": 1,
+      "query": "Pharaoh Akhenaten",
+      "expectedSubject": "Akhenaten"
+    },
+    {
+      "id": 7,
+      "category": 1,
+      "query": "Emperor Augustus",
+      "expectedSubject": "Augustus"
+    },
+    {
+      "id": 8,
+      "category": 1,
+      "query": "el rey Ramsés II",
+      "expectedSubject": "Ramsés II"
+    },
+    {
+      "id": 9,
+      "category": 1,
+      "query": "king Charles",
+      "expectedSubject": "Charles"
+    },
+    {
+      "id": 10,
+      "category": 1,
+      "query": "queen Cleopatra",
+      "expectedSubject": "Cleopatra"
+    },
+    {
+      "id": 11,
+      "category": 2,
+      "query": "quién fue Cicerón",
+      "expectedSubject": "Cicerón"
+    },
+    {
+      "id": 12,
+      "category": 2,
+      "query": "qué es arquitectura",
+      "expectedSubject": "arquitectura"
+    },
+    {
+      "id": 13,
+      "category": 2,
+      "query": "who is Mozart",
+      "expectedSubject": "Mozart"
+    },
+    {
+      "id": 14,
+      "category": 2,
+      "query": "what was Byzantium",
+      "expectedSubject": "Byzantium"
+    },
+    {
+      "id": 15,
+      "category": 2,
+      "query": "biografía de Borges",
+      "expectedSubject": "Borges"
+    },
+    {
+      "id": 16,
+      "category": 2,
+      "query": "historia de Napoleón",
+      "expectedSubject": "Napoleón"
+    },
+    {
+      "id": 17,
+      "category": 2,
+      "query": "vida de María Callas",
+      "expectedSubject": "María Callas"
+    },
+    {
+      "id": 18,
+      "category": 2,
+      "query": "vida y obra de Miguel Ángel",
+      "expectedSubject": "Miguel Ángel"
+    },
+    {
+      "id": 19,
+      "category": 2,
+      "query": "obras de Aristóteles",
+      "expectedSubject": "Aristóteles"
+    },
+    {
+      "id": 20,
+      "category": 2,
+      "query": "biografía de Vitruvio",
+      "expectedSubject": "Vitruvio"
+    },
+    {
+      "id": 21,
+      "category": 3,
+      "query": "libros de Borges",
+      "expectedSubject": "Borges"
+    },
+    {
+      "id": 22,
+      "category": 3,
+      "query": "bibliografía de Kafka",
+      "expectedSubject": "Kafka"
+    },
+    {
+      "id": 23,
+      "category": 3,
+      "query": "poemas de Neruda",
+      "expectedSubject": "Neruda"
+    },
+    {
+      "id": 24,
+      "category": 3,
+      "query": "novelas de Dostoievski",
+      "expectedSubject": "Dostoievski"
+    },
+    {
+      "id": 25,
+      "category": 3,
+      "query": "tratados de Palladio",
+      "expectedSubject": "Palladio"
+    },
+    {
+      "id": 26,
+      "category": 3,
+      "query": "books by Tolstoy",
+      "expectedSubject": "Tolstoy"
+    },
+    {
+      "id": 27,
+      "category": 3,
+      "query": "books of Mary Shelley",
+      "expectedSubject": "Mary Shelley"
+    },
+    {
+      "id": 28,
+      "category": 3,
+      "query": "poetry by Shakespeare",
+      "expectedSubject": "Shakespeare"
+    },
+    {
+      "id": 29,
+      "category": 3,
+      "query": "ensayos de Montaigne",
+      "expectedSubject": "Montaigne"
+    },
+    {
+      "id": 30,
+      "category": 3,
+      "query": "manuscritos de Virgilio",
+      "expectedSubject": "Virgilio"
+    },
+    {
+      "id": 31,
+      "category": 4,
+      "query": "álbumes de Radiohead",
+      "expectedSubject": "Radiohead"
+    },
+    {
+      "id": 32,
+      "category": 4,
+      "query": "discografía de Pink Floyd",
+      "expectedSubject": "Pink Floyd"
+    },
+    {
+      "id": 33,
+      "category": 4,
+      "query": "canciones de Beatles",
+      "expectedSubject": "Beatles"
+    },
+    {
+      "id": 34,
+      "category": 4,
+      "query": "videos de Queen",
+      "expectedSubject": "Queen"
+    },
+    {
+      "id": 35,
+      "category": 4,
+      "query": "música de Vangelis",
+      "expectedSubject": "Vangelis"
+    },
+    {
+      "id": 36,
+      "category": 4,
+      "query": "songs by Nirvana",
+      "expectedSubject": "Nirvana"
+    },
+    {
+      "id": 37,
+      "category": 4,
+      "query": "albums of Yes",
+      "expectedSubject": "Yes"
+    },
+    {
+      "id": 38,
+      "category": 4,
+      "query": "discos de Soda Stereo",
+      "expectedSubject": "Soda Stereo"
+    },
+    {
+      "id": 39,
+      "category": 4,
+      "query": "conciertos de Coldplay",
+      "expectedSubject": "Coldplay"
+    },
+    {
+      "id": 40,
+      "category": 4,
+      "query": "composiciones de Bach",
+      "expectedSubject": "Bach"
+    },
+    {
+      "id": 41,
+      "category": 5,
+      "query": "planos de Palladio",
+      "expectedSubject": "Palladio"
+    },
+    {
+      "id": 42,
+      "category": 5,
+      "query": "plantas de Le Corbusier",
+      "expectedSubject": "Le Corbusier"
+    },
+    {
+      "id": 43,
+      "category": 5,
+      "query": "cortes de Mies van der Rohe",
+      "expectedSubject": "Mies van der Rohe"
+    },
+    {
+      "id": 44,
+      "category": 5,
+      "query": "fachadas de Gaudí",
+      "expectedSubject": "Gaudí"
+    },
+    {
+      "id": 45,
+      "category": 5,
+      "query": "obras de Frank Lloyd Wright",
+      "expectedSubject": "Frank Lloyd Wright"
+    },
+    {
+      "id": 46,
+      "category": 5,
+      "query": "edificios de Niemeyer",
+      "expectedSubject": "Niemeyer"
+    },
+    {
+      "id": 47,
+      "category": 5,
+      "query": "secciones de Rafael Moneo",
+      "expectedSubject": "Rafael Moneo"
+    },
+    {
+      "id": 48,
+      "category": 5,
+      "query": "proyectos de Zaha Hadid",
+      "expectedSubject": "Zaha Hadid"
+    },
+    {
+      "id": 49,
+      "category": 5,
+      "query": "architecture of Palladio",
+      "expectedSubject": "Palladio"
+    },
+    {
+      "id": 50,
+      "category": 5,
+      "query": "floor plans of Villa Savoye",
+      "expectedSubject": "Villa Savoye"
+    },
+    {
+      "id": 51,
+      "category": 6,
+      "query": "pinturas de Dalí",
+      "expectedSubject": "Dalí"
+    },
+    {
+      "id": 52,
+      "category": 6,
+      "query": "esculturas de Rodin",
+      "expectedSubject": "Rodin"
+    },
+    {
+      "id": 53,
+      "category": 6,
+      "query": "grabados de Durero",
+      "expectedSubject": "Durero"
+    },
+    {
+      "id": 54,
+      "category": 6,
+      "query": "cuadros de Rembrandt",
+      "expectedSubject": "Rembrandt"
+    },
+    {
+      "id": 55,
+      "category": 6,
+      "query": "dibujos de Leonardo",
+      "expectedSubject": "Leonardo"
+    },
+    {
+      "id": 56,
+      "category": 6,
+      "query": "instalaciones de Christo",
+      "expectedSubject": "Christo"
+    },
+    {
+      "id": 57,
+      "category": 6,
+      "query": "fotografías de Cartier-Bresson",
+      "expectedSubject": "Cartier-Bresson"
+    },
+    {
+      "id": 58,
+      "category": 6,
+      "query": "fotos de Picasso",
+      "expectedSubject": "Picasso"
+    },
+    {
+      "id": 59,
+      "category": 6,
+      "query": "museos de Van Gogh",
+      "expectedSubject": "Van Gogh"
+    },
+    {
+      "id": 60,
+      "category": 6,
+      "query": "retratos de Velázquez",
+      "expectedSubject": "Velázquez"
+    },
+    {
+      "id": 61,
+      "category": 7,
+      "query": "symmetria",
+      "expectedSubject": "symmetria"
+    },
+    {
+      "id": 62,
+      "category": 7,
+      "query": "decor",
+      "expectedSubject": "decor"
+    },
+    {
+      "id": 63,
+      "category": 7,
+      "query": "firmitas",
+      "expectedSubject": "firmitas"
+    },
+    {
+      "id": 64,
+      "category": 7,
+      "query": "εὐρυθμία",
+      "expectedSubject": "εὐρυθμία"
+    },
+    {
+      "id": 65,
+      "category": 7,
+      "query": "III.1.2",
+      "expectedSubject": "III.1.2"
+    },
+    {
+      "id": 66,
+      "category": 7,
+      "query": "Harley MS 2767",
+      "expectedSubject": "Harley MS 2767"
+    },
+    {
+      "id": 67,
+      "category": 7,
+      "query": "Vitruvio I.1.1",
+      "expectedSubject": "Vitruvio I.1.1"
+    },
+    {
+      "id": 68,
+      "category": 7,
+      "query": "Krohn 1912",
+      "expectedSubject": "Krohn 1912"
+    },
+    {
+      "id": 69,
+      "category": 7,
+      "query": "Rose 1899",
+      "expectedSubject": "Rose 1899"
+    },
+    {
+      "id": 70,
+      "category": 7,
+      "query": "Perrault 1673",
+      "expectedSubject": "Perrault 1673"
+    },
+    {
+      "id": 71,
+      "category": 8,
+      "query": "inflación argentina",
+      "expectedSubject": "inflación argentina"
+    },
+    {
+      "id": 72,
+      "category": 8,
+      "query": "cómo funciona la gravedad",
+      "expectedSubject": "cómo funciona la gravedad"
+    },
+    {
+      "id": 73,
+      "category": 8,
+      "query": "número pi",
+      "expectedSubject": "número pi"
+    },
+    {
+      "id": 74,
+      "category": 8,
+      "query": "Teorema de Pitágoras",
+      "expectedSubject": "Teorema de Pitágoras"
+    },
+    {
+      "id": 75,
+      "category": 8,
+      "query": "estática de estructuras",
+      "expectedSubject": "estática de estructuras"
+    },
+    {
+      "id": 76,
+      "category": 8,
+      "query": "cargas de viento",
+      "expectedSubject": "cargas de viento"
+    },
+    {
+      "id": 77,
+      "category": 8,
+      "query": "segunda guerra mundial",
+      "expectedSubject": "segunda guerra mundial"
+    },
+    {
+      "id": 78,
+      "category": 8,
+      "query": "Cruz del Sur",
+      "expectedSubject": "Cruz del Sur"
+    },
+    {
+      "id": 79,
+      "category": 8,
+      "query": "Buenos Aires",
+      "expectedSubject": "Buenos Aires"
+    },
+    {
+      "id": 80,
+      "category": 8,
+      "query": "por qué flotan los barcos",
+      "expectedSubject": "por qué flotan los barcos"
+    },
+    {
+      "id": 81,
+      "category": 9,
+      "query": "Palladio arquitecto",
+      "expectedSubject": "Palladio"
+    },
+    {
+      "id": 82,
+      "category": 9,
+      "query": "Dalí pintor",
+      "expectedSubject": "Dalí"
+    },
+    {
+      "id": 83,
+      "category": 9,
+      "query": "Mozart compositor",
+      "expectedSubject": "Mozart"
+    },
+    {
+      "id": 84,
+      "category": 9,
+      "query": "Radiohead music",
+      "expectedSubject": "Radiohead"
+    },
+    {
+      "id": 85,
+      "category": 9,
+      "query": "Goya paintings",
+      "expectedSubject": "Goya"
+    },
+    {
+      "id": 86,
+      "category": 9,
+      "query": "Vitruvio libros",
+      "expectedSubject": "Vitruvio"
+    },
+    {
+      "id": 87,
+      "category": 9,
+      "query": "Le Corbusier planos",
+      "expectedSubject": "Le Corbusier"
+    },
+    {
+      "id": 88,
+      "category": 9,
+      "query": "Leonardo dibujos",
+      "expectedSubject": "Leonardo"
+    },
+    {
+      "id": 89,
+      "category": 9,
+      "query": "Borges poemas",
+      "expectedSubject": "Borges"
+    },
+    {
+      "id": 90,
+      "category": 9,
+      "query": "Shakespeare books",
+      "expectedSubject": "Shakespeare"
+    },
+    {
+      "id": 91,
+      "category": 10,
+      "query": "Madonna",
+      "expectedSubject": "Madonna"
+    },
+    {
+      "id": 92,
+      "category": 10,
+      "query": "San Martín de Porres",
+      "expectedSubject": "San Martín de Porres"
+    },
+    {
+      "id": 93,
+      "category": 10,
+      "query": "King Crimson",
+      "expectedSubject": "King Crimson"
+    },
+    {
+      "id": 94,
+      "category": 10,
+      "query": "Rey Sol",
+      "expectedSubject": "Rey Sol"
+    },
+    {
+      "id": 95,
+      "category": 10,
+      "query": "The Doors",
+      "expectedSubject": "The Doors"
+    },
+    {
+      "id": 96,
+      "category": 10,
+      "query": "Queen",
+      "expectedSubject": "Queen"
+    },
+    {
+      "id": 97,
+      "category": 10,
+      "query": "The Beatles",
+      "expectedSubject": "The Beatles"
+    },
+    {
+      "id": 98,
+      "category": 10,
+      "query": "I, Claudius",
+      "expectedSubject": "I, Claudius"
+    },
+    {
+      "id": 99,
+      "category": 10,
+      "query": "Rome",
+      "expectedSubject": "Rome"
+    },
+    {
+      "id": 100,
+      "category": 10,
+      "query": "2001 A Space Odyssey",
+      "expectedSubject": "2001 A Space Odyssey"
+    }
+  ]
+}
