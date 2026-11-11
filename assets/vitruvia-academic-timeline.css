@@ -236,3 +236,138 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-event-marker{box-shadow:
 #vitruvia-academic-timeline{overflow:visible!important}
 #vitruvia-academic-timeline .vat-map{overflow:visible!important}
 #vitruvia-academic-timeline .vat-event-marker:focus-visible{outline:3px solid #8da9cc!important;outline-offset:4px}
+
+/* Vitruvia chronology v2.1 · bounded responsive lanes and truthful dates.
+   No original texts, source documents or codex images are modified. */
+#vitruvia-academic-timeline{
+  background:linear-gradient(165deg,#191e25 0%,#111518 65%,#1c2025 100%)!important;
+  border:1px solid #667078!important;
+  border-radius:13px!important;
+  box-shadow:0 8px 25px #0002;
+}
+#vitruvia-academic-timeline .vat-header{align-items:center;flex-wrap:wrap;gap:12px}
+#vitruvia-academic-timeline .vat-title{min-width:0;flex:1 1 230px}
+#vitruvia-academic-timeline .vat-title h2{letter-spacing:.01em}
+#vitruvia-academic-timeline .vat-controls{flex:0 1 auto;gap:7px}
+#vitruvia-academic-timeline .vat-controls button{
+ border-radius:8px;transition:background-color .15s ease,transform .15s ease
+}
+#vitruvia-academic-timeline .vat-controls button:disabled{opacity:.35;cursor:not-allowed}
+#vitruvia-academic-timeline .vat-controls button:not(:disabled):active{transform:scale(.94)}
+#vitruvia-academic-timeline .vat-viewport,
+#vitruvia-academic-timeline .vat-map{
+  overflow:visible!important;max-width:100%!important;min-width:0!important
+}
+#vitruvia-academic-timeline .vat-band{
+  border-color:#3b464d!important;
+  background:linear-gradient(90deg,#202a31 0%,#151b1e 100%);
+  border-radius:0;
+}
+#vitruvia-academic-timeline .vat-band-title{align-items:center!important;line-height:1.5;overflow-wrap:anywhere}
+#vitruvia-academic-timeline .vat-track{
+  position:relative;min-height:160px!important;overflow:visible!important
+}
+#vitruvia-academic-timeline .vat-track .vat-line{
+ top:52px!important;border-top:2px solid #8999a6!important;opacity:.7
+}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker{
+ width:25px!important;height:25px!important;
+ min-width:25px!important;max-width:25px!important;
+ min-height:25px!important;max-height:25px!important;
+ border:2px solid #f1f0e9!important;border-radius:50%!important;
+ box-shadow:0 0 0 4px #2e3640,0 3px 9px #0006!important;
+ isolation:isolate
+}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker.vat-event-cluster{
+ border-style:double!important;border-width:4px!important
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop{
+ position:absolute!important;
+ top:calc(100% + 10px)!important;bottom:auto!important;
+ left:calc(50% + var(--vat-popup-shift,0px))!important;
+ width:var(--vat-popup-width,150px)!important;
+ max-width:calc(100vw - 58px)!important;
+ padding:9px 10px!important;line-height:1.45!important;
+ transform:translateX(-50%) translateY(-4px)!important;
+ border-radius:9px!important;
+ border:1px solid #677783!important;z-index:70!important;
+ box-shadow:0 8px 19px #0008!important;
+ pointer-events:none!important
+}
+#vitruvia-academic-timeline .vat-event-marker:is(:hover,:focus-visible,[aria-pressed=true]) .vat-event-pop{
+ transform:translateX(-50%) translateY(0)!important;
+ visibility:visible!important;opacity:1!important
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop strong{
+ display:-webkit-box!important;-webkit-box-orient:vertical!important;
+ -webkit-line-clamp:3!important;overflow:hidden!important;
+ font:600 12px/1.4 system-ui,sans-serif!important
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop .vat-year{
+ font:600 12px/1.3 system-ui,sans-serif!important
+}
+#vitruvia-academic-timeline .vat-detail{
+ margin-top:15px!important;padding:13px!important;display:block!important;
+ border-radius:10px!important;background:#1e272e!important;
+ border:1px solid #667887!important;color:#f5f5f1!important;
+}
+#vitruvia-academic-timeline .vat-detail-list{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));
+ gap:12px;width:100%;min-width:0
+}
+#vitruvia-academic-timeline .vat-detail-item{
+ min-width:0;border:1px solid #54636f;border-radius:8px;padding:14px;
+ background:#26313a;overflow-wrap:anywhere
+}
+#vitruvia-academic-timeline .vat-detail-item h4{margin:0 0 7px;font:600 16px/1.4 Georgia,serif;color:#fff}
+#vitruvia-academic-timeline .vat-detail-item p{margin:0 0 10px;font:14px/1.55 Georgia,serif;color:#e7e9e9}
+#vitruvia-academic-timeline .vat-detail-item img{width:min(100%,220px);height:auto;max-height:145px;object-fit:contain;display:block;margin-bottom:8px}
+#vitruvia-academic-timeline .vat-detail-item a{color:#dbefff!important}
+#vitruvia-academic-timeline .vat-references{
+ margin-top:16px;padding:12px 15px;border:1px solid #58616b;
+ border-radius:9px;background:#252b31;color:#ecf0ef
+}
+#vitruvia-academic-timeline .vat-references summary{
+ cursor:pointer;font:600 13px/1.45 system-ui,sans-serif
+}
+#vitruvia-academic-timeline .vat-references-method{
+ font:12px/1.55 system-ui,sans-serif;color:#d1d5d7;margin:10px 0
+}
+#vitruvia-academic-timeline .vat-reference-list{
+ max-height:280px;overflow:auto;margin:10px 0 2px;
+ padding-left:21px;font:13px/1.6 system-ui,sans-serif
+}
+#vitruvia-academic-timeline .vat-reference-list li{margin:5px 0}
+#vitruvia-academic-timeline .vat-reference-list a{color:#d6eafb;overflow-wrap:anywhere}
+html[data-theme=light] #vitruvia-academic-timeline{
+ background:linear-gradient(160deg,#f7fafb,#e9eef0)!important;
+ border-color:#a8b7bf!important;color:#26343e!important
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-band{
+ background:linear-gradient(90deg,#e3ebee,#f3f6f7);
+ border-color:#bdc7cc!important
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-track .vat-line{border-color:#687f8d!important}
+html[data-theme=light] #vitruvia-academic-timeline .vat-detail{
+ background:#e7eff3!important;color:#243440!important;border-color:#bbcbd4!important
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-detail-item{
+ background:#f9fcfd;color:#223844;border-color:#c1d0d7
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-detail-item :is(h4,p,a,small){color:#233846!important}
+html[data-theme=light] #vitruvia-academic-timeline .vat-references{
+ background:#f7fafb;color:#233844;border-color:#b6c7cf
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-references-method{color:#425868}
+html[data-theme=light] #vitruvia-academic-timeline .vat-reference-list a{color:#17476d}
+@media(max-width:640px){
+ #vitruvia-academic-timeline{padding:10px 8px!important}
+ #vitruvia-academic-timeline .vat-header{gap:9px}
+ #vitruvia-academic-timeline .vat-title h2{font-size:21px}
+ #vitruvia-academic-timeline .vat-band-title{font-size:11px!important}
+ #vitruvia-academic-timeline .vat-detail-item{padding:12px}
+ #vitruvia-academic-timeline .vat-controls button{min-width:37px;min-height:38px}
+}
+@media(prefers-reduced-motion:reduce){
+ #vitruvia-academic-timeline :is(button,.vat-event-pop){transition:none!important}
+}
