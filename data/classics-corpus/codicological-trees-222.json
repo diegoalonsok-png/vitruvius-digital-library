@@ -2,7 +2,7 @@
   "schema": "vitruvius-codicological-trees-222-v1",
   "updated": "2026-11-10",
   "count": 222,
-  "physicalWitnessCount": 87,
+  "physicalWitnessCount": 91,
   "interpretation": "All work-to-manuscript lines express attestations, not copying. Only separately documented manuscript-to-manuscript lines support filiations. No family or lost archetype is invented.",
   "method": "physicalWitnessCount counts unique canonicalPhysicalId, not individual text transmissions. Every work has its own attestation link; family trees require source-backed relations.",
   "records": [
@@ -2617,8 +2617,54 @@
         "type": "classical_work",
         "label": "Plutarco · Βίοι Παράλληλοι · Vidas paralelas"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "plutarch-pal-gr283",
+          "canonicalPhysicalId": "codex-pal-gr-283",
+          "type": "physical_witness",
+          "label": "Cod. Pal. graec. 283",
+          "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
+          "dating": "mediados o tercer cuarto del siglo X",
+          "material": null,
+          "folioRange": "Vidas paralelas ff. 1r–195v; opúsculos morales ff. 195v–207r.",
+          "coverage": "Selección de Vidas paralelas y tratados morales, incluida De latenter vivendo, An vitiositas, De amore prolis, De invidia et odio, An virtus doceri possit y Aetia physica; no es la totalidad de Moralia.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        },
+        {
+          "id": "plutarch-diogenes-bnf-suppl134",
+          "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+          "type": "physical_witness",
+          "label": "Supplément grec 134",
+          "repository": "Paris, Bibliothèque nationale de France",
+          "dating": "primera mitad del siglo XIV",
+          "material": null,
+          "folioRange": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v.",
+          "coverage": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "plutarch-lives",
+          "target": "plutarch-pal-gr283",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/32471/"
+        },
+        {
+          "source": "plutarch-lives",
+          "target": "plutarch-diogenes-bnf-suppl134",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -2627,7 +2673,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -4035,8 +4081,54 @@
         "type": "classical_work",
         "label": "Plutarco · Ἠθικά (Moralia)"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "plutarch-pal-gr283",
+          "canonicalPhysicalId": "codex-pal-gr-283",
+          "type": "physical_witness",
+          "label": "Cod. Pal. graec. 283",
+          "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
+          "dating": "mediados o tercer cuarto del siglo X",
+          "material": null,
+          "folioRange": "Vidas paralelas ff. 1r–195v; opúsculos morales ff. 195v–207r.",
+          "coverage": "Selección de Vidas paralelas y tratados morales, incluida De latenter vivendo, An vitiositas, De amore prolis, De invidia et odio, An virtus doceri possit y Aetia physica; no es la totalidad de Moralia.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        },
+        {
+          "id": "plutarch-diogenes-bnf-suppl134",
+          "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+          "type": "physical_witness",
+          "label": "Supplément grec 134",
+          "repository": "Paris, Bibliothèque nationale de France",
+          "dating": "primera mitad del siglo XIV",
+          "material": null,
+          "folioRange": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v.",
+          "coverage": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "plutarch-moralia",
+          "target": "plutarch-pal-gr283",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/32471/"
+        },
+        {
+          "source": "plutarch-moralia",
+          "target": "plutarch-diogenes-bnf-suppl134",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -4045,7 +4137,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -4060,8 +4152,32 @@
         "type": "classical_work",
         "label": "Luciano de Samósata · Νεκρικοὶ διάλογοι"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "lucian-urb-gr118",
+          "canonicalPhysicalId": "codex-urb-gr-118",
+          "type": "physical_witness",
+          "label": "Urb. gr. 118",
+          "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+          "dating": "testimonios compilados entre siglos XIII y XVI; unidad específica pendiente",
+          "material": null,
+          "folioRange": "Dialogi mortuorum ff. 18v–25r; Verae historiae ff. 37r–49r.",
+          "coverage": "Diálogos de muertos seleccionados en orden no canónico (13, 12, 26, etc.); Verae historiae libros I–II según repertorio. La unidad paleográfica debe cotejarse; no se aplica una fecha única a todo el volumen.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "lucian-dialogi-mortuorum",
+          "target": "lucian-urb-gr118",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/66585/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -4070,7 +4186,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -4085,8 +4201,32 @@
         "type": "classical_work",
         "label": "Luciano de Samósata · Ἀληθῆ διηγήματα"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "lucian-urb-gr118",
+          "canonicalPhysicalId": "codex-urb-gr-118",
+          "type": "physical_witness",
+          "label": "Urb. gr. 118",
+          "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+          "dating": "testimonios compilados entre siglos XIII y XVI; unidad específica pendiente",
+          "material": null,
+          "folioRange": "Dialogi mortuorum ff. 18v–25r; Verae historiae ff. 37r–49r.",
+          "coverage": "Diálogos de muertos seleccionados en orden no canónico (13, 12, 26, etc.); Verae historiae libros I–II según repertorio. La unidad paleográfica debe cotejarse; no se aplica una fecha única a todo el volumen.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "lucian-verae-historiae",
+          "target": "lucian-urb-gr118",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/66585/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -4095,7 +4235,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -5364,8 +5504,32 @@
         "type": "classical_work",
         "label": "Arriano · Ἀλεξάνδρου Ἀνάβασις"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "arrian-procopius-laur-plut9-32",
+          "canonicalPhysicalId": "codex-laur-plut-9-32",
+          "type": "physical_witness",
+          "label": "Plut. 9.32",
+          "repository": "Firenze, Biblioteca Medicea Laurenziana",
+          "dating": "c. 1430–1450 (unidad principal)",
+          "material": "Papel",
+          "folioRange": "Arriano Anabasis Alexandri ff. 19r–149r; Procopio De aedificiis ff. 177r–214r.",
+          "coverage": "Arriano con escolios y laguna; Procopio De aedificiis con escolios. Ambos transmitidos en la misma unidad miscelánea, no declarados códices más antiguos.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "arrian-anabasis-alexandri",
+          "target": "arrian-procopius-laur-plut9-32",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16120/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -5374,7 +5538,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -7716,8 +7880,32 @@
         "type": "classical_work",
         "label": "Diógenes Laercio · Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "plutarch-diogenes-bnf-suppl134",
+          "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+          "type": "physical_witness",
+          "label": "Supplément grec 134",
+          "repository": "Paris, Bibliothèque nationale de France",
+          "dating": "primera mitad del siglo XIV",
+          "material": null,
+          "folioRange": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v.",
+          "coverage": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "diogenes-laertius-vitae",
+          "target": "plutarch-diogenes-bnf-suppl134",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -7726,7 +7914,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -8827,8 +9015,32 @@
         "type": "classical_work",
         "label": "Procopio de Cesarea · Περὶ κτισμάτων"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "arrian-procopius-laur-plut9-32",
+          "canonicalPhysicalId": "codex-laur-plut-9-32",
+          "type": "physical_witness",
+          "label": "Plut. 9.32",
+          "repository": "Firenze, Biblioteca Medicea Laurenziana",
+          "dating": "c. 1430–1450 (unidad principal)",
+          "material": "Papel",
+          "folioRange": "Arriano Anabasis Alexandri ff. 19r–149r; Procopio De aedificiis ff. 177r–214r.",
+          "coverage": "Arriano con escolios y laguna; Procopio De aedificiis con escolios. Ambos transmitidos en la misma unidad miscelánea, no declarados códices más antiguos.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "procopius-aedificiis",
+          "target": "arrian-procopius-laur-plut9-32",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16120/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -8837,7 +9049,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -9502,5 +9714,5 @@
       }
     }
   ],
-  "textualWitnessRecordCount": 94
+  "textualWitnessRecordCount": 98
 }
