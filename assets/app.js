@@ -62,7 +62,7 @@ function resultSnippet(r){
    }else if(qw.length===1)addExact(qw[0]);
   }
  }else{
-  const terms=[query,String(r.form||''),...String(r.semantic_term||'').split(/\s*·\s*/)].filter(x=>x.trim().length>=2);
+  const terms=[query].filter(x=>x.trim().length>=2);
   for(const term of terms)addExact(term);
  }
  // The worker offset identifies one source span when the excerpt contains it.
