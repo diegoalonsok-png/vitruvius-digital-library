@@ -4,6 +4,7 @@ on:
     paths:
       - 'scripts/audit-academic-readiness.mjs'
       - 'scripts/academic-integrity.mjs'
+      - 'scripts/test-codicological-source-consistency.mjs'
       - 'data/academic-integrity.json'
       - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
       - 'data/bibliotheca-testimonia-verified.json'
@@ -28,6 +29,7 @@ on:
     paths:
       - 'scripts/audit-academic-readiness.mjs'
       - 'scripts/academic-integrity.mjs'
+      - 'scripts/test-codicological-source-consistency.mjs'
       - 'data/academic-integrity.json'
       - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
       - 'data/bibliotheca-testimonia-verified.json'
@@ -62,6 +64,8 @@ jobs:
           node-version: '22'
       - name: Confirm published integrity data matches current immutable sources
         run: node scripts/academic-integrity.mjs --check
+      - name: Verify codicological dossier fields and British Library references
+        run: node scripts/test-codicological-source-consistency.mjs
       - name: Validate scholarly metadata and generate the backlog
         run: node scripts/audit-academic-readiness.mjs
       - name: Cross-check texts, sources and editorial evidence
