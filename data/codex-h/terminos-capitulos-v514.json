@@ -13,7 +13,7 @@
     "locusMap": "data/codex-h/folio-locus-map.json",
     "imageIndex": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/indice-folios.json"
   },
-  "method": "Ten automatically selected Latin surface forms per V514 chapter or preface, using frequency, distinctiveness and technical-term boosts; not lemmatized or paleographically verified.",
+  "method": "Ten automatically selected Latin surface forms per V514 chapter or preface, giving priority to attestations of foundational Vitruvian architectural terms, then frequency and chapter distinctiveness. These are not lemmata or paleographically verified H readings.",
   "warning": "Occurrence counts and Latin word forms refer to editorial V514, NOT Codex H. Folio candidates are derived from documented chapter anchors or estimated by interpolation, not confirmed manuscript word attestations.",
   "chapters": [
     {
@@ -22,6 +22,14 @@
       "chapter": "praef",
       "passages": 3,
       "terms": [
+        {
+          "form": "architectura",
+          "occurrences": 1,
+          "loci": [
+            "1.praef.1"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "aedificavisse",
           "occurrences": 1,
@@ -43,14 +51,6 @@
           "occurrences": 1,
           "loci": [
             "1.praef.2"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "architectura",
-          "occurrences": 1,
-          "loci": [
-            "1.praef.1"
           ],
           "rankType": "terminologia_controlada"
         },
@@ -110,6 +110,14 @@
       "chapter": 1,
       "passages": 18,
       "terms": [
+        {
+          "form": "architectura",
+          "occurrences": 1,
+          "loci": [
+            "1.1.3"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "geometria",
           "occurrences": 2,
@@ -183,14 +191,6 @@
             "1.1.9"
           ],
           "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "aquarumque",
-          "occurrences": 1,
-          "loci": [
-            "1.1.10"
-          ],
-          "rankType": "terminologia_controlada"
         }
       ]
     },
@@ -200,6 +200,15 @@
       "chapter": 2,
       "passages": 9,
       "terms": [
+        {
+          "form": "symmetria",
+          "occurrences": 2,
+          "loci": [
+            "1.2.1",
+            "1.2.4"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "decor",
           "occurrences": 4,
@@ -211,11 +220,43 @@
           "rankType": "terminologia_controlada"
         },
         {
+          "form": "ordinatio",
+          "occurrences": 1,
+          "loci": [
+            "1.2.2"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
+          "form": "dispositio",
+          "occurrences": 1,
+          "loci": [
+            "1.2.2"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "eurythmia",
           "occurrences": 2,
           "loci": [
             "1.2.1",
             "1.2.3"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
+          "form": "distributio",
+          "occurrences": 1,
+          "loci": [
+            "1.2.8"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
+          "form": "architectura",
+          "occurrences": 1,
+          "loci": [
+            "1.2.1"
           ],
           "rankType": "terminologia_controlada"
         },
@@ -242,46 +283,6 @@
             "1.2.9"
           ],
           "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "ordinatio",
-          "occurrences": 1,
-          "loci": [
-            "1.2.2"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "symmetros",
-          "occurrences": 1,
-          "loci": [
-            "1.2.4"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "triglypho",
-          "occurrences": 1,
-          "loci": [
-            "1.2.4"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "venusta",
-          "occurrences": 1,
-          "loci": [
-            "1.2.3"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "aquarumque",
-          "occurrences": 1,
-          "loci": [
-            "1.2.7"
-          ],
-          "rankType": "terminologia_controlada"
         }
       ]
     },
@@ -291,6 +292,23 @@
       "chapter": 3,
       "passages": 2,
       "terms": [
+        {
+          "form": "dispositio",
+          "occurrences": 2,
+          "loci": [
+            "1.3.1",
+            "1.3.2"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
+          "form": "distributio",
+          "occurrences": 1,
+          "loci": [
+            "1.3.2"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "aedificatio",
           "occurrences": 2,
@@ -349,23 +367,6 @@
         },
         {
           "form": "machinatio",
-          "occurrences": 1,
-          "loci": [
-            "1.3.1"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "dispositio",
-          "occurrences": 2,
-          "loci": [
-            "1.3.1",
-            "1.3.2"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "theatra",
           "occurrences": 1,
           "loci": [
             "1.3.1"
@@ -863,6 +864,14 @@
       "passages": 9,
       "terms": [
         {
+          "form": "architectura",
+          "occurrences": 1,
+          "loci": [
+            "2.1.8"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "tecta",
           "occurrences": 8,
           "loci": [
@@ -936,14 +945,6 @@
           "occurrences": 1,
           "loci": [
             "2.1.7"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "ligna",
-          "occurrences": 1,
-          "loci": [
-            "2.1.1"
           ],
           "rankType": "terminologia_controlada"
         }
@@ -1890,10 +1891,10 @@
       "passages": 9,
       "terms": [
         {
-          "form": "aeracius",
-          "occurrences": 1,
+          "form": "symmetria",
+          "occurrences": 2,
           "loci": [
-            "3.1.8"
+            "3.1.1"
           ],
           "rankType": "terminologia_controlada"
         },
@@ -1902,6 +1903,14 @@
           "occurrences": 1,
           "loci": [
             "3.1.1"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
+          "form": "aeracius",
+          "occurrences": 1,
+          "loci": [
+            "3.1.8"
           ],
           "rankType": "terminologia_controlada"
         },
@@ -1930,14 +1939,6 @@
             "3.1.9"
           ],
           "rankType": "frecuencia_distintiva"
-        },
-        {
-          "form": "symmetria",
-          "occurrences": 2,
-          "loci": [
-            "3.1.1"
-          ],
-          "rankType": "terminologia_controlada"
         },
         {
           "form": "rotundationem",
@@ -1983,6 +1984,14 @@
       "chapter": 2,
       "passages": 8,
       "terms": [
+        {
+          "form": "symmetria",
+          "occurrences": 1,
+          "loci": [
+            "3.2.2"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "intercolumnii",
           "occurrences": 1,
@@ -2063,16 +2072,6 @@
             "3.2.7"
           ],
           "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "dipteros",
-          "occurrences": 3,
-          "loci": [
-            "3.2.1",
-            "3.2.7",
-            "3.2.8"
-          ],
-          "rankType": "frecuencia_distintiva"
         }
       ]
     },
@@ -2082,6 +2081,23 @@
       "chapter": 3,
       "passages": 13,
       "terms": [
+        {
+          "form": "symmetria",
+          "occurrences": 1,
+          "loci": [
+            "3.3.8"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
+          "form": "dispositio",
+          "occurrences": 2,
+          "loci": [
+            "3.3.4",
+            "3.3.9"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "intercolumnio",
           "occurrences": 3,
@@ -2149,23 +2165,6 @@
           "occurrences": 1,
           "loci": [
             "3.3.2"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "proportione",
-          "occurrences": 1,
-          "loci": [
-            "3.3.13"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "dispositio",
-          "occurrences": 2,
-          "loci": [
-            "3.3.4",
-            "3.3.9"
           ],
           "rankType": "terminologia_controlada"
         }
@@ -2269,6 +2268,14 @@
       "passages": 15,
       "terms": [
         {
+          "form": "symmetria",
+          "occurrences": 1,
+          "loci": [
+            "3.5.8"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "columnae",
           "occurrences": 12,
           "loci": [
@@ -2350,19 +2357,6 @@
             "3.5.8"
           ],
           "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "altitudinis",
-          "occurrences": 9,
-          "loci": [
-            "3.5.7",
-            "3.5.9",
-            "3.5.10",
-            "3.5.11",
-            "3.5.12",
-            "3.5.13"
-          ],
-          "rankType": "terminologia_controlada"
         }
       ]
     },
@@ -2372,6 +2366,14 @@
       "chapter": "praef",
       "passages": 2,
       "terms": [
+        {
+          "form": "architectura",
+          "occurrences": 1,
+          "loci": [
+            "4.praef.1"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "ordinationem",
           "occurrences": 1,
@@ -2443,14 +2445,6 @@
             "4.praef.1"
           ],
           "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "proportionibus",
-          "occurrences": 1,
-          "loci": [
-            "4.praef.2"
-          ],
-          "rankType": "terminologia_controlada"
         }
       ]
     },
@@ -2460,6 +2454,14 @@
       "chapter": 1,
       "passages": 12,
       "terms": [
+        {
+          "form": "symmetria",
+          "occurrences": 1,
+          "loci": [
+            "4.1.11"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "corinthia",
           "occurrences": 3,
@@ -2535,14 +2537,6 @@
           "occurrences": 1,
           "loci": [
             "4.1.6"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "modulis",
-          "occurrences": 1,
-          "loci": [
-            "4.1.8"
           ],
           "rankType": "terminologia_controlada"
         }
@@ -2651,6 +2645,14 @@
       "passages": 10,
       "terms": [
         {
+          "form": "distributio",
+          "occurrences": 1,
+          "loci": [
+            "4.3.1"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "moduli",
           "occurrences": 11,
           "loci": [
@@ -2730,15 +2732,6 @@
           "occurrences": 2,
           "loci": [
             "4.3.6"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "columna",
-          "occurrences": 2,
-          "loci": [
-            "4.3.4",
-            "4.3.9"
           ],
           "rankType": "terminologia_controlada"
         }
@@ -3311,6 +3304,22 @@
       "passages": 5,
       "terms": [
         {
+          "form": "dispositio",
+          "occurrences": 1,
+          "loci": [
+            "5.praef.1"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
+          "form": "architectura",
+          "occurrences": 1,
+          "loci": [
+            "5.praef.1"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "ordinationes",
           "occurrences": 1,
           "loci": [
@@ -3337,14 +3346,6 @@
           "rankType": "frecuencia_distintiva"
         },
         {
-          "form": "dispositio",
-          "occurrences": 1,
-          "loci": [
-            "5.praef.1"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
           "form": "forum",
           "occurrences": 1,
           "loci": [
@@ -3360,14 +3361,6 @@
             "5.praef.4"
           ],
           "rankType": "frecuencia_distintiva"
-        },
-        {
-          "form": "architectura",
-          "occurrences": 1,
-          "loci": [
-            "5.praef.1"
-          ],
-          "rankType": "terminologia_controlada"
         },
         {
           "form": "cybus",
@@ -3401,6 +3394,23 @@
       "chapter": 1,
       "passages": 10,
       "terms": [
+        {
+          "form": "dispositio",
+          "occurrences": 2,
+          "loci": [
+            "5.1.2",
+            "5.1.10"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
+          "form": "distributio",
+          "occurrences": 1,
+          "loci": [
+            "5.1.10"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "basilicae",
           "occurrences": 3,
@@ -3461,15 +3471,6 @@
           "rankType": "terminologia_controlada"
         },
         {
-          "form": "dispositio",
-          "occurrences": 2,
-          "loci": [
-            "5.1.2",
-            "5.1.10"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
           "form": "forum",
           "occurrences": 2,
           "loci": [
@@ -3483,15 +3484,6 @@
           "occurrences": 1,
           "loci": [
             "5.1.7"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "altitudinibus",
-          "occurrences": 2,
-          "loci": [
-            "5.1.3",
-            "5.1.6"
           ],
           "rankType": "terminologia_controlada"
         }
@@ -3871,6 +3863,14 @@
       "passages": 9,
       "terms": [
         {
+          "form": "symmetria",
+          "occurrences": 1,
+          "loci": [
+            "5.6.7"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "dispositos",
           "occurrences": 1,
           "loci": [
@@ -3941,14 +3941,6 @@
           "occurrences": 1,
           "loci": [
             "5.6.6"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "symmetriam",
-          "occurrences": 1,
-          "loci": [
-            "5.6.7"
           ],
           "rankType": "terminologia_controlada"
         }
@@ -4698,6 +4690,14 @@
       "passages": 5,
       "terms": [
         {
+          "form": "symmetria",
+          "occurrences": 1,
+          "loci": [
+            "6.2.1"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "architecto",
           "occurrences": 1,
           "loci": [
@@ -4769,14 +4769,6 @@
           "occurrences": 1,
           "loci": [
             "6.2.1"
-          ],
-          "rankType": "frecuencia_distintiva"
-        },
-        {
-          "form": "cavis",
-          "occurrences": 1,
-          "loci": [
-            "6.2.5"
           ],
           "rankType": "frecuencia_distintiva"
         }
@@ -5350,6 +5342,14 @@
       "passages": 18,
       "terms": [
         {
+          "form": "architectura",
+          "occurrences": 1,
+          "loci": [
+            "7.praef.14"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "ionice",
           "occurrences": 2,
           "loci": [
@@ -5420,14 +5420,6 @@
           "loci": [
             "7.praef.12",
             "7.praef.16",
-            "7.praef.17"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "columnarumque",
-          "occurrences": 1,
-          "loci": [
             "7.praef.17"
           ],
           "rankType": "terminologia_controlada"
@@ -8346,6 +8338,14 @@
       "passages": 6,
       "terms": [
         {
+          "form": "machina",
+          "occurrences": 1,
+          "loci": [
+            "10.1.1"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "machinata",
           "occurrences": 1,
           "loci": [
@@ -8419,14 +8419,6 @@
             "10.1.1"
           ],
           "rankType": "frecuencia_distintiva"
-        },
-        {
-          "form": "utilitatem",
-          "occurrences": 1,
-          "loci": [
-            "10.1.2"
-          ],
-          "rankType": "terminologia_controlada"
         }
       ]
     },
@@ -8436,6 +8428,15 @@
       "chapter": 2,
       "passages": 15,
       "terms": [
+        {
+          "form": "machina",
+          "occurrences": 3,
+          "loci": [
+            "10.2.4",
+            "10.2.8"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "lapidicinis",
           "occurrences": 4,
@@ -8529,15 +8530,6 @@
             "10.2.6",
             "10.2.12",
             "10.2.14"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "dispositis",
-          "occurrences": 2,
-          "loci": [
-            "10.2.1",
-            "10.2.4"
           ],
           "rankType": "terminologia_controlada"
         }
@@ -8737,6 +8729,14 @@
       "passages": 2,
       "terms": [
         {
+          "form": "machina",
+          "occurrences": 1,
+          "loci": [
+            "10.5.2"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "rotam",
           "occurrences": 1,
           "loci": [
@@ -8762,14 +8762,6 @@
         },
         {
           "form": "rota",
-          "occurrences": 1,
-          "loci": [
-            "10.5.2"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "machina",
           "occurrences": 1,
           "loci": [
             "10.5.2"
@@ -8920,6 +8912,14 @@
       "passages": 5,
       "terms": [
         {
+          "form": "machina",
+          "occurrences": 1,
+          "loci": [
+            "10.7.1"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "horologiis",
           "occurrences": 1,
           "loci": [
@@ -8955,14 +8955,6 @@
             "10.7.3"
           ],
           "rankType": "frecuencia_distintiva"
-        },
-        {
-          "form": "machina",
-          "occurrences": 1,
-          "loci": [
-            "10.7.1"
-          ],
-          "rankType": "terminologia_controlada"
         },
         {
           "form": "ctesibii",
@@ -9514,6 +9506,15 @@
       "passages": 8,
       "terms": [
         {
+          "form": "machina",
+          "occurrences": 2,
+          "loci": [
+            "10.13.6",
+            "10.13.7"
+          ],
+          "rankType": "terminologia_controlada"
+        },
+        {
           "form": "machinam",
           "occurrences": 3,
           "loci": [
@@ -9591,14 +9592,6 @@
             "10.13.6"
           ],
           "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "ductionibus",
-          "occurrences": 1,
-          "loci": [
-            "10.13.6"
-          ],
-          "rankType": "terminologia_controlada"
         }
       ]
     },
@@ -9608,6 +9601,14 @@
       "chapter": 14,
       "passages": 3,
       "terms": [
+        {
+          "form": "machina",
+          "occurrences": 1,
+          "loci": [
+            "10.14.3"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "laterariis",
           "occurrences": 1,
@@ -9634,14 +9635,6 @@
         },
         {
           "form": "ballistarum",
-          "occurrences": 1,
-          "loci": [
-            "10.14.3"
-          ],
-          "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "machina",
           "occurrences": 1,
           "loci": [
             "10.14.3"
@@ -9696,6 +9689,14 @@
       "chapter": 15,
       "passages": 7,
       "terms": [
+        {
+          "form": "machina",
+          "occurrences": 2,
+          "loci": [
+            "10.15.7"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "lateraria",
           "occurrences": 1,
@@ -9775,14 +9776,6 @@
             "10.15.5"
           ],
           "rankType": "terminologia_controlada"
-        },
-        {
-          "form": "machina",
-          "occurrences": 2,
-          "loci": [
-            "10.15.7"
-          ],
-          "rankType": "terminologia_controlada"
         }
       ]
     },
@@ -9792,6 +9785,15 @@
       "chapter": 16,
       "passages": 12,
       "terms": [
+        {
+          "form": "machina",
+          "occurrences": 2,
+          "loci": [
+            "10.16.4",
+            "10.16.7"
+          ],
+          "rankType": "terminologia_controlada"
+        },
         {
           "form": "murum",
           "occurrences": 14,
@@ -9875,14 +9877,6 @@
             "10.16.8"
           ],
           "rankType": "frecuencia_distintiva"
-        },
-        {
-          "form": "muri",
-          "occurrences": 1,
-          "loci": [
-            "10.16.3"
-          ],
-          "rankType": "terminologia_controlada"
         }
       ]
     }
