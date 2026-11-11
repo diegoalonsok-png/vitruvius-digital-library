@@ -1596,17 +1596,19 @@ async function search(){
  }
  if(academicEnabled){
   // Pick sources by subject: an art name should not wait on biomedical APIs.
-  const medicalTopic=/\b(?:medicin|m[eé]dic|cl[ií]nic|enfermedad|patolog|biology|biolog|biomed|disease|health|epidem|virus|vaccin|genetic|anatom|pharmac|epidemiolog|salud|sanitaria)\w*/i.test(q);
-  const exactPerson=!!(S.identifiedSubject?.kind==="person"||person||/^\s*(?:rey|reina|king|queen|fara[oó]n|pharaoh)\b/i.test(q));
-  const conceptLookup=/\b(?:arte|art|architecture|arquitectura|painting|pintura|sculpture|escultura|orden|order|tecnica|t[eé]cnica|material|estilo|style|ornament|t[eé]rmino|term|concepto|concept|motif|iconograf)\w*/i.test(q);
-  pending.push(wikidata(q).then(rows=>({name:"Wikidata",rows})).catch(e=>({name:"Wikidata sin respuesta: "+e.message,rows:[]})));
-  pending.push(openLibrary(q).then(rows=>({name:"Open Library",rows})).catch(e=>({name:"Open Library sin respuesta: "+e.message,rows:[]})));
-   pending.push(googleBooks(q).then(rows=>({name:"Google Books",rows})).catch(e=>({name:"Google Books sin respuesta: "+e.message,rows:[]})));
-  pending.push(museum(q).then(rows=>({name:"The Met",rows})).catch(e=>({name:"The Met sin respuesta: "+e.message,rows:[]})));
-  pending.push(crossref(q).then(rows=>({name:"Crossref",rows})).catch(e=>({name:"Crossref sin respuesta: "+e.message,rows:[]})));
-  if(medicalTopic)pending.push(europePmc(q).then(rows=>({name:"Europe PMC",rows})).catch(e=>({name:"Europe PMC sin respuesta: "+e.message,rows:[]})));
-  pending.push(openAlex(q).then(rows=>({name:"OpenAlex",rows})).catch(e=>({name:"OpenAlex sin respuesta: "+e.message,rows:[]})));
-  if(conceptLookup&&!exactPerson)pending.push(gettyAat(generalQuery).then(rows=>({name:"Getty AAT",rows})).catch(e=>({name:"Getty AAT sin respuesta: "+e.message,rows:[]})));
+  const route=window.VitruviaWebRouting?.plan(q,S.identifiedSubject)||{providers:["wikidata","crossref","openAlex","openLibrary"]};
+  const providers={
+   wikidata:()=>wikidata(q),openLibrary:()=>openLibrary(q),googleBooks:()=>googleBooks(q),
+   museum:()=>museum(q),crossref:()=>crossref(q),openAlex:()=>openAlex(q),
+   gettyAat:()=>gettyAat(generalQuery),europePmc:()=>europePmc(q)
+  };
+  const names={wikidata:"Wikidata",openLibrary:"Open Library",googleBooks:"Google Books",museum:"The Met",
+   crossref:"Crossref",openAlex:"OpenAlex",gettyAat:"Getty AAT",europePmc:"Europe PMC"};
+  for(const provider of route.providers){
+   if(!providers[provider])continue;
+   pending.push(providers[provider]().then(rows=>({name:names[provider],rows}))
+    .catch(e=>({name:names[provider]+" sin respuesta: "+e.message,rows:[],warnings:[String(e.message||e)]})));
+  }
  }
  if(!pending.length){S.searchComplete=true;display(rows,q,"Índice interno");return}
  let completed=0,updateTimer=null;
