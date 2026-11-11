@@ -4,6 +4,9 @@ on:
     paths:
       - 'assets/vitruvia-web-routing.js'
       - 'assets/vitruvia-search.js'
+      - 'assets/vitruvia-historical-paragraphs.js'
+      - 'buscador-parrafos-vitruvio.html'
+      - 'scripts/test-vitruvia-historical-paragraphs.mjs'
       - 'assets/historical-paragraph-segmentation.js'
       - 'assets/historical-semantic-search.js'
       - 'scripts/build-historical-paragraph-index.mjs'
@@ -27,10 +30,14 @@ jobs:
         run: |
           node --check assets/vitruvia-web-routing.js
           node --check assets/vitruvia-search.js
+          node --check assets/vitruvia-historical-paragraphs.js
+          node --check scripts/test-vitruvia-historical-paragraphs.mjs
           node --check assets/historical-paragraph-segmentation.js
           node --check assets/historical-semantic-search.js
           node --check scripts/build-historical-paragraph-index.mjs
       - name: Route sources by topic
         run: node scripts/test-vitruvia-web-routing.mjs
+      - name: Check historical OCR semantics and unverified IIIF anchors
+        run: node scripts/test-vitruvia-historical-paragraphs.mjs
       - name: Verify OCR paragraph-to-page offsets
         run: node scripts/build-historical-paragraph-index.mjs --audit-only
