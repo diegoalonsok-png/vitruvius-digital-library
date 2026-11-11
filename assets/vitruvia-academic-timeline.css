@@ -139,3 +139,41 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-track .vat-event :is(.va
 html[data-theme=light] #vitruvia-academic-timeline .vat-track .vat-event[aria-pressed=true]{
  filter:saturate(1.08);border-color:#243f56!important;box-shadow:0 0 0 3px #7da5be,0 4px 13px #0005;
 }
+
+
+/* Universal fit-to-reader chronology: no wide canvas, all cards remain accessible. */
+#vitruvia-academic-timeline .vat-viewport{
+ width:100%!important;max-width:100%!important;
+ overflow-x:hidden!important;overflow-y:visible!important;min-height:0!important;
+ padding:0!important;
+}
+#vitruvia-academic-timeline .vat-map{min-width:0!important;max-width:100%!important}
+#vitruvia-academic-timeline .vat-axis{
+ margin-left:var(--vat-label-width,170px)!important;max-width:calc(100% - var(--vat-label-width,170px));
+ box-sizing:border-box!important;
+}
+#vitruvia-academic-timeline .vat-band{
+ grid-template-columns:var(--vat-label-width,170px) minmax(0,1fr)!important;
+ padding:6px 0!important;min-height:0!important;
+}
+#vitruvia-academic-timeline .vat-track{
+ min-width:0!important;max-width:100%!important;min-height:0!important;
+}
+#vitruvia-academic-timeline .vat-track .vat-event{
+ min-width:0!important;max-width:var(--vat-card-width,134px)!important;
+ min-height:66px!important;max-height:102px!important;
+ overflow:hidden;overflow-wrap:anywhere;
+ padding:7px 6px!important;
+}
+#vitruvia-academic-timeline .vat-event strong{
+ display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;
+ overflow:hidden;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-axis .vat-tick:first-child{transform:translateX(0)}
+#vitruvia-academic-timeline .vat-axis .vat-tick:last-child{transform:translateX(-100%)}
+@media(max-width:560px){
+ #vitruvia-academic-timeline .vat-band-title{font-size:11px;gap:4px;padding:10px 3px!important}
+ #vitruvia-academic-timeline .vat-band-title .vat-icon{width:15px;font-size:15px}
+ #vitruvia-academic-timeline .vat-event strong{font-size:11px}
+ #vitruvia-academic-timeline .vat-tick{font-size:10px}
+}
