@@ -149,6 +149,15 @@ async function show(term,rect){
  }
  links(term);
 }
+// Public scoped entrypoint for direct click handlers in the main edition
+// concordance. The dictionary is still fetched only after user interaction.
+window.VitruviusLexicalCard=Object.freeze({
+ open:(term,element)=>{
+  const rect=element?.getBoundingClientRect?.()||{left:12,top:80,bottom:120};
+  return show(term,rect);
+ },
+ close
+});
 // Single click on an attested search highlight (Latin, polytonic Greek,
 // or an explicitly labelled translation equivalent). All unhighlighted words
 // keep their previous selection and double-click behaviour.
