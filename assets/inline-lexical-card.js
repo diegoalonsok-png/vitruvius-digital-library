@@ -80,15 +80,20 @@ async function show(term,rect){
 // or an explicitly labelled translation equivalent). All unhighlighted words
 // keep their previous selection and double-click behaviour.
 document.addEventListener("click",event=>{
- const mark=event.target.closest?.("#search-results mark.search-hit");
- if(!mark||!mark.closest(".parallel-passage,.parallel-translation-text,.result-snippet"))return;
+ const mark=event.target.closest?.("#search-results mark.search-hit,#lexical-occurrences mark.lexical-query-hit");
+ if(!mark)return;
+ const concordance=!!mark.closest("#lexical-occurrences");
+ if(!concordance&&!mark.closest(".parallel-passage,.parallel-translation-text,.result-snippet"))return;
  if(!event.isTrusted||event.button!==0)return;
  const isTranslation=!!mark.closest(".parallel-translation-text");
  const query=document.querySelector("#query")?.value?.trim()||"";
+ // Concordance foreign-language hits should not be mislabelled as Latin.
+ // The Latin line has its own heading; translations retain their own language.
  const term=isTranslation&&mark.classList.contains("search-hit-equivalent")&&
    /^[\p{L}\p{M}]+$/u.test(query)?query:mark.textContent.trim();
  if(!/^[\p{L}\p{M}'ʼ’-]{2,70}$/u.test(term))return;
  event.preventDefault();
+ event.stopPropagation();
  show(term,mark.getBoundingClientRect());
 });
 document.addEventListener("dblclick",e=>{
