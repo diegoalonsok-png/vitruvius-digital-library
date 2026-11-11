@@ -6,12 +6,12 @@ function plan(query,identity){
  const q=norm(query),desc=norm([identity?.description,identity?.authorityDescription,identity?.occupation].filter(Boolean).join(' '));
  const text=q+' '+desc;
  const contains=re=>re.test(text);
- const visual=contains(/\b(pintor|painter|painting|sculpt|escult|artista|visual|museum|museo|dali|leonardo|pintura|cuadro|arte|artwork|photograph|fotograf)\b/);
- const architectural=contains(/\b(arquitect|architect|edificio|building|urbanis|fachada|facade|monument|templo|temple)\b/);
- const medicine=contains(/\b(medic|medicinal|clinica|clinical|disease|enfermedad|epidemi|salud|biolog|virus|anatom|pharmac|vaccine)\b/);
- const science=contains(/\b(matematic|math|equation|ecuacion|ingenier|engineering|physics|fisic|formula|formulae|wind load|carga de viento|torsion|torsion|estatica|statics|mechanic|mecanica|algorithm|algoritmo)\b/);
- const literary=contains(/\b(literatur|escritor|writer|poet|poeta|novela|novel|libro|book|manuscrit|codice|codex|editorial|filolog|philolog|latin|latino|greek|griego)\b/);
- const music=contains(/\b(music|musica|compositor|composer|singer|cantante|album|disco|band|banda|song|cancion)\b/);
+ const visual=contains(/\b(?:pintor|painter|painting|sculpt\w*|escult\w*|artista|visual|museum|museo|pintur\w*|cuadro\w*|arte|artwork|photograph\w*|fotograf\w*)\b/);
+ const architectural=contains(/\b(?:arquitect\w*|architect\w*|edificio\w*|building\w*|urbanis\w*|fachada\w*|facade|monument\w*|templo\w*|temple\w*)\b/);
+ const medicine=contains(/\b(?:medic\w*|clinic\w*|disease\w*|enfermedad\w*|epidemi\w*|salud|biolog\w*|virus|anatom\w*|pharmac\w*|vaccine\w*)\b/);
+ const science=contains(/\b(?:matematic\w*|math\w*|equation\w*|ecuacion\w*|ingenier\w*|engineering|physics|fisic\w*|formula\w*|wind load|carga de viento|torsion|estatica|statics|mechanic\w*|mecanic\w*|algorithm\w*|algoritmo\w*)\b/);
+ const literary=contains(/\b(?:literatur\w*|escritor\w*|writer\w*|poet\w*|novela\w*|novel\w*|libro\w*|book\w*|manuscrit\w*|codice\w*|codex|editorial\w*|filolog\w*|philolog\w*|latin\w*|greek|griego\w*)\b/);
+ const music=contains(/\b(?:music\w*|compositor\w*|composer\w*|singer\w*|cantante\w*|album\w*|disco\w*|band\w*|banda\w*|song\w*|cancion\w*)\b/);
  let providers=['wikidata','crossref','openAlex'];
  if(medicine)providers.push('europePmc');
  if(visual||architectural)providers.push('museum','openLibrary','googleBooks');
