@@ -3,7 +3,7 @@ const $=id=>document.getElementById(id);
 const SOURCES={
  "krohn-1912":{label:"Krohn 1912 · texto latino OCR",link:p=>"documents/krohn-1912.pdf#page="+p,linkLabel:p=>"Abrir PDF · página "+p},
  "rose-1899":{label:"Rose 1899 · texto latino OCR",link:p=>"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page="+p,linkLabel:p=>"Abrir PDF externo · página "+p},
- "cesariano-1521":{label:"Cesariano 1521 · italiano histórico OCR",link:p=>"cesariano-1521.html?image="+p,linkLabel:"Consultar imagen aproximada "+p+" (no cotejada con foliación)"}
+ "cesariano-1521":{label:"Cesariano 1521 · italiano histórico OCR",link:p=>"cesariano-1521.html?image="+p,linkLabel:p=>"Consultar imagen aproximada "+p+" (no cotejada con foliación)"}
 };
 const caches=new Map();let serial=0,modelPromise;
 const el=(tag,content,cls)=>{const node=document.createElement(tag);if(content!==undefined)node.textContent=String(content);if(cls)node.className=cls;return node;};
