@@ -18,8 +18,8 @@ Se registran como criterios de aceptación comprobables.
 | # | Requisito | Criterio de aceptación | Estado |
 | --- | --- | --- | --- |
 | R1 | «Tiene que buscar rápido». Hoy tarda **8 segundos** en abrir. | Primer pintado por debajo de 2,5 s en 4G simulada; menos de 30 peticiones antes del primer pintado. | **en curso** |
-| R2 | «Y coherente», igual que Google o Wikipedia, pero de humanidades. | Un resultado por entidad (sin duplicados entre fuentes), agrupado por tipo de material y ordenado dentro de cada grupo. | pendiente |
-| R3 | «Si escribo Alejandro Magno no es una pizzería, es el emperador». | La primera posición es la entidad histórica. El ruido comercial queda fuera de los diez primeros. | pendiente |
+| R2 | «Y coherente», igual que Google o Wikipedia, pero de humanidades. | Un resultado por entidad (sin duplicados entre fuentes), agrupado por tipo de material y ordenado dentro de cada grupo. | **módulo listo y probado; falta conectarlo** |
+| R3 | «Si escribo Alejandro Magno no es una pizzería, es el emperador». | La primera posición es la entidad histórica. El ruido comercial queda fuera de los diez primeros. | **probado en el módulo; falta conectarlo** |
 | R4 | «Si busco a Dalí tiene que aparecer primero el artista plástico y organizar cuadros, fotos, pinturas y escritos de forma coherente y por orden de aparición». | Panel de entidad, luego obras ordenadas por fecha de ejecución, imágenes, escritos propios y estudios. | pendiente |
 | R5 | «Con miniaturas de caras y foto de perfil o busto». | El panel de entidad muestra retrato o busto; cada resultado con imagen disponible muestra miniatura. Toda imagen lleva crédito y licencia. | pendiente |
 | R6 | «Para libros con sus tapas y link de consulta; lo mismo para discos». | Las fichas de libro muestran cubierta y enlace de consulta; las de grabación, su portada. | pendiente |
@@ -28,6 +28,9 @@ Se registran como criterios de aceptación comprobables.
 | R9 | Lexicon: términos latinos, griegos y hebreos con **árboles de raíz semánticas y significados**. | Árbol navegable raíz → lenguas atestiguadas → lemas derivados → acepciones → *loci*, construido sobre `etymologicum.json` y `hebrew-roots.json`, con sus referencias a de Vaan, Beekes, LSJ, BDB y HALOT. | pendiente |
 | R10 | Página de IA: estilo minimalista tipo Grok, «sin tantos botones». | Una columna, un campo, dos controles icónicos. | pendiente |
 | R11 | Estética general de alta academia, tipo Yale o Cambridge. | Capa tipográfica común a las tres piezas. | pendiente |
+| R13 | Lexicon: mejorar las búsquedas léxicas y semánticas sobre las **222 obras clásicas**. | Índice invertido por lema construido sobre el corpus local, concordancia KWIC, frecuencia por autor, obra y período, y colocaciones con medida estadística declarada. Sin descargar el corpus entero para una consulta. | pendiente |
+| R14 | Los folios de los códices están en GitHub, pero **la minúscula carolina es difícil de indexar**: la indexación va por frases, prefacios y folios. | Búsqueda tolerante a la paleografía: tabla de confusiones documentada (c/e, t/c, n/u, m/in, s larga/f) y expansión de abreviaturas (barra de nasal, ⁊, ꝯ, -bus, -que). Alineación folio ↔ locus de la edición crítica, para llegar a la imagen sin depender del OCR. Los resultados se presentan como candidatos, no como lecturas. | pendiente |
+| R15 | La búsqueda de palabra dentro de los libros arma visores y traducciones automáticas; «hay que ver que sea de calidad». | Toda traducción automática queda rotulada como tal y nunca se presenta como traducción de autor; si existe una publicada, se cita y se prefiere. Informe de cobertura reproducible. | pendiente |
 | R12 | «Las líneas de tiempo son buena idea pero no siempre cargan bien». | La cronología se dibuja siempre que haya una fecha disponible: entidad de Wikidata, datación del catálogo propio o año bibliográfico, con caché y reintento. Estado vacío sólo cuando no hay ninguna fecha. | pendiente |
 
 ## Lo ya hecho y medido
@@ -50,7 +53,7 @@ node scripts/build-style-bundles.mjs --check
 node scripts/build-vitruvia-metrics.mjs --check
 ```
 
-### Motor · comprensión de la consulta
+### Motor · comprensión de la consulta y ordenación
 
 `assets/vitruvia-philology.js`, con 60 pruebas en
 `scripts/test-vitruvia-philology.mjs`. Resuelve lo que hacía perder resultados:
@@ -73,6 +76,36 @@ Lo que este módulo **no** hace, deliberadamente: no analiza morfología, no
 reconstruye etimologías y no afirma parentesco entre lenguas. Eso vive en los
 datos del Lexicon, redactados sobre bibliografía citada. La coincidencia por
 raíz recortada puntúa por debajo de la literal: una forma exacta gana siempre.
+
+`assets/vitruvia-rank.js`, con 23 pruebas en `scripts/test-vitruvia-rank.mjs`,
+sustituye la suma de coincidencias por:
+
+- **BM25 con pesos por campo** (título 3,4 · autor 1,8 · fragmento 1,0 · metadatos 0,5),
+  saturación de la repetición y normalización por longitud, con IDF calculado
+  sobre el conjunto recuperado.
+- **Coincidencia por niveles**: literal 1,0 · clave entre alfabetos 0,85 ·
+  raíz recortada 0,6. Una aproximada nunca desplaza a una exacta.
+- **Prioridad por fuente**: fondo propio 3,2 · autoridades 2,4 · textos
+  primarios 2,3 · repositorios patrimoniales 2,2 · enciclopedia 2,0 ·
+  bibliografía académica 1,9 · museos 1,7 · agregadores comerciales 1,2.
+- **Señal de antigüedad** +2,2 e **indicio de persona histórica** +2,6;
+  **ruido comercial** ×0,12, **forma societaria** ×0,45, **datos de contacto** ×0,4.
+  Con esto, «Alejandro Magno» devuelve al rey de Macedonia en primer lugar y la
+  pizzería cae detrás del estudio histórico (R3, probado).
+- **Vinculación estructural**: una obra atribuida a la entidad resuelta entra
+  sin repetir el nombre de su autor, porque lo dice el dato y no el título.
+  «La persistencia de la memoria» aparece bajo Dalí (R4, probado).
+- **Una entidad, un resultado**: deduplicación por QID de Wikidata o título
+  normalizado, anexando los enlaces de las fuentes desplazadas; y tope por
+  fuente para que ningún proveedor ocupe la primera pantalla (R2, probado).
+- **Agrupación y orden**: identificación, obras, imágenes, escritos,
+  testimonios, ediciones, estudios, enciclopedia, grabaciones, catálogos; el
+  orden de los grupos depende del tipo de consulta y, dentro de cada grupo, se
+  ordena por fecha cuando la mayoría de las fichas la tiene. Las dataciones por
+  siglo se ordenan por el comienzo del siglo y quedan marcadas como aproximadas.
+
+`explain(fila)` devuelve el desglose de la puntuación, para que la ordenación
+sea auditable y no un oráculo.
 
 ## Pendiente, por orden de ejecución
 
