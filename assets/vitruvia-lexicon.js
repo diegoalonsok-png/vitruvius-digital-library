@@ -82,12 +82,16 @@ async function lang(l,silent=false){
   applyReviewedOCR(corpus,l);
 
   const post=new Map(), freq=new Map(), workFreq=new Map(), workTokens={};
-  corpus.passages.forEach((p,i)=>{
+  // Process the full inverted index in small batches so the browser can
+  // paint and respond to input rather than freezing during the first search.
+  for(let i=0;i<corpus.passages.length;i++){
+   if(i>0&&i%300===0)await new Promise(resolve=>setTimeout(resolve,0));
+   const p=corpus.passages[i];
    const seen=new Set();
    for(const m of p[2].matchAll(TOKEN)){const k=fold(m[0]).replace(/'+$/,"");if(!k)continue;workTokens[p[0]]=(workTokens[p[0]]||0)+1;freq.set(k,(freq.get(k)||0)+1);
     let wf=workFreq.get(k);if(!wf){wf={};workFreq.set(k,wf)}wf[p[0]]=(wf[p[0]]||0)+1;
     if(!seen.has(k)){seen.add(k);let a=post.get(k);if(!a){a=[];post.set(k,a)}a.push(i)}}
-  });
+  }
   const tokens=[...freq.values()].reduce((a,b)=>a+b,0);
   const lemmaForms=new Map();
   for(const [k,an] of Object.entries(forms.forms))for(const a of an){const lem=a[0];let s=lemmaForms.get(lem);if(!s){s=new Set();lemmaForms.set(lem,s)}s.add(k)}
