@@ -125,6 +125,7 @@ function occurrences(words){const counts=new Map();for(const word of words)count
 function rankRows(units,query,mode="literal",limit=50){
  const {primary,weights}=queryWeights(query,mode);
  if(!primary.length)return[];
+ const mappedConcept=mode==="conceptual"&&primary.every(t=>Object.entries(CONCEPTS).some(([key,values])=>norm(key)===t||values.some(v=>norm(v)===t)));
  const indexed=units.map(u=>({u,counts:occurrences(tokens(u.text)),length:Math.max(1,wordCount(u.text))}));
  const number=indexed.length;if(!number)return[];
  const avgLength=indexed.reduce((s,x)=>s+x.length,0)/number;
