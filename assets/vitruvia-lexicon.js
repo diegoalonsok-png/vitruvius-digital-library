@@ -490,6 +490,24 @@ function hitCard(D,h){
  const actions=el("div",{class:"actions"});
  actions.append(el("button",{type:"button",onclick:()=>{full.hidden=!full.hidden;if(!full.childNodes.length){const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(text,h.spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));full.append(el("p",{class:"lx-src"},w.edition||""," ",w.license?"· "+w.license:""))}}},"Pasaje completo"));
  actions.append(el("button",{type:"button",class:"lx-primary",onclick:()=>openViewer(D,p,h.spans,S.q)},p[0]==="vitruvius"?"Leer con traducción (ES · FR · EN)":"Leer con traducción"));
+ // Opt-in translation for every concordance hit; the original and scholarly edition remain intact.
+ const automatic=el("div",{class:"lx-hit-auto-translation",hidden:true});
+ const autoButton=el("button",{type:"button",class:"lx-btn","aria-expanded":"false",onclick:()=>{
+  const opening=automatic.hidden;automatic.hidden=!opening;
+  autoButton.setAttribute("aria-expanded",String(opening));
+  if(!opening||automatic.dataset.prepared)return;
+  automatic.dataset.prepared="1";
+  automatic.append(el("p",{class:"lx-small"},"Traducción automática orientativa. La traducción de lenguas antiguas puede ser imprecisa; el fragmento solo se envía al proveedor al pulsar «Traducir fragmento»."));
+  const sample=el("p",{class:"lx-passage",lang:D.l},String(text).slice(0,1200));
+  automatic.append(sample);
+  if(!window.VitruviaInlineTranslation?.attach(sample,{sourceLanguage:D.l,originalText:text})){
+   automatic.append(el("p",{class:"lx-small"},"El servicio de traducción no está disponible para este pasaje."));
+  }
+  if(text.length>1200)automatic.append(el("p",{class:"lx-small"},"Pasaje extenso: se traduce solo el primer fragmento; consulte el texto completo en el lector."));
+ }},"Traducción automática · ES / EN / FR");
+ actions.append(autoButton);
+ card.append(automatic);
+
  const rl=readerLink(D,p);if(rl)actions.append(el("a",{href:rl},"Leer en el visor"));
  if(p[0]==="vitruvius")actions.append(el("button",{type:"button",onclick:e=>showApparatus(p[1],full,e.target)},"Aparato y colación"));
  actions.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=text.slice(k.a,k.b).replace(/\s+/g," ").slice(0,400);S.mode="paralelos";renderTabs();run()}},"Paralelos"));
@@ -717,7 +735,7 @@ function morphologyFrequency(D,term,lemmas){
   ". Formas del lema: "+total.toLocaleString("es")+" apariciones en "+rows.length+" obras indexadas. "+
   "Son recuentos de las ediciones digitales, no de los códices manuscritos. "+
   (ids.length?"Lemas analizados: "+ids.map(lemmaDisplay).join(" / ")+". ":"Si la forma no tiene análisis morfológico, se cuenta únicamente su grafía documentada.")),
-  section.querySelector("table")||section.lastChild);
+  section.querySelector(".lx-freq-table-scroll")||section.querySelector("table")||section.lastChild);
  return section;
 }
 async function renderEntry(D,term,res){
@@ -1313,7 +1331,7 @@ function frequencyTable(c,F){
     $("#lx-q").value=F.es[0];S.lang="la";$("#lx-lang").value="la";S.work="vitruvius";showTranslationHits(F.es);
    }},"Ver pasajes"))));
  }
- sec.append(F.rows.length||F.trN?tb:el("p",{class:"lx-small"},"Sin ocurrencias en el corpus local."));
+ if(F.rows.length||F.trN){const viewport=el("div",{class:"lx-freq-table-scroll",role:"region",tabindex:"0","aria-label":"Tabla de frecuencias con desplazamiento horizontal"});viewport.append(tb);sec.append(viewport)}else sec.append(el("p",{class:"lx-small"},"Sin ocurrencias en el corpus local."));
  return sec;
 }
 async function showTranslationHits(words){
@@ -1363,7 +1381,7 @@ async function openViewer(D,p,spans,q){
  original.append(selected,el("p",{class:"lx-src"},w.edition||"",w.license?" · "+w.license:""));
  // Traducción bajo demanda para todas las obras clásicas, incluso sin edición paralela.
  // El texto original permanece visible y no se comparte con el proveedor sin un clic explícito.
- if(window.VitruviaInlineTranslation){
+ if(typeof window!=="undefined"&&window.VitruviaInlineTranslation){
   window.VitruviaInlineTranslation.attach(selected,{sourceLanguage:D.l,originalText:p[2]});
  }else{
   const missing=el("p",{class:"lx-small"},"Traducción automática temporalmente no disponible. Consulte las versiones editoriales del lector.");
@@ -1845,6 +1863,7 @@ async function verifySententia(s){
 function sententiaCard(s){
  const card=el("article",{class:"result-card lx-sent"},el("div",{class:"kind"},`${s.author} · ${(s.theme||[]).join(", ")}`),el("h3",{lang:s.lang,dir:s.lang==="he"?"rtl":null,class:s.lang==="he"?"lx-he":""},s.text));
  if(s.translit)card.append(el("p",{class:"lx-translit"},s.translit));
+ if(s.lang==="he"||s.lang==="grc"){const head=card.querySelector("h3");if(head&&window.VitruviaInlineTranslation?.attach)window.VitruviaInlineTranslation.attach(head,{sourceLanguage:s.lang,originalText:s.text})}
  card.append(el("p",{class:"lx-tr"},s.tr));
  (s.par||[]).forEach(x=>card.append(el("p",{lang:x.lang,class:"lx-par"},el("small",{},x.cite+": "),x.t)));
  if(s.syn)card.append(el("p",{class:"lx-syn"},el("b",{},"Nota sintáctica: "),s.syn));
