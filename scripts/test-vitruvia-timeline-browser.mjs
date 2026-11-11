@@ -50,6 +50,8 @@ try{
    for(const marker of [page.locator("#vitruvia-academic-timeline .vat-event-marker").first(),
                         page.locator("#vitruvia-academic-timeline .vat-event-marker").last()]){
     await marker.hover();
+    // The tooltip fades in; verify its final rendered state, not animation frame zero.
+    await page.waitForTimeout(260);
     const popup=await marker.locator(".vat-event-pop").evaluate(el=>{
      const p=el.getBoundingClientRect(),r=document.getElementById("vitruvia-academic-timeline").getBoundingClientRect();
      return {left:p.left,right:p.right,outerLeft:r.left,outerRight:r.right,opacity:getComputedStyle(el).opacity};
