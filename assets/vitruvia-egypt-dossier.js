@@ -122,7 +122,7 @@ function royalBuildingCatalogue(box,ruler){
   block.append(title,make("p",item.attribution,"v-ed-note"));
   const buttons=make("div",null,"v-ed-building-tools");
   const gallery=make("div",null,"v-ed-building-gallery");
-  const status=make("p","Elegí un tipo de documento. Cada imagen deberá verificarse en su ficha de origen.","v-ed-note");
+  const status=make("p","Elige un tipo de documento. Cada imagen deberá verificarse en su ficha de origen.","v-ed-note");
   block.append(buttons,status,gallery);wrap.append(block);
   let version=0;
   for(const kind of ROYAL_DRAWING_TYPES){
