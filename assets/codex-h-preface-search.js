@@ -18,7 +18,7 @@ fetch("data/codex-h/folio-locus-map.json").then(r=>{
  let mapped=0;
  for(let book=1;book<=10;book++){
   const locus=book+".praef.1";
-  const entry=(data.entries||[]).find(e=>(e.loci||[]).some(x=>x.locus===locus&&x.extent==="starts"));
+  const entry=(data.entries||[]).find(e=>(e.loci||[]).some(x=>x.locus===locus&&(x.extent==="starts"||x.extent==="full")));
   const row=document.createElement("article");row.className="h-preface-card";
   const title=document.createElement("strong");title.textContent="Libro "+ROMAN[book]+" · Praefatio";
   row.append(title);
