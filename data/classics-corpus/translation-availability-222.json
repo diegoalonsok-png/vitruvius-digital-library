@@ -5,7 +5,7 @@
   "scope": "222 classical work catalogue records; local translations ES/EN/FR",
   "totals": {
     "cataloguedWorks": 222,
-    "locallyIndexedWorks": 181,
+    "locallyIndexedWorks": 182,
     "translatedWorksLocal": 59,
     "worksWithoutHostedTranslation": 163,
     "localTranslationLanguages": {
@@ -13,8 +13,8 @@
       "en": 58,
       "fr": 2
     },
-    "originalTextIndexed": 181,
-    "originalTextNotIndexed": 41
+    "originalTextIndexed": 182,
+    "originalTextNotIndexed": 40
   },
   "works": [
     {
@@ -666,17 +666,19 @@
       "author": "Marco Cetio Faventino",
       "title": "Artis architectonicae privatis usibus adbreviatus liber",
       "originalLanguage": "la",
-      "originalIndexed": false,
+      "originalIndexed": true,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "la"
+      ],
       "externalTranslationUnverified": [
         "en",
         "fr"
       ],
-      "readingStatus": "pendiente-de-incorporar",
-      "translationSourceDescription": "Ediciones con traducción: M.-T. Cam, Cetius Faventinus, Abrégé d'architecture privée (CUF, 2001; texto latino y traducción francesa) y H. Plommer, Vitruvius and Later Roman Building Manuals (Cambridge, 1973; texto latino y traducción inglesa).",
+      "readingStatus": "lectura-local-parcial",
+      "translationSourceDescription": "Ediciones con traducción: M.-T. Cam, Cetius Faventinus, Abrégé d'architecture privée (CUF, 2001; texto latino y traducción francesa) y H. Plommer, Vitruvius and Later Roman Building Manuals (Cambridge, 1973; texto latino y traducción inglesa). Texto original latino local: Rose 1899 / Project Gutenberg 51812; no se alojan traducciones de Plommer/Cam.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": true
     },
     {
       "id": "barnabas",
