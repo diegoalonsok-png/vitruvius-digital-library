@@ -34,12 +34,13 @@ try{
    works.push({id:"Q969999",year:1800,title:"Edición posterior de prueba",dateKind:"publication",dateProperty:"P577"});
    window.dispatchEvent(new CustomEvent("vitruvia:cultural-works",{detail:{wikidataId:"Q987654",works}}));
   });
-  await page.waitForFunction(()=>document.querySelectorAll("#vitruvia-academic-timeline .vat-event-marker").length>=16);
+  await page.waitForFunction(()=>document.querySelectorAll("#vitruvia-academic-timeline .vat-event-marker, #vitruvia-academic-timeline .vat-list-event").length>=16);
   const measure=()=>page.evaluate(()=>{
    const root=document.querySelector("#vitruvia-academic-timeline");
    const r=root.getBoundingClientRect();
    const rect=e=>{const x=e.getBoundingClientRect();return {x:x.left,y:x.top,right:x.right,bottom:x.bottom,width:x.width,height:x.height}};
    const markers=[...root.querySelectorAll(".vat-event-marker")];
+   const dense=[...root.querySelectorAll(".vat-list-event")];
    const tracks=[...root.querySelectorAll(".vat-track")];
    const pairs=markers.map(m=>({mark:rect(m),track:rect(m.closest(".vat-track"))}));
    const collisions=[];
@@ -50,7 +51,7 @@ try{
    return {
     viewport:innerWidth,root:rect(root),map:rect(root.querySelector(".vat-map")),
     bands:[...root.querySelectorAll(".vat-band")].map(rect),
-    pairs,collisions,outside:root.querySelector(".vat-outside")?.textContent?.includes("1800")||false,
+    pairs,collisions,dense: dense.map(rect),outside:root.querySelector(".vat-outside")?.textContent?.includes("1800")||false,
     lifeLabels:markers.map(m=>m.getAttribute("aria-label"))
    };
   });
@@ -59,6 +60,8 @@ try{
    "Timeline container escapes viewport at "+width+": "+JSON.stringify(result.root));
   assert.ok(result.map.x>=result.root.x-2&&result.map.right<=result.root.right+2,
    "Timeline map escapes container at "+width);
+  assert.ok(result.dense.every(d=>d.x>=result.root.x-2&&d.right<=result.root.right+2),
+   "Dense event card escapes site width at "+width);
   assert.equal(result.collisions.length,0,
    "Timeline markers overlap at "+width+": "+JSON.stringify(result.collisions));
   assert.ok(result.pairs.every(p=>p.mark.x>=p.track.x-2&&p.mark.right<=p.track.right+2),
