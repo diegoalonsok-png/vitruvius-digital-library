@@ -107,7 +107,7 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <button type="button" id="left-night" aria-label="Tema nocturno en visor left" title="Nocturno">◼ Noche</button>
 <label title="Color del fondo">Fondo <input type="color" id="left-bg" value="#fffdf7" aria-label="Color de fondo del visor left"></label>
 <label title="Color de las letras">Texto <input type="color" id="left-fg" value="#202b35" aria-label="Color del texto del visor left"></label>
-<label>Fuente <select id="left-font" aria-label="Tipografía del visor left"><option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Mono</option></select></label>
+<label>Fuente <select id="left-font" aria-label="Tipografía del visor left"><option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Mono</option><option value="gentium">Gentium Plus · griego</option><option value="cardo">Cardo</option><option value="noto">Noto Serif</option><option value="garamond">EB Garamond</option></select></label>
 <button type="button" id="left-smaller" aria-label="Reducir texto del visor left" title="Lupa menos">⌕−</button>
 <span class="zoom-level" id="left-size">20 px</span>
 <button type="button" id="left-larger" aria-label="Aumentar texto del visor left" title="Lupa más">⌕+</button>
@@ -119,7 +119,7 @@ html::-webkit-scrollbar-corner,body::-webkit-scrollbar-corner{background:#242427
 <button type="button" id="right-night" aria-label="Tema nocturno en visor right" title="Nocturno">◼ Noche</button>
 <label title="Color del fondo">Fondo <input type="color" id="right-bg" value="#fffdf7" aria-label="Color de fondo del visor right"></label>
 <label title="Color de las letras">Texto <input type="color" id="right-fg" value="#202b35" aria-label="Color del texto del visor right"></label>
-<label>Fuente <select id="right-font" aria-label="Tipografía del visor right"><option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Mono</option></select></label>
+<label>Fuente <select id="right-font" aria-label="Tipografía del visor right"><option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Mono</option><option value="gentium">Gentium Plus · griego</option><option value="cardo">Cardo</option><option value="noto">Noto Serif</option><option value="garamond">EB Garamond</option></select></label>
 <button type="button" id="right-smaller" aria-label="Reducir texto del visor right" title="Lupa menos">⌕−</button>
 <span class="zoom-level" id="right-size">20 px</span>
 <button type="button" id="right-larger" aria-label="Aumentar texto del visor right" title="Lupa más">⌕+</button>
@@ -175,7 +175,7 @@ function sendAppearance(side){
  store();
  if(side==="right"&&isAuto(right.value)){
   const panel=$("auto-translation"),p=palettes.right;
-  const families={serif:'Georgia, "Times New Roman", serif',classic:'Palatino, "Book Antiqua", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace'};
+  const families={serif:'Georgia, "Times New Roman", serif',classic:'Palatino, "Book Antiqua", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace',gentium:'"Gentium Plus", Palatino, serif',cardo:'Cardo, "Gentium Plus", serif',noto:'"Noto Serif", "Gentium Plus", serif',garamond:'"EB Garamond", "Gentium Plus", serif'};
   panel.style.setProperty("--auto-bg",p.background);
   panel.style.setProperty("--auto-fg",p.foreground);
   panel.style.setProperty("--auto-font",families[p.font]||families.serif);
