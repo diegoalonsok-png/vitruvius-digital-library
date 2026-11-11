@@ -4,10 +4,10 @@
   "scope": "Manuscript identification is not proof of globally earliest text witness. Catalog data may refer to partial manuscripts.",
   "counts": {
     "catalogued": 222,
-    "witnesses": 89,
-    "worksWithWitnesses": 108,
-    "worksWithoutWitnesses": 114,
-    "worksWithThisBatchSourceReview": 55
+    "witnesses": 94,
+    "worksWithWitnesses": 114,
+    "worksWithoutWitnesses": 108,
+    "worksWithThisBatchSourceReview": 61
   },
   "records": [
     {
@@ -208,11 +208,13 @@
     },
     {
       "workId": "diodorus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "appian-diodorus-paris1642"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -246,11 +248,14 @@
     },
     {
       "workId": "seneca-epistulae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 2,
+      "verifiedInstitutionalCount": 2,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "seneca-epistulae-harley2752",
+        "seneca-tragedies-epistulae-harley5006"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -741,11 +746,13 @@
     },
     {
       "workId": "seneca-tragoediae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "seneca-tragedies-epistulae-harley5006"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -904,11 +911,13 @@
     },
     {
       "workId": "polybius-historiae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "xenophon-polybius-leiden-vulc2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -1017,11 +1026,13 @@
     },
     {
       "workId": "appian-romaika",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 1,
+      "verifiedInstitutionalCount": 1,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "appian-diodorus-paris1642"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
@@ -1654,11 +1665,14 @@
     },
     {
       "workId": "xenophon-memorabilia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 2,
+      "verifiedInstitutionalCount": 2,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "xenophon-memorabilia-paris1642",
+        "xenophon-polybius-leiden-vulc2"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
