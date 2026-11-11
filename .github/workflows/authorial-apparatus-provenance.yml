@@ -1,0 +1,34 @@
+name: Authorial critical apparatus provenance
+on:
+  push:
+    paths:
+      - 'data/critical-notes.json'
+      - 'data/academic-integrity.json'
+      - 'inventario-aparato-autoral.html'
+      - 'assets/inventario-aparato-autoral.js'
+      - 'scripts/test-authorial-apparatus-inventory.mjs'
+      - '.github/workflows/authorial-apparatus-provenance.yml'
+  pull_request:
+    paths:
+      - 'data/critical-notes.json'
+      - 'data/academic-integrity.json'
+      - 'inventario-aparato-autoral.html'
+      - 'assets/inventario-aparato-autoral.js'
+      - 'scripts/test-authorial-apparatus-inventory.mjs'
+      - '.github/workflows/authorial-apparatus-provenance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate reader syntax
+        run: node --check assets/inventario-aparato-autoral.js
+      - name: Protect existing authorial notes and source references
+        run: node scripts/test-authorial-apparatus-inventory.mjs

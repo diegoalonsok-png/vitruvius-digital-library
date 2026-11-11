@@ -15,7 +15,7 @@ async function worker(){
   const filename=pages[index];
   const page=await browser.newPage();
   const errs=[],miss=[];
-  page.on("pageerror",e=>errs.push(e.message.slice(0,180)));
+  page.on("pageerror",e=>errs.push(String(e.stack||e.message).slice(0,460)));
   page.on("response",r=>{
    if(r.url().startsWith(base)&&r.status()>=400)
     miss.push(r.status()+" "+r.url().replace(base,""));

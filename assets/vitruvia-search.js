@@ -1207,6 +1207,7 @@ function display(rows,query,phase){
   r.type==="university"?"universities":
   r.type==="manuscript"?"manuscripts":
   r.type==="apparatus"?"apparatus":
+  r.type==="historical-ocr"?"external-texts":
   r.type==="fragment"?"fragments":
   r.type==="scholar"?"scholars":
   r.type==="edition"?"editions":
@@ -1357,6 +1358,7 @@ function sourceLinks(query){const parent=$("source-links");parent.replaceChildre
  ["Stanford Encyclopedia of Philosophy","https://www.google.com/search?"+new URLSearchParams({q:"site:plato.stanford.edu "+query})],
  ["World History Encyclopedia","https://www.google.com/search?"+new URLSearchParams({q:"site:worldhistory.org "+query})],
  ["Internet Archive","https://archive.org/search?"+new URLSearchParams({query})],
+ ["Krohn · Rose · Cesariano · párrafos OCR","buscador-parrafos-vitruvio.html?"+new URLSearchParams({q:query})],
  ["Google · búsqueda web","https://www.google.com/search?"+new URLSearchParams({q:query})],
  ["Google · Modo IA","https://www.google.com/search?"+new URLSearchParams({q:query,udm:"50"})],
  ["Grok · consulta externa","https://grok.com/"],
@@ -1507,6 +1509,18 @@ async function search(){
   hostedAuthorPassages(q).then(rows=>({name:"Pasajes documentados de obras del autor",rows}))
    .catch(e=>({name:"Lecturas de autor no disponibles",rows:[],warnings:[e.message]}))
  );
+ // Search historical OCR only for named Vitruvian sources and concepts; do not penalize unrelated web queries.
+ const historicalIntent=/\b(?:krohn|rose|cesariano|vitruvio|vitruvius|vitruve|architectura|symmetria|firmitas|utilitas|venustas|ratiocinatio|harley)\b/i.test(q);
+ if(historicalIntent&&window.VitruviaHistoricalParagraphs&&["all","site","external","concept","ai"].includes(mode)){
+  const historicalTerm=q.replace(/\b(?:krohn|rose|cesariano|vitruvio|vitruvius|vitruve|1912|1899|1521|edici[oó]n|edici[oó]nes|de architectura)\b/gi," ").trim();
+  if(historicalTerm.length>=3)pending.push(later(()=>window.VitruviaHistoricalParagraphs.search(historicalTerm,{mode:"conceptual",limit:9})).then(data=>({
+   name:"Párrafos históricos OCR · Krohn, Rose y Cesariano",
+   rows:data.results.map(p=>({type:"historical-ocr",title:window.VitruviaHistoricalParagraphs.SOURCES[p.edition].title+" · página digital "+p.page,
+    author:"OCR histórico · bloque "+p.block,excerpt:brief(p.text,350),meta:"OCR sin verificar · bloque heurístico · página digital "+p.page,
+    rating:100+Math.round(p.score*4),link:p.url,source:"Vitruvius · OCR histórico",ocrEvidence:"unverified",ocrPage:p.page})),
+   warnings:data.complete?[]:["Algunas fuentes OCR no estaban disponibles"]
+  })).catch(e=>({name:"OCR histórico no disponible",rows:[],warnings:[String(e.message||e)]})));
+ }
  if(["all","external","ai"].includes(mode)&&window.VitruviaExternalTexts){
   pending.push(window.VitruviaExternalTexts.search(generalQuery).then(result=>({
    name:"Búsqueda dentro de textos · Wikisource "+result.sources.join("/"),
@@ -1596,17 +1610,35 @@ async function search(){
  }
  if(academicEnabled){
   // Pick sources by subject: an art name should not wait on biomedical APIs.
-  const medicalTopic=/\b(?:medicin|m[eé]dic|cl[ií]nic|enfermedad|patolog|biology|biolog|biomed|disease|health|epidem|virus|vaccin|genetic|anatom|pharmac|epidemiolog|salud|sanitaria)\w*/i.test(q);
-  const exactPerson=!!(S.identifiedSubject?.kind==="person"||person||/^\s*(?:rey|reina|king|queen|fara[oó]n|pharaoh)\b/i.test(q));
-  const conceptLookup=/\b(?:arte|art|architecture|arquitectura|painting|pintura|sculpture|escultura|orden|order|tecnica|t[eé]cnica|material|estilo|style|ornament|t[eé]rmino|term|concepto|concept|motif|iconograf)\w*/i.test(q);
-  pending.push(wikidata(q).then(rows=>({name:"Wikidata",rows})).catch(e=>({name:"Wikidata sin respuesta: "+e.message,rows:[]})));
-  pending.push(openLibrary(q).then(rows=>({name:"Open Library",rows})).catch(e=>({name:"Open Library sin respuesta: "+e.message,rows:[]})));
-   pending.push(googleBooks(q).then(rows=>({name:"Google Books",rows})).catch(e=>({name:"Google Books sin respuesta: "+e.message,rows:[]})));
-  pending.push(museum(q).then(rows=>({name:"The Met",rows})).catch(e=>({name:"The Met sin respuesta: "+e.message,rows:[]})));
-  pending.push(crossref(q).then(rows=>({name:"Crossref",rows})).catch(e=>({name:"Crossref sin respuesta: "+e.message,rows:[]})));
-  if(medicalTopic)pending.push(europePmc(q).then(rows=>({name:"Europe PMC",rows})).catch(e=>({name:"Europe PMC sin respuesta: "+e.message,rows:[]})));
-  pending.push(openAlex(q).then(rows=>({name:"OpenAlex",rows})).catch(e=>({name:"OpenAlex sin respuesta: "+e.message,rows:[]})));
-  if(conceptLookup&&!exactPerson)pending.push(gettyAat(generalQuery).then(rows=>({name:"Getty AAT",rows})).catch(e=>({name:"Getty AAT sin respuesta: "+e.message,rows:[]})));
+  const route=window.VitruviaWebRouting?.plan(q,S.identifiedSubject)||{providers:["wikidata","crossref","openAlex","openLibrary"]};
+  const providers={
+   wikidata:()=>wikidata(q),openLibrary:()=>openLibrary(q),googleBooks:()=>googleBooks(q),
+   museum:()=>museum(q),crossref:()=>crossref(q),openAlex:()=>openAlex(q),
+   gettyAat:()=>gettyAat(generalQuery),europePmc:()=>europePmc(q)
+  };
+  const names={wikidata:"Wikidata",openLibrary:"Open Library",googleBooks:"Google Books",museum:"The Met",
+   crossref:"Crossref",openAlex:"OpenAlex",gettyAat:"Getty AAT",europePmc:"Europe PMC"};
+  const started=new Set(route.providers);
+  for(const provider of route.providers){
+   if(!providers[provider])continue;
+   pending.push(providers[provider]().then(rows=>({name:names[provider],rows}))
+    .catch(e=>({name:names[provider]+" sin respuesta: "+e.message,rows:[],warnings:[String(e.message||e)]})));
+  }
+  // La profesión documentada puede conocerse después de mostrar la ficha
+  // inicial. Ampliar las fuentes especializadas entonces, sin volver a consultar
+  // los proveedores ya iniciados ni inventar la ocupación de la persona.
+  if(earlyIdentity&&window.VitruviaWebRouting){
+   pending.push(earlyIdentity.then(async identity=>{
+    if(!identity||searchSignal.aborted)return {name:"Sin ampliación temática",rows:[]};
+    const relevant=window.VitruviaWebRouting.plan(q,identity).providers
+     .filter(provider=>providers[provider]&&!started.has(provider));
+    const replies=await Promise.allSettled(relevant.map(provider=>providers[provider]()));
+    if(searchSignal.aborted)return {name:"Consulta cancelada",rows:[]};
+    return {name:"Fuentes especializadas por entidad",rows:replies.flatMap(reply=>
+     reply.status==="fulfilled"?reply.value:[]),
+     warnings:replies.flatMap((reply,i)=>reply.status==="rejected"?[names[relevant[i]]+": "+String(reply.reason?.message||reply.reason)]:[])};
+   }).catch(e=>({name:"Fuentes especializadas no disponibles",rows:[],warnings:[String(e.message||e)]})));
+  }
  }
  if(!pending.length){S.searchComplete=true;display(rows,q,"Índice interno");return}
  let completed=0,updateTimer=null;

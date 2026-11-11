@@ -191,6 +191,11 @@ async function searchOCR(){
    const match=terms.find(t=>fold(body).includes(fold(t)));
    if(match)hits.push({p,match});
   }
+  // An OCR page is not an e-rara image. The deep link only prioritizes
+  // its Getty OCR snippet; it never changes the IIIF image sequence.
+  const preferred=Number(new URLSearchParams(location.search).get('ocr_page'));
+  if(Number.isInteger(preferred)&&preferred>0)hits.sort((a,b)=>
+   Number(Number(b.p.page)===preferred)-Number(Number(a.p.page)===preferred));
   $('ces-ocr-status').textContent=hits.length+' páginas con coincidencia en el OCR del ejemplar Getty. '+(conceptual?'Equivalencias temáticas documentales orientativas; ':'')+'La paginación del Getty NO está alineada con las 390 imágenes e-rara.';
   let count=0;
   const more=$('ces-ocr-more');
@@ -200,6 +205,7 @@ async function searchOCR(){
     const p=Number(hit.p.page);
     const link=Number.isInteger(p)&&p>0?GETTY+'/page/n'+(p-1)+'/mode/1up':GETTY;
     article.innerHTML='<h4>Getty · imagen OCR '+escape(hit.p.page)+'</h4><p>'+excerpt(hit.p.text,hit.match)+'</p><p><a href="'+escape(link)+'" target="_blank" rel="noopener noreferrer">Examinar el facsímil Getty ↗</a></p>';
+    article.querySelector('p')?.classList.add('vdl-ocr-highlight');
     $('ces-ocr-results').append(article);
    }
    count=Math.min(hits.length,count+12);
@@ -224,4 +230,13 @@ const watch=new MutationObserver(()=>{
  });
 });
 watch.observe($('ces-counter'),{childList:true,subtree:true,characterData:true});
+const incoming=new URLSearchParams(location.search);
+const focusTerm=incoming.get('ocr_q');
+if(focusTerm&&focusTerm.length<=180){
+ const details=$('ces-ocr-details');if(details)details.open=true;
+ $('ces-ocr-query').value=focusTerm;
+ if(incoming.get('ocr_mode')==='conceptual')$('ces-ocr-mode').value='concept';
+ searchOCR();
+ details?.scrollIntoView({block:'start'});
+}
 load();

@@ -1,0 +1,40 @@
+name: Historical OCR paragraph explorer
+on:
+  push:
+    paths:
+      - 'assets/historical-paragraph-core.mjs'
+      - 'assets/historical-paragraph-search.mjs'
+      - 'indexacion-historica-parrafos.html'
+      - 'scripts/test-historical-paragraphs.mjs'
+      - 'data/text/krohn-1912.json'
+      - 'data/text/rose-1899.json'
+      - 'data/text/cesariano-1521.json'
+      - '.github/workflows/historical-paragraph-index.yml'
+  pull_request:
+    paths:
+      - 'assets/historical-paragraph-core.mjs'
+      - 'assets/historical-paragraph-search.mjs'
+      - 'indexacion-historica-parrafos.html'
+      - 'scripts/test-historical-paragraphs.mjs'
+      - 'data/text/krohn-1912.json'
+      - 'data/text/rose-1899.json'
+      - 'data/text/cesariano-1521.json'
+      - '.github/workflows/historical-paragraph-index.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check-ocr-paragraphs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check browser module syntax
+        run: |
+          node --check assets/historical-paragraph-core.mjs
+          node --check assets/historical-paragraph-search.mjs
+      - name: Validate OCR paragraph extraction and provenance
+        run: node scripts/test-historical-paragraphs.mjs

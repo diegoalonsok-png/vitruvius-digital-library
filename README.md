@@ -37,6 +37,12 @@ Editor and project lead: **Diego A. Kurilo**, architect and urbanist (Buenos Air
 
 Data build: `python3 scripts/build-vitruvia-lexicon.py && python3 scripts/render-vitruvia-lexicon-page.py`. Integrity test: `python3 scripts/test-vitruvia-lexicon.py` (all citations attributed to local works are verified literally in the corpus). Lemmatisation is automatic and must be checked in context; the editorial etymologies summarise the cited reference works.
 
+## Historical OCR paragraph research (experimental)
+
+The [historical paragraph explorer](indexacion-historica-parrafos.html) reads the existing page-indexed OCR for Krohn (1912), Rose (1899), and Cesariano (1521). It extracts *approximate candidate text blocks* in the visitor's browser, preserving the raw source and original OCR page numbers. Searches use BM25; an opt-in E5 model can re-rank a limited set of literal hits, but does not yet offer exhaustive semantic recall. All results carry an OCR / segmentation caveat and never create verified loci or manuscript variants. Cesariano IIIF image sequence and OCR page sequence are not asserted to match.
+
+Verification: `node scripts/test-historical-paragraphs.mjs`.
+
 ## Research atlases
 
 - [Atlas Geographicus Vitruvianus — ancient Latin/Greek place names, modern equivalents, map and loci](atlas-geographicus.html)
