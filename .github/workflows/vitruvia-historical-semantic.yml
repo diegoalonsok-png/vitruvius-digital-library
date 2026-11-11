@@ -5,6 +5,14 @@ on:
       - 'assets/vitruvia-web-routing.js'
       - 'assets/vitruvia-search.js'
       - 'assets/vitruvia-historical-paragraphs.js'
+      - 'assets/historical-ocr-highlight.js'
+      - 'assets/historical-ocr-highlight.css'
+      - 'assets/historical-paragraph-search.mjs'
+      - 'assets/historical-search.mjs'
+      - 'assets/cesariano-visual-search.mjs'
+      - 'scripts/test-historical-yellow-highlights.mjs'
+      - 'cesariano-1521.html'
+      - 'indexacion-historica-parrafos.html'
       - 'buscador-parrafos-vitruvio.html'
       - 'scripts/test-vitruvia-historical-paragraphs.mjs'
       - 'assets/historical-paragraph-segmentation.js'
@@ -31,6 +39,11 @@ jobs:
           node --check assets/vitruvia-web-routing.js
           node --check assets/vitruvia-search.js
           node --check assets/vitruvia-historical-paragraphs.js
+          node --check assets/historical-ocr-highlight.js
+          node --check assets/historical-paragraph-search.mjs
+          node --check assets/cesariano-visual-search.mjs
+          node --check assets/historical-search.mjs
+          node --check scripts/test-historical-yellow-highlights.mjs
           node --check scripts/test-vitruvia-historical-paragraphs.mjs
           node --check assets/historical-paragraph-segmentation.js
           node --check assets/historical-semantic-search.js
@@ -39,5 +52,7 @@ jobs:
         run: node scripts/test-vitruvia-web-routing.mjs
       - name: Check historical OCR semantics and unverified IIIF anchors
         run: node scripts/test-vitruvia-historical-paragraphs.mjs
+      - name: Check yellow OCR paragraph highlighting in Rose and Cesariano
+        run: node scripts/test-historical-yellow-highlights.mjs
       - name: Verify OCR paragraph-to-page offsets
         run: node scripts/build-historical-paragraph-index.mjs --audit-only
