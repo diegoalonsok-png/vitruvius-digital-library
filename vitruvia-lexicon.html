@@ -59,8 +59,8 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 .searchform input::placeholder{color:#8c8c8c;font:400 15px Arial,sans-serif}
 .icon-btn{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:40px;border-radius:20px;border:1px solid transparent;background:transparent;color:#bbb;font-size:15px}
 .icon-btn:hover,.icon-btn[aria-expanded=true]{background:#2a2a2c;border-color:#444}
-.searchform button[type=submit],.searchform #lx-expanded-search{min-height:42px;padding:9px 16px;background:#2d2d2f;color:#eaeaea;border:1px solid #3e3e3f;border-radius:25px;font-size:13px;font-weight:500}
-.searchform button[type=submit]:hover,.searchform #lx-expanded-search:hover{background:#464646}
+.searchform button[type=submit],.searchform button[id=lx-expanded-search]{min-height:42px;padding:9px 16px;background:#2d2d2f;color:#eaeaea;border:1px solid #3e3e3f;border-radius:25px;font-size:13px;font-weight:500}
+.searchform button[type=submit]:hover,.searchform button[id=lx-expanded-search]:hover{background:#464646}
 .tabs{display:flex;gap:7px;flex-wrap:wrap;margin:17px 0 9px}
 .tab,.suggestions button{border:1px solid #333537;background:#171718;color:#b6b6b7;font-size:12px;padding:6px 13px;border-radius:22px}
 .tab[aria-pressed=true]{background:#29292a;color:#f5f5f3;border-color:#636363}
@@ -296,7 +296,7 @@ html[data-theme=light] .logo-small,html[data-theme=light] .hero h1,html[data-the
 html[data-theme=light] .lead,html[data-theme=light] .result-card p,html[data-theme=light] .featured p,html[data-theme=light] .article-body,html[data-theme=light] .lx-morph{color:#3b4440}
 html[data-theme=light] .lx-kwic,html[data-theme=light] .lx-passage,html[data-theme=light] .lx-forms,html[data-theme=light] .lx-locus p,html[data-theme=light] .lx-synopsis{color:#1e2522!important}
 html[data-theme=light] .searchform{background:#fff;border-color:#c8c6bd}html[data-theme=light] .searchform input{color:#1d2421}
-html[data-theme=light] .tab,html[data-theme=light] .suggestions button,html[data-theme=light] .actions a,html[data-theme=light] .actions button,html[data-theme=light] .lx-btn,html[data-theme=light] .lx-key,html[data-theme=light] #theme,html[data-theme=light] #lx-lang,html[data-theme=light] #lx-lang-quick,html[data-theme=light] .lx-select,html[data-theme=light] .searchform button[type=submit],html[data-theme=light] .lx-more{background:#fff;color:#28302c;border-color:#c5c3ba}
+html[data-theme=light] .tab,html[data-theme=light] .suggestions button,html[data-theme=light] .actions a,html[data-theme=light] .actions button,html[data-theme=light] .lx-btn,html[data-theme=light] .lx-key,html[data-theme=light] #theme,html[data-theme=light] #lx-lang,html[data-theme=light] #lx-lang-quick,html[data-theme=light] .lx-select,html[data-theme=light] .searchform button[type=submit],html[data-theme=light] .searchform button[id=lx-expanded-search],html[data-theme=light] .lx-more{background:#fff;color:#28302c;border-color:#c5c3ba}
 html[data-theme=light] .tab[aria-pressed=true]{background:#2c2c2e;color:#fff}
 html[data-theme=light] .tool textarea,html[data-theme=light] .tool input[type=text],html[data-theme=light] #inst-filter,html[data-theme=light] .lx-cite-out,html[data-theme=light] .empty,html[data-theme=light] .lx-kb{background:#fff;color:#1d2421;border-color:#cfcdc4}
 html[data-theme=light] mark,html[data-theme=light] mark.w{background:#e2dcc6;color:#111}
