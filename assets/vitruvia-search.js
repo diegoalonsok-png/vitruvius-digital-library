@@ -1508,6 +1508,18 @@ async function search(){
   hostedAuthorPassages(q).then(rows=>({name:"Pasajes documentados de obras del autor",rows}))
    .catch(e=>({name:"Lecturas de autor no disponibles",rows:[],warnings:[e.message]}))
  );
+ // Search historical OCR only for named Vitruvian sources and concepts; do not penalize unrelated web queries.
+ const historicalIntent=/\b(?:krohn|rose|cesariano|vitruvio|vitruvius|vitruve|architectura|symmetria|firmitas|utilitas|venustas|ratiocinatio|harley)\b/i.test(q);
+ if(historicalIntent&&window.VitruviaHistoricalParagraphs&&["all","site","external","concept","ai"].includes(mode)){
+  const historicalTerm=q.replace(/\b(?:krohn|rose|cesariano|vitruvio|vitruvius|vitruve|1912|1899|1521|edici[oó]n|edici[oó]nes|de architectura)\b/gi," ").trim();
+  if(historicalTerm.length>=3)pending.push(later(()=>window.VitruviaHistoricalParagraphs.search(historicalTerm,{mode:"conceptual",limit:9})).then(data=>({
+   name:"Párrafos históricos OCR · Krohn, Rose y Cesariano",
+   rows:data.results.map(p=>({type:"historical-ocr",title:window.VitruviaHistoricalParagraphs.SOURCES[p.edition].title+" · página digital "+p.page,
+    author:"OCR histórico · bloque "+p.block,excerpt:brief(p.text,350),meta:"OCR sin verificar · bloque heurístico · página digital "+p.page,
+    rating:100+Math.round(p.score*4),link:p.url,source:"Vitruvius · OCR histórico",ocrEvidence:"unverified",ocrPage:p.page})),
+   warnings:data.complete?[]:["Algunas fuentes OCR no estaban disponibles"]
+  })).catch(e=>({name:"OCR histórico no disponible",rows:[],warnings:[String(e.message||e)]})));
+ }
  if(["all","external","ai"].includes(mode)&&window.VitruviaExternalTexts){
   pending.push(window.VitruviaExternalTexts.search(generalQuery).then(result=>({
    name:"Búsqueda dentro de textos · Wikisource "+result.sources.join("/"),
