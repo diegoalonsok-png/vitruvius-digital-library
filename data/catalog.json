@@ -57,7 +57,10 @@
           17
         ]
       },
-      "doi": "10.5281/zenodo.23884757"
+      "doi": "10.5281/zenodo.23884757",
+      "publication_date": "2026-11-02",
+      "doi_metadata_source": "https://zenodo.org/records/23884757",
+      "doi_verified_at": "2026-11-11"
     },
     {
       "id": "recensio-fr",
@@ -107,7 +110,10 @@
           17
         ]
       },
-      "doi": "10.5281/zenodo.23885110"
+      "doi": "10.5281/zenodo.23885110",
+      "publication_date": "2026-11-02",
+      "doi_metadata_source": "https://zenodo.org/records/23885110",
+      "doi_verified_at": "2026-11-11"
     },
     {
       "id": "theory-en",
@@ -121,7 +127,7 @@
       "year": "2026",
       "category": "editions",
       "author": "Diego Kurilo",
-      "publisher": "Sophia Lux Ediciones Académicas",
+      "publisher": "Sophia Lux Publishing",
       "pages": 1056,
       "description": "Latin–English reading edition and architectural commentary. PDF completo alojado en Vitruvius Digital Library; lectura del DOCX e índice por libro, capítulo y sección disponibles.",
       "searchable": true,
@@ -141,7 +147,7 @@
       "indexed_passages": 728,
       "bibliographic_author": "Kurilo, Diego",
       "isbn": null,
-      "isbn_note": "El DOCX V297 consultado no consigna un ISBN propio en su paratexto.",
+      "isbn_note": "El PDF V297 depositado en Zenodo (DOI 10.5281/zenodo.23885404), portada y créditos revisados el 11-11-2026, no consigna ISBN. Se necesita el identificador asignado por el editor para completar este campo.",
       "edition_statement": "Primera edición inglesa, revisión editorial V297",
       "metadata_source": {
         "type": "author_docx_front_matter",
@@ -155,7 +161,10 @@
           8
         ]
       },
-      "doi": "10.5281/zenodo.23885404"
+      "doi": "10.5281/zenodo.23885404",
+      "publication_date": "2026-11-02",
+      "doi_metadata_source": "https://zenodo.org/records/23885404",
+      "doi_verified_at": "2026-11-11"
     },
     {
       "id": "theory-es",
@@ -268,5 +277,14 @@
   "base_edition": "recensio-es",
   "semantic": {
     "status": "pending"
+  },
+  "project": {
+    "id": "vitruvius-digital-library",
+    "title": "Vitruvius Digital Library",
+    "creator": "Diego A. Kurilo",
+    "doi": "10.5281/zenodo.23868911",
+    "publication_date": "2026-11-01",
+    "record_url": "https://zenodo.org/records/23868911",
+    "resource_type": "software / digital research library"
   }
 }

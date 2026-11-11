@@ -677,6 +677,7 @@
   },
   {
    "id": "dios",
+    "exactEquivalents": {"la": ["deus"], "grc": ["θεός"]},
    "modern": {
     "es": [
      "dios",
@@ -3744,5 +3745,19 @@
    "entries": [],
    "note": "Sapientia y σοφία designan sabiduría, más amplia que la disciplina filosófica; philosophia y φιλοσοφία son equivalencias léxicas más estrechas. La ficha no atribuye una escuela doctrinal."
   }
- ]
+ ],
+ "queryAliases": [
+  {
+    "queries": [
+      "logos",
+      "logo"
+    ],
+    "language": "grc",
+    "terms": [
+      "λόγος"
+    ],
+    "source": "Etymologicum editorial · ficha logos",
+    "note": "logos es transliteración de λόγος; logo se admite como alias de consulta solicitado. Se busca la voz griega y sus formas flexionadas, sin sustituirla por θεός ni por un concepto afín."
+  }
+]
 }

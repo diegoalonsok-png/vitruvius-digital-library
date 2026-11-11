@@ -795,36 +795,12 @@ async function searchImages(query){
   if(id===active&&grid.querySelector(".vitruvia-image-card")){grid.hidden=false;section.hidden=false;}
  }
 }
-// Two-stage loading: primary text and sourced identity render before secondary
-// Commons galleries. Do not postpone an explicit image-search button click.
-let stagedQuery="",stagedTimer=0,stagedRevision=0;
-function clearStage(){clearTimeout(stagedTimer);stagedTimer=0;stagedRevision++}
-function stageImages(query){
- clearStage();
- stagedQuery=String(query||"").trim();
- reset();
- if(!stagedQuery)return;
- const revision=stagedRevision;
- // Fallback for queries with no textual results. No external image request
- // can hold up the initial search or the page's first paint.
- stagedTimer=setTimeout(()=>{
-  if(revision!==stagedRevision)return;
-  stagedTimer=0;
-  void searchImages(stagedQuery);
-  stagedQuery="";
- },2200);
-}
-window.addEventListener("vitruvia:search",event=>stageImages(event.detail?.query));
-window.addEventListener("vitruvia:results",event=>{
- if(!stagedQuery)return;
- const shownQuery=String(event.detail?.query||"").trim();
- if(shownQuery&&shownQuery!==stagedQuery)return;
- const query=stagedQuery;
- clearStage();stagedQuery="";
- // Allow the actual text results to paint before starting image API calls.
- stagedTimer=setTimeout(()=>{stagedTimer=0;void searchImages(query)},350);
-});
-window.addEventListener("vitruvia:clear",()=>{clearStage();stagedQuery="";reset()});
+// A text search never starts a gallery, including when this module was
+// loaded by an earlier explicit image search in the same page.
+let stagedQuery="";
+function clearStage(){stagedQuery=""}
+window.addEventListener("vitruvia:search",()=>reset());
+window.addEventListener("vitruvia:clear",()=>reset());
 document.getElementById("search-images-button")?.addEventListener("click",()=>{
  const q=document.getElementById("query")?.value?.trim();
  if(!q){document.getElementById("query")?.focus();return}

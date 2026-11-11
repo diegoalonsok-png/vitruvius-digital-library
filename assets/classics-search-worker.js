@@ -3,6 +3,7 @@
 function fold(s){return String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/ς/g,'σ').replace(/j/g,'i').replace(/v/g,'u')}
 function offsets(text,term,all){
  const wanted=fold(term);if(!wanted)return[];
+ if(!fold(text).includes(wanted))return[];
  let normalized='',map=[];
  for(let i=0;i<text.length;){
   const c=String.fromCodePoint(text.codePointAt(i)),f=fold(c);

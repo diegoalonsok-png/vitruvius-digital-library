@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-11",
+  "environment": "Cloud Chrome, managed local static preview; observed UI only. Times are instrumented submit-to-first-result, not whole-page download or real-user guarantees.",
+  "vitruvia": [
+    {
+      "query": "domus",
+      "firstResultMs": 227,
+      "completeMs": 437,
+      "resultImages": 0
+    },
+    {
+      "query": "numen",
+      "firstResultMs": 357,
+      "resultImages": 0
+    },
+    {
+      "query": "symmetria",
+      "firstResultMs": 352,
+      "resultImages": 0
+    }
+  ],
+  "lexicon": [
+    {
+      "query": "logo",
+      "passages": 1136,
+      "corpus": "Greek"
+    },
+    {
+      "query": "god",
+      "passages": 1675,
+      "terms": [
+        "deus",
+        "θεός"
+      ]
+    },
+    {
+      "query": "dieu",
+      "passages": 1675,
+      "terms": [
+        "deus",
+        "θεός"
+      ]
+    },
+    {
+      "query": "mycenas",
+      "hits": 6,
+      "works": 2,
+      "dictionaryReadyMs": 29
+    },
+    {
+      "query": "dimus",
+      "hits": 0
+    }
+  ],
+  "bibliotheca": {
+    "query": "NUMEN",
+    "firstResultMs": 142,
+    "normalDictionaryReadyMs": 26,
+    "horaceOdesDocxDictionaryReadyMs": 11,
+    "dictionary": "numen: divine will/power, local Spanish editorial record"
+  },
+  "restoredRoutingSource": "d6a86bada86d3ece49f3fac9dde6145b0757d217",
+  "limitations": [
+    "Not an exhaustive test of every site button or every query.",
+    "Cold GitHub Pages downloads and external APIs remain network-dependent.",
+    "Deep codicological fields remain pending where primary documentation has not been verified."
+  ]
+}

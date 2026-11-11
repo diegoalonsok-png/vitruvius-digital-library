@@ -6,8 +6,8 @@ assert.ok(Array.isArray(d.places)&&d.places.length>=3);
 const ids=new Set(),normalized=s=>s.normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[ςϲ]/g,"σ");
 for(const place of d.places){
  assert.ok(!ids.has(place.id),"Duplicate place identity: "+place.id);ids.add(place.id);
- assert.match(place.source,/^https:\/\/pleiades\.stoa\.org\/places\/\d+$/);
- assert.equal(place.source,"https://pleiades.stoa.org/places/"+place.pleiades);
+ assert.match(place.source,/^https:\/\/(?:pleiades\.stoa\.org\/places\/\d+|whc\.unesco\.org\/en\/list\/\d+)$/);
+ if(place.pleiades)assert.equal(place.source,"https://pleiades.stoa.org/places/"+place.pleiades);
  assert.ok(place.label&&place.nameAncient&&place.aliases.length>=3&&place.searchForms.length>=3);
  assert.ok(place.aliases.some(a=>normalized(a)===normalized(place.label)));
  assert.ok(!place.searchForms.includes(""),"Empty form");

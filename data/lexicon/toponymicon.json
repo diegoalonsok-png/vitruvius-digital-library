@@ -1,6 +1,6 @@
 {
   "schema": "vitruvia-toponymicon-v1",
-  "updated": "2026-11-07",
+  "updated": "2026-11-11",
   "method": "Repertorio inicial de topónimos con identidades históricas ancladas en Pleiades. Cada alias identifica un lugar editorialmente; las ocurrencias se verifican en las transcripciones locales. Las coordenadas modernas de referencia no representan límites urbanos antiguos. Los mapas académicos son reconstrucciones, no mapas originales de la Antigüedad.",
   "places": [
     {
@@ -96,6 +96,42 @@
       "long": 22.879,
       "source": "https://pleiades.stoa.org/places/570182",
       "description": "Centro griego antiguo próximo al istmo; no confundir ciudad, territorio y referencias a comunidades cristianas posteriores."
+    },
+    {
+      "id": "mycenae",
+      "label": "Micenas",
+      "nameAncient": "Μυκῆναι",
+      "nameLatin": "Mycenae",
+      "period": "Centro palacial de la Edad del Bronce en la Argólida, Peloponeso, Grecia",
+      "aliases": [
+        "Micenas",
+        "Mycenae",
+        "Mycenas",
+        "Μυκῆναι",
+        "Μυκήνας"
+      ],
+      "searchForms": [
+        "Mycenae",
+        "Mycenas",
+        "Μυκῆναι",
+        "Μυκήνας"
+      ],
+      "source": "https://whc.unesco.org/en/list/941",
+      "sourceLabel": "UNESCO · sitios arqueológicos de Micenas y Tirinto",
+      "description": "Micenas es un yacimiento arqueológico de la Argólida, en el Peloponeso griego, y uno de los principales centros de la civilización micénica de la Edad del Bronce. Destacan su recinto fortificado, la Puerta de los Leones y sus tumbas monumentales. Micenas y Tirinto integran un sitio del Patrimonio Mundial de la UNESCO. En el pasaje latino, Mycenas es el acusativo plural del nombre de lugar Mycenae; en castellano, Micenas.",
+      "morphology": {
+        "mycenas": "Acusativo plural de Mycenae · topónimo latino"
+      },
+      "sources": [
+        {
+          "label": "UNESCO · sitio arqueológico y contexto histórico",
+          "url": "https://whc.unesco.org/en/list/941"
+        },
+        {
+          "label": "Cambridge · archivo e investigación arqueológica de Micenas",
+          "url": "https://www.cam.ac.uk/stories/digital-mycenae"
+        }
+      ]
     }
   ]
 }

@@ -82,7 +82,10 @@ function indexedText(value){
  return {normalized:normalized.trimEnd(),map};
 }
 function positions(text,query){
- const {normalized,map}=indexedText(text),key=indexedText(query).normalized;
+ const key=String(query||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ").replace(/[^\p{L}\p{N}]+/gu," ").trim();
+ const folded=String(text||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ").replace(/[^\p{L}\p{N}]+/gu," ").trim();
+ if(!key||!folded.includes(key))return[];
+ const {normalized,map}=indexedText(text);
  if(!key)return[];
  const matches=[];
  for(let at=normalized.indexOf(key);at>=0;at=normalized.indexOf(key,at+Math.max(1,key.length))){

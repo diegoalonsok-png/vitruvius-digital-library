@@ -183,10 +183,24 @@ function getCorpora(){if(!corporaPromise)corporaPromise=Promise.allSettled(catal
   pdfPages:p.pdf_pages||{},sourceParagraphs:p.source_paragraphs||[],method:obj.source?.method||"structured"
  })))
  }).catch(e=>{corporaPromise=null;throw e});return corporaPromise}
+const primaryCorpora=new Map();
+function getPrimaryCorpus(language){
+ const id=({es:"recensio-es",fr:"recensio-fr",en:"theory-en"})[language]||"recensio-es";
+ if(!primaryCorpora.has(id))primaryCorpora.set(id,fetchJSON("structured/"+id+".json").then(obj=>(obj.passages||[]).map(p=>({
+  edition:obj.edition,language:obj.language,version:obj.version,locus:p.locus,book:p.book,chapter:p.chapter,
+  latin:p.latin||"",translation:p.translation||"",pdfPages:p.pdf_pages||{},method:obj.source?.method||"structured"
+ }))).catch(error=>{primaryCorpora.delete(id);throw error}));
+ return primaryCorpora.get(id);
+}
 function getCodices(){if(!codicesPromise)codicesPromise=fetchJSON("vitruvia-codices.json").then(r=>r.records||[]).catch(e=>{codicesPromise=null;throw e});return codicesPromise}
 function countWord(text,word){let pos=0,count=0;while((pos=text.indexOf(word,pos))!==-1){count++;pos+=word.length}return Math.min(3,count)}
 function lexicalScore(content,q,expansion=false){
- const needle=canonical(q),text=canonical(content);if(!needle||!text)return 0;
+ const needle=flat(q),text=flat(content);if(!needle||!text)return 0;
+ if(!expansion){
+  const hay=" "+text+" ",core=terms(q);
+  if(hay.includes(" "+needle+" "))return 55+core.length*10;
+  return core.length>1&&core.every(t=>hay.includes(" "+t+" "))?30+core.length*10:0;
+ }
  const core=tokens(q,false),all=tokens(q,expansion);let r=text.includes(needle)?55:0,matched=0;
  for(const t of core){if(text.includes(t)){matched++;r+=t.length>5?16:10}}
  if(core.length>1&&matched===0)return 0;
@@ -259,7 +273,8 @@ async function query(q,opts={}){
   catch(err){result.warnings.push("Índice de prefacios: "+err.message)}
   return result
  }
- const tasks=[getCorpora(),getCodices()];
+ const tasks=[opts.primaryOnly?getPrimaryCorpus(opts.language):getCorpora(),
+  result.intent.codex||result.intent.vitruvian?getCodices():Promise.resolve([])];
  const [p,c]=await Promise.allSettled(tasks);
  if(p.status==="fulfilled")result.rows.push(...passageRows(q,p.value,{concept:!!opts.concept}));
  else result.warnings.push("Corpus estructurado: "+p.reason?.message);

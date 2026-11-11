@@ -34,8 +34,8 @@ for(const needle of [
 const vit=read("assets/vitruvia-search.js");
 for(const needle of [
  "let cataloguePromise=null",
- "await cataloguePromise",
- "if(id!==S.searchId||searchSignal.aborted)return",
+ "vitruvia:catalogue-core",
+ "if(supplementApplied||id!==S.searchId||searchSignal.aborted)return",
  "if(initialQuery&&S.searchId===bootSearchId",
  "else clearSearch({preserveUrl:true})",
  "if(!preserveUrl)history.replaceState"

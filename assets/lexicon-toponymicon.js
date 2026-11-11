@@ -4,15 +4,16 @@
 (()=>{
 "use strict";
 const form=document.getElementById("lx-form"),input=document.getElementById("lx-q");
+const modeExact=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLocaleLowerCase().replace(/[ςϲ]/g,"σ").trim();
+const placeIndex=fetch("data/lexicon/toponymicon.json?v=20261111-mycenae-v1").then(r=>{if(!r.ok)throw Error("Registro de lugares HTTP "+r.status);return r.json()});
+window.VitruviaToponyms={lookup:query=>placeIndex.then(data=>firstMatch(data.places||[],query)).catch(()=>null)};
 if(!form||!input||document.getElementById("lx-toponymicon"))return;
 const p=document.createElement("section");
 p.id="lx-toponymicon";p.className="lx-toponymicon";
 p.setAttribute("aria-label","Toponymicon e Index locorum geográfico");
-p.innerHTML='<details id="lx-topo-details"><summary>Lugares antiguos documentados (Atenas, Roma, Corinto)</summary><div class="lx-topo-inner"><p>Repertorio inicial limitado a Atenas, Roma y Corinto. No es un diccionario de conceptos: términos como λόγος no producen aquí un lugar. Busque ciudades y lugares por su nombre en castellano, inglés, latín o griego antiguo. La identificación geográfica se enlaza con <strong>Pleiades</strong> y con cartografía de reconstrucción académica del Ancient World Mapping Center. Los pasajes proceden únicamente de los corpus textuales registrados.</p><div class="lx-topo-row"><label for="lx-topo-q">Lugar antiguo</label><input id="lx-topo-q" type="search" dir="auto" placeholder="Atenas · Athens · Ἀθῆναι · Roma · Κόρινθος"><button id="lx-topo-search" type="button">Consultar lugar y pasajes</button></div><p id="lx-topo-state" role="status" aria-live="polite"></p><div id="lx-topo-result"></div></div></details>';
+p.innerHTML='<details id="lx-topo-details"><summary>Lugares antiguos documentados (Atenas, Roma, Corinto, Micenas)</summary><div class="lx-topo-inner"><p>Repertorio inicial de Atenas, Roma, Corinto y Micenas. No es un diccionario de conceptos: términos como λόγος no producen aquí un lugar. Busque ciudades y lugares por su nombre en castellano, inglés, latín o griego antiguo. La identificación geográfica se enlaza con fuentes institucionales y <strong>Pleiades</strong> y con cartografía de reconstrucción académica del Ancient World Mapping Center. Los pasajes proceden únicamente de los corpus textuales registrados.</p><div class="lx-topo-row"><label for="lx-topo-q">Lugar antiguo</label><input id="lx-topo-q" type="search" dir="auto" placeholder="Atenas · Athens · Ἀθῆναι · Roma · Κόρινθος"><button id="lx-topo-search" type="button">Consultar lugar y pasajes</button></div><p id="lx-topo-state" role="status" aria-live="polite"></p><div id="lx-topo-result"></div></div></details>';
 (document.getElementById('instrumenta')||document.getElementById('methodus')||form.parentElement)?.after(p);
 const $=id=>document.getElementById(id),status=$("lx-topo-state"),result=$("lx-topo-result");
-const modeExact=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLocaleLowerCase().replace(/[ςϲ]/g,"σ").trim();
-const placeIndex=fetch("data/lexicon/toponymicon.json").then(r=>{if(!r.ok)throw Error("Registro de lugares HTTP "+r.status);return r.json()});
 let registryPromise=null,active=0;
 function node(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=String(text);if(cls)n.className=cls;return n}
 function anchor(url,title){const a=node("a",title);a.href=url;a.target="_blank";a.rel="noopener noreferrer";return a}
@@ -59,7 +60,7 @@ function presentation(place){
  const links=node("nav",undefined,"lx-topo-links");
  links.setAttribute("aria-label","Atlas históricos y referencias externas");
  links.append(
-  anchor(place.source,"Pleiades · lugar identificado y mapa"),
+  anchor(place.source,place.sourceLabel||"Pleiades · lugar identificado y mapa"),
   anchor("https://isaw.nyu.edu/exhibitions/space/alacarte.html","Antiquity À-la-carte · cartografía académica reconstruida"),
   anchor("https://peutinger.atlantides.org/map-a/","Tabula Peutingeriana · facsímil de mapa histórico"),
   anchor("https://pleiades.stoa.org/places","Pleiades · explorar topónimos antiguos")
@@ -85,6 +86,7 @@ async function searchToponym(query,automatic=false){
   }
   $("lx-topo-details").open=true;
   const box=presentation(place);status.textContent="Topónimo identificado: "+place.label+". Buscando pasajes reales por grafías registradas…";
+  if(automatic){status.textContent="Topónimo identificado: "+place.label+". Pulse «Consultar lugar y pasajes» para ampliar la concordancia.";return}
   if(!registryPromise)registryPromise=fetch("data/classics-corpus/search-registry.json").then(r=>{if(!r.ok)throw Error("Registro textual HTTP "+r.status);return r.json()}).catch(e=>{registryPromise=null;throw e});
   const register=await registryPromise;if(id!==active)return;
   const entries=(register.entries||[]).filter(e=>["la","grc"].includes(e.language)&&["json-passages","html-text","structured-bilingual"].includes(e.format));

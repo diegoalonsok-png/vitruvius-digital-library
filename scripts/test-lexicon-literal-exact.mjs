@@ -22,6 +22,7 @@ const search=(value,work="")=>context.literalSearch(D,{
 },{literalOriginal:true,work});
 assert.equal(search("domus").hits.length,1,"domus debe localizarse en el índice literal");
 assert.equal(search("DOMUS").hits.length,1,"Mayúsculas no impiden la búsqueda");
+assert.equal(search("dimus").hits.length,0,"dimus no debe convertirse en domus, symmetria ni geometria");
 assert.equal(search("dom").hits.length,0,"No agregar coincidencias parciales");
 assert.equal(search("domus","euclid").hits.length,0,"El filtro por obra debe respetarse");
 assert.equal(search("λόγος").hits.length,1,"Griego politónico debe conservar su búsqueda literal");

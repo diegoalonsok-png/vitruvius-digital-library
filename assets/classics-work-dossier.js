@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261110-100witnesses-v24",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-100witnesses-v24",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-100witnesses-v24",standard:"data/classics-corpus/vitruvius-standard-222.json?v=20261110-100witnesses-v24",trees:"data/classics-corpus/codicological-trees-222.json?v=20261110-100witnesses-v24"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261111-editorial-identifiers-v1",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-100witnesses-v24",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-100witnesses-v24",standard:"data/classics-corpus/vitruvius-standard-222.json?v=20261110-100witnesses-v24",trees:"data/classics-corpus/codicological-trees-222.json?v=20261110-100witnesses-v24"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
@@ -229,6 +229,40 @@ function renderCodicology(dest,w){
   if(refs.childNodes.length)item.append(refs);
   dest.append(item);
  }
+}
+let teiMatrixTask=null;
+function renderExpandedCodicology(dest,w,d){
+ const witnesses=d.witness.get(w.id)||[];
+ if(!witnesses.length)return;
+ const details=html("details","cwd-tei-details"),summary=html("summary",null,"Datos codicológicos y filológicos ampliados · fuentes y campos pendientes");
+ const output=html("div");details.append(summary,output);dest.append(details);
+ details.addEventListener("toggle",async()=>{
+  if(!details.open||details.dataset.loaded)return;
+  details.dataset.loaded="loading";output.replaceChildren(html("p",null,"Consultando descripción especializada…"));
+  try{
+   if(!teiMatrixTask)teiMatrixTask=fetch("data/classics-corpus/tei-codicology-research-matrix-89.json?v=20261111-source-fields-v1").then(r=>{if(!r.ok)throw Error("Matriz no disponible");return r.json()}).catch(e=>{teiMatrixTask=null;throw e});
+   const matrix=await teiMatrixTask,ids=new Set(witnesses.map(x=>x.id));
+   const records=(matrix.records||[]).filter(r=>ids.has(r.witnessId));
+   output.replaceChildren();
+   output.append(html("p","cwd-muted","Se distingue el dato de catálogo del cotejo visual y filológico. Un campo sin documentar no equivale a ausencia del rasgo en el manuscrito."));
+   const labels={material:"Soporte",dimensions:"Dimensiones y caja escrita",collationFormula:"Fórmula de cuadernos",ruling:"Pautado",binding:"Encuadernación",watermarks:"Filigranas",script:"Escritura",hands:"Manos",corrections:"Correctores",scholia:"Escolios",glosses:"Glosas",subscriptiones:"Subscriptiones",origin:"Origen",provenance:"Procedencia",folioRange:"Folios o páginas",coverage:"Contenido conservado",lacunae:"Lagunas",transpositions:"Transposiciones",palimpsest:"Palimpsesto",record:"Catálogo custodio",viewer:"Visor documentado",manifest:"Manifest IIIF"};
+   const states={institutional_catalogue_verified:"Contrastado con catálogo institucional",recorded_not_individually_collated:"Dato registrado; sin cotejo individual",missing_requires_source:"Pendiente de fuente y cotejo"};
+   for(const record of records){
+    const block=html("section","cwd-ms");block.append(html("h4",null,[record.repository,record.shelfmark].filter(Boolean).join(" · ")));
+    for(const fields of Object.values(record.fields||{}))for(const [key,field] of Object.entries(fields)){
+     const value=field.value;
+     row(block,labels[key]||key,value==null||value===""?"Sin dato acreditado en el registro":typeof value==="object"?JSON.stringify(value):value);
+     const status=html("p","cwd-muted",states[field.status]||field.status||"Estado de cotejo no consignado");
+     if(field.note)status.append(document.createTextNode(" · "+field.note));
+     const source=field.sourceUrl||record.repositoryUrl;if(source){status.append(document.createTextNode(" · "));addA(status,"Consultar fuente",source)}
+     block.append(status);
+    }
+    output.append(block);
+   }
+   if(!records.length)output.append(html("p",null,"Sin matriz ampliada para este testimonio; se conserva la ficha documentada anterior."));
+   details.dataset.loaded="true";
+  }catch(error){delete details.dataset.loaded;output.replaceChildren(html("p",null,"No se pudo cargar el detalle: "+error.message))}
+ });
 }
 function renderCriticalAuthority(dest,w,d){
  const record=d.critical.get(w.id);
@@ -456,6 +490,7 @@ function renderResearchAssist(dest,w){
 }
 function renderInto(target,id,opts={}){
  if(!target)return Promise.resolve(null);
+ if(window.EditorialWorkRecords?.has(id))return window.EditorialWorkRecords.render(target,id);
  target.replaceChildren(html("p","cwd-muted","Cargando ficha crítica…"));
  return store().then(d=>{
   const w=d.docs.get(id);if(!w){target.replaceChildren(html("p","cwd-muted","La obra no figura en el catálogo verificado."));return null}
@@ -495,6 +530,7 @@ function renderInto(target,id,opts={}){
   renderAcademicSummary(target,w,d);
   renderCriticalAuthority(target,w,d);
   renderWitness(target,w,d);
+  renderExpandedCodicology(target,w,d);
   renderCodicologicalTree(target,w,d);
   renderResearchAssist(target,w);
   renderCodicology(target,w);

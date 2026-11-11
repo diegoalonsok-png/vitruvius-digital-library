@@ -314,6 +314,7 @@ function cached(kind,fn){
    all occurrences in a passage. Normalized Unicode maps back to raw offsets. */
 function completeMatches(text,term){
  const wanted=fold(term);if(!wanted)return[];
+ if(!fold(text).includes(wanted))return[];
  let content="",offsets=[];
  for(let i=0;i<text.length;){
   const char=String.fromCodePoint(text.codePointAt(i)),f=fold(char);
@@ -347,7 +348,7 @@ function batchMatches(passages,queries,allMatches){
  if(!('Worker' in window))return Promise.resolve(null);
  try{
   if(!matcherWorker){
-   matcherWorker=new Worker('assets/classics-search-worker.js?v=20261109-1');
+   matcherWorker=new Worker('assets/classics-search-worker.js?v=20261111-responsive-literal-v1');
    matcherWorker.onmessage=e=>{
     const {id,results,error}=e.data||{},pending=workerPending.get(id);
     if(!pending)return;workerPending.delete(id);
@@ -422,7 +423,7 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
   if(isCancelled())return [];
   // Reveal attested passages as editions finish; do not wait for the entire corpus.
   if(typeof onProgress==="function"){
-   try{onProgress(rows.slice(),{targeted:targets.length,examined:Math.min(offset+8,targets.length),loaded,failed,complete:offset+8>=targets.length})}catch(error){console.warn("Bibliotheca progress callback",error)}
+   try{onProgress(rows.slice(),{targeted:targets.length,examined:Math.min(offset+4,targets.length),loaded,failed,complete:offset+4>=targets.length})}catch(error){console.warn("Bibliotheca progress callback",error)}
   }
  }
  if(isCancelled())return [];

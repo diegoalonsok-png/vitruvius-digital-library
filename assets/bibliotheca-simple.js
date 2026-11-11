@@ -467,6 +467,7 @@ function attestedLexeme(row,q){
 }
 function render(rows,q,details){
  previous=rows;current=q;diag=details||{};
+ root.dataset.query=q;
  const t=dict[locale],sorted=rows.slice().sort((a,b)=>{
   const wa=byId.get(a.workId)||{},wb=byId.get(b.workId)||{};
   return dating(wa)-dating(wb)||String(wa.title||a.title).localeCompare(String(wb.title||b.title),"es")||
@@ -606,7 +607,10 @@ function render(rows,q,details){
 async function search(updateHistory=true){
  const id=++serial,q=input.value.trim();
  window.ClassicsCorpusSearch?.cancelPendingSearches?.();
+ previous=[];current="";diag={};
  updateLexicon();root.hidden=true;list.replaceChildren();
+ delete root.dataset.query;
+ document.querySelectorAll("[data-extra-search]").forEach(button=>button.remove());
  // Synchronize the address with the user's new term before any network waits.
  // This prevents a stale ?q= from appearing to be the current search.
  if(updateHistory&&q){
@@ -619,7 +623,8 @@ async function search(updateHistory=true){
  }
  window.ClassicsUploadedDocuments?.clear();
  if(q.length>180||fold(q).replace(/[^\p{L}\p{N}]/gu,"").length<2){status.textContent=dict[locale].short;return}
- status.textContent=dict[locale].loading;$("search-submit").disabled=true;
+ status.textContent=dict[locale].loading;$("search-submit").disabled=false;
+ const started=performance.now();delete status.dataset.firstResultMs;
  try{
   await metadata;if(id!==serial)return;
   const selectedWork=work.value;
@@ -648,17 +653,27 @@ async function search(updateHistory=true){
    }
    status.textContent=dict[locale].wrong;return;
   }
-  if(added)void added.search(q,workId,()=>id===serial);
+  if(added&&workId)void added.search(q,workId,()=>id===serial);
+  else if(added){
+   const extra=el("button","more",locale==="en"?"Also search uploaded DOCX files":locale==="fr"?"Chercher aussi dans les DOCX déposés":"Buscar también en los DOCX subidos");
+   extra.type="button";
+   extra.addEventListener("click",()=>{if(id===serial){extra.remove();void added.search(q,"",()=>id===serial)}});
+   status.after(extra);extra.dataset.extraSearch=String(id);
+  }
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
   const transliterations=[]; // Las equivalencias y transliteraciones no se incorporan a la búsqueda literal.
   if(id!==serial)return;
-  let lastPaint=0;
+  let lastPaint=0,painted=false;
   const onProgress=(partial,progress)=>{
    const now=Date.now();if(!progress.complete&&progress.examined>4&&now-lastPaint<600)return;
    lastPaint=now;
    if(id!==serial)return;
-   // Progress must not destroy inline translations or scroll position.
-   // Results are rendered once when search completes.
+   // First usable passages should not wait for every edition to finish.
+   // Paint only once during progress so inline readers remain stable.
+   if(partial.length&&!painted){
+    painted=true;render(partial,q,{...progress,partial:true});
+    status.dataset.firstResultMs=String(Math.round(performance.now()-started));
+   }
    status.textContent=dict[locale].stats(partial.reduce((n,row)=>n+(row.hitsInPassage||1),0),partial.length,new Set(partial.map(row=>row.workId)).size)+
     " · "+progress.examined+"/"+progress.targeted+" versiones examinadas"+
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
@@ -683,9 +698,12 @@ input.addEventListener("input",()=>{
  // The old asynchronous scan may finish, but its serial can no longer paint.
  ++serial;
  window.ClassicsCorpusSearch?.cancelPendingSearches?.();
+ previous=[];current="";diag={};
  $("search-submit").disabled=false;
  root.hidden=true;
+ delete root.dataset.query;
  list.replaceChildren();
+ document.querySelectorAll("[data-extra-search]").forEach(button=>button.remove());
  status.textContent="";
  window.ClassicsUploadedDocuments?.clear();
  updateLexicon();
@@ -713,6 +731,8 @@ window.addEventListener("popstate",()=>{
  const q=(params.get("q")||params.get("term")||"").trim();
  const restore=++serial; // invalidate pending searches and progressive paints
  window.ClassicsCorpusSearch?.cancelPendingSearches?.();
+ previous=[];current="";diag={};root.hidden=true;list.replaceChildren();
+ window.ClassicsUploadedDocuments?.clear();
  input.value=q;
  updateLexicon();
  metadata.then(()=>{

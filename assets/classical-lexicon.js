@@ -28,11 +28,14 @@ function foldMap(text){
  map.push(src.length);
  return{norm,map};
 }
-function fold(s){return foldMap(s).norm}
+function fold(s){return String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[ςϲ]/g,"σ").replace(/j/g,"i").replace(/v/g,"u").replace(/[ʼ’]/g,"'")}
 function detectLang(w){return GREEK.test(String(w||""))?"grc":"la"}
 /* Coincidencias de la consulta (palabra o frase) en el texto; "whole" restringe a palabra completa o inicio de palabra. */
 function find(text,query,{prefix=true}={}){
  const q=fold(String(query||"").trim().replace(/\s+/g," "));if(q.length<2)return[];
+ // Most passages do not contain the query. Avoid building a character-offset
+ // array for every non-match in a multi-megabyte corpus.
+ if(!fold(text).includes(q))return[];
  const {norm,map}=foldMap(text),out=[];
  const isL=c=>!!c&&/[\p{L}]/u.test(c);
  let from=0;
@@ -217,6 +220,10 @@ async function wiktionary(word,lang,depth=0){
 async function lookupUncached(word,{lang,work,online=true}={}){
  const w=clean(word);if(!w)return{word:"",entries:[]};
  lang=lang||detectLang(w);
+ const place=await window.VitruviaToponyms?.lookup?.(w);
+ if(place)return {word:w,lang,entries:[{lemma:place.nameLatin||place.nameAncient||place.label,morph:place.morphology?.[fold(w)]||"Topónimo antiguo · "+place.label,es:place.description,gloss:"",lang,source:place.sourceLabel||"Toponymicon editorial · fuente geográfica identificada"}],via:"documented-place",sources:(place.sources||[{label:place.sourceLabel||"Fuente geográfica",url:place.source}]),note:place.period||"",links:[[place.sourceLabel||"Fuente geográfica",place.source],...links(w,lang,place.nameLatin||place.nameAncient)]};
+ const resident=window.VitruviaLexicon?.quickWord?.(w,lang);
+ if(resident?.gloss)return {word:w,lang,entries:[{lemma:resident.lemma,morph:resident.morph||"",gloss:resident.gloss,es:resident.es||"",lang,source:lang==="grc"?"LSJ · índice local del corpus":"Lewis & Short · índice local del corpus"}],via:"resident-corpus",sources:resident.sources||[],note:"Análisis automático del índice local; comprobar la acepción en su contexto.",links:links(w,lang,resident.lemma)};
  let res=lang==="grc"?await lookupGreek(w,work):await lookupLatin(w,work);
  if(!res&&online)res=await wiktionary(w,lang)||(w!==w.toLowerCase()?await wiktionary(w.toLowerCase(),lang):null);
  if(lang==="la"&&res?.entries?.length){
