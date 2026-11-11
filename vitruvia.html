@@ -2148,8 +2148,15 @@ html[data-theme=light] #vr-architecture-docs .vr-ad-viewer{background:#fff;borde
 html[data-theme=light] #vr-architecture-docs a{color:#225f41}
 html[data-theme=light] #vr-architecture-docs .vr-ad-cards .vr-ad-card{background:#e3eee6}
 @media(max-width:580px){#vr-architecture-docs{padding:12px}#vr-architecture-docs .vr-ad-row>*{max-width:100%}#vr-architecture-docs .vr-ad-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Visor de planos: zoom sin perder bordes y control táctil. */
+#vr-architecture-docs .vr-ad-mainimage{overflow:auto;max-width:100%;touch-action:pan-x pan-y}
+#vr-architecture-docs .vr-ad-mainimage img{width:var(--vr-ad-zoom,100%)!important;max-width:none!important;max-height:none!important;height:auto!important;object-fit:contain}
+#vr-architecture-docs input[type=range]{width:min(210px,48vw);accent-color:#a5cbb5;vertical-align:middle;margin-left:10px}
+#vr-architecture-docs output{font:12px system-ui;min-width:40px}
+#vr-architecture-docs button:focus-visible,#vr-architecture-docs select:focus-visible,#vr-architecture-docs input:focus-visible,#vr-architecture-docs a:focus-visible{outline:3px solid #9ecdb2;outline-offset:2px}
 </style>
-<script defer src="assets/vitruvia-architectural-documents.js?v=20261111-doc-plans-v1"></script>
+<script defer src="assets/vitruvia-architectural-documents.js?v=20261111-plan-search-v2"></script>
 </body></html>
 
 
