@@ -86,7 +86,7 @@ function entry(n){
 function renderLocusSummary(loc,filtered){
  const box=$("apa-locus-summary");box.replaceChildren();
  if(!loc){
-  box.textContent="Buscá por locus (I.2.1, III.1.2 o 10.praef.1) y compará notas de V514, V554 y V297. Podés filtrar menciones de Krohn, Rose, Budé o Harley sin confundirlas con variantes certificadas.";
+  box.textContent="Busque por locus (I.2.1, III.1.2 o 10.praef.1) y compare notas de V514, V554 y V297. Puede filtrar menciones de Krohn, Rose, Budé o Harley sin confundirlas con variantes certificadas.";
   return;
  }
  const explicit=filtered.filter(n=>status(n)==="explicit_in_anchor").length;
