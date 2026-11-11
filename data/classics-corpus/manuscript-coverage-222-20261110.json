@@ -4,10 +4,10 @@
   "scope": "Manuscript identification is not proof of globally earliest text witness. Catalog data may refer to partial manuscripts.",
   "counts": {
     "catalogued": 222,
-    "witnesses": 98,
-    "worksWithWitnesses": 121,
-    "worksWithoutWitnesses": 101,
-    "worksWithThisBatchSourceReview": 68
+    "witnesses": 100,
+    "worksWithWitnesses": 122,
+    "worksWithoutWitnesses": 100,
+    "worksWithThisBatchSourceReview": 69
   },
   "records": [
     {
@@ -878,11 +878,14 @@
     },
     {
       "workId": "aulus-gellius-noctes",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
+      "witnessCount": 2,
+      "verifiedInstitutionalCount": 2,
       "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
+      "witnessIds": [
+        "aulus-gellius-harley4859",
+        "aulus-gellius-burney174"
+      ],
+      "status": "individual_witnesses_identified",
       "oldestGlobalClaimVerified": false
     },
     {
