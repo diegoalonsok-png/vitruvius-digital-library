@@ -231,3 +231,8 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-event-marker{box-shadow:
 @media(prefers-reduced-motion:reduce){
  #vitruvia-academic-timeline .vat-event-marker,#vitruvia-academic-timeline .vat-event-pop{transition:none!important}
 }
+
+/* Allow event popovers to float above the timeline without being cut off. */
+#vitruvia-academic-timeline{overflow:visible!important}
+#vitruvia-academic-timeline .vat-map{overflow:visible!important}
+#vitruvia-academic-timeline .vat-event-marker:focus-visible{outline:3px solid #8da9cc!important;outline-offset:4px}
