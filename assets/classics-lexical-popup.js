@@ -140,6 +140,18 @@ async function openMark(mark){
    await lexicon.renderPanel(inline,word,{lang,work:edition,online:true});
    if(id!==current)return;
   }
+  const glosses=[...slot.querySelectorAll(".cl-entry .cl-gloss")].map(x=>x.textContent.trim())
+   .filter(Boolean).join(" · ").slice(0,1050);
+  // Translate the dictionary's modern explanatory gloss, not the ancient
+  // source text. External translation is strictly opt-in and labelled as such.
+  if(glosses&&window.VitruviaInlineTranslation?.attach){
+   const glossNode=el("p",glosses,"cl-popup-note");
+   glossNode.lang=glosses.startsWith("Castellano:")?"es":"en";
+   const wrapper=el("section",null,"cl-popup-gloss-translation");
+   wrapper.append(el("h3","Traducción orientativa de la explicación lexicográfica"));
+   wrapper.append(glossNode);contents.append(wrapper);
+   window.VitruviaInlineTranslation.attach(glossNode,{sourceLanguage:glossNode.lang,originalText:glosses});
+  }
   contents.append(historicalMedia(word),linksFor(word,lang));
  }catch{
   if(id!==current)return;
@@ -149,7 +161,7 @@ async function openMark(mark){
 }
 const markSelector=passages?"mark.cl-hit,mark.cl-parallel-hit":
  inClassicalReader?".txt mark":
- "#lx-viewer .lx-viewer-origin mark.w,#lx-viewer .lx-viewer-col mark.w";
+ "#lx-viewer .lx-viewer-origin mark.w,#lx-viewer .lx-viewer-col mark.w,.lx-hit .lx-kwic mark.w,.lx-hit .lx-passage mark.w";
 function markOf(target){
  return target instanceof Element?target.closest(markSelector):null;
 }
