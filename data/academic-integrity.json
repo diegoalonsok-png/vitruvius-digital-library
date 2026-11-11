@@ -1,6 +1,6 @@
 {
-  "schema": 1,
-  "generated": "2026-11-05",
+  "schema": 2,
+  "generated": "2026-11-11",
   "scope": "Integridad del índice y trazabilidad editorial; no certifica cotejo filológico, calidad de traducción ni disponibilidad de servidores externos.",
   "sourceFingerprint": "3464acce3ca8ea2d14492935a249bb5950f90fd46932281f033b338d98ef7c0d",
   "sourceFingerprintMethod": "SHA-256 de JSON.stringify([recensio-es, recensio-fr, theory-en]); sin dependencia de espacios o saltos de línea.",
@@ -774,8 +774,12 @@
     "9.praef.9"
   ],
   "manuscripts": {
-    "records": 23,
-    "withRepositoryShelfmarkDateAndSource": 23
+    "records": 100,
+    "withRepositoryShelfmarkDateAndSource": 100,
+    "catalogueWorksWithLinkedWitness": 122,
+    "catalogueWorksWithoutLinkedWitness": 100,
+    "directOriginalWitnesses": 42,
+    "note": "Una signatura documentada no acredita por sí sola que el códice sea el más antiguo conservado ni el testigo crítico más importante."
   },
   "apparatus": {
     "entries": 1393,
@@ -792,14 +796,27 @@
     "method": "Bloques del aparato localizados por encabezado en el texto de los PDF y notas DOCX del autor. El vínculo con el locus es el de la página impresa; no equivale a una collatio verificada. Las entradas sin locus en la página se completan con la mención del encabezado o, en las notas, por la posición en el documento (marcado como estimado)."
   },
   "catalogue": {
-    "records": 221,
-    "declaredLocalReadings": 20,
-    "withLocalTranslation": 8,
-    "withExplicitEditionCitation": 2
+    "records": 222,
+    "declaredLocalReadings": 145,
+    "declaredCompleteLocalReadings": 32,
+    "declaredPartialLocalReadings": 113,
+    "withLocalTranslation": 41,
+    "withExplicitEditionCitation": 16,
+    "caveat": "El estado público de lectura es un dato de catálogo; no equivale a verificar el texto completo contra una edición crítica."
+  },
+  "codicology": {
+    "registeredWitnessRecords": 100,
+    "uniquePhysicalObjects": 93,
+    "fieldsPerWitness": 22,
+    "fieldSlots": 2200,
+    "filledFieldSlots": 441,
+    "pendingFieldSlots": 1759,
+    "allFieldsFilled": 0,
+    "caveat": "Pendiente no significa necesariamente aplicable; por ejemplo, la filigrana puede no corresponder al pergamino. Datos no comprobados no se infieren."
   },
   "externalClassicalRepertory": {
-    "records": 169,
-    "withTranslationLinks": 113,
+    "records": 1627,
+    "withTranslationLinks": 439,
     "availability": "Fuentes enlazadas; este recuento no prueba lectura local completa ni cotejo de cada traducción."
   },
   "priorities": [
