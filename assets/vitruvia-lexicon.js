@@ -416,10 +416,21 @@ async function run(push=true){
   if(S.mode==="sintaxis")renderCollocations(S.D,res);
   renderHits(S.D,res);
   if(ctxDropped||S.ctxAll){const b=el("p",{class:"lx-small lx-ctx-note"},S.ctxAll?T("Se muestran todas las coincidencias de la tabla, sin el filtro contextual. "):`${ctxDropped} ${T("coincidencias descartadas: el análisis contextual (Stanza) asigna allí otro lema.")} `,el("button",{type:"button",class:"lx-btn",onclick:()=>{S.ctxAll=!S.ctxAll;run(false)}},S.ctxAll?T("Aplicar el filtro contextual"):T("Mostrarlas también")));$("#lx-results").prepend(b)}
-  if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!/^\*/.test(q)){const P=await findPerson(q);if(!isCurrent())return;
-   if(P){await renderPerson(P,q);return}}
-  if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · ETYMOLOGIA"),el("h2",{},q),el("p",{class:"article-byline"},"Sin pasajes en el corpus antiguo local: se ofrecen su etimología y su raíz semántica antigua.")));const cc=await findConcept(q);if(!isCurrent())return;
-   if(cc)box.append(conceptCard(cc,q));renderEtymTree(q,null,box)}
+  if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){
+   const box=$("#lx-entry");box.hidden=false;box.replaceChildren(
+    el("header",{class:"lx-entry-head"},
+     el("div",{class:"article-kicker"},"LEXICON · COINCIDENCIA LITERAL"),
+     el("h2",{},q),
+     el("p",{class:"article-byline"},"No se halló esta forma exacta en el corpus indexado. No se sustituyó por sinónimos, unidades relacionadas ni términos temáticamente afines.")));
+   const actions=el("div",{class:"actions"});
+   actions.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{
+    S.mode="lema";renderTabs();run();
+   }},"Buscar flexiones del lema"));
+   actions.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{
+    $("#lx-q").value="concepto:"+q;run();
+   }},"Explorar conceptos relacionados (opcional)"));
+   box.append(actions);
+  }
  }catch(err){console.error(err);if(isCurrent())setState("No se pudo completar la búsqueda: "+err.message)}
 }
 function resolveLang(q){if(S.lang!=="auto")return S.lang;const rest=q.replace(/\[[^\]]*\]/g,"").replace(/\b(NEAR\/\d+)\b|\.\.\d+/g,"");if(/\[/.test(q)&&!/[a-z]/i.test(rest.replace(/[^\p{L}]/gu,"")))return "grc";return detectLang(rest)}
