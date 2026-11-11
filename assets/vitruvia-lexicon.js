@@ -735,7 +735,7 @@ function morphologyFrequency(D,term,lemmas){
   ". Formas del lema: "+total.toLocaleString("es")+" apariciones en "+rows.length+" obras indexadas. "+
   "Son recuentos de las ediciones digitales, no de los códices manuscritos. "+
   (ids.length?"Lemas analizados: "+ids.map(lemmaDisplay).join(" / ")+". ":"Si la forma no tiene análisis morfológico, se cuenta únicamente su grafía documentada.")),
-  section.querySelector("table")||section.lastChild);
+  section.querySelector(".lx-freq-table-scroll")||section.querySelector("table")||section.lastChild);
  return section;
 }
 async function renderEntry(D,term,res){
