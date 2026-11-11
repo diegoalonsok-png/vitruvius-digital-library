@@ -293,7 +293,7 @@
    for(const e of items){
     const x=Math.max(14,Math.min(mapWidth-14,(e.year-low)/range*mapWidth));
     const previous=groups[groups.length-1];
-    if(previous&&x-previous.lastX<34){
+    if(previous&&x-previous.x<34){
      previous.items.push(e);previous.lastX=x;
     }else groups.push({x,lastX:x,items:[e]});
    }
@@ -324,7 +324,7 @@
     markerItems.push({button,key,year:e.year,lane,events:group.items});
     track.append(button);
    }
-   track.style.height="160px";
+   track.style.height="186px";
    band.append(title,track);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
