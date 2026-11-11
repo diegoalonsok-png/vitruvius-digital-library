@@ -14,15 +14,21 @@ assert.doesNotMatch(css,/\.article-grid:has\(> #vitruvia-academic-timeline/);
 assert.match(html,/<section id="vitruvia-academic-timeline"[^>]*hidden><\/section><div class="results-grid">/);
 class E {
  constructor(tag="div",id=""){
-  Object.assign(this,{tagName:tag,id,className:"",children:[],dataset:{},attributes:{},style:{},
-    textContent:"",hidden:false,parentElement:null,isConnected:true,listeners:{},scrolls:[]});
+  const own=this;
+  const classes=new Set();
+  const style={setProperty(k,v){this[k]=v},removeProperty(k){delete this[k]}};
+  const classList={add(k){classes.add(k)},toggle(k,on){if(on)classes.add(k);else classes.delete(k)},contains(k){return classes.has(k)}};
+  Object.assign(this,{tagName:tag,id,className:"",children:[],dataset:{},attributes:{},style,classList,
+    textContent:"",hidden:false,parentElement:null,isConnected:true,listeners:{},scrolls:[],clientWidth:760});
  }
  append(...nodes){for(const n of nodes){if(n.parentElement)n.parentElement.children=n.parentElement.children.filter(x=>x!==n);n.parentElement=this;this.children.push(n)}}
  prepend(...nodes){for(let i=nodes.length-1;i>=0;i--){const n=nodes[i];if(n.parentElement)n.parentElement.children=n.parentElement.children.filter(x=>x!==n);n.parentElement=this;this.children.unshift(n)}}
  insertBefore(a,b){if(a.parentElement)a.parentElement.children=a.parentElement.children.filter(x=>x!==a);const i=this.children.indexOf(b);this.children.splice(i<0?this.children.length:i,0,a);a.parentElement=this}
  replaceChildren(...nodes){this.children=[];this.append(...nodes)}
  setAttribute(k,v){this.attributes[k]=v}
+ getAttribute(k){return this.attributes[k]??null}
  addEventListener(k,f){this.listeners[k]=f}
+ focus(){this.focused=true}
  querySelector(selector){if(selector===".article-grid")return this.children.find(x=>x.className==="article-grid")||null;return null}
  querySelectorAll(selector){const out=[];const visit=e=>{if(e.className==="vat-event"&&selector.startsWith(".vat-event")&&e.attributes["aria-pressed"]==="true")out.push(e);for(const x of e.children)visit(x)};visit(this);return out}
  scrollBy(opts){this.scrolls.push(opts)}
@@ -39,7 +45,9 @@ const callbacks={}, observers=[],win={
  addEventListener:(name,callback)=>{callbacks[name]=callback},
  VitruviaSearchSnapshot:null,
  VitruviaEntityResolver:{resolve:async q=>({wikidataId:q==="Pink Floyd"?"Q1":"Q2",
-  canonical:q,inceptionYear:q==="Pink Floyd"?1965:null,birthYear:q==="Ramses II"?-1303:null})}
+  canonical:q,inceptionYear:q==="Pink Floyd"?1965:null,
+  birthYear:q==="Ramses II"?-1303:q==="Mozart"?1756:null,
+  deathYear:q==="Mozart"?1791:null})}
 };
 const doc={documentElement:{lang:"es"},getElementById:id=>ids[id]||null,
  querySelector:q=>q==="#results .results-grid"?resultsGrid:null,createElement:tag=>new E(tag)};
@@ -68,9 +76,36 @@ const button=find("vat-event")[0],detail=find("vat-detail")[0];
 assert.ok(button&&detail);
 button.listeners.click();
 assert.equal(detail.hidden,false,"Clicking a milestone opens the sourced reading pane");
+const arrowNext=find("vat-controls")[0]?.children?.find(x=>x.attributes?.["aria-label"]==="Avanzar");
+assert(arrowNext?.onclick,"Timeline arrow must select the next milestone, not scroll an overflowing canvas");
+arrowNext.onclick();
+assert.equal(find("vat-detail")[0].hidden,false);
 emit("vitruvia:search",{query:"Ramses II"});
 for(let i=0;i<4;i++)await Promise.resolve();
-assert.deepEqual(win.VitruviaAcademicTimeline.collect().map(x=>x.year),[-1303]);
+assert.deepEqual([...win.VitruviaAcademicTimeline.collect().map(x=>x.year)],[-1303]);
+// The lifetime chart must never stretch to posthumous scholarly publications.
+emit("vitruvia:search",{query:"Mozart"});
+for(let i=0;i<4;i++)await Promise.resolve();
+emit("vitruvia:results",{query:"Mozart",rows:[{type:"book",title:"Mozart",year:1900,link:"https://example.org/edition",source:"Catalogue"}]});
+const extra=find("vat-outside")[0];
+assert(extra,"Posthumous editions need a separate sourced list");
+assert.equal(find("vat-event").length,2,"Only birth and death should appear on biographical axis");
+const layout=win.VitruviaAcademicTimeline.layoutMarkers;
+for(const width of [54,115,220,320,440,760,1280]){
+ const crowded=Array.from({length:48},(_,i)=>({year:1756+Math.floor(i/3),title:"event "+i}));
+ const positions=layout(crowded,1750,90,width,1.35);
+ assert.equal(positions.length,48);
+ const byRow=new Map();
+ for(const p of positions){
+  assert(p.center>=0&&p.center<=width,"Marker must stay inside timeline");
+  const popCenter=p.center+p.shift;
+  assert(popCenter-p.popupWidth/2>=-0.01,"Tooltip left edge outside timeline");
+  assert(popCenter+p.popupWidth/2<=width+0.01,"Tooltip right edge outside timeline");
+  const last=byRow.get(p.level);
+  if(last!=null)assert(p.center-last>=35-0.01,"Markers collide in the same lane");
+  byRow.set(p.level,p.center);
+ }
+}
 emit("vitruvia:clear",{});
 assert.equal(root.hidden,true);
 assert.equal(win.VitruviaAcademicTimeline.collect().length,0);

@@ -22,6 +22,24 @@
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
  const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
+ // Greedy tracks keep same-day and adjacent milestones from touching.
+ // Popup centres are independently clamped, so no tooltip can protrude
+ // beyond the chronology track even at narrow mobile widths.
+ function layoutMarkers(items,low,range,width,zoom=1){
+  const safeWidth=Math.max(1,Number(width)||1);
+  const diameter=24,gap=11;
+  const popupWidth=Math.max(1,Math.min(Math.max(1,safeWidth-12),Math.round(134*zoom)));
+  const lastCentres=[];
+  return items.map(event=>{
+   const raw=(event.year-low)/Math.max(1,range)*safeWidth;
+   const center=Math.max(Math.min(safeWidth/2,diameter/2+3),Math.min(safeWidth-Math.min(safeWidth/2,diameter/2+3),raw));
+   let level=lastCentres.findIndex(last=>center-last>=diameter+gap);
+   if(level<0){level=lastCentres.length;lastCentres.push(-Infinity)}
+   lastCentres[level]=center;
+   const popupCenter=Math.max(popupWidth/2+4,Math.min(safeWidth-popupWidth/2-4,center));
+   return {event,center,level,popupWidth,shift:popupCenter-center};
+  });
+ }
  const article=document.getElementById("vitruvia-article");
  const articleGrid=article?.querySelector(".article-grid");
  const resultsGrid=document.querySelector("#results .results-grid");
@@ -214,17 +232,27 @@
     "Aucun jalon daté avec source pour cette recherche ; les autres résultats restent disponibles."));
    root.append(empty);return;
   }
-  const minYear=events[0].year,maxYear=Math.max(...events.map(e=>e.end??e.year));
-  const span=Math.max(1,maxYear-minYear),padding=isAkhenaten()?0:Math.max(1,Math.ceil(span*.04));
-  const low=isAkhenaten()?akhenatenBounds.birth:minYear-padding;
-  const high=isAkhenaten()?akhenatenBounds.death:maxYear+padding;
+  // In biographies the documentary axis ends at death. Posthumous
+  // editions remain reachable, but cannot distort a lifetime into millennia.
+  const born=isAkhenaten()?akhenatenBounds.birth:year(state.authority?.birthYear);
+  const died=isAkhenaten()?akhenatenBounds.death:year(state.authority?.deathYear);
+  const lifeScope=born!==null&&died!==null&&died>=born?{born,died}:null;
+  const visibleEvents=lifeScope?events.filter(e=>e.year>=lifeScope.born&&e.year<=lifeScope.died):events;
+  const outsideEvents=lifeScope?events.filter(e=>e.year<lifeScope.born||e.year>lifeScope.died):[];
+  const minYear=visibleEvents[0]?.year??events[0].year;
+  const maxYear=Math.max(...(visibleEvents.length?visibleEvents:events).map(e=>e.end??e.year));
+  const span=Math.max(1,maxYear-minYear),padding=lifeScope?0:Math.max(1,Math.ceil(span*.04));
+  const low=lifeScope?lifeScope.born:minYear-padding;
+  const high=lifeScope?lifeScope.died:maxYear+padding;
   const range=Math.max(1,high-low);
-  // Universal fitted scale: time always spans the visible reader, not a fixed 960–5200px canvas.
-  const cs=getComputedStyle(root);
-  const available=Math.max(250,Math.floor(root.clientWidth)-parseFloat(cs.paddingLeft||0)-parseFloat(cs.paddingRight||0)-3);
-  const labelWidth=available<490?94:available<740?128:170;
-  const mapWidth=Math.max(150,available-labelWidth-2);
-  const cardWidth=Math.min(Math.max(106,Math.round(134*state.zoom)),Math.max(96,mapWidth-10));
+  // Size the axis from the actual available content box. No 250px
+  // minimum canvas and no fixed 960px map overflowing mobile readers.
+  const cs=typeof getComputedStyle==="function"?getComputedStyle(root):{paddingLeft:"0",paddingRight:"0"};
+  const outer=Number(root.clientWidth)||Number(root.getBoundingClientRect?.().width)||760;
+  const available=Math.max(1,Math.floor(outer)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)-3);
+  const labelWidth=Math.min(Math.round(available*.33),available<420?88:available<740?124:170);
+  const mapWidth=Math.max(1,available-labelWidth-2);
+  const cardWidth=Math.min(Math.round(134*state.zoom),Math.max(1,mapWidth-12));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
@@ -239,24 +267,23 @@
   }
   map.append(axis);
   const detail=el("div","vat-detail");detail.hidden=true;detail.setAttribute("aria-live","polite");
+  const stops=[];
   for(const [lane,[label,icon]] of Object.entries(types)){
-   const items=events.filter(x=>x.lane===lane);if(!items.length)continue;
+   const items=visibleEvents.filter(x=>x.lane===lane);if(!items.length)continue;
    const band=el("section","vat-band");band.setAttribute("aria-label",label);
    const title=el("div","vat-band-title");title.append(el("span","vat-icon",icon),el("strong",null,label));
    const track=el("div","vat-track");track.style.width=mapWidth+"px";
    const line=el("div","vat-line");track.append(line);
-   const lastEnds=[];let levelMax=0;
-   for(const e of items){
-    const x=(e.year-low)/range*mapWidth;
-    const center=Math.max(cardWidth/2+3,Math.min(mapWidth-cardWidth/2-3,x));
-    let level=lastEnds.findIndex(end=>center-end>=26);
-    if(level<0){level=lastEnds.length;lastEnds.push(-Infinity)}
-    lastEnds[level]=center;levelMax=Math.max(levelMax,level);
+   const positioned=layoutMarkers(items,low,range,mapWidth,state.zoom);
+   let levelMax=0;
+   for(const {event:e,center,level,popupWidth,shift} of positioned){
+    levelMax=Math.max(levelMax,level);
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
     button.classList.add("vat-event-marker");
-    button.style.left=center+"px";button.style.top=(27+level*40)+"px";
-    button.style.setProperty("--vat-popup-width",cardWidth+"px");
+    button.style.left=center+"px";button.style.top=(23+level*40)+"px";
+    button.style.setProperty("--vat-popup-width",popupWidth+"px");
+    button.style.setProperty("--vat-popup-shift",shift+"px");
     button.setAttribute("aria-label",(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
     button.title=L("Pasar el mouse o pulsar para ver la ficha","Hover or select to see the record","Survoler ou sélectionner pour voir la notice");
     const popup=el("span","vat-event-pop");
@@ -267,21 +294,51 @@
     }
     button.append(popup);
     button.addEventListener("click",()=>highlightButton(button,detail,e));
+    stops.push({button,event:e});
     const key=[e.title,e.year,e.lane].join("|");
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
    }
-   track.style.height=(74+levelMax*40)+"px";
+   track.style.height=(72+levelMax*40)+"px";
    band.append(title,track);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
+  if(lifeScope&&outsideEvents.length){
+   const extra=el("details","vat-outside");
+   extra.append(el("summary",null,L(
+    "Ediciones y documentos fuera del período biográfico ("+outsideEvents.length+")",
+    "Records outside the lifetime ("+outsideEvents.length+")",
+    "Documents hors de la période biographique ("+outsideEvents.length+")")));
+   const list=el("ul","vat-outside-list");
+   for(const e of outsideEvents.slice(0,15)){
+    const li=el("li");
+    const link=el("a",null,showYear(e.year)+" · "+e.title);
+    link.href=e.url;link.target="_blank";link.rel="noopener noreferrer";
+    li.append(link);list.append(li);
+   }
+   if(outsideEvents.length>15)list.append(el("li",null,L("Se muestran los primeros 15 registros.","Showing first 15 records.","15 premières notices affichées.")));
+   extra.append(list);root.append(extra);
+  }
+  stops.sort((a,b)=>a.event.year-b.event.year||a.event.title.localeCompare(b.event.title));
+  function navigate(direction){
+   const current=stops.findIndex(item=>item.button.getAttribute("aria-pressed")==="true");
+   const index=current<0?(direction>0?0:stops.length-1):Math.max(0,Math.min(stops.length-1,current+direction));
+   const nextStop=stops[index];
+   if(!nextStop)return;
+   highlightButton(nextStop.button,detail,nextStop.event);
+   nextStop.button.focus?.({preventScroll:true});
+  }
+  prev.title=L("Hito anterior","Previous milestone","Jalon précédent");
+  next.title=L("Hito siguiente","Next milestone","Jalon suivant");
+  zoomOut.title=L("Reducir el tamaño de la etiqueta","Smaller labels","Réduire les étiquettes");
+  zoomIn.title=L("Aumentar el tamaño de la etiqueta","Larger labels","Agrandir les étiquettes");
   zoomOut.onclick=()=>{state.zoom=Math.max(.8,Math.round((state.zoom-.1)*100)/100);draw()};
   zoomIn.onclick=()=>{state.zoom=Math.min(1.35,Math.round((state.zoom+.1)*100)/100);draw()};
-  prev.onclick=()=>viewport.scrollBy({left:-460,behavior:"smooth"});
-  next.onclick=()=>viewport.scrollBy({left:460,behavior:"smooth"});
+  prev.onclick=()=>navigate(-1);
+  next.onclick=()=>navigate(1);
   viewport.addEventListener("keydown",e=>{
    if(e.target!==viewport||!["ArrowLeft","ArrowRight"].includes(e.key))return;
-   e.preventDefault();viewport.scrollBy({left:e.key==="ArrowRight"?280:-280,behavior:"smooth"});
+   e.preventDefault();navigate(e.key==="ArrowRight"?1:-1);
   });
  }
  // Redraw only when the available width changes, not when card height grows.
@@ -335,5 +392,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,version:"2.0-universal-sourced"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.1-fit-mobile-lifetime"};
 })();

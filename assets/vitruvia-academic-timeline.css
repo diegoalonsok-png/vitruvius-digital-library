@@ -236,3 +236,110 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-event-marker{box-shadow:
 #vitruvia-academic-timeline{overflow:visible!important}
 #vitruvia-academic-timeline .vat-map{overflow:visible!important}
 #vitruvia-academic-timeline .vat-event-marker:focus-visible{outline:3px solid #8da9cc!important;outline-offset:4px}
+
+/* 2026-11 responsive chronological atlas: bounded labels, no lateral canvas.
+   Added as an override; existing site theme and manuscript materials untouched. */
+#vitruvia-academic-timeline{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  border-radius:13px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+#vitruvia-academic-timeline :is(.vat-header,.vat-controls,.vat-title){
+  min-width:0;
+}
+#vitruvia-academic-timeline .vat-header{
+  flex-wrap:wrap;gap:12px 18px;
+}
+#vitruvia-academic-timeline .vat-controls{
+  flex-wrap:wrap;flex:1 1 270px;justify-content:flex-end;
+}
+#vitruvia-academic-timeline .vat-controls button{
+  border-radius:9px;
+  transition:background-color .15s ease,box-shadow .15s ease;
+}
+#vitruvia-academic-timeline .vat-axis{
+  min-width:0!important;
+  overflow:visible;
+  border-bottom:2px solid #8d989e;
+}
+#vitruvia-academic-timeline .vat-viewport,
+#vitruvia-academic-timeline .vat-map,
+#vitruvia-academic-timeline .vat-band,
+#vitruvia-academic-timeline .vat-track{
+  box-sizing:border-box!important;min-width:0!important;
+  max-width:100%!important;
+}
+#vitruvia-academic-timeline .vat-viewport{
+  overflow-x:visible!important;overflow-y:visible!important;
+}
+#vitruvia-academic-timeline .vat-band{
+  background:linear-gradient(90deg,rgba(124,141,152,.07),rgba(124,141,152,.025));
+  border-color:rgba(132,138,146,.30);
+  border-radius:6px;margin-top:7px;
+}
+#vitruvia-academic-timeline .vat-band-title{
+  align-items:center;max-width:100%;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker{
+  outline-offset:4px;touch-action:manipulation;
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop{
+  /* The JS clamps the popup shift within the actual track width. */
+  left:calc(50% + var(--vat-popup-shift,0px))!important;
+  bottom:auto!important;
+  top:calc(100% + 10px)!important;
+  max-height:122px!important;overflow-y:auto!important;
+  overscroll-behavior:contain;
+  border-radius:11px;
+  box-shadow:0 8px 22px rgba(0,0,0,.33);
+}
+#vitruvia-academic-timeline .vat-event-marker:is(:hover,:focus-visible) .vat-event-pop{
+  transform:translateX(-50%) translateY(0)!important;
+}
+#vitruvia-academic-timeline .vat-event-marker[aria-pressed=true]:not(:hover):not(:focus-visible) .vat-event-pop{
+  opacity:0!important;visibility:hidden!important;
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop strong{
+  line-height:1.35;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-detail{
+  width:100%;max-width:100%;min-width:0;box-sizing:border-box;
+  border-radius:11px;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-outside{
+  margin-top:14px;padding:11px 14px;
+  border:1px solid #5e6970;border-radius:9px;
+  color:inherit;font:13px/1.55 system-ui,sans-serif;
+}
+#vitruvia-academic-timeline .vat-outside summary{
+  cursor:pointer;font-weight:600;list-style-position:inside;
+}
+#vitruvia-academic-timeline .vat-outside-list{
+  margin:10px 0 0;padding-left:20px;
+}
+#vitruvia-academic-timeline .vat-outside-list li{margin:5px 0;overflow-wrap:anywhere}
+#vitruvia-academic-timeline .vat-outside-list a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+html[data-theme=light] #vitruvia-academic-timeline .vat-band{
+  background:linear-gradient(90deg,#edf1f4,#f9f8f6);
+  border-color:#b8bdc0;
+}
+@media(max-width:700px){
+ #vitruvia-academic-timeline{padding:12px 10px!important}
+ #vitruvia-academic-timeline .vat-controls{justify-content:flex-start;flex-basis:100%}
+ #vitruvia-academic-timeline .vat-controls button{min-width:40px;min-height:40px}
+ #vitruvia-academic-timeline .vat-axis{height:44px}
+ #vitruvia-academic-timeline .vat-band-title{line-height:1.32}
+ #vitruvia-academic-timeline .vat-event-marker .vat-event-pop{
+   padding:8px 7px!important;font-size:11px;
+ }
+}
+@media(hover:none){
+ #vitruvia-academic-timeline .vat-event-marker[aria-pressed=true]:not(:focus-visible) .vat-event-pop{
+   opacity:0!important;visibility:hidden!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #vitruvia-academic-timeline .vat-controls button{transition:none}
+}
