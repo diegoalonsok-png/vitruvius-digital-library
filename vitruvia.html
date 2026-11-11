@@ -2115,6 +2115,41 @@ html[data-theme=light] .vr-formula-panel a{color:#265b86}
 @media(max-width:600px){.vr-formula-panel{padding:13px}.vr-formula-panel h3{font-size:23px}}
 </style>
 <script defer src="assets/vitruvia-math-engineering.js?v=20261110-formulas-v1"></script>
+<style id="vr-architectural-documents-style">
+#vr-architecture-docs{margin:24px 0;padding:20px;border:1px solid #697771;border-radius:13px;background:#17201e;color:#e9eee9;max-width:100%;box-sizing:border-box}
+#vr-architecture-docs[hidden]{display:none!important}
+#vr-architecture-docs h3{font:normal clamp(22px,2.3vw,30px)/1.3 Georgia,serif;margin:0 0 12px;color:inherit}
+#vr-architecture-docs .vr-ad-note{font:13px/1.65 system-ui,sans-serif;color:#bdc9c2;margin:10px 0}
+#vr-architecture-docs .vr-ad-row{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:14px 0}
+#vr-architecture-docs .vr-ad-row select,#vr-architecture-docs .vr-ad-row input[type=text]{flex:1 1 200px;min-width:0;max-width:100%;padding:10px 11px;border-radius:7px;border:1px solid #89978f;background:#26302b;color:inherit;font:14px/1.4 system-ui,sans-serif}
+#vr-architecture-docs button,#vr-architecture-docs .vr-ad-upload{cursor:pointer;border:1px solid #87968b;border-radius:7px;color:inherit;background:#30433b;padding:10px 14px;font:13px/1.3 system-ui,sans-serif}
+#vr-architecture-docs button:hover,#vr-architecture-docs .vr-ad-upload:hover{filter:brightness(1.2)}
+#vr-architecture-docs .vr-ad-tabs{display:flex;gap:7px;flex-wrap:wrap;border-bottom:1px solid #697971;padding:6px 0 12px}
+#vr-architecture-docs .vr-ad-tabs button[aria-selected=true]{background:#d3e8db;color:#1a3426;border-color:#d3e8db;font-weight:700}
+#vr-architecture-docs .vr-ad-upload input{display:block;width:200px;max-width:100%;font-size:11px;margin-top:5px}
+#vr-architecture-docs a{color:#c4e8d6;text-decoration:underline}
+#vr-architecture-docs .vr-ad-viewer{min-height:180px;margin:12px 0;display:flex;flex-direction:column;gap:10px;border:1px solid #576a62;border-radius:10px;overflow:hidden;background:#101612;padding:12px}
+#vr-architecture-docs .vr-ad-viewer:empty:after{content:"Seleccioná una obra y un tipo de documento para explorar las imágenes disponibles.";display:block;padding:50px 12px;text-align:center;color:#b5c7bc;font-size:13px}
+#vr-architecture-docs .vr-ad-mainimage{text-align:center;background:#f7f7f3;border-radius:6px;overflow:auto}
+#vr-architecture-docs .vr-ad-viewer img{display:block;max-width:100%;max-height:510px;width:auto;height:auto;object-fit:contain;margin:auto}
+#vr-architecture-docs .vr-ad-viewer iframe{width:100%;height:480px;border:0;background:#f5f5f3}
+#vr-architecture-docs .vr-ad-meta{display:flex;flex-direction:column;gap:6px;overflow-wrap:anywhere}
+#vr-architecture-docs .vr-ad-meta strong{font:15px/1.4 system-ui}
+#vr-architecture-docs .vr-ad-meta small{font:12px/1.5 system-ui;color:#bdc8be}
+#vr-architecture-docs .vr-ad-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:10px}
+#vr-architecture-docs .vr-ad-cards .vr-ad-card{display:flex;align-items:center;flex-direction:column;gap:6px;min-width:0;text-align:left;padding:6px;overflow-wrap:anywhere;background:#28332e}
+#vr-architecture-docs .vr-ad-card img{width:100%;height:104px;object-fit:contain;background:#e8e7e1;border-radius:4px}
+#vr-architecture-docs .vr-ad-card span{width:100%;font:11px/1.4 system-ui;overflow-wrap:anywhere}
+html[data-theme=light] #vr-architecture-docs{background:#f2f5ef;color:#273229;border-color:#a9b6ac}
+html[data-theme=light] #vr-architecture-docs .vr-ad-note,html[data-theme=light] #vr-architecture-docs .vr-ad-meta small{color:#5c695f}
+html[data-theme=light] #vr-architecture-docs .vr-ad-row select,html[data-theme=light] #vr-architecture-docs .vr-ad-row input[type=text],html[data-theme=light] #vr-architecture-docs button,html[data-theme=light] #vr-architecture-docs .vr-ad-upload{color:#273229;background:#fff;border-color:#adbab0}
+html[data-theme=light] #vr-architecture-docs .vr-ad-tabs button[aria-selected=true]{background:#b1d7bc;color:#173324}
+html[data-theme=light] #vr-architecture-docs .vr-ad-viewer{background:#fff;border-color:#b6c1b8}
+html[data-theme=light] #vr-architecture-docs a{color:#225f41}
+html[data-theme=light] #vr-architecture-docs .vr-ad-cards .vr-ad-card{background:#e3eee6}
+@media(max-width:580px){#vr-architecture-docs{padding:12px}#vr-architecture-docs .vr-ad-row>*{max-width:100%}#vr-architecture-docs .vr-ad-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+<script defer src="assets/vitruvia-architectural-documents.js?v=20261111-doc-plans-v1"></script>
 </body></html>
 
 
