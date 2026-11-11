@@ -216,7 +216,7 @@ const resolverStart=entityResolverSrc.indexOf("const clean=q=>{");
 const resolverEnd=entityResolverSrc.indexOf("const invalid=p=>");
 assert(resolverStart>0&&resolverEnd>resolverStart,"Missing generic name-cleaning function");
 const cleanSubject=new Function("norm",entityResolverSrc.slice(resolverStart,resolverEnd)+"\nreturn clean;")(relevanceNorm);
-assert.equal(cleanSubject("Rey Tut"),"Tut");
+assert.equal(cleanSubject("Rey Tut"),"Tutankhamun","Documented royal shorthand must resolve to historical Tutankhamun");
 assert.equal(cleanSubject("Rey Herodes"),"Herodes");
 assert.equal(cleanSubject("Faraón Ramsés II"),"Ramsés II");
 assert.equal(cleanSubject("Tutancamon"),"Tutancamon");
