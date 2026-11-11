@@ -24,8 +24,10 @@ console.log("PASS portada: "+checked+" scripts inline y etiqueta de contadores n
 const lexical=readFileSync("assets/inline-lexical-card.js","utf8");
 new vm.Script(lexical,{filename:"assets/inline-lexical-card.js"});
 assert(html.includes("assets/inline-lexical-card.js"),"La portada debe cargar la ficha contextual");
-assert(lexical.includes('event.target.closest?.("#search-results mark.search-hit")'),
- "Las palabras resaltadas deben abrir una ficha por clic");
+assert(lexical.includes('#search-results mark.search-hit') &&
+ lexical.includes('#lexical-occurrences mark.lexical-query-hit') &&
+ lexical.includes('document.addEventListener("click"'),
+ "Las palabras resaltadas de resultados y concordancias deben abrir una ficha por clic");
 const match=lexical.match(/if\(!((?:\/\^\[[^\n]+?\$\/u))\.test\(term\)\)return;/);
 assert(match,"Falta validación Unicode de vocablos clicables");
 const accept=new Function("term","return "+match[1]+".test(term)");
