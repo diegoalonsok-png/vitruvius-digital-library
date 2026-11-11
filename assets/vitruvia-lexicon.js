@@ -1863,6 +1863,7 @@ async function verifySententia(s){
 function sententiaCard(s){
  const card=el("article",{class:"result-card lx-sent"},el("div",{class:"kind"},`${s.author} · ${(s.theme||[]).join(", ")}`),el("h3",{lang:s.lang,dir:s.lang==="he"?"rtl":null,class:s.lang==="he"?"lx-he":""},s.text));
  if(s.translit)card.append(el("p",{class:"lx-translit"},s.translit));
+ if(s.lang==="he"||s.lang==="grc"){const head=card.querySelector("h3");if(head&&window.VitruviaInlineTranslation?.attach)window.VitruviaInlineTranslation.attach(head,{sourceLanguage:s.lang,originalText:s.text})}
  card.append(el("p",{class:"lx-tr"},s.tr));
  (s.par||[]).forEach(x=>card.append(el("p",{lang:x.lang,class:"lx-par"},el("small",{},x.cite+": "),x.t)));
  if(s.syn)card.append(el("p",{class:"lx-syn"},el("b",{},"Nota sintáctica: "),s.syn));
