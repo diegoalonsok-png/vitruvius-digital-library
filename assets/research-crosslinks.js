@@ -21,7 +21,7 @@ const start=()=>{if(document.getElementById("research-crosslinks"))return;
  `;document.head.append(style);
 
  const title=document.createElement("strong");title.textContent="Investigación académica conectada";title.className="research-crosslinks-title";section.append(title);
- const links=[["Vitruvius · Biblioteca","bibliotheca-graeca-latina.html"],["Vitruvia · Buscador","vitruvia.html"],["Lexicon · Lengua","vitruvia-lexicon.html"],["Index locorum","index-locorum.html"],["Laboratorio de escrituras","laboratorio-escrituras.html"]];
+ const links=[["Vitruvius · Biblioteca","bibliotheca-graeca-latina.html"],["Vitruvia · Buscador","vitruvia.html"],["Lexicon · Lengua","vitruvia-lexicon.html"],["Index locorum","index-locorum.html"],["Laboratorio de escrituras","laboratorio-escrituras.html"],["Investigación por obra","investigacion-conectada.html"]];
  const anchors=links.map(([name,href])=>{const a=document.createElement("a");a.textContent=name;a.href=href;a.className="research-crosslinks-link";if(page===href)a.setAttribute("aria-current","page");section.append(a);return a});
  const info=document.createElement("span");info.className="research-crosslinks-note";info.textContent="Los enlaces conservan el término y la obra cuando están disponibles. Las correspondencias entre ediciones requieren verificación.";section.append(info);
  const ctx=()=>{const qs=new URLSearchParams(location.search),typed=(input?.value||"").trim().slice(0,180);return {q:typed||qs.get("q")||qs.get("term")||"",work:(page==="index-locorum.html"?document.getElementById("work")?.value:"")||qs.get("work")||"",locus:qs.get("locus")||"",lang:qs.get("lang")||""}};
@@ -32,6 +32,11 @@ const start=()=>{if(document.getElementById("research-crosslinks"))return;
    if(i===2&&q){u.searchParams.set("q",q);u.searchParams.set("mode","palabra")}
    if(i===3){if(work)u.searchParams.set("work",work);if(q)u.searchParams.set("q",q)}
    if(i===4&&q)u.searchParams.set("q",q);
+   if(i===5){
+    if(work)u.searchParams.set("work",work);
+    if(q)u.searchParams.set("q",q);
+    if(locus)u.searchParams.set("locus",locus);
+   }
    a.href=u.pathname+u.search;
   });
  }
