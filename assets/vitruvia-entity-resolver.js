@@ -88,6 +88,10 @@ const clean=q=>{
   if(next===subject||norm(next).length<3)break;
   subject=next;
  }
+ // A royal qualifier disambiguates "Tut"; a bare nickname remains ambiguous.
+ const original=norm(full);
+ if(/^(?:(?:el|the) )?(?:rey|king|faraon|pharaoh) tut$/.test(original))return "Tutankhamun";
+ if(/^(?:lecorbusier|le corbusier)$/.test(norm(subject)))return "Le Corbusier";
  return subject.length>=3?subject:full;
 };
 const invalid=p=>!p||p.missing!==undefined||p.pageprops?.disambiguation!==undefined||/(?:desambiguaci[oó]n|disambiguation|homonymie)/i.test(p.title||"");

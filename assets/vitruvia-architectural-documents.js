@@ -4,7 +4,7 @@
 (()=>{"use strict";
 const ARCHITECTS=[
  {keys:["palladio","andrea palladio"],name:"Andrea Palladio",works:["Villa Rotonda","Basilica Palladiana","Teatro Olimpico"]},
- {keys:["le corbusier","charles edouard jeanneret"],name:"Le Corbusier",works:["Villa Savoye","Unite d Habitation","Notre Dame du Haut Ronchamp"]},
+ {keys:["le corbusier","lecorbusier","charles edouard jeanneret"],name:"Le Corbusier",works:["Villa Savoye","Unite d Habitation","Notre Dame du Haut Ronchamp"]},
  {keys:["frank lloyd wright","wright"],name:"Frank Lloyd Wright",works:["Fallingwater","Robie House","Guggenheim Museum New York"]},
  {keys:["mies van der rohe","ludwig mies"],name:"Ludwig Mies van der Rohe",works:["Farnsworth House","Barcelona Pavilion","Seagram Building"]},
  {keys:["oscar niemeyer","niemeyer"],name:"Oscar Niemeyer",works:["Cathedral of Brasilia","Palacio da Alvorada","Niteroi Contemporary Art Museum"]},
