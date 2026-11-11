@@ -7209,16 +7209,39 @@
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
-      "families": [],
+      "families": [
+        {
+          "id": "ambrosian",
+          "label": "Recensión ambrosiana (A)",
+          "memberWitnessIds": [
+            "pindar-ambros-c222inf"
+          ],
+          "source": "https://www.persee.fr/doc/scrip_0036-9772_1955_num_9_2_2637_t1_0331_0000_2?pageId=T1_332",
+          "confidence": "scholarly_recension_identification",
+          "warning": "Grupo de transmisión textual / escolios; no implica copia directa de un testigo conservado."
+        },
+        {
+          "id": "vatican",
+          "label": "Recensión vaticana completa (B)",
+          "memberWitnessIds": [
+            "pindar-vatgr1312"
+          ],
+          "source": "https://pinakes.irht.cnrs.fr/notices/cote/67943/",
+          "secondarySource": "https://www.persee.fr/doc/scrip_0036-9772_1955_num_9_2_2637_t1_0331_0000_2?pageId=T1_332",
+          "confidence": "scholarly_recension_identification",
+          "warning": "La clasificación depende de la historia textual de los escolios; no se dibuja aquí un subarquetipo físico hipotético."
+        }
+      ],
       "indirectSources": [],
       "openOrClosedTradition": null,
-      "stemmaStatus": "not_established",
+      "stemmaStatus": "published_recensional_classification_partial_no_complete_stemma",
       "gaps": {
         "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
-      }
+      },
+      "editorialNote": "Irigoin distingue las recensiones ambrosiana y vaticana para la tradición de las Epinicias. La datación de Ambrosianus C 222 inf. se ha discutido (siglo XII tardío frente a XIII)."
     },
     {
       "workId": "pindar-pythian",
@@ -7257,10 +7280,21 @@
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
-      "families": [],
+      "families": [
+        {
+          "id": "vatican",
+          "label": "Recensión vaticana",
+          "memberWitnessIds": [
+            "pindar-vatgr1312"
+          ],
+          "source": "https://www.persee.fr/doc/scrip_0036-9772_1955_num_9_2_2637_t1_0331_0000_2?pageId=T1_332",
+          "confidence": "scholarly_recension_identification",
+          "warning": "La recensión ambrosiana solo transmite las Olímpicas; no se inventa un segundo testimonio paralelo de Píticas."
+        }
+      ],
       "indirectSources": [],
       "openOrClosedTradition": null,
-      "stemmaStatus": "not_established",
+      "stemmaStatus": "published_recensional_classification_partial_no_complete_stemma",
       "gaps": {
         "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
