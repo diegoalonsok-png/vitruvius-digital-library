@@ -453,7 +453,7 @@ async function songAlbumRelations(root,topic,valid){
 async function literaryFilmAdaptations(root,topic,valid){
  if(!topic.person||!['author','literature'].includes(topic.kind))return;
  const id=topic.person.wikidataId;
- if(!/^Q\\d+$/.test(id||''))return;
+ if(!/^Q\d+$/.test(id||''))return;
  const section=el('section','web-dossier-film-adaptations');
  header(section,L('Adaptaciones cinematográficas de sus libros','Film adaptations of their books','Adaptations cinématographiques de ses livres'));
  const status=el('p','context-note',L('Consultando relaciones documentadas libro–película…','Checking documented book-to-film links…','Vérification des liens documentés livre–film…'));
@@ -473,12 +473,12 @@ async function literaryFilmAdaptations(root,topic,valid){
   const response=await cached(url);
   if(!valid()||!section.isConnected)return;
   const items=(response?.results?.bindings||[]).map(v=>{
-   const bookId=String(v.book?.value||'').match(/\\/(Q\\d+)$/)?.[1];
-   const filmId=String(v.film?.value||'').match(/\\/(Q\\d+)$/)?.[1];
+   const bookId=String(v.book?.value||'').match(/\/(Q\d+)$/)?.[1];
+   const filmId=String(v.film?.value||'').match(/\/(Q\d+)$/)?.[1];
    return {bookId,filmId,book:v.bookLabel?.value||'',film:v.filmLabel?.value||'',
     date:v.filmDate?.value||'',director:v.directorLabel?.value||'',
     poster:v.poster?.value||''};
-  }).filter(x=>/^Q\\d+$/.test(x.bookId||'')&&/^Q\\d+$/.test(x.filmId||'')&&x.book&&!/^Q\\d+$/.test(x.book)&&x.film&&!/^Q\\d+$/.test(x.film));
+  }).filter(x=>/^Q\d+$/.test(x.bookId||'')&&/^Q\d+$/.test(x.filmId||'')&&x.book&&!/^Q\d+$/.test(x.book)&&x.film&&!/^Q\d+$/.test(x.film));
   const seen=new Set();
   const movies=items.filter(x=>{const key=x.filmId+'|'+x.bookId;if(seen.has(key))return false;seen.add(key);return true})
    .sort((a,b)=>String(a.date||'9999').localeCompare(String(b.date||'9999'))).slice(0,24);
