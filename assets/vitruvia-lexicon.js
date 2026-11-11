@@ -342,7 +342,8 @@ async function run(push=true){
  try{
   if(["palabra","frase","grupo","lema"].includes(S.mode)&&!/["\[@*?~#=√]/.test(q)){const c=parseCitation(q);if(c)return openCitation(c,q)}
   if(S.mode==="grupo"||(S.mode==="palabra"&&/,/.test(q)&&!/["\[@*?~#=:√]/.test(q)))return renderGroupSearch(q);
-  if(S.mode==="palabra"&&S.lang==="auto"&&/^[\p{L}' -]+$/u.test(q)&&q.split(/\s+/).length>=2&&!GREEK.test(q)&&!HEBREW.test(q)){const ws=q.split(/\s+/);const cs=await Promise.all(ws.map(findConcept));if(cs.filter(Boolean).length>=1&&ws.some((w,i)=>cs[i]&&Object.values(cs[i].modern).flat().some(m=>fold(m)===fold(w))))return renderGroupSearch(q)}
+  // Literal 'palabra' searches must not silently expand to a modern concept group.
+  // Use the explicit 'grupo' mode for multilingual groups.
   if(/^(=|sem:)/i.test(q))return renderSemantic(q.replace(/^(=|sem:)\s*/i,""));
   if(/^#/.test(q))return renderTheme(q.slice(1));
   if(/^(pie|ie|ide):/i.test(q))return renderPIE(q.replace(/^[^:]+:\s*/,""));
@@ -380,14 +381,18 @@ async function run(push=true){
   if(["es","en","fr","de"].includes(S.lang))return renderModernWord(q,S.lang);
   if(S.mode==="analizar")return analyzeSentence(q);
   if(S.mode==="paralelos")return parallels(q);
-  if(S.mode==="palabra"&&S.lang==="auto"&&!/[\s@"\[*?~#=:√]/.test(q)&&!GREEK.test(q)&&!HEBREW.test(q)){const c=await findConcept(q);if(c&&Object.values(c.modern).flat().some(m=>fold(m)===fold(q))){await renderModernWord(q,null);const b=el("p",{class:"lx-small"},el("button",{type:"button",class:"lx-btn",onclick:()=>{S.lang="la";$("#lx-lang").value="la";run()}},`Buscar «${q}» como palabra latina`)," ",el("button",{type:"button",class:"lx-btn",onclick:()=>{S.lang="grc";$("#lx-lang").value="grc";run()}},"como transliteración griega"));$("#lx-entry").append(b);return}}
+  // Modern concepts remain available via 'concepto:' or 'sem:'; bare words
+  // are looked up literally in the selected ancient corpus.
   const l=resolveLang(q);
   if(l==="he")return renderHebrew(q);
   const D=await lang(l);if(!isCurrent())return;
   S.D=D;fillWorks(D);if(l==="la"){await loadContext();if(!isCurrent())return;}
    if(S.mode==="palabra"||S.mode==="lema"){const info=lemmaInfo(D,fold(q).replace(/^@/,""));if(info.g)window.VitruviaEncyclopedia?.update(q.replace(/^@/,""),{ancient:true,gloss:"Glosa histórica del índice latino (Lewis & Short): "+info.g.split(/;\s*/)[0]});}
   const parsed=parseQuery(q,S.mode);
-  const opts={lemmatize:S.mode==="lema"||S.mode==="palabra"&&$("#lx-lemmatize").checked,variants:$("#lx-variants").checked,work:S.work,defaultGap:S.mode==="frase"?0:6};
+  const opts={lemmatize:S.mode==="lema",variants:false,work:S.work,defaultGap:S.mode==="frase"?0:6};
+  // The plain Word mode is an exact orthographic match (case/diacritic folding).
+  // Explicit lemma (@word), prefix (word*), fuzzy (~word), and semantic
+  // queries retain their separate, clearly labelled search behavior.
   if(S.mode==="lema")parsed.steps.forEach(s=>{if(s.term.type==="form")s.term={type:"lemma",v:s.term.v,fallback:true}});
   let res=execute(D,parsed,opts);
   if(S.mode==="lema"&&!res.hits.length){/* el usuario escribió una forma: se resuelve su lema */parsed.steps.forEach(s=>{if(s.term.fallback)s.term={type:"form",v:s.term.v}});res=execute(D,parsed,{...opts,lemmatize:true})}
