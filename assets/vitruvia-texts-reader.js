@@ -54,7 +54,7 @@ function setup(){
  function sync(){
    const q=new URLSearchParams(location.search).get('q')||document.getElementById('query')?.value||'';
    const snapshot=window.VitruviaSearchSnapshot;
-   const rows=normalize(snapshot?.query)===normalize(q)?snapshot.rows||[]:[];
+   const rows=snapshot&&normalize(snapshot.query)===normalize(q)&&Array.isArray(snapshot.rows)?snapshot.rows:[];
    const identity=rows.find(r=>r.preferredWiki||r.preferredAuthority);
    const role=normalize(identity?.entityDescription||identity?.excerpt||'');
    const musical=/\b(music|musica|musico|musician|singer|cantante|composer|compositor|band|banda|grupo musical)\b/.test(role);
