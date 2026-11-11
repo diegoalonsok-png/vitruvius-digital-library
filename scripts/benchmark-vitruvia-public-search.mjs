@@ -91,6 +91,124 @@ try{
  }
  console.log("BENCH_SUMMARY "+JSON.stringify(report.summary));
  console.log("BENCH_MISSES "+JSON.stringify(report.queries.filter(r=>!r.hadExpectedIdentity).map(r=>({term:r.term,first:r.firstResultTitles,preview:r.preview?.slice(0,130)}))));
+
+ // Extended cross-site audit: all root HTML pages, every visible button
+ // inventory, plus representative real interactions on the site's searchers.
+ // Never click unknown controls: they may download, print or alter user state.
+ const SITE="https://diegoalonsok-png.github.io/vitruvius-digital-library/";
+ const {readdirSync}=await import("node:fs");
+ const allPages=readdirSync(".").filter(name=>name.endsWith(".html")&&!name.startsWith("google")).sort();
+ const siteAudit={schema:"vitruvius-comprehensive-public-audit-v1",date:now,base:SITE,
+  limits:"GitHub-hosted Chromium, not real-user monitoring. Button inventory is structural; only explicitly listed controls receive synthetic clicks. External APIs and cold-cache performance vary.",
+  pages:[],searches:[],buttonTests:[],summary:{}};
+ let pageCursor=0;
+ async function scanPage(){
+  while(pageCursor<allPages.length){
+   const filename=allPages[pageCursor++];
+   const context=await browser.newContext({viewport:{width:1365,height:900}});
+   const p=await context.newPage(),errors=[],missing=[];
+   p.on("pageerror",e=>errors.push(String(e.message).slice(0,200)));
+   p.on("response",response=>{if(response.url().startsWith(SITE)&&response.status()>=400)missing.push(response.status()+" "+response.url().slice(SITE.length,150))});
+   const start=Date.now();
+   const item={page:filename,status:null,domMs:null,ttfbMs:null,buttons:0,disabledButtons:0,unnamedButtons:0,suspectButtons:[],internalMissing:[],jsErrors:[],error:null};
+   try{
+    const resp=await p.goto(SITE+filename,{waitUntil:"domcontentloaded",timeout:10000});
+    item.status=resp?.status()||null;
+    item.domMs=Date.now()-start;
+    const observation=await p.evaluate(()=>{
+     const nav=performance.getEntriesByType("navigation")[0];
+     const controls=[...document.querySelectorAll("button,[role='button'],input[type='submit'],input[type='button']")];
+     const label=c=>(c.getAttribute("aria-label")||c.getAttribute("title")||c.innerText||c.value||"").trim();
+     return {ttfb:nav?.responseStart-nav?.requestStart,
+      count:controls.length,disabled:controls.filter(c=>c.disabled).length,
+      unnamed:controls.filter(c=>!c.disabled&&!label(c)).length,
+      candidates:controls.filter(c=>!c.disabled&&!label(c)).slice(0,8).map(c=>({tag:c.tagName,id:c.id||"",className:String(c.className||"").slice(0,70)}))};
+    });
+    item.ttfbMs=Number.isFinite(observation.ttfb)?Math.round(observation.ttfb):null;
+    item.buttons=observation.count;item.disabledButtons=observation.disabled;
+    item.unnamedButtons=observation.unnamed;item.suspectButtons=observation.candidates;
+    await p.waitForTimeout(450);
+   }catch(error){item.error=String(error.message||error).slice(0,180)}
+   finally{item.jsErrors=[...new Set(errors)].slice(0,8);item.internalMissing=[...new Set(missing)].slice(0,8);siteAudit.pages.push(item);await context.close()}
+  }
+ }
+ await Promise.all(Array.from({length:5},scanPage));
+ const searchCases=[
+  {name:"Portada: concordancias",page:"index.html",field:"#query",form:"#search-form",query:"domus",ready:"#search-results mark.search-hit,#lexical-occurrences mark.lexical-query-hit"},
+  {name:"Vitruvia: búsqueda general",page:"vitruvia.html",field:"#query",form:"#search-form",query:"domus",ready:"#result-list .result-card,#article-body"},
+  {name:"Lexicon: literal latino",page:"vitruvia-lexicon.html",field:"#lx-q",form:"#lx-form",query:"domus",ready:"#lx-state"},
+  {name:"Lexicon: literal griego",page:"vitruvia-lexicon.html",field:"#lx-q",form:"#lx-form",query:"λόγος",ready:"#lx-state"},
+  {name:"Aparato crítico: índice textual",page:"aparato-critico.html",field:"#critical-query",form:"#critical-form",query:"domus",ready:"#critical-results .critical-result"},
+  {name:"Aparato crítico: índice unificado",page:"aparato-critico.html",field:"#critical-unified-query",form:"#critical-unified-form",query:"domus",ready:"#critical-unified-results mark,#critical-unified-results article"},
+  {name:"Bibliotheca: clásicos",page:"bibliotheca-graeca-latina.html",field:"#classic-query",form:"#search-form",query:"domus",ready:null},
+  {name:"Índice locorum",page:"index-locorum.html",field:"#query",form:"#form",query:"domus",ready:null},
+  {name:"Párrafos históricos",page:"buscador-parrafos-vitruvio.html",field:"#hp-query",form:"#hp-form",query:"symmetria",ready:null}
+ ];
+ let searchCursor=0;
+ async function searchWorker(){
+  while(searchCursor<searchCases.length){
+   const c=searchCases[searchCursor++],context=await browser.newContext({viewport:{width:1365,height:900}});
+   const p=await context.newPage();let jsErrors=[];p.on("pageerror",e=>jsErrors.push(String(e.message).slice(0,180)));
+   const item={name:c.name,page:c.page,query:c.query,navDomMs:null,submitToResponseMs:null,firstMatchingNodes:null,
+    controlPresent:false,jsErrors:[],error:null};
+   try{
+    await p.goto(SITE+c.page,{waitUntil:"domcontentloaded",timeout:16000});
+    const timing=await p.evaluate(()=>performance.getEntriesByType("navigation")[0]?.domContentLoadedEventEnd);
+    item.navDomMs=Number.isFinite(timing)?Math.round(timing):null;
+    const input=p.locator(c.field),form=p.locator(c.form);
+    item.controlPresent=await input.count()>0&&await form.count()>0;
+    if(!item.controlPresent)throw Error("Form/input missing");
+    await input.fill(c.query);
+    const before=await p.evaluate(()=>({text:document.body.innerText.length,html:document.body.innerHTML.length}));
+    const started=Date.now();
+    await form.evaluate(f=>f.requestSubmit());
+    if(c.ready){
+     await p.waitForFunction(({selector,baseLen})=>{
+      const matches=document.querySelectorAll(selector);
+      if(selector==="#lx-state"){
+       const state=document.querySelector(selector)?.textContent||"";
+       return /coincidenc|sin coincidencias|No se pudo completar|error/i.test(state);
+      }
+      if(selector==="#result-list .result-card,#article-body"){
+       return document.querySelectorAll("#result-list .result-card").length>0||
+        (document.querySelector("#article-body")?.textContent||"").trim().length>120;
+      }
+      return matches.length>0;
+     },{selector:c.ready,baseLen:before.text},{timeout:13000});
+    }else{
+     await p.waitForFunction(before=>document.body.innerHTML.length!==before.html||
+      document.body.innerText.length!==before.text,before,{timeout:13000});
+    }
+    item.submitToResponseMs=Date.now()-started;
+    item.firstMatchingNodes=c.ready?await p.locator(c.ready).count():null;
+    if(c.page==="aparato-critico.html"){
+     const marks=p.locator("#critical-results p[lang='la'] mark,#critical-unified-results [lang='la'] mark");
+     if(await marks.count()){
+      await marks.first().click({timeout:4000});
+      item.lexicalPopupVisible=await p.locator("#vitruvius-lexical-card:not([hidden])").isVisible().catch(()=>false);
+     }
+    }
+   }catch(error){item.error=String(error.message||error).slice(0,280)}
+   finally{item.jsErrors=jsErrors.slice(0,10);siteAudit.searches.push(item);await context.close()}
+  }
+ }
+ await Promise.all(Array.from({length:3},searchWorker));
+ const numbers=field=>siteAudit.searches.map(x=>x[field]).filter(Number.isFinite).sort((a,b)=>a-b);
+ const pct=(field,p)=>{const a=numbers(field);return a.length?a[Math.min(a.length-1,Math.ceil(a.length*p)-1)]:null};
+ siteAudit.summary={
+  rootPagesAudited:siteAudit.pages.length,totalVisibleButtons:siteAudit.pages.reduce((n,x)=>n+x.buttons,0),
+  pagesWithUnnamedButtons:siteAudit.pages.filter(x=>x.unnamedButtons>0).length,
+  pagesWithJsErrors:siteAudit.pages.filter(x=>x.jsErrors.length).length,
+  pagesWithLocalHTTPFailures:siteAudit.pages.filter(x=>x.internalMissing.length).length,
+  pagesWithNavigationErrors:siteAudit.pages.filter(x=>x.error||x.status!==200).length,
+  searchesAudited:siteAudit.searches.length,searchesObserved:siteAudit.searches.filter(x=>x.submitToResponseMs!==null).length,
+  p50SearchMs:pct("submitToResponseMs",.5),p95SearchMs:pct("submitToResponseMs",.95),
+  searchFailures:siteAudit.searches.filter(x=>x.error||x.jsErrors.length).map(x=>({name:x.name,error:x.error,js:x.jsErrors.slice(0,2)}))
+ };
+ writeFileSync("reports/vitruvius-total-public-audit.json",JSON.stringify(siteAudit,null,2)+"\n");
+ console.log("TOTAL_SITE_AUDIT "+JSON.stringify(siteAudit.summary));
+ console.log("SEARCH_LATENCIES "+JSON.stringify(siteAudit.searches.map(x=>({name:x.name,ms:x.submitToResponseMs,error:x.error,popup:x.lexicalPopupVisible}))));
+
 }finally{
  await browser.close();
  mkdirSync("reports",{recursive:true});
