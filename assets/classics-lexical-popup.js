@@ -223,6 +223,8 @@ function markOf(target){
  return target instanceof Element?target.closest(markSelector):null;
 }
 targetRoot.addEventListener("click",event=>{
+ // Bibliotheca and the text reader already own their inline dictionaries.
+ if(inBibliotheca||passages)return;
  const mark=markOf(event.target);
  if(!mark||!targetRoot.contains(mark)||!supported.has(langCode(mark)))return;
  // The original reader's general word-click handler remains available on
@@ -242,6 +244,7 @@ targetRoot.addEventListener("click",event=>{
  }
 },true);
 targetRoot.addEventListener("keydown",event=>{
+ if(inBibliotheca||passages)return;
  if(event.key!=="Enter"&&event.key!==" ")return;
  const mark=markOf(event.target);
  if(!mark||!supported.has(langCode(mark)))return;
