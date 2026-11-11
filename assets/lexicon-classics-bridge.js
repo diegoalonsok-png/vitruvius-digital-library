@@ -467,18 +467,14 @@ document.getElementById("lx-ui")?.addEventListener("change",()=>{
 });
 button.addEventListener("click",()=>execute("literal"));
 semantic.addEventListener("click",()=>execute("semantic"));
-window.addEventListener("vitruvia:lexicon-search",event=>{
- const q=String(event.detail?.query||"").trim();
- if(/[\p{L}]/u.test(q)&&q===input.value.trim())execute("literal");
-});
-// A Lexicon search must also retrieve literal attestations; a missing dictionary headword is not absence from the corpus.
-document.getElementById("lx-form")?.addEventListener("submit",()=>{if(/[\p{L}]/u.test(input.value.trim()))execute("literal")});
+// Corpus complementario explícitamente bajo demanda: el buscador principal
+// no debe lanzar una segunda búsqueda exhaustiva de todas las ediciones.
 input.addEventListener("input",()=>{serial++;selectedWorkId="";currentLiteralRows=[];selectedLiteralRows=[];translationContext=null;currentQuery="";button.disabled=false;semantic.disabled=false;list.replaceChildren();status.textContent="Pulse «Buscar término en el corpus completo» para consultar el registro.";});
 status.textContent="Consulta bajo demanda: no se cargan todas las ediciones al abrir Lexicon.";
 // Deep links with an actual term should produce attested corpus results automatically.
 // Delay until the parent Lexicon has populated its search control.
 const initial=new URLSearchParams(location.search).get("q");
-if(initial&&/[\p{L}]/u.test(initial.trim())){
+if(false&&initial&&/[\p{L}]/u.test(initial.trim())){
  if(!input.value.trim())input.value=initial;
  execute("literal");
 }
