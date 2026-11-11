@@ -11,6 +11,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: vitruvia-public-benchmark-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   public-query-quality:
     runs-on: ubuntu-24.04
