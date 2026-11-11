@@ -8,7 +8,7 @@ const win={};
 const ctx=createContext({window:win,URLSearchParams,URL,AbortController,console});
 new Script(js,{filename:'vitruvia-entity-resolver.js'}).runInContext(ctx);
 assert.ok(win.VitruviaEntityResolver?.subject,'Subject resolver not registered');
-const fold=s=>String(s||'').normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/[^\\p{L}\\p{N}]+/gu,' ').trim();
+const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 let passed=0;
 for(const c of data.cases){
  const actual=win.VitruviaEntityResolver.subject(c.query);
