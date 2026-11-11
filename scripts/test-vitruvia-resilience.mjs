@@ -6,7 +6,7 @@ const source=read('assets/vitruvia-search.js');
 const elements=new Map();
 const $=id=>{if(!elements.has(id))elements.set(id,{textContent:'',dataset:{},setAttribute(name,value){this[name]=value}});return elements.get(id)};
 const S={};
-const context=vm.createContext({S,$,document:{body:{classList:{contains:()=>false}}},verified:()=>true,fetchJSON:async url=>{
+const context=vm.createContext({S,$,window:{dispatchEvent(){}},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options?.detail}},document:{body:{classList:{contains:()=>false}}},verified:()=>true,fetchJSON:async url=>{
  if(url.includes('bibliotheca-graeca-latina'))throw Error('offline');
  if(url.includes('witruvia-pages'))return {pages:[{title:'Page'}]};
  if(url.includes('testimonia'))return {records:[{title:'Codex'}],editions:[{title:'Edition'}]};
