@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
   "updated": "2026-11-11",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. | Actualización de fuentes candidatas (sin aumentar métricas de originales indexados).",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot.",
   "targetWorks": 222,
   "counts": {
     "originalsIndexed": 181,
@@ -823,15 +823,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "sourceDiscovery": {
-        "checked": "2026-11-11",
-        "url": "https://monumenta.ch/latein/textsyn.php?tabelle=Marcus_Cetius_Faventinus",
-        "edition": "Marie-Thérèse Cam, edición 2001, transcripción en Corpus Corporum/Monumenta",
-        "kind": "transcripcion de edicion moderna",
-        "rights": "Revisar derechos de la transcripción y edición antes de alojar o redistribuir; no importar de forma automática.",
-        "status": "fuente_localizada_pendiente_de_validacion_textual"
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "barnabas",
@@ -1007,15 +999,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "sourceDiscovery": {
-        "checked": "2026-11-11",
-        "url": "https://ancientlibrary.net/origen-de-principiis/",
-        "edition": "Versión latina de Rufino, vía Corpus Corporum; no representa el griego íntegro perdido",
-        "kind": "traduccion_latin_tardia",
-        "rights": "La página declara CC BY-NC-SA; verificar atribución y condiciones de reutilización.",
-        "status": "fuente_localizada_no_equivale_a_original_griego"
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "eusebio",
@@ -4366,15 +4350,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "sourceDiscovery": {
-        "checked": "2026-11-11",
-        "url": "https://la.wikisource.org/wiki/Tragoediae_(Accius,_ed._Otto_Ribbeck)",
-        "edition": "Otto Ribbeck, Tragicorum fragmenta I, Teubner, 1897",
-        "kind": "fragmentos_latin_edicion_historica",
-        "rights": "Comprobar licencia de Wikisource y estado editorial antes de republicar.",
-        "status": "fuente_localizada_pendiente_de_segmentacion"
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "ps-aristotle-mechanica",
@@ -4752,15 +4728,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "sourceDiscovery": {
-        "checked": "2026-11-11",
-        "url": "https://www.intratext.com/IXT/LAT0348/_INDEX.HTM",
-        "edition": "Constitutio limitum, transcripción editorial IntraText (edición impresa no identificada en el recurso)",
-        "kind": "transcripcion_latin",
-        "rights": "Sin edición impresa acreditada en el sitio; comprobar permisos y cotejo antes de indexar como texto local.",
-        "status": "fuente_localizada_pendiente_de_validacion_textual"
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "frontinus-gromatica",
