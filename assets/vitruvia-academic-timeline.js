@@ -186,10 +186,10 @@
   const varied=el("button",null,L("Variados","Mixed","Variées"));varied.type="button";varied.title=L("Restaurar colores pastel variados","Restore assorted pastel colors","Rétablir les couleurs pastel");
   colors.append(colorInput);controls.append(colors,varied,prev,zoomOut,zoomIn,next);
   root.classList.toggle("vat-custom-color",Boolean(state.tagColor));
-  if(state.tagColor)root.style.setProperty("--vat-tag-color",state.tagColor);
-  else root.style.removeProperty("--vat-tag-color");
-  colorInput.addEventListener("input",()=>{state.tagColor=colorInput.value;root.classList.add("vat-custom-color");root.style.setProperty("--vat-tag-color",state.tagColor)});
-  varied.addEventListener("click",()=>{state.tagColor=null;root.classList.remove("vat-custom-color");root.style.removeProperty("--vat-tag-color")});
+  if(state.tagColor)root.style.setProperty("--vat-user-color",state.tagColor);
+  else root.style.removeProperty("--vat-user-color");
+  colorInput.addEventListener("input",()=>{state.tagColor=colorInput.value;root.classList.add("vat-custom-color");root.style.setProperty("--vat-user-color",state.tagColor)});
+  varied.addEventListener("click",()=>{state.tagColor=null;root.classList.remove("vat-custom-color");root.style.removeProperty("--vat-user-color")});
   left.append(el("small","vat-subtitle",isAkhenaten()?L(
     "Vida aproximada · c. 1370–1336 a. C. · sin publicaciones posteriores",
     "Approximate lifetime · c. 1370–1336 BCE · no later publications",
