@@ -171,6 +171,7 @@ function resolveTerm(D,t,opts={}){
  return out;
 }
 /* Ejecuta la consulta: postings → verificación posicional → coincidencias con desplazamientos. */
+function strictForm(w){return String(w||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[ςϲ]/g,"σ").replace(/[ʼ’]/g,"\u0027")}
 function execute(D,parsed,opts={}){
  const sets=parsed.steps.map(s=>resolveTerm(D,s.term,opts));
  if(!sets.length||sets.some(s=>!s.size))return{hits:[],sets};
@@ -180,13 +181,13 @@ function execute(D,parsed,opts={}){
  const hits=[];const filt=opts.work||"";
  for(const i of [...cand].sort((a,b)=>a-b)){
   const p=D.corpus.passages[i];if(filt&&p[0]!==filt)continue;
-  const toks=[...p[2].matchAll(TOKEN)].map(m=>({k:fold(m[0]).replace(/'+$/,""),s:m.index,e:m.index+m[0].length}));
+  const toks=[...p[2].matchAll(TOKEN)].map(m=>({k:fold(m[0]).replace(/'+$/,""),s:m.index,e:m.index+m[0].length,raw:m[0]}));
   if(parsed.near!=null&&sets.length>1){
-   for(let a=0;a<toks.length;a++){if(!sets[0].has(toks[a].k))continue;const span=[a];let ok=true;for(let j=1;j<sets.length;j++){let found=-1;for(let b=Math.max(0,a-parsed.near-1);b<=Math.min(toks.length-1,a+parsed.near+1);b++)if(b!==a&&sets[j].has(toks[b].k)){found=b;break}if(found<0){ok=false;break}span.push(found)}
+   for(let a=0;a<toks.length;a++){if(!sets[0].has(toks[a].k))continue;if(opts.literalOriginal&&strictForm(toks[a].raw)!==strictForm(parsed.steps[0].term.v))continue;const span=[a];let ok=true;for(let j=1;j<sets.length;j++){let found=-1;for(let b=Math.max(0,a-parsed.near-1);b<=Math.min(toks.length-1,a+parsed.near+1);b++)if(b!==a&&sets[j].has(toks[b].k)){found=b;break}if(found<0){ok=false;break}span.push(found)}
     if(ok){hits.push({i,spans:span.map(x=>[toks[x].s,toks[x].e]),tok:Math.min(...span)});if(hits.length>=MAX_HITS)return{hits,sets,capped:true}}}
   }else{
    for(let a=0;a<toks.length;a++){
-    if(!sets[0].has(toks[a].k))continue;const span=[a];let pos=a,ok=true;
+    if(!sets[0].has(toks[a].k))continue;if(opts.literalOriginal&&strictForm(toks[a].raw)!==strictForm(parsed.steps[0].term.v))continue;const span=[a];let pos=a,ok=true;
     for(let j=1;j<sets.length;j++){const g=parsed.steps[j].gap;let found=-1;const maxGap=g==null?(opts.defaultGap??6):g;for(let b=pos+1;b<=Math.min(toks.length-1,pos+1+maxGap);b++)if(sets[j].has(toks[b].k)){found=b;break}if(found<0){ok=false;break}span.push(found);pos=found}
     if(ok){hits.push({i,spans:span.map(x=>[toks[x].s,toks[x].e]),tok:a});if(hits.length>=MAX_HITS)return{hits,sets,capped:true}}
    }
@@ -332,12 +333,15 @@ async function run(push=true){
  let q=$("#lx-q").value.trim();
  // Conservar la forma escrita por el usuario, sin sustitución automática.
  S.q=q;S.page=0;
- if(["palabra","lema"].includes(S.mode))window.dispatchEvent(new CustomEvent("vitruvia:lexicon-search",{detail:{query:q,mode:S.mode,language:S.lang}}));
+ // Búsquedas secundarias únicamente al pulsar sus botones.
  if(S.mode!=="palabra")window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""),{ancient:["lema","etimologia"].includes(S.mode)});
- renderOldestEvidence(q);
+ if(S.mode!=="palabra")renderOldestEvidence(q);
  const list=$("#lx-results");list.replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;$("#lx-side-extra").replaceChildren();
  if(push){const u=new URL(location.href);u.searchParams.delete("qb");u.searchParams.delete("qb_lang");u.searchParams.delete("qb_filters");u.searchParams.set("q",q);u.searchParams.set("mode",S.mode);if(S.lang!=="auto")u.searchParams.set("lang",S.lang);else u.searchParams.delete("lang");if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");try{if(u.href!==location.href)history.pushState(null,"",u)}catch{}}
  if(!q&&S.mode!=="sententiae"){setState("Escriba una palabra, una frase o un patrón.");return}
+ if(S.mode==="palabra"&&!/^[\p{L}\p{M}]+(?:[\u0027ʼ’][\p{L}\p{M}]+)*$/u.test(q)){
+  setState("Búsqueda exacta: escriba una sola palabra. Use otros modos para frases o conceptos.");return;
+ }
  try{
   if(["palabra","frase","grupo","lema"].includes(S.mode)&&!/["\[@*?~#=√]/.test(q)){const c=parseCitation(q);if(c)return openCitation(c,q)}
   if(S.mode==="grupo"||(S.mode==="palabra"&&/,/.test(q)&&!/["\[@*?~#=:√]/.test(q)))return renderGroupSearch(q);
@@ -386,9 +390,9 @@ async function run(push=true){
   if(l==="he")return renderHebrew(q);
   const D=await lang(l);if(!isCurrent())return;
   S.D=D;fillWorks(D);if(l==="la"&&S.mode==="lema"){await loadContext();if(!isCurrent())return;}
-   if(S.mode==="palabra"||S.mode==="lema"){const info=lemmaInfo(D,fold(q).replace(/^@/,""));if(info.g)window.VitruviaEncyclopedia?.update(q.replace(/^@/,""),{ancient:true,gloss:"Glosa histórica del índice latino (Lewis & Short): "+info.g.split(/;\s*/)[0]});}
+   if(S.mode==="lema"){const info=lemmaInfo(D,fold(q).replace(/^@/,""));if(info.g)window.VitruviaEncyclopedia?.update(q.replace(/^@/,""),{ancient:true,gloss:"Glosa histórica del índice latino (Lewis & Short): "+info.g.split(/;\s*/)[0]});}
   const parsed=parseQuery(q,S.mode);
-  const opts={lemmatize:S.mode==="lema",variants:false,work:S.work,defaultGap:S.mode==="frase"?0:6};
+  const opts={lemmatize:S.mode==="lema",variants:false,work:S.work,defaultGap:S.mode==="frase"?0:6,literalOriginal:S.mode==="palabra"};
   // The plain Word mode is an exact orthographic match (case/diacritic folding).
   // Explicit lemma (@word), prefix (word*), fuzzy (~word), and semantic
   // queries retain their separate, clearly labelled search behavior.
