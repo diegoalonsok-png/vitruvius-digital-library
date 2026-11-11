@@ -1313,7 +1313,11 @@ function frequencyTable(c,F){
     $("#lx-q").value=F.es[0];S.lang="la";$("#lx-lang").value="la";S.work="vitruvius";showTranslationHits(F.es);
    }},"Ver pasajes"))));
  }
- sec.append(F.rows.length||F.trN?tb:el("p",{class:"lx-small"},"Sin ocurrencias en el corpus local."));
+ // A dedicated horizontal viewport preserves compact dates and numeric rates on narrow screens.
+ if(F.rows.length||F.trN){
+  const viewport=el("div",{class:"lx-freq-table-scroll",role:"region","aria-label":"Tabla de frecuencia por obra; desplazamiento horizontal disponible",tabindex:"0"});
+  viewport.append(tb);sec.append(viewport);
+ }else sec.append(el("p",{class:"lx-small"},"Sin ocurrencias en el corpus local."));
  return sec;
 }
 async function showTranslationHits(words){
