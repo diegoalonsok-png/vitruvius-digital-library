@@ -161,56 +161,27 @@ async function openMark(mark){
   const params=new URLSearchParams(location.search);
   const edition=mark.closest("[data-work]")?.getAttribute("data-work")||
    params.get("work")||classicalWorkIds[params.get("obra")]||"";
-  // Bibliotheca uses the curated Etymologicum JSON: show that lightweight
-  // entry first, without waiting for corpus morphology, Wiktionary, or translation.
-  // Prefer the dictionary already resident in the Lexicon corpus index.
-  // A detailed dictionary is deliberately opt-in: loading it on every word
-  // click caused multi-second stalls, particularly on first access.
-  const fast=window.VitruviaLexicon?.quickWord?.(word,lang);
-  const place=await window.VitruviaToponyms?.lookup?.(word);
-  if(id!==current)return;
-  if(fast?.gloss||place){
-   // renderPanel reuses the resident entry: no dictionary download, external
-   // translation or second corpus scan is needed for this click.
-   await lexicon.renderPanel(slot,word,{lang,work:edition,online:false});
-   if(id!==current)return;
-   status.textContent="Diccionario local · definición y análisis disponibles.";
-   root.dataset.readyMs=String(Math.round(performance.now()-openedAt));
-   return;
-  }
-  const quickTask=fastEntry(word,lang).then(quick=>{
-   if(id!==current)return;
-   status.textContent=quick?"Ficha editorial local disponible.":"Sin definición breve para esta forma. Puede consultar el análisis completo.";
-   root.dataset.readyMs=String(Math.round(performance.now()-openedAt));
-   if(!quick)return;
-   const prior=contents.querySelector(".cl-popup-quick");
-   if(!prior)contents.insertBefore(quick,slot);
+  // Resolve the exact highlighted form from attested local dictionaries only.
+  // Rendering is asynchronous: the modal appears immediately, without an
+  // external lookup or blocking the reader. The cache shares repeated clicks.
+  const lookupTask=lexicon.renderPanel(slot,word,{lang,work:edition,online:false})
+   .then(result=>{
+    if(id!==current)return;
+    status.textContent=result?.entries?.length
+     ?"Diccionario local · lema, glosas y fuentes documentadas."
+     :"Forma documentada en el pasaje; no se recuperó una glosa local para esta flexión.";
+    root.dataset.readyMs=String(Math.round(performance.now()-openedAt));
+   }).catch(()=>{
+    if(id===current)status.textContent="No se pudo cargar el glosario local. Los enlaces académicos siguen disponibles.";
+   });
+  // The concise curated etymological entry is supplementary, never a
+  // substitute for the actual lemma and its local source attribution.
+  const editorialTask=fastEntry(word,lang).then(quick=>{
+   if(id!==current||!quick||contents.querySelector(".cl-popup-quick"))return;
+   contents.insertBefore(quick,slot);
   }).catch(()=>{});
-  const detail=el("button","Cargar análisis morfológico completo","cl-popup-detail-button");
-  detail.type="button";
-  detail.addEventListener("click",async()=>{
-   if(id!==current)return;
-   detail.disabled=true;detail.textContent="Consultando morfología…";
-   try{
-    await lexicon.renderPanel(slot,word,{lang,work:edition,online:false});
-    if(id!==current)return;
-    status.remove();detail.remove();
-    const glosses=[...slot.querySelectorAll(".cl-entry .cl-gloss")].map(x=>x.textContent.trim()).filter(Boolean).join(" · ").slice(0,1050);
-    if(glosses&&window.VitruviaInlineTranslation?.attach){
-     const glossNode=el("p",glosses,"cl-popup-note");glossNode.lang=glosses.startsWith("Castellano:")?"es":"en";
-     const wrapper=el("section",null,"cl-popup-gloss-translation");
-     wrapper.append(el("h3","Traducción orientativa de la explicación lexicográfica"),glossNode);
-     contents.insertBefore(wrapper,contents.querySelector(".cl-popup-media"));
-     window.VitruviaInlineTranslation.attach(glossNode,{sourceLanguage:glossNode.lang,originalText:glosses});
-    }
-   }catch{
-    if(id!==current)return;
-    status.textContent="No se pudo cargar la morfología. Consulte los enlaces externos.";
-    detail.disabled=false;detail.textContent="Reintentar análisis";
-   }
-  });
-  contents.insertBefore(detail,contents.querySelector(".cl-popup-media"));
-  void quickTask;
+  void lookupTask;
+  void editorialTask;
 
  }catch{
   if(id===current)status.textContent="No se pudo recuperar el diccionario rápido; los enlaces siguen disponibles.";
@@ -222,6 +193,15 @@ const markSelector=inBibliotheca?"#classic-results mark,#bibliotheca-docx-result
 function markOf(target){
  return target instanceof Element?target.closest(markSelector):null;
 }
+function showInlineLexicon(mark){
+ if(!passages)return;
+ const box=document.getElementById("lexicon");
+ const word=lexicon.wordOfMark(mark)||mark.textContent?.trim();
+ if(!box||!word)return;
+ const query=new URLSearchParams(location.search);
+ const work=mark.closest("[data-work]")?.getAttribute("data-work")||query.get("work")||"";
+ void lexicon.renderPanel(box,word,{lang:langCode(mark),work,online:false});
+}
 targetRoot.addEventListener("click",event=>{
  // Keep both viewers: this academic modal and the reader’s inline dictionary.
  const mark=markOf(event.target);
@@ -229,8 +209,13 @@ targetRoot.addEventListener("click",event=>{
  // The original reader's general word-click handler remains available on
  // unhighlighted text. Highlighted terms use this self-contained viewer.
  event.preventDefault();
- if(inBibliotheca||passages){
-  // Do not swallow the bubbling event used by the in-page dictionary.
+ if(passages){
+  // Own the highlighted click and paint both dictionaries from the same
+  // entire original word; the generic wordAt handler can select a neighbour.
+  event.stopImmediatePropagation();
+  showInlineLexicon(mark);
+  void openMark(mark);
+ }else if(inBibliotheca){
   void openMark(mark);
  }else if(inLexiconViewer||inClassicalReader){
   // These readers already have link/navigation or small lexical popups:
@@ -250,7 +235,8 @@ targetRoot.addEventListener("keydown",event=>{
  const mark=markOf(event.target);
  if(!mark||!supported.has(langCode(mark)))return;
  event.preventDefault();
- if(!inBibliotheca&&!passages)event.stopImmediatePropagation();
+ if(!inBibliotheca)event.stopImmediatePropagation();
+ showInlineLexicon(mark);
  void openMark(mark);
 },true);
 function prepareMark(mark){
