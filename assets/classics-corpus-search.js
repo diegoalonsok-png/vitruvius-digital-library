@@ -361,27 +361,25 @@ const literalSearch=cached("literal",search),conceptSearch=cached("semantic",sem
 /* The main Vitruvia search must not hide attested Greek/Latin Conceptus
    correspondences merely because a literal hit exists. Keep both provenance
    labels and deduplicate only the same physical indexed passage. */
-async function combinedSearch(q,{limit=6}={}){
+async function combinedSearch(q,{limit=6,semantic=false}={}){
+ // Literal by default. Conceptual correspondences only on explicit opt-in.
  const n=Math.max(1,Math.min(20,Number(limit)||6));
- const [literal,semantic]=await Promise.allSettled([
+ if(!semantic)return literalSearch(q,{limit:n});
+ const [literal,conceptual]=await Promise.allSettled([
   literalSearch(q,{limit:n}),conceptSearch(q,{limit:n})
  ]);
- if(literal.status==="rejected"&&semantic.status==="rejected")
-  throw new Error("Búsqueda literal y conceptual no disponibles");
- const seen=new Set(),out=[];
- for(const result of [literal,semantic]){
+ const out=[],seen=new Set();
+ for(const result of [literal,conceptual]){
   if(result.status!=="fulfilled")continue;
   for(const row of result.value){
-   let locator=String(row.link||"");
-   try{const url=new URL(locator,"https://vitruvia.invalid/");url.searchParams.delete("q");locator=url.pathname+url.search+url.hash}catch{}
-   const source=String(row.source||"").split(" · ").pop();
-   const key=[row.workId||"",row.language||"",source,locator].join("|");
+   const key=[row.workId,row.language,row.locus,row.source].join("|");
    if(seen.has(key))continue;
    seen.add(key);out.push(row);
   }
  }
  return out.slice(0,2*n);
 }
+
 window.ClassicsCorpusSearch={
  search:literalSearch,semanticSearch:conceptSearch,combinedSearch,searchPassages,
  works:LEGACY.map(e=>({id:e.workId,lang:e.language,author:e.author,title:e.title})),
