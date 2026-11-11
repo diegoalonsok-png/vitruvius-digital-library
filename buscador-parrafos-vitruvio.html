@@ -21,7 +21,7 @@
 <main class="hp-wrap">
 <nav aria-label="Volver"><a href="vitruvia.html">Vitruvia</a> · <a href="concordancia-historica.html">Concordancia histórica</a> · <a href="aparato-critico.html">Aparato crítico</a></nav>
 <h1>Índice por párrafos OCR de las ediciones históricas</h1>
-<p class="hp-lead">Buscador gratuito de fragmentos textuales OCR de <strong>Fritz Krohn (1912), Valentin Rose (1899) y Cesare Cesariano (1521)</strong>. Los resultados conservan la edición, página digital y bloque recuperado. Cada coincidencia permite abrir el facsímil. La búsqueda conceptual usa BM25 y un vocabulario multilingüe controlado; todavía no constituye indexación neuronal revisada por IA.</p>
+<p class="hp-lead">Buscador gratuito de fragmentos textuales OCR de <strong>Fritz Krohn (1912), Valentin Rose (1899) y Cesare Cesariano (1521)</strong>. Los resultados conservan la edición, página digital y bloque recuperado. Krohn y Rose abren su página digital en el PDF; Cesariano abre el visor de la edición sin atribuir al número de página OCR una imagen IIIF no cotejada. La búsqueda conceptual usa BM25 y un vocabulario multilingüe controlado; todavía no constituye indexación neuronal revisada por IA.</p>
 <p class="hp-hint"><strong>Precaución filológica:</strong> la división en bloques procede de saltos y puntuación detectados por máquina; no representa necesariamente los párrafos tipográficos del original. El OCR puede contener errores y las páginas digitales no son foliación del códice. No se asignan loci por semejanza semántica ni se afirma cotejo crítico.</p>
 <form id="hp-form" class="hp-controls">
 <label>Concepto o pasaje<input id="hp-query" type="search" required placeholder="symmetria, basilica, proporción, columna…" autocomplete="off"></label>
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const meta=document.createElement('small');meta.textContent='OCR sin revisión filológica · página digital '+hit.page+' · '+hit.method;
     const p=document.createElement('p');p.textContent=hit.text;
     const link=document.createElement('a');link.href=hit.url;link.target='_blank';link.rel='noopener noreferrer';
-    link.textContent='Abrir página en el facsímil';box.append(h,meta,p,link);frag.append(box);
+    link.textContent=hit.edition==='cesariano'?'Abrir visor de Cesariano (imagen aún no alineada con página OCR)':'Abrir página digital en el facsímil';box.append(h,meta,p,link);frag.append(box);
    }
    $('hp-results').append(frag);
    if(!result.results.length){let p=document.createElement('p');p.textContent='No se encontraron coincidencias textuales en las fuentes disponibles. Pruebe una forma latina o italiana.';$('hp-results').append(p);}
