@@ -55,14 +55,14 @@ async function semanticRerank(query,rows) {
  return ranking.sort((a,b)=>b.semanticScore-a.semanticScore||b.score-a.score);
 }
 async function run(){
- const mine=++serial,edition=$("hpar-edition").value,query=$("hpar-query").value.trim();if(query.length<3){$("hpar-status").textContent="Escribí al menos tres caracteres.";return;}
+ const mine=++serial,edition=$("hpar-edition").value,query=$("hpar-query").value.trim();if(query.length<3){$("hpar-status").textContent="Escriba al menos tres caracteres.";return;}
  const status=$("hpar-status");status.textContent="Leyendo el OCR y segmentando bloques de "+SOURCES[edition].label+"…";
  try{
   const {pages,rows}=await records(edition);if(mine!==serial)return;
   $("hpar-source").textContent=pages+" páginas OCR · "+rows.length+" bloques heurísticos (no párrafos diplomáticos)";
   const candidates=searchParagraphCandidates(rows,query,45);
   render(candidates,edition,"búsqueda textual BM25");
-  status.textContent=candidates.length+" candidatos textuales entre "+rows.length+" bloques. Revisá siempre el facsímil.";
+  status.textContent=candidates.length+" candidatos textuales entre "+rows.length+" bloques. Revise siempre el facsímil.";
   if(!candidates.length||!$("hpar-neural").checked)return;
   status.textContent+=" Solicitaste IA: preparando reordenación semántica de hasta 24 candidatos…";
   try{
@@ -77,4 +77,4 @@ $("hpar-edition").addEventListener("change",()=>{++serial;$("hpar-source").textC
 const args=new URLSearchParams(location.search);
 if(SOURCES[args.get("edition")])$("hpar-edition").value=args.get("edition");
 if(args.get("q")){$("hpar-query").value=args.get("q");run();}
-else $("hpar-status").textContent="Elegí una edición y escribí una consulta. Todo el procesamiento textual es local en tu navegador.";
+else $("hpar-status").textContent="Elija una edición y escribí una consulta. Todo el procesamiento textual es local en tu navegador.";
