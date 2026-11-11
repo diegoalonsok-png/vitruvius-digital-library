@@ -9,43 +9,43 @@
       "category": "physical",
       "key": "material",
       "label": "Soporte material",
-      "missing": 57
+      "missing": 56
     },
     {
       "category": "physical",
       "key": "dimensions",
       "label": "Dimensiones y caja escrita",
-      "missing": 94
+      "missing": 93
     },
     {
       "category": "physical",
       "key": "collationFormula",
       "label": "Fórmula de cuadernos",
-      "missing": 99
+      "missing": 98
     },
     {
       "category": "physical",
       "key": "ruling",
       "label": "Pautado",
-      "missing": 99
+      "missing": 98
     },
     {
       "category": "physical",
       "key": "binding",
       "label": "Encuadernación",
-      "missing": 94
+      "missing": 93
     },
     {
       "category": "physical",
       "key": "watermarks",
       "label": "Filigranas",
-      "missing": 100
+      "missing": 99
     },
     {
       "category": "scribal",
       "key": "script",
       "label": "Tipo de escritura",
-      "missing": 78
+      "missing": 77
     },
     {
       "category": "scribal",
@@ -69,7 +69,7 @@
       "category": "paratext",
       "key": "glosses",
       "label": "Glosas",
-      "missing": 100
+      "missing": 99
     },
     {
       "category": "paratext",
@@ -87,13 +87,13 @@
       "category": "history",
       "key": "provenance",
       "label": "Procedencia",
-      "missing": 86
+      "missing": 85
     },
     {
       "category": "text",
       "key": "folioRange",
       "label": "Folios",
-      "missing": 49
+      "missing": 48
     },
     {
       "category": "text",
@@ -306,41 +306,69 @@
       "fields": {
         "physical": {
           "material": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Soporte material y composición de bifolios"
+            "value": "Papel; manuscrito del siglo XV según el catálogo de la Bibliothèque de Genève.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Soporte material y composición de bifolios",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           },
           "dimensions": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Dimensiones del bloque y de la caja escrita"
+            "value": "285 × 210 mm; caja de escritura del texto de Cicerón: 175 × 90 mm, una columna de 25–26 líneas.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Dimensiones del bloque y de la caja escrita",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           },
           "collationFormula": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Fórmula de cuadernos y estructura de la encuadernación"
+            "value": "Un ternión (6 folios) + nueve seniones (9 × 12 folios) + un quinión incompleto (7 folios); signaturas a–l y reclamos verticales.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Fórmula de cuadernos y estructura de la encuadernación",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           },
           "ruling": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Pautado, picado y número de líneas por página"
+            "value": "Pautado a lápiz de plomo y picaduras; una columna de 25–26 líneas para el texto de Cicerón.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Pautado, picado y número de líneas por página",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           },
           "binding": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Encuadernación y restauraciones"
+            "value": "Encuadernación posterior a julio de 1884: medio chagrín rojo con tapas de cartón y papel marmolado; conserva fragmentos de la encuadernación anterior.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Encuadernación y restauraciones",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           },
           "watermarks": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Filigranas para testimonios en papel"
+            "value": "Filigrana de cabeza de buey coronada por cruz; datación del modelo entre 1440 y 1460 según Briquet citado por A. Dufour; no equivale por sí sola a fecha de copia.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Filigranas para testimonios en papel",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           }
         },
         "scribal": {
           "script": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Escritura y fecha paleográfica"
+            "value": "Escritura bastarda (écriture bâtarde), según la descripción institucional del códice; no se infiere cantidad de copistas.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Escritura y fecha paleográfica",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           },
           "hands": {
             "value": null,
@@ -360,9 +388,13 @@
             "scholarlyQuestion": "Escolios marginales"
           },
           "glosses": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Glosas interlineales"
+            "value": "Numerosas glosas marginales e interlineales según el catálogo; incluye signos de párrafo rojos en glosas marginales.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Glosas interlineales",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           },
           "subscriptiones": {
             "value": null,
@@ -377,16 +409,24 @@
             "scholarlyQuestion": "Origen / scriptorium"
           },
           "provenance": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Historia de propietarios y transferencias"
+            "value": "El manuscrito fue donado a la Bibliothèque de Genève en 1702 por Hugues Lejeune (1634–1707), regente del Collège de Genève.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Historia de propietarios y transferencias",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           }
         },
         "text": {
           "folioRange": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Folios y distribución por libros"
+            "value": "121 folios, con dos guardas anteriores y dos posteriores; De officiis comienza en f. 7v; texto principal y comentario llegan hasta p. 224, seguidos del cuadro de virtudes en pp. 226–227.",
+            "status": "institutional_catalogue_verified",
+            "scholarlyQuestion": "Folios y distribución por libros",
+            "sourceUrl": "https://e-codices.unifr.ch/en/description/bge/lat0088/Jeger",
+            "verificationDate": "2026-11-11",
+            "bibliographicSource": "Isabelle Jeger, Catalogue des manuscrits latins 1-376, Genève, 2016, pp. 409–411",
+            "verificationMethod": "institutional_catalogue_metadata_not_autoptic"
           },
           "coverage": {
             "value": "De officiis completo con comentario marginal; no es un manuscrito contemporáneo de Cicerón.",
@@ -427,23 +467,13 @@
           }
         }
       },
-      "missingCount": 18,
+      "missingCount": 8,
       "missingKeys": [
-        "material",
-        "dimensions",
-        "collationFormula",
-        "ruling",
-        "binding",
-        "watermarks",
-        "script",
         "hands",
         "corrections",
         "scholia",
-        "glosses",
         "subscriptiones",
         "origin",
-        "provenance",
-        "folioRange",
         "lacunae",
         "transpositions",
         "palimpsest"
