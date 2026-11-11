@@ -2,7 +2,7 @@
   "schema": "vitruvius-codicological-trees-222-v1",
   "updated": "2026-11-10",
   "count": 222,
-  "physicalWitnessCount": 83,
+  "physicalWitnessCount": 87,
   "interpretation": "All work-to-manuscript lines express attestations, not copying. Only separately documented manuscript-to-manuscript lines support filiations. No family or lost archetype is invented.",
   "method": "physicalWitnessCount counts unique canonicalPhysicalId, not individual text transmissions. Every work has its own attestation link; family trees require source-backed relations.",
   "records": [
@@ -1086,8 +1086,32 @@
         "type": "classical_work",
         "label": "Diodoro Sículo · Βιβλιοθήκη ἱστορική"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "appian-diodorus-paris1642",
+          "canonicalPhysicalId": "codex-bnf-grec-1642",
+          "type": "physical_witness",
+          "label": "Grec 1642",
+          "repository": "Paris, Bibliothèque nationale de France",
+          "dating": "siglo XV",
+          "material": null,
+          "folioRange": "Apiano, Bellum civile ff. 263r–264v y Celtica ff. 264v–275v; Diodoro, Bibliotheca historica ff. 275v–276v.",
+          "coverage": "Testimonios fragmentarios: Apiano, Bellum civile y Celtica, en extractos; Diodoro, pasajes del libro XVIII (18.1.1–5 y 18.26.1–28.4 según Pinakes). NO representa ejemplar completo.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "diodorus",
+          "target": "appian-diodorus-paris1642",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -1096,7 +1120,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -1210,8 +1234,54 @@
         "type": "classical_work",
         "label": "Séneca · Epistulae morales ad Lucilium"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "seneca-epistulae-harley2752",
+          "canonicalPhysicalId": "codex-seneca-harley-2752",
+          "type": "physical_witness",
+          "label": "Harley MS 2752",
+          "repository": "London, British Library",
+          "dating": "primera mitad del siglo XV (1400–1449)",
+          "material": "Pergamino; códice de 89 folios; 260 × 175 mm; caja de escritura 190 × 120 mm",
+          "folioRange": "ff. 1r–89r; f. 89v en blanco",
+          "coverage": "Epistulae morales ad Lucilium, colección de 124 cartas según registro British Library; no se ha auditado la integridad de cada carta.",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048583",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        },
+        {
+          "id": "seneca-tragedies-epistulae-harley5006",
+          "canonicalPhysicalId": "codex-seneca-harley-5006",
+          "type": "physical_witness",
+          "label": "Harley MS 5006",
+          "repository": "London, British Library",
+          "dating": "segunda mitad del siglo XV (1450–1499)",
+          "material": "Pergamino, 78 folios; 305 × 225 mm; caja escrita 245 × 155 mm",
+          "folioRange": "Tragedias ff. 1r–30v y fragmento 77r–78v; Epistulae morales ff. 31r–76v.",
+          "coverage": "Tragedias de Séneca (ff. 1r–30v y fragmento final 77r–78v); cartas morales (ff. 31r–76v), precedidas por la correspondencia apócrifa entre Séneca y san Pablo. No atribuir esta última correspondencia a Séneca auténtico.",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002050850",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "seneca-epistulae",
+          "target": "seneca-epistulae-harley2752",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048583"
+        },
+        {
+          "source": "seneca-epistulae",
+          "target": "seneca-tragedies-epistulae-harley5006",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002050850"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -1220,7 +1290,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -3252,8 +3322,32 @@
         "type": "classical_work",
         "label": "Séneca (atribuciones individuales por cotejar) · Tragoediae (colección)"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "seneca-tragedies-epistulae-harley5006",
+          "canonicalPhysicalId": "codex-seneca-harley-5006",
+          "type": "physical_witness",
+          "label": "Harley MS 5006",
+          "repository": "London, British Library",
+          "dating": "segunda mitad del siglo XV (1450–1499)",
+          "material": "Pergamino, 78 folios; 305 × 225 mm; caja escrita 245 × 155 mm",
+          "folioRange": "Tragedias ff. 1r–30v y fragmento 77r–78v; Epistulae morales ff. 31r–76v.",
+          "coverage": "Tragedias de Séneca (ff. 1r–30v y fragmento final 77r–78v); cartas morales (ff. 31r–76v), precedidas por la correspondencia apócrifa entre Séneca y san Pablo. No atribuir esta última correspondencia a Séneca auténtico.",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002050850",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "seneca-tragoediae",
+          "target": "seneca-tragedies-epistulae-harley5006",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002050850"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -3262,7 +3356,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -3817,8 +3911,32 @@
         "type": "classical_work",
         "label": "Polibio · Ἱστορίαι"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "xenophon-polybius-leiden-vulc2",
+          "canonicalPhysicalId": "codex-leiden-vulc-2",
+          "type": "physical_witness",
+          "label": "Vulc. 002",
+          "repository": "Leiden, Universitaire Bibliotheken",
+          "dating": "finales del siglo XV a comienzos del XVI, según unidad descrita por Pinakes",
+          "material": "Papel; manuscrito misceláneo",
+          "folioRange": "Memorabilia ff. 7v–51r; Historiae de Polibio ff. 87r–110r (f. 110v en blanco).",
+          "coverage": "Jenofonte, Memorabilia, y sección de Historiae de Polibio; la integridad de la obra de Polibio no está demostrada por el catálogo.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/38230/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "polybius-historiae",
+          "target": "xenophon-polybius-leiden-vulc2",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/38230/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -3827,7 +3945,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -4187,8 +4305,32 @@
         "type": "classical_work",
         "label": "Apiano · Ῥωμαϊκά"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "appian-diodorus-paris1642",
+          "canonicalPhysicalId": "codex-bnf-grec-1642",
+          "type": "physical_witness",
+          "label": "Grec 1642",
+          "repository": "Paris, Bibliothèque nationale de France",
+          "dating": "siglo XV",
+          "material": null,
+          "folioRange": "Apiano, Bellum civile ff. 263r–264v y Celtica ff. 264v–275v; Diodoro, Bibliotheca historica ff. 275v–276v.",
+          "coverage": "Testimonios fragmentarios: Apiano, Bellum civile y Celtica, en extractos; Diodoro, pasajes del libro XVIII (18.1.1–5 y 18.26.1–28.4 según Pinakes). NO representa ejemplar completo.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "appian-romaika",
+          "target": "appian-diodorus-paris1642",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -4197,7 +4339,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -7127,8 +7269,54 @@
         "type": "classical_work",
         "label": "Jenofonte · Ἀπομνημονεύματα"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "xenophon-memorabilia-paris1642",
+          "canonicalPhysicalId": "codex-bnf-grec-1642",
+          "type": "physical_witness",
+          "label": "Grec 1642",
+          "repository": "Paris, Bibliothèque nationale de France",
+          "dating": "siglo XV",
+          "material": null,
+          "folioRange": "ff. 65r–107v (Pinakes: 065–107v)",
+          "coverage": "Memorabilia de Jenofonte; el códice contiene también Hellenica y obras de Platón. No se afirma ser el testimonio más antiguo de Memorabilia.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        },
+        {
+          "id": "xenophon-polybius-leiden-vulc2",
+          "canonicalPhysicalId": "codex-leiden-vulc-2",
+          "type": "physical_witness",
+          "label": "Vulc. 002",
+          "repository": "Leiden, Universitaire Bibliotheken",
+          "dating": "finales del siglo XV a comienzos del XVI, según unidad descrita por Pinakes",
+          "material": "Papel; manuscrito misceláneo",
+          "folioRange": "Memorabilia ff. 7v–51r; Historiae de Polibio ff. 87r–110r (f. 110v en blanco).",
+          "coverage": "Jenofonte, Memorabilia, y sección de Historiae de Polibio; la integridad de la obra de Polibio no está demostrada por el catálogo.",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/38230/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "xenophon-memorabilia",
+          "target": "xenophon-memorabilia-paris1642",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/"
+        },
+        {
+          "source": "xenophon-memorabilia",
+          "target": "xenophon-polybius-leiden-vulc2",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/38230/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -7137,7 +7325,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -9314,5 +9502,5 @@
       }
     }
   ],
-  "textualWitnessRecordCount": 89
+  "textualWitnessRecordCount": 94
 }
