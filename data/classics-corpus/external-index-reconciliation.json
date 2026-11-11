@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-classics-external-index-reconciliation-v1",
-  "updated": "2026-11-10",
+  "updated": "2026-11-11",
   "scope": "Metadatos de índices remotos existentes, no textos alojados en GitHub Pages. Verifica solo la existencia de los manifiestos y su integridad estructural declarada, no cotejo filológico ni prueba de lectura en navegador. Tres fichas pendientes son versiones editoriales de Vitruvio ya indexado en otras ediciones; requieren enlace de procedencia pero no son obras antiguas independientes. El índice añadido de Sículo Flaco deriva de 31 párrafos de Wikisource (edición de base no identificada): se documenta como transcripción accesible, no como edición crítica cotejada. El índice remoto de Ennio, Annales, corresponde a 31 fragmentos en transcripción CLTK/Latin Library; no se confunde con edición crítica ni obra íntegra. Plutarco (Vidas y Moralia) se cuenta exclusivamente con la cobertura de tratados parcial documentada, no como obra integral.",
   "sourceManifests": [
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-griegos-20261108/data/offsite-originals/manifest.json",
@@ -8,16 +8,16 @@
   ],
   "counts": {
     "worksCatalogued": 222,
-    "hostedOriginalsIndexed": 181,
+    "hostedOriginalsIndexed": 182,
     "remoteOriginalsIndexed": 28,
-    "combinedOriginalsIndexed": 209,
-    "originalsStillWithoutIndex": 13,
+    "combinedOriginalsIndexed": 210,
+    "originalsStillWithoutIndex": 12,
     "remoteGreek": 16,
     "remoteLatin": 12,
     "hostedTranslations": 59,
-    "hostedTextVersions": 246,
+    "hostedTextVersions": 247,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 10
+    "distinctAncientWorksStillMissingOriginalIndex": 9
   },
   "remoteEntries": [
     {
@@ -334,13 +334,6 @@
     }
   ],
   "remainingWithoutOriginalIndex": [
-    {
-      "workId": "faventinus",
-      "originalLanguage": "la",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": [],
-      "recordKind": "independent-work"
-    },
     {
       "workId": "origenes",
       "originalLanguage": "grc",
