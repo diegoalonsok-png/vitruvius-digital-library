@@ -442,7 +442,9 @@ async function run(push=true){
 function resolveLang(q){if(S.lang!=="auto")return S.lang;const rest=q.replace(/\[[^\]]*\]/g,"").replace(/\b(NEAR\/\d+)\b|\.\.\d+/g,"");if(/\[/.test(q)&&!/[a-z]/i.test(rest.replace(/[^\p{L}]/gu,"")))return "grc";return detectLang(rest)}
 function fillWorks(D){const sel=$("#lx-work");const cur=S.work;sel.replaceChildren(el("option",{value:""},"Todas las obras"));for(const [id,w] of Object.entries(D.corpus.works).sort((a,b)=>(CHRONO[a[0]]??0)-(CHRONO[b[0]]??0)))sel.append(el("option",{value:id,selected:id===cur},`${w.author} · ${w.title}`));if(!D.corpus.works[cur]){S.work="";sel.value=""}}
 
+let hitsRenderRevision=0;
 function renderHits(D,res){
+ const renderRevision=++hitsRenderRevision;
  const list=$("#lx-results");list.replaceChildren();
  const n=res.hits.length;
  const works=new Set(res.hits.map(h=>D.corpus.passages[h.i][0]));
@@ -455,13 +457,23 @@ if(!n){list.append(el("div",{class:"empty"},"No hay pasajes que cumplan la consu
  let hits=res.hits.slice();
  if(ord==="chrono")hits.sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i);
  S.sorted=hits;
- renderDistribution(D,hits);
- {const amb=ambiguityCount(D,hits);if(amb)$("#lx-state").append(" ",el("span",{class:"lx-small",title:T("Pasajes cuya forma hallada admite varios lemas en la tabla automática")},`· ${amb.toLocaleString("es")} ${T("con lema ambiguo")} (${Math.round(amb/Math.min(hits.length,3000)*100)} %)`))}
+ // The first visible page is built before full-corpus distribution statistics.
+ // Expensive longitudinal analysis is noncritical and scheduled after paint.
  list.append(readingToolbar());
  const page=hits.slice(S.page*PAGE_SIZE,(S.page+1)*PAGE_SIZE);
  for(const h of page)list.append(hitCard(D,h));
  if(hits.length>(S.page+1)*PAGE_SIZE){list.append(el("button",{type:"button",class:"lx-more",onclick:e=>{e.target.remove();S.page++;const more=hits.slice(S.page*PAGE_SIZE,(S.page+1)*PAGE_SIZE);for(const h of more)list.append(hitCard(D,h));if(hits.length>(S.page+1)*PAGE_SIZE)list.append(e.target)}},`Mostrar ${PAGE_SIZE} más`))}
  renderExports(D,hits);
+ const enrich=()=>{
+  if(renderRevision!==hitsRenderRevision||!list.isConnected)return;
+  try{
+   renderDistribution(D,hits);
+   const amb=ambiguityCount(D,hits);
+   if(amb)$("#lx-state").append(" ",el("span",{class:"lx-small",title:T("Pasajes cuya forma hallada admite varios lemas en la tabla automática")},`· ${amb.toLocaleString("es")} ${T("con lema ambiguo")} (${Math.round(amb/Math.min(hits.length,3000)*100)} %)`));
+  }catch(error){console.warn("Estadísticas complementarias no disponibles:",error)}
+ };
+ if(typeof requestIdleCallback==="function")requestIdleCallback(enrich,{timeout:1800});
+ else setTimeout(enrich,80);
 }
 /* La fecha de composición, la datación del testimonio y la edición moderna
    corresponden a entidades bibliográficas diferentes. Nunca datar V514 como antigua. */
