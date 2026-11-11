@@ -93,6 +93,8 @@ html body .reader{background:var(--reader-bg,#000000)!important;color:var(--read
 html body #passages{background:var(--reader-bg,#000000)!important;color:var(--reader-fg,#e2e2e3)!important;font-family:var(--reader-font,Georgia,serif);font-size:var(--reader-size,20px);font-style:var(--reader-italic,normal);line-height:1.8}
 html body #passages p{text-align:var(--reader-align,justify);text-align-last:start;hyphens:auto;overflow-wrap:break-word}
 html body #passages .locus{text-align:left;hyphens:none;font-style:normal}
+/* Original glyphs are preserved; optional fonts support polytonic Greek. */
+html body #passages:lang(grc),html body #passages:lang(la){font-kerning:normal;font-variant-ligatures:common-ligatures}
 html[data-parallel-view="true"] .reader-appearance{display:none}
 /* El lector enfrentado ya dispone de navegación, búsqueda y apariencia propias
    en la ventana madre. Evitar repetir la cabecera y desplazar el texto original
@@ -140,7 +142,7 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
   <label>Fondo <input id="reader-bg" type="color" value="#000000" aria-label="Elegir color del fondo del texto"></label>
   <label>Texto <input id="reader-fg" type="color" value="#e2e2e3" aria-label="Elegir color del texto"></label>
   <label>Fuente <select id="reader-font" aria-label="Fuente del texto">
-    <option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Monoespaciada</option>
+    <option value="serif">Georgia</option><option value="classic">Palatino</option><option value="sans">Sans</option><option value="mono">Monoespaciada</option><option value="gentium">Gentium Plus · griego</option><option value="cardo">Cardo</option><option value="noto">Noto Serif</option><option value="garamond">EB Garamond</option>
   </select></label>
   <button type="button" id="reader-smaller" title="Reducir tamaño de letra" aria-label="Reducir tamaño de letra">A−</button>
   <output id="reader-size" aria-live="polite">20 px</output>
