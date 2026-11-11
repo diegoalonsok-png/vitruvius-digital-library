@@ -254,7 +254,7 @@
   const cs=typeof getComputedStyle==="function"?getComputedStyle(root):{paddingLeft:"0",paddingRight:"0"};
   const outer=Number(root.clientWidth)||Number(root.getBoundingClientRect?.().width)||760;
   const available=Math.max(1,Math.floor(outer)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)-3);
-  const labelWidth=Math.min(Math.round(available*.33),available<420?88:available<740?124:170);
+  const labelWidth=Math.min(Math.round(available*.33),available<420?76:available<740?124:170);
   // Keep the chronological atlas inside the site's actual content width.
   const mapWidth=Math.max(1,available-labelWidth-2);
   const cardWidth=Math.min(Math.round(134*state.zoom),Math.max(1,mapWidth-12));
