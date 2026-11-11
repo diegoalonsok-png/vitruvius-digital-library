@@ -404,6 +404,37 @@ function appendAcademicLinks(query){
  $("article-body").append(group);
  paragraph("Estos enlaces abren búsquedas externas; no se presentan como documentos ya cotejados.","article-note");
 }
+async function verifiedPersonCorpusRows(rows,person,token){
+ // A site-mode person dossier must recover attested Vitruvian mentions even
+ // when the main search has not requested textual concordances.
+ if(!person||rows.some(r=>r.type==="passage"&&r.locus&&r.latin))return rows;
+ const corpus=window.ClassicsCorpusSearch;
+ if(!corpus?.searchPassages)return rows;
+ const forms=person.id==="cicero"
+  ?["Cicero","Ciceronis","Ciceronem","Cicerone","Ciceroni"]
+  :(person.latin_forms||[]).filter(x=>typeof x==="string"&&x.length>=4).slice(0,6);
+ if(!forms.length)return rows;
+ try{
+  const matches=await corpus.searchPassages(forms,{
+   workId:"vitruvius",language:"la",limit:48,includeFullText:true,
+   includeOCR:false,isCancelled:()=>token!==active
+  });
+  if(token!==active||!Array.isArray(matches))return rows;
+  const additions=[];
+  for(const hit of matches){
+   if(!hit?.locus||!hit.passageText||hit.ocr||hit.workId!=="vitruvius")continue;
+   const link=hit.link||"";
+   additions.push({type:"passage",locus:hit.locus,latin:hit.passageText,
+    translation:"",edition:hit.edition||"recensio-es",link});
+   for(const parallel of hit.parallelTranslations||[]){
+    if(!parallel.available||!parallel.text)continue;
+    additions.push({type:"passage",locus:hit.locus,latin:hit.passageText,
+     translation:parallel.text,edition:parallel.edition,link});
+   }
+  }
+  return [...rows,...additions];
+ }catch{return rows}
+}
 function appendPersonLoci(rows,person){
  const verified=matchingPersonPassages(rows,person);
  if(!verified.length)return false;
@@ -1322,7 +1353,11 @@ async function renderTopic(top,rows,query,token,person=null){
  const list=make("ul",undefined,"article-related");
  for(const row of sources.slice(0,14)){const li=make("li"),link=href(row.link,row.title);if(link)li.append(link);if(li.childNodes.length)list.append(li)}
  if(list.childNodes.length)$("article-body").append(list);
- if(person)appendPersonLoci(rows,person);else appendVerifiedTopicPassages(rows,query);
+ if(person){
+   const attested=await verifiedPersonCorpusRows(rows,person,token);
+   if(token!==active)return;
+   appendPersonLoci(attested,person);
+  }else appendVerifiedTopicPassages(rows,query);
  appendAcademicLinks(person?.name||query);
  aside(sources);optionalManuscriptAccess(rows);
  references([...(data?.fullurl?[{title:(data.title||query)+" · Wikipedia",link:data.fullurl}]:[]),...contextSources,...rows]);buildContents();
