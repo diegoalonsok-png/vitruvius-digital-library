@@ -7,12 +7,12 @@
     "cataloguedWorks": 222,
     "catalogueStatuses": {
       "lectura-local-completa": 32,
-      "lectura-local-parcial": 114,
-      "pendiente-de-incorporar": 43,
+      "lectura-local-parcial": 113,
+      "pendiente-de-incorporar": 44,
       "repertoriado-busqueda-externa": 18,
       "fuente-externa-identificada": 15
     },
-    "locallyReadableClaims": 146,
+    "locallyReadableClaims": 145,
     "indexedTextVersions": 247,
     "indexedDistinctWorks": 182,
     "manuscriptWitnesses": 23
@@ -930,7 +930,7 @@
       "originalLanguage": "la",
       "genre": "Arquitectura e ingeniería",
       "dating": "Finales del siglo III – comienzos del IV d. C.",
-      "catalogueStatus": "lectura-local-parcial",
+      "catalogueStatus": "pendiente-de-incorporar",
       "indexedTextLanguages": [
         "la"
       ],
@@ -947,8 +947,8 @@
           "shelfmark": "Cod. Guelf. 132 Gud. lat."
         }
       ],
-      "hasDeclaredExternalReading": true,
-      "notes": "Texto original latino de la edición de Rose (1899) indexado en 32 párrafos editoriales consecutivos; transcripción Project Gutenberg 51812. Los loci secuenciales NO son loci críticos ni folios ni una lectura diplomática."
+      "hasDeclaredExternalReading": false,
+      "notes": "Índice derivado en 32 párrafos del apéndice latino de Rose 1899 / Project Gutenberg; el catálogo maestro mantiene su clasificación original. Texto no cotejado con manuscrito ni foliación canónica."
     },
     {
       "id": "barnabas",
