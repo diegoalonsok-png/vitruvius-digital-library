@@ -495,7 +495,7 @@ async function searchImages(query){
   if(lexicalVisual)displayGroups([lexicalVisual],{kind:"topic",subject:"λόγος",aliases:["λόγος"]});
   else{grid.replaceChildren();grid.hidden=true}
   status.textContent=locale(
-   "Consulta interpretada como λόγος (griego antiguo): palabra, razón, discurso. Se excluyen logotipos comerciales. Para buscar marcas, escribí «logos de empresas».",
+   "Consulta interpretada como λόγος (griego antiguo): palabra, razón, discurso. Se excluyen logotipos comerciales. Para buscar marcas, escriba «logos de empresas».",
    "Interpreted as ancient Greek λόγος (word, reason, discourse). Corporate logos are excluded. Search for 'company logos' to see trademarks.",
    "Recherche interprétée comme λόγος en grec ancien (parole, raison, discours). Logos commerciaux exclus."
   );
