@@ -241,7 +241,7 @@ function links(word,lang,lemma){
 function css(){
  if(document.getElementById("cl-style"))return;
  const st=document.createElement("style");st.id="cl-style";
- st.textContent=`mark.cl-hit{background:#ffe45c;color:#14120e;border-radius:2px;padding:0 1px;box-shadow:0 0 0 1px rgba(160,120,0,.25)}
+ st.textContent=`mark.cl-hit,mark.cl-parallel-hit,mark.w{background:#ffe45c!important;color:#14120e!important;border-radius:2px;padding:0 1px;text-decoration:underline!important;text-decoration-color:#c38d00!important;text-decoration-thickness:2px!important;text-underline-offset:3px;cursor:pointer;box-shadow:0 0 0 1px rgba(160,120,0,.25)}
 mark.cl-hit.cl-current{background:#ffb703;outline:2px solid #b07d00}
 .cl-dict{font:13px/1.6 system-ui,-apple-system,sans-serif;border-top:1px solid var(--line,#bcb3a4);padding:12px 0 0;margin-top:16px}
 .cl-dict h4{font:600 11px/1.4 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px;color:var(--muted,#666)}
