@@ -21,7 +21,7 @@
   works:[L("Obras y creaciones","Works and creations","Œuvres et créations"),"▤"],
   documents:[L("Documentos y ediciones","Documents and editions","Documents et éditions"),"▥"]
  };
- const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null};
+ const state={query:"",token:0,authority:null,works:[],albums:[],rows:[],zoom:1,selected:"",rowSignature:"",pendingWorks:null,tagColor:null};
  const article=document.getElementById("vitruvia-article");
  const articleGrid=article?.querySelector(".article-grid");
  const resultsGrid=document.querySelector("#results .results-grid");
@@ -181,7 +181,15 @@
   zoomIn.setAttribute("aria-label",L("Acercar cronología","Zoom in timeline","Zoomer la chronologie"));
   zoomOut.title=L("Reducir escala","Reduce scale","Réduire l’échelle");
   zoomIn.title=L("Ampliar escala","Increase scale","Agrandir l’échelle");
-  controls.append(prev,zoomOut,zoomIn,next);
+  const colors=el("label","vat-color-control",L("Color de etiquetas","Label color","Couleur des étiquettes"));
+  const colorInput=el("input");colorInput.type="color";colorInput.value=state.tagColor||"#d4e5f2";colorInput.setAttribute("aria-label",L("Elegir color de las etiquetas","Choose label color","Choisir la couleur des étiquettes"));
+  const varied=el("button",null,L("Variados","Mixed","Variées"));varied.type="button";varied.title=L("Restaurar colores pastel variados","Restore assorted pastel colors","Rétablir les couleurs pastel");
+  colors.append(colorInput);controls.append(colors,varied,prev,zoomOut,zoomIn,next);
+  root.classList.toggle("vat-custom-color",Boolean(state.tagColor));
+  if(state.tagColor)root.style.setProperty("--vat-tag-color",state.tagColor);
+  else root.style.removeProperty("--vat-tag-color");
+  colorInput.addEventListener("input",()=>{state.tagColor=colorInput.value;root.classList.add("vat-custom-color");root.style.setProperty("--vat-tag-color",state.tagColor)});
+  varied.addEventListener("click",()=>{state.tagColor=null;root.classList.remove("vat-custom-color");root.style.removeProperty("--vat-tag-color")});
   left.append(el("small","vat-subtitle",isAkhenaten()?L(
     "Vida aproximada · c. 1370–1336 a. C. · sin publicaciones posteriores",
     "Approximate lifetime · c. 1370–1336 BCE · no later publications",
@@ -241,23 +249,29 @@
    for(const e of items){
     const x=(e.year-low)/range*mapWidth;
     const center=Math.max(cardWidth/2+3,Math.min(mapWidth-cardWidth/2-3,x));
-    let level=lastEnds.findIndex(end=>center-end>=cardWidth+9);
+    let level=lastEnds.findIndex(end=>center-end>=26);
     if(level<0){level=lastEnds.length;lastEnds.push(-Infinity)}
     lastEnds[level]=center;levelMax=Math.max(levelMax,level);
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
-    button.style.left=center+"px";button.style.top=(27+level*108)+"px";button.style.width=cardWidth+"px";
-    button.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)));
-    button.append(el("strong",null,e.title));
+    button.classList.add("vat-event-marker");
+    button.style.left=center+"px";button.style.top=(27+level*40)+"px";
+    button.style.setProperty("--vat-popup-width",cardWidth+"px");
+    button.setAttribute("aria-label",(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
+    button.title=L("Pasar el mouse o pulsar para ver la ficha","Hover or select to see the record","Survoler ou sélectionner pour voir la notice");
+    const popup=el("span","vat-event-pop");
+    popup.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)));
+    popup.append(el("strong",null,e.title));
     if(e.end!=null&&e.end!==e.year){
-     const dur=el("span","vat-duration","– "+showYear(e.end));button.append(dur);
+     const dur=el("span","vat-duration","– "+showYear(e.end));popup.append(dur);
     }
+    button.append(popup);
     button.addEventListener("click",()=>highlightButton(button,detail,e));
     const key=[e.title,e.year,e.lane].join("|");
     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
     track.append(button);
    }
-   track.style.height=(140+levelMax*108)+"px";
+   track.style.height=(74+levelMax*40)+"px";
    band.append(title,track);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
