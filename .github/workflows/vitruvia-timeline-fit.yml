@@ -1,0 +1,31 @@
+name: Vitruvia · cronología sin desbordes
+on:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-academic-timeline.js'
+      - 'assets/vitruvia-academic-timeline.css'
+      - 'scripts/test-vitruvia-timeline-fit.mjs'
+      - '.github/workflows/vitruvia-timeline-fit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/vitruvia-academic-timeline.js'
+      - 'assets/vitruvia-academic-timeline.css'
+      - 'scripts/test-vitruvia-timeline-fit.mjs'
+      - '.github/workflows/vitruvia-timeline-fit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  timeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxis de cronología
+        run: node --check assets/vitruvia-academic-timeline.js
+      - name: Comprobar eventos, límites y funciones interactivas
+        run: node scripts/test-vitruvia-timeline-fit.mjs
