@@ -18,7 +18,7 @@ const cases=[
 ];
 const taskDefaults=[
 "Completar textos originales griegos y latinos que tengan edición verificable y derechos claros.",
-"Examinar 46 obras sin versión textual registrada; separar ausencia real de ediciones externas.",
+"Examinar las fichas sin índice de original local o remoto (13 según conciliación 2026-11-10, incluidas tres ediciones de Vitruvio); no confundir indexación con cotejo.",
 "Cotejar manualmente pares de versiones sin identificadores compartidos de locus.",
 "Resolver alertas de colación latina contra fuente, edición y pasaje; conservar todas las lecturas.",
 "Verificar por capítulos y loci la integridad de las ediciones V514, V554 y V297.",
