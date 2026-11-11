@@ -8456,7 +8456,108 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "aulus-gellius-harley4859",
+          "canonicalPhysicalId": "codex-harley-ms-4859",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_latin",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "London, British Library",
+            "shelfmark": "Harley MS 4859",
+            "paleographicDate": "último cuarto del siglo XIV – primer cuarto del XV (1375–1424)",
+            "support": "Pergamino; 206 folios; 255 × 175 mm; caja de escritura 165 × 110 mm.",
+            "script": "Escritura gótica; denominación institucional genérica.",
+            "hands": null,
+            "correctors": null,
+            "scholia": "Numerosas notas marginales, según catálogo BL.",
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": "Nordeste de Italia, posiblemente Padua o Bolonia (atribución de BL).",
+            "provenance": "Colección Harley; antes de nacionalización en 1753.",
+            "foliation": "ff. 1r–201r: Noctes Atticae; ff. 201v–205r: índice latino; ff. 205v–206v: definiciones y etimologías.",
+            "dimensions": "255 × 175 mm; caja de escritura 165 × 110 mm.",
+            "collationFormula": null,
+            "binding": "Encuadernación posterior a 1600, cuero marrón moteado con decoración dorada."
+          },
+          "textualIntegrity": {
+            "coverage": "Texto de Noctes Atticae, con notas marginales, índices de voces y frases; no se afirma integridad crítica ni prioridad cronológica mundial.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002050702",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://searcharchives.bl.uk/catalog/040-002050702",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "aulus-gellius-burney174",
+          "canonicalPhysicalId": "codex-burney-ms-174",
+          "transmission": {
+            "type": "direct",
+            "classificationBasis": "direct_original_latin",
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "London, British Library",
+            "shelfmark": "Burney MS 174",
+            "paleographicDate": "tercer cuarto del siglo XV (1450–1474)",
+            "support": "Pergamino; 295 × 200 mm, caja de escritura 205 × 110 mm; 36 líneas.",
+            "script": "Escritura humanística, por encima de la primera línea; griego añadido por otras manos.",
+            "hands": "Mano principal humanística; griego insertado por varias manos, sin distribución de manos por locus documentada aquí.",
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": "Italia central, Roma (atribución BL).",
+            "provenance": "Mario Maffei; Anthony Askew; duque de Grafton; Charles Burney; adquirida por el British Museum en 1818.",
+            "foliation": "ff. 2r–237v Noctes Atticae; ff. 237v–239v prefacio (orden material posterior al texto).",
+            "dimensions": "295 × 200 mm; caja de escritura 205 × 110 mm.",
+            "collationFormula": "i–xxiii¹⁰ (ff. 2–231); xxiv⁸ (ff. 232–239), según catálogo institucional; reclamos verticales.",
+            "binding": "Encuadernación Askew posterior a 1600 en cuero marrón; restaurada en 1962."
+          },
+          "textualIntegrity": {
+            "coverage": "Noctes Atticae con prefacio colocado a continuación; iniciales y rúbricas ornamentadas; estado de integridad de cada libro requiere cotejo textual.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002237055",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": "https://searcharchives.bl.uk/catalog/040-002237055",
+            "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -8478,7 +8579,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
