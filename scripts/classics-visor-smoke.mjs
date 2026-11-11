@@ -431,9 +431,15 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
     }));
     throw new Error(error.message+'; diagnostic='+JSON.stringify(diagnostic));
    }
-   const text=await page.locator('#article-body').innerText();
-   assert((text.includes('Marco Tulio Cicerón (106')?text.indexOf('Marco Tulio Cicerón (106'):text.indexOf('Biografía de prueba'))<text.search(LOCI),
-    'The biography must precede the relevant Vitruvius passages');
+   const order=await page.evaluate(()=>{
+    const body=document.getElementById('article-body');
+    const bio=[...body.querySelectorAll('p')].find(p=>/Marco Tulio Cicerón \\(106|Biografía de prueba/.test(p.textContent||''));
+    const first=body.querySelector('.person-locus-entry');
+    return {hasBiography:!!bio,hasLocus:!!first,
+     biographyBeforeLocus:!!bio&&!!first&&!!(bio.compareDocumentPosition(first)&Node.DOCUMENT_POSITION_FOLLOWING)};
+   });
+   assert(order.hasBiography&&order.hasLocus&&order.biographyBeforeLocus,
+    'Documented biography must precede verified Vitruvian passages: '+JSON.stringify(order));
    assert.match(await page.locator('#article-title').innerText(),/Cicerón/);
    const passages=await page.locator('.person-locus-entry').count();
    console.log('CICERO VERIFIED LOCI',passages);
