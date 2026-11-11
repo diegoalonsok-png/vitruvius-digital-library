@@ -216,7 +216,7 @@ async function load(language){
  const locus=p.get("locus")||new URLSearchParams(location.search).get("locus");
  const at=data.passages.findIndex(x=>x.locus===locus);
  const chosen=at>=0?at:0;setQuery(p.get("q")||input.value||"");
- if(search){renderSearch();const first=data.passages.findIndex(x=>match(x.text,search,!exactConcordance));select(at>=0?at:first>=0?first:chosen)}
+ if(search){renderSearch();const first=results[0]?.i;select(at>=0?at:Number.isInteger(first)?first:chosen)}
  else{renderSearch();select(chosen)}
  if(window.parent!==window)window.parent.postMessage({type:"vitruvia-parallel-ready",work,lang:language,count:data.passages.length},"*");
 }
