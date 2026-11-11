@@ -214,7 +214,7 @@ async function wiktionary(word,lang,depth=0){
   return entries.length?{entries,via:"online",sources:[{label:"Wiktionary (en)",url:"https://en.wiktionary.org/wiki/"+encodeURIComponent(word),license:"CC BY-SA 4.0"}]}:null;
  }catch{return null}
 }
-async function lookup(word,{lang,work,online=true}={}){
+async function lookupUncached(word,{lang,work,online=true}={}){
  const w=clean(word);if(!w)return{word:"",entries:[]};
  lang=lang||detectLang(w);
  let res=lang==="grc"?await lookupGreek(w,work):await lookupLatin(w,work);
@@ -226,6 +226,20 @@ async function lookup(word,{lang,work,online=true}={}){
  }
  const first=res?.entries?.[0]?.lemma?.split(/\s/)[0]?.normalize("NFD").replace(/[\u0304\u0306]/g,"").normalize("NFC").replace(/-/g,"");
  return{word:w,lang,entries:res?.entries||[],via:res?.via||"",sources:res?.sources||[],note:res?.note||"",links:links(w,lang,first)};
+}
+// Share completed and in-flight lookups across repeated word clicks.
+const lookupCache=new Map();
+function lookup(word,options={}){
+ const lang=options.lang||detectLang(word),work=options.work||"",online=options.online!==false;
+ const key=lang+"|"+work+"|"+(online?"online":"local")+"|"+fold(word);
+ if(!lookupCache.has(key)){
+  const pending=lookupUncached(word,{...options,lang,work,online})
+   .catch(err=>{lookupCache.delete(key);throw err});
+  lookupCache.set(key,pending);
+  // Bound cached vocabulary to avoid unbounded memory growth.
+  if(lookupCache.size>160)lookupCache.delete(lookupCache.keys().next().value);
+ }
+ return lookupCache.get(key);
 }
 function links(word,lang,lemma){
  const L=lemma||word,la=lang==="grc"?"greek":"la";
