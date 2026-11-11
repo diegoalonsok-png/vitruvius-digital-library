@@ -31,7 +31,7 @@ async function worker(){
     const nav=performance.getEntriesByType("navigation")[0];
     const controlList=[...document.querySelectorAll("button, input[type=button], input[type=submit], [role=button]")];
     const visible=x=>{const r=x.getBoundingClientRect(),st=getComputedStyle(x);return r.width>0&&r.height>0&&st.display!=="none"&&st.visibility!=="hidden"};
-    const unnamed=controlList.filter(x=>visible(x)&&!(x.innerText||x.value||x.getAttribute("aria-label")||x.getAttribute("title")||"").trim());
+    const unnamed=controlList.filter(x=>visible(x)&&!(x.getAttribute("aria-label")||x.getAttribute("aria-labelledby")||x.innerText||x.textContent||x.value||x.getAttribute("title")||"").trim());
     return {
      timing:{domContentLoadedMs:Math.round(nav?.domContentLoadedEventEnd||0),loadMs:nav?.loadEventEnd?Math.round(nav.loadEventEnd):null,ttfbMs:Math.round((nav?.responseStart||0)-(nav?.requestStart||0)),resourceRequests:performance.getEntriesByType("resource").length},
      controls:{total:controlList.length,visible:controlList.filter(visible).length,unlabeled:unnamed.slice(0,12).map(x=>x.outerHTML.slice(0,180)),disabled:controlList.filter(x=>x.disabled).length}
