@@ -14,11 +14,15 @@ const sources=[
  {id:"codex-h",name:"Codex H / Harley",re:/\b(?:harleianus|harley|codex\s+h|c[oó]dice\s+h|ms\s+2767)\b/i}
 ];
 const numerals={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
-let notes=[],shown=0,filtered=[];
+let notes=[],shown=0,filtered=[],knownLoci=new Set();
 const make=(tag,cls,value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
 const addStat=(parent,count,label)=>{const box=make("div","apa-stat"),n=make("strong","",count),s=make("span","",label);box.append(n,s);parent.append(box);};
 const clean=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
-function status(n){return n.mapping_status==="explicit_in_anchor"&&n.locus?"explicit_in_anchor":n.candidate_locus?"candidate":"unmapped";}
+function status(n){
+ if(n.mapping_status==="explicit_in_anchor"&&n.locus)return knownLoci.size&&!knownLoci.has(n.locus)?"noncanonical":"explicit_in_anchor";
+ if(n.candidate_locus)return knownLoci.size&&!knownLoci.has(n.candidate_locus)?"noncanonical":"candidate";
+ return "unmapped";
+}
 function canonicalLocus(v){
  const raw=String(v||"").trim().replace(/^(?:vitr(?:uvius)?\.?|de\s+arch(?:itectura)?\.?)\s*/i,"");
  const m=raw.match(/^([ivx]+|\d{1,2})[.,\s]+(praef(?:atio)?|\d{1,2})(?:[.,\s]+(\d{1,2}))?$/i);
@@ -28,7 +32,7 @@ function canonicalLocus(v){
  const chapter=/^praef/i.test(m[2])?"praef":String(Number(m[2]));
  return b+"."+chapter+(m[3]?"."+Number(m[3]):"");
 }
-const locusOf=n=>status(n)==="explicit_in_anchor"?n.locus:status(n)==="candidate"?n.candidate_locus:null;
+const locusOf=n=>n.mapping_status==="explicit_in_anchor"&&n.locus?n.locus:n.candidate_locus||null;
 function isAtLocus(n,loc){
  const candidate=locusOf(n);if(!candidate)return false;
  const norm=canonicalLocus(candidate)||String(candidate);
@@ -45,6 +49,7 @@ function renderMetrics(integrity){
  addStat(box,notes.filter(n=>status(n)==="explicit_in_anchor").length,"Notas con locus explícito");
  addStat(box,notes.filter(n=>status(n)==="candidate").length,"Loci candidatos sin certificar");
  addStat(box,notes.filter(n=>status(n)==="unmapped").length,"Notas sin locus propuesto");
+ addStat(box,notes.filter(n=>status(n)==="noncanonical").length,"Referencias candidatas fuera de los 731 loci canónicos");
 }
 function renderApparatus(integrity){
  const box=$("apa-apparatus-metrics");box.replaceChildren();
@@ -58,7 +63,7 @@ function renderApparatus(integrity){
 function entry(n){
  const section=make("article","apa-entry"),typ=status(n),loc=locusOf(n);
  section.append(make("h3","",(names[n.edition]||n.edition)+" · Nota "+n.footnote_id));
- const label=typ==="explicit_in_anchor"?"Locus explícito en contexto":typ==="candidate"?"Locus candidato, sin cotejar":"Sin locus atribuido";
+ const label=typ==="explicit_in_anchor"?"Locus explícito en contexto":typ==="candidate"?"Locus candidato, sin cotejar":typ==="noncanonical"?"Locus candidato NO canónico; requiere conciliación de numeración":"Sin locus atribuido";
  section.append(make("p","meta",label+(loc?" · "+loc:"")+" · Párrafo DOCX "+(n.source_paragraph??"no indicado")+" · "+(n.source_file||"Documento sin identificar")));
  const cited=references(n);
  if(cited.length){
@@ -70,7 +75,7 @@ function entry(n){
  const details=make("details"),summary=make("summary","","Ver contexto de la nota en el documento");
  details.append(summary,make("p","",n.anchor||"Contexto no recuperado"));
  const links=make("div","apa-links"),source=make("a","","Ficha bibliográfica de la edición");source.href=pages[n.edition]||"aparato-critico.html";links.append(source);
- if(loc){
+ if(loc&&typ!=="noncanonical"){
   const critical=make("a","",typ==="explicit_in_anchor"?"Consultar este locus":"Revisar este locus candidato");
   critical.href="aparato-critico.html?locus="+encodeURIComponent(loc);links.append(critical);
   const reader=make("a","","Leer pasaje latino y traducción");
@@ -107,8 +112,8 @@ function update(reset=true){
   (!loc||isAtLocus(n,loc))&&(!ref||references(n).some(s=>s.id===ref))&&
   (!query||clean([n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(" ")).includes(query)));
  filtered.sort((a,b)=>({
-  explicit_in_anchor:0,candidate:1,unmapped:2
- })[status(a)]-({explicit_in_anchor:0,candidate:1,unmapped:2})[status(b)]||
+  explicit_in_anchor:0,candidate:1,noncanonical:2,unmapped:3
+ })[status(a)]-({explicit_in_anchor:0,candidate:1,noncanonical:2,unmapped:3})[status(b)]||
   (orders[a.edition]??3)-(orders[b.edition]??3)||
   (Number(a.footnote_id)||0)-(Number(b.footnote_id)||0));
  renderLocusSummary(loc,filtered);
@@ -129,6 +134,7 @@ async function init(){
   const [raw,integrity]=await Promise.all([load("data/critical-notes.json"),load("data/academic-integrity.json")]);
   if(!Array.isArray(raw.entries)||!raw.entries.length||!integrity.apparatus)throw Error("Esquema incompleto");
   notes=raw.entries;
+  knownLoci=new Set(integrity.canonicalReferences||[]);
   const params=new URLSearchParams(location.search);
   const q=params.get("q");if(q)$("apa-query").value=q.slice(0,220);
   const locus=params.get("locus");if(locus)$("apa-locus").value=locus.slice(0,40);
