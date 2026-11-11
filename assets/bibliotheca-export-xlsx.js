@@ -6,7 +6,8 @@ const FILES={
  standard:"data/classics-corpus/vitruvius-standard-222.json",
  ecdotics:"data/classics-corpus/ecdotics-222.json",
  witnesses:"data/bibliotheca-testimonia-verified.json",
- authority:"data/perseus-provenance-audit.json"
+ authority:"data/perseus-provenance-audit.json",
+ trees:"data/classics-corpus/codicological-trees-222.json"
 };
 const compact=v=>v==null?"":Array.isArray(v)?v.join(" | "):typeof v==="object"?JSON.stringify(v):String(v);
 const clean=s=>typeof s==="string"&&/^[=+@\-\t\r]/.test(s)?"'"+s:s;
@@ -40,14 +41,14 @@ async function exportAll(button,statusNode){
  button.disabled=true;button.textContent="Generando Excel académico…";
  if(statusNode)statusNode.textContent="Recopilando obras, ecdótica, códices y fuentes…";
  try{
-  const [catalog,standard,ecd,registry,authority,X]=await Promise.all([
+  const [catalog,standard,ecd,registry,authority,trees,X]=await Promise.all([
    getJSON(FILES.catalog),getJSON(FILES.standard),getJSON(FILES.ecdotics),
-   getJSON(FILES.witnesses),getJSON(FILES.authority),ensureXLSX()
+   getJSON(FILES.witnesses),getJSON(FILES.authority),getJSON(FILES.trees),ensureXLSX()
   ]);
-  const works=catalog.works||[],stand=new Map((standard.records||[]).map(x=>[x.workId,x])),ed=new Map((ecd.records||[]).map(x=>[x.workId,x])),auth=new Map((authority.records||[]).map(x=>[x.workId,x]));
-  if(works.length!==222||stand.size!==222||ed.size!==222||auth.size!==222)throw Error("Catálogo incompleto: no están disponibles los 222 registros sincronizados.");
+  const works=catalog.works||[],stand=new Map((standard.records||[]).map(x=>[x.workId,x])),ed=new Map((ecd.records||[]).map(x=>[x.workId,x])),auth=new Map((authority.records||[]).map(x=>[x.workId,x])),graph=new Map((trees.records||[]).map(x=>[x.workId,x]));
+  if(works.length!==222||stand.size!==222||ed.size!==222||auth.size!==222||graph.size!==222)throw Error("Catálogo incompleto: no están disponibles los 222 registros sincronizados.");
   const wMap=new Map((registry.records||[]).map(x=>[x.id,x]));
-  const obras=[],ecdRows=[],ediciones=[],testigos=[],fuentes=[];
+  const obras=[],ecdRows=[],ediciones=[],testigos=[],fuentes=[],arboles=[];
   for(const w of works){
    const s=stand.get(w.id),e=ed.get(w.id),a=auth.get(w.id);
    const ms=e.witnesses||[];
@@ -135,6 +136,20 @@ async function exportAll(button,statusNode){
      "Registro manuscrito completo (JSON)":clean(JSON.stringify(source))
     });
    }
+   const tree=graph.get(w.id);
+   arboles.push({
+     "ID obra":w.id,"Título":w.title,"Tipo de árbol":tree.kind,
+     "Número de testimonios":tree.witnesses.length,
+     "Relaciones de atestación":tree.links.length,
+     "Filiaciones documentadas":tree.documentedFiliation.length,
+     "Estado del stemma":tree.stemmaStatus,
+     "Familias establecidas":compact(tree.families||[]),
+     "Arquetipo establecido":tree.archetype||"",
+     "Testigos (JSON)":clean(JSON.stringify(tree.witnesses)),
+     "Conexiones obra-testigo (JSON)":clean(JSON.stringify(tree.links)),
+     "Filiaciones con evidencia (JSON)":clean(JSON.stringify(tree.documentedFiliation)),
+     "Árbol completo (JSON)":clean(JSON.stringify(tree)),
+   });
    fuentes.push({
     "ID obra":w.id,"Autor":w.author,"Título":w.title,
     "Perseus / procedencia":raw(a,["sourceReadiness"]),
@@ -152,6 +167,7 @@ async function exportAll(button,statusNode){
   addSheet(X,wb,"Ecdotica",ecdRows);
   addSheet(X,wb,"Testigos",testigos);
   addSheet(X,wb,"Ediciones",ediciones);
+  addSheet(X,wb,"Arboles codices",arboles);
   addSheet(X,wb,"Fuentes",fuentes);
   addSheet(X,wb,"Metodologia",[
    {"Campo":"Alcance","Descripción":"222 obras; testigos separados por vínculo obra-manuscrito. No todos los datos están acreditados."},
@@ -160,6 +176,7 @@ async function exportAll(button,statusNode){
    {"Campo":"Stemma","Descripción":"Familias, arquetipos y posiciones solo se completan cuando hay bibliografía crítica suficiente."},
    {"Campo":"Edición digital","Descripción":"Se diferencia el texto indexado de la edición crítica y del facsímil manuscrito."},
    {"Campo":"Fuentes","Descripción":"Enlaces de catálogo, visor e IIIF se mantienen separados y no acreditan por sí mismos contenido o prioridad mundial."},
+   {"Campo":"Árboles codicológicos","Descripción":"Las relaciones de atestación NO son filiaciones; solo se dibujan aristas genealógicas respaldadas por estudios."},
    {"Campo":"Fuente JSON","Descripción":Object.values(FILES).join(" | ")}
   ]);
   X.writeFile(wb,"Vitruvius_Bibliotheca_222_ecdótica_filología.xlsx",{compression:true});
