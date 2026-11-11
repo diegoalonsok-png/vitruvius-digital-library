@@ -144,27 +144,56 @@
   }).sort((a,b)=>a.year-b.year||a.title.localeCompare(b.title)).slice(0,48);
   return ev;
  }
+
+ // Keep the historical axis separate from the bibliography of later centuries.
+ // These classifications are based only on authority properties and sourced dates.
+ function timelineScope(events){
+  const person=isAkhenaten()||state.authority?.kind==="person";
+  const start=isAkhenaten()?akhenatenBounds.birth:
+   year(person?state.authority?.birthYear:state.authority?.inceptionYear);
+  const end=isAkhenaten()?akhenatenBounds.death:
+   year(person?state.authority?.deathYear:state.authority?.dissolutionYear);
+  const bounded=start!==null&&end!==null&&end>=start;
+  const within=e=>(start===null||e.year>=start)&&(end===null||e.year<=end);
+  const historical=events.filter(e=>e.lane!=="documents");
+  let timeline=historical.filter(within);
+  // An undated subject with only catalogued editions can still be explored,
+  // but never invent biographical milestones from book publication dates.
+  if(!timeline.length&&!historical.length&&!bounded)timeline=events.slice();
+  const references=events.filter(e=>!timeline.includes(e));
+  let low=bounded?start:timeline.length?Math.min(...timeline.map(e=>e.year)):start;
+  let high=bounded?end:timeline.length?Math.max(...timeline.map(e=>e.end??e.year)):end;
+  if(low===null&&high!==null)low=high;
+  if(high===null&&low!==null)high=low;
+  return {timeline,references,low,high,bounded,person};
+ }
  function highlightButton(button,detail,event){
   for(const active of root.querySelectorAll(".vat-event[aria-pressed=true]"))active.setAttribute("aria-pressed","false");
   button.setAttribute("aria-pressed","true");
-  state.selected=[event.title,event.year,event.lane].join("|");
-  const heading=el("h4",null,(event.approx?"c. ":"")+showYear(event.year)+" · "+event.title);
-  const body=el("p",null,event.detail);
-  const source=el("small","vat-evidence",event.source||L("Registro original","Source record","Notice source"));
-  const link=el("a","vat-source-link",L("Consultar fuente y metadatos","Open source and metadata","Consulter la source"));
-  link.href=event.url;link.target="_blank";link.rel="noopener noreferrer";
-  const contents=el("div","vat-detail-text");contents.append(heading,body,source,link);
-  detail.replaceChildren();
-  if(event.image){
-   const img=el("img","vat-detail-image");img.src=event.image;img.alt=event.title;
-   img.loading="lazy";img.decoding="async";img.referrerPolicy="no-referrer";
-   img.onerror=()=>img.remove();detail.append(img)
+  const all=Array.isArray(event)?event:[event];
+  state.selected=all.map(e=>[e.title,e.year,e.lane].join("|")).join(";;");
+  const group=Array.isArray(event)?event:[event];
+  const container=el("div","vat-detail-list");
+  for(const item of group){
+   const card=el("article","vat-detail-item");
+   const heading=el("h4",null,(item.approx?"c. ":"")+showYear(item.year)+" · "+item.title);
+   const body=el("p",null,item.detail);
+   const source=el("small","vat-evidence",item.source||L("Registro original","Source record","Notice source"));
+   const link=el("a","vat-source-link",L("Consultar fuente y metadatos","Open source and metadata","Consulter la source"));
+   link.href=item.url;link.target="_blank";link.rel="noopener noreferrer";
+   if(item.image){
+    const img=el("img","vat-detail-image");img.src=item.image;img.alt=item.title;
+    img.loading="lazy";img.decoding="async";img.referrerPolicy="no-referrer";
+    img.onerror=()=>img.remove();card.append(img);
+   }
+   card.append(heading,body,source,link);container.append(card);
   }
-  detail.append(contents);detail.hidden=false;
+  detail.replaceChildren(container);detail.hidden=false;
  }
  function draw(){
   if(!state.query){root.hidden=true;root.replaceChildren();return}
   const events=collect();
+  const scope=timelineScope(events);
   root.replaceChildren();root.hidden=false;
   const head=el("div","vat-header");
   const left=el("div","vat-title");
@@ -177,10 +206,10 @@
   prev.setAttribute("aria-label",L("Retroceder","Previous dates","Dates précédentes"));
   next.setAttribute("aria-label",L("Avanzar","Next dates","Dates suivantes"));
   zoomOut.type=zoomIn.type="button";
-  zoomOut.setAttribute("aria-label",L("Alejar cronología","Zoom out timeline","Dézoomer la chronologie"));
-  zoomIn.setAttribute("aria-label",L("Acercar cronología","Zoom in timeline","Zoomer la chronologie"));
-  zoomOut.title=L("Reducir escala","Reduce scale","Réduire l’échelle");
-  zoomIn.title=L("Ampliar escala","Increase scale","Agrandir l’échelle");
+  zoomOut.setAttribute("aria-label",L("Reducir tamaño de fichas","Reduce label size","Réduire les notices"));
+  zoomIn.setAttribute("aria-label",L("Ampliar tamaño de fichas","Increase label size","Agrandir les notices"));
+  zoomOut.title=L("Reducir etiquetas sin cambiar las fechas","Smaller labels, same dates","Notices réduites, mêmes dates");
+  zoomIn.title=L("Ampliar etiquetas sin cambiar las fechas","Larger labels, same dates","Notices agrandies, mêmes dates");
   const colors=el("label","vat-color-control",L("Color de etiquetas","Label color","Couleur des étiquettes"));
   const colorInput=el("input");colorInput.type="color";colorInput.value=state.tagColor||"#d4e5f2";colorInput.setAttribute("aria-label",L("Elegir color de las etiquetas","Choose label color","Choisir la couleur des étiquettes"));
   const varied=el("button",null,L("Variados","Mixed","Variées"));varied.type="button";varied.title=L("Restaurar colores pastel variados","Restore assorted pastel colors","Rétablir les couleurs pastel");
@@ -202,6 +231,11 @@
    "Cada hito abre una ficha de lectura y su fuente. Los años de una edición no representan necesariamente la creación de la obra ni el acontecimiento histórico.",
    "Select a milestone to read its record. Edition dates do not necessarily indicate first publication or historical events.",
    "Chaque jalon ouvre sa notice. Les dates d'édition ne sont pas nécessairement celles des œuvres ou des événements."));
+  if(scope.person&&!isAkhenaten()&&scope.bounded)
+   method.textContent=L(
+    "Escala biográfica: "+showYear(scope.low)+"–"+showYear(scope.high)+". Ediciones y estudios posteriores se conservan en un desplegable separado.",
+    "Biographical period: "+showYear(scope.low)+"–"+showYear(scope.high)+". Later editions appear separately.",
+    "Période biographique : "+showYear(scope.low)+"–"+showYear(scope.high)+". Éditions postérieures séparées.");
   if(isAkhenaten())method.textContent=L(
     "Escala biográfica exclusivamente hasta la muerte aproximada. El nacimiento es estimado y los años absolutos del reinado pueden variar según la cronología egiptológica. Libros y estudios modernos no son hitos biográficos.",
     "Biographical scale stops at approximate death. Birth and absolute reign dates are uncertain; modern studies are excluded.",
@@ -214,24 +248,29 @@
     "Aucun jalon daté avec source pour cette recherche ; les autres résultats restent disponibles."));
    root.append(empty);return;
   }
-  const minYear=events[0].year,maxYear=Math.max(...events.map(e=>e.end??e.year));
-  const span=Math.max(1,maxYear-minYear),padding=isAkhenaten()?0:Math.max(1,Math.ceil(span*.04));
-  const low=isAkhenaten()?akhenatenBounds.birth:minYear-padding;
-  const high=isAkhenaten()?akhenatenBounds.death:maxYear+padding;
+  if(!scope.timeline.length){
+   root.append(el("p","vat-empty",L(
+    "No hay acontecimientos acreditados para este período; se conservan las referencias documentales por separado.",
+    "No sourced events within this period; documentary references remain available separately.",
+    "Aucun jalon attesté dans cette période ; références conservées séparément.")));
+  }
+  const minYear=scope.low??0,maxYear=scope.high??minYear;
+  const span=Math.max(1,maxYear-minYear),padding=scope.bounded?0:Math.max(1,Math.ceil(span*.04));
+  const low=minYear-padding,high=maxYear+padding;
   const range=Math.max(1,high-low);
   // Universal fitted scale: time always spans the visible reader, not a fixed 960–5200px canvas.
-  const cs=getComputedStyle(root);
-  const available=Math.max(250,Math.floor(root.clientWidth)-parseFloat(cs.paddingLeft||0)-parseFloat(cs.paddingRight||0)-3);
+  const cs=typeof getComputedStyle==="function"?getComputedStyle(root):{paddingLeft:"0",paddingRight:"0"};
+  const available=Math.max(250,Math.floor(Number(root.clientWidth)||850)-parseFloat(cs.paddingLeft||0)-parseFloat(cs.paddingRight||0)-3);
   const labelWidth=available<490?94:available<740?128:170;
   const mapWidth=Math.max(150,available-labelWidth-2);
-  const cardWidth=Math.min(Math.max(106,Math.round(134*state.zoom)),Math.max(96,mapWidth-10));
+  const cardWidth=Math.min(Math.max(110,Math.round(162*state.zoom)),Math.max(98,mapWidth-10));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
   viewport.setAttribute("aria-label",L("Cronología adaptada al ancho del visor","Chronology fitted to reader width","Chronologie adaptée à la largeur du lecteur"));
   const map=el("div","vat-map");map.style.width=available+"px";
   const axis=el("div","vat-axis");
-  const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
+  const ticks=Math.max(1,Math.min(8,Math.floor(mapWidth/135),Math.max(1,Math.floor(range))));
   for(let i=0;i<=ticks;i++){
    const y=Math.round(low+i*range/ticks);
    const tick=el("span","vat-tick",showYear(y));
@@ -239,49 +278,93 @@
   }
   map.append(axis);
   const detail=el("div","vat-detail");detail.hidden=true;detail.setAttribute("aria-live","polite");
+
+  const markerItems=[];
   for(const [lane,[label,icon]] of Object.entries(types)){
-   const items=events.filter(x=>x.lane===lane);if(!items.length)continue;
+   const items=scope.timeline.filter(x=>x.lane===lane);
+   if(!items.length)continue;
    const band=el("section","vat-band");band.setAttribute("aria-label",label);
    const title=el("div","vat-band-title");title.append(el("span","vat-icon",icon),el("strong",null,label));
    const track=el("div","vat-track");track.style.width=mapWidth+"px";
    const line=el("div","vat-line");track.append(line);
-   const lastEnds=[];let levelMax=0;
+   // Small-screen density: close dates share one accessible marker; no
+   // overlapping dots. Opening it reveals every dated event and its source.
+   const groups=[];
    for(const e of items){
-    const x=(e.year-low)/range*mapWidth;
-    const center=Math.max(cardWidth/2+3,Math.min(mapWidth-cardWidth/2-3,x));
-    let level=lastEnds.findIndex(end=>center-end>=26);
-    if(level<0){level=lastEnds.length;lastEnds.push(-Infinity)}
-    lastEnds[level]=center;levelMax=Math.max(levelMax,level);
+    const x=Math.max(14,Math.min(mapWidth-14,(e.year-low)/range*mapWidth));
+    const previous=groups[groups.length-1];
+    if(previous&&x-previous.lastX<34){
+     previous.items.push(e);previous.lastX=x;
+    }else groups.push({x,lastX:x,items:[e]});
+   }
+   for(const group of groups){
+    const e=group.items[0],last=group.items[group.items.length-1];
+    const x=group.x;
     const button=el("button","vat-event");
     button.type="button";button.setAttribute("aria-pressed","false");
     button.classList.add("vat-event-marker");
-    button.style.left=center+"px";button.style.top=(27+level*40)+"px";
+    button.style.left=x+"px";button.style.top="40px";
+    const popCenter=Math.max(cardWidth/2+5,Math.min(mapWidth-cardWidth/2-5,x));
     button.style.setProperty("--vat-popup-width",cardWidth+"px");
-    button.setAttribute("aria-label",(e.approx?"c. ":"")+showYear(e.year)+" · "+e.title);
-    button.title=L("Pasar el mouse o pulsar para ver la ficha","Hover or select to see the record","Survoler ou sélectionner pour voir la notice");
+    button.style.setProperty("--vat-popup-shift",(popCenter-x)+"px");
+    const firstYear=(e.approx?"c. ":"")+showYear(e.year);
+    const years=last.year!==e.year?"–"+showYear(last.year):"";
+    const groupName=group.items.length>1?L(
+     group.items.length+" acontecimientos",""+group.items.length+" events",""+group.items.length+" événements"):e.title;
+    button.setAttribute("aria-label",firstYear+years+" · "+groupName);
+    button.title=L("Pulsar para abrir los acontecimientos y sus fuentes","Open events and sources","Voir événements et sources");
     const popup=el("span","vat-event-pop");
-    popup.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)));
-    popup.append(el("strong",null,e.title));
-    if(e.end!=null&&e.end!==e.year){
-     const dur=el("span","vat-duration","– "+showYear(e.end));popup.append(dur);
-    }
+    popup.append(el("span","vat-year",firstYear+years));
+    popup.append(el("strong",null,groupName));
     button.append(popup);
-    button.addEventListener("click",()=>highlightButton(button,detail,e));
-    const key=[e.title,e.year,e.lane].join("|");
-    if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
+    const key=group.items.map(item=>[item.title,item.year,item.lane].join("|")).join(";;");
+    button.addEventListener("click",()=>highlightButton(button,detail,group.items));
+    if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,group.items)});
+    if(group.items.length>1)button.classList.add("vat-event-cluster");
+    markerItems.push({button,key,year:e.year,lane,events:group.items});
     track.append(button);
    }
-   track.style.height=(74+levelMax*40)+"px";
+   track.style.height="160px";
    band.append(title,track);map.append(band);
   }
   viewport.append(map);root.append(viewport,detail);
+  if(scope.references.length){
+   const annex=el("details","vat-references");
+   const heading=el("summary",null,L(
+    "Ediciones y referencias fuera del período ("+scope.references.length+")",
+    "Editions and references outside this period ("+scope.references.length+")",
+    "Éditions et références hors période ("+scope.references.length+")"));
+   annex.append(heading);
+   annex.append(el("p","vat-references-method",L(
+    "Estas fuentes conservan su fecha editorial, pero no alargan la vida del personaje ni el período del acontecimiento.",
+    "Publication dates never extend a person's lifespan or the historical event.",
+    "Les dates éditoriales n'allongent pas la période historique.")));
+   const entries=el("ul","vat-reference-list");
+   for(const e of scope.references){
+    const item=el("li");
+    item.append(el("span",null,showYear(e.year)+" · "));
+    const link=el("a",null,e.title);link.href=e.url;
+    link.target="_blank";link.rel="noopener noreferrer";item.append(link);entries.append(item);
+   }
+   annex.append(entries);root.append(annex);
+  }
+  markerItems.sort((a,b)=>a.year-b.year||a.key.localeCompare(b.key));
+  function step(direction){
+   if(!markerItems.length)return;
+   const current=markerItems.findIndex(m=>m.key===state.selected);
+   const nextIndex=current<0?(direction>0?0:markerItems.length-1):
+    (current+direction+markerItems.length)%markerItems.length;
+   markerItems[nextIndex].button.click();
+   markerItems[nextIndex].button.focus({preventScroll:true});
+  }
+  prev.disabled=next.disabled=markerItems.length===0;
+  prev.onclick=()=>step(-1);
+  next.onclick=()=>step(1);
   zoomOut.onclick=()=>{state.zoom=Math.max(.8,Math.round((state.zoom-.1)*100)/100);draw()};
   zoomIn.onclick=()=>{state.zoom=Math.min(1.35,Math.round((state.zoom+.1)*100)/100);draw()};
-  prev.onclick=()=>viewport.scrollBy({left:-460,behavior:"smooth"});
-  next.onclick=()=>viewport.scrollBy({left:460,behavior:"smooth"});
   viewport.addEventListener("keydown",e=>{
    if(e.target!==viewport||!["ArrowLeft","ArrowRight"].includes(e.key))return;
-   e.preventDefault();viewport.scrollBy({left:e.key==="ArrowRight"?280:-280,behavior:"smooth"});
+   e.preventDefault();step(e.key==="ArrowRight"?1:-1);
   });
  }
  // Redraw only when the available width changes, not when card height grows.
@@ -335,5 +418,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,version:"2.0-universal-sourced"};
+ window.VitruviaAcademicTimeline={collect,timelineScope,version:"2.1-fit-periods-clusters"};
 })();
