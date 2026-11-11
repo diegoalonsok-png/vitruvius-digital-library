@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Índice de párrafos OCR históricos · Vitruvius Digital Library</title>
+<meta name="description" content="Consulta por bloques OCR de Krohn 1912, Rose 1899 y Cesariano 1521, con trazabilidad a su página original.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/buscador-parrafos-vitruvio.html">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+.hp-wrap{max-width:1160px;margin:auto;padding:30px 18px 90px;line-height:1.55}
+.hp-wrap h1{font:400 clamp(30px,4vw,47px)/1.2 Georgia,serif}
+.hp-lead{max-width:95ch}.hp-controls{display:grid;grid-template-columns:minmax(200px,2fr) minmax(150px,1fr) minmax(145px,1fr) auto;gap:10px;align-items:end;margin:24px 0}
+.hp-controls label{display:grid;gap:6px;font:13px system-ui}.hp-controls input,.hp-controls select,.hp-controls button{width:100%;box-sizing:border-box;border:1px solid #998d77;border-radius:5px;padding:10px;font:15px system-ui;background:var(--paper,#fffdf8);color:var(--ink,#21313c)}
+.hp-controls button{background:#264354;color:#fff;cursor:pointer}.hp-hint{border-left:3px solid #ab8852;padding:10px 16px;margin:15px 0}
+.hp-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:13px}
+.hp-card{border:1px solid var(--line,#ab9e8d);border-radius:6px;padding:17px;background:var(--paper,#fffdf8);color:var(--ink,#21313c)}
+.hp-card h2{font:600 20px Georgia,serif;margin:0 0 8px}.hp-card p{white-space:pre-wrap;overflow-wrap:anywhere;max-height:18em;overflow:auto}.hp-card small{font:12px/1.5 system-ui;opacity:.8}.hp-card a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.hp-wrap :focus-visible{outline:3px solid #c8a359;outline-offset:2px}
+@media(max-width:760px){.hp-controls{grid-template-columns:1fr 1fr}.hp-controls label:first-child{grid-column:1/-1}.hp-controls button{grid-column:1/-1}}
+</style></head><body>
+<main class="hp-wrap">
+<nav aria-label="Volver"><a href="vitruvia.html">Vitruvia</a> · <a href="concordancia-historica.html">Concordancia histórica</a> · <a href="aparato-critico.html">Aparato crítico</a></nav>
+<h1>Índice por párrafos OCR de las ediciones históricas</h1>
+<p class="hp-lead">Buscador gratuito de fragmentos textuales OCR de <strong>Fritz Krohn (1912), Valentin Rose (1899) y Cesare Cesariano (1521)</strong>. Los resultados conservan la edición, página digital y bloque recuperado. Cada coincidencia permite abrir el facsímil. La búsqueda conceptual usa BM25 y un vocabulario multilingüe controlado; todavía no constituye indexación neuronal revisada por IA.</p>
+<p class="hp-hint"><strong>Precaución filológica:</strong> la división en bloques procede de saltos y puntuación detectados por máquina; no representa necesariamente los párrafos tipográficos del original. El OCR puede contener errores y las páginas digitales no son foliación del códice. No se asignan loci por semejanza semántica ni se afirma cotejo crítico.</p>
+<form id="hp-form" class="hp-controls">
+<label>Concepto o pasaje<input id="hp-query" type="search" required placeholder="symmetria, basilica, proporción, columna…" autocomplete="off"></label>
+<label>Edición<select id="hp-edition"><option value="all">Todas las ediciones</option><option value="krohn">Krohn · 1912</option><option value="rose">Rose · 1899</option><option value="cesariano">Cesariano · 1521</option></select></label>
+<label>Método<select id="hp-mode"><option value="literal">Coincidencia textual</option><option value="conceptual">Conceptos multilingües</option></select></label>
+<button type="submit">Buscar</button>
+</form>
+<p id="hp-status" role="status" aria-live="polite">Escribí un término para consultar los archivos OCR. Los textos se descargan cuando se solicita la búsqueda.</p>
+<div id="hp-sources"></div>
+<section id="hp-results" class="hp-results" aria-label="Pasajes encontrados"></section>
+<p><a href="inventario-aparato-autoral.html">Consultar también el aparato crítico comparativo de las ediciones V514, V554 y V297</a>.</p>
+</main>
+<script src="assets/vitruvia-historical-paragraphs.js?v=20261111-ocr-paragraphs-v1" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const $=id=>document.getElementById(id),form=$('hp-form');
+ const queryParams=new URLSearchParams(location.search);
+ if(queryParams.get('q'))$('hp-query').value=queryParams.get('q');
+ if(['krohn','rose','cesariano'].includes(queryParams.get('edition')))$('hp-edition').value=queryParams.get('edition');
+ if(queryParams.get('mode')==='conceptual')$('hp-mode').value='conceptual';
+ let request=0;
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();const id=++request;
+  const q=$('hp-query').value.trim(),edition=$('hp-edition').value,mode=$('hp-mode').value;
+  if(!q)return;
+  history.replaceState(null,'','?'+new URLSearchParams({q,edition,mode}));
+  $('hp-status').textContent='Buscando fragmentos de OCR; las ediciones se cargan solo al solicitarlas…';
+  $('hp-results').replaceChildren();$('hp-sources').replaceChildren();
+  const engine=window.VitruviaHistoricalParagraphs;
+  if(!engine){$('hp-status').textContent='El motor de párrafos históricos no se cargó.';return;}
+  try{
+   const result=await engine.search(q,{edition,mode,limit:48});if(id!==request)return;
+   $('hp-status').textContent=result.results.length+' bloques encontrados · '+result.unitsSearched+
+    ' bloques revisados · '+(result.complete?'todas las fuentes consultadas':'algunas fuentes no están disponibles')+
+    '. '+result.warning;
+   const src=document.createElement('p');
+   src.textContent=Object.entries(result.sources).map(([key,s])=>key+': '+
+    (s.status==='loaded'?s.pages+' páginas OCR, '+s.units+' bloques':"no disponible")).join(' · ');
+   $('hp-sources').append(src);
+   const frag=document.createDocumentFragment();
+   for(const hit of result.results){
+    const box=document.createElement('article');box.className='hp-card';
+    const h=document.createElement('h2');h.textContent=engine.SOURCES[hit.edition].title+' · página '+hit.page+' · bloque '+hit.block;
+    const meta=document.createElement('small');meta.textContent='OCR sin revisión filológica · página digital '+hit.page+' · '+hit.method;
+    const p=document.createElement('p');p.textContent=hit.text;
+    const link=document.createElement('a');link.href=hit.url;link.target='_blank';link.rel='noopener noreferrer';
+    link.textContent='Abrir página en el facsímil';box.append(h,meta,p,link);frag.append(box);
+   }
+   $('hp-results').append(frag);
+   if(!result.results.length){let p=document.createElement('p');p.textContent='No se encontraron coincidencias textuales en las fuentes disponibles. Probá una forma latina o italiana.';$('hp-results').append(p);}
+  }catch(err){if(id===request)$('hp-status').textContent='La búsqueda no pudo completarse: '+String(err.message||err);}
+ });
+ if(queryParams.get('q'))form.requestSubmit();
+});
+</script>
+<script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script>
+</body></html>
