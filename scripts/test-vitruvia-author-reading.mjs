@@ -78,6 +78,8 @@ vm.runInContext(`
  const heading=text=>$('article-body').append(make('h2',text));
  const href=(url,text)=>url?make('a',text):null;
  function appendBiographyExtract(text){const node=make('p',text,'fixture-biography');$('article-body').append(node);return 1}
+ // Model the independently tested main-column biography, which lives above the extracted assembly range.
+ function appendMainBiographyOverview(data){return data?.extract?appendBiographyExtract(data.extract):false}
  window.VitruviaAuthorReading={render(){const node=make('section','Original text and translations');node.id='fixture-readings';node.className='article-author-reading';const prior=$('article-body').querySelector('#fixture-readings');if(prior)prior.replaceWith(node);else $('article-body').append(node)}};
  const appendSource=()=>$('article-body').append(make('p','Documented source'));
  const appendLocalRepositoryResources=appendSource,appendCuratedUniversities=appendSource,appendManuscriptHierarchy=appendSource,appendCuratedEvidence=appendSource,appendReferenceBooks=appendSource,appendOfficialHistoricalSources=appendSource,appendInstitutionalResearch=appendSource,addTopicBibliography=appendSource;
