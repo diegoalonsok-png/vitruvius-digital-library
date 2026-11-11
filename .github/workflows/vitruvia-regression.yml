@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
       - run: node scripts/vitruvia-regression-check.mjs
+      - run: node scripts/check-vitruvia-timeline.mjs
       - run: node tests/locus-aliases.mjs
       - run: node scripts/test-vitruvia-resilience.mjs
       - run: node scripts/test-vitruvia-performance.mjs
