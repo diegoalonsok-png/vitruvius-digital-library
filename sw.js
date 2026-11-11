@@ -6,9 +6,9 @@
    - Datos del Lexicon con huella (?v=): caché primero (inmutables hasta que cambia la huella).
    - JS/CSS versionados (?v=): caché primero. Imágenes y PDF: caché primero con límite.
    - Recursos de otros dominios: no se interceptan. */
-const VERSION="vdl-20261107-classics-readers-v1";
+const VERSION="vdl-20261111-laboratorium-map-v1";
 const SHELL="shell-"+VERSION,PAGES="pages-"+VERSION,DATA="data-"+VERSION,LEXDATA="lexdata-"+VERSION,STATIC="static-"+VERSION,MEDIA="media-"+VERSION;
-const CORE=["./","index.html","offline.html","vitruvia.html","lector-bilingue.html","bibliotheca-graeca-latina.html","classics-text-reader.html","termino.html",
+const CORE=["./","index.html","offline.html","vitruvia.html","lector-bilingue.html","bibliotheca-graeca-latina.html","classics-text-reader.html","termino.html","laboratorio-humanidades.html","mapa-general.html",
  "manifest.webmanifest","vitruvia.webmanifest","instalar-apps.html","assets/app-icons/vitruvia-192.png","assets/app-icons/vitruvia-512.png","assets/app-icons/vitruvia-apple-touch-icon.png","assets/favicon.svg","assets/app-icons/icon-192.png","assets/app-icons/icon-512.png","assets/pwa.js"];
 const MEDIA_LIMIT=400;
 self.addEventListener("install",e=>{e.waitUntil(caches.open(SHELL).then(c=>Promise.allSettled(CORE.map(u=>c.add(new Request(u,{cache:"reload"}))))).then(()=>self.skipWaiting()))});
