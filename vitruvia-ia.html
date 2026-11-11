@@ -48,7 +48,7 @@ main{width:min(100%,920px);min-height:calc(100dvh - 75px);display:flex;flex-dire
 .intro p{font-size:14px;max-width:590px}
 #conversation{min-height:0;flex:1 0 auto;margin:0 0 24px;display:flex;flex-direction:column;gap:14px}
 .entry{padding:18px 20px;background:var(--box);border:1px solid var(--line);border-radius:14px;overflow-wrap:anywhere}
-.entry h2{font-size:22px}
+.entry h2{font-size:22px}.entry h3{font-weight:400;color:var(--fg)}.entry small,.source small,.caption{color:var(--muted);font-size:12px;line-height:1.65}
 .surface{width:100%;position:relative;box-shadow:0 10px 32px #0002;padding:9px 13px 10px;border-radius:21px}
 .surface:focus-within{border-color:var(--accent)}
 textarea{resize:vertical;min-height:82px;max-height:36vh;padding:13px 10px;font-size:16px}
@@ -106,7 +106,7 @@ html[data-theme=light] .send{background:#27323b;color:#fff}
    <button id="send" class="send" type="button" aria-label="Enviar consulta" title="Enviar consulta">Enviar ↑</button>
   </div>
  </div>
- <p id="privacy">Los documentos se procesan en la memoria de esta pestaña, sin subirse a GitHub. Las búsquedas web envían las palabras consultadas a los servicios externos. Los PDF sin texto extraíble requieren OCR.</p>
+ <p id="privacy">Citas en Chicago 18 cuando los metadatos están disponibles; referencias incompletas claramente identificadas. Los documentos se procesan en la memoria de esta pestaña, sin subirse a GitHub. Las búsquedas web envían las palabras consultadas a los servicios externos. Los PDF sin texto extraíble requieren OCR.</p>
 </main>
 <script type="module">
 const q=document.getElementById('question'),fileInput=document.getElementById('file'),info=document.getElementById('file-info'),output=document.getElementById('conversation');
@@ -140,6 +140,10 @@ const describeScript=text=>{const greek=[...text.matchAll(/[\u0370-\u03ff\u1f00-
 const shorten=(s,n=600)=>String(s||'').replace(/\s+/g,' ').slice(0,n);
 function addText(parent,tag,value,klass){const n=el(tag,value,klass);parent.append(n);return n}
 function link(parent,url,label){const a=el('a',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';parent.append(a);return a}
+function chicagoWebCitation(title,url){
+ const access=new Intl.DateTimeFormat('es-AR',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date());
+ return 'Wikipedia contributors. “'+title+'.” Wikipedia. Consultado el '+access+'. '+url+'.';
+}
 function entry(title){const n=el('article',null,'entry');output.prepend(n);addText(n,'h2',title);return n}
 function clear(){++session;documentData=null;pdfLibrary=null;zipLoader=null;fileInput.value='';info.textContent='';info.classList.remove('on');output.replaceChildren();q.value='';q.focus()}
 document.getElementById('clear').addEventListener('click',clear);
@@ -200,23 +204,23 @@ function searchDocument(question,box){
   addText(box,'p','La frecuencia no es análisis morfológico ni lematización. En griego y latín las flexiones permanecen separadas.','caption');
  }
  const terms=queryTerms.filter(w=>!new Set(['este','esta','texto','documento','obra','pasaje','sobre','donde','cual','cuáles','cuales','porque','encontrar','buscar','quiero','analizar','resumen','tiene','como','cuando']).has(w));
- const rank=data.pages.map((p,i)=>{const hay=' '+fold(p.text)+' ';const count=terms.reduce((n,t)=>n+hay.split(' '+t+' ').length-1,0);return {...p,index:i,count}}).filter(p=>p.count>0).sort((a,b)=>b.count-a.count).slice(0,6);
- if(rank.length){addText(box,'h3','Pasajes recuperados literalmente');for(const p of rank){addText(box,'small',p.label+' · '+p.count+' coincidencias');addText(box,'div',shorten(p.text,780),'quote')}}
+ const rank=data.pages.map((p,i)=>{const hay=' '+fold(p.text)+' ';const count=terms.reduce((n,t)=>n+hay.split(' '+t+' ').length-1,0);return {...p,index:i,count}}).filter(p=>p.count>0).sort((a,b)=>b.count-a.count).slice(0,16);
+ if(rank.length){addText(box,'h3','Pasajes recuperados literalmente');for(const p of rank){addText(box,'small',p.label+' · '+p.count+' coincidencias');addText(box,'div',shorten(p.text,1800),'quote')}}
  else if(terms.length){addText(box,'p','No encontré esas palabras de manera literal en el texto extraído. Prueba otra grafía o una forma flexiva.');}
- else{addText(box,'h3','Fragmentos iniciales');for(const p of data.pages.slice(0,3)){addText(box,'small',p.label);addText(box,'div',shorten(p.text,430),'quote')}}
+ else{addText(box,'h3','Fragmentos iniciales');for(const p of data.pages.slice(0,8)){addText(box,'small',p.label);addText(box,'div',shorten(p.text,1300),'quote')}}
  addText(box,'p','La respuesta se basa en texto extraído y coincidencias verificables, no en una interpretación generativa. No se asigna ningún folio o traducción sin cotejo.','caption');
 }
 async function webResearch(question,box,token){
  addText(box,'p','Consulta pública: '+question+'. Se buscan fichas y descripciones documentadas; los resultados no equivalen a una síntesis crítica automática.');
  const status=addText(box,'p','Buscando referencias web…','pending');
  const query=question.replace(/^(?:busca|buscar|investiga|quien fue|quién fue|que es|qué es|dime|explica)\s+/i,'').slice(0,140);
- const encycl='https://es.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:query,srlimit:'6',format:'json',origin:'*'});
+ const encycl='https://es.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:query,srlimit:'15',format:'json',origin:'*'});
  try{
   const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),8500);
   let data;try{const r=await fetch(encycl,{signal:controller.signal});if(!r.ok)throw Error('HTTP '+r.status);data=await r.json()}finally{clearTimeout(timeout)}
   if(token!==session)return;
   const records=data.query?.search||[];status.textContent=records.length?'Referencias enciclopédicas identificadas (verificar las fuentes originales):':'Sin resultados enciclopédicos directos.';
-  for(const rec of records){const block=el('div',null,'source');box.append(block);const title=rec.title||'Ficha';const url='https://es.wikipedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_'));const strong=el('strong');block.append(strong);link(strong,url,title);const clean=new DOMParser().parseFromString(rec.snippet||'','text/html').body.textContent||'';addText(block,'p',clean);addText(block,'small','Wikipedia · descripción de búsqueda; no es una fuente primaria.')}
+  for(const rec of records){const block=el('div',null,'source');box.append(block);const title=rec.title||'Ficha';const url='https://es.wikipedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_'));const strong=el('strong');block.append(strong);link(strong,url,title);const clean=new DOMParser().parseFromString(rec.snippet||'','text/html').body.textContent||'';addText(block,'p',clean);addText(block,'small','Fuente secundaria · referencia Chicago 18 orientativa:');addText(block,'small',chicagoWebCitation(title,url))}
  }catch{if(token===session)status.textContent='La consulta directa no está disponible. Puedes continuar con los catálogos externos.'}
  const nav=el('p');box.append(nav);
  link(nav,'https://www.google.com/search?'+new URLSearchParams({q:question}),'Google');nav.append(document.createTextNode(' · '));
@@ -235,7 +239,7 @@ async function optionalLocalAI(question,box){
  let model=null;
  try{
   model=await API.create();
-  const answer=await model.prompt('Analiza exclusivamente este texto. No inventes citas, folios ni autorías. Identifica incertidumbres. Responde en español en 3 párrafos; explica cuáles fragmentos sustentan tus afirmaciones. Consulta: '+question+'\n\nDOCUMENTO LOCAL:\n'+source);
+  const answer=await model.prompt('Analiza exclusivamente este texto. No inventes citas, folios ni autorías. Identifica incertidumbres. Responde en español extensamente según la evidencia disponible, sin inventar datos. Explica qué fragmentos sustentan las afirmaciones e incorpora referencias en estilo Chicago 18 solo con metadatos verificables. Consulta: '+question+'\n\nDOCUMENTO LOCAL:\n'+source);
   status.textContent='Interpretación generada por el modelo local del navegador; requiere cotejo filológico.';
   addText(box,'div',String(answer||''),'quote');
  }catch{status.textContent='No pudo iniciarse la IA local; los pasajes extraídos siguen disponibles.'}
