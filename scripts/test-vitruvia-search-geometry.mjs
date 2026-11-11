@@ -131,7 +131,28 @@ try{
   }));
   assert.equal(modern.text,"القاهرة","Cairo must use the documented modern Arabic name");
   assert.equal(modern.direction,"rtl","Arabic reading direction must be right-to-left");
+  // Verified person portrait appears above the article and disappears on a new query.
+  await egypt.route("https://commons.wikimedia.org/wiki/Special:FilePath/**",route=>route.fulfill({
+    status:200,contentType:"image/png",
+    body:Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScL/nwAAAABJRU5ErkJggg==","base64")
+  }));
+  await egypt.evaluate(()=>{
+    document.getElementById("vitruvia-article").hidden=false;
+    window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:"Cicerón"}}));
+    window.dispatchEvent(new CustomEvent("vitruvia:hero-visual",{detail:{
+      query:"Cicerón",weight:6000,item:{
+        preview:"https://commons.wikimedia.org/wiki/Special:FilePath/VerifiedPortrait.jpg",
+        page:"https://commons.wikimedia.org/wiki/File:VerifiedPortrait.jpg",
+        caption:"Cicerón · busto documentado",entityId:"Q123"
+      }
+    }}));
+  });
+  await egypt.waitForFunction(()=>!!document.querySelector("#article-image-preview:not([hidden]) .article-identity-portrait img"),null,{timeout:10000});
+  assert.match(await egypt.locator("#article-image-preview figcaption").innerText(),/Fuente, autor y licencia/);
+  await egypt.evaluate(()=>window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:"Le Corbusier"}})));
+  assert.equal(await egypt.locator("#article-image-preview").getAttribute("hidden"),"");
   await egypt.close();
+  console.log("PASS: a verified person portrait appears above the biography and clears on a new search.");
   console.log("PASS: Akhenaten Unicode and modern Cairo Arabic appear in the cultural rail without hero displacement.");
   console.log("PASS: Vitruvia article fills the reading area; cultural right rail on desktop, stacked results on mobile.");
 }finally{
