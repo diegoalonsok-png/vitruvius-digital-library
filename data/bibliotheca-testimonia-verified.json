@@ -55,7 +55,8 @@
           "diagrammaticEvidence"
         ],
         "policy": "Institutional facts distinguished from conjectural origin and unverified hands."
-      }
+      },
+      "canonicalPhysicalId": "codex-vitruvius-h"
     },
     {
       "id": "cicero-officiis-geneva",
@@ -79,7 +80,8 @@
       "verificationUrl": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
       "datingBasis": "e-codices: siglo XV.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
-      "priorityClaim": "digitized_later_witness"
+      "priorityClaim": "digitized_later_witness",
+      "canonicalPhysicalId": "codex-cicero-officiis-geneva"
     },
     {
       "id": "lucretius-oblongus",
@@ -98,7 +100,8 @@
       "rights": "Universidad de Leiden: revisar condiciones de reutilización.",
       "verification": "Biblissima / Leiden University Libraries",
       "dateStart": 800,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-lucretius-oblongus"
     },
     {
       "id": "vergil-vaticanus-aeneid",
@@ -117,7 +120,10 @@
       "rights": "Biblioteca Vaticana: imágenes para estudio personal; solicitar autorización para reproducción pública.",
       "verification": "DigiVatLib codicological catalogue",
       "dateStart": 301,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-vat-lat-3225",
+      "physicalIdentityEvidence": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+      "physicalIdentityNote": "Multiple text-transmission records of a single surviving physical codex; preserve work-specific evidence and foliation."
     },
     {
       "id": "vergil-vaticanus-georgica",
@@ -136,7 +142,10 @@
       "rights": "Biblioteca Vaticana: imágenes para estudio personal; autorización para reproducción pública.",
       "verification": "DigiVatLib table of contents",
       "dateStart": 301,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-vat-lat-3225",
+      "physicalIdentityEvidence": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+      "physicalIdentityNote": "Multiple text-transmission records of a single surviving physical codex; preserve work-specific evidence and foliation."
     },
     {
       "id": "vergil-romanus",
@@ -156,7 +165,8 @@
       "rights": "Biblioteca Vaticana: imágenes sujetas a autorización de reproducción.",
       "verification": "Vatican Library Latin Paleography / DigiVatLib",
       "dateStart": 475,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-vergil-romanus"
     },
     {
       "id": "tacitus-mediceus-1",
@@ -175,7 +185,8 @@
       "rights": "Biblioteca Laurenziana: consultar políticas del visor institucional.",
       "verification": "Biblissima Laurenziana catalogue",
       "dateStart": 1001,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-tacitus-mediceus-1"
     },
     {
       "id": "tacitus-mediceus-2",
@@ -195,7 +206,10 @@
       "rights": "Biblioteca Laurenziana: consultar condiciones institucionales.",
       "verification": "Biblissima Laurenziana catalogue",
       "dateStart": 1001,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-laur-plut-68-2",
+      "physicalIdentityEvidence": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
+      "physicalIdentityNote": "Multiple text-transmission records of a single surviving physical codex; preserve work-specific evidence and foliation."
     },
     {
       "id": "josephus-pal-gr-14",
@@ -214,7 +228,8 @@
       "rights": "Biblioteca Vaticana: imágenes para estudio personal, reproducción sujeta a autorización.",
       "verification": "DigiVatLib item record",
       "dateStart": 901,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-josephus-pal-gr-14"
     },
     {
       "id": "josephus-vat-gr-984",
@@ -234,7 +249,8 @@
       "rights": "Biblioteca Vaticana: imágenes para estudio personal, reproducción sujeta a autorización.",
       "verification": "DigiVatLib item record",
       "dateStart": 1354,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-josephus-vat-gr-984"
     },
     {
       "id": "dioscorides-vienna",
@@ -253,7 +269,8 @@
       "rights": "ÖNB: imágenes institucionales sujetas a condiciones de reutilización.",
       "verification": "Österreichische Nationalbibliothek image search",
       "dateStart": 512,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-dioscorides-vienna"
     },
     {
       "id": "dioscorides-paris",
@@ -272,7 +289,8 @@
       "rights": "BnF: uso conforme a condiciones de Gallica.",
       "verification": "BnF Gallica shelfmark and digital record",
       "dateStart": 801,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-dioscorides-paris"
     },
     {
       "id": "homer-iliad-venetus-a",
@@ -291,7 +309,8 @@
       "rights": "Imágenes del Homer Multitext / Biblioteca Nazionale Marciana: verificar licencia CC BY-NC-SA y condiciones institucionales; no se redistribuyen en GitHub.",
       "verification": "Homer Multitext Project / Center for Hellenic Studies / Biblioteca Marciana; edición y facsímil documentados.",
       "dateStart": 975,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-homer-iliad-venetus-a"
     },
     {
       "id": "catullus-thuaneus-8071",
@@ -309,7 +328,8 @@
       "manifest": null,
       "verification": "Ellis 1904, Sigla: T = Thuaneus Paris. 8071, c. LXII, saec. IX; facsímil Gallica",
       "rights": "Consultar condiciones de la BnF.",
-      "dateStart": 800
+      "dateStart": 800,
+      "canonicalPhysicalId": "codex-catullus-thuaneus-8071"
     },
     {
       "id": "catullus-oxford-o",
@@ -327,7 +347,8 @@
       "manifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/c645f804-d10b-45e4-8a14-c9b22676b87d.json",
       "verification": "Digital Bodleian / Biblissima institucional, fecha y signatura; Ellis 1904, siglum O",
       "rights": "Bodleian Libraries: consultar derechos de las imágenes.",
-      "dateStart": 1351
+      "dateStart": 1351,
+      "canonicalPhysicalId": "codex-catullus-oxford-o"
     },
     {
       "id": "cicero-republica-vat5757",
@@ -345,7 +366,8 @@
       "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.5757",
       "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.5757/manifest.json",
       "verification": "Biblioteca Apostolica Vaticana, catálogo y proyecto Palinsesti Vaticani",
-      "rights": "Biblioteca Apostolica Vaticana: consulta personal y estudio; consultar permisos de reproducción."
+      "rights": "Biblioteca Apostolica Vaticana: consulta personal y estudio; consultar permisos de reproducción.",
+      "canonicalPhysicalId": "codex-cicero-republica-vat5757"
     },
     {
       "id": "marcus-aurelius-vat1950",
@@ -364,7 +386,8 @@
       "verification": "DigiVatLib, signatura, fecha y contenido; Pinakes 68579",
       "rights": "Biblioteca Apostolica Vaticana: consulta personal y estudio; consultar permisos de reproducción.",
       "startFolio": "341r",
-      "dateStart": 1301
+      "dateStart": 1301,
+      "canonicalPhysicalId": "codex-marcus-aurelius-vat1950"
     },
     {
       "id": "plato-parisinus-graecus-1807",
@@ -385,7 +408,8 @@
       "manifest": null,
       "verification": "Biblissima/Gallica, cote Grec 1807; IRHT-CNRS Pinakes para obra, folios y datación (Rep., Tim., Leg.); consulta del facsímil en Gallica.",
       "rights": "Bibliothèque nationale de France / Gallica: consultar condiciones de uso y reproducción. Se enlaza el facsímil externo; imágenes no copiadas al repositorio.",
-      "note": "El enlace de facsímil está identificado; no se afirma disponibilidad de un manifiesto IIIF reutilizable ni alineación automática con las ediciones modernas."
+      "note": "El enlace de facsímil está identificado; no se afirma disponibilidad de un manifiesto IIIF reutilizable ni alineación automática con las ediciones modernas.",
+      "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807"
     },
     {
       "id": "ovid-metamorphoses-vat-lat-2781",
@@ -403,7 +427,8 @@
       "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.2781",
       "manifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.2781/manifest.json",
       "verification": "DigiVatLib, catalogación directa, signatura, contenido y manifiesto IIIF oficial.",
-      "rights": "Imágenes © Biblioteca Apostolica Vaticana. Uso personal y académico de consulta; su reproducción/publicación requiere permiso del custodio. No se almacenan aquí."
+      "rights": "Imágenes © Biblioteca Apostolica Vaticana. Uso personal y académico de consulta; su reproducción/publicación requiere permiso del custodio. No se almacenan aquí.",
+      "canonicalPhysicalId": "codex-ovid-metamorphoses-vat-lat-2781"
     },
     {
       "id": "faventinus-gudianus-132",
@@ -421,7 +446,8 @@
       "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
       "verification": "Enlace HAB ya publicado en la portada del proyecto; ficha codicológica pendiente",
       "dateStart": 801,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-faventinus-gudianus-132"
     },
     {
       "id": "euclid-vat-gr-190",
@@ -439,7 +465,8 @@
       "rights": "Biblioteca Vaticana: imágenes sujetas a autorización de reproducción.",
       "verification": "DigiVatLib (MSS_Vat.gr.190.pt.1); descripción por cotejar con el catálogo de la BAV",
       "dateStart": 801,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-euclid-vat-gr-190"
     },
     {
       "id": "agrimensores-arcerianus",
@@ -458,7 +485,8 @@
       "rights": "Herzog August Bibliothek: consultar y respetar condiciones institucionales.",
       "verification": "Digitalización HAB citada por Wikipedia y por R. Marshall, Mnemosyne 2022",
       "dateStart": 501,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-agrimensores-arcerianus"
     },
     {
       "id": "agrimensores-pal-lat-1564",
@@ -477,7 +505,8 @@
       "rights": "Bibliotheca Palatina digital (UB Heidelberg / BAV): consultar condiciones.",
       "verification": "Heidelberg, Bibliotheca Palatina digital; contenidos según Leges (Univ. Köln)",
       "dateStart": 840,
-      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta."
+      "dateStartBasis": "Año aproximado de inicio para ordenar; se conserva la datación textual y sus reservas en el campo date. No representa una fecha exacta.",
+      "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564"
     },
     {
       "id": "plato-clarke-39",
@@ -503,7 +532,8 @@
       "verification": "Digital Bodleian / Bodleian Medieval Manuscripts / Biblissima IIIF Collections, ficha de MS. E. D. Clarke 39",
       "verificationUrl": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
       "dateStart": 895,
-      "dateStartBasis": "Fecha de copia 895 registrada en Bodleian/Biblissima; no constituye la fecha de composición de los diálogos."
+      "dateStartBasis": "Fecha de copia 895 registrada en Bodleian/Biblissima; no constituye la fecha de composición de los diálogos.",
+      "canonicalPhysicalId": "codex-plato-clarke-39"
     },
     {
       "id": "sinaiticus-gospels-apostolic",
@@ -526,7 +556,8 @@
       "verification": "British Library Add MS 43725, ff. 200r–347v; Codex Sinaiticus Project, contenido y transmisión.",
       "verificationUrl": "https://codexsinaiticus.org.uk/en/codex/content.aspx",
       "dateStart": 301,
-      "dateStartBasis": "Cota cronológica aproximada del siglo IV; no se afirma fecha de producción exacta."
+      "dateStartBasis": "Cota cronológica aproximada del siglo IV; no se afirma fecha de producción exacta.",
+      "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic"
     },
     {
       "id": "alexandrinus-nt-clement",
@@ -549,7 +580,8 @@
       "verification": "British Library Archives and Manuscripts Catalogue, Royal MS 1 D VIII, contenido folio a folio.",
       "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002353500",
       "dateStart": 401,
-      "dateStartBasis": "Cota inicial indicativa del siglo V; no es datación exacta."
+      "dateStartBasis": "Cota inicial indicativa del siglo V; no es datación exacta.",
+      "canonicalPhysicalId": "codex-alexandrinus-nt-clement"
     },
     {
       "id": "frontinus-strategemata-harley2666",
@@ -570,7 +602,8 @@
       "verification": "British Library, Harley MS 2666, ficha institucional, consulta verificada 2026-11-10; bibliografía en el catálogo, Reynolds 1983, pp. 171–172",
       "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002048497",
       "earliestAttestationStatus": "oldest_known_extant_copy_in_institutional_catalogue",
-      "rights": "Conservar créditos y términos de la British Library; el enlace no transfiere derechos de reproducción"
+      "rights": "Conservar créditos y términos de la British Library; el enlace no transfiere derechos de reproducción",
+      "canonicalPhysicalId": "codex-frontinus-strategemata-harley2666"
     },
     {
       "id": "didache-poxy-xv-1782",
@@ -650,7 +683,8 @@
           "status": "verified_item_page"
         }
       ],
-      "witnessKind": "direct_original_greek"
+      "witnessKind": "direct_original_greek",
+      "canonicalPhysicalId": "codex-didache-poxy-xv-1782"
     },
     {
       "id": "didache-hierosolymitanus-54",
@@ -711,7 +745,10 @@
       "dependentCopies": [
         "didache-elbasan-82"
       ],
-      "transmissionReference": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/"
+      "transmissionReference": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54",
+      "physicalIdentityEvidence": "https://pinakes.irht.cnrs.fr/",
+      "physicalIdentityNote": "Multiple text-transmission records of a single surviving physical codex; preserve work-specific evidence and foliation."
     },
     {
       "id": "didache-elbasan-82",
@@ -765,7 +802,8 @@
       "copyOf": "didache-hierosolymitanus-54",
       "copyOfStatus": "probable_direct_apograph_according_to_scholarly_study",
       "copyOfVerification": "A. Guida, Un nuovo manoscritto della Didache (2022 [2023]), pp. 49–63; Pinakes bibliography notice",
-      "copyOfUrl": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/"
+      "copyOfUrl": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/",
+      "canonicalPhysicalId": "codex-didache-elbasan-82"
     },
     {
       "library": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -800,7 +838,10 @@
       "siglum": "H (en ediciones de Epistula Barnabae)",
       "folioRange": "ff. 39–51 (Pinakes); 39r–51v (descripción especializada)",
       "coverage": "Texto griego de Epistula Barnabae; testimonio distinto del Codex Sinaiticus, s. IV.",
-      "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54 (H), ff. 39r–51v, 1056."
+      "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54 (H), ff. 39r–51v, 1056.",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54",
+      "physicalIdentityEvidence": "https://pinakes.irht.cnrs.fr/",
+      "physicalIdentityNote": "Multiple text-transmission records of a single surviving physical codex; preserve work-specific evidence and foliation."
     },
     {
       "library": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -835,7 +876,10 @@
       "siglum": "Hieros. 54 (H del códice; cotejar sigla de edición para 1 Clem.)",
       "folioRange": "ff. 51v–70 (Pinakes)",
       "coverage": "Primera carta a los Corintios atribuida a Clemente; CPG 1001; no desplaza a otros testigos griegos más antiguos.",
-      "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54, ff. 51v–70, 1056."
+      "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54, ff. 51v–70, 1056.",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54",
+      "physicalIdentityEvidence": "https://pinakes.irht.cnrs.fr/",
+      "physicalIdentityNote": "Multiple text-transmission records of a single surviving physical codex; preserve work-specific evidence and foliation."
     },
     {
       "library": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -870,7 +914,10 @@
       "siglum": "Hieros. 54 (sigla de códice; no confundir con atribución de la obra)",
       "folioRange": "ff. 70–76 (Pinakes)",
       "coverage": "Texto griego tradicionalmente denominado 2 Clemente, pero de autor anónimo; CPG 1003; distinguir del Codex Alexandrinus, s. V, con cobertura incompleta.",
-      "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54, ff. 70–76, 1056."
+      "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54, ff. 70–76, 1056.",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54",
+      "physicalIdentityEvidence": "https://pinakes.irht.cnrs.fr/",
+      "physicalIdentityNote": "Multiple text-transmission records of a single surviving physical codex; preserve work-specific evidence and foliation."
     },
     {
       "library": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -905,7 +952,10 @@
       "siglum": "H en repertorios de la recensión larga; no extrapolar a la recensión media",
       "folioRange": "ff. 81r–120r (recensión larga; carta de María y respuestas incluidas; Helsinki); Pinakes resume ff. 82–120",
       "coverage": "Recensión larga griega de las cartas ignacianas. NO es testigo idéntico del corpus de siete cartas de la recensión media; la transmisión es distinta.",
-      "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54, ff. 81r–120r (recensión larga), 1056."
+      "citation": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγίου Τάφου 54, ff. 81r–120r (recensión larga), 1056.",
+      "canonicalPhysicalId": "codex-hierosolymitanus-54",
+      "physicalIdentityEvidence": "https://pinakes.irht.cnrs.fr/",
+      "physicalIdentityNote": "Multiple text-transmission records of a single surviving physical codex; preserve work-specific evidence and foliation."
     },
     {
       "id": "cicero-de-oratore-harley2736",
@@ -950,7 +1000,8 @@
       "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002048567",
       "datingBasis": "British Library: segundo cuarto del siglo IX (825–849); copia atribuida a Lupo de Ferrières hacia 836.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
-      "priorityClaim": "early_witness_not_global_oldest"
+      "priorityClaim": "early_witness_not_global_oldest",
+      "canonicalPhysicalId": "codex-cicero-de-oratore-harley2736"
     },
     {
       "id": "cicero-de-oratore-nls-18-3-16",
@@ -979,7 +1030,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-cicero-de-oratore-nls-18-3-16"
     },
     {
       "id": "caesar-add-ms-10084",
@@ -1019,7 +1071,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-caesar-add-ms-10084"
     },
     {
       "id": "caesar-gallico-harley4834",
@@ -1048,7 +1101,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-caesar-gallico-harley4834"
     },
     {
       "id": "cicero-catilina-add47678",
@@ -1086,7 +1140,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-cicero-catilina-add47678"
     },
     {
       "id": "cicero-catilina-harley2716",
@@ -1122,7 +1177,8 @@
       "verificationUrl": "https://searcharchives.bl.uk/catalog/040-002048547",
       "datingBasis": "British Library: último cuarto del siglo X (975–999), Alemania occidental.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
-      "priorityClaim": "early_witness_not_global_oldest"
+      "priorityClaim": "early_witness_not_global_oldest",
+      "canonicalPhysicalId": "codex-cicero-catilina-harley2716"
     },
     {
       "id": "horace-works-harley2724",
@@ -1157,7 +1213,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-horace-works-harley2724"
     },
     {
       "id": "ovid-fasti-harley2737",
@@ -1189,7 +1246,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-ovid-fasti-harley2737"
     },
     {
       "id": "ovid-fasti-harley2738",
@@ -1220,7 +1278,8 @@
           "type": "catalog_collection",
           "status": "verified_catalogue_results"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-ovid-fasti-harley2738"
     },
     {
       "id": "pliny-naturalis-bamberg42",
@@ -1258,7 +1317,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-pliny-naturalis-bamberg42"
     },
     {
       "id": "pliny-naturalis-harley2676",
@@ -1288,7 +1348,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-pliny-naturalis-harley2676"
     },
     {
       "id": "livy-pal-lat24-palimp",
@@ -1327,7 +1388,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-livy-pal-lat24-palimp"
     },
     {
       "id": "livy-verona-palimp",
@@ -1359,7 +1421,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-livy-verona-palimp"
     },
     {
       "id": "livy-pal-lat878",
@@ -1390,7 +1453,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-livy-pal-lat878"
     },
     {
       "id": "livy-pal-lat873",
@@ -1419,7 +1483,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-livy-pal-lat873"
     },
     {
       "id": "quintilian-harley2664",
@@ -1450,7 +1515,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-quintilian-harley2664"
     },
     {
       "id": "quintilian-burney244",
@@ -1480,7 +1546,8 @@
           "type": "catalog",
           "status": "verified_item_page"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-quintilian-burney244"
     },
     {
       "id": "herodotus-laur-plut70-3",
@@ -1516,7 +1583,8 @@
           "url": "https://pinakes.irht.cnrs.fr/notices/cote/16568/",
           "status": "catalogue"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-herodotus-laur-plut70-3"
     },
     {
       "id": "herodotus-laur-plut70-32",
@@ -1551,7 +1619,8 @@
           "url": "https://iiif.biblissima.fr/collections/manifest/c6a20f9dcfdd1f5a7110d3f909ea4fc6a432022e",
           "status": "catalogue"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-herodotus-laur-plut70-32"
     },
     {
       "id": "thucydides-laur-plut69-2",
@@ -1587,7 +1656,8 @@
           "url": "https://pinakes.irht.cnrs.fr/notices/cote/16529/",
           "status": "catalogue"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-thucydides-laur-plut69-2"
     },
     {
       "id": "hesiod-theogony-suppl-gr1099",
@@ -1623,7 +1693,8 @@
           "url": "https://iiif.biblissima.fr/collections/manifest/eec0b144514155ac2debf3a3a455f5a6a90dcbc6",
           "status": "catalogue"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-hesiod-theogony-suppl-gr1099"
     },
     {
       "id": "hesiod-works-bnf2708",
@@ -1660,7 +1731,8 @@
           "url": "https://pinakes.irht.cnrs.fr/notices/cote/52343/",
           "status": "catalogue"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-hesiod-works-bnf2708"
     },
     {
       "id": "aristotle-poetics-paris-gr1741",
@@ -1694,7 +1766,8 @@
           "url": "https://pinakes.irht.cnrs.fr/notices/cote/51367/",
           "status": "catalogue"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-aristotle-poetics-paris-gr1741"
     },
     {
       "id": "horace-harley3997",
@@ -1720,7 +1793,8 @@
       "language": "la",
       "rights": "Consultar los derechos de las imágenes en el proveedor original.",
       "dateStartBasis": "Año aproximado de ordenación, no fecha exacta.",
-      "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global."
+      "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global.",
+      "canonicalPhysicalId": "codex-horace-harley3997"
     },
     {
       "id": "strabo-bnf-grec1393",
@@ -1744,7 +1818,8 @@
       "language": "grc",
       "rights": "Consultar los derechos de las imágenes en el proveedor original.",
       "dateStartBasis": "Año aproximado de ordenación, no fecha exacta.",
-      "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global."
+      "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global.",
+      "canonicalPhysicalId": "codex-strabo-bnf-grec1393"
     },
     {
       "id": "juvenal-harley2772",
@@ -1767,7 +1842,8 @@
       "language": "la",
       "rights": "Consultar los derechos de las imágenes en el proveedor original.",
       "dateStartBasis": "Año aproximado de ordenación, no fecha exacta.",
-      "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global."
+      "cataloguingStatus": "Registro individual verificable; no constituye demostración del testimonio más antiguo global.",
+      "canonicalPhysicalId": "codex-juvenal-harley2772"
     },
     {
       "id": "didache-coptic-or9271",
@@ -1816,7 +1892,8 @@
           "type": "academic_bibliography",
           "status": "identified"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-didache-coptic-or9271"
     },
     {
       "id": "homer-odyssey-laur-plut32-24",
@@ -1853,7 +1930,8 @@
           "url": "https://cdm21059.contentdm.oclc.org/iiif/plutei:735325/manifest.json",
           "type": "iiif"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-24"
     },
     {
       "id": "homer-odyssey-heidelberg-cpg45",
@@ -1891,7 +1969,8 @@
           "url": "https://iiif.biblissima.fr/collections/manifest/65a6a766bf90f053758b546ac44f29f074a32057",
           "type": "catalog"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-homer-odyssey-heidelberg-cpg45"
     },
     {
       "id": "homer-odyssey-laur-plut32-23",
@@ -1923,7 +2002,8 @@
           "url": "https://iiif.biblissima.fr/collections/manifest/6045dff3bafa36133d66808966041fc118746e54",
           "type": "catalog"
         }
-      ]
+      ],
+      "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-23"
     },
     {
       "id": "ovid-ars-parisinus-lat7311",
@@ -1945,7 +2025,8 @@
       "cataloguingStatus": "Identificación, contenido y datación avalados por bibliografía académica; enlace dirige al estudio, NO a un visor institucional ni a ficha BnF. Antigüedad mundial no declarada de manera exclusiva.",
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "one_of_earliest_documented_witnesses",
-      "rights": "No se alojan reproducciones; consultar derechos de BnF."
+      "rights": "No se alojan reproducciones; consultar derechos de BnF.",
+      "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311"
     },
     {
       "id": "ovid-ars-bodleian-auct-f4-32",
@@ -1966,7 +2047,8 @@
       "cataloguingStatus": "Signatura y datación documentadas por bibliografía secundaria. Falta sustituir enlace por registro institucional individual de Bodleian; NO se atribuye visor IIIF.",
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "one_of_earliest_documented_witnesses",
-      "rights": "Bodleian Libraries; consultar condiciones institucionales."
+      "rights": "Bodleian Libraries; consultar condiciones institucionales.",
+      "canonicalPhysicalId": "codex-ovid-ars-bodleian-auct-f4-32"
     },
     {
       "id": "apuleius-laurentianus-68-2",
@@ -1988,7 +2070,10 @@
       "cataloguingStatus": "Testimonio fundamental F acreditado por investigación textual especializada. URL enlaza estudio universitario, no facsímil ni catálogo individual. No se afirma ser el manuscrito absoluto más antiguo de todos los escritos de Apuleyo.",
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "earliest_principal_surviving_witness_in_studied_tradition",
-      "rights": "No se han incorporado imágenes."
+      "rights": "No se han incorporado imágenes.",
+      "canonicalPhysicalId": "codex-laur-plut-68-2",
+      "physicalIdentityEvidence": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
+      "physicalIdentityNote": "Multiple text-transmission records of a single surviving physical codex; preserve work-specific evidence and foliation."
     },
     {
       "id": "apuleius-laurentianus-29-2",
@@ -2010,7 +2095,8 @@
       "cataloguingStatus": "Testimonio de control dependiente de F, no códice más antiguo. Enlace a publicación académica, no al visor institucional.",
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "later_copy",
-      "rights": "No se han incorporado imágenes."
+      "rights": "No se han incorporado imágenes.",
+      "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2"
     },
     {
       "id": "sophocles-aeschylus-laurentianus-32-9",
@@ -2046,7 +2132,8 @@
       "cataloguingStatus": "Signatura, contenido y foliación contrastados con repertorios académicos (10-11-2026); fuente señala imágenes digitales Laurenziana pero no se adjudica un visor directo sin comprobar su dirección. No se infiere que todos los fragmentos griegos más antiguos estén reunidos aquí.",
       "verificationLevel": "scholarly_catalogue_checked_2026-11-10",
       "priorityClaim": "oldest_extensive_medieval_witness_for_sophocles_and_aeschylus",
-      "rights": "Biblioteca Medicea Laurenziana: consultar derechos de digitalización."
+      "rights": "Biblioteca Medicea Laurenziana: consultar derechos de digitalización.",
+      "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
     },
     {
       "id": "aristophanes-ravennas-429",
@@ -2076,7 +2163,8 @@
       "cataloguingStatus": "Confirmado por institución propietaria y bibliografía especializada (10-11-2026). La página institucional no es un visor folio a folio; no se inventa enlace IIIF.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "oldest_extensive_medieval_witness_for_aristophanes",
-      "rights": "Biblioteca Classense: verificar licencia de imágenes."
+      "rights": "Biblioteca Classense: verificar licencia de imágenes.",
+      "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
     },
     {
       "id": "euripides-laurentianus-32-2",
@@ -2106,7 +2194,8 @@
       "cataloguingStatus": "Ficha académica de investigación contrastada (10-11-2026). Registro enlaza inventario científico, no imágenes institucionales. Para Bacchae el códice L cesa en verso 755 y debe cotejarse P (Palatinus gr. 287).",
       "verificationLevel": "scholarly_catalogue_checked_2026-11-10",
       "priorityClaim": "principal_late_medieval_witness_not_global_oldest",
-      "rights": "Biblioteca Medicea Laurenziana: verificar licencias."
+      "rights": "Biblioteca Medicea Laurenziana: verificar licencias.",
+      "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
     },
     {
       "id": "aristotle-parisinus-gr1853",
@@ -2132,7 +2221,8 @@
       "cataloguingStatus": "Registro individual, localizaciones de Física, Metafísica y Ética cotejados con Pinakes. Para De anima existen recensiones divergentes; la prioridad textual requiere atención al pasaje y a las correcciones. No atribuir visor IIIF sin confirmar URL.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "early_manuscript_not_uniquely_oldest",
-      "rights": "BnF: respetar condiciones de uso de imágenes."
+      "rights": "BnF: respetar condiciones de uso de imágenes.",
+      "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
     },
     {
       "id": "aristotle-parisinus-gr1741",
@@ -2156,7 +2246,8 @@
       "cataloguingStatus": "Confirmado por catálogo de códice y entradas de contenido de Pinakes; no se presenta como el único testimonio antiguo ni se inventa enlace a facsímil.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "early_medieval_witness",
-      "rights": "BnF: derechos de reproducción sujetos a comprobación."
+      "rights": "BnF: derechos de reproducción sujetos a comprobación.",
+      "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741"
     },
     {
       "id": "aristotle-vatgr1298-politics",
@@ -2177,7 +2268,8 @@
       "cataloguingStatus": "Referencia secundaria académica a la signatura y al testimonio del siglo X; pendiente ficha individual Vatican para precisar folios y enlace digital. No se afirma prioridad absoluta.",
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "early_fragmentary_palimpest",
-      "rights": "Sin imágenes incorporadas."
+      "rights": "Sin imágenes incorporadas.",
+      "canonicalPhysicalId": "codex-aristotle-vatgr1298-politics"
     },
     {
       "id": "ptolemy-almagest-vatgr1594",
@@ -2199,7 +2291,8 @@
       "cataloguingStatus": "Signatura, contenido y fecha corroborados en Pinakes y fuentes académicas. Comparar con Parisinus gr. 2389, también s. IX; no atribuir exclusividad.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "one_of_two_earliest_greek_manuscripts",
-      "rights": "Biblioteca Apostolica Vaticana: condiciones institucionales para imágenes."
+      "rights": "Biblioteca Apostolica Vaticana: condiciones institucionales para imágenes.",
+      "canonicalPhysicalId": "codex-ptolemy-almagest-vatgr1594"
     },
     {
       "id": "ptolemy-almagest-paris2389",
@@ -2220,7 +2313,8 @@
       "cataloguingStatus": "Fuente secundaria revisada; la URL es un estudio académico, no una ficha individual BnF ni visor; verificar folios y datación exacta.",
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "one_of_two_earliest_greek_manuscripts",
-      "rights": "No se reproduce material."
+      "rights": "No se reproduce material.",
+      "canonicalPhysicalId": "codex-ptolemy-almagest-paris2389"
     },
     {
       "id": "ptolemy-geography-urbgr82",
@@ -2244,7 +2338,8 @@
       "cataloguingStatus": "DIVERGENCIA explícita: ficha institucional describe XI, estudios paleográficos actuales c. 1300; no usar dateStart como certeza cronológica. Revisar el debate antes de afirmar prioridad. Visor y IIIF institucional confirmados.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "important_early_illustrated_codex_not_oldest_certified",
-      "rights": "DigiVatLib: imágenes para estudio personal; publicación y uso online requieren autorización."
+      "rights": "DigiVatLib: imágenes para estudio personal; publicación y uso online requieren autorización.",
+      "canonicalPhysicalId": "codex-ptolemy-geography-urbgr82"
     },
     {
       "id": "sallust-paris16024",
@@ -2267,7 +2362,8 @@
       "cataloguingStatus": "Manuscrito y datación documentados mediante introducción crítica; URL no es ficha individual BnF, pendiente contraste directo de signatura y folios.",
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "early_medieval_witness_not_oldest_certified",
-      "rights": "Sin imágenes incorporadas."
+      "rights": "Sin imágenes incorporadas.",
+      "canonicalPhysicalId": "codex-sallust-paris16024"
     },
     {
       "id": "sallust-paris16025",
@@ -2290,7 +2386,8 @@
       "cataloguingStatus": "Identidad y fecha por edición crítica secundaria, no ficha institucional individual; prioridad y estado material por confirmar.",
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "early_medieval_witness_not_oldest_certified",
-      "rights": "Sin imágenes incorporadas."
+      "rights": "Sin imágenes incorporadas.",
+      "canonicalPhysicalId": "codex-sallust-paris16025"
     },
     {
       "id": "isidore-stgall-1394-fragment",
@@ -2314,7 +2411,8 @@
       "cataloguingStatus": "Catalogado por institución y Earlier Latin Manuscripts; uno de los fragmentos tempranos documentados, NO probado como el más antiguo del mundo.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "early_fragment_not_absolute_oldest",
-      "rights": "e-codices: revisar licencia de la imagen antes de reproducción."
+      "rights": "e-codices: revisar licencia de la imagen antes de reproducción.",
+      "canonicalPhysicalId": "codex-isidore-stgall-1394-fragment"
     },
     {
       "id": "isidore-stgall-233",
@@ -2337,7 +2435,8 @@
       "cataloguingStatus": "Testimonio carolingio temprano, de cobertura parcial; visor digital y manifest identificados. No se equipara con los veinte libros completos.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "early_partial_codex_not_global_oldest",
-      "rights": "e-codices / Stiftsbibliothek St. Gallen; licencia indicada CC BY-NC 4.0 en agregador."
+      "rights": "e-codices / Stiftsbibliothek St. Gallen; licencia indicada CC BY-NC 4.0 en agregador.",
+      "canonicalPhysicalId": "codex-isidore-stgall-233"
     },
     {
       "id": "isidore-stgall-231",
@@ -2362,7 +2461,8 @@
       "cataloguingStatus": "Digitalización y catálogo institucional confirmados, con DOI 10.5076/e-codices-csg-0231. Datación 880–890. No confundir páginas digitalizadas y folios.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "later_partial_carolingian_codex",
-      "rights": "e-codices: revisar términos para cualquier reproducción comercial."
+      "rights": "e-codices: revisar términos para cualquier reproducción comercial.",
+      "canonicalPhysicalId": "codex-isidore-stgall-231"
     },
     {
       "id": "boethius-harley-2685",
@@ -2385,7 +2485,8 @@
       "cataloguingStatus": "Signatura, fecha y folios acreditados en búsqueda institucional individualizada; URL proporcionada es página de resultados, no ficha individual ni manifest IIIF. No se declara el más antiguo sin comparar todos los testigos.",
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "early_medieval_witness_not_absolute_oldest",
-      "rights": "British Library; digitalización y reproducción sujetas a condiciones."
+      "rights": "British Library; digitalización y reproducción sujetas a condiciones.",
+      "canonicalPhysicalId": "codex-boethius-harley-2685"
     },
     {
       "id": "xenophon-anabasis-vatgr1335",
@@ -2410,7 +2511,8 @@
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "early_manuscript_in_register_not_absolute_oldest",
       "cataloguingStatus": "Datación específica de la unidad copiada c. 960 y folios contrastados en Pinakes. El siglum depende de edición; ningún visor IIIF no comprobado se añade.",
-      "rights": "Biblioteca Apostolica Vaticana; revisar licencia antes de reproducir."
+      "rights": "Biblioteca Apostolica Vaticana; revisar licencia antes de reproducir.",
+      "canonicalPhysicalId": "codex-xenophon-anabasis-vatgr1335"
     },
     {
       "id": "xenophon-anabasis-paris1640",
@@ -2433,7 +2535,8 @@
       "verificationLevel": "scholarly_catalogue_checked_2026-11-10",
       "priorityClaim": "later_important_witness_not_oldest",
       "cataloguingStatus": "Registro de obra de Pinakes; no se atribuye digitalización oficial no comprobada.",
-      "rights": "BnF: condiciones de uso de imágenes."
+      "rights": "BnF: condiciones de uso de imágenes.",
+      "canonicalPhysicalId": "codex-xenophon-anabasis-paris1640"
     },
     {
       "id": "xenophon-hellenica-paris1738",
@@ -2458,7 +2561,8 @@
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "important_witness_not_global_oldest",
       "cataloguingStatus": "Foliación y lagunas comprobadas contra Pinakes; el origen paleográfico concreto no está establecido.",
-      "rights": "BnF: revisar condiciones de Gallica."
+      "rights": "BnF: revisar condiciones de Gallica.",
+      "canonicalPhysicalId": "codex-xenophon-hellenica-paris1738"
     },
     {
       "id": "demosthenes-paris2934",
@@ -2482,7 +2586,8 @@
       "verificationLevel": "secondary_scholarly_source_checked_2026-11-10",
       "priorityClaim": "one_of_earliest_medieval_witnesses",
       "cataloguingStatus": "Fuente de investigación asocia discursos 1–4, 18 y colección al manuscrito S. La foliación individual de las dos obras queda pendiente, no se inventa visor.",
-      "rights": "BnF: consultar licencia antes de usar reproducciones."
+      "rights": "BnF: consultar licencia antes de usar reproducciones.",
+      "canonicalPhysicalId": "codex-demosthenes-paris2934"
     },
     {
       "id": "pindar-vatgr1312",
@@ -2508,7 +2613,8 @@
       "verificationLevel": "institutional_catalogue_checked_2026-11-10",
       "priorityClaim": "early_witness_not_proven_absolute_oldest",
       "cataloguingStatus": "Datos directos de Pinakes; no se confunde con códice completo ni se presupone prioridad universal.",
-      "rights": "Vatican Library: comprobar autorización de reproducción."
+      "rights": "Vatican Library: comprobar autorización de reproducción.",
+      "canonicalPhysicalId": "codex-pindar-vatgr1312"
     },
     {
       "id": "pindar-ambros-c222inf",
@@ -2538,7 +2644,8 @@
       "verificationLevel": "scholarly_catalogue_checked_2026-11-10",
       "priorityClaim": "later_anthology_with_scholarly_described_lacunae",
       "cataloguingStatus": "Datos de unidad codicológica, reconstrucción de cuadernos y restauración contrastados en University of Pavia.",
-      "rights": "Biblioteca Ambrosiana: verificar derechos y enlaces a imágenes."
+      "rights": "Biblioteca Ambrosiana: verificar derechos y enlaces a imágenes.",
+      "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
     }
   ],
   "editions": [
