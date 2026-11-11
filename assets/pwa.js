@@ -5,7 +5,13 @@
 if(window.top!==window.self||!("serviceWorker" in navigator))return;
 if(!(location.protocol==="https:"||location.hostname==="localhost"||location.hostname==="127.0.0.1"))return;
 const me=document.currentScript?.src||"";const root=me.replace(/assets\/pwa\.js.*$/,"");
-const register=()=>navigator.serviceWorker.register(root+"sw.js",{scope:root}).catch(()=>{});
+const register=()=>navigator.serviceWorker.register(root+"sw.js",{scope:root}).then(()=>{
+ /* El worker ya no precarga las páginas grandes al instalarse: competía con la
+    primera carga. Se le pide que lo haga cuando el navegador queda libre. */
+ const warm=()=>navigator.serviceWorker.ready.then(reg=>reg.active&&reg.active.postMessage({type:"vitruvia:warm-shell"})).catch(()=>{});
+ if(typeof requestIdleCallback==="function")requestIdleCallback(warm,{timeout:6000});
+ else setTimeout(warm,4000);
+}).catch(()=>{});
 if(document.readyState==="complete")register();else window.addEventListener("load",register,{once:true});
 const standalone=()=>window.matchMedia?.("(display-mode: standalone)").matches||navigator.standalone===true;
 const name=location.pathname.endsWith("vitruvia.html")?"Vitruvia":"Vitruvius";

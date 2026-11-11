@@ -11,7 +11,27 @@ const SHELL="shell-"+VERSION,PAGES="pages-"+VERSION,DATA="data-"+VERSION,LEXDATA
 const CORE=["./","index.html","offline.html","vitruvia.html","lector-bilingue.html","bibliotheca-graeca-latina.html","classics-text-reader.html","termino.html","laboratorio-humanidades.html","mapa-general.html",
  "manifest.webmanifest","vitruvia.webmanifest","instalar-apps.html","assets/app-icons/vitruvia-192.png","assets/app-icons/vitruvia-512.png","assets/app-icons/vitruvia-apple-touch-icon.png","assets/favicon.svg","assets/app-icons/icon-192.png","assets/app-icons/icon-512.png","assets/pwa.js"];
 const MEDIA_LIMIT=400;
-self.addEventListener("install",e=>{e.waitUntil(caches.open(SHELL).then(c=>Promise.allSettled(CORE.map(u=>c.add(new Request(u,{cache:"reload"}))))).then(()=>self.skipWaiting()))});
+/* La instalación sólo guarda lo que hace falta para responder sin conexión:
+   la página de cortesía, los manifiestos y los iconos. Precargar además las
+   diez páginas grandes con cache:"reload" costaba 502 KB en 20 peticiones
+   que competían con la carga que el lector estaba esperando —parte de los
+   ocho segundos de apertura—. El resto se guarda en el primer rato libre
+   después de la primera navegación, y si falla no pasa nada: la estrategia
+   de red con copia de respaldo lo cubre. */
+const INSTALL_CORE=["offline.html","manifest.webmanifest","vitruvia.webmanifest","assets/favicon.svg","assets/pwa.js"];
+const LATER_CORE=CORE.filter(u=>!INSTALL_CORE.includes(u));
+self.addEventListener("install",e=>{e.waitUntil(caches.open(SHELL).then(c=>Promise.allSettled(INSTALL_CORE.map(u=>c.add(new Request(u,{cache:"reload"}))))).then(()=>self.skipWaiting()))});
+async function warmShell(){
+ const cache=await caches.open(SHELL);
+ for(const url of LATER_CORE){
+  if(await cache.match(url))continue;
+  try{await cache.add(new Request(url));}catch{}
+  await new Promise(r=>setTimeout(r,250));   // de a uno, sin acaparar la red
+ }
+}
+self.addEventListener("message",event=>{
+ if(event.data&&event.data.type==="vitruvia:warm-shell")event.waitUntil(warmShell());
+});
 self.addEventListener("activate",e=>{e.waitUntil((async()=>{
  const keep=new Set([SHELL,PAGES,DATA,LEXDATA,STATIC,MEDIA]);
  for(const k of await caches.keys())if(/^(shell|pages|data|lexdata|static|media)-vdl-/.test(k)&&!keep.has(k))await caches.delete(k);
