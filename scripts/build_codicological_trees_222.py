@@ -60,7 +60,7 @@ def build(catalog, manuscript_register, old=None):
         for m in manuscripts:
             siglum = m.get("siglum")
             witnesses.append({
-                "id": m["id"], "type": "physical_witness",
+                "id": m["id"], "canonicalPhysicalId": m.get("canonicalPhysicalId") or "codex-" + m["id"], "type": "physical_witness",
                 "label": f"{siglum} · {m.get('shelfmark')}" if siglum else (m.get("shelfmark") or m["id"]),
                 "repository": m.get("library"),
                 "dating": m.get("date"), "material": m.get("material"),
@@ -119,7 +119,7 @@ def build(catalog, manuscript_register, old=None):
         records.append(record)
     return {
         "schema": "vitruvius-codicological-trees-222-v1",
-        "count": len(records), "physicalWitnessCount": len(codices),
+        "count": len(records), "physicalWitnessCount": len({m.get("canonicalPhysicalId") or "codex-" + m["id"] for m in codices}), "textualWitnessRecordCount": len(codices),
         "interpretation": ("Work-to-manuscript links are attestations; ancestry is explicit and "
                            "source-backed. No unidentified archetypes are invented."),
         "method": "Physical witness IDs are stable across works; recensiones require scholarship.",
