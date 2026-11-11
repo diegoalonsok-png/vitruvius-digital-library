@@ -5,6 +5,7 @@
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {Script} from "node:vm";
+import {assertStylesheet} from "./lib/stylesheet-loaded.mjs";
 const sourceFile=name=>readFileSync(new URL("../"+name,import.meta.url),"utf8");
 const modules=[
  "assets/vitruvia-image-engine-v2.js",
@@ -28,8 +29,12 @@ const liveLayout=sourceFile("assets/vitruvia-reading-layout-repair.css");
 const originalContextStyles=sourceFile("assets/vitruvia-context-panel.css");
 const editorialStyles=sourceFile("assets/vitruvia-discovery.css");
 const serviceWorker=sourceFile("sw.js");
-assert.ok(vitruviaHTML.includes("assets/vitruvia-reading-layout-repair.css?v=20261107-singlecolumn-2"),
- "Final single-column search stylesheet must be loaded and cache-busted");
+/* La hoja puede llegar por enlace directo o dentro de un paquete generado por
+   scripts/build-style-bundles.mjs; lo que se exige es que llegue y que lleve
+   huella de versión, no una cadena concreta: la del paquete se calcula sobre
+   su contenido. */
+assertStylesheet(assert,vitruviaHTML,"assets/vitruvia-reading-layout-repair.css",
+ "Hoja final de búsqueda en una columna");
 assert.ok(!/<script\b[^>]*src=["'][^"']*multilingual-academic-search\.js/i.test(vitruviaHTML),
  "Unfinished multilingual philology panel must not be mounted in Vitruvia");
 assert.ok(liveLayout.includes("body.vitruvia-reading #results .results-grid"),
@@ -54,7 +59,11 @@ for(const needle of [
  "assets/vitruvia-entity-resolver.js",
  "assets/vitruvia-search.js",
  "assets/vitruvia-reading.css"
-])assert.ok(vitruviaHTML.includes(needle),"Missing main asset: "+needle);
+]){
+ /* Una hoja de estilo puede llegar dentro de un paquete; un script, no. */
+ if(needle.endsWith(".css"))assertStylesheet(assert,vitruviaHTML,needle,"Activo principal");
+ else assert.ok(vitruviaHTML.includes(needle),"Missing main asset: "+needle);
+}
 assert.ok(bibliothecaHTML.includes("assets/bibliotheca-simple.js"),
  "Bibliotheca must use its minimal word/phrase concordance script");
 assert.ok(bibliothecaHTML.includes('id="classic-query"')&&bibliothecaHTML.includes('id="classic-work"'),
@@ -111,8 +120,11 @@ assert.match(readerLayout,/body\.vitruvia-reading #vitruvia-article #article-bod
 const imageEngineBundle=vitruviaHTML.match(/vitruvia-image-engine-v2\.js\?v=([^"']+)/)?.[1]||"";
 assert.ok(/^2026\d{4}-/.test(imageEngineBundle)&&imageEngineBundle!=="20261107-gallery-v4",
  "Image gallery must load an updated cache-busted engine after the latest repair");
-assert.match(vitruviaHTML,/vitruvia-full-width-reading\.css\?v=20261107-wide-v3/,
- "Layout repair must invalidate the old cached stylesheet");
+/* Lo que garantiza que no se sirva una copia vieja es la huella del enlace que
+   entrega la hoja; dentro de un paquete, esa huella es la del paquete y cambia
+   sola cuando cambia cualquiera de sus hojas. */
+assertStylesheet(assert,vitruviaHTML,"assets/vitruvia-full-width-reading.css",
+ "Reparación de disposición");
 assert.match(images,/dialog\.showModal\(\)/,"Large-image viewer absent");
 assert.match(images,/items\.slice\(0,150\)/,"Bulk gallery limit is missing");
 assert.match(images,/info\.extmetadata\?\.LicenseShortName/,"Image licensing metadata absent");

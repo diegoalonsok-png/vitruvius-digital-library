@@ -96,7 +96,34 @@ const WELCOME_I18N={
 const T=()=>I18N[S.lang]||I18N.es;
 function related(q){const set=new Set(words(q));const n=norm(q);for(const [key,terms] of Object.entries(lex))if(n.includes(key)||words(terms).some(w=>n.includes(w)))for(const w of words(terms))set.add(w);return [...set].slice(0,48)}
 /* Word-aware ranking: "auto" must not match "autor"; phrase matches outrank loose terms. */
-function hasTerm(hay,term){const h=" "+norm(hay)+" ",t=" "+norm(term)+" ";return !!t.trim()&&h.includes(t)}
+/* Memoria de raices por texto: una misma ficha se compara con varios terminos
+   de la consulta, y recortar sus palabras una sola vez evita repetir trabajo. */
+const stemMemo=new Map();
+function stemsOf(text){
+ let set=stemMemo.get(text);
+ if(set)return set;
+ const philology=window.VitruviaPhilology;
+ set=new Set();
+ if(philology)for(const word of text.split(" "))if(word.length>=5){const root=philology.stem(word);if(root&&root.length>=4)set.add(root)}
+ stemMemo.set(text,set);
+ if(stemMemo.size>3000)stemMemo.delete(stemMemo.keys().next().value);
+ return set;
+}
+/* Coincidencia por palabra. Primero literal; si no la hay, se admite la misma
+   familia flexiva, que es lo que hacia que «symmetriae» no encontrara
+   «symmetria». Solo para palabras de cinco letras o mas: por debajo de eso el
+   recorte confunde palabras distintas. */
+function hasTerm(hay,term){
+ const h=" "+norm(hay)+" ",t=" "+norm(term)+" ";
+ if(!t.trim())return false;
+ if(h.includes(t))return true;
+ const philology=window.VitruviaPhilology;
+ if(!philology)return false;
+ const single=norm(term);
+ if(single.length<5||single.includes(" "))return false;
+ const root=philology.stem(single);
+ return !!root&&root.length>=4&&stemsOf(norm(hay)).has(root);
+}
 function score(s,q,expand=false){
  const txt=norm(s),n=norm(q);if(!n||!txt)return 0;
  const queryWords=words(q),unique=[...new Set(queryWords)];
@@ -399,6 +426,28 @@ function liveBooks(q,concept){return S.works.map(w=>{
  }).filter(x=>x.baseRating>2).sort((a,b)=>b.rating-a.rating).slice(0,90)} // la bonificación por texto local o códice no basta sin coincidencia real
 
 function livePages(q,concept){return S.pages.map(p=>({type:"section",title:p.title,excerpt:p.description,meta:"Documento HTML · GitHub Pages",rating:score(p.title+" "+p.description+" "+p.path,q,concept),link:p.path})).filter(x=>x.rating>2)}
+/* Variantes del nombre tomadas del catalogo del sitio: las obras con alias son
+   datos editados, no conjeturas ortograficas. Se construye una sola vez,
+   cuando el catalogo ya esta cargado; antes devuelve null y la expansion
+   trabaja solo con sus reglas. */
+function onomastica(){
+ if(S.onomasticaTable)return S.onomasticaTable;
+ if(!S.works||!S.works.length)return null;
+ const table=Object.create(null);
+ const add=(key,value)=>{
+  const k=norm(key);
+  if(!k||!value)return;
+  if(!table[k])table[k]=[];
+  if(!table[k].includes(value))table[k].push(value);
+ };
+ for(const work of S.works){
+  const names=[work.author,work.title,...(work.aliases||[])].filter(Boolean);
+  for(const name of names)for(const other of names)if(name!==other)add(name,other);
+ }
+ S.onomasticaTable=table;
+ return table;
+}
+
 async function fetchJSON(url,ms=9000,signal){if(window.VitruviaData){const local=new URL(url,location.href).origin===location.origin;return local?window.VitruviaData.json(url,{timeoutMs:ms}):window.VitruviaData.remoteJSON(url,{timeoutMs:ms,signal})}const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),ms);try{const r=await fetch(url,{signal:controller.signal,headers:{"Accept":"application/json"}});if(!r.ok)throw Error("HTTP "+r.status+" · "+new URL(url).host);const d=await r.json();if(d.error)throw Error(d.error.info||d.error.code);return d}finally{clearTimeout(timer)}}
 /* Recuentos precalculados: se muestran de inmediato y quedan rotulados como
    instantánea. En cuanto llega el índice vivo, showCatalogueMetric los

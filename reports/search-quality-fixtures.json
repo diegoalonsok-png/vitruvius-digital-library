@@ -1,0 +1,277 @@
+{
+  "schema": "vitruvius-search-quality-fixture-report-v1",
+  "generated": "2026-11-11T23:23:09.017Z",
+  "disclaimer": "Auditoría de pasajes documentados y su fuente en un subconjunto manual. No mide ranking ni latencia del buscador en vivo; no es comparación experimental con Perseus, Logeion, Google o Bing.",
+  "total": 19,
+  "passed": 19,
+  "failed": 0,
+  "passRate": 1,
+  "documentedSourceRate": 1,
+  "distinctWorks": 6,
+  "languages": [
+    "en",
+    "es",
+    "fr",
+    "grc",
+    "la"
+  ],
+  "byPhenomenon": {
+    "opening": {
+      "passed": 2,
+      "total": 2
+    },
+    "translation": {
+      "passed": 8,
+      "total": 8
+    },
+    "named-entity": {
+      "passed": 1,
+      "total": 1
+    },
+    "poetry": {
+      "passed": 1,
+      "total": 1
+    },
+    "poetry-translation": {
+      "passed": 1,
+      "total": 1
+    },
+    "polytonic": {
+      "passed": 2,
+      "total": 2
+    },
+    "diacritic-fold": {
+      "passed": 1,
+      "total": 1
+    },
+    "prose": {
+      "passed": 1,
+      "total": 1
+    },
+    "morphology": {
+      "passed": 1,
+      "total": 1
+    },
+    "critical-edition": {
+      "passed": 1,
+      "total": 1
+    }
+  },
+  "originalIndexCoverage": {
+    "local": 182,
+    "external": 28,
+    "effective": 210,
+    "total": 222
+  },
+  "tests": [
+    {
+      "workId": "caesar-gallico",
+      "language": "la",
+      "locus": "1.1",
+      "query": "Gallia est omnis divisa",
+      "phenomenon": "opening",
+      "status": "pass",
+      "reason": "",
+      "characters": 1299,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "caesar-gallico",
+      "language": "en",
+      "locus": "1.1",
+      "query": "All Gaul is divided",
+      "phenomenon": "translation",
+      "status": "pass",
+      "reason": "",
+      "characters": 1557,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "caesar-gallico",
+      "language": "en",
+      "locus": "1.2",
+      "query": "Orgetorix",
+      "phenomenon": "named-entity",
+      "status": "pass",
+      "reason": "",
+      "characters": 1298,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "virgil-aeneid",
+      "language": "la",
+      "locus": "1.1",
+      "query": "Arma virumque cano",
+      "phenomenon": "opening",
+      "status": "pass",
+      "reason": "",
+      "characters": 314,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "virgil-aeneid",
+      "language": "en",
+      "locus": "1.1",
+      "query": "Arms and the man I sing",
+      "phenomenon": "translation",
+      "status": "pass",
+      "reason": "",
+      "characters": 456,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "virgil-aeneid",
+      "language": "la",
+      "locus": "1.8",
+      "query": "Musa, mihi causas",
+      "phenomenon": "poetry",
+      "status": "pass",
+      "reason": "",
+      "characters": 175,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "virgil-aeneid",
+      "language": "en",
+      "locus": "1.8",
+      "query": "O Muse, the causes tell",
+      "phenomenon": "poetry-translation",
+      "status": "pass",
+      "reason": "",
+      "characters": 214,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "plato-apology",
+      "language": "grc",
+      "locus": "17",
+      "query": "ὦ ἄνδρες Ἀθηναῖοι",
+      "phenomenon": "polytonic",
+      "status": "pass",
+      "reason": "",
+      "characters": 1502,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "plato-apology",
+      "language": "grc",
+      "locus": "17",
+      "query": "ω ανδρες αθηναιοι",
+      "phenomenon": "diacritic-fold",
+      "status": "pass",
+      "reason": "",
+      "characters": 1502,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "plato-apology",
+      "language": "en",
+      "locus": "17",
+      "query": "men of Athens",
+      "phenomenon": "translation",
+      "status": "pass",
+      "reason": "",
+      "characters": 1746,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "language": "la",
+      "locus": "1",
+      "query": "Maior pars mortalium",
+      "phenomenon": "prose",
+      "status": "pass",
+      "reason": "",
+      "characters": 1298,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "language": "es",
+      "locus": "1",
+      "query": "La mayor parte de los hombres",
+      "phenomenon": "translation",
+      "status": "pass",
+      "reason": "",
+      "characters": 1611,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "seneca-de-brevitate",
+      "language": "fr",
+      "locus": "1",
+      "query": "La plupart des mortels",
+      "phenomenon": "translation",
+      "status": "pass",
+      "reason": "",
+      "characters": 886,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "theophrastus-characters",
+      "language": "grc",
+      "locus": "prooem.",
+      "query": "ὦ Πολύκλεις",
+      "phenomenon": "polytonic",
+      "status": "pass",
+      "reason": "",
+      "characters": 1355,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "theophrastus-characters",
+      "language": "grc",
+      "locus": "1",
+      "query": "ἡ μὲν οὖν εἰρωνεία",
+      "phenomenon": "morphology",
+      "status": "pass",
+      "reason": "",
+      "characters": 1360,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "theophrastus-characters",
+      "language": "en",
+      "locus": "1",
+      "query": "The Dissembler",
+      "phenomenon": "translation",
+      "status": "pass",
+      "reason": "",
+      "characters": 1918,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "vitruvius",
+      "language": "la",
+      "locus": "1.praef.1",
+      "query": "Cum divina tua mens",
+      "phenomenon": "critical-edition",
+      "status": "pass",
+      "reason": "",
+      "characters": 496,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "vitruvius",
+      "language": "es",
+      "locus": "1.praef.1",
+      "query": "Cuando tu mente divina",
+      "phenomenon": "translation",
+      "status": "pass",
+      "reason": "",
+      "characters": 612,
+      "hasDeclaredSource": true
+    },
+    {
+      "workId": "vitruvius",
+      "language": "en",
+      "locus": "1.praef.1",
+      "query": "While your divine mind",
+      "phenomenon": "translation",
+      "status": "pass",
+      "reason": "",
+      "characters": 568,
+      "hasDeclaredSource": true
+    }
+  ]
+}

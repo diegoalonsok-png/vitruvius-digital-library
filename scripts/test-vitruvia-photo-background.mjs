@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
+import nodeAssert from "node:assert";
+import {assertStylesheet} from "./lib/stylesheet-loaded.mjs";
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const code=read('assets/vitruvia-photo-background.js');
 const css=read('assets/vitruvia-photo-background.css');
@@ -22,5 +24,5 @@ assert(css.includes('html[data-reading-photo=true] body'),'Visitor photo style m
 assert(css.includes('var(--vr-photo-veil)'),'Photo must have readability overlay');
 assert(css.includes('@media print'),'Printing must not include a background photo by default');
 assert(html.includes('assets/vitruvia-photo-background.js?v=20261104-photo-bg-v1'));
-assert(html.includes('assets/vitruvia-photo-background.css?v=20261104-photo-bg-v1'));
+assertStylesheet(nodeAssert,html,'assets/vitruvia-photo-background.css','Fondo fotográfico');
 console.log('PASS: optional private image backgrounds with safe HTTPS, local upload, overlay and reset');

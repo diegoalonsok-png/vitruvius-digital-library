@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
+import nodeAssert from "node:assert";
+import {assertStylesheet} from "./lib/stylesheet-loaded.mjs";
 const read=name=>readFileSync(new URL('../'+name,import.meta.url),'utf8');
 const js=read('assets/vitruvia-selection-speech.js');
 const css=read('assets/vitruvia-selection-speech.css');
@@ -31,7 +33,7 @@ assert(js.includes("pause.addEventListener('click'"),'Pause/resume button missin
 assert(js.includes("stop.addEventListener('click'"),'Stop button missing');
 assert(js.includes("window.addEventListener('vitruvia:search'")===false||js.includes("['vitruvia:search','vitruvia:clear']"),'Speech must stop on new search');
 assert(css.includes('.vr-selection-speech[hidden]'),'Hidden state must be enforced visually');
-assert(html.includes('assets/vitruvia-selection-speech.css?v=20261104-selected-paragraph-audio-v1'));
+assertStylesheet(nodeAssert,html,'assets/vitruvia-selection-speech.css','Lectura de la selección');
 assert(html.includes('assets/vitruvia-selection-speech.js?v=20261104-selected-paragraph-audio-v1'));
 assert(!js.includes('fetch(')&&!js.includes('XMLHttpRequest'), 'Text-to-speech must not directly transmit selected content');
 console.log('PASS: contextual text-to-speech stays hidden until selection, chunks paragraphs and supports mobile / stop / pause');

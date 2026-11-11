@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
+import nodeAssert from "node:assert";
+import {assertStylesheet} from "./lib/stylesheet-loaded.mjs";
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const js=read('assets/vitruvia-visual-import.js');
 const css=read('assets/vitruvia-visual-import.css');
@@ -42,7 +44,7 @@ assert(js.includes('https://lens.google.com/')&&js.includes('Ningún archivo se 
 assert(css.includes('.vr-visual-panel[hidden]'),'Panel starts hidden');
 assert(page.includes('id="vr-visual-add"')&&page.includes('id="vr-visual-camera"'),'Both icons must be in the real search form');
 assert(page.includes('assets/vitruvia-visual-import.js?v=20261104-private-pdf-v2'));
-assert(page.includes('assets/vitruvia-visual-import.css?v=20261104-private-pdf-v2'));
+assertStylesheet(nodeAssert,page,'assets/vitruvia-visual-import.css','Importación visual');
 const searchForm=page.slice(page.indexOf('<form class="searchform"'),page.indexOf('</form>',page.indexOf('<form class="searchform"')));
 assert(searchForm.includes('id="vr-visual-camera"')&&searchForm.includes('id="vr-visual-add"'),'Icons must be inside form');
 assert(searchForm.indexOf('id="vr-visual-camera"')<searchForm.indexOf('id="submit"'),'Camera must precede submit button');
