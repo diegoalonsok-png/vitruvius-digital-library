@@ -82,7 +82,7 @@ function init(){
  async function loadDocs(){
   cancel();const work=selectedWork();const token=fetchToken;
   cards.replaceChildren();clearViewer();
-  if(!work){status.textContent="Seleccioná una obra o escribí su nombre.";return}
+  if(!work){status.textContent="Selecciona una obra o escribe su nombre.";return}
   status.textContent="Consultando archivos relacionados con «"+work+"»…";
   updateExternal();
   controller=new AbortController();const activeController=controller;
@@ -104,14 +104,14 @@ function init(){
    const keywords=normalize(work).split(/\s+/).filter(w=>w.length>3);
    const rank=x=>(isType(x.title,selected.id)?10:0)+keywords.filter(w=>normalize(x.title).includes(w)).length*3;
    options.sort((a,b)=>rank(b)-rank(a));
-   status.textContent=options.length?options.length+" archivos candidatos de Wikimedia Commons. Verificá la tipología y autoría de cada documento antes de citarlo.":"No se localizaron archivos para esta combinación. Probá otro título o abrí la búsqueda externa.";
+   status.textContent=options.length?options.length+" archivos candidatos de Wikimedia Commons. Verifica la tipología y autoría de cada documento antes de citarlo.":"No se localizaron archivos para esta combinación. Prueba otro título o abre la búsqueda externa.";
    options.slice(0,8).forEach(item=>{
     const card=node("button","vr-ad-card");card.type="button";
     const img=node("img");img.loading="lazy";img.alt=item.title.replace(/^File:/,"");img.src=safeUrl(item.imageinfo[0].thumburl||item.imageinfo[0].url)||"";
     card.append(img,node("span",null,item.title.replace(/^File:/,"")));card.addEventListener("click",()=>showItem(item));cards.append(card);
    });
    if(options.length&&isType(options[0].title,selected.id))showItem(options[0]);
-  }catch(error){if(token===fetchToken)status.textContent="No se pudieron cargar imágenes externas. Podés consultar la fuente mediante el enlace de Wikimedia Commons o abrir un archivo local."}
+  }catch(error){if(token===fetchToken)status.textContent="No se pudieron cargar imágenes externas. Puedes consultar la fuente mediante el enlace de Wikimedia Commons o abrir un archivo local."}
   finally{clearTimeout(timer);if(controller===activeController)controller=null}
  }
  tabs.forEach(b=>b.addEventListener("click",()=>activeTab(b.dataset.type)));
