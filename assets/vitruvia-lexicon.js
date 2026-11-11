@@ -70,7 +70,7 @@ function applyReviewedOCR(corpus,l){
    if(p[0]===work&&String(p[1])===locus&&p[2].includes(from))p[2]=p[2].replace(from,to);
  }
 }
-const L={};
+const L={},residentLanguages={};
 async function lang(l,silent=false){
  if(L[l])return L[l];
  L[l]=(async()=>{
@@ -84,8 +84,9 @@ async function lang(l,silent=false){
   const post=new Map(), freq=new Map(), workFreq=new Map(), workTokens={};
   // Process the full inverted index in small batches so the browser can
   // paint and respond to input rather than freezing during the first search.
+  let sliceStarted=performance.now();
   for(let i=0;i<corpus.passages.length;i++){
-   if(i>0&&i%1500===0)await new Promise(resolve=>setTimeout(resolve,0));
+   if(performance.now()-sliceStarted>8){await new Promise(resolve=>setTimeout(resolve,0));sliceStarted=performance.now();}
    const p=corpus.passages[i];
    const seen=new Set();
    for(const m of p[2].matchAll(TOKEN)){const k=fold(m[0]).replace(/'+$/,"");if(!k)continue;workTokens[p[0]]=(workTokens[p[0]]||0)+1;freq.set(k,(freq.get(k)||0)+1);
@@ -94,10 +95,13 @@ async function lang(l,silent=false){
   }
   const tokens=[...freq.values()].reduce((a,b)=>a+b,0);
   const lemmaForms=new Map();
-  for(const [k,an] of Object.entries(forms.forms))for(const a of an){const lem=a[0];let s=lemmaForms.get(lem);if(!s){s=new Set();lemmaForms.set(lem,s)}s.add(k)}
+  for(const [k,an] of Object.entries(forms.forms)){
+   if(performance.now()-sliceStarted>8){await new Promise(resolve=>setTimeout(resolve,0));sliceStarted=performance.now();}
+   for(const a of an){const lem=a[0];let s=lemmaForms.get(lem);if(!s){s=new Set();lemmaForms.set(lem,s)}s.add(k)}
+  }
   /* Formas del corpus sin análisis también se reconocen como formas. */
   const keys=[...post.keys()];
-  return{l,corpus,forms,post,freq,workFreq,workTokens,tokens,lemmaForms,keys,_trans:null,_variant:null,_lemmaPost:null};
+  return residentLanguages[l]={l,corpus,forms,post,freq,workFreq,workTokens,tokens,lemmaForms,keys,_trans:null,_variant:null,_lemmaPost:null};
  })().catch(err=>{delete L[l];throw err});
  return L[l];
 }
@@ -352,6 +356,9 @@ async function run(push=true){
  if(S.mode==="palabra"&&q.startsWith("=")){q=q.slice(1).trim();$("#lx-q").value=q;}
  // Conservar la forma escrita por el usuario, sin sustitución automática.
  S.q=q;S.page=0;
+ S.result=null;S.sorted=[];++hitsRenderRevision;
+ setState("Buscando la consulta escrita…");
+ $("#lx-state").dataset.query=q;
  // Búsquedas secundarias únicamente al pulsar sus botones.
  if(S.mode!=="palabra")window.VitruviaEncyclopedia?.update(q.replace(/^[@~]/,""),{ancient:["lema","etimologia"].includes(S.mode)});
  if(S.mode!=="palabra")renderOldestEvidence(q);
@@ -471,6 +478,7 @@ function renderHits(D,res){
  const renderRevision=++hitsRenderRevision;
  const list=$("#lx-results");list.replaceChildren();
  const n=res.hits.length;
+ $("#lx-state").dataset.completeQuery=S.q;
  const works=new Set(res.hits.map(h=>D.corpus.passages[h.i][0]));
  setState(n?`${n.toLocaleString("es")}${res.capped?"+":""} coincidencia${n===1?"":"s"} en ${works.size} obra${works.size===1?"":"s"}${res.capped?" (límite de "+MAX_HITS+" alcanzado: filtre por obra o precise la consulta)":""} · corpus ${D.l==="grc"?"griego":"latino"} (${D.tokens.toLocaleString("es")} palabras).`:`Sin coincidencias en el corpus ${D.l==="grc"?"griego":"latino"} local.${res.sets?.some(s=>!s.size)?" Algún término no está atestiguado: pruebe ~aproximación, comodines (*) o la otra lengua.":""}`);
  const selectedWork=S.work&&D.corpus.works[S.work];
@@ -817,12 +825,12 @@ function renderExactEntry(D,word,res){
  }
 }
 function quickWord(word,language){
- const expected=language==="grc"?"grc":"la",D=S.D;
+ const expected=language==="grc"?"grc":"la",D=residentLanguages[expected]||S.D;
  if(!D||D.l!==expected)return null;
  const key=fold(word).replace(/[^\p{L}']/gu,"");
  for(const [lem] of analyses(D,key)){
   const info=lemmaInfo(D,lem);
-  if(info?.g)return{lemma:lemmaDisplay(lem),gloss:info.g.split(/;\s*/).slice(0,3).join("; ")};
+  if(info?.g)return{lemma:lemmaDisplay(lem),gloss:info.g,morph:analyses(D,key).filter(a=>a[0]===lem&&typeof a[1]==="string").map(a=>decodeTag(a[1])).filter(Boolean).join(" / "),sources:D.forms.sources||[]};
  }
  return null;
 }

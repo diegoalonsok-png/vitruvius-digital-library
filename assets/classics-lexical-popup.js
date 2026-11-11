@@ -137,11 +137,13 @@ function linksFor(word,lang){
  return nav;
 }
 async function openMark(mark){
+ const openedAt=performance.now();
  const lang=langCode(mark);
  if(!supported.has(lang))return;
  const word=lexicon.wordOfMark(mark)||mark.textContent?.trim();
  if(!word||!/^[\p{L}\p{M}ʼ’'-]{2,80}$/u.test(word))return;
  const id=++current;
+ delete root.dataset.readyMs;
  lastFocus=mark;
  title.textContent=word;
  const slot=el("div",null,"cl-popup-dictionary");
@@ -159,17 +161,20 @@ async function openMark(mark){
   // Prefer the dictionary already resident in the Lexicon corpus index.
   // A detailed dictionary is deliberately opt-in: loading it on every word
   // click caused multi-second stalls, particularly on first access.
-  const fast=window.VitruviaLexicon?.quickWord?.(word,lang);
+ const fast=window.VitruviaLexicon?.quickWord?.(word,lang);
   if(fast?.gloss){
-   const quick=el("section",null,"cl-popup-quick");
-   quick.append(el("h3","Significado · diccionario del corpus"));
-   quick.append(el("p",fast.lemma||word,"cl-popup-quick-lemma"));
-   quick.append(el("p",fast.gloss));
-   contents.insertBefore(quick,slot);
-   status.textContent="Definición local disponible. Análisis completo opcional.";
+   // renderPanel reuses the resident entry: no dictionary download, external
+   // translation or second corpus scan is needed for this click.
+   await lexicon.renderPanel(slot,word,{lang,work:edition,online:false});
+   if(id!==current)return;
+   status.textContent="Diccionario local · definición y análisis disponibles.";
+   root.dataset.readyMs=String(Math.round(performance.now()-openedAt));
+   return;
   }
   const quickTask=fastEntry(word,lang).then(quick=>{
-   if(id!==current||!quick)return;
+   if(id!==current)return;
+   status.textContent=quick?"Ficha editorial local disponible.":"Sin definición breve para esta forma. Puede consultar el análisis completo.";
+   if(!quick)return;
    const prior=contents.querySelector(".cl-popup-quick");
    if(!prior)contents.insertBefore(quick,slot);
   }).catch(()=>{});
@@ -205,7 +210,7 @@ async function openMark(mark){
 }
 const markSelector=passages?"mark.cl-hit,mark.cl-parallel-hit":
  inClassicalReader?".txt mark":
- "#lx-viewer .lx-viewer-origin mark.w,#lx-viewer .lx-viewer-col mark.w,.lx-hit .lx-kwic mark.w,.lx-hit .lx-passage mark.w";
+ "#lx-viewer .lx-viewer-origin .w,#lx-viewer .lx-viewer-col .w,.lx-hit .lx-kwic .w,.lx-hit .lx-passage .w";
 function markOf(target){
  return target instanceof Element?target.closest(markSelector):null;
 }

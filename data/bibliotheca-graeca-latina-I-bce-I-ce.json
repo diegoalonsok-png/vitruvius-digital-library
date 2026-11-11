@@ -3450,7 +3450,11 @@
         }
       },
       "translation": {
-        "status": "Consultar la información bibliográfica y el documento PDF."
+        "status": "Texto latino y traducción editorial de la edición V514; consulta por locus en el lector bilingüe.",
+        "languages": [
+          "la",
+          "es"
+        ]
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -3463,7 +3467,9 @@
       "title": "De architectura · Recensio V514 (latín–castellano)",
       "pdf": {
         "url": "documents/kurilo-recensio-es.pdf",
-        "status": "PDF completo alojado en GitHub, edición V514 de Diego A. Kurilo; 11,0 MB."
+        "status": "PDF completo alojado en GitHub, edición V514 de Diego A. Kurilo; 11,0 MB.",
+        "doi": "10.5281/zenodo.23884757",
+        "pages": 1157
       },
       "localReader": {
         "original": "data/structured/recensio-es.json",
@@ -3474,7 +3480,24 @@
         "url": null,
         "status": "Lectura integral disponible en PDF dentro del visor."
       },
-      "publicStatus": "lectura-local-completa"
+      "publicStatus": "lectura-local-completa",
+      "bibliography": {
+        "originalAuthor": "Marcus Vitruvius Pollio",
+        "editorialAuthor": "Kurilo, Diego",
+        "title": "Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría",
+        "publisher": "Sophia Lux Ediciones Académicas",
+        "place": "Buenos Aires",
+        "year": "2026",
+        "version": "V514",
+        "doi": "10.5281/zenodo.23884757",
+        "isbn": "978-631-01-6651-3",
+        "isbnNote": "ISBN compartido por las ediciones V514 (latín–castellano) y V554 (latín–francés) por decisión editorial; cada versión se identifica por su DOI de Zenodo.",
+        "pages": 1157,
+        "editionCitation": "Kurilo, Diego. Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría. Recensio académica provisional, edición digital V514. Buenos Aires: Sophia Lux Ediciones Académicas, 2026. ISBN 978-631-01-6651-3. https://doi.org/10.5281/zenodo.23884757.",
+        "metadataSource": "data/catalog.json · Vitruvio_V514_ESPANOL_MASTER_IMPRENTA_2026-10-02(2).docx",
+        "doiRecord": "https://zenodo.org/records/23884757"
+      },
+      "editorialEditionId": "recensio-es"
     },
     {
       "language": "la",
@@ -3499,7 +3522,11 @@
         }
       },
       "translation": {
-        "status": "Consultar la información bibliográfica y el documento PDF."
+        "status": "Texto latino y traducción editorial de la edición V554; consulta por locus en el lector bilingüe.",
+        "languages": [
+          "la",
+          "fr"
+        ]
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -3512,7 +3539,9 @@
       "title": "De architectura · Recensio V554 (latín–francés)",
       "pdf": {
         "url": "documents/kurilo-recensio-fr.pdf",
-        "status": "PDF completo alojado en GitHub, edición V554 de Diego A. Kurilo; 11,1 MB."
+        "status": "PDF completo alojado en GitHub, edición V554 de Diego A. Kurilo; 11,1 MB.",
+        "doi": "10.5281/zenodo.23885110",
+        "pages": 1166
       },
       "localReader": {
         "original": "data/structured/recensio-fr.json",
@@ -3523,7 +3552,24 @@
         "url": null,
         "status": "Lectura integral disponible en PDF dentro del visor."
       },
-      "publicStatus": "lectura-local-completa"
+      "publicStatus": "lectura-local-completa",
+      "bibliography": {
+        "originalAuthor": "Marcus Vitruvius Pollio",
+        "editorialAuthor": "Kurilo, Diego",
+        "title": "Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie",
+        "publisher": "Sophia Lux Ediciones Académicas",
+        "place": "Buenos Aires",
+        "year": "2026",
+        "version": "V554",
+        "doi": "10.5281/zenodo.23885110",
+        "isbn": "978-631-01-6651-3",
+        "isbnNote": "ISBN compartido por las ediciones V514 (latín–castellano) y V554 (latín–francés) por decisión editorial; cada versión se identifica por su DOI de Zenodo.",
+        "pages": 1166,
+        "editionCitation": "Kurilo, Diego. Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie. Recensio académica provisional, edición digital V554. Buenos Aires: Sophia Lux Ediciones Académicas, 2026. ISBN 978-631-01-6651-3. https://doi.org/10.5281/zenodo.23885110.",
+        "metadataSource": "data/catalog.json · Vitruvio_V554_FRANCAIS_MASTER_IMPRESSION_2026-10-02(2).docx",
+        "doiRecord": "https://zenodo.org/records/23885110"
+      },
+      "editorialEditionId": "recensio-fr"
     },
     {
       "language": "la",
@@ -3548,7 +3594,11 @@
         }
       },
       "translation": {
-        "status": "Consultar la información bibliográfica y el documento PDF."
+        "status": "Texto latino y traducción editorial de la edición V297; consulta por locus en el lector bilingüe.",
+        "languages": [
+          "la",
+          "en"
+        ]
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -3561,7 +3611,9 @@
       "title": "The Architect of Theory · V297 (inglés)",
       "pdf": {
         "url": "documents/kurilo-theory-en.pdf",
-        "status": "PDF completo alojado en GitHub, edición V297, The Architect of Theory, de Diego A. Kurilo; 11,8 MB."
+        "status": "PDF completo alojado en GitHub, edición V297, The Architect of Theory, de Diego A. Kurilo; 11,8 MB.",
+        "doi": "10.5281/zenodo.23885404",
+        "pages": 1056
       },
       "localReader": {
         "original": "data/structured/theory-en.json",
@@ -3572,7 +3624,24 @@
         "url": null,
         "status": "Lectura integral disponible en PDF dentro del visor."
       },
-      "publicStatus": "lectura-local-completa"
+      "publicStatus": "lectura-local-completa",
+      "bibliography": {
+        "originalAuthor": "Marcus Vitruvius Pollio",
+        "editorialAuthor": "Kurilo, Diego",
+        "title": "The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",
+        "publisher": "Sophia Lux Publishing",
+        "place": "Buenos Aires",
+        "year": "2026",
+        "version": "V297",
+        "doi": "10.5281/zenodo.23885404",
+        "isbn": null,
+        "isbnNote": "El PDF V297 depositado en Zenodo (DOI 10.5281/zenodo.23885404), portada y créditos revisados el 11-11-2026, no consigna ISBN. Se necesita el identificador asignado por el editor para completar este campo.",
+        "pages": 1056,
+        "editionCitation": "Kurilo, Diego. The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity. Primera edición inglesa, revisión editorial V297. Buenos Aires: Sophia Lux Publishing, 2026. https://doi.org/10.5281/zenodo.23885404.",
+        "metadataSource": "data/catalog.json · The_Architect_of_Theory_V297_EN_156x234(1).docx",
+        "doiRecord": "https://zenodo.org/records/23885404"
+      },
+      "editorialEditionId": "theory-en"
     },
     {
       "language": "la",

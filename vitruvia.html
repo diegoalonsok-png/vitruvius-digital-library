@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es"><head><script defer src="assets/vitruvia-data.js?v=20261105-academic-navigation-2"></script>
+<html lang="es"><head><script defer src="assets/vitruvia-data.js?v=20261111-responsive-literal-v1"></script>
 <meta charset="utf-8">
 <link rel="preload" as="fetch" href="data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261104-nota-v1" crossorigin="anonymous">
 <link rel="preload" as="fetch" href="data/witruvia-pages.json" crossorigin="anonymous">
@@ -980,7 +980,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 
 .vitruvia-image-grid[hidden]{display:none!important}
 </style>
-<script defer src="assets/vitruvia-fetch-cache.js?v=20261111-nonblocking-v3"></script><link rel="preconnect" href="https://es.wikipedia.org" crossorigin><link rel="preconnect" href="https://www.wikidata.org" crossorigin><link rel="preconnect" href="https://commons.wikimedia.org" crossorigin><link rel="preconnect" href="https://upload.wikimedia.org"><link rel="stylesheet" href="assets/vitruvia-reading.css?v=20261104-local-codex-v7">
+<script defer src="assets/vitruvia-fetch-cache.js?v=20261111-responsive-literal-v1"></script><link rel="preconnect" href="https://es.wikipedia.org" crossorigin><link rel="preconnect" href="https://www.wikidata.org" crossorigin><link rel="preconnect" href="https://commons.wikimedia.org" crossorigin><link rel="preconnect" href="https://upload.wikimedia.org"><link rel="stylesheet" href="assets/vitruvia-reading.css?v=20261104-local-codex-v7">
 <link rel="stylesheet" href="assets/vitruvia-photo-background.css?v=20261104-photo-bg-v1">
 <link rel="stylesheet" href="assets/academic-links.css?v=20261105-v1">
 <link rel="stylesheet" href="assets/vitruvia-discovery.css?v=20261107-editorial-width-v4">
@@ -1040,8 +1040,8 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 }
 .hero .featured #featured-title.featured-title-break{overflow-wrap:anywhere!important}
 </style>
-<link rel="preload" as="script" href="assets/vitruvia-search.js?v=20261111-exact-default-v2" fetchpriority="high">
-<link rel="preload" as="script" href="assets/vitruvia-entity-resolver.js?v=20261110-identity-engine-v2&amp;patch=surname-fast-v1" fetchpriority="high">
+<link rel="preload" as="script" href="assets/vitruvia-search.js?v=20261111-text-first-v1" fetchpriority="high">
+<link rel="preload" as="script" href="assets/vitruvia-entity-resolver.js?v=20261111-text-first-v1" fetchpriority="high">
 </head><body>
 <div class="site-shell">
 <header class="nav"><a class="logo-small" href="vitruvia.html" aria-label="Vitruvia — inicio del buscador">Vitruvia<span class="logo-dot" aria-hidden="true">.</span></a>
@@ -1159,7 +1159,7 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 </section>
 <div class="metrics" id="metrics" role="status" aria-label="Indicadores del catálogo: datos en carga" aria-live="polite" aria-atomic="false"><span><b id="metric-works">—</b> <span data-i18n="metricWorks">fichas de obras</span></span><span><b id="metric-pages">—</b> <span data-i18n="metricPages">secciones documentadas</span></span><span><b>341</b> <span data-i18n="metricImages">imágenes del Codex H</span></span><span><b id="metric-read">—</b> <span data-i18n="metricRead">lecturas disponibles</span></span><span><b id="metric-witnesses">—</b> testimonios manuscritos</span><span><b id="metric-editions">—</b> ediciones vinculadas</span></div>
 <section class="results" id="results" aria-live="polite">
-<div class="section-head"><h2 id="results-heading" data-i18n="headingIdle">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span></div>
+<div class="section-head"><h2 id="results-heading" data-i18n="headingIdle">Consultar la biblioteca</h2><span id="result-state">El índice se carga directamente desde GitHub.</span><button id="expand-search-sources" type="button" class="tab" hidden>Ampliar fuentes y bibliografía</button></div>
 
 <section id="vitruvia-welcome" aria-label="Presentación del buscador y la biblioteca">
   <p class="welcome-kicker" data-landing-key="kicker">UNA HERRAMIENTA DE INVESTIGACIÓN ABIERTA</p>
@@ -1264,65 +1264,67 @@ html[data-theme=light] #vitruvia-welcome .welcome-examples a:hover{background:#e
 
 <script src="assets/vitruvia-academic-order.js?v=20261110-v1" defer></script>
 <script src="assets/vitruvia-discovery.js?v=20261107-classics-math-v7" defer></script>
-<script defer src="assets/vitruvia-science.js?v=20261105-v2"></script>
-<script src="assets/vitruvia-mathematics.js?v=20261109-engineering-v2" defer></script>
+
+
 <script src="assets/vitruvia-colors.js?v=20261105-1" defer></script>
-<script src="assets/vitruvia-image-engine-v2.js?v=20261111-images-after-text-v2" defer></script>
-<script src="assets/vitruvia-featured-documentary.js?v=20261107-humanidades-v5" defer></script>
+
+
 <script src="assets/vitruvia-reading.js?v=20261106-theme-wins-v1" defer></script>
-<script src="assets/vitruvia-photo-background.js?v=20261104-photo-bg-v1" defer fetchpriority="low"></script>
-<script src="assets/vitruvia-floating-reader.js?v=20261104-draggable-v3" defer fetchpriority="low"></script>
-<script src="assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1" defer></script>
-<script src="assets/vitruvia-selection-speech.js?v=20261104-selected-paragraph-audio-v1" defer fetchpriority="low"></script>
-<script src="assets/vitruvia-research-engine.js?v=20261105-academic-navigation-2" defer></script>
-<script src="assets/vitruvia-local-manuscripts.js?v=20261105-merge2-v1" defer></script>
-<script src="assets/vitruvia-author-reading.js?v=20261109-dated-witness-v5" defer></script>
-<script src="assets/vitruvia-egypt-research.js?v=20261110-dynasty-readable-v9" defer></script>
-<script src="assets/vitruvia-egypt-dossier.js?v=20261110-royal-academic-v2" defer></script>
-<script src="assets/vitruvia-mesopotamia-research.js?v=20261109-dynasty-tree-v2" defer></script>
+
+
+
+
+<script src="assets/vitruvia-research-engine.js?v=20261111-primary-only-v1" defer></script>
+
+
+
+
+
 <script src="assets/documentary-relevance.js?v=20261109-unicode-precision-2" defer></script>
 <script src="assets/vitruvia-article.js?v=20261110-identity-engine-v2" defer></script>
-<script src="assets/vitruvia-entity-resolver.js?v=20261110-identity-engine-v2&amp;patch=surname-fast-v1" defer></script>
-<script src="assets/search-agentic.js?v=20261105-academic-navigation-2" defer></script>
-<script src="assets/vitruvia-archives.js?v=20261104-linked-authorities-v1" defer></script>
-<script src="assets/vitruvia-text-discovery.js?v=20261104-universal-wikisource-v1" defer></script>
-<script src="assets/vitruvia-ai.js?v=20261110-bm25-optin-e5-v1" defer></script>
+<script src="assets/vitruvia-entity-resolver.js?v=20261111-text-first-v1" defer></script>
+
+
+
+
 <script src="assets/codicological-query.js?v=20261105-cq-v1" defer></script>
 <script src="assets/kurilo-apparatus.js?v=20261105-academic-navigation-2" defer></script>
-<script src="assets/classical-lexicon.js?v=20261105-lex-v3" defer></script>
+<script src="assets/classical-lexicon.js?v=20261111-responsive-literal-v1" defer></script>
 <script src="assets/bibliotheca-offsite-greek.js?v=20261110-plutarch-greek-v1" defer></script>
 <script defer src="assets/bibliotheca-offsite-latin.js?v=20261110-macrobius-7books-v4"></script>
 <script src="assets/classics-corpus-search.js?v=20261111-literal-default-v3" defer></script>
 <script src="assets/vitruvia-understand.js?v=20261105-cultural-catalog-v8" defer></script>
-<script src="assets/vitruvia-architect-visuals.js?v=20261105-calatrava-works-v1" defer></script>
-<script src="assets/vitruvia-architecture-panel.js?v=20261105-general-works-v1" defer></script>
-<script src="assets/vitruvia-cultural-works.js?v=20261109-typed-chronology-v1&amp;patch=medium-groups-v1&amp;author-dossiers=20261111-v1" defer></script>
-<script src="assets/vitruvia-web-dossier.js?v=20261108-chronology-codices-purchase-v1" defer></script>
+
+
+
+
 <script defer src="assets/vitruvia-source-model.js?v=20261110-doi-canonical-v2"></script>
-<script src="assets/vitruvia-context-panel.js?v=20261109-universal-ingest-v1" defer></script>
-<script src="assets/vitruvia-heritage-gallery.js?v=20261108-full-library-v2" defer></script>
-<script src="assets/vitruvia-entity-card.js?v=20261105-cultural-catalog-v8" defer></script>
-<script src="assets/vitruvia-evidence.js?v=20261105-1" defer></script>
+
+
+
+
 <script src="assets/vitruvia-local-priority.js?v=20261105-first" defer></script>
 <script src="assets/vitruvia-classics-viewer.js?v=20261105-1" defer></script>
-<script src="assets/vitruvia-historical-names.js?v=20261105-1" defer></script>
+
 <script src="assets/vitruvia-context-guard.js?v=20261106-modern-academic-gate-v1" defer></script>
-<script src="assets/vitruvia-scholarly-export.js?v=20261109-chicago18-loci-v1" defer fetchpriority="low"></script>
-<script src="assets/academic-inline-translation.js?v=20261109-v1" defer></script><script src="assets/vitruvia-web-routing.js?v=20261111-topic-v1" defer></script><script src="assets/vitruvia-historical-paragraphs.js?v=20261111-ocr-paragraphs-v1" defer></script>
-<script src="assets/vitruvia-search.js?v=20261111-exact-default-v2" defer></script>
+
+<script src="assets/vitruvia-web-routing.js?v=20261111-topic-v1" defer></script><script src="assets/vitruvia-historical-paragraphs.js?v=20261111-ocr-paragraphs-v1" defer></script>
+<script type="application/json" id="vitruvia-feature-manifest">{"images":["assets/vitruvia-image-engine-v2.js?v=20261111-responsive-literal-v1","assets/vitruvia-featured-documentary.js?v=20261107-humanidades-v5","assets/vitruvia-architect-visuals.js?v=20261105-calatrava-works-v1","assets/vitruvia-heritage-gallery.js?v=20261108-full-library-v2"],"research":["assets/vitruvia-science.js?v=20261105-v2","assets/vitruvia-mathematics.js?v=20261109-engineering-v2","assets/vitruvia-author-reading.js?v=20261109-dated-witness-v5","assets/vitruvia-egypt-research.js?v=20261110-dynasty-readable-v9","assets/vitruvia-egypt-dossier.js?v=20261110-royal-academic-v2","assets/vitruvia-mesopotamia-research.js?v=20261109-dynasty-tree-v2","assets/search-agentic.js?v=20261105-academic-navigation-2","assets/vitruvia-archives.js?v=20261104-linked-authorities-v1","assets/vitruvia-text-discovery.js?v=20261104-universal-wikisource-v1","assets/vitruvia-ai.js?v=20261110-bm25-optin-e5-v1","assets/vitruvia-architecture-panel.js?v=20261105-general-works-v1","assets/vitruvia-cultural-works.js?v=20261109-typed-chronology-v1&patch=medium-groups-v1&author-dossiers=20261111-v1","assets/vitruvia-web-dossier.js?v=20261108-chronology-codices-purchase-v1","assets/vitruvia-context-panel.js?v=20261109-universal-ingest-v1","assets/vitruvia-entity-card.js?v=20261105-cultural-catalog-v8","assets/vitruvia-evidence.js?v=20261105-1","assets/vitruvia-historical-names.js?v=20261105-1","assets/vitruvia-reading-shelf.js?v=20261110-related-reading-v1","assets/vitruvia-term-panel.js?v=20261106-strict-identities-v1","assets/vitruvia-featured-bio.js?v=20261107-portrait-identity-v2","assets/vitruvian-world.js?v=20261105-v1","assets/hiero-render.js?v=20261109-quadrats-v1","assets/vitruvia-egypt-script-viewer.js?v=20261109-titulary-v2","assets/vitruvia-math-engineering.js?v=20261110-formulas-v1","assets/vitruvia-architectural-documents.js?v=20261111-plan-search-v2","assets/vitruvia-author-books.js?v=20261111-author-books-v2","assets/critical-note-bridge.js?v=20261111-apparatus-inventory-v2"],"reader":["assets/vitruvia-photo-background.js?v=20261104-photo-bg-v1","assets/vitruvia-floating-reader.js?v=20261104-draggable-v3","assets/vitruvia-paragraph-magnifier.js?v=20261104-paragraph-loupe-v1","assets/vitruvia-selection-speech.js?v=20261104-selected-paragraph-audio-v1","assets/vitruvia-local-manuscripts.js?v=20261105-merge2-v1","assets/vitruvia-scholarly-export.js?v=20261109-chicago18-loci-v1","assets/academic-inline-translation.js?v=20261109-v1","assets/vitruvia-individual-citations.js?v=20261110-per-result-v1","assets/page-autotranslate.js?v=20261106-v1","assets/vitruvia-academic-reader.js?v=20261104-sidebar-ai-v3","assets/vitruvia-dictation.js?v=20261104-microphone-v1","assets/vitruvia-pdf-local.js?v=20261109-egypt-mesopotamia-v4","assets/vitruvia-visual-import.js?v=20261104-private-pdf-v2","assets/research-folder.js?v=20261106-share-v1","assets/scholarly-query-tools.js?v=20261109-university-v1","assets/vitruvia-texts-reader.js?v=20261110-contextual-reader-v1"]}</script>
+<script defer src="assets/vitruvia-features.js?v=20261111-text-first-v1"></script>
+<script src="assets/vitruvia-search.js?v=20261111-text-first-v1" defer></script>
 <script src="assets/vitruvia-result-filters.js?v=20261110-facets-loci-v1" defer></script>
-<script src="assets/vitruvia-reading-shelf.js?v=20261110-related-reading-v1" defer></script>
+
 <script src="assets/vitruvia-academic-timeline.js?v=20261111-contained-hover-v7" defer></script>
-<script src="assets/vitruvia-individual-citations.js?v=20261110-per-result-v1" defer></script>
-<script src="assets/page-autotranslate.js?v=20261106-v1" defer></script>
-<script src="assets/vitruvia-term-panel.js?v=20261106-strict-identities-v1" defer></script>
-<script src="assets/vitruvia-featured-bio.js?v=20261107-portrait-identity-v2" defer></script>
+
+
+
+
 <script src="assets/vitruvia-button-feedback.js?v=20261111-press-loading-v1" defer></script>
 <script src="assets/vitruvia-compact-nav.js?v=20261106-lexicon-v1" defer></script>
-<script src="assets/vitruvia-academic-reader.js?v=20261104-sidebar-ai-v3" defer fetchpriority="low"></script>
-<script src="assets/vitruvia-dictation.js?v=20261104-microphone-v1" defer fetchpriority="low"></script>
-<script src="assets/vitruvia-pdf-local.js?v=20261109-egypt-mesopotamia-v4" defer fetchpriority="low"></script>
-<script src="assets/vitruvia-visual-import.js?v=20261104-private-pdf-v2" defer fetchpriority="low"></script>
+
+
+
+
 <script>
 document.addEventListener('click',function(event){
  const button=event.target.closest('.article-share');if(!button)return;
@@ -1492,10 +1494,10 @@ else{voice.disabled=true;status.textContent="No se pudo cargar el dictado. Recar
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
 </script>
-<script src="assets/research-folder.js?v=20261106-share-v1" defer></script><link rel="stylesheet" href="assets/vitruvia-right-panel.css?v=20261105-v2">
+<link rel="stylesheet" href="assets/vitruvia-right-panel.css?v=20261105-v2">
 <link rel="stylesheet" href="assets/vitruvia-reading-layout-repair.css?v=20261107-singlecolumn-2">
 
-<script src="assets/vitruvian-world.js?v=20261105-v1" defer></script>
+
 <!-- Consulta filológica multilingüe: módulo experimental temporalmente desactivado en Vitruvia. Se conserva el archivo para una futura integración validada. -->
 
 <style id="vitruvia-search-only-panels">/* Presentación simplificada: conservar únicamente el buscador principal. */
@@ -1986,7 +1988,7 @@ html[data-theme=light] body.vitruvia-reading #vitruvia-article .article-editoria
 }
 </style>
 <script src="assets/vitruvia-classics-frequency-dedupe.js?v=20261109-v1" defer></script>
-<script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><style id="vitruvia-right-rail-top-alignment-20261109">
+<style id="vitruvia-right-rail-top-alignment-20261109">
 /* The right rail must start with its related text, not occupy an empty
    grid track or sit below an oversized featured card. */
 @media screen and (min-width:1100px){
@@ -2032,7 +2034,7 @@ body.vitruvia-reading .hero .featured{align-self:start!important}
 }
 </style>
 <link rel="stylesheet" href="assets/vitruvia-progressive-results.css?v=20261110-first-fold-v1">
-<script defer src="assets/hiero-render.js?v=20261109-quadrats-v1" fetchpriority="low"></script><script defer src="assets/vitruvia-egypt-script-viewer.js?v=20261109-titulary-v2" fetchpriority="low"></script>
+
 <script id="vitruvia-featured-title-fit-script">
 /* Ajuste optico, sin alterar nombres o fichas academicas. */
 (()=>{"use strict";
@@ -2101,7 +2103,7 @@ html[data-theme=light] .vr-text-note{color:#5f685f}
 html[data-theme=light] .vr-text-row a{color:#214d39}
 @media(max-width:680px){.vr-textual-reader{padding:13px}.vr-textual-reader h3{font-size:22px}.vr-text-row>*{max-width:100%}}
 </style>
-<script defer src="assets/vitruvia-texts-reader.js?v=20261110-contextual-reader-v1"></script>
+
 <style id="vr-formula-styles">
 .vr-formula-panel{margin:22px 0;padding:20px;border:1px solid #737c79;border-radius:12px;background:#191e1e;color:#eaeeed;box-sizing:border-box;max-width:100%}
 .vr-formula-panel[hidden]{display:none!important}
@@ -2117,7 +2119,7 @@ html[data-theme=light] .vr-formula-note{color:#53615b}
 html[data-theme=light] .vr-formula-panel a{color:#265b86}
 @media(max-width:600px){.vr-formula-panel{padding:13px}.vr-formula-panel h3{font-size:23px}}
 </style>
-<script defer src="assets/vitruvia-math-engineering.js?v=20261110-formulas-v1"></script>
+
 <style id="vr-architectural-documents-style">
 #vr-architecture-docs{margin:24px 0;padding:20px;border:1px solid #697771;border-radius:13px;background:#17201e;color:#e9eee9;max-width:100%;box-sizing:border-box}
 #vr-architecture-docs[hidden]{display:none!important}
@@ -2159,7 +2161,7 @@ html[data-theme=light] #vr-architecture-docs .vr-ad-cards .vr-ad-card{background
 #vr-architecture-docs output{font:12px system-ui;min-width:40px}
 #vr-architecture-docs button:focus-visible,#vr-architecture-docs select:focus-visible,#vr-architecture-docs input:focus-visible,#vr-architecture-docs a:focus-visible{outline:3px solid #9ecdb2;outline-offset:2px}
 </style>
-<script defer src="assets/vitruvia-architectural-documents.js?v=20261111-plan-search-v2"></script>
+
 <style id="vr-author-books-style">
 #vr-author-books{margin:24px 0;padding:18px 0;border-top:1px solid #9eaa9e66;color:inherit;font:14px/1.5 system-ui,sans-serif}
 #vr-author-books[hidden]{display:none!important}
@@ -2190,8 +2192,8 @@ html[data-theme=light] #vr-author-books .vr-ab-links a{color:#22583b}
 html[data-theme=light] #vr-author-books .vr-ab-head p,html[data-theme=light] #vr-author-books .vr-ab-note{color:#53655c}
 @media(max-width:650px){#vr-author-books .vr-ab-grid{grid-template-columns:1fr}#vr-author-books .vr-ab-card{min-height:135px}}
 </style>
-<script defer src="assets/vitruvia-author-books.js?v=20261111-author-books-v2"></script>
-<script src="assets/critical-note-bridge.js?v=20261111-apparatus-inventory-v2" defer></script>
+
+
 </body></html>
 
 

@@ -478,7 +478,7 @@ async function wiki(q,language){const providerSignal=S.searchController?.signal;
  const d=await request("https://"+lang+".wikipedia.org/w/api.php?"+p);
  const found=(d.query?.search||[]).filter(w=>Number.isInteger(w.pageid)&&w.pageid>0);
  let pictures={};
- if(found.length){
+ if(found.length&&S.imagesRequested){
   const picturesParams=new URLSearchParams({action:"query",prop:"pageimages",pageids:found.slice(0,6).map(x=>x.pageid).join("|"),piprop:"thumbnail|name",pithumbsize:"720",format:"json",origin:"*"});
   const photos=await request("https://"+lang+".wikipedia.org/w/api.php?"+picturesParams,2000).catch(()=>null);
   pictures=photos?.query?.pages||{};
@@ -1174,9 +1174,10 @@ function display(rows,query,phase){
   !["wikipedia","wikidata"].includes(r.type)||r.preferredWiki||r.preferredAuthority||
   queryTokens(query).length<2||entityEvidence(r,query)
  )&&(!["passage","book","edition","manuscript","preface","section"].includes(r.type)||
-  documentarySubjectEvidence(r,query))).slice().sort((a,b)=>
-  ((b.rating||0)+titleMatch(b,query)+(S.mode==="ai"&&b.aiEvidence?2800:0))-
-  ((a.rating||0)+titleMatch(a,query)+(S.mode==="ai"&&a.aiEvidence?2800:0)));
+  documentarySubjectEvidence(r,query)))
+  // Compute expensive evidence scores once per row, rather than on every sort comparison.
+  .map(row=>({row,rank:(row.rating||0)+titleMatch(row,query)+(S.mode==="ai"&&row.aiEvidence?2800:0)}))
+  .sort((a,b)=>b.rank-a.rank).map(item=>item.row);
  const deduped=[],seen=new Set();
  for(const r of scored){
   const id=r.type==="passage"?[r.edition,r.locus,r.workId,r.link].filter(Boolean).join("|"):
@@ -1423,8 +1424,25 @@ function authorityResult(identity){
   preferredAuthority:wikidataOnly,sourceLanguage:identity.language||"es"};
 }
 
+document.getElementById("expand-search-sources")?.addEventListener("click",async event=>{
+ const button=event.currentTarget,q=$("query").value.trim();if(!q)return;
+ button.disabled=true;button.setAttribute("aria-busy","true");
+ try{
+  await window.VitruviaFeatures?.load("research");
+  if($("query").value.trim()!==q)return;
+  S.expandedFor=q;await search();
+ }catch{$("result-state").textContent="No se pudieron ampliar las fuentes. Vuelva a intentarlo.";button.disabled=false}
+ finally{button.removeAttribute("aria-busy")}
+});
 async function search(){
  let q=$("query").value.trim();S.searchController?.abort();S.searchController=new AbortController();const searchSignal=S.searchController.signal;const later=task=>window.VitruviaData?window.VitruviaData.defer(task,{signal:searchSignal,delay:45}):Promise.resolve().then(task);S.searchStarted=performance.now();S.firstResultAt=null;S.searchComplete=false;S.cardCache=new Map();S.identifiedSubject=null;const id=++S.searchId;S.visibleResultCount=60;S.facet="";if(!q)return;
+ const expanded=S.expandedFor===q||["external","ai","concept"].includes(S.mode);
+ if(expanded&&window.VitruviaFeatures){
+  await window.VitruviaFeatures.load("research").catch(()=>{});
+  if(id!==S.searchId||searchSignal.aborted)return;
+ }
+ const expandedButton=$("expand-search-sources");
+ if(expandedButton){expandedButton.hidden=expanded;expandedButton.disabled=false;}
  // Mostrar la ficha inicial sin esperar bibliotecas extensas ni APIs secundarias.
  document.body.classList.add("vitruvia-reading");
  window.VitruviaSearchSnapshot={query:q,rows:[]};
@@ -1442,7 +1460,7 @@ async function search(){
  // static catalogue; the main results are still rendered in the usual place.
  const earlyIdentity=!/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&
   ["all","wiki","external","ai"].includes(S.mode)&&window.VitruviaEntityResolver?
-  window.VitruviaEntityResolver.resolve(q,S.lang).catch(()=>null):null;
+  (expanded?window.VitruviaEntityResolver.resolve(q,S.lang):window.VitruviaEntityResolver.resolveFast(q,S.lang)).catch(()=>null):null;
  // Display the verified subject independently of six large local indices.
  // The catalogue remains necessary for reading its actual manuscripts.
  let previewIdentity=null;
@@ -1533,13 +1551,13 @@ async function search(){
  const official=authorityRows(q);
  if(official.length){rows.push(...official);display(rows,q,T().searching)}
  const pending=[];
- if(internal&&matchingAuthorWorks(q).length)pending.push(
+ if(expanded&&internal&&matchingAuthorWorks(q).length)pending.push(
   hostedAuthorPassages(q).then(rows=>({name:"Pasajes documentados de obras del autor",rows}))
    .catch(e=>({name:"Lecturas de autor no disponibles",rows:[],warnings:[e.message]}))
  );
  // Search historical OCR only for named Vitruvian sources and concepts; do not penalize unrelated web queries.
  const historicalIntent=/\b(?:krohn|rose|cesariano|vitruvio|vitruvius|vitruve|architectura|symmetria|firmitas|utilitas|venustas|ratiocinatio|harley)\b/i.test(q);
- if(historicalIntent&&window.VitruviaHistoricalParagraphs&&["all","site","external","concept","ai"].includes(mode)){
+ if(historicalIntent&&(expanded||/\b(krohn|rose|cesariano)\b/i.test(q))&&window.VitruviaHistoricalParagraphs&&["all","site","external","concept","ai"].includes(mode)){
   const historicalTerm=q.replace(/\b(?:krohn|rose|cesariano|vitruvio|vitruvius|vitruve|1912|1899|1521|edici[oó]n|edici[oó]nes|de architectura)\b/gi," ").trim();
   if(historicalTerm.length>=3)pending.push(later(()=>window.VitruviaHistoricalParagraphs.search(historicalTerm,{mode:concept?"conceptual":"literal",limit:9})).then(data=>({
    name:"Párrafos históricos OCR · Krohn, Rose y Cesariano",
@@ -1549,13 +1567,13 @@ async function search(){
    warnings:data.complete?[]:["Algunas fuentes OCR no estaban disponibles"]
   })).catch(e=>({name:"OCR histórico no disponible",rows:[],warnings:[String(e.message||e)]})));
  }
- if(["all","external","ai"].includes(mode)&&window.VitruviaExternalTexts){
+ if(expanded&&["all","external","ai"].includes(mode)&&window.VitruviaExternalTexts){
   pending.push(window.VitruviaExternalTexts.search(generalQuery).then(result=>({
    name:"Búsqueda dentro de textos · Wikisource "+result.sources.join("/"),
    rows:result.rows||[],warnings:result.errors||[]
   })).catch(e=>({name:"Textos externos no disponibles",rows:[],warnings:[String(e.message||e)]})));
  }
- if(["all","external","ai"].includes(mode)&&window.VitruviaArchives){
+ if(expanded&&["all","external","ai"].includes(mode)&&window.VitruviaArchives){
   pending.push(window.VitruviaArchives.search(generalQuery).then(value=>{
    const linked=value.rows||[];
    const portals=!linked.length&&value.reason!=="entity-not-exactly-resolved"&&value.reason!=="authority-not-found"
@@ -1584,7 +1602,7 @@ async function search(){
     rows:[authorityResult(identity)],identity};
   }).catch(e=>({name:"Resolución de entidad no disponible",rows:[],warnings:[e.message]})));
  }
- if(internal&&window.VitruviaAgentic){
+ if(expanded&&internal&&window.VitruviaAgentic){
   const corpusTask=()=>window.VitruviaAgentic.search(generalQuery);
   const vital=window.VitruviaLocalPriority?.plan(q,S.lexicon)?.focused;
   pending.push((vital?Promise.resolve().then(corpusTask):later(corpusTask)).then(value=>({
@@ -1601,7 +1619,7 @@ async function search(){
     excerpt:"Ficha del léxico enlazada a las ediciones estructuradas del tratado. La presencia de un término en las ediciones no acredita por sí sola su ubicación en un folio manuscrito.",
     meta:"FICHA DE TÉRMINO · BIBLIOTECA VITRUVIANA",rating:3200,link:"termino.html?t="+encodeURIComponent(e.lemma),source:"Biblioteca Vitruviana"}]:[]}}).catch(()=>({name:"Léxico no disponible",rows:[]})));
  }
- if(internal){
+ if(expanded&&internal){
   pending.push((window.VitruviaData?window.VitruviaData.json("data/laminas-historicas.json?v=20261105-v1"):fetch("data/laminas-historicas.json?v=20261105-v1").then(r=>r.ok?r.json():{entries:[]})).then(d=>{
    const f=x=>norm(String(x||"")),q=f(generalQuery),toks=q.split(/\s+/).filter(t=>t.length>3),loc=intent?.locus||null;
    const rows=(d.entries||[]).map(e=>{const hay=f([e.title,e.author,e.work,e.edition,e.plate,e.folio,e.witness,e.relation].join(" "));
@@ -1612,14 +1630,14 @@ async function search(){
      link:"iconografia-vitruviana.html#lamina-"+e.id,source:"Atlas iconográfico · láminas"}));
    return {name:"Láminas históricas",rows}}).catch(()=>({name:"Láminas no disponibles",rows:[]})));
  }
- if(internal&&window.ClassicsCorpusSearch){
+ if(expanded&&internal&&window.ClassicsCorpusSearch){
   pending.push(later(async()=>{
    // Return literal attestations AND documented Conceptus equivalents.
    // A literal Latin hit must not suppress Greek parallels in indexed sources.
    return window.ClassicsCorpusSearch.combinedSearch(generalQuery,{limit:6});
   }).then(rows=>({name:"Textos clásicos griegos y latinos",rows})).catch(()=>({name:"Textos clásicos no disponibles",rows:[]})));
  }
- if(internal&&window.KuriloApparatus){
+ if((expanded||/\b(aparato|apparatus|variante|lectio)\b/i.test(q))&&internal&&window.KuriloApparatus){
   const ap=window.KuriloApparatus,apLimit=/\b(aparato|apparatus|apparat|ecd[oó]tic|nota cr[ií]tica|variante|lectio|krohn|rose)\b/i.test(generalQuery)?14:6;
   pending.push(later(()=>ap.search(generalQuery,{lang:S.lang,limit:apLimit,locus:intent?.locus||null})).then(hits=>({name:"Aparato crítico · ediciones Kurilo",
    rows:(()=>{/* Un bloque por página impresa: los demás de la misma página se cuentan, no se repiten. */
@@ -1628,15 +1646,15 @@ async function search(){
     return out})()})).catch(e=>({name:"Aparato crítico no disponible",rows:[],warnings:[String(e.message||e)]})));
  }
  if(internal){
-  if(engine)pending.push(engine.query(q,{concept,language:S.lang}).then(value=>({name:intent?.preface?"Prefacios y prólogos de Vitruvio":"Loci, léxico y códices",rows:value.rows||[],warnings:value.warnings||[]})).catch(e=>({name:"Índice documental no disponible",rows:[],warnings:[e.message]})));
+  if(engine)pending.push(engine.query(q,{concept,language:S.lang,primaryOnly:!expanded}).then(value=>({name:intent?.preface?"Prefacios y prólogos de Vitruvio":"Loci, léxico y códices",rows:value.rows||[],warnings:value.warnings||[]})).catch(e=>({name:"Índice documental no disponible",rows:[],warnings:[e.message]})));
   else pending.push(passages().then(ps=>({name:"Corpus de Vitruvio",rows:livePassages(ps,q,concept)})).catch(e=>({name:"Corpus no disponible: "+e.message,rows:[]})));
  }
  if(wikiEnabled){
   /* Wikipedia is queried even for precise codex/locus searches in All mode. */
-  pending.push(wiki(person?person.name:generalQuery,S.lang).then(rows=>({name:person?"Biografía · Wikipedia":"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
-  if(S.lang!=="en")pending.push(wiki(person?person.name:generalQuery,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
+  pending.push((expanded?wiki(person?person.name:generalQuery,S.lang):Promise.resolve(earlyIdentity).then(identity=>identity?[]:wiki(generalQuery,S.lang))).then(rows=>({name:person?"Biografía · Wikipedia":"Wikipedia",rows})).catch(e=>({name:"Wikipedia sin respuesta: "+e.message,rows:[]})));
+  if(expanded&&S.lang!=="en")pending.push(wiki(person?person.name:generalQuery,"en").then(rows=>({name:"Wikipedia EN",rows})).catch(e=>({name:"Wikipedia EN sin respuesta: "+e.message,rows:[]})));
  }
- if(academicEnabled){
+ if(expanded&&academicEnabled){
   // Pick sources by subject: an art name should not wait on biomedical APIs.
   const route=window.VitruviaWebRouting?.plan(q,S.identifiedSubject)||{providers:["wikidata","crossref","openAlex","openLibrary"]};
   const providers={
@@ -1932,6 +1950,7 @@ function updateClearControl(){
  clearControl.hidden=empty;clearAll.hidden=empty;
 }
 function clearSearch(options){
+ S.expandedFor="";
  const preserveUrl=options?.preserveUrl===true;
  S.searchController?.abort();
  ++S.searchId;searchInput.value="";updateClearControl();

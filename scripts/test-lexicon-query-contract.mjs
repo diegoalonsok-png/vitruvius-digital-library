@@ -21,7 +21,6 @@ assert(source.includes("const revision=++runRevision"),
  "Every normal Lexicon search must receive a monotonic revision");
 for(const mark of [
  "const D=await lang(l);if(!isCurrent())return;",
- "const G=await lang(\"grc\");if(!isCurrent())return;",
  "await renderEntry(S.D,parsed.steps[0].term,res);",
  "if(!isCurrent())return;",
  "if(rev!==routeRevision)return;",
@@ -40,4 +39,7 @@ assert(source.includes("controller.abort(),30000"),
  "Hanging JSON fetch must be bounded");
 assert(source.includes("if(unchanged())dl.replaceChildren"),
  "Autocomplete must discard stale responses");
+assert(source.includes('literalOriginal:S.mode==="palabra"'),"Word mode must preserve the written form");
+assert(source.includes('variants:false'),"Word searches must not expand approximate variants");
+assert(source.includes('if(false&&S.mode==="palabra"'),"Implicit cross-language expansion must stay disabled");
 console.log("PASS Lexicon: Greek polytonic and decomposed accents, Latin macrons, query revisions, URL history, and bounded data loading.");

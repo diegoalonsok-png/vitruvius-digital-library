@@ -418,7 +418,20 @@ async function completeIdentity(identity){
  return identity;
 }
 const cache=new Map();
-window.VitruviaEntityResolver={subject:clean,resolve(q,lang="es"){
+const fastCache=new Map();
+function resolveFast(query,preferredLang="es"){
+ const q=clean(query),lang=["es","en","fr"].includes(preferredLang)?preferredLang:"es";
+ const key=norm(q)+":"+lang;
+ if(!q||q.length>130)return Promise.resolve(null);
+ if(!fastCache.has(key)){
+  // Exact titles and documented redirects need one text-only request. The full
+  // authority/disambiguation pipeline remains in the explicit expanded search.
+  const task=lookupTitle(q,lang).catch(()=>null);
+  fastCache.set(key,task);if(fastCache.size>80)fastCache.delete(fastCache.keys().next().value);
+ }
+ return fastCache.get(key);
+}
+window.VitruviaEntityResolver={subject:clean,resolveFast,resolve(q,lang="es"){
  // The same name with a requested discipline can denote a different entity.
  const key=norm(q)+":"+lang;
  if(!cache.has(key)){

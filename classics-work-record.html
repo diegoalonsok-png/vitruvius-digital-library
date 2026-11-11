@@ -41,7 +41,8 @@ html[data-theme=light] .actionbar select,html[data-theme=light] .actionbar butto
 footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30px}
 @media print{.actionbar,nav{display:none}body{color:#111;background:#fff}}
 </style>
-<script defer src="assets/classics-work-dossier.js?v=20261110-100witnesses-v24"></script>
+<script defer src="assets/editorial-work-records.js?v=20261111-identifiers-v1"></script>
+<script defer src="assets/classics-work-dossier.js?v=20261111-editorial-tei-v1"></script>
 <script defer src="assets/analytics-config.js?v=20261110-shared-v1"></script>
 <script defer src="assets/analytics.js?v=20261110-shared-v1"></script>
 <script defer src="assets/bibliotheca-export-xlsx.js?v=20261110-xlsx-codices-v4"></script>
@@ -83,6 +84,7 @@ async function ready(){
   const data=await API.data(),selected=$("record-work");
   selected.replaceChildren(new Option("Elegir una obra del repertorio",""));
   for(const work of data.docs.values())selected.append(new Option(work.author+" · "+work.title,work.id));
+  selected.append(new Option("Diego A. Kurilo · Vitruvius Digital Library · DOI del proyecto","vitruvius-digital-library"));
   function show(){
    const id=selected.value;
    const url=new URL(location.href);
@@ -92,7 +94,7 @@ async function ready(){
    $("work-record-status").textContent="Obra: "+id+" · testimonios del registro local y citas con estado documental.";
    void API.render($("work-record"),id);
   }
-  selected.value=data.docs.has(requested)?requested:"";
+  selected.value=data.docs.has(requested)||window.EditorialWorkRecords?.has(requested)?requested:"";
   if(!selected.value){$("work-record-status").textContent="Elija una de las "+data.count+" obras catalogadas."; }
   selected.addEventListener("change",show);
   $("print-record").addEventListener("click",()=>window.print());
