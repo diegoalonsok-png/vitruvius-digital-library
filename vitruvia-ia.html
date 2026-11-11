@@ -27,30 +27,111 @@ textarea::placeholder{color:#85878d}.toolbar{border-top:1px solid var(--line);pa
 .source{border-top:1px solid var(--line);padding:11px 0}.source strong{display:block}.source small{display:block}.pending{color:var(--muted);padding:12px 4px}#privacy{font-size:12px;color:var(--muted);text-align:center;margin-top:24px}
 #conversation{min-height:70px}.assistive{position:absolute;left:-9999px}.metric{font:normal 20px Georgia,serif}
 @media(max-width:600px){.header{align-items:flex-start;flex-direction:column}.toolbar{gap:10px}h1{font-size:44px}}
+
+/* Vitruvia IA · compact conversational layout, same 3x3 palette concept as Lexicon. */
+:root{--ia-paper:#0d0e10}
+body{background:var(--ia-paper);min-height:100dvh}
+.header{padding:13px clamp(16px,3vw,38px);gap:16px}
+.header nav{margin-left:auto}
+.appearance{display:flex;align-items:center;gap:9px}
+.ia-palette{position:relative}
+.ia-palette summary,.ia-theme{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 12px;background:var(--box);color:var(--fg);border:1px solid var(--line);border-radius:10px;cursor:pointer;font:13px system-ui,sans-serif}
+.ia-palette summary{list-style:none}.ia-palette summary::-webkit-details-marker{display:none}
+.ia-palette-panel{position:absolute;z-index:50;right:0;top:48px;display:grid;grid-template-columns:repeat(3,34px);gap:9px;padding:13px;background:var(--box);border:1px solid var(--line);border-radius:12px;box-shadow:0 15px 38px #0006}
+.ia-palette-panel label,.ia-palette-panel input{grid-column:1/-1}
+.ia-palette-panel label{font-size:12px;color:var(--muted)}
+.ia-palette-panel input{width:100%;min-height:34px}
+.ia-swatch{width:34px;height:34px;background:var(--swatch);border:2px solid #858585;border-radius:50%;cursor:pointer}
+.ia-swatch[aria-pressed=true]{outline:2px solid var(--fg);outline-offset:3px}
+main{width:min(100%,920px);min-height:calc(100dvh - 75px);display:flex;flex-direction:column;padding:clamp(18px,6vh,70px) 20px 22px}
+.intro{padding:0 0 28px}.intro h1{font:400 clamp(34px,5vw,52px)/1.14 Georgia,serif;margin:12px 0}
+.intro p{font-size:14px;max-width:590px}
+#conversation{min-height:0;flex:1 0 auto;margin:0 0 24px;display:flex;flex-direction:column;gap:14px}
+.entry{padding:18px 20px;background:var(--box);border:1px solid var(--line);border-radius:14px;overflow-wrap:anywhere}
+.entry h2{font-size:22px}.entry h3{font-weight:400;color:var(--fg)}.entry small,.source small,.caption{color:var(--muted);font-size:12px;line-height:1.65}
+.surface{width:100%;position:relative;box-shadow:0 10px 32px #0002;padding:9px 13px 10px;border-radius:21px}
+.surface:focus-within{border-color:var(--accent)}
+textarea{resize:vertical;min-height:82px;max-height:36vh;padding:13px 10px;font-size:16px}
+.toolbar{gap:9px;padding:9px 3px 1px}
+.attachment{cursor:pointer;border-radius:12px;padding:7px 14px;min-height:39px;font-weight:600}
+#file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.hint{font-size:11px}
+.clear{border:1px solid var(--line);border-radius:10px;padding:7px 10px;text-decoration:none;color:var(--muted)}
+.send{border:0;border-radius:12px;padding:8px 17px;min-height:39px;background:var(--fg);color:var(--bg);font-weight:700}
+#privacy{font-size:11px;margin:15px 0 0;line-height:1.5}
+.attachment:focus-visible,.clear:focus-visible,.send:focus-visible,.ia-swatch:focus-visible,.ia-theme:focus-visible,.ia-palette summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+html[data-theme=light]{color-scheme:light;--bg:#f7f5ef;--box:#fff;--line:#d5d6d5;--fg:#22282e;--muted:#555c63;--accent:#5e5847}
+html[data-theme=light] .entry p,html[data-theme=light] .entry li{color:#30373b}
+html[data-theme=light] .quote{background:#f4f5f5;color:#26323a}
+html[data-theme=light] .attachment{background:#efefed;color:var(--fg);border-color:var(--line)}
+html[data-theme=light] .send{background:#27323b;color:#fff}
+@media(max-width:720px){.header{flex-wrap:wrap}.header nav{order:3;width:100%;justify-content:center;margin:0;gap:13px}.appearance{margin-left:auto}main{padding:40px 13px 18px}.intro h1{font-size:35px}.hint{flex-basis:100%;order:5}.send{margin-left:auto}.entry{padding:15px}}
+
 </style>
 </head>
 <body>
-<header class="header"><a href="index.html" class="brand">VITRVVIVS <span>IA</span></a><nav aria-label="Navegación principal"><a href="vitruvia.html">Vitruvia</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="bibliotheca-graeca-latina.html">Bibliotheca</a></nav></header>
+<header class="header">
+ <a href="index.html" class="brand">VITRVVIVS <span>IA</span></a>
+ <nav aria-label="Navegación principal"><a href="vitruvia.html">Vitruvia</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="bibliotheca-graeca-latina.html">Bibliotheca</a></nav>
+ <div class="appearance">
+  <details class="ia-palette" id="ia-palette"><summary aria-label="Color de fondo" title="Color de fondo">◉ <span>Fondo</span></summary>
+   <div class="ia-palette-panel" role="group" aria-label="Elegir color de fondo">
+    <button type="button" class="ia-swatch" data-color="#0d0e10" style="--swatch:#0d0e10" aria-label="Negro"></button>
+    <button type="button" class="ia-swatch" data-color="#202d35" style="--swatch:#202d35" aria-label="Azul pizarra"></button>
+    <button type="button" class="ia-swatch" data-color="#203329" style="--swatch:#203329" aria-label="Verde oscuro"></button>
+    <button type="button" class="ia-swatch" data-color="#32272c" style="--swatch:#32272c" aria-label="Borravino"></button>
+    <button type="button" class="ia-swatch" data-color="#f7f5ef" style="--swatch:#f7f5ef" aria-label="Marfil"></button>
+    <button type="button" class="ia-swatch" data-color="#f2efe6" style="--swatch:#f2efe6" aria-label="Papel"></button>
+    <button type="button" class="ia-swatch" data-color="#e3eaf0" style="--swatch:#e3eaf0" aria-label="Azul claro"></button>
+    <button type="button" class="ia-swatch" data-color="#e9e7dc" style="--swatch:#e9e7dc" aria-label="Gris cálido"></button>
+    <button type="button" class="ia-swatch" data-color="#ffffff" style="--swatch:#ffffff" aria-label="Blanco"></button>
+    <label for="ia-custom-color">Color personalizado</label><input id="ia-custom-color" type="color" value="#0d0e10" aria-label="Elegir color personalizado">
+   </div>
+  </details>
+  <button id="ia-theme" class="ia-theme" type="button" aria-label="Cambiar modo claro u oscuro" title="Cambiar modo claro u oscuro">☾</button>
+ </div>
+</header>
 <main>
-<section class="intro"><div class="eyebrow">Laboratorio abierto · humanidades digitales</div><h1>Preguntar, leer, investigar.</h1><p>Consulta la web con referencias o analiza un PDF, DOCX o texto antiguo. La lectura del archivo es privada y local; ningún documento se envía ni se almacena en GitHub.</p></section>
-<div class="surface">
-<label class="assistive" for="question">Pregunta o término de investigación</label>
-<textarea id="question" placeholder="Pregunta por un autor, obra, concepto o pasaje…&#10;Ej.: ¿Cuáles son los términos más frecuentes de este texto latino?" aria-label="Consulta" spellcheck="true"></textarea>
-<div class="file-line" id="file-info" aria-live="polite"></div>
-<div class="toolbar">
-<label class="attachment" for="file" role="button" tabindex="0" title="Adjuntar documento">＋ Adjuntar PDF, DOCX o TXT</label>
-<input id="file" type="file" accept=".pdf,.docx,.txt,.xml,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-<span class="hint">Enter: consultar · «web:» busca en internet · «ia:» solicita análisis local (si está disponible) · Máx. 15 MB</span>
-<button id="clear" class="clear" type="button">Borrar sesión</button>
-</div>
-</div>
-<div class="chips" aria-hidden="true"><span>Filología griega y latina</span><span>Pasajes y frecuencias</span><span>Fuentes web</span><span>PDF / DOCX local</span></div>
-<section id="conversation" class="out" aria-live="polite"></section>
-<p id="privacy">Los archivos y el texto extraído viven únicamente en la memoria de esta pestaña. No hay subida a GitHub, almacenamiento local ni registro de consultas en el sitio. La búsqueda web envía únicamente las palabras de la consulta al servicio consultado.</p>
+ <section class="intro"><div class="eyebrow">Investigación documental · humanidades digitales</div><h1>¿Qué querés investigar?</h1><p>Preguntá por cualquier tema, buscá fuentes en internet o analizá un documento en esta pestaña.</p></section>
+ <section id="conversation" class="out" aria-live="polite" aria-label="Conversación y resultados"></section>
+ <div class="surface" role="group" aria-label="Nueva consulta">
+  <label class="assistive" for="question">Pregunta o término de investigación</label>
+  <textarea id="question" rows="2" placeholder="Preguntá lo que quieras…" aria-label="Consulta" spellcheck="true"></textarea>
+  <div class="file-line" id="file-info" aria-live="polite"></div>
+  <div class="toolbar">
+   <label class="attachment" for="file" role="button" tabindex="0" title="Adjuntar PDF o documento">＋ <span>PDF</span></label>
+   <input id="file" type="file" accept=".pdf,.docx,.txt,.xml,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-label="Seleccionar PDF o documento">
+   <span class="hint">PDF, DOCX o TXT · análisis local · máximo 15 MB</span>
+   <button id="clear" class="clear" type="button" title="Borrar la conversación">Borrar</button>
+   <button id="send" class="send" type="button" aria-label="Enviar consulta" title="Enviar consulta">Enviar ↑</button>
+  </div>
+ </div>
+ <p id="privacy">Citas en Chicago 18 cuando los metadatos están disponibles; referencias incompletas claramente identificadas. Los documentos se procesan en la memoria de esta pestaña, sin subirse a GitHub. Las búsquedas web envían las palabras consultadas a los servicios externos. Los PDF sin texto extraíble requieren OCR.</p>
 </main>
 <script type="module">
 const q=document.getElementById('question'),fileInput=document.getElementById('file'),info=document.getElementById('file-info'),output=document.getElementById('conversation');
 let documentData=null,session=0,pdfLibrary=null,zipLoader=null;
+
+// Palette copied from Lexicon's background-control interaction: 3x3 swatches,
+// plus an explicit light/dark control. Preferences stay in this tab only.
+const root=document.documentElement;
+const palette=document.getElementById('ia-palette');
+function setAppearance(color){
+ const hex=String(color||'').toLowerCase();
+ if(!/^#[0-9a-f]{6}$/.test(hex))return;
+ const channels=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255);
+ const brightness=.2126*channels[0]+.7152*channels[1]+.0722*channels[2];
+ root.dataset.theme=brightness>.62?'light':'dark';
+ root.style.setProperty('--ia-paper',hex);
+ document.querySelectorAll('.ia-swatch').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.color===hex)));
+ document.getElementById('ia-custom-color').value=hex;
+ document.getElementById('ia-theme').textContent=brightness>.62?'☀':'☾';
+}
+document.querySelectorAll('.ia-swatch').forEach(b=>b.addEventListener('click',()=>{setAppearance(b.dataset.color);palette.open=false}));
+document.getElementById('ia-custom-color').addEventListener('input',e=>setAppearance(e.target.value));
+document.getElementById('ia-theme').addEventListener('click',()=>setAppearance(root.dataset.theme==='light'?'#0d0e10':'#f7f5ef'));
+setAppearance('#0d0e10');
+
 const el=(tag,text,klass)=>{const n=document.createElement(tag);if(text!=null)n.textContent=text;if(klass)n.className=klass;return n};
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLocaleLowerCase().replace(/ς/g,'σ').replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 const tokens=s=>fold(s).split(/\s+/).filter(x=>x.length>=3);
@@ -59,6 +140,10 @@ const describeScript=text=>{const greek=[...text.matchAll(/[\u0370-\u03ff\u1f00-
 const shorten=(s,n=600)=>String(s||'').replace(/\s+/g,' ').slice(0,n);
 function addText(parent,tag,value,klass){const n=el(tag,value,klass);parent.append(n);return n}
 function link(parent,url,label){const a=el('a',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';parent.append(a);return a}
+function chicagoWebCitation(title,url){
+ const access=new Intl.DateTimeFormat('es-AR',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date());
+ return 'Wikipedia contributors. “'+title+'.” Wikipedia. Consultado el '+access+'. '+url+'.';
+}
 function entry(title){const n=el('article',null,'entry');output.prepend(n);addText(n,'h2',title);return n}
 function clear(){++session;documentData=null;pdfLibrary=null;zipLoader=null;fileInput.value='';info.textContent='';info.classList.remove('on');output.replaceChildren();q.value='';q.focus()}
 document.getElementById('clear').addEventListener('click',clear);
@@ -119,23 +204,23 @@ function searchDocument(question,box){
   addText(box,'p','La frecuencia no es análisis morfológico ni lematización. En griego y latín las flexiones permanecen separadas.','caption');
  }
  const terms=queryTerms.filter(w=>!new Set(['este','esta','texto','documento','obra','pasaje','sobre','donde','cual','cuáles','cuales','porque','encontrar','buscar','quiero','analizar','resumen','tiene','como','cuando']).has(w));
- const rank=data.pages.map((p,i)=>{const hay=' '+fold(p.text)+' ';const count=terms.reduce((n,t)=>n+hay.split(' '+t+' ').length-1,0);return {...p,index:i,count}}).filter(p=>p.count>0).sort((a,b)=>b.count-a.count).slice(0,6);
- if(rank.length){addText(box,'h3','Pasajes recuperados literalmente');for(const p of rank){addText(box,'small',p.label+' · '+p.count+' coincidencias');addText(box,'div',shorten(p.text,780),'quote')}}
+ const rank=data.pages.map((p,i)=>{const hay=' '+fold(p.text)+' ';const count=terms.reduce((n,t)=>n+hay.split(' '+t+' ').length-1,0);return {...p,index:i,count}}).filter(p=>p.count>0).sort((a,b)=>b.count-a.count).slice(0,16);
+ if(rank.length){addText(box,'h3','Pasajes recuperados literalmente');for(const p of rank){addText(box,'small',p.label+' · '+p.count+' coincidencias');addText(box,'div',shorten(p.text,1800),'quote')}}
  else if(terms.length){addText(box,'p','No encontré esas palabras de manera literal en el texto extraído. Prueba otra grafía o una forma flexiva.');}
- else{addText(box,'h3','Fragmentos iniciales');for(const p of data.pages.slice(0,3)){addText(box,'small',p.label);addText(box,'div',shorten(p.text,430),'quote')}}
+ else{addText(box,'h3','Fragmentos iniciales');for(const p of data.pages.slice(0,8)){addText(box,'small',p.label);addText(box,'div',shorten(p.text,1300),'quote')}}
  addText(box,'p','La respuesta se basa en texto extraído y coincidencias verificables, no en una interpretación generativa. No se asigna ningún folio o traducción sin cotejo.','caption');
 }
 async function webResearch(question,box,token){
  addText(box,'p','Consulta pública: '+question+'. Se buscan fichas y descripciones documentadas; los resultados no equivalen a una síntesis crítica automática.');
  const status=addText(box,'p','Buscando referencias web…','pending');
  const query=question.replace(/^(?:busca|buscar|investiga|quien fue|quién fue|que es|qué es|dime|explica)\s+/i,'').slice(0,140);
- const encycl='https://es.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:query,srlimit:'6',format:'json',origin:'*'});
+ const encycl='https://es.wikipedia.org/w/api.php?'+new URLSearchParams({action:'query',list:'search',srsearch:query,srlimit:'15',format:'json',origin:'*'});
  try{
   const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),8500);
   let data;try{const r=await fetch(encycl,{signal:controller.signal});if(!r.ok)throw Error('HTTP '+r.status);data=await r.json()}finally{clearTimeout(timeout)}
   if(token!==session)return;
   const records=data.query?.search||[];status.textContent=records.length?'Referencias enciclopédicas identificadas (verificar las fuentes originales):':'Sin resultados enciclopédicos directos.';
-  for(const rec of records){const block=el('div',null,'source');box.append(block);const title=rec.title||'Ficha';const url='https://es.wikipedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_'));const strong=el('strong');block.append(strong);link(strong,url,title);const clean=new DOMParser().parseFromString(rec.snippet||'','text/html').body.textContent||'';addText(block,'p',clean);addText(block,'small','Wikipedia · descripción de búsqueda; no es una fuente primaria.')}
+  for(const rec of records){const block=el('div',null,'source');box.append(block);const title=rec.title||'Ficha';const url='https://es.wikipedia.org/wiki/'+encodeURIComponent(title.replace(/ /g,'_'));const strong=el('strong');block.append(strong);link(strong,url,title);const clean=new DOMParser().parseFromString(rec.snippet||'','text/html').body.textContent||'';addText(block,'p',clean);addText(block,'small','Fuente secundaria · referencia Chicago 18 orientativa:');addText(block,'small',chicagoWebCitation(title,url))}
  }catch{if(token===session)status.textContent='La consulta directa no está disponible. Puedes continuar con los catálogos externos.'}
  const nav=el('p');box.append(nav);
  link(nav,'https://www.google.com/search?'+new URLSearchParams({q:question}),'Google');nav.append(document.createTextNode(' · '));
@@ -154,13 +239,14 @@ async function optionalLocalAI(question,box){
  let model=null;
  try{
   model=await API.create();
-  const answer=await model.prompt('Analiza exclusivamente este texto. No inventes citas, folios ni autorías. Identifica incertidumbres. Responde en español en 3 párrafos; explica cuáles fragmentos sustentan tus afirmaciones. Consulta: '+question+'\n\nDOCUMENTO LOCAL:\n'+source);
+  const answer=await model.prompt('Analiza exclusivamente este texto. No inventes citas, folios ni autorías. Identifica incertidumbres. Responde en español extensamente según la evidencia disponible, sin inventar datos. Explica qué fragmentos sustentan las afirmaciones e incorpora referencias en estilo Chicago 18 solo con metadatos verificables. Consulta: '+question+'\n\nDOCUMENTO LOCAL:\n'+source);
   status.textContent='Interpretación generada por el modelo local del navegador; requiere cotejo filológico.';
   addText(box,'div',String(answer||''),'quote');
  }catch{status.textContent='No pudo iniciarse la IA local; los pasajes extraídos siguen disponibles.'}
  finally{try{model?.destroy?.()}catch{}}
 }
 async function ask(){const question=q.value.trim();if(!question)return;q.value='';const token=session,box=entry(question);if(/^web\s*:/i.test(question)){await webResearch(question.replace(/^web\s*:/i,''),box,token)}else if(documentData){searchDocument(question,box);if(/^ia\s*:/i.test(question))await optionalLocalAI(question.replace(/^ia\s*:/i,''),box)}else{await webResearch(question,box,token)}}
+document.getElementById('send').addEventListener('click',()=>void ask());
 q.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();void ask()}});
 window.addEventListener('pagehide',()=>{documentData=null;fileInput.value='';output.replaceChildren()});
 </script>
