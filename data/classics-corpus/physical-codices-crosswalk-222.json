@@ -3,8 +3,8 @@
   "updated": "2026-11-10",
   "sourceRegistry": "data/bibliotheca-testimonia-verified.json",
   "policy": "A witness record is a textual attribution. canonicalPhysicalId identifies its underlying physical artifact. This reconciliation is based on holdings signatures and is not an ecdotic stemma.",
-  "witnessRecords": 89,
-  "physicalObjects": 83,
+  "witnessRecords": 94,
+  "physicalObjects": 87,
   "groups": [
     {
       "canonicalPhysicalId": "codex-vitruvius-h",
@@ -52,7 +52,7 @@
         "virgil-aeneid",
         "virgil-georgica"
       ],
-      "repository": "Biblioteca Apostolica Vaticana",
+      "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
       "shelfmark": "Vat. lat. 3225",
       "identitySource": "https://digi.vatlib.it/view/MSS_Vat.lat.3225"
     },
@@ -93,7 +93,7 @@
         "apuleius-metamorphoses",
         "apuleius-apologia"
       ],
-      "repository": "Biblioteca Medicea Laurenziana",
+      "repository": "Florencia, Biblioteca Medicea Laurenziana",
       "shelfmark": "Plut. 68.2",
       "identitySource": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A"
     },
@@ -369,8 +369,8 @@
         "clement-2",
         "ignatius"
       ],
-      "repository": "Greek Orthodox Patriarchal Library of Jerusalem",
-      "shelfmark": "Panagiou Taphou 54",
+      "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
+      "shelfmark": "Παναγίου Τάφου 54 / Panagios Taphos 54",
       "identitySource": "https://pinakes.irht.cnrs.fr/"
     },
     {
@@ -1083,6 +1083,59 @@
       "repository": "Milano, Biblioteca Ambrosiana",
       "shelfmark": "C 222 inf.",
       "identitySource": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/"
+    },
+    {
+      "canonicalPhysicalId": "codex-seneca-harley-2752",
+      "witnessRecordIds": [
+        "seneca-epistulae-harley2752"
+      ],
+      "workIds": [
+        "seneca-epistulae"
+      ],
+      "repository": "London, British Library",
+      "shelfmark": "Harley MS 2752",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002048583"
+    },
+    {
+      "canonicalPhysicalId": "codex-seneca-harley-5006",
+      "witnessRecordIds": [
+        "seneca-tragedies-epistulae-harley5006"
+      ],
+      "workIds": [
+        "seneca-tragoediae",
+        "seneca-epistulae"
+      ],
+      "repository": "London, British Library",
+      "shelfmark": "Harley MS 5006",
+      "identitySource": "https://searcharchives.bl.uk/catalog/040-002050850"
+    },
+    {
+      "canonicalPhysicalId": "codex-bnf-grec-1642",
+      "witnessRecordIds": [
+        "xenophon-memorabilia-paris1642",
+        "appian-diodorus-paris1642"
+      ],
+      "workIds": [
+        "xenophon-memorabilia",
+        "appian-romaika",
+        "diodorus"
+      ],
+      "repository": "Paris, Bibliothèque nationale de France",
+      "shelfmark": "Grec 1642",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/51265/"
+    },
+    {
+      "canonicalPhysicalId": "codex-leiden-vulc-2",
+      "witnessRecordIds": [
+        "xenophon-polybius-leiden-vulc2"
+      ],
+      "workIds": [
+        "xenophon-memorabilia",
+        "polybius-historiae"
+      ],
+      "repository": "Leiden, Universitaire Bibliotheken",
+      "shelfmark": "Vulc. 002",
+      "identitySource": "https://pinakes.irht.cnrs.fr/notices/cote/38230/"
     }
   ]
 }
