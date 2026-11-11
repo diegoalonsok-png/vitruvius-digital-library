@@ -5,7 +5,7 @@
    request to MyMemory. That output is NOT a critical edition or verified gloss. */
 (()=>{"use strict";
 if(window.VitruviaInlineTranslation)return;
-const LANGS={la:"Latín",grc:"Griego antiguo",el:"Griego",es:"Castellano",en:"English",fr:"Français"};
+const LANGS={la:"Latín",grc:"Griego antiguo",el:"Griego",he:"Hebreo (posiblemente bíblico)",hbo:"Hebreo bíblico",es:"Castellano",en:"English",fr:"Français"};
 const TARGETS=["es","en","fr"];
 const MAX_INPUT=1200,MAX_PARTS=3,MAX_PART_BYTES=420;
 const cache=new Map();
@@ -53,7 +53,7 @@ async function externalTranslation(text,source,target){
  const fragments=chunks(text),translated=[];
  if(!fragments.length)return null;
  for(const fragment of fragments){
-  const externalSource=source==="grc"?"el":source;
+  const externalSource=source==="grc"?"el":source==="hbo"?"he":source;
   const query=new URLSearchParams({q:fragment,langpair:externalSource+"|"+target,mt:"1"});
   const url="https://api.mymemory.translated.net/get?"+query;
   // This is called ONLY after the reader presses the explicitly marked
@@ -130,6 +130,7 @@ function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceL
    const caution=el("small","",result.provider+
     (result.partial?" · Traducción parcial: consulte el texto completo en su fuente.":"")+
     (source==="grc"?" · El proveedor trata el griego antiguo como griego moderno; interpretación especialmente incierta.":"")+
+    (source==="he"||source==="hbo"?" · El proveedor trabaja con hebreo moderno; si el texto es bíblico, su interpretación puede ser imprecisa.":"")+
     " · No constituye traducción filológica, edición crítica ni texto citado.");
    output.append(label,p,caution);
   }catch(_){
