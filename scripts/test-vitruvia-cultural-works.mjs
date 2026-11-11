@@ -147,3 +147,14 @@ test('an architect cannot be replaced by an unrelated building named after that 
  assert.equal(window.VitruviaArchitecture.classify('Andrea Palladio',[station,person]).kind,'person');
  assert.equal(window.VitruviaArchitecture.classify('Andrea Palladio',[station,person]).subject,'Andrea Palladio');
 });
+
+test('institutional author dossiers use canonical Wikidata identities and documented cross-disciplinary categories',()=>{
+ const source=read('vitruvia-cultural-works.js');
+ assert.match(source,/Q4724:\s*\{/,'Le Corbusier identifier matches Wikidata');
+ assert.match(source,/Q177692:\s*\{/,'Palladio uses canonical identity, not just redirected Q12829680');
+ assert.match(source,/fondationlecorbusier\\.fr\\/en\\/le-corbusier\\/works\\/art-works\\/sculpture/);
+ assert.match(source,/fondationlecorbusier\\.fr\\/en\\/le-corbusier\\/works\\/art-works\\/painting/);
+ assert.match(source,/I quattro libri dell.architettura/);
+ assert.match(source,/renderInstitutionalDossier\(root,identity\?\.wikidataId\)/);
+ assert.match(source,/UNESCO/);
+});
