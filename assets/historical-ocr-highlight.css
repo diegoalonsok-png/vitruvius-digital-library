@@ -1,0 +1,21 @@
+/* Yellow OCR evidence highlight. Never applied to unaligned scanned-image pixels. */
+.vdl-ocr-highlight{
+ background:#fff1a3!important;color:#17222b!important;
+ border-left:4px solid #c5921d!important;border-radius:4px;
+ padding:12px 14px!important;margin:10px 0!important;
+ box-shadow:inset 0 -2px 0 #dbb32c!important;
+ line-height:1.72;white-space:pre-wrap;overflow-wrap:anywhere;
+}
+.vdl-ocr-highlight mark,.vdl-ocr-highlight .ces-hit{
+ background:#ffd33e!important;color:#161b20!important;
+ font-weight:700;text-decoration:underline;
+ text-decoration-color:#704900;text-decoration-thickness:2px;text-underline-offset:3px;
+}
+html[data-theme="dark"] .vdl-ocr-highlight,
+html[data-theme="light"] .vdl-ocr-highlight{
+ background:#fff1a3!important;color:#17222b!important;
+}
+@media(forced-colors:active){
+ .vdl-ocr-highlight{border:3px solid Highlight!important}
+ .vdl-ocr-highlight mark{outline:2px solid Highlight!important}
+}
