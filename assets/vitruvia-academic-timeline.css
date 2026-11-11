@@ -236,3 +236,132 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-event-marker{box-shadow:
 #vitruvia-academic-timeline{overflow:visible!important}
 #vitruvia-academic-timeline .vat-map{overflow:visible!important}
 #vitruvia-academic-timeline .vat-event-marker:focus-visible{outline:3px solid #8da9cc!important;outline-offset:4px}
+
+
+/* v2.2 · Fitted, non-overlapping universal chronology.
+   No absolute popovers: hovered records appear in their own in-flow
+   preview below the axis. This avoids clipping and collisions with
+   adjacent manuscript/text panels at desktop and phone widths. */
+#vitruvia-academic-timeline{
+ box-sizing:border-box!important;width:100%!important;max-width:100%!important;
+ min-width:0!important;overflow:hidden!important;
+ border-radius:14px!important;border-color:#515b63!important;
+ background:linear-gradient(155deg,#171c21 0%,#111417 57%,#1c2124 100%)!important;
+ box-shadow:0 10px 25px #0002;
+}
+#vitruvia-academic-timeline .vat-header{
+ display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px;
+ border-bottom:1px solid #3b444a;padding-bottom:13px
+}
+#vitruvia-academic-timeline .vat-title{flex:1 1 225px;min-width:0}
+#vitruvia-academic-timeline .vat-title h2{font:500 clamp(20px,2.6vw,27px)/1.2 Georgia,serif}
+#vitruvia-academic-timeline .vat-title p{overflow-wrap:anywhere}
+#vitruvia-academic-timeline .vat-controls{display:flex;flex:0 1 auto;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-start}
+#vitruvia-academic-timeline .vat-controls button{
+ min-width:38px;min-height:38px;border-radius:8px;
+ background:#293139;color:#f2f3f3;border:1px solid #687780;
+}
+#vitruvia-academic-timeline .vat-controls button:hover{background:#3d505d}
+#vitruvia-academic-timeline .vat-period-tabs{
+ display:flex;flex-wrap:wrap;gap:8px;margin:9px 0 12px;max-width:100%;
+}
+#vitruvia-academic-timeline .vat-period-tabs button{
+ appearance:none;max-width:100%;padding:8px 13px;min-height:39px;
+ font:600 12px/1.45 system-ui,sans-serif;text-align:left;overflow-wrap:anywhere;
+ border-radius:10px;border:1px solid #556675;background:#262e35;
+ color:#eceff1;cursor:pointer
+}
+#vitruvia-academic-timeline .vat-period-tabs button[aria-pressed=true]{
+ background:#c9dfe8;color:#20303b;border-color:#dfeef3
+}
+#vitruvia-academic-timeline .vat-viewport{
+ width:100%!important;min-width:0!important;max-width:100%!important;
+ overflow:hidden!important;outline-offset:3px!important
+}
+#vitruvia-academic-timeline .vat-map{
+ display:block!important;width:100%!important;min-width:0!important;
+ max-width:100%!important;overflow:hidden!important
+}
+#vitruvia-academic-timeline .vat-axis{
+ box-sizing:border-box;min-width:0!important;
+ margin-top:3px;margin-bottom:10px!important;
+ border-bottom:2px solid #798891;
+}
+#vitruvia-academic-timeline .vat-band{
+ display:grid;grid-template-columns:var(--vat-label-width,170px) minmax(0,1fr)!important;
+ align-items:start;gap:0;box-sizing:border-box;
+ margin:0 0 9px;border:1px solid #3d484f!important;border-radius:10px;
+ background:#20282e;overflow:hidden!important;
+ padding:6px 0!important;min-width:0!important
+}
+#vitruvia-academic-timeline .vat-band:last-of-type{border-bottom:1px solid #3d484f!important}
+#vitruvia-academic-timeline .vat-band-title{min-width:0;overflow-wrap:anywhere;padding:15px 9px!important}
+#vitruvia-academic-timeline .vat-band-title strong{font-weight:550}
+#vitruvia-academic-timeline .vat-band-body{
+ box-sizing:border-box;min-width:0;max-width:100%;width:100%;
+ overflow:hidden;display:flex;flex-direction:column;gap:0;
+ border-left:1px solid #3c464d;padding:4px 6px 4px 0
+}
+#vitruvia-academic-timeline .vat-track{
+ position:relative!important;box-sizing:border-box;
+ width:100%!important;min-width:0!important;max-width:100%!important;
+ overflow:hidden!important;
+}
+#vitruvia-academic-timeline .vat-line{top:35px;border-top:2px solid #89969b}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker{
+ width:24px!important;height:24px!important;
+ min-width:24px!important;max-width:24px!important;min-height:24px!important;
+ max-height:24px!important;background:var(--vat-tag-color,#d4e5f2)!important;
+ border:2px solid #d5dce1!important;box-shadow:0 0 0 3px #303b43!important;
+ transform:translateX(-50%)!important;border-radius:50%!important;
+ transition:box-shadow .14s ease,filter .14s ease!important
+}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:is(:hover,:focus-visible,[aria-pressed=true]){
+ transform:translateX(-50%)!important;
+ box-shadow:0 0 0 4px #b9ceda,0 0 0 8px #293b46!important;
+ filter:brightness(1.05);z-index:2
+}
+/* Popups from the old floating layout remain in the DOM for backwards
+   compatibility, but the reader exposes their content in an in-flow preview. */
+#vitruvia-academic-timeline .vat-event-pop{display:none!important}
+#vitruvia-academic-timeline .vat-peek{
+ display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 11px;
+ box-sizing:border-box;min-width:0;width:100%;max-width:100%;
+ padding:9px 12px;margin:0 0 7px;border:1px solid #657783;
+ border-left:3px solid #a2c5d8;border-radius:8px;
+ background:#29353d;color:#f1f5f5;overflow-wrap:anywhere;
+}
+#vitruvia-academic-timeline .vat-peek[hidden]{display:none!important}
+#vitruvia-academic-timeline .vat-peek-year{font:700 12px/1.5 Georgia,serif;color:#c4e0eb}
+#vitruvia-academic-timeline .vat-peek strong{font:600 13px/1.4 system-ui,sans-serif;min-width:0}
+#vitruvia-academic-timeline .vat-peek p{flex-basis:100%;font:12px/1.5 system-ui,sans-serif;color:#d7dfe3;margin:2px 0 0}
+#vitruvia-academic-timeline .vat-detail{
+ box-sizing:border-box;max-width:100%;overflow-wrap:anywhere;
+ border-radius:12px;border-color:#748893;background:#26313a;margin-top:14px
+}
+#vitruvia-academic-timeline .vat-detail-text :is(h4,p){overflow-wrap:anywhere}
+#vitruvia-academic-timeline .vat-detail-image{filter:none}
+html[data-theme=light] #vitruvia-academic-timeline{
+ background:linear-gradient(160deg,#fafaf9 0%,#edf1f0 100%)!important;
+ color:#26323a;border-color:#a5b1b2!important
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-band{background:#f0f3f1;border-color:#c0cbd0!important}
+html[data-theme=light] #vitruvia-academic-timeline .vat-band-body{border-color:#c2cecf}
+html[data-theme=light] #vitruvia-academic-timeline .vat-peek{background:#e4edf0;color:#293843;border-color:#a4bbc7}
+html[data-theme=light] #vitruvia-academic-timeline .vat-peek :is(strong,p,.vat-peek-year){color:#293843}
+html[data-theme=light] #vitruvia-academic-timeline .vat-period-tabs button{background:#e5ebed;color:#293b43;border-color:#aebec6}
+html[data-theme=light] #vitruvia-academic-timeline .vat-period-tabs button[aria-pressed=true]{background:#2d5468;color:#fff}
+@media(max-width:600px){
+ #vitruvia-academic-timeline{padding:11px 9px!important;border-radius:10px!important}
+ #vitruvia-academic-timeline .vat-header{gap:9px}
+ #vitruvia-academic-timeline .vat-controls{width:100%;justify-content:flex-start}
+ #vitruvia-academic-timeline .vat-band-title{padding:12px 4px!important;gap:3px}
+ #vitruvia-academic-timeline .vat-band-title strong{font-size:11px}
+ #vitruvia-academic-timeline .vat-band-body{padding-right:1px}
+ #vitruvia-academic-timeline .vat-peek{padding:8px 7px}
+ #vitruvia-academic-timeline .vat-axis .vat-tick{font-size:10px}
+}
+@media print{
+ #vitruvia-academic-timeline{background:#fff!important;color:#111!important;overflow:visible!important;box-shadow:none}
+ #vitruvia-academic-timeline .vat-event-pop{display:none!important}
+}
