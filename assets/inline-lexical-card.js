@@ -85,10 +85,34 @@ function links(term){
  }content.append(bar);
 }
 async function show(term,rect){
- const id=++serial;h.textContent=term;content.textContent="Consultando repertorio…";popup.hidden=false;position(rect);
- const data=await getEntries();if(id!==serial)return;
+ const id=++serial;h.textContent=term;popup.hidden=false;position(rect);
  content.replaceChildren();
  const token=normalize(term);
+ // Show the attested local headword immediately; corpus dictionaries are loaded
+ // in the background only after the card is visibly open.
+ const instant=special[token];
+ if(instant){
+  line("Lema:",term);
+  line("Gramática:",instant.grammar);
+  line("Definición:",instant.meaning);
+  translatedMeaning(term,instant.meaning);
+  line("Etimología:",instant.etymology);
+  line("Uso en Vitruvio:",instant.use);
+  if(image[token]){
+   const im=image[token],fig=document.createElement("figure"),pic=document.createElement("img");
+   pic.src=im.src;pic.alt="Testimonio arqueológico documentado";pic.loading="lazy";
+   pic.addEventListener("error",()=>pic.remove(),{once:true});
+   const cap=document.createElement("figcaption");cap.textContent=im.caption+" ";
+   const a=document.createElement("a");a.href=im.url;a.target="_blank";
+   a.rel="noopener noreferrer";a.textContent="Fuente y licencia";
+   cap.append(a);fig.append(pic,cap);content.append(fig);
+  }
+  links(term);
+  return;
+ }
+ content.textContent="Consultando repertorio…";
+ const data=await getEntries();if(id!==serial)return;
+ content.replaceChildren();
  const e=data.find(item=>[item.lemma,...(item.forms||[])].filter(Boolean).some(v=>normalize(v)===token));
  const lemma=e?.lemma||term,extra=special[normalize(lemma)];
  line("Lema:",lemma+(e?.headword?" · "+e.headword:""));
@@ -143,8 +167,8 @@ document.addEventListener("click",event=>{
  if(!/^[\p{L}\p{M}'ʼ’-]{2,70}$/u.test(term))return;
  event.preventDefault();
  event.stopPropagation();
- show(term,mark.getBoundingClientRect());
-});
+ void show(term,mark.getBoundingClientRect());
+},true);
 document.addEventListener("dblclick",e=>{
  if(e.button!==0||!e.target.closest(selector)||e.target.closest("a,button,input,textarea,select,[contenteditable],#vitruvius-lexical-card"))return;
  const sel=window.getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return;
