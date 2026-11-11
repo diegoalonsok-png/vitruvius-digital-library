@@ -3,13 +3,13 @@
 (()=>{'use strict';
 const page=document.querySelector('#search'),query=document.querySelector('#q'),edition=document.querySelector('#ed');
 if(!page||!query||!edition||!window.VitruviaOCRParagraphs)return;
-const supported=new Set(['krohn-1912','rose-1899','cesariano-1521']),cache=new Map();
+const supported=new Set(['krohn-1912','rose-1899','perrault-1673','cesariano-1521']),cache=new Map();
 const choose=(text,parent,tag='p')=>{const e=document.createElement(tag);e.textContent=text;parent.append(e);return e};
 const panel=document.createElement('section');panel.className='historical-semantic-panel';
 panel.setAttribute('aria-label','Búsqueda por párrafos OCR');
 panel.style.cssText='padding:1rem;margin:1rem 0;border:1px solid #928671;border-radius:8px';
 choose('Búsqueda de los PDF históricos por párrafos',panel,'h2');
-choose('Krohn 1912 · Rose 1899 · Cesariano 1521. Recupera fragmentos del OCR sin corregirlos ni confundir páginas con loci filológicos.',panel);
+choose('Krohn 1912 · Rose 1899 · Perrault 1673 · Cesariano 1521. Recupera fragmentos del OCR sin corregirlos ni confundir páginas con loci filológicos. Perrault transmite una traducción francesa, no un cuarto texto latino.',panel);
 const actions=document.createElement('div');actions.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:.65rem';
 const lexical=document.createElement('button');lexical.type='button';lexical.textContent='Buscar por párrafos (BM25)';
 const neural=document.createElement('button');neural.type='button';neural.textContent='Reordenar por sentido (IA E5)';
@@ -18,7 +18,7 @@ const status=choose('El modo BM25 funciona sin modelo ni pago. La opción E5 des
 status.setAttribute('role','status');
 const results=document.createElement('div');results.setAttribute('aria-live','polite');panel.append(results);
 page.after(panel);
-const tokens=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').split(/\s+/).filter(x=>x.length>2);
+const tokens=s=>String(s||'').replace(/ſ/g,'s').replace(/[Ææ]/g,'ae').replace(/[Œœ]/g,'oe').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').split(/\s+/).filter(x=>x.length>2);
 function lexicalRank(q,docs,limit=25){
  const words=[...new Set(tokens(q))],N=docs.length;
  if(!words.length)return [];
@@ -35,7 +35,7 @@ function lexicalRank(q,docs,limit=25){
   return {doc:x.doc,score,exact:score>8};
  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,limit);
 }
-const label=id=>({'krohn-1912':'Krohn (1912)','rose-1899':'Rose (1899)','cesariano-1521':'Cesariano (1521)'})[id]||id;
+const label=id=>({'krohn-1912':'Krohn (1912)','rose-1899':'Rose (1899)','perrault-1673':'Perrault (1673 · francés)','cesariano-1521':'Cesariano (1521)'})[id]||id;
 async function paragraphs(id){
  if(cache.has(id))return cache.get(id);
  const promise=(async()=>{const res=await fetch('data/text/'+id+'.json');if(!res.ok)throw Error('HTTP '+res.status);
@@ -47,7 +47,7 @@ async function paragraphs(id){
 let runId=0;
 async function rank(method){
  const id=edition.value,q=query.value.trim(),serial=++runId;
- if(!supported.has(id)){status.textContent='Seleccione Krohn, Rose o Cesariano para consultar sus párrafos OCR.';return}
+ if(!supported.has(id)){status.textContent='Seleccione Krohn, Rose, Perrault o Cesariano para consultar sus fragmentos OCR.';return}
  if(!q){status.textContent='Ingrese una palabra, tema o frase antes de buscar.';query.focus();return}
  lexical.disabled=neural.disabled=true;results.replaceChildren();
  status.textContent='Preparando los segmentos OCR de '+label(id)+'…';
@@ -69,9 +69,9 @@ async function rank(method){
    choose(label(id)+' · página PDF '+r.page+' · segmento '+r.part,card,'h3');
    const txt=r.text.slice(0,620)+(r.text.length>620?'…':'');
    const paragraph=choose('',card);
-   if((id==='rose-1899'||id==='cesariano-1521')&&window.VitruviaOCRHighlight?.decorate)
+   if((id==='rose-1899'||id==='perrault-1673'||id==='cesariano-1521')&&window.VitruviaOCRHighlight?.decorate)
     window.VitruviaOCRHighlight.decorate(paragraph,txt,q);
-   else {paragraph.textContent=txt;if(id==='rose-1899'||id==='cesariano-1521')paragraph.classList.add('vdl-ocr-highlight');}
+   else {paragraph.textContent=txt;if(id==='rose-1899'||id==='perrault-1673'||id==='cesariano-1521')paragraph.classList.add('vdl-ocr-highlight');}
    choose((r.segmentation==='ocr-block'?'Bloque OCR':'Ventana aproximada')+
     ' · OCR no cotejado · sin asignación canónica de locus',card,'small');
    const open=document.createElement('a');open.textContent='Abrir la página del facsímil';
