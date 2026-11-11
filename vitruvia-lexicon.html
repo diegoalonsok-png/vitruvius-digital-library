@@ -167,6 +167,15 @@ html[data-theme=light] .lx-appbox{background:#fff;border-color:#d4d2c9}html[data
 .lx-table th,.lx-table td{border-bottom:1px solid #2d2d2d;padding:7px 8px;text-align:left;vertical-align:top}
 .lx-table th{color:#999;font-weight:400;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
 .lx-table td[lang]{font:400 16px var(--lx-text)}
+
+/* Fecha y tasas en una sola línea; desplazamiento horizontal accesible. */
+.lx-freq-table-scroll{overflow-x:auto;max-width:100%;scrollbar-width:auto;overscroll-behavior-inline:contain}
+.lx-freq-table-scroll:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.lx-freq-table-scroll .lx-table{min-width:760px;width:100%}
+.lx-freq-table-scroll .lx-table th:nth-child(2),.lx-freq-table-scroll .lx-table td:nth-child(2){white-space:nowrap;min-width:148px;overflow-wrap:normal}
+.lx-freq-table-scroll .lx-table th:nth-child(4),.lx-freq-table-scroll .lx-table td:nth-child(4),.lx-freq-table-scroll .lx-table th:nth-child(5),.lx-freq-table-scroll .lx-table td:nth-child(5){white-space:nowrap;min-width:64px;font-variant-numeric:tabular-nums}
+.lx-freq-table-scroll .lx-table td:last-child .lx-btn{white-space:nowrap;min-width:104px}
+
 .lx-interlinear{display:flex;flex-wrap:wrap;gap:14px 18px;padding:12px 0}
 .lx-il{display:inline-grid;text-align:center;gap:1px}.lx-il b{font:400 19px var(--lx-text);color:#eee}.lx-il i{font:italic 13px var(--lx-text);color:#aaa}.lx-il small{font-size:10px;color:#777;max-width:16ch}
 .tool{padding:44px 0;border-top:1px solid #303030}
@@ -804,7 +813,7 @@ html[data-theme=light] .lx-attestations .lx-attestation-row{border-bottom-color:
 <script src="assets/bibliotheca-offsite-greek.js?v=20261110-plutarch-greek-v1" defer></script>
 <script defer src="assets/bibliotheca-offsite-latin.js?v=20261110-macrobius-7books-v4"></script>
 <script src="assets/classics-corpus-search.js?v=20261108-conceptus-index-v2" defer></script>
-<script src="assets/hiero-render.js?v=20261109-quadrats-v1" defer></script><script src="assets/lexicon-hiero-enhance.js?v=20261109-v1" defer></script><script src="assets/academic-inline-translation.js?v=20261109-v1" defer></script><script src="assets/vitruvia-lexicon.js?v=20261110-reviewed-ocr-v6&amp;patch=parallel-fallback-v1" defer></script>
+<script src="assets/hiero-render.js?v=20261109-quadrats-v1" defer></script><script src="assets/lexicon-hiero-enhance.js?v=20261109-v1" defer></script><script src="assets/academic-inline-translation.js?v=20261111-hebrew-passage-v1" defer></script><script src="assets/vitruvia-lexicon.js?v=20261110-reviewed-ocr-v6&amp;patch=parallel-fallback-v1&amp;translate-freq=20261111-v1" defer></script>
 <script src="assets/classical-lexicon.js?v=20261110-latin-lemma-vocative-v1" defer></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261110-highlight-word-v3"></script>
 <script src="assets/lexicon-classics-bridge.js?v=20261110-remote-readings-v2-academic-dossiers" defer></script>
