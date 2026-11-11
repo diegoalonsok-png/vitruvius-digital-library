@@ -433,7 +433,7 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    }
    const order=await page.evaluate(()=>{
     const body=document.getElementById('article-body');
-    const bio=[...body.querySelectorAll('p')].find(p=>/Marco Tulio Cicerón \\(106|Biografía de prueba/.test(p.textContent||''));
+    const bio=[...body.querySelectorAll('p')].find(p=>/Marco Tulio Cicerón \(106|Biografía de prueba/.test(p.textContent||''));
     const first=body.querySelector('.person-locus-entry');
     return {hasBiography:!!bio,hasLocus:!!first,
      biographyBeforeLocus:!!bio&&!!first&&!!(bio.compareDocumentPosition(first)&Node.DOCUMENT_POSITION_FOLLOWING)};
