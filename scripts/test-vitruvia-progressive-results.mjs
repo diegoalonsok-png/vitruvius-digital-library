@@ -19,10 +19,13 @@ assert.match(load,/vitruvia:catalogue-supplemental/);
 assert.match(search,/if\(earlyIdentity\)/);
 assert.match(search,/applyFeatured\(row,identity\.wikidataId\?10000:700,q,q\)/);
 const setup=search.indexOf('window.dispatchEvent(new CustomEvent("vitruvia:search"');
-const blocking=search.indexOf("await cataloguePromise");
 const preview=search.indexOf("applyFeatured(row,identity.wikidataId?");
-assert.ok(setup>=0&&blocking>setup&&preview>setup&&preview<blocking,
- "The first visual and sourced identity must be available before catalogue await");
+const core=search.indexOf("function integrateCore(){");
+const coreListener=search.indexOf('window.addEventListener("vitruvia:catalogue-core"');
+assert.ok(setup>=0&&preview>setup&&core>preview&&coreListener>core,
+ "The sourced identity must be scheduled before asynchronous core catalogue integration");
+assert.ok(!search.includes("await cataloguePromise"),
+ "The search must not block while waiting for the full catalogue");
 assert.equal((search.match(/window\.dispatchEvent\(new CustomEvent\("vitruvia:search"/g)||[]).length,1,
  "No second search event may erase the early image");
 assert.match(search,/integrateSupplement\(\)/);
