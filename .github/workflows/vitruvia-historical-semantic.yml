@@ -1,0 +1,36 @@
+name: Vitruvia web and historical paragraph quality
+on:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-web-routing.js'
+      - 'assets/vitruvia-search.js'
+      - 'assets/historical-paragraph-segmentation.js'
+      - 'assets/historical-semantic-search.js'
+      - 'scripts/build-historical-paragraph-index.mjs'
+      - 'scripts/test-vitruvia-web-routing.mjs'
+      - 'vitruvia.html'
+      - 'concordancia-historica.html'
+      - '.github/workflows/vitruvia-historical-semantic.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax validation
+        run: |
+          node --check assets/vitruvia-web-routing.js
+          node --check assets/vitruvia-search.js
+          node --check assets/historical-paragraph-segmentation.js
+          node --check assets/historical-semantic-search.js
+          node --check scripts/build-historical-paragraph-index.mjs
+      - name: Route sources by topic
+        run: node scripts/test-vitruvia-web-routing.mjs
+      - name: Verify OCR paragraph-to-page offsets
+        run: node scripts/build-historical-paragraph-index.mjs --audit-only
