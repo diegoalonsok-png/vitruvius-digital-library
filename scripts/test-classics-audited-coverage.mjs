@@ -51,7 +51,7 @@ const fixtures=specs.map(s=>{
 async function render({mutate=null,unavailable=false}={}){
  const elements=new Map(),requests=[];
  const host={dataset:{},querySelector(selector){
-  const match=selector.match(/^\\[data-classics="([^"]+)"\\]$/);
+  const match=selector.match(/^\[data-classics="([^"]+)"\]$/);
   if(!match)return null;
   if(!elements.has(match[1]))elements.set(match[1],{textContent:""});
   return elements.get(match[1]);
