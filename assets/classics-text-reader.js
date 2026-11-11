@@ -30,7 +30,15 @@ window.addEventListener("message",event=>{
 });
 
 /* Appearance controls supplied by the same-origin twin reader; editorial text is unchanged. */
-const PARALLEL_FONTS={serif:'Georgia, "Times New Roman", serif',sans:'system-ui, sans-serif',mono:'ui-monospace, monospace',classic:'"Palatino Linotype", "Book Antiqua", Palatino, serif'};
+const PARALLEL_FONTS={serif:'Georgia, "Times New Roman", "Gentium Plus", serif',sans:'system-ui, "Gentium Plus", sans-serif',mono:'ui-monospace, "Gentium Plus", monospace',classic:'"Palatino Linotype", "Book Antiqua", Palatino, "Gentium Plus", serif',gentium:'"Gentium Plus", "Noto Serif", Palatino, serif',cardo:'Cardo, "Gentium Plus", Palatino, serif',noto:'"Noto Serif", "Gentium Plus", Georgia, serif',garamond:'"EB Garamond", "Gentium Plus", Georgia, serif'};
+function ensureReaderFont(name){
+ const families={gentium:"Gentium+Plus:ital,wght@0,400;0,700;1,400",cardo:"Cardo:ital,wght@0,400;0,700;1,400",noto:"Noto+Serif:ital,wght@0,400;0,700;1,400",garamond:"EB+Garamond:ital,wght@0,400;0,600;1,400"};
+ if(!families[name]||document.getElementById("classical-reader-font-"+name))return;
+ const link=document.createElement("link");
+ link.id="classical-reader-font-"+name;link.rel="stylesheet";
+ link.href="https://fonts.googleapis.com/css2?family="+families[name]+"&display=swap";
+ document.head.append(link);
+}
 window.addEventListener("message",event=>{
  if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
  const cmd=event.data;
@@ -254,6 +262,7 @@ function validAppearance(obj){
  if(["justify","left"].includes(obj.align))appearance.align=obj.align;
 }
 function paintAppearance(persist=true){
+ ensureReaderFont(appearance.font);
  const reader=document.querySelector(".reader");
  if(!reader)return;
  const vars={
