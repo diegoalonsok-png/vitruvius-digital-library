@@ -47,8 +47,8 @@ async function paragraphs(id){
 let runId=0;
 async function rank(method){
  const id=edition.value,q=query.value.trim(),serial=++runId;
- if(!supported.has(id)){status.textContent='Seleccioná Krohn, Rose o Cesariano para consultar sus párrafos OCR.';return}
- if(!q){status.textContent='Ingresá una palabra, tema o frase antes de buscar.';query.focus();return}
+ if(!supported.has(id)){status.textContent='Seleccione Krohn, Rose o Cesariano para consultar sus párrafos OCR.';return}
+ if(!q){status.textContent='Ingrese una palabra, tema o frase antes de buscar.';query.focus();return}
  lexical.disabled=neural.disabled=true;results.replaceChildren();
  status.textContent='Preparando los segmentos OCR de '+label(id)+'…';
  try{
