@@ -67,14 +67,43 @@ html[data-theme=light] .attachment{background:#efefed;color:var(--fg);border-col
 html[data-theme=light] .send{background:#27323b;color:#fff}
 @media(max-width:720px){.header{flex-wrap:wrap}.header nav{order:3;width:100%;justify-content:center;margin:0;gap:13px}.appearance{margin-left:auto}main{padding:40px 13px 18px}.intro h1{font-size:35px}.hint{flex-basis:100%;order:5}.send{margin-left:auto}.entry{padding:15px}}
 
+
+/* Single-field conversation interface: minimal and responsive. */
+html,body{min-height:100%;width:100%;overflow-x:hidden}
+.header{position:fixed;top:0;right:0;left:0;z-index:20;display:flex;justify-content:flex-end;align-items:center;padding:18px clamp(15px,3vw,42px);border:0;background:transparent}
+.appearance{gap:8px}
+.ia-palette summary,.ia-theme{width:40px;height:40px;min-height:40px;padding:0;border-radius:50%;border:1px solid var(--line);font-size:18px;background:var(--box)}
+.ia-palette summary span{display:none}
+main{width:min(100%,1200px);min-height:100dvh;max-width:none;margin:0 auto;padding:calc(18vh + 35px) clamp(16px,4vw,40px) 40px;justify-content:flex-start;align-items:stretch}
+.intro{margin:0 0 20px;padding:0;text-align:center}
+.intro h1{margin:0;font:400 clamp(28px,3.8vw,46px)/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.035em;color:var(--fg)}
+#conversation{flex:0 0 auto;min-height:0;margin:0 0 16px}
+#conversation:empty{display:none}
+.surface{width:100%;max-width:1060px;align-self:center;background:var(--box);border:1px solid var(--line);border-radius:30px;padding:9px 13px 9px;box-shadow:none}
+textarea{padding:10px 15px 8px;min-height:52px;max-height:35vh;resize:vertical;font:400 clamp(15px,1.5vw,18px)/1.6 system-ui,sans-serif;color:var(--fg)}
+textarea::placeholder{color:var(--muted);opacity:.82}
+.toolbar{border:0;padding:2px 5px 2px;gap:8px;flex-wrap:nowrap}
+.attachment{width:43px;height:43px;min-width:43px;min-height:43px;border:0;border-radius:50%;padding:0;background:#2e3033;color:var(--fg);font:300 30px/1 system-ui,sans-serif;display:flex;align-items:center;justify-content:center}
+.clear{margin-left:auto;width:39px;height:39px;border:0;border-radius:50%;padding:0;font-size:19px;text-decoration:none}
+.send{width:42px;height:42px;min-width:42px;min-height:42px;border-radius:50%;padding:0;font-size:25px;font-weight:500}
+.file-line{font-size:12px;padding:3px 14px 8px}
+.out{width:100%;max-width:1060px;align-self:center}
+.entry{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:18px 4px 24px;box-shadow:none}
+.entry h2{font:500 18px/1.45 system-ui,sans-serif}
+.entry h3{font:500 16px/1.45 system-ui,sans-serif}
+.entry p,.entry li{font-size:14px;line-height:1.8}
+.source{padding:15px 0}
+body:has(#conversation:not(:empty)) main{padding-top:95px}
+body:has(#conversation:not(:empty)) .intro{display:none}
+body:has(#conversation:not(:empty)) .surface{order:2;position:sticky;bottom:10px;z-index:9}
+body:has(#conversation:not(:empty)) #conversation{order:1}
+@media(max-width:640px){main{padding:24vh 12px 20px}.header{padding:12px}.intro h1{font-size:30px}.surface{border-radius:24px}textarea{font-size:16px}.toolbar{gap:5px}}
+
 </style>
 </head>
 <body>
-<header class="header">
- <a href="index.html" class="brand">VITRVVIVS <span>IA</span></a>
- <nav aria-label="Navegación principal"><a href="vitruvia.html">Vitruvia</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="bibliotheca-graeca-latina.html">Bibliotheca</a></nav>
- <div class="appearance">
-  <details class="ia-palette" id="ia-palette"><summary aria-label="Color de fondo" title="Color de fondo">◉ <span>Fondo</span></summary>
+<header class="header" aria-label="Controles de apariencia">
+ <div class="appearance"><details class="ia-palette" id="ia-palette"><summary aria-label="Color de fondo" title="Color de fondo">◉ <span>Fondo</span></summary>
    <div class="ia-palette-panel" role="group" aria-label="Elegir color de fondo">
     <button type="button" class="ia-swatch" data-color="#0d0e10" style="--swatch:#0d0e10" aria-label="Negro"></button>
     <button type="button" class="ia-swatch" data-color="#202d35" style="--swatch:#202d35" aria-label="Azul pizarra"></button>
@@ -92,21 +121,19 @@ html[data-theme=light] .send{background:#27323b;color:#fff}
  </div>
 </header>
 <main>
- <section class="intro"><div class="eyebrow">Investigación documental · humanidades digitales</div><h1>¿Qué querés investigar?</h1><p>Preguntá por cualquier tema, buscá fuentes en internet o analizá un documento en esta pestaña.</p></section>
+ <section class="intro"><h1>¿Qué querés investigar?</h1></section>
  <section id="conversation" class="out" aria-live="polite" aria-label="Conversación y resultados"></section>
  <div class="surface" role="group" aria-label="Nueva consulta">
-  <label class="assistive" for="question">Pregunta o término de investigación</label>
-  <textarea id="question" rows="2" placeholder="Preguntá lo que quieras…" aria-label="Consulta" spellcheck="true"></textarea>
+  <label class="assistive" for="question">Escribir consulta</label>
+  <textarea id="question" rows="1" placeholder="Preguntá, investigá, analizá un documento…" aria-label="Consulta" spellcheck="true"></textarea>
   <div class="file-line" id="file-info" aria-live="polite"></div>
   <div class="toolbar">
-   <label class="attachment" for="file" role="button" tabindex="0" title="Adjuntar PDF o documento">＋ <span>PDF</span></label>
+   <label class="attachment" for="file" role="button" tabindex="0" title="Adjuntar PDF, DOCX o TXT" aria-label="Adjuntar PDF o documento">+</label>
    <input id="file" type="file" accept=".pdf,.docx,.txt,.xml,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" aria-label="Seleccionar PDF o documento">
-   <span class="hint">PDF, DOCX o TXT · análisis local · máximo 15 MB</span>
-   <button id="clear" class="clear" type="button" title="Borrar la conversación">Borrar</button>
-   <button id="send" class="send" type="button" aria-label="Enviar consulta" title="Enviar consulta">Enviar ↑</button>
+   <button id="clear" class="clear" type="button" title="Borrar sesión" aria-label="Borrar sesión">↺</button>
+   <button id="send" class="send" type="button" aria-label="Enviar consulta" title="Enviar consulta">↑</button>
   </div>
  </div>
- <p id="privacy">Citas en Chicago 18 cuando los metadatos están disponibles; referencias incompletas claramente identificadas. Los documentos se procesan en la memoria de esta pestaña, sin subirse a GitHub. Las búsquedas web envían las palabras consultadas a los servicios externos. Los PDF sin texto extraíble requieren OCR.</p>
 </main>
 <script type="module">
 const q=document.getElementById('question'),fileInput=document.getElementById('file'),info=document.getElementById('file-info'),output=document.getElementById('conversation');
