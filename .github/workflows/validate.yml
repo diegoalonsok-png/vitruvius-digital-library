@@ -272,6 +272,9 @@ jobs:
       - name: Test 7 · node scripts/test-vitruvia-academic-reader.mjs
         if: always()
         run: node scripts/test-vitruvia-academic-reader.mjs
+      - name: Verificar cronologías responsivas, ausencia de solapes y navegación por eventos
+        if: always()
+        run: node scripts/check-vitruvia-timeline.mjs
       - name: Test 8 · node scripts/test-vitruvia-dictation.mjs
         if: always()
         run: node scripts/test-vitruvia-dictation.mjs
