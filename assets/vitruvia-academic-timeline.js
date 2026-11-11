@@ -255,16 +255,14 @@
   const outer=Number(root.clientWidth)||Number(root.getBoundingClientRect?.().width)||760;
   const available=Math.max(1,Math.floor(outer)-(parseFloat(cs.paddingLeft)||0)-(parseFloat(cs.paddingRight)||0)-3);
   const labelWidth=Math.min(Math.round(available*.33),available<420?88:available<740?124:170);
-  // Preserve chronological spacing rather than stacking dozens of markers
-  // vertically in a narrow viewport. The canvas scrolls *inside* its panel.
-  const naturalWidth=Math.min(2400,Math.max(720,visibleEvents.length*48));
-  const mapWidth=Math.max(1,available-labelWidth-2,naturalWidth);
+  // Keep the chronological atlas inside the site's actual content width.
+  const mapWidth=Math.max(1,available-labelWidth-2);
   const cardWidth=Math.min(Math.round(134*state.zoom),Math.max(1,mapWidth-12));
   root.style.setProperty("--vat-label-width",labelWidth+"px");
   root.style.setProperty("--vat-card-width",cardWidth+"px");
   const viewport=el("div","vat-viewport");viewport.tabIndex=0;
   viewport.setAttribute("aria-label",L("Cronología adaptada al ancho del visor","Chronology fitted to reader width","Chronologie adaptée à la largeur du lecteur"));
-  const map=el("div","vat-map");map.style.width=(labelWidth+mapWidth)+"px";
+  const map=el("div","vat-map");map.style.width=available+"px";
   const axis=el("div","vat-axis");
   const ticks=Math.max(1,Math.min(9,Math.floor(mapWidth/120)));
   for(let i=0;i<=ticks;i++){
@@ -292,6 +290,26 @@
     preview.hidden=false;
    }
    const line=el("div","vat-line");track.append(line);
+   // Dense years are more legible as an in-flow dated list, with no overlapping
+   // markers or extra-wide canvas; every event and its source remains accessible.
+   const dense=items.length>Math.max(4,Math.floor(mapWidth/75));
+   if(dense){
+    const list=el("div","vat-dense-list");
+    for(const e of items){
+     const button=el("button","vat-list-event");button.type="button";
+     button.setAttribute("aria-pressed","false");
+     button.append(el("span","vat-year",(e.approx?"c. ":"")+showYear(e.year)),el("strong",null,e.title));
+     button.addEventListener("click",()=>highlightButton(button,detail,e));
+     stops.push({button,event:e});
+     const key=[e.title,e.year,e.lane].join("|");
+     if(key===state.selected)queueMicrotask(()=>{if(button.isConnected)highlightButton(button,detail,e)});
+     list.append(button);
+    }
+    track.remove();
+    laneBody.append(list);
+    band.append(title,laneBody);map.append(band);
+    continue;
+   }
    const positioned=layoutMarkers(items,low,range,mapWidth,state.zoom);
    let levelMax=0;
    for(const {event:e,center,level,popupWidth,shift} of positioned){
@@ -418,5 +436,5 @@
  }).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
  const snapshot=window.VitruviaSearchSnapshot;
  if(snapshot?.query)reset(snapshot.query);
- window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.1-fit-mobile-lifetime"};
+ window.VitruviaAcademicTimeline={collect,layoutMarkers,version:"2.2-contained-responsive-dense"};
 })();
