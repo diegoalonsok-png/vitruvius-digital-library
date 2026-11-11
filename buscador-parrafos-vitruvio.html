@@ -68,9 +68,22 @@ document.addEventListener('DOMContentLoaded',()=>{
     const box=document.createElement('article');box.className='hp-card';
     const h=document.createElement('h2');h.textContent=engine.SOURCES[hit.edition].title+' · página '+hit.page+' · bloque '+hit.block;
     const meta=document.createElement('small');meta.textContent='OCR sin revisión filológica · página digital '+hit.page+' · '+hit.method;
-    const p=document.createElement('p');p.textContent=hit.text;
+    const p=document.createElement('p');
+    if(hit.edition==='rose'||hit.edition==='cesariano'){
+     if(window.VitruviaOCRHighlight?.decorate)window.VitruviaOCRHighlight.decorate(p,hit.text,q);
+     else {p.classList.add('vdl-ocr-highlight');p.textContent=hit.text;}
+    }else p.textContent=hit.text;
     const link=document.createElement('a');link.href=hit.url;link.target='_blank';link.rel='noopener noreferrer';
-    link.textContent=hit.edition==='cesariano'?'Abrir visor de Cesariano (imagen aún no alineada con página OCR)':'Abrir página digital en el facsímil';box.append(h,meta,p,link);frag.append(box);
+    link.textContent=hit.edition==='cesariano'?'Abrir visor de Cesariano (imagen aún no alineada con página OCR)':'Abrir página digital en el facsímil';
+    box.append(h,meta,p,link);
+    if(hit.edition==='rose'||hit.edition==='cesariano'){
+     const focused=document.createElement('a');
+     focused.href=hit.edition==='rose'?'concordancia-historica.html?'+new URLSearchParams({ed:'rose-1899',q,page:String(hit.page)}):
+      'cesariano-1521.html?'+new URLSearchParams({ocr_q:q,ocr_page:String(hit.page),ocr_mode:mode});
+     focused.textContent='Ver fragmento OCR resaltado en amarillo junto al visor';
+     focused.style.cssText='display:block;margin-top:10px';box.append(focused);
+    }
+    frag.append(box);
    }
    $('hp-results').append(frag);
    if(!result.results.length){let p=document.createElement('p');p.textContent='No se encontraron coincidencias textuales en las fuentes disponibles. Pruebe una forma latina o italiana.';$('hp-results').append(p);}
