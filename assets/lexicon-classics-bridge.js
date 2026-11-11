@@ -432,8 +432,25 @@ async function execute(mode="literal"){
   }else{
    // Passage-level retrieval: source loci and actual occurrences, not only one preview per edition.
    const greek=/[Ͱ-Ͽἀ-῿]/u.test(q);
+   /* Primero, el recuento por edición desde el índice léxico: aparece sin
+      descargar ningún texto, de modo que la lista no se hace esperar. Las
+      fichas declaran que el pasaje todavía no se ha leído del original.
+      Cuando llegan los pasajes verificados, sustituyen a este resumen. */
+   let summaryShown=0;
+   if(window.ClassicsCorpusSearch.indexSummary){
+    try{
+     const quick=await window.ClassicsCorpusSearch.indexSummary(q,{limit:24});
+     if(token!==serial)return;
+     if(quick.length){
+      quick.forEach(addSummaryResult);
+      summaryShown=quick.length;
+      status.textContent=quick.length+" ediciones contienen la raíz, según el índice léxico. Leyendo los pasajes en las ediciones…";
+     }
+    }catch{}
+   }
    const rows=await window.ClassicsCorpusSearch.searchPassages(q,{limit:160,maxPerEdition:12,language:greek?"grc":""});
    if(token!==serial)return;
+   if(summaryShown)list.replaceChildren();
    const counts=new Map();
    for(const row of rows){const key=[row.workId,row.language,row.edition,row.source].join("|");counts.set(key,(counts.get(key)||0)+1)}
    const editionCount=counts.size;

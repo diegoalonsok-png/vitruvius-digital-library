@@ -118,14 +118,91 @@ function loadHtml(e){
  return cache.get(e.path);
 }
 const languageName={grc:"Griego antiguo",la:"Latín",en:"Inglés",es:"Castellano",fr:"Francés",it:"Italiano",de:"Alemán",pt:"Portugués"};
+/* ──────────────── Puerta del índice invertido ────────────────
+ * Antes, cada búsqueda descargaba TODAS las ediciones registradas para
+ * escanearlas: con 238 ediciones de unos 430 KB, cerca de cien megabytes por
+ * consulta. El índice de data/index/classics dice de antemano en qué
+ * ediciones está la raíz buscada, y sólo esas se descargan.
+ *
+ * Criterio conservador: la puerta se aplica únicamente a las ediciones que el
+ * índice cubre. Las que no cubre —índices remotos, páginas de OCR histórico,
+ * textos en HTML— se siguen recorriendo como antes, para no perder cobertura.
+ * Si el índice no está disponible, la puerta no filtra nada y el motor se
+ * comporta exactamente como antes.
+ */
+let indexManifestTask=null;
+function indexManifest(){
+ const api=window.VitruviaClassicsIndex;
+ if(!api)return Promise.resolve(null);
+ if(!indexManifestTask)indexManifestTask=api.manifest().catch(()=>null);
+ return indexManifestTask;
+}
+async function indexGate(queries){
+ const api=window.VitruviaClassicsIndex;
+ if(!api)return null;
+ const manifest=await indexManifest();
+ if(!manifest||!manifest.index)return null;
+ /* Cada obra del índice declara con qué claves la conoce el registro de
+    búsqueda: su propia id|lengua y, cuando corresponde, las alternativas
+    («vitruvius|es» para el texto latino de la recensio, que las tres
+    ediciones bilingües comparten). */
+ const keysOf=work=>[work.id+"|"+work.lang,...(work.gate||[])];
+ const covered=new Set();
+ for(const work of manifest.index)for(const key of keysOf(work))covered.add(key);
+ const present=new Set();
+ /* Además de si la raíz está, el índice dice CUÁNTAS veces está en cada
+    edición. Ese recuento ordena las descargas: una consulta que muestra ocho
+    resultados no tiene por qué bajar noventa y siete ediciones. */
+ const counts=new Map();
+ let answered=false;
+ for(const query of queries){
+  const word=String(query||"").trim();
+  if(!word||/\s/.test(word))continue;          // las frases se resuelven aparte
+  let result=null;
+  try{result=await api.lookup(word,{translations:true})}catch{return null}
+  if(!result)continue;
+  answered=true;
+  for(const hit of result.hits)for(const key of keysOf(hit.work)){
+   present.add(key);
+   counts.set(key,(counts.get(key)||0)+hit.count);
+  }
+ }
+ if(!answered)return null;
+ return {covered,present,counts};
+}
+/* Descarga acotada: las ediciones que el índice no cubre se conservan todas
+   —son pocas y pequeñas, y son justamente las que no se pueden prever—, y de
+   las que sí cubre se bajan las de mayor recuento hasta cubrir el número de
+   resultados pedido con margen. El recuento del índice ordena, el texto de la
+   edición decide. */
+function boundTargets(gate,targets,limit){
+ if(!gate)return targets;
+ const key=edition=>edition.workId+"|"+edition.language;
+ const uncovered=targets.filter(edition=>!gate.covered.has(key(edition)));
+ const indexed=targets.filter(edition=>gate.covered.has(key(edition)))
+  .sort((a,b)=>(gate.counts.get(key(b))||0)-(gate.counts.get(key(a))||0));
+ const budget=Math.max(6,Math.min(indexed.length,Math.ceil(limit)));
+ return uncovered.concat(indexed.slice(0,budget));
+}
+/* Una edición pasa la puerta si el índice no la cubre o si el índice la señala. */
+function throughGate(gate,edition){
+ if(!gate)return true;
+ const key=edition.workId+"|"+edition.language;
+ if(!gate.covered.has(key))return true;
+ return gate.present.has(key);
+}
+
 async function search(q,{limit=8}={}){
  q=String(q||"").trim();
  if(fold(q).replace(/[^\p{L}]/gu,"").length<3||q.length>180||q.split(/\s+/).length>14)return[];
  const grec=/[Ͱ-Ͽἀ-῿]/.test(q),semitic=/[\u0590-\u05ff]/u.test(q),all=await registry();
  // The hosted corpus presently has no Hebrew or Aramaic passage editions.
  // Do not fetch Latin/English texts and misreport absence in an unindexed language.
- const targets=all.filter(e=>(semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc")&&
-  (e.format!=="remote-json-passages"||(e.language==="grc"?grec&&window.ClassicsOffsiteGreek?.mightContain(e,[q]):e.language==="la"?!grec&&window.ClassicsOffsiteLatin?.mightContain(e,[q]):false)));
+ const gate=await indexGate([q]);
+ const eligible=all.filter(e=>(semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc")&&
+  (e.format!=="remote-json-passages"||(e.language==="grc"?grec&&window.ClassicsOffsiteGreek?.mightContain(e,[q]):e.language==="la"?!grec&&window.ClassicsOffsiteLatin?.mightContain(e,[q]):false))&&
+  throughGate(gate,e));
+ const targets=boundTargets(gate,eligible,limit);
  const rows=[];let loaded=0,failed=0;
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=4){
@@ -154,9 +231,48 @@ async function search(q,{limit=8}={}){
     count:total,units});
   }));
  }
- lastDiagnostics={mode:registered===LEGACY?"fallback":"registry",targeted:targets.length,loaded,failed};
+ lastDiagnostics={mode:registered===LEGACY?"fallback":"registry",targeted:targets.length,loaded,failed,indexGate:gate?"activa":"no disponible",indexCandidates:gate?gate.present.size:null,editionsEligible:eligible.length,editionsSkipped:gate?all.length-targets.length:0};
  return rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title)).slice(0,Math.max(1,Math.min(50,limit)));
 }
+/* Resumen inmediato desde el índice, sin descargar ninguna edición.
+ *
+ * Es la respuesta a «que no tarde tanto en abrir»: el índice ya sabe en qué
+ * ediciones está la raíz, cuántas veces y en qué pasajes, de modo que la lista
+ * puede aparecer entera antes de pedir un solo texto. Lo que NO puede dar el
+ * índice es el pasaje citado: para eso hay que leer la edición. Por eso cada
+ * fila se marca como `pendingText` y declara en su propio texto que la cita
+ * aún no se ha leído del original. Ninguna fila afirma un pasaje que no se
+ * haya verificado contra la edición.
+ */
+async function indexSummary(q,{limit=12,translations=true}={}){
+ const api=window.VitruviaClassicsIndex;
+ if(!api)return [];
+ const word=String(q||"").trim();
+ if(!word||/\s/.test(word))return [];
+ let result=null;
+ try{result=await api.lookup(word,{translations})}catch{return []}
+ if(!result||!result.hits.length)return [];
+ const rows=[];
+ for(const hit of result.hits.slice(0,Math.max(1,limit))){
+  const work=hit.work;
+  const reader=work.reader||("classics-text-reader.html?work="+encodeURIComponent(work.id)+"&lang="+encodeURIComponent(work.lang));
+  const link=reader.includes("{locus}")?reader.replace("{locus}",""):reader+(reader.includes("?")?"&":"?")+"q="+encodeURIComponent(word);
+  rows.push({
+   type:"section",kind:"classic-index",workId:work.id,language:work.lang,
+   title:work.title+" · "+(languageName[work.lang]||work.lang)+" · "+hit.count+" coincidencias",
+   author:(languageName[work.lang]||work.lang)+" · "+(work.attribution||"").slice(0,180),
+   excerpt:hit.count+" apariciones de la raíz consultada"+(hit.per10k!==null?" · "+hit.per10k+" por cada 10.000 palabras":"")+
+    ". El pasaje citado se lee de la edición al abrirla; el índice registra la presencia, no el texto.",
+   meta:"ÍNDICE LÉXICO · RECUENTO VERIFICABLE EN LA EDICIÓN · SIN TEXTO DESCARGADO",
+   rating:30+Math.min(28,hit.count),
+   link,source:"Índice léxico · "+work.file,
+   count:hit.count,per10k:hit.per10k,units:hit.passages.length,
+   passages:hit.passages,truncated:hit.truncated,pendingText:true
+  });
+ }
+ return rows;
+}
+
 /* Semantic retrieval uses ONLY editorial mappings already recorded in Conceptus.
    It is not a vector embedding, proof of etymology or verified inflectional analysis. */
 let conceptTask=null;
@@ -307,12 +423,19 @@ function cached(kind,fn){
 }
 /* Passage-level search for the Index locorum: links to attested units,
    never treats a semantic equivalent as a literal translation or a verified alignment. */
-async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,onProgress=null}={}){
+async function searchPassages(terms,{limit=600,workId="",language="",maxPerEdition=200,allMatches=false,onProgress=null,maxEditions=0}={}){
  const queries=[...new Set((Array.isArray(terms)?terms:[terms]).map(q=>String(q||"").trim()).filter(q=>/\p{L}/u.test(q)&&fold(q).length>=1))].slice(0,12);
  if(!queries.length)return [];
  const all=await registry(),hasGreek=queries.some(q=>/[Ͱ-Ͽἀ-῿]/u.test(q));
- const targets=all.filter(e=>(!workId||e.workId===workId)&&(!language||e.language===language)&&
+ /* Misma puerta: si se pidió una obra concreta no hay nada que filtrar. */
+ const gate=workId?null:await indexGate(queries);
+ const eligible=all.filter(e=>throughGate(gate,e)&&(!workId||e.workId===workId)&&(!language||e.language===language)&&
   (e.format!=="remote-json-passages"||(e.language==="grc"?(hasGreek||e.workId===workId)&&window.ClassicsOffsiteGreek?.mightContain(e,queries):e.language==="la"?(!hasGreek||e.workId===workId)&&window.ClassicsOffsiteLatin?.mightContain(e,queries):false)));
+ /* Esta vía la usan las concordancias que se piden completas: la puerta del
+    índice descarta ediciones donde la raíz no está —eso no pierde nada— pero
+    NO se acota el número de ediciones salvo que quien llama lo pida con
+    maxEditions. Una concordancia anunciada como completa debe serlo. */
+ const targets=maxEditions?boundTargets(gate,eligible,maxEditions/2):eligible;
  // Search the probable original language first, but do not omit translations
  // or other editions. This makes Latin aedes/domus and Greek λόγος visible early.
  const preferred=hasGreek?"grc":/^[\\p{Script=Latin}\\p{M}\\s-]+$/u.test(queries[0])?"la":null;
@@ -383,7 +506,7 @@ async function combinedSearch(q,{limit=6,semantic=false}={}){
 }
 
 window.ClassicsCorpusSearch={
- search:literalSearch,semanticSearch:conceptSearch,combinedSearch,searchPassages,
+ search:literalSearch,semanticSearch:conceptSearch,combinedSearch,searchPassages,indexSummary,
  works:LEGACY.map(e=>({id:e.workId,lang:e.language,author:e.author,title:e.title})),
  registry,diagnostics:()=>({...lastDiagnostics})
 };

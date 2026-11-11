@@ -26,9 +26,9 @@ Se registran como criterios de aceptación comprobables.
 | R7 | «En el caso de Egipto faraónico organizar las titulaciones reales como renders o fotos y por orden real». | Las cinco grandes nombres de la titulatura en orden canónico, con render Unicode rotulado como codificación editorial (no facsímil) y foto cuando exista; los reyes, en orden de reinado. | pendiente |
 | R8 | «Alta academia: toda la ciencia ecdótica y filológica moderna». | Los datos ya existentes (`philologia.json`: Maas, signos con mapeo TEI, tipología de errores, *principia*, codicología, hermenéutica) quedan instrumentados, no sólo listados. | pendiente |
 | R9 | Lexicon: términos latinos, griegos y hebreos con **árboles de raíz semánticas y significados**. | Árbol navegable raíz → lenguas atestiguadas → lemas derivados → acepciones → *loci*, construido sobre `etymologicum.json` y `hebrew-roots.json`, con sus referencias a de Vaan, Beekes, LSJ, BDB y HALOT. | pendiente |
-| R10 | Página de IA: estilo minimalista tipo Grok, «sin tantos botones». | Una columna, un campo, dos controles icónicos. | pendiente |
-| R11 | Estética general de alta academia, tipo Yale o Cambridge. | Capa tipográfica común a las tres piezas. | pendiente |
-| R13 | Lexicon: mejorar las búsquedas léxicas y semánticas sobre las **222 obras clásicas**. | Índice invertido por lema construido sobre el corpus local, concordancia KWIC, frecuencia por autor, obra y período, y colocaciones con medida estadística declarada. Sin descargar el corpus entero para una consulta. | pendiente |
+| R10 | Página de IA: estilo minimalista tipo Grok, «sin tantos botones». | Una columna, un campo, dos controles icónicos. | **en espera por decisión del autor: «no cambiar por ahora la estética del site»** |
+| R11 | Estética general de alta academia, tipo Yale o Cambridge. | Capa tipográfica común a las tres piezas. | **en espera por decisión del autor: «no cambiar por ahora la estética del site»** |
+| R13 | Lexicon: mejorar las búsquedas léxicas y semánticas sobre las **222 obras clásicas**. | Índice invertido por lema construido sobre el corpus local, concordancia KWIC, frecuencia por autor, obra y período. Sin descargar el corpus entero para una consulta. | **hecho y medido** |
 | R14 | Los folios de los códices están en GitHub, pero **la minúscula carolina es difícil de indexar**: la indexación va por frases, prefacios y folios. | Búsqueda tolerante a la paleografía: tabla de confusiones documentada (c/e, t/c, n/u, m/in, s larga/f) y expansión de abreviaturas (barra de nasal, ⁊, ꝯ, -bus, -que). Alineación folio ↔ locus de la edición crítica, para llegar a la imagen sin depender del OCR. Los resultados se presentan como candidatos, no como lecturas. | pendiente |
 | R15 | La búsqueda de palabra dentro de los libros arma visores y traducciones automáticas; «hay que ver que sea de calidad». | Toda traducción automática queda rotulada como tal y nunca se presenta como traducción de autor; si existe una publicada, se cita y se prefiere. Informe de cobertura reproducible. | pendiente |
 | R16 | Búsqueda de **frases**, no sólo de palabras, en los dos buscadores. | Frase entre comillas y consulta de dos o más palabras probada como bloque contiguo, por delante de las palabras dispersas. | **hecho y probado** |
@@ -48,11 +48,66 @@ Se registran como criterios de aceptación comprobables.
 | Familias tipográficas antiguas del Lexicon | bloqueaban el pintado | asíncronas |
 | Precarga del *service worker* al instalarse | 502 KB en 20 peticiones, compitiendo con la primera carga | diferida al primer rato libre |
 
+### R13 · índice léxico sobre el corpus clásico
+
+El Lexicon buscaba léxicamente en sus propios `corpus-la.json` y
+`corpus-grc.json`: **14 obras latinas y 9 griegas**. Las 238 ediciones del
+corpus clásico quedaban fuera, y cada consulta literal del motor descargaba
+**todas** las ediciones registradas para escanearlas.
+
+`scripts/build-classics-lexical-index.mjs` construye un índice invertido de
+candidatos sobre las 238 ediciones **y sobre las propias ediciones de Vitruvio**
+(que no estaban indexadas: su recensio vive en `data/structured`, con otra
+forma de campo).
+
+| Medida | Valor |
+| --- | --- |
+| Ediciones indexadas | 238 |
+| Pasajes | 127.056 |
+| Palabras | 10.513.361 |
+| Raíces distintas | 549.319 |
+| Peso del índice | 21,6 MB en 4.446 fragmentos |
+| Tiempo de construcción | 17 s |
+
+Coste por consulta, medido con el motor real en un navegador simulado
+(`scripts/test-corpus-index-gate.mjs` y la batería de
+`scripts/test-classics-lexical-index.mjs`):
+
+| Consulta | Antes | Después |
+| --- | --- | --- |
+| `symmetria` | 132 ediciones · 42,0 MB | 9 ediciones · 4,9 MB |
+| `eurythmia` | 132 ediciones · 42,0 MB | 8 ediciones · 4,7 MB |
+| `columna` | 132 ediciones · 42,0 MB | 21 ediciones · 13,8 MB |
+| `ἀρχιτέκτων` | 97 ediciones · 69,1 MB | 11 ediciones · 19,7 MB |
+| `λόγος` | 97 ediciones · 69,1 MB | 16 ediciones · 38,8 MB |
+
+Con los mismos resultados y las mismas obras en todos los casos, comprobado en
+la prueba. El ahorro es grande con las palabras propias de un autor y pequeño
+con las palabras frecuentes, porque λόγος está de verdad en 98 ediciones: ahí
+lo que ahorra es el acotado por recuento, no la exclusión.
+
+Por eso se añade además una **vía inmediata**: `indexSummary()` devuelve el
+recuento por edición, la frecuencia por diez mil palabras y los loci sin
+descargar ningún texto, y el puente del Lexicon la muestra antes de leer los
+pasajes. Las fichas de esa vía declaran que el pasaje todavía no se ha leído
+del original; cuando llegan los pasajes verificados, sustituyen al resumen.
+Regla de autoridad del índice: **propone candidatos; si discrepa de la
+edición, manda la edición.**
+
+Primeros resultados reales: `symmetria` 77 apariciones, todas en Vitruvio
+(13,29 por cada 10.000 palabras); `architectus` 74 en 17 ediciones; `columna`
+286 en 33; `λόγος` 9.861 en 98; `ἀρχιτέκτων` 18 en 11.
+
 Reproducible con:
 
 ```
 node scripts/build-style-bundles.mjs --check
 node scripts/build-vitruvia-metrics.mjs --check
+node scripts/build-classics-lexical-index.mjs --check
+node scripts/test-vitruvia-philology.mjs
+node scripts/test-vitruvia-rank.mjs
+node scripts/test-classics-lexical-index.mjs
+node scripts/test-corpus-index-gate.mjs
 ```
 
 ### Motor · comprensión de la consulta y ordenación
