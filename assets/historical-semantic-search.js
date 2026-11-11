@@ -67,11 +67,16 @@ async function rank(method){
   for(const hit of ranked){
    const r=hit.doc,card=document.createElement('article');card.style.cssText='padding:.8rem 0;border-bottom:1px solid #a49c90';
    choose(label(id)+' · página PDF '+r.page+' · segmento '+r.part,card,'h3');
-   choose(r.text.slice(0,620)+(r.text.length>620?'…':''),card);
+   const txt=r.text.slice(0,620)+(r.text.length>620?'…':'');
+   const paragraph=choose('',card);
+   if((id==='rose-1899'||id==='cesariano-1521')&&window.VitruviaOCRHighlight?.decorate)
+    window.VitruviaOCRHighlight.decorate(paragraph,txt,q);
+   else {paragraph.textContent=txt;if(id==='rose-1899'||id==='cesariano-1521')paragraph.classList.add('vdl-ocr-highlight');}
    choose((r.segmentation==='ocr-block'?'Bloque OCR':'Ventana aproximada')+
     ' · OCR no cotejado · sin asignación canónica de locus',card,'small');
    const open=document.createElement('a');open.textContent='Abrir la página del facsímil';
-   open.href='concordancia-historica.html?'+new URLSearchParams({ed:id,page:r.page});
+   open.href=id==='cesariano-1521'?'cesariano-1521.html?'+new URLSearchParams({ocr_q:q,ocr_page:String(r.page)}):
+    'concordancia-historica.html?'+new URLSearchParams({ed:id,page:String(r.page),q});
    open.style.cssText='display:block;margin-top:.4rem;text-decoration:underline';card.append(open);results.append(card);
   }
   if(!ranked.length)choose('No se hallaron segmentos con coincidencia. Esto no acredita que la expresión falte en la edición.',results);
