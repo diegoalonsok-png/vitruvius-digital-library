@@ -93,7 +93,7 @@ assert.ok(root.style["--vat-label-width"],"Responsive label width is computed");
 assert.ok(root.style["--vat-card-width"],"Compact event card width is computed");
 emit("vitruvia:search",{query:"Ramses II"});
 for(let i=0;i<4;i++)await Promise.resolve();
-assert.deepEqual(win.VitruviaAcademicTimeline.collect().map(x=>x.year),[-1303]);
+assert.deepEqual([...win.VitruviaAcademicTimeline.collect().map(x=>x.year)],[-1303]);
 emit("vitruvia:search",{query:"Plato"});
 for(let i=0;i<4;i++)await Promise.resolve();
 emit("vitruvia:cultural-works",{wikidataId:"Q2",works:[
