@@ -47,7 +47,7 @@ function init(){
     cover.append(img);cover.classList.add('vr-ab-cover-found');
     const anchor=make('a',null,'Ficha Open Library');
     const key=String(item.key||'');
-    if(/^\\/works\\/OL[0-9]+W$/.test(key)){anchor.href='https://openlibrary.org'+key;anchor.target='_blank';anchor.rel='noopener noreferrer';card.querySelector('.vr-ab-links').append(anchor)}
+    if(/^\/works\/OL[0-9]+W$/.test(key)){anchor.href='https://openlibrary.org'+key;anchor.target='_blank';anchor.rel='noopener noreferrer';card.querySelector('.vr-ab-links').append(anchor)}
    }catch(e){if(activeController.signal.aborted)return}
   }
  }
