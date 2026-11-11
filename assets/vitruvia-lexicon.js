@@ -2347,6 +2347,26 @@ function renderDaily(){
  $("#featured-description").textContent=x.tr;$("#featured-credit").textContent=x.cite;
  $("#featured-link").onclick=e=>{e.preventDefault();$("#lx-q").value=x.text;S.mode=x.lang==="he"?"sententiae":"analizar";renderTabs();run();$("#results").scrollIntoView({behavior:"smooth"})};
 }
+/* Quotations in the Etymologicum may be biblical Hebrew rather than entries
+   from the Latin/Greek concordance corpus. Attach the same opt-in translator
+   to their source paragraphs, preserving the existing documented gloss. */
+function installHebrewCitationTranslation(){
+ const root=document.getElementById("lx-entry");
+ if(!root)return;
+ const attach=()=>{
+  for(const node of root.querySelectorAll('blockquote p[lang="he"],blockquote p[lang="hbo"]')){
+   if(node.dataset.inlineTranslationReady==="1")continue;
+   window.VitruviaInlineTranslation?.attach(node,{
+    sourceLanguage:node.lang==="hbo"?"hbo":"he",originalText:node.textContent
+   });
+  }
+ };
+ const observer=new MutationObserver(attach);
+ observer.observe(root,{childList:true,subtree:true});attach();
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",installHebrewCitationTranslation,{once:true});
+else installHebrewCitationTranslation();
+
 document.readyState==="loading"?document.addEventListener("DOMContentLoaded",init):init();
 window.VitruviaLexicon={fold,variantKey,greekToLatin,latinTranslitKey,parseQuery,decodeTag,version:"1.0"};
 })();
