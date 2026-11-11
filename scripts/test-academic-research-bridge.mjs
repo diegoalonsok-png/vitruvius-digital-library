@@ -6,6 +6,41 @@ const read=file=>readFileSync(new URL("../"+file,import.meta.url),"utf8");
 const parsed=file=>JSON.parse(read(file));
 const html=read("investigacion-conectada.html");
 const script=read("assets/academia-conexiones.js");
+const frontBridge=read("assets/vitruvia-library-bridge.js");
+new vm.Script(frontBridge,{filename:"assets/vitruvia-library-bridge.js"});
+// Exercise the real front-page query links with a minimal DOM. The source
+// search form remains untouched; links may only forward the current query.
+{
+ const controls=new Map(),elements=new Map(),added=[];
+ const container={append(el){added.push(el);elements.set(el.id,el)}};
+ const make=()=>({href:"",textContent:"",addEventListener(event,handler){this.handlers??=new Map();this.handlers.set(event,handler)}});
+ const link=make();link.closest=()=>container;elements.set("search-in-vitruvia",link);
+ const input=make();input.value="symmetria";input.form=make();elements.set("query",input);
+ const documentStub={
+  documentElement:{lang:"es"},
+  head:{append(){}},
+  getElementById(id){return elements.get(id)||null},
+  createElement(){return make()}
+ };
+ const context=vm.createContext({
+  document:documentStub,location:{href:"https://example.org/vitruvius-digital-library/index.html"},
+  URL,MutationObserver:class{observe(){}},setTimeout
+ });
+ new vm.Script(frontBridge).runInContext(context);
+ assert.equal(added.length,3,"Front search must offer exactly three additional research links");
+ assert.equal(new URL(link.href).searchParams.get("q"),"symmetria");
+ assert.equal(new URL(elements.get("search-in-lexicon").href).searchParams.get("q"),"symmetria");
+ assert.equal(new URL(elements.get("search-in-bibliotheca").href).searchParams.get("term"),"symmetria");
+ assert.equal(new URL(elements.get("search-in-investigacion").href).searchParams.get("work"),"vitruvius");
+ input.value="III.1.2";input.handlers.get("input")();
+ assert.equal(new URL(elements.get("search-in-investigacion").href).searchParams.get("locus"),"III.1.2");
+ input.value="architectura";input.handlers.get("input")();
+ assert.equal(new URL(elements.get("search-in-investigacion").href).searchParams.has("locus"),false);
+ documentStub.documentElement.lang="fr";input.handlers.get("change")();
+ assert.match(link.textContent,/Rechercher/);
+ assert(!input.form.handlers?.has("submit"),"The original front search submit behavior must stay intact");
+}
+
 const method=read("docs/protocolo-investigacion-interconectada.md");
 const crosslinks=read("assets/research-crosslinks.js");
 new vm.Script(crosslinks,{filename:"assets/research-crosslinks.js"});
