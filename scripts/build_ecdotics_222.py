@@ -100,6 +100,7 @@ def create_overlay(catalog, registry, authorities, standard):
                 issues.append({"severity": "warning", "code": "viewer_url_not_https", "id": ms.get("id")})
             witnesses.append({
                 "witnessId": ms["id"],
+                "canonicalPhysicalId": ms.get("canonicalPhysicalId") or "codex-" + ms["id"],
                 "transmission": {
                     "type": typ,
                     "classificationBasis": ms.get("witnessKind"),
