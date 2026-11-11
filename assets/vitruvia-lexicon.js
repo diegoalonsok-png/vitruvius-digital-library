@@ -1381,7 +1381,7 @@ async function openViewer(D,p,spans,q){
  original.append(selected,el("p",{class:"lx-src"},w.edition||"",w.license?" · "+w.license:""));
  // Traducción bajo demanda para todas las obras clásicas, incluso sin edición paralela.
  // El texto original permanece visible y no se comparte con el proveedor sin un clic explícito.
- if(window.VitruviaInlineTranslation){
+ if(typeof window!=="undefined"&&window.VitruviaInlineTranslation){
   window.VitruviaInlineTranslation.attach(selected,{sourceLanguage:D.l,originalText:p[2]});
  }else{
   const missing=el("p",{class:"lx-small"},"Traducción automática temporalmente no disponible. Consulte las versiones editoriales del lector.");
