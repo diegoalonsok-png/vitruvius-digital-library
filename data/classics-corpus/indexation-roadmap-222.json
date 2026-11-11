@@ -823,7 +823,25 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": false,
+      "sourceDiscovery": {
+        "checked": "2026-11-11",
+        "status": "modern-editorial-transcription-identified-not-hosted",
+        "sources": [
+          {
+            "url": "https://monumenta.ch/latein/textsyn.php?tabelle=Marcus_Cetius_Faventinus",
+            "kind": "modern-transcription",
+            "edition": "Marie-Thérèse Cam, edición moderna; cotejar fecha exacta del ejemplar",
+            "language": "la"
+          },
+          {
+            "url": "https://www.bv.ipzs.it/bv-pdf/007/MOD-VP-20-01-005_4803_1.pdf",
+            "kind": "manuscript-catalogue",
+            "description": "Biblioteca Vallicelliana, Roma, ms. D 31 (s. XV), fols. 2r–39r, catálogo de Elisabetta Caldelli (2021)"
+          }
+        ],
+        "caution": "No reproducir la transcripción editorial moderna sin comprobación de licencia. El manuscrito contiene texto añadido de Vitruvio según el catálogo; el testimonio no debe considerarse automáticamente puro ni completo."
+      }
     },
     {
       "id": "barnabas",
@@ -4794,7 +4812,24 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": false,
+      "sourceDiscovery": {
+        "checked": "2026-11-11",
+        "status": "ancient-latin-edition-transcription-identified-not-hosted",
+        "sources": [
+          {
+            "url": "https://latin.packhum.org/loc/1266/4/0",
+            "kind": "academic-latin-text",
+            "description": "Packhum, Constitutio Limitum, referencia 131.1"
+          },
+          {
+            "url": "https://www.intratext.com/IXT/LAT0348/_P1.HTM",
+            "kind": "transcription",
+            "description": "IntraText, capítulos I–III"
+          }
+        ],
+        "caution": "Comprobar edición de base, segmentación y condiciones de reutilización antes de alojar."
+      }
     },
     {
       "id": "frontinus-gromatica",
