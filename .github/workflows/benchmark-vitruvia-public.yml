@@ -28,7 +28,12 @@ jobs:
       - name: Instalación del navegador de pruebas
         run: |
           npm install --no-save playwright@1.56.1
-          npx playwright install --with-deps chromium
+          CHROME_BIN="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -n "$CHROME_BIN" ]; then
+            echo "CHROME=$CHROME_BIN" >> "$GITHUB_ENV"
+          else
+            npx playwright install chromium
+          fi
       - name: Comprobar sintaxis y medir consultas publicadas
         run: |
           node --check scripts/benchmark-vitruvia-public-search.mjs
