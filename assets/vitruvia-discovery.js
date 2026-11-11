@@ -79,6 +79,14 @@
   }else if(colorRequested&&kind==="topic"){
    queries=unique([visualName+" color photograph",visualName+" colour photography",...queries]);
   }
+  // Cross-language documentary lookup for Roman bridge typologies.
+  const romanBridges=/\b(?:puentes? romanos?|roman bridges?|ponts? romains?|ponti romani)\b/.test(qRaw);
+  if(romanBridges&&kind==="topic"){
+   aliases=unique([...aliases,"Roman bridge","Roman bridges","Roman stone bridge",
+     "puente romano","puentes romanos","pont romain","pont romain antique"]);
+   queries=unique(["Roman bridges","Roman bridge ancient","Roman stone bridge",
+     "Roman bridges Spain","Roman bridges Portugal",...queries]).slice(0,5);
+  }
   if(jewishChristianity&&kind==="topic"){
    aliases=unique([...aliases,"Jewish Christianity","Jewish Christians","Judaeo-Christianity","Judeo-Christianity",
     "Judeo-Christians","Jewish Christian","cristianismo judío","judeocristianismo"]);
