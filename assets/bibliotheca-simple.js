@@ -620,7 +620,7 @@ async function search(updateHistory=true){
   }
   if(added)void added.search(q,workId,()=>id===serial);
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
-  const transliterations=await attestedGreekForms(/^gr:/i.test(q)?q.slice(3).trim():q);
+  const transliterations=[]; // Las equivalencias y transliteraciones no se incorporan a la búsqueda literal.
   if(id!==serial)return;
   let lastPaint=0;
   const onProgress=(partial,progress)=>{
@@ -634,7 +634,7 @@ async function search(updateHistory=true){
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
     (!progress.complete?" · buscando…":"");
   };
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress});
+  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress});
   if(id!==serial)return;
   const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
   const url=new URL(location.href);url.searchParams.set("q",q);
