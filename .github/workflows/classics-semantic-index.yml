@@ -1,7 +1,6 @@
 name: Indexación semántica de clásicos
 on:
   push:
-    branches: [main]
     paths:
       - 'data/classics-corpus/*.json'
       - 'data/lexicon/fontes/*.json'
@@ -9,6 +8,7 @@ on:
       - 'data/structured/*.json'
       - 'data/lexicon/conceptus.json'
       - 'scripts/build_classics_semantic_index.py'
+      - '.github/workflows/classics-semantic-index.yml'
       - '!data/classics-corpus/semantic-conceptus-postings.json'
   workflow_dispatch:
 permissions:
@@ -39,11 +39,12 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Rebuild after fetching the latest main on each attempt: never push
-          # an index calculated from a stale snapshot or force-push over work.
+          # Rebuild against the current remote head of the triggering branch.
+          # Never publish an index from a stale snapshot or force-push over work.
           for attempt in 1 2 3 4 5; do
-            git fetch origin main
-            git reset --hard origin/main
+            target="${GITHUB_REF_NAME}"
+            git fetch origin "$target"
+            git reset --hard "origin/$target"
             python scripts/build_classics_semantic_index.py
             git add data/classics-corpus/semantic-conceptus-postings.json
             if git diff --cached --quiet; then
@@ -51,7 +52,7 @@ jobs:
               exit 0
             fi
             git commit -m "Actualizar índice semántico Conceptus"
-            if git push origin HEAD:main; then
+            if git push origin "HEAD:refs/heads/${GITHUB_REF_NAME}"; then
               echo "Índice publicado correctamente."
               exit 0
             fi
