@@ -235,15 +235,25 @@ targetRoot.addEventListener("keydown",event=>{
  event.preventDefault();event.stopImmediatePropagation();
  void openMark(mark);
 },true);
-function prepareMarks(){
- for(const mark of targetRoot.querySelectorAll(markSelector)){
-  mark.tabIndex=0;mark.setAttribute("role","button");
-  mark.setAttribute("aria-label","Consultar lema y significado de "+(lexicon.wordOfMark(mark)||mark.textContent));
-  mark.title="Abrir ficha de la palabra";
- }
+function prepareMark(mark){
+ if(mark.dataset.clPopupReady==="1")return;
+ mark.dataset.clPopupReady="1";
+ mark.tabIndex=0;mark.setAttribute("role","button");
+ mark.setAttribute("aria-label","Consultar lema y significado de "+(lexicon.wordOfMark(mark)||mark.textContent));
+ mark.title="Abrir ficha de la palabra";
 }
-const observer=new MutationObserver(prepareMarks);
+function prepareMarks(node){
+ if(!(node instanceof Element||node instanceof Document||node instanceof DocumentFragment))return;
+ if(node instanceof Element&&node.matches(markSelector))prepareMark(node);
+ for(const mark of node.querySelectorAll(markSelector))prepareMark(mark);
+}
+// Process only newly inserted subtrees instead of scanning the entire Lexicon
+// after every progress paint, popup update, or translation insertion.
+const observer=new MutationObserver(records=>{
+ for(const record of records)
+  for(const node of record.addedNodes)prepareMarks(node);
+});
 observer.observe(targetRoot,{childList:true,subtree:true});
-prepareMarks();
+prepareMarks(targetRoot);
 window.VitruviaClassicalWordPopup=Object.freeze({openMark,dismiss});
 })();
