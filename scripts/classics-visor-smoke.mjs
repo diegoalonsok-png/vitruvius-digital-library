@@ -417,8 +417,20 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    await page.waitForFunction(()=>/BIOGRAF|Dossier/i.test(document.querySelector('#article-kicker')?.textContent||''),
     {timeout:20000});
    const LOCI=/Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/;
-   await page.waitForFunction(()=>document.querySelector('#article-body')?.textContent.includes('Biografía de prueba')&&
+   try{
+    await page.waitForFunction(()=>document.querySelector('#article-body')?.textContent.includes('Biografía de prueba')&&
     /Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/.test(document.querySelector('#article-body')?.textContent||''),{timeout:20000});
+   }catch(error){
+    const diagnostic=await page.evaluate(()=>({
+     title:document.querySelector('#article-title')?.textContent||'',
+     kicker:document.querySelector('#article-kicker')?.textContent||'',
+     body:(document.querySelector('#article-body')?.textContent||'').slice(0,2200),
+     hasBiography:(document.querySelector('#article-body')?.textContent||'').includes('Biografía de prueba'),
+     hasLoci:/Pasajes de Vitruvio|Coincidencias documentadas en el tratado de Vitruvio/.test(document.querySelector('#article-body')?.textContent||''),
+     verifiedEntries:document.querySelectorAll('.person-locus-entry').length
+    }));
+    throw new Error(error.message+'; diagnostic='+JSON.stringify(diagnostic));
+   }
    const text=await page.locator('#article-body').innerText();
    assert(text.indexOf('Biografía de prueba')<text.search(LOCI),
     'The biography must precede the relevant Vitruvius passages');
