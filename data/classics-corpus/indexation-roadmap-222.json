@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
   "updated": "2026-11-11",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot.",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. Cruce editorial V514/V554/V297 (reutilización sin doble conteo); fuentes de Ptolomeo y Procopio registradas con estatus de original/traducción diferenciado.",
   "targetWorks": 222,
   "counts": {
     "originalsIndexed": 181,
@@ -1255,7 +1255,18 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": false,
+      "indexReuse": {
+        "workId": "vitruvius",
+        "language": "es",
+        "originalLanguage": "la",
+        "path": "data/structured/recensio-es.json",
+        "reader": "lector-bilingue.html?edition=recensio-es",
+        "edition": "V514",
+        "type": "editorial-edition-reuses-index",
+        "verified": "2026-11-11",
+        "explanation": "La edición cuenta ya como versión bajo workId vitruvius en search-registry.json; no es otra obra antigua y no crea nueva versión indexada."
+      }
     },
     {
       "id": "vitruvio-v554-pdf",
@@ -1271,7 +1282,18 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": false,
+      "indexReuse": {
+        "workId": "vitruvius",
+        "language": "fr",
+        "originalLanguage": "la",
+        "path": "data/structured/recensio-fr.json",
+        "reader": "lector-bilingue.html?edition=recensio-fr",
+        "edition": "V554",
+        "type": "editorial-edition-reuses-index",
+        "verified": "2026-11-11",
+        "explanation": "La edición cuenta ya como versión bajo workId vitruvius en search-registry.json; no es otra obra antigua y no crea nueva versión indexada."
+      }
     },
     {
       "id": "theory-v297-pdf",
@@ -1287,7 +1309,18 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": false,
+      "indexReuse": {
+        "workId": "vitruvius",
+        "language": "en",
+        "originalLanguage": "la",
+        "path": "data/structured/theory-en.json",
+        "reader": "lector-bilingue.html?edition=theory-en",
+        "edition": "V297",
+        "type": "editorial-edition-reuses-index",
+        "verified": "2026-11-11",
+        "explanation": "La edición cuenta ya como versión bajo workId vitruvius en search-registry.json; no es otra obra antigua y no crea nueva versión indexada."
+      }
     },
     {
       "id": "krohn-1912-pdf",
@@ -2195,7 +2228,27 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": false,
+      "sourceDiscovery": {
+        "status": "edition-catalogued-original-not-yet-hosted",
+        "language": "grc",
+        "sources": [
+          {
+            "url": "https://catalog.perseus.tufts.edu/catalog/urn%3Acts%3AgreekLit%3Atlg0363.tlg009",
+            "urn": "urn:cts:greekLit:tlg0363.tlg009",
+            "scope": "libri I–III",
+            "editor": "C. F. A. Nobbe, 1843"
+          },
+          {
+            "url": "https://catalog.perseus.tufts.edu/catalog/urn%3Acts%3AgreekLit%3Atlg0363.tlg014.opp-grc2",
+            "urn": "urn:cts:greekLit:tlg0363.tlg014",
+            "scope": "libri IV–VIII",
+            "editor": "C. F. A. Nobbe, 1843–1845"
+          }
+        ],
+        "caution": "Registros de ediciones: verificar que las transcripciones sean recuperables y completas antes de contabilizar texto indexado.",
+        "checked": "2026-11-11"
+      }
     },
     {
       "id": "appian-romaika",
@@ -4409,7 +4462,20 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": false,
+      "sourceDiscovery": {
+        "status": "historical-latin-translation-identified-original-greek-not-indexed",
+        "language": "la",
+        "sources": [
+          {
+            "url": "https://la.wikisource.org/wiki/De_aedificiis",
+            "scope": "libri I–VI",
+            "editor": "Claudio Maltret (versión latina, 1663); publicación citada de 1838"
+          }
+        ],
+        "caution": "Esta versión latina es traducción de la obra griega; nunca computarla como original griego.",
+        "checked": "2026-11-11"
+      }
     },
     {
       "id": "isidore-etymologiae",
