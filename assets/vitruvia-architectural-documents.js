@@ -62,7 +62,7 @@ function init(){
  function safeUrl(raw){try{const u=new URL(raw);return u.protocol==="https:"?u.href:null}catch{return null}}
  function clearViewer(){viewer.replaceChildren();if(objectURL){URL.revokeObjectURL(objectURL);objectURL=null}}
  function cancel(){++fetchToken;if(controller){controller.abort();controller=null}}
- const strip=s=>String(s||"").replace(/<[^>]*>/g," ").replace(/\\s+/g," ").trim().slice(0,200);
+ const strip=s=>String(s||"").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim().slice(0,200);
  const isType=(title,id)=>{const t=normalize(title);return id==="planta"?/(plan|planta|grundriss|floorplan|planimetr)/.test(t):id==="corte"?/(section|seccion|schnitt|corte|sezione)/.test(t):id==="vista"?/(elevation|elevacion|alzato|facade|fachada|fassade)/.test(t):/(photo|foto|view|exterior|vista)/.test(t)};
  function metadata(item){
   const ext=item.imageinfo?.[0]?.extmetadata||{};
@@ -96,12 +96,12 @@ function init(){
     const res=await fetch(url,{signal:activeController.signal,referrerPolicy:"no-referrer"});
     if(!res.ok)throw Error("HTTP "+res.status);
     const json=await res.json();
-    return Object.values(json.query?.pages||{}).filter(x=>x.imageinfo?.[0]?.url&&/\\.(?:jpe?g|png|webp|svg)$/i.test(x.title));
+    return Object.values(json.query?.pages||{}).filter(x=>x.imageinfo?.[0]?.url&&/\.(?:jpe?g|png|webp|svg)$/i.test(x.title));
    }
    let options=await getFiles(work+" "+selected.terms);
    if(!options.length)options=await getFiles(work);
    if(token!==fetchToken)return;
-   const keywords=normalize(work).split(/\\s+/).filter(w=>w.length>3);
+   const keywords=normalize(work).split(/\s+/).filter(w=>w.length>3);
    const rank=x=>(isType(x.title,selected.id)?10:0)+keywords.filter(w=>normalize(x.title).includes(w)).length*3;
    options.sort((a,b)=>rank(b)-rank(a));
    status.textContent=options.length?options.length+" archivos candidatos de Wikimedia Commons. Verificá la tipología y autoría de cada documento antes de citarlo.":"No se localizaron archivos para esta combinación. Probá otro título o abrí la búsqueda externa.";
