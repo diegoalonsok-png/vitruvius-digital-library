@@ -2168,6 +2168,9 @@ html[data-theme=light] #vr-architecture-docs .vr-ad-cards .vr-ad-card{background
 #vr-author-books .vr-ab-card:nth-child(4n+2) .vr-ab-cover{background:linear-gradient(135deg,#a58e72,#504a3b)}
 #vr-author-books .vr-ab-card:nth-child(4n+3) .vr-ab-cover{background:linear-gradient(135deg,#79886f,#364e3b)}
 #vr-author-books .vr-ab-card:nth-child(4n) .vr-ab-cover{background:linear-gradient(135deg,#9383a1,#453a55)}
+#vr-author-books .vr-ab-cover{position:relative;overflow:hidden}
+#vr-author-books .vr-ab-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:3px 7px 7px 3px}
+#vr-author-books .vr-ab-cover-found .vr-ab-monogram{display:none}
 #vr-author-books .vr-ab-monogram{font:600 17px/1 Georgia,serif;color:#f3eee4;border-top:1px solid #e1ddc8;border-bottom:1px solid #e1ddc8;padding:8px 0;letter-spacing:.07em}
 #vr-author-books .vr-ab-info{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
 #vr-author-books .vr-ab-kind{font:600 10px/1.3 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#b5c9ba}
@@ -2184,7 +2187,7 @@ html[data-theme=light] #vr-author-books .vr-ab-links a{color:#22583b}
 html[data-theme=light] #vr-author-books .vr-ab-head p,html[data-theme=light] #vr-author-books .vr-ab-note{color:#53655c}
 @media(max-width:650px){#vr-author-books .vr-ab-grid{grid-template-columns:1fr}#vr-author-books .vr-ab-card{min-height:135px}}
 </style>
-<script defer src="assets/vitruvia-author-books.js?v=20261111-author-books-v1"></script>
+<script defer src="assets/vitruvia-author-books.js?v=20261111-author-books-v2"></script>
 </body></html>
 
 
