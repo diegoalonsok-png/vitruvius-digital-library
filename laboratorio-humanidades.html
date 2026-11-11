@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es" data-theme="dark"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Laboratorio de Humanidades Antiguas · Vitruvius Digital Library</title>
+<meta name="description" content="Laboratorio interdisciplinario conectado con Lexicon, Bibliotheca y el aparato crítico: conceptos documentados, loci, sintaxis, ecdótica y proporciones matemáticas.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/laboratorio-humanidades.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/laboratorio-humanidades.css?v=20261111-v1">
+<script defer src="assets/laboratorio-humanidades.js?v=20261111-v1"></script>
+</head><body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="top"><a class="brand" href="index.html">VITRVVIVS <span>/ LABORATORIVM</span></a>
+<nav aria-label="Navegación del sitio"><a href="vitruvia-lexicon.html">Lexicon</a><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="investigacion-conectada.html">Investigación</a><a href="aparato-critico.html">Aparato crítico</a></nav>
+<button id="theme" type="button" aria-label="Activar fondo claro" aria-pressed="true">☀ Claro</button></header>
+<main id="main">
+<section class="hero"><p class="eyebrow">VITRVVIVS DIGITAL LIBRARY · INVESTIGATIO</p><h1>Laboratorium</h1>
+<p class="lead">Ecdótica, sintaxis, hermenéutica, exégesis y matemática antigua. Un escritorio integrado para relacionar conceptos y fuentes <strong>sin atribuir al corpus análisis que todavía no están verificados</strong>.</p></section>
+<section class="panel" aria-labelledby="search-title">
+<div class="section-head"><div><p class="eyebrow">I · EXPLORACIÓN DOCUMENTADA</p><h2 id="search-title">Consulta interdisciplinaria</h2></div><span class="muted">Corpus y conceptos locales</span></div>
+<form id="lab-form" role="search"><label for="lab-query">Palabra, concepto o forma antigua</label>
+<div class="search-line"><input id="lab-query" type="search" maxlength="150" required placeholder="architectura · symmetria · λόγος · קָנֶה" autocomplete="off"><button type="submit">Investigar</button></div>
+<div class="options"><label for="lab-mode">Campo</label><select id="lab-mode"><option value="all">Todos los campos</option><option value="concept">Conceptos documentados</option><option value="work">Obras catalogadas</option></select><label for="lab-locus">Locus de Vitruvio (opcional)</label><input id="lab-locus" type="text" maxlength="32" placeholder="III.1.2"></div></form>
+<div id="lab-status" role="status" aria-live="polite" class="muted">Preparando índices documentales…</div>
+<div id="lab-results" class="results" aria-label="Coincidencias y fuentes"></div>
+</section>
+<section class="panel" aria-labelledby="methods-title"><p class="eyebrow">II · ITINERARIOS</p><h2 id="methods-title">Instrumentos de investigación</h2>
+<div class="methods">
+<article><h3>Ecdótica</h3><p>Lecturas, testimonios, decisiones y aparato por locus.</p><a href="registro-ecdotico.html">Decisiones documentadas</a></article>
+<article><h3>Sintaxis antigua</h3><p>Lemas, morfología y consultas sintácticas existentes en Lexicon.</p><a href="vitruvia-lexicon.html#sintaxis">Análisis lingüístico</a></article>
+<article><h3>Hermenéutica y exégesis</h3><p>Interpretación y notas con vinculación a textos y evidencia.</p><a href="vitruvia-lexicon.html#exegesis">Cuaderno exegético</a></article>
+<article><h3>Manuscritos</h3><p>Signaturas, códices y acceso a imágenes institucionales.</p><a href="index-codicum.html">Index codicum</a></article>
+<article><h3>Lógica y argumentos</h3><p>Guía para separar premisas, inferencias e hipótesis; no es todavía un analizador automático.</p><a href="protocolo-academico-lexicon.html">Protocolo académico</a></article>
+<article><h3>Matemática y metrología</h3><p>Proporciones verificables y enlace a textos técnicos antiguos.</p><a href="#mathematica">Abrir laboratorio matemático</a></article>
+</div></section>
+<section class="panel" id="mathematica" aria-labelledby="math-title"><p class="eyebrow">III · MATHEMATICA ANTIQUA</p><h2 id="math-title">Cuarto término proporcional</h2>
+<p>Instrumento moderno para examinar relaciones de proporción: <strong>a : b = c : d</strong>. Es una representación algebraica contemporánea, no una transcripción de notación antigua.</p>
+<form id="math-form" class="math-grid"><label>a<input id="math-a" type="number" step="any" value="2" required></label><label>b<input id="math-b" type="number" step="any" value="3" required></label><label>c<input id="math-c" type="number" step="any" value="4" required></label><button type="submit">Calcular d</button></form>
+<p id="math-output" role="status" aria-live="polite">d = 6</p><p class="muted">Cálculo local; no interpreta automáticamente dimensiones, unidades o manuscritos. Para documentar una medida histórica es imprescindible indicar fuente, fecha y unidad.</p>
+</section>
+<section class="panel"><p class="eyebrow">IV · CONTROL DE EVIDENCIA</p><h2>Principios de uso académico</h2>
+<p>Los resultados distinguen <strong>coincidencia de catálogo</strong>, <strong>concepto editorial</strong> y <strong>enlace a búsqueda textual</strong>. Ninguna coincidencia semántica demuestra filiación manuscrita, etimología, traducción alineada o influencia histórica. La investigación debe conservar obra, edición, locus, testimonio y referencia verificable.</p>
+<nav class="resource-links" aria-label="Métodos y procedencia"><a href="metodologia-filologica.html">Metodología filológica</a><a href="status-textus.html">Status textus</a><a href="control-calidad-corpus.html">Calidad del corpus</a><a href="como-citar.html">Cómo citar</a></nav></section>
+<footer>Laboratorio académico integrado · herramienta de consulta exploratoria. No altera el corpus original. <a href="https://github.com/diegoalonsok-png/vitruvius-digital-library">Código y revisiones en GitHub</a>.</footer>
+</main></body></html>
