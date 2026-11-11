@@ -441,7 +441,7 @@ async function run(push=true){
   if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"&&!/^\*/.test(q)){const P=await findPerson(q);if(!isCurrent())return;
    if(P){await renderPerson(P,q);return}}
   if(S.mode==="palabra"&&!res.hits.length&&parsed.steps.length===1&&parsed.steps[0].term.type==="form"){const box=$("#lx-entry");box.hidden=false;box.replaceChildren(el("header",{class:"lx-entry-head"},el("div",{class:"article-kicker"},"LEXICON · ETYMOLOGIA"),el("h2",{},q),el("p",{class:"article-byline"},"Sin pasajes en el corpus antiguo local: se ofrecen su etimología y su raíz semántica antigua.")));const cc=await findConcept(q);if(!isCurrent())return;
-   if(S.expanded){if(cc)box.append(conceptCard(cc,q));renderEtymTree(q,null,box)}else box.append(el("p",{class:"lx-small"},"Sin coincidencia documentada para esta forma. Puede probar Búsqueda ampliada sin modificar la consulta original."))}
+   if(S.expanded&&cc)box.append(conceptCard(cc,q));renderEtymTree(q,resolveLang(q),box);box.append(el("p",{class:"lx-small"},"Sin coincidencia documentada para esta forma. Puede probar Búsqueda ampliada sin modificar la consulta original."))}
  }catch(err){console.error(err);if(isCurrent())setState("No se pudo completar la búsqueda: "+err.message)}
  if(isCurrent())$("#lx-state").dataset.completeQuery=q;
 }
@@ -798,6 +798,7 @@ function renderExactEntry(D,word,res){
   }
   if(body.childNodes.length)box.append(body);
  }
+ renderEtymTree(lemmas[0]?lemmaDisplay(lemmas[0]):word,D.l,box);
 }
 function quickWord(word,language){
  const expected=language==="grc"?"grc":"la",D=residentLanguages[expected]||S.D;
@@ -1334,6 +1335,20 @@ async function renderModernEquivalents(word,concept,isCurrent){
   for(const term of concept[code]||[])terms.append(el("button",{type:"button",class:"lx-formlink",lang:code,onclick:()=>{$("#lx-q").value=term;S.lang=code;$("#lx-lang").value=code;run()}},term));
  }
  entry.append(terms);if(concept.note)entry.append(el("p",{class:"article-note"},concept.note));
+ const trees=el("section",{class:"lx-concept-trees"},el("h3",{},"Árbol de términos · "+word),
+  el("p",{class:"article-note"},"Ramas de equivalencias documentadas para elegir una palabra y consultar sus pasajes. La equivalencia de significado no implica parentesco etimológico."));
+ const branches=el("ul",{class:"lx-tree-list"});
+ for(const [code,label] of [["la","Latín"],["grc","Griego antiguo"]]){
+  if(!concept[code]?.length)continue;
+  const branch=el("li",{class:"lx-tree-node"},el("strong",{},label));
+  const leaves=el("ul",{class:"lx-tree-list"});
+  for(const term of concept[code]){
+   leaves.append(el("li",{class:"lx-tree-node"},el("button",{type:"button",class:"lx-formlink lx-tree-word",lang:code,onclick:()=>{$("#lx-q").value=term;S.lang=code;$("#lx-lang").value=code;S.mode="palabra";renderTabs();run()}},term)));
+  }
+  branch.append(leaves);branches.append(branch);
+ }
+ trees.append(branches);entry.append(trees);
+ for(const code of ["la","grc"])for(const term of concept[code]||[])renderEtymTree(term,code,trees);
  list.replaceChildren();setState("Buscando los equivalentes documentados en ambas lenguas…");
  let total=0,finished=0;
  const languages=[["la","Latín"],["grc","Griego"]].filter(([code])=>concept[code]?.length);
@@ -1811,7 +1826,7 @@ const WK_ORDER=["es","en","fr","de","la","grc","it","pt"];
 const wkCache=new Map();
 function wkName(code,fallback){return WK_LANG[code]?.[1]||fallback||code}
 async function wkPage(title){
- if(!wkCache.has(title))wkCache.set(title,(async()=>{const r=await fetch(`https://en.wiktionary.org/w/api.php?action=parse&format=json&origin=*&prop=text&redirects=1&page=${encodeURIComponent(title)}`);if(!r.ok)throw new Error("HTTP "+r.status);const j=await r.json();if(!j.parse)return null;return new DOMParser().parseFromString(j.parse.text["*"],"text/html")})());
+ if(!wkCache.has(title))wkCache.set(title,(async()=>{const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);try{const r=await fetch(`https://en.wiktionary.org/w/api.php?action=parse&format=json&origin=*&prop=text&redirects=1&page=${encodeURIComponent(title)}`,{signal:controller.signal});if(!r.ok)throw new Error("HTTP "+r.status);const j=await r.json();if(!j.parse)return null;return new DOMParser().parseFromString(j.parse.text["*"],"text/html")}catch(error){wkCache.delete(title);throw error}finally{clearTimeout(timer)}})());
  return wkCache.get(title);
 }
 /* Nodos de la sección de una lengua (entre su h2 y el h2 siguiente). */
@@ -1880,11 +1895,16 @@ function curatedTree(e){
  if(e.root&&/\*/.test(e.root))chain.push({lang:"ine-pro",word:e.root.split(/\s+[«(]/)[0],gloss:(e.root.match(/«([^»]+)»/)||[])[1]||"",rel:"de"});
  return{chain,code:e.l,title:e.lemma,curated:true};
 }
-async function renderEtymTree(word,langCode,box,{auto=true}={}){
- const sec=el("section",{class:"lx-tree-wrap"},el("h3",{},"Árbol etimológico"),el("p",{class:"article-note"},"Árbol exploratorio generado a partir de Wiktionary (CC BY-SA 4.0). No es una etimología críticamente certificada: cada vínculo de herencia, préstamo, cognación o reconstrucción requiere comprobación fonológica, cronológica y bibliográfica individual. Los cognados sugeridos no son necesariamente derivados; los paralelos semánticos no prueban parentesco."));
+async function renderEtymTree(word,langCode,box,{auto=true,online=false,tree=null}={}){
+ const sec=el("section",{class:"lx-tree-wrap"},el("h3",{},"Árbol etimológico · "+word),el("p",{class:"article-note"},"Las raíces reconstruidas se marcan con *. Las relaciones etimológicas y los paralelos de significado se distinguen; una hipótesis no equivale a una lectura manuscrita verificada."));
  sec.append(el("p",{class:"article-note"},el("a",{href:"protocolo-academico-lexicon.html",target:"_blank",rel:"noopener noreferrer"},"Ver protocolo académico: fuentes, hipótesis, testimonios y control ecdótico")));
  const out=el("div",{class:"lx-tree"},el("p",{class:"lx-small"},"Construyendo el árbol…"));sec.append(out);box.append(sec);
- let t;try{t=await buildEtymTree(word,langCode)}catch(err){t={error:"No se pudo consultar Wiktionary ("+err.message+")."}}
+ if(!S.etym){try{S.etym=await load("data/lexicon/etymologicum.json")}catch{}}
+ if(!sec.isConnected)return sec;
+ const editorial=curatedTree(findCurated([word]));
+ let t=tree||(online?null:editorial);
+ if(!t){try{t=await buildEtymTree(word,langCode)}catch(err){t={error:"No se pudo consultar Wiktionary ("+err.message+")."}}}
+ if(!sec.isConnected)return sec;
  out.replaceChildren();
  if(t.error){const c=curatedTree(findCurated([word]));if(c){out.append(el("p",{class:"lx-small"},t.error+" Se muestra el árbol de la ficha editorial."));t=c}else{out.append(el("p",{class:"empty"},t.error));return sec}}
  if(t.available?.length>1){const sw=el("p",{class:"lx-small"},"Otras lenguas con esta palabra: ");t.available.slice(1).forEach(c=>sw.append(el("button",{type:"button",class:"lx-btn",onclick:()=>{sec.remove();renderEtymTree(word,c,box)}},wkName(c))," "));out.append(sw)}
@@ -1904,9 +1924,22 @@ async function renderEtymTree(word,langCode,box,{auto=true}={}){
   ol.append(li);
  });
  out.append(ol);
+ if(t.curated){
+  out.append(el("p",{class:"article-note"},"Fuente: ficha editorial del Etymologicum. Los cognados y paralelos conservan el estado de la ficha."),
+   el("button",{type:"button",class:"lx-btn",onclick:()=>{sec.remove();renderEtymTree(word,langCode,box,{online:true})}},"Ampliar árbol con Wiktionary · CC BY-SA 4.0"));
+ }
  if(!t.curated){const src=el("p",{class:"article-note"},"Fuente: ");t.chain.filter(n=>n.href&&n.href.startsWith("/wiki/")).slice(0,8).forEach((n,k)=>{if(k)src.append(" · ");src.append(el("a",{href:"https://en.wiktionary.org"+n.href,target:"_blank",rel:"noopener noreferrer"},n.word))});out.append(src)}
  const cur=findCurated(t.chain.filter(n=>["la","grc"].includes(n.lang)).map(n=>n.word));
  if(cur&&!box.querySelector("#etym-"+cur.id)){out.append(el("p",{},el("button",{type:"button",class:"lx-btn",onclick:()=>{$("#lx-q").value=cur.lemma;S.mode="palabra";S.lang=cur.l;$("#lx-lang").value=cur.l;renderTabs();run()}},`Ficha editorial del Etymologicum: ${cur.lemma}`)))}
+ if(t.curated&&auto&&!online){
+  // Restore the full historical tree automatically while the local editorial
+  // tree remains visible; an external failure never removes the local tree.
+  buildEtymTree(word,langCode).then(async expanded=>{
+   if(expanded.error||!sec.isConnected)return;
+   const next=await renderEtymTree(word,langCode,box,{auto:false,online:true,tree:expanded});
+   if(sec.isConnected)sec.replaceWith(next);
+  }).catch(()=>{});
+ }
  return sec;
 }
 async function renderModernWord(q,l){
