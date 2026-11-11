@@ -490,6 +490,28 @@ function hitCard(D,h){
  const actions=el("div",{class:"actions"});
  actions.append(el("button",{type:"button",onclick:()=>{full.hidden=!full.hidden;if(!full.childNodes.length){const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(text,h.spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));full.append(el("p",{class:"lx-src"},w.edition||""," ",w.license?"· "+w.license:""))}}},"Pasaje completo"));
  actions.append(el("button",{type:"button",class:"lx-primary",onclick:()=>openViewer(D,p,h.spans,S.q)},p[0]==="vitruvius"?"Leer con traducción (ES · FR · EN)":"Leer con traducción"));
+ // Every displayed classical passage offers an opt-in machine translation,
+ // independently of whether a curated or historically aligned version is available.
+ // No external request occurs until the reader presses the translator's own button.
+ const autoTranslation=el("div",{class:"lx-hit-auto-translation",hidden:true});
+ actions.append(el("button",{type:"button",class:"lx-btn","aria-expanded":"false",onclick:event=>{
+  const button=event.currentTarget,show=autoTranslation.hidden;
+  autoTranslation.hidden=!show;
+  button.setAttribute("aria-expanded",String(show));
+  if(!show)return;
+  if(autoTranslation.dataset.ready)return;
+  autoTranslation.dataset.ready="1";
+  const raw=String(p[2]||"");
+  const sample=el("p",{class:"lx-passage",lang:D.l},raw.slice(0,1200)+(raw.length>1200?" …":""));
+  autoTranslation.append(el("p",{class:"lx-small"},
+   "Traducción automática opcional; el original no se modifica. Se envía un fragmento al servicio externo solo después de solicitar la traducción."),sample);
+  if(!window.VitruviaInlineTranslation?.attach(sample,{sourceLanguage:D.l,originalText:raw})){
+   autoTranslation.append(el("p",{class:"lx-small"},"El traductor no está disponible para este fragmento. Consulte el original y las traducciones documentadas."));
+  }
+  if(raw.length>1200)autoTranslation.append(el("p",{class:"lx-small"},"Pasaje extenso: la traducción automática es parcial; el texto original completo sigue disponible."));
+ }},"Traducción automática · ES / EN / FR"));
+ card.append(autoTranslation);
+
  const rl=readerLink(D,p);if(rl)actions.append(el("a",{href:rl},"Leer en el visor"));
  if(p[0]==="vitruvius")actions.append(el("button",{type:"button",onclick:e=>showApparatus(p[1],full,e.target)},"Aparato y colación"));
  actions.append(el("button",{type:"button",onclick:()=>{$("#lx-q").value=text.slice(k.a,k.b).replace(/\s+/g," ").slice(0,400);S.mode="paralelos";renderTabs();run()}},"Paralelos"));
@@ -2325,6 +2347,26 @@ function renderDaily(){
  $("#featured-description").textContent=x.tr;$("#featured-credit").textContent=x.cite;
  $("#featured-link").onclick=e=>{e.preventDefault();$("#lx-q").value=x.text;S.mode=x.lang==="he"?"sententiae":"analizar";renderTabs();run();$("#results").scrollIntoView({behavior:"smooth"})};
 }
+/* Quotations in the Etymologicum may be biblical Hebrew rather than entries
+   from the Latin/Greek concordance corpus. Attach the same opt-in translator
+   to their source paragraphs, preserving the existing documented gloss. */
+function installHebrewCitationTranslation(){
+ const root=document.getElementById("lx-entry");
+ if(!root)return;
+ const attach=()=>{
+  for(const node of root.querySelectorAll('blockquote p[lang="he"],blockquote p[lang="hbo"]')){
+   if(node.dataset.inlineTranslationReady==="1")continue;
+   window.VitruviaInlineTranslation?.attach(node,{
+    sourceLanguage:node.lang==="hbo"?"hbo":"he",originalText:node.textContent
+   });
+  }
+ };
+ const observer=new MutationObserver(attach);
+ observer.observe(root,{childList:true,subtree:true});attach();
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",installHebrewCitationTranslation,{once:true});
+else installHebrewCitationTranslation();
+
 document.readyState==="loading"?document.addEventListener("DOMContentLoaded",init):init();
 window.VitruviaLexicon={fold,variantKey,greekToLatin,latinTranslitKey,parseQuery,decodeTag,version:"1.0"};
 })();
