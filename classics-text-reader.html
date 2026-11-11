@@ -150,12 +150,12 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
   <button type="button" id="reader-reset" title="Restablecer la apariencia de lectura">↺ Restablecer</button>
 </div>
 <div class="reader-grid">
-<aside><strong id="toc-title">Capítulos / unidades editoriales</strong><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc"></ol></aside>
+<aside><strong id="toc-title">Capítulos / unidades editoriales</strong><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc" aria-label="Índice de loci y unidades textuales"></ol></aside>
 <article class="reader">
-<div class="reader-toolbar"><button id="prev" type="button">← Anterior</button><strong id="current-locus"></strong><button id="next" type="button">Siguiente →</button></div>
+<div class="reader-toolbar"><button id="prev" type="button">← Anterior</button><strong id="current-locus" aria-live="polite" aria-atomic="true"></strong><button id="next" type="button">Siguiente →</button></div>
 <div id="results" role="status" aria-live="polite"></div>
 <div id="hit-nav" class="hit-nav" hidden><button id="hit-prev" type="button" aria-label="Coincidencia anterior">↑</button><span id="hit-count"></span><button id="hit-next" type="button" aria-label="Coincidencia siguiente">↓</button></div>
-<div id="passages" class="passages" lang="la"></div>
+<div id="passages" class="passages" lang="la" aria-label="Texto de la unidad editorial seleccionada"></div>
 <div id="lexicon" role="status">Haz clic en una palabra griega o latina para consultar el diccionario (lema, morfología y glosa), con enlaces a Logeion, Perseus y Wiktionary.</div>
 </article>
 </div>
@@ -164,7 +164,7 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
 <script defer src="assets/academic-inline-translation.js?v=20261110-passage-translation-v1"></script>
 <script defer src="assets/classical-lexicon.js?v=20261105-lex-v3"></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261110-highlight-word-v3"></script>
-<script defer src="assets/classics-text-reader.js?v=20261110-original-only-translation-v3"></script>
+<script defer src="assets/classics-text-reader.js?v=20261110-reader-navigation-performance-v1"></script>
 <script>
 (()=>{"use strict";
  const now=new URLSearchParams(location.search);

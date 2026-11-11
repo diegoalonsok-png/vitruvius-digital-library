@@ -86,14 +86,19 @@ function focusHit(step){
 }
 const unitLabel=()=>data?.language==="la"?"Locus":data?.language==="grc"?(work==="theophrastus-characters"?"Carácter":work==="plato-apology"?"Stephanus":"Capítulo"):"Bloque";
 function setQuery(q){search=q.trim();input.value=search;}
+// Keep direct references instead of re-querying every TOC button on each locus change.
+let tocButtons=[],selectedTocButton=null;
 function renderToc(){
- const target=$("toc");target.replaceChildren();
+ const target=$("toc"),fragment=document.createDocumentFragment();
+ tocButtons=[];selectedTocButton=null;
  data.passages.forEach((v,i)=>{
   const li=document.createElement("li"),btn=document.createElement("button");btn.type="button";
   btn.textContent=(data.language==="la"?"§ ":"")+v.locus+(v.title?" · "+v.title:"");if(v.title)btn.lang=data.language;
   btn.setAttribute("aria-current",String(i===active));btn.addEventListener("click",()=>select(i));
-  li.append(btn);target.append(li);
+  tocButtons.push(btn);if(i===active)selectedTocButton=btn;
+  li.append(btn);fragment.append(li);
  });
+ target.replaceChildren(fragment);
 }
 function select(i){
  if(!data)return;
@@ -113,7 +118,13 @@ function select(i){
  }
  const nav=$("hit-nav");if(nav){nav.hidden=!hitMarks.length;$("hit-count").textContent=hitMarks.length?hitMarks.length+" en este pasaje":"";}
  if(hitMarks.length)requestAnimationFrame(()=>focusHit(1));
- for(const [j,btn] of Array.from($("toc").querySelectorAll("button")).entries())btn.setAttribute("aria-current",String(j===active));
+ // O(1) selection update: no full TOC traversal on every Next/Previous action.
+ const nextTocButton=tocButtons[active];
+ if(selectedTocButton!==nextTocButton){
+  selectedTocButton?.setAttribute("aria-current","false");
+  nextTocButton?.setAttribute("aria-current","true");
+  selectedTocButton=nextTocButton;
+ }
  const u=new URL(location.href);u.searchParams.set("locus",rec.locus);if(search)u.searchParams.set("q",search);else u.searchParams.delete("q");history.replaceState(null,"",u);
  if(p.get("parallel")==="1"&&window.parent!==window){
   window.parent.postMessage({type:"vitruvia-parallel-position",work,lang:data.language,index:active,locus:rec.locus},location.origin);
@@ -205,7 +216,7 @@ async function load(language){
  const locus=p.get("locus")||new URLSearchParams(location.search).get("locus");
  const at=data.passages.findIndex(x=>x.locus===locus);
  const chosen=at>=0?at:0;setQuery(p.get("q")||input.value||"");
- if(search){renderSearch();const first=data.passages.findIndex(x=>match(x.text,search,!exactConcordance));select(at>=0?at:first>=0?first:chosen)}
+ if(search){renderSearch();const first=results[0]?.i;select(at>=0?at:Number.isInteger(first)?first:chosen)}
  else{renderSearch();select(chosen)}
  if(window.parent!==window)window.parent.postMessage({type:"vitruvia-parallel-ready",work,lang:language,count:data.passages.length},"*");
 }
