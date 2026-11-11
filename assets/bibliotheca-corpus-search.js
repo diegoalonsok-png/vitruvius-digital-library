@@ -125,7 +125,7 @@ function loadHtml(e){
  return cache.get(e.path);
 }
 const languageName={grc:"Griego antiguo",la:"Latín",en:"Inglés",es:"Castellano",fr:"Francés",it:"Italiano",de:"Alemán",pt:"Portugués"};
-async function search(q,{limit=8}={}){
+async function search(q,{limit=8,isCancelled=()=>false}={}){
  q=String(q||"").trim();
  if(fold(q).replace(/[^\p{L}]/gu,"").length<3||q.length>180||q.split(/\s+/).length>14)return[];
  const grec=/[Ͱ-Ͽἀ-῿]/.test(q),semitic=/[\u0590-\u05ff]/u.test(q),all=await registry();
