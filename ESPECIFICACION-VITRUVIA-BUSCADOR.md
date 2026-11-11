@@ -34,7 +34,7 @@ Se registran como criterios de aceptación comprobables.
 | R16 | Búsqueda de **frases**, no sólo de palabras, en los dos buscadores. | Frase entre comillas y consulta de dos o más palabras probada como bloque contiguo, por delante de las palabras dispersas. | **hecho y probado** |
 | R17 | «Cuando se encuentra una palabra en una frase de Vitruvio o de los clásicos, si hacemos clic no muestra diccionario latín». | El clic sobre la coincidencia resaltada, o sobre cualquier palabra de un pasaje declarado en latín, griego o hebreo, abre la ficha del léxico en cualquier página del sitio. | **hecho** |
 | R18 | «Cuando se hace clic en un botón del buscador no se ve si se apretó; pasa con la mayoría». | Toda pulsación se ve, con duración mínima garantizada, y los botones que lanzan una búsqueda quedan en estado ocupado anunciado para lectores de pantalla. En las 81 páginas con botones. | **hecho** |
-| R12 | «Las líneas de tiempo son buena idea pero no siempre cargan bien». | La cronología se dibuja siempre que haya una fecha disponible: entidad de Wikidata, datación del catálogo propio o año bibliográfico, con caché y reintento. Estado vacío sólo cuando no hay ninguna fecha. | pendiente |
+| R12 | «Las líneas de tiempo son buena idea pero no siempre cargan bien». | La cronología se dibuja siempre que haya una fecha disponible: entidad de Wikidata, datación del catálogo propio o año bibliográfico, con caché y reintento. Estado vacío sólo cuando no hay ninguna fecha. | **hecho** |
 
 ## Lo ya hecho y medido
 

@@ -149,15 +149,29 @@
     image:normUrl(a.image)});
   }
   // Documents are not biographical milestones. Require strong title match.
+  // Excepción razonada: un testimonio manuscrito o una edición del propio
+  // catálogo, con su datación catalogada, pertenece a la cronología de lo que
+  // se buscó aunque su título no repita la consulta —«Harley MS 2767» no dice
+  // «Vitruvio»—. Son datos catalogados con fuente, no inferencias a partir del
+  // orden de los resultados, y se rotulan como lo que son. Sin esta excepción
+  // la cronología dependía por completo de que respondiera Wikidata.
+  const ownHoldings=/bibliotheca vitruviana|biblioteca vitruviana|c[oó]dice|codex|harley|gudian|aparato cr[ií]tico|kurilo|edici[oó]n v\d{3}/i;
   for(const r of state.rows.slice(0,90)){
    if(!["book","openlibrary","googlebook","article","edition","manuscript"].includes(r.type))continue;
-   if(!matchedTitle(state.query,r.title))continue;
+   const catalogued=["edition","manuscript"].includes(r.type)&&
+    (r.codexDate!=null||r.editionYear!=null)&&
+    ownHoldings.test(String(r.source||"")+" "+String(r.meta||"")+" "+String(r.title||""));
+   if(!matchedTitle(state.query,r.title)&&!catalogued)continue;
    const y=Number(r.editionYear??r.year??r.codexDate??null);
    if(year(y)==null||!normUrl(r.link))continue;
    ev.push({year:y,lane:"documents",title:r.title,url:r.link,source:String(r.source||"Catálogo").slice(0,80),
-    detail:L("Fecha del documento o edición recuperada. No debe confundirse con el acontecimiento que estudia ni con la fecha de composición de una obra antigua.",
-     "Record or edition date, not the date of the event it studies or the composition of an ancient text.",
-     "Date de la notice ou de l'édition, distincte de l'événement étudié et de la composition de l'œuvre.")});
+    detail:catalogued?
+     L("Datación catalogada de un testimonio o edición de la obra consultada. Es la fecha del soporte o de la edición, no la de composición del texto ni un hito biográfico; la precisión depende de la ficha del catálogo.",
+      "Catalogued date of a witness or edition of the work consulted. It is the date of the artefact or edition, not of the text's composition, and its precision depends on the catalogue record.",
+      "Date catalographique d'un témoin ou d'une édition de l'œuvre consultée. Date du support ou de l'édition, non de la composition du texte."):
+     L("Fecha del documento o edición recuperada. No debe confundirse con el acontecimiento que estudia ni con la fecha de composición de una obra antigua.",
+      "Record or edition date, not the date of the event it studies or the composition of an ancient text.",
+      "Date de la notice ou de l'édition, distincte de l'événement étudié et de la composition de l'œuvre.")});
   }
   const seen=new Set();
   ev=ev.map(event).filter(Boolean).filter(e=>{
@@ -382,10 +396,45 @@
   place();draw();
   if(!state.query)return;
   const token=state.token;
-  if(window.VitruviaEntityResolver?.resolve){
-   const safe=window.VitruviaEntityResolver.resolve(state.query,lang()).catch(()=>null);
-   safe.then(a=>{if(token!==state.token||!a)return;state.authority=a;const pending=state.pendingWorks;if(pending&&pending.wikidataId===a.wikidataId)state.works=pending.works;draw()});
+  resolveAuthority(state.query).then(a=>{
+   if(token!==state.token||!a)return;
+   state.authority=a;
+   const pending=state.pendingWorks;
+   if(pending&&pending.wikidataId===a.wikidataId)state.works=pending.works;
+   draw();
+  });
+ }
+ /* La resolución de la entidad se guarda durante la sesión: repetir una
+    consulta no tiene por qué esperar otra vez a la red, que es lo que hacía
+    que la cronología apareciera unas veces y otras no. Si la primera llamada
+    vuelve vacía se reintenta una sola vez: la mayoría de los fallos son de
+    red, no de la entidad. */
+ const AUTHORITY_TTL=3600000;
+ function cachedAuthority(key){
+  try{
+   const raw=sessionStorage.getItem("vat-authority:"+key);
+   if(!raw)return null;
+   const saved=JSON.parse(raw);
+   if(!saved||Date.now()-saved.at>AUTHORITY_TTL)return null;
+   return saved.value;
+  }catch{return null}
+ }
+ function rememberAuthority(key,value){
+  try{sessionStorage.setItem("vat-authority:"+key,JSON.stringify({at:Date.now(),value}))}catch{}
+ }
+ async function resolveAuthority(query){
+  const resolver=window.VitruviaEntityResolver;
+  if(!resolver?.resolve)return null;
+  const key=normalize(query)+"|"+lang();
+  const hit=cachedAuthority(key);
+  if(hit)return hit;
+  let value=await resolver.resolve(query,lang()).catch(()=>null);
+  if(!value){
+   await new Promise(done=>setTimeout(done,700));
+   value=await resolver.resolve(query,lang()).catch(()=>null);
   }
+  if(value)rememberAuthority(key,value);
+  return value;
  }
  window.addEventListener("vitruvia:search",e=>reset(e.detail?.query||""));
  window.addEventListener("vitruvia:clear",()=>reset(""));
