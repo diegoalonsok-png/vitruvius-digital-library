@@ -2685,7 +2685,52 @@
         "ctsEditionUrn": null,
         "ctsStatus": "edition_urn_not_verified"
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "id": "plutarch-pal-gr283",
+          "canonicalPhysicalId": "codex-pal-gr-283",
+          "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
+          "shelfmark": "Cod. Pal. graec. 283",
+          "siglum": null,
+          "siglumStatus": "requires_editorial_source",
+          "paleographicDating": "mediados o tercer cuarto del siglo X",
+          "material": null,
+          "script": "Minúscula griega de tipo Ephrem (según Irigoin)",
+          "origin": null,
+          "physicalCondition": "Un códice para dos corpus textuales distintos, con loci específicos. No se afirma integridad de Moralia ni stemma completo.",
+          "folios": "Vidas paralelas ff. 1r–195v; opúsculos morales ff. 195v–207r.",
+          "coverage": "Selección de Vidas paralelas y tratados morales, incluida De latenter vivendo, An vitiositas, De amore prolis, De invidia et odio, An virtus doceri possit y Aetia physica; no es la totalidad de Moralia.",
+          "registryRecord": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+          "officialDigitization": null,
+          "iiifManifest": null,
+          "verificationSource": "IRHT–CNRS Pinakes, Diktyon 32471; Jacques Irigoin, La formation d'un corpus: un problème d'histoire des textes dans la tradition des Vies parallèles de Plutarque, Revue d'histoire des textes 12–13 (1982–83):1–12.",
+          "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "criticalEditionReference": null
+        },
+        {
+          "id": "plutarch-diogenes-bnf-suppl134",
+          "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+          "repository": "Paris, Bibliothèque nationale de France",
+          "shelfmark": "Supplément grec 134",
+          "siglum": null,
+          "siglumStatus": "requires_editorial_source",
+          "paleographicDating": "primera mitad del siglo XIV",
+          "material": null,
+          "script": null,
+          "origin": null,
+          "physicalCondition": "Se consigna recensión abreviada Φ solo para Diógenes Laercio; evitar transferirla a las ramas de Plutarco.",
+          "folios": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v.",
+          "coverage": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+          "registryRecord": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+          "officialDigitization": null,
+          "iiifManifest": null,
+          "verificationSource": "Pinakes, notice 52904, BnF Supplément grec 134; estudios sobre la tradición abreviada del Diógenes Laercio.",
+          "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "criticalEditionReference": null
+        }
+      ],
       "editorialControl": {
         "chicago18References": [],
         "criticalEditionStatus": "specific_critical_edition_not_yet_confirmed_for_every_witness",
@@ -4215,7 +4260,52 @@
         "ctsEditionUrn": null,
         "ctsStatus": "edition_urn_not_verified"
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "id": "plutarch-pal-gr283",
+          "canonicalPhysicalId": "codex-pal-gr-283",
+          "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
+          "shelfmark": "Cod. Pal. graec. 283",
+          "siglum": null,
+          "siglumStatus": "requires_editorial_source",
+          "paleographicDating": "mediados o tercer cuarto del siglo X",
+          "material": null,
+          "script": "Minúscula griega de tipo Ephrem (según Irigoin)",
+          "origin": null,
+          "physicalCondition": "Un códice para dos corpus textuales distintos, con loci específicos. No se afirma integridad de Moralia ni stemma completo.",
+          "folios": "Vidas paralelas ff. 1r–195v; opúsculos morales ff. 195v–207r.",
+          "coverage": "Selección de Vidas paralelas y tratados morales, incluida De latenter vivendo, An vitiositas, De amore prolis, De invidia et odio, An virtus doceri possit y Aetia physica; no es la totalidad de Moralia.",
+          "registryRecord": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+          "officialDigitization": null,
+          "iiifManifest": null,
+          "verificationSource": "IRHT–CNRS Pinakes, Diktyon 32471; Jacques Irigoin, La formation d'un corpus: un problème d'histoire des textes dans la tradition des Vies parallèles de Plutarque, Revue d'histoire des textes 12–13 (1982–83):1–12.",
+          "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/cote/32471/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "criticalEditionReference": null
+        },
+        {
+          "id": "plutarch-diogenes-bnf-suppl134",
+          "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+          "repository": "Paris, Bibliothèque nationale de France",
+          "shelfmark": "Supplément grec 134",
+          "siglum": null,
+          "siglumStatus": "requires_editorial_source",
+          "paleographicDating": "primera mitad del siglo XIV",
+          "material": null,
+          "script": null,
+          "origin": null,
+          "physicalCondition": "Se consigna recensión abreviada Φ solo para Diógenes Laercio; evitar transferirla a las ramas de Plutarco.",
+          "folios": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v.",
+          "coverage": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+          "registryRecord": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+          "officialDigitization": null,
+          "iiifManifest": null,
+          "verificationSource": "Pinakes, notice 52904, BnF Supplément grec 134; estudios sobre la tradición abreviada del Diógenes Laercio.",
+          "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "criticalEditionReference": null
+        }
+      ],
       "editorialControl": {
         "chicago18References": [],
         "criticalEditionStatus": "specific_critical_edition_not_yet_confirmed_for_every_witness",
@@ -4242,7 +4332,30 @@
         "ctsEditionUrn": null,
         "ctsStatus": "edition_urn_not_verified"
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "id": "lucian-urb-gr118",
+          "canonicalPhysicalId": "codex-urb-gr-118",
+          "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+          "shelfmark": "Urb. gr. 118",
+          "siglum": null,
+          "siglumStatus": "requires_editorial_source",
+          "paleographicDating": "testimonios compilados entre siglos XIII y XVI; unidad específica pendiente",
+          "material": null,
+          "script": null,
+          "origin": null,
+          "physicalCondition": "Volumen con fechas diversas; la cifra 1200 es solo clave mínima de ordenación y no una datación paleográfica precisa.",
+          "folios": "Dialogi mortuorum ff. 18v–25r; Verae historiae ff. 37r–49r.",
+          "coverage": "Diálogos de muertos seleccionados en orden no canónico (13, 12, 26, etc.); Verae historiae libros I–II según repertorio. La unidad paleográfica debe cotejarse; no se aplica una fecha única a todo el volumen.",
+          "registryRecord": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+          "officialDigitization": null,
+          "iiifManifest": null,
+          "verificationSource": "IRHT–CNRS Pinakes, Diktyon 66585, Vatican Urb. gr. 118.",
+          "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "criticalEditionReference": null
+        }
+      ],
       "editorialControl": {
         "chicago18References": [],
         "criticalEditionStatus": "specific_critical_edition_not_yet_confirmed_for_every_witness",
@@ -4269,7 +4382,30 @@
         "ctsEditionUrn": null,
         "ctsStatus": "edition_urn_not_verified"
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "id": "lucian-urb-gr118",
+          "canonicalPhysicalId": "codex-urb-gr-118",
+          "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
+          "shelfmark": "Urb. gr. 118",
+          "siglum": null,
+          "siglumStatus": "requires_editorial_source",
+          "paleographicDating": "testimonios compilados entre siglos XIII y XVI; unidad específica pendiente",
+          "material": null,
+          "script": null,
+          "origin": null,
+          "physicalCondition": "Volumen con fechas diversas; la cifra 1200 es solo clave mínima de ordenación y no una datación paleográfica precisa.",
+          "folios": "Dialogi mortuorum ff. 18v–25r; Verae historiae ff. 37r–49r.",
+          "coverage": "Diálogos de muertos seleccionados en orden no canónico (13, 12, 26, etc.); Verae historiae libros I–II según repertorio. La unidad paleográfica debe cotejarse; no se aplica una fecha única a todo el volumen.",
+          "registryRecord": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+          "officialDigitization": null,
+          "iiifManifest": null,
+          "verificationSource": "IRHT–CNRS Pinakes, Diktyon 66585, Vatican Urb. gr. 118.",
+          "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/cote/66585/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "criticalEditionReference": null
+        }
+      ],
       "editorialControl": {
         "chicago18References": [],
         "criticalEditionStatus": "specific_critical_edition_not_yet_confirmed_for_every_witness",
@@ -5565,7 +5701,30 @@
         "ctsEditionUrn": null,
         "ctsStatus": "edition_urn_not_verified"
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "id": "arrian-procopius-laur-plut9-32",
+          "canonicalPhysicalId": "codex-laur-plut-9-32",
+          "repository": "Firenze, Biblioteca Medicea Laurenziana",
+          "shelfmark": "Plut. 9.32",
+          "siglum": null,
+          "siglumStatus": "requires_editorial_source",
+          "paleographicDating": "c. 1430–1450 (unidad principal)",
+          "material": "Papel",
+          "script": "Griego tardobizantino; copista identificado como Ἰωάννης Καναβούτζης",
+          "origin": null,
+          "physicalCondition": "Para Arriano el catálogo señala explícitamente «cum lacuna»; las lagunas no se han localizado por locus. Las obras quedan asociadas a un solo objeto material.",
+          "folios": "Arriano Anabasis Alexandri ff. 19r–149r; Procopio De aedificiis ff. 177r–214r.",
+          "coverage": "Arriano con escolios y laguna; Procopio De aedificiis con escolios. Ambos transmitidos en la misma unidad miscelánea, no declarados códices más antiguos.",
+          "registryRecord": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+          "officialDigitization": null,
+          "iiifManifest": null,
+          "verificationSource": "IRHT–CNRS Pinakes, Diktyon 16120; B. Flusin, Remarques sur la tradition manuscrite du De Aedificiis, Antiquité tardive 8 (2000):9–17.",
+          "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "criticalEditionReference": null
+        }
+      ],
       "editorialControl": {
         "chicago18References": [],
         "criticalEditionStatus": "specific_critical_edition_not_yet_confirmed_for_every_witness",
@@ -7926,7 +8085,30 @@
         "ctsEditionUrn": null,
         "ctsStatus": "edition_urn_not_verified"
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "id": "plutarch-diogenes-bnf-suppl134",
+          "canonicalPhysicalId": "codex-bnf-suppl-gr-134",
+          "repository": "Paris, Bibliothèque nationale de France",
+          "shelfmark": "Supplément grec 134",
+          "siglum": null,
+          "siglumStatus": "requires_editorial_source",
+          "paleographicDating": "primera mitad del siglo XIV",
+          "material": null,
+          "script": null,
+          "origin": null,
+          "physicalCondition": "Se consigna recensión abreviada Φ solo para Diógenes Laercio; evitar transferirla a las ramas de Plutarco.",
+          "folios": "Plutarco, Vidas paralelas ff. 33r–167v; Moralia (varios extractos) ff. 167v–195v; Diógenes Laercio ff. 195v–232v.",
+          "coverage": "EXTRACTOS de varias Vidas paralelas, diferentes tratados de Moralia y tradición abreviada Φ de Vidas de filósofos de Diógenes Laercio. No equivale a textos completos.",
+          "registryRecord": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+          "officialDigitization": null,
+          "iiifManifest": null,
+          "verificationSource": "Pinakes, notice 52904, BnF Supplément grec 134; estudios sobre la tradición abreviada del Diógenes Laercio.",
+          "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52904/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "criticalEditionReference": null
+        }
+      ],
       "editorialControl": {
         "chicago18References": [],
         "criticalEditionStatus": "specific_critical_edition_not_yet_confirmed_for_every_witness",
@@ -9082,7 +9264,30 @@
         "ctsEditionUrn": null,
         "ctsStatus": "edition_urn_not_verified"
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "id": "arrian-procopius-laur-plut9-32",
+          "canonicalPhysicalId": "codex-laur-plut-9-32",
+          "repository": "Firenze, Biblioteca Medicea Laurenziana",
+          "shelfmark": "Plut. 9.32",
+          "siglum": null,
+          "siglumStatus": "requires_editorial_source",
+          "paleographicDating": "c. 1430–1450 (unidad principal)",
+          "material": "Papel",
+          "script": "Griego tardobizantino; copista identificado como Ἰωάννης Καναβούτζης",
+          "origin": null,
+          "physicalCondition": "Para Arriano el catálogo señala explícitamente «cum lacuna»; las lagunas no se han localizado por locus. Las obras quedan asociadas a un solo objeto material.",
+          "folios": "Arriano Anabasis Alexandri ff. 19r–149r; Procopio De aedificiis ff. 177r–214r.",
+          "coverage": "Arriano con escolios y laguna; Procopio De aedificiis con escolios. Ambos transmitidos en la misma unidad miscelánea, no declarados códices más antiguos.",
+          "registryRecord": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+          "officialDigitization": null,
+          "iiifManifest": null,
+          "verificationSource": "IRHT–CNRS Pinakes, Diktyon 16120; B. Flusin, Remarques sur la tradition manuscrite du De Aedificiis, Antiquité tardive 8 (2000):9–17.",
+          "verificationUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16120/",
+          "sourceStatus": "institutional_catalogue_checked_2026-11-10",
+          "criticalEditionReference": null
+        }
+      ],
       "editorialControl": {
         "chicago18References": [],
         "criticalEditionStatus": "specific_critical_edition_not_yet_confirmed_for_every_witness",
