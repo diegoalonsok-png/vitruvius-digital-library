@@ -343,3 +343,44 @@ html[data-theme=light] #vitruvia-academic-timeline .vat-band{
 @media(prefers-reduced-motion:reduce){
  #vitruvia-academic-timeline .vat-controls button{transition:none}
 }
+
+
+/* Bounded in-flow event previews: no tooltip can cover another marker,
+   neighbouring academic panel, codex image, or the edge of the viewport. */
+#vitruvia-academic-timeline{overflow:hidden!important}
+#vitruvia-academic-timeline .vat-map,
+#vitruvia-academic-timeline .vat-viewport{overflow:hidden!important}
+#vitruvia-academic-timeline .vat-band{overflow:hidden!important}
+#vitruvia-academic-timeline .vat-band-body{
+ display:flex;flex-direction:column;min-width:0;max-width:100%;
+ width:100%;box-sizing:border-box;overflow:hidden
+}
+#vitruvia-academic-timeline .vat-band-body .vat-track{
+ box-sizing:border-box;min-width:0!important;max-width:100%!important;
+ overflow:hidden!important
+}
+#vitruvia-academic-timeline .vat-event-marker .vat-event-pop{display:none!important}
+#vitruvia-academic-timeline .vat-peek{
+ display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;
+ box-sizing:border-box;min-width:0;width:100%;max-width:100%;
+ margin:3px 0 8px;padding:9px 11px;
+ border:1px solid #74818a;border-left:3px solid #a6cddd;border-radius:9px;
+ background:#25333b;color:#f5f5f4;overflow-wrap:anywhere
+}
+#vitruvia-academic-timeline .vat-peek[hidden]{display:none!important}
+#vitruvia-academic-timeline .vat-peek-year{font:700 12px/1.4 Georgia,serif;color:#c7e1ef}
+#vitruvia-academic-timeline .vat-peek strong{font:600 13px/1.4 system-ui,sans-serif;min-width:0}
+#vitruvia-academic-timeline .vat-peek p{flex-basis:100%;font:12px/1.5 system-ui,sans-serif;margin:2px 0 0;color:#dce7e9}
+#vitruvia-academic-timeline .vat-track .vat-event.vat-event-marker:is(:hover,:focus-visible,[aria-pressed=true]){
+ z-index:5;box-shadow:0 0 0 4px #93bac9,0 0 0 7px #2c454e!important
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-peek{
+ background:#e7f0f3;color:#293b43;border-color:#9ab5c0
+}
+html[data-theme=light] #vitruvia-academic-timeline .vat-peek :is(strong,p,.vat-peek-year){color:#293b43}
+@media(max-width:650px){
+ #vitruvia-academic-timeline .vat-peek{padding:8px 7px;gap:3px 6px}
+}
+@media print{
+ #vitruvia-academic-timeline .vat-peek{display:none!important}
+}
