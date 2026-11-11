@@ -118,45 +118,38 @@ async function openMark(mark){
  const lang=langCode(mark);
  if(!supported.has(lang))return;
  const word=lexicon.wordOfMark(mark)||mark.textContent?.trim();
- if(!word||!/^[\p{L}\p{M}ʼ’'-]{2,80}$/u.test(word))return;
+ if(!word||!/^[\\p{L}\\p{M}ʼ’'-]{2,80}$/u.test(word))return;
  const id=++current;
  lastFocus=mark;
  title.textContent=word;
- contents.replaceChildren(el("p","Consultando el diccionario de la edición…","cl-popup-note"));
+ const slot=el("div",null,"cl-popup-dictionary");
+ const status=el("p","Cargando la ficha del diccionario local…","cl-popup-note");
+ // Paint a useful panel synchronously, even while large lexica load.
+ contents.replaceChildren(slot,status,historicalMedia(word),linksFor(word,lang));
  if(!root.open)root.showModal();
  close.focus();
- const slot=el("div",null,"cl-popup-dictionary");
- contents.replaceChildren(slot);
  try{
   const params=new URLSearchParams(location.search);
   const edition=mark.closest("[data-work]")?.getAttribute("data-work")||
    params.get("work")||classicalWorkIds[params.get("obra")]||"";
-  await lexicon.renderPanel(slot,word,{lang,work:edition,online:true});
+  // Do not block the panel on online lookups or duplicate dictionary rendering.
+  await lexicon.renderPanel(slot,word,{lang,work:edition,online:false});
   if(id!==current)return;
-  // Preserve the reader's existing inline dictionary as a synchronized
-  // secondary view. A modal focus change must not leave its content stale.
-  const inline=document.getElementById("lexicon");
-  if(inline&&inline.isConnected&&inline!==slot){
-   await lexicon.renderPanel(inline,word,{lang,work:edition,online:true});
-   if(id!==current)return;
-  }
+  status.remove();
   const glosses=[...slot.querySelectorAll(".cl-entry .cl-gloss")].map(x=>x.textContent.trim())
    .filter(Boolean).join(" · ").slice(0,1050);
-  // Translate the dictionary's modern explanatory gloss, not the ancient
-  // source text. External translation is strictly opt-in and labelled as such.
   if(glosses&&window.VitruviaInlineTranslation?.attach){
    const glossNode=el("p",glosses,"cl-popup-note");
    glossNode.lang=glosses.startsWith("Castellano:")?"es":"en";
    const wrapper=el("section",null,"cl-popup-gloss-translation");
    wrapper.append(el("h3","Traducción orientativa de la explicación lexicográfica"));
-   wrapper.append(glossNode);contents.append(wrapper);
+   wrapper.append(glossNode);
+   contents.insertBefore(wrapper,contents.querySelector(".cl-popup-media"));
    window.VitruviaInlineTranslation.attach(glossNode,{sourceLanguage:glossNode.lang,originalText:glosses});
   }
-  contents.append(historicalMedia(word),linksFor(word,lang));
  }catch{
   if(id!==current)return;
-  slot.replaceChildren(el("p","No se pudo consultar el diccionario en este momento. Se mantienen disponibles las referencias externas.","cl-popup-note"));
-  contents.append(linksFor(word,lang));
+  status.textContent="No se pudo consultar el glosario local. Los enlaces de referencia siguen disponibles.";
  }
 }
 const markSelector=passages?"mark.cl-hit,mark.cl-parallel-hit":
