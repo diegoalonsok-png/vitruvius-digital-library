@@ -158,3 +158,40 @@ test('institutional author dossiers use canonical Wikidata identities and docume
  assert.match(source,/renderInstitutionalDossier\(root,identity\?\.wikidataId\)/);
  assert.match(source,/UNESCO/);
 });
+
+
+test('every verified person uses multidisciplinary source relations and distinguishes contribution from authorship',async()=>{
+ const subject={id:'Q1',claims:{}};
+ const records={
+  Q1:subject,
+  Q11:{id:'Q11',labels:{es:{value:'Teorema documentado'}},descriptions:{es:{value:'mathematical theorem'}},claims:{P61:refs('Q1'),P571:[statement({time:'+1800-01-01T00:00:00Z'})]}},
+  Q12:{id:'Q12',labels:{es:{value:'Tratado propio'}},descriptions:{es:{value:'book'}},claims:{P50:refs('Q1'),P577:[statement({time:'+1801-01-01T00:00:00Z'})]}},
+  Q13:{id:'Q13',labels:{es:{value:'Composición propia'}},descriptions:{es:{value:'musical composition'}},claims:{P86:refs('Q1'),P577:[statement({time:'+1802-01-01T00:00:00Z'})]}}
+ };
+ let sparql='';
+ const window=runtime(read('vitruvia-cultural-works.js'),async input=>{
+  const url=new URL(input);let payload;
+  if(url.hostname==='query.wikidata.org'){
+   sparql=url.searchParams.get('query');
+   payload={results:{bindings:['Q11','Q12','Q13'].map(id=>({work:{value:'https://www.wikidata.org/entity/'+id},coverage:{value:'6'}}))}};
+  }else payload={entities:Object.fromEntries(url.searchParams.get('ids').split('|').map(id=>[id,records[id]]))};
+  return {ok:true,json:async()=>payload};
+ });
+ const list=(await window.VitruviaCulturalWorks.catalogue({wikidataId:'Q1'},'visual')).works;
+ assert.equal(list.length,3);
+ assert.match(sparql,/wdt:P61/);
+ assert.match(sparql,/wdt:P86/);
+ assert.match(sparql,/wdt:P50/);
+ assert.equal(list.find(x=>x.id==='Q11').medium,'mathematics');
+ assert.equal(list.find(x=>x.id==='Q11').roles[0].property,'P61');
+ assert.equal(list.find(x=>x.id==='Q12').roles[0].property,'P50');
+ assert.equal(list.find(x=>x.id==='Q13').roles[0].property,'P86');
+});
+test('scientists and mathematicians receive a creator dossier, regardless of primary career',()=>{
+ const window=runtime(read('vitruvia-web-dossier.js'),()=>{});
+ const rows=[{type:'wikipedia',title:'Emmy Noether',entityCanonical:'Emmy Noether',entityDescription:'mathematician and theoretical physicist',preferredWiki:true,wikidataId:'Q1',link:'https://www.wikidata.org/wiki/Q1'}];
+ assert.equal(window.VitruviaWebDossier.topicType('Emmy Noether',rows).kind,'researcher');
+ const src=read('vitruvia-web-dossier.js');
+ assert.match(src,/if\(topic.person&&creator&&topic.kind!=='literary-work'\)void books/);
+ assert.match(src,/\['author','architect','music','visual','cinema','researcher'\]/);
+});
