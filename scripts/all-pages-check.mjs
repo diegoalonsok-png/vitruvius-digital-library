@@ -6,7 +6,7 @@ import fs from "node:fs";
 import {mkdirSync,writeFileSync} from "node:fs";
 const base=process.env.BASE||"http://127.0.0.1:8766/";
 const pages=fs.readdirSync(".").filter(f=>f.endsWith(".html")&&!f.startsWith("google"));
-const browser=await chromium.launch();
+const browser=await chromium.launch({headless:true,...(process.env.CHROME?{executablePath:process.env.CHROME}:{})});
 const results=new Array(pages.length);
 let cursor=0;
 async function worker(){
