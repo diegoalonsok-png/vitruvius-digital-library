@@ -86,6 +86,21 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 .h-preface-card a{font-size:14px;text-decoration:underline;text-underline-offset:3px}
 .h-preface-card small{font-size:12px;line-height:1.35;color:#5e4a38}
 .h-preface-panel button{min-height:36px;padding:6px 11px;margin:4px 8px 4px 0}
+.h-term-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:12px 0}
+.h-term-controls label{display:grid;gap:5px;min-width:150px;font:600 13px/1.4 system-ui}
+.h-term-controls select{font:15px system-ui;background:#fff;color:#213b51;border:1px solid #ad987d;border-radius:5px;padding:8px 9px;min-height:40px}
+.h-term-result{padding:12px 0;border-bottom:1px solid #d1bda1}
+.h-term-result:last-child{border-bottom:0}
+.h-term-heading{display:flex;flex-wrap:wrap;gap:7px;align-items:baseline}
+.h-term-heading a{font:600 20px/1.4 Georgia,serif}
+.h-term-heading small,.h-term-result small{font:12px/1.5 system-ui;color:#65543f}
+.h-term-loci{display:flex;flex-wrap:wrap;gap:7px 12px;margin:7px 0}
+.h-term-loci a{font:13px/1.45 system-ui}
+.h-term-details summary{font:600 13px/1.5 system-ui;cursor:pointer;margin:8px 0;color:#24495b}
+.h-term-folios{display:flex;gap:6px 14px;flex-wrap:wrap;margin-bottom:8px}
+.h-term-caution{width:100%;font:12px/1.4 system-ui;margin:1px 0 4px!important;color:#5e4a38}
+.h-term-folio{padding:6px 9px;border:1px solid #cfbca0;background:#f8f4ec;border-radius:5px}
+.h-term-folio a{font-weight:700}
 @media print{.h-preface-panel{break-inside:avoid}}
 </style><script src="assets/vitruvia-fetch-cache.js?v=20261105-v2"></script><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
 <link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
@@ -103,6 +118,17 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 <div id="h-preface-links" class="h-preface-cards"></div>
 <p><strong>Concordancia léxica de trabajo:</strong> busca formas latinas en V514 y consulta el folio de H <em>documentado o estimado</em>. La presencia de una palabra en H solo puede afirmarse después de leerla en la fotografía.</p>
 <div role="group" aria-label="Buscar palabras latinas en V514"><button type="button" data-h-latin="symmetria">Buscar symmetria</button><button type="button" data-h-latin="decor">Buscar decor</button><button type="button" data-h-latin="ordinatio">Buscar ordinatio</button><button type="button" data-h-latin="dispositio">Buscar dispositio</button><button type="button" data-h-latin="eurythmia">Buscar eurythmia</button><button type="button" data-h-latin="firmitas">Buscar firmitas</button><button type="button" data-h-latin="utilitas">Buscar utilitas</button><button type="button" data-h-latin="venustas">Buscar venustas</button></div>
+</section>
+<section id="h-chapter-terms" class="h-preface-panel" aria-labelledby="h-chapter-title">
+<h2 id="h-chapter-title">Diez términos latinos por capítulo · hacia los folios de H</h2>
+<p>Índice experimental de las 95 secciones capitulares y los diez prefacios de <em>De architectura</em>. Las formas, ocurrencias y loci proceden del texto editorial V514. Las fotografías de H se abren como <strong>candidatos para cotejo</strong>, no como pruebas de que una palabra esté atestiguada en el manuscrito.</p>
+<div class="h-term-controls">
+<label for="h-term-book">Libro<select id="h-term-book" aria-label="Seleccionar libro de Vitruvio"></select></label>
+<label for="h-term-chapter">Capítulo o prefacio<select id="h-term-chapter" aria-label="Seleccionar capítulo o prefacio"></select></label>
+</div>
+<p id="h-term-status" role="status">Preparando el índice léxico…</p>
+<div id="h-term-results" aria-label="Diez términos con sus loci y folios candidatos"></div>
+<p><strong>Precaución:</strong> el sistema presenta formas características elegidas automáticamente, no lemas académicos definitivos. La confirmación de su presencia y posición exacta en H requiere lectura del folio o reconocimiento HTR comprobado.</p>
 </section>
 <section aria-label="Lector de folios"><h2>Leer el códice en grande</h2>
 <div class="toolbar"><strong id="label">Folio: —</strong><button id="prev" disabled>← Anterior</button><button id="next" disabled>Siguiente →</button><label>Imagen <input type="number" id="number" min="1" value="9" disabled></label><span id="total"></span><label>Elegir folio <select id="folio-select" aria-label="Elegir por folio o número de imagen" disabled><option value="">Cargando los folios…</option></select></label>
@@ -224,7 +250,7 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
  fetch("data/codex-h/folio-locus-map.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null).then(m=>{locusMap=m;go()});
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
-</script><script src="assets/codex-h-preface-search.js?v=20261111-prefacios-v1" defer></script><script src="assets/codex-h-single-controls.js?v=20261105-a11y-v1" defer></script><script>
+</script><script src="assets/codex-h-preface-search.js?v=20261111-prefacios-v1" defer></script><script src="assets/codex-h-chapter-terms.js?v=20261111-chapters-v1" defer></script><script src="assets/codex-h-single-controls.js?v=20261105-a11y-v1" defer></script><script>
 /* Codex H folio reader: translate the actual interface without translating manuscript data.
    UI languages: ES, EN, FR, IT, DE, PT. No external translation calls. */
 (()=>{'use strict';
