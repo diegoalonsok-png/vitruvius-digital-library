@@ -804,7 +804,11 @@ function stageImages(snapshot){
  if(!q||q!==document.getElementById("query")?.value?.trim()||stagedQuery===q)return;
  stagedQuery=q;void searchImages(q);
 }
-window.addEventListener("vitruvia:search",()=>{clearStage();reset()});
+window.addEventListener("vitruvia:search",event=>{
+ clearStage();reset();
+ // A repeated or web-only search must start images independently of text rows.
+ stageImages({query:event.detail?.query});
+});
 window.addEventListener("vitruvia:clear",()=>{clearStage();reset()});
 window.addEventListener("vitruvia:results",event=>stageImages(event.detail));
 document.getElementById("search-images-button")?.addEventListener("click",()=>{
