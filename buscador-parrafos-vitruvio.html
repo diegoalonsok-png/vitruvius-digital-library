@@ -27,7 +27,7 @@
 <label>Método<select id="hp-mode"><option value="literal">Coincidencia textual</option><option value="conceptual">Conceptos multilingües</option></select></label>
 <button type="submit">Buscar</button>
 </form>
-<p id="hp-status" role="status" aria-live="polite">Escribí un término para consultar los archivos OCR. Los textos se descargan cuando se solicita la búsqueda.</p>
+<p id="hp-status" role="status" aria-live="polite">Escriba un término para consultar los archivos OCR. Los textos se descargan cuando se solicita la búsqueda.</p>
 <div id="hp-sources"></div>
 <section id="hp-results" class="hp-results" aria-label="Pasajes encontrados"></section>
 <p><a href="inventario-aparato-autoral.html">Consultar también el aparato crítico comparativo de las ediciones V514, V554 y V297</a>.</p>
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     link.textContent='Abrir página en el facsímil';box.append(h,meta,p,link);frag.append(box);
    }
    $('hp-results').append(frag);
-   if(!result.results.length){let p=document.createElement('p');p.textContent='No se encontraron coincidencias textuales en las fuentes disponibles. Probá una forma latina o italiana.';$('hp-results').append(p);}
+   if(!result.results.length){let p=document.createElement('p');p.textContent='No se encontraron coincidencias textuales en las fuentes disponibles. Pruebe una forma latina o italiana.';$('hp-results').append(p);}
   }catch(err){if(id===request)$('hp-status').textContent='La búsqueda no pudo completarse: '+String(err.message||err);}
  });
  if(queryParams.get('q'))form.requestSubmit();
