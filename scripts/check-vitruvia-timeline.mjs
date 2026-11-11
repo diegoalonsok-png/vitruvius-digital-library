@@ -34,7 +34,7 @@ class E {
  setAttribute(k,v){this.attributes[k]=v}
  addEventListener(k,f){this.listeners[k]=f}
  querySelector(selector){if(selector===".article-grid")return this.children.find(x=>x.className==="article-grid")||null;return null}
- querySelectorAll(selector){const out=[];const visit=e=>{if(e.className==="vat-event"&&selector.startsWith(".vat-event")&&e.attributes["aria-pressed"]==="true")out.push(e);for(const x of e.children)visit(x)};visit(this);return out}
+ querySelectorAll(selector){const out=[];const visit=e=>{if(e.className.split(/\s+/).includes("vat-event")&&selector.startsWith(".vat-event")&&e.attributes["aria-pressed"]==="true")out.push(e);for(const x of e.children)visit(x)};visit(this);return out}
  scrollBy(opts){this.scrolls.push(opts)}
  focus(){this.wasFocused=true}
  scrollIntoView(opts){this.scrolledTo=opts}
@@ -77,7 +77,7 @@ article.hidden=true;for(const observer of observers)if(observer.target===article
 await Promise.resolve();
 assert.equal(root.parentElement,resultsSection,"Timeline returns above search results");
 assert.equal(root.nextElementSibling,resultsGrid);
-const find=cls=>{const out=[];const visit=x=>{if(x.className===cls)out.push(x);for(const n of x.children)visit(n)};visit(root);return out};
+const find=cls=>{const out=[];const visit=x=>{if(x.className.split(/\s+/).includes(cls))out.push(x);for(const n of x.children)visit(n)};visit(root);return out};
 const button=find("vat-event")[0],detail=find("vat-detail")[0];
 assert.ok(button&&detail);
 button.listeners.click();
