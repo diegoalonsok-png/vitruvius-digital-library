@@ -21,3 +21,5 @@ El diccionario contextual ahora atiende los resultados normales y los DOCX de la
 En Chrome sobre la vista previa estática local se observaron primeras respuestas de Vitruvia de 227 ms (domus), 357 ms (numen) y 352 ms (symmetria), sin imágenes en los resultados. El diccionario numen del DOCX se mostró en 11 ms. Son mediciones sintéticas de este entorno, no garantías de descarga en GitHub Pages. Resultados y límites en reports/responsive-browser-observations-2026-11-11.json.
 
 La verificación pública registró la primera respuesta de Bibliotheca para NUMEN en 498 ms, su diccionario en el DOCX de Horacio en 174 ms y la primera respuesta de Vitruvia para symmetria en 318 ms. La captura se conserva en reports/responsive-numen-dictionary.png. Las fuentes del diccionario residente se normalizan a una lista antes de renderizarlas: el índice almacenaba una cadena y ello provocaba un error al terminar el panel.
+
+Las tres páginas de búsqueda consultan HTML vigente con cache:no-store cuando hay conexión. Se evita que la copia anterior o la caché HTTP sigan ocultando una corrección; sin conexión se conserva el último HTML disponible.

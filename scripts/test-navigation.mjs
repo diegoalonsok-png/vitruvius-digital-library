@@ -32,6 +32,21 @@ let activated;listeners.get('activate')({waitUntil:p=>{activated=p}});await acti
 assert.ok(stores.has('unrelated-app-cache'),'Updating the library must preserve other application caches');
 assert.ok(!stores.has('pages-vdl-old'));
 console.log('PASS: immediate cached navigation, background freshness, canonical static-page cache and isolated cleanup.');
+for(const page of ['vitruvia.html','vitruvia-lexicon.html','bibliotheca-graeca-latina.html']){
+ network=async()=>response('prior search interface');
+ await request('https://library.test/'+page+'?q=first').result;
+ let release,settled=false;
+ network=req=>{assert.equal(req.cache,'no-store','Search HTML must bypass HTTP caches');return new Promise(resolve=>{release=resolve})};
+ const fresh=request('https://library.test/'+page+'?q=next');
+ fresh.result.then(()=>{settled=true});
+ await new Promise(resolve=>setTimeout(resolve,10));
+ assert.equal(settled,false,'A cached search interface must not replace the requested fresh version');
+ release(response('current search interface'));
+ assert.equal(await (await fresh.result).text(),'current search interface');
+ network=async()=>{throw Error('offline')};
+ assert.equal(await (await request('https://library.test/'+page+'?q=offline').result).text(),'current search interface','Offline search navigation retains the latest stored interface');
+}
+console.log('PASS: all three search interfaces load current HTML and retain offline fallback.');
 
 const handlers=new Map(),prepared=[];
 const window={};window.top=window;window.self=window;

@@ -6,7 +6,7 @@
    - Datos del Lexicon con huella (?v=): caché primero (inmutables hasta que cambia la huella).
    - JS/CSS versionados (?v=): caché primero. Imágenes y PDF: caché primero con límite.
    - Recursos de otros dominios: no se interceptan. */
-const VERSION="vdl-20261111-restored-search-r3";
+const VERSION="vdl-20261111-restored-search-r4";
 const SHELL="shell-"+VERSION,PAGES="pages-"+VERSION,DATA="data-"+VERSION,LEXDATA="lexdata-"+VERSION,STATIC="static-"+VERSION,MEDIA="media-"+VERSION;
 const CORE=["./","index.html","offline.html","vitruvia.html","lector-bilingue.html","bibliotheca-graeca-latina.html","classics-text-reader.html","termino.html","laboratorio-humanidades.html","mapa-general.html",
  "manifest.webmanifest","vitruvia.webmanifest","instalar-apps.html","assets/app-icons/vitruvia-192.png","assets/app-icons/vitruvia-512.png","assets/app-icons/vitruvia-apple-touch-icon.png","assets/favicon.svg","assets/app-icons/icon-192.png","assets/app-icons/icon-512.png","assets/pwa.js"];
@@ -63,10 +63,12 @@ async function pageResponse(event){
  if(new URL(event.request.url).searchParams.get("source")==="install"){
   try{return await updatePage(event.request,cache)}catch{return hit||(await caches.match("offline.html"))||Response.error()}
  }
- // Vitruvia is an actively edited search interface. Returning a cached HTML
+ // All three search interfaces must use the current HTML. Returning cached HTML
  // document after only 1.2 seconds made repaired layouts look unchanged.
  // Always await a fresh navigation when online, even for query-string URLs.
- if(new URL(event.request.url).pathname.endsWith("/vitruvia.html")){
+ if(new URL(event.request.url).pathname.endsWith("/vitruvia.html")||
+    new URL(event.request.url).pathname.endsWith("/vitruvia-lexicon.html")||
+    new URL(event.request.url).pathname.endsWith("/bibliotheca-graeca-latina.html")){
   try{
    const fresh=await updatePage(new Request(event.request,{cache:"no-store"}),cache);
    return fresh.ok?fresh:hit||fresh;
