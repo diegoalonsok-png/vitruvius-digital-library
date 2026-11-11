@@ -9,9 +9,9 @@
  const list=document.getElementById('result-list');if(!list)return;
  // Clave de evidencia (assets/vitruvia-evidence.js) → grupo del filtro.
  const GROUP={witness:'primary',fragment:'primary','edition-text':'primary','external-text':'primary',edition:'edition',translation:'edition',apparatus:'edition',reader:'edition','article-index':'study',bibliography:'study',research:'study',reference:'reference',authority:'institution',museum:'institution',site:'institution'};
- const L={es:{all:'Todo',primary:'Fuentes primarias',edition:'Ediciones y traducciones',study:'Estudios',reference:'Referencia',institution:'Instituciones',sort:'Ordenar',rel:'Relevancia',cited:'Más citados',new:'Más recientes',old:'Más antiguos',exp:'Exportar registros:'},
-  en:{all:'All',primary:'Primary sources',edition:'Editions and translations',study:'Studies',reference:'Reference',institution:'Institutions',sort:'Sort',rel:'Relevance',cited:'Most cited',new:'Newest',old:'Oldest',exp:'Export records:'},
-  fr:{all:'Tout',primary:'Sources primaires',edition:'Éditions et traductions',study:'Études',reference:'Référence',institution:'Institutions',sort:'Trier',rel:'Pertinence',cited:'Les plus cités',new:'Plus récents',old:'Plus anciens',exp:'Exporter les notices :'}};
+ const L={es:{all:'Todo',primary:'Fuentes primarias',edition:'Ediciones y traducciones',study:'Estudios',reference:'Referencia',institution:'Instituciones',sort:'Ordenar',rel:'Relevancia · humanidades',cited:'Más citados',new:'Más recientes',old:'Más antiguos',exp:'Exportar registros:'},
+  en:{all:'All',primary:'Primary sources',edition:'Editions and translations',study:'Studies',reference:'Reference',institution:'Institutions',sort:'Sort',rel:'Relevance · humanities',cited:'Most cited',new:'Newest',old:'Oldest',exp:'Export records:'},
+  fr:{all:'Tout',primary:'Sources primaires',edition:'Éditions et traductions',study:'Études',reference:'Référence',institution:'Institutions',sort:'Trier',rel:'Pertinence · humanités',cited:'Les plus cités',new:'Plus récents',old:'Plus anciens',exp:'Exporter les notices :'}};
  const t=k=>(L[(document.documentElement.lang||'es').slice(0,2)]||L.es)[k];
  const bar=document.createElement('div');bar.className='vitruvia-evidence-filter';bar.setAttribute('role','toolbar');bar.hidden=true;
  const chips=document.createElement('div');chips.className='vef-chips';
@@ -45,7 +45,15 @@
   const key={rel:c=>+c.dataset.rank,cited:c=>-(+c.dataset.cited||0),new:c=>-(+c.dataset.year||-9999),old:c=>(+c.dataset.year||99999)}[order];
   const sorted=[...cs].sort((a,b)=>key(a)-key(b)||(+a.dataset.rank)-(+b.dataset.rank));
   // Se reordena dentro del mismo contenedor de cada tarjeta, sin mover encabezados ni grupos ajenos.
-  const parent=cs[0].parentElement;if(sorted.every(c=>c.parentElement===parent)){observer.disconnect();sorted.forEach(c=>parent.append(c));observe()}
+  const parent=cs[0].parentElement;if(sorted.every(c=>c.parentElement===parent)){
+   observer.disconnect();
+   // Move each result into an existing result slot; leave headings, facets and
+   // the show-more control in place. Relevance restores the latest core ranking.
+   const headings=[...parent.querySelectorAll('.vitruvia-result-group')];
+   headings.forEach(h=>{h.hidden=order!=='rel'});
+   const slots=cs.map(c=>{const slot=document.createComment('result');c.before(slot);return slot});
+   sorted.forEach((c,i)=>slots[i].replaceWith(c));observe();
+  }
  }
  /* ---------- Exportación ---------- */
  const texEsc=s=>String(s??'').replace(/([{}%&$#_])/g,'\\$1');
@@ -124,5 +132,5 @@
  }
  let tm=0;const observer=new MutationObserver(()=>{clearTimeout(tm);tm=setTimeout(()=>{paint();apply();if(order!=='rel')sort()},150)});
  const observe=()=>observer.observe(list,{childList:true,subtree:true});observe();
- window.addEventListener('vitruvia:search',()=>{current='all';order='rel';currentEdition='';currentLanguage='';apply()});
+ window.addEventListener('vitruvia:search',()=>{current='all';order='rel';currentEdition='';currentLanguage='';currentBook='';apply()});
 })();

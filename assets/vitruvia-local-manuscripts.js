@@ -4,10 +4,10 @@
 const supported=/^(?:codex-h-folios-local|harleianus|visor-codex)\.html(?:\?(?:[a-z0-9_.%=&+-]+))?$/i;
 function locate(link){
  const url=String(link||"").trim();
- if(!supported.test(url))return null;
  try{
   const absolute=new URL(url,location.href);
-  return absolute.origin===location.origin?absolute.href:null
+  const local=absolute.pathname.split('/').pop()+absolute.search;
+  return absolute.origin===location.origin&&supported.test(local)?absolute.href:null
  }catch{return null}
 }
 function dialog(){
@@ -48,5 +48,5 @@ function open(link,title){
  if(!el.open)el.showModal();
  return true;
 }
-window.VitruviaLocalManuscripts={open};
+window.VitruviaLocalManuscripts={open,locate};
 })();

@@ -10,7 +10,8 @@ const doc=get('vitruvia-article'),preview=get('article-image-preview');
 if(!doc||!preview)return;
 const gallery=el('section','vitruvia-heritage-gallery');gallery.id='vitruvia-heritage-gallery';gallery.hidden=true;
 gallery.setAttribute('aria-label','Obras, códices, álbumes y distinciones documentadas');
-preview.after(gallery);
+const imageGrid=get('vitruvia-image-grid');
+if(imageGrid)imageGrid.before(gallery);else preview.after(gallery);
 let sequence=0,query='',resultRows=[];
 const cached=new Map();
 async function json(url){
@@ -33,6 +34,11 @@ function card(parent,r){
  const detail=[r.date,r.location,r.description].filter(Boolean).join(' · ');
  if(detail)desc.append(el('p','vhg-detail',detail));
  const src=link(L('Consultar fuente ↗','Source record ↗','Notice d’origine ↗'),url);src.className='vhg-source';desc.append(src);
+ if(r.kind==='music'){
+  desc.append(link(L('Ver contenido y escuchar ↗','Album contents and listening ↗','Contenu et écoute ↗'),url));
+  desc.append(link(L('Buscar compra de CD o vinilo ↗','Find CD or vinyl to buy ↗','Chercher CD ou vinyle ↗'),
+   'https://www.google.com/search?'+new URLSearchParams({q:[query,r.title,'CD vinilo comprar'].join(' ')})));
+ }
  art.append(poster,desc);parent.append(art);
 }
 function block(root,title,records,note){
@@ -214,6 +220,7 @@ async function render(name,entity,rows){
   }
  }
  if(!container.children.length)gallery.hidden=true;
+ else if(get('vitruvia-images'))get('vitruvia-images').hidden=false;
 }
 function schedule(q,rows){
  query=String(q||'').trim();resultRows=Array.isArray(rows)?rows:[];

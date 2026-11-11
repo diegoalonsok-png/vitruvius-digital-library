@@ -208,7 +208,7 @@ function exactPersonGalleryImage(item,topic){
 }
 function displayGroups(items,topic){
  items=items.filter(item=>exactPersonGalleryImage(item,topic));
- if(!items.length){grid.replaceChildren();quick.replaceChildren();quick.hidden=true;section.hidden=true;return}
+ if(!items.length){grid.replaceChildren();quick.replaceChildren();quick.hidden=true;section.hidden=!document.getElementById('vitruvia-heritage-gallery')?.querySelector('.vhg-card');return}
  // Childhood photos are historical documents, but never lead a person's gallery
  // when adult photographs are available. If all imagery is childhood, retain it.
  if(topic.kind==="person"&&items.some(item=>!isChildhoodPhoto(item)))
@@ -795,20 +795,27 @@ async function searchImages(query){
   if(id===active&&grid.querySelector(".vitruvia-image-card")){grid.hidden=false;section.hidden=false;}
  }
 }
-// A text search never starts a gallery, including when this module was
-// loaded by an earlier explicit image search in the same page.
+// Start once for each current search; source results may arrive in many waves.
+// reset() cancels the old gallery, so late replies cannot replace a new topic.
 let stagedQuery="";
 function clearStage(){stagedQuery=""}
-window.addEventListener("vitruvia:search",()=>reset());
-window.addEventListener("vitruvia:clear",()=>reset());
+function stageImages(snapshot){
+ const q=String(snapshot?.query||"").trim();
+ if(!q||!snapshot?.rows?.length||q!==document.getElementById("query")?.value?.trim()||stagedQuery===q)return;
+ stagedQuery=q;void searchImages(q);
+}
+window.addEventListener("vitruvia:search",()=>{clearStage();reset()});
+window.addEventListener("vitruvia:clear",()=>{clearStage();reset()});
+window.addEventListener("vitruvia:results",event=>stageImages(event.detail));
 document.getElementById("search-images-button")?.addEventListener("click",()=>{
  const q=document.getElementById("query")?.value?.trim();
  if(!q){document.getElementById("query")?.focus();return}
  document.body.classList.add("vitruvia-reading");
- clearStage();stagedQuery="";
+ stagedQuery=q;
  void searchImages(q);
  grid.hidden=false;
  section.scrollIntoView({behavior:"smooth",block:"start"});
 });
+stageImages(window.VitruviaSearchSnapshot);
 })();
 

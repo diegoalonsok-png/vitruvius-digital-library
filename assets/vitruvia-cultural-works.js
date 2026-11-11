@@ -117,7 +117,7 @@ async function preview(item,work,valid){
  const img=el('img','web-dossier-cover');img.src=source;img.alt=work.title;img.loading='lazy';img.decoding='async';img.addEventListener('error',()=>a.remove());a.append(img);item.prepend(a);
 }
 function showWorks(root,works,valid){
- const controls=el('label','cultural-order',L('Orden cronológico','Chronological order','Ordre chronologique'));
+ const controls=el('label','cultural-order',L('Orden de las obras','Works order','Ordre des œuvres'));
  const select=el('select');select.setAttribute('aria-label',L('Orden de las obras culturales','Cultural works order','Ordre des œuvres culturelles'));
  for(const [value,text] of [['year',L('Más antiguas primero','Oldest first','Plus anciennes d’abord')],['importance',L('Importancia documental','Documentary prominence','Importance documentaire')]]){const option=el('option',null,text);option.value=value;select.append(option)}
  controls.append(select);root.append(controls);

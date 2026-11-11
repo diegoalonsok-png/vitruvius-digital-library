@@ -271,9 +271,9 @@ async function books(root,topic,valid){
   }else{
    const note=el('p','web-dossier-count',
     L('Obras catalogadas: ','Catalogue works: ','Œuvres cataloguées : ')+books.length+
-    L(' · ordenadas inicialmente por primera edición catalogada; despliega cada obra para ver sus ediciones fechadas.',
-      ' · sorted by first catalogued publication; expand each work for its dated editions.',
-      ' · classées par première publication répertoriée ; ouvrir chaque œuvre pour ses éditions datées.'));section.append(note);
+    L(' · orden cronológico de primera publicación catalogada; despliega cada obra para ver sus ediciones.',
+      ' · chronological order of first catalogued publication; expand each work for its editions.',
+      ' · ordre chronologique de première publication répertoriée ; ouvrir chaque œuvre pour ses éditions.'));section.append(note);
    const stack=el('div','web-dossier-stack');section.append(stack);
    // Keep right-hand book lists responsive. Show 12 covers first and reveal
    // further documented editions on demand, without issuing new API calls.
@@ -524,9 +524,9 @@ function render(panel,query,rows,isCurrent){
   if(!topic.person&&topic.kind==='general'){section.remove();return}
   if(topic.person?.title||authority?.canonical){const title=panel.querySelector('.context-term');if(title)title.textContent=authority?.canonical||topic.person?.title}
   if(sameIdentity&&authority?.spellingMatch)section.append(el('p','cultural-correction',L('Resultado para ','Showing ','Résultat pour ')+authority.canonical+L('. Escribiste «','. You entered “','. Vous avez saisi « ')+authority.spellingMatch+L('».','”.',' ».')));
-  if(topic.person)info(section,L('Obras propias con imágenes y fuentes, ordenadas de la más antigua a la más reciente.',
-   'The subject’s works with images and sources, from oldest to newest.',
-   'Œuvres du sujet avec images et sources, de la plus ancienne à la plus récente.'));
+  if(topic.person)info(section,L('Obras propias, imágenes y fuentes; importancia documental o fecha a elección.',
+   'The subject’s works, images and sources; choose documentary prominence or date.',
+   'Œuvres du sujet, images et sources ; importance documentaire ou date au choix.'));
   const architectural=window.VitruviaArchitecture?.classify(query,records);
   // Identified architects also need the architectural works panel; without it a
    // SPARQL timeout can leave a complete biography but no building photographs.

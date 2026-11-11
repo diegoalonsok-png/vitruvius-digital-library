@@ -7,18 +7,23 @@
  function load(group){
   if(pending.has(group))return pending.get(group);
   // Fetch in parallel; async=false preserves dependency execution order.
-  const task=Promise.all((groups[group]||[]).map(src=>{
+  const task=Promise.allSettled((groups[group]||[]).map(src=>{
    if(!scripts.has(src))scripts.set(src,new Promise((resolve,reject)=>{
     const script=document.createElement('script');script.src=src;script.async=false;
     script.onload=resolve;script.onerror=()=>{scripts.delete(src);reject(Error('No se pudo cargar '+src))};
     document.body.append(script);
    }));
    return scripts.get(src);
-  })).catch(error=>{pending.delete(group);throw error});
+  })).then(results=>{
+   const failed=results.filter(r=>r.status==='rejected');
+   if(failed.length)pending.delete(group);
+   if(results.length&&failed.length===results.length)throw failed[0].reason;
+  });
   pending.set(group,task);return task;
  }
  window.VitruviaFeatures={load};
- // Photos and image APIs are never started by an ordinary text search.
+ // Text and visual discovery share the current query. Images remain independent
+ // of the first textual result and never scroll the reader automatically.
  document.addEventListener('click',async event=>{
   const button=event.target.closest?.('#search-images-button');
   if(!button||pending.has('images'))return;
@@ -28,6 +33,10 @@
   catch{document.getElementById('result-state').textContent='No se pudieron cargar las imágenes. Vuelva a pulsar Imágenes.'}
   finally{button.removeAttribute('aria-busy')}
  },true);
+ window.addEventListener('vitruvia:results',event=>{
+  if(!event.detail?.query||!event.detail?.rows?.length)return;
+  void load('images').catch(()=>{});
+ });
  // Reader controls do not compete with the first result or start remote searches.
  let readerScheduled=false;
  window.addEventListener('vitruvia:results',event=>{

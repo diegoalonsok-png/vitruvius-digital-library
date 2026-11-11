@@ -11,7 +11,7 @@ const sandbox={
  queryTokens:q=>[...new Set(String(q||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase()
   .replace(/[^\p{L}\p{N}]+/gu," ").split(/\s+/).filter(x=>x.length>=3))],
  topicQuery:q=>q,
- matchingWorkIds:()=>[]
+ matchingWorkIds:()=>new Set()
 };
 vm.runInNewContext(fn+";globalThis.check=documentarySubjectEvidence",sandbox);
 const check=sandbox.check;
@@ -25,7 +25,7 @@ assert.equal(check(page("Edición · The Rolling Stones","obra musical"),"The Ro
 assert.equal(check(page("Historia de arquitectura","Panorama de Roma",{
  externalFulltext:true}),"Panteón de Roma"),true,
  "A source claiming a genuine external full-text hit is evaluated separately");
-sandbox.matchingWorkIds=()=>["caesar-gallico"];
+sandbox.matchingWorkIds=()=>new Set(["caesar-gallico"]);
 assert.equal(check(page("Commentarii de bello Gallico","Pasaje latino",{
  workId:"caesar-gallico"}),"Julius Caesar"),true,
  "Directly catalogued work-author links must remain discoverable");
