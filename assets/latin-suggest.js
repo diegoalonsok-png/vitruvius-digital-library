@@ -49,6 +49,17 @@
    const start=match.index;
    if(start>markedText.last)element.append(document.createTextNode(raw.slice(markedText.last,start)));
    const mark=document.createElement('mark');mark.className='lexical-query-hit';mark.textContent=match[0];
+   mark.tabIndex=0;mark.setAttribute('role','button');
+   mark.setAttribute('aria-label','Abrir ficha léxica de '+match[0]);
+   mark.title='Consultar significado, morfología y traducciones';
+   const openLexical=event=>{
+    if(event.type==='keydown'&&event.key!=='Enter'&&event.key!==' ')return;
+    if(event.type==='keydown')event.preventDefault();
+    event.stopPropagation();
+    window.VitruviusLexicalCard?.open(match[0],mark);
+   };
+   mark.addEventListener('click',openLexical);
+   mark.addEventListener('keydown',openLexical);
    element.append(mark);markedText.last=start+match[0].length;
   }
   if(markedText.last<raw.length)element.append(document.createTextNode(raw.slice(markedText.last)));
