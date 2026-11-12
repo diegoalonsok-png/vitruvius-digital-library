@@ -29,11 +29,25 @@ h2{font:400 25px/1.3 Georgia,serif;margin-top:34px}
 <p class="intro">Fe de erratas del texto latino de las ediciones del autor, <strong>V514</strong> (recensio crítica) y <strong>V297</strong> (<i>The Architect of Theory</i>), y clasificación razonada de las 125 diferencias latinas entre ambas. Cada diferencia se contrastó con el OCR de Krohn (1912) y Rose (1899), con el aparato de V514 y con la división de parágrafos. Una lectura que sigue a Krohn o a Rose es <em>variante editorial</em>, no errata. Errata es la forma que ninguna fuente atestigua o que rompe la construcción.</p></header>
 <p id="estado" class="small" role="status">Cargando…</p>
 
+<section aria-labelledby="t0"><h2 id="t0">Balance: ¿hay errores graves?</h2>
+<p class="intro">No. De las 57 654 palabras latinas de V514, el 97,3 % coinciden con Krohn o con Rose; el resto son, sobre todo, errores del OCR de esas ediciones y variantes gráficas. Toda errata candidata se comprobó después sobre la página impresa de Krohn y, cuando hizo falta, sobre la imagen de H. Esa segunda comprobación descartó la mayoría: lo que el cotejo automático tomaba por errores eran lecturas de Krohn o de Rose que una de las dos ediciones sigue. Quedan <strong>dos erratas reales, de una palabra y de una cifra</strong>, ya corregidas en la edición digital.</p>
+
+<h3 style="font:400 20px Georgia,serif">Erratas corregidas</h3>
+<p class="nota"><strong>8.1.6 (V514, V554 y V297).</strong> Decía «pertemptata et, <i>qua</i> supra scripta sunt, signa»; debe decir «et, <i>quae</i> supra scripta sunt, signa». Krohn y Rose concuerdan en <i>quae</i>, que es el sujeto de la relativa referida a <i>signa</i>.</p>
+<p class="nota"><strong>9.8.15 (V297).</strong> El latín decía <i>ad capricorni partem VII</i>, mientras que la traducción inglesa del mismo libro dice «the eighth part of Capricorn». Krohn y Rose imprimen VIII (comprobado sobre la página de Krohn) y V514 también lee VIII. Se corrige el latín de V297 a VIII.</p>
+
+<h3 style="font:400 20px Georgia,serif">Lo que parecía errata y no lo es</h3>
+<p class="nota"><strong>8.6.1 · La pendiente del acueducto.</strong> V514 lee <i>ne minus in centenos pedes semipede</i> («no menos de medio pie cada cien pies»). Es la lectura de H, comprobada sobre la imagen del folio 120r («in centenos pedes semi|pede»), y de G y S. Rose y Krohn imprimen <i>sicilico</i> (1/48 de pie), corrección de Bondam a partir de Plinio (<i>NH</i> 31.57); el aparato de Rose dice expresamente que los manuscritos traen <i>semipede</i>. Entre una lectura y otra la pendiente cambia 24 veces, por lo que la elección pesa, pero V514 la documenta en sus estudios de la edición. V297 sigue a Krohn. <span class="small">Precisión para una nueva tirada: la nota de V514 dice «se imprime semipede, con Rose», pero Rose imprime <i>sicilico</i>; conviene decir «con los manuscritos».</span></p>
+<p class="nota"><strong>3.3.8 · Número de columnas.</strong> V514 lee XXXVIII («treinta y ocho»), con H y la vulgata, y lo documenta en el aparato. V297 lee XXXIV («thirty-four»), con la corrección de Krohn. No es una errata: V297 sigue a Krohn de forma sistemática (también en 8.6.1). Las dos ediciones dan cifras distintas y quien las tenga a ambas lo va a notar: convendría una nota en V297 que remita a la lectura de H.</p>
+<p class="nota"><strong>4.8.3, 9.1.16 y 10.13.8.</strong> En los tres casos la edición sospechosa reproduce el texto impreso de Krohn: «ea, proportionibus» (V514), el suplemento «tangit⟨que⟩» (V297) y la forma anómala «animadverterest» (V297), que es lo que trae Krohn en la página (Rose: «putavit … animadverteret», como V514). Son variantes editoriales, no erratas.</p>
+
+<h3 style="font:400 20px Georgia,serif">Alcance de esta revisión</h3>
+<p class="nota small">La revisión compara las dos ediciones del autor entre sí y contra Krohn y Rose. Si V297 y V514 traen el mismo error y Krohn o Rose leen otra cosa, el cotejo general lo detecta: así se halló la errata común de 8.1.6. <strong>No puede detectar</strong> un lugar donde las cuatro ediciones impresas coinciden y el manuscrito H dice otra cosa. Ese control corresponde al cotejo con H, hoy en verificación externa por especialistas; sus resultados se incorporarán a esta página. Las correcciones se aplican a la edición digital (texto, búsqueda y Lexicon) con <code>scripts/aplicar-erratas.py</code>; los PDF impresos conservan la errata hasta una nueva tirada.</p>
+</section>
 <section aria-labelledby="t1"><h2 id="t1">Fe de erratas</h2>
-<p class="small">Debe leerse → donde dice. Las erratas de un lugar idéntico en ambas ediciones se dan una sola vez.</p>
+<p class="small">Las erratas comunes a varias ediciones se dan una sola vez. Ya están corregidas en la edición digital; los PDF impresos las conservan hasta una nueva tirada.</p>
 <table class="errata"><thead><tr><th>Locus</th><th>Edición</th><th>Dice</th><th>Debe decir</th><th>Fundamento</th></tr></thead><tbody id="fe"></tbody></table>
-<h3 style="font:400 19px Georgia,serif">Lugares sin decisión</h3>
-<table class="errata"><thead><tr><th>Locus</th><th>V297</th><th>V514</th><th>Situación</th></tr></thead><tbody id="dudas"></tbody></table>
+
 </section>
 
 <section aria-labelledby="t2"><h2 id="t2">Las 125 diferencias, clasificadas</h2>
@@ -53,17 +67,14 @@ const $=s=>document.querySelector(s);
 const el=(t,txt,cls)=>{const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e};
 const row=(cells)=>{const tr=document.createElement("tr");cells.forEach((c,i)=>{const td=el("td",c,i===0?"l":null);tr.append(td)});return tr};
 const lnk=L=>{const a=el("a",L);a.href="lector-bilingue.html?locus="+encodeURIComponent(L);return a};
-const FE=[ // lugares de errata: dice, debe decir, fundamento (detalle en el JSON)
- {locus:"4.8.3",ed:"V514",dice:"uti supra scripta sunt ea, proportionibus",debe:"uti supra scripta sunt, isdem proportionibus",f:"Rose y V297; «ea» no está atestiguado y rompe la construcción."},
- {locus:"8.1.6",ed:"V514 y V297",dice:"et qua supra scripta sunt signa",debe:"et quae supra scripta sunt signa",f:"Krohn y Rose concuerdan en «quae»."},
- {locus:"9.1.16",ed:"V297",dice:"tangit ⟨que⟩",debe:"tangitque",f:"Enclítico separado por error tipográfico (Krohn: tangitque)."},
- {locus:"10.13.8",ed:"V297",dice:"animadverterest",debe:"animadverterem (verificar con Krohn)",f:"«animadverterest» no es forma latina; tras «putavi … quod» se espera 1.ª persona. V514 «animadverteret» también debe revisarse."}];
+const FE=[ // erratas confirmadas y ya corregidas en la edición digital
+ {locus:"8.1.6",ed:"V514, V554 y V297",dice:"pertemptata et, qua supra scripta sunt, signa",debe:"pertemptata et, quae supra scripta sunt, signa",f:"Krohn y Rose concuerdan en «quae». Corregido en la edición digital."},
+ {locus:"9.8.15",ed:"V297",dice:"ad capricorni partem VII",debe:"ad capricorni partem VIII",f:"Krohn y Rose imprimen VIII; la traducción de V297 ya decía «eighth». Corregido en la edición digital."}];
 fetch("data/index/erratas-v297-v514.json",{cache:"no-cache"}).then(r=>r.json()).then(o=>{
  const D=o.diferencias,R=o.rotulos;
  $("#estado").textContent=D.length+" diferencias revisadas el "+o.fecha+": "+Object.entries(o.recuentos).sort((a,b)=>b[1]-a[1]).map(([k,v])=>v+" "+(R[k]||k).replace(/^(\S)/,m=>m.toLowerCase()).replace(/v297/g,"V297").replace(/v514/g,"V514").replace(/krohn\/rose/g,"Krohn/Rose")).join(" · ")+".";
  $("#metodo").textContent=o.metodo;
  FE.forEach(x=>{const tr=row(["",x.ed,x.dice,x.debe,x.f]);tr.firstChild.append(lnk(x.locus));$("#fe").append(tr)});
- D.filter(y=>y.categoria==="a-revisar").forEach(y=>{const tr=row(["",y.V297,y.V514,y.nota]);tr.firstChild.append(lnk(y.locus));$("#dudas").append(tr)});
  let filtro=null;
  const pintar=()=>{const tb=$("#todas");tb.textContent="";D.filter(y=>!filtro||y.categoria===filtro).forEach(y=>{const tr=row(["",y.V297||"—",y.V514||"—",""]);tr.firstChild.append(lnk(y.locus));const td=tr.lastChild;td.append(el("strong",R[y.categoria]||y.categoria),document.createElement("br"),el("span",y.nota,"cita"));tb.append(tr)})};
  const mk=(k,t)=>{const b=el("button",t);b.type="button";b.setAttribute("aria-pressed",String(filtro===k));b.onclick=()=>{filtro=k;[...$("#filtros").children].forEach(c=>c.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");pintar()};$("#filtros").append(b)};

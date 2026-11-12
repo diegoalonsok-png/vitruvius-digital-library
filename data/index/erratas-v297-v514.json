@@ -2,7 +2,7 @@
  "schema": "vdl-erratas-1",
  "fecha": "2026-11-12",
  "titulo": "Diferencias latinas entre V297 (The Architect of Theory) y V514 (recensio)",
- "metodo": "Las 125 diferencias que señala data/index/cotejo-krohn-rose-v297.json se contrastaron con el OCR de Krohn (1912) y Rose (1899), con el aparato de V514 (registro ecdótico) y con la división de parágrafos de ambas ediciones. Un juicio automático se revisó a mano lugar por lugar. «Errata» significa forma que ninguna fuente atestigua o que rompe la construcción; una lectura que sigue a Krohn o a Rose es variante editorial, no errata. Los casos sin decisión quedan «a revisar» hasta el cotejo con H.",
+ "metodo": "Las 125 diferencias que señala data/index/cotejo-krohn-rose-v297.json se contrastaron con el OCR de Krohn (1912) y Rose (1899), con el aparato de V514 (registro ecdótico) y con la división de parágrafos de ambas ediciones. Un juicio automático se revisó a mano lugar por lugar. «Errata» significa forma que ninguna fuente atestigua o que rompe la construcción; una lectura que sigue a Krohn o a Rose es variante editorial, no errata. Los casos sin decisión quedan «a revisar» hasta el cotejo con H. Toda errata se comprobó además sobre la página impresa de Krohn y, cuando hizo falta, sobre la imagen de H. Las correcciones se aplican a la edición digital con scripts/aplicar-erratas.py; los PDF impresos conservan la errata hasta una nueva tirada.",
  "fuentes": [
   "data/index/cotejo-krohn-rose-v297.json",
   "data/text/krohn-1912.json",
@@ -24,13 +24,11 @@
  },
  "recuentos": {
   "abreviacion-V297": 44,
-  "variante-editorial": 15,
+  "variante-editorial": 18,
   "division-de-paragrafos": 22,
   "orden-del-pasaje": 3,
-  "errata-V514": 1,
-  "suplemento-V297": 4,
-  "a-revisar": 2,
-  "errata-V297": 2,
+  "suplemento-V297": 5,
+  "errata-V297": 1,
   "notacion": 32
  },
  "diferencias": [
@@ -303,8 +301,8 @@
    "V297": "isdem",
    "V514": "ea",
    "contexto": "uti supra scripta sunt isdem proportionibus atque symmetriis facienda",
-   "categoria": "errata-V514",
-   "nota": "«uti supra scripta sunt ea, proportionibus»: Rose y V297 leen «isdem proportionibus»; «ea» no está atestiguado y rompe la construcción."
+   "categoria": "variante-editorial",
+   "nota": "V514 «ea, proportionibus» = Krohn (1912, p. 110 del OCR); V297 «isdem proportionibus» = Rose. Comprobado sobre el texto de Krohn: no es errata."
   },
   {
    "locus": "5.5.3",
@@ -559,8 +557,8 @@
    "V297": "sicilico",
    "V514": "semipede",
    "contexto": "minus in centenos pedes sicilico eaeque structurae confornicentur ut",
-   "categoria": "a-revisar",
-   "nota": "Krohn y Rose leen sicilico (también Plinio, NH 31.57); V514 semipede sin nota en el aparato: enmienda no documentada o errata."
+   "categoria": "variante-editorial",
+   "nota": "V514 semipede = H (f. 120r, comprobado sobre la imagen: «in centenos pedes semi|pede»), G y S; Rose y Krohn imprimen sicilico, corrección de Bondam a partir de Plinio (NH 31.57). V297 sigue a Krohn. Elección documentada en los estudios de V514."
   },
   {
    "locus": "8.6.10",
@@ -599,8 +597,8 @@
    "V297": "tangit que",
    "V514": "tangitque",
    "contexto": "est proxima extremo mundo tangit que congelatas caeli regiones uehementer",
-   "categoria": "errata-V297",
-   "nota": "Errata tipográfica de V297: «tangit ⟨que⟩» separa el enclítico; V514 «tangitque» (Krohn: tangitque; Rose: et tangit)."
+   "categoria": "suplemento-V297",
+   "nota": "V297 reproduce el suplemento de Krohn «tangit⟨que⟩»; V514 lo incorpora sin marcas. Rose: «et tangit»."
   },
   {
    "locus": "9.1.16",
@@ -671,8 +669,8 @@
    "V297": "uii",
    "V514": "uiii",
    "contexto": "circumactione ad capricorni partem uii restituit celeritate salientis brumales",
-   "categoria": "a-revisar",
-   "nota": "Rose VII (con V297); el OCR de Krohn es ilegible; V514 VIII sin nota en el aparato."
+   "categoria": "errata-V297",
+   "nota": "Errata de V297 (corregida en la edición digital): el latín decía VII; Krohn y Rose imprimen VIII (comprobado sobre la página de Krohn) y la traducción de V297 ya decía «the eighth part»."
   },
   {
    "locus": "9.8.15",
@@ -983,8 +981,8 @@
    "V297": "animaduerterest",
    "V514": "animaduerteret",
    "contexto": "nihil putaui scribendum quod animaduerterest eam machinam nullam habere",
-   "categoria": "errata-V297",
-   "nota": "«animadverterest» no es forma latina: errata de V297. La sintaxis (putavi … quod) pide 1.ª persona; conviene verificar también «animadverteret» de V514 contra Krohn."
+   "categoria": "variante-editorial",
+   "nota": "V297 reproduce literalmente a Krohn («putavi scribendum, quod animadverterest», comprobado sobre la página); V514 «animadverteret» = Rose («putavit … animadverteret»). Forma anómala de Krohn, no errata de V297."
   },
   {
    "locus": "10.15.3",
@@ -1033,6 +1031,32 @@
    "contexto": "architectorum sollertia sunt liberatae",
    "categoria": "abreviacion-V297",
    "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  }
+ ],
+ "correcciones": [
+  {
+   "locus": "8.1.6",
+   "ediciones": [
+    "V514",
+    "V554",
+    "V297"
+   ],
+   "dice": "pertemptata et, qua supra scripta sunt",
+   "debe": "pertemptata et, quae supra scripta sunt",
+   "patron": "pertemptata et, qua supra scripta sunt",
+   "reemplazo": "pertemptata et, quae supra scripta sunt",
+   "fundamento": "Krohn y Rose concuerdan en «quae»; «qua» deja sin antecedente a «signa»."
+  },
+  {
+   "locus": "9.8.15",
+   "ediciones": [
+    "V297"
+   ],
+   "dice": "ad capricorni partem VII,",
+   "debe": "ad capricorni partem VIII,",
+   "patron": "capricorni partem VII, restituit",
+   "reemplazo": "capricorni partem VIII, restituit",
+   "fundamento": "Krohn y Rose imprimen VIII; la traducción de V297 ya decía «the eighth part of Capricorn»; V514 lee VIII."
   }
  ]
 }
