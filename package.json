@@ -8,6 +8,7 @@
     "build:folios-collatio": "python3 scripts/merge-collatio-folios.py",
     "build:index": "node scripts/build-classics-lexical-index.mjs",
     "build:lexicon-auctoris": "python3 scripts/build-lexicon-auctoris.py",
+    "build:loci-index": "python3 scripts/build-loci-index.py",
     "build:onomasticon": "python3 scripts/build-onomasticon-plenum.py",
     "build:onomasticon-totals": "python3 scripts/recount-onomasticon-totals.py",
     "build:records": "node scripts/enrich-classical-records.mjs",
