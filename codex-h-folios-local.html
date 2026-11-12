@@ -159,6 +159,35 @@ html[data-reader-theme="dark"] body .on-shell .on-navtools :is(#single-top-contr
  body .on-shell .on-navlinks{order:3;flex-basis:100%!important}
  body .on-shell .on-navtools{margin-left:auto}
 }
+
+/* Exact Lexicon-sized top toolbar; legacy single-top-controls no longer exists. */
+body .on-shell .on-navtools #codex-lexicon-controls{
+ display:inline-flex!important;flex:0 0 auto!important;align-items:center!important;
+ gap:8px!important;margin:0!important;padding:0!important;
+ background:transparent!important;border:0!important;box-shadow:none!important
+}
+body .on-shell .on-navtools #codex-lexicon-controls #s-language{
+ box-sizing:border-box!important;display:inline-block!important;
+ width:55px!important;min-width:55px!important;max-width:55px!important;
+ height:44px!important;min-height:44px!important;
+ padding:0 7px!important;border-radius:6px!important;
+ background:#f8f6f1!important;color:#27313c!important;
+ border:1px solid #a6a7a9!important;box-shadow:none!important;
+ font:600 12px system-ui,sans-serif!important
+}
+body .on-shell .on-navtools #codex-lexicon-controls #s-theme{
+ box-sizing:border-box!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+ padding:0!important;border-radius:8px!important;
+ background:#f8f6f1!important;color:#27313c!important;
+ border:1px solid #a6a7a9!important;box-shadow:none!important
+}
+body .on-shell .on-navtools #codex-lexicon-controls #s-theme svg{display:block!important}
+html[data-reader-theme="dark"] body .on-shell .on-navtools #codex-lexicon-controls :is(#s-theme,#s-language){
+ background:#292b30!important;color:#f4f4f2!important;border-color:#777c84!important
+}
+body .on-shell .on-navtools .lxp-palette>summary{height:44px!important;min-height:44px!important}
+body .on-shell #single-top-controls{display:none!important}
 </style><script src="assets/vitruvia-fetch-cache.js?v=20261111-responsive-literal-v1"></script><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
 <link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html"><meta name="citation_title" content="Codex Harleianus (Harley MS 2767) · lectura por folios y concordancia"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html">
@@ -308,7 +337,7 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
  fetch("data/codex-h/folio-locus-map.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null).then(m=>{locusMap=m;go()});
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
-</script><script src="assets/codex-h-preface-search.js?v=20261111-prefacios-v2" defer></script><script src="assets/codex-h-chapter-terms.js?v=20261111-chapters-v2" defer></script><script src="assets/codex-h-single-controls.js?v=20261112-lexicon-header-v2" defer></script><script>
+</script><script src="assets/codex-h-preface-search.js?v=20261111-prefacios-v2" defer></script><script src="assets/codex-h-chapter-terms.js?v=20261111-chapters-v2" defer></script><script src="assets/codex-h-single-controls.js?v=20261112-lexicon-native-v3" defer></script><script>
 /* Codex H folio reader: translate the actual interface without translating manuscript data.
    UI languages: ES, EN, FR, IT, DE, PT. No external translation calls. */
 (()=>{'use strict';
