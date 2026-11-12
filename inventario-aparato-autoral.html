@@ -12,7 +12,22 @@
 .apa-locus-summary a{margin-right:12px;text-decoration:underline}
 .apa-ref-tag{font:12px/1.4 system-ui;padding:2px 6px;border:1px solid #b5a58d;border-radius:4px;margin:3px 6px 3px 0;display:inline-block}
 .apa-wrap :focus-visible{outline:3px solid #b69258;outline-offset:3px}
-@media(prefers-color-scheme:dark){.apa-wrap{color:#f1ede5}.apa-stat,.apa-entry{background:#20272c;color:#f1ede5;border-color:#60676c}.apa-filters input,.apa-filters select{background:#242b31;color:#f1ede5}}
+/* Palette follows the site's selected theme, not the operating-system theme. */
+html[data-theme="light"] .apa-wrap{color:#243342}
+html[data-theme="light"] .apa-stat,html[data-theme="light"] .apa-entry{background:#f8f6f1!important;color:#243342!important;border-color:#c8c4bb!important}
+html[data-theme="light"] .apa-stat :is(strong,span),html[data-theme="light"] .apa-entry :is(h3,p,span,small){color:#243342!important}
+html[data-theme="light"] .apa-filters :is(input,select){background:#fffdf8!important;color:#243342!important;border-color:#9fa7ab!important}
+html[data-theme="dark"] .apa-wrap{color:#f1ede5}
+html[data-theme="dark"] .apa-stat,html[data-theme="dark"] .apa-entry{background:#20272c!important;color:#f1ede5!important;border-color:#60676c!important}
+html[data-theme="dark"] .apa-stat :is(strong,span),html[data-theme="dark"] .apa-entry :is(h3,p,span,small){color:#f1ede5!important}
+html[data-theme="dark"] .apa-filters :is(input,select){background:#242b31!important;color:#f1ede5!important;border-color:#687681!important}
+/* One restrained horizontal metrics strip, with horizontal scrolling on narrow screens. */
+.apa-wrap .apa-grid{display:grid;grid-template-columns:repeat(8,minmax(124px,1fr));gap:6px;overflow-x:auto;overscroll-behavior-inline:contain;padding:2px 0 6px;margin:16px 0 22px}
+.apa-wrap .apa-grid .apa-stat{min-width:0;min-height:78px;padding:10px 11px;border-radius:4px}
+.apa-wrap .apa-grid .apa-stat strong{display:block;font:600 clamp(19px,1.6vw,25px)/1.12 Georgia,serif;margin-bottom:4px}
+.apa-wrap .apa-grid .apa-stat span{display:block;font:500 11px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;overflow-wrap:anywhere}
+@media(max-width:1150px){.apa-wrap .apa-grid{grid-template-columns:repeat(8,minmax(135px,1fr))}}
+
 </style>
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
