@@ -9,7 +9,7 @@
  if(window.PageAutoTranslate)return;
  const root=document.documentElement;
  const originals=new WeakMap(),mine=new WeakSet(),cache=new Map();
- const SKIP='script,style,noscript,textarea,input,select,option,code,pre,svg,iframe,[contenteditable],[translate=no],.notranslate,[lang="la"],[lang="grc"],[lang^="la-"],[lang="he"],[lang="arc"],.vtp-la,.latin,#ui-language';
+ const SKIP='script,style,noscript,textarea,input,select,option,code,pre,svg,iframe,[contenteditable],:not(html)[translate=no],.notranslate,[lang="la"],[lang="grc"],[lang^="la-"],[lang="he"],[lang="arc"],.vtp-la,.latin,#ui-language';
  const ES=/\b(el|la|los|las|del|por|para|con|una|uno|como|más|pero|sus|este|esta|estos|desde|sobre|entre|también|según|hasta|donde|cuando|porque|sin|muy|edición|ediciones|libro|libros|página|páginas|fuente|fuentes|buscar|leer|consultar|traducción|obra|obras|siglo|destacado|biblioteca|documentación|carpeta|privacidad|borrar|sesión|búsqueda|dictar|explorar|universidades|investigación|fichas|secciones|lecturas|testimonios|imágenes|manuscrito|códice|códices|resultados|instalar|leer|ver|abrir|cerrar)\b/i;
  const ACC=/[áéíóúñ¿¡]/i;
  const looksSpanish=t=>{const s=t.trim();if(s.length<3||!/[a-záéíóúñ]/i.test(s))return false;const hits=(s.match(/\b(el|la|los|las|del|por|para|con|una|como|más|pero|sus|este|esta|desde|sobre|entre|también|según|sin|muy)\b/gi)||[]).length;return ES.test(s)&&(hits>=1||ACC.test(s)||s.split(/\s+/).length<=6)||(ACC.test(s)&&s.split(/\s+/).length<=4)};

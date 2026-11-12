@@ -114,7 +114,7 @@
  Object.entries(translations).forEach(([es,variants])=>{
    for(const key of [es,...variants])if(!reverse.has(key))reverse.set(key,es);
  });
- const preserved='script,style,template,code,pre,textarea,noscript,svg,[translate="no"],[lang="la"],[lang="grc"],[lang="gr"],[lang="el"],.codicum-stemma,.codex-siglum,[data-codex-siglum],.reader-transcript,.passage-text,.latin-name,.greek-name,.scholarly-text,#edition-citation,#edition-metadata';
+ const preserved='script,style,template,code,pre,textarea,noscript,svg,:not(html)[translate="no"],[lang="la"],[lang="grc"],[lang="gr"],[lang="el"],.codicum-stemma,.codex-siglum,[data-codex-siglum],.reader-transcript,.passage-text,.latin-name,.greek-name,.scholarly-text,#edition-citation,#edition-metadata';
  let current='es';
  try{const value=localStorage.getItem(KEY);if(codes.includes(value))current=value;}catch{}
  const originals=new WeakMap(),attributeOriginals=new WeakMap();

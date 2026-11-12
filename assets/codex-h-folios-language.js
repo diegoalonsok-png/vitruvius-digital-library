@@ -55,7 +55,7 @@
  const languageIndex={en:1,fr:2,it:3,de:4,pt:5};
  const dict=new Map(entries.map(([es,...others])=>[es,others]));
  const saved=new WeakMap();
- const exclude='script,style,template,noscript,code,pre,textarea,input,option,[translate="no"],#grid,#folio-quick,#stage,#h-locus,#h-save,.site-typeface-tool,.vr-selection-speech,[lang="la"],[lang="grc"]';
+ const exclude='script,style,template,noscript,code,pre,textarea,input,option,:not(html)[translate="no"],#grid,#folio-quick,#stage,#h-locus,#h-save,.site-typeface-tool,.vr-selection-speech,[lang="la"],[lang="grc"]';
  let lang='es',scheduled=false,updating=false;
  const getLang=()=>{const value=document.getElementById('s-language')?.value||document.documentElement.lang||'es';return codes.includes(value)?value:'es'};
  function dynamicText(source,l){

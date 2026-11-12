@@ -66,4 +66,4 @@ function render(reset=true){const q=$('qa-find').value.trim().toLowerCase(),cat=
 $('qa-find').addEventListener('input',()=>render());$('qa-cat').addEventListener('change',()=>render());$('qa-more').addEventListener('click',()=>render(false));
 fetch('data/qa/vitruvia-regression-200.json').then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(j=>{all=j.cases||[];if(all.length!==200)throw Error('Se esperaban 200 casos');render()}).catch(e=>{$('qa-status').textContent='No se pudo cargar la batería: '+e.message;});
 })();
-</script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></body></html>
+</script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio"></script></body></html>

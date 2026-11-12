@@ -505,7 +505,7 @@ try{currentLanguage=localStorage.getItem(LANGUAGE_KEY)||'es'}catch{}
 if(!['es','en','fr'].includes(currentLanguage))currentLanguage='es';
 const originalNodes=new WeakMap();
 /* Codex sigla and source titles are data, never UI-language words. */
-const preservedSelector='[translate="no"],.codicum-stemma,[data-codex-siglum],.codex-siglum,.manuscript-siglum';
+const preservedSelector=':not(html)[translate="no"],.codicum-stemma,[data-codex-siglum],.codex-siglum,.manuscript-siglum';
 function translateRoot(root=document){
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
  let node;
