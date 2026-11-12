@@ -1,0 +1,22 @@
+{
+ "schema": "vdl-version-1",
+ "obra": "Vitruvia Lexicon",
+ "version": "1.0",
+ "fecha": "2026-11-12",
+ "contenido": {"fichasEtymologicum": 115, "conceptos": 74, "formasLatinas": 72093, "lemasLatinos": 14616, "formasGriegas": 49342, "lemasGriegos": 15212, "sententiae": 60},
+ "cita": "Kurilo, Diego A. Vitruvia Lexicon, versión 1.0 (12 de noviembre de 2026). Vitruvius Digital Library. https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia-lexicon.html",
+ "cambios": [
+  {"version": "1.0", "fecha": "2026-11-12", "notas": [
+   "Primera versión citable: contenido fijado y registrado en este archivo.",
+   "Árboles léxicos dibujados como grafos (raíz, ramas y hojas pulsables); árbol etimológico en cadena con rótulos de relación (préstamo, derivado, cognado).",
+   "Constructor de consultas: operadores sentido, forma, lema, prefijo, aproximado y frase; proximidad NEAR/5 y NEAR/10.",
+   "«Vitruvio primero»: la búsqueda recorre De architectura y después las demás obras del corpus clásico.",
+   "Búsqueda «Por sentido en toda la Bibliotheca · IA» con equivalentes de Conceptus (74 conceptos) y pasajes reales.",
+   "Panel «En todo el sitio»: glosario, Onomasticon, Atlas, V514, folios de H, tablas, mapas, iconografía y registro ecdótico.",
+   "Diccionario del lector con respaldo de Wiktionary (lema y licencia citados) cuando la forma falta en los glosarios locales."]},
+  {"version": "0.9", "fecha": "2026-11-11", "notas": [
+   "Índice léxico invertido sobre las ediciones del corpus clásico.",
+   "Diccionario al alcance del clic en cualquier pasaje; griego politónico.",
+   "Interfaz depurada y arranque sin descargas pesadas."]}
+ ]
+}

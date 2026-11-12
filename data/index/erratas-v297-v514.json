@@ -1,0 +1,1038 @@
+{
+ "schema": "vdl-erratas-1",
+ "fecha": "2026-11-12",
+ "titulo": "Diferencias latinas entre V297 (The Architect of Theory) y V514 (recensio)",
+ "metodo": "Las 125 diferencias que señala data/index/cotejo-krohn-rose-v297.json se contrastaron con el OCR de Krohn (1912) y Rose (1899), con el aparato de V514 (registro ecdótico) y con la división de parágrafos de ambas ediciones. Un juicio automático se revisó a mano lugar por lugar. «Errata» significa forma que ninguna fuente atestigua o que rompe la construcción; una lectura que sigue a Krohn o a Rose es variante editorial, no errata. Los casos sin decisión quedan «a revisar» hasta el cotejo con H.",
+ "fuentes": [
+  "data/index/cotejo-krohn-rose-v297.json",
+  "data/text/krohn-1912.json",
+  "data/text/rose-1899.json",
+  "data/index/registro-ecdotico.json",
+  "data/structured/recensio-es.json",
+  "data/structured/theory-en.json"
+ ],
+ "rotulos": {
+  "errata-V514": "Errata de V514",
+  "errata-V297": "Errata de V297",
+  "a-revisar": "A revisar (sin decisión)",
+  "variante-editorial": "Variante editorial (Krohn/Rose)",
+  "suplemento-V297": "Suplemento editorial de V297",
+  "orden-del-pasaje": "Orden de las frases",
+  "division-de-paragrafos": "División de parágrafos",
+  "notacion": "Notación metrológica / numerales",
+  "abreviacion-V297": "V297 abrevia la cita"
+ },
+ "recuentos": {
+  "abreviacion-V297": 44,
+  "variante-editorial": 15,
+  "division-de-paragrafos": 22,
+  "orden-del-pasaje": 3,
+  "errata-V514": 1,
+  "suplemento-V297": 4,
+  "a-revisar": 2,
+  "errata-V297": 2,
+  "notacion": 32
+ },
+ "diferencias": [
+  {
+   "locus": "1.1.3",
+   "V297": "",
+   "V514": "et ut litteratus sit peritus graphidos eruditus geometria historias complures nouerit philosophos diligenter audierit musicam scierit medicinae non sit ignarus responsa iurisconsultorum nouerit astrologiam caelique rationes cognitas habeat",
+   "contexto": "perfectum artificem potest efficere",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "1.1.5",
+   "V297": "",
+   "V514": "carya ciuitas peloponnensis cum persis hostibus contra graeciam consensit postea graeci per uictoriam gloriose bello liberati communi consilio caryatibus bellum indixerunt itaque oppido capto uiris interfectis ciuitate deflagrata matronas eorum in seruitutem abduxerunt nec sunt passi stolas neque ornatus matronales deponere non uti una triumpho ducerentur sed aeterna seruitutis exemplo graui contumelia pressae poenas pendere uiderentur pro ciuitate ideo qui tunc architecti fuerunt aedificiis publicis designauerunt earum imagines oneri ferendo conlocatas ut etiam posteris nota poena peccati caryatium memoriae traderetur",
+   "contexto": "percontantibus ita reddet rationem",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "1.1.7",
+   "V297": "",
+   "V514": "praeterea de rerum natura quae graece dicitur philosophia explicat quam necesse est studiosius nouisse quod habet multas et uarias naturales quaestiones ut etiam in aquarum ductionibus incursibus enim et circumitionibus et librata planitie expressionibus spiritus naturales aliter atque aliter fiunt quorum offensionibus mederi nemo poterit nisi qui ex philosophia principia rerum naturae nouerit item qui ctesibii aut archimedis et ceterorum qui eiusdem generis praecepta conscripserunt leget sentire non poterit nisi his rebus a philosophis erit institutus",
+   "contexto": "haec enim philosophia praescribit",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "1.1.10",
+   "V297": "",
+   "V514": "ex astrologia autem cognoscitur oriens occidens meridies septentrio etiam caeli ratio aequinoctium solstitium astrorum cursus quorum notitiam si quis non habuerit horologiorum rationem omnino scire non poterit",
+   "contexto": "uterque ab utroque liberetur",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "1.6.2",
+   "V297": "certa",
+   "V514": "incerta",
+   "contexto": "aeris fluens unda cum certa motus redundantia nascitur cum",
+   "categoria": "variante-editorial",
+   "nota": "V514 sigue a Rose (incerta); V297 a Krohn (certa)."
+  },
+  {
+   "locus": "2.praef.5",
+   "V297": "materiationibus",
+   "V514": "materiae rationibus",
+   "contexto": "conlatis aedificia structuris et materiationibus perficiuntur quas habeant in",
+   "categoria": "variante-editorial",
+   "nota": "V514 = Rose; V297 = Krohn."
+  },
+  {
+   "locus": "2.praef.5",
+   "V297": "natura e",
+   "V514": "naturae",
+   "contexto": "uirtutes exposuissem quibusque rerum natura e principiis essent temperatae dixissem",
+   "categoria": "variante-editorial",
+   "nota": "V514 = Rose; V297 = Krohn."
+  },
+  {
+   "locus": "2.praef.5",
+   "V297": "eorum qui antiquitates",
+   "V514": "antiquitatis",
+   "contexto": "ponam et insequar ingressus eorum qui antiquitates rerum naturae et initia",
+   "categoria": "variante-editorial",
+   "nota": "Orden de palabras: V514 = Rose; V297 = Krohn."
+  },
+  {
+   "locus": "2.praef.5",
+   "V297": "",
+   "V514": "eorum qui",
+   "contexto": "antiquitates rerum naturae et initia humanitatis et inuentiones",
+   "categoria": "variante-editorial",
+   "nota": "Orden de palabras: V514 = Rose; V297 = Krohn."
+  },
+  {
+   "locus": "2.2.1",
+   "V297": "in se soliditatem",
+   "V514": "",
+   "contexto": "aeuo perpetuo infinitam retinent in se soliditatem",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 2.2.2: distinta división de parágrafos."
+  },
+  {
+   "locus": "2.2.2",
+   "V297": "",
+   "V514": "in se soliditatem",
+   "contexto": "ex his ergo congruentibus",
+   "categoria": "division-de-paragrafos",
+   "nota": "Texto en el límite entre parágrafos; ambas ediciones lo contienen."
+  },
+  {
+   "locus": "2.3.4",
+   "V297": "",
+   "V514": "nec patiantur penetrare in corpus umidam potestatem",
+   "contexto": "raraque cum sit proprietate quocumque pondere fuerit cogitur",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo."
+  },
+  {
+   "locus": "2.3.4",
+   "V297": "non patiantur penetrare in corpus umidam potestatem",
+   "V514": "ducuntur",
+   "contexto": "sunt onerosi et cum non patiantur penetrare in corpus umidam potestatem a tempestatibus non dissoluuntur",
+   "categoria": "variante-editorial",
+   "nota": "Distinta disposición del pasaje: V514 = Rose; V297 = Krohn."
+  },
+  {
+   "locus": "2.6.6",
+   "V297": "est autem materiae potestas mollior quam tofus solidior quam terra",
+   "V514": "",
+   "contexto": "montes sed genere materiae est autem materiae potestas mollior quam tofus solidior quam terra ignis uis per eius",
+   "categoria": "orden-del-pasaje",
+   "nota": "V514 contiene el mismo texto en otro punto del parágrafo: distinto orden de las frases."
+  },
+  {
+   "locus": "2.6.6",
+   "V297": "quo penitus ab imo uehementia uaporis adusto nonnullis locis procreatur id genus harenae quod dicitur carbunculus",
+   "V514": "",
+   "contexto": "quod autem asperum relinquit quo penitus ab imo uehementia uaporis adusto nonnullis locis procreatur id genus harenae quod dicitur carbunculus itaque uti campania exusta",
+   "categoria": "orden-del-pasaje",
+   "nota": "V514 contiene el mismo texto en otro punto del parágrafo: distinto orden de las frases."
+  },
+  {
+   "locus": "2.6.6",
+   "V297": "",
+   "V514": "est autem materiae potestas mollior quam tofus solidior quam terra quo penitus ab imo uehementia uaporis adusto nonnullis locis procreatur id genus harenae quod dicitur carbunculus",
+   "contexto": "maritimis molibus habent uirtutem",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "2.8.13",
+   "V297": "",
+   "V514": "at rex ipse de sua domo remigibus et militibus sine ullo sciente quae opus essent imperaret",
+   "contexto": "geratur aspicere nec scire",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "2.8.14",
+   "V297": "at rex ipse de sua domo remigibus et militibus sine ullo sciente quae opus essent imperaret",
+   "V514": "",
+   "contexto": "at rex ipse de sua domo remigibus et militibus sine ullo sciente quae opus essent imperaret itaque post mortem mausoli",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 2.8.13: distinta división de parágrafos."
+  },
+  {
+   "locus": "2.8.15",
+   "V297": "eam",
+   "V514": "et",
+   "contexto": "ciuitatis alteram suae imaginis eam ita figurauit rhodiorum ciuitati",
+   "categoria": "variante-editorial",
+   "nota": "V514 «et ita» = Krohn; V297 «eam ita» = Rose."
+  },
+  {
+   "locus": "2.9.12",
+   "V297": "",
+   "V514": "uocitantur item eam appellant non minus est admirandum de cupresso et pinu quod eae habentes umoris abundantiam aequamque ceterorum mixtionem propter umoris satietatem in operibus solent esse pandae sed in uetustatem sine uitiis conseruantur quod is liquor qui inest penitus in corporibus earum habet amarum saporem qui propter acritudinem non patitur penetrare cariem neque eas bestiolas quae sunt nocentes ideoque quae ex his generibus opera constituuntur permanent ad aeternam diuturnitatem",
+   "contexto": "quod apud eos iuga",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "2.9.15",
+   "V297": "itaque celeriter milites congesserunt",
+   "V514": "",
+   "contexto": "eam munitionem accedentes mittere itaque celeriter milites congesserunt",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 2.9.16: distinta división de parágrafos."
+  },
+  {
+   "locus": "2.9.16",
+   "V297": "",
+   "V514": "itaque celeriter milites congesserunt",
+   "contexto": "posteaquam flamma circa illam",
+   "categoria": "division-de-paragrafos",
+   "nota": "Texto en el límite entre parágrafos; ambas ediciones lo contienen."
+  },
+  {
+   "locus": "3.1.3",
+   "V297": "",
+   "V514": "item corporis centrum medium naturaliter est umbilicus namque si homo conlocatus fuerit supinus manibus et pedibus pansis circinique conlocatum centrum in umbilico eius circumagendo rotundationem utrarumque manuum et pedum digiti linea tangentur non minus quemadmodum schema rotundationis in corpore efficitur item quadrata designatio in eo inuenietur nam si a pedibus imis ad summum caput mensum erit eaque mensura relata fuerit ad manus pansas inuenietur eadem latitudo uti altitudo quemadmodum areae quae ad normam sunt quadratae",
+   "contexto": "debent habere commensus responsum",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "3.3.8",
+   "V297": "xxxiu",
+   "V514": "xxxuiii",
+   "contexto": "distulit interiores ordines columnarum xxxiu eaque ratione sumptus operasque",
+   "categoria": "variante-editorial",
+   "nota": "V514 XXXVIII = H y vulgata; V297 XXXIV = corrección de Krohn. Documentada en el aparato de V514."
+  },
+  {
+   "locus": "4.1.4",
+   "V297": "ionas est recepta",
+   "V514": "",
+   "contexto": "beneficio zmyrnaeorum ciuitas inter ionas est recepta",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 4.1.5: distinta división de parágrafos."
+  },
+  {
+   "locus": "4.1.5",
+   "V297": "",
+   "V514": "ionas est recepta",
+   "contexto": "hae ciuitates cum caras",
+   "categoria": "division-de-paragrafos",
+   "nota": "Texto en el límite entre parágrafos; ambas ediciones lo contienen."
+  },
+  {
+   "locus": "4.1.7",
+   "V297": "subtilitate et ornatu symmetriaque sunt mutuati",
+   "V514": "",
+   "contexto": "nuda specie alteram muliebri subtilitate et ornatu symmetriaque sunt mutuati",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 4.1.8: distinta división de parágrafos."
+  },
+  {
+   "locus": "4.1.8",
+   "V297": "",
+   "V514": "subtilitate et ornatu symmetriaque sunt mutuati",
+   "contexto": "posteri uero elegantia subtilitateque",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "4.1.9",
+   "V297": "pupulis",
+   "V514": "poculis",
+   "contexto": "quibus ea uirgo uiua pupulis delectabatur nutrix collecta et",
+   "categoria": "variante-editorial",
+   "nota": "V514 poculis = H, Gros (Budé), Loeb; V297 pupulis = Krohn. Documentada en el aparato de V514."
+  },
+  {
+   "locus": "4.2.4",
+   "V297": "ita",
+   "V514": "",
+   "contexto": "est apud eos nominata ita",
+   "categoria": "orden-del-pasaje",
+   "nota": "V514 contiene el mismo texto en otro punto del parágrafo: distinto orden de las frases."
+  },
+  {
+   "locus": "4.2.5",
+   "V297": "",
+   "V514": "ita",
+   "contexto": "uti autem in doricis",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 4.2.4: distinta división de parágrafos."
+  },
+  {
+   "locus": "4.7.1",
+   "V297": "",
+   "V514": "item latitudo diuidatur in partes x",
+   "contexto": "fronti columnarum dispositioni relinquatur",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "4.7.2",
+   "V297": "item latitudo diuidatur in partes x",
+   "V514": "",
+   "contexto": "item latitudo diuidatur in partes x ex his ternae partes",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 4.7.1: distinta división de parágrafos."
+  },
+  {
+   "locus": "4.8.3",
+   "V297": "isdem",
+   "V514": "ea",
+   "contexto": "uti supra scripta sunt isdem proportionibus atque symmetriis facienda",
+   "categoria": "errata-V514",
+   "nota": "«uti supra scripta sunt ea, proportionibus»: Rose y V297 leen «isdem proportionibus»; «ea» no está atestiguado y rompe la construcción."
+  },
+  {
+   "locus": "5.5.3",
+   "V297": "ita uti in minore theatro supra scriptum est",
+   "V514": "",
+   "contexto": "ea ex harmonia conlocetur ita uti in minore theatro supra scriptum est",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 5.5.4: distinta división de parágrafos."
+  },
+  {
+   "locus": "5.5.4",
+   "V297": "",
+   "V514": "ita uti in minore theatro supra scriptum est",
+   "contexto": "in mediana autem prima",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "5.6.3",
+   "V297": "",
+   "V514": "gradus",
+   "contexto": "spectaculorum ubi subsellia componantur ne minus alti sint",
+   "categoria": "variante-editorial",
+   "nota": "V514 con laguna y «gradus» = Krohn; V297 sin «gradus» = Rose."
+  },
+  {
+   "locus": "5.9.2",
+   "V297": "aut ionico aut corinthio genere deformentur",
+   "V514": "",
+   "contexto": "sint quam exteriores sed aut ionico aut corinthio genere deformentur",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 5.9.3: distinta división de parágrafos."
+  },
+  {
+   "locus": "5.9.3",
+   "V297": "",
+   "V514": "aut ionico aut corinthio genere deformentur",
+   "contexto": "columnarum autem proportiones et",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "5.10.1",
+   "V297": "",
+   "V514": "de frigidario in tepidarium ad eundem modum testudinesque alueolorum ex communi hypocausi calfaciantur",
+   "contexto": "aquae caldae exierit influat",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "5.10.4",
+   "V297": "dummodo",
+   "V514": "",
+   "contexto": "fieri pro copia hominum dummodo sint ita compositae quanta",
+   "categoria": "variante-editorial",
+   "nota": "«dummodo» = Rose; Krohn sin él (V514)."
+  },
+  {
+   "locus": "5.12.3",
+   "V297": "habeat",
+   "V514": "",
+   "contexto": "proxime litus proclinatum latus habeat",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 5.12.4: distinta división de parágrafos."
+  },
+  {
+   "locus": "5.12.4",
+   "V297": "",
+   "V514": "habeat",
+   "contexto": "deinde ad ipsam aquam",
+   "categoria": "division-de-paragrafos",
+   "nota": "Texto en el límite entre parágrafos; ambas ediciones lo contienen."
+  },
+  {
+   "locus": "6.3.4",
+   "V297": "spatio tribuatur",
+   "V514": "ratio habeatur",
+   "contexto": "et arcae supra trabes spatio tribuatur alis dextra ac sinistra",
+   "categoria": "variante-editorial",
+   "nota": "V514 = Rose; V297 = Krohn."
+  },
+  {
+   "locus": "7.praef.12",
+   "V297": "quibus uero felicitas maximum summumque contulit munus",
+   "V514": "",
+   "contexto": "mausoleo satyrus et pytheos quibus uero felicitas maximum summumque contulit munus",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 7.praef.13: distinta división de parágrafos."
+  },
+  {
+   "locus": "7.praef.13",
+   "V297": "",
+   "V514": "quibus uero felicitas maximum summumque contulit munus",
+   "contexto": "quorum enim artes aeuo",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "7.3.1",
+   "V297": "",
+   "V514": "caries nec uetustas nec umor possit nocere id est e buxo iunipero olea robore cupresso ceterisque similibus praeter quercum cum ea se torquendo rimas faciat quibus inest operibus",
+   "contexto": "materia comparentur cui nec",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "7.5.5",
+   "V297": "",
+   "V514": "tum licymnius mathematicus prodiit et ait",
+   "contexto": "opus probare fuissent parati",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "7.5.6",
+   "V297": "tum licymnius mathematicus prodiit et ait",
+   "V514": "",
+   "contexto": "tum licymnius mathematicus prodiit et ait alabandis satis acutos ad",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 7.5.5: distinta división de parágrafos."
+  },
+  {
+   "locus": "7.5.8",
+   "V297": "",
+   "V514": "quae commonefacere potui ut ab errore discedatur in opere tectorio satis exposui nunc de apparitionibus ut succurrere potuerit dicam et primum quoniam de calce initio est dictum nunc de marmore ponam",
+   "contexto": "non a redemptore repraesententur",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "7.6.1",
+   "V297": "quae commonefacere potui ut ab errore discedatur in opere tectorio satis exposui nunc de apparitionibus ut succurrere potuerit dicam et primum quoniam de calce initio est dictum nunc de marmore ponam",
+   "V514": "",
+   "contexto": "quae commonefacere potui ut ab errore discedatur in opere tectorio satis exposui nunc de apparitionibus ut succurrere potuerit dicam et primum quoniam de calce initio est dictum nunc de marmore ponam marmor non eodem genere",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 7.5.8: distinta división de parágrafos."
+  },
+  {
+   "locus": "7.6.1",
+   "V297": "",
+   "V514": "colores uero alii sunt qui per se certis locis procreantur et inde fodiuntur nonnulli ex aliis rebus tractationibus aut mixtionum temperaturis compositi perficiuntur uti praestent eandem in operibus utilitatem",
+   "contexto": "manu contusa et subcreta",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "7.7.1",
+   "V297": "colores uero alii sunt qui per se certis locis procreantur et inde fodiuntur nonnulli ex aliis rebus tractationibus aut mixtionum temperaturis compositi perficiuntur uti praestent eandem in operibus utilitatem",
+   "V514": "",
+   "contexto": "colores uero alii sunt qui per se certis locis procreantur et inde fodiuntur nonnulli ex aliis rebus tractationibus aut mixtionum temperaturis compositi perficiuntur uti praestent eandem in operibus utilitatem primum autem exponemus quae",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 7.6.1: distinta división de parágrafos."
+  },
+  {
+   "locus": "7.7.1",
+   "V297": "item rubricae copiosae multis locis eximuntur sed optimae paucis uti ponto sinope et aegypto in hispania balearibus non minus etiam lemno cuius insulae uectigalia atheniensibus senatus populusque romanus concessit fruenda paraetonium uero ex ipsis locis unde foditur habet nomen eadem ratione melinum quod eius metallum in sola cycladi melo dicitur esse",
+   "V514": "",
+   "contexto": "politionem operum sunt usi item rubricae copiosae multis locis eximuntur sed optimae paucis uti ponto sinope et aegypto in hispania balearibus non minus etiam lemno cuius insulae uectigalia atheniensibus senatus populusque romanus concessit fruenda paraetonium uero ex ipsis locis unde foditur habet nomen eadem ratione melinum quod eius metallum in sola cycladi melo dicitur esse",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 7.7.2: distinta división de parágrafos."
+  },
+  {
+   "locus": "7.7.4",
+   "V297": "auripigmentum quod graece dicitur foditur ponto sandaraca item pluribus locis sed optima ponto proxime flumen hypanim habet metallum",
+   "V514": "",
+   "contexto": "cretae primum est inuentum auripigmentum quod graece dicitur foditur ponto sandaraca item pluribus locis sed optima ponto proxime flumen hypanim habet metallum",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 7.7.5: distinta división de parágrafos."
+  },
+  {
+   "locus": "7.9.3",
+   "V297": "atque",
+   "V514": "fiatque",
+   "contexto": "pariete calfaciundo sudare cogat atque ut peraequetur deinde tunc",
+   "categoria": "variante-editorial",
+   "nota": "V514 fiatque = Krohn; V297 atque = Rose."
+  },
+  {
+   "locus": "7.10.3",
+   "V297": "",
+   "V514": "ita erit atramentum tectoribus non inuenustum",
+   "contexto": "mortario cum glutino terantur",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo."
+  },
+  {
+   "locus": "7.10.4",
+   "V297": "ita erit atramentum tectoribus non inuenustum",
+   "V514": "",
+   "contexto": "ita erit atramentum tectoribus non inuenustum non minus si faex",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 7.10.3: distinta división de parágrafos."
+  },
+  {
+   "locus": "8.praef.4",
+   "V297": "",
+   "V514": "cum ergo et a physicis et philosophis et ab sacerdotibus iudicetur ex potestate aquae omnes res constare putaui quoniam in prioribus septem uoluminibus rationes aedificiorum sunt expositae in hoc oportere de inuentionibus aquae quasque habeat in locorum proprietatibus uirtutes quibusque rationibus ducatur et quemadmodum ante probetur scribere",
+   "contexto": "gratias agunt diuinae benignitati",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "8.1.6",
+   "V297": "",
+   "V514": "haec autem maxime in montibus et regionibus septentrionalibus sunt quaerenda eo quod in his et suauiora et salubriora et copiosiora inueniuntur auersi enim sunt solis cursui et in his locis primum crebrae sunt arbores et siluosae ipsique montes suas habent umbras obstantes et radii solis non directi perueniunt ad terram nec possunt",
+   "contexto": "unum locum omnes conducendi",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "8.3.11",
+   "V297": "is",
+   "V514": "",
+   "contexto": "ponto est flumen hypanis is a capite profluit circiter",
+   "categoria": "suplemento-V297",
+   "nota": "V297 suple ⟨is⟩ (Krohn/Rose lo traen); V514 no lo incorpora: elección editorial."
+  },
+  {
+   "locus": "8.3.13",
+   "V297": "umorum",
+   "V514": "",
+   "contexto": "nisi proprietates singularum terrarum umorum in regionibus ad solis",
+   "categoria": "suplemento-V297",
+   "nota": "V297 suple ⟨umorum⟩ (Krohn/Rose lo traen); V514 no lo incorpora: elección editorial."
+  },
+  {
+   "locus": "8.3.13",
+   "V297": "regionibus",
+   "V514": "generibus",
+   "contexto": "singularum terrarum umorum in regionibus ad solis potestatem temperarentur",
+   "categoria": "variante-editorial",
+   "nota": "V514 «in generibus» frente a «in regionibus» (Krohn) y «umorum generibus» (Rose)."
+  },
+  {
+   "locus": "8.3.14",
+   "V297": "ea",
+   "V514": "",
+   "contexto": "et laodicensium fontes ad ea flumina cum pecora suis",
+   "categoria": "suplemento-V297",
+   "nota": "V297 suple ⟨ea⟩ (Krohn/Rose lo traen); V514 no lo incorpora: elección editorial."
+  },
+  {
+   "locus": "8.3.17",
+   "V297": "",
+   "V514": "item sunt nonnullae acidae uenae fontium uti lyncesto et in italia uelino campania teano aliisque locis pluribus quae hanc habent uirtutem uti calculos in uesicis qui nascuntur in corporibus hominum potionibus discutiant",
+   "contexto": "serpentium ossa iacentia apparent",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "8.6.1",
+   "V297": "sicilico",
+   "V514": "semipede",
+   "contexto": "minus in centenos pedes sicilico eaeque structurae confornicentur ut",
+   "categoria": "a-revisar",
+   "nota": "Krohn y Rose leen sicilico (también Plinio, NH 31.57); V514 semipede sin nota en el aparato: enmienda no documentada o errata."
+  },
+  {
+   "locus": "8.6.10",
+   "V297": "si",
+   "V514": "",
+   "contexto": "quod ex eo procreatur si id est uitiosum non",
+   "categoria": "suplemento-V297",
+   "nota": "V297 suple ⟨si⟩ (Krohn/Rose lo traen); V514 no lo incorpora: elección editorial."
+  },
+  {
+   "locus": "8.6.15",
+   "V297": "",
+   "V514": "quae potui de aquae uirtute et uarietate quasque habeat utilitates quibusque rationibus ducatur et probetur in hoc uolumine posui de gnomonicis uero rebus et horologiorum rationibus insequenti perscribam",
+   "contexto": "necesse erit et extenuari",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "9.praef.3",
+   "V297": "",
+   "V514": "eorum autem cogitata utiliter hominibus ad uitam explicandam e pluribus singula paucorum uti exempla ponam quae recognoscentes necessario his tribui honores oportere homines confitebuntur",
+   "contexto": "sedes eos dedicandos iudicari",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "9.1.14",
+   "V297": "",
+   "V514": "iouis autem inter martis et saturni circinationem currens maiorem quam mars minorem quam saturnus peruolat cursum item reliquae stellae quo maiore absunt spatio ab extremo caelo proxumamque habent terrae circinationem celerius peruagari uidentur quod quaecumque earum minorem circinationem peragens saepius subiens praeterit superiorem",
+   "contexto": "re supra scriptum habemus",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "9.1.16",
+   "V297": "tangit que",
+   "V514": "tangitque",
+   "contexto": "est proxima extremo mundo tangit que congelatas caeli regiones uehementer",
+   "categoria": "errata-V297",
+   "nota": "Errata tipográfica de V297: «tangit ⟨que⟩» separa el enclítico; V514 «tangitque» (Krohn: tangitque; Rose: et tangit)."
+  },
+  {
+   "locus": "9.1.16",
+   "V297": "",
+   "V514": "de zona xii signorum et septem astrorum contrario opere ac cursu quibus rationibus et numeris transeunt e signis in signa et circumitum eorum uti a praeceptoribus accepi exposui nunc de crescenti lumine lunae deminutioneque uti traditum est nobis a maioribus dicam",
+   "contexto": "temperatissimosque habere uidetur effectus",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "9.2.1",
+   "V297": "",
+   "V514": "pilam esse ex dimidia parte candentem reliqua habere caeruleo colore cum autem cursum itineris sui peragens subierit sub orbem solis tunc eam radiis et impetu caloris corripi conuertique candentem propter eius proprietatem luminis ad lumen cum autem ea uocata ab solis orbi superiora spectent tunc inferiorem partem eius quod candens non sit propter aeris similitudinem obscuram uideri cum ad perpendiculum ea sit ad eius radios totum lumen ad superiorem speciem retineri et tunc eam uocari primam",
+   "contexto": "patefecit ita est professus",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "9.2.4",
+   "V297": "",
+   "V514": "nunc ut in singulis mensibus sol signa peruadens auget et minuit dierum et horarum spatia dicam",
+   "contexto": "ita menstruas perficit rationes",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "9.3.3",
+   "V297": "",
+   "V514": "nunc de ceteris sideribus quae sunt dextra ac sinistra zonam signorum meridiana septentrionalique parte mundi stellis disposita figurataque dicam",
+   "contexto": "dierum et horarum spatia",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "9.4.6",
+   "V297": "",
+   "V514": "quae sunt ad dextram orientis inter zonam signorum et septentrionum sidera in caelo disposita dixi esse nunc explicabo quae ad sinistram orientis meridianisque partibus ab natura sunt distributa",
+   "contexto": "complures sunt stellae confusae",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "9.8.4",
+   "V297": "tractu",
+   "V514": "tactu",
+   "contexto": "ctesibius cum animaduertisset ex tractu caeli et expressionibus spiritus",
+   "categoria": "variante-editorial",
+   "nota": "V514 tactu = Rose; V297 tractu = Krohn."
+  },
+  {
+   "locus": "9.8.10",
+   "V297": "",
+   "V514": "de administratione autem aquae quemadmodum se temperet ad rationem sic erit faciendum",
+   "contexto": "efficit horarum et dierum",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "9.8.11",
+   "V297": "de administratione autem aquae quemadmodum se temperet ad rationem sic erit faciendum",
+   "V514": "",
+   "contexto": "de administratione autem aquae quemadmodum se temperet ad rationem sic erit faciendum post frontem horologii intra",
+   "categoria": "division-de-paragrafos",
+   "nota": "El mismo texto figura en V514 en 9.8.10: distinta división de parágrafos."
+  },
+  {
+   "locus": "9.8.15",
+   "V297": "uii",
+   "V514": "uiii",
+   "contexto": "circumactione ad capricorni partem uii restituit celeritate salientis brumales",
+   "categoria": "a-revisar",
+   "nota": "Rose VII (con V297); el OCR de Krohn es ilegible; V514 VIII sin nota en el aparato."
+  },
+  {
+   "locus": "9.8.15",
+   "V297": "",
+   "V514": "quae sunt in horologiorum descriptionibus rationes et apparatus ut sint ad usum expeditiores quam apertissime potui perscripsi restat nunc de machinationibus et de earum principiis ratiocinari itaque de his ut corpus emendatum architecturae perficiatur insequenti uolumine incipiam scribere",
+   "contexto": "salientis brumales horarum breuitates",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.2.10",
+   "V297": "",
+   "V514": "harum machinationum omnium quae supra sunt scriptae rationes non modo ad has res sed etiam ad onerandas et exonerandas naues sunt paratae aliae erectae aliae planae in carchesiis uersatilibus conlocatae non minus sine tignorum erectionibus in plano etiam eadem ratione et temperatis funibus et trocleis subductiones nauium efficiuntur",
+   "contexto": "proclinando onus deponere potest",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.4.3",
+   "V297": "",
+   "V514": "cum autem altius extollendum erit eadem ratio communicabitur",
+   "contexto": "sic rota fiet circum",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.6.4",
+   "V297": "",
+   "V514": "quae de materia fiunt organa ad hauriendam aquam quibus rationibus perficiantur quibusque rebus motus recipientia praestent uersationibus infinitas utilitates ut essent notiora quam apertissime potui perscripta sunt in illo tempore",
+   "contexto": "est in ipso tempore",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.8.6",
+   "V297": "",
+   "V514": "quantum potui niti ut obscura res per scripturam dilucide pronuntiaretur contendi sed haec non est facilis ratio neque omnibus expedita ad intellegendum praeter eos qui in his generibus habent exercitationem quodsi qui parum intellexerit ex scriptis cum ipsam rem cognoscet profecto inueniet curiose et subtiliter omnia ordinata",
+   "contexto": "uarietatibus sonantes excitant uoces",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.9.7",
+   "V297": "",
+   "V514": "quae pacatis et sine metu temporibus ad utilitatem et delectationem paranda quemadmodum debeant fieri peregi esse futurum",
+   "contexto": "indicabit miliaria spatia nauigationis",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.10.1",
+   "V297": "",
+   "V514": "omnes proportiones eorum organorum ratiocinandorum sumuntur ex proposita sagittae longitudine quam id organum mittere debet eiusque nonae partis fit foraminis in capitulis magnitudo per quae tenduntur nerui torti qui bracchia continere debent",
+   "contexto": "symmetriis comparari possint exponam",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.10.2",
+   "V297": "",
+   "V514": "s",
+   "contexto": "ad foramen spatium foraminis a foramine ad medianam",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.10.2",
+   "V297": "",
+   "V514": "s",
+   "contexto": "medianam parastaticam item foraminis latitudo parastados mediae unius",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.10.4",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "foraminum xui crassitudo foraminis altitudo s÷ columellae basis",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.10.4",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "qua statuitur columella foraminis crassitudo fz columellae longitudo",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.10.4",
+   "V297": "",
+   "V514": "c c",
+   "contexto": "latitudo foraminis s÷ crassitudo eius capreoli tres quorum",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.10.4",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "isk antefixi latitudo foraminis crassitudo i",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.10.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "altitudinis iis latitudinis si cherolabae sucularum foraminum ii",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.10.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "ii s crassitudo foraminis latitudo is transuersariis cum",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.10.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "cum cardinibus longitudo foraminum latitudo is et crassitudo",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.10.5",
+   "V297": "cc",
+   "V514": "c c",
+   "contexto": "fz in summo foraminis cc z curuaturae foraminis uiii",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.3",
+   "V297": "",
+   "V514": "si pondo sex",
+   "contexto": "iiii digitorum sex et digitorum uii decem pondo",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.3",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "et lx pedis i c et lxxx pedis",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.3",
+   "V297": "",
+   "V514": "pondo",
+   "contexto": "et digitorum uii ccclx pedis i s",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.5",
+   "V297": "",
+   "V514": "s i",
+   "contexto": "crassitudo eius foraminis constituatur modioli foraminum duo",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.5",
+   "V297": "",
+   "V514": "s",
+   "contexto": "in foramine inditur foraminis ad extremum autem latitudo",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "extremum autem latitudo foraminis parastatarum longitudo foraminis usf",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.5",
+   "V297": "",
+   "V514": "c c",
+   "contexto": "pars dimidia crassitudo foraminis et partis lx adicitur",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.6",
+   "V297": "",
+   "V514": "i i z",
+   "contexto": "crassitudo dimidium foraminis cardines crassitudo foraminis curuatura regulae",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.6",
+   "V297": "",
+   "V514": "i",
+   "contexto": "foraminis cardines crassitudo foraminis curuatura regulae exterioris regulae",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.6",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "crassitudo foraminis curuatura regulae exterioris regulae latitudo et",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.6",
+   "V297": "foraminisk",
+   "V514": "foraminis c c c k",
+   "contexto": "inferioribus k mensae transuersarii foraminisk",
+   "categoria": "notacion",
+   "nota": "V297 omite los signos «cc» (Krohn: foraminis cc k); diferencia de notación metrológica."
+  },
+  {
+   "locus": "10.11.7",
+   "V297": "ik",
+   "V514": "i k",
+   "contexto": "longitudo foraminum xiii crassitudo ik interuallum medium latitudo foraminis",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.7",
+   "V297": "",
+   "V514": "latitudo",
+   "contexto": "membro quod graeci uocant crassitudo longitudo foraminum iii",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.7",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "foraminis s plentigomatos foraminis et sicilicus quod autem",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.8",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "regularum latitudo foraminis crassitudo chelonii replum quod est",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.8",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "k scaporum climacidos latitudo crassitudo foraminis xii k",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.9",
+   "V297": "",
+   "V514": "k",
+   "contexto": "foraminis in summo crassitudo basis quae appellatur longitudo",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.9",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "crassitudo et latitudo foraminis compingitur autem dimidia altitudinis",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.11.9",
+   "V297": "",
+   "V514": "de ballistis et catapultis symmetrias quas maxime expeditas putaui exposui quemadmodum autem contentionibus eae temperentur e neruo capilloque tortis rudentibus quantum comprehendere scriptis potuero non praetermittam",
+   "contexto": "foraminis in extremis f",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo."
+  },
+  {
+   "locus": "10.12.2",
+   "V297": "",
+   "V514": "de his rebus quae potui dixi restat mihi de oppugnatoriis rebus quemadmodum machinationibus et duces uictores et ciuitates defensae esse possint",
+   "contexto": "musicis auditionibus catapultae temperantur",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.13.3",
+   "V297": "",
+   "V514": "itaque diades scriptis suis ostendit se inuenisse turres ambulatorias quas etiam dissolutas in exercitu circumferre solebat praeterea terebram et ascendentem machinam qua ad murum plano pede transitus esse posset etiam coruum demolitorem quem nonnulli gruem appellant",
+   "contexto": "qui cum alexandro militauerunt",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.13.8",
+   "V297": "animaduerterest",
+   "V514": "animaduerteret",
+   "contexto": "nihil putaui scribendum quod animaduerterest eam machinam nullam habere",
+   "categoria": "errata-V297",
+   "nota": "«animadverterest» no es forma latina: errata de V297. La sintaxis (putavi … quod) pide 1.ª persona; conviene verificar también «animadverteret» de V514 contra Krohn."
+  },
+  {
+   "locus": "10.15.3",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "erant erecti pedes xuiii latitudine s÷ crassitudine fz",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.15.3",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "compactionem latae pede i crassae s÷ supra eam",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.15.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "latitudine pes crassitudine s",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.15.6",
+   "V297": "",
+   "V514": "a capite autem ad imam calcem tigni contenti fuerunt funes iii crassitudine digitorum uiii ita religati quemadmodum naues a puppi ad proram continentur eique funes praecinctura e transuersis erant religati habentes inter se palmipedalia spatia insuper coriis crudis totus aries erat inuolutus ex quibus autem funibus pendebat eorum capita fuerunt ex ferro factae quadruplices catenae et ipsae coriis crudis erant inuolutae",
+   "contexto": "fixae fuerant in materia",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  },
+  {
+   "locus": "10.15.7",
+   "V297": "c c c c l",
+   "V514": "ccccl",
+   "contexto": "quattuor milium quod fit c c c c l x x x pondo",
+   "categoria": "notacion",
+   "nota": "Signos metrológicos o espaciado de numerales (libro X): diferencia de notación, no de texto."
+  },
+  {
+   "locus": "10.16.12",
+   "V297": "",
+   "V514": "quas potui de machinis expedire rationes pacis bellique temporibus et utilissimas putaui in hoc uolumine perfeci in prioribus uero nouem de singulis generibus et partibus comparaui uti totum corpus omnia architecturae membra in decem uoluminibus haberet explicata",
+   "contexto": "architectorum sollertia sunt liberatae",
+   "categoria": "abreviacion-V297",
+   "nota": "V297 (ensayo) cita el pasaje abreviado; V514 da el texto completo conforme a Krohn/Rose."
+  }
+ ]
+}
