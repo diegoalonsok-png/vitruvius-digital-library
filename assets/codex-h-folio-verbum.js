@@ -11,7 +11,7 @@ if(!stage||!img)return;
 const plegar=x=>String(x||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")
  .replace(/j/g,"i").replace(/v/g,"u").replace(/y/g,"i");
 /* Raíz prudente: se quita la desinencia breve para hallar symmetria/symmetriae/symmetrias. */
-const raiz=w=>{const t=plegar(w).replace(/[^a-z]/g,"");return t.length>6?t.replace(/(ae|am|as|um|us|is|ibus|orum|arum|os|es|em|a|e|i|o|u)$/,""):t};
+const raiz=w=>{const t=plegar(w).replace(/[^a-z]/g,"");return t.length>6?t.replace(/(ibus|orum|arum|ae|am|as|um|us|is|os|es|em|a|e|i|o|u)$/,""):t};
 const params=new URLSearchParams(location.search);
 let palabra=params.get("verbum")||"";
 let indice=null;const lecturas={};
@@ -55,7 +55,7 @@ async function marcar(){
   }
  });
  nota.innerHTML="";
- nota.append("«",Object.assign(document.createElement("i"),{textContent:q}),"» · "+(n?n+" "+(n===1?"marca":"marcas")+" en f. "+f+" (renglón "+[...new Set(renglones)].join(", ")+"), sobre la lectura semidiplomática; posición aproximada dentro del renglón.":"sin coincidencias en la lectura de f. "+f+" (la grafía de H puede diferir: p. ej. sinmetros por symmetros)."));
+ nota.append("«",Object.assign(document.createElement("i"),{textContent:q}),"» · "+(n?n+" "+(n===1?"marca":"marcas")+" en f. "+f+" (renglón "+[...new Set(renglones)].join(", ")+"), sobre la lectura semidiplomática; posición aproximada dentro del renglón.":"sin coincidencias en la lectura de f. "+f+": el pasaje puede seguir en el folio contiguo o la grafía de H diferir (p. ej. sinmetros por symmetros)."));
 }
 img.addEventListener("load",()=>requestAnimationFrame(marcar));
 new ResizeObserver(ajustar).observe(img);

@@ -390,11 +390,22 @@ function clearLatin(){const b=document.getElementById("latin-hits");if(b)b.repla
 function latinBox(){let b=document.getElementById("latin-hits");if(!b){b=document.createElement("div");b.id="latin-hits";b.setAttribute("aria-live","polite");b.style.cssText="margin:10px 0 18px";document.getElementById("gallery-status").after(b)}return b}
 async function latinSearch(raw){const C=window.CodexHConcordance;if(!C)return;const my=++latinTicket;
  const fold=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
- const terms=fold(raw).split(/[^a-z]+/).filter(t=>t.length>=3);if(!terms.length){clearLatin();return}
+ /* Raíz prudente: firmitas → firmit (firmitatis, firmitate), symmetria → symmetri; decor se conserva. */
+ const stem=t=>t.length>6?t.replace(/(ibus|orum|arum|ae|am|as|um|us|is|os|es|em|a|e|i|o|u)$/,""):t;
+ const terms=fold(raw).split(/[^a-z]+/).filter(t=>t.length>=3).map(stem);if(!terms.length){clearLatin();return}
  const d=await C.load();if(my!==latinTicket)return;
  const hits=d.passages.filter(p=>{const t=fold(p.latin);return terms.every(w=>new RegExp("(^|[^a-z])"+w).test(t))});
  const box=latinBox();box.replaceChildren();
  if(!hits.length){box.textContent="«"+raw+"» no aparece en el latín de V514.";return}
+ /* Con Enter (o ?q=) se abre el folio: primero uno ya leído renglón por renglón que contenga el pasaje
+    (allí la palabra se subraya sobre la imagen); si no hay, el folio del primer pasaje. */
+ if($("search").dataset.go==="1"){$("search").dataset.go="";(async()=>{
+  const idx=await fetch("data/codex-h/lecturas/index.json").then(r=>r.ok?r.json():{folios:{}}).catch(()=>({folios:{}}));
+  const leidos=Object.entries(idx.folios||{});let f=null;
+  for(const h of hits){const l=leidos.find(([,v])=>(v.loci||[]).includes(h.locus));if(l){f=l[0];break}}
+  if(!f){const c=await C.locate(hits[0].locus).catch(()=>null);const ex=c&&c.exact.find(x=>x.status!=="catalogue");f=ex?ex.folio:c?.estimate?.folio}
+  if(my!==latinTicket||!f)return;
+  const i=folios.findIndex(x=>window.CodexQuery.labelKey(x.etiquetaOriginal)===window.CodexQuery.labelKey("f."+f));if(i>=0)open(i,true)})()}
  const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"],groups=new Map();
  for(const h of hits){const k=h.book+"|"+(h.locus.includes(".praef.")?"praef":"cap");if(!groups.has(k))groups.set(k,[]);groups.get(k).push(h)}
  const head=document.createElement("p");head.style.cssText="font-weight:600;margin:0 0 6px";head.textContent="«"+raw+"» en el latín de V514: "+hits.length+" pasajes, ordenados por libro y por prefacio / capítulos, con posibles folios de H (documentados o estimados; lectura manuscrita pendiente).";box.append(head);const tl=document.createElement("a");tl.href="termino.html?t="+encodeURIComponent(raw.trim());tl.textContent="Ficha del término «"+raw.trim()+"» →";tl.style.cssText="display:inline-block;margin:0 0 8px";box.append(tl);
@@ -600,4 +611,4 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
 })();
 
 </script><script src="assets/vitruvia-codex-loupe.js?v=20261104-filter-linked-loupe-v2" defer></script>
-<script src="assets/vitruvia-codex-filters.js?v=20261104-contrast-invert-v1" defer></script><script src="assets/chapter-keywords.js?v=20261105-kw-v1" defer></script><script>document.addEventListener("DOMContentLoaded",()=>{const f=document.querySelector(".gallery .filter");const c=document.createElement("div");f&&f.after(c);window.VitruviusKeywords&&VitruviusKeywords.mount(c,{onPick:t=>{const s=document.getElementById("search");s.value=t;s.dispatchEvent(new Event("input"))}});});</script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script defer src="assets/codex-h-folio-verbum.js?v=20261112-verbum-folio"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></div><script src="assets/lexicon-palette.js?v=20261112-codex-neutral-v2" defer></script><script src="assets/codex-rubrica-overlay.js" defer></script></body></html>
+<script src="assets/vitruvia-codex-filters.js?v=20261104-contrast-invert-v1" defer></script><script src="assets/chapter-keywords.js?v=20261105-kw-v1" defer></script><script>document.addEventListener("DOMContentLoaded",()=>{const f=document.querySelector(".gallery .filter");const c=document.createElement("div");f&&f.after(c);window.VitruviusKeywords&&VitruviusKeywords.mount(c,{onPick:t=>{const s=document.getElementById("search");s.value=t;s.dispatchEvent(new Event("input"))}});});</script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script defer src="assets/codex-h-folio-verbum.js?v=20261112-verbum-folio-2"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></div><script src="assets/lexicon-palette.js?v=20261112-codex-neutral-v2" defer></script><script src="assets/codex-rubrica-overlay.js" defer></script></body></html>
