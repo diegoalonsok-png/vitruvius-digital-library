@@ -1,0 +1,130 @@
+{
+ "schema": "vitruvius-nomenclatura/1",
+ "generated": "2026-11-12",
+ "exenciones": {
+  "tablerosDeControl": [
+   "auditoria-academica.html",
+   "centro-control-academico.html",
+   "control-calidad-corpus.html",
+   "estado-del-sitio.html",
+   "panel-calidad.html"
+  ],
+  "motivoTableros": "En un tablero de control interno «alerta» nombra una tarea de documentación pendiente, no una lectura divergente: es el término correcto y las páginas lo distinguen expresamente.",
+  "extraccionDeTerminos": [
+   "basilica-fano.html",
+   "datos.html",
+   "ediciones-historicas.html",
+   "iconografia-vitruviana.html"
+  ],
+  "motivoExtraccion": "«Palabras clave» describe una extracción de términos frecuentes, que es lo que esas páginas ofrecen; no se presentan como índice de lemas."
+ },
+ "criterio": "Se señala el vocabulario de programa o coloquial en el texto visible de las páginas de aparato, códice e índices, con el término que le corresponde en ecdótica o codicología. Se revisa el texto del HTML y el de las cadenas de los módulos que la página carga, porque buena parte de lo que el lector ve se inyecta desde el JS. No se corrige automáticamente: alguna aparición puede ser legítima.",
+ "recuentos": {
+  "paginasRevisadas": 140,
+  "hallazgos": 14,
+  "paginasConTerminologiaFaltante": 0,
+  "enDatos": 0
+ },
+ "hallazgos": [
+  {
+   "pagina": "escritorio-h-prueba.html",
+   "termino": "Prefacio del libro",
+   "motivo": "en contexto latino conviene el término de la obra",
+   "corresponde": "praefatio, proemio",
+   "contexto": "refacio Libro 9 Libro 9 — Prefacio Libro 10 Libro 10 — Prefacio Locus Prefacio del libro seleccionado Consultar Sincronizar con el folio de H Elige «Prefacio"
+  },
+  {
+   "pagina": "escritorio-h-prueba.html",
+   "termino": "Prefacio del libro",
+   "motivo": "en contexto latino conviene el término de la obra",
+   "corresponde": "praefatio, proemio",
+   "contexto": "del libro seleccionado Consultar Sincronizar con el folio de H Elige «Prefacio del libro seleccionado» o escribe un locus, por ejemplo 1.praef.1, 1.praef.2 o"
+  },
+  {
+   "pagina": "laboratorio-h.html",
+   "termino": "foto",
+   "motivo": "en descripción de manuscrito",
+   "corresponde": "reproducción, facsímil, imagen",
+   "contexto": "ando el manifiesto de imágenes; también puedes cargar directamente la foto descargada desde H. Buscar y resaltar: Modo Texto literal / frases Am"
+  },
+  {
+   "pagina": "laboratorio-h.html",
+   "termino": "Foto",
+   "motivo": "en descripción de manuscrito",
+   "corresponde": "reproducción, facsímil, imagen",
+   "contexto": "umental. Si el proveedor de imágenes impide el acceso directo, elige «Foto descargada desde H» para trabajar con el archivo local sin depender d"
+  },
+  {
+   "pagina": "novedades.html",
+   "termino": "traducción automática",
+   "motivo": "si la revisó una persona, no es automática",
+   "corresponde": "traducción de servicio, versión provisional",
+   "contexto": "mas en la Bibliotheca y protección de siglas y signaturas frente a la traducción automática. Controles de idioma, color y contraste unificados; referencias acadé"
+  },
+  {
+   "pagina": "novedades.html",
+   "termino": "palabras clave",
+   "motivo": "en un índice filológico",
+   "corresponde": "lema, voz, término",
+   "contexto": "r, Vitruvia y el lector. Fichas de término, carpeta de investigación, palabras clave por capítulo y láminas históricas con referencia de folio. 4 de novie"
+  },
+  {
+   "pagina": "vitruvia-lexicon.html",
+   "termino": "Traducción automática",
+   "motivo": "si la revisó una persona, no es automática",
+   "corresponde": "traducción de servicio, versión provisional",
+   "contexto": "traducción (ES · FR · EN) Leer con traducción ; automatic.append(el( Traducción automática orientativa. La traducción de lenguas antiguas puede ser imprecisa; e"
+  },
+  {
+   "pagina": "vitruvia-lexicon.html",
+   "termino": "Traducción automática",
+   "motivo": "si la revisó una persona, no es automática",
+   "corresponde": "traducción de servicio, versión provisional",
+   "contexto": "ce solo el primer fragmento; consulte el texto completo en el lector. Traducción automática · ES / EN / FR )); if(p[0]=== )); actions.append(el( )); actions.appe"
+  },
+  {
+   "pagina": "vitruvia-lexicon.html",
+   "termino": "Traducción automática",
+   "motivo": "si la revisó una persona, no es automática",
+   "corresponde": "traducción de servicio, versión provisional",
+   "contexto": "ted,{sourceLanguage:D.l,originalText:p[2]}); }else{ const missing=el( Traducción automática temporalmente no disponible. Consulte las versiones editoriales del l"
+  },
+  {
+   "pagina": "vitruvia-lexicon.html",
+   "termino": "traducción automática",
+   "motivo": "si la revisó una persona, no es automática",
+   "corresponde": "traducción de servicio, versión provisional",
+   "contexto": "source=el( )); box.append(el( Pasaje original. Se puede solicitar una traducción automática orientativa; el texto solo se envía al proveedor externo después de p"
+  },
+  {
+   "pagina": "vitruvia-lexicon.html",
+   "termino": "palabras clave",
+   "motivo": "en un índice filológico",
+   "corresponde": "lema, voz, término",
+   "contexto": "tar JSON Exportar XML-TEI V bis · COMPARATIO · STATISTICA Comparatio: palabras clave de una obra Palabras clave ( keyness ) de una obra frente a otra o fr"
+  },
+  {
+   "pagina": "vitruvia-lexicon.html",
+   "termino": "Palabras clave",
+   "motivo": "en un índice filológico",
+   "corresponde": "lema, voz, término",
+   "contexto": "bis · COMPARATIO · STATISTICA Comparatio: palabras clave de una obra Palabras clave ( keyness ) de una obra frente a otra o frente al resto del corpus de"
+  },
+  {
+   "pagina": "vitruvia-lexicon.html",
+   "termino": "palabras clave",
+   "motivo": "en un índice filológico",
+   "corresponde": "lema, voz, término",
+   "contexto": "ratio : taille de l'effet (1 = deux fois plus fréquent). Comparatio: palabras clave de una obra Comparatio: keywords of a work Comparatio : mots-clés d'u"
+  },
+  {
+   "pagina": "vitruvia-lexicon.html",
+   "termino": "palabra clave",
+   "motivo": "en un índice filológico",
+   "corresponde": "lema, voz, término",
+   "contexto": "); box.append(el( },`${hits.length} líneas KWIC (contexto izquierdo · palabra clave · contexto derecho).`),el( }, el( ),citeBox(S.q,location.href))); } f"
+  }
+ ],
+ "terminologiaFaltante": [],
+ "enDatos": []
+}

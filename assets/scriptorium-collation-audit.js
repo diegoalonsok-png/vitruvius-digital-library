@@ -4,7 +4,7 @@
 const root=document.getElementById("script-collation-audit");if(!root)return;
 const status=root.querySelector("#script-audit-status"),summary=root.querySelector("#script-audit-summary"),result=root.querySelector("#script-audit-results");
 const type=root.querySelector("#script-audit-filter"),search=root.querySelector("#script-audit-query");
-const LABELS={alert:"Alerta: diferencia fuerte",moderate:"Revisar: diferencia moderada",near:"Variación menor","different-segmentation":"Identificador de locus diferente en V297"};
+const LABELS={alert:"Lectio diversa · divergencia sustantiva",moderate:"Lectio dubia · divergencia por cotejar",near:"Varia lectio minor","different-segmentation":"Identificador de locus diferente en V297"};
 let audit=null;
 function show(){
  if(!audit)return;
@@ -22,7 +22,7 @@ function show(){
    link.target="_blank";link.rel="noopener noreferrer";link.textContent="Abrir página del facsímil ↗";
    row.append(title,note,link);result.append(row);
   }
-  status.textContent=alerts.length+" alertas OCR de "+edition+"; se muestran como máximo 100. Estos resultados no certifican diferencias editoriales.";
+  status.textContent=alerts.length+" lugares de lectio incerta ex OCR en "+edition+"; se muestran como máximo 100. Estos resultados no certifican diferencias editoriales.";
   return;
  }
  let items=audit.latinDiscrepancies.filter(p=>(!term||p.locus.toLowerCase().includes(term))&&(kind==="all"||kind===p.severity));

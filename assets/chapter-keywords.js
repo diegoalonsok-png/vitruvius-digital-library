@@ -7,7 +7,7 @@ const URL_DATA="data/vitruvius-chapter-keywords.json?v=20261105-kw-v1";
 const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 let promise=null;
 const load=()=>promise||(promise=fetch(URL_DATA).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).catch(e=>{promise=null;throw e}));
-const T={es:{title:"Palabras clave por libro, prefacio y capítulo",book:"Libro",unit:"Parte",praef:"Prefacio",cap:"Capítulo",hint:"Términos latinos más característicos de cada parte (texto de V514). Selecciona uno para buscarlo."},
+const T={es:{title:"Voces destacadas por libro, prefacio y capítulo",book:"Libro",unit:"Parte",praef:"Prefacio",cap:"Capítulo",hint:"Términos latinos más característicos de cada parte (texto de V514). Selecciona uno para buscarlo."},
  en:{title:"Keywords by book, preface and chapter",book:"Book",unit:"Part",praef:"Preface",cap:"Chapter",hint:"Most characteristic Latin terms of each part (V514 text). Select one to search it."},
  fr:{title:"Mots-clés par livre, préface et chapitre",book:"Livre",unit:"Partie",praef:"Préface",cap:"Chapitre",hint:"Termes latins les plus caractéristiques de chaque partie (texte de V514). Choisissez-en un pour le rechercher."}};
 function mount(container,{onPick,open=false,lang}={}){

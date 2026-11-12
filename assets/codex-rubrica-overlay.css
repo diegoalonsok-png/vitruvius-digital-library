@@ -1,0 +1,14 @@
+/* Subrayado de las rúbricas detectadas en el facsímil. Amarillo translúcido, en
+   multiplicado, para que la tinta siga leyéndose debajo del trazo. */
+#rubrica-wrap{position:relative;display:inline-block;line-height:0}
+#rubrica-layer{position:absolute;inset:0;pointer-events:none}
+.rubrica-mark{position:absolute;background:rgba(255,214,0,.42);mix-blend-mode:multiply;
+ border-radius:3px;box-shadow:0 0 0 1px rgba(190,150,0,.35)}
+html[data-reader-theme=dark] .rubrica-mark{background:rgba(255,224,60,.3);mix-blend-mode:screen}
+#rubrica-controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;background:#eadfcd;padding:10px}
+html[data-reader-theme=dark] #rubrica-controls{background:#344b5d;color:#eee5d7}
+#rubrica-controls button{min-height:38px;padding:7px 12px;border:1px solid #a89b86;border-radius:6px;
+ background:#fff9ee;color:#213b51;font:600 13px system-ui,sans-serif;cursor:pointer}
+#rubrica-controls button[aria-pressed=true]{background:#23435b;color:#fff;border-color:#23435b}
+#rubrica-note{flex:1 1 280px;margin:0;font:12px/1.55 system-ui,sans-serif;opacity:.88}
+@media print{#rubrica-controls{display:none}}

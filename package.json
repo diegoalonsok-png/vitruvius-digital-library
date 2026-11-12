@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "audit:cobertura": "python3 scripts/audit-cobertura-ediciones.py",
+    "audit:nomenclatura": "python3 scripts/audit-nomenclatura.py --todo",
     "build:aparato-autoral": "python3 scripts/extract-authorial-apparatus.py",
     "build:collatio": "python3 scripts/parse-collatio-codicum.py && python3 scripts/parse-collatio-prosa.py && python3 scripts/validate-collatio.py",
     "build:estudios": "python3 scripts/extract-estudios-ediciones.py",
@@ -12,6 +13,7 @@
     "build:onomasticon": "python3 scripts/build-onomasticon-plenum.py",
     "build:onomasticon-totals": "python3 scripts/recount-onomasticon-totals.py",
     "build:records": "node scripts/enrich-classical-records.mjs",
+    "build:rubricas": "python3 scripts/detect-rubricas.py",
     "build:styles": "node scripts/build-style-bundles.mjs --refresh",
     "check:boot": "node scripts/test-page-boot.mjs",
     "check:collatio": "node scripts/test-collatio-register.mjs",
@@ -21,8 +23,10 @@
     "check:onomasticon": "node scripts/test-onomasticon-plenum.mjs",
     "check:parallel-highlights": "node scripts/check-parallel-highlights.mjs",
     "check:philology": "node scripts/test-vitruvia-philology.mjs",
+    "check:prefacios": "node scripts/test-prefacios-folio.mjs",
     "check:rank": "node scripts/test-vitruvia-rank.mjs",
     "check:reading-shelf": "node scripts/check-reading-shelf.mjs",
+    "check:rubricas": "node scripts/test-rubrica-overlay.mjs",
     "check:scriptorium": "node scripts/test-scriptorium-sync.mjs",
     "check:site": "node scripts/site-check.mjs",
     "check:vitruvia-100": "node scripts/check-vitruvia-100-subjects.mjs"
