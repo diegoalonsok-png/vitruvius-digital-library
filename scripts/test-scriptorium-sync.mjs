@@ -48,5 +48,36 @@ check(window.document.querySelectorAll(".script-triple-pane").length===3,"se arm
 const barra=window.document.querySelector(".script-triple-sync");
 check(barra&&/concordancia/i.test(barra.textContent),"la barra explica la concordancia");
 
+/* La sincronización no basta con estar cableada: la página de destino tiene que
+   contener de verdad el pasaje. Se comprueba sobre una muestra fija, buscando los
+   trigramas del latín editado en la página indicada y sus dos vecinas. */
+console.log("\nla página de destino contiene el pasaje");
+const fold=t=>t.normalize("NFD").replace(/\p{M}/gu,"").toLowerCase()
+ .replace(/j/g,"i").replace(/v/g,"u").replace(/[^a-z]+/g," ").replace(/\s+/g," ").trim();
+const edicion=JSON.parse(readFileSync("data/structured/recensio-es.json","utf8"));
+const latinDe=new Map(edicion.passages.map(p=>[p.locus,p.latin||""]));
+const muestra=[...latinDe.keys()].filter((_,i)=>i%9===0).slice(0,70);
+for(const [testigo,archivo,etiqueta] of [["krohn-1912","data/text/krohn-1912.json","Krohn 1912"],
+                                         ["rose-1899","data/text/rose-1899.json","Rose 1899"]]){
+ const paginas=new Map(JSON.parse(readFileSync(archivo,"utf8")).map(p=>[p.page,fold(p.text||"")]));
+ let aciertos=0,evaluados=0,fallosFirmes=0;
+ for(const locus of muestra){
+  const d=col.loci[locus]?.[testigo];
+  if(!d?.page)continue;
+  const w=fold(latinDe.get(locus)||"").split(" ");
+  if(w.length<6)continue;
+  const tri=[];for(let i=0;i<w.length-2;i++)tri.push(w.slice(i,i+3).join(" "));
+  const ventana=[-1,0,1].map(k=>paginas.get(d.page+k)||"").join(" ");
+  const cobertura=tri.filter(t=>ventana.includes(t)).length/tri.length;
+  evaluados++;
+  if(cobertura>=0.5)aciertos++;
+  else if((d.score||0)>=0.9)fallosFirmes++;
+ }
+ check(evaluados>40,`${etiqueta}: ${evaluados} loci evaluados`);
+ check(aciertos/evaluados>=0.9,
+   `${etiqueta}: la página de destino trae el pasaje en ${aciertos} de ${evaluados} (${Math.round(100*aciertos/evaluados)} %)`);
+ check(fallosFirmes===0,`${etiqueta}: ninguna concordancia declarada firme falla`);
+}
+
 console.log(fallos?`\n${fallos} comprobaciones fallidas`:"\nTodas las comprobaciones pasaron");
 process.exit(fallos?1:0);
