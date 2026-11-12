@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aparato crítico comparativo · H, G, E, S · Vitruvius Digital Library</title>
+<meta name="description" content="Aparato comparativo de De architectura por locus: decisiones de V514 y aparatos de Rose (1899) y Krohn (1912) con los testimonios H, G, E y S.">
+<link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/aparato-comparativo.html">
+<meta name="citation_title" content="Aparato crítico comparativo de De architectura (H, G, E, S)">
+<meta name="citation_author" content="Kurilo, Diego">
+<meta name="citation_publication_date" content="2026/11/12">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+main{max-width:1200px;margin:auto;padding:30px clamp(16px,3vw,44px) 90px}
+h1{font:400 clamp(30px,4vw,46px)/1.15 Georgia,serif;margin:.3em 0}h2{font:400 25px/1.3 Georgia,serif;margin-top:32px}
+.intro{max-width:90ch;line-height:1.7}.small{font:13px/1.6 system-ui}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0}
+.bar input,.bar select{font:15px system-ui;padding:8px 10px;border:1px solid rgba(128,128,128,.6);background:transparent;color:inherit;border-radius:4px}
+.bar input{min-width:220px}
+table{width:100%;border-collapse:collapse;font:14px/1.55 Georgia,serif}
+th{font:600 12px/1.4 system-ui;text-transform:uppercase;letter-spacing:.04em;text-align:left;border-bottom:1px solid currentColor;padding:8px}
+td{padding:9px 8px;border-bottom:1px solid rgba(128,128,128,.35);vertical-align:top}
+td.l{white-space:nowrap;font:600 13px system-ui}
+.e{display:block;margin:0 0 5px}.src{font:11px system-ui;opacity:.7;margin-left:4px}
+.sig{font:600 12px system-ui;padding:0 4px;border:1px solid rgba(128,128,128,.6);border-radius:3px;margin-right:2px}
+.g{font:13px/1.5 system-ui;opacity:.85}
+.matrix td,.matrix th{text-align:center;font:13px system-ui}
+.wits dt{font:600 14px system-ui;margin-top:8px}.wits dd{margin:2px 0 0 0;font:14px/1.5 Georgia,serif}
+#mas{margin:14px 0;font:14px system-ui;padding:8px 14px;cursor:pointer;background:transparent;color:inherit;border:1px solid rgba(128,128,128,.6);border-radius:4px}
+</style></head><body><main>
+<p class="small"><a href="index.html">← Inicio</a> · <a href="registro-ecdotico.html">Registro ecdótico</a> · <a href="erratas-ediciones.html">Erratas</a> · <a href="scriptorium.html">Scriptorium</a> · <a href="codex-h-folios-local.html">Codex H</a> · <a href="auditoria-academica.html">Auditoría</a></p>
+<header><h1>Aparato crítico comparativo</h1>
+<p class="intro">Para cada locus de <i>De architectura</i> se reúnen tres aparatos: las decisiones de <strong>V514</strong>, el de <strong>Rose (1899)</strong> y el de <strong>Krohn (1912)</strong>, con las lecturas de los testimonios principales: <strong>H</strong> (Harley 2767), <strong>G</strong> y <strong>E</strong> (Gudiani de Wolfenbüttel) y <strong>S</strong> (Sélestat). Las entradas de Rose y Krohn proceden del OCR de la página impresa y se enlazan a ella para su comprobación: este aparato reúne testimonios ya publicados y no sustituye la colación directa de G, E y S.</p></header>
+<p id="estado" class="small" role="status">Cargando…</p>
+
+<section aria-labelledby="t1"><h2 id="t1">Testimonios</h2>
+<dl class="wits" id="wits"></dl>
+<p class="small">Rose (1899, praefatio) considera a H y G los testimonios principales y hace depender a S y E de un antepasado común con G; la crítica posterior (Ruffel y Soubiran, 1960; Chausserie-Laprée, 1969; Reynolds, <i>Texts and Transmission</i>, 1983) discute y matiza ese stemma.</p>
+</section>
+
+<section aria-labelledby="t2"><h2 id="t2">Concordancias entre testimonios</h2>
+<p class="small">Veces que dos testimonios comparten la misma lectura dentro de una entrada del aparato (excluida la consensio <i>x</i>). Es el material con el que se discute un stemma, no una prueba por sí sola: el recuento depende de qué variantes eligió registrar cada editor.</p>
+<table class="matrix"><thead><tr><th>Par</th><th>Rose 1899</th><th>Krohn 1912</th></tr></thead><tbody id="matriz"></tbody></table>
+</section>
+
+<section aria-labelledby="t3"><h2 id="t3">Aparato por locus</h2>
+<div class="bar">
+ <input id="q" type="search" placeholder="Locus (8.6.1) o palabra latina" aria-label="Buscar locus o palabra">
+ <select id="wit" aria-label="Filtrar por testimonio"><option value="">Todos los testimonios</option><option value="G">con G</option><option value="E">con E</option><option value="S">con S</option><option value="H">con H</option><option value="v514">con decisión de V514</option></select>
+</div>
+<table><thead><tr><th>Locus</th><th>V514 (decisiones del editor)</th><th>Rose 1899</th><th>Krohn 1912</th></tr></thead><tbody id="filas"></tbody></table>
+<button id="mas" type="button" hidden>Mostrar más</button>
+</section>
+
+<section aria-labelledby="t4"><h2 id="t4">Método</h2>
+<p class="small" id="metodo" style="white-space:pre-line;max-width:95ch"></p>
+<p class="small">Datos: <a href="data/apparatus/aparato-comparativo.json">aparato-comparativo.json</a> · Script: <code>scripts/build-aparato-comparativo.py</code>.</p>
+</section>
+</main>
+<script>
+(()=>{"use strict";
+const $=s=>document.querySelector(s);
+const el=(t,txt,cls)=>{const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e};
+const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/v/g,"u").replace(/j/g,"i");
+let D,vis=[],shown=0;const PASO=60;
+function celdaAp(f,k){const td=document.createElement("td");const a=f[k];if(!a){td.textContent="—";return td}
+ if(!a.entradas.length){td.append(el("span","sin entrada para este pasaje","g"))}
+ a.entradas.forEach(e=>{const s=el("span",null,"e");s.append(e.texto);s.append(el("span","l. "+e.linea,"src"));td.append(s)});
+ const ln=el("a","p. "+a.pagina+" ↗","small");ln.href=a.pdf;ln.target="_blank";ln.rel="noopener";td.append(ln);return td}
+function fila(f){const tr=document.createElement("tr");
+ const l=el("td",null,"l");const a=el("a",f.locus);a.href="lector-bilingue.html?locus="+encodeURIComponent(f.locus);l.append(a);
+ if(f.testigos?.length){l.append(document.createElement("br"));f.testigos.forEach(s=>l.append(el("span",s,"sig")))}tr.append(l);
+ const v=document.createElement("td");
+ if(!f.v514.length&&!f.v514SinLema)v.append(el("span","—","g"));
+ if(f.v514SinLema){const r=el("a",f.v514SinLema+" decisión(es) sin lema extraído · ver registro","src");r.href="registro-ecdotico.html?locus="+encodeURIComponent(f.locus);v.append(r)}
+ f.v514.forEach(d=>{const s=el("span",null,"e");s.append(d.aparato||d.lema||"(decisión sin lema)");const h=d.testimonios&&d.testimonios.H;if(h){s.append(" · H: "+h)}s.append(el("span",d.grado||"","src"));v.append(s)});
+ tr.append(v,celdaAp(f,"rose-1899"),celdaAp(f,"krohn-1912"));return tr}
+function pintar(reset){const tb=$("#filas");if(reset){tb.textContent="";shown=0}
+ vis.slice(shown,shown+PASO).forEach(f=>tb.append(fila(f)));shown=Math.min(vis.length,shown+PASO);$("#mas").hidden=shown>=vis.length;
+ $("#estado").textContent=vis.length+" loci con material de aparato · "+D.recuentos.entradasRose+" entradas de Rose y "+D.recuentos.entradasKrohn+" de Krohn localizadas · "+D.recuentos.lociConDecisionV514+" loci con decisiones de V514."}
+function filtrar(){const q=fold($("#q").value.trim()),w=$("#wit").value;
+ vis=D.loci.filter(f=>{if(w==="v514"&&!f.v514.length&&!f.v514SinLema)return false;if(w&&w!=="v514"&&!(f.testigos||[]).includes(w))return false;
+  if(!q)return true;if(/^\d/.test(q))return f.locus===q||f.locus.startsWith(q+".");
+  return fold(JSON.stringify([f.v514,f["rose-1899"]?.entradas,f["krohn-1912"]?.entradas])).includes(q)});
+ pintar(true)}
+fetch("data/apparatus/aparato-comparativo.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{D=d;
+ Object.entries(d.testimonios).forEach(([k,v])=>{const dt=el("dt",k);const dd=el("dd",v);const fx=d.facsimiles[k];if(fx){dd.append(" · ");const a=el("a","facsímil ↗");a.href=fx;a.target=fx.startsWith("http")?"_blank":"";a.rel="noopener";dd.append(a)}$("#wits").append(dt,dd)});
+ const pares={};Object.entries(d.recuentos.concordancias).forEach(([k,n])=>{const[w,p]=k.split(":");(pares[p]=pares[p]||{})[w]=n});
+ Object.entries(pares).sort((a,b)=>((b[1]["rose-1899"]||0)+(b[1]["krohn-1912"]||0))-((a[1]["rose-1899"]||0)+(a[1]["krohn-1912"]||0))).forEach(([p,v])=>{const tr=document.createElement("tr");tr.append(el("td",p.replace("+"," + ")),el("td",String(v["rose-1899"]||0)),el("td",String(v["krohn-1912"]||0)));$("#matriz").append(tr)});
+ $("#metodo").textContent=d.metodo;
+ const u=new URLSearchParams(location.search);if(u.get("locus"))$("#q").value=u.get("locus");if(u.get("testigo"))$("#wit").value=u.get("testigo");
+ filtrar();$("#q").addEventListener("input",filtrar);$("#wit").addEventListener("change",filtrar);$("#mas").addEventListener("click",()=>pintar(false));
+}).catch(e=>{$("#estado").textContent="No se pudo cargar el aparato: "+e.message});
+})();
+</script>
+<script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script>
+</body></html>
