@@ -881,7 +881,10 @@ async function renderWordTree(query,isCurrent){
    }
    origins.append(el("p",{class:"article-note"},
     "Fuente local: Etymologicum Vitruvianum · ficha «"+editorial.lemma+
-    "». Una raíz con * es reconstruida; formas flexionadas, derivados, préstamos, cognados y equivalentes se distinguen. Consultar bibliografía y loci en la ficha editorial."));
+    "». Una raíz con * es reconstruida; formas flexionadas, derivados, préstamos, cognados y equivalentes se distinguen."));
+   if(editorial.refs?.length)origins.append(el("p",{class:"article-note"},
+    "Referencias lexicográficas de la ficha: "+editorial.refs.join("; ")+
+    ". Son referencias bibliográficas; no acreditan cotejo individual de cada manuscrito."));
    origin(editorial.lemma,editorial.l);
   }
   for(const lemma of lemmas)if(!editorial||fold(lemma)!==fold(editorial.lemma))origin(lemma,code);
@@ -2062,15 +2065,9 @@ async function renderEtymTree(word,langCode,box,{auto=true,online=false,tree=nul
  if(!t.curated){const src=el("p",{class:"article-note"},"Fuente: ");t.chain.filter(n=>n.href&&n.href.startsWith("/wiki/")).slice(0,8).forEach((n,k)=>{if(k)src.append(" · ");src.append(el("a",{href:"https://en.wiktionary.org"+n.href,target:"_blank",rel:"noopener noreferrer"},n.word))});out.append(src)}
  const cur=findCurated(t.chain.filter(n=>["la","grc"].includes(n.lang)).map(n=>n.word));
  if(cur&&!box.querySelector("#etym-"+cur.id)){out.append(el("p",{},el("button",{type:"button",class:"lx-btn",onclick:()=>{$("#lx-q").value=cur.lemma;S.mode="palabra";S.lang=cur.l;$("#lx-lang").value=cur.l;renderTabs();run()}},`Ficha editorial del Etymologicum: ${cur.lemma}`)))}
- if(t.curated&&auto&&!online){
-  // Restore the full historical tree automatically while the local editorial
-  // tree remains visible; an external failure never removes the local tree.
-  buildEtymTree(word,langCode).then(async expanded=>{
-   if(expanded.error||!sec.isConnected)return;
-   const next=await renderEtymTree(word,langCode,box,{auto:false,online:true,tree:expanded});
-   if(sec.isConnected)sec.replaceWith(next);
-  }).catch(()=>{});
- }
+ /* Preserve the documented editorial tree until the reader explicitly
+    requests a Wiktionary comparison. Never silently replace curated evidence
+    with community-sourced etymology while a user is studying a word. */
  return sec;
 }
 async function renderModernWord(q,l){
