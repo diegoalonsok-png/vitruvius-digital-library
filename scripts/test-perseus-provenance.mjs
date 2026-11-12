@@ -17,6 +17,17 @@ const describedWorks=records.filter(r=>r.versions?.some(v=>/Perseus/i.test(v.sou
 const verified=records.filter(r=>r.ctsStatus==="verified");
 const documentedHeader=records.filter(r=>r.ctsStatus==="declared_and_checked_in_source_tei_header");
 const documented=verified.concat(documentedHeader);
+// Work identifiers are not edition identifiers; passages must be separated
+// from editions by a colon. Never rewrite upstream CTS identifiers.
+const WORK_URN=/^urn:cts:(?:latinLit|greekLit):(?:phi\\d{4}|tlg\\d{4}|stoa\\d{4})\\.(?:phi\\d{3}|tlg\\d{3}|stoa\\d{3})$/;
+const EDITION_URN=/^urn:cts:(?:latinLit|greekLit):(?:phi\\d{4}|tlg\\d{4}|stoa\\d{4})\\.(?:phi\\d{3}|tlg\\d{3}|stoa\\d{3})\\.[A-Za-z0-9][A-Za-z0-9_-]*$/;
+assert.equal(EDITION_URN.test("urn:cts:latinLit:phi0474_phi037_perseus-lat2.1.1.segment-1"),false);
+assert.equal(EDITION_URN.test("urn:cts:latinLit:phi0474.phi037.perseus-lat2:1.1.segment_1"),false);
+assert.equal(EDITION_URN.test("urn:cts:latinLit:stoa0040.stoa001.opp-lat1"),true);
+for(const path of ["data/clasicos-perseus.json","data/clasicos-perseus-extra.json"]){
+  const catalog=JSON.parse(read(path));
+  for(const work of catalog.works||[])assert.match(work.urn||"",WORK_URN,"Invalid work-level CTS URN in "+path+": "+work.id);
+}
 assert.equal(report.counts.worksWithCandidateWorkCodes,candidateWorks);
 assert.equal(report.counts.versions,textVersions);
 assert.equal(report.counts.worksWithPerseusSourceDescription,describedWorks);
@@ -26,11 +37,11 @@ for(const r of records){
   assert.ok(Array.isArray(r.versions),"Version list missing for "+r.workId);
   assert.equal(r.perseusAffiliation,false,"Institutional affiliation must not be inferred: "+r.workId);
   if(r.ctsStatus==="verified"){
-    assert.match(r.ctsEditionUrn||"",/^urn:cts:[a-z0-9-]+:[A-Za-z0-9_.-]+$/i,"Malformed verified edition URN: "+r.workId);
+    assert.match(r.ctsEditionUrn||"",EDITION_URN,"Malformed verified edition URN: "+r.workId);
     assert.match(r.ctsSourceUri||"",/^https:\/\//i,"A verified edition requires a citable source: "+r.workId);
     assert.ok(typeof r.sourceRights==="string"&&r.sourceRights.trim(),"A verified edition requires a rights statement: "+r.workId);
   }else if(r.ctsStatus==="declared_and_checked_in_source_tei_header"){
-    assert.match(r.ctsEditionUrn||"",/^urn:cts:[a-z0-9-]+:[A-Za-z0-9_.-]+$/i,"Malformed TEI-declared URN: "+r.workId);
+    assert.match(r.ctsEditionUrn||"",EDITION_URN,"Malformed TEI-declared URN: "+r.workId);
     assert.match(r.ctsEvidence||"",/TEI/i,"TEI-header evidence must be explicit: "+r.workId);
     assert.match(r.ctsNote||"",/no implica|not verified|not proof/i,"TEI declaration is not public CTS resolution: "+r.workId);
   }else{
