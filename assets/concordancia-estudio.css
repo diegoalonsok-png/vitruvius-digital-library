@@ -135,3 +135,23 @@ html[data-theme=dark] .ce-bar{background:#141518;border-color:#2c2e33}
 /* En claro, los títulos de panel también en gris, sin el azul. */
 html[data-theme=light] .folio-panel h2{background:#e6e5e2;color:#26282b;border-bottom:1px solid #cfcdc8}
 html[data-theme=light] :is(.folio-tools a,.folio-tools button){background:#2b2d31;color:#fff;border-color:#2b2d31}
+
+/* ===== Herramientas del visor I ===== */
+.ce-visor-tools{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;padding:9px 12px;
+ background:#18191c;border-top:1px solid #2c2e33;border-bottom:1px solid #2c2e33;font:600 12px system-ui,sans-serif;color:#cfccc5}
+html[data-theme=light] .ce-visor-tools{background:#eceae6;border-color:#d4d2cd;color:#26282b}
+.ce-visor-tools .ce-grupo{display:inline-flex;gap:0}
+.ce-visor-tools :is(button,select){min-height:34px;padding:0 11px;border:1px solid #45474d;background:#26272b;color:#f2efe9;
+ font:600 12px system-ui,sans-serif;cursor:pointer;border-radius:8px}
+.ce-visor-tools .ce-grupo>:is(button,select){border-radius:0}
+.ce-visor-tools .ce-grupo>:first-child{border-radius:8px 0 0 8px}
+.ce-visor-tools .ce-grupo>:last-child{border-radius:0 8px 8px 0}
+.ce-visor-tools .ce-grupo>:not(:first-child){border-left:0}
+.ce-visor-tools #ce-zoom-menos,.ce-visor-tools #ce-zoom-mas{min-width:36px;font-size:17px}
+.ce-visor-tools #ce-zoom-val{min-width:64px}
+.ce-visor-tools button[aria-pressed=true]{background:#c9a24a;color:#1a1409;border-color:#c9a24a}
+.ce-visor-tools :is(button,select):hover{border-color:#c9a24a}
+.ce-rango{display:inline-flex;align-items:center;gap:7px}
+.ce-rango input{width:96px;accent-color:#c9a24a}
+.folio-image.ce-lupa-on{cursor:crosshair}
+.folio-image .ce-rubrica-wrap{max-width:none}

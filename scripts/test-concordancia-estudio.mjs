@@ -43,7 +43,8 @@ const d=w.document;
 console.log("Barra de estudio");
 comprobar(!!d.getElementById("ce-praef"),"desplegable de prefacios montado");
 comprobar(!!d.getElementById("ce-verbum"),"desplegable de voces capitales montado");
-comprobar(!!d.getElementById("ce-lupa"),"botón de lupa montado");
+comprobar(!!d.querySelector("#ce-visor-tools #ce-lupa"),"lupa dentro del visor I");
+comprobar(!d.querySelector(".ce-bar #ce-lupa"),"la lupa ya no está en la barra de arriba");
 comprobar(d.querySelectorAll(".ce-split").length===2,"dos divisores de ancho",
   d.querySelectorAll(".ce-split").length+" encontrados");
 comprobar(!!d.querySelector("[data-lexicon-palette]"),"anclaje de la botonera de fondos");
@@ -142,6 +143,29 @@ await new Promise(r=>setTimeout(r,150));
 comprobar(/estimad|Sin asignación/.test(d.getElementById("f-evidence").textContent),"10.16.12: se declara sin asignación material o estimada",
   d.getElementById("f-evidence").textContent.slice(0,60));
 
+console.log("\nHerramientas del visor I");
+const img=d.getElementById("f-image"),wrap=img.closest(".ce-rubrica-wrap");
+d.getElementById("ce-visor-rest").click();
+d.getElementById("ce-zoom-mas").click();d.getElementById("ce-zoom-mas").click();
+comprobar(wrap.style.width==="150%"&&d.getElementById("ce-zoom-val").textContent==="150 %","zoom + dos veces → 150 %",wrap.style.width);
+d.getElementById("ce-zoom-val").click();
+comprobar(wrap.style.width==="100%","pulsar el porcentaje vuelve al 100 %");
+for(let i=0;i<20;i++)d.getElementById("ce-zoom-mas").click();
+comprobar(wrap.style.width==="400%","el zoom no pasa de 400 %",wrap.style.width);
+d.getElementById("ce-invertir").click();
+comprobar(img.style.filter.includes("invert(1)")&&d.getElementById("ce-invertir").getAttribute("aria-pressed")==="true","invertir colores",img.style.filter);
+const c=d.getElementById("ce-contraste");c.value="180";c.dispatchEvent(new w.Event("input"));
+const br=d.getElementById("ce-brillo");br.value="120";br.dispatchEvent(new w.Event("input"));
+comprobar(img.style.filter.includes("contrast(180%)")&&img.style.filter.includes("brightness(120%)"),"contraste y brillo",img.style.filter);
+comprobar(d.querySelector(".ce-lens").style.filter===img.style.filter,"la lupa ve la imagen con los mismos filtros");
+const au=d.getElementById("ce-aumento");au.value="6";au.dispatchEvent(new w.Event("change"));
+comprobar(JSON.parse(w.localStorage.getItem("vdl:concordancia:visor")).aumento===6,"el aumento ×6 queda guardado");
+d.getElementById("ce-visor-rest").click();
+comprobar(img.style.filter==="contrast(100%) brightness(100%)"&&wrap.style.width==="100%","restablecer vuelve todo a cero",img.style.filter);
+d.getElementById("ce-lupa").click();
+comprobar(d.getElementById("f-image-box").classList.contains("ce-lupa-on"),"la lupa se activa");
+d.getElementById("ce-lupa").click();
+
 console.log("\nPantalla partida");
 const ws=d.querySelector(".folio-workspace");
 const div=d.querySelectorAll(".ce-split")[0];
@@ -172,6 +196,7 @@ for(const [lang,titulo,buscar,consultar] of [
   comprobar(c===consultar,`${lang}: botón de cada resultado`,c);
   comprobar(lang==="es"?n.includes("editoriales disponibles"):!n.includes("editoriales disponibles"),`${lang}: línea de recuento`,n.slice(0,60));
 }
+comprobar(["Contraste","Brillo"].every((x,i)=>d.querySelectorAll(".ce-visor-tools label")[i].firstChild.nodeValue===x),"los rótulos del visor vuelven al castellano");
 const rot2=[...d.querySelectorAll(".ce-bar label")].map(l=>[l.firstChild.nodeValue.trim(),l.querySelector("select")?.id]);
 comprobar(JSON.stringify(rot2)===JSON.stringify([["Locus","ce-locus"],["Prefacio","ce-praef"],["Voz capital","ce-verbum"]]),
   "tras cambiar de idioma los rótulos no se corren",JSON.stringify(rot2));

@@ -23,7 +23,7 @@ const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 
 /* ---------- Traducción de la interfaz ---------- */
 const T={
- es:{locus:"Locus",elegirLocus:"Elegir locus…",libro:"Libro",prefacio:"Prefacio",elegirPref:"Elegir prefacio…",verbum:"Voz capital",
+ es:{zoomMenos:"Alejar",zoomMas:"Acercar",zoomRest:"Volver al 100 %",aumento:"Aumento de la lupa",invertir:"Invertir",contraste:"Contraste",brillo:"Brillo",restablecer:"Restablecer",herramientasVisor:"Herramientas del visor",locus:"Locus",elegirLocus:"Elegir locus…",libro:"Libro",prefacio:"Prefacio",elegirPref:"Elegir prefacio…",verbum:"Voz capital",
   elegirVerbum:"Elegir término…",lupa:"Lupa",lupaOn:"Lupa activa",
   pistaPref:"Los diez prefacios del tratado. Nueve tienen la rúbrica verificada sobre el facsímil; el del libro I es todavía provisional.",
   formas:"formas de la misma raíz",libros:"libros",glosario:"Glosario del autor",
@@ -32,7 +32,7 @@ const T={
   rubricaNo:"En este folio no se detectó tinta roja de rúbrica.",
   diplomatica:"Lectura semidiplomática del folio",
   anchos:"Restablecer anchos"},
- en:{locus:"Locus",elegirLocus:"Choose a locus…",libro:"Book",prefacio:"Preface",elegirPref:"Choose a preface…",verbum:"Key term",
+ en:{zoomMenos:"Zoom out",zoomMas:"Zoom in",zoomRest:"Back to 100 %",aumento:"Magnifier power",invertir:"Invert",contraste:"Contrast",brillo:"Brightness",restablecer:"Reset",herramientasVisor:"Viewer tools",locus:"Locus",elegirLocus:"Choose a locus…",libro:"Book",prefacio:"Preface",elegirPref:"Choose a preface…",verbum:"Key term",
   elegirVerbum:"Choose a term…",lupa:"Magnifier",lupaOn:"Magnifier on",
   pistaPref:"The ten prefaces of the treatise. Nine have their rubric verified against the facsimile; Book I's is still provisional.",
   formas:"forms sharing the root",libros:"books",glosario:"Author's glossary",
@@ -41,7 +41,7 @@ const T={
   rubricaNo:"No rubric red ink was detected on this folio.",
   diplomatica:"Semi-diplomatic reading of the folio",
   anchos:"Reset widths"},
- fr:{locus:"Locus",elegirLocus:"Choisir un locus…",libro:"Livre",prefacio:"Préface",elegirPref:"Choisir une préface…",verbum:"Terme capital",
+ fr:{zoomMenos:"Dézoomer",zoomMas:"Zoomer",zoomRest:"Revenir à 100 %",aumento:"Grossissement de la loupe",invertir:"Inverser",contraste:"Contraste",brillo:"Luminosité",restablecer:"Réinitialiser",herramientasVisor:"Outils de la visionneuse",locus:"Locus",elegirLocus:"Choisir un locus…",libro:"Livre",prefacio:"Préface",elegirPref:"Choisir une préface…",verbum:"Terme capital",
   elegirVerbum:"Choisir un terme…",lupa:"Loupe",lupaOn:"Loupe active",
   pistaPref:"Les dix préfaces du traité. Neuf ont leur rubrique vérifiée sur le fac-similé ; celle du livre I reste provisoire.",
   formas:"formes de même racine",libros:"livres",glosario:"Glossaire de l'auteur",
@@ -50,7 +50,7 @@ const T={
   rubricaNo:"Aucune encre rouge de rubrique détectée sur ce folio.",
   diplomatica:"Lecture semi-diplomatique du folio",
   anchos:"Rétablir les largeurs"},
- la:{locus:"Locus",elegirLocus:"Locum elige…",libro:"Liber",prefacio:"Praefatio",elegirPref:"Praefationem elige…",verbum:"Vox capitalis",
+ la:{zoomMenos:"Minuere",zoomMas:"Augere",zoomRest:"Ad centesimam redire",aumento:"Vis vitri",invertir:"Colores invertere",contraste:"Discrimen",brillo:"Lux",restablecer:"Restituere",herramientasVisor:"Instrumenta speculi",locus:"Locus",elegirLocus:"Locum elige…",libro:"Liber",prefacio:"Praefatio",elegirPref:"Praefationem elige…",verbum:"Vox capitalis",
   elegirVerbum:"Vocem elige…",lupa:"Vitrum",lupaOn:"Vitrum adhibetur",
   pistaPref:"Decem praefationes operis. Novem rubricam in imagine comprobatam habent; libri I adhuc provisoria est.",
   formas:"formae eiusdem radicis",libros:"libri",glosario:"Glossarium auctoris",
@@ -159,33 +159,75 @@ function pintarRubricas(){
  if(aviso)aviso.textContent=t("rubricaSi")(reg.rubricas.length);
 }
 
-/* ---------- Lupa ---------- */
+/* ---------- Visor I: lupa, zoom, inversión, contraste, brillo ---------- */
+const CLAVE_VISOR="vdl:concordancia:visor";
+let ajustes={zoom:100,aumento:3,invertir:false,contraste:100,brillo:100};
+try{const g=JSON.parse(localStorage.getItem(CLAVE_VISOR));if(g&&typeof g==="object")ajustes={...ajustes,...g}}catch{}
+const guardarVisor=()=>{try{localStorage.setItem(CLAVE_VISOR,JSON.stringify(ajustes))}catch{}};
+const filtro=()=>`${ajustes.invertir?"invert(1) ":""}contrast(${ajustes.contraste}%) brightness(${ajustes.brillo}%)`;
+function aplicarVisor(){
+ const img=$("f-image"),wrap=img?.closest(".ce-rubrica-wrap");
+ if(img)img.style.filter=filtro();
+ if(wrap)wrap.style.width=ajustes.zoom+"%";
+ const lente=document.querySelector(".ce-lens");if(lente)lente.style.filter=filtro();
+ const z=$("ce-zoom-val");if(z)z.textContent=ajustes.zoom+" %";
+ const inv=$("ce-invertir");if(inv)inv.setAttribute("aria-pressed",String(ajustes.invertir));
+ const c=$("ce-contraste");if(c)c.value=ajustes.contraste;
+ const b=$("ce-brillo");if(b)b.value=ajustes.brillo;
+ const a=$("ce-aumento");if(a)a.value=String(ajustes.aumento);
+}
 function montarLupa(){
  const caja=$("f-image-box"),img=$("f-image");
  if(!caja||!img)return null;
  const lente=el("div",{class:"ce-lens","aria-hidden":"true"});
  caja.append(lente);
- let activa=false;const AUMENTO=3;
+ let activa=false;
  const mover=ev=>{
   if(!activa||!img.src)return;
   const r=img.getBoundingClientRect();
   const x=ev.clientX-r.left,y=ev.clientY-r.top;
   if(x<0||y<0||x>r.width||y>r.height){lente.classList.remove("ce-on");return}
   lente.classList.add("ce-on");
-  const lado=lente.offsetWidth||230;
+  const A=ajustes.aumento,lado=lente.offsetWidth||230;
   const cajaR=caja.getBoundingClientRect();
-  lente.style.left=(ev.clientX-cajaR.left-lado/2)+"px";
-  lente.style.top=(ev.clientY-cajaR.top-lado/2)+"px";
+  lente.style.left=(ev.clientX-cajaR.left+caja.scrollLeft-lado/2)+"px";
+  lente.style.top=(ev.clientY-cajaR.top+caja.scrollTop-lado/2)+"px";
   lente.style.backgroundImage=`url("${img.currentSrc||img.src}")`;
-  lente.style.backgroundSize=(r.width*AUMENTO)+"px "+(r.height*AUMENTO)+"px";
-  lente.style.backgroundPosition=`${-(x*AUMENTO-lado/2)}px ${-(y*AUMENTO-lado/2)}px`;
+  lente.style.backgroundSize=(r.width*A)+"px "+(r.height*A)+"px";
+  lente.style.backgroundPosition=`${-(x*A-lado/2)}px ${-(y*A-lado/2)}px`;
  };
  caja.addEventListener("mousemove",mover);
  caja.addEventListener("mouseleave",()=>lente.classList.remove("ce-on"));
- return {
-  alternar(on){activa=on;if(!on)lente.classList.remove("ce-on")},
-  get activa(){return activa}
- };
+ return {alternar(on){activa=on;caja.classList.toggle("ce-lupa-on",on);if(!on)lente.classList.remove("ce-on")},get activa(){return activa}};
+}
+function montarHerramientasVisor(lupa){
+ const caja=$("f-image-box");if(!caja||$("ce-visor-tools"))return;
+ const b=(id,txt,titulo)=>el("button",{type:"button",id,title:titulo,"aria-label":titulo,text:txt});
+ const menos=b("ce-zoom-menos","−",t("zoomMenos")),mas=b("ce-zoom-mas","+",t("zoomMas"));
+ const val=el("button",{type:"button",id:"ce-zoom-val",title:t("zoomRest"),"aria-label":t("zoomRest"),text:ajustes.zoom+" %"});
+ const btnLupa=el("button",{type:"button",id:"ce-lupa","aria-pressed":"false",text:t("lupa")});
+ const aumento=el("select",{id:"ce-aumento","aria-label":t("aumento"),title:t("aumento")});
+ for(const n of [2,3,4,6])aumento.append(el("option",{value:String(n),text:"×"+n}));
+ const inv=el("button",{type:"button",id:"ce-invertir","aria-pressed":"false",text:t("invertir")});
+ const rango=(id,min,max,clave)=>{const r=el("input",{type:"range",id,min:String(min),max:String(max),step:"5","aria-label":t(clave)});
+  return [el("label",{class:"ce-rango","data-ce-rot":clave},document.createTextNode(t(clave)),r),r]};
+ const [lc,cont]=rango("ce-contraste",50,250,"contraste");
+ const [lb,bri]=rango("ce-brillo",50,200,"brillo");
+ const rest=b("ce-visor-rest",t("restablecer"),t("restablecer"));
+ const barra=el("div",{class:"ce-visor-tools",id:"ce-visor-tools",role:"toolbar","aria-label":t("herramientasVisor")},
+  el("span",{class:"ce-grupo"},menos,val,mas),el("span",{class:"ce-grupo"},btnLupa,aumento),inv,lc,lb,rest);
+ caja.before(barra);
+ const zoom=d=>{ajustes.zoom=Math.max(100,Math.min(400,ajustes.zoom+d));aplicarVisor();guardarVisor()};
+ menos.addEventListener("click",()=>zoom(-25));mas.addEventListener("click",()=>zoom(25));
+ val.addEventListener("click",()=>{ajustes.zoom=100;aplicarVisor();guardarVisor()});
+ btnLupa.addEventListener("click",()=>{const on=btnLupa.getAttribute("aria-pressed")!=="true";
+  btnLupa.setAttribute("aria-pressed",String(on));btnLupa.textContent=on?t("lupaOn"):t("lupa");lupa?.alternar(on)});
+ aumento.addEventListener("change",()=>{ajustes.aumento=+aumento.value;guardarVisor()});
+ inv.addEventListener("click",()=>{ajustes.invertir=!ajustes.invertir;aplicarVisor();guardarVisor()});
+ cont.addEventListener("input",()=>{ajustes.contraste=+cont.value;aplicarVisor();guardarVisor()});
+ bri.addEventListener("input",()=>{ajustes.brillo=+bri.value;aplicarVisor();guardarVisor()});
+ rest.addEventListener("click",()=>{ajustes={zoom:100,aumento:3,invertir:false,contraste:100,brillo:100};aplicarVisor();guardarVisor()});
+ aplicarVisor();
 }
 
 /* ---------- Anchos repartibles ---------- */
@@ -304,12 +346,10 @@ async function init(){
  const selLocus=el("select",{id:"ce-locus"});
  const selPref=el("select",{id:"ce-praef"});
  const selVoz=el("select",{id:"ce-verbum"});
- const btnLupa=el("button",{type:"button",id:"ce-lupa","aria-pressed":"false",text:t("lupa")});
  barra.append(
   el("label",{for:"ce-locus","data-ce-rot":"locus"},document.createTextNode(t("locus")),selLocus),
   el("label",{for:"ce-praef","data-ce-rot":"prefacio"},document.createTextNode(t("prefacio")),selPref),
   el("label",{for:"ce-verbum","data-ce-rot":"verbum"},document.createTextNode(t("verbum")),selVoz),
-  btnLupa,
   el("p",{class:"ce-hint",id:"ce-rubrica-nota"}));
  document.querySelector(".folio-workspace").before(barra);
  const notaVoz=el("p",{class:"ce-hint",id:"ce-verbum-nota"});
@@ -321,12 +361,7 @@ async function init(){
  // La lectura semidiplomática se coloca bajo la imagen, en su propio panel.
  $("f-image-box")?.after(el("pre",{class:"ce-diplomatica",id:"ce-diplomatica",hidden:"hidden"}));
 
- btnLupa.addEventListener("click",()=>{
-  const on=btnLupa.getAttribute("aria-pressed")!=="true";
-  btnLupa.setAttribute("aria-pressed",String(on));
-  btnLupa.textContent=on?t("lupaOn"):t("lupa");
-  lupa?.alternar(on);
- });
+ montarHerramientasVisor(lupa);
 
  // Datos: cada uno es opcional, y su ausencia no debe tumbar el resto.
  const [m,v,d,li]=await Promise.allSettled([
@@ -388,7 +423,7 @@ async function init(){
  try{await window.CodexRubrica?.cargar()}catch(e){
   const n=$("ce-rubrica-nota");if(n)n.textContent="No se pudo cargar la detección de rúbricas ("+e.message+").";
  }
- const refrescar=()=>{pintarRubricas();pintarDiplomatica();aplicarVoz()};
+ const refrescar=()=>{pintarRubricas();pintarDiplomatica();aplicarVoz();aplicarVisor()};
  refrescar();
  $("f-folio").addEventListener("change",()=>setTimeout(refrescar,0));
  document.addEventListener("concordancia:render",ev=>{
@@ -438,6 +473,10 @@ function traducirPagina(){
 function traducir(){
  idioma=idiomaActual();
  traducirPagina();
+ for(const r of document.querySelectorAll(".ce-visor-tools label[data-ce-rot]"))
+  if(r.firstChild)r.firstChild.nodeValue=t(r.getAttribute("data-ce-rot"));
+ for(const [id,k] of [["ce-invertir","invertir"],["ce-visor-rest","restablecer"]]){const n=$(id);if(n)n.textContent=t(k)}
+ for(const [id,k] of [["ce-zoom-menos","zoomMenos"],["ce-zoom-mas","zoomMas"],["ce-zoom-val","zoomRest"],["ce-aumento","aumento"]]){const n=$(id);if(n){n.title=t(k);n.setAttribute("aria-label",t(k))}}
  for(const r of document.querySelectorAll(".ce-bar label[data-ce-rot]"))
   if(r.firstChild)r.firstChild.nodeValue=t(r.getAttribute("data-ce-rot"));
  const pl=$("ce-locus");
