@@ -42,7 +42,7 @@ html[data-theme="dark"] .apa-filters :is(input,select){background:#242b31!import
 <h2>Consultar notas originales</h2>
 <div class="apa-filters">
 <label>Texto en nota, título o contexto<input id="apa-query" type="search" placeholder="fabrica, ratiocinatio, symmetria..." autocomplete="off"></label>
-<label>Locus de Vitruvio<input id="apa-locus" type="search" placeholder="I.2.1 · 3.praef.2 · 10.4" autocomplete="off" aria-label="Filtrar por libro capítulo o párrafo"></label>
+<label>Locus de Vitruvio<select id="apa-locus" aria-label="Elegir locus de Vitruvio"><option value="">Cargando los 731 loci…</option></select></label>
 <label>Edición<select id="apa-edition"><option value="">Todas las ediciones</option><option value="recensio-es">V514 · Castellano</option><option value="recensio-fr">V554 · Francés</option><option value="theory-en">V297 · Inglés</option></select></label>
 <label>Vinculación con pasaje<select id="apa-link"><option value="">Todos los estados</option><option value="explicit_in_anchor">Locus explícito en contexto</option><option value="candidate">Locus candidato reconocido (por revisar)</option><option value="noncanonical">Locus candidato fuera del índice canónico</option><option value="unmapped">Sin locus propuesto</option></select></label>
 <label>Referencia citada<select id="apa-reference"><option value="">Todas las referencias</option><option value="krohn">Krohn</option><option value="rose">Rose</option><option value="bude">Budé</option><option value="codex-h">Codex H / Harley</option></select></label>
@@ -60,6 +60,6 @@ html[data-theme="dark"] .apa-filters :is(input,select){background:#242b31!import
 <p>Fuentes bibliográficas de las ediciones: <a href="documents/edicion-v514.html">V514</a> · <a href="documents/edicion-v554.html">V554</a> · <a href="documents/edicion-v297.html">V297</a>. Las notas conservan el nombre y el ordinal del párrafo de su archivo de origen. La referencia numérica al párrafo corresponde a la extracción informática y no sustituye una paginación editorial estable.</p>
 </section>
 </main>
-<script defer src="assets/inventario-aparato-autoral.js?v=20261112-search-highlight-v1"></script>
+<script defer src="assets/inventario-aparato-autoral.js?v=20261112-locus-selector-v2"></script>
 <script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script>
 <script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></body></html>
