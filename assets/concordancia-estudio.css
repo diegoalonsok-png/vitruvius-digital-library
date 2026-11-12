@@ -155,3 +155,25 @@ html[data-theme=light] .ce-visor-tools{background:#eceae6;border-color:#d4d2cd;c
 .ce-rango input{width:96px;accent-color:#c9a24a}
 .folio-image.ce-lupa-on{cursor:crosshair}
 .folio-image .ce-rubrica-wrap{max-width:none}
+
+/* ===== Voz capital: subrayado en el facsímil y recuadro de definición ===== */
+.ce-verbum-mark{position:absolute;background:rgba(255,214,0,.48);mix-blend-mode:multiply;border-radius:3px;
+ box-shadow:0 0 0 2px rgba(214,160,0,.75);animation:ce-latido 1.6s ease-out 1}
+@keyframes ce-latido{0%{box-shadow:0 0 0 10px rgba(255,214,0,.0)}30%{box-shadow:0 0 0 6px rgba(255,214,0,.6)}100%{box-shadow:0 0 0 2px rgba(214,160,0,.75)}}
+.folio-paragraphs mark.ce-verbum{background:rgba(255,214,0,.85);color:#1a1409;border-radius:3px;padding:0 2px;box-shadow:none}
+.ce-verbum-panel{flex:1 1 100%;order:10;margin-top:4px;padding:12px 14px;border-top:1px solid #2c2e33;
+ font:13px/1.6 system-ui,sans-serif;color:#cfccc5}
+.ce-verbum-panel[hidden]{display:none}
+.ce-oc-nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+.ce-oc-btn{min-height:34px!important;min-width:40px;padding:0 10px!important}
+.ce-oc-pos{font:600 14px Georgia,serif;color:#f2efe9}
+.ce-oc-cuenta{color:#a9a6a0;font-size:12px}
+.ce-oc-def{margin:0;max-width:110ch}
+.ce-oc-def b{color:#f2efe9}
+.ce-oc-def .ce-pag{color:#c9a24a}
+html[data-theme=light] .ce-verbum-panel{color:#26282b;border-color:#d4d2cd}
+html[data-theme=light] :is(.ce-oc-pos,.ce-oc-def b){color:#111}
+/* Un solo control de idioma y uno de tema: cuando llega la caja común de
+   idioma y tema, se ocultan los que montan por su cuenta theme.js y
+   global-language.js en la misma botonera. */
+.ce-tools:has(#vitruvius-secondary-toolbar) :is(.site-global-language,.theme-switch){display:none!important}

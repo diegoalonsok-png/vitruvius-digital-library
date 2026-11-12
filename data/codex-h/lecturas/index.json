@@ -2,6 +2,41 @@
  "schema": "lecturas-index/1",
  "nota": "Folios de H leídos sobre la imagen y loci que contienen según el cotejo con V514.",
  "folios": {
+  "1r": {
+   "imagen": 9,
+   "loci": [
+    "1.praef.1",
+    "1.praef.2"
+   ],
+   "entrada": {
+    "locus": "1.praef.1",
+    "palabra": "cum"
+   },
+   "salida": {
+    "locus": "1.praef.2",
+    "palabra": "eis"
+   },
+   "coincidencia": 0.918,
+   "renglones": 27
+  },
+  "7r": {
+   "imagen": 21,
+   "loci": [
+    "1.2.3",
+    "1.2.4",
+    "1.2.5"
+   ],
+   "entrada": {
+    "locus": "1.2.3",
+    "palabra": "symmetriae"
+   },
+   "salida": {
+    "locus": "1.2.5",
+    "palabra": "iunoni"
+   },
+   "coincidencia": 0.898,
+   "renglones": 26
+  },
   "9v": {
    "imagen": 26,
    "loci": [
@@ -18,7 +53,8 @@
     "locus": "1.4.5",
     "palabra": "principiis"
    },
-   "coincidencia": 0.927
+   "coincidencia": 0.927,
+   "renglones": 26
   }
  }
 }

@@ -23,7 +23,7 @@ const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 
 /* ---------- Traducción de la interfaz ---------- */
 const T={
- es:{zoomMenos:"Alejar",zoomMas:"Acercar",zoomRest:"Volver al 100 %",aumento:"Aumento de la lupa",invertir:"Invertir",contraste:"Contraste",brillo:"Brillo",restablecer:"Restablecer",herramientasVisor:"Herramientas del visor",locus:"Locus",elegirLocus:"Elegir locus…",libro:"Libro",prefacio:"Prefacio",elegirPref:"Elegir prefacio…",verbum:"Voz capital",
+ es:{anterior:"Ocurrencia anterior",siguiente:"Ocurrencia siguiente",latin:"latín",traduccion:"traducción",enFacsimil:"en el facsímil",noEnFolio:"no figura en la lectura de este folio",sinLectura:"facsímil: folio sin lectura todavía",zoomMenos:"Alejar",zoomMas:"Acercar",zoomRest:"Volver al 100 %",aumento:"Aumento de la lupa",invertir:"Invertir",contraste:"Contraste",brillo:"Brillo",restablecer:"Restablecer",herramientasVisor:"Herramientas del visor",locus:"Locus",elegirLocus:"Elegir locus…",libro:"Libro",prefacio:"Prefacio",elegirPref:"Elegir prefacio…",verbum:"Voz capital",
   elegirVerbum:"Elegir término…",lupa:"Lupa",lupaOn:"Lupa activa",
   pistaPref:"Los diez prefacios del tratado. Nueve tienen la rúbrica verificada sobre el facsímil; el del libro I es todavía provisional.",
   formas:"formas de la misma raíz",libros:"libros",glosario:"Glosario del autor",
@@ -32,7 +32,7 @@ const T={
   rubricaNo:"En este folio no se detectó tinta roja de rúbrica.",
   diplomatica:"Lectura semidiplomática del folio",
   anchos:"Restablecer anchos"},
- en:{zoomMenos:"Zoom out",zoomMas:"Zoom in",zoomRest:"Back to 100 %",aumento:"Magnifier power",invertir:"Invert",contraste:"Contrast",brillo:"Brightness",restablecer:"Reset",herramientasVisor:"Viewer tools",locus:"Locus",elegirLocus:"Choose a locus…",libro:"Book",prefacio:"Preface",elegirPref:"Choose a preface…",verbum:"Key term",
+ en:{anterior:"Previous occurrence",siguiente:"Next occurrence",latin:"Latin",traduccion:"translation",enFacsimil:"on the facsimile",noEnFolio:"not in this folio's reading",sinLectura:"facsimile: folio not yet read",zoomMenos:"Zoom out",zoomMas:"Zoom in",zoomRest:"Back to 100 %",aumento:"Magnifier power",invertir:"Invert",contraste:"Contrast",brillo:"Brightness",restablecer:"Reset",herramientasVisor:"Viewer tools",locus:"Locus",elegirLocus:"Choose a locus…",libro:"Book",prefacio:"Preface",elegirPref:"Choose a preface…",verbum:"Key term",
   elegirVerbum:"Choose a term…",lupa:"Magnifier",lupaOn:"Magnifier on",
   pistaPref:"The ten prefaces of the treatise. Nine have their rubric verified against the facsimile; Book I's is still provisional.",
   formas:"forms sharing the root",libros:"books",glosario:"Author's glossary",
@@ -41,7 +41,7 @@ const T={
   rubricaNo:"No rubric red ink was detected on this folio.",
   diplomatica:"Semi-diplomatic reading of the folio",
   anchos:"Reset widths"},
- fr:{zoomMenos:"Dézoomer",zoomMas:"Zoomer",zoomRest:"Revenir à 100 %",aumento:"Grossissement de la loupe",invertir:"Inverser",contraste:"Contraste",brillo:"Luminosité",restablecer:"Réinitialiser",herramientasVisor:"Outils de la visionneuse",locus:"Locus",elegirLocus:"Choisir un locus…",libro:"Livre",prefacio:"Préface",elegirPref:"Choisir une préface…",verbum:"Terme capital",
+ fr:{anterior:"Occurrence précédente",siguiente:"Occurrence suivante",latin:"latin",traduccion:"traduction",enFacsimil:"sur le fac-similé",noEnFolio:"absent de la lecture de ce folio",sinLectura:"fac-similé : folio pas encore lu",zoomMenos:"Dézoomer",zoomMas:"Zoomer",zoomRest:"Revenir à 100 %",aumento:"Grossissement de la loupe",invertir:"Inverser",contraste:"Contraste",brillo:"Luminosité",restablecer:"Réinitialiser",herramientasVisor:"Outils de la visionneuse",locus:"Locus",elegirLocus:"Choisir un locus…",libro:"Livre",prefacio:"Préface",elegirPref:"Choisir une préface…",verbum:"Terme capital",
   elegirVerbum:"Choisir un terme…",lupa:"Loupe",lupaOn:"Loupe active",
   pistaPref:"Les dix préfaces du traité. Neuf ont leur rubrique vérifiée sur le fac-similé ; celle du livre I reste provisoire.",
   formas:"formes de même racine",libros:"livres",glosario:"Glossaire de l'auteur",
@@ -50,7 +50,7 @@ const T={
   rubricaNo:"Aucune encre rouge de rubrique détectée sur ce folio.",
   diplomatica:"Lecture semi-diplomatique du folio",
   anchos:"Rétablir les largeurs"},
- la:{zoomMenos:"Minuere",zoomMas:"Augere",zoomRest:"Ad centesimam redire",aumento:"Vis vitri",invertir:"Colores invertere",contraste:"Discrimen",brillo:"Lux",restablecer:"Restituere",herramientasVisor:"Instrumenta speculi",locus:"Locus",elegirLocus:"Locum elige…",libro:"Liber",prefacio:"Praefatio",elegirPref:"Praefationem elige…",verbum:"Vox capitalis",
+ la:{anterior:"Locus prior",siguiente:"Locus sequens",latin:"Latine",traduccion:"translatio",enFacsimil:"in imagine",noEnFolio:"in lectione huius folii deest",sinLectura:"imago: folium nondum lectum",zoomMenos:"Minuere",zoomMas:"Augere",zoomRest:"Ad centesimam redire",aumento:"Vis vitri",invertir:"Colores invertere",contraste:"Discrimen",brillo:"Lux",restablecer:"Restituere",herramientasVisor:"Instrumenta speculi",locus:"Locus",elegirLocus:"Locum elige…",libro:"Liber",prefacio:"Praefatio",elegirPref:"Praefationem elige…",verbum:"Vox capitalis",
   elegirVerbum:"Vocem elige…",lupa:"Vitrum",lupaOn:"Vitrum adhibetur",
   pistaPref:"Decem praefationes operis. Novem rubricam in imagine comprobatam habent; libri I adhuc provisoria est.",
   formas:"formae eiusdem radicis",libros:"libri",glosario:"Glossarium auctoris",
@@ -83,17 +83,18 @@ function prefaciosDelMapa(m){
 // La raíz se compara con tolerancia i/j y u/v, como el resto del sitio, pero
 // sobre el texto tal cual se muestra: se construye una clase por carácter en
 // lugar de plegar la cadena, para no perder la correspondencia de posiciones.
-function patron(raiz){
- const partes=[...raiz].map(c=>c==="i"||c==="j"?"[ij]":c==="u"||c==="v"?"[uv]":
-  c.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"));
- return new RegExp("\\b"+partes.join("")+"[a-zA-ZÀ-ÿ]*","gi");
+const CLASES={a:"[aàáâäã]",e:"[eèéêë]",i:"[iíìîïj]",j:"[iíìîïj]",o:"[oóòôöõ]",u:"[uúùûüv]",v:"[uúùûüv]",c:"[cç]",n:"[nñ]"};
+function patron(raices){
+ const lista=(Array.isArray(raices)?raices:[raices]).filter(Boolean);
+ const alt=lista.map(r=>[...r].map(c=>CLASES[c]||c.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join(""));
+ return new RegExp("(?<![A-Za-zÀ-ÿ])(?:"+alt.join("|")+")[A-Za-zÀ-ÿ]*","gi");
 }
-function resaltar(caja,raiz){
+function resaltar(caja,raiz){ /* raiz: una raíz o lista de raíces */
  if(!caja)return 0;
  for(const m of caja.querySelectorAll("mark.ce-verbum")){
   const p=m.parentNode;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize();
  }
- if(!raiz)return 0;
+ if(!raiz||(Array.isArray(raiz)&&!raiz.length))return 0;
  const re=patron(raiz);let n=0;
  const andador=document.createTreeWalker(caja,NodeFilter.SHOW_TEXT);
  const textos=[];for(let x=andador.nextNode();x;x=andador.nextNode())textos.push(x);
@@ -112,19 +113,79 @@ function resaltar(caja,raiz){
  }
  return n;
 }
+let ocIdx=0,indiceLecturas={};
+const plegarL=x=>String(x||"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
+function ocurrencias(){return vozActual?.ocurrencias||[]}
+function equivalentes(){
+ const lang=$("f-lang")?.value||"es";
+ return (vozActual?.equivalentes?.[lang]||[]).map(x=>x.raiz||x);
+}
+/* Subrayado en el facsímil: sólo en folios leídos, sobre el renglón donde la
+   lectura sitúa la forma; la posición dentro del renglón es proporcional al
+   número de letras, por tanto aproximada. */
+function marcarFacsimil(){
+ if(!capa)return 0;
+ for(const m of capa.querySelectorAll(".ce-verbum-mark"))m.remove();
+ const folio=folioMostrado(),lect=folio&&lecturas[folio];
+ if(!vozActual||!lect||!lect.lineas?.length)return 0;
+ const re=new RegExp("(?<![a-z])"+vozActual.raiz+"[a-z]*","g");let n=0;
+ lect.lines.forEach((linea,i)=>{
+  const caja=lect.lineas[i];if(!caja)return;
+  const t=plegarL(linea),L=t.length||1;let g;re.lastIndex=0;
+  while((g=re.exec(t))){
+   const x=caja.x+caja.w*(g.index/L),w=Math.max(caja.w*(g[0].length/L),0.03);
+   capa.append(el("span",{class:"ce-verbum-mark",title:g[0]+" · renglón "+(i+1),style:
+    `left:${((x-0.006)*100).toFixed(2)}%;top:${(caja.y*100).toFixed(2)}%;width:${((w+0.012)*100).toFixed(2)}%;height:${(caja.h*100).toFixed(2)}%`}));
+   n++;
+  }
+ });
+ return n;
+}
+let observadorLatin=null;
 function aplicarVoz(){
- const n=resaltar($("f-latin"),vozActual?.raiz);
+ observadorLatin?.disconnect();
+ const nLat=resaltar($("f-latin"),vozActual?.raiz);
+ const nTra=resaltar($("f-translation"),vozActual?equivalentes():null);
+ if(observadorLatin){observadorLatin.takeRecords();observadorLatin.observe($("f-latin"),{childList:true,subtree:true})}
+ const nFac=marcarFacsimil();
  const aviso=$("ce-verbum-nota");
  if(!aviso)return;
- if(!vozActual){aviso.textContent="";return}
+ if(!vozActual){aviso.replaceChildren();aviso.hidden=true;return}
+ aviso.hidden=false;
+ const oc=ocurrencias(),locus=$("ce-locus")?.value||"";
+ const k=oc.findIndex(o=>o.locus===locus);if(k>=0)ocIdx=k;
  const d=vozActual.definiciones?.[idioma]||vozActual.definiciones?.es||null;
+ const prev=el("button",{type:"button",class:"ce-oc-btn","aria-label":t("anterior"),title:t("anterior"),text:"◀"});
+ const next=el("button",{type:"button",class:"ce-oc-btn","aria-label":t("siguiente"),title:t("siguiente"),text:"▶"});
+ prev.addEventListener("click",()=>irOcurrencia(ocIdx-1));next.addEventListener("click",()=>irOcurrencia(ocIdx+1));
+ const lect=lecturas[folioMostrado()];
+ const fac=lect?.lineas?.length?(nFac?`${nFac} ${t("enFacsimil")}`:t("noEnFolio")):t("sinLectura");
+ const equiv=equivalentes();
  aviso.replaceChildren(
-  el("b",{text:vozActual.lemma+(vozActual.graecum?.length?" · "+vozActual.graecum.join(", "):"")}),
-  document.createTextNode(` ${vozActual.formas} ${t("formas")} · ${vozActual.libros.length} ${t("libros")} (${vozActual.libros.map(b=>R[b]||b).join(", ")})`
-   +` · ${n} en este folio. `),
-  d?el("span",{text:d.texto}):el("i",{text:t("sinDef")}),
-  d?.pagina?el("a",{href:d.pdf||"#",class:"ce-pag"},document.createTextNode(` · ${d.version||""} ${t("pagina")} ${d.pagina}`)):null
- );
+  el("div",{class:"ce-oc-nav"},prev,
+   el("span",{class:"ce-oc-pos",text:`${k>=0?k+1:"–"} / ${oc.length} · ${locus||"—"}`}),next,
+   el("span",{class:"ce-oc-cuenta",text:`${t("latin")} ${nLat} · ${t("traduccion")} ${nTra}${equiv.length?" ("+equiv.map(r=>r+"…").join(", ")+")":""} · ${fac}`})),
+  el("p",{class:"ce-oc-def"},
+   el("b",{text:vozActual.lemma+(vozActual.graecum?.length?" · "+vozActual.graecum.join(", "):"")}),
+   document.createTextNode(` ${vozActual.formas} ${t("formas")} · ${vozActual.libros.length} ${t("libros")} (${vozActual.libros.map(b=>R[b]||b).join(", ")}). `),
+   d?el("span",{text:d.texto}):el("i",{text:t("sinDef")}),
+   d?.pagina?el("a",{href:d.pdf||"#",class:"ce-pag",target:"_blank",rel:"noopener"},document.createTextNode(` · ${d.version||""} ${t("pagina")} ${d.pagina}`)):null));
+}
+function irOcurrencia(i){
+ const oc=ocurrencias();if(!oc.length)return;
+ ocIdx=(i+oc.length)%oc.length;
+ document.dispatchEvent(new CustomEvent("concordancia:ir-a-locus",{detail:{locus:oc[ocIdx].locus}}));
+}
+/* Al elegir la voz: si el pasaje en pantalla ya la contiene, se queda; si no,
+   va a la primera ocurrencia, prefiriendo un folio leído (donde también se
+   subraya en el facsímil). */
+function buscarVoz(){
+ const oc=ocurrencias();if(!oc.length){aplicarVoz();return}
+ const enPantalla=oc.findIndex(o=>o.locus===($("ce-locus")?.value||""));
+ if(enPantalla>=0||resaltar($("f-latin"),vozActual.raiz)>0){aplicarVoz();return}
+ const leidos=new Set(Object.values(indiceLecturas).flatMap(f=>f.loci||[]));
+ const pref=oc.findIndex(o=>leidos.has(o.locus));
+ irOcurrencia(pref>=0?pref:0);
 }
 
 /* ---------- Subrayado de rúbricas sobre el facsímil ---------- */
@@ -286,7 +347,7 @@ function pintarDiplomatica(){
  const fuente=lect||(diplomatica&&diplomatica.folio===folio?diplomatica:null);
  if(!fuente){destino.hidden=true;
   if(folio&&!(folio in lecturas)){lecturas[folio]=null;
-   json("data/codex-h/lecturas/"+folio+".json").then(j=>{lecturas[folio]=j;pintarDiplomatica()}).catch(()=>{})}
+   json("data/codex-h/lecturas/"+folio+".json").then(j=>{lecturas[folio]=j;pintarDiplomatica();aplicarVoz()}).catch(()=>{})}
   return}
  pintarLectura(destino,fuente);
 }
@@ -352,7 +413,7 @@ async function init(){
   el("label",{for:"ce-verbum","data-ce-rot":"verbum"},document.createTextNode(t("verbum")),selVoz),
   el("p",{class:"ce-hint",id:"ce-rubrica-nota"}));
  document.querySelector(".folio-workspace").before(barra);
- const notaVoz=el("p",{class:"ce-hint",id:"ce-verbum-nota"});
+ const notaVoz=el("div",{class:"ce-verbum-panel",id:"ce-verbum-nota",hidden:"hidden"});
  barra.append(notaVoz);
  if(restablecer){
   const b=el("button",{type:"button",text:t("anchos")});
@@ -387,6 +448,7 @@ async function init(){
     text:(voz.parsArchitecturae?"◆ ":"")+voz.lemma.toLowerCase()+" ("+voz.formas+")"}));
  }
  if(d.status==="fulfilled")diplomatica=d.value;
+ try{indiceLecturas=(await json("data/codex-h/lecturas/index.json")).folios||{}}catch{indiceLecturas={}}
  // Los 731 loci, agrupados por libro: se hojean, no se escriben.
  if(li.status==="fulfilled"){
   const lista=li.value.loci||li.value.entries||li.value||[];
@@ -417,7 +479,8 @@ async function init(){
  });
  selVoz.addEventListener("change",()=>{
   vozActual=(verba?.voces||[]).find(x=>x.clave===selVoz.value)||null;
-  aplicarVoz();
+  ocIdx=0;
+  if(vozActual)buscarVoz();else aplicarVoz();
  });
 
  try{await window.CodexRubrica?.cargar()}catch(e){
@@ -434,11 +497,15 @@ async function init(){
  });
  // Los paneles los repinta la página al cambiar de locus o de idioma: se
  // observa el latín para volver a aplicar el resalte sobre el texto nuevo.
+ // La página repinta el latín al cambiar de locus o de lengua: se vuelve a
+ // subrayar. Mientras se subraya, el observador se desconecta; si no, el
+ // propio subrayado lo dispararía otra vez en bucle.
  const latino=$("f-latin");
  if(latino&&window.MutationObserver){
-  let propio=false;
-  new MutationObserver(()=>{if(propio)return;propio=true;
-   setTimeout(()=>{aplicarVoz();propio=false},0)}).observe(latino,{childList:true,subtree:true});
+  let pendiente=false;
+  observadorLatin=new MutationObserver(()=>{if(pendiente)return;pendiente=true;
+   setTimeout(()=>{pendiente=false;aplicarVoz()},0)});
+  observadorLatin.observe(latino,{childList:true,subtree:true});
  }
  await cargarI18n();
  document.addEventListener("vitruvius:language-changed",()=>setTimeout(traducir,0));

@@ -177,6 +177,18 @@ comprobar(antes!==despues,"el divisor reparte el ancho",despues);
 div.dispatchEvent(new w.MouseEvent("dblclick",{bubbles:true}));
 comprobar(ws.style.getPropertyValue("--ce-cols")===antes,"doble clic restablece los anchos");
 
+console.log("\nVoz capital: elegirla lleva al pasaje y subraya en los tres visores");
+selVoz.value="symmetria";selVoz.dispatchEvent(new w.Event("change",{bubbles:true}));
+await new Promise(r=>setTimeout(r,500));
+comprobar(d.getElementById("ce-locus").value==="1.2.3","symmetria lleva a 1.2.3 (folio leído f.7r)",d.getElementById("ce-locus").value);
+comprobar(d.querySelectorAll("#f-latin mark.ce-verbum").length>=1,"subrayada en el latín");
+comprobar(d.querySelectorAll("#f-translation mark.ce-verbum").length>=1,"subrayada en la traducción (conmensurabilidad)",
+  d.querySelector("#f-translation mark.ce-verbum")?.textContent);
+comprobar(d.querySelectorAll(".ce-verbum-mark").length===3,"tres subrayados en el facsímil de f.7r",d.querySelectorAll(".ce-verbum-mark").length+"");
+[...d.querySelectorAll(".ce-oc-btn")].at(-1).click();await new Promise(r=>setTimeout(r,400));
+comprobar(d.getElementById("ce-locus").value==="1.2.4","▶ pasa a la ocurrencia siguiente (1.2.4)",d.getElementById("ce-locus").value);
+selVoz.value="";selVoz.dispatchEvent(new w.Event("change",{bubbles:true}));await new Promise(r=>setTimeout(r,100));
+
 console.log("\nCambio de idioma: se traduce la interfaz, no los visores");
 const latinAntes=d.getElementById("f-latin").textContent;
 const tradAntes=d.getElementById("f-translation").textContent;

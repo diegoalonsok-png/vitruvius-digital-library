@@ -3,7 +3,7 @@
  "folio": "9v",
  "digital_image": 26,
  "status": "Lectura semidiplomática por inspección de la imagen; no transcripción diplomática verificada",
- "method": "Lectura de la imagen digital línea por línea. & = et (también como sílaba: perp&uo); q; = que; las abreviaturas se resuelven entre paréntesis. Cortes de línea conservados. Cotejo automático con V514 por scripts/cotejar-lectura-folio.py.",
+ "method": "Lectura de la imagen digital línea por línea. & = et (también como sílaba); q; = que; abreviaturas resueltas sin marcar. Cortes de línea conservados. Cotejo automático con V514 (scripts/cotejar-lectura-folio.py); renglones localizados sobre la imagen por perfil de tinta (scripts/detect-lineas-folio.py).",
  "rubric_lines": 0,
  "lines": [
   "firma perp&uo & inmutabilis · Ideo etiam & granaria",
@@ -125,5 +125,163 @@
    "locus": "1.4.5"
   }
  ],
- "aviso": "Una discrepancia con V514 no es todavía una variante: puede ser error de lectura. Se publica para revisión sobre la imagen."
+ "aviso": "Una discrepancia con V514 no es todavía una variante: puede ser error de lectura. Se publica para revisión sobre la imagen.",
+ "lineas": [
+  {
+   "y": 0.1037,
+   "h": 0.0326,
+   "x": 0.3275,
+   "w": 0.5787
+  },
+  {
+   "y": 0.1362,
+   "h": 0.0286,
+   "x": 0.335,
+   "w": 0.5737
+  },
+  {
+   "y": 0.1649,
+   "h": 0.0267,
+   "x": 0.335,
+   "w": 0.5687
+  },
+  {
+   "y": 0.1915,
+   "h": 0.0276,
+   "x": 0.335,
+   "w": 0.5138
+  },
+  {
+   "y": 0.2192,
+   "h": 0.0267,
+   "x": 0.315,
+   "w": 0.58
+  },
+  {
+   "y": 0.2458,
+   "h": 0.0237,
+   "x": 0.3362,
+   "w": 0.5513
+  },
+  {
+   "y": 0.2695,
+   "h": 0.0267,
+   "x": 0.3375,
+   "w": 0.57
+  },
+  {
+   "y": 0.2962,
+   "h": 0.0276,
+   "x": 0.3337,
+   "w": 0.5387
+  },
+  {
+   "y": 0.3238,
+   "h": 0.0267,
+   "x": 0.3337,
+   "w": 0.535
+  },
+  {
+   "y": 0.3504,
+   "h": 0.0267,
+   "x": 0.335,
+   "w": 0.5337
+  },
+  {
+   "y": 0.3771,
+   "h": 0.0276,
+   "x": 0.3362,
+   "w": 0.55
+  },
+  {
+   "y": 0.4047,
+   "h": 0.0286,
+   "x": 0.3375,
+   "w": 0.5613
+  },
+  {
+   "y": 0.4334,
+   "h": 0.0296,
+   "x": 0.33,
+   "w": 0.5687
+  },
+  {
+   "y": 0.463,
+   "h": 0.0286,
+   "x": 0.3175,
+   "w": 0.5813
+  },
+  {
+   "y": 0.4916,
+   "h": 0.0257,
+   "x": 0.3312,
+   "w": 0.56
+  },
+  {
+   "y": 0.5173,
+   "h": 0.0276,
+   "x": 0.0912,
+   "w": 0.8037
+  },
+  {
+   "y": 0.5449,
+   "h": 0.0267,
+   "x": 0.3275,
+   "w": 0.575
+  },
+  {
+   "y": 0.5716,
+   "h": 0.0267,
+   "x": 0.335,
+   "w": 0.5737
+  },
+  {
+   "y": 0.5982,
+   "h": 0.0267,
+   "x": 0.3113,
+   "w": 0.59
+  },
+  {
+   "y": 0.6249,
+   "h": 0.0276,
+   "x": 0.3312,
+   "w": 0.5775
+  },
+  {
+   "y": 0.6525,
+   "h": 0.0267,
+   "x": 0.2612,
+   "w": 0.6275
+  },
+  {
+   "y": 0.6792,
+   "h": 0.0267,
+   "x": 0.095,
+   "w": 0.8137
+  },
+  {
+   "y": 0.7058,
+   "h": 0.0296,
+   "x": 0.0887,
+   "w": 0.7562
+  },
+  {
+   "y": 0.7354,
+   "h": 0.0286,
+   "x": 0.0887,
+   "w": 0.8163
+  },
+  {
+   "y": 0.7641,
+   "h": 0.0286,
+   "x": 0.09,
+   "w": 0.8075
+  },
+  {
+   "y": 0.7927,
+   "h": 0.0326,
+   "x": 0.09,
+   "w": 0.82
+  }
+ ]
 }

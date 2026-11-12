@@ -156,3 +156,84 @@ for v in salida[:18]:
     marca = "*" if v["parsArchitecturae"] else " "
     var = (" <- " + ", ".join(v["variantesDelGlosario"])) if v.get("variantesDelGlosario") else ""
     print(f" {marca}{v['lemma']:<15} formas={v['formas']:<5} libros={len(v['libros'])}{var}")
+
+# ---------------------------------------------------------------------------
+# Segunda pasada: ocurrencias en orden del texto y equivalentes de traducción.
+#
+# Para subrayar la voz también en la traducción hay que saber cómo la traduce
+# el autor en cada edición. No se adivina: se mide. Para cada lengua se toma la
+# raíz (seis letras plegadas) que más se concentra en los pasajes donde el latín
+# trae la voz frente al resto del tratado, y sólo se acepta si aparece en la
+# mitad o más de esos pasajes. Si ninguna cumple, no hay equivalente declarado.
+# ---------------------------------------------------------------------------
+import math
+EDICIONES = {"es": "data/structured/recensio-es.json",
+             "en": "data/structured/theory-en.json",
+             "fr": "data/structured/recensio-fr.json"}
+VACIAS = set("""que los las del por para con una uno como esta este estos estas sus
+the and that which with this from they their them these those have been were
+les des par pour une dans qui que est sont avec cette ces aux leur""".split())
+
+def raices_traduccion(texto):
+    out = set()
+    for w in re.findall(r"[A-Za-zÀ-ÿ]+", texto or ""):
+        p = plegar(w)
+        if len(p) >= 5 and p not in VACIAS:
+            out.add(p[:6])
+    return out
+
+trad = {}
+for lang, ruta in EDICIONES.items():
+    try:
+        ps = json.load(open(RAIZ + ruta)).get("passages", [])
+    except Exception:
+        ps = []
+    trad[lang] = {p["locus"]: raices_traduccion(p.get("translation", "")) for p in ps}
+
+orden = [p["locus"] for p in pasajes]
+for v in doc["voces"]:
+    con = []
+    for p in pasajes:
+        n = sum(1 for b in re.findall(r"[A-Za-zÀ-ÿ]+", p.get("latin", "")) if plegar(b).startswith(v["raiz"]))
+        if n:
+            con.append({"locus": p["locus"], "n": n})
+    v["ocurrencias"] = con
+    v.pop("lociPrincipales", None)
+    loci_con = {c["locus"] for c in con}
+    v["equivalentes"] = {}
+    for lang, mapa in trad.items():
+        dentro = [mapa[l] for l in loci_con if l in mapa]
+        fuera = [s for l, s in mapa.items() if l not in loci_con]
+        if len(dentro) < 2:
+            continue
+        cuenta = {}
+        for s in dentro:
+            for r in s:
+                cuenta[r] = cuenta.get(r, 0) + 1
+        # Emparentada con el latín (decor > decorum, ordinatio > order): basta
+        # con que se concentre en esos pasajes. Traducción no emparentada
+        # (conmensurabilidad, propriety): ha de ser muy específica o constante.
+        cand = []
+        for r, c in cuenta.items():
+            if c < 2:
+                continue
+            cobertura = c / len(dentro)
+            base = (sum(1 for s in fuera if r in s) + 1) / (len(fuera) + 1)
+            lift = cobertura / base
+            pariente = r[:4] == v["raiz"][:4] or (r[:3] == v["raiz"][:3] and lift >= 15)
+            # Una palabra emparentada con OTRA voz capital es de esa voz, no de ésta.
+            ajena = any(r[:4] == o["raiz"][:4] for o in doc["voces"] if o is not v)
+            pocos = len(dentro) < 8
+            if ajena and not pariente:
+                continue
+            if (pariente and lift >= 5 and cobertura >= 0.2) or \
+               (not pariente and not pocos and ((cobertura >= 0.5 and lift >= 8) or (lift >= 50 and cobertura >= 0.25))):
+                cand.append((cobertura * math.log(lift), r, round(cobertura, 2)))
+        cand.sort(reverse=True)
+        if cand:
+            v["equivalentes"][lang] = [{"raiz": r, "cobertura": c} for _, r, c in cand[:3]]
+
+with open(RAIZ + "data/index/verba-capitalia.json", "w", encoding="utf-8") as f:
+    json.dump(doc, f, ensure_ascii=False, indent=1)
+for v in doc["voces"][:10]:
+    print(f"  {v['lemma']:<14} ocurrencias={len(v['ocurrencias']):<3} equivalentes={v['equivalentes']}")

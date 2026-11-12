@@ -1,0 +1,295 @@
+{
+ "manuscript": "British Library, Harley MS 2767",
+ "folio": "7r",
+ "digital_image": 21,
+ "status": "Lectura semidiplomática por inspección de la imagen; no transcripción diplomática verificada",
+ "method": "Lectura de la imagen digital línea por línea. & = et (también como sílaba); q; = que; abreviaturas resueltas sin marcar. Cortes de línea conservados. Cotejo automático con V514 (scripts/cotejar-lectura-folio.py); renglones localizados sobre la imagen por perfil de tinta (scripts/detect-lineas-folio.py).",
+ "rubric_lines": 0,
+ "lineasRubrica": [
+  7
+ ],
+ "lines": [
+  "symmetriae · Item symmetria est ex ipsius operis",
+  "membris conueniens consensus ex partibusq; sepa",
+  "ratis ad uniuersae figurae speciem ratae partis res",
+  "ponsus uti in hominis corpore e cubito pede palmo",
+  "digito ceterisq; particulis sinmetros est eurythmiae",
+  "qualitas sic est in operum perfectionibus",
+  "DE AEDIBUS SACRIS",
+  "Et primum in aedibus sacris aut e columnarum crassi",
+  "tudinibus aut triglypho aut etiam embatere ballis",
+  "tae foramine quod greci peritreton uocitant · nauib;",
+  "inter scalmio quae diphechiaca dicitur · Item cete",
+  "rorum operum e membris inuenitur symmetriarum ra",
+  "tiocinatio · decor autem est emendatus operis aspectus",
+  "probatis rebus compositi cum auctoritate · is perficitur",
+  "statione quod graece thematismo dicitur seu consuetu",
+  "dine aut natura · Statione cum Ioui fulguri et caelo",
+  "et soli et lunae aedificia sub diuo hypethraq; consti",
+  "tuentur horum enim deorum et species et effectus in",
+  "aperto mundo atq; lucenti praesentes uidimus mi",
+  "neruae et marti et herculi aedes doricae fient · his enim",
+  "diis propter uirtutem sine deliciis aedificia constitui",
+  "decet · Veneri flore proserpinae fontycum phys co",
+  "rinthio genere constitutae aptas uidebuntur habere",
+  "proprietates quod his dis propter teneritatem gra",
+  "ciliora et florida foliisque et uolutis ornata opera",
+  "facta augere uidebuntur iustum decorem · iunoni ·"
+ ],
+ "lineas": [
+  {
+   "y": 0.1146,
+   "h": 0.0319,
+   "x": 0.135,
+   "w": 0.6075
+  },
+  {
+   "y": 0.1465,
+   "h": 0.0282,
+   "x": 0.1425,
+   "w": 0.595
+  },
+  {
+   "y": 0.1746,
+   "h": 0.03,
+   "x": 0.1388,
+   "w": 0.6062
+  },
+  {
+   "y": 0.2047,
+   "h": 0.0291,
+   "x": 0.1313,
+   "w": 0.5875
+  },
+  {
+   "y": 0.2338,
+   "h": 0.0254,
+   "x": 0.1325,
+   "w": 0.6175
+  },
+  {
+   "y": 0.2592,
+   "h": 0.0244,
+   "x": 0.1288,
+   "w": 0.4662
+  },
+  {
+   "y": 0.2836,
+   "h": 0.0282,
+   "x": 0.0838,
+   "w": 0.3937
+  },
+  {
+   "y": 0.3117,
+   "h": 0.03,
+   "x": 0.1087,
+   "w": 0.7825
+  },
+  {
+   "y": 0.3418,
+   "h": 0.0272,
+   "x": 0.1437,
+   "w": 0.5913
+  },
+  {
+   "y": 0.369,
+   "h": 0.0263,
+   "x": 0.135,
+   "w": 0.5988
+  },
+  {
+   "y": 0.3953,
+   "h": 0.0272,
+   "x": 0.1375,
+   "w": 0.5887
+  },
+  {
+   "y": 0.4225,
+   "h": 0.0282,
+   "x": 0.135,
+   "w": 0.605
+  },
+  {
+   "y": 0.4507,
+   "h": 0.0272,
+   "x": 0.1363,
+   "w": 0.6075
+  },
+  {
+   "y": 0.4779,
+   "h": 0.0272,
+   "x": 0.1288,
+   "w": 0.5825
+  },
+  {
+   "y": 0.5052,
+   "h": 0.0272,
+   "x": 0.13,
+   "w": 0.6025
+  },
+  {
+   "y": 0.5324,
+   "h": 0.0254,
+   "x": 0.1325,
+   "w": 0.5737
+  },
+  {
+   "y": 0.5577,
+   "h": 0.0263,
+   "x": 0.1325,
+   "w": 0.595
+  },
+  {
+   "y": 0.584,
+   "h": 0.0235,
+   "x": 0.1325,
+   "w": 0.6075
+  },
+  {
+   "y": 0.6075,
+   "h": 0.0244,
+   "x": 0.1338,
+   "w": 0.5875
+  },
+  {
+   "y": 0.6319,
+   "h": 0.0291,
+   "x": 0.1338,
+   "w": 0.5925
+  },
+  {
+   "y": 0.661,
+   "h": 0.031,
+   "x": 0.1313,
+   "w": 0.5975
+  },
+  {
+   "y": 0.692,
+   "h": 0.0291,
+   "x": 0.1313,
+   "w": 0.5962
+  },
+  {
+   "y": 0.7211,
+   "h": 0.0272,
+   "x": 0.1313,
+   "w": 0.6012
+  },
+  {
+   "y": 0.7484,
+   "h": 0.0282,
+   "x": 0.1237,
+   "w": 0.585
+  },
+  {
+   "y": 0.7765,
+   "h": 0.0282,
+   "x": 0.1325,
+   "w": 0.5787
+  },
+  {
+   "y": 0.8047,
+   "h": 0.03,
+   "x": 0.1237,
+   "w": 0.5425
+  }
+ ],
+ "cotejo": {
+  "palabrasLeidas": 177,
+  "coincidenciaConV514": 0.898,
+  "entrada": {
+   "locus": "1.2.3",
+   "palabra": "symmetriae"
+  },
+  "salida": {
+   "locus": "1.2.5",
+   "palabra": "iunoni"
+  },
+  "loci": [
+   "1.2.3",
+   "1.2.4",
+   "1.2.5"
+  ]
+ },
+ "lecturasARevisar": [
+  {
+   "op": "H difiere",
+   "H": "sinmetros",
+   "V514": "symmetros",
+   "locus": "1.2.4"
+  },
+  {
+   "op": "sólo en H",
+   "H": "de aedibus sacris",
+   "V514": "",
+   "locus": "1.2.4"
+  },
+  {
+   "op": "H difiere",
+   "H": "ballistae",
+   "V514": "ballista e",
+   "locus": "1.2.4"
+  },
+  {
+   "op": "omitido en H",
+   "H": "",
+   "V514": "capituli",
+   "locus": "1.2.4"
+  },
+  {
+   "op": "H difiere",
+   "H": "greci peritreton",
+   "V514": "graeci",
+   "locus": "1.2.4"
+  },
+  {
+   "op": "H difiere",
+   "H": "nauib inter scalmio",
+   "V514": "nauibus interscalmio",
+   "locus": "1.2.4"
+  },
+  {
+   "op": "sólo en H",
+   "H": "diphechiaca",
+   "V514": "",
+   "locus": "1.2.4"
+  },
+  {
+   "op": "sólo en H",
+   "H": "thematismo",
+   "V514": "",
+   "locus": "1.2.5"
+  },
+  {
+   "op": "H difiere",
+   "H": "hypethraque",
+   "V514": "hypaethraque",
+   "locus": "1.2.5"
+  },
+  {
+   "op": "H difiere",
+   "H": "uidimus",
+   "V514": "uidemus",
+   "locus": "1.2.5"
+  },
+  {
+   "op": "H difiere",
+   "H": "flore",
+   "V514": "florae",
+   "locus": "1.2.5"
+  },
+  {
+   "op": "H difiere",
+   "H": "fontycum phys",
+   "V514": "fontium nymphis",
+   "locus": "1.2.5"
+  },
+  {
+   "op": "H difiere",
+   "H": "dis",
+   "V514": "diis",
+   "locus": "1.2.5"
+  }
+ ],
+ "aviso": "Una discrepancia con V514 no es todavía una variante: puede ser error de lectura. Las palabras griegas que V514 imprime en alfabeto griego (θεματισμός, διπηχαϊκή) figuran aquí como «sólo en H» por la diferencia de escritura, no por variante."
+}
