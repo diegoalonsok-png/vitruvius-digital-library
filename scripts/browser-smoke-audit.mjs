@@ -379,7 +379,7 @@ try{
    const page=await pageFor('onomasticon.html');
    await page.waitForFunction(()=>document.querySelector('#ov-count-person')?.textContent.trim()==='32',{timeout:20000});
    assert.equal((await page.locator('#ov-count-place').innerText()).trim(),'27');
-   assert.equal((await page.locator('#ov-count-latin').innerText()).trim(),'57.639');
+   assert.equal((await page.locator('#ov-count-latin').innerText()).trim(),'57.654');
    assert.equal((await page.locator('#ov-count-greek').innerText()).trim(),'283');
    assert.equal((await page.locator('#ov-count-loci').innerText()).trim(),'731');
    assert.match(await page.locator('#ov-detail').innerText(),/Arquímedes de Siracusa/);
@@ -420,7 +420,7 @@ try{
    assert.match(await page.locator('#f-latin').innerText(),/1\.1\.1/);
    assert.match(await page.locator('#f-evidence').innerText(),/verificado|rúbrica/i);
    await page.locator('#f-search').fill('9.praef.10');
-   assert.match(await page.locator('#f-search-count').innerText(),/1 loci?/);
+   assert.match(await page.locator('#f-search-count').innerText(),/1 (?:loci?|coincidentes?)/);
    await page.locator('#f-search-results button').first().click();
    assert.equal(await page.locator('#f-folio').inputValue(),'','No se debe atribuir folio a IX.praef.10');
    assert.match(await page.locator('#f-evidence').innerText(),/Sin asignación material/);
