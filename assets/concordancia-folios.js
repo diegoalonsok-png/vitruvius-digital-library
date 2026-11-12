@@ -191,17 +191,25 @@ async function load(){
   try{localIndex=await fetch('images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/indice-folios.json').then(r=>r.ok?r.json():null)}catch(e){localIndex=null}
   // Do not block the folio selector or lexical search while estimating 731 passages.
   // Estimates are advisory: populate them after the verified map and reader are ready.
-  const estimateLater=window.CodexHConcordance
-    ?Promise.allSettled(passages.map(p=>window.CodexHConcordance.locate(p.locus)))
-      .then(results=>{
-        for(const result of results){
-          if(result.status!=='fulfilled')continue;
-          const c=result.value;
-          if(c?.book&&c?.estimate)estimates.set(c.locus,{folio:c.estimate.folio,book:c.book});
+  if(window.CodexHConcordance){
+    // Yield between small batches so the 700+ optional estimates cannot
+    // monopolise Chromium's event loop or delay the real folio controls.
+    setTimeout(async()=>{
+      try{
+        for(let i=0;i<passages.length;i+=16){
+          const results=await Promise.allSettled(
+            passages.slice(i,i+16).map(p=>window.CodexHConcordance.locate(p.locus)));
+          for(const result of results){
+            if(result.status!=="fulfilled")continue;
+            const c=result.value;
+            if(c?.book&&c?.estimate)estimates.set(c.locus,{folio:c.estimate.folio,book:c.book});
+          }
+          await new Promise(resolve=>setTimeout(resolve,0));
         }
         renderMatches();
-      }).catch(e=>console.warn('Loci estimates:',e))
-    :Promise.resolve();
+      }catch(e){console.warn('Loci estimates:',e)}
+    },350);
+  }
   {const sel=$('f-folio'),short={visual_rubric:'rúbrica verificada',catalogue:'catálogo BL',provisional:'estudio provisional',not_verified:'locus pendiente',collatio_autoral:'collatio del autor'};sel.replaceChildren();
    for(const e of map.entries){const o=document.createElement('option');o.value=e.folio;o.textContent=e.folio+' · '+(short[e.folio_status]||e.folio_status)+(e.loci?.length?' · '+e.loci.map(l=>l.locus).join(' / '):'');sel.append(o)}
    const none=document.createElement('option');none.value='';none.textContent='Sin folio material asignado al locus';sel.append(none)}
