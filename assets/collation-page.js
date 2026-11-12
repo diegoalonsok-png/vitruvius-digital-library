@@ -115,7 +115,7 @@ let corpus=[],coll=null,idx=-1,translations=[];
 async function show(locus){
  idx=corpus.findIndex(p=>p.locus===locus);if(idx<0)idx=0;const P=corpus[idx];locus=P.locus;
  const u=new URL(location.href);u.searchParams.set("locus",locus);history.replaceState(null,"",u);
- $("#coll-locus").value=label(locus);$("#coll-prev").disabled=idx===0;$("#coll-next").disabled=idx>=corpus.length-1;
+ $("#coll-locus").value=label(locus);if($("#coll-preface"))$("#coll-preface").value=locus.includes(".praef.")?locus:"";$("#coll-prev").disabled=idx===0;$("#coll-next").disabled=idx>=corpus.length-1;
  document.title="Colación · Vitr. "+label(locus)+" · Vitruvius Digital Library";
  const root=$("#coll-body");root.replaceChildren();
  const head=el("h2",null,"Vitr., De arch. "+label(locus));root.append(head);
@@ -233,6 +233,22 @@ async function boot(){
  })));
  
  const list=$("#coll-list");for(const p of corpus){const o=el("option");o.value=label(p.locus);list.append(o)}
+ // The canonical corpus includes prefatory passages for every one of the ten books.
+ const preface=$("#coll-preface");
+ if(preface){
+  for(let book=1;book<=10;book++){
+   const passages=corpus.filter(p=>p.locus.startsWith(book+".praef."));
+   if(!passages.length)continue;
+   const group=document.createElement("optgroup");
+   group.label="Libro "+R[book]+" · Prefacio";
+   for(const passage of passages){
+    const option=el("option",null,"Libro "+R[book]+" · Prefacio § "+passage.locus.split(".").at(-1));
+    option.value=passage.locus;group.append(option);
+   }
+   preface.append(group);
+  }
+  preface.addEventListener("change",()=>{if(preface.value)show(preface.value)});
+ }
  $("#coll-form").addEventListener("submit",e=>{e.preventDefault();const l=parse($("#coll-locus").value);if(l)show(l);else $("#coll-status").textContent="Locus no reconocido. Ejemplos: I.2.4 · 3.1.1 · 5.praef.1"});
  $("#coll-prev").addEventListener("click",()=>show(corpus[idx-1].locus));$("#coll-next").addEventListener("click",()=>show(corpus[idx+1].locus));
  $("#coll-status").textContent=Object.entries(coll.counts).map(([k,v])=>coll.witnesses.find(w=>w.id===k).label+": "+v+" loci alineados").join(" · ");
