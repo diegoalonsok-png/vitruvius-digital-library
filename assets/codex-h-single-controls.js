@@ -20,8 +20,8 @@ var css=[
 "#single-filters label input[type=range]{width:140px}",
 "#stage{overflow-y:scroll!important;scrollbar-width:auto;scrollbar-color:#9a7645 #e6dac8;cursor:grab}",
 "#stage.is-dragging{cursor:grabbing!important}",
-"html[data-reader-theme=dark] body{background:#142638;color:#eee5d7}",
-"html[data-reader-theme=dark] #single-options,html[data-reader-theme=dark] #single-ruler,html[data-reader-theme=dark] #single-filters{background:#344b5d;color:#eee5d7}",
+"html[data-reader-theme=dark] body{background:#101113;color:#ececea}",
+"html[data-reader-theme=dark] #single-options,html[data-reader-theme=dark] #single-ruler,html[data-reader-theme=dark] #single-filters{background:#232427;color:#ececea}",
 "@media print{.gallery,.toolbar,#single-options,#single-ruler,#single-filters,#single-top-controls,nav,#state{display:none!important}#stage{height:auto;overflow:visible}#image{max-width:100%!important;width:auto!important;max-height:240mm!important;filter:none!important}}"
 ].join("\n");
 var style=document.createElement("style");style.textContent=css;document.head.append(style);
@@ -56,7 +56,7 @@ $("s-up").addEventListener("click",()=>stage.scrollTo({top:0,behavior:"smooth"})
 $("s-down").addEventListener("click",()=>stage.scrollTo({top:stage.scrollHeight,behavior:"smooth"}));
 var current="es",theme="light",magnifier=true;
 try{current=localStorage.getItem("vitruvius-ui-lang")||"es";theme=localStorage.getItem("vitruvius-color-theme")==="dark"?"dark":"light"}catch(e){}
-function paint(){document.documentElement.dataset.readerTheme=theme;document.documentElement.lang=current;$("s-language").value=current;
+function paint(){document.documentElement.dataset.readerTheme=theme;document.documentElement.dataset.theme=theme;document.documentElement.lang=current;$("s-language").value=current;
 var light={es:"Claro",en:"Light",fr:"Clair",it:"Chiaro",de:"Hell",pt:"Claro"},dark={es:"Oscuro",en:"Dark",fr:"Sombre",it:"Scuro",de:"Dunkel",pt:"Escuro"};
 $("s-theme").setAttribute("aria-pressed",String(theme==="dark"));$("s-theme").setAttribute("aria-label",theme==="dark"?"Activar fondo claro":"Activar fondo oscuro");$("s-theme").title=$("s-theme").getAttribute("aria-label");
 $("s-loupe").textContent=magnifier?"◉ Desactivar lupa":"◉ Activar lupa";}
@@ -74,5 +74,14 @@ if(down.moved){stage.scrollLeft=down.left-dx;stage.scrollTop=down.top-dy}});
 function end(e){if(!down||down.id!==e.pointerId)return;down=null;stage.classList.remove("is-dragging");if(stage.hasPointerCapture(e.pointerId))stage.releasePointerCapture(e.pointerId)}
 stage.addEventListener("pointerup",end);stage.addEventListener("pointercancel",end);
 img.addEventListener("load",()=>{apply();sync()});
+// Keep the local reader palette and Lexicon Fondo palette in sync.
+const paletteObserver=new MutationObserver(()=>{
+ const selected=document.documentElement.dataset.theme;
+ if((selected==="dark"||selected==="light")&&selected!==theme){
+  theme=selected;try{localStorage.setItem("vitruvius-color-theme",theme)}catch{}
+  paint();
+ }
+});
+paletteObserver.observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
 paint();apply();
 })();
