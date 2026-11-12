@@ -356,7 +356,16 @@ async function renderPanel(container,word,opts={}){
  const h=document.createElement("h4");h.textContent="Diccionario";container.append(h);
  const w=document.createElement("p");w.className="cl-word";w.textContent=clean(word);w.lang=detectLang(word)==="grc"?"grc":"la";container.append(w);
  const wait=document.createElement("p");wait.className="cl-note";wait.textContent="Consultando el glosario local…";container.append(wait);
- const res=await lookup(word,opts);wait.remove();
+ let res=await lookup(word,opts);
+ /* Si los diccionarios locales no tienen la forma, se copia la definición de un
+    diccionario externo (Wiktionary, CC BY-SA, que resuelve también formas
+    flexionadas a su lema) en lugar de dejar la ficha vacía. */
+ if(!res.entries.length&&opts.online===false){
+  wait.textContent="No está en los diccionarios locales; consultando un diccionario externo…";
+  const ext=await lookup(word,{...opts,online:true}).catch(()=>null);
+  if(ext?.entries?.length){ext.note=(ext.note?ext.note+" · ":"")+"definición copiada de un diccionario externo porque la forma no figura en los glosarios locales";res=ext}
+ }
+ wait.remove();
  if(!res.entries.length){const p=document.createElement("p");p.textContent="Esta forma puede estar documentada en el pasaje, pero aún no tiene una ficha lexicográfica recuperable. La falta de glosa no equivale a ausencia del texto: consulta los diccionarios enlazados.";container.append(p)}
  for(const e of res.entries){
   const box=document.createElement("div");box.className="cl-entry";
