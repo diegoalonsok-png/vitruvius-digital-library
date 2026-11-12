@@ -40,7 +40,18 @@ function render(rows,edition,kind) {
   }
   item.append(p);
   const links=el("div",undefined,"row");
-  link(links,SOURCES[edition].link(row.page),SOURCES[edition].linkLabel(row.page));
+  const query=$("hpar-query").value.trim();
+  const pdfHref=SOURCES[edition].link(row.page);
+  const pdfSearchHref=(edition==="krohn-1912"||edition==="rose-1899")
+   ?pdfHref+"&search="+encodeURIComponent(query)
+   :pdfHref;
+  link(links,pdfSearchHref,(edition==="krohn-1912"||edition==="rose-1899")
+   ?"Abrir PDF · página "+row.page+" · buscar «"+query+"»"
+   :SOURCES[edition].linkLabel(row.page));
+  if(edition==="krohn-1912"||edition==="rose-1899"){
+   const note=el("small","La búsqueda dentro del PDF depende del visor y de que el archivo tenga una capa de texto; el fragmento OCR resaltado se muestra arriba.","meta");
+   links.append(note);
+  }
   if(edition==="rose-1899"||edition==="cesariano-1521"){
    const q=$("hpar-query").value.trim();
    const href=edition==="rose-1899"?"concordancia-historica.html?"+new URLSearchParams({ed:edition,page:String(row.page),q}):
