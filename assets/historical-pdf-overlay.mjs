@@ -5,7 +5,17 @@ const canvas=document.querySelector('#pdfjs-canvas');
 const layer=document.querySelector('#pdfjs-highlights');
 const fallback=document.querySelector('#historical-pdf');
 const status=document.querySelector('#pdfjs-status');
-let pdf=null, loadedEdition='',pdfjs=null, serial=0;
+let pdf=null, loadedEdition='',pdfjs=null, serial=0, zoom=1, lastView=null;
+const zoomBar=document.querySelector('#krohn-zoom-controls');
+const zoomValue=document.querySelector('#krohn-zoom-value');
+function setZoom(next){
+ zoom=Math.max(0.75,Math.min(2.5,Math.round(next*4)/4));
+ if(zoomValue)zoomValue.textContent=Math.round(zoom*100)+'%';
+ if(lastView)draw(lastView.page,[...new Set([lastView.query,...(lastView.roots||[])].filter(Boolean))],Boolean(lastView.prefix||lastView.roots?.length));
+}
+document.querySelector('#krohn-zoom-out')?.addEventListener('click',()=>setZoom(zoom-0.25));
+document.querySelector('#krohn-zoom-in')?.addEventListener('click',()=>setZoom(zoom+0.25));
+document.querySelector('#krohn-zoom-reset')?.addEventListener('click',()=>setZoom(1));
 const fold=s=>String(s||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i');
 async function init(edition){
  if(pdf&&loadedEdition===edition)return pdf;
@@ -29,7 +39,9 @@ function rectangles(text,term,prefix){
 }
 async function draw(pageNumber,terms,prefix=false){
  const edition=document.querySelector('#ed')?.value;
+ if(zoomBar)zoomBar.hidden=!pdfURLs[edition];
  if(!pdfURLs[edition]){
+   ++serial;
    viewer.hidden=true;fallback.hidden=edition==='perrault-1673';
    status.textContent=edition==='perrault-1673'?'El facsímil de Perrault se lee en el visor IIIF con ampliación, contraste e inversión. Las coincidencias verificables se resaltan en amarillo en el OCR.':'La superposición sobre el PDF externo puede no estar disponible; consulta el OCR resaltado.';
    return;
@@ -40,12 +52,12 @@ async function draw(pageNumber,terms,prefix=false){
    const page=await documentPDF.getPage(Number(pageNumber));
    const width=viewer.parentElement.clientWidth||550;
    const base=page.getViewport({scale:1});
-   const viewport=page.getViewport({scale:width/base.width});
+   const viewport=page.getViewport({scale:(width/base.width)*zoom});
    const ratio=Math.min(window.devicePixelRatio||1,2);
    canvas.width=Math.ceil(viewport.width*ratio);canvas.height=Math.ceil(viewport.height*ratio);
    canvas.style.width=viewport.width+'px';canvas.style.height=viewport.height+'px';
-   viewer.style.height=Math.ceil(viewport.height)+'px';
-   viewer.style.maxHeight='none';viewer.style.overflow='visible';
+   viewer.style.height='min(72vh,760px)';
+   viewer.style.maxHeight='760px';viewer.style.overflow='auto';
    layer.style.width=viewport.width+'px';layer.style.height=viewport.height+'px';
    const ctx=canvas.getContext('2d');await page.render({canvasContext:ctx,viewport,transform:[ratio,0,0,ratio,0,0]}).promise;
    const content=await page.getTextContent();if(mine!==serial)return;
@@ -65,7 +77,7 @@ async function draw(pageNumber,terms,prefix=false){
      }
    }
    viewer.hidden=false;fallback.hidden=true;
-   viewer.scrollTop=0;
+   viewer.scrollTop=0;viewer.scrollLeft=0;
    viewer.setAttribute('aria-label','Folio '+pageNumber+' de '+(edition==='rose-1899'?'Rose 1899':'Krohn 1912')+', visible en el lector de páginas');
    status.textContent=found?'PDF original: '+found+' resaltado(s) amarillos sobre texto detectable en esta página.':'PDF original abierto. No hay coincidencias localizables en su capa de texto para esta página; consulta el OCR resaltado debajo.';
  }catch(err){
@@ -76,8 +88,12 @@ async function draw(pageNumber,terms,prefix=false){
 }
 document.addEventListener('historical-pdf-page',ev=>{
  const {page,query,roots,prefix}=ev.detail;
+ lastView={page,query,roots,prefix};
  const terms=[...new Set([query,...(roots||[])].filter(Boolean))];
  // Keep the exact queried form even when a lexicon entry supplies roots.
  // Root expansions use prefix matching; literal full words remain detectable.
  draw(page,terms,Boolean(prefix||roots?.length));
 });
+
+// Update toolbar when the edition changes, even before the first page is rendered.
+document.querySelector('#ed')?.addEventListener('change',()=>{const ed=document.querySelector('#ed')?.value;if(zoomBar)zoomBar.hidden=!pdfURLs[ed];lastView=null;++serial;});
