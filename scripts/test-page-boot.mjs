@@ -44,6 +44,7 @@ process.on("uncaughtException",error=>{if(!ignorable(error)){console.error("Exce
 const PAGES=[
  {file:"vitruvia.html",query:"?q=domus&mode=all"},
  {file:"vitruvia-lexicon.html",query:"?q=symmetria&mode=palabra"},
+ {file:"vitruvia-lexicon.html",query:"?q=mens%20sana%20in%20corpore%20sano&mode=frase"},
  {file:"index.html",query:""}
 ];
 

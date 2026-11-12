@@ -432,6 +432,34 @@ async function execute(mode="literal"){
   }else{
    // Passage-level retrieval: source loci and actual occurrences, not only one preview per edition.
    const greek=/[Ͱ-Ͽἀ-῿]/u.test(q);
+   /* Una sentencia citada se trata como frase antes que como palabras suelta.
+      «mens sana in corpore sano» devuelve Juvenal, Saturae 4.10.353-362, con
+      su locus; y si la frase circula con otro orden que el de su fuente, se
+      dice así y no se presenta como la frase. */
+   if(/\s/.test(q.trim())&&window.VitruviaClassicsIndex){
+    try{
+     const frase=await window.VitruviaClassicsIndex.phraseSearch(q,{works:14,perWork:3});
+     if(token!==serial)return;
+     if(frase&&frase.rows.length){
+      for(const row of frase.rows.slice(0,12)){
+       const literal=row.match==="frase literal";
+       addSummaryResult({
+        workId:row.work.id,language:row.language,
+        title:row.work.title+" · "+row.locus,
+        author:(row.work.attribution||"").slice(0,180),
+        excerpt:"…"+row.left.slice(-150)+" ⟦"+row.hit+"⟧ "+row.right.slice(0,150)+"…",
+        meta:(literal?"FRASE LITERAL HALLADA EN LA EDICIÓN":"MISMAS PALABRAS EN EL PASAJE, EN OTRO ORDEN")+
+          " · LOCUS "+row.locus+" · VERIFICADO CONTRA LA EDICIÓN",
+        link:"classics-text-reader.html?work="+encodeURIComponent(row.work.id)+"&lang="+encodeURIComponent(row.language)+"&q="+encodeURIComponent(q),
+        source:row.work.file
+       });
+      }
+      status.textContent=frase.literal+" pasaje(s) con la frase literal"+
+       (frase.reordered?" y "+frase.reordered+" con las mismas palabras en otro orden":"")+
+       ". Buscando además cada palabra por separado…";
+     }
+    }catch{}
+   }
    /* Primero, el recuento por edición desde el índice léxico: aparece sin
       descargar ningún texto, de modo que la lista no se hace esperar. Las
       fichas declaran que el pasaje todavía no se ha leído del original.
@@ -450,7 +478,9 @@ async function execute(mode="literal"){
    }
    const rows=await window.ClassicsCorpusSearch.searchPassages(q,{limit:160,maxPerEdition:12,language:greek?"grc":""});
    if(token!==serial)return;
-   if(summaryShown)list.replaceChildren();
+   /* El resumen por edición se sustituye por los pasajes verificados, pero las
+      fichas de la frase se conservan: son un hallazgo distinto y más preciso. */
+   if(summaryShown&&!/\s/.test(q.trim()))list.replaceChildren();
    const counts=new Map();
    for(const row of rows){const key=[row.workId,row.language,row.edition,row.source].join("|");counts.set(key,(counts.get(key)||0)+1)}
    const editionCount=counts.size;
