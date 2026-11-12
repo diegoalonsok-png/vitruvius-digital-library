@@ -13,8 +13,10 @@ con el lugar correspondiente de cada edición (OCR de Internet Archive):
   4. Errata probable: Krohn y Rose concuerdan entre sí, V514 difiere a una o
      dos letras de distancia y no es variante gráfica. Si el aparato del autor
      cita la forma en ese locus, se marca «justificada en el aparato».
-  5. V514 frente a V554 (mismo latín en las dos ediciones del autor): toda
-     diferencia es candidata a errata en una de las dos.
+  5. Contraste entre ediciones del autor (V514 frente a V554; V297 frente a
+     V514): toda diferencia es candidata a errata en una de las dos.
+
+Uso: python3 scripts/cotejo-krohn-rose.py [recensio-es|theory-en]
 
 Límites: el OCR de Krohn y Rose tiene errores propios; los porcentajes son un
 mínimo (subestiman la concordancia real). Budé no está disponible en texto.
@@ -101,9 +103,13 @@ def cotejar(pasajes, W, nombre):
             desde = a + bl[-1].b
     return res
 
-def main():
-    pas = J("data/structured/recensio-es.json")["passages"]
-    fr = {p["locus"]: p for p in J("data/structured/recensio-fr.json")["passages"]}
+EDICIONES = {"recensio-es": ("V514", "recensio-fr", "V554"), "theory-en": ("V297", "recensio-es", "V514")}
+
+def main(edicion="recensio-es"):
+    """edicion: recensio-es (V514, contrastada con V554) o theory-en (V297, contrastada con V514)."""
+    sig, otra, sig_otra = EDICIONES[edicion]
+    pas = J(f"data/structured/{edicion}.json")["passages"]
+    fr = {p["locus"]: p for p in J(f"data/structured/{otra}.json")["passages"]}
     K = tokens_ocr(J("data/text/krohn-1912.json"))
     Ro = tokens_ocr(J("data/text/rose-1899.json"))
     ck, cr = cotejar(pas, K, "Krohn"), cotejar(pas, Ro, "Rose")
@@ -154,7 +160,7 @@ def main():
                 if 0 < d <= 2.2:
                     ctx = " ".join(T[max(0, i - 4):i]) + " [" + t + "] " + " ".join(T[i + 1:i + 5])
                     just = (wk in aparato.get(L, "")) or (re.search(r"\b" + re.escape(t) + r"\b", aparato.get(L, "")) is not None and len(t) > 4)
-                    erratas.append({"locus": L, "V514": t, "KrohnRose": wk, "contexto": ctx,
+                    erratas.append({"locus": L, sig: t, "KrohnRose": wk, "contexto": ctx,
                                     "estado": "justificada en el aparato" if just else "errata probable"})
     # V514 frente a V554
     dif_ed = []
@@ -168,27 +174,30 @@ def main():
         sm = difflib.SequenceMatcher(None, a, b, autojunk=False)
         for op, i1, i2, j1, j2 in sm.get_opcodes():
             if op != "equal":
-                dif_ed.append({"locus": p["locus"], "V514": " ".join(a[i1:i2]), "V554": " ".join(b[j1:j2]),
+                dif_ed.append({"locus": p["locus"], sig: " ".join(a[i1:i2]), sig_otra: " ".join(b[j1:j2]),
                                "contexto": " ".join(a[max(0, i1 - 4):i2 + 4])})
     pct = lambda a, b: round(100 * a / b, 2) if b else None
-    out = {"schema": "cotejo-krohn-rose/1", "metodo": __doc__.strip(),
-           "global": {"palabrasV514": tot["palabras"], "concordanciaExacta": pct(tot["exactas"], tot["palabras"]),
+    out = {"schema": "cotejo-krohn-rose/1", "edicion": sig, "contrastadaCon": sig_otra, "metodo": __doc__.strip(),
+           "global": {"palabras": tot["palabras"], "concordanciaExacta": pct(tot["exactas"], tot["palabras"]),
                       "concordanciaConGrafia": pct(tot["conGrafia"], tot["palabras"]),
                       "conKrohn": pct(tot["krohn"], tot["palabrasK"]), "conRose": pct(tot["rose"], tot["palabrasR"]),
                       "lociAlineados": sum(1 for L in ck if ck[L] or cr.get(L)), "lociSinAlinear": sin_alinear},
            "porLibro": {str(b): {"palabras": c["palabras"], "concordanciaConGrafia": pct(c["conGrafia"], c["palabras"]),
                                   "conKrohn": pct(c["krohn"], c["palabrasK"]), "conRose": pct(c["rose"], c["palabrasR"])}
                         for b, c in sorted(por_libro.items())},
-           "erratasCandidatas": erratas, "diferenciasV514V554": dif_ed}
+           "erratasCandidatas": erratas, "diferenciasEntreEdiciones": dif_ed}
     os.makedirs(R + "reports", exist_ok=True)
-    json.dump(out, open(R + "data/index/cotejo-krohn-rose.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    nombre = "cotejo-krohn-rose.json" if edicion == "recensio-es" else f"cotejo-krohn-rose-{sig.lower()}.json"
+    json.dump(out, open(R + "data/index/" + nombre, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     g = out["global"]
-    print(f"palabras V514 cotejadas: {g['palabrasV514']}  · loci alineados {g['lociAlineados']} · sin alinear {len(sin_alinear)}")
+    print(f"palabras {sig} cotejadas: {g['palabras']}  · loci alineados {g['lociAlineados']} · sin alinear {len(sin_alinear)}")
     print(f"concordancia exacta (Krohn o Rose): {g['concordanciaExacta']} %  · con variantes gráficas: {g['concordanciaConGrafia']} %")
     print(f"sólo Krohn: {g['conKrohn']} %  · sólo Rose: {g['conRose']} %")
     for b, c in out["porLibro"].items():
         print(f"  libro {b:>2}: {c['concordanciaConGrafia']} %  (K {c['conKrohn']} · R {c['conRose']}) · {c['palabras']} palabras")
     print("erratas candidatas:", Counter(e["estado"] for e in erratas))
-    print("diferencias V514/V554:", len(dif_ed))
+    print(f"diferencias {sig}/{sig_otra}:", len(dif_ed))
 
-main()
+if __name__ == "__main__":
+    import sys
+    main(sys.argv[1] if len(sys.argv) > 1 else "recensio-es")

@@ -1,0 +1,838 @@
+{
+ "schema": "cotejo-krohn-rose/1",
+ "edicion": "V297",
+ "contrastadaCon": "V514",
+ "metodo": "Concordancia del latín de V514 con Krohn (1912) y Rose (1899), y erratas.\n\nPara cada uno de los 731 loci se alinea el latín de V514, palabra por palabra,\ncon el lugar correspondiente de cada edición (OCR de Internet Archive):\n\n  1. Se localiza el pasaje en la edición por votación de trigramas y se alinea\n     una ventana con difflib (sin descarte automático).\n  2. Una palabra de V514 cuenta como atestiguada si coincide con Krohn o con\n     Rose: un error de OCR en una de las dos no se toma por diferencia de V514.\n  3. Diferencias sólo gráficas (asimilación ad-/con-/in-/ex-, ae/e, y/i, ph/f,\n     consonante doble, i/j, u/v) se cuentan aparte: no son errores.\n  4. Errata probable: Krohn y Rose concuerdan entre sí, V514 difiere a una o\n     dos letras de distancia y no es variante gráfica. Si el aparato del autor\n     cita la forma en ese locus, se marca «justificada en el aparato».\n  5. Contraste entre ediciones del autor (V514 frente a V554; V297 frente a\n     V514): toda diferencia es candidata a errata en una de las dos.\n\nUso: python3 scripts/cotejo-krohn-rose.py [recensio-es|theory-en]\n\nLímites: el OCR de Krohn y Rose tiene errores propios; los porcentajes son un\nmínimo (subestiman la concordancia real). Budé no está disponible en texto.",
+ "global": {
+  "palabras": 56417,
+  "concordanciaExacta": 97.44,
+  "concordanciaConGrafia": 97.45,
+  "conKrohn": 89.21,
+  "conRose": 83.59,
+  "lociAlineados": 728,
+  "lociSinAlinear": []
+ },
+ "porLibro": {
+  "1": {
+   "palabras": 5798,
+   "concordanciaConGrafia": 97.46,
+   "conKrohn": 89.08,
+   "conRose": 83.44
+  },
+  "2": {
+   "palabras": 6840,
+   "concordanciaConGrafia": 97.76,
+   "conKrohn": 92.11,
+   "conRose": 82.95
+  },
+  "3": {
+   "palabras": 3953,
+   "concordanciaConGrafia": 97.42,
+   "conKrohn": 88.74,
+   "conRose": 80.19
+  },
+  "4": {
+   "palabras": 4038,
+   "concordanciaConGrafia": 98.07,
+   "conKrohn": 89.1,
+   "conRose": 84.47
+  },
+  "5": {
+   "palabras": 5878,
+   "concordanciaConGrafia": 97.96,
+   "conKrohn": 88.94,
+   "conRose": 84.37
+  },
+  "6": {
+   "palabras": 5024,
+   "concordanciaConGrafia": 98.09,
+   "conKrohn": 90.74,
+   "conRose": 84.91
+  },
+  "7": {
+   "palabras": 5622,
+   "concordanciaConGrafia": 96.53,
+   "conKrohn": 87.26,
+   "conRose": 85.56
+  },
+  "8": {
+   "palabras": 5522,
+   "concordanciaConGrafia": 96.74,
+   "conKrohn": 85.84,
+   "conRose": 85.66
+  },
+  "9": {
+   "palabras": 5764,
+   "concordanciaConGrafia": 97.68,
+   "conKrohn": 90.25,
+   "conRose": 83.0
+  },
+  "10": {
+   "palabras": 7978,
+   "concordanciaConGrafia": 97.07,
+   "conKrohn": 89.26,
+   "conRose": 81.71
+  }
+ },
+ "erratasCandidatas": [
+  {
+   "locus": "8.1.6",
+   "V297": "qua",
+   "KrohnRose": "quae",
+   "contexto": "ita erunt pertemptata et [qua] supra scripta sunt signa",
+   "estado": "errata probable"
+  }
+ ],
+ "diferenciasEntreEdiciones": [
+  {
+   "locus": "1.1.3",
+   "V297": "",
+   "V514": "et ut litteratus sit peritus graphidos eruditus geometria historias complures nouerit philosophos diligenter audierit musicam scierit medicinae non sit ignarus responsa iurisconsultorum nouerit astrologiam caelique rationes cognitas habeat",
+   "contexto": "perfectum artificem potest efficere"
+  },
+  {
+   "locus": "1.1.5",
+   "V297": "",
+   "V514": "carya ciuitas peloponnensis cum persis hostibus contra graeciam consensit postea graeci per uictoriam gloriose bello liberati communi consilio caryatibus bellum indixerunt itaque oppido capto uiris interfectis ciuitate deflagrata matronas eorum in seruitutem abduxerunt nec sunt passi stolas neque ornatus matronales deponere non uti una triumpho ducerentur sed aeterna seruitutis exemplo graui contumelia pressae poenas pendere uiderentur pro ciuitate ideo qui tunc architecti fuerunt aedificiis publicis designauerunt earum imagines oneri ferendo conlocatas ut etiam posteris nota poena peccati caryatium memoriae traderetur",
+   "contexto": "percontantibus ita reddet rationem"
+  },
+  {
+   "locus": "1.1.7",
+   "V297": "",
+   "V514": "praeterea de rerum natura quae graece dicitur philosophia explicat quam necesse est studiosius nouisse quod habet multas et uarias naturales quaestiones ut etiam in aquarum ductionibus incursibus enim et circumitionibus et librata planitie expressionibus spiritus naturales aliter atque aliter fiunt quorum offensionibus mederi nemo poterit nisi qui ex philosophia principia rerum naturae nouerit item qui ctesibii aut archimedis et ceterorum qui eiusdem generis praecepta conscripserunt leget sentire non poterit nisi his rebus a philosophis erit institutus",
+   "contexto": "haec enim philosophia praescribit"
+  },
+  {
+   "locus": "1.1.10",
+   "V297": "",
+   "V514": "ex astrologia autem cognoscitur oriens occidens meridies septentrio etiam caeli ratio aequinoctium solstitium astrorum cursus quorum notitiam si quis non habuerit horologiorum rationem omnino scire non poterit",
+   "contexto": "uterque ab utroque liberetur"
+  },
+  {
+   "locus": "1.6.2",
+   "V297": "certa",
+   "V514": "incerta",
+   "contexto": "aeris fluens unda cum certa motus redundantia nascitur cum"
+  },
+  {
+   "locus": "2.praef.5",
+   "V297": "materiationibus",
+   "V514": "materiae rationibus",
+   "contexto": "conlatis aedificia structuris et materiationibus perficiuntur quas habeant in"
+  },
+  {
+   "locus": "2.praef.5",
+   "V297": "natura e",
+   "V514": "naturae",
+   "contexto": "uirtutes exposuissem quibusque rerum natura e principiis essent temperatae dixissem"
+  },
+  {
+   "locus": "2.praef.5",
+   "V297": "eorum qui antiquitates",
+   "V514": "antiquitatis",
+   "contexto": "ponam et insequar ingressus eorum qui antiquitates rerum naturae et initia"
+  },
+  {
+   "locus": "2.praef.5",
+   "V297": "",
+   "V514": "eorum qui",
+   "contexto": "antiquitates rerum naturae et initia humanitatis et inuentiones"
+  },
+  {
+   "locus": "2.2.1",
+   "V297": "in se soliditatem",
+   "V514": "",
+   "contexto": "aeuo perpetuo infinitam retinent in se soliditatem"
+  },
+  {
+   "locus": "2.2.2",
+   "V297": "",
+   "V514": "in se soliditatem",
+   "contexto": "ex his ergo congruentibus"
+  },
+  {
+   "locus": "2.3.4",
+   "V297": "",
+   "V514": "nec patiantur penetrare in corpus umidam potestatem",
+   "contexto": "raraque cum sit proprietate quocumque pondere fuerit cogitur"
+  },
+  {
+   "locus": "2.3.4",
+   "V297": "non patiantur penetrare in corpus umidam potestatem",
+   "V514": "ducuntur",
+   "contexto": "sunt onerosi et cum non patiantur penetrare in corpus umidam potestatem a tempestatibus non dissoluuntur"
+  },
+  {
+   "locus": "2.6.6",
+   "V297": "est autem materiae potestas mollior quam tofus solidior quam terra",
+   "V514": "",
+   "contexto": "montes sed genere materiae est autem materiae potestas mollior quam tofus solidior quam terra ignis uis per eius"
+  },
+  {
+   "locus": "2.6.6",
+   "V297": "quo penitus ab imo uehementia uaporis adusto nonnullis locis procreatur id genus harenae quod dicitur carbunculus",
+   "V514": "",
+   "contexto": "quod autem asperum relinquit quo penitus ab imo uehementia uaporis adusto nonnullis locis procreatur id genus harenae quod dicitur carbunculus itaque uti campania exusta"
+  },
+  {
+   "locus": "2.6.6",
+   "V297": "",
+   "V514": "est autem materiae potestas mollior quam tofus solidior quam terra quo penitus ab imo uehementia uaporis adusto nonnullis locis procreatur id genus harenae quod dicitur carbunculus",
+   "contexto": "maritimis molibus habent uirtutem"
+  },
+  {
+   "locus": "2.8.13",
+   "V297": "",
+   "V514": "at rex ipse de sua domo remigibus et militibus sine ullo sciente quae opus essent imperaret",
+   "contexto": "geratur aspicere nec scire"
+  },
+  {
+   "locus": "2.8.14",
+   "V297": "at rex ipse de sua domo remigibus et militibus sine ullo sciente quae opus essent imperaret",
+   "V514": "",
+   "contexto": "at rex ipse de sua domo remigibus et militibus sine ullo sciente quae opus essent imperaret itaque post mortem mausoli"
+  },
+  {
+   "locus": "2.8.15",
+   "V297": "eam",
+   "V514": "et",
+   "contexto": "ciuitatis alteram suae imaginis eam ita figurauit rhodiorum ciuitati"
+  },
+  {
+   "locus": "2.9.12",
+   "V297": "",
+   "V514": "uocitantur item eam appellant non minus est admirandum de cupresso et pinu quod eae habentes umoris abundantiam aequamque ceterorum mixtionem propter umoris satietatem in operibus solent esse pandae sed in uetustatem sine uitiis conseruantur quod is liquor qui inest penitus in corporibus earum habet amarum saporem qui propter acritudinem non patitur penetrare cariem neque eas bestiolas quae sunt nocentes ideoque quae ex his generibus opera constituuntur permanent ad aeternam diuturnitatem",
+   "contexto": "quod apud eos iuga"
+  },
+  {
+   "locus": "2.9.15",
+   "V297": "itaque celeriter milites congesserunt",
+   "V514": "",
+   "contexto": "eam munitionem accedentes mittere itaque celeriter milites congesserunt"
+  },
+  {
+   "locus": "2.9.16",
+   "V297": "",
+   "V514": "itaque celeriter milites congesserunt",
+   "contexto": "posteaquam flamma circa illam"
+  },
+  {
+   "locus": "3.1.3",
+   "V297": "",
+   "V514": "item corporis centrum medium naturaliter est umbilicus namque si homo conlocatus fuerit supinus manibus et pedibus pansis circinique conlocatum centrum in umbilico eius circumagendo rotundationem utrarumque manuum et pedum digiti linea tangentur non minus quemadmodum schema rotundationis in corpore efficitur item quadrata designatio in eo inuenietur nam si a pedibus imis ad summum caput mensum erit eaque mensura relata fuerit ad manus pansas inuenietur eadem latitudo uti altitudo quemadmodum areae quae ad normam sunt quadratae",
+   "contexto": "debent habere commensus responsum"
+  },
+  {
+   "locus": "3.3.8",
+   "V297": "xxxiu",
+   "V514": "xxxuiii",
+   "contexto": "distulit interiores ordines columnarum xxxiu eaque ratione sumptus operasque"
+  },
+  {
+   "locus": "4.1.4",
+   "V297": "ionas est recepta",
+   "V514": "",
+   "contexto": "beneficio zmyrnaeorum ciuitas inter ionas est recepta"
+  },
+  {
+   "locus": "4.1.5",
+   "V297": "",
+   "V514": "ionas est recepta",
+   "contexto": "hae ciuitates cum caras"
+  },
+  {
+   "locus": "4.1.7",
+   "V297": "subtilitate et ornatu symmetriaque sunt mutuati",
+   "V514": "",
+   "contexto": "nuda specie alteram muliebri subtilitate et ornatu symmetriaque sunt mutuati"
+  },
+  {
+   "locus": "4.1.8",
+   "V297": "",
+   "V514": "subtilitate et ornatu symmetriaque sunt mutuati",
+   "contexto": "posteri uero elegantia subtilitateque"
+  },
+  {
+   "locus": "4.1.9",
+   "V297": "pupulis",
+   "V514": "poculis",
+   "contexto": "quibus ea uirgo uiua pupulis delectabatur nutrix collecta et"
+  },
+  {
+   "locus": "4.2.4",
+   "V297": "ita",
+   "V514": "",
+   "contexto": "est apud eos nominata ita"
+  },
+  {
+   "locus": "4.2.5",
+   "V297": "",
+   "V514": "ita",
+   "contexto": "uti autem in doricis"
+  },
+  {
+   "locus": "4.7.1",
+   "V297": "",
+   "V514": "item latitudo diuidatur in partes x",
+   "contexto": "fronti columnarum dispositioni relinquatur"
+  },
+  {
+   "locus": "4.7.2",
+   "V297": "item latitudo diuidatur in partes x",
+   "V514": "",
+   "contexto": "item latitudo diuidatur in partes x ex his ternae partes"
+  },
+  {
+   "locus": "4.8.3",
+   "V297": "isdem",
+   "V514": "ea",
+   "contexto": "uti supra scripta sunt isdem proportionibus atque symmetriis facienda"
+  },
+  {
+   "locus": "5.5.3",
+   "V297": "ita uti in minore theatro supra scriptum est",
+   "V514": "",
+   "contexto": "ea ex harmonia conlocetur ita uti in minore theatro supra scriptum est"
+  },
+  {
+   "locus": "5.5.4",
+   "V297": "",
+   "V514": "ita uti in minore theatro supra scriptum est",
+   "contexto": "in mediana autem prima"
+  },
+  {
+   "locus": "5.6.3",
+   "V297": "",
+   "V514": "gradus",
+   "contexto": "spectaculorum ubi subsellia componantur ne minus alti sint"
+  },
+  {
+   "locus": "5.9.2",
+   "V297": "aut ionico aut corinthio genere deformentur",
+   "V514": "",
+   "contexto": "sint quam exteriores sed aut ionico aut corinthio genere deformentur"
+  },
+  {
+   "locus": "5.9.3",
+   "V297": "",
+   "V514": "aut ionico aut corinthio genere deformentur",
+   "contexto": "columnarum autem proportiones et"
+  },
+  {
+   "locus": "5.10.1",
+   "V297": "",
+   "V514": "de frigidario in tepidarium ad eundem modum testudinesque alueolorum ex communi hypocausi calfaciantur",
+   "contexto": "aquae caldae exierit influat"
+  },
+  {
+   "locus": "5.10.4",
+   "V297": "dummodo",
+   "V514": "",
+   "contexto": "fieri pro copia hominum dummodo sint ita compositae quanta"
+  },
+  {
+   "locus": "5.12.3",
+   "V297": "habeat",
+   "V514": "",
+   "contexto": "proxime litus proclinatum latus habeat"
+  },
+  {
+   "locus": "5.12.4",
+   "V297": "",
+   "V514": "habeat",
+   "contexto": "deinde ad ipsam aquam"
+  },
+  {
+   "locus": "6.3.4",
+   "V297": "spatio tribuatur",
+   "V514": "ratio habeatur",
+   "contexto": "et arcae supra trabes spatio tribuatur alis dextra ac sinistra"
+  },
+  {
+   "locus": "7.praef.12",
+   "V297": "quibus uero felicitas maximum summumque contulit munus",
+   "V514": "",
+   "contexto": "mausoleo satyrus et pytheos quibus uero felicitas maximum summumque contulit munus"
+  },
+  {
+   "locus": "7.praef.13",
+   "V297": "",
+   "V514": "quibus uero felicitas maximum summumque contulit munus",
+   "contexto": "quorum enim artes aeuo"
+  },
+  {
+   "locus": "7.3.1",
+   "V297": "",
+   "V514": "caries nec uetustas nec umor possit nocere id est e buxo iunipero olea robore cupresso ceterisque similibus praeter quercum cum ea se torquendo rimas faciat quibus inest operibus",
+   "contexto": "materia comparentur cui nec"
+  },
+  {
+   "locus": "7.5.5",
+   "V297": "",
+   "V514": "tum licymnius mathematicus prodiit et ait",
+   "contexto": "opus probare fuissent parati"
+  },
+  {
+   "locus": "7.5.6",
+   "V297": "tum licymnius mathematicus prodiit et ait",
+   "V514": "",
+   "contexto": "tum licymnius mathematicus prodiit et ait alabandis satis acutos ad"
+  },
+  {
+   "locus": "7.5.8",
+   "V297": "",
+   "V514": "quae commonefacere potui ut ab errore discedatur in opere tectorio satis exposui nunc de apparitionibus ut succurrere potuerit dicam et primum quoniam de calce initio est dictum nunc de marmore ponam",
+   "contexto": "non a redemptore repraesententur"
+  },
+  {
+   "locus": "7.6.1",
+   "V297": "quae commonefacere potui ut ab errore discedatur in opere tectorio satis exposui nunc de apparitionibus ut succurrere potuerit dicam et primum quoniam de calce initio est dictum nunc de marmore ponam",
+   "V514": "",
+   "contexto": "quae commonefacere potui ut ab errore discedatur in opere tectorio satis exposui nunc de apparitionibus ut succurrere potuerit dicam et primum quoniam de calce initio est dictum nunc de marmore ponam marmor non eodem genere"
+  },
+  {
+   "locus": "7.6.1",
+   "V297": "",
+   "V514": "colores uero alii sunt qui per se certis locis procreantur et inde fodiuntur nonnulli ex aliis rebus tractationibus aut mixtionum temperaturis compositi perficiuntur uti praestent eandem in operibus utilitatem",
+   "contexto": "manu contusa et subcreta"
+  },
+  {
+   "locus": "7.7.1",
+   "V297": "colores uero alii sunt qui per se certis locis procreantur et inde fodiuntur nonnulli ex aliis rebus tractationibus aut mixtionum temperaturis compositi perficiuntur uti praestent eandem in operibus utilitatem",
+   "V514": "",
+   "contexto": "colores uero alii sunt qui per se certis locis procreantur et inde fodiuntur nonnulli ex aliis rebus tractationibus aut mixtionum temperaturis compositi perficiuntur uti praestent eandem in operibus utilitatem primum autem exponemus quae"
+  },
+  {
+   "locus": "7.7.1",
+   "V297": "item rubricae copiosae multis locis eximuntur sed optimae paucis uti ponto sinope et aegypto in hispania balearibus non minus etiam lemno cuius insulae uectigalia atheniensibus senatus populusque romanus concessit fruenda paraetonium uero ex ipsis locis unde foditur habet nomen eadem ratione melinum quod eius metallum in sola cycladi melo dicitur esse",
+   "V514": "",
+   "contexto": "politionem operum sunt usi item rubricae copiosae multis locis eximuntur sed optimae paucis uti ponto sinope et aegypto in hispania balearibus non minus etiam lemno cuius insulae uectigalia atheniensibus senatus populusque romanus concessit fruenda paraetonium uero ex ipsis locis unde foditur habet nomen eadem ratione melinum quod eius metallum in sola cycladi melo dicitur esse"
+  },
+  {
+   "locus": "7.7.4",
+   "V297": "auripigmentum quod graece dicitur foditur ponto sandaraca item pluribus locis sed optima ponto proxime flumen hypanim habet metallum",
+   "V514": "",
+   "contexto": "cretae primum est inuentum auripigmentum quod graece dicitur foditur ponto sandaraca item pluribus locis sed optima ponto proxime flumen hypanim habet metallum"
+  },
+  {
+   "locus": "7.9.3",
+   "V297": "atque",
+   "V514": "fiatque",
+   "contexto": "pariete calfaciundo sudare cogat atque ut peraequetur deinde tunc"
+  },
+  {
+   "locus": "7.10.3",
+   "V297": "",
+   "V514": "ita erit atramentum tectoribus non inuenustum",
+   "contexto": "mortario cum glutino terantur"
+  },
+  {
+   "locus": "7.10.4",
+   "V297": "ita erit atramentum tectoribus non inuenustum",
+   "V514": "",
+   "contexto": "ita erit atramentum tectoribus non inuenustum non minus si faex"
+  },
+  {
+   "locus": "8.praef.4",
+   "V297": "",
+   "V514": "cum ergo et a physicis et philosophis et ab sacerdotibus iudicetur ex potestate aquae omnes res constare putaui quoniam in prioribus septem uoluminibus rationes aedificiorum sunt expositae in hoc oportere de inuentionibus aquae quasque habeat in locorum proprietatibus uirtutes quibusque rationibus ducatur et quemadmodum ante probetur scribere",
+   "contexto": "gratias agunt diuinae benignitati"
+  },
+  {
+   "locus": "8.1.6",
+   "V297": "",
+   "V514": "haec autem maxime in montibus et regionibus septentrionalibus sunt quaerenda eo quod in his et suauiora et salubriora et copiosiora inueniuntur auersi enim sunt solis cursui et in his locis primum crebrae sunt arbores et siluosae ipsique montes suas habent umbras obstantes et radii solis non directi perueniunt ad terram nec possunt",
+   "contexto": "unum locum omnes conducendi"
+  },
+  {
+   "locus": "8.3.11",
+   "V297": "is",
+   "V514": "",
+   "contexto": "ponto est flumen hypanis is a capite profluit circiter"
+  },
+  {
+   "locus": "8.3.13",
+   "V297": "umorum",
+   "V514": "",
+   "contexto": "nisi proprietates singularum terrarum umorum in regionibus ad solis"
+  },
+  {
+   "locus": "8.3.13",
+   "V297": "regionibus",
+   "V514": "generibus",
+   "contexto": "singularum terrarum umorum in regionibus ad solis potestatem temperarentur"
+  },
+  {
+   "locus": "8.3.14",
+   "V297": "ea",
+   "V514": "",
+   "contexto": "et laodicensium fontes ad ea flumina cum pecora suis"
+  },
+  {
+   "locus": "8.3.17",
+   "V297": "",
+   "V514": "item sunt nonnullae acidae uenae fontium uti lyncesto et in italia uelino campania teano aliisque locis pluribus quae hanc habent uirtutem uti calculos in uesicis qui nascuntur in corporibus hominum potionibus discutiant",
+   "contexto": "serpentium ossa iacentia apparent"
+  },
+  {
+   "locus": "8.6.1",
+   "V297": "sicilico",
+   "V514": "semipede",
+   "contexto": "minus in centenos pedes sicilico eaeque structurae confornicentur ut"
+  },
+  {
+   "locus": "8.6.10",
+   "V297": "si",
+   "V514": "",
+   "contexto": "quod ex eo procreatur si id est uitiosum non"
+  },
+  {
+   "locus": "8.6.15",
+   "V297": "",
+   "V514": "quae potui de aquae uirtute et uarietate quasque habeat utilitates quibusque rationibus ducatur et probetur in hoc uolumine posui de gnomonicis uero rebus et horologiorum rationibus insequenti perscribam",
+   "contexto": "necesse erit et extenuari"
+  },
+  {
+   "locus": "9.praef.3",
+   "V297": "",
+   "V514": "eorum autem cogitata utiliter hominibus ad uitam explicandam e pluribus singula paucorum uti exempla ponam quae recognoscentes necessario his tribui honores oportere homines confitebuntur",
+   "contexto": "sedes eos dedicandos iudicari"
+  },
+  {
+   "locus": "9.1.14",
+   "V297": "",
+   "V514": "iouis autem inter martis et saturni circinationem currens maiorem quam mars minorem quam saturnus peruolat cursum item reliquae stellae quo maiore absunt spatio ab extremo caelo proxumamque habent terrae circinationem celerius peruagari uidentur quod quaecumque earum minorem circinationem peragens saepius subiens praeterit superiorem",
+   "contexto": "re supra scriptum habemus"
+  },
+  {
+   "locus": "9.1.16",
+   "V297": "tangit que",
+   "V514": "tangitque",
+   "contexto": "est proxima extremo mundo tangit que congelatas caeli regiones uehementer"
+  },
+  {
+   "locus": "9.1.16",
+   "V297": "",
+   "V514": "de zona xii signorum et septem astrorum contrario opere ac cursu quibus rationibus et numeris transeunt e signis in signa et circumitum eorum uti a praeceptoribus accepi exposui nunc de crescenti lumine lunae deminutioneque uti traditum est nobis a maioribus dicam",
+   "contexto": "temperatissimosque habere uidetur effectus"
+  },
+  {
+   "locus": "9.2.1",
+   "V297": "",
+   "V514": "pilam esse ex dimidia parte candentem reliqua habere caeruleo colore cum autem cursum itineris sui peragens subierit sub orbem solis tunc eam radiis et impetu caloris corripi conuertique candentem propter eius proprietatem luminis ad lumen cum autem ea uocata ab solis orbi superiora spectent tunc inferiorem partem eius quod candens non sit propter aeris similitudinem obscuram uideri cum ad perpendiculum ea sit ad eius radios totum lumen ad superiorem speciem retineri et tunc eam uocari primam",
+   "contexto": "patefecit ita est professus"
+  },
+  {
+   "locus": "9.2.4",
+   "V297": "",
+   "V514": "nunc ut in singulis mensibus sol signa peruadens auget et minuit dierum et horarum spatia dicam",
+   "contexto": "ita menstruas perficit rationes"
+  },
+  {
+   "locus": "9.3.3",
+   "V297": "",
+   "V514": "nunc de ceteris sideribus quae sunt dextra ac sinistra zonam signorum meridiana septentrionalique parte mundi stellis disposita figurataque dicam",
+   "contexto": "dierum et horarum spatia"
+  },
+  {
+   "locus": "9.4.6",
+   "V297": "",
+   "V514": "quae sunt ad dextram orientis inter zonam signorum et septentrionum sidera in caelo disposita dixi esse nunc explicabo quae ad sinistram orientis meridianisque partibus ab natura sunt distributa",
+   "contexto": "complures sunt stellae confusae"
+  },
+  {
+   "locus": "9.8.4",
+   "V297": "tractu",
+   "V514": "tactu",
+   "contexto": "ctesibius cum animaduertisset ex tractu caeli et expressionibus spiritus"
+  },
+  {
+   "locus": "9.8.10",
+   "V297": "",
+   "V514": "de administratione autem aquae quemadmodum se temperet ad rationem sic erit faciendum",
+   "contexto": "efficit horarum et dierum"
+  },
+  {
+   "locus": "9.8.11",
+   "V297": "de administratione autem aquae quemadmodum se temperet ad rationem sic erit faciendum",
+   "V514": "",
+   "contexto": "de administratione autem aquae quemadmodum se temperet ad rationem sic erit faciendum post frontem horologii intra"
+  },
+  {
+   "locus": "9.8.15",
+   "V297": "uii",
+   "V514": "uiii",
+   "contexto": "circumactione ad capricorni partem uii restituit celeritate salientis brumales"
+  },
+  {
+   "locus": "9.8.15",
+   "V297": "",
+   "V514": "quae sunt in horologiorum descriptionibus rationes et apparatus ut sint ad usum expeditiores quam apertissime potui perscripsi restat nunc de machinationibus et de earum principiis ratiocinari itaque de his ut corpus emendatum architecturae perficiatur insequenti uolumine incipiam scribere",
+   "contexto": "salientis brumales horarum breuitates"
+  },
+  {
+   "locus": "10.2.10",
+   "V297": "",
+   "V514": "harum machinationum omnium quae supra sunt scriptae rationes non modo ad has res sed etiam ad onerandas et exonerandas naues sunt paratae aliae erectae aliae planae in carchesiis uersatilibus conlocatae non minus sine tignorum erectionibus in plano etiam eadem ratione et temperatis funibus et trocleis subductiones nauium efficiuntur",
+   "contexto": "proclinando onus deponere potest"
+  },
+  {
+   "locus": "10.4.3",
+   "V297": "",
+   "V514": "cum autem altius extollendum erit eadem ratio communicabitur",
+   "contexto": "sic rota fiet circum"
+  },
+  {
+   "locus": "10.6.4",
+   "V297": "",
+   "V514": "quae de materia fiunt organa ad hauriendam aquam quibus rationibus perficiantur quibusque rebus motus recipientia praestent uersationibus infinitas utilitates ut essent notiora quam apertissime potui perscripta sunt in illo tempore",
+   "contexto": "est in ipso tempore"
+  },
+  {
+   "locus": "10.8.6",
+   "V297": "",
+   "V514": "quantum potui niti ut obscura res per scripturam dilucide pronuntiaretur contendi sed haec non est facilis ratio neque omnibus expedita ad intellegendum praeter eos qui in his generibus habent exercitationem quodsi qui parum intellexerit ex scriptis cum ipsam rem cognoscet profecto inueniet curiose et subtiliter omnia ordinata",
+   "contexto": "uarietatibus sonantes excitant uoces"
+  },
+  {
+   "locus": "10.9.7",
+   "V297": "",
+   "V514": "quae pacatis et sine metu temporibus ad utilitatem et delectationem paranda quemadmodum debeant fieri peregi esse futurum",
+   "contexto": "indicabit miliaria spatia nauigationis"
+  },
+  {
+   "locus": "10.10.1",
+   "V297": "",
+   "V514": "omnes proportiones eorum organorum ratiocinandorum sumuntur ex proposita sagittae longitudine quam id organum mittere debet eiusque nonae partis fit foraminis in capitulis magnitudo per quae tenduntur nerui torti qui bracchia continere debent",
+   "contexto": "symmetriis comparari possint exponam"
+  },
+  {
+   "locus": "10.10.2",
+   "V297": "",
+   "V514": "s",
+   "contexto": "ad foramen spatium foraminis a foramine ad medianam"
+  },
+  {
+   "locus": "10.10.2",
+   "V297": "",
+   "V514": "s",
+   "contexto": "medianam parastaticam item foraminis latitudo parastados mediae unius"
+  },
+  {
+   "locus": "10.10.4",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "foraminum xui crassitudo foraminis altitudo s÷ columellae basis"
+  },
+  {
+   "locus": "10.10.4",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "qua statuitur columella foraminis crassitudo fz columellae longitudo"
+  },
+  {
+   "locus": "10.10.4",
+   "V297": "",
+   "V514": "c c",
+   "contexto": "latitudo foraminis s÷ crassitudo eius capreoli tres quorum"
+  },
+  {
+   "locus": "10.10.4",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "isk antefixi latitudo foraminis crassitudo i"
+  },
+  {
+   "locus": "10.10.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "altitudinis iis latitudinis si cherolabae sucularum foraminum ii"
+  },
+  {
+   "locus": "10.10.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "ii s crassitudo foraminis latitudo is transuersariis cum"
+  },
+  {
+   "locus": "10.10.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "cum cardinibus longitudo foraminum latitudo is et crassitudo"
+  },
+  {
+   "locus": "10.10.5",
+   "V297": "cc",
+   "V514": "c c",
+   "contexto": "fz in summo foraminis cc z curuaturae foraminis uiii"
+  },
+  {
+   "locus": "10.11.3",
+   "V297": "",
+   "V514": "si pondo sex",
+   "contexto": "iiii digitorum sex et digitorum uii decem pondo"
+  },
+  {
+   "locus": "10.11.3",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "et lx pedis i c et lxxx pedis"
+  },
+  {
+   "locus": "10.11.3",
+   "V297": "",
+   "V514": "pondo",
+   "contexto": "et digitorum uii ccclx pedis i s"
+  },
+  {
+   "locus": "10.11.5",
+   "V297": "",
+   "V514": "s i",
+   "contexto": "crassitudo eius foraminis constituatur modioli foraminum duo"
+  },
+  {
+   "locus": "10.11.5",
+   "V297": "",
+   "V514": "s",
+   "contexto": "in foramine inditur foraminis ad extremum autem latitudo"
+  },
+  {
+   "locus": "10.11.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "extremum autem latitudo foraminis parastatarum longitudo foraminis usf"
+  },
+  {
+   "locus": "10.11.5",
+   "V297": "",
+   "V514": "c c",
+   "contexto": "pars dimidia crassitudo foraminis et partis lx adicitur"
+  },
+  {
+   "locus": "10.11.6",
+   "V297": "",
+   "V514": "i i z",
+   "contexto": "crassitudo dimidium foraminis cardines crassitudo foraminis curuatura regulae"
+  },
+  {
+   "locus": "10.11.6",
+   "V297": "",
+   "V514": "i",
+   "contexto": "foraminis cardines crassitudo foraminis curuatura regulae exterioris regulae"
+  },
+  {
+   "locus": "10.11.6",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "crassitudo foraminis curuatura regulae exterioris regulae latitudo et"
+  },
+  {
+   "locus": "10.11.6",
+   "V297": "foraminisk",
+   "V514": "foraminis c c c k",
+   "contexto": "inferioribus k mensae transuersarii foraminisk"
+  },
+  {
+   "locus": "10.11.7",
+   "V297": "ik",
+   "V514": "i k",
+   "contexto": "longitudo foraminum xiii crassitudo ik interuallum medium latitudo foraminis"
+  },
+  {
+   "locus": "10.11.7",
+   "V297": "",
+   "V514": "latitudo",
+   "contexto": "membro quod graeci uocant crassitudo longitudo foraminum iii"
+  },
+  {
+   "locus": "10.11.7",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "foraminis s plentigomatos foraminis et sicilicus quod autem"
+  },
+  {
+   "locus": "10.11.8",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "regularum latitudo foraminis crassitudo chelonii replum quod est"
+  },
+  {
+   "locus": "10.11.8",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "k scaporum climacidos latitudo crassitudo foraminis xii k"
+  },
+  {
+   "locus": "10.11.9",
+   "V297": "",
+   "V514": "k",
+   "contexto": "foraminis in summo crassitudo basis quae appellatur longitudo"
+  },
+  {
+   "locus": "10.11.9",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "crassitudo et latitudo foraminis compingitur autem dimidia altitudinis"
+  },
+  {
+   "locus": "10.11.9",
+   "V297": "",
+   "V514": "de ballistis et catapultis symmetrias quas maxime expeditas putaui exposui quemadmodum autem contentionibus eae temperentur e neruo capilloque tortis rudentibus quantum comprehendere scriptis potuero non praetermittam",
+   "contexto": "foraminis in extremis f"
+  },
+  {
+   "locus": "10.12.2",
+   "V297": "",
+   "V514": "de his rebus quae potui dixi restat mihi de oppugnatoriis rebus quemadmodum machinationibus et duces uictores et ciuitates defensae esse possint",
+   "contexto": "musicis auditionibus catapultae temperantur"
+  },
+  {
+   "locus": "10.13.3",
+   "V297": "",
+   "V514": "itaque diades scriptis suis ostendit se inuenisse turres ambulatorias quas etiam dissolutas in exercitu circumferre solebat praeterea terebram et ascendentem machinam qua ad murum plano pede transitus esse posset etiam coruum demolitorem quem nonnulli gruem appellant",
+   "contexto": "qui cum alexandro militauerunt"
+  },
+  {
+   "locus": "10.13.8",
+   "V297": "animaduerterest",
+   "V514": "animaduerteret",
+   "contexto": "nihil putaui scribendum quod animaduerterest eam machinam nullam habere"
+  },
+  {
+   "locus": "10.15.3",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "erant erecti pedes xuiii latitudine s÷ crassitudine fz"
+  },
+  {
+   "locus": "10.15.3",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "compactionem latae pede i crassae s÷ supra eam"
+  },
+  {
+   "locus": "10.15.5",
+   "V297": "",
+   "V514": "sign",
+   "contexto": "latitudine pes crassitudine s"
+  },
+  {
+   "locus": "10.15.6",
+   "V297": "",
+   "V514": "a capite autem ad imam calcem tigni contenti fuerunt funes iii crassitudine digitorum uiii ita religati quemadmodum naues a puppi ad proram continentur eique funes praecinctura e transuersis erant religati habentes inter se palmipedalia spatia insuper coriis crudis totus aries erat inuolutus ex quibus autem funibus pendebat eorum capita fuerunt ex ferro factae quadruplices catenae et ipsae coriis crudis erant inuolutae",
+   "contexto": "fixae fuerant in materia"
+  },
+  {
+   "locus": "10.15.7",
+   "V297": "c c c c l",
+   "V514": "ccccl",
+   "contexto": "quattuor milium quod fit c c c c l x x x pondo"
+  },
+  {
+   "locus": "10.16.12",
+   "V297": "",
+   "V514": "quas potui de machinis expedire rationes pacis bellique temporibus et utilissimas putaui in hoc uolumine perfeci in prioribus uero nouem de singulis generibus et partibus comparaui uti totum corpus omnia architecturae membra in decem uoluminibus haberet explicata",
+   "contexto": "architectorum sollertia sunt liberatae"
+  }
+ ]
+}

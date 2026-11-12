@@ -1,8 +1,10 @@
 {
  "schema": "cotejo-krohn-rose/1",
- "metodo": "Concordancia del latín de V514 con Krohn (1912) y Rose (1899), y erratas.\n\nPara cada uno de los 731 loci se alinea el latín de V514, palabra por palabra,\ncon el lugar correspondiente de cada edición (OCR de Internet Archive):\n\n  1. Se localiza el pasaje en la edición por votación de trigramas y se alinea\n     una ventana con difflib (sin descarte automático).\n  2. Una palabra de V514 cuenta como atestiguada si coincide con Krohn o con\n     Rose: un error de OCR en una de las dos no se toma por diferencia de V514.\n  3. Diferencias sólo gráficas (asimilación ad-/con-/in-/ex-, ae/e, y/i, ph/f,\n     consonante doble, i/j, u/v) se cuentan aparte: no son errores.\n  4. Errata probable: Krohn y Rose concuerdan entre sí, V514 difiere a una o\n     dos letras de distancia y no es variante gráfica. Si el aparato del autor\n     cita la forma en ese locus, se marca «justificada en el aparato».\n  5. V514 frente a V554 (mismo latín en las dos ediciones del autor): toda\n     diferencia es candidata a errata en una de las dos.\n\nLímites: el OCR de Krohn y Rose tiene errores propios; los porcentajes son un\nmínimo (subestiman la concordancia real). Budé no está disponible en texto.",
+ "edicion": "V514",
+ "contrastadaCon": "V554",
+ "metodo": "Concordancia del latín de V514 con Krohn (1912) y Rose (1899), y erratas.\n\nPara cada uno de los 731 loci se alinea el latín de V514, palabra por palabra,\ncon el lugar correspondiente de cada edición (OCR de Internet Archive):\n\n  1. Se localiza el pasaje en la edición por votación de trigramas y se alinea\n     una ventana con difflib (sin descarte automático).\n  2. Una palabra de V514 cuenta como atestiguada si coincide con Krohn o con\n     Rose: un error de OCR en una de las dos no se toma por diferencia de V514.\n  3. Diferencias sólo gráficas (asimilación ad-/con-/in-/ex-, ae/e, y/i, ph/f,\n     consonante doble, i/j, u/v) se cuentan aparte: no son errores.\n  4. Errata probable: Krohn y Rose concuerdan entre sí, V514 difiere a una o\n     dos letras de distancia y no es variante gráfica. Si el aparato del autor\n     cita la forma en ese locus, se marca «justificada en el aparato».\n  5. Contraste entre ediciones del autor (V514 frente a V554; V297 frente a\n     V514): toda diferencia es candidata a errata en una de las dos.\n\nUso: python3 scripts/cotejo-krohn-rose.py [recensio-es|theory-en]\n\nLímites: el OCR de Krohn y Rose tiene errores propios; los porcentajes son un\nmínimo (subestiman la concordancia real). Budé no está disponible en texto.",
  "global": {
-  "palabrasV514": 57654,
+  "palabras": 57654,
   "concordanciaExacta": 97.28,
   "concordanciaConGrafia": 97.29,
   "conKrohn": 88.91,
@@ -81,5 +83,5 @@
    "estado": "errata probable"
   }
  ],
- "diferenciasV514V554": []
+ "diferenciasEntreEdiciones": []
 }
