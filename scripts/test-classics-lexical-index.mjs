@@ -85,9 +85,22 @@ yes("sólo pasajes con la forma exacta",exacta.every(r=>P.fold(r.left+r.hit+r.ri
 group("Frase");
 const frase=await Index.phraseSearch("ratiocinatione et fabrica");
 yes("intersecta por obra antes de bajar texto",frase.candidateWorks>=0,"obras candidatas: "+frase.candidateWorks);
-yes("si devuelve líneas, contienen la frase literal",
- frase.rows.every(r=>P.fold(r.left+r.hit+r.right).includes(P.fold("ratiocinatione et fabrica"))),
- "líneas: "+frase.rows.length);
+/* Dos niveles, y cada uno con su exigencia: la línea rotulada como frase
+   literal tiene que contener la frase; la rotulada como otro orden, todas sus
+   palabras. Una línea del segundo nivel no debe presentarse como la frase. */
+const buscada="ratiocinatione et fabrica";
+yes("cada línea cumple lo que su rótulo promete",
+ frase.rows.every(r=>{
+  const texto=P.fold(r.left+r.hit+r.right);
+  if(r.match==="frase literal")return texto.includes(P.fold(buscada));
+  const palabras=P.fold(buscada).split(" ").filter(w=>w.length>=3);
+  const presentes=new Set(texto.split(" "));
+  const raices=new Set([...presentes].map(w=>P.stem(w)));
+  return palabras.every(w=>presentes.has(w)||raices.has(P.stem(w)));
+ }),
+ "líneas: "+frase.rows.length+" (literales "+frase.literal+", en otro orden "+frase.reordered+")");
+yes("las líneas en otro orden se rotulan como tales",
+ frase.rows.filter(r=>r.match!=="frase literal").every(r=>/otro orden/.test(r.match||"")));
 
 group("Coste");
 console.log("  "+requests+" peticiones · "+(bytes/1048576).toFixed(2)+" MB leídos en toda la batería");
