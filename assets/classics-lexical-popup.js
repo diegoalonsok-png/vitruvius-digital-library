@@ -216,10 +216,9 @@ targetRoot.addEventListener("click",event=>{
   showInlineLexicon(mark);
   void openMark(mark);
  }else if(inBibliotheca){
-  // One dictionary per click: prevent the global dictionary-everywhere
-  // handler from drawing a second, empty overlay above this lexical dialog.
-  event.stopImmediatePropagation();
-  void openMark(mark);
+  // Bibliotheca owns a richer dictionary panel with citation/export actions.
+  // Do not intercept its marked-word click: let the reader handler open it.
+  return;
  }else if(inLexiconViewer||inClassicalReader){
   // These readers already have link/navigation or small lexical popups:
   // yellow-word clicks open the larger viewer without competing overlays.
@@ -238,7 +237,8 @@ targetRoot.addEventListener("keydown",event=>{
  const mark=markOf(event.target);
  if(!mark||!supported.has(langCode(mark)))return;
  event.preventDefault();
- if(!inBibliotheca)event.stopImmediatePropagation();
+ if(inBibliotheca)return; // Native Bibliotheca dictionary owns keyboard activation.
+ event.stopImmediatePropagation();
  showInlineLexicon(mark);
  void openMark(mark);
 },true);

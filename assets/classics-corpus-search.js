@@ -316,13 +316,17 @@ async function semanticSearch(q,{limit=6}={}){
  const unanchored=new Set((staticIndex?.notIndexedFormats||[])
    .filter(x=>x.format==="html-text"&&/no stable passage anchor/i.test(x.reason||""))
    .map(x=>x.path));
+ // A newly indexed book may be present in the live registry before the
+ // optional postings file is rebuilt. Keep the verified postings for existing
+ // books, but scan every unindexed edition live; never silently drop evidence.
+ const hostedKeys=new Set(hosted.filter(e=>eligible.has(e.format)).map(indexKey));
+ const indexedAreHosted=staticIndex?.versions?.every(v=>
+   hostedKeys.has([v.workId,v.language,v.source,v.edition||""].join("|")));
  const indexValid=Boolean(staticIndex&&hosted.length&&
-   staticIndex.registryEditionCount===hosted.length&&
+   staticIndex.registryEditionCount<=hosted.length&&
    staticIndex.indexedEditions===staticIndex.versions.length&&
    staticIndex.indexedEditions+unanchored.size===staticIndex.eligibleEditions&&
-   !staticIndex.errors?.length&&
-   hosted.filter(e=>eligible.has(e.format)).every(e=>
-     posted.has(indexKey(e))||(e.format==="html-text"&&unanchored.has(e.path))));
+   !staticIndex.errors?.length&&indexedAreHosted);
  const indexed=new Map(indexValid?staticIndex.versions.map(v=>[
   [v.workId,v.language,v.source,v.edition||""].join("|"),v
  ]):[]);
