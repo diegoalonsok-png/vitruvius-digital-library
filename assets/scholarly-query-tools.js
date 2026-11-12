@@ -8,7 +8,8 @@
   "vitruvia.html":{input:"query",form:"search-form",label:"Vitruvia · búsqueda general"},
   "vitruvia-lexicon.html":{input:"lx-q",form:null,label:"Lexicon · investigación léxica"},
   "bibliotheca-graeca-latina.html":{input:"classic-query",form:"search-form",label:"Bibliotheca · corpus clásico"},
-  "index-locorum.html":{input:"query",form:"form",label:"Index locorum · concordancias"}
+  "index-locorum.html":{input:"query",form:"form",label:"Index locorum · concordancias"},
+  "onomasticon.html":{input:"ov-search",form:null,label:"Onomasticon · nombres y lugares"}
  };
  const page=location.pathname.split("/").pop()||"index.html";
  const config=configs[page];

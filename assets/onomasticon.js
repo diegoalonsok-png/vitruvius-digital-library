@@ -204,6 +204,7 @@ function updateActions(){
  const el=$("ov-current-result");if(!el)return;
  el.textContent=tab==="stats"?"Estadísticas V514":currentEntity()?"Ficha seleccionada: "+currentEntity().name:(query?"Búsqueda textual: "+query:"Selecciona un resultado");
  for(const id of ["ov-print-result","ov-email-result","ov-whatsapp-result"]){
+  if(!$(id))continue;
   const button=$(id);if(button)button.disabled=tab!=="stats"&&!currentEntity()&&!query.trim();
  }
 }
@@ -222,12 +223,15 @@ function restoreResultPrint(){
 window.addEventListener("beforeprint",prepareResultPrint);
 window.addEventListener("afterprint",restoreResultPrint);
 function bindActions(){
- $("ov-print-result").addEventListener("click",()=>window.print());
- $("ov-email-result").addEventListener("click",()=>{
+ // Los botones de compartir se retiraron en favor del módulo académico común
+ // (assets/scholarly-query-tools.js), que copia enlace y referencia citable.
+ // Las uniones quedan condicionadas para que la página no dependa de ellos.
+ $("ov-print-result")?.addEventListener("click",()=>window.print());
+ $("ov-email-result")?.addEventListener("click",()=>{
   const subject="Vitruvio · "+exportTitle();
   location.href="mailto:?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(exportSummary());
  });
- $("ov-whatsapp-result").addEventListener("click",()=>{
+ $("ov-whatsapp-result")?.addEventListener("click",()=>{
   window.open("https://wa.me/?text="+encodeURIComponent(exportSummary()),"_blank","noopener,noreferrer");
  });
 }
