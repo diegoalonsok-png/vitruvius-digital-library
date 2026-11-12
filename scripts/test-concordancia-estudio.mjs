@@ -47,8 +47,18 @@ comprobar(!!d.getElementById("ce-lupa"),"botón de lupa montado");
 comprobar(d.querySelectorAll(".ce-split").length===2,"dos divisores de ancho",
   d.querySelectorAll(".ce-split").length+" encontrados");
 comprobar(!!d.querySelector("[data-lexicon-palette]"),"anclaje de la botonera de fondos");
-comprobar(!!d.querySelector(".on-masthead"),"encabezado con la estética del Lexicon");
+comprobar(!!d.querySelector(".on-nav .ce-tools")&&!d.querySelector(".on-masthead"),"encabezado sutil con botonera del Lexicon, sin rótulo grande");
+const rot=[...d.querySelectorAll(".ce-bar label")].map(l=>[l.firstChild.nodeValue.trim(),l.querySelector("select")?.id]);
+comprobar(JSON.stringify(rot)===JSON.stringify([["Locus","ce-locus"],["Prefacio","ce-praef"],["Voz capital","ce-verbum"]]),
+  "cada rótulo está sobre su desplegable",JSON.stringify(rot));
 
+// Los controles globales de idioma y tema llegan después, en una caja flotante.
+{const sr=readFileSync("assets/secondary-reader-controls.js","utf8");try{w.eval(sr)}catch(e){}
+ if(!d.getElementById("vitruvius-secondary-toolbar")){const tb=d.createElement("div");tb.id="vitruvius-secondary-toolbar";
+  tb.innerHTML='<label><select id="secondary-language"></select></label><button id="secondary-theme"></button>';d.body.append(tb)}
+ await new Promise(r=>setTimeout(r,150));
+ comprobar(d.getElementById("vitruvius-secondary-toolbar")?.parentNode===d.querySelector(".ce-tools"),
+  "idioma y tema quedan dentro de la botonera, en la misma línea");}
 console.log("\nPrefacios en el desplegable");
 const sel=d.getElementById("ce-praef");
 const opciones=[...(sel?.options||[])].slice(1).map(o=>o.value);
@@ -162,6 +172,9 @@ for(const [lang,titulo,buscar,consultar] of [
   comprobar(c===consultar,`${lang}: botón de cada resultado`,c);
   comprobar(lang==="es"?n.includes("editoriales disponibles"):!n.includes("editoriales disponibles"),`${lang}: línea de recuento`,n.slice(0,60));
 }
+const rot2=[...d.querySelectorAll(".ce-bar label")].map(l=>[l.firstChild.nodeValue.trim(),l.querySelector("select")?.id]);
+comprobar(JSON.stringify(rot2)===JSON.stringify([["Locus","ce-locus"],["Prefacio","ce-praef"],["Voz capital","ce-verbum"]]),
+  "tras cambiar de idioma los rótulos no se corren",JSON.stringify(rot2));
 comprobar(d.getElementById("f-latin").textContent===latinAntes,"el latín del visor no se tocó");
 comprobar(d.getElementById("f-translation").textContent===tradAntes,"la traducción del visor no se tocó");
 comprobar(d.querySelector('[data-ce-i18n="intro"] i')?.textContent==="De architectura",

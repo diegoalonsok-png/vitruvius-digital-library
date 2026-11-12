@@ -273,8 +273,27 @@ function pintarLectura(destino,diplomatica){
  }
 }
 
+/* El idioma y el tema los monta secondary-reader-controls.js en una caja
+   flotante aparte; se trae a la botonera para que todo quede en una línea. */
+function adoptarControles(){
+ const destino=document.querySelector(".ce-tools");
+ if(!destino)return;
+ const traer=()=>{
+  const tb=document.getElementById("vitruvius-secondary-toolbar");
+  if(tb&&tb.parentNode!==destino){destino.append(tb);document.body.classList.remove("vitruvius-secondary-controls")}
+  const aa=document.querySelector(".site-typeface-tool");
+  if(aa&&aa.parentNode!==destino)destino.append(aa);
+  return !!tb;
+ };
+ if(traer()&&document.querySelector(".ce-tools .site-typeface-tool"))return;
+ const obs=new MutationObserver(()=>{traer()});
+ obs.observe(document.body,{childList:true,subtree:true});
+ setTimeout(()=>obs.disconnect(),8000);
+}
+
 /* ---------- Montaje ---------- */
 async function init(){
+ adoptarControles();
  if(!$("f-folio"))return;
  montarCapa();
  const lupa=montarLupa();
@@ -287,9 +306,9 @@ async function init(){
  const selVoz=el("select",{id:"ce-verbum"});
  const btnLupa=el("button",{type:"button",id:"ce-lupa","aria-pressed":"false",text:t("lupa")});
  barra.append(
-  el("label",{for:"ce-locus"},document.createTextNode(t("locus")),selLocus),
-  el("label",{for:"ce-praef"},document.createTextNode(t("prefacio")),selPref),
-  el("label",{for:"ce-verbum"},document.createTextNode(t("verbum")),selVoz),
+  el("label",{for:"ce-locus","data-ce-rot":"locus"},document.createTextNode(t("locus")),selLocus),
+  el("label",{for:"ce-praef","data-ce-rot":"prefacio"},document.createTextNode(t("prefacio")),selPref),
+  el("label",{for:"ce-verbum","data-ce-rot":"verbum"},document.createTextNode(t("verbum")),selVoz),
   btnLupa,
   el("p",{class:"ce-hint",id:"ce-rubrica-nota"}));
  document.querySelector(".folio-workspace").before(barra);
@@ -419,9 +438,11 @@ function traducirPagina(){
 function traducir(){
  idioma=idiomaActual();
  traducirPagina();
- const etiquetas=document.querySelectorAll(".ce-bar label");
- if(etiquetas[0]?.firstChild)etiquetas[0].firstChild.nodeValue=t("prefacio");
- if(etiquetas[1]?.firstChild)etiquetas[1].firstChild.nodeValue=t("verbum");
+ for(const r of document.querySelectorAll(".ce-bar label[data-ce-rot]"))
+  if(r.firstChild)r.firstChild.nodeValue=t(r.getAttribute("data-ce-rot"));
+ const pl=$("ce-locus");
+ if(pl&&pl.options.length){pl.options[0].textContent=t("elegirLocus");
+  for(const g of pl.querySelectorAll("optgroup"))g.label=g.label.replace(/^\S+/,t("libro"))}
  const p0=$("ce-praef");
  if(p0)[...p0.options].slice(1).forEach(o=>{o.textContent=o.textContent.replace(/^([✓·] )\S+/,"$1"+t("prefacio"))});
  const b=$("ce-lupa");
