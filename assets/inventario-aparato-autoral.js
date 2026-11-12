@@ -57,12 +57,12 @@ function matchesQuery(text,query){
  if(!query)return true;
  if(clean(text).includes(clean(query)))return true;
  if(variants.size===1)return false;
- return [...String(text??"").matchAll(/[\\p{L}\\p{M}]+/gu)].some(m=>variants.has(clean(m[0])));
+ return [...String(text??"").matchAll(/[\p{L}\p{M}]+/gu)].some(m=>variants.has(clean(m[0])));
 }
 function highlightQuery(el,value){
  const text=String(value??""),query=$("apa-query")?.value.trim();
  if(!query){el.textContent=text;return el;}
- const variants=searchVariants(query),tokens=[...text.matchAll(/[\\p{L}\\p{M}]+/gu)];
+ const variants=searchVariants(query),tokens=[...text.matchAll(/[\p{L}\p{M}]+/gu)];
  let cursor=0,matched=false;
  for(const t of tokens){
   if(!variants.has(clean(t[0])))continue;
