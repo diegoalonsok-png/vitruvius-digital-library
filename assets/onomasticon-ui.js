@@ -19,7 +19,7 @@ function mount(){
   selector.value=lang;
   const searchSelector=document.getElementById("ov-language-search");
   if(searchSelector)searchSelector.value=lang;
-  const changeLanguage=value=>{
+  const changeLanguage=(value,fromGlobal=false)=>{
     if(!dict[value])return;
     lang=value;
     selector.value=value;
@@ -27,7 +27,9 @@ function mount(){
     try{localStorage.setItem(langKey,lang)}catch{}
     translated();paint();
     document.dispatchEvent(new CustomEvent("ov-locale-changed",{detail:{lang}}));
+    if(!fromGlobal&&["es","en","fr"].includes(lang))document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:lang}}));
   };
+  document.addEventListener("vitruvius:language-changed",e=>{const v=e.detail?.language;if(v&&v!==lang&&dict[v])changeLanguage(v,true)});
   selector.addEventListener('change',()=>changeLanguage(selector.value));
   if(searchSelector)searchSelector.addEventListener('change',()=>changeLanguage(searchSelector.value));
   b.addEventListener('click',()=>{theme=theme==="dark"?"light":"dark";try{localStorage.setItem(themeKey,theme)}catch{}paint()});

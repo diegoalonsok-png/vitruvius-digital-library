@@ -44,3 +44,24 @@ html[data-theme=light] .on-shell{--on-ink:#1d2227;--on-dim:rgba(29,34,39,.72);
  .on-logo,.on-navlinks,.on-navtools{grid-column:1}
  .on-navtools{justify-content:flex-start;flex-wrap:wrap}
  .on-navlinks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ===== Tema: negro del Lexicon en oscuro, crema en claro; nunca el azul ======
+   onomasticon.css fija la cabecera .ov-top en azul marino en los dos modos y
+   el oscuro en azulados (#111c27, #233342): el botón de tema sólo cambiaba la
+   franja superior. Aquí la cabecera y el cuerpo siguen el tema, y el fondo
+   elegido en «Fondo» (--lx-bg) tiene prioridad. */
+html[data-theme=dark] body{background:var(--lx-bg,#0e0f11)!important;color:#e6e3dd}
+html[data-theme=dark] .ov-top{background:var(--lx-bg,#0e0f11)!important;border-bottom:1px solid #2c2e33!important}
+html[data-theme=light] .ov-top{background:var(--lx-bg,#f6f5f2)!important;color:#1d2227!important;border-bottom:1px solid #d9d6cf!important}
+html[data-theme=light] .ov-top :is(p,small,span,h1,h2,b,strong){color:inherit}
+html[data-theme=light] .on-masthead :is(.on-wordmark,.on-wordmark b,.on-wordmark small){color:#1d2227}
+html[data-theme=light] .ov-top a{color:#5b4515}
+html[data-theme=dark] :is(.ov-numbers article,.ov-index,.ov-detail,.ov-stats,.ov-tools,.ov-entry){background:#141518!important;border-color:#2c2e33!important;color:#e6e3dd}
+html[data-theme=dark] :is(.ov-index header,.ov-table th){background:#1b1c1f!important;border-color:#2c2e33!important;color:#dedbd4}
+html[data-theme=dark] :is(.ov-entry:hover,.ov-entry[aria-pressed=true]){background:#26272b!important}
+html[data-theme=dark] .ov-locus{background:#18191c!important;border-color:#2c2e33!important}
+html[data-theme=dark] .ov-source{background:#1b1c1f!important}
+html[data-theme=dark] :is(.ov-tools input,.ov-tools select,.ov-select){background:#1f2024!important;border-color:#3a3c41!important}
+html[data-theme=dark] :is(.ov-tools button,.ov-button){background:#26272b!important;border-color:#45474d!important}
+html[data-theme=dark] :is(.ov-tools button,.ov-button):hover{background:#33353a!important;border-color:#c9a24a!important}
+html[data-theme=dark] .ov-locus .ov-latin{color:#ece9e3!important}
