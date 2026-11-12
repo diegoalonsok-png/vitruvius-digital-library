@@ -393,18 +393,20 @@ try{
    assert(await page.locator('#ov-verbs .ov-verb-row').count()>3,'No se representan tiempos latinos');
    await page.close();
  });
- await test('Laboratorio H: latín legible y correspondencia con el prefacio completo de 1r',async()=>{
-   const page=await pageFor('laboratorio-h.html');
-   assert.match(await page.locator('#paleo-panel h2').innerText(),/Transcripción latina/);
-   await page.locator('#carolina-output').waitFor({state:'visible',timeout:10000});
-   const input=(await page.locator('#carolina-output').innerText()).trim();
-   assert(input.startsWith('VITRVVII DE ARCHITECTVRA LIB I'),'No se representa el incipit manuscrito');
+ // Laboratorio H se unificó con la Concordancia (laboratorio-h.html redirige):
+ // lo que vigilaba esta prueba —la transcripción del manuscrito en 1r junto a
+ // I.praef.1 y I.praef.2— se comprueba ahora donde vive.
+ await test('Laboratorio H → Concordancia: redirige y conserva la transcripción de 1r con el prefacio',async()=>{
+   const page=await pageFor('laboratorio-h.html?folio=1r');
+   await page.waitForURL(/concordancia-folios\.html\?folio=1r/,{timeout:10000});
+   await page.locator('#ce-diplomatica').waitFor({state:'visible',timeout:15000});
+   const input=(await page.locator('#ce-diplomatica').innerText()).trim();
+   assert(/VITRVVII DE ARCHITECTVRA LIB I/.test(input),'No se representa el incipit manuscrito');
    assert(input.includes('imperator caesar'),'No aparece la continuación en minúsculas');
-   const font=await page.locator('#carolina-output').evaluate(e=>getComputedStyle(e).fontFamily);
-   assert.match(font,/Georgia|Times New Roman/,'Sigue presente la tipografía experimental ilegible');
-   await page.waitForFunction(()=>document.querySelector('#reading-output')?.textContent.includes('I.praef.2'),{timeout:20000});
-   assert.match(await page.locator('#reading-output').innerText(),/I\.praef\.1/);
-   assert.match(await page.locator('#reading-output').innerText(),/I\.praef\.2/);
+   const font=await page.locator('#ce-diplomatica').evaluate(e=>getComputedStyle(e).fontFamily);
+   assert.match(font,/Georgia|Iowan|Times New Roman/,'Tipografía de la lectura ilegible');
+   await page.waitForFunction(()=>document.querySelector('#f-latin')?.textContent.includes('1.praef.2'),{timeout:20000});
+   assert.match(await page.locator('#f-latin').innerText(),/1\.praef\.1/);
    await page.close();
  });
 
@@ -455,7 +457,7 @@ try{
    await page.close();
  });
  await test('Visores H S G C B: barras sutiles para compartir el folio actual',async()=>{
-   for(const path of ['harleianus.html','sulpizio-1486.html','giocondo-1511.html','cesariano-1521.html','barbaro-1567.html','laboratorio-h.html']){
+   for(const path of ['harleianus.html','sulpizio-1486.html','giocondo-1511.html','cesariano-1521.html','barbaro-1567.html']){
      const page=await pageFor(path);
      await page.locator('.vd-image-actions').waitFor({state:'visible',timeout:9000});
      assert.equal(await page.locator('.vd-image-actions button').count(),4,path+' no incluye cuatro acciones');
