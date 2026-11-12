@@ -1278,8 +1278,12 @@ function renderQueryBuilder(){
  }
  const word=el("input",{type:"text",placeholder:"arquitectura · arquitetura · architectura · τέχνη","aria-label":"Palabra o lema"});
  row.append(el("label",{},el("span",{},"Palabra / lema"),word));
+ /* Operadores sin memorizar la sintaxis: lema (@), comodín (*), aproximada (~), frase ("…"). */
+ const op=el("select",{"aria-label":"Tipo de coincidencia"});
+ [["sentido","por sentido y equivalencias (recomendado)"],["forma","esta forma exacta"],["lema","todas las formas del lema · @"],["prefijo","palabras que empiezan así · *"],["aprox","grafía aproximada · ~"],["frase","frase exacta · \"…\""]].forEach(([v,t])=>op.append(el("option",{value:v},t)));
+ row.append(el("label",{},el("span",{},"Tipo de coincidencia"),op));
  const gap=el("select",{"aria-label":"Separación del anterior"});
- [["0","contigua"],["1","hasta 1 palabra"],["3","hasta 3 palabras"],["5","hasta 5 palabras"],["8","hasta 8 palabras"]].forEach(([v,t])=>gap.append(el("option",{value:v},t)));
+ [["0","contigua"],["1","hasta 1 palabra, en orden"],["3","hasta 3 palabras, en orden"],["5","hasta 5 palabras, en orden"],["8","hasta 8 palabras, en orden"],["n5","a 5 palabras, en cualquier orden"],["n10","a 10 palabras, en cualquier orden"]].forEach(([v,t])=>gap.append(el("option",{value:v},t)));
  row.append(el("label",{},el("span",{},"Separación del anterior"),gap));
  const scope=el("select",{"aria-label":"Lengua para la búsqueda del constructor"});
  [["both","Latín y griego"],["la","Solo latín"],["grc","Solo griego"]].forEach(([v,t])=>scope.append(el("option",{value:v},t)));
@@ -1288,13 +1292,14 @@ function renderQueryBuilder(){
  const preview=el("p",{class:"lx-qb-preview",role:"status"});
  const selected=()=>Object.fromEntries(Object.entries(sels).filter(([,s])=>s.value).map(([k,s])=>[k,s.value]));
  const token=()=>{
-  const w=word.value.trim();if(w)return w;
+  const w=word.value.trim();
+  if(w){const o=op.value;return o==="lema"?"@"+w.replace(/^@/,""):o==="prefijo"?w.replace(/\*$/,"")+"*":o==="aprox"?"~"+w.replace(/^~/,""):o==="frase"?'"'+w.replace(/"/g,"")+'"':w}
   const f=selected();const p=Object.entries(f).map(([k,v])=>k+"="+v);
   return p.length?"["+p.join(" ")+"]":"";
  };
  const update=()=>{
   const w=word.value.trim(),f=selected();
-  preview.textContent=w?
+  preview.textContent=w&&op.value!=="sentido"?"Consulta resultante: "+token()+" · en "+(scope.value==="both"?"latín y griego":scope.value==="la"?"latín":"griego")+".":w?
    "Buscará «"+w+"» en "+(scope.value==="both"?"latín y griego":scope.value==="la"?"latín":"griego")+
    (f.pos?" · categoría: "+(QB_FIELDS[0][2].find(x=>x[0]===f.pos)?.[1]||f.pos):"")+
    ". Los rasgos se aplicarán solamente donde existan análisis morfológicos suficientes.":
@@ -1302,9 +1307,13 @@ function renderQueryBuilder(){
    "Escriba una palabra o seleccione rasgos morfológicos.";
  };
  for(const s of Object.values(sels))s.addEventListener("change",update);
- word.addEventListener("input",update);scope.addEventListener("change",update);
+ word.addEventListener("input",update);scope.addEventListener("change",update);op.addEventListener("change",update);
  const go=async()=>{
-  if(word.value.trim()){
+  if(word.value.trim()&&op.value!=="sentido"){
+   const q=$("#lx-q").value.trim()&&/\.\.\d|NEAR\//.test($("#lx-q").value)?$("#lx-q").value.trim():token();
+   $("#lx-q").value=q;S.mode=op.value==="frase"||/\.\.\d|NEAR\//.test(q)?"frase":op.value==="lema"?"lema":"palabra";
+   S.lang=scope.value==="both"?"auto":scope.value;$("#lx-lang").value=S.lang;renderTabs();await run();
+  }else if(word.value.trim()){
    await qbLexicalSearch(word.value,selected(),scope.value);
   }else{
    const q=$("#lx-q").value.trim()||token();
@@ -1320,7 +1329,7 @@ function renderQueryBuilder(){
   el("button",{type:"button",onclick:()=>{
    const t=token();if(!t)return;
    const old=$("#lx-q").value.trim();
-   $("#lx-q").value=old?old+(gap.value==="0"?" ":" .."+gap.value+" ")+t:t;
+   $("#lx-q").value=old?old+(gap.value==="0"?" ":gap.value.startsWith("n")?" NEAR/"+gap.value.slice(1)+" ":" .."+gap.value+" ")+t:t;
    if(!word.value.trim()){
     S.mode="sintaxis";S.lang="grc";$("#lx-lang").value="grc";renderTabs();
    }update();
