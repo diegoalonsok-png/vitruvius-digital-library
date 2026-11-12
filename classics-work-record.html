@@ -40,9 +40,13 @@ html[data-theme=light] .actionbar select,html[data-theme=light] .actionbar butto
 #work-record-status{font-size:12px;color:#bbb}
 footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30px}
 @media print{.actionbar,nav{display:none}body{color:#111;background:#fff}}
+/* Rótulos de la ficha: discretos, como en un catálogo; el dato manda. */
+.cwd-head{display:block!important}.cwd-head .cwd-row,.classic-work-dossier .cwd-row{display:block;font:14px/1.55 system-ui,Arial,sans-serif;margin:4px 0}
+.cwd-head h1,.cwd-head h2{display:block;margin:6px 0 12px}
+.cwd-head .cwd-row strong,.classic-work-dossier .cwd-row strong{font:600 11px/1.5 system-ui,Arial,sans-serif!important;letter-spacing:.06em;text-transform:uppercase;opacity:.72;margin-right:4px;font-style:normal!important}
 </style>
 <script defer src="assets/editorial-work-records.js?v=20261111-identifiers-v1"></script>
-<script defer src="assets/classics-work-dossier.js?v=20261111-editorial-tei-v1"></script>
+<script defer src="assets/classics-work-dossier.js?v=20261112-rotulos"></script>
 <script defer src="assets/analytics-config.js?v=20261110-shared-v1"></script>
 <script defer src="assets/analytics.js?v=20261110-shared-v1"></script>
 <script defer src="assets/bibliotheca-export-xlsx.js?v=20261110-xlsx-codices-v4"></script>

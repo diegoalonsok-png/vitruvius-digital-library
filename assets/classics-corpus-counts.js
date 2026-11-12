@@ -33,6 +33,7 @@ function style(){
  ".classics-tally .tally-editions{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin:2px 0 8px;font:11px/1.5 Arial,Helvetica,sans-serif}",
  ".classics-tally .tally-editions a{display:inline-block;white-space:normal;overflow-wrap:anywhere}",
  ".classics-tally .tally-editions .tally-parallel{font-weight:700;text-decoration:underline}",
+ ".classics-tally a.tally-record{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}",
  ".classics-tally .tally-editions small{opacity:.75}",
  ".classics-tally .tally-details a{color:inherit;text-decoration:underline;text-underline-offset:2px}",
   "body:has(.bibliotheca-suite) .classics-tally{background:#121214;color:#e9e9ea}",
@@ -87,7 +88,7 @@ function detailGroup(i,data){
   const url=detailLink(w)|| (i===3?null:detailLink(data.registry.entries.find(e=>e.workId===id)));
   const versions=i===3||i===4?null:workVersions(id,data);
   return {
-   title:title+edition,url,versions,
+   id,title:title+edition,url,versions,
    meta:i===4?"Pendiente de original indexado":
     i===3?(w.sourceDescription||"Versión textual"):
     (w.dating||"")
@@ -115,7 +116,11 @@ function paint(a,data){
   records.sort((a,b)=>a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
   for(const rec of records){
    const li=document.createElement("li");
-   const strong=document.createElement("span");strong.textContent=rec.title;li.append(strong);
+   // Cada registro abre su ficha crítica (autoría, datación, tradición manuscrita,
+   // ediciones y estado documental), también los pendientes de original indexado.
+   const strong=rec.id?document.createElement("a"):document.createElement("span");strong.textContent=rec.title;
+   if(rec.id){strong.href="classics-work-record.html?work="+encodeURIComponent(rec.id);strong.className="tally-record";strong.title="Abrir la ficha crítica de la obra"}
+   li.append(strong);
    if(rec.meta){const meta=document.createElement("small");meta.textContent=" · "+rec.meta;li.append(meta);}
    if(rec.versions?.links.length){
     const versions=document.createElement("div");versions.className="tally-editions";
@@ -134,6 +139,9 @@ function paint(a,data){
     li.append(versions);
    }else if(rec.url){
     const link=document.createElement("a");link.href=rec.url;link.textContent="Abrir versión";li.append(" ",link);
+   }else if(i===4&&rec.id){
+    const ficha=document.createElement("a");ficha.href="classics-work-record.html?work="+encodeURIComponent(rec.id);ficha.textContent="Ficha crítica y fuentes externas";
+    const box=document.createElement("div");box.className="tally-editions";box.append(ficha);li.append(box);
    }
    ol.append(li);
   }

@@ -503,7 +503,7 @@ function renderInto(target,id,opts={}){
   const originalAuthor=w.bibliography?.originalAuthor||AUTHOR[w.author];
   if(originalAuthor){const r=html("p");r.append(html("strong",null,"Nombre antiguo normalizado: "));const name=html("span",null,originalAuthor);name.lang=greek.test(originalAuthor)?"grc":"la";r.append(name);head.append(r)}
   const form=title(w);
-  if(form.title){const r=html("p");r.append(html("strong",null,"Título en lengua original / título uniforme: "));const span=html("i","cwd-original",form.title);span.lang=w.language==="grc"?"grc":"la";r.append(span);head.append(r)}
+  if(form.title){const r=html("p","cwd-row");r.append(html("strong",null,"Título en lengua original / título uniforme: "));const span=html("i","cwd-original",form.title);span.lang=w.language==="grc"?"grc":"la";r.append(span);head.append(r)}
   else row(head,"Título original",form.description);
   head.append(html("p","cwd-muted",form.description));
   row(head,"Lengua",[langLabel[w.language]||w.language,w.genre].filter(Boolean).join(" · "));
