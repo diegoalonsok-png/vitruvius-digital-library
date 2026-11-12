@@ -29,6 +29,27 @@ html[data-theme="dark"] .apa-filters :is(input,select){background:#242b31!import
 @media(max-width:1150px){.apa-wrap .apa-grid{grid-template-columns:repeat(8,minmax(135px,1fr))}}
 
 .apa-wrap mark.apa-search-hit{background:#ffe34f!important;color:#171409!important;padding:0 .08em;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone;font-weight:650}
+
+/* Inventario: override específico del tema unificado, incluso cuando su
+   hoja de estilos se inyecta después de esta página. */
+html[data-theme="light"] body.vitruvius-secondary-controls #apa-metrics .apa-stat,
+html[data-theme="light"] body.vitruvius-secondary-controls #apa-apparatus-metrics .apa-stat{
+ background:#f5f2eb!important;background-color:#f5f2eb!important;
+ color:#182c3d!important;border-color:#c6beb0!important;
+}
+html[data-theme="light"] body.vitruvius-secondary-controls #apa-metrics .apa-stat :is(strong,span),
+html[data-theme="light"] body.vitruvius-secondary-controls #apa-apparatus-metrics .apa-stat :is(strong,span){
+ color:#182c3d!important;opacity:1!important;-webkit-text-fill-color:#182c3d!important;
+}
+html[data-theme="dark"] body.vitruvius-secondary-controls #apa-metrics .apa-stat,
+html[data-theme="dark"] body.vitruvius-secondary-controls #apa-apparatus-metrics .apa-stat{
+ background:#20272c!important;background-color:#20272c!important;
+ color:#f1ede5!important;border-color:#60676c!important;
+}
+html[data-theme="dark"] body.vitruvius-secondary-controls #apa-metrics .apa-stat :is(strong,span),
+html[data-theme="dark"] body.vitruvius-secondary-controls #apa-apparatus-metrics .apa-stat :is(strong,span){
+ color:#f1ede5!important;opacity:1!important;-webkit-text-fill-color:#f1ede5!important;
+}
 </style>
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
