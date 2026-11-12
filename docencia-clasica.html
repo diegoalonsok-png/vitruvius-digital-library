@@ -54,4 +54,4 @@ html[data-theme="dark"] .classroom .subject,html[data-theme="dark"] .classroom .
 </main>
 <script>
 (async()=>{try{const r=await fetch('data/bibliotheca-graeca-latina-I-bce-I-ce.json');if(!r.ok)return;const j=await r.json(),w=j.works||[];const complete=w.filter(x=>x.publicStatus==='lectura-local-completa').length,partial=w.filter(x=>x.publicStatus==='lectura-local-parcial').length;document.getElementById('aula-catalog-status').textContent='Inventario actual: '+w.length+' fichas, '+complete+' con lectura local completa y '+partial+' parcial (estado declarado por el catálogo; la prueba de archivos se realiza aparte).';}catch(e){}})();
-</script><script defer src="assets/ui-idioma.js?v=20261112-sitio"></script></body></html>
+</script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
