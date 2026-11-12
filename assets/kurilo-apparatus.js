@@ -7,9 +7,9 @@
 "use strict";
 const URL_INDEX="data/apparatus-index.json?v=20261105-loci-v2";
 const EDITION_LABEL={"recensio-es":"V514 · castellano","recensio-fr":"V554 · français","theory-en":"V297 · English"};
-const KIND={es:{comparativa:"Aparato crítico comparativo",filologica:"Nota ecdótica / crítica",tecnica:"Nota técnica y terminológica",comentario:"Comentario",nota:"Nota al pie"},
- en:{comparativa:"Comparative critical apparatus",filologica:"Critical / textual note",tecnica:"Technical note",comentario:"Commentary",nota:"Footnote"},
- fr:{comparativa:"Apparat critique comparatif",filologica:"Note critique / ecdotique",tecnica:"Note technique",comentario:"Commentaire",nota:"Note"}};
+const KIND={es:{comparativa:"Aparato crítico comparativo",filologica:"Nota ecdótica / crítica",tecnica:"Nota técnica y terminológica",comentario:"Comentario",nota:"Nota al pie",glosa:"Glosa del comentario",glosario:"Glosario del autor"},
+ en:{comparativa:"Comparative critical apparatus",filologica:"Critical / textual note",tecnica:"Technical note",comentario:"Commentary",nota:"Footnote",glosa:"Commentary gloss",glosario:"Author's glossary"},
+ fr:{comparativa:"Apparat critique comparatif",filologica:"Note critique / ecdotique",tecnica:"Note technique",comentario:"Commentaire",nota:"Note",glosa:"Glose du commentaire",glosario:"Glossaire de l’auteur"}};
 const STOP=new Set("aparato critico critica apparatus apparat critique critical nota notas note notes ecdotica de la el los las del en y a que se un una por con para su sus al lo como es o the of and to in a is for on by with as an le les des du et un une dans pour par sur au aux est qui que ne pas".split(" "));
 const fold=s=>String(s??"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 let promise=null;
@@ -80,6 +80,51 @@ function toRow(e,q,lang="es"){
   rating:e.relation==="explicit"?2300:e.relation==="page"?1500:e.relation==="candidate"?600:300,
   link:reader(e)||e.pdf,links,source:"Aparato crítico · ediciones Kurilo",edition:e.edition,locus:e.locusMention||null,apparatusId:e.id}
 }
-window.KuriloApparatus={load,forLocus,search,excerpt,toRow,cite,relationLabel,kindLabel:(k,l)=>(KIND[l]||KIND.es)[k]||k,version:"1.0"};
+/* Prosa analítica de las ediciones: estudio introductorio, apéndices y excursus.
+   No es aparato ni traducción, de modo que vive en su propio archivo y se carga
+   sólo cuando se la pide: así la búsqueda de cualquier página no arrastra 2 MB.
+   Se rotula como estudio para que el lector no la confunda con el aparato. */
+const URL_ESTUDIOS="data/apparatus/estudios-ediciones.json?v=20261112";
+let estudiosPromise=null;
+function loadEstudios(){
+ if(!estudiosPromise)estudiosPromise=(window.VitruviaData?window.VitruviaData.json(URL_ESTUDIOS):fetch(URL_ESTUDIOS).then(r=>{if(!r.ok)throw Error("Estudios: HTTP "+r.status);return r.json()}))
+  .then(d=>{for(const e of d.entries||d.entradas||[])e._hay=fold([e.texto,e.seccion,(e.autoridades||[]).join(" ")].join(" "));return d})
+  .catch(e=>{estudiosPromise=null;throw e});
+ return estudiosPromise;
+}
+const CLASE={es:{"estudio introductorio":"Estudio introductorio","apéndice":"Apéndice","prosa analítica":"Prosa analítica"},
+ en:{"estudio introductorio":"Introductory study","apéndice":"Appendix","prosa analítica":"Analytical prose"},
+ fr:{"estudio introductorio":"Étude introductive","apéndice":"Annexe","prosa analítica":"Prose analytique"}};
+/* Búsqueda en la prosa analítica. Devuelve filas con el mismo formato que el aparato. */
+async function searchEstudios(q,{lang="es",limit=6,locus=null}={}){
+ const ts=terms(q);
+ if(!ts.length&&!locus)return [];
+ let d;try{d=await loadEstudios()}catch(e){return []}
+ const rows=d.entradas||d.entries||[];
+ const pref={es:"recensio-es",fr:"recensio-fr",en:"theory-en"}[lang]||"recensio-es";
+ const scored=[];
+ for(const e of rows){
+  if(locus&&!(e.loci||[]).some(l=>l===locus||l.startsWith(locus+".")))continue;
+  let hit=0;const words=new Set(e._hay.match(/[\p{L}\p{N}]+/gu)||[]);
+  for(const t of ts)if(words.has(t))hit++;
+  if(ts.length&&hit<ts.length&&!(ts.length>2&&hit>=ts.length-1))continue;
+  scored.push({e,s:hit*10+(e.edition===pref?6:0)+(e.seccion?4:0)+((e.loci||[]).length?2:0)});
+ }
+ return scored.sort((a,b)=>b.s-a.s).slice(0,limit).map(x=>{
+  const e=x.e,etiqueta=(CLASE[lang]||CLASE.es)[e.clase]||e.clase;
+  return {type:"estudio",
+   title:etiqueta+(e.seccion?" · "+e.seccion:"")+" · "+e.version+" · p. "+e.page,
+   author:"Diego Kurilo · "+(EDITION_LABEL[e.edition]||e.version),
+   excerpt:excerpt(e.texto,q),
+   meta:(lang==="en"?"Analytical prose of the edition, not critical apparatus"
+     :lang==="fr"?"Prose analytique de l’édition, pas l’apparat critique"
+     :"Prosa analítica de la edición, no es aparato crítico")
+     +((e.loci||[]).length?" · cita: "+e.loci.slice(0,4).map(cite).join(", "):""),
+   rating:700,link:e.pdf,
+   links:[{label:lang==="en"?"Printed page (PDF)":lang==="fr"?"Page imprimée (PDF)":"Página impresa (PDF)",url:e.pdf}],
+   source:"Estudio de las ediciones Kurilo",edition:e.edition,locus:(e.loci||[])[0]||null};
+ });
+}
+window.KuriloApparatus={load,forLocus,search,searchEstudios,loadEstudios,excerpt,toRow,cite,relationLabel,kindLabel:(k,l)=>(KIND[l]||KIND.es)[k]||k,version:"1.1"};
 })();
 

@@ -9,7 +9,7 @@
   "catalogue_url": "https://searcharchives.bl.uk/catalog/040-002048598",
   "iiif_manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001"
  },
- "method": "Tabla independiente del corpus editorial: la presencia de un locus en una edición no demuestra que esté en un folio manuscrito. Las atribuciones requieren inspección y registro material. · Ampliado el 2026-11-12 con los folios documentados en la collatio del autor (Apéndice T), que no se infieren de la numeración moderna sino que están nombrados en tablas impresas y pasaron los controles de data/apparatus/collatio-validada.json.",
+ "method": "Tabla independiente del corpus editorial: la presencia de un locus en una edición no demuestra que esté en un folio manuscrito. Las atribuciones requieren inspección y registro material. · Ampliado el 2026-11-12 con los folios documentados en la collatio del autor (Apéndice T), que no se infieren de la numeración moderna sino que están nombrados en tablas impresas y pasaron los controles de data/apparatus/collatio-validada.json. · Ampliado el 2026-11-12 con los folios documentados en la collatio del autor (Apéndice T), que no se infieren de la numeración moderna sino que están nombrados en tablas impresas y pasaron los controles de data/apparatus/collatio-validada.json.",
  "source_editorial": {
   "id": "recensio-es",
   "uri": "data/structured/recensio-es.json",
@@ -78,18 +78,11 @@
     "V514-T-p1101-17",
     "V514-T-p1101-18",
     "V554-T-p1110-170",
-    "V554-T-p1110-171",
-    "V554-T-p1116-241"
+    "V554-T-p1110-171"
    ],
    "loci": [
     {
      "locus": "1.1.5",
-     "extent": "attested",
-     "status": "collatio_autoral",
-     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
-    },
-    {
-     "locus": "1.1.9",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -145,14 +138,39 @@
    ]
   },
   {
+   "folio": "5r",
+   "image_number": 17,
+   "folio_status": "collatio_autoral",
+   "collatio_entries": [
+    "V514-T-p1101-24",
+    "V554-T-p1110-177"
+   ],
+   "loci": [
+    {
+     "locus": "1.1.15",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    }
+   ]
+  },
+  {
    "folio": "5v",
    "image_number": 18,
    "folio_status": "collatio_autoral",
    "collatio_entries": [
+    "V514-T-p1101-25",
     "V514-T-p1101-26",
+    "V554-T-p1110-178",
     "V554-T-p1110-179"
    ],
    "loci": [
+    {
+     "locus": "1.1.16",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    },
     {
      "locus": "1.1.17",
      "extent": "attested",
@@ -167,11 +185,19 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1101-27",
-    "V554-T-p1110-180"
+    "V514-T-p1101-29",
+    "V554-T-p1110-180",
+    "V554-T-p1110-182"
    ],
    "loci": [
     {
      "locus": "1.1.18",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    },
+    {
+     "locus": "1.2.2",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -232,15 +258,33 @@
    ]
   },
   {
-   "folio": "10v",
-   "image_number": 28,
+   "folio": "10r",
+   "image_number": 27,
    "folio_status": "collatio_autoral",
    "collatio_entries": [
-    "V554-T-p1111-188"
+    "V514-T-p1102-34",
+    "V554-T-p1111-187"
    ],
    "loci": [
     {
-     "locus": "1.4.8",
+     "locus": "1.4.6",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    }
+   ]
+  },
+  {
+   "folio": "12r",
+   "image_number": 31,
+   "folio_status": "collatio_autoral",
+   "collatio_entries": [
+    "V514-T-p1102-36",
+    "V554-T-p1111-189"
+   ],
+   "loci": [
+    {
+     "locus": "1.5.1",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -290,9 +334,8 @@
    "collatio_entries": [
     "V514-T-p1102-40",
     "V514-T-p1102-41",
-    "V514-T-p1121-126",
-    "V554-T-p1111-193",
-    "V554-T-p1111-194",
+    "V514-T-p1102-42",
+    "V514-T-p1102-43",
     "V554-T-p1111-195",
     "V554-T-p1111-196"
    ],
@@ -316,11 +359,54 @@
    "image_number": 36,
    "folio_status": "collatio_autoral",
    "collatio_entries": [
+    "V514-T-p1102-43",
     "V554-T-p1111-196"
    ],
    "loci": [
     {
      "locus": "1.6.3",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    }
+   ]
+  },
+  {
+   "folio": "15r",
+   "image_number": 37,
+   "folio_status": "collatio_autoral",
+   "collatio_entries": [
+    "V514-T-p1102-44",
+    "V554-T-p1111-197"
+   ],
+   "loci": [
+    {
+     "locus": "1.6.6",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    }
+   ]
+  },
+  {
+   "folio": "16r",
+   "image_number": 39,
+   "folio_status": "collatio_autoral",
+   "collatio_entries": [
+    "V514-T-p1102-45",
+    "V514-T-p1103-46",
+    "V554-T-p1111-198",
+    "V554-T-p1112-199"
+   ],
+   "loci": [
+    {
+     "locus": "1.6.10",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    },
+    {
+     "locus": "1.6.11",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -392,10 +478,18 @@
    "image_number": 46,
    "folio_status": "collatio_autoral",
    "collatio_entries": [
+    "V514-T-p1103-48",
     "V514-T-p1103-49",
+    "V554-T-p1112-201",
     "V554-T-p1112-202"
    ],
    "loci": [
+    {
+     "locus": "2.1.1",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    },
     {
      "locus": "2.1.2",
      "extent": "attested",
@@ -405,16 +499,33 @@
    ]
   },
   {
-   "folio": "21r",
-   "image_number": 49,
+   "folio": "20r",
+   "image_number": 47,
    "folio_status": "collatio_autoral",
    "collatio_entries": [
-    "V514-T-p1103-52",
-    "V554-T-p1112-205"
+    "V514-T-p1103-50",
+    "V554-T-p1112-203"
    ],
    "loci": [
     {
-     "locus": "2.6.6",
+     "locus": "2.1.4",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    }
+   ]
+  },
+  {
+   "folio": "23r",
+   "image_number": 53,
+   "folio_status": "collatio_autoral",
+   "collatio_entries": [
+    "V514-T-p1103-51",
+    "V554-T-p1112-204"
+   ],
+   "loci": [
+    {
+     "locus": "2.3.4",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -522,10 +633,10 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1104-56",
+    "V514-T-p1104-57",
     "V514-T-p1104-58",
-    "V514-T-p1108-95",
-    "V554-T-p1113-211",
-    "V554-T-p1117-248"
+    "V554-T-p1113-210",
+    "V554-T-p1113-211"
    ],
    "loci": [
     {
@@ -536,6 +647,23 @@
     },
     {
      "locus": "3.3.8",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    }
+   ]
+  },
+  {
+   "folio": "42r",
+   "image_number": 91,
+   "folio_status": "collatio_autoral",
+   "collatio_entries": [
+    "V514-T-p1104-59",
+    "V554-T-p1113-212"
+   ],
+   "loci": [
+    {
+     "locus": "3.3.10",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -609,11 +737,21 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1105-61",
-    "V554-T-p1114-214"
+    "V514-T-p1105-62",
+    "V514-T-p1105-63",
+    "V554-T-p1114-214",
+    "V554-T-p1114-215",
+    "V554-T-p1114-216"
    ],
    "loci": [
     {
      "locus": "4.1.8",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    },
+    {
+     "locus": "4.1.9",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -663,6 +801,23 @@
     }
    ],
    "notes": "Paso del prefacio al capítulo 1 del libro V, identificado en la fotografía local (imagen 127). Verificado 2026-11-05."
+  },
+  {
+   "folio": "60v",
+   "image_number": 128,
+   "folio_status": "collatio_autoral",
+   "collatio_entries": [
+    "V514-T-p1105-64",
+    "V554-T-p1114-217"
+   ],
+   "loci": [
+    {
+     "locus": "5.1.4",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    }
+   ]
   },
   {
    "folio": "61r",
@@ -715,11 +870,19 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1105-70",
-    "V554-T-p1114-223"
+    "V514-T-p1105-71",
+    "V554-T-p1114-223",
+    "V554-T-p1114-224"
    ],
    "loci": [
     {
      "locus": "5.4.8",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    },
+    {
+     "locus": "5.4.9",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -732,11 +895,19 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1105-72",
-    "V554-T-p1114-225"
+    "V514-T-p1105-73",
+    "V554-T-p1114-225",
+    "V554-T-p1114-226"
    ],
    "loci": [
     {
      "locus": "5.5.1",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    },
+    {
+     "locus": "5.5.2",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -754,6 +925,23 @@
    "loci": [
     {
      "locus": "5.5.6",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    }
+   ]
+  },
+  {
+   "folio": "67r",
+   "image_number": 141,
+   "folio_status": "collatio_autoral",
+   "collatio_entries": [
+    "V514-T-p1105-75",
+    "V554-T-p1114-228"
+   ],
+   "loci": [
+    {
+     "locus": "5.6.1",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -825,11 +1013,19 @@
    "image_number": 163,
    "folio_status": "collatio_autoral",
    "collatio_entries": [
-    "V514-T-p1106-77"
+    "V514-T-p1106-77",
+    "V514-T-p1106-78",
+    "V554-T-p1115-231"
    ],
    "loci": [
     {
      "locus": "6.1.3",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    },
+    {
+     "locus": "6.1.4",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
@@ -842,11 +1038,32 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1106-79",
-    "V554-T-p1115-232"
+    "V514-T-p1106-80",
+    "V554-T-p1115-232",
+    "V554-T-p1115-233"
    ],
    "loci": [
     {
      "locus": "6.2.5",
+     "extent": "attested",
+     "status": "collatio_autoral",
+     "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."
+    }
+   ]
+  },
+  {
+   "folio": "81v",
+   "image_number": 170,
+   "folio_status": "collatio_autoral",
+   "collatio_entries": [
+    "V514-T-p1106-81",
+    "V514-T-p1106-82",
+    "V554-T-p1115-234",
+    "V554-T-p1115-235"
+   ],
+   "loci": [
+    {
+     "locus": "6.3.4",
      "extent": "attested",
      "status": "collatio_autoral",
      "note": "Lectura consignada en la collatio del Apéndice T, con el folio citado por el autor. Transcripción diplomática del folio pendiente."

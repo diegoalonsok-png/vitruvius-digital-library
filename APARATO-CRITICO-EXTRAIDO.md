@@ -93,6 +93,48 @@ npm run build:index               # reconstruye data/apparatus-index.json
 npm run check:collatio            # comprueba que la página publica sólo lo validado
 ```
 
+## Publicación por grados
+
+Tras la primera versión se decidió publicar el aparato completo y no sólo lo que
+alcanzaba el grado máximo, que es la práctica normal en filología: cada entrada
+declara su respaldo en lugar de quedar oculta.
+
+| grado | entradas | qué significa |
+|---|---|---|
+| doble fuente | 142 | impresa en las dos ediciones con la misma lectura latina |
+| fuente única | 93 | celda íntegra, sin par bilingüe que la confirme |
+| transcripción por comprobar | 60 | la celda muestra arrastre de columna |
+| orden dudoso | 8 | la atribución de folio rompe el orden del códice |
+| conflicto con el facsímil | 3 | contradice el mapa verificado por inspección |
+
+Al mapa folio ↔ locus pasan sólo los dos grados superiores: un folio equivocado
+corrompería la navegación del facsímil. El mapa queda en **62 folios**.
+
+### Dos errores propios, corregidos
+
+- **Validación circular.** El validador contrastaba contra el mapa de folios que
+  el fusionador escribe, de modo que la segunda corrida validó la collatio contra
+  sus propios resultados: aparecieron 3 conflictos y la fusión dejó de ser
+  idempotente. El control considera ahora sólo los folios verificados por
+  inspección (`visual_rubric`, `visual_text`, `catalogue`, `provisional`).
+- **Folios leídos de la prosa.** Una entrada atribuía 8.6.10 a los folios 1r y
+  98r, tomados de la frase «77 loci textuales sustantivos de ff. 1r–98r se
+  documentan…», que es un resumen del anexo y no una atribución. El folio se toma
+  ahora de su propia columna, y un rango `ff. Xr–Yv` en prosa se descarta.
+
+## Prosa analítica de las ediciones
+
+La auditoría de cobertura (`npm run audit:cobertura`) mostró que las ediciones no
+se reparten sólo entre texto latino y aparato. De 3379 páginas en las tres,
+**1000 son prosa analítica**: estudio introductorio, valoración de las ediciones
+críticas, *stemma codicum*, *restitutio vocabulorum*, *normae interpretationis*,
+*status quaestionis*, excursus y aparato arqueológico comparativo. 35 secciones
+identificadas, 492 páginas citando loci.
+
+Se indexa en `data/apparatus/estudios-ediciones.json`, aparte del aparato y
+rotulada como estudio —no es aparato ni traducción—, y se carga sólo cuando se la
+busca, para que ninguna página arrastre 2 MB de más.
+
 ## Lo que sigue pendiente
 
 - Las 162 entradas en cola de revisión necesitan comprobarse contra la página

@@ -17,6 +17,12 @@ const el=(t,c,txt)=>{const n=document.createElement(t);if(c)n.className=c;if(txt
 const cita=l=>{const [b,...r]=String(l).split(".");return "Vitr. "+(R[+b]||b)+"."+r.join(".")};
 const folioKey=f=>{const m=/^(\d+)([rv])$/.exec(f||"");return m?[+m[1],m[2]==="r"?0:1]:[1e6,0]};
 const locusKey=l=>{const [b,c,s]=String(l).split(".");return [+b||0,c==="praef"?0:+c||0,+s||0]};
+const GRADO={
+ "doble-fuente":"Doble fuente del autor",
+ "fuente-unica":"Fuente única",
+ "transcripcion-por-comprobar":"Transcripción por comprobar",
+ "orden-dudoso":"Orden de folio dudoso",
+ "conflicto-con-el-facsimil":"En conflicto con el facsímil"};
 let datos=null,filas=[];
 
 function enlaces(e){
@@ -57,7 +63,21 @@ function fila(e){
  const val=el("td");
  val.append(el("span",null,e.campos.valoracion||e.campos.estado||e.campos.grado||"—"));
  val.append(el("br"));
- val.append(el("span","review-date","Doble fuente: "+(EDITION[e.edition]||e.version)+" y "+e.bilingue));
+ const sello=el("span","verification-label",GRADO[e.grado]||e.grado);
+ sello.title=datos?.grados?.[e.grado]||"";
+ val.append(sello);
+ const proc=e.grado==="doble-fuente"
+  ? " · "+(EDITION[e.edition]||e.version)+" y "+e.bilingue
+  : " · "+(EDITION[e.edition]||e.version);
+ val.append(el("span","review-date",proc));
+ if((e.motivosDeRevision||[]).length){
+  const d=el("details");
+  d.append(el("summary",null,"Por qué no alcanza el grado superior"));
+  const ul=el("ul");
+  for(const m of e.motivosDeRevision)ul.append(el("li",null,m));
+  d.append(ul);
+  val.append(d);
+ }
  val.append(enlaces(e));
  tr.append(val);
  return tr;
@@ -67,7 +87,9 @@ function pinta(){
  const q=($("coll-q").value||"").trim().toLowerCase();
  const loc=($("coll-locus").value||"").trim();
  const sig=$("coll-siglum").value;
- filas=datos.confirmadas.filter(e=>{
+ const gr=$("coll-grade")?.value||"";
+ filas=(datos.entradas||datos.confirmadas).filter(e=>{
+  if(gr&&e.grado!==gr)return false;
   if(loc&&!(e.locus===loc||e.locus.startsWith(loc+".")))return false;
   if(sig&&!(e.siglaCitadas||[]).includes(sig))return false;
   if(q){
@@ -76,28 +98,38 @@ function pinta(){
   }
   return true;
  }).sort((a,b)=>{
+  const og=Object.keys(GRADO);
+  const dg=og.indexOf(a.grado)-og.indexOf(b.grado);
+  if(dg)return dg;
   const [x,y]=[locusKey(a.locus),locusKey(b.locus)];
   return x[0]-y[0]||x[1]-y[1]||x[2]-y[2];
  });
  const tb=$("coll-rows");tb.replaceChildren();
  for(const e of filas.slice(0,220))tb.append(fila(e));
- $("coll-count").textContent=filas.length+" entradas confirmadas"+
+ $("coll-count").textContent=filas.length+" entradas"+
   (filas.length>220?" (se muestran las primeras 220)":"")+
-  (loc||sig||q?" con el filtro aplicado":"")+".";
+  (loc||sig||q||gr?" con el filtro aplicado":"")+".";
 }
 
 function metricas(){
  const r=datos.recuentos,box=$("coll-metrics");box.replaceChildren();
  const p=el("p","verification-label");
- p.append(el("strong",null,r.confirmadas+" variantes publicadas"));
+ p.append(el("strong",null,(r.publicadas??r.confirmadas)+" entradas publicadas"));
  p.append(document.createTextNode(
-  ` sobre ${r.entradasLeidas} leídas del Apéndice T · ${r.foliosConfirmados} folios del códice H con locus · `+
-  `${r.lociConfirmados} loci · ${r.enRevision} entradas en cola de revisión, no publicadas como aparato.`));
+  ` del Apéndice T · ${r.foliosConfirmados} folios del códice H con locus · ${r.lociConfirmados} loci.`));
  box.append(p);
+ const dl=el("dl");
+ for(const [g,n] of Object.entries(r.porGrado||{})){
+  const dt=el("dt");
+  dt.append(el("strong",null,(GRADO[g]||g)+": "+n));
+  dl.append(dt);
+  dl.append(el("dd",null,datos.grados?.[g]||""));
+ }
+ if(dl.childNodes.length)box.append(dl);
 }
 
 function revision(){
- const box=$("coll-review");box.replaceChildren();
+ const box=$("coll-review");if(!box)return;box.replaceChildren();
  const motivos={};
  for(const e of datos.revision)for(const m of e.motivosDeRevision||[])motivos[m]=(motivos[m]||0)+1;
  const ul=el("ul");
@@ -117,11 +149,15 @@ async function init(){
   const r=await fetch(URL_DATA);
   if(!r.ok)throw Error("HTTP "+r.status);
   datos=await r.json();
-  if(!Array.isArray(datos.confirmadas))throw Error("esquema inesperado");
+  if(!Array.isArray(datos.entradas)&&!Array.isArray(datos.confirmadas))throw Error("esquema inesperado");
+  const fuente=datos.entradas||datos.confirmadas;
   const sig=new Set();
-  for(const e of datos.confirmadas)for(const s of e.siglaCitadas||[])sig.add(s);
+  for(const e of fuente)for(const s of e.siglaCitadas||[])sig.add(s);
   const sel=$("coll-siglum");
   for(const s of [...sig].sort())sel.append(new Option(s,s));
+  const gsel=$("coll-grade");
+  if(gsel)for(const [g,n] of Object.entries(datos.recuentos?.porGrado||{}))
+   gsel.append(new Option((GRADO[g]||g)+" ("+n+")",g));
   metricas();revision();pinta();
   const params=new URLSearchParams(location.search);
   const l=params.get("locus");
@@ -130,7 +166,7 @@ async function init(){
   $("coll-count").textContent="No se pudo cargar el registro de colación ("+e.message+"). No se muestran cifras sin su fuente.";
  }
 }
-for(const id of ["coll-q","coll-locus","coll-siglum"])
+for(const id of ["coll-q","coll-locus","coll-siglum","coll-grade"])
  document.addEventListener("DOMContentLoaded",()=>$(id)?.addEventListener("input",()=>{if(datos)pinta()}),{once:true});
 document.addEventListener("DOMContentLoaded",init,{once:true});
 })();

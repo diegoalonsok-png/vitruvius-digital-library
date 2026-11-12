@@ -223,6 +223,55 @@ def main():
             "text": re.sub(r"\s+", " ", str(n.get("text", ""))).strip()[:1400],
             "anchor": str(n.get("anchor", "")).strip()[:300],
         })
+    # Glosas lematizadas del comentario (scripts/extract-authorial-apparatus.py).
+    # Se incorporan al índice para que las levanten todos los consumidores ya
+    # existentes: el buscador Vitruvia, aparato-critico.html y colacion.html?locus=.
+    # Su locus no viene de la cercanía en la página sino de haber hallado el lema en
+    # el texto latino de la propia edición, de modo que es un vínculo más firme.
+    autoral = ROOT / "data/apparatus/aparato-autoral.json"
+    GRADO_VINCULO = {
+        "verificado-por-lema": "locus verificado por el lema",
+        "verificado-por-lema-y-pagina": "locus verificado por el lema y la página",
+        "verificado-por-lema-y-seccion": "locus verificado por el lema y la sección de comentario",
+        "lema-en-varios-loci": "lema en varios loci, sin desambiguar",
+        "sin-anclaje": "lema no localizado en el texto latino",
+    }
+    n_glosa = 0
+    if autoral.exists():
+        aut = json.loads(autoral.read_text(encoding="utf8"))
+        vers = {e["id"]: e for e in aut.get("ediciones", [])}
+        for g in aut.get("glosas", []):
+            ed = vers.get(g["edition"], {})
+            firme = g["grado"].startswith("verificado")
+            out.append({
+                "id": g["id"], "source": "glosa",
+                "edition": g["edition"], "version": g["version"], "language": g["language"],
+                "kind": "glosa", "label": g["lemma"],
+                "page": g["page"], "pdf": g["pdf"],
+                "loci": [g["locus"]] if g.get("locus") else (g.get("lociPosibles") or [])[:6],
+                "locusLink": GRADO_VINCULO.get(g["grado"], g["grado"]),
+                "locusMention": g.get("locus"),
+                "locusInHeading": firme,
+                "references": [a["siglum"] for a in g.get("autoridades", [])][:10],
+                "text": (g["lemma"] + "] " + g["glosa"])[:1400],
+            })
+            n_glosa += 1
+        for d in aut.get("diccionario", []):
+            out.append({
+                "id": d["id"], "source": "glosario",
+                "edition": d["edition"], "version": d["version"], "language": d["language"],
+                "kind": "glosario", "label": d["lemma"],
+                "page": d["page"], "pdf": d["pdf"],
+                "loci": d.get("lociCitados") or [],
+                "locusLink": "locus citado en la definición" if d.get("lociCitados") else "sin locus",
+                "locusMention": (d.get("lociCitados") or [None])[0],
+                "locusInHeading": bool(d.get("lociCitados")),
+                "references": [a["siglum"] for a in d.get("autoridades", [])][:10],
+                "text": (d["lemma"] + (f" [{d['graecum']}]" if d.get("graecum") else "") + ". " + d["definicion"])[:1400],
+            })
+            n_glosa += 1
+        print("glosas y glosario incorporados:", n_glosa)
+
     doc = {
         "schema": "vitruvius-apparatus-index/1",
         "generated": datetime.date.today().isoformat(),
@@ -233,7 +282,10 @@ def main():
                   "hermenéutica, constructiva…), las bibliografías críticas por locus y las entradas del "
                   "diccionario vitruviano del autor.",
         "editions": [{"id": e[0], "version": e[1], "language": e[2], "pdf": e[3]} for e in ED],
-        "counts": {"bloques": sum(1 for x in out if x["source"] == "bloque"), "notas": sum(1 for x in out if x["source"] == "nota")},
+        "counts": {"bloques": sum(1 for x in out if x["source"] == "bloque"),
+                   "notas": sum(1 for x in out if x["source"] == "nota"),
+                   "glosas": sum(1 for x in out if x["source"] == "glosa"),
+                   "glosario": sum(1 for x in out if x["source"] == "glosario")},
         "entries": out,
     }
     (ROOT / "data/apparatus-index.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf8")

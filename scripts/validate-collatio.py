@@ -19,15 +19,26 @@ se separa lo verificable de lo que necesita revisión humana, con tres controles
    el facsímil vale más que una tabla leída mecánicamente de un PDF, de modo que toda
    entrada que contradiga ese mapa o los rangos de libro declarados se aparta.
 
-Sólo las entradas confirmadas alimentan el mapa folio ↔ locus y el registro de
-variantes del sitio. El resto se publica como cola de revisión, no como aparato.
+Se publica TODO el aparato leído, pero por GRADOS, que es la práctica normal en
+filología: cada entrada declara qué respaldo tiene, en lugar de ocultar las que no
+alcanzan el grado máximo.
+
+  doble-fuente                impresa en las dos ediciones con la misma lectura latina
+  fuente-unica                celda íntegra, pero sin par bilingüe que la confirme
+  transcripcion-por-comprobar la celda muestra señales de arrastre de columna
+  orden-dudoso                rompe el orden de folios del códice
+  conflicto-con-el-facsimil   contradice el mapa verificado por inspección
+
+Al mapa folio ↔ locus sólo pasan los dos primeros grados: un folio equivocado
+corrompería la navegación del facsímil.
 
 Uso: python3 scripts/validate-collatio.py
 """
 import json, re, pathlib, datetime, collections, unicodedata
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-LECTURA = ("estaEdicion", "testigoH", "krohn", "vulgata", "lecturaVisible", "lectura", "testigo")
+LECTURA = ("estaEdicion", "testigoH", "krohn", "vulgata", "lecturaVisible", "lectura", "testigo",
+           "grado", "valoracion", "estado")
 FOLIO_EN_CELDA = re.compile(r"\b\d{1,3}\s*[rv]\b")
 LOCUS_EN_CELDA = re.compile(r"\b(?:[IVX]{1,4}|\d{1,2})\s*\.\s*(?:praef|\d{1,2})\s*\.\s*\d{1,3}\b", re.I)
 VERNACULO = re.compile(r"\b(?:sin valor|en una sola|según|aunque|porque|mismo|también|puede|debe|"
@@ -89,8 +100,11 @@ def sangrada(campos):
             motivos.append(f"locus dentro de «{k}»")
         if k in ("estaEdicion", "testigoH", "krohn", "vulgata") and VERNACULO.search(v):
             motivos.append(f"prosa vernácula dentro de «{k}»")
-        if len(v) > 190:
+        tope = 420 if k in ("valoracion", "estado") else 190
+        if len(v) > tope:
             motivos.append(f"celda «{k}» anómalamente larga ({len(v)})")
+        if re.search(r"\bff?\.\s*\d{1,3}\s*[rv]\s*[–-]\s*\d{1,3}\s*[rv]", v):
+            motivos.append(f"rango de folios en prosa dentro de «{k}»: resumen del anexo, no atribución")
     return sorted(set(motivos))
 
 
@@ -150,7 +164,15 @@ def main():
 
     # 4 · contraste con el mapa verificado por inspección del facsímil
     verificado = json.loads((ROOT / "data/codex-h/folio-locus-map.json").read_text(encoding="utf8"))
-    vmap = {e["folio"]: [l["locus"] for l in e.get("loci", [])] for e in verificado.get("entries", [])}
+    # Sólo valen como contraste los folios verificados por inspección del facsímil.
+    # Las entradas que este mismo proceso añadió al mapa («collatio_autoral») se
+    # excluyen: contrastar contra ellas sería validar la collatio contra sí misma.
+    INSPECCION = ("visual_rubric", "visual_text", "catalogue", "provisional", "not_verified")
+    vmap = {e["folio"]: [l["locus"] for l in e.get("loci", [])
+                         if l.get("status") != "collatio_autoral"]
+            for e in verificado.get("entries", [])
+            if e.get("folio_status") in INSPECCION}
+    vmap = {f: loci for f, loci in vmap.items() if loci}
     libros = {b["book"]: (b.get("start"), b.get("end")) for b in verificado.get("books", [])}
     libro_de = lambda l: int(str(l).split(".")[0])
     choca = set()
@@ -172,15 +194,49 @@ def main():
     revision += [e for e in confirmadas2 if e["id"] in choca]
     confirmadas2 = [e for e in confirmadas2 if e["id"] not in choca]
 
-    # mapa folio ↔ locus derivado SÓLO de entradas confirmadas
-    mapa = collections.defaultdict(set)
-    for e in confirmadas2:
-        for f in e["folios"]:
-            mapa[re.sub(r"\s+", "", f)].add(e["locus"])
-    folios = [{"folio": f, "loci": sorted(mapa[f], key=locus_key),
-               "evidencia": "collatio del autor, Apéndice T",
-               "entradas": sorted({x["id"] for x in confirmadas2 if f in [re.sub(r'\s+','',y) for y in x["folios"]]})}
-              for f in sorted(mapa, key=folio_key)]
+
+
+    # Grado de cada entrada: se publican todas, cada una con su respaldo declarado.
+    GRADOS = {
+        "doble-fuente": "Impresa en las dos ediciones del autor con la misma lectura latina. "
+                        "La lectura de un testimonio no depende de la lengua de la edición, de modo "
+                        "que su coincidencia en ambas es una comprobación independiente.",
+        "fuente-unica": "Celda íntegra, sin señales de arrastre de columna, pero sin una segunda "
+                        "edición que repita la misma lectura. Transcripción fiel de lo impreso; "
+                        "conviene confirmarla en la página citada antes de citarla como lectura.",
+        "transcripcion-por-comprobar": "La celda muestra señales de arrastre de la columna vecina. "
+                        "El dato existe en el aparato impreso, pero esta transcripción puede haber "
+                        "mezclado columnas: se publica para que pueda compararse con la página, no "
+                        "como lectura establecida de ningún testimonio.",
+        "orden-dudoso": "La atribución de folio rompe el orden del códice. Puede ser un folio mal "
+                        "leído o una referencia a otro lugar del manuscrito; requiere comprobación.",
+        "conflicto-con-el-facsimil": "Contradice el mapa de folios verificado por inspección del "
+                        "facsímil o los límites de libro declarados en él. Prevalece el facsímil.",
+    }
+
+    def grado_de(e):
+        motivos = e.get("motivosDeRevision") or []
+        if any("contradice" in m or "fuera del rango" in m for m in motivos):
+            return "conflicto-con-el-facsimil"
+        if any("dentro de" in m or "larga" in m or "vernácula" in m for m in motivos):
+            return "transcripcion-por-comprobar"
+        if any("orden" in m for m in motivos):
+            return "orden-dudoso"
+        return "doble-fuente" if e.get("bilingue") else "fuente-unica"
+
+    todas = []
+    for e in confirmadas2 + revision:
+        reg = dict(e)
+        reg["grado"] = grado_de(e)
+        todas.append(reg)
+    vistos, entradas_unicas = set(), []
+    for e in todas:
+        if e["id"] in vistos:
+            continue
+        vistos.add(e["id"]); entradas_unicas.append(e)
+    orden_grado = {g: i for i, g in enumerate(GRADOS)}
+    entradas_unicas.sort(key=lambda e: (orden_grado.get(e["grado"], 9), locus_key(e["locus"])))
+    por_grado = collections.Counter(e["grado"] for e in entradas_unicas)
 
     doc = {
         "schema": "vitruvius-collatio-validada/1",
@@ -194,15 +250,40 @@ def main():
             "entradasLeidas": len(E),
             "confirmadas": len(confirmadas2),
             "enRevision": len(revision),
-            "foliosConfirmados": len(folios),
             "lociConfirmados": len({e["locus"] for e in confirmadas2}),
             "apartadasPorOrdenCodicologico": len(anom),
             "apartadasPorContradecirElFacsimil": len(choca),
+            "publicadas": len(entradas_unicas),
+            "porGrado": dict(por_grado),
         },
-        "folioLocus": folios,
+        "grados": GRADOS,
+        "entradas": entradas_unicas,
         "confirmadas": confirmadas2,
         "revision": revision,
     }
+    # Mapa folio ↔ locus: sólo los dos grados superiores. Ambos pasaron los controles
+    # de integridad de celda, de orden codicológico y de contraste con el facsímil; la
+    # diferencia entre ellos es si una segunda edición repite la lectura. Un folio
+    # equivocado aquí corrompería la navegación del facsímil, así que los grados
+    # inferiores no entran.
+    CIMA = ("doble-fuente", "fuente-unica")
+    aptas = [e for e in entradas_unicas if e["grado"] in CIMA]
+    mapa = collections.defaultdict(set)
+    grado_folio = {}
+    for e in aptas:
+        for f in e["folios"]:
+            f = re.sub(r"\s+", "", f)
+            mapa[f].add(e["locus"])
+            if e["grado"] == "doble-fuente" or f not in grado_folio:
+                grado_folio[f] = e["grado"]
+    folios = [{"folio": f, "loci": sorted(mapa[f], key=locus_key),
+               "evidencia": "collatio del autor, Apéndice T",
+               "grado": grado_folio.get(f),
+               "entradas": sorted({x["id"] for x in aptas if f in [re.sub(r'\s+','',y) for y in x["folios"]]})}
+              for f in sorted(mapa, key=folio_key)]
+
+    doc["folioLocus"] = folios
+    doc["recuentos"]["foliosConfirmados"] = len(folios)
     out = ROOT / "data/apparatus/collatio-validada.json"
     out.write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf8")
     print(f"→ {out.relative_to(ROOT)}  ({out.stat().st_size/1024:.0f} KB)")

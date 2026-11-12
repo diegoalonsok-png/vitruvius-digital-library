@@ -50,12 +50,43 @@ def norm_locus(raw):
 
 
 def columns(line):
-    """Desplazamientos donde empieza cada columna, por carreras de 2+ espacios."""
-    cols, at = [], 0
+    """Desplazamientos de columna deducidos de una sola línea (el encabezado)."""
+    cols = []
     for m in re.finditer(r"\S+(?:\s\S+)*?(?=\s{2,}|$)", line):
         if m.group(0).strip():
             cols.append(m.start())
     return cols
+
+
+def columns_from_block(lines):
+    """Desplazamientos de columna deducidos del bloque entero.
+
+    Deducirlos sólo del encabezado falla cuando una celda es más ancha que su
+    columna: el texto invade la vecina y el corte parte una palabra. Un límite
+    de columna verdadero es una posición que está en blanco en casi todas las
+    líneas de la tabla, de modo que aquí se calcula sobre el bloque completo.
+    """
+    útiles = [l for l in lines if len(l.strip()) > 3]
+    if len(útiles) < 3:
+        return None
+    ancho = max(len(l) for l in útiles)
+    blancos = []
+    for i in range(ancho):
+        n = sum(1 for l in útiles if i >= len(l) or l[i] == " ")
+        blancos.append(n / len(útiles))
+    # Una separación de columna es una carrera de 2+ posiciones en blanco casi siempre.
+    cols, i = [0], 0
+    while i < ancho:
+        if blancos[i] >= 0.92:
+            j = i
+            while j < ancho and blancos[j] >= 0.92:
+                j += 1
+            if j - i >= 2 and j < ancho:
+                cols.append(j)
+            i = j
+        else:
+            i += 1
+    return cols if len(cols) >= 3 else None
 
 
 def is_header(line):
@@ -74,18 +105,39 @@ def slice_row(line, cols):
 
 
 def parse_page(text, page):
-    """Filas de las tablas de una página, con la cabecera que las gobierna."""
-    lines = text.split("\n")
+    """Filas de las tablas de una página, con la cabecera que las gobierna.
+
+    Los límites de columna se calculan sobre el bloque de tabla que sigue a cada
+    cabecera, no sobre la cabecera sola, para que una celda ancha no invada la
+    columna vecina ni se corte una palabra por el medio.
+    """
+    lines = [l.rstrip() for l in text.split("\n")]
+    # Bloques: desde cada cabecera hasta la siguiente.
+    cortes = [i for i, l in enumerate(lines) if l.strip() and is_header(l)]
+    limites = {}
+    for k, i in enumerate(cortes):
+        fin = cortes[k + 1] if k + 1 < len(cortes) else len(lines)
+        bloque = [l for l in lines[i:fin] if l.strip()]
+        limites[i] = columns_from_block(bloque) or columns(lines[i])
+
     rows, header, cols, pending = [], None, None, None
-    for raw in lines:
-        line = raw.rstrip()
+    for idx, line in enumerate(lines):
         if not line.strip():
             continue
         if is_header(line):
             if pending:
                 rows.append(pending); pending = None
-            cols = columns(line)
-            header = slice_row(line, cols)
+            cols = limites.get(idx) or columns(line)
+            # Las etiquetas se toman de las palabras del propio encabezado y se
+            # asignan a la columna de datos en cuyo tramo caen: los límites del
+            # bloque sirven para cortar los datos, no para partir el título.
+            propios = columns(line)
+            etiquetas = slice_row(line, propios)
+            header = []
+            for i, inicio in enumerate(cols):
+                fin = cols[i + 1] if i + 1 < len(cols) else len(line) + 999
+                dentro = [etiquetas[j] for j, at in enumerate(propios) if inicio <= at < fin]
+                header.append(" ".join(x for x in dentro if x).strip())
             continue
         if cols is None:
             continue
@@ -173,7 +225,19 @@ def main():
                 if not cell:
                     continue
                 todo = " ".join(cell.values())
-                folios = sorted({re.sub(r"\s+", "", f) for f in FOLIO.findall(cell.get("folio", "") or todo)})
+                # El folio se toma de su propia columna. Si no la hay, sólo de una celda
+                # corta que sea el folio y nada más: una mención en prosa como «77 loci
+                # de ff. 1r–98r» es un resumen del anexo, no la atribución de este locus.
+                fuente_folio = cell.get("folio", "")
+                if not fuente_folio:
+                    for clave in ("testigoH", "testigo", "lecturaVisible"):
+                        v = cell.get(clave, "")
+                        if v and len(v) <= 14 and re.fullmatch(r"[\d\s rv.,;–-]+", v):
+                            fuente_folio = v
+                            break
+                if re.search(r"\bff?\.\s*\d{1,3}\s*[rv]\s*[–-]", fuente_folio):
+                    fuente_folio = ""  # rango de folios: alcance del anexo, no un folio del locus
+                folios = sorted({re.sub(r"\s+", "", f) for f in FOLIO.findall(fuente_folio)})
                 tablas[" · ".join(x for x in (row["header"] or []) if x)[:70]] += 1
                 entries.append({
                     "id": f"{ver}-T-p{row['page']}-{len(entries)}",

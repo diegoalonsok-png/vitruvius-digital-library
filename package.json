@@ -1,8 +1,10 @@
 {
   "private": true,
   "scripts": {
+    "audit:cobertura": "python3 scripts/audit-cobertura-ediciones.py",
     "build:aparato-autoral": "python3 scripts/extract-authorial-apparatus.py",
     "build:collatio": "python3 scripts/parse-collatio-codicum.py && python3 scripts/validate-collatio.py",
+    "build:estudios": "python3 scripts/extract-estudios-ediciones.py",
     "build:folios-collatio": "python3 scripts/merge-collatio-folios.py",
     "build:index": "node scripts/build-classics-lexical-index.mjs",
     "build:lexicon-auctoris": "python3 scripts/build-lexicon-auctoris.py",

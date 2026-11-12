@@ -9,7 +9,16 @@ let fallos=0;
 const check=(cond,msg)=>{if(!cond){console.error("  ✗ "+msg);fallos++}else console.log("  ✓ "+msg)};
 
 console.log("datos de la collatio validada");
-check(data.recuentos.confirmadas>0,`${data.recuentos.confirmadas} entradas confirmadas`);
+check(data.recuentos.publicadas===data.recuentos.entradasLeidas,
+  `se publican todas las entradas leídas (${data.recuentos.publicadas} de ${data.recuentos.entradasLeidas})`);
+check(data.entradas.every(e=>e.grado&&data.grados[e.grado]),"toda entrada lleva un grado explicado");
+const CIMA=new Set(["doble-fuente","fuente-unica"]);
+const folioDe=new Map();
+for(const e of data.entradas)for(const f of e.folios||[])
+  if(CIMA.has(e.grado))folioDe.set(f.replace(/\s+/g,""),e.grado);
+check(data.folioLocus.every(f=>folioDe.has(f.folio)),
+  "el mapa de folios sólo contiene folios de los dos grados superiores");
+check(data.recuentos.confirmadas>0,`${data.recuentos.confirmadas} entradas de doble fuente`);
 check(data.confirmadas.every(e=>e.bilingue),"toda entrada confirmada tiene doble fuente bilingüe");
 check(data.confirmadas.every(e=>!(e.motivosDeRevision||[]).length),"ninguna confirmada arrastra motivos de revisión");
 check(data.confirmadas.every(e=>/^\d+\.(praef|\d+)(\.\d+)?$/.test(e.locus)),"todo locus tiene forma canónica");
@@ -40,7 +49,11 @@ const filas=window.document.querySelectorAll("#coll-rows tr");
 check(filas.length>0,`la tabla se pobló con ${filas.length} filas`);
 const metrics=window.document.getElementById("coll-metrics").textContent;
 check(metrics.includes(String(data.recuentos.confirmadas)),"las métricas muestran el recuento real");
-check(/cola de revisión/.test(metrics),"las métricas declaran la cola de revisión");
+check(Object.keys(data.recuentos.porGrado).every(g=>metrics.includes(String(data.recuentos.porGrado[g]))),
+  "las métricas declaran el recuento de cada grado");
+const leyenda=window.document.querySelectorAll("#coll-metrics dt").length;
+check(leyenda===Object.keys(data.recuentos.porGrado).length,
+  `la leyenda explica los ${leyenda} grados`);
 const primera=window.document.querySelector("#coll-rows tr th a");
 check(primera&&/^Vitr\./.test(primera.textContent),"el locus se cita en forma académica (Vitr. …)");
 const enlaces=[...window.document.querySelectorAll("#coll-rows a")].map(a=>a.getAttribute("href"));
