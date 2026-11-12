@@ -179,11 +179,11 @@ async function show(locus){
   const readablePreface=locus==="1.praef.1"&&Number(rec.score)>=0.9&&
    !/[|{}\\]/.test(rec.text)&&String(rec.text||"").length>200;
   if(readablePreface){
-   box.append(el("p","coll-warning","OCR orientativo del primer pasaje del prefacio I, relativamente legible pero no cotejado (puede contener erratas). No citar como transcripción diplomática ni como variante textual sin consultar el facsímil."));
+   box.append(el("p","coll-warning","Pasaje del prefacio I localizado en la edición histórica; la transcripción OCR es auxiliar y puede contener erratas. Para citar una lectura textual, contrástala con el facsímil."));
    const passage=el("p","coll-text",rec.text);passage.lang="la";box.append(passage);
    addReadTools(box,passage,locus,w.id);
   }else{
-   box.append(el("p","coll-warning","OCR no validado o contaminado por errores de reconocimiento y notas editoriales. No se muestra como lectura crítica; consulta el facsímil. La calidad varía entre loci y no se debe extrapolar del prefacio I al libro X."));
+   box.append(el("p","coll-warning","Edición crítica histórica identificada. La transcripción OCR empleada para localizar este pasaje puede incluir erratas o notas editoriales; consulta el facsímil para comprobar la lectura antes de citar una variante."));
   }
   const a=el("a",null,"Consultar la edición original (facsímil) ↗");
   a.href=historicalSources[w.id]||"bibliotheca-graeca-latina.html";
@@ -208,7 +208,7 @@ async function show(locus){
    if(e.pdf){const a=el("a",null,"Abrir la página de la edición ↗");a.href=e.pdf;a.target="_blank";a.rel="noopener";d.append(a)}apBox.append(d)}
  }catch{apBox.append(el("p","coll-meta","Aparato no disponible."))}
  root.append(apBox);
- root.append(el("p","coll-method","Criterio editorial: los textos de Diego Kurilo se presentan desde índices estructurados por locus; las ediciones históricas de Rose y Krohn se ofrecen como facsímiles, sin colación textual automática, hasta disponer de transcripciones cotejadas. Las semejanzas OCR no constituyen pruebas de variantes."));
+ root.append(el("p","coll-method","Criterio editorial: las ediciones críticas históricas de Rose y Krohn están identificadas y disponibles en facsímil. Sus correspondencias digitales por locus sirven para navegar; las lecturas OCR no equivalen por sí mismas a variantes filológicas verificadas."));
 }
 function parse(v){
  const q=String(v||"").trim();if(!q)return null;
