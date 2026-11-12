@@ -216,6 +216,9 @@ targetRoot.addEventListener("click",event=>{
   showInlineLexicon(mark);
   void openMark(mark);
  }else if(inBibliotheca){
+  // One dictionary per click: prevent the global dictionary-everywhere
+  // handler from drawing a second, empty overlay above this lexical dialog.
+  event.stopImmediatePropagation();
   void openMark(mark);
  }else if(inLexiconViewer||inClassicalReader){
   // These readers already have link/navigation or small lexical popups:

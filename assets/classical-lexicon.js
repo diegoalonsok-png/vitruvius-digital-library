@@ -183,6 +183,13 @@ async function lookupLatinVocative(word,work){
 async function lookupLatin(word,work){
  const g=await lookupLatinGlossary(word,work);if(g)return g;
  const vocative=await lookupLatinVocative(word,work);if(vocative)return vocative;
+ // Curated local Latin lexicon: searchable inflected forms, including locus/loci/locum.
+ // Prefer an attested local entry to an empty panel when the larger dictionary
+ // has no exact surface-form entry or is unavailable.
+ const curated=await json("data/latin-lexicon.json");
+ const key=fold(word);
+ const local=(curated?.entries||[]).find(e=>fold(e.lemma)===key||(e.forms||[]).some(f=>fold(f)===key));
+ if(local)return {entries:[{lemma:local.lemma,morph:local.pos||"",gloss:local.en||"",es:local.es||"",lang:"la",source:"Vitruvia · léxico latino local"}],via:"curated-local",sources:[{label:"Vitruvia · léxico latino local; comprobar fuentes de la ficha"}],note:"Las acepciones dependen del contexto y de la edición consultada."};
  const d=await json("data/classical-dictionary.json");if(!d?.latin)return null;
  const lower=word.toLowerCase();
  const variants=[...new Set([lower,lower.replace(/j/g,"i"),lower.replace(/v/g,"u"),lower.replace(/u/g,"v"),lower.replace(/j/g,"i").replace(/v/g,"u"),lower.normalize("NFD").replace(/\p{M}/gu,"")])];
