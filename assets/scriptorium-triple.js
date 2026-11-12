@@ -16,6 +16,14 @@ const editions={
  fr:{name:"Kurilo · V554 · Latín y francés",file:"data/structured/recensio-fr.json",format:"structured",pdf:"documents/kurilo-recensio-fr.pdf"},
  en:{name:"Kurilo · V297 · Latín e inglés",file:"data/structured/theory-en.json",format:"structured",pdf:"documents/kurilo-theory-en.pdf"}
 };
+/* Ficha bibliográfica de cada testigo, visible bajo el título del visor. */
+const FICHA={
+ krohn:"Vitruvii De architectura libri decem, ed. F. Krohn. Leipzig: Teubner, 1912 · OCR del ejemplar digitalizado",
+ rose:"Vitruvii De architectura libri decem, ed. V. Rose, 2.ª ed. Leipzig: Teubner, 1899 · OCR del ejemplar de Internet Archive",
+ kurilo:"Kurilo, D. A. De architectura. Recensio V514 (latín–castellano). Buenos Aires: Sophia Lux, 2026",
+ fr:"Kurilo, D. A. De architectura. Recensio V554 (latin–français). Buenos Aires: Sophia Lux, 2026",
+ en:"Kurilo, D. A. The Architect of Theory, V297. Buenos Aires: Sophia Lux, 2026"
+};
 const cache=new Map(),grid=root.querySelector(".script-triple-grid"),fold=v=>String(v||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
 /* Testigo de collation-loci.json que corresponde a cada visor. */
 const TESTIGO={krohn:"krohn-1912",rose:"rose-1899"};
@@ -66,6 +74,31 @@ function openingPageIndex(pages,format){
  return first>=0?first:Math.max(0,pages.findIndex(p=>String(p.text||"").trim().length>150));
 }
 const states=[];
+/* Ubica en la página OCR el tramo que el cotejo atribuye al locus: se buscan las
+   primeras palabras del tramo (plegadas, tolerando cortes y ruido del OCR) y se
+   marca desde ahí la extensión del tramo. Si no se halla con seguridad, no se marca. */
+const plegarOCR=v=>fold(v).replace(/j/g,"i").replace(/v/g,"u");
+function ubicarTramo(texto,tramo){
+ const pal=[...String(texto).matchAll(/[A-Za-zÀ-ÿ]+/g)].map(m=>({w:plegarOCR(m[0]),a:m.index,b:m.index+m[0].length}));
+ const obj=String(tramo||"").split("|")[0].match(/[A-Za-zÀ-ÿ]+/g)?.map(plegarOCR)||[];
+ if(pal.length<3||obj.length<3)return null;
+ const k=Math.min(8,obj.length);let mejor=-1,puntos=0;
+ for(let i=0;i<pal.length;i++){
+  let n=0;for(let j=0;j<k&&i+j<pal.length;j++)if(pal[i+j].w===obj[j]||(pal[i+j].w.length>4&&obj[j].startsWith(pal[i+j].w.slice(0,4))))n++;
+  if(n>puntos){puntos=n;mejor=i}
+ }
+ if(puntos<Math.ceil(k*0.5))return null;
+ const fin=Math.min(pal.length-1,mejor+obj.length-1);
+ return {a:pal[mejor].a,b:String(tramo).includes("|")?String(texto).length:pal[fin].b};
+}
+const esc=v=>String(v).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
+let sincronizadoAlAbrir=false;
+function sincronizarAlAbrir(){
+ if(sincronizadoAlAbrir||states.length<3||states.some(st=>!st.data))return;
+ const base=states.find(st=>st.data.ed.format==="structured");
+ if(!base)return;
+ sincronizadoAlAbrir=true;synchronize(base);
+}
 let candidatePromise=null;
 function candidateIndex(){
  if(!candidatePromise)candidatePromise=fetch("data/text/krohn-rose-locus-candidates.json")
@@ -112,9 +145,33 @@ candidateLabel.append(candidateToggle,document.createTextNode(" Llevar Krohn y R
 candidateLabel.title="Usa la concordancia documentada por cotejo de trigramas; se indica su grado y no equivale a una colación verificada.";
 toolbar.append(syncLabel,candidateLabel,syncStatus);grid.before(toolbar);
 let syncActive=false;
+/* Desde una página de Krohn o Rose: el primer locus que el cotejo sitúa en esa
+   página lleva a Kurilo a ese locus y al otro OCR a su página concordante. */
+function desdeOCR(source,current){
+ const testigo=TESTIGO[source.editionId()];
+ concordanciaLoci().then(d=>{
+  if(source.data.pages[source.index]!==current)return;
+  const loci=Object.entries(d.loci).filter(([,f])=>f[testigo]?.page===current.page);
+  if(!loci.length){syncStatus.textContent=(editions[source.editionId()].name.split(" ·")[0])+" p. "+current.page+": el cotejo no sitúa ningún locus en esta página (prefacio del editor, índice o aparato).";return}
+  const [locus,fila]=loci[0];
+  source.marcar(fila[testigo].text,fila[testigo].score);
+  const partes=[];
+  for(const target of states){
+   if(target===source||!target.data)continue;
+   if(target.data.ed.format==="structured"){syncActive=true;const ok=target.seekLocus(locus);syncActive=false;if(ok)partes.push(editions[target.editionId()].name.split(" ·").slice(0,2).join(" ·")+" "+locus);continue}
+   const t2=TESTIGO[target.editionId()],dato=t2&&fila[t2];
+   if(!dato?.page)continue;
+   const pos=target.data.pages.findIndex(p=>p.page===dato.page);if(pos<0)continue;
+   target.marcarEn(pos,dato.text,dato.score);syncActive=true;target.seek(pos);syncActive=false;
+   partes.push(editions[target.editionId()].name.split(" ·")[0]+" p. "+dato.page+" · "+gradoConcordancia(dato.score).texto);
+  }
+  syncStatus.textContent="Locus "+locus+(loci.length>1?" (y "+(loci.length-1)+" más en esta página)":"")+" → "+partes.join(" · ")+". Concordancia por cotejo de trigramas; el tramo se subraya donde se lo ubica con seguridad.";
+ }).catch(err=>{syncStatus.textContent="Concordancia de loci no disponible: "+err.message});
+}
 function synchronize(source){
  if(!syncToggle.checked||syncActive||!source.data)return;
  const current=source.data.pages[source.index],from=source.data.ed;
+ if(from.format==="ocr"&&TESTIGO[source.editionId()]){desdeOCR(source,current);return}
  const requestedLocus=current.locus,structured=from.format==="structured";
  let exact=0,unmapped=0,ocrTargets=[];
  for(const target of states){
@@ -146,6 +203,7 @@ function synchronize(source){
    if(!dato||!dato.page)continue;
    const pos=target.data.pages.findIndex(p=>p.page===dato.page);
    if(pos<0)continue;
+   target.marcarEn(pos,dato.text,dato.score);
    syncActive=true;target.seek(pos);syncActive=false;
    const g=gradoConcordancia(dato.score);
    const nombre=(editions[target.editionId()]||{}).name||testigo;
@@ -164,7 +222,9 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  const edition=document.createElement("select");edition.setAttribute("aria-label","Elegir edición del visor "+(slot+1));
  Object.entries(editions).forEach(([key,ed])=>{const o=document.createElement("option");o.value=key;o.textContent=ed.name;edition.append(o)});
  edition.value=defaultKey;
- const head=document.createElement("div");head.className="script-triple-head";head.append(title,edition);panel.append(head);
+ const ficha=document.createElement("p");ficha.className="script-triple-ficha";ficha.textContent=FICHA[defaultKey]||"";
+ const head=document.createElement("div");head.className="script-triple-head";head.append(title,ficha,edition);panel.append(head);
+ edition.addEventListener("change",()=>{ficha.textContent=FICHA[edition.value]||""});
  const bar=document.createElement("div");bar.className="script-triple-tools";
  const prev=document.createElement("button");prev.type="button";prev.textContent="←";
  const locus=document.createElement("select");locus.setAttribute("aria-label","Página o locus del visor "+(slot+1));
@@ -190,7 +250,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  const translation=document.createElement("button");translation.type="button";translation.textContent="Mostrar traducción";translation.hidden=true;
  const pdf=document.createElement("a");pdf.target="_blank";pdf.rel="noopener noreferrer";pdf.textContent="Abrir PDF histórico ↗";
  foot.append(translation,pdf);panel.append(foot);
- let data=null,index=0,token=0,translated=false,size=18,view="text";
+ let data=null,index=0,token=0,translated=false,size=18,view="text",resalte=null;
  function setView(next){
   view=next;body.hidden=next==="pdf";facsimile.hidden=next!=="pdf";
   showText.setAttribute("aria-pressed",String(next==="text"));
@@ -214,6 +274,8 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   selectEdition(id){if(!editions[id])return;edition.value=id;load()},
   focusReader(){panel.scrollIntoView({behavior:"smooth",block:"start"})},
   seek(i){index=i;show()},
+  marcar(t,score){resalte={index,t,score};show()},
+  marcarEn(i,t,score){resalte={index:i,t,score}},
   seekLocus(locus){if(!data||data.ed.format!=="structured")return false;const i=data.pages.findIndex(p=>p.locus===locus);if(i<0)return false;index=i;show();return true}
  };
  function content(p){return translated?p.translation:p.text}
@@ -230,6 +292,11 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   if(!data)return;
   const item=data.pages[index];locus.value=String(index);
   body.textContent=translated?item.translation:(item.text||"Esta página carece de OCR legible. Consultar facsímil.");
+  let marca=null;
+  if(!translated&&resalte&&resalte.index===index&&data.ed.format==="ocr"){
+   const r=ubicarTramo(item.text,resalte.t);
+   if(r){body.innerHTML=esc(item.text.slice(0,r.a))+'<mark class="st-pasaje" title="Tramo que el cotejo atribuye al locus · '+esc(gradoConcordancia(resalte.score).texto)+'">'+esc(item.text.slice(r.a,r.b))+'</mark>'+esc(item.text.slice(r.b));marca=body.querySelector(".st-pasaje")}
+  }
   message.textContent=(data.ed.format==="ocr"?"Página digital ":"Locus ")+item.locus+" · "+(index+1)+" / "+data.pages.length+
    (data.ed.format==="ocr"?" · OCR no corregido":" · Edición indexada por loci");
   prev.disabled=index===0;next.disabled=index===data.pages.length-1;
@@ -237,6 +304,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   translation.hidden=data.ed.format!=="structured";
   translation.textContent=translated?"Mostrar latín":"Mostrar traducción";
   body.scrollTop=0;
+  if(marca)requestAnimationFrame(()=>{body.scrollTop=Math.max(0,marca.offsetTop-body.offsetTop-40)});
   updatePdf();
   recount();
  }
@@ -247,13 +315,13 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
    const resolved=await loadEdition(edition.value);if(current!==token||!panel.isConnected)return;
    data=resolved;index=openingPageIndex(data.pages,data.ed.format);locus.replaceChildren();
    data.pages.forEach((p,i)=>{const o=document.createElement("option");o.value=String(i);o.textContent=p.locus;locus.append(o)});
-   show();
+   show();sincronizarAlAbrir();
   }catch(err){if(current!==token)return;message.textContent="No se pudo cargar el texto de "+editions[edition.value].name+": "+err.message;body.textContent="El índice textual no está disponible. Puede abrir el PDF histórico mediante el enlace inferior.";pdf.href=new URL(editions[edition.value].pdf,location.href).href;pdf.textContent="Abrir PDF histórico ↗";setView("text");}
  }
  edition.addEventListener("change",load);
- prev.addEventListener("click",()=>{index=Math.max(0,index-1);show();synchronize(state)});
- next.addEventListener("click",()=>{index=Math.min(data.pages.length-1,index+1);show();synchronize(state)});
- locus.addEventListener("change",()=>{index=Number(locus.value)||0;show();synchronize(state)});
+ prev.addEventListener("click",()=>{resalte=null;index=Math.max(0,index-1);show();synchronize(state)});
+ next.addEventListener("click",()=>{resalte=null;index=Math.min(data.pages.length-1,index+1);show();synchronize(state)});
+ locus.addEventListener("change",()=>{resalte=null;index=Number(locus.value)||0;show();synchronize(state)});
  minus.addEventListener("click",()=>{size=Math.max(13,size-2);body.style.fontSize=size+"px"});
  plus.addEventListener("click",()=>{size=Math.min(32,size+2);body.style.fontSize=size+"px"});
  translation.addEventListener("click",()=>{translated=!translated;show()});
