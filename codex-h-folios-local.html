@@ -263,6 +263,28 @@ html[data-theme="light"] body .on-shell .on-masthead{
 @media print{
  html[data-theme="dark"] body,html[data-reader-theme="dark"] body{background:white!important;color:black!important}
 }
+
+/* Fondo Lexicon: selected page color must override fixed reader backgrounds.
+   --lx-bg is set by the reusable palette; when unset use the selected theme. */
+html[data-theme="dark"] body,
+html[data-reader-theme="dark"] body{
+ background-color:var(--lx-bg,#101113)!important;
+}
+html[data-theme="light"] body,
+html[data-reader-theme="light"] body{
+ background-color:var(--lx-bg,#f7f3ec)!important;
+}
+body .on-shell{background:transparent!important}
+body .on-shell main{background:transparent!important}
+body .on-shell .on-masthead{
+ background:transparent!important;
+}
+html[data-reader-theme="dark"] body .on-shell .on-masthead,
+html[data-theme="dark"] body .on-shell .on-masthead,
+html[data-reader-theme="light"] body .on-shell .on-masthead,
+html[data-theme="light"] body .on-shell .on-masthead{
+ background:transparent!important;
+}
 </style><script src="assets/vitruvia-fetch-cache.js?v=20261111-responsive-literal-v1"></script><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
 <link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html"><meta name="citation_title" content="Codex Harleianus (Harley MS 2767) · lectura por folios y concordancia"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html">
@@ -578,4 +600,4 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
 })();
 
 </script><script src="assets/vitruvia-codex-loupe.js?v=20261104-filter-linked-loupe-v2" defer></script>
-<script src="assets/vitruvia-codex-filters.js?v=20261104-contrast-invert-v1" defer></script><script src="assets/chapter-keywords.js?v=20261105-kw-v1" defer></script><script>document.addEventListener("DOMContentLoaded",()=>{const f=document.querySelector(".gallery .filter");const c=document.createElement("div");f&&f.after(c);window.VitruviusKeywords&&VitruviusKeywords.mount(c,{onPick:t=>{const s=document.getElementById("search");s.value=t;s.dispatchEvent(new Event("input"))}});});</script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></div><script src="assets/lexicon-palette.js" defer></script><script src="assets/codex-rubrica-overlay.js" defer></script></body></html>
+<script src="assets/vitruvia-codex-filters.js?v=20261104-contrast-invert-v1" defer></script><script src="assets/chapter-keywords.js?v=20261105-kw-v1" defer></script><script>document.addEventListener("DOMContentLoaded",()=>{const f=document.querySelector(".gallery .filter");const c=document.createElement("div");f&&f.after(c);window.VitruviusKeywords&&VitruviusKeywords.mount(c,{onPick:t=>{const s=document.getElementById("search");s.value=t;s.dispatchEvent(new Event("input"))}});});</script><script src="assets/research-folder.js?v=20261105-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></div><script src="assets/lexicon-palette.js?v=20261112-codex-neutral-v2" defer></script><script src="assets/codex-rubrica-overlay.js" defer></script></body></html>
