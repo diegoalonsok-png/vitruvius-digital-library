@@ -836,26 +836,59 @@ async function renderWordTree(query,isCurrent){
    if(mapped.id!=="query-alias")origin(word,["es","en","fr","de"].includes(language)?language:null);
    return;
   }
-  let editorial=findCurated([word]);
+  const code=["la","grc"].includes(language)?language:language==="auto"?wordTreeLanguage(word):null;
+  let lemmas=[];
+  if(code==="la"||code==="grc"){
+   // A form is connected to a lemma only through the local morphology index.
+   // The documented dative aedi is a guarded fallback for historical indexes
+   // that do not resolve the alternative singular stem of aedes.
+   const forms=await load("data/lexicon/forms-"+code+".json");if(!active())return;
+   lemmas=[...new Set((forms.forms?.[fold(word)]||[]).map(a=>lemmaDisplay(a[0])))];
+   if(code==="la"&&fold(word)==="aedi"&&!lemmas.some(l=>fold(l)==="aedes"))lemmas.push("aedes");
+   if(lemmas.length)branch("Lematización morfológica · no es etimología",lemmas,code);
+  }
+  const editorial=findCurated([word,...lemmas]);
   if(editorial){
-   branch("Lema de la ficha editorial",[editorial.lemma],editorial.l);
-   branch("Términos griegos de la ficha",editorial.gr||[],"grc");
-   branch("Términos latinos de la ficha",editorial.la||[],"la");
-   branch("Correspondencias hebreas",editorial.he||[],"he");
+   const isLemma=fold(word)===fold(editorial.lemma);
+   if(!isLemma&&!lemmas.some(l=>fold(l)===fold(editorial.lemma)))
+    branch("Lema de la ficha editorial",[editorial.lemma],editorial.l);
+   if(editorial.old?.length)
+    branch("Formas históricas atestiguadas · verificar inscripción o edición",
+      editorial.old.map(o=>({w:o.f,g:o.src})),editorial.l);
+   if(editorial.id==="aedes"){
+    branch("Familia derivativa latina · derivación documentada",
+      [{w:"aedificium",g:"edificio; compuesto aedi- + facere"},
+       {w:"aedificare",g:"construir; derivado verbal"},
+       {w:"aedilis",g:"magistrado; latín arcaico aidilis"}],"la");
+    branch("Cognados históricos por raíz comparativa · no traducciones",
+      [{w:"αἴθω",g:"griego: arder; relación etimológica señalada en la ficha"}],"grc");
+    branch("Paralelos semánticos · sin parentesco etimológico demostrado",
+      [{w:"ναός",g:"griego: santuario / templo"}],"grc");
+   }else{
+    if(editorial.gr?.length)branch("Griego en la ficha · equivalencia o relación por determinar",
+      editorial.gr,"grc");
+    if(editorial.la?.length)branch("Latín relacionado · tipo de vínculo según ficha",
+      editorial.la,"la");
+   }
+   if(editorial.he?.length)branch("Hebreo · equivalencia de traducción, NO cognado",
+     editorial.he.map(h=>({w:h.w,g:h.g||""})),"he");
+   if(editorial.cog?.length){
+    const cognates=el("li",{class:"lx-tree-node"},
+      el("strong",{},"Cognados comparativos declarados en Etymologicum"),
+      el("ul",{class:"lx-tree-list"},editorial.cog.map(t=>el("li",{class:"lx-tree-node"},
+        el("span",{class:"lx-tree-word"},t)))));
+    root.append(cognates);
+   }
+   origins.append(el("p",{class:"article-note"},
+    "Fuente local: Etymologicum Vitruvianum · ficha «"+editorial.lemma+
+    "». Una raíz con * es reconstruida; formas flexionadas, derivados, préstamos, cognados y equivalentes se distinguen. Consultar bibliografía y loci en la ficha editorial."));
    origin(editorial.lemma,editorial.l);
   }
-  const code=["la","grc"].includes(language)?language:language==="auto"?wordTreeLanguage(word):null;
-  if(code==="la"||code==="grc"){
-   // Share the small forms request with lang(); never await lang() itself.
-   const forms=await load("data/lexicon/forms-"+code+".json");if(!active())return;
-   const lemmas=[...new Set((forms.forms?.[fold(word)]||[]).map(a=>lemmaDisplay(a[0])))];
-   if(lemmas.length){
-    if(!editorial||lemmas.some(l=>fold(l)!==fold(editorial.lemma)))branch("Lemas del índice morfológico",lemmas,code);
-    for(const lemma of lemmas)origin(lemma,code);
-   }
-  }
+  for(const lemma of lemmas)if(!editorial||fold(lemma)!==fold(editorial.lemma))origin(lemma,code);
   if(!rendered.size)origin(word,language==="auto"?wordTreeLanguage(word):language);
-  if(active())status.textContent="Origen y relaciones de las fuentes consultadas. Las formas reconstruidas se marcan con *; un origen desconocido se indica expresamente.";
+  if(active())status.textContent=editorial?
+   "Árbol de relaciones etiquetadas: flexión, derivación, cognados y equivalencias no se confunden. Véase la ficha editorial y sus fuentes.":
+   "Lematización y origen según fuentes disponibles; si no hay parentesco documentado, no se inventa.";
  }catch(error){
   if(!active())return;
   status.textContent="El índice local no está disponible; se consulta la fuente etimológica en línea.";
