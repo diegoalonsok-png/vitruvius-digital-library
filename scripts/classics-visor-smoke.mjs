@@ -385,7 +385,7 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    assert.match(content,/I\.3\.2/);
    assert.match(content,/Rose 1899/i);
    assert.match(content,/Krohn 1912/i);
-   assert.match(content,/OCR no validado/);
+   assert.match(content,/transcripción OCR[^.]*puede incluir erratas[^.]*consulta el facsímil/i,'Las lecturas OCR deben advertir explícitamente que requieren cotejo con el facsímil');
    assert.ok(await p.locator('#coll-body .coll-witnesses a').count()>=2,'Se conservan ambos facsímiles externos');
   }finally{await p.close()}
  });
