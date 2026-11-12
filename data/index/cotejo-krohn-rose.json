@@ -1,0 +1,85 @@
+{
+ "schema": "cotejo-krohn-rose/1",
+ "metodo": "Concordancia del latín de V514 con Krohn (1912) y Rose (1899), y erratas.\n\nPara cada uno de los 731 loci se alinea el latín de V514, palabra por palabra,\ncon el lugar correspondiente de cada edición (OCR de Internet Archive):\n\n  1. Se localiza el pasaje en la edición por votación de trigramas y se alinea\n     una ventana con difflib (sin descarte automático).\n  2. Una palabra de V514 cuenta como atestiguada si coincide con Krohn o con\n     Rose: un error de OCR en una de las dos no se toma por diferencia de V514.\n  3. Diferencias sólo gráficas (asimilación ad-/con-/in-/ex-, ae/e, y/i, ph/f,\n     consonante doble, i/j, u/v) se cuentan aparte: no son errores.\n  4. Errata probable: Krohn y Rose concuerdan entre sí, V514 difiere a una o\n     dos letras de distancia y no es variante gráfica. Si el aparato del autor\n     cita la forma en ese locus, se marca «justificada en el aparato».\n  5. V514 frente a V554 (mismo latín en las dos ediciones del autor): toda\n     diferencia es candidata a errata en una de las dos.\n\nLímites: el OCR de Krohn y Rose tiene errores propios; los porcentajes son un\nmínimo (subestiman la concordancia real). Budé no está disponible en texto.",
+ "global": {
+  "palabrasV514": 57654,
+  "concordanciaExacta": 97.28,
+  "concordanciaConGrafia": 97.29,
+  "conKrohn": 88.91,
+  "conRose": 83.53,
+  "lociAlineados": 731,
+  "lociSinAlinear": []
+ },
+ "porLibro": {
+  "1": {
+   "palabras": 6009,
+   "concordanciaConGrafia": 97.5,
+   "conKrohn": 88.55,
+   "conRose": 83.82
+  },
+  "2": {
+   "palabras": 6911,
+   "concordanciaConGrafia": 97.74,
+   "conKrohn": 91.45,
+   "conRose": 83.59
+  },
+  "3": {
+   "palabras": 4028,
+   "concordanciaConGrafia": 96.75,
+   "conKrohn": 88.21,
+   "conRose": 79.44
+  },
+  "4": {
+   "palabras": 4038,
+   "concordanciaConGrafia": 98.04,
+   "conKrohn": 89.25,
+   "conRose": 84.45
+  },
+  "5": {
+   "palabras": 5891,
+   "concordanciaConGrafia": 97.96,
+   "conKrohn": 88.97,
+   "conRose": 84.25
+  },
+  "6": {
+   "palabras": 5024,
+   "concordanciaConGrafia": 98.05,
+   "conKrohn": 90.7,
+   "conRose": 84.91
+  },
+  "7": {
+   "palabras": 5650,
+   "concordanciaConGrafia": 96.57,
+   "conKrohn": 88.04,
+   "conRose": 85.96
+  },
+  "8": {
+   "palabras": 5677,
+   "concordanciaConGrafia": 96.65,
+   "conKrohn": 84.9,
+   "conRose": 85.34
+  },
+  "9": {
+   "palabras": 6048,
+   "concordanciaConGrafia": 97.42,
+   "conKrohn": 89.81,
+   "conRose": 82.9
+  },
+  "10": {
+   "palabras": 8378,
+   "concordanciaConGrafia": 96.55,
+   "conKrohn": 88.8,
+   "conRose": 81.03
+  }
+ },
+ "erratasCandidatas": [
+  {
+   "locus": "8.1.6",
+   "V514": "qua",
+   "KrohnRose": "quae",
+   "contexto": "ita erunt pertemptata et [qua] supra scripta sunt signa",
+   "estado": "errata probable"
+  }
+ ],
+ "diferenciasV514V554": []
+}
