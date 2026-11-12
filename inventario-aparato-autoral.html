@@ -50,6 +50,49 @@ html[data-theme="dark"] body.vitruvius-secondary-controls #apa-metrics .apa-stat
 html[data-theme="dark"] body.vitruvius-secondary-controls #apa-apparatus-metrics .apa-stat :is(strong,span){
  color:#f1ede5!important;opacity:1!important;-webkit-text-fill-color:#f1ede5!important;
 }
+
+/* Compact statistical ribbons: both authorial-note and comparative indicators. */
+.apa-wrap #apa-metrics.apa-grid,
+.apa-wrap #apa-apparatus-metrics.apa-grid{
+ display:grid!important;
+ grid-auto-flow:column!important;
+ grid-auto-columns:minmax(132px,1fr)!important;
+ grid-template-columns:none!important;
+ align-items:stretch!important;
+ gap:5px!important;
+ overflow-x:auto!important;
+ padding:1px 0 4px!important;
+ margin:12px 0 16px!important;
+ scrollbar-width:thin;
+}
+.apa-wrap #apa-metrics .apa-stat,
+.apa-wrap #apa-apparatus-metrics .apa-stat{
+ display:flex!important;
+ flex-direction:column!important;
+ justify-content:center!important;
+ box-sizing:border-box!important;
+ min-width:0!important;
+ min-height:0!important;
+ height:auto!important;
+ padding:8px 9px!important;
+ border-radius:3px!important;
+ box-shadow:none!important;
+}
+.apa-wrap #apa-metrics .apa-stat strong,
+.apa-wrap #apa-apparatus-metrics .apa-stat strong{
+ font:600 19px/1.05 Georgia,serif!important;
+ letter-spacing:-.02em!important;
+ margin:0 0 3px!important;
+}
+.apa-wrap #apa-metrics .apa-stat span,
+.apa-wrap #apa-apparatus-metrics .apa-stat span{
+ font:500 10px/1.28 system-ui,-apple-system,Segoe UI,sans-serif!important;
+ margin:0!important;
+}
+.apa-wrap #apa-apparatus-metrics .apa-status{
+ display:flex;align-items:center;min-width:190px;margin:0;
+ padding:6px 8px;font:11px/1.4 system-ui,sans-serif;
+}
 </style>
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
