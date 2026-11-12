@@ -130,6 +130,35 @@ body .on-shell .h-preface-panel{padding:12px 15px}
  body .on-shell section[aria-label="Lector de folios"]>.toolbar{position:static}
  body .on-shell .on-navlinks{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* Codex H header: compact Lexicon-style controls, no second oversized toolbar. */
+body .on-shell .on-nav{display:flex!important;align-items:center!important;gap:18px!important;flex-wrap:wrap!important}
+body .on-shell .on-logo{flex:0 0 auto!important;white-space:nowrap}
+body .on-shell .on-navlinks{display:flex!important;flex:1 1 520px!important;gap:7px 16px!important;align-items:center;flex-wrap:wrap;min-width:0}
+body .on-shell .on-navlinks a{display:inline-block;font:500 12px/1.4 system-ui,sans-serif;padding:4px 0}
+body .on-shell .on-navtools{display:flex!important;flex:0 0 auto!important;align-items:center!important;gap:7px!important;flex-wrap:wrap!important;justify-content:flex-end}
+body .on-shell #single-top-controls{position:static!important;display:flex!important;align-items:center!important;gap:7px!important;width:auto!important;margin:0!important;padding:0!important}
+body .on-shell #single-top-controls label{display:flex!important;gap:0!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+body .on-shell #single-top-controls .globe{display:none!important}
+body .on-shell #single-top-controls select,
+body .on-shell #single-top-controls button,
+body .on-shell .on-navtools .lxp-palette>summary{
+ height:39px!important;min-height:39px!important;min-width:0!important;
+ border:1px solid #94989e!important;border-radius:8px!important;
+ padding:0 10px!important;background:#f8f6f1!important;color:#213342!important;
+ font:600 12px/1.2 system-ui,sans-serif!important;box-shadow:none!important;
+}
+body .on-shell #single-top-controls select{width:82px!important}
+body .on-shell #single-top-controls button{width:85px!important;justify-content:center!important}
+body .on-shell .on-navtools .lxp-palette>summary{width:auto!important}
+html[data-reader-theme="dark"] body .on-shell .on-navtools :is(#single-top-controls select,#single-top-controls button,.lxp-palette>summary){
+ background:#292b30!important;color:#f4f4f2!important;border-color:#777c84!important;
+}
+@media(max-width:860px){
+ body .on-shell .on-nav{align-items:flex-start!important;gap:12px!important}
+ body .on-shell .on-navlinks{order:3;flex-basis:100%!important}
+ body .on-shell .on-navtools{margin-left:auto}
+}
 </style><script src="assets/vitruvia-fetch-cache.js?v=20261111-responsive-literal-v1"></script><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
 <link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html"><meta name="citation_title" content="Codex Harleianus (Harley MS 2767) · lectura por folios y concordancia"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html">
@@ -279,7 +308,7 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
  fetch("data/codex-h/folio-locus-map.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null).then(m=>{locusMap=m;go()});
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
-</script><script src="assets/codex-h-preface-search.js?v=20261111-prefacios-v2" defer></script><script src="assets/codex-h-chapter-terms.js?v=20261111-chapters-v2" defer></script><script src="assets/codex-h-single-controls.js?v=20261105-a11y-v1" defer></script><script>
+</script><script src="assets/codex-h-preface-search.js?v=20261111-prefacios-v2" defer></script><script src="assets/codex-h-chapter-terms.js?v=20261111-chapters-v2" defer></script><script src="assets/codex-h-single-controls.js?v=20261112-lexicon-header-v2" defer></script><script>
 /* Codex H folio reader: translate the actual interface without translating manuscript data.
    UI languages: ES, EN, FR, IT, DE, PT. No external translation calls. */
 (()=>{'use strict';
