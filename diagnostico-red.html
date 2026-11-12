@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diagnóstico de red · Vitruvius Digital Library</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/academic.css">
+<style>
+ .diag{max-width:60rem;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+ .diag h1{margin:0 0 .35em}
+ .diag .lede{max-width:42em;line-height:1.65}
+ .diag table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.94rem}
+ .diag th,.diag td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid color-mix(in srgb,currentColor 16%,transparent);vertical-align:top}
+ .diag th{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7;font-weight:600}
+ .diag .st{white-space:nowrap;font-variant-numeric:tabular-nums}
+ .diag .ok{color:#1b7f3b}.diag .no{color:#a3281f}.diag .wait{opacity:.6}
+ .diag .need{font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;opacity:.75}
+ .diag details{margin:1rem 0}
+ .diag textarea{width:100%;min-height:13rem;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;padding:.7rem;border-radius:6px;border:1px solid color-mix(in srgb,currentColor 25%,transparent);background:transparent;color:inherit}
+ .diag .actions{display:flex;gap:.6rem;flex-wrap:wrap;margin:.8rem 0}
+ .diag button{font:inherit;padding:.5rem .95rem;border-radius:6px;border:1px solid color-mix(in srgb,currentColor 30%,transparent);background:transparent;color:inherit;cursor:pointer}
+ .diag .veredicto{border-left:3px solid currentColor;padding:.2rem 0 .2rem .9rem;margin:1.2rem 0;line-height:1.6}
+</style>
+</head>
+<body>
+<main class="diag">
+<h1>Diagnóstico de red</h1>
+<p class="lede">Esta página comprueba, desde <strong>la red en la que estás ahora</strong>, qué partes
+del sitio se pueden alcanzar. Sirve para distinguir tres cosas que se confunden: que el sitio
+esté caído, que tu red bloquee el alojamiento, o que bloquee sólo algún servicio externo del que
+el sitio se sirve pero sin el que funciona igual.</p>
+<p class="lede">No se envía nada a ningún servidor: las comprobaciones las hace tu navegador y el
+resultado se queda en esta pantalla hasta que vos lo copies.</p>
+
+<div class="actions">
+ <button id="run" type="button">Comprobar ahora</button>
+ <button id="copy" type="button">Copiar el informe</button>
+</div>
+
+<p class="veredicto" id="veredicto">Pulsá «Comprobar ahora».</p>
+
+<table id="tabla">
+ <thead><tr><th>Qué se comprueba</th><th>Hace falta para</th><th class="st">Resultado</th></tr></thead>
+ <tbody></tbody>
+</table>
+
+<details>
+ <summary>Informe para copiar y enviar</summary>
+ <textarea id="informe" readonly spellcheck="false"></textarea>
+</details>
+
+<h2>Cómo leer el resultado</h2>
+<ul class="lede">
+ <li><strong>Si falla el alojamiento</strong> (la primera fila), tu red bloquea
+  <code>github.io</code>. Es lo más frecuente en redes universitarias: muchas filtran ese dominio
+  entero porque aloja páginas de cualquiera. La solución no está en el sitio: hay que pedir a la
+  oficina de redes que lo permita, indicándoles el dominio exacto.</li>
+ <li><strong>Si el alojamiento responde y falla todo lo demás</strong>, el sitio se abre y la
+  búsqueda en el fondo propio funciona: lo que no aparecerá son los resultados externos y las
+  imágenes de repositorios ajenos.</li>
+ <li><strong>Si fallan sólo las tipografías</strong>, el griego politónico y el hebreo se verán con
+  una familia de reserva. Se lee igual.</li>
+ <li><strong>Si falla la medición de uso</strong>, no afecta a nada de lo que se lee.</li>
+</ul>
+</main>
+
+<script>
+(()=>{
+"use strict";
+/* Cada comprobación declara para qué hace falta y si el sitio funciona sin ella.
+   La lista sale de los orígenes que el sitio usa de verdad. */
+const CHECKS=[
+ {name:"Alojamiento del sitio (github.io)",url:"assets/favicon.svg",need:"abrir el sitio",essential:true},
+ {name:"Datos del catálogo propio",url:"data/vitruvia-metrics.json",need:"el catálogo y los recuentos",essential:true},
+ {name:"Índice léxico del corpus",url:"data/index/classics/manifest.json",need:"la búsqueda por palabra",essential:true},
+ {name:"Tipografías antiguas (fonts.googleapis.com)",url:"https://fonts.googleapis.com/css2?family=Cardo&display=swap",need:"griego politónico y hebreo con su familia propia",essential:false},
+ {name:"Wikipedia en castellano",url:"https://es.wikipedia.org/w/api.php?action=query&meta=siteinfo&format=json&origin=*",need:"resultados enciclopédicos",essential:false},
+ {name:"Wikidata",url:"https://www.wikidata.org/w/api.php?action=wbsearchentities&search=Vitruvio&language=es&format=json&origin=*",need:"identificación de personas y obras",essential:false},
+ {name:"Wikimedia Commons",url:"https://commons.wikimedia.org/w/api.php?action=query&meta=siteinfo&format=json&origin=*",need:"imágenes con su crédito",essential:false},
+ {name:"Internet Archive",url:"https://archive.org/services/img/vitruvius",need:"ediciones antiguas digitalizadas",essential:false},
+ {name:"Open Library",url:"https://openlibrary.org/search.json?q=vitruvius&limit=1",need:"fichas de libro y cubiertas",essential:false},
+ {name:"Perseus (perseus.tufts.edu)",url:"https://www.perseus.tufts.edu/hopper/",need:"enlaces canónicos CTS a los textos",essential:false},
+ {name:"Biblioteca Vaticana (IIIF)",url:"https://digi.vatlib.it/",need:"folios de testimonios vaticanos",essential:false},
+ {name:"Biblissima",url:"https://portail.biblissima.fr/",need:"búsqueda de testimonios latinos",essential:false},
+ {name:"DOI (doi.org)",url:"https://doi.org/10.5281/zenodo.23868911",need:"las citas con DOI",essential:false},
+ {name:"Medición de uso (Google)",url:"https://www.googletagmanager.com/gtag/js?id=G-0",need:"nada de lo que se lee",essential:false}
+];
+const TIMEOUT=8000;
+const body=document.querySelector("#tabla tbody");
+const veredicto=document.getElementById("veredicto");
+const informe=document.getElementById("informe");
+const rows=new Map();
+
+for(const check of CHECKS){
+ const tr=document.createElement("tr");
+ const name=document.createElement("td");name.textContent=check.name;
+ const need=document.createElement("td");need.className="need";need.textContent=check.need+(check.essential?"":" · prescindible");
+ const state=document.createElement("td");state.className="st wait";state.textContent="—";
+ tr.append(name,need,state);body.append(tr);
+ rows.set(check.name,state);
+}
+
+/* Una comprobación mide alcanzabilidad, no contenido: con modo «no-cors» el
+   navegador no deja leer la respuesta, pero sí distingue una conexión que se
+   completa de una que la red corta. */
+async function probe(check){
+ const started=performance.now();
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),TIMEOUT);
+ const local=!/^https?:/i.test(check.url);
+ try{
+  await fetch(check.url,{signal:controller.signal,mode:local?"cors":"no-cors",cache:"no-store",credentials:"omit"});
+  clearTimeout(timer);
+  return {ok:true,ms:Math.round(performance.now()-started)};
+ }catch(error){
+  clearTimeout(timer);
+  const aborted=error&&error.name==="AbortError";
+  return {ok:false,ms:Math.round(performance.now()-started),reason:aborted?"sin respuesta en "+(TIMEOUT/1000)+" s":"conexión rechazada"};
+ }
+}
+
+async function run(){
+ veredicto.textContent="Comprobando…";
+ const results=[];
+ for(const check of CHECKS){
+  const cell=rows.get(check.name);
+  cell.className="st wait";cell.textContent="comprobando…";
+  const result=await probe(check);
+  cell.className="st "+(result.ok?"ok":"no");
+  cell.textContent=result.ok?result.ms+" ms":"bloqueado · "+result.reason;
+  results.push({...check,...result});
+ }
+ const essentialFailures=results.filter(row=>row.essential&&!row.ok);
+ const optionalFailures=results.filter(row=>!row.essential&&!row.ok);
+ if(essentialFailures.length)
+  veredicto.textContent="Tu red bloquea el alojamiento o los datos del propio sitio ("+
+   essentialFailures.map(f=>f.name).join("; ")+"). Con esto el sitio no puede abrirse desde aquí; "+
+   "hay que pedir a la oficina de redes que permita el dominio. El informe de abajo sirve para adjuntarlo.";
+ else if(optionalFailures.length)
+  veredicto.textContent="El sitio se abre y la búsqueda en el fondo propio funciona. Tu red bloquea "+
+   optionalFailures.length+" servicio(s) externo(s) prescindible(s): "+optionalFailures.map(f=>f.name).join("; ")+
+   ". No aparecerán esos resultados o imágenes, y el resto se usa con normalidad.";
+ else veredicto.textContent="Todo alcanzable desde esta red.";
+
+ const lines=[];
+ lines.push("Diagnóstico de red · Vitruvius Digital Library");
+ lines.push("Fecha: "+new Date().toISOString());
+ lines.push("Página: "+location.href);
+ lines.push("Navegador: "+navigator.userAgent);
+ if(navigator.connection&&navigator.connection.effectiveType)lines.push("Tipo de conexión declarado: "+navigator.connection.effectiveType);
+ lines.push("Service worker: "+("serviceWorker" in navigator?(navigator.serviceWorker.controller?"activo":"disponible, sin controlar esta página"):"no disponible"));
+ let storage="disponible";
+ try{localStorage.setItem("diag","1");localStorage.removeItem("diag")}catch{storage="bloqueado por el navegador"}
+ lines.push("Almacenamiento local: "+storage);
+ lines.push("");
+ for(const row of results)
+  lines.push((row.ok?"[  OK  ] ":"[BLOQ. ] ")+row.name+" — "+(row.ok?row.ms+" ms":row.reason)+(row.essential?"  (esencial)":""));
+ lines.push("");
+ lines.push("Esenciales bloqueados: "+essentialFailures.length+" · prescindibles bloqueados: "+optionalFailures.length);
+ informe.value=lines.join("\n");
+}
+
+document.getElementById("run").addEventListener("click",run);
+document.getElementById("copy").addEventListener("click",async()=>{
+ if(!informe.value)await run();
+ try{await navigator.clipboard.writeText(informe.value)}
+ catch{informe.select()}
+});
+run();
+})();
+</script>
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+</body></html>
