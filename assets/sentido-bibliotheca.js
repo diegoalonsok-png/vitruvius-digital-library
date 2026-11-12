@@ -51,7 +51,7 @@ css.textContent=`.sb-panel{margin:14px 0;border:1px solid rgba(127,127,127,.35);
 .sb-comp h5{margin:0 0 6px;font:600 13px Arial}`;
 document.head.append(css);
 function montar(){
- const ancla=$("#lx-qb")||$("#lx-results");if(!ancla||$("#sb-panel"))return;
+ const ancla=$("#lx-qb")||$("#lx-results")||$(".search-panel,#search-form,form[role=search]")||$("#results");if(!ancla||$("#sb-panel"))return;
  const panel=el("details",{class:"sb-panel",id:"sb-panel"},el("summary",{text:"Por sentido en toda la Bibliotheca · IA — párrafos sobre un tema en las obras clásicas, listados y comparables"}));
  const q=el("textarea",{placeholder:"Escriba un tema en cualquier lengua: proporciones del cuerpo humano como modelo del templo · el agua y la salud de una ciudad · la formación del arquitecto","aria-label":"Tema para la búsqueda por sentido"});
  const boton=el("button",{type:"button",text:"Buscar y comparar"});
