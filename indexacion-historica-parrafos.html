@@ -25,6 +25,21 @@
 .hpar a{text-decoration:underline;text-underline-offset:3px}
 .hpar :focus-visible{outline:3px solid #b48e55;outline-offset:2px}
 @media(prefers-color-scheme:dark){.hpar{color:#f4f0e9}.hpar .result{background:#22292f;color:#f4f0e9;border-color:#656d72}.hpar select,.hpar input[type=search]{background:#262d32;color:#f4f0e9}}
+
+/* OCR search: highlight actual matched words, not the whole transcription. */
+.hpar #hpar-results .vdl-ocr-highlight{
+ background:transparent!important;color:inherit!important;
+ border-left:0!important;box-shadow:none!important;
+ padding:0!important;margin:10px 0!important;
+}
+.hpar #hpar-results .vdl-ocr-highlight mark.vdl-ocr-term{
+ background:#ffdf4f!important;color:#171a1d!important;
+ text-decoration:underline!important;
+ text-decoration-color:#7d5700!important;text-decoration-thickness:2px!important;
+ text-underline-offset:2px!important;
+ border-radius:2px;padding:0 1px;font-weight:700!important;
+ -webkit-text-fill-color:#171a1d!important;
+}
 </style><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 </head><body>
@@ -48,6 +63,6 @@
 <p><a href="metodologia-filologica.html">Metodología de cotejo y edición</a> · <a href="index-codicum.html">Catálogo de códices</a></p>
 </main>
 <script defer src="assets/historical-ocr-highlight.js?v=20261111-yellow-v1"></script>
-<script type="module" src="assets/historical-paragraph-search.mjs?v=20261111-1"></script>
+<script type="module" src="assets/historical-paragraph-search.mjs?v=20261112-highlight-all-v2"></script>
 <script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script>
 <script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></body></html>
