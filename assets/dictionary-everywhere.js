@@ -27,7 +27,7 @@ if(new URLSearchParams(location.search).get("embed")==="1")return;
 const ROOT=(document.currentScript&&document.currentScript.src||"").replace(/assets\/dictionary-everywhere\.js.*$/,"");
 const ANCIENT='[lang="la"],[lang="grc"],[lang="he"],[lang^="la-"],[lang^="grc-"],[lang="grc-x-polytonic"],[data-locus],[data-work]';
 const MARKS='mark,.cl-hit,.query-hit';
-const SKIP='a,button,input,select,textarea,summary,label,[contenteditable="true"],.cl-ui,.cl-dict,[data-cl-words],[data-no-dictionary]';
+const SKIP='a,button,input,select,textarea,summary,label,[contenteditable="true"],.cl-ui,.cl-dict,[data-cl-words],[data-no-dictionary],#classic-results mark.lexical-hit';
 const MIN=3;
 
 let panel=null,closer=null;
