@@ -427,7 +427,8 @@ try{
    assert.equal(await page.locator('#f-folio').inputValue(),'','No se debe atribuir folio a IX.praef.10');
    assert.match(await page.locator('#f-evidence').innerText(),/Sin asignación material/);
    assert.match(await page.locator('#f-latin').innerText(),/Archimed/i);
-   await page.locator('#f-lang').selectOption('en');
+   // El selector legacy está oculto por el control unificado; activar el valor y evento de cambio sin exigir visibilidad.
+   await page.locator('#f-lang').evaluate(select=>{select.value='en';select.dispatchEvent(new Event('change',{bubbles:true}));});
    await page.waitForFunction(()=>document.querySelector('#f-translation-status')?.textContent.includes('English'),{timeout:15000}).catch(()=>{});
    assert(await page.locator('#f-translation').innerText().then(t=>t.length>60),'Falta traducción en el locus');
    await page.close();
