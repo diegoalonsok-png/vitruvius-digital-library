@@ -1,0 +1,16 @@
+{
+ "schema": "observaciones-h/1",
+ "nota": "Lecturas puntuales de H tomadas sobre la imagen digital (British Library, Harley MS 2767) que difieren de V514 y no figuran en el aparato impreso. Son observaciones para revisión del editor, no variantes establecidas.",
+ "observaciones": [
+  {"id": "H-123r-9praef1-pythia", "folio": "123r", "imagen": 253, "locus": "9.praef.1", "renglon": 2,
+   "H": "qui olympia isthmia nemaea uicissent", "V514": "qui Olympia, Pythia, Isthmia, Nemea vicissent",
+   "tipo": "omisión", "aparato": "Pythia] om. H",
+   "detalle": "Tras la rúbrica INCIPIT LIBER NONUS, el renglón en capitales dice NOBILIBUS ATHLETIS QUI OLYMPIA ISTHMIA y continúa nemaea uicissent: no hay Pythia entre Olympia e Isthmia.",
+   "fecha": "2026-11-12", "estado": "a revisar por el editor"},
+  {"id": "H-123r-9praef1-fuerant", "folio": "123r", "imagen": 253, "locus": "9.praef.1", "renglon": 5,
+   "H": "stantes cum palma & corona fuerant laudes", "V514": "stantes cum palma et corona ferant laudes",
+   "tipo": "variante", "aparato": "ferant] fuerant H",
+   "detalle": "Lectura del renglón 5 del prefacio: fuerant, sin abreviatura visible que permita leer ferant.",
+   "fecha": "2026-11-12", "estado": "a revisar por el editor"}
+ ]
+}

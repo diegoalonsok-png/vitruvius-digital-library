@@ -1,0 +1,33 @@
+/* Botonera del Lexicon para páginas secundarias: Laboratorio de escrituras,
+   Fondo (lexicon-palette.js), idioma y tema (secondary-reader-controls.js) y Aa
+   (site-bar.js) en una sola línea, en el orden y con el aspecto del Lexicon.
+   Se usa con lexicon-toolbar.js, que trae a .lx-tools los controles que esos
+   guiones montan por su cuenta. */
+.lx-nav{display:flex;align-items:center;gap:18px 28px;flex-wrap:wrap;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,.12)}
+.lx-logo{display:grid;text-decoration:none;color:inherit;line-height:1}
+.lx-logo b{font:italic 400 30px/1 Georgia,"Times New Roman",serif;letter-spacing:-.02em}
+.lx-logo small{font:500 11px/1 system-ui,sans-serif;letter-spacing:.38em;text-transform:uppercase;margin-top:6px;opacity:.75}
+.lx-links{display:flex;flex-wrap:wrap;gap:6px 22px;flex:1;font:500 13px/1.4 system-ui,sans-serif}
+.lx-links a{color:inherit;opacity:.78;text-decoration:none}
+.lx-links a:hover{opacity:1;text-decoration:underline}
+.lx-tools{display:flex;flex-wrap:nowrap;gap:8px;align-items:center;margin-left:auto}
+.lx-tools>.lx-lab{order:1}.lx-tools>.lxp-palette{order:2}
+.lx-tools #secondary-language{order:3}.lx-tools #secondary-theme{order:4}.lx-tools>.site-typeface-tool{order:5}
+.lx-tools #vitruvius-secondary-toolbar,.lx-tools #vitruvius-secondary-toolbar label{display:contents!important}
+.lx-tools #vitruvius-secondary-toolbar{position:static!important;background:none!important;border:0!important;box-shadow:none!important;padding:0!important}
+.lx-tools :is(.lx-lab,.lxp-palette>summary,#secondary-language,#secondary-theme,.site-typeface-button){
+ display:inline-flex;align-items:center;gap:8px;height:44px!important;min-height:44px!important;padding:0 16px!important;
+ border-radius:11px!important;border:1px solid rgba(255,255,255,.3)!important;background:#26272b!important;color:#f2efe9!important;
+ font:600 15px/1 system-ui,-apple-system,"Segoe UI",sans-serif!important;text-decoration:none;cursor:pointer;box-shadow:none!important;position:static!important}
+.lx-tools #secondary-language{padding-right:30px!important}
+.lx-tools :is(#secondary-theme,.site-typeface-button){min-width:48px;justify-content:center;padding:0 13px!important}
+.lx-tools :is(.lx-lab,.lxp-palette>summary,#secondary-theme,.site-typeface-button):hover{background:#34363c!important}
+.lx-tools:has(#vitruvius-secondary-toolbar) :is(.site-global-language,.theme-switch){display:none!important}
+.lx-tools .vitruvius-secondary-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+html[data-theme=light] .lx-nav{border-bottom-color:rgba(0,0,0,.12)}
+html[data-theme=light] .lx-tools :is(.lx-lab,.lxp-palette>summary,#secondary-language,#secondary-theme,.site-typeface-button){
+ background:#fff!important;color:#1f1f1f!important;border-color:rgba(0,0,0,.25)!important}
+@media(max-width:1100px){.lx-tools{flex-wrap:wrap;margin-left:0}}
+/* Cuando la botonera ya tiene idioma y tema, se ocultan las copias que
+   theme.js y global-language.js montan fuera de ella. */
+body:has(.lx-tools #vitruvius-secondary-toolbar) :is(.site-global-language,.theme-switch):not(.lx-tools *){display:none!important}

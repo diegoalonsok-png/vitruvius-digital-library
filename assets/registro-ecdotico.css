@@ -1,0 +1,97 @@
+/* Registro ecdótico · estética sutil del Lexicon: negro, grises, una sola
+   nota de color (el amarillo del subrayado y el dorado de los acentos). */
+:root{--re-bg:#0e0f11;--re-panel:#141518;--re-panel2:#18191c;--re-line:#2c2e33;--re-ink:#e6e3dd;
+ --re-soft:#a9a6a0;--re-title:#dedbd4;--re-gold:#c9a24a;--re-mark:#ffd60a}
+html[data-theme=light]{--re-bg:#f6f5f2;--re-panel:#fff;--re-panel2:#f1f0ec;--re-line:#d9d6cf;--re-ink:#1f2124;
+ --re-soft:#5f5b54;--re-title:#26282b;--re-gold:#8a6a1c;--re-mark:#ffd60a}
+body{background:var(--lx-bg,var(--re-bg));color:var(--re-ink)}
+.re-main{max-width:1180px;margin:0 auto;padding:34px 24px 100px}
+.re-eyebrow{margin:0 0 10px;font:500 12px/1.4 system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--re-soft)}
+.re-main h1{margin:0 0 12px;font:400 clamp(34px,4.4vw,52px)/1.1 Georgia,"Times New Roman",serif;color:var(--re-title)}
+.re-lead{max-width:88ch;margin:0 0 26px;font:16px/1.7 system-ui,sans-serif;color:var(--re-soft)}
+.re-lead i{color:var(--re-ink)}
+.re-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* Buscador: lo primero y lo más grande */
+.re-buscar{display:flex;gap:10px;margin:0 0 10px}
+.re-buscar input{flex:1;min-width:0;height:58px;padding:0 20px;border-radius:14px;border:1px solid #45474d;
+ background:var(--re-panel);color:var(--re-ink);font:19px Georgia,serif}
+.re-buscar input:focus{outline:2px solid var(--re-gold);outline-offset:1px}
+.re-buscar button{height:58px;padding:0 26px;border-radius:14px;border:1px solid var(--re-gold);background:var(--re-gold);
+ color:#1a1409;font:600 16px system-ui,sans-serif;cursor:pointer}
+.re-sugerencias{margin:0 0 18px;font:13px/2 system-ui,sans-serif;color:var(--re-soft)}
+.re-sugerencias button{margin:0 4px 4px 0;padding:3px 11px;border-radius:999px;border:1px solid var(--re-line);
+ background:transparent;color:var(--re-ink);font:italic 14px Georgia,serif;cursor:pointer}
+.re-sugerencias button:hover{border-color:var(--re-gold)}
+.re-filtros{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:0 0 22px}
+.re-filtros label{display:grid;gap:5px;font:600 11px/1 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--re-soft)}
+.re-filtros select{height:42px;padding:0 10px;border-radius:9px;border:1px solid var(--re-line);background:var(--re-panel2);
+ color:var(--re-ink);font:14px/1.2 system-ui,sans-serif;text-transform:none;letter-spacing:0}
+
+/* Antes de buscar: qué contiene */
+.re-tipos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:6px 0 24px}
+.re-tipos[hidden]{display:none}
+.re-tipo-card{display:grid;gap:6px;text-align:left;padding:16px 18px;border-radius:12px;border:1px solid var(--re-line);
+ background:var(--re-panel);color:var(--re-ink);cursor:pointer}
+.re-tipo-card:hover{border-color:var(--re-gold)}
+.re-tipo-card strong{font:400 30px/1 Georgia,serif;color:var(--re-title)}
+.re-tipo-card span{font:600 14px system-ui,sans-serif}
+.re-tipo-card small{font:13px/1.5 system-ui,sans-serif;color:var(--re-soft)}
+
+/* Aviso del resultado */
+.re-aviso{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;margin:0 0 18px;padding:14px 18px;border-radius:12px;
+ border:1px solid var(--re-gold);background:rgba(201,162,74,.10);font:15px/1.5 system-ui,sans-serif;animation:re-in .4s ease-out}
+.re-aviso[hidden]{display:none}
+.re-aviso strong{font:400 20px Georgia,serif;color:var(--re-title)}
+.re-aviso .re-desglose{color:var(--re-soft)}
+.re-aviso button{padding:4px 12px;border-radius:999px;border:1px solid var(--re-line);background:transparent;color:var(--re-ink);font:13px system-ui;cursor:pointer}
+.re-aviso.re-cero{border-color:#b4472f;background:rgba(180,71,47,.10)}
+@keyframes re-in{from{opacity:.2;transform:translateY(-3px)}to{opacity:1;transform:none}}
+
+/* Resultados agrupados por locus */
+.re-locus{margin:0 0 16px;border:1px solid var(--re-line);border-radius:12px;background:var(--re-panel);overflow:hidden}
+.re-locus>header{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding:12px 18px;background:var(--re-panel2);border-bottom:1px solid var(--re-line)}
+.re-locus>header h2{margin:0;font:400 22px Georgia,serif;color:var(--re-title)}
+.re-locus>header .re-n{font:13px system-ui;color:var(--re-soft)}
+.re-locus>header nav{margin-left:auto;display:flex;flex-wrap:wrap;gap:4px 14px;font:13px system-ui}
+.re-locus>header nav a{color:var(--re-soft);text-decoration:none;border-bottom:1px dotted currentColor}
+.re-locus>header nav a:hover{color:var(--re-gold)}
+.re-reg{padding:14px 18px;border-top:1px solid var(--re-line)}
+.re-reg:first-of-type{border-top:0}
+.re-chip{display:inline-flex;align-items:center;gap:6px;margin:0 8px 6px 0;padding:2px 10px;border-radius:999px;
+ font:600 11px/1.7 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;border:1px solid}
+.re-chip.t-decision{color:#e8c46a;border-color:rgba(232,196,106,.55)}
+.re-chip.t-glosa{color:#b9c6d2;border-color:rgba(185,198,210,.45)}
+.re-chip.t-nota{color:#c9c6bf;border-color:rgba(201,198,191,.4)}
+.re-chip.t-lectura-h{color:#e59a7f;border-color:rgba(229,154,127,.55)}
+html[data-theme=light] .re-chip.t-decision{color:#7a5a00}html[data-theme=light] .re-chip.t-glosa{color:#3d5266}
+html[data-theme=light] .re-chip.t-nota{color:#4f4b45}html[data-theme=light] .re-chip.t-lectura-h{color:#9a3c22}
+.re-que{font:13px/1.5 system-ui,sans-serif;color:var(--re-soft)}
+.re-ap{margin:8px 0 6px;font:17px/1.6 Georgia,serif;color:var(--re-ink)}
+.re-ap .re-lema{font-style:italic}
+.re-ap .re-cor{margin:0 .35em;color:var(--re-soft)}
+.re-ap .re-sig{font-style:normal;font-weight:600;letter-spacing:.02em}
+.re-tx{margin:6px 0;font:15px/1.65 system-ui,sans-serif;color:var(--re-ink)}
+.re-ctx{margin:4px 0 0;font:13px/1.6 system-ui,sans-serif;color:var(--re-soft)}
+.re-ctx summary{cursor:pointer}
+.re-meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font:12.5px/1.5 system-ui,sans-serif;color:var(--re-soft)}
+.re-meta a{color:var(--re-gold);text-decoration:none}
+.re-meta a:hover{text-decoration:underline}
+.re-main mark.re-hit{background:var(--re-mark);color:#111;border-radius:3px;padding:0 .12em;font-weight:600}
+.re-mas{display:block;margin:18px auto;height:44px;padding:0 22px;border-radius:11px;border:1px solid #45474d;background:#26272b;color:#f2efe9;font:600 14px system-ui;cursor:pointer}
+.re-mas:hover{border-color:var(--re-gold)}
+.re-export{display:flex;flex-wrap:wrap;gap:8px 18px;margin:8px 0 26px;font:13px system-ui;color:var(--re-soft)}
+.re-export a{color:var(--re-gold)}
+.re-metodo{margin-top:30px;padding:16px 20px;border:1px solid var(--re-line);border-radius:12px;background:var(--re-panel);font:14px/1.7 system-ui,sans-serif}
+.re-metodo summary{cursor:pointer;font:400 19px Georgia,serif;color:var(--re-title)}
+.re-tabla{width:100%;border-collapse:collapse;margin:12px 0}
+.re-tabla :is(th,td){padding:9px 10px;border-bottom:1px solid var(--re-line);text-align:left;vertical-align:top}
+.re-tabla th{font:600 12px system-ui;letter-spacing:.05em;text-transform:uppercase;color:var(--re-soft)}
+.re-metodo a{color:var(--re-gold)}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:50;background:#fff;color:#000;padding:8px}
+@media(max-width:700px){.re-buscar{flex-direction:column}.re-buscar button{height:48px}.re-locus>header nav{margin-left:0}}
+/* Negro del Lexicon (o el fondo elegido en «Fondo»), nunca el azul antiguo
+   que theme.css aplica al cuerpo en modo oscuro. */
+html[data-theme=dark],html[data-theme=dark] body{background:var(--lx-bg,#0e0f11)!important;color:var(--re-ink)}
+html[data-theme=dark] .re-buscar input,html[data-theme=dark] .re-filtros select{background:#141518!important;color:#e6e3dd!important;border-color:#3a3c41!important}
+html[data-theme=dark] .site-bar,html[data-theme=dark] .lx-nav{background:transparent!important}

@@ -15,13 +15,17 @@ assert.ok(Array.isArray(notes.entries),'Critical notes missing');
 assert.ok(Array.isArray(decisions.decisions),'Decisions missing');
 const errors=[],warnings=[],byStatus={},byEdition={},seen=new Set();
 const noteKeys=new Set(notes.entries.map(n=>n.edition+'|'+String(n.footnote_id)));
+// Glosas lematizadas y glosario del autor (scripts/extract-authorial-apparatus.py):
+// rastreables si su id existe en el aparato extraído y traen página y PDF.
+const autoral=load('data/apparatus/aparato-autoral.json');
+const glosaIds=new Set((autoral.glosas||[]).map(g=>g.id)),glosarioIds=new Set((autoral.diccionario||[]).map(g=>g.id));
 const plausible=/^(?:[1-9]|10)\.(?:praef\.)?\d+(?:\.\d+)?$/i;
 const add=(arr,id,message)=>arr.push({id,message});
 for(const e of index.entries){
  const id=String(e.id||'');
  if(!id||seen.has(id))add(errors,id,'ID inexistente o duplicado');
  seen.add(id);
- if(!['nota','bloque'].includes(e.source))add(errors,id,'Origen no reconocido');
+ if(!['nota','bloque','glosa','glosario'].includes(e.source))add(errors,id,'Origen no reconocido');
  if(!['recensio-es','recensio-fr','theory-en'].includes(e.edition))add(errors,id,'Edición no reconocida');
  if(!String(e.text||'').trim())add(errors,id,'Texto crítico vacío');
  const links=Array.isArray(e.loci)?e.loci:[];
@@ -35,6 +39,11 @@ for(const e of index.entries){
   if(!number||!noteKeys.has(e.edition+'|'+number))add(errors,id,'Nota sin origen DOCX rastreable');
   if(state==='locus explícito'&&!e.locusMention)add(errors,id,'Se declara explícito sin mención registrada');
   if(/estimado|candidato|contexto de página/i.test(state))add(warnings,id,'Vínculo orientativo; no apto para acreditar lectio varia');
+ } else if(e.source==='glosa'||e.source==='glosario'){
+  if(!(e.source==='glosa'?glosaIds:glosarioIds).has(id))add(errors,id,(e.source==='glosa'?'Glosa':'Entrada de glosario')+' sin origen rastreable en aparato-autoral.json');
+  if(!Number.isInteger(e.page)||!String(e.pdf||'').includes('#page='+e.page))add(errors,id,'Sin página y PDF de la edición impresa');
+  if(e.source==='glosa'&&e.locusInHeading&&!e.locusMention)add(errors,id,'Glosa con locus declarado sin mención');
+  if(!links.length)add(warnings,id,'Glosa o entrada de glosario sin locus: no equivale a asignación ecdótica');
  } else {
   if(e.locusInHeading&&!e.locusMention)add(errors,id,'Encabezado explícito sin locus');
   if(/contexto de página|sin locus/i.test(state))add(warnings,id,'Locus contextual o ausente: no equivale a asignación ecdótica');
@@ -51,7 +60,8 @@ const report={
  schema:'vitruvius-apparatus-provenance-audit/1',
  indexSchema:index.schema,
  totals:{entries:index.entries.length,notes:index.entries.filter(x=>x.source==='nota').length,
- blocks:index.entries.filter(x=>x.source==='bloque').length,decisions:decisions.decisions.length},
+ blocks:index.entries.filter(x=>x.source==='bloque').length,glosses:index.entries.filter(x=>x.source==='glosa').length,
+ glossary:index.entries.filter(x=>x.source==='glosario').length,decisions:decisions.decisions.length},
  byEdition,byLocationState:byStatus,
  errorCount:errors.length,warningCount:warnings.length,
  errors:errors.slice(0,300),warningExamples:warnings.slice(0,100),
