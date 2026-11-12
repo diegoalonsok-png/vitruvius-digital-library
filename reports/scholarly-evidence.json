@@ -1,0 +1,66 @@
+{
+  "schema": "vitruvius-scholarly-evidence-v1",
+  "generated": "2026-11-12T14:50:13.887Z",
+  "purpose": "Integridad verificable de inventarios y grados de evidencia; no certifica calidad filológica ni vinculación con universidades.",
+  "sourcePaths": [
+    "data/classics-corpus/indexation-roadmap-222.json",
+    "data/classics-corpus/translation-availability-222.json",
+    "data/classics-corpus/search-registry.json",
+    "data/classics-corpus/coverage-audit.json",
+    "data/ecdotic-decisions.json",
+    "data/classics-corpus/semantic-conceptus-postings.json"
+  ],
+  "counts": {
+    "cataloguedWorks": 222,
+    "localOriginalWorks": 182,
+    "missingLocalOriginals": 40,
+    "hostedTranslationWorks": 59,
+    "originalOnlyWorks": 123,
+    "effectiveOriginalWorks": 210,
+    "missingEffectiveOriginals": 12,
+    "externalOriginalsIndexed": 28,
+    "textVersions": 247,
+    "registeredWitnesses": 100,
+    "conceptEntries": 74,
+    "ecdoticNotesExtracted": 811,
+    "notesExplicitLocus": 41,
+    "notesCandidateLocus": 519,
+    "notesUnlocated": 251,
+    "verifiedTextualDecisions": 0
+  },
+  "semantic": {
+    "method": "Conceptus: correspondencias editoriales, no embeddings neuronales",
+    "status": "validación individual de postulaciones semánticas no acreditada por este control"
+  },
+  "sourceReadiness": {
+    "correspondencia_bibliografica_ambigua": 3,
+    "requiere_fuente_no_canonica_o_edicion_especifica": 7,
+    "sin_fuente_en_mapa_perseus": 15,
+    "tei_perseus_candidato_por_verificar": 15
+  },
+  "evidentiaryLimits": [
+    "La búsqueda Conceptus usa términos del tesauro; no se anuncia como recuperación neuronal ni como equivalencia filológica probada.",
+    "Un enlace o manifiesto externo puede ofrecer texto consultable, pero no es texto alojado e indexado localmente.",
+    "No atribuir transcripción diplomática, colación de manuscritos ni revisión por pares sin documentos de evidencia.",
+    "El estado de lectura y autenticidad de cada pasaje exige verificación humana independiente."
+  ],
+  "failures": [],
+  "advisories": [
+    {
+      "code": "ecdotic-backlog",
+      "detail": "No existen decisiones de variantes verificadas en este registro; 811 notas extraídas no constituyen 811 colaciones."
+    },
+    {
+      "code": "originals-pending",
+      "detail": "12 registros aún no tienen índice original local ni externo reconocido."
+    },
+    {
+      "code": "translations-pending",
+      "detail": "163 obras carecen de traducción local, no necesariamente de traducción externa."
+    },
+    {
+      "code": "semantic-review",
+      "detail": "Los resultados Conceptus necesitan pruebas de cobertura y relevancia separadas."
+    }
+  ]
+}

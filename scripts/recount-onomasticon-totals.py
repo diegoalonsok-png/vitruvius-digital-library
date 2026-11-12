@@ -67,6 +67,11 @@ def main():
         f"(XII, VIIII) se cuentan como palabras y son {rom} del total. Palabra griega: carrera máxima de "
         "caracteres del bloque griego. Recuento reproducible con scripts/recount-onomasticon-totals.py; "
         "no es un recuento diplomático del Codex H.")
+    # El historial sólo se toca si algún total cambió: volver a correr el
+    # recuento sobre el mismo texto no es una revisión.
+    if antes == doc["totals"]:
+        print("Totales sin cambios: nada que escribir.")
+        return
     doc.setdefault("revisions", []).append({
         "date": datetime.date.today().isoformat(),
         "change": ("Totales recalculados desde el texto. La cifra anterior de palabras latinas "

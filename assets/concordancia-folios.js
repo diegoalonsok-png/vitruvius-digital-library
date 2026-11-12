@@ -112,16 +112,16 @@ async function render(){
 /* Rótulos del buscador, en el idioma de la interfaz. Los visores no se traducen:
    el latín y las traducciones del autor se muestran siempre como son. */
 const LB={
- es:{disp:' editoriales disponibles',coinc:q=>' coincidentes con «'+q+'»',cola:'. Folio material solo en los expresamente asociados; en los demás, libro verificado y posición estimada.',
+ es:{cuenta:(n,q)=>q?(n===1?'1 locus coincidente':n+' loci coincidentes')+' con «'+q+'»':(n===1?'1 locus editorial disponible':n+' loci editoriales disponibles'),cola:'. Folio material solo en los expresamente asociados; en los demás, libro verificado y posición estimada.',
   folio:'Folio',libro:'Libro',est:'estimado',sin:'Folio no atribuido',consultar:'Consultar locus',mas:(n,r)=>'Mostrar '+n+' loci más · quedan '+r,primeros:'Se muestran los primeros 35 loci. Precisa la búsqueda para encontrar los restantes.',
   st:{visual_rubric:'rúbrica verificada',catalogue:'catálogo BL',provisional:'mapeo provisional',collatio_autoral:'collatio del autor',not_verified:'locus pendiente',lectura:'folio leído'}},
- en:{disp:' editorial loci available',coinc:q=>' loci matching «'+q+'»',cola:'. A material folio only where expressly associated; elsewhere, verified book and estimated position.',
+ en:{cuenta:(n,q)=>q?(n===1?'1 locus matching':n+' loci matching')+' «'+q+'»':(n===1?'1 editorial locus available':n+' editorial loci available'),cola:'. A material folio only where expressly associated; elsewhere, verified book and estimated position.',
   folio:'Folio',libro:'Book',est:'estimated',sin:'No folio assigned',consultar:'Consult locus',mas:(n,r)=>'Show '+n+' more loci · '+r+' left',primeros:'The first 35 loci are shown. Refine the search to find the rest.',
   st:{visual_rubric:'verified rubric',catalogue:'BL catalogue',provisional:'provisional mapping',collatio_autoral:"author's collatio",not_verified:'locus pending',lectura:'folio read'}},
- fr:{disp:' loci éditoriaux disponibles',coinc:q=>' loci correspondant à «'+q+'»',cola:'. Folio matériel seulement là où il est expressément associé ; ailleurs, livre vérifié et position estimée.',
+ fr:{cuenta:(n,q)=>q?(n===1?'1 locus correspondant':n+' loci correspondant')+' à «'+q+'»':(n===1?'1 locus éditorial disponible':n+' loci éditoriaux disponibles'),cola:'. Folio matériel seulement là où il est expressément associé ; ailleurs, livre vérifié et position estimée.',
   folio:'Folio',libro:'Livre',est:'estimé',sin:'Aucun folio attribué',consultar:'Consulter le locus',mas:(n,r)=>'Afficher '+n+' loci de plus · il en reste '+r,primeros:'Les 35 premiers loci sont affichés. Affinez la recherche pour trouver les autres.',
   st:{visual_rubric:'rubrique vérifiée',catalogue:'catalogue BL',provisional:'attribution provisoire',collatio_autoral:"collatio de l'auteur",not_verified:'locus en attente',lectura:'folio lu'}},
- la:{disp:' loci editoriales praesto',coinc:q=>' loci cum «'+q+'» congruentes',cola:'. Folium materiale tantum ubi expresse adiungitur; alibi liber comprobatus et locus aestimatus.',
+ la:{cuenta:(n,q)=>q?(n===1?'1 locus cum «'+q+'» congruens':n+' loci cum «'+q+'» congruentes'):(n===1?'1 locus editorialis praesto':n+' loci editoriales praesto'),cola:'. Folium materiale tantum ubi expresse adiungitur; alibi liber comprobatus et locus aestimatus.',
   folio:'Folium',libro:'Liber',est:'aestimatum',sin:'Folium non attributum',consultar:'Locum inspicere',mas:(n,r)=>'Alios '+n+' locos monstrare · supersunt '+r,primeros:'Priores XXXV loci monstrantur. Quaestionem accuratius fac ut ceteros invenias.',
   st:{visual_rubric:'rubrica comprobata',catalogue:'catalogus BL',provisional:'attributio provisoria',collatio_autoral:'collatio auctoris',not_verified:'locus pendens',lectura:'folium lectum'}}};
 const lb=()=>LB[(document.documentElement.lang||'es').slice(0,2)]||LB.es;
@@ -131,7 +131,7 @@ function renderMatches(){
  const list=$('f-search-results');list.replaceChildren();
  let q=query.trim(),items=passages;
  if(q){items=passages.filter(p=>fold(p.locus).includes(fold(q))||fold(p.latin).includes(fold(q))||fold(p.translation).includes(fold(q)));}
- $('f-search-count').textContent=items.length+(q?L.coinc(q):(L===LB.es?' loci':'')+L.disp)+L.cola;
+ $('f-search-count').textContent=L.cuenta(items.length,q)+L.cola;
  if(query!==lastQuery){shown=35;lastQuery=query}
  for(const p of items.slice(0,shown)){
   const div=document.createElement('div');div.className='folio-result';

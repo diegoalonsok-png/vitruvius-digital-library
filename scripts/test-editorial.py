@@ -3,6 +3,10 @@ from html.parser import HTMLParser
 from pathlib import Path
 import json
 root=Path(__file__).resolve().parents[1]
+import re
+_academica=re.sub(r'\s+','',(root/'assets/academic.css').read_text())
+def contiene_academica(ruta):
+    return ruta.exists() and _academica in re.sub(r'\s+','',ruta.read_text())
 class Page(HTMLParser):
     def __init__(self):
         super().__init__(); self.h1=0; self.description=False; self.skip=False; self.footer=False; self.css=False; self.ids=set()
@@ -12,7 +16,12 @@ class Page(HTMLParser):
         if tag=='meta' and a.get('name')=='description': self.description=bool(a.get('content'))
         if tag=='a' and 'skip' in a.get('class','').split(): self.skip=a.get('href','').startswith('#')
         if tag=='footer': self.footer=True
-        if tag=='link' and any(css in a.get('href','') for css in ('assets/academic.css','assets/bundle-index-1.css','assets/editorial-reading.css')): self.css=True
+        # La hoja académica cuenta si se enlaza tal cual o dentro de un paquete
+        # (scripts/build-style-bundles.mjs) que la contenga completa y al día:
+        # un paquete viejo, sin regenerar tras editar academic.css, no cuenta.
+        if tag=='link' and a.get('rel')=='stylesheet':
+            h=a.get('href','').split('?')[0]
+            if h=='assets/academic.css' or (h.startswith('assets/bundle-') and contiene_academica(root/h)): self.css=True
         if a.get('id'): assert a['id'] not in self.ids, f"Duplicate ID {a['id']}"; self.ids.add(a['id'])
 for name in ['index','metodologia','estudios','bibliografia','lector-bilingue','basilica-fano','auditoria','principios']:
     p=Page();p.feed((root/(name+'.html')).read_text())

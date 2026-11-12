@@ -420,7 +420,7 @@ try{
    assert.match(await page.locator('#f-latin').innerText(),/1\.1\.1/);
    assert.match(await page.locator('#f-evidence').innerText(),/verificado|rúbrica/i);
    await page.locator('#f-search').fill('9.praef.10');
-   assert.match(await page.locator('#f-search-count').innerText(),/1 (?:loci?|coincidentes?)/);
+   assert.match(await page.locator('#f-search-count').innerText(),/1 loci?/);
    await page.locator('#f-search-results button').first().click();
    assert.equal(await page.locator('#f-folio').inputValue(),'','No se debe atribuir folio a IX.praef.10');
    assert.match(await page.locator('#f-evidence').innerText(),/Sin asignación material/);

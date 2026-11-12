@@ -443,3 +443,11 @@ html[data-theme="dark"] footer{background:var(--paper);color:var(--ink)}html[dat
 .scholarly-reader .parallel-lexical-note{font:400 12px/1.55 Arial,Helvetica,sans-serif;color:var(--muted,#65717c);margin:8px 0 16px}
 .scholarly-reader .parallel-lexical-note[hidden]{display:none!important}
 @media print{#search-results .parallel-equivalent-toggle{display:none!important}#search-results mark.search-hit-equivalent,.scholarly-reader mark.search-hit-equivalent{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* Glosario de las clases de divergencia del scriptorium: los términos ecdóticos
+   se definen en la página para que no haya que saberlos de antemano. */
+.script-audit-glossary{margin:14px 0 18px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;
+ font:13px/1.6 system-ui,sans-serif}
+.script-audit-glossary dt{font-weight:700;margin-top:9px}
+.script-audit-glossary dt:first-child{margin-top:0}
+.script-audit-glossary dd{margin:3px 0 0;opacity:.86}

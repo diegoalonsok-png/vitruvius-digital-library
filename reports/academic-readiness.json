@@ -1,0 +1,52 @@
+{
+  "schema": "vitruvia-academic-readiness-v1",
+  "generated": "CI execution",
+  "scope": "Catalogue metadata, etymological references, location overlap and automated Latin collation. No human verification of manuscript readings.",
+  "counts": {
+    "cataloguedWorks": 222,
+    "indexedDistinctWorks": 182,
+    "indexedTextVersions": 247,
+    "manuscriptWitnesses": 23,
+    "lexiconEntries": 115,
+    "etymologicalEntriesWithoutLocalLoci": 47,
+    "alignmentPairs": 16,
+    "pairsWithoutSharedLoci": 3,
+    "latinLoci": 731,
+    "latinAlerts": 37
+  },
+  "failures": [],
+  "editorialBacklog": [
+    {
+      "id": "no-shared-loci",
+      "description": "3 language pairs lack shared passage identifiers; retain full independent reading, do not infer missing texts"
+    },
+    {
+      "id": "uncited-loci",
+      "description": "47 etymological entries lack local cited passages; do not state these are independently attested here"
+    },
+    {
+      "id": "latin-collation-alerts",
+      "description": "37 heuristic Latin discrepancy alerts require editorial examination; they are not proven textual mistakes"
+    }
+  ],
+  "unalignedPairs": [
+    {
+      "workId": "apuleius-metamorphoses",
+      "languages": "la-en"
+    },
+    {
+      "workId": "apuleius-metamorphoses",
+      "languages": "la-es"
+    },
+    {
+      "workId": "petronius-satyrica",
+      "languages": "la-en"
+    }
+  ],
+  "rules": [
+    "Original texts, editions and translations remain unchanged.",
+    "An identical locus identifier does not establish semantic or textual equivalence.",
+    "A lexical or etymological tree does not establish historical descent without source-based phonological evidence.",
+    "Machine-reported discrepancies must not be labelled manuscript errors without specialist collation."
+  ]
+}

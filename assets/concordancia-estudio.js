@@ -241,6 +241,10 @@ function montarLupa(){
  const caja=$("f-image-box"),img=$("f-image");
  if(!caja||!img)return null;
  const lente=el("div",{class:"ce-lens","aria-hidden":"true"});
+ // Las marcas (rúbricas y voz capital) se copian ampliadas dentro de la lente,
+ // en una capa con las mismas proporciones que la imagen.
+ const capaLente=el("div",{class:"ce-lens-capa"});
+ lente.append(capaLente);
  caja.append(lente);
  let activa=false;
  const mover=ev=>{
@@ -256,6 +260,12 @@ function montarLupa(){
   lente.style.backgroundImage=`url("${img.currentSrc||img.src}")`;
   lente.style.backgroundSize=(r.width*A)+"px "+(r.height*A)+"px";
   lente.style.backgroundPosition=`${-(x*A-lado/2)}px ${-(y*A-lado/2)}px`;
+  capaLente.style.width=(r.width*A)+"px";capaLente.style.height=(r.height*A)+"px";
+  capaLente.style.transform=`translate(${-(x*A-lado/2)}px,${-(y*A-lado/2)}px)`;
+  if(capaLente.dataset.firma!==(capa?.childElementCount+":"+(capa?.innerHTML.length||0))){
+   capaLente.replaceChildren(...[...(capa?.children||[])].map(n=>n.cloneNode(true)));
+   capaLente.dataset.firma=capa?.childElementCount+":"+(capa?.innerHTML.length||0);
+  }
  };
  caja.addEventListener("mousemove",mover);
  caja.addEventListener("mouseleave",()=>lente.classList.remove("ce-on"));

@@ -221,3 +221,7 @@ html[data-theme=light] .ce-share{background:#2b2d31;color:#fff;border-color:#2b2
  html[data-ce-imprimir] .folio-image .ce-rubrica-wrap{width:36%!important}
  html[data-ce-imprimir] .folio-workspace{break-before:avoid}
 }
+/* Marcas dentro de la lupa, ampliadas con la imagen. */
+.ce-lens{overflow:hidden}
+.ce-lens-capa{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none}
+.ce-lens-capa>span{animation:none!important}
