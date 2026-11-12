@@ -108,6 +108,41 @@ if(entrada){
   console.log("  · ningún folio del mapa cubre un locus con symmetria: no se puede probar aquí");
 }
 
+console.log("\nDesplegable de loci: elegir un locus sincroniza los tres visores");
+const selLocus=d.getElementById("ce-locus");
+const nLoci=[...(selLocus?.options||[])].filter(o=>o.value).length;
+comprobar(nLoci===731,"los 731 loci están en el desplegable",nLoci+"");
+comprobar(selLocus.querySelectorAll("optgroup").length===10,"agrupados en diez libros");
+for(const [locus,folioEsperado,como] of [["1.4.3","9v","folio leído sobre la imagen"],["2.praef.1","18r","rúbrica verificada"],["1.praef.1","1r","provisional"]]){
+  selLocus.value=locus;selLocus.dispatchEvent(new w.Event("change",{bubbles:true}));
+  await new Promise(r=>setTimeout(r,150));
+  const lat=d.getElementById("f-latin").textContent;
+  const tra=d.getElementById("f-translation").textContent;
+  const ev=d.getElementById("f-evidence").textContent;
+  const ok=ev.includes("f. "+folioEsperado)&&lat.includes(locus)&&tra.includes(locus);
+  comprobar(ok,`${locus} → f. ${folioEsperado} (${como}) en imagen, latín y traducción`,ev.slice(0,70));
+}
+selLocus.value="1.4.3";selLocus.dispatchEvent(new w.Event("change",{bubbles:true}));
+await new Promise(r=>setTimeout(r,200));
+comprobar(!d.getElementById("ce-diplomatica").hidden&&d.getElementById("ce-diplomatica").textContent.includes("principiis"),
+  "la lectura de f.9v aparece bajo la imagen al elegir 1.4.3");
+// Un locus sin folio material ni leído: la página lo dice, no inventa
+selLocus.value="10.16.12";selLocus.dispatchEvent(new w.Event("change",{bubbles:true}));
+await new Promise(r=>setTimeout(r,150));
+comprobar(/estimad|Sin asignación/.test(d.getElementById("f-evidence").textContent),"10.16.12: se declara sin asignación material o estimada",
+  d.getElementById("f-evidence").textContent.slice(0,60));
+
+console.log("\nPantalla partida");
+const ws=d.querySelector(".folio-workspace");
+const div=d.querySelectorAll(".ce-split")[0];
+const antes=ws.style.getPropertyValue("--ce-cols");
+div.dispatchEvent(new w.KeyboardEvent("keydown",{key:"ArrowRight",bubbles:true}));
+div.dispatchEvent(new w.KeyboardEvent("keydown",{key:"ArrowRight",bubbles:true}));
+const despues=ws.style.getPropertyValue("--ce-cols");
+comprobar(antes!==despues,"el divisor reparte el ancho",despues);
+div.dispatchEvent(new w.MouseEvent("dblclick",{bubbles:true}));
+comprobar(ws.style.getPropertyValue("--ce-cols")===antes,"doble clic restablece los anchos");
+
 console.log("\nCambio de idioma: se traduce la interfaz, no los visores");
 const latinAntes=d.getElementById("f-latin").textContent;
 const tradAntes=d.getElementById("f-translation").textContent;

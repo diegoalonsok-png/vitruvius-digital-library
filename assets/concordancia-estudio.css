@@ -10,13 +10,19 @@ html[data-theme=light]{--ce-panel:rgba(0,0,0,.035);--ce-line:rgba(0,0,0,.17);
  --ce-soft:rgba(0,0,0,.68);--ce-mark:rgba(255,206,0,.55)}
 
 /* --- Taller de tres paneles, con anchos que el lector reparte --- */
-.folio-workspace{grid-template-columns:var(--ce-cols,1.05fr 8px .98fr 8px 1fr)!important;
- align-items:stretch}
-.ce-split{cursor:col-resize;background:var(--ce-line);border:0;padding:0;border-radius:4px;
- position:relative;touch-action:none}
-.ce-split:hover,.ce-split:focus-visible{background:#c9a24a;outline:none}
-.ce-split::after{content:"";position:absolute;inset:50% 50% auto auto;width:2px;height:34px;
- transform:translate(50%,-50%);background:rgba(255,255,255,.55);border-radius:2px}
+.folio-workspace{grid-template-columns:var(--ce-cols,1.05fr 14px .98fr 14px 1fr)!important;
+ align-items:stretch;gap:0!important}
+.folio-workspace>.folio-panel{min-width:0}
+/* Divisor de pantalla partida: se arrastra de costado; doble clic restablece. */
+.ce-split{cursor:col-resize;background:transparent;border:0;padding:0;position:relative;touch-action:none;
+ display:flex;align-items:center;justify-content:center}
+.ce-split::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;transform:translateX(-50%);
+ background:var(--ce-line);transition:background .15s,width .15s}
+.ce-split::after{content:"⋮";position:relative;z-index:1;display:grid;place-items:center;width:14px;height:46px;
+ border-radius:7px;background:#26272b;border:1px solid rgba(255,255,255,.3);color:#cfc6b6;font:700 16px/1 system-ui}
+.ce-split:hover::before,.ce-split:focus-visible::before,.ce-split:active::before{background:#c9a24a;width:4px}
+.ce-split:hover::after,.ce-split:focus-visible::after{border-color:#c9a24a;color:#c9a24a}
+.ce-split:focus-visible{outline:none}
 @media(max-width:1130px){.folio-workspace{grid-template-columns:1fr!important}
  .ce-split{display:none}}
 
@@ -88,3 +94,6 @@ html[data-theme=light] .ce-tools .site-global-language select,html[data-theme=li
 html[data-theme=light] .ce-tools .site-typeface-button{background:#fff;color:#1f1f1f;border-color:rgba(0,0,0,.25)}
 .ce-diplomatica .ce-cotejo{display:block;margin:10px 0 4px;font:12px/1.55 system-ui,sans-serif;color:var(--ce-soft);white-space:normal}
 .ce-diplomatica .ce-dif{font:13px/1.6 ui-monospace,Menlo,monospace}
+.folio-more{display:block;margin:14px auto 4px;min-height:42px;padding:9px 18px;border-radius:10px;
+ border:1px solid rgba(255,255,255,.28);background:#26272b;color:#f2efe9;font:600 13px system-ui,sans-serif;cursor:pointer}
+.folio-more:hover{border-color:#c9a24a}

@@ -23,7 +23,7 @@ const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 
 /* ---------- Traducción de la interfaz ---------- */
 const T={
- es:{prefacio:"Prefacio",elegirPref:"Elegir prefacio…",verbum:"Voz capital",
+ es:{locus:"Locus",elegirLocus:"Elegir locus…",libro:"Libro",prefacio:"Prefacio",elegirPref:"Elegir prefacio…",verbum:"Voz capital",
   elegirVerbum:"Elegir término…",lupa:"Lupa",lupaOn:"Lupa activa",
   pistaPref:"Los diez prefacios del tratado. Nueve tienen la rúbrica verificada sobre el facsímil; el del libro I es todavía provisional.",
   formas:"formas de la misma raíz",libros:"libros",glosario:"Glosario del autor",
@@ -32,7 +32,7 @@ const T={
   rubricaNo:"En este folio no se detectó tinta roja de rúbrica.",
   diplomatica:"Lectura semidiplomática del folio",
   anchos:"Restablecer anchos"},
- en:{prefacio:"Preface",elegirPref:"Choose a preface…",verbum:"Key term",
+ en:{locus:"Locus",elegirLocus:"Choose a locus…",libro:"Book",prefacio:"Preface",elegirPref:"Choose a preface…",verbum:"Key term",
   elegirVerbum:"Choose a term…",lupa:"Magnifier",lupaOn:"Magnifier on",
   pistaPref:"The ten prefaces of the treatise. Nine have their rubric verified against the facsimile; Book I's is still provisional.",
   formas:"forms sharing the root",libros:"books",glosario:"Author's glossary",
@@ -41,7 +41,7 @@ const T={
   rubricaNo:"No rubric red ink was detected on this folio.",
   diplomatica:"Semi-diplomatic reading of the folio",
   anchos:"Reset widths"},
- fr:{prefacio:"Préface",elegirPref:"Choisir une préface…",verbum:"Terme capital",
+ fr:{locus:"Locus",elegirLocus:"Choisir un locus…",libro:"Livre",prefacio:"Préface",elegirPref:"Choisir une préface…",verbum:"Terme capital",
   elegirVerbum:"Choisir un terme…",lupa:"Loupe",lupaOn:"Loupe active",
   pistaPref:"Les dix préfaces du traité. Neuf ont leur rubrique vérifiée sur le fac-similé ; celle du livre I reste provisoire.",
   formas:"formes de même racine",libros:"livres",glosario:"Glossaire de l'auteur",
@@ -50,7 +50,7 @@ const T={
   rubricaNo:"Aucune encre rouge de rubrique détectée sur ce folio.",
   diplomatica:"Lecture semi-diplomatique du folio",
   anchos:"Rétablir les largeurs"},
- la:{prefacio:"Praefatio",elegirPref:"Praefationem elige…",verbum:"Vox capitalis",
+ la:{locus:"Locus",elegirLocus:"Locum elige…",libro:"Liber",prefacio:"Praefatio",elegirPref:"Praefationem elige…",verbum:"Vox capitalis",
   elegirVerbum:"Vocem elige…",lupa:"Vitrum",lupaOn:"Vitrum adhibetur",
   pistaPref:"Decem praefationes operis. Novem rubricam in imagine comprobatam habent; libri I adhuc provisoria est.",
   formas:"formae eiusdem radicis",libros:"libri",glosario:"Glossarium auctoris",
@@ -137,9 +137,10 @@ function montarCapa(){
  capa=el("div",{class:"ce-rubrica-layer","aria-hidden":"true"});
  envoltorio.append(img,capa);
 }
+let folioAnunciado=null;
 function folioMostrado(){
- const sel=$("f-folio");
- const v=sel?.value||"";
+ if(folioAnunciado)return folioAnunciado;
+ const v=$("f-folio")?.value||"";
  return /^\d+[rv]$/.test(v)?v:null;
 }
 function pintarRubricas(){
@@ -197,18 +198,19 @@ function montarDivisores(){
  let pesos=[1.05,0.98,1];
  try{const g=JSON.parse(localStorage.getItem(CLAVE_ANCHOS));if(Array.isArray(g)&&g.length===3)pesos=g}catch{}
  const pintar=()=>{taller.style.setProperty("--ce-cols",
-   `${pesos[0]}fr 8px ${pesos[1]}fr 8px ${pesos[2]}fr`)};
+   `${pesos[0]}fr 14px ${pesos[1]}fr 14px ${pesos[2]}fr`)};
  const divisor=i=>{
   const b=el("button",{type:"button",class:"ce-split","aria-label":
    idioma==="en"?"Drag to resize panels":idioma==="fr"?"Glisser pour redimensionner":
    idioma==="la"?"Trahe ut latitudinem mutes":"Arrastrar para repartir el ancho"});
+  b.addEventListener("dblclick",()=>{pesos=[1.05,0.98,1];pintar();try{localStorage.removeItem(CLAVE_ANCHOS)}catch{}});
   b.addEventListener("pointerdown",ev=>{
-   ev.preventDefault();b.setPointerCapture(ev.pointerId);
+   ev.preventDefault();b.setPointerCapture?.(ev.pointerId);
    const x0=ev.clientX,ancho=taller.getBoundingClientRect().width||1;
    const a0=pesos[i],b0=pesos[i+1],total=a0+b0;
    const mover=e=>{
     const d=(e.clientX-x0)/ancho*(pesos[0]+pesos[1]+pesos[2]);
-    const a=Math.min(total-0.25,Math.max(0.25,a0+d));
+    const a=Math.min(total-0.36,Math.max(0.36,a0+d));
     pesos[i]=a;pesos[i+1]=total-a;pintar();
    };
    const soltar=()=>{
@@ -222,7 +224,7 @@ function montarDivisores(){
    const paso=ev.key==="ArrowLeft"?-0.06:ev.key==="ArrowRight"?0.06:0;
    if(!paso)return;ev.preventDefault();
    const total=pesos[i]+pesos[i+1];
-   pesos[i]=Math.min(total-0.25,Math.max(0.25,pesos[i]+paso));pesos[i+1]=total-pesos[i];
+   pesos[i]=Math.min(total-0.36,Math.max(0.36,pesos[i]+paso));pesos[i+1]=total-pesos[i];
    pintar();try{localStorage.setItem(CLAVE_ANCHOS,JSON.stringify(pesos))}catch{}
   });
   return b;
@@ -280,10 +282,12 @@ async function init(){
 
  const barra=el("div",{class:"ce-bar",role:"region","aria-label":
   idioma==="en"?"Study tools":idioma==="fr"?"Outils d'étude":idioma==="la"?"Instrumenta studii":"Utillaje de estudio"});
+ const selLocus=el("select",{id:"ce-locus"});
  const selPref=el("select",{id:"ce-praef"});
  const selVoz=el("select",{id:"ce-verbum"});
  const btnLupa=el("button",{type:"button",id:"ce-lupa","aria-pressed":"false",text:t("lupa")});
  barra.append(
+  el("label",{for:"ce-locus"},document.createTextNode(t("locus")),selLocus),
   el("label",{for:"ce-praef"},document.createTextNode(t("prefacio")),selPref),
   el("label",{for:"ce-verbum"},document.createTextNode(t("verbum")),selVoz),
   btnLupa,
@@ -306,10 +310,11 @@ async function init(){
  });
 
  // Datos: cada uno es opcional, y su ausencia no debe tumbar el resto.
- const [m,v,d]=await Promise.allSettled([
+ const [m,v,d,li]=await Promise.allSettled([
   json("data/codex-h/folio-locus-map.json"),
   json("data/index/verba-capitalia.json"),
-  json("data/codex-h/folio-1r.json")]);
+  json("data/codex-h/folio-1r.json"),
+  json("data/index/loci.json")]);
  if(m.status==="fulfilled"){
   mapa=m.value;
   selPref.append(el("option",{value:"",text:t("elegirPref")}));
@@ -328,6 +333,22 @@ async function init(){
     text:(voz.parsArchitecturae?"◆ ":"")+voz.lemma.toLowerCase()+" ("+voz.formas+")"}));
  }
  if(d.status==="fulfilled")diplomatica=d.value;
+ // Los 731 loci, agrupados por libro: se hojean, no se escriben.
+ if(li.status==="fulfilled"){
+  const lista=li.value.loci||li.value.entries||li.value||[];
+  selLocus.append(el("option",{value:"",text:t("elegirLocus")}));
+  const grupos=new Map();
+  for(const x of lista){const l=x.locus||x.l||x;const b=parseInt(l);if(!grupos.has(b))grupos.set(b,[]);grupos.get(b).push(x)}
+  for(const [b,xs] of [...grupos].sort((a,c)=>a[0]-c[0])){
+   const g=el("optgroup",{label:t("libro")+" "+(R[b]||b)});
+   for(const x of xs){const l=x.locus||x;const inc=(x.incipit||"").split(/\s+/).slice(0,4).join(" ");
+    g.append(el("option",{value:l,text:l+(inc?" · "+inc:"")}))}
+   selLocus.append(g);
+  }
+  const q=new URLSearchParams(location.search).get("locus");if(q)selLocus.value=q;
+ }
+ selLocus.addEventListener("change",()=>{if(!selLocus.value)return;
+  document.dispatchEvent(new CustomEvent("concordancia:ir-a-locus",{detail:{locus:selLocus.value}}))});
 
  // El prefacio escribe en el propio selector de folio de la página: así los
  // tres paneles se sincronizan con su lógica, no con una copia de ella.
@@ -351,6 +372,12 @@ async function init(){
  const refrescar=()=>{pintarRubricas();pintarDiplomatica();aplicarVoz()};
  refrescar();
  $("f-folio").addEventListener("change",()=>setTimeout(refrescar,0));
+ document.addEventListener("concordancia:render",ev=>{
+  folioAnunciado=ev.detail?.folio||null;
+  if(ev.detail?.locus&&selLocus.value!==ev.detail.locus)selLocus.value=ev.detail.locus;
+  if(ev.detail?.kind==="folio")selLocus.value="";
+  setTimeout(refrescar,0);
+ });
  // Los paneles los repinta la página al cambiar de locus o de idioma: se
  // observa el latín para volver a aplicar el resalte sobre el texto nuevo.
  const latino=$("f-latin");
