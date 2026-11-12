@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { assertStylesheet } from "./lib/stylesheet-loaded.mjs";
 import { Script, createContext } from "node:vm";
 import assert from "node:assert/strict";
 
@@ -7,7 +8,9 @@ const html=readFileSync(new URL("../vitruvia.html",import.meta.url),"utf8");
 const css=readFileSync(new URL("../assets/vitruvia-reading-shelf.css",import.meta.url),"utf8");
 assert.match(html,/id="vitruvia-reading-shelf"/);
 assert.match(html,/assets\/vitruvia-reading-shelf\.js/);
-assert.match(html,/assets\/vitruvia-reading-shelf\.css/);
+// La hoja llega dentro de assets/bundle-vitruvia-1.css desde que las hojas contiguas
+// se agrupan; se comprueba que llegue, no que exista un <link> individual.
+assertStylesheet(assert,html,"assets/vitruvia-reading-shelf.css","vitruvia.html");
 assert.match(css,/overflow-x:auto/);
 new Script(js,{filename:"vitruvia-reading-shelf.js"});
 

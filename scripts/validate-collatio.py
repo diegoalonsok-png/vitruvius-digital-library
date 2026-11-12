@@ -1,0 +1,220 @@
+#!/usr/bin/env python3
+"""Validación de la collatio leída del Apéndice T antes de publicarla en el sitio.
+
+La lectura de tablas de un PDF arrastra texto de columnas vecinas. Publicar una
+celda sangrada como lectura de un manuscrito sería un error grave, así que aquí
+se separa lo verificable de lo que necesita revisión humana, con tres controles:
+
+1. CONCORDANCIA BILINGÜE. Las ediciones V514 y V554 imprimen la misma collatio;
+   la lectura latina del testigo no depende de la lengua de la edición. Si ambas
+   coinciden para el mismo locus, la entrada queda confirmada por doble fuente.
+2. SANGRADO DE COLUMNA. Se rechaza la celda que contiene marcas propias de otra
+   columna (un folio dentro de la lectura, un locus incrustado, prosa vernácula
+   dentro de una lectura latina).
+3. ORDEN CODICOLÓGICO. En un códice el orden de los folios acompaña al del texto.
+   Una entrada que rompe la monotonía (f. 1r atribuido a 3.3.7) se aparta. Se usa la
+   subsecuencia no decreciente más larga, robusta frente a valores atípicos.
+4. JERARQUÍA DE EVIDENCIA. El mapa data/codex-h/folio-locus-map.json registra límites
+   de libro verificados por inspección de la rúbrica del folio. Una rúbrica vista en
+   el facsímil vale más que una tabla leída mecánicamente de un PDF, de modo que toda
+   entrada que contradiga ese mapa o los rangos de libro declarados se aparta.
+
+Sólo las entradas confirmadas alimentan el mapa folio ↔ locus y el registro de
+variantes del sitio. El resto se publica como cola de revisión, no como aparato.
+
+Uso: python3 scripts/validate-collatio.py
+"""
+import json, re, pathlib, datetime, collections, unicodedata
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+LECTURA = ("estaEdicion", "testigoH", "krohn", "vulgata", "lecturaVisible", "lectura", "testigo")
+FOLIO_EN_CELDA = re.compile(r"\b\d{1,3}\s*[rv]\b")
+LOCUS_EN_CELDA = re.compile(r"\b(?:[IVX]{1,4}|\d{1,2})\s*\.\s*(?:praef|\d{1,2})\s*\.\s*\d{1,3}\b", re.I)
+VERNACULO = re.compile(r"\b(?:sin valor|en una sola|según|aunque|porque|mismo|también|puede|debe|"
+                       r"selon|parce|aussi|peut|doit|même|without|because|also|should)\b", re.I)
+
+
+def fold(s):
+    t = unicodedata.normalize("NFD", s or "")
+    t = "".join(c for c in t if not unicodedata.combining(c))
+    return re.sub(r"[^a-z0-9⟨⟩\[\]& ]+", " ", t.lower().replace("j", "i").replace("v", "u"))
+
+
+def norm_lectura(s):
+    return re.sub(r"\s+", " ", fold(s)).strip()
+
+
+LATIN_VOCAB = set()
+
+
+def latin_tokens(s):
+    """Tokens de la celda que existen en el texto latino de las ediciones.
+
+    Comparar sólo estos neutraliza el arrastre de prosa vernácula, que sangra de
+    manera distinta en la edición castellana y en la francesa.
+    """
+    return {t for t in re.findall(r"[a-z⟨⟩\[\]&]+", norm_lectura(s)) if len(t) > 2 and t in LATIN_VOCAB}
+
+
+def acuerdo_latino(a, b):
+    """Coincidencia de dos celdas por sus tokens latinos (Jaccard >= 0.6)."""
+    ta, tb = latin_tokens(a), latin_tokens(b)
+    if len(ta) < 2 or len(tb) < 2:
+        return False
+    inter = len(ta & tb)
+    return inter / len(ta | tb) >= 0.6 or inter >= min(len(ta), len(tb)) >= 3
+
+
+def folio_key(f):
+    m = re.match(r"(\d+)\s*([rv])", f or "")
+    return (int(m.group(1)), 0 if m.group(2) == "r" else 1) if m else (10 ** 6, 0)
+
+
+def locus_key(l):
+    b, c, *s = (str(l) + "..").split(".")
+    return (int(b) if b.isdigit() else 0, 0 if c == "praef" else (int(c) if c.isdigit() else 0),
+            int(s[0]) if s and s[0].isdigit() else 0)
+
+
+def sangrada(campos):
+    """Motivos por los que una fila parece arrastrar texto de otra columna."""
+    motivos = []
+    for k in LECTURA:
+        v = campos.get(k)
+        if not v:
+            continue
+        if k != "folio" and FOLIO_EN_CELDA.search(v):
+            motivos.append(f"folio dentro de «{k}»")
+        if LOCUS_EN_CELDA.search(v):
+            motivos.append(f"locus dentro de «{k}»")
+        if k in ("estaEdicion", "testigoH", "krohn", "vulgata") and VERNACULO.search(v):
+            motivos.append(f"prosa vernácula dentro de «{k}»")
+        if len(v) > 190:
+            motivos.append(f"celda «{k}» anómalamente larga ({len(v)})")
+    return sorted(set(motivos))
+
+
+def main():
+    for ed in ("recensio-es", "recensio-fr", "theory-en"):
+        st = json.loads((ROOT / f"data/structured/{ed}.json").read_text(encoding="utf8"))
+        for p in st.get("passages", []):
+            LATIN_VOCAB.update(re.findall(r"[a-z]+", norm_lectura(p.get("latin", ""))))
+    src = json.loads((ROOT / "data/apparatus/collatio-codicum.json").read_text(encoding="utf8"))
+    E = src["entradas"]
+
+    # 1 · concordancia bilingüe por (locus, lectura normalizada de esta edición)
+    por_locus = collections.defaultdict(list)
+    for e in E:
+        por_locus[e["locus"]].append(e)
+
+    confirmadas, revision = [], []
+    for e in E:
+        motivos = sangrada(e["campos"])
+        pares = [o for o in por_locus[e["locus"]] if o["version"] != e["version"]]
+        acuerdo = None
+        campo = lambda x: (x["campos"].get("estaEdicion") or x["campos"].get("lectura")
+                           or x["campos"].get("lecturaVisible") or x["campos"].get("krohn") or "")
+        for o in pares:
+            if acuerdo_latino(campo(e), campo(o)):
+                acuerdo = o["version"]
+                break
+        reg = dict(e)
+        reg["bilingue"] = acuerdo
+        reg["motivosDeRevision"] = motivos
+        (revision if (motivos or not acuerdo) else confirmadas).append(reg)
+
+    # 3 · orden codicológico sobre las confirmadas que traen folio
+    conf_folio = [e for e in confirmadas if e["folios"]]
+    orden = sorted(conf_folio, key=lambda e: folio_key(e["folios"][0]))
+    # Subsecuencia no decreciente más larga: robusta frente a valores atípicos.
+    # Un solo folio mal leído al principio no debe invalidar el resto de la serie.
+    seq = [locus_key(e["locus"]) for e in orden]
+    n = len(seq)
+    mejor, prev = [1] * n, [-1] * n
+    for i in range(n):
+        for j in range(i):
+            if seq[j] <= seq[i] and mejor[j] + 1 > mejor[i]:
+                mejor[i], prev[i] = mejor[j] + 1, j
+    coherentes = set()
+    if n:
+        i = max(range(n), key=lambda k: mejor[k])
+        while i >= 0:
+            coherentes.add(orden[i]["id"])
+            i = prev[i]
+    anom = {e["id"] for e in orden if e["id"] not in coherentes}
+    confirmadas2 = [e for e in confirmadas if e["id"] not in anom]
+    for e in confirmadas:
+        if e["id"] in anom:
+            e["motivosDeRevision"] = e.get("motivosDeRevision", []) + ["rompe el orden folio ↔ locus"]
+            revision.append(e)
+
+    # 4 · contraste con el mapa verificado por inspección del facsímil
+    verificado = json.loads((ROOT / "data/codex-h/folio-locus-map.json").read_text(encoding="utf8"))
+    vmap = {e["folio"]: [l["locus"] for l in e.get("loci", [])] for e in verificado.get("entries", [])}
+    libros = {b["book"]: (b.get("start"), b.get("end")) for b in verificado.get("books", [])}
+    libro_de = lambda l: int(str(l).split(".")[0])
+    choca = set()
+    for e in confirmadas2:
+        for f in e["folios"]:
+            f = re.sub(r"\s+", "", f)
+            if f in vmap and vmap[f]:
+                if {libro_de(x) for x in vmap[f]} != {libro_de(e["locus"])}:
+                    e.setdefault("motivosDeRevision", []).append(
+                        f"contradice el mapa verificado en f.{f} ({', '.join(vmap[f])})")
+                    choca.add(e["id"])
+            b = libro_de(e["locus"])
+            if b in libros and all(libros[b]):
+                ini, fin = libros[b]
+                if not (folio_key(ini) <= folio_key(f) <= folio_key(fin)):
+                    e.setdefault("motivosDeRevision", []).append(
+                        f"f.{f} fuera del rango declarado del libro {b} ({ini}–{fin})")
+                    choca.add(e["id"])
+    revision += [e for e in confirmadas2 if e["id"] in choca]
+    confirmadas2 = [e for e in confirmadas2 if e["id"] not in choca]
+
+    # mapa folio ↔ locus derivado SÓLO de entradas confirmadas
+    mapa = collections.defaultdict(set)
+    for e in confirmadas2:
+        for f in e["folios"]:
+            mapa[re.sub(r"\s+", "", f)].add(e["locus"])
+    folios = [{"folio": f, "loci": sorted(mapa[f], key=locus_key),
+               "evidencia": "collatio del autor, Apéndice T",
+               "entradas": sorted({x["id"] for x in confirmadas2 if f in [re.sub(r'\s+','',y) for y in x["folios"]]})}
+              for f in sorted(mapa, key=folio_key)]
+
+    doc = {
+        "schema": "vitruvius-collatio-validada/1",
+        "generated": datetime.date.today().isoformat(),
+        "metodo": ("Validación de la lectura mecánica del Apéndice T. Una entrada se declara CONFIRMADA sólo si "
+                   "(a) la misma collatio aparece en las dos ediciones del autor, castellana y francesa, con la "
+                   "misma lectura latina —doble fuente independiente de la lengua—, (b) ninguna celda muestra "
+                   "señales de arrastre de la columna vecina, y (c) no rompe el orden de folios del códice. "
+                   "Las demás se publican como cola de revisión y NO como aparato."),
+        "recuentos": {
+            "entradasLeidas": len(E),
+            "confirmadas": len(confirmadas2),
+            "enRevision": len(revision),
+            "foliosConfirmados": len(folios),
+            "lociConfirmados": len({e["locus"] for e in confirmadas2}),
+            "apartadasPorOrdenCodicologico": len(anom),
+            "apartadasPorContradecirElFacsimil": len(choca),
+        },
+        "folioLocus": folios,
+        "confirmadas": confirmadas2,
+        "revision": revision,
+    }
+    out = ROOT / "data/apparatus/collatio-validada.json"
+    out.write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf8")
+    print(f"→ {out.relative_to(ROOT)}  ({out.stat().st_size/1024:.0f} KB)")
+    for k, v in doc["recuentos"].items():
+        print(f"   {k}: {v}")
+    print("\n   motivos de revisión más frecuentes:")
+    c = collections.Counter(m for e in revision for m in e.get("motivosDeRevision", []))
+    for m, n in c.most_common(8):
+        print(f"     {n:4d}  {m}")
+    print("\n   folio → locus confirmados (primeros 24):")
+    print("     " + ", ".join(f"{f['folio']}→{f['loci'][0]}" for f in folios[:24]))
+
+
+if __name__ == "__main__":
+    main()

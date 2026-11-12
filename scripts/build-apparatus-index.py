@@ -39,12 +39,110 @@ ROM = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6, "VII": 7, "VIII": 8,
 SIGLA = re.compile(r"\b(Harleianus|Harl\.|Gudianus|Gud\.|Selestadiensis|Scletstatensis|Sel\.|Vossianus|Voss\.|Vaticanus|Vat\.|Krohn|Rose|Fensterbusch|Granger|Gros|Fleury|Callebat|Corso)\b")
 
 
+# --- Vocabulario ampliado (2026-11-11) -------------------------------------
+# El detector original sólo admitía una lista cerrada de rótulos, de modo que
+# quedaba fuera el aparato rotulado NOTA METROLÓGICA, NOTA HERMENÉUTICA,
+# «Bibliografía (Referencia Crítica)», «Análisis Crítico y Técnico» y las
+# entradas del diccionario vitruviano del autor. Se amplía por unión: todo lo
+# que detectaba HEAD se sigue detectando.
+_CAPW = r"[A-ZÁÉÍÓÚÜÑÀÈÌÒÙÇÄÖ][A-ZÁÉÍÓÚÜÑÀÈÌÒÙÇÄÖ'\u2019\-]*"
+VERSAL = re.compile(
+    r"(?<![A-Za-zÀ-ÿ])("
+    r"(?:APARATO|APPARAT|APPARATUS|NOTA|NOTE|NOTES|CRITICAL|TEXTUAL|ECDOTIC|COMMENTARY"
+    r"|COMENTARIO|COMMENTAIRE|ANÁLISIS|ANALYSE|ANALYSIS)"
+    r"(?:\s+(?:DE|DEL|DES|DU|LA|LE|LES|Y|ET|AND|ON|POUR|PARA|E)\b|\s+" + _CAPW + r"){0,4}"
+    r")(?=\s*(?:\[[A-Za-z][a-z]?\]\s*)?(?:[—–:·]|\.\s+[A-ZÁÉÍÓÚ«]))")
+TITLE = re.compile(
+    r"(?<![A-Za-zÀ-ÿ])("
+    r"Bibliograf[íi]a\s*\(Referencia\s+Cr[íi]tica\)|Bibliographie\s*\(R[ée]f[ée]rence\s+Critique\)"
+    r"|Bibliography\s*\(Critical\s+Reference\)"
+    r"|An[áa]lisis\s+Cr[íi]tico(?:\s+y\s+T[ée]cnico)?|Analyse\s+Critique(?:\s+et\s+Technique)?"
+    r"|Critical\s+(?:and\s+Technical\s+)?Analysis"
+    r"|Notas?\s+Cr[íi]ticas?|Notes?\s+Critiques?"
+    r"|Nota\s+(?:de\s+alcance|textual|de\s+m[ée]todo|exeg[ée]tica|terminol[óo]gica)"
+    r"|Comentario|Commentaire|Commentary"
+    r")(?=\s*(?:[—–:(]|\s[A-ZÁÉÍÓÚ«]|\s*$))")
+# La edición inglesa (V297) es anterior y de otra arquitectura: rotula el aparato en
+# caja baja («Critical note», «Adopted reading») y no en versales, de modo que el
+# detector de versales la veía apenas. Vocabulario propio, medido sobre sus 1056 páginas:
+# 292 rótulos en 215 páginas.
+INGLESA = re.compile(
+    r"(?<![A-Za-z])("
+    r"(?:Textual|Critical|Comparative|Philological|Ecdotic|Technical|Terminological|Exegetical"
+    r"|Hermeneutic|Historical|Archaeological|Metrological|Acoustic|Geometric(?:al)?|Constructional"
+    r"|Constructive|Architectural|Historiographical|Medical|Musical|Military|Mechanical|Scope|Method"
+    r"|Reception|Translation|Linguistic|Lexical|Editorial|Explanatory)"
+    r"(?:\s+and\s+(?:metrological|geometrical|constructional|mechanical|architectural|textual"
+    r"|philological|technical|historical|critical))?"
+    r"\s+(?:note|notes|apparatus|analysis|commentary|remark|observation|appendix)"
+    r"(?:\s+on\s+[^.:;]{3,48})?"
+    r"|Adopted\s+(?:text|reading|wording|form)|Preferred\s+reading|Retained\s+reading"
+    r"|Reading\s+of\s+(?:the\s+)?(?:main\s+)?codices"
+    r"|Bibliography\s*\(Critical\s+Reference\)|Critical\s+bibliography"
+    r"|Argumentum\s+libri\s+[IVX]+"
+    r")(?=\s*[—–:.·]|\s+[A-Z“\"])")
+
+# Entrada del diccionario vitruviano del autor: «ABACUS [ἄβαξ]. El ábaco: …».
+GLOSS = re.compile(
+    r"(?<![A-Za-zÀ-ÿ])([A-ZÁÉÍÓÚÑ][A-ZÁÉÍÓÚÑ]{2,23})(\s*\[[^\]]{1,40}\])?\.\s+(?=[A-ZÁÉÍÓÚ«¿])")
+ROMAN_ONLY = re.compile(r"^[IVXLCDM]+$")
+# Palabras que son parte de un rótulo, no lemas del diccionario.
+RUBRIC_WORD = set(("""TERMINOLOGICA TERMINOLOGIQUE EXEGETICA EXEGETIQUE ECDOTICA ECDOTIQUE CRITICA
+CRITIQUE FILOLOGICA PHILOLOGIQUE METROLOGICA METROLOGIQUE HERMENEUTICA HERMENEUTIQUE
+CONSTRUCTIVA CONSTRUCTIVE HISTORICA HISTORIQUE HISTORIOGRAFICA HISTORIOGRAPHIQUE
+ARQUEOLOGICA ARCHEOLOGIQUE TECNICA TECHNIQUE ACUSTICA ACOUSTIQUE GEOMETRICA GEOMETRIQUE
+ARQUITECTONICA ARCHITECTURALE COMPARATIVA COMPARATIF NOTE NOTA APARATO APPARAT""").split())
+NOT_LEMMA = set("""DOCX PDF DOI ISBN IIIF TEI CTS OCR URL HTTP HTML JSON BCE CE AD BC
+ANNO CIRCA IBID IDEM LOC CIT VOL FIG TAB NOTA NOTE""".split()) | RUBRIC_WORD
+
+
+def wide_rubrics(text):
+    """Rótulos del aparato en una página: unión del detector original y el ampliado.
+
+    Devuelve [(posición, rótulo, tipo)] ordenado, sin solapamientos: una entrada
+    de diccionario que cae dentro de un rótulo ya detectado se descarta, porque
+    es el término glosado por ese rótulo y no una entrada autónoma.
+    """
+    found = []
+    for m in HEAD.finditer(text):
+        found.append((m.start(), (m.group(1) or m.group(2)).strip(), "rotulo"))
+    for m in VERSAL.finditer(text):
+        found.append((m.start(), m.group(1).strip(), "rotulo"))
+    for m in TITLE.finditer(text):
+        found.append((m.start(), m.group(1).strip(), "rotulo"))
+    for m in INGLESA.finditer(text):
+        found.append((m.start(), " ".join(m.group(1).split())[:60], "rotulo"))
+    gloss = []
+    for m in GLOSS.finditer(text):
+        lemma = m.group(1)
+        if lemma in NOT_LEMMA or ROMAN_ONLY.match(lemma):
+            continue
+        gloss.append((m.start(), lemma + (m.group(2) or "").strip(), "glosario"))
+    spans = sorted(found, key=lambda x: x[0])
+    out = list(spans)
+    for at, lab, kind in gloss:
+        # Descartar si cae dentro de los 90 caracteres siguientes a un rótulo.
+        if any(0 <= at - s < 90 for s, _, _ in spans):
+            continue
+        out.append((at, lab, kind))
+    # Deduplicar por posición conservando el rótulo más largo.
+    best = {}
+    for at, lab, kind in out:
+        if at not in best or len(lab) > len(best[at][0]):
+            best[at] = (lab, kind)
+    return [(at, lab, kind) for at, (lab, kind) in sorted(best.items())]
+
+
 def fold(s):
     return unicodedata.normalize("NFD", s or "").encode("ascii", "ignore").decode().lower()
 
 
 def category(label):
     v = fold(label)
+    if re.search(r"adopted|preferred|retained|reading of", v):
+        return "filologica"
+    if re.search(r"explanatory|commentary", v):
+        return "comentario"
     if re.search(r"tecnica|technique|technical|arquitectonica|terminologique|terminologica", v):
         return "tecnica"
     if re.search(r"comparati[vf]", v):
@@ -81,14 +179,14 @@ def main():
             num = int(num)
             if num < 195:  # páginas preliminares: criterios editoriales, no aparato de loci
                 continue
-            heads = list(HEAD.finditer(text))
-            for i, m in enumerate(heads):
-                end = heads[i + 1].start() if i + 1 < len(heads) else len(text)
-                snippet = text[m.start():min(end, m.start() + 2400)].strip()
+            heads = wide_rubrics(text)
+            for i, (at, label, rubric_kind) in enumerate(heads):
+                end = heads[i + 1][0] if i + 1 < len(heads) else len(text)
+                snippet = text[at:min(end, at + 2400)].strip()
                 if len(snippet) < 60:
                     continue
-                label = (m.group(1) or m.group(2)).strip()
-                lead = LEAD_LOCUS.match(text[m.end():m.end() + 40])
+                after = at + len(label)
+                lead = LEAD_LOCUS.match(text[after:after + 40])
                 mention = lead or LOCUS.search(snippet[:200])
                 # Loci impresos en la misma página o en la anterior (el aparato suele cerrar la página).
                 ctx = by_page.get(num) or by_page.get(num - 1) or []
@@ -97,7 +195,7 @@ def main():
                     "id": f"{ver}-p{num}-{i+1}",
                     "source": "bloque",
                     "edition": ed, "version": ver, "language": lang,
-                    "kind": category(label), "label": label,
+                    "kind": "glosario" if rubric_kind == "glosario" else category(label), "label": label,
                     "page": num, "pdf": f"{pdf}#page={num}",
                     "loci": ctx[:12], "locusLink": "contexto de página" if ctx else "sin locus en la página",
                     "locusMention": norm_locus(mention.group(1) if lead else mention.group(0)) if mention else None,
@@ -129,7 +227,11 @@ def main():
         "schema": "vitruvius-apparatus-index/1",
         "generated": datetime.date.today().isoformat(),
         "method": "Bloques del aparato localizados por encabezado en el texto de los PDF y notas DOCX del autor. "
-                  "El vínculo con el locus es el de la página impresa; no equivale a una collatio verificada.",
+                  "El vínculo con el locus es el de la página impresa; no equivale a una collatio verificada. "
+                  "Vocabulario de rótulos ampliado el 2026-11-11 por unión: además de los rótulos de la lista "
+                  "original se reconocen los rótulos en versales de cualquier especialidad (metrológica, "
+                  "hermenéutica, constructiva…), las bibliografías críticas por locus y las entradas del "
+                  "diccionario vitruviano del autor.",
         "editions": [{"id": e[0], "version": e[1], "language": e[2], "pdf": e[3]} for e in ED],
         "counts": {"bloques": sum(1 for x in out if x["source"] == "bloque"), "notas": sum(1 for x in out if x["source"] == "nota")},
         "entries": out,
