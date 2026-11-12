@@ -216,9 +216,11 @@ targetRoot.addEventListener("click",event=>{
   showInlineLexicon(mark);
   void openMark(mark);
  }else if(inBibliotheca){
-  // Bibliotheca owns the complete cited dictionary (Lexicon, PDF, mail, share).
-  // Its native click/keyboard handlers must receive yellow-highlighted terms.
-  return;
+  // Concordance hits have the native four-action cited dictionary.
+  // Uploaded DOCX text has no native panel and must keep its classical popup.
+  if(mark.closest("#classic-results"))return;
+  event.stopImmediatePropagation();
+  void openMark(mark);
  }else if(inLexiconViewer||inClassicalReader){
   // These readers already have link/navigation or small lexical popups:
   // yellow-word clicks open the larger viewer without competing overlays.
@@ -236,7 +238,7 @@ targetRoot.addEventListener("keydown",event=>{
  if(event.key!=="Enter"&&event.key!==" ")return;
  const mark=markOf(event.target);
  if(!mark||!supported.has(langCode(mark)))return;
- if(inBibliotheca)return; // Native Bibliotheca dictionary owns this keypress.
+ if(inBibliotheca&&mark.closest('#classic-results'))return; // Native concordance dictionary owns this keypress.
  event.preventDefault();
  event.stopImmediatePropagation();
  showInlineLexicon(mark);
