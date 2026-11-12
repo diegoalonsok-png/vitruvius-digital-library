@@ -6,7 +6,7 @@ const ROOT="data/classics-corpus/";
 const read=async path=>{const r=await fetch(path,{cache:"no-cache"});if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json();};
 const metricLabels=[
  "obras y tratados catalogados","originales indexados","obras con traducción alojada",
- "versiones textuales indexadas","originales pendientes"
+ "versiones textuales indexadas","fichas sin índice original propio"
 ];
 function style(){
  if(document.getElementById("classics-corpus-counts-style"))return;
@@ -100,7 +100,7 @@ function paint(a,data){
  section.setAttribute("aria-label","Estado académico del corpus de textos clásicos");
  const wrap=document.createElement("div");wrap.className="classics-tally-inner";
  const head=document.createElement("h2");head.textContent="Bibliotheca Graeca et Latina · corpus en cifras";wrap.append(head);
- const intro=document.createElement("p");intro.textContent="Obras catalogadas, textos buscables y traducciones son magnitudes distintas.";wrap.append(intro);
+ const intro=document.createElement("p");intro.textContent="Obras catalogadas, textos buscables y traducciones son magnitudes distintas. Las fichas pendientes incluyen versiones editoriales de una misma obra; no equivalen a obras antiguas distintas.";wrap.append(intro);
  const dl=document.createElement("dl");
  [a.catalogued,a.indexed,a.translated,a.versions,a.pending].forEach((val,i)=>{
   const group=document.createElement("div"),dd=document.createElement("dd"),dt=document.createElement("dt");
