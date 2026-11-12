@@ -153,16 +153,25 @@ def extraer(pdf, idx, y_desde, y_hasta, lang, bordes=None, cab_ref=None, bordes_
     p = pdf.pages[idx]
     ys, x0, x1 = filetes(p)
     ys = [y for y in ys if y_desde < y < y_hasta]
-    if len(ys) < 2:
-        return None
     ws = [w for w in cuerpo(p) if w["top"] < y_hasta]
+    # Continuación sin filete superior: las filas que siguen arriba de la página.
+    if bordes is not None and ys and any(y_desde < w["top"] < ys[0] - 1 for w in ws):
+        ys = [y_desde] + ys
+    if len(ys) < 2 and not (bordes is None and len(ys) == 2):
+        if len(ys) < 2 and bordes is None and len(ys) == 1:
+            pass
+        else:
+            return None
     if bordes is None:
         cab_ws = [w for w in ws if y_desde < w["top"] < ys[0] - 1]
         if not cab_ws:
             cab_ws = [w for w in ws if ys[0] < w["top"] < ys[1] - 1]
             ys = ys[1:]
-        if not cab_ws or len(ys) < 2:
+        if not cab_ws:
             return None
+        if len(ys) == 1:
+            # Estilo booktabs partido por la página: la tabla sigue hasta el pie.
+            ys = ys + [y_hasta]
         bordes = columnas(cab_ws, x0 - 2, x1 + 2)
         # Encabezados apretados (versalitas que se tocan): las columnas se leen
         # también en el cuerpo, por los inicios de palabra tras un blanco ancho.
