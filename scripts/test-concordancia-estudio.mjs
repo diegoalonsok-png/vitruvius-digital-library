@@ -189,6 +189,12 @@ comprobar(d.querySelectorAll(".ce-verbum-mark").length===3,"tres subrayados en e
 comprobar(d.getElementById("ce-locus").value==="1.2.4","▶ pasa a la ocurrencia siguiente (1.2.4)",d.getElementById("ce-locus").value);
 selVoz.value="";selVoz.dispatchEvent(new w.Event("change",{bubbles:true}));await new Promise(r=>setTimeout(r,100));
 
+console.log("\nEnviar o guardar el pasaje");
+comprobar([...d.querySelectorAll("#ce-compartir button")].map(x=>x.textContent.trim()).join("|")==="Correo|PDF|WhatsApp","botones Correo, PDF y WhatsApp bajo los visores");
+{let abierto="";const o=w.open;w.open=u=>{abierto=u;return null};d.getElementById("ce-wa").click();w.open=o;
+ const txt=decodeURIComponent(abierto.replace("https://wa.me/?text=",""));
+ comprobar(abierto.startsWith("https://wa.me/?text=")&&/Vitr\. /.test(txt)&&txt.includes("concordancia-folios.html?"),"WhatsApp lleva cita, texto y enlace al pasaje",txt.split("\n")[0]);}
+
 console.log("\nCambio de idioma: se traduce la interfaz, no los visores");
 const latinAntes=d.getElementById("f-latin").textContent;
 const tradAntes=d.getElementById("f-translation").textContent;

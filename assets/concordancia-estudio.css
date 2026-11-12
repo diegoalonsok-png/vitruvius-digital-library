@@ -177,3 +177,47 @@ html[data-theme=light] :is(.ce-oc-pos,.ce-oc-def b){color:#111}
    idioma y tema, se ocultan los que montan por su cuenta theme.js y
    global-language.js en la misma botonera. */
 .ce-tools:has(#vitruvius-secondary-toolbar) :is(.site-global-language,.theme-switch){display:none!important}
+
+/* ===== Enviar o guardar el pasaje ===== */
+.ce-compartir{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0 0;padding:12px 16px;
+ background:#141518;border:1px solid #2c2e33;border-radius:10px}
+.ce-compartir-rot{font:600 12px system-ui,sans-serif;letter-spacing:.04em;color:#a9a6a0;margin-right:6px}
+.ce-share{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border-radius:10px;
+ border:1px solid #45474d;background:#26272b;color:#f2efe9;font:600 14px system-ui,sans-serif;cursor:pointer}
+.ce-share:hover{border-color:#c9a24a;color:#fff}
+.ce-share.ce-wa:hover{border-color:#25d366}
+html[data-theme=light] .ce-compartir{background:#f4f3f0;border-color:#d4d2cd}
+html[data-theme=light] .ce-share{background:#2b2d31;color:#fff;border-color:#2b2d31}
+.ce-print-pie{display:none}
+
+/* ===== Hoja para PDF: folio, latín y traducción, con la cita al pie ===== */
+@media print{
+ html[data-ce-imprimir] body{background:#fff!important;color:#000!important}
+ html[data-ce-imprimir] :is(.site-bar,.on-shell,.folio-nav,.folio-key,.ce-bar,.ce-visor-tools,.ce-compartir,
+  .folio-search,.folio-notes,.folio-tools,.ce-split,.ce-lens,.folio-meta select,#vitruvius-secondary-toolbar,
+  .research-folder-fab,.site-typeface-tool,.lxp-palette,.ce-diplomatica){display:none!important}
+ html[data-ce-imprimir] .folio-workspace{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+ html[data-ce-imprimir] .folio-workspace>.folio-panel:first-of-type{grid-column:1/-1}
+ html[data-ce-imprimir] .folio-panel{background:#fff!important;color:#000!important;border:1px solid #999!important;break-inside:avoid}
+ html[data-ce-imprimir] .folio-panel h2{background:#eee!important;color:#000!important;font-size:15px!important;padding:6px 10px!important}
+ html[data-ce-imprimir] :is(.folio-meta,.folio-paragraphs){background:#fff!important;color:#000!important;min-height:0!important}
+ html[data-ce-imprimir] .folio-paragraphs{font-size:11.5pt!important}
+ html[data-ce-imprimir] .folio-paragraphs .latin{color:#000!important}
+ html[data-ce-imprimir] .folio-image{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;background:#fff!important}
+ html[data-ce-imprimir] .folio-image .ce-rubrica-wrap{width:62%!important;margin:0 auto}
+ html[data-ce-imprimir] .folio-image img{filter:none!important}
+ html[data-ce-imprimir] .ce-print-pie{display:block!important;margin-top:10px;font:9pt/1.4 Georgia,serif;color:#333}
+ html[data-ce-imprimir] .folio-title{font-size:16pt!important;margin:0 0 6px!important;color:#000!important}
+ html[data-ce-imprimir] .folio-intro{display:none!important}
+}
+@media print{
+ html[data-ce-imprimir] :is(a.skip,.skip-link,[class*="skip"],.button-press-feedback,[class*="fab"],[class*="floating"]){display:none!important}
+ html[data-ce-imprimir] .folio-image .ce-rubrica-wrap{width:44%!important}
+ html[data-ce-imprimir] .folio-meta{font-size:8.5pt!important;padding:6px 10px!important}
+ html[data-ce-imprimir] .folio-paragraphs{padding:8px 10px!important;font-size:10.5pt!important;line-height:1.5!important}
+}
+@media print{
+ html[data-ce-imprimir] .folio-workspace>.folio-panel:not(:first-of-type){break-inside:auto!important}
+ html[data-ce-imprimir] .folio-image .ce-rubrica-wrap{width:36%!important}
+ html[data-ce-imprimir] .folio-workspace{break-before:avoid}
+}

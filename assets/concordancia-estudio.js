@@ -23,7 +23,7 @@ const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 
 /* ---------- Traducción de la interfaz ---------- */
 const T={
- es:{anterior:"Ocurrencia anterior",siguiente:"Ocurrencia siguiente",latin:"latín",traduccion:"traducción",enFacsimil:"en el facsímil",noEnFolio:"no figura en la lectura de este folio",sinLectura:"facsímil: folio sin lectura todavía",zoomMenos:"Alejar",zoomMas:"Acercar",zoomRest:"Volver al 100 %",aumento:"Aumento de la lupa",invertir:"Invertir",contraste:"Contraste",brillo:"Brillo",restablecer:"Restablecer",herramientasVisor:"Herramientas del visor",locus:"Locus",elegirLocus:"Elegir locus…",libro:"Libro",prefacio:"Prefacio",elegirPref:"Elegir prefacio…",verbum:"Voz capital",
+ es:{compartir:"Enviar o guardar este pasaje",correo:"Correo",anterior:"Ocurrencia anterior",siguiente:"Ocurrencia siguiente",latin:"latín",traduccion:"traducción",enFacsimil:"en el facsímil",noEnFolio:"no figura en la lectura de este folio",sinLectura:"facsímil: folio sin lectura todavía",zoomMenos:"Alejar",zoomMas:"Acercar",zoomRest:"Volver al 100 %",aumento:"Aumento de la lupa",invertir:"Invertir",contraste:"Contraste",brillo:"Brillo",restablecer:"Restablecer",herramientasVisor:"Herramientas del visor",locus:"Locus",elegirLocus:"Elegir locus…",libro:"Libro",prefacio:"Prefacio",elegirPref:"Elegir prefacio…",verbum:"Voz capital",
   elegirVerbum:"Elegir término…",lupa:"Lupa",lupaOn:"Lupa activa",
   pistaPref:"Los diez prefacios del tratado. Nueve tienen la rúbrica verificada sobre el facsímil; el del libro I es todavía provisional.",
   formas:"formas de la misma raíz",libros:"libros",glosario:"Glosario del autor",
@@ -32,7 +32,7 @@ const T={
   rubricaNo:"En este folio no se detectó tinta roja de rúbrica.",
   diplomatica:"Lectura semidiplomática del folio",
   anchos:"Restablecer anchos"},
- en:{anterior:"Previous occurrence",siguiente:"Next occurrence",latin:"Latin",traduccion:"translation",enFacsimil:"on the facsimile",noEnFolio:"not in this folio's reading",sinLectura:"facsimile: folio not yet read",zoomMenos:"Zoom out",zoomMas:"Zoom in",zoomRest:"Back to 100 %",aumento:"Magnifier power",invertir:"Invert",contraste:"Contrast",brillo:"Brightness",restablecer:"Reset",herramientasVisor:"Viewer tools",locus:"Locus",elegirLocus:"Choose a locus…",libro:"Book",prefacio:"Preface",elegirPref:"Choose a preface…",verbum:"Key term",
+ en:{compartir:"Send or save this passage",correo:"Email",anterior:"Previous occurrence",siguiente:"Next occurrence",latin:"Latin",traduccion:"translation",enFacsimil:"on the facsimile",noEnFolio:"not in this folio's reading",sinLectura:"facsimile: folio not yet read",zoomMenos:"Zoom out",zoomMas:"Zoom in",zoomRest:"Back to 100 %",aumento:"Magnifier power",invertir:"Invert",contraste:"Contrast",brillo:"Brightness",restablecer:"Reset",herramientasVisor:"Viewer tools",locus:"Locus",elegirLocus:"Choose a locus…",libro:"Book",prefacio:"Preface",elegirPref:"Choose a preface…",verbum:"Key term",
   elegirVerbum:"Choose a term…",lupa:"Magnifier",lupaOn:"Magnifier on",
   pistaPref:"The ten prefaces of the treatise. Nine have their rubric verified against the facsimile; Book I's is still provisional.",
   formas:"forms sharing the root",libros:"books",glosario:"Author's glossary",
@@ -41,7 +41,7 @@ const T={
   rubricaNo:"No rubric red ink was detected on this folio.",
   diplomatica:"Semi-diplomatic reading of the folio",
   anchos:"Reset widths"},
- fr:{anterior:"Occurrence précédente",siguiente:"Occurrence suivante",latin:"latin",traduccion:"traduction",enFacsimil:"sur le fac-similé",noEnFolio:"absent de la lecture de ce folio",sinLectura:"fac-similé : folio pas encore lu",zoomMenos:"Dézoomer",zoomMas:"Zoomer",zoomRest:"Revenir à 100 %",aumento:"Grossissement de la loupe",invertir:"Inverser",contraste:"Contraste",brillo:"Luminosité",restablecer:"Réinitialiser",herramientasVisor:"Outils de la visionneuse",locus:"Locus",elegirLocus:"Choisir un locus…",libro:"Livre",prefacio:"Préface",elegirPref:"Choisir une préface…",verbum:"Terme capital",
+ fr:{compartir:"Envoyer ou enregistrer ce passage",correo:"Courriel",anterior:"Occurrence précédente",siguiente:"Occurrence suivante",latin:"latin",traduccion:"traduction",enFacsimil:"sur le fac-similé",noEnFolio:"absent de la lecture de ce folio",sinLectura:"fac-similé : folio pas encore lu",zoomMenos:"Dézoomer",zoomMas:"Zoomer",zoomRest:"Revenir à 100 %",aumento:"Grossissement de la loupe",invertir:"Inverser",contraste:"Contraste",brillo:"Luminosité",restablecer:"Réinitialiser",herramientasVisor:"Outils de la visionneuse",locus:"Locus",elegirLocus:"Choisir un locus…",libro:"Livre",prefacio:"Préface",elegirPref:"Choisir une préface…",verbum:"Terme capital",
   elegirVerbum:"Choisir un terme…",lupa:"Loupe",lupaOn:"Loupe active",
   pistaPref:"Les dix préfaces du traité. Neuf ont leur rubrique vérifiée sur le fac-similé ; celle du livre I reste provisoire.",
   formas:"formes de même racine",libros:"livres",glosario:"Glossaire de l'auteur",
@@ -50,7 +50,7 @@ const T={
   rubricaNo:"Aucune encre rouge de rubrique détectée sur ce folio.",
   diplomatica:"Lecture semi-diplomatique du folio",
   anchos:"Rétablir les largeurs"},
- la:{anterior:"Locus prior",siguiente:"Locus sequens",latin:"Latine",traduccion:"translatio",enFacsimil:"in imagine",noEnFolio:"in lectione huius folii deest",sinLectura:"imago: folium nondum lectum",zoomMenos:"Minuere",zoomMas:"Augere",zoomRest:"Ad centesimam redire",aumento:"Vis vitri",invertir:"Colores invertere",contraste:"Discrimen",brillo:"Lux",restablecer:"Restituere",herramientasVisor:"Instrumenta speculi",locus:"Locus",elegirLocus:"Locum elige…",libro:"Liber",prefacio:"Praefatio",elegirPref:"Praefationem elige…",verbum:"Vox capitalis",
+ la:{compartir:"Hunc locum mittere aut servare",correo:"Epistula",anterior:"Locus prior",siguiente:"Locus sequens",latin:"Latine",traduccion:"translatio",enFacsimil:"in imagine",noEnFolio:"in lectione huius folii deest",sinLectura:"imago: folium nondum lectum",zoomMenos:"Minuere",zoomMas:"Augere",zoomRest:"Ad centesimam redire",aumento:"Vis vitri",invertir:"Colores invertere",contraste:"Discrimen",brillo:"Lux",restablecer:"Restituere",herramientasVisor:"Instrumenta speculi",locus:"Locus",elegirLocus:"Locum elige…",libro:"Liber",prefacio:"Praefatio",elegirPref:"Praefationem elige…",verbum:"Vox capitalis",
   elegirVerbum:"Vocem elige…",lupa:"Vitrum",lupaOn:"Vitrum adhibetur",
   pistaPref:"Decem praefationes operis. Novem rubricam in imagine comprobatam habent; libri I adhuc provisoria est.",
   formas:"formae eiusdem radicis",libros:"libri",glosario:"Glossarium auctoris",
@@ -394,6 +394,61 @@ function adoptarControles(){
  setTimeout(()=>obs.disconnect(),8000);
 }
 
+/* ---------- Compartir: correo, PDF, WhatsApp ----------
+   Comparte lo que está en pantalla: cita (locus y folio de H con su grado),
+   latín V514, traducción elegida y enlace permanente al pasaje. */
+function pasajeActual(){
+ const locus=$("ce-locus")?.value||"";
+ const folio=folioMostrado();
+ const grado=($("f-evidence")?.textContent||"").replace(/\s+/g," ").trim();
+ const textos=sel=>[...document.querySelectorAll(sel+" p")].map(n=>n.textContent.trim()).filter(Boolean).join("\n\n");
+ const latin=textos("#f-latin"),trad=textos("#f-translation");
+ const lengua=$("f-lang")?.selectedOptions?.[0]?.textContent||"";
+ const u=new URL(location.pathname,location.origin);
+ if(locus)u.searchParams.set("locus",locus);else if(folio)u.searchParams.set("folio",folio);
+ const [b,...r]=locus.split(".");
+ const cita=locus?"Vitr. "+(R[+b]||b)+"."+r.join("."):"";
+ return {locus,folio,grado,latin,trad,lengua,url:u.href,cita};
+}
+const corta=(x,n)=>x.length>n?x.slice(0,n).replace(/\s+\S*$/,"")+" […]":x;
+function mensaje(max){
+ const p=pasajeActual();
+ return [`${p.cita||"Vitruvio, De architectura"}${p.folio?" · Harley MS 2767, f. "+p.folio:""}`,
+  "",corta(p.latin,max),"",`${p.lengua}:`,corta(p.trad,max),"",p.url,
+  "— Concordancia entre folios y loci · Vitruvius Digital Library (Diego Kurilo)"].join("\n");
+}
+function compartirCorreo(){
+ const p=pasajeActual();
+ location.href="mailto:?subject="+encodeURIComponent(`${p.cita||"De architectura"}${p.folio?" · H f. "+p.folio:""} — Vitruvius Digital Library`)
+  +"&body="+encodeURIComponent(mensaje(700));
+}
+function compartirWhatsApp(){
+ window.open("https://wa.me/?text="+encodeURIComponent(mensaje(600)),"_blank","noopener");
+}
+function compartirPDF(){
+ const p=pasajeActual();
+ document.documentElement.dataset.ceImprimir="1";
+ const pie=$("ce-print-pie");
+ if(pie)pie.textContent=`${p.cita}${p.folio?" · Harley MS 2767, f. "+p.folio:""} · ${p.grado} · ${p.url} · ${new Date().toLocaleDateString()}`;
+ const fin=()=>{delete document.documentElement.dataset.ceImprimir;window.removeEventListener("afterprint",fin)};
+ window.addEventListener("afterprint",fin);
+ window.print();
+ setTimeout(fin,60000);
+}
+function montarCompartir(){
+ const taller=document.querySelector(".folio-workspace");
+ if(!taller||$("ce-compartir"))return;
+ const btn=(id,clase,txt,fn,svg)=>{const b=el("button",{type:"button",id,class:"ce-share "+clase});
+  b.innerHTML=svg;b.append(el("span",{"data-ce-share":id,text:txt}));b.addEventListener("click",fn);return b};
+ const barra=el("div",{class:"ce-compartir",id:"ce-compartir",role:"group","aria-label":t("compartir")},
+  el("span",{class:"ce-compartir-rot","data-ce-share":"rot",text:t("compartir")}),
+  btn("ce-mail","ce-mail",t("correo"),compartirCorreo,'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>'),
+  btn("ce-pdf","ce-pdf","PDF",compartirPDF,'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M9.5 13h5M9.5 16.5h5"/></svg>'),
+  btn("ce-wa","ce-wa","WhatsApp",compartirWhatsApp,'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20l1.4-4.1A8 8 0 1 1 8.3 18.7z"/><path d="M9 9.5c.3 2 2 3.8 4.2 4.4l1.1-1.1 1.7.9-.5 1.6c-3.3.2-6.9-3.3-6.8-6.6l1.6-.5.9 1.7z"/></svg>'));
+ taller.after(barra);
+ barra.after(el("p",{class:"ce-print-pie",id:"ce-print-pie"}));
+}
+
 /* ---------- Montaje ---------- */
 async function init(){
  adoptarControles();
@@ -423,6 +478,7 @@ async function init(){
  $("f-image-box")?.after(el("pre",{class:"ce-diplomatica",id:"ce-diplomatica",hidden:"hidden"}));
 
  montarHerramientasVisor(lupa);
+ montarCompartir();
 
  // Datos: cada uno es opcional, y su ausencia no debe tumbar el resto.
  const [m,v,d,li]=await Promise.allSettled([
@@ -543,6 +599,9 @@ function traducir(){
  for(const r of document.querySelectorAll(".ce-visor-tools label[data-ce-rot]"))
   if(r.firstChild)r.firstChild.nodeValue=t(r.getAttribute("data-ce-rot"));
  for(const [id,k] of [["ce-invertir","invertir"],["ce-visor-rest","restablecer"]]){const n=$(id);if(n)n.textContent=t(k)}
+ {const r=document.querySelector('[data-ce-share="rot"]');if(r)r.textContent=t("compartir");
+  const m=document.querySelector('[data-ce-share="ce-mail"]');if(m)m.textContent=t("correo");
+  const g=$("ce-compartir");if(g)g.setAttribute("aria-label",t("compartir"))}
  for(const [id,k] of [["ce-zoom-menos","zoomMenos"],["ce-zoom-mas","zoomMas"],["ce-zoom-val","zoomRest"],["ce-aumento","aumento"]]){const n=$(id);if(n){n.title=t(k);n.setAttribute("aria-label",t(k))}}
  for(const r of document.querySelectorAll(".ce-bar label[data-ce-rot]"))
   if(r.firstChild)r.firstChild.nodeValue=t(r.getAttribute("data-ce-rot"));
