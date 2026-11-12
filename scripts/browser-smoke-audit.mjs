@@ -537,7 +537,7 @@ try{
    assert(cards.some(c=>/Élévation de la face/.test(c)),'Falta el alzado de la fachada');
    await page.locator('#atlas-search').fill('corte');
    const cortes=await page.locator('#atlas-grid .atlas-card').allInnerTexts();
-   assert(cortes.filter(c=>/Panteón|Pantheon|Panthéon/.test(c)).length===2,'El filtro corte debe recuperar las dos láminas históricas del Panteón');
+   assert(cortes.some(c=>/Corte del Panteón.*Palladio/.test(c)) && cortes.some(c=>/Profil sur la longueur du Panthéon.*Desgodetz/.test(c)), 'El filtro corte debe recuperar ambas secciones históricas del Panteón, aunque existan otras fichas coincidentes');
    assert(cortes.every(c=>/corte|sección|CORTE|Profil/i.test(c)),'El filtro corte devuelve fichas que no son cortes');
    await page.locator('#atlas-grid .atlas-card').filter({hasText:'Profil sur la longueur'}).locator('button[data-open]').last().click();
    assert.equal(await page.locator('#atlas-dialog').evaluate(x=>x.open),true,'No abre el visor científico del corte');
