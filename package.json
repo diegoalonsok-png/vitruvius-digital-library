@@ -22,6 +22,7 @@
     "check:philology": "node scripts/test-vitruvia-philology.mjs",
     "check:rank": "node scripts/test-vitruvia-rank.mjs",
     "check:reading-shelf": "node scripts/check-reading-shelf.mjs",
+    "check:scriptorium": "node scripts/test-scriptorium-sync.mjs",
     "check:site": "node scripts/site-check.mjs",
     "check:vitruvia-100": "node scripts/check-vitruvia-100-subjects.mjs"
   },

@@ -1,5 +1,11 @@
-/* Scriptorium: three independent readers for Krohn, Kurilo and Rose.
-   OCR is identified as OCR and never aligned to editorial loci by page number. */
+/* Scriptorium: tres lectores independientes para Krohn, Kurilo y Rose.
+
+   El OCR se identifica siempre como OCR. No se alinea por número de página,
+   que no significa nada entre ediciones distintas, pero sí por la concordancia
+   documentada en data/collation-loci.json, que para cada uno de los 731 loci
+   registra la página de Rose y la de Krohn con un índice de semejanza obtenido
+   por trigramas sobre el flujo de páginas. Esa concordancia se declara con su
+   grado y nunca como colación verificada. */
 (()=>{"use strict";
 const root=document.getElementById("script-triple");
 if(!root)return;
@@ -11,6 +17,25 @@ const editions={
  en:{name:"Kurilo · V297 · Latín e inglés",file:"data/structured/theory-en.json",format:"structured",pdf:"documents/kurilo-theory-en.pdf"}
 };
 const cache=new Map(),grid=root.querySelector(".script-triple-grid"),fold=v=>String(v||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+/* Testigo de collation-loci.json que corresponde a cada visor. */
+const TESTIGO={krohn:"krohn-1912",rose:"rose-1899"};
+/* Grado de la concordancia según el índice de semejanza del cotejo por trigramas. */
+function gradoConcordancia(score){
+ if(!(score>0))return null;
+ if(score>=0.90)return {clave:"firma",texto:"concordancia firme"};
+ if(score>=0.80)return {clave:"probabilis",texto:"concordancia probable"};
+ return {clave:"dubia",texto:"concordancia dudosa"};
+}
+let concordanciaPromise=null;
+function concordanciaLoci(){
+ if(!concordanciaPromise)concordanciaPromise=fetch("data/collation-loci.json")
+  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+  .then(d=>{
+   if(d.schema!=="vitruvia-collation-v1"||!d.loci)throw Error("Formato de concordancia inválido");
+   return d;
+  }).catch(err=>{concordanciaPromise=null;throw err});
+ return concordanciaPromise;
+}
 async function loadEdition(id){
  if(!cache.has(id)){
   const ed=editions[id];
@@ -78,11 +103,13 @@ async function conceptTerms(q,language){
 }
 const toolbar=document.createElement("div");toolbar.className="script-triple-sync";
 const syncToggle=document.createElement("input");syncToggle.type="checkbox";syncToggle.checked=true;
-const syncLabel=document.createElement("label");syncLabel.append(syncToggle,document.createTextNode(" Sincronizar ediciones por locus idéntico"));
+const syncLabel=document.createElement("label");syncLabel.append(syncToggle,document.createTextNode(" Sincronizar los visores por locus"));
 const syncStatus=document.createElement("span");syncStatus.setAttribute("role","status");
-syncStatus.textContent="Krohn y Rose: solo OCR por página; no se presume alineación con Kurilo.";
-const candidateToggle=document.createElement("input");candidateToggle.type="checkbox";
-const candidateLabel=document.createElement("label");candidateLabel.append(candidateToggle,document.createTextNode(" Saltar por ≥2 frases latinas coincidentes (provisional)"));
+syncStatus.textContent="Krohn y Rose se leen por OCR de página; la concordancia con el locus procede del cotejo documentado y se declara con su grado.";
+const candidateToggle=document.createElement("input");candidateToggle.type="checkbox";candidateToggle.checked=true;
+const candidateLabel=document.createElement("label");
+candidateLabel.append(candidateToggle,document.createTextNode(" Llevar Krohn y Rose a la página concordante del locus"));
+candidateLabel.title="Usa la concordancia documentada por cotejo de trigramas; se indica su grado y no equivale a una colación verificada.";
 toolbar.append(syncLabel,candidateLabel,syncStatus);grid.before(toolbar);
 let syncActive=false;
 function synchronize(source){
@@ -106,21 +133,29 @@ function synchronize(source){
    ?("Locus "+requestedLocus+" compartido por "+exact+" edición(es) textuales. Cotejo editorial pendiente.")
    :("Sin vínculo de locus verificado. Los visores no se desplazan por semejanza de número.");
  if(!ocrTargets.length)return;
- // A concordance candidate is NOT a verified collation; it is an opt-in navigation shortcut.
- candidateIndex().then(map=>{
+ /* La concordancia es un instrumento de navegación con grado declarado, no una
+    colación: lleva el visor a la página donde el cotejo mecánico sitúa el locus. */
+ concordanciaLoci().then(d=>{
   if(!source.data||source.data.pages[source.index]?.locus!==requestedLocus)return;
-  let hits=0;
+  const fila=d.loci[requestedLocus];
+  const partes=[];
   for(const target of ocrTargets){
    if(!target.data)continue;
-   const edition=target.editionId();
-   const hit=map.get(edition+"|"+requestedLocus);
-   if(!hit||hit.status!=="machine-candidate-not-verified"||hit.anchorsMatched<2)continue;
-   const pos=target.data.pages.findIndex(p=>p.page===hit.page);
+   const testigo=TESTIGO[target.editionId()];
+   const dato=testigo&&fila?fila[testigo]:null;
+   if(!dato||!dato.page)continue;
+   const pos=target.data.pages.findIndex(p=>p.page===dato.page);
    if(pos<0)continue;
-   syncActive=true;target.seek(pos);syncActive=false;hits++;
+   syncActive=true;target.seek(pos);syncActive=false;
+   const g=gradoConcordancia(dato.score);
+   const nombre=(editions[target.editionId()]||{}).name||testigo;
+   partes.push(nombre.split(" ·")[0]+" p. "+dato.page+(g?" · "+g.texto+" ("+dato.score.toFixed(2)+")":""));
   }
-  syncStatus.textContent="Locus "+requestedLocus+": "+hits+" salto(s) con al menos dos fragmentos latinos coincidentes. NO son equivalencias filológicas verificadas; "+unmapped+" visor(es) sin ajuste.";
- }).catch(err=>{syncStatus.textContent="Concordancias provisionales no disponibles: "+err.message;});
+  syncStatus.textContent=partes.length
+   ?("Locus "+requestedLocus+" → "+partes.join(" · ")+". Concordancia por cotejo de trigramas sobre el OCR: "
+     +"indica dónde está el pasaje en la página impresa, no sustituye la colación del texto.")
+   :("Locus "+requestedLocus+": sin página concordante registrada para los visores de OCR.");
+ }).catch(err=>{syncStatus.textContent="Concordancia de loci no disponible: "+err.message;});
 }
 
 for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
