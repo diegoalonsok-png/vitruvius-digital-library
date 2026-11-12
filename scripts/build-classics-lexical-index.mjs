@@ -198,6 +198,59 @@ for(const extra of EXTRA){
  });
 }
 
+/* Fuentes del Lexicon en data/lexicon/fontes: tienen la misma forma que el
+   corpus clásico (locus y text) y el registro de búsqueda las recorre, pero
+   no estaban en el índice: el motor las visitaba y no encontraba nada que
+   buscar. Se indexan con el id que usa el registro, para que coincidan.
+   Se incluyen sólo las tres que el registro señala; las otras cuatro del mismo
+   directorio repiten obras ya indexadas desde data/classics-corpus con otro
+   id, y añadirlas duplicaría los recuentos. */
+const FONTES=[
+ {file:"data/lexicon/fontes/frontinus-aquaeductu-la.json",id:"frontinus",lang:"la",
+  title:"Frontino · De aquaeductu urbis Romae"},
+ {file:"data/lexicon/fontes/pliny-naturalis-la.json",id:"pliny",lang:"la",
+  title:"Plinio el Viejo · Naturalis historia"},
+ {file:"data/lexicon/fontes/varro-rustica-la.json",id:"varro-rustica",lang:"la",
+  title:"Varrón · Rerum rusticarum libri tres"}
+];
+for(const fonte of FONTES){
+ if(!existsSync(fonte.file))continue;
+ const raw=JSON.parse(readFileSync(fonte.file,"utf8"));
+ const passages=raw.passages||[];
+ if(!passages.length)continue;
+ const script=fonte.lang==="grc"?"greek":"latin";
+ const workIndex=works.length;
+ let tokens=0,used=0;
+ passages.forEach((passage,passageIndex)=>{
+  const folded=P.fold(passage.text||"");
+  if(!folded)return;
+  used++;
+  const words=folded.split(" ");
+  tokens+=words.length;
+  const here=new Map();
+  for(const word of words){
+   if(word.length<MIN_TOKEN)continue;
+   const stem=stemOf(word,script);
+   if(!stem)continue;
+   here.set(stem,(here.get(stem)||0)+1);
+  }
+  for(const [stem,count] of here){
+   let byWork=index.get(stem);
+   if(!byWork){byWork=new Map();index.set(stem,byWork)}
+   let entry=byWork.get(workIndex);
+   if(!entry){entry=[0,[]];byWork.set(workIndex,entry)}
+   entry[0]+=count;
+   if(entry[1].length<MAX_PASSAGES)entry[1].push(passageIndex);
+  }
+ });
+ if(!used)continue;
+ totalTokens+=tokens;totalPassages+=used;
+ works.push({i:workIndex,id:fonte.id,lang:fonte.lang,title:fonte.title,
+  file:fonte.file,passages:used,tokens,urn:raw.sourceUrn||"",source:raw.source||"",
+  sha256:raw.sourceSha256||"",attribution:raw.attribution||"",license:raw.license||"",
+  editorialStatus:raw.editorialStatus||"",gate:[fonte.id+"|"+fonte.lang]});
+}
+
 /* Ediciones servidas como HTML. Se indexan SÓLO para la puerta: se cuenta en
    qué edición está cada raíz, sin guardar índices de pasaje, porque la forma
    en que el motor divide un HTML en pasajes vive en su propio cargador y un

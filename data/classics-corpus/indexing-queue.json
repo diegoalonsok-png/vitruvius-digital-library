@@ -1,0 +1,388 @@
+{
+ "schema": "vitruvia-indexing-queue-v2",
+ "generated": "2026-11-12",
+ "supersedes": "data/classics-corpus/indexing-queue-2026-11-08.json",
+ "method": "Recalculado por scripts/sync-indexing-queue.mjs a partir de data/index/classics/manifest.json, search-registry.json y semantic-conceptus-postings.json. Una URL o una referencia a un PDF no es prueba de indexacion: una obra con fuente declarada y sin texto indexado sigue pendiente.",
+ "counts": {
+  "catalogue": 222,
+  "lexicallyIndexed": 181,
+  "pending": 41,
+  "pendingWithDeclaredSource": 26,
+  "pendingWithoutIdentifiedSource": 15,
+  "registeredForSearch": 182,
+  "semanticallyIndexed": 180,
+  "indexedButNotRegistered": 0,
+  "registeredButNotIndexed": 1
+ },
+ "pending": [
+  {
+   "id": "seneca-naturales",
+   "author": "Séneca",
+   "title": "Naturales quaestiones",
+   "language": "la",
+   "sourceUrl": "https://thelatinlibrary.com/sen.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "origenes",
+   "author": "Orígenes",
+   "title": "Περὶ ἀρχῶν · De principiis",
+   "language": "grc",
+   "sourceUrl": "https://www.earlychristianwritings.com/origen.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "plutarch-lives",
+   "author": "Plutarco",
+   "title": "Βίοι Παράλληλοι · Vidas paralelas",
+   "language": "grc",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "apollodorus-poliorcetics",
+   "author": "Apolodoro de Damasco (atribución tradicional)",
+   "title": "Πολιορκητικά · Poliorketika",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/poliorktikakaip00petegoog",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "athenaeus-mechanicus",
+   "author": "Ateneo Mecánico",
+   "title": "Περὶ μηχανημάτων · De machinis",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/poliorktikakaip00petegoog",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "vitruvio-v514-pdf",
+   "author": "Vitruvio · edición de Diego A. Kurilo",
+   "title": "De architectura · Recensio V514 (latín–castellano)",
+   "language": "la",
+   "sourceUrl": null,
+   "sourceType": null,
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "vitruvio-v554-pdf",
+   "author": "Vitruvio · edición de Diego A. Kurilo",
+   "title": "De architectura · Recensio V554 (latín–francés)",
+   "language": "la",
+   "sourceUrl": null,
+   "sourceType": null,
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "theory-v297-pdf",
+   "author": "Diego A. Kurilo · sobre Vitruvio",
+   "title": "The Architect of Theory · V297 (inglés)",
+   "language": "la",
+   "sourceUrl": null,
+   "sourceType": null,
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "krohn-1912-pdf",
+   "author": "Vitruvio · edición de Fritz Krohn",
+   "title": "Vitruvii De architectura libri decem · Krohn 1912",
+   "language": "la",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "velleius-historia",
+   "author": "Veleyo Patérculo",
+   "title": "Historia Romana",
+   "language": "la",
+   "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Velleius_Paterculus/home.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "plutarch-moralia",
+   "author": "Plutarco",
+   "title": "Ἠθικά (Moralia)",
+   "language": "grc",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "ptolemy-geographia",
+   "author": "Claudio Ptolomeo",
+   "title": "Γεωγραφικὴ ὑφήγησις",
+   "language": "grc",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "thucydides-war",
+   "author": "Tucídides",
+   "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+   "language": "grc",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "cassius-dio-historia",
+   "author": "Dión Casio",
+   "title": "Ῥωμαϊκὴ ἱστορία",
+   "language": "grc",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "athenaeus-deipnosophistae",
+   "author": "Ateneo de Náucratis",
+   "title": "Δειπνοσοφισταί",
+   "language": "grc",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "theophrastus-historia-plantarum",
+   "author": "Teofrasto",
+   "title": "Περὶ φυτῶν ἱστορίας",
+   "language": "grc",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "seneca-de-ira",
+   "author": "Séneca",
+   "title": "De ira",
+   "language": "la",
+   "sourceUrl": "https://thelatinlibrary.com/sen.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "seneca-de-tranquillitate",
+   "author": "Séneca",
+   "title": "De tranquillitate animi",
+   "language": "la",
+   "sourceUrl": "https://thelatinlibrary.com/sen.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "apuleius-de-deo-socratis",
+   "author": "Apuleyo",
+   "title": "De deo Socratis",
+   "language": "la",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "vegetius-epitoma",
+   "author": "Vegecio",
+   "title": "Epitoma rei militaris",
+   "language": "la",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "macrobius-saturnalia",
+   "author": "Macrobio",
+   "title": "Saturnalia",
+   "language": "la",
+   "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Macrobius/Saturnalia/home.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "archimedes-fluitantibus",
+   "author": "Arquímedes",
+   "title": "Περὶ τῶν ὀχουμένων",
+   "language": "grc",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "ennius-annales",
+   "author": "Ennio",
+   "title": "Annales (fragmenta)",
+   "language": "la",
+   "sourceUrl": "https://thelatinlibrary.com/enn.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "accius-fragmenta",
+   "author": "Accio",
+   "title": "Tragoediae (fragmenta)",
+   "language": "la",
+   "sourceUrl": null,
+   "sourceType": "unidentified",
+   "state": "sin fuente identificada"
+  },
+  {
+   "id": "ps-aristotle-mechanica",
+   "author": "Pseudo-Aristóteles (escuela peripatética)",
+   "title": "Μηχανικὰ προβλήματα",
+   "language": "grc",
+   "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Aristotle/home.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "procopius-aedificiis",
+   "author": "Procopio de Cesarea",
+   "title": "Περὶ κτισμάτων",
+   "language": "grc",
+   "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/home.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "isidore-etymologiae",
+   "author": "Isidoro de Sevilla",
+   "title": "Etymologiae",
+   "language": "la",
+   "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Isidore/home.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "censorinus-die-natali",
+   "author": "Censorino",
+   "title": "De die natali",
+   "language": "la",
+   "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Censorinus/home.html",
+   "sourceType": "external-reference",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "euclid-optica",
+   "author": "Euclides",
+   "title": "Ὀπτικά · Optica",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/euclidisoperaomn07eucluoft",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "euclid-phaenomena",
+   "author": "Euclides",
+   "title": "Φαινόμενα · Phaenomena y escritos musicales",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/euclidisoperaomn08eucl",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "cleonides-harmonica",
+   "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+   "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/euclidisoperaomn08eucl",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "hero-belopoeica",
+   "author": "Herón de Alejandría",
+   "title": "Βελοποιικά · Belopoeica",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/heronsbelopoiika00hero",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "philo-belopoeica",
+   "author": "Filón de Bizancio",
+   "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/philonsbelopoiik00philuoft",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "biton-kataskeuai",
+   "author": "Bitón",
+   "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/poliorktikakaip00petegoog",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "geminus-isagoge",
+   "author": "Gémino",
+   "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/geminoueisagoget00gemi",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "aristarchus-magnitudines",
+   "author": "Aristarco de Samos",
+   "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/aristarchusofsam00heatuoft",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "apollonius-conica",
+   "author": "Apolonio de Perge",
+   "title": "Κωνικά · Conica",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/apolloniipergaei01apoluoft",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "pappus-synagoge",
+   "author": "Papo de Alejandría",
+   "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+   "language": "grc",
+   "sourceUrl": "https://archive.org/details/pappialexandrin04pappgoog",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "hyginus-gromaticus",
+   "author": "Higino Gromático",
+   "title": "Constitutio limitum",
+   "language": "la",
+   "sourceUrl": "https://archive.org/details/corpusagrimensor01thuluoft",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "frontinus-gromatica",
+   "author": "Frontino",
+   "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+   "language": "la",
+   "sourceUrl": "https://archive.org/details/corpusagrimensor01thuluoft",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  },
+  {
+   "id": "siculus-flaccus",
+   "author": "Sículo Flaco",
+   "title": "De condicionibus agrorum",
+   "language": "la",
+   "sourceUrl": "https://archive.org/details/corpusagrimensor01thuluoft",
+   "sourceType": "facsimile",
+   "state": "fuente declarada, texto sin indexar"
+  }
+ ]
+}
