@@ -42,6 +42,41 @@ let notes=[],shown=0,filtered=[],knownLoci=new Set();
 const make=(tag,cls,value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!==undefined)el.textContent=String(value);return el;};
 const addStat=(parent,count,label)=>{const box=make("div","apa-stat"),n=make("strong","",count),s=make("span","",label);box.append(n,s);parent.append(box);};
 const clean=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+
+/* Search and visual highlighting share the same exact lexical rules.
+   Simetría/symmetria is a documented orthographic correspondence, not a general fuzzy search. */
+const searchVariants=q=>{
+ const normalized=clean(q).trim();
+ const forms=new Set([normalized]);
+ if(["simetria","symmetria","symmetriae","symmetriam","symmetrias"].includes(normalized))
+  ["simetria","symmetria","symmetriae","symmetriam","symmetrias"].forEach(v=>forms.add(v));
+ return forms;
+};
+function matchesQuery(text,query){
+ const variants=searchVariants(query);
+ if(!query)return true;
+ if(clean(text).includes(clean(query)))return true;
+ if(variants.size===1)return false;
+ return [...String(text??"").matchAll(/[\\p{L}\\p{M}]+/gu)].some(m=>variants.has(clean(m[0])));
+}
+function highlightQuery(el,value){
+ const text=String(value??""),query=$("apa-query")?.value.trim();
+ if(!query){el.textContent=text;return el;}
+ const variants=searchVariants(query),tokens=[...text.matchAll(/[\\p{L}\\p{M}]+/gu)];
+ let cursor=0,matched=false;
+ for(const t of tokens){
+  if(!variants.has(clean(t[0])))continue;
+  if(t.index>cursor)el.append(document.createTextNode(text.slice(cursor,t.index)));
+  const mark=document.createElement("mark");
+  mark.className="apa-search-hit";
+  mark.textContent=t[0];el.append(mark);
+  cursor=t.index+t[0].length;matched=true;
+ }
+ if(!matched){el.textContent=text;return el;}
+ if(cursor<text.length)el.append(document.createTextNode(text.slice(cursor)));
+ return el;
+}
+
 function status(n){
  if(n.mapping_status==="explicit_in_anchor"&&n.locus)return knownLoci.size&&!knownLoci.has(n.locus)?"noncanonical":"explicit_in_anchor";
  if(n.candidate_locus)return knownLoci.size&&!knownLoci.has(n.candidate_locus)?"noncanonical":"candidate";
@@ -113,9 +148,9 @@ function entry(n){
   for(const ref of cited)line.append(make("span","apa-ref-tag",ref.name));
   section.append(line);
  }
- section.append(make("p","",n.text||"[Nota sin transcripción]"));
+ section.append(highlightQuery(make("p",""),n.text||"[Nota sin transcripción]"));
  const details=make("details"),summary=make("summary","","Ver contexto de la nota en el documento");
- details.append(summary,make("p","",n.anchor||"Contexto no recuperado"));
+ details.append(summary,highlightQuery(make("p",""),n.anchor||"Contexto no recuperado"));
  const links=make("div","apa-links"),source=make("a","","Ficha bibliográfica de la edición");source.href=pages[n.edition]||"aparato-critico.html";links.append(source);
  if(loc&&typ!=="noncanonical"){
   const critical=make("a","",typ==="explicit_in_anchor"?"Consultar este locus":"Revisar este locus candidato");
@@ -152,7 +187,7 @@ function update(reset=true){
  const locusInput=$("apa-locus").value.trim(),loc=canonicalLocus(locusInput);
  filtered=notes.filter(n=>(!ed||n.edition===ed)&&(!level||status(n)===level)&&
   (!loc||isAtLocus(n,loc))&&(!ref||references(n).some(s=>s.id===ref))&&
-  (!query||clean([n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(" ")).includes(query)));
+  (!query||matchesQuery([n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(" "),query)));
  filtered.sort((a,b)=>({
   explicit_in_anchor:0,candidate:1,noncanonical:2,unmapped:3
  })[status(a)]-({explicit_in_anchor:0,candidate:1,noncanonical:2,unmapped:3})[status(b)]||
