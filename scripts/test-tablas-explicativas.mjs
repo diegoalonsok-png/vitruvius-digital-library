@@ -31,7 +31,7 @@ assert(fs.readFileSync("assets/tablas-libros.js","utf8").includes('data/tablas-l
   "The live viewer must fetch the consolidated tables");
 assert(/(?:no una nueva colación|no se ha realizado una nueva colación|no una colación crítica|no se corrige ni se añade contenido)/i.test(page),
   "The public viewer must disclose its non-critical, OCR-derived status");
-assert(page.includes("index.html#buscar"));
+assert(page.includes('href="index.html"')&&page.includes('href="lector-bilingue.html"'),"The table viewer must link to the public site and bilingual reader");
 for(const nav of ["index.html","bibliotheca-graeca-latina.html"]){
  assert(fs.readFileSync(nav,"utf8").includes('href="tablas-explicativas.html"'));
 }
