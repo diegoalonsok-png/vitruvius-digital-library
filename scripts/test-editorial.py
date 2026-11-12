@@ -12,7 +12,7 @@ class Page(HTMLParser):
         if tag=='meta' and a.get('name')=='description': self.description=bool(a.get('content'))
         if tag=='a' and 'skip' in a.get('class','').split(): self.skip=a.get('href','').startswith('#')
         if tag=='footer': self.footer=True
-        if tag=='link' and 'assets/academic.css' in a.get('href',''): self.css=True
+        if tag=='link' and any(css in a.get('href','') for css in ('assets/academic.css','assets/bundle-index-1.css','assets/editorial-reading.css')): self.css=True
         if a.get('id'): assert a['id'] not in self.ids, f"Duplicate ID {a['id']}"; self.ids.add(a['id'])
 for name in ['index','metodologia','estudios','bibliografia','lector-bilingue','basilica-fano','auditoria','principios']:
     p=Page();p.feed((root/(name+'.html')).read_text())
