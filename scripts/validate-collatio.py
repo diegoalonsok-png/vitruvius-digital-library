@@ -212,6 +212,10 @@ def main():
                         "leído o una referencia a otro lugar del manuscrito; requiere comprobación.",
         "conflicto-con-el-facsimil": "Contradice el mapa de folios verificado por inspección del "
                         "facsímil o los límites de libro declarados en él. Prevalece el facsímil.",
+        "aparato-en-prosa": "Redactado en prosa dentro del Apéndice T, en la forma canónica "
+                        "«lema] lectura, testigos». Es más explícito que una celda de tabla, porque "
+                        "nombra los testigos de cada lectura, pero procede de una sola edición: "
+                        "conviene comprobarlo en la página citada.",
     }
 
     def grado_de(e):
@@ -229,6 +233,30 @@ def main():
         reg = dict(e)
         reg["grado"] = grado_de(e)
         todas.append(reg)
+    # El Apéndice T trae además aparato redactado en prosa, que el lector de
+    # tablas no alcanza (scripts/parse-collatio-prosa.py). Se publica con grado
+    # propio: su forma canónica «lema] lectura, testigos» es más explícita que
+    # una celda, pero procede de una sola edición y no de doble fuente.
+    prosa_path = ROOT / "data/apparatus/collatio-prosa.json"
+    if prosa_path.exists():
+        for e in json.loads(prosa_path.read_text(encoding="utf8")).get("entradas", []):
+            campos = {"estaEdicion": e["lemma"]}
+            for i, l in enumerate(e.get("lecturas", [])[:3]):
+                campos["lectura" if i == 0 else f"lectura{i+1}"] = l["texto"]
+            motivos = [] if e.get("locusEnElCanon") else [
+                "referencia de capítulo, no de sección" if e.get("locusDeCapitulo")
+                else "locus fuera del canon de 731 pasajes"]
+            todas.append({
+                **{k: e[k] for k in ("id", "edition", "version", "language", "page", "pdf", "locus")},
+                "campos": campos, "folios": [],
+                "codigosDeEvidencia": e.get("signos", []),
+                "siglaCitadas": e.get("testigos", []),
+                "cabecera": ["Aparato en prosa del Apéndice T"],
+                "bilingue": None,
+                "motivosDeRevision": motivos,
+                "grado": "aparato-en-prosa",
+            })
+
     vistos, entradas_unicas = set(), []
     for e in todas:
         if e["id"] in vistos:

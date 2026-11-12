@@ -22,7 +22,8 @@ const GRADO={
  "fuente-unica":"Fuente única",
  "transcripcion-por-comprobar":"Transcripción por comprobar",
  "orden-dudoso":"Orden de folio dudoso",
- "conflicto-con-el-facsimil":"En conflicto con el facsímil"};
+ "conflicto-con-el-facsimil":"En conflicto con el facsímil",
+ "aparato-en-prosa":"Aparato en prosa del Apéndice T"};
 let datos=null,filas=[];
 
 function enlaces(e){
@@ -98,8 +99,10 @@ function pinta(){
   }
   return true;
  }).sort((a,b)=>{
+  // Un grado desconocido va al final, nunca al principio por devolver -1.
   const og=Object.keys(GRADO);
-  const dg=og.indexOf(a.grado)-og.indexOf(b.grado);
+  const pos=g=>{const i=og.indexOf(g);return i<0?og.length:i};
+  const dg=pos(a.grado)-pos(b.grado);
   if(dg)return dg;
   const [x,y]=[locusKey(a.locus),locusKey(b.locus)];
   return x[0]-y[0]||x[1]-y[1]||x[2]-y[2];

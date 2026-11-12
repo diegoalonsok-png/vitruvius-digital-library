@@ -9,9 +9,11 @@ let fallos=0;
 const check=(cond,msg)=>{if(!cond){console.error("  ✗ "+msg);fallos++}else console.log("  ✓ "+msg)};
 
 console.log("datos de la collatio validada");
-check(data.recuentos.publicadas===data.recuentos.entradasLeidas,
-  `se publican todas las entradas leídas (${data.recuentos.publicadas} de ${data.recuentos.entradasLeidas})`);
+const prosa=data.recuentos.porGrado["aparato-en-prosa"]||0;
+check(data.recuentos.publicadas===data.recuentos.entradasLeidas+prosa,
+  `se publica todo lo leído: ${data.recuentos.entradasLeidas} de tablas + ${prosa} en prosa = ${data.recuentos.publicadas}`);
 check(data.entradas.every(e=>e.grado&&data.grados[e.grado]),"toda entrada lleva un grado explicado");
+// El aparato en prosa no trae folio, de modo que no alimenta el mapa.
 const CIMA=new Set(["doble-fuente","fuente-unica"]);
 const folioDe=new Map();
 for(const e of data.entradas)for(const f of e.folios||[])
