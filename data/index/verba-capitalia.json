@@ -1,0 +1,5096 @@
+{
+ "schema": "verba-capitalia/1",
+ "fuente": {
+  "glosario": "data/lexicon/lexicon-auctoris.json",
+  "texto": "data/structured/recensio-es.json (latín editorial V514)"
+ },
+ "metodo": "Lemas del glosario del autor atestiguados en el latín de V514. Se cuentan las formas que comparten raíz con el lema, con plegadura i/j y u/v; no es una lematización. Se exige atestiguación en minúscula (nombre común), al menos tres formas y presencia en dos libros o más.",
+ "advertencia": "El recuento es de formas de la misma raíz sobre el texto editorial V514, no sobre el Codex H, y no equivale a un recuento de lemas.",
+ "partesArchitecturae": "Las seis voces marcadas parsArchitecturae son las que De architectura 1.2.1 enumera como partes del arte: ordinatio, dispositio, eurythmia, symmetria, decor, distributio.",
+ "recuentos": {
+  "vocesCapitales": 48,
+  "entradasDelGlosario": 159
+ },
+ "voces": [
+  {
+   "lemma": "DISPOSITIO",
+   "clave": "dispositio",
+   "raiz": "dispositi",
+   "formas": 42,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10
+   ],
+   "graecum": [
+    "διάθεσις"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "Ichnographia, orthographia y scaenographia son species dispositionis: modos gráficos de concebir y representar el proyecto. Conviene evitar que «disposición» se reduzca a mera distribución funcional de recintos, pues el pasaje incluye explícitamente planta, alzado y representación perspectívica/escenográfica.",
+     "pagina": 219,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=219"
+    },
+    "fr": {
+     "texto": "Ichnographia,",
+     "pagina": 220,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=220"
+    },
+    "en": {
+     "texto": "Layout or conception of the plan, elevation and perspective of a building. It involves the three forms of representation: ichnographia (plan), orthographia (elevation) and scaenographia (perspective). Cf. De architectura 1.2.1 – 2.",
+     "pagina": 923,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=923"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.2.2",
+     "n": 3
+    },
+    {
+     "locus": "3.3.9",
+     "n": 2
+    },
+    {
+     "locus": "4.2.2",
+     "n": 2
+    },
+    {
+     "locus": "7.3.3",
+     "n": 2
+    },
+    {
+     "locus": "9.1.3",
+     "n": 2
+    },
+    {
+     "locus": "1.1.9",
+     "n": 1
+    },
+    {
+     "locus": "1.2.1",
+     "n": 1
+    },
+    {
+     "locus": "1.3.1",
+     "n": 1
+    },
+    {
+     "locus": "1.3.2",
+     "n": 1
+    },
+    {
+     "locus": "2.8.20",
+     "n": 1
+    },
+    {
+     "locus": "3.3.4",
+     "n": 1
+    },
+    {
+     "locus": "3.5.15",
+     "n": 1
+    },
+    {
+     "locus": "4.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "4.1.7",
+     "n": 1
+    },
+    {
+     "locus": "4.2.3",
+     "n": 1
+    },
+    {
+     "locus": "4.6.6",
+     "n": 1
+    },
+    {
+     "locus": "4.7.1",
+     "n": 1
+    },
+    {
+     "locus": "4.8.4",
+     "n": 1
+    },
+    {
+     "locus": "4.8.5",
+     "n": 1
+    },
+    {
+     "locus": "5.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "5.praef.5",
+     "n": 1
+    },
+    {
+     "locus": "5.1.2",
+     "n": 1
+    },
+    {
+     "locus": "5.1.10",
+     "n": 1
+    },
+    {
+     "locus": "5.4.3",
+     "n": 1
+    },
+    {
+     "locus": "5.4.5",
+     "n": 1
+    },
+    {
+     "locus": "5.9.1",
+     "n": 1
+    },
+    {
+     "locus": "5.9.9",
+     "n": 1
+    },
+    {
+     "locus": "6.8.9",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.16",
+     "n": 1
+    },
+    {
+     "locus": "7.2.2",
+     "n": 1
+    },
+    {
+     "locus": "7.3.1",
+     "n": 1
+    },
+    {
+     "locus": "7.3.2",
+     "n": 1
+    },
+    {
+     "locus": "7.14.3",
+     "n": 1
+    },
+    {
+     "locus": "9.6.1",
+     "n": 1
+    },
+    {
+     "locus": "10.2.1",
+     "n": 1
+    },
+    {
+     "locus": "10.2.4",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [
+    "DISPOSITIONES"
+   ],
+   "parsArchitecturae": true
+  },
+  {
+   "lemma": "SYMMETRIA",
+   "clave": "symmetria",
+   "raiz": "symmetri",
+   "formas": 84,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10
+   ],
+   "graecum": [
+    "συμμετρία"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "Aquí symmetria significa conmensurabilidad o correspondencia modular de partes respecto de un todo, no simetría bilateral. La variedad de ejemplos —templo, ballista, navío— muestra que Vitruvio formula un principio de dimensionamiento relativo aplicable a distintos campos técnicos, no una única proporción universal. Así como en el cuerpo del hombre se halla esa cualidad eurítmica de la conmensurabilidad a partir del codo, el pie, el palmo, el dedo y las demás partes menores, exactamente igual ocurre en la ejecución perfecta de los edificios. Y, en primer lugar, esto se verifica en los templos ",
+     "pagina": 235,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=235"
+    },
+    "fr": {
+     "texto": "Symmetria désigne ici la commensurabilité ou la correspondance modulaire des parties par rapport à l’ensemble, non la symétrie bilatérale. La diversité des exemples — temple, baliste, navire — montre que Vitruve formule un principe de dimensionnement relatif applicable à plusieurs domaines techniques, non une proportion universelle unique. De même que le corps humain possède la qualité eurythmique de commensurabilité, qui découle du coude, du pied, de la paume, du doigt et d’autres parties plus petites, il en va de même pour la parfaite exécution des édifices. Cela est évident, en premier lieu",
+     "pagina": 237,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=237"
+    },
+    "en": {
+     "texto": "The proportional correspondence between the members of a work and the whole, taken from a rata pars (reference part). « Symmetria est ex ipsius operis membris conveniens consensus » (De architectura 1.2.4). It differs from the modern meaning of « bilateral symmetry ».",
+     "pagina": 925,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=925"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "3.1.1",
+     "n": 3
+    },
+    {
+     "locus": "3.5.7",
+     "n": 3
+    },
+    {
+     "locus": "4.1.12",
+     "n": 3
+    },
+    {
+     "locus": "5.6.7",
+     "n": 3
+    },
+    {
+     "locus": "6.3.11",
+     "n": 3
+    },
+    {
+     "locus": "7.praef.12",
+     "n": 3
+    },
+    {
+     "locus": "1.2.4",
+     "n": 2
+    },
+    {
+     "locus": "1.7.2",
+     "n": 2
+    },
+    {
+     "locus": "3.3.8",
+     "n": 2
+    },
+    {
+     "locus": "6.2.1",
+     "n": 2
+    },
+    {
+     "locus": "6.3.5",
+     "n": 2
+    },
+    {
+     "locus": "7.praef.17",
+     "n": 2
+    },
+    {
+     "locus": "1.1.4",
+     "n": 1
+    },
+    {
+     "locus": "1.2.1",
+     "n": 1
+    },
+    {
+     "locus": "1.2.2",
+     "n": 1
+    },
+    {
+     "locus": "1.2.3",
+     "n": 1
+    },
+    {
+     "locus": "1.3.2",
+     "n": 1
+    },
+    {
+     "locus": "2.praef.5",
+     "n": 1
+    },
+    {
+     "locus": "2.1.7",
+     "n": 1
+    },
+    {
+     "locus": "2.10.3",
+     "n": 1
+    },
+    {
+     "locus": "3.1.9",
+     "n": 1
+    },
+    {
+     "locus": "3.2.2",
+     "n": 1
+    },
+    {
+     "locus": "3.3.11",
+     "n": 1
+    },
+    {
+     "locus": "3.5.1",
+     "n": 1
+    },
+    {
+     "locus": "3.5.3",
+     "n": 1
+    },
+    {
+     "locus": "3.5.5",
+     "n": 1
+    },
+    {
+     "locus": "3.5.8",
+     "n": 1
+    },
+    {
+     "locus": "3.5.9",
+     "n": 1
+    },
+    {
+     "locus": "4.1.1",
+     "n": 1
+    },
+    {
+     "locus": "4.1.2",
+     "n": 1
+    },
+    {
+     "locus": "4.1.3",
+     "n": 1
+    },
+    {
+     "locus": "4.1.6",
+     "n": 1
+    },
+    {
+     "locus": "4.1.8",
+     "n": 1
+    },
+    {
+     "locus": "4.1.10",
+     "n": 1
+    },
+    {
+     "locus": "4.1.11",
+     "n": 1
+    },
+    {
+     "locus": "4.2.6",
+     "n": 1
+    },
+    {
+     "locus": "4.3.1",
+     "n": 1
+    },
+    {
+     "locus": "4.3.2",
+     "n": 1
+    },
+    {
+     "locus": "4.3.10",
+     "n": 1
+    },
+    {
+     "locus": "4.4.3",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": true
+  },
+  {
+   "lemma": "DISTRIBUTIO",
+   "clave": "distributio",
+   "raiz": "distributi",
+   "formas": 23,
+   "libros": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "graecum": [
+    "οἰκονομία"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "La administración conveniente de los materiales y del terreno, con equilibrio económico. Incluye la adaptación del diseño al estatus y uso del propietario. Cf. De architectura 1.2.8–9.",
+     "pagina": 992,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=992"
+    },
+    "fr": {
+     "texto": "La gestion appropriée des matériaux et du terrain, dans un équilibre économique. Elle comprend l’adaptation de la conception au statut et à l’usage du propriétaire. Cf. De architectura 1.2.8–9.",
+     "pagina": 1000,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1000"
+    },
+    "en": {
+     "texto": "The administration Suitable materials and terrain, with economic balance. Includes adapting the design to the owner's status and use. Cf. De architectura 1.2.8 – 9. 911",
+     "pagina": 923,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=923"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.2.9",
+     "n": 2
+    },
+    {
+     "locus": "4.3.1",
+     "n": 2
+    },
+    {
+     "locus": "1.2.1",
+     "n": 1
+    },
+    {
+     "locus": "1.2.8",
+     "n": 1
+    },
+    {
+     "locus": "1.3.1",
+     "n": 1
+    },
+    {
+     "locus": "1.3.2",
+     "n": 1
+    },
+    {
+     "locus": "3.praef.4",
+     "n": 1
+    },
+    {
+     "locus": "3.1.9",
+     "n": 1
+    },
+    {
+     "locus": "3.3.1",
+     "n": 1
+    },
+    {
+     "locus": "3.3.8",
+     "n": 1
+    },
+    {
+     "locus": "4.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "4.3.3",
+     "n": 1
+    },
+    {
+     "locus": "4.3.6",
+     "n": 1
+    },
+    {
+     "locus": "4.3.10",
+     "n": 1
+    },
+    {
+     "locus": "4.6.5",
+     "n": 1
+    },
+    {
+     "locus": "4.9.1",
+     "n": 1
+    },
+    {
+     "locus": "5.1.10",
+     "n": 1
+    },
+    {
+     "locus": "6.6.7",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.15",
+     "n": 1
+    },
+    {
+     "locus": "7.3.1",
+     "n": 1
+    },
+    {
+     "locus": "7.5.1",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": true
+  },
+  {
+   "lemma": "DECOR",
+   "clave": "decor",
+   "raiz": "decor",
+   "formas": 17,
+   "libros": [
+    1,
+    4,
+    6,
+    7
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La conveniencia o corrección del aspecto de una obra, obtenida mediante la aplicación adecuada de los principios de uso, costumbre y naturaleza. «Decor autem est emendatus operis aspectus probatis rebus conpositi cum auctoritate» (De architectura 1.2.5). No debe confundirse con «decoración» en el sentido ornamental moderno.",
+     "pagina": 992,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=992"
+    },
+    "fr": {
+     "texto": "L’harmonie ou la justesse de l’apparence d’une œuvre, obtenue par l’application appropriée des principes d’usage, de coutume et de nature. « Decor autem est emendatus operis aspectus probatis rebus compositi cum auctoritate » (De architectura 1.2.5). À ne pas confondre avec la « décoration » au sens ornemental moderne.",
+     "pagina": 1000,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1000"
+    },
+    "en": {
+     "texto": "The suitability or correctness of the appearance of a work, obtained through the appropriate application of the principles of use, custom, and nature. “Decor autem est emendatus operis aspectus probatis rebus compositi cum auctoritate” (De architectura 1.2.5). It should not be confused with “decoration” in the modern ornamental sense.",
+     "pagina": 923,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=923"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.2.5",
+     "n": 2
+    },
+    {
+     "locus": "1.2.6",
+     "n": 2
+    },
+    {
+     "locus": "1.2.7",
+     "n": 2
+    },
+    {
+     "locus": "6.5.2",
+     "n": 2
+    },
+    {
+     "locus": "1.2.1",
+     "n": 1
+    },
+    {
+     "locus": "4.9.1",
+     "n": 1
+    },
+    {
+     "locus": "6.2.5",
+     "n": 1
+    },
+    {
+     "locus": "6.5.3",
+     "n": 1
+    },
+    {
+     "locus": "6.7.7",
+     "n": 1
+    },
+    {
+     "locus": "6.8.10",
+     "n": 1
+    },
+    {
+     "locus": "7.4.4",
+     "n": 1
+    },
+    {
+     "locus": "7.5.4",
+     "n": 1
+    },
+    {
+     "locus": "7.14.3",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": true
+  },
+  {
+   "lemma": "ORDINATIO",
+   "clave": "ordinatio",
+   "raiz": "ordinati",
+   "formas": 5,
+   "libros": [
+    1,
+    4,
+    5
+   ],
+   "graecum": [
+    "τάξις"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "La ordenación o disposición modular de los miembros de una obra, tomando como referencia una unidad de medida (módulo).«Ordinatio est modica membrorum operis commoditas»(De architectura 1.2.2).",
+     "pagina": 993,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=993"
+    },
+    "fr": {
+     "texto": "L’ordonnancement ou la disposition modulaire des membres d’une œuvre, en prenant comme référence une unité de mesure (module). « Ordinatio est modica membrorum operis commoditas » (De architectura 1.2.2).",
+     "pagina": 1001,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1001"
+    },
+    "en": {
+     "texto": "The ordering or modular arrangement of the members of a work, taking as a reference a unit of measurement (m o dule). “Ordinatio is t he balanced adjustment of the members of a work taken separately, and of the whole with regard to proportion” (De architectura 1.2.2).",
+     "pagina": 924,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=924"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.2.1",
+     "n": 1
+    },
+    {
+     "locus": "1.2.2",
+     "n": 1
+    },
+    {
+     "locus": "4.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "4.8.5",
+     "n": 1
+    },
+    {
+     "locus": "5.praef.5",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": true
+  },
+  {
+   "lemma": "EURYTHMIA",
+   "clave": "eurythmia",
+   "raiz": "eurythmi",
+   "formas": 4,
+   "libros": [
+    1,
+    6
+   ],
+   "graecum": [
+    "εὐρυθμία"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "La apariencia graciosa y el aspecto proporcionado en la composición de los miembros de una obra. Resulta de la correcta aplicación de la symmetria.«Eurythmia est venusta species commodusque in compositionibus membrorum aspectus»(De architectura 1.2.3).",
+     "pagina": 993,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=993"
+    },
+    "fr": {
+     "texto": "L’apparence gracieuse et proportionnée dans la composition des éléments d’une œuvre. Elle résulte de l’application correcte de la commensurabilité. « Eurythmia est venusta species commodusque in compositionibus membrorum aspectus » (De architectura 1.2.3).",
+     "pagina": 1001,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1001"
+    },
+    "en": {
+     "texto": "The graceful and proportionate appearance in the composition of the members of a work. It results from the correct application of symmetry. « Eurythmia est venusta species commodusque in compositionibus membrorum aspectus » (De architectura 1.2.3).",
+     "pagina": 924,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=924"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.2.1",
+     "n": 1
+    },
+    {
+     "locus": "1.2.3",
+     "n": 1
+    },
+    {
+     "locus": "1.2.4",
+     "n": 1
+    },
+    {
+     "locus": "6.2.5",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": true
+  },
+  {
+   "lemma": "RATIONIBUS",
+   "clave": "rationibus",
+   "raiz": "ration",
+   "formas": 277,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "«Según razones cúbicas». Expresión del prefacio del Libro V aplicada a la organización de escritos atribuida a Pitágoras y a sus seguidores; cf. De architectura 5, praef. 3–4. No se emplea aquí como categoría general de la teoría arquitectónica vitruviana.",
+     "pagina": 992,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=992"
+    },
+    "fr": {
+     "texto": "« Selon des rapports cubiques ». Expression de la préface dulivreVappliquéeàl’organisationd’écritsattribuéeàPythagoreetàsesdisciples ; cf. De architectura 5, praef. 3–4. Elle n’est pas employée ici comme catégorie générale de la théorie architecturale vitruvienne.",
+     "pagina": 1000,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1000"
+    },
+    "en": {
+     "texto": "« Cubic ratios ». Pythagorean expression that designates the organization of knowledge in volumes of 216 verses (= 6 ³). Cf. De architectura 5.praef.3; Krohn (1912), 100.",
+     "pagina": 923,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=923"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "10.11.1",
+     "n": 5
+    },
+    {
+     "locus": "6.5.3",
+     "n": 4
+    },
+    {
+     "locus": "3.1.1",
+     "n": 3
+    },
+    {
+     "locus": "4.2.5",
+     "n": 3
+    },
+    {
+     "locus": "4.4.2",
+     "n": 3
+    },
+    {
+     "locus": "5.5.1",
+     "n": 3
+    },
+    {
+     "locus": "10.16.1",
+     "n": 3
+    },
+    {
+     "locus": "1.1.3",
+     "n": 2
+    },
+    {
+     "locus": "1.1.4",
+     "n": 2
+    },
+    {
+     "locus": "1.1.5",
+     "n": 2
+    },
+    {
+     "locus": "1.1.9",
+     "n": 2
+    },
+    {
+     "locus": "1.1.10",
+     "n": 2
+    },
+    {
+     "locus": "1.4.11",
+     "n": 2
+    },
+    {
+     "locus": "1.5.1",
+     "n": 2
+    },
+    {
+     "locus": "1.6.2",
+     "n": 2
+    },
+    {
+     "locus": "1.7.2",
+     "n": 2
+    },
+    {
+     "locus": "2.praef.3",
+     "n": 2
+    },
+    {
+     "locus": "2.praef.5",
+     "n": 2
+    },
+    {
+     "locus": "2.1.5",
+     "n": 2
+    },
+    {
+     "locus": "2.1.8",
+     "n": 2
+    },
+    {
+     "locus": "2.6.1",
+     "n": 2
+    },
+    {
+     "locus": "2.9.2",
+     "n": 2
+    },
+    {
+     "locus": "3.3.8",
+     "n": 2
+    },
+    {
+     "locus": "3.3.12",
+     "n": 2
+    },
+    {
+     "locus": "3.5.9",
+     "n": 2
+    },
+    {
+     "locus": "4.2.6",
+     "n": 2
+    },
+    {
+     "locus": "4.6.1",
+     "n": 2
+    },
+    {
+     "locus": "4.6.6",
+     "n": 2
+    },
+    {
+     "locus": "5.praef.5",
+     "n": 2
+    },
+    {
+     "locus": "5.5.7",
+     "n": 2
+    },
+    {
+     "locus": "5.6.9",
+     "n": 2
+    },
+    {
+     "locus": "5.9.3",
+     "n": 2
+    },
+    {
+     "locus": "5.9.4",
+     "n": 2
+    },
+    {
+     "locus": "6.1.12",
+     "n": 2
+    },
+    {
+     "locus": "6.3.5",
+     "n": 2
+    },
+    {
+     "locus": "6.3.8",
+     "n": 2
+    },
+    {
+     "locus": "6.5.1",
+     "n": 2
+    },
+    {
+     "locus": "6.7.6",
+     "n": 2
+    },
+    {
+     "locus": "7.praef.11",
+     "n": 2
+    },
+    {
+     "locus": "7.praef.18",
+     "n": 2
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "LIBRI",
+   "clave": "libri",
+   "raiz": "libr",
+   "formas": 87,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "E — Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat.; siglo X. Compilación que encabeza Faventino y en la que se insertan extractos de Vitruvio (II praef.; III praef.–III.1; VI praef.–VI.1; VII.9–14; VIII; IX; X praef., X.1.1, X.9 y X.16), según se ha comprobado sobre la reproducción completa de la Herzog August Bibliothek; emparentado con G. Sus lecturas en los loci decisivos proceden de inspección directa [Evid] (T.13cc); fuera de ellos se citan, cuando se citan, según Rose, Krohn o Budé [Rep]. S — Sélestat, Bibliothèque Humaniste, ms. 1153bis; fines del siglo X. Texto del t",
+     "pagina": 1092,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=1092"
+    },
+    "fr": {
+     "texto": "E — Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat. ; Xe siècle.Compilation ouverteparFaventinus,dans laquelle s’insèrentdesextraits de Vitruve (II praef. ; III praef.–III.1 ; VI praef.–VI.1 ; VII.9–14 ; VIII ; IX ;Xpraef.,X.1.1,X.9etX.16),commel’amontrélareproductioncomplète de la Herzog August Bibliothek ; apparenté à G. Ses leçons aux loci décisifs proviennent d’une inspection directe [Evid] (T.13cc) ; hors de ces loci, elles sont citées, le cas échéant, d’après Rose, Krohn ou Budé [Rep]. S — Sélestat, Bibliothèque humaniste, ms. 1153bis ; fin du Xe siècle. Texte de type H",
+     "pagina": 1101,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1101"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "8.5.3",
+     "n": 5
+    },
+    {
+     "locus": "8.5.1",
+     "n": 4
+    },
+    {
+     "locus": "5.9.4",
+     "n": 3
+    },
+    {
+     "locus": "8.6.5",
+     "n": 3
+    },
+    {
+     "locus": "8.6.8",
+     "n": 3
+    },
+    {
+     "locus": "9.praef.8",
+     "n": 3
+    },
+    {
+     "locus": "6.1.5",
+     "n": 2
+    },
+    {
+     "locus": "6.4.1",
+     "n": 2
+    },
+    {
+     "locus": "7.4.5",
+     "n": 2
+    },
+    {
+     "locus": "8.3.27",
+     "n": 2
+    },
+    {
+     "locus": "8.6.6",
+     "n": 2
+    },
+    {
+     "locus": "8.6.14",
+     "n": 2
+    },
+    {
+     "locus": "9.3.2",
+     "n": 2
+    },
+    {
+     "locus": "9.8.14",
+     "n": 2
+    },
+    {
+     "locus": "1.1.4",
+     "n": 1
+    },
+    {
+     "locus": "1.1.7",
+     "n": 1
+    },
+    {
+     "locus": "2.1.8",
+     "n": 1
+    },
+    {
+     "locus": "2.8.6",
+     "n": 1
+    },
+    {
+     "locus": "2.9.13",
+     "n": 1
+    },
+    {
+     "locus": "3.2.2",
+     "n": 1
+    },
+    {
+     "locus": "3.3.13",
+     "n": 1
+    },
+    {
+     "locus": "3.4.2",
+     "n": 1
+    },
+    {
+     "locus": "3.4.5",
+     "n": 1
+    },
+    {
+     "locus": "3.5.8",
+     "n": 1
+    },
+    {
+     "locus": "3.5.15",
+     "n": 1
+    },
+    {
+     "locus": "4.3.4",
+     "n": 1
+    },
+    {
+     "locus": "4.6.1",
+     "n": 1
+    },
+    {
+     "locus": "4.6.4",
+     "n": 1
+    },
+    {
+     "locus": "4.9.1",
+     "n": 1
+    },
+    {
+     "locus": "5.praef.5",
+     "n": 1
+    },
+    {
+     "locus": "5.1.5",
+     "n": 1
+    },
+    {
+     "locus": "5.3.1",
+     "n": 1
+    },
+    {
+     "locus": "5.3.3",
+     "n": 1
+    },
+    {
+     "locus": "5.5.6",
+     "n": 1
+    },
+    {
+     "locus": "5.6.4",
+     "n": 1
+    },
+    {
+     "locus": "5.6.6",
+     "n": 1
+    },
+    {
+     "locus": "5.9.3",
+     "n": 1
+    },
+    {
+     "locus": "6.3.6",
+     "n": 1
+    },
+    {
+     "locus": "6.3.7",
+     "n": 1
+    },
+    {
+     "locus": "6.5.3",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "PARS",
+   "clave": "pars",
+   "raiz": "pars",
+   "formas": 68,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La «parte determinada» o módulo de referencia a partir del cual se establecen las proporciones de una obra (1.2.2; 1.2.4). En los templos jónicos y corintios, el módulo es el diámetro inferior de la columna; en el dórico, Vitruvio define un modulus (ἐμβάτης) que equivale a la mitad de ese diámetro (4.3.3–4).",
+     "pagina": 993,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=993"
+    },
+    "fr": {
+     "texto": "La « partie déterminée » ou module de référence à partir duquel sont établies les proportions d’un ouvrage (1.2.2 ; 1.2.4). Dans les temples ioniques et corinthiens, le module est le diamètre inférieur de la colonne ; dans le dorique, Vitruve définit un modulus (ἐμβάτης) qui équivaut à la moitié de ce diamètre (4.3.3–4).",
+     "pagina": 1001,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1001"
+    },
+    "en": {
+     "texto": "The \" determined part \" or reference module from which the proportions of a work are established. In temples, the module is the semi - diameter of the column. Cf. De architectura 1.2.4.",
+     "pagina": 925,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=925"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "3.5.3",
+     "n": 5
+    },
+    {
+     "locus": "6.3.4",
+     "n": 3
+    },
+    {
+     "locus": "8.3.9",
+     "n": 3
+    },
+    {
+     "locus": "3.3.10",
+     "n": 2
+    },
+    {
+     "locus": "3.3.11",
+     "n": 2
+    },
+    {
+     "locus": "3.5.2",
+     "n": 2
+    },
+    {
+     "locus": "3.5.8",
+     "n": 2
+    },
+    {
+     "locus": "4.6.1",
+     "n": 2
+    },
+    {
+     "locus": "10.3.8",
+     "n": 2
+    },
+    {
+     "locus": "10.11.7",
+     "n": 2
+    },
+    {
+     "locus": "1.6.7",
+     "n": 1
+    },
+    {
+     "locus": "1.6.9",
+     "n": 1
+    },
+    {
+     "locus": "1.6.13",
+     "n": 1
+    },
+    {
+     "locus": "1.7.1",
+     "n": 1
+    },
+    {
+     "locus": "2.6.5",
+     "n": 1
+    },
+    {
+     "locus": "2.9.7",
+     "n": 1
+    },
+    {
+     "locus": "3.1.2",
+     "n": 1
+    },
+    {
+     "locus": "3.1.8",
+     "n": 1
+    },
+    {
+     "locus": "3.3.7",
+     "n": 1
+    },
+    {
+     "locus": "3.5.5",
+     "n": 1
+    },
+    {
+     "locus": "3.5.6",
+     "n": 1
+    },
+    {
+     "locus": "3.5.7",
+     "n": 1
+    },
+    {
+     "locus": "3.5.10",
+     "n": 1
+    },
+    {
+     "locus": "3.5.12",
+     "n": 1
+    },
+    {
+     "locus": "4.1.1",
+     "n": 1
+    },
+    {
+     "locus": "4.1.12",
+     "n": 1
+    },
+    {
+     "locus": "4.3.3",
+     "n": 1
+    },
+    {
+     "locus": "4.3.7",
+     "n": 1
+    },
+    {
+     "locus": "4.5.2",
+     "n": 1
+    },
+    {
+     "locus": "4.6.3",
+     "n": 1
+    },
+    {
+     "locus": "4.7.1",
+     "n": 1
+    },
+    {
+     "locus": "5.2.1",
+     "n": 1
+    },
+    {
+     "locus": "5.4.3",
+     "n": 1
+    },
+    {
+     "locus": "5.6.5",
+     "n": 1
+    },
+    {
+     "locus": "5.10.3",
+     "n": 1
+    },
+    {
+     "locus": "5.12.3",
+     "n": 1
+    },
+    {
+     "locus": "6.1.5",
+     "n": 1
+    },
+    {
+     "locus": "6.7.2",
+     "n": 1
+    },
+    {
+     "locus": "7.1.5",
+     "n": 1
+    },
+    {
+     "locus": "8.3.7",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "COLUMNA",
+   "clave": "columna",
+   "raiz": "column",
+   "formas": 197,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "El soporte vertical compuesto de basa (salvo en el dórico vitruviano), fuste (scapus) y capitel (capitulum). Su proporción altura/diámetro define el orden.",
+     "pagina": 994,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=994"
+    },
+    "fr": {
+     "texto": "Le support vertical composé d’une base (sauf dans le dorique vitruvien), d’un fût (scapus) et d’un chapiteau (capitulum). Son rapport hauteur/diamètre définit l’ordre.",
+     "pagina": 1002,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1002"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "3.3.10",
+     "n": 6
+    },
+    {
+     "locus": "5.6.6",
+     "n": 6
+    },
+    {
+     "locus": "3.5.8",
+     "n": 5
+    },
+    {
+     "locus": "5.1.5",
+     "n": 5
+    },
+    {
+     "locus": "6.3.9",
+     "n": 5
+    },
+    {
+     "locus": "3.2.6",
+     "n": 4
+    },
+    {
+     "locus": "3.3.7",
+     "n": 4
+    },
+    {
+     "locus": "4.3.4",
+     "n": 4
+    },
+    {
+     "locus": "5.9.2",
+     "n": 4
+    },
+    {
+     "locus": "5.9.3",
+     "n": 4
+    },
+    {
+     "locus": "3.2.5",
+     "n": 3
+    },
+    {
+     "locus": "3.3.6",
+     "n": 3
+    },
+    {
+     "locus": "3.3.12",
+     "n": 3
+    },
+    {
+     "locus": "3.4.3",
+     "n": 3
+    },
+    {
+     "locus": "3.5.3",
+     "n": 3
+    },
+    {
+     "locus": "3.5.7",
+     "n": 3
+    },
+    {
+     "locus": "3.5.15",
+     "n": 3
+    },
+    {
+     "locus": "4.1.6",
+     "n": 3
+    },
+    {
+     "locus": "4.4.1",
+     "n": 3
+    },
+    {
+     "locus": "4.4.2",
+     "n": 3
+    },
+    {
+     "locus": "4.4.3",
+     "n": 3
+    },
+    {
+     "locus": "4.7.2",
+     "n": 3
+    },
+    {
+     "locus": "4.8.1",
+     "n": 3
+    },
+    {
+     "locus": "5.1.6",
+     "n": 3
+    },
+    {
+     "locus": "5.9.4",
+     "n": 3
+    },
+    {
+     "locus": "6.3.7",
+     "n": 3
+    },
+    {
+     "locus": "10.10.5",
+     "n": 3
+    },
+    {
+     "locus": "3.3.2",
+     "n": 2
+    },
+    {
+     "locus": "3.3.11",
+     "n": 2
+    },
+    {
+     "locus": "3.4.1",
+     "n": 2
+    },
+    {
+     "locus": "3.5.1",
+     "n": 2
+    },
+    {
+     "locus": "3.5.14",
+     "n": 2
+    },
+    {
+     "locus": "4.1.1",
+     "n": 2
+    },
+    {
+     "locus": "4.1.2",
+     "n": 2
+    },
+    {
+     "locus": "4.1.7",
+     "n": 2
+    },
+    {
+     "locus": "4.1.11",
+     "n": 2
+    },
+    {
+     "locus": "4.1.12",
+     "n": 2
+    },
+    {
+     "locus": "4.2.1",
+     "n": 2
+    },
+    {
+     "locus": "4.3.2",
+     "n": 2
+    },
+    {
+     "locus": "4.3.9",
+     "n": 2
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "CAELUM",
+   "clave": "caelum",
+   "raiz": "cael",
+   "formas": 82,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Las relaciones que Vitruvio establece entre clima, voz, complexión y carácter de los pueblos pertenecen a la geografía médica y física antigua. Se explican como marco intelectual histórico, no como inferencias biológicas válidas sobre poblaciones modernas. Comentario VI.1.12 SÍNTESIS PARA ARQUITECTOS [T] — VI.1. El núcleo operativo sigue siendo pertinente como principio histórico de proyecto: orientación, radiación, exposición y condiciones regionales modifican la disposición del edificio. La edición separa ese principio de las generalizaciones etnográficas que lo acompañan. Nota comparativa [",
+     "pagina": 600,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=600"
+    },
+    "fr": {
+     "texto": "Les rapports que Vitruve établit entre climat, voix, complexion et caractère des peuples relèvent de la géographie médicale et de la physique antiques. Ils sont expliqués comme cadre intellectuel historique, non comme inférences biologiques valides sur les populations modernes. Commentaire VI.1.12 SYNTHÈSE POUR LES ARCHITECTES [T] — VI.1. Le noyau opératoire reste pertinentcommeprincipehistoriquedeprojet :orientation,rayonnement,expositionetconditions régionales modifient la disposition de l’édifice. L’édition sépare ce principe des généralisations ethnographiques qui l’accompagnent. Note expl",
+     "pagina": 604,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=604"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "4.5.1",
+     "n": 3
+    },
+    {
+     "locus": "6.1.9",
+     "n": 3
+    },
+    {
+     "locus": "9.2.2",
+     "n": 3
+    },
+    {
+     "locus": "1.1.10",
+     "n": 2
+    },
+    {
+     "locus": "1.4.1",
+     "n": 2
+    },
+    {
+     "locus": "1.4.6",
+     "n": 2
+    },
+    {
+     "locus": "1.6.2",
+     "n": 2
+    },
+    {
+     "locus": "6.1.3",
+     "n": 2
+    },
+    {
+     "locus": "6.1.12",
+     "n": 2
+    },
+    {
+     "locus": "6.6.1",
+     "n": 2
+    },
+    {
+     "locus": "7.3.4",
+     "n": 2
+    },
+    {
+     "locus": "8.praef.1",
+     "n": 2
+    },
+    {
+     "locus": "8.2.4",
+     "n": 2
+    },
+    {
+     "locus": "9.1.2",
+     "n": 2
+    },
+    {
+     "locus": "9.8.3",
+     "n": 2
+    },
+    {
+     "locus": "9.8.12",
+     "n": 2
+    },
+    {
+     "locus": "1.praef.2",
+     "n": 1
+    },
+    {
+     "locus": "1.1.3",
+     "n": 1
+    },
+    {
+     "locus": "1.1.4",
+     "n": 1
+    },
+    {
+     "locus": "1.2.5",
+     "n": 1
+    },
+    {
+     "locus": "1.2.7",
+     "n": 1
+    },
+    {
+     "locus": "1.4.2",
+     "n": 1
+    },
+    {
+     "locus": "1.4.8",
+     "n": 1
+    },
+    {
+     "locus": "1.6.1",
+     "n": 1
+    },
+    {
+     "locus": "1.6.8",
+     "n": 1
+    },
+    {
+     "locus": "1.6.9",
+     "n": 1
+    },
+    {
+     "locus": "2.9.16",
+     "n": 1
+    },
+    {
+     "locus": "3.5.15",
+     "n": 1
+    },
+    {
+     "locus": "4.9.1",
+     "n": 1
+    },
+    {
+     "locus": "5.6.1",
+     "n": 1
+    },
+    {
+     "locus": "5.9.8",
+     "n": 1
+    },
+    {
+     "locus": "5.11.4",
+     "n": 1
+    },
+    {
+     "locus": "6.1.1",
+     "n": 1
+    },
+    {
+     "locus": "6.1.2",
+     "n": 1
+    },
+    {
+     "locus": "6.1.6",
+     "n": 1
+    },
+    {
+     "locus": "6.4.1",
+     "n": 1
+    },
+    {
+     "locus": "6.5.1",
+     "n": 1
+    },
+    {
+     "locus": "6.6.5",
+     "n": 1
+    },
+    {
+     "locus": "6.6.6",
+     "n": 1
+    },
+    {
+     "locus": "6.6.7",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "MATERIES",
+   "clave": "materies",
+   "raiz": "materi",
+   "formas": 78,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Materies puede significar aquí madera de construcción, no «materia» en sentido abstracto. La secuencia de especies relaciona estructura interna imaginada, comportamiento frente a carga o humedad y usos arquitectónicos concretos. Estos árboles tienen hojas semejantes a las del pino; su madera es larga y se labra con tanta facilidad para las obras de carpintería interior como la del abeto (sapinea); contiene un humor líquido, color de miel ática, que sana también a los tísicos. He expuesto cada clase, las propiedades con que parecen estar dotadas por la naturaleza y el modo en que nacen.",
+     "pagina": 379,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=379"
+    },
+    "fr": {
+     "texto": "Materies signifie ici notamment « bois de construction », et non « matière » au sens abstrait. La série des essences relie structure interne imaginée, comportement à la charge ou à l’humidité et usages architecturaux.",
+     "pagina": 382,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=382"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "2.6.6",
+     "n": 3
+    },
+    {
+     "locus": "2.8.2",
+     "n": 3
+    },
+    {
+     "locus": "2.9.16",
+     "n": 3
+    },
+    {
+     "locus": "2.praef.5",
+     "n": 2
+    },
+    {
+     "locus": "2.1.7",
+     "n": 2
+    },
+    {
+     "locus": "2.5.1",
+     "n": 2
+    },
+    {
+     "locus": "2.8.6",
+     "n": 2
+    },
+    {
+     "locus": "2.8.7",
+     "n": 2
+    },
+    {
+     "locus": "2.9.15",
+     "n": 2
+    },
+    {
+     "locus": "10.2.11",
+     "n": 2
+    },
+    {
+     "locus": "10.15.4",
+     "n": 2
+    },
+    {
+     "locus": "1.1.1",
+     "n": 1
+    },
+    {
+     "locus": "1.3.2",
+     "n": 1
+    },
+    {
+     "locus": "1.5.3",
+     "n": 1
+    },
+    {
+     "locus": "1.5.8",
+     "n": 1
+    },
+    {
+     "locus": "1.7.2",
+     "n": 1
+    },
+    {
+     "locus": "2.1.3",
+     "n": 1
+    },
+    {
+     "locus": "2.1.4",
+     "n": 1
+    },
+    {
+     "locus": "2.1.5",
+     "n": 1
+    },
+    {
+     "locus": "2.1.8",
+     "n": 1
+    },
+    {
+     "locus": "2.1.9",
+     "n": 1
+    },
+    {
+     "locus": "2.4.1",
+     "n": 1
+    },
+    {
+     "locus": "2.6.5",
+     "n": 1
+    },
+    {
+     "locus": "2.8.3",
+     "n": 1
+    },
+    {
+     "locus": "2.8.20",
+     "n": 1
+    },
+    {
+     "locus": "2.9.1",
+     "n": 1
+    },
+    {
+     "locus": "2.9.2",
+     "n": 1
+    },
+    {
+     "locus": "2.9.3",
+     "n": 1
+    },
+    {
+     "locus": "2.9.4",
+     "n": 1
+    },
+    {
+     "locus": "2.9.10",
+     "n": 1
+    },
+    {
+     "locus": "2.9.12",
+     "n": 1
+    },
+    {
+     "locus": "2.9.13",
+     "n": 1
+    },
+    {
+     "locus": "2.9.14",
+     "n": 1
+    },
+    {
+     "locus": "2.9.17",
+     "n": 1
+    },
+    {
+     "locus": "2.10.2",
+     "n": 1
+    },
+    {
+     "locus": "3.praef.4",
+     "n": 1
+    },
+    {
+     "locus": "3.3.5",
+     "n": 1
+    },
+    {
+     "locus": "4.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "4.2.1",
+     "n": 1
+    },
+    {
+     "locus": "4.2.2",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "SPECIES",
+   "clave": "species",
+   "raiz": "speci",
+   "formas": 50,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La exactitud modular no es para Vitruvio un automatismo. Una vez fijada la ratio symmetriarum, el architectus debe ejercer acumen para que modificaciones justificadas produzcan una apariencia correcta. «Species» se traduce aquí atendiendo a percepción/apariencia, no simplemente como «especie».",
+     "pagina": 606,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=606"
+    },
+    "fr": {
+     "texto": "L’exactitude modulaire n’est pas chez Vitruve un automatisme. Une fois la ratio symmetriarum fixée, l’architectus doit exercer son acumen afin que des modifications justifiées produisent une apparence correcte. « Species » est rendu ici selon la perception/l’apparence, non comme simple « espèce ».",
+     "pagina": 610,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=610"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "4.1.7",
+     "n": 3
+    },
+    {
+     "locus": "4.2.2",
+     "n": 2
+    },
+    {
+     "locus": "5.6.8",
+     "n": 2
+    },
+    {
+     "locus": "5.6.9",
+     "n": 2
+    },
+    {
+     "locus": "5.9.5",
+     "n": 2
+    },
+    {
+     "locus": "1.1.4",
+     "n": 1
+    },
+    {
+     "locus": "1.2.2",
+     "n": 1
+    },
+    {
+     "locus": "1.2.3",
+     "n": 1
+    },
+    {
+     "locus": "1.2.4",
+     "n": 1
+    },
+    {
+     "locus": "1.2.5",
+     "n": 1
+    },
+    {
+     "locus": "1.3.2",
+     "n": 1
+    },
+    {
+     "locus": "2.1.8",
+     "n": 1
+    },
+    {
+     "locus": "2.3.4",
+     "n": 1
+    },
+    {
+     "locus": "2.8.1",
+     "n": 1
+    },
+    {
+     "locus": "2.8.20",
+     "n": 1
+    },
+    {
+     "locus": "3.1.4",
+     "n": 1
+    },
+    {
+     "locus": "3.1.9",
+     "n": 1
+    },
+    {
+     "locus": "3.3.1",
+     "n": 1
+    },
+    {
+     "locus": "3.3.5",
+     "n": 1
+    },
+    {
+     "locus": "3.3.6",
+     "n": 1
+    },
+    {
+     "locus": "3.3.11",
+     "n": 1
+    },
+    {
+     "locus": "3.3.13",
+     "n": 1
+    },
+    {
+     "locus": "3.5.9",
+     "n": 1
+    },
+    {
+     "locus": "3.5.11",
+     "n": 1
+    },
+    {
+     "locus": "3.5.13",
+     "n": 1
+    },
+    {
+     "locus": "4.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "4.1.1",
+     "n": 1
+    },
+    {
+     "locus": "4.2.6",
+     "n": 1
+    },
+    {
+     "locus": "4.3.1",
+     "n": 1
+    },
+    {
+     "locus": "4.3.10",
+     "n": 1
+    },
+    {
+     "locus": "5.1.10",
+     "n": 1
+    },
+    {
+     "locus": "6.2.1",
+     "n": 1
+    },
+    {
+     "locus": "6.2.2",
+     "n": 1
+    },
+    {
+     "locus": "6.5.2",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.11",
+     "n": 1
+    },
+    {
+     "locus": "7.3.5",
+     "n": 1
+    },
+    {
+     "locus": "7.4.5",
+     "n": 1
+    },
+    {
+     "locus": "7.5.7",
+     "n": 1
+    },
+    {
+     "locus": "8.3.6",
+     "n": 1
+    },
+    {
+     "locus": "8.4.2",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "ARCHITECTURA",
+   "clave": "architectura",
+   "raiz": "architectur",
+   "formas": 21,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La disciplina que surge de la unión entre fabrica (práctica constructiva) y ratiocinatio (razonamiento teórico). Vitruvio la define en De architectura 1.1.1: «Architecti est scientia pluribus disciplinis et variis eruditionibus ornata». Su equivalente griego implícito es ἀρχιτεκτονική (architektonikḗ).",
+     "pagina": 992,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=992"
+    },
+    "fr": {
+     "texto": "La discipline qui naît de l’union de la fabrica (pratique constructive) et de la ratiocinatio (raisonnement théorique). Vitruve la définit en De architectura 1.1.1 : « Architecti est scientia pluribus disciplinis et variis eruditionibus ornata ». Son équivalent grec implicite est ἀρχιτεκτονική (architektonikḗ).",
+     "pagina": 1000,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1000"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "2.1.8",
+     "n": 2
+    },
+    {
+     "locus": "6.praef.7",
+     "n": 2
+    },
+    {
+     "locus": "1.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "1.1.3",
+     "n": 1
+    },
+    {
+     "locus": "1.1.4",
+     "n": 1
+    },
+    {
+     "locus": "1.1.11",
+     "n": 1
+    },
+    {
+     "locus": "1.1.16",
+     "n": 1
+    },
+    {
+     "locus": "1.2.1",
+     "n": 1
+    },
+    {
+     "locus": "1.3.1",
+     "n": 1
+    },
+    {
+     "locus": "2.praef.5",
+     "n": 1
+    },
+    {
+     "locus": "3.praef.4",
+     "n": 1
+    },
+    {
+     "locus": "4.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "5.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "5.praef.2",
+     "n": 1
+    },
+    {
+     "locus": "6.praef.6",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.14",
+     "n": 1
+    },
+    {
+     "locus": "9.8.15",
+     "n": 1
+    },
+    {
+     "locus": "10.praef.2",
+     "n": 1
+    },
+    {
+     "locus": "10.16.12",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "PRINCIPIA",
+   "clave": "principia",
+   "raiz": "principi",
+   "formas": 35,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Vitruvio emplea física antigua para justificar que las propiedades observables de los materiales dependen de su constitución. La edición separa esa explicación histórica de la ciencia moderna de materiales. 20 Referencias: Krohn, F., ed. Vitruvii De architectura libri decem. Leipzig: Teubner, 1912. Rose, V., ed. Vitruvii De architectura libri decem. Leipzig: Teubner, 1899.",
+     "pagina": 320,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=320"
+    },
+    "fr": {
+     "texto": "Vitruve emploie la physique antique pour justifier que les propriétés observables des matériaux dépendent de leur constitution. L’édition sépare cette explication historique de la science moderne des matériaux. 19 Références : Krohn, F., éd. Vitruvii De architectura libri decem. Leipzig : Teubner, 1912. Rose, V., éd. Vitruvii De architectura libri decem. Leipzig : Teubner, 1899.",
+     "pagina": 324,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=324"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.4.7",
+     "n": 4
+    },
+    {
+     "locus": "1.4.6",
+     "n": 3
+    },
+    {
+     "locus": "2.1.9",
+     "n": 2
+    },
+    {
+     "locus": "8.praef.1",
+     "n": 2
+    },
+    {
+     "locus": "1.1.7",
+     "n": 1
+    },
+    {
+     "locus": "1.4.1",
+     "n": 1
+    },
+    {
+     "locus": "1.4.5",
+     "n": 1
+    },
+    {
+     "locus": "1.4.8",
+     "n": 1
+    },
+    {
+     "locus": "2.praef.5",
+     "n": 1
+    },
+    {
+     "locus": "2.2.1",
+     "n": 1
+    },
+    {
+     "locus": "2.5.2",
+     "n": 1
+    },
+    {
+     "locus": "2.8.15",
+     "n": 1
+    },
+    {
+     "locus": "2.9.5",
+     "n": 1
+    },
+    {
+     "locus": "2.9.8",
+     "n": 1
+    },
+    {
+     "locus": "2.9.9",
+     "n": 1
+    },
+    {
+     "locus": "2.9.14",
+     "n": 1
+    },
+    {
+     "locus": "2.10.3",
+     "n": 1
+    },
+    {
+     "locus": "3.2.1",
+     "n": 1
+    },
+    {
+     "locus": "4.2.1",
+     "n": 1
+    },
+    {
+     "locus": "7.1.1",
+     "n": 1
+    },
+    {
+     "locus": "7.3.7",
+     "n": 1
+    },
+    {
+     "locus": "8.praef.2",
+     "n": 1
+    },
+    {
+     "locus": "8.praef.3",
+     "n": 1
+    },
+    {
+     "locus": "8.6.12",
+     "n": 1
+    },
+    {
+     "locus": "9.8.4",
+     "n": 1
+    },
+    {
+     "locus": "9.8.15",
+     "n": 1
+    },
+    {
+     "locus": "10.praef.4",
+     "n": 1
+    },
+    {
+     "locus": "10.3.1",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "RATIOCINATIO",
+   "clave": "ratiocinatio",
+   "raiz": "ratiocinati",
+   "formas": 24,
+   "libros": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La oposición no enfrenta «manualidad» e «intelecto» como compartimentos estancos. Vitruvio presenta dos dimensiones inseparables del oficio: experiencia ejecutiva y capacidad de justificar racionalmente lo construido. El término scientia debe entenderse aquí como saber disciplinar del architectus, no como «ciencia» en el sentido institucional moderno. 6 ut manibus essent exercitati] Se refiere a la formación puramente práctica y manual. pro laboribus auctoritatem] Significa «autoridad (prestigio) proporcional a sus esfuerzos». umbram non rem persecuti] Metáfora platónica: persiguieron la «somb",
+     "pagina": 216,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=216"
+    },
+    "fr": {
+     "texto": "L’opposition ne sépare pas « travail manuel » et « intellect » en deux domaines étanches. Vitruve présente deux dimensions inséparables du métier : l’expérience de l’exécution et la capacité de justifier rationnellement ce qui est construit. Scientia désigne ici le savoir disciplinaire de l’architectus, non la « science » au sens institutionnel moderne. 6 ut manibus essent exercitati] Cela fait référence à une formation purement pratique et manuelle. pro laboribus auctoritatem] Cela signifie « autorité (prestige) proportionnelle à vos efforts ». umbram non rem persecuti] Métaphore platonicienn",
+     "pagina": 218,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=218"
+    },
+    "en": {
+     "texto": "Theoretical reasoning applied to construction: \" that which can show and explain through skill, method and proportion the works carried out. \" Cf. De architectura 1.1.1.",
+     "pagina": 925,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=925"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.1.1",
+     "n": 2
+    },
+    {
+     "locus": "9.6.2",
+     "n": 2
+    },
+    {
+     "locus": "1.1.2",
+     "n": 1
+    },
+    {
+     "locus": "1.1.13",
+     "n": 1
+    },
+    {
+     "locus": "1.1.15",
+     "n": 1
+    },
+    {
+     "locus": "1.1.18",
+     "n": 1
+    },
+    {
+     "locus": "1.2.4",
+     "n": 1
+    },
+    {
+     "locus": "1.3.2",
+     "n": 1
+    },
+    {
+     "locus": "3.praef.4",
+     "n": 1
+    },
+    {
+     "locus": "3.3.11",
+     "n": 1
+    },
+    {
+     "locus": "4.3.3",
+     "n": 1
+    },
+    {
+     "locus": "4.8.5",
+     "n": 1
+    },
+    {
+     "locus": "4.8.7",
+     "n": 1
+    },
+    {
+     "locus": "5.3.8",
+     "n": 1
+    },
+    {
+     "locus": "5.5.3",
+     "n": 1
+    },
+    {
+     "locus": "5.5.6",
+     "n": 1
+    },
+    {
+     "locus": "5.5.8",
+     "n": 1
+    },
+    {
+     "locus": "6.praef.7",
+     "n": 1
+    },
+    {
+     "locus": "6.2.1",
+     "n": 1
+    },
+    {
+     "locus": "7.14.3",
+     "n": 1
+    },
+    {
+     "locus": "9.praef.4",
+     "n": 1
+    },
+    {
+     "locus": "10.8.1",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "MODULUS",
+   "clave": "modulus",
+   "raiz": "modul",
+   "formas": 53,
+   "libros": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "El módulo: unidad de medida (en Vitruvio, generalmente el radio o el diámetro inferior de la columna) con la que se dimensiona todo el edificio por symmetria.",
+     "pagina": 994,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=994"
+    },
+    "fr": {
+     "texto": "Le module : unité de mesure (chez Vitruve, généralement le rayon ou le diamètre inférieur de la colonne) par laquelle tout l’édifice est dimensionné selon la symmetria.",
+     "pagina": 1002,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1002"
+    },
+    "en": {
+     "texto": "The module: unit of measurement (in Vitruvius, generally the radius or lower diameter of the column) with which the entire building is dimensioned by symmetria.",
+     "pagina": 926,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=926"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "5.9.3",
+     "n": 9
+    },
+    {
+     "locus": "4.3.4",
+     "n": 8
+    },
+    {
+     "locus": "3.3.7",
+     "n": 7
+    },
+    {
+     "locus": "5.4.3",
+     "n": 3
+    },
+    {
+     "locus": "4.3.3",
+     "n": 2
+    },
+    {
+     "locus": "4.3.6",
+     "n": 2
+    },
+    {
+     "locus": "6.3.7",
+     "n": 2
+    },
+    {
+     "locus": "1.1.15",
+     "n": 1
+    },
+    {
+     "locus": "1.2.2",
+     "n": 1
+    },
+    {
+     "locus": "3.3.13",
+     "n": 1
+    },
+    {
+     "locus": "3.5.8",
+     "n": 1
+    },
+    {
+     "locus": "3.5.9",
+     "n": 1
+    },
+    {
+     "locus": "4.praef.2",
+     "n": 1
+    },
+    {
+     "locus": "4.1.8",
+     "n": 1
+    },
+    {
+     "locus": "4.3.5",
+     "n": 1
+    },
+    {
+     "locus": "4.3.7",
+     "n": 1
+    },
+    {
+     "locus": "4.7.4",
+     "n": 1
+    },
+    {
+     "locus": "4.9.1",
+     "n": 1
+    },
+    {
+     "locus": "5.4.2",
+     "n": 1
+    },
+    {
+     "locus": "5.4.5",
+     "n": 1
+    },
+    {
+     "locus": "5.4.6",
+     "n": 1
+    },
+    {
+     "locus": "5.4.7",
+     "n": 1
+    },
+    {
+     "locus": "5.5.6",
+     "n": 1
+    },
+    {
+     "locus": "5.9.2",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.17",
+     "n": 1
+    },
+    {
+     "locus": "10.8.6",
+     "n": 1
+    },
+    {
+     "locus": "10.11.2",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "CELLA",
+   "clave": "cella",
+   "raiz": "cell",
+   "formas": 39,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La regularidad de las piezas en piedra escuadrada o mármol se vincula a la trabazón de las juntas. Coagmenta, cubilia y términos próximos no se reducen automáticamente a una sola categoría moderna. Nota filológica [F] — IV.4.4. El comparativo grecizante graphikoteron (γραφικώτερον) es excepcional y no equivale sin resto a «más elegante». En este contexto parece calificar el efecto visual producido por el relieve de juntas y lechos de los bloques: una apariencia más dibujada, articulada o pictóricamente definida. Se mantiene el término transliterado acompañado de glosa para no imponer una equiv",
+     "pagina": 472,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=472"
+    },
+    "fr": {
+     "texto": "La régularité des blocs en pierre équarrie ou en marbre est liée à la liaison des joints. Coagmenta, cubilia et les termes voisins ne sont pas automatiquement réduits à une catégorie moderne unique. Note philologique [F] — IV.4.4. Le comparatif grécisant graphikoteron (γραφικώτερον) est exceptionnel et ne se réduit pas à « plus élégant ». Dans ce contexte, il semble qualifier l’effet visuel produit par le relief des joints et des lits : une apparence plus dessinée, articulée ou picturalement définie. Le terme translittéré est conservé avec une glose afin de ne pas imposer une équivalence moder",
+     "pagina": 476,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=476"
+    },
+    "en": {
+     "texto": "The cella or naos: enclosed area of the temple that houses the image of the deity.",
+     "pagina": 927,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=927"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "4.8.2",
+     "n": 3
+    },
+    {
+     "locus": "4.7.2",
+     "n": 2
+    },
+    {
+     "locus": "4.8.1",
+     "n": 2
+    },
+    {
+     "locus": "5.5.1",
+     "n": 2
+    },
+    {
+     "locus": "5.5.2",
+     "n": 2
+    },
+    {
+     "locus": "6.6.2",
+     "n": 2
+    },
+    {
+     "locus": "1.1.9",
+     "n": 1
+    },
+    {
+     "locus": "1.4.2",
+     "n": 1
+    },
+    {
+     "locus": "2.8.9",
+     "n": 1
+    },
+    {
+     "locus": "3.2.2",
+     "n": 1
+    },
+    {
+     "locus": "3.2.5",
+     "n": 1
+    },
+    {
+     "locus": "3.2.6",
+     "n": 1
+    },
+    {
+     "locus": "3.3.6",
+     "n": 1
+    },
+    {
+     "locus": "3.3.8",
+     "n": 1
+    },
+    {
+     "locus": "3.3.9",
+     "n": 1
+    },
+    {
+     "locus": "3.5.4",
+     "n": 1
+    },
+    {
+     "locus": "4.3.10",
+     "n": 1
+    },
+    {
+     "locus": "4.4.1",
+     "n": 1
+    },
+    {
+     "locus": "4.4.4",
+     "n": 1
+    },
+    {
+     "locus": "4.5.1",
+     "n": 1
+    },
+    {
+     "locus": "4.7.1",
+     "n": 1
+    },
+    {
+     "locus": "4.8.4",
+     "n": 1
+    },
+    {
+     "locus": "4.8.5",
+     "n": 1
+    },
+    {
+     "locus": "4.8.6",
+     "n": 1
+    },
+    {
+     "locus": "5.5.3",
+     "n": 1
+    },
+    {
+     "locus": "5.5.5",
+     "n": 1
+    },
+    {
+     "locus": "6.7.1",
+     "n": 1
+    },
+    {
+     "locus": "6.7.2",
+     "n": 1
+    },
+    {
+     "locus": "6.7.4",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.15",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.16",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.17",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "DISCIPLINA",
+   "clave": "disciplina",
+   "raiz": "disciplin",
+   "formas": 33,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    9
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Vitruvio presenta la concisión como una exigencia de transmisión técnica: la arquitectura necesita términos especializados y relaciones proporcionales que no pueden explicarse siempre mediante el léxico ordinario. Este principio editorial justifica que la traducción sea fluida, pero no parafrástica: cuando el término latino organiza un concepto arquitectónico, se mantiene visible en nota.",
+     "pagina": 504,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=504"
+    },
+    "fr": {
+     "texto": "Formation encyclopédique. Programme de connaissances que Vitruve exige de l’architecte : lettres, dessin, géométrie, arithmétique, histoire, philosophie, musique, médecine, droit et astronomie. Cf. De architectu-",
+     "pagina": 1000,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1000"
+    },
+    "en": {
+     "texto": "Encyclopedic education. The comprehensive training program that Vitruvius requires of the architect: writing, drawing, geometry, arithmetic, history, philosophy, music, medicine, law, and astronomy. Cf. De architectura 1.1.12.",
+     "pagina": 924,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=924"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.1.3",
+     "n": 3
+    },
+    {
+     "locus": "1.1.12",
+     "n": 3
+    },
+    {
+     "locus": "1.1.17",
+     "n": 3
+    },
+    {
+     "locus": "1.1.11",
+     "n": 2
+    },
+    {
+     "locus": "6.praef.4",
+     "n": 2
+    },
+    {
+     "locus": "1.praef.3",
+     "n": 1
+    },
+    {
+     "locus": "1.1.1",
+     "n": 1
+    },
+    {
+     "locus": "1.1.10",
+     "n": 1
+    },
+    {
+     "locus": "1.1.18",
+     "n": 1
+    },
+    {
+     "locus": "1.7.1",
+     "n": 1
+    },
+    {
+     "locus": "2.1.6",
+     "n": 1
+    },
+    {
+     "locus": "2.1.8",
+     "n": 1
+    },
+    {
+     "locus": "2.2.1",
+     "n": 1
+    },
+    {
+     "locus": "3.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "3.praef.3",
+     "n": 1
+    },
+    {
+     "locus": "3.praef.4",
+     "n": 1
+    },
+    {
+     "locus": "3.3.9",
+     "n": 1
+    },
+    {
+     "locus": "4.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "6.praef.3",
+     "n": 1
+    },
+    {
+     "locus": "6.praef.6",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.14",
+     "n": 1
+    },
+    {
+     "locus": "9.2.1",
+     "n": 1
+    },
+    {
+     "locus": "9.2.3",
+     "n": 1
+    },
+    {
+     "locus": "9.6.2",
+     "n": 1
+    },
+    {
+     "locus": "9.6.3",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "PULVIS",
+   "clave": "puluis",
+   "raiz": "pulu",
+   "formas": 15,
+   "libros": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "El texto vincula las propiedades del material a calor subterráneo, toba, tierra, vapor y antiguos fuegos del área vesubiana. Esta etiología debe separarse de la explicación moderna de las reacciones hidráulicas de materiales volcánicos. Κατακεκαυμένη se conserva como topónimo/adjetivo griego de la región «quemada».",
+     "pagina": 344,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=344"
+    },
+    "fr": {
+     "texto": "Le texte relie les propriétés du matériau à la chaleur souterraine, au tuf, à la terre, aux vapeurs et aux anciens feux de la région vésuvienne. Cette étiologie reste distincte de l’explication moderne des réactions hydrauliques des matériaux volcaniques. Κατακεκαυμένη est conservé comme désignation grecque de la région « brûlée ».",
+     "pagina": 348,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=348"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "5.12.3",
+     "n": 2
+    },
+    {
+     "locus": "5.12.4",
+     "n": 2
+    },
+    {
+     "locus": "1.2.6",
+     "n": 1
+    },
+    {
+     "locus": "2.6.1",
+     "n": 1
+    },
+    {
+     "locus": "2.6.4",
+     "n": 1
+    },
+    {
+     "locus": "3.5.5",
+     "n": 1
+    },
+    {
+     "locus": "3.5.7",
+     "n": 1
+    },
+    {
+     "locus": "4.1.12",
+     "n": 1
+    },
+    {
+     "locus": "5.10.4",
+     "n": 1
+    },
+    {
+     "locus": "5.12.2",
+     "n": 1
+    },
+    {
+     "locus": "5.12.5",
+     "n": 1
+    },
+    {
+     "locus": "7.8.1",
+     "n": 1
+    },
+    {
+     "locus": "10.10.5",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "AQUARUM",
+   "clave": "aquarum",
+   "raiz": "aquar",
+   "formas": 24,
+   "libros": [
+    1,
+    2,
+    3,
+    5,
+    8,
+    9
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Los signos corporales atribuidos a quienes viven junto a una fuente pertenecen a la medicina ambiental antigua. Se explican como testimonio histórico y no como diagnóstico válido. La transparencia o ausencia de limo puede compararse con observaciones físicas, pero no demuestra por sí sola potabilidad microbiológica.",
+     "pagina": 786,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=786"
+    },
+    "fr": {
+     "texto": "Les signes corporels attribués aux habitants proches d’une source relèvent de la médecine environnementale antique. Ils sont expliqués comme témoignage historique, non comme diagnostic valable. Transparence et absence de limon ne démontrent pas à elles seules une potabilité microbiologique.",
+     "pagina": 790,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=790"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.1.10",
+     "n": 2
+    },
+    {
+     "locus": "1.2.7",
+     "n": 2
+    },
+    {
+     "locus": "9.3.3",
+     "n": 2
+    },
+    {
+     "locus": "9.4.3",
+     "n": 2
+    },
+    {
+     "locus": "1.1.7",
+     "n": 1
+    },
+    {
+     "locus": "2.6.3",
+     "n": 1
+    },
+    {
+     "locus": "3.5.15",
+     "n": 1
+    },
+    {
+     "locus": "5.9.6",
+     "n": 1
+    },
+    {
+     "locus": "5.9.7",
+     "n": 1
+    },
+    {
+     "locus": "8.2.3",
+     "n": 1
+    },
+    {
+     "locus": "8.3.18",
+     "n": 1
+    },
+    {
+     "locus": "8.3.27",
+     "n": 1
+    },
+    {
+     "locus": "8.5.1",
+     "n": 1
+    },
+    {
+     "locus": "8.6.2",
+     "n": 1
+    },
+    {
+     "locus": "8.6.12",
+     "n": 1
+    },
+    {
+     "locus": "9.5.3",
+     "n": 1
+    },
+    {
+     "locus": "9.8.4",
+     "n": 1
+    },
+    {
+     "locus": "9.8.6",
+     "n": 1
+    },
+    {
+     "locus": "9.8.13",
+     "n": 1
+    },
+    {
+     "locus": "9.8.14",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "CONTIGNATIO",
+   "clave": "contignatio",
+   "raiz": "contignati",
+   "formas": 24,
+   "libros": [
+    2,
+    4,
+    5,
+    6,
+    7,
+    9
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "El entramado de vigas y forjado de un piso; término técnico de la construcción en madera (Libro IV y VI). Figura 12. El codo de Amenemope (regla-codo del antiguo Egipto) 48El término «pronaos,» que proviene del griego antiguo «ὁπρόναος» (ho prónaos), se traduce literalmente como «delante del naos.» Este término, a su vez, se deriva del latín «pronàon,» que tiene sus raíces en el griego «Πρòναος,» y su significado esencial es «situado delante (pro) del templo (naós).» En otras palabras, el pronaos es el espacio arquitectónico que se encuentra en la parte frontal del naos o la cella del templo, ",
+     "pagina": 995,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=995"
+    },
+    "fr": {
+     "texto": "La charpente et le plancher d’un étage ; terme technique de la construction en bois (Livre IV et VI). Figure 12. La coudée d’Amenemope (règle-coudée de l’Égypte ancienne) 49Le terme « pronaos », issu du grec ancien « ὁπρόναος » (ho prónaos), se traduit littéralement par « devant le naos ». Ce terme est passé en latin sous la forme pronaon, du grec πρόναος, et signifie essentiellement « situé devant (pro) le temple (naós) ». Autrement dit, le pronaos est l’espace architectural situé devant le naos ou la cella du temple, et constitue un élément caractéristique des temples grecs et romains. Cet e",
+     "pagina": 1003,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1003"
+    },
+    "en": {
+     "texto": "The framework of beams and flooring of a floor; technical term of wood construction (Books IV and VI). 915",
+     "pagina": 927,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=927"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "2.8.17",
+     "n": 3
+    },
+    {
+     "locus": "5.10.3",
+     "n": 3
+    },
+    {
+     "locus": "7.1.1",
+     "n": 2
+    },
+    {
+     "locus": "7.1.5",
+     "n": 2
+    },
+    {
+     "locus": "9.praef.8",
+     "n": 2
+    },
+    {
+     "locus": "2.8.20",
+     "n": 1
+    },
+    {
+     "locus": "2.9.6",
+     "n": 1
+    },
+    {
+     "locus": "4.2.1",
+     "n": 1
+    },
+    {
+     "locus": "5.1.1",
+     "n": 1
+    },
+    {
+     "locus": "5.1.5",
+     "n": 1
+    },
+    {
+     "locus": "5.1.6",
+     "n": 1
+    },
+    {
+     "locus": "6.3.2",
+     "n": 1
+    },
+    {
+     "locus": "6.3.9",
+     "n": 1
+    },
+    {
+     "locus": "6.6.7",
+     "n": 1
+    },
+    {
+     "locus": "7.3.1",
+     "n": 1
+    },
+    {
+     "locus": "7.3.2",
+     "n": 1
+    },
+    {
+     "locus": "7.5.6",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "TEMPLO",
+   "clave": "templo",
+   "raiz": "templ",
+   "formas": 16,
+   "libros": [
+    1,
+    3,
+    4,
+    5,
+    7,
+    8
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "III.2 clasifica principalmente la relación entre cella, frentes y órdenes de columnas. No debe confundirse esta clasificación con la de III.3, que distingue especies por la amplitud de los intercolumnios. Ambas taxonomías son complementarias, pero responden a criterios diferentes. Comentario III.2.2 Nota arqueológica [T] — Lib. 3.2 (las tipologías de templo). Vitruvio clasifica los templos por la disposición de sus columnas: in antis (naos en parástasis), próstilo, anfipróstilo, períptero, pseudodíptero, díptero e hípetro. La arqueología ilustra cada tipo: el in antis, con dos columnas entre l",
+     "pagina": 406,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=406"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.1.11",
+     "n": 1
+    },
+    {
+     "locus": "1.2.7",
+     "n": 1
+    },
+    {
+     "locus": "1.7.2",
+     "n": 1
+    },
+    {
+     "locus": "3.2.8",
+     "n": 1
+    },
+    {
+     "locus": "3.4.4",
+     "n": 1
+    },
+    {
+     "locus": "4.1.3",
+     "n": 1
+    },
+    {
+     "locus": "4.1.5",
+     "n": 1
+    },
+    {
+     "locus": "4.2.1",
+     "n": 1
+    },
+    {
+     "locus": "4.2.5",
+     "n": 1
+    },
+    {
+     "locus": "4.5.2",
+     "n": 1
+    },
+    {
+     "locus": "4.7.2",
+     "n": 1
+    },
+    {
+     "locus": "4.7.5",
+     "n": 1
+    },
+    {
+     "locus": "5.9.3",
+     "n": 1
+    },
+    {
+     "locus": "5.9.9",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.17",
+     "n": 1
+    },
+    {
+     "locus": "8.praef.4",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "EXTERIORES",
+   "clave": "exteriores",
+   "raiz": "exterior",
+   "formas": 15,
+   "libros": [
+    1,
+    3,
+    4,
+    5,
+    7,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La secuencia constructiva se presenta como estratigrafía: soporte/forjado, statumen, rudus, nucleus y capa de terminación. En pavimentos sub divo, Vitruvio añade doble entablado cruzado, pendiente y soluciones de impermeabilización. Las equivalencias métricas modernas serán siempre secundarias; no sustituirán pie y digitus en el cuerpo de la traducción.",
+     "pagina": 674,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=674"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "5.9.2",
+     "n": 3
+    },
+    {
+     "locus": "1.5.7",
+     "n": 2
+    },
+    {
+     "locus": "1.5.2",
+     "n": 1
+    },
+    {
+     "locus": "3.5.4",
+     "n": 1
+    },
+    {
+     "locus": "4.3.10",
+     "n": 1
+    },
+    {
+     "locus": "4.4.2",
+     "n": 1
+    },
+    {
+     "locus": "4.6.6",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.16",
+     "n": 1
+    },
+    {
+     "locus": "10.2.6",
+     "n": 1
+    },
+    {
+     "locus": "10.2.7",
+     "n": 1
+    },
+    {
+     "locus": "10.2.8",
+     "n": 1
+    },
+    {
+     "locus": "10.11.6",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "FABRICA",
+   "clave": "fabrica",
+   "raiz": "fabric",
+   "formas": 14,
+   "libros": [
+    1,
+    2,
+    5,
+    6,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La práctica constructiva: «la meditación continuada y habitual del uso, mediante la cual se perfecciona con las manos la obra prevista». Junto con la ratiocinatio, constituye el origen de la architectura. Cf. De architectura 1.1.1.",
+     "pagina": 993,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=993"
+    },
+    "fr": {
+     "texto": "La pratique constructive : « la méditation continue et habituelle de l’usage, par laquelle l’œuvre projetée s’accomplit de la main ». Avec la ratiocinatio, elle constitue l’origine de l’architectura. Cf. De architectura 1.1.1.",
+     "pagina": 1001,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1001"
+    },
+    "en": {
+     "texto": "The constructive practice: \" continuous and practised experience of construction, by which the intended work is executed by hand.\" Together with ratiocinatio, it constitutes the origin of architectura. Cf. De architectura 1.1.1.",
+     "pagina": 924,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=924"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.1.1",
+     "n": 3
+    },
+    {
+     "locus": "1.4.3",
+     "n": 1
+    },
+    {
+     "locus": "2.1.6",
+     "n": 1
+    },
+    {
+     "locus": "2.9.11",
+     "n": 1
+    },
+    {
+     "locus": "5.4.4",
+     "n": 1
+    },
+    {
+     "locus": "5.5.1",
+     "n": 1
+    },
+    {
+     "locus": "5.5.5",
+     "n": 1
+    },
+    {
+     "locus": "6.praef.6",
+     "n": 1
+    },
+    {
+     "locus": "9.praef.6",
+     "n": 1
+    },
+    {
+     "locus": "10.4.1",
+     "n": 1
+    },
+    {
+     "locus": "10.8.1",
+     "n": 1
+    },
+    {
+     "locus": "10.15.2",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "ORGANUM",
+   "clave": "organum",
+   "raiz": "organ",
+   "formas": 19,
+   "libros": [
+    1,
+    5,
+    6,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Vitruvio no establece una equivalencia exacta con la distinción moderna entre «máquina» y «herramienta». Su contraste es funcional: la machina moviliza una combinación de partes, operarios o fuerzas para producir un efecto considerable; el organum puede alcanzar su finalidad mediante una intervención más concentrada y experta. Conviene, por ello, conservar los latinismos en el comentario técnico cuando la traducción española pudiera sugerir categorías mecánicas contemporáneas. 4 SÍNTESIS PARA ARQUITECTOS [T] — X.1. El comienzo del Libro X formula tres principios operativos: prever antes de con",
+     "pagina": 886,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=886"
+    },
+    "fr": {
+     "texto": "Vitruve n’établit pas une équivalence exacte avec la distinction moderne entre « machine » et « outil ». Son opposition est fonctionnelle : la machina mobilise une combinaison de pièces, d’opérateurs ou de forces pour produire un effet important ; l’organum peut atteindre son but par une intervention plus concentrée et experte. Il convient donc de conserver les latinismes dans le commentaire technique lorsque la traduction française risquerait d’imposer des catégories mécaniques contemporaines. 4 SYNTHÈSE POUR LES ARCHITECTES [T] — X.1. Le début du Livre X formule trois principes opératoires :",
+     "pagina": 896,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=896"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "10.1.3",
+     "n": 3
+    },
+    {
+     "locus": "10.10.1",
+     "n": 2
+    },
+    {
+     "locus": "1.1.9",
+     "n": 1
+    },
+    {
+     "locus": "1.1.15",
+     "n": 1
+    },
+    {
+     "locus": "1.1.17",
+     "n": 1
+    },
+    {
+     "locus": "5.3.8",
+     "n": 1
+    },
+    {
+     "locus": "5.4.4",
+     "n": 1
+    },
+    {
+     "locus": "6.1.5",
+     "n": 1
+    },
+    {
+     "locus": "6.1.6",
+     "n": 1
+    },
+    {
+     "locus": "9.praef.14",
+     "n": 1
+    },
+    {
+     "locus": "10.1.4",
+     "n": 1
+    },
+    {
+     "locus": "10.1.5",
+     "n": 1
+    },
+    {
+     "locus": "10.4.1",
+     "n": 1
+    },
+    {
+     "locus": "10.6.4",
+     "n": 1
+    },
+    {
+     "locus": "10.8.4",
+     "n": 1
+    },
+    {
+     "locus": "10.11.1",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "VALVAE",
+   "clave": "ualuae",
+   "raiz": "ualu",
+   "formas": 14,
+   "libros": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La terminología de hojas, jambas, dintel y molduras se traduce según función arquitectónica, evitando equivalencias modernas demasiado estrechas. Cuando una pieza sólo puede identificarse por su relación proporcional, se conserva también el término latino en nota. Comentario IV.6.1 Las symmetriae del género dórico se determinan de este modo. La corona superior, colocada sobre el antepagmentum horizontal, quedará al mismo nivel que la parte superior de los capiteles de las columnas del pronaos. El vano de la puerta (lumen) se proporcionará así: la altura del templo desde el pavimento hasta los ",
+     "pagina": 482,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=482"
+    },
+    "fr": {
+     "texto": "La terminologie des vantaux, jambages, linteau et moulures est traduite selon la fonction architecturale, sans équivalences modernes excessivement étroites. Lorsqu’une pièce n’est identifiable que par son rapport proportionnel, le terme latin est également conservé en note. Commentaire IV.6.1 IV.6.5 La distribution des impages se fera en divisant la hauteur en cinq parties : deux seront attribuées au secteur supérieur et trois à l’inférieur. Les impages médians seront placés au-dessus du milieu ; les autres seront assemblés, les uns en haut, les autres en bas. La hauteur de chaque impage sera ",
+     "pagina": 486,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=486"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "6.3.10",
+     "n": 2
+    },
+    {
+     "locus": "3.2.8",
+     "n": 1
+    },
+    {
+     "locus": "3.3.3",
+     "n": 1
+    },
+    {
+     "locus": "4.4.1",
+     "n": 1
+    },
+    {
+     "locus": "4.6.1",
+     "n": 1
+    },
+    {
+     "locus": "4.6.5",
+     "n": 1
+    },
+    {
+     "locus": "4.6.6",
+     "n": 1
+    },
+    {
+     "locus": "4.8.2",
+     "n": 1
+    },
+    {
+     "locus": "5.5.6",
+     "n": 1
+    },
+    {
+     "locus": "5.5.7",
+     "n": 1
+    },
+    {
+     "locus": "5.6.3",
+     "n": 1
+    },
+    {
+     "locus": "5.6.8",
+     "n": 1
+    },
+    {
+     "locus": "7.1.2",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "PORTICUS",
+   "clave": "porticus",
+   "raiz": "portic",
+   "formas": 40,
+   "libros": [
+    1,
+    3,
+    5,
+    6
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La utilidad en tiempo de asedio —almacenamiento y distribución de recursos— forma parte de la argumentación vitruviana sobre infraestructura cívica. No se generaliza como función necesaria de todo pórtico romano.",
+     "pagina": 562,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=562"
+    },
+    "fr": {
+     "texto": "Leur utilité en temps de siège —stockage et distribution de ressources— appartient à l’argumentation vitruvienne sur l’infrastructure civique et n’est pas généralisée comme fonction nécessaire de tout portique romain.",
+     "pagina": 566,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=566"
+    },
+    "en": {
+     "texto": "The portico: a covered colonnaded gallery; a recurring element in the public buildings of Book V.",
+     "pagina": 927,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=927"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "5.9.1",
+     "n": 5
+    },
+    {
+     "locus": "5.11.2",
+     "n": 4
+    },
+    {
+     "locus": "6.7.3",
+     "n": 4
+    },
+    {
+     "locus": "5.1.6",
+     "n": 3
+    },
+    {
+     "locus": "5.11.4",
+     "n": 3
+    },
+    {
+     "locus": "5.1.5",
+     "n": 2
+    },
+    {
+     "locus": "5.12.1",
+     "n": 2
+    },
+    {
+     "locus": "1.1.6",
+     "n": 1
+    },
+    {
+     "locus": "1.3.1",
+     "n": 1
+    },
+    {
+     "locus": "3.2.5",
+     "n": 1
+    },
+    {
+     "locus": "3.2.8",
+     "n": 1
+    },
+    {
+     "locus": "5.1.1",
+     "n": 1
+    },
+    {
+     "locus": "5.1.2",
+     "n": 1
+    },
+    {
+     "locus": "5.6.4",
+     "n": 1
+    },
+    {
+     "locus": "5.9.2",
+     "n": 1
+    },
+    {
+     "locus": "5.9.3",
+     "n": 1
+    },
+    {
+     "locus": "5.9.5",
+     "n": 1
+    },
+    {
+     "locus": "5.11.1",
+     "n": 1
+    },
+    {
+     "locus": "5.11.3",
+     "n": 1
+    },
+    {
+     "locus": "6.3.7",
+     "n": 1
+    },
+    {
+     "locus": "6.5.3",
+     "n": 1
+    },
+    {
+     "locus": "6.7.1",
+     "n": 1
+    },
+    {
+     "locus": "6.7.2",
+     "n": 1
+    },
+    {
+     "locus": "6.7.5",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "TECTORIA",
+   "clave": "tectoria",
+   "raiz": "tectori",
+   "formas": 34,
+   "libros": [
+    2,
+    5,
+    6,
+    7
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Camara no equivale aquí sin más a una bóveda pétrea: el procedimiento describe una estructura ligera de listones y cañas suspendida o conformada según curvatura, sobre la que se aplican morteros. En las figuras se distinguirá estructura portante, entramado de cañas, capas de mortero y terminación pulida; ninguna reconstrucción gráfica deberá atribuir a Vitruvio detalles que el texto no especifica.",
+     "pagina": 686,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=686"
+    },
+    "fr": {
+     "texto": "Vitruve distingue l’humidité qui remonte ou traverse la paroi de la protection superficielle. L’édition sépare la donnée constructive du mécanisme physique moderne : capillarité, condensation et diffusion peuvent aujourd’hui expliquer des phénomènes différents, mais ne deviennent pas le vocabulaire du texte latin. Commentaire VII.4.5 Note critico-ecdotique [F] — VII.4.4–5. Ce passage concentre plusieurs interventions qui touchent directement au sens technique. La tradition manuscrite offre melographia, corrigé par la tradition éditoriale en megalographia ; au §5 alternent également intra/infra",
+     "pagina": 696,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=696"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "2.3.2",
+     "n": 3
+    },
+    {
+     "locus": "2.4.3",
+     "n": 3
+    },
+    {
+     "locus": "2.8.20",
+     "n": 3
+    },
+    {
+     "locus": "7.3.11",
+     "n": 3
+    },
+    {
+     "locus": "7.4.1",
+     "n": 3
+    },
+    {
+     "locus": "7.3.5",
+     "n": 2
+    },
+    {
+     "locus": "7.3.8",
+     "n": 2
+    },
+    {
+     "locus": "2.4.2",
+     "n": 1
+    },
+    {
+     "locus": "2.5.1",
+     "n": 1
+    },
+    {
+     "locus": "2.8.10",
+     "n": 1
+    },
+    {
+     "locus": "5.10.3",
+     "n": 1
+    },
+    {
+     "locus": "6.7.3",
+     "n": 1
+    },
+    {
+     "locus": "7.2.1",
+     "n": 1
+    },
+    {
+     "locus": "7.3.7",
+     "n": 1
+    },
+    {
+     "locus": "7.3.9",
+     "n": 1
+    },
+    {
+     "locus": "7.3.10",
+     "n": 1
+    },
+    {
+     "locus": "7.4.3",
+     "n": 1
+    },
+    {
+     "locus": "7.5.3",
+     "n": 1
+    },
+    {
+     "locus": "7.5.7",
+     "n": 1
+    },
+    {
+     "locus": "7.5.8",
+     "n": 1
+    },
+    {
+     "locus": "7.10.3",
+     "n": 1
+    },
+    {
+     "locus": "7.11.2",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "SALUBRITAS",
+   "clave": "salubritas",
+   "raiz": "salubrita",
+   "formas": 14,
+   "libros": [
+    1,
+    5,
+    6,
+    8
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Las explicaciones sobre aires, cuerpos, humores y enfermedades pertenecen al marco fisiológico antiguo. Cuando una observación topográfica —drenaje, humedad, insolación— pueda compararse con criterios ambientales modernos, esa comparación se ofrece como recepción técnica y no como validación literal de la etiología vitruviana.",
+     "pagina": 252,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=252"
+    },
+    "fr": {
+     "texto": "Les explications relatives aux airs, corps, humeurs et maladies appartiennent au cadre physiologique antique. Lorsqu’une observation topographique — drainage, humidité, ensoleillement — peut être comparée à des critères environnementaux modernes, cette comparaison relève de la réception technique et non d’une validation littérale de l’étiologie vitruvienne.",
+     "pagina": 254,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=254"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "8.1.7",
+     "n": 2
+    },
+    {
+     "locus": "1.4.8",
+     "n": 1
+    },
+    {
+     "locus": "1.4.9",
+     "n": 1
+    },
+    {
+     "locus": "1.4.11",
+     "n": 1
+    },
+    {
+     "locus": "1.5.1",
+     "n": 1
+    },
+    {
+     "locus": "1.6.1",
+     "n": 1
+    },
+    {
+     "locus": "5.3.1",
+     "n": 1
+    },
+    {
+     "locus": "5.9.5",
+     "n": 1
+    },
+    {
+     "locus": "5.9.9",
+     "n": 1
+    },
+    {
+     "locus": "6.4.2",
+     "n": 1
+    },
+    {
+     "locus": "6.6.1",
+     "n": 1
+    },
+    {
+     "locus": "8.3.28",
+     "n": 1
+    },
+    {
+     "locus": "8.4.2",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "CURIA",
+   "clave": "curia",
+   "raiz": "curi",
+   "formas": 10,
+   "libros": [
+    5,
+    7,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La cornisa continua a media altura actúa, en la explicación de Vitruvio, como obstáculo a la disipación ascendente de la voz y favorece su llegada inteligible a los oyentes. La observación es relevante porque anticipa el tratamiento sistemático del sonido en V.3–V.8, pero debe mantenerse diferenciada de parámetros acústicos contemporáneos como tiempo de reverberación o absorción. Nota filológica y acústica — V.2.2. Intestinum opus designa aquí una técnica de obra interior o carpintería de terminación; albarium, un revestimiento de estuco. La traducción evita reducir el primero a «ebanistería» ",
+     "pagina": 516,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=516"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "5.2.1",
+     "n": 2
+    },
+    {
+     "locus": "5.3.1",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.3",
+     "n": 1
+    },
+    {
+     "locus": "7.1.1",
+     "n": 1
+    },
+    {
+     "locus": "7.1.7",
+     "n": 1
+    },
+    {
+     "locus": "7.2.2",
+     "n": 1
+    },
+    {
+     "locus": "7.4.2",
+     "n": 1
+    },
+    {
+     "locus": "9.6.3",
+     "n": 1
+    },
+    {
+     "locus": "10.8.6",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "PARASTATICAE",
+   "clave": "parastaticae",
+   "raiz": "parastatic",
+   "formas": 9,
+   "libros": [
+    4,
+    5,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "En la basílica de Fano estos términos se traducen con apoyo explicativo y no mediante equivalencias modernas rígidas. Especialmente testudo posee aquí un problema arquitectónico de interpretación; la traducción debe permitir comprender la estructura sin fingir una certeza reconstructiva superior a la del latín.",
+     "pagina": 513,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=513"
+    },
+    "fr": {
+     "texto": "Dans la basilique de Fano, ces termes sont traduits avec un soutien explicatif plutôt que par des équivalents modernes rigides. Testudo, en particulier, pose ici un problème d’interprétation architecturale ; la traduction doit rendre la structure intelligible sans feindre une certitude reconstructive supérieure à celle du latin.",
+     "pagina": 517,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=517"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "10.10.2",
+     "n": 3
+    },
+    {
+     "locus": "5.1.6",
+     "n": 2
+    },
+    {
+     "locus": "4.2.1",
+     "n": 1
+    },
+    {
+     "locus": "5.1.7",
+     "n": 1
+    },
+    {
+     "locus": "9.8.6",
+     "n": 1
+    },
+    {
+     "locus": "10.11.6",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "ARAE",
+   "clave": "arae",
+   "raiz": "arae",
+   "formas": 8,
+   "libros": [
+    3,
+    4,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "El altar debe mirar hacia oriente y permanecer por debajo del simulacrum, de modo que el suplicante eleve la mirada hacia la divinidad. La lectura Matrique refuerza la oposición vertical entre divinidades celestes y potencias vinculadas a la tierra; las variantes impresas deben registrarse, no mezclarse silenciosamente.",
+     "pagina": 494,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=494"
+    },
+    "fr": {
+     "texto": "L’autel regarde vers l’orient et reste inférieur au simulacrum, de sorte que le suppliant élève le regard vers la divinité. La leçon Matrique renforce l’opposition verticale entre divinités célestes et puissances liées à la terre ; les variantes imprimées doivent être enregistrées, non fusionnées silencieusement.",
+     "pagina": 498,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=498"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "3.3.1",
+     "n": 1
+    },
+    {
+     "locus": "3.3.5",
+     "n": 1
+    },
+    {
+     "locus": "3.3.10",
+     "n": 1
+    },
+    {
+     "locus": "3.3.11",
+     "n": 1
+    },
+    {
+     "locus": "3.4.3",
+     "n": 1
+    },
+    {
+     "locus": "4.9.1",
+     "n": 1
+    },
+    {
+     "locus": "9.praef.13",
+     "n": 1
+    },
+    {
+     "locus": "10.8.2",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "MAGISTRA",
+   "clave": "magistra",
+   "raiz": "magistr",
+   "formas": 8,
+   "libros": [
+    2,
+    5,
+    6,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "X.1.4–6 presenta la mecánica como imitación de procesos naturales y de movimientos circulares. Se distingue esta argumentación antigua de una teoría física moderna: su importancia reside en cómo Vitruvio legitima la machinatio dentro de la disciplina arquitectónica.",
+     "pagina": 886,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=886"
+    },
+    "fr": {
+     "texto": "X.1.4–6 présente la mécanique comme imitation de processus naturels et de mouvements circulaires. Cette argumentation antique est distinguée d’une théorie physique moderne ; son intérêt est de montrer comment Vitruve légitime la machinatio au sein de la discipline architecturale.",
+     "pagina": 896,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=896"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "2.3.2",
+     "n": 1
+    },
+    {
+     "locus": "5.praef.5",
+     "n": 1
+    },
+    {
+     "locus": "5.1.8",
+     "n": 1
+    },
+    {
+     "locus": "6.5.2",
+     "n": 1
+    },
+    {
+     "locus": "10.praef.1",
+     "n": 1
+    },
+    {
+     "locus": "10.praef.3",
+     "n": 1
+    },
+    {
+     "locus": "10.1.4",
+     "n": 1
+    },
+    {
+     "locus": "10.2.15",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "PODIUM",
+   "clave": "podium",
+   "raiz": "podi",
+   "formas": 5,
+   "libros": [
+    3,
+    5,
+    6,
+    7
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Los números de gradas, alturas y relaciones modulares se conservan primero en su formulación antigua. Toda conversión decimal o métrica moderna se reserva a cuadros auxiliares; si una cifra entra en conflicto con una reconstrucción, se revisa primero la tradición textual y no se enmienda por conveniencia geométrica. Comentario III.4.3 Nota — Lib. 3.4 (cimentaciones). Losestereobatos(stereobatae,«losquesoportanlacarga») son los muros de cimiento, más gruesos que las columnas que reciben; para suelos inestables o pantanosos Vitruvio prescribe pilotes de aliso, olivo o roble hincados a máquina —t",
+     "pagina": 422,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=422"
+    },
+    "fr": {
+     "texto": "Nombres de degrés, hauteurs et rapports modulaires sont d’abord conservés dans leur formulation antique. Toute conversion décimale ou métrique moderne est réservée aux tableaux auxiliaires ; si un nombre entre en conflit avec une reconstruction, la tradition textuelle est réexaminée avant toute émendation de convenance. Commentaire III.4.5 APPARAT CRITIQUE COMPARATIF [F] — III.4. Le chapitre articule fondations, stereobatae, stylobata, degrés et podium. La prescription de pieux d’aulne, d’olivier ou de chêne superficiellement brûlés appartient au texte pour les terrains remblayés ou marécageux",
+     "pagina": 426,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=426"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "5.6.6",
+     "n": 2
+    },
+    {
+     "locus": "3.4.5",
+     "n": 1
+    },
+    {
+     "locus": "6.3.9",
+     "n": 1
+    },
+    {
+     "locus": "7.4.4",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "FANO",
+   "clave": "fano",
+   "raiz": "fano",
+   "formas": 4,
+   "libros": [
+    1,
+    7,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "CXX × LX pedes, porticus XX, columnae L × V y las medidas de parastaticae y tribunal se conservan como serie textual independiente. Comentario V.1.2 Nota crítica comparativa [F] — V.1.1–3. La oposición entre el foro griego y el foro de las ciudades itálicas es una construcción tipológica de Vitruvio vinculada aquí a un uso concreto: los munera gladiatoria. No debe convertirse en una dicotomía arqueológica absoluta entre «foro griego» y «foro romano». Los términos tabernae argentariae y maeniana designan funciones y dispositivos arquitectónicos históricamente específicos; se conservan en latín ",
+     "pagina": 512,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=512"
+    },
+    "fr": {
+     "texto": "CXX × LX pedes, porticus XX, columnae L × V ainsi que les dimensions des parastaticae et du tribunal sont conservés comme série textuelle indépendante. Les équivalents métriques seront calculés dans un tableau séparé avec indication explicite de la valeur de pes retenue ; aucun pied ad hoc ne sera choisi pour maximiser la concordance avec le site.",
+     "pagina": 517,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=517"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.3.1",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.12",
+     "n": 1
+    },
+    {
+     "locus": "9.praef.9",
+     "n": 1
+    },
+    {
+     "locus": "10.2.13",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "ARIES",
+   "clave": "aries",
+   "raiz": "arie",
+   "formas": 27,
+   "libros": [
+    1,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La evolución narrada desde una viga impulsada manualmente hasta el ariete suspendido dentro de una estructura protegida expresa una genealogía técnica antigua. El comentario separa tres niveles: relato vitruviano, plausibilidad mecánica y evidencia arqueológica/iconográfica.",
+     "pagina": 964,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=964"
+    },
+    "fr": {
+     "texto": "L’évolution racontée depuis une poutre poussée manuellement jusqu’au bélier suspendu dans une structure protégée constitue une généalogie technique antique. Le commentaire sépare récit vitruvien, plausibilité mécanique et preuve archéologique/iconographique.",
+     "pagina": 972,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=972"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "10.13.6",
+     "n": 3
+    },
+    {
+     "locus": "1.5.5",
+     "n": 2
+    },
+    {
+     "locus": "9.4.2",
+     "n": 2
+    },
+    {
+     "locus": "9.8.14",
+     "n": 2
+    },
+    {
+     "locus": "10.13.2",
+     "n": 2
+    },
+    {
+     "locus": "10.15.5",
+     "n": 2
+    },
+    {
+     "locus": "10.15.6",
+     "n": 2
+    },
+    {
+     "locus": "10.16.12",
+     "n": 2
+    },
+    {
+     "locus": "9.3.1",
+     "n": 1
+    },
+    {
+     "locus": "9.3.2",
+     "n": 1
+    },
+    {
+     "locus": "9.4.6",
+     "n": 1
+    },
+    {
+     "locus": "9.5.3",
+     "n": 1
+    },
+    {
+     "locus": "9.7.1",
+     "n": 1
+    },
+    {
+     "locus": "9.8.12",
+     "n": 1
+    },
+    {
+     "locus": "10.2.15",
+     "n": 1
+    },
+    {
+     "locus": "10.13.1",
+     "n": 1
+    },
+    {
+     "locus": "10.13.4",
+     "n": 1
+    },
+    {
+     "locus": "10.15.4",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "ABACUS",
+   "clave": "abacus",
+   "raiz": "abac",
+   "formas": 24,
+   "libros": [
+    3,
+    4,
+    7
+   ],
+   "graecum": [
+    "ἄβαξ"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "El ábaco: losa cuadrada que corona el capitel y recibe el arquitrabe. Su proporción varía según el orden.",
+     "pagina": 994,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=994"
+    },
+    "fr": {
+     "texto": "L’abaque : dalle carrée qui couronne le chapiteau et reçoit l’architrave. Ses proportions varient selon l’ordre.",
+     "pagina": 1002,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1002"
+    },
+    "en": {
+     "texto": "The abacus: a square slab that crowns the capital and receives the architrave. Its proportion varies according to the order.",
+     "pagina": 925,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=925"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "3.5.5",
+     "n": 5
+    },
+    {
+     "locus": "3.5.7",
+     "n": 4
+    },
+    {
+     "locus": "4.1.11",
+     "n": 4
+    },
+    {
+     "locus": "3.5.6",
+     "n": 3
+    },
+    {
+     "locus": "4.1.12",
+     "n": 3
+    },
+    {
+     "locus": "4.7.3",
+     "n": 2
+    },
+    {
+     "locus": "7.3.10",
+     "n": 2
+    },
+    {
+     "locus": "7.4.4",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "TUBULI",
+   "clave": "tubuli",
+   "raiz": "tubul",
+   "formas": 12,
+   "libros": [
+    5,
+    8,
+    9
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Se conservan lumen fistularum, venter (κοιλία), geniculus, colliquiaria, castella intermedios y tubuli fictiles. Las listas de calibres y pesos de tuberías de plomo requieren control numérico especial: cualquier conversión moderna se dará en tabla secundaria y no sustituirá las unidades antiguas.",
+     "pagina": 803,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=803"
+    },
+    "fr": {
+     "texto": "Sont conservés lumen fistularum, venter (κοιλία), geniculus, colliquiaria, castella intermédiaires et tubuli fictiles. Les séries de calibres et de poids des conduites de plomb exigent un contrôle numérique spécifique ; toute conversion moderne sera reléguée dans un tableau secondaire.",
+     "pagina": 807,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=807"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "8.6.8",
+     "n": 3
+    },
+    {
+     "locus": "5.9.7",
+     "n": 2
+    },
+    {
+     "locus": "8.6.10",
+     "n": 2
+    },
+    {
+     "locus": "9.8.3",
+     "n": 2
+    },
+    {
+     "locus": "8.6.1",
+     "n": 1
+    },
+    {
+     "locus": "8.6.9",
+     "n": 1
+    },
+    {
+     "locus": "8.6.11",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "STYLOBATA",
+   "clave": "stylobata",
+   "raiz": "stylobat",
+   "formas": 11,
+   "libros": [
+    3,
+    4,
+    5
+   ],
+   "graecum": [
+    "στυλοβάτης"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "El estilóbato: plataforma o grada superior sobre la que se asientan las columnas; objeto de la corrección óptica de los scamilli impares.",
+     "pagina": 995,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=995"
+    },
+    "fr": {
+     "texto": "Le stylobate : plate-forme supérieure ou marche sur laquelle reposent les colonnes ; objet de la correction optique des scamilli impares.",
+     "pagina": 1003,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1003"
+    },
+    "en": {
+     "texto": "The stylobate: upper platform or step on which the columns rest; object of the optical correction of odd scamilli. 914",
+     "pagina": 926,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=926"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "4.8.2",
+     "n": 3
+    },
+    {
+     "locus": "3.4.5",
+     "n": 2
+    },
+    {
+     "locus": "4.8.1",
+     "n": 2
+    },
+    {
+     "locus": "3.4.2",
+     "n": 1
+    },
+    {
+     "locus": "3.4.3",
+     "n": 1
+    },
+    {
+     "locus": "3.5.8",
+     "n": 1
+    },
+    {
+     "locus": "5.9.4",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "PICTURA",
+   "clave": "pictura",
+   "raiz": "pictur",
+   "formas": 10,
+   "libros": [
+    2,
+    6,
+    7
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Cuando Vitruvio censura cañas que sostienen techos, candelabros que soportan frontones o tallos de los que brotan figuras, su objeción no es simplemente «realismo contra fantasía»: exige que la representación conserve una inteligibilidad constructiva y natural. Se distingue esta doctrina del decor vitruviano de categorías estéticas modernas.",
+     "pagina": 700,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=700"
+    },
+    "fr": {
+     "texto": "Lorsque Vitruve condamne roseaux portant des toitures, candélabres soutenant des frontons ou tiges faisant naître des figures, son objection ne se réduit pas à « réalisme contre fantaisie » : la représentation doit conserver une intelligibilité constructive et naturelle. Cette doctrine est distinguée des catégories esthétiques modernes.",
+     "pagina": 704,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=704"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "7.5.1",
+     "n": 2
+    },
+    {
+     "locus": "2.8.9",
+     "n": 1
+    },
+    {
+     "locus": "6.7.4",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.11",
+     "n": 1
+    },
+    {
+     "locus": "7.3.5",
+     "n": 1
+    },
+    {
+     "locus": "7.5.4",
+     "n": 1
+    },
+    {
+     "locus": "7.5.5",
+     "n": 1
+    },
+    {
+     "locus": "7.5.6",
+     "n": 1
+    },
+    {
+     "locus": "7.14.3",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "BYBLIOTHECAE",
+   "clave": "bybliothecae",
+   "raiz": "bybliothec",
+   "formas": 8,
+   "libros": [
+    1,
+    6,
+    7
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Se conserva la grafía latina del texto crítico cuando corresponde; en traducción se emplea «bibliotecas». La afirmación sobre deterioro de libros por vientos húmedos del sur se explica dentro de la observación material antigua, sin atribuirle una teoría microbiológica.",
+     "pagina": 620,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=620"
+    },
+    "fr": {
+     "texto": "La graphie latine du texte critique est conservée lorsqu’elle convient ; la traduction emploie « bibliothèques ». L’affirmation sur la dégradation des livres par les vents humides du sud est replacée dans l’observation matérielle antique, sans lui attribuer une théorie microbiologique. Commentaire VI.4.2 APPARAT CRITIQUE COMPARATIF [F] — VI.4. La série des orientations est maintenue comme prescription fonctionnelle : occident hivernal pour triclinia d’hiver et bains ; orient pour les salles de printemps et d’automne ; septentrion pour les salles d’été, pinacothèques et certains ateliers. L’app",
+     "pagina": 624,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=624"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "6.4.1",
+     "n": 2
+    },
+    {
+     "locus": "1.2.7",
+     "n": 1
+    },
+    {
+     "locus": "6.5.2",
+     "n": 1
+    },
+    {
+     "locus": "6.7.3",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.4",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.5",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.7",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "PALAESTRA",
+   "clave": "palaestra",
+   "raiz": "palaestr",
+   "formas": 5,
+   "libros": [
+    5,
+    6,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "La planta derivada de V.11 es una reconstrucción normativa del texto, no un plano universal de los gimnasios helenísticos. Deben distinguirse pórtico doble, xystus cubierto y paseos hypaethrae.",
+     "pagina": 574,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=574"
+    },
+    "fr": {
+     "texto": "Le péristyle de deux stades et les dimensions des pistes, dénivellations et salles restent exprimés en unités antiques. Toute conversion métrique moderne indiquera l’étalon adopté et ne remplacera pas les valeurs transmises.",
+     "pagina": 578,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=578"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "5.11.1",
+     "n": 2
+    },
+    {
+     "locus": "5.11.2",
+     "n": 1
+    },
+    {
+     "locus": "6.5.3",
+     "n": 1
+    },
+    {
+     "locus": "10.2.12",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "TETRASTYLOS",
+   "clave": "tetrastylos",
+   "raiz": "tetrastylo",
+   "formas": 4,
+   "libros": [
+    3,
+    4,
+    6
+   ],
+   "graecum": [
+    "τετράστυλος"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "De cuatro columnas en el frente; aplícase a pórticos y atrios.",
+     "pagina": 995,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=995"
+    },
+    "fr": {
+     "texto": "Avec quatre colonnes en façade ; des portiques et des atriums sont appliqués.",
+     "pagina": 1003,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1003"
+    },
+    "en": {
+     "texto": "With four columns on the front; applied to porticoes and atriums.",
+     "pagina": 927,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=927"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "3.3.7",
+     "n": 1
+    },
+    {
+     "locus": "4.3.3",
+     "n": 1
+    },
+    {
+     "locus": "4.3.7",
+     "n": 1
+    },
+    {
+     "locus": "6.3.1",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "HYDRAULIS",
+   "clave": "hydraulis",
+   "raiz": "hydraul",
+   "formas": 3,
+   "libros": [
+    1,
+    9,
+    10
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "El capítulo pertenece simultáneamente a la historia de la mecánica y de los instrumentos musicales. Se controlarán especialmente ara, pnigeus, modioli, emboli, regulae, vectes, canales, pinakes y fistulae, así como toda cifra relativa a filas o dimensiones. La traducción castellana conservará precisión técnica sin perder legibilidad.",
+     "pagina": 930,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=930"
+    },
+    "fr": {
+     "texto": "L’eau n’est pas la source immédiate du son : elle stabilise et régularise la pression de l’air. Les cylindres compriment l’air, le pnigeus et le coffre jouent le rôle de chambre régulatrice, les robinets distribuent le flux vers les canaux et les touches commandent l’ouverture des conduits sonores. Le passage articule pneumatique, hydraulique et théorie musicale. 15 APPARAT CRITIQUE COMPARATIF [F] — X.8. L’hydraulis impose une lecture conjointe de l’air, de l’eau, des récipients, pompes, soupapes, touches et tuyaux sonores. L’apparat sépare le vocabulaire du mécanisme hydraulique de celui du s",
+     "pagina": 940,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=940"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "1.1.9",
+     "n": 1
+    },
+    {
+     "locus": "9.8.4",
+     "n": 1
+    },
+    {
+     "locus": "10.8.1",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "SCAENAM",
+   "clave": "scaenam",
+   "raiz": "scaenam",
+   "formas": 8,
+   "libros": [
+    5,
+    7
+   ],
+   "graecum": null,
+   "definiciones": {
+    "es": {
+     "texto": "Las reconstrucciones deberán distinguir scaena, postscaenium, pórticos, ambulationes y áreas descubiertas; las pendientes y drenajes no se completarán con cotas no transmitidas.",
+     "pagina": 562,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=562"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "5.5.1",
+     "n": 1
+    },
+    {
+     "locus": "5.6.8",
+     "n": 1
+    },
+    {
+     "locus": "5.7.2",
+     "n": 1
+    },
+    {
+     "locus": "5.9.1",
+     "n": 1
+    },
+    {
+     "locus": "5.9.9",
+     "n": 1
+    },
+    {
+     "locus": "7.praef.11",
+     "n": 1
+    },
+    {
+     "locus": "7.5.5",
+     "n": 1
+    },
+    {
+     "locus": "7.5.7",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "SYSTYLOS",
+   "clave": "systylos",
+   "raiz": "systylo",
+   "formas": 5,
+   "libros": [
+    3,
+    4
+   ],
+   "graecum": [
+    "σύστυλος"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "Intercolumnio de dos diámetros entre columnas (3.3).",
+     "pagina": 995,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=995"
+    },
+    "fr": {
+     "texto": "Entrecolonnement de deux diamètres entre les colonnes (3.3).",
+     "pagina": 1003,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1003"
+    },
+    "en": {
+     "texto": "Intercolumn of two diameters between columns (3.3).",
+     "pagina": 927,
+     "version": "V297",
+     "pdf": "documents/kurilo-theory-en.pdf#page=927"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "3.3.1",
+     "n": 1
+    },
+    {
+     "locus": "3.3.2",
+     "n": 1
+    },
+    {
+     "locus": "3.3.10",
+     "n": 1
+    },
+    {
+     "locus": "3.4.3",
+     "n": 1
+    },
+    {
+     "locus": "4.3.7",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  },
+  {
+   "lemma": "PERIPTEROS",
+   "clave": "peripteros",
+   "raiz": "periptero",
+   "formas": 4,
+   "libros": [
+    3,
+    4
+   ],
+   "graecum": [
+    "περίπτερος"
+   ],
+   "definiciones": {
+    "es": {
+     "texto": "Templo rodeado por una sola fila de columnas exentas en sus cuatro lados (3.2).",
+     "pagina": 994,
+     "version": "V514",
+     "pdf": "documents/kurilo-recensio-es.pdf#page=994"
+    },
+    "fr": {
+     "texto": "Temple entouré d’une seule rangée de colonnes indé-",
+     "pagina": 1002,
+     "version": "V554",
+     "pdf": "documents/kurilo-recensio-fr.pdf#page=1002"
+    }
+   },
+   "lociPrincipales": [
+    {
+     "locus": "3.2.1",
+     "n": 1
+    },
+    {
+     "locus": "3.2.5",
+     "n": 1
+    },
+    {
+     "locus": "4.8.1",
+     "n": 1
+    },
+    {
+     "locus": "4.8.2",
+     "n": 1
+    }
+   ],
+   "variantesDelGlosario": [],
+   "parsArchitecturae": false
+  }
+ ]
+}

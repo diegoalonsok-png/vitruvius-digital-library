@@ -80,13 +80,29 @@ function controles(){
  barra.insertAdjacentElement("afterend",caja);
 }
 
+/* API reutilizable: otras páginas (la concordancia de folios) necesitan las
+   mismas cajas sobre su propia imagen, con su propio rótulo de folio. Se expone
+   la carga del fichero y la consulta por folio; el pintado lo hace cada página,
+   porque cada una coloca la imagen a su manera. */
+let cargando=null;
+async function cargar(){
+ if(datos)return datos;
+ if(!cargando)cargando=fetch(URL_DATA).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+   .then(j=>{datos=j;return j}).catch(e=>{cargando=null;throw e});
+ return cargando;
+}
+function cajas(folio){
+ if(!datos)return null;
+ const reg=datos.folios.find(f=>f.folio&&clave(f.folio)===clave(folio));
+ return reg||null;
+}
+window.CodexRubrica={cargar,cajas,cita};
+
 async function init(){
  if(!$("image"))return;
  monta();controles();
  try{
-  const r=await fetch(URL_DATA);
-  if(!r.ok)throw Error("HTTP "+r.status);
-  datos=await r.json();
+  await cargar();
  }catch(e){
   const n=$("rubrica-note");
   if(n)n.textContent="No se pudo cargar la detección de rúbricas ("+e.message+").";

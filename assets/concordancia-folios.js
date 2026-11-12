@@ -96,24 +96,41 @@ async function render(){
  $('f-reader').hidden=!loc;$('f-parallel').hidden=!loc;
  if(loc){$('f-reader').href=reader(loc,'es');$('f-parallel').href=reader(loc,lang)}
 }
+/* Rótulos del buscador, en el idioma de la interfaz. Los visores no se traducen:
+   el latín y las traducciones del autor se muestran siempre como son. */
+const LB={
+ es:{disp:' editoriales disponibles',coinc:q=>' coincidentes con «'+q+'»',cola:'. Folio material solo en los expresamente asociados; en los demás, libro verificado y posición estimada.',
+  folio:'Folio',libro:'Libro',est:'estimado',sin:'Folio no atribuido',consultar:'Consultar locus',primeros:'Se muestran los primeros 35 loci. Precisa la búsqueda para encontrar los restantes.',
+  st:{visual_rubric:'rúbrica verificada',catalogue:'catálogo BL',provisional:'mapeo provisional',collatio_autoral:'collatio del autor',not_verified:'locus pendiente'}},
+ en:{disp:' editorial loci available',coinc:q=>' loci matching «'+q+'»',cola:'. A material folio only where expressly associated; elsewhere, verified book and estimated position.',
+  folio:'Folio',libro:'Book',est:'estimated',sin:'No folio assigned',consultar:'Consult locus',primeros:'The first 35 loci are shown. Refine the search to find the rest.',
+  st:{visual_rubric:'verified rubric',catalogue:'BL catalogue',provisional:'provisional mapping',collatio_autoral:"author's collatio",not_verified:'locus pending'}},
+ fr:{disp:' loci éditoriaux disponibles',coinc:q=>' loci correspondant à «'+q+'»',cola:'. Folio matériel seulement là où il est expressément associé ; ailleurs, livre vérifié et position estimée.',
+  folio:'Folio',libro:'Livre',est:'estimé',sin:'Aucun folio attribué',consultar:'Consulter le locus',primeros:'Les 35 premiers loci sont affichés. Affinez la recherche pour trouver les autres.',
+  st:{visual_rubric:'rubrique vérifiée',catalogue:'catalogue BL',provisional:'attribution provisoire',collatio_autoral:"collatio de l'auteur",not_verified:'locus en attente'}},
+ la:{disp:' loci editoriales praesto',coinc:q=>' loci cum «'+q+'» congruentes',cola:'. Folium materiale tantum ubi expresse adiungitur; alibi liber comprobatus et locus aestimatus.',
+  folio:'Folium',libro:'Liber',est:'aestimatum',sin:'Folium non attributum',consultar:'Locum inspicere',primeros:'Priores XXXV loci monstrantur. Quaestionem accuratius fac ut ceteros invenias.',
+  st:{visual_rubric:'rubrica comprobata',catalogue:'catalogus BL',provisional:'attributio provisoria',collatio_autoral:'collatio auctoris',not_verified:'locus pendens'}}};
+const lb=()=>LB[(document.documentElement.lang||'es').slice(0,2)]||LB.es;
 function renderMatches(){
+ const L=lb();
  const list=$('f-search-results');list.replaceChildren();
  let q=query.trim(),items=passages;
  if(q){items=passages.filter(p=>fold(p.locus).includes(fold(q))||fold(p.latin).includes(fold(q))||fold(p.translation).includes(fold(q)));}
- $('f-search-count').textContent=items.length+' loci'+(q?' coincidentes con «'+q+'»':' editoriales disponibles')+'. Folio material solo en los expresamente asociados; en los demás, libro verificado y posición estimada.';
+ $('f-search-count').textContent=items.length+(q?L.coinc(q):(L===LB.es?' loci':'')+L.disp)+L.cola;
  for(const p of items.slice(0,35)){
   const div=document.createElement('div');div.className='folio-result';
   const inf=getInfo(p.locus),main=document.createElement('div'),tag=document.createElement('span');tag.className='folio-badge';
-  const est=estimates.get(p.locus);tag.textContent=inf?'Folio '+inf.entry.folio+' · '+({visual_rubric:'rúbrica verificada',catalogue:'catálogo BL',provisional:'mapeo provisional'}[inf.record.status]||inf.record.status):est?'Libro '+est.book.roman+' · ff. '+est.book.start+'–'+est.book.end+' · ≈ f. '+est.folio+' (estimado)':'Folio no atribuido';
+  const est=estimates.get(p.locus);tag.textContent=inf?L.folio+' '+inf.entry.folio+' · '+(L.st[inf.record.status]||inf.record.status):est?L.libro+' '+est.book.roman+' · ff. '+est.book.start+'–'+est.book.end+' · ≈ f. '+est.folio+' ('+L.est+')':L.sin;
   const strong=document.createElement('strong');strong.textContent=p.locus;
   const small=document.createElement('small');small.textContent=p.latin.slice(0,170)+(p.latin.length>170?'…':'');
   main.append(tag,document.createElement('br'),strong,small);
-  const button=document.createElement('button');button.type='button';button.textContent='Consultar locus';button.addEventListener('click',()=>{
+  const button=document.createElement('button');button.type='button';button.textContent=L.consultar;button.addEventListener('click',()=>{
     selection={kind:'locus',value:p.locus};render();document.querySelector('.folio-workspace').scrollIntoView({behavior:'smooth',block:'start'});
     history.replaceState(null,'',location.pathname+'?locus='+encodeURIComponent(p.locus));
   });div.append(main,button);list.append(div);
  }
- if(items.length>35){const p=document.createElement('p');p.textContent='Se muestran los primeros 35 loci. Precisa la búsqueda para encontrar los restantes.';p.style.fontSize='12px';list.append(p)}
+ if(items.length>35){const p=document.createElement('p');p.textContent=L.primeros;p.style.fontSize='12px';list.append(p)}
 }
 function exportTEI(){
  const locus=selection.kind==='locus'?selection.value:map.entries.find(x=>x.folio===selection.value)?.loci?.[0]?.locus;
@@ -177,6 +194,7 @@ async function load(){
   $('f-search-form').addEventListener('submit',e=>{e.preventDefault();query=$('f-search').value.trim();renderMatches();});
   $('f-search').addEventListener('input',e=>{query=e.target.value.trim();renderMatches()});
   $('f-copy').addEventListener('click',copyReference);
+  document.addEventListener('vitruvius:language-changed',()=>setTimeout(renderMatches,0));
   $('f-tei').addEventListener('click',exportTEI);
  }catch(e){$('f-evidence').textContent='Error al cargar la concordancia: '+e.message;$('f-latin').textContent='Vuelve a consultar el lector editorial y el visor institucional; no hay correspondencia atribuible sin los datos.';}
 }

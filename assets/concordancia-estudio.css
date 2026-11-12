@@ -1,0 +1,88 @@
+/* Concordancia de folios y loci · estética del Lexicon y utillaje de estudio.
+
+   Fondo oscuro por defecto, como el Lexicon, para que el facsímil se lea sobre
+   un entorno que no compita con el pergamino. Los nueve fondos de la botonera
+   del Lexicon escriben --lxp-bg y --lxp-ink; todo lo de aquí los respeta. */
+
+:root{--ce-panel:rgba(255,255,255,.045);--ce-line:rgba(255,255,255,.17);
+ --ce-soft:rgba(255,255,255,.72);--ce-mark:rgba(255,214,0,.38)}
+html[data-theme=light]{--ce-panel:rgba(0,0,0,.035);--ce-line:rgba(0,0,0,.17);
+ --ce-soft:rgba(0,0,0,.68);--ce-mark:rgba(255,206,0,.55)}
+
+/* --- Taller de tres paneles, con anchos que el lector reparte --- */
+.folio-workspace{grid-template-columns:var(--ce-cols,1.05fr 8px .98fr 8px 1fr)!important;
+ align-items:stretch}
+.ce-split{cursor:col-resize;background:var(--ce-line);border:0;padding:0;border-radius:4px;
+ position:relative;touch-action:none}
+.ce-split:hover,.ce-split:focus-visible{background:#c9a24a;outline:none}
+.ce-split::after{content:"";position:absolute;inset:50% 50% auto auto;width:2px;height:34px;
+ transform:translate(50%,-50%);background:rgba(255,255,255,.55);border-radius:2px}
+@media(max-width:1130px){.folio-workspace{grid-template-columns:1fr!important}
+ .ce-split{display:none}}
+
+/* --- Barra de estudio: prefacio, voz capital, lupa --- */
+.ce-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:18px 0 4px;
+ padding:14px 16px;background:var(--ce-panel);border:1px solid var(--ce-line);border-radius:10px}
+.ce-bar label{display:grid;gap:5px;font:600 12px system-ui,sans-serif;letter-spacing:.02em}
+.ce-bar select{min-width:210px;max-width:100%;padding:9px 10px;border-radius:7px;
+ border:1px solid var(--ce-line);background:rgba(0,0,0,.25);color:inherit;font:14px/1.3 Georgia,serif}
+html[data-theme=light] .ce-bar select{background:rgba(255,255,255,.85)}
+.ce-bar .ce-hint{flex:1 1 260px;margin:0;font:12px/1.55 system-ui,sans-serif;color:var(--ce-soft)}
+.ce-bar button{min-height:40px;padding:9px 13px;border-radius:7px;border:1px solid var(--ce-line);
+ background:rgba(0,0,0,.25);color:inherit;font:600 12px system-ui,sans-serif;cursor:pointer}
+.ce-bar button[aria-pressed=true]{background:#c9a24a;color:#1a1409;border-color:#c9a24a}
+
+/* --- Lupa sobre el facsímil --- */
+.ce-lens{position:absolute;width:230px;height:230px;border-radius:50%;pointer-events:none;
+ border:2px solid rgba(201,162,74,.9);box-shadow:0 6px 26px rgba(0,0,0,.5);
+ background-repeat:no-repeat;background-color:#efe7d6;display:none;z-index:5}
+.ce-lens.ce-on{display:block}
+#f-image-box{position:relative}
+
+/* --- Subrayado de rúbricas, reutilizado aquí --- */
+.ce-rubrica-wrap{position:relative;display:block;line-height:0}
+.ce-rubrica-layer{position:absolute;inset:0;pointer-events:none}
+.ce-rubrica-mark{position:absolute;background:rgba(255,214,0,.42);mix-blend-mode:multiply;
+ border-radius:3px;box-shadow:0 0 0 1px rgba(190,150,0,.4)}
+
+/* --- Resalte de la voz capital en latín y traducción --- */
+.folio-paragraphs mark.ce-verbum{background:var(--ce-mark);color:inherit;border-radius:2px;
+ padding:0 1px;box-shadow:0 1px 0 rgba(160,120,0,.5)}
+
+/* --- Lectura semidiplomática del folio --- */
+.ce-diplomatica{margin:0;padding:14px 16px;border-top:1px solid var(--ce-line);
+ font:14px/1.75 "Iowan Old Style",Georgia,serif;white-space:pre-wrap}
+.ce-diplomatica b{display:block;font:600 11px system-ui,sans-serif;letter-spacing:.09em;
+ text-transform:uppercase;margin-bottom:7px;color:var(--ce-soft)}
+.ce-diplomatica .ce-rubrica-linea{color:#b4472f;font-variant-caps:small-caps;letter-spacing:.04em}
+html[data-theme=dark] .ce-diplomatica .ce-rubrica-linea{color:#e08a6e}
+
+@media print{.ce-bar,.ce-split,.ce-lens{display:none!important}}
+
+/* El título de la página vive ahora en el masthead; el rótulo interior queda
+   como encabezado de sección y no debe competir con la marca. */
+.folio-main .folio-title{font:400 clamp(24px,2.4vw,34px)/1.22 Georgia,serif;margin:6px 0 14px}
+
+/* --- Botonera del encabezado, con el aspecto de la del Lexicon ---
+   Los controles los montan theme.js (tema), global-language.js (idioma),
+   site-bar.js (Aa) y lexicon-palette.js (Fondo); aquí sólo se ordenan y se
+   visten igual, en el mismo orden que el Lexicon. */
+.ce-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-end}
+.ce-tools>.ce-lab{order:1}
+.ce-tools>.lxp-palette{order:2}
+.ce-tools>.site-global-language{order:3}
+.ce-tools>.theme-switch{order:4}
+.ce-tools>.site-typeface-tool{order:5}
+.ce-tools .ce-lab,.ce-tools .lxp-palette>summary,.ce-tools .site-global-language select,
+.ce-tools .theme-switch,.ce-tools .site-typeface-button{
+ display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;
+ border:1px solid rgba(255,255,255,.28);border-radius:12px;background:#26272b;color:#f2efe9;
+ font:600 15px/1 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;cursor:pointer;
+ position:static!important;box-shadow:none}
+.ce-tools .theme-switch,.ce-tools .site-typeface-button{min-width:48px;justify-content:center;padding:0 12px}
+.ce-tools .site-global-language select{padding-right:34px}
+.ce-tools .ce-lab:hover,.ce-tools .lxp-palette>summary:hover,.ce-tools .theme-switch:hover,
+.ce-tools .site-typeface-button:hover{background:#34363c}
+html[data-theme=light] .ce-tools .ce-lab,html[data-theme=light] .ce-tools .lxp-palette>summary,
+html[data-theme=light] .ce-tools .site-global-language select,html[data-theme=light] .ce-tools .theme-switch,
+html[data-theme=light] .ce-tools .site-typeface-button{background:#fff;color:#1f1f1f;border-color:rgba(0,0,0,.25)}

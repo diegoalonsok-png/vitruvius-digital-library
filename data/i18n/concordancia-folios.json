@@ -1,0 +1,199 @@
+{
+ "schema": "i18n/1",
+ "pagina": "concordancia-folios.html",
+ "nota": "Cadenas visibles de la página. El castellano es el original del autor; las demás lenguas lo traducen sin añadir afirmaciones que el original no haga.",
+ "cadenas": {
+  "navPrincipal": {
+   "es": "← Biblioteca principal",
+   "en": "← Main library",
+   "fr": "← Bibliothèque principale",
+   "la": "← Bibliotheca principalis"
+  },
+  "navVisor": {
+   "es": "Visor H",
+   "en": "H viewer",
+   "fr": "Visionneuse H",
+   "la": "Speculum H"
+  },
+  "navLaboratorio": {
+   "es": "Laboratorio H",
+   "en": "H laboratory",
+   "fr": "Laboratoire H",
+   "la": "Officina H"
+  },
+  "navMetodo": {
+   "es": "Método filológico",
+   "en": "Philological method",
+   "fr": "Méthode philologique",
+   "la": "Ratio philologica"
+  },
+  "navAparato": {
+   "es": "Notas y aparato",
+   "en": "Notes and apparatus",
+   "fr": "Notes et apparat",
+   "la": "Notae et apparatus"
+  },
+  "navAuditoria": {
+   "es": "Estado de auditoría",
+   "en": "Audit status",
+   "fr": "État de l'audit",
+   "la": "Status recognitionis"
+  },
+  "eyebrow": {
+   "es": "Bibliotheca Vitruvii · Concordantia foliorum et locorum · Instrumentum codicologicum",
+   "en": "Bibliotheca Vitruvii · Concordantia foliorum et locorum · Instrumentum codicologicum",
+   "fr": "Bibliotheca Vitruvii · Concordantia foliorum et locorum · Instrumentum codicologicum",
+   "la": "Bibliotheca Vitruvii · Concordantia foliorum et locorum · Instrumentum codicologicum"
+  },
+  "cintillo": {
+   "es": "BIBLIOTECA DIGITAL · CRÍTICA TEXTUAL",
+   "en": "DIGITAL LIBRARY · TEXTUAL CRITICISM",
+   "fr": "BIBLIOTHÈQUE NUMÉRIQUE · CRITIQUE TEXTUELLE",
+   "la": "BIBLIOTHECA DIGITALIS · CRITICA TEXTUS"
+  },
+  "titulo": {
+   "es": "Concordancia entre folios y loci",
+   "en": "Concordance of folios and loci",
+   "fr": "Concordance des folios et des loci",
+   "la": "Concordantia foliorum et locorum"
+  },
+  "intro": {
+   "es": "Un registro de la correspondencia entre De architectura y el códice H · Harley MS 2767. Se distinguen la imagen digital conservada, la transcripción paleográfica todavía provisional y el locus editorial de V514, V554 y V297.",
+   "en": "A record of the correspondence between De architectura and codex H · Harley MS 2767. It distinguishes the surviving digital image, the still provisional palaeographical transcription, and the editorial locus of V514, V554 and V297.",
+   "fr": "Un registre de la correspondance entre De architectura et le codex H · Harley MS 2767. On y distingue l'image numérique conservée, la transcription paléographique encore provisoire et le locus éditorial de V514, V554 et V297.",
+   "la": "Index correspondentiae inter De architectura et codicem H · Harley MS 2767. Distinguuntur imago digitalis servata, transcriptio palaeographica adhuc provisoria, et locus editorialis V514, V554, V297."
+  },
+  "rigorTitulo": {
+   "es": "Rigor de atribución.",
+   "en": "Rigour of attribution.",
+   "fr": "Rigueur de l'attribution.",
+   "la": "Rigor attributionis."
+  },
+  "rigorTexto": {
+   "es": "La localización de los 731 loci en una edición no demuestra en qué folio aparecen en H. Solo los folios con relación documentada figuran como asociados; las relaciones provisionales no se presentan como comprobaciones diplomáticas. No se extrapolan páginas ni se inventan variantes.",
+   "en": "Locating the 731 loci in an edition does not prove on which folio they appear in H. Only folios with a documented relation are shown as associated; provisional relations are not presented as diplomatic verifications. No pages are extrapolated and no variants are invented.",
+   "fr": "Localiser les 731 loci dans une édition ne prouve pas sur quel folio ils figurent dans H. Seuls les folios à relation documentée sont donnés comme associés ; les relations provisoires ne sont pas présentées comme des vérifications diplomatiques. Aucune page n'est extrapolée, aucune variante inventée.",
+   "la": "Loci septingenti triginta unus in editione reperti non probant quo in folio codicis H appareant. Sola folia relatione documentata adiuncta exhibentur; relationes provisoriae pro comprobationibus diplomaticis non habentur. Nullae paginae extrapolantur, nullae lectiones finguntur."
+  },
+  "panelI": {
+   "es": "I · Folio del manuscrito",
+   "en": "I · Folio of the manuscript",
+   "fr": "I · Folio du manuscrit",
+   "la": "I · Folium codicis"
+  },
+  "panelII": {
+   "es": "II · Texto latino y locus",
+   "en": "II · Latin text and locus",
+   "fr": "II · Texte latin et locus",
+   "la": "II · Textus Latinus et locus"
+  },
+  "panelIII": {
+   "es": "III · Traducción alineada",
+   "en": "III · Aligned translation",
+   "fr": "III · Traduction alignée",
+   "la": "III · Translatio ad textum apposita"
+  },
+  "rotFolio": {
+   "es": "Folio:",
+   "en": "Folio:",
+   "fr": "Folio :",
+   "la": "Folium:"
+  },
+  "rotTraduccion": {
+   "es": "Traducción:",
+   "en": "Translation:",
+   "fr": "Traduction :",
+   "la": "Translatio:"
+  },
+  "btnAbrirImagen": {
+   "es": "Abrir imagen en H",
+   "en": "Open image in H",
+   "fr": "Ouvrir l'image dans H",
+   "la": "Imaginem in H aperire"
+  },
+  "btnFichaBL": {
+   "es": "Ficha British Library",
+   "en": "British Library record",
+   "fr": "Notice British Library",
+   "la": "Scheda British Library"
+  },
+  "btnAbrirLocus": {
+   "es": "Abrir locus",
+   "en": "Open locus",
+   "fr": "Ouvrir le locus",
+   "la": "Locum aperire"
+  },
+  "btnCopiar": {
+   "es": "Copiar referencia",
+   "en": "Copy reference",
+   "fr": "Copier la référence",
+   "la": "Notam exscribere"
+  },
+  "btnTEI": {
+   "es": "Exportar TEI-XML",
+   "en": "Export TEI-XML",
+   "fr": "Exporter TEI-XML",
+   "la": "TEI-XML exportare"
+  },
+  "btnComparacion": {
+   "es": "Abrir comparación editorial",
+   "en": "Open editorial comparison",
+   "fr": "Ouvrir la comparaison éditoriale",
+   "la": "Comparationem editorialem aperire"
+  },
+  "buscarTitulo": {
+   "es": "Buscar cualquier locus del tratado",
+   "en": "Search any locus of the treatise",
+   "fr": "Chercher n'importe quel locus du traité",
+   "la": "Quemlibet operis locum quaerere"
+  },
+  "buscarTexto": {
+   "es": "Esta consulta recorre los 731 pasajes latinos indexados, pero no les atribuye un folio sin evidencia. Prueba 1.praef.1, symmetria, Archimedes o 9.praef.10.",
+   "en": "This search runs over the 731 indexed Latin passages, but assigns no folio without evidence. Try 1.praef.1, symmetria, Archimedes or 9.praef.10.",
+   "fr": "Cette recherche parcourt les 731 passages latins indexés, mais n'attribue aucun folio sans preuve. Essayez 1.praef.1, symmetria, Archimedes ou 9.praef.10.",
+   "la": "Haec quaestio per septingentos triginta unum locos Latinos indicatos percurrit, nullum tamen folium sine testimonio attribuit. Tempta 1.praef.1, symmetria, Archimedes, 9.praef.10."
+  },
+  "buscarRotulo": {
+   "es": "Locus, palabra o frase en latín o castellano",
+   "en": "Locus, word or phrase in Latin or Spanish",
+   "fr": "Locus, mot ou phrase en latin ou en espagnol",
+   "la": "Locus, vocabulum aut sententia Latine vel Hispanice"
+  },
+  "buscarBoton": {
+   "es": "Buscar",
+   "en": "Search",
+   "fr": "Chercher",
+   "la": "Quaerere"
+  },
+  "notasTitulo": {
+   "es": "Procedencia y criterios",
+   "en": "Provenance and criteria",
+   "fr": "Provenance et critères",
+   "la": "Origo et rationes"
+  },
+  "notasDescarga": {
+   "es": "Descargar tabla de correspondencias (JSON)",
+   "en": "Download the correspondence table (JSON)",
+   "fr": "Télécharger la table des correspondances (JSON)",
+   "la": "Tabulam correspondentiae depromere (JSON)"
+  },
+  "notasPropuesta": {
+   "es": "Consultar propuesta de 1r",
+   "en": "Consult the proposal for 1r",
+   "fr": "Consulter la proposition pour 1r",
+   "la": "Propositum folii 1r inspicere"
+  },
+  "notasProtocolo": {
+   "es": "Protocolo filológico aplicado",
+   "en": "Philological protocol applied",
+   "fr": "Protocole philologique appliqué",
+   "la": "Ratio philologica adhibita"
+  },
+  "btnLaboratorio": {
+   "es": "Laboratorio H",
+   "en": "H laboratory",
+   "fr": "Laboratoire H",
+   "la": "Officina H"
+  }
+ }
+}
