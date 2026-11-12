@@ -93,6 +93,44 @@ html[data-theme="dark"] body.vitruvius-secondary-controls #apa-apparatus-metrics
  display:flex;align-items:center;min-width:190px;margin:0;
  padding:6px 8px;font:11px/1.4 system-ui,sans-serif;
 }
+
+/* Final compact ribbon: short horizontal labels instead of tall cards. */
+.apa-wrap #apa-metrics.apa-grid,
+.apa-wrap #apa-apparatus-metrics.apa-grid{
+ grid-auto-columns:minmax(170px,1fr)!important;
+ gap:4px!important;
+ margin:8px 0 12px!important;
+ padding:0 0 3px!important;
+}
+.apa-wrap #apa-metrics .apa-stat,
+.apa-wrap #apa-apparatus-metrics .apa-stat{
+ display:flex!important;
+ flex-direction:row!important;
+ align-items:center!important;
+ justify-content:flex-start!important;
+ gap:7px!important;
+ height:auto!important;
+ min-height:42px!important;
+ max-height:50px!important;
+ padding:5px 8px!important;
+ border-radius:3px!important;
+}
+.apa-wrap #apa-metrics .apa-stat strong,
+.apa-wrap #apa-apparatus-metrics .apa-stat strong{
+ flex:0 0 auto!important;
+ font:600 17px/1 Georgia,serif!important;
+ margin:0!important;
+}
+.apa-wrap #apa-metrics .apa-stat span,
+.apa-wrap #apa-apparatus-metrics .apa-stat span{
+ display:block!important;
+ font:500 10px/1.2 system-ui,sans-serif!important;
+ margin:0!important;
+}
+.apa-wrap #apa-apparatus-metrics .apa-status{
+ min-height:42px!important;
+ font-size:10px!important;
+}
 </style>
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
@@ -124,6 +162,6 @@ html[data-theme="dark"] body.vitruvius-secondary-controls #apa-apparatus-metrics
 <p>Fuentes bibliográficas de las ediciones: <a href="documents/edicion-v514.html">V514</a> · <a href="documents/edicion-v554.html">V554</a> · <a href="documents/edicion-v297.html">V297</a>. Las notas conservan el nombre y el ordinal del párrafo de su archivo de origen. La referencia numérica al párrafo corresponde a la extracción informática y no sustituye una paginación editorial estable.</p>
 </section>
 </main>
-<script defer src="assets/inventario-aparato-autoral.js?v=20261112-locus-selector-v2"></script>
+<script defer src="assets/inventario-aparato-autoral.js?v=20261112-match-ribbon-v3"></script>
 <script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script>
 <script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></body></html>
