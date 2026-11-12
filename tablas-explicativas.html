@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"><meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0d0d0e">
-<title>Tablas explicativas · The Architect of Theory V297 · Vitruvius Digital Library</title>
-<meta name="description" content="Nueve tablas explicativas seleccionadas de The Architect of Theory, edición inglesa V297: loci vitruvianos, crítica editorial, bibliografía Chicago 18 y DOI.">
+<title>Tablas de los libros · V514 · V554 · V297 · Vitruvius Digital Library</title>
+<meta name="description" content="Todas las tablas numeradas de las ediciones de Diego A. Kurilo (V514, V554, V297), con búsqueda en las celdas, loci vitruvianos legibles en latín y traducción, e índice de términos en los tres libros.">
 <meta name="citation_author" content="Kurilo, Diego">
 <meta name="citation_title" content="The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity">
 <meta name="citation_publication_date" content="2026">
@@ -16,190 +16,86 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Gentium+Book+Plus:wght@400;700&display=swap">
 <style>
-:root{color-scheme:dark;font-family:Arial,Helvetica,sans-serif;background:#0d0d0e;color:#e9e9e9}
-*{box-sizing:border-box}
-body{margin:0;line-height:1.6;background:#0d0d0e}
-a{color:#e8e8e8;text-underline-offset:3px}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #ffe36a;outline-offset:3px}
-.wrap{max-width:1180px;margin:auto;padding:0 24px}
-header.top{border-bottom:1px solid #3b3b3d;padding:18px 0}
-nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
-nav a{text-decoration:none;font-size:13px}
-nav a:hover{text-decoration:underline;text-decoration-color:#ffe36a}
+:root{--bg:#0d0d0e;--fg:#e9e9e9;--muted:#b4b4b7;--line:#3a3a3d;--panel:#161618;--head:#222326;--zebra:rgba(255,255,255,.035);--hit:rgba(255,214,0,.38);--acc:#e8d27a;color-scheme:dark;font-family:Arial,Helvetica,sans-serif}
+html[data-theme="light"]{--bg:#f6f5f2;--fg:#1b1c1f;--muted:#5d5f64;--line:#d6d1c7;--panel:#fff;--head:#ece8e0;--zebra:rgba(0,0,0,.03);--hit:rgba(255,214,0,.5);--acc:#6b5a1e;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;line-height:1.6;background:var(--bg);color:var(--fg)}
+a{color:inherit;text-underline-offset:3px}
+.wrap{max-width:1240px;margin:auto;padding:0 24px}
+header.top{border-bottom:1px solid var(--line);padding:18px 0}
+nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center;padding-right:150px}nav a{text-decoration:none;font-size:13px}nav a:hover{text-decoration:underline}
 nav strong{font:700 20px/1.3 Cardo,Georgia,serif;letter-spacing:.11em;margin-right:auto}
-.hero{padding:45px 0 22px;border-bottom:1px solid #333}
-.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:#a9a9a9}
-h1{font:400 clamp(30px,5vw,52px)/1.12 "Gentium Book Plus",Georgia,serif;margin:12px 0}
-.lead{max-width:860px;color:#c6c6c7;margin:0 0 16px}
-.citation{font-size:13px;color:#c7c7c8;border-left:2px solid #777;padding:4px 14px;margin:18px 0}
-.citation i{color:#fff}
-.metadata{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-size:12px;color:#bbb}
-.metadata a{color:#ffe36a}
-.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:22px 0}
-input{flex:1 1 260px;max-width:580px;padding:12px 14px;background:#161617;border:1px solid #555;border-radius:5px;color:#fff;font:14px Arial}
-.stat{color:#bbb;font-size:13px}
-.table-entry{padding:29px 0 32px;border-top:1px solid #373739;scroll-margin-top:20px;--reading-size:14px}
-.table-entry .explanation{font-size:calc(var(--reading-size) + 1px)}
-.table-entry table{font-size:var(--reading-size)}
-.table-entry.reading-loupe{--reading-size:20px}
-.table-tools,.global-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:15px 0;padding:10px 0;border-block:1px solid #38383b}
-.table-tools button,.global-tools button,.global-tools a{border:1px solid #454548;border-radius:18px;padding:7px 12px;background:#202023;color:#e8e8e8;font:12px Arial,sans-serif;text-decoration:none;cursor:pointer}
-.table-tools button:hover,.global-tools button:hover,.global-tools a:hover{background:#343437;border-color:#777;color:#fff}
-.table-tools button[aria-pressed="true"]{border-color:#ffe36a}
-.table-tools button:focus-visible,.global-tools button:focus-visible{outline:2px solid #ffe36a}
-.table-tools .table-tool-note{font:11px/1.5 Arial,sans-serif;color:#aaa}
-.table-underline{background:rgba(255,227,106,.19);text-decoration:underline 2px #ffe36a;text-underline-offset:3px}
-.table-entry[data-highlighted="true"]{border-left:2px solid #777;padding-left:12px}
-@media print{.table-tools,.global-tools{display:none!important}body.print-single .table-entry{display:none!important}body.print-single .table-entry.print-target{display:block!important}body.print-single .hero,body.print-single .controls,body.print-single .note,body.print-single footer{display:none!important}body.print-single .table-entry.print-target{break-inside:auto}body.print-single .table-entry.print-target .scroller{overflow:visible}body.print-single .table-entry.print-target table{min-width:0;width:100%}.table-underline{background:transparent;text-decoration:underline 2px #222}}
-.heading-line{display:flex;justify-content:space-between;gap:16px;align-items:baseline;flex-wrap:wrap}
-h2{font:400 clamp(22px,3vw,32px)/1.22 "Gentium Book Plus",Georgia,serif;margin:7px 0}
-.category{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:#aaa}
-.locus{color:#ffe36a;font-size:13px;margin:8px 0}
-.explanation{max-width:1000px;color:#c9c9c9;margin:10px 0 17px}
-.scroller{overflow-x:auto;border:1px solid #454548;border-radius:6px}
-table{border-collapse:collapse;width:100%;min-width:660px;font-size:13px}
-th{text-align:left;background:#202023;font-size:12px;letter-spacing:.01em}
-td,th{padding:10px 12px;border-bottom:1px solid #363638;vertical-align:top}
-tbody tr:nth-child(even){background:#151516}
-tbody tr:last-child td{border-bottom:0}
-.table-source,.aside{color:#aaa;font-size:12px;margin-top:11px}
-.table-source a{color:#ffe36a}
-.note{border-top:1px solid #38383b;border-bottom:1px solid #38383b;margin:12px 0 35px;padding:18px 0;color:#bdbdbd;font-size:13px}
-footer{border-top:1px solid #39393b;padding:24px 0 38px;color:#999;font-size:12px}
-small{color:#aaa}
-[hidden]{display:none!important}
-@media(max-width:600px){.wrap{padding:0 16px}nav strong{flex-basis:100%}.hero{padding-top:27px}td,th{padding:9px}table{font-size:12px;min-width:580px}}
-@media print{body{background:#fff;color:#111}nav,.controls{display:none}.table-entry{break-inside:avoid}a,.metadata a{color:#111}.scroller{border-color:#777}td,th{border-color:#ccc}thead th{background:#eee;color:#111}.locus{color:#111}}
+.hero{padding:40px 0 18px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+h1{font:400 clamp(30px,5vw,50px)/1.12 "Gentium Book Plus",Georgia,serif;margin:10px 0}
+.lead{max-width:900px;color:var(--muted);margin:0 0 12px}
+#tl-meta{font-size:12px;color:var(--muted)}
+.tl-controls{position:sticky;top:0;z-index:5;background:var(--bg);display:grid;grid-template-columns:minmax(160px,220px) minmax(220px,1fr) minmax(240px,1.3fr) auto;gap:10px;align-items:end;padding:16px 0;border-bottom:1px solid var(--line)}
+.tl-controls label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
+.tl-controls select,.tl-controls input[type=search]{width:100%;padding:10px 12px;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:6px;font:14px Arial}
+.tl-check{flex-direction:row!important;align-items:center;gap:6px!important;white-space:nowrap}
+#tl-count{grid-column:1/-1;font-size:12px;color:var(--muted)}
+.tl-tools{display:flex;gap:8px;margin:14px 0 0}.tl-tools button{border:1px solid var(--line);border-radius:18px;padding:6px 12px;background:var(--panel);color:var(--fg);font:12px Arial;cursor:pointer}
+.tl-entry{padding:26px 0 28px;border-top:1px solid var(--line);scroll-margin-top:110px}
+.tl-cat{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);margin:0}
+h2{font:400 clamp(21px,2.6vw,29px)/1.25 "Gentium Book Plus",Georgia,serif;margin:6px 0 12px}
+.tl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px;color:var(--fg)}
+th{text-align:left;background:var(--head);font-size:12px;color:var(--fg)}
+td,th{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--zebra)}tbody tr:last-child td{border-bottom:0}
+tr.tl-row-hit{box-shadow:inset 3px 0 0 var(--acc)}
+mark.tl-hit,.tl-indice mark{background:var(--hit);color:inherit;border-radius:2px;padding:0 1px}
+.tl-loc{font:inherit;color:inherit;background:transparent;border:0;border-bottom:1px dotted currentColor;padding:0;cursor:pointer;white-space:nowrap}
+.tl-loc:hover{background:var(--hit)}
+.tl-term{font:inherit;color:inherit;background:transparent;border:0;padding:0;cursor:pointer;text-align:left;text-decoration:underline dotted;text-underline-offset:4px}
+.tl-term:hover{background:var(--hit)}
+.tl-foot{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;margin-top:12px}
+.tl-big{font:600 15px Arial;padding:12px 18px;border-radius:8px;border:1px solid var(--fg);background:var(--fg);color:var(--bg);cursor:pointer}
+.tl-big:hover{opacity:.88}
+.tl-src{font-size:12px;color:var(--muted)}
+.tl-dialog{width:min(1100px,94vw);max-height:88vh;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--fg);padding:0}
+.tl-dialog::backdrop{background:rgba(0,0,0,.55)}
+.tl-dlg-head{position:sticky;top:0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 16px;background:var(--head);border-bottom:1px solid var(--line)}
+.tl-dlg-head select,.tl-dlg-head button{padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg);font:13px Arial;cursor:pointer}
+.tl-dlg-title{margin:0 auto 0 0;font:400 20px Georgia,serif}
+.tl-dlg-cols{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.tl-lat,.tl-tra{padding:16px 20px;font:17px/1.7 Georgia,serif}.tl-lat{border-right:1px solid var(--line)}
+.tl-k{font:12px/1.4 Arial;color:var(--muted);margin:0 0 6px}
+.tl-dlg-foot{padding:10px 20px 16px;margin:0;font-size:13px}
+.tl-indice{padding:14px 20px}.tl-hits{padding-left:22px;font:15px/1.6 Georgia,serif}.tl-hits li{margin:6px 0}
+.tl-glosa{border-left:3px solid var(--acc);padding:4px 14px;margin:0 0 14px;font-size:14px}.tl-glosa h4{margin:4px 0 8px;font:600 15px Arial}
+.note{border-top:1px solid var(--line);margin:12px 0 30px;padding:16px 0;color:var(--muted);font-size:13px}
+footer{border-top:1px solid var(--line);padding:22px 0 36px;color:var(--muted);font-size:12px}
+@media(max-width:820px){.tl-controls{grid-template-columns:1fr 1fr}.tl-dlg-cols{grid-template-columns:1fr}.tl-lat{border-right:0;border-bottom:1px solid var(--line)}nav{padding-right:0}}
+@media print{.tl-controls,.tl-tools,.tl-big,nav{display:none}body{background:#fff;color:#111}.tl-entry{break-inside:avoid}}
 </style>
-<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
-<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 </head>
 <body>
 <header class="top"><nav class="wrap" aria-label="Navegación principal">
 <strong>VITRVVIVS <small>/ Tabulae</small></strong>
-<a href="index.html">Inicio</a>
-<a href="bibliotheca-graeca-latina.html">Bibliotheca</a>
-<a href="vitruvia.html">Vitruvia</a>
-<a href="vitruvia-lexicon.html">Lexicon</a>
-<a href="codex-h-folios-local.html">Codex H · Folios</a>
+<a href="index.html">Inicio</a><a href="lector-bilingue.html">Lector bilingüe</a><a href="vitruvia-lexicon.html">Lexicon</a><a href="codex-h-folios-local.html">Codex H · Folios</a><a href="scriptorium.html">Scriptorium</a>
 </nav></header>
 <main>
 <section class="hero"><div class="wrap">
-<p class="eyebrow">Investigación arquitectónica · edición inglesa V297</p>
-<h1>Tablas explicativas</h1>
-<p class="lead">Selección representativa de tablas originales del libro <i>The Architect of Theory</i>, acompañadas de comentarios editoriales en español, loci vitruvianos y criterios de interpretación. El cuadro transcrito conserva las voces y datos de la edición inglesa. No constituye una nueva colación de manuscritos.</p>
-<p class="citation">Kurilo, Diego. <i>The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity</i>. Primera edición inglesa, revisión V297. Buenos Aires: Sophia Lux Publishing House, 2026. <a href="https://doi.org/10.5281/zenodo.23885404" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.23885404</a>.</p>
-<div class="metadata"><span id="meta-count">Preparando selección documental…</span><a href="documents/kurilo-theory-en.pdf">Consultar edición inglesa en PDF</a><a href="como-citar.html">Normas de cita</a></div>
+<p class="eyebrow">Tabulae · V514 · V554 · V297</p>
+<h1>Tablas de los libros</h1>
+<p class="lead">Todas las tablas numeradas de las tres ediciones de Diego A. Kurilo: <i>De architectura</i>, Recensio V514 (latín–castellano) y V554 (latín–francés), y <i>The Architect of Theory</i>, V297. Se buscan dentro de las celdas; cada locus se lee en latín con su traducción, y cada término de la primera columna abre su índice en los tres libros.</p>
+<p id="tl-meta">Cargando el registro de tablas…</p>
+<div class="tl-tools"><button type="button" id="tl-print">Imprimir / PDF</button><button type="button" id="tl-copy">Copiar enlace de esta búsqueda</button></div>
 </div></section>
 <div class="wrap">
-<div class="global-tools" aria-label="Exportar tablas explicativas"><button type="button" id="print-all">Imprimir / Guardar PDF</button><button type="button" id="mail-all">Mail</button><button type="button" id="whatsapp-all">WhatsApp</button><button type="button" id="copy-all">Copiar enlace</button></div>
-<div class="controls"><label for="filter">Filtrar por tema o locus</label><input id="filter" type="search" placeholder="symmetria · 3.3 · Codex H · hidráulica" autocomplete="off"><span id="filter-result" class="stat" role="status" aria-live="polite"></span></div>
-<div id="tables" aria-live="off"><p>Consultando el registro de tablas derivadas de V297…</p></div>
-<p class="note"><strong>Nota ecdótica.</strong> Los números de tabla indican su posición ordinal entre las 26 tablas estructuradas detectadas en el DOCX V297, no una paginación estable. Las tablas muestran una selección representativa de filas de la obra, no necesariamente cada fila del cuadro original. Los loci reproducen las referencias de la edición cuando están presentes; las referencias temáticas añadidas se identifican como tales. Las relaciones arqueológicas y las interpretaciones lexicales no se presentan como hechos cotejados automáticamente con los códices. El manuscrito Harley MS 2767 y sus folios no han sido modificados.</p>
+<div class="tl-controls" role="search">
+<label>Edición<select id="tl-ed"><option value="">Las tres ediciones</option><option value="V514">V514 · latín–castellano</option><option value="V554">V554 · latin–français</option><option value="V297">V297 · Latin–English</option></select></label>
+<label>Tabla<select id="tl-tabla"><option value="">Todas las tablas</option></select></label>
+<label>Buscar en las tablas<input id="tl-q" type="search" placeholder="symmetria · 3.3 · Rose · columna · pes" autocomplete="off"></label>
+<label class="tl-check"><input type="checkbox" id="tl-solo"> sólo filas coincidentes</label>
+<p id="tl-count" role="status" aria-live="polite"></p>
+</div>
+<div id="tablas"><p>Cargando…</p></div>
+<p class="note"><strong>Nota ecdótica.</strong> Las tablas se transcriben automáticamente de los PDF publicados (filas por los filetes del libro, columnas por su encabezado); las palabras cortadas por el ancho de columna se reúnen sólo cuando el corte es seguro. No se corrige ni se añade contenido: ante cualquier duda manda la página del PDF, enlazada al pie de cada tabla. Los loci de V297 siguen la segmentación de esa edición, que a veces agrupa pasajes bajo otro identificador.</p>
 </div>
 </main>
-<footer><div class="wrap">Vitruvius Digital Library · <i>The Architect of Theory</i> V297 · DOI: <a href="https://doi.org/10.5281/zenodo.23885404">10.5281/zenodo.23885404</a> · Citas bibliográficas según <i>The Chicago Manual of Style</i>, 18.ª edición. Consulta documental no sustitutiva de la edición íntegra.</div></footer>
-<script>
-(()=>{"use strict";
-const $=id=>document.getElementById(id),root=$("tables"),query=$("filter"),counter=$("filter-result");
-const text=(tag,value,cl)=>{const e=document.createElement(tag);e.textContent=String(value??"");if(cl)e.className=cl;return e};
-let entries=[];
-const pageTitle="Tablas explicativas · The Architect of Theory V297";
-function shareText(record){return [record?record.title:pageTitle,record?"Loci: "+record.locus:"Selección de tablas explicativas",record?record.summary:"Edición inglesa de Diego Kurilo", "DOI: https://doi.org/10.5281/zenodo.23885404"].join("\n")}
-function shareURL(record){const url=new URL(location.href);url.hash=record?"tabla-"+record.n:"";return url.href}
-function shareRecord(kind,record){
- const body=shareText(record)+"\n"+shareURL(record),subject=record?record.title:pageTitle;
- if(kind==="mail"){location.href="mailto:?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);return}
- if(kind==="whatsapp"){window.open("https://wa.me/?text="+encodeURIComponent(body),"_blank","noopener,noreferrer");return}
- if(kind==="copy"){
-  if(navigator.clipboard?.writeText)navigator.clipboard.writeText(shareURL(record)).catch(()=>window.prompt("Copiar enlace",shareURL(record)));
-  else window.prompt("Copiar enlace",shareURL(record));
- }
-}
-let printReset=null;
-function printRecord(section){
- document.body.classList.toggle("print-single",!!section);
- document.querySelectorAll(".table-entry.print-target").forEach(e=>e.classList.remove("print-target"));
- if(section)section.classList.add("print-target");
- if(printReset)clearTimeout(printReset);
- window.print();
- printReset=setTimeout(()=>{document.body.classList.remove("print-single");section?.classList.remove("print-target")},1200);
-}
-window.addEventListener("afterprint",()=>{document.body.classList.remove("print-single");document.querySelectorAll(".print-target").forEach(x=>x.classList.remove("print-target"))});
-function underlineSelection(section){
- const selection=window.getSelection();
- if(!selection||selection.isCollapsed||!selection.rangeCount)return;
- const range=selection.getRangeAt(0);
- if(!section.contains(range.commonAncestorContainer))return;
- const area=range.commonAncestorContainer.nodeType===1?range.commonAncestorContainer:range.commonAncestorContainer.parentElement;
- if(area?.closest(".table-tools"))return;
- const wrapper=document.createElement("span");wrapper.className="table-underline";
- try{wrapper.append(range.extractContents());range.insertNode(wrapper);selection.removeAllRanges();section.dataset.highlighted="true"}catch{}
-}
-function removeUnderlines(section){
- for(const node of section.querySelectorAll(".table-underline"))node.replaceWith(...node.childNodes);
- section.normalize();delete section.dataset.highlighted;
-}
-function addTools(section,record){
- const bar=text("div","","table-tools");bar.setAttribute("role","toolbar");bar.setAttribute("aria-label","Herramientas para tabla "+record.n);
- const button=(label,handler)=>{const b=text("button",label);b.type="button";b.addEventListener("click",handler);bar.append(b);return b};
- button("Mail",()=>shareRecord("mail",record));
- button("WhatsApp",()=>shareRecord("whatsapp",record));
- button("PDF / Imprimir",()=>printRecord(section));
- button("Copiar enlace",()=>shareRecord("copy",record));
- let size=14;
- button("A−",()=>{size=Math.max(11,size-1);section.style.setProperty("--reading-size",size+"px")});
- button("A+",()=>{size=Math.min(25,size+1);section.style.setProperty("--reading-size",size+"px")});
- const loupe=button("🔍 Lupa",()=>{const active=section.classList.toggle("reading-loupe");loupe.setAttribute("aria-pressed",String(active));if(!active)section.style.setProperty("--reading-size",size+"px")});
- loupe.setAttribute("aria-pressed","false");
- const mark=button("Subrayar",()=>underlineSelection(section));mark.addEventListener("mousedown",e=>e.preventDefault());
- button("Borrar subrayados",()=>removeUnderlines(section));
- bar.append(text("span","Seleccione una frase y pulse Subrayar","table-tool-note"));
- section.querySelector(".heading-line").after(bar);
-}
-document.getElementById("print-all").addEventListener("click",()=>printRecord(null));
-for(const kind of ["mail","whatsapp","copy"])document.getElementById(kind+"-all").addEventListener("click",()=>shareRecord(kind,null));
-function render(){
- const q=query.value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
- root.replaceChildren();let n=0;
- for(const record of entries){
-  const haystack=[record.title,record.area,record.locus,record.summary,...record.rows.flat()].join(" ").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-  if(q&&!haystack.includes(q))continue;
-  n++;
-  const section=text("section","","table-entry"),head=text("div","","heading-line");
-  const label=text("span",record.area+" · Tabla original n.º "+record.n,"category");
-  const name=text("h2",record.title);name.id="tabla-"+record.n;head.append(label,name);section.append(head);
-  section.append(text("p","Loci: "+record.locus,"locus"),text("p",record.summary,"explanation"));
-  const scroller=text("div","","scroller"),table=text("table"),thead=document.createElement("thead"),thr=document.createElement("tr");
-  for(const c of record.columns)thr.append(text("th",c));thead.append(thr);table.append(thead);
-  const tbody=document.createElement("tbody");
-  for(const row of record.rows){const tr=document.createElement("tr");for(const cell of row)tr.append(text("td",cell));tbody.append(tr)}
-  table.append(tbody);scroller.append(table);section.append(scroller);
-  const source=text("p","Fuente: V297, tabla "+record.n+". Filas seleccionadas; para la tabla completa, consultar la edición original.","table-source");
-  section.append(source);
-  addTools(section,record);
-  if(record.manuscriptLink){const p=text("p","","aside");const a=text("a","Abrir el visor original de folios del Codex H");a.href=record.manuscriptLink;p.append(a);section.append(p)}
-  const index=text("p","","table-source");
-  const a=text("a","Buscar estos loci en los textos de Vitruvio");a.href="index.html#buscar";index.append(a);section.append(index);
-  root.append(section);
- }
- counter.textContent=n+" de "+entries.length+" tablas mostradas";
- if(!n)root.append(text("p","No hay tablas coincidentes con el filtro."));
-}
-fetch("data/tablas-explicativas-v297.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
- if(data?.schema!=="vitruvius-explanatory-tables-v297-v1"||data.source?.doi!=="10.5281/zenodo.23885404"||
-  !Array.isArray(data.selectedTables)||data.selectedTables.length<5)throw Error("Inventario de tablas incompatible");
- const observed=new Set();
- for(const t of data.selectedTables){
-  if(observed.has(t.n)||!Number.isInteger(t.n)||!Array.isArray(t.columns)||!Array.isArray(t.rows)||
-    !t.rows.length||t.rows.some(r=>r.length!==t.columns.length))throw Error("Tabla con formato inválido");
-  observed.add(t.n);
- }
- entries=data.selectedTables;
- $("meta-count").textContent=entries.length+" tablas representativas · "+entries.reduce((s,t)=>s+t.rows.length,0)+" filas seleccionadas · DOCX V297 cotejado por identidad SHA-256";
- render();query.addEventListener("input",render);
-}).catch(e=>{root.replaceChildren(text("p","No se pudo cargar el registro documental de tablas: "+e.message+". Consulte la edición inglesa en PDF."))});
-})();
-</script>
+<footer><div class="wrap">Vitruvius Digital Library · Kurilo, D. A. <i>De architectura</i>, Recensio V514 y V554; <i>The Architect of Theory</i>, V297 (DOI <a href="https://doi.org/10.5281/zenodo.23885404">10.5281/zenodo.23885404</a>). Buenos Aires: Sophia Lux, 2026.</div></footer>
+<script defer src="assets/tablas-libros.js?v=20261112-tablas"></script>
 <script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio"></script></body>
 </html>

@@ -1,0 +1,4457 @@
+{
+ "schema": "vitruvius-tablas-libros-v1",
+ "autor": "Diego A. Kurilo",
+ "metodo": "Extracción automática desde los PDF publicados: filas por filetes horizontales, columnas por el encabezado; palabras cortadas por el ancho de columna reunidas sólo si la unión está atestiguada. Sin corrección editorial; ante duda, la página del PDF manda.",
+ "fuentes": {
+  "V514": {
+   "titulo": "De architectura. Recensio V514 (latín–castellano)",
+   "pdf": "documents/kurilo-recensio-es.pdf",
+   "sha256": "0c762b6e6684eeeff53ff4a5b9605261cfd37ccb216561924eb506c0c26c01d2",
+   "lengua": "es"
+  },
+  "V554": {
+   "titulo": "De architectura. Recensio V554 (latin–français)",
+   "pdf": "documents/kurilo-recensio-fr.pdf",
+   "sha256": "70d6fc3d214c60ef69634ec66c7e579cf20cf9377506f3f923042e8dead7e5f5",
+   "lengua": "fr"
+  },
+  "V297": {
+   "titulo": "The Architect of Theory V297",
+   "pdf": "documents/kurilo-theory-en.pdf",
+   "sha256": "3fabca1a2c628646361ee322569665d284eaafbccfb921e294184aa5ccb1d9af",
+   "lengua": "en"
+  }
+ },
+ "tablas": [
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 1,
+   "titulo": "Los seis principios operativos de la arquitectura (con equivalentes griegos)",
+   "paginaPdf": 36,
+   "paginasPdf": [
+    36,
+    36
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=36",
+   "columnas": [
+    "Principio",
+    "Término Griego",
+    "Significado Principal",
+    "Ámbito Principal"
+   ],
+   "filas": [
+    [
+     "Ordinatio",
+     "τάξις (táxis)",
+     "Ordenación modular",
+     "Cuantitativo / Modular"
+    ],
+    [
+     "Dispositio",
+     "διάθεσις (diáthesis)",
+     "Concepción y representación gráfica",
+     "Intelectual / Proyectual"
+    ],
+    [
+     "Eurythmia",
+     "εὐρυθμία (eurythmía)",
+     "Armonía visual y belleza perceptible",
+     "Estético"
+    ],
+    [
+     "Symmetria",
+     "συμμετρία (symmetría)",
+     "Proporción conmensurable",
+     "Matemático"
+    ],
+    [
+     "Decor",
+     "τὸ πρέπον (to prepon) / decor",
+     "Conveniencia y adecuación",
+     "Cultural / Contextual"
+    ],
+    [
+     "Distributio",
+     "οἰκονομία (oikonomía)",
+     "Distribución económica y funcional",
+     "Práctico / Ético"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 2,
+   "titulo": "Estructura epistemológica del tratado vitruviano por libros",
+   "paginaPdf": 155,
+   "paginasPdf": [
+    155,
+    155
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=155",
+   "columnas": [
+    "Libro",
+    "Rúbrica Temática Tradicional",
+    "Contenido Epistemológico y Técnico"
+   ],
+   "filas": [
+    [
+     "Libro I",
+     "De architectura et de urbis ordinatione",
+     "Formación enciclopédica del arquitecto; la tríada teórica; fundamentos del urbanismo, la castrametación y la defensa de las ciudades."
+    ],
+    [
+     "Libro II",
+     "De materiae facultatibus",
+     "Arqueología de la cabaña primitiva y evolución de la vivienda; estudio físico-químico de las materias edilicias (arena, cal, pozzolana, ladrillo y madera)."
+    ],
+    [
+     "Libro III",
+     "De aedium sacrarum symmetria",
+     "Teoría de las proporciones corporales y antropometría (homo bene figuratus); tipologías del templo clásico y simetrías del orden jónico."
+    ],
+    [
+     "Libro IV",
+     "De ordinibus architectonicis",
+     "Continuación de la tratadística sagrada; génesis y leyes de los órdenes dórico y corintio; proporciones de los altares y las cellas."
+    ],
+    [
+     "Libro V",
+     "De publicis locis",
+     "Arquitectura civil e institucional del foro; basílicas (con especial atención a la Basílica de Fano); acústica y geometría de los teatros (echeia)."
+    ],
+    [
+     "Libro VI",
+     "De privatis aedificiis",
+     "Edificación doméstica; la domus romana y la villa suburbana; adecuación de las viviendas según la condición social y el clima."
+    ],
+    [
+     "Libro VII",
+     "De expolitionibus",
+     "Tratamiento de superficies; técnicas de enlucido, estucados, pavimentación y la química de los pigmentos decorativos."
+    ],
+    [
+     "Libro VIII",
+     "De aquis",
+     "Ingeniería hidráulica; prospección, captación, nivelación y distribución de aguas; construcción de acueductos y cisternas."
+    ],
+    [
+     "Libro IX",
+     "De gnomonica",
+     "Ciencias del cosmos aplicadas; astronomía elemental, fases lunares, trazado de meridianas y construcción de relojes de sol y clepsidras."
+    ],
+    [
+     "Libro X",
+     "De machinis",
+     "Mecánica y poliorcética; ingenios cinemáticos de elevación, hidráulica neumática y fabricación de artillería de torsión (ballistae)."
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 3,
+   "titulo": "Las proporciones de los órdenes, de Vitruvio a los tratadistas",
+   "paginaPdf": 185,
+   "paginasPdf": [
+    185,
+    185
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=185",
+   "columnas": [
+    "Orden",
+    "Vitruvio (s. I a. C.)",
+    "Vignola (1562)",
+    "Palladio (1570)",
+    "Le Corbusier"
+   ],
+   "filas": [
+    [
+     "Toscano",
+     "7 (4.7.2)",
+     "7",
+     "7",
+     "—"
+    ],
+    [
+     "Dórico",
+     "7 (4.3.4)",
+     "8",
+     "7½–8",
+     "—"
+    ],
+    [
+     "Jónico",
+     "8–10 según el intercolumnio (3.3.10); 9 (4.1.8)",
+     "9",
+     "9",
+     "—"
+    ],
+    [
+     "Corintio",
+     "jónico + ⅔ diám. (4.1.1)",
+     "10",
+     "9 ½",
+     "—"
+    ],
+    [
+     "Compuesto",
+     "(no codificado)",
+     "10",
+     "10",
+     "—"
+    ],
+    [
+     "Módulo / canon",
+     "symmetria (módulo = ½ diám. en el dórico; = 1 diám. en el éustilo, 3.3.7)",
+     "módulo sistemático",
+     "módulo",
+     "Modulor (1948): cuerpo + φ"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 4,
+   "titulo": "Proporciones canónicas de los órdenes por elemento",
+   "paginaPdf": 1012,
+   "paginasPdf": [
+    1012,
+    1012
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1012",
+   "columnas": [
+    "Elemento",
+    "Dórico",
+    "Jónico",
+    "Corintio"
+   ],
+   "filas": [
+    [
+     "Contractura (disminución superior del fuste)",
+     "igual en los tres órdenes: depende de la altura de la columna (3.3.12)",
+     "1/6 del diám. inferior hasta 15 pies; 1/6½ de 15 a 20; 1/7 de 20 a 30",
+     "1/7½ de 30 a 40 pies; 1/8 de 40 a 50"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 5,
+   "titulo": "Unidades de medida romanas y su equivalencia métrica",
+   "paginaPdf": 1012,
+   "paginasPdf": [
+    1012,
+    1012
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1012",
+   "columnas": [
+    "Unidad latina",
+    "Equivalente griego",
+    "Relación",
+    "Valor (pes = 29,57 cm)",
+    "Loci"
+   ],
+   "filas": [
+    [
+     "digitus (dedo)",
+     "δάκτυλος",
+     "1/16 de pie",
+     "1,85 cm",
+     "3.1.5–8"
+    ],
+    [
+     "uncia (pulgada)",
+     "—",
+     "1/12 de pie",
+     "2,46 cm",
+     "—"
+    ],
+    [
+     "palmus (palmo)",
+     "παλαιστή",
+     "4 dedos = 1/4 de pie",
+     "7,39 cm",
+     "3.1.5–8"
+    ],
+    [
+     "pes (pie)",
+     "πούς",
+     "16 dedos = 4 palmos",
+     "29,57 cm",
+     "3.1.5–8"
+    ],
+    [
+     "palmipes (pie y palmo)",
+     "—",
+     "1¼ pie",
+     "36,96 cm",
+     "10.14.2; 10.15.2 (palmopedalis)"
+    ],
+    [
+     "cubitus (codo)",
+     "πῆχυς",
+     "1½ pies = 6 palmos = 24 dedos",
+     "44,36 cm",
+     "3.1.5–8; 10.13.6"
+    ],
+    [
+     "gradus (paso sencillo)",
+     "βῆμα",
+     "2½ pies",
+     "73,93 cm",
+     "—"
+    ],
+    [
+     "passus (paso doble)",
+     "—",
+     "5 pies",
+     "1,479 m",
+     "1.6.9; 10.9.1–4"
+    ],
+    [
+     "decempeda / pertica",
+     "—",
+     "10 pies",
+     "2,957 m",
+     "— (agrimensura)"
+    ],
+    [
+     "actus",
+     "—",
+     "120 pies",
+     "35,48 m",
+     "— (agrimensura)"
+    ],
+    [
+     "stadium (estadio)",
+     "στάδιον",
+     "125 pasos = 625 pies",
+     "184,8 m",
+     "1.6.9"
+    ],
+    [
+     "mille passus (milla)",
+     "—",
+     "1000 pasos = 5000 pies",
+     "1,479 km",
+     "10.9.1–4"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 6,
+   "titulo": "Cronología consolidada de Vitruvio y la transmisión del texto",
+   "paginaPdf": 1020,
+   "paginasPdf": [
+    1020,
+    1020
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1020",
+   "columnas": [
+    "Fecha",
+    "Hito"
+   ],
+   "filas": [
+    [
+     "1511",
+     "Edición ilustrada de Fra Giovanni Giocondo (Venecia), la primera con figuras."
+    ],
+    [
+     "1521",
+     "Traducción italiana comentada de Cesare Cesariano (Como)."
+    ],
+    [
+     "1556 / 1567",
+     "Traducción italiana comentada (1556) y edición latina (1567) de Daniele Barbaro, con ilustraciones de Palladio (Venecia)."
+    ],
+    [
+     "1673",
+     "Traducción y comentario de Claude Perrault, etapa mayor de la recepción francesa moderna."
+    ],
+    [
+     "1899",
+     "Edición crítica de Valentin Rose (Teubner, Leipzig), testimonio de control de la presente edición, cuyo texto base es el de Krohn (1912)."
+    ],
+    [
+     "1912",
+     "Edición de Fritz Krohn (Teubner), testimonio de control."
+    ],
+    [
+     "1969–2009",
+     "Ediciones de la Collection des Universités de France («Budé»), libro por libro, a cargo de diversos especialistas, entre ellos Pierre Gros."
+    ],
+    [
+     "1999",
+     "Traducción y comentario de I. D. Rowland y T. N. Howe (Cambridge), referencia moderna en inglés."
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 7,
+   "titulo": "Equivalencias fijas de traducción de los principales términos técnicos",
+   "paginaPdf": 1050,
+   "paginasPdf": [
+    1050,
+    1050
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1050",
+   "columnas": [
+    "Término (latín / griego)",
+    "Equivalente fijo en esta edición"
+   ],
+   "filas": [
+    [
+     "scamilli impares",
+     "término técnico controvertido, generalmente relacionado con una corrección graduada del nivel o de la curvatura del estilóbato; se evita imponer una solución única."
+    ],
+    [
+     "epistylium (ἐπιστύλιον)",
+     "arquitrabe: elemento horizontal principal apoyado sobre los capiteles, primer miembro del entablamento; «epistilio» se reserva para la glosa del término latino."
+    ],
+    [
+     "Método de traducción de La traducción sigue tres reglas.",
+     "los términos técnicos (1) Equivalencia fija: cada término técnico re-"
+    ],
+    [
+     "cibe un solo equivalente en",
+     "todo el volumen (Tabla 7), salvo cuando el contex-"
+    ],
+    [
+     "to exige glosa; (2) conservación",
+     "del término latino cuando ningún equivalente"
+    ],
+    [
+     "moderno cubre su campo",
+     "semántico (ordinatio, symmetria, decor, castellum,"
+    ],
+    [
+     "testudo), con glosa en la primera",
+     "aparición; (3) no modernización: las medi-"
+    ],
+    [
+     "das se traducen en las unidades",
+     "del texto (pies, dedos, codos) y su conversión"
+    ],
+    [
+     "métrica se da en nota o en",
+     "el Apéndice F, nunca en el cuerpo de la traduc-"
+    ],
+    [
+     "ción. Las ediciones española",
+     "y francesa aplican las mismas reglas; el glosario"
+    ],
+    [
+     "operativo siguiente fija los",
+     "equivalentes paralelos de ambas lenguas."
+    ],
+    [
+     "Tabla 7a. Glosario operativo bilingüe",
+     "(latín – español – francés)"
+    ],
+    [
+     "Latín Español",
+     "Francés Locus"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 8,
+   "titulo": "Índice temático del contenido matemático",
+   "paginaPdf": 1063,
+   "paginasPdf": [
+    1063,
+    1063
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1063",
+   "columnas": [
+    "Sección / Capítulo",
+    "Tema matemático"
+   ],
+   "filas": [
+    [
+     "Estudio preliminar",
+     "Proporciones del cuerpo humano; inscripción en cuadrado y círculo"
+    ],
+    [
+     "El Hombre de Vitruvio",
+     "Inscripción geométrica del cuerpo; distinción de los centros del cuadrado y del círculo — no debe confundirse con la cuadratura clásica del círculo"
+    ],
+    [
+     "Libro I.2",
+     "Los seis principios: taxis, symmetria, analogia"
+    ],
+    [
+     "Libro III.1",
+     "Proporciones del cuerpo; homo bene figuratus; la cabeza ≈ 1/8 de la altura"
+    ],
+    [
+     "Libro III (proporciones del templo)",
+     "Proporción modular (modulus, symmetria)"
+    ],
+    [
+     "Libro IX",
+     "Gnomónica y astronomía; el analema y la proyección geométrica"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 9,
+   "titulo": "Conspectus codicum: los principales manuscritos",
+   "paginaPdf": 1064,
+   "paginasPdf": [
+    1064,
+    1064
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1064",
+   "columnas": [
+    "Sigla",
+    "Manuscrito",
+    "Fecha",
+    "Biblioteca",
+    "Rama"
+   ],
+   "filas": [
+    [
+     "H",
+     "Harleianus 2767",
+     "s. IX (inicios)",
+     "Londres, British Library (minúscula carolina)",
+     "testimonio conservado más antiguo conocido de De architectura; fundamental para la historia textual"
+    ],
+    [
+     "G",
+     "Codex Gudianus 69",
+     "s. XI",
+     "Wolfenbüttel, Herzog August Bibliothek",
+     "principal testigo colateral"
+    ],
+    [
+     "E",
+     "Codex Gudianus 132",
+     "s. X",
+     "Wolfenbüttel, Herzog August Bibliothek",
+     "epítome antiguo; emparentado con G"
+    ],
+    [
+     "S",
+     "Codex Selestatensis 1153bis",
+     "s. X ex.",
+     "Sélestat, Bibliothèque Humaniste",
+     "texto de tipo H corregido con lecciones de otra rama (contaminación)"
+    ],
+    [
+     "L",
+     "Codex Leidensis (Vossianus)",
+     "s. X–XI",
+     "Leiden, Bibliotheek der Universiteit",
+     "testimonio antiguo de la tradición"
+    ],
+    [
+     "p",
+     "Codex Pithoeanus (Parisinus)",
+     "s. X",
+     "París, Bibliothèque nationale de France",
+     "testimonio antiguo de la tradición"
+    ],
+    [
+     "rec.",
+     "recentiores",
+     "s. XV",
+     "varias",
+     "copias humanistas tardías, numerosas y generalmente dependientes de tradiciones anteriores"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 10,
+   "titulo": "Conspecto comparativo de la terminología vitruviana",
+   "paginaPdf": 1065,
+   "paginasPdf": [
+    1065,
+    1065
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1065",
+   "columnas": [
+    "Concepto vitruviano",
+    "Académica (Loeb–Granger)",
+    "Francesa (Budé–Fleury)",
+    "Clásica (Perrault)",
+    "Esta edición"
+   ],
+   "filas": [
+    [
+     "Firmitas",
+     "durability",
+     "solidité",
+     "solidité",
+     "firmitas (solidez)"
+    ],
+    [
+     "Utilitas",
+     "convenience",
+     "commodité",
+     "utilité",
+     "utilitas (función)"
+    ],
+    [
+     "Venustas",
+     "beauty",
+     "beauté",
+     "beauté",
+     "venustas (belleza)"
+    ],
+    [
+     "Ordinatio",
+     "setting / order",
+     "ordre",
+     "ordre",
+     "ordinatio (ordenación)"
+    ],
+    [
+     "Dispositio",
+     "arrangement",
+     "disposition",
+     "disposition",
+     "dispositio (disposición)"
+    ],
+    [
+     "Eurythmia",
+     "eurythmy",
+     "eurythmie",
+     "eurythmie",
+     "eurythmia (εὐρυθμία)"
+    ],
+    [
+     "Symmetria",
+     "symmetry",
+     "symétrie",
+     "proportion",
+     "symmetria (proporción conmensurable)"
+    ],
+    [
+     "Decor",
+     "propriety",
+     "bienséance",
+     "bienséance",
+     "decor (decoro)"
+    ],
+    [
+     "Distributio",
+     "economy",
+     "économie",
+     "distribution",
+     "distributio (distribución)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 11,
+   "titulo": "Conspectus de términos griegos en el De architectura",
+   "paginaPdf": 1072,
+   "paginasPdf": [
+    1072,
+    1072
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1072",
+   "columnas": [
+    "Término griego",
+    "Etimología",
+    "Sentido literal",
+    "Equivalentevitruviano",
+    "Sentido arquitectónico",
+    "Loci"
+   ],
+   "filas": [
+    [
+     "ἔντασις",
+     "ἐν (en) + τείνω",
+     "tensión,",
+     "Entasis",
+     "curvatura convexa del",
+     "3.3.13"
+    ],
+    [
+     "(entasis)",
+     "(teínō), «tensar»",
+     "abultamiento",
+     "",
+     "fuste de la columna",
+     ""
+    ],
+    [
+     "ἀνάλημμα",
+     "ἀναλαμβάνω",
+     "diagrama de",
+     "Analemma",
+     "proyección",
+     "9.1.1;"
+    ],
+    [
+     "(analemma)",
+     "(analambánō), «tomar, recoger»",
+     "proyección",
+     "",
+     "geométrica para el reloj de sol",
+     "9.7.1–9.7.7"
+    ],
+    [
+     "ἰχνογραφία",
+     "ἴχνος (íchnos),",
+     "dibujo de la",
+     "Ichnographia",
+     "planta",
+     "1.2.2"
+    ],
+    [
+     "(ichnographia)",
+     "«huella» + γράφω",
+     "huella",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ὀρθογραφία",
+     "ὀρθός (orthós)",
+     "dibujo en",
+     "Orthographia",
+     "alzado (vista frontal)",
+     "1.2.2"
+    ],
+    [
+     "(orthographia)",
+     "+ γράφω",
+     "alzado",
+     "",
+     "",
+     ""
+    ],
+    [
+     "σκηνογραφία",
+     "σκηνή (skēnḗ)",
+     "dibujo",
+     "Scaenographia",
+     "vista en perspectiva",
+     "1.2.2;"
+    ],
+    [
+     "(scaenographia)",
+     "+ γράφω",
+     "escénico",
+     "",
+     "",
+     "7.praef.11"
+    ],
+    [
+     "σκιαθήρας",
+     "σκιά (skiá),",
+     "cazador de",
+     "Gnomon",
+     "varilla del reloj de sol",
+     "9.1.1;"
+    ],
+    [
+     "(skiatheras)",
+     "«sombra» + θηράω (thēráō)",
+     "sombras",
+     "",
+     "",
+     "9.7.1–9.7.7"
+    ],
+    [
+     "μετόπη",
+     "μετά (metá) +",
+     "espacio",
+     "Metopa",
+     "espacio entre los",
+     "4.2.2–"
+    ],
+    [
+     "(metope)",
+     "ὀπή (opḗ)",
+     "entre aberturas",
+     "",
+     "triglifos",
+     "4.2.4"
+    ],
+    [
+     "λογεῖον",
+     "λόγος (lógos),",
+     "lugar del",
+     "Pulpitum (en",
+     "escena elevada del",
+     "5.6.1;"
+    ],
+    [
+     "(logeion)",
+     "«discurso»",
+     "discurso",
+     "parte)",
+     "teatro griego",
+     "5.7.2"
+    ],
+    [
+     "θυμελικοί /",
+     "θυμέλη (altar) /",
+     "de la",
+     "",
+     "músicos y coro /",
+     "5.7.2;"
+    ],
+    [
+     "σκηνικοί",
+     "σκηνή (escena)",
+     "thymele / de",
+     "",
+     "actores dramáticos",
+     "5.6.2;"
+    ],
+    [
+     "(thymelikoi / skenikoi)",
+     "",
+     "la escena",
+     "",
+     "",
+     "5.7.1"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 12,
+   "titulo": "Las disciplinas del arquitecto ideal (De architectura 1.1.3–1.1.10)",
+   "paginaPdf": 1076,
+   "paginasPdf": [
+    1076,
+    1076
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1076",
+   "columnas": [
+    "Disciplina",
+    "Término latino",
+    "Finalidad según Vitruvio"
+   ],
+   "filas": [
+    [
+     "Letras / gramática",
+     "litterae",
+     "Escribir con claridad y fijar la memoria de la doctrina"
+    ],
+    [
+     "Dibujo",
+     "graphis",
+     "Representar plantas, alzados y perspectivas"
+    ],
+    [
+     "Geometría",
+     "geometria",
+     "Regla y compás; trazado y proporción"
+    ],
+    [
+     "Aritmética",
+     "arithmetica",
+     "Cálculo de costes y de medidas; teoría del número"
+    ],
+    [
+     "Óptica",
+     "optica",
+     "Correcta disposición de la luz (unida a la geometría)"
+    ],
+    [
+     "Historia",
+     "historia",
+     "Explicar el origen y el sentido de los ornamentos"
+    ],
+    [
+     "Filosofía",
+     "philosophia",
+     "Elevación del ánimo, física y honestidad del arquitecto"
+    ],
+    [
+     "Música",
+     "musica",
+     "Teoría de la armonía; afinación de máquinas y acústica"
+    ],
+    [
+     "Medicina",
+     "medicina",
+     "Salubridad de los emplazamientos (clima, aguas, orientación)"
+    ],
+    [
+     "Derecho",
+     "iuris responsa",
+     "Servidumbres, aguas, medianerías y contratos"
+    ],
+    [
+     "Astronomía",
+     "caeli ratio",
+     "Orientación, gnomónica y relojes solares"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 13,
+   "titulo": "Los órdenes arquitectónicos (De architectura, Libros III–IV)",
+   "paginaPdf": 1077,
+   "paginasPdf": [
+    1077,
+    1077
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1077",
+   "columnas": [
+    "Orden",
+    "Esbeltez (diám.)*",
+    "Capitel",
+    "Fuste",
+    "Basa",
+    "Ornamentación"
+   ],
+   "filas": [
+    [
+     "Toscano",
+     "7",
+     "Ábaco y equino",
+     "Liso",
+     "Toro sobre plinto",
+     "Muy baja"
+    ],
+    [
+     "Dórico",
+     "7",
+     "Ábaco y equino (triglifos en el friso)",
+     "20 estrías de arista viva",
+     "Sin basa",
+     "Media"
+    ],
+    [
+     "Jónico",
+     "8–10 (3.3.10); 9 (4.1.8)",
+     "Volutas",
+     "24 estrías con filetes",
+     "Áticojónica",
+     "Alta"
+    ],
+    [
+     "Corintio",
+     "≈ 9⅔ (jónico + ⅔ diám., 4.1.1)",
+     "Hojas de acanto",
+     "24 estrías con filetes",
+     "Áticojónica",
+     "Muy alta"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 14,
+   "titulo": "Los intercolumnios (De architectura 3.3.1–3.3.6)",
+   "paginaPdf": 1077,
+   "paginasPdf": [
+    1077,
+    1077
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1077",
+   "columnas": [
+    "Tipo",
+    "Vano (diám.)",
+    "Carácter y uso",
+    "Valoración de Vitruvio"
+   ],
+   "filas": [
+    [
+     "Picnóstilo",
+     "1½",
+     "Columnas muy juntas; aspecto cerrado",
+     "Poco recomendado"
+    ],
+    [
+     "Sístilo",
+     "2",
+     "Columnas cercanas",
+     "Aceptable, con reservas"
+    ],
+    [
+     "Éustilo",
+     "2¼",
+     "El más equilibrado",
+     "El preferido (3.3.6)"
+    ],
+    [
+     "Diástilo",
+     "3",
+     "Mayor separación; monumental",
+     "Riesgo de arquitrabes largos"
+    ],
+    [
+     "Areóstilo",
+     "más de 3",
+     "Muy separadas; arquitrabes de madera",
+     "Propio del orden toscano"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 15,
+   "titulo": "Tipos de planta de templo (De architectura 3.2)",
+   "paginaPdf": 1078,
+   "paginasPdf": [
+    1078,
+    1078
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1078",
+   "columnas": [
+    "Tipo",
+    "Término griego",
+    "Disposición de las columnas",
+    "Observaciones"
+   ],
+   "filas": [
+    [
+     "Próstilo",
+     "prostylos",
+     "Pórtico de columnas solo en el frente",
+     "3.2.3"
+    ],
+    [
+     "Anfipróstilo",
+     "amphiprostylos",
+     "Pórticos en el frente y en la trasera",
+     "3.2.4"
+    ],
+    [
+     "Períptero",
+     "peripteros",
+     "Columnata en todo el perímetro",
+     "El modelo equilibrado (3.2.5)"
+    ],
+    [
+     "Pseudodíptero",
+     "pseudodipteros",
+     "Columnata perimetral con doble vano",
+     "Atribuido a Hermógenes (3.2.6)"
+    ],
+    [
+     "Díptero",
+     "dipteros",
+     "Doble fila perimetral de columnas",
+     "Gran monumentalidad (3.2.7)"
+    ],
+    [
+     "Hipetro",
+     "hypaethros",
+     "Decástilo con cella descubierta",
+     "Raro; cultos especiales (3.2.8)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 16,
+   "titulo": "Principales medidas romanas y sus equivalencias",
+   "paginaPdf": 1078,
+   "paginasPdf": [
+    1078,
+    1078
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1078",
+   "columnas": [
+    "Unidad",
+    "Equivalencia",
+    "Valor aprox. (m)",
+    "Uso"
+   ],
+   "filas": [
+    [
+     "digitus",
+     "1/16 pes",
+     "0,0185",
+     "Dedo; módulo menor"
+    ],
+    [
+     "palmus",
+     "4 digiti",
+     "0,0740",
+     "Palmo"
+    ],
+    [
+     "pes",
+     "16 digiti",
+     "0,296",
+     "Pie; unidad base"
+    ],
+    [
+     "palmipes",
+     "5 palmi",
+     "0,370",
+     "Medida intermedia"
+    ],
+    [
+     "cubitus",
+     "1½ pes",
+     "0,444",
+     "Codo"
+    ],
+    [
+     "gradus",
+     "2½ pedes",
+     "0,739",
+     "Paso"
+    ],
+    [
+     "passus",
+     "5 pedes",
+     "1,48",
+     "Paso doble"
+    ],
+    [
+     "decempeda",
+     "10 pedes",
+     "2,96",
+     "Medición de terrenos"
+    ],
+    [
+     "actus",
+     "120 pedes",
+     "35,5",
+     "Medida agraria"
+    ],
+    [
+     "stadium",
+     "625 pedes",
+     "185",
+     "Distancias"
+    ],
+    [
+     "mille passus",
+     "5.000 pedes",
+     "1 480",
+     "Milla romana"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 17,
+   "titulo": "Principales medidas griegas",
+   "paginaPdf": 1079,
+   "paginasPdf": [
+    1079,
+    1079
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1079",
+   "columnas": [
+    "Unidad",
+    "Equivalencia",
+    "Valor aprox. (m)",
+    "Notas"
+   ],
+   "filas": [
+    [
+     "dáktylos",
+     "1/16 pous",
+     "0,0193",
+     "Dedo"
+    ],
+    [
+     "palaisté",
+     "4 dáktyloi",
+     "0,077",
+     "Palmo"
+    ],
+    [
+     "pous",
+     "16 dáktyloi",
+     "0,308–0,320",
+     "Pie griego (varía por región)"
+    ],
+    [
+     "pechys",
+     "1½ pous",
+     "0,462–0,480",
+     "Codo"
+    ],
+    [
+     "orgyiá",
+     "6 pous",
+     "1,85–1,92",
+     "Braza"
+    ],
+    [
+     "plethron",
+     "100 pous",
+     "30,8–32",
+     "Terrenos y plazas"
+    ],
+    [
+     "stadion",
+     "600 pous",
+     "185–192",
+     "Distancias"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 18,
+   "titulo": "Medidas egipcias y el codo real",
+   "paginaPdf": 1080,
+   "paginasPdf": [
+    1080,
+    1080
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1080",
+   "columnas": [
+    "Unidad",
+    "Subdivisión",
+    "Valor aprox. (m)",
+    "Notas"
+   ],
+   "filas": [
+    [
+     "djeba",
+     "dedo",
+     "0,0187",
+     "Unidad menor"
+    ],
+    [
+     "shesep",
+     "4 dedos",
+     "0,075",
+     "Palmo"
+    ],
+    [
+     "codo común",
+     "6 palmos (24 dedos)",
+     "0,45",
+     "Uso cotidiano"
+    ],
+    [
+     "codo real (meh niswt)",
+     "7 palmos (28 dedos)",
+     "0,5236",
+     "Unidad sagrada y arquitectónica"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 19,
+   "titulo": "Edificios contemporáneos a Vitruvio (época de Augusto)",
+   "paginaPdf": 1080,
+   "paginasPdf": [
+    1080,
+    1080
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1080",
+   "columnas": [
+    "Edificio",
+    "Fecha aprox.",
+    "Tipo",
+    "Observaciones"
+   ],
+   "filas": [
+    [
+     "Basílica de Fano",
+     "27–20 a. C.",
+     "Basílica",
+     "Descrita por Vitruvio (5.1.6): espacio central de 120 × 60 pies; Vitruvio afirma haberla proyectado y supervisado en Fano. Restos identificados oficialmente en 2026; investigación arqueológica en curso."
+    ],
+    [
+     "Panteón de Agripa (orig.)",
+     "27–25 a. C.",
+     "Templo",
+     "Reconstruido después por Adriano"
+    ],
+    [
+     "Templo de Mars Ultor",
+     "2 a. C.",
+     "Templo corintio",
+     "Foro de Augusto"
+    ],
+    [
+     "Teatro de Marcelo",
+     "13–11 a. C.",
+     "Teatro",
+     ""
+    ],
+    [
+     "Ara Pacis Augustae Templo de Apolo Sosiano",
+     "13–9 a. C. 34–20 a. C.",
+     "Altar monumental Templo corintio",
+     "Mármol; orden corintio en Roma"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 20,
+   "titulo": "Tratados técnicos y literatura contemporáneos de Vitruvio",
+   "paginaPdf": 1081,
+   "paginasPdf": [
+    1081,
+    1081
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1081",
+   "columnas": [
+    "Autor",
+    "Obra",
+    "Fecha",
+    "Estado"
+   ],
+   "filas": [
+    [
+     "Vitruvio",
+     "De architectura",
+     "finales del s. I a. C.",
+     "Conservado íntegro"
+    ],
+    [
+     "Varrón",
+     "De re rustica",
+     "37 a. C.",
+     "Conservado"
+    ],
+    [
+     "Cicerón",
+     "De oratore; De re publica",
+     "55–43 a. C.",
+     "Conservado (De oratore); fragmentario (De re publica, palimpsesto Vat. lat. 5757)"
+    ],
+    [
+     "Lucrecio",
+     "De rerum natura",
+     "c. 55 a. C.",
+     "Conservado"
+    ],
+    [
+     "Virgilio",
+     "Aeneis; Georgica",
+     "29–19 a. C.",
+     "Conservado"
+    ],
+    [
+     "Tito Livio",
+     "Ab urbe condita",
+     "27 a. C.–9 d. C.",
+     "Parcial"
+    ],
+    [
+     "Frontino",
+     "De aquaeductu",
+     "c. 97 d. C.",
+     "Conservado (posterior)"
+    ],
+    [
+     "Plinio el Viejo",
+     "Naturalis historia",
+     "77 d. C.",
+     "Conservado; presenta paralelos y préstamos técnicos vinculados a la tradición vitruviana"
+    ],
+    [
+     "Filón de Bizancio",
+     "Mechanica",
+     "s. III a. C.",
+     "Fragmentos; fuente de Vitruvio"
+    ],
+    [
+     "Ctesibio",
+     "(mecánica e hidráulica)",
+     "s. III a. C.",
+     "Perdido; citado por Vitruvio"
+    ]
+   ]
+  },
+  {
+   "edicion": "V514",
+   "lengua": "es",
+   "n": 21,
+   "titulo": "Edificios del De architectura: mencionados vs. conservados",
+   "paginaPdf": 1082,
+   "paginasPdf": [
+    1082,
+    1082
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-es.pdf#page=1082",
+   "columnas": [
+    "Edificio",
+    "De architectura",
+    "Estado de conservación"
+   ],
+   "filas": [
+    [
+     "Casa griega (andronitis/gynaeconitis)",
+     "6.7",
+     "Tipo documentado (Delos, Priene)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 1,
+   "titulo": "Les six principes de fonctionnement de l’architecture (avec leurs équivalents grecs)",
+   "paginaPdf": 36,
+   "paginasPdf": [
+    36,
+    36
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=36",
+   "columnas": [
+    "Principe",
+    "Terme grec",
+    "Signification principale",
+    "Champ d’application principal"
+   ],
+   "filas": [
+    [
+     "Ordinatio",
+     "τάξις (táxis)",
+     "Ordonnance modulaire",
+     "Quantitatif / modulaire"
+    ],
+    [
+     "Dispositio",
+     "διάθεσις (diáthesis)",
+     "Conception et disposition graphique",
+     "Intellectuel / projectuel"
+    ],
+    [
+     "Eurythmia",
+     "εὐρυθμία (eurythmía)",
+     "Eurythmie : harmonie visuelle et bonne proportion",
+     "Esthétique"
+    ],
+    [
+     "Symmetria",
+     "συμμετρία (symmetría)",
+     "Commensurabilité proportionnelle : rapport mesuré des parties entre elles et avec le tout à partir d’une unité commune",
+     "Mathématique / proportionnel"
+    ],
+    [
+     "Decor",
+     "τὸ πρέπον (to prepon)",
+     "Convenance et adéquation",
+     "Culturel / contextuel"
+    ],
+    [
+     "Distributio",
+     "οἰκονομία (oikonomia)",
+     "Répartition économique et fonctionnelle",
+     "Pratique / éthique"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 3,
+   "titulo": "Proportions des ordres, de Vitruve aux auteurs de traités",
+   "paginaPdf": 186,
+   "paginasPdf": [
+    186,
+    186
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=186",
+   "columnas": [
+    "Ordre",
+    "Vitruve (I er s. av. J.-C.)",
+    "Vignole (1562)",
+    "Palladio (1570)",
+    "Le Corbusier"
+   ],
+   "filas": [
+    [
+     "Toscan",
+     "7 (4.7.2)",
+     "7",
+     "7",
+     "—"
+    ],
+    [
+     "Dorique Ionique Corinthien",
+     "7 (4.3.4) 8–10 selon l’entrecolonnement (3.3.10) ; 9 (4.1.8) ionique + ⅔ diam. (4.1.1)",
+     "8 9 10",
+     "7½–8 9 9½",
+     "———"
+    ],
+    [
+     "Composite Module /",
+     "(non codifié) symmetria",
+     "10 module",
+     "10 module",
+     "—Modulor (1948) :"
+    ],
+    [
+     "canon",
+     "(module = ½ diam. dans le dorique ; = 1 diam. dans l’eustyle, 3.3.7)",
+     "systématique",
+     "",
+     "corps + φ"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 4,
+   "titulo": "Proportions canoniques des ordres par élément",
+   "paginaPdf": 1020,
+   "paginasPdf": [
+    1020,
+    1020
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1020",
+   "columnas": [
+    "Élément",
+    "Dorique",
+    "Ionique",
+    "Corinthien"
+   ],
+   "filas": [
+    [
+     "Contracture (diminution supérieure du fût)",
+     "identique pour les trois ordres : elle dépend de la hauteur de la colonne (3.3.12)",
+     "1/6 du diam. inférieur jusqu’à 15 pieds ; 1/6½ de 15 à 20 ; 1/7 de 20 à 30",
+     "1/7½ de 30 à 40 pieds ; 1/8 de 40 à 50"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 5,
+   "titulo": "Unités de mesure romaines et leurs équivalents métriques",
+   "paginaPdf": 1020,
+   "paginasPdf": [
+    1020,
+    1020
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1020",
+   "columnas": [
+    "Unité latine",
+    "Équivalent grec",
+    "Rapport",
+    "Valeur (pes = 29,57 cm)",
+    "Loci"
+   ],
+   "filas": [
+    [
+     "digitus (doigt)",
+     "δάκτυλος",
+     "1/16 de pied",
+     "1,85 cm",
+     "3.1.5–8"
+    ],
+    [
+     "uncia (pouce)",
+     "—",
+     "1/12 de pied",
+     "2,46 cm",
+     "—"
+    ],
+    [
+     "palmus (palme)",
+     "παλαιστή",
+     "4 doigts = 1/4 de pied",
+     "7,39 cm",
+     "3.1.5–8"
+    ],
+    [
+     "pes (pied)",
+     "πούς",
+     "16 doigts = 4 palmes",
+     "29,57 cm",
+     "3.1.5–8"
+    ],
+    [
+     "palmipes (pied et palme)",
+     "—",
+     "1¼ pied",
+     "36,96 cm",
+     "10.14.2 ; 10.15.2 (palmopedalis)"
+    ],
+    [
+     "cubitus (coudée)",
+     "πῆχυς",
+     "1½ pied = 6 palmes = 24 doigts",
+     "44,36 cm",
+     "3.1.5–8 ; 10.13.6"
+    ],
+    [
+     "gradus (pas simple)",
+     "βῆμα",
+     "2½ pieds",
+     "73,93 cm",
+     "—"
+    ],
+    [
+     "passus (pas double)",
+     "—",
+     "5 pieds",
+     "1,479 m",
+     "1.6.9 ; 10.9.1–4"
+    ],
+    [
+     "decempeda / pertica",
+     "—",
+     "10 pieds",
+     "2,957 m",
+     "— (arpentage)"
+    ],
+    [
+     "actus",
+     "—",
+     "120 pieds",
+     "35,48 m",
+     "— (arpentage)"
+    ],
+    [
+     "stadium (stade)",
+     "στάδιον",
+     "125 pas = 625 pieds",
+     "184,8 m",
+     "1.6.9"
+    ],
+    [
+     "mille passus (mille)",
+     "—",
+     "1000 pas = 5000 pieds",
+     "1,479 km",
+     "10.9.1–4"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 6,
+   "titulo": "Chronologie consolidée de Vitruve et de la transmission du texte",
+   "paginaPdf": 1028,
+   "paginasPdf": [
+    1028,
+    1028
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1028",
+   "columnas": [
+    "Date",
+    "Jalon"
+   ],
+   "filas": [
+    [
+     "1511",
+     "Édition illustrée de Fra Giovanni Giocondo (Venise), première grande édition imprimée accompagnée de figures."
+    ],
+    [
+     "1521",
+     "Traduction italienne commentée de Cesare Cesariano (Côme)."
+    ],
+    [
+     "1556 / 1567",
+     "Traduction italienne commentée (1556) et édition latine (1567) de Daniele Barbaro, avec illustrations de Palladio (Venise)."
+    ],
+    [
+     "1673",
+     "Traduction et commentaire de Claude Perrault, étape majeure de la réception française moderne."
+    ],
+    [
+     "1899",
+     "Édition critique de Valentin Rose (Teubner, Leipzig), témoin de contrôle de la présente édition, dont le texte de base est celui de Krohn (1912)."
+    ],
+    [
+     "1912",
+     "Édition de Fritz Krohn (Teubner), témoin de contrôle."
+    ],
+    [
+     "1969–2009",
+     "Éditions de la Collection des Universités de France (« Budé »), livre par livre, par plusieurs spécialistes sous l’impulsion de Pierre Gros."
+    ],
+    [
+     "1999",
+     "Traduction et commentaire d’Ingrid D. Rowland et Thomas Noble Howe (Cambridge), référence moderne en anglais."
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 7,
+   "titulo": "Équivalences de traduction fixes des principaux termes techniques",
+   "paginaPdf": 1058,
+   "paginasPdf": [
+    1058,
+    1058
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1058",
+   "columnas": [
+    "Terme (latin / grec)",
+    "Équivalent retenu dans cette édition"
+   ],
+   "filas": [
+    [
+     "opus signinum",
+     "revêtement imperméable de mortier ; chez Vitruve (8.6.14), il est fait de sable, de chaux et de pierre concassée (silex) ; son identification au cocciopesto (tuileau) relève de la terminologie moderne"
+    ],
+    [
+     "scamilli impares",
+     "terme technique controversé, généralement rattaché à une correction graduée du niveau ou de la courbure du stylobate"
+    ],
+    [
+     "epistylium (ἐπιστύλιον)",
+     "architrave : la poutre maîtresse posée sur les chapiteaux, premier membre de l’entablement. La forme « épistyle » n’est retenue que pour gloser le mot latin."
+    ],
+    [
+     "Méthode de traduction des",
+     "termes techniques"
+    ],
+    [
+     "La traduction suit trois règles.",
+     "(1) Équivalence fixe : chaque terme technique"
+    ],
+    [
+     "reçoit un seul équivalent",
+     "dans tout le volume (Tableau 7), sauf lorsque le"
+    ],
+    [
+     "contexte exige une glose ; (2)",
+     "maintien du terme latin lorsqu’aucun équivalent"
+    ],
+    [
+     "moderne ne couvre son champ",
+     "sémantique (ordinatio, symmetria, decor, tes-"
+    ],
+    [
+     "tudo), avec glose à la première mesures sont traduites dans",
+     "occurrence ; (3) refus de la modernisation : les les unités du texte (pieds, doigts, coudées) et leur"
+    ],
+    [
+     "conversion métrique est donnée de la traduction. Les éditions",
+     "en note ou à l’Annexe F, jamais dans le corps française et espagnole appliquent les mêmes"
+    ],
+    [
+     "règles ; le glossaire opératoire langues.",
+     "suivant fixe les équivalents parallèles des deux"
+    ],
+    [
+     "Tableau 7a. Glossaire opératoire",
+     "bilingue (latin – français – espagnol)"
+    ],
+    [
+     "Latin Français",
+     "Espagnol Locus"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 8,
+   "titulo": "Index thématique du contenu mathématique",
+   "paginaPdf": 1071,
+   "paginasPdf": [
+    1071,
+    1071
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1071",
+   "columnas": [
+    "Section / chapitre",
+    "Thème mathématique"
+   ],
+   "filas": [
+    [
+     "Étude préliminaire L’Homme de Vitruve Livre I.2",
+     "Proportions du corps humain ; inscription dans le carré et le cercle Inscription géométrique du corps ; distinction des centres du carré et du cercle — à ne pas confondre avec la quadrature classique du cercle Six principes ; rapports entre taxis, symmetria et analogia"
+    ],
+    [
+     "Livre III.1",
+     "Proportions du corps ; homo bene figuratus ; tête ≈ 1/8 de la hauteur"
+    ],
+    [
+     "Livre III (proportions du temple)",
+     "Proportion modulaire (modulus, symmetria)"
+    ],
+    [
+     "Livre IX",
+     "Gnomonique et astronomie ; analemme et projection géométrique"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 9,
+   "titulo": "Conspectus codicum : les principaux manuscrits",
+   "paginaPdf": 1072,
+   "paginasPdf": [
+    1072,
+    1072
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1072",
+   "columnas": [
+    "Sigle",
+    "Manuscrit",
+    "Date",
+    "Bibliothèque",
+    "Branche / fonction stemmatique"
+   ],
+   "filas": [
+    [
+     "H",
+     "Harleianus 2767",
+     "IXe s. (début)",
+     "Londres, British Library (minuscule caroline)",
+     "plus ancien témoin conservé connu du De architectura ; fondamental pour l’histoire du texte"
+    ],
+    [
+     "G",
+     "Codex Gudianus 69",
+     "XI e s.",
+     "Wolfenbüttel, Herzog August Bibliothek",
+     "principal témoin collatéral"
+    ],
+    [
+     "E",
+     "Codex Gudianus 132",
+     "Xe s.",
+     "Wolfenbüttel, Herzog August Bibliothek",
+     "épitomé ancien ; apparenté à G"
+    ],
+    [
+     "S",
+     "Codex Selestatensis 1153bis",
+     "fin du Xe s.",
+     "Sélestat, Bibliothèque humaniste",
+     "texte de type H corrigé par des leçons d’une autre branche (contamination)"
+    ],
+    [
+     "L",
+     "Codex Leidensis (Vossianus)",
+     "Xe–XI e s.",
+     "Leyde, Bibliothèque universitaire",
+     "témoin ancien de la tradition"
+    ],
+    [
+     "p",
+     "Codex Pithoeanus (Parisinus)",
+     "X e s.",
+     "Paris, Bibliothèque nationale de France",
+     "témoin ancien de la tradition"
+    ],
+    [
+     "rec.",
+     "recentiores",
+     "XV e s.",
+     "diverses",
+     "copies humanistes tardives, nombreuses et généralement dépendantes de traditions antérieures"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 10,
+   "titulo": "Aspect comparatif de la terminologie vitruvienne",
+   "paginaPdf": 1074,
+   "paginasPdf": [
+    1074,
+    1074
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1074",
+   "columnas": [
+    "Concept vitruvien",
+    "Loeb–Granger",
+    "Budé / tradition française moderne",
+    "Perrault",
+    "Cette édition"
+   ],
+   "filas": [
+    [
+     "Symmetria",
+     "commensurabilité proportionnelle : rapport mesuré des parties entre elles et avec le tout à partir d’une unité commune. Le terme latin symmetria est conservé dans les passages analytiques ; « symétrie » n’est employé que dans les contextes où le sens moderne ne crée pas d’ambiguïté.",
+     "symétrie",
+     "proportion",
+     "symmetria (commensurabilité proportionnelle)"
+    ],
+    [
+     "Decor",
+     "propriety",
+     "convenance",
+     "convenance",
+     "decor (convenance / décorum)"
+    ],
+    [
+     "Distributio",
+     "economy",
+     "économie",
+     "distribution",
+     "distributio (économie / répartition)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 11,
+   "titulo": "Conspectus des termes grecs dans De architectura",
+   "paginaPdf": 1081,
+   "paginasPdf": [
+    1081,
+    1081
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1081",
+   "columnas": [
+    "Terme grec",
+    "Étymologie",
+    "Sens littéral",
+    "Équivalentvitruvien",
+    "Sens architectural",
+    "Loci"
+   ],
+   "filas": [
+    [
+     "τὸ πρέπον",
+     "πρέπειν",
+     "ce qui",
+     "Decor",
+     "convenance et",
+     "1.2.5–"
+    ],
+    [
+     "(to prepon)",
+     "(prépein), « convenir »",
+     "convient",
+     "",
+     "décorum",
+     "1.2.7 ; 4.1.6–4.1.12"
+    ],
+    [
+     "ἀναλογία",
+     "ἀνά (aná) +",
+     "rapport",
+     "Proportio",
+     "proportion",
+     "3.1.1–"
+    ],
+    [
+     "(analogia)",
+     "λόγος (lógos)",
+     "proportionnel",
+     "",
+     "mathématique",
+     "3.1.9 ; 4.3.3"
+    ],
+    [
+     "ἔντασις",
+     "ἐν (en) + τείνω",
+     "tension,",
+     "Entasis",
+     "renflement /",
+     "3.3.13"
+    ],
+    [
+     "(entasis)",
+     "(teínō), « tendre »",
+     "renflement",
+     "",
+     "courbure convexe du fût",
+     ""
+    ],
+    [
+     "ἀνάλημμα",
+     "ἀναλαμβάνω",
+     "construction",
+     "Analemma",
+     "projection",
+     "9.1.1 ;"
+    ],
+    [
+     "(analemma)",
+     "(analambánō), « reprendre / relever »",
+     "de projection",
+     "",
+     "géométrique pour le cadran solaire",
+     "9.7.1–9.7.7"
+    ],
+    [
+     "ἰχνογραφία",
+     "ἴχνος (íchnos),",
+     "dessin de",
+     "Ichnographia",
+     "plan",
+     "1.2.2"
+    ],
+    [
+     "(ichnographia)",
+     "« empreinte » + γράφω",
+     "l’empreinte",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ὀρθογραφία",
+     "ὀρθός (orthós)",
+     "dessin en",
+     "Orthographia",
+     "élévation / vue",
+     "1.2.2"
+    ],
+    [
+     "(orthographia)",
+     "+ γράφω",
+     "élévation",
+     "",
+     "frontale",
+     ""
+    ],
+    [
+     "σκηνογραφία",
+     "σκηνή (skēnḗ) +",
+     "dessin",
+     "Scaenographia",
+     "perspective",
+     "1.2.2 ;"
+    ],
+    [
+     "(scaenographia)",
+     "γράφω",
+     "scénique",
+     "",
+     "",
+     "7.praef.11"
+    ],
+    [
+     "σκιαθήρας",
+     "σκιά (skiá),",
+     "chasseur",
+     "Gnomon",
+     "tige du cadran",
+     "9.1.1 ;"
+    ],
+    [
+     "(skiatheras)",
+     "« ombre » + θηράω (thēráō), « chasser »",
+     "d’ombres",
+     "",
+     "solaire",
+     "9.7.1–9.7.7"
+    ],
+    [
+     "μετόπη",
+     "μετά (metá) +",
+     "espace entre",
+     "Metopa",
+     "panneau entre les",
+     "4.2.2–"
+    ],
+    [
+     "(metopē)",
+     "ὀπή (opḗ)",
+     "des ouvertures",
+     "",
+     "triglyphes",
+     "4.2.4"
+    ],
+    [
+     "λογεῖον",
+     "λόγος (lógos),",
+     "lieu du",
+     "Pulpitum (en",
+     "plate-forme",
+     "5.6.1 ;"
+    ],
+    [
+     "(logeion)",
+     "« discours »",
+     "discours",
+     "partie)",
+     "scénique du théâtre grec",
+     "5.7.2"
+    ],
+    [
+     "θυμελικοί /",
+     "θυμέλη (autel) /",
+     "de la thymélè /",
+     "—",
+     "musiciens et chœur",
+     "5.7.2 ;"
+    ],
+    [
+     "σκηνικοί",
+     "σκηνή (scène)",
+     "de la scène",
+     "",
+     "/ acteurs",
+     "5.6.2 ;"
+    ],
+    [
+     "(thymelikoi / skenikoi)",
+     "",
+     "",
+     "",
+     "dramatiques",
+     "5.7.1"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 12,
+   "titulo": "Les disciplines de l’architecte idéal (De architectura 1.1.3–1.1.10)",
+   "paginaPdf": 1085,
+   "paginasPdf": [
+    1085,
+    1085
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1085",
+   "columnas": [
+    "Discipline",
+    "Terme latin",
+    "Finalité selon Vitruve"
+   ],
+   "filas": [
+    [
+     "Lettres / grammaire Dessin",
+     "litterae graphis",
+     "Écrire avec clarté et conserver la mémoire de la doctrine Représenter plans, élévations et perspectives"
+    ],
+    [
+     "Géométrie Arithmétique Optique Histoire Philosophie Musique Médecine Droit",
+     "geometria arithmetica optice historiae philosophia musica medicina iuris responsa",
+     "Règle et compas ; tracé et proportion Calcul des coûts et des mesures ; théorie du nombre Disposition correcte de la lumière, liée à la géométrie Expliquer l’origine et le sens des ornements Formation morale de l’architecte, connaissance de la nature et éloignement de l’avidité Théorie de l’harmonie ; réglage des machines et acoustique Salubrité des sites : climat, eaux et orientation Servitudes, eaux, mitoyennetés et contrats"
+    ],
+    [
+     "Astronomie",
+     "caeli ratio",
+     "Orientation, gnomonique et cadrans solaires"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 13,
+   "titulo": "Les ordres architecturaux (De architectura, Livres III – IV)",
+   "paginaPdf": 1086,
+   "paginasPdf": [
+    1086,
+    1086
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1086",
+   "columnas": [
+    "Ordre",
+    "Élancement (diam.)*",
+    "Chapiteau",
+    "Fût",
+    "Base",
+    "Ornementation"
+   ],
+   "filas": [
+    [
+     "Toscan",
+     "7",
+     "Abaque et échine",
+     "Lisse",
+     "Tore sur plinthe",
+     "Très faible"
+    ],
+    [
+     "Dorique Ionique Corinthien",
+     "7 8–10 (3.3.10) ; 9 (4.1.8) ≈ 9⅔ (ionique + ⅔ diam., 4.1.1)",
+     "Abaque et échine (triglyphes dans la frise) Volutes Feuilles d’acanthe",
+     "20 cannelures à arêtes vives 24 cannelures séparées par des filets 24 cannelures séparées par des filets",
+     "Sans base Atticoionique Atticoionique",
+     "Moyenne Élevée Très élevée"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 14,
+   "titulo": "Les intercolonnements (De architectura 3.3.1–3.3.6)",
+   "paginaPdf": 1086,
+   "paginasPdf": [
+    1086,
+    1087
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1086",
+   "columnas": [
+    "Type",
+    "Intervalle (diam.)",
+    "Caractère et usage",
+    "Appréciation de Vitruve"
+   ],
+   "filas": [
+    [
+     "Pycnostyle Systyle Eustyle Diastyle Aréostyle",
+     "1½ 2 2¼ 3 plus de 3",
+     "Colonnes très rapprochées ; aspect fermé Colonnes rapprochées Disposition la plus équilibrée Séparation plus grande ; effet monumental Colonnes très espacées ; architraves en bois",
+     "Peu recommandé Acceptable, avec réserves Préféré (3.3.6) Risque pour les longues architraves Associé à l’ordre toscan"
+    ],
+    [
+     "Type",
+     "Terme grec",
+     "Disposition des colonnes",
+     "Observations"
+    ],
+    [
+     "In antis",
+     "in antis",
+     "Deux colonnes entre les antes du pronaos",
+     "Le plus simple (3.2.2)"
+    ],
+    [
+     "Prostyle Amphiprostyle Périptère Pseudodiptère Diptère Hypèthre",
+     "prostylos amphiprostylos peripteros pseudodipteros dipteros hypaethros",
+     "Portique de colonnes sur la façade seulement Portiques à l’avant et l’arrière Colonnade sur tout le périmètre Colonnade périphérique laissant l’espace d’un second rang Double rangée périphérique de colonnes Décastyle avec cella ouverte au ciel",
+     "3.2.3 à 3.2.4 Modèle équilibré (3.2.5) Attribué à Hermogène (3.2.6) Grande monumentalité (3.2.7) Rare ; cultes particuliers (3.2.8)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 15,
+   "titulo": "Types de plans de temples (De architectura 3.2)",
+   "paginaPdf": 1087,
+   "paginasPdf": [
+    1087,
+    1087
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1087",
+   "columnas": [
+    "Type",
+    "Terme grec",
+    "Disposition des colonnes",
+    "Observations"
+   ],
+   "filas": [
+    [
+     "In antis",
+     "in antis",
+     "Deux colonnes entre les antes du pronaos",
+     "Le plus simple (3.2.2)"
+    ],
+    [
+     "Prostyle Amphiprostyle Périptère Pseudodiptère Diptère Hypèthre",
+     "prostylos amphiprostylos peripteros pseudodipteros dipteros hypaethros",
+     "Portique de colonnes sur la façade seulement Portiques à l’avant et à l’arrière Colonnade sur tout le périmètre Colonnade périphérique laissant l’espace d’un second rang Double rangée périphérique de colonnes Décastyle avec cella ouverte au ciel",
+     "3.2.3 3.2.4 Modèle équilibré (3.2.5) Attribué à Hermogène (3.2.6) Grande monumentalité (3.2.7) Rare ; cultes particuliers (3.2.8)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 16,
+   "titulo": "Principales unités romaines et leurs équivalences",
+   "paginaPdf": 1087,
+   "paginasPdf": [
+    1087,
+    1087
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1087",
+   "columnas": [
+    "Unité",
+    "Équivalence",
+    "Valeur approx. (m)",
+    "Usage"
+   ],
+   "filas": [
+    [
+     "digitus",
+     "1/16 pes",
+     "0,0185",
+     "Doigt ; petit module"
+    ],
+    [
+     "palmus",
+     "4 digiti",
+     "0,0740",
+     "Palme"
+    ],
+    [
+     "pes",
+     "16 digiti",
+     "0,296",
+     "Pied ; unité de base"
+    ],
+    [
+     "palmipes",
+     "5 palmi",
+     "0,370",
+     "Mesure intermédiaire"
+    ],
+    [
+     "cubitus",
+     "1½ pes",
+     "0,444",
+     "Coudée"
+    ],
+    [
+     "gradus",
+     "2½ pedes",
+     "0,739",
+     "Pas simple"
+    ],
+    [
+     "passus",
+     "5 pedes",
+     "1,48",
+     "Pas double"
+    ],
+    [
+     "decempeda",
+     "10 pedes",
+     "2,96",
+     "Mesure des terrains"
+    ],
+    [
+     "actus",
+     "120 pedes",
+     "35,5",
+     "Mesure agraire"
+    ],
+    [
+     "stadium",
+     "625 pedes",
+     "185",
+     "Distances"
+    ],
+    [
+     "mille passus",
+     "5 000 pedes",
+     "1 480",
+     "Mille romain"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 17,
+   "titulo": "Principales mesures grecques",
+   "paginaPdf": 1088,
+   "paginasPdf": [
+    1088,
+    1088
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1088",
+   "columnas": [
+    "Unité",
+    "Équivalence",
+    "Valeur approx. (m)",
+    "Notes"
+   ],
+   "filas": [
+    [
+     "dáktylos",
+     "1/16 pous",
+     "0,0193",
+     "Doigt"
+    ],
+    [
+     "palaistḗ",
+     "4 dáktyloi",
+     "0,077",
+     "Palme"
+    ],
+    [
+     "pous",
+     "16 dáktyloi",
+     "0,308–0,320",
+     "Pied grec ; varie selon les régions"
+    ],
+    [
+     "pēchys",
+     "1½ pous",
+     "0,462–0,480",
+     "Coudée"
+    ],
+    [
+     "orgyiá",
+     "6 pous",
+     "1,85–1,92",
+     "Brasse"
+    ],
+    [
+     "plethron",
+     "100 pous",
+     "30,8–32",
+     "Terrains et places"
+    ],
+    [
+     "stadion",
+     "600 pous",
+     "185–192",
+     "Distances"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 18,
+   "titulo": "Mesures égyptiennes et coudée royale",
+   "paginaPdf": 1089,
+   "paginasPdf": [
+    1089,
+    1089
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1089",
+   "columnas": [
+    "Unité",
+    "Subdivision",
+    "Valeur approx. (m)",
+    "Notes"
+   ],
+   "filas": [
+    [
+     "djeba",
+     "doigt",
+     "0,0187",
+     "Petite unité"
+    ],
+    [
+     "shesep",
+     "4 doigts",
+     "0,075",
+     "Palme"
+    ],
+    [
+     "coudée commune coudée royale (mḥ nswt)",
+     "6 palmes (24 doigts) 7 palmes (28 doigts)",
+     "0,45 0,5236",
+     "Usage courant Unité architecturale et royale"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 19,
+   "titulo": "Bâtiments contemporains de Vitruve (époque d’Auguste)",
+   "paginaPdf": 1089,
+   "paginasPdf": [
+    1089,
+    1089
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1089",
+   "columnas": [
+    "Édifice",
+    "Date approx.",
+    "Type",
+    "Observations"
+   ],
+   "filas": [
+    [
+     "Basilique de Fano",
+     "27–20 av. J.-C.",
+     "Basilique",
+     "Décrite par Vitruve (5.1.6) : espace central de 120 × 60 pieds ; Vitruve affirme l’avoir conçue et en avoir supervisé l’exécution à Fano. Vestiges officiellement identifiés en 2026 ; recherches archéologiques en cours."
+    ],
+    [
+     "Panthéon d’Agrippa",
+     "27–25 av. J.-C.",
+     "Temple / complexe",
+     "Édifice augustéen remplacé par le"
+    ],
+    [
+     "(édifice originel)",
+     "",
+     "cultuel",
+     "Panthéon d’époque impériale conservé"
+    ],
+    [
+     "Temple de Mars Ultor",
+     "2 av. J.-C.",
+     "Temple corinthien",
+     "Forum d’Auguste"
+    ],
+    [
+     "Théâtre de Marcellus",
+     "13–11 av. J.-C.",
+     "Théâtre",
+     ""
+    ],
+    [
+     "Ara Pacis Augustae Temple d’Apollon",
+     "13–9 av. J.-C. 34–20 av. J.-C.",
+     "Autel monumental Temple corinthien",
+     "Marbre ; ordre corinthien à"
+    ],
+    [
+     "Sosianus",
+     "",
+     "",
+     "Rome"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 20,
+   "titulo": "Traités techniques et littérature contemporains de Vitruve",
+   "paginaPdf": 1090,
+   "paginasPdf": [
+    1090,
+    1090
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1090",
+   "columnas": [
+    "Auteur",
+    "Œuvre",
+    "Date",
+    "État"
+   ],
+   "filas": [
+    [
+     "Vitruve Varron",
+     "De architectura De re rustica",
+     "fin du I er s. av. J.-C. 37 av. J.-C.",
+     "Conservé intégralement Conservé"
+    ],
+    [
+     "Cicéron",
+     "De oratore ; De re publica",
+     "55–43 av. J.-C.",
+     "Conservé (De oratore) ; fragmentaire (De re publica, palimpseste Vat. lat. 5757)"
+    ],
+    [
+     "Lucrèce Virgile Tite-Live Frontin",
+     "De rerum natura Aeneis ; Georgica Ab urbe condita De aquaeductu",
+     "v. 55 av. J.-C. 29–19 av. J.-C. v. 27 av. J.-C.–9 apr. J.-C. v. 97 apr. J.-C.",
+     "Conservé Conservé Partiellement conservé Conservé ; postérieur à Vitruve"
+    ],
+    [
+     "Pline l’Ancien",
+     "Naturalis historia",
+     "77 apr. J.-C.",
+     "Conservé; présente des parallèles et des emprunts techniques liés à la tradition vitruvienne"
+    ],
+    [
+     "Philon de Byzance Ctésibios",
+     "Mechanica Traités de mécanique et d’hydraulique",
+     "III e s. av. J.-C. III e s. av. J.-C.",
+     "Fragments / tradition indirecte ; source technique antérieure Perdus ; cité par Vitruve"
+    ]
+   ]
+  },
+  {
+   "edicion": "V554",
+   "lengua": "fr",
+   "n": 21,
+   "titulo": "Bâtiments de De architectura : mentionnés et conservés",
+   "paginaPdf": 1091,
+   "paginasPdf": [
+    1091,
+    1091
+   ],
+   "paginaImpresa": null,
+   "pdf": "documents/kurilo-recensio-fr.pdf#page=1091",
+   "columnas": [
+    "Édifice",
+    "De architectura",
+    "État de conservation"
+   ],
+   "filas": [
+    [
+     "Aqueducs de Rome (Aqua Appia, Aqua Marcia)",
+     "cf. 8.6",
+     "Tronçons de specus et structures conservés"
+    ],
+    [
+     "Maison grecque (andronitis / gynaikonitis)",
+     "6.7",
+     "Type documenté à Délos, Priène et ailleurs"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 1,
+   "titulo": "The six operative principles of architecture",
+   "paginaPdf": 22,
+   "paginasPdf": [
+    22,
+    23
+   ],
+   "paginaImpresa": 10,
+   "pdf": "documents/kurilo-theory-en.pdf#page=22",
+   "columnas": [
+    "Principle",
+    "Greek Term",
+    "Core Meaning",
+    "Domain"
+   ],
+   "filas": [
+    [
+     "Ordinatio",
+     "τάξις (taxis)",
+     "Modular ordering according to a common unit",
+     "Quantitative and Modular"
+    ],
+    [
+     "Dispositio",
+     "διάθεσις (diathesis)",
+     "Arrangement; the conception and graphic representation of the design",
+     "Intellectual / Projectbased"
+    ],
+    [
+     "Eurythmia",
+     "εὐρυθμία (eurythmia)",
+     "Visual harmony and graceful proportion as perceived by the eye",
+     "Aesthetic"
+    ],
+    [
+     "Symmetria",
+     "συμμετρία (symmetria)",
+     "Commensurability: the proportional relationship of the parts to the whole and to a common module",
+     "Mathematical"
+    ],
+    [
+     "Decor",
+     "τὸ πρέπον (to prepon)",
+     "Propriety, appropriateness and contextual fitness",
+     ""
+    ],
+    [
+     "Distributio",
+     "οἰκονομία (oikonomia)",
+     "Economic and functional distribution of resources",
+     "Practical / Ethical"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 2,
+   "titulo": "Analytical structure of the ten books (dispositio textus)",
+   "paginaPdf": 182,
+   "paginasPdf": [
+    182,
+    183
+   ],
+   "paginaImpresa": 170,
+   "pdf": "documents/kurilo-theory-en.pdf#page=182",
+   "columnas": [
+    "Book",
+    "Traditional Thematic Rubric",
+    "Epistemological and Technical Content"
+   ],
+   "filas": [
+    [
+     "Book I",
+     "On Architecture and the Planning of Cities",
+     "Encyclopedic training of the architect; the theoretical triad; foundations of urban planning, castrametation and the defense of cities."
+    ],
+    [
+     "Book II",
+     "On the Properties of Materials",
+     "Archaeology of the primitive hut and evolution of housing; physical-chemical study of building materials (sand, lime, pozzolana, brick and wood)."
+    ],
+    [
+     "Book III",
+     "De sacrorum aedium symmetria",
+     "Theory of body proportions and anthropometry (homo bene figuratus); typologies of the classical temple and symmetries of the Ionic order."
+    ],
+    [
+     "Book IV",
+     "De corinthio et dorico ordine",
+     "Continuation of sacred treatises; genesis and laws of the Doric and Corinthian orders; proportions of altars and cellas."
+    ],
+    [
+     "Book V",
+     "De publicis locis",
+     "Civil and institutional architecture of the forum; basilicas (with special attention to the Basilica of Fano); acoustics and geometry of theaters (echeia)."
+    ],
+    [
+     "Book VI",
+     "De privatis aedificiis",
+     "Domestic building; the Roman domus and the suburban villa; adaptation of housing according to social condition and climate."
+    ],
+    [
+     "Book",
+     "De expolitionibus",
+     "Surface treatment; plastering techniques,"
+    ],
+    [
+     "VII",
+     "",
+     "stucco, paving and the chemistry of decorative pigments."
+    ],
+    [
+     "Book",
+     "De aqua",
+     "Hydraulic engineering; prospecting,"
+    ],
+    [
+     "VIII",
+     "",
+     "collection, leveling and distribution of water; construction of aqueducts and cisterns."
+    ],
+    [
+     "Book IX",
+     "De gnomonica",
+     "Applied cosmos sciences; elementary astronomy, lunar phases, meridian plotting and construction of sundials and water clocks."
+    ],
+    [
+     "Book X",
+     "Of machines",
+     "Mechanics and polyorcethics; kinematic lifting devices, pneumatic hydraulics and manufacture of torsion artillery (ballistae)."
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 3,
+   "titulo": "Canonical proportions of the orders, compared across treatises",
+   "paginaPdf": 975,
+   "paginasPdf": [
+    975,
+    975
+   ],
+   "paginaImpresa": 963,
+   "pdf": "documents/kurilo-theory-en.pdf#page=975",
+   "columnas": [
+    "Order",
+    "Vitruvius (1st century BC)",
+    "Vignola (1562)",
+    "Palladio (1570)",
+    "Le Corbusier"
+   ],
+   "filas": [
+    [
+     "Tuscan",
+     "≈ 7 (cf. 4.7)",
+     "7",
+     "7",
+     "—"
+    ],
+    [
+     "Doric",
+     "≈ 7 (4.3)",
+     "8",
+     "8 1/2",
+     "—"
+    ],
+    [
+     "Ionic",
+     "8 1/2 – 9 (3.5)",
+     "9",
+     "9",
+     "—"
+    ],
+    [
+     "Corinthian",
+     "≈ 9 ½ (4.1)",
+     "10",
+     "9 1/2",
+     "—"
+    ],
+    [
+     "Compound",
+     "(not coded)",
+     "10",
+     "10",
+     "—"
+    ],
+    [
+     "Module / Canon",
+     "symmetria (module = ½ diam.)",
+     "systematic module",
+     "module",
+     "Modulor (1948): body + φ"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 4,
+   "titulo": "Proportions of the orders, element by element",
+   "paginaPdf": 975,
+   "paginasPdf": [
+    975,
+    976
+   ],
+   "paginaImpresa": 963,
+   "pdf": "documents/kurilo-theory-en.pdf#page=975",
+   "columnas": [
+    "Element",
+    "Doric",
+    "Ionic",
+    "Corinthian"
+   ],
+   "filas": [
+    [
+     "Height of the column (with capital)",
+     "14 modules (7 diam.)",
+     "17.5 modules (8.5–9 diam.)",
+     "20 modules (10 diameter)"
+    ],
+    [
+     "Lower diameter of the shaft",
+     "2 modules",
+     "2 modules",
+     "2 modules"
+    ],
+    [
+     "Height of the capital",
+     "1 module",
+     "2/3 of the modulus (≈0.66)",
+     "2 modules (1 diameter)"
+    ],
+    [
+     "Base height",
+     "— (without base, attic optional)",
+     "1 module (½ diameter)",
+     "1 module (½ diameter)"
+    ],
+    [
+     "Height of the entablature",
+     "≈ ¼ of the column",
+     "≈ 1/5 of the column",
+     "≈ 1/5 of the column"
+    ],
+    [
+     "Architrave (epistylium)",
+     "1 module",
+     "½–⅗ of a module",
+     "½ of a module"
+    ],
+    [
+     "Frieze (zophorus)",
+     "1.5 modules (triglyphs)",
+     "plain or decorated",
+     "plain or decorated"
+    ],
+    [
+     "Optimal intercolumniation (eustyle)",
+     "—",
+     "2¼ diam. (center 3)",
+     "2¼ diam. (center 3)"
+    ],
+    [
+     "Shaft contraction (contractura)",
+     "⅙ of the lower diameter",
+     "⅙–⅛ of the diam.",
+     "⅛ of the diam."
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 5,
+   "titulo": "Roman units of measurement and their metric equivalents",
+   "paginaPdf": 976,
+   "paginasPdf": [
+    976,
+    976
+   ],
+   "paginaImpresa": 964,
+   "pdf": "documents/kurilo-theory-en.pdf#page=976",
+   "columnas": [
+    "Latin Unit",
+    "English",
+    "Relationship",
+    "Metric equivalence"
+   ],
+   "filas": [
+    [
+     "digitus",
+     "finger",
+     "1/16 of a foot",
+     "≈ 1.85 cm"
+    ],
+    [
+     "palmus",
+     "palm",
+     "4 fingers = ¼ foot",
+     "≈ 7.4 cm"
+    ],
+    [
+     "pes",
+     "foot",
+     "16 fingers / 4 palms",
+     "≈ 29.6 cm"
+    ],
+    [
+     "palmipes",
+     "foot and palm",
+     "1¼ ft",
+     "≈ 37.0 cm"
+    ],
+    [
+     "cubitus",
+     "cubit",
+     "1½ feet / 6 palms",
+     "≈ 44.4 cm"
+    ],
+    [
+     "gradus",
+     "step",
+     "2.5 feet",
+     "≈ 74.0 cm"
+    ],
+    [
+     "passus",
+     "pace",
+     "5 feet",
+     "≈ 1.48 m"
+    ],
+    [
+     "decempeda",
+     "pole",
+     "10 feet",
+     "≈ 2.96 m"
+    ],
+    [
+     "actus",
+     "actus",
+     "120 feet",
+     "≈ 35.5 m"
+    ],
+    [
+     "stadium",
+     "stade",
+     "625 feet",
+     "≈ 185 m"
+    ],
+    [
+     "mille passus",
+     "mile",
+     "5,000 feet / 1,000 paces",
+     "≈ 1.48 km"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 6,
+   "titulo": "Consolidated chronology of Vitruvius and his text",
+   "paginaPdf": 983,
+   "paginasPdf": [
+    983,
+    984
+   ],
+   "paginaImpresa": 971,
+   "pdf": "documents/kurilo-theory-en.pdf#page=983",
+   "columnas": [
+    "Date",
+    "Milestone"
+   ],
+   "filas": [
+    [
+     "c. 80–70 BCE",
+     "Probable birth of Marcus Vitruvius Pollio."
+    ],
+    [
+     "c. 58–51 BCE",
+     "Service as a military engineer (apparitor) in the service of Julius Caesar, probably in Gaul."
+    ],
+    [
+     "Late first century BCE (date uncertain)",
+     "Vitruvius states that he designed and supervised a basilica at Fanum Fortunae (5.1.6–10). The statement is distinguished from modern archaeological identification."
+    ],
+    [
+     "c. 30 BCE",
+     "Through Octavia's mediation, he receives a pension (commoda) that allows him to dedicate himself to writing."
+    ],
+    [
+     "27–23 BCE",
+     "Composition and dedication to Augustus of the Ten Books of Architecture (De architectura libri decem)."
+    ],
+    [
+     "after 15 BCE",
+     "Last date he is presumed to be alive; the date of his death is unknown."
+    ],
+    [
+     "1st century AD",
+     "Pliny the Elder (Natural History) and Frontinus use and quote the treatise."
+    ],
+    [
+     "4th–5th century AD",
+     "Faventino and Paladio summarize and transmit parts of the work."
+    ],
+    [
+     "800–824 CE",
+     "Harley MS 2767, the oldest known surviving copy; its precise place of origin is uncertain."
+    ],
+    [
+     "838–842 CE",
+     "Carolingian transmission associated with Reichenau; its position in a stemma requires a named critical source and is not a documented provenance of Harley MS 2767."
+    ],
+    [
+     "9th–15th century",
+     "Diffusion in more than ninety manuscripts; read by Einhard, Hugh of Saint Victor, and Hildegard of Bingen."
+    ],
+    [
+     "1416",
+     "Poggio Bracciolini’s manuscript searches belong to the Renaissance reception of Vitruvius. They should not be conflated with the documented provenance of Harley MS 2767."
+    ],
+    [
+     "c. 1486",
+     "Editio princeps de Giovanni Sulpicio da Veroli (Rome)."
+    ],
+    [
+     "1511",
+     "Illustrated edition of Fra Giovanni Giocondo (Venice), the first with figures."
+    ],
+    [
+     "1521",
+     "Annotated Italian translation by Cesare Cesariano (Como)."
+    ],
+    [
+     "1567",
+     "Edited and with commentary by Daniele Barbaro, with illustrations by Palladio (Venice)."
+    ],
+    [
+     "1673",
+     "Claude Perrault’s French translation, Les dix livres d’architecture de Vitruve."
+    ],
+    [
+     "1899",
+     "Valentin Rose’s critical edition (Teubner, Leipzig), a comparative reference."
+    ],
+    [
+     "1912",
+     "Fritz Krohn’s critical edition (Teubner, Leipzig), the principal Latin control for this edition."
+    ],
+    [
+     "1969–2009",
+     "Publication of the individual Budé volumes by their respective editors, translators and commentators."
+    ],
+    [
+     "1999",
+     "Translation and commentary by ID Rowland and TN Howe (Cambridge), modern reference in English."
+    ],
+    [
+     "19 January 2026",
+     "The Italian Ministry of Culture announces the identification of the Piazza Andrea Costa remains at Fano as Vitruvius’s basilica; investigation continues."
+    ],
+    [
+     "2026",
+     "Bilingual Latin-English edition of Diego Kurilo (Sophia Lux Academic Editions)."
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 7,
+   "titulo": "Fixed translation equivalents of the principal technical terms",
+   "paginaPdf": 1012,
+   "paginasPdf": [
+    1012,
+    1012
+   ],
+   "paginaImpresa": 1000,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1012",
+   "columnas": [
+    "Term (Latin / Greek)",
+    "Fixed English equivalent"
+   ],
+   "filas": [
+    [
+     "symmetria (συμμετρία)",
+     "commensurability — the modular correspondence of the parts to the whole and to a common unit; not bilateral symmetry in the modern sense"
+    ],
+    [
+     "eurythmia (εὐρυθμία)",
+     "visual harmony — the graceful adjustment of proportion as perceived by the eye"
+    ],
+    [
+     "ordinatio (τάξις)",
+     "modular ordering — the quantitative disposition of the members by a common unit (modulus)"
+    ],
+    [
+     "dispositio (διάθεσις)",
+     "arrangement — the qualitative organization of the design (ichnographia, orthographia, scaenographia)"
+    ],
+    [
+     "decor",
+     "propriety — the formal correctness and fitness of a building to its purpose"
+    ],
+    [
+     "distributio (οἰκονομία)",
+     "economy — the proper management of materials, site, and expense"
+    ],
+    [
+     "firmitas",
+     "structural strength and durability"
+    ],
+    [
+     "utilitas",
+     "functional convenience (utility)"
+    ],
+    [
+     "venustas",
+     "beauty and aesthetic delight"
+    ],
+    [
+     "fabrica",
+     "practice — the manual, constructive skill of the architect"
+    ],
+    [
+     "ratiocinatio",
+     "theoretical reasoning — the demonstrative knowledge grounded in geometry and proportion"
+    ],
+    [
+     "rata pars",
+     "fixed module — the standard unit governing proportion"
+    ],
+    [
+     "cochlea (κοχλίας)",
+     "water-screw — the Archimedean helical screw for raising water"
+    ],
+    [
+     "opus signinum",
+     "waterproof hydraulic mortar of lime, sand, and crushed tile"
+    ],
+    [
+     "scamilli impares",
+     "a disputed technical term, generally associated with a graduated adjustment of the stylobate’s level or curvature; no single reconstruction is imposed"
+    ],
+    [
+     "epistylium (ἐπιστύλιον)",
+     "architrave — the principal horizontal member resting on the capitals and the first member of the entablature"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 8,
+   "titulo": "Conspectus of Greek terms in the De architectura",
+   "paginaPdf": 1022,
+   "paginasPdf": [
+    1022,
+    1023
+   ],
+   "paginaImpresa": 1010,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1022",
+   "columnas": [
+    "Greek Term",
+    "Transliteration",
+    "Etymology (root)",
+    "Literal Meaning",
+    "Vitruvian Equivalent",
+    "Architectural Sense",
+    "Loci in De architectura"
+   ],
+   "filas": [
+    [
+     "τάξις",
+     "taxis",
+     "τάσσω (tássō), to arrange",
+     "order, arrangement",
+     "Ordinatio",
+     "modular order according to a unit",
+     "1.2.2; 1.2.4"
+    ],
+    [
+     "διάθεσις",
+     "diathesis",
+     "διατίθημι (diatíthēmi), to dispose",
+     "disposition, arrangement",
+     "Dispositio",
+     "intellectual conception and its representation",
+     "1.2.2; 1.2.3"
+    ],
+    [
+     "εὐρυθμία",
+     "eurythmia",
+     "εὖ (eu), well + ῥυθμός (rhythmós)",
+     "good proportion, harmonious rhythm",
+     "Eurythmia",
+     "visual harmony perceived by the eye",
+     "1.2.3; 3.1.1; 6.2.1"
+    ],
+    [
+     "συμμετρί",
+     "symmetria",
+     "σύν (syn),",
+     "commensura",
+     "Symmetri",
+     "modular",
+     "1.2.4;"
+    ],
+    [
+     "α",
+     "",
+     "with + μέτρον (métron)",
+     "bility",
+     "a",
+     "proportion among the parts",
+     "3.1.1–3.1.9; 5.6.7"
+    ],
+    [
+     "οἰκονομί",
+     "oikonomia",
+     "οἶκος",
+     "household",
+     "Distributi",
+     "economic",
+     "1.2.9;"
+    ],
+    [
+     "α",
+     "",
+     "(oîkos), house + νόμος (nómos)",
+     "management",
+     "o",
+     "and functional distribution",
+     "5.1.1; 6.8.1"
+    ],
+    [
+     "τὸ",
+     "to prepon",
+     "πρέπειν",
+     "what is fitting",
+     "Decor",
+     "propriety,",
+     "1.2.5–"
+    ],
+    [
+     "πρέπον",
+     "",
+     "(prépein), to be fitting",
+     "",
+     "",
+     "cultural appropriateness",
+     "1.2.7; 4.1.6–4.1.12"
+    ],
+    [
+     "Greek",
+     "Translitera",
+     "Etymolog",
+     "Literal",
+     "Vitruvian",
+     "Architectur",
+     "Loci in"
+    ],
+    [
+     "Term",
+     "tion",
+     "y (root)",
+     "Meaning",
+     "Equivalent",
+     "al Sense",
+     "De architectura"
+    ],
+    [
+     "ἀναλογία",
+     "analogia",
+     "ἀνά (aná) + λόγος (lógos)",
+     "proportional relation",
+     "Proportio",
+     "mathematical proportion",
+     "3.1.1–3.1.9; 4.3.3"
+    ],
+    [
+     "ἔντασις",
+     "entasis",
+     "ἐν (en) + τείνω (teínō), to stretch",
+     "tension, swelling",
+     "Entasis",
+     "convex curvature of the column shaft",
+     "3.3.13"
+    ],
+    [
+     "ἀνάλημμ",
+     "analemma",
+     "ἀναλαμβάν",
+     "projection",
+     "Analemm",
+     "geometric",
+     "9.1.1;"
+    ],
+    [
+     "α",
+     "",
+     "ω (analambánō), to take up",
+     "diagram",
+     "a",
+     "projection for the sundial",
+     "9.7.1–9.7.7"
+    ],
+    [
+     "ἰχνογραφ",
+     "ichnographi",
+     "ἴχνος",
+     "drawing of",
+     "Ichnograp",
+     "ground plan",
+     "1.2.2"
+    ],
+    [
+     "ία",
+     "a",
+     "(íchnos), footprint + γράφω",
+     "the footprint",
+     "hia",
+     "",
+     ""
+    ],
+    [
+     "ὀρθογρα",
+     "orthographia",
+     "ὀρθός",
+     "upright",
+     "Orthograp",
+     "elevation",
+     "1.2.2"
+    ],
+    [
+     "φία",
+     "",
+     "(orthós) + γράφω",
+     "drawing",
+     "hia",
+     "(front view)",
+     ""
+    ],
+    [
+     "σκηνογρ",
+     "scaenographi",
+     "σκηνή",
+     "scene drawing",
+     "Scaenogra",
+     "perspective",
+     "1.2.2;"
+    ],
+    [
+     "αφία",
+     "a",
+     "(skēnḗ) + γράφω",
+     "",
+     "phia",
+     "view",
+     "7.praef.11"
+    ],
+    [
+     "σκιαθήρα",
+     "skiatheras",
+     "σκιά (skiá),",
+     "shadow-",
+     "Gnomon",
+     "rod of the",
+     "9.1.1;"
+    ],
+    [
+     "ς",
+     "",
+     "shadow + θηράω (thēráō)",
+     "hunter",
+     "",
+     "sundial",
+     "9.7.1–9.7.7"
+    ],
+    [
+     "μετόπη",
+     "metope",
+     "μετά (metá) + ὀπή (opḗ)",
+     "space between openings",
+     "Metopa",
+     "space between the triglyphs",
+     "4.2.2–4.2.4"
+    ],
+    [
+     "λογεῖον",
+     "logeion",
+     "λόγος (lógos), speech",
+     "place of speech",
+     "Pulpitum (in part)",
+     "raised stage of the Greek theater",
+     "5.6.1; 5.7.2"
+    ],
+    [
+     "θυμελικο",
+     "thymelikoi /",
+     "θυμέλη",
+     "of the",
+     "—",
+     "musicians",
+     "5.7.2;"
+    ],
+    [
+     "ί /",
+     "skenikoi",
+     "(altar) /",
+     "thymele / of",
+     "",
+     "and chorus /",
+     "5.6.2;"
+    ],
+    [
+     "σκηνικοί",
+     "",
+     "σκηνή (scene)",
+     "the scene",
+     "",
+     "dramatic actors",
+     "5.7.1"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 9,
+   "titulo": "Conspectus codicum: the principal manuscripts",
+   "paginaPdf": 1027,
+   "paginasPdf": [
+    1027,
+    1027
+   ],
+   "paginaImpresa": 1015,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1027",
+   "columnas": [
+    "Sig.",
+    "Witness and repository",
+    "Date",
+    "Contents and editorial relation"
+   ],
+   "filas": [
+    [
+     "H",
+     "London, British Library, Harley MS 2767",
+     "800–824",
+     "Oldest known surviving copy. Possible Cologne or Aachen origin remains uncertain. Wind diagram on f. 16v. Krohn groups H with S."
+    ],
+    [
+     "S",
+     "Sélestat, Bibliothèque Humaniste, MS 17 (formerly 1153 bis)",
+     "Late 10th c.",
+     "Selestadiensis; Scletstatensis in Rose. Krohn groups S with H. Distinct from the Parisian manuscripts."
+    ],
+    [
+     "E",
+     "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 132 Gud. lat.",
+     "10th c.",
+     "Vitruvian excerpts interspersed with Faventinus. Krohn groups E with G."
+    ],
+    [
+     "G",
+     "Wolfenbüttel, Herzog August Bibliothek, Cod. Guelf. 69 Gud. lat.",
+     "11th c.",
+     "Complete treatise. Krohn groups G with E, rather than making G a direct descendant of H."
+    ],
+    [
+     "L",
+     "Leiden, Universiteitsbibliotheek, Voss. lat. F. 88",
+     "10th c.",
+     "Shelfmark and date in Rose’s sigla list, 1899, IX."
+    ],
+    [
+     "P",
+     "Paris, Bibliothèque nationale de France, Latin 10277",
+     "Early 10th c.",
+     "Pithoeanus in Rose’s sigla list (IX). Uppercase P is distinct from lowercase p."
+    ],
+    [
+     "p",
+     "Paris, Bibliothèque nationale de France, Latin 7227",
+     "11th–12th c.",
+     "A separate Parisian witness in Rose’s sigla list (IX); not the Pithoeanus."
+    ],
+    [
+     "c",
+     "London, British Library, Cotton MS Cleopatra D I, ff. 1 –82",
+     "1000–1049",
+     "Preface f. 2v; ten books ff. 3r–82r. Distinct from Harley. No reading is transferred between them."
+    ],
+    [
+     "O",
+     "Oxford, Bodleian Library, Auct. F. 5. 7",
+     "Late 14th c.",
+     "A later Vitruvian witness cataloged as Italian (Bologna), not twelfth-century Canterbury."
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 10,
+   "titulo": "Comparative conspectus of the Vitruvian terminology across editions",
+   "paginaPdf": 1028,
+   "paginasPdf": [
+    1028,
+    1028
+   ],
+   "paginaImpresa": 1016,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1028",
+   "columnas": [
+    "Vitruvian concept",
+    "Academic (Loeb–Granger)",
+    "French gloss",
+    "Classical (Perrault)",
+    "This edition"
+   ],
+   "filas": [
+    [
+     "Firmitas",
+     "Durability",
+     "Solidité",
+     "Solidité",
+     "Firmitas (solidity)"
+    ],
+    [
+     "Utilitas",
+     "Convenience",
+     "Commodité",
+     "Utilité",
+     "Utilitas (function)"
+    ],
+    [
+     "Venustas",
+     "Beauty",
+     "Beauté",
+     "Beauté",
+     "Venustas (beauty)"
+    ],
+    [
+     "Ordinatio",
+     "Setting / order",
+     "Ordre",
+     "Ordre",
+     "Ordinatio (order)"
+    ],
+    [
+     "Dispositio",
+     "Arrangement",
+     "Disposition",
+     "Disposition",
+     "Dispositio (disposition)"
+    ],
+    [
+     "Eurythmia",
+     "Eurythmy",
+     "Eurythmie",
+     "Eurythmie",
+     "Eurythmia (eurythmy)"
+    ],
+    [
+     "Symmetria",
+     "Symmetry",
+     "Symétrie",
+     "Proportion",
+     "Symmetria (commensurate proportion)"
+    ],
+    [
+     "Decor",
+     "Propriety",
+     "Bienséance",
+     "Bienséance",
+     "Decor (decorum)"
+    ],
+    [
+     "Distributio",
+     "Economy",
+     "Économie",
+     "Distribution",
+     "Distributio (distribution)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 11,
+   "titulo": "Thematic index of mathematical content",
+   "paginaPdf": 1029,
+   "paginasPdf": [
+    1029,
+    1029
+   ],
+   "paginaImpresa": 1017,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1029",
+   "columnas": [
+    "Section / Chapter",
+    "Mathematical topic"
+   ],
+   "filas": [
+    [
+     "Preliminary Study",
+     "Proportions of the human body; inscription in square and circle"
+    ],
+    [
+     "The Vitruvian Man",
+     "Squaring the circle (geometrically insoluble with rule and compass)"
+    ],
+    [
+     "The Golden Ratio and Architecture",
+     "The golden number (φ) in architectural proportion"
+    ],
+    [
+     "Allegory of the Duplication of the Cube",
+     "Duplication of the cube (the Delian problem)"
+    ],
+    [
+     "Book I.2",
+     "The six principles: taxis, symmetria, analogia"
+    ],
+    [
+     "Book III.1",
+     "Proportions of the body; homo bene figuratus; head as 1/8 module"
+    ],
+    [
+     "Book III (temple proportions)",
+     "Modular proportion (modulus, symmetria)"
+    ],
+    [
+     "Book IX",
+     "Gnomonics and astronomy; the analemma and geometric projection"
+    ],
+    [
+     "Section on the number 216",
+     "Pythagorean number-symbolism (216 = 6³) —interpretive"
+    ],
+    [
+     "Appendix B · The Golden Number: φ (phi)",
+     "φ, proportional and numerical series"
+    ],
+    [
+     "Appendix F",
+     "Proportions of the orders; metrological equivalences"
+    ],
+    [
+     "Appendix N",
+     "Restoration of the Greek mathematical vocabulary (analogia, symmetria)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 12,
+   "titulo": "The disciplines of the ideal architect (De architectura 1.1.3–1.1.10)",
+   "paginaPdf": 1042,
+   "paginasPdf": [
+    1042,
+    1043
+   ],
+   "paginaImpresa": 1030,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1042",
+   "columnas": [
+    "Discipline",
+    "Latin term",
+    "Purpose according to Vitruvius"
+   ],
+   "filas": [
+    [
+     "Letters / grammar",
+     "litterae",
+     "To write clearly and to retain the memory of doctrine"
+    ],
+    [
+     "Drawing",
+     "graphis",
+     "To represent plans, elevations and perspectives"
+    ],
+    [
+     "Geometry",
+     "geometria",
+     "Rule and compass; layout and proportion"
+    ],
+    [
+     "Arithmetic",
+     "arithmetica",
+     "Reckoning of costs and measures; theory of number"
+    ],
+    [
+     "Optics",
+     "optica",
+     "Correct admission of light (joined to geometry)"
+    ],
+    [
+     "History",
+     "historia",
+     "To explain the origin and meaning of ornament"
+    ],
+    [
+     "Philosophy",
+     "philosophia",
+     "Loftiness of mind, physics and the architect's integrity"
+    ],
+    [
+     "Music",
+     "musica",
+     "Theory of harmony; tuning of engines and acoustics"
+    ],
+    [
+     "Medicine",
+     "medicina",
+     "Healthiness of sites (climate, waters, orientation)"
+    ],
+    [
+     "Law",
+     "iuris responsa",
+     "Servitudes, waters, party walls and contracts"
+    ],
+    [
+     "Astronomy",
+     "caeli ratio",
+     "Orientation, gnomonics and sundials"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 13,
+   "titulo": "The architectural orders (De architectura, Books III–IV)",
+   "paginaPdf": 1043,
+   "paginasPdf": [
+    1043,
+    1043
+   ],
+   "paginaImpresa": 1031,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1043",
+   "columnas": [
+    "Order",
+    "Slenderness (diam.)*",
+    "Capital",
+    "Shaft",
+    "Base",
+    "Ornament"
+   ],
+   "filas": [
+    [
+     "Tuscan",
+     "7",
+     "Abacus and echinus",
+     "Plain",
+     "Torus on plinth",
+     "Very low"
+    ],
+    [
+     "Doric",
+     "7",
+     "Abacus and echinus; triglyphs",
+     "20 sharp-edged flutes",
+     "No base",
+     "Medium"
+    ],
+    [
+     "Ionic",
+     "8; 8½; 9½; 10*",
+     "Volutes",
+     "24 filleted flutes",
+     "Attic-Ionic",
+     "High"
+    ],
+    [
+     "Corinthian",
+     "9½",
+     "Acanthus leaves",
+     "24 filleted flutes",
+     "Attic-Ionic",
+     "Very high"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 14,
+   "titulo": "The intercolumniations (De architectura 3.3.1–3.3.6)",
+   "paginaPdf": 1044,
+   "paginasPdf": [
+    1044,
+    1044
+   ],
+   "paginaImpresa": 1032,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1044",
+   "columnas": [
+    "Type",
+    "Span (diam.)",
+    "Character and use",
+    "Vitruvius's assessment"
+   ],
+   "filas": [
+    [
+     "Pycnostyle",
+     "1½",
+     "Columns very close; closed aspect",
+     "Little recommended"
+    ],
+    [
+     "Systyle",
+     "2",
+     "Columns close together",
+     "Criticized for obstructed access (3.3.3)"
+    ],
+    [
+     "Eustyle",
+     "2¼",
+     "The best balanced",
+     "The preferred type (3.3.6)"
+    ],
+    [
+     "Diastyle",
+     "3",
+     "Wider spacing; monumental",
+     "Risk of long architraves"
+    ],
+    [
+     "Araeostyle",
+     "more than 3",
+     "Widely spaced; wooden architraves",
+     "Proper to the Tuscan order"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 15,
+   "titulo": "Types of temple plan (De architectura 3.2)",
+   "paginaPdf": 1044,
+   "paginasPdf": [
+    1044,
+    1044
+   ],
+   "paginaImpresa": 1032,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1044",
+   "columnas": [
+    "Type",
+    "Greek term",
+    "Arrangement of the columns",
+    "Remarks"
+   ],
+   "filas": [
+    [
+     "In antis",
+     "ναὸς ἐν παραστάσιν",
+     "Two columns between the antae of the pronaos",
+     "The simplest (3.2.2)"
+    ],
+    [
+     "Prostyle",
+     "prostylos",
+     "Portico of columns at the front only",
+     "3.2.3"
+    ],
+    [
+     "Amphiprostyle",
+     "amphiprostylos",
+     "Porticoes at front and rear",
+     "3.2.4"
+    ],
+    [
+     "Peripteral",
+     "peripteros",
+     "Colonnade around the whole perimeter",
+     "The balanced model (3.2.5)"
+    ],
+    [
+     "Pseudodipteral",
+     "pseudodipteros",
+     "One perimeter row; clearance = two intercolumniations plus one lower diameter",
+     "Ascribed to Hermogenes (3.2.6)"
+    ],
+    [
+     "Dipteral",
+     "dipteros",
+     "Double perimeter row of columns",
+     "Great monumentality (3.2.7)"
+    ],
+    [
+     "Hypaethral",
+     "hypaethros",
+     "Decastyle; center unroofed; interior columns in two tiers",
+     "Rare; special cults (3.2.8)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 16,
+   "titulo": "Principal Greek measures",
+   "paginaPdf": 1045,
+   "paginasPdf": [
+    1045,
+    1045
+   ],
+   "paginaImpresa": 1033,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1045",
+   "columnas": [
+    "Unit",
+    "Equivalence",
+    "Approx. value (m)",
+    "Notes"
+   ],
+   "filas": [
+    [
+     "daktylos",
+     "1/16 pous",
+     "0.0193",
+     "Finger"
+    ],
+    [
+     "palaiste",
+     "4 daktyloi",
+     "0.077",
+     "Palm"
+    ],
+    [
+     "pous",
+     "16 daktyloi",
+     "0.308–0.320",
+     "Greek foot (varies by region)"
+    ],
+    [
+     "pechys",
+     "1½ pous",
+     "0.462–0.480",
+     "Cubit"
+    ],
+    [
+     "orgyia",
+     "6 pous",
+     "1.85–1.92",
+     "Fathom"
+    ],
+    [
+     "plethron",
+     "100 pous",
+     "30.8–32",
+     "Plots and squares"
+    ],
+    [
+     "stadion",
+     "600 pous",
+     "185–192",
+     "Distances"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 17,
+   "titulo": "Egyptian measures and the royal cubit",
+   "paginaPdf": 1045,
+   "paginasPdf": [
+    1045,
+    1045
+   ],
+   "paginaImpresa": 1033,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1045",
+   "columnas": [
+    "Unit",
+    "Subdivision",
+    "Approx. value (m)",
+    "Notes"
+   ],
+   "filas": [
+    [
+     "djeba",
+     "finger",
+     "0.0187",
+     "Smallest unit"
+    ],
+    [
+     "shesep",
+     "4 fingers",
+     "0.075",
+     "Palm"
+    ],
+    [
+     "common cubit",
+     "6 palms (24 fingers)",
+     "0.45",
+     "Everyday use"
+    ],
+    [
+     "royal cubit (meh niswt)",
+     "7 palms (28 fingers)",
+     "0.5236",
+     "Sacred and architectural unit"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 18,
+   "titulo": "Buildings contemporary with Vitruvius (Augustan age)",
+   "paginaPdf": 1045,
+   "paginasPdf": [
+    1045,
+    1046
+   ],
+   "paginaImpresa": 1033,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1045",
+   "columnas": [
+    "Building",
+    "Approx. date",
+    "Type",
+    "Remarks"
+   ],
+   "filas": [
+    [
+     "Basilica of Fano",
+     "27–20 BCE",
+     "Basilica",
+     "Described by Vitruvius (5.1.6): 120 × 60 feet; his only documented work"
+    ],
+    [
+     "Pantheon of Agrippa (orig.)",
+     "27–25 BCE",
+     "Temple",
+     "Later rebuilt by Hadrian"
+    ],
+    [
+     "Temple of Mars Ultor",
+     "2 BCE",
+     "Corinthian temple",
+     "Forum of Augustus"
+    ],
+    [
+     "Theater of Marcellus",
+     "13–11 BCE",
+     "Theater",
+     ""
+    ],
+    [
+     "Ara Pacis Augustae",
+     "13–9 BCE",
+     "Monumental altar",
+     ""
+    ],
+    [
+     "Temple of Apollo Sosianus",
+     "34–20 BCE",
+     "Corinthian temple",
+     "Marble; Corinthian order at Rome"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 19,
+   "titulo": "Technical treatises and literature contemporary with Vitruvius",
+   "paginaPdf": 1046,
+   "paginasPdf": [
+    1046,
+    1046
+   ],
+   "paginaImpresa": 1034,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1046",
+   "columnas": [
+    "Author",
+    "Work",
+    "Date",
+    "Condition"
+   ],
+   "filas": [
+    [
+     "Vitruvius",
+     "De architectura",
+     "27–23 BCE",
+     "Preserved in full"
+    ],
+    [
+     "Varro",
+     "De re rustica",
+     "37 BCE",
+     "Preserved"
+    ],
+    [
+     "Cicero",
+     "De oratore; De re publica",
+     "55–43 BCE",
+     "Preserved"
+    ],
+    [
+     "Lucretius",
+     "De rerum natura",
+     "c. 55 BCE",
+     "Preserved"
+    ],
+    [
+     "Virgil",
+     "Aeneis; Georgica",
+     "29–19 BCE",
+     "Preserved"
+    ],
+    [
+     "Livy",
+     "Ab urbe condita",
+     "27 BCE–AD 9",
+     "Partial"
+    ],
+    [
+     "Frontinus",
+     "De aquaeductu",
+     "c. AD 97",
+     "Preserved (later)"
+    ],
+    [
+     "Pliny the Elder",
+     "Naturalis historia",
+     "AD 77",
+     "Preserved; cites Vitruvius"
+    ],
+    [
+     "Philo of Byzantium",
+     "Mechanica",
+     "3rd c. BC",
+     "Fragments; source for Vitruvius"
+    ],
+    [
+     "Ctesibius",
+     "(mechanics and hydraulics)",
+     "3rd c. BC",
+     "Lost; cited by Vitruvius"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 20,
+   "titulo": "Buildings of the De architectura: mentioned vs. preserved",
+   "paginaPdf": 1046,
+   "paginasPdf": [
+    1046,
+    1047
+   ],
+   "paginaImpresa": 1034,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1046",
+   "columnas": [
+    "Building",
+    "De architectura",
+    "State of preservation"
+   ],
+   "filas": [
+    [
+     "Tower of the Winds (Athens), by Andronicus",
+     "1.6.4",
+     "Preserved almost intact"
+    ],
+    [
+     "Temple of the 'Three Fortunes' (Rome)",
+     "3.2.2",
+     "Lost"
+    ],
+    [
+     "Temple of Diana at Ephesus",
+     "3.2.7; 7 pr. 16",
+     "Lost; fragments (Ephesus / British Museum)"
+    ],
+    [
+     "Temple of Diana at Magnesia (Hermogenes)",
+     "3.2.6; 7 pr. 12",
+     "Excavated ruins"
+    ],
+    [
+     "Mausoleum at Halicarnassus",
+     "2.8.11; 7 pr. 12",
+     "Lost; fragments (British Museum)"
+    ],
+    [
+     "Basilica at Fano (Vitruvius's own work)",
+     "5.1.6–10",
+     "Lost; foundations found (2026)"
+    ],
+    [
+     "Aqueducts of Rome (Appia, Marcia)",
+     "cf. 8.6",
+     "Arches and specus preserved"
+    ],
+    [
+     "Greek house (andronitis/gynaeconitis)",
+     "6.7",
+     "Type documented (Delos, Priene)"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 21,
+   "titulo": "Comparative archaeological apparatus 1",
+   "paginaPdf": 1048,
+   "paginasPdf": [
+    1048,
+    1048
+   ],
+   "paginaImpresa": 1036,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1048",
+   "columnas": [
+    "Passage",
+    "Vitruvian doctrine",
+    "Material evidence",
+    "Correspondence"
+   ],
+   "filas": [
+    [
+     "2.4–2.6",
+     "Opus caementicium and pulvis Puteolanus",
+     "Roman concrete in the Pantheon, the Basilica of Maxentius and aqueducts",
+     "Excellent"
+    ],
+    [
+     "2.3",
+     "Bricks (lydion, pentadoron, tetradoron)",
+     "Dimensions confirmed at Ostia, Pompeii and Herculaneum",
+     "Very high"
+    ],
+    [
+     "2.8",
+     "Opus reticulatum and incertum",
+     "Common in Republican and early Imperial work",
+     "High"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 22,
+   "titulo": "Comparative archaeological apparatus 2",
+   "paginaPdf": 1048,
+   "paginasPdf": [
+    1048,
+    1049
+   ],
+   "paginaImpresa": 1036,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1048",
+   "columnas": [
+    "Passage",
+    "Doctrine",
+    "Material evidence",
+    "Correspondence"
+   ],
+   "filas": [
+    [
+     "3.1",
+     "Proportions of the body (homo bene figuratus)",
+     "Augustan temples (Mars Ultor, Maison Carrée)",
+     "High (ideal canon)"
+    ],
+    [
+     "3.3.6",
+     "Eustyle, the ideal intercolumniation (2¼ diam.)",
+     "Temple of Mars Ultor; Maison Carrée",
+     "Very high"
+    ],
+    [
+     "3.3.13",
+     "Entasis (optical correction of the shaft)",
+     "Columns of the Pantheon and Pompeian temples",
+     "Excellent"
+    ],
+    [
+     "3.4.5",
+     "Scamilli impares (disputed stylobate adjustment)",
+     "Curved stylobates in ancient temple construction; no single surviving feature securely identifies the scamilli",
+     "Interpretation disputed"
+    ],
+    [
+     "4.1",
+     "Origin and proportions of the Corinthian capital",
+     "Numerous examples in Rome and the provinces",
+     "Excellent"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 23,
+   "titulo": "Comparative archaeological apparatus 3",
+   "paginaPdf": 1049,
+   "paginasPdf": [
+    1049,
+    1049
+   ],
+   "paginaImpresa": 1037,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1049",
+   "columnas": [
+    "Passage",
+    "Doctrine",
+    "Material evidence",
+    "Correspondence"
+   ],
+   "filas": [
+    [
+     "5.1.6–10",
+     "Vitruvius’s account of the basilica, including a central covered space of 120 × 60 Roman feet",
+     "Piazza Andrea Costa, Fano: official identification announced on 19 January 2026",
+     "Excavation and detailed architectural comparison remain under investigation"
+    ],
+    [
+     "5.3–5.8",
+     "Roman theater (cavea, orchestra, scaena)",
+     "Theaters of Pompeii, Orange, Leptis Magna, Sabratha",
+     "Excellent"
+    ],
+    [
+     "5.5",
+     "Acoustic vessels (echeia; ἠχεῖα)",
+     "Niches and jars in some theaters (disputed evidence)",
+     "Partial"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 24,
+   "titulo": "Comparative archaeological apparatus 4",
+   "paginaPdf": 1050,
+   "paginasPdf": [
+    1050,
+    1050
+   ],
+   "paginaImpresa": 1038,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1050",
+   "columnas": [
+    "Passage",
+    "Doctrine",
+    "Material evidence",
+    "Correspondence"
+   ],
+   "filas": [
+    [
+     "6.3",
+     "Roman house (atrium, tablinum, peristyle)",
+     "Houses of Pompeii and Herculaneum (Faun, Vettii)",
+     "Very high"
+    ],
+    [
+     "6.7",
+     "Greek house (andronitis and gynaikonitis)",
+     "Olynthos, Delos and Priene",
+     "High"
+    ]
+   ]
+  },
+  {
+   "edicion": "V297",
+   "lengua": "en",
+   "n": 25,
+   "titulo": "Comparative archaeological apparatus 5",
+   "paginaPdf": 1050,
+   "paginasPdf": [
+    1050,
+    1050
+   ],
+   "paginaImpresa": 1038,
+   "pdf": "documents/kurilo-theory-en.pdf#page=1050",
+   "columnas": [
+    "Passage",
+    "Doctrine",
+    "Material evidence",
+    "Correspondence"
+   ],
+   "filas": [
+    [
+     "8.5",
+     "Leveling instruments (chorobates, dioptra)",
+     "Gradients measured in aqueducts; instrument finds",
+     "High"
+    ],
+    [
+     "8.6",
+     "Aqueducts, castella, pipework",
+     "Pont du Gard, Segovia aqueduct, Aqua Claudia",
+     "Excellent"
+    ],
+    [
+     "10.6",
+     "Archimedes screw (cochlea)",
+     "Reliefs and finds in Roman mines",
+     "Confirmed"
+    ],
+    [
+     "10.10–16",
+     "Ballista, catapult, siege testudo",
+     "Trajan's Column; reliefs and material remains",
+     "High"
+    ]
+   ]
+  }
+ ]
+}
