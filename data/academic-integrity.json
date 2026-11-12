@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "generated": "2026-11-11",
+  "generated": "2026-11-12",
   "scope": "Integridad del índice y trazabilidad editorial; no certifica cotejo filológico, calidad de traducción ni disponibilidad de servidores externos.",
   "sourceFingerprint": "3464acce3ca8ea2d14492935a249bb5950f90fd46932281f033b338d98ef7c0d",
   "sourceFingerprintMethod": "SHA-256 de JSON.stringify([recensio-es, recensio-fr, theory-en]); sin dependencia de espacios o saltos de línea.",
@@ -782,18 +782,21 @@
     "note": "Una signatura documentada no acredita por sí sola que el códice sea el más antiguo conservado ni el testigo crítico más importante."
   },
   "apparatus": {
-    "entries": 1393,
+    "entries": 3220,
     "relations": {
-      "contexto de página": 385,
-      "mención explícita en el encabezado": 162,
-      "sin locus en la página": 35,
-      "introducción de la edición": 171,
+      "contexto de página": 746,
+      "sin locus en la página": 504,
+      "sin locus": 579,
       "locus explícito": 41,
-      "locus estimado por posición en el documento": 77,
       "locus candidato sin verificar": 519,
-      "apéndices y estudios finales": 3
+      "locus verificado por el lema": 567,
+      "lema no localizado en el texto latino": 104,
+      "lema en varios loci, sin desambiguar": 80,
+      "locus verificado por el lema y la sección de comentario": 19,
+      "locus verificado por el lema y la página": 33,
+      "locus citado en la definición": 28
     },
-    "method": "Bloques del aparato localizados por encabezado en el texto de los PDF y notas DOCX del autor. El vínculo con el locus es el de la página impresa; no equivale a una collatio verificada. Las entradas sin locus en la página se completan con la mención del encabezado o, en las notas, por la posición en el documento (marcado como estimado)."
+    "method": "Bloques del aparato localizados por encabezado en el texto de los PDF y notas DOCX del autor. El vínculo con el locus es el de la página impresa; no equivale a una collatio verificada. Vocabulario de rótulos ampliado el 2026-11-11 por unión: además de los rótulos de la lista original se reconocen los rótulos en versales de cualquier especialidad (metrológica, hermenéutica, constructiva…), las bibliografías críticas por locus y las entradas del diccionario vitruviano del autor."
   },
   "catalogue": {
     "records": 222,
