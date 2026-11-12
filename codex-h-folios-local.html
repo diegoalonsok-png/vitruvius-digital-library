@@ -102,6 +102,34 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 .h-term-folio{padding:6px 9px;border:1px solid #cfbca0;background:#f8f4ec;border-radius:5px}
 .h-term-folio a{font-weight:700}
 @media print{.h-preface-panel{break-inside:avoid}}
+
+/* Codex H: compact scholarly header and usable folio reader on deep links. */
+body .on-shell{color:#213b51}
+body .on-shell .on-nav{background:#f7f3ec;color:#243846;padding:12px 20px;border-bottom:1px solid #d0c4b4}
+body .on-shell .on-navlinks a,body .on-shell .on-logo{color:#243846}
+body .on-shell .on-masthead{padding:8px 20px 4px;margin:0 auto 8px;max-width:1500px;color:#263b4b}
+body .on-shell .on-masthead .on-wordmark b{font-size:clamp(34px,5vw,60px)}
+body .on-shell .on-masthead .on-wordmark small{font-size:14px;letter-spacing:.15em}
+body .on-shell .on-masthead .on-lead{font-size:13px;line-height:1.45;margin:8px 0;max-width:95ch;color:#3d5261}
+body .on-shell .on-masthead .on-eyebrow{margin:0;color:#536577;font-size:10px}
+body .on-shell main>header{padding:12px 18px;border-top:2px solid #b99965}
+body .on-shell main>header h2{font-size:26px;margin:3px 0}
+body .on-shell main>header p{margin:3px 0;font-size:13px}
+body .on-shell main>.note{padding:7px 12px;margin:8px 0;font-size:12px}
+body .on-shell main #state{padding:6px 11px;margin:8px 0;font-size:12px}
+body .on-shell section[aria-label="Lector de folios"]{scroll-margin-top:15px}
+body .on-shell section[aria-label="Lector de folios"]>.toolbar{position:sticky;top:0;z-index:15;padding:8px;gap:6px}
+body .on-shell #stage{height:72vh;min-height:370px;max-width:100%;overflow:auto}
+body .on-shell #image{max-width:none}
+body .on-shell .h-preface-panel{padding:12px 15px}
+@media(max-width:760px){
+ body .on-shell .on-nav{padding:10px}
+ body .on-shell .on-masthead{padding:8px 12px}
+ body .on-shell main{padding:10px 12px 55px}
+ body .on-shell #stage{height:62vh;min-height:300px}
+ body .on-shell section[aria-label="Lector de folios"]>.toolbar{position:static}
+ body .on-shell .on-navlinks{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 </style><script src="assets/vitruvia-fetch-cache.js?v=20261111-responsive-literal-v1"></script><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
 <link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html"><meta name="citation_title" content="Codex Harleianus (Harley MS 2767) · lectura por folios y concordancia"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html">
@@ -111,6 +139,7 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 <p>Vitruvio, <em>De architectura</em>. The British Library, Harley MS 2767, primer cuarto del siglo IX. Galería local ordenada según la secuencia y las etiquetas originales de su digitalización.</p></header>
 <p class="note"><strong>Identificación académica:</strong> el número de imagen digital no equivale necesariamente al número de folio. Las cubiertas y guardas conservan su posición original; <em>f.1r</em> corresponde a la imagen digital 9 del manifiesto.</p>
 <p id="state" role="status">Comprobando que la colección de fotografías esté publicada en GitHub…</p>
+<p class="h-reader-shortcut"><a href="#h-reader" style="display:inline-block;padding:7px 13px;background:#28445c;color:#fff;text-decoration:none;border-radius:5px">Ir directamente al folio y la lupa ↓</a></p>
 <section id="h-preface-concordance" class="h-preface-panel" aria-label="Concordancia de prefacios de Vitruvio con Codex H">
 <h2>Los diez prefacios · anclas de folio de H</h2>
 <p>Primero se identifica dónde empieza cada prefacio en el manuscrito. Una rúbrica o un comienzo de texto documentado no acredita automáticamente cada palabra del folio. Consulta también el texto latino de V514 y sus traducciones.</p>
@@ -130,7 +159,7 @@ footer{font-size:13px}button:focus-visible,input:focus-visible,a:focus-visible{o
 <div id="h-term-results" aria-label="Diez términos con sus loci y folios candidatos"></div>
 <p><strong>Precaución:</strong> el sistema presenta formas características elegidas automáticamente, no lemas académicos definitivos. La confirmación de su presencia y posición exacta en H requiere lectura del folio o reconocimiento HTR comprobado.</p>
 </section>
-<section aria-label="Lector de folios"><h2>Leer el códice en grande</h2>
+<section id="h-reader" aria-label="Lector de folios"><h2>Leer el códice en grande</h2>
 <div class="toolbar"><strong id="label">Folio: —</strong><button id="prev" disabled>← Anterior</button><button id="next" disabled>Siguiente →</button><label>Imagen <input type="number" id="number" min="1" value="9" disabled></label><span id="total"></span><label>Elegir folio <select id="folio-select" aria-label="Elegir por folio o número de imagen" disabled><option value="">Cargando los folios…</option></select></label>
 <button id="minus" disabled>−</button><label>Zoom <input id="zoom" type="range" min="50" max="500" step="25" value="100" disabled></label><output id="percent">100%</output><button id="plus" disabled>+ Ampliar</button><button id="fit" disabled>Ajustar</button></div>
 <div id="stage" tabindex="0" aria-label="Folio ampliable, clic para aumentar"><p id="message">La galería se abrirá cuando se verifique el archivo maestro.</p><img id="image" hidden alt="Folio manuscrito del Codex H"></div>
@@ -246,7 +275,7 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
  for(const id of ["prev","next","number","minus","plus","fit","zoom"])$(id).disabled=false;
  filter();const params=new URLSearchParams(location.search),requested=Number(params.get("image")),wanted=norm(params.get("folio"));let initial=Number.isInteger(requested)&&requested>=1&&requested<=folios.length?requested-1:(wanted?folios.findIndex(f=>norm(f.etiquetaOriginal)===wanted):-1);
  const asked=params.get("q")||(initial<0?params.get("folio")||params.get("locus"):"");
- const go=()=>{if(asked){$("search").value=asked;$("search").dataset.go="1";filter();if(filtered.length)$("search").dataset.go="";if(initial<0&&filtered.length)initial=filtered[0]}open(initial>=0?initial:8)};
+ const go=()=>{if(asked){$("search").value=asked;$("search").dataset.go="1";filter();if(filtered.length)$("search").dataset.go="";if(initial<0&&filtered.length)initial=filtered[0]}open(initial>=0?initial:8);if(params.has("locus")||params.has("folio")||params.has("image")){const reader=document.getElementById("h-reader");if(reader)requestAnimationFrame(()=>reader.scrollIntoView({behavior:"auto",block:"start"}))}};
  fetch("data/codex-h/folio-locus-map.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null).then(m=>{locusMap=m;go()});
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
