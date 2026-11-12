@@ -1,0 +1,24 @@
+/* Árboles léxicos del Lexicon como grafos legibles.
+   1. Árbol de términos: raíz (forma consultada) a la izquierda; ramas a la derecha,
+      con conectores; cada hoja es un nodo pulsable.
+   2. Árbol etimológico: cadena de izquierda (étimo más antiguo) a derecha (forma
+      actual), con flechas y la relación escrita bajo cada nodo. */
+.lx-graph{display:grid;grid-template-columns:max-content 1fr;align-items:center;gap:0 34px;margin:14px 0 18px;position:relative}
+.lx-graph-root{display:flex;flex-direction:column;gap:2px;padding:12px 18px;border:1px solid currentColor;border-radius:12px;position:relative}
+.lx-graph-root strong{font:400 28px/1.15 var(--lx-text,Georgia,serif)}
+.lx-graph-root::after{content:"";position:absolute;right:-34px;top:50%;width:34px;border-top:1px solid rgba(127,127,127,.7)}
+.lx-graph>.lx-tree-list{margin:0;padding:0 0 0 18px;border-left:1px solid rgba(127,127,127,.7);display:flex;flex-direction:column;gap:8px}
+.lx-graph>.lx-tree-list>.lx-tree-node{display:grid;grid-template-columns:minmax(150px,210px) 1fr;align-items:center;gap:14px;padding:4px 0;margin:0}
+.lx-graph>.lx-tree-list>.lx-tree-node::before{left:-18px;top:50%;width:16px;border-top:1px solid rgba(127,127,127,.7)}
+.lx-graph>.lx-tree-list>.lx-tree-node>strong{font:600 11px/1.35 Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.lx-graph .lx-tree-node .lx-tree-list{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;border:0}
+.lx-graph .lx-tree-node .lx-tree-list .lx-tree-node{padding:6px 12px;margin:0;border:1px solid rgba(127,127,127,.45);border-radius:999px}
+.lx-graph .lx-tree-node .lx-tree-list .lx-tree-node::before{display:none}
+.lx-graph .lx-tree-word{font-size:18px!important}
+.lx-tree-wrap .lx-tree>ol.lx-tree-list{display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px 34px;border-left:0;padding:0;margin:12px 0}
+.lx-tree-wrap .lx-tree>ol.lx-tree-list>.lx-tree-node{padding:0;margin:0;max-width:300px}
+.lx-tree-wrap .lx-tree>ol.lx-tree-list>.lx-tree-node::before{content:"→";border:0;left:auto;right:-26px;top:10px;width:auto;font:18px/1 Arial;opacity:.65}
+.lx-tree-wrap .lx-tree>ol.lx-tree-list>.lx-tree-node:last-child::before{display:none}
+.lx-tree-wrap .lx-tree>ol.lx-tree-list>.lx-tree-leaf .lx-tree-head{border-width:2px}
+@media(max-width:760px){.lx-graph{grid-template-columns:1fr;gap:12px}.lx-graph-root::after{display:none}.lx-graph>.lx-tree-list>.lx-tree-node{grid-template-columns:1fr}
+.lx-tree-wrap .lx-tree>ol.lx-tree-list{flex-direction:column}.lx-tree-wrap .lx-tree>ol.lx-tree-list>.lx-tree-node::before{content:"↓";right:auto;left:0;top:auto;bottom:-20px}}

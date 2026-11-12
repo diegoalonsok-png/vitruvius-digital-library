@@ -798,7 +798,11 @@ async function renderWordTree(query,isCurrent){
  const root=el("ul",{class:"lx-tree-list"});
  const status=el("p",{class:"lx-small",role:"status"},"Consultando el origen y los lemas documentados…");
  const origins=el("div",{class:"lx-word-origins"});
- box.replaceChildren(el("h3",{},"Árbol de términos · "+word),root,
+ /* Grafo: la forma consultada a la izquierda y, a la derecha, sus ramas
+    (lema, equivalentes griegos, latinos, hebreos); cada hoja abre su propia ficha. */
+ const lg=wordTreeLanguage(word);
+ box.replaceChildren(el("h3",{},"Árbol de términos · "+word),
+  el("div",{class:"lx-graph"},el("div",{class:"lx-graph-root",lang:lg==="grc"?"grc":lg==="he"?"he":null},el("span",{class:"lx-tree-lang"},lg==="grc"?"griego antiguo":lg==="la"?"latín":lg==="he"?"hebreo":"forma"),el("strong",{},word)),root),
   el("h4",{},"Rama de origen"),status,origins);
  const active=()=>isCurrent()&&box.isConnected&&box.dataset.query===query;
  const choose=(term,code)=>{if(!active())return;$("#lx-q").value=term;S.lang=["la","grc","he","es","en","fr","de"].includes(code)?code:"auto";$("#lx-lang").value=S.lang;S.mode="palabra";renderTabs();run()};
@@ -811,7 +815,7 @@ async function renderWordTree(query,isCurrent){
    term.g?el("span",{class:"lx-tree-gloss"}," · "+term.g):null));
   root.append(el("li",{class:"lx-tree-node"},el("strong",{},label),leaves));
  };
- branch("Forma consultada",[word],language==="auto"?null:language);
+ // La forma consultada es la raíz del grafo; no se repite como rama.
  const rendered=new Set();
  const origin=(term,code)=>{
   const key=code+"|"+fold(term);if(rendered.has(key)||!active())return;rendered.add(key);
@@ -2011,7 +2015,7 @@ async function renderEtymTree(word,langCode,box,{auto=true,online=false,tree=nul
   if(n.compound&&n.parts)n.parts.forEach((pp,k)=>{if(k)head.append(" + ");head.append(word(pp))});else head.append(word(n));
   if(n.gloss)head.append(el("span",{class:"lx-tree-gloss"}," «",n.gloss,"»"));
   li.append(head);
-  if(i<nodes.length-1){const rel=n.rel||"de";li.append(el("div",{class:"lx-tree-rel"},rel==="préstamo"?"↓ préstamo":rel==="calco"?"↓ calco":rel==="hereda"?"↓ herencia directa":"↓"))}
+  if(i<nodes.length-1){const rel=n.rel||"de";const t=rel==="préstamo"?"préstamo →":rel==="calco"?"calco →":rel==="hereda"?"herencia directa →":"";if(t)li.append(el("div",{class:"lx-tree-rel"},t))}
   if(n.cognates?.length){const cg=el("div",{class:"lx-tree-cog"},el("span",{class:"lx-small"},"Cognados y paralelos: "));n.cognates.forEach((c,k)=>{if(k)cg.append(" · ");cg.append(el("span",{},c.lang?el("small",{},wkName(c.lang,c.lang)+" "):null,c.word))});li.append(cg)}
   if(n.descendants?.length){li.append(el("details",{class:"lx-tree-desc"},el("summary",{},`Descendientes y derivados de la raíz (${n.descendants.length})`),el("ul",{},n.descendants.map(d=>el("li",{},d)))))}
   if(n.etymText&&i===nodes.length-1)li.append(el("p",{class:"article-note"},"Wiktionary: ",n.etymText));
