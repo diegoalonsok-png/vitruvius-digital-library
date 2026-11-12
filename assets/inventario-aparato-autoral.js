@@ -143,7 +143,7 @@ function renderMetrics(integrity){
  addStat(box,notes.filter(n=>status(n)==="explicit_in_anchor").length,"Notas con locus explícito");
  addStat(box,notes.filter(n=>status(n)==="candidate").length,"Loci candidatos sin certificar");
  addStat(box,notes.filter(n=>status(n)==="unmapped").length,"Notas sin locus propuesto");
- addStat(box,notes.filter(n=>status(n)==="noncanonical").length,"Referencias candidatas fuera de los 731 loci canónicos");
+ addStat(box,notes.filter(n=>status(n)==="noncanonical").length,"Notas con locus candidato no canónico (7 loci distintos)");
 }
 function renderApparatus(integrity){
  const box=$("apa-apparatus-metrics");box.replaceChildren();
