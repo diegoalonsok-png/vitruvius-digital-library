@@ -536,7 +536,9 @@ try{
    assert(cards.some(c=>/Desgodetz/.test(c)&&/Profil sur la longueur/.test(c)),'Falta la sección longitudinal de Desgodetz');
    assert(cards.some(c=>/Élévation de la face/.test(c)),'Falta el alzado de la fachada');
    await page.locator('#atlas-search').fill('corte');
-   assert.equal(await page.locator('#atlas-grid .atlas-card').count(),2,'El filtro corte debe recuperar las dos láminas históricas');
+   const cortes=await page.locator('#atlas-grid .atlas-card').allInnerTexts();
+   assert(cortes.filter(c=>/Panteón|Pantheon|Panthéon/.test(c)).length===2,'El filtro corte debe recuperar las dos láminas históricas del Panteón');
+   assert(cortes.every(c=>/corte|sección|CORTE|Profil/i.test(c)),'El filtro corte devuelve fichas que no son cortes');
    await page.locator('#atlas-grid .atlas-card').filter({hasText:'Profil sur la longueur'}).locator('button[data-open]').last().click();
    assert.equal(await page.locator('#atlas-dialog').evaluate(x=>x.open),true,'No abre el visor científico del corte');
    const dossier=await page.locator('#atlas-view-details').innerText();
