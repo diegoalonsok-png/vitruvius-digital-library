@@ -525,4 +525,14 @@ if(false&&initial&&/[\p{L}]/u.test(initial.trim())){
  if(!input.value.trim())input.value=initial;
  execute("literal");
 }
+/* Excepción explícita: con «orden=vitruvio» (enlaces desde los capítulos del
+   Codex H) se lee primero Vitruvio y, a continuación, el resto de las obras
+   clásicas. El bloque pasa debajo de los resultados vitruvianos y la búsqueda
+   completa se lanza una sola vez, cuando Lexicon ya mostró los suyos. */
+if(new URLSearchParams(location.search).get("orden")==="vitruvio"&&initial&&/[\p{L}]/u.test(initial.trim())){
+ const after=grid||results;after.insertAdjacentElement("afterend",parent);
+ title.textContent="Después de Vitruvio · el resto de las obras clásicas";
+ let tries=0;const wait=()=>{if(results.children.length&&input.value.trim()){execute("literal");return}if(++tries<40)setTimeout(wait,250)};
+ setTimeout(wait,400);
+}
 })();

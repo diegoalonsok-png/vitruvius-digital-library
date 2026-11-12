@@ -71,9 +71,9 @@ async function candidates(term,serialAtRender,holder){
  });
  for(const item of ordered){
   const row=el("div",undefined,"h-term-folio");
-  const a=link("f. "+item.folio,"codex-h-folios-local.html?"+new URLSearchParams({folio:"f."+item.folio}));
+  const a=link("f. "+item.folio,"codex-h-folios-local.html?"+new URLSearchParams({folio:"f."+item.folio,verbum:term.form}));
   a.target="_blank";a.rel="noopener";
-  a.title="Abrir el folio y verificar manualmente la lectura";
+  a.title="Abrir el folio con «"+term.form+"» marcada donde el folio ya está leído renglón por renglón";
   row.append(a,el("small"," · "+pairLabel(item)+" · "+[...item.loci].join(", ")));
   holder.append(row);
  }
@@ -87,13 +87,15 @@ function render(){
  if(!group){status.textContent="No hay capítulo estructurado para esta selección.";return}
  status.textContent="Libro "+R[group.book]+" · "+(group.chapter==="praef"?"Prefacio":"capítulo "+group.chapter)+
   " · "+group.passages+" pasajes en V514 · "+group.terms.length+
-  " formas seleccionadas automáticamente. Frecuencias y loci de V514, no de H.";
+  " formas seleccionadas automáticamente. Frecuencias y loci de V514, no de H. ";
+ status.append(el("span","Cada forma abre el buscador Lexicon: primero Vitruvio, después el resto de las obras clásicas.","h-term-hint"));
+ status.lastChild.style.cssText="color:#6f7177;font-size:.9em;font-style:italic";
  for(const [i,term] of group.terms.entries()){
   const article=el("article",undefined,"h-term-result");
   const heading=el("div",undefined,"h-term-heading");
   heading.append(el("strong",(i+1)+". "));
-  const lex=link(term.form,"vitruvia-lexicon.html?"+new URLSearchParams({q:term.form,mode:"palabra",lang:"la"}));
-  lex.title="Abrir entrada de Lexicón para la forma latina";
+  const lex=link(term.form,"vitruvia-lexicon.html?"+new URLSearchParams({q:term.form,mode:"palabra",lang:"la",orden:"vitruvio"}));
+  lex.title="Buscar en Lexicon: primero en Vitruvio, después en el resto de las obras clásicas";
   heading.append(lex,el("small",term.occurrences+" ocurrencia(s) en V514 · "+term.loci.length+" locus/loci"));
   article.append(heading);
   const locusRow=el("div",undefined,"h-term-loci");

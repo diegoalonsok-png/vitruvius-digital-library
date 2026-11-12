@@ -465,6 +465,8 @@ if(!n){list.append(el("div",{class:"empty"},"No hay pasajes que cumplan la consu
  const ord=$("#lx-order").value;
  let hits=res.hits.slice();
  if(ord==="chrono")hits.sort((a,b)=>(CHRONO[D.corpus.passages[a.i][0]]??0)-(CHRONO[D.corpus.passages[b.i][0]]??0)||a.i-b.i);
+ // «Vitruvio primero»: De architectura antes que el resto del corpus, sin alterar el orden interno.
+ if(ord==="vitruvio")hits.sort((a,b)=>(D.corpus.passages[a.i][0]!=="vitruvius")-(D.corpus.passages[b.i][0]!=="vitruvius"));
  S.sorted=hits;
  // The first visible page is built before full-corpus distribution statistics.
  // Expensive longitudinal analysis is noncritical and scheduled after paint.
@@ -2443,6 +2445,7 @@ async function applyLexiconLocation(){
  S.mode=MODES[p.get("mode")]?p.get("mode"):"palabra";
  S.lang=["auto","la","grc","he","es","en","fr","de"].includes(p.get("lang"))?p.get("lang"):"auto";
  S.work=p.get("work")||"";
+ if(["corpus","chrono","vitruvio"].includes(p.get("orden"))&&$("#lx-order"))$("#lx-order").value=p.get("orden");
  S.result=null;
  const q=p.get("q")||"";
  $("#lx-q").value=q;
