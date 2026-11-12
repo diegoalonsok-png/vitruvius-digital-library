@@ -134,6 +134,36 @@ html[data-theme="dark"] body.vitruvius-secondary-controls #apa-apparatus-metrics
 </style>
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+<style>
+/* Buscador del inventario: que se note que busca. */
+.apa-qwrap{display:flex;gap:6px;align-items:stretch}
+.apa-qwrap input{flex:1;min-width:0}
+.apa-buscar{min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #2b2d31;background:#2b2d31;color:#fff;
+ font:600 14px system-ui,sans-serif;cursor:pointer}
+.apa-buscar:hover{background:#3a3d42}
+html[data-theme="dark"] .apa-buscar{background:#c9a24a;border-color:#c9a24a;color:#1a1409}
+.apa-aviso{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin:14px 0 6px;padding:14px 18px;border-radius:10px;
+ border:2px solid #c9a24a;background:#fff7d6;color:#1f1a0a;font:16px/1.5 system-ui,sans-serif;animation:apa-aviso .5s ease-out}
+.apa-aviso[hidden]{display:none}
+.apa-aviso strong{font:600 19px Georgia,serif}
+.apa-aviso .apa-aviso-det{color:#4a4229;font-size:14px}
+.apa-aviso a{font-weight:600;color:#7a5a00}
+.apa-aviso.apa-cero{border-color:#b4472f;background:#fde9e4}
+html[data-theme="dark"] .apa-aviso{background:#2a2412;color:#f4ecd2;border-color:#c9a24a}
+html[data-theme="dark"] .apa-aviso .apa-aviso-det{color:#d6ccae}
+html[data-theme="dark"] .apa-aviso a{color:#e8c46a}
+html[data-theme="dark"] .apa-aviso.apa-cero{background:#2e1a15;border-color:#b4472f}
+@keyframes apa-aviso{from{transform:translateY(-4px);opacity:.3}to{transform:none;opacity:1}}
+#apa-results.apa-buscando{opacity:.45;transition:opacity .15s}
+.apa-wrap mark.apa-search-hit{background:#ffd60a!important;color:#111!important;font-weight:600;padding:0 .12em!important;
+ box-shadow:0 0 0 1px rgba(160,120,0,.5)}
+.apa-hits{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:999px;background:#ffd60a;color:#111;
+ font:600 12px system-ui,sans-serif;vertical-align:middle}
+.apa-wrap .meta.apa-solo-meta{color:#7a5a00;font-style:italic}
+/* La fila de cifras pasa a varias líneas en lugar de cortarse. */
+.apa-wrap #apa-metrics.apa-grid,.apa-wrap #apa-apparatus-metrics.apa-grid{grid-auto-flow:row!important;
+ grid-template-columns:repeat(auto-fill,minmax(150px,1fr))!important;overflow:visible!important}
+</style>
 </head><body>
 <main class="apa-wrap">
 <nav aria-label="Volver a los recursos"><a href="index.html">Inicio</a> · <a href="aparato-critico.html">Aparato crítico</a> · <a href="centro-control-academico.html">Centro de control</a> · <a href="lector-bilingue.html">Lector por locus</a></nav>
@@ -142,8 +172,8 @@ html[data-theme="dark"] body.vitruvius-secondary-controls #apa-apparatus-metrics
 <div class="apa-grid" id="apa-metrics" aria-label="Indicadores" role="group"><div class="apa-stat">Cargando fuentes documentales…</div></div>
 <section aria-label="Consulta de notas">
 <h2>Consultar notas originales</h2>
-<div class="apa-filters">
-<label>Texto en nota, título o contexto<input id="apa-query" type="search" placeholder="fabrica, ratiocinatio, symmetria..." autocomplete="off"></label>
+<div class="apa-filters" id="apa-filtros">
+<label>Texto en nota, título o contexto<span class="apa-qwrap"><input id="apa-query" type="search" placeholder="fabrica, ratiocinatio, symmetria..." autocomplete="off" list="apa-terminos" enterkeyhint="search"><button type="button" id="apa-buscar" class="apa-buscar">Buscar</button></span><datalist id="apa-terminos"></datalist></label>
 <label>Locus de Vitruvio<select id="apa-locus" aria-label="Elegir locus de Vitruvio"><option value="">Cargando los 731 loci…</option></select></label>
 <label>Edición<select id="apa-edition"><option value="">Todas las ediciones</option><option value="recensio-es">V514 · Castellano</option><option value="recensio-fr">V554 · Francés</option><option value="theory-en">V297 · Inglés</option></select></label>
 <label>Vinculación con pasaje<select id="apa-link"><option value="">Todos los estados</option><option value="explicit_in_anchor">Locus explícito en contexto</option><option value="candidate">Locus candidato reconocido (por revisar)</option><option value="noncanonical">Locus candidato fuera del índice canónico</option><option value="unmapped">Sin locus propuesto</option></select></label>
@@ -162,6 +192,6 @@ html[data-theme="dark"] body.vitruvius-secondary-controls #apa-apparatus-metrics
 <p>Fuentes bibliográficas de las ediciones: <a href="documents/edicion-v514.html">V514</a> · <a href="documents/edicion-v554.html">V554</a> · <a href="documents/edicion-v297.html">V297</a>. Las notas conservan el nombre y el ordinal del párrafo de su archivo de origen. La referencia numérica al párrafo corresponde a la extracción informática y no sustituye una paginación editorial estable.</p>
 </section>
 </main>
-<script defer src="assets/inventario-aparato-autoral.js?v=20261112-match-ribbon-v3"></script>
+<script defer src="assets/inventario-aparato-autoral.js?v=20261112-busqueda-visible"></script>
 <script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script>
 <script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></body></html>

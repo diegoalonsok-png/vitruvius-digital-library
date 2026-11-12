@@ -183,7 +183,14 @@ function entry(n){
   const reader=make("a","","Leer pasaje latino y traducción");
   reader.href="lector-bilingue.html?"+new URLSearchParams({edition:n.edition,locus:loc});links.append(reader);
  }
- if($("apa-query").value.trim()&&!section.querySelector("mark.apa-search-hit"))section.append(make("p","meta","Coincidencia en identificadores o metadatos de procedencia."));
+ const q=$("apa-query").value.trim();
+ if(q){
+  const [ht,hc]=n.__hits||[0,0];
+  const h=section.querySelector("h3,h2");
+  if(h&&(ht||hc))h.append(document.createTextNode(" "),make("span","apa-hits",ht?ht+(ht===1?" aparición":" apariciones"):"en el contexto"));
+  if(!ht&&hc){details.open=true;section.append(make("p","meta apa-solo-meta","La palabra no está en el texto de la nota sino en su contexto en el documento, abierto abajo."))}
+  else if(!ht&&!hc)section.append(make("p","meta apa-solo-meta","Coincide sólo en el locus o en los metadatos de procedencia, no en el texto."));
+ }
  section.append(details,links);return section;
 }
 function renderLocusSummary(loc,filtered){
@@ -214,7 +221,12 @@ function update(reset=true){
  filtered=notes.filter(n=>(!ed||n.edition===ed)&&(!level||status(n)===level)&&
   (!loc||isAtLocus(n,loc))&&(!ref||references(n).some(s=>s.id===ref))&&
   (!query||matchesQuery([n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(" "),query)));
- filtered.sort((a,b)=>({
+ // Con una búsqueda, primero las notas que contienen la palabra en su propio
+ // texto (por número de apariciones), después las que sólo la tienen en el
+ // contexto, y al final las que sólo coinciden en metadatos.
+ const aciertos=n=>query?[searchRanges(n.text||"",query).length,searchRanges(n.anchor||"",query).length]:[0,0];
+ for(const n of filtered)n.__hits=aciertos(n);
+ filtered.sort((a,b)=>(b.__hits[0]-a.__hits[0])||((b.__hits[1]>0)-(a.__hits[1]>0))||({
   explicit_in_anchor:0,candidate:1,noncanonical:2,unmapped:3
  })[status(a)]-({explicit_in_anchor:0,candidate:1,noncanonical:2,unmapped:3})[status(b)]||
   (orders[a.edition]??3)-(orders[b.edition]??3)||
@@ -223,9 +235,34 @@ function update(reset=true){
  const top=Math.min(filtered.length,shown+25),out=$("apa-results");if(reset)out.replaceChildren();
  for(const n of filtered.slice(shown,top))out.append(entry(n));
  shown=top;$("apa-more").hidden=shown>=filtered.length;
+ avisoBusqueda(query,filtered);
  $("apa-status").textContent=filtered.length+" notas coincidentes; se muestran "+shown+
   (locusInput&&!loc?". No se reconoció el formato de locus: use I.2.1 o 3.praef.2.":"")+
   ". Los loci candidatos son orientativos, no lecturas certificadas.";
+}
+function avisoBusqueda(query,lista){
+ let aviso=$("apa-aviso");
+ if(!aviso){aviso=make("div","apa-aviso");aviso.id="apa-aviso";aviso.setAttribute("role","status");aviso.setAttribute("aria-live","polite");
+  $("apa-filtros").after(aviso)}
+ if(!query){aviso.hidden=true;return}
+ aviso.hidden=false;aviso.replaceChildren();
+ const enTexto=lista.filter(n=>n.__hits[0]>0).length,enContexto=lista.filter(n=>!n.__hits[0]&&n.__hits[1]>0).length;
+ const resto=lista.length-enTexto-enContexto;
+ aviso.classList.toggle("apa-cero",!lista.length);
+ // reiniciar la animación para que cada búsqueda se note
+ aviso.style.animation="none";void aviso.offsetWidth;aviso.style.animation="";
+ if(!lista.length){
+  aviso.append(make("strong","","«"+$("apa-query").value.trim()+"» no aparece en ninguna nota"),
+   make("span","apa-aviso-det","Pruebe la raíz sin terminación (fabric, symmetr), sin acentos, o quite los demás filtros."));
+  return;
+ }
+ aviso.append(make("strong","","«"+$("apa-query").value.trim()+"»: "+lista.length+(lista.length===1?" nota":" notas")),
+  make("span","apa-aviso-det",enTexto+" la contienen en el texto de la nota"+
+   (enContexto?" · "+enContexto+" sólo en el contexto del documento":"")+
+   (resto?" · "+resto+" sólo en el locus o en los metadatos":"")));
+ const ir=make("a","","Ver resultados ↓");ir.href="#apa-results";
+ ir.addEventListener("click",e=>{e.preventDefault();$("apa-results").scrollIntoView({behavior:"smooth",block:"start"})});
+ aviso.append(ir);
 }
 async function load(path){
  const r=await fetch(path);
@@ -255,5 +292,14 @@ async function init(){
 for(const id of ["apa-query","apa-locus","apa-edition","apa-link","apa-reference"])
  $(id).addEventListener("input",()=>{if(notes.length)update(true)});
 $("apa-more").addEventListener("click",()=>update(false));
+const buscarYMostrar=()=>{if(!notes.length)return;const r=$("apa-results");r.classList.add("apa-buscando");
+ update(true);setTimeout(()=>{r.classList.remove("apa-buscando");($("apa-aviso")||r).scrollIntoView({behavior:"smooth",block:"start"})},120)};
+$("apa-buscar").addEventListener("click",buscarYMostrar);
+$("apa-query").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();buscarYMostrar()}});
+/* Términos sugeridos: las voces capitales del tratado, para elegir sin escribir. */
+fetch("data/index/verba-capitalia.json").then(r=>r.ok?r.json():null).then(j=>{
+ const dl=$("apa-terminos");if(!j||!dl)return;
+ for(const v of (j.voces||[]).slice(0,40))dl.append(Object.assign(document.createElement("option"),{value:v.lemma.toLowerCase()}));
+}).catch(()=>{});
 init();
 })();
