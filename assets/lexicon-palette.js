@@ -15,6 +15,14 @@
 const PALETTE=[["Negro","#0d0d0e","dark"],["Grafito","#17191c","dark"],["Pizarra","#222a32","dark"],
  ["Azul noche","#101b2c","dark"],["Sepia","#292019","dark"],["Verde tinta","#182720","dark"],
  ["Marfil","#f7f5ef","light"],["Papel","#fbfaf6","light"],["Pergamino","#efe6d2","light"]];
+// Codex H uses only neutral greys for dark reading; other pages retain Lexicon's full palette.
+const codexMonochrome=/\/codex-h-folios-local\.html$/.test(location.pathname);
+const VISIBLE_PALETTE=codexMonochrome?[
+ ["Negro","#0d0d0e","dark"],["Grafito","#17181a","dark"],
+ ["Gris carbón","#242527","dark"],["Gris pizarra","#343538","dark"],
+ ["Gris profundo","#45464a","dark"],
+ ["Marfil","#f7f5ef","light"],["Papel","#fbfaf6","light"],["Pergamino","#efe6d2","light"]
+]:PALETTE;
 const CLAVE_FONDO="vitruvia-lexicon-bg";
 const CLAVE_TEMA="vitruvia-theme";
 const el=(t,a,...hijos)=>{
@@ -61,7 +69,7 @@ function construir(){
   +'<circle cx="10.5" cy="7.2" r="1.2"/><circle cx="15" cy="7.4" r="1.2"/></svg>';
  resumen.append(el("span",{text:"Fondo"}));
  const panel=el("div",{class:"lxp-panel"});
- for(const [nombre,hex,modo] of PALETTE)
+ for(const [nombre,hex,modo] of VISIBLE_PALETTE)
   panel.append(el("button",{type:"button",class:"lxp-swatch",title:nombre,"aria-label":nombre,
    style:"background:"+hex,onclick:()=>{
     aplicarFondo(hex,modo);
