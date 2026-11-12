@@ -19,7 +19,8 @@ const fold=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase()
 const cita=l=>{const [b,...r]=String(l).split(".");return "Vitr. "+(R[+b]||b)+"."+r.join(".")};
 const LATIN="ABCDEFGHILMNOPQRSTVXZ".split("");
 const GRIEGO="ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ".split("");
-let datos=null,grupo="nombres",letra="",sel=null;
+let datos=null,grupo="nombres",letra="",sel=null,libro="",clase="";
+const libroDe=l=>parseInt(String(l).split(".")[0],10)||0;
 
 function coleccion(){
  if(!datos)return [];
@@ -35,6 +36,10 @@ function filtradas(){
  const q=fold(($("on-q")?.value||"").trim());
  return coleccion().filter(e=>{
   if(letra&&!String(e.formaPrincipal||"").toUpperCase().startsWith(letra))return false;
+  if(libro&&!(e.loci||[]).some(l=>libroDe(l)===+libro))return false;
+  if(clase==="persona"&&e.ficha?.clase!=="person")return false;
+  if(clase==="lugar"&&e.ficha?.clase!=="place")return false;
+  if(clase==="sinficha"&&e.ficha)return false;
   if(!q)return true;
   if(fold(e.formaPrincipal).includes(q))return true;
   if((e.formasAtestiguadas||[]).some(f=>fold(f.forma).includes(q)))return true;
@@ -43,8 +48,24 @@ function filtradas(){
  });
 }
 
+/* Desplegable con todos los nombres del filtro vigente: se llega a cualquier
+   ficha eligiendo, sin escribir una letra. */
+function pintaDesplegableDeNombres(rows){
+ const sel2=$("on-nombre");if(!sel2)return;
+ const previo=sel?sel.clave:"";
+ sel2.replaceChildren(new Option(rows.length+" nombres · elegir…",""));
+ for(const e of rows.slice(0,1200)){
+  const partes=[e.formaPrincipal];
+  if(e.ficha)partes.push(KIND[e.ficha.clase]||"ficha");
+  partes.push(e.apariciones+"×");
+  sel2.append(new Option(partes.join(" · "),e.clave));
+ }
+ if(previo&&rows.some(e=>e.clave===previo))sel2.value=previo;
+}
+
 function pintaLista(){
  const rows=filtradas();
+ pintaDesplegableDeNombres(rows);
  const ul=el("ul");
  for(const e of rows.slice(0,400)){
   const li=el("li"),b=el("button");
@@ -203,6 +224,17 @@ function pintaAlfabeto(){
  for(const btn of ul.querySelectorAll("button"))btn.setAttribute("aria-pressed",String(btn.dataset.letra===letra));
 }
 
+/* El desplegable de libros dice cuántos nombres trae cada libro, para que la
+   elección sea informada y no a ciegas. */
+function pintaLibros(){
+ const sel2=$("on-libro");if(!sel2)return;
+ const base=coleccion();
+ sel2.replaceChildren(new Option("Todos los libros",""));
+ for(let b=1;b<=10;b++){
+  const n=base.filter(e=>(e.loci||[]).some(l=>libroDe(l)===b)).length;
+  if(n)sel2.append(new Option("Libro "+R[b]+" · "+n+" nombres",String(b)));
+ }
+}
 function pintaChips(){
  const ul=$("on-chips");ul.replaceChildren();
  const opciones=[["nombres","Nombres propios"],["ficha","Con ficha del autor"],
@@ -211,7 +243,7 @@ function pintaChips(){
  for(const [id,txt] of opciones){
   const li=el("li"),b=el("button",null,txt);
   b.type="button";b.setAttribute("aria-pressed",String(grupo===id));
-  b.addEventListener("click",()=>{grupo=id;letra="";sel=null;pintaChips();pintaAlfabeto();pintaLista();pintaFicha()});
+  b.addEventListener("click",()=>{grupo=id;letra="";sel=null;pintaChips();pintaAlfabeto();pintaLibros();pintaLista();pintaFicha()});
   li.append(b);ul.append(li);
  }
 }
@@ -223,8 +255,17 @@ async function init(){
   if(!r.ok)throw Error("HTTP "+r.status);
   datos=await r.json();
   if(!Array.isArray(datos.nombres))throw Error("esquema inesperado");
-  pintaCabecera();pintaChips();pintaAlfabeto();pintaLista();pintaFicha();
+  pintaCabecera();pintaChips();pintaAlfabeto();pintaLibros();pintaLista();pintaFicha();
   $("on-q")?.addEventListener("input",()=>{sel=null;pintaLista();pintaFicha()});
+  $("on-nombre")?.addEventListener("change",ev=>{
+   const k=ev.target.value;
+   sel=k?filtradas().find(e=>e.clave===k)||null:null;
+   pintaLista();pintaFicha();
+   // scrollIntoView no existe en todos los entornos de prueba ni en navegadores antiguos.
+   if(sel){const c=$("on-card");if(c&&typeof c.scrollIntoView==="function")c.scrollIntoView({behavior:"smooth",block:"nearest"})}
+  });
+  $("on-libro")?.addEventListener("change",ev=>{libro=ev.target.value;sel=null;pintaAlfabeto();pintaLista();pintaFicha()});
+  $("on-clase")?.addEventListener("change",ev=>{clase=ev.target.value;sel=null;pintaAlfabeto();pintaLista();pintaFicha()});
   const q=new URLSearchParams(location.search).get("nombre");
   if(q&&$("on-q")){$("on-q").value=q;pintaLista();
    const hit=filtradas()[0];if(hit){sel=hit;pintaLista();pintaFicha()}}

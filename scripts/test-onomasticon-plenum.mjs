@@ -72,6 +72,39 @@ check(/Glosa filológica/.test(ficha),"la ficha muestra la glosa filológica");
 check(/Glosa ecdótica/.test(ficha),"la ficha muestra la glosa ecdótica");
 check(/Atestiguación textual verificada/.test(ficha),"la ficha declara la atestiguación verificada");
 check(window.document.querySelectorAll("#on-card .on-loci a").length>0,"los loci son enlaces al lector");
+console.log("\nse llega sin escribir");
+const selNombre=window.document.getElementById("on-nombre");
+const selLibro=window.document.getElementById("on-libro");
+const selClase=window.document.getElementById("on-clase");
+check(selNombre&&selNombre.options.length>100,`el desplegable de nombres trae ${selNombre?.options.length} opciones`);
+check(selLibro&&selLibro.options.length>=10,`el desplegable de libros trae ${selLibro?.options.length} opciones`);
+check(!!selClase,"hay desplegable de clase");
+if(selNombre&&selNombre.options.length>2){
+ selNombre.value=selNombre.options[2].value;
+ selNombre.dispatchEvent(new window.Event("change"));
+ await new Promise(r=>setTimeout(r,80));
+ check(/Glosa filológica/.test(window.document.getElementById("on-card").textContent),
+   "elegir en el desplegable abre la ficha, sin teclear");
+}
+if(selLibro&&selLibro.options.length>2){
+ const antes=window.document.querySelectorAll("#on-list button").length;
+ selLibro.value=selLibro.options[1].value;
+ selLibro.dispatchEvent(new window.Event("change"));
+ await new Promise(r=>setTimeout(r,80));
+ const despues=window.document.querySelectorAll("#on-list button").length;
+ check(despues>0&&despues<=antes,`filtrar por libro acota la lista (${antes} → ${despues})`);
+ selLibro.value="";selLibro.dispatchEvent(new window.Event("change"));
+ await new Promise(r=>setTimeout(r,60));
+}
+
+console.log("\nencabezado al modo Lexicon");
+check(!!window.document.querySelector(".on-logo"),"hay logotipo del Onomasticon");
+check(window.document.querySelectorAll(".on-navlinks a").length>=12,
+  `la rejilla de enlaces trae ${window.document.querySelectorAll(".on-navlinks a").length} destinos`);
+check(!!window.document.getElementById("lxp-palette"),"la botonera de fondo del Lexicon está montada");
+check(window.document.querySelectorAll(".lxp-swatch").length===9,"la paleta ofrece los nueve fondos");
+check(!!window.document.getElementById("ov-language"),"el selector de idioma se conservó");
+
 const tool=window.document.getElementById("scholarly-query-tools");
 check(!!tool,"el módulo académico se insertó en la página");
 if(tool)check(/Copiar referencia/.test(tool.textContent),"el módulo ofrece copiar la referencia citable");

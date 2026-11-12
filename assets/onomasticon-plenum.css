@@ -49,3 +49,9 @@ html[data-theme=light] .on-alphabet button[aria-pressed=true]{background:#e7e8e7
  text-decoration:none;font:600 11px system-ui,sans-serif}
 .on-loci a:hover{background:rgba(148,132,104,.14)}
 @media(max-width:860px){.on-layout{grid-template-columns:1fr}.on-list{max-height:40vh}}
+.on-selects{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.on-selects label{font:600 12px system-ui,sans-serif;opacity:.85}
+.on-selects select,.on-selects input{border:1px solid rgba(135,143,150,.55);border-radius:9px;
+ background:transparent;color:inherit;font:13px system-ui,sans-serif;padding:8px 10px;min-height:38px;max-width:100%}
+.on-selects select{max-width:min(46ch,100%)}
+.on-selects input{flex:1 1 180px;min-width:150px}

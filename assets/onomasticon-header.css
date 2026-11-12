@@ -1,0 +1,46 @@
+/* Encabezado del Onomasticon, con el mismo registro visual que el Lexicon:
+   logotipo serif, rejilla de enlaces en varias columnas y controles en píldora.
+   Autocontenido a propósito: replica los valores del Lexicon sin importar sus
+   paquetes, que están atados a sus propias clases y chocarían con las de esta
+   página. */
+.on-shell{--on-ink:#e9e8e4;--on-dim:rgba(233,232,228,.72);--on-rule:rgba(135,141,147,.32);
+ --on-pill:#292b30;--on-pill-ink:#f4f4f2;--on-pill-line:#777c84}
+html[data-theme=light] .on-shell{--on-ink:#1d2227;--on-dim:rgba(29,34,39,.72);
+ --on-rule:rgba(60,66,72,.22);--on-pill:#e7e8e7;--on-pill-ink:#25292c;--on-pill-line:#9aa0a6}
+.on-shell{color:var(--on-ink)}
+
+.on-nav{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px 18px;align-items:center;
+ border-bottom:1px solid var(--on-rule);padding:16px 0;margin:0 0 18px}
+.on-logo{grid-column:1;display:block;text-decoration:none;color:var(--on-ink);line-height:1}
+.on-logo b{display:block;font:italic 400 30px/1 Georgia,'Times New Roman',serif;letter-spacing:.01em}
+.on-logo small{display:block;margin-top:4px;font:500 11px/1 system-ui,sans-serif;letter-spacing:.34em;
+ text-transform:uppercase;opacity:.82}
+.on-navlinks{grid-column:2;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px 10px;
+ align-content:center;min-width:0;font:500 10.5px/1.25 system-ui,sans-serif}
+.on-navlinks a{display:block;min-width:0;color:var(--on-ink);opacity:.75;text-decoration:none;padding:3px 2px}
+.on-navlinks a:hover,.on-navlinks a:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:3px}
+.on-navtools{grid-column:3;display:flex;flex-wrap:nowrap;justify-content:flex-end;align-items:center;gap:6px}
+.on-navtools>*{flex:0 0 auto}
+.on-navtools :is(select,button,a,.lxp-palette>summary){display:inline-flex;align-items:center;justify-content:center;
+ height:39px;min-height:39px;margin:0;padding:0 10px;border:1px solid var(--on-pill-line);border-radius:9px;
+ background:var(--on-pill);color:var(--on-pill-ink);font:600 12px system-ui,sans-serif;cursor:pointer;
+ text-decoration:none;white-space:nowrap}
+.on-navtools :is(select,button,a):hover,.on-navtools .lxp-palette>summary:hover{filter:brightness(1.14)}
+.on-navtools :is(select,button,a):focus-visible{outline:2px solid #c2a271;outline-offset:2px}
+
+.on-masthead{margin:0 0 22px}
+.on-eyebrow{margin:0 0 18px;font:500 12px/1.6 system-ui,sans-serif;letter-spacing:.2em;
+ text-transform:uppercase;color:var(--on-dim)}
+.on-wordmark{margin:0;line-height:.92}
+.on-wordmark b{display:block;font:italic 400 clamp(54px,9vw,120px)/.92 Georgia,'Times New Roman',serif}
+.on-wordmark small{display:block;margin-top:10px;font:500 clamp(16px,2vw,26px)/1 system-ui,sans-serif;
+ letter-spacing:.42em;text-transform:uppercase}
+.on-wordmark small i{font:500 13px/1 system-ui,sans-serif;letter-spacing:.12em;opacity:.6;font-style:normal;
+ margin-left:12px;text-transform:none}
+.on-masthead p{max-width:62ch;margin:22px 0 0;font:17px/1.75 Georgia,'Times New Roman',serif;color:var(--on-dim)}
+
+@media(max-width:1100px){.on-navlinks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:860px){.on-nav{grid-template-columns:1fr;gap:12px}
+ .on-logo,.on-navlinks,.on-navtools{grid-column:1}
+ .on-navtools{justify-content:flex-start;flex-wrap:wrap}
+ .on-navlinks{grid-template-columns:repeat(2,minmax(0,1fr))}}
