@@ -27,9 +27,13 @@ var css=[
 var style=document.createElement("style");style.textContent=css;document.head.append(style);
 var actions=document.createElement("div");actions.id="single-options";
 actions.innerHTML='<button id="s-loupe" aria-pressed="true">◉ Desactivar lupa</button> <button id="s-print">⎙ Imprimir</button> <button id="s-email">✉ Correo</button> <button id="s-wa">WhatsApp</button>';
-var headControls=document.createElement("div");headControls.id="single-top-controls";headControls.setAttribute("role","group");headControls.setAttribute("aria-label","Idioma y apariencia");
-headControls.innerHTML='<label><span class="globe" aria-hidden="true">🌐</span><select id="s-language" aria-label="Idioma de interfaz"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></label><button id="s-theme" type="button" aria-pressed="false">☾ Oscuro</button>';
-(document.querySelector(".on-navtools")||document.querySelector(".on-nav")||document.querySelector("header")).append(headControls);
+// Exact compact Lexicon-style language and theme tools, mounted only in the navbar.
+var headControls=document.createElement("div");
+headControls.id="codex-lexicon-controls";
+headControls.setAttribute("role","group");
+headControls.setAttribute("aria-label","Idioma y apariencia");
+headControls.innerHTML='<select id="s-language" aria-label="Idioma de la interfaz" title="Idioma de la interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option><option value="it">IT</option><option value="de">DE</option><option value="pt">PT</option></select><button id="s-theme" type="button" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button>';
+(document.querySelector(".on-navtools")||document.querySelector(".on-nav")).append(headControls);
 var reader=document.querySelector('section[aria-label="Lector de folios"]');reader.parentNode.insertBefore(actions,reader);
 var ruler=document.createElement("div");ruler.id="single-ruler";
 ruler.innerHTML='<label>Bajar por el folio</label><button id="s-up">↑</button><input type="range" min="0" max="100" value="0" id="s-scroll" aria-label="Desplazamiento vertical de la imagen"><output id="s-percent">0%</output><button id="s-down">↓</button>';
@@ -54,7 +58,7 @@ var current="es",theme="light",magnifier=true;
 try{current=localStorage.getItem("vitruvius-ui-lang")||"es";theme=localStorage.getItem("vitruvius-color-theme")==="dark"?"dark":"light"}catch(e){}
 function paint(){document.documentElement.dataset.readerTheme=theme;document.documentElement.lang=current;$("s-language").value=current;
 var light={es:"Claro",en:"Light",fr:"Clair",it:"Chiaro",de:"Hell",pt:"Claro"},dark={es:"Oscuro",en:"Dark",fr:"Sombre",it:"Scuro",de:"Dunkel",pt:"Escuro"};
-$("s-theme").textContent=theme==="dark"?"☀ "+(light[current]||light.es):"☾ "+(dark[current]||dark.es);$("s-theme").setAttribute("aria-pressed",String(theme==="dark"));
+$("s-theme").setAttribute("aria-pressed",String(theme==="dark"));$("s-theme").setAttribute("aria-label",theme==="dark"?"Activar fondo claro":"Activar fondo oscuro");$("s-theme").title=$("s-theme").getAttribute("aria-label");
 $("s-loupe").textContent=magnifier?"◉ Desactivar lupa":"◉ Activar lupa";}
 $("s-language").addEventListener("change",e=>{current=e.target.value;try{localStorage.setItem("vitruvius-ui-lang",current)}catch{}paint()});
 $("s-theme").addEventListener("click",()=>{theme=theme==="dark"?"light":"dark";try{localStorage.setItem("vitruvius-color-theme",theme)}catch{}paint()});
