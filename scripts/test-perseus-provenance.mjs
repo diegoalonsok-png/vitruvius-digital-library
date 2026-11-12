@@ -26,7 +26,15 @@ assert.equal(EDITION_URN.test("urn:cts:latinLit:phi0474.phi037.perseus-lat2:1.1.
 assert.equal(EDITION_URN.test("urn:cts:latinLit:stoa0040.stoa001.opp-lat1"),true);
 for(const path of ["data/clasicos-perseus.json","data/clasicos-perseus-extra.json"]){
   const catalog=JSON.parse(read(path));
-  for(const work of catalog.works||[])assert.match(work.urn||"",WORK_URN,"Invalid work-level CTS URN in "+path+": "+work.id);
+  for(const work of catalog.works||[]){
+    const identifier=work.urn||"";
+    if(identifier.startsWith("urn:cts:"))assert.match(identifier,WORK_URN,"Invalid work-level CTS URN in "+path+": "+work.id);
+    else {
+      // The Latin Library uses source-local file references, not CTS URNs.
+      assert.match(identifier,/^thelatinlibrary:[A-Za-z0-9/_.-]+$/,"Unrecognized external source identifier: "+work.id);
+      assert.ok(work.id?.startsWith("ll."),"Source-local reference cannot impersonate a CTS work ID: "+work.id);
+    }
+  }
 }
 assert.equal(report.counts.worksWithCandidateWorkCodes,candidateWorks);
 assert.equal(report.counts.versions,textVersions);
