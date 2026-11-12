@@ -75,6 +75,12 @@ body.coll-lexicon{background:#111112;color:#e7e7e5}
 .coll-lexicon .coll-main a:hover{color:#fff}
 .coll-lexicon .coll-text mark{background:#56565a;color:#fff}
 @media(max-width:640px){.coll-lexicon #coll-form{border-radius:14px}.coll-lexicon .coll-main{padding:16px 12px 60px}}
+
+/* Prefaces are editorial loci in every book: separate, accessible entry point. */
+.coll-lexicon #coll-form .coll-preface-label{display:inline-flex;align-items:center;gap:8px;color:#e5e5e7;font:500 13px system-ui,sans-serif}
+.coll-lexicon #coll-preface{min-width:172px;max-width:240px;padding:10px 12px;border:1px solid #85858b;border-radius:5px;background:#f9f8f4;color:#202832;font:500 13px system-ui,sans-serif}
+.coll-lexicon #coll-preface:focus-visible{outline:3px solid #bf9a52;outline-offset:2px}
+@media(max-width:720px){.coll-lexicon #coll-form .coll-preface-label{width:100%;justify-content:space-between}.coll-lexicon #coll-preface{flex:1;max-width:none}}
 </style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/colacion.html"><meta name="citation_title" content="Colación por locus de De architectura: V514, Rose (1899) y Krohn (1912)"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/colacion.html">
 <script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body class="coll-lexicon">
@@ -83,7 +89,7 @@ body.coll-lexicon{background:#111112;color:#e7e7e5}
 <p class="coll-eyebrow">Instrumenta philologica · Collatio</p>
 <h1>Colación por locus</h1>
 <p>Lectura por locus del texto latino V514 y las traducciones verificables de Diego Kurilo (castellano V514, francés V554 e inglés V297). Rose (1899) y Krohn (1912) se conservan como fuentes históricas consultables en facsímil; sus OCR no cotejados no se presentan como lecturas críticas. Se reutilizan los lectores existentes, sin crear nuevos visores.</p>
-<form id="coll-form" role="search"><label for="coll-locus">Locus</label><input id="coll-locus" list="coll-list" placeholder="I.2.4 · 3.1.1 · 5.praef.1" autocomplete="off"><datalist id="coll-list"></datalist><button type="submit">Ir</button><button id="coll-prev" type="button" aria-label="Locus anterior">←</button><button id="coll-next" type="button" aria-label="Locus siguiente">→</button></form>
+<form id="coll-form" role="search"><label for="coll-locus">Locus</label><input id="coll-locus" list="coll-list" placeholder="I.2.4 · 3.1.1 · 5.praef.1" autocomplete="off"><datalist id="coll-list"></datalist><label for="coll-preface" class="coll-preface-label">Prefacios<select id="coll-preface" aria-label="Elegir prefacio por libro"><option value="">Elegir prefacio…</option></select></label><button type="submit">Ir</button><button id="coll-prev" type="button" aria-label="Locus anterior">←</button><button id="coll-next" type="button" aria-label="Locus siguiente">→</button></form>
 <p id="coll-status" role="status">Cargando…</p><p class="coll-readbar-description">Selecciona un pasaje para subrayarlo. Cada cuadro conserva su propia tipografía, tamaño y colores.</p>
 <div id="coll-body" aria-live="polite"></div>
 </main>
@@ -91,6 +97,6 @@ body.coll-lexicon{background:#111112;color:#e7e7e5}
 <script src="assets/codex-h-concordance.js?v=20261105-praef-v1"></script>
 <script src="assets/kurilo-apparatus.js?v=20261105-apparatus-v2"></script>
 <script src="assets/research-folder.js?v=20261105-v1"></script>
-<script src="assets/collation-page.js?v=20261109-preface-ocr-v2"></script>
+<script src="assets/collation-page.js?v=20261112-preface-menu-v3"></script>
 <script src="assets/theme.js?v=20261105-merge-v1" defer></script>
 <script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script></body></html>
