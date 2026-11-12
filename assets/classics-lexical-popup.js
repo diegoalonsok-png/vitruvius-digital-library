@@ -216,10 +216,9 @@ targetRoot.addEventListener("click",event=>{
   showInlineLexicon(mark);
   void openMark(mark);
  }else if(inBibliotheca){
-  // One dictionary per click: prevent the global dictionary-everywhere
-  // handler from drawing a second, empty overlay above this lexical dialog.
-  event.stopImmediatePropagation();
-  void openMark(mark);
+  // Bibliotheca owns the complete cited dictionary (Lexicon, PDF, mail, share).
+  // Its native click/keyboard handlers must receive yellow-highlighted terms.
+  return;
  }else if(inLexiconViewer||inClassicalReader){
   // These readers already have link/navigation or small lexical popups:
   // yellow-word clicks open the larger viewer without competing overlays.
@@ -237,8 +236,9 @@ targetRoot.addEventListener("keydown",event=>{
  if(event.key!=="Enter"&&event.key!==" ")return;
  const mark=markOf(event.target);
  if(!mark||!supported.has(langCode(mark)))return;
+ if(inBibliotheca)return; // Native Bibliotheca dictionary owns this keypress.
  event.preventDefault();
- if(!inBibliotheca)event.stopImmediatePropagation();
+ event.stopImmediatePropagation();
  showInlineLexicon(mark);
  void openMark(mark);
 },true);
