@@ -1,19 +1,24 @@
 {
   "private": true,
   "scripts": {
-    "check:site": "node scripts/site-check.mjs",
-    "check:reading-shelf": "node scripts/check-reading-shelf.mjs",
-    "check:parallel-highlights": "node scripts/check-parallel-highlights.mjs",
-    "check:krohn-loci": "node scripts/test-krohn-locus-sync.mjs",
-    "check:vitruvia-100": "node scripts/check-vitruvia-100-subjects.mjs",
+    "build:aparato-autoral": "python3 scripts/extract-authorial-apparatus.py",
+    "build:collatio": "python3 scripts/parse-collatio-codicum.py && python3 scripts/validate-collatio.py",
+    "build:folios-collatio": "python3 scripts/merge-collatio-folios.py",
+    "build:index": "node scripts/build-classics-lexical-index.mjs",
+    "build:lexicon-auctoris": "python3 scripts/build-lexicon-auctoris.py",
+    "build:records": "node scripts/enrich-classical-records.mjs",
+    "build:styles": "node scripts/build-style-bundles.mjs --refresh",
     "check:boot": "node scripts/test-page-boot.mjs",
+    "check:collatio": "node scripts/test-collatio-register.mjs",
+    "check:gate": "node scripts/test-corpus-index-gate.mjs",
     "check:index": "node scripts/test-classics-lexical-index.mjs",
+    "check:krohn-loci": "node scripts/test-krohn-locus-sync.mjs",
+    "check:parallel-highlights": "node scripts/check-parallel-highlights.mjs",
     "check:philology": "node scripts/test-vitruvia-philology.mjs",
     "check:rank": "node scripts/test-vitruvia-rank.mjs",
-    "check:gate": "node scripts/test-corpus-index-gate.mjs",
-    "build:index": "node scripts/build-classics-lexical-index.mjs",
-    "build:styles": "node scripts/build-style-bundles.mjs --refresh",
-    "build:records": "node scripts/enrich-classical-records.mjs"
+    "check:reading-shelf": "node scripts/check-reading-shelf.mjs",
+    "check:site": "node scripts/site-check.mjs",
+    "check:vitruvia-100": "node scripts/check-vitruvia-100-subjects.mjs"
   },
   "devDependencies": {
     "jsdom": "^31.0.0"

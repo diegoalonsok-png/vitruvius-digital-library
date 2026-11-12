@@ -7,11 +7,35 @@ const $=id=>document.getElementById(id);
 const names={"recensio-es":"V514 · Castellano","recensio-fr":"V554 · Francés","theory-en":"V297 · Inglés"};
 const pages={"recensio-es":"documents/edicion-v514.html","recensio-fr":"documents/edicion-v554.html","theory-en":"documents/edicion-v297.html"};
 const orders={"recensio-es":0,"recensio-fr":1,"theory-en":2};
+/* Autoridades realmente citadas en las notas, agrupadas por la naturaleza del
+   testimonio. Antes se filtraban sólo cuatro, de modo que un revisor no podía
+   aislar las menciones de los manuscritos Gudianus o Selestadiensis ni las de
+   los editores modernos distintos de Krohn, Rose y Budé. */
 const sources=[
- {id:"krohn",name:"Krohn",re:/\bkrohn\b/i},
- {id:"rose",name:"Rose",re:/\brose\b/i},
- {id:"bude",name:"Budé",re:/\bbud[eé]\b/i},
- {id:"codex-h",name:"Codex H / Harley",re:/\b(?:harleianus|harley|codex\s+h|c[oó]dice\s+h|ms\s+2767)\b/i}
+ {id:"codex-h",name:"H · Harleianus 2767",kind:"manuscrito",re:/\b(?:harleianus|harley|codex\s+h|c[oó]dice\s+h|ms\s*2767|hvid|h\s+ut\s+vid)\b/i},
+ {id:"codex-g",name:"G · Gudianus 69",kind:"manuscrito",re:/\b(?:gudianus|gud\.|gvid)\b/i},
+ {id:"codex-s",name:"S · Selestadiensis",kind:"manuscrito",re:/\b(?:selestadiensis|scletstatensis|sel\.)\b/i},
+ {id:"codex-v",name:"V · Vossianus",kind:"manuscrito",re:/\b(?:vossianus|voss\.)\b/i},
+ {id:"codex-vat",name:"Vaticanus",kind:"manuscrito",re:/\b(?:vaticanus|vat\.)\b/i},
+ {id:"krohn",name:"Krohn 1912",kind:"edición crítica",re:/\bkrohn\b/i},
+ {id:"rose",name:"Rose 1899",kind:"edición crítica",re:/\brose\b/i},
+ {id:"bude",name:"Budé (Les Belles Lettres)",kind:"edición crítica",re:/\bbud[eé](?![\p{L}\p{N}])/iu},
+ {id:"fleury",name:"Fleury",kind:"edición crítica",re:/\bfleury\b/i},
+ {id:"callebat",name:"Callebat",kind:"edición crítica",re:/\bcallebat\b/i},
+ {id:"gros",name:"Gros",kind:"edición crítica",re:/\bgros\b/i},
+ {id:"soubiran",name:"Soubiran",kind:"edición crítica",re:/\bsoubiran\b/i},
+ {id:"granger",name:"Granger (Loeb)",kind:"edición crítica",re:/\bgranger\b/i},
+ {id:"marini",name:"Marini",kind:"edición crítica",re:/\b(?:marini|add\.\s*mar\.)\b/i},
+ {id:"corso",name:"Corso",kind:"edición crítica",re:/\bcorso\b/i},
+ {id:"fensterbusch",name:"Fensterbusch",kind:"edición crítica",re:/\bfensterbusch\b/i},
+ {id:"morgan",name:"Morgan",kind:"edición crítica",re:/\bmorgan\b/i},
+ {id:"giocondo",name:"Giocondo 1511",kind:"impresa antigua",re:/\bgiocondo\b/i},
+ {id:"cesariano",name:"Cesariano 1521",kind:"impresa antigua",re:/\bcesarian[oe](?![\p{L}\p{N}])/iu},
+ {id:"barbaro",name:"Barbaro 1567",kind:"impresa antigua",re:/\bbarbaro\b/i},
+ {id:"urrea",name:"Urrea 1582",kind:"impresa antigua",re:/\burrea\b/i},
+ {id:"perrault",name:"Perrault 1673",kind:"impresa antigua",re:/\bperrault\b/i},
+ {id:"sulpizio",name:"Sulpizio 1486",kind:"impresa antigua",re:/\bsulpizio\b/i},
+ {id:"philandrier",name:"Philandrier",kind:"impresa antigua",re:/\bphilandrier\b/i}
 ];
 const numerals={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
 let notes=[],shown=0,filtered=[],knownLoci=new Set();
@@ -41,6 +65,24 @@ function isAtLocus(n,loc){
 function references(n){
  const txt=String(n.text||"")+" "+String(n.anchor||"");
  return sources.filter(s=>s.re.test(txt));
+}
+/* Rellena el selector con las autoridades que de hecho aparecen en las notas,
+   agrupadas por tipo de testimonio, y anota cuántas notas cita cada una. */
+function poblarAutoridades(){
+ const sel=$("apa-reference");if(!sel)return;
+ const cuenta=new Map();
+ for(const s of sources)cuenta.set(s.id,notes.filter(n=>s.re.test(String(n.text||"")+" "+String(n.anchor||""))).length);
+ const previo=sel.value;
+ sel.replaceChildren(new Option("Todas las referencias",""));
+ for(const kind of ["manuscrito","edición crítica","impresa antigua"]){
+  const grupo=sources.filter(s=>s.kind===kind&&cuenta.get(s.id)>0);
+  if(!grupo.length)continue;
+  const g=document.createElement("optgroup");
+  g.label=kind==="manuscrito"?"Testimonios manuscritos":kind==="edición crítica"?"Ediciones críticas modernas":"Ediciones impresas antiguas";
+  for(const s of grupo)g.append(new Option(s.name+" ("+cuenta.get(s.id)+")",s.id));
+  sel.append(g);
+ }
+ if(previo&&sources.some(s=>s.id===previo))sel.value=previo;
 }
 function renderMetrics(integrity){
  const box=$("apa-metrics");box.replaceChildren();
@@ -140,6 +182,7 @@ async function init(){
   const locus=params.get("locus");if(locus)$("apa-locus").value=locus.slice(0,40);
   const ed=params.get("edition");if(ed&&names[ed])$("apa-edition").value=ed;
   const reference=params.get("ref");if(reference&&sources.some(s=>s.id===reference))$("apa-reference").value=reference;
+  poblarAutoridades();
   renderMetrics(integrity);renderApparatus(integrity);update(true);
  }catch(e){
   $("apa-status").textContent="No se pudieron cargar las notas originales ("+e.message+"). No se muestran cifras inventadas.";

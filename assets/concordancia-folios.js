@@ -155,7 +155,7 @@ async function load(){
   if(passages.length<700||map.entries.length<2)throw Error('Datos incompletos');
   try{localIndex=await fetch('images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/indice-folios.json').then(r=>r.ok?r.json():null)}catch(e){localIndex=null}
   if(window.CodexHConcordance){try{const all=await Promise.all(passages.map(p=>window.CodexHConcordance.locate(p.locus)));all.forEach(c=>{if(c.book&&c.estimate)estimates.set(c.locus,{folio:c.estimate.folio,book:c.book})})}catch(e){}}
-  {const sel=$('f-folio'),short={visual_rubric:'rúbrica verificada',catalogue:'catálogo BL',provisional:'estudio provisional',not_verified:'locus pendiente'};sel.replaceChildren();
+  {const sel=$('f-folio'),short={visual_rubric:'rúbrica verificada',catalogue:'catálogo BL',provisional:'estudio provisional',not_verified:'locus pendiente',collatio_autoral:'collatio del autor'};sel.replaceChildren();
    for(const e of map.entries){const o=document.createElement('option');o.value=e.folio;o.textContent=e.folio+' · '+(short[e.folio_status]||e.folio_status)+(e.loci?.length?' · '+e.loci.map(l=>l.locus).join(' / '):'');sel.append(o)}
    const none=document.createElement('option');none.value='';none.textContent='Sin folio material asignado al locus';sel.append(none)}
   corpora.es=passageByLocus;

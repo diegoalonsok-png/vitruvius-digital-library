@@ -197,7 +197,77 @@ async function lookupLatin(word,work){
   const hit=d.latin[v];if(!hit?.length)continue;
   return{entries:hit.slice(0,6).map(e=>({lemma:e.lemma,morph:e.pos||"",gloss:(e.glosses||[]).slice(0,4).join("; "),lang:"la",source:e.source||"Wiktionary"})),via:"form",sources:[{label:d.source,license:d.license}]};
  }
+ /* Numeral romano: no es una palabra y no debe buscarse en el diccionario.
+    En el texto de Vitruvio son de las formas que más veces fallaban al pulsar
+    —xii, uiii, iiii, xxx—, porque las medidas y las proporciones van en
+    numerales. Se da su valor y se dice que es un numeral, nada más. */
+ const numeral=romanNumeral(word);
+ if(numeral)return{entries:[{lemma:word.toUpperCase(),
+  morph:"numeral romano · grafía "+numeral.form,
+  gloss:"Valor "+numeral.value+". En el texto suele expresar una medida, una proporción o una división del libro."
+   +(numeral.form==="aditiva"?" La grafía aditiva es la de los manuscritos y las ediciones antiguas.":""),
+  lang:"la",source:"Lectura del numeral, no entrada de diccionario"}],
+  via:"numeral",sources:[{label:"Numeral leído de la grafía; la unidad y el sentido dependen del pasaje"}]};
+ /* Último recurso, de precisión y no de conjetura: a partir de la forma se
+    quitan las desinencias corrientes y se prueban terminaciones de nominativo,
+    pero SÓLO se propone el resultado si esa otra forma EXISTE en el
+    diccionario. Así «aedium» llega a «aedis» y «aedes», «circini» a
+    «circino», «areae» a «area», e «introrsus» a «introrsum», y las que no
+    tienen pariente atestiguado —«mixtionem», «diapente», «lapidicinis»— no
+    devuelven nada en lugar de devolver un lema inventado. El rótulo dice que
+    la forma consultada no está atestiguada y que hay que verificar. */
+ const related=relatedAttested(word,d.latin);
+ if(related.length){
+  const entries=[],seen=new Set();
+  for(const form of related.slice(0,4)){
+   for(const e of (d.latin[form]||[]).slice(0,2)){
+    const key=fold(e.lemma||"");
+    if(!key||seen.has(key))continue;
+    seen.add(key);
+    entries.push({lemma:e.lemma,morph:(e.pos||"")+" · propuesto desde la forma atestiguada «"+form+"»",
+     gloss:(e.glosses||[]).slice(0,3).join("; "),lang:"la",source:e.source||"Wiktionary"});
+    if(entries.length>=5)break;
+   }
+   if(entries.length>=5)break;
+  }
+  if(entries.length)return{entries,via:"related-attested",
+   sources:[{label:d.source,license:d.license}],
+   note:"La forma consultada no figura en el diccionario. El lema se propone a partir de otra forma emparentada que sí está atestiguada: hay que verificarlo en el contexto antes de darlo por bueno."};
+ }
  return null;
+}
+/* Numerales romanos, tolerando la u por v de la grafía latina. */
+function romanNumeral(word){
+ const text=String(word||"").trim().toUpperCase().replace(/U/g,"V");
+ if(!/^[IVXLCDM]{1,15}$/.test(text))return null;
+ /* Se admite también la forma aditiva —IIII, VIIII, XXXX— porque es la que
+    traen los manuscritos y las ediciones antiguas, y es la que de hecho
+    aparece en el texto de Vitruvio al expresar medidas. */
+ const canonical=/^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/.test(text);
+ const additive=/^M{0,4}D?C{0,4}L?X{0,4}V?I{0,4}$/.test(text);
+ if(!canonical&&!additive)return null;
+ const map={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+ let total=0;
+ for(let i=0;i<text.length;i++){const here=map[text[i]],next=map[text[i+1]];total+=next&&here<next?-here:here}
+ if(!total)return null;
+ return{value:total,form:canonical?"canónica":"aditiva"};
+}
+/* Formas emparentadas que sí están atestiguadas en el diccionario. */
+const LATIN_TAIL=["ibus","orum","arum","erum","ium","ius","is","es","em","um","os","as","ae","i","o","a","e","u","us"];
+const LATIN_NOMINATIVE=["us","is","es","um","a","or","o","er","ns","x","s",""];
+function relatedAttested(word,latin){
+ const key=fold(word);
+ const found=new Set();
+ for(const tail of LATIN_TAIL){
+  if(!key.endsWith(tail)||key.length-tail.length<3)continue;
+  const stem=key.slice(0,key.length-tail.length);
+  for(const ending of LATIN_NOMINATIVE){
+   const candidate=stem+ending;
+   if(candidate===key||candidate.length<3)continue;
+   if(latin[candidate]&&latin[candidate].length)found.add(candidate);
+  }
+ }
+ return [...found];
 }
 /* Wiktionary REST: definiciones por idioma (grc / la); sigue «form of» hasta el lema. */
 async function wiktionary(word,lang,depth=0){
