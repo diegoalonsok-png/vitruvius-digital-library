@@ -33,6 +33,13 @@ def main():
     paginas_collatio = collections.defaultdict(set)
     for e in col["entradas"]:
         paginas_collatio[e["edition"]].add(e["page"])
+    # La prosa analítica se indexa aparte del aparato, en su propio archivo; sin
+    # contarla, esta auditoría declararía sin indexar lo que sí está consultable.
+    paginas_estudio = collections.defaultdict(set)
+    est_path = ROOT / "data/apparatus/estudios-ediciones.json"
+    if est_path.exists():
+        for e in json.loads(est_path.read_text(encoding="utf8")).get("entradas", []):
+            paginas_estudio[e["edition"]].add(e["page"])
 
     informe = {"schema": "vitruvius-cobertura-ediciones/1",
                "generated": datetime.date.today().isoformat(),
@@ -75,6 +82,8 @@ def main():
                 clase[n] = "preliminares"
             elif INDICES.search(t[:220]):
                 clase[n] = "índices y tablas"
+            elif n in paginas_estudio[ed]:
+                clase[n] = "prosa analítica indexada"
             elif largo >= 700:
                 clase[n] = "prosa analítica sin indexar"
             else:
@@ -97,6 +106,7 @@ def main():
             "reparto": dict(reparto.most_common()),
             "publicado": sum(v for k, v in reparto.items()
                              if k in ("collatio del Apéndice T", "aparato y comentario",
+                                      "prosa analítica indexada",
                                       "texto latino y traducción", "texto latino", "traducción")),
             "prosaAnaliticaSinIndexar": {
                 "paginas": len(sueltas),
@@ -108,6 +118,9 @@ def main():
         "paginasTotales": sum(e["paginas"] for e in informe["ediciones"]),
         "paginasPublicadas": sum(e["publicado"] for e in informe["ediciones"]),
         "prosaAnaliticaSinIndexar": sum(e["prosaAnaliticaSinIndexar"]["paginas"] for e in informe["ediciones"]),
+        "prosaAnaliticaIndexada": sum(e["reparto"].get("prosa analítica indexada", 0) for e in informe["ediciones"]),
+        "sinClasificar": sum(e["reparto"].get("página breve sin clasificar", 0) for e in informe["ediciones"]),
+        "preliminares": sum(e["reparto"].get("preliminares", 0) for e in informe["ediciones"]),
         "collatioLeida": col["recuentos"]["entradasLeidas"],
         "collatioPublicada": col["recuentos"]["publicadas"],
         "collatioSinPublicar": col["recuentos"]["entradasLeidas"] - col["recuentos"]["publicadas"],

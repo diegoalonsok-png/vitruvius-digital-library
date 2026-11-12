@@ -9,7 +9,7 @@
   "catalogue_url": "https://searcharchives.bl.uk/catalog/040-002048598",
   "iiif_manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001"
  },
- "method": "Tabla independiente del corpus editorial: la presencia de un locus en una edición no demuestra que esté en un folio manuscrito. Las atribuciones requieren inspección y registro material. · Ampliado el 2026-11-12 con los folios documentados en la collatio del autor (Apéndice T), que no se infieren de la numeración moderna sino que están nombrados en tablas impresas y pasaron los controles de data/apparatus/collatio-validada.json. · Ampliado el 2026-11-12 con los folios documentados en la collatio del autor (Apéndice T), que no se infieren de la numeración moderna sino que están nombrados en tablas impresas y pasaron los controles de data/apparatus/collatio-validada.json.",
+ "method": "Tabla independiente del corpus editorial: la presencia de un locus en una edición no demuestra que esté en un folio manuscrito. Las atribuciones requieren inspección y registro material. · Ampliado el 2026-11-12 con los folios documentados en la collatio del autor (Apéndice T), que no se infieren de la numeración moderna sino que están nombrados en tablas impresas y pasaron los controles de data/apparatus/collatio-validada.json.",
  "source_editorial": {
   "id": "recensio-es",
   "uri": "data/structured/recensio-es.json",
@@ -77,8 +77,8 @@
    "collatio_entries": [
     "V514-T-p1101-17",
     "V514-T-p1101-18",
-    "V554-T-p1110-170",
-    "V554-T-p1110-171"
+    "V554-T-p1110-214",
+    "V554-T-p1110-215"
    ],
    "loci": [
     {
@@ -96,7 +96,7 @@
    "collatio_entries": [
     "V514-T-p1101-19",
     "V514-T-p1101-20",
-    "V554-T-p1110-173"
+    "V554-T-p1110-217"
    ],
    "loci": [
     {
@@ -120,7 +120,7 @@
    "collatio_entries": [
     "V514-T-p1101-21",
     "V514-T-p1101-23",
-    "V554-T-p1110-176"
+    "V554-T-p1110-220"
    ],
    "loci": [
     {
@@ -143,7 +143,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1101-24",
-    "V554-T-p1110-177"
+    "V554-T-p1110-221"
    ],
    "loci": [
     {
@@ -161,8 +161,8 @@
    "collatio_entries": [
     "V514-T-p1101-25",
     "V514-T-p1101-26",
-    "V554-T-p1110-178",
-    "V554-T-p1110-179"
+    "V554-T-p1110-222",
+    "V554-T-p1110-223"
    ],
    "loci": [
     {
@@ -186,8 +186,8 @@
    "collatio_entries": [
     "V514-T-p1101-27",
     "V514-T-p1101-29",
-    "V554-T-p1110-180",
-    "V554-T-p1110-182"
+    "V554-T-p1110-224",
+    "V554-T-p1110-226"
    ],
    "loci": [
     {
@@ -211,8 +211,8 @@
    "collatio_entries": [
     "V514-T-p1101-30",
     "V514-T-p1102-31",
-    "V554-T-p1110-183",
-    "V554-T-p1111-184"
+    "V554-T-p1110-227",
+    "V554-T-p1111-228"
    ],
    "loci": [
     {
@@ -229,7 +229,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1102-32",
-    "V554-T-p1111-185"
+    "V554-T-p1111-229"
    ],
    "loci": [
     {
@@ -246,7 +246,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1102-33",
-    "V554-T-p1111-186"
+    "V554-T-p1111-230"
    ],
    "loci": [
     {
@@ -263,7 +263,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1102-34",
-    "V554-T-p1111-187"
+    "V554-T-p1111-231"
    ],
    "loci": [
     {
@@ -280,7 +280,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1102-36",
-    "V554-T-p1111-189"
+    "V554-T-p1111-233"
    ],
    "loci": [
     {
@@ -297,7 +297,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1102-37",
-    "V554-T-p1111-190"
+    "V554-T-p1111-234"
    ],
    "loci": [
     {
@@ -315,8 +315,8 @@
    "collatio_entries": [
     "V514-T-p1102-38",
     "V514-T-p1102-39",
-    "V554-T-p1111-191",
-    "V554-T-p1111-192"
+    "V554-T-p1111-235",
+    "V554-T-p1111-236"
    ],
    "loci": [
     {
@@ -336,8 +336,8 @@
     "V514-T-p1102-41",
     "V514-T-p1102-42",
     "V514-T-p1102-43",
-    "V554-T-p1111-195",
-    "V554-T-p1111-196"
+    "V554-T-p1111-239",
+    "V554-T-p1111-240"
    ],
    "loci": [
     {
@@ -360,7 +360,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1102-43",
-    "V554-T-p1111-196"
+    "V554-T-p1111-240"
    ],
    "loci": [
     {
@@ -377,7 +377,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1102-44",
-    "V554-T-p1111-197"
+    "V554-T-p1111-241"
    ],
    "loci": [
     {
@@ -395,8 +395,8 @@
    "collatio_entries": [
     "V514-T-p1102-45",
     "V514-T-p1103-46",
-    "V554-T-p1111-198",
-    "V554-T-p1112-199"
+    "V554-T-p1111-242",
+    "V554-T-p1112-243"
    ],
    "loci": [
     {
@@ -480,8 +480,8 @@
    "collatio_entries": [
     "V514-T-p1103-48",
     "V514-T-p1103-49",
-    "V554-T-p1112-201",
-    "V554-T-p1112-202"
+    "V554-T-p1112-245",
+    "V554-T-p1112-246"
    ],
    "loci": [
     {
@@ -504,7 +504,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1103-50",
-    "V554-T-p1112-203"
+    "V554-T-p1112-247"
    ],
    "loci": [
     {
@@ -521,7 +521,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1103-51",
-    "V554-T-p1112-204"
+    "V554-T-p1112-248"
    ],
    "loci": [
     {
@@ -538,7 +538,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1103-52",
-    "V554-T-p1112-205"
+    "V554-T-p1112-249"
    ],
    "loci": [
     {
@@ -555,7 +555,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1103-53",
-    "V554-T-p1112-206"
+    "V554-T-p1112-250"
    ],
    "loci": [
     {
@@ -572,7 +572,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1103-54",
-    "V554-T-p1112-207"
+    "V554-T-p1112-251"
    ],
    "loci": [
     {
@@ -635,8 +635,8 @@
     "V514-T-p1104-56",
     "V514-T-p1104-57",
     "V514-T-p1104-58",
-    "V554-T-p1113-210",
-    "V554-T-p1113-211"
+    "V554-T-p1113-254",
+    "V554-T-p1113-255"
    ],
    "loci": [
     {
@@ -659,7 +659,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1104-59",
-    "V554-T-p1113-212"
+    "V554-T-p1113-256"
    ],
    "loci": [
     {
@@ -676,7 +676,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1104-60",
-    "V554-T-p1113-213"
+    "V554-T-p1113-257"
    ],
    "loci": [
     {
@@ -739,9 +739,9 @@
     "V514-T-p1105-61",
     "V514-T-p1105-62",
     "V514-T-p1105-63",
-    "V554-T-p1114-214",
-    "V554-T-p1114-215",
-    "V554-T-p1114-216"
+    "V554-T-p1114-258",
+    "V554-T-p1114-259",
+    "V554-T-p1114-260"
    ],
    "loci": [
     {
@@ -808,7 +808,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1105-64",
-    "V554-T-p1114-217"
+    "V554-T-p1114-261"
    ],
    "loci": [
     {
@@ -826,9 +826,9 @@
    "collatio_entries": [
     "V514-T-p1105-65",
     "V514-T-p1105-66",
-    "V554-T-p1114-218",
-    "V554-T-p1114-219",
-    "V554-T-p1114-220"
+    "V554-T-p1114-262",
+    "V554-T-p1114-263",
+    "V554-T-p1114-264"
    ],
    "loci": [
     {
@@ -852,8 +852,8 @@
    "collatio_entries": [
     "V514-T-p1105-68",
     "V514-T-p1105-69",
-    "V554-T-p1114-221",
-    "V554-T-p1114-222"
+    "V554-T-p1114-265",
+    "V554-T-p1114-266"
    ],
    "loci": [
     {
@@ -871,8 +871,8 @@
    "collatio_entries": [
     "V514-T-p1105-70",
     "V514-T-p1105-71",
-    "V554-T-p1114-223",
-    "V554-T-p1114-224"
+    "V554-T-p1114-267",
+    "V554-T-p1114-268"
    ],
    "loci": [
     {
@@ -896,8 +896,8 @@
    "collatio_entries": [
     "V514-T-p1105-72",
     "V514-T-p1105-73",
-    "V554-T-p1114-225",
-    "V554-T-p1114-226"
+    "V554-T-p1114-269",
+    "V554-T-p1114-270"
    ],
    "loci": [
     {
@@ -920,7 +920,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1105-74",
-    "V554-T-p1114-227"
+    "V554-T-p1114-271"
    ],
    "loci": [
     {
@@ -937,7 +937,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1105-75",
-    "V554-T-p1114-228"
+    "V554-T-p1114-272"
    ],
    "loci": [
     {
@@ -953,7 +953,7 @@
    "image_number": 148,
    "folio_status": "collatio_autoral",
    "collatio_entries": [
-    "V554-T-p1115-229"
+    "V554-T-p1115-273"
    ],
    "loci": [
     {
@@ -1015,7 +1015,7 @@
    "collatio_entries": [
     "V514-T-p1106-77",
     "V514-T-p1106-78",
-    "V554-T-p1115-231"
+    "V554-T-p1115-275"
    ],
    "loci": [
     {
@@ -1039,8 +1039,8 @@
    "collatio_entries": [
     "V514-T-p1106-79",
     "V514-T-p1106-80",
-    "V554-T-p1115-232",
-    "V554-T-p1115-233"
+    "V554-T-p1115-276",
+    "V554-T-p1115-277"
    ],
    "loci": [
     {
@@ -1058,8 +1058,8 @@
    "collatio_entries": [
     "V514-T-p1106-81",
     "V514-T-p1106-82",
-    "V554-T-p1115-234",
-    "V554-T-p1115-235"
+    "V554-T-p1115-278",
+    "V554-T-p1115-279"
    ],
    "loci": [
     {
@@ -1120,7 +1120,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1106-84",
-    "V554-T-p1115-237"
+    "V554-T-p1115-281"
    ],
    "loci": [
     {
@@ -1138,7 +1138,7 @@
    "collatio_entries": [
     "V514-T-p1106-85",
     "V514-T-p1106-86",
-    "V554-T-p1115-239"
+    "V554-T-p1115-283"
    ],
    "loci": [
     {
@@ -1161,7 +1161,7 @@
    "folio_status": "collatio_autoral",
    "collatio_entries": [
     "V514-T-p1106-87",
-    "V554-T-p1115-240"
+    "V554-T-p1115-284"
    ],
    "loci": [
     {

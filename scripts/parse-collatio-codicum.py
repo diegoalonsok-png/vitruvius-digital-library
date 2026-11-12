@@ -104,7 +104,7 @@ def slice_row(line, cols):
     return out
 
 
-def parse_page(text, page):
+def parse_page(text, page, heredado=None):
     """Filas de las tablas de una página, con la cabecera que las gobierna.
 
     Los límites de columna se calculan sobre el bloque de tabla que sigue a cada
@@ -121,6 +121,13 @@ def parse_page(text, page):
         limites[i] = columns_from_block(bloque) or columns(lines[i])
 
     rows, header, cols, pending = [], None, None, None
+    # Una tabla que sigue en la página siguiente no repite su cabecera: sin esto el
+    # parser no fijaba columnas y perdía la continuación entera. Se hereda la
+    # disposición de la página anterior y se recalcula sobre el bloque de esta.
+    if heredado and not cortes:
+        utiles = [l for l in lines if l.strip()]
+        cols = columns_from_block(utiles) or heredado[0]
+        header = heredado[1]
     for idx, line in enumerate(lines):
         if not line.strip():
             continue
@@ -162,7 +169,7 @@ def parse_page(text, page):
         # Una línea de continuación sin fila abierta se ignora: es prosa del anexo.
     if pending:
         rows.append(pending)
-    return rows
+    return rows, ((cols, header) if cols and header else heredado)
 
 
 def label_columns(header):
@@ -212,11 +219,14 @@ def main():
         if not txt.exists():
             subprocess.run(["pdftotext", "-layout", str(ROOT / pdf), str(txt)], check=True)
         pages = txt.read_text(encoding="utf8", errors="replace").split("\f")
+        heredado = None
         for idx, body in enumerate(pages):
             page = idx + 1
             if not (lo <= page <= hi):
+                heredado = None
                 continue
-            for row in parse_page(body, page):
+            filas, heredado = parse_page(body, page, heredado)
+            for row in filas:
                 names = label_columns(row["header"])
                 cell = {}
                 for n, v in zip(names, row["cells"]):
