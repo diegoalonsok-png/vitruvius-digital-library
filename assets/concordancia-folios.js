@@ -19,8 +19,11 @@ async function loadTranslation(lang){if(corpora[lang])return corpora[lang];
 function showImage(index,folio){
  const image=$('f-image'),box=$('f-image-box');box.querySelector('.folio-no-image')?.remove();
  image.hidden=false;image.alt='Harley MS 2767, folio '+folio+', imagen digital '+index+' (British Library)';
+ // Primero la imagen institucional IIIF en alta resolución (la que permite leer
+ // con lupa); la copia local de 800 px queda como respaldo si el servidor falla.
  const local=localIndex?.imagenes?.find(x=>x.numeroImagen===index);
- if(local){image.onload=()=>{$('f-evidence').dataset.imageLoaded='true'};image.onerror=null;image.src='images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/'+local.archivo;return}
+ const localSrc=local?'images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/'+local.archivo:null;
+ if(!canvases.length&&localSrc){image.onload=()=>{$('f-evidence').dataset.imageLoaded='true'};image.onerror=null;image.src=localSrc;image.dataset.res='local';return}
  if(!canvases.length){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent=manifestLoading?'Cargando imagen '+index+' desde el manifiesto institucional IIIF…':'No se pudo consultar el manifiesto IIIF. Abre la imagen '+index+' desde el visor H; no se incorpora una fotografía de origen incierto.';box.append(p);return}
  const c=canvases[index-1];
  if(!c){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='No se halló la imagen '+index+' en el manifiesto institucional.';box.append(p);return}
@@ -28,11 +31,11 @@ function showImage(index,folio){
  const service=resource?.service||resource?.services;
  const srv=Array.isArray(service)?service[0]:service;
  const base=typeof srv==='string'?srv:srv?.id||srv?.['@id'];
- const src=base?String(base).replace(/\/$/,'')+'/full/1200,/0/default.jpg':resource?.id||resource?.['@id'];
+ const src=base?String(base).replace(/\/$/,'')+'/full/2400,/0/default.jpg':resource?.id||resource?.['@id'];
  if(!src){image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='El manifiesto no publica enlace de imagen para este folio.';box.append(p);return}
  image.onload=()=>{$('f-evidence').dataset.imageLoaded='true'};
- image.onerror=()=>{image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='Imagen remota no disponible; usa el enlace institucional del visor H.';box.append(p)};
- image.src=src;
+ image.onerror=()=>{if(localSrc&&image.src.indexOf(localSrc)<0){image.src=localSrc;image.dataset.res='local';return}image.hidden=true;const p=document.createElement('p');p.className='folio-no-image';p.textContent='Imagen remota no disponible; usa el enlace institucional del visor H.';box.append(p)};
+ image.src=src;image.dataset.res='iiif';
 }
 function unsetImage(){
  const image=$('f-image'),box=$('f-image-box');image.hidden=true;image.removeAttribute('src');

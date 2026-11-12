@@ -238,7 +238,16 @@ function pintarDiplomatica(){
  const destino=$("ce-diplomatica");
  if(!destino)return;
  const folio=folioMostrado();
- if(!diplomatica||diplomatica.folio!==folio){destino.hidden=true;return}
+ const lect=folio&&lecturas[folio];
+ const fuente=lect||(diplomatica&&diplomatica.folio===folio?diplomatica:null);
+ if(!fuente){destino.hidden=true;
+  if(folio&&!(folio in lecturas)){lecturas[folio]=null;
+   json("data/codex-h/lecturas/"+folio+".json").then(j=>{lecturas[folio]=j;pintarDiplomatica()}).catch(()=>{})}
+  return}
+ pintarLectura(destino,fuente);
+}
+const lecturas={};
+function pintarLectura(destino,diplomatica){
  destino.hidden=false;
  // rubric_lines es el NUMERO de lineas iniciales escritas en rubrica, no una
  // lista: en f.1r vale 2, y coincide con las dos bandas de tinta roja que
@@ -249,6 +258,17 @@ function pintarDiplomatica(){
   destino.append(el("span",{class:i<cuantas?"ce-rubrica-linea":""},document.createTextNode(linea)),
    document.createTextNode("\n"));
  });
+ const c=diplomatica.cotejo;
+ if(c)destino.append(el("small",{class:"ce-cotejo",text:
+  `Cotejo con V514: ${Math.round(c.coincidenciaConV514*1000)/10} % de coincidencia · `+
+  `entra en ${c.entrada.locus} («${c.entrada.palabra}») y sale en ${c.salida.locus} («${c.salida.palabra}») · loci ${c.loci.join(", ")}`}));
+ const dif=diplomatica.lecturasARevisar||[];
+ if(dif.length){
+  destino.append(el("b",{text:"Lecturas a revisar ("+dif.length+")"}));
+  for(const x of dif)destino.append(el("span",{class:"ce-dif",text:
+   `${x.locus}  H ${x.H||"—"}  ·  V514 ${x.V514||"—"}\n`}));
+  if(diplomatica.aviso)destino.append(el("small",{class:"ce-cotejo",text:diplomatica.aviso}));
+ }
 }
 
 /* ---------- Montaje ---------- */

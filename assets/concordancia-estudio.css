@@ -86,3 +86,5 @@ html[data-theme=dark] .ce-diplomatica .ce-rubrica-linea{color:#e08a6e}
 html[data-theme=light] .ce-tools .ce-lab,html[data-theme=light] .ce-tools .lxp-palette>summary,
 html[data-theme=light] .ce-tools .site-global-language select,html[data-theme=light] .ce-tools .theme-switch,
 html[data-theme=light] .ce-tools .site-typeface-button{background:#fff;color:#1f1f1f;border-color:rgba(0,0,0,.25)}
+.ce-diplomatica .ce-cotejo{display:block;margin:10px 0 4px;font:12px/1.55 system-ui,sans-serif;color:var(--ce-soft);white-space:normal}
+.ce-diplomatica .ce-dif{font:13px/1.6 ui-monospace,Menlo,monospace}

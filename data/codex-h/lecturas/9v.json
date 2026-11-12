@@ -1,0 +1,129 @@
+{
+ "manuscript": "British Library, Harley MS 2767",
+ "folio": "9v",
+ "digital_image": 26,
+ "status": "Lectura semidiplomática por inspección de la imagen; no transcripción diplomática verificada",
+ "method": "Lectura de la imagen digital línea por línea. & = et (también como sílaba: perp&uo); q; = que; las abreviaturas se resuelven entre paréntesis. Cortes de línea conservados. Cotejo automático con V514 por scripts/cotejar-lectura-folio.py.",
+ "rubric_lines": 0,
+ "lines": [
+  "firma perp&uo & inmutabilis · Ideo etiam & granaria",
+  "quae ad solis cursum spectant bonitatem · cito mutant",
+  "obsoniaq; & poma quae non in ea parte caeli ponunt(ur)",
+  "quae est auersa a solis cursu non diu seruantur ;",
+  "Nam semp(er) calor cum excoquit aeribus firmitatem",
+  "& uaporibus feruidis eripit exugendo naturales",
+  "uirtutes dissoluit eas & feruore mollescentes effi",
+  "cit inbecillas ut etiam in ferro anim aduertimus",
+  "quod quamuis natura sit durum in fornacibus",
+  "ab ignis uapore percale factum ita mollescit uti",
+  "in omni genus formae faciliter fabricetur & id(em)",
+  "cum molle & candens refrigeretur tinctum frigida",
+  "re durescat & restituatur in antiquam p(ro)prietatem :",
+  "Lic& etiam considerare haec ita esse ex eo quod aesta",
+  "te non solum in pestilentibus locis sed etiam in salu",
+  "bribus omnia corpora calore fiant inbecilla · & per",
+  "hiemem etiam q(uae) pestilentissimae sint regiones effici",
+  "antur salubres · ideo quod a refrigerationibus solidant(ur)",
+  "Non minus etiam quae ab frigidis regionibus corpora",
+  "traducuntur in calidas non possunt durare · sed dissol",
+  "uuntur · quae autem ex calidis locis sub tentrionem",
+  "regiones frigidas non modo non laborant inmutatio",
+  "ne loci ualitudinibus · sed etiam confirmantur ·",
+  "Quare cauendum esse uidetur in moenibus conlocan",
+  "dis ab his regionibus quae caloribus flatus ad corpo",
+  "ra hominum possunt spargere ; Namq; principiis"
+ ],
+ "cotejo": {
+  "palabrasLeidas": 193,
+  "coincidenciaConV514": 0.927,
+  "entrada": {
+   "locus": "1.4.2",
+   "palabra": "firma"
+  },
+  "salida": {
+   "locus": "1.4.5",
+   "palabra": "principiis"
+  },
+  "loci": [
+   "1.4.2",
+   "1.4.3",
+   "1.4.4",
+   "1.4.5"
+  ]
+ },
+ "lecturasARevisar": [
+  {
+   "op": "H difiere",
+   "H": "et",
+   "V514": "ea",
+   "locus": "1.4.2"
+  },
+  {
+   "op": "H difiere",
+   "H": "aeribus",
+   "V514": "e rebus",
+   "locus": "1.4.3"
+  },
+  {
+   "op": "H difiere",
+   "H": "exugendo",
+   "V514": "exsugendo",
+   "locus": "1.4.3"
+  },
+  {
+   "op": "H difiere",
+   "H": "anim aduertimus",
+   "V514": "animaduertimus",
+   "locus": "1.4.3"
+  },
+  {
+   "op": "H difiere",
+   "H": "percale factum",
+   "V514": "percalefactum",
+   "locus": "1.4.3"
+  },
+  {
+   "op": "H difiere",
+   "H": "omni",
+   "V514": "omne",
+   "locus": "1.4.3"
+  },
+  {
+   "op": "H difiere",
+   "H": "re durescat",
+   "V514": "redurescit",
+   "locus": "1.4.3"
+  },
+  {
+   "op": "H difiere",
+   "H": "restituatur",
+   "V514": "restituitur",
+   "locus": "1.4.3"
+  },
+  {
+   "op": "H difiere",
+   "H": "tentrionem",
+   "V514": "septentrionum",
+   "locus": "1.4.4"
+  },
+  {
+   "op": "H difiere",
+   "H": "ualitudinibus",
+   "V514": "ualetudinibus",
+   "locus": "1.4.4"
+  },
+  {
+   "op": "H difiere",
+   "H": "his",
+   "V514": "is",
+   "locus": "1.4.5"
+  },
+  {
+   "op": "omitido en H",
+   "H": "",
+   "V514": "e",
+   "locus": "1.4.5"
+  }
+ ],
+ "aviso": "Una discrepancia con V514 no es todavía una variante: puede ser error de lectura. Se publica para revisión sobre la imagen."
+}
