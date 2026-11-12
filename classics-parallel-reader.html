@@ -224,16 +224,46 @@ function count(){return versions[left.value]?.passages?.length||0;}
    For a verse range or a paragraph within a book, use only the same higher-level
    book/chapter, then disclose that this is approximate. */
 function locusKey(value){return String(value??"").trim().toLowerCase().replace(/\s+/g,"");}
+/* Apuleius: the Latin edition has canonical 1.1–11.30 loci, while the
+   hosted Spanish translation has t1–t312 editorial chunks. Front matter
+   precedes the novel (t1–t21), and unrelated prose follows it (t246+).
+   These anchors identify the beginning and narrative boundaries of books
+   I, IX and XI in the actual hosted texts. Interpolation is an approximate
+   reading aid, NEVER an assertion of paragraph-by-paragraph equivalence. */
+const APULEIUS_ANCHORS=[
+ {la:0,es:21},     // book I opens after the Spanish introduction
+ {la:244,es:160},  // book IX begins: «Este noveno libro...»
+ {la:321,es:219},  // book XI begins: Lucius awakens by the sea
+ {la:350,es:244}   // end of the Spanish narrative (before other works)
+];
+function apuleiusApprox(from,to,index){
+ if(work!=="apuleius-metamorphoses"||!["la","es"].includes(from)||
+    !["la","es"].includes(to)||from===to)return -1;
+ const keys=APULEIUS_ANCHORS;
+ const src=from==="la"?"la":"es",dst=to==="la"?"la":"es";
+ const at=Math.max(keys[0][src],Math.min(index,keys.at(-1)[src]));
+ for(let i=1;i<keys.length;i++){
+  if(at>keys[i][src])continue;
+  const first=keys[i-1],last=keys[i];
+  const ratio=(at-first[src])/(last[src]-first[src]);
+  return Math.round(first[dst]+ratio*(last[dst]-first[dst]));
+ }
+ return keys.at(-1)[dst];
+}
 function destination(){
  const [a,b]=pair();
  const index=Math.max(0,Math.min(position,Math.max(0,(a?.passages?.length||1)-1)));
  let second=Math.max(0,Math.min(position,Math.max(0,(b?.passages?.length||1)-1)));
  let quality=isAuto(right.value)?"auto":"ordinal";
+ if($("same-locus").checked)quality="unmatched";
  if($("same-locus").checked&&a?.passages?.[index]&&b?.passages?.length){
   const wanted=locusKey(a.passages[index].locus);
   const exact=wanted?b.passages.findIndex(p=>locusKey(p.locus)===wanted):-1;
   if(exact>=0){second=exact;quality="locus";}
   else{
+   const approx=apuleiusApprox(left.value,right.value,index);
+   if(approx>=0){second=Math.min(b.passages.length-1,approx);quality="narrative-approx";}
+   else{
    const book=/^(\d+)[.:-](\d+)/.exec(wanted);
    if(book){
     const candidates=b.passages.map((p,i)=>({i,m:/^(\d+)[.:-](\d+)/.exec(locusKey(p.locus))}))
@@ -244,6 +274,7 @@ function destination(){
      second=(preceding.length?preceding[preceding.length-1]:candidates[0]).i;
      quality="book-approx";
     }
+   }
    }
   }
  }
@@ -302,9 +333,9 @@ function goto(originSide=null){
  const currentLocus=a.passages[target.left]?.locus;
  if(currentLocus){params.set("locus",currentLocus);history.replaceState(null,"",location.pathname+"?"+params.toString());}
  if(isAuto(right.value))renderAuto();
- else if(originSide!=="right")navigatePane("right",target.right);
+ else if(originSide!=="right"&&target.quality!=="unmatched")navigatePane("right",target.right);
  buttons();
- const labels={locus:"Mismo identificador de locus · cotejo filológico pendiente","book-approx":"Mismo libro / segmento próximo · alineación aproximada",ordinal:"Posición ordinal · equivalencia textual no verificada",auto:"Locus original · traducción automática opcional"};
+ const labels={locus:"Mismo identificador de locus · cotejo filológico pendiente","book-approx":"Mismo libro / segmento próximo · alineación aproximada","narrative-approx":"Apuleyo: avance narrativo aproximado entre libros identificados · NO equivalencia por párrafo",unmatched:"No hay correspondencia documentada: el segundo visor conserva su posición",ordinal:"Posición ordinal elegida manualmente · NO equivalencia textual",auto:"Locus original · traducción automática opcional"};
  $("sync-position").textContent=(position+1)+" / "+count()+" · "+labels[target.quality];
  store();
 }
@@ -409,7 +440,9 @@ window.addEventListener("message",event=>{
    const thisLocus=locusKey(rightPassages[msg.index]?.locus);
    const leftPassages=versions[left.value]?.passages||[];
    const matched=thisLocus?leftPassages.findIndex(p=>locusKey(p.locus)===thisLocus):-1;
-   position=matched>=0?matched:Math.min(msg.index,Math.max(0,count()-1));goto("right");
+   const approx=matched<0&&$("same-locus").checked?apuleiusApprox(right.value,left.value,msg.index):-1;
+   if(matched<0&&approx<0&&$("same-locus").checked)return;
+   position=matched>=0?matched:(approx>=0?Math.min(approx,Math.max(0,count()-1)):Math.min(msg.index,Math.max(0,count()-1)));goto("right");
   }
   return;
  }
