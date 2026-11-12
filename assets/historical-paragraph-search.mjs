@@ -31,10 +31,13 @@ function render(rows,edition,kind) {
   item.append(el("p","OCR sin verificar · "+(row.segmentation==="approximate_length_window"?"división aproximada por extensión":"separación aproximada por blancos")+" · "+kind,"meta"));
   const text=row.text.slice(0,1050)+(row.text.length>1050?" […]":"");
   const p=el("p");
-  if(edition==="rose-1899"||edition==="cesariano-1521"){
-   if(window.VitruviaOCRHighlight?.decorate)window.VitruviaOCRHighlight.decorate(p,text,$("hpar-query").value);
-   else {p.classList.add("vdl-ocr-highlight");p.textContent=text;}
-  }else p.textContent=text;
+  // Highlight retrieved OCR words in all three editions, including Krohn.
+  if(window.VitruviaOCRHighlight?.decorate){
+   window.VitruviaOCRHighlight.decorate(p,text,$("hpar-query").value);
+  }else{
+   p.classList.add("vdl-ocr-highlight");
+   p.textContent=text;
+  }
   item.append(p);
   const links=el("div",undefined,"row");
   link(links,SOURCES[edition].link(row.page),SOURCES[edition].linkLabel(row.page));
