@@ -7,7 +7,7 @@
  const path=(location.pathname.split("/").pop()||"index.html").toLowerCase();
  const exclude=new Set([
   "index.html","vitruvia.html","vitruvia-lexicon.html","aparato-critico.html",
-  "bibliotheca-graeca-latina.html","onomasticon.html","atlas-geographicus.html",
+  "bibliotheca-graeca-latina.html","onomasticon.html",
   "lector-bilingue.html","lector-clasico.html","lector-textual-rapido.html",
   "classics-parallel-reader.html","classics-text-reader.html","classics-document-parallel.html",
   "classics-external-source-reader.html","classics-remote-latin-reader.html","classics-remote-text-reader.html",

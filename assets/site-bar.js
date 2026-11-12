@@ -26,7 +26,7 @@ if(!document.querySelector('script[data-research-crosslinks]')){
 const secondaryPage=(location.pathname.split("/").pop()||"index.html").toLowerCase();
 const secondarySkip=new Set([
  "index.html","vitruvia.html","vitruvia-lexicon.html","aparato-critico.html",
- "bibliotheca-graeca-latina.html","onomasticon.html","atlas-geographicus.html",
+ "bibliotheca-graeca-latina.html","onomasticon.html",
  "lector-bilingue.html","lector-clasico.html","lector-textual-rapido.html",
  "codex-h-doble-folio.html","codex-h-folios-local.html","visor-codex.html",
  "laboratorio-h.html","papyrologia-ostraca.html",
