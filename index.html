@@ -443,7 +443,31 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 .stats-academic-breakdown-grid ol{padding-left:18px;margin:7px 0}
 @media(max-width:750px){.stats-academic-breakdown-grid{grid-template-columns:1fr;gap:12px}}
 @media print{.stats-academic-breakdown{display:none}}
-</style><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1"></head>
+</style><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1">
+<!-- Resaltado de coincidencias en todos los resultados de la búsqueda principal. -->
+<style id="home-search-highlight-restored">
+#search-results mark.search-hit,
+#search-results mark.search-hit-literal,
+#search-results mark.search-hit-equivalent,
+#reader-text mark.search-hit,
+#reader-text mark.search-hit-literal,
+#reader-text mark.search-hit-equivalent {
+  background:#ffe34f!important;
+  background-color:#ffe34f!important;
+  color:#171409!important;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+  padding:0 .08em;
+  border-radius:2px;
+  text-decoration:none!important;
+  box-shadow:none!important;
+}
+@media print {
+  #search-results mark.search-hit,
+  #reader-text mark.search-hit {print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+</style>
+</head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
   <div class="institution-bar"><div class="wrap"><span>DE ARCHITECTURA · TEXTOS Y TRADICIÓN</span><span>Una biblioteca de acceso abierto</span></div></div>
