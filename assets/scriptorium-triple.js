@@ -143,7 +143,41 @@ const candidateToggle=document.createElement("input");candidateToggle.type="chec
 const candidateLabel=document.createElement("label");
 candidateLabel.append(candidateToggle,document.createTextNode(" Llevar Krohn y Rose a la página concordante del locus"));
 candidateLabel.title="Usa la concordancia documentada por cotejo de trigramas; se indica su grado y no equivale a una colación verificada.";
-toolbar.append(syncLabel,candidateLabel,syncStatus);grid.before(toolbar);
+/* Ir a un locus o a una palabra: los tres visores se colocan juntos. */
+const irBox=document.createElement("div");irBox.className="script-triple-ir";
+const irLocus=document.createElement("select");irLocus.setAttribute("aria-label","Elegir locus para sincronizar los tres visores");
+irLocus.append(new Option("Elegir locus…",""));
+const irPalabra=document.createElement("input");irPalabra.type="search";irPalabra.placeholder="o una palabra latina: symmetria, decor…";irPalabra.setAttribute("aria-label","Palabra latina para sincronizar los visores");
+const irBoton=document.createElement("button");irBoton.type="button";irBoton.textContent="Sincronizar los tres visores";
+const irLabel=document.createElement("span");irLabel.textContent="Ir a:";irLabel.className="script-triple-ir-label";
+irBox.append(irLabel,irLocus,irPalabra,irBoton);
+loadEdition("kurilo").then(d=>{for(const p of d.pages)irLocus.append(new Option(p.locus,p.locus))}).catch(()=>{});
+let ultimaPalabra={q:"",i:-1};
+function irA(){
+ const base=states.find(st=>st.data?.ed.format==="structured");
+ if(!base){syncStatus.textContent="Ningún visor tiene cargada una edición por loci (Kurilo V514, V554 o V297).";return}
+ const q=irPalabra.value.trim();
+ let locus=irLocus.value;
+ if(q){
+  const f=fold(q).replace(/j/g,"i").replace(/v/g,"u"),r=f.length>6?f.replace(/(ae|am|as|um|us|is|es|em|a|e|i|o)$/,""):f;
+  const re=new RegExp("(^|[^a-z])"+r.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"));
+  const hits=base.data.pages.map((p,i)=>[p,i]).filter(([p])=>re.test(fold(p.text).replace(/j/g,"i").replace(/v/g,"u")));
+  if(!hits.length){syncStatus.textContent="«"+q+"» no aparece en el latín de "+editions[base.editionId()].name+".";return}
+  if(ultimaPalabra.q!==q)ultimaPalabra={q,i:-1};
+  ultimaPalabra.i=(ultimaPalabra.i+1)%hits.length;
+  locus=hits[ultimaPalabra.i][0].locus;
+  irBoton.textContent="Siguiente aparición ("+(ultimaPalabra.i+1)+"/"+hits.length+") →";
+ }
+ if(!locus){syncStatus.textContent="Elija un locus o escriba una palabra.";return}
+ irLocus.value=locus;
+ if(!base.seekLocus(locus)){syncStatus.textContent="Locus "+locus+" no figura en "+editions[base.editionId()].name+".";return}
+ const prev=syncToggle.checked;syncToggle.checked=true;synchronize(base);syncToggle.checked=prev;
+}
+irBoton.addEventListener("click",irA);
+irLocus.addEventListener("change",()=>{irPalabra.value="";irBoton.textContent="Sincronizar los tres visores";irA()});
+irPalabra.addEventListener("input",()=>{ultimaPalabra={q:"",i:-1};irBoton.textContent="Sincronizar los tres visores"});
+irPalabra.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();irA()}});
+toolbar.append(irBox,syncLabel,candidateLabel,syncStatus);grid.before(toolbar);
 let syncActive=false;
 /* Desde una página de Krohn o Rose: el primer locus que el cotejo sitúa en esa
    página lleva a Kurilo a ese locus y al otro OCR a su página concordante. */
