@@ -176,7 +176,15 @@ try{
  await lexicon.route(/^https?:\/\/(?!127\.0\.0\.1|localhost)/,route=>route.abort());
  await lexicon.goto(base+"vitruvia-lexicon.html?q=deus&mode=palabra&lang=la",{
   waitUntil:"domcontentloaded",timeout:30000});
- assert.equal(await lexicon.locator("link[href*='lexicon-reader-scrollbars.css']").count(),1);
+ // The stylesheet may be linked directly or concatenated into a style bundle
+ // (scripts/build-style-bundles.mjs marks each source with its file name).
+ const scrollbarsLinked=await lexicon.evaluate(async()=>{
+  const hrefs=[...document.querySelectorAll("link[rel=stylesheet]")].map(l=>l.href);
+  if(hrefs.some(h=>h.includes("lexicon-reader-scrollbars.css")))return 1;
+  for(const h of hrefs.filter(h=>/bundle-/.test(h))){const t=await fetch(h).then(r=>r.text()).catch(()=>"");if(t.includes("lexicon-reader-scrollbars.css"))return 1}
+  return 0;
+ });
+ assert.equal(scrollbarsLinked,1,"lexicon-reader-scrollbars.css must reach Lexicon, directly or through its bundle");
  const scroll=await lexicon.evaluate(()=>{
   const modal=document.createElement("dialog");modal.className="lx-viewer";
   const body=document.createElement("div");body.className="lx-viewer-body";
