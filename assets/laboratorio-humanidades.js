@@ -54,10 +54,6 @@ function show(){
  const u=new URL(location.href);u.searchParams.set("q",term);if(loc)u.searchParams.set("locus",loc);else u.searchParams.delete("locus");history.replaceState(null,"",u);
 }
 $("lab-form").addEventListener("submit",e=>{e.preventDefault();show()});
-$("math-form").addEventListener("submit",e=>{
- e.preventDefault();const a=Number($("math-a").value),b=Number($("math-b").value),c=Number($("math-c").value);
- $("math-output").textContent=![a,b,c].every(Number.isFinite)||a===0?"No definido: a debe ser distinto de cero.":Number.isFinite(b*c/a)?"d = "+(b*c/a).toLocaleString("es-AR",{maximumFractionDigits:10}):"Resultado fuera del rango numérico";
-});
 const theme=(()=>{try{return localStorage.getItem("vitruvius-color-theme")==="light"?"light":"dark"}catch{return"dark"}})();
 function paintTheme(value){document.documentElement.dataset.theme=value;$("theme").textContent=value==="light"?"☾ Oscuro":"☀ Claro";$("theme").setAttribute("aria-label",value==="light"?"Activar fondo oscuro":"Activar fondo claro");$("theme").setAttribute("aria-pressed",String(value==="dark"))}
 paintTheme(theme);
