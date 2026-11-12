@@ -1,12 +1,15 @@
 import {readFileSync} from "node:fs";
 import {runInNewContext} from "node:vm";
+import { assertStylesheet } from "./lib/stylesheet-loaded.mjs";
 import assert from "node:assert/strict";
 const source=readFileSync(new URL("../assets/vitruvia-academic-timeline.js",import.meta.url),"utf8");
 const html=readFileSync(new URL("../vitruvia.html",import.meta.url),"utf8");
 const css=readFileSync(new URL("../assets/vitruvia-academic-timeline.css",import.meta.url),"utf8");
 assert.match(html,/id="vitruvia-academic-timeline"/);
 assert.match(html,/assets\/vitruvia-academic-timeline\.js/);
-assert.match(html,/assets\/vitruvia-academic-timeline\.css/);
+// La hoja llega dentro de un paquete desde que las hojas contiguas se agrupan;
+// se comprueba que llegue, no que exista un <link> individual.
+assertStylesheet(assert,html,"assets/vitruvia-academic-timeline.css","vitruvia.html");
 assert.match(source,/amarnaproject\.com\/amarna-the-place\/boundary-stelae\//,
  "Ajetatón milestones must link their epigraphic source");
 assert.match(source,/primera proclamación sobre Ajetatón \(año regnal 5\)/,

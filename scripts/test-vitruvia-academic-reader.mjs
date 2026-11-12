@@ -1,5 +1,6 @@
 /* Regression checks: scholarly reading tools must not corrupt text. */
 import assert from 'node:assert/strict';
+import { assertStylesheet } from "./lib/stylesheet-loaded.mjs";
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 
@@ -23,9 +24,13 @@ assert.equal(match('Roma Roma Roma','roma',2).length,2,'Find count must remain b
 const editorial='Códice: Αἰθήρ. Manuscritos y ediciones.';
 assert.equal(editorial.slice(...match(editorial,'codice')[0]),'Códice');
 const html=load('vitruvia.html');
-for(const suffix of ['vitruvia-academic-reader.js','vitruvia-academic-reader.css',
-                     'vitruvia-floating-reader.js','vitruvia-floating-reader.css'])
+// Los scripts se siguen enlazando uno a uno y se exigen tal cual.
+for(const suffix of ['vitruvia-academic-reader.js','vitruvia-floating-reader.js'])
   assert(html.includes(suffix), 'Missing linked asset: '+suffix);
+// Las hojas contiguas se agrupan en un paquete, de modo que el <link> individual
+// ya no está: lo que se comprueba es que la hoja llegue a la página.
+for(const hoja of ['assets/vitruvia-academic-reader.css','assets/vitruvia-floating-reader.css'])
+  assertStylesheet(assert,html,hoja,'vitruvia.html');
 const source=load('assets/vitruvia-article.js');
 assert(source.includes('data-vr-origin'),'Source provenance is not propagated');
 assert(source.includes('function appendBiographyExtract(raw,sourceURL='),'Missing source-aware extract rendering');
