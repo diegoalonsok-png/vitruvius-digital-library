@@ -14,7 +14,7 @@
 if(window.SitioIntegrado)return;
 const fold=v=>String(v||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
 const griego=v=>/[Ͱ-Ͽἀ-῿]/.test(v);
-const raiz=q=>{const f=fold(q).replace(/[^a-z ]/g,"").trim();return f.length>6?f.replace(/(ibus|orum|arum|ae|am|as|um|us|is|es|em|a|e|i|o)$/,""):f};
+const raiz=q=>{const f=fold(q).replace(/[^a-z ]/g,"").trim();if(f.length<5)return f;const r=f.replace(/(ibus|orum|arum|ae|am|as|um|us|os|is|es|em|a|e|i|o)$/,"");return r.length>=4?r:f};
 const cache={};
 const json=url=>cache[url]||(cache[url]=fetch(url).then(r=>r.ok?r.json():null).catch(()=>null));
 const el=(tag,attrs={},...kids)=>{const e=document.createElement(tag);for(const [k,v] of Object.entries(attrs)){if(k==="class")e.className=v;else if(k==="text")e.textContent=v;else if(v!=null)e.setAttribute(k,v)}e.append(...kids.filter(x=>x!=null&&x!==false));return e};
@@ -133,4 +133,18 @@ const iniciar=()=>{
  else if(pagina==="vitruvia.html")montar("#query","#results");
 };
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",iniciar,{once:true});else iniciar();
+})();
+/* Atlas geographicus: la ficha de cada lugar muestra también qué dice de él el
+   resto de la biblioteca (glosario, V514, folios de H, tablas, mapas, registro). */
+(()=>{
+ if((location.pathname.split("/").pop()||"").toLowerCase()!=="atlas-geographicus.html")return;
+ const iniciar=()=>{
+  const cab=document.getElementById("place-heading"),det=document.getElementById("place-detail");if(!cab||!det)return;
+  const host=document.createElement("section");host.className="si-panel";host.id="sitio-integrado";host.hidden=true;det.append(host);
+  let ultimo="";
+  const lanzar=()=>{const n=cab.querySelector(".latin-name")?.textContent?.trim()||"";const q=n.split(/[\/·(]/)[0].trim();if(!q||q===ultimo)return;ultimo=q;window.SitioIntegrado.panel(q,host)};
+  new MutationObserver(()=>setTimeout(lanzar,200)).observe(cab,{childList:true,subtree:true,characterData:true});
+  setTimeout(lanzar,1500);
+ };
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",iniciar,{once:true});else iniciar();
 })();
