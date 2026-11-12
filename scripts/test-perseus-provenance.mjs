@@ -19,8 +19,8 @@ const documentedHeader=records.filter(r=>r.ctsStatus==="declared_and_checked_in_
 const documented=verified.concat(documentedHeader);
 // Work identifiers are not edition identifiers; passages must be separated
 // from editions by a colon. Never rewrite upstream CTS identifiers.
-const WORK_URN=/^urn:cts:(?:latinLit|greekLit):[A-Za-z0-9]+\\.[A-Za-z0-9]+$/;
-const EDITION_URN=/^urn:cts:(?:latinLit|greekLit):[A-Za-z0-9]+\\.[A-Za-z0-9]+\\.[A-Za-z0-9][A-Za-z0-9_-]*$/;
+const WORK_URN=/^urn:cts:(?:latinLit|greekLit):[A-Za-z0-9]+\.[A-Za-z0-9]+$/;
+const EDITION_URN=/^urn:cts:(?:latinLit|greekLit):[A-Za-z0-9]+\.[A-Za-z0-9]+\.[A-Za-z0-9][A-Za-z0-9_-]*$/;
 assert.equal(EDITION_URN.test("urn:cts:latinLit:phi0474_phi037_perseus-lat2.1.1.segment-1"),false);
 assert.equal(EDITION_URN.test("urn:cts:latinLit:phi0474.phi037.perseus-lat2:1.1.segment_1"),false);
 assert.equal(EDITION_URN.test("urn:cts:latinLit:stoa0040.stoa001.opp-lat1"),true);
