@@ -188,6 +188,81 @@ html[data-reader-theme="dark"] body .on-shell .on-navtools #codex-lexicon-contro
 }
 body .on-shell .on-navtools .lxp-palette>summary{height:44px!important;min-height:44px!important}
 body .on-shell #single-top-controls{display:none!important}
+
+/* Codex H monochrome reading palette: strong contrast in every dark panel. */
+html[data-reader-theme="dark"] body,
+html[data-theme="dark"] body{
+ --navy:#191a1d;--paper:#101113;--ink:#ececea;
+ background:#101113!important;color:#ececea!important;
+ color-scheme:dark;
+}
+html[data-reader-theme="dark"] body .on-shell,
+html[data-theme="dark"] body .on-shell{
+ --on-ink:#ececea;--on-dim:#c0c0c2;
+ --on-rule:#57585c;--on-pill:#27282b;--on-pill-ink:#f2f2f0;--on-pill-line:#828387;
+ color:#ececea!important;
+}
+html[data-reader-theme="dark"] body .on-shell :is(.on-nav,.on-masthead),
+html[data-theme="dark"] body .on-shell :is(.on-nav,.on-masthead){
+ background:#191a1d!important;color:#ececea!important;border-color:#55565a!important;
+}
+html[data-reader-theme="dark"] body .on-shell :is(.on-logo,.on-navlinks a,.on-masthead .on-lead,.on-masthead .on-eyebrow,.on-masthead .on-wordmark,.on-masthead .on-wordmark b,.on-masthead .on-wordmark small),
+html[data-theme="dark"] body .on-shell :is(.on-logo,.on-navlinks a,.on-masthead .on-lead,.on-masthead .on-eyebrow,.on-masthead .on-wordmark,.on-masthead .on-wordmark b,.on-masthead .on-wordmark small){
+ color:#e8e8e8!important;opacity:1!important;-webkit-text-fill-color:#e8e8e8!important;
+}
+html[data-reader-theme="dark"] body .on-shell :is(main>nav,main>nav a,main>header,main>header p,main>header small,main>header h2),
+html[data-theme="dark"] body .on-shell :is(main>nav,main>nav a,main>header,main>header p,main>header small,main>header h2){
+ color:#ececea!important;opacity:1!important;
+}
+html[data-reader-theme="dark"] body .on-shell main>header,
+html[data-theme="dark"] body .on-shell main>header{
+ background:#242528!important;border-color:#8d7851!important;
+}
+html[data-reader-theme="dark"] body .on-shell :is(.note,#state,.toolbar,.h-preface-panel,#single-options,#single-ruler,#single-filters),
+html[data-theme="dark"] body .on-shell :is(.note,#state,.toolbar,.h-preface-panel,#single-options,#single-ruler,#single-filters){
+ background:#242528!important;color:#f1f1ef!important;border-color:#66666a!important;
+}
+html[data-reader-theme="dark"] body .on-shell :is(.note,#state,.toolbar,.h-preface-panel,#single-options,#single-ruler,#single-filters) :is(h2,h3,p,strong,small,label,span,a,summary),
+html[data-theme="dark"] body .on-shell :is(.note,#state,.toolbar,.h-preface-panel,#single-options,#single-ruler,#single-filters) :is(h2,h3,p,strong,small,label,span,a,summary){
+ color:#ededeb!important;opacity:1!important;
+}
+html[data-reader-theme="dark"] body .on-shell :is(.h-preface-card,.h-term-folio,.h-term-result,.gallery,.card),
+html[data-theme="dark"] body .on-shell :is(.h-preface-card,.h-term-folio,.h-term-result,.gallery,.card){
+ background:#2e2f33!important;color:#ececea!important;border-color:#747579!important;
+}
+html[data-reader-theme="dark"] body .on-shell :is(.h-preface-card,.h-term-folio,.h-term-result,.gallery,.card) :is(a,small,span,strong,h2,h3),
+html[data-theme="dark"] body .on-shell :is(.h-preface-card,.h-term-folio,.h-term-result,.gallery,.card) :is(a,small,span,strong,h2,h3){
+ color:#ececea!important;
+}
+html[data-reader-theme="dark"] body .on-shell :is(button,select,input),
+html[data-theme="dark"] body .on-shell :is(button,select,input){
+ background:#303136;color:#f5f5f4;border-color:#808187;
+}
+html[data-reader-theme="dark"] body .on-shell #stage,
+html[data-theme="dark"] body .on-shell #stage{
+ background:#353537!important;color:#f7f7f5!important;border-color:#727276!important;
+}
+html[data-reader-theme="dark"] body .on-shell #stage #message,
+html[data-theme="dark"] body .on-shell #stage #message{color:#f7f7f5!important}
+html[data-reader-theme="dark"] body .on-shell #folio-quick button,
+html[data-theme="dark"] body .on-shell #folio-quick button{
+ background:#292a2d!important;color:#f4f4f2!important;border-color:#85858a!important;
+}
+html[data-reader-theme="dark"] body .on-shell #folio-quick button[aria-current="true"],
+html[data-theme="dark"] body .on-shell #folio-quick button[aria-current="true"]{
+ background:#505155!important;color:#fff!important;
+}
+html[data-reader-theme="dark"] body .on-shell .on-navtools #codex-lexicon-controls :is(#s-language,#s-theme),
+html[data-theme="dark"] body .on-shell .on-navtools #codex-lexicon-controls :is(#s-language,#s-theme){
+ background:#303136!important;color:#f4f4f2!important;border-color:#85858a!important;
+}
+html[data-reader-theme="light"] body .on-shell .on-masthead,
+html[data-theme="light"] body .on-shell .on-masthead{
+ background:#f7f3ec!important;color:#263b4b!important;
+}
+@media print{
+ html[data-theme="dark"] body,html[data-reader-theme="dark"] body{background:white!important;color:black!important}
+}
 </style><script src="assets/vitruvia-fetch-cache.js?v=20261111-responsive-literal-v1"></script><link rel="stylesheet" href="assets/vitruvia-codex-loupe.css?v=20261104-filter-linked-loupe-v2">
 <link rel="stylesheet" href="assets/vitruvia-codex-filters.css?v=20261104-contrast-invert-v1"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261106-prosa-v1"></script><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html"><meta name="citation_title" content="Codex Harleianus (Harley MS 2767) · lectura por folios y concordancia"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_doi" content="10.5281/zenodo.23868911"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://diegoalonsok-png.github.io/vitruvius-digital-library/codex-h-folios-local.html">
@@ -337,7 +412,7 @@ fetch(base+"indice-folios.json",{cache:"no-cache"}).then(async r=>{if(!r.ok)thro
  fetch("data/codex-h/folio-locus-map.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null).then(m=>{locusMap=m;go()});
 }).catch(err=>{$("state").textContent="No se pudo cargar el índice o preparar la galería ("+err.message+").";$("gallery-status").textContent="No se presentan miniaturas hasta verificar el archivo maestro."});
 })();
-</script><script src="assets/codex-h-preface-search.js?v=20261111-prefacios-v2" defer></script><script src="assets/codex-h-chapter-terms.js?v=20261111-chapters-v2" defer></script><script src="assets/codex-h-single-controls.js?v=20261112-lexicon-native-v3" defer></script><script>
+</script><script src="assets/codex-h-preface-search.js?v=20261111-prefacios-v2" defer></script><script src="assets/codex-h-chapter-terms.js?v=20261111-chapters-v2" defer></script><script src="assets/codex-h-single-controls.js?v=20261112-monochrome-v4" defer></script><script>
 /* Codex H folio reader: translate the actual interface without translating manuscript data.
    UI languages: ES, EN, FR, IT, DE, PT. No external translation calls. */
 (()=>{'use strict';
