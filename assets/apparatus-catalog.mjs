@@ -70,7 +70,8 @@ async function load(){
     entries.push({edition:e.edition,editionName:ed.name,pdf:ed.pdf,page:e.page,type:e.source==='nota'?'nota':e.kind,source:e.source,
      title:e.source==='nota'?'Nota '+String(e.id).split('-n').pop():e.label+(e.locusMention?' — '+e.locusMention:''),
      text:e.text,anchor:e.anchor||'',locusMention:e.locusMention||(e.loci||[])[0]||null,
-     locusCertified:e.source==='nota'?e.locusLink==='locus explícito':!!e.locusInHeading,pageLoci:e.loci||[]});}
+     locusCertified:e.source==='nota'?e.locusLink==='locus explícito':!!e.locusInHeading,pageLoci:e.loci||[],
+     label:e.label||'',locusLink:e.locusLink||''});}
   }catch(err){warnings.push('Índice del aparato: '+err.message)}
   loaded=true;
   const blockCount=entries.filter(e=>e.source==='bloque').length;
@@ -99,26 +100,47 @@ function apply(){
  // Los bloques críticos del propio libro primero; ordenar por edición y página.
  visible.sort((a,b)=>(a.source==='nota')-(b.source==='nota')||ED.findIndex(e=>e.id===a.edition)-ED.findIndex(e=>e.id===b.edition)||(a.page??0)-(b.page??0));
  shown=0;q('apparatus-catalog-results').replaceChildren();
- q('apparatus-catalog-status').textContent=visible.length.toLocaleString('es-AR')+' registros encontrados. Filtra por edición, tipo o término. Los datos proceden de los libros, no de variantes manuscritas inferidas.';
+ const cuenta={};for(const e of visible){const t=TIPO[e.type]?e.type:'otro';cuenta[t]=(cuenta[t]||0)+1}
+ const qtxt=q('apparatus-catalog-query').value.trim();
+ q('apparatus-catalog-status').textContent=(qtxt?'«'+qtxt+'»: ':'')+visible.length.toLocaleString('es-AR')+(visible.length===1?' registro':' registros')+
+  (visible.length?' · '+Object.entries(cuenta).sort((a,b)=>b[1]-a[1]).map(([t,n])=>n+' '+(TIPO[t]||TIPO.otro)[n===1?0:1]).join(' · '):
+   '. Pruebe la raíz sin terminación o quite filtros.');
  renderNext();
 }
+/* Qué es cada registro, dicho una vez y en llano. */
+const TIPO={
+ nota:['nota del aparato','notas del aparato','Nota al pie de la edición (DOCX); su locus puede ser explícito o sólo candidato.'],
+ glosa:['glosa explicativa','glosas explicativas','Comentario lematizado del autor: lema ] explicación.'],
+ glosario:['entrada del glosario','entradas del glosario','Definición del glosario de términos de la edición.'],
+ comparativa:['aparato comparativo','aparatos comparativos','Cómo resuelven el pasaje las ediciones modernas frente a la del autor.'],
+ filologica:['nota filológica','notas filológicas','Crítica textual: lecturas, testimonios y decisiones sobre el texto latino.'],
+ comentario:['comentario','comentarios','Comentario editorial del pasaje: sentido, contexto y fuentes.'],
+ tecnica:['nota técnica','notas técnicas','Terminología y procedimientos técnicos del pasaje.'],
+ otro:['registro','registros','']};
+const R=['','I','II','III','IV','V','VI','VII','VIII','IX','X'];
+const vitr=l=>{const m=/^(\d+)\.(.*)$/.exec(l||'');return m?'Vitr. '+(R[+m[1]]||m[1])+'.'+m[2]:''};
+const LENG={'recensio-es':'castellano','recensio-fr':'francés','theory-en':'inglés'};
 function renderNext(){
  const area=q('apparatus-catalog-results'),term=q('apparatus-catalog-query').value;
  const rows=visible.slice(shown,shown+20);
  for(const e of rows){
-  const article=document.createElement('article');article.className='critical-result';
-  const location=e.page?'PDF, página '+e.page:'Nota DOCX '+(e.sourceParagraph===undefined?'':'· párrafo '+e.sourceParagraph);
-  const status=e.source==='nota'
-   ?(e.locusCertified?'Nivel A · Nota DOCX con locus explícito (no es variante manuscrita verificada)':e.locusMention?'Nivel B · Nota DOCX con locus candidato, pendiente de cotejo':'Nivel C · Nota DOCX sin locus comprobado')
-   :(e.locusCertified?'Bloque editorial con locus en el encabezado; lectura reportada desde PDF':'Bloque extraído de texto PDF; locus no certificado');
-
-  const link=e.page?pdfURL(e,e.page):e.pdf;
-  const locus=e.locusMention?' · locus '+e.locusMention+(e.locusCertified?' (en el rótulo)':e.source==='nota'?' (anclaje propuesto)':' (mencionado en el texto)'):'';const readLocus=e.locusMention&&/^\d+\.(?:praef\.)?\d+(?:\.\d+)?$/.test(e.locusMention)?e.locusMention:(e.pageLoci||[])[0];
-  article.innerHTML='<p class="meta">'+esc(e.editionName)+' · '+esc(location)+' · '+esc(status)+'</p>'+
-   '<h3 style="font-family:var(--serif);font-weight:500">'+esc(e.title)+'</h3>'+
-   '<p>'+excerpt(e.text,term)+'</p>'+
-   '<p class="source-note">Tipo: '+esc(e.type)+esc(locus)+' · Procedencia: '+esc(e.source==='nota'?'DOCX de la edición del autor':'Texto extraído del PDF editorial')+' · <strong>Collatio autóptica: no acreditada por esta ficha.</strong> Verificar la variante en la fuente primaria antes de citar.</p>'+
-   '<div class="actions"><a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+(e.page?'Abrir la página '+e.page+' del PDF':'Consultar libro original PDF')+' ↗</a>'+(readLocus?' <a href="lector-bilingue.html?edition='+esc(e.edition)+'&amp;locus='+esc(encodeURIComponent(readLocus))+'">Leer el locus en el lector →</a>':'')+'</div>';
+  const t=TIPO[e.type]?e.type:'otro',info=TIPO[t];
+  const article=document.createElement('article');article.className='critical-result ac-ficha';
+  const readLocus=e.locusMention&&/^\d+\.(?:praef\.)?\d+(?:\.\d+)?$/.test(e.locusMention)?e.locusMention:(e.pageLoci||[])[0];
+  const anclaje=e.source==='nota'?(e.locusCertified?'locus explícito en la nota':e.locusMention?'locus candidato, sin cotejar':'sin locus')
+   :e.source==='glosa'?(e.locusLink||'locus por el lema'):(e.locusCertified?'locus en el rótulo':'locus por contexto de página');
+  // Glosas: el texto ya trae «lema] explicación»; se separa para no repetir el lema.
+  let cuerpo;
+  const m=e.source==='glosa'?/^(.*?)\]\s*([\s\S]*)$/.exec(e.text||''):null;
+  if(m)cuerpo='<p class="ac-ap"><i>'+excerpt(m[1],term)+'</i> <span class="ac-cor">]</span> '+excerpt(m[2],term)+'</p>';
+  else cuerpo='<p>'+excerpt(e.text,term)+'</p>';
+  const pagina=e.page?'<a href="'+esc(pdfURL(e,e.page))+'" target="_blank" rel="noopener noreferrer">'+esc(String(e.editionName).split(' ')[0])+' p. '+e.page+' ↗</a>':esc(e.source==='nota'?'nota '+String(e.title).replace('Nota ',''):'');
+  article.innerHTML='<header class="ac-cab"><span class="ac-chip ac-'+t+'">'+esc(info[0])+'</span>'+
+   (readLocus?'<strong class="ac-locus">'+esc(vitr(readLocus))+'</strong>':'')+
+   '<span class="ac-que">'+esc(info[2])+'</span></header>'+cuerpo+
+   '<p class="ac-meta">'+esc(e.editionName)+(LENG[e.edition]?' · '+LENG[e.edition]:'')+' · '+esc(anclaje)+' · '+pagina+'</p>'+
+   '<div class="actions">'+(readLocus?'<a href="lector-bilingue.html?edition='+esc(e.edition)+'&amp;locus='+esc(encodeURIComponent(readLocus))+'">Leer el pasaje →</a> '+
+     '<a href="registro-ecdotico.html?locus='+esc(encodeURIComponent(readLocus))+'">Todo el aparato de este locus →</a>':'')+'</div>';
   area.append(article);
  }
  shown+=rows.length;
