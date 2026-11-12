@@ -119,6 +119,23 @@ function poblarAutoridades(){
  }
  if(previo&&sources.some(s=>s.id===previo))sel.value=previo;
 }
+/* List all canonical Vitruvian loci, grouped by book and in numeric order. */
+function populateLoci(){
+ const select=$("apa-locus");if(!select)return;
+ select.replaceChildren(new Option("Todos los loci (731 referencias)",""));
+ const grouped=new Map();
+ const sortLoci=(a,b)=>{
+  const parse=v=>String(v).split(".").map((x,i)=>i===1&&x==="praef"?-1:Number(x));
+  const x=parse(a),y=parse(b);
+  return (x[0]-y[0])||(x[1]-y[1])||(x[2]-y[2]);
+ };
+ for(const loc of [...knownLoci].sort(sortLoci)){
+  const book=String(loc).split(".")[0];
+  if(!grouped.has(book)){const g=document.createElement("optgroup");g.label="Libro "+(Object.keys(numerals).find(k=>numerals[k]===Number(book))||book);select.append(g);grouped.set(book,g);}
+  const parts=loc.split(".");
+  grouped.get(book).append(new Option("Libro "+book+" · "+(parts[1]==="praef"?"Prefacio":"Capítulo "+parts[1])+" · § "+(parts[2]||"—")+"  ("+loc+")",loc));
+ }
+}
 function renderMetrics(integrity){
  const box=$("apa-metrics");box.replaceChildren();
  addStat(box,notes.length,"Notas originales de los tres libros");
@@ -163,7 +180,7 @@ function entry(n){
 function renderLocusSummary(loc,filtered){
  const box=$("apa-locus-summary");box.replaceChildren();
  if(!loc){
-  box.textContent="Busque por locus (I.2.1, III.1.2 o 10.praef.1) y compare notas de V514, V554 y V297. Puede filtrar menciones de Krohn, Rose, Budé o Harley sin confundirlas con variantes certificadas.";
+  box.textContent="Seleccione un locus del listado para consultar las notas y comparar los pasajes. Ejemplos: I.2.1, III.1.2 o 10.praef.1 y compare notas de V514, V554 y V297. Puede filtrar menciones de Krohn, Rose, Budé o Harley sin confundirlas con variantes certificadas.";
   return;
  }
  const explicit=filtered.filter(n=>status(n)==="explicit_in_anchor").length;
@@ -184,7 +201,7 @@ function renderLocusSummary(loc,filtered){
 function update(reset=true){
  if(reset)shown=0;
  const query=clean($("apa-query").value.trim()),ed=$("apa-edition").value,level=$("apa-link").value,ref=$("apa-reference").value;
- const locusInput=$("apa-locus").value.trim(),loc=canonicalLocus(locusInput);
+ const locusInput=$("apa-locus").value.trim(),loc=locusInput?canonicalLocus(locusInput):null;
  filtered=notes.filter(n=>(!ed||n.edition===ed)&&(!level||status(n)===level)&&
   (!loc||isAtLocus(n,loc))&&(!ref||references(n).some(s=>s.id===ref))&&
   (!query||matchesQuery([n.text,n.anchor,n.locus,n.candidate_locus,n.footnote_id].join(" "),query)));
@@ -212,9 +229,10 @@ async function init(){
   if(!Array.isArray(raw.entries)||!raw.entries.length||!integrity.apparatus)throw Error("Esquema incompleto");
   notes=raw.entries;
   knownLoci=new Set(integrity.canonicalReferences||[]);
+  populateLoci();
   const params=new URLSearchParams(location.search);
   const q=params.get("q");if(q)$("apa-query").value=q.slice(0,220);
-  const locus=params.get("locus");if(locus)$("apa-locus").value=locus.slice(0,40);
+  const locus=params.get("locus");if(locus){const requested=canonicalLocus(locus);if(requested&&knownLoci.has(requested))$("apa-locus").value=requested;}
   const ed=params.get("edition");if(ed&&names[ed])$("apa-edition").value=ed;
   const reference=params.get("ref");if(reference&&sources.some(s=>s.id===reference))$("apa-reference").value=reference;
   poblarAutoridades();
