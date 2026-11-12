@@ -4,7 +4,7 @@ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const norm=x=>String(x??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 const bookNames={1:"I · Principios, ciudades y arquitectura",2:"II · Materiales",3:"III · Templos y proporciones",4:"IV · Órdenes arquitectónicos",5:"V · Edificios públicos y teatros",6:"VI · Arquitectura doméstica",7:"VII · Acabados",8:"VIII · Agua e hidráulica",9:"IX · Astronomía y gnomónica",10:"X · Máquinas, elevación y asedio"};
 let items=[],filtered=[],visibleCount=24,activeIndex=0,zoom=1,offsetX=0,offsetY=0,pressed=false,lastX=0,lastY=0;
-const catLabels={codices:"Códices medievales",retratos:"Retratos históricos de Vitruvio",ediciones:"Portadas y folios impresos",proporcion:"Homo ad quadratum / ad circulum",ordenes:"Órdenes arquitectónicos",maquinas:"Maquinaria e ingeniería",arquitectura:"Arquitectura dibujada",lugares:"Lugares y arqueología"};
+const catLabels={codices:"Códices medievales",retratos:"Retratos históricos de Vitruvio",ediciones:"Portadas y folios impresos",proporcion:"Homo ad quadratum / ad circulum",ordenes:"Órdenes arquitectónicos",maquinas:"Maquinaria e ingeniería",arquitectura:"Arquitectura dibujada",palladio:"Arquitectura palladiana",lugares:"Lugares y arqueología"};
 function catOfBook(book){if(book===3)return "proporcion";if(book===4)return "ordenes";if(book===10||book===8)return "maquinas";if(book===5||book===6)return "arquitectura";return "ediciones";}
 function category(record){return catLabels[record.category]||record.category||"Documento";}
 function articleText(record){return [record.title,record.author,record.date,record.century,record.institution,record.shelfmark,record.folio,record.locus,record.production,record.notes,record.graphic,record.iconography,record.material,record.status,record.type,record.visualType,...(record.tags||[])].join(" ");}
@@ -113,7 +113,7 @@ for(const x of items){if(x.book===3&&["giocondo-1511","cesariano-1521","barbaro-
  for(const x of items){if(!x.book){const label=String(x.locus||"");const roman=label.match(/\b(X|IX|IV|V?I{1,3}|V|VIII|VII|VI)\.(?:\d+|praef)/i);const arabic=label.match(/\b(?:Libro\s+|Book\s+)(\d{1,2})\b/i);if(arabic&&+arabic[1]>=1&&+arabic[1]<=10)x.book=+arabic[1];else if(roman){const vals={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};x.book=vals[roman[1].toUpperCase()]||null;}}}
  const editions=[...new Set(derived.map(x=>x.source))];
  for(const id of editions){const data=meta.datasets.find(x=>x.id===id);const o=document.createElement("option");o.value=id;o.textContent=data.title+" ("+data.date+")";$("atlas-edition").append(o)}
- items.sort((a,b)=>{const order={retratos:0,codices:1,proporcion:2,ediciones:3,ordenes:4,maquinas:5,arquitectura:6,lugares:7};return (order[a.category]??8)-(order[b.category]??8)||String(a.date).localeCompare(String(b.date))||String(a.id).localeCompare(String(b.id));});
+ items.sort((a,b)=>{const order={retratos:0,codices:1,proporcion:2,ediciones:3,ordenes:4,maquinas:5,arquitectura:6,palladio:7,lugares:8};return (order[a.category]??9)-(order[b.category]??8)||String(a.date).localeCompare(String(b.date))||String(a.id).localeCompare(String(b.id));});
  $("atlas-loading").textContent="Catálogo cargado: "+items.length+" expedientes y páginas seleccionadas de fuentes IIIF. El motivo visual exacto de cada lámina requiere verificación individual.";
  filters();tabIndexToOpen();
 }
