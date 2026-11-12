@@ -28,7 +28,7 @@ function render(rows,edition,kind) {
  for(const row of rows){
   const item=el("article",undefined,"result");
   item.append(el("h3",SOURCES[edition].label+" · página OCR "+row.page+" · bloque "+row.sequence));
-  item.append(el("p","OCR sin verificar · "+(row.segmentation==="approximate_length_window"?"división aproximada por extensión":"separación aproximada por blancos")+" · "+kind,"meta"));
+  item.append(el("p","Transcripción OCR de la edición histórica · "+(row.segmentation==="approximate_length_window"?"fragmento delimitado automáticamente":"fragmento separado por blancos")+" · "+kind+" · cotejar palabras dudosas con el facsímil","meta"));
   const text=row.text.slice(0,1050)+(row.text.length>1050?" […]":"");
   const p=el("p");
   // Highlight retrieved OCR words in all three editions, including Krohn.
