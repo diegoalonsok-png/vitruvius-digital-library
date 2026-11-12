@@ -43,36 +43,44 @@ const make=(tag,cls,value)=>{const el=document.createElement(tag);if(cls)el.clas
 const addStat=(parent,count,label)=>{const box=make("div","apa-stat"),n=make("strong","",count),s=make("span","",label);box.append(n,s);parent.append(box);};
 const clean=s=>String(s??"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
 
-/* Search and visual highlighting share the same exact lexical rules.
-   Simetría/symmetria is a documented orthographic correspondence, not a general fuzzy search. */
+/* The filter and the highlighter share accent-folded offsets. */
 const searchVariants=q=>{
- const normalized=clean(q).trim();
- const forms=new Set([normalized]);
+ const normalized=clean(q).trim(),forms=new Set([normalized]);
  if(["simetria","symmetria","symmetriae","symmetriam","symmetrias"].includes(normalized))
   ["simetria","symmetria","symmetriae","symmetriam","symmetrias"].forEach(v=>forms.add(v));
- return forms;
+ return [...forms].filter(Boolean).sort((a,b)=>b.length-a.length);
 };
-function matchesQuery(text,query){
- const variants=searchVariants(query);
- if(!query)return true;
- if(clean(text).includes(clean(query)))return true;
- if(variants.size===1)return false;
- return [...String(text??"").matchAll(/[\p{L}\p{M}]+/gu)].some(m=>variants.has(clean(m[0])));
-}
-function highlightQuery(el,value){
- const text=String(value??""),query=$("apa-query")?.value.trim();
- if(!query){el.textContent=text;return el;}
- const variants=searchVariants(query),tokens=[...text.matchAll(/[\p{L}\p{M}]+/gu)];
- let cursor=0,matched=false;
- for(const t of tokens){
-  if(!variants.has(clean(t[0])))continue;
-  if(t.index>cursor)el.append(document.createTextNode(text.slice(cursor,t.index)));
-  const mark=document.createElement("mark");
-  mark.className="apa-search-hit";
-  mark.textContent=t[0];el.append(mark);
-  cursor=t.index+t[0].length;matched=true;
+function searchRanges(value,query){
+ const text=String(value??""),terms=searchVariants(query);
+ if(!text||!terms.length)return [];
+ let folded="",offsets=[];
+ for(let i=0;i<text.length;){
+  const ch=String.fromCodePoint(text.codePointAt(i)),norm=clean(ch);
+  for(let j=0;j<norm.length;j++){folded+=norm[j];offsets.push([i,i+ch.length]);}
+  i+=ch.length;
  }
- if(!matched){el.textContent=text;return el;}
+ const ranges=[];
+ for(const term of terms){
+  let from=0;
+  while(from<folded.length){
+   const at=folded.indexOf(term,from);if(at<0)break;
+   const finish=at+term.length,range=[offsets[at][0],offsets[finish-1][1]];
+   if(!ranges.some(([a,b])=>range[0]<b&&range[1]>a))ranges.push(range);
+   from=finish;
+  }
+ }
+ return ranges.sort((a,b)=>a[0]-b[0]);
+}
+function matchesQuery(text,query){return !query||searchRanges(text,query).length>0;}
+function highlightQuery(el,value){
+ const text=String(value??""),ranges=searchRanges(text,$("apa-query")?.value.trim());
+ if(!ranges.length){el.textContent=text;return el;}
+ let cursor=0;
+ for(const [start,end] of ranges){
+  if(start>cursor)el.append(document.createTextNode(text.slice(cursor,start)));
+  const mark=document.createElement("mark");mark.className="apa-search-hit";
+  mark.textContent=text.slice(start,end);el.append(mark);cursor=end;
+ }
  if(cursor<text.length)el.append(document.createTextNode(text.slice(cursor)));
  return el;
 }
@@ -156,9 +164,9 @@ function renderApparatus(integrity){
 }
 function entry(n){
  const section=make("article","apa-entry"),typ=status(n),loc=locusOf(n);
- section.append(make("h3","",(names[n.edition]||n.edition)+" · Nota "+n.footnote_id));
+ section.append(highlightQuery(make("h3",""),(names[n.edition]||n.edition)+" · Nota "+n.footnote_id));
  const label=typ==="explicit_in_anchor"?"Locus explícito en contexto":typ==="candidate"?"Locus candidato, sin cotejar":typ==="noncanonical"?"Locus candidato NO canónico; requiere conciliación de numeración":"Sin locus atribuido";
- section.append(make("p","meta",label+(loc?" · "+loc:"")+" · Párrafo DOCX "+(n.source_paragraph??"no indicado")+" · "+(n.source_file||"Documento sin identificar")));
+ section.append(highlightQuery(make("p","meta"),label+(loc?" · "+loc:"")+" · Párrafo DOCX "+(n.source_paragraph??"no indicado")+" · "+(n.source_file||"Documento sin identificar")));
  const cited=references(n);
  if(cited.length){
   const line=make("p","apa-refs");line.append(make("strong","", "Referencias mencionadas (no cotejadas): "));
@@ -175,6 +183,7 @@ function entry(n){
   const reader=make("a","","Leer pasaje latino y traducción");
   reader.href="lector-bilingue.html?"+new URLSearchParams({edition:n.edition,locus:loc});links.append(reader);
  }
+ if($("apa-query").value.trim()&&!section.querySelector("mark.apa-search-hit"))section.append(make("p","meta","Coincidencia en identificadores o metadatos de procedencia."));
  section.append(details,links);return section;
 }
 function renderLocusSummary(loc,filtered){
