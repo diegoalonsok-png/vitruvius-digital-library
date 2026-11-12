@@ -140,6 +140,8 @@ async function concordance(result,options){
  const window=settings.window||90;
  const exact=settings.exact?Philology.fold(settings.exact):"";
  const phrase=settings.phrase?Philology.fold(settings.phrase):"";
+ /* Conjunto de palabras: todas presentes en el pasaje, en cualquier orden. */
+ const allWords=(settings.allWords||[]).map(word=>Philology.fold(word)).filter(Boolean);
  const rows=[];
  for(const hit of (result.hits||[]).slice(0,works)){
   let edition=null;
@@ -160,7 +162,12 @@ async function concordance(result,options){
       frase, el pasaje tiene que contenerla de verdad. */
    if(phrase&&!folded.includes(phrase))continue;
    if(exact&&!new RegExp("(^| )"+exact.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"( |$)").test(folded))continue;
-   const needle=phrase||exact||result.stem;
+   if(allWords.length){
+    const present=new Set(folded.split(" "));
+    const stems=new Set([...present].map(word=>Philology.stem(word)));
+    if(!allWords.every(word=>present.has(word)||stems.has(Philology.stem(word))))continue;
+   }
+   const needle=phrase||exact||(allWords.length?allWords.find(word=>folded.includes(word))||allWords[0]:result.stem);
    const at=folded.indexOf(needle);
    const from=at<0?0:Math.max(0,at-window);
    const to=at<0?Math.min(text.length,window*2):Math.min(text.length,at+needle.length+window);
@@ -181,22 +188,85 @@ async function concordance(result,options){
 /* Frase: se buscan las raíces de todas sus palabras, se intersecan por obra y
    se verifica el bloque contiguo contra la edición. La palabra más rara manda,
    porque es la que menos candidatos trae. */
+/* Frase: se buscan las raíces de todas sus palabras y se queda con las obras
+ * donde están TODAS. Para decidir qué pasajes leer, por cada obra se toma la
+ * lista de la palabra que menos veces aparece EN ESA OBRA, no la de la más
+ * rara del conjunto: las listas de pasajes están recortadas, y la de la
+ * palabra menos frecuente en esa obra es la que tiene más probabilidades de
+ * estar completa. Sin esto, «mens sana in corpore sano» no aparecía aunque
+ * estuviera, porque se miraban los pasajes de una palabra demasiado común.
+ */
 async function phraseSearch(text,options){
  const settings=options||{};
  const words=(Philology.fold(text)||"").split(" ").filter(word=>word.length>=3);
  if(!words.length)return {query:text,rows:[],total:0};
  const results=[];
  for(const word of words)results.push(await lookup(word,settings));
- const rarest=results.slice().sort((a,b)=>a.total-b.total)[0];
- const allowed=new Set();
- for(const hit of rarest.hits)allowed.add(hit.work.i);
+ if(results.some(result=>!result.hits.length))
+  return {query:text,rows:[],total:0,candidateWorks:0,reason:"alguna palabra de la frase no aparece en el corpus"};
+ /* Obras donde están todas las palabras. */
+ let allowed=null;
  for(const result of results){
   const present=new Set(result.hits.map(hit=>hit.work.i));
-  for(const id of [...allowed])if(!present.has(id))allowed.delete(id);
+  allowed=allowed===null?present:new Set([...allowed].filter(id=>present.has(id)));
  }
- const narrowed={...rarest,hits:rarest.hits.filter(hit=>allowed.has(hit.work.i))};
- const rows=await concordance(narrowed,{...settings,phrase:text});
- return {query:text,stem:rarest.stem,rows,total:rows.length,candidateWorks:narrowed.hits.length};
+ if(!allowed||!allowed.size)return {query:text,rows:[],total:0,candidateWorks:0,
+  reason:"ninguna obra contiene todas las palabras de la frase"};
+ /* La señal decisiva no es el recuento sino la COINCIDENCIA DE PASAJE: si dos
+    palabras de la frase aparecen en el mismo pasaje de la misma obra, ahí hay
+    que mirar. En «mens sana in corpore sano», «sana» y «sano» comparten el
+    pasaje 341 de las Sátiras de Juvenal, y es el bueno. Ordenar por recuento
+    dejaba a Juvenal en el puesto catorce, fuera del límite de obras que se
+    descargan; con la intersección queda primero y se descarga una sola.
+    Sólo se intersecan las listas completas: una lista recortada no permite
+    concluir que un pasaje no esté. */
+ const byWork=new Map();
+ for(const result of results){
+  for(const hit of result.hits){
+   if(!allowed.has(hit.work.i))continue;
+   if(!byWork.has(hit.work.i))byWork.set(hit.work.i,[]);
+   byWork.get(hit.work.i).push(hit);
+  }
+ }
+ const candidates=[];
+ for(const [workIndex,hits] of byWork){
+  const complete=hits.filter(hit=>!hit.truncated&&hit.passages.length);
+  let shared=null;
+  for(const hit of complete){
+   const set=new Set(hit.passages);
+   shared=shared===null?set:new Set([...shared].filter(passage=>set.has(passage)));
+  }
+  const intersection=complete.length>=2&&shared?[...shared]:[];
+  const leanest=hits.slice().sort((a,b)=>a.count-b.count)[0];
+  candidates.push({
+   work:leanest.work,language:leanest.language,count:leanest.count,
+   passages:intersection.length?intersection:leanest.passages,
+   truncated:leanest.truncated,
+   evidence:intersection.length?"pasaje compartido por varias palabras de la frase":"pasajes de la palabra menos frecuente",
+   rank:intersection.length?0:1
+  });
+ }
+ candidates.sort((a,b)=>a.rank-b.rank||a.count-b.count);
+ const narrowed={query:text,stem:results[0].stem,hits:candidates,total:candidates.length};
+ const rows=await concordance(narrowed,{works:settings.works||14,perWork:settings.perWork||4,
+  window:settings.window||110,phrase:text});
+ for(const row of rows)row.match="frase literal";
+ /* Segundo nivel, rotulado como lo que es. Muchas sentencias circulan con un
+    orden distinto del de su fuente: «alea iacta est» es «iacta alea est» en
+    Suetonio, y «ars longa, vita brevis» invierte el orden de Séneca. Si la
+    frase literal no aparece, se buscan las mismas palabras dentro de un mismo
+    pasaje, y el resultado se presenta como coincidencia de palabras en otro
+    orden, nunca como la frase. */
+ let reordered=[];
+ if(!rows.length&&settings.reordered!==false){
+  reordered=await concordance(narrowed,{works:settings.works||14,perWork:settings.perWork||4,
+   window:settings.window||110,allWords:words});
+  for(const row of reordered)row.match="mismas palabras en el pasaje, en otro orden";
+ }
+ return {query:text,stem:narrowed.stem,rows:rows.concat(reordered),
+  literal:rows.length,reordered:reordered.length,
+  total:rows.length+reordered.length,candidateWorks:candidates.length,
+  withSharedPassage:candidates.filter(candidate=>!candidate.rank).length};
 }
 
 return {lookup,distribution,concordance,phraseSearch,manifest,setReader,languages:LANGUAGES,base:BASE};
