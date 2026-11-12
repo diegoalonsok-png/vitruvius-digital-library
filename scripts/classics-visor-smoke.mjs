@@ -516,7 +516,7 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
   }finally{await p.close()}
  });
  await check('Aristophanes: parallel Greek and optional English translation share one reading row',async()=>{
-  const locus='urn:cts:greekLit:tlg0019_tlg005_perseus-grc2.288-297';
+  const locus='urn:cts:greekLit:tlg0019.tlg005.perseus-grc2:288-297';
   const path='classics-parallel-reader.html?work=aristophanes-pax&left=grc&right=auto-en&locus='+
    encodeURIComponent(locus)+'&q='+encodeURIComponent('τέκτονες');
   const p=await open(path);
