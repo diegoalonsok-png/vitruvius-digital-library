@@ -5,13 +5,13 @@ var css=[
 "#single-options{display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:#e9ddca;padding:12px;margin:12px 0;border:1px solid #b99e73}",
 "#single-options button{min-height:38px;padding:7px 10px}",
 "#single-options select{padding:8px}",
-"header{position:relative;padding-top:110px}",
-"#single-top-controls{position:absolute;top:16px;right:clamp(12px,2vw,30px);display:flex;justify-content:flex-end;align-items:center;gap:16px;flex-wrap:wrap;z-index:5}",
-"#single-top-controls label{display:flex;align-items:center;gap:12px;background:#29445a;color:white;border:1px solid #a5b1ba;border-radius:9px;padding:6px 8px 6px 12px}",
-"#single-top-controls select{min-height:47px;min-width:178px;border:1px solid #8fa0ac;border-radius:7px;padding:8px 30px 8px 13px;background:#29445a;color:#fff;font:650 16px system-ui,sans-serif}",
-"#single-top-controls button{min-height:60px;display:inline-flex;align-items:center;gap:9px;padding:12px 22px;border:1px solid #a5b1ba;border-radius:9px;background:#29445a;color:#fff;font:650 16px system-ui,sans-serif}",
-"#single-top-controls .globe{font-size:20px}",
-"@media(max-width:650px){header{padding-top:150px}#single-top-controls{left:12px;right:12px;justify-content:flex-start;gap:8px}#single-top-controls select{min-width:132px}#single-top-controls button{padding:8px 12px}}",
+"header{position:relative}",
+"#single-top-controls{position:static;display:flex;justify-content:flex-end;align-items:center;gap:7px;flex-wrap:nowrap;z-index:5}",
+"#single-top-controls label{display:flex;align-items:center;gap:0;background:transparent;color:inherit;border:0;border-radius:0;padding:0}",
+"#single-top-controls select{height:39px;min-height:39px;min-width:69px;max-width:85px;border:1px solid #92969b;border-radius:8px;padding:6px;background:transparent;color:inherit;font:600 12px system-ui,sans-serif}",
+"#single-top-controls button{height:39px;min-height:39px;display:inline-flex;align-items:center;gap:0;padding:0 12px;border:1px solid #92969b;border-radius:8px;background:transparent;color:inherit;font:600 12px system-ui,sans-serif}",
+"#single-top-controls .globe{display:none}",
+"@media(max-width:650px){#single-top-controls{justify-content:flex-start;gap:5px}#single-top-controls select{min-width:66px}#single-top-controls button{padding:0 9px}}",
 "#single-ruler{display:flex;flex-wrap:wrap;gap:9px;align-items:center;background:#eadfcd;padding:10px}",
 "#single-ruler input{flex:1 1 150px}",
 "#single-filters{background:#e9ddca;padding:10px;margin:8px 0}",
@@ -29,7 +29,7 @@ var actions=document.createElement("div");actions.id="single-options";
 actions.innerHTML='<button id="s-loupe" aria-pressed="true">◉ Desactivar lupa</button> <button id="s-print">⎙ Imprimir</button> <button id="s-email">✉ Correo</button> <button id="s-wa">WhatsApp</button>';
 var headControls=document.createElement("div");headControls.id="single-top-controls";headControls.setAttribute("role","group");headControls.setAttribute("aria-label","Idioma y apariencia");
 headControls.innerHTML='<label><span class="globe" aria-hidden="true">🌐</span><select id="s-language" aria-label="Idioma de interfaz"><option value="es">Español</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select></label><button id="s-theme" type="button" aria-pressed="false">☾ Oscuro</button>';
-document.querySelector("header").prepend(headControls);
+(document.querySelector(".on-navtools")||document.querySelector(".on-nav")||document.querySelector("header")).append(headControls);
 var reader=document.querySelector('section[aria-label="Lector de folios"]');reader.parentNode.insertBefore(actions,reader);
 var ruler=document.createElement("div");ruler.id="single-ruler";
 ruler.innerHTML='<label>Bajar por el folio</label><button id="s-up">↑</button><input type="range" min="0" max="100" value="0" id="s-scroll" aria-label="Desplazamiento vertical de la imagen"><output id="s-percent">0%</output><button id="s-down">↓</button>';
