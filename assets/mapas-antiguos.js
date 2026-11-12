@@ -7,7 +7,12 @@ const link=(t,u)=>{const a=el("a",null,t);a.href=u;if(/^https?:/.test(u)){a.targ
 const commons=f=>"https://commons.wikimedia.org/wiki/Special:FilePath/"+encodeURIComponent(f)+"?width=900";
 const commonsPage=f=>"https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(f.replace(/ /g,"_"));
 const ERA=s=>s<500?"antigua":s<1450?"medieval":s<1600?"renacimiento":"moderna";
-let all=[];
+let all=[],atlas=[];
+/* Lugares del Atlas (nombre moderno en castellano y forma latina) para tender puentes. */
+function atlasEn(e){
+ const t=fold([e.place,e.summary,e.vitruvius,e.title].join(" "));
+ return atlas.filter(g=>g.claves.some(k=>new RegExp("(^|[^a-z])"+k+"([^a-z]|$)").test(t))).slice(0,6);
+}
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
 /* Mapas sin archivo fijado: se busca en Commons y solo se acepta un archivo cuyo nombre contenga las
    palabras clave de esa pieza (commonsKeys). Se enlaza la ficha de Commons con autor y licencia. */
@@ -47,7 +52,19 @@ function card(e){
  row("Lugar",e.place);row("Personalidad asociada",e.person);row("Tipo",e.type);row("Institución",e.holding);
  row("Signatura",e.shelfmark);row("Folio",e.folio||"—");row("Evidencia",e.evidence);
  body.append(dl,el("p",null,e.summary));
- const v=el("p","map-vitr");v.append(el("strong",null,"Relación con Vitruvio: "),e.vitruvius);body.append(v);
+ /* Puente con Vitruvio: cada «Vitr. I.6.9» abre el pasaje latino con su traducción,
+    y los lugares que también están en el Atlas llevan a su ficha. */
+ const v=el("p","map-vitr");v.append(el("strong",null,"Relación con Vitruvio: "));
+ const RN={I:1,II:2,III:3,IV:4,V:5,VI:6,VII:7,VIII:8,IX:9,X:10};
+ let at=0;const txt=String(e.vitruvius||"");
+ for(const m of txt.matchAll(/Vitr\.\s*([IVX]+)\.(praef\.)?(\d+)(?:\.(\d+))?/g)){
+  v.append(txt.slice(at,m.index));
+  const locus=RN[m[1]]+"."+(m[2]?"praef."+m[3]:m[3]+"."+(m[4]||"1"));
+  v.append(link(m[0],"lector-bilingue.html?"+new URLSearchParams({edition:"recensio-es",locus})));at=m.index+m[0].length;
+ }
+ v.append(txt.slice(at));body.append(v);
+ const lugares=atlasEn(e);
+ if(lugares.length){const p=el("p","map-atlas");p.append(el("strong",null,"En el Atlas geographicus: "));lugares.forEach((g,i)=>{if(i)p.append(" · ");p.append(link(g.n,"atlas-geographicus.html?"+new URLSearchParams({lugar:g.id})))});body.append(p)}
  const ln=el("p","map-links");
  if(e.readerLink)ln.append(link("Leer el pasaje →",e.readerLink));
  if(e.localLink)ln.append(link("Ver en el sitio →",e.localLink));
@@ -64,6 +81,11 @@ function render(){
  const root=$("#map-list");root.replaceChildren(...list.map(card));
  $("#map-count").textContent=list.length+" de "+all.length+" mapas y planos, del más antiguo al más reciente";
 }
+fetch("data/atlas-geographicus-vitruvianus.json").then(r=>r.json()).then(a=>{
+ atlas=[...(a.geo||[]).map(g=>({id:g.id,n:String(g.modern||g.id).split(" (")[0],claves:[fold(String(g.modern||"").split(" (")[0]),fold(g.id)].filter(k=>k.length>3)})),
+  ...(a.extra||[]).map(x=>({id:x.id,n:x.name,claves:[...(x.aliases||[]),...(x.latin_forms||[])].map(fold).filter(k=>k.length>3)}))];
+ if(all.length)render();
+}).catch(()=>{});
 fetch("data/mapas-antiguos.json").then(r=>r.json()).then(d=>{all=d.entries.slice().sort((a,b)=>a.sort-b.sort);$("#map-note").textContent=d.note;render();
  $("#map-era").addEventListener("change",render);$("#map-q").addEventListener("input",render);
  if(location.hash)setTimeout(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({block:"start"}),300)}).catch(e=>{$("#map-count").textContent="No se pudo cargar el catálogo: "+e.message});
