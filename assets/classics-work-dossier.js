@@ -501,7 +501,7 @@ function renderInto(target,id,opts={}){
   const h=html("h2",null,w.title);h.lang=w.language==="grc"?"grc":"la";head.append(h);
   row(head,"Autor del catálogo",w.author);
   const originalAuthor=w.bibliography?.originalAuthor||AUTHOR[w.author];
-  if(originalAuthor){const r=html("p");r.append(html("strong",null,"Nombre antiguo normalizado: "));const name=html("span",null,originalAuthor);name.lang=greek.test(originalAuthor)?"grc":"la";r.append(name);head.append(r)}
+  if(originalAuthor){const r=html("p","cwd-row cwd-authority-name");r.append(html("strong",null,"Nombre antiguo normalizado: "));const name=html("span",null,originalAuthor);name.lang=greek.test(originalAuthor)?"grc":"la";r.append(name);head.append(r)}
   const form=title(w);
   if(form.title){const r=html("p","cwd-row");r.append(html("strong",null,"Título en lengua original / título uniforme: "));const span=html("i","cwd-original",form.title);span.lang=w.language==="grc"?"grc":"la";r.append(span);head.append(r)}
   else row(head,"Título original",form.description);
@@ -574,6 +574,17 @@ function css(){
  ".classic-work-dossier .cwd-citations li{margin-bottom:11px;line-height:1.65}",
  ".classic-work-dossier .cwd-citations li small{display:block;color:#bbb;font:11px/1.6 system-ui}",
  ".classic-work-dossier .cwd-citation{border-left:2px solid #999;padding:8px 12px;font:12px/1.6 system-ui}",
+ ".classic-work-dossier .cwd-head{display:block!important;max-width:none!important;padding:2px 0 16px!important;margin:0 0 18px!important;border-bottom:1px solid var(--cwd-line,#505056)!important;background:transparent!important;color:inherit!important;letter-spacing:normal!important}",
+ ".classic-work-dossier .cwd-head .cwd-kicker{margin:0 0 10px!important;font:600 10px/1.5 system-ui,Arial,sans-serif!important;letter-spacing:.085em!important;text-transform:uppercase;color:inherit;opacity:.68}",
+ ".classic-work-dossier .cwd-head h2{font:400 clamp(20px,2vw,25px)/1.26 Georgia,serif!important;letter-spacing:-.012em!important;margin:0 0 15px!important;padding:0!important;color:inherit!important;text-transform:none!important}",
+ ".classic-work-dossier .cwd-head .cwd-row{display:grid!important;grid-template-columns:minmax(165px,240px) minmax(0,1fr);column-gap:16px;align-items:baseline;max-width:100%;font:400 13px/1.6 system-ui,Arial,sans-serif!important;letter-spacing:normal!important;margin:0!important;padding:5px 0!important;border-bottom:1px solid rgba(128,128,128,.15);overflow-wrap:anywhere}",
+ ".classic-work-dossier .cwd-head .cwd-row>strong{display:block!important;min-width:0!important;font:600 10px/1.45 system-ui,Arial,sans-serif!important;letter-spacing:.055em!important;text-transform:uppercase!important;font-style:normal!important;color:inherit!important;opacity:.67!important;margin:0!important;white-space:normal!important}",
+ ".classic-work-dossier .cwd-head .cwd-authority-name span,.classic-work-dossier .cwd-head .cwd-original{font:400 13px/1.55 Georgia,serif!important;letter-spacing:normal!important;color:inherit!important}",
+ ".classic-work-dossier .cwd-head>.cwd-muted{font:400 11px/1.5 system-ui,Arial,sans-serif!important;opacity:.72!important;margin:8px 0 12px!important}",
+ ".classic-work-dossier .cwd-head .cwd-links{margin:14px 0 0!important;display:flex!important;gap:8px 20px!important;flex-wrap:wrap!important;font:400 12px/1.5 system-ui,Arial,sans-serif!important}",
+ ".classic-work-dossier .cwd-head .cwd-links a{color:inherit!important;text-decoration-color:currentColor;text-decoration-thickness:1px;text-underline-offset:4px;opacity:.88}",
+ "@media(max-width:650px){.classic-work-dossier .cwd-head .cwd-row{grid-template-columns:1fr!important;gap:2px!important;padding:7px 0!important}.classic-work-dossier .cwd-head h2{font-size:21px!important}}",
+ "@media print{.classic-work-dossier .cwd-head .cwd-row{grid-template-columns:185px minmax(0,1fr)}.classic-work-dossier .cwd-head h2{font-size:22px!important}}",
  ".classic-work-dossier a:focus-visible{outline:2px solid #ddd;outline-offset:2px}",
  "html[data-theme=light] .classic-work-dossier{background:#f6f4ee;color:#232323;border-color:#aaa}",
  "html[data-theme=light] .classic-work-dossier .cwd-muted{color:#555}",
