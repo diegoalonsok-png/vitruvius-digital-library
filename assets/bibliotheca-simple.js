@@ -605,7 +605,102 @@ function render(rows,q,details){
  drawNext();
  $("unindexed").textContent=t.outside(works.length-indexed.size)+(details?.failed?" "+t.failed:"");
 }
-async function search(updateHistory=true){
+/* A general query reads only index postings, never 279 full editions.
+ * The index is an orientation aid; no row below claims a textually attested
+ * phrase or a manuscript locus. A researcher may explicitly request an
+ * extended documentary search, or select one work for verified passages.
+ */
+async function showFastIndex(query,searchId,allowedWorkIds){
+ const api=window.VitruviaClassicsIndex;
+ const preview=window.BibliothecaFastIndex;
+ if(!api||!preview){
+  if(searchId===serial)status.textContent="Índice rápido no disponible. Selecciona una obra para consultar su texto.";
+  return;
+ }
+ const filterIsActive=Boolean(era.value||genre.value);
+ const results=await preview.candidates(api,query,{
+  allowedWorks:filterIsActive?allowedWorkIds:null
+ });
+ if(searchId!==serial)return;
+ root.hidden=false;root.dataset.query=query;
+ previous=[];current="";diag={mode:"lexical-index",indexGenerated:results.generated};
+ const exportBar=$("bibliotheca-export-actions");
+ if(exportBar)exportBar.style.display="none"; // No citar ni exportar fragmentos que aún no fueron leídos.
+ $("results-heading").textContent=locale==="en"?"Indexed works · candidate matches":
+  locale==="fr"?"Œuvres indexées · correspondances possibles":
+  "Índice de obras · coincidencias candidatas";
+ list.replaceChildren();
+ const paragraph=(text,cls="filter-method")=>{const p=el("p",cls,text);list.append(p);return p;};
+ const isPhrase=results.terms.length>1;
+ const note=locale==="en"?
+  "FAST INDEX · no full-book files downloaded. Stem hits identify candidate editions, not verified quotations or loci. Select a work to inspect its actual text.":
+  locale==="fr"?
+  "INDEX RAPIDE · aucun livre complet téléchargé. Les racines proposent des éditions candidates, sans citation ni locus vérifié. Choisissez une œuvre pour lire le texte.":
+  "ÍNDICE RÁPIDO · no se descargaron libros completos. Las raíces señalan ediciones candidatas: no acreditan frases literales, pasajes ni loci. Selecciona una obra para cotejar el texto.";
+ paragraph(note);
+ const counted=results.total;
+ const versions=Number.isFinite(results.indexedVersions)?results.indexedVersions:"N/D";
+ status.textContent=(locale==="en"?"Index: ":locale==="fr"?"Index : ":"Índice: ")+
+  counted+" "+(locale==="en"?"candidate editions":locale==="fr"?"éditions candidates":"ediciones candidatas")+
+  " · "+versions+" "+(locale==="en"?"indexed versions":locale==="fr"?"versions indexées":"versiones indexadas")+
+  (results.generated?" · "+results.generated:"");
+ if(isPhrase)paragraph(locale==="en"?
+  "A phrase query requires all retained terms to occur in the SAME EDITION, not necessarily together or in the same passage. No literal phrase has been confirmed.":
+  locale==="fr"?
+  "Les mots retenus doivent figurer dans une même édition, pas nécessairement dans un même passage. La phrase exacte n'est pas vérifiée.":
+  "Para una frase, las palabras buscadas deben figurar en la misma edición, no necesariamente en un mismo pasaje. La frase literal NO está verificada.");
+ const MAX_PREVIEW=50;
+ const selected=results.rows.slice(0,MAX_PREVIEW);
+ if(!selected.length)paragraph(locale==="en"?
+  "No candidate editions in this indexed subset. This is not evidence that the term is absent from unindexed works. Select a work for a documentary search.":
+  locale==="fr"?
+  "Aucune édition candidate dans cet index ; cela ne prouve pas l'absence dans les œuvres non indexées. Sélectionnez une œuvre.":
+  "No hay ediciones candidatas en este índice. Esto NO prueba que el término esté ausente de obras no indexadas. Selecciona una obra para comprobarlo.");
+ let lastWork="";
+ for(const candidate of selected){
+  const w=byId.get(candidate.workId)||{};
+  if(lastWork!==candidate.workId){
+   lastWork=candidate.workId;
+   const title=el("h3","",w.title||candidate.title);
+   const block=el("section","group");block.append(title);
+   const academy=el("a","passage-link",locale==="en"?"Work dossier / sources":locale==="fr"?"Dossier / sources":"Ficha académica / fuentes");
+   academy.href="classics-work-record.html?work="+encodeURIComponent(candidate.workId);
+   block.append(academy);list.append(block);
+  }
+  const line=el("p","version-counts",
+   (languages[candidate.language]||candidate.language)+" · "+
+   (candidate.isPhrase?
+    (locale==="en"?"common stem frequency, not phrase frequency":locale==="fr"?"fréquence indicative des racines, pas de la phrase":"frecuencia orientativa de raíces, NO de la frase"):
+    (locale==="en"?"indexed stem occurrences":locale==="fr"?"occurrences de racine indexée":"apariciones indexadas por raíz"))+
+   ": "+candidate.frequency+(candidate.per10k!=null?" · "+candidate.per10k+"/10.000":""));
+  list.append(line);
+  const source=el("p","meta","Fuente del índice: "+candidate.sourceFile+
+   (candidate.attribution?" · "+candidate.attribution.slice(0,180):""));
+  list.append(source);
+  if([...work.options].some(option=>option.value===candidate.workId)){
+   const button=el("button","more",locale==="en"?"Verify passages in this work":locale==="fr"?"Vérifier dans cette œuvre":"Verificar pasajes en esta obra");
+   button.type="button";
+   button.addEventListener("click",()=>{
+    if(searchId!==serial)return;
+    work.value=candidate.workId;
+    void search();
+   });
+   list.append(button);
+  }
+ }
+ if(counted>MAX_PREVIEW)paragraph((locale==="en"?"Showing the first ":locale==="fr"?"Premières éditions : ":"Se muestran las primeras ")+
+   MAX_PREVIEW+" / "+counted+". "+(locale==="es"?"Selecciona una obra o utiliza la ampliación voluntaria.":""));
+ const expanded=el("button","more",locale==="en"?"Run extended text check (up to 600 passages)":locale==="fr"?"Vérifier davantage de textes (600 passages max.)":"Ampliar a textos verificados (hasta 600 pasajes)");
+ expanded.type="button";expanded.id="bibliotheca-explicit-text-search";
+ expanded.title="Acción voluntaria: descargará ediciones y comprobará sus pasajes. El límite no equivale a concordancia exhaustiva.";
+ expanded.addEventListener("click",()=>{if(searchId===serial)void search(true,{exhaustive:true})});
+ list.append(expanded);
+ $("unindexed").textContent=
+  (locale==="en"?"The lexical index is only a candidate filter. Bibliographic citation requires inspection of the edition and its declared source.":
+   locale==="fr"?"L'index fournit des candidats. Toute citation bibliographique nécessite de vérifier l'édition et sa source.":
+   "El índice es orientativo, no una edición crítica. Para citar hay que abrir el texto, comprobar el locus y conservar la procedencia y la edición.");
+}
+async function search(updateHistory=true,options={}){
  const id=++serial,q=input.value.trim();
  window.ClassicsCorpusSearch?.cancelPendingSearches?.();
  previous=[];current="";diag={};
@@ -662,6 +757,12 @@ async function search(updateHistory=true){
    status.after(extra);extra.dataset.extraSearch=String(id);
   }
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
+  if(!workId&&!options.exhaustive){
+   await showFastIndex(q,id,allowedWorkIds);
+   return;
+  }
+  const exportBar=$("bibliotheca-export-actions");
+  if(exportBar)exportBar.style.removeProperty("display");
   const transliterations=await attestedGreekForms(q); // Solo la misma voz griega transliterada; no conceptos relacionados.
   if(id!==serial)return;
   let lastPaint=0,painted=false;
@@ -680,9 +781,10 @@ async function search(updateHistory=true){
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
     (!progress.complete?" · buscando…":"");
   };
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:true,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress,isCancelled:()=>id!==serial});
+  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:false,maxPerEdition:workId?200:70,limit:600,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress,isCancelled:()=>id!==serial});
   if(id!==serial)return;
   const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
+  if(options.exhaustive&&!workId)status.textContent+=" · MUESTRA AMPLIADA (máx. 600 pasajes, 70 por edición; no es concordancia exhaustiva).";
   const url=new URL(location.href);url.searchParams.set("q",q);
   if(selectedWork)url.searchParams.set("work",selectedWork);else url.searchParams.delete("work");
   if(era.value)url.searchParams.set("era",era.value);else url.searchParams.delete("era");
