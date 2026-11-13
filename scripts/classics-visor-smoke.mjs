@@ -352,7 +352,12 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    assert.equal(await p.locator('#audit-rows tr').count(),JSON.parse(fs.readFileSync('data/bibliotheca-graeca-latina-I-bce-I-ce.json','utf8')).works.length,'Incomplete catalogue audit');
    await p.locator('#audit-filter').selectOption('indexed');
    const expectedIndex=JSON.parse(fs.readFileSync('data/classics-corpus/search-registry.json','utf8'));
-   assert.equal(await p.locator('#audit-rows tr').count(),expectedIndex.works,'Indexed classical works should be distinct from language versions');
+   // The public audit filter currently enumerates locally hosted indexed works.
+   // R2 corpus entries are registered separately and are not proof that the
+   // remote object can be fetched by this local browser test.
+   const roadmap=JSON.parse(fs.readFileSync('data/classics-corpus/indexation-roadmap-222.json','utf8'));
+   assert.equal(await p.locator('#audit-rows tr').count(),roadmap.counts.originalsIndexed,'The local audit must match actually hosted original works');
+   assert.ok(expectedIndex.works>=roadmap.counts.originalsIndexed,'Remote registered works cannot reduce local indexed corpus coverage');
    await p.locator('#audit-filter').selectOption('local');
    assert.equal(await p.locator('#audit-rows tr').count(),JSON.parse(fs.readFileSync('data/classics-corpus/coverage-audit.json','utf8')).counts.locallyReadableClaims,'Local catalogue entries should remain distinguishable from PDF-only holdings');
    await p.locator('#audit-query').fill('cicero-officiis');
