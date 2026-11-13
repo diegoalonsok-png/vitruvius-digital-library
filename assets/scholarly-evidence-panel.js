@@ -34,7 +34,7 @@ async function run(){try{
   p("Semántica.", "El índice Conceptus relaciona términos atestiguados con conceptos; no acredita por sí solo embeddings neuronales, comprensión histórica, equivalencia de traducciones ni colación."),
   p("Revisión.", "Las decisiones filológicas exigen fuente, testimonio o edición, signatura, locus, lectura, argumento y responsable. La revisión de especialistas sigue pendiente."));
  const foot=document.createElement("p");foot.append(document.createTextNode("Datos verificables: "),
- link("inventario de 222 obras","data/classics-corpus/indexation-roadmap-222.json"),document.createTextNode(" · "),
+ link("inventario del repertorio","data/classics-corpus/indexation-roadmap-222.json"),document.createTextNode(" · "),
  link("registro de versiones","data/classics-corpus/search-registry.json"),document.createTextNode(" · "),
  link("decisiones ecdóticas","data/ecdotic-decisions.json"),document.createTextNode(" · "),
  link("control de integridad","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/scripts/audit-scholarly-evidence.mjs"));

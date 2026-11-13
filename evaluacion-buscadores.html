@@ -32,7 +32,7 @@ code{color:#dfc190;overflow-wrap:anywhere}#coverage{font-variant-numeric:tabular
 <p>Marco de valoración de Vitruvia como buscador enciclopédico-académico, Lexicon como instrumento filológico y Bibliotheca como corpus textual. Un índice catalográfico, un lector externo y un texto indexado no son lo mismo.</p></header>
 <section class="notice"><strong>Límites de la comparación.</strong> Esta página describe funciones documentadas y protocolos de evaluación. No atribuye una puntuación experimental a Google, Bing, Brave, Logeion, Perseus o Vitruvia sin ejecutar un mismo conjunto de consultas, registrar fecha, idioma, configuración y juzgar relevancia por especialistas. Las pruebas de GitHub verifican muestras de pasajes, no tiempos de respuesta reales ni precisión@10 del buscador publicado.</section>
 <section><h2>Corpus y prueba documental</h2><div class="methods">
-<div><strong id="coverage">—</strong><span>Originales con índice local o externo reconocido / 222 fichas</span></div>
+<div><strong id="coverage">—</strong><span>Originales con índice local o externo reconocido / <span data-cifra="obras">227</span> fichas</span></div>
 <div><strong id="fixture">—</strong><span>Consultas filológicas de prueba predefinidas</span></div>
 <div><strong>5</strong><span>Lenguas del muestreo: griego, latín, español, inglés y francés</span></div>
 </div><p id="status" class="muted" role="status">Consultando inventarios del repositorio…</p>
@@ -65,10 +65,10 @@ code{color:#dfc190;overflow-wrap:anywhere}#coverage{font-variant-numeric:tabular
   fetch("data/classics-corpus/indexation-roadmap-222.json").then(r=>{if(!r.ok)throw Error("Inventario");return r.json()}),
   fetch("data/academic-evaluation/search-fixtures.json").then(r=>{if(!r.ok)throw Error("Consultas");return r.json()})
  ]);
- if(a.targetWorks!==222||a.counts.effectiveOriginalsIndexed+a.counts.effectiveOriginalsMissing!==222||!Array.isArray(b.cases))throw Error("Inconsistencia del inventario");
+ if(!a.targetWorks||!Array.isArray(a.items)||a.items.length!==a.targetWorks||a.counts.effectiveOriginalsIndexed+a.counts.effectiveOriginalsMissing!==a.targetWorks||!Array.isArray(b.cases))throw Error("Inconsistencia del inventario");
  document.getElementById("coverage").textContent=a.counts.effectiveOriginalsIndexed+" / "+a.targetWorks;
  document.getElementById("fixture").textContent=String(b.cases.length);
  document.getElementById("status").textContent="Datos del inventario: "+(a.updated||"fecha no declarada")+". Las consultas se revisan mediante CI, sin atribuir resultados a motores externos.";
  }catch(e){document.getElementById("status").textContent="Los inventarios no se pudieron comprobar: "+e.message;}})();
 </script>
-</main><script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
+</main><script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/cifra-obras.js?v=20261113-cifra-1"></script></body></html>

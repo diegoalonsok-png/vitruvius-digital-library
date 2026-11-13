@@ -195,7 +195,7 @@ async function begin(){
  }
 }
 /* Capa aditiva R2 (Bibliotheca ampliada): suma las obras nuevas al total de obras y
- * agrega la tarjeta de facsímiles PDF. No altera el cálculo auditado de las 222 fichas.
+ * agrega la tarjeta de facsímiles PDF. No altera el cálculo auditado de las fichas del repertorio.
  * Si el registro R2 no carga, las tarjetas quedan como estaban. */
 async function ampliar(fichas){
  try{

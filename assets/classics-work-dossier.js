@@ -103,7 +103,7 @@ function store(){if(P.ready)return P.ready;
  const docs=new Map(c.works.map(w=>[w.id,w]));
  const witness=new Map();for(const rec of t.records||[])for(const id of rec.workIds||[]){if(!witness.has(id))witness.set(id,[]);witness.get(id).push(rec)}
  const texts=new Map();for(const rec of r.entries||[]){if(!texts.has(rec.workId))texts.set(rec.workId,[]);texts.get(rec.workId).push(rec)}
- return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),critical:new Map((critical.schema==="vitruvius-critical-authority-222-v1"&&critical.records?.length===222?critical.records:[]).map(e=>[e.workId,e])),standard:new Map((standard.records||[]).map(e=>[e.workId,e])),trees:new Map((trees.records||[]).map(e=>[e.workId,e])),count:c.works.length,witnessCount:(t.records||[]).length};
+ return {docs,witness,texts,audit:new Map((audit.records||[]).map(e=>[e.workId,e])),critical:new Map((critical.schema==="vitruvius-critical-authority-222-v1"&&Array.isArray(critical.records)&&critical.records.length>0?critical.records:[]).map(e=>[e.workId,e])),standard:new Map((standard.records||[]).map(e=>[e.workId,e])),trees:new Map((trees.records||[]).map(e=>[e.workId,e])),count:c.works.length,witnessCount:(t.records||[]).length};
  });
  return P.ready;
 }
@@ -404,7 +404,7 @@ function renderCodicologicalTree(dest,w,d){
   }
  }
  row(dest,"Estado del stemma codicum",tree.stemmaStatus==="not_established"?"No establecido: no inventar árbol de familias ni arquetipos":"Relación o clasificación recensional parcial; NO constituye stemma completo");
- const links=html("p","cwd-links");addA(links,"Datos y relaciones de las 222 obras ↗","data/classics-corpus/codicological-trees-222.json");dest.append(links);
+ const links=html("p","cwd-links");addA(links,"Datos y relaciones de las obras del repertorio ↗","data/classics-corpus/codicological-trees-222.json");dest.append(links);
 }
 function renderVitruviusStandard(dest,w,d){
  const rec=d.standard.get(w.id);
@@ -443,7 +443,7 @@ function renderVitruviusStandard(dest,w,d){
  if(refs.length){row(dest,"Referencias editoriales registradas (revisar formato Chicago 18)",refs.join(" | "))}
  else row(dest,"Edición crítica y cita Chicago 18","Pendiente de cotejo contra datos bibliográficos reales; no se generan campos ausentes");
  const a=html("p","cwd-links");
- addA(a,"Consultar matriz de las 222 fichas ↗","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/data/classics-corpus/vitruvius-standard-222.json");
+ addA(a,"Consultar la matriz de fichas ↗","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/data/classics-corpus/vitruvius-standard-222.json");
  dest.append(a);
 }
 function renderAcademicSummary(dest,w,d){
@@ -467,9 +467,9 @@ function renderAcademicSummary(dest,w,d){
 
  row(sec,"Acceso a imágenes o folios",facsimiles.length+" testimonio(s) con dirección de visor o imagen registrada; la carga y la identificación precisa se auditan por separado");
  row(sec,"Alcance de verificación","Metadatos de catálogos; ninguna concordancia por título equivale a una collatio codicum.");
- row(sec,"Control automático","Auditoría Python de las 222 fichas; candidatos nuevos quedan en cuarentena hasta verificar signatura, contenido y fuentes.");
+ row(sec,"Control automático","Auditoría Python de las fichas del repertorio; candidatos nuevos quedan en cuarentena hasta verificar signatura, contenido y fuentes.");
  const refs=html("p","cwd-links");
- addA(refs,"Matriz codicológica de 222 obras ↗","classics-manuscript-coverage.html");
+ addA(refs,"Matriz codicológica del repertorio ↗","classics-manuscript-coverage.html");
  addA(refs,"Informe de auditorías Python en GitHub ↗","https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/workflows/codicology-self-audit.yml");
  addA(refs,"Norma descriptiva TEI / DCRM(MSS) / Chicago 18 ↗","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/docs/protocolo-filologico-codicologico-tei-chicago18.md");
  sec.append(refs);
@@ -538,8 +538,8 @@ function renderInto(target,id,opts={}){
   renderBibliography(target,w);
   section(target,"Metodología de la ficha");
   target.append(html("p","cwd-muted","Los loci clásicos identifican lugares del texto; un número de página de edición y un folio físico son sistemas de referencia diferentes. Un manuscrito puede contener solo fragmentos. Los datos manuscritos provienen del registro de testimonios verificados; la bibliografía, del catálogo editorial. Enlaces a recursos externos no implican derechos de reproducción ni aval institucional."));
-  const coverage=html("p","cwd-links");addA(coverage,"Consultar la matriz completa de las 222 obras ↗","classics-manuscript-coverage.html");target.append(coverage);
-  const version=html("p","cwd-muted","Procedencia interna: catálogo Bibliotheca (222 registros en esta versión); testimonios validados ("+d.witnessCount+"); índice de versiones textuales. Estilo de descripción bibliográfica: The Chicago Manual of Style, 18.ª ed. (2024), notas y bibliografía, en la medida de los metadatos disponibles.");
+  const coverage=html("p","cwd-links");addA(coverage,"Consultar la matriz completa del repertorio ↗","classics-manuscript-coverage.html");target.append(coverage);
+  const version=html("p","cwd-muted","Procedencia interna: catálogo Bibliotheca (repertorio completo en esta versión); testimonios validados ("+d.witnessCount+"); índice de versiones textuales. Estilo de descripción bibliográfica: The Chicago Manual of Style, 18.ª ed. (2024), notas y bibliografía, en la medida de los metadatos disponibles.");
   target.append(version);
   return w;
  }).catch(err=>{target.replaceChildren(html("p","cwd-muted","No se pudo cargar la ficha: "+(err?.message||"error de acceso")));return null});

@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-search-quality-fixture-report-v1",
-  "generated": "2026-11-12T01:54:09.884Z",
+  "generated": "2026-11-13T10:41:43.258Z",
   "disclaimer": "Auditoría de pasajes documentados y su fuente en un subconjunto manual. No mide ranking ni latencia del buscador en vivo; no es comparación experimental con Perseus, Logeion, Google o Bing.",
   "total": 19,
   "passed": 19,
@@ -61,7 +61,7 @@
     "local": 182,
     "external": 28,
     "effective": 210,
-    "total": 222
+    "total": 227
   },
   "tests": [
     {

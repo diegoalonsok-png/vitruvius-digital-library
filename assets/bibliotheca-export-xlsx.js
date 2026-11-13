@@ -1,4 +1,4 @@
-/* Vitruvius Bibliotheca — client-side XLSX export of the 222 scholarly dossiers.
+/* Vitruvius Bibliotheca — client-side XLSX export of the scholarly dossiers.
    No server upload. Source-of-truth JSON remains unchanged. */
 (()=>{"use strict";
 const FILES={
@@ -46,7 +46,10 @@ async function exportAll(button,statusNode){
    getJSON(FILES.witnesses),getJSON(FILES.authority),getJSON(FILES.trees),ensureXLSX()
   ]);
   const works=catalog.works||[],stand=new Map((standard.records||[]).map(x=>[x.workId,x])),ed=new Map((ecd.records||[]).map(x=>[x.workId,x])),auth=new Map((authority.records||[]).map(x=>[x.workId,x])),graph=new Map((trees.records||[]).map(x=>[x.workId,x]));
-  if(works.length!==222||stand.size!==222||ed.size!==222||auth.size!==222||graph.size!==222)throw Error("Catálogo incompleto: no están disponibles los 222 registros sincronizados.");
+  const total=works.length;
+  /* El repertorio crece cuando entra una obra nueva: en vez de una cifra fija se
+     exige que los cinco registros estén sincronizados con el catálogo. */
+  if(!total||stand.size!==total||ed.size!==total||auth.size!==total||graph.size!==total)throw Error("Catálogo incompleto: los registros no están sincronizados con las "+total+" obras del repertorio.");
   const wMap=new Map((registry.records||[]).map(x=>[x.id,x]));
   const obras=[],ecdRows=[],ediciones=[],testigos=[],fuentes=[],arboles=[];
   for(const w of works){
@@ -164,14 +167,14 @@ async function exportAll(button,statusNode){
    });
   }
   const wb=X.utils.book_new();
-  addSheet(X,wb,"Obras 222",obras);
+  addSheet(X,wb,"Obras",obras);
   addSheet(X,wb,"Ecdotica",ecdRows);
   addSheet(X,wb,"Testigos",testigos);
   addSheet(X,wb,"Ediciones",ediciones);
   addSheet(X,wb,"Arboles codices",arboles);
   addSheet(X,wb,"Fuentes",fuentes);
   addSheet(X,wb,"Metodologia",[
-   {"Campo":"Alcance","Descripción":"222 obras; testigos separados por vínculo obra-manuscrito. No todos los datos están acreditados."},
+   {"Campo":"Alcance","Descripción":works.length+" obras del repertorio; testigos separados por vínculo obra-manuscrito. No todos los datos están acreditados."},
    {"Campo":"Nulo / vacío","Descripción":"Información no disponible o no verificada; nunca equivale a dato negativo."},
    {"Campo":"PHI/TLG","Descripción":"Los códigos candidatos exigen revisión de autoridad. No implican CTS de edición validada."},
    {"Campo":"Stemma","Descripción":"Familias, arquetipos y posiciones solo se completan cuando hay bibliografía crítica suficiente."},
@@ -180,7 +183,7 @@ async function exportAll(button,statusNode){
    {"Campo":"Árboles codicológicos","Descripción":"Las relaciones de atestación NO son filiaciones; solo se dibujan aristas genealógicas respaldadas por estudios."},
    {"Campo":"Fuente JSON","Descripción":Object.values(FILES).join(" | ")}
   ]);
-  X.writeFile(wb,"Vitruvius_Bibliotheca_222_ecdótica_filología.xlsx",{compression:true});
+  X.writeFile(wb,"Vitruvius_Bibliotheca_"+works.length+"_ecdótica_filología.xlsx",{compression:true});
   if(statusNode)statusNode.textContent="Excel generado: "+works.length+" obras y "+testigos.length+" vínculos con testimonios.";
  }catch(err){if(statusNode)statusNode.textContent="No se pudo generar el Excel: "+err.message;console.error("Vitruvius XLSX",err)}
  finally{button.disabled=false;button.textContent=original}

@@ -65,6 +65,8 @@ jobs:
           python scripts/build_ecdotics_222.py --write
           python scripts/build_codicological_trees_222.py --write
           python scripts/audit-classics-222-roadmap.py
+          python scripts/sincronizar-reconciliacion.py
+          python scripts/cifras-corpus.py
 
       - name: Indexar las obras de la tanda y subir el índice a R2
         if: always()
@@ -91,7 +93,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/r2 data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus data/perseus-provenance-audit.json reports
+          git add data/r2 data/cifras-corpus.json data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus data/perseus-provenance-audit.json reports
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Biblioteca clásica: tanda diaria incorporada, indexada y contada"
           for i in 1 2 3 4 5; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 8; done
