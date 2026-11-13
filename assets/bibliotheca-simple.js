@@ -366,12 +366,12 @@ function passageActions(record,workInfo,passageNode){
  cite.title="Copia referencia bibliográfica, localizador, fuente digital y URL; identifica las referencias parciales.";
  cite.addEventListener("click",async()=>{
   const citation=provenance(workInfo,record);
-  const canonical=/^\\d+(?:\\.(?:praef|\\d+))*(?:\\.\\d+)?$/.test(String(record.locus||""));
+  const canonical=/^\d+(?:\.(?:praef|\d+))*(?:\.\d+)?$/.test(String(record.locus||""));
   const locator=record.locus?(canonical?"Locus editorial: ":"Ubicación digital (no folio manuscrito): ")+record.locus:"Sin locus estable";
   const text=[citation.chicago?"":"[Referencia parcial: completar los datos editoriales]",citation.citation,locator,
    record.edition?"Edición registrada: "+record.edition:"",
    record.source?"Documento digital consultado: "+record.source:"",
-   origin,"No implica lectura paleográfica ni correspondencia comprobada con un códice."].filter(Boolean).join("\\n");
+   origin,"No implica lectura paleográfica ni correspondencia comprobada con un códice."].filter(Boolean).join("\n");
   try{
    await navigator.clipboard.writeText(text);
    cite.textContent=locale==="en"?"Copied":locale==="fr"?"Copié":"Copiado";
