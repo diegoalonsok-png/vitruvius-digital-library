@@ -9,7 +9,9 @@ const js=src("assets/bibliotheca-capitula.js");
 const css=src("assets/bibliotheca-capitula.css");
 const registry=json("data/classics-corpus/search-registry.json").entries;
 const catalogue=json("data/bibliotheca-graeca-latina-I-bce-I-ce.json").works;
-assert.equal(catalogue.length,222,"No reduction of the 222-work catalog");
+const roadmap=json("data/classics-corpus/indexation-roadmap-222.json");
+assert(catalogue.length>=222,"No reduction of the original 222-work catalogue");
+assert.equal(catalogue.length,roadmap.items.length,"Catalogue and indexing roadmap must describe the same number of works");
 const idList=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
 assert.equal(new Set(idList).size,idList.length,"Duplicate Capitula UI ids");
 for(const id of ["work","left-version","right-version","left-chapter","right-chapter","chapterbar","left-text","right-text","method","status"]){
@@ -51,4 +53,4 @@ for(const work of newest){
  assert(doc.source&&doc.translator&&doc.alignmentStatus==="unaligned",
   "Historic translation provenance and non-alignment: "+work);
 }
-console.log("PASS: 222 catalogue entries, 3 historical translations, 404 Caesar and 26 Plato paired labels, independent non-aligned editions, unique monochrome controls.");
+console.log("PASS: "+catalogue.length+" catalogue entries, 3 historical translations, 404 Caesar and 26 Plato paired labels, independent non-aligned editions, unique monochrome controls.");
