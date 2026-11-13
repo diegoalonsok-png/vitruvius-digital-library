@@ -108,7 +108,17 @@
 @media(max-width:760px){.kw-form{grid-template-columns:1fr}}
 </style>
 <script defer src="assets/concordancia-kwic.js?v=20261112-kwic-v1"></script>
-</head><body class="critical-lexicon-theme"><a class="skip" href="#contenido">Saltar al contenido</a>
+<style id="apparatus-accessibility-v1">
+html[data-theme="dark"] .critical-unified .critical-unified-meta, html[data-theme="dark"] .critical-unified .critical-unified-disclaimer{color:#e1e4e8!important}
+html[data-theme="dark"] .critical-unified .critical-unified-card{color:#f3f5f7!important}
+html[data-theme="dark"] .critical-unified .critical-unified-text,html[data-theme="dark"] .critical-unified .critical-unified-detail{color:#f2f3f5!important}
+.critical-unified mark{background:#ffe39a!important;color:#1a2026!important;border-radius:2px;padding:0 2px}
+.critical-unified :is(a,button,input,select,summary):focus-visible{outline:3px solid #d9ac52!important;outline-offset:3px}
+.critical-unified-actions{flex-wrap:wrap}
+.critical-unified-actions button,.critical-unified-actions summary{padding:7px 10px;min-height:36px;font:600 12px system-ui,sans-serif;border:1px solid #a38c63;border-radius:4px;background:transparent;color:inherit;cursor:pointer}
+.critical-unified-actions .critical-export-menu{display:inline-block;position:relative}
+.critical-unified-actions .critical-export-menu>div{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+</style></head><body class="critical-lexicon-theme"><a class="skip" href="#contenido">Saltar al contenido</a>
 <div class="institution-bar" translate="no"><div class="wrap"><span>DE ARCHITECTURA · TEXTOS Y TRADICIÓN</span><span>Biblioteca de acceso abierto</span></div></div>
 <header class="site-header" translate="no"><div class="wrap header-inner"><a class="wordmark" href="index.html"><span class="wordmark-name">VITRVVIVS</span><span class="wordmark-sub">DIGITAL LIBRARY</span></a><nav aria-label="Navegación"><a href="index.html">Inicio</a><a href="index.html#buscar">Buscar en los textos</a><a href="lector-bilingue.html">Lector bilingüe</a><a href="principios.html">Principios editoriales</a><a href="bibliografia.html">Bibliografía</a><a href="facsimiles.html">Facsímiles manuscritos</a></nav><div class="header-actions critical-header-tools" role="group" aria-label="Controles de lectura e idioma"><div class="apparatus-language-switch" role="group" aria-label="Idioma de interfaz y edición"><button type="button" data-apparatus-lang="es" lang="es" aria-pressed="true" title="Interfaz y edición en castellano">ES</button><button type="button" data-apparatus-lang="en" lang="en" aria-pressed="false" title="English interface and edition">EN</button><button type="button" data-apparatus-lang="fr" lang="fr" aria-pressed="false" title="Interface et édition françaises">FR</button></div><button class="theme-switch" type="button" aria-label="Cambiar modo claro u oscuro" title="Apariencia"></button></div></div></header>
 <main class="wrap critical-wrap" id="contenido" translate="no"><p class="eyebrow">INVESTIGACIÓN TEXTUAL · DIEGO KURILO</p><h1>Índice textual y notas del autor</h1><p class="critical-intro ac-proposito">Aquí se busca <b>en el texto de <i>De architectura</i></b> —el latín y sus traducciones castellana, francesa e inglesa— y <b>en lo que el autor escribió sobre cada pasaje</b>: notas, glosas y comentarios de las ediciones V514, V554 y V297. Elija qué quiere hacer:</p>
@@ -137,6 +147,8 @@
 <label for="critical-unified-query">Palabra, frase o locus</label>
 <input id="critical-unified-query" name="q" type="search" maxlength="300" placeholder="prefacion · prefación II · II.prefacion.1 · symmetria" autocomplete="off" required>
 <div class="critical-unified-options">
+<label>Libro <select id="critical-unified-book" aria-label="Filtrar por libro de De architectura"><option value="">Diez libros</option><option value="1">Libro I</option><option value="2">Libro II</option><option value="3">Libro III</option><option value="4">Libro IV</option><option value="5">Libro V</option><option value="6">Libro VI</option><option value="7">Libro VII</option><option value="8">Libro VIII</option><option value="9">Libro IX</option><option value="10">Libro X</option></select></label>
+<label>Idioma del texto <select id="critical-unified-language"><option value="">Todos</option><option value="la">Latín</option><option value="es">Castellano</option><option value="fr">Francés</option><option value="en">Inglés</option></select></label>
 <label>Edición <select id="critical-unified-edition"><option value="">Las tres ediciones</option><option value="recensio-es">V514 · Castellano</option><option value="recensio-fr">V554 · Francés</option><option value="theory-en">V297 · Inglés</option></select></label>
 <label>Fuente <select id="critical-unified-field"><option value="all">Latín, traducciones y aparato</option><option value="passages">Solo texto latino y traducciones</option><option value="latin">Solo texto latino</option><option value="translation">Solo traducciones</option><option value="apparatus">Solo explicaciones, aparato y notas</option></select></label>
 <label class="critical-unified-phrase"><input type="checkbox" id="critical-unified-phrase"> Incluir coincidencias dentro de palabras (búsqueda parcial)</label>
