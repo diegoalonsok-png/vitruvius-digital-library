@@ -55,8 +55,18 @@ const almacen = {
 };
 
 function selectorObras() {
+ const esPalladio = clave === "palladio-quattro-libri";
  const traducciones = $("palladio-traducciones");
- if (traducciones) traducciones.hidden = clave !== "palladio-quattro-libri";
+ if (traducciones) traducciones.hidden = !esPalladio;
+ const visores = $("palladio-visores");
+ if (visores) {
+  visores.hidden = !esPalladio;
+  // Cargar los documentos históricos solo cuando el usuario abre Palladio.
+  // La visualización es independiente: no se inventa una concordancia de folios.
+  if (esPalladio) visores.querySelectorAll("iframe[data-src]").forEach(frame => {
+   if (!frame.getAttribute("src")) frame.src = frame.dataset.src;
+  });
+ }
  const sel = $("obra");
  sel.replaceChildren();
  for (const [id, o] of Object.entries(OBRAS)) {
