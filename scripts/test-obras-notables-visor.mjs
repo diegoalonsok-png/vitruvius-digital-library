@@ -70,13 +70,27 @@ check("cada folio es independiente: se avanza y se retrocede",()=>{
 check("el índice ofrece todos los folios",()=>{
  assert.equal($("indice").options.length,8);
 });
-check("la inversión de colores y el contraste se aplican a la imagen",()=>{
- $("invertir").dispatchEvent(new w.Event("click"));
- assert.equal($("invertir").getAttribute("aria-pressed"),"true");
- assert.match($("imagen").style.filter,/invert\(1\)/);
+check("los modos de visualización y el contraste se aplican a la imagen",()=>{
+ $("modo").value="negativo";
+ $("modo").dispatchEvent(new w.Event("change"));
+ assert.match($("imagen").style.filter,/invert\(1\)/,"el negativo no se aplicó");
+ $("modo").value="gris";
+ $("modo").dispatchEvent(new w.Event("change"));
+ assert.match($("imagen").style.filter,/grayscale\(1\)/,"el blanco y negro no se aplicó");
  $("contraste").value="150";
  $("contraste").dispatchEvent(new w.Event("input"));
  assert.match($("imagen").style.filter,/contrast\(1\.5\)/);
+});
+check("la galería lista los folios con su número de imagen",()=>{
+ const fichas=w.document.querySelectorAll(".ficha-folio");
+ assert.equal(fichas.length,8,"folios en la galería: "+fichas.length);
+ assert.match(fichas[0].textContent,/Imagen 1/);
+ assert.match(w.document.getElementById("galeria-estado").textContent,/8 de 8 folios/);
+});
+check("elegir un folio en la galería lo abre en el lector",()=>{
+ const fichas=[...w.document.querySelectorAll(".ficha-folio")];
+ fichas[2].dispatchEvent(new w.Event("click"));
+ assert.match($("imagen").src,/f0003\.jpg$/,"no abrió el folio elegido: "+$("imagen").src);
 });
 check("el zoom escala la imagen",()=>{
  const antes=$("imagen").style.transform;
@@ -85,7 +99,7 @@ check("el zoom escala la imagen",()=>{
  assert.match($("imagen").style.transform,/scale\(/);
 });
 check("el estado informa cuántas imágenes hay y cuántas declara la fuente",()=>{
- assert.match($("estado").textContent,/Imagen 5 de 8/);
+ assert.match($("estado").textContent,/Imagen \d+ de 8/);
  assert.match($("estado").textContent,/344/);
 });
 w.close();

@@ -56,7 +56,52 @@ function nomenclatura(f) {
 
 function filtros() {
  const c = Number($("contraste").value) / 100, b = Number($("brillo").value) / 100;
- $("imagen").style.filter = `contrast(${c}) brightness(${b})` + (invertido ? " invert(1)" : "");
+ const modo = $("modo") ? $("modo").value : "original";
+ const extra = modo === "negativo" ? " invert(1)" : modo === "gris" ? " grayscale(1)" : "";
+ $("imagen").style.filter = `contrast(${c}) brightness(${b})` + extra + (invertido ? " invert(1)" : "");
+}
+
+/* Galería de folios, al modo del Codex H: miniatura, número de imagen y folio.
+   Se pinta por tandas para no cargar trescientas imágenes de una vez. */
+let mostrados = 0, filtrados = [];
+const TANDA = 32;
+function pintarGaleria(reiniciar) {
+ const rejilla = $("rejilla");
+ if (reiniciar) { rejilla.replaceChildren(); mostrados = 0; }
+ const lote = filtrados.slice(mostrados, mostrados + TANDA);
+ for (const f of lote) {
+  const ficha = document.createElement("button");
+  ficha.type = "button";
+  ficha.className = "ficha-folio";
+  ficha.setAttribute("aria-current", String(f.imagenDigital === actual));
+  const img = document.createElement("img");
+  img.loading = "lazy";
+  img.src = f.miniatura || f.imagen;
+  img.alt = "";
+  const n = document.createElement("b");
+  n.textContent = "Imagen " + f.imagenDigital;
+  const etiqueta = document.createElement("small");
+  etiqueta.textContent = f.folio ? "f. " + f.folio : (f.paginaImpresa ? "p. " + f.paginaImpresa : (f.etiquetaFuente || "folio por leer"));
+  ficha.append(img, n, etiqueta);
+  ficha.addEventListener("click", () => {
+   mostrar(f.imagenDigital);
+   $("lamina").scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+  rejilla.append(ficha);
+ }
+ mostrados += lote.length;
+ $("galeria-mas").hidden = mostrados >= filtrados.length;
+ $("galeria-estado").textContent = `${mostrados} de ${filtrados.length} folios`;
+}
+
+function filtrarGaleria() {
+ const q = ($("galeria-q").value || "").trim().toLowerCase();
+ filtrados = !q ? indice.folios : indice.folios.filter(f =>
+  String(f.imagenDigital) === q ||
+  (f.folio || "").toLowerCase().includes(q) ||
+  (f.paginaImpresa || "").toLowerCase().includes(q) ||
+  (f.etiquetaFuente || "").toLowerCase().includes(q));
+ pintarGaleria(true);
 }
 
 function pintarMarcas() {
@@ -85,6 +130,8 @@ function mostrar(n) {
  nomenclatura(f);
  filtros();
  pintarMarcas();
+ for (const ficha of document.querySelectorAll(".ficha-folio"))
+  ficha.setAttribute("aria-current", String(ficha.querySelector("b").textContent === "Imagen " + actual));
  $("prev").disabled = actual <= indice.folios[0].imagenDigital;
  $("next").disabled = actual >= indice.folios[indice.folios.length - 1].imagenDigital;
  $("estado").textContent = `Imagen ${actual} de ${indice.imagenes}` +
@@ -167,9 +214,14 @@ function herramientas() {
  $("mas").addEventListener("click", () => { escala = Math.min(escala * 1.25, 8); aplicar(); });
  $("menos").addEventListener("click", () => { escala = Math.max(escala / 1.25, 0.2); aplicar(); });
  $("ajustar").addEventListener("click", () => { escala = 1; aplicar(); lamina.scrollTo({ left: 0, top: 0 }); });
- $("invertir").addEventListener("click", e => {
+ if ($("invertir")) $("invertir").addEventListener("click", e => {
   invertido = !invertido; e.currentTarget.setAttribute("aria-pressed", String(invertido)); filtros();
  });
+ if ($("modo")) $("modo").addEventListener("change", filtros);
+ $("galeria-buscar").addEventListener("click", filtrarGaleria);
+ $("galeria-q").addEventListener("keydown", e => { if (e.key === "Enter") filtrarGaleria(); });
+ $("galeria-todo").addEventListener("click", () => { $("galeria-q").value = ""; filtrarGaleria(); });
+ $("galeria-mas").addEventListener("click", () => pintarGaleria(false));
  $("contraste").addEventListener("input", filtros);
  $("brillo").addEventListener("input", filtros);
  $("prev").addEventListener("click", () => mostrar(actual - 1));
@@ -253,6 +305,8 @@ async function arrancar() {
   return;
  }
  ficha();
+ filtrados = indice.folios;
+ pintarGaleria(true);
  const pedida = Number(params.get("imagen")) || 1;
  mostrar(pedida);
 }
