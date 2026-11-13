@@ -5,6 +5,9 @@
 (()=>{
  "use strict";
  const path=(location.pathname.split("/").pop()||"index.html").toLowerCase();
+ // Cloudflare Pages also serves extensionless URLs (e.g. /vitruvia-lexicon).
+ // Normalize only for page identification, not for actual asset URLs.
+ const canonicalPage=path.endsWith(".html")?path:path+".html";
  const exclude=new Set([
   "index.html","vitruvia.html","vitruvia-lexicon.html","aparato-critico.html",
   "bibliotheca-graeca-latina.html","onomasticon.html",
@@ -15,7 +18,7 @@
   "escritorio-h-prueba.html","laboratorio-h.html","papyrologia-ostraca.html",
   "offline.html","google3c5cb2d9ef8db916.html"
  ]);
- if(exclude.has(path)||window.top!==window.self||/[?&]embed=1\b/.test(location.search))return;
+ if(exclude.has(canonicalPage)||window.top!==window.self||/[?&]embed=1\b/.test(location.search))return;
  const KEY="vitruvius-color-theme",LANG="vitruvius-ui-lang";
  const vocabulary={
   es:["Idioma","Activar fondo claro","Activar fondo oscuro"],
