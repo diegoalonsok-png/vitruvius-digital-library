@@ -75,10 +75,17 @@ function nomenclatura(f) {
 }
 
 function filtros() {
- const c = Number($("contraste").value) / 100, b = Number($("brillo").value) / 100;
- const modo = $("modo") ? $("modo").value : "original";
- const extra = modo === "negativo" ? " invert(1)" : modo === "gris" ? " grayscale(1)" : "";
- $("imagen").style.filter = `contrast(${c}) brightness(${b})` + extra + (invertido ? " invert(1)" : "");
+ const c = Number($("contraste").value) / 100;
+ const b = Number($("brillo").value) / 100;
+ const sat = Number($("saturacion")?.value || 100) / 100;
+ const modo = $("modo")?.value || "original";
+ // Exactly one invert operation: toggling the button on a negative mode
+ // must return the image to positive, not stack unpredictable filters.
+ const negative = (modo === "negativo") !== invertido;
+ $("imagen").style.filter =
+  `contrast(${c}) brightness(${b}) saturate(${sat})` +
+  (modo === "gris" ? " grayscale(1)" : "") +
+  (negative ? " invert(1)" : "");
 }
 
 /* Galería de folios, al modo del Codex H: miniatura, número de imagen y folio.
@@ -273,6 +280,7 @@ function herramientas() {
  $("galeria-mas").addEventListener("click", () => pintarGaleria(false));
  $("contraste").addEventListener("input", filtros);
  $("brillo").addEventListener("input", filtros);
+ if ($("saturacion")) $("saturacion").addEventListener("input", filtros);
  $("prev").addEventListener("click", () => mostrar(actual - 1));
  $("next").addEventListener("click", () => mostrar(actual + 1));
  $("numero").addEventListener("change", () => mostrar(Number($("numero").value) || 1));
