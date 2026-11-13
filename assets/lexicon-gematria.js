@@ -63,12 +63,71 @@ function render(){
  if(calc.script==="gr"||calc.script==="he"){const p=document.createElement("p");p.className="lx-gem-explain";p.textContent=calc.script==="he"?"Los signos vocálicos y de cantilación se excluyen del cálculo; las cinco letras finales usan su valor ordinario (no mispar gadol).":"Los acentos y espíritus griegos no suman; sigma final ς equivale a σ. Se admiten signos numéricos históricos ϛ, ϟ y ϡ.";result.append(p)}
  if(calc.total===666||calc.total===616){const p=document.createElement("p");p.className="lx-gem-explain";p.textContent="La coincidencia aritmética no demuestra por sí sola una identificación histórica ni una interpretación de Apocalipsis 13:18.";result.append(p)}
 }
+
+// Reference examples are opt-in, never displayed as an unsolicited catalogue.
+// "attested" means the numerical association is transmitted by a historical source;
+// "computed" indicates a modern arithmetic calculation, not a historical claim.
+const examples=[
+ ["gr","Νεῖλος",365,"Nilo · valor calculado; vínculo solar no probado","computed","https://www.isopsephy.com/365-2/"],
+ ["gr","Ἀβρασάξ",365,"Abrasax · Ireneo, Adversus haereses I.24.7","attested","https://www.newadvent.org/fathers/0103124.htm"],
+ ["gr","Μείθρας",365,"Mithras · asociación numérica transmitida en la tradición antigua","attested","https://www.cambridge.org/core/services/aop-cambridge-core/content/view/0BCF68076A22C4DCD5AE71C9277D9D7E/S001781602510076Xa.pdf"],
+ ["gr","Ἰησοῦς",888,"Jesús · Oráculos sibilinos I, 324–331","attested","https://lexarithmos.app/en/history/ancient-isopsephy/"],
+ ["gr","Λατεῖνος",666,"Lateinos · Ireneo, Adversus haereses V.30","attested","https://www.newadvent.org/fathers/0103530.htm"],
+ ["gr","Τειτάν",666,"Teitan · Ireneo, Adversus haereses V.30","attested","https://www.newadvent.org/fathers/0103530.htm"],
+ ["gr","Ἶσις",420,"Isis · P.Oxy. XLV 3239","attested","https://lexarithmos.app/en/history/ancient-isopsephy/"],
+ ["gr","ἡ μεγάλη ἐλπίς",420,"La gran esperanza · P.Oxy. XLV 3239","attested","https://lexarithmos.app/en/history/ancient-isopsephy/"],
+ ["gr","δίκη",42,"Justicia · Artemidoro, Oneirocritica III.28","attested","https://lexarithmos.app/en/history/ancient-isopsephy/"],
+ ["gr","γαλῆ",42,"Comadreja · Artemidoro, Oneirocritica III.28","attested","https://lexarithmos.app/en/history/ancient-isopsephy/"],
+ ["gr","λόγος",373,"Logos · valor léxico calculado, sin equivalencia histórica afirmada","computed","https://lexarithmos.app/en/history/ancient-isopsephy/"],
+ ["gr","σοφία",781,"Sabiduría · valor léxico calculado","computed","https://lexarithmos.app/en/history/ancient-isopsephy/"],
+ ["gr","χξϛ",666,"Numeración griega 666","attested","https://www.newadvent.org/fathers/0103530.htm"],
+ ["gr","χιϛ",616,"Numeración griega 616","computed","https://lexarithmos.app/en/history/ancient-isopsephy/"],
+ ["he","נרון קסר",666,"Nerón César · transcripción hebrea propuesta (Ap 13:18)","interpretation","https://www.tyndalebulletin.org/article/29233-p115-and-the-number-of-the-beast"],
+ ["he","נרו קסר",616,"Nero César · variante de transcripción propuesta","interpretation","https://www.tyndalebulletin.org/article/29233-p115-and-the-number-of-the-beast"],
+ ["he","יין",70,"Vino · Talmud, Eruvin 65a","attested","https://www.sefaria.org/Eruvin.65a"],
+ ["he","סוד",70,"Secreto · Talmud, Eruvin 65a","attested","https://www.sefaria.org/Eruvin.65a"],
+ ["he","אליעזר",318,"Eliezer · Talmud, Nedarim 32a","attested","https://www.sefaria.org/Nedarim.32a"],
+ ["he","תורה",611,"Torá · Talmud, Makkot 23b","attested","https://www.sefaria.org/Makkot.23b"],
+ ["he","דוד",14,"David · valor ordinario","computed","https://www.sefaria.org/Genesis.1"],
+ ["he","חי",18,"Vida · valor ordinario","computed","https://www.sefaria.org/Genesis.1"],
+ ["he","שלום",376,"Paz · valor ordinario","computed","https://www.sefaria.org/Genesis.1"]
+];
+function initExamples(){
+ const details=$("lx-gem-catalog");
+ const list=$("lx-gem-catalog-list");
+ if(!details||!list)return;
+ const count=$("lx-gem-catalog-count");
+ const filtered=examples.filter(([script,word,total])=>compute(word,script)?.total===total);
+ if(count)count.textContent=String(filtered.length);
+ for(const [script,word,total,note,status,source] of filtered){
+  const button=document.createElement("button");button.type="button";button.className="lx-gem-catalog-item";
+  button.setAttribute("aria-label",word+" = "+total+"; "+note);
+  const expression=document.createElement("strong");expression.textContent=word;expression.lang=script==="he"?"he":"el";
+  const value=document.createElement("span");value.textContent=String(total);
+  const sub=document.createElement("small");sub.textContent=note;
+  button.append(expression,value,sub);
+  button.addEventListener("click",()=>{
+   $("lx-gem-input").value=word;$("lx-gem-script").value=script;render();
+   const hint=$("lx-gem-catalog-source");if(hint){
+    hint.replaceChildren();
+    const name=document.createElement("span");
+    name.textContent=status==="attested"?"Asociación transmitida en fuente histórica: ":status==="interpretation"?"Hipótesis de lectura: ":"Valor calculado (sin afirmación de simbolismo antiguo): ";
+    const link=document.createElement("a");link.href=source;link.target="_blank";link.rel="noopener noreferrer";link.textContent=note;
+    hint.append(name,link);
+   }
+   $("lx-gem-result").scrollIntoView?.({behavior:"smooth",block:"nearest"});
+  });
+  list.append(button);
+ }
+}
+
 $("lx-gem-form").addEventListener("submit",e=>{e.preventDefault();render()});
 for(const button of root.querySelectorAll("[data-gem-example]")){
  button.addEventListener("click",()=>{$("lx-gem-input").value=button.dataset.gemExample;$("lx-gem-script").value="auto";render()});
 }
 $("lx-gem-script").addEventListener("change",render);
 $("lx-gem-input").addEventListener("input",render);
+initExamples();
 render();
-window.VitruviaGematria={compute};
+window.VitruviaGematria={compute,examples};
 })();
