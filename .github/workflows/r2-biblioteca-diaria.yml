@@ -95,6 +95,7 @@ jobs:
           node scripts/test-visor-facsimiles-r2.mjs
           node scripts/test-r2-busqueda-clasicos.mjs
           node scripts/test-r2-indice-fusion.mjs
+          node scripts/test-cifra-obras.mjs
 
       - name: Guardar catálogos, fichas y manifiestos (solo archivos livianos)
         if: always()

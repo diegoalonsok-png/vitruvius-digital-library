@@ -18,6 +18,7 @@
     "build:styles": "node scripts/build-style-bundles.mjs --refresh",
     "check:boot": "node scripts/test-page-boot.mjs",
     "check:busqueda-r2": "node scripts/test-r2-busqueda-clasicos.mjs",
+    "check:cifra-obras": "node scripts/test-cifra-obras.mjs",
     "check:collatio": "node scripts/test-collatio-register.mjs",
     "check:fusion-r2": "node scripts/test-r2-indice-fusion.mjs",
     "check:gate": "node scripts/test-corpus-index-gate.mjs",
