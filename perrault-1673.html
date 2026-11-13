@@ -70,6 +70,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 .pr-thumb img{width:100%;height:145px;object-fit:contain;background:#343437;display:block;margin-bottom:6px}
 .pr-thumb.is-current{border:2px solid #f2dfab;background:#38332b}
 .pr-thumb span{font:13px Arial,sans-serif}
+.pr-book{border-top:1px solid #444;padding:9px 0}.pr-book summary{cursor:pointer;font:18px Georgia,serif}.pr-chapter-list{margin:8px 0 14px;padding-left:27px;columns:2;column-gap:30px}.pr-chapter-list li{break-inside:avoid;font:13px/1.6 Arial,sans-serif;padding:3px 0}@media(max-width:650px){.pr-chapter-list{columns:1}}
 </style>
 </head>
 <body>
@@ -97,18 +98,19 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 <p id="pr-status" role="status" aria-live="polite">Preparando índice IIIF…</p>
 <div id="pr-stage" tabindex="0" aria-label="Imagen del ejemplar impreso de Perrault"><img id="pr-image" alt="Página digitalizada del ejemplar histórico de Perrault" hidden><div id="pr-loupe" aria-hidden="true"></div></div>
 <section class="pr-visual-gallery" id="pr-visual-gallery" aria-labelledby="pr-visual-title" hidden>
-<h2 id="pr-visual-title">Galería de folios · seleccionar una imagen</h2>
-<p class="note">Miniaturas de 12 imágenes por tanda, sin precargar el libro completo. Haz clic en una imagen para abrir el folio en el lector. Las miniaturas también se solicitan a e-rara.</p>
+<h2 id="pr-visual-title">Galería de imágenes · seleccionar una página digital</h2>
+<p class="note">Las 12 miniaturas son una tanda de exploración, no el límite de la obra. La edición de 1673 dispone de 370 imágenes y la de 1684, de 390. Elegí cualquiera desde el catálogo completo.</p>
 <div class="pr-visual-controls"><button type="button" id="pr-gallery-prev">← 12 anteriores</button><strong id="pr-gallery-range" aria-live="polite">—</strong><button type="button" id="pr-gallery-next">12 siguientes →</button></div>
 <div class="pr-thumbnails" id="pr-thumbnails" role="group" aria-label="Miniaturas de folios digitales de Perrault"></div>
 </section>
 <section id="pr-folios" class="pr-folios" aria-labelledby="pr-folios-title" hidden>
-<h2 id="pr-folios-title">Perrault 1684 · catálogo completo de imágenes</h2>
-<p class="note" id="pr-folio-total">Preparando índice local de 1684…</p>
-<div id="pr-folio-grid" class="pr-folio-grid" role="group" aria-label="Elegir imagen digital de Perrault 1684"></div>
-<p class="note">Los números indican imágenes digitales, no una foliación impresa comprobada. Al seleccionar una, se solicita únicamente esa fotografía al servidor de e-rara. Ambas ediciones disponen de una galería visual por tandas.</p>
+<h2 id="pr-folios-title">Catálogo completo de imágenes</h2>
+<p class="note" id="pr-folio-total">Preparando índice local del ejemplar…</p>
+<div id="pr-folio-grid" class="pr-folio-grid" role="group" aria-label="Elegir imagen digital de Perrault"></div>
+<p class="note">Los números indican imágenes digitales, no una foliación impresa comprobada. La cuadrícula ofrece todas las imágenes; las miniaturas se cargan progresivamente. La numeración digital no equivale necesariamente a la paginación de la edición.</p>
 </section>
 <p class="note">Los controles permiten recorrer todas las imágenes del ejemplar institucional en su orden IIIF. Las páginas se cargan de una en una para no descargar el volumen entero. Cuando el servidor permite acceder al índice IIIF, el navegador conserva una copia local del índice para acelerar las visitas siguientes; no guarda las imágenes. La opción «Buscar etiqueta» solo busca las etiquetas documentales del manifiesto; no equivale a una búsqueda textual por OCR.</p>
+<section class="pr-folios" id="pr-capitula" aria-labelledby="pr-capitula-heading"><h2 id="pr-capitula-heading">Índice temático de los diez libros de Vitruvio</h2><p class="note">95 encabezados de capítulos procedentes de la organización editorial de Morris Hicky Morgan (1914), traducidos al castellano como guía de lectura. No son una transcripción del índice francés impreso de Perrault ni tienen correspondencia con imágenes verificada.</p><label>Buscar libro, capítulo o tema <input id="pr-capitula-search" type="search" placeholder="templos, aguas, máquinas…" style="max-width:380px;min-height:39px;background:#242426;color:#eee;border:1px solid #777;padding:7px"></label><p id="pr-capitula-status" role="status"></p><div id="pr-capitula-list"></div><p class="note">Fuente de la estructura: <a href="https://www.gutenberg.org/ebooks/20239" target="_blank" rel="noopener">Vitruvius, trad. M. H. Morgan (1914)</a>. Las referencias de Perrault se cotejarán sobre el ejemplar de 1673.</p></section>
 <div class="sources">
 <a id="pr-source" href="https://www.e-rara.ch/zut/content/titleinfo/16797458" target="_blank" rel="noopener noreferrer">Ejemplar y visor oficial de e-rara ↗</a>
 <a id="pr-doi" href="https://doi.org/10.3931/e-rara-61952" target="_blank" rel="noopener noreferrer">DOI y condiciones de uso ↗</a>
@@ -116,5 +118,6 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font
 </div>
 <footer>Fuente: <span id="pr-shelfmark">ETH-Bibliothek Zürich</span>. Digitalización: e-rara / ETH-Bibliothek Zürich. Public Domain Mark conforme a su ficha institucional; se mantiene el DOI, la signatura y la atribución. El lector no aloja imágenes del volumen en GitHub.</footer>
 </main>
-<script type="module" src="assets/perrault-reader.mjs?v=20261107-gallery-v4"></script>
+<script type="module" src="assets/perrault-reader.mjs?v=20261113-all-370"></script>
+<script defer src="assets/perrault-capitula.js?v=20261113-1"></script>
 <script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
