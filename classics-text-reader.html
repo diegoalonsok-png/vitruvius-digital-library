@@ -32,6 +32,7 @@ aside,.reader{border:1px solid var(--line);background:var(--panel);padding:16px}
 #lexicon{margin-top:25px;padding:12px;border-top:1px solid var(--line);font:12px/1.6 system-ui}
 .hit-nav{display:flex;gap:8px;align-items:center;font:12px/1.4 system-ui;margin:0 0 10px}.hit-nav button{background:none;border:1px solid var(--line);color:var(--fg);padding:3px 9px;cursor:pointer}
 footer{border-top:1px solid var(--line);margin-top:35px;padding-top:16px;font:12px/1.65 system-ui;color:var(--muted)}
+#passages[lang="la"],#passages[lang="grc"]{cursor:text}#passages[lang="la"] p>span:not(.locus),#passages[lang="grc"] p>span:not(.locus){cursor:help}
 @media(max-width:730px){.reader-grid{grid-template-columns:minmax(0,1fr)}#toc{max-height:170px}.reader{min-height:45vh}}
 @media print{header,.tools,aside,.reader-toolbar,#results,#lexicon,footer{display:none!important}.reader{border:0;padding:0}.reader-grid{display:block}body{background:white;color:#111}}
 
@@ -156,14 +157,14 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
 <div id="results" role="status" aria-live="polite"></div>
 <div id="hit-nav" class="hit-nav" hidden><button id="hit-prev" type="button" aria-label="Coincidencia anterior">↑</button><span id="hit-count"></span><button id="hit-next" type="button" aria-label="Coincidencia siguiente">↓</button></div>
 <div id="passages" class="passages" lang="la" aria-label="Texto de la unidad editorial seleccionada"></div>
-<div id="lexicon" role="status">Haz clic en una palabra griega o latina para consultar el diccionario (lema, morfología y glosa), con enlaces a Logeion, Perseus y Wiktionary.</div>
+<div id="lexicon" role="status">Hacé clic en cualquier palabra griega o latina del pasaje para abrir una ficha con su lema, significado y fuentes. Si no hay glosa comprobada, se mostrarán enlaces lexicográficos.</div>
 </article>
 </div>
 <footer id="attribution"></footer>
 </main>
 <script defer src="assets/academic-inline-translation.js?v=20261110-passage-translation-v1"></script>
 <script defer src="assets/classical-lexicon.js?v=20261112-externo"></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
-<script defer src="assets/classics-lexical-popup.js?v=20261111-responsive-literal-v1"></script>
+<script defer src="assets/classics-lexical-popup.js?v=20261113-any-word-v2"></script>
 <script defer src="assets/classics-text-reader.js?v=20261110-reader-navigation-performance-v1"></script>
 <script>
 (()=>{"use strict";
