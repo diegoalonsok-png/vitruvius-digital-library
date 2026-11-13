@@ -782,6 +782,36 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 <nav aria-label="Estudios textuales rastreables" style="max-width:1100px;margin:16px auto;padding:12px 15px;border-top:1px solid #5556;border-bottom:1px solid #5556;font:13px/1.65 system-ui,sans-serif"><strong>Concordancias académicas:</strong> <a href="indice-busquedas-academicas.html">índice de búsquedas verificadas</a> · <a href="domus-en-vitruvio.html" lang="la">domus</a> · <a href="aedes-en-vitruvio.html" lang="la">aedes</a> · <a href="symmetria-en-vitruvio.html" lang="la">symmetria</a> · <a href="locus-en-vitruvio.html" lang="la">locus</a> · <a href="architectura-en-vitruvio.html" lang="la">architectura</a></nav>
 <noscript><aside role="note" style="max-width:960px;margin:22px auto;padding:15px;border:1px solid #777;border-radius:10px;background:#191a1e;color:#f1f1f1;font:14px/1.65 system-ui,sans-serif">Este buscador avanzado requiere JavaScript. Para investigar sin scripts, consulta la <a href="guia-investigacion-universitaria.html">guía universitaria</a>, las <a href="domus-en-vitruvio.html">concordancias estáticas de Vitruvio</a> y la <a href="como-citar.html">guía de citación y DOI</a>. No se presentan resultados vacíos como ausencia del término.</aside></noscript>
 </main>
+<section id="lx-gematria" aria-labelledby="lx-gem-title" class="lx-gem-section">
+ <div class="lx-gem-inner">
+ <p class="lx-gem-eyebrow">LEXICON · PHILOLOGIA NUMERICA</p>
+ <h2 id="lx-gem-title">Gematría e isopsefía · cálculo por letras</h2>
+ <p class="lx-gem-intro">Calculadora académica para expresiones en hebreo, griego y latín. Pegá un nombre o un texto y examiná la suma de sus letras. Los sistemas no son intercambiables: la grafía original determina el resultado.</p>
+ <form id="lx-gem-form" class="lx-gem-form">
+ <label for="lx-gem-input">Nombre o expresión
+  <input id="lx-gem-input" type="text" dir="auto" spellcheck="false" autocomplete="off" placeholder="Neron Caesar · נרון קסר · Νέρων Καῖσαρ" maxlength="220">
+ </label>
+ <label for="lx-gem-script">Sistema de cálculo
+  <select id="lx-gem-script">
+   <option value="auto">Automático según escritura</option>
+   <option value="he">Hebreo · valor ordinario</option>
+   <option value="gr">Griego · isopsefía</option>
+   <option value="la">Latín · numerales romanos aditivos</option>
+  </select>
+ </label>
+ <button type="submit">Calcular</button>
+ </form>
+ <div class="lx-gem-examples"><span>Ejemplos documentados</span><button type="button" data-gem-example="נרון קסר" lang="he">נרון קסר · 666</button><button type="button" data-gem-example="נרו קסר" lang="he">נרו קסר · 616</button><button type="button" data-gem-example="Neron Caesar">Neron Caesar</button><button type="button" data-gem-example="Νέρων Καῖσαρ" lang="el">Νέρων Καῖσαρ</button></div>
+ <div id="lx-gem-result" class="lx-gem-result" role="status" aria-live="polite">Escribí o pegá una expresión para calcular su valor.</div>
+ <div class="lx-gem-scholarship">
+ <h3>Nota filológica y textual</h3>
+ <p>La reconstrucción <span lang="he" dir="rtl">נרון קסר</span> (NRWN QSR) suma 666; la forma abreviada <span lang="he" dir="rtl">נרו קסר</span> (NRW QSR), 616. Se trata de transcripciones en <strong>hebreo</strong> de variantes del nombre «Nerón César», vinculadas por una hipótesis académica a las lecturas de Apocalipsis 13:18. No se obtiene necesariamente 666 calculando el nombre en griego ni en latín. La explicación histórica sigue siendo debatida.</p>
+ <p>El latín no dispone de un único sistema de gematría antigua equivalente al hebreo: esta herramienta calcula, como convención explícita, únicamente el valor aditivo de I, V, X, L, C, D y M. No translitera nombres arbitrariamente al hebreo: solo reconoce las dos formas de Nerón César ilustradas.</p>
+ <p class="lx-gem-bibliography">Bibliografía: <a href="https://www.tyndalebulletin.org/article/29233-p115-and-the-number-of-the-beast" target="_blank" rel="noopener noreferrer">P. J. Williams, «P115 and the Number of the Beast» (2007)</a> · <a href="https://doi.org/10.1080/2222582X.2016.1218996" target="_blank" rel="noopener noreferrer">C. R. Koester, «The Number of the Beast in Revelation 13…» (2016)</a>.</p>
+ </div>
+ </div>
+</section>
+
 <footer class="footer">
  <div class="footer-columns">
   <div><h3>Vitruvia Lexicon</h3><p>Instrumento léxico y filológico de la Vitruvius Digital Library. Editor: Diego A. Kurilo. Proyecto: DOI <a style="display:inline" href="https://doi.org/10.5281/zenodo.23868911">10.5281/zenodo.23868911</a>.</p></div>
@@ -866,4 +896,40 @@ html[data-theme=light] .lx-attestations .lx-attestation-row{border-bottom-color:
  else init();
 })();
 </script>
-<script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/collapse-empty-regions.js?v=20261111-vacio-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/r2-clasicos-busqueda.js?v=20261113-r2-busqueda-1"></script><script defer src="assets/cifra-obras.js?v=20261113-cifra-1"></script></body></html>
+<script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/collapse-empty-regions.js?v=20261111-vacio-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/r2-clasicos-busqueda.js?v=20261113-r2-busqueda-1"></script><script defer src="assets/cifra-obras.js?v=20261113-cifra-1"></script><style>
+#lx-gematria{margin:32px auto 42px;max-width:1160px;padding:28px clamp(18px,3vw,38px);border:1px solid #424244;border-radius:10px;background:#151516;color:#e9e9e9;font:14px/1.65 system-ui,sans-serif}
+#lx-gematria .lx-gem-eyebrow{font:600 11px system-ui;letter-spacing:.13em;color:#aaa}
+#lx-gematria h2{font:400 clamp(24px,3vw,34px) Georgia,serif;margin:7px 0 10px;color:inherit}
+#lx-gematria h3{font:400 19px Georgia,serif;margin:10px 0}
+#lx-gematria .lx-gem-intro{max-width:90ch;color:#bdbdbf}
+#lx-gematria .lx-gem-form{display:grid;grid-template-columns:minmax(190px,1fr) minmax(170px,280px) auto;gap:12px;align-items:end;margin:21px 0 13px}
+#lx-gematria .lx-gem-form label{display:flex;flex-direction:column;gap:7px;font-size:12px;color:#c7c7ca}
+#lx-gematria input,#lx-gematria select,#lx-gematria button{font:14px system-ui;border:1px solid #68686c;border-radius:5px;padding:11px;min-height:43px}
+#lx-gematria input,#lx-gematria select{background:#222225;color:#f7f7f7;min-width:0;width:100%}
+#lx-gematria button{background:#303035;color:#f5f5f5;cursor:pointer}
+#lx-gematria button:hover{background:#3d3d43;border-color:#a9a9ad}
+#lx-gematria .lx-gem-examples{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:9px 0 18px;color:#bcbcc0;font-size:12px}
+#lx-gematria .lx-gem-examples button{font-size:12px;min-height:34px;padding:6px 11px}
+#lx-gematria .lx-gem-result{padding:18px;border:1px solid #414147;border-radius:7px;background:#101012;min-height:85px}
+#lx-gematria .lx-gem-result-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}
+#lx-gematria .lx-gem-total{font:400 48px Georgia,serif;letter-spacing:-.04em}
+#lx-gematria .lx-gem-meta{font-size:13px;color:#babac0}
+#lx-gematria .lx-gem-formula{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:13px 0;font-variant-numeric:tabular-nums;unicode-bidi:plaintext}
+#lx-gematria .lx-gem-letter{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:38px;padding:7px;background:#242429;border:1px solid #44444c;border-radius:4px}
+#lx-gematria .lx-gem-letter b{font:24px Georgia,serif}
+#lx-gematria .lx-gem-letter small{font-size:12px;color:#c5b58e}
+#lx-gematria .lx-gem-alert{color:#dec39e;font-size:13px}
+#lx-gematria .lx-gem-explain{font-size:12px;color:#aeb1b7}
+#lx-gematria .lx-gem-scholarship{border-top:1px solid #414147;margin-top:19px;padding-top:13px;max-width:102ch;color:#bfc1c4}
+#lx-gematria .lx-gem-bibliography{font-size:12px}
+#lx-gematria a{color:#ddd;text-decoration:underline;text-underline-offset:3px}
+html[data-theme=light] #lx-gematria{background:#faf9f6;color:#24282d;border-color:#b4b2ae}
+html[data-theme=light] #lx-gematria :is(.lx-gem-intro,.lx-gem-scholarship,.lx-gem-form label,.lx-gem-examples,.lx-gem-meta){color:#4b535b}
+html[data-theme=light] #lx-gematria :is(input,select){background:#fff;color:#17191b}
+html[data-theme=light] #lx-gematria button{background:#e4e3de;color:#21242a}
+html[data-theme=light] #lx-gematria .lx-gem-result{background:#f4f2ec;color:#24282d}
+html[data-theme=light] #lx-gematria .lx-gem-letter{background:#e9e7df}
+html[data-theme=light] #lx-gematria a{color:#25384c}
+@media(max-width:760px){#lx-gematria .lx-gem-form{grid-template-columns:1fr}#lx-gematria .lx-gem-total{font-size:40px}}
+</style>
+<script defer src="assets/lexicon-gematria.js?v=20261113-neron-1"></script></body></html>
