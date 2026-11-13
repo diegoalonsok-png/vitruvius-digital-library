@@ -44,7 +44,7 @@ function render(){
  const result=$("lx-gem-result"),input=$("lx-gem-input").value,selected=$("lx-gem-script").value;
  const calc=compute(input,selected);
  result.replaceChildren();
- if(!calc){result.textContent="Escribe o pegá una expresión para calcular su valor.";return}
+ if(!calc){result.textContent="Escribe o pega una expresión para calcular su valor.";return}
  const headline=document.createElement("div");headline.className="lx-gem-result-head";
  const total=document.createElement("strong");total.className="lx-gem-total";total.textContent=calc.parts.length?String(calc.total):"—";
  const meta=document.createElement("div");meta.className="lx-gem-meta";
