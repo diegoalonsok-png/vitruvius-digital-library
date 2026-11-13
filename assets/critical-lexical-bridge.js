@@ -4,7 +4,10 @@
 const selector=[
  "#critical-results p[lang='la'] mark",
  "#critical-unified-results [lang='la'] mark.critical-unified-hit",
- "#critical-comparison [lang='la'] mark"
+ "#critical-comparison [lang='la'] mark",
+ // Newly indexed scholarly apparatus: words highlighted by search are
+ // interactive, but no false manuscript or language attribution is made.
+ "#apparatus-catalog-results .ac-ficha mark"
 ].join(",");
 const WORD=/^[\p{L}\p{M}'ʼ’-]{2,70}$/u;
 function target(event){const element=event.target;return element?.closest?.(selector)||null}
@@ -32,11 +35,13 @@ function enhance(root){
   if(!mark.hasAttribute("tabindex"))mark.tabIndex=0;
   mark.setAttribute("role","button");
   mark.setAttribute("aria-label","Abrir diccionario: "+mark.textContent.trim());
+  mark.setAttribute("title","Abrir ficha del diccionario · "+mark.textContent.trim());
  }
  for(const mark of root.querySelectorAll?.(selector)||[]){
   if(!mark.hasAttribute("tabindex"))mark.tabIndex=0;
   mark.setAttribute("role","button");
   mark.setAttribute("aria-label","Abrir diccionario: "+mark.textContent.trim());
+  mark.setAttribute("title","Abrir ficha del diccionario · "+mark.textContent.trim());
  }
 }
 const init=()=>{
