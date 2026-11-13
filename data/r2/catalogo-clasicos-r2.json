@@ -976,6 +976,28 @@
    "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
   },
   {
+   "id": "frontino-de-aquis",
+   "autor": "Frontino",
+   "obra": "Estratagemas y Acueductos de Roma",
+   "lengua": "la",
+   "tituloEdicion": "Frontinus: The stratagems, and, the aqueducts of Rome",
+   "anio": 1925,
+   "volumen": null,
+   "editor": "London : Heinemann ; New York : Putnam's",
+   "creadorIA": "Frontinus, Sextus Julius",
+   "bilingueLoeb": false,
+   "fuente": "https://archive.org/details/frontinus0000unse",
+   "identificadorIA": "frontinus0000unse",
+   "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/frontino-de-aquis.pdf",
+   "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/frontino-de-aquis.json",
+   "bytes": 18776762,
+   "sha256": "7092be6431d7f79e6108fef3c920b3673519237937e3b718e2e76fd35c589a33",
+   "paginas": 544,
+   "paginasConTexto": 507,
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+  },
+  {
    "id": "juvenal-persio-satiras",
    "autor": "Juvenal y Persio",
    "obra": "Sátiras",
@@ -1306,6 +1328,6 @@
  "schema": "vdl-r2-catalogo-clasicos-1",
  "actualizado": "2026-11-13",
  "descripcion": "Ediciones clásicas de dominio público alojadas en Cloudflare R2 (libros.vitruvius-digital-library.org). No duplican los PDF del repositorio.",
- "total": 52,
- "bytes": 1161478193
+ "total": 53,
+ "bytes": 1180254955
 }
