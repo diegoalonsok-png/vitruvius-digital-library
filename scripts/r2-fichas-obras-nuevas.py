@@ -261,7 +261,8 @@ def main():
     metadatos = leer(METADATOS)["obras"]
     por_id = {o["id"]: o for o in r2["items"]}
     existentes = {w["id"] for w in maestro["works"]}
-    nuevas = [o for o in r2["items"] if o["id"] not in existentes]
+    # Una traducción de una obra ya alojada no crea ficha: se cuelga de la del original.
+    nuevas = [o for o in r2["items"] if o["id"] not in existentes and not o.get("traduccionDe")]
     if VINCULOS.exists():
         con_ficha = {k for k, v in (leer(VINCULOS).get("mapa") or {}).items() if v}
         nuevas = [o for o in nuevas if o["id"] not in con_ficha]

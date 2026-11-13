@@ -54,18 +54,27 @@ def fold(s):
 
 
 def buscar_ia(o, anio_max):
+    # Un candidato puede traer ya elegida la edición (por ejemplo, la traducción
+    # que localizó scripts/r2-candidatos-traducciones.py): se prueba primero esa.
+    preferido = o.get("preferirIdentificador")
     creadores = [c.strip() for c in o["creador"].split("|")]
     cre = " OR ".join(f'"{c}"' if " " in c else c for c in creadores)
     base = f"creator:({cre}) AND mediatype:texts AND date:[1500-01-01 TO {anio_max}-12-31]"
     kw = " AND ".join(f'title:("{t}")' for t in o["titulo"])
-    idioma = o.get("idioma")
+    idioma = o.get("idioma") or {"es": "spa", "fr": "fre", "en": "eng"}.get(o.get("lengua"))
     if idioma == "spa":
         consultas = [f"{base} AND {kw} AND language:(spa OR Spanish OR Español)", f"{base} AND {kw}"]
+    elif idioma == "fre":
+        consultas = [f"{base} AND {kw} AND language:(fre OR French OR Français)", f"{base} AND {kw}"]
     elif idioma == "grc":
         consultas = [f"{base} AND {kw} AND language:(grc OR gre OR Greek)", f"{base} AND {kw}"]
     else:
         consultas = [f'{base} AND {kw} AND title:("english translation")', f"{base} AND {kw}"]
     vistos, out = set(), []
+    if preferido:
+        vistos.add(preferido)
+        out.append({"identifier": preferido, "title": o.get("obra", ""), "date": "",
+                    "creator": o.get("autor", ""), "language": o.get("lengua", "")})
     for q in consultas:
         url = ("https://archive.org/advancedsearch.php?" + urllib.parse.urlencode(
             {"q": q, "rows": 30, "output": "json", "sort[]": "downloads desc"}) +
@@ -152,6 +161,7 @@ def procesar(o, ctx):
                 raise ValueError("SHA-256 del objeto público distinto")
             ficha = {
                 "id": o["id"], "autor": o["autor"], "obra": o["obra"], "lengua": o["lengua"],
+                **({"traduccionDe": o["traduccionDe"]} if o.get("traduccionDe") else {}),
                 "idiomaEdicion": o.get("idioma") or ("bilingue-en" if "english translation" in fold(titulo) else "s/d"),
                 "tanda": o.get("tanda", 1),
                 "tituloEdicion": titulo, "anio": int(anio), "volumen": m.get("volume") or doc.get("volume"),

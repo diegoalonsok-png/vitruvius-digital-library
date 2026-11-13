@@ -15,6 +15,10 @@ on:
       limite:
         description: "Máximo de obras en la tanda (0 = todas las pendientes)"
         default: "8"
+      traducciones:
+        description: "Buscar traducciones de dominio público para las obras alojadas sin ninguna"
+        type: boolean
+        default: false
 
 concurrency:
   group: r2-biblioteca-diaria
@@ -39,6 +43,10 @@ jobs:
 
       - name: Estado de la biblioteca antes de la tanda
         run: python scripts/r2-duplicados.py
+
+      - name: Buscar traducciones para las obras que están sólo en lengua original
+        if: ${{ inputs.traducciones }}
+        run: python scripts/r2-candidatos-traducciones.py --limite 12
 
       - name: Incorporar obras nuevas a R2
         env:

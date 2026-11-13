@@ -34,7 +34,7 @@ h2{font:400 25px/1.3 Georgia,serif;margin-top:34px}
 
 <div class="controles">
 <label>Buscar autor u obra<input id="q" type="search" placeholder="Platón, geografía, Loeb…"></label>
-<label>Lengua del original<select id="lengua"><option value="">Todas</option><option value="grc">Griego</option><option value="la">Latín</option></select></label>
+<label>Lengua del original<select id="lengua"><option value="">Todas</option><option value="grc">Griego</option><option value="la">Latín</option><option value="trad">Traducciones</option></select></label>
 <label>Concepto (índice semántico)<select id="concepto"><option value="">—</option></select></label>
 </div>
 <p id="aviso-concepto" class="small" hidden></p>
@@ -76,7 +76,7 @@ Promise.all([
   const tb=$("#lista");tb.textContent="";
   let n=0;
   items.forEach(x=>{
-   if(l&&x.lengua!==l)return;
+   if(l==="trad"){if(!x.traduccionDe)return}else if(l&&x.lengua!==l)return;
    if(q&&!fold([x.autor,x.obra,x.tituloEdicion,x.editor,x.bilingueLoeb?"loeb bilingue":""].join(" ")).includes(q))return;
    if(post&&!post[x.id])return;
    n++;
@@ -84,6 +84,8 @@ Promise.all([
    const t1=el("td");t1.append(el("strong",x.autor),document.createElement("br"),el("span",x.obra));t1.append(el("span",LENG[x.lengua]||x.lengua,"lengua"));
    const t2=el("td");t2.append(el("span",x.tituloEdicion+" ("+x.anio+(x.volumen?", vol. "+x.volumen:"")+")"),document.createElement("br"),el("span",[x.editor,x.bilingueLoeb?"Loeb, original y traducción inglesa":""].filter(Boolean).join(" · "),"cita"));
    if(x.alcance){t2.append(document.createElement("br"),el("em","Alcance: "+x.alcance,"cita"))}
+   if(x.traduccionDe){const origen=items.find(o=>o.id===x.traduccionDe);
+    t2.append(document.createElement("br"),el("em","Traducción de "+(origen?origen.autor+", "+origen.obra:x.traduccionDe)+"; edición por revisar.","cita"))}
    const fichas=(vin.mapa||{})[x.id];
    if(fichas){t1.append(document.createElement("br"));
     if(fichas.length){fichas.forEach((w,k)=>{if(k)t1.append(" · ");t1.append(a("classics-work-record.html?work="+encodeURIComponent(w),fichas.length>1?"ficha "+(k+1):"ficha académica"))})}

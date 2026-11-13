@@ -35,9 +35,13 @@ for x in cat["items"]:
     # Una obra que ya tiene ficha propia (mismo id) deja de ser una incorporación nueva.
     if not fichas and x["id"] in rep:
         fichas = [x["id"]]
+    # Una traducción no es una obra más: cuelga de la ficha de su original.
+    if not fichas and x.get("traduccionDe"):
+        fichas = mapa.get(x["traduccionDe"]) or ([x["traduccionDe"]] if x["traduccionDe"] in rep else [])
     for w in fichas:
         por_obra.setdefault(w, []).append({
             "r2": x["id"], "pdf": x["pdf"], "edicion": x["tituloEdicion"], "anio": x["anio"],
+            "traduccion": x.get("traduccionDe") and x.get("lengua"),
             "volumen": x.get("volumen"), "loeb": x.get("bilingueLoeb"), "alcance": x.get("alcance")})
     if not fichas:
         nuevas.append({"r2": x["id"], "autor": x["autor"], "obra": x["obra"], "lengua": x["lengua"], "pdf": x["pdf"]})
