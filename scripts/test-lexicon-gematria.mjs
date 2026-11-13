@@ -23,6 +23,23 @@ runInNewContext(code,{document,window,Object,Set,String,Number}, {filename:"lexi
 const {compute}=window.VitruviaGematria;
 assert.equal(compute("נרון קסר","auto").total,666);
 assert.equal(compute("נרו קסר","auto").total,616);
+assert.equal(compute("Neron Caesar","he").total,666,"Known scholarly transliteration works if Hebrew selected");
+assert.equal(compute("Nero Caesar","he").total,616);
+assert.equal(compute("דוד","he").total,14,"David in Hebrew");
+assert.equal(compute("חי","he").total,18,"Chai in Hebrew");
+assert.equal(compute("שלום","he").total,376,"Shalom in Hebrew");
+assert.equal(compute("שָׁלוֹם","he").total,376,"Niqqud must not affect gematria");
+assert.equal(compute("אמת","he").total,441,"Emet in Hebrew");
+assert.equal(compute("אלהים","he").total,86,"Elohim in Hebrew");
+assert.equal(compute("λόγος","gr").total,373,"Logos isopsephy");
+assert.equal(compute("ΛΟΓΟΣ","gr").total,373,"Greek case");
+assert.equal(compute("Ἰησοῦς","gr").total,888,"Iesous isopsephy");
+assert.equal(compute("Λατεῖνος","gr").total,666,"Lateinos 666");
+assert.equal(compute("χιϛ","gr").total,616,"Greek numerals 616");
+assert.equal(compute("Νέρων Καῖσαρ","gr").total,1337,"Neron Kaisar not 666 in Greek");
+assert.equal(compute("Néron Caesar","auto").total,666,"Latin transliteration diacritic");
+assert.equal(compute("Nerus Caesar","auto").translit,false,"Non-attested forms must not be silently normalized");
+
 assert.equal(compute("Neron Caesar","auto").total,666);
 assert.equal(compute("Nero Caesar","auto").total,616);
 assert.equal(compute("Νέρων Καῖσαρ","auto").script,"gr");
