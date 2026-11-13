@@ -1359,8 +1359,17 @@ function display(rows,query,phase){
  // «Todo»: dos bloques fijos. Primero lo que está en la Biblioteca Vitruviana
  // (enlace interno o visor local), después la web académica; cada grupo conserva
  // su orden propio dentro de su bloque.
- const blockOf=r=>libraryTypes.has(r.type)&&r.type!=="manuscript"&&r.type!=="edition"?"site":
-  (r.localViewer||(r.link&&!/^https?:\/\//i.test(r.link)))?"site":"web";
+ const blockOf=r=>{
+  const href=String(r.link||"");
+  // A passage hosted by another institution must never appear as "local"
+  // merely because its type happens to be "passage".
+  const external=/^https?:\/\//i.test(href)&&
+    !/^https:\/\/vitruvius-digital-library\.org(?:\/|$)/i.test(href)&&
+    !/^https:\/\/diegoalonsok-png\.github\.io\/vitruvius-digital-library(?:\/|$)/i.test(href);
+  if(external&&!r.localViewer)return "web";
+  return libraryTypes.has(r.type)&&r.type!=="manuscript"&&r.type!=="edition"?"site":
+    (r.localViewer||(href&&!/^https?:\/\//i.test(href)))?"site":"web";
+ };
  const resolved=S.identifiedSubject;
  // An identified historical or artistic figure is the answer to a name
  // lookup, even when the site has many unrelated local text matches.
