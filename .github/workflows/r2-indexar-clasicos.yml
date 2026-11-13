@@ -1,0 +1,50 @@
+name: R2 — índice semántico de los clásicos alojados
+
+# Construye el índice invertido de raíces sobre el texto por páginas que ya está
+# en Cloudflare R2 y sube los fragmentos SOLO a R2. En el repositorio queda
+# únicamente el manifiesto liviano (data/r2/indice-semantico-manifest.json).
+# No borra nada.
+
+on:
+  workflow_dispatch:
+    inputs:
+      obras:
+        description: "Ids separados por coma (vacío = todo el catálogo)"
+        default: ""
+
+concurrency:
+  group: r2-indexar-clasicos
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  indexar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet "boto3>=1.36"
+      - name: Construir el índice desde el texto alojado
+        run: node scripts/r2-indexar-clasicos.mjs --salida /tmp/indice-r2 ${{ inputs.obras && format('--obras {0}', inputs.obras) || '' }}
+      - name: Subir los fragmentos a R2 y verificarlos en el dominio público
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: python scripts/r2-subir-indice.py --origen /tmp/indice-r2/indice
+      - name: Guardar el manifiesto (solo el archivo liviano)
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/r2/indice-semantico-manifest.json
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git commit -m "R2: índice semántico de los clásicos alojados"
+          for i in 1 2 3 4 5; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 8; done

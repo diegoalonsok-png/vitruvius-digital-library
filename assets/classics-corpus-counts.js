@@ -214,7 +214,9 @@ async function ampliar(fichas){
     const li=document.createElement("li");const a=document.createElement("a");a.href="bibliotheca-ampliada.html?q="+encodeURIComponent(n.autor);
     a.textContent=n.autor+" — "+n.obra;a.className="tally-record";li.append(a);
     const m=document.createElement("small");m.textContent=" · obra nueva · ";li.append(m);
-    const pdf=document.createElement("a");pdf.href=n.pdf;pdf.textContent="Leer facsímil PDF";li.append(pdf);ol.prepend(li);
+    const leer=document.createElement("a");leer.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(n.r2||"");
+    leer.textContent="Leer en el visor";li.append(leer);
+    const pdf=document.createElement("a");pdf.href=n.pdf;pdf.textContent="PDF";li.append(document.createTextNode(" · "),pdf);ol.prepend(li);
    }
    const p=first.querySelector("details p");if(p)p.textContent=fmt(c.obrasTotales)+" registros listados ("+fmt(c.fichasRepertorio)+" fichas y "+fmt(c.obrasNuevas)+" obras nuevas).";
   }
@@ -225,9 +227,12 @@ async function ampliar(fichas){
   const p=document.createElement("p");p.textContent=fmt(cat.items.length)+" ediciones en libros.vitruvius-digital-library.org; texto por página con OCR sin revisar.";
   const ol=document.createElement("ol");ol.tabIndex=0;
   [...cat.items].sort((x,y)=>x.autor.localeCompare(y.autor,"es")).forEach(x=>{
-   const li=document.createElement("li");const a=document.createElement("a");a.href=x.pdf;a.className="tally-record";
+   const li=document.createElement("li");const a=document.createElement("a");
+   a.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(x.id);a.className="tally-record";
+   a.title="Leer la edición página a página en el visor del sitio";
    a.textContent=x.autor+" — "+x.obra;li.append(a);
-   const m=document.createElement("small");m.textContent=" · "+x.anio+(x.bilingueLoeb?" · Loeb bilingüe":"")+(x.alcance?" · "+x.alcance:"");li.append(m);ol.append(li);
+   const m=document.createElement("small");m.textContent=" · "+x.anio+(x.bilingueLoeb?" · Loeb bilingüe":"")+(x.alcance?" · "+x.alcance:"")+" · ";li.append(m);
+   const pdf=document.createElement("a");pdf.href=x.pdf;pdf.textContent="PDF";li.append(pdf);ol.append(li);
   });
   const all=document.createElement("a");all.href="bibliotheca-ampliada.html";all.textContent="Abrir Bibliotheca ampliada";
   det.append(p,ol,all);g.append(det);dl.append(g);
