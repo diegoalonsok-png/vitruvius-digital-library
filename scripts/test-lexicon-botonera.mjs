@@ -44,3 +44,25 @@ check("la botonera se dispone en línea, sin grilla de columnas fijas",()=>{
 w.close();
 if(failed){console.error(`\n${failed} comprobaciones fallidas`);process.exit(1)}
 console.log("\nBotonera del Lexicon: todas las comprobaciones pasaron");
+
+/* Caso de la página servida sin el hueco (una copia vieja en caché, o una
+   página que todavía no lo declara): la «Aa» igual tiene que caer en la misma
+   fila que el botón de apariencia, y no suelta en el encabezado. */
+{
+ const sinHueco=html.replace(/<span id="site-typeface-slot"[^>]*><\/span>/,"");
+ const d2=new JSDOM(sinHueco,{runScripts:"outside-only",url:"https://vitruvius-digital-library.org/vitruvia-lexicon",pretendToBeVisual:true});
+ const w2=d2.window;
+ w2.matchMedia=w2.matchMedia||(()=>({matches:false,addEventListener(){},removeEventListener(){}}));
+ try{w2.eval(siteBar)}catch(e){console.error("site-bar.js:",e.message)}
+ w2.document.dispatchEvent(new w2.Event("DOMContentLoaded"));
+ await new Promise(r=>setTimeout(r,80));
+ check("sin hueco declarado, la «Aa» cae igual junto al botón de apariencia",()=>{
+  const aa=w2.document.getElementById("site-typeface-toggle");
+  assert.ok(aa,"no se inyectó el control de tipografía");
+  const fila=aa.closest(".navtools");
+  assert.ok(fila,"la «Aa» quedó fuera de la botonera: padre "+aa.parentElement.parentElement.tagName);
+  assert.ok(fila.querySelector("#theme"),"el botón de apariencia no está en esa misma fila");
+ });
+}
+
+process.exitCode=failed?1:0;

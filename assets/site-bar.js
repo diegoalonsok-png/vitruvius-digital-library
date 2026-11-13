@@ -101,11 +101,14 @@ function ensureTypography(){
  const anchor=palette?.closest('.home-color-tools, details')||palette||document.querySelector('.classic-view-colorbar')||theme;
  /* Si la página declara dónde va el control, va ahí: depender de un selector
     de maquetación lo dejaba fuera de la botonera cuando ese selector cambiaba. */
- const hueco=document.getElementById('site-typeface-slot');
+ const hueco=document.getElementById('site-typeface-slot')||document.getElementById('indices-typeface-slot');
+ /* El control va siempre en la misma fila que el botón de apariencia o el de
+    color: la ruta ya no decide nada, porque el sitio sirve URLs sin «.html»
+    y la comparación por nombre de archivo dejaba la «Aa» fuera de la botonera. */
+ const fila=document.querySelector('.navtools')||theme?.parentElement||palette?.parentElement;
  if(hueco)hueco.append(tool);
- else if(location.pathname.split('/').pop()==='indices-locorum.html'&&document.getElementById('indices-typeface-slot'))document.getElementById('indices-typeface-slot').append(tool);
- else if(location.pathname.split('/').pop()==='vitruvia-lexicon.html'&&document.querySelector('.site-shell>.nav .navtools'))document.querySelector('.site-shell>.nav .navtools').append(tool);
  else if(anchor?.classList?.contains('classic-view-colorbar'))anchor.append(tool);
+ else if(fila&&(fila.contains(theme)||fila.contains(palette)))fila.append(tool);
  else if(anchor?.parentElement)anchor.after(tool);
  else(document.querySelector('.research-nav-controls')||document.querySelector('.site-header .header-inner')||document.querySelector('header')||document.body).append(tool);
  const button=tool.querySelector('#site-typeface-toggle'),panel=tool.querySelector('#site-typeface-panel'),select=tool.querySelector('#site-typeface-select'),italic=tool.querySelector('#site-typeface-italic');
