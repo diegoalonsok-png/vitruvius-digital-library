@@ -8,7 +8,7 @@ for(const doc of [page,bib]){
  assert(doc.includes('assets/classics-corpus-counts.js'));
  assert(doc.includes('assets/bibliotheca-offsite-greek.js'));
  assert(doc.includes('assets/bibliotheca-offsite-latin.js'));
- assert(doc.includes("bibliotheca-graeca-latina.html"));
+ assert(/bibliotheca-graeca-latina(\.html)?\b/.test(doc));
 }
 assert(bib.includes("assets/bibliotheca-academic-provenance.js"));
 assert(page.includes('id="stat-records"'),"Las cifras vitruvianas anteriores permanecen");

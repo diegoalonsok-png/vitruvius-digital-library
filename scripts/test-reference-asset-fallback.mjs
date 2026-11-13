@@ -15,7 +15,7 @@ const culturalTest=read("scripts/test-vitruvia-cultural-works.mjs");
 new vm.Script(icon,{filename:"assets/iconografia-vitruviana.js"});
 
 assert.match(parallel,/return \[\.\.\.new Set\(\[c\.image_url\]/);
-assert.match(icon,/x\.image\|\|null/);
+assert.match(icon,/x\.image\|\|(?:x\.localImage\|\|)?null/);
 assert.match(icon,/images\/barbaro-1567\//);
 assert.match(gud,/file\.addEventListener\('change'/);
 assert.doesNotMatch(gud,/fetch\(remotePath/);

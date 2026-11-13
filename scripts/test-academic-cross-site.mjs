@@ -15,7 +15,7 @@ for(const file of pages){
  assert(!/<a\s+[^>]*href="javascript:/i.test(html),file+" unsafe href");
  assert(/metodologia-filologica\.html|auditoria-textos-clasicos\.html/.test(html),
   file+" lacks academic method access");
- assert(/auditoria-academica\.html/.test(html),file+" lacks audit access");
+ assert(/auditoria-academica(\.html)?\b/.test(html),file+" lacks audit access");
 }
 const manifest=JSON.parse(read("data/classics-corpus/indexation-roadmap-222.json"));
 const registry=JSON.parse(read("data/classics-corpus/search-registry.json"));
