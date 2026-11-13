@@ -25,8 +25,10 @@ assert(!html.includes('classic-view-colorbar')&&!html.includes('classics-study-t
  'The minimal Bibliotheca must not embed readers, palettes or extra tools');
 assert(html.includes('assets/bibliotheca-simple.js'),'Single concordance script must be mounted');
 assert(html.includes('assets/bibliotheca-corpus-search.js')&&html.includes('assets/bibliotheca-simple.css'),'Lexicon-style monochrome design must be mounted');
-assert(engine.includes('allMatches:true,includeFullText:true,includeOCR:false'),
- 'Search must include full passages and all attested occurrences while excluding unverified OCR');
+assert(engine.includes('if(!workId&&!options.exhaustive')&&
+ engine.includes('maxPerEdition:workId?200:70,limit:600')&&
+ engine.includes('includeFullText:true,includeOCR:false'),
+ 'Default global search must be index-first; selected-work and explicitly expanded passages must be documented and bounded, with OCR excluded');
 assert(engine.includes('works.length-indexed.size'),
  'Every query must disclose how many catalogued works were not indexed');
 assert(engine.includes('vitruvia-lexicon.html')&&engine.includes('searchParams.set("mode","palabra")'),
