@@ -122,7 +122,11 @@
   pane.append(label,button);
   // Keep custom page layouts and manuscript tables unchanged. On standard
   // editorial pages place one compact toolbar in the upper-right corner.
-  document.body.append(pane);
+  // On Indices locorum keep language and theme beside the academic header tools,
+  // never floating over the page content.
+  const headerTools=document.querySelector("body.indices-lexicon .indices-navtools");
+  if(headerTools){headerTools.prepend(pane);pane.classList.add("vitruvius-secondary-inline");}
+  else document.body.append(pane);
   document.body.classList.add("vitruvius-secondary-controls");
   theme=defaultTheme();
   select.addEventListener("change",()=>setLanguage(select.value));
