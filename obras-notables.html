@@ -73,7 +73,7 @@ a{color:var(--tinta)}
 
 footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:12px/1.6 Arial,Helvetica,sans-serif;color:var(--gris)}
 </style>
-</head>
+<script defer src="assets/academic-image-ruler.js?v=20261113-1"></script></head>
 <body>
 <header>
  <nav><a href="./">← Vitruvius Digital Library</a> · <a href="bibliotheca-graeca-latina.html">Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></nav>
@@ -118,7 +118,7 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
     <label>Brillo <input id="brillo" type="range" min="60" max="160" value="100"></label>
     <label>Saturación <input id="saturacion" type="range" min="0" max="200" value="100" step="5" title="Intensidad de los colores del folio"></label>
    </div>
-   <div class="lamina" id="lamina">
+   <div class="lamina" id="lamina" data-academic-ruler-image="#imagen">
     <img id="imagen" alt="" decoding="async">
     <div class="marcas" id="marcas"></div>
    </div>
