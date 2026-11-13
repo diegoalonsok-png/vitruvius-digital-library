@@ -90,6 +90,16 @@ def main():
         return f"largo={len(v)} hex={'sí' if hexa else 'no'} espacios={'sí' if v != v.strip() else 'no'}"
     print("R2_ACCESS_KEY_ID:", forma(os.environ.get("R2_ACCESS_KEY_ID")), "(esperado: largo=32 hex=sí)")
     print("R2_SECRET_ACCESS_KEY:", forma(os.environ.get("R2_SECRET_ACCESS_KEY")), "(esperado: largo=64 hex=sí)")
+    # Contraste: qué responde R2 con un identificador inventado y con un secreto inventado.
+    for etiqueta, kid, sec in (("ID inventado + secreto real", "0" * 32, os.environ["R2_SECRET_ACCESS_KEY"]),
+                               ("ID real + secreto inventado", os.environ["R2_ACCESS_KEY_ID"], "0" * 64)):
+        c = boto3.client("s3", endpoint_url=ENDPOINT, region_name="auto", aws_access_key_id=kid,
+                         aws_secret_access_key=sec, config=Config(request_checksum_calculation="when_required",
+                                                                  response_checksum_validation="when_required"))
+        try:
+            c.list_objects_v2(Bucket=BUCKET, MaxKeys=1); print("contraste", etiqueta, ": OK (?)")
+        except Exception as e:  # noqa: BLE001
+            print("contraste", etiqueta, ":", str(e)[:160])
     for nombre, op in (("lectura (ListObjectsV2)", lambda: s3.list_objects_v2(Bucket=BUCKET, MaxKeys=1)),
                        ("escritura (PutObject de prueba)", lambda: s3.put_object(Bucket=BUCKET, Key="_prueba/acceso.txt", Body=b"ok", ContentType="text/plain"))):
         try:
