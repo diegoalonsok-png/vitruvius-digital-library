@@ -21,11 +21,15 @@ const concepts=load("data/lexicon/conceptus.json");
 const localIds=new Set(road.items.filter(x=>x.originalIndexed).map(x=>x.id));
 const ids=new Set(road.items.map(x=>x.id));
 const registryIds=new Set(reg.entries.map(x=>x.workId));
+const hostedRegistryIds=new Set(reg.entries.filter(x=>typeof x.path==="string"&&!/^https?:\/\//i.test(x.path)).map(x=>x.workId));
+const remoteRegistryIds=new Set(reg.entries.filter(x=>typeof x.path==="string"&&/^https?:\/\//i.test(x.path)).map(x=>x.workId));
 const translatedIds=new Set(road.items.filter(x=>x.translationHosted).map(x=>x.id));
 requireThat(Array.isArray(road.items)&&road.items.length===road.targetWorks&&ids.size===road.targetWorks,"catalogue-unique","El catálogo y los IDs únicos no coinciden");
 requireThat(road.counts.originalsIndexed===localIds.size&&road.counts.originalsMissing===road.targetWorks-localIds.size,"original-coverage","El inventario de originales no coincide con los registros individuales");
 requireThat(reg.count===reg.entries.length&&reg.works===registryIds.size,"registry-count","El registro de versiones no coincide con su resumen");
-requireThat(registryIds.size===localIds.size&&[...registryIds].every(id=>localIds.has(id)),"registry-roster","Las obras locales del registro y las obras originales del inventario no coinciden; revisar fichas antes de publicar");
+requireThat(hostedRegistryIds.size===localIds.size&&[...hostedRegistryIds].every(id=>localIds.has(id)),"registry-roster","Las obras alojadas en GitHub y los originales locales del inventario no coinciden; revisar fichas antes de publicar");
+requireThat([...remoteRegistryIds].every(id=>ids.has(id)),"remote-roster","El registro R2 declara obras ajenas al catálogo");
+if(remoteRegistryIds.size)note("remote-r2-availability",remoteRegistryIds.size+" obras poseen versiones declaradas en R2; su accesibilidad no se certifica en este control.");
 requireThat(road.counts.effectiveOriginalsIndexed===road.counts.originalsIndexed+road.counts.offsiteOriginalsIndexed&&
   road.counts.effectiveOriginalsMissing===road.targetWorks-road.counts.effectiveOriginalsIndexed,
  "offsite-coverage","Los originales externos y locales no coinciden con la cobertura total documentada.");
@@ -57,7 +61,7 @@ const report={
  schema:"vitruvius-scholarly-evidence-v1",generated:new Date().toISOString(),
  purpose:"Integridad verificable de inventarios y grados de evidencia; no certifica calidad filológica ni vinculación con universidades.",
  sourcePaths:["data/classics-corpus/indexation-roadmap-222.json","data/classics-corpus/translation-availability-222.json","data/classics-corpus/search-registry.json","data/classics-corpus/coverage-audit.json","data/ecdotic-decisions.json",semanticPath],
- counts:{cataloguedWorks:road.targetWorks,localOriginalWorks:localIds.size,missingLocalOriginals:road.counts.originalsMissing,hostedTranslationWorks:translatedIds.size,originalOnlyWorks:indexedOnly,effectiveOriginalWorks:road.counts.effectiveOriginalsIndexed,missingEffectiveOriginals:road.counts.effectiveOriginalsMissing,externalOriginalsIndexed:road.counts.offsiteOriginalsIndexed,textVersions:reg.count,registeredWitnesses:witness.records?.length??null,conceptEntries:concepts.concepts?.length??null,ecdoticNotesExtracted:ed.baseline.extractedNotes,notesExplicitLocus:ed.baseline.explicitLocus,notesCandidateLocus:ed.baseline.candidateLocus,notesUnlocated:ed.baseline.unlocated,verifiedTextualDecisions:verified},
+ counts:{cataloguedWorks:road.targetWorks,localOriginalWorks:localIds.size,missingLocalOriginals:road.counts.originalsMissing,hostedTranslationWorks:translatedIds.size,originalOnlyWorks:indexedOnly,effectiveOriginalWorks:road.counts.effectiveOriginalsIndexed,missingEffectiveOriginals:road.counts.effectiveOriginalsMissing,externalOriginalsIndexed:road.counts.offsiteOriginalsIndexed,textVersions:reg.count,remoteR2RegisteredWorks:remoteRegistryIds.size,registeredWitnesses:witness.records?.length??null,conceptEntries:concepts.concepts?.length??null,ecdoticNotesExtracted:ed.baseline.extractedNotes,notesExplicitLocus:ed.baseline.explicitLocus,notesCandidateLocus:ed.baseline.candidateLocus,notesUnlocated:ed.baseline.unlocated,verifiedTextualDecisions:verified},
  semantic:conceptus,
  sourceReadiness:road.counts.sourceReadinessForMissingOriginals,
  evidentiaryLimits:[
