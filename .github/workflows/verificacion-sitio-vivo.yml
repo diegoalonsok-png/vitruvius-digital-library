@@ -1,0 +1,36 @@
+name: Verificación del sitio publicado (.org, GitHub Pages y R2)
+
+# Solo lectura: recorre con navegador real todas las páginas publicadas en
+# vitruvius-digital-library.org y en GitHub Pages, comprueba enlaces internos,
+# robots/sitemap y una muestra de la colección en R2 (SHA-256 y CORS).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/verificar-sitio-vivo.mjs"
+      - ".github/workflows/verificacion-sitio-vivo.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - run: node scripts/verificar-sitio-vivo.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verificacion-sitio-vivo
+          path: reports/verificacion-sitio-vivo.json
+          if-no-files-found: warn
