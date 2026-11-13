@@ -64,16 +64,14 @@ function workVersions(id,data){
   label:(["la","grc"].includes(e.language)?"Original: ":"Traducción: ")+
    (sourceLanguageLabels[e.language]||e.language)
  }));
- // Only offer two viewers when there really are two hosted text editions.
- const pair=originals[0]?{
-  // Prefer a hosted editorial translation; when none exists, retain the
-  // source and offer a clearly marked, opt-in machine translation per locus.
-  url:id==="vitruvius"&&translations[0]?detailLink(translations[0]):
+ // Only offer a paired reader when both original and a hosted
+ // translation exist. Never turn a missing translation into a claimed edition.
+ const pair=originals[0]&&translations[0]?{
+  url:id==="vitruvius"?detailLink(translations[0]):
    "classics-parallel-reader.html?work="+encodeURIComponent(id)+
    "&left="+encodeURIComponent(originals[0].language)+
-   "&right="+encodeURIComponent(translations[0]?.language||"auto-es"),
-  label:translations[0]?"Leer original y traducción en dos visores":
-   "Leer original y solicitar traducción automática orientativa"
+   "&right="+encodeURIComponent(translations[0].language),
+  label:"Leer original y traducción en dos visores"
  }:null;
  return {links,pair,translationHosted:!!translations.length};
 }
