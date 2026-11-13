@@ -1,0 +1,51 @@
+name: R2 — incorporar clásicos griegos y latinos (dominio público)
+
+# Descarga de Internet Archive ediciones de dominio público que la biblioteca aún
+# no tiene, las sube SOLO a Cloudflare R2 (no al repositorio), verifica SHA-256
+# desde el dominio público y actualiza en el repositorio únicamente el catálogo y
+# el índice semántico. No borra nada.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: "Máximo de obras en esta tanda (0 = todas las pendientes)"
+        default: "0"
+
+concurrency:
+  group: r2-importar-clasicos
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet "boto3>=1.36" pymupdf
+      - name: Importar y verificar
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          LIMITE: ${{ inputs.limite }}
+        run: python scripts/r2-importar-clasicos.py
+      - name: Guardar catálogo e índice (solo archivos livianos de data/r2)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/r2/catalogo-clasicos-r2.json data/r2/conceptus-clasicos-r2.json
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git commit -m "R2: catálogo e índice semántico de clásicos incorporados"
+          for i in 1 2 3 4 5; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 8; done
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r2-clasicos-informe
+          path: r2-clasicos-informe.json
+          if-no-files-found: ignore
