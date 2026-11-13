@@ -25,14 +25,14 @@ sheet.textContent=[
 document.head.append(sheet);
 const choices=new WeakMap();
 let currentBar=null;
-const getChoice=bar=>choices.get(bar)||{color:"amarillo",mode:"underline"};
+const getChoice=bar=>choices.get(bar)||{color:"amarillo",mode:"highlight"};
 function attachBar(card){
  if(card.querySelector(".locorum-annotation-tools"))return;
  const bar=document.createElement("div");
  bar.className="locorum-annotation-tools";bar.setAttribute("role","toolbar");
  bar.setAttribute("aria-label","Anotaciones de este pasaje "+({grc:"griego",la:"latino",en:"inglés",es:"castellano",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"}[card.dataset.sourceLanguage]||"clásico"));
- bar.innerHTML='<span class="locorum-label">Anotaciones</span><button type="button" data-mode="underline" aria-pressed="true">Subrayar</button><button type="button" data-mode="highlight" aria-pressed="false">Resaltar</button><span class="locorum-palette" role="group" aria-label="Colores"></span><button type="button" data-action="erase" title="Borrar marcas de la selección">Borrar marca</button><button type="button" data-action="clear" title="Borrar todas las marcas de este pasaje">Limpiar pasaje</button><span class="locorum-rule"></span><button type="button" data-action="find" title="Buscar otra palabra en el índice" aria-label="Lupa buscar">⌕ Buscar</button><button type="button" data-action="smaller" aria-label="Reducir letra">A−</button><button type="button" data-action="larger" aria-label="Ampliar letra">A+</button><output role="status" aria-live="polite"></output>';
- choices.set(bar,{color:"amarillo",mode:"underline"});
+ bar.innerHTML='<span class="locorum-label">Anotaciones</span><button type="button" data-mode="underline" aria-pressed="false">Subrayar</button><button type="button" data-mode="highlight" aria-pressed="true">Resaltar</button><span class="locorum-palette" role="group" aria-label="Colores"></span><button type="button" data-action="erase" title="Borrar marcas de la selección">Borrar marca</button><button type="button" data-action="clear" title="Borrar todas las marcas de este pasaje">Limpiar pasaje</button><span class="locorum-rule"></span><button type="button" data-action="find" title="Buscar otra palabra en el índice" aria-label="Lupa buscar">⌕ Buscar</button><button type="button" data-action="smaller" aria-label="Reducir letra">A−</button><button type="button" data-action="larger" aria-label="Ampliar letra">A+</button><output role="status" aria-live="polite"></output>';
+ choices.set(bar,{color:"amarillo",mode:"highlight"});
  const palette=bar.querySelector(".locorum-palette");
  Object.entries(shades).forEach(([name,value])=>{
   const b=document.createElement("button");b.type="button";b.className="locorum-dot";b.dataset.color=name;
@@ -100,7 +100,7 @@ function redraw(){
   const quote=card.querySelector(".excerpt");if(!quote)return;
   get(card).forEach(m=>{
    const range=makeRange(quote,m.a,m.b);
-   if(range)ranges[(m.mode==="highlight"?"h-":"u-")+m.color].push(range);
+   if(range)ranges["h-"+m.color].push(range);
   });
  });
  for(const [name,list] of Object.entries(ranges)){
@@ -121,9 +121,8 @@ function mark(which,card,bar){
  if(which==="erase"){
   if(save(card,items.filter(x=>x.b<=a||x.a>=b))){redraw();output.textContent="Marca borrada."}return;
  }
- if(!items.some(x=>x.a===a&&x.b===b&&x.color===picked.color&&x.mode===picked.mode)){
-  if(save(card,items.concat({a,b,color:picked.color,mode:picked.mode}))){redraw();output.textContent="Marca guardada en este navegador."}
- }
+ const previous=items.filter(x=>x.b<=a||x.a>=b);
+ if(save(card,previous.concat({a,b,color:picked.color,mode:picked.mode}))){redraw();output.textContent="Fragmento pintado en "+picked.color+"."}
 }
 results.addEventListener("pointerdown",e=>{
  if(e.target.closest(".locorum-annotation-tools button"))e.preventDefault();
