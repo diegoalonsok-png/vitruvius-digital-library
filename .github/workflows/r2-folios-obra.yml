@@ -24,6 +24,13 @@ on:
       prueba:
         description: "Bajar sólo N folios y no subir nada (0 = corrida real)"
         default: "0"
+      miniatura:
+        description: "Ancho de la miniatura para la galería (0 = sin miniaturas)"
+        default: "260"
+      solo_miniaturas:
+        description: "No rebajar el folio completo: sólo las miniaturas"
+        type: boolean
+        default: false
 
 concurrency:
   group: r2-folios-${{ inputs.obra }}
@@ -53,7 +60,9 @@ jobs:
             --desde "${{ inputs.desde }}" \
             --hasta "${{ inputs.hasta }}" \
             --ancho "${{ inputs.ancho }}" \
-            --prueba "${{ inputs.prueba }}"
+            --miniatura "${{ inputs.miniatura }}" \
+            --prueba "${{ inputs.prueba }}" \
+            ${{ inputs.solo_miniaturas && '--solo-miniaturas' || '' }}
 
       - name: Guardar el índice de folios (solo el archivo liviano)
         if: ${{ inputs.prueba == '0' }}

@@ -31,6 +31,7 @@ import os
 import sys
 import time
 import urllib.error
+import re
 import urllib.request
 from pathlib import Path
 
@@ -108,6 +109,10 @@ def main():
     ap.add_argument("--hasta", type=int, default=0)
     ap.add_argument("--ancho", type=int, default=1800)
     ap.add_argument("--prueba", type=int, default=0, help="baja sólo N folios y no sube nada")
+    ap.add_argument("--miniatura", type=int, default=260,
+                    help="ancho de la miniatura para la galería; 0 para no generarlas")
+    ap.add_argument("--solo-miniaturas", action="store_true",
+                    help="no vuelve a bajar el folio completo: sólo las miniaturas que falten")
     args = ap.parse_args()
 
     fuentes = json.loads(FUENTES.read_text(encoding="utf-8"))["obras"]
@@ -142,29 +147,58 @@ def main():
                                         request_checksum_calculation="when_required",
                                         response_checksum_validation="when_required"))
 
+    previo = {}
+    archivo_previo = INDICES / f"{args.obra}.json"
+    if args.solo_miniaturas and archivo_previo.exists():
+        datos = json.loads(archivo_previo.read_text(encoding="utf-8"))
+        previo = {f["imagenDigital"]: f for f in datos.get("folios", [])}
+        print(f"  (sólo miniaturas: se conservan los {len(previo)} folios ya alojados)")
+
     folios, bytes_totales = [], 0
     for n, (etiqueta, url) in enumerate(seleccion, start=args.desde):
-        try:
-            cuerpo = pedir(url)
-        except Exception as e:  # noqa: BLE001
-            print(f"  ! imagen {n}: {e}")
-            continue
+        cuerpo = None
+        if not args.solo_miniaturas:
+            try:
+                cuerpo = pedir(url)
+            except Exception as e:  # noqa: BLE001
+                print(f"  ! imagen {n}: {e}")
+                continue
         nombre = f"folios/{args.obra}/f{n:04d}.jpg"
-        if s3:
+        if s3 and cuerpo is not None:
             s3.put_object(Bucket=BUCKET, Key=nombre, Body=cuerpo,
                           ContentType="image/jpeg", CacheControl="public, max-age=2592000",
                           Metadata={"sha256": hashlib.sha256(cuerpo).hexdigest()})
+
+        # Miniatura para la galería: se pide a la fuente al ancho chico, no se
+        # reescala el folio grande, de modo que pese poco y se vea nítida.
+        miniatura = ""
+        if args.miniatura:
+            url_min = re.sub(r"/full/[^/]+/0/default\.jpg$", f"/full/{args.miniatura},/0/default.jpg", url)
+            try:
+                cuerpo_min = pedir(url_min, intentos=2, espera=2)
+                clave_min = f"folios/{args.obra}/t{n:04d}.jpg"
+                if s3:
+                    s3.put_object(Bucket=BUCKET, Key=clave_min, Body=cuerpo_min,
+                                  ContentType="image/jpeg", CacheControl="public, max-age=2592000")
+                miniatura = f"{PUBLICO}/{clave_min}"
+                bytes_totales += len(cuerpo_min)
+            except Exception as e:  # noqa: BLE001
+                print(f"  ! miniatura {n}: {e}")
+        anterior = previo.get(n, {})
         folios.append({
             "imagenDigital": n,
-            "folio": "",
-            "paginaImpresa": "",
-            "libro": "",
+            # La foliación se lee en el ejemplar; si ya estaba leída, se conserva.
+            "folio": anterior.get("folio", ""),
+            "paginaImpresa": anterior.get("paginaImpresa", ""),
+            "libro": anterior.get("libro", ""),
             "etiquetaFuente": etiqueta,
             "imagen": f"{PUBLICO}/{nombre}",
-            "bytes": len(cuerpo),
-            "sha256": hashlib.sha256(cuerpo).hexdigest(),
+            "miniatura": miniatura,
+            "bytes": len(cuerpo) if cuerpo is not None else anterior.get("bytes", 0),
+            "sha256": hashlib.sha256(cuerpo).hexdigest() if cuerpo is not None else anterior.get("sha256", ""),
         })
-        bytes_totales += len(cuerpo)
+        if cuerpo is not None:
+            bytes_totales += len(cuerpo)
         if n % 25 == 0:
             print(f"  {n}/{hasta} · {bytes_totales/1048576:.0f} MB")
         time.sleep(0.2)
