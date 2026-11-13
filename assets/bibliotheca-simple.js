@@ -358,7 +358,29 @@ function passageActions(record,workInfo,passageNode){
  const header=[title,[workInfo.author||record.author,record.locus,languages[record.language]||record.language].filter(Boolean).join(" · ")].filter(Boolean).join("\n");
  const message=[header,shortText,citation,origin].filter(Boolean).join("\n\n");
  mail.href="mailto:?subject="+encodeURIComponent(title+" · "+(record.locus||"pasaje"))+"&body="+encodeURIComponent(message);
- const whats=el("a","passage-action","WhatsApp");whats.href="https://wa.me/?text="+encodeURIComponent(message);whats.target="_blank";whats.rel="noopener noreferrer";whats.title="Compartir pasaje por WhatsApp";actions.append(pdf,mail,whats);return actions;
+ const whats=el("a","passage-action","WhatsApp");whats.href="https://wa.me/?text="+encodeURIComponent(message);whats.target="_blank";whats.rel="noopener noreferrer";whats.title="Compartir pasaje por WhatsApp";
+ // Cite the editorial text, not a manuscript folio that has not been collated.
+ // A platform DOI is NOT silently substituted for an edition's DOI.
+ const cite=el("button","passage-action",locale==="en"?"Copy reference":locale==="fr"?"Copier la référence":"Copiar referencia");
+ cite.type="button";
+ cite.title="Copia referencia bibliográfica, localizador, fuente digital y URL; identifica las referencias parciales.";
+ cite.addEventListener("click",async()=>{
+  const citation=provenance(workInfo,record);
+  const canonical=/^\\d+(?:\\.(?:praef|\\d+))*(?:\\.\\d+)?$/.test(String(record.locus||""));
+  const locator=record.locus?(canonical?"Locus editorial: ":"Ubicación digital (no folio manuscrito): ")+record.locus:"Sin locus estable";
+  const text=[citation.chicago?"":"[Referencia parcial: completar los datos editoriales]",citation.citation,locator,
+   record.edition?"Edición registrada: "+record.edition:"",
+   record.source?"Documento digital consultado: "+record.source:"",
+   origin,"No implica lectura paleográfica ni correspondencia comprobada con un códice."].filter(Boolean).join("\\n");
+  try{
+   await navigator.clipboard.writeText(text);
+   cite.textContent=locale==="en"?"Copied":locale==="fr"?"Copié":"Copiado";
+  }catch{
+   // Keep the reference accessible even in browsers without Clipboard API.
+   window.prompt("Referencia bibliográfica para copiar:",text);
+  }
+ });
+ actions.append(pdf,mail,whats,cite);return actions;
 }
 /* Diccionario contextual: emplea únicamente fichas editoriales verificables del Lexicon. */
 let etymTask=null;
@@ -546,6 +568,12 @@ function render(rows,q,details){
   }
   const li=el("li","hit");li.lang=r.language==="grc"?"el":r.language||"es";
   li.append(el("span","locus",t.loc+" "+(r.locus||"—")+" · "+(languages[r.language]||r.language)+" · "+(r.hitsInPassage||1)));
+  const evidenceLabel=r.ocr?"OCR digital · transcripción no cotejada":
+   ["la","grc"].includes(r.language)?
+    "Texto de edición digital · no equivale a transcripción diplomática de un códice":
+    "Versión o traducción digital · el locus compartido no acredita alineación palabra a palabra";
+  li.append(el("p","meta",evidenceLabel+(r.edition?" · "+r.edition:"")+
+   (r.source?" · archivo: "+r.source:"")));
   if(["la","grc"].includes(r.language)){
     const lexeme=el("p","lexeme-attested",attestedLexeme(r,q));
     lexeme.lang=r.language==="grc"?"grc":"la";
