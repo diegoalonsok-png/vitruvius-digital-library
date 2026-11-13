@@ -83,6 +83,20 @@ def main():
                                     request_checksum_calculation="when_required",
                                     response_checksum_validation="when_required"))
 
+    # Diagnóstico previo, sin revelar valores: largo y alfabeto de cada clave.
+    def forma(v):
+        v = v or ""
+        hexa = all(c in "0123456789abcdef" for c in v)
+        return f"largo={len(v)} hex={'sí' if hexa else 'no'} espacios={'sí' if v != v.strip() else 'no'}"
+    print("R2_ACCESS_KEY_ID:", forma(os.environ.get("R2_ACCESS_KEY_ID")), "(esperado: largo=32 hex=sí)")
+    print("R2_SECRET_ACCESS_KEY:", forma(os.environ.get("R2_SECRET_ACCESS_KEY")), "(esperado: largo=64 hex=sí)")
+    for nombre, op in (("lectura (ListObjectsV2)", lambda: s3.list_objects_v2(Bucket=BUCKET, MaxKeys=1)),
+                       ("escritura (PutObject de prueba)", lambda: s3.put_object(Bucket=BUCKET, Key="_prueba/acceso.txt", Body=b"ok", ContentType="text/plain"))):
+        try:
+            op(); print("prueba", nombre, ": OK")
+        except Exception as e:  # noqa: BLE001
+            print("prueba", nombre, ": FALLA:", str(e)[:200]); return 2
+
     def procesar(m):
         r = {"ruta": m["ruta"], "bytes": m["bytes"], "sha256": m["sha256"]}
         try:
