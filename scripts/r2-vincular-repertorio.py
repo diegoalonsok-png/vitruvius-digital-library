@@ -2,6 +2,8 @@
 """Recalcula data/r2/vinculos-repertorio.json a partir del catálogo R2 y del mapa curado.
 
 El mapa (clave «mapa») se revisa a mano: id R2 → lista de fichas del repertorio.
+Una edición cuyo identificador coincide con el de una ficha se vincula sola a esa
+obra: es el mismo identificador, no una conjetura.
 Una lista vacía declara una obra NUEVA (sin ficha previa). Las ediciones R2 que aún
 no figuran en el mapa quedan en «sinRevisar» y no se suman a ningún recuento.
 
@@ -29,8 +31,16 @@ for k, v in mapa.items():
 por_obra, nuevas, sin_revisar = {}, [], []
 for x in cat["items"]:
     if x["id"] not in mapa:
-        sin_revisar.append(x["id"])
-        continue
+        # Si la edición lleva el mismo identificador que una ficha, es esa obra:
+        # no hay nada que adivinar, y dejarla sin vincular la volvía invisible
+        # (no contaba, no se veía desde la ficha y no se podía leer desde ella).
+        if x["id"] in rep:
+            mapa[x["id"]] = [x["id"]]
+        elif x.get("traduccionDe"):
+            mapa[x["id"]] = []
+        else:
+            sin_revisar.append(x["id"])
+            continue
     fichas = mapa[x["id"]]
     # Una obra que ya tiene ficha propia (mismo id) deja de ser una incorporación nueva.
     if not fichas and x["id"] in rep:

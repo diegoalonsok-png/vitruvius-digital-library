@@ -6,34 +6,246 @@
    "titulo": "Ἀργοναυτικά · Argonautica",
    "genero": "Poesía épica helenística",
    "datacion": "c. 250 a. C.",
-   "aliases": ["Apollonius Rhodius", "Argonauticas", "Argonautica", "Las Argonáuticas"]
+   "aliases": [
+    "Apollonius Rhodius",
+    "Argonauticas",
+    "Argonautica",
+    "Las Argonáuticas"
+   ]
   },
   "isocrates-discursos": {
    "titulo": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
    "genero": "Oratoria y prosa didáctica",
    "datacion": "Siglo IV a. C.",
-   "aliases": ["Isocrates", "A Demónico", "Ad Demonicum", "Panegírico", "Panegyricus"],
+   "aliases": [
+    "Isocrates",
+    "A Demónico",
+    "Ad Demonicum",
+    "Panegírico",
+    "Panegyricus"
+   ],
    "alcance": "La edición reúne dos discursos, no el corpus completo."
   },
   "lisias-discursos": {
    "titulo": "Λόγοι · Discursos",
    "genero": "Oratoria judicial",
    "datacion": "c. 403–380 a. C.",
-   "aliases": ["Lysias", "Orationes", "Discursos de Lisias"],
+   "aliases": [
+    "Lysias",
+    "Orationes",
+    "Discursos de Lisias"
+   ],
    "alcance": "El facsímil es una antología de oradores áticos (Jebb) que incluye además a Antifonte, Andócides, Isócrates e Iseo."
   },
   "longino-sublime": {
    "titulo": "Περὶ ὕψους · De sublimitate",
    "genero": "Crítica literaria y retórica",
    "datacion": "Siglo I d. C.; autoría y datación discutidas",
-   "aliases": ["Pseudo-Longinus", "Longino", "Sobre lo sublime", "On the Sublime", "De sublimitate"]
+   "aliases": [
+    "Pseudo-Longinus",
+    "Longino",
+    "Sobre lo sublime",
+    "On the Sublime",
+    "De sublimitate"
+   ]
   },
   "teocrito-bucolicos": {
    "titulo": "Εἰδύλλια · Idilios",
    "genero": "Poesía bucólica",
    "datacion": "Primera mitad del siglo III a. C.",
-   "aliases": ["Theocritus", "Idilios", "Idylls", "Bucólicos griegos"],
+   "aliases": [
+    "Theocritus",
+    "Idilios",
+    "Idylls",
+    "Bucólicos griegos"
+   ],
    "alcance": "La edición reúne a Teócrito con Bión y Mosco."
+  },
+  "proclo-comentario-euclides": {
+   "titulo": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+   "genero": "Matemáticas y filosofía de la geometría",
+   "datacion": "Siglo V d. C.",
+   "aliases": [
+    "Proclus",
+    "Comentario al libro I de Euclides",
+    "In Euclidem"
+   ]
+  },
+  "nicomaco-armonia": {
+   "titulo": "Ἁρμονικὸν ἐγχειρίδιον · Manual de armónica",
+   "genero": "Teoría musical y numérica",
+   "datacion": "Siglo II d. C.",
+   "aliases": [
+    "Nicomachus",
+    "Enchiridion harmonices"
+   ]
+  },
+  "teon-esmirna-expositio": {
+   "titulo": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+   "genero": "Matemáticas y música en la lectura de Platón",
+   "datacion": "Siglo II d. C.",
+   "aliases": [
+    "Theon Smyrnaeus",
+    "Expositio rerum mathematicarum"
+   ]
+  },
+  "ptolomeo-harmonica": {
+   "titulo": "Ἁρμονικά · Harmonica",
+   "genero": "Teoría musical y proporción",
+   "datacion": "Siglo II d. C.",
+   "aliases": [
+    "Ptolemy Harmonics",
+    "Harmonicorum libri tres"
+   ]
+  },
+  "heron-metrica-dioptra": {
+   "titulo": "Μετρικά · Περὶ διόπτρας · Metrica y Dioptra",
+   "genero": "Metrología, agrimensura e instrumentos",
+   "datacion": "Siglo I d. C.",
+   "aliases": [
+    "Heron Metrica",
+    "Dioptra",
+    "Heronis Alexandrini opera"
+   ]
+  },
+  "heron-mechanica": {
+   "titulo": "Μηχανικά · Mechanica (transmitida en árabe)",
+   "genero": "Mecánica teórica y aplicada",
+   "datacion": "Siglo I d. C.",
+   "aliases": [
+    "Heron Mechanica",
+    "Barulkos"
+   ]
+  },
+  "paladio-opus-agriculturae": {
+   "titulo": "Opus agriculturae",
+   "genero": "Agronomía y construcción rural",
+   "datacion": "Siglo IV–V d. C.",
+   "aliases": [
+    "Palladius",
+    "De re rustica",
+    "Opus agriculturae"
+   ]
+  },
+  "festo-verborum-significatu": {
+   "titulo": "De verborum significatu",
+   "genero": "Léxico, metrología y anticuaria",
+   "datacion": "Siglo II d. C.",
+   "aliases": [
+    "Festus",
+    "Paulo Diácono",
+    "De verborum significatione"
+   ]
+  },
+  "marciano-capela-nuptiis": {
+   "titulo": "De nuptiis Philologiae et Mercurii",
+   "genero": "Enciclopedia de las siete artes",
+   "datacion": "Siglo V d. C.",
+   "aliases": [
+    "Martianus Capella",
+    "De nuptiis"
+   ]
+  },
+  "casiodoro-variae": {
+   "titulo": "Variae",
+   "genero": "Cartas oficiales, con encargos de obra y arquitectura",
+   "datacion": "Siglo VI d. C.",
+   "aliases": [
+    "Cassiodorus",
+    "Variae epistulae"
+   ]
+  },
+  "boecio-institutione-musica": {
+   "titulo": "De institutione musica",
+   "genero": "Teoría musical y proporción",
+   "datacion": "Siglo VI d. C.",
+   "aliases": [
+    "Boethius",
+    "De musica",
+    "De institutione arithmetica"
+   ]
+  },
+  "aristides-quintiliano-musica": {
+   "titulo": "Περὶ μουσικῆς · De musica",
+   "genero": "Teoría musical",
+   "datacion": "Siglo III d. C. (datación discutida)",
+   "aliases": [
+    "Aristides Quintilianus",
+    "Peri mousikes"
+   ]
+  },
+  "porfirio-vida-pitagoras": {
+   "titulo": "Πυθαγόρου βίος · Vita Pythagorae",
+   "genero": "Biografía filosófica y número",
+   "datacion": "Siglo III d. C.",
+   "aliases": [
+    "Porphyry",
+    "Vida de Pitágoras",
+    "Vita Pythagorae"
+   ]
+  },
+  "jamblico-vida-pitagorica": {
+   "titulo": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+   "genero": "Filosofía pitagórica y número",
+   "datacion": "Siglo III–IV d. C.",
+   "aliases": [
+    "Iamblichus",
+    "Vida pitagórica"
+   ]
+  },
+  "aristoteles-meteorologica": {
+   "titulo": "Μετεωρολογικά · Meteorologica",
+   "genero": "Filosofía natural",
+   "datacion": "Siglo IV a. C.",
+   "aliases": [
+    "Aristotle Meteorology",
+    "Meteorologica"
+   ]
+  },
+  "aristoteles-problemata": {
+   "titulo": "Προβλήματα · Problemata",
+   "genero": "Cuestiones naturales y técnicas",
+   "datacion": "Siglo III a. C. – I d. C.",
+   "aliases": [
+    "Problemata",
+    "Problemas"
+   ]
+  },
+  "sexto-empirico-obras": {
+   "titulo": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+   "genero": "Escepticismo y crítica de las artes",
+   "datacion": "Siglo II–III d. C.",
+   "aliases": [
+    "Sextus Empiricus",
+    "Adversus mathematicos",
+    "Pyrrhoniae hypotyposes"
+   ]
+  },
+  "historia-augusta": {
+   "titulo": "Scriptores Historiae Augustae",
+   "genero": "Biografía imperial",
+   "datacion": "Siglo IV d. C. (atribuciones discutidas)",
+   "aliases": [
+    "Historia Augusta"
+   ]
+  },
+  "nonio-marcelo-doctrina": {
+   "titulo": "De compendiosa doctrina",
+   "genero": "Léxico y citas de autores perdidos",
+   "datacion": "Siglo IV d. C.",
+   "aliases": [
+    "Nonius Marcellus",
+    "De compendiosa doctrina"
+   ]
+  },
+  "anthologia-latina": {
+   "titulo": "Anthologia Latina",
+   "genero": "Poesía latina reunida",
+   "datacion": "Compilación tardoantigua",
+   "aliases": [
+    "Anthologia Latina",
+    "Antología latina"
+   ]
   }
  }
 }

@@ -1,6 +1,6 @@
 {
  "schema": "vdl-r2-clasicos-candidatos-1",
- "descripcion": "Obras clásicas griegas y latinas que todavía no tienen PDF en la biblioteca (documents/clasicos, documents/classics). Se buscan en Internet Archive ediciones de dominio público (anteriores a 1929), con preferencia por volúmenes bilingües Loeb (original y traducción inglesa enfrentados). Cada PDF elegido debe mencionar al autor en sus primeras páginas. Tanda 2: obras ausentes del sitio, en ediciones con el texto griego o en traducciones castellanas de dominio público.",
+ "descripcion": "Obras clásicas griegas y latinas que todavía no tienen PDF en la biblioteca (documents/clasicos, documents/classics). Se buscan en Internet Archive ediciones de dominio público (anteriores a 1929), con preferencia por volúmenes bilingües Loeb (original y traducción inglesa enfrentados). Cada PDF elegido debe mencionar al autor en sus primeras páginas. Tanda 2: obras ausentes del sitio, en ediciones con el texto griego o en traducciones castellanas de dominio público. Incluye también las fichas del repertorio que todavía no tienen texto: para ellas el id del candidato es el de la ficha, de modo que la edición se vincula a la obra y no crea una entrada nueva.",
  "limites": {
   "maxMiB": 180,
   "anioMaximo": 1928
@@ -1032,6 +1032,326 @@
    "tanda": 2,
    "idioma": "spa",
    "traduccionDe": "longo-dafnis-cloe"
+  },
+  {
+   "id": "accius-fragmenta",
+   "autor": "Accio",
+   "obra": "Tragoediae (fragmenta)",
+   "lengua": "la",
+   "titulo": [
+    "tragicorum romanorum"
+   ],
+   "creador": "accius|ribbeck",
+   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+  },
+  {
+   "id": "apollodorus-poliorcetics",
+   "autor": "Apolodoro de Damasco (atribución tradicional)",
+   "obra": "Πολιορκητικά · Poliorketika",
+   "lengua": "grc",
+   "titulo": [
+    "poliorcetique des grecs"
+   ],
+   "creador": "wescher",
+   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+  },
+  {
+   "id": "athenaeus-mechanicus",
+   "autor": "Ateneo Mecánico",
+   "obra": "Περὶ μηχανημάτων · De machinis",
+   "lengua": "grc",
+   "titulo": [
+    "poliorcetique des grecs"
+   ],
+   "creador": "wescher",
+   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+  },
+  {
+   "id": "biton-kataskeuai",
+   "autor": "Bitón",
+   "obra": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+   "lengua": "grc",
+   "titulo": [
+    "poliorcetique des grecs"
+   ],
+   "creador": "wescher",
+   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+  },
+  {
+   "id": "hyginus-gromaticus",
+   "autor": "Higino Gromático",
+   "obra": "Constitutio limitum",
+   "lengua": "la",
+   "titulo": [
+    "schriften der romischen feldmesser"
+   ],
+   "creador": "lachmann|blume",
+   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra.",
+   "preferirIdentificador": "dieschriftender02lachgoog"
+  },
+  {
+   "id": "origenes",
+   "autor": "Orígenes",
+   "obra": "Περὶ ἀρχῶν · De principiis",
+   "lengua": "grc",
+   "titulo": [
+    "de principiis"
+   ],
+   "creador": "origen",
+   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+  },
+  {
+   "id": "philo-belopoeica",
+   "autor": "Filón de Bizancio",
+   "obra": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+   "lengua": "grc",
+   "titulo": [
+    "poliorcetique des grecs"
+   ],
+   "creador": "wescher",
+   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+  },
+  {
+   "id": "procopius-aedificiis",
+   "autor": "Procopio de Cesarea",
+   "obra": "Περὶ κτισμάτων",
+   "lengua": "grc",
+   "titulo": [
+    "de aedificiis"
+   ],
+   "creador": "procopius",
+   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+  },
+  {
+   "id": "ptolemy-geographia",
+   "autor": "Claudio Ptolomeo",
+   "obra": "Γεωγραφικὴ ὑφήγησις",
+   "lengua": "grc",
+   "titulo": [
+    "geographia"
+   ],
+   "creador": "ptolemaeus|ptolemy",
+   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+  },
+  {
+   "id": "proclo-comentario-euclides",
+   "autor": "Proclo",
+   "obra": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+   "lengua": "grc",
+   "titulo": [
+    "in primum euclidis"
+   ],
+   "creador": "proclus",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "nicomaco-armonia",
+   "autor": "Nicómaco de Gerasa",
+   "obra": "Ἁρμονικὸν ἐγχειρίδιον · Manual de armónica",
+   "lengua": "grc",
+   "titulo": [
+    "harmonicum enchiridion"
+   ],
+   "creador": "nicomachus",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "teon-esmirna-expositio",
+   "autor": "Teón de Esmirna",
+   "obra": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+   "lengua": "grc",
+   "titulo": [
+    "theonis smyrnaei"
+   ],
+   "creador": "theon",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "ptolomeo-harmonica",
+   "autor": "Claudio Ptolomeo",
+   "obra": "Ἁρμονικά · Harmonica",
+   "lengua": "grc",
+   "titulo": [
+    "harmonicorum"
+   ],
+   "creador": "ptolemaeus|wallis",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "heron-metrica-dioptra",
+   "autor": "Herón de Alejandría",
+   "obra": "Μετρικά · Περὶ διόπτρας · Metrica y Dioptra",
+   "lengua": "grc",
+   "titulo": [
+    "heronis alexandrini opera"
+   ],
+   "creador": "heron|schoene",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "heron-mechanica",
+   "autor": "Herón de Alejandría",
+   "obra": "Μηχανικά · Mechanica (transmitida en árabe)",
+   "lengua": "grc",
+   "titulo": [
+    "heronis alexandrini opera"
+   ],
+   "creador": "heron|nix",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "paladio-opus-agriculturae",
+   "autor": "Paladio",
+   "obra": "Opus agriculturae",
+   "lengua": "la",
+   "titulo": [
+    "palladius"
+   ],
+   "creador": "palladius",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "festo-verborum-significatu",
+   "autor": "Festo (y Verrio Flaco)",
+   "obra": "De verborum significatu",
+   "lengua": "la",
+   "titulo": [
+    "de verborum significatu"
+   ],
+   "creador": "festus",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "marciano-capela-nuptiis",
+   "autor": "Marciano Capela",
+   "obra": "De nuptiis Philologiae et Mercurii",
+   "lengua": "la",
+   "titulo": [
+    "martianus capella"
+   ],
+   "creador": "martianus capella",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "casiodoro-variae",
+   "autor": "Casiodoro",
+   "obra": "Variae",
+   "lengua": "la",
+   "titulo": [
+    "variae"
+   ],
+   "creador": "cassiodorus",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "boecio-institutione-musica",
+   "autor": "Boecio",
+   "obra": "De institutione musica",
+   "lengua": "la",
+   "titulo": [
+    "de institutione musica"
+   ],
+   "creador": "boethius",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "aristides-quintiliano-musica",
+   "autor": "Aristides Quintiliano",
+   "obra": "Περὶ μουσικῆς · De musica",
+   "lengua": "grc",
+   "titulo": [
+    "de musica"
+   ],
+   "creador": "aristides quintilianus",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "porfirio-vida-pitagoras",
+   "autor": "Porfirio",
+   "obra": "Πυθαγόρου βίος · Vita Pythagorae",
+   "lengua": "grc",
+   "titulo": [
+    "porphyrii opuscula"
+   ],
+   "creador": "porphyrius",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "jamblico-vida-pitagorica",
+   "autor": "Jámblico",
+   "obra": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+   "lengua": "grc",
+   "titulo": [
+    "de vita pythagorica"
+   ],
+   "creador": "iamblichus",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "aristoteles-meteorologica",
+   "autor": "Aristóteles",
+   "obra": "Μετεωρολογικά · Meteorologica",
+   "lengua": "grc",
+   "titulo": [
+    "meteorologica"
+   ],
+   "creador": "aristotle",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "aristoteles-problemata",
+   "autor": "Pseudo-Aristóteles",
+   "obra": "Προβλήματα · Problemata",
+   "lengua": "grc",
+   "titulo": [
+    "problemata"
+   ],
+   "creador": "aristotle",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "sexto-empirico-obras",
+   "autor": "Sexto Empírico",
+   "obra": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+   "lengua": "grc",
+   "titulo": [
+    "sextus empiricus"
+   ],
+   "creador": "sextus empiricus",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "historia-augusta",
+   "autor": "Escritores de la Historia Augusta",
+   "obra": "Scriptores Historiae Augustae",
+   "lengua": "la",
+   "titulo": [
+    "historiae augustae"
+   ],
+   "creador": "scriptores historiae augustae|peter",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "nonio-marcelo-doctrina",
+   "autor": "Nonio Marcelo",
+   "obra": "De compendiosa doctrina",
+   "lengua": "la",
+   "titulo": [
+    "compendiosa doctrina"
+   ],
+   "creador": "nonius marcellus",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "anthologia-latina",
+   "autor": "Antología latina",
+   "obra": "Anthologia Latina",
+   "lengua": "la",
+   "titulo": [
+    "anthologia latina"
+   ],
+   "creador": "riese|anthologia latina",
+   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
   }
  ]
 }

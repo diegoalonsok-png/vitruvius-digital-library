@@ -356,7 +356,11 @@ def main():
         escribir(COBERTURA, cobertura, sangria=1)
 
     print(f"Repertorio: {len(maestro['works'])} obras · datos derivados al día.")
-    sin_metadatos = [i for i in de_facsimil if i not in metadatos]
+    # El recordatorio es sólo para las fichas que creó este guion: una obra que
+    # ya tenía ficha propia trae su título y su datación del catálogo.
+    propias = {w["id"] for w in maestro["works"]
+               if str(w.get("addedBy") or "").startswith("facsímil alojado en R2")}
+    sin_metadatos = [i for i in de_facsimil if i not in metadatos and i in propias]
     if sin_metadatos:
         print("Redactar en data/r2/fichas-nuevas-metadatos.json: " + ", ".join(sin_metadatos))
 

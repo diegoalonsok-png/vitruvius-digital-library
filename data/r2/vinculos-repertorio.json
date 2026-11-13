@@ -6,11 +6,23 @@
   "fichasRepertorio": 256,
   "obrasNuevas": 0,
   "obrasTotales": 256,
-  "edicionesFacsimil": 53,
-  "fichasConFacsimil": 61,
-  "sinRevisar": 30
+  "edicionesFacsimil": 83,
+  "fichasConFacsimil": 90,
+  "sinRevisar": 0
  },
  "porObra": {
+  "antologia-griega": [
+   {
+    "r2": "antologia-griega",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/antologia-griega.pdf",
+    "edicion": "The Greek Anthology in Five Volumes, Vol 5 [only]. With an English Translation by W R Paton.",
+    "anio": 1918,
+    "traduccion": null,
+    "volumen": "5",
+    "loeb": true,
+    "alcance": null
+   }
+  ],
   "apolonio-argonauticas": [
    {
     "r2": "apolonio-argonauticas",
@@ -20,6 +32,18 @@
     "traduccion": null,
     "volumen": null,
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "aquiles-tacio-leucipa": [
+   {
+    "r2": "aquiles-tacio-leucipa",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aquiles-tacio-leucipa.pdf",
+    "edicion": "Achilles Tatius",
+    "anio": 1917,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -53,6 +77,30 @@
     "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristofanes-comedias.pdf",
     "edicion": "Aristophanes Vol Ii",
     "anio": 1924,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "aristoteles-del-cielo": [
+   {
+    "r2": "aristoteles-del-cielo",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-del-cielo.pdf",
+    "edicion": "De caelo",
+    "anio": 1922,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "aristoteles-historia-animales": [
+   {
+    "r2": "aristoteles-historia-animales",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-historia-animales.pdf",
+    "edicion": "Historia animalium",
+    "anio": 1910,
     "traduccion": null,
     "volumen": null,
     "loeb": false,
@@ -95,6 +143,30 @@
     "alcance": null
    }
   ],
+  "baquilides-poemas": [
+   {
+    "r2": "baquilides-poemas",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/baquilides-poemas.pdf",
+    "edicion": "Bacchylides : the poems and fragments",
+    "anio": 1905,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "calimaco-himnos": [
+   {
+    "r2": "calimaco-himnos",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/calimaco-himnos.pdf",
+    "edicion": "Callimachus and Lycophron",
+    "anio": 1921,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "demosthenes-de-corona": [
    {
     "r2": "demostenes-discursos",
@@ -119,6 +191,18 @@
     "alcance": null
    }
   ],
+  "epicuro-restos": [
+   {
+    "r2": "epicuro-restos",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/epicuro-restos.pdf",
+    "edicion": "Epicurus The Extant Remains Bailey Oxford 1926",
+    "anio": 1926,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "aeschylus-oresteia": [
    {
     "r2": "esquilo-tragedias",
@@ -129,6 +213,18 @@
     "volumen": null,
     "loeb": false,
     "alcance": "Trilogía de la Orestíada."
+   }
+  ],
+  "esquines-discursos": [
+   {
+    "r2": "esquines-discursos",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/esquines-discursos.pdf",
+    "edicion": "The speeches of Aeschines : against Timarchus, on the embassy, against Ctesiphon",
+    "anio": 1919,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
    }
   ],
   "strabo": [
@@ -167,6 +263,30 @@
     "alcance": null
    }
   ],
+  "filostrato-apolonio": [
+   {
+    "r2": "filostrato-apolonio",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/filostrato-apolonio.pdf",
+    "edicion": "The life of Apollonius of Tyana, the Epistles of Apollonius and the Treatise of Eusebius; with an English translation by F.C. Conybeare",
+    "anio": 1912,
+    "traduccion": null,
+    "volumen": "2",
+    "loeb": true,
+    "alcance": null
+   }
+  ],
+  "galeno-facultades-naturales": [
+   {
+    "r2": "galeno-facultades-naturales",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-facultades-naturales.pdf",
+    "edicion": "Galen On the natural faculties",
+    "anio": 1916,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "herodotus-historiae": [
    {
     "r2": "herodoto-historias",
@@ -176,6 +296,30 @@
     "traduccion": null,
     "volumen": "2",
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "hipocrates-obras": [
+   {
+    "r2": "hipocrates-obras",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/hipocrates-obras.pdf",
+    "edicion": "Hippocrates, with an English translation",
+    "anio": 1923,
+    "traduccion": null,
+    "volumen": "8",
+    "loeb": true,
+    "alcance": null
+   }
+  ],
+  "iseo-discursos": [
+   {
+    "r2": "iseo-discursos",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/iseo-discursos.pdf",
+    "edicion": "Isaeus",
+    "anio": 1927,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -197,6 +341,30 @@
     "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-anabasis.pdf",
     "edicion": "The Anabasis of Xenophon : with English notes, critical and explanatory ...",
     "anio": 1876,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "jenofonte-ciropedia": [
+   {
+    "r2": "jenofonte-ciropedia",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-ciropedia.pdf",
+    "edicion": "Cyropaedia, with an English translation by Walter Miller",
+    "anio": 1914,
+    "traduccion": null,
+    "volumen": "1",
+    "loeb": true,
+    "alcance": null
+   }
+  ],
+  "jenofonte-economico": [
+   {
+    "r2": "jenofonte-economico",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-economico.pdf",
+    "edicion": "The Oeconomicus of Xenophon",
+    "anio": 1895,
     "traduccion": null,
     "volumen": null,
     "loeb": false,
@@ -227,6 +395,28 @@
     "alcance": "Antología con texto griego y comentario."
    }
   ],
+  "longo-dafnis-cloe": [
+   {
+    "r2": "longo-dafnis-cloe",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longo-dafnis-cloe.pdf",
+    "edicion": "Daphnis & Chloe. With the English translation of George Thornley, rev. and augm. by J.M. Edmonds. The love romances of Parthenius and other fragments. With an English translation by S. Gaselee",
+    "anio": 1916,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": true,
+    "alcance": null
+   },
+   {
+    "r2": "longo-dafnis-es",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longo-dafnis-es.pdf",
+    "edicion": "Dafnis y Cloe : o Las pastorales de Longo",
+    "anio": 1927,
+    "traduccion": "grc",
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "lucian-verae-historiae": [
    {
     "r2": "luciano-obras",
@@ -236,6 +426,18 @@
     "traduccion": null,
     "volumen": null,
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "menandro-comedias": [
+   {
+    "r2": "menandro-comedias",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/menandro-comedias.pdf",
+    "edicion": "Menander, the principal fragments",
+    "anio": 1921,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -261,6 +463,18 @@
     "volumen": "c.1",
     "loeb": false,
     "alcance": null
+   }
+  ],
+  "platon-cratilo-parmenides": [
+   {
+    "r2": "platon-cratilo-parmenides",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-cratilo-parmenides.pdf",
+    "edicion": "The Cratylus, Phaedo, Parmenides, and Timaeus ...",
+    "anio": 1793,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": "Traducción inglesa de T. Taylor (1793), sin texto griego."
    }
   ],
   "plato-phaedo": [
@@ -299,6 +513,18 @@
     "alcance": "Traducción inglesa sin texto griego."
    }
   ],
+  "platon-protagoras": [
+   {
+    "r2": "platon-protagoras",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-protagoras.pdf",
+    "edicion": "The Protagoras of Plato",
+    "anio": 1891,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "plato-laws": [
    {
     "r2": "platon-leyes",
@@ -308,6 +534,18 @@
     "traduccion": null,
     "volumen": "Volume II, Books VII-XII",
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "platon-teeteto-sofista": [
+   {
+    "r2": "platon-teeteto-sofista",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-teeteto-sofista.pdf",
+    "edicion": "The Theaetetus of Plato : with translation and notes",
+    "anio": 1881,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -323,6 +561,18 @@
     "alcance": null
    }
   ],
+  "plotino-eneadas": [
+   {
+    "r2": "plotino-eneadas",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plotino-eneadas.pdf",
+    "edicion": "Enneades : Praemisso Porphyrii De vita Plotini deque ordine librorum eius libello",
+    "anio": 1883,
+    "traduccion": null,
+    "volumen": "1",
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "plutarch-lives": [
    {
     "r2": "plutarco-vidas",
@@ -332,6 +582,18 @@
     "traduccion": null,
     "volumen": "7",
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "lyra-graeca": [
+   {
+    "r2": "lyra-graeca",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lyra-graeca.pdf",
+    "edicion": "Lyra Graeca; being the remains of all the Greek lyrik poets from Eumelus to Timotheus excepting Pindar",
+    "anio": 1922,
+    "traduccion": null,
+    "volumen": "3",
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -356,6 +618,18 @@
     "traduccion": null,
     "volumen": null,
     "loeb": false,
+    "alcance": null
+   }
+  ],
+  "quinto-esmirna-posthomericas": [
+   {
+    "r2": "quinto-esmirna-posthomericas",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/quinto-esmirna-posthomericas.pdf",
+    "edicion": "The fall of Troy; with an English translation by Arthur S. Way",
+    "anio": 1913,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": true,
     "alcance": null
    }
   ],
@@ -443,6 +717,18 @@
     "alcance": null
    }
   ],
+  "amiano-marcelino-es": [
+   {
+    "r2": "amiano-marcelino-es",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/amiano-marcelino-es.pdf",
+    "edicion": "Historia del Imperio Romano : desde el año 350 al 378 de la Era Cristiana T.2",
+    "anio": 1896,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": "Tomo II de la traducción castellana (Biblioteca Clásica, 1896)."
+   }
+  ],
   "apuleius-metamorphoses": [
    {
     "r2": "apuleyo-metamorfosis",
@@ -464,6 +750,18 @@
     "traduccion": null,
     "volumen": "2",
     "loeb": false,
+    "alcance": null
+   }
+  ],
+  "ausonio-obras": [
+   {
+    "r2": "ausonio-obras",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ausonio-obras.pdf",
+    "edicion": "Ausonius, with an English translation",
+    "anio": 1919,
+    "traduccion": null,
+    "volumen": "1",
+    "loeb": true,
     "alcance": null
    }
   ],
@@ -527,6 +825,18 @@
     "alcance": null
    }
   ],
+  "claudiano-poemas": [
+   {
+    "r2": "claudiano-poemas",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/claudiano-poemas.pdf",
+    "edicion": "Claudian, with an English translation by Maurice Platnauer",
+    "anio": 1922,
+    "traduccion": null,
+    "volumen": "2",
+    "loeb": true,
+    "alcance": null
+   }
+  ],
   "columella": [
    {
     "r2": "columela-de-re-rustica",
@@ -575,6 +885,18 @@
     "alcance": null
    }
   ],
+  "higino-fabulas": [
+   {
+    "r2": "higino-fabulas",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/higino-fabulas.pdf",
+    "edicion": "Hygini Fabulae",
+    "anio": 1872,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "juvenal-saturae": [
    {
     "r2": "juvenal-persio-satiras",
@@ -599,6 +921,18 @@
     "alcance": null
    }
   ],
+  "manilio-astronomica": [
+   {
+    "r2": "manilio-astronomica",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/manilio-astronomica.pdf",
+    "edicion": "Astronomica. Hrsg. von Theodorus Breiter",
+    "anio": 1907,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "martial": [
    {
     "r2": "marcial-epigramas",
@@ -608,6 +942,18 @@
     "traduccion": null,
     "volumen": "2",
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "minucio-felix-octavio": [
+   {
+    "r2": "minucio-felix-octavio",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/minucio-felix-octavio.pdf",
+    "edicion": "Octavius. Par J.P. Waltzing. [Text in Latin, commentary in French.]",
+    "anio": 1909,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -731,6 +1077,18 @@
     "alcance": null
    }
   ],
+  "valerio-flaco-argonautica": [
+   {
+    "r2": "valerio-flaco-argonautica",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/valerio-flaco-argonautica.pdf",
+    "edicion": "The Argonautica, Book 1;",
+    "anio": 1916,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": "Solo el libro I."
+   }
+  ],
   "varro-rustica": [
    {
     "r2": "varron-de-re-rustica",
@@ -745,38 +1103,7 @@
   ]
  },
  "obrasNuevas": [],
- "sinRevisar": [
-  "antologia-griega",
-  "aquiles-tacio-leucipa",
-  "aristoteles-del-cielo",
-  "aristoteles-historia-animales",
-  "baquilides-poemas",
-  "calimaco-himnos",
-  "epicuro-restos",
-  "esquines-discursos",
-  "filostrato-apolonio",
-  "galeno-facultades-naturales",
-  "hipocrates-obras",
-  "iseo-discursos",
-  "jenofonte-ciropedia",
-  "jenofonte-economico",
-  "longo-dafnis-cloe",
-  "longo-dafnis-es",
-  "menandro-comedias",
-  "platon-cratilo-parmenides",
-  "platon-protagoras",
-  "platon-teeteto-sofista",
-  "plotino-eneadas",
-  "lyra-graeca",
-  "quinto-esmirna-posthomericas",
-  "amiano-marcelino-es",
-  "ausonio-obras",
-  "claudiano-poemas",
-  "higino-fabulas",
-  "manilio-astronomica",
-  "minucio-felix-octavio",
-  "valerio-flaco-argonautica"
- ],
+ "sinRevisar": [],
  "mapa": {
   "herodoto-historias": [
    "herodotus-historiae"
@@ -934,6 +1261,94 @@
   "teocrito-bucolicos": [],
   "longino-sublime": [],
   "isocrates-discursos": [],
-  "lisias-discursos": []
+  "lisias-discursos": [],
+  "antologia-griega": [
+   "antologia-griega"
+  ],
+  "aquiles-tacio-leucipa": [
+   "aquiles-tacio-leucipa"
+  ],
+  "aristoteles-del-cielo": [
+   "aristoteles-del-cielo"
+  ],
+  "aristoteles-historia-animales": [
+   "aristoteles-historia-animales"
+  ],
+  "baquilides-poemas": [
+   "baquilides-poemas"
+  ],
+  "calimaco-himnos": [
+   "calimaco-himnos"
+  ],
+  "epicuro-restos": [
+   "epicuro-restos"
+  ],
+  "esquines-discursos": [
+   "esquines-discursos"
+  ],
+  "filostrato-apolonio": [
+   "filostrato-apolonio"
+  ],
+  "galeno-facultades-naturales": [
+   "galeno-facultades-naturales"
+  ],
+  "hipocrates-obras": [
+   "hipocrates-obras"
+  ],
+  "iseo-discursos": [
+   "iseo-discursos"
+  ],
+  "jenofonte-ciropedia": [
+   "jenofonte-ciropedia"
+  ],
+  "jenofonte-economico": [
+   "jenofonte-economico"
+  ],
+  "longo-dafnis-cloe": [
+   "longo-dafnis-cloe"
+  ],
+  "longo-dafnis-es": [],
+  "menandro-comedias": [
+   "menandro-comedias"
+  ],
+  "platon-cratilo-parmenides": [
+   "platon-cratilo-parmenides"
+  ],
+  "platon-protagoras": [
+   "platon-protagoras"
+  ],
+  "platon-teeteto-sofista": [
+   "platon-teeteto-sofista"
+  ],
+  "plotino-eneadas": [
+   "plotino-eneadas"
+  ],
+  "lyra-graeca": [
+   "lyra-graeca"
+  ],
+  "quinto-esmirna-posthomericas": [
+   "quinto-esmirna-posthomericas"
+  ],
+  "amiano-marcelino-es": [
+   "amiano-marcelino-es"
+  ],
+  "ausonio-obras": [
+   "ausonio-obras"
+  ],
+  "claudiano-poemas": [
+   "claudiano-poemas"
+  ],
+  "higino-fabulas": [
+   "higino-fabulas"
+  ],
+  "manilio-astronomica": [
+   "manilio-astronomica"
+  ],
+  "minucio-felix-octavio": [
+   "minucio-felix-octavio"
+  ],
+  "valerio-flaco-argonautica": [
+   "valerio-flaco-argonautica"
+  ]
  }
 }
