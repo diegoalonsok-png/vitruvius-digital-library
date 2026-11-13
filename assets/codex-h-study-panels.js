@@ -169,8 +169,9 @@
   try{
    await loadData();
    if(ticket!==serial||currentMode==="spread")return;
-   renderText(reading);
-   status.textContent=reading?"Folio "+reading.folio+" · correspondencia documentada o ausencia declarada":"Sin folio visible";
+   const currentLeaf=side==="left"?leaf("left"):leaf("right");
+   renderText(currentLeaf);
+   status.textContent=currentLeaf?"Folio "+currentLeaf.folio+" · correspondencia documentada o ausencia declarada":"Sin folio visible";
   }catch(err){
    if(ticket!==serial)return;
    latin.replaceChildren();translation.replaceChildren();
@@ -191,6 +192,11 @@
   const el=$(id);if(!el)continue;
   const observer=new MutationObserver(()=>{if(currentMode!=="spread")draw()});
   observer.observe(el,{childList:true,characterData:true,subtree:true});
+ }
+ for(const id of ["left-image","right-image"]){
+  const img=$(id);if(!img)continue;
+  const observer=new MutationObserver(()=>{if(currentMode!=="spread")draw()});
+  observer.observe(img,{attributes:true,attributeFilter:["hidden","src"]});
  }
  const initial=new URLSearchParams(location.search).get("study");
  if(initial==="parallel"||initial==="triple")setMode(initial,false);
