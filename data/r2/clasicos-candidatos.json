@@ -7,6 +7,138 @@
   },
   "obras": [
     {
+      "id": "isidoro-etymologiae",
+      "autor": "Isidoro de Sevilla",
+      "obra": "Etymologiae sive Origines",
+      "creador": "isidore of seville|isidorus hispalensis|isidoro de sevilla",
+      "titulo": [
+        "etymologiarum"
+      ],
+      "lengua": "la",
+      "coleccion": "Antigüedad tardía y Edad Media"
+    },
+    {
+      "id": "isidoro-de-natura-rerum",
+      "autor": "Isidoro de Sevilla",
+      "obra": "De natura rerum",
+      "creador": "isidorus|isidore",
+      "titulo": [
+        "de natura rerum"
+      ],
+      "lengua": "la",
+      "coleccion": "Antigüedad tardía y Edad Media"
+    },
+    {
+      "id": "petrarca-africa",
+      "autor": "Francesco Petrarca",
+      "obra": "Africa",
+      "creador": "petrarca|petrarch",
+      "titulo": [
+        "africa"
+      ],
+      "lengua": "la",
+      "coleccion": "Humanismo temprano"
+    },
+    {
+      "id": "petrarca-de-viris-illustribus",
+      "autor": "Francesco Petrarca",
+      "obra": "De viris illustribus",
+      "creador": "petrarca|petrarch",
+      "titulo": [
+        "de viris illustribus"
+      ],
+      "lengua": "la",
+      "coleccion": "Humanismo temprano"
+    },
+    {
+      "id": "petrarca-secretum",
+      "autor": "Francesco Petrarca",
+      "obra": "Secretum meum",
+      "creador": "petrarca|petrarch",
+      "titulo": [
+        "secretum"
+      ],
+      "lengua": "la",
+      "coleccion": "Humanismo temprano"
+    },
+    {
+      "id": "taccola-de-machinis",
+      "autor": "Mariano di Jacopo Taccola",
+      "obra": "De machinis",
+      "creador": "taccola|mariano di jacopo",
+      "titulo": [
+        "de machinis"
+      ],
+      "lengua": "la",
+      "coleccion": "Ingeniería del primer Renacimiento"
+    },
+    {
+      "id": "taccola-de-ingeneis",
+      "autor": "Mariano di Jacopo Taccola",
+      "obra": "De ingeneis",
+      "creador": "taccola|mariano di jacopo",
+      "titulo": [
+        "de ingeneis"
+      ],
+      "lengua": "la",
+      "coleccion": "Ingeniería del primer Renacimiento"
+    },
+    {
+      "id": "beda-de-temporum-ratione",
+      "autor": "Beda el Venerable",
+      "obra": "De temporum ratione",
+      "creador": "bede|beda venerabilis",
+      "titulo": [
+        "de temporum ratione"
+      ],
+      "lengua": "la",
+      "coleccion": "Edad Media latina"
+    },
+    {
+      "id": "rabano-de-universo",
+      "autor": "Rábano Mauro",
+      "obra": "De universo sive De rerum naturis",
+      "creador": "rabanus maurus|hrabanus maurus",
+      "titulo": [
+        "de universo"
+      ],
+      "lengua": "la",
+      "coleccion": "Edad Media latina"
+    },
+    {
+      "id": "sacrobosco-de-sphaera",
+      "autor": "Johannes de Sacrobosco",
+      "obra": "De sphaera mundi",
+      "creador": "sacrobosco|sacrobosco johannes",
+      "titulo": [
+        "sphaera"
+      ],
+      "lengua": "la",
+      "coleccion": "Ciencia medieval"
+    },
+    {
+      "id": "nicolas-cusa-docta-ignorantia",
+      "autor": "Nicolás de Cusa",
+      "obra": "De docta ignorantia",
+      "creador": "nicolaus cusanus|nicholas of cusa",
+      "titulo": [
+        "de docta ignorantia"
+      ],
+      "lengua": "la",
+      "coleccion": "Humanismo temprano"
+    },
+    {
+      "id": "valturio-de-re-militari",
+      "autor": "Roberto Valturio",
+      "obra": "De re militari",
+      "creador": "valturio|valturius",
+      "titulo": [
+        "de re militari"
+      ],
+      "lengua": "la",
+      "coleccion": "Ingeniería del primer Renacimiento"
+    },
+    {
       "id": "herodoto-historias",
       "autor": "Heródoto",
       "obra": "Historias",
@@ -1635,128 +1767,7 @@
       "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (alberti-de-re-aedificatoria); cuelga de su ficha y no cuenta como obra nueva."
     },
     {
-      "id": "isidoro-etymologiae",
-      "autor": "Isidoro de Sevilla",
-      "obra": "Etymologiae sive Origines",
-      "creador": "isidore of seville|isidorus hispalensis|isidoro de sevilla",
-      "titulo": [
-        "etymologiarum"
-      ],
-      "lengua": "la",
-      "coleccion": "Antigüedad tardía y Edad Media"
-    },
-    {
-      "id": "isidoro-de-natura-rerum",
-      "autor": "Isidoro de Sevilla",
-      "obra": "De natura rerum",
-      "creador": "isidorus|isidore",
-      "titulo": [
-        "de natura rerum"
-      ],
-      "lengua": "la",
-      "coleccion": "Antigüedad tardía y Edad Media"
-    },
-    {
-      "id": "petrarca-africa",
-      "autor": "Francesco Petrarca",
-      "obra": "Africa",
-      "creador": "petrarca|petrarch",
-      "titulo": [
-        "africa"
-      ],
-      "lengua": "la",
-      "coleccion": "Humanismo temprano"
-    },
-    {
-      "id": "petrarca-de-viris-illustribus",
-      "autor": "Francesco Petrarca",
-      "obra": "De viris illustribus",
-      "creador": "petrarca|petrarch",
-      "titulo": [
-        "de viris illustribus"
-      ],
-      "lengua": "la",
-      "coleccion": "Humanismo temprano"
-    },
-    {
-      "id": "petrarca-secretum",
-      "autor": "Francesco Petrarca",
-      "obra": "Secretum meum",
-      "creador": "petrarca|petrarch",
-      "titulo": [
-        "secretum"
-      ],
-      "lengua": "la",
-      "coleccion": "Humanismo temprano"
-    },
-    {
-      "id": "taccola-de-machinis",
-      "autor": "Mariano di Jacopo Taccola",
-      "obra": "De machinis",
-      "creador": "taccola|mariano di jacopo",
-      "titulo": [
-        "de machinis"
-      ],
-      "lengua": "la",
-      "coleccion": "Ingeniería del primer Renacimiento"
-    },
-    {
-      "id": "taccola-de-ingeneis",
-      "autor": "Mariano di Jacopo Taccola",
-      "obra": "De ingeneis",
-      "creador": "taccola|mariano di jacopo",
-      "titulo": [
-        "de ingeneis"
-      ],
-      "lengua": "la",
-      "coleccion": "Ingeniería del primer Renacimiento"
-    },
-    {
-      "id": "beda-de-temporum-ratione",
-      "autor": "Beda el Venerable",
-      "obra": "De temporum ratione",
-      "creador": "bede|beda venerabilis",
-      "titulo": [
-        "de temporum ratione"
-      ],
-      "lengua": "la",
-      "coleccion": "Edad Media latina"
-    },
-    {
-      "id": "rabano-de-universo",
-      "autor": "Rábano Mauro",
-      "obra": "De universo sive De rerum naturis",
-      "creador": "rabanus maurus|hrabanus maurus",
-      "titulo": [
-        "de universo"
-      ],
-      "lengua": "la",
-      "coleccion": "Edad Media latina"
-    },
-    {
-      "id": "sacrobosco-de-sphaera",
-      "autor": "Johannes de Sacrobosco",
-      "obra": "De sphaera mundi",
-      "creador": "sacrobosco|sacrobosco johannes",
-      "titulo": [
-        "sphaera"
-      ],
-      "lengua": "la",
-      "coleccion": "Ciencia medieval"
-    },
-    {
-      "id": "nicolas-cusa-docta-ignorantia",
-      "autor": "Nicolás de Cusa",
-      "obra": "De docta ignorantia",
-      "creador": "nicolaus cusanus|nicholas of cusa",
-      "titulo": [
-        "de docta ignorantia"
-      ],
-      "lengua": "la",
-      "coleccion": "Humanismo temprano"
-    },
-    {
-      "id": "l-valturio",
+      "id": "valturio-de-re-militari",
       "autor": "Roberto Valturio",
       "obra": "De re militari",
       "creador": "valturio|valturius",
