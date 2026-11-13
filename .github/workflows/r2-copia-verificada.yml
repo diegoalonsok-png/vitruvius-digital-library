@@ -1,0 +1,63 @@
+name: R2 — copia verificada de la biblioteca
+
+# Copia (nunca borra ni mueve) imágenes y PDF de documents/ e images/ al bucket
+# R2 «vitruvius-bibliotheca», servido en https://libros.vitruvius-digital-library.org.
+# Cada archivo subido se descarga desde el dominio público y se compara su SHA-256
+# con el original del repositorio. Los originales siguen en el repositorio y en
+# GitHub Pages: este flujo no modifica el sitio.
+
+on:
+  workflow_dispatch:
+    inputs:
+      verificar_todo:
+        description: "Descargar y comparar TODA la colección (no solo lo subido)"
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths:
+      - "documents/**"
+      - "images/**"
+      - "scripts/r2-copiar.py"
+      - ".github/workflows/r2-copia-verificada.yml"
+
+concurrency:
+  group: r2-copia
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  copiar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet "boto3>=1.36"
+      - name: Copiar y verificar
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          if [ -z "$R2_ACCESS_KEY_ID" ] || [ -z "$R2_SECRET_ACCESS_KEY" ]; then
+            echo "Faltan los secretos R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY"; exit 1
+          fi
+          ARG=""
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.verificar_todo }}" = "true" ]; then ARG="--verificar-todo"; fi
+          python scripts/r2-copiar.py $ARG --informe r2-informe.json --manifiesto /tmp/manifiesto-r2.json
+          python - <<'PY'
+          import json,sys
+          a=json.load(open("data/r2/manifiesto-r2.json"))["items"]; b=json.load(open("/tmp/manifiesto-r2.json"))["items"]
+          if a!=b: print("AVISO: data/r2/manifiesto-r2.json no coincide con los archivos actuales (regenerar con --solo-manifiesto)")
+          PY
+      - name: Informe
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r2-informe
+          path: r2-informe.json
+          if-no-files-found: ignore
