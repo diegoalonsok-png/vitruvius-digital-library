@@ -1,0 +1,52 @@
+name: Scholarly image ruler and folio viewer regression
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'assets/academic-image-ruler.js'
+      - 'assets/obras-notables-visor.js'
+      - 'scripts/test-academic-image-ruler.mjs'
+      - 'scripts/test-obras-notables-visor.mjs'
+      - 'obras-notables.html'
+      - 'codex-h-doble-folio.html'
+      - 'cesariano-1521.html'
+      - 'giocondo-1511.html'
+      - 'barbaro-1567.html'
+      - 'perrault-1673.html'
+      - 'taccola-de-machinis.html'
+      - '.github/workflows/scholarly-image-ruler.yml'
+  pull_request:
+    paths:
+      - 'assets/academic-image-ruler.js'
+      - 'assets/obras-notables-visor.js'
+      - 'scripts/test-academic-image-ruler.mjs'
+      - 'scripts/test-obras-notables-visor.mjs'
+      - 'obras-notables.html'
+      - 'codex-h-doble-folio.html'
+      - 'cesariano-1521.html'
+      - 'giocondo-1511.html'
+      - 'barbaro-1567.html'
+      - 'perrault-1673.html'
+      - 'taccola-de-machinis.html'
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ruler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test dependencies
+        run: npm install --no-save --no-audit --no-fund jsdom@31
+      - name: Static syntax and folio/ruler regression
+        run: |
+          node --check assets/academic-image-ruler.js
+          node --check assets/obras-notables-visor.js
+          node scripts/test-academic-image-ruler.mjs
+          node scripts/test-obras-notables-visor.mjs
