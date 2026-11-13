@@ -140,12 +140,13 @@ function markVisualCurrent(){
 }
 
 function renderFolioGrid(){
- // One folio catalogue only: the revised 1684 edition.
- 
+ // Both documented editions have a complete IIIF image index.
+ // The 12 thumbnails are only a browsing batch, never a limit to the book.
  const grid=$("pr-folio-grid");
- $("pr-folios").hidden=year!=="1684";
+ $("pr-folios").hidden=!pages.length;
+ $("pr-folios-title").textContent="Perrault "+year+" · catálogo completo de "+pages.length+" imágenes";
  grid.replaceChildren();
- if(year!=="1684")return;
+ if(!pages.length)return;
  const frag=document.createDocumentFragment();
  for(let i=0;i<pages.length;i++){
   const b=document.createElement("button");
@@ -305,15 +306,12 @@ async function load(){
     if(saved.source!==copy.manifest||!Array.isArray(saved.pages)||saved.pages.length!==370||
       !saved.pages.every(p=>/^\d+$/.test(String(p.id))&&validHttps(p.fallback)))
       throw Error("el índice alternativo no pasó validación");
-    pages=saved.pages.map(p=>({
+    const folios=saved.pages.map((p,i)=>({
      url:"https://www.e-rara.ch/i3f/v20/"+p.id+"/full/1100,/0/default.jpg",
      backup:p.fallback,
-     label:"Imagen IIIF "+p.folio+" · referencia PDF provisional "+p.page
+     label:"Imagen IIIF "+(i+1)+" · etiqueta "+p.folio
     }));
-    $("pr-number").max=String(pages.length);$("pr-number").disabled=false;
-    $("pr-next").disabled=false;$("pr-find").disabled=false;
-    const number=Number(requested.get("image"))||1;
-    show(Math.max(0,Math.min(pages.length-1,number-1)));
+    activatePages(folios);
     status.textContent="Índice IIIF de contingencia (370 imágenes verificadas). La fuente institucional no respondió; se conservan el enlace y la atribución.";
     return;
    }catch(localErr){
