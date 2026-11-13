@@ -101,7 +101,7 @@ check("a loaded folio automatically fits the existing reading area",()=>{
  img.dispatchEvent(new w.Event("load"));
  assert.ok(parseFloat(img.style.width) <= stage.clientWidth,"folio too wide for reader");
  assert.ok(parseFloat(img.style.height) <= stage.clientHeight,"folio too tall for reader");
- assert.match(img.style.transform,/scale\\(1\\)/);
+ assert.match(img.style.transform,/scale\(1\)/);
 });
 check("el zoom escala la imagen",()=>{
  const antes=$("imagen").style.transform;
