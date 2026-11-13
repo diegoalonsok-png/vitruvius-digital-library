@@ -65,13 +65,15 @@ function workVersions(id,data){
    (sourceLanguageLabels[e.language]||e.language)
  }));
  // Only offer two viewers when there really are two hosted text editions.
- const pair=originals[0]&&translations[0]?{
-  // Vitruvius editions use the dedicated two-column Latin/translation reader.
-  url:id==="vitruvius"?detailLink(translations[0]):
+ const pair=originals[0]?{
+  // Prefer a hosted editorial translation; when none exists, retain the
+  // source and offer a clearly marked, opt-in machine translation per locus.
+  url:id==="vitruvius"&&translations[0]?detailLink(translations[0]):
    "classics-parallel-reader.html?work="+encodeURIComponent(id)+
    "&left="+encodeURIComponent(originals[0].language)+
-   "&right="+encodeURIComponent(translations[0].language),
-  label:"Leer original y traducción en dos visores"
+   "&right="+encodeURIComponent(translations[0]?.language||"auto-es"),
+  label:translations[0]?"Leer original y traducción en dos visores":
+   "Leer original y solicitar traducción automática orientativa"
  }:null;
  return {links,pair,translationHosted:!!translations.length};
 }
@@ -148,8 +150,6 @@ function paint(a,data){
      together.href=rec.versions.pair.url;
      together.className="tally-parallel";
      together.textContent=rec.versions.pair.label;versions.append(together);
-    }else if(!rec.versions.translationHosted){
-     const note=document.createElement("small");note.textContent="Traducción: no alojada en el sitio";versions.append(note);
     }
     li.append(versions);
    }else if(rec.url){
