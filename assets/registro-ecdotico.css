@@ -95,3 +95,27 @@ html[data-theme=light] .re-chip.t-nota{color:#4f4b45}html[data-theme=light] .re-
 html[data-theme=dark],html[data-theme=dark] body{background:var(--lx-bg,#0e0f11)!important;color:var(--re-ink)}
 html[data-theme=dark] .re-buscar input,html[data-theme=dark] .re-filtros select{background:#141518!important;color:#e6e3dd!important;border-color:#3a3c41!important}
 html[data-theme=dark] .site-bar,html[data-theme=dark] .lx-nav{background:transparent!important}
+
+/* Identificación bibliográfica completa de la fuente editorial de cada registro.
+   El testimonio manuscrito se describe por separado y nunca hereda el ISBN/DOI de V514. */
+.re-ficha{margin-top:16px;padding:16px 18px 17px;border:1px solid var(--re-line);border-left:3px solid var(--re-gold);border-radius:7px;background:var(--re-panel2);color:var(--re-ink)}
+.re-ficha-top{display:flex;gap:8px 17px;justify-content:space-between;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+.re-ficha-top strong{font:700 10px/1.5 system-ui,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--re-soft)}
+.re-ficha-version{font:600 11px/1.5 system-ui,sans-serif;color:var(--re-gold)}
+.re-ficha-titulo{margin:3px 0 14px;font:400 clamp(16px,2vw,19px)/1.43 Georgia,"Times New Roman",serif;color:var(--re-title)}
+.re-ficha-datos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px 20px;margin:0}
+.re-ficha-datos>div{min-width:0;overflow-wrap:anywhere}
+.re-ficha-datos dt{margin:0 0 3px;font:700 10.5px/1.4 system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--re-soft)}
+.re-ficha-datos dd{margin:0;font:13px/1.56 system-ui,sans-serif;color:var(--re-ink)}
+.re-ficha-datos dd strong{font-weight:650;color:var(--re-title)}
+.re-ficha-cautela{display:block;margin-top:3px;font:11px/1.5 system-ui,sans-serif;color:var(--re-soft)}
+.re-ficha-datos a,.re-ficha-links a{color:var(--re-gold);text-underline-offset:3px}
+.re-ficha-datos a{text-decoration:underline}
+.re-ficha-links{display:flex;flex-wrap:wrap;gap:7px 20px;margin:15px 0 0;font:12px/1.55 system-ui,sans-serif}
+.re-ficha-links a{text-decoration:underline}
+.re-ficha-nota{margin:15px 0 9px;font:11.5px/1.65 system-ui,sans-serif;color:var(--re-soft)}
+.re-ficha-copiar{padding:7px 12px;border:1px solid var(--re-line);border-radius:6px;background:transparent;color:var(--re-ink);font:600 11px/1.4 system-ui,sans-serif;cursor:pointer}
+.re-ficha-copiar:hover{border-color:var(--re-gold);color:var(--re-title)}
+.re-ficha :is(a,button):focus-visible{outline:3px solid var(--re-gold);outline-offset:3px}
+@media(max-width:680px){.re-ficha{padding:15px 12px}.re-ficha-datos{grid-template-columns:1fr;gap:10px}.re-ficha-titulo{font-size:17px}}
+@media print{.re-ficha{break-inside:avoid}.re-ficha-copiar{display:none}}
