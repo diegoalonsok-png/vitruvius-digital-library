@@ -6,6 +6,7 @@ import {readFileSync,existsSync} from "node:fs";
 import {resolve,dirname} from "node:path";
 import {fileURLToPath} from "node:url";
 import vm from "node:vm";
+const manifiestoR2=existsSync(resolve(dirname(new URL(import.meta.url).pathname),"../data/r2/corpus-manifest.json"))?JSON.parse(readFileSync(resolve(dirname(new URL(import.meta.url).pathname),"../data/r2/corpus-manifest.json"),"utf8")).obras:[];
 const root=resolve(dirname(fileURLToPath(import.meta.url)),"..");
 const read=p=>readFileSync(resolve(root,p),"utf8");
 const json=p=>JSON.parse(read(p));
@@ -39,8 +40,17 @@ for(const entry of registry.entries){
  assert(listed.has(entry.workId),"Index references unknown work "+entry.workId);
  assert(languages.has(entry.language),"Unrecognized language "+entry.language);
  assert(typeof entry.path==="string"&&!entry.path.startsWith("/")&&!entry.path.includes(".."),"Unsafe corpus path");
- assert(existsSync(resolve(root,entry.path)),"Missing indexed text "+entry.path);
- if(entry.format==="json-passages"){
+ if(/^https:/.test(entry.path))
+  assert(/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json$/.test(entry.path),"Ruta remota inesperada "+entry.path);
+ else assert(existsSync(resolve(root,entry.path)),"Missing indexed text "+entry.path);
+ if(entry.format==="json-passages"&&/^https:/.test(entry.path)){
+  /* Texto alojado en R2: el repositorio guarda el manifiesto, no el texto. */
+  const ficha=manifiestoR2.find(o=>entry.path.endsWith(o.archivo));
+  assert(ficha,"Texto en R2 sin constancia en el manifiesto: "+entry.path);
+  assert.equal(ficha.workId,entry.workId,"Work ID differs: "+entry.path);
+  assert.equal(ficha.language,entry.language,"Wrong translation language: "+entry.path);
+  assert(ficha.pasajes>0,"Empty indexed corpus: "+entry.path);
+ }else if(entry.format==="json-passages"){
   const canonical=/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(entry.path);
   const shared=isSharedLatin(entry.workId,entry.language,entry.path,entry.sourceWorkId);
   assert(canonical||shared,"Unexpected corpus pathname or unverified shared source: "+entry.path);

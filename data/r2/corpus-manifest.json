@@ -1,0 +1,578 @@
+{
+ "schema": "vdl-corpus-r2-1",
+ "base": "https://libros.vitruvius-digital-library.org/corpus/",
+ "obras": [
+  {
+   "archivo": "amiano-marcelino-es-la.json",
+   "workId": "amiano-marcelino-es",
+   "language": "la",
+   "title": "Res gestae",
+   "pasajes": 2883,
+   "caracteres": 842958,
+   "sha256": "7e2e8e1fbe21411f551bdf41c812f455b2771f1359c52c8a88af50ef5fdbe00a",
+   "fuentes": [
+    "urn:cts:latinLit:stoa0023.stoa001"
+   ]
+  },
+  {
+   "archivo": "antologia-griega-grc.json",
+   "workId": "antologia-griega",
+   "language": "grc",
+   "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
+   "pasajes": 835,
+   "caracteres": 169627,
+   "sha256": "1afb5efd413feea0ca8558cb01a9ea466cd067e27ae0fe43e3cd6c2cd8260777",
+   "fuentes": [
+    "urn:cts:greekLit:tlg7000.tlg001"
+   ]
+  },
+  {
+   "archivo": "apolonio-argonauticas-grc.json",
+   "workId": "apolonio-argonauticas",
+   "language": "grc",
+   "title": "Ἀργοναυτικά · Argonautica",
+   "pasajes": 585,
+   "caracteres": 253600,
+   "sha256": "26ba26f2b8e0fb16106a1aa51a12c0459479e4ee5ad8399f6434bdfa86d44e08",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0001.tlg001"
+   ]
+  },
+  {
+   "archivo": "aquiles-tacio-leucipa-grc.json",
+   "workId": "aquiles-tacio-leucipa",
+   "language": "grc",
+   "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
+   "pasajes": 1035,
+   "caracteres": 256314,
+   "sha256": "fae5e2ae389e4d42f2201bbefd0d3feed5cd026faba7986a079c5f9fdd0ebd27",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0532.tlg001"
+   ]
+  },
+  {
+   "archivo": "aristoteles-del-cielo-grc.json",
+   "workId": "aristoteles-del-cielo",
+   "language": "grc",
+   "title": "Περὶ οὐρανοῦ · De caelo",
+   "pasajes": 39,
+   "caracteres": 154968,
+   "sha256": "7b493fc32ee4cd814c128fc7f3d40506e11dd2e2e640400abcddc6e19df5adc3",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0086.tlg005"
+   ]
+  },
+  {
+   "archivo": "aristoteles-historia-animales-grc.json",
+   "workId": "aristoteles-historia-animales",
+   "language": "grc",
+   "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+   "pasajes": 238,
+   "caracteres": 555215,
+   "sha256": "0ef0a5202145da826c1a2ffe9af66a224168d4b12f44795b95fb88ddf9831d71",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0086.tlg014"
+   ]
+  },
+  {
+   "archivo": "ausonio-obras-la.json",
+   "workId": "ausonio-obras",
+   "language": "la",
+   "title": "Opuscula · Obras",
+   "pasajes": 789,
+   "caracteres": 292159,
+   "sha256": "4afe8f2ca2e7a882532be701c29766b769df7cb96f5bb7a558700e1c304be1ad",
+   "fuentes": [
+    "urn:cts:latinLit:stoa0045.stoa001",
+    "urn:cts:latinLit:stoa0045.stoa002",
+    "urn:cts:latinLit:stoa0045.stoa003",
+    "urn:cts:latinLit:stoa0045.stoa004",
+    "urn:cts:latinLit:stoa0045.stoa005",
+    "urn:cts:latinLit:stoa0045.stoa006",
+    "urn:cts:latinLit:stoa0045.stoa007",
+    "urn:cts:latinLit:stoa0045.stoa008",
+    "urn:cts:latinLit:stoa0045.stoa009",
+    "urn:cts:latinLit:stoa0045.stoa010",
+    "urn:cts:latinLit:stoa0045.stoa011",
+    "urn:cts:latinLit:stoa0045.stoa012",
+    "urn:cts:latinLit:stoa0045.stoa013",
+    "urn:cts:latinLit:stoa0045.stoa014",
+    "urn:cts:latinLit:stoa0045.stoa015",
+    "urn:cts:latinLit:stoa0045.stoa016",
+    "urn:cts:latinLit:stoa0045.stoa017",
+    "urn:cts:latinLit:stoa0045.stoa018",
+    "urn:cts:latinLit:stoa0045.stoa019",
+    "urn:cts:latinLit:stoa0045.stoa020",
+    "urn:cts:latinLit:stoa0045.stoa021",
+    "urn:cts:latinLit:stoa0045.stoa022",
+    "urn:cts:latinLit:stoa0045.stoa025",
+    "urn:cts:latinLit:stoa0045.stoa026",
+    "urn:cts:latinLit:stoa0045.stoa027",
+    "urn:cts:latinLit:stoa0045.stoa028"
+   ]
+  },
+  {
+   "archivo": "baquilides-poemas-grc.json",
+   "workId": "baquilides-poemas",
+   "language": "grc",
+   "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
+   "pasajes": 140,
+   "caracteres": 33876,
+   "sha256": "6f048887fb1adf8a5d70f11c7f8ab5b4055838df71325bfd5f8ebddf08a97085",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0199.tlg001",
+    "urn:cts:greekLit:tlg0199.tlg002"
+   ]
+  },
+  {
+   "archivo": "calimaco-himnos-grc.json",
+   "workId": "calimaco-himnos",
+   "language": "grc",
+   "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
+   "pasajes": 341,
+   "caracteres": 96976,
+   "sha256": "e2e68dc66e6949f8d7fbfbcc52f47570395d64f1c83fb94665f984f86b4083af",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0533.tlg003",
+    "urn:cts:greekLit:tlg0533.tlg004",
+    "urn:cts:greekLit:tlg0533.tlg006",
+    "urn:cts:greekLit:tlg0533.tlg007",
+    "urn:cts:greekLit:tlg0533.tlg009",
+    "urn:cts:greekLit:tlg0533.tlg015",
+    "urn:cts:greekLit:tlg0533.tlg016",
+    "urn:cts:greekLit:tlg0533.tlg017",
+    "urn:cts:greekLit:tlg0533.tlg018",
+    "urn:cts:greekLit:tlg0533.tlg019",
+    "urn:cts:greekLit:tlg0533.tlg020"
+   ]
+  },
+  {
+   "archivo": "claudiano-poemas-la.json",
+   "workId": "claudiano-poemas",
+   "language": "la",
+   "title": "Carmina · Poemas",
+   "pasajes": 1009,
+   "caracteres": 419619,
+   "sha256": "c1756af0299c4019b8de63dc6ae64fdc2503022039fc018eb212dfc8d2bc1e0c",
+   "fuentes": [
+    "urn:cts:latinLit:stoa0089.stoa001",
+    "urn:cts:latinLit:stoa0089.stoa002",
+    "urn:cts:latinLit:stoa0089.stoa003",
+    "urn:cts:latinLit:stoa0089.stoa004",
+    "urn:cts:latinLit:stoa0089.stoa005",
+    "urn:cts:latinLit:stoa0089.stoa006",
+    "urn:cts:latinLit:stoa0089.stoa007",
+    "urn:cts:latinLit:stoa0089.stoa008",
+    "urn:cts:latinLit:stoa0089.stoa009",
+    "urn:cts:latinLit:stoa0089.stoa010",
+    "urn:cts:latinLit:stoa0089.stoa011",
+    "urn:cts:latinLit:stoa0089.stoa012",
+    "urn:cts:latinLit:stoa0089.stoa013",
+    "urn:cts:latinLit:stoa0089.stoa014"
+   ]
+  },
+  {
+   "archivo": "epicuro-restos-grc.json",
+   "workId": "epicuro-restos",
+   "language": "grc",
+   "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
+   "pasajes": 193,
+   "caracteres": 73766,
+   "sha256": "8b8393d18c62dbdf15e90ea537d5b50e9302b15a278504cdbaab74d05e34c31e",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0537.tlg010",
+    "urn:cts:greekLit:tlg0537.tlg011",
+    "urn:cts:greekLit:tlg0537.tlg012",
+    "urn:cts:greekLit:tlg0537.tlg013",
+    "urn:cts:greekLit:tlg0537.tlg014"
+   ]
+  },
+  {
+   "archivo": "esquines-discursos-grc.json",
+   "workId": "esquines-discursos",
+   "language": "grc",
+   "title": "Λόγοι · Discursos",
+   "pasajes": 717,
+   "caracteres": 258732,
+   "sha256": "00c95e79f0ef75b1a4c2678e91906906844985a83d4d764f0c0364661ba83cbb",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0026.tlg001",
+    "urn:cts:greekLit:tlg0026.tlg002",
+    "urn:cts:greekLit:tlg0026.tlg003",
+    "urn:cts:greekLit:tlg0026.tlg004"
+   ]
+  },
+  {
+   "archivo": "filostrato-apolonio-grc.json",
+   "workId": "filostrato-apolonio",
+   "language": "grc",
+   "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
+   "pasajes": 348,
+   "caracteres": 510643,
+   "sha256": "65884f0112a0d79ccb638c7dab6fc75a5cf65d34ee01651d5ab2432857cdc9d3",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0638.tlg001"
+   ]
+  },
+  {
+   "archivo": "galeno-facultades-naturales-grc.json",
+   "workId": "galeno-facultades-naturales",
+   "language": "grc",
+   "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+   "pasajes": 41,
+   "caracteres": 197433,
+   "sha256": "5921c6ec6653caccc57abadae5ce2411259fa66c06df961b034bfb840be3915e",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0057.tlg010"
+   ]
+  },
+  {
+   "archivo": "hipocrates-obras-grc.json",
+   "workId": "hipocrates-obras",
+   "language": "grc",
+   "title": "Corpus Hippocraticum (selección)",
+   "pasajes": 2406,
+   "caracteres": 2096231,
+   "sha256": "317a71ff6fb35b4c4c142cf3bc0e565954472a260466a823ee868e55effec225",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0627.tlg012",
+    "urn:cts:greekLit:tlg0627.tlg001",
+    "urn:cts:greekLit:tlg0627.tlg002",
+    "urn:cts:greekLit:tlg0627.tlg003",
+    "urn:cts:greekLit:tlg0627.tlg004",
+    "urn:cts:greekLit:tlg0627.tlg005",
+    "urn:cts:greekLit:tlg0627.tlg006",
+    "urn:cts:greekLit:tlg0627.tlg007",
+    "urn:cts:greekLit:tlg0627.tlg008",
+    "urn:cts:greekLit:tlg0627.tlg009",
+    "urn:cts:greekLit:tlg0627.tlg010",
+    "urn:cts:greekLit:tlg0627.tlg011",
+    "urn:cts:greekLit:tlg0627.tlg013",
+    "urn:cts:greekLit:tlg0627.tlg014",
+    "urn:cts:greekLit:tlg0627.tlg015",
+    "urn:cts:greekLit:tlg0627.tlg016",
+    "urn:cts:greekLit:tlg0627.tlg017",
+    "urn:cts:greekLit:tlg0627.tlg018",
+    "urn:cts:greekLit:tlg0627.tlg019",
+    "urn:cts:greekLit:tlg0627.tlg020",
+    "urn:cts:greekLit:tlg0627.tlg021",
+    "urn:cts:greekLit:tlg0627.tlg022",
+    "urn:cts:greekLit:tlg0627.tlg023",
+    "urn:cts:greekLit:tlg0627.tlg024a",
+    "urn:cts:greekLit:tlg0627.tlg024b",
+    "urn:cts:greekLit:tlg0627.tlg025",
+    "urn:cts:greekLit:tlg0627.tlg026",
+    "urn:cts:greekLit:tlg0627.tlg027",
+    "urn:cts:greekLit:tlg0627.tlg028",
+    "urn:cts:greekLit:tlg0627.tlg029",
+    "urn:cts:greekLit:tlg0627.tlg030",
+    "urn:cts:greekLit:tlg0627.tlg031",
+    "urn:cts:greekLit:tlg0627.tlg032",
+    "urn:cts:greekLit:tlg0627.tlg033",
+    "urn:cts:greekLit:tlg0627.tlg035",
+    "urn:cts:greekLit:tlg0627.tlg036",
+    "urn:cts:greekLit:tlg0627.tlg037",
+    "urn:cts:greekLit:tlg0627.tlg038",
+    "urn:cts:greekLit:tlg0627.tlg039",
+    "urn:cts:greekLit:tlg0627.tlg040",
+    "urn:cts:greekLit:tlg0627.tlg041",
+    "urn:cts:greekLit:tlg0627.tlg042",
+    "urn:cts:greekLit:tlg0627.tlg043",
+    "urn:cts:greekLit:tlg0627.tlg045",
+    "urn:cts:greekLit:tlg0627.tlg046",
+    "urn:cts:greekLit:tlg0627.tlg047",
+    "urn:cts:greekLit:tlg0627.tlg048",
+    "urn:cts:greekLit:tlg0627.tlg049",
+    "urn:cts:greekLit:tlg0627.tlg050",
+    "urn:cts:greekLit:tlg0627.tlg051",
+    "urn:cts:greekLit:tlg0627.tlg052",
+    "urn:cts:greekLit:tlg0627.tlg053",
+    "urn:cts:greekLit:tlg0627.tlg055"
+   ]
+  },
+  {
+   "archivo": "iseo-discursos-grc.json",
+   "workId": "iseo-discursos",
+   "language": "grc",
+   "title": "Λόγοι · Discursos",
+   "pasajes": 549,
+   "caracteres": 148199,
+   "sha256": "36f5eacb6bf93b051bffb427d58ab3e7e02ce466ac3124bca5fb77c26cea6714",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0017.tlg001",
+    "urn:cts:greekLit:tlg0017.tlg002",
+    "urn:cts:greekLit:tlg0017.tlg003",
+    "urn:cts:greekLit:tlg0017.tlg004",
+    "urn:cts:greekLit:tlg0017.tlg005",
+    "urn:cts:greekLit:tlg0017.tlg006",
+    "urn:cts:greekLit:tlg0017.tlg007",
+    "urn:cts:greekLit:tlg0017.tlg008",
+    "urn:cts:greekLit:tlg0017.tlg009",
+    "urn:cts:greekLit:tlg0017.tlg010",
+    "urn:cts:greekLit:tlg0017.tlg011",
+    "urn:cts:greekLit:tlg0017.tlg012"
+   ]
+  },
+  {
+   "archivo": "isocrates-discursos-grc.json",
+   "workId": "isocrates-discursos",
+   "language": "grc",
+   "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+   "pasajes": 2116,
+   "caracteres": 764117,
+   "sha256": "d028aa92d1a40435c87428a96af601b9ec52f9d928cc6f108ded94a39ea9ee75",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0010.tlg001",
+    "urn:cts:greekLit:tlg0010.tlg002",
+    "urn:cts:greekLit:tlg0010.tlg003",
+    "urn:cts:greekLit:tlg0010.tlg004",
+    "urn:cts:greekLit:tlg0010.tlg005",
+    "urn:cts:greekLit:tlg0010.tlg006",
+    "urn:cts:greekLit:tlg0010.tlg007",
+    "urn:cts:greekLit:tlg0010.tlg008",
+    "urn:cts:greekLit:tlg0010.tlg009",
+    "urn:cts:greekLit:tlg0010.tlg010",
+    "urn:cts:greekLit:tlg0010.tlg011",
+    "urn:cts:greekLit:tlg0010.tlg012",
+    "urn:cts:greekLit:tlg0010.tlg013",
+    "urn:cts:greekLit:tlg0010.tlg014",
+    "urn:cts:greekLit:tlg0010.tlg015",
+    "urn:cts:greekLit:tlg0010.tlg016",
+    "urn:cts:greekLit:tlg0010.tlg017",
+    "urn:cts:greekLit:tlg0010.tlg018",
+    "urn:cts:greekLit:tlg0010.tlg019",
+    "urn:cts:greekLit:tlg0010.tlg020",
+    "urn:cts:greekLit:tlg0010.tlg021",
+    "urn:cts:greekLit:tlg0010.tlg022",
+    "urn:cts:greekLit:tlg0010.tlg023",
+    "urn:cts:greekLit:tlg0010.tlg024",
+    "urn:cts:greekLit:tlg0010.tlg025",
+    "urn:cts:greekLit:tlg0010.tlg026",
+    "urn:cts:greekLit:tlg0010.tlg027",
+    "urn:cts:greekLit:tlg0010.tlg028",
+    "urn:cts:greekLit:tlg0010.tlg029",
+    "urn:cts:greekLit:tlg0010.tlg030"
+   ]
+  },
+  {
+   "archivo": "jenofonte-ciropedia-grc.json",
+   "workId": "jenofonte-ciropedia",
+   "language": "grc",
+   "title": "Κύρου παιδεία · Cyropaedia",
+   "pasajes": 1409,
+   "caracteres": 481992,
+   "sha256": "4755b72df597192eb15f0b797838d00a4d210e722d600751096bdc94d42ae77e",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0032.tlg007"
+   ]
+  },
+  {
+   "archivo": "jenofonte-economico-grc.json",
+   "workId": "jenofonte-economico",
+   "language": "grc",
+   "title": "Οἰκονομικός · Oeconomicus",
+   "pasajes": 397,
+   "caracteres": 107570,
+   "sha256": "d90f587dd338021e4e920e813f4f721f75119901175b2cb8fba84206ea6c5f61",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0032.tlg003"
+   ]
+  },
+  {
+   "archivo": "lisias-discursos-grc.json",
+   "workId": "lisias-discursos",
+   "language": "grc",
+   "title": "Λόγοι · Discursos",
+   "pasajes": 1116,
+   "caracteres": 277412,
+   "sha256": "c3fc7f915fec42c21ea51b2c923856ccde18e27d9c3dadc5cad2dcb1f4583830",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0540.tlg001",
+    "urn:cts:greekLit:tlg0540.tlg002",
+    "urn:cts:greekLit:tlg0540.tlg003",
+    "urn:cts:greekLit:tlg0540.tlg004",
+    "urn:cts:greekLit:tlg0540.tlg005",
+    "urn:cts:greekLit:tlg0540.tlg006",
+    "urn:cts:greekLit:tlg0540.tlg007",
+    "urn:cts:greekLit:tlg0540.tlg008",
+    "urn:cts:greekLit:tlg0540.tlg009",
+    "urn:cts:greekLit:tlg0540.tlg010",
+    "urn:cts:greekLit:tlg0540.tlg011",
+    "urn:cts:greekLit:tlg0540.tlg012",
+    "urn:cts:greekLit:tlg0540.tlg013",
+    "urn:cts:greekLit:tlg0540.tlg014",
+    "urn:cts:greekLit:tlg0540.tlg015",
+    "urn:cts:greekLit:tlg0540.tlg016",
+    "urn:cts:greekLit:tlg0540.tlg017",
+    "urn:cts:greekLit:tlg0540.tlg018",
+    "urn:cts:greekLit:tlg0540.tlg019",
+    "urn:cts:greekLit:tlg0540.tlg020",
+    "urn:cts:greekLit:tlg0540.tlg021",
+    "urn:cts:greekLit:tlg0540.tlg022",
+    "urn:cts:greekLit:tlg0540.tlg023",
+    "urn:cts:greekLit:tlg0540.tlg024",
+    "urn:cts:greekLit:tlg0540.tlg025",
+    "urn:cts:greekLit:tlg0540.tlg026",
+    "urn:cts:greekLit:tlg0540.tlg027",
+    "urn:cts:greekLit:tlg0540.tlg028",
+    "urn:cts:greekLit:tlg0540.tlg029",
+    "urn:cts:greekLit:tlg0540.tlg030",
+    "urn:cts:greekLit:tlg0540.tlg031",
+    "urn:cts:greekLit:tlg0540.tlg032",
+    "urn:cts:greekLit:tlg0540.tlg033",
+    "urn:cts:greekLit:tlg0540.tlg034"
+   ]
+  },
+  {
+   "archivo": "longino-sublime-grc.json",
+   "workId": "longino-sublime",
+   "language": "grc",
+   "title": "Περὶ ὕψους · De sublimitate",
+   "pasajes": 186,
+   "caracteres": 80449,
+   "sha256": "0c85d3dcee21c3bf26b2bf35dba1ef73854f3f1a7731a2f9d1cca1d305e58a3d",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0560.tlg001"
+   ]
+  },
+  {
+   "archivo": "longo-dafnis-cloe-grc.json",
+   "workId": "longo-dafnis-cloe",
+   "language": "grc",
+   "title": "Δάφνις καὶ Χλόη · Poimeniká",
+   "pasajes": 538,
+   "caracteres": 124051,
+   "sha256": "4a0453089b01a44d148674b82a42a528c895642ad267978451bd32c891db74af",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0561.tlg001"
+   ]
+  },
+  {
+   "archivo": "menandro-comedias-grc.json",
+   "workId": "menandro-comedias",
+   "language": "grc",
+   "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
+   "pasajes": 305,
+   "caracteres": 16700,
+   "sha256": "aca0c9140853184cd7919a7f8379ef9ab3841c38eb507a22f69301c7f6894fd0",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0541.tlg042"
+   ]
+  },
+  {
+   "archivo": "minucio-felix-octavio-la.json",
+   "workId": "minucio-felix-octavio",
+   "language": "la",
+   "title": "Octavius",
+   "pasajes": 306,
+   "caracteres": 81584,
+   "sha256": "59cb758e3ad483c4b9bfd7748cbdaad962de957cf0573ad99a4eaeff3feb17f9",
+   "fuentes": [
+    "urn:cts:latinLit:stoa0203.stoa001"
+   ]
+  },
+  {
+   "archivo": "origenes-grc.json",
+   "workId": "origenes",
+   "language": "grc",
+   "title": "Περὶ ἀρχῶν · De principiis",
+   "pasajes": 628,
+   "caracteres": 994403,
+   "sha256": "b310dfa8f281576ad70710b0f6f9d6578078e35f3939a850305864623dfc57d8",
+   "fuentes": [
+    "urn:cts:greekLit:tlg2042.tlg001"
+   ]
+  },
+  {
+   "archivo": "platon-cratilo-parmenides-grc.json",
+   "workId": "platon-cratilo-parmenides",
+   "language": "grc",
+   "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
+   "pasajes": 99,
+   "caracteres": 192116,
+   "sha256": "03fadb6a7b40ca155274f3924461ed4b2452a069147bcaec67c618817590165d",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0059.tlg005",
+    "urn:cts:greekLit:tlg0059.tlg009"
+   ]
+  },
+  {
+   "archivo": "platon-protagoras-grc.json",
+   "workId": "platon-protagoras",
+   "language": "grc",
+   "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
+   "pasajes": 146,
+   "caracteres": 285113,
+   "sha256": "d1dae142f1263e738645fd6c04619e1f3ac567c3d1f8c1935b17c9fc4a5f9f41",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0059.tlg024",
+    "urn:cts:greekLit:tlg0059.tlg019",
+    "urn:cts:greekLit:tlg0059.tlg021",
+    "urn:cts:greekLit:tlg0059.tlg022"
+   ]
+  },
+  {
+   "archivo": "platon-teeteto-sofista-grc.json",
+   "workId": "platon-teeteto-sofista",
+   "language": "grc",
+   "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
+   "pasajes": 122,
+   "caracteres": 239209,
+   "sha256": "4d25cf7e01c4df61f62973802c3a5f4c6b62e1b9ce9c08888cf094f8b8c2649c",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0059.tlg006",
+    "urn:cts:greekLit:tlg0059.tlg007"
+   ]
+  },
+  {
+   "archivo": "plotino-eneadas-grc.json",
+   "workId": "plotino-eneadas",
+   "language": "grc",
+   "title": "Ἐννεάδες · Enneades",
+   "pasajes": 653,
+   "caracteres": 1198336,
+   "sha256": "016d133e5e245ceece15eeb222ca1a3e556fbd3bc08ceaa523bc47c1f1d2a7cb",
+   "fuentes": [
+    "urn:cts:greekLit:tlg2000.tlg001"
+   ]
+  },
+  {
+   "archivo": "quinto-esmirna-posthomericas-grc.json",
+   "workId": "quinto-esmirna-posthomericas",
+   "language": "grc",
+   "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
+   "pasajes": 889,
+   "caracteres": 388836,
+   "sha256": "5794bf90ce2af75bdec59b0bed84760d682c6038610b41346c29c8b96e0252de",
+   "fuentes": [
+    "urn:cts:greekLit:tlg2046.tlg001"
+   ]
+  },
+  {
+   "archivo": "teocrito-bucolicos-grc.json",
+   "workId": "teocrito-bucolicos",
+   "language": "grc",
+   "title": "Εἰδύλλια · Idilios",
+   "pasajes": 324,
+   "caracteres": 132411,
+   "sha256": "754db2ae258073a99548baaa1c65d997fed043aef3b48e71e316a84c5e7925ee",
+   "fuentes": [
+    "urn:cts:greekLit:tlg0005.tlg001",
+    "urn:cts:greekLit:tlg0005.tlg002",
+    "urn:cts:greekLit:tlg0005.tlg003"
+   ]
+  },
+  {
+   "archivo": "valerio-flaco-argonautica-la.json",
+   "workId": "valerio-flaco-argonautica",
+   "language": "la",
+   "title": "Argonautica",
+   "pasajes": 564,
+   "caracteres": 279662,
+   "sha256": "bf511398b770913ef5288a73a7e7eaf4485446c494add9d015308d7dcd3db7cf",
+   "fuentes": [
+    "urn:cts:latinLit:phi1035.phi001"
+   ]
+  }
+ ]
+}

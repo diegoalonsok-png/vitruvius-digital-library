@@ -57,6 +57,12 @@ for(const entry of registry.entries){
  if(unique.has(entry.path))assert(entry.format==="structured-bilingual"&&entry.workId==="vitruvius",
   "Duplicate indexed file "+entry.path);
  unique.add(entry.path);
+ /* El texto de las obras nuevas se sirve desde R2 y no está en el repositorio:
+     se comprueba la forma de la ruta, no su presencia en disco. */
+ if(/^https:/.test(entry.path)){
+  assert(/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json$/.test(entry.path),"Ruta remota inesperada "+entry.path);
+  continue;
+ }
  assert(existsSync(pathOf(entry.path)),"Missing indexed file "+entry.path);
  assert(statSync(pathOf(entry.path)).size>250,"Empty indexed file "+entry.path);
  languages[entry.language]=(languages[entry.language]||0)+1;formats[entry.format]=(formats[entry.format]||0)+1;

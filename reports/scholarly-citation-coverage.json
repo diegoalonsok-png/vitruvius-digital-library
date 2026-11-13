@@ -1,0 +1,3087 @@
+{
+  "schema": "vitruvius-scholarly-citation-transparency-v1",
+  "generated": "2026-11-13T16:09:16.736Z",
+  "method": "Static metadata consistency check. Paths checked for existence, not textual accuracy, copyright status, editorial collation or external URL availability.",
+  "counts": {
+    "cataloguedWorks": 256,
+    "indexedTextVersions": 279,
+    "worksWithAtLeastOneIndexedVersion": 214,
+    "catalogueWorksWithStructuredEditionCitation": 59,
+    "catalogueWorksWithoutStructuredEditionCitation": 197,
+    "localReadingClaims": 145,
+    "localReadingClaimsWithoutStructuredEditionCitation": 101,
+    "catalogueWorksWithPartialBibliography": 10,
+    "manuscriptWitnesses": 103,
+    "historicalEditions": 63,
+    "historicalEditionUrls": 63,
+    "extractedUploadedDocuments": 30,
+    "uploadedDocumentParagraphs": 25794,
+    "hostedTranslationWorks": 59,
+    "worksWithoutHostedTranslation": 199
+  },
+  "priorityEditorialReview": [
+    {
+      "workId": "vitruvius",
+      "title": "De architectura libri decem",
+      "author": "Marco Vitruvio Polión",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "structured-bilingual",
+          "path": "data/structured/theory-en.json"
+        },
+        {
+          "language": "es",
+          "format": "structured-bilingual",
+          "path": "data/structured/recensio-es.json"
+        },
+        {
+          "language": "fr",
+          "format": "structured-bilingual",
+          "path": "data/structured/recensio-fr.json"
+        },
+        {
+          "language": "la",
+          "format": "structured-bilingual",
+          "path": "data/structured/recensio-es.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "cicero-oratore",
+      "title": "De oratore",
+      "author": "Cicerón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/cicero-oratore-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "cicero-republica",
+      "title": "De re publica",
+      "author": "Cicerón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/cicero-republica-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "caesar-gallico",
+      "title": "Commentarii de bello Gallico",
+      "author": "Julio César",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/caesar-gallico-en.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/caesar-gallico-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "caesar-civili",
+      "title": "Commentarii de bello civili",
+      "author": "Julio César",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/caesar-civili-en.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/caesar-civili-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "sallust-catiline",
+      "title": "Bellum Catilinae",
+      "author": "Salustio",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/sallust-catiline-en.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/sallust-catiline-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "sallust-iugurtha",
+      "title": "Bellum Iugurthinum",
+      "author": "Salustio",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/sallust-iugurtha-en.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/sallust-iugurtha-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "varro-rustica",
+      "title": "Rerum rusticarum libri tres",
+      "author": "Varrón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/lexicon/fontes/varro-rustica-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "lucretius",
+      "title": "De rerum natura",
+      "author": "Lucrecio",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "html-text",
+          "path": "corpus/lucretius-de-rerum-natura-en.html"
+        },
+        {
+          "language": "es",
+          "format": "html-text",
+          "path": "corpus/lucretius-de-rerum-natura-es.html"
+        },
+        {
+          "language": "la",
+          "format": "html-text",
+          "path": "corpus/lucretius-de-rerum-natura-la.html"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "virgil-aeneid",
+      "title": "Aeneis",
+      "author": "Virgilio",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/virgil-aeneid-en.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/virgil-aeneid-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "virgil-georgica",
+      "title": "Georgica",
+      "author": "Virgilio",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/virgil-georgica-en.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/virgil-georgica-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "horace-odes",
+      "title": "Carmina",
+      "author": "Horacio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/horace-odes-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "livy",
+      "title": "Ab urbe condita",
+      "author": "Tito Livio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/livy-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "ovid",
+      "title": "Metamorphoses",
+      "author": "Ovidio",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/ovid-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "ovid-fasti",
+      "title": "Fasti",
+      "author": "Ovidio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/ovid-fasti-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "nepos",
+      "title": "De viris illustribus",
+      "author": "Cornelio Nepote",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/nepos-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "diodorus",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "author": "Diodoro Sículo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/diodorus-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "dionysius",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "author": "Dionisio de Halicarnaso",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/dionysius-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "lucan",
+      "title": "Bellum civile",
+      "author": "Lucano",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/lucan-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "quintilian",
+      "title": "Institutio oratoria",
+      "author": "Quintiliano",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/quintilian-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "martial",
+      "title": "Epigrammata",
+      "author": "Marcial",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/martial-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "tacitus-germania",
+      "title": "Germania",
+      "author": "Tácito",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/tacitus-germania-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "didache",
+      "title": "Διδαχή · Didaché",
+      "author": "Anónimo",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/didache-en.json"
+        },
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/didache-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "columella",
+      "title": "De re rustica",
+      "author": "Columela",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/columella-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "celsus",
+      "title": "De medicina",
+      "author": "Aulo Cornelio Celso",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/celsus-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "hero-pneumatica",
+      "title": "Πνευματικά · Pneumatica",
+      "author": "Herón de Alejandría",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/hero-pneumatica-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "hero-automata",
+      "title": "Αὐτοματοποιητική · Automata",
+      "author": "Herón de Alejandría",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/hero-automata-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "krohn-1912-pdf",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "historical-ocr-pages",
+          "path": "data/text/krohn-1912.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "plautus-amphitruo",
+      "title": "Amphitruo",
+      "author": "Plauto",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/plautus-amphitruo-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "plautus-aulularia",
+      "title": "Aulularia",
+      "author": "Plauto",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/plautus-aulularia-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "terentius-andria",
+      "title": "Andria",
+      "author": "Terencio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/terentius-andria-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "terentius-heautontimorumenos",
+      "title": "Heautontimorumenos",
+      "author": "Terencio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/terentius-heautontimorumenos-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "cato-agri-cultura",
+      "title": "De agri cultura",
+      "author": "Catón el Viejo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/cato-agri-cultura-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "horace-sermones",
+      "title": "Sermones (Satirae)",
+      "author": "Horacio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/horace-sermones-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "horace-ars-poetica",
+      "title": "Ars poetica",
+      "author": "Horacio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/horace-ars-poetica-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "ovid-ars-amatoria",
+      "title": "Ars amatoria",
+      "author": "Ovidio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/ovid-ars-amatoria-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "seneca-tragoediae",
+      "title": "Tragoediae (colección)",
+      "author": "Séneca (atribuciones individuales por cotejar)",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/seneca-tragoediae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "petronius-satyrica",
+      "title": "Satyrica",
+      "author": "Petronio (atribución tradicional)",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/petronius-satyrica-en.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/petronius-satyrica-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "tacitus-annales",
+      "title": "Annales",
+      "author": "Tácito",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/tacitus-annales-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "tacitus-historiae",
+      "title": "Historiae",
+      "author": "Tácito",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/tacitus-historiae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "juvenal-saturae",
+      "title": "Saturae",
+      "author": "Juvenal",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/juvenal-saturae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "apuleius-metamorphoses",
+      "title": "Metamorphoses (Asinus aureus)",
+      "author": "Apuleyo",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/apuleius-metamorphoses-en.json"
+        },
+        {
+          "language": "es",
+          "format": "json-passages",
+          "path": "data/classics-corpus/apuleius-metamorphoses-es.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/apuleius-metamorphoses-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "tibullus-elegiae",
+      "title": "Elegiae",
+      "author": "Tibulo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/tibullus-elegiae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "propertius-elegiae",
+      "title": "Elegiae",
+      "author": "Propercio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/propertius-elegiae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "phraedrus-fabulae",
+      "title": "Fabulae",
+      "author": "Fedro",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/phraedrus-fabulae-en.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/phraedrus-fabulae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "statius-thebais",
+      "title": "Thebais",
+      "author": "Estacio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/statius-thebais-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "pliny-younger-epistulae",
+      "title": "Epistulae",
+      "author": "Plinio el Joven",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/pliny-younger-epistulae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aulus-gellius-noctes",
+      "title": "Noctes Atticae",
+      "author": "Aulo Gelio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aulus-gellius-noctes-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "valerius-maximus-facta",
+      "title": "Facta et dicta memorabilia",
+      "author": "Valerio Máximo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/valerius-maximus-facta-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "silius-punica",
+      "title": "Punica",
+      "author": "Silio Itálico",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/silius-punica-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "polybius-historiae",
+      "title": "Ἱστορίαι",
+      "author": "Polibio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/polybius-historiae-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "appian-romaika",
+      "title": "Ῥωμαϊκά",
+      "author": "Apiano",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/appian-romaika-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "homer-iliad",
+      "title": "Ἰλιάς",
+      "author": "Homero (autoría tradicional)",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/homer-iliad-en.json"
+        },
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/homer-iliad-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "homer-odyssey",
+      "title": "Ὀδύσσεια",
+      "author": "Homero (autoría tradicional)",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/homer-odyssey-en.json"
+        },
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/homer-odyssey-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "plato-republic",
+      "title": "Πολιτεία",
+      "author": "Platón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/plato-republic-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "plato-apology",
+      "title": "Ἀπολογία Σωκράτους",
+      "author": "Platón",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/plato-apology-en.json"
+        },
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/plato-apology-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristotle-poetics",
+      "title": "Περὶ ποιητικῆς",
+      "author": "Aristóteles",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristotle-poetics-en.json"
+        },
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristotle-poetics-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "sophocles-ajax",
+      "title": "Αἴας",
+      "author": "Sófocles",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/sophocles-ajax-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "sophocles-trachiniae",
+      "title": "Τραχίνιαι",
+      "author": "Sófocles",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/sophocles-trachiniae-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristophanes-aves",
+      "title": "Ὄρνιθες",
+      "author": "Aristófanes",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristophanes-aves-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristophanes-ranae",
+      "title": "Βάτραχοι",
+      "author": "Aristófanes",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristophanes-ranae-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "title": "Λυσιστράτη",
+      "author": "Aristófanes",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristophanes-lysistrata-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristophanes-vespae",
+      "title": "Σφῆκες",
+      "author": "Aristófanes",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristophanes-vespae-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristophanes-pax",
+      "title": "Εἰρήνη",
+      "author": "Aristófanes",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristophanes-pax-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "title": "Ἀχαρνῆς",
+      "author": "Aristófanes",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristophanes-acharnenses-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "plato-laws",
+      "title": "Νόμοι",
+      "author": "Platón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/plato-laws-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristotle-metaphysics",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "author": "Aristóteles",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristotle-metaphysics-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristotle-physics",
+      "title": "Φυσικὴ ἀκρόασις",
+      "author": "Aristóteles",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristotle-physics-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristotle-rhetoric",
+      "title": "Ῥητορική",
+      "author": "Aristóteles",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristotle-rhetoric-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aristotle-de-anima",
+      "title": "Περὶ ψυχῆς",
+      "author": "Aristóteles",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aristotle-de-anima-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "xenophon-memorabilia",
+      "title": "Ἀπομνημονεύματα",
+      "author": "Jenofonte",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/xenophon-memorabilia-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "xenophon-hellenica",
+      "title": "Ἑλληνικά",
+      "author": "Jenofonte",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/xenophon-hellenica-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "demosthenes-de-corona",
+      "title": "Περὶ τοῦ στεφάνου",
+      "author": "Demóstenes",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/demosthenes-de-corona-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "demosthenes-philippicae",
+      "title": "Φιλιππικοί",
+      "author": "Demóstenes",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/demosthenes-philippicae-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "pindar-olympian",
+      "title": "Ὀλυμπιόνικοι",
+      "author": "Píndaro",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/pindar-olympian-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "pindar-pythian",
+      "title": "Πυθιόνικοι",
+      "author": "Píndaro",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/pindar-pythian-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "homeric-hymns",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/homeric-hymns-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "theophrastus-characters",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "author": "Teofrasto",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/theophrastus-characters-en.json"
+        },
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/theophrastus-characters-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "diogenes-laertius-vitae",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "author": "Diógenes Laercio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "cicero-pro-archia",
+      "title": "Pro Archia poeta",
+      "author": "Cicerón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/cicero-pro-archia-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "cicero-tusculanae",
+      "title": "Tusculanae disputationes",
+      "author": "Cicerón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/cicero-tusculanae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "cicero-de-natura-deorum",
+      "title": "De natura deorum",
+      "author": "Cicerón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/cicero-de-natura-deorum-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "cicero-brutus",
+      "title": "Brutus",
+      "author": "Cicerón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/cicero-brutus-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "cicero-philippicae",
+      "title": "Philippicae",
+      "author": "Cicerón",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/cicero-philippicae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "seneca-de-clementia",
+      "title": "De clementia",
+      "author": "Séneca",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/seneca-de-clementia-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "horace-epodi",
+      "title": "Epodi",
+      "author": "Horacio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/horace-epodi-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "horace-epistulae",
+      "title": "Epistulae",
+      "author": "Horacio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/horace-epistulae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "ovid-tristia",
+      "title": "Tristia",
+      "author": "Ovidio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/ovid-tristia-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "ovid-heroides",
+      "title": "Heroides",
+      "author": "Ovidio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/ovid-heroides-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "ovid-remedia-amoris",
+      "title": "Remedia amoris",
+      "author": "Ovidio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/ovid-remedia-amoris-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "ovid-ex-ponto",
+      "title": "Epistulae ex Ponto",
+      "author": "Ovidio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/ovid-ex-ponto-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "tacitus-dialogus",
+      "title": "Dialogus de oratoribus",
+      "author": "Tácito (atribución tradicional)",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/tacitus-dialogus-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "apuleius-apologia",
+      "title": "Apologia",
+      "author": "Apuleyo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/apuleius-apologia-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "augustine-civitate-dei",
+      "title": "De civitate Dei",
+      "author": "Agustín de Hipona",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/augustine-civitate-dei-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "boethius-consolatio",
+      "title": "De consolatione philosophiae",
+      "author": "Boecio",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/boethius-consolatio-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "epictetus-enchiridion",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "en",
+          "format": "json-passages",
+          "path": "data/classics-corpus/epictetus-enchiridion-en.json"
+        },
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/epictetus-enchiridion-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "cebes-tabula",
+      "title": "Πίναξ · Tabula Cebetis",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/cebes-tabula-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "title": "Πολιορκητικά",
+      "author": "Eneas el Táctico",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "augustus-res-gestae",
+      "title": "Res gestae divi Augusti",
+      "author": "Augusto",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/augustus-res-gestae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "euclid-elementa",
+      "title": "Στοιχεῖα · Elementa",
+      "author": "Euclides",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/euclid-elementa-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "sulpicia-elegiae",
+      "title": "Elegiae · Corpus Tibullianum 3.13–18",
+      "author": "Sulpicia",
+      "publicStatus": "lectura-local-completa",
+      "indexedVersions": [
+        {
+          "language": "es",
+          "format": "json-passages",
+          "path": "data/classics-corpus/sulpicia-elegiae-es.json"
+        },
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/sulpicia-elegiae-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    }
+  ],
+  "bibliographyBacklog": [
+    {
+      "workId": "vitruvius",
+      "title": "De architectura libri decem",
+      "author": "Marco Vitruvio Polión",
+      "status": "lectura-local-completa",
+      "indexedVersions": 4
+    },
+    {
+      "workId": "cicero-oratore",
+      "title": "De oratore",
+      "author": "Cicerón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "cicero-republica",
+      "title": "De re publica",
+      "author": "Cicerón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "caesar-gallico",
+      "title": "Commentarii de bello Gallico",
+      "author": "Julio César",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "caesar-civili",
+      "title": "Commentarii de bello civili",
+      "author": "Julio César",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "sallust-catiline",
+      "title": "Bellum Catilinae",
+      "author": "Salustio",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "sallust-iugurtha",
+      "title": "Bellum Iugurthinum",
+      "author": "Salustio",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "varro-rustica",
+      "title": "Rerum rusticarum libri tres",
+      "author": "Varrón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "lucretius",
+      "title": "De rerum natura",
+      "author": "Lucrecio",
+      "status": "lectura-local-completa",
+      "indexedVersions": 3
+    },
+    {
+      "workId": "virgil-aeneid",
+      "title": "Aeneis",
+      "author": "Virgilio",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "virgil-georgica",
+      "title": "Georgica",
+      "author": "Virgilio",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "horace-odes",
+      "title": "Carmina",
+      "author": "Horacio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "livy",
+      "title": "Ab urbe condita",
+      "author": "Tito Livio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ovid",
+      "title": "Metamorphoses",
+      "author": "Ovidio",
+      "status": "lectura-local-completa",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ovid-fasti",
+      "title": "Fasti",
+      "author": "Ovidio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "nepos",
+      "title": "De viris illustribus",
+      "author": "Cornelio Nepote",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "diodorus",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "author": "Diodoro Sículo",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "dionysius",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "author": "Dionisio de Halicarnaso",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "strabo",
+      "title": "Γεωγραφικά",
+      "author": "Estrabón",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "seneca-naturales",
+      "title": "Naturales quaestiones",
+      "author": "Séneca",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "lucan",
+      "title": "Bellum civile",
+      "author": "Lucano",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "pliny",
+      "title": "Naturalis historia",
+      "author": "Plinio el Viejo",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "dioscorides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "author": "Dioscórides",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "josephus-war",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "author": "Flavio Josefo",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "josephus-antiquities",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "author": "Flavio Josefo",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "quintilian",
+      "title": "Institutio oratoria",
+      "author": "Quintiliano",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "martial",
+      "title": "Epigrammata",
+      "author": "Marcial",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "tacitus-germania",
+      "title": "Germania",
+      "author": "Tácito",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "mark",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "author": "Evangelio según Marcos",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "clement",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "author": "Primera carta de Clemente",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "didache",
+      "title": "Διδαχή · Didaché",
+      "author": "Anónimo",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "pastor-hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "author": "Hermas",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "barnabas",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "author": "Anónimo",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ignatius",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "author": "Ignacio de Antioquía",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "polycarp",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "author": "Policarpo de Esmirna",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "clement-2",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "author": "Anónimo",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "diognetus",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "author": "Anónimo",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "justin",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "author": "Justino Mártir",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "irenaeus",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "author": "Ireneo de Lyon",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "tertullian",
+      "title": "Apologeticum",
+      "author": "Tertuliano",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "origenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "author": "Orígenes",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "eusebio",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "author": "Eusebio de Cesarea",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "columella",
+      "title": "De re rustica",
+      "author": "Columela",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "celsus",
+      "title": "De medicina",
+      "author": "Aulo Cornelio Celso",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "plutarch-lives",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "author": "Plutarco",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "apollodorus-poliorcetics",
+      "title": "Πολιορκητικά · Poliorketika",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "hero-pneumatica",
+      "title": "Πνευματικά · Pneumatica",
+      "author": "Herón de Alejandría",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "hero-automata",
+      "title": "Αὐτοματοποιητική · Automata",
+      "author": "Herón de Alejandría",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "athenaeus-mechanicus",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "author": "Ateneo Mecánico",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "krohn-1912-pdf",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "status": "lectura-local-completa",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "plautus-amphitruo",
+      "title": "Amphitruo",
+      "author": "Plauto",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "plautus-aulularia",
+      "title": "Aulularia",
+      "author": "Plauto",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "terentius-andria",
+      "title": "Andria",
+      "author": "Terencio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "terentius-heautontimorumenos",
+      "title": "Heautontimorumenos",
+      "author": "Terencio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "cato-agri-cultura",
+      "title": "De agri cultura",
+      "author": "Catón el Viejo",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "horace-sermones",
+      "title": "Sermones (Satirae)",
+      "author": "Horacio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "horace-ars-poetica",
+      "title": "Ars poetica",
+      "author": "Horacio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ovid-ars-amatoria",
+      "title": "Ars amatoria",
+      "author": "Ovidio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "seneca-tragoediae",
+      "title": "Tragoediae (colección)",
+      "author": "Séneca (atribuciones individuales por cotejar)",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "petronius-satyrica",
+      "title": "Satyrica",
+      "author": "Petronio (atribución tradicional)",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "tacitus-annales",
+      "title": "Annales",
+      "author": "Tácito",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "tacitus-historiae",
+      "title": "Historiae",
+      "author": "Tácito",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "juvenal-saturae",
+      "title": "Saturae",
+      "author": "Juvenal",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "apuleius-metamorphoses",
+      "title": "Metamorphoses (Asinus aureus)",
+      "author": "Apuleyo",
+      "status": "lectura-local-completa",
+      "indexedVersions": 3
+    },
+    {
+      "workId": "tibullus-elegiae",
+      "title": "Elegiae",
+      "author": "Tibulo",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "propertius-elegiae",
+      "title": "Elegiae",
+      "author": "Propercio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "phraedrus-fabulae",
+      "title": "Fabulae",
+      "author": "Fedro",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "statius-thebais",
+      "title": "Thebais",
+      "author": "Estacio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "pliny-younger-epistulae",
+      "title": "Epistulae",
+      "author": "Plinio el Joven",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aulus-gellius-noctes",
+      "title": "Noctes Atticae",
+      "author": "Aulo Gelio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "valerius-maximus-facta",
+      "title": "Facta et dicta memorabilia",
+      "author": "Valerio Máximo",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "silius-punica",
+      "title": "Punica",
+      "author": "Silio Itálico",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "polybius-historiae",
+      "title": "Ἱστορίαι",
+      "author": "Polibio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "pseudo-apollodorus-bibliotheca",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "author": "Pseudo-Apolodoro",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "plutarch-moralia",
+      "title": "Ἠθικά (Moralia)",
+      "author": "Plutarco",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "lucian-dialogi-mortuorum",
+      "title": "Νεκρικοὶ διάλογοι",
+      "author": "Luciano de Samósata",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "pausanias-periegesis",
+      "title": "Ἑλλάδος περιήγησις",
+      "author": "Pausanias",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "galen-ars-medica",
+      "title": "Τέχνη ἰατρική",
+      "author": "Galeno",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "galen-de-usu-partium",
+      "title": "Περὶ χρείας μορίων",
+      "author": "Galeno",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ptolemy-almagest",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "author": "Claudio Ptolomeo",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ptolemy-geographia",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "author": "Claudio Ptolomeo",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "appian-romaika",
+      "title": "Ῥωμαϊκά",
+      "author": "Apiano",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "homer-iliad",
+      "title": "Ἰλιάς",
+      "author": "Homero (autoría tradicional)",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "homer-odyssey",
+      "title": "Ὀδύσσεια",
+      "author": "Homero (autoría tradicional)",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "aeschylus-oresteia",
+      "title": "Ὀρέστεια",
+      "author": "Esquilo",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "thucydides-war",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "author": "Tucídides",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "xenophon-anabasis",
+      "title": "Ἀνάβασις",
+      "author": "Jenofonte",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "plato-republic",
+      "title": "Πολιτεία",
+      "author": "Platón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "plato-apology",
+      "title": "Ἀπολογία Σωκράτους",
+      "author": "Platón",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "aristotle-poetics",
+      "title": "Περὶ ποιητικῆς",
+      "author": "Aristóteles",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "epictetus-discourses",
+      "title": "Διατριβαί",
+      "author": "Epicteto (recopilación de Arriano)",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "arrian-anabasis-alexandri",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "author": "Arriano",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "cassius-dio-historia",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "author": "Dión Casio",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "athenaeus-deipnosophistae",
+      "title": "Δειπνοσοφισταί",
+      "author": "Ateneo de Náucratis",
+      "status": "pendiente-de-incorporar",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "sophocles-ajax",
+      "title": "Αἴας",
+      "author": "Sófocles",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "sophocles-trachiniae",
+      "title": "Τραχίνιαι",
+      "author": "Sófocles",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristophanes-aves",
+      "title": "Ὄρνιθες",
+      "author": "Aristófanes",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristophanes-ranae",
+      "title": "Βάτραχοι",
+      "author": "Aristófanes",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristophanes-lysistrata",
+      "title": "Λυσιστράτη",
+      "author": "Aristófanes",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristophanes-vespae",
+      "title": "Σφῆκες",
+      "author": "Aristófanes",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristophanes-pax",
+      "title": "Εἰρήνη",
+      "author": "Aristófanes",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristophanes-acharnenses",
+      "title": "Ἀχαρνῆς",
+      "author": "Aristófanes",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "plato-laws",
+      "title": "Νόμοι",
+      "author": "Platón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristotle-metaphysics",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "author": "Aristóteles",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristotle-physics",
+      "title": "Φυσικὴ ἀκρόασις",
+      "author": "Aristóteles",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristotle-rhetoric",
+      "title": "Ῥητορική",
+      "author": "Aristóteles",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristotle-de-anima",
+      "title": "Περὶ ψυχῆς",
+      "author": "Aristóteles",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "xenophon-memorabilia",
+      "title": "Ἀπομνημονεύματα",
+      "author": "Jenofonte",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "xenophon-hellenica",
+      "title": "Ἑλληνικά",
+      "author": "Jenofonte",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "demosthenes-de-corona",
+      "title": "Περὶ τοῦ στεφάνου",
+      "author": "Demóstenes",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "demosthenes-philippicae",
+      "title": "Φιλιππικοί",
+      "author": "Demóstenes",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "pindar-olympian",
+      "title": "Ὀλυμπιόνικοι",
+      "author": "Píndaro",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "pindar-pythian",
+      "title": "Πυθιόνικοι",
+      "author": "Píndaro",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "homeric-hymns",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "theophrastus-characters",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "author": "Teofrasto",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "diogenes-laertius-vitae",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "author": "Diógenes Laercio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "cicero-pro-archia",
+      "title": "Pro Archia poeta",
+      "author": "Cicerón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "cicero-tusculanae",
+      "title": "Tusculanae disputationes",
+      "author": "Cicerón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "cicero-de-natura-deorum",
+      "title": "De natura deorum",
+      "author": "Cicerón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "cicero-brutus",
+      "title": "Brutus",
+      "author": "Cicerón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "cicero-philippicae",
+      "title": "Philippicae",
+      "author": "Cicerón",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "seneca-de-ira",
+      "title": "De ira",
+      "author": "Séneca",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "seneca-de-clementia",
+      "title": "De clementia",
+      "author": "Séneca",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "seneca-de-tranquillitate",
+      "title": "De tranquillitate animi",
+      "author": "Séneca",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "horace-epodi",
+      "title": "Epodi",
+      "author": "Horacio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "horace-epistulae",
+      "title": "Epistulae",
+      "author": "Horacio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ovid-tristia",
+      "title": "Tristia",
+      "author": "Ovidio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ovid-heroides",
+      "title": "Heroides",
+      "author": "Ovidio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ovid-remedia-amoris",
+      "title": "Remedia amoris",
+      "author": "Ovidio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ovid-ex-ponto",
+      "title": "Epistulae ex Ponto",
+      "author": "Ovidio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "tacitus-dialogus",
+      "title": "Dialogus de oratoribus",
+      "author": "Tácito (atribución tradicional)",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "apuleius-apologia",
+      "title": "Apologia",
+      "author": "Apuleyo",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "apuleius-de-deo-socratis",
+      "title": "De deo Socratis",
+      "author": "Apuleyo",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "vegetius-epitoma",
+      "title": "Epitoma rei militaris",
+      "author": "Vegecio",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "augustine-civitate-dei",
+      "title": "De civitate Dei",
+      "author": "Agustín de Hipona",
+      "status": "lectura-local-completa",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "boethius-consolatio",
+      "title": "De consolatione philosophiae",
+      "author": "Boecio",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "macrobius-saturnalia",
+      "title": "Saturnalia",
+      "author": "Macrobio",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "epictetus-enchiridion",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "cebes-tabula",
+      "title": "Πίναξ · Tabula Cebetis",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "status": "lectura-local-completa",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "archimedes-fluitantibus",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "author": "Arquímedes",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "ennius-annales",
+      "title": "Annales (fragmenta)",
+      "author": "Ennio",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "accius-fragmenta",
+      "title": "Tragoediae (fragmenta)",
+      "author": "Accio",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "ps-aristotle-mechanica",
+      "title": "Μηχανικὰ προβλήματα",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "aeneas-tacticus-poliorketika",
+      "title": "Πολιορκητικά",
+      "author": "Eneas el Táctico",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "procopius-aedificiis",
+      "title": "Περὶ κτισμάτων",
+      "author": "Procopio de Cesarea",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "isidore-etymologiae",
+      "title": "Etymologiae",
+      "author": "Isidoro de Sevilla",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "censorinus-die-natali",
+      "title": "De die natali",
+      "author": "Censorino",
+      "status": "repertoriado-busqueda-externa",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "augustus-res-gestae",
+      "title": "Res gestae divi Augusti",
+      "author": "Augusto",
+      "status": "lectura-local-completa",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "euclid-elementa",
+      "title": "Στοιχεῖα · Elementa",
+      "author": "Euclides",
+      "status": "lectura-local-parcial",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "euclid-optica",
+      "title": "Ὀπτικά · Optica",
+      "author": "Euclides",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "euclid-phaenomena",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "author": "Euclides",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "cleonides-harmonica",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "hero-belopoeica",
+      "title": "Βελοποιικά · Belopoeica",
+      "author": "Herón de Alejandría",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "philo-belopoeica",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "author": "Filón de Bizancio",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "biton-kataskeuai",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "author": "Bitón",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "geminus-isagoge",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "author": "Gémino",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "aristarchus-magnitudines",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "author": "Aristarco de Samos",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "apollonius-conica",
+      "title": "Κωνικά · Conica",
+      "author": "Apolonio de Perge",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "pappus-synagoge",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "author": "Papo de Alejandría",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "hyginus-gromaticus",
+      "title": "Constitutio limitum",
+      "author": "Higino Gromático",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "frontinus-gromatica",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "author": "Frontino",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "siculus-flaccus",
+      "title": "De condicionibus agrorum",
+      "author": "Sículo Flaco",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "sulpicia-elegiae",
+      "title": "Elegiae · Corpus Tibullianum 3.13–18",
+      "author": "Sulpicia",
+      "status": "lectura-local-completa",
+      "indexedVersions": 2
+    },
+    {
+      "workId": "apolonio-argonauticas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "author": "Apolonio de Rodas",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "isocrates-discursos",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "author": "Isócrates",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "lisias-discursos",
+      "title": "Λόγοι · Discursos",
+      "author": "Lisias",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "longino-sublime",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "author": "Pseudo-Longino",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "teocrito-bucolicos",
+      "title": "Εἰδύλλια · Idilios",
+      "author": "Teócrito, Bión y Mosco",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "antologia-griega",
+      "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
+      "author": "Antología griega",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aquiles-tacio-leucipa",
+      "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
+      "author": "Aquiles Tacio",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "title": "Περὶ οὐρανοῦ · De caelo",
+      "author": "Aristóteles",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "aristoteles-historia-animales",
+      "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+      "author": "Aristóteles",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "baquilides-poemas",
+      "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
+      "author": "Baquílides",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "calimaco-himnos",
+      "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
+      "author": "Calímaco y Licofrón",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "epicuro-restos",
+      "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
+      "author": "Epicuro",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "esquines-discursos",
+      "title": "Λόγοι · Discursos",
+      "author": "Esquines",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "filostrato-apolonio",
+      "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
+      "author": "Filóstrato",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "galeno-facultades-naturales",
+      "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+      "author": "Galeno",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "hipocrates-obras",
+      "title": "Corpus Hippocraticum (selección)",
+      "author": "Hipócrates",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "iseo-discursos",
+      "title": "Λόγοι · Discursos",
+      "author": "Iseo",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "jenofonte-ciropedia",
+      "title": "Κύρου παιδεία · Cyropaedia",
+      "author": "Jenofonte",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "jenofonte-economico",
+      "title": "Οἰκονομικός · Oeconomicus",
+      "author": "Jenofonte",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "longo-dafnis-cloe",
+      "title": "Δάφνις καὶ Χλόη · Poimeniká",
+      "author": "Longo",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "menandro-comedias",
+      "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
+      "author": "Menandro",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "platon-cratilo-parmenides",
+      "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
+      "author": "Platón",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "platon-protagoras",
+      "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
+      "author": "Platón",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "platon-teeteto-sofista",
+      "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
+      "author": "Platón",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "plotino-eneadas",
+      "title": "Ἐννεάδες · Enneades",
+      "author": "Plotino",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "lyra-graeca",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "author": "Poetas líricos griegos",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "quinto-esmirna-posthomericas",
+      "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
+      "author": "Quinto de Esmirna",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "amiano-marcelino-es",
+      "title": "Res gestae",
+      "author": "Amiano Marcelino",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "ausonio-obras",
+      "title": "Opuscula · Obras",
+      "author": "Ausonio",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "claudiano-poemas",
+      "title": "Carmina · Poemas",
+      "author": "Claudiano",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "higino-fabulas",
+      "title": "Fabulae · Astronomica poetica",
+      "author": "Higino",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "manilio-astronomica",
+      "title": "Astronomica",
+      "author": "Manilio",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "minucio-felix-octavio",
+      "title": "Octavius",
+      "author": "Minucio Félix",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    },
+    {
+      "workId": "valerio-flaco-argonautica",
+      "title": "Argonautica",
+      "author": "Valerio Flaco",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 1
+    }
+  ],
+  "warnings": [
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: caesar-civili / Commentarii de bello civili · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: caesar-gallico / Commentarii de bello Gallico · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: sallust-catiline / Bellum Catilinae · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: sallust-iugurtha / Bellum Iugurthinum · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: varro-rustica / Rerum rusticarum libri tres · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: diodorus / Βιβλιοθήκη ἱστορική · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: dionysius / Ῥωμαϊκὴ ἀρχαιολογία · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: quintilian / Institutio oratoria · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: tacitus-annales / Annales · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: tacitus-historiae / Historiae · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: frontinus / De aquaeductu urbis Romae · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: frontinus-strategemata / Strategemata · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: columella / De re rustica · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: celsus / De medicina · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: cato-agri-cultura / De agri cultura · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: plutarch-lives / Βίοι Παράλληλοι · Vidas paralelas · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: plutarch-moralia / Ἠθικά (Moralia) · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: cicero-de-finibus / De finibus bonorum et malorum · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: cicero-de-amicitia / Laelius de amicitia · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: cicero-de-senectute / Cato Maior de senectute · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: cicero-de-divinatione / De divinatione · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: velleius-historia / Historia Romana · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: suetonius-caesares / De vita Caesarum · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: polybius-historiae / Ἱστορίαι · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: herodotus-historiae / Ἱστορίαι · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: cassius-dio-historia / Ῥωμαϊκὴ ἱστορία · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: appian-romaika / Ῥωμαϊκά · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: ps-aristotle-mechanica / Μηχανικὰ προβλήματα · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: aeneas-tacticus-poliorketika / Πολιορκητικά · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: procopius-aedificiis / Περὶ κτισμάτων · texto y traducción inglesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: censorinus-die-natali / De die natali · texto y traducción francesa"
+    },
+    {
+      "id": "edition-metadata",
+      "message": "Historical edition lacks bibliographic details: augustus-res-gestae / Res gestae divi Augusti · texto y traducción inglesa"
+    },
+    {
+      "id": "local-bibliography",
+      "message": "101 works labelled locally readable do not yet have a structured edition citation in the work catalogue/localVersions; other reader-level sources may exist."
+    },
+    {
+      "id": "bibliography-backlog",
+      "message": "197 catalogue records lack a work-level or local-version structured edition citation; do not fabricate one."
+    }
+  ],
+  "failures": [],
+  "evidenceLevels": {
+    "bibliographicDescription": "Work-level description; not a source edition",
+    "structuredCitation": "Verbatim citation stored in catalogue/localVersions; not independently verified as correct",
+    "manuscriptEvidence": "Institution, shelfmark and linked catalogue record; not a collation of readings",
+    "documentaryExtraction": "DOCX paragraph index with source identity; not a certified original text or translation alignment",
+    "editorialDecision": "Requires separately recorded witnesses, readings, responsible editor and review"
+  },
+  "nextSteps": [
+    "Resolve missing structured citations first among locally readable titles (without inventing data).",
+    "Verify primary witnesses and reading variants at specific folios/loci, recording responsible specialist.",
+    "Publish a stable citeable reference per original-language locus and separate original, edition, translation and facsimile.",
+    "Retain independent unaligned full texts and disclose partial editions and translations.",
+    "Invite independent philological review with dated publicly recorded recommendations."
+  ]
+}

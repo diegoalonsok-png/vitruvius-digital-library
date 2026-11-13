@@ -29,9 +29,10 @@ if(registry.works!==new Set(registry.entries.map(e=>e.workId)).size)failure('reg
 const byWork=new Map();
 for(const entry of registry.entries){
  if(!ids.has(entry.workId))failure('orphan-index','Indexed work has no catalogue record: '+entry.workId);
- if(!filled(entry.path)||entry.path.includes('..')||!entry.path.startsWith('data/')&&!entry.path.startsWith('assets/')&&!entry.path.endsWith('.html'))
+ const remota=/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json$/.test(entry.path||'');
+ if(!remota&&(!filled(entry.path)||entry.path.includes('..')||!entry.path.startsWith('data/')&&!entry.path.startsWith('assets/')&&!entry.path.endsWith('.html')))
   failure('unsafe-index-path','Unsafe or missing index path: '+String(entry.path));
- else if(!existsSync(local(entry.path)))failure('missing-index','Missing indexed text: '+entry.path);
+ else if(!/^https:/.test(entry.path)&&!existsSync(local(entry.path)))failure('missing-index','Missing indexed text: '+entry.path);
  if(!filled(entry.sourceDescription)&&!filled(entry.attribution))warn('index-attribution','Text index lacks source description: '+entry.workId+' '+entry.path);
  if(!byWork.has(entry.workId))byWork.set(entry.workId,[]);
  byWork.get(entry.workId).push(entry);

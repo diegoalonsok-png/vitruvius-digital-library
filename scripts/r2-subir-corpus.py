@@ -63,6 +63,20 @@ def main():
             sys.exit(f"{url} no devuelve pasajes")
         print(f"  verificado en el dominio público: {archivo.name}")
 
+    # Manifiesto liviano: el repositorio no guarda el texto, pero sí deja
+    # constancia verificable de qué se subió, con cuántos pasajes y qué sha256.
+    manifiesto = {"schema": "vdl-corpus-r2-1", "base": f"{PUBLICO}/{PREFIJO}", "obras": []}
+    for archivo in archivos:
+        datos = json.loads(archivo.read_bytes())
+        manifiesto["obras"].append({
+            "archivo": archivo.name, "workId": datos["workId"], "language": datos["language"],
+            "title": datos.get("title", ""), "pasajes": len(datos["passages"]),
+            "caracteres": sum(len(p["text"]) for p in datos["passages"]),
+            "sha256": hashlib.sha256(archivo.read_bytes()).hexdigest(),
+            "fuentes": [s["urn"] for s in datos.get("sources", [])]})
+    destino = Path(__file__).resolve().parents[1] / "data/r2/corpus-manifest.json"
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    destino.write_text(json.dumps(manifiesto, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"{len(archivos)} obras en R2 · {total/1048576:.1f} MB · {PUBLICO}/{PREFIJO}")
 
 

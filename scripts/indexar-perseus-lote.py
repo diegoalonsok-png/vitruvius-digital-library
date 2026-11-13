@@ -151,6 +151,19 @@ def main():
     registro["count"] = len(registro["entries"])
     registro["works"] = len({e["workId"] for e in registro["entries"]})
     REGISTRO.write_text(json.dumps(registro, ensure_ascii=False, indent=1), encoding="utf-8")
+    # El informe público de cobertura declara las mismas cifras: si no se
+    # rehace, las auditorías lo dan por vencido y el sitio anuncia de menos.
+    cobertura = RAIZ / "data/classics-corpus/coverage-audit.json"
+    if cobertura.exists():
+        informe = json.loads(cobertura.read_text(encoding="utf-8"))
+        informe.setdefault("counts", {})["indexedTextVersions"] = registro["count"]
+        informe["counts"]["indexedDistinctWorks"] = registro["works"]
+        por_obra = {}
+        for e in registro["entries"]:
+            por_obra.setdefault(e["workId"], set()).add(e["path"])
+        for w in informe.get("works", []):
+            w["indexedTextFiles"] = sorted(por_obra.get(w["id"], []))
+        cobertura.write_text(json.dumps(informe, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print("\n".join(nuevas) or "(ninguna obra nueva)")
     if fallidas:
         print("\nSIN INDEXAR:")

@@ -1,7 +1,7 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "registry_entries": 247,
-  "works": 182,
+  "registry_entries": 279,
+  "works": 214,
   "editions": [
     {
       "work": "aeneas-tacticus-poliorketika",
@@ -104,6 +104,36 @@
       "status": "ok"
     },
     {
+      "work": "amiano-marcelino-es",
+      "language": "la",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/amiano-marcelino-es-la.json",
+      "reader": "classics-text-reader.html?work=amiano-marcelino-es",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "antologia-griega",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json",
+      "reader": "classics-text-reader.html?work=antologia-griega",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "apolonio-argonauticas",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
+      "reader": "classics-text-reader.html?work=apolonio-argonauticas",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
       "work": "appian-romaika",
       "language": "grc",
       "format": "json-passages",
@@ -152,6 +182,16 @@
       "passages": 351,
       "characters": 393902,
       "status": "ok"
+    },
+    {
+      "work": "aquiles-tacio-leucipa",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json",
+      "reader": "classics-text-reader.html?work=aquiles-tacio-leucipa",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "aratus-phaenomena",
@@ -242,6 +282,26 @@
       "passages": 213,
       "characters": 75809,
       "status": "ok"
+    },
+    {
+      "work": "aristoteles-del-cielo",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json",
+      "reader": "classics-text-reader.html?work=aristoteles-del-cielo",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "aristoteles-historia-animales",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json",
+      "reader": "classics-text-reader.html?work=aristoteles-historia-animales",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "aristotle-de-anima",
@@ -404,6 +464,26 @@
       "status": "ok"
     },
     {
+      "work": "ausonio-obras",
+      "language": "la",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/ausonio-obras-la.json",
+      "reader": "classics-text-reader.html?work=ausonio-obras",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "baquilides-poemas",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json",
+      "reader": "classics-text-reader.html?work=baquilides-poemas",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
       "work": "barnabas",
       "language": "grc",
       "format": "json-passages",
@@ -462,6 +542,16 @@
       "passages": 404,
       "characters": 384457,
       "status": "ok"
+    },
+    {
+      "work": "calimaco-himnos",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json",
+      "reader": "classics-text-reader.html?work=calimaco-himnos",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "cato-agri-cultura",
@@ -664,6 +754,16 @@
       "status": "ok"
     },
     {
+      "work": "claudiano-poemas",
+      "language": "la",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/claudiano-poemas-la.json",
+      "reader": "classics-text-reader.html?work=claudiano-poemas",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
       "work": "clement",
       "language": "grc",
       "format": "json-passages",
@@ -812,6 +912,26 @@
       "passages": 53,
       "characters": 30865,
       "status": "ok"
+    },
+    {
+      "work": "epicuro-restos",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json",
+      "reader": "classics-text-reader.html?work=epicuro-restos",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "esquines-discursos",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json",
+      "reader": "classics-text-reader.html?work=esquines-discursos",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "euclid-elementa",
@@ -1004,6 +1124,16 @@
       "status": "ok"
     },
     {
+      "work": "filostrato-apolonio",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json",
+      "reader": "classics-text-reader.html?work=filostrato-apolonio",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
       "work": "frontinus",
       "language": "la",
       "format": "json-passages",
@@ -1042,6 +1172,16 @@
       "passages": 724,
       "characters": 1342211,
       "status": "ok"
+    },
+    {
+      "work": "galeno-facultades-naturales",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json",
+      "reader": "classics-text-reader.html?work=galeno-facultades-naturales",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "hero-automata",
@@ -1112,6 +1252,16 @@
       "passages": 104,
       "characters": 45999,
       "status": "ok"
+    },
+    {
+      "work": "hipocrates-obras",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json",
+      "reader": "classics-text-reader.html?work=hipocrates-obras",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "hippocrates-aphorisms",
@@ -1254,6 +1404,46 @@
       "status": "ok"
     },
     {
+      "work": "iseo-discursos",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json",
+      "reader": "classics-text-reader.html?work=iseo-discursos",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "isocrates-discursos",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json",
+      "reader": "classics-text-reader.html?work=isocrates-discursos",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "jenofonte-ciropedia",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json",
+      "reader": "classics-text-reader.html?work=jenofonte-ciropedia",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "jenofonte-economico",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json",
+      "reader": "classics-text-reader.html?work=jenofonte-economico",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
       "work": "josephus-antiquities",
       "language": "grc",
       "format": "json-passages",
@@ -1305,6 +1495,16 @@
       "locator": "pdf-page-only; unverified OCR"
     },
     {
+      "work": "lisias-discursos",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json",
+      "reader": "classics-text-reader.html?work=lisias-discursos",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
       "work": "livy",
       "language": "la",
       "format": "json-passages",
@@ -1313,6 +1513,26 @@
       "passages": 8105,
       "characters": 1377057,
       "status": "ok"
+    },
+    {
+      "work": "longino-sublime",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json",
+      "reader": "classics-text-reader.html?work=longino-sublime",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "longo-dafnis-cloe",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json",
+      "reader": "classics-text-reader.html?work=longo-dafnis-cloe",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "lucan",
@@ -1425,6 +1645,26 @@
       "status": "ok"
     },
     {
+      "work": "menandro-comedias",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json",
+      "reader": "classics-text-reader.html?work=menandro-comedias",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "minucio-felix-octavio",
+      "language": "la",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/minucio-felix-octavio-la.json",
+      "reader": "classics-text-reader.html?work=minucio-felix-octavio",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
       "work": "nepos",
       "language": "la",
       "format": "json-passages",
@@ -1433,6 +1673,16 @@
       "passages": 176,
       "characters": 200612,
       "status": "ok"
+    },
+    {
+      "work": "origenes",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json",
+      "reader": "classics-text-reader.html?work=origenes",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "ovid",
@@ -1825,6 +2075,36 @@
       "status": "ok"
     },
     {
+      "work": "platon-cratilo-parmenides",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json",
+      "reader": "classics-text-reader.html?work=platon-cratilo-parmenides",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "platon-protagoras",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json",
+      "reader": "classics-text-reader.html?work=platon-protagoras",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
+      "work": "platon-teeteto-sofista",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json",
+      "reader": "classics-text-reader.html?work=platon-teeteto-sofista",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
       "work": "plautus-amphitruo",
       "language": "la",
       "format": "json-passages",
@@ -1863,6 +2143,16 @@
       "passages": 1979,
       "characters": 453794,
       "status": "ok"
+    },
+    {
+      "work": "plotino-eneadas",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json",
+      "reader": "classics-text-reader.html?work=plotino-eneadas",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "polybius-historiae",
@@ -1923,6 +2213,16 @@
       "passages": 3763,
       "characters": 1213984,
       "status": "ok"
+    },
+    {
+      "work": "quinto-esmirna-posthomericas",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json",
+      "reader": "classics-text-reader.html?work=quinto-esmirna-posthomericas",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "sallust-catiline",
@@ -2275,6 +2575,16 @@
       "status": "ok"
     },
     {
+      "work": "teocrito-bucolicos",
+      "language": "grc",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json",
+      "reader": "classics-text-reader.html?work=teocrito-bucolicos",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
+    },
+    {
       "work": "terentius-andria",
       "language": "la",
       "format": "json-passages",
@@ -2333,6 +2643,16 @@
       "passages": 249,
       "characters": 98211,
       "status": "ok"
+    },
+    {
+      "work": "valerio-flaco-argonautica",
+      "language": "la",
+      "format": "json-passages",
+      "path": "https://libros.vitruvius-digital-library.org/corpus/valerio-flaco-argonautica-la.json",
+      "reader": "classics-text-reader.html?work=valerio-flaco-argonautica",
+      "passages": 0,
+      "characters": 0,
+      "status": "missing"
     },
     {
       "work": "valerius-maximus-facta",
@@ -3149,7 +3469,13 @@
     }
   ],
   "errors": [
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/amiano-marcelino-es-la.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json",
     "Duplicate loci in data/classics-corpus/appian-romaika-grc.json: ['tlg0551.tlg003:urn:cts:greekLit:tlg0551.tlg003.perseus-grc2:V', 'tlg0551.tlg004:urn:cts:greekLit:tlg0551.tlg004.perseus-grc2:IV', 'tlg0551.tlg004:urn:cts:greekLit:tlg0551.tlg004.perseus-grc2:X', 'tlg0551.tlg005:urn:cts:greekLit:tlg0551.tlg005.perseus-grc2:I', 'tlg0551.tlg006:urn:cts:greekLit:tlg0551.tlg006.perseus-grc2:II']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json",
     "Duplicate loci in data/classics-corpus/aristotle-de-anima-grc.json: ['urn:cts:greekLit:tlg0086.tlg002.1st1K-grc2:1.1', 'urn:cts:greekLit:tlg0086.tlg002.1st1K-grc2:1.2', 'urn:cts:greekLit:tlg0086.tlg002.1st1K-grc2:1.3', 'urn:cts:greekLit:tlg0086.tlg002.1st1K-grc2:1.4', 'urn:cts:greekLit:tlg0086.tlg002.1st1K-grc2:1.5']",
     "Duplicate loci in data/classics-corpus/aristotle-metaphysics-grc.json: ['urn:cts:greekLit:tlg0086.tlg025.perseus-grc2:1.1', 'urn:cts:greekLit:tlg0086.tlg025.perseus-grc2:1.2', 'urn:cts:greekLit:tlg0086.tlg025.perseus-grc2:1.3', 'urn:cts:greekLit:tlg0086.tlg025.perseus-grc2:1.4', 'urn:cts:greekLit:tlg0086.tlg025.perseus-grc2:1.5']",
     "Duplicate loci in data/classics-corpus/aristotle-nicomachean-ethics-grc.json: ['urn:cts:greekLit:tlg0086.tlg010.perseus-grc2:1.6', 'urn:cts:greekLit:tlg0086.tlg010.perseus-grc2:1.7', 'urn:cts:greekLit:tlg0086.tlg010.perseus-grc2:1.8', 'urn:cts:greekLit:tlg0086.tlg010.perseus-grc2:1.10', 'urn:cts:greekLit:tlg0086.tlg010.perseus-grc2:1.13']",
@@ -3157,18 +3483,37 @@
     "Duplicate loci in data/classics-corpus/aristotle-politics-grc.json: ['urn:cts:greekLit:tlg0086.tlg035.perseus-grc2:1.1253a', 'urn:cts:greekLit:tlg0086.tlg035.perseus-grc2:1.1254a', 'urn:cts:greekLit:tlg0086.tlg035.perseus-grc2:1.1254b', 'urn:cts:greekLit:tlg0086.tlg035.perseus-grc2:1.1255a', 'urn:cts:greekLit:tlg0086.tlg035.perseus-grc2:1.1255b']",
     "Duplicate loci in data/classics-corpus/aristotle-rhetoric-grc.json: ['urn:cts:greekLit:tlg0086.tlg038.perseus-grc2:3.10.7']",
     "Duplicate loci in data/classics-corpus/aristoxenus-harmonica-grc.json: ['urn:cts:greekLit:tlg0088.tlg001.1st1K-grc1:1.7', 'urn:cts:greekLit:tlg0088.tlg001.1st1K-grc1:1.21', 'urn:cts:greekLit:tlg0088.tlg001.1st1K-grc1:1.23', 'urn:cts:greekLit:tlg0088.tlg001.1st1K-grc1:2.43', 'urn:cts:greekLit:tlg0088.tlg001.1st1K-grc1:2.47']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/ausonio-obras-la.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json",
     "Duplicate loci in data/classics-corpus/cicero-de-natura-deorum-la.json: ['urn:cts:latinLit:phi0474.phi050.perseus-lat2:3.65']",
     "Duplicate loci in data/classics-corpus/cicero-tusculanae-la.json: ['urn:cts:latinLit:phi0474.phi049.perseus-lat2:3.11']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/claudiano-poemas-la.json",
     "Duplicate loci in data/classics-corpus/diodorus-grc.json: ['urn:cts:greekLit:tlg0060.tlg001.perseus-grc6:18.arg.0', 'urn:cts:greekLit:tlg0060.tlg001.perseus-grc6:19.arg.0', 'urn:cts:greekLit:tlg0060.tlg001.perseus-grc6:20.arg.0']",
     "Duplicate loci in data/classics-corpus/dioscorides-grc.json: ['urn:cts:greekLit:tlg0656.tlg001.1st1K-grc1:1.1.1', 'urn:cts:greekLit:tlg0656.tlg001.1st1K-grc1:1.1.2', 'urn:cts:greekLit:tlg0656.tlg001.1st1K-grc1:1.3', 'urn:cts:greekLit:tlg0656.tlg001.1st1K-grc1:1.4.1', 'urn:cts:greekLit:tlg0656.tlg001.1st1K-grc1:1.6']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json",
     "Duplicate loci in data/classics-corpus/euclid-elementa-grc.json: ['urn:cts:greekLit:tlg1799.tlg001.perseus-grc2:1.prop.4', 'urn:cts:greekLit:tlg1799.tlg001.perseus-grc2:1.prop.5', 'urn:cts:greekLit:tlg1799.tlg001.perseus-grc2:1.prop.26', 'urn:cts:greekLit:tlg1799.tlg001.perseus-grc2:1.prop.29', 'urn:cts:greekLit:tlg1799.tlg001.perseus-grc2:1.prop.45']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json",
     "Duplicate loci in data/classics-corpus/galen-ars-medica-grc.json: ['urn:cts:greekLit:tlg0057.tlg007.1st1K-grc1:1', 'urn:cts:greekLit:tlg0057.tlg007.1st1K-grc1:2', 'urn:cts:greekLit:tlg0057.tlg007.1st1K-grc1:4', 'urn:cts:greekLit:tlg0057.tlg007.1st1K-grc1:6', 'urn:cts:greekLit:tlg0057.tlg007.1st1K-grc1:8']",
     "Duplicate loci in data/classics-corpus/galen-de-usu-partium-grc.json: ['urn:cts:greekLit:tlg0057.tlg017.1st1K-grc1:1.2', 'urn:cts:greekLit:tlg0057.tlg017.1st1K-grc1:1.3', 'urn:cts:greekLit:tlg0057.tlg017.1st1K-grc1:1.5', 'urn:cts:greekLit:tlg0057.tlg017.1st1K-grc1:1.8', 'urn:cts:greekLit:tlg0057.tlg017.1st1K-grc1:1.9']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json",
     "Duplicate loci in data/classics-corpus/hero-automata-grc.json: ['urn:cts:greekLit:tlg0559.tlg002.1st1K-grc1:1.1', 'urn:cts:greekLit:tlg0559.tlg002.1st1K-grc1:1.2', 'urn:cts:greekLit:tlg0559.tlg002.1st1K-grc1:1.5', 'urn:cts:greekLit:tlg0559.tlg002.1st1K-grc1:1.6', 'urn:cts:greekLit:tlg0559.tlg002.1st1K-grc1:1.11']",
     "Duplicate loci in data/classics-corpus/hero-pneumatica-grc.json: ['urn:cts:greekLit:tlg0559.tlg001.1st1K-grc1:1.pr', 'urn:cts:greekLit:tlg0559.tlg001.1st1K-grc1:1.1', 'urn:cts:greekLit:tlg0559.tlg001.1st1K-grc1:1.2', 'urn:cts:greekLit:tlg0559.tlg001.1st1K-grc1:1.3', 'urn:cts:greekLit:tlg0559.tlg001.1st1K-grc1:1.4']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json",
     "Duplicate loci in data/classics-corpus/irenaeus-grc.json: ['urn:cts:greekLit:tlg1447.tlg001.1st1K-grc1:prooemium', 'urn:cts:greekLit:tlg1447.tlg001.1st1K-grc1:1.1', 'urn:cts:greekLit:tlg1447.tlg001.1st1K-grc1:1.5', 'urn:cts:greekLit:tlg1447.tlg001.1st1K-grc1:1.7', 'urn:cts:greekLit:tlg1447.tlg001.1st1K-grc1:1.8']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json",
     "Duplicate loci in data/classics-corpus/josephus-antiquities-grc.json: ['urn:cts:greekLit:tlg0526.tlg001.perseus-grc2:9.arg', 'urn:cts:greekLit:tlg0526.tlg001.perseus-grc2:10.arg', 'urn:cts:greekLit:tlg0526.tlg001.perseus-grc2:13.arg', 'urn:cts:greekLit:tlg0526.tlg001.perseus-grc2:14.arg', 'urn:cts:greekLit:tlg0526.tlg001.perseus-grc2:17.arg']",
     "Duplicate loci in data/classics-corpus/justin-grc.json: ['urn:cts:greekLit:tlg0645.tlg001.1st1K-grc1:12', 'urn:cts:greekLit:tlg0645.tlg001.1st1K-grc1:15', 'urn:cts:greekLit:tlg0645.tlg001.1st1K-grc1:16', 'urn:cts:greekLit:tlg0645.tlg001.1st1K-grc1:32', 'urn:cts:greekLit:tlg0645.tlg001.1st1K-grc1:40']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/minucio-felix-octavio-la.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json",
     "Duplicate loci in data/classics-corpus/philo-grc.json: ['urn:cts:greekLit:tlg0018.tlg001.1st1K-grc1:38', 'urn:cts:greekLit:tlg0018.tlg001.1st1K-grc1:63', 'urn:cts:greekLit:tlg0018.tlg001.1st1K-grc1:78', 'urn:cts:greekLit:tlg0018.tlg001.1st1K-grc1:104', 'urn:cts:greekLit:tlg0018.tlg001.1st1K-grc1:105']",
     "Duplicate loci in data/classics-corpus/philo-de-vita-mosis-grc.json: ['urn:cts:greekLit:tlg0018.tlg022.1st1K-grc1:1.111', 'urn:cts:greekLit:tlg0018.tlg022.1st1K-grc1:1.141', 'urn:cts:greekLit:tlg0018.tlg022.1st1K-grc1:1.147', 'urn:cts:greekLit:tlg0018.tlg022.1st1K-grc1:2.47', 'urn:cts:greekLit:tlg0018.tlg022.1st1K-grc1:2.89']",
     "Duplicate loci in data/classics-corpus/plato-crito-grc.json: ['urn:cts:greekLit:tlg0059.tlg003.perseus-grc2:44', 'urn:cts:greekLit:tlg0059.tlg003.perseus-grc2:45', 'urn:cts:greekLit:tlg0059.tlg003.perseus-grc2:47', 'urn:cts:greekLit:tlg0059.tlg003.perseus-grc2:48', 'urn:cts:greekLit:tlg0059.tlg003.perseus-grc2:50']",
@@ -3180,9 +3525,16 @@
     "Duplicate loci in data/classics-corpus/plato-republic-grc.json: ['urn:cts:greekLit:tlg0059.tlg030.perseus-grc2:1.332', 'urn:cts:greekLit:tlg0059.tlg030.perseus-grc2:1.335', 'urn:cts:greekLit:tlg0059.tlg030.perseus-grc2:1.338', 'urn:cts:greekLit:tlg0059.tlg030.perseus-grc2:1.341', 'urn:cts:greekLit:tlg0059.tlg030.perseus-grc2:1.349']",
     "Duplicate loci in data/classics-corpus/plato-symposium-grc.json: ['urn:cts:greekLit:tlg0059.tlg011.perseus-grc2:175', 'urn:cts:greekLit:tlg0059.tlg011.perseus-grc2:183', 'urn:cts:greekLit:tlg0059.tlg011.perseus-grc2:195', 'urn:cts:greekLit:tlg0059.tlg011.perseus-grc2:196', 'urn:cts:greekLit:tlg0059.tlg011.perseus-grc2:199']",
     "Duplicate loci in data/classics-corpus/plato-timaeus-grc.json: ['urn:cts:greekLit:tlg0059.tlg031.perseus-grc2:21', 'urn:cts:greekLit:tlg0059.tlg031.perseus-grc2:39', 'urn:cts:greekLit:tlg0059.tlg031.perseus-grc2:41', 'urn:cts:greekLit:tlg0059.tlg031.perseus-grc2:53', 'urn:cts:greekLit:tlg0059.tlg031.perseus-grc2:79']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json",
     "Duplicate loci in data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json: ['tlg0548.tlg001:urn:cts:greekLit:tlg0548.tlg001.perseus-grc2:1.6.3', 'tlg0548.tlg001:urn:cts:greekLit:tlg0548.tlg001.perseus-grc2:2.1.5', 'tlg0548.tlg001:urn:cts:greekLit:tlg0548.tlg001.perseus-grc2:2.5.9', 'tlg0548.tlg001:urn:cts:greekLit:tlg0548.tlg001.perseus-grc2:2.5.10', 'tlg0548.tlg001:urn:cts:greekLit:tlg0548.tlg001.perseus-grc2:2.5.11']",
     "Duplicate loci in data/classics-corpus/ptolemy-almagest-grc.json: ['urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1:1.1', 'urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1:1.2', 'urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1:1.3', 'urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1:1.4', 'urn:cts:greekLit:tlg0363.tlg001.1st1K-grc1:1.5']",
-    "Duplicate loci in data/classics-corpus/strabo-grc.json: ['urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.1.16', 'urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.2.3', 'urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.2.8', 'urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.2.20', 'urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.2.24']"
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json",
+    "Duplicate loci in data/classics-corpus/strabo-grc.json: ['urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.1.16', 'urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.2.3', 'urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.2.8', 'urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.2.20', 'urn:cts:greekLit:tlg0099.tlg001.perseus-grc2:1.2.24']",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json",
+    "Missing source: https://libros.vitruvius-digital-library.org/corpus/valerio-flaco-argonautica-la.json"
   ],
   "warnings": [
     "HTML source needs manual block-level completeness review: catullus-carmina/la",
