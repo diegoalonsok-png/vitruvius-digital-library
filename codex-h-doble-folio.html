@@ -145,7 +145,7 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 @media(max-width:760px){.banner{padding-top:130px}.reader-header-tools{left:12px;right:12px;gap:9px;justify-content:flex-start}.reader-lang-select select{min-width:140px;font-size:14px}.reader-header-color{padding:9px 13px;min-height:54px;font-size:14px}}
 </style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261113-aa-en-linea"></script><link rel="canonical" href="https://vitruvius-digital-library.org/codex-h-doble-folio">
-<meta name="citation_title" content="Codex H · Doble hoja · Biblioteca Vitruviana"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://vitruvius-digital-library.org/codex-h-doble-folio"><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body><main>
+<meta name="citation_title" content="Codex H · Doble hoja · Biblioteca Vitruviana"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://vitruvius-digital-library.org/codex-h-doble-folio"><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script><script defer src="assets/academic-image-ruler.js?v=20261113-1"></script></head><body><main>
 <nav><a href="index.html">← Biblioteca principal</a><a href="codex-h-folios-local.html">Lector de folio único</a><a href="harleianus.html">Visor H original</a></nav>
 <div class="extra-toolbar" role="group" aria-label="Herramientas de lectura">
 <button type="button" id="loupe-toggle" aria-pressed="true">◉ <span data-tr="loupeOn">Desactivar lupa</span></button>
@@ -183,7 +183,7 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 <label><span data-tr="contrast">Contraste</span> <input type="range" id="left-quick-contrast" min="40" max="220" value="100" aria-label="Contraste del folio left"><output id="left-quick-contrast-value">100%</output></label>
 <button type="button" id="left-quick-panel"><span data-tr="quickMore">Más ajustes</span></button>
 </div></div>
-<div class="leaf-stage" id="left-stage" tabindex="0"><div class="placeholder" id="left-placeholder">Esperando el índice…</div><img id="left-image" alt="Folio izquierdo" hidden></div>
+<div class="leaf-stage" id="left-stage" data-academic-ruler-image="#left-image" tabindex="0"><div class="placeholder" id="left-placeholder">Esperando el índice…</div><img id="left-image" alt="Folio izquierdo" hidden></div>
 <div class="scroll-nav">
 <label><span data-tr="scroll">Bajar por el folio</span>
 <input type="range" id="left-position" min="0" max="100" value="0" step="1" aria-label="Posición vertical del folio"></label>
@@ -209,7 +209,7 @@ html[data-reader-theme=dark] .extra-toolbar select{background:#172c3c;color:#f5e
 <label><span data-tr="contrast">Contraste</span> <input type="range" id="right-quick-contrast" min="40" max="220" value="100" aria-label="Contraste del folio right"><output id="right-quick-contrast-value">100%</output></label>
 <button type="button" id="right-quick-panel"><span data-tr="quickMore">Más ajustes</span></button>
 </div></div>
-<div class="leaf-stage" id="right-stage" tabindex="0"><div class="placeholder" id="right-placeholder">Esperando el índice…</div><img id="right-image" alt="Folio derecho" hidden></div>
+<div class="leaf-stage" id="right-stage" data-academic-ruler-image="#right-image" tabindex="0"><div class="placeholder" id="right-placeholder">Esperando el índice…</div><img id="right-image" alt="Folio derecho" hidden></div>
 <div class="scroll-nav">
 <label><span data-tr="scroll">Bajar por el folio</span>
 <input type="range" id="right-position" min="0" max="100" value="0" step="1" aria-label="Posición vertical del folio"></label>
