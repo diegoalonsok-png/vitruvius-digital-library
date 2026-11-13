@@ -5,7 +5,7 @@
  */
 import {chromium} from "playwright";
 import {mkdirSync,writeFileSync} from "node:fs";
-const BASE="https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia.html";
+const BASE="https://vitruvius-digital-library.org/vitruvia.html";
 const testCases=[
  {term:"Akhenaten",type:"egyptian-person",aliases:["Akhenaten","Akenatón","Ajenatón","Akhenatón"]},
  {term:"Cicerón",type:"classical-person",aliases:["Cicerón","Cicero"]},
@@ -33,7 +33,7 @@ async function audit(c){
  const context=await browser.newContext({viewport:{width:1365,height:900},locale:"es-AR"});
  const page=await context.newPage(),errors=[],http=[];
  page.on("pageerror",e=>errors.push(e.message.slice(0,160)));
- page.on("response",r=>{if(r.status()>=400&&r.url().startsWith("https://diegoalonsok-png.github.io/vitruvius-digital-library/"))http.push(r.status()+" "+r.url().slice(0,150))});
+ page.on("response",r=>{if(r.status()>=400&&r.url().startsWith("https://vitruvius-digital-library.org/"))http.push(r.status()+" "+r.url().slice(0,150))});
  const url=BASE+"?q="+encodeURIComponent(c.term)+"&mode=all";
  const start=take(),row={term:c.term,type:c.type,url,expectedIdentity:c.aliases,code:null,domMs:null,loadMs:null,ttfbMs:null,firstResultMs:null,settledMs:null,firstResultTitles:[],results:0,articleExcerpt:"",sourceLinks:0,academicLinks:0,rightRail:{visible:false,width:0,hasContent:false},hadExpectedIdentity:null,jsErrors:[],internalHTTPFailures:[],error:null};
  try{
@@ -96,7 +96,7 @@ try{
  // Extended cross-site audit: all root HTML pages, every visible button
  // inventory, plus representative real interactions on the site's searchers.
  // Never click unknown controls: they may download, print or alter user state.
- const SITE="https://diegoalonsok-png.github.io/vitruvius-digital-library/";
+ const SITE="https://vitruvius-digital-library.org/";
  const {readdirSync}=await import("node:fs");
  const allPages=readdirSync(".").filter(name=>name.endsWith(".html")&&!name.startsWith("google")).sort();
  const siteAudit={schema:"vitruvius-comprehensive-public-audit-v1",date:now,base:SITE,

@@ -1,6 +1,6 @@
 (()=>{"use strict";
 const $=s=>document.querySelector(s), LANG={la:"Latín",grc:"Griego",en:"Inglés",es:"Castellano",fr:"Francés"};
-const BASE="https://diegoalonsok-png.github.io/vitruvius-digital-library/",STORE="vitruvius-control-academico-v1";
+const BASE="https://vitruvius-digital-library.org/",STORE="vitruvius-control-academico-v1";
 const el=(tag,attrs={},value)=>{const x=document.createElement(tag);for(const[k,v]of Object.entries(attrs))x.setAttribute(k,v);if(value!==undefined)x.textContent=String(value);return x};
 const cases=[
 ["domus","domus","Lexicología latina","Concordancias por locus, formas y enlace al Lexicon."],

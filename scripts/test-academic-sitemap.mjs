@@ -3,7 +3,7 @@
  * Google, Google Scholar, or an institutional catalogue. */
 import assert from "node:assert/strict";
 import fs from "node:fs";
-const base="https://diegoalonsok-png.github.io/vitruvius-digital-library/";
+const base="https://vitruvius-digital-library.org/";
 const pages=[
  "buscador-parrafos-vitruvio.html",
  "centro-control-academico.html",

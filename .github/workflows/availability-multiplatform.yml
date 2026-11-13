@@ -22,7 +22,7 @@ jobs:
       - name: Probar tiempos HTTP en servidores independientes
         run: |
           set -uo pipefail
-          root="https://diegoalonsok-png.github.io/vitruvius-digital-library"
+          root="https://vitruvius-digital-library.org"
           printf 'Sistema=%s\nUTC=%s\n' "${{ matrix.os }}" "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
           failures=0
           for path in index.html vitruvia.html vitruvia-lexicon.html bibliotheca-graeca-latina.html lector-bilingue.html como-citar.html; do

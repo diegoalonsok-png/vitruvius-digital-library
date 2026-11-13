@@ -1,0 +1,462 @@
+{
+ "schema": "vdl-cotejo-aparato-h-1",
+ "fecha": "2026-11-12",
+ "responsable": "Lectura sobre las imágenes de Harley MS 2767 del archivo maestro del sitio (British Library), con ayuda de IA; pendiente de verificación externa por especialistas.",
+ "metodo": "Para cada decisión del aparato de V514 que cita la lectura de H se abrió el folio indicado y se transcribió el pasaje. «confirma»: H trae lo que dice el aparato. «precisa»: lo confirma con una corrección de detalle (folio, grafía o alcance), indicada en la nota. «discrepa»: H no trae lo que dice el aparato.",
+ "recuentos": {
+  "entradas": 64,
+  "loci": 41,
+  "confirma": 60,
+  "precisa": 4
+ },
+ "cotejos": [
+  {
+   "locus": "1.1.10",
+   "H": "om. locis",
+   "folio": "4r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "renglón 8: «necessaria sunt aedificiis communibus pa|rietum» — sin locis"
+  },
+  {
+   "locus": "1.1.11",
+   "H": "om. se",
+   "folio": "4r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«non puto posse iuste repente pro(fi)teri» — sin se"
+  },
+  {
+   "locus": "1.1.1",
+   "H": "ea nascitur & fabrica (ut vid.)",
+   "folio": "1v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«quae ab caeteris artibus pficiun(tur) opera · ea nascitur & fabrica & rationatione»"
+  },
+  {
+   "locus": "1.1.1",
+   "H": "perficitur; opus est",
+   "folio": "1v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«manibus perficitur · e materia cuiuscumque generis opus est ad propositum deformationis»"
+  },
+  {
+   "locus": "1.1.1",
+   "H": "om. cuius iudicio probantur omnia",
+   "folio": "1v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«eruditionibus ornata · quae ab caeteris artibus pficiun(tur) opera»: H omite «cuius iudicio probantur omnia»"
+  },
+  {
+   "locus": "1.1.5",
+   "H": "declarata (ut vid.)",
+   "folio": "2v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«ciuitate declarata · matronas eorum in seruitutem abduxerunt» (lectura clara)"
+  },
+  {
+   "locus": "1.1.5",
+   "H": "nota poena",
+   "folio": "2v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«ut etiam posteris nota poena peccati caryatium memoriae traderetur»"
+  },
+  {
+   "locus": "1.1.12",
+   "H": "Ac fortasse … imperitis hominibus posse",
+   "folio": "4v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«Ac fortasse mirum uidebitur imperitis hominibus posse naturam tantum numerum doctrinarum»"
+  },
+  {
+   "locus": "1.1.13",
+   "H": "fuerit",
+   "folio": "4v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«grammaticus uti fuerit aristarchus»"
+  },
+  {
+   "locus": "1.1.15",
+   "H": "et ad pedem motus",
+   "folio": "5r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«uti medicis & musicis & de uenarum rythmo & ad pedem motus»"
+  },
+  {
+   "locus": "1.1.16",
+   "H": "a geometris divisus",
+   "folio": "5v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«& diapente a geometris diuisus · qui graece logos opticos appellatur»"
+  },
+  {
+   "locus": "1.1.17",
+   "H": "om. mechanicas",
+   "folio": "5v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "último renglón: «qui multas res organicas gnominicas» — sin mechanicas"
+  },
+  {
+   "locus": "1.2.4",
+   "H": "om. capituli",
+   "folio": "7r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 9–10: «embatere ballis|tae foramine quod greci peritreton» — sin capituli"
+  },
+  {
+   "locus": "1.1.18",
+   "H": "idem",
+   "folio": "6r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 10–11: «qui ea uolumina sunt | lecturi»"
+  },
+  {
+   "locus": "1.2.2",
+   "H": "taxis; diathesin (en letras latinas)",
+   "folio": "6r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«quae greçe taxir dicitur & ex dispositione · hanc autem greci diathesin uocitant» — en letras latinas"
+  },
+  {
+   "locus": "1.2.2",
+   "H": "taxis; diathesin (en lettres latines)",
+   "folio": "6r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "«quae greçe taxir dicitur … greci diathesin uocitant» — en letras latinas"
+  },
+  {
+   "locus": "1.6.11",
+   "H": "et impetu scandendo",
+   "folio": "16r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 14–15: «pulsat aeris umorem & impetu | scandendo»"
+  },
+  {
+   "locus": "2.1.1",
+   "H": "aliter",
+   "folio": "19v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 9–10: «cum profundebantur aliter e spiritu uoces» — sin «atque aliter»"
+  },
+  {
+   "locus": "2.1.2",
+   "H": "earum imitantes",
+   "folio": "19v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 21–22: «aedificationes earũ imitan|tes de luto»"
+  },
+  {
+   "locus": "2.1.4",
+   "H": "om.",
+   "folio": "20r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "último renglón: «recidentes ad extremos transtra traiciunt gradatim» — sin angulos"
+  },
+  {
+   "locus": "2.3.4",
+   "H": "nec patiantur … potestatem tras proprietate; et cum ducuntur",
+   "folio": "23r",
+   "resultado": "precisa",
+   "lecturaEnImagen": "ll. 17–19: «cũ sit pro|prietate non patiantur penetrare in corpus umi|dam potestatem» y l. 23 «& cũ ducun|tur a tempestatibus»: orden confirmado, pero H lee «non patiantur», no «nec»"
+  },
+  {
+   "locus": "2.6.6",
+   "H": "inciso al final del parágrafo",
+   "folio": "26r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 3–6: tras «habent uirtutem» sigue «Est autem materiae potestas mollior quã tofus solidior quã terra · quo penitus ab imo uehementia uaporis adusto…»: el inciso cierra el parágrafo"
+  },
+  {
+   "locus": "2.6.6",
+   "H": "incise en fin de paragraphe",
+   "folio": "26r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 3–6: «habent uirtutem · Est autem materiae potestas mollior…» al final del parágrafo"
+  },
+  {
+   "locus": "2.8.8",
+   "H": "om.",
+   "folio": "28v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 12–13: «& ita ex reliqua summa parte reddi pro his pa|rietibus» — sin pro rata"
+  },
+  {
+   "locus": "2.8.10",
+   "H": "presente",
+   "folio": "29r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 3–4: «quã sardiani ciuib; ad requiescen|dum aetatis otio seniorum collegio gerusiã»"
+  },
+  {
+   "locus": "2.8.10",
+   "H": "présent",
+   "folio": "29r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 3–4: «ciuib; ad requiescen|dum aetatis otio»"
+  },
+  {
+   "locus": "3.3.7",
+   "H": "om. (salto)",
+   "folio": "41v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 7–8: «ipsarum columnarum altitudo modulo[rum] | habebunt iustam rationem» — salta de altitudo… a …altitudinesque columnarum"
+  },
+  {
+   "locus": "3.3.7",
+   "H": "om. (saut)",
+   "folio": "41v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 7–8: «altitudo modulo[rum] | habebunt iustam rationem» — saut"
+  },
+  {
+   "locus": "3.3.8",
+   "H": "exostylum",
+   "folio": "41v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "l. 12: «primus exostylum pseudo dipteri ue rationem»"
+  },
+  {
+   "locus": "3.3.8",
+   "H": "XXXVIII",
+   "folio": "41v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 13–14: «ordines columnarum · XXXVIII · eaque ratione»"
+  },
+  {
+   "locus": "3.3.10",
+   "H": "in novem partibus … et dimidiam",
+   "folio": "42r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 11–13: «Eustyli autem aedis columnae ut systyli in nouem partibus altitudo diuidatur & dimidiã | partem»"
+  },
+  {
+   "locus": "3.3.7",
+   "H": "decuras semis … decem 4 novem … viginti 4 quinque et semissem",
+   "folio": "41r–41v",
+   "resultado": "precisa",
+   "lecturaEnImagen": "41r últimas líneas: «diuidatur in partes decuras semis praeter crepidines … si sex erit columnarum in … partes decem nouem · si octostylos constituet[ur]»; 41v l. 1: «diuidatur in uiginti quinque & semissem». Confirma las tres cifras de H; el «4» del aparato es un error de extracción, y el folio es 41r–41v, no 1r–1v"
+  },
+  {
+   "locus": "3.4.1",
+   "H": "continuidad confirmada [Hvid; A]",
+   "folio": "43r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 5–13: «Fundationes eorum operum fodiantur … quae stereobates appel|lantur nam excipiunt onera» y l. 22 «stylobatae»: texto continuo"
+  },
+  {
+   "locus": "3.4.1",
+   "H": "continuité confirmée [Hvid; A]",
+   "folio": "43r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 5–13 y 22: texto continuo de Fundationes a stylobatae"
+  },
+  {
+   "locus": "4.1.8",
+   "H": "om. (salto)",
+   "folio": "49r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 4–6: «alterã muliebri | subtilitateq; iudiciorum progressi»: salto de subtilitate… a …elegantia"
+  },
+  {
+   "locus": "4.1.8",
+   "H": "om. (saut)",
+   "folio": "49r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 4–6: «muliebri | subtilitateq; iudiciorum progressi»"
+  },
+  {
+   "locus": "4.1.8",
+   "H": "om.",
+   "folio": "49r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 9–10: «id autem quod iones fecerunt primo ioni|cum est nominatum» — sin genus"
+  },
+  {
+   "locus": "4.1.9",
+   "H": "poculis",
+   "folio": "49r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 18–19: «quibus ea uirgo uiua | poculis delectabatur»"
+  },
+  {
+   "locus": "5.1.4",
+   "H": "idem",
+   "folio": "60v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 12–13: «chal[ci]dica · in extremis constituantur uti sunt in iulia aquiliana» (la palabra aparece abreviada: «chaldica» con signo)"
+  },
+  {
+   "locus": "5.1.6",
+   "H": "idem",
+   "folio": "61r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "60v último renglón–61r l. 1: «quo genere | coloniae iuliae fanestri conlocaui curauiq; facien|dam»"
+  },
+  {
+   "locus": "5.1.7",
+   "H": "idem",
+   "folio": "61r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 19–20: «ne impediant aspectus pronai | aedis augusti»"
+  },
+  {
+   "locus": "5.4.2",
+   "H": "sed quod ex acuta facta est gravis",
+   "folio": "63v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 19–20: «sed quod ex acuta | facta est grauis & ex graui acuta apparet auribus»"
+  },
+  {
+   "locus": "5.4.2",
+   "H": "om.",
+   "folio": "63v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 23–24: «crebre faciendo constans appa|ret sensibus» — sin non"
+  },
+  {
+   "locus": "5.4.8",
+   "H": "presente",
+   "folio": "65r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 15–17: «in sextam diapason in octauam & dimidiam diapason & diatessaron in nonam & dimidiam diapason diapente in xii disdiapason»"
+  },
+  {
+   "locus": "5.4.8",
+   "H": "présent",
+   "folio": "65r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 15–17: «in sextam diapason in octauam & dimidiam diapason & diatessaron in nonam & dimidiam diapason diapente in xii disdiapason»"
+  },
+  {
+   "locus": "5.4.9",
+   "H": "presente (pthongi)",
+   "folio": "65r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 22–24: «& ei co[nc]entur(?) procreantur ex coniunctione sonituum qui graece pthongi dicuntur»"
+  },
+  {
+   "locus": "5.4.9",
+   "H": "présent (pthongi)",
+   "folio": "65r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 22–24: «& ei co[nc]entur(?) procreantur ex coniunctione sonituum qui graece pthongi dicuntur»"
+  },
+  {
+   "locus": "5.5.1",
+   "H": "om.",
+   "folio": "65v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 1–3: «inter se diatessaron diapente ex ordine ad | disdiapason» — sin et"
+  },
+  {
+   "locus": "5.5.2",
+   "H": "ditografía de una línea (et ab summo capite spatium ponantur), cancelada",
+   "folio": "65v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 5–7: «& ab summo capite | spatium ponantur quae inuersa & habeant locum uacuũ» copiado dos veces; la primera copia está subrayada para cancelarla"
+  },
+  {
+   "locus": "5.5.2",
+   "H": "dittographie d’une ligne (et ab summo capite spatium ponantur), biffée",
+   "folio": "65v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 5–7: «& ab summo capite | spatium ponantur quae inuersa & habeant locum uacuũ» copiado dos veces; la primera copia está subrayada para cancelarla"
+  },
+  {
+   "locus": "5.5.6",
+   "H": "presente",
+   "folio": "66v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "l. 6: «ad naturas uocis & audientium delectationes»"
+  },
+  {
+   "locus": "5.5.6",
+   "H": "présent",
+   "folio": "66v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "l. 6: «ad naturas uocis & audientium delectationes»"
+  },
+  {
+   "locus": "5.6.1",
+   "H": "om. ambos",
+   "folio": "67r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 5–7: «trigona paribus lateribus interuallis | extremã lineam» (sin quae paribus) y «caelestium astrologi ex musi|ca conuenientia» (sin astrologia)"
+  },
+  {
+   "locus": "5.6.1",
+   "H": "om. les deux",
+   "folio": "67r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 5–7: «trigona paribus lateribus interuallis | extremã lineam» (sin quae paribus) y «caelestium astrologi ex musi|ca conuenientia» (sin astrologia)"
+  },
+  {
+   "locus": "5.9.4",
+   "H": "om.; scabillos rúbrica VITRUVII LIBER QUINTUS EXPLICIT · INCIPIT LIBER",
+   "folio": "70v",
+   "resultado": "precisa",
+   "lecturaEnImagen": "ll. 10–12: «detur cum plin|tho dimidia crassitudine constituantur» (sin spira, confirmado) y l. 16 «per scabillos»; la rúbrica final del libro V no está en 70v (el folio acaba en «reliquid»): por verificar en 71r"
+  },
+  {
+   "locus": "5.9.4",
+   "H": "om.; scabillos rubrique VITRUVII 75 LIBER QUINTUS EXPLICIT · INCIPIT L",
+   "folio": "70v",
+   "resultado": "precisa",
+   "lecturaEnImagen": "ll. 10–12: «detur cum plin|tho dimidia crassitudine constituantur» (sin spira, confirmado) y l. 16 «per scabillos»; la rúbrica final del libro V no está en 70v (el folio acaba en «reliquid»): por verificar en 71r"
+  },
+  {
+   "locus": "6.1.3",
+   "H": "om.",
+   "folio": "78r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "l. 12: «Ex eo quoq; sub septentrionibus nutriuntur gentes» — sin quae"
+  },
+  {
+   "locus": "6.1.4",
+   "H": "presente",
+   "folio": "78r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 17–18: «crispo capillo oculis nigris cruribus ualidis sanguine | exiguo»"
+  },
+  {
+   "locus": "6.2.5",
+   "H": "presente",
+   "folio": "81r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 1–2: «ratio symmetriarum a qua | sumatur sine dubitatione commutatio»"
+  },
+  {
+   "locus": "6.1.4",
+   "H": "présent",
+   "folio": "78r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 17–18: «crispo capillo oculis nigris cruribus ualidis sanguine | exiguo»"
+  },
+  {
+   "locus": "6.2.5",
+   "H": "présent",
+   "folio": "81r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 1–2: «ratio symmetriarum a qua | sumatur sine dubitatione commutatio»"
+  },
+  {
+   "locus": "6.2.5",
+   "H": "om.",
+   "folio": "81r",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 3–4: «locorum unum spatiũ | longitudinis cuius semel constituta» — sin et latitudinis (H lee además «unum», no «imum»)"
+  },
+  {
+   "locus": "6.3.4",
+   "H": "ratio habeatur (= vulg.)",
+   "folio": "81v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 19–20: «& arcae supra trabes ratio habea|tur»"
+  },
+  {
+   "locus": "6.3.4",
+   "H": "om.",
+   "folio": "81v",
+   "resultado": "confirma",
+   "lecturaEnImagen": "ll. 20–21: «alis dextra ac sinistra latitudinis cum sit atrii | longitudo» — sin spatium"
+  }
+ ]
+}

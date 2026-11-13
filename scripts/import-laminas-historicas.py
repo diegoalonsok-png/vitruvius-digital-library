@@ -9,7 +9,7 @@ Una descarga fallida no se sustituye por otra imagen. Límite: 6 MB por archivo.
 import json, time, pathlib, urllib.parse
 from urllib.request import Request, urlopen
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-UA = {"User-Agent": "VitruviusDigitalLibrary-ScholarlyArchive/1.0 (https://diegoalonsok-png.github.io/vitruvius-digital-library/)"}
+UA = {"User-Agent": "VitruviusDigitalLibrary-ScholarlyArchive/1.0 (https://vitruvius-digital-library.org/)"}
 def get(url, accept="*/*"):
     for i in range(3):
         try:

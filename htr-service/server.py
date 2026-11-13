@@ -15,9 +15,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image, UnidentifiedImageError
 
 MODEL = os.environ.get("KRAKEN_MODEL", "")
-ALLOWED = os.environ.get("HTR_ALLOWED_ORIGIN", "https://diegoalonsok-png.github.io")
+ALLOWED = os.environ.get("HTR_ALLOWED_ORIGIN", "https://vitruvius-digital-library.org,https://www.vitruvius-digital-library.org,https://diegoalonsok-png.github.io").split(",")
 app = FastAPI(title="Vitruvius Scriptorium HTR bridge")
-app.add_middleware(CORSMiddleware, allow_origins=[ALLOWED], allow_methods=["GET", "POST"], allow_headers=["*"])
+app.add_middleware(CORSMiddleware, allow_origins=ALLOWED, allow_methods=["GET", "POST"], allow_headers=["*"])
 
 @app.get("/health")
 def health():

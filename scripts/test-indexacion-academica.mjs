@@ -8,7 +8,7 @@
 import assert from "node:assert/strict";
 import {existsSync,readFileSync} from "node:fs";
 const read=p=>readFileSync(p,"utf8");
-const base="https://diegoalonsok-png.github.io/vitruvius-digital-library/";
+const base="https://vitruvius-digital-library.org/";
 const hub="indice-busquedas-academicas.html";
 const terms=["domus","aedes","symmetria","locus","architectura"];
 const engines=["index.html","vitruvia.html","vitruvia-lexicon.html",

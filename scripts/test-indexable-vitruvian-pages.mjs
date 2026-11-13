@@ -3,7 +3,7 @@ const read=f=>fs.readFileSync(f,"utf8");
 const html=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const a=JSON.parse(read("data/structured/recensio-es.json")),b=JSON.parse(read("data/structured/theory-en.json"));
 const idx=read("indice-busquedas-academicas.html"),map=read("sitemap.xml");
-const root="https://diegoalonsok-png.github.io/vitruvius-digital-library/";
+const root="https://vitruvius-digital-library.org/";
 for(const [loc,file] of [["1.1.1","locus-vitruvio-i-1-1.html"],["3.1.2","locus-vitruvio-iii-1-2.html"]]){
  const p=a.passages.find(x=>x.locus===loc),q=b.passages.find(x=>x.locus===loc);assert(p&&q&&p.latin===q.latin);
  const page=read(file);for(const text of [p.latin,p.translation,q.translation])assert(page.includes(html(text)),file+" missing verified text");

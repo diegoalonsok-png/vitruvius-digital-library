@@ -7,7 +7,7 @@
 import {chromium} from "playwright";
 import {readFileSync,mkdirSync,writeFileSync} from "node:fs";
 import assert from "node:assert/strict";
-const URL_ROOT="https://diegoalonsok-png.github.io/vitruvius-digital-library/";
+const URL_ROOT="https://vitruvius-digital-library.org/";
 const cases=[
  ["Portada","index.html"],
  ["Vitruvia · Akenatón","vitruvia.html?q=Akhenaten&mode=all"],

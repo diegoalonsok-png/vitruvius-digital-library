@@ -9,7 +9,7 @@
 "use strict";
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const ROOT=(()=>{const s=document.currentScript?.src||"";const i=s.indexOf("assets/vitruvia-lexicon.js");return i>=0?s.slice(0,i):""})();
-const SITE="https://diegoalonsok-png.github.io/vitruvius-digital-library/";
+const SITE="https://vitruvius-digital-library.org/";
 const PAGE=SITE+"vitruvia-lexicon.html";
 const GREEK=/[Ͱ-Ͽἀ-῿]/, HEBREW=/[֐-׿]/;
 const TOKEN=/[\p{L}\p{M}][\p{L}\p{M}'ʼ’]*/gu;

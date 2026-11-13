@@ -77,4 +77,9 @@ assert.doesNotMatch(JSON.stringify(commands),/SECRET_QUERY|SECRET_HASH|SECRET_RE
 vm.runInNewContext(code,live.context);
 assert.equal(live.appended.length,1,'Duplicate loader must not duplicate scripts or pageviews');
 assert.equal(live.window.dataLayer.filter(c=>c[0]==='config').length,1);
+const own=run({host:'vitruvius-digital-library.org',path:'/vitruvia.html'});
+assert.equal(own.appended.length,1,'Analytics must run on the own domain');
+const ownSettings=own.window.dataLayer.map(e=>Array.from(e)).find(c=>c[0]==='config')[2];
+assert.equal(ownSettings.page_location,'https://vitruvius-digital-library.org/vitruvia.html');
+assert.equal(ownSettings.cookie_path,'/');
 console.log('GA4 visitor measurement, privacy and coverage passed: '+htmlPaths.length+' pages.');

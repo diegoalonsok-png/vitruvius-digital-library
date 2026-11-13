@@ -5,7 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 const root=path.resolve(import.meta.dirname,"..");
-const base="https://diegoalonsok-png.github.io/vitruvius-digital-library/";
+const base="https://vitruvius-digital-library.org/";
 const editions=[
  ["V514","documents/edicion-v514.html","documents/kurilo-recensio-es.pdf","10.5281/zenodo.23884757","es"],
  ["V554","documents/edicion-v554.html","documents/kurilo-recensio-fr.pdf","10.5281/zenodo.23885110","fr"],

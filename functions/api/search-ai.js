@@ -1,7 +1,7 @@
 /* Cloudflare Pages Function — optional deployment, NOT executed by GitHub Pages.
  * Configure GROK_API_KEY and AI_MODEL server-side, never in client JS.
  */
-const origin="https://diegoalonsok-png.github.io/vitruvius-digital-library";
+const origin="https://vitruvius-digital-library.org";
 const result=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{"content-type":"application/json","cache-control":"no-store"}});
 const norm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 async function fetchData(path){const r=await fetch(origin+path);if(!r.ok)throw Error("Source unavailable: "+path);return r.json()}

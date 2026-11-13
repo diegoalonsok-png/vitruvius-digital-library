@@ -4,7 +4,7 @@
   <Description>Vitruvia · buscador académico de Vitruvio, arquitectura y cultura antigua (Vitruvius Digital Library)</Description>
   <InputEncoding>UTF-8</InputEncoding>
   <Language>es</Language>
-  <Image width="16" height="16" type="image/svg+xml">https://diegoalonsok-png.github.io/vitruvius-digital-library/assets/favicon.svg</Image>
-  <Url type="text/html" method="get" template="https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia.html?q={searchTerms}"/>
-  <moz:SearchForm>https://diegoalonsok-png.github.io/vitruvius-digital-library/vitruvia.html</moz:SearchForm>
+  <Image width="16" height="16" type="image/svg+xml">https://vitruvius-digital-library.org/assets/favicon.svg</Image>
+  <Url type="text/html" method="get" template="https://vitruvius-digital-library.org/vitruvia.html?q={searchTerms}"/>
+  <moz:SearchForm>https://vitruvius-digital-library.org/vitruvia.html</moz:SearchForm>
 </OpenSearchDescription>

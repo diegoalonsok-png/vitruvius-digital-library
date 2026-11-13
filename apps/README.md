@@ -15,7 +15,7 @@ reescribir el sitio: cada cambio publicado en GitHub Pages llega a las aplicacio
 Método recomendado: **PWABuilder** (genera una *Trusted Web Activity* firmada).
 
 1. Entrar en <https://www.pwabuilder.com> e indicar
-   `https://diegoalonsok-png.github.io/vitruvius-digital-library/`.
+   `https://vitruvius-digital-library.org/`.
 2. *Package for stores* → **Android** → identificador sugerido
    `io.github.diegoalonsokpng.vitruvius` → descargar el paquete (AAB + APK + clave de firma).
    Guardar la clave (`signing.keystore`) y sus contraseñas: sin ellas no se pueden publicar actualizaciones.

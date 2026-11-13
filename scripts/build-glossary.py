@@ -22,7 +22,7 @@ out=[]
 out.append('''<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Glosario técnico de Vitruvio · De architectura · Vitruvius Digital Library</title>
 <meta name="description" content="Glosario de voces técnicas latinas de De architectura de Vitruvio: traducción castellana, inglesa y francesa, categoría gramatical, número de loci y enlace a cada ficha y pasaje.">
-<link rel="icon" href="assets/favicon.svg"><link rel="canonical" href="https://diegoalonsok-png.github.io/vitruvius-digital-library/glosario.html">
+<link rel="icon" href="assets/favicon.svg"><link rel="canonical" href="https://vitruvius-digital-library.org/glosario.html">
 <link rel="stylesheet" href="assets/style.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/scholarly.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/theme.css?v=20261030-docx-1"><link rel="stylesheet" href="assets/academic.css?v=20261103-pair2">
 <meta name="citation_title" content="Glosario técnico de Vitruvio"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="es">
 <style>
@@ -61,8 +61,8 @@ for e,loci in rows:
   rev=' · <span class="muted">revisada</span>' if e.get('verified') else ''
   out.append(f'<tr data-k="{html.escape(key(e["lemma"]+" "+(e.get("es") or "")+" "+(e.get("en") or "")))}"><td class="lemma"><a href="termino.html?t={q}">{html.escape(e.get("headword") or e["lemma"])}</a><small>{html.escape(e.get("pos",""))}</small></td><td>{html.escape(e.get("es") or "")}{sense}{rev}</td><td class="en">{html.escape(e.get("en") or "")}</td><td class="fr">{html.escape(e.get("fr") or "")}</td><td>{len(loci)}{first}</td></tr>')
 out.append('</tbody></table>')
-ld={'@context':'https://schema.org','@type':'DefinedTermSet','name':'Glosario técnico de Vitruvio','inLanguage':['la','es','en','fr'],'url':'https://diegoalonsok-png.github.io/vitruvius-digital-library/glosario.html','creator':{'@type':'Person','name':'Diego Kurilo'},
- 'hasDefinedTerm':[{'@type':'DefinedTerm','name':e['lemma'],'description':'; '.join(x for x in [e.get('es'),e.get('en')] if x),'inLanguage':'la','url':'https://diegoalonsok-png.github.io/vitruvius-digital-library/termino.html?t='+e['lemma']} for e,_ in rows]}
+ld={'@context':'https://schema.org','@type':'DefinedTermSet','name':'Glosario técnico de Vitruvio','inLanguage':['la','es','en','fr'],'url':'https://vitruvius-digital-library.org/glosario.html','creator':{'@type':'Person','name':'Diego Kurilo'},
+ 'hasDefinedTerm':[{'@type':'DefinedTerm','name':e['lemma'],'description':'; '.join(x for x in [e.get('es'),e.get('en')] if x),'inLanguage':'la','url':'https://vitruvius-digital-library.org/termino.html?t='+e['lemma']} for e,_ in rows]}
 out.append('<script type="application/ld+json">'+json.dumps(ld,ensure_ascii=False)+'</script>')
 out.append('''<script>(()=>{const q=document.getElementById('glo-q');const f=s=>s.normalize('NFD').replace(/\\p{M}/gu,'').toLowerCase().replace(/j/g,'i').replace(/v/g,'u');
 q.addEventListener('input',()=>{const v=f(q.value.trim());for(const tr of document.querySelectorAll('tr[data-k]'))tr.hidden=!!v&&!f(tr.dataset.k).includes(v);for(const t of document.querySelectorAll('.glo table')){const any=[...t.querySelectorAll('tr[data-k]')].some(r=>!r.hidden);t.hidden=!any;t.previousElementSibling.hidden=!any}})})();</script>

@@ -2,7 +2,7 @@
 """Genera una página estática por libro (<id>.html, con metadatos de citación para Google Scholar y Zotero)
 y la página de conjunto biblioteca-kurilo.html, a partir de data/kurilo-libros/*.json."""
 import json,html
-BASE='https://diegoalonsok-png.github.io/vitruvius-digital-library/'
+BASE='https://vitruvius-digital-library.org/'
 idx=json.load(open('data/kurilo-libros/index.json'))
 HEAD='''<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}"><link rel="icon" href="assets/favicon.svg"><link rel="canonical" href="{base}{page}">

@@ -6,13 +6,16 @@
 (()=>{
  "use strict";
  const config=window.VitruviusAnalyticsConfig||{};
- const pathRoot="/vitruvius-digital-library/";
+ /* Dominio propio (Cloudflare) en la raíz; espejo en GitHub Pages bajo /vitruvius-digital-library/. */
+ const ROOTS={"vitruvius-digital-library.org":"/","www.vitruvius-digital-library.org":"/","diegoalonsok-png.github.io":"/vitruvius-digital-library/"};
+ const pathRoot=ROOTS[location.hostname]||"/vitruvius-digital-library/";
+ const production=Object.prototype.hasOwnProperty.call(ROOTS,location.hostname);
  const preferences=window.navigator||{};
  if(window.VitruviusAnalytics?.enabled||window.top!==window.self||
     preferences.doNotTrack==="1"||preferences.globalPrivacyControl===true||
     !location.pathname.startsWith(pathRoot))return;
  const ga4Id=String(config.ga4MeasurementId||"").trim();
- if(location.hostname==="diegoalonsok-png.github.io"&&/^G-[A-Z0-9]{6,}$/.test(ga4Id)){
+ if(production&&/^G-[A-Z0-9]{6,}$/.test(ga4Id)){
   window.dataLayer=window.dataLayer||[];
   window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
   let referrer="";
@@ -36,8 +39,6 @@
   return;
  }
  const id=String(config.websiteId||"").trim();
- const host=location.hostname;
- const production=host==="diegoalonsok-png.github.io";
  if(!production||!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id))return;
  const src=String(config.scriptSrc||"");
  if(!/^https:\/\/(?:cloud\.umami\.is|[a-z0-9.-]+)\/script\.js$/i.test(src))return;
@@ -53,7 +54,7 @@
  const provider=document.createElement("script");
  provider.src=src;provider.defer=true;
  provider.setAttribute("data-website-id",id);
- provider.setAttribute("data-domains","diegoalonsok-png.github.io");
+ provider.setAttribute("data-domains","vitruvius-digital-library.org,www.vitruvius-digital-library.org,diegoalonsok-png.github.io");
  provider.setAttribute("data-exclude-search","true");
  provider.setAttribute("data-exclude-hash","true");
  provider.setAttribute("data-do-not-track","true");

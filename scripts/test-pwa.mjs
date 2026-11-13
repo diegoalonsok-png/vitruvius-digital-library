@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import vm from 'node:vm';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
-const base='https://diegoalonsok-png.github.io/vitruvius-digital-library/';
+const base='https://vitruvius-digital-library.org/';
 const manifests=['manifest.webmanifest','vitruvia.webmanifest'].map(path=>({path,value:JSON.parse(read(path))}));
 const ids=[];
 for(const {path,value:m} of manifests){

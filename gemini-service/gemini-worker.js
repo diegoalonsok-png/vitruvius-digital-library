@@ -1,14 +1,14 @@
 // Optional Cloudflare Worker: deploy only with an eligible FREE Gemini API key.
 // Secrets: GEMINI_API_KEY and ACCESS_TOKEN. Neither is committed to GitHub.
 // Do not publish an unauthenticated public Gemini proxy.
-const ORIGIN='https://diegoalonsok-png.github.io';
+const ORIGINS=['https://vitruvius-digital-library.org','https://www.vitruvius-digital-library.org','https://diegoalonsok-png.github.io'];
 const PROMPT='Transcribí diplomáticamente el latín visible de este folio de un manuscrito de Vitruvio del siglo IX. Respetá saltos de línea, ortografía medieval, letras realmente visibles y abreviaturas. Marcá [ilegible] y [?] donde haya dudas. No traduzcas. No uses el texto conocido de Krohn para reconstruir o completar palabras. Devolvé exclusivamente el texto latino con saltos de línea; nunca inventes lecturas.';
-function cors(){return {'Access-Control-Allow-Origin':ORIGIN,'Access-Control-Allow-Headers':'Content-Type, X-Scriptorium-Token','Access-Control-Allow-Methods':'POST, OPTIONS','Vary':'Origin'};}
+function cors(origin){return {'Access-Control-Allow-Origin':ORIGINS.includes(origin)?origin:ORIGINS[0],'Access-Control-Allow-Headers':'Content-Type, X-Scriptorium-Token','Access-Control-Allow-Methods':'POST, OPTIONS','Vary':'Origin'};}
 export default {async fetch(request,env){
- const headers=cors();
+ const headers=cors(request.headers.get('Origin'));
  if(request.method==='OPTIONS')return new Response(null,{status:204,headers});
  if(request.method!=='POST')return new Response('Use POST',{status:405,headers});
- if(request.headers.get('Origin')!==ORIGIN)return new Response('Origen no permitido',{status:403,headers});
+ if(!ORIGINS.includes(request.headers.get('Origin')))return new Response('Origen no permitido',{status:403,headers});
  if(!env.GEMINI_API_KEY||!env.ACCESS_TOKEN)return Response.json({error:'Servicio no configurado'}, {status:503,headers});
  if(request.headers.get('X-Scriptorium-Token')!==env.ACCESS_TOKEN)return Response.json({error:'Acceso no autorizado'}, {status:401,headers});
  const len=Number(request.headers.get('Content-Length')||0);
