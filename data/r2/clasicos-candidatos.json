@@ -600,10 +600,14 @@
    "obra": "Obras",
    "lengua": "grc",
    "titulo": [
-    "julian"
+    "julian",
+    "english translation"
    ],
    "creador": "julian",
-   "tanda": 2
+   "tanda": 2,
+   "excluir": [
+    "fourthinternatio01inteuoft"
+   ]
   },
   {
    "id": "menandro-comedias",
@@ -855,11 +859,14 @@
    "obra": "Epítome de las Historias filípicas de Trogo (trad. castellana)",
    "lengua": "la",
    "titulo": [
-    "justino"
+    "trogo"
    ],
-   "creador": "justino|justinus|justin",
+   "creador": "justino|justinus|trogus|trogo",
    "tanda": 2,
-   "idioma": "spa"
+   "idioma": "spa",
+   "excluir": [
+    "apologia-i-de-san-justino"
+   ]
   },
   {
    "id": "eutropio-es",
