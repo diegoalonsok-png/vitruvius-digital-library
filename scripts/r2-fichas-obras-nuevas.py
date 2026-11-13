@@ -293,6 +293,31 @@ def main():
         escribir(CATALOGO_MAESTRO, maestro)
         de_facsimil = [o["id"] for o in nuevas] + de_facsimil
 
+    # Metadatos redactados después de crear la ficha: se completan los campos que
+    # habían quedado pendientes, sin tocar nada que ya tenga valor propio.
+    repuestos = 0
+    for w in maestro["works"]:
+        datos = metadatos.get(w["id"])
+        if not datos or not str(w.get("addedBy") or "").startswith("facsímil alojado en R2"):
+            continue
+        cambios = {}
+        if datos.get("titulo") and w["title"] != datos["titulo"] and w["title"] == (por_id.get(w["id"], {}).get("obra") or w["title"]):
+            cambios["title"] = datos["titulo"]
+        if datos.get("genero") and w.get("genre") == PENDIENTE:
+            cambios["genre"] = datos["genero"]
+        if datos.get("datacion") and w.get("dating") == PENDIENTE:
+            cambios["dating"] = datos["datacion"]
+        if datos.get("aliases") and (not w.get("aliases") or w["aliases"] == [por_id.get(w["id"], {}).get("obra")]):
+            cambios["aliases"] = datos["aliases"]
+        if cambios:
+            w.update(cambios)
+            w.setdefault("derivedFields", {})["metadatosRedactados"] = (
+                "título original, género, datación y variantes tomados de data/r2/fichas-nuevas-metadatos.json")
+            repuestos += 1
+    if repuestos:
+        escribir(CATALOGO_MAESTRO, maestro)
+        print(f"{repuestos} fichas completadas con el título original, el género y la datación redactados.")
+
     sumados, triage = completar(TRIAGE, "works", lambda r: r["id"], registro_triage, de_facsimil, metadatos, por_id)
     if sumados:
         c = triage["counts"]
