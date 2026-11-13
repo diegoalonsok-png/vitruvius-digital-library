@@ -16,7 +16,7 @@ function style(){
  ".classics-tally-inner{width:min(1240px,calc(100% - 112px));margin:auto}",
  ".classics-tally h2{font:400 clamp(20px,2.1vw,27px)/1.2 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.025em;margin:0 0 5px}",
  ".classics-tally p{font:11px/1.55 Arial,sans-serif;margin:4px 0;opacity:.9}",
- ".classics-tally dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:12px 0}",
+ ".classics-tally dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:9px;margin:12px 0}",
  ".classics-tally dl>div{padding:11px 12px 10px;border:1px solid #62636a;border-radius:9px;min-width:0;background:rgba(255,255,255,.018);transition:border-color .2s ease,background .2s ease}",
  ".classics-tally dd{margin:0 0 4px;font:400 clamp(25px,2.8vw,35px)/1.07 \"Gentium Book Plus\",\"Cardo\",Georgia,serif;letter-spacing:-.035em;font-variant-numeric:lining-nums tabular-nums}",
  ".classics-tally dt{font:400 clamp(10px,.86vw,12px)/1.35 Arial,Helvetica,sans-serif;letter-spacing:.005em;opacity:.85}",
@@ -187,11 +187,51 @@ async function begin(){
   const byId=new Map(road.items.map(w=>[w.id,w]));
   const remoteEntries=[...greek,...latin].filter(e=>e?.format==="remote-json-passages"&&["la","grc"].includes(e.language)&&pending.has(e.workId));
   style();paint(counts,{road,registry,extraIds:seen,remoteEntries,byId});window.ClassicsCorpusCounts=counts;
+  ampliar(road.targetWorks);
  }catch(e){
   console.warn("No se pudo auditar el contador clásico:",e.message);
   const p=document.createElement("p");p.textContent="Cifras pendientes de verificación; consulta el inventario académico.";
   (document.querySelector(".stats-band")||document.querySelector(".hero"))?.insertAdjacentElement("afterend",p);
  }
+}
+/* Capa aditiva R2 (Bibliotheca ampliada): suma las obras nuevas al total de obras y
+ * agrega la tarjeta de facsímiles PDF. No altera el cálculo auditado de las 222 fichas.
+ * Si el registro R2 no carga, las tarjetas quedan como estaban. */
+async function ampliar(fichas){
+ try{
+  const [v,cat]=await Promise.all([read("data/r2/vinculos-repertorio.json"),read("data/r2/catalogo-clasicos-r2.json")]);
+  const c=v?.recuentos;const dl=document.querySelector("#classics-tally dl");
+  if(v?.schema!=="vdl-r2-vinculos-repertorio-1"||!c||c.fichasRepertorio!==fichas||!dl||!Array.isArray(cat?.items))return;
+  const fmt=n=>new Intl.NumberFormat("es-AR").format(n);
+  const first=dl.querySelector("div");
+  if(first){
+   first.querySelector("dd").textContent=fmt(c.obrasTotales);
+   const note=document.createElement("small");note.className="tally-r2-note";note.style.cssText="display:block;font-size:12px;line-height:1.4;opacity:.75;margin-top:4px";
+   note.textContent=fmt(c.fichasRepertorio)+" con ficha académica + "+fmt(c.obrasNuevas)+" nuevas en facsímil";
+   first.querySelector("dt").after(note);
+   const ol=first.querySelector("ol");
+   for(const n of v.obrasNuevas||[]){
+    const li=document.createElement("li");const a=document.createElement("a");a.href="bibliotheca-ampliada.html?q="+encodeURIComponent(n.autor);
+    a.textContent=n.autor+" — "+n.obra;a.className="tally-record";li.append(a);
+    const m=document.createElement("small");m.textContent=" · obra nueva · ";li.append(m);
+    const pdf=document.createElement("a");pdf.href=n.pdf;pdf.textContent="Leer facsímil PDF";li.append(pdf);ol.prepend(li);
+   }
+   const p=first.querySelector("details p");if(p)p.textContent=fmt(c.obrasTotales)+" registros listados ("+fmt(c.fichasRepertorio)+" fichas y "+fmt(c.obrasNuevas)+" obras nuevas).";
+  }
+  const g=document.createElement("div"),dd=document.createElement("dd"),dt=document.createElement("dt");
+  dd.textContent=fmt(cat.items.length);dt.textContent="facsímiles PDF de dominio público";g.append(dd,dt);
+  const det=document.createElement("details");det.className="tally-details";
+  const sum=document.createElement("summary");sum.textContent="Ver listado académico";det.append(sum);
+  const p=document.createElement("p");p.textContent=fmt(cat.items.length)+" ediciones en libros.vitruvius-digital-library.org; texto por página con OCR sin revisar.";
+  const ol=document.createElement("ol");ol.tabIndex=0;
+  [...cat.items].sort((x,y)=>x.autor.localeCompare(y.autor,"es")).forEach(x=>{
+   const li=document.createElement("li");const a=document.createElement("a");a.href=x.pdf;a.className="tally-record";
+   a.textContent=x.autor+" — "+x.obra;li.append(a);
+   const m=document.createElement("small");m.textContent=" · "+x.anio+(x.bilingueLoeb?" · Loeb bilingüe":"")+(x.alcance?" · "+x.alcance:"");li.append(m);ol.append(li);
+  });
+  const all=document.createElement("a");all.href="bibliotheca-ampliada.html";all.textContent="Abrir Bibliotheca ampliada";
+  det.append(p,ol,all);g.append(det);dl.append(g);
+ }catch(e){console.warn("Capa R2 no disponible:",e.message)}
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",begin,{once:true});else begin();
 })();
