@@ -1,1638 +1,1770 @@
 {
- "schema": "vdl-r2-clasicos-candidatos-1",
- "descripcion": "Obras clásicas griegas y latinas que todavía no tienen PDF en la biblioteca (documents/clasicos, documents/classics). Se buscan en Internet Archive ediciones de dominio público (anteriores a 1929), con preferencia por volúmenes bilingües Loeb (original y traducción inglesa enfrentados). Cada PDF elegido debe mencionar al autor en sus primeras páginas. Tanda 2: obras ausentes del sitio, en ediciones con el texto griego o en traducciones castellanas de dominio público. Incluye también las fichas del repertorio que todavía no tienen texto: para ellas el id del candidato es el de la ficha, de modo que la edición se vincula a la obra y no crea una entrada nueva. Las entradas con «coleccion» no pertenecen a la Antigüedad griega y latina y no entran al repertorio antiguo: se catalogan en su propia colección.",
- "limites": {
-  "maxMiB": 180,
-  "anioMaximo": 1928
- },
- "obras": [
-  {
-   "id": "herodoto-historias",
-   "autor": "Heródoto",
-   "obra": "Historias",
-   "lengua": "grc",
-   "titulo": [
-    "herodotus"
-   ],
-   "creador": "herodotus"
-  },
-  {
-   "id": "tucidides-historia",
-   "autor": "Tucídides",
-   "obra": "Historia de la guerra del Peloponeso",
-   "lengua": "grc",
-   "titulo": [
-    "thucydides"
-   ],
-   "creador": "thucydides"
-  },
-  {
-   "id": "jenofonte-anabasis",
-   "autor": "Jenofonte",
-   "obra": "Anábasis",
-   "lengua": "grc",
-   "titulo": [
-    "anabasis"
-   ],
-   "creador": "xenophon"
-  },
-  {
-   "id": "jenofonte-memorabilia",
-   "autor": "Jenofonte",
-   "obra": "Memorables",
-   "lengua": "grc",
-   "titulo": [
-    "memorabilia"
-   ],
-   "creador": "xenophon"
-  },
-  {
-   "id": "plutarco-vidas",
-   "autor": "Plutarco",
-   "obra": "Vidas paralelas",
-   "lengua": "grc",
-   "titulo": [
-    "lives"
-   ],
-   "creador": "plutarch"
-  },
-  {
-   "id": "polibio-historias",
-   "autor": "Polibio",
-   "obra": "Historias",
-   "lengua": "grc",
-   "titulo": [
-    "histories"
-   ],
-   "creador": "polybius"
-  },
-  {
-   "id": "demostenes-discursos",
-   "autor": "Demóstenes",
-   "obra": "Discursos",
-   "lengua": "grc",
-   "titulo": [
-    "demosthenes"
-   ],
-   "creador": "demosthenes"
-  },
-  {
-   "id": "lisias-discursos",
-   "autor": "Lisias",
-   "obra": "Discursos",
-   "lengua": "grc",
-   "titulo": [
-    "lysias"
-   ],
-   "creador": "lysias"
-  },
-  {
-   "id": "isocrates-discursos",
-   "autor": "Isócrates",
-   "obra": "Discursos",
-   "lengua": "grc",
-   "titulo": [
-    "isocrates"
-   ],
-   "creador": "isocrates"
-  },
-  {
-   "id": "platon-banquete",
-   "autor": "Platón",
-   "obra": "Banquete",
-   "lengua": "grc",
-   "titulo": [
-    "symposium"
-   ],
-   "creador": "plato"
-  },
-  {
-   "id": "platon-fedon",
-   "autor": "Platón",
-   "obra": "Fedón",
-   "lengua": "grc",
-   "titulo": [
-    "phaedo"
-   ],
-   "creador": "plato"
-  },
-  {
-   "id": "platon-timeo",
-   "autor": "Platón",
-   "obra": "Timeo",
-   "lengua": "grc",
-   "titulo": [
-    "timaeus"
-   ],
-   "creador": "plato"
-  },
-  {
-   "id": "platon-leyes",
-   "autor": "Platón",
-   "obra": "Leyes",
-   "lengua": "grc",
-   "titulo": [
-    "laws"
-   ],
-   "creador": "plato"
-  },
-  {
-   "id": "aristoteles-politica",
-   "autor": "Aristóteles",
-   "obra": "Política",
-   "lengua": "grc",
-   "titulo": [
-    "politics"
-   ],
-   "creador": "aristotle"
-  },
-  {
-   "id": "aristoteles-metafisica",
-   "autor": "Aristóteles",
-   "obra": "Metafísica",
-   "lengua": "grc",
-   "titulo": [
-    "metaphysics"
-   ],
-   "creador": "aristotle"
-  },
-  {
-   "id": "teofrasto-historia-plantas",
-   "autor": "Teofrasto",
-   "obra": "Historia de las plantas",
-   "lengua": "grc",
-   "titulo": [
-    "plants"
-   ],
-   "creador": "theophrastus"
-  },
-  {
-   "id": "esquilo-tragedias",
-   "autor": "Esquilo",
-   "obra": "Tragedias",
-   "lengua": "grc",
-   "titulo": [
-    "aeschylus"
-   ],
-   "creador": "aeschylus"
-  },
-  {
-   "id": "sofocles-tragedias",
-   "autor": "Sófocles",
-   "obra": "Tragedias",
-   "lengua": "grc",
-   "titulo": [
-    "sophocles"
-   ],
-   "creador": "sophocles"
-  },
-  {
-   "id": "euripides-tragedias",
-   "autor": "Eurípides",
-   "obra": "Tragedias",
-   "lengua": "grc",
-   "titulo": [
-    "euripides"
-   ],
-   "creador": "euripides"
-  },
-  {
-   "id": "aristofanes-comedias",
-   "autor": "Aristófanes",
-   "obra": "Comedias",
-   "lengua": "grc",
-   "titulo": [
-    "aristophanes"
-   ],
-   "creador": "aristophanes"
-  },
-  {
-   "id": "apolonio-argonauticas",
-   "autor": "Apolonio de Rodas",
-   "obra": "Argonáuticas",
-   "lengua": "grc",
-   "titulo": [
-    "argonautica"
-   ],
-   "creador": "apollonius"
-  },
-  {
-   "id": "teocrito-bucolicos",
-   "autor": "Teócrito, Bión y Mosco",
-   "obra": "Poetas bucólicos griegos",
-   "lengua": "grc",
-   "titulo": [
-    "bucolic"
-   ],
-   "creador": "theocritus"
-  },
-  {
-   "id": "luciano-obras",
-   "autor": "Luciano de Samósata",
-   "obra": "Obras",
-   "lengua": "grc",
-   "titulo": [
-    "lucian"
-   ],
-   "creador": "lucian"
-  },
-  {
-   "id": "pausanias-descripcion",
-   "autor": "Pausanias",
-   "obra": "Descripción de Grecia",
-   "lengua": "grc",
-   "titulo": [
-    "description of greece"
-   ],
-   "creador": "pausanias"
-  },
-  {
-   "id": "estrabon-geografia",
-   "autor": "Estrabón",
-   "obra": "Geografía",
-   "lengua": "grc",
-   "titulo": [
-    "geography"
-   ],
-   "creador": "strabo"
-  },
-  {
-   "id": "euclides-elementos",
-   "autor": "Euclides",
-   "obra": "Elementos (trad. Heath)",
-   "lengua": "grc",
-   "titulo": [
-    "elements"
-   ],
-   "creador": "euclid"
-  },
-  {
-   "id": "arquimedes-obras",
-   "autor": "Arquímedes",
-   "obra": "Obras (ed. Heath)",
-   "lengua": "grc",
-   "titulo": [
-    "archimedes"
-   ],
-   "creador": "archimedes"
-  },
-  {
-   "id": "diogenes-laercio-vidas",
-   "autor": "Diógenes Laercio",
-   "obra": "Vidas de los filósofos ilustres",
-   "lengua": "grc",
-   "titulo": [
-    "philosophers"
-   ],
-   "creador": "diogenes laertius"
-  },
-  {
-   "id": "longino-sublime",
-   "autor": "Pseudo-Longino",
-   "obra": "Sobre lo sublime",
-   "lengua": "grc",
-   "titulo": [
-    "sublime"
-   ],
-   "creador": "longinus"
-  },
-  {
-   "id": "plinio-historia-natural",
-   "autor": "Plinio el Viejo",
-   "obra": "Historia natural",
-   "lengua": "la",
-   "titulo": [
-    "natural history"
-   ],
-   "creador": "pliny"
-  },
-  {
-   "id": "tito-livio-historia",
-   "autor": "Tito Livio",
-   "obra": "Ab urbe condita",
-   "lengua": "la",
-   "titulo": [
-    "livy"
-   ],
-   "creador": "livy"
-  },
-  {
-   "id": "salustio-obras",
-   "autor": "Salustio",
-   "obra": "Catilina y Yugurta",
-   "lengua": "la",
-   "titulo": [
-    "sallust"
-   ],
-   "creador": "sallust"
-  },
-  {
-   "id": "ciceron-de-oratore",
-   "autor": "Cicerón",
-   "obra": "De oratore",
-   "lengua": "la",
-   "titulo": [
-    "de oratore"
-   ],
-   "creador": "cicero"
-  },
-  {
-   "id": "ciceron-de-re-publica",
-   "autor": "Cicerón",
-   "obra": "De re publica / De legibus",
-   "lengua": "la",
-   "titulo": [
-    "de re publica"
-   ],
-   "creador": "cicero"
-  },
-  {
-   "id": "ciceron-tusculanas",
-   "autor": "Cicerón",
-   "obra": "Disputaciones tusculanas",
-   "lengua": "la",
-   "titulo": [
-    "tusculan"
-   ],
-   "creador": "cicero"
-  },
-  {
-   "id": "seneca-tragedias",
-   "autor": "Séneca",
-   "obra": "Tragedias",
-   "lengua": "la",
-   "titulo": [
-    "tragedies"
-   ],
-   "creador": "seneca"
-  },
-  {
-   "id": "lucano-farsalia",
-   "autor": "Lucano",
-   "obra": "Farsalia",
-   "lengua": "la",
-   "titulo": [
-    "pharsalia"
-   ],
-   "creador": "lucan"
-  },
-  {
-   "id": "estacio-obras",
-   "autor": "Estacio",
-   "obra": "Silvas y Tebaida",
-   "lengua": "la",
-   "titulo": [
-    "statius",
-    "english translation"
-   ],
-   "creador": "statius",
-   "excluir": [
-    "cu31924026519334"
-   ]
-  },
-  {
-   "id": "juvenal-persio-satiras",
-   "autor": "Juvenal y Persio",
-   "obra": "Sátiras",
-   "lengua": "la",
-   "titulo": [
-    "juvenal"
-   ],
-   "creador": "juvenal"
-  },
-  {
-   "id": "marcial-epigramas",
-   "autor": "Marcial",
-   "obra": "Epigramas",
-   "lengua": "la",
-   "titulo": [
-    "epigrams"
-   ],
-   "creador": "martial"
-  },
-  {
-   "id": "petronio-satiricon",
-   "autor": "Petronio",
-   "obra": "Satiricón",
-   "lengua": "la",
-   "titulo": [
-    "petronius"
-   ],
-   "creador": "petronius"
-  },
-  {
-   "id": "apuleyo-metamorfosis",
-   "autor": "Apuleyo",
-   "obra": "Metamorfosis (El asno de oro)",
-   "lengua": "la",
-   "titulo": [
-    "golden ass"
-   ],
-   "creador": "apuleius"
-  },
-  {
-   "id": "quintiliano-institutio",
-   "autor": "Quintiliano",
-   "obra": "Institutio oratoria",
-   "lengua": "la",
-   "titulo": [
-    "institutio oratoria"
-   ],
-   "creador": "quintilian"
-  },
-  {
-   "id": "frontino-de-aquis",
-   "autor": "Frontino",
-   "obra": "Estratagemas y Acueductos de Roma",
-   "lengua": "la",
-   "titulo": [
-    "stratagems"
-   ],
-   "creador": "frontinus"
-  },
-  {
-   "id": "columela-de-re-rustica",
-   "autor": "Columela",
-   "obra": "De re rustica",
-   "lengua": "la",
-   "titulo": [
-    "columella"
-   ],
-   "creador": "columella"
-  },
-  {
-   "id": "varron-de-re-rustica",
-   "autor": "Varrón",
-   "obra": "De re rustica",
-   "lengua": "la",
-   "titulo": [
-    "varro"
-   ],
-   "creador": "varro"
-  },
-  {
-   "id": "celso-de-medicina",
-   "autor": "Celso",
-   "obra": "De medicina",
-   "lengua": "la",
-   "titulo": [
-    "celsus"
-   ],
-   "creador": "celsus"
-  },
-  {
-   "id": "agustin-confesiones",
-   "autor": "Agustín de Hipona",
-   "obra": "Confesiones",
-   "lengua": "la",
-   "titulo": [
-    "confessions"
-   ],
-   "creador": "augustine"
-  },
-  {
-   "id": "boecio-consolacion",
-   "autor": "Boecio",
-   "obra": "Consolación de la filosofía",
-   "lengua": "la",
-   "titulo": [
-    "consolation"
-   ],
-   "creador": "boethius"
-  },
-  {
-   "id": "aulo-gelio-noches",
-   "autor": "Aulo Gelio",
-   "obra": "Noches áticas",
-   "lengua": "la",
-   "titulo": [
-    "attic nights"
-   ],
-   "creador": "gellius"
-  },
-  {
-   "id": "plinio-joven-cartas",
-   "autor": "Plinio el Joven",
-   "obra": "Cartas",
-   "lengua": "la",
-   "titulo": [
-    "letters"
-   ],
-   "creador": "pliny"
-  },
-  {
-   "id": "propercio-elegias",
-   "autor": "Propercio",
-   "obra": "Elegías",
-   "lengua": "la",
-   "titulo": [
-    "propertius"
-   ],
-   "creador": "propertius"
-  },
-  {
-   "id": "ovidio-fastos",
-   "autor": "Ovidio",
-   "obra": "Fastos",
-   "lengua": "la",
-   "titulo": [
-    "fasti"
-   ],
-   "creador": "ovid"
-  },
-  {
-   "id": "cesar-guerra-civil",
-   "autor": "César",
-   "obra": "Guerra civil",
-   "lengua": "la",
-   "titulo": [
-    "civil wars"
-   ],
-   "creador": "caesar"
-  },
-  {
-   "id": "longo-dafnis-cloe",
-   "autor": "Longo",
-   "obra": "Dafnis y Cloe",
-   "lengua": "grc",
-   "titulo": [
-    "daphnis"
-   ],
-   "creador": "longus",
-   "tanda": 2
-  },
-  {
-   "id": "aquiles-tacio-leucipa",
-   "autor": "Aquiles Tacio",
-   "obra": "Leucipa y Clitofonte",
-   "lengua": "grc",
-   "titulo": [
-    "achilles tatius"
-   ],
-   "creador": "achilles tatius",
-   "tanda": 2
-  },
-  {
-   "id": "filostrato-apolonio",
-   "autor": "Filóstrato",
-   "obra": "Vida de Apolonio de Tiana",
-   "lengua": "grc",
-   "titulo": [
-    "apollonius of tyana"
-   ],
-   "creador": "philostratus",
-   "tanda": 2
-  },
-  {
-   "id": "quinto-esmirna-posthomericas",
-   "autor": "Quinto de Esmirna",
-   "obra": "Posthoméricas (La caída de Troya)",
-   "lengua": "grc",
-   "titulo": [
-    "fall of troy"
-   ],
-   "creador": "quintus smyrnaeus|quintus",
-   "tanda": 2
-  },
-  {
-   "id": "juliano-obras",
-   "autor": "Juliano el Apóstata",
-   "obra": "Obras",
-   "lengua": "grc",
-   "titulo": [
-    "julian",
-    "english translation"
-   ],
-   "creador": "julian",
-   "tanda": 2,
-   "excluir": [
-    "fourthinternatio01inteuoft"
-   ]
-  },
-  {
-   "id": "menandro-comedias",
-   "autor": "Menandro",
-   "obra": "Comedias (fragmentos)",
-   "lengua": "grc",
-   "titulo": [
-    "menander"
-   ],
-   "creador": "menander",
-   "tanda": 2
-  },
-  {
-   "id": "calimaco-himnos",
-   "autor": "Calímaco y Licofrón",
-   "obra": "Himnos, epigramas; Alejandra",
-   "lengua": "grc",
-   "titulo": [
-    "callimachus"
-   ],
-   "creador": "callimachus",
-   "tanda": 2
-  },
-  {
-   "id": "antologia-griega",
-   "autor": "Antología griega",
-   "obra": "Antología Palatina",
-   "lengua": "grc",
-   "titulo": [
-    "greek anthology"
-   ],
-   "creador": "paton|greek anthology",
-   "tanda": 2
-  },
-  {
-   "id": "lyra-graeca",
-   "autor": "Poetas líricos griegos",
-   "obra": "Lyra Graeca",
-   "lengua": "grc",
-   "titulo": [
-    "lyra graeca"
-   ],
-   "creador": "edmonds",
-   "tanda": 2
-  },
-  {
-   "id": "jenofonte-ciropedia",
-   "autor": "Jenofonte",
-   "obra": "Ciropedia",
-   "lengua": "grc",
-   "titulo": [
-    "cyropaedia"
-   ],
-   "creador": "xenophon",
-   "tanda": 2
-  },
-  {
-   "id": "jenofonte-economico",
-   "autor": "Jenofonte",
-   "obra": "Económico",
-   "lengua": "grc",
-   "titulo": [
-    "oeconomicus"
-   ],
-   "creador": "xenophon",
-   "tanda": 2
-  },
-  {
-   "id": "platon-teeteto-sofista",
-   "autor": "Platón",
-   "obra": "Teeteto y Sofista",
-   "lengua": "grc",
-   "titulo": [
-    "theaetetus"
-   ],
-   "creador": "plato",
-   "tanda": 2
-  },
-  {
-   "id": "platon-cratilo-parmenides",
-   "autor": "Platón",
-   "obra": "Crátilo, Parménides, Hipias, Hipias mayor",
-   "lengua": "grc",
-   "titulo": [
-    "cratylus"
-   ],
-   "creador": "plato",
-   "tanda": 2
-  },
-  {
-   "id": "platon-protagoras",
-   "autor": "Platón",
-   "obra": "Laques, Protágoras, Menón, Eutidemo",
-   "lengua": "grc",
-   "titulo": [
-    "protagoras"
-   ],
-   "creador": "plato",
-   "tanda": 2
-  },
-  {
-   "id": "esquines-discursos",
-   "autor": "Esquines",
-   "obra": "Discursos",
-   "lengua": "grc",
-   "titulo": [
-    "aeschines"
-   ],
-   "creador": "aeschines",
-   "tanda": 2
-  },
-  {
-   "id": "iseo-discursos",
-   "autor": "Iseo",
-   "obra": "Discursos",
-   "lengua": "grc",
-   "titulo": [
-    "isaeus"
-   ],
-   "creador": "isaeus",
-   "tanda": 2
-  },
-  {
-   "id": "hipocrates-obras",
-   "autor": "Hipócrates",
-   "obra": "Obras (Loeb)",
-   "lengua": "grc",
-   "titulo": [
-    "hippocrates"
-   ],
-   "creador": "hippocrates",
-   "tanda": 2
-  },
-  {
-   "id": "galeno-facultades-naturales",
-   "autor": "Galeno",
-   "obra": "Sobre las facultades naturales",
-   "lengua": "grc",
-   "titulo": [
-    "natural faculties"
-   ],
-   "creador": "galen",
-   "tanda": 2
-  },
-  {
-   "id": "epicuro-restos",
-   "autor": "Epicuro",
-   "obra": "Los restos existentes (ed. Bailey)",
-   "lengua": "grc",
-   "titulo": [
-    "epicurus"
-   ],
-   "creador": "epicurus|bailey",
-   "tanda": 2
-  },
-  {
-   "id": "baquilides-poemas",
-   "autor": "Baquílides",
-   "obra": "Poemas y fragmentos (ed. Jebb)",
-   "lengua": "grc",
-   "titulo": [
-    "bacchylides"
-   ],
-   "creador": "bacchylides",
-   "tanda": 2
-  },
-  {
-   "id": "aristoteles-historia-animales",
-   "autor": "Aristóteles",
-   "obra": "Historia de los animales",
-   "lengua": "grc",
-   "titulo": [
-    "historia animalium"
-   ],
-   "creador": "aristotle",
-   "tanda": 2
-  },
-  {
-   "id": "aristoteles-del-cielo",
-   "autor": "Aristóteles",
-   "obra": "Acerca del cielo",
-   "lengua": "grc",
-   "titulo": [
-    "de caelo"
-   ],
-   "creador": "aristotle",
-   "tanda": 2
-  },
-  {
-   "id": "nicomaco-aritmetica",
-   "autor": "Nicómaco de Gerasa",
-   "obra": "Introducción a la aritmética",
-   "lengua": "grc",
-   "titulo": [
-    "arithmetic"
-   ],
-   "creador": "nicomachus",
-   "tanda": 2
-  },
-  {
-   "id": "plotino-eneadas",
-   "autor": "Plotino",
-   "obra": "Enéadas",
-   "lengua": "grc",
-   "titulo": [
-    "enneades"
-   ],
-   "creador": "plotinus|plotin",
-   "tanda": 2
-  },
-  {
-   "id": "heliodoro-etiopicas",
-   "autor": "Heliodoro",
-   "obra": "Etiópicas",
-   "lengua": "grc",
-   "titulo": [
-    "aethiopic"
-   ],
-   "creador": "heliodorus",
-   "tanda": 2
-  },
-  {
-   "id": "curcio-alejandro-es",
-   "autor": "Quinto Curcio Rufo",
-   "obra": "Historia de Alejandro Magno (trad. castellana)",
-   "lengua": "la",
-   "titulo": [
-    "alejandro"
-   ],
-   "creador": "curcio|curtius|quintus curtius",
-   "tanda": 2,
-   "idioma": "spa"
-  },
-  {
-   "id": "floro-epitome-es",
-   "autor": "Floro",
-   "obra": "Compendio de la historia romana (trad. castellana)",
-   "lengua": "la",
-   "titulo": [
-    "historia romana"
-   ],
-   "creador": "floro|florus",
-   "tanda": 2,
-   "idioma": "spa"
-  },
-  {
-   "id": "justino-trogo-es",
-   "autor": "Justino",
-   "obra": "Epítome de las Historias filípicas de Trogo (trad. castellana)",
-   "lengua": "la",
-   "titulo": [
-    "trogo"
-   ],
-   "creador": "justino|justinus|trogus|trogo",
-   "tanda": 2,
-   "idioma": "spa",
-   "excluir": [
-    "apologia-i-de-san-justino"
-   ]
-  },
-  {
-   "id": "eutropio-es",
-   "autor": "Eutropio",
-   "obra": "Compendio de la historia romana (trad. castellana)",
-   "lengua": "la",
-   "titulo": [
-    "eutropio"
-   ],
-   "creador": "eutropio|eutropius",
-   "tanda": 2,
-   "idioma": "spa"
-  },
-  {
-   "id": "amiano-marcelino-es",
-   "autor": "Amiano Marcelino",
-   "obra": "Historia del Imperio romano (trad. castellana)",
-   "lengua": "la",
-   "titulo": [
-    "historia"
-   ],
-   "creador": "ammiano|amiano|ammianus",
-   "tanda": 2,
-   "idioma": "spa"
-  },
-  {
-   "id": "plauto-comedias-es",
-   "autor": "Plauto",
-   "obra": "Comedias (trad. castellana)",
-   "lengua": "la",
-   "titulo": [
-    "comedias"
-   ],
-   "creador": "plauto|plautus",
-   "tanda": 2,
-   "idioma": "spa"
-  },
-  {
-   "id": "valerio-flaco-argonautica",
-   "autor": "Valerio Flaco",
-   "obra": "Argonáuticas",
-   "lengua": "la",
-   "titulo": [
-    "argonautica"
-   ],
-   "creador": "valerius flaccus|flaccus",
-   "tanda": 2
-  },
-  {
-   "id": "manilio-astronomica",
-   "autor": "Manilio",
-   "obra": "Astronomica",
-   "lengua": "la",
-   "titulo": [
-    "astronomica"
-   ],
-   "creador": "manilius",
-   "tanda": 2
-  },
-  {
-   "id": "claudiano-poemas",
-   "autor": "Claudiano",
-   "obra": "Poemas",
-   "lengua": "la",
-   "titulo": [
-    "claudian"
-   ],
-   "creador": "claudian|claudianus",
-   "tanda": 2
-  },
-  {
-   "id": "ausonio-obras",
-   "autor": "Ausonio",
-   "obra": "Obras",
-   "lengua": "la",
-   "titulo": [
-    "ausonius"
-   ],
-   "creador": "ausonius",
-   "tanda": 2
-  },
-  {
-   "id": "prudencio-poemas",
-   "autor": "Prudencio",
-   "obra": "Poemas",
-   "lengua": "la",
-   "titulo": [
-    "prudentius",
-    "english translation"
-   ],
-   "creador": "prudentius|prudencio",
-   "tanda": 2,
-   "excluir": [
-    "aureliusprudenti00brocuoft"
-   ]
-  },
-  {
-   "id": "lactancio-instituciones",
-   "autor": "Lactancio",
-   "obra": "Instituciones divinas",
-   "lengua": "la",
-   "titulo": [
-    "divine institutes"
-   ],
-   "creador": "lactantius",
-   "tanda": 2
-  },
-  {
-   "id": "minucio-felix-octavio",
-   "autor": "Minucio Félix",
-   "obra": "Octavio",
-   "lengua": "la",
-   "titulo": [
-    "octavius"
-   ],
-   "creador": "minucius felix|minucius",
-   "tanda": 2
-  },
-  {
-   "id": "pomponio-mela-es",
-   "autor": "Pomponio Mela",
-   "obra": "Compendio de geografía (trad. castellana)",
-   "lengua": "la",
-   "titulo": [
-    "geografia"
-   ],
-   "creador": "mela|pomponio",
-   "tanda": 2,
-   "idioma": "spa"
-  },
-  {
-   "id": "higino-fabulas",
-   "autor": "Higino",
-   "obra": "Fábulas y Astronomía poética",
-   "lengua": "la",
-   "titulo": [
-    "fabulae"
-   ],
-   "creador": "hyginus",
-   "tanda": 2
-  },
-  {
-   "id": "heliodoro-es",
-   "autor": "Heliodoro",
-   "obra": "Historia etiópica de los amores de Teágenes y Cariclea (trad. castellana)",
-   "lengua": "grc",
-   "titulo": [
-    "teagenes"
-   ],
-   "creador": "heliodoro|heliodorus",
-   "tanda": 2,
-   "idioma": "spa"
-  },
-  {
-   "id": "longo-dafnis-es",
-   "autor": "Longo",
-   "obra": "Dafnis y Cloe (trad. castellana de Juan Valera)",
-   "lengua": "grc",
-   "titulo": [
-    "dafnis"
-   ],
-   "creador": "longo|longus|valera",
-   "tanda": 2,
-   "idioma": "spa",
-   "traduccionDe": "longo-dafnis-cloe"
-  },
-  {
-   "id": "accius-fragmenta",
-   "autor": "Accio",
-   "obra": "Tragoediae (fragmenta)",
-   "lengua": "la",
-   "titulo": [
-    "tragicorum romanorum"
-   ],
-   "creador": "accius|ribbeck",
-   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
-  },
-  {
-   "id": "apollodorus-poliorcetics",
-   "autor": "Apolodoro de Damasco (atribución tradicional)",
-   "obra": "Πολιορκητικά · Poliorketika",
-   "lengua": "grc",
-   "titulo": [
-    "poliorcetique des grecs"
-   ],
-   "creador": "wescher",
-   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
-  },
-  {
-   "id": "athenaeus-mechanicus",
-   "autor": "Ateneo Mecánico",
-   "obra": "Περὶ μηχανημάτων · De machinis",
-   "lengua": "grc",
-   "titulo": [
-    "poliorcetique des grecs"
-   ],
-   "creador": "wescher",
-   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
-  },
-  {
-   "id": "biton-kataskeuai",
-   "autor": "Bitón",
-   "obra": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
-   "lengua": "grc",
-   "titulo": [
-    "poliorcetique des grecs"
-   ],
-   "creador": "wescher",
-   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
-  },
-  {
-   "id": "hyginus-gromaticus",
-   "autor": "Higino Gromático",
-   "obra": "Constitutio limitum",
-   "lengua": "la",
-   "titulo": [
-    "schriften der romischen feldmesser"
-   ],
-   "creador": "lachmann|blume",
-   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra.",
-   "preferirIdentificador": "dieschriftender02lachgoog"
-  },
-  {
-   "id": "origenes",
-   "autor": "Orígenes",
-   "obra": "Περὶ ἀρχῶν · De principiis",
-   "lengua": "grc",
-   "titulo": [
-    "de principiis"
-   ],
-   "creador": "origen",
-   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
-  },
-  {
-   "id": "philo-belopoeica",
-   "autor": "Filón de Bizancio",
-   "obra": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
-   "lengua": "grc",
-   "titulo": [
-    "poliorcetique des grecs"
-   ],
-   "creador": "wescher",
-   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
-  },
-  {
-   "id": "procopius-aedificiis",
-   "autor": "Procopio de Cesarea",
-   "obra": "Περὶ κτισμάτων",
-   "lengua": "grc",
-   "titulo": [
-    "de aedificiis"
-   ],
-   "creador": "procopius",
-   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
-  },
-  {
-   "id": "ptolemy-geographia",
-   "autor": "Claudio Ptolomeo",
-   "obra": "Γεωγραφικὴ ὑφήγησις",
-   "lengua": "grc",
-   "titulo": [
-    "geographia"
-   ],
-   "creador": "ptolemaeus|ptolemy",
-   "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
-  },
-  {
-   "id": "proclo-comentario-euclides",
-   "autor": "Proclo",
-   "obra": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
-   "lengua": "grc",
-   "titulo": [
-    "in primum euclidis"
-   ],
-   "creador": "proclus",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "nicomaco-armonia",
-   "autor": "Nicómaco de Gerasa",
-   "obra": "Ἁρμονικὸν ἐγχειρίδιον · Manual de armónica",
-   "lengua": "grc",
-   "titulo": [
-    "harmonicum enchiridion"
-   ],
-   "creador": "nicomachus",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "teon-esmirna-expositio",
-   "autor": "Teón de Esmirna",
-   "obra": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
-   "lengua": "grc",
-   "titulo": [
-    "theonis smyrnaei"
-   ],
-   "creador": "theon",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "ptolomeo-harmonica",
-   "autor": "Claudio Ptolomeo",
-   "obra": "Ἁρμονικά · Harmonica",
-   "lengua": "grc",
-   "titulo": [
-    "harmonicorum"
-   ],
-   "creador": "ptolemaeus|wallis",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "heron-metrica-dioptra",
-   "autor": "Herón de Alejandría",
-   "obra": "Μετρικά · Περὶ διόπτρας · Metrica y Dioptra",
-   "lengua": "grc",
-   "titulo": [
-    "heronis alexandrini opera"
-   ],
-   "creador": "heron|schoene",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "heron-mechanica",
-   "autor": "Herón de Alejandría",
-   "obra": "Μηχανικά · Mechanica (transmitida en árabe)",
-   "lengua": "grc",
-   "titulo": [
-    "heronis alexandrini opera"
-   ],
-   "creador": "heron|nix",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "paladio-opus-agriculturae",
-   "autor": "Paladio",
-   "obra": "Opus agriculturae",
-   "lengua": "la",
-   "titulo": [
-    "palladius"
-   ],
-   "creador": "palladius",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "festo-verborum-significatu",
-   "autor": "Festo (y Verrio Flaco)",
-   "obra": "De verborum significatu",
-   "lengua": "la",
-   "titulo": [
-    "de verborum significatu"
-   ],
-   "creador": "festus",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "marciano-capela-nuptiis",
-   "autor": "Marciano Capela",
-   "obra": "De nuptiis Philologiae et Mercurii",
-   "lengua": "la",
-   "titulo": [
-    "martianus capella"
-   ],
-   "creador": "martianus capella",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "casiodoro-variae",
-   "autor": "Casiodoro",
-   "obra": "Variae",
-   "lengua": "la",
-   "titulo": [
-    "variae"
-   ],
-   "creador": "cassiodorus",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "boecio-institutione-musica",
-   "autor": "Boecio",
-   "obra": "De institutione musica",
-   "lengua": "la",
-   "titulo": [
-    "de institutione musica"
-   ],
-   "creador": "boethius",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "aristides-quintiliano-musica",
-   "autor": "Aristides Quintiliano",
-   "obra": "Περὶ μουσικῆς · De musica",
-   "lengua": "grc",
-   "titulo": [
-    "de musica"
-   ],
-   "creador": "aristides quintilianus",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "porfirio-vida-pitagoras",
-   "autor": "Porfirio",
-   "obra": "Πυθαγόρου βίος · Vita Pythagorae",
-   "lengua": "grc",
-   "titulo": [
-    "porphyrii opuscula"
-   ],
-   "creador": "porphyrius",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "jamblico-vida-pitagorica",
-   "autor": "Jámblico",
-   "obra": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
-   "lengua": "grc",
-   "titulo": [
-    "de vita pythagorica"
-   ],
-   "creador": "iamblichus",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "aristoteles-meteorologica",
-   "autor": "Aristóteles",
-   "obra": "Μετεωρολογικά · Meteorologica",
-   "lengua": "grc",
-   "titulo": [
-    "meteorologica"
-   ],
-   "creador": "aristotle",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "aristoteles-problemata",
-   "autor": "Pseudo-Aristóteles",
-   "obra": "Προβλήματα · Problemata",
-   "lengua": "grc",
-   "titulo": [
-    "problemata"
-   ],
-   "creador": "aristotle",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "sexto-empirico-obras",
-   "autor": "Sexto Empírico",
-   "obra": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
-   "lengua": "grc",
-   "titulo": [
-    "sextus empiricus"
-   ],
-   "creador": "sextus empiricus",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "historia-augusta",
-   "autor": "Escritores de la Historia Augusta",
-   "obra": "Scriptores Historiae Augustae",
-   "lengua": "la",
-   "titulo": [
-    "historiae augustae"
-   ],
-   "creador": "scriptores historiae augustae|peter",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "nonio-marcelo-doctrina",
-   "autor": "Nonio Marcelo",
-   "obra": "De compendiosa doctrina",
-   "lengua": "la",
-   "titulo": [
-    "compendiosa doctrina"
-   ],
-   "creador": "nonius marcellus",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "anthologia-latina",
-   "autor": "Antología latina",
-   "obra": "Anthologia Latina",
-   "lengua": "la",
-   "titulo": [
-    "anthologia latina"
-   ],
-   "creador": "riese|anthologia latina",
-   "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
-  },
-  {
-   "id": "alberti-de-re-aedificatoria",
-   "autor": "Leon Battista Alberti",
-   "obra": "De re aedificatoria",
-   "lengua": "la",
-   "titulo": [
-    "de re aedificatoria"
-   ],
-   "creador": "alberti",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina.",
-   "visorFolios": "previsto: por su importancia en la historia de la arquitectura, se le armará visor de folios cuando haya espacio"
-  },
-  {
-   "id": "palladio-quattro-libri",
-   "autor": "Andrea Palladio",
-   "obra": "I quattro libri dell'architettura",
-   "lengua": "it",
-   "titulo": [
-    "quattro libri"
-   ],
-   "creador": "palladio",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina.",
-   "visorFolios": "previsto: por su importancia en la historia de la arquitectura, se le armará visor de folios cuando haya espacio"
-  },
-  {
-   "id": "serlio-architettura",
-   "autor": "Sebastiano Serlio",
-   "obra": "Tutte l'opere d'architettura",
-   "lengua": "it",
-   "titulo": [
-    "architettura"
-   ],
-   "creador": "serlio",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "vignola-cinque-ordini",
-   "autor": "Giacomo Barozzi da Vignola",
-   "obra": "Regola delli cinque ordini d’architettura",
-   "lengua": "it",
-   "titulo": [
-    "cinque ordini"
-   ],
-   "creador": "vignola",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "perrault-vitruve-1673",
-   "autor": "Claude Perrault",
-   "obra": "Les dix livres d’architecture de Vitruve",
-   "lengua": "fr",
-   "titulo": [
-    "dix livres d architecture"
-   ],
-   "creador": "perrault",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "philandrier-annotationes",
-   "autor": "Guillaume Philandrier",
-   "obra": "In decem libros M. Vitruvii Pollionis annotationes",
-   "lengua": "la",
-   "titulo": [
-    "vitruvii"
-   ],
-   "creador": "philander|philandrier",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "barbaro-dieci-libri",
-   "autor": "Daniele Barbaro",
-   "obra": "I dieci libri dell'architettura di M. Vitruvio",
-   "lengua": "it",
-   "titulo": [
-    "vitruvio"
-   ],
-   "creador": "barbaro",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "scamozzi-idea-architettura",
-   "autor": "Vincenzo Scamozzi",
-   "obra": "L'idea della architettura universale",
-   "lengua": "it",
-   "titulo": [
-    "architettura universale"
-   ],
-   "creador": "scamozzi",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "rusconi-architettura-1590",
-   "autor": "Giovanni Antonio Rusconi",
-   "obra": "Della architettura",
-   "lengua": "it",
-   "titulo": [
-    "architettura"
-   ],
-   "creador": "rusconi",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "choisy-art-de-batir",
-   "autor": "Auguste Choisy",
-   "obra": "L'art de bâtir chez les Romains",
-   "lengua": "fr",
-   "titulo": [
-    "art de batir"
-   ],
-   "creador": "choisy",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "rose-vitruvius-1899",
-   "autor": "Valentin Rose (ed.)",
-   "obra": "Vitruvii De architectura libri decem (ed. Rose, 1899)",
-   "lengua": "la",
-   "titulo": [
-    "de architectura"
-   ],
-   "creador": "rose",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "vasari-vite",
-   "autor": "Giorgio Vasari",
-   "obra": "Le vite de’ più eccellenti pittori, scultori e architettori",
-   "lengua": "it",
-   "titulo": [
-    "vite"
-   ],
-   "creador": "vasari",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "laugier-essai",
-   "autor": "Marc-Antoine Laugier",
-   "obra": "Essai sur l'architecture",
-   "lengua": "fr",
-   "titulo": [
-    "essai sur l architecture"
-   ],
-   "creador": "laugier",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "viollet-le-duc-dictionnaire",
-   "autor": "Eugène Viollet-le-Duc",
-   "obra": "Dictionnaire raisonné de l'architecture française",
-   "lengua": "fr",
-   "titulo": [
-    "dictionnaire raisonne de l architecture"
-   ],
-   "creador": "viollet",
-   "coleccion": "recepcion-vitruviana",
-   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
-  },
-  {
-   "id": "galeno-kuhn-vol01",
-   "autor": "Galeno",
-   "obra": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
-   "lengua": "grc",
-   "titulo": [
-    "opera omnia"
-   ],
-   "creador": "galen|kuhn",
-   "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia.",
-   "preferirIdentificador": "hapantaoperaomni01galeuoft"
-  },
-  {
-   "id": "galeno-kuhn-vol19",
-   "autor": "Galeno",
-   "obra": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
-   "lengua": "grc",
-   "titulo": [
-    "opera omnia"
-   ],
-   "creador": "galen|kuhn",
-   "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia.",
-   "preferirIdentificador": "b29339339_0021"
-  },
-  {
-   "id": "galeno-scripta-minora",
-   "autor": "Galeno",
-   "obra": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
-   "lengua": "grc",
-   "titulo": [
-    "scripta minora"
-   ],
-   "creador": "galen|marquardt|helmreich",
-   "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia."
-  },
-  {
-   "id": "galeno-opera-kuhn",
-   "autor": "Galeno",
-   "obra": "Opera omnia (ed. Kühn): volumen adicional",
-   "lengua": "grc",
-   "titulo": [
-    "opera omnia"
-   ],
-   "creador": "galen|kuhn",
-   "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia."
-  },
-  {
-   "id": "palladio-quattro-libri-en",
-   "autor": "Andrea Palladio",
-   "obra": "The Four Books of Architecture (trad. Leoni/Ware)",
-   "lengua": "en",
-   "titulo": [
-    "four books of architecture"
-   ],
-   "creador": "palladio|leoni|ware",
-   "coleccion": "recepcion-vitruviana",
-   "traduccionDe": "palladio-quattro-libri",
-   "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (palladio-quattro-libri); cuelga de su ficha y no cuenta como obra nueva."
-  },
-  {
-   "id": "palladio-quattro-libri-fr",
-   "autor": "Andrea Palladio",
-   "obra": "Les quatre livres de l'architecture (trad. Fréart de Chambray)",
-   "lengua": "fr",
-   "titulo": [
-    "quatre livres de l architecture"
-   ],
-   "creador": "palladio|freart",
-   "coleccion": "recepcion-vitruviana",
-   "traduccionDe": "palladio-quattro-libri",
-   "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (palladio-quattro-libri); cuelga de su ficha y no cuenta como obra nueva."
-  },
-  {
-   "id": "palladio-quattro-libri-es",
-   "autor": "Andrea Palladio",
-   "obra": "Los cuatro libros de arquitectura (trad. Ortiz y Sanz, 1797)",
-   "lengua": "es",
-   "titulo": [
-    "cuatro libros de arquitectura"
-   ],
-   "creador": "palladio|ortiz",
-   "coleccion": "recepcion-vitruviana",
-   "traduccionDe": "palladio-quattro-libri",
-   "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (palladio-quattro-libri); cuelga de su ficha y no cuenta como obra nueva."
-  },
-  {
-   "id": "alberti-de-re-aedificatoria-en",
-   "autor": "Leon Battista Alberti",
-   "obra": "Ten Books on Architecture (trad. Leoni, 1726)",
-   "lengua": "en",
-   "titulo": [
-    "ten books on architecture"
-   ],
-   "creador": "alberti|leoni",
-   "coleccion": "recepcion-vitruviana",
-   "traduccionDe": "alberti-de-re-aedificatoria",
-   "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (alberti-de-re-aedificatoria); cuelga de su ficha y no cuenta como obra nueva."
-  },
-  {
-   "id": "alberti-de-re-aedificatoria-fr",
-   "autor": "Leon Battista Alberti",
-   "obra": "L'architecture et art de bien bastir (trad. Jean Martin, 1553)",
-   "lengua": "fr",
-   "titulo": [
-    "architecture et art de bien bastir"
-   ],
-   "creador": "alberti|martin",
-   "coleccion": "recepcion-vitruviana",
-   "traduccionDe": "alberti-de-re-aedificatoria",
-   "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (alberti-de-re-aedificatoria); cuelga de su ficha y no cuenta como obra nueva."
-  }
- ]
+  "schema": "vdl-r2-clasicos-candidatos-1",
+  "descripcion": "Obras clásicas griegas y latinas que todavía no tienen PDF en la biblioteca (documents/clasicos, documents/classics). Se buscan en Internet Archive ediciones de dominio público (anteriores a 1929), con preferencia por volúmenes bilingües Loeb (original y traducción inglesa enfrentados). Cada PDF elegido debe mencionar al autor en sus primeras páginas. Tanda 2: obras ausentes del sitio, en ediciones con el texto griego o en traducciones castellanas de dominio público. Incluye también las fichas del repertorio que todavía no tienen texto: para ellas el id del candidato es el de la ficha, de modo que la edición se vincula a la obra y no crea una entrada nueva. Las entradas con «coleccion» no pertenecen a la Antigüedad griega y latina y no entran al repertorio antiguo: se catalogan en su propia colección.",
+  "limites": {
+    "maxMiB": 180,
+    "anioMaximo": 1928
+  },
+  "obras": [
+    {
+      "id": "herodoto-historias",
+      "autor": "Heródoto",
+      "obra": "Historias",
+      "lengua": "grc",
+      "titulo": [
+        "herodotus"
+      ],
+      "creador": "herodotus"
+    },
+    {
+      "id": "tucidides-historia",
+      "autor": "Tucídides",
+      "obra": "Historia de la guerra del Peloponeso",
+      "lengua": "grc",
+      "titulo": [
+        "thucydides"
+      ],
+      "creador": "thucydides"
+    },
+    {
+      "id": "jenofonte-anabasis",
+      "autor": "Jenofonte",
+      "obra": "Anábasis",
+      "lengua": "grc",
+      "titulo": [
+        "anabasis"
+      ],
+      "creador": "xenophon"
+    },
+    {
+      "id": "jenofonte-memorabilia",
+      "autor": "Jenofonte",
+      "obra": "Memorables",
+      "lengua": "grc",
+      "titulo": [
+        "memorabilia"
+      ],
+      "creador": "xenophon"
+    },
+    {
+      "id": "plutarco-vidas",
+      "autor": "Plutarco",
+      "obra": "Vidas paralelas",
+      "lengua": "grc",
+      "titulo": [
+        "lives"
+      ],
+      "creador": "plutarch"
+    },
+    {
+      "id": "polibio-historias",
+      "autor": "Polibio",
+      "obra": "Historias",
+      "lengua": "grc",
+      "titulo": [
+        "histories"
+      ],
+      "creador": "polybius"
+    },
+    {
+      "id": "demostenes-discursos",
+      "autor": "Demóstenes",
+      "obra": "Discursos",
+      "lengua": "grc",
+      "titulo": [
+        "demosthenes"
+      ],
+      "creador": "demosthenes"
+    },
+    {
+      "id": "lisias-discursos",
+      "autor": "Lisias",
+      "obra": "Discursos",
+      "lengua": "grc",
+      "titulo": [
+        "lysias"
+      ],
+      "creador": "lysias"
+    },
+    {
+      "id": "isocrates-discursos",
+      "autor": "Isócrates",
+      "obra": "Discursos",
+      "lengua": "grc",
+      "titulo": [
+        "isocrates"
+      ],
+      "creador": "isocrates"
+    },
+    {
+      "id": "platon-banquete",
+      "autor": "Platón",
+      "obra": "Banquete",
+      "lengua": "grc",
+      "titulo": [
+        "symposium"
+      ],
+      "creador": "plato"
+    },
+    {
+      "id": "platon-fedon",
+      "autor": "Platón",
+      "obra": "Fedón",
+      "lengua": "grc",
+      "titulo": [
+        "phaedo"
+      ],
+      "creador": "plato"
+    },
+    {
+      "id": "platon-timeo",
+      "autor": "Platón",
+      "obra": "Timeo",
+      "lengua": "grc",
+      "titulo": [
+        "timaeus"
+      ],
+      "creador": "plato"
+    },
+    {
+      "id": "platon-leyes",
+      "autor": "Platón",
+      "obra": "Leyes",
+      "lengua": "grc",
+      "titulo": [
+        "laws"
+      ],
+      "creador": "plato"
+    },
+    {
+      "id": "aristoteles-politica",
+      "autor": "Aristóteles",
+      "obra": "Política",
+      "lengua": "grc",
+      "titulo": [
+        "politics"
+      ],
+      "creador": "aristotle"
+    },
+    {
+      "id": "aristoteles-metafisica",
+      "autor": "Aristóteles",
+      "obra": "Metafísica",
+      "lengua": "grc",
+      "titulo": [
+        "metaphysics"
+      ],
+      "creador": "aristotle"
+    },
+    {
+      "id": "teofrasto-historia-plantas",
+      "autor": "Teofrasto",
+      "obra": "Historia de las plantas",
+      "lengua": "grc",
+      "titulo": [
+        "plants"
+      ],
+      "creador": "theophrastus"
+    },
+    {
+      "id": "esquilo-tragedias",
+      "autor": "Esquilo",
+      "obra": "Tragedias",
+      "lengua": "grc",
+      "titulo": [
+        "aeschylus"
+      ],
+      "creador": "aeschylus"
+    },
+    {
+      "id": "sofocles-tragedias",
+      "autor": "Sófocles",
+      "obra": "Tragedias",
+      "lengua": "grc",
+      "titulo": [
+        "sophocles"
+      ],
+      "creador": "sophocles"
+    },
+    {
+      "id": "euripides-tragedias",
+      "autor": "Eurípides",
+      "obra": "Tragedias",
+      "lengua": "grc",
+      "titulo": [
+        "euripides"
+      ],
+      "creador": "euripides"
+    },
+    {
+      "id": "aristofanes-comedias",
+      "autor": "Aristófanes",
+      "obra": "Comedias",
+      "lengua": "grc",
+      "titulo": [
+        "aristophanes"
+      ],
+      "creador": "aristophanes"
+    },
+    {
+      "id": "apolonio-argonauticas",
+      "autor": "Apolonio de Rodas",
+      "obra": "Argonáuticas",
+      "lengua": "grc",
+      "titulo": [
+        "argonautica"
+      ],
+      "creador": "apollonius"
+    },
+    {
+      "id": "teocrito-bucolicos",
+      "autor": "Teócrito, Bión y Mosco",
+      "obra": "Poetas bucólicos griegos",
+      "lengua": "grc",
+      "titulo": [
+        "bucolic"
+      ],
+      "creador": "theocritus"
+    },
+    {
+      "id": "luciano-obras",
+      "autor": "Luciano de Samósata",
+      "obra": "Obras",
+      "lengua": "grc",
+      "titulo": [
+        "lucian"
+      ],
+      "creador": "lucian"
+    },
+    {
+      "id": "pausanias-descripcion",
+      "autor": "Pausanias",
+      "obra": "Descripción de Grecia",
+      "lengua": "grc",
+      "titulo": [
+        "description of greece"
+      ],
+      "creador": "pausanias"
+    },
+    {
+      "id": "estrabon-geografia",
+      "autor": "Estrabón",
+      "obra": "Geografía",
+      "lengua": "grc",
+      "titulo": [
+        "geography"
+      ],
+      "creador": "strabo"
+    },
+    {
+      "id": "euclides-elementos",
+      "autor": "Euclides",
+      "obra": "Elementos (trad. Heath)",
+      "lengua": "grc",
+      "titulo": [
+        "elements"
+      ],
+      "creador": "euclid"
+    },
+    {
+      "id": "arquimedes-obras",
+      "autor": "Arquímedes",
+      "obra": "Obras (ed. Heath)",
+      "lengua": "grc",
+      "titulo": [
+        "archimedes"
+      ],
+      "creador": "archimedes"
+    },
+    {
+      "id": "diogenes-laercio-vidas",
+      "autor": "Diógenes Laercio",
+      "obra": "Vidas de los filósofos ilustres",
+      "lengua": "grc",
+      "titulo": [
+        "philosophers"
+      ],
+      "creador": "diogenes laertius"
+    },
+    {
+      "id": "longino-sublime",
+      "autor": "Pseudo-Longino",
+      "obra": "Sobre lo sublime",
+      "lengua": "grc",
+      "titulo": [
+        "sublime"
+      ],
+      "creador": "longinus"
+    },
+    {
+      "id": "plinio-historia-natural",
+      "autor": "Plinio el Viejo",
+      "obra": "Historia natural",
+      "lengua": "la",
+      "titulo": [
+        "natural history"
+      ],
+      "creador": "pliny"
+    },
+    {
+      "id": "tito-livio-historia",
+      "autor": "Tito Livio",
+      "obra": "Ab urbe condita",
+      "lengua": "la",
+      "titulo": [
+        "livy"
+      ],
+      "creador": "livy"
+    },
+    {
+      "id": "salustio-obras",
+      "autor": "Salustio",
+      "obra": "Catilina y Yugurta",
+      "lengua": "la",
+      "titulo": [
+        "sallust"
+      ],
+      "creador": "sallust"
+    },
+    {
+      "id": "ciceron-de-oratore",
+      "autor": "Cicerón",
+      "obra": "De oratore",
+      "lengua": "la",
+      "titulo": [
+        "de oratore"
+      ],
+      "creador": "cicero"
+    },
+    {
+      "id": "ciceron-de-re-publica",
+      "autor": "Cicerón",
+      "obra": "De re publica / De legibus",
+      "lengua": "la",
+      "titulo": [
+        "de re publica"
+      ],
+      "creador": "cicero"
+    },
+    {
+      "id": "ciceron-tusculanas",
+      "autor": "Cicerón",
+      "obra": "Disputaciones tusculanas",
+      "lengua": "la",
+      "titulo": [
+        "tusculan"
+      ],
+      "creador": "cicero"
+    },
+    {
+      "id": "seneca-tragedias",
+      "autor": "Séneca",
+      "obra": "Tragedias",
+      "lengua": "la",
+      "titulo": [
+        "tragedies"
+      ],
+      "creador": "seneca"
+    },
+    {
+      "id": "lucano-farsalia",
+      "autor": "Lucano",
+      "obra": "Farsalia",
+      "lengua": "la",
+      "titulo": [
+        "pharsalia"
+      ],
+      "creador": "lucan"
+    },
+    {
+      "id": "estacio-obras",
+      "autor": "Estacio",
+      "obra": "Silvas y Tebaida",
+      "lengua": "la",
+      "titulo": [
+        "statius",
+        "english translation"
+      ],
+      "creador": "statius",
+      "excluir": [
+        "cu31924026519334"
+      ]
+    },
+    {
+      "id": "juvenal-persio-satiras",
+      "autor": "Juvenal y Persio",
+      "obra": "Sátiras",
+      "lengua": "la",
+      "titulo": [
+        "juvenal"
+      ],
+      "creador": "juvenal"
+    },
+    {
+      "id": "marcial-epigramas",
+      "autor": "Marcial",
+      "obra": "Epigramas",
+      "lengua": "la",
+      "titulo": [
+        "epigrams"
+      ],
+      "creador": "martial"
+    },
+    {
+      "id": "petronio-satiricon",
+      "autor": "Petronio",
+      "obra": "Satiricón",
+      "lengua": "la",
+      "titulo": [
+        "petronius"
+      ],
+      "creador": "petronius"
+    },
+    {
+      "id": "apuleyo-metamorfosis",
+      "autor": "Apuleyo",
+      "obra": "Metamorfosis (El asno de oro)",
+      "lengua": "la",
+      "titulo": [
+        "golden ass"
+      ],
+      "creador": "apuleius"
+    },
+    {
+      "id": "quintiliano-institutio",
+      "autor": "Quintiliano",
+      "obra": "Institutio oratoria",
+      "lengua": "la",
+      "titulo": [
+        "institutio oratoria"
+      ],
+      "creador": "quintilian"
+    },
+    {
+      "id": "frontino-de-aquis",
+      "autor": "Frontino",
+      "obra": "Estratagemas y Acueductos de Roma",
+      "lengua": "la",
+      "titulo": [
+        "stratagems"
+      ],
+      "creador": "frontinus"
+    },
+    {
+      "id": "columela-de-re-rustica",
+      "autor": "Columela",
+      "obra": "De re rustica",
+      "lengua": "la",
+      "titulo": [
+        "columella"
+      ],
+      "creador": "columella"
+    },
+    {
+      "id": "varron-de-re-rustica",
+      "autor": "Varrón",
+      "obra": "De re rustica",
+      "lengua": "la",
+      "titulo": [
+        "varro"
+      ],
+      "creador": "varro"
+    },
+    {
+      "id": "celso-de-medicina",
+      "autor": "Celso",
+      "obra": "De medicina",
+      "lengua": "la",
+      "titulo": [
+        "celsus"
+      ],
+      "creador": "celsus"
+    },
+    {
+      "id": "agustin-confesiones",
+      "autor": "Agustín de Hipona",
+      "obra": "Confesiones",
+      "lengua": "la",
+      "titulo": [
+        "confessions"
+      ],
+      "creador": "augustine"
+    },
+    {
+      "id": "boecio-consolacion",
+      "autor": "Boecio",
+      "obra": "Consolación de la filosofía",
+      "lengua": "la",
+      "titulo": [
+        "consolation"
+      ],
+      "creador": "boethius"
+    },
+    {
+      "id": "aulo-gelio-noches",
+      "autor": "Aulo Gelio",
+      "obra": "Noches áticas",
+      "lengua": "la",
+      "titulo": [
+        "attic nights"
+      ],
+      "creador": "gellius"
+    },
+    {
+      "id": "plinio-joven-cartas",
+      "autor": "Plinio el Joven",
+      "obra": "Cartas",
+      "lengua": "la",
+      "titulo": [
+        "letters"
+      ],
+      "creador": "pliny"
+    },
+    {
+      "id": "propercio-elegias",
+      "autor": "Propercio",
+      "obra": "Elegías",
+      "lengua": "la",
+      "titulo": [
+        "propertius"
+      ],
+      "creador": "propertius"
+    },
+    {
+      "id": "ovidio-fastos",
+      "autor": "Ovidio",
+      "obra": "Fastos",
+      "lengua": "la",
+      "titulo": [
+        "fasti"
+      ],
+      "creador": "ovid"
+    },
+    {
+      "id": "cesar-guerra-civil",
+      "autor": "César",
+      "obra": "Guerra civil",
+      "lengua": "la",
+      "titulo": [
+        "civil wars"
+      ],
+      "creador": "caesar"
+    },
+    {
+      "id": "longo-dafnis-cloe",
+      "autor": "Longo",
+      "obra": "Dafnis y Cloe",
+      "lengua": "grc",
+      "titulo": [
+        "daphnis"
+      ],
+      "creador": "longus",
+      "tanda": 2
+    },
+    {
+      "id": "aquiles-tacio-leucipa",
+      "autor": "Aquiles Tacio",
+      "obra": "Leucipa y Clitofonte",
+      "lengua": "grc",
+      "titulo": [
+        "achilles tatius"
+      ],
+      "creador": "achilles tatius",
+      "tanda": 2
+    },
+    {
+      "id": "filostrato-apolonio",
+      "autor": "Filóstrato",
+      "obra": "Vida de Apolonio de Tiana",
+      "lengua": "grc",
+      "titulo": [
+        "apollonius of tyana"
+      ],
+      "creador": "philostratus",
+      "tanda": 2
+    },
+    {
+      "id": "quinto-esmirna-posthomericas",
+      "autor": "Quinto de Esmirna",
+      "obra": "Posthoméricas (La caída de Troya)",
+      "lengua": "grc",
+      "titulo": [
+        "fall of troy"
+      ],
+      "creador": "quintus smyrnaeus|quintus",
+      "tanda": 2
+    },
+    {
+      "id": "juliano-obras",
+      "autor": "Juliano el Apóstata",
+      "obra": "Obras",
+      "lengua": "grc",
+      "titulo": [
+        "julian",
+        "english translation"
+      ],
+      "creador": "julian",
+      "tanda": 2,
+      "excluir": [
+        "fourthinternatio01inteuoft"
+      ]
+    },
+    {
+      "id": "menandro-comedias",
+      "autor": "Menandro",
+      "obra": "Comedias (fragmentos)",
+      "lengua": "grc",
+      "titulo": [
+        "menander"
+      ],
+      "creador": "menander",
+      "tanda": 2
+    },
+    {
+      "id": "calimaco-himnos",
+      "autor": "Calímaco y Licofrón",
+      "obra": "Himnos, epigramas; Alejandra",
+      "lengua": "grc",
+      "titulo": [
+        "callimachus"
+      ],
+      "creador": "callimachus",
+      "tanda": 2
+    },
+    {
+      "id": "antologia-griega",
+      "autor": "Antología griega",
+      "obra": "Antología Palatina",
+      "lengua": "grc",
+      "titulo": [
+        "greek anthology"
+      ],
+      "creador": "paton|greek anthology",
+      "tanda": 2
+    },
+    {
+      "id": "lyra-graeca",
+      "autor": "Poetas líricos griegos",
+      "obra": "Lyra Graeca",
+      "lengua": "grc",
+      "titulo": [
+        "lyra graeca"
+      ],
+      "creador": "edmonds",
+      "tanda": 2
+    },
+    {
+      "id": "jenofonte-ciropedia",
+      "autor": "Jenofonte",
+      "obra": "Ciropedia",
+      "lengua": "grc",
+      "titulo": [
+        "cyropaedia"
+      ],
+      "creador": "xenophon",
+      "tanda": 2
+    },
+    {
+      "id": "jenofonte-economico",
+      "autor": "Jenofonte",
+      "obra": "Económico",
+      "lengua": "grc",
+      "titulo": [
+        "oeconomicus"
+      ],
+      "creador": "xenophon",
+      "tanda": 2
+    },
+    {
+      "id": "platon-teeteto-sofista",
+      "autor": "Platón",
+      "obra": "Teeteto y Sofista",
+      "lengua": "grc",
+      "titulo": [
+        "theaetetus"
+      ],
+      "creador": "plato",
+      "tanda": 2
+    },
+    {
+      "id": "platon-cratilo-parmenides",
+      "autor": "Platón",
+      "obra": "Crátilo, Parménides, Hipias, Hipias mayor",
+      "lengua": "grc",
+      "titulo": [
+        "cratylus"
+      ],
+      "creador": "plato",
+      "tanda": 2
+    },
+    {
+      "id": "platon-protagoras",
+      "autor": "Platón",
+      "obra": "Laques, Protágoras, Menón, Eutidemo",
+      "lengua": "grc",
+      "titulo": [
+        "protagoras"
+      ],
+      "creador": "plato",
+      "tanda": 2
+    },
+    {
+      "id": "esquines-discursos",
+      "autor": "Esquines",
+      "obra": "Discursos",
+      "lengua": "grc",
+      "titulo": [
+        "aeschines"
+      ],
+      "creador": "aeschines",
+      "tanda": 2
+    },
+    {
+      "id": "iseo-discursos",
+      "autor": "Iseo",
+      "obra": "Discursos",
+      "lengua": "grc",
+      "titulo": [
+        "isaeus"
+      ],
+      "creador": "isaeus",
+      "tanda": 2
+    },
+    {
+      "id": "hipocrates-obras",
+      "autor": "Hipócrates",
+      "obra": "Obras (Loeb)",
+      "lengua": "grc",
+      "titulo": [
+        "hippocrates"
+      ],
+      "creador": "hippocrates",
+      "tanda": 2
+    },
+    {
+      "id": "galeno-facultades-naturales",
+      "autor": "Galeno",
+      "obra": "Sobre las facultades naturales",
+      "lengua": "grc",
+      "titulo": [
+        "natural faculties"
+      ],
+      "creador": "galen",
+      "tanda": 2
+    },
+    {
+      "id": "epicuro-restos",
+      "autor": "Epicuro",
+      "obra": "Los restos existentes (ed. Bailey)",
+      "lengua": "grc",
+      "titulo": [
+        "epicurus"
+      ],
+      "creador": "epicurus|bailey",
+      "tanda": 2
+    },
+    {
+      "id": "baquilides-poemas",
+      "autor": "Baquílides",
+      "obra": "Poemas y fragmentos (ed. Jebb)",
+      "lengua": "grc",
+      "titulo": [
+        "bacchylides"
+      ],
+      "creador": "bacchylides",
+      "tanda": 2
+    },
+    {
+      "id": "aristoteles-historia-animales",
+      "autor": "Aristóteles",
+      "obra": "Historia de los animales",
+      "lengua": "grc",
+      "titulo": [
+        "historia animalium"
+      ],
+      "creador": "aristotle",
+      "tanda": 2
+    },
+    {
+      "id": "aristoteles-del-cielo",
+      "autor": "Aristóteles",
+      "obra": "Acerca del cielo",
+      "lengua": "grc",
+      "titulo": [
+        "de caelo"
+      ],
+      "creador": "aristotle",
+      "tanda": 2
+    },
+    {
+      "id": "nicomaco-aritmetica",
+      "autor": "Nicómaco de Gerasa",
+      "obra": "Introducción a la aritmética",
+      "lengua": "grc",
+      "titulo": [
+        "arithmetic"
+      ],
+      "creador": "nicomachus",
+      "tanda": 2
+    },
+    {
+      "id": "plotino-eneadas",
+      "autor": "Plotino",
+      "obra": "Enéadas",
+      "lengua": "grc",
+      "titulo": [
+        "enneades"
+      ],
+      "creador": "plotinus|plotin",
+      "tanda": 2
+    },
+    {
+      "id": "heliodoro-etiopicas",
+      "autor": "Heliodoro",
+      "obra": "Etiópicas",
+      "lengua": "grc",
+      "titulo": [
+        "aethiopic"
+      ],
+      "creador": "heliodorus",
+      "tanda": 2
+    },
+    {
+      "id": "curcio-alejandro-es",
+      "autor": "Quinto Curcio Rufo",
+      "obra": "Historia de Alejandro Magno (trad. castellana)",
+      "lengua": "la",
+      "titulo": [
+        "alejandro"
+      ],
+      "creador": "curcio|curtius|quintus curtius",
+      "tanda": 2,
+      "idioma": "spa"
+    },
+    {
+      "id": "floro-epitome-es",
+      "autor": "Floro",
+      "obra": "Compendio de la historia romana (trad. castellana)",
+      "lengua": "la",
+      "titulo": [
+        "historia romana"
+      ],
+      "creador": "floro|florus",
+      "tanda": 2,
+      "idioma": "spa"
+    },
+    {
+      "id": "justino-trogo-es",
+      "autor": "Justino",
+      "obra": "Epítome de las Historias filípicas de Trogo (trad. castellana)",
+      "lengua": "la",
+      "titulo": [
+        "trogo"
+      ],
+      "creador": "justino|justinus|trogus|trogo",
+      "tanda": 2,
+      "idioma": "spa",
+      "excluir": [
+        "apologia-i-de-san-justino"
+      ]
+    },
+    {
+      "id": "eutropio-es",
+      "autor": "Eutropio",
+      "obra": "Compendio de la historia romana (trad. castellana)",
+      "lengua": "la",
+      "titulo": [
+        "eutropio"
+      ],
+      "creador": "eutropio|eutropius",
+      "tanda": 2,
+      "idioma": "spa"
+    },
+    {
+      "id": "amiano-marcelino-es",
+      "autor": "Amiano Marcelino",
+      "obra": "Historia del Imperio romano (trad. castellana)",
+      "lengua": "la",
+      "titulo": [
+        "historia"
+      ],
+      "creador": "ammiano|amiano|ammianus",
+      "tanda": 2,
+      "idioma": "spa"
+    },
+    {
+      "id": "plauto-comedias-es",
+      "autor": "Plauto",
+      "obra": "Comedias (trad. castellana)",
+      "lengua": "la",
+      "titulo": [
+        "comedias"
+      ],
+      "creador": "plauto|plautus",
+      "tanda": 2,
+      "idioma": "spa"
+    },
+    {
+      "id": "valerio-flaco-argonautica",
+      "autor": "Valerio Flaco",
+      "obra": "Argonáuticas",
+      "lengua": "la",
+      "titulo": [
+        "argonautica"
+      ],
+      "creador": "valerius flaccus|flaccus",
+      "tanda": 2
+    },
+    {
+      "id": "manilio-astronomica",
+      "autor": "Manilio",
+      "obra": "Astronomica",
+      "lengua": "la",
+      "titulo": [
+        "astronomica"
+      ],
+      "creador": "manilius",
+      "tanda": 2
+    },
+    {
+      "id": "claudiano-poemas",
+      "autor": "Claudiano",
+      "obra": "Poemas",
+      "lengua": "la",
+      "titulo": [
+        "claudian"
+      ],
+      "creador": "claudian|claudianus",
+      "tanda": 2
+    },
+    {
+      "id": "ausonio-obras",
+      "autor": "Ausonio",
+      "obra": "Obras",
+      "lengua": "la",
+      "titulo": [
+        "ausonius"
+      ],
+      "creador": "ausonius",
+      "tanda": 2
+    },
+    {
+      "id": "prudencio-poemas",
+      "autor": "Prudencio",
+      "obra": "Poemas",
+      "lengua": "la",
+      "titulo": [
+        "prudentius",
+        "english translation"
+      ],
+      "creador": "prudentius|prudencio",
+      "tanda": 2,
+      "excluir": [
+        "aureliusprudenti00brocuoft"
+      ]
+    },
+    {
+      "id": "lactancio-instituciones",
+      "autor": "Lactancio",
+      "obra": "Instituciones divinas",
+      "lengua": "la",
+      "titulo": [
+        "divine institutes"
+      ],
+      "creador": "lactantius",
+      "tanda": 2
+    },
+    {
+      "id": "minucio-felix-octavio",
+      "autor": "Minucio Félix",
+      "obra": "Octavio",
+      "lengua": "la",
+      "titulo": [
+        "octavius"
+      ],
+      "creador": "minucius felix|minucius",
+      "tanda": 2
+    },
+    {
+      "id": "pomponio-mela-es",
+      "autor": "Pomponio Mela",
+      "obra": "Compendio de geografía (trad. castellana)",
+      "lengua": "la",
+      "titulo": [
+        "geografia"
+      ],
+      "creador": "mela|pomponio",
+      "tanda": 2,
+      "idioma": "spa"
+    },
+    {
+      "id": "higino-fabulas",
+      "autor": "Higino",
+      "obra": "Fábulas y Astronomía poética",
+      "lengua": "la",
+      "titulo": [
+        "fabulae"
+      ],
+      "creador": "hyginus",
+      "tanda": 2
+    },
+    {
+      "id": "heliodoro-es",
+      "autor": "Heliodoro",
+      "obra": "Historia etiópica de los amores de Teágenes y Cariclea (trad. castellana)",
+      "lengua": "grc",
+      "titulo": [
+        "teagenes"
+      ],
+      "creador": "heliodoro|heliodorus",
+      "tanda": 2,
+      "idioma": "spa"
+    },
+    {
+      "id": "longo-dafnis-es",
+      "autor": "Longo",
+      "obra": "Dafnis y Cloe (trad. castellana de Juan Valera)",
+      "lengua": "grc",
+      "titulo": [
+        "dafnis"
+      ],
+      "creador": "longo|longus|valera",
+      "tanda": 2,
+      "idioma": "spa",
+      "traduccionDe": "longo-dafnis-cloe"
+    },
+    {
+      "id": "accius-fragmenta",
+      "autor": "Accio",
+      "obra": "Tragoediae (fragmenta)",
+      "lengua": "la",
+      "titulo": [
+        "tragicorum romanorum"
+      ],
+      "creador": "accius|ribbeck",
+      "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "autor": "Apolodoro de Damasco (atribución tradicional)",
+      "obra": "Πολιορκητικά · Poliorketika",
+      "lengua": "grc",
+      "titulo": [
+        "poliorcetique des grecs"
+      ],
+      "creador": "wescher",
+      "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "autor": "Ateneo Mecánico",
+      "obra": "Περὶ μηχανημάτων · De machinis",
+      "lengua": "grc",
+      "titulo": [
+        "poliorcetique des grecs"
+      ],
+      "creador": "wescher",
+      "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+    },
+    {
+      "id": "biton-kataskeuai",
+      "autor": "Bitón",
+      "obra": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "lengua": "grc",
+      "titulo": [
+        "poliorcetique des grecs"
+      ],
+      "creador": "wescher",
+      "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "autor": "Higino Gromático",
+      "obra": "Constitutio limitum",
+      "lengua": "la",
+      "titulo": [
+        "schriften der romischen feldmesser"
+      ],
+      "creador": "lachmann|blume",
+      "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra.",
+      "preferirIdentificador": "dieschriftender02lachgoog"
+    },
+    {
+      "id": "origenes",
+      "autor": "Orígenes",
+      "obra": "Περὶ ἀρχῶν · De principiis",
+      "lengua": "grc",
+      "titulo": [
+        "de principiis"
+      ],
+      "creador": "origen",
+      "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+    },
+    {
+      "id": "philo-belopoeica",
+      "autor": "Filón de Bizancio",
+      "obra": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "lengua": "grc",
+      "titulo": [
+        "poliorcetique des grecs"
+      ],
+      "creador": "wescher",
+      "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+    },
+    {
+      "id": "procopius-aedificiis",
+      "autor": "Procopio de Cesarea",
+      "obra": "Περὶ κτισμάτων",
+      "lengua": "grc",
+      "titulo": [
+        "de aedificiis"
+      ],
+      "creador": "procopius",
+      "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+    },
+    {
+      "id": "ptolemy-geographia",
+      "autor": "Claudio Ptolomeo",
+      "obra": "Γεωγραφικὴ ὑφήγησις",
+      "lengua": "grc",
+      "titulo": [
+        "geographia"
+      ],
+      "creador": "ptolemaeus|ptolemy",
+      "justificacion": "Ficha del repertorio sin texto en la biblioteca: el facsímil es la primera lectura disponible de esta obra."
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "autor": "Proclo",
+      "obra": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "lengua": "grc",
+      "titulo": [
+        "in primum euclidis"
+      ],
+      "creador": "proclus",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "nicomaco-armonia",
+      "autor": "Nicómaco de Gerasa",
+      "obra": "Ἁρμονικὸν ἐγχειρίδιον · Manual de armónica",
+      "lengua": "grc",
+      "titulo": [
+        "harmonicum enchiridion"
+      ],
+      "creador": "nicomachus",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "autor": "Teón de Esmirna",
+      "obra": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "lengua": "grc",
+      "titulo": [
+        "theonis smyrnaei"
+      ],
+      "creador": "theon",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "ptolomeo-harmonica",
+      "autor": "Claudio Ptolomeo",
+      "obra": "Ἁρμονικά · Harmonica",
+      "lengua": "grc",
+      "titulo": [
+        "harmonicorum"
+      ],
+      "creador": "ptolemaeus|wallis",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "heron-metrica-dioptra",
+      "autor": "Herón de Alejandría",
+      "obra": "Μετρικά · Περὶ διόπτρας · Metrica y Dioptra",
+      "lengua": "grc",
+      "titulo": [
+        "heronis alexandrini opera"
+      ],
+      "creador": "heron|schoene",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "heron-mechanica",
+      "autor": "Herón de Alejandría",
+      "obra": "Μηχανικά · Mechanica (transmitida en árabe)",
+      "lengua": "grc",
+      "titulo": [
+        "heronis alexandrini opera"
+      ],
+      "creador": "heron|nix",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "autor": "Paladio",
+      "obra": "Opus agriculturae",
+      "lengua": "la",
+      "titulo": [
+        "palladius"
+      ],
+      "creador": "palladius",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "autor": "Festo (y Verrio Flaco)",
+      "obra": "De verborum significatu",
+      "lengua": "la",
+      "titulo": [
+        "de verborum significatu"
+      ],
+      "creador": "festus",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "autor": "Marciano Capela",
+      "obra": "De nuptiis Philologiae et Mercurii",
+      "lengua": "la",
+      "titulo": [
+        "martianus capella"
+      ],
+      "creador": "martianus capella",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "casiodoro-variae",
+      "autor": "Casiodoro",
+      "obra": "Variae",
+      "lengua": "la",
+      "titulo": [
+        "variae"
+      ],
+      "creador": "cassiodorus",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "boecio-institutione-musica",
+      "autor": "Boecio",
+      "obra": "De institutione musica",
+      "lengua": "la",
+      "titulo": [
+        "de institutione musica"
+      ],
+      "creador": "boethius",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "aristides-quintiliano-musica",
+      "autor": "Aristides Quintiliano",
+      "obra": "Περὶ μουσικῆς · De musica",
+      "lengua": "grc",
+      "titulo": [
+        "de musica"
+      ],
+      "creador": "aristides quintilianus",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "porfirio-vida-pitagoras",
+      "autor": "Porfirio",
+      "obra": "Πυθαγόρου βίος · Vita Pythagorae",
+      "lengua": "grc",
+      "titulo": [
+        "porphyrii opuscula"
+      ],
+      "creador": "porphyrius",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "autor": "Jámblico",
+      "obra": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "lengua": "grc",
+      "titulo": [
+        "de vita pythagorica"
+      ],
+      "creador": "iamblichus",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "autor": "Aristóteles",
+      "obra": "Μετεωρολογικά · Meteorologica",
+      "lengua": "grc",
+      "titulo": [
+        "meteorologica"
+      ],
+      "creador": "aristotle",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "aristoteles-problemata",
+      "autor": "Pseudo-Aristóteles",
+      "obra": "Προβλήματα · Problemata",
+      "lengua": "grc",
+      "titulo": [
+        "problemata"
+      ],
+      "creador": "aristotle",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "autor": "Sexto Empírico",
+      "obra": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "lengua": "grc",
+      "titulo": [
+        "sextus empiricus"
+      ],
+      "creador": "sextus empiricus",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "historia-augusta",
+      "autor": "Escritores de la Historia Augusta",
+      "obra": "Scriptores Historiae Augustae",
+      "lengua": "la",
+      "titulo": [
+        "historiae augustae"
+      ],
+      "creador": "scriptores historiae augustae|peter",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "autor": "Nonio Marcelo",
+      "obra": "De compendiosa doctrina",
+      "lengua": "la",
+      "titulo": [
+        "compendiosa doctrina"
+      ],
+      "creador": "nonius marcellus",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "anthologia-latina",
+      "autor": "Antología latina",
+      "obra": "Anthologia Latina",
+      "lengua": "la",
+      "titulo": [
+        "anthologia latina"
+      ],
+      "creador": "riese|anthologia latina",
+      "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+    },
+    {
+      "id": "alberti-de-re-aedificatoria",
+      "autor": "Leon Battista Alberti",
+      "obra": "De re aedificatoria",
+      "lengua": "la",
+      "titulo": [
+        "de re aedificatoria"
+      ],
+      "creador": "alberti",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina.",
+      "visorFolios": "previsto: por su importancia en la historia de la arquitectura, se le armará visor de folios cuando haya espacio"
+    },
+    {
+      "id": "palladio-quattro-libri",
+      "autor": "Andrea Palladio",
+      "obra": "I quattro libri dell'architettura",
+      "lengua": "it",
+      "titulo": [
+        "quattro libri"
+      ],
+      "creador": "palladio",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina.",
+      "visorFolios": "previsto: por su importancia en la historia de la arquitectura, se le armará visor de folios cuando haya espacio"
+    },
+    {
+      "id": "serlio-architettura",
+      "autor": "Sebastiano Serlio",
+      "obra": "Tutte l'opere d'architettura",
+      "lengua": "it",
+      "titulo": [
+        "architettura"
+      ],
+      "creador": "serlio",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "vignola-cinque-ordini",
+      "autor": "Giacomo Barozzi da Vignola",
+      "obra": "Regola delli cinque ordini d’architettura",
+      "lengua": "it",
+      "titulo": [
+        "cinque ordini"
+      ],
+      "creador": "vignola",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "perrault-vitruve-1673",
+      "autor": "Claude Perrault",
+      "obra": "Les dix livres d’architecture de Vitruve",
+      "lengua": "fr",
+      "titulo": [
+        "dix livres d architecture"
+      ],
+      "creador": "perrault",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "philandrier-annotationes",
+      "autor": "Guillaume Philandrier",
+      "obra": "In decem libros M. Vitruvii Pollionis annotationes",
+      "lengua": "la",
+      "titulo": [
+        "vitruvii"
+      ],
+      "creador": "philander|philandrier",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "barbaro-dieci-libri",
+      "autor": "Daniele Barbaro",
+      "obra": "I dieci libri dell'architettura di M. Vitruvio",
+      "lengua": "it",
+      "titulo": [
+        "vitruvio"
+      ],
+      "creador": "barbaro",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "scamozzi-idea-architettura",
+      "autor": "Vincenzo Scamozzi",
+      "obra": "L'idea della architettura universale",
+      "lengua": "it",
+      "titulo": [
+        "architettura universale"
+      ],
+      "creador": "scamozzi",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "rusconi-architettura-1590",
+      "autor": "Giovanni Antonio Rusconi",
+      "obra": "Della architettura",
+      "lengua": "it",
+      "titulo": [
+        "architettura"
+      ],
+      "creador": "rusconi",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "choisy-art-de-batir",
+      "autor": "Auguste Choisy",
+      "obra": "L'art de bâtir chez les Romains",
+      "lengua": "fr",
+      "titulo": [
+        "art de batir"
+      ],
+      "creador": "choisy",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "rose-vitruvius-1899",
+      "autor": "Valentin Rose (ed.)",
+      "obra": "Vitruvii De architectura libri decem (ed. Rose, 1899)",
+      "lengua": "la",
+      "titulo": [
+        "de architectura"
+      ],
+      "creador": "rose",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "vasari-vite",
+      "autor": "Giorgio Vasari",
+      "obra": "Le vite de’ più eccellenti pittori, scultori e architettori",
+      "lengua": "it",
+      "titulo": [
+        "vite"
+      ],
+      "creador": "vasari",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "laugier-essai",
+      "autor": "Marc-Antoine Laugier",
+      "obra": "Essai sur l'architecture",
+      "lengua": "fr",
+      "titulo": [
+        "essai sur l architecture"
+      ],
+      "creador": "laugier",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "viollet-le-duc-dictionnaire",
+      "autor": "Eugène Viollet-le-Duc",
+      "obra": "Dictionnaire raisonné de l'architecture française",
+      "lengua": "fr",
+      "titulo": [
+        "dictionnaire raisonne de l architecture"
+      ],
+      "creador": "viollet",
+      "coleccion": "recepcion-vitruviana",
+      "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "autor": "Galeno",
+      "obra": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "lengua": "grc",
+      "titulo": [
+        "opera omnia"
+      ],
+      "creador": "galen|kuhn",
+      "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia.",
+      "preferirIdentificador": "hapantaoperaomni01galeuoft"
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "autor": "Galeno",
+      "obra": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "lengua": "grc",
+      "titulo": [
+        "opera omnia"
+      ],
+      "creador": "galen|kuhn",
+      "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia.",
+      "preferirIdentificador": "b29339339_0021"
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "autor": "Galeno",
+      "obra": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "lengua": "grc",
+      "titulo": [
+        "scripta minora"
+      ],
+      "creador": "galen|marquardt|helmreich",
+      "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia."
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "autor": "Galeno",
+      "obra": "Opera omnia (ed. Kühn): volumen adicional",
+      "lengua": "grc",
+      "titulo": [
+        "opera omnia"
+      ],
+      "creador": "galen|kuhn",
+      "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia."
+    },
+    {
+      "id": "palladio-quattro-libri-en",
+      "autor": "Andrea Palladio",
+      "obra": "The Four Books of Architecture (trad. Leoni/Ware)",
+      "lengua": "en",
+      "titulo": [
+        "four books of architecture"
+      ],
+      "creador": "palladio|leoni|ware",
+      "coleccion": "recepcion-vitruviana",
+      "traduccionDe": "palladio-quattro-libri",
+      "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (palladio-quattro-libri); cuelga de su ficha y no cuenta como obra nueva."
+    },
+    {
+      "id": "palladio-quattro-libri-fr",
+      "autor": "Andrea Palladio",
+      "obra": "Les quatre livres de l'architecture (trad. Fréart de Chambray)",
+      "lengua": "fr",
+      "titulo": [
+        "quatre livres de l architecture"
+      ],
+      "creador": "palladio|freart",
+      "coleccion": "recepcion-vitruviana",
+      "traduccionDe": "palladio-quattro-libri",
+      "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (palladio-quattro-libri); cuelga de su ficha y no cuenta como obra nueva."
+    },
+    {
+      "id": "palladio-quattro-libri-es",
+      "autor": "Andrea Palladio",
+      "obra": "Los cuatro libros de arquitectura (trad. Ortiz y Sanz, 1797)",
+      "lengua": "es",
+      "titulo": [
+        "cuatro libros de arquitectura"
+      ],
+      "creador": "palladio|ortiz",
+      "coleccion": "recepcion-vitruviana",
+      "traduccionDe": "palladio-quattro-libri",
+      "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (palladio-quattro-libri); cuelga de su ficha y no cuenta como obra nueva."
+    },
+    {
+      "id": "alberti-de-re-aedificatoria-en",
+      "autor": "Leon Battista Alberti",
+      "obra": "Ten Books on Architecture (trad. Leoni, 1726)",
+      "lengua": "en",
+      "titulo": [
+        "ten books on architecture"
+      ],
+      "creador": "alberti|leoni",
+      "coleccion": "recepcion-vitruviana",
+      "traduccionDe": "alberti-de-re-aedificatoria",
+      "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (alberti-de-re-aedificatoria); cuelga de su ficha y no cuenta como obra nueva."
+    },
+    {
+      "id": "alberti-de-re-aedificatoria-fr",
+      "autor": "Leon Battista Alberti",
+      "obra": "L'architecture et art de bien bastir (trad. Jean Martin, 1553)",
+      "lengua": "fr",
+      "titulo": [
+        "architecture et art de bien bastir"
+      ],
+      "creador": "alberti|martin",
+      "coleccion": "recepcion-vitruviana",
+      "traduccionDe": "alberti-de-re-aedificatoria",
+      "justificacion": "Traducción histórica de dominio público de una obra notable ya alojada (alberti-de-re-aedificatoria); cuelga de su ficha y no cuenta como obra nueva."
+    },
+    {
+      "id": "isidoro-etymologiae",
+      "autor": "Isidoro de Sevilla",
+      "obra": "Etymologiae sive Origines",
+      "creador": "isidore of seville|isidorus hispalensis|isidoro de sevilla",
+      "titulo": [
+        "etymologiarum"
+      ],
+      "lengua": "la",
+      "coleccion": "Antigüedad tardía y Edad Media"
+    },
+    {
+      "id": "isidoro-de-natura-rerum",
+      "autor": "Isidoro de Sevilla",
+      "obra": "De natura rerum",
+      "creador": "isidorus|isidore",
+      "titulo": [
+        "de natura rerum"
+      ],
+      "lengua": "la",
+      "coleccion": "Antigüedad tardía y Edad Media"
+    },
+    {
+      "id": "petrarca-africa",
+      "autor": "Francesco Petrarca",
+      "obra": "Africa",
+      "creador": "petrarca|petrarch",
+      "titulo": [
+        "africa"
+      ],
+      "lengua": "la",
+      "coleccion": "Humanismo temprano"
+    },
+    {
+      "id": "petrarca-de-viris-illustribus",
+      "autor": "Francesco Petrarca",
+      "obra": "De viris illustribus",
+      "creador": "petrarca|petrarch",
+      "titulo": [
+        "de viris illustribus"
+      ],
+      "lengua": "la",
+      "coleccion": "Humanismo temprano"
+    },
+    {
+      "id": "petrarca-secretum",
+      "autor": "Francesco Petrarca",
+      "obra": "Secretum meum",
+      "creador": "petrarca|petrarch",
+      "titulo": [
+        "secretum"
+      ],
+      "lengua": "la",
+      "coleccion": "Humanismo temprano"
+    },
+    {
+      "id": "taccola-de-machinis",
+      "autor": "Mariano di Jacopo Taccola",
+      "obra": "De machinis",
+      "creador": "taccola|mariano di jacopo",
+      "titulo": [
+        "de machinis"
+      ],
+      "lengua": "la",
+      "coleccion": "Ingeniería del primer Renacimiento"
+    },
+    {
+      "id": "taccola-de-ingeneis",
+      "autor": "Mariano di Jacopo Taccola",
+      "obra": "De ingeneis",
+      "creador": "taccola|mariano di jacopo",
+      "titulo": [
+        "de ingeneis"
+      ],
+      "lengua": "la",
+      "coleccion": "Ingeniería del primer Renacimiento"
+    },
+    {
+      "id": "beda-de-temporum-ratione",
+      "autor": "Beda el Venerable",
+      "obra": "De temporum ratione",
+      "creador": "bede|beda venerabilis",
+      "titulo": [
+        "de temporum ratione"
+      ],
+      "lengua": "la",
+      "coleccion": "Edad Media latina"
+    },
+    {
+      "id": "rabano-de-universo",
+      "autor": "Rábano Mauro",
+      "obra": "De universo sive De rerum naturis",
+      "creador": "rabanus maurus|hrabanus maurus",
+      "titulo": [
+        "de universo"
+      ],
+      "lengua": "la",
+      "coleccion": "Edad Media latina"
+    },
+    {
+      "id": "sacrobosco-de-sphaera",
+      "autor": "Johannes de Sacrobosco",
+      "obra": "De sphaera mundi",
+      "creador": "sacrobosco|sacrobosco johannes",
+      "titulo": [
+        "sphaera"
+      ],
+      "lengua": "la",
+      "coleccion": "Ciencia medieval"
+    },
+    {
+      "id": "nicolas-cusa-docta-ignorantia",
+      "autor": "Nicolás de Cusa",
+      "obra": "De docta ignorantia",
+      "creador": "nicolaus cusanus|nicholas of cusa",
+      "titulo": [
+        "de docta ignorantia"
+      ],
+      "lengua": "la",
+      "coleccion": "Humanismo temprano"
+    },
+    {
+      "id": "l-valturio",
+      "autor": "Roberto Valturio",
+      "obra": "De re militari",
+      "creador": "valturio|valturius",
+      "titulo": [
+        "de re militari"
+      ],
+      "lengua": "la",
+      "coleccion": "Ingeniería del primer Renacimiento"
+    }
+  ]
 }
