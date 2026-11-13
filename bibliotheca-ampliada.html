@@ -58,11 +58,12 @@ const pl=(n,a,b)=>n+" "+(n===1?a:b);
 Promise.all([
  fetch("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).then(r=>r.json()),
  fetch("data/r2/conceptus-clasicos-r2.json",{cache:"no-cache"}).then(r=>r.json()),
- fetch("data/lexicon/conceptus.json").then(r=>r.json())
-]).then(([cat,con,dic])=>{
+ fetch("data/lexicon/conceptus.json").then(r=>r.json()),
+ fetch("data/r2/vinculos-repertorio.json",{cache:"no-cache"}).then(r=>r.json()).catch(()=>({mapa:{}}))
+]).then(([cat,con,dic,vin])=>{
  const items=cat.items||[];
  const mb=Math.round((cat.bytes||0)/1048576);
- $("#estado").textContent=items.length+" ediciones ("+items.filter(x=>x.lengua==="grc").length+" griegas, "+items.filter(x=>x.lengua==="la").length+" latinas; "+items.filter(x=>x.bilingueLoeb).length+" bilingües Loeb) · "+items.reduce((s,x)=>s+x.paginas,0).toLocaleString("es")+" páginas · "+mb+" MB · actualizado "+cat.actualizado+".";
+ $("#estado").textContent=(vin.recuentos?vin.recuentos.obrasNuevas+" obras nuevas y ":"")+items.length+" ediciones ("+items.filter(x=>x.lengua==="grc").length+" griegas, "+items.filter(x=>x.lengua==="la").length+" latinas; "+items.filter(x=>x.bilingueLoeb).length+" bilingües Loeb) · "+items.reduce((s,x)=>s+x.paginas,0).toLocaleString("es")+" páginas · "+mb+" MB · actualizado "+cat.actualizado+".";
  const nombre={};(dic.concepts||[]).forEach(c=>nombre[c.id]=((c.modern||{}).es||[c.id])[0]);
  Object.keys(con.postings||{}).sort((x,y)=>fold(nombre[x]||x).localeCompare(fold(nombre[y]||y))).forEach(id=>{
   const n=Object.keys(con.postings[id]).length;const o=el("option",(nombre[id]||id)+" ("+pl(n,"obra","obras")+")");o.value=id;$("#concepto").append(o)});
@@ -83,6 +84,10 @@ Promise.all([
    const t1=el("td");t1.append(el("strong",x.autor),document.createElement("br"),el("span",x.obra));t1.append(el("span",LENG[x.lengua]||x.lengua,"lengua"));
    const t2=el("td");t2.append(el("span",x.tituloEdicion+" ("+x.anio+(x.volumen?", vol. "+x.volumen:"")+")"),document.createElement("br"),el("span",[x.editor,x.bilingueLoeb?"Loeb, original y traducción inglesa":""].filter(Boolean).join(" · "),"cita"));
    if(x.alcance){t2.append(document.createElement("br"),el("em","Alcance: "+x.alcance,"cita"))}
+   const fichas=(vin.mapa||{})[x.id];
+   if(fichas){t1.append(document.createElement("br"));
+    if(fichas.length){fichas.forEach((w,k)=>{if(k)t1.append(" · ");t1.append(a("classics-work-record.html?work="+encodeURIComponent(w),fichas.length>1?"ficha "+(k+1):"ficha académica"))})}
+    else t1.append(el("span","obra nueva en la biblioteca","cita"))}
    const t3=el("td",String(x.paginas),"n");
    const t4=el("td","","n");t4.append(a(x.pdf,"PDF"),document.createTextNode(" · "),a(x.texto,"texto"),document.createTextNode(" · "),a(x.fuente,"Internet Archive"));
    tr.append(t1,t2,t3,t4);tb.append(tr);

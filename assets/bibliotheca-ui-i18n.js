@@ -32,6 +32,7 @@ const T={
  "Ver desglose de traducciones":{en:"View translation breakdown",fr:"Voir la ventilation des traductions"},
  "Bibliotheca · cobertura de textos clásicos":{en:"Bibliotheca · coverage of classical texts",fr:"Bibliotheca · couverture des textes classiques"},
  "obras catalogadas":{en:"catalogued works",fr:"œuvres cataloguées"},
+ "con ficha académica completa":{en:"with a full academic record",fr:"avec fiche académique complète"},
  "originales locales":{en:"local originals",fr:"originaux locaux"},
  "originales externos verificados":{en:"verified external originals",fr:"originaux externes vérifiés"},
  "originales con texto buscable":{en:"originals with searchable text",fr:"originaux avec texte interrogeable"},
