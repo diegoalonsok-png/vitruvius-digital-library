@@ -30,7 +30,7 @@ h2{font:400 25px/1.3 Georgia,serif;margin-top:34px}
 <p class="small"><a href="index.html">← Inicio</a> · <a href="bibliotheca-graeca-latina.html">Bibliotheca graeca et latina</a> · <a href="datos.html">Datos</a> · <a href="metodologia-filologica.html">Metodología</a></p>
 <header><h1>Bibliotheca ampliada</h1>
 <p class="intro">Ediciones griegas y latinas de <strong>dominio público</strong> que no estaban entre los PDF de la biblioteca: historiadores, filósofos, trágicos, oradores, novelistas, geógrafos, matemáticos y agrónomos. Se prefieren los volúmenes <strong>bilingües Loeb</strong> (texto griego o latino frente a la traducción inglesa), las ediciones con el <strong>texto griego</strong> y las <strong>traducciones castellanas</strong> anteriores a 1929. Cada libro trae su PDF, el texto de cada página y un índice de conceptos que lo conecta con el resto de la biblioteca.</p></header>
-<p id="estado" class="small" role="status">Cargando el catálogo…</p>
+<p class="small"><a href="classics-r2-parallel.html">Abrir dos visores de facsímiles en paralelo</a> · <a href="classics-parallel-reader.html">Comparación textual por pasajes</a></p>\n<p id="estado" class="small" role="status">Cargando el catálogo…</p>
 
 <div class="controles">
 <label>Buscar autor u obra<input id="q" type="search" placeholder="Platón, geografía, Loeb…"></label>
@@ -45,7 +45,7 @@ h2{font:400 25px/1.3 Georgia,serif;margin-top:34px}
 <section aria-labelledby="m"><h2 id="m">Procedencia y método</h2>
 <p class="intro">Fuente: Internet Archive. Solo se aceptan publicaciones de 1928 o anteriores, sin marca de derechos en sus metadatos. Para evitar errores de identificación, el autor buscado tiene que aparecer en las primeras páginas del PDF y el título tiene que coincidir con la obra. Se descartan los PDF idénticos a otros que ya están en la biblioteca, comparando su huella SHA-256. Los archivos se sirven desde <code>libros.vitruvius-digital-library.org</code>, y cada uno se verificó descargándolo desde allí y comparando su huella con la del original.</p>
 <p class="intro">El <strong>índice de conceptos</strong> busca, página por página, los términos atestiguados del diccionario <a href="vitruvia-lexicon.html">Conceptus</a> en latín, griego, inglés y la lengua de la obra. Lo hace sobre el OCR de Internet Archive, <strong>sin revisar</strong>: las páginas que propone sirven para ubicarse y leer, no son citas verificadas. El texto por página se ofrece tal como sale del OCR.</p>
-<p class="cita">Datos abiertos: <a href="data/r2/catalogo-clasicos-r2.json">catálogo (JSON)</a> · <a href="data/r2/conceptus-clasicos-r2.json">índice de conceptos (JSON)</a></p>
+<p class="cita">Datos abiertos: <a href="data/r2/catalogo-clasicos-r2.json">catálogo (JSON)</a> · <a href="data/r2/conceptus-clasicos-r2.json">índice de conceptos (JSON)</a> · <a href="data/r2/aparato-academico.json">registros académicos con niveles de verificación (JSON)</a></p>
 </section>
 </main>
 <script>
@@ -101,7 +101,7 @@ Promise.all([
     if(fichas.length){fichas.forEach((w,k)=>{if(k)t1.append(" · ");t1.append(a("classics-work-record.html?work="+encodeURIComponent(w),fichas.length>1?"ficha "+(k+1):"ficha académica"))})}
     else t1.append(el("span","obra nueva en la biblioteca","cita"))}
    const t3=el("td",String(x.paginas),"n");
-   const t4=el("td","","n");t4.append(a("buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(x.id),"Leer"),document.createTextNode(" · "),a(x.pdf,"PDF"),document.createTextNode(" · "),a(x.texto,"texto"),document.createTextNode(" · "),a(x.fuente,"Internet Archive"));
+   const t4=el("td","","n");t4.append(a("buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(x.id),"Leer"),document.createTextNode(" · "),a(x.pdf,"PDF"),document.createTextNode(" · "),a(x.texto,"texto"),document.createTextNode(" · "),a(x.fuente,"Internet Archive"),document.createTextNode(" · "),a("classics-r2-parallel.html?a="+encodeURIComponent(x.id)+"&b="+encodeURIComponent(x.id),"Dos visores"));
    tr.append(t1,t2,t3,t4);tb.append(tr);
    if(post){const p=post[x.id];const tr2=document.createElement("tr");const td=el("td","","pags");td.colSpan=4;
     td.append(el("span","«"+(nombre[c]||c)+"»: "+pl(p.total,"página","páginas")+(p.total>p.paginas.length?" (se muestran "+p.paginas.length+")":"")+" — "));
