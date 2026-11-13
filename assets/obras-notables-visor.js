@@ -303,18 +303,6 @@ async function arrancar() {
   a.href = "buscador-facsimiles-clasicos.html?obra=" + encodeURIComponent(clave);
   a.textContent = "Abrir en el visor de facsímiles";
   $("estado").append(document.createTextNode(" "), a);
-  // Fallback de lectura institucional para Alberti mientras se recuperan los folios en R2.
-  if (clave === "alberti-diez-libros-1582") {
-   const frame = document.createElement("iframe");
-   frame.title = "Alberti 1582 · visor del ejemplar de la Universidad de Sevilla en Internet Archive";
-   frame.src = "https://archive.org/embed/ARes12403";
-   frame.loading = "lazy";
-   frame.style.cssText = "width:100%;height:min(76vh,960px);min-height:480px;border:1px solid #9d957f;background:#fff";
-   $("lamina").replaceChildren(frame);
-   const notice = document.createElement("p");
-   notice.textContent = "Lectura provisional en el visor de la institución depositaria: 402 imágenes digitalizadas, Universidad de Sevilla, A Res.12/4/03. La descarga a R2 aún no está confirmada.";
-   $("estado").append(notice);
-  }
   return;
  }
  ficha();
