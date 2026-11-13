@@ -189,10 +189,17 @@ def main():
                     con["postings"].setdefault(cid, {})[ficha["id"]] = {"paginas": pags[:60], "total": len(pags)}
                 informe["incorporadas"].append(ficha["id"])
                 print(f"OK  {o['id']}: {ficha['identificadorIA']} ({ficha['anio']}, {ficha['paginas']} págs, "
-                      f"{ficha['bytes']/1048576:.1f} MB)")
+                      f"{ficha['bytes']/1048576:.1f} MB)", flush=True)
+                guardar(cat, con, informe)  # guardado incremental: un corte no pierde lo ya subido
             else:
                 informe["no_encontradas"][o["id"]] = rech[:6]
-                print(f"--  {o['id']}: sin edición que pase los controles ({len(rech)} descartes)")
+                print(f"--  {o['id']}: sin edición que pase los controles ({len(rech)} descartes)", flush=True)
+    guardar(cat, con, informe)
+    print(f"incorporadas: {len(informe['incorporadas'])} · sin edición: {len(informe['no_encontradas'])} · "
+          f"catálogo: {cat['total']} obras, {cat['bytes']/1048576:.0f} MB")
+
+
+def guardar(cat, con, informe):
     cat.update({"schema": "vdl-r2-catalogo-clasicos-1", "actualizado": time.strftime("%Y-%m-%d"),
                 "descripcion": "Ediciones clásicas de dominio público alojadas en Cloudflare R2 "
                                "(libros.vitruvius-digital-library.org). No duplican los PDF del repositorio.",
@@ -208,8 +215,6 @@ def main():
                 "obras": len(cat["items"])})
     CONCEPTUS_OUT.write_text(json.dumps(con, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     Path("r2-clasicos-informe.json").write_text(json.dumps(informe, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"incorporadas: {len(informe['incorporadas'])} · sin edición: {len(informe['no_encontradas'])} · "
-          f"catálogo: {cat['total']} obras, {cat['bytes']/1048576:.0f} MB")
 
 
 if __name__ == "__main__":
