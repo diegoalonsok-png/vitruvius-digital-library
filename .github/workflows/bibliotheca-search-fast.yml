@@ -1,0 +1,42 @@
+name: Bibliotheca indexed search and citability
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'assets/bibliotheca-fast-index.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'assets/classics-lexical-index.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'bibliotheca-graeca-latina.html'
+      - 'scripts/test-bibliotheca-fast-index.mjs'
+      - '.github/workflows/bibliotheca-search-fast.yml'
+  pull_request:
+    paths:
+      - 'assets/bibliotheca-fast-index.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'assets/classics-lexical-index.js'
+      - 'assets/bibliotheca-corpus-search.js'
+      - 'bibliotheca-graeca-latina.html'
+      - 'scripts/test-bibliotheca-fast-index.mjs'
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  fast-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static JavaScript syntax
+        run: |
+          node --check assets/bibliotheca-fast-index.js
+          node --check assets/bibliotheca-simple.js
+          node --check assets/classics-lexical-index.js
+          node --check assets/bibliotheca-corpus-search.js
+      - name: Verify real lexical index without downloading full editions
+        run: node scripts/test-bibliotheca-fast-index.mjs
