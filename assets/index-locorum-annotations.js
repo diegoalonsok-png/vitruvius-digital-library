@@ -100,7 +100,7 @@ function redraw(){
   const quote=card.querySelector(".excerpt");if(!quote)return;
   get(card).forEach(m=>{
    const range=makeRange(quote,m.a,m.b);
-   if(range)ranges["h-"+m.color].push(range);
+   if(range)ranges[(m.mode==="underline"?"u-":"h-")+m.color].push(range);
   });
  });
  for(const [name,list] of Object.entries(ranges)){
