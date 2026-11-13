@@ -59,6 +59,10 @@ jobs:
         if: always()
         run: python scripts/r2-fichas-obras-nuevas.py
 
+      - name: Generar aparato académico y control de evidencia de cada edición R2
+        if: always()
+        run: python scripts/r2-aparato-academico.py
+
       - name: Vincular facsímiles con el repertorio
         if: always()
         run: python scripts/r2-vincular-repertorio.py
