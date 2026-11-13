@@ -55,6 +55,8 @@ const almacen = {
 };
 
 function selectorObras() {
+ const traducciones = $("palladio-traducciones");
+ if (traducciones) traducciones.hidden = clave !== "palladio-quattro-libri";
  const sel = $("obra");
  sel.replaceChildren();
  for (const [id, o] of Object.entries(OBRAS)) {
