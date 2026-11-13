@@ -64,7 +64,7 @@ function filtros() {
 /* Galería de folios, al modo del Codex H: miniatura, número de imagen y folio.
    Se pinta por tandas para no cargar trescientas imágenes de una vez. */
 let mostrados = 0, filtrados = [];
-const TANDA = 32;
+const TANDA = 48;
 function pintarGaleria(reiniciar) {
  const rejilla = $("rejilla");
  if (reiniciar) { rejilla.replaceChildren(); mostrados = 0; }
@@ -76,7 +76,10 @@ function pintarGaleria(reiniciar) {
   ficha.setAttribute("aria-current", String(f.imagenDigital === actual));
   const img = document.createElement("img");
   img.loading = "lazy";
+  img.decoding = "async";
   img.src = f.miniatura || f.imagen;
+  img.onerror = () => { img.onerror = null; img.src = f.imagen; };
+  img.title = "Imagen digital " + f.imagenDigital + " · " + (f.folio ? "folio " + f.folio : "folio histórico por identificar");
   img.alt = "";
   const n = document.createElement("b");
   n.textContent = "Imagen " + f.imagenDigital;
@@ -91,7 +94,7 @@ function pintarGaleria(reiniciar) {
  }
  mostrados += lote.length;
  $("galeria-mas").hidden = mostrados >= filtrados.length;
- $("galeria-estado").textContent = `${mostrados} de ${filtrados.length} folios`;
+ $("galeria-estado").textContent = `${mostrados} miniaturas de ${filtrados.length} imágenes, en el orden digital del ejemplar`;
 }
 
 function filtrarGaleria() {
@@ -290,7 +293,8 @@ async function arrancar() {
    const r = await fetch(fuente, { cache: "no-cache" });
    if (!r.ok) continue;
    const datos = await r.json();
-   if (datos && datos.schema === "vdl-folios-obra-1" && Array.isArray(datos.folios) && datos.folios.length) {
+   if (datos && datos.schema === "vdl-folios-obra-1" && Array.isArray(datos.folios) && datos.folios.length &&
+       datos.folios.every((f,i) => f.imagenDigital === i+1 && f.imagen && f.miniatura)) {
     indice = datos;
     break;
    }
