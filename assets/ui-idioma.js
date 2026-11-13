@@ -21,7 +21,14 @@ function iniciar(){
   const v=[...s.options].map(o=>o.value.toLowerCase());
   return (v.includes("en")&&v.includes("fr")&&v.includes("es"))||/idioma|language|langue|ui-lang|-language$/i.test(s.id+" "+(s.getAttribute("aria-label")||""));
  });
- const decidir=()=>{if(!tieneSelector()&&!document.getElementById("vitruvius-secondary-toolbar"))cargar("secondary-reader-controls.js?v=20261112-pastilla","secondary-reader-controls.js")};
+ const decidir=()=>{
+  const raw=(location.pathname.split("/").pop()||"index.html").toLowerCase();
+  const page=raw.endsWith(".html")?raw:raw+".html";
+  // Primary applications already have their own language and theme controls.
+  const primary=new Set(["index.html","vitruvia.html","vitruvia-lexicon.html","bibliotheca-graeca-latina.html","indices-locorum.html"]);
+  if(primary.has(page))return;
+  if(!tieneSelector()&&!document.getElementById("vitruvius-secondary-toolbar"))cargar("secondary-reader-controls.js?v=20261112-pastilla","secondary-reader-controls.js");
+ };
  if(document.readyState==="complete")setTimeout(decidir,600);else window.addEventListener("load",()=>setTimeout(decidir,600),{once:true});
  cargar("page-autotranslate.js?v=20261112-sitio","page-autotranslate.js");
  // Cualquier selector de idioma del sitio deja el idioma en <html lang>, que es lo que sigue el traductor.
