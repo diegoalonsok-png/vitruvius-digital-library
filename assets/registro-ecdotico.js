@@ -157,7 +157,7 @@ function fichaFuente(r){
  line("Labor editorial",document.createTextNode(role+" · "+EDLANG[r.version]));
  line("Edición",document.createTextNode([ed.publisher,ed.publication_place,ed.year,ed.pages?ed.pages+" páginas":null].filter(Boolean).join(" · ")));
  line("ISBN",document.createTextNode(isbn||"No consta ISBN documentado"),...(isbn?[el("small",{class:"re-ficha-cautela",text:"V514 y V554 consignan el mismo número en sus paratextos; su asignación registral independiente no está corroborada."})]:[]));
- line("DOI de edición",doi?el("a",{href:"https://doi.org/"+encodeURIComponent(doi),target:"_blank",rel:"noopener noreferrer",text:doi}):document.createTextNode("No documentado"));
+ line("DOI de edición",doi?el("a",{href:"https://doi.org/"+doi,target:"_blank",rel:"noopener noreferrer",text:doi}):document.createTextNode("No documentado"));
  line("Localización",document.createTextNode([r.locus?"Vitr. "+r.locus:"Sin locus canónico",r.nota?"nota "+r.nota:null,r.pagina?"p. "+r.pagina:null].filter(Boolean).join(" · ")));
  line("Evidencia",document.createTextNode([r.locusEstado,r.gradoRotulo].filter((v,i,a)=>v&&a.indexOf(v)===i).join(" · ")||"Vinculación sin comprobación declarada"));
  box.append(el("p",{class:"re-ficha-titulo"},el("cite",{text:libroEditorial(ed)})),dl);
