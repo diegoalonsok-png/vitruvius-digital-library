@@ -9,16 +9,17 @@
       "edicion": "Venecia, Dominico de' Franceschi, 1570 (primera edición de los cuatro libros en un volumen)",
       "lengua": "it",
       "tipo": "ia-iiif",
-      "identificador": "iqvattrolibridel00pall",
-      "enlaceFuente": "https://archive.org/details/iqvattrolibridel00pall",
-      "derechos": "Ejemplar de 1570: obra en dominio público. La digitalización se toma de Internet Archive y el índice guarda la licencia que ese ejemplar declara.",
+      "identificador": "qvattrolibridel00pall",
+      "enlaceFuente": "https://archive.org/details/qvattrolibridel00pall",
+      "derechos": "Obra impresa en 1570 en dominio público; digitalización de Getty Research Institute / Internet Archive. Atribución institucional obligatoria. Confirmar licencia del ejemplar digital antes de redistribuir.",
       "rehospedar": true,
-      "colacion": "Cuatro partes en un volumen. Libro I: 67 p.; Libro II: 78 p.; Libro III: 46 p.; Libro IV: 128 p. (colación del ejemplar del Soane Museum). La correspondencia entre imagen digital y página impresa queda por leer.",
+      "colacion": "Edición de 1570, Venecia, Domenico de' Franceschi, cuatro libros; paginación 67, 78, [2], 46, [2], 128, [6] p. (estructura editorial; verificar ejemplar concreto).",
       "visorInstitucional": "https://iiif.vam.ac.uk/collections/O1681360/manifest.json",
       "visorInstitucionalNota": "Manifiesto IIIF del ejemplar del Victoria and Albert Museum (1570), para cotejo.",
-      "institucion": "Ejemplar digitalizado disponible en Internet Archive; cotejo con otras instituciones pendiente",
-      "signatura": "Pendiente de confirmar a partir de la institución del ejemplar concreto",
-      "notaEcdotica": "Primera edición, 1570. No atribuir folio, página o capítulo sin cotejo del ejemplar digital; folio y número de imagen son diferentes."
+      "institucion": "Getty Research Institute (ejemplar digitalizado por Internet Archive)",
+      "signatura": "No verificada a partir de registro Getty; no atribuida",
+      "notaEcdotica": "Este identificador corresponde a la edición de 1570; la edición de 1601 localizada previamente debe tratarse como testimonio distinto.",
+      "pdfIA": "https://archive.org/download/qvattrolibridel00pall/qvattrolibridel00pall.pdf"
     },
     "alberti-diez-libros-1582": {
       "titulo": "Los diez libros de Architectura (De re aedificatoria, en castellano)",
@@ -33,7 +34,8 @@
       "colacion": "[8], 343 [i.e. 347], [1] en blanco, [38] páginas; 4º; signaturas [ ]4, A–Z8, 2a8, 2b1. Error de paginación: de 316 pasa a 313. Fuente: ficha del ejemplar digital de la Universidad de Sevilla en Internet Archive.",
       "visorInstitucional": null,
       "institucion": "Biblioteca de la Universidad de Sevilla",
-      "signatura": "A Res.12/4/03 (también Q Arm.1 en el registro)"
+      "signatura": "A Res.12/4/03 (también Q Arm.1 en el registro)",
+      "pdfIA": "https://archive.org/download/ARes12403/ARes12403.pdf"
     },
     "alberti-de-re-aedificatoria-1546": {
       "titulo": "L'architettura (De re aedificatoria, en italiano)",
