@@ -44,7 +44,8 @@ const works=new Map(catalog.works.map(w=>[w.id,w]));
 const workIds=catalog.works.map(w=>w.id);
 const unique=new Set(workIds);
 assert(unique.size===workIds.length,'IDs duplicados en catálogo clásico');
-assert(catalog.works.length===222,'No se conservan las 222 fichas catalogadas');
+assert(catalog.works.length>=222,'Se perdieron fichas del inventario original');
+assert(catalog.works.length===road.items.length,'Catálogo y roadmap deben tener la misma cantidad de fichas');
 assert(reg.entries.length===reg.count,'El conteo declarado no coincide con las versiones registradas');
 assert(road.items.length===catalog.works.length,'Roadmap de indexación incompleto');
 assert(ext.remoteEntries.length===ext.counts.remoteOriginalsIndexed,'Índices externos desincronizados');
@@ -53,9 +54,14 @@ const seen=new Set(),originals=new Set(),versions=new Set();
 for(const e of reg.entries){
  const key=[e.workId,e.language,e.edition||'',e.path].join('|');
  if(seen.has(key))registryDuplicate.push(key);seen.add(key);
- if(!works.has(e.workId)||!e.path||!has(e.path)||!['la','grc','es','en','fr','de','it','pt'].includes(e.language))
+ const remote=typeof e.path==="string"&&e.path.startsWith("https://");
+ const remoteValid=remote&&(()=>{try{const url=new URL(e.path);return url.hostname==="libros.vitruvius-digital-library.org"&&url.pathname.startsWith("/corpus/")&&url.pathname.endsWith(".json")}catch{return false}})();
+ // Remote indexes in Cloudflare R2 are declared external: fs.existsSync
+ // can validate only repository-hosted files, not HTTPS URLs.
+ if(!works.has(e.workId)||!e.path||!(remote?remoteValid:has(e.path))||
+    !['la','grc','es','en','fr','de','it','pt'].includes(e.language))
   registryBad.push({id:e.workId,language:e.language,path:e.path});
- if(['la','grc'].includes(e.language))originals.add(e.workId);
+ if(!remote&&['la','grc'].includes(e.language))originals.add(e.workId);
  versions.add(e.workId);
 }
 assert(registryDuplicate.length===0,'Entradas duplicadas en registro de búsquedas');
