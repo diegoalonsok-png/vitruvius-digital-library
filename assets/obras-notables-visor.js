@@ -346,12 +346,28 @@ async function arrancar() {
   } catch { /* se prueba la siguiente */ }
  }
  if (!indice) {
-  $("estado").textContent = "Los folios de esta obra todavía no están alojados: la descarga a la biblioteca está en curso. " +
-   "Mientras tanto la obra se puede leer en el visor de facsímiles.";
-  const a = document.createElement("a");
-  a.href = "buscador-facsimiles-clasicos.html?obra=" + encodeURIComponent(clave);
-  a.textContent = "Abrir en el visor de facsímiles";
-  $("estado").append(document.createTextNode(" "), a);
+  const mensaje = "Los folios de esta obra todavía no están publicados en R2. El índice está vacío; la importación continúa sin confirmar.";
+  $("estado").textContent = mensaje;
+  const lamina = $("lamina"), aviso = document.createElement("div");
+  aviso.setAttribute("role", "status");
+  aviso.style.cssText = "max-width:540px;padding:26px;text-align:center;color:#f5efe7;font:16px/1.65 Arial,sans-serif";
+  const titulo = document.createElement("strong");
+  titulo.textContent = "Folios no disponibles todavía";
+  titulo.style.cssText = "display:block;font-size:19px;margin-bottom:12px";
+  const parrafo = document.createElement("p");parrafo.textContent = mensaje;
+  const enlace = document.createElement("a");
+  enlace.href = clave === "alberti-diez-libros-1582"
+   ? "https://archive.org/details/ARes12403"
+   : "buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(clave);
+  enlace.target = "_blank";enlace.rel = "noopener noreferrer";
+  enlace.textContent = "Consultar ejemplar digital original";
+  enlace.style.cssText = "display:inline-block;padding:10px 14px;border:1px solid #c9a84c;border-radius:5px;color:#f5d88b";
+  aviso.append(titulo,parrafo,enlace);
+  lamina.replaceChildren(aviso);
+  $("rejilla").replaceChildren();
+  $("galeria-estado").textContent = "Sin miniaturas publicadas";
+  $("galeria-mas").hidden = true;
+  ["prev","next","numero","indice","mas","menos","ajustar","subrayar","limpiar"].forEach(id=>{if($(id))$(id).disabled=true});
   return;
  }
  ficha();
