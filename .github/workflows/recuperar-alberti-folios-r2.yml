@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - ".github/workflows/recuperar-alberti-folios-r2.yml"
+      - "scripts/r2-alberti-pdf-folios.py"
   workflow_dispatch:
 permissions:
   contents: write
@@ -18,12 +19,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install --quiet "boto3>=1.36"
+      - run: pip install --quiet "boto3>=1.36" pymupdf
       - name: Descargar 402 imágenes de la edición sevillana y subir cada una a Cloudflare R2
         env:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-        run: python scripts/r2-folios-obra.py --obra alberti-diez-libros-1582 --desde 1 --hasta 0 --ancho 1600 --miniatura 220
+        run: python scripts/r2-alberti-pdf-folios.py
       - name: Guardar catálogo de imágenes verificado
         run: |
           git config user.name "github-actions[bot]"
