@@ -89,11 +89,11 @@ Promise.all([
     if(fichas.length){fichas.forEach((w,k)=>{if(k)t1.append(" · ");t1.append(a("classics-work-record.html?work="+encodeURIComponent(w),fichas.length>1?"ficha "+(k+1):"ficha académica"))})}
     else t1.append(el("span","obra nueva en la biblioteca","cita"))}
    const t3=el("td",String(x.paginas),"n");
-   const t4=el("td","","n");t4.append(a(x.pdf,"PDF"),document.createTextNode(" · "),a(x.texto,"texto"),document.createTextNode(" · "),a(x.fuente,"Internet Archive"));
+   const t4=el("td","","n");t4.append(a("buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(x.id),"Leer"),document.createTextNode(" · "),a(x.pdf,"PDF"),document.createTextNode(" · "),a(x.texto,"texto"),document.createTextNode(" · "),a(x.fuente,"Internet Archive"));
    tr.append(t1,t2,t3,t4);tb.append(tr);
    if(post){const p=post[x.id];const tr2=document.createElement("tr");const td=el("td","","pags");td.colSpan=4;
     td.append(el("span","«"+(nombre[c]||c)+"»: "+pl(p.total,"página","páginas")+(p.total>p.paginas.length?" (se muestran "+p.paginas.length+")":"")+" — "));
-    p.paginas.forEach(pg=>td.append(a(x.pdf+"#page="+pg,"p. "+pg)));tr2.append(td);tb.append(tr2)}
+    p.paginas.forEach(pg=>td.append(a("buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(x.id)+"&pagina="+pg,"p. "+pg)));tr2.append(td);tb.append(tr2)}
   });
   $("#aviso-concepto").hidden=!c;
   $("#aviso-concepto").textContent=c?pl(n,"obra","obras")+" con «"+(nombre[c]||c)+"». Los números son páginas del PDF; el OCR no está revisado.":"";

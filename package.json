@@ -29,6 +29,7 @@
     "check:rubricas": "node scripts/test-rubrica-overlay.mjs",
     "check:scriptorium": "node scripts/test-scriptorium-sync.mjs",
     "check:site": "node scripts/site-check.mjs",
+    "check:visor-r2": "node scripts/test-visor-facsimiles-r2.mjs",
     "check:vitruvia-100": "node scripts/check-vitruvia-100-subjects.mjs"
   },
   "devDependencies": {

@@ -1,9 +1,88 @@
 <!doctype html><html lang="es" translate="no"><head>
-<link rel="canonical" href="https://vitruvius-digital-library.org/buscador-facsimiles-clasicos"><meta charset="utf-8"><meta name="google" content="notranslate"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Facsímiles clásicos · OCR por página</title><style>body{margin:0;background:#f4efe6;color:#243a4d;font:15px/1.55 system-ui}header{background:#243c4e;color:white;padding:20px}h1{font:normal 30px Georgia,serif;margin:0}header a{color:#ffe3aa}main{max-width:1200px;margin:auto;padding:20px}.warning{background:#fff8e8;border-left:4px solid #af8c53;padding:12px}.form{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:18px 0}label{display:grid;gap:5px;font-weight:600}select,input,button{font:inherit;padding:10px;border:1px solid #baa98e;background:white;color:#203a4c}button{background:#243c4e;color:white;cursor:pointer}article{padding:14px;background:#fff;border-bottom:1px solid #d5c9b8}article p{white-space:pre-wrap;max-height:230px;overflow:auto}small{color:#5a6b78}</style></head><body><header><h1>Facsímiles · lectura OCR por página</h1><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a></header><main><p class="warning">Texto automático no corregido: pueden existir errores de reconocimiento en griego, latín, abreviaturas, paginación y notas. Los resultados remiten a la página digital del PDF exacto, no a un locus antiguo verificado. Si aún no aparecen los índices, está pendiente la ejecución de GitHub Actions.</p><div class="form"><label>Edición histórica<select id="edition"><option>Cargando...</option></select></label><label>Buscar en las páginas<input id="term" type="search" placeholder="Término o frase"></label><button id="go">Buscar</button></div><p id="status" role="status">Cargando cobertura...</p><div id="results"></div></main><script>
-(async()=>{const $=x=>document.getElementById(x);let records=[];const cache=new Map;try{
-const response=await fetch("data/classics-historical-pages/coverage.json");if(!response.ok)throw Error("Los índices OCR aún no están publicados");const j=await response.json();records=(j.records||[]).filter(x=>x.index||x.status==="unchanged");$("edition").replaceChildren();for(const r of records){const option=document.createElement("option");option.value=r.path;option.textContent=r.path.split("/").pop();$("edition").append(option)}$("status").textContent=records.length+" ediciones con índice documental disponible";}catch(e){$("status").textContent=e.message;return}
-async function search(){try{const r=records.find(r=>r.path===$("edition").value);if(!r)return;const src="data/classics-historical-pages/"+r.path.split("/").pop().replace(/\.pdf$/,".json");if(!cache.has(src)){const response=await fetch(src);if(!response.ok)throw Error("Índice no disponible");cache.set(src,await response.json())}const data=cache.get(src),needle=$("term").value.trim().toLocaleLowerCase();if(!needle){$("status").textContent="Ingresa un término para buscar";return}const hits=data.pages.filter(p=>p.text.toLocaleLowerCase().includes(needle));$("results").replaceChildren();$("status").textContent=hits.length+" páginas coincidentes de "+data.pages.length;for(const p of hits.slice(0,80)){const a=document.createElement("article"),h=document.createElement("strong"),excerpt=document.createElement("p"),link=document.createElement("a");h.textContent="Página digital "+p.page+" · "+p.method;excerpt.textContent=p.text.slice(0,2200);link.href=r.path+"#page="+p.page;link.target="_blank";link.rel="noopener";link.textContent="Ver página original del PDF";a.append(h,excerpt,link);$("results").append(a)}}catch(e){$("status").textContent=e.message}}
-$("go").addEventListener("click",search);$("term").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
+<link rel="canonical" href="https://vitruvius-digital-library.org/buscador-facsimiles-clasicos"><meta charset="utf-8"><meta name="google" content="notranslate"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Facsímiles clásicos · lectura y búsqueda por página</title><style>body{margin:0;background:#f4efe6;color:#243a4d;font:15px/1.55 system-ui}header{background:#243c4e;color:white;padding:20px}h1{font:normal 30px Georgia,serif;margin:0}header a{color:#ffe3aa}main{max-width:1200px;margin:auto;padding:20px}.warning{background:#fff8e8;border-left:4px solid #af8c53;padding:12px}.form{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:18px 0}label{display:grid;gap:5px;font-weight:600}select,input,button{font:inherit;padding:10px;border:1px solid #baa98e;background:white;color:#203a4c}button{background:#243c4e;color:white;cursor:pointer}article{padding:14px;background:#fff;border-bottom:1px solid #d5c9b8}article p{white-space:pre-wrap;max-height:230px;overflow:auto}small{color:#5a6b78}.pager{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}.pager button{min-width:112px}.pager input{width:92px}.cita{background:#fffdf7;border:1px solid #d9cbb2;padding:12px;margin:14px 0;font-size:14px}.cita b{font-weight:700}.folio{white-space:pre-wrap;background:#fff;border:1px solid #d5c9b8;padding:16px;font:16px/1.7 "Gentium Book Plus",Georgia,serif;max-height:70vh;overflow:auto}</style></head><body><header><h1>Facsímiles · lectura OCR por página</h1><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></header><main><p class="warning">Texto automático no corregido: pueden existir errores de reconocimiento en griego, latín, abreviaturas, paginación y notas. Los resultados remiten a la página digital del PDF exacto, no a un locus antiguo verificado. Si aún no aparecen los índices, está pendiente la ejecución de GitHub Actions.</p><div class="form"><label>Edición<select id="edition"><option>Cargando...</option></select></label><label>Buscar en las páginas<input id="term" type="search" placeholder="Término o frase"></label><button id="go">Buscar</button><button id="read" type="button">Leer página a página</button></div><div id="cita" class="cita" hidden></div><div id="pager" class="pager" hidden><button id="prev" type="button">← Anterior</button><label>Página <input id="pageno" type="number" min="1" step="1" value="1"></label><button id="next" type="button">Siguiente →</button><a id="facsimil" href="#" target="_blank" rel="noopener">Ver el facsímil de esta página</a></div><div id="folio" class="folio" hidden></div><p id="status" role="status">Cargando cobertura...</p><div id="results"></div></main><script>
+(async()=>{const $=x=>document.getElementById(x);
+const params=new URLSearchParams(location.search);
+const cache=new Map();let locales=[],r2=[],actual=null,datos=null,pagina=1;
+const pedir=async(u,o)=>{const r=await fetch(u,o||{});if(!r.ok)throw Error(u.split("/").pop()+" HTTP "+r.status);return r.json()};
+const [cov,cat]=await Promise.all([
+ pedir("data/classics-historical-pages/coverage.json").catch(()=>null),
+ pedir("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).catch(()=>null)]);
+locales=((cov&&cov.records)||[]).filter(x=>x.index||x.status==="unchanged");
+r2=((cat&&cat.items)||[]);
+const sel=$("edition");sel.replaceChildren();
+const grupo=(etiqueta)=>{const g=document.createElement("optgroup");g.label=etiqueta;sel.append(g);return g};
+if(r2.length){const g=grupo("Clásicos de dominio público · Cloudflare R2 ("+r2.length+")");
+ for(const x of r2){const o=document.createElement("option");o.value="r2:"+x.id;
+  o.textContent=x.autor+" · "+x.obra+" ("+x.anio+")";g.append(o)}}
+if(locales.length){const g=grupo("Facsímiles del repositorio ("+locales.length+")");
+ for(const x of locales){const o=document.createElement("option");o.value="local:"+x.path;o.textContent=x.path.split("/").pop();g.append(o)}}
+if(!sel.options.length){$("status").textContent="No hay ediciones con índice documental disponible";return}
+$("status").textContent=r2.length+" ediciones en R2 y "+locales.length+" facsímiles del repositorio con texto por página";
+const ficha=v=>v.startsWith("r2:")?r2.find(x=>x.id===v.slice(3)):locales.find(x=>x.path===v.slice(6));
+async function cargar(v){const f=ficha(v);if(!f)throw Error("Edición no identificada");
+ if(v.startsWith("r2:")){
+  if(!cache.has(v)){const j=await pedir(f.texto);
+   cache.set(v,{paginas:(j.paginas||[]).map((txt,i)=>({page:i+1,text:txt||"",method:"OCR de Internet Archive sin revisar"})),pdf:f.pdf,ficha:f,remoto:true})}
+ }else{
+  if(!cache.has(v)){const src="data/classics-historical-pages/"+f.path.split("/").pop().replace(/\.pdf$/,".json");
+   const j=await pedir(src);
+   cache.set(v,{paginas:(j.pages||[]).map(x=>({page:x.page,text:x.text||"",method:x.method||"OCR"})),pdf:f.path,ficha:f,remoto:false})}
+ }
+ actual=v;datos=cache.get(v);pagina=1;cita();return datos}
+function cita(){const c=$("cita");const f=datos.ficha;
+ if(datos.remoto){c.hidden=false;
+  c.innerHTML="";const b=document.createElement("b");b.textContent=f.autor+", "+f.obra;
+  const linea=document.createElement("div");linea.textContent=f.tituloEdicion+" ("+f.anio+(f.volumen?", vol. "+f.volumen:"")+")"+(f.editor?", "+f.editor:"")+". "+f.paginas+" páginas, "+f.paginasConTexto+" con capa de texto.";
+  const der=document.createElement("small");der.textContent=f.derechos+" · "+(f.bilingueLoeb?"Volumen bilingüe: original y traducción inglesa enfrentadas.":"Volumen en lengua original, sin traducción en el mismo volumen.");
+  const enl=document.createElement("div");
+  const a1=document.createElement("a");a1.href=f.pdf;a1.target="_blank";a1.rel="noopener";a1.textContent="PDF completo";
+  const a2=document.createElement("a");a2.href=f.fuente;a2.target="_blank";a2.rel="noopener";a2.textContent="Internet Archive";
+  const a3=document.createElement("a");a3.href="bibliotheca-ampliada.html?q="+encodeURIComponent(f.autor);a3.textContent="Ficha en Bibliotheca ampliada";
+  enl.append(a1,document.createTextNode(" · "),a2,document.createTextNode(" · "),a3);
+  c.append(b,linea,der,enl);
+ }else{c.hidden=false;c.textContent="Facsímil del repositorio: "+f.path.split("/").pop()}}
+function pintarFolio(){const p=datos.paginas.find(x=>x.page===pagina)||datos.paginas[0];if(!p)return;
+ pagina=p.page;$("pageno").value=pagina;$("pageno").max=datos.paginas.length;
+ $("folio").hidden=false;$("pager").hidden=false;$("results").replaceChildren();
+ $("folio").textContent=p.text.trim()||"Esta página no tiene capa de texto reconocible. Consultar el facsímil.";
+ $("facsimil").href=datos.pdf+"#page="+pagina;
+ $("status").textContent="Página "+pagina+" de "+datos.paginas.length+" · "+p.method;}
+async function leer(){try{$("status").textContent="Cargando el texto por páginas…";
+ if(actual!==$("edition").value||!datos)await cargar($("edition").value);
+ pintarFolio()}catch(e){$("status").textContent=e.message}}
+async function buscar(){try{const needle=$("term").value.trim().toLocaleLowerCase();
+ if(!needle){return leer()}
+ $("status").textContent="Buscando…";
+ if(actual!==$("edition").value||!datos)await cargar($("edition").value);
+ $("folio").hidden=true;$("pager").hidden=true;
+ const hits=datos.paginas.filter(p=>p.text.toLocaleLowerCase().includes(needle));
+ $("results").replaceChildren();
+ $("status").textContent=hits.length+" páginas coincidentes de "+datos.paginas.length;
+ for(const p of hits.slice(0,80)){const a=document.createElement("article"),h=document.createElement("strong"),
+  excerpt=document.createElement("p"),acciones=document.createElement("div"),
+  link=document.createElement("a"),leerAqui=document.createElement("button");
+  h.textContent="Página digital "+p.page+" · "+p.method;
+  excerpt.textContent=p.text.slice(0,2200);
+  link.href=datos.pdf+"#page="+p.page;link.target="_blank";link.rel="noopener";link.textContent="Ver el facsímil de esta página";
+  leerAqui.type="button";leerAqui.textContent="Leer esta página aquí";
+  leerAqui.addEventListener("click",()=>{pagina=p.page;pintarFolio();window.scrollTo({top:0,behavior:"smooth"})});
+  acciones.append(leerAqui,document.createTextNode(" "),link);
+  a.append(h,excerpt,acciones);$("results").append(a)}
+}catch(e){$("status").textContent=e.message}}
+$("go").addEventListener("click",buscar);
+$("read").addEventListener("click",leer);
+$("prev").addEventListener("click",()=>{if(pagina>1){pagina--;pintarFolio()}});
+$("next").addEventListener("click",()=>{if(datos&&pagina<datos.paginas.length){pagina++;pintarFolio()}});
+$("pageno").addEventListener("change",()=>{const n=parseInt($("pageno").value,10);
+ if(datos&&n>=1&&n<=datos.paginas.length){pagina=n;pintarFolio()}});
+$("term").addEventListener("keydown",e=>{if(e.key==="Enter")buscar()});
+$("edition").addEventListener("change",()=>{datos=null;actual=null;$("folio").hidden=true;$("pager").hidden=true;$("cita").hidden=true;$("results").replaceChildren()});
+const obra=params.get("obra");
+if(obra&&r2.some(x=>x.id===obra)){$("edition").value="r2:"+obra;
+ const q=params.get("q");if(q)$("term").value=q;
+ const pg=parseInt(params.get("pagina")||"0",10);
+ await (q?buscar():leer());
+ if(pg>0&&datos&&pg<=datos.paginas.length&&!q){pagina=pg;pintarFolio()}}
 })();
 </script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
