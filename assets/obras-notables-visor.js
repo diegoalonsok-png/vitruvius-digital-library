@@ -27,6 +27,15 @@ let clave = params.get("obra");
 if (!OBRAS[clave]) clave = Object.keys(OBRAS)[0];
 
 let indice = null, actual = 1, escala = 1, invertido = false, subrayando = false;
+let panX = 0, panY = 0;
+function aplicarEncuadre() {
+ const img = $("imagen");
+ img.style.transform = `translate(${panX}px, ${panY}px) scale(${escala})`;
+}
+function ajustarEncuadre() {
+ escala = 1; panX = 0; panY = 0;
+ aplicarEncuadre();
+}
 const marcasPorFolio = new Map();
 
 const almacen = {
@@ -127,9 +136,11 @@ function mostrar(n) {
  $("numero").max = indice.folios[indice.folios.length - 1].imagenDigital;
  $("indice").value = String(actual);
  const img = $("imagen");
+ ajustarEncuadre();
  img.src = f.imagen;
  img.alt = `Folio ${f.folio || "(imagen digital " + f.imagenDigital + ")"} de ${indice.titulo}`;
- img.style.transform = `scale(${escala})`;
+ img.onload = () => { ajustarEncuadre(); };
+ img.onerror = () => { $("estado").textContent = "No se pudo cargar la imagen "+actual+". Intentá otro folio."; };
  nomenclatura(f);
  filtros();
  pintarMarcas();
@@ -214,10 +225,32 @@ async function buscar() {
 
 function herramientas() {
  const img = $("imagen"), lamina = $("lamina");
- const aplicar = () => { img.style.transform = `scale(${escala})`; };
- $("mas").addEventListener("click", () => { escala = Math.min(escala * 1.25, 8); aplicar(); });
- $("menos").addEventListener("click", () => { escala = Math.max(escala / 1.25, 0.2); aplicar(); });
- $("ajustar").addEventListener("click", () => { escala = 1; aplicar(); lamina.scrollTo({ left: 0, top: 0 }); });
+ $("mas").addEventListener("click", () => { escala = Math.min(escala * 1.25, 8); aplicarEncuadre(); });
+ $("menos").addEventListener("click", () => {
+  escala = Math.max(escala / 1.25, 1);
+  if (escala === 1) { panX = 0; panY = 0; }
+  aplicarEncuadre();
+ });
+ $("ajustar").addEventListener("click", ajustarEncuadre);
+ // Pan only when zoomed; dragging the original at scale 1 must not displace it.
+ let drag = null;
+ lamina.addEventListener("pointerdown", e => {
+  if (subrayando || escala <= 1 || e.button !== 0) return;
+  drag = { x:e.clientX, y:e.clientY, panX, panY };
+  lamina.setPointerCapture(e.pointerId);
+  lamina.classList.add("arrastrando");
+ });
+ lamina.addEventListener("pointermove", e => {
+  if (!drag || subrayando) return;
+  const maxX = Math.max(0, (img.getBoundingClientRect().width - lamina.clientWidth) / 2 + 36);
+  const maxY = Math.max(0, (img.getBoundingClientRect().height - lamina.clientHeight) / 2 + 36);
+  panX = Math.max(-maxX, Math.min(maxX, drag.panX + e.clientX - drag.x));
+  panY = Math.max(-maxY, Math.min(maxY, drag.panY + e.clientY - drag.y));
+  aplicarEncuadre();
+ });
+ const stopDrag = () => { drag = null; lamina.classList.remove("arrastrando"); };
+ lamina.addEventListener("pointerup", stopDrag);
+ lamina.addEventListener("pointercancel", stopDrag);
  if ($("invertir")) $("invertir").addEventListener("click", e => {
   invertido = !invertido; e.currentTarget.setAttribute("aria-pressed", String(invertido)); filtros();
  });
@@ -253,7 +286,7 @@ function herramientas() {
  });
  let inicio = null;
  lamina.addEventListener("pointerdown", e => {
-  if (!subrayando) { lamina.classList.add("arrastrando"); return; }
+  if (!subrayando) return;
   const caja = lamina.getBoundingClientRect();
   inicio = { x: (e.clientX - caja.left) / caja.width * 100, y: (e.clientY - caja.top) / caja.height * 100 };
  });
