@@ -10,11 +10,11 @@ editorial o investigación en catálogos.
 
 | Campo | Fichas completadas |
 | --- | --- |
-| Siglo (`century`) | 29 |
-| Período (`period`) | 29 |
+| Siglo (`century`) | 0 |
+| Período (`period`) | 0 |
 | Archivos de corpus (`corpusFiles`) | 0 |
 | Recuentos del índice léxico (`lexicalIndex`) | 0 |
-| Testimonios manuscritos (`witnessRecords`) | 0 |
+| Testimonios manuscritos (`witnessRecords`) | 3 |
 | Enlaces de búsqueda de testimonio (`witnessLookup`) | 0 |
 
 ## Obras sin testimonio manuscrito catalogado

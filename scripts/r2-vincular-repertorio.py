@@ -36,7 +36,7 @@ for x in cat["items"]:
         # (no contaba, no se veía desde la ficha y no se podía leer desde ella).
         if x["id"] in rep:
             mapa[x["id"]] = [x["id"]]
-        elif x.get("traduccionDe"):
+        elif x.get("coleccion") or x.get("traduccionDe"):
             mapa[x["id"]] = []
         else:
             sin_revisar.append(x["id"])

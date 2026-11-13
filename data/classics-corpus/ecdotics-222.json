@@ -9536,7 +9536,149 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "galen-laurentianus-74-3",
+          "canonicalPhysicalId": "codex-galen-laurentianus-74-3",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Florencia, Biblioteca Medicea Laurenziana",
+            "shelfmark": "Plut. 74,3",
+            "paleographicDate": "Siglo XII · s. XII",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Códice misceláneo galénico: entre otros tratados transmite De optima doctrina (p. 132), De optima secta ad Thrasybulum (p. 38), De constitutione artis medicae ad Patrophilum (p. 64v), An in arteriis natura sanguis contineatur (p. 91), De instrumento odoratus (f. 98), De motu musculorum (p. 192), Thrasybulus (f. 110v) y De cuiuslibet animi peccatorum dignotione (p. 149v). Folios según el repertorio de Diels; no verificados sobre el códice.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://diels.medicaltraditions.org/dielsdetail.php?ID=559",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": null,
+            "evidenceStatus": "not_reviewed",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "galen-parisinus-gr-2154",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2154",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "París, Bibliothèque nationale de France",
+            "shelfmark": "Grec 2154",
+            "paleographicDate": "Siglo XIV · 1301–1400",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Códice galénico del fondo griego antiguo de la BnF, digitalizado íntegro en Gallica.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc209838",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b10723348m",
+            "iiifManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b10723348m/manifest.json",
+            "verification": null,
+            "evidenceStatus": "not_reviewed",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "galen-parisinus-gr-2153",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2153",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "París, Bibliothèque nationale de France",
+            "shelfmark": "Grec 2153",
+            "paleographicDate": "Siglo XV · 1401–1500",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Códice galénico de la BnF (Pinakes, diktyon 51782), digitalizado en Gallica. Usado en la edición de la Exhortación a la medicina y del Arte médica por Boudon-Millot (2000).",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51782/",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b107229115",
+            "iiifManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b107229115/manifest.json",
+            "verification": null,
+            "evidenceStatus": "not_reviewed",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -9558,7 +9700,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 3,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -9593,7 +9735,149 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "galen-laurentianus-74-3",
+          "canonicalPhysicalId": "codex-galen-laurentianus-74-3",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Florencia, Biblioteca Medicea Laurenziana",
+            "shelfmark": "Plut. 74,3",
+            "paleographicDate": "Siglo XII · s. XII",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Códice misceláneo galénico: entre otros tratados transmite De optima doctrina (p. 132), De optima secta ad Thrasybulum (p. 38), De constitutione artis medicae ad Patrophilum (p. 64v), An in arteriis natura sanguis contineatur (p. 91), De instrumento odoratus (f. 98), De motu musculorum (p. 192), Thrasybulus (f. 110v) y De cuiuslibet animi peccatorum dignotione (p. 149v). Folios según el repertorio de Diels; no verificados sobre el códice.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://diels.medicaltraditions.org/dielsdetail.php?ID=559",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": null,
+            "evidenceStatus": "not_reviewed",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "galen-parisinus-gr-2154",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2154",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "París, Bibliothèque nationale de France",
+            "shelfmark": "Grec 2154",
+            "paleographicDate": "Siglo XIV · 1301–1400",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Códice galénico del fondo griego antiguo de la BnF, digitalizado íntegro en Gallica.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc209838",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b10723348m",
+            "iiifManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b10723348m/manifest.json",
+            "verification": null,
+            "evidenceStatus": "not_reviewed",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "galen-parisinus-gr-2153",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2153",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "París, Bibliothèque nationale de France",
+            "shelfmark": "Grec 2153",
+            "paleographicDate": "Siglo XV · 1401–1500",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Códice galénico de la BnF (Pinakes, diktyon 51782), digitalizado en Gallica. Usado en la edición de la Exhortación a la medicina y del Arte médica por Boudon-Millot (2000).",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51782/",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b107229115",
+            "iiifManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b107229115/manifest.json",
+            "verification": null,
+            "evidenceStatus": "not_reviewed",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -9615,7 +9899,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 3,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -21595,10 +21879,10 @@
       "workId": "antologia-griega",
       "work": {
         "author": "Antología griega",
-        "title": "Antología Palatina",
+        "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Compilación bizantina (s. X) de poesía de los s. VII a. C. – VI d. C.",
+        "genre": "Epigrama"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -21650,10 +21934,10 @@
       "workId": "aquiles-tacio-leucipa",
       "work": {
         "author": "Aquiles Tacio",
-        "title": "Leucipa y Clitofonte",
+        "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo II d. C.",
+        "genre": "Novela griega"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -21705,10 +21989,10 @@
       "workId": "aristoteles-del-cielo",
       "work": {
         "author": "Aristóteles",
-        "title": "Acerca del cielo",
+        "title": "Περὶ οὐρανοῦ · De caelo",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Filosofía natural y cosmología"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -21760,10 +22044,10 @@
       "workId": "aristoteles-historia-animales",
       "work": {
         "author": "Aristóteles",
-        "title": "Historia de los animales",
+        "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Zoología"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -21815,10 +22099,10 @@
       "workId": "baquilides-poemas",
       "work": {
         "author": "Baquílides",
-        "title": "Poemas y fragmentos (ed. Jebb)",
+        "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo V a. C.",
+        "genre": "Lírica coral"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -21870,10 +22154,10 @@
       "workId": "calimaco-himnos",
       "work": {
         "author": "Calímaco y Licofrón",
-        "title": "Himnos, epigramas; Alejandra",
+        "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo III a. C.",
+        "genre": "Poesía helenística"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -21925,10 +22209,10 @@
       "workId": "epicuro-restos",
       "work": {
         "author": "Epicuro",
-        "title": "Los restos existentes (ed. Bailey)",
+        "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglos IV–III a. C.",
+        "genre": "Filosofía epicúrea"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -21980,10 +22264,10 @@
       "workId": "esquines-discursos",
       "work": {
         "author": "Esquines",
-        "title": "Discursos",
+        "title": "Λόγοι · Discursos",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Oratoria ática"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22035,10 +22319,10 @@
       "workId": "filostrato-apolonio",
       "work": {
         "author": "Filóstrato",
-        "title": "Vida de Apolonio de Tiana",
+        "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo III d. C.",
+        "genre": "Biografía"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22090,10 +22374,10 @@
       "workId": "galeno-facultades-naturales",
       "work": {
         "author": "Galeno",
-        "title": "Sobre las facultades naturales",
+        "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo II d. C.",
+        "genre": "Medicina y fisiología"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22115,7 +22399,149 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "galen-laurentianus-74-3",
+          "canonicalPhysicalId": "codex-galen-laurentianus-74-3",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Florencia, Biblioteca Medicea Laurenziana",
+            "shelfmark": "Plut. 74,3",
+            "paleographicDate": "Siglo XII · s. XII",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Códice misceláneo galénico: entre otros tratados transmite De optima doctrina (p. 132), De optima secta ad Thrasybulum (p. 38), De constitutione artis medicae ad Patrophilum (p. 64v), An in arteriis natura sanguis contineatur (p. 91), De instrumento odoratus (f. 98), De motu musculorum (p. 192), Thrasybulus (f. 110v) y De cuiuslibet animi peccatorum dignotione (p. 149v). Folios según el repertorio de Diels; no verificados sobre el códice.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://diels.medicaltraditions.org/dielsdetail.php?ID=559",
+            "viewer": null,
+            "iiifManifest": null,
+            "verification": null,
+            "evidenceStatus": "not_reviewed",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "galen-parisinus-gr-2154",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2154",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "París, Bibliothèque nationale de France",
+            "shelfmark": "Grec 2154",
+            "paleographicDate": "Siglo XIV · 1301–1400",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Códice galénico del fondo griego antiguo de la BnF, digitalizado íntegro en Gallica.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc209838",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b10723348m",
+            "iiifManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b10723348m/manifest.json",
+            "verification": null,
+            "evidenceStatus": "not_reviewed",
+            "criticalEditionChicago18": null
+          }
+        },
+        {
+          "witnessId": "galen-parisinus-gr-2153",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2153",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "París, Bibliothèque nationale de France",
+            "shelfmark": "Grec 2153",
+            "paleographicDate": "Siglo XV · 1401–1500",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Códice galénico de la BnF (Pinakes, diktyon 51782), digitalizado en Gallica. Usado en la edición de la Exhortación a la medicina y del Arte médica por Boudon-Millot (2000).",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51782/",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b107229115",
+            "iiifManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b107229115/manifest.json",
+            "verification": null,
+            "evidenceStatus": "not_reviewed",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -22137,7 +22563,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 3,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -22145,10 +22571,10 @@
       "workId": "hipocrates-obras",
       "work": {
         "author": "Hipócrates",
-        "title": "Obras (Loeb)",
+        "title": "Corpus Hippocraticum (selección)",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglos V–IV a. C.; corpus de autoría múltiple",
+        "genre": "Medicina"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22200,10 +22626,10 @@
       "workId": "iseo-discursos",
       "work": {
         "author": "Iseo",
-        "title": "Discursos",
+        "title": "Λόγοι · Discursos",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Oratoria judicial (derecho sucesorio)"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22255,10 +22681,10 @@
       "workId": "jenofonte-ciropedia",
       "work": {
         "author": "Jenofonte",
-        "title": "Ciropedia",
+        "title": "Κύρου παιδεία · Cyropaedia",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Historia novelada y teoría del mando"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22310,10 +22736,10 @@
       "workId": "jenofonte-economico",
       "work": {
         "author": "Jenofonte",
-        "title": "Económico",
+        "title": "Οἰκονομικός · Oeconomicus",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Economía doméstica y agricultura"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22365,10 +22791,10 @@
       "workId": "longo-dafnis-cloe",
       "work": {
         "author": "Longo",
-        "title": "Dafnis y Cloe",
+        "title": "Δάφνις καὶ Χλόη · Poimeniká",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo II d. C.",
+        "genre": "Novela pastoril"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22420,10 +22846,10 @@
       "workId": "menandro-comedias",
       "work": {
         "author": "Menandro",
-        "title": "Comedias (fragmentos)",
+        "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglos IV–III a. C.",
+        "genre": "Comedia nueva"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22477,8 +22903,8 @@
         "author": "Platón",
         "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Diálogos platónicos"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22530,10 +22956,10 @@
       "workId": "platon-protagoras",
       "work": {
         "author": "Platón",
-        "title": "Laques, Protágoras, Menón, Eutidemo",
+        "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Diálogos platónicos"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22585,10 +23011,10 @@
       "workId": "platon-teeteto-sofista",
       "work": {
         "author": "Platón",
-        "title": "Teeteto y Sofista",
+        "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Diálogos platónicos"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22640,10 +23066,10 @@
       "workId": "plotino-eneadas",
       "work": {
         "author": "Plotino",
-        "title": "Enéadas",
+        "title": "Ἐννεάδες · Enneades",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo III d. C.",
+        "genre": "Neoplatonismo"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22695,10 +23121,10 @@
       "workId": "lyra-graeca",
       "work": {
         "author": "Poetas líricos griegos",
-        "title": "Lyra Graeca",
+        "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglos VII–V a. C.",
+        "genre": "Lírica monódica"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22750,10 +23176,10 @@
       "workId": "quinto-esmirna-posthomericas",
       "work": {
         "author": "Quinto de Esmirna",
-        "title": "Posthoméricas (La caída de Troya)",
+        "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglos III–IV d. C.",
+        "genre": "Épica tardía"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22805,10 +23231,10 @@
       "workId": "amiano-marcelino-es",
       "work": {
         "author": "Amiano Marcelino",
-        "title": "Historia del Imperio romano (trad. castellana)",
+        "title": "Res gestae",
         "originalLanguage": "la",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV d. C.",
+        "genre": "Historia del Imperio romano"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22860,10 +23286,10 @@
       "workId": "ausonio-obras",
       "work": {
         "author": "Ausonio",
-        "title": "Obras",
+        "title": "Opuscula · Obras",
         "originalLanguage": "la",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo IV d. C.",
+        "genre": "Poesía tardolatina"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22915,10 +23341,10 @@
       "workId": "claudiano-poemas",
       "work": {
         "author": "Claudiano",
-        "title": "Poemas",
+        "title": "Carmina · Poemas",
         "originalLanguage": "la",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglos IV–V d. C.",
+        "genre": "Poesía épica y panegírica"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -22970,10 +23396,10 @@
       "workId": "higino-fabulas",
       "work": {
         "author": "Higino",
-        "title": "Fábulas y Astronomía poética",
+        "title": "Fabulae · Astronomica poetica",
         "originalLanguage": "la",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo II d. C.; atribución y datación discutidas",
+        "genre": "Mitografía y astronomía"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -23027,8 +23453,8 @@
         "author": "Manilio",
         "title": "Astronomica",
         "originalLanguage": "la",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo I d. C.",
+        "genre": "Poema didáctico astrológico"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -23080,10 +23506,10 @@
       "workId": "minucio-felix-octavio",
       "work": {
         "author": "Minucio Félix",
-        "title": "Octavio",
+        "title": "Octavius",
         "originalLanguage": "la",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglos II–III d. C.",
+        "genre": "Apologética cristiana"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -23135,10 +23561,10 @@
       "workId": "valerio-flaco-argonautica",
       "work": {
         "author": "Valerio Flaco",
-        "title": "Argonáuticas",
+        "title": "Argonautica",
         "originalLanguage": "la",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Siglo I d. C.",
+        "genre": "Épica latina"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],

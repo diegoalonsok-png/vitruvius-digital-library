@@ -1,8 +1,8 @@
 {
   "schema": "vitruvius-codicological-trees-222-v1",
   "count": 256,
-  "physicalWitnessCount": 93,
-  "textualWitnessRecordCount": 100,
+  "physicalWitnessCount": 96,
+  "textualWitnessRecordCount": 103,
   "interpretation": "Work-to-manuscript links are attestations; ancestry is explicit and source-backed. No unidentified archetypes are invented.",
   "method": "Physical witness IDs are stable across works; recensiones require scholarship.",
   "records": [
@@ -4321,8 +4321,76 @@
         "type": "classical_work",
         "label": "Galeno · Τέχνη ἰατρική"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "galen-laurentianus-74-3",
+          "canonicalPhysicalId": "codex-galen-laurentianus-74-3",
+          "type": "physical_witness",
+          "label": "Plut. 74,3",
+          "repository": "Florencia, Biblioteca Medicea Laurenziana",
+          "dating": "Siglo XII · s. XII",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Códice misceláneo galénico: entre otros tratados transmite De optima doctrina (p. 132), De optima secta ad Thrasybulum (p. 38), De constitutione artis medicae ad Patrophilum (p. 64v), An in arteriis natura sanguis contineatur (p. 91), De instrumento odoratus (f. 98), De motu musculorum (p. 192), Thrasybulus (f. 110v) y De cuiuslibet animi peccatorum dignotione (p. 149v). Folios según el repertorio de Diels; no verificados sobre el códice.",
+          "sourceUrl": "https://diels.medicaltraditions.org/dielsdetail.php?ID=559",
+          "sourceStatus": "needs_review",
+          "siglum": null
+        },
+        {
+          "id": "galen-parisinus-gr-2154",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2154",
+          "type": "physical_witness",
+          "label": "Grec 2154",
+          "repository": "París, Bibliothèque nationale de France",
+          "dating": "Siglo XIV · 1301–1400",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Códice galénico del fondo griego antiguo de la BnF, digitalizado íntegro en Gallica.",
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc209838",
+          "sourceStatus": "needs_review",
+          "siglum": null
+        },
+        {
+          "id": "galen-parisinus-gr-2153",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2153",
+          "type": "physical_witness",
+          "label": "Grec 2153",
+          "repository": "París, Bibliothèque nationale de France",
+          "dating": "Siglo XV · 1401–1500",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Códice galénico de la BnF (Pinakes, diktyon 51782), digitalizado en Gallica. Usado en la edición de la Exhortación a la medicina y del Arte médica por Boudon-Millot (2000).",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51782/",
+          "sourceStatus": "needs_review",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "galen-ars-medica",
+          "target": "galen-laurentianus-74-3",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://diels.medicaltraditions.org/dielsdetail.php?ID=559"
+        },
+        {
+          "source": "galen-ars-medica",
+          "target": "galen-parisinus-gr-2154",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc209838"
+        },
+        {
+          "source": "galen-ars-medica",
+          "target": "galen-parisinus-gr-2153",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51782/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -4331,7 +4399,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -4346,8 +4414,76 @@
         "type": "classical_work",
         "label": "Galeno · Περὶ χρείας μορίων"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "galen-laurentianus-74-3",
+          "canonicalPhysicalId": "codex-galen-laurentianus-74-3",
+          "type": "physical_witness",
+          "label": "Plut. 74,3",
+          "repository": "Florencia, Biblioteca Medicea Laurenziana",
+          "dating": "Siglo XII · s. XII",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Códice misceláneo galénico: entre otros tratados transmite De optima doctrina (p. 132), De optima secta ad Thrasybulum (p. 38), De constitutione artis medicae ad Patrophilum (p. 64v), An in arteriis natura sanguis contineatur (p. 91), De instrumento odoratus (f. 98), De motu musculorum (p. 192), Thrasybulus (f. 110v) y De cuiuslibet animi peccatorum dignotione (p. 149v). Folios según el repertorio de Diels; no verificados sobre el códice.",
+          "sourceUrl": "https://diels.medicaltraditions.org/dielsdetail.php?ID=559",
+          "sourceStatus": "needs_review",
+          "siglum": null
+        },
+        {
+          "id": "galen-parisinus-gr-2154",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2154",
+          "type": "physical_witness",
+          "label": "Grec 2154",
+          "repository": "París, Bibliothèque nationale de France",
+          "dating": "Siglo XIV · 1301–1400",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Códice galénico del fondo griego antiguo de la BnF, digitalizado íntegro en Gallica.",
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc209838",
+          "sourceStatus": "needs_review",
+          "siglum": null
+        },
+        {
+          "id": "galen-parisinus-gr-2153",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2153",
+          "type": "physical_witness",
+          "label": "Grec 2153",
+          "repository": "París, Bibliothèque nationale de France",
+          "dating": "Siglo XV · 1401–1500",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Códice galénico de la BnF (Pinakes, diktyon 51782), digitalizado en Gallica. Usado en la edición de la Exhortación a la medicina y del Arte médica por Boudon-Millot (2000).",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51782/",
+          "sourceStatus": "needs_review",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "galen-de-usu-partium",
+          "target": "galen-laurentianus-74-3",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://diels.medicaltraditions.org/dielsdetail.php?ID=559"
+        },
+        {
+          "source": "galen-de-usu-partium",
+          "target": "galen-parisinus-gr-2154",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc209838"
+        },
+        {
+          "source": "galen-de-usu-partium",
+          "target": "galen-parisinus-gr-2153",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51782/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -4356,7 +4492,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -9886,12 +10022,12 @@
     },
     {
       "workId": "antologia-griega",
-      "title": "Antología Palatina",
+      "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "antologia-griega",
         "type": "classical_work",
-        "label": "Antología griega · Antología Palatina"
+        "label": "Antología griega · Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)"
       },
       "witnesses": [],
       "links": [],
@@ -9911,12 +10047,12 @@
     },
     {
       "workId": "aquiles-tacio-leucipa",
-      "title": "Leucipa y Clitofonte",
+      "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "aquiles-tacio-leucipa",
         "type": "classical_work",
-        "label": "Aquiles Tacio · Leucipa y Clitofonte"
+        "label": "Aquiles Tacio · Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte"
       },
       "witnesses": [],
       "links": [],
@@ -9936,12 +10072,12 @@
     },
     {
       "workId": "aristoteles-del-cielo",
-      "title": "Acerca del cielo",
+      "title": "Περὶ οὐρανοῦ · De caelo",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "aristoteles-del-cielo",
         "type": "classical_work",
-        "label": "Aristóteles · Acerca del cielo"
+        "label": "Aristóteles · Περὶ οὐρανοῦ · De caelo"
       },
       "witnesses": [],
       "links": [],
@@ -9961,12 +10097,12 @@
     },
     {
       "workId": "aristoteles-historia-animales",
-      "title": "Historia de los animales",
+      "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "aristoteles-historia-animales",
         "type": "classical_work",
-        "label": "Aristóteles · Historia de los animales"
+        "label": "Aristóteles · Περὶ τὰ ζῷα ἱστορίαι · Historia animalium"
       },
       "witnesses": [],
       "links": [],
@@ -9986,12 +10122,12 @@
     },
     {
       "workId": "baquilides-poemas",
-      "title": "Poemas y fragmentos (ed. Jebb)",
+      "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "baquilides-poemas",
         "type": "classical_work",
-        "label": "Baquílides · Poemas y fragmentos (ed. Jebb)"
+        "label": "Baquílides · Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos"
       },
       "witnesses": [],
       "links": [],
@@ -10011,12 +10147,12 @@
     },
     {
       "workId": "calimaco-himnos",
-      "title": "Himnos, epigramas; Alejandra",
+      "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "calimaco-himnos",
         "type": "classical_work",
-        "label": "Calímaco y Licofrón · Himnos, epigramas; Alejandra"
+        "label": "Calímaco y Licofrón · Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)"
       },
       "witnesses": [],
       "links": [],
@@ -10036,12 +10172,12 @@
     },
     {
       "workId": "epicuro-restos",
-      "title": "Los restos existentes (ed. Bailey)",
+      "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "epicuro-restos",
         "type": "classical_work",
-        "label": "Epicuro · Los restos existentes (ed. Bailey)"
+        "label": "Epicuro · Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales"
       },
       "witnesses": [],
       "links": [],
@@ -10061,12 +10197,12 @@
     },
     {
       "workId": "esquines-discursos",
-      "title": "Discursos",
+      "title": "Λόγοι · Discursos",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "esquines-discursos",
         "type": "classical_work",
-        "label": "Esquines · Discursos"
+        "label": "Esquines · Λόγοι · Discursos"
       },
       "witnesses": [],
       "links": [],
@@ -10086,12 +10222,12 @@
     },
     {
       "workId": "filostrato-apolonio",
-      "title": "Vida de Apolonio de Tiana",
+      "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "filostrato-apolonio",
         "type": "classical_work",
-        "label": "Filóstrato · Vida de Apolonio de Tiana"
+        "label": "Filóstrato · Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana"
       },
       "witnesses": [],
       "links": [],
@@ -10111,15 +10247,83 @@
     },
     {
       "workId": "galeno-facultades-naturales",
-      "title": "Sobre las facultades naturales",
+      "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "galeno-facultades-naturales",
         "type": "classical_work",
-        "label": "Galeno · Sobre las facultades naturales"
+        "label": "Galeno · Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "galen-laurentianus-74-3",
+          "canonicalPhysicalId": "codex-galen-laurentianus-74-3",
+          "type": "physical_witness",
+          "label": "Plut. 74,3",
+          "repository": "Florencia, Biblioteca Medicea Laurenziana",
+          "dating": "Siglo XII · s. XII",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Códice misceláneo galénico: entre otros tratados transmite De optima doctrina (p. 132), De optima secta ad Thrasybulum (p. 38), De constitutione artis medicae ad Patrophilum (p. 64v), An in arteriis natura sanguis contineatur (p. 91), De instrumento odoratus (f. 98), De motu musculorum (p. 192), Thrasybulus (f. 110v) y De cuiuslibet animi peccatorum dignotione (p. 149v). Folios según el repertorio de Diels; no verificados sobre el códice.",
+          "sourceUrl": "https://diels.medicaltraditions.org/dielsdetail.php?ID=559",
+          "sourceStatus": "needs_review",
+          "siglum": null
+        },
+        {
+          "id": "galen-parisinus-gr-2154",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2154",
+          "type": "physical_witness",
+          "label": "Grec 2154",
+          "repository": "París, Bibliothèque nationale de France",
+          "dating": "Siglo XIV · 1301–1400",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Códice galénico del fondo griego antiguo de la BnF, digitalizado íntegro en Gallica.",
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc209838",
+          "sourceStatus": "needs_review",
+          "siglum": null
+        },
+        {
+          "id": "galen-parisinus-gr-2153",
+          "canonicalPhysicalId": "codex-galen-parisinus-gr-2153",
+          "type": "physical_witness",
+          "label": "Grec 2153",
+          "repository": "París, Bibliothèque nationale de France",
+          "dating": "Siglo XV · 1401–1500",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Códice galénico de la BnF (Pinakes, diktyon 51782), digitalizado en Gallica. Usado en la edición de la Exhortación a la medicina y del Arte médica por Boudon-Millot (2000).",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51782/",
+          "sourceStatus": "needs_review",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "galeno-facultades-naturales",
+          "target": "galen-laurentianus-74-3",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://diels.medicaltraditions.org/dielsdetail.php?ID=559"
+        },
+        {
+          "source": "galeno-facultades-naturales",
+          "target": "galen-parisinus-gr-2154",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc209838"
+        },
+        {
+          "source": "galeno-facultades-naturales",
+          "target": "galen-parisinus-gr-2153",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51782/"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -10128,7 +10332,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -10136,12 +10340,12 @@
     },
     {
       "workId": "hipocrates-obras",
-      "title": "Obras (Loeb)",
+      "title": "Corpus Hippocraticum (selección)",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "hipocrates-obras",
         "type": "classical_work",
-        "label": "Hipócrates · Obras (Loeb)"
+        "label": "Hipócrates · Corpus Hippocraticum (selección)"
       },
       "witnesses": [],
       "links": [],
@@ -10161,12 +10365,12 @@
     },
     {
       "workId": "iseo-discursos",
-      "title": "Discursos",
+      "title": "Λόγοι · Discursos",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "iseo-discursos",
         "type": "classical_work",
-        "label": "Iseo · Discursos"
+        "label": "Iseo · Λόγοι · Discursos"
       },
       "witnesses": [],
       "links": [],
@@ -10186,12 +10390,12 @@
     },
     {
       "workId": "jenofonte-ciropedia",
-      "title": "Ciropedia",
+      "title": "Κύρου παιδεία · Cyropaedia",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "jenofonte-ciropedia",
         "type": "classical_work",
-        "label": "Jenofonte · Ciropedia"
+        "label": "Jenofonte · Κύρου παιδεία · Cyropaedia"
       },
       "witnesses": [],
       "links": [],
@@ -10211,12 +10415,12 @@
     },
     {
       "workId": "jenofonte-economico",
-      "title": "Económico",
+      "title": "Οἰκονομικός · Oeconomicus",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "jenofonte-economico",
         "type": "classical_work",
-        "label": "Jenofonte · Económico"
+        "label": "Jenofonte · Οἰκονομικός · Oeconomicus"
       },
       "witnesses": [],
       "links": [],
@@ -10236,12 +10440,12 @@
     },
     {
       "workId": "longo-dafnis-cloe",
-      "title": "Dafnis y Cloe",
+      "title": "Δάφνις καὶ Χλόη · Poimeniká",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "longo-dafnis-cloe",
         "type": "classical_work",
-        "label": "Longo · Dafnis y Cloe"
+        "label": "Longo · Δάφνις καὶ Χλόη · Poimeniká"
       },
       "witnesses": [],
       "links": [],
@@ -10261,12 +10465,12 @@
     },
     {
       "workId": "menandro-comedias",
-      "title": "Comedias (fragmentos)",
+      "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "menandro-comedias",
         "type": "classical_work",
-        "label": "Menandro · Comedias (fragmentos)"
+        "label": "Menandro · Κωμῳδίαι · Comedias (fragmentos papiráceos)"
       },
       "witnesses": [],
       "links": [],
@@ -10311,12 +10515,12 @@
     },
     {
       "workId": "platon-protagoras",
-      "title": "Laques, Protágoras, Menón, Eutidemo",
+      "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "platon-protagoras",
         "type": "classical_work",
-        "label": "Platón · Laques, Protágoras, Menón, Eutidemo"
+        "label": "Platón · Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος"
       },
       "witnesses": [],
       "links": [],
@@ -10336,12 +10540,12 @@
     },
     {
       "workId": "platon-teeteto-sofista",
-      "title": "Teeteto y Sofista",
+      "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "platon-teeteto-sofista",
         "type": "classical_work",
-        "label": "Platón · Teeteto y Sofista"
+        "label": "Platón · Θεαίτητος · Σοφιστής · Teeteto y Sofista"
       },
       "witnesses": [],
       "links": [],
@@ -10361,12 +10565,12 @@
     },
     {
       "workId": "plotino-eneadas",
-      "title": "Enéadas",
+      "title": "Ἐννεάδες · Enneades",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "plotino-eneadas",
         "type": "classical_work",
-        "label": "Plotino · Enéadas"
+        "label": "Plotino · Ἐννεάδες · Enneades"
       },
       "witnesses": [],
       "links": [],
@@ -10386,12 +10590,12 @@
     },
     {
       "workId": "lyra-graeca",
-      "title": "Lyra Graeca",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "lyra-graeca",
         "type": "classical_work",
-        "label": "Poetas líricos griegos · Lyra Graeca"
+        "label": "Poetas líricos griegos · Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)"
       },
       "witnesses": [],
       "links": [],
@@ -10411,12 +10615,12 @@
     },
     {
       "workId": "quinto-esmirna-posthomericas",
-      "title": "Posthoméricas (La caída de Troya)",
+      "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "quinto-esmirna-posthomericas",
         "type": "classical_work",
-        "label": "Quinto de Esmirna · Posthoméricas (La caída de Troya)"
+        "label": "Quinto de Esmirna · Τὰ μεθ' Ὅμηρον · Posthomerica"
       },
       "witnesses": [],
       "links": [],
@@ -10436,12 +10640,12 @@
     },
     {
       "workId": "amiano-marcelino-es",
-      "title": "Historia del Imperio romano (trad. castellana)",
+      "title": "Res gestae",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "amiano-marcelino-es",
         "type": "classical_work",
-        "label": "Amiano Marcelino · Historia del Imperio romano (trad. castellana)"
+        "label": "Amiano Marcelino · Res gestae"
       },
       "witnesses": [],
       "links": [],
@@ -10461,12 +10665,12 @@
     },
     {
       "workId": "ausonio-obras",
-      "title": "Obras",
+      "title": "Opuscula · Obras",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "ausonio-obras",
         "type": "classical_work",
-        "label": "Ausonio · Obras"
+        "label": "Ausonio · Opuscula · Obras"
       },
       "witnesses": [],
       "links": [],
@@ -10486,12 +10690,12 @@
     },
     {
       "workId": "claudiano-poemas",
-      "title": "Poemas",
+      "title": "Carmina · Poemas",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "claudiano-poemas",
         "type": "classical_work",
-        "label": "Claudiano · Poemas"
+        "label": "Claudiano · Carmina · Poemas"
       },
       "witnesses": [],
       "links": [],
@@ -10511,12 +10715,12 @@
     },
     {
       "workId": "higino-fabulas",
-      "title": "Fábulas y Astronomía poética",
+      "title": "Fabulae · Astronomica poetica",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "higino-fabulas",
         "type": "classical_work",
-        "label": "Higino · Fábulas y Astronomía poética"
+        "label": "Higino · Fabulae · Astronomica poetica"
       },
       "witnesses": [],
       "links": [],
@@ -10561,12 +10765,12 @@
     },
     {
       "workId": "minucio-felix-octavio",
-      "title": "Octavio",
+      "title": "Octavius",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "minucio-felix-octavio",
         "type": "classical_work",
-        "label": "Minucio Félix · Octavio"
+        "label": "Minucio Félix · Octavius"
       },
       "witnesses": [],
       "links": [],
@@ -10586,12 +10790,12 @@
     },
     {
       "workId": "valerio-flaco-argonautica",
-      "title": "Argonáuticas",
+      "title": "Argonautica",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "valerio-flaco-argonautica",
         "type": "classical_work",
-        "label": "Valerio Flaco · Argonáuticas"
+        "label": "Valerio Flaco · Argonautica"
       },
       "witnesses": [],
       "links": [],

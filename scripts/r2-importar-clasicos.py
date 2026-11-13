@@ -162,6 +162,7 @@ def procesar(o, ctx):
             ficha = {
                 "id": o["id"], "autor": o["autor"], "obra": o["obra"], "lengua": o["lengua"],
                 **({"traduccionDe": o["traduccionDe"]} if o.get("traduccionDe") else {}),
+                **({"coleccion": o["coleccion"]} if o.get("coleccion") else {}),
                 "idiomaEdicion": o.get("idioma") or ("bilingue-en" if "english translation" in fold(titulo) else "s/d"),
                 "tanda": o.get("tanda", 1),
                 "tituloEdicion": titulo, "anio": int(anio), "volumen": m.get("volume") or doc.get("volume"),

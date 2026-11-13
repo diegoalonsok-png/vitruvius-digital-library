@@ -61,5 +61,13 @@ check("las cifras publicadas acompañan al catálogo", () => {
     "data/cifras-corpus.json quedó viejo: correr scripts/cifras-corpus.py");
 });
 
+check("todas las ediciones alojadas están en el índice semántico", () => {
+  if (!fs.existsSync("data/r2/indice-semantico-manifest.json")) { console.log("   (sin índice: nada que comprobar)"); return; }
+  const indice = leer("data/r2/indice-semantico-manifest.json");
+  const alojadas = leer("data/r2/catalogo-clasicos-r2.json").items.length;
+  assert.ok(indice.obras >= alojadas,
+    `${alojadas} ediciones alojadas y sólo ${indice.obras} indexadas: correr el flujo de indexación para las que faltan`);
+});
+
 if (failed) { console.error(`\n${failed} comprobaciones fallidas: el botón de Excel no construiría la planilla`); process.exit(1); }
 console.log("\nDatos del Excel académico: sincronizados, la planilla se construye");

@@ -45,7 +45,11 @@ def main():
         "nota": "Obras del repertorio grecolatino. Facsímiles y páginas indexadas se alojan en Cloudflare R2.",
     }
     if r2:
-        cifras["facsimiles"] = len(r2["items"])
+        propios = [x for x in r2["items"] if not x.get("coleccion")]
+        recepcion = [x for x in r2["items"] if x.get("coleccion") == "recepcion-vitruviana"]
+        cifras["facsimiles"] = len(propios)
+        if recepcion:
+            cifras["recepcionVitruviana"] = len(recepcion)
     if indice:
         cifras["obrasIndexadasR2"] = indice.get("obras")
         cifras["paginasIndexadasR2"] = indice.get("paginasIndexadas")

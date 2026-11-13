@@ -262,7 +262,10 @@ def main():
     por_id = {o["id"]: o for o in r2["items"]}
     existentes = {w["id"] for w in maestro["works"]}
     # Una traducción de una obra ya alojada no crea ficha: se cuelga de la del original.
-    nuevas = [o for o in r2["items"] if o["id"] not in existentes and not o.get("traduccionDe")]
+    # Ni una traducción ni una obra de otra colección (la recepción vitruviana,
+    # por ejemplo) crean ficha en el repertorio de la Antigüedad griega y latina.
+    nuevas = [o for o in r2["items"] if o["id"] not in existentes
+              and not o.get("traduccionDe") and not o.get("coleccion")]
     if VINCULOS.exists():
         con_ficha = {k for k, v in (leer(VINCULOS).get("mapa") or {}).items() if v}
         nuevas = [o for o in nuevas if o["id"] not in con_ficha]

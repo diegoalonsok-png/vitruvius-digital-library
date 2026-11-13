@@ -1,6 +1,6 @@
 {
  "schema": "vdl-r2-clasicos-candidatos-1",
- "descripcion": "Obras clásicas griegas y latinas que todavía no tienen PDF en la biblioteca (documents/clasicos, documents/classics). Se buscan en Internet Archive ediciones de dominio público (anteriores a 1929), con preferencia por volúmenes bilingües Loeb (original y traducción inglesa enfrentados). Cada PDF elegido debe mencionar al autor en sus primeras páginas. Tanda 2: obras ausentes del sitio, en ediciones con el texto griego o en traducciones castellanas de dominio público. Incluye también las fichas del repertorio que todavía no tienen texto: para ellas el id del candidato es el de la ficha, de modo que la edición se vincula a la obra y no crea una entrada nueva.",
+ "descripcion": "Obras clásicas griegas y latinas que todavía no tienen PDF en la biblioteca (documents/clasicos, documents/classics). Se buscan en Internet Archive ediciones de dominio público (anteriores a 1929), con preferencia por volúmenes bilingües Loeb (original y traducción inglesa enfrentados). Cada PDF elegido debe mencionar al autor en sus primeras páginas. Tanda 2: obras ausentes del sitio, en ediciones con el texto griego o en traducciones castellanas de dominio público. Incluye también las fichas del repertorio que todavía no tienen texto: para ellas el id del candidato es el de la ficha, de modo que la edición se vincula a la obra y no crea una entrada nueva. Las entradas con «coleccion» no pertenecen a la Antigüedad griega y latina y no entran al repertorio antiguo: se catalogan en su propia colección.",
  "limites": {
   "maxMiB": 180,
   "anioMaximo": 1928
@@ -1352,6 +1352,222 @@
    ],
    "creador": "riese|anthologia latina",
    "justificacion": "Obra que falta en el repertorio y que la biblioteca necesita por su relación con la proporción, la música, la mecánica, la agrimensura o el léxico del mundo vitruviano."
+  },
+  {
+   "id": "alberti-de-re-aedificatoria",
+   "autor": "Leon Battista Alberti",
+   "obra": "De re aedificatoria",
+   "lengua": "la",
+   "titulo": [
+    "de re aedificatoria"
+   ],
+   "creador": "alberti",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina.",
+   "visorFolios": "previsto: por su importancia en la historia de la arquitectura, se le armará visor de folios cuando haya espacio"
+  },
+  {
+   "id": "palladio-quattro-libri",
+   "autor": "Andrea Palladio",
+   "obra": "I quattro libri dell'architettura",
+   "lengua": "it",
+   "titulo": [
+    "quattro libri"
+   ],
+   "creador": "palladio",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina.",
+   "visorFolios": "previsto: por su importancia en la historia de la arquitectura, se le armará visor de folios cuando haya espacio"
+  },
+  {
+   "id": "serlio-architettura",
+   "autor": "Sebastiano Serlio",
+   "obra": "Tutte l'opere d'architettura",
+   "lengua": "it",
+   "titulo": [
+    "architettura"
+   ],
+   "creador": "serlio",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "vignola-cinque-ordini",
+   "autor": "Giacomo Barozzi da Vignola",
+   "obra": "Regola delli cinque ordini d’architettura",
+   "lengua": "it",
+   "titulo": [
+    "cinque ordini"
+   ],
+   "creador": "vignola",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "perrault-vitruve-1673",
+   "autor": "Claude Perrault",
+   "obra": "Les dix livres d’architecture de Vitruve",
+   "lengua": "fr",
+   "titulo": [
+    "dix livres d architecture"
+   ],
+   "creador": "perrault",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "philandrier-annotationes",
+   "autor": "Guillaume Philandrier",
+   "obra": "In decem libros M. Vitruvii Pollionis annotationes",
+   "lengua": "la",
+   "titulo": [
+    "vitruvii"
+   ],
+   "creador": "philander|philandrier",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "barbaro-dieci-libri",
+   "autor": "Daniele Barbaro",
+   "obra": "I dieci libri dell'architettura di M. Vitruvio",
+   "lengua": "it",
+   "titulo": [
+    "vitruvio"
+   ],
+   "creador": "barbaro",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "scamozzi-idea-architettura",
+   "autor": "Vincenzo Scamozzi",
+   "obra": "L'idea della architettura universale",
+   "lengua": "it",
+   "titulo": [
+    "architettura universale"
+   ],
+   "creador": "scamozzi",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "rusconi-architettura-1590",
+   "autor": "Giovanni Antonio Rusconi",
+   "obra": "Della architettura",
+   "lengua": "it",
+   "titulo": [
+    "architettura"
+   ],
+   "creador": "rusconi",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "choisy-art-de-batir",
+   "autor": "Auguste Choisy",
+   "obra": "L'art de bâtir chez les Romains",
+   "lengua": "fr",
+   "titulo": [
+    "art de batir"
+   ],
+   "creador": "choisy",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "rose-vitruvius-1899",
+   "autor": "Valentin Rose (ed.)",
+   "obra": "Vitruvii De architectura libri decem (ed. Rose, 1899)",
+   "lengua": "la",
+   "titulo": [
+    "de architectura"
+   ],
+   "creador": "rose",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "vasari-vite",
+   "autor": "Giorgio Vasari",
+   "obra": "Le vite de’ più eccellenti pittori, scultori e architettori",
+   "lengua": "it",
+   "titulo": [
+    "vite"
+   ],
+   "creador": "vasari",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "laugier-essai",
+   "autor": "Marc-Antoine Laugier",
+   "obra": "Essai sur l'architecture",
+   "lengua": "fr",
+   "titulo": [
+    "essai sur l architecture"
+   ],
+   "creador": "laugier",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "viollet-le-duc-dictionnaire",
+   "autor": "Eugène Viollet-le-Duc",
+   "obra": "Dictionnaire raisonné de l'architecture française",
+   "lengua": "fr",
+   "titulo": [
+    "dictionnaire raisonne de l architecture"
+   ],
+   "creador": "viollet",
+   "coleccion": "recepcion-vitruviana",
+   "justificacion": "Recepción de Vitruvio y tratadística de arquitectura en edición de dominio público: colección propia, no entra al repertorio de la Antigüedad griega y latina."
+  },
+  {
+   "id": "galeno-kuhn-vol01",
+   "autor": "Galeno",
+   "obra": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+   "lengua": "grc",
+   "titulo": [
+    "opera omnia"
+   ],
+   "creador": "galen|kuhn",
+   "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia.",
+   "preferirIdentificador": "hapantaoperaomni01galeuoft"
+  },
+  {
+   "id": "galeno-kuhn-vol19",
+   "autor": "Galeno",
+   "obra": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+   "lengua": "grc",
+   "titulo": [
+    "opera omnia"
+   ],
+   "creador": "galen|kuhn",
+   "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia.",
+   "preferirIdentificador": "b29339339_0021"
+  },
+  {
+   "id": "galeno-scripta-minora",
+   "autor": "Galeno",
+   "obra": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+   "lengua": "grc",
+   "titulo": [
+    "scripta minora"
+   ],
+   "creador": "galen|marquardt|helmreich",
+   "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia."
+  },
+  {
+   "id": "galeno-opera-kuhn",
+   "autor": "Galeno",
+   "obra": "Opera omnia (ed. Kühn): volumen adicional",
+   "lengua": "grc",
+   "titulo": [
+    "opera omnia"
+   ],
+   "creador": "galen|kuhn",
+   "justificacion": "Corpus galénico en griego: la biblioteca sólo tenía tres tratados y ninguno con el texto griego completo de una edición de referencia."
   }
  ]
 }
