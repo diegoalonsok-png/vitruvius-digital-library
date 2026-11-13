@@ -198,8 +198,9 @@ async function buscar() {
  for (const p of o.paginas) {
   const li = document.createElement("li");
   const aqui = document.createElement("button");
-  aqui.type = "button"; aqui.textContent = `Ver la imagen ${p} aquí`;
-  aqui.addEventListener("click", () => { mostrar(p); window.scrollTo({ top: 0, behavior: "smooth" }); });
+  aqui.type = "button"; aqui.textContent = `Imagen digital ${p} (solo si coincide el ejemplar)`;
+  aqui.disabled = true;
+  aqui.title = "No existe correspondencia validada entre páginas OCR y folios de esta edición";
   const alla = document.createElement("a");
   alla.href = `${o.lector}&pagina=${p}&q=${encodeURIComponent(consulta)}`;
   alla.textContent = "leer el texto";
