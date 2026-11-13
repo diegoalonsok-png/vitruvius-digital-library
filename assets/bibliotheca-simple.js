@@ -490,6 +490,9 @@ function attestedLexeme(row,q){
 }
 function render(rows,q,details){
  previous=rows;current=q;diag=details||{};
+ $("results-heading").textContent=locale==="en"?"Passages checked against digital editions":
+  locale==="fr"?"Passages vérifiés dans les éditions numériques":
+  "Pasajes comprobados en ediciones digitales";
  root.dataset.query=q;
  const t=dict[locale],sorted=rows.slice().sort((a,b)=>{
   const wa=byId.get(a.workId)||{},wb=byId.get(b.workId)||{};
@@ -679,6 +682,12 @@ async function showFastIndex(query,searchId,allowedWorkIds){
   "Para una frase, las palabras buscadas deben figurar en la misma edición, no necesariamente en un mismo pasaje. La frase literal NO está verificada.");
  const MAX_PREVIEW=50;
  const selected=results.rows.slice(0,MAX_PREVIEW);
+ // Keep each work together, original Greek/Latin before translations.
+ const workPriority=new Map();
+ for(const row of selected)if(!workPriority.has(row.workId))workPriority.set(row.workId,workPriority.size);
+ const languagePriority=lang=>["la","grc"].includes(lang)?0:1;
+ selected.sort((a,b)=>workPriority.get(a.workId)-workPriority.get(b.workId)||
+  languagePriority(a.language)-languagePriority(b.language)||b.frequency-a.frequency);
  if(!selected.length)paragraph(locale==="en"?
   "No candidate editions in this indexed subset. This is not evidence that the term is absent from unindexed works. Select a work for a documentary search.":
   locale==="fr"?
