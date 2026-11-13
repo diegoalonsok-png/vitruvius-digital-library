@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Obras notables · lectura folio por folio</title>
+<meta name="description" content="Visor de folio independiente para los tratados mayores de la arquitectura: Palladio, I quattro libri (Venecia, 1570) y Alberti, Los diez libros de Architectura (Madrid, 1582). Zoom, inversión de colores, subrayado y búsqueda.">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="assets/fonts-ancient.css?v=20261113-obras">
+<style>
+:root{--tinta:#1B2A4A;--oro:#C9A84C;--papel:#fbf9f4;--borde:#d5c9b8;--gris:#5a6b78}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font:16px/1.6 Georgia,'Gentium Book Plus',serif}
+header{border-bottom:2px solid var(--tinta);padding:14px 18px;background:#fff}
+header nav{font:12px/1.5 Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+header nav a{color:var(--tinta);text-decoration:none;border-bottom:1px solid var(--oro)}
+h1{margin:10px 0 2px;font:400 26px/1.2 Georgia,serif}
+h1 em{font-style:italic}
+.ed{margin:0;font:13px/1.5 Arial,Helvetica,sans-serif;color:var(--gris)}
+.wrap{max-width:1280px;margin:0 auto;padding:18px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px}
+@media(max-width:980px){.cols{grid-template-columns:minmax(0,1fr)}}
+.lamina{background:#1d1d1f;border:1px solid var(--borde);border-radius:6px;overflow:hidden;position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center}
+.lamina img{display:block;max-width:none;transform-origin:center center;cursor:grab;user-select:none}
+.lamina.arrastrando img{cursor:grabbing}
+.marcas{position:absolute;inset:0;pointer-events:none}
+.marca{position:absolute;background:rgba(201,168,76,.38);border-top:1px solid rgba(201,168,76,.8);border-bottom:1px solid rgba(201,168,76,.8)}
+.barra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+button,select,input{font:14px/1.3 Arial,Helvetica,sans-serif;color:var(--tinta);background:#fff;border:1px solid var(--tinta);border-radius:4px;padding:7px 11px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--tinta);color:#fff}
+button:disabled{opacity:.45;cursor:not-allowed}
+input[type=number]{width:92px;cursor:text}
+label{font:12px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--gris);display:inline-flex;gap:6px;align-items:center}
+aside section{background:#fff;border:1px solid var(--borde);border-radius:6px;padding:14px;margin-bottom:14px}
+aside h2{margin:0 0 8px;font:400 18px/1.25 Georgia,serif}
+dl{margin:0;font:14px/1.6 Arial,Helvetica,sans-serif}
+dt{color:var(--gris);font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-top:7px}
+dd{margin:0}
+.aviso{font:12px/1.5 Arial,Helvetica,sans-serif;color:var(--gris);margin:8px 0 0}
+#estado{font:13px/1.5 Arial,Helvetica,sans-serif;color:var(--gris);margin:8px 0}
+#hallazgos{font:14px/1.6 Arial,Helvetica,sans-serif;margin:8px 0 0;padding-left:18px}
+#hallazgos li{margin-bottom:6px}
+a{color:var(--tinta)}
+footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:12px/1.6 Arial,Helvetica,sans-serif;color:var(--gris)}
+</style>
+</head>
+<body>
+<header>
+ <nav><a href="./">← Vitruvius Digital Library</a> · <a href="bibliotheca-graeca-latina.html">Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></nav>
+ <h1 id="titulo">Obras notables</h1>
+ <p class="ed" id="edicion">Tratados mayores de la arquitectura, folio por folio.</p>
+</header>
+
+<div class="wrap">
+ <div class="barra" role="group" aria-label="Elegir obra y folio">
+  <label>Obra <select id="obra"></select></label>
+  <button id="prev" type="button">← Folio anterior</button>
+  <label>Imagen <input id="numero" type="number" min="1" step="1" value="1"></label>
+  <button id="next" type="button">Folio siguiente →</button>
+  <label>Ir a <select id="indice"></select></label>
+ </div>
+
+ <div class="cols">
+  <div>
+   <div class="barra" role="group" aria-label="Herramientas de lectura">
+    <button id="menos" type="button" title="Alejar">− Zoom</button>
+    <button id="mas" type="button" title="Acercar">+ Zoom</button>
+    <button id="ajustar" type="button">Ajustar a la caja</button>
+    <button id="invertir" type="button" aria-pressed="false" title="Invertir los colores: tinta clara sobre fondo oscuro">Invertir colores</button>
+    <button id="subrayar" type="button" aria-pressed="false" title="Arrastrar sobre la imagen para subrayar una línea">Subrayar</button>
+    <button id="limpiar" type="button">Quitar subrayados</button>
+    <label>Contraste <input id="contraste" type="range" min="70" max="190" value="100"></label>
+    <label>Brillo <input id="brillo" type="range" min="60" max="160" value="100"></label>
+   </div>
+   <div class="lamina" id="lamina">
+    <img id="imagen" alt="" decoding="async">
+    <div class="marcas" id="marcas"></div>
+   </div>
+   <p id="estado">Cargando el índice de folios…</p>
+  </div>
+
+  <aside>
+   <section>
+    <h2>Nomenclatura</h2>
+    <dl>
+     <dt>Imagen digital</dt><dd id="n-imagen">—</dd>
+     <dt>Folio</dt><dd id="n-folio">—</dd>
+     <dt>Página impresa</dt><dd id="n-pagina">—</dd>
+     <dt>Libro</dt><dd id="n-libro">—</dd>
+    </dl>
+    <p class="aviso" id="n-aviso"></p>
+   </section>
+   <section>
+    <h2>Buscar en la obra</h2>
+    <div class="barra">
+     <input id="q" type="search" placeholder="palabra o frase" aria-label="Buscar una palabra en esta obra">
+     <button id="buscar" type="button">Buscar</button>
+    </div>
+    <p class="aviso" id="q-aviso">La búsqueda consulta el índice semántico de la biblioteca y devuelve las páginas del ejemplar en facsímil.</p>
+    <ol id="hallazgos"></ol>
+   </section>
+   <section>
+    <h2>La edición</h2>
+    <dl>
+     <dt>Autor</dt><dd id="e-autor">—</dd>
+     <dt>Edición</dt><dd id="e-edicion">—</dd>
+     <dt>Lengua</dt><dd id="e-lengua">—</dd>
+     <dt>Imágenes</dt><dd id="e-imagenes">—</dd>
+     <dt>Derechos de la digitalización</dt><dd id="e-derechos">—</dd>
+     <dt>Fuente</dt><dd id="e-fuente">—</dd>
+    </dl>
+   </section>
+  </aside>
+ </div>
+</div>
+
+<footer>
+ Las imágenes de los folios se alojan en la biblioteca (Cloudflare R2) con los derechos que declara cada digitalización. Imagen digital y folio histórico no son equivalentes: la foliación y la página impresa se leen en el ejemplar y se consignan en el índice, no se deducen del número de imagen.
+</footer>
+
+<script defer src="assets/vitruvia-philology.js?v=20261113-obras"></script>
+<script defer src="assets/r2-clasicos-busqueda.js?v=20261113-obras"></script>
+<script defer src="assets/obras-notables-visor.js?v=20261113-obras-1"></script>
+</body>
+</html>

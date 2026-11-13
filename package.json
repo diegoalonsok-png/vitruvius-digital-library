@@ -26,6 +26,7 @@
     "check:index": "node scripts/test-classics-lexical-index.mjs",
     "check:indice-r2": "node scripts/test-r2-indice-clasicos.mjs",
     "check:krohn-loci": "node scripts/test-krohn-locus-sync.mjs",
+    "check:obras-notables": "node scripts/test-obras-notables-visor.mjs",
     "check:onomasticon": "node scripts/test-onomasticon-plenum.mjs",
     "check:parallel-highlights": "node scripts/check-parallel-highlights.mjs",
     "check:philology": "node scripts/test-vitruvia-philology.mjs",
