@@ -105,7 +105,8 @@ try{
    assert.notEqual(second,initial.src,'Next must request a different actual IIIF canvas');
    await p.locator('#pr-prev').click();
    assert((await p.locator('#pr-counter').innerText()).startsWith('1 /'),'Previous must return to image 1');
-   assert.equal(await p.locator('#pr-folios').isVisible(),false,'1673 must not duplicate the 1684 folio catalogue');
+   assert.equal(await p.locator('#pr-folios').isVisible(),true,'1673 must offer its own documented image catalogue');
+   assert.equal(await p.locator('#pr-folio-grid button').count(),370,'1673 must list its 370 verified IIIF images, distinct from the 1684 copy');
    await p.locator('#pr-number').fill('25');
    await p.locator('#pr-go').click();
    assert((await p.locator('#pr-counter').innerText()).startsWith('25 /'),'Numeric go-to must navigate to image 25');
