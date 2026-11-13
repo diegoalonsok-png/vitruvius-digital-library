@@ -56,6 +56,8 @@ const almacen = {
 
 function selectorObras() {
  const esPalladio = clave === "palladio-quattro-libri";
+ const accesoTraducciones = $("ir-traducciones");
+ if (accesoTraducciones) accesoTraducciones.hidden = !esPalladio;
  const traducciones = $("palladio-traducciones");
  if (traducciones) traducciones.hidden = !esPalladio;
  const visores = $("palladio-visores");
