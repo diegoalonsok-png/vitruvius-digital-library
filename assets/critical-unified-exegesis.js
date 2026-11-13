@@ -46,7 +46,7 @@ async function getJson(path){
  return pool.get(path);
 }
 const q=by('critical-unified-query'),edition=by('critical-unified-edition'),field=by('critical-unified-field'),
- phrase=by('critical-unified-phrase'),status=by('critical-unified-status'),more=by('critical-unified-more');
+ phrase=by('critical-unified-phrase'),status=by('critical-unified-status'),more=by('critical-unified-more'),book=by('critical-unified-book');
 let visible=[],shown=0,revision=0,currentQuery='',currentLocusQuery=null;
 // Normalize ONLY complete, unambiguous book.chapter.section citations.
 // Identifying the same locus does not establish a critical variant or an
@@ -220,6 +220,14 @@ async function run(){
    if(rec)visible.push(rec);
   }
  }
+ // Filter only by a documented canonical locus: records without a book
+ // cannot be assigned a book merely by coincident words.
+ if(book?.value){
+  visible=visible.filter(r=>{
+   const canonical=locusKey(r.locus);
+   return !!canonical&&canonical.startsWith(book.value+'.');
+  });
+ }
  // Documentary order: edition > text passages > PDF blocks > stand-alone notes.
  const sourceOrder={passage:0,apparatus:1,note:2};
  visible.sort((a,b)=>EDITIONS.indexOf(a.edition)-EDITIONS.indexOf(b.edition)||
@@ -235,6 +243,7 @@ async function run(){
 }
 form.addEventListener('submit',event=>{event.preventDefault();void run()});
 more.addEventListener('click',renderNext);
+book?.addEventListener('change',()=>{if(q.value.trim())void run()});
 const initial=new URLSearchParams(location.search).get('q');
 if(initial&&initial.trim()){q.value=initial;void run()}
 })();
