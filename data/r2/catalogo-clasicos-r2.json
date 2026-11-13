@@ -1,0 +1,81 @@
+{
+ "items": [
+  {
+   "id": "herodoto-historias",
+   "autor": "Heródoto",
+   "obra": "Historias",
+   "lengua": "grc",
+   "tituloEdicion": "Herodotus. With an English translation by A.D. Godley",
+   "anio": 1921,
+   "volumen": "2",
+   "editor": "London Heinemann",
+   "creadorIA": [
+    "Herodotus",
+    "Godley, A. D. (Alfred Denis), 1856-1925"
+   ],
+   "bilingueLoeb": true,
+   "fuente": "https://archive.org/details/herodotuswitheng02herouoft",
+   "identificadorIA": "herodotuswitheng02herouoft",
+   "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/herodoto-historias.pdf",
+   "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/herodoto-historias.json",
+   "bytes": 20905137,
+   "sha256": "613a66f742f158a80395d8811b8f1034f01a907d70efc25da33eb489551e6038",
+   "paginas": 452,
+   "paginasConTexto": 431,
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+  },
+  {
+   "id": "jenofonte-anabasis",
+   "autor": "Jenofonte",
+   "obra": "Anábasis",
+   "lengua": "grc",
+   "tituloEdicion": "The Anabasis of Xenophon : with English notes, critical and explanatory ...",
+   "anio": 1876,
+   "volumen": null,
+   "editor": "New York : Harper",
+   "creadorIA": [
+    "Xenophon",
+    "Anthon, Charles, 1797-1867"
+   ],
+   "bilingueLoeb": false,
+   "fuente": "https://archive.org/details/anabasisofxenoph00xenouoft",
+   "identificadorIA": "anabasisofxenoph00xenouoft",
+   "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-anabasis.pdf",
+   "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/jenofonte-anabasis.json",
+   "bytes": 31724184,
+   "sha256": "9a46a9244d3095962e6f1c6cfe4b0e2392c6647a58fd9914c7d1ec6b9a00da59",
+   "paginas": 660,
+   "paginasConTexto": 650,
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+  },
+  {
+   "id": "tucidides-historia",
+   "autor": "Tucídides",
+   "obra": "Historia de la guerra del Peloponeso",
+   "lengua": "grc",
+   "tituloEdicion": "Thucydides. With an English translation by Charles Forster Smith",
+   "anio": 1919,
+   "volumen": "1",
+   "editor": "London Heinemann",
+   "creadorIA": "Thucydides",
+   "bilingueLoeb": true,
+   "fuente": "https://archive.org/details/thucydideswithen01thucuoft",
+   "identificadorIA": "thucydideswithen01thucuoft",
+   "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/tucidides-historia.pdf",
+   "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/tucidides-historia.json",
+   "bytes": 23786931,
+   "sha256": "1c834323b17e640d2e62f3c7f3f10f03088d8af620e3abf36462cfc05f5f10b8",
+   "paginas": 512,
+   "paginasConTexto": 491,
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+  }
+ ],
+ "schema": "vdl-r2-catalogo-clasicos-1",
+ "actualizado": "2026-11-13",
+ "descripcion": "Ediciones clásicas de dominio público alojadas en Cloudflare R2 (libros.vitruvius-digital-library.org). No duplican los PDF del repositorio.",
+ "total": 3,
+ "bytes": 76416252
+}
