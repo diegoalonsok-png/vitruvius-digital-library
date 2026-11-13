@@ -3,6 +3,7 @@
  * Distingue: (a) bloques localizados en texto de PDF por página;
  * (b) notas DOCX previamente extraídas. Ningún resultado equivale a collatio.
  */
+import {reference,interventions} from './apparatus-ecdotics.mjs?v=20261113-1';
 const ED=[
  {id:'recensio-es',name:'V514 · Castellano',index:'data/recensio-es-pages.json',pdf:'documents/kurilo-recensio-es.pdf'},
  {id:'recensio-fr',name:'V554 · Français',index:'data/recensio-fr-pages.json',pdf:'documents/kurilo-recensio-fr.pdf'},
@@ -31,6 +32,7 @@ function exactPosition(value,term){
 }
 
 let entries=[],visible=[],shown=0,loaded=false,promise=null;
+let editionMetadata=new Map();
 function category(label){
  const v=fold(label);
  if(/tecnica|technique|technical|arquitectonica|terminologique|terminologica/.test(v))return 'tecnica';
@@ -63,6 +65,12 @@ async function load(){
  promise=(async()=>{
   // Índice estático generado por scripts/build-apparatus-index.py (bloques del PDF con su locus + notas DOCX).
   const warnings=[];entries=[];
+  const bibliography=fetch('data/catalog.json',{headers:{Accept:'application/json'}}).then(r=>{
+   if(!r.ok)throw Error('HTTP '+r.status);return r.json();
+  }).then(c=>{
+   if(!Array.isArray(c.editions))throw Error('Sin ediciones verificables');
+   editionMetadata=new Map(c.editions.filter(e=>ED.some(x=>x.id===e.id)).map(e=>[e.id,e]));
+  }).catch(e=>{editionMetadata=new Map();warnings.push('Metadatos editoriales: '+e.message)});
   try{
    const r=await fetch('data/apparatus-index.json?v=20261105-apparatus-v1');if(!r.ok)throw Error('HTTP '+r.status);
    const d=await r.json();
@@ -73,6 +81,7 @@ async function load(){
      locusCertified:e.source==='nota'?e.locusLink==='locus explícito':!!e.locusInHeading,pageLoci:e.loci||[],
      label:e.label||'',locusLink:e.locusLink||''});}
   }catch(err){warnings.push('Índice del aparato: '+err.message)}
+  await bibliography;
   loaded=true;
   const blockCount=entries.filter(e=>e.source==='bloque').length;
   const noteCount=entries.filter(e=>e.source==='nota').length;
@@ -141,6 +150,69 @@ function renderNext(){
    '<p class="ac-meta">'+esc(e.editionName)+(LENG[e.edition]?' · '+LENG[e.edition]:'')+' · '+esc(anclaje)+' · '+pagina+'</p>'+
    '<div class="actions">'+(readLocus?'<a href="lector-bilingue.html?edition='+esc(e.edition)+'&amp;locus='+esc(encodeURIComponent(readLocus))+'">Leer el pasaje →</a> '+
      '<a href="registro-ecdotico.html?locus='+esc(encodeURIComponent(readLocus))+'">Todo el aparato de este locus →</a>':'')+'</div>';
+  // This citation belongs to the ACTUAL edition and PDF page of this record.
+  const pdfLink=e.page&&e.pdf?new URL(pdfURL(e,e.page),location.href).href:'';
+  const ref=reference(e,editionMetadata.get(e.edition),pdfLink);
+  const editionLine=document.createElement('p');
+  editionLine.className='ac-meta ac-edition-bibliography';
+  editionLine.textContent='Libro / edición: '+ref.editionName+
+   ' · '+(editionMetadata.get(e.edition)?.version||e.editionName)+
+   ' · DOI: '+(ref.doi||'no consignado')+' · ISBN: '+(ref.isbn||'no consignado')+
+   ' · '+ref.pageLabel;
+  article.append(editionLine);
+  const details=document.createElement('details');details.className='ac-scholarly-reference';
+  const summary=document.createElement('summary');
+  summary.textContent='Ficha ecdótica · procedencia y cita académica';
+  details.append(summary);
+  const bib=document.createElement('p');bib.className='ac-meta';
+  bib.textContent='Cita editorial: '+ref.bib;details.append(bib);
+  if(ref.doi){
+   const doi=document.createElement('a');doi.href='https://doi.org/'+encodeURIComponent(ref.doi);
+   doi.target='_blank';doi.rel='noopener noreferrer';doi.textContent='DOI de la edición: '+ref.doi;
+   details.append(doi);
+  }
+  if(ref.isbnNote){
+   const note=document.createElement('p');note.className='ac-meta';
+   note.textContent='Control de ISBN: '+ref.isbnNote;details.append(note);
+  }
+  const evidence=document.createElement('p');evidence.className='ac-meta';
+  evidence.textContent='Locus / localizador: '+ref.locus.display+
+   (ref.locus.note?' · '+ref.locus.note:'')+
+   '. Fuente: '+ref.scope+'; '+ref.grade.display+'; '+ref.pageLabel+'.';
+  details.append(evidence);
+  const witness=document.createElement('p');witness.className='ac-meta';
+  witness.textContent='Estado ecdótico: comentario de la edición, no lectura diplomática, colación directa ni variante manuscrita certificada. Toda atribución de variantes exige sigla, signatura, folio, lecciones y fuente cotejada.';
+  details.append(witness);
+  const inserts=interventions(e);
+  if(inserts.length){
+   const head=document.createElement('p');head.className='ac-meta';
+   head.textContent='Suplementos editoriales marcados en la fuente:';
+   details.append(head);
+   const ul=document.createElement('ul');
+   for(const item of inserts){
+    const li=document.createElement('li');li.textContent=item.marked+' · '+item.text;ul.append(li);
+   }
+   details.append(ul);
+  }
+  const copy=document.createElement('button');
+  copy.type='button';copy.className='button outline ac-copy-citation';
+  copy.textContent='Copiar cita académica';
+  copy.addEventListener('click',async()=>{
+   const text=ref.citation+(inserts.length?'\nIntervenciones editoriales destacadas: '+
+    inserts.map(x=>x.marked).join(', ')+'. Sin testimonio manuscrito atribuido.':'');
+   try{await navigator.clipboard.writeText(text);copy.textContent='Cita copiada'}
+   catch{window.prompt('Cita académica para copiar:',text)}
+  });
+  details.append(copy);article.append(details);
+  // VI.2 alone is a chapter, not VI.2.1. Never deep-link a chapter
+  // label to a section-only viewer and silently show a different passage.
+  if(readLocus&&!ref.locus.reliable){
+   const passage=article.querySelector('.actions a[href^="lector-bilingue"]');
+   if(passage){
+    passage.href='lector-bilingue.html?edition='+encodeURIComponent(e.edition);
+    passage.textContent='Abrir edición · '+ref.locus.display+' (sección sin determinar)';
+   }
+  }
   area.append(article);
  }
  shown+=rows.length;
