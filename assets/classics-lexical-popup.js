@@ -141,11 +141,11 @@ function linksFor(word,lang){
  nav.append(reference);
  return nav;
 }
-async function openMark(mark){
+async function openMark(mark,explicitWord){
  const openedAt=performance.now();
  const lang=langCode(mark);
  if(!supported.has(lang))return;
- const word=lexicon.wordOfMark(mark)||mark.textContent?.trim();
+ const word=explicitWord||lexicon.wordOfMark(mark)||mark.textContent?.trim();
  if(!word||!/^[\p{L}\p{M}ʼ’'-]{2,80}$/u.test(word))return;
  const id=++current;
  delete root.dataset.readyMs;
@@ -203,8 +203,20 @@ function showInlineLexicon(mark){
  void lexicon.renderPanel(box,word,{lang:langCode(mark),work,online:false});
 }
 targetRoot.addEventListener("click",event=>{
- // Keep both viewers: this academic modal and the reader’s inline dictionary.
+ // An ordinary click on ANY Latin or Greek word opens the same scholarly
+ // dictionary popup used by highlighted search hits, also inside parallel iframes.
+ // Do not intercept navigation, inline translation controls or other widgets.
  const mark=markOf(event.target);
+ if(!mark && passages && targetRoot.contains(event.target)){
+  if(event.target.closest?.("a,button,input,select,textarea,summary,[data-no-dictionary],.cl-ui,.cl-dict"))return;
+  if(!supported.has(langCode(passages)))return;
+  const word=lexicon.wordAt(event);
+  if(!word||! /^[\p{L}\p{M}ʼ’-]{2,80}$/u.test(word))return;
+  event.preventDefault();
+  event.stopImmediatePropagation(); // Prevent competing inline panel or another popup.
+  void openMark(passages,word);
+  return;
+ }
  if(!mark||!targetRoot.contains(mark)||!supported.has(langCode(mark)))return;
  // The original reader's general word-click handler remains available on
  // unhighlighted text. Highlighted terms use this self-contained viewer.
