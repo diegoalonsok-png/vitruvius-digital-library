@@ -75,6 +75,19 @@
   return terms.length>0&&terms.every(w=>t.split(" ").some(x=>x===w||w.length>5&&x.startsWith(w)));
  }
  const isAkhenaten=()=>/^(?:akhenaten|akhenaton|akhenat[oó]n|ajenaton|ajenat[oó]n|akenaton|akenat[oó]n|amenhotep iv|amenofis iv|amenophis iv)$/.test(normalize(state.query));
+ // An abstract lexical concept is NOT a historical person/album/work.
+ // Search result title matches cannot establish a chronology of the concept.
+ // Provide a sourced concept-specific dataset before enabling those milestones.
+ const abstractTerms=new Set([
+  "logos","λογος","logoi","λογοι",
+  "ethos","ηθος","mythos","μυθος",
+  "physis","φυσις","arche","αρχη",
+  "aletheia","αληθεια","ousia","ουσια",
+  "nous","νους","techne","τεχνη",
+  "episteme","επιστημη"
+ ]);
+ const isAbstractTerm=()=>abstractTerms.has(normalize(state.query));
+
  // Akhenaten has a biographical scale: c. 1370–1336 BCE. Birth is not
  // attested precisely and these milestones are approximate, not regnal-date
  // conversions presented as certainties. Bibliography remains outside it.
@@ -102,6 +115,7 @@
   ];
  }
  function collect(){
+  if(isAbstractTerm())return []; // No timeline without direct, dated, academically sourced concept history.
   if(isAkhenaten())return akhenatenEvents();
   let ev=[],a=state.authority;
   // All Wikidata authority properties keep their distinct meanings.
