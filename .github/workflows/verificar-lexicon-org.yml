@@ -23,12 +23,12 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
-      - name: Comprobar marcador de la corrección Aa en el archivo fuente
+      - name: Verificar controles actuales de Lexicon en GitHub
         run: |
           set -euo pipefail
-          grep -Fq 'grid-template-columns:repeat(5,max-content)' vitruvia-lexicon.html
-          grep -Fq '.site-typeface-tool{grid-column:5;grid-row:1' vitruvia-lexicon.html
-      - name: Esperar publicación del sitio .org y verificar Aa
+          grep -Fq 'id="lx-only-vitruvius"' vitruvia-lexicon.html
+          grep -Fq '<span class="lx-sub">Lexicon</span>' vitruvia-lexicon.html
+      - name: Verificar que el dominio .org publique Lexicon actualizado
         shell: bash
         run: |
           set -euo pipefail
@@ -41,16 +41,16 @@ jobs:
                --connect-timeout 10 --max-time 25 \
                --header 'Cache-Control: no-cache' \
                "$url?verify_lexicon=${GITHUB_SHA}" -o /tmp/lexicon-org.html; then
-              if grep -Fq 'grid-template-columns:repeat(5,max-content)' /tmp/lexicon-org.html \
-                 && grep -Fq '.site-typeface-tool{grid-column:5;grid-row:1' /tmp/lexicon-org.html; then
-                echo "OK: el dominio .org contiene la corrección Aa del repositorio."
+              if grep -Fq 'id="lx-only-vitruvius"' /tmp/lexicon-org.html \
+                 && grep -Fq '<span class="lx-sub">Lexicon</span>' /tmp/lexicon-org.html; then
+                echo "OK: el dominio .org contiene el filtro Solo Vitruvio y Lexicon sin etiqueta beta."
                 exit 0
               fi
-              echo "El dominio responde, pero todavía no contiene la corrección Aa."
+              echo "El dominio responde, pero todavía no refleja los controles actuales de Lexicon."
             else
               echo "El dominio .org aún no respondió con HTTP 200."
             fi
             if [ "$attempt" -lt 20 ]; then sleep 20; fi
           done
-          echo "::error::El dominio .org no refleja la corrección Aa. Revisar Cloudflare Pages/Workers: repositorio conectado, rama main y estado del último despliegue."
+          echo "::error::El dominio .org no refleja el HTML actualizado de Lexicon. Revisar la integración GitHub–Cloudflare, rama main y estado del despliegue."
           exit 1
