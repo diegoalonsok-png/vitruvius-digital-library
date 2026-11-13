@@ -16051,7 +16051,30 @@
       "scholarlyQuestion": "IIIF Manifest cotejado con el registro"
      }
     }
-   }
+   },
+   "missingCount": 20,
+   "missingKeys": [
+    "material",
+    "dimensions",
+    "collationFormula",
+    "ruling",
+    "binding",
+    "watermarks",
+    "script",
+    "hands",
+    "corrections",
+    "scholia",
+    "glosses",
+    "subscriptiones",
+    "origin",
+    "provenance",
+    "folioRange",
+    "lacunae",
+    "transpositions",
+    "palimpsest",
+    "viewer",
+    "manifest"
+   ]
   },
   {
    "witnessId": "galen-parisinus-gr-2154",
@@ -16188,7 +16211,28 @@
       "scholarlyQuestion": "IIIF Manifest cotejado con el registro"
      }
     }
-   }
+   },
+   "missingCount": 18,
+   "missingKeys": [
+    "material",
+    "dimensions",
+    "collationFormula",
+    "ruling",
+    "binding",
+    "watermarks",
+    "script",
+    "hands",
+    "corrections",
+    "scholia",
+    "glosses",
+    "subscriptiones",
+    "origin",
+    "provenance",
+    "folioRange",
+    "lacunae",
+    "transpositions",
+    "palimpsest"
+   ]
   },
   {
    "witnessId": "galen-parisinus-gr-2153",
@@ -16325,7 +16369,28 @@
       "scholarlyQuestion": "IIIF Manifest cotejado con el registro"
      }
     }
-   }
+   },
+   "missingCount": 18,
+   "missingKeys": [
+    "material",
+    "dimensions",
+    "collationFormula",
+    "ruling",
+    "binding",
+    "watermarks",
+    "script",
+    "hands",
+    "corrections",
+    "scholia",
+    "glosses",
+    "subscriptiones",
+    "origin",
+    "provenance",
+    "folioRange",
+    "lacunae",
+    "transpositions",
+    "palimpsest"
+   ]
   }
  ],
  "uniquePhysicalObjects": 96,
