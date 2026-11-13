@@ -1,0 +1,59 @@
+{
+ "schema": "vdl-folios-fuentes-1",
+ "descripcion": "Fuentes de las que se bajan los folios, obra por obra, para los visores de folio independiente. Cada entrada declara la digitalización, sus derechos y si éstos permiten rehospedar las imágenes en la biblioteca. Donde no lo permiten, «rehospedar» es false y el visor enlaza al visor de la institución en vez de copiar la imagen.",
+ "nota": "Imagen digital y folio histórico no son equivalentes: la foliación se lee en el ejemplar, nunca se deduce del número de imagen.",
+ "obras": {
+  "palladio-quattro-libri": {
+   "titulo": "I quattro libri dell'architettura",
+   "autor": "Andrea Palladio",
+   "edicion": "Venecia, Dominico de' Franceschi, 1570 (primera edición de los cuatro libros en un volumen)",
+   "lengua": "it",
+   "tipo": "ia-iiif",
+   "identificador": "iqvattrolibridel00pall",
+   "enlaceFuente": "https://archive.org/details/iqvattrolibridel00pall",
+   "derechos": "Ejemplar de 1570: obra en dominio público. La digitalización se toma de Internet Archive y el índice guarda la licencia que ese ejemplar declara.",
+   "rehospedar": true,
+   "colacion": "Cuatro partes en un volumen. Libro I: 67 p.; Libro II: 78 p.; Libro III: 46 p.; Libro IV: 128 p. (colación del ejemplar del Soane Museum). La correspondencia entre imagen digital y página impresa queda por leer.",
+   "visorInstitucional": "https://iiif.vam.ac.uk/collections/O1681360/manifest.json",
+   "visorInstitucionalNota": "Manifiesto IIIF del ejemplar del Victoria and Albert Museum (1570), para cotejo."
+  },
+  "alberti-diez-libros-1582": {
+   "titulo": "Los diez libros de Architectura (De re aedificatoria, en castellano)",
+   "autor": "Leon Battista Alberti; traducción promovida por Francisco Lozano",
+   "edicion": "Madrid, Alonso Gómez, 1582 (primera traducción castellana)",
+   "lengua": "es",
+   "tipo": "ia-iiif",
+   "identificador": "ARes12403",
+   "enlaceFuente": "https://archive.org/details/ARes12403",
+   "derechos": "Public Domain Mark 1.0 declarado por el ejemplar digitalizado.",
+   "rehospedar": true,
+   "colacion": "Por establecer sobre el ejemplar.",
+   "visorInstitucional": null
+  },
+  "alberti-de-re-aedificatoria-1546": {
+   "titulo": "L'architettura (De re aedificatoria, en italiano)",
+   "autor": "Leon Battista Alberti; traducción de Cosimo Bartoli",
+   "edicion": "Venecia, 1546",
+   "lengua": "it",
+   "tipo": "iiif",
+   "manifiesto": "https://digi.ub.uni-heidelberg.de/diglit/iiif/alberti1546/manifest",
+   "enlaceFuente": "https://digi.ub.uni-heidelberg.de/diglit/alberti1546",
+   "derechos": "Digitalización de la Universitätsbibliothek Heidelberg (DOI 10.11588/diglit.1427). Condiciones de reutilización por verificar antes de rehospedar.",
+   "rehospedar": false,
+   "visorInstitucional": "https://digi.ub.uni-heidelberg.de/diglit/alberti1546"
+  },
+  "alberti-de-re-aedificatoria-1485": {
+   "titulo": "De re aedificatoria (texto latino, edición príncipe)",
+   "autor": "Leon Battista Alberti",
+   "edicion": "Florencia, Niccolò di Lorenzo, 1485",
+   "lengua": "la",
+   "tipo": "iiif",
+   "manifiesto": null,
+   "enlaceFuente": "https://www.deutsche-digitale-bibliothek.de/item/QVD63T4GPDGPXMJ6NEGRRJP2HHJOLVVC",
+   "derechos": "Digitalización de la Bayerische Staatsbibliothek declarada «No copyright - Non-commercial use only»: NO se rehospeda.",
+   "rehospedar": false,
+   "visorInstitucional": "https://www.deutsche-digitale-bibliothek.de/item/QVD63T4GPDGPXMJ6NEGRRJP2HHJOLVVC",
+   "pendiente": "Buscar un ejemplar latino con derechos que permitan alojar las imágenes (1485, 1512 París o 1541 Estrasburgo)."
+  }
+ }
+}
