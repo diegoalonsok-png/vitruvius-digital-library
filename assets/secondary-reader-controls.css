@@ -85,3 +85,16 @@ html[data-theme="dark"] body.vitruvius-secondary-controls :is(input,textarea,sel
 @media print{
  body.vitruvius-secondary-controls #vitruvius-secondary-toolbar{display:none!important}
 }
+/* Indices locorum: integrate controls in the scholarly navigation, not a floating overlay. */
+body.indices-lexicon.vitruvius-secondary-controls .indices-navtools #vitruvius-secondary-toolbar.vitruvius-secondary-inline{
+ position:static!important;top:auto!important;right:auto!important;left:auto!important;
+ display:inline-flex!important;flex:0 0 auto;z-index:auto;
+ margin:0;padding:0;border:0;background:transparent!important;box-shadow:none!important;
+ gap:7px;border-radius:0;
+}
+body.indices-lexicon.vitruvius-secondary-controls .indices-navtools #vitruvius-secondary-toolbar.vitruvius-secondary-inline :is(select,button){
+ min-height:39px!important;min-width:43px;max-width:90px;
+}
+@media(max-width:670px){
+ body.indices-lexicon.vitruvius-secondary-controls{padding-top:0!important}
+}
