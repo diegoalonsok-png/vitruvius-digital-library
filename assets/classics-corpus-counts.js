@@ -228,7 +228,7 @@ async function ampliar(fichas){
    first.querySelector("dt").after(note);
    const ol=first.querySelector("ol");
    for(const n of v.obrasNuevas||[]){
-    const li=document.createElement("li");const a=document.createElement("a");a.href="bibliotheca-ampliada.html?q="+encodeURIComponent(n.autor);
+    const li=document.createElement("li");const a=document.createElement("a");a.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(n.r2||"");a.title="Leer la obra en el visor de facsímiles";
     a.textContent=n.autor+" — "+n.obra;a.className="tally-record";li.append(a);
     const m=document.createElement("small");m.textContent=" · obra nueva · ";li.append(m);
     const leer=document.createElement("a");leer.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(n.r2||"");
