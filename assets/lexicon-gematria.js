@@ -44,7 +44,7 @@ function render(){
  const result=$("lx-gem-result"),input=$("lx-gem-input").value,selected=$("lx-gem-script").value;
  const calc=compute(input,selected);
  result.replaceChildren();
- if(!calc){result.textContent="Escribí o pegá una expresión para calcular su valor.";return}
+ if(!calc){result.textContent="Escribe o pegá una expresión para calcular su valor.";return}
  const headline=document.createElement("div");headline.className="lx-gem-result-head";
  const total=document.createElement("strong");total.className="lx-gem-total";total.textContent=calc.parts.length?String(calc.total):"—";
  const meta=document.createElement("div");meta.className="lx-gem-meta";
@@ -58,7 +58,7 @@ function render(){
  values.textContent=calc.parts.map(x=>x.n).join(" + ")+" = "+calc.total;
  result.append(sequence,values);
  if(!calc.parts.length){const warn=document.createElement("p");warn.textContent="No se identificaron letras numéricas en el alfabeto seleccionado.";result.append(warn)}
- if(calc.ignored.length){const warn=document.createElement("p");warn.className="lx-gem-alert";warn.textContent="Caracteres sin valor en este sistema: "+[...new Set(calc.ignored)].join(" ") +". El total es parcial: revisá la escritura o el sistema. No se convierte la grafía automáticamente.";result.append(warn)}
+ if(calc.ignored.length){const warn=document.createElement("p");warn.className="lx-gem-alert";warn.textContent="Caracteres sin valor en este sistema: "+[...new Set(calc.ignored)].join(" ") +". El total es parcial: revisa la escritura o el sistema. No se convierte la grafía automáticamente.";result.append(warn)}
  if(calc.script==="la"){const p=document.createElement("p");p.className="lx-gem-alert";p.textContent="En latín se suman únicamente I, V, X, L, C, D y M (sin reglas sustractivas de escritura numeral). No existe una gematría latina única equiparable a la hebrea.";result.append(p)}
  if(calc.script==="gr"||calc.script==="he"){const p=document.createElement("p");p.className="lx-gem-explain";p.textContent=calc.script==="he"?"Los signos vocálicos y de cantilación se excluyen del cálculo; las cinco letras finales usan su valor ordinario (no mispar gadol).":"Los acentos y espíritus griegos no suman; sigma final ς equivale a σ. Se admiten signos numéricos históricos ϛ, ϟ y ϡ.";result.append(p)}
  if(calc.total===666||calc.total===616){const p=document.createElement("p");p.className="lx-gem-explain";p.textContent="La coincidencia aritmética no demuestra por sí sola una identificación histórica ni una interpretación de Apocalipsis 13:18.";result.append(p)}
