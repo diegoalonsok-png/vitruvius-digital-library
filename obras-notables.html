@@ -73,7 +73,7 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
 
  <section class="galeria" aria-labelledby="galeria-titulo">
   <h2 id="galeria-titulo">Buscar por imagen · galería de folios</h2>
-  <p>Elija el folio que quiera leer: se abre debajo en este mismo lector, con zoom, contraste y subrayado. La numeración sigue la secuencia digital de la fuente; el número de imagen no equivale al folio histórico.</p>
+  <p>Elija la imagen que quiera leer: se abre debajo en este mismo lector, con zoom, contraste y subrayado. La numeración sigue la secuencia digital de la fuente; el número de imagen no equivale al folio histórico.</p>
   <div class="barra">
    <input id="galeria-q" type="search" placeholder="folio o número de imagen" aria-label="Buscar folio o número de imagen">
    <button id="galeria-buscar" type="button">Buscar</button>
@@ -120,7 +120,7 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
      <input id="q" type="search" placeholder="palabra o frase" aria-label="Buscar una palabra en esta obra">
      <button id="buscar" type="button">Buscar</button>
     </div>
-    <p class="aviso" id="q-aviso">La búsqueda consulta el índice semántico de la biblioteca y devuelve las páginas del ejemplar en facsímil.</p>
+    <p class="aviso" id="q-aviso">La búsqueda consulta páginas OCR. Sin correspondencia editorial verificada, esas páginas no se identifican automáticamente con imágenes de este ejemplar.</p>
     <ol id="hallazgos"></ol>
    </section>
    <section>
@@ -131,6 +131,9 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
      <dt>Lengua</dt><dd id="e-lengua">—</dd>
      <dt>Imágenes</dt><dd id="e-imagenes">—</dd>
      <dt>Derechos de la digitalización</dt><dd id="e-derechos">—</dd>
+     <dt>Institución conservadora</dt><dd id="e-institucion">—</dd>
+     <dt>Signatura del ejemplar</dt><dd id="e-signatura">—</dd>
+     <dt>Colación bibliográfica</dt><dd id="e-colacion">—</dd>
      <dt>Fuente</dt><dd id="e-fuente">—</dd>
     </dl>
    </section>
@@ -146,6 +149,6 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <script defer src="assets/vitruvia-philology.js?v=20261113-obras"></script>
 <script defer src="assets/r2-clasicos-busqueda.js?v=20261113-obras"></script>
-<script defer src="assets/obras-notables-visor.js?v=20261113-obras-1"></script>
+<script defer src="assets/obras-notables-visor.js?v=20261113-folios-cotejo-2"></script>
 </body>
 </html>
