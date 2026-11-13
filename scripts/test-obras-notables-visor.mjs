@@ -85,12 +85,23 @@ check("la galería lista los folios con su número de imagen",()=>{
  const fichas=w.document.querySelectorAll(".ficha-folio");
  assert.equal(fichas.length,8,"folios en la galería: "+fichas.length);
  assert.match(fichas[0].textContent,/Imagen 1/);
- assert.match(w.document.getElementById("galeria-estado").textContent,/8 de 8 folios/);
+ assert.match(w.document.getElementById("galeria-estado").textContent,/8 miniaturas de 8 imágenes/);
 });
 check("elegir un folio en la galería lo abre en el lector",()=>{
  const fichas=[...w.document.querySelectorAll(".ficha-folio")];
  fichas[2].dispatchEvent(new w.Event("click"));
  assert.match($("imagen").src,/f0003\.jpg$/,"no abrió el folio elegido: "+$("imagen").src);
+});
+check("a loaded folio automatically fits the existing reading area",()=>{
+ const img=$("imagen"), stage=$("lamina");
+ Object.defineProperty(img,"naturalWidth",{configurable:true,value:1600});
+ Object.defineProperty(img,"naturalHeight",{configurable:true,value:2400});
+ Object.defineProperty(stage,"clientWidth",{configurable:true,value:900});
+ Object.defineProperty(stage,"clientHeight",{configurable:true,value:680});
+ img.dispatchEvent(new w.Event("load"));
+ assert.ok(parseFloat(img.style.width) <= stage.clientWidth,"folio too wide for reader");
+ assert.ok(parseFloat(img.style.height) <= stage.clientHeight,"folio too tall for reader");
+ assert.match(img.style.transform,/scale\\(1\\)/);
 });
 check("el zoom escala la imagen",()=>{
  const antes=$("imagen").style.transform;
@@ -111,7 +122,7 @@ check("sin folios alojados, avisa y deriva al visor de facsímiles",()=>{
  const estado=dom2.window.document.getElementById("estado");
  assert.match(estado.textContent,/todavía no están alojados/);
  const a=estado.querySelector("a");
- assert.match(a.getAttribute("href"),/^buscador-facsimiles-clasicos\.html\?obra=alberti/);
+ assert.match(a.getAttribute("href"),/^https:\/\/archive\.org\/details\/ARes12403$/);
 });
 dom2.window.close();
 
