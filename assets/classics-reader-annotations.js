@@ -71,7 +71,7 @@ function action(which){
  }
  if(!support){output.textContent="Las marcas requieren un navegador compatible con CSS Highlights.";return}
  if(which==="clear"){if(save([])){redraw();output.textContent="Marcas de este pasaje borradas."}return}
- const chosen=selection();if(!chosen){output.textContent="Seleccioná primero una frase del texto.";return}
+ const chosen=selection();if(!chosen){output.textContent="Selecciona primero una frase del texto.";return}
  const rows=read();
  if(which==="erase"){
   if(save(rows.filter(x=>x.b<=chosen.a||x.a>=chosen.b))){redraw();output.textContent="Marca borrada."}return;
