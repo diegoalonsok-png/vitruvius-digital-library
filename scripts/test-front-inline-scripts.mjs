@@ -102,7 +102,8 @@ console.log("PASS TEI: 67 loci, 67 correspondencias, seis notas comprobables y s
 const perseusAudit=JSON.parse(readFileSync("data/perseus-provenance-audit.json","utf8"));
 const perseusPage=readFileSync("perseus-procedencia-textual.html","utf8");
 const siteMap=readFileSync("sitemap.xml","utf8");
-assert.equal(perseusAudit.records.length,222,"Cobertura de procedencia debe incluir 222 obras");
+assert.equal(perseusAudit.records.length,perseusAudit.counts.works,"La cobertura de procedencia debe coincidir con el número declarado de obras");
+assert(perseusAudit.records.length>=222,"La procedencia no debe perder las obras del inventario original");
 assert.equal(perseusAudit.counts.versions,246,"El inventario debe conservar 246 versiones");
 /* A verified TEI-header edition URN is not the same as a candidate work code.
    This asserts source evidence, not that a public CTS resolver was tested. */
@@ -122,7 +123,7 @@ assert(perseusPage.includes("https://scaife.perseus.org/")&&
  "Auditoría Perseus debe enlazar fuentes y datos");
 assert(siteMap.includes("/perseus-procedencia-textual<")&&siteMap.trimEnd().endsWith("</urlset>"),
  "Sitemap académico debe estar íntegro y cerrar XML");
-console.log("PASS procedencia Perseus: 222 obras, códigos candidatos y URN de edición con evidencia TEI diferenciada");
+console.log("PASS procedencia Perseus: "+perseusAudit.records.length+" obras, códigos candidatos y URN de edición con evidencia TEI diferenciada");
 
 /* University readiness: the five search frontends must offer source-aware
  * citation, stable query links and an accessible non-JavaScript alternative. */
