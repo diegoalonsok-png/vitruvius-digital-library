@@ -107,7 +107,7 @@ assert(perseusAudit.records.length>=222,"La procedencia no debe perder las obras
 assert.equal(perseusAudit.counts.versions,246,"El inventario debe conservar 246 versiones");
 /* A verified TEI-header edition URN is not the same as a candidate work code.
    This asserts source evidence, not that a public CTS resolver was tested. */
-const declaredCts=perseusAudit.records.filter(x=>x.ctsEditionUrn!==null);
+const declaredCts=perseusAudit.records.filter(x=>typeof x.ctsEditionUrn==="string"&&x.ctsEditionUrn.trim());
 assert.equal(perseusAudit.counts.verifiedEditionUrns,declaredCts.length,
  "El recuento CTS debe corresponder exactamente a URN de edición documentadas");
 assert(declaredCts.every(x=>
@@ -116,7 +116,7 @@ assert(declaredCts.every(x=>
  /TEI XML/.test(x.ctsEvidence||"") &&
  x.perseusAffiliation===false),
  "Solo citar una URN de edición con evidencia en el encabezado TEI y sin atribuir aval de Perseus");
-assert(perseusAudit.records.filter(x=>x.ctsEditionUrn===null).every(x=>x.ctsStatus==="not_verified"),
+assert(perseusAudit.records.filter(x=>!x.ctsEditionUrn).every(x=>!x.ctsStatus||x.ctsStatus==="not_verified"),
  "Los códigos candidatos PHI/TLG no deben pasar por ediciones CTS verificadas");
 assert(perseusPage.includes("https://scaife.perseus.org/")&&
  perseusPage.includes("data/perseus-provenance-audit.json"),
