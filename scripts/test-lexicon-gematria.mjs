@@ -21,6 +21,17 @@ const document={
 const window={};
 runInNewContext(code,{document,window,Object,Set,String,Number}, {filename:"lexicon-gematria.js"});
 const {compute}=window.VitruviaGematria;
+assert.match(html, /<details id="lx-gem-catalog"/, "The optional catalogue must be collapsible");
+assert.doesNotMatch(html, /<details id="lx-gem-catalog"[^>]*open(?:\s|>)/, "Catalogue must stay closed by default");
+const entries=window.VitruviaGematria.examples;
+assert.ok(entries.length>=20, "Provide a useful reference set");
+for(const [system,expression,expected] of entries){
+ const got=compute(expression,system);
+ assert.equal(got.total,expected, "Reference mismatch: "+expression);
+ assert.equal(got.ignored.length,0, "Reference contains unsupported letters: "+expression);
+}
+assert.equal(entries.find(x=>x[1]==="Νεῖλος")?.[2],365,"Nile 365 must be available as a selectable example");
+
 assert.equal(compute("נרון קסר","auto").total,666);
 assert.equal(compute("נרו קסר","auto").total,616);
 assert.equal(compute("Neron Caesar","he").total,666,"Known scholarly transliteration works if Hebrew selected");
