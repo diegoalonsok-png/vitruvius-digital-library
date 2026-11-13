@@ -46,7 +46,7 @@ assert.match(source,/window\.VitruviaOldestSource=\{forWork:earliestSourceFor\}/
 const mediaDossier=read('assets/vitruvia-web-dossier.js');
 assert(mediaDossier.includes("records.sort((a,b)=>String(a.releaseDate||'9999')"), 'Music albums must initially render in release-date order');
 assert(mediaDossier.includes("if(['music','music-topic'].includes(topic.kind))void albums(section,topic,valid)"), 'Bands must retain their right-side album section');
-assert(mediaDossier.includes("if(topic.person&&['author','literature','architect','cinema','visual','general'].includes(topic.kind))void books(section,topic,valid)"), 'Writers must retain their right-side book-cover section');
+assert(mediaDossier.includes("if(topic.person&&creator&&topic.kind!=='literary-work')void books(section,topic,valid)"), 'Every documented person, including writers, must retain their right-side authored-books section');
 
 const article=read('assets/vitruvia-article.js');
 // Exercise article assembly instead of depending on the position of functions
