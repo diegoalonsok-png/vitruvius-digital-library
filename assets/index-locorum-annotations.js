@@ -27,23 +27,24 @@ const choices=new WeakMap();
 let currentBar=null;
 const getChoice=bar=>choices.get(bar)||{color:"amarillo",mode:"underline"};
 function attachBar(card){
- if(card.querySelector(".locorum-annotation-tools")||!["grc","la"].includes(card.dataset.sourceLanguage))return;
+ if(card.querySelector(".locorum-annotation-tools"))return;
  const bar=document.createElement("div");
  bar.className="locorum-annotation-tools";bar.setAttribute("role","toolbar");
- bar.setAttribute("aria-label","Anotaciones de este pasaje "+(card.dataset.sourceLanguage==="grc"?"griego":"latino"));
+ bar.setAttribute("aria-label","Anotaciones de este pasaje "+({grc:"griego",la:"latino",en:"inglés",es:"castellano",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"}[card.dataset.sourceLanguage]||"clásico"));
  bar.innerHTML='<span class="locorum-label">Anotaciones</span><button type="button" data-mode="underline" aria-pressed="true">Subrayar</button><button type="button" data-mode="highlight" aria-pressed="false">Resaltar</button><span class="locorum-palette" role="group" aria-label="Colores"></span><button type="button" data-action="erase" title="Borrar marcas de la selección">Borrar marca</button><button type="button" data-action="clear" title="Borrar todas las marcas de este pasaje">Limpiar pasaje</button><span class="locorum-rule"></span><button type="button" data-action="find" title="Buscar otra palabra en el índice" aria-label="Lupa buscar">⌕ Buscar</button><button type="button" data-action="smaller" aria-label="Reducir letra">A−</button><button type="button" data-action="larger" aria-label="Ampliar letra">A+</button><output role="status" aria-live="polite"></output>';
  choices.set(bar,{color:"amarillo",mode:"underline"});
  const palette=bar.querySelector(".locorum-palette");
  Object.entries(shades).forEach(([name,value])=>{
   const b=document.createElement("button");b.type="button";b.className="locorum-dot";b.dataset.color=name;
   // Inline important explicitly beats broad theme button styling.
+  b.style.setProperty("background",value,"important");
   b.style.setProperty("background-color",value,"important");
   b.title="Marcar en "+name;b.setAttribute("aria-label","Marcar en "+name);
   b.setAttribute("aria-pressed",String(name==="amarillo"));palette.append(b);
  });
  card.querySelector(".excerpt")?.after(bar);
 }
-function mount(){results.querySelectorAll(".passage[data-source-language='grc'],.passage[data-source-language='la']").forEach(attachBar)}
+function mount(){results.querySelectorAll(".passage").forEach(attachBar)}
 function report(card,message){const output=card?.querySelector(".locorum-annotation-tools output");if(output)output.textContent=message}
 function cardOf(node){return node?.parentElement?.closest(".passage")||null}
 function identity(card){
