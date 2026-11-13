@@ -47,12 +47,29 @@ def main():
         if not manifest.get("base"):raise ValueError("manifiesto sin base de fragmentos")
         print("PASS manifiesto semántico:",manifest["base"])
     except Exception as e:failures.append(("índice semántico",str(e)))
+    # La fuente editorial pública real es academic-integrity.json. La ruta
+    # /data/r2/aparato-academico.json no existe en el repositorio y Cloudflare
+    # devuelve el HTML de la portada: jamás tratarlo como aparato crítico.
     try:
-        code,body,_=get(BASE+"data/r2/aparato-academico.json",maximum=1200000)
-        a=json.loads(body)
-        if not a.get("registros"):raise ValueError("sin registros")
-        print("PASS aparato académico público")
-    except Exception as e:failures.append(("aparato académico",str(e)))
+        url=BASE+"data/academic-integrity.json"
+        code,body,headers=get(url,maximum=1600000)
+        if code!=200 or not body.lstrip().startswith(b"{"):
+            raise ValueError("el servidor devolvió HTML u otro contenido, no JSON")
+        integrity=json.loads(body)
+        if integrity.get("schema")!=2 or not integrity.get("sourceFingerprint"):
+            raise ValueError("registro editorial sin esquema o huella de fuentes")
+        if integrity.get("canonicalLoci",0)<700 or len(integrity.get("editions",[]))!=3:
+            raise ValueError("sin concordancia reproducible de los tres textos")
+        cod=integrity.get("codicology",{})
+        if not cod.get("registeredWitnessRecords") or (
+            cod.get("filledFieldSlots",0)+cod.get("pendingFieldSlots",0)
+        )!=cod.get("fieldSlots"):
+            raise ValueError("recuento codicológico incompleto o contradictorio")
+        print("PASS integridad académica pública: 3 ediciones,",
+              integrity["canonicalLoci"],"loci; datos codicológicos trazables")
+    except Exception as e:
+        failures.append(("integridad académica pública",str(e)))
+        print("FAIL integridad académica pública",str(e))
     print("RESULTADO",len(failures),"fallos")
     for url,error in failures:print("PENDIENTE",url,error)
     return 1 if failures else 0
