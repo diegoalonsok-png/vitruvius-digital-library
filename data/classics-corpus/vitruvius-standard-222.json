@@ -8,7 +8,7 @@
   "Chicago Manual of Style 18"
  ],
  "method": "Complete fields for all 222 works with explicit nulls and source status; preserves existing source data without asserting unverified facts. Composition and paleography are separated.",
- "recordCount": 256,
+ "recordCount": 271,
  "records": [
   {
    "workId": "vitruvius",
@@ -10838,6 +10838,381 @@
     "originalLanguage": "la",
     "compositionDating": "Siglo I d. C.",
     "genre": "Épica latina",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "aristoteles-meteorologica",
+   "work": {
+    "author": "Aristóteles",
+    "title": "Μετεωρολογικά · Meteorologica",
+    "originalLanguage": "grc",
+    "compositionDating": "Siglo IV a. C.",
+    "genre": "Filosofía natural",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "galeno-opera-kuhn",
+   "work": {
+    "author": "Galeno",
+    "title": "Opera omnia (ed. Kühn): volumen adicional",
+    "originalLanguage": "grc",
+    "compositionDating": "Pendiente de consignar: no se deduce del facsímil.",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "galeno-kuhn-vol01",
+   "work": {
+    "author": "Galeno",
+    "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+    "originalLanguage": "grc",
+    "compositionDating": "Pendiente de consignar: no se deduce del facsímil.",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "galeno-kuhn-vol19",
+   "work": {
+    "author": "Galeno",
+    "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+    "originalLanguage": "grc",
+    "compositionDating": "Pendiente de consignar: no se deduce del facsímil.",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "galeno-scripta-minora",
+   "work": {
+    "author": "Galeno",
+    "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+    "originalLanguage": "grc",
+    "compositionDating": "Pendiente de consignar: no se deduce del facsímil.",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "jamblico-vida-pitagorica",
+   "work": {
+    "author": "Jámblico",
+    "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+    "originalLanguage": "grc",
+    "compositionDating": "Siglo III–IV d. C.",
+    "genre": "Filosofía pitagórica y número",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "proclo-comentario-euclides",
+   "work": {
+    "author": "Proclo",
+    "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+    "originalLanguage": "grc",
+    "compositionDating": "Siglo V d. C.",
+    "genre": "Matemáticas y filosofía de la geometría",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "sexto-empirico-obras",
+   "work": {
+    "author": "Sexto Empírico",
+    "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+    "originalLanguage": "grc",
+    "compositionDating": "Siglo II–III d. C.",
+    "genre": "Escepticismo y crítica de las artes",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "teon-esmirna-expositio",
+   "work": {
+    "author": "Teón de Esmirna",
+    "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+    "originalLanguage": "grc",
+    "compositionDating": "Siglo II d. C.",
+    "genre": "Matemáticas y música en la lectura de Platón",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "anthologia-latina",
+   "work": {
+    "author": "Antología latina",
+    "title": "Anthologia Latina",
+    "originalLanguage": "la",
+    "compositionDating": "Compilación tardoantigua",
+    "genre": "Poesía latina reunida",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "casiodoro-variae",
+   "work": {
+    "author": "Casiodoro",
+    "title": "Variae",
+    "originalLanguage": "la",
+    "compositionDating": "Siglo VI d. C.",
+    "genre": "Cartas oficiales, con encargos de obra y arquitectura",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "festo-verborum-significatu",
+   "work": {
+    "author": "Festo (y Verrio Flaco)",
+    "title": "De verborum significatu",
+    "originalLanguage": "la",
+    "compositionDating": "Siglo II d. C.",
+    "genre": "Léxico, metrología y anticuaria",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "marciano-capela-nuptiis",
+   "work": {
+    "author": "Marciano Capela",
+    "title": "De nuptiis Philologiae et Mercurii",
+    "originalLanguage": "la",
+    "compositionDating": "Siglo V d. C.",
+    "genre": "Enciclopedia de las siete artes",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "nonio-marcelo-doctrina",
+   "work": {
+    "author": "Nonio Marcelo",
+    "title": "De compendiosa doctrina",
+    "originalLanguage": "la",
+    "compositionDating": "Siglo IV d. C.",
+    "genre": "Léxico y citas de autores perdidos",
+    "datingStatus": "catalogued_not_reverified"
+   },
+   "authority": {
+    "system": "PHI/Stoa",
+    "candidateWorkCodes": [],
+    "codesStatus": "candidates_require_individual_authority_match",
+    "ctsWorkUrn": null,
+    "ctsEditionUrn": null,
+    "ctsStatus": "edition_urn_not_verified"
+   },
+   "witnesses": [],
+   "editorialControl": {
+    "chicago18References": [],
+    "criticalEditionStatus": "facsimile_of_public_domain_printed_edition_only",
+    "methodology": "Do not infer editio princeps, siglum, earliest codex, or CTS edition URN from a hosted facsimile."
+   }
+  },
+  {
+   "workId": "paladio-opus-agriculturae",
+   "work": {
+    "author": "Paladio",
+    "title": "Opus agriculturae",
+    "originalLanguage": "la",
+    "compositionDating": "Siglo IV–V d. C.",
+    "genre": "Agronomía y construcción rural",
     "datingStatus": "catalogued_not_reverified"
    },
    "authority": {

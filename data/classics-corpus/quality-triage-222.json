@@ -3,18 +3,18 @@
  "generated": "2026-11-09",
  "method": "Based only on inventory and version manifest. Counts are actionable triage flags, not judgements of actual source fidelity; absence of a local translation is not a textual error. Per-work identifiers are provisional. No automated claim of peer-review or manuscript collation.",
  "counts": {
-  "works": 256,
+  "works": 271,
   "originalsIndexed": 181,
-  "noLocalTranslation": 199,
-  "missingOriginals": 77,
+  "noLocalTranslation": 214,
+  "missingOriginals": 92,
   "perseusClaims": 142,
-  "unverifiedWorks": 256,
+  "unverifiedWorks": 271,
   "issues": {
-   "no_work_identifier_candidate": 55,
-   "edition_details_need_review": 126,
-   "no_local_translation": 199,
+   "no_work_identifier_candidate": 70,
+   "edition_details_need_review": 141,
+   "no_local_translation": 214,
    "perseus_source_claim_needs_edition_verification": 142,
-   "original_not_indexed": 77
+   "original_not_indexed": 92
   }
  },
  "works": [
@@ -5574,6 +5574,291 @@
    "id": "valerio-flaco-argonautica",
    "author": "Valerio Flaco",
    "title": "Argonautica",
+   "language": "la",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "aristoteles-meteorologica",
+   "author": "Aristóteles",
+   "title": "Μετεωρολογικά · Meteorologica",
+   "language": "grc",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "galeno-opera-kuhn",
+   "author": "Galeno",
+   "title": "Opera omnia (ed. Kühn): volumen adicional",
+   "language": "grc",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "galeno-kuhn-vol01",
+   "author": "Galeno",
+   "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+   "language": "grc",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "galeno-kuhn-vol19",
+   "author": "Galeno",
+   "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+   "language": "grc",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "galeno-scripta-minora",
+   "author": "Galeno",
+   "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+   "language": "grc",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "jamblico-vida-pitagorica",
+   "author": "Jámblico",
+   "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+   "language": "grc",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "proclo-comentario-euclides",
+   "author": "Proclo",
+   "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+   "language": "grc",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "sexto-empirico-obras",
+   "author": "Sexto Empírico",
+   "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+   "language": "grc",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "teon-esmirna-expositio",
+   "author": "Teón de Esmirna",
+   "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+   "language": "grc",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "anthologia-latina",
+   "author": "Antología latina",
+   "title": "Anthologia Latina",
+   "language": "la",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "casiodoro-variae",
+   "author": "Casiodoro",
+   "title": "Variae",
+   "language": "la",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "festo-verborum-significatu",
+   "author": "Festo (y Verrio Flaco)",
+   "title": "De verborum significatu",
+   "language": "la",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "marciano-capela-nuptiis",
+   "author": "Marciano Capela",
+   "title": "De nuptiis Philologiae et Mercurii",
+   "language": "la",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "nonio-marcelo-doctrina",
+   "author": "Nonio Marcelo",
+   "title": "De compendiosa doctrina",
+   "language": "la",
+   "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+   "originalIndexed": false,
+   "hasLocalTranslation": false,
+   "localVersionCount": 0,
+   "originalPaths": [],
+   "candidateWorkCodes": [],
+   "issues": [
+    "original_not_indexed",
+    "no_work_identifier_candidate",
+    "edition_details_need_review"
+   ],
+   "evidenceStatus": "facsimile_inventory_only",
+   "reviewStatus": "not_externally_verified"
+  },
+  {
+   "id": "paladio-opus-agriculturae",
+   "author": "Paladio",
+   "title": "Opus agriculturae",
    "language": "la",
    "sourceReadiness": "facsimil_alojado_sin_transcripcion",
    "originalIndexed": false,

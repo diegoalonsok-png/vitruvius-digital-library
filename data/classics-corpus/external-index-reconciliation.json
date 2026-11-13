@@ -7,17 +7,17 @@
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-latinos-20261108/data/offsite-latin/manifest.json"
   ],
   "counts": {
-    "worksCatalogued": 256,
+    "worksCatalogued": 271,
     "hostedOriginalsIndexed": 182,
     "remoteOriginalsIndexed": 28,
     "combinedOriginalsIndexed": 210,
-    "originalsStillWithoutIndex": 46,
+    "originalsStillWithoutIndex": 61,
     "remoteGreek": 16,
     "remoteLatin": 12,
     "hostedTranslations": 59,
     "hostedTextVersions": 247,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 43
+    "distinctAncientWorksStillMissingOriginalIndex": 58
   },
   "remoteEntries": [
     {
@@ -651,6 +651,111 @@
     },
     {
       "workId": "valerio-flaco-argonautica",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "aristoteles-meteorologica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "galeno-opera-kuhn",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "galeno-kuhn-vol01",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "galeno-kuhn-vol19",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "galeno-scripta-minora",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "jamblico-vida-pitagorica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "proclo-comentario-euclides",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "sexto-empirico-obras",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "teon-esmirna-expositio",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "anthologia-latina",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "casiodoro-variae",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "festo-verborum-significatu",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "marciano-capela-nuptiis",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "nonio-marcelo-doctrina",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "paladio-opus-agriculturae",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],

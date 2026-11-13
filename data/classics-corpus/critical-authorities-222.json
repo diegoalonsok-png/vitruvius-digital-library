@@ -3,18 +3,18 @@
  "updated": "2026-11-10",
  "method": "Cada registro separa autoría, título uniforme, nomenclatura PHI/TLG/CTS, integridad de conservación e indexación, manuscritos individuales y sus signaturas, versión impresa más temprana en los datos verificados y bibliografía. El primer testimonio de este registro no se confunde con el más antiguo universal. No se inventan variantes ni stemmata.",
  "counts": {
-  "total": 256,
+  "total": 271,
   "manuscriptRecords": 64,
   "worksWithManuscripts": 59,
-  "withoutOriginalIndex": 46,
+  "withoutOriginalIndex": 61,
   "modernEditions": 3,
   "explicitlyPartial": 11,
   "unverifiedIndexCompleteness": 196,
   "withDatedEdition": 18,
   "withTwoOrMoreWitnesses": 30,
   "withVerifiedViewer": 51,
-  "automatedAuditWorks": 256,
-  "worksPendingManuscript": 199
+  "automatedAuditWorks": 271,
+  "worksPendingManuscript": 214
  },
  "records": [
   {
@@ -18398,6 +18398,396 @@
     "dating": "Pendiente de consignar: no se deduce del facsímil.",
     "aliases": [
      "Argonáuticas"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "aristoteles-meteorologica",
+   "authority": {
+    "author": "Aristóteles",
+    "normalizedAuthor": "Aristóteles",
+    "uniformTitle": "Μετεωρολογικά · Meteorologica",
+    "displayTitle": "Aristóteles · Μετεωρολογικά · Meteorologica",
+    "originalLanguage": "grc",
+    "genre": "Filosofía natural",
+    "dating": "Siglo IV a. C.",
+    "aliases": [
+     "Aristotle Meteorology",
+     "Meteorologica"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "galeno-opera-kuhn",
+   "authority": {
+    "author": "Galeno",
+    "normalizedAuthor": "Galeno",
+    "uniformTitle": "Opera omnia (ed. Kühn): volumen adicional",
+    "displayTitle": "Galeno · Opera omnia (ed. Kühn): volumen adicional",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Opera omnia (ed. Kühn): volumen adicional"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "galeno-kuhn-vol01",
+   "authority": {
+    "author": "Galeno",
+    "normalizedAuthor": "Galeno",
+    "uniformTitle": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+    "displayTitle": "Galeno · Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "galeno-kuhn-vol19",
+   "authority": {
+    "author": "Galeno",
+    "normalizedAuthor": "Galeno",
+    "uniformTitle": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+    "displayTitle": "Galeno · Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "galeno-scripta-minora",
+   "authority": {
+    "author": "Galeno",
+    "normalizedAuthor": "Galeno",
+    "uniformTitle": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+    "displayTitle": "Galeno · Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "jamblico-vida-pitagorica",
+   "authority": {
+    "author": "Jámblico",
+    "normalizedAuthor": "Jámblico",
+    "uniformTitle": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+    "displayTitle": "Jámblico · Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+    "originalLanguage": "grc",
+    "genre": "Filosofía pitagórica y número",
+    "dating": "Siglo III–IV d. C.",
+    "aliases": [
+     "Iamblichus",
+     "Vida pitagórica"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "proclo-comentario-euclides",
+   "authority": {
+    "author": "Proclo",
+    "normalizedAuthor": "Proclo",
+    "uniformTitle": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+    "displayTitle": "Proclo · Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+    "originalLanguage": "grc",
+    "genre": "Matemáticas y filosofía de la geometría",
+    "dating": "Siglo V d. C.",
+    "aliases": [
+     "Proclus",
+     "Comentario al libro I de Euclides",
+     "In Euclidem"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "sexto-empirico-obras",
+   "authority": {
+    "author": "Sexto Empírico",
+    "normalizedAuthor": "Sexto Empírico",
+    "uniformTitle": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+    "displayTitle": "Sexto Empírico · Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+    "originalLanguage": "grc",
+    "genre": "Escepticismo y crítica de las artes",
+    "dating": "Siglo II–III d. C.",
+    "aliases": [
+     "Sextus Empiricus",
+     "Adversus mathematicos",
+     "Pyrrhoniae hypotyposes"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "teon-esmirna-expositio",
+   "authority": {
+    "author": "Teón de Esmirna",
+    "normalizedAuthor": "Teón de Esmirna",
+    "uniformTitle": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+    "displayTitle": "Teón de Esmirna · Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+    "originalLanguage": "grc",
+    "genre": "Matemáticas y música en la lectura de Platón",
+    "dating": "Siglo II d. C.",
+    "aliases": [
+     "Theon Smyrnaeus",
+     "Expositio rerum mathematicarum"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "anthologia-latina",
+   "authority": {
+    "author": "Antología latina",
+    "normalizedAuthor": "Antología latina",
+    "uniformTitle": "Anthologia Latina",
+    "displayTitle": "Antología latina · Anthologia Latina",
+    "originalLanguage": "la",
+    "genre": "Poesía latina reunida",
+    "dating": "Compilación tardoantigua",
+    "aliases": [
+     "Anthologia Latina",
+     "Antología latina"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "casiodoro-variae",
+   "authority": {
+    "author": "Casiodoro",
+    "normalizedAuthor": "Casiodoro",
+    "uniformTitle": "Variae",
+    "displayTitle": "Casiodoro · Variae",
+    "originalLanguage": "la",
+    "genre": "Cartas oficiales, con encargos de obra y arquitectura",
+    "dating": "Siglo VI d. C.",
+    "aliases": [
+     "Cassiodorus",
+     "Variae epistulae"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "festo-verborum-significatu",
+   "authority": {
+    "author": "Festo (y Verrio Flaco)",
+    "normalizedAuthor": "Festo (y Verrio Flaco)",
+    "uniformTitle": "De verborum significatu",
+    "displayTitle": "Festo (y Verrio Flaco) · De verborum significatu",
+    "originalLanguage": "la",
+    "genre": "Léxico, metrología y anticuaria",
+    "dating": "Siglo II d. C.",
+    "aliases": [
+     "Festus",
+     "Paulo Diácono",
+     "De verborum significatione"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "marciano-capela-nuptiis",
+   "authority": {
+    "author": "Marciano Capela",
+    "normalizedAuthor": "Marciano Capela",
+    "uniformTitle": "De nuptiis Philologiae et Mercurii",
+    "displayTitle": "Marciano Capela · De nuptiis Philologiae et Mercurii",
+    "originalLanguage": "la",
+    "genre": "Enciclopedia de las siete artes",
+    "dating": "Siglo V d. C.",
+    "aliases": [
+     "Martianus Capella",
+     "De nuptiis"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "nonio-marcelo-doctrina",
+   "authority": {
+    "author": "Nonio Marcelo",
+    "normalizedAuthor": "Nonio Marcelo",
+    "uniformTitle": "De compendiosa doctrina",
+    "displayTitle": "Nonio Marcelo · De compendiosa doctrina",
+    "originalLanguage": "la",
+    "genre": "Léxico y citas de autores perdidos",
+    "dating": "Siglo IV d. C.",
+    "aliases": [
+     "Nonius Marcellus",
+     "De compendiosa doctrina"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "paladio-opus-agriculturae",
+   "authority": {
+    "author": "Paladio",
+    "normalizedAuthor": "Paladio",
+    "uniformTitle": "Opus agriculturae",
+    "displayTitle": "Paladio · Opus agriculturae",
+    "originalLanguage": "la",
+    "genre": "Agronomía y construcción rural",
+    "dating": "Siglo IV–V d. C.",
+    "aliases": [
+     "Palladius",
+     "De re rustica",
+     "Opus agriculturae"
     ],
     "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
     "candidateWorkCodes": [],

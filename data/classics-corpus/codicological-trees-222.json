@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-codicological-trees-222-v1",
-  "count": 256,
+  "count": 271,
   "physicalWitnessCount": 96,
   "textualWitnessRecordCount": 103,
   "interpretation": "Work-to-manuscript links are attestations; ancestry is explicit and source-backed. No unidentified archetypes are invented.",
@@ -10796,6 +10796,381 @@
         "id": "valerio-flaco-argonautica",
         "type": "classical_work",
         "label": "Valerio Flaco · Argonautica"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "aristoteles-meteorologica",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "aristoteles-meteorologica",
+        "type": "classical_work",
+        "label": "Aristóteles · Μετεωρολογικά · Meteorologica"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "galeno-opera-kuhn",
+      "title": "Opera omnia (ed. Kühn): volumen adicional",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "galeno-opera-kuhn",
+        "type": "classical_work",
+        "label": "Galeno · Opera omnia (ed. Kühn): volumen adicional"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "galeno-kuhn-vol01",
+      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "galeno-kuhn-vol01",
+        "type": "classical_work",
+        "label": "Galeno · Opera omnia, vol. I (ed. Kühn, Leipzig 1821)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "galeno-kuhn-vol19",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "galeno-kuhn-vol19",
+        "type": "classical_work",
+        "label": "Galeno · Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "galeno-scripta-minora",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "galeno-scripta-minora",
+        "type": "classical_work",
+        "label": "Galeno · Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "jamblico-vida-pitagorica",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "jamblico-vida-pitagorica",
+        "type": "classical_work",
+        "label": "Jámblico · Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "proclo-comentario-euclides",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "proclo-comentario-euclides",
+        "type": "classical_work",
+        "label": "Proclo · Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "sexto-empirico-obras",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "sexto-empirico-obras",
+        "type": "classical_work",
+        "label": "Sexto Empírico · Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "teon-esmirna-expositio",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "teon-esmirna-expositio",
+        "type": "classical_work",
+        "label": "Teón de Esmirna · Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "anthologia-latina",
+      "title": "Anthologia Latina",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "anthologia-latina",
+        "type": "classical_work",
+        "label": "Antología latina · Anthologia Latina"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "casiodoro-variae",
+      "title": "Variae",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "casiodoro-variae",
+        "type": "classical_work",
+        "label": "Casiodoro · Variae"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "festo-verborum-significatu",
+      "title": "De verborum significatu",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "festo-verborum-significatu",
+        "type": "classical_work",
+        "label": "Festo (y Verrio Flaco) · De verborum significatu"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "marciano-capela-nuptiis",
+      "title": "De nuptiis Philologiae et Mercurii",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "marciano-capela-nuptiis",
+        "type": "classical_work",
+        "label": "Marciano Capela · De nuptiis Philologiae et Mercurii"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "nonio-marcelo-doctrina",
+      "title": "De compendiosa doctrina",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "nonio-marcelo-doctrina",
+        "type": "classical_work",
+        "label": "Nonio Marcelo · De compendiosa doctrina"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "paladio-opus-agriculturae",
+      "title": "Opus agriculturae",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "paladio-opus-agriculturae",
+        "type": "classical_work",
+        "label": "Paladio · Opus agriculturae"
       },
       "witnesses": [],
       "links": [],

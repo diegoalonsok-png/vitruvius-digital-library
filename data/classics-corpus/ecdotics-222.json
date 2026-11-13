@@ -7,7 +7,7 @@
     "data/classics-corpus/vitruvius-standard-222.json"
   ],
   "policy": "No conjectural editorial genealogies or identifiers; never modify sources.",
-  "count": 256,
+  "count": 271,
   "records": [
     {
       "workId": "vitruvius",
@@ -23565,6 +23565,831 @@
         "originalLanguage": "la",
         "compositionDate": "Siglo I d. C.",
         "genre": "Épica latina"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "aristoteles-meteorologica",
+      "work": {
+        "author": "Aristóteles",
+        "title": "Μετεωρολογικά · Meteorologica",
+        "originalLanguage": "grc",
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Filosofía natural"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "galeno-opera-kuhn",
+      "work": {
+        "author": "Galeno",
+        "title": "Opera omnia (ed. Kühn): volumen adicional",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "galeno-kuhn-vol01",
+      "work": {
+        "author": "Galeno",
+        "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "galeno-kuhn-vol19",
+      "work": {
+        "author": "Galeno",
+        "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "galeno-scripta-minora",
+      "work": {
+        "author": "Galeno",
+        "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "jamblico-vida-pitagorica",
+      "work": {
+        "author": "Jámblico",
+        "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+        "originalLanguage": "grc",
+        "compositionDate": "Siglo III–IV d. C.",
+        "genre": "Filosofía pitagórica y número"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "proclo-comentario-euclides",
+      "work": {
+        "author": "Proclo",
+        "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+        "originalLanguage": "grc",
+        "compositionDate": "Siglo V d. C.",
+        "genre": "Matemáticas y filosofía de la geometría"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "sexto-empirico-obras",
+      "work": {
+        "author": "Sexto Empírico",
+        "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+        "originalLanguage": "grc",
+        "compositionDate": "Siglo II–III d. C.",
+        "genre": "Escepticismo y crítica de las artes"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "teon-esmirna-expositio",
+      "work": {
+        "author": "Teón de Esmirna",
+        "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+        "originalLanguage": "grc",
+        "compositionDate": "Siglo II d. C.",
+        "genre": "Matemáticas y música en la lectura de Platón"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "anthologia-latina",
+      "work": {
+        "author": "Antología latina",
+        "title": "Anthologia Latina",
+        "originalLanguage": "la",
+        "compositionDate": "Compilación tardoantigua",
+        "genre": "Poesía latina reunida"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "casiodoro-variae",
+      "work": {
+        "author": "Casiodoro",
+        "title": "Variae",
+        "originalLanguage": "la",
+        "compositionDate": "Siglo VI d. C.",
+        "genre": "Cartas oficiales, con encargos de obra y arquitectura"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "festo-verborum-significatu",
+      "work": {
+        "author": "Festo (y Verrio Flaco)",
+        "title": "De verborum significatu",
+        "originalLanguage": "la",
+        "compositionDate": "Siglo II d. C.",
+        "genre": "Léxico, metrología y anticuaria"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "marciano-capela-nuptiis",
+      "work": {
+        "author": "Marciano Capela",
+        "title": "De nuptiis Philologiae et Mercurii",
+        "originalLanguage": "la",
+        "compositionDate": "Siglo V d. C.",
+        "genre": "Enciclopedia de las siete artes"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "nonio-marcelo-doctrina",
+      "work": {
+        "author": "Nonio Marcelo",
+        "title": "De compendiosa doctrina",
+        "originalLanguage": "la",
+        "compositionDate": "Siglo IV d. C.",
+        "genre": "Léxico y citas de autores perdidos"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "paladio-opus-agriculturae",
+      "work": {
+        "author": "Paladio",
+        "title": "Opus agriculturae",
+        "originalLanguage": "la",
+        "compositionDate": "Siglo IV–V d. C.",
+        "genre": "Agronomía y construcción rural"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],

@@ -1,13 +1,13 @@
 {
  "schema": "vdl-r2-vinculos-repertorio-1",
  "actualizado": "2026-11-13",
- "descripcion": "Correspondencia, revisada a mano, entre las ediciones en facsímil alojadas en R2 y las 256 fichas del repertorio (data/bibliotheca-graeca-latina-I-bce-I-ce.json, que no se modifica). Las obras sin ficha previa se cuentan como incorporaciones nuevas; las ediciones aún no revisadas no se cuentan.",
+ "descripcion": "Correspondencia, revisada a mano, entre las ediciones en facsímil alojadas en R2 y las 271 fichas del repertorio (data/bibliotheca-graeca-latina-I-bce-I-ce.json, que no se modifica). Las obras sin ficha previa se cuentan como incorporaciones nuevas; las ediciones aún no revisadas no se cuentan.",
  "recuentos": {
-  "fichasRepertorio": 256,
-  "obrasNuevas": 0,
-  "obrasTotales": 256,
-  "edicionesFacsimil": 83,
-  "fichasConFacsimil": 90,
+  "fichasRepertorio": 271,
+  "obrasNuevas": 7,
+  "obrasTotales": 278,
+  "edicionesFacsimil": 113,
+  "fichasConFacsimil": 113,
   "sinRevisar": 0
  },
  "porObra": {
@@ -20,6 +20,18 @@
     "traduccion": null,
     "volumen": "5",
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "apollodorus-poliorcetics": [
+   {
+    "r2": "apollodorus-poliorcetics",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apollodorus-poliorcetics.pdf",
+    "edicion": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+    "anio": 1867,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -131,12 +143,36 @@
     "alcance": null
    }
   ],
+  "aristoteles-meteorologica": [
+   {
+    "r2": "aristoteles-meteorologica",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-meteorologica.pdf",
+    "edicion": "Meteorologica",
+    "anio": 1923,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "archimedes-fluitantibus": [
    {
     "r2": "arquimedes-obras",
     "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/arquimedes-obras.pdf",
     "edicion": "The works of Archimedes",
     "anio": 1897,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "athenaeus-mechanicus": [
+   {
+    "r2": "athenaeus-mechanicus",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/athenaeus-mechanicus.pdf",
+    "edicion": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+    "anio": 1867,
     "traduccion": null,
     "volumen": null,
     "loeb": false,
@@ -155,12 +191,36 @@
     "alcance": null
    }
   ],
+  "biton-kataskeuai": [
+   {
+    "r2": "biton-kataskeuai",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/biton-kataskeuai.pdf",
+    "edicion": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+    "anio": 1867,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "calimaco-himnos": [
    {
     "r2": "calimaco-himnos",
     "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/calimaco-himnos.pdf",
     "edicion": "Callimachus and Lycophron",
     "anio": 1921,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "ptolemy-geographia": [
+   {
+    "r2": "ptolemy-geographia",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ptolemy-geographia.pdf",
+    "edicion": "Geographia uniuersalis : uetus et noua, complectens Claudii Ptoloemaei Alexandrini enarrationis libros VIII",
+    "anio": 1540,
     "traduccion": null,
     "volumen": null,
     "loeb": false,
@@ -263,6 +323,18 @@
     "alcance": null
    }
   ],
+  "philo-belopoeica": [
+   {
+    "r2": "philo-belopoeica",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/philo-belopoeica.pdf",
+    "edicion": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+    "anio": 1867,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "filostrato-apolonio": [
    {
     "r2": "filostrato-apolonio",
@@ -272,6 +344,54 @@
     "traduccion": null,
     "volumen": "2",
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "galeno-opera-kuhn": [
+   {
+    "r2": "galeno-opera-kuhn",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-opera-kuhn.pdf",
+    "edicion": "Galeni opera omnia / vol. 14",
+    "anio": 1821,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "galeno-kuhn-vol01": [
+   {
+    "r2": "galeno-kuhn-vol01",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol01.pdf",
+    "edicion": "Galeni opera omnia / vol. 14",
+    "anio": 1821,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "galeno-kuhn-vol19": [
+   {
+    "r2": "galeno-kuhn-vol19",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol19.pdf",
+    "edicion": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+    "anio": 1821,
+    "traduccion": null,
+    "volumen": "Vol. 19",
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "galeno-scripta-minora": [
+   {
+    "r2": "galeno-scripta-minora",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-scripta-minora.pdf",
+    "edicion": "Claudii Galeni Pergameni Scripta Minora, VoL III",
+    "anio": 1903,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -383,6 +503,18 @@
     "alcance": null
    }
   ],
+  "jamblico-vida-pitagorica": [
+   {
+    "r2": "jamblico-vida-pitagorica",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jamblico-vida-pitagorica.pdf",
+    "edicion": "Περί βίου πυθαγορικού λόγος : De vita Pythagorica liber",
+    "anio": 1707,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "lisias-discursos": [
    {
     "r2": "lisias-discursos",
@@ -435,6 +567,18 @@
     "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/menandro-comedias.pdf",
     "edicion": "Menander, the principal fragments",
     "anio": 1921,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "origenes": [
+   {
+    "r2": "origenes",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/origenes.pdf",
+    "edicion": "De Principiis",
+    "anio": 1836,
     "traduccion": null,
     "volumen": null,
     "loeb": false,
@@ -609,6 +753,18 @@
     "alcance": null
    }
   ],
+  "proclo-comentario-euclides": [
+   {
+    "r2": "proclo-comentario-euclides",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/proclo-comentario-euclides.pdf",
+    "edicion": "Procli Diadochi in primum Euclidis Elementorum librum commentarii",
+    "anio": 1873,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "longino-sublime": [
    {
     "r2": "longino-sublime",
@@ -630,6 +786,18 @@
     "traduccion": null,
     "volumen": null,
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "sexto-empirico-obras": [
+   {
+    "r2": "sexto-empirico-obras",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/sexto-empirico-obras.pdf",
+    "edicion": "Sextus Empiricus",
+    "anio": 1842,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -693,6 +861,18 @@
     "alcance": null
    }
   ],
+  "teon-esmirna-expositio": [
+   {
+    "r2": "teon-esmirna-expositio",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teon-esmirna-expositio.pdf",
+    "edicion": "Specimen academicum inaugurale, exhibens Theonis Smyrnaei Arithmeticam, Bullialdi versione, lectionis diversitate et annotatione auctam, quod ... submittet Janus Jacobus de Gelder",
+    "anio": 1827,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "thucydides-war": [
    {
     "r2": "tucidides-historia",
@@ -702,6 +882,18 @@
     "traduccion": null,
     "volumen": "1",
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "accius-fragmenta": [
+   {
+    "r2": "accius-fragmenta",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/accius-fragmenta.pdf",
+    "edicion": "Tragicorum Romanorum fragmenta",
+    "anio": 1871,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -727,6 +919,18 @@
     "volumen": null,
     "loeb": false,
     "alcance": "Tomo II de la traducción castellana (Biblioteca Clásica, 1896)."
+   }
+  ],
+  "anthologia-latina": [
+   {
+    "r2": "anthologia-latina",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/anthologia-latina.pdf",
+    "edicion": "Anthologia latina sive poesis latinae supplementum, ediderunt Franciscus Buecheler et Alexander Riese",
+    "anio": 1869,
+    "traduccion": null,
+    "volumen": "1, pt.1-2",
+    "loeb": false,
+    "alcance": null
    }
   ],
   "apuleius-metamorphoses": [
@@ -774,6 +978,18 @@
     "traduccion": null,
     "volumen": null,
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "casiodoro-variae": [
+   {
+    "r2": "casiodoro-variae",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/casiodoro-variae.pdf",
+    "edicion": "Cassiodori Senatoris Variae",
+    "anio": 1894,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -861,6 +1077,18 @@
     "alcance": null
    }
   ],
+  "festo-verborum-significatu": [
+   {
+    "r2": "festo-verborum-significatu",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/festo-verborum-significatu.pdf",
+    "edicion": "De verborum significatu quae supersunt com Pauli epitome. Edidit Aemilius Thewrewk de Ponor. Pars 1",
+    "anio": 1889,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "frontinus-strategemata": [
    {
     "r2": "frontino-de-aquis",
@@ -891,6 +1119,18 @@
     "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/higino-fabulas.pdf",
     "edicion": "Hygini Fabulae",
     "anio": 1872,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "hyginus-gromaticus": [
+   {
+    "r2": "hyginus-gromaticus",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/hyginus-gromaticus.pdf",
+    "edicion": "Gromatici veteres ex recensione Caroli Lachmanni. Diagrammata edidit A. Rudorffius. (Die Schriften der römischen Feldmesser",
+    "anio": 1848,
     "traduccion": null,
     "volumen": null,
     "loeb": false,
@@ -945,6 +1185,18 @@
     "alcance": null
    }
   ],
+  "marciano-capela-nuptiis": [
+   {
+    "r2": "marciano-capela-nuptiis",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/marciano-capela-nuptiis.pdf",
+    "edicion": "De nuptiis philologiae, et Mercurii, et de septem artibus liberalibus libri novem. Ad codicum manuscriptorum fidem cum notis Bon. Vulcanii, Hug. Grotii, Casp. Barthii, Cl. Salmasii, H.J. Arntzenii, Corn. Vonckii, P. Bondami, L. Walthardi, Jo. Ad. Goezii, Henr. Susii, Marc Meibonii aliorumque. Partim integris partim selectis et commentario perpetuo edidit Ulricus Fridericus Martianus Capella. De nuptiis philologiae, et Mercurii, et de septem artibus liberalibus libri novem Kopp",
+    "anio": 1836,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "minucio-felix-octavio": [
    {
     "r2": "minucio-felix-octavio",
@@ -953,6 +1205,18 @@
     "anio": 1909,
     "traduccion": null,
     "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
+  "nonio-marcelo-doctrina": [
+   {
+    "r2": "nonio-marcelo-doctrina",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/nonio-marcelo-doctrina.pdf",
+    "edicion": "Compendiosa doctrina;",
+    "anio": 1888,
+    "traduccion": null,
+    "volumen": "1",
     "loeb": false,
     "alcance": null
    }
@@ -967,6 +1231,18 @@
     "volumen": null,
     "loeb": false,
     "alcance": "Traducción italiana de 1811."
+   }
+  ],
+  "paladio-opus-agriculturae": [
+   {
+    "r2": "paladio-opus-agriculturae",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/paladio-opus-agriculturae.pdf",
+    "edicion": "The Middle-English translation of Palladius De re rustica. Pt. 1. Text",
+    "anio": 1896,
+    "traduccion": null,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
    }
   ],
   "petronius-satyrica": [
@@ -1102,7 +1378,57 @@
    }
   ]
  },
- "obrasNuevas": [],
+ "obrasNuevas": [
+  {
+   "r2": "palladio-quattro-libri",
+   "autor": "Andrea Palladio",
+   "obra": "I quattro libri dell'architettura",
+   "lengua": "it",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/palladio-quattro-libri.pdf"
+  },
+  {
+   "r2": "vignola-cinque-ordini",
+   "autor": "Giacomo Barozzi da Vignola",
+   "obra": "Regola delli cinque ordini d’architettura",
+   "lengua": "it",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/vignola-cinque-ordini.pdf"
+  },
+  {
+   "r2": "vasari-vite",
+   "autor": "Giorgio Vasari",
+   "obra": "Le vite de’ più eccellenti pittori, scultori e architettori",
+   "lengua": "it",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/vasari-vite.pdf"
+  },
+  {
+   "r2": "serlio-architettura",
+   "autor": "Sebastiano Serlio",
+   "obra": "Tutte l'opere d'architettura",
+   "lengua": "it",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/serlio-architettura.pdf"
+  },
+  {
+   "r2": "scamozzi-idea-architettura",
+   "autor": "Vincenzo Scamozzi",
+   "obra": "L'idea della architettura universale",
+   "lengua": "it",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/scamozzi-idea-architettura.pdf"
+  },
+  {
+   "r2": "alberti-de-re-aedificatoria",
+   "autor": "Leon Battista Alberti",
+   "obra": "De re aedificatoria",
+   "lengua": "la",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/alberti-de-re-aedificatoria.pdf"
+  },
+  {
+   "r2": "rose-vitruvius-1899",
+   "autor": "Valentin Rose (ed.)",
+   "obra": "Vitruvii De architectura libri decem (ed. Rose, 1899)",
+   "lengua": "la",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/rose-vitruvius-1899.pdf"
+  }
+ ],
  "sinRevisar": [],
  "mapa": {
   "herodoto-historias": [
@@ -1349,6 +1675,82 @@
   ],
   "valerio-flaco-argonautica": [
    "valerio-flaco-argonautica"
-  ]
+  ],
+  "apollodorus-poliorcetics": [
+   "apollodorus-poliorcetics"
+  ],
+  "aristoteles-meteorologica": [
+   "aristoteles-meteorologica"
+  ],
+  "athenaeus-mechanicus": [
+   "athenaeus-mechanicus"
+  ],
+  "biton-kataskeuai": [
+   "biton-kataskeuai"
+  ],
+  "ptolemy-geographia": [
+   "ptolemy-geographia"
+  ],
+  "philo-belopoeica": [
+   "philo-belopoeica"
+  ],
+  "galeno-opera-kuhn": [
+   "galeno-opera-kuhn"
+  ],
+  "galeno-kuhn-vol01": [
+   "galeno-kuhn-vol01"
+  ],
+  "galeno-kuhn-vol19": [
+   "galeno-kuhn-vol19"
+  ],
+  "galeno-scripta-minora": [
+   "galeno-scripta-minora"
+  ],
+  "jamblico-vida-pitagorica": [
+   "jamblico-vida-pitagorica"
+  ],
+  "origenes": [
+   "origenes"
+  ],
+  "proclo-comentario-euclides": [
+   "proclo-comentario-euclides"
+  ],
+  "sexto-empirico-obras": [
+   "sexto-empirico-obras"
+  ],
+  "teon-esmirna-expositio": [
+   "teon-esmirna-expositio"
+  ],
+  "palladio-quattro-libri": [],
+  "vignola-cinque-ordini": [],
+  "vasari-vite": [],
+  "serlio-architettura": [],
+  "scamozzi-idea-architettura": [],
+  "accius-fragmenta": [
+   "accius-fragmenta"
+  ],
+  "anthologia-latina": [
+   "anthologia-latina"
+  ],
+  "casiodoro-variae": [
+   "casiodoro-variae"
+  ],
+  "festo-verborum-significatu": [
+   "festo-verborum-significatu"
+  ],
+  "hyginus-gromaticus": [
+   "hyginus-gromaticus"
+  ],
+  "alberti-de-re-aedificatoria": [],
+  "marciano-capela-nuptiis": [
+   "marciano-capela-nuptiis"
+  ],
+  "nonio-marcelo-doctrina": [
+   "nonio-marcelo-doctrina"
+  ],
+  "paladio-opus-agriculturae": [
+   "paladio-opus-agriculturae"
+  ],
+  "rose-vitruvius-1899": []
  }
 }
