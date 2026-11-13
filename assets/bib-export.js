@@ -25,15 +25,16 @@
   if(n.publisher)o.publisher=n.publisher;if(n.place)o['publisher-place']=n.place;if(n.year)o.issued={'date-parts':[[+n.year]]};if(n.isbn)o.ISBN=n.isbn;if(n.doi)o.DOI=n.doi;if(n.url)o.URL=n.url;if(n.note)o.note=n.note;return o}),null,2)}
  function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
  for(const box of document.querySelectorAll('.bib-export')){
-  const src=box.dataset.src,kind=box.dataset.kind||'studies',base=box.dataset.name||'vitruvius-bibliografia';
+  const src=box.dataset.src,kind=box.dataset.kind||'studies',base=box.dataset.name||'vitruvius-bibliografia',verifiedOnly=box.dataset.verifiedOnly==='true';
+  const publishable=r=>r?.verification_status==='checked'&&Boolean(r.url&&r.author&&r.title&&r.year&&r.publisher)&&!/pendiente de documentar|sin constatar|no constatad|sin verificar|por cotejar|a revisar/i.test(r.source||'');
   box.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 22px;font:14px/1.4 Arial,Helvetica,sans-serif';
   const label=document.createElement('span');label.textContent='Exportar para Zotero, Mendeley o LaTeX:';box.append(label);
   for(const [fmt,ext,type,fn] of [['BibTeX','bib','application/x-bibtex',bibtex],['RIS','ris','application/x-research-info-systems',ris],['CSL-JSON','json','application/json',csl]]){
    const b=document.createElement('button');b.type='button';b.textContent=fmt;b.style.cssText='padding:7px 12px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;cursor:pointer;font:600 12px Arial,Helvetica,sans-serif';
-   b.onclick=async()=>{try{const d=await fetch(src).then(r=>r.json());const rows=d.records||d;download(`${base}.${ext}`,fn(kind,rows),type);b.textContent=fmt+' ✓'}catch{b.textContent=fmt+' · error'}};
+   b.onclick=async()=>{try{const d=await fetch(src).then(r=>r.json());const rows=d.records||d;const output=verifiedOnly&&kind==='studies'?rows.filter(publishable):rows;download(`${base}.${ext}`,fn(kind,output),type);b.textContent=fmt+' ✓'}catch{b.textContent=fmt+' · error'}};
    box.append(b);
   }
-  const note=document.createElement('small');note.style.opacity='.75';note.textContent='Cada registro incluye en la nota su estado de verificación.';box.append(note);
+  const note=document.createElement('small');note.style.opacity='.75';note.textContent=verifiedOnly?'Solo referencias bibliográficas documentadas y con fuente identificada.':'La exportación conserva los datos y el estado de cada registro.';box.append(note);
  }
  window.VitruviusBibExport={bibtex,ris,csl};
 })();
