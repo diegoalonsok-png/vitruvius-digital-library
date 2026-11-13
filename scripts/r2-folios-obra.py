@@ -216,6 +216,10 @@ def main():
         "imagenesEnLaFuente": len(paginas),
         "ancho": args.ancho,
         "base": f"{PUBLICO}/folios/{args.obra}/",
+        "signatura": fuente.get("signatura"),
+        "institucion": fuente.get("institucion"),
+        "colacion": fuente.get("colacion"),
+        "criterioEcdotico": "Sin collatio ni variantes verificadas; la digitalización es un testimonio de la edición, no una edición crítica.",
         "nomenclatura": ("Las imágenes se numeran por su orden digital. «folio» y «paginaImpresa» quedan "
                          "vacíos hasta leerlos en el ejemplar: imagen digital y folio histórico no son "
                          "equivalentes, y la foliación no se deduce del número de imagen."),
@@ -228,6 +232,13 @@ def main():
         print(json.dumps({k: v for k, v in indice.items() if k != "folios"}, ensure_ascii=False, indent=1))
         print(f"--prueba: {len(folios)} imágenes bajadas, nada subido ni escrito.")
         return
+
+    # Nunca publicar un índice vacío o parcial como si fuera el volumen completo.
+    # Si la fuente falla, conservar el índice anterior y señalar fallo de la tarea.
+    if not folios or len(folios) != len(seleccion):
+        sys.exit(f"DESCARGA INCOMPLETA: {len(folios)} de {len(seleccion)} imágenes; se conserva el índice anterior.")
+    if args.desde != 1 or hasta != len(paginas):
+        sys.exit("Corrida parcial: no reemplazar el manifiesto completo. Ejecutar la obra entera.")
 
     INDICES.mkdir(parents=True, exist_ok=True)
     destino = INDICES / f"{args.obra}.json"
