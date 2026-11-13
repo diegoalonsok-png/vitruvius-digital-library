@@ -1375,7 +1375,7 @@ function display(rows,query,phase){
  // Prioritize actually retrieved, citable Vitruvian passages (not merely
  // catalogue-title coincidences). Keep person/authority lookups separate.
  const localVitruvianPassage=deduped.some(r=>r.type==="passage"&&
-  typeof r.link==="string"&&/lector-bilingue(?:\\.html)?/i.test(r.link)&&
+  typeof r.link==="string"&&r.link.includes("lector-bilingue")&&
   (r.locus||r.edition));
  const siteFirst=["all","ai","site","concept"].includes(S.mode)&&!personFirst&&
   (localVitruvianPassage||codexIntent||locusIntent||textualIntent||
