@@ -87,14 +87,16 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
  <div class="cols">
   <div>
    <div class="barra" role="group" aria-label="Herramientas de lectura">
-    <button id="menos" type="button" title="Alejar">− Zoom</button>
-    <button id="mas" type="button" title="Acercar">+ Zoom</button>
-    <button id="ajustar" type="button">Ajustar a la caja</button>
+    <button id="menos" type="button" title="Lupa: alejar la página" aria-label="Lupa alejar">⌕− Alejar</button>
+    <button id="mas" type="button" title="Lupa: acercar la página" aria-label="Lupa acercar">⌕+ Acercar</button>
+    <button id="ajustar" type="button" title="Volver a mostrar el folio completo">Ajustar a la caja</button>
+    <button id="invertir" type="button" aria-pressed="false" title="Invertir colores del folio">◐ Invertir colores</button>
     <label>Visualización <select id="modo"><option value="original">Original</option><option value="gris">Blanco y negro</option><option value="negativo">Negativo · letras claras</option></select></label>
     <button id="subrayar" type="button" aria-pressed="false" title="Arrastrar sobre la imagen para subrayar una línea">Subrayar</button>
     <button id="limpiar" type="button">Quitar subrayados</button>
     <label>Contraste <input id="contraste" type="range" min="70" max="190" value="100"></label>
     <label>Brillo <input id="brillo" type="range" min="60" max="160" value="100"></label>
+    <label>Saturación <input id="saturacion" type="range" min="0" max="200" value="100" step="5" title="Intensidad de los colores del folio"></label>
    </div>
    <div class="lamina" id="lamina">
     <img id="imagen" alt="" decoding="async">
@@ -149,6 +151,6 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <script defer src="assets/vitruvia-philology.js?v=20261113-obras"></script>
 <script defer src="assets/r2-clasicos-busqueda.js?v=20261113-obras"></script>
-<script defer src="assets/obras-notables-visor.js?v=20261113-alberti-missing-v5"></script>
+<script defer src="assets/obras-notables-visor.js?v=20261113-lupas-inversion-saturacion-v6"></script>
 </body>
 </html>
