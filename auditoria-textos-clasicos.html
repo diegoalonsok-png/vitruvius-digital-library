@@ -66,7 +66,7 @@ const statusLabel={
  "repertoriado-busqueda-externa":"Ficha para búsqueda externa",
  "pendiente-de-incorporar":"Pendiente de incorporación"
 };
-let all=[];
+let all=[],remoteIndexedIds=new Set();
 function text(el,s){el.textContent=s;return el}
 function cell(tr,s){const td=document.createElement("td");td.textContent=s;tr.append(td);return td}
 function countStats(d){
@@ -77,7 +77,7 @@ function countStats(d){
 function render(){
  const q=norm($("audit-query").value.trim()),status=$("audit-filter").value,lang=$("audit-language").value;
  const found=all.filter(w=>(!q||norm([w.author,w.title,w.id].join(" ")).includes(q))&&(!lang||w.originalLanguage===lang)&&(
- !status||(status==="indexed"&&w.indexedTextLanguages?.length)||(status==="local"&&w.catalogueStatus?.startsWith("lectura-local"))||
+ !status||(status==="indexed"&&(w.indexedTextLanguages?.length||remoteIndexedIds.has(w.id)))||(status==="local"&&w.catalogueStatus?.startsWith("lectura-local"))||
  (status==="external"&&w.catalogueStatus==="fuente-externa-identificada")||
  (status==="pending"&&!w.catalogueStatus?.startsWith("lectura-local")&&w.catalogueStatus!=="fuente-externa-identificada")));
  const rows=$("audit-rows");rows.replaceChildren();
@@ -86,15 +86,17 @@ function render(){
   a.href="bibliotheca-graeca-latina.html?work="+encodeURIComponent(w.id);text(a,w.title);
   text(small,w.author+" · "+(w.originalLanguage==="grc"?"Griego":"Latín"));td.append(a,small);tr.append(td);
   cell(tr,statusLabel[w.catalogueStatus]||w.catalogueStatus||"Sin estado");
-  cell(tr,w.indexedTextLanguages?.length?"Sí · "+w.indexedTextLanguages.join(", "):(w.hasStructuredVitruviusReader?"Índice de Vitruvio separado":"No en el buscador textual"));
+  cell(tr,w.indexedTextLanguages?.length?"Local · "+w.indexedTextLanguages.join(", "):(remoteIndexedIds.has(w.id)?"R2 · registro declarado; acceso pendiente de comprobación":(w.hasStructuredVitruviusReader?"Índice de Vitruvio separado":"No en el buscador textual")));
   const pdf=cell(tr,w.localPDF?"PDF local":"—");
   if(w.localPDF){pdf.replaceChildren();const link=document.createElement("a");link.href=w.localPDF;link.textContent="Abrir PDF";link.rel="noopener";pdf.append(link)}
   cell(tr,w.manuscriptRecords?.length?w.manuscriptRecords.map(x=>x.shelfmark).join("; "):(w.hasManuscriptRecord?"En ficha":"—"));
   rows.append(tr);
  }
- $("audit-count").textContent=found.length+" de "+all.length+" fichas visibles. «No en el buscador textual» no implica inexistencia de la obra en otros repositorios.";
+ $("audit-count").textContent=found.length+" de "+all.length+" fichas visibles. Los registros R2 indican inclusión declarada, no accesibilidad comprobada. «No en el buscador textual» no implica inexistencia de la obra en otros repositorios.";
 }
-Promise.resolve().then(()=>fetch("data/classics-corpus/coverage-audit.json?v=20261105-corpus1")).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+Promise.all(["data/classics-corpus/coverage-audit.json?v=20261113-status","data/classics-corpus/search-registry.json"].map(url=>fetch(url).then(r=>{if(!r.ok)throw Error("HTTP "+r.status+" "+url);return r.json()}))).then(([d,registry])=>{
+ if(!Array.isArray(registry.entries))throw Error("Registro de textos incompleto");
+ remoteIndexedIds=new Set(registry.entries.filter(e=>typeof e.path==="string"&&e.path.startsWith("https://libros.vitruvius-digital-library.org/corpus/")).map(e=>e.workId));
  if(d.schema!=="vitruvia-classics-coverage-audit-v1"||!Array.isArray(d.works))throw Error("Formato incorrecto");
  all=d.works;countStats(d);all.sort((a,b)=>norm(a.author).localeCompare(norm(b.author),"es")||norm(a.title).localeCompare(norm(b.title),"es"));
  for(const id of ["audit-query","audit-filter","audit-language"])$(id).addEventListener(id==="audit-query"?"input":"change",render);
