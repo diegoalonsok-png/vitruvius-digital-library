@@ -176,7 +176,7 @@ function mostrar(n) {
  img.src = f.imagen;
  img.alt = `Folio ${f.folio || "(imagen digital " + f.imagenDigital + ")"} de ${indice.titulo}`;
  img.onload = () => { ajustarEncuadre(); };
- img.onerror = () => { $("estado").textContent = "No se pudo cargar la imagen "+actual+". Intentá otro folio."; };
+ img.onerror = () => { $("estado").textContent = "No se pudo cargar la imagen "+actual+". Intenta otro folio."; };
  nomenclatura(f);
  filtros();
  pintarMarcas();
