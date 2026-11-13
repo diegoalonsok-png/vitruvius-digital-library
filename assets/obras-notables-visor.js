@@ -30,11 +30,22 @@ let indice = null, actual = 1, escala = 1, invertido = false, subrayando = false
 let panX = 0, panY = 0;
 function aplicarEncuadre() {
  const img = $("imagen");
- img.style.transform = `translate(${panX}px, ${panY}px) scale(${escala})`;
+ img.style.transform = `translate(calc(-50% + ${panX}px), calc(-50% + ${panY}px)) scale(${escala})`;
+}
+function encajarFolio() {
+ const img = $("imagen"), caja = $("lamina");
+ if (!img.naturalWidth || !img.naturalHeight) return;
+ // The folio's intrinsic dimensions never control the reader's layout.
+ const availableWidth = Math.max(100,caja.clientWidth-28);
+ const availableHeight = Math.max(100,caja.clientHeight-28);
+ const fit = Math.min(availableWidth/img.naturalWidth,availableHeight/img.naturalHeight);
+ img.style.width = Math.max(1,Math.floor(img.naturalWidth*fit))+"px";
+ img.style.height = Math.max(1,Math.floor(img.naturalHeight*fit))+"px";
+ aplicarEncuadre();
 }
 function ajustarEncuadre() {
  escala = 1; panX = 0; panY = 0;
- aplicarEncuadre();
+ encajarFolio();
 }
 const marcasPorFolio = new Map();
 
@@ -227,11 +238,12 @@ function herramientas() {
  const img = $("imagen"), lamina = $("lamina");
  $("mas").addEventListener("click", () => { escala = Math.min(escala * 1.25, 8); aplicarEncuadre(); });
  $("menos").addEventListener("click", () => {
-  escala = Math.max(escala / 1.25, 1);
+  escala = Math.max(escala / 1.25, 0.5);
   if (escala === 1) { panX = 0; panY = 0; }
   aplicarEncuadre();
  });
  $("ajustar").addEventListener("click", ajustarEncuadre);
+ new ResizeObserver(() => encajarFolio()).observe(lamina);
  // Pan only when zoomed; dragging the original at scale 1 must not displace it.
  let drag = null;
  lamina.addEventListener("pointerdown", e => {
