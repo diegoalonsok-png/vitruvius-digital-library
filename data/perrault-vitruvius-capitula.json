@@ -1,0 +1,449 @@
+{
+  "schema": "vdl-perrault-vitruvius-capitula-1",
+  "source": "Vitruvius, The Ten Books on Architecture, trad. Morris Hicky Morgan, Harvard University Press 1914, tabla de contenidos (Project Gutenberg 20239). Encabezados vertidos al español por Vitruvius Digital Library.",
+  "sourceUrl": "https://www.gutenberg.org/cache/epub/20239/pg20239-images.html",
+  "method": "Índice temático del texto de Vitruvio basado en la división editorial de Morgan (1914). No es transcripción del índice francés de Perrault (1673), ni concordancia página/folio validada. Los prefacios se reconocen como unidades independientes.",
+  "correspondenceToPerrault": "unverified",
+  "books": [
+    {
+      "book": 1,
+      "title": "Principios de arquitectura y urbanismo",
+      "chapters": [
+        {
+          "locus": "1.1",
+          "title": "Formación del arquitecto"
+        },
+        {
+          "locus": "1.2",
+          "title": "Principios fundamentales de arquitectura"
+        },
+        {
+          "locus": "1.3",
+          "title": "Partes de la arquitectura"
+        },
+        {
+          "locus": "1.4",
+          "title": "Emplazamiento de una ciudad"
+        },
+        {
+          "locus": "1.5",
+          "title": "Murallas urbanas"
+        },
+        {
+          "locus": "1.6",
+          "title": "Orientación de las calles y vientos"
+        },
+        {
+          "locus": "1.7",
+          "title": "Emplazamiento de edificios públicos"
+        }
+      ]
+    },
+    {
+      "book": 2,
+      "title": "Materiales y técnicas constructivas",
+      "chapters": [
+        {
+          "locus": "2.1",
+          "title": "Origen de la vivienda"
+        },
+        {
+          "locus": "2.2",
+          "title": "Principios materiales según los físicos"
+        },
+        {
+          "locus": "2.3",
+          "title": "Ladrillo"
+        },
+        {
+          "locus": "2.4",
+          "title": "Arena"
+        },
+        {
+          "locus": "2.5",
+          "title": "Cal"
+        },
+        {
+          "locus": "2.6",
+          "title": "Puzolana"
+        },
+        {
+          "locus": "2.7",
+          "title": "Piedra"
+        },
+        {
+          "locus": "2.8",
+          "title": "Métodos de construcción de muros"
+        },
+        {
+          "locus": "2.9",
+          "title": "Madera"
+        },
+        {
+          "locus": "2.10",
+          "title": "Abetos de montaña y de llanura"
+        }
+      ]
+    },
+    {
+      "book": 3,
+      "title": "Templos y proporciones",
+      "chapters": [
+        {
+          "locus": "3.1",
+          "title": "Simetría de los templos y del cuerpo humano"
+        },
+        {
+          "locus": "3.2",
+          "title": "Clasificación de los templos"
+        },
+        {
+          "locus": "3.3",
+          "title": "Intercolumnios y proporciones de columnas"
+        },
+        {
+          "locus": "3.4",
+          "title": "Cimentaciones y subestructuras de templos"
+        },
+        {
+          "locus": "3.5",
+          "title": "Proporciones de basas, capiteles y entablamentos jónicos"
+        }
+      ]
+    },
+    {
+      "book": 4,
+      "title": "Órdenes arquitectónicos y templos",
+      "chapters": [
+        {
+          "locus": "4.1",
+          "title": "Origen de los órdenes y proporciones del capitel corintio"
+        },
+        {
+          "locus": "4.2",
+          "title": "Ornamentos de los órdenes"
+        },
+        {
+          "locus": "4.3",
+          "title": "Proporciones de los templos dóricos"
+        },
+        {
+          "locus": "4.4",
+          "title": "Cella y pronaos"
+        },
+        {
+          "locus": "4.5",
+          "title": "Orientación del templo"
+        },
+        {
+          "locus": "4.6",
+          "title": "Puertas de templos"
+        },
+        {
+          "locus": "4.7",
+          "title": "Templos toscanos"
+        },
+        {
+          "locus": "4.8",
+          "title": "Templos circulares y otras variedades"
+        },
+        {
+          "locus": "4.9",
+          "title": "Altares"
+        }
+      ]
+    },
+    {
+      "book": 5,
+      "title": "Edificios públicos",
+      "chapters": [
+        {
+          "locus": "5.1",
+          "title": "Foro y basílica"
+        },
+        {
+          "locus": "5.2",
+          "title": "Tesoro, prisión y curia"
+        },
+        {
+          "locus": "5.3",
+          "title": "Teatro: emplazamiento, cimentación y acústica"
+        },
+        {
+          "locus": "5.4",
+          "title": "Armonía musical"
+        },
+        {
+          "locus": "5.5",
+          "title": "Vasos resonadores del teatro"
+        },
+        {
+          "locus": "5.6",
+          "title": "Planta del teatro"
+        },
+        {
+          "locus": "5.7",
+          "title": "Teatros griegos"
+        },
+        {
+          "locus": "5.8",
+          "title": "Acústica del emplazamiento teatral"
+        },
+        {
+          "locus": "5.9",
+          "title": "Pórticos y paseos"
+        },
+        {
+          "locus": "5.10",
+          "title": "Termas"
+        },
+        {
+          "locus": "5.11",
+          "title": "Palestra"
+        },
+        {
+          "locus": "5.12",
+          "title": "Puertos, rompeolas y astilleros"
+        }
+      ]
+    },
+    {
+      "book": 6,
+      "title": "Viviendas privadas",
+      "chapters": [
+        {
+          "locus": "6.1",
+          "title": "Clima y configuración de la vivienda"
+        },
+        {
+          "locus": "6.2",
+          "title": "Simetría y adaptación al lugar"
+        },
+        {
+          "locus": "6.3",
+          "title": "Proporciones de las estancias principales"
+        },
+        {
+          "locus": "6.4",
+          "title": "Orientación de las habitaciones"
+        },
+        {
+          "locus": "6.5",
+          "title": "Estancias según condición del propietario"
+        },
+        {
+          "locus": "6.6",
+          "title": "Casa rural"
+        },
+        {
+          "locus": "6.7",
+          "title": "Casa griega"
+        },
+        {
+          "locus": "6.8",
+          "title": "Cimentaciones y subestructuras"
+        }
+      ]
+    },
+    {
+      "book": 7,
+      "title": "Revestimientos y pintura",
+      "chapters": [
+        {
+          "locus": "7.1",
+          "title": "Pavimentos"
+        },
+        {
+          "locus": "7.2",
+          "title": "Apagado de la cal para estuco"
+        },
+        {
+          "locus": "7.3",
+          "title": "Bóvedas y estucos"
+        },
+        {
+          "locus": "7.4",
+          "title": "Estucos en lugares húmedos y decoración de comedores"
+        },
+        {
+          "locus": "7.5",
+          "title": "Decadencia de la pintura al fresco"
+        },
+        {
+          "locus": "7.6",
+          "title": "Mármol para estuco"
+        },
+        {
+          "locus": "7.7",
+          "title": "Colores naturales"
+        },
+        {
+          "locus": "7.8",
+          "title": "Cinabrio y mercurio"
+        },
+        {
+          "locus": "7.9",
+          "title": "Cinabrio (continuación)"
+        },
+        {
+          "locus": "7.10",
+          "title": "Colores artificiales y negro"
+        },
+        {
+          "locus": "7.11",
+          "title": "Azul y ocre tostado"
+        },
+        {
+          "locus": "7.12",
+          "title": "Albayalde, cardenillo y sandáraca artificial"
+        },
+        {
+          "locus": "7.13",
+          "title": "Púrpura"
+        },
+        {
+          "locus": "7.14",
+          "title": "Sustitutos de púrpura, ocre, malaquita e índigo"
+        }
+      ]
+    },
+    {
+      "book": 8,
+      "title": "Aguas e hidráulica",
+      "chapters": [
+        {
+          "locus": "8.1",
+          "title": "Localización de agua"
+        },
+        {
+          "locus": "8.2",
+          "title": "Agua de lluvia"
+        },
+        {
+          "locus": "8.3",
+          "title": "Propiedades de distintas aguas"
+        },
+        {
+          "locus": "8.4",
+          "title": "Pruebas de calidad del agua"
+        },
+        {
+          "locus": "8.5",
+          "title": "Nivelación e instrumentos"
+        },
+        {
+          "locus": "8.6",
+          "title": "Acueductos, pozos y cisternas"
+        }
+      ]
+    },
+    {
+      "book": 9,
+      "title": "Gnomónica y astronomía",
+      "chapters": [
+        {
+          "locus": "9.1",
+          "title": "Zodíaco y planetas"
+        },
+        {
+          "locus": "9.2",
+          "title": "Fases de la Luna"
+        },
+        {
+          "locus": "9.3",
+          "title": "Curso del Sol a través de los signos"
+        },
+        {
+          "locus": "9.4",
+          "title": "Constelaciones septentrionales"
+        },
+        {
+          "locus": "9.5",
+          "title": "Constelaciones meridionales"
+        },
+        {
+          "locus": "9.6",
+          "title": "Astrología y pronóstico meteorológico"
+        },
+        {
+          "locus": "9.7",
+          "title": "Analema y aplicaciones"
+        },
+        {
+          "locus": "9.8",
+          "title": "Relojes de sol y de agua"
+        }
+      ]
+    },
+    {
+      "book": 10,
+      "title": "Máquinas e ingeniería",
+      "chapters": [
+        {
+          "locus": "10.1",
+          "title": "Máquinas e instrumentos"
+        },
+        {
+          "locus": "10.2",
+          "title": "Máquinas elevadoras"
+        },
+        {
+          "locus": "10.3",
+          "title": "Elementos del movimiento"
+        },
+        {
+          "locus": "10.4",
+          "title": "Máquinas para elevar agua"
+        },
+        {
+          "locus": "10.5",
+          "title": "Ruedas hidráulicas y molinos"
+        },
+        {
+          "locus": "10.6",
+          "title": "Tornillo hidráulico"
+        },
+        {
+          "locus": "10.7",
+          "title": "Bomba de Ctesibio"
+        },
+        {
+          "locus": "10.8",
+          "title": "Órgano hidráulico"
+        },
+        {
+          "locus": "10.9",
+          "title": "Odómetro"
+        },
+        {
+          "locus": "10.10",
+          "title": "Catapultas y escorpiones"
+        },
+        {
+          "locus": "10.11",
+          "title": "Balistas"
+        },
+        {
+          "locus": "10.12",
+          "title": "Tensado y afinación de catapultas"
+        },
+        {
+          "locus": "10.13",
+          "title": "Máquinas de asedio"
+        },
+        {
+          "locus": "10.14",
+          "title": "Tortuga de asedio"
+        },
+        {
+          "locus": "10.15",
+          "title": "Tortuga de Hegetor"
+        },
+        {
+          "locus": "10.16",
+          "title": "Medidas de defensa"
+        }
+      ]
+    }
+  ]
+}
