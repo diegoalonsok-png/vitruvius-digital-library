@@ -802,6 +802,12 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
  <button type="submit">Calcular</button>
  </form>
  <div class="lx-gem-examples"><span>Ejemplos documentados</span><button type="button" data-gem-example="נרון קסר" lang="he">נרון קסר · 666</button><button type="button" data-gem-example="נרו קסר" lang="he">נרו קסר · 616</button><button type="button" data-gem-example="Neron Caesar">Neron Caesar</button><button type="button" data-gem-example="Νέρων Καῖσαρ" lang="el">Νέρων Καῖσαρ</button><button type="button" data-gem-example="דוד" lang="he">דוד · 14</button><button type="button" data-gem-example="שלום" lang="he">שלום · 376</button><button type="button" data-gem-example="λόγος" lang="el">λόγος · 373</button><button type="button" data-gem-example="Ἰησοῦς" lang="el">Ἰησοῦς · 888</button><button type="button" data-gem-example="χξϛ" lang="el">χξϛ · 666</button><button type="button" data-gem-example="χιϛ" lang="el">χιϛ · 616</button></div>
+ <details id="lx-gem-catalog" class="lx-gem-catalog">
+  <summary>Explorar ejemplos históricos y valores calculados <span class="lx-gem-catalog-counter">(<span id="lx-gem-catalog-count">0</span>)</span></summary>
+  <p class="lx-gem-catalog-help">Elegí una expresión para llevarla al buscador y obtener la suma de sus letras. Los registros distinguen testimonios antiguos, interpretaciones posteriores y valores aritméticos.</p>
+  <div id="lx-gem-catalog-list" class="lx-gem-catalog-list"></div>
+  <p id="lx-gem-catalog-source" class="lx-gem-catalog-source" aria-live="polite"></p>
+ </details>
  <div id="lx-gem-result" class="lx-gem-result" role="status" aria-live="polite">Escribí o pegá una expresión para calcular su valor.</div>
  <div class="lx-gem-scholarship">
  <h3>Nota filológica y textual</h3>
@@ -931,5 +937,17 @@ html[data-theme=light] #lx-gematria .lx-gem-result{background:#f4f2ec;color:#242
 html[data-theme=light] #lx-gematria .lx-gem-letter{background:#e9e7df}
 html[data-theme=light] #lx-gematria a{color:#25384c}
 @media(max-width:760px){#lx-gematria .lx-gem-form{grid-template-columns:1fr}#lx-gematria .lx-gem-total{font-size:40px}}
+#lx-gematria .lx-gem-catalog{margin:14px 0 17px;padding:0;border:1px solid #4b4b50;border-radius:7px;overflow:hidden}
+#lx-gematria .lx-gem-catalog summary{padding:12px 16px;cursor:pointer;font-size:13px;font-weight:600;list-style-position:inside}
+#lx-gematria .lx-gem-catalog summary:hover{background:rgba(160,160,160,.08)}
+#lx-gematria .lx-gem-catalog-help{margin:10px 16px;color:#bbbfc3;font-size:12px}
+#lx-gematria .lx-gem-catalog-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:7px;padding:7px 13px 15px;max-height:350px;overflow-y:auto}
+#lx-gematria button.lx-gem-catalog-item{display:grid;grid-template-columns:1fr auto;text-align:left;gap:2px 10px;align-items:baseline;min-width:0;padding:9px 11px;min-height:0;border-color:#414147;background:#222225}
+#lx-gematria .lx-gem-catalog-item strong{font-size:16px;font-weight:500}
+#lx-gematria .lx-gem-catalog-item span{font-variant-numeric:tabular-nums;font-weight:650}
+#lx-gematria .lx-gem-catalog-item small{grid-column:1/-1;font-size:11px;color:#bfc0c4;line-height:1.4}
+#lx-gematria .lx-gem-catalog-source{margin:0 16px 14px;font-size:12px}
+html[data-theme=light] #lx-gematria .lx-gem-catalog-help,html[data-theme=light] #lx-gematria .lx-gem-catalog-item small{color:#535b62}
+html[data-theme=light] #lx-gematria button.lx-gem-catalog-item{background:#f1f0eb}
 </style>
-<script defer src="assets/lexicon-gematria.js?v=20261113-classic-regression-2"></script></body></html>
+<script defer src="assets/lexicon-gematria.js?v=20261113-catalog-3"></script></body></html>
