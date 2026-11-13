@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-codicological-trees-222-v1",
-  "count": 258,
+  "count": 256,
   "physicalWitnessCount": 93,
   "textualWitnessRecordCount": 100,
   "interpretation": "Work-to-manuscript links are attestations; ancestry is explicit and source-backed. No unidentified archetypes are invented.",
@@ -10260,31 +10260,6 @@
       }
     },
     {
-      "workId": "longo-dafnis-es",
-      "title": "Dafnis y Cloe (trad. castellana de Juan Valera)",
-      "kind": "documentary_witness_tree_not_stemma",
-      "root": {
-        "id": "longo-dafnis-es",
-        "type": "classical_work",
-        "label": "Longo · Dafnis y Cloe (trad. castellana de Juan Valera)"
-      },
-      "witnesses": [],
-      "links": [],
-      "documentedFiliation": [],
-      "archetype": null,
-      "subarchetypes": [],
-      "families": [],
-      "indirectSources": [],
-      "openOrClosedTradition": null,
-      "stemmaStatus": "not_established",
-      "gaps": {
-        "witnessesPending": true,
-        "criticalFamilyClassificationPending": true,
-        "collationPending": true,
-        "apographsRequiresEditionCitation": true
-      }
-    },
-    {
       "workId": "menandro-comedias",
       "title": "Comedias (fragmentos)",
       "kind": "documentary_witness_tree_not_stemma",
@@ -10311,12 +10286,12 @@
     },
     {
       "workId": "platon-cratilo-parmenides",
-      "title": "Crátilo, Parménides, Hipias, Hipias mayor",
+      "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "platon-cratilo-parmenides",
         "type": "classical_work",
-        "label": "Platón · Crátilo, Parménides, Hipias, Hipias mayor"
+        "label": "Platón · Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)"
       },
       "witnesses": [],
       "links": [],
@@ -10592,31 +10567,6 @@
         "id": "minucio-felix-octavio",
         "type": "classical_work",
         "label": "Minucio Félix · Octavio"
-      },
-      "witnesses": [],
-      "links": [],
-      "documentedFiliation": [],
-      "archetype": null,
-      "subarchetypes": [],
-      "families": [],
-      "indirectSources": [],
-      "openOrClosedTradition": null,
-      "stemmaStatus": "not_established",
-      "gaps": {
-        "witnessesPending": true,
-        "criticalFamilyClassificationPending": true,
-        "collationPending": true,
-        "apographsRequiresEditionCitation": true
-      }
-    },
-    {
-      "workId": "prudencio-poemas",
-      "title": "Poemas",
-      "kind": "documentary_witness_tree_not_stemma",
-      "root": {
-        "id": "prudencio-poemas",
-        "type": "classical_work",
-        "label": "Prudencio · Poemas"
       },
       "witnesses": [],
       "links": [],

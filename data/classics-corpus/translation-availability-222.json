@@ -4,7 +4,7 @@
  "basis": "Registro de archivos textuales localmente indexados en coverage-audit.json (construido desde search-registry.json). A translation.status external is bibliographic only and is not verified as locally readable. HTML/JSON count only if registered as indexed. Counts are works, not files. A book can count in multiple languages.",
  "scope": "222 classical work catalogue records; local translations ES/EN/FR",
  "totals": {
-  "cataloguedWorks": 258,
+  "cataloguedWorks": 256,
   "locallyIndexedWorks": 182,
   "translatedWorksLocal": 59,
   "worksWithoutHostedTranslation": 199,
@@ -3942,18 +3942,6 @@
    "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
   },
   {
-   "id": "longo-dafnis-es",
-   "author": "Longo",
-   "title": "Dafnis y Cloe (trad. castellana de Juan Valera)",
-   "originalLanguage": "grc",
-   "originalIndexed": false,
-   "translationLanguages": [],
-   "localEditionLanguages": [],
-   "externalTranslationUnverified": [],
-   "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
-  },
-  {
    "id": "menandro-comedias",
    "author": "Menandro",
    "title": "Comedias (fragmentos)",
@@ -4101,18 +4089,6 @@
    "id": "minucio-felix-octavio",
    "author": "Minucio Félix",
    "title": "Octavio",
-   "originalLanguage": "la",
-   "originalIndexed": false,
-   "translationLanguages": [],
-   "localEditionLanguages": [],
-   "externalTranslationUnverified": [],
-   "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
-  },
-  {
-   "id": "prudencio-poemas",
-   "author": "Prudencio",
-   "title": "Poemas",
    "originalLanguage": "la",
    "originalIndexed": false,
    "translationLanguages": [],

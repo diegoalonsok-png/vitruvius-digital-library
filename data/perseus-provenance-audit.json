@@ -4,7 +4,7 @@
   "scope": "local catalogue and search registry only",
   "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented.",
   "counts": {
-    "works": 258,
+    "works": 256,
     "worksWithCandidateWorkCodes": 179,
     "versions": 246,
     "worksWithPerseusSourceDescription": 142,
@@ -5623,20 +5623,6 @@
       "note": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay texto TEI ni atribución a Perseus."
     },
     {
-      "workId": "longo-dafnis-es",
-      "author": "Longo",
-      "title": "Dafnis y Cloe (trad. castellana de Juan Valera)",
-      "originalLanguage": "grc",
-      "sourceReadiness": "facsimil_alojado_sin_transcripcion",
-      "originalIndexed": false,
-      "translationHosted": false,
-      "candidateWorkCodes": [],
-      "versions": [],
-      "perseusSourceClaim": false,
-      "verifiedEditionUrn": null,
-      "note": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay texto TEI ni atribución a Perseus."
-    },
-    {
       "workId": "menandro-comedias",
       "author": "Menandro",
       "title": "Comedias (fragmentos)",
@@ -5808,20 +5794,6 @@
       "workId": "minucio-felix-octavio",
       "author": "Minucio Félix",
       "title": "Octavio",
-      "originalLanguage": "la",
-      "sourceReadiness": "facsimil_alojado_sin_transcripcion",
-      "originalIndexed": false,
-      "translationHosted": false,
-      "candidateWorkCodes": [],
-      "versions": [],
-      "perseusSourceClaim": false,
-      "verifiedEditionUrn": null,
-      "note": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay texto TEI ni atribución a Perseus."
-    },
-    {
-      "workId": "prudencio-poemas",
-      "author": "Prudencio",
-      "title": "Poemas",
       "originalLanguage": "la",
       "sourceReadiness": "facsimil_alojado_sin_transcripcion",
       "originalIndexed": false,

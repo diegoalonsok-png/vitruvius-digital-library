@@ -4,7 +4,7 @@
  "scope": "Se auditan exclusivamente 222 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
  "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
  "counts": {
-  "cataloguedWorks": 258,
+  "cataloguedWorks": 256,
   "catalogueStatuses": {
    "lectura-local-completa": 32,
    "lectura-local-parcial": 113,
@@ -5379,24 +5379,6 @@
    "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
   },
   {
-   "id": "longo-dafnis-es",
-   "author": "Longo",
-   "title": "Dafnis y Cloe (trad. castellana de Juan Valera)",
-   "originalLanguage": "grc",
-   "genre": "Pendiente de consignar: no se deduce del facsímil.",
-   "dating": "Pendiente de consignar: no se deduce del facsímil.",
-   "catalogueStatus": "fuente-externa-identificada",
-   "indexedTextLanguages": [],
-   "indexedTextFiles": [],
-   "localPDF": null,
-   "hasStructuredVitruviusReader": false,
-   "hasDedicatedReader": true,
-   "hasManuscriptRecord": false,
-   "manuscriptRecords": [],
-   "hasDeclaredExternalReading": true,
-   "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
-  },
-  {
    "id": "menandro-comedias",
    "author": "Menandro",
    "title": "Comedias (fragmentos)",
@@ -5616,24 +5598,6 @@
    "id": "minucio-felix-octavio",
    "author": "Minucio Félix",
    "title": "Octavio",
-   "originalLanguage": "la",
-   "genre": "Pendiente de consignar: no se deduce del facsímil.",
-   "dating": "Pendiente de consignar: no se deduce del facsímil.",
-   "catalogueStatus": "fuente-externa-identificada",
-   "indexedTextLanguages": [],
-   "indexedTextFiles": [],
-   "localPDF": null,
-   "hasStructuredVitruviusReader": false,
-   "hasDedicatedReader": true,
-   "hasManuscriptRecord": false,
-   "manuscriptRecords": [],
-   "hasDeclaredExternalReading": true,
-   "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
-  },
-  {
-   "id": "prudencio-poemas",
-   "author": "Prudencio",
-   "title": "Poemas",
    "originalLanguage": "la",
    "genre": "Pendiente de consignar: no se deduce del facsímil.",
    "dating": "Pendiente de consignar: no se deduce del facsímil.",

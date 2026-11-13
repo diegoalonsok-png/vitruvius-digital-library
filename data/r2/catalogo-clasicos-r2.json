@@ -832,7 +832,8 @@
    "sha256": "74d8c964f4e9e90ce6e1ca4ff823429b0a1fc353bd2d1b894fb6e37b50dd8782",
    "paginas": 264,
    "paginasConTexto": 230,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "traduccionDe": "longo-dafnis-cloe"
   },
   {
    "id": "luciano-obras",
@@ -936,7 +937,7 @@
   {
    "id": "platon-cratilo-parmenides",
    "autor": "Platón",
-   "obra": "Crátilo, Parménides, Hipias, Hipias mayor",
+   "obra": "Crátilo, Fedón, Parménides y Timeo (trad. inglesa de Thomas Taylor)",
    "lengua": "grc",
    "idiomaEdicion": "s/d",
    "tanda": 2,
@@ -958,7 +959,8 @@
    "sha256": "755188bd152820a93afc60d282d2a0bf93d0203e9d2525e07b6ebf4eab6dede6",
    "paginas": 594,
    "paginasConTexto": 566,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Traducción inglesa de T. Taylor (1793), sin texto griego."
   },
   {
    "id": "platon-fedon",
@@ -1377,7 +1379,8 @@
    "sha256": "c2492279bf45a36c4b79a30ac925718b4ef1eedeae95976372a51c99405937ce",
    "paginas": 417,
    "paginasConTexto": 412,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Tomo II de la traducción castellana (Biblioteca Clásica, 1896)."
   },
   {
    "id": "apuleyo-metamorfosis",
@@ -1962,33 +1965,6 @@
    "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
   },
   {
-   "id": "prudencio-poemas",
-   "autor": "Prudencio",
-   "obra": "Poemas",
-   "lengua": "la",
-   "idiomaEdicion": "s/d",
-   "tanda": 2,
-   "tituloEdicion": "Aurelius Prudentius Clemens in seiner Bedeutung für die Kirche seiner Zeit",
-   "anio": 1872,
-   "volumen": null,
-   "editor": "Leipzig : Brockhaus",
-   "creadorIA": [
-    "Brockhaus, Clemens",
-    "Prudentius, b. 348"
-   ],
-   "bilingueLoeb": false,
-   "fuente": "https://archive.org/details/aureliusprudenti00brocuoft",
-   "identificadorIA": "aureliusprudenti00brocuoft",
-   "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
-   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/prudencio-poemas.pdf",
-   "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/prudencio-poemas.json",
-   "bytes": 24052541,
-   "sha256": "a426575dffe229fb21814bdfcdf439d517f34b14a22b189bd21d1ff25c477490",
-   "paginas": 358,
-   "paginasConTexto": 342,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
-  },
-  {
    "id": "quintiliano-institutio",
    "autor": "Quintiliano",
    "obra": "Institutio oratoria",
@@ -2114,7 +2090,8 @@
    "sha256": "f1c13e204a0104eb2eab28e24a624e65d7d6a9176efc89deeb0aa8365f1090bb",
    "paginas": 154,
    "paginasConTexto": 142,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Solo el libro I."
   },
   {
    "id": "varron-de-re-rustica",
@@ -2145,6 +2122,6 @@
  "schema": "vdl-r2-catalogo-clasicos-1",
  "actualizado": "2026-11-13",
  "descripcion": "Ediciones clásicas de dominio público alojadas en Cloudflare R2 (libros.vitruvius-digital-library.org). No duplican los PDF del repositorio.",
- "total": 84,
- "bytes": 1972270372
+ "total": 83,
+ "bytes": 1948217831
 }

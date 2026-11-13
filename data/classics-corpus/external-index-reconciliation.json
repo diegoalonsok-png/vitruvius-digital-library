@@ -7,17 +7,17 @@
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-latinos-20261108/data/offsite-latin/manifest.json"
   ],
   "counts": {
-    "worksCatalogued": 258,
+    "worksCatalogued": 256,
     "hostedOriginalsIndexed": 182,
     "remoteOriginalsIndexed": 28,
     "combinedOriginalsIndexed": 210,
-    "originalsStillWithoutIndex": 48,
+    "originalsStillWithoutIndex": 46,
     "remoteGreek": 16,
     "remoteLatin": 12,
     "hostedTranslations": 59,
     "hostedTextVersions": 247,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 45
+    "distinctAncientWorksStillMissingOriginalIndex": 43
   },
   "remoteEntries": [
     {
@@ -559,13 +559,6 @@
       "recordKind": "independent-work"
     },
     {
-      "workId": "longo-dafnis-es",
-      "originalLanguage": "grc",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": [],
-      "recordKind": "independent-work"
-    },
-    {
       "workId": "menandro-comedias",
       "originalLanguage": "grc",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
@@ -651,13 +644,6 @@
     },
     {
       "workId": "minucio-felix-octavio",
-      "originalLanguage": "la",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
-      "bibliographyCandidateUrns": [],
-      "recordKind": "independent-work"
-    },
-    {
-      "workId": "prudencio-poemas",
       "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],

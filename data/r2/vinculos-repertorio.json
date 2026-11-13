@@ -1,14 +1,14 @@
 {
  "schema": "vdl-r2-vinculos-repertorio-1",
  "actualizado": "2026-11-13",
- "descripcion": "Correspondencia, revisada a mano, entre las ediciones en facsímil alojadas en R2 y las 258 fichas del repertorio (data/bibliotheca-graeca-latina-I-bce-I-ce.json, que no se modifica). Las obras sin ficha previa se cuentan como incorporaciones nuevas; las ediciones aún no revisadas no se cuentan.",
+ "descripcion": "Correspondencia, revisada a mano, entre las ediciones en facsímil alojadas en R2 y las 256 fichas del repertorio (data/bibliotheca-graeca-latina-I-bce-I-ce.json, que no se modifica). Las obras sin ficha previa se cuentan como incorporaciones nuevas; las ediciones aún no revisadas no se cuentan.",
  "recuentos": {
-  "fichasRepertorio": 258,
+  "fichasRepertorio": 256,
   "obrasNuevas": 0,
-  "obrasTotales": 258,
+  "obrasTotales": 256,
   "edicionesFacsimil": 53,
   "fichasConFacsimil": 61,
-  "sinRevisar": 31
+  "sinRevisar": 30
  },
  "porObra": {
   "apolonio-argonauticas": [
@@ -775,7 +775,6 @@
   "higino-fabulas",
   "manilio-astronomica",
   "minucio-felix-octavio",
-  "prudencio-poemas",
   "valerio-flaco-argonautica"
  ],
  "mapa": {

@@ -954,10 +954,14 @@
    "obra": "Poemas",
    "lengua": "la",
    "titulo": [
-    "prudentius"
+    "prudentius",
+    "english translation"
    ],
    "creador": "prudentius|prudencio",
-   "tanda": 2
+   "tanda": 2,
+   "excluir": [
+    "aureliusprudenti00brocuoft"
+   ]
   },
   {
    "id": "lactancio-instituciones",
@@ -1026,7 +1030,8 @@
    ],
    "creador": "longo|longus|valera",
    "tanda": 2,
-   "idioma": "spa"
+   "idioma": "spa",
+   "traduccionDe": "longo-dafnis-cloe"
   }
  ]
 }
