@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bibliotheca ampliada: clásicos griegos y latinos de dominio público · Vitruvius Digital Library</title>
+<meta name="description" content="Ediciones griegas y latinas de dominio público, muchas bilingües (Loeb), con PDF, texto por página e índice de conceptos. Complementan los clásicos ya alojados sin repetirlos.">
+<link rel="canonical" href="https://vitruvius-digital-library.org/bibliotheca-ampliada">
+<meta name="citation_title" content="Bibliotheca ampliada: clásicos griegos y latinos de dominio público">
+<meta name="citation_author" content="Kurilo, Diego">
+<meta name="citation_publication_date" content="2026/11/13">
+<meta name="citation_publisher" content="Vitruvius Digital Library">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+<style>
+main{max-width:1180px;margin:auto;padding:30px clamp(16px,3vw,44px) 90px}
+h1{font:400 clamp(30px,4vw,46px)/1.15 Georgia,serif;margin:.3em 0}
+h2{font:400 25px/1.3 Georgia,serif;margin-top:34px}
+.intro{max-width:88ch;line-height:1.7}.small{font:13px/1.6 system-ui}
+.controles{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:18px 0}
+.controles label{display:flex;flex-direction:column;gap:4px;font:12px/1.3 system-ui;text-transform:uppercase;letter-spacing:.04em}
+.controles input,.controles select{font:15px/1.3 Georgia,serif;padding:7px 9px;border:1px solid rgba(128,128,128,.6);background:transparent;color:inherit;min-width:220px}
+.tabla{width:100%;border-collapse:collapse;font:14px/1.55 Georgia,serif;margin:12px 0}
+.tabla th{font:600 12px/1.4 system-ui;text-transform:uppercase;letter-spacing:.04em;text-align:left;border-bottom:1px solid currentColor;padding:8px}
+.tabla td{padding:9px 8px;border-bottom:1px solid rgba(128,128,128,.35);vertical-align:top}
+.tabla td.n{font:13px system-ui;white-space:nowrap}
+.cita{font:13px/1.6 system-ui;opacity:.85}
+.pags{font:13px/1.8 system-ui}.pags a{margin-right:6px}
+.lengua{font:600 11px system-ui;border:1px solid rgba(128,128,128,.6);border-radius:10px;padding:1px 7px;margin-left:6px}
+</style></head><body><main>
+<p class="small"><a href="index.html">← Inicio</a> · <a href="bibliotheca-graeca-latina.html">Bibliotheca graeca et latina</a> · <a href="datos.html">Datos</a> · <a href="metodologia-filologica.html">Metodología</a></p>
+<header><h1>Bibliotheca ampliada</h1>
+<p class="intro">Ediciones griegas y latinas de <strong>dominio público</strong> que no estaban entre los PDF de la biblioteca: historiadores, filósofos, trágicos, oradores, geógrafos, matemáticos y agrónomos. Siempre que existe, se elige un volumen <strong>bilingüe Loeb</strong>, con el texto griego o latino frente a la traducción inglesa. Cada libro trae su PDF, el texto de cada página y un índice de conceptos que lo conecta con el resto de la biblioteca.</p></header>
+<p id="estado" class="small" role="status">Cargando el catálogo…</p>
+
+<div class="controles">
+<label>Buscar autor u obra<input id="q" type="search" placeholder="Platón, geografía, Loeb…"></label>
+<label>Lengua del original<select id="lengua"><option value="">Todas</option><option value="grc">Griego</option><option value="la">Latín</option></select></label>
+<label>Concepto (índice semántico)<select id="concepto"><option value="">—</option></select></label>
+</div>
+<p id="aviso-concepto" class="small" hidden></p>
+
+<table class="tabla"><thead><tr><th>Autor y obra</th><th>Edición</th><th>Págs.</th><th>Consultar</th></tr></thead><tbody id="lista"></tbody></table>
+
+<section aria-labelledby="m"><h2 id="m">Procedencia y método</h2>
+<p class="intro">Fuente: Internet Archive. Solo se aceptan publicaciones de 1928 o anteriores, sin marca de derechos en sus metadatos. Para evitar errores de identificación, el autor buscado tiene que aparecer en las primeras páginas del PDF y el título tiene que coincidir con la obra. Se descartan los PDF idénticos a otros que ya están en la biblioteca, comparando su huella SHA-256. Los archivos se sirven desde <code>libros.vitruvius-digital-library.org</code>, y cada uno se verificó descargándolo desde allí y comparando su huella con la del original.</p>
+<p class="intro">El <strong>índice de conceptos</strong> busca, página por página, los términos atestiguados del diccionario <a href="vitruvia-lexicon.html">Conceptus</a> en latín, griego, inglés y la lengua de la obra. Lo hace sobre el OCR de Internet Archive, <strong>sin revisar</strong>: las páginas que propone sirven para ubicarse y leer, no son citas verificadas. El texto por página se ofrece tal como sale del OCR.</p>
+<p class="cita">Datos abiertos: <a href="data/r2/catalogo-clasicos-r2.json">catálogo (JSON)</a> · <a href="data/r2/conceptus-clasicos-r2.json">índice de conceptos (JSON)</a></p>
+</section>
+</main>
+<script>
+(()=>{
+const $=s=>document.querySelector(s);
+const el=(t,txt,c)=>{const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(c)e.className=c;return e};
+const a=(href,txt)=>{const x=el("a",txt);x.href=href;x.rel="noopener";return x};
+const fold=s=>String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const LENG={grc:"griego",la:"latín"};
+const pl=(n,a,b)=>n+" "+(n===1?a:b);
+Promise.all([
+ fetch("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).then(r=>r.json()),
+ fetch("data/r2/conceptus-clasicos-r2.json",{cache:"no-cache"}).then(r=>r.json()),
+ fetch("data/lexicon/conceptus.json").then(r=>r.json())
+]).then(([cat,con,dic])=>{
+ const items=cat.items||[];
+ const mb=Math.round((cat.bytes||0)/1048576);
+ $("#estado").textContent=items.length+" ediciones ("+items.filter(x=>x.lengua==="grc").length+" griegas, "+items.filter(x=>x.lengua==="la").length+" latinas; "+items.filter(x=>x.bilingueLoeb).length+" bilingües Loeb) · "+items.reduce((s,x)=>s+x.paginas,0).toLocaleString("es")+" páginas · "+mb+" MB · actualizado "+cat.actualizado+".";
+ const nombre={};(dic.concepts||[]).forEach(c=>nombre[c.id]=((c.modern||{}).es||[c.id])[0]);
+ Object.keys(con.postings||{}).sort((x,y)=>fold(nombre[x]||x).localeCompare(fold(nombre[y]||y))).forEach(id=>{
+  const n=Object.keys(con.postings[id]).length;const o=el("option",(nombre[id]||id)+" ("+pl(n,"obra","obras")+")");o.value=id;$("#concepto").append(o)});
+ const params=new URLSearchParams(location.search);
+ if(params.get("concepto"))$("#concepto").value=params.get("concepto");
+ if(params.get("q"))$("#q").value=params.get("q");
+ const pintar=()=>{
+  const q=fold($("#q").value),l=$("#lengua").value,c=$("#concepto").value;
+  const post=c?(con.postings[c]||{}):null;
+  const tb=$("#lista");tb.textContent="";
+  let n=0;
+  items.forEach(x=>{
+   if(l&&x.lengua!==l)return;
+   if(q&&!fold([x.autor,x.obra,x.tituloEdicion,x.editor,x.bilingueLoeb?"loeb bilingue":""].join(" ")).includes(q))return;
+   if(post&&!post[x.id])return;
+   n++;
+   const tr=document.createElement("tr");
+   const t1=el("td");t1.append(el("strong",x.autor),document.createElement("br"),el("span",x.obra));t1.append(el("span",LENG[x.lengua]||x.lengua,"lengua"));
+   const t2=el("td");t2.append(el("span",x.tituloEdicion+" ("+x.anio+(x.volumen?", vol. "+x.volumen:"")+")"),document.createElement("br"),el("span",[x.editor,x.bilingueLoeb?"Loeb, original y traducción inglesa":""].filter(Boolean).join(" · "),"cita"));
+   const t3=el("td",String(x.paginas),"n");
+   const t4=el("td","","n");t4.append(a(x.pdf,"PDF"),document.createTextNode(" · "),a(x.texto,"texto"),document.createTextNode(" · "),a(x.fuente,"Internet Archive"));
+   tr.append(t1,t2,t3,t4);tb.append(tr);
+   if(post){const p=post[x.id];const tr2=document.createElement("tr");const td=el("td","","pags");td.colSpan=4;
+    td.append(el("span","«"+(nombre[c]||c)+"»: "+pl(p.total,"página","páginas")+(p.total>p.paginas.length?" (se muestran "+p.paginas.length+")":"")+" — "));
+    p.paginas.forEach(pg=>td.append(a(x.pdf+"#page="+pg,"p. "+pg)));tr2.append(td);tb.append(tr2)}
+  });
+  $("#aviso-concepto").hidden=!c;
+  $("#aviso-concepto").textContent=c?pl(n,"obra","obras")+" con «"+(nombre[c]||c)+"». Los números son páginas del PDF; el OCR no está revisado.":"";
+ };
+ ["#q","#lengua","#concepto"].forEach(s=>$(s).addEventListener("input",pintar));
+ pintar();
+}).catch(e=>{$("#estado").textContent="No se pudo cargar el catálogo: "+e.message});
+})();
+</script>
+<script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script>
+</body></html>
