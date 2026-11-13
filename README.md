@@ -1,5 +1,19 @@
 # Vitruvius Digital Library
 
+## DOI identifiers for citing the three research tools (13 November 2026)
+
+The independent tools now have separate deposited Zenodo DOI records; cite the exact resource used instead of assigning the umbrella library DOI to all tools.
+
+| Resource | DOI | Online access |
+| --- | --- | --- |
+| Vitruvius Digital Library (umbrella collection) | [10.5281/zenodo.23868911](https://doi.org/10.5281/zenodo.23868911) | [Library](https://vitruvius-digital-library.org/) |
+| Vitruvia (academic search) | [10.5281/zenodo.24201044](https://doi.org/10.5281/zenodo.24201044) | [Vitruvia](https://vitruvius-digital-library.org/vitruvia) |
+| Vitruvia Lexicon | [10.5281/zenodo.24201083](https://doi.org/10.5281/zenodo.24201083) | [Lexicon](https://vitruvius-digital-library.org/vitruvia-lexicon) |
+| Bibliotheca Graeca et Latina | [10.5281/zenodo.24199923](https://doi.org/10.5281/zenodo.24199923) | [Bibliotheca](https://vitruvius-digital-library.org/bibliotheca-graeca-latina) |
+
+The distinct book DOI records for V514 (Spanish), V554 (French) and V297 (English) remain separate from these research-tool records. For precise citation examples see [Cómo citar](como-citar.html) or [For Researchers](for-researchers.html). DOI registration does not imply peer review or institutional endorsement.
+
+
 ## Interdisciplinary Greek and Latin teaching / Docencia clásica interdisciplinaria
 
 This project has a specialized Vitruvian core and a broader **Bibliotheca Graeca et Latina** for students and researchers across classical philology, philosophy, history, literary studies, archaeology, ancient science and the history of ideas.
