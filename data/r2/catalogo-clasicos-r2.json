@@ -126,7 +126,7 @@
   {
    "id": "demostenes-discursos",
    "autor": "Demóstenes",
-   "obra": "Discursos",
+   "obra": "Sobre la corona",
    "lengua": "grc",
    "tituloEdicion": "The oration of Demosthenes on the crown : with an English translation, introd., notes and indices",
    "anio": 1882,
@@ -136,7 +136,7 @@
     "Demosthenes",
     "Simpson, Francis Peacock, 1851-"
    ],
-   "bilingueLoeb": true,
+   "bilingueLoeb": false,
    "fuente": "https://archive.org/details/oration00ofdemosthdemorich",
    "identificadorIA": "oration00ofdemosthdemorich",
    "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
@@ -146,7 +146,8 @@
    "sha256": "fc94d52ae41bdb20e1cd10aea514cd68f53ee6612ec8d4cb7a7d4662c48d7118",
    "paginas": 380,
    "paginasConTexto": 359,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Un discurso, con traducción inglesa."
   },
   {
    "id": "diogenes-laercio-vidas",
@@ -176,7 +177,7 @@
   {
    "id": "esquilo-tragedias",
    "autor": "Esquilo",
-   "obra": "Tragedias",
+   "obra": "Orestíada",
    "lengua": "grc",
    "tituloEdicion": "The Oresteia of Aeschylus",
    "anio": 1900,
@@ -196,7 +197,8 @@
    "sha256": "375b8d43e963dbd0e980095efa30eb2ba3308eb1b873f32765e11c223d5f7019",
    "paginas": 310,
    "paginasConTexto": 264,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Trilogía de la Orestíada."
   },
   {
    "id": "estrabon-geografia",
@@ -227,7 +229,7 @@
   {
    "id": "euclides-elementos",
    "autor": "Euclides",
-   "obra": "Elementos (trad. Heath)",
+   "obra": "Elementos, libros I–VI (ed. de O. Byrne, con diagramas en color)",
    "lengua": "grc",
    "tituloEdicion": "The first six books of the Elements of Euclid, in which coloured diagrams and symbols are used instead of letters ..",
    "anio": 1847,
@@ -247,7 +249,8 @@
    "sha256": "a20e6c0091936d526ea96962c925b32a07176f5d47deb62677ea1893055e9f6e",
    "paginas": 306,
    "paginasConTexto": 275,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Libros I–VI en inglés."
   },
   {
    "id": "euripides-tragedias",
@@ -302,7 +305,7 @@
   {
    "id": "isocrates-discursos",
    "autor": "Isócrates",
-   "obra": "Discursos",
+   "obra": "A Demónico y Panegírico",
    "lengua": "grc",
    "tituloEdicion": "Ad demonicum et Panegyricus Isocrates",
    "anio": 1868,
@@ -319,7 +322,8 @@
    "sha256": "53533d699b39306984f5a94b580850b5c43fcf3831f967cf86ab3fa311fa8196",
    "paginas": 251,
    "paginasConTexto": 240,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Dos discursos, no la obra completa."
   },
   {
    "id": "jenofonte-anabasis",
@@ -380,7 +384,7 @@
   {
    "id": "lisias-discursos",
    "autor": "Lisias",
-   "obra": "Discursos",
+   "obra": "Selección de oradores áticos (Jebb): Antifonte, Andócides, Lisias, Isócrates, Iseo",
    "lengua": "grc",
    "tituloEdicion": "Selections from The Attic orators: Antiphon, Andokides, Lysias, Isokrates, Isaeos;",
    "anio": 1880,
@@ -404,7 +408,8 @@
    "sha256": "a3fdc740efc581502f37587442dfba52343db5a5242c1bf1148918607b52465b",
    "paginas": 456,
    "paginasConTexto": 438,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Antología con texto griego y comentario."
   },
   {
    "id": "luciano-obras",
@@ -481,7 +486,7 @@
   {
    "id": "platon-fedon",
    "autor": "Platón",
-   "obra": "Fedón",
+   "obra": "Eutifrón, Apología, Critón y Fedón (trad. inglesa de F. J. Church)",
    "lengua": "grc",
    "tituloEdicion": "The trial and death of Socrates : being the Euthyphron, Apology, Crito, and Phaedo of Plato",
    "anio": 1895,
@@ -501,7 +506,8 @@
    "sha256": "bce9d90c64fe2f2c469e3967782806fb6464fbb6fdd72655567491f2ca3e5777",
    "paginas": 316,
    "paginasConTexto": 291,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Traducción inglesa sin texto griego."
   },
   {
    "id": "platon-leyes",
@@ -823,7 +829,7 @@
   {
    "id": "celso-de-medicina",
    "autor": "Celso",
-   "obra": "De medicina",
+   "obra": "De medicina, libros I–IV (traducción interlineal)",
    "lengua": "la",
    "tituloEdicion": "A literal interlineal translation of the first four books of Celsus De medicina, with \"Ordo\" and text : translated from the text selected for the examination of candidates at Apothecaries' Hall, and other public boards; in which the elliptical constructions are completed by supplying the suppressed words, shewing the relations and concords of the different words with each other : with an introduction, explanatory of the more obscure and difficult grammatical constructions, and rules for reducing to the English parallels and equivalents",
    "anio": 1837,
@@ -845,12 +851,13 @@
    "sha256": "a43ac7555831c6037930756edd71e3a642bbd6fe45000ddfc3c535942e29df59",
    "paginas": 326,
    "paginasConTexto": 316,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Libros I–IV."
   },
   {
    "id": "ciceron-de-oratore",
    "autor": "Cicerón",
-   "obra": "De oratore",
+   "obra": "De oratore, libro I (trad. inglesa)",
    "lengua": "la",
    "tituloEdicion": "De oratore, book 1. Translated into English with an introd. by E.N.P. Moor",
    "anio": 1892,
@@ -870,7 +877,8 @@
    "sha256": "9b96e03443f8268fb39ebb47ace7ea047aa99f3ccde300ee1d7b1c1fe483be63",
    "paginas": 140,
    "paginasConTexto": 127,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Solo el libro I, en traducción inglesa."
   },
   {
    "id": "ciceron-de-re-publica",
@@ -922,7 +930,7 @@
   {
    "id": "columela-de-re-rustica",
    "autor": "Columela",
-   "obra": "De re rustica",
+   "obra": "De re rustica, libro X (De cultu hortorum), trad. italiana",
    "lengua": "la",
    "tituloEdicion": "Columella la cultura de' giardini traduzione di Massimiliano Pelagatti",
    "anio": 1839,
@@ -939,7 +947,8 @@
    "sha256": "726ab7c7cd4e514d799e4019cad67bb68a4a6e700f9b9e49b64e4f8a45607389",
    "paginas": 64,
    "paginasConTexto": 61,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Solo el libro X, en traducción italiana de M. Pelagatti."
   },
   {
    "id": "cesar-guerra-civil",
@@ -964,31 +973,6 @@
    "sha256": "50de9393bbf1912b7634b1c8bee946c1f39005a52bc5809aa3e05afa9f38966f",
    "paginas": 404,
    "paginasConTexto": 372,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
-  },
-  {
-   "id": "estacio-obras",
-   "autor": "Estacio",
-   "obra": "Silvas y Tebaida",
-   "lengua": "la",
-   "tituloEdicion": "Togail na Tebe; the Thebaid of Statius. The Irish text edited from two mss. with introduction, translation, vocabulary and notes",
-   "anio": 1922,
-   "volumen": null,
-   "editor": "Cambridge [Eng.] : The University Press",
-   "creadorIA": [
-    "Statius, P. Papinius (Publius Papinius)",
-    "Calder, George, 1859-1941"
-   ],
-   "bilingueLoeb": false,
-   "fuente": "https://archive.org/details/cu31924026519334",
-   "identificadorIA": "cu31924026519334",
-   "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
-   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/estacio-obras.pdf",
-   "texto": "https://libros.vitruvius-digital-library.org/clasicos/texto/estacio-obras.json",
-   "bytes": 14545987,
-   "sha256": "fac46dd7e211f8766464935a1d6ca87330f7ab2e66a1c057d378b1c597baa2f4",
-   "paginas": 464,
-   "paginasConTexto": 449,
    "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
   },
   {
@@ -1070,7 +1054,7 @@
   {
    "id": "ovidio-fastos",
    "autor": "Ovidio",
-   "obra": "Fastos",
+   "obra": "Fastos (trad. italiana)",
    "lengua": "la",
    "tituloEdicion": "I Fasti;",
    "anio": 1811,
@@ -1090,12 +1074,13 @@
    "sha256": "09f1f39ef6f6f4de711372ef1454283117dd284f5d7ab332d6b908448e3f6091",
    "paginas": 490,
    "paginasConTexto": 476,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Traducción italiana de 1811."
   },
   {
    "id": "petronio-satiricon",
    "autor": "Petronio",
-   "obra": "Satiricón",
+   "obra": "Bellum civile (Satiricón 119–124)",
    "lengua": "la",
    "tituloEdicion": "The Bellum civile of Petronius;",
    "anio": 1911,
@@ -1115,7 +1100,8 @@
    "sha256": "6f31a691dcadd61dfa38bca760ea14d6acdf023a3e0c2d6e345d6a44060d1aa9",
    "paginas": 282,
    "paginasConTexto": 271,
-   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+   "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+   "alcance": "Solo el poema Bellum civile, no el Satiricón completo."
   },
   {
    "id": "plinio-joven-cartas",
@@ -1320,6 +1306,6 @@
  "schema": "vdl-r2-catalogo-clasicos-1",
  "actualizado": "2026-11-13",
  "descripcion": "Ediciones clásicas de dominio público alojadas en Cloudflare R2 (libros.vitruvius-digital-library.org). No duplican los PDF del repositorio.",
- "total": 53,
- "bytes": 1176024180
+ "total": 52,
+ "bytes": 1161478193
 }

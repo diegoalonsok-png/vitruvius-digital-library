@@ -83,11 +83,19 @@ def elegir_pdf(ident, anio_max, max_bytes):
     return m, pdfs[0], anio
 
 
+def es_loeb(titulo, editor, anio):
+    ed = " ".join(editor) if isinstance(editor, list) else (editor or "")
+    return ("english translation" in fold(titulo) and anio >= 1911
+            and any(w in fold(ed) for w in ("heinemann", "putnam", "harvard")))
+
+
 def procesar(o, ctx):
     import fitz
     rechazos = []
     for doc in buscar_ia(o, ctx["anio_max"])[:12]:
         ident = doc["identifier"]
+        if ident in o.get("excluir", []):
+            continue
         try:
             titulo = doc.get("title") or ""
             if isinstance(titulo, list):
@@ -127,7 +135,7 @@ def procesar(o, ctx):
                 "id": o["id"], "autor": o["autor"], "obra": o["obra"], "lengua": o["lengua"],
                 "tituloEdicion": titulo, "anio": int(anio), "volumen": m.get("volume") or doc.get("volume"),
                 "editor": m.get("publisher"), "creadorIA": m.get("creator"),
-                "bilingueLoeb": "english translation" in fold(titulo),
+                "bilingueLoeb": es_loeb(titulo, m.get("publisher"), int(anio)),
                 "fuente": f"https://archive.org/details/{ident}", "identificadorIA": ident,
                 "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
                 "pdf": PUBLICO + "/" + clave_pdf, "texto": PUBLICO + "/" + clave_txt,

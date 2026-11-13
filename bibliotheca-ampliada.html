@@ -82,6 +82,7 @@ Promise.all([
    const tr=document.createElement("tr");
    const t1=el("td");t1.append(el("strong",x.autor),document.createElement("br"),el("span",x.obra));t1.append(el("span",LENG[x.lengua]||x.lengua,"lengua"));
    const t2=el("td");t2.append(el("span",x.tituloEdicion+" ("+x.anio+(x.volumen?", vol. "+x.volumen:"")+")"),document.createElement("br"),el("span",[x.editor,x.bilingueLoeb?"Loeb, original y traducción inglesa":""].filter(Boolean).join(" · "),"cita"));
+   if(x.alcance){t2.append(document.createElement("br"),el("em","Alcance: "+x.alcance,"cita"))}
    const t3=el("td",String(x.paginas),"n");
    const t4=el("td","","n");t4.append(a(x.pdf,"PDF"),document.createTextNode(" · "),a(x.texto,"texto"),document.createTextNode(" · "),a(x.fuente,"Internet Archive"));
    tr.append(t1,t2,t3,t4);tb.append(tr);

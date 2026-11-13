@@ -1,61 +1,554 @@
 {
  "schema": "vdl-r2-clasicos-candidatos-1",
  "descripcion": "Obras clásicas griegas y latinas que todavía no tienen PDF en la biblioteca (documents/clasicos, documents/classics). Se buscan en Internet Archive ediciones de dominio público (anteriores a 1929), con preferencia por volúmenes bilingües Loeb (original y traducción inglesa enfrentados). Cada PDF elegido debe mencionar al autor en sus primeras páginas.",
- "limites": {"maxMiB": 180, "anioMaximo": 1928},
+ "limites": {
+  "maxMiB": 180,
+  "anioMaximo": 1928
+ },
  "obras": [
-  {"id": "herodoto-historias", "autor": "Heródoto", "obra": "Historias", "lengua": "grc", "titulo": ["herodotus"], "creador": "herodotus"},
-  {"id": "tucidides-historia", "autor": "Tucídides", "obra": "Historia de la guerra del Peloponeso", "lengua": "grc", "titulo": ["thucydides"], "creador": "thucydides"},
-  {"id": "jenofonte-anabasis", "autor": "Jenofonte", "obra": "Anábasis", "lengua": "grc", "titulo": ["anabasis"], "creador": "xenophon"},
-  {"id": "jenofonte-memorabilia", "autor": "Jenofonte", "obra": "Memorables", "lengua": "grc", "titulo": ["memorabilia"], "creador": "xenophon"},
-  {"id": "plutarco-vidas", "autor": "Plutarco", "obra": "Vidas paralelas", "lengua": "grc", "titulo": ["lives"], "creador": "plutarch"},
-  {"id": "polibio-historias", "autor": "Polibio", "obra": "Historias", "lengua": "grc", "titulo": ["histories"], "creador": "polybius"},
-  {"id": "demostenes-discursos", "autor": "Demóstenes", "obra": "Discursos", "lengua": "grc", "titulo": ["demosthenes"], "creador": "demosthenes"},
-  {"id": "lisias-discursos", "autor": "Lisias", "obra": "Discursos", "lengua": "grc", "titulo": ["lysias"], "creador": "lysias"},
-  {"id": "isocrates-discursos", "autor": "Isócrates", "obra": "Discursos", "lengua": "grc", "titulo": ["isocrates"], "creador": "isocrates"},
-  {"id": "platon-banquete", "autor": "Platón", "obra": "Banquete", "lengua": "grc", "titulo": ["symposium"], "creador": "plato"},
-  {"id": "platon-fedon", "autor": "Platón", "obra": "Fedón", "lengua": "grc", "titulo": ["phaedo"], "creador": "plato"},
-  {"id": "platon-timeo", "autor": "Platón", "obra": "Timeo", "lengua": "grc", "titulo": ["timaeus"], "creador": "plato"},
-  {"id": "platon-leyes", "autor": "Platón", "obra": "Leyes", "lengua": "grc", "titulo": ["laws"], "creador": "plato"},
-  {"id": "aristoteles-politica", "autor": "Aristóteles", "obra": "Política", "lengua": "grc", "titulo": ["politics"], "creador": "aristotle"},
-  {"id": "aristoteles-metafisica", "autor": "Aristóteles", "obra": "Metafísica", "lengua": "grc", "titulo": ["metaphysics"], "creador": "aristotle"},
-  {"id": "teofrasto-historia-plantas", "autor": "Teofrasto", "obra": "Historia de las plantas", "lengua": "grc", "titulo": ["plants"], "creador": "theophrastus"},
-  {"id": "esquilo-tragedias", "autor": "Esquilo", "obra": "Tragedias", "lengua": "grc", "titulo": ["aeschylus"], "creador": "aeschylus"},
-  {"id": "sofocles-tragedias", "autor": "Sófocles", "obra": "Tragedias", "lengua": "grc", "titulo": ["sophocles"], "creador": "sophocles"},
-  {"id": "euripides-tragedias", "autor": "Eurípides", "obra": "Tragedias", "lengua": "grc", "titulo": ["euripides"], "creador": "euripides"},
-  {"id": "aristofanes-comedias", "autor": "Aristófanes", "obra": "Comedias", "lengua": "grc", "titulo": ["aristophanes"], "creador": "aristophanes"},
-  {"id": "apolonio-argonauticas", "autor": "Apolonio de Rodas", "obra": "Argonáuticas", "lengua": "grc", "titulo": ["argonautica"], "creador": "apollonius"},
-  {"id": "teocrito-bucolicos", "autor": "Teócrito, Bión y Mosco", "obra": "Poetas bucólicos griegos", "lengua": "grc", "titulo": ["bucolic"], "creador": "theocritus"},
-  {"id": "luciano-obras", "autor": "Luciano de Samósata", "obra": "Obras", "lengua": "grc", "titulo": ["lucian"], "creador": "lucian"},
-  {"id": "pausanias-descripcion", "autor": "Pausanias", "obra": "Descripción de Grecia", "lengua": "grc", "titulo": ["description of greece"], "creador": "pausanias"},
-  {"id": "estrabon-geografia", "autor": "Estrabón", "obra": "Geografía", "lengua": "grc", "titulo": ["geography"], "creador": "strabo"},
-  {"id": "euclides-elementos", "autor": "Euclides", "obra": "Elementos (trad. Heath)", "lengua": "grc", "titulo": ["elements"], "creador": "euclid"},
-  {"id": "arquimedes-obras", "autor": "Arquímedes", "obra": "Obras (ed. Heath)", "lengua": "grc", "titulo": ["archimedes"], "creador": "archimedes"},
-  {"id": "diogenes-laercio-vidas", "autor": "Diógenes Laercio", "obra": "Vidas de los filósofos ilustres", "lengua": "grc", "titulo": ["philosophers"], "creador": "diogenes laertius"},
-  {"id": "longino-sublime", "autor": "Pseudo-Longino", "obra": "Sobre lo sublime", "lengua": "grc", "titulo": ["sublime"], "creador": "longinus"},
-  {"id": "plinio-historia-natural", "autor": "Plinio el Viejo", "obra": "Historia natural", "lengua": "la", "titulo": ["natural history"], "creador": "pliny"},
-  {"id": "tito-livio-historia", "autor": "Tito Livio", "obra": "Ab urbe condita", "lengua": "la", "titulo": ["livy"], "creador": "livy"},
-  {"id": "salustio-obras", "autor": "Salustio", "obra": "Catilina y Yugurta", "lengua": "la", "titulo": ["sallust"], "creador": "sallust"},
-  {"id": "ciceron-de-oratore", "autor": "Cicerón", "obra": "De oratore", "lengua": "la", "titulo": ["de oratore"], "creador": "cicero"},
-  {"id": "ciceron-de-re-publica", "autor": "Cicerón", "obra": "De re publica / De legibus", "lengua": "la", "titulo": ["de re publica"], "creador": "cicero"},
-  {"id": "ciceron-tusculanas", "autor": "Cicerón", "obra": "Disputaciones tusculanas", "lengua": "la", "titulo": ["tusculan"], "creador": "cicero"},
-  {"id": "seneca-tragedias", "autor": "Séneca", "obra": "Tragedias", "lengua": "la", "titulo": ["tragedies"], "creador": "seneca"},
-  {"id": "lucano-farsalia", "autor": "Lucano", "obra": "Farsalia", "lengua": "la", "titulo": ["pharsalia"], "creador": "lucan"},
-  {"id": "estacio-obras", "autor": "Estacio", "obra": "Silvas y Tebaida", "lengua": "la", "titulo": ["statius"], "creador": "statius"},
-  {"id": "juvenal-persio-satiras", "autor": "Juvenal y Persio", "obra": "Sátiras", "lengua": "la", "titulo": ["juvenal"], "creador": "juvenal"},
-  {"id": "marcial-epigramas", "autor": "Marcial", "obra": "Epigramas", "lengua": "la", "titulo": ["epigrams"], "creador": "martial"},
-  {"id": "petronio-satiricon", "autor": "Petronio", "obra": "Satiricón", "lengua": "la", "titulo": ["petronius"], "creador": "petronius"},
-  {"id": "apuleyo-metamorfosis", "autor": "Apuleyo", "obra": "Metamorfosis (El asno de oro)", "lengua": "la", "titulo": ["golden ass"], "creador": "apuleius"},
-  {"id": "quintiliano-institutio", "autor": "Quintiliano", "obra": "Institutio oratoria", "lengua": "la", "titulo": ["institutio oratoria"], "creador": "quintilian"},
-  {"id": "frontino-de-aquis", "autor": "Frontino", "obra": "De aquaeductu urbis Romae", "lengua": "la", "titulo": ["water supply"], "creador": "frontinus"},
-  {"id": "columela-de-re-rustica", "autor": "Columela", "obra": "De re rustica", "lengua": "la", "titulo": ["columella"], "creador": "columella"},
-  {"id": "varron-de-re-rustica", "autor": "Varrón", "obra": "De re rustica", "lengua": "la", "titulo": ["varro"], "creador": "varro"},
-  {"id": "celso-de-medicina", "autor": "Celso", "obra": "De medicina", "lengua": "la", "titulo": ["celsus"], "creador": "celsus"},
-  {"id": "agustin-confesiones", "autor": "Agustín de Hipona", "obra": "Confesiones", "lengua": "la", "titulo": ["confessions"], "creador": "augustine"},
-  {"id": "boecio-consolacion", "autor": "Boecio", "obra": "Consolación de la filosofía", "lengua": "la", "titulo": ["consolation"], "creador": "boethius"},
-  {"id": "aulo-gelio-noches", "autor": "Aulo Gelio", "obra": "Noches áticas", "lengua": "la", "titulo": ["attic nights"], "creador": "gellius"},
-  {"id": "plinio-joven-cartas", "autor": "Plinio el Joven", "obra": "Cartas", "lengua": "la", "titulo": ["letters"], "creador": "pliny"},
-  {"id": "propercio-elegias", "autor": "Propercio", "obra": "Elegías", "lengua": "la", "titulo": ["propertius"], "creador": "propertius"},
-  {"id": "ovidio-fastos", "autor": "Ovidio", "obra": "Fastos", "lengua": "la", "titulo": ["fasti"], "creador": "ovid"},
-  {"id": "cesar-guerra-civil", "autor": "César", "obra": "Guerra civil", "lengua": "la", "titulo": ["civil wars"], "creador": "caesar"}
+  {
+   "id": "herodoto-historias",
+   "autor": "Heródoto",
+   "obra": "Historias",
+   "lengua": "grc",
+   "titulo": [
+    "herodotus"
+   ],
+   "creador": "herodotus"
+  },
+  {
+   "id": "tucidides-historia",
+   "autor": "Tucídides",
+   "obra": "Historia de la guerra del Peloponeso",
+   "lengua": "grc",
+   "titulo": [
+    "thucydides"
+   ],
+   "creador": "thucydides"
+  },
+  {
+   "id": "jenofonte-anabasis",
+   "autor": "Jenofonte",
+   "obra": "Anábasis",
+   "lengua": "grc",
+   "titulo": [
+    "anabasis"
+   ],
+   "creador": "xenophon"
+  },
+  {
+   "id": "jenofonte-memorabilia",
+   "autor": "Jenofonte",
+   "obra": "Memorables",
+   "lengua": "grc",
+   "titulo": [
+    "memorabilia"
+   ],
+   "creador": "xenophon"
+  },
+  {
+   "id": "plutarco-vidas",
+   "autor": "Plutarco",
+   "obra": "Vidas paralelas",
+   "lengua": "grc",
+   "titulo": [
+    "lives"
+   ],
+   "creador": "plutarch"
+  },
+  {
+   "id": "polibio-historias",
+   "autor": "Polibio",
+   "obra": "Historias",
+   "lengua": "grc",
+   "titulo": [
+    "histories"
+   ],
+   "creador": "polybius"
+  },
+  {
+   "id": "demostenes-discursos",
+   "autor": "Demóstenes",
+   "obra": "Discursos",
+   "lengua": "grc",
+   "titulo": [
+    "demosthenes"
+   ],
+   "creador": "demosthenes"
+  },
+  {
+   "id": "lisias-discursos",
+   "autor": "Lisias",
+   "obra": "Discursos",
+   "lengua": "grc",
+   "titulo": [
+    "lysias"
+   ],
+   "creador": "lysias"
+  },
+  {
+   "id": "isocrates-discursos",
+   "autor": "Isócrates",
+   "obra": "Discursos",
+   "lengua": "grc",
+   "titulo": [
+    "isocrates"
+   ],
+   "creador": "isocrates"
+  },
+  {
+   "id": "platon-banquete",
+   "autor": "Platón",
+   "obra": "Banquete",
+   "lengua": "grc",
+   "titulo": [
+    "symposium"
+   ],
+   "creador": "plato"
+  },
+  {
+   "id": "platon-fedon",
+   "autor": "Platón",
+   "obra": "Fedón",
+   "lengua": "grc",
+   "titulo": [
+    "phaedo"
+   ],
+   "creador": "plato"
+  },
+  {
+   "id": "platon-timeo",
+   "autor": "Platón",
+   "obra": "Timeo",
+   "lengua": "grc",
+   "titulo": [
+    "timaeus"
+   ],
+   "creador": "plato"
+  },
+  {
+   "id": "platon-leyes",
+   "autor": "Platón",
+   "obra": "Leyes",
+   "lengua": "grc",
+   "titulo": [
+    "laws"
+   ],
+   "creador": "plato"
+  },
+  {
+   "id": "aristoteles-politica",
+   "autor": "Aristóteles",
+   "obra": "Política",
+   "lengua": "grc",
+   "titulo": [
+    "politics"
+   ],
+   "creador": "aristotle"
+  },
+  {
+   "id": "aristoteles-metafisica",
+   "autor": "Aristóteles",
+   "obra": "Metafísica",
+   "lengua": "grc",
+   "titulo": [
+    "metaphysics"
+   ],
+   "creador": "aristotle"
+  },
+  {
+   "id": "teofrasto-historia-plantas",
+   "autor": "Teofrasto",
+   "obra": "Historia de las plantas",
+   "lengua": "grc",
+   "titulo": [
+    "plants"
+   ],
+   "creador": "theophrastus"
+  },
+  {
+   "id": "esquilo-tragedias",
+   "autor": "Esquilo",
+   "obra": "Tragedias",
+   "lengua": "grc",
+   "titulo": [
+    "aeschylus"
+   ],
+   "creador": "aeschylus"
+  },
+  {
+   "id": "sofocles-tragedias",
+   "autor": "Sófocles",
+   "obra": "Tragedias",
+   "lengua": "grc",
+   "titulo": [
+    "sophocles"
+   ],
+   "creador": "sophocles"
+  },
+  {
+   "id": "euripides-tragedias",
+   "autor": "Eurípides",
+   "obra": "Tragedias",
+   "lengua": "grc",
+   "titulo": [
+    "euripides"
+   ],
+   "creador": "euripides"
+  },
+  {
+   "id": "aristofanes-comedias",
+   "autor": "Aristófanes",
+   "obra": "Comedias",
+   "lengua": "grc",
+   "titulo": [
+    "aristophanes"
+   ],
+   "creador": "aristophanes"
+  },
+  {
+   "id": "apolonio-argonauticas",
+   "autor": "Apolonio de Rodas",
+   "obra": "Argonáuticas",
+   "lengua": "grc",
+   "titulo": [
+    "argonautica"
+   ],
+   "creador": "apollonius"
+  },
+  {
+   "id": "teocrito-bucolicos",
+   "autor": "Teócrito, Bión y Mosco",
+   "obra": "Poetas bucólicos griegos",
+   "lengua": "grc",
+   "titulo": [
+    "bucolic"
+   ],
+   "creador": "theocritus"
+  },
+  {
+   "id": "luciano-obras",
+   "autor": "Luciano de Samósata",
+   "obra": "Obras",
+   "lengua": "grc",
+   "titulo": [
+    "lucian"
+   ],
+   "creador": "lucian"
+  },
+  {
+   "id": "pausanias-descripcion",
+   "autor": "Pausanias",
+   "obra": "Descripción de Grecia",
+   "lengua": "grc",
+   "titulo": [
+    "description of greece"
+   ],
+   "creador": "pausanias"
+  },
+  {
+   "id": "estrabon-geografia",
+   "autor": "Estrabón",
+   "obra": "Geografía",
+   "lengua": "grc",
+   "titulo": [
+    "geography"
+   ],
+   "creador": "strabo"
+  },
+  {
+   "id": "euclides-elementos",
+   "autor": "Euclides",
+   "obra": "Elementos (trad. Heath)",
+   "lengua": "grc",
+   "titulo": [
+    "elements"
+   ],
+   "creador": "euclid"
+  },
+  {
+   "id": "arquimedes-obras",
+   "autor": "Arquímedes",
+   "obra": "Obras (ed. Heath)",
+   "lengua": "grc",
+   "titulo": [
+    "archimedes"
+   ],
+   "creador": "archimedes"
+  },
+  {
+   "id": "diogenes-laercio-vidas",
+   "autor": "Diógenes Laercio",
+   "obra": "Vidas de los filósofos ilustres",
+   "lengua": "grc",
+   "titulo": [
+    "philosophers"
+   ],
+   "creador": "diogenes laertius"
+  },
+  {
+   "id": "longino-sublime",
+   "autor": "Pseudo-Longino",
+   "obra": "Sobre lo sublime",
+   "lengua": "grc",
+   "titulo": [
+    "sublime"
+   ],
+   "creador": "longinus"
+  },
+  {
+   "id": "plinio-historia-natural",
+   "autor": "Plinio el Viejo",
+   "obra": "Historia natural",
+   "lengua": "la",
+   "titulo": [
+    "natural history"
+   ],
+   "creador": "pliny"
+  },
+  {
+   "id": "tito-livio-historia",
+   "autor": "Tito Livio",
+   "obra": "Ab urbe condita",
+   "lengua": "la",
+   "titulo": [
+    "livy"
+   ],
+   "creador": "livy"
+  },
+  {
+   "id": "salustio-obras",
+   "autor": "Salustio",
+   "obra": "Catilina y Yugurta",
+   "lengua": "la",
+   "titulo": [
+    "sallust"
+   ],
+   "creador": "sallust"
+  },
+  {
+   "id": "ciceron-de-oratore",
+   "autor": "Cicerón",
+   "obra": "De oratore",
+   "lengua": "la",
+   "titulo": [
+    "de oratore"
+   ],
+   "creador": "cicero"
+  },
+  {
+   "id": "ciceron-de-re-publica",
+   "autor": "Cicerón",
+   "obra": "De re publica / De legibus",
+   "lengua": "la",
+   "titulo": [
+    "de re publica"
+   ],
+   "creador": "cicero"
+  },
+  {
+   "id": "ciceron-tusculanas",
+   "autor": "Cicerón",
+   "obra": "Disputaciones tusculanas",
+   "lengua": "la",
+   "titulo": [
+    "tusculan"
+   ],
+   "creador": "cicero"
+  },
+  {
+   "id": "seneca-tragedias",
+   "autor": "Séneca",
+   "obra": "Tragedias",
+   "lengua": "la",
+   "titulo": [
+    "tragedies"
+   ],
+   "creador": "seneca"
+  },
+  {
+   "id": "lucano-farsalia",
+   "autor": "Lucano",
+   "obra": "Farsalia",
+   "lengua": "la",
+   "titulo": [
+    "pharsalia"
+   ],
+   "creador": "lucan"
+  },
+  {
+   "id": "estacio-obras",
+   "autor": "Estacio",
+   "obra": "Silvas y Tebaida",
+   "lengua": "la",
+   "titulo": [
+    "statius",
+    "english translation"
+   ],
+   "creador": "statius",
+   "excluir": [
+    "cu31924026519334"
+   ]
+  },
+  {
+   "id": "juvenal-persio-satiras",
+   "autor": "Juvenal y Persio",
+   "obra": "Sátiras",
+   "lengua": "la",
+   "titulo": [
+    "juvenal"
+   ],
+   "creador": "juvenal"
+  },
+  {
+   "id": "marcial-epigramas",
+   "autor": "Marcial",
+   "obra": "Epigramas",
+   "lengua": "la",
+   "titulo": [
+    "epigrams"
+   ],
+   "creador": "martial"
+  },
+  {
+   "id": "petronio-satiricon",
+   "autor": "Petronio",
+   "obra": "Satiricón",
+   "lengua": "la",
+   "titulo": [
+    "petronius"
+   ],
+   "creador": "petronius"
+  },
+  {
+   "id": "apuleyo-metamorfosis",
+   "autor": "Apuleyo",
+   "obra": "Metamorfosis (El asno de oro)",
+   "lengua": "la",
+   "titulo": [
+    "golden ass"
+   ],
+   "creador": "apuleius"
+  },
+  {
+   "id": "quintiliano-institutio",
+   "autor": "Quintiliano",
+   "obra": "Institutio oratoria",
+   "lengua": "la",
+   "titulo": [
+    "institutio oratoria"
+   ],
+   "creador": "quintilian"
+  },
+  {
+   "id": "frontino-de-aquis",
+   "autor": "Frontino",
+   "obra": "Estratagemas y Acueductos de Roma",
+   "lengua": "la",
+   "titulo": [
+    "stratagems"
+   ],
+   "creador": "frontinus"
+  },
+  {
+   "id": "columela-de-re-rustica",
+   "autor": "Columela",
+   "obra": "De re rustica",
+   "lengua": "la",
+   "titulo": [
+    "columella"
+   ],
+   "creador": "columella"
+  },
+  {
+   "id": "varron-de-re-rustica",
+   "autor": "Varrón",
+   "obra": "De re rustica",
+   "lengua": "la",
+   "titulo": [
+    "varro"
+   ],
+   "creador": "varro"
+  },
+  {
+   "id": "celso-de-medicina",
+   "autor": "Celso",
+   "obra": "De medicina",
+   "lengua": "la",
+   "titulo": [
+    "celsus"
+   ],
+   "creador": "celsus"
+  },
+  {
+   "id": "agustin-confesiones",
+   "autor": "Agustín de Hipona",
+   "obra": "Confesiones",
+   "lengua": "la",
+   "titulo": [
+    "confessions"
+   ],
+   "creador": "augustine"
+  },
+  {
+   "id": "boecio-consolacion",
+   "autor": "Boecio",
+   "obra": "Consolación de la filosofía",
+   "lengua": "la",
+   "titulo": [
+    "consolation"
+   ],
+   "creador": "boethius"
+  },
+  {
+   "id": "aulo-gelio-noches",
+   "autor": "Aulo Gelio",
+   "obra": "Noches áticas",
+   "lengua": "la",
+   "titulo": [
+    "attic nights"
+   ],
+   "creador": "gellius"
+  },
+  {
+   "id": "plinio-joven-cartas",
+   "autor": "Plinio el Joven",
+   "obra": "Cartas",
+   "lengua": "la",
+   "titulo": [
+    "letters"
+   ],
+   "creador": "pliny"
+  },
+  {
+   "id": "propercio-elegias",
+   "autor": "Propercio",
+   "obra": "Elegías",
+   "lengua": "la",
+   "titulo": [
+    "propertius"
+   ],
+   "creador": "propertius"
+  },
+  {
+   "id": "ovidio-fastos",
+   "autor": "Ovidio",
+   "obra": "Fastos",
+   "lengua": "la",
+   "titulo": [
+    "fasti"
+   ],
+   "creador": "ovid"
+  },
+  {
+   "id": "cesar-guerra-civil",
+   "autor": "César",
+   "obra": "Guerra civil",
+   "lengua": "la",
+   "titulo": [
+    "civil wars"
+   ],
+   "creador": "caesar"
+  }
  ]
 }
