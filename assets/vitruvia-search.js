@@ -1372,8 +1372,14 @@ function display(rows,query,phase){
  const personFirst=resolved?.kind==="person"&&/^Q[0-9]+$/.test(resolved.wikidataId||"")&&
   !window.VitruviaLocalPriority?.plan(query,S.lexicon)?.focused&&
   !codexIntent&&!locusIntent&&!textualIntent;
- const siteFirst=S.mode==="all"&&!personFirst&&(codexIntent||locusIntent||textualIntent||
-  window.VitruviaLocalPriority?.plan(query,S.lexicon)?.focused);
+ // Prioritize actually retrieved, citable Vitruvian passages (not merely
+ // catalogue-title coincidences). Keep person/authority lookups separate.
+ const localVitruvianPassage=deduped.some(r=>r.type==="passage"&&
+  typeof r.link==="string"&&/lector-bilingue(?:\\.html)?/i.test(r.link)&&
+  (r.locus||r.edition));
+ const siteFirst=["all","ai","site","concept"].includes(S.mode)&&!personFirst&&
+  (localVitruvianPassage||codexIntent||locusIntent||textualIntent||
+   window.VitruviaLocalPriority?.plan(query,S.lexicon)?.focused);
  const firstOrdered=siteFirst?
   [...[...grouped.values()].flat().filter(r=>blockOf(r)==="site"),...[...grouped.values()].flat().filter(r=>blockOf(r)==="web")]:
   S.mode==="ai"?[...grouped.values()].flat():deduped;
