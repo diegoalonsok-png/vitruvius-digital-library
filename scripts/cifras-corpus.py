@@ -54,8 +54,11 @@ def main():
         cifras["obrasIndexadasR2"] = indice.get("obras")
         cifras["paginasIndexadasR2"] = indice.get("paginasIndexadas")
     if registro:
-        cifras["versionesTextuales"] = registro.get("count")
-        cifras["obrasConTextoIndexado"] = registro.get("works")
+        # Contar las entradas, no los campos declarados: el texto alojado en R2
+        # no quedaba contado y la página anunciaba obras sin texto que ya lo tienen.
+        entradas = registro.get("entries") or []
+        cifras["versionesTextuales"] = len(entradas) or registro.get("count")
+        cifras["obrasConTextoIndexado"] = len({e.get("workId") for e in entradas}) or registro.get("works")
 
     SALIDA.write_text(json.dumps(cifras, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(json.dumps(cifras, ensure_ascii=False))

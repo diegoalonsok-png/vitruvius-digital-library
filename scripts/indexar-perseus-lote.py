@@ -148,6 +148,8 @@ def main():
         por_id[(wid, lengua)] = entrada
         nuevas.append(f"{wid}: {len(pasajes)} pasajes · {caracteres} caracteres · {len(fuentes_usadas)} fuentes")
     registro["entries"] = sorted(por_id.values(), key=lambda e: (e["workId"], e.get("language") or ""))
+    registro["count"] = len(registro["entries"])
+    registro["works"] = len({e["workId"] for e in registro["entries"]})
     REGISTRO.write_text(json.dumps(registro, ensure_ascii=False, indent=1), encoding="utf-8")
     print("\n".join(nuevas) or "(ninguna obra nueva)")
     if fallidas:
