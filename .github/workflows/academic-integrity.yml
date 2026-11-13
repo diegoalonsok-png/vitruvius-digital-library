@@ -6,6 +6,13 @@ on:
       - 'scripts/academic-integrity.mjs'
       - 'scripts/test-codicological-source-consistency.mjs'
       - 'data/academic-integrity.json'
+      - 'assets/apparatus-ecdotics.mjs'
+      - 'assets/apparatus-catalog.mjs'
+      - 'assets/critical-lexical-bridge.js'
+      - 'assets/apparatus-edition-bibliography.js'
+      - 'aparato-critico.html'
+      - 'data/catalog.json'
+      - 'scripts/test-apparatus-ecdotics.mjs'
       - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
       - 'data/bibliotheca-testimonia-verified.json'
       - 'data/classics-corpus/tei-codicology-research-matrix-89.json'
@@ -31,6 +38,13 @@ on:
       - 'scripts/academic-integrity.mjs'
       - 'scripts/test-codicological-source-consistency.mjs'
       - 'data/academic-integrity.json'
+      - 'assets/apparatus-ecdotics.mjs'
+      - 'assets/apparatus-catalog.mjs'
+      - 'assets/critical-lexical-bridge.js'
+      - 'assets/apparatus-edition-bibliography.js'
+      - 'aparato-critico.html'
+      - 'data/catalog.json'
+      - 'scripts/test-apparatus-ecdotics.mjs'
       - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
       - 'data/bibliotheca-testimonia-verified.json'
       - 'data/classics-corpus/tei-codicology-research-matrix-89.json'
@@ -62,6 +76,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify ecdotic apparatus bibliography, exact loci and dictionary controls
+        run: |
+          node --check assets/apparatus-ecdotics.mjs
+          node --check assets/apparatus-catalog.mjs
+          node --check assets/critical-lexical-bridge.js
+          node scripts/test-apparatus-ecdotics.mjs
       - name: Confirm published integrity data matches current immutable sources
         run: node scripts/academic-integrity.mjs --check
       - name: Verify codicological dossier fields and British Library references
