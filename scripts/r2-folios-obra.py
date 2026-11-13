@@ -58,9 +58,15 @@ def pedir(url, intentos=4, espera=3):
     raise RuntimeError("sin respuesta: " + url)
 
 
-def lienzos_iiif(manifiesto):
-    """Devuelve [(etiqueta, url de imagen)] de un manifiesto IIIF 2 o 3."""
+def lienzos_iiif(manifiesto, ancho=0):
+    """Devuelve [(etiqueta, url de imagen)] de un manifiesto IIIF 2 o 3.
+
+    La URL se toma del servicio de imágenes que declara el propio manifiesto; no
+    se construye por patrón, porque cada repositorio nombra sus recursos a su
+    manera y un patrón adivinado devuelve 404.
+    """
     datos = json.loads(pedir(manifiesto))
+    region = f"full/{ancho},/0/default.jpg" if ancho else "full/full/0/default.jpg"
     salida = []
     if datos.get("@type") == "sc:Manifest" or "sequences" in datos:
         for sec in datos.get("sequences", []):
@@ -68,7 +74,7 @@ def lienzos_iiif(manifiesto):
                 for img in c.get("images", []):
                     recurso = img.get("resource", {})
                     servicio = (recurso.get("service") or {}).get("@id")
-                    url = f"{servicio}/full/full/0/default.jpg" if servicio else recurso.get("@id")
+                    url = f"{servicio}/{region}" if servicio else recurso.get("@id")
                     if url:
                         salida.append((str(c.get("label") or len(salida) + 1), url))
                     break
@@ -81,7 +87,7 @@ def lienzos_iiif(manifiesto):
                     cuerpo = anot.get("body") or {}
                     servicio = (cuerpo.get("service") or [{}])
                     sid = servicio[0].get("id") if isinstance(servicio, list) and servicio else None
-                    url = f"{sid}/full/max/0/default.jpg" if sid else cuerpo.get("id")
+                    url = f"{sid}/{region}" if sid else cuerpo.get("id")
                     if url:
                         salida.append((str(texto), url))
                     break
@@ -89,19 +95,10 @@ def lienzos_iiif(manifiesto):
 
 
 def paginas_ia(identificador, ancho):
-    """Páginas de un ejemplar de Internet Archive por su API IIIF de imágenes."""
+    """Páginas de un ejemplar de Internet Archive, por su manifiesto IIIF."""
     meta = json.loads(pedir(f"https://archive.org/metadata/{identificador}"))
-    total = None
-    for f in meta.get("files", []):
-        if f.get("name", "").endswith("_djvu.xml") or f.get("format") == "Djvu XML":
-            total = None  # el recuento fiable viene del manifiesto IIIF
-    manifiesto = json.loads(pedir(f"https://iiif.archive.org/iiif/3/{identificador}/manifest.json"))
-    lienzos = manifiesto.get("items") or []
-    total = len(lienzos)
-    salida = []
-    for i in range(total):
-        salida.append((str(i + 1), f"https://iiif.archive.org/image/iiif/3/{identificador}%24{i}/full/{ancho},/0/default.jpg"))
-    return salida, meta.get("metadata", {})
+    paginas = lienzos_iiif(f"https://iiif.archive.org/iiif/3/{identificador}/manifest.json", ancho)
+    return paginas, meta.get("metadata", {})
 
 
 def main():
@@ -124,7 +121,7 @@ def main():
     if fuente["tipo"] == "ia-iiif":
         paginas, meta_ia = paginas_ia(fuente["identificador"], args.ancho)
     elif fuente["tipo"] == "iiif":
-        paginas, meta_ia = lienzos_iiif(fuente["manifiesto"]), {}
+        paginas, meta_ia = lienzos_iiif(fuente["manifiesto"], args.ancho), {}
     else:
         sys.exit("tipo de fuente no admitido: " + fuente["tipo"])
 
