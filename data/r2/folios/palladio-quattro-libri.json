@@ -5,3809 +5,3759 @@
  "autor": "Andrea Palladio",
  "edicion": "Venecia, Dominico de' Franceschi, 1570 (primera edición de los cuatro libros en un volumen)",
  "lengua": "it",
- "fuente": "https://archive.org/details/iqvattrolibridel00pall",
- "derechos": "Ejemplar de 1570: obra en dominio público. La digitalización se toma de Internet Archive y el índice guarda la licencia que ese ejemplar declara.",
- "imagenes": 344,
- "imagenesEnLaFuente": 344,
- "ancho": 1800,
+ "fuente": "https://archive.org/details/qvattrolibridel00pall",
+ "derechos": "Obra impresa en 1570 en dominio público; digitalización de Getty Research Institute / Internet Archive. Atribución institucional obligatoria. Confirmar licencia del ejemplar digital antes de redistribuir.",
+ "institucion": "Getty Research Institute (ejemplar digitalizado por Internet Archive)",
+ "signatura": "No verificada a partir de registro Getty; no atribuida",
+ "colacion": "Edición de 1570, Venecia, Domenico de' Franceschi, cuatro libros; paginación 67, 78, [2], 46, [2], 128, [6] p. (estructura editorial; verificar ejemplar concreto).",
+ "imagenes": 340,
+ "imagenesEnLaFuente": 340,
+ "ancho": 1600,
  "base": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/",
- "nomenclatura": "Las imágenes se numeran por su orden digital. «folio» y «paginaImpresa» quedan vacíos hasta leerlos en el ejemplar: imagen digital y folio histórico no son equivalentes, y la foliación no se deduce del número de imagen.",
+ "nomenclatura": "Número de imagen digital del PDF del ejemplar Getty de Palladio 1570. No es folio ni página impresa; esos campos quedan sin atribuir hasta su cotejo.",
+ "criterioEcdotico": "Sin collatio de variantes ni concordancia textual verificada",
+ "soporteDigital": "PDF histórico de Internet Archive del ejemplar Getty Research Institute; primera edición de 1570; re-render a JPEG y miniaturas desde PDF con PyMuPDF; imágenes resultantes en Cloudflare R2",
+ "sha256PDFOrigen": "e53b59e56bae7e43400e0af80a38949de5f71a92c997c12c6e1f325086236533",
  "folios": [
   {
    "imagenDigital": 1,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "1",
+   "etiquetaFuente": "Imagen PDF 1",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0001.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0001.jpg",
-   "bytes": 813860,
-   "sha256": "77c64f1706ffe2483734ac8579f9f68a34d9a069f5e54b2affa00a6c84fdfc6e"
+   "bytes": 389048,
+   "sha256": "696fe32d881b9a7aa777da47eeff88fbedf9110510ab86e6a66a94edf823b465"
   },
   {
    "imagenDigital": 2,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "2",
+   "etiquetaFuente": "Imagen PDF 2",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0002.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0002.jpg",
-   "bytes": 635592,
-   "sha256": "9bb792ccf6f60c9ad556df7817cb316946ee179f2b1a76b339c320967cbbd926"
+   "bytes": 485522,
+   "sha256": "7cb8c26e37562c3d89d3064679eba1e0121c2b174a5e5857bf5da3a011a3ffd4"
   },
   {
    "imagenDigital": 3,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "3",
+   "etiquetaFuente": "Imagen PDF 3",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0003.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0003.jpg",
-   "bytes": 363309,
-   "sha256": "28693bb35c64748f06d39587ea8c3724974f34dbb45d027d0dc1205ed24ca9ea"
+   "bytes": 304495,
+   "sha256": "77f8f34e5172fcaa59607875762f08fc5e9560230478bf4b1727a507c115ed13"
   },
   {
    "imagenDigital": 4,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "4",
+   "etiquetaFuente": "Imagen PDF 4",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0004.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0004.jpg",
-   "bytes": 324401,
-   "sha256": "365bb7171570aa549617c310f82028cb8b2279adc52175d1d90452eaeaadceb5"
+   "bytes": 385385,
+   "sha256": "1b89a99bd2c536173e6045e0b91f3fc0251e32f61eee65c38dd33a5039f47605"
   },
   {
    "imagenDigital": 5,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "5",
+   "etiquetaFuente": "Imagen PDF 5",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0005.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0005.jpg",
-   "bytes": 441859,
-   "sha256": "1e8f657913a17db990eeaea6d866b866211482100df0cdb086a36bb39de84e34"
+   "bytes": 1082844,
+   "sha256": "979969395b895262aa1187416c7559534bdfc3270055ce39f0be62ad6b0bfc66"
   },
   {
    "imagenDigital": 6,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "6",
+   "etiquetaFuente": "Imagen PDF 6",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0006.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0006.jpg",
-   "bytes": 299259,
-   "sha256": "aaaff1481176c1f489add9e2f8afee85451d558aa4a27390aec0d009a6aa4355"
+   "bytes": 518976,
+   "sha256": "08d28eac43a0fda9f8c32f14e3a4052a30b27c53a12d33c3c865c916f9a01c21"
   },
   {
    "imagenDigital": 7,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "7",
+   "etiquetaFuente": "Imagen PDF 7",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0007.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0007.jpg",
-   "bytes": 1437038,
-   "sha256": "6783cc629f70b616d310d189bfdd1e7ac8eaddb8d1b840391bab035a80820a46"
+   "bytes": 816777,
+   "sha256": "e90d26089dc17897e1bf9ffb23766c29d28ac223f1561fb5bfe59666d88149bf"
   },
   {
    "imagenDigital": 8,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "8",
+   "etiquetaFuente": "Imagen PDF 8",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0008.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0008.jpg",
-   "bytes": 496464,
-   "sha256": "a2bd44c686c6a5b572767657442b0a6550467c91a99b4e300a99d3a8f6f25e1a"
+   "bytes": 456087,
+   "sha256": "5d7fc9bc73b6b747fa3bc386a811d1938a298b1d79d563fe9c5ef2e8ad3e9f90"
   },
   {
    "imagenDigital": 9,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "9",
+   "etiquetaFuente": "Imagen PDF 9",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0009.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0009.jpg",
-   "bytes": 1121176,
-   "sha256": "6d4fbf32522bdbc044118ecbe56c4fd4e931cd09f6a81ba04b5e4f5ef1bb47b5"
+   "bytes": 941300,
+   "sha256": "5ae5c73436e203682258e667c4392e0d50dfa3722ceda0c0152e7e2b47053293"
   },
   {
    "imagenDigital": 10,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "10",
+   "etiquetaFuente": "Imagen PDF 10",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0010.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0010.jpg",
-   "bytes": 831103,
-   "sha256": "5df944892d7d045420cabb349ee8711e90b0e4aac581561b890e34082b57ebbc"
+   "bytes": 1162663,
+   "sha256": "3488068dbcddf684a51a64e197d2ac5ba13aeefcd78ace8c810771ec6a8a3f2d"
   },
   {
    "imagenDigital": 11,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "11",
+   "etiquetaFuente": "Imagen PDF 11",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0011.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0011.jpg",
-   "bytes": 1154641,
-   "sha256": "486cc39a3ed57967be1891aadef53ba059b3dcf2113496e7a2988cf7d18d213b"
+   "bytes": 858780,
+   "sha256": "48e9e0d95415ac42ca0db85407b16ddef1cf741e0d8b04c9b3cf29b12e7665a1"
   },
   {
    "imagenDigital": 12,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "12",
+   "etiquetaFuente": "Imagen PDF 12",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0012.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0012.jpg",
-   "bytes": 1194980,
-   "sha256": "e266a1dccda50700d7d8cc2cedd45ae3db8dcf4f828bf093c8ff373d5e2a7683"
+   "bytes": 964932,
+   "sha256": "f0fb2b4ffe645625db6abfd6e84920246323c163c53e1e0e9aadc2f34477c03c"
   },
   {
    "imagenDigital": 13,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "13",
+   "etiquetaFuente": "Imagen PDF 13",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0013.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0013.jpg",
-   "bytes": 1310273,
-   "sha256": "b72e873ff1c6c1751b6cb144ef30b1c2ad1565acda6730df085775aa0c70a18b"
+   "bytes": 878562,
+   "sha256": "e930f1480f25797a3426d1f5e4ea6d60fbebc3a54448ed06060cb866b9837943"
   },
   {
    "imagenDigital": 14,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "14",
+   "etiquetaFuente": "Imagen PDF 14",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0014.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0014.jpg",
-   "bytes": 1140807,
-   "sha256": "841851b5d00797771acd5750230b342aa4e0bc878b23432a5e142290fd5b1f97"
+   "bytes": 1033395,
+   "sha256": "619993bc1f3e2f1d33aca75214880e0f3d507ad0767577a1966271471d563726"
   },
   {
    "imagenDigital": 15,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "15",
+   "etiquetaFuente": "Imagen PDF 15",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0015.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0015.jpg",
-   "bytes": 1228477,
-   "sha256": "1f5c60773f790532527034af7bc027752bd5cf4eeede73dc7452ae85060eccc2"
+   "bytes": 821488,
+   "sha256": "565b37424762211a9a364a981b2b563ae6d49fa1722f233d4cde3e6752dfe5de"
   },
   {
    "imagenDigital": 16,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "16",
+   "etiquetaFuente": "Imagen PDF 16",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0016.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0016.jpg",
-   "bytes": 1212889,
-   "sha256": "c9501a160f3f3638c20350f538d5cd7742333ff9d94b8f37a90e25cf9ebae242"
+   "bytes": 951537,
+   "sha256": "a5faf8de58f97a53287fcede3da25620326caadaa7e1ea8ad1af2ac9312ba06f"
   },
   {
    "imagenDigital": 17,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "17",
+   "etiquetaFuente": "Imagen PDF 17",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0017.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0017.jpg",
-   "bytes": 1095242,
-   "sha256": "bc6eb10491b08d47ad6b551a1b837aae30e7da72177943c742c57b61088bd521"
+   "bytes": 648146,
+   "sha256": "53d196872a0ee3f039c3346ad0676f4f7a836e76f6645f54697b9bfc3090d0c1"
   },
   {
    "imagenDigital": 18,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "18",
+   "etiquetaFuente": "Imagen PDF 18",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0018.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0018.jpg",
-   "bytes": 1045161,
-   "sha256": "a4c4fc4df95c6b5ddd7b9bab66b806195f0eb103eb1d9ddee536001c540a23f3"
+   "bytes": 1006004,
+   "sha256": "5466a6e9a5bc73c04d415fd1748444ed6199398222589e2c00e63c7140a92479"
   },
   {
    "imagenDigital": 19,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "19",
+   "etiquetaFuente": "Imagen PDF 19",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0019.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0019.jpg",
-   "bytes": 1045298,
-   "sha256": "501656ff7d0e05f7057fafd94cd6c0f716e30e551ba22b62c8a67b35605509ff"
+   "bytes": 690273,
+   "sha256": "2086482430bad596f4c87575fca01ac9193ac7e038cecf53be178f7a0811dc98"
   },
   {
    "imagenDigital": 20,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "20",
+   "etiquetaFuente": "Imagen PDF 20",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0020.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0020.jpg",
-   "bytes": 1224452,
-   "sha256": "3da928f3acefa6d079da28a5b689b4e14413483430f016069c9ed64ca151e71f"
+   "bytes": 976371,
+   "sha256": "30f95c71c41e069875c2b2d6a9e000da88844a26b0d5fec964955d063a23bf6a"
   },
   {
    "imagenDigital": 21,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "21",
+   "etiquetaFuente": "Imagen PDF 21",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0021.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0021.jpg",
-   "bytes": 1023641,
-   "sha256": "d79750fc64f8e93756629d0ba9b9f17eb697fdb68c7b9c48c5bb763b4479d33a"
+   "bytes": 302948,
+   "sha256": "92af9cd0f688a689ec62155082c92bbc4ac8bed76487e617bc4de124692997cc"
   },
   {
    "imagenDigital": 22,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "22",
+   "etiquetaFuente": "Imagen PDF 22",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0022.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0022.jpg",
-   "bytes": 1127454,
-   "sha256": "80946f426c342e8719e2d5eee2e8083951c4e38d58dbb1b7ef5a382745632f38"
+   "bytes": 488000,
+   "sha256": "7b8c6ece677cabfa2a47ea7515a9a564d24747637c0c0366c56e87853dd6528a"
   },
   {
    "imagenDigital": 23,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "23",
+   "etiquetaFuente": "Imagen PDF 23",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0023.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0023.jpg",
-   "bytes": 661450,
-   "sha256": "dd43dfeaf752cbf77c3f03a0e9f911d17ecdc6766045dcc2e660abdd55acac92"
+   "bytes": 613650,
+   "sha256": "a4c8ea0126832569f54f18348a8794c8308a7963b884a444c9e44e89c65d9e2e"
   },
   {
    "imagenDigital": 24,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "24",
+   "etiquetaFuente": "Imagen PDF 24",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0024.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0024.jpg",
-   "bytes": 747586,
-   "sha256": "9888cb76604a2f7954d8beeb25aef0600e444ce1c6e3c1994ec0d7125389da2c"
+   "bytes": 383411,
+   "sha256": "fcec37565460a85766367990ed1f063c551ec3887235bffc85fe9a2dfb44ae01"
   },
   {
    "imagenDigital": 25,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "25",
+   "etiquetaFuente": "Imagen PDF 25",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0025.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0025.jpg",
-   "bytes": 1022160,
-   "sha256": "f48c508d4e5db8022593618753610f92358b1810cd6c35688167f213fdcf75f4"
+   "bytes": 348144,
+   "sha256": "13d72d5083d183b88bf8466d678612ddc3c4b62b9ef5b86dee32354fb9bdab97"
   },
   {
    "imagenDigital": 26,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "26",
+   "etiquetaFuente": "Imagen PDF 26",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0026.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0026.jpg",
-   "bytes": 671025,
-   "sha256": "1a8565bc6eb74f988ad81ec711ea7b002a13e95b6e4405bdca167790791f480b"
+   "bytes": 620077,
+   "sha256": "f4faf35c06b31818e9011ae6d5b989ea42a125b310deee42e9033c8f73b2fdc8"
   },
   {
    "imagenDigital": 27,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "27",
+   "etiquetaFuente": "Imagen PDF 27",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0027.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0027.jpg",
-   "bytes": 682582,
-   "sha256": "3c9c7f8f72eebef9268038124667deacc2e8a98fb44fac50c2af3f78acd5ab37"
+   "bytes": 388606,
+   "sha256": "55569e11c829645c8d909bc8d839c7d948ecdac5aec0cf378680ff935e2a8484"
   },
   {
    "imagenDigital": 28,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "28",
+   "etiquetaFuente": "Imagen PDF 28",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0028.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0028.jpg",
-   "bytes": 800376,
-   "sha256": "f636512fc5ab9c707b4b49d4888230a1756119047ad3f2f9775f1d2e3a4c6977"
+   "bytes": 594218,
+   "sha256": "2bd2b3e690bdf4d07278515e823a3ae7afe7cd88102672d02964df4fb068fde2"
   },
   {
    "imagenDigital": 29,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "29",
+   "etiquetaFuente": "Imagen PDF 29",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0029.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0029.jpg",
-   "bytes": 879051,
-   "sha256": "8e9d350790e775be4dbce592280a01f2129a0eadfa6408d45c6376abec18ee4c"
+   "bytes": 377636,
+   "sha256": "29cd5c75049ae8687fe91cf35ea90eca571937f1bb5f269b943f1fd418304a40"
   },
   {
    "imagenDigital": 30,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "30",
+   "etiquetaFuente": "Imagen PDF 30",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0030.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0030.jpg",
-   "bytes": 906252,
-   "sha256": "32ebe9880bc310f42056972b2b3d7428b258540272954d03b76830f7c7ec4010"
+   "bytes": 605873,
+   "sha256": "06af13165d1fd72cd1b337dd910fe14e32d699058aab3ec1a434a1c39acc80a8"
   },
   {
    "imagenDigital": 31,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "31",
+   "etiquetaFuente": "Imagen PDF 31",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0031.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0031.jpg",
-   "bytes": 773734,
-   "sha256": "1635f731de9c43829c95948450872c54e6541e3fa6d76c7ac67e8e331ee5941c"
+   "bytes": 497920,
+   "sha256": "07ef4840b2cec3b60e62e1f96f32ce160bb81a6a3bbfe87083c6be6d09ae5f3f"
   },
   {
    "imagenDigital": 32,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "32",
+   "etiquetaFuente": "Imagen PDF 32",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0032.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0032.jpg",
-   "bytes": 865885,
-   "sha256": "94e02feabe57848935cad5f3ebd4a8bb9e8249119def3923256d5c9f80af9a58"
+   "bytes": 280127,
+   "sha256": "0697b2615fbae162c5a4a2f980c5ac3d604ad454764cd8e0b2b14fba879e2841"
   },
   {
    "imagenDigital": 33,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "33",
+   "etiquetaFuente": "Imagen PDF 33",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0033.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0033.jpg",
-   "bytes": 862572,
-   "sha256": "394fa35c1f3bfe510f3174c4bb57ab24a314a0e723b16657a5b2b39781998d59"
+   "bytes": 436220,
+   "sha256": "4453e4ac7ae5daa48eb2e770e288287f8f43b10f86b86fe697fe20a0c2841288"
   },
   {
    "imagenDigital": 34,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "34",
+   "etiquetaFuente": "Imagen PDF 34",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0034.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0034.jpg",
-   "bytes": 605269,
-   "sha256": "1c9e660065e4faa8a18b0c077e4f293cbc418fc9c350d79ae51c5cdb72df3089"
+   "bytes": 552294,
+   "sha256": "b0ff5992613f731201834e2f5ba74fb0e05eba997640430e4f0f339e6a03669e"
   },
   {
    "imagenDigital": 35,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "35",
+   "etiquetaFuente": "Imagen PDF 35",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0035.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0035.jpg",
-   "bytes": 846087,
-   "sha256": "5da66f195432d0ab768002ac41ef3eef3f6e0e73e0a0870fdf5b9f11c84db265"
+   "bytes": 403211,
+   "sha256": "40c125bd99de1b0c2e44fcbce0027ddf2d3514b9d2e40dae9e9ae41515479fac"
   },
   {
    "imagenDigital": 36,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "36",
+   "etiquetaFuente": "Imagen PDF 36",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0036.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0036.jpg",
-   "bytes": 856286,
-   "sha256": "dc12d33134aa1bc6e160b135da7632c7f6754b79f308020d688c659398b08c62"
+   "bytes": 409348,
+   "sha256": "70b9dfc5c44d2d1494d7b55a12a0112ba67b39576bd22e23fa5538e1a9782379"
   },
   {
    "imagenDigital": 37,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "37",
+   "etiquetaFuente": "Imagen PDF 37",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0037.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0037.jpg",
-   "bytes": 728605,
-   "sha256": "bbe8047432e221d8a3fa5346eb10589060685e5be5728438ffeb9b7b478d0105"
+   "bytes": 470220,
+   "sha256": "2ee3d1c30b3f948afe42face31c405b32bfd264c7fdef9b365dbe0966e4e5fdc"
   },
   {
    "imagenDigital": 38,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "38",
+   "etiquetaFuente": "Imagen PDF 38",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0038.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0038.jpg",
-   "bytes": 659386,
-   "sha256": "9214b967842a00e76860865c61284ae5d9c8acd369fc3aae060de4f583fcc90b"
+   "bytes": 584971,
+   "sha256": "27ad115a315468358ed1164db9cfd0151556e61d1875648d6e1c1ce8673d3db7"
   },
   {
    "imagenDigital": 39,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "39",
+   "etiquetaFuente": "Imagen PDF 39",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0039.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0039.jpg",
-   "bytes": 889341,
-   "sha256": "ef55259aedcca5c6752fad0d04dc698c71e6fd28da6ea0fa4f1c5798cf24697c"
+   "bytes": 289063,
+   "sha256": "804c4260a2ca55666dd71c54cbab95f46b10c3acc322b00804a43475e53731b0"
   },
   {
    "imagenDigital": 40,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "40",
+   "etiquetaFuente": "Imagen PDF 40",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0040.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0040.jpg",
-   "bytes": 893343,
-   "sha256": "fda075f29c8a0323913f80e509a3fd37fa7ad85702d48cfb189b42b24796d0e6"
+   "bytes": 641835,
+   "sha256": "29c5420fae842e1a2404640f6f4b8730c778c6d2f560eb20c45e99c72aa45d2f"
   },
   {
    "imagenDigital": 41,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "41",
+   "etiquetaFuente": "Imagen PDF 41",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0041.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0041.jpg",
-   "bytes": 618949,
-   "sha256": "43b32ccc57f4bde310bfc2aeef09a7626c3a066e9ab5961c596dfcb7f020404b"
+   "bytes": 284641,
+   "sha256": "a2b9d9857b4c3e2ef2eb6678b2fc73d3ac9a977aca81db8a8619ed01999c96d8"
   },
   {
    "imagenDigital": 42,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "42",
+   "etiquetaFuente": "Imagen PDF 42",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0042.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0042.jpg",
-   "bytes": 878671,
-   "sha256": "6365a083c86558b04d57c90c73fc6319788b1455611d4dd4ff250cf85cb1bcc5"
+   "bytes": 546761,
+   "sha256": "ea644b48a6d789b1f31afd8079a091ad90a1484d2bc8117eb219e421035b9f9f"
   },
   {
    "imagenDigital": 43,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "43",
+   "etiquetaFuente": "Imagen PDF 43",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0043.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0043.jpg",
-   "bytes": 566685,
-   "sha256": "12325e8ed08ec0850db814529dceb81657517fa75a8abf0c1104d99d2f846765"
+   "bytes": 467929,
+   "sha256": "323cf6ccc529d05ab4883bb93718d02ead7d1311fbb17457def5594dd6f27a24"
   },
   {
    "imagenDigital": 44,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "44",
+   "etiquetaFuente": "Imagen PDF 44",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0044.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0044.jpg",
-   "bytes": 781850,
-   "sha256": "b8bfc2a1c34135d1357525024663394be2ec4d4b6aa253db4116c6f5db739b27"
+   "bytes": 287632,
+   "sha256": "883dc79142b4cd01ef72fe315ffc4e36f659ba438c14855c7aa66c5ae2d857cf"
   },
   {
    "imagenDigital": 45,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "45",
+   "etiquetaFuente": "Imagen PDF 45",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0045.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0045.jpg",
-   "bytes": 897665,
-   "sha256": "102582bf68f2f7e9fbc2a7e6026a091a26c185ed679e4d020d58e3f7384919b5"
+   "bytes": 383754,
+   "sha256": "7b1473483c3f0b90910d56f178900255ad2190d22fc92ecffc8797d20c1c34cc"
   },
   {
    "imagenDigital": 46,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "46",
+   "etiquetaFuente": "Imagen PDF 46",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0046.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0046.jpg",
-   "bytes": 602647,
-   "sha256": "2693cc042d6f16172129df02a7fb58a5520508f767e39436918d71a1a65c306e"
+   "bytes": 526874,
+   "sha256": "c016de77c511bc887be4fd24f2aaceaf2045208f2ee1ea8c426b654f1bce12ed"
   },
   {
    "imagenDigital": 47,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "47",
+   "etiquetaFuente": "Imagen PDF 47",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0047.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0047.jpg",
-   "bytes": 735581,
-   "sha256": "cc1bcdc4f3df2e44b6e919e115d85d2639ee8c0fdf7f48d796b231a8c5c7a934"
+   "bytes": 557859,
+   "sha256": "ed718e1b1c7f6cecb88fffbbb484feae4f8c51e203478e5e02eef616281f2c9a"
   },
   {
    "imagenDigital": 48,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "48",
+   "etiquetaFuente": "Imagen PDF 48",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0048.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0048.jpg",
-   "bytes": 807691,
-   "sha256": "1d656c338a5764a0f4153626a1fc267778490f777915380ce3f73280498c6e2b"
+   "bytes": 272742,
+   "sha256": "2650807d5c0cfe6e1de3d5799a941c5bca59cd9ff4d42831019b64abed640bd2"
   },
   {
    "imagenDigital": 49,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "49",
+   "etiquetaFuente": "Imagen PDF 49",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0049.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0049.jpg",
-   "bytes": 949335,
-   "sha256": "0de04dd08d526f2ed76b0a5e2bb961aaa6360756925cb100118027b36b04cbd1"
+   "bytes": 532910,
+   "sha256": "5cf35a2bc562427d5e8de7f439ff5f2aeece650cf036b32a89da396d8269faee"
   },
   {
    "imagenDigital": 50,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "50",
+   "etiquetaFuente": "Imagen PDF 50",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0050.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0050.jpg",
-   "bytes": 488028,
-   "sha256": "eea6b6c94a0308b03e2a5ddc532b753215cea201558c6c671981ba1eb78a4294"
+   "bytes": 610315,
+   "sha256": "5e121cc3d926f413b3496b47694a76d20db048c713043b91127fc008ad8ab692"
   },
   {
    "imagenDigital": 51,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "51",
+   "etiquetaFuente": "Imagen PDF 51",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0051.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0051.jpg",
-   "bytes": 1029056,
-   "sha256": "fff68e15241b1cc7e364fcec51e592325b3b9fbd2e5927c231b7077baee8d9b2"
+   "bytes": 222133,
+   "sha256": "b41a4286c8673253516dc56c83a22dd9bb64df1c05c7b87aa22c099f05887f8d"
   },
   {
    "imagenDigital": 52,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "52",
+   "etiquetaFuente": "Imagen PDF 52",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0052.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0052.jpg",
-   "bytes": 856695,
-   "sha256": "60c653c0bc8bc5af50a8e74f2fb7320ee8486bce8242d21f44543eae2b89b933"
+   "bytes": 410566,
+   "sha256": "185b7bd0a0a1690073ab9c3206ccd36774a77945e2311901b40a3ba619d47862"
   },
   {
    "imagenDigital": 53,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "53",
+   "etiquetaFuente": "Imagen PDF 53",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0053.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0053.jpg",
-   "bytes": 563980,
-   "sha256": "883ba7267ba0375b1e86843419c3b0a9ad7bca31e4929ee4c231ea13fecca8b0"
+   "bytes": 397818,
+   "sha256": "8f8f7a4946b6f9f63c233953d10d9722aa79c1cc3f7f88f6c3c14c12674465ac"
   },
   {
    "imagenDigital": 54,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "54",
+   "etiquetaFuente": "Imagen PDF 54",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0054.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0054.jpg",
-   "bytes": 636113,
-   "sha256": "1e36c3449466eb5fa6053cda107f2bdc2b947b22737edb58fcbfe6e62732cb3a"
+   "bytes": 764103,
+   "sha256": "d3a0c68402c543bca2508155386cfec86040175e569ce3cb46aa75067566a87d"
   },
   {
    "imagenDigital": 55,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "55",
+   "etiquetaFuente": "Imagen PDF 55",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0055.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0055.jpg",
-   "bytes": 732326,
-   "sha256": "079fa02b94c186defd71ce87c2feb3bbb2a22e36eb8c394ed3c7ca99cb30ec21"
+   "bytes": 852922,
+   "sha256": "e3ecc0b8a939c553c972713c56a33b48cdf92e717ef0a5c253eedfce46c2ff49"
   },
   {
    "imagenDigital": 56,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "56",
+   "etiquetaFuente": "Imagen PDF 56",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0056.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0056.jpg",
-   "bytes": 922208,
-   "sha256": "e99a13c28d55600c64d7656cfafa7958f4907b26e01cb115d3b1a897c232df1b"
+   "bytes": 892395,
+   "sha256": "41d7b8fa62dc06597c260e8a4a0bffbda12204be937c9c6fd7cc3f227c7e82e6"
   },
   {
    "imagenDigital": 57,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "57",
+   "etiquetaFuente": "Imagen PDF 57",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0057.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0057.jpg",
-   "bytes": 1136203,
-   "sha256": "0b56f0f297423152b797fe3b218aa79ea56075713992c6663d3d6404d5e5d78e"
+   "bytes": 704128,
+   "sha256": "63e7497e7af01ffe298afb52529f29840bcc799616575d675ca62452fbe08ca0"
   },
   {
    "imagenDigital": 58,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "58",
+   "etiquetaFuente": "Imagen PDF 58",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0058.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0058.jpg",
-   "bytes": 1133421,
-   "sha256": "c9dfef98cc53d12d81a2e01c30b9554f63e3db3820e64267c499cb5d786d5be4"
+   "bytes": 683835,
+   "sha256": "e6cdaba6cbda86ed534cb001c7e31b49f2b8565ba0b86833d15812ecef1f7536"
   },
   {
    "imagenDigital": 59,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "59",
+   "etiquetaFuente": "Imagen PDF 59",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0059.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0059.jpg",
-   "bytes": 1055335,
-   "sha256": "1fde89af3ce4e7377e608850181d4d279b8b56ae60b7a0b3fa739cfa41756cce"
+   "bytes": 808190,
+   "sha256": "e14d00279a16682879221f20bc2ea2e2dc72d128e699afccf65ea1943c154519"
   },
   {
    "imagenDigital": 60,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "60",
+   "etiquetaFuente": "Imagen PDF 60",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0060.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0060.jpg",
-   "bytes": 911412,
-   "sha256": "737150c38ef344450384f8887e051a964caeaef742c8e3d393b95642913cde6a"
+   "bytes": 782601,
+   "sha256": "761d1032a24e9860d19e128697f7793c488091b8ca5b37b5c8031130de6acf42"
   },
   {
    "imagenDigital": 61,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "61",
+   "etiquetaFuente": "Imagen PDF 61",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0061.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0061.jpg",
-   "bytes": 1112239,
-   "sha256": "8920ab5ffba50d3bb14062ad28109a61a9554d281b7dbc8d860e0d01e401ce11"
+   "bytes": 344054,
+   "sha256": "45015cbbfa0222f276635428a3d755b02543083e888fc5d6631ddbd035114ebf"
   },
   {
    "imagenDigital": 62,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "62",
+   "etiquetaFuente": "Imagen PDF 62",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0062.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0062.jpg",
-   "bytes": 956973,
-   "sha256": "f172d84e790581c4a7e54c79e63fda67758652c00bfaf2ebdf8cb3806ddd5dd6"
+   "bytes": 465992,
+   "sha256": "99dc9dddf5f88973d783ae09949edb4d38929d5a0555b0111ca8469bf6547ed5"
   },
   {
    "imagenDigital": 63,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "63",
+   "etiquetaFuente": "Imagen PDF 63",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0063.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0063.jpg",
-   "bytes": 738124,
-   "sha256": "e173c46548bab8bf3bcabf4eea55fb5fe0c586b5e48a5d3fb8cae53b0fdf3870"
+   "bytes": 326785,
+   "sha256": "15de279b377e3e3adec4e7955e5315d642bee47d6f0ef97544d86f2c375f47b8"
   },
   {
    "imagenDigital": 64,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "64",
+   "etiquetaFuente": "Imagen PDF 64",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0064.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0064.jpg",
-   "bytes": 661332,
-   "sha256": "6b22600e3979bd7f987116a9bf60fa69ef03dc4d323ca08e93a9f5a2e7dac6f4"
+   "bytes": 908811,
+   "sha256": "8e25a405c1f89e763ced2548c1830c4561518aba4c4b4b31fca38819564268d5"
   },
   {
    "imagenDigital": 65,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "65",
+   "etiquetaFuente": "Imagen PDF 65",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0065.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0065.jpg",
-   "bytes": 721764,
-   "sha256": "49a9d69dd9336ac6e745471834553d1de0f8aa6f523ac28d565957e7c6104a25"
+   "bytes": 646972,
+   "sha256": "5d1245af2cac30cb19ad49add44fda389d5c0ddc7dba8d3bb7c6d6a7946d69e8"
   },
   {
    "imagenDigital": 66,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "66",
+   "etiquetaFuente": "Imagen PDF 66",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0066.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0066.jpg",
-   "bytes": 1119676,
-   "sha256": "2e93bed8749f596a74fbc3cae2857db2c330542af1fc8e6ff1c960e6d6df26e4"
+   "bytes": 828132,
+   "sha256": "a4341d1d2196f3e641be15cbc29705d28cced3de5c6949d3452faebe7399c5d7"
   },
   {
    "imagenDigital": 67,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "67",
+   "etiquetaFuente": "Imagen PDF 67",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0067.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0067.jpg",
-   "bytes": 978050,
-   "sha256": "2094efb227ce0d0a723bbf158c1efe77fb98fa9916c6388a3f405936ebbb1fd8"
+   "bytes": 695906,
+   "sha256": "e17cfa886a6cce0d8dd4c04c18df5e4d597b8eed93ddf8e33eab4b8a6810fb06"
   },
   {
    "imagenDigital": 68,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "68",
+   "etiquetaFuente": "Imagen PDF 68",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0068.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0068.jpg",
-   "bytes": 984182,
-   "sha256": "5c1ab5216e81e8b385c168ce5dc64bc434e7ee13f93003c578025e1b23c219b9"
+   "bytes": 434507,
+   "sha256": "9696f5681a56fd7525dd514e9d8bf7b879d974e5ecfea98fb19a5065a7cb4ea9"
   },
   {
    "imagenDigital": 69,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "69",
+   "etiquetaFuente": "Imagen PDF 69",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0069.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0069.jpg",
-   "bytes": 1091393,
-   "sha256": "4cbd80a8de56c976eccf0d75ee3c38ac4098315ba3b7341070e43af560ee7acd"
+   "bytes": 639731,
+   "sha256": "0fa781c4824db855ee0cffa0ab1652a6ddf7ec55246f585f0dcb8cc2faa746e0"
   },
   {
    "imagenDigital": 70,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "70",
+   "etiquetaFuente": "Imagen PDF 70",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0070.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0070.jpg",
-   "bytes": 726306,
-   "sha256": "7570452f0358ef8661f4cbfbfb4980f46b952365030f755bacac9a0e382ff1f1"
+   "bytes": 943800,
+   "sha256": "d11005b20fe984a5457659829d8e6cae7dbb07a1f54428862bf622743d6cb6a5"
   },
   {
    "imagenDigital": 71,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "71",
+   "etiquetaFuente": "Imagen PDF 71",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0071.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0071.jpg",
-   "bytes": 1284259,
-   "sha256": "c692cd45627e6ad89c87f6456a192b3824264296c2255578f4b66b066a1ed068"
+   "bytes": 469112,
+   "sha256": "84728af3ec29170d9443f1e00a8ec9a209f017a9fcb39dee85b1dcde8cf122da"
   },
   {
    "imagenDigital": 72,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "72",
+   "etiquetaFuente": "Imagen PDF 72",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0072.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0072.jpg",
-   "bytes": 1142239,
-   "sha256": "8ee0629fd57f4affb1f22459e7d029399517703c6f1f51a6367d3652ced74673"
+   "bytes": 125685,
+   "sha256": "856dd107c2b85dc08cef284a0fee14aa76c98cc06fe7b86c17308fd90b5b4936"
   },
   {
    "imagenDigital": 73,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "73",
+   "etiquetaFuente": "Imagen PDF 73",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0073.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0073.jpg",
-   "bytes": 849603,
-   "sha256": "3635b3897a06beee759b2a4a31071274f0361bb469b795af0c22f86fbd824346"
+   "bytes": 975125,
+   "sha256": "9d1674538282169600932c7c4f574bc320c6900879d13d2c884b4e9a519f1869"
   },
   {
    "imagenDigital": 74,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "74",
+   "etiquetaFuente": "Imagen PDF 74",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0074.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0074.jpg",
-   "bytes": 441783,
-   "sha256": "78e0210c2c9907e5bed40e2e4e5848a0ad9896d826b1261c720ca816d5cd5af7"
+   "bytes": 142887,
+   "sha256": "b1190679ce6137f24cdcbad114748958571dd216b1819560cbd91aa3a9ee4453"
   },
   {
    "imagenDigital": 75,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "75",
+   "etiquetaFuente": "Imagen PDF 75",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0075.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0075.jpg",
-   "bytes": 1483003,
-   "sha256": "a2822be1300f4bcf4c52af1a40f6b525bad945a707d1123c81356359bce91654"
+   "bytes": 774524,
+   "sha256": "afb248a455ab808c7f3397d900de43f83a66a625d3a00d16f788dd44caff45b9"
   },
   {
    "imagenDigital": 76,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "76",
+   "etiquetaFuente": "Imagen PDF 76",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0076.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0076.jpg",
-   "bytes": 423114,
-   "sha256": "4ceaab767c29968ca900f1c6b738e417a071c9ae5ed3e0d488b605a4763b0148"
+   "bytes": 825228,
+   "sha256": "2ea5e61138378dcef97fce7c959492a074deb810796b21c86ac828b617565dae"
   },
   {
    "imagenDigital": 77,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "77",
+   "etiquetaFuente": "Imagen PDF 77",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0077.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0077.jpg",
-   "bytes": 1134486,
-   "sha256": "37f6beb4b4fdbd98a8d61cbd4f9be3a05c126fe6b98fb1cbc71466dc1a59f171"
+   "bytes": 405018,
+   "sha256": "7463254521851b6fe1079157190b2a27664e8eb7a6088581caa760a9f226c975"
   },
   {
    "imagenDigital": 78,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "78",
+   "etiquetaFuente": "Imagen PDF 78",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0078.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0078.jpg",
-   "bytes": 1112885,
-   "sha256": "4bf604cbafb344625408b1621eb306c1b62d3e18f254655b052f504275910ff3"
+   "bytes": 787820,
+   "sha256": "989b74a9e5739d8fb3c026f5e27f323ff9e506c13c497034fed090f44a899048"
   },
   {
    "imagenDigital": 79,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "79",
+   "etiquetaFuente": "Imagen PDF 79",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0079.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0079.jpg",
-   "bytes": 834257,
-   "sha256": "cc2c889efedce4352d25c1891e7bfab682715d6b90b5850499ea84525db464e1"
+   "bytes": 824632,
+   "sha256": "f57eeac09056004d6abc3c1070dbcf4e56d3314cbd4c32bf3275030cdc27b9c9"
   },
   {
    "imagenDigital": 80,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "80",
+   "etiquetaFuente": "Imagen PDF 80",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0080.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0080.jpg",
-   "bytes": 984994,
-   "sha256": "51fb226e577e1b36e8a41981db62ccfd1cbc015ee490364aa4a139ffdd99971f"
+   "bytes": 890200,
+   "sha256": "66d529c05227461816b462a21f43d32103a8f0e437cd0538a7d9e8025a2c6b30"
   },
   {
    "imagenDigital": 81,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "81",
+   "etiquetaFuente": "Imagen PDF 81",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0081.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0081.jpg",
-   "bytes": 1338911,
-   "sha256": "41c5b1a4a8f0080afd5f06358119c6d3f159899bc6860cb1b6a347c9bcad2926"
+   "bytes": 687530,
+   "sha256": "ded9a3c7cc85cfb22165392703ea27bf329c912d2c7b788158c94c1d5f7a9a78"
   },
   {
    "imagenDigital": 82,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "82",
+   "etiquetaFuente": "Imagen PDF 82",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0082.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0082.jpg",
-   "bytes": 1108712,
-   "sha256": "bdba98fb5e44d0e89bbe2e4e14d7440ac07d8ce88ad102f4d77f7aaf19ced843"
+   "bytes": 1015698,
+   "sha256": "29f2bdd374a8ac80e86d6c2ff0d7b3cdebc73a471ccc0a1b2dc7bbd2f1367334"
   },
   {
    "imagenDigital": 83,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "83",
+   "etiquetaFuente": "Imagen PDF 83",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0083.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0083.jpg",
-   "bytes": 1219889,
-   "sha256": "39921a4a44bd861b24fd132c5782bca62c928b2fec99b21581434f300f5c88cf"
+   "bytes": 459654,
+   "sha256": "be2dfe44b4e733cacb30a1620a0197bc515d4595e3915655f456e86a93485c8e"
   },
   {
    "imagenDigital": 84,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "84",
+   "etiquetaFuente": "Imagen PDF 84",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0084.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0084.jpg",
-   "bytes": 1219879,
-   "sha256": "59aa937910563c2e4548f51c0a0a88ef980275d4fd4e8c8d197dfdc1e9e0b00f"
+   "bytes": 421497,
+   "sha256": "3ed3da94c3ec9af6ca650f2e5ec73ab46d7f58b96b181e25c48a758e8eba9f17"
   },
   {
    "imagenDigital": 85,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "85",
+   "etiquetaFuente": "Imagen PDF 85",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0085.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0085.jpg",
-   "bytes": 827821,
-   "sha256": "db9aa953f5d4cfc5e2056ecdef13fbd0db14aa8a2326227ac3c23cf7705fd030"
+   "bytes": 354862,
+   "sha256": "6f8a50ad25c99c00dba9dc2d7f632d7bb3cd5a4e42474049e1ebe842e845bf39"
   },
   {
    "imagenDigital": 86,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "86",
+   "etiquetaFuente": "Imagen PDF 86",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0086.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0086.jpg",
-   "bytes": 693549,
-   "sha256": "a212564a860e85c2e962ceb9a76f07576e6f7e922ed9f3dbe39cf5036b172169"
+   "bytes": 754219,
+   "sha256": "9b4fe66049819561061041a8d6107e7b4878dfe47856b641546feb62155865de"
   },
   {
    "imagenDigital": 87,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "87",
+   "etiquetaFuente": "Imagen PDF 87",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0087.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0087.jpg",
-   "bytes": 759609,
-   "sha256": "fd8085a7c609d0b090c2a32dd90f01eae2d8fb340ac77694753b25a664c79e2c"
+   "bytes": 765366,
+   "sha256": "9330fc6ea73f4f01883a362ec2891df01c354909a4d20e024d0f70b881f618af"
   },
   {
    "imagenDigital": 88,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "88",
+   "etiquetaFuente": "Imagen PDF 88",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0088.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0088.jpg",
-   "bytes": 1097099,
-   "sha256": "30aa6d04a022bbb2fef736fab9d5890bf1bb23eba22a10978fbc9a2298c6bef1"
+   "bytes": 563355,
+   "sha256": "38a007579d2944b6838050171a19eb0394452010ef29d43dbfb28aa557970fdd"
   },
   {
    "imagenDigital": 89,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "89",
+   "etiquetaFuente": "Imagen PDF 89",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0089.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0089.jpg",
-   "bytes": 1221036,
-   "sha256": "4d0640881c28cc236394d859583807bf889797e2efc7b3ca3d3cda23773f2e4d"
+   "bytes": 682667,
+   "sha256": "70208e22dd10a3121aa25634c4d5941f068cb69bd4e0bde33ecbf925f82e3e0a"
   },
   {
    "imagenDigital": 90,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "90",
+   "etiquetaFuente": "Imagen PDF 90",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0090.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0090.jpg",
-   "bytes": 843246,
-   "sha256": "6420147992a7cc2d9b76fd4a8f96273d950d9e73e81ae5b365072c4499b37dab"
+   "bytes": 409387,
+   "sha256": "55188dc594fd87478f7557c5d0e7b45f4789a9c54f220fc1e5f110aa1339ea86"
   },
   {
    "imagenDigital": 91,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "91",
+   "etiquetaFuente": "Imagen PDF 91",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0091.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0091.jpg",
-   "bytes": 1051542,
-   "sha256": "ac3e6b0423f290c4723e6848f13c6ed5f426132e8fc3bf3eb5ad73900633c5a4"
+   "bytes": 457602,
+   "sha256": "9c8e3bd3c44db372c8ec4fb0ea7b4c777bdbaab0478df192e0843fbfb87eaf49"
   },
   {
    "imagenDigital": 92,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "92",
+   "etiquetaFuente": "Imagen PDF 92",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0092.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0092.jpg",
-   "bytes": 709474,
-   "sha256": "c5e25055519c5ea6d0ad33771a9d2993fb859b73bc71b5c70cdbb50916850f9c"
+   "bytes": 257068,
+   "sha256": "f94c4dca26505b2b384f1963215b514700dcf0ed6a7c85fc9fcccf049a01ad57"
   },
   {
    "imagenDigital": 93,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "93",
+   "etiquetaFuente": "Imagen PDF 93",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0093.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0093.jpg",
-   "bytes": 824999,
-   "sha256": "ffad1b9592b6b4fa018378e062d0f80ef79bed07b96bacab951388511e14ba1b"
+   "bytes": 423721,
+   "sha256": "c14932afced8c8dbd76a3a5cfc4c7e684eef86f5fcf940a13a21166dbf014f6e"
   },
   {
    "imagenDigital": 94,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "94",
+   "etiquetaFuente": "Imagen PDF 94",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0094.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0094.jpg",
-   "bytes": 580118,
-   "sha256": "cd98df069b15c42718a63fa7c34d00bc7bd147c60e1632db78df37f3860fc6cb"
+   "bytes": 659207,
+   "sha256": "5802f8f8dffde17e00622d285c90f43d876ef4911600d6710ffb7ec772c8ecf7"
   },
   {
    "imagenDigital": 95,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "95",
+   "etiquetaFuente": "Imagen PDF 95",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0095.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0095.jpg",
-   "bytes": 913631,
-   "sha256": "bb60ea61faa2d22d9d3d648d1f1863b62b793060bdf00ec850eb47deacb4f809"
+   "bytes": 735981,
+   "sha256": "331caacdfed3ef71f8e0201a0c88d4d8545119a75febe55eec0dd5d9a36a95f7"
   },
   {
    "imagenDigital": 96,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "96",
+   "etiquetaFuente": "Imagen PDF 96",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0096.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0096.jpg",
-   "bytes": 910948,
-   "sha256": "73f70b53b1169d06c3f891d503181bef6a7509381b015e409ae3d067e426292c"
+   "bytes": 432376,
+   "sha256": "ce5983f5a2cdb72b7371f6d1abaab8aa1a9dfe77151dd5d99f610532aa9723e6"
   },
   {
    "imagenDigital": 97,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "97",
+   "etiquetaFuente": "Imagen PDF 97",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0097.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0097.jpg",
-   "bytes": 1217290,
-   "sha256": "a8cc802694ac70e7bc22a3d11fafa46dec44349319df6b9307a964ac47f9b157"
+   "bytes": 421453,
+   "sha256": "e373d7d3a76720cf75dfbafb4d9878cfdadd63208853fb009c618a3802aca6b2"
   },
   {
    "imagenDigital": 98,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "98",
+   "etiquetaFuente": "Imagen PDF 98",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0098.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0098.jpg",
-   "bytes": 717445,
-   "sha256": "131ba4c5b82b5f1cc9a3e724e2116aaf6950d7d269f85a9212616f5033631b7d"
+   "bytes": 720616,
+   "sha256": "8b543ec74c8caac83f2509f94eba3114f4d1fe994414668eebd2cd14eec39f5f"
   },
   {
    "imagenDigital": 99,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "99",
+   "etiquetaFuente": "Imagen PDF 99",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0099.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0099.jpg",
-   "bytes": 827395,
-   "sha256": "fd2c025b97b1da6aa2abc3030a247d9a361210cb3aa9ab133b84df01899b4997"
+   "bytes": 295548,
+   "sha256": "9855947602f8e440f0dcd787aa6f613c637c6daeb63303854839750ef2120d73"
   },
   {
    "imagenDigital": 100,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "100",
+   "etiquetaFuente": "Imagen PDF 100",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0100.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0100.jpg",
-   "bytes": 1007219,
-   "sha256": "0b571f19ff3fdd03789e94cde640ec784ca0933ac71d6d03302b0e4d0537d137"
+   "bytes": 762552,
+   "sha256": "b12a84830bf08f451bba8c575530b177b6e6feeff5ad4c38eb814e764bb9fc90"
   },
   {
    "imagenDigital": 101,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "101",
+   "etiquetaFuente": "Imagen PDF 101",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0101.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0101.jpg",
-   "bytes": 707556,
-   "sha256": "dcd81cd0f91f89d51d3046764293956ee42bd5e69875f06198cd92fa9a29225e"
+   "bytes": 457316,
+   "sha256": "36a484b0e25c0d63f1f34b78a9cb944ae64e0f1fa19948f28d0e807da232da1d"
   },
   {
    "imagenDigital": 102,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "102",
+   "etiquetaFuente": "Imagen PDF 102",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0102.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0102.jpg",
-   "bytes": 1084617,
-   "sha256": "1f493265a09d62273853c7186d845872693f9473c3b800b881827247162a5d51"
+   "bytes": 532765,
+   "sha256": "e32a50f55333edab95a158392e048f6e38a33d9f9fa90173c912687197fca0bc"
   },
   {
    "imagenDigital": 103,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "103",
+   "etiquetaFuente": "Imagen PDF 103",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0103.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0103.jpg",
-   "bytes": 931797,
-   "sha256": "adaa167d3beccc5456334105ff5261cf7dcbc457a41e479066335cd77fe4e7f5"
+   "bytes": 714249,
+   "sha256": "560608daf24e8e06410a4d3a795974e5870ec1324dc915249faec278a1215607"
   },
   {
    "imagenDigital": 104,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "104",
+   "etiquetaFuente": "Imagen PDF 104",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0104.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0104.jpg",
-   "bytes": 931720,
-   "sha256": "29c8a46ed3b222a611bd59d1db962cecde6293fe8e08243a584e45922227da0a"
+   "bytes": 1014221,
+   "sha256": "39090931ff03dee3a0abe9c61062ea356a38d4e948abf17fa51b2ecb014f3f19"
   },
   {
    "imagenDigital": 105,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "105",
+   "etiquetaFuente": "Imagen PDF 105",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0105.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0105.jpg",
-   "bytes": 1251775,
-   "sha256": "1225ad5a3e5290e9074ef5ba3b958a2328d7081c3c883ff4ffee3ee20bcb4735"
+   "bytes": 502941,
+   "sha256": "7c6938f13eb143ccc3eda8b3496f15029b6512de7c10f57b9691afa31387f4a5"
   },
   {
    "imagenDigital": 106,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "106",
+   "etiquetaFuente": "Imagen PDF 106",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0106.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0106.jpg",
-   "bytes": 1322543,
-   "sha256": "34841a6a14989c3888a7c4c9a253f03539d75ac91d39cf9f89a1879ef399e9a3"
+   "bytes": 453640,
+   "sha256": "b74e83cb14d7487c3adab8eda5ac9d15066a32867be06a055140037bf3bcfff7"
   },
   {
    "imagenDigital": 107,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "107",
+   "etiquetaFuente": "Imagen PDF 107",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0107.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0107.jpg",
-   "bytes": 866755,
-   "sha256": "5e109c345a506ab082fd9b2c5b00d93a653c91c0de68fe4329891b02baf2b48c"
+   "bytes": 504910,
+   "sha256": "74179b625a9d2fa1dfeb6f45dfd4e837302adfff3e6dec4636ef4757dbb1f47a"
   },
   {
    "imagenDigital": 108,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "108",
+   "etiquetaFuente": "Imagen PDF 108",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0108.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0108.jpg",
-   "bytes": 749645,
-   "sha256": "c6f0a87fe165136c155aa90843345b78580e0dc5e4f20245d9d55f1dec1649f5"
+   "bytes": 246557,
+   "sha256": "8df3d6e9df12ba6721e5fd9ebed4bfa676dea3bfcfdff085130c55d81e159f05"
   },
   {
    "imagenDigital": 109,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "109",
+   "etiquetaFuente": "Imagen PDF 109",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0109.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0109.jpg",
-   "bytes": 968991,
-   "sha256": "197100523f6f3e39f087612001d77a05ed19915325a60857fc330bb5c68f8b74"
+   "bytes": 625812,
+   "sha256": "ae57857333312496962857a0571a1aad7c3c457a8db602639e5fb65d6d43dfc2"
   },
   {
    "imagenDigital": 110,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "110",
+   "etiquetaFuente": "Imagen PDF 110",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0110.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0110.jpg",
-   "bytes": 566728,
-   "sha256": "b74920348db4ee253fe08c07cb118b3e536f200e23d48f3c48d9bad3411d8ef4"
+   "bytes": 278359,
+   "sha256": "d44055a74b8ab15c298bc00b066225a6815892c7014985035002b00ff24a9d52"
   },
   {
    "imagenDigital": 111,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "111",
+   "etiquetaFuente": "Imagen PDF 111",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0111.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0111.jpg",
-   "bytes": 1216769,
-   "sha256": "453fc7f7a669b1b5a2493b6c1b619c850bce144e73eb68e44ceb9661229372fd"
+   "bytes": 483477,
+   "sha256": "58c30cd4f3f44aa3477310c8eb5b1eb1bf9750b8f921a718f01bde7ea2702df7"
   },
   {
    "imagenDigital": 112,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "112",
+   "etiquetaFuente": "Imagen PDF 112",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0112.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0112.jpg",
-   "bytes": 727932,
-   "sha256": "4ce733652197879d148104f8dc94c127c1f171bed002998809dfba23a17f6b00"
+   "bytes": 678800,
+   "sha256": "09a3050f676165e57a23ad5a6177d615d8df156db88a4ae65c821ecf2f608a87"
   },
   {
    "imagenDigital": 113,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "113",
+   "etiquetaFuente": "Imagen PDF 113",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0113.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0113.jpg",
-   "bytes": 927910,
-   "sha256": "301db88df403e921917fd3b3b053fd5a536a69d6ad4e0fd7cfeb6c0d5bb700b8"
+   "bytes": 295237,
+   "sha256": "3da12435d40091ae3101a9eac476ceb193056f87713cb9570845454953518b9d"
   },
   {
    "imagenDigital": 114,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "114",
+   "etiquetaFuente": "Imagen PDF 114",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0114.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0114.jpg",
-   "bytes": 911484,
-   "sha256": "e60dac1cefa652fe984d2e39f1f9b006e2a74319aa67dff3a5423c5b1e850aa3"
+   "bytes": 833414,
+   "sha256": "ec3bf70aaf9e55debf195b40e4a88d4024e183c30ac42ae65971be6e642119bc"
   },
   {
    "imagenDigital": 115,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "115",
+   "etiquetaFuente": "Imagen PDF 115",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0115.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0115.jpg",
-   "bytes": 676952,
-   "sha256": "b62e99e16648542c93bc6f43a38fbc9b302c2152a355a8427121befe9c3245f7"
+   "bytes": 566842,
+   "sha256": "3fbba947b79279e9a5b5ae3e892df8bb5bc9be1dd011ebb738b9396bed87534b"
   },
   {
    "imagenDigital": 116,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "116",
+   "etiquetaFuente": "Imagen PDF 116",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0116.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0116.jpg",
-   "bytes": 940900,
-   "sha256": "7d32bdd2ea36b4d9d4ab7485f9d17dcbd85524c0d4fbbce90d30aac7ddaa3548"
+   "bytes": 638636,
+   "sha256": "2128241551463c2063aeb96c4d13a454b894a41ab98c1c391b7fa72e02bc4245"
   },
   {
    "imagenDigital": 117,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "117",
+   "etiquetaFuente": "Imagen PDF 117",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0117.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0117.jpg",
-   "bytes": 970143,
-   "sha256": "6ffd8ad02d10baba4b33d0167f937b7982c9652dee5961d502f25c1035ce9746"
+   "bytes": 849549,
+   "sha256": "8479d93148077a6e8ccdccf6eda85da85ef3280b151e49bd6ccfea9532dc4d15"
   },
   {
    "imagenDigital": 118,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "118",
+   "etiquetaFuente": "Imagen PDF 118",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0118.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0118.jpg",
-   "bytes": 930367,
-   "sha256": "35c6776b485331c4da40b63c586a64a274a493b495309a94050e1e2087f9401b"
+   "bytes": 965649,
+   "sha256": "21bf4b7ab92ce34215daf91fd1fefdf7e37601356ea533be7e889a7f8efeb779"
   },
   {
    "imagenDigital": 119,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "119",
+   "etiquetaFuente": "Imagen PDF 119",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0119.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0119.jpg",
-   "bytes": 1267312,
-   "sha256": "fdd02e0489d80cd806850104cb257cf366cff45e87d038d3ecd1d18a8af2dbfb"
+   "bytes": 605297,
+   "sha256": "65b37e13706b1cc8db0b5ef750aa1b13ccb9f0bb2d45e2b7572ab03e36032c0d"
   },
   {
    "imagenDigital": 120,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "120",
+   "etiquetaFuente": "Imagen PDF 120",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0120.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0120.jpg",
-   "bytes": 1149021,
-   "sha256": "fe5d18f65819cf0eafa12db2619ede80a8ae9d7eacfd044b0734e98cc361a23b"
+   "bytes": 510964,
+   "sha256": "75ee091a40a20b8ad0df6cba8fc42a47a20a6dac690b52042c9dd7ef985c6a44"
   },
   {
    "imagenDigital": 121,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "121",
+   "etiquetaFuente": "Imagen PDF 121",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0121.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0121.jpg",
-   "bytes": 905751,
-   "sha256": "3796a9b3c31e52c556afbc409c512e0644d4a10f62394176f788ad0432513d04"
+   "bytes": 351356,
+   "sha256": "8468fc7e6a967860aa2e886b77dfa8f60eb0cad2ca1a693414c3a972f3fbb608"
   },
   {
    "imagenDigital": 122,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "122",
+   "etiquetaFuente": "Imagen PDF 122",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0122.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0122.jpg",
-   "bytes": 753972,
-   "sha256": "13818d76f2b19aa1a1804bea0d2c3fa64aabf721f9dead837f6349752f1b722f"
+   "bytes": 537826,
+   "sha256": "cbec8b61ba99a4607d34e75378f526e58da8518b45dd2ad1b61035435ec2a0a6"
   },
   {
    "imagenDigital": 123,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "123",
+   "etiquetaFuente": "Imagen PDF 123",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0123.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0123.jpg",
-   "bytes": 732400,
-   "sha256": "42c51d5946d28d59599d947f391cc91036153e4d22b4b2286a8e064c2bfa6696"
+   "bytes": 492738,
+   "sha256": "30770dc5106df58088258f58d357105cbc95236935c31fd2e2b599744e44e943"
   },
   {
    "imagenDigital": 124,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "124",
+   "etiquetaFuente": "Imagen PDF 124",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0124.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0124.jpg",
-   "bytes": 734639,
-   "sha256": "b6ee0538f90a34ebd12f807b73fdc0b504b5c9c42278017808798d49e8034acd"
+   "bytes": 580703,
+   "sha256": "77b85d9c590d331961b36abbbc6955ce760b5c73e0f6c16272b6ce41d458a77c"
   },
   {
    "imagenDigital": 125,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "125",
+   "etiquetaFuente": "Imagen PDF 125",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0125.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0125.jpg",
-   "bytes": 844828,
-   "sha256": "271bb0e2a50a9516cc4f08992c829abe8f31917f7be16bb16f1c5d4e27fb965b"
+   "bytes": 516201,
+   "sha256": "1ce614a42d0a90801f9b5291ec049cfc5f431e7997b65f5f0b704c24946e8450"
   },
   {
    "imagenDigital": 126,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "126",
+   "etiquetaFuente": "Imagen PDF 126",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0126.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0126.jpg",
-   "bytes": 814076,
-   "sha256": "44b17a9d6ae55a5e1fd2733caa667089519ed4889bd6ee2eee8aa71612a11b47"
+   "bytes": 508663,
+   "sha256": "cbcf0c1aba2db6f931c8a8e48a9a25099f6293b5e139d2b3378861ad40914ac5"
   },
   {
    "imagenDigital": 127,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "127",
+   "etiquetaFuente": "Imagen PDF 127",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0127.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0127.jpg",
-   "bytes": 836402,
-   "sha256": "855d0a11a3db0f246216dfbf52b7e4639999caeb6eb978bbb7cf179f18be9a90"
+   "bytes": 310492,
+   "sha256": "fe9fd41029aa41b1300ea7fdf2be3a2cbc7923eea39ca335500c651df65461b1"
   },
   {
    "imagenDigital": 128,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "128",
+   "etiquetaFuente": "Imagen PDF 128",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0128.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0128.jpg",
-   "bytes": 771069,
-   "sha256": "50f12ca9278467b51ed167e3ac40f25dad9e416a07789c5a7fbf03dcd6ed5814"
+   "bytes": 449103,
+   "sha256": "81de66acd756f014b70261f1dcd5a8a1ad10d4754ec5d9da19454c3860844982"
   },
   {
    "imagenDigital": 129,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "129",
+   "etiquetaFuente": "Imagen PDF 129",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0129.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0129.jpg",
-   "bytes": 639399,
-   "sha256": "2edda97e18bbfe0473fc3646a57f639318e3720f28eb4e8711ea4522c77b0946"
+   "bytes": 337468,
+   "sha256": "aff3db19539fc166959a12814c3579d74a9a54a352c69a1c501949883bf0fb3c"
   },
   {
    "imagenDigital": 130,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "130",
+   "etiquetaFuente": "Imagen PDF 130",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0130.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0130.jpg",
-   "bytes": 723018,
-   "sha256": "843eb2246feddf0b4d347337d5cf861956609d6e85a988e3d0b4e2797f3e3808"
+   "bytes": 482912,
+   "sha256": "67baf6ea9d06daac2e99ddc1808bd78ff426e7345e31e4154542309b1ac51076"
   },
   {
    "imagenDigital": 131,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "131",
+   "etiquetaFuente": "Imagen PDF 131",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0131.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0131.jpg",
-   "bytes": 651162,
-   "sha256": "62e59a95bee488101eafb4812868af105b367643edc2cc7130ba8aba82337f86"
+   "bytes": 499397,
+   "sha256": "2be938a3521f4cc17f4ff95b7fc9cfc463cc88ff6d1606486a22fbf1d8dac09b"
   },
   {
    "imagenDigital": 132,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "132",
+   "etiquetaFuente": "Imagen PDF 132",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0132.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0132.jpg",
-   "bytes": 693663,
-   "sha256": "c661eb57549328d400675aede09581a146420ed047663a27a71537f9eb9dd831"
+   "bytes": 528538,
+   "sha256": "e5aed777b943c4a6395bc7de329d0a7953020ab2fe51de0abc2dce82127671fa"
   },
   {
    "imagenDigital": 133,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "133",
+   "etiquetaFuente": "Imagen PDF 133",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0133.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0133.jpg",
-   "bytes": 934818,
-   "sha256": "ecf2182caac501d4ea962234e8d5f32ae797a240cfbb36dafd2425868d077ff0"
+   "bytes": 474369,
+   "sha256": "84cb44c29487bf798e4bf9aa35edf4a37e90b821044b23859ba66e0d527c09e4"
   },
   {
    "imagenDigital": 134,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "134",
+   "etiquetaFuente": "Imagen PDF 134",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0134.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0134.jpg",
-   "bytes": 771352,
-   "sha256": "d7f4da97db1809f9515d4f19e823acde34dded08b5456da05dabc1a79aacbf96"
+   "bytes": 616027,
+   "sha256": "ff72a71150615fcef3e1de0ba2e7abc7ae79d15d9a158568d649610f3a13673c"
   },
   {
    "imagenDigital": 135,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "135",
+   "etiquetaFuente": "Imagen PDF 135",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0135.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0135.jpg",
-   "bytes": 880496,
-   "sha256": "808b886b719e4688eddcfe4567678b485133714d7a321dd14ab66ca4a0a7be09"
+   "bytes": 335050,
+   "sha256": "646630db8086280d8a0c1347bba23a7f33e6d05364e39e21d289a05562b01349"
   },
   {
    "imagenDigital": 136,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "136",
+   "etiquetaFuente": "Imagen PDF 136",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0136.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0136.jpg",
-   "bytes": 880669,
-   "sha256": "dd4d6afc30b1cd8b62e6d3a96726499826084c79750c0415d7ef356bcbd26464"
+   "bytes": 541129,
+   "sha256": "90dbfbb3af6f097c2e1f6d49158e5fa99bc60af211c478dd6456a49134ec4585"
   },
   {
    "imagenDigital": 137,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "137",
+   "etiquetaFuente": "Imagen PDF 137",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0137.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0137.jpg",
-   "bytes": 703122,
-   "sha256": "c4588028d114822ea8561d8369710da437d5576ab86c52bf3f562b7c029b82d4"
+   "bytes": 427658,
+   "sha256": "b33b7289241b6245b905d367564acc9ebdb2fc9dc021c7a6d9365057fc41670c"
   },
   {
    "imagenDigital": 138,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "138",
+   "etiquetaFuente": "Imagen PDF 138",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0138.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0138.jpg",
-   "bytes": 801284,
-   "sha256": "f2f3869409f2e6e85d46da0f42379a73120eba0f967102dedc266264fb4da31a"
+   "bytes": 415867,
+   "sha256": "c7e4ef5c96eaf2bf0d51b90da39f892fb0c94b15418a0ca88ab66b69be99af19"
   },
   {
    "imagenDigital": 139,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "139",
+   "etiquetaFuente": "Imagen PDF 139",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0139.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0139.jpg",
-   "bytes": 724898,
-   "sha256": "f961b4c9ba0d2f87722dba7f5546b7cfcb2413259e51fc09a70f14bc4bfde0a3"
+   "bytes": 364897,
+   "sha256": "b867743e6b1f3ec7a6e2cf9e8abea89652c992323ac1de5d5b5ef5bf99861da7"
   },
   {
    "imagenDigital": 140,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "140",
+   "etiquetaFuente": "Imagen PDF 140",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0140.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0140.jpg",
-   "bytes": 636581,
-   "sha256": "97a72ac162d92c9cf10c9f12aaceba643b2d0c86ec0ef8a0a6ea59ed1efdcdf3"
+   "bytes": 576900,
+   "sha256": "b0dd29071df5030913af2f59382b1236040dd248d5c08952797e0ff3a48a5457"
   },
   {
    "imagenDigital": 141,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "141",
+   "etiquetaFuente": "Imagen PDF 141",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0141.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0141.jpg",
-   "bytes": 808447,
-   "sha256": "7aa80ad0f62845e35942625638296075d1fcf0dabee361987377129074ac0da0"
+   "bytes": 511610,
+   "sha256": "d6ac7aa5407a2293848eea0c89fdfb9ad451fa316befb9dc2e0135c59e037176"
   },
   {
    "imagenDigital": 142,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "142",
+   "etiquetaFuente": "Imagen PDF 142",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0142.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0142.jpg",
-   "bytes": 888611,
-   "sha256": "b291dadd86d3bc5ed06b507c22cc6ea7d39580460d889963376adb5d00a83377"
+   "bytes": 495845,
+   "sha256": "c3ddc4c52db08285388b41b0289bb9c7b6523866691522f9381c2c6fd9a76e24"
   },
   {
    "imagenDigital": 143,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "143",
+   "etiquetaFuente": "Imagen PDF 143",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0143.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0143.jpg",
-   "bytes": 909203,
-   "sha256": "b1e8b47a51fae5ff733a7944c7a4f54685ecf40e3e8d40583c62f2d45e48300e"
+   "bytes": 611057,
+   "sha256": "e08edfb5d56c6e344ec5f82843b0cb048e2604d8aa1904839505ab2598d4621b"
   },
   {
    "imagenDigital": 144,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "144",
+   "etiquetaFuente": "Imagen PDF 144",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0144.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0144.jpg",
-   "bytes": 837706,
-   "sha256": "f396c8dc8900ade2077105b1aef50adfc4cdfdbd6f3a4527c58053b8c3078aa8"
+   "bytes": 789148,
+   "sha256": "1c9df9a8b7d2bc833d6256ba3e1e335d2bbc2c4f913d885c02495ee57742c356"
   },
   {
    "imagenDigital": 145,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "145",
+   "etiquetaFuente": "Imagen PDF 145",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0145.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0145.jpg",
-   "bytes": 946568,
-   "sha256": "eb8f8f93d9c445cc968ca029af9d2c74efc96d2ce897980bdbc5a210f85df46d"
+   "bytes": 281833,
+   "sha256": "28736b263646b9e89d6d7e82cb0c87e47b8d6d35e0e8a5853b0a0455f362bbfa"
   },
   {
    "imagenDigital": 146,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "146",
+   "etiquetaFuente": "Imagen PDF 146",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0146.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0146.jpg",
-   "bytes": 999038,
-   "sha256": "e5468f23751f7966854e41200e6cb4d1ed6bc0f1f16bec54fecd25bf4a5eaf7a"
+   "bytes": 581585,
+   "sha256": "f4c270422b0b6478ba97a1f8684086070322e53040a3c06d7aa736f6c8df99ff"
   },
   {
    "imagenDigital": 147,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "147",
+   "etiquetaFuente": "Imagen PDF 147",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0147.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0147.jpg",
-   "bytes": 638310,
-   "sha256": "234085bfcc5e78a53a93b0e9088922b97a5d0e9e9c489fba33d404dc6f8d82be"
+   "bytes": 477619,
+   "sha256": "a47ec69bb5a45fbaa277b7cf13691b61d2d7c4020f0115869682bc985725baca"
   },
   {
    "imagenDigital": 148,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "148",
+   "etiquetaFuente": "Imagen PDF 148",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0148.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0148.jpg",
-   "bytes": 854821,
-   "sha256": "323844e29fdf12b7f06947fd157aa8e08bcd1b6b603e84380e1b3b88a8d362d9"
+   "bytes": 648827,
+   "sha256": "352a9d5f0af9200057de341790488b9380076f45232942031d71f72a311917f2"
   },
   {
    "imagenDigital": 149,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "149",
+   "etiquetaFuente": "Imagen PDF 149",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0149.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0149.jpg",
-   "bytes": 810549,
-   "sha256": "d4aba2fafcd4412f0844a3f41f9bb981cf39911b4f079d948ffd2cc7d96623b8"
+   "bytes": 565662,
+   "sha256": "ec557da6066e18ba8b261b58ac9d02bde96b947639b4d807285c0befacf6f789"
   },
   {
    "imagenDigital": 150,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "150",
+   "etiquetaFuente": "Imagen PDF 150",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0150.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0150.jpg",
-   "bytes": 868842,
-   "sha256": "0fb05a9c032dfed330dd28ef9b207c76ff1471ec5b3cce9c54353ba20f2a856e"
+   "bytes": 722279,
+   "sha256": "5a87dd0e58a62b817102312eabd3a6c89371316d998e3bc029b4dcb54fb555f4"
   },
   {
    "imagenDigital": 151,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "151",
+   "etiquetaFuente": "Imagen PDF 151",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0151.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0151.jpg",
-   "bytes": 890099,
-   "sha256": "a8718467c7bac083b78dd8f02f1ed3d94ba6bfe8d5077f5468b22806b008518c"
+   "bytes": 81787,
+   "sha256": "9461590f5e3ca3fc613b660b7ac88189ed4f6941d5733f07c8da51ecbf4c0da6"
   },
   {
    "imagenDigital": 152,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "152",
+   "etiquetaFuente": "Imagen PDF 152",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0152.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0152.jpg",
-   "bytes": 950957,
-   "sha256": "e5f1eb2d395e77225d7a55efae15e0fa26269d5989f618e4d38b0422fce23a55"
+   "bytes": 90756,
+   "sha256": "01beca3303f859fb0ad949048e5a8cf7f88ada3d0623cc1e511d2db889d11334"
   },
   {
    "imagenDigital": 153,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "153",
+   "etiquetaFuente": "Imagen PDF 153",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0153.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0153.jpg",
-   "bytes": 425566,
-   "sha256": "e489fdefc228f708d601017a3b4de5a2a5a888c13b373cac89ee9be79e78857d"
+   "bytes": 1008027,
+   "sha256": "20312d305fff6b5d5334756b5e62b62872fbf6c140921c2a21897c04c0793830"
   },
   {
    "imagenDigital": 154,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "154",
+   "etiquetaFuente": "Imagen PDF 154",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0154.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0154.jpg",
-   "bytes": 376597,
-   "sha256": "0578b4e59e211eccacdea294ea56a6f7902e0704dffa61f34af819664433c4a9"
+   "bytes": 112753,
+   "sha256": "71c64aaed0124cfeb87a3b5b70d450173c0ef2a65ebf94940fe325a41a7b1a29"
   },
   {
    "imagenDigital": 155,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "155",
+   "etiquetaFuente": "Imagen PDF 155",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0155.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0155.jpg",
-   "bytes": 1499010,
-   "sha256": "65284ba7af4c3d0489582530370deb49b6b2f812766917af346e4cce10d89441"
+   "bytes": 580440,
+   "sha256": "502d59efb2440500347a3209e84d418348f84157f194250341bec8b4a07c4bd4"
   },
   {
    "imagenDigital": 156,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "156",
+   "etiquetaFuente": "Imagen PDF 156",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0156.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0156.jpg",
-   "bytes": 636592,
-   "sha256": "c54629c81153d580dd194e3c69288ec9af39c7855c21702a301eac364dce900a"
+   "bytes": 107964,
+   "sha256": "dd3d9f8d39d0aa185e337feb7a8743f01c1fcdd646a3d1c36087e47519b6d30d"
   },
   {
    "imagenDigital": 157,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "157",
+   "etiquetaFuente": "Imagen PDF 157",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0157.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0157.jpg",
-   "bytes": 1115902,
-   "sha256": "14686b94baaf13a38f6b84536c737701964196b3ebae32fa403dbb549bb8a7a5"
+   "bytes": 729449,
+   "sha256": "26ede8667e26f434046ded77d01e49f052d649843211f4c73cb50a661a21dcf5"
   },
   {
    "imagenDigital": 158,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "158",
+   "etiquetaFuente": "Imagen PDF 158",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0158.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0158.jpg",
-   "bytes": 728742,
-   "sha256": "59dfacd88f90bdd4ea3cec49510df0129edc285fbcdd356dc4543885d32eb589"
+   "bytes": 308869,
+   "sha256": "abdb8003d47d7d4538d59ef46446f9df4d0bf2f12782ca606dbea18b3fc93919"
   },
   {
    "imagenDigital": 159,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "159",
+   "etiquetaFuente": "Imagen PDF 159",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0159.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0159.jpg",
-   "bytes": 1167916,
-   "sha256": "6091631bbf58fd30be0de8caa715f90ba2a8eb8fabf95628bf34f93a92dcd132"
+   "bytes": 847705,
+   "sha256": "2cc43913c3e48de6ed9ed00096131ef2f6cdbdb50e1f761bb5cd3837d7628ce2"
   },
   {
    "imagenDigital": 160,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "160",
+   "etiquetaFuente": "Imagen PDF 160",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0160.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0160.jpg",
-   "bytes": 651259,
-   "sha256": "66bd13fc0e862c0cce189ffe1c4f97e038f9ac2f0a82e87a10c89877171bfafc"
+   "bytes": 967314,
+   "sha256": "2200aa64d4a9dc543b76aaf4b8710c9d6deeac5518f83664b3002e3ab2f459c8"
   },
   {
    "imagenDigital": 161,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "161",
+   "etiquetaFuente": "Imagen PDF 161",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0161.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0161.jpg",
-   "bytes": 1226381,
-   "sha256": "f1da51d078e9fc0d76e47c62d5ab31566a78c94fce96e4e1d515baafa7c56e72"
+   "bytes": 822106,
+   "sha256": "aa6d5db0cc71968b065b47390b61d0d4951912587ebdc537249c8097a3354d53"
   },
   {
    "imagenDigital": 162,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "162",
+   "etiquetaFuente": "Imagen PDF 162",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0162.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0162.jpg",
-   "bytes": 1159506,
-   "sha256": "bca39a9cd61dacd843448b78297055a726c1c7f187937203e6be7c4d4442b53b"
+   "bytes": 763795,
+   "sha256": "c97fb1654f1d218e463a625e5634c4bd2193d58e63c0a7662d92f594d3dbcf72"
   },
   {
    "imagenDigital": 163,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "163",
+   "etiquetaFuente": "Imagen PDF 163",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0163.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0163.jpg",
-   "bytes": 1170352,
-   "sha256": "2a7a8b1dca354bd65157f6d8bcd8ba4543431b2d13c6afaa962319787d95fe8d"
+   "bytes": 758675,
+   "sha256": "a7ddbebb025f6f11eabb2d3ebcb92053fb11acae506a86f28c5a211573e4d05a"
   },
   {
    "imagenDigital": 164,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "164",
+   "etiquetaFuente": "Imagen PDF 164",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0164.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0164.jpg",
-   "bytes": 952238,
-   "sha256": "23d8f39d8ca4700c414321f56d46693990e67d0c925a8b2895505d4a6d4f79fb"
+   "bytes": 890118,
+   "sha256": "d3fba997869d0de1dce0db97a243560bccfa350cb50d99335df0fd2ce3b530dc"
   },
   {
    "imagenDigital": 165,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "165",
+   "etiquetaFuente": "Imagen PDF 165",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0165.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0165.jpg",
-   "bytes": 1299754,
-   "sha256": "10dab5e1fc1a05ae58c2c07a560a6b74eadc7023acfe782b567326069e274be6"
+   "bytes": 610056,
+   "sha256": "02341a0eba73ddf143e7ab59d60c3ae31a3e9501c862b264af8f9371d9d278ad"
   },
   {
    "imagenDigital": 166,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "166",
+   "etiquetaFuente": "Imagen PDF 166",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0166.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0166.jpg",
-   "bytes": 1299504,
-   "sha256": "0591b734e535a65a1c134ec102bdda835ee09db06aff7a2c5d4af51ef39ce855"
+   "bytes": 864717,
+   "sha256": "1e889c443713ad1825a4ebc5d2e2e79b2be69e6566aff84cd64cbfd6c51f060d"
   },
   {
    "imagenDigital": 167,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "167",
+   "etiquetaFuente": "Imagen PDF 167",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0167.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0167.jpg",
-   "bytes": 865877,
-   "sha256": "9ea56ba2cc629b89012bf43e92546d168f99242a87c826d9cd48b20a405bb6c3"
+   "bytes": 707398,
+   "sha256": "6284c1be67a69fe1cd5a213ddfabd1e0597e496bffc44cef499ac16ddaf608f3"
   },
   {
    "imagenDigital": 168,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "168",
+   "etiquetaFuente": "Imagen PDF 168",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0168.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0168.jpg",
-   "bytes": 1039366,
-   "sha256": "0468bdaa6da877286a803ca80a7bcb0ad463f64f9d5a25e4e7657e52d6a1c405"
+   "bytes": 755872,
+   "sha256": "e348eb289754f56a8cc14f5a8a111af0b0272ef69fe4c110f1a377a32357c248"
   },
   {
    "imagenDigital": 169,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "169",
+   "etiquetaFuente": "Imagen PDF 169",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0169.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0169.jpg",
-   "bytes": 1047533,
-   "sha256": "7f3bb7f658dd9042c282e3e196674834719361bbe93c4f858992348aaffdabd6"
+   "bytes": 453509,
+   "sha256": "04af799f1253dabbdcf6ec0d454a0a1b14a20cc9b13887ba1ecbfd2c0d073186"
   },
   {
    "imagenDigital": 170,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "170",
+   "etiquetaFuente": "Imagen PDF 170",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0170.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0170.jpg",
-   "bytes": 943444,
-   "sha256": "85894f480e7299983876fe8e59ffae16bbbbbb8873144f278755440a7c0863db"
+   "bytes": 445240,
+   "sha256": "5490ba3fb6e00bb54621801e5c4790036d0e11200e644a2a0ab0198f56c1499e"
   },
   {
    "imagenDigital": 171,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "171",
+   "etiquetaFuente": "Imagen PDF 171",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0171.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0171.jpg",
-   "bytes": 914984,
-   "sha256": "2078b81d6c0c53a0d985faa135eb716a8d9f7d918ab6dced7a7b1e40b8c47cdc"
+   "bytes": 605155,
+   "sha256": "271390cd7e5649b0923d30d6c2eba9620c776432002af7343cb613f7bdb86643"
   },
   {
    "imagenDigital": 172,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "172",
+   "etiquetaFuente": "Imagen PDF 172",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0172.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0172.jpg",
-   "bytes": 805188,
-   "sha256": "1426d5feef8bb6d636311677c61dd9197cc02b1be12a9f583f805ce1adeeffc8"
+   "bytes": 574461,
+   "sha256": "705ec3dd33344383b7726261f07384bcd5cded4a42bdd47640e833bdccf5e178"
   },
   {
    "imagenDigital": 173,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "173",
+   "etiquetaFuente": "Imagen PDF 173",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0173.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0173.jpg",
-   "bytes": 1005011,
-   "sha256": "946be9114485a2bb8bda08b55a96abbadba54a021914c9964a032588df201e3a"
+   "bytes": 726281,
+   "sha256": "8a34e4413471978354f6a42df6fd022e6488a6f8c89b0a275e64a475f4247c09"
   },
   {
    "imagenDigital": 174,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "174",
+   "etiquetaFuente": "Imagen PDF 174",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0174.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0174.jpg",
-   "bytes": 905228,
-   "sha256": "6620af8bc6738b391f1ff818a32c07683f38e620701774246cad4ed09843a8a1"
+   "bytes": 668643,
+   "sha256": "9f263612b5f2bb03b77642d48ed72ee5fc64e24bb5a3ad6121b5e09dad47b987"
   },
   {
    "imagenDigital": 175,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "175",
+   "etiquetaFuente": "Imagen PDF 175",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0175.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0175.jpg",
-   "bytes": 1130076,
-   "sha256": "cf459998ec5d1a62f745ccfe8736db4fc70c7801a2f78647ff36041505f64157"
+   "bytes": 538031,
+   "sha256": "a7675ac283249d86db7886c1c4d54d3cc9d1780802dbe53938d2f3c0312567f4"
   },
   {
    "imagenDigital": 176,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "176",
+   "etiquetaFuente": "Imagen PDF 176",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0176.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0176.jpg",
-   "bytes": 888447,
-   "sha256": "a6023e3bc6316f976bdd58a17245fb6f26b1a403093788ac0951ec5ab9c3799b"
+   "bytes": 666387,
+   "sha256": "dfe67a260679ae0bfc431f51b241459e064c157d2ac893b3ce9fd90b1448aa4f"
   },
   {
    "imagenDigital": 177,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "177",
+   "etiquetaFuente": "Imagen PDF 177",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0177.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0177.jpg",
-   "bytes": 1042214,
-   "sha256": "dfcbbb0906f7950e6290a5b3a85a890875eca4f23356ea8412997cef200cea1d"
+   "bytes": 534285,
+   "sha256": "1d089599b6cf2916c83bbc09c44047d42c53e20b0d95a642c96f325b3ff1e45d"
   },
   {
    "imagenDigital": 178,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "178",
+   "etiquetaFuente": "Imagen PDF 178",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0178.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0178.jpg",
-   "bytes": 1035632,
-   "sha256": "149e865a63e975b2d96a4dbdc98faf696666d547b05bfdaedf6660001f3e3248"
+   "bytes": 627734,
+   "sha256": "61b6e69726b0dad3b0c700e1885322d094f64f97bf44eda733de72b205568097"
   },
   {
    "imagenDigital": 179,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "179",
+   "etiquetaFuente": "Imagen PDF 179",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0179.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0179.jpg",
-   "bytes": 930157,
-   "sha256": "f0513b9c2b340e793946e3a659d5d2bce1f440cdc571c42df583769c60719b2d"
+   "bytes": 538328,
+   "sha256": "5239cc3223bd25445a1b05dec52f71f1c959f8a415cf8eb371ca0129d263775e"
   },
   {
    "imagenDigital": 180,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "180",
+   "etiquetaFuente": "Imagen PDF 180",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0180.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0180.jpg",
-   "bytes": 1000337,
-   "sha256": "97224d97c2d70cffd71a093c5ad3a16f4d704cc6881835f686b9944275a4ef02"
+   "bytes": 403802,
+   "sha256": "9de56980b849b51c81ba828a232562b9255a781fe7019d72326d65482378f831"
   },
   {
    "imagenDigital": 181,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "181",
+   "etiquetaFuente": "Imagen PDF 181",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0181.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0181.jpg",
-   "bytes": 952621,
-   "sha256": "da3bcd37984828eb922c4d21767679e8932d584f373bd83e6567342c2a2b93e7"
+   "bytes": 503081,
+   "sha256": "69d4386f12a74409161849272205d683d4c09d06c2c75dcb28cc3ef845a6e4d3"
   },
   {
    "imagenDigital": 182,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "182",
+   "etiquetaFuente": "Imagen PDF 182",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0182.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0182.jpg",
-   "bytes": 727252,
-   "sha256": "bd5f3daeeab5c08004b9173bfec0b942a39f318572586690e9bcdd902cc8dffc"
+   "bytes": 594125,
+   "sha256": "1f7a260e62b6cc855056770761631df7ba5b20b0e15c92a331a24f59238d7dfe"
   },
   {
    "imagenDigital": 183,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "183",
+   "etiquetaFuente": "Imagen PDF 183",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0183.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0183.jpg",
-   "bytes": 992182,
-   "sha256": "a02e568a70e7dd0680ca81fac5eff1683a037a91b2964dc2b211f4cf0bd03532"
+   "bytes": 759760,
+   "sha256": "c16ef04b490952c51085f2658e538e3caa6d49040e6bb245900f9e6c83ba01c6"
   },
   {
    "imagenDigital": 184,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "184",
+   "etiquetaFuente": "Imagen PDF 184",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0184.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0184.jpg",
-   "bytes": 958782,
-   "sha256": "dff37321e19d0ff9d2f6877147eb82c26d1c3f23add8bb33a05e50d5285b74d3"
+   "bytes": 658169,
+   "sha256": "5fd8522a7c2b5b28f439dedd2deb56e513df76b5c929e5c81813a472c2249325"
   },
   {
    "imagenDigital": 185,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "185",
+   "etiquetaFuente": "Imagen PDF 185",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0185.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0185.jpg",
-   "bytes": 1131412,
-   "sha256": "43845a534d8e47c7a0e7df5a80cc625a67a655eac83d5053f6caa4bce4e32905"
+   "bytes": 447011,
+   "sha256": "de9649f0ea7b05acd28b97556d0a35241acf264e6f5315fea2d7ff8bf909fb3a"
   },
   {
    "imagenDigital": 186,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "186",
+   "etiquetaFuente": "Imagen PDF 186",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0186.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0186.jpg",
-   "bytes": 928571,
-   "sha256": "9b55da2dba7ffc645e7c7a0f9dac92dc7bbe65539e6d2c209ee0f6d04c61db6e"
+   "bytes": 1145300,
+   "sha256": "da1208fc5edfd78fa4e846f690bc4feac9267e9f88f715dc594699b0032bb5ec"
   },
   {
    "imagenDigital": 187,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "187",
+   "etiquetaFuente": "Imagen PDF 187",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0187.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0187.jpg",
-   "bytes": 889062,
-   "sha256": "9584280f8de25cc42fa73fa273ab1543fc7619966746c45d3eef13702cbf8444"
+   "bytes": 483262,
+   "sha256": "8a9ff1223a9c6bdb1de2c0d5ae5374c2ca20168262ef53e12be00c97b8b9bc30"
   },
   {
    "imagenDigital": 188,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "188",
+   "etiquetaFuente": "Imagen PDF 188",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0188.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0188.jpg",
-   "bytes": 1273059,
-   "sha256": "a9ce4d8afe242e438469104d54a80508cceb61bc0b929cdc469e23854cd28ac7"
+   "bytes": 651848,
+   "sha256": "1e309afe5004ef7370bcc055f0e32e4b3a221c87f266cfefc2463467f89873c9"
   },
   {
    "imagenDigital": 189,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "189",
+   "etiquetaFuente": "Imagen PDF 189",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0189.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0189.jpg",
-   "bytes": 939528,
-   "sha256": "2fafc0b6a3723670d9336b4ee3f80105d843d4aade987034d20f0652afa4274a"
+   "bytes": 895744,
+   "sha256": "adcf77b8ce69829d14f71d48422a62ec872fd088bf4496877fc42fc81d50116e"
   },
   {
    "imagenDigital": 190,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "190",
+   "etiquetaFuente": "Imagen PDF 190",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0190.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0190.jpg",
-   "bytes": 1037650,
-   "sha256": "605aa87a1856b203a4d9cd7b383ad90a54770234c44baaebd04a9bc97dffb5d7"
+   "bytes": 748235,
+   "sha256": "da14a12d7e7473914041cd72fa72b580f5cf7679da3375d489a68a55f9ff5a32"
   },
   {
    "imagenDigital": 191,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "191",
+   "etiquetaFuente": "Imagen PDF 191",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0191.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0191.jpg",
-   "bytes": 1458601,
-   "sha256": "87bfabd90e0d1c20d7fe69d97bf9c5b0a4e6f08ba26239d24a7672ea10e9e4bc"
+   "bytes": 349387,
+   "sha256": "19bd43f05ce3181a50544db8740acadcb249b9971af5afe230d9fc3e9e18d6ef"
   },
   {
    "imagenDigital": 192,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "192",
+   "etiquetaFuente": "Imagen PDF 192",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0192.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0192.jpg",
-   "bytes": 1117288,
-   "sha256": "8d5ccd464cb73a3dfe76b877f5c56f92f7f941aa68c306799c2c3a5701859be4"
+   "bytes": 915204,
+   "sha256": "2a153f638652060c2bb5f413a821f7bfa5e16322583eb60feb1d480309064ca2"
   },
   {
    "imagenDigital": 193,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "193",
+   "etiquetaFuente": "Imagen PDF 193",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0193.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0193.jpg",
-   "bytes": 787696,
-   "sha256": "5ef645f896eb8837ea084519d641d3d4a37d238d83d88090e2c7a10495c507fa"
+   "bytes": 442089,
+   "sha256": "3041d88c758a4e5b8c36784e7956342e490581bcf04a846518076f4bc20f687e"
   },
   {
    "imagenDigital": 194,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "194",
+   "etiquetaFuente": "Imagen PDF 194",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0194.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0194.jpg",
-   "bytes": 1238367,
-   "sha256": "22819979a45f96c939317de0594805196d2246574593ea34bed2c1aee265bf3b"
+   "bytes": 749863,
+   "sha256": "69b1dcf25f0b5709f8bdb16aa33d559c8221b8242828a6774c0a3954fd86bded"
   },
   {
    "imagenDigital": 195,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "195",
+   "etiquetaFuente": "Imagen PDF 195",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0195.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0195.jpg",
-   "bytes": 930808,
-   "sha256": "4a69eb984377dadd7a53340d2ad9bd086720748d6097b0092938b2dfd917f73a"
+   "bytes": 736803,
+   "sha256": "152c77dd066059144efed3d5a5245f75e9933cbd7a66e1979473502aa7621915"
   },
   {
    "imagenDigital": 196,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "196",
+   "etiquetaFuente": "Imagen PDF 196",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0196.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0196.jpg",
-   "bytes": 1131078,
-   "sha256": "e2f2dd56ccbe223bacb18ae95f3d5a86ce5fe1c3da02c2a8bebd1ca2e5dad5ff"
+   "bytes": 963020,
+   "sha256": "f701a31226daf4b170d88978c5b03940a6f729934f371fad12336efe15d2ceb7"
   },
   {
    "imagenDigital": 197,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "197",
+   "etiquetaFuente": "Imagen PDF 197",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0197.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0197.jpg",
-   "bytes": 1347548,
-   "sha256": "cf8ef4259372b569d5be539ea096d4b47c6a6961fbfeeb9013de4c83f2ead201"
+   "bytes": 315075,
+   "sha256": "a454a7b96788fddf3e7a87140c06f4eb9b163d87356ce11d997c6375a58eec86"
   },
   {
    "imagenDigital": 198,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "198",
+   "etiquetaFuente": "Imagen PDF 198",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0198.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0198.jpg",
-   "bytes": 1171882,
-   "sha256": "4a050492e2743385894d69c220d1abb0af79eac8248c718699ec370d8611c3dd"
+   "bytes": 586627,
+   "sha256": "6143ef7a9ea07d61a7b4c2d1634e7e96a552e64a15a44f47f62d4b2f6951c57e"
   },
   {
    "imagenDigital": 199,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "199",
+   "etiquetaFuente": "Imagen PDF 199",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0199.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0199.jpg",
-   "bytes": 663484,
-   "sha256": "b96e11eb5e05b877adb4808cf6c318644a35ad3a3f8d26c9b88cbf6f6875b982"
+   "bytes": 120650,
+   "sha256": "ed32a65e6897172d6b22976bd88700d583c5c814ed906c75bfc5834d755dc2c1"
   },
   {
    "imagenDigital": 200,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "200",
+   "etiquetaFuente": "Imagen PDF 200",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0200.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0200.jpg",
-   "bytes": 908745,
-   "sha256": "f7455284fea12a1c019b678455281b738d38deda84e20c6812f75062cfa81258"
+   "bytes": 110463,
+   "sha256": "fa9efdb84f3590fd29243c54a72cb4af03a2566e62d58a55619f4d7f183583fc"
   },
   {
    "imagenDigital": 201,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "201",
+   "etiquetaFuente": "Imagen PDF 201",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0201.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0201.jpg",
-   "bytes": 515902,
-   "sha256": "2e40641b2e63615d539ad5afe28b385f5fc72063ee56b74fd34af49de5063201"
+   "bytes": 955854,
+   "sha256": "36f695aa790cc71a9f42deb06b27b6da290604a33c5a4318ea8bde27a2538f07"
   },
   {
    "imagenDigital": 202,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "202",
+   "etiquetaFuente": "Imagen PDF 202",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0202.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0202.jpg",
-   "bytes": 484591,
-   "sha256": "746b55e8b1e1b52df93db2390d3c129cc4f4d0a6d0567b22fc599135fb2d1dfb"
+   "bytes": 178867,
+   "sha256": "89ad524c006e2cfea33078afd983931b51a0cf34d6021f6098a608d385ae2c7e"
   },
   {
    "imagenDigital": 203,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "203",
+   "etiquetaFuente": "Imagen PDF 203",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0203.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0203.jpg",
-   "bytes": 1407015,
-   "sha256": "aa9c07c8c25d5a53e07d930884d81f632acb8d89799dd0533eff39308b33af1d"
+   "bytes": 704393,
+   "sha256": "f16f2ddfe89423fc03d10c80eff45730f17c7394c0e63a7628f78ba17e809703"
   },
   {
    "imagenDigital": 204,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "204",
+   "etiquetaFuente": "Imagen PDF 204",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0204.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0204.jpg",
-   "bytes": 468632,
-   "sha256": "566bfddf1319092e67ff02f6a01f61d53ff25d291a80edb249cfabb06c312988"
+   "bytes": 314492,
+   "sha256": "408a56fa1ae387e322e6e99f00690577f0270121eb14c6855a653a2093b507bb"
   },
   {
    "imagenDigital": 205,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "205",
+   "etiquetaFuente": "Imagen PDF 205",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0205.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0205.jpg",
-   "bytes": 1118343,
-   "sha256": "88912ee0fcd5394b14875fc7ded08c78face08b0d139023542cd20fea89581e1"
+   "bytes": 708344,
+   "sha256": "5978c749041c21c64d662479898429d529e08909eac4de8782927b39418943b6"
   },
   {
    "imagenDigital": 206,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "206",
+   "etiquetaFuente": "Imagen PDF 206",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0206.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0206.jpg",
-   "bytes": 971063,
-   "sha256": "f9113a123165aa610e673822a1687c09615a55efb61dddfae0a7b977b330f538"
+   "bytes": 849128,
+   "sha256": "e80afc9ccb271787ddd80cc8940a32259736af7ba88bc25a6d261a311f63fda4"
   },
   {
    "imagenDigital": 207,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "207",
+   "etiquetaFuente": "Imagen PDF 207",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0207.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0207.jpg",
-   "bytes": 1062081,
-   "sha256": "a030ea7e21c8fb5ae8e847c6818e75327d7cbc7d502e2e90b5a1720614f9875a"
+   "bytes": 749261,
+   "sha256": "61f99a1a86821d0e391c0f2b522d2105e6ba875c79d5f7755c9585a0b5fdb339"
   },
   {
    "imagenDigital": 208,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "208",
+   "etiquetaFuente": "Imagen PDF 208",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0208.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0208.jpg",
-   "bytes": 1175301,
-   "sha256": "0a5efa4e2fffce4e17ccd54d77731200381332fa2c87c3470e016047ab90bf0d"
+   "bytes": 840294,
+   "sha256": "80134e7c92c05c6ac8837a50b2e890ecbe3a59bb690f72d7ff932b6be991d644"
   },
   {
    "imagenDigital": 209,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "209",
+   "etiquetaFuente": "Imagen PDF 209",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0209.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0209.jpg",
-   "bytes": 1199310,
-   "sha256": "62d354e618bc93d444759b959911104e61ca22d8eef57f226319cffc617a4c2a"
+   "bytes": 808089,
+   "sha256": "976c87dc0d7ada9b878e7e106782e814345a9185007bdb5799850fd0507926d2"
   },
   {
    "imagenDigital": 210,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "210",
+   "etiquetaFuente": "Imagen PDF 210",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0210.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0210.jpg",
-   "bytes": 1059818,
-   "sha256": "1260ab0711b5999649bd855ef083c21ddea3e817373d385cd4884c128a05d236"
+   "bytes": 873648,
+   "sha256": "d669b9cc43a7124cf60ae7a34372e818d3ebd57874a7c19eb19911eabc4615fd"
   },
   {
    "imagenDigital": 211,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "211",
+   "etiquetaFuente": "Imagen PDF 211",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0211.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0211.jpg",
-   "bytes": 1174018,
-   "sha256": "feddd1e0870aa05de070866d0ece66544a976564596be0f03780df5b6b30c572"
+   "bytes": 732669,
+   "sha256": "4be576fa26a3689b78dacfa58720919db2b22e6423e7a6432af5272c1cf23132"
   },
   {
    "imagenDigital": 212,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "212",
+   "etiquetaFuente": "Imagen PDF 212",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0212.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0212.jpg",
-   "bytes": 854173,
-   "sha256": "5ae26de925c37a2d66b062b5c681eb40a06c5211093e4ba6d65d3fc158612d0d"
+   "bytes": 502156,
+   "sha256": "431af5a8354932d0991f3aef1941a8edf1b42954a488f5681bd00b5b16ca331e"
   },
   {
    "imagenDigital": 213,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "213",
+   "etiquetaFuente": "Imagen PDF 213",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0213.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0213.jpg",
-   "bytes": 1130365,
-   "sha256": "bcf33c2cf859c7f50d6ee143cc0780ff839c686d50d761d3c46fc939e4f67c28"
+   "bytes": 618427,
+   "sha256": "07c54eca0d6e3d3960af7037edce7a80a73becf6a282b4e741a102191892b2ac"
   },
   {
    "imagenDigital": 214,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "214",
+   "etiquetaFuente": "Imagen PDF 214",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0214.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0214.jpg",
-   "bytes": 897852,
-   "sha256": "0375bb52e2962be70f75d64061bbdcfb5a9304d6c0060d5a970b633c4af0884a"
+   "bytes": 877009,
+   "sha256": "280b69813b633e57b2e9dd87f93a65d9e7c4c363bdd1aaceeb762fea77c53f83"
   },
   {
    "imagenDigital": 215,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "215",
+   "etiquetaFuente": "Imagen PDF 215",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0215.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0215.jpg",
-   "bytes": 1185937,
-   "sha256": "06c4d91faf8f95e42d206aa418e474e2e0c7d85f55f09e02a7b80a1fe81e0dfd"
+   "bytes": 564776,
+   "sha256": "eea40bac89a4b218196d791e754651875e35808905b1151dbb245452e437da2d"
   },
   {
    "imagenDigital": 216,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "216",
+   "etiquetaFuente": "Imagen PDF 216",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0216.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0216.jpg",
-   "bytes": 1199825,
-   "sha256": "88c0be6cc5c56d76f3db8d93ef0598eb153a6c778d22933cb71c3e5d4f904359"
+   "bytes": 661712,
+   "sha256": "bb42835fb38bad11a9136706cbeccfbc693233fe34e51777da04d9beec7db6a5"
   },
   {
    "imagenDigital": 217,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "217",
+   "etiquetaFuente": "Imagen PDF 217",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0217.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0217.jpg",
-   "bytes": 1049252,
-   "sha256": "1e298eda4304d0b4d788c14d257fa9c8f84c0f54f575607d3db2b921788a71f4"
+   "bytes": 617106,
+   "sha256": "951fa2fac71ebc20b7f6e55fa55ffa14bde095ea215a9a3ba7c6e6eef1166f2e"
   },
   {
    "imagenDigital": 218,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "218",
+   "etiquetaFuente": "Imagen PDF 218",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0218.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0218.jpg",
-   "bytes": 850941,
-   "sha256": "2b8f8dc6179428f36486931e410999be717bd611bcdd293d85e4e3b2adb68fde"
+   "bytes": 872486,
+   "sha256": "6c4cca451aa7140005a779cd0e1f9f90e7abfb63f4b710fa1797c2f8339aa949"
   },
   {
    "imagenDigital": 219,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "219",
+   "etiquetaFuente": "Imagen PDF 219",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0219.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0219.jpg",
-   "bytes": 1156441,
-   "sha256": "5aacc90aaf28bc8f9ebd8892487a17e6be6a2bce55dbddb4c788e93c4bfb913b"
+   "bytes": 624182,
+   "sha256": "ef373ffe147bbe93ab3a04aa681d50e35e96664caf1d9310296a40d702cce07d"
   },
   {
    "imagenDigital": 220,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "220",
+   "etiquetaFuente": "Imagen PDF 220",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0220.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0220.jpg",
-   "bytes": 1135596,
-   "sha256": "9bd186101692b54387591ef36221f3e12af01a01ae5e272e22d1b00b62aff6fa"
+   "bytes": 998272,
+   "sha256": "4e98470e61218609985fff2319e81a65e4b1a74dce1298c8526f45d3f3c115b1"
   },
   {
    "imagenDigital": 221,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "221",
+   "etiquetaFuente": "Imagen PDF 221",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0221.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0221.jpg",
-   "bytes": 1220095,
-   "sha256": "30e3e49937fd0a55392c02ee040495a9ab67b1a0cf13abd3234dd43f62055143"
+   "bytes": 839243,
+   "sha256": "5e2afc2d0552ef0cea3d29c72a042a0149c27bebd200a32e1ebf6f8a03437036"
   },
   {
    "imagenDigital": 222,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "222",
+   "etiquetaFuente": "Imagen PDF 222",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0222.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0222.jpg",
-   "bytes": 1453188,
-   "sha256": "76ff15d9ff69b97cdab6341efb4b7f26f6b6b09a225496cf3a8f2224b982ffba"
+   "bytes": 504647,
+   "sha256": "617108f6a85331eb395b4aa2e4606130356d2f8798a475ee5ad3faf52a0c40a7"
   },
   {
    "imagenDigital": 223,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "223",
+   "etiquetaFuente": "Imagen PDF 223",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0223.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0223.jpg",
-   "bytes": 1376781,
-   "sha256": "0529289abd0c5869907581507faaacf42378e07879de04b88b21e8ebd6c3f258"
+   "bytes": 716789,
+   "sha256": "5abdaf39b584f783c2bb9b20d058847499387e5057a5b92bca7a868c9cf001ee"
   },
   {
    "imagenDigital": 224,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "224",
+   "etiquetaFuente": "Imagen PDF 224",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0224.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0224.jpg",
-   "bytes": 944713,
-   "sha256": "ad7382c0a65fceb9eda8556ebc40981e2b686198585b89b574680cb04491efed"
+   "bytes": 729414,
+   "sha256": "edae156f7ddd636e1e7d58793dea4afafb5bda08f32ad1da24444f8ecd362fca"
   },
   {
    "imagenDigital": 225,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "225",
+   "etiquetaFuente": "Imagen PDF 225",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0225.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0225.jpg",
-   "bytes": 1084174,
-   "sha256": "fc9d3574ee01ed9129bd9850c4e6058dcfd5b2575e1910af43f3598d1527d89e"
+   "bytes": 559525,
+   "sha256": "37eb873bf8c078305bc2db25b9f1be3fa5d468e67ba621631c18f6af6070bb10"
   },
   {
    "imagenDigital": 226,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "226",
+   "etiquetaFuente": "Imagen PDF 226",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0226.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0226.jpg",
-   "bytes": 1035683,
-   "sha256": "af4738951ea2451b8f4fc7a9710d60e2940b636a413cc96989d1e5f942d52656"
+   "bytes": 784102,
+   "sha256": "1be4c2efb6ed072610426b77e5f45627eaad8fc40135a2cd19508874c6bd89b4"
   },
   {
    "imagenDigital": 227,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "227",
+   "etiquetaFuente": "Imagen PDF 227",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0227.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0227.jpg",
-   "bytes": 1167908,
-   "sha256": "ba1e3e54c64850b449e9ff43ddb9e740ed0d6e612445d94dcd44b5bd16809b3c"
+   "bytes": 550041,
+   "sha256": "095fda7d4949c6d17228c14d886b25779a21fa329883f497e216306077b02104"
   },
   {
    "imagenDigital": 228,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "228",
+   "etiquetaFuente": "Imagen PDF 228",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0228.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0228.jpg",
-   "bytes": 1168625,
-   "sha256": "538c5df3561c601663c4e22e9bf462027bd57baf63c16ca33dac878ded245d11"
+   "bytes": 973991,
+   "sha256": "e5281e30891ecb9082fd86149cb140c093b7448fe96aa9bd6384c228b457d8aa"
   },
   {
    "imagenDigital": 229,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "229",
+   "etiquetaFuente": "Imagen PDF 229",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0229.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0229.jpg",
-   "bytes": 1113634,
-   "sha256": "1b79189d94bb9b76cc9cb72be5770b2fa7cbe71dedd585d4fa9d4213a33a91eb"
+   "bytes": 687050,
+   "sha256": "adde17b68eb3b46145b7eef59dcaa2b603636058bf2f4ab62f7022423a6647f6"
   },
   {
    "imagenDigital": 230,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "230",
+   "etiquetaFuente": "Imagen PDF 230",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0230.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0230.jpg",
-   "bytes": 1224631,
-   "sha256": "345d6705e3384376a99a893ec4752beb38282fb301f666e7ce1e99a46fa6d6cf"
+   "bytes": 745033,
+   "sha256": "dd8fd93673ae161e20d52d7f1b8002c58f261127dd45e00ffb1f7a8bb8ca208c"
   },
   {
    "imagenDigital": 231,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "231",
+   "etiquetaFuente": "Imagen PDF 231",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0231.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0231.jpg",
-   "bytes": 1093650,
-   "sha256": "47649a982088f793b6c71236b37efb0dfe2110a5bf788a0d8e0c1a7d3234e0ff"
+   "bytes": 488277,
+   "sha256": "586344b8a2d81d175371e87ecc2736dab5c2405dba687f6abd5b57ac9d9cc198"
   },
   {
    "imagenDigital": 232,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "232",
+   "etiquetaFuente": "Imagen PDF 232",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0232.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0232.jpg",
-   "bytes": 1052972,
-   "sha256": "5ce1ab00bce38a5c8934d427b14aa5db88f1345490c5ae175a915cc4a949c749"
+   "bytes": 651289,
+   "sha256": "84e5f45fbd3edb773a42633757846387e23220b21d2e622beaf2435539b33e15"
   },
   {
    "imagenDigital": 233,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "233",
+   "etiquetaFuente": "Imagen PDF 233",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0233.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0233.jpg",
-   "bytes": 933258,
-   "sha256": "6a70af0bcc60554a78a7492983a31b7f233fcc5c95bd310e2460be0b3eaec450"
+   "bytes": 446944,
+   "sha256": "02c28358c575789c9df0abe21ed6f5c902fead6edf7028c23b39ef2c9bc7f28c"
   },
   {
    "imagenDigital": 234,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "234",
+   "etiquetaFuente": "Imagen PDF 234",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0234.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0234.jpg",
-   "bytes": 931772,
-   "sha256": "3aaf786af2502faf04a722d13a6d9753be7f12d3719659966ada3edc6cc031e5"
+   "bytes": 532745,
+   "sha256": "eb1c89ead8e19123f5cf02e4b8f8526d48f6e5096c78949c4dfc0d079e753fd9"
   },
   {
    "imagenDigital": 235,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "235",
+   "etiquetaFuente": "Imagen PDF 235",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0235.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0235.jpg",
-   "bytes": 876932,
-   "sha256": "1f8eed2d701bba93c4d0769399208e0f7eee5b5a2c2860c177d6117b4a45c7d3"
+   "bytes": 628609,
+   "sha256": "3b09e157a5dd72973c36420294f6cba974e8629047c46ffb9092947180845c9a"
   },
   {
    "imagenDigital": 236,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "236",
+   "etiquetaFuente": "Imagen PDF 236",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0236.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0236.jpg",
-   "bytes": 878193,
-   "sha256": "69a540083a738afa9c9ad0dc72c3b07d022825a81ed3ec5bcee2bfa616e06bdc"
+   "bytes": 460343,
+   "sha256": "d26933a371b00f1ccda59ad2f5ed3500b8f6871196115654af272ddfd146e144"
   },
   {
    "imagenDigital": 237,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "237",
+   "etiquetaFuente": "Imagen PDF 237",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0237.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0237.jpg",
-   "bytes": 1124363,
-   "sha256": "961175635e25150f60723eb506120b35e599e3f6efe37483c4c43a094fa60625"
+   "bytes": 547308,
+   "sha256": "c522753eefc71afe8124663de7ade4a46a8ed6613655e171823e7d8e3f7430d7"
   },
   {
    "imagenDigital": 238,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "238",
+   "etiquetaFuente": "Imagen PDF 238",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0238.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0238.jpg",
-   "bytes": 779819,
-   "sha256": "e2395d3187e3a1b788e4d2348cdf1265dc3cd297627cf3d361d7102844f01fc1"
+   "bytes": 984071,
+   "sha256": "dca77521f92814f4c10aaa7ed66dd865fffb949a6d637507657a2ccd2d32d094"
   },
   {
    "imagenDigital": 239,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "239",
+   "etiquetaFuente": "Imagen PDF 239",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0239.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0239.jpg",
-   "bytes": 1140224,
-   "sha256": "4e53f0929c56395ba9a0882a74da5c85297b36f8add20c40ffb7e1213ac7d98e"
+   "bytes": 363331,
+   "sha256": "8720a5a06bb23d52bd7cfddfe53133e6d35b313fa9eb3af4683962fd30e204ed"
   },
   {
    "imagenDigital": 240,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "240",
+   "etiquetaFuente": "Imagen PDF 240",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0240.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0240.jpg",
-   "bytes": 1283680,
-   "sha256": "b10cdf4fa087c73ba415ad805286f154697a6bbb26f4eab192ecf7a63ab1ce23"
+   "bytes": 550172,
+   "sha256": "307ca62d0c0ad70a4bd6957ae363fb045728926e9685496d44282a7ba749d656"
   },
   {
    "imagenDigital": 241,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "241",
+   "etiquetaFuente": "Imagen PDF 241",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0241.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0241.jpg",
-   "bytes": 714527,
-   "sha256": "a3b8c004906b44c9dbd0bf6c77735f97592ee631e3146b2fd77388d11f7e8a4d"
+   "bytes": 550042,
+   "sha256": "d87d6f26fb90e488cba786b7da7055f3a2881373fdc77a38e5532742d2533a89"
   },
   {
    "imagenDigital": 242,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "242",
+   "etiquetaFuente": "Imagen PDF 242",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0242.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0242.jpg",
-   "bytes": 805546,
-   "sha256": "5c7de8fc8f4b978782724b66b74294368865b3e7c34fd168bdd1b5b92d3ce9d5"
+   "bytes": 587124,
+   "sha256": "d80558a94036facd1b58ecf2e0340bcb9ff64b1c930789563c58fb770ffc9f2f"
   },
   {
    "imagenDigital": 243,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "243",
+   "etiquetaFuente": "Imagen PDF 243",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0243.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0243.jpg",
-   "bytes": 962747,
-   "sha256": "ba5ae1aa6dd91e921caa0f06bdb4c93f06aa85a5ffc97aa3bfb1cce39a7ac9a4"
+   "bytes": 653847,
+   "sha256": "4ce8f66e43647b081ce290d2ae1cd9f2b828f3f0f783938d62c2299b8be5dd2d"
   },
   {
    "imagenDigital": 244,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "244",
+   "etiquetaFuente": "Imagen PDF 244",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0244.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0244.jpg",
-   "bytes": 948635,
-   "sha256": "cedc32dd764f5fb7c2a86921ee490435c0d92799307f0dd435e2efb712107656"
+   "bytes": 905189,
+   "sha256": "e861189c2a009e10d233e7363e323f7efcdc4b4d63144f1cff766bc72ddaa94f"
   },
   {
    "imagenDigital": 245,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "245",
+   "etiquetaFuente": "Imagen PDF 245",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0245.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0245.jpg",
-   "bytes": 1212880,
-   "sha256": "fd8b8c5d98586bcabf823a8e5961b02e1ec8fe38815ecd1d6d8f38321637c312"
+   "bytes": 678370,
+   "sha256": "ff44ee60f97028d2c5c856ac3f529fa1bd701ef23322dca84d52ff9584d19d3b"
   },
   {
    "imagenDigital": 246,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "246",
+   "etiquetaFuente": "Imagen PDF 246",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0246.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0246.jpg",
-   "bytes": 1288726,
-   "sha256": "6aa510f65ecb1557ff732d6d3e2e590f13ba56adc65f8638c298bfa971570e44"
+   "bytes": 836337,
+   "sha256": "6e028ab2288d5859c9a2761f0d6527caa06d093ea32766c5df601fc296da4dcb"
   },
   {
    "imagenDigital": 247,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "247",
+   "etiquetaFuente": "Imagen PDF 247",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0247.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0247.jpg",
-   "bytes": 1290739,
-   "sha256": "926a16eb833cdc66f99e9351adfb3c6febefec1dd49294ee3192e20797cf4da0"
+   "bytes": 701401,
+   "sha256": "860bce01b4362141079eaa4c0e58b03034b502abedf2199215000860ee388c68"
   },
   {
    "imagenDigital": 248,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "248",
+   "etiquetaFuente": "Imagen PDF 248",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0248.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0248.jpg",
-   "bytes": 1198621,
-   "sha256": "d435a58227a50d15759524eb5a9545876e6c5ed9af36fa241c46ad2fc9c8dbc6"
+   "bytes": 631092,
+   "sha256": "07bb1fc83bcb48c030731c26c7b0c16d0149d4f639b2d7f4a155191b4fc5ff49"
   },
   {
    "imagenDigital": 249,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "249",
+   "etiquetaFuente": "Imagen PDF 249",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0249.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0249.jpg",
-   "bytes": 1241236,
-   "sha256": "66c03275eab58b8776ce7dcbbe26cf5a48dfb918500de4df2bc661998d39fd31"
+   "bytes": 403115,
+   "sha256": "d1903dccd095fb439efae0b7d20d393b4330e55a0ec091bb16025b28cd8c2aae"
   },
   {
    "imagenDigital": 250,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "250",
+   "etiquetaFuente": "Imagen PDF 250",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0250.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0250.jpg",
-   "bytes": 912158,
-   "sha256": "3c4b032b146bde684f54c0ec473cff5ebcfb69fccb8882e15db6b2c01c370ed2"
+   "bytes": 887343,
+   "sha256": "faae4b61982dc6fd05304e07fa756a7c5811de5ce5467e44518c4792e736ab7e"
   },
   {
    "imagenDigital": 251,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "251",
+   "etiquetaFuente": "Imagen PDF 251",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0251.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0251.jpg",
-   "bytes": 1084273,
-   "sha256": "70689040f25ad128bbc7e41b1a77ee7374fd1fac7b159a9400a4379de57722ba"
+   "bytes": 597655,
+   "sha256": "07a9a47f265330b75ea596cb57ef8ebafab47cee1b71d56ad0b91d4356c185fb"
   },
   {
    "imagenDigital": 252,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "252",
+   "etiquetaFuente": "Imagen PDF 252",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0252.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0252.jpg",
-   "bytes": 1292577,
-   "sha256": "30341738e27537350faf615e4730e7d45a90c396134a1c6a2cdce7e369ccc30e"
+   "bytes": 615596,
+   "sha256": "3ad7c9a49d38337dec070dda661bf6772f7874b9d8a6de2a41e6e3245ad4703e"
   },
   {
    "imagenDigital": 253,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "253",
+   "etiquetaFuente": "Imagen PDF 253",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0253.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0253.jpg",
-   "bytes": 1201044,
-   "sha256": "3011418328fefa268bee23f5fd100233ccf8461090b6f28c38cfa7d57cae5f77"
+   "bytes": 495425,
+   "sha256": "cf6a890765685c214e488fdaa6629d08b4a9767052c4dab513c2c10a6f5cfa74"
   },
   {
    "imagenDigital": 254,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "254",
+   "etiquetaFuente": "Imagen PDF 254",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0254.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0254.jpg",
-   "bytes": 949597,
-   "sha256": "3cb9c2987e12924477839c70b3bb7848388bc16720c90a7966e42af1b6f94de7"
+   "bytes": 535531,
+   "sha256": "5c674317f323e55e7fcdc4b51e3cfaf2d1d7c6d45b741507cc28831eaf16634d"
   },
   {
    "imagenDigital": 255,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "255",
+   "etiquetaFuente": "Imagen PDF 255",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0255.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0255.jpg",
-   "bytes": 1067496,
-   "sha256": "76b6d48281a3dec5f841c53f1cb71f520ca33a1217caa35ac291079471fa7241"
+   "bytes": 541367,
+   "sha256": "dd0a62f3ba99ce8107703afc4e035fe41be6099692ce84ab2de820af6806cedd"
   },
   {
    "imagenDigital": 256,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "256",
+   "etiquetaFuente": "Imagen PDF 256",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0256.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0256.jpg",
-   "bytes": 906801,
-   "sha256": "88f398b25ff3c3d52e14744915a4eb4fa35113087c4460bed97ce7eff70755c8"
+   "bytes": 546202,
+   "sha256": "900709fa89fbf33d2eb5ef50f2354abf749486c52cc07ab6e44c58acf38c9207"
   },
   {
    "imagenDigital": 257,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "257",
+   "etiquetaFuente": "Imagen PDF 257",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0257.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0257.jpg",
-   "bytes": 1024624,
-   "sha256": "90728198a456ebd1abc5b34c08e6e4259e793da577d634a599507d7ce1b23e21"
+   "bytes": 473639,
+   "sha256": "ca555eb85b9ab3d445b8acaa2350b8b79202423136a72c04d9375baec298cb8f"
   },
   {
    "imagenDigital": 258,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "258",
+   "etiquetaFuente": "Imagen PDF 258",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0258.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0258.jpg",
-   "bytes": 936811,
-   "sha256": "fd191a5a8de877365392270146abe1bbe2ce415692c9abc823e1fae049c21432"
+   "bytes": 853222,
+   "sha256": "a8c89319dc48e50b8ced5cb89835ad3ea6797fe69b53fce984362ddb38eb9bb0"
   },
   {
    "imagenDigital": 259,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "259",
+   "etiquetaFuente": "Imagen PDF 259",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0259.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0259.jpg",
-   "bytes": 1000221,
-   "sha256": "9f84d4ed4eef6682e9b43c03a64c2054c1ba1970e2e672a41d609be83c629138"
+   "bytes": 549190,
+   "sha256": "76a958e2f1bbeb8a8ec1db9a2e17d7e3250195ae1847bad8eda9fece41f97f21"
   },
   {
    "imagenDigital": 260,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "260",
+   "etiquetaFuente": "Imagen PDF 260",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0260.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0260.jpg",
-   "bytes": 1197288,
-   "sha256": "c86f7570f4716f019768fb265e4dc09a2dc8cb8a7e913657c82fabc1cc639dfe"
+   "bytes": 878648,
+   "sha256": "f3c1b55e15524474676714b12db873d531de9b0805639f4c5f38284fae5dfd9b"
   },
   {
    "imagenDigital": 261,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "261",
+   "etiquetaFuente": "Imagen PDF 261",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0261.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0261.jpg",
-   "bytes": 1130285,
-   "sha256": "7c8f7c705377faad22b2747ff064731631010ffd57dd693349c85f05e385d9ba"
+   "bytes": 543048,
+   "sha256": "54fc865f141ffa8aa7ff84a60899e0e816c2cfd3ec3ef288fbc45a99770f0155"
   },
   {
    "imagenDigital": 262,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "262",
+   "etiquetaFuente": "Imagen PDF 262",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0262.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0262.jpg",
-   "bytes": 1024665,
-   "sha256": "6b4e5c0da3047c564192b8305e93243442cc379a725f031514b1ce9380f5635b"
+   "bytes": 496907,
+   "sha256": "fbaa3a7ac7e593a93159974134b41b62d8235339505059561aef4135ecda78ff"
   },
   {
    "imagenDigital": 263,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "263",
+   "etiquetaFuente": "Imagen PDF 263",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0263.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0263.jpg",
-   "bytes": 865398,
-   "sha256": "3d6750480904f0a53ee5f747bafff5be84fce19fbc261c1401e3a51444b49eff"
+   "bytes": 723155,
+   "sha256": "f1ee777cd5098b2e4715df40afe1b73e9dbd86151503335a651a02013d8d2f8c"
   },
   {
    "imagenDigital": 264,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "264",
+   "etiquetaFuente": "Imagen PDF 264",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0264.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0264.jpg",
-   "bytes": 783029,
-   "sha256": "5161e832e494ea8e86a0d0c0cfe6533ae81cd426f4c6d8cce7cc2940fecb5726"
+   "bytes": 585969,
+   "sha256": "c368366e7c62a602562e6e8f85f740fffe9599e96f7fb2f742c2287e96916e93"
   },
   {
    "imagenDigital": 265,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "265",
+   "etiquetaFuente": "Imagen PDF 265",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0265.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0265.jpg",
-   "bytes": 1244983,
-   "sha256": "5305308637eba9b54ab87b831c66329b266c3e65835ea0dbb3dcb56c6778a903"
+   "bytes": 282229,
+   "sha256": "d60323e49b9c26536284b2cc7046cc12b564d307c4ac0eab8c2cbc76f013f855"
   },
   {
    "imagenDigital": 266,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "266",
+   "etiquetaFuente": "Imagen PDF 266",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0266.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0266.jpg",
-   "bytes": 852121,
-   "sha256": "5c543d94ee4ae5dc33d47e289b8c5f8aac6c6b49ddbb7bcb3a19809acc582b2d"
+   "bytes": 659134,
+   "sha256": "2efc290391f8b9f65694a5633f1ab59b08943b41c97d1a8e262bc78684bf62c7"
   },
   {
    "imagenDigital": 267,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "267",
+   "etiquetaFuente": "Imagen PDF 267",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0267.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0267.jpg",
-   "bytes": 718580,
-   "sha256": "2e5b8ea75f2729232d7c4cf79f969310a5ab54b12397bf52199ba4d1ab38c86c"
+   "bytes": 750770,
+   "sha256": "91fc6be203991a67edd43d9696013bdd866305cd3aed4562f5f234c4af25b0fc"
   },
   {
    "imagenDigital": 268,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "268",
+   "etiquetaFuente": "Imagen PDF 268",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0268.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0268.jpg",
-   "bytes": 935719,
-   "sha256": "8cfca465e9a797d9efba7c5ddabe545f115cd9fcc5b36a277fa1a5ddea85901c"
+   "bytes": 535257,
+   "sha256": "970dd712a24280026c1f4aba1a3c32610b4b66d8bea2247a432a4d94910c7048"
   },
   {
    "imagenDigital": 269,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "269",
+   "etiquetaFuente": "Imagen PDF 269",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0269.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0269.jpg",
-   "bytes": 1136615,
-   "sha256": "3fe30b131709289d3ccac930bf743e5f074a61af56a889a2a82fb131ad218182"
+   "bytes": 717970,
+   "sha256": "2884220958c54b618421f37ac0f0ad6482a7faeb5e4cab85c924fbca28a28e94"
   },
   {
    "imagenDigital": 270,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "270",
+   "etiquetaFuente": "Imagen PDF 270",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0270.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0270.jpg",
-   "bytes": 878712,
-   "sha256": "a7f85b66e0d36931e225ba06cab1a787e7d68698422223580283944d435f7adb"
+   "bytes": 660711,
+   "sha256": "b7993b2a3aebb3fb94495ed6082bddca65a91ae15fa4ac39136f8b4edec3d37c"
   },
   {
    "imagenDigital": 271,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "271",
+   "etiquetaFuente": "Imagen PDF 271",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0271.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0271.jpg",
-   "bytes": 1209759,
-   "sha256": "829781a96d4d81c77b6654e9ffd9ad275e069de8e64ad22fad46937044117abf"
+   "bytes": 425354,
+   "sha256": "0c974e764b9f5a00841ae97ea6b1c8f12b1dc38f6d44fe4d5267d63f43ae4313"
   },
   {
    "imagenDigital": 272,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "272",
+   "etiquetaFuente": "Imagen PDF 272",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0272.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0272.jpg",
-   "bytes": 992250,
-   "sha256": "b210cc14fdac411ed1de1f7b10f051569dda2fe0d68292e2e24f473400d582e9"
+   "bytes": 847568,
+   "sha256": "8d72f53723bc8fbe7779257383dd5be2dbf09018dc78b86cd206f0728eb0f150"
   },
   {
    "imagenDigital": 273,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "273",
+   "etiquetaFuente": "Imagen PDF 273",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0273.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0273.jpg",
-   "bytes": 985579,
-   "sha256": "28ca767992c58581e00f6f2d512cb16ca4a4a2f0951a121d09e09d0b110d3e78"
+   "bytes": 674436,
+   "sha256": "8c68d83c82c7e1d0f50ae46037666d9b618db18f4dd484350e0d430c292cf770"
   },
   {
    "imagenDigital": 274,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "274",
+   "etiquetaFuente": "Imagen PDF 274",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0274.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0274.jpg",
-   "bytes": 1122902,
-   "sha256": "56ca53fcaf070808cef00767d3cc1eca461ee9feba838c6ac6a60262d0ae3dff"
+   "bytes": 651169,
+   "sha256": "7d6a153690529d05191dc9432bebdc88e03d294cbf6e0d8226a6fe4383bd61c0"
   },
   {
    "imagenDigital": 275,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "275",
+   "etiquetaFuente": "Imagen PDF 275",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0275.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0275.jpg",
-   "bytes": 1117234,
-   "sha256": "e6a44278205db11e16666e13080519e6caca53c37d273cd2ae63f67cfce50b01"
+   "bytes": 506906,
+   "sha256": "58ed220bef3ea1028bd050bbd5733b17f7eaa604973d399f4200f9932e04d2c0"
   },
   {
    "imagenDigital": 276,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "276",
+   "etiquetaFuente": "Imagen PDF 276",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0276.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0276.jpg",
-   "bytes": 1016963,
-   "sha256": "26ba18fb7dfd88a1c84ee0eb238060482c4ce290000f8e64efe42f5d89ebdc08"
+   "bytes": 874499,
+   "sha256": "fbcc40347eb973ecf865ffcb294619a2e81ac3d45464c1ad65d90a14fb08e976"
   },
   {
    "imagenDigital": 277,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "277",
+   "etiquetaFuente": "Imagen PDF 277",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0277.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0277.jpg",
-   "bytes": 937531,
-   "sha256": "28c1b521a46b924f76522757a40b50d79678eab3972cb9f055cb2de6e41c6076"
+   "bytes": 742296,
+   "sha256": "2f353979d0c42639b7232374928aaf36f0fdf93b5be23a9402dd27ef079a2386"
   },
   {
    "imagenDigital": 278,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "278",
+   "etiquetaFuente": "Imagen PDF 278",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0278.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0278.jpg",
-   "bytes": 1119080,
-   "sha256": "eebb456a995033e2d8511642fc24ea7e7e5a92d09dc3ad961200447a70b192c9"
+   "bytes": 718903,
+   "sha256": "3abac61d7102a6dd8a14424aa1b175315417ea104f2fb8cd41fda16fa839ac52"
   },
   {
    "imagenDigital": 279,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "279",
+   "etiquetaFuente": "Imagen PDF 279",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0279.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0279.jpg",
-   "bytes": 1156704,
-   "sha256": "c4246ba66734a415b7f41e44e86b3816a461c3556ccc6f6ed660faaa4c747a50"
+   "bytes": 650235,
+   "sha256": "4d9b8cf50fe420342385a6aeb1e037c8d9c1f7003f5346a83276dbbf4f2fcae9"
   },
   {
    "imagenDigital": 280,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "280",
+   "etiquetaFuente": "Imagen PDF 280",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0280.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0280.jpg",
-   "bytes": 1045327,
-   "sha256": "4179f59c5f16ad593c2572221079ca5ba0f4afa1d3f1b38abe43dde1263db536"
+   "bytes": 781974,
+   "sha256": "2780040a21c5b887b9358ffa198f1d740b4f58b8c29ab9583f33948fe5abae37"
   },
   {
    "imagenDigital": 281,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "281",
+   "etiquetaFuente": "Imagen PDF 281",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0281.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0281.jpg",
-   "bytes": 1100333,
-   "sha256": "794ffb41d6ccf0dbac7b1173aabbc266980d3bbd075734a9a1789f1a89b0d968"
+   "bytes": 823681,
+   "sha256": "de6918a01e592f449748e0474c5bc9bbdfc8a081592ee4fc323bbf755ba713f2"
   },
   {
    "imagenDigital": 282,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "282",
+   "etiquetaFuente": "Imagen PDF 282",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0282.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0282.jpg",
-   "bytes": 1132465,
-   "sha256": "426e188ca061b7c3523cb07ee6d04335eb46c43124be80181c7a487384e3ae50"
+   "bytes": 1094218,
+   "sha256": "d476915165ba3392a33129432384d0c756c7efc60fd44ea3a3d9e1ed67fc9481"
   },
   {
    "imagenDigital": 283,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "283",
+   "etiquetaFuente": "Imagen PDF 283",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0283.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0283.jpg",
-   "bytes": 1415257,
-   "sha256": "6b50b4f24d3b73a3b0561c9400a7dcfee93e7f11bc05cda8e1643d578d459bfa"
+   "bytes": 640500,
+   "sha256": "f1fa0e57a7031964bf7d273f0dd58990fdbbd4803f546874c0bdc9e8fb30f4ce"
   },
   {
    "imagenDigital": 284,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "284",
+   "etiquetaFuente": "Imagen PDF 284",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0284.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0284.jpg",
-   "bytes": 1439944,
-   "sha256": "e115df1b5eeb9462986034ef3e36f9d51b01f764ed12ce2dc38bcb0383831b1f"
+   "bytes": 608009,
+   "sha256": "8f9c60357383fbda44bd8bdd1e0c094da830b7386c5c120762e69b7611f36565"
   },
   {
    "imagenDigital": 285,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "285",
+   "etiquetaFuente": "Imagen PDF 285",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0285.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0285.jpg",
-   "bytes": 1149130,
-   "sha256": "2a161be8383d461fdc16c594a980d4ea53eb85183f612e589965823fce3ceedf"
+   "bytes": 493326,
+   "sha256": "e9ca73b3fbec226b21ce18e78c10e8f6f1ab6f6a0c3e559eef63f096c818c4a2"
   },
   {
    "imagenDigital": 286,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "286",
+   "etiquetaFuente": "Imagen PDF 286",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0286.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0286.jpg",
-   "bytes": 964638,
-   "sha256": "13183422ff48c92db02b9e85ea68897952bc3dde80a9f1a510673bc807702a33"
+   "bytes": 577918,
+   "sha256": "4af328c81f254039b35047244a3ab1c211535dfe9c0eb264c54868b7c56a7b6f"
   },
   {
    "imagenDigital": 287,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "287",
+   "etiquetaFuente": "Imagen PDF 287",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0287.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0287.jpg",
-   "bytes": 960532,
-   "sha256": "fac5925132818e905fda91c9dc1b07cd87e1b75de69526c9cc3dce75c19ab25a"
+   "bytes": 606886,
+   "sha256": "16f15b23349acf1fb32341d33f728e84efc1509ecb6fc73b2575fac9fd5c622a"
   },
   {
    "imagenDigital": 288,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "288",
+   "etiquetaFuente": "Imagen PDF 288",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0288.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0288.jpg",
-   "bytes": 884021,
-   "sha256": "08ebbd9916f0ba7e6db4b99dcc699cd239ad62e5f9f55e16ddac27df86af1f58"
+   "bytes": 433579,
+   "sha256": "ae11802bf05abcf56d2d24f6f8447774b21fb07cf1c1ecccbaa64926d68b527a"
   },
   {
    "imagenDigital": 289,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "289",
+   "etiquetaFuente": "Imagen PDF 289",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0289.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0289.jpg",
-   "bytes": 1113757,
-   "sha256": "22017e03a8f88edac0abf8333993eda61a5a6725fbd985411e032687c0990e88"
+   "bytes": 450450,
+   "sha256": "127e93b1bc648376eda79c0c164a778ca6cfe23ae245817f8663b48fd48e6bed"
   },
   {
    "imagenDigital": 290,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "290",
+   "etiquetaFuente": "Imagen PDF 290",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0290.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0290.jpg",
-   "bytes": 812718,
-   "sha256": "ebc8b7d562cba710aecd432cc5793d547e84eb7a90cc0876422ddbdd4ebd8ad7"
+   "bytes": 543479,
+   "sha256": "5813c34fe1b05521e0e66e60cdaeb57aabc726857c3f50d9e0b0ca9a0b591be2"
   },
   {
    "imagenDigital": 291,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "291",
+   "etiquetaFuente": "Imagen PDF 291",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0291.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0291.jpg",
-   "bytes": 819123,
-   "sha256": "5c7812087d69a86ea819691e9cbaf37cdf991d45b6dac3a79060787d2cc68a17"
+   "bytes": 272670,
+   "sha256": "6bf8349fcfdf7b10a23c3625713852b73333f1677fb14524ea8ccf12b6dc350b"
   },
   {
    "imagenDigital": 292,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "292",
+   "etiquetaFuente": "Imagen PDF 292",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0292.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0292.jpg",
-   "bytes": 746684,
-   "sha256": "57a838f762b5334a078df97af8553cc713ef7638c58550f63fb0cefbabcf32e8"
+   "bytes": 664250,
+   "sha256": "e13d91c0ad681c825aaebaa028c60af42163056fe225e367980e9910d1a7b7e8"
   },
   {
    "imagenDigital": 293,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "293",
+   "etiquetaFuente": "Imagen PDF 293",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0293.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0293.jpg",
-   "bytes": 694950,
-   "sha256": "3d443d2c6baa90a240ac7dde654d46d9a882d35b66bb0052e8546249290633f8"
+   "bytes": 567049,
+   "sha256": "0f8be588cf7ed57637c80cc96561727d561162a4ac2ca4858fe21094582918d3"
   },
   {
    "imagenDigital": 294,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "294",
+   "etiquetaFuente": "Imagen PDF 294",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0294.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0294.jpg",
-   "bytes": 938884,
-   "sha256": "00f9ceeafec39a31ebecb880949f09ac3cdf18d1a3d40f50cbb328af34be5c87"
+   "bytes": 759022,
+   "sha256": "fe718dcc32e25b7ef75fdea3a29abc8b646106239d57c5bac02f1b610a3f59e0"
   },
   {
    "imagenDigital": 295,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "295",
+   "etiquetaFuente": "Imagen PDF 295",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0295.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0295.jpg",
-   "bytes": 919615,
-   "sha256": "3eed2e74d171c968d2c72279cba61718367085b0e59bed6ddea4f19630d6df69"
+   "bytes": 517434,
+   "sha256": "9070a06ff2b15fd2cde62f1ae557aeb2d732217d14b02727a2a0b79d03bc9746"
   },
   {
    "imagenDigital": 296,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "296",
+   "etiquetaFuente": "Imagen PDF 296",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0296.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0296.jpg",
-   "bytes": 1067026,
-   "sha256": "96018c98742a47eec65432d964ae39cf45747105c79213a8838ac5337c7558f5"
+   "bytes": 1002417,
+   "sha256": "2629c06712c19b9d1d7f81c9c30de57d7b9fdb40f0450ca85faa749f1d10f8b7"
   },
   {
    "imagenDigital": 297,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "297",
+   "etiquetaFuente": "Imagen PDF 297",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0297.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0297.jpg",
-   "bytes": 830441,
-   "sha256": "9a78660e5e5b93e4b440037e6ee125e6d88543936221fd0b40555faf5ab92837"
+   "bytes": 683302,
+   "sha256": "7e71e755a8465d46d775336651dacdb8963dc0a43190c97edc1122d48fbff577"
   },
   {
    "imagenDigital": 298,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "298",
+   "etiquetaFuente": "Imagen PDF 298",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0298.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0298.jpg",
-   "bytes": 1153605,
-   "sha256": "508e5a1456dd02f95432f211666136e759e9d8d8a0b23d2ec928e45d2796f070"
+   "bytes": 477872,
+   "sha256": "6803a98d18806ebb9c1beeef9159d851123bd418d2dbd129c0bdb7c3e428833f"
   },
   {
    "imagenDigital": 299,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "299",
+   "etiquetaFuente": "Imagen PDF 299",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0299.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0299.jpg",
-   "bytes": 1094971,
-   "sha256": "157a06e52371dada9a083ba337853c3016c2342904f53f9f1a76c474164a29f3"
+   "bytes": 460336,
+   "sha256": "c4a7ac5b49033fe671cc818b7b22c308c67c84c9b0a5509aaef9a53ac32299d1"
   },
   {
    "imagenDigital": 300,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "300",
+   "etiquetaFuente": "Imagen PDF 300",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0300.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0300.jpg",
-   "bytes": 809334,
-   "sha256": "4f499102e9d677bbbc2bbfbfbf3e1b08ba505601beae6a4cf7600cba684877ff"
+   "bytes": 729958,
+   "sha256": "6a20743db021b74404e08a8443cf9299cc11076dedec4f8b69a1c680c2f9be9d"
   },
   {
    "imagenDigital": 301,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "301",
+   "etiquetaFuente": "Imagen PDF 301",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0301.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0301.jpg",
-   "bytes": 1007705,
-   "sha256": "fe127c2d698d9dbd22891284ea8f38eb355cde20e47ffcfb8cef66bc81d67829"
+   "bytes": 560945,
+   "sha256": "3caa637c1c78cdda88aa3b8cae04aba1ab07d9564e81c4629aaca325e07a3891"
   },
   {
    "imagenDigital": 302,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "302",
+   "etiquetaFuente": "Imagen PDF 302",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0302.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0302.jpg",
-   "bytes": 1036128,
-   "sha256": "c898a4b31b98d82309a3a114e83eede57152e0e8ac0e40a5cd927208c8ed515f"
+   "bytes": 698168,
+   "sha256": "ff8bc237516c07dc25fab7c694c5d29bee73f4f111fd54453e9f729e2fdc5fc0"
   },
   {
    "imagenDigital": 303,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "303",
+   "etiquetaFuente": "Imagen PDF 303",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0303.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0303.jpg",
-   "bytes": 1040951,
-   "sha256": "c54cbfa7d4166c04699e5e51621ef3c40ae4d2cc9a67b0ba81352e4a45f195f2"
+   "bytes": 322494,
+   "sha256": "82a164b91456636cf32db59e1cc9a231f863c0ea0e5d7efed7e2b4e9c455793c"
   },
   {
    "imagenDigital": 304,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "304",
+   "etiquetaFuente": "Imagen PDF 304",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0304.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0304.jpg",
-   "bytes": 1006460,
-   "sha256": "3f9bf43787e22abf5a7042838f8854cdb725f3fc2b549a5e796ff38cb8641780"
+   "bytes": 492911,
+   "sha256": "bd92cc3915562300fda70a2eb4e377b835672f251e337327c89788c2f0d696e0"
   },
   {
    "imagenDigital": 305,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "305",
+   "etiquetaFuente": "Imagen PDF 305",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0305.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0305.jpg",
-   "bytes": 739587,
-   "sha256": "955bd2b50ca36855c89bc6d93b8356029d29fbaff1ac0377acdfa5f9fe63d54b"
+   "bytes": 703151,
+   "sha256": "31e35b654bc332f193e249a5c496b3fc4e818de6b2ceb7047757f7d6b8601f73"
   },
   {
    "imagenDigital": 306,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "306",
+   "etiquetaFuente": "Imagen PDF 306",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0306.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0306.jpg",
-   "bytes": 774795,
-   "sha256": "439aa77c34fd1dd57838f6797aef92f28575353c7da2d4069b972b26183f81b8"
+   "bytes": 713489,
+   "sha256": "e69b24666a3e9d3388ff6cded91ef665512a58ecab58a706aa053acb238bed8c"
   },
   {
    "imagenDigital": 307,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "307",
+   "etiquetaFuente": "Imagen PDF 307",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0307.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0307.jpg",
-   "bytes": 1196732,
-   "sha256": "4615a3395a02654a5e02b874d7b82fc9118c9822e2c848a5b2dfac91727ff4ea"
+   "bytes": 482742,
+   "sha256": "e455648fde29736aa6d164d008ddfbf938b8a246d1b073077afa9943b87183e4"
   },
   {
    "imagenDigital": 308,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "308",
+   "etiquetaFuente": "Imagen PDF 308",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0308.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0308.jpg",
-   "bytes": 1014208,
-   "sha256": "6e285b1e43c0c20a136d249d4ff44204a2fc261d1207ee3068f2ca2fa72eca72"
+   "bytes": 426318,
+   "sha256": "ac594f1b849eb779a07f9bc30f766839b2499d1091fef54f6678d5fb1b0bbb61"
   },
   {
    "imagenDigital": 309,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "309",
+   "etiquetaFuente": "Imagen PDF 309",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0309.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0309.jpg",
-   "bytes": 946217,
-   "sha256": "6510a1ddeabbaefedcac6e9882fc1fffcd64e3d5e62b318d3ce325c7f2a627b3"
+   "bytes": 636095,
+   "sha256": "f8d33a0af7d7a0332400c464b6c5826fba23c444487703d3ef34c6fdeb5e5bc0"
   },
   {
    "imagenDigital": 310,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "310",
+   "etiquetaFuente": "Imagen PDF 310",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0310.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0310.jpg",
-   "bytes": 848193,
-   "sha256": "8b180b4a624894ab24b50a95626d4583471a2681615bd79faea313f86c1a23f7"
+   "bytes": 620888,
+   "sha256": "8e74a16b3d34d98746f58820084f5bab1bbea7bf794e40685d646bf60fd5cf41"
   },
   {
    "imagenDigital": 311,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "311",
+   "etiquetaFuente": "Imagen PDF 311",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0311.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0311.jpg",
-   "bytes": 1261203,
-   "sha256": "57e57b037e9dfe2db3d5412a798be48bd881b01090ed1f9c9c9c5922be817a4d"
+   "bytes": 592503,
+   "sha256": "dab4cd9c1bb0f0885554db23cfadd9289162967af1a778d851726ce21345b5d0"
   },
   {
    "imagenDigital": 312,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "312",
+   "etiquetaFuente": "Imagen PDF 312",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0312.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0312.jpg",
-   "bytes": 976912,
-   "sha256": "c2e3166e3d8cd710881225be4c5f163638ad1dd80d36e5e03707efdd3d1d6931"
+   "bytes": 563785,
+   "sha256": "d948d1816a89d6f4e45e1772da6fad2792b600598ff3dc19525ee3e3340ef3d0"
   },
   {
    "imagenDigital": 313,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "313",
+   "etiquetaFuente": "Imagen PDF 313",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0313.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0313.jpg",
-   "bytes": 921689,
-   "sha256": "5141f17b4bab3fdacaa1c99c3b83481046fd41276340ef3a18bcfa719c643316"
+   "bytes": 687406,
+   "sha256": "744867b3a6992efb40a386680ab6acbcc875aa084f90d83b7a7ae73e005a5e8c"
   },
   {
    "imagenDigital": 314,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "314",
+   "etiquetaFuente": "Imagen PDF 314",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0314.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0314.jpg",
-   "bytes": 842971,
-   "sha256": "079d5f4ae67dd0baedda8dabaca43229f570b882a4c343c761395997b27f634b"
+   "bytes": 630660,
+   "sha256": "c874e6d1011ce3495f2fbce244e727f2a634d7e8f353e8b63dadc5d64c0b68be"
   },
   {
    "imagenDigital": 315,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "315",
+   "etiquetaFuente": "Imagen PDF 315",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0315.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0315.jpg",
-   "bytes": 1439587,
-   "sha256": "c009aa8587dfc1bef000f58ba9a83f0d7368581454d1102f2a9501c5b4f66aa7"
+   "bytes": 564230,
+   "sha256": "02f3c2dd2b97ea04eaafc6a00405a7bbc81968b08b37a5ed039ed9ced4846adf"
   },
   {
    "imagenDigital": 316,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "316",
+   "etiquetaFuente": "Imagen PDF 316",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0316.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0316.jpg",
-   "bytes": 1064922,
-   "sha256": "d1ade5d3f08a2ff7100f937c54a2f787062ed42748bc64c79ead49eda41346ee"
+   "bytes": 878656,
+   "sha256": "0ad16da7cca6fa391dbe74d98e1fb898b77871e1082081eabe48728d8b97cdb5"
   },
   {
    "imagenDigital": 317,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "317",
+   "etiquetaFuente": "Imagen PDF 317",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0317.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0317.jpg",
-   "bytes": 1103655,
-   "sha256": "9bae84a6a28e7012e880a86881b6234c735d09b37eaf77a88250145b0c3e9305"
+   "bytes": 741902,
+   "sha256": "586479a8a2b78613675a9b8dd0c9b1500ab6cd271211326f9ed3606165b5c9ef"
   },
   {
    "imagenDigital": 318,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "318",
+   "etiquetaFuente": "Imagen PDF 318",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0318.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0318.jpg",
-   "bytes": 1282137,
-   "sha256": "e482838ca9eb0f0c3d3de7fc7ec418f19aae71c7782547c89b52877400047a87"
+   "bytes": 823611,
+   "sha256": "df9f71e582f361c692bbc8e1e577525c8d9f2199881154b022e08e8ecc5fe9c3"
   },
   {
    "imagenDigital": 319,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "319",
+   "etiquetaFuente": "Imagen PDF 319",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0319.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0319.jpg",
-   "bytes": 1292406,
-   "sha256": "50d006772d8cfa19d884b3b185000110442791d62bc04075552c788722ce1a54"
+   "bytes": 440341,
+   "sha256": "8a4b2fd2e6d60ec1e472e1cce935a5c4f0b7ff9bcc52f09d30159749caebc2e2"
   },
   {
    "imagenDigital": 320,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "320",
+   "etiquetaFuente": "Imagen PDF 320",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0320.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0320.jpg",
-   "bytes": 1161767,
-   "sha256": "c9899842844c21b8949ad7528f83da2ea8f47619f57df6705a7888217be5f26e"
+   "bytes": 890715,
+   "sha256": "70f0a4485ee75d79c3f731bf8317245e5f4516a884fbc56715490767c583ba12"
   },
   {
    "imagenDigital": 321,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "321",
+   "etiquetaFuente": "Imagen PDF 321",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0321.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0321.jpg",
-   "bytes": 1025591,
-   "sha256": "b4ee5bc84cb8cba471d53d6236d1c4df562b38fd73d9d72f6a06b30fcf5ea7a6"
+   "bytes": 736876,
+   "sha256": "a494c0e3296966e3787b8d3786c2bfba5f444d5f3c94c57cfa946eea365e8e7b"
   },
   {
    "imagenDigital": 322,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "322",
+   "etiquetaFuente": "Imagen PDF 322",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0322.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0322.jpg",
-   "bytes": 1126770,
-   "sha256": "02205cfdf14fd5a16aaecbdaea3616cf9bbd9caedde377323458d9460c67f4e6"
+   "bytes": 800628,
+   "sha256": "0c74642957a7c885f566aba35b6b151cc952fc281d1aae503e5ef32ea24fdcb4"
   },
   {
    "imagenDigital": 323,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "323",
+   "etiquetaFuente": "Imagen PDF 323",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0323.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0323.jpg",
-   "bytes": 1306598,
-   "sha256": "fe55c0657ee3498f9fc76f87ec4b1fa5936ba75c44219c5a25f33f65d8fc8a42"
+   "bytes": 654237,
+   "sha256": "164bb6f1a689be0a5f0f0a08ea0e2fe483372bcf85791a81b4db2f63c5994633"
   },
   {
    "imagenDigital": 324,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "324",
+   "etiquetaFuente": "Imagen PDF 324",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0324.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0324.jpg",
-   "bytes": 1158052,
-   "sha256": "e5db2e2cf417d23ac6d726e9ae42d94ea4bd3f085a7a9308c4bae7865d47c0a4"
+   "bytes": 687110,
+   "sha256": "76873250998fd3efe92b956b25aa9e48b5e4abc53ab98ed3ff881cbb73bc2fe6"
   },
   {
    "imagenDigital": 325,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "325",
+   "etiquetaFuente": "Imagen PDF 325",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0325.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0325.jpg",
-   "bytes": 1252672,
-   "sha256": "132623613b10244729a3c701c68c8d46cd9e288108f84d88cd25a686baf95ff2"
+   "bytes": 501976,
+   "sha256": "a4f5bac387c45e1766bd1a6599d37b8cb6aa881acee1d98c0624888e194046d4"
   },
   {
    "imagenDigital": 326,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "326",
+   "etiquetaFuente": "Imagen PDF 326",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0326.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0326.jpg",
-   "bytes": 1085689,
-   "sha256": "c9f5f991cc9c259ec033642b1a414a829bc03b57df1cc1683f56912b1832cd3f"
+   "bytes": 826423,
+   "sha256": "0e5035f7ca9ad6e6023690b43328fd3d9d760ae31dc7e998fe64c17e1405cbfc"
   },
   {
    "imagenDigital": 327,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "327",
+   "etiquetaFuente": "Imagen PDF 327",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0327.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0327.jpg",
-   "bytes": 936162,
-   "sha256": "b07f96d396ca3108f471ae9c362173d6cf9a23e443dd5d07bc57a4e3e4742c74"
+   "bytes": 562684,
+   "sha256": "a0df64e385289bf6565bf2875731269fa9af67380ec238385afec93cad365359"
   },
   {
    "imagenDigital": 328,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "328",
+   "etiquetaFuente": "Imagen PDF 328",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0328.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0328.jpg",
-   "bytes": 1073213,
-   "sha256": "5f0a50710bfc269afe310362880bdc8fe01c23bcfdc804c3f5fe248152b815f8"
+   "bytes": 515363,
+   "sha256": "a3d3fdfc814626e3e680603ad24a383686e51e13f7918b1b9a1ca60a925e8c62"
   },
   {
    "imagenDigital": 329,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "329",
+   "etiquetaFuente": "Imagen PDF 329",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0329.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0329.jpg",
-   "bytes": 1109757,
-   "sha256": "8b79afc49f45ac54dcfbf5e9dfdbbcf04fa8239aa8ce405b2eab0e88dfeb986a"
+   "bytes": 447695,
+   "sha256": "65fa276eb2bbe75a65039ef6cabff53fab562b903902e41fc1e9ad8797efae5a"
   },
   {
    "imagenDigital": 330,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "330",
+   "etiquetaFuente": "Imagen PDF 330",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0330.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0330.jpg",
-   "bytes": 844544,
-   "sha256": "e236930ad43d06c36b858e3fd4035ca15d6f55c461671c90b486a83a3caca04a"
+   "bytes": 731150,
+   "sha256": "d56e2ae13fe26f7beb017cc2741075e9c1d08b817e4670c76da2b38ff8d77a7a"
   },
   {
    "imagenDigital": 331,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "331",
+   "etiquetaFuente": "Imagen PDF 331",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0331.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0331.jpg",
-   "bytes": 892041,
-   "sha256": "68f024285c5b4bebdb44cedfe6c4e0e55fa6b97126f0ebc5d56cf2b22840929f"
+   "bytes": 633376,
+   "sha256": "ed7661afd509d77731619afbba26aa1b98240d6443c5dc3dc2dbd1b3244b216f"
   },
   {
    "imagenDigital": 332,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "332",
+   "etiquetaFuente": "Imagen PDF 332",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0332.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0332.jpg",
-   "bytes": 1069331,
-   "sha256": "b9335c5312f43f3d6088d5068e59a212898daff023ae1ada708e78d2e2ab61d4"
+   "bytes": 1071703,
+   "sha256": "15d9f496e4f4e078f31fdab65d94631cc39d59685727973986b79cae2bdb69ff"
   },
   {
    "imagenDigital": 333,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "333",
+   "etiquetaFuente": "Imagen PDF 333",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0333.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0333.jpg",
-   "bytes": 1066720,
-   "sha256": "08fa1c542f5f1bc95c534a00b9ebac66904f6ba7015ca60099766204385dd31e"
+   "bytes": 823015,
+   "sha256": "d20581ec28465d32ea4ec7357c02c38798832b5aca068b8de068fb0970c143c9"
   },
   {
    "imagenDigital": 334,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "334",
+   "etiquetaFuente": "Imagen PDF 334",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0334.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0334.jpg",
-   "bytes": 1338142,
-   "sha256": "229706514ee471e6211d61d69e59ed2b1e6ba032d4223687b04225ca984da74a"
+   "bytes": 278965,
+   "sha256": "73f9e9bf6b6ff45c9992e2a5ceddffaf04a82cf0f1fc0881e5b67a2b5e85e3e1"
   },
   {
    "imagenDigital": 335,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "335",
+   "etiquetaFuente": "Imagen PDF 335",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0335.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0335.jpg",
-   "bytes": 1411740,
-   "sha256": "070ffbab1be9129fee7bd09656d63c36dec7a9167eb8f78ddee22d80d4e4b476"
+   "bytes": 82129,
+   "sha256": "80b5f411c212519b5bf5d9651968c3cc3b2d4fd026783f1002ad79676a42bf95"
   },
   {
    "imagenDigital": 336,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "336",
+   "etiquetaFuente": "Imagen PDF 336",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0336.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0336.jpg",
-   "bytes": 664838,
-   "sha256": "45123abf1510d9189f08ded53b87d337a5d23ce15e756829a58ecd3241fe2efe"
+   "bytes": 97397,
+   "sha256": "737a94ce180dda3266b3fe2d8bb1b42ea8889072fb4aa82ec437da83d3e1ad34"
   },
   {
    "imagenDigital": 337,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "337",
+   "etiquetaFuente": "Imagen PDF 337",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0337.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0337.jpg",
-   "bytes": 392540,
-   "sha256": "2dad8667a9c1e548db7745068e7d7397cde28e6a1251ebf8cfdc62a111283ba9"
+   "bytes": 187574,
+   "sha256": "8d2bd9f3b12d33a1d74c7d8593b9f87b60411b3355064248731a102a6f574321"
   },
   {
    "imagenDigital": 338,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "338",
+   "etiquetaFuente": "Imagen PDF 338",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0338.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0338.jpg",
-   "bytes": 404070,
-   "sha256": "d75fc861497a6d642e4cc2d2a2f12b9827e9e4f37205a0051a538120b5db0050"
+   "bytes": 269920,
+   "sha256": "cc3bbfedc3b2f7e249089955d2378c45970fb5130e63280c17b4d4b4b1d4536a"
   },
   {
    "imagenDigital": 339,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "339",
+   "etiquetaFuente": "Imagen PDF 339",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0339.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0339.jpg",
-   "bytes": 266097,
-   "sha256": "0cd9c9c618747f52f4694df583489c260f0b07b1da3fea672ef909e503d68658"
+   "bytes": 266754,
+   "sha256": "0bfe4e6194cdec4297dd2b8f36a32e57af0d22c75082059d962370c1637ceb14"
   },
   {
    "imagenDigital": 340,
    "folio": "",
    "paginaImpresa": "",
    "libro": "",
-   "etiquetaFuente": "340",
+   "etiquetaFuente": "Imagen PDF 340",
    "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0340.jpg",
    "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0340.jpg",
-   "bytes": 271480,
-   "sha256": "63ddc04a1f1488d3e45702da59f36b6572f991a70d95face193d1a8b6bb313a3"
-  },
-  {
-   "imagenDigital": 341,
-   "folio": "",
-   "paginaImpresa": "",
-   "libro": "",
-   "etiquetaFuente": "341",
-   "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0341.jpg",
-   "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0341.jpg",
-   "bytes": 302652,
-   "sha256": "c2412a85664f7884cd1013b8cda976c8c05d593b35237ff42f665e22d9babde6"
-  },
-  {
-   "imagenDigital": 342,
-   "folio": "",
-   "paginaImpresa": "",
-   "libro": "",
-   "etiquetaFuente": "342",
-   "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0342.jpg",
-   "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0342.jpg",
-   "bytes": 289595,
-   "sha256": "9b079a85f6d64dd6ecb65e26ce843b9b6d170cfb634a39cd67e0e91d1fe16452"
-  },
-  {
-   "imagenDigital": 343,
-   "folio": "",
-   "paginaImpresa": "",
-   "libro": "",
-   "etiquetaFuente": "343",
-   "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0343.jpg",
-   "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0343.jpg",
-   "bytes": 323736,
-   "sha256": "8d23760185f8e7b897571a4e46277d2b8013e619284ab3504aa934bf70afc7b9"
-  },
-  {
-   "imagenDigital": 344,
-   "folio": "",
-   "paginaImpresa": "",
-   "libro": "",
-   "etiquetaFuente": "344",
-   "imagen": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/f0344.jpg",
-   "miniatura": "https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/t0344.jpg",
-   "bytes": 834207,
-   "sha256": "44f159a357a2f8ae71c35286993b8f2db58fab7eea7ba2a11160a478a1db3828"
+   "bytes": 528148,
+   "sha256": "c26ca08eba64fbdfe93ef758243180b1c4fd760b989956953a19f209e7dfc3c4"
   }
- ],
- "metadatosFuente": {
-  "title": "I qvattro libri dell'architettvra",
-  "creator": [
-   "Palladio, Andrea, 1508-1580",
-   "Chrieger, Giovanni, 16th cent",
-   "Chrieger, Cristoforo, d. ca. 1590",
-   "Coriolanus, Christophorus"
-  ],
-  "date": "1601",
-  "publisher": "In Venetia, Appresso Bartolomeo Carampello",
-  "language": "ita"
- }
+ ]
 }
