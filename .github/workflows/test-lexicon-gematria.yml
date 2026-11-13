@@ -1,0 +1,20 @@
+name: Lexicon — control de gematría clásica
+on:
+  push:
+    paths:
+      - 'assets/lexicon-gematria.js'
+      - 'scripts/test-lexicon-gematria.mjs'
+      - '.github/workflows/test-lexicon-gematria.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar tablas y cálculos filológicos
+        run: node scripts/test-lexicon-gematria.mjs
