@@ -88,8 +88,11 @@ const classical=sourceFile("assets/bibliotheca-simple.js");
 const corpus=sourceFile("assets/bibliotheca-corpus-search.js");
 new Script(classical,{filename:"assets/bibliotheca-simple.js"});
 assert.ok(classical.includes("searchPassages([q,...transliterations,")&&
- classical.includes("allMatches:true,includeFullText:true,includeOCR:false"),
- "Bibliotheca must display all matching paragraphs including documented Greek transliterations without truncation");
+ classical.includes("if(!workId&&!options.exhaustive)")&&
+  classical.includes("maxPerEdition:workId?200:70,limit:600")&&
+  classical.includes("includeFullText:true,includeOCR:false")&&
+  classical.includes("attestedGreekForms(q)"),
+  "Bibliotheca must preview the full index without downloads, verify selected-work passages and explicitly label bounded extended searches");
 assert.ok(classical.includes("vitruvia-lexicon.html"),
  "Lexicon navigation must include the requested word");
 assert.ok(classical.includes("dating("),
