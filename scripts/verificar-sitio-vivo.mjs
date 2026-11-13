@@ -16,6 +16,7 @@ const informe={fecha:new Date().toISOString(),paginas:pages.length,hosts:{},r2:{
 async function recorrer(base){
   const out={visitadas:0,erroresJS:[],recursosFallidos:[],enlacesRotos:[],externosFallidos:new Set(),cargaLenta:[]};
   const enlaces=new Set();
+  const abortados=[];
   let cursor=0;
   const origin=new URL(base).origin;
   async function worker(){
@@ -31,7 +32,9 @@ async function recorrer(base){
           else out.externosFallidos.add(r.status()+" "+u.split("?")[0]);
         }
       });
-      page.on("requestfailed",r=>{const u=r.url();if(u.startsWith(origin)||u.startsWith(R2))out.recursosFallidos.push(f+" → FALLA "+(r.failure()?.errorText||"")+" "+u)});
+      // ERR_ABORTED: descargas de PDF que Chromium sin visor corta, o pedidos cancelados por una
+      // redirección de la página. Se confirman después con una petición directa.
+      page.on("requestfailed",r=>{const u=r.url();if(u.startsWith(origin)||u.startsWith(R2))abortados.push([f,r.failure()?.errorText||"",u])});
       const t0=Date.now();
       try{
         const resp=await page.goto(base+f,{waitUntil:"load",timeout:60000});
@@ -47,6 +50,11 @@ async function recorrer(base){
     await ctx.close();
   }
   await Promise.all(Array.from({length:6},worker));
+  for(const [f,err,u] of abortados){
+    try{const r=await fetch(u,{method:"GET"});await r.arrayBuffer();if(r.status>=400)out.recursosFallidos.push(f+" → "+err+" y "+r.status+" "+u)}
+    catch(e){out.recursosFallidos.push(f+" → "+err+" "+u)}
+  }
+  out.abortadosConfirmadosOK=abortados.length;
   // Enlaces internos únicos
   const lista=[...enlaces];
   let i=0;
