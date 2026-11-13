@@ -225,11 +225,25 @@ async function arrancar() {
  herramientas();
  const guardados = almacen.leer("vdl-subrayados-" + clave);
  if (Array.isArray(guardados)) for (const [n, lista] of guardados) marcasPorFolio.set(Number(n), lista);
- try {
-  const r = await fetch(`data/r2/folios/${clave}.json`, { cache: "no-cache" });
-  if (!r.ok) throw Error("HTTP " + r.status);
-  indice = await r.json();
- } catch {
+ /* El índice se lee de la biblioteca (R2), que es donde lo dejó el bajador de
+    folios. La copia del repositorio queda de respaldo: el dominio devuelve la
+    portada cuando no reconoce una ruta, y entonces el visor quedaba vacío. */
+ const fuentes = [
+  `https://libros.vitruvius-digital-library.org/folios/${clave}/indice-folios.json`,
+  `data/r2/folios/${clave}.json`
+ ];
+ for (const fuente of fuentes) {
+  try {
+   const r = await fetch(fuente, { cache: "no-cache" });
+   if (!r.ok) continue;
+   const datos = await r.json();
+   if (datos && datos.schema === "vdl-folios-obra-1" && Array.isArray(datos.folios) && datos.folios.length) {
+    indice = datos;
+    break;
+   }
+  } catch { /* se prueba la siguiente */ }
+ }
+ if (!indice) {
   $("estado").textContent = "Los folios de esta obra todavía no están alojados: la descarga a la biblioteca está en curso. " +
    "Mientras tanto la obra se puede leer en el visor de facsímiles.";
   const a = document.createElement("a");

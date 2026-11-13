@@ -99,7 +99,11 @@ function ensureTypography(){
  const palette=document.getElementById('home-palette-toggle')||document.getElementById('front-background-toggle');
  const theme=document.querySelector('.research-nav-controls .theme-switch, .nav .theme-switch, .theme-switch');
  const anchor=palette?.closest('.home-color-tools, details')||palette||document.querySelector('.classic-view-colorbar')||theme;
- if(location.pathname.split('/').pop()==='indices-locorum.html'&&document.getElementById('indices-typeface-slot'))document.getElementById('indices-typeface-slot').append(tool);
+ /* Si la página declara dónde va el control, va ahí: depender de un selector
+    de maquetación lo dejaba fuera de la botonera cuando ese selector cambiaba. */
+ const hueco=document.getElementById('site-typeface-slot');
+ if(hueco)hueco.append(tool);
+ else if(location.pathname.split('/').pop()==='indices-locorum.html'&&document.getElementById('indices-typeface-slot'))document.getElementById('indices-typeface-slot').append(tool);
  else if(location.pathname.split('/').pop()==='vitruvia-lexicon.html'&&document.querySelector('.site-shell>.nav .navtools'))document.querySelector('.site-shell>.nav .navtools').append(tool);
  else if(anchor?.classList?.contains('classic-view-colorbar'))anchor.append(tool);
  else if(anchor?.parentElement)anchor.after(tool);

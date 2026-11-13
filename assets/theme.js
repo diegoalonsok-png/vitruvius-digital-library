@@ -18,7 +18,9 @@
  document.documentElement.dataset.theme=choice;
  function mount(){
   const target=document.querySelector('.research-nav-controls')||document.querySelector('.research-nav-inner')||document.querySelector('.header-inner')||document.querySelector('main')||document.body;if(!target)return;
-  const buttons=[...target.querySelectorAll('.theme-switch')];
+  /* Un botón de apariencia por página: si la página ya trae el suyo —con su
+     clase o con el id theme— se usa ése y no se inyecta otro. */
+  const buttons=[...document.querySelectorAll('.theme-switch,#theme')];
   if(!buttons.length){const b=document.createElement('button');b.type='button';b.className='theme-switch';target.append(b);if(!target.closest('header')){b.classList.add('theme-floating');b.style.cssText='position:fixed;right:18px;top:14px;z-index:9999;cursor:pointer'}buttons.push(b);}
   const paint=()=>{const dark=document.documentElement.dataset.theme==='dark';for(const b of buttons){
    b.replaceChildren();

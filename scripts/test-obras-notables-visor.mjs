@@ -30,12 +30,23 @@ const abrir=(busqueda,servir)=>{
  return dom;
 };
 
-const dom=abrir("?obra=palladio-quattro-libri&imagen=5",async ruta=>
- String(ruta).endsWith("data/r2/folios/palladio-quattro-libri.json")
-  ?{ok:true,status:200,json:async()=>indice}:{ok:false,status:404,json:async()=>({})});
+/* En producción el índice se lee de R2; el dominio devuelve la portada cuando
+   no reconoce una ruta, así que el visor NO debe conformarse con eso. */
+const dom=abrir("?obra=palladio-quattro-libri&imagen=5",async ruta=>{
+ const u=String(ruta);
+ if(u==="https://libros.vitruvius-digital-library.org/folios/palladio-quattro-libri/indice-folios.json")
+  return {ok:true,status:200,json:async()=>indice};
+ if(u.endsWith("data/r2/folios/palladio-quattro-libri.json"))
+  return {ok:true,status:200,json:async()=>({schema:"html-de-la-portada"})};
+ return {ok:false,status:404,json:async()=>({})};
+});
 await sleep(120);
 const w=dom.window, $=id=>w.document.getElementById(id);
 
+check("lee el índice de la biblioteca, no la portada que devuelve el dominio",()=>{
+ assert.match($("imagen").src,/libros\.vitruvius-digital-library\.org\/folios\//);
+ assert.equal($("estado").textContent.includes("todavía no están alojados"),false);
+});
 check("abre la imagen pedida en el enlace, no la primera",()=>{
  assert.match($("imagen").src,/f0005\.jpg$/,"src: "+$("imagen").src);
  assert.equal($("numero").value,"5");

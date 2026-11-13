@@ -319,18 +319,19 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
 <link rel="stylesheet" href="assets/bundle-vitruvia-lexicon-1.css?v=c90295b2">
 <style id="lx-writing-lab-placement">
 /* Acceso bajo el selector de lengua: aspecto negro neutro y moderno. */
-.navtools{display:grid!important;grid-template-columns:repeat(5,max-content);align-items:center;gap:9px!important}
+.navtools #lx-lang{order:1}.navtools .lx-writing-lab-link{order:2}.navtools{display:flex!important;flex-wrap:nowrap;align-items:center;gap:9px!important;min-width:0}.navtools>*{flex:0 0 auto}
 .navtools #lx-lang{grid-column:1;grid-row:1;min-width:190px}
 .navtools .lx-writing-lab-link{grid-column:1;grid-row:2;display:block;padding:9px 12px;box-sizing:border-box;text-align:center;text-decoration:none;font:500 13px/1.35 system-ui,-apple-system,sans-serif;white-space:normal;color:#e6e6e6;background:#191919;border:1px solid #565656;border-radius:8px;transition:background .15s,border-color .15s}
 .navtools .lx-writing-lab-link:hover,.navtools .lx-writing-lab-link:focus-visible{background:#2a2a2a;border-color:#a0a0a0;color:#fff}
-.navtools #lx-palette{grid-column:2;grid-row:1}
-.navtools #lx-ui{grid-column:3;grid-row:1}
-.navtools #theme{grid-column:4;grid-row:1}
+.navtools #lx-palette{order:3}
+.navtools #lx-ui{order:4}
+.navtools #theme{order:5}
 /* The shared typography control (Aa) is dynamically inserted by site-bar.js. */
-.site-shell>.nav .navtools .site-typeface-tool{grid-column:5;grid-row:1;justify-self:start;align-self:center;min-width:0}
+.navtools #site-typeface-slot{order:6;display:inline-flex;align-items:center}
+.site-shell>.nav .navtools .site-typeface-tool{order:6;align-self:center;min-width:0;flex:0 0 auto}
 .site-shell>.nav .navtools .site-typeface-button{min-width:48px;min-height:44px;padding:8px 10px;border-radius:9px}
-@media(max-width:950px){.navtools{grid-template-columns:repeat(5,minmax(0,max-content));max-width:100%}.navtools #lx-lang{min-width:0}.navtools .lx-writing-lab-link{font-size:12px}}
-@media(max-width:700px){.site-shell>.nav .navtools{grid-template-columns:repeat(3,minmax(0,max-content));gap:7px!important}.navtools #lx-lang{grid-column:1;grid-row:1}.navtools .lx-writing-lab-link{grid-column:1 / -1;grid-row:3}.navtools .lx-palette{grid-column:2;grid-row:1}.navtools #lx-ui{grid-column:3;grid-row:1}.navtools #theme{grid-column:2;grid-row:2}.site-shell>.nav .navtools .site-typeface-tool{grid-column:3;grid-row:2}}
+@media(max-width:950px){.navtools{max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}.navtools #lx-lang{min-width:0}.navtools .lx-writing-lab-link{font-size:12px}}
+@media(max-width:700px){.site-shell>.nav .navtools{gap:7px!important;flex-wrap:nowrap;overflow-x:auto}.navtools #lx-lang{grid-column:1;grid-row:1}.navtools .lx-writing-lab-link{grid-column:1 / -1;grid-row:3}.navtools .lx-palette{grid-column:2;grid-row:1}.navtools #lx-ui{order:4}.navtools #theme{grid-column:2;grid-row:2}.site-shell>.nav .navtools .site-typeface-tool{grid-column:3;grid-row:2}}
 </style><style id="lx-vitruvia-search-visual">
 /* Cabecera de Lexicon armonizada con el buscador Vitruvia: negro neutro, sin dorados. */
 .site-shell>.nav{background:#0d0d0e;color:#e9e9e7;border-bottom:1px solid #303030}
@@ -401,7 +402,7 @@ html[data-theme=light] .featured a#featured-link{background:#232326;color:#fff}
   <a class="lx-writing-lab-link" href="laboratorio-escrituras.html" title="Griego politónico, variantes de grafía y normalización filológica">Laboratorio de escrituras</a>
   <details class="lx-palette" id="lx-palette"><summary aria-label="Color de fondo" title="Color de fondo"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3Z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10.5" cy="7.2" r="1.2"/><circle cx="15" cy="7.4" r="1.2"/></svg><span data-i18n>Fondo</span></summary><div class="lx-palette-panel"></div></details>
   <select id="lx-ui" aria-label="Idioma de la interfaz" title="Idioma de la interfaz / Interface language"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
-  <button type="button" id="theme" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button>
+  <button type="button" id="theme" class="theme-switch" aria-label="Cambiar apariencia" title="Cambiar apariencia"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9A7 7 0 0 1 12 3Z"/></svg></button><span id="site-typeface-slot" class="navtools-slot"></span>
  </div>
 </header>
 <main>
