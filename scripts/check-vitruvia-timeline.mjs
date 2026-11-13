@@ -106,6 +106,17 @@ const arrowNext=find("vat-controls")[0]?.children?.find(x=>x.attributes?.["aria-
 assert(arrowNext?.onclick,"Timeline arrow must select the next milestone, not scroll an overflowing canvas");
 arrowNext.onclick();
 assert.equal(find("vat-detail")[0].hidden,false);
+// Regression: common Greek conceptual terms must not acquire unrelated
+// albums, similarly named modern books or spurious Wikidata entity dates.
+emit("vitruvia:search",{query:"logos"});
+for(let i=0;i<4;i++)await Promise.resolve();
+emit("vitruvia:results",{query:"logos",rows:[{type:"book",title:"Logos",year:2011,link:"https://example.org/unrelated",source:"Catalogue"}]});
+emit("vitruvia:albums",{query:"logos",albums:[{title:"Logos (album)",releaseDate:"1999-01-01",url:"https://example.org/album"}]});
+emit("vitruvia:cultural-works",{wikidataId:"Q2",works:[{id:"Q44",year:1980,title:"Logos",dateKind:"publication",dateProperty:"P577"}]});
+assert.equal(win.VitruviaAcademicTimeline.collect().length,0,"Logos cannot inherit unrelated dated works");
+assert.equal(find("vat-event").length,0,"Abstract term timeline must not show spurious dates");
+emit("vitruvia:search",{query:"λόγος"});
+assert.equal(win.VitruviaAcademicTimeline.collect().length,0,"Greek accented λόγος has the same protection");
 emit("vitruvia:search",{query:"Ramses II"});
 for(let i=0;i<4;i++)await Promise.resolve();
 assert.deepEqual([...win.VitruviaAcademicTimeline.collect().map(x=>x.year)],[-1303]);
