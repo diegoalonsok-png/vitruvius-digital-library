@@ -38,6 +38,51 @@ function highlight(text,lang='la',latin=''){
 function clearReading(message){
  for(const id of ['latin-text','translation-text','latin-title','latin-source','translation-source','passage-ref','pdf-links','provenance-text','edition-citation','edition-metadata','citation-status'])$(id).replaceChildren();$('other-translations').replaceChildren();$('status').textContent=message;current=null;passageCitation='';$('prev').disabled=$('next').disabled=true;
 }
+
+/* Los títulos y los identificadores se leen del mismo catálogo editorial
+   que utiliza el lector, evitando dos inventarios bibliográficos divergentes. */
+function renderEditionIdentification(lang){
+ const selectedId=editionIds[lang],root=$('edition-books'),top=$('reader-current-book');
+ if(!root||!top||root.dataset.edition===selectedId)return;
+ const specs=[
+  {id:'recensio-es',language:'es',languages:'Latín · Castellano',role:'Recensio comparativa provisional · traducción castellana',details:'edicion-v514.html'},
+  {id:'recensio-fr',language:'fr',languages:'Latín · Francés',role:'Recensio comparativa provisional · traduction française',details:'edicion-v554.html'},
+  {id:'theory-en',language:'en',languages:'Latín · Inglés',role:'Edición de lectura y estudio · traducción y comentario inglés',details:'edicion-v297.html'}
+ ];
+ const current=records[selectedId];
+ if(current){
+  const full=bookTitle(current);
+  top.innerHTML='<strong>Libro y traducción seleccionados · '+esc(current.version)+'</strong>'+
+   '<span class="reader-current-title">'+esc(full)+'</span>'+
+   '<span class="reader-current-meta"> · Diego A. Kurilo · DOI: <a href="https://doi.org/'+esc(current.doi)+'" target="_blank" rel="noopener noreferrer">'+esc(current.doi)+'</a></span>';
+ }else top.textContent='Los datos editoriales se consultan en las fichas de las ediciones.';
+ root.innerHTML=specs.map(spec=>{
+  const e=records[spec.id];if(!e)return '';
+  const currentCard=spec.id===selectedId;
+  const doi=String(e.doi||''),isbn=e.isbn?esc(e.isbn):'No consignado en el PDF consultado';
+  const isbnNote=e.isbn
+   ?'<small class="edition-card-caveat">Consignado en el paratexto. V514 y V554 comparten número; asignación registral pendiente de corroboración independiente.</small>'
+   :'<small class="edition-card-caveat">No se atribuye un ISBN sin documentación verificable.</small>';
+  const role=String(e.editorial_role||'Edición, traducción y estudios').replace(/Diego Kurilo/g,'Diego A. Kurilo');
+  const pdf=String(e.read_url||e.source_url||'');
+  return '<article class="reader-edition-card'+(currentCard?' is-current':'')+'" lang="'+spec.language+'"'+(currentCard?' aria-current="true"':'')+'>'+
+   '<p class="edition-card-kicker">'+esc(e.version)+' · '+esc(spec.languages)+(currentCard?' · EDICIÓN SELECCIONADA':'')+'</p>'+
+   '<h3><cite>'+esc(bookTitle(e))+'</cite></h3>'+
+   '<dl><dt>Autor</dt><dd><strong>Diego A. Kurilo</strong><span class="edition-card-caveat">Arquitecto con orientación en Urbanismo</span></dd>'+
+   '<dt>Obra base</dt><dd>Marco Vitruvio Polión, <i>De architectura</i></dd>'+
+   '<dt>Labor</dt><dd>'+esc(role)+'</dd>'+
+   '<dt>Edición</dt><dd>'+esc(e.publisher||'')+' · '+esc(e.publication_place||'Buenos Aires')+' · '+esc(e.year||'2026')+' · '+esc(e.pages||'')+' páginas</dd>'+
+   '<dt>ISBN</dt><dd>'+isbn+isbnNote+'</dd>'+
+   '<dt>DOI</dt><dd>'+(doi?'<a href="https://doi.org/'+esc(doi)+'" target="_blank" rel="noopener noreferrer">'+esc(doi)+'</a>':'No documentado')+'</dd>'+
+   '<dt>Estado</dt><dd>'+esc(spec.role)+'</dd></dl>'+
+   '<nav class="edition-card-links" aria-label="Documentos de '+esc(e.version)+'">'+
+   '<a href="documents/'+spec.details+'">Ficha bibliográfica</a>'+
+   (pdf?'<a href="'+esc(pdf)+'" target="_blank" rel="noopener noreferrer">PDF de la edición</a>':'')+
+   '</nav></article>';
+ }).join('');
+ root.dataset.edition=selectedId;
+}
+
 function render(){
  const locus=[$('book').value,$('chapter').value,$('section').value].join('.'),lang=$('lang').value,data=datasets[editionIds[lang]],p=data?.passages.find(p=>atLocus(p,locus));
  const base=all.find(p=>atLocus(p,locus));current=base||null;
@@ -71,6 +116,7 @@ function render(){
   const d=datasets[editionIds[other]],u=d?.passages.find(x=>atLocus(x,locus)),section=document.createElement('section');section.className='scholarly-panel';section.lang=other;
   section.innerHTML='<p class="eyebrow">'+ui('TRADUCCIÓN','TRANSLATION','TRADUCTION')+'</p><h2>'+names[other]+'</h2><p class="source">'+bibliographyHTML(records[editionIds[other]])+'</p><div class="scholarly-text">'+(u?(u.scope_note?'<p class="source">'+esc(citation(u)+' · '+u.scope_note)+'</p>':'')+highlight(u.translation,other,u.latin||base.latin):ui('Traducción sin correspondencia disponible para este locus.','No aligned translation for this passage.','Aucune traduction alignée pour ce passage.'))+'</div>';others.append(section);
  }
+ renderEditionIdentification(lang);
  const ed=records[editionIds[lang]];const source=ed?.read_url||ed?.source_url;
  $('edition-citation').innerHTML=bibliographyHTML(ed);
  $('edition-metadata').textContent=ed?[ed.editorial_role,ed.publication_place,ed.version,ed.isbn_note].filter(Boolean).join(' · '):'';
