@@ -116,7 +116,7 @@ function mark(which,card,bar){
  if(which==="clear"){
   if(save(card,[])){redraw();output.textContent="Marcas eliminadas de este pasaje."}return;
  }
- if(!selectedText||selectedText.card!==card){output.textContent="Seleccioná primero palabras de este pasaje.";return}
+ if(!selectedText||selectedText.card!==card){output.textContent="Selecciona primero palabras de este pasaje.";return}
  const {a,b}=selectedText,items=get(card);
  if(which==="erase"){
   if(save(card,items.filter(x=>x.b<=a||x.a>=b))){redraw();output.textContent="Marca borrada."}return;
