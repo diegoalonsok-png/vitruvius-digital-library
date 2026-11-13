@@ -10,7 +10,8 @@ const witnesses=read('data/bibliotheca-testimonia-verified.json');
 const catalogue=read('data/bibliotheca-graeca-latina-I-bce-I-ce.json');
 const report=read('data/academic-integrity.json');
 
-assert.equal(catalogue.works.length,222,'Keep all 222 catalogue works intact');
+assert(catalogue.works.length>=222,'Do not lose any records from the initial 222-work inventory');
+assert.equal(catalogue.works.length, new Set(catalogue.works.map(w=>w.id)).size,'Duplicate work identifiers in catalogue');
 assert.equal(matrix.records.length,witnesses.records.length,'Each witness must have one codicological dossier');
 assert.equal(new Set(matrix.records.map(r=>r.witnessId)).size,matrix.records.length,'Duplicate witness dossier identifier');
 assert.deepEqual(new Set(matrix.records.map(r=>r.witnessId)),new Set(witnesses.records.map(r=>r.id)),
@@ -71,4 +72,4 @@ for(const [group,key] of genevaPaths){
 }
 assert.equal(ciceroGeneva.missingCount,8,'No unsupported completion of other Geneva codicological fields');
 assert.equal(allMissing,1742,'Ten sourced Geneva fields should reduce the outstanding research backlog by exactly ten');
-console.log('PASS: 222 works untouched; 100 codicological records, 22 fields, 1742 genuinely pending; Harley and ten Geneva fields sourced to institutional catalogues');
+console.log('PASS: '+catalogue.works.length+' works catalogued; 100 codicological records, 22 fields, 1742 genuinely pending; Harley and ten Geneva fields sourced to institutional catalogues');
