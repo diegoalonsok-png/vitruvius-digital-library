@@ -14,11 +14,10 @@ const LM={I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
 const hebrew=Object.fromEntries([...H].map((ch,i)=>[ch,HV[i]]));
 Object.assign(hebrew,{ך:20,ם:40,ן:50,ף:80,ץ:90});
 const greek=Object.fromEntries([...G].map((ch,i)=>[ch,GV[i]]));
-Object.assign(greek,{"ς":200,"ϛ":6,"Ϛ":6,"ϝ":6,"Ϝ":6,"ϟ":90,"Ϟ":90,"ϙ":90,"Ϙ":90,"ϡ":900,"Ϡ":900});
+Object.assign(greek,{"ϲ":200,"ς":200,"ϛ":6,"Ϛ":6,"ϝ":6,"Ϝ":6,"ϟ":90,"Ϟ":90,"ϙ":90,"Ϙ":90,"ϡ":900,"Ϡ":900});
 const presets={
  "neron caesar":"נרון קסר","neron kaisar":"נרון קסר","neron qesar":"נרון קסר",
  "nero caesar":"נרו קסר","nero kaisar":"נרו קסר","nero qesar":"נרו קסר",
- "nerus caesar":"נרו קסר","nerus kaisar":"נרו קסר"
 };
 function fold(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z]+/g," ").trim()}
 function detect(s){if(/[\u0590-\u05ff]/u.test(s))return "he";if(/[\u0370-\u03ff\u1f00-\u1fff]/u.test(s))return "gr";return "la"}
@@ -29,10 +28,10 @@ function compute(raw,selected){
  // These forms are discrete, historically discussed transliterations.
  // Other Latin-to-Hebrew transformations require the user to enter a Hebrew spelling.
  if(script==="auto")script=detect(original);
- if(selected==="auto"&&script==="la"&&Object.hasOwn(presets,fold(original))){
+ if((selected==="auto"||selected==="he")&&detect(original)==="la"&&Object.hasOwn(presets,fold(original))){
    script="he";value=presets[fold(original)];translit=true;
  }
- const cleaned=script==="gr"?value.normalize("NFD").replace(/[\u0300-\u036f\u1fbd-\u1ffe]/g,"").toLowerCase():script==="la"?value.toUpperCase():value.normalize("NFC");
+ const cleaned=script==="gr"?value.normalize("NFD").replace(/[\u0300-\u036f\u1fbd-\u1ffe]/g,"").toLowerCase():script==="la"?value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase():value.normalize("NFD").replace(/[\u0591-\u05c7]/g,"");
  const map=script==="he"?hebrew:script==="gr"?greek:LM;
  const parts=[],ignored=[];
  for(const ch of cleaned){
@@ -59,9 +58,9 @@ function render(){
  values.textContent=calc.parts.map(x=>x.n).join(" + ")+" = "+calc.total;
  result.append(sequence,values);
  if(!calc.parts.length){const warn=document.createElement("p");warn.textContent="No se identificaron letras numéricas en el alfabeto seleccionado.";result.append(warn)}
- if(calc.ignored.length){const warn=document.createElement("p");warn.className="lx-gem-alert";warn.textContent="Caracteres sin valor en este sistema: "+[...new Set(calc.ignored)].join(" ") +". No se asignó valor ni se convirtió la grafía automáticamente.";result.append(warn)}
+ if(calc.ignored.length){const warn=document.createElement("p");warn.className="lx-gem-alert";warn.textContent="Caracteres sin valor en este sistema: "+[...new Set(calc.ignored)].join(" ") +". El total es parcial: revisá la escritura o el sistema. No se convierte la grafía automáticamente.";result.append(warn)}
  if(calc.script==="la"){const p=document.createElement("p");p.className="lx-gem-alert";p.textContent="En latín se suman únicamente I, V, X, L, C, D y M (sin reglas sustractivas de escritura numeral). No existe una gematría latina única equiparable a la hebrea.";result.append(p)}
- if(calc.script==="gr"||calc.script==="he"){const p=document.createElement("p");p.className="lx-gem-explain";p.textContent=calc.script==="he"?"Las cinco letras hebreas finales usan aquí su valor ordinario (no la variante mispar gadol).":"Los acentos y espíritus griegos no suman; sigma final ς equivale a σ. Se admiten signos numéricos históricos ϛ, ϟ y ϡ.";result.append(p)}
+ if(calc.script==="gr"||calc.script==="he"){const p=document.createElement("p");p.className="lx-gem-explain";p.textContent=calc.script==="he"?"Los signos vocálicos y de cantilación se excluyen del cálculo; las cinco letras finales usan su valor ordinario (no mispar gadol).":"Los acentos y espíritus griegos no suman; sigma final ς equivale a σ. Se admiten signos numéricos históricos ϛ, ϟ y ϡ.";result.append(p)}
  if(calc.total===666||calc.total===616){const p=document.createElement("p");p.className="lx-gem-explain";p.textContent="La coincidencia aritmética no demuestra por sí sola una identificación histórica ni una interpretación de Apocalipsis 13:18.";result.append(p)}
 }
 $("lx-gem-form").addEventListener("submit",e=>{e.preventDefault();render()});
