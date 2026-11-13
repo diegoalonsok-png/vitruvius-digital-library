@@ -56,6 +56,10 @@ const almacen = {
 
 function selectorObras() {
  const esPalladio = clave === "palladio-quattro-libri";
+ const procedenciaPalladio = $("creditos-palladio");
+ const procedenciaAlberti = $("creditos-alberti");
+ if (procedenciaPalladio) procedenciaPalladio.hidden = !esPalladio;
+ if (procedenciaAlberti) procedenciaAlberti.hidden = esPalladio;
  const accesoTraducciones = $("ir-traducciones");
  if (accesoTraducciones) accesoTraducciones.hidden = !esPalladio;
  const traducciones = $("palladio-traducciones");
