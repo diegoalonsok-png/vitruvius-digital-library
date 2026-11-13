@@ -144,7 +144,15 @@ def build():
     errors = []
     # HTML without genuine passage anchors must not be assigned invented loci.
     unanchored_html = []
+    remote_not_indexed = []
     for entry in registry["entries"]:
+        # Offline GitHub Actions cannot read Cloudflare R2 objects as local files.
+        # Report external indexes separately; never fabricate semantic coverage.
+        path = str(entry.get("path", ""))
+        if path.startswith(("https://", "http://")):
+            remote_not_indexed.append({"path": path, "format": entry.get("format"),
+                "reason": "Cloudflare R2 external text; not included in repository-local Conceptus postings. Remote object availability is not verified."})
+            continue
         if entry["format"] not in ELIGIBLE:
             continue
         try:
@@ -203,7 +211,7 @@ def build():
         "notIndexedFormats": [
             {"path": e["path"], "format": e["format"], "reason": "OCR unverified or format not supported for static concept postings"}
             for e in registry["entries"] if e["format"] not in ELIGIBLE
-        ] + unanchored_html,
+        ] + unanchored_html + remote_not_indexed,
         "versions": indexed,
     }
     if errors:
