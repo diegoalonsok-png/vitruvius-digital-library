@@ -133,7 +133,8 @@ function pintarGaleria(reiniciar) {
   ficha.append(img, n, etiqueta);
   ficha.addEventListener("click", () => {
    mostrar(f.imagenDigital);
-   $("lamina").scrollIntoView({ behavior: "smooth", block: "center" });
+   if (typeof $("lamina").scrollIntoView === "function")
+     $("lamina").scrollIntoView({ behavior: "smooth", block: "center" });
   });
   rejilla.append(ficha);
  }
@@ -173,9 +174,10 @@ function mostrar(n) {
  $("indice").value = String(actual);
  const img = $("imagen");
  ajustarEncuadre();
- img.src = f.imagen;
  img.alt = `Folio ${f.folio || "(imagen digital " + f.imagenDigital + ")"} de ${indice.titulo}`;
+ // Bind before src to handle cached folios without losing the load event.
  img.onload = () => { ajustarEncuadre(); };
+ img.src = f.imagen;
  img.onerror = () => { $("estado").textContent = "No se pudo cargar la imagen "+actual+". Intenta otro folio."; };
  nomenclatura(f);
  filtros();
@@ -271,13 +273,18 @@ function herramientas() {
   aplicarEncuadre();
  });
  $("ajustar").addEventListener("click", ajustarEncuadre);
- new ResizeObserver(() => encajarFolio()).observe(lamina);
+ // Remain usable in browsers lacking ResizeObserver and in automated readers.
+ if (typeof ResizeObserver === "function") {
+  new ResizeObserver(() => { if (img.naturalWidth) ajustarEncuadre(); }).observe(lamina);
+ } else {
+  window.addEventListener("resize", () => { if (img.naturalWidth) ajustarEncuadre(); });
+ }
  // Pan only when zoomed; dragging the original at scale 1 must not displace it.
  let drag = null;
  lamina.addEventListener("pointerdown", e => {
   if (subrayando || escala <= 1 || e.button !== 0) return;
   drag = { x:e.clientX, y:e.clientY, panX, panY };
-  lamina.setPointerCapture(e.pointerId);
+  if (typeof lamina.setPointerCapture === "function") lamina.setPointerCapture(e.pointerId);
   lamina.classList.add("arrastrando");
  });
  lamina.addEventListener("pointermove", e => {
@@ -368,7 +375,11 @@ async function arrancar() {
    if (!r.ok) continue;
    const datos = await r.json();
    if (datos && datos.schema === "vdl-folios-obra-1" && Array.isArray(datos.folios) && datos.folios.length &&
-       datos.folios.every((f,i) => f.imagenDigital === i+1 && f.imagen && f.miniatura)) {
+       datos.obra === clave && datos.imagenes === datos.folios.length &&
+       datos.folios.every((f,i) => f.imagenDigital === i+1 &&
+         typeof f.imagen === "string" &&
+         f.imagen.startsWith(`https://libros.vitruvius-digital-library.org/folios/${clave}/`) &&
+         (!f.miniatura || f.miniatura.startsWith(`https://libros.vitruvius-digital-library.org/folios/${clave}/`)))) {
     indice = datos;
     break;
    }
