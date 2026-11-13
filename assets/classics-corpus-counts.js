@@ -120,8 +120,10 @@ function paint(a,data){
    // ediciones y estado documental), también los pendientes de original indexado.
    // A selected work opens its hosted text first, whenever it exists.
    // Bibliographic records remain accessible through a separate link.
-   const preferred=rec.versions?.pair?.url||rec.versions?.links?.find(v=>["la","grc"].includes(v.language))?.url||
-     rec.versions?.links?.[0]?.url||rec.url;
+   const preferred=rec.versions?.pair?.url||
+     rec.versions?.links?.find(v=>!["la","grc"].includes(v.language))?.url||
+     rec.versions?.links?.find(v=>["la","grc"].includes(v.language))?.url||
+     rec.url;
    const strong=(preferred||rec.id)?document.createElement("a"):document.createElement("span");
    strong.textContent=rec.title;
    if(preferred){strong.href=preferred;strong.className="tally-record";strong.title="Leer la obra en el visor disponible";}
