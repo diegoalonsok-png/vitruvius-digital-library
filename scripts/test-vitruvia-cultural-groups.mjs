@@ -8,7 +8,7 @@ for(const file of ['assets/vitruvia-search.js','assets/vitruvia-entity-resolver.
  new vm.Script(read(file),{filename:file});
 
 const search=read('assets/vitruvia-search.js');
-assert.match(search,/cataloguePromise=load\(\);[\s\S]*?if\(initialQuery[^\n]*void search\(\)/,
+assert.match(search,/cataloguePromise=bootCatalogue\(\);[\s\S]*?if\(initialQuery[^\n]*void search\(\)/,
  'URL queries should begin before the catalogue finishes loading');
 assert.doesNotMatch(search,/cataloguePromise\.then\(\(\)=>\{/,
  'Do not defer a linked query until all catalogues are loaded');
