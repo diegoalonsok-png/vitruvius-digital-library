@@ -238,7 +238,7 @@ function vitruvianLinks(locus){
  // Only a simple searched lemma can be highlighted literally in the reader.
  // Expressions or inferred equivalents must not be presented as verified matches.
  const term=String(S.q||"").trim().replace(/^[@~]/,"");
- const query=/^[\\p{L}\\p{M}][\\p{L}\\p{M}'’\-]*$/u.test(term)?"&q="+encodeURIComponent(term):"";
+ const query=/^[\p{L}\p{M}][\p{L}\p{M}'’\-]*$/u.test(term)?"&q="+encodeURIComponent(term):"";
  return [["Lector bilingüe ES",`lector-bilingue.html?edition=recensio-es&locus=${l}${query}`],["FR",`lector-bilingue.html?edition=recensio-fr&locus=${l}${query}`],["EN",`lector-bilingue.html?edition=theory-en&locus=${l}${query}`],["Aparato crítico",`aparato-critico.html?q=${l}`],["Colación Rose / Krohn",`colacion.html?locus=${l}`],["Codex H",`codex-h-folios-local.html?locus=${l}`]];
 }
 
