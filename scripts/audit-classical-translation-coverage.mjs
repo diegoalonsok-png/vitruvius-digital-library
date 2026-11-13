@@ -30,10 +30,11 @@ const entries=new Map();
 const remoteRecords=[];
 for(const e of registry.entries){
  assert(e.workId&&e.language&&e.path,"Incomplete indexed record");
- if(/^https?:\\/\\//i.test(e.path)){
+ if(e.path.startsWith("https://")||e.path.startsWith("http://")){
   const remote=new URL(e.path);
   assert(remote.protocol==="https:"&&remote.hostname==="libros.vitruvius-digital-library.org"&&
-   /^\\/corpus\\/[a-z0-9/_-]+\\.json$/i.test(remote.pathname),
+   remote.pathname.startsWith("/corpus/")&&remote.pathname.endsWith(".json")&&
+   remote.pathname.split("/").every(part=>!part||/^[a-z0-9_.-]+$/i.test(part)),
    "Remote text index has an unexpected URL: "+e.path);
   assert(typeof e.sourceDescription==="string"&&e.sourceDescription.trim(),
    "Remote index lacks source attribution: "+e.path);
