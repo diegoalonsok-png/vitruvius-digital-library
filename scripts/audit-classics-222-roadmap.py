@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Auditar las 222 obras sin confundir fichas con textos originales ni traducciones.
+"""Auditar el repertorio sin confundir fichas con textos originales ni traducciones.
 
 El roadmap se deriva del registro local, sin descargar ni editar fuentes.
 Los enlaces bibliográficos a Perseus son CANDIDATOS, no pruebas de disponibilidad,
@@ -65,7 +65,8 @@ def main():
     for e in registry:
         langs_by_id.setdefault(e["workId"], set()).add(e["language"])
     ids = {w["id"] for w in catalog}
-    assert len(ids) == len(catalog) == 222, "Catalog must contain exactly 222 unique works"
+    assert len(ids) == len(catalog), "Catalog has duplicate work ids"
+    total_works = len(catalog)
     assert set(langs_by_id) <= ids, "Search registry has an unlisted work"
     entries = [classify(w, mapping, langs_by_id.get(w["id"], set())) for w in catalog]
     # Reconciliar los índices externos ya publicados sin contarlos como alojamiento
@@ -96,7 +97,7 @@ def main():
     assert indexed == len(langs_by_id), "Registry claims inconsistent original-language coverage"
     remote_only = sum(w["offsiteOriginalIndexed"] and not w["originalIndexed"] for w in entries)
     effective_indexed = sum(w["effectiveOriginalIndexed"] for w in entries)
-    assert effective_indexed + sum(not w["effectiveOriginalIndexed"] for w in entries) == 222
+    assert effective_indexed + sum(not w["effectiveOriginalIndexed"] for w in entries) == total_works
     doc = {
         "schema": "vitruvius-classics-indexation-roadmap-v1",
         "updated": date.today().isoformat(),
@@ -104,7 +105,7 @@ def main():
                    "mapping never counts as indexed text or a hosted translation. "
                    "No AI-supplied passages, unverified OCR, or assumed cross-language alignment. "
                  "Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot."),
-        "targetWorks": 222,
+        "targetWorks": total_works,
         "counts": {
             "originalsIndexed": indexed,
             "originalsMissing": len(entries)-indexed,
@@ -113,7 +114,7 @@ def main():
             "textVersions": len(registry),
             "offsiteOriginalsIndexed": remote_only,
             "effectiveOriginalsIndexed": effective_indexed,
-            "effectiveOriginalsMissing": 222 - effective_indexed,
+            "effectiveOriginalsMissing": total_works - effective_indexed,
             "unindexedEditionRecordsOfExistingVitruviusWork": sum(1 for w in entries if not w["effectiveOriginalIndexed"] and w["id"] in remote_doc["editorialEditionRecordsNotNewAncientWorks"]),
             "distinctAncientWorksStillMissingOriginalIndex": sum(1 for w in entries if not w["effectiveOriginalIndexed"] and w["id"] not in remote_doc["editorialEditionRecordsNotNewAncientWorks"]),
             "offsiteTextVersionsOutsidePages": len(remote_rows),

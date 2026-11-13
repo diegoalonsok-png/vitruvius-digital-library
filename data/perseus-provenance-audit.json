@@ -4,7 +4,7 @@
   "scope": "local catalogue and search registry only",
   "method": "Candidate PHI/TLG work codes are not CTS edition URNs. Source descriptions copied from the local index are claims to audit, not proof of an external canonical edition or an institutional link. No automatic CTS URNs or permanent URLs are invented.",
   "counts": {
-    "works": 222,
+    "works": 227,
     "worksWithCandidateWorkCodes": 179,
     "versions": 246,
     "worksWithPerseusSourceDescription": 142,
@@ -5341,6 +5341,76 @@
       "ctsEditionUrn": null,
       "ctsStatus": "not_verified",
       "perseusAffiliation": false
+    },
+    {
+      "workId": "apolonio-argonauticas",
+      "author": "Apolonio de Rodas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "originalLanguage": "grc",
+      "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "perseusSourceClaim": false,
+      "verifiedEditionUrn": null,
+      "note": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay texto TEI ni atribución a Perseus."
+    },
+    {
+      "workId": "isocrates-discursos",
+      "author": "Isócrates",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "originalLanguage": "grc",
+      "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "perseusSourceClaim": false,
+      "verifiedEditionUrn": null,
+      "note": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay texto TEI ni atribución a Perseus."
+    },
+    {
+      "workId": "lisias-discursos",
+      "author": "Lisias",
+      "title": "Λόγοι · Discursos",
+      "originalLanguage": "grc",
+      "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "perseusSourceClaim": false,
+      "verifiedEditionUrn": null,
+      "note": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay texto TEI ni atribución a Perseus."
+    },
+    {
+      "workId": "longino-sublime",
+      "author": "Pseudo-Longino",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "originalLanguage": "grc",
+      "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "perseusSourceClaim": false,
+      "verifiedEditionUrn": null,
+      "note": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay texto TEI ni atribución a Perseus."
+    },
+    {
+      "workId": "teocrito-bucolicos",
+      "author": "Teócrito, Bión y Mosco",
+      "title": "Εἰδύλλια · Idilios",
+      "originalLanguage": "grc",
+      "sourceReadiness": "facsimil_alojado_sin_transcripcion",
+      "originalIndexed": false,
+      "translationHosted": false,
+      "candidateWorkCodes": [],
+      "versions": [],
+      "perseusSourceClaim": false,
+      "verifiedEditionUrn": null,
+      "note": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay texto TEI ni atribución a Perseus."
     }
   ]
 }

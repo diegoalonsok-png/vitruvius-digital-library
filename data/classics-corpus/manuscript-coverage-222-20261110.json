@@ -1,2312 +1,2357 @@
 {
-  "schema": "vitruvius-manuscript-coverage-222-v1",
-  "updated": "2026-11-10",
-  "scope": "Manuscript identification is not proof of globally earliest text witness. Catalog data may refer to partial manuscripts.",
-  "counts": {
-    "catalogued": 222,
-    "witnesses": 100,
-    "worksWithWitnesses": 122,
-    "worksWithoutWitnesses": 100,
-    "worksWithThisBatchSourceReview": 69
+ "schema": "vitruvius-manuscript-coverage-222-v1",
+ "updated": "2026-11-10",
+ "scope": "Manuscript identification is not proof of globally earliest text witness. Catalog data may refer to partial manuscripts.",
+ "counts": {
+  "catalogued": 227,
+  "witnesses": 100,
+  "worksWithWitnesses": 122,
+  "worksWithoutWitnesses": 105,
+  "worksWithThisBatchSourceReview": 69
+ },
+ "records": [
+  {
+   "workId": "vitruvius",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "vitruvius-h"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": true
   },
-  "records": [
-    {
-      "workId": "vitruvius",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "vitruvius-h"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": true
-    },
-    {
-      "workId": "cicero-officiis",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 2,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "cicero-officiis-geneva",
-        "cicero-catilina-harley2716"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-oratore",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "cicero-de-oratore-harley2736",
-        "cicero-de-oratore-nls-18-3-16"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-republica",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "cicero-republica-vat5757"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "caesar-gallico",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "caesar-add-ms-10084",
-        "caesar-gallico-harley4834"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "caesar-civili",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "caesar-add-ms-10084"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sallust-catiline",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 2,
-      "witnessIds": [
-        "sallust-paris16024",
-        "sallust-paris16025"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sallust-iugurtha",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 2,
-      "witnessIds": [
-        "sallust-paris16024",
-        "sallust-paris16025"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "varro-rustica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "lucretius",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "lucretius-oblongus"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "virgil-aeneid",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "vergil-vaticanus-aeneid",
-        "vergil-romanus"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "virgil-georgica",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "vergil-vaticanus-georgica",
-        "vergil-romanus"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "horace-odes",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "horace-works-harley2724",
-        "horace-harley3997"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "livy",
-      "witnessCount": 4,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "livy-pal-lat24-palimp",
-        "livy-verona-palimp",
-        "livy-pal-lat878",
-        "livy-pal-lat873"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ovid",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "ovid-metamorphoses-vat-lat-2781",
-        "ovid-fasti-harley2737"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ovid-fasti",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "ovid-fasti-harley2737",
-        "ovid-fasti-harley2738"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "nepos",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "diodorus",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "appian-diodorus-paris1642"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "dionysius",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "strabo",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "strabo-bnf-grec1393"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "philo",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "seneca-epistulae",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 2,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "seneca-epistulae-harley2752",
-        "seneca-tragedies-epistulae-harley5006"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "seneca-naturales",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "lucan",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "pliny",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "pliny-naturalis-bamberg42",
-        "pliny-naturalis-harley2676"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "dioscorides",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "dioscorides-vienna",
-        "dioscorides-paris"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "josephus-war",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "josephus-vat-gr-984"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "josephus-antiquities",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "josephus-pal-gr-14",
-        "josephus-vat-gr-984"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "quintilian",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "quintilian-harley2664",
-        "quintilian-burney244"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "martial",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "tacitus-agricola",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "tacitus-germania",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "frontinus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "mark",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "sinaiticus-gospels-apostolic",
-        "alexandrinus-nt-clement"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "clement",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "alexandrinus-nt-clement",
-        "clement-hierosolymitanus-54"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "didache",
-      "witnessCount": 4,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "didache-poxy-xv-1782",
-        "didache-hierosolymitanus-54",
-        "didache-elbasan-82",
-        "didache-coptic-or9271"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "pastor-hermas",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "sinaiticus-gospels-apostolic"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "faventinus",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "faventinus-gudianus-132"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "barnabas",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "sinaiticus-gospels-apostolic",
-        "barnabas-hierosolymitanus-54"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ignatius",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "ignatius-hierosolymitanus-54"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "polycarp",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "clement-2",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "alexandrinus-nt-clement",
-        "clement2-hierosolymitanus-54"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "diognetus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "justin",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "irenaeus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "tertullian",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "origenes",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "eusebio",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "columella",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "celsus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "frontinus-strategemata",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "frontinus-strategemata-harley2666"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plutarch-lives",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 2,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plutarch-pal-gr283",
-        "plutarch-diogenes-bnf-suppl134"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "apollodorus-poliorcetics",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "hero-pneumatica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "hero-automata",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "athenaeus-mechanicus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "vitruvio-v514-pdf",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "vitruvio-v554-pdf",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "theory-v297-pdf",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "krohn-1912-pdf",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plautus-amphitruo",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plautus-aulularia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "terentius-andria",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "terentius-heautontimorumenos",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cato-agri-cultura",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-catilinariae",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "cicero-catilina-add47678",
-        "cicero-catilina-harley2716"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "catullus-carmina",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "catullus-thuaneus-8071",
-        "catullus-oxford-o"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "horace-sermones",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "horace-works-harley2724",
-        "horace-harley3997"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "horace-ars-poetica",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "horace-works-harley2724",
-        "horace-harley3997"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ovid-ars-amatoria",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 2,
-      "witnessIds": [
-        "ovid-ars-parisinus-lat7311",
-        "ovid-ars-bodleian-auct-f4-32"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "seneca-tragoediae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "seneca-tragedies-epistulae-harley5006"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "petronius-satyrica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "tacitus-annales",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "tacitus-mediceus-1",
-        "tacitus-mediceus-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "tacitus-historiae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "tacitus-mediceus-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "suetonius-caesares",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "juvenal-saturae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "juvenal-harley2772"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "apuleius-metamorphoses",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 2,
-      "witnessIds": [
-        "apuleius-laurentianus-68-2",
-        "apuleius-laurentianus-29-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "varro-de-lingua-latina",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "tibullus-elegiae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "propertius-elegiae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "phraedrus-fabulae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "statius-thebais",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "pliny-younger-epistulae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aulus-gellius-noctes",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 2,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aulus-gellius-harley4859",
-        "aulus-gellius-burney174"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "valerius-maximus-facta",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "velleius-historia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "silius-punica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "polybius-historiae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "xenophon-polybius-leiden-vulc2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "pseudo-apollodorus-bibliotheca",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "philo-legum-allegoriae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "philo-de-vita-mosis",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plutarch-moralia",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 2,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plutarch-pal-gr283",
-        "plutarch-diogenes-bnf-suppl134"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "lucian-dialogi-mortuorum",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "lucian-urb-gr118"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "lucian-verae-historiae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "lucian-urb-gr118"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "pausanias-periegesis",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "galen-ars-medica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "galen-de-usu-partium",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ptolemy-almagest",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "ptolemy-almagest-vatgr1594",
-        "ptolemy-almagest-paris2389"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ptolemy-geographia",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "ptolemy-geography-urbgr82"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "appian-romaika",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "appian-diodorus-paris1642"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "marcus-aurelius-meditations",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "marcus-aurelius-vat1950"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "homer-iliad",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "homer-iliad-venetus-a"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "homer-odyssey",
-      "witnessCount": 3,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "homer-odyssey-laur-plut32-24",
-        "homer-odyssey-heidelberg-cpg45",
-        "homer-odyssey-laur-plut32-23"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "hesiod-theogony",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "hesiod-theogony-suppl-gr1099",
-        "hesiod-works-bnf2708"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "hesiod-works-days",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "hesiod-works-bnf2708",
-        "pindar-ambros-c222inf"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aeschylus-oresteia",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sophocles-oedipus",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euripides-medea",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "euripides-laurentianus-32-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristophanes-clouds",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "aristophanes-ravennas-429",
-        "pindar-ambros-c222inf"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "herodotus-historiae",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "herodotus-laur-plut70-3",
-        "herodotus-laur-plut70-32"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "thucydides-war",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "thucydides-laur-plut69-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "xenophon-anabasis",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "xenophon-anabasis-vatgr1335",
-        "xenophon-anabasis-paris1640"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-republic",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-parisinus-graecus-1807"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-apology",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-clarke-39"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristotle-poetics",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristotle-poetics-paris-gr1741",
-        "aristotle-parisinus-gr1741"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristotle-politics",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "aristotle-vatgr1298-politics"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "hippocrates-aphorisms",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "epictetus-discourses",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "arrian-anabasis-alexandri",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "arrian-procopius-laur-plut9-32"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cassius-dio-historia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "athenaeus-deipnosophistae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aeschylus-persae",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 2,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9",
-        "pindar-ambros-c222inf"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aeschylus-seven-thebes",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 2,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9",
-        "pindar-ambros-c222inf"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aeschylus-suppliants",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aeschylus-prometheus",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sophocles-antigone",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sophocles-ajax",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sophocles-electra",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sophocles-philoctetes",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sophocles-oedipus-colonus",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sophocles-trachiniae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "sophocles-aeschylus-laurentianus-32-9"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euripides-bacchae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "euripides-laurentianus-32-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euripides-hippolytus",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "euripides-laurentianus-32-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euripides-alcestis",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "euripides-laurentianus-32-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euripides-electra",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "euripides-laurentianus-32-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euripides-troades",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "euripides-laurentianus-32-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euripides-hecuba",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "euripides-laurentianus-32-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euripides-iphigenia-aulid",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "euripides-laurentianus-32-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristophanes-aves",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristophanes-ravennas-429"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristophanes-ranae",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "aristophanes-ravennas-429",
-        "pindar-ambros-c222inf"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristophanes-lysistrata",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristophanes-ravennas-429"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristophanes-vespae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristophanes-ravennas-429"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristophanes-pax",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristophanes-ravennas-429"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristophanes-acharnenses",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristophanes-ravennas-429"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-symposium",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-clarke-39"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-phaedo",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-clarke-39"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-gorgias",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-clarke-39"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-timaeus",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-parisinus-graecus-1807"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-meno",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-clarke-39"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-phaedrus",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-clarke-39"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-laws",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-parisinus-graecus-1807"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "plato-crito",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plato-clarke-39"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristotle-nicomachean-ethics",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristotle-parisinus-gr1853"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristotle-metaphysics",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristotle-parisinus-gr1853"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristotle-physics",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristotle-parisinus-gr1853"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristotle-rhetoric",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristotle-parisinus-gr1741"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristotle-de-anima",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "aristotle-parisinus-gr1853"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "xenophon-memorabilia",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 2,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "xenophon-memorabilia-paris1642",
-        "xenophon-polybius-leiden-vulc2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "xenophon-hellenica",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "xenophon-hellenica-paris1738"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "demosthenes-de-corona",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "demosthenes-paris2934"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "demosthenes-philippicae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "demosthenes-paris2934"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "pindar-olympian",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "pindar-vatgr1312",
-        "pindar-ambros-c222inf"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "pindar-pythian",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "pindar-vatgr1312"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "homeric-hymns",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "theophrastus-characters",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "theophrastus-historia-plantarum",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "diogenes-laertius-vitae",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "plutarch-diogenes-bnf-suppl134"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-pro-archia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-de-finibus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-tusculanae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-de-natura-deorum",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-de-amicitia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-de-senectute",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-de-divinatione",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-brutus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cicero-philippicae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "seneca-de-brevitate",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "seneca-de-ira",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "seneca-de-clementia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "seneca-de-tranquillitate",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "horace-epodi",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "horace-works-harley2724",
-        "horace-harley3997"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "horace-epistulae",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "horace-works-harley2724",
-        "horace-harley3997"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ovid-tristia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ovid-heroides",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ovid-remedia-amoris",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 1,
-      "witnessIds": [
-        "ovid-ars-parisinus-lat7311"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ovid-ex-ponto",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "tacitus-dialogus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "apuleius-apologia",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 2,
-      "witnessIds": [
-        "apuleius-laurentianus-68-2",
-        "apuleius-laurentianus-29-2"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "apuleius-de-deo-socratis",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "vegetius-epitoma",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "augustine-confessiones",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "augustine-civitate-dei",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "boethius-consolatio",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "boethius-harley-2685"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "macrobius-saturnalia",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "epictetus-enchiridion",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cebes-tabula",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristoxenus-harmonica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "archimedes-fluitantibus",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aratus-phaenomena",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ennius-annales",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "accius-fragmenta",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "ps-aristotle-mechanica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aeneas-tacticus-poliorketika",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "procopius-aedificiis",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 1,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "arrian-procopius-laur-plut9-32"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "isidore-etymologiae",
-      "witnessCount": 3,
-      "verifiedInstitutionalCount": 3,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "isidore-stgall-1394-fragment",
-        "isidore-stgall-233",
-        "isidore-stgall-231"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "censorinus-die-natali",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "augustus-res-gestae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euclid-elementa",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "euclid-vat-gr-190"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euclid-optica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "euclid-phaenomena",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "cleonides-harmonica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "hero-belopoeica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "philo-belopoeica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "biton-kataskeuai",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "geminus-isagoge",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "aristarchus-magnitudines",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "apollonius-conica",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "pappus-synagoge",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "hyginus-gromaticus",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "agrimensores-arcerianus",
-        "agrimensores-pal-lat-1564"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "frontinus-gromatica",
-      "witnessCount": 2,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "agrimensores-arcerianus",
-        "agrimensores-pal-lat-1564"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "siculus-flaccus",
-      "witnessCount": 1,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [
-        "agrimensores-pal-lat-1564"
-      ],
-      "status": "individual_witnesses_identified",
-      "oldestGlobalClaimVerified": false
-    },
-    {
-      "workId": "sulpicia-elegiae",
-      "witnessCount": 0,
-      "verifiedInstitutionalCount": 0,
-      "scholarlySourceCount": 0,
-      "witnessIds": [],
-      "status": "individual_witness_pending",
-      "oldestGlobalClaimVerified": false
-    }
-  ]
+  {
+   "workId": "cicero-officiis",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 2,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "cicero-officiis-geneva",
+    "cicero-catilina-harley2716"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-oratore",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "cicero-de-oratore-harley2736",
+    "cicero-de-oratore-nls-18-3-16"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-republica",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "cicero-republica-vat5757"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "caesar-gallico",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "caesar-add-ms-10084",
+    "caesar-gallico-harley4834"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "caesar-civili",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "caesar-add-ms-10084"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sallust-catiline",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 2,
+   "witnessIds": [
+    "sallust-paris16024",
+    "sallust-paris16025"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sallust-iugurtha",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 2,
+   "witnessIds": [
+    "sallust-paris16024",
+    "sallust-paris16025"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "varro-rustica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "lucretius",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "lucretius-oblongus"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "virgil-aeneid",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "vergil-vaticanus-aeneid",
+    "vergil-romanus"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "virgil-georgica",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "vergil-vaticanus-georgica",
+    "vergil-romanus"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "horace-odes",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "horace-works-harley2724",
+    "horace-harley3997"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "livy",
+   "witnessCount": 4,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "livy-pal-lat24-palimp",
+    "livy-verona-palimp",
+    "livy-pal-lat878",
+    "livy-pal-lat873"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ovid",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "ovid-metamorphoses-vat-lat-2781",
+    "ovid-fasti-harley2737"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ovid-fasti",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "ovid-fasti-harley2737",
+    "ovid-fasti-harley2738"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "nepos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "diodorus",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "appian-diodorus-paris1642"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "dionysius",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "strabo",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "strabo-bnf-grec1393"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "philo",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "seneca-epistulae",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 2,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "seneca-epistulae-harley2752",
+    "seneca-tragedies-epistulae-harley5006"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "seneca-naturales",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "lucan",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "pliny",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "pliny-naturalis-bamberg42",
+    "pliny-naturalis-harley2676"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "dioscorides",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "dioscorides-vienna",
+    "dioscorides-paris"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "josephus-war",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "josephus-vat-gr-984"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "josephus-antiquities",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "josephus-pal-gr-14",
+    "josephus-vat-gr-984"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "quintilian",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "quintilian-harley2664",
+    "quintilian-burney244"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "martial",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "tacitus-agricola",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "tacitus-germania",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "frontinus",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "mark",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "sinaiticus-gospels-apostolic",
+    "alexandrinus-nt-clement"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "clement",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "alexandrinus-nt-clement",
+    "clement-hierosolymitanus-54"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "didache",
+   "witnessCount": 4,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "didache-poxy-xv-1782",
+    "didache-hierosolymitanus-54",
+    "didache-elbasan-82",
+    "didache-coptic-or9271"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "pastor-hermas",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "sinaiticus-gospels-apostolic"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "faventinus",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "faventinus-gudianus-132"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "barnabas",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "sinaiticus-gospels-apostolic",
+    "barnabas-hierosolymitanus-54"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ignatius",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "ignatius-hierosolymitanus-54"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "polycarp",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "clement-2",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "alexandrinus-nt-clement",
+    "clement2-hierosolymitanus-54"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "diognetus",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "justin",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "irenaeus",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "tertullian",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "origenes",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "eusebio",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "columella",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "celsus",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "frontinus-strategemata",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "frontinus-strategemata-harley2666"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plutarch-lives",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 2,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plutarch-pal-gr283",
+    "plutarch-diogenes-bnf-suppl134"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "apollodorus-poliorcetics",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "hero-pneumatica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "hero-automata",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "athenaeus-mechanicus",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "vitruvio-v514-pdf",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "vitruvio-v554-pdf",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "theory-v297-pdf",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "krohn-1912-pdf",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plautus-amphitruo",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plautus-aulularia",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "terentius-andria",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "terentius-heautontimorumenos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cato-agri-cultura",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-catilinariae",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "cicero-catilina-add47678",
+    "cicero-catilina-harley2716"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "catullus-carmina",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "catullus-thuaneus-8071",
+    "catullus-oxford-o"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "horace-sermones",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "horace-works-harley2724",
+    "horace-harley3997"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "horace-ars-poetica",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "horace-works-harley2724",
+    "horace-harley3997"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ovid-ars-amatoria",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 2,
+   "witnessIds": [
+    "ovid-ars-parisinus-lat7311",
+    "ovid-ars-bodleian-auct-f4-32"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "seneca-tragoediae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "seneca-tragedies-epistulae-harley5006"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "petronius-satyrica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "tacitus-annales",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "tacitus-mediceus-1",
+    "tacitus-mediceus-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "tacitus-historiae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "tacitus-mediceus-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "suetonius-caesares",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "juvenal-saturae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "juvenal-harley2772"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "apuleius-metamorphoses",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 2,
+   "witnessIds": [
+    "apuleius-laurentianus-68-2",
+    "apuleius-laurentianus-29-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "varro-de-lingua-latina",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "tibullus-elegiae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "propertius-elegiae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "phraedrus-fabulae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "statius-thebais",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "pliny-younger-epistulae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aulus-gellius-noctes",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 2,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aulus-gellius-harley4859",
+    "aulus-gellius-burney174"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "valerius-maximus-facta",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "velleius-historia",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "silius-punica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "polybius-historiae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "xenophon-polybius-leiden-vulc2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "pseudo-apollodorus-bibliotheca",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "philo-legum-allegoriae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "philo-de-vita-mosis",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plutarch-moralia",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 2,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plutarch-pal-gr283",
+    "plutarch-diogenes-bnf-suppl134"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "lucian-dialogi-mortuorum",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "lucian-urb-gr118"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "lucian-verae-historiae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "lucian-urb-gr118"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "pausanias-periegesis",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "galen-ars-medica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "galen-de-usu-partium",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ptolemy-almagest",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "ptolemy-almagest-vatgr1594",
+    "ptolemy-almagest-paris2389"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ptolemy-geographia",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "ptolemy-geography-urbgr82"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "appian-romaika",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "appian-diodorus-paris1642"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "marcus-aurelius-meditations",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "marcus-aurelius-vat1950"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "homer-iliad",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "homer-iliad-venetus-a"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "homer-odyssey",
+   "witnessCount": 3,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "homer-odyssey-laur-plut32-24",
+    "homer-odyssey-heidelberg-cpg45",
+    "homer-odyssey-laur-plut32-23"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "hesiod-theogony",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "hesiod-theogony-suppl-gr1099",
+    "hesiod-works-bnf2708"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "hesiod-works-days",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "hesiod-works-bnf2708",
+    "pindar-ambros-c222inf"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aeschylus-oresteia",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sophocles-oedipus",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euripides-medea",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "euripides-laurentianus-32-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristophanes-clouds",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "aristophanes-ravennas-429",
+    "pindar-ambros-c222inf"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "herodotus-historiae",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "herodotus-laur-plut70-3",
+    "herodotus-laur-plut70-32"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "thucydides-war",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "thucydides-laur-plut69-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "xenophon-anabasis",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "xenophon-anabasis-vatgr1335",
+    "xenophon-anabasis-paris1640"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-republic",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-parisinus-graecus-1807"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-apology",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-clarke-39"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristotle-poetics",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristotle-poetics-paris-gr1741",
+    "aristotle-parisinus-gr1741"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristotle-politics",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "aristotle-vatgr1298-politics"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "hippocrates-aphorisms",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "epictetus-discourses",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "arrian-anabasis-alexandri",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "arrian-procopius-laur-plut9-32"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cassius-dio-historia",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "athenaeus-deipnosophistae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aeschylus-persae",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 2,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9",
+    "pindar-ambros-c222inf"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aeschylus-seven-thebes",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 2,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9",
+    "pindar-ambros-c222inf"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aeschylus-suppliants",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aeschylus-prometheus",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sophocles-antigone",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sophocles-ajax",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sophocles-electra",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sophocles-philoctetes",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sophocles-oedipus-colonus",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sophocles-trachiniae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "sophocles-aeschylus-laurentianus-32-9"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euripides-bacchae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "euripides-laurentianus-32-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euripides-hippolytus",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "euripides-laurentianus-32-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euripides-alcestis",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "euripides-laurentianus-32-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euripides-electra",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "euripides-laurentianus-32-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euripides-troades",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "euripides-laurentianus-32-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euripides-hecuba",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "euripides-laurentianus-32-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euripides-iphigenia-aulid",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "euripides-laurentianus-32-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristophanes-aves",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristophanes-ravennas-429"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristophanes-ranae",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "aristophanes-ravennas-429",
+    "pindar-ambros-c222inf"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristophanes-lysistrata",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristophanes-ravennas-429"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristophanes-vespae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristophanes-ravennas-429"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristophanes-pax",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristophanes-ravennas-429"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristophanes-acharnenses",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristophanes-ravennas-429"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-symposium",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-clarke-39"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-phaedo",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-clarke-39"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-gorgias",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-clarke-39"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-timaeus",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-parisinus-graecus-1807"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-meno",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-clarke-39"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-phaedrus",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-clarke-39"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-laws",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-parisinus-graecus-1807"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plato-crito",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plato-clarke-39"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristotle-nicomachean-ethics",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristotle-parisinus-gr1853"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristotle-metaphysics",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristotle-parisinus-gr1853"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristotle-physics",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristotle-parisinus-gr1853"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristotle-rhetoric",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristotle-parisinus-gr1741"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristotle-de-anima",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "aristotle-parisinus-gr1853"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "xenophon-memorabilia",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 2,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "xenophon-memorabilia-paris1642",
+    "xenophon-polybius-leiden-vulc2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "xenophon-hellenica",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "xenophon-hellenica-paris1738"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "demosthenes-de-corona",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "demosthenes-paris2934"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "demosthenes-philippicae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "demosthenes-paris2934"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "pindar-olympian",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "pindar-vatgr1312",
+    "pindar-ambros-c222inf"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "pindar-pythian",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "pindar-vatgr1312"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "homeric-hymns",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "theophrastus-characters",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "theophrastus-historia-plantarum",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "diogenes-laertius-vitae",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "plutarch-diogenes-bnf-suppl134"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-pro-archia",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-de-finibus",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-tusculanae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-de-natura-deorum",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-de-amicitia",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-de-senectute",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-de-divinatione",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-brutus",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cicero-philippicae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "seneca-de-brevitate",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "seneca-de-ira",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "seneca-de-clementia",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "seneca-de-tranquillitate",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "horace-epodi",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "horace-works-harley2724",
+    "horace-harley3997"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "horace-epistulae",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "horace-works-harley2724",
+    "horace-harley3997"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ovid-tristia",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ovid-heroides",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ovid-remedia-amoris",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 1,
+   "witnessIds": [
+    "ovid-ars-parisinus-lat7311"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ovid-ex-ponto",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "tacitus-dialogus",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "apuleius-apologia",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 2,
+   "witnessIds": [
+    "apuleius-laurentianus-68-2",
+    "apuleius-laurentianus-29-2"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "apuleius-de-deo-socratis",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "vegetius-epitoma",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "augustine-confessiones",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "augustine-civitate-dei",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "boethius-consolatio",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "boethius-harley-2685"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "macrobius-saturnalia",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "epictetus-enchiridion",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cebes-tabula",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristoxenus-harmonica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "archimedes-fluitantibus",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aratus-phaenomena",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ennius-annales",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "accius-fragmenta",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ps-aristotle-mechanica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aeneas-tacticus-poliorketika",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "procopius-aedificiis",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 1,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "arrian-procopius-laur-plut9-32"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "isidore-etymologiae",
+   "witnessCount": 3,
+   "verifiedInstitutionalCount": 3,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "isidore-stgall-1394-fragment",
+    "isidore-stgall-233",
+    "isidore-stgall-231"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "censorinus-die-natali",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "augustus-res-gestae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euclid-elementa",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "euclid-vat-gr-190"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euclid-optica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "euclid-phaenomena",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "cleonides-harmonica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "hero-belopoeica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "philo-belopoeica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "biton-kataskeuai",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "geminus-isagoge",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristarchus-magnitudines",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "apollonius-conica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "pappus-synagoge",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "hyginus-gromaticus",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "agrimensores-arcerianus",
+    "agrimensores-pal-lat-1564"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "frontinus-gromatica",
+   "witnessCount": 2,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "agrimensores-arcerianus",
+    "agrimensores-pal-lat-1564"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "siculus-flaccus",
+   "witnessCount": 1,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [
+    "agrimensores-pal-lat-1564"
+   ],
+   "status": "individual_witnesses_identified",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "sulpicia-elegiae",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "apolonio-argonauticas",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "isocrates-discursos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "lisias-discursos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "longino-sublime",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "teocrito-bucolicos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  }
+ ]
 }

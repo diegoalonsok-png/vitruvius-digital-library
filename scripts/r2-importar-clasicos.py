@@ -3,8 +3,11 @@
 
 * Solo R2: los PDF NO entran al repositorio (GitHub Pages está al límite de 1 GB).
   En el repositorio quedan únicamente el catálogo y el índice semántico (livianos).
-* No repite: salta obras ya catalogadas y PDF cuya huella SHA-256 ya está en la
-  biblioteca (data/r2/manifiesto-r2.json).
+* No repite: salta obras ya catalogadas, PDF cuya huella SHA-256 ya está en la
+  biblioteca (data/r2/manifiesto-r2.json) y obras que ya están en la biblioteca
+  con ficha, facsímil o PDF del repositorio (scripts/r2-duplicados.py). Una
+  segunda edición de la misma obra sólo entra si el candidato la justifica como
+  edición histórica o académica distinta.
 * Comprobaciones por libro: fecha <= 1928 y sin marca de copyright en IA; PDF con
   capa de texto; el autor buscado aparece en las primeras páginas; SHA-256 del
   objeto descargado desde https://libros.vitruvius-digital-library.org idéntico.
@@ -202,10 +205,31 @@ def main():
     ctx = {"s3": s3, "shas": shas, "anio_max": cand["limites"]["anioMaximo"],
            "max_bytes": cand["limites"]["maxMiB"] * 1048576}
     pendientes = [o for o in cand["obras"] if o["id"] not in hechos]
+
+    # Regla de no repetición: una obra que ya está en la biblioteca —ficha,
+    # facsímil alojado o PDF del repositorio— no se vuelve a subir. Sólo se
+    # admite otra edición de la misma obra cuando el candidato la justifica
+    # como edición histórica o académica distinta.
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("r2_duplicados", ROOT / "scripts/r2-duplicados.py")
+    dup = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(dup)
+    inventario = dup.inventario()
+    repetidas = []
+    admitidas = []
+    for o in pendientes:
+        repetida, motivo = dup.ya_esta(o, inventario)
+        (repetidas if repetida else admitidas).append((o, motivo))
+        if repetida:
+            print(f"SALTA {o['id']}: {motivo}")
+        elif motivo:
+            print(f"ADMITE {o['id']}: {motivo}")
+    pendientes = [o for o, _ in admitidas]
+
     limite = int(os.environ.get("LIMITE", "0") or 0)
     if limite:
         pendientes = pendientes[:limite]
-    print(f"pendientes: {len(pendientes)} (ya catalogadas: {len(hechos)})")
+    print(f"pendientes: {len(pendientes)} (ya catalogadas: {len(hechos)}; repetidas omitidas: {len(repetidas)})")
     informe = {"incorporadas": [], "no_encontradas": {}}
     with ThreadPoolExecutor(max_workers=3) as ex:
         for o, (ficha, paginas, rech) in zip(pendientes, ex.map(lambda o: procesar(o, ctx), pendientes)):

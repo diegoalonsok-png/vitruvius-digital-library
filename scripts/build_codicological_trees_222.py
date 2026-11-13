@@ -37,8 +37,11 @@ def write(path, value):
 
 def build(catalog, manuscript_register, old=None):
     works = catalog.get("works", [])
-    if len(works) != 222 or len({w.get("id") for w in works}) != 222:
-        raise ValueError("Expected 222 unique catalogue entries; never create a 223rd by inference")
+    # Nunca se crea una entrada por inferencia: se construye exactamente sobre
+    # las fichas del catálogo maestro, sean 222 o las que haya tras una
+    # incorporación, y se rechazan los ids repetidos.
+    if not works or len({w.get("id") for w in works}) != len(works):
+        raise ValueError("Master catalogue is empty or has duplicate work ids")
     valid = {w["id"] for w in works}
     codices = manuscript_register.get("records", [])
     witness_ids = [m.get("id") for m in codices]

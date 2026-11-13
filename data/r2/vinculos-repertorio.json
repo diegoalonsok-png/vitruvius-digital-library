@@ -1,16 +1,27 @@
 {
  "schema": "vdl-r2-vinculos-repertorio-1",
  "actualizado": "2026-11-13",
- "descripcion": "Correspondencia, revisada a mano, entre las ediciones en facsímil alojadas en R2 y las 222 fichas del repertorio (data/bibliotheca-graeca-latina-I-bce-I-ce.json, que no se modifica). Las obras sin ficha previa se cuentan como incorporaciones nuevas; las ediciones aún no revisadas no se cuentan.",
+ "descripcion": "Correspondencia, revisada a mano, entre las ediciones en facsímil alojadas en R2 y las 227 fichas del repertorio (data/bibliotheca-graeca-latina-I-bce-I-ce.json, que no se modifica). Las obras sin ficha previa se cuentan como incorporaciones nuevas; las ediciones aún no revisadas no se cuentan.",
  "recuentos": {
-  "fichasRepertorio": 222,
-  "obrasNuevas": 5,
+  "fichasRepertorio": 227,
+  "obrasNuevas": 0,
   "obrasTotales": 227,
   "edicionesFacsimil": 53,
-  "fichasConFacsimil": 56,
+  "fichasConFacsimil": 61,
   "sinRevisar": 0
  },
  "porObra": {
+  "apolonio-argonauticas": [
+   {
+    "r2": "apolonio-argonauticas",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apolonio-argonauticas.pdf",
+    "edicion": "The Argonautica; with an English translation by R.C. Seaton",
+    "anio": 1912,
+    "volumen": null,
+    "loeb": true,
+    "alcance": null
+   }
+  ],
   "aristophanes-pax": [
    {
     "r2": "aristofanes-comedias",
@@ -154,6 +165,17 @@
     "alcance": null
    }
   ],
+  "isocrates-discursos": [
+   {
+    "r2": "isocrates-discursos",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/isocrates-discursos.pdf",
+    "edicion": "Ad demonicum et Panegyricus Isocrates",
+    "anio": 1868,
+    "volumen": null,
+    "loeb": false,
+    "alcance": "Dos discursos, no la obra completa."
+   }
+  ],
   "xenophon-anabasis": [
    {
     "r2": "jenofonte-anabasis",
@@ -174,6 +196,17 @@
     "volumen": null,
     "loeb": false,
     "alcance": null
+   }
+  ],
+  "lisias-discursos": [
+   {
+    "r2": "lisias-discursos",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lisias-discursos.pdf",
+    "edicion": "Selections from The Attic orators: Antiphon, Andokides, Lysias, Isokrates, Isaeos;",
+    "anio": 1880,
+    "volumen": null,
+    "loeb": false,
+    "alcance": "Antología con texto griego y comentario."
    }
   ],
   "lucian-verae-historiae": [
@@ -286,6 +319,17 @@
     "alcance": null
    }
   ],
+  "longino-sublime": [
+   {
+    "r2": "longino-sublime",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longino-sublime.pdf",
+    "edicion": "Longinus on the sublime: the Greek text edited after the Paris manuscript with introduction, translation, facsimiles and appendices by W. Rhys Roberts",
+    "anio": 1907,
+    "volumen": null,
+    "loeb": false,
+    "alcance": null
+   }
+  ],
   "sophocles-oedipus": [
    {
     "r2": "sofocles-tragedias",
@@ -327,6 +371,17 @@
     "anio": 1916,
     "volumen": "2",
     "loeb": true,
+    "alcance": null
+   }
+  ],
+  "teocrito-bucolicos": [
+   {
+    "r2": "teocrito-bucolicos",
+    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teocrito-bucolicos.pdf",
+    "edicion": "The Greek bucolic poets",
+    "anio": 1916,
+    "volumen": null,
+    "loeb": false,
     "alcance": null
    }
   ],
@@ -628,43 +683,7 @@
    }
   ]
  },
- "obrasNuevas": [
-  {
-   "r2": "apolonio-argonauticas",
-   "autor": "Apolonio de Rodas",
-   "obra": "Argonáuticas",
-   "lengua": "grc",
-   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apolonio-argonauticas.pdf"
-  },
-  {
-   "r2": "isocrates-discursos",
-   "autor": "Isócrates",
-   "obra": "A Demónico y Panegírico",
-   "lengua": "grc",
-   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/isocrates-discursos.pdf"
-  },
-  {
-   "r2": "lisias-discursos",
-   "autor": "Lisias",
-   "obra": "Selección de oradores áticos (Jebb): Antifonte, Andócides, Lisias, Isócrates, Iseo",
-   "lengua": "grc",
-   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lisias-discursos.pdf"
-  },
-  {
-   "r2": "longino-sublime",
-   "autor": "Pseudo-Longino",
-   "obra": "Sobre lo sublime",
-   "lengua": "grc",
-   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longino-sublime.pdf"
-  },
-  {
-   "r2": "teocrito-bucolicos",
-   "autor": "Teócrito, Bión y Mosco",
-   "obra": "Poetas bucólicos griegos",
-   "lengua": "grc",
-   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teocrito-bucolicos.pdf"
-  }
- ],
+ "obrasNuevas": [],
  "sinRevisar": [],
  "mapa": {
   "herodoto-historias": [

@@ -1,0 +1,39 @@
+{
+ "schema": "vdl-r2-fichas-nuevas-metadatos-1",
+ "descripcion": "Datos de la obra antigua (no de la edición) para las obras que entran al repertorio desde un facsímil alojado en R2. Lo que no está aquí queda consignado como pendiente en la ficha: no se completa por inferencia. Género y datación son de nivel catalográfico y no equivalen a dictamen de autoría ni a cotejo.",
+ "obras": {
+  "apolonio-argonauticas": {
+   "titulo": "Ἀργοναυτικά · Argonautica",
+   "genero": "Poesía épica helenística",
+   "datacion": "c. 250 a. C.",
+   "aliases": ["Apollonius Rhodius", "Argonauticas", "Argonautica", "Las Argonáuticas"]
+  },
+  "isocrates-discursos": {
+   "titulo": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+   "genero": "Oratoria y prosa didáctica",
+   "datacion": "Siglo IV a. C.",
+   "aliases": ["Isocrates", "A Demónico", "Ad Demonicum", "Panegírico", "Panegyricus"],
+   "alcance": "La edición reúne dos discursos, no el corpus completo."
+  },
+  "lisias-discursos": {
+   "titulo": "Λόγοι · Discursos",
+   "genero": "Oratoria judicial",
+   "datacion": "c. 403–380 a. C.",
+   "aliases": ["Lysias", "Orationes", "Discursos de Lisias"],
+   "alcance": "El facsímil es una antología de oradores áticos (Jebb) que incluye además a Antifonte, Andócides, Isócrates e Iseo."
+  },
+  "longino-sublime": {
+   "titulo": "Περὶ ὕψους · De sublimitate",
+   "genero": "Crítica literaria y retórica",
+   "datacion": "Siglo I d. C.; autoría y datación discutidas",
+   "aliases": ["Pseudo-Longinus", "Longino", "Sobre lo sublime", "On the Sublime", "De sublimitate"]
+  },
+  "teocrito-bucolicos": {
+   "titulo": "Εἰδύλλια · Idilios",
+   "genero": "Poesía bucólica",
+   "datacion": "Primera mitad del siglo III a. C.",
+   "aliases": ["Theocritus", "Idilios", "Idylls", "Bucólicos griegos"],
+   "alcance": "La edición reúne a Teócrito con Bión y Mosco."
+  }
+ }
+}

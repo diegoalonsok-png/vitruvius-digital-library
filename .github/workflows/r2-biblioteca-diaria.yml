@@ -1,0 +1,106 @@
+name: R2 — biblioteca clásica, tanda diaria
+
+# Todos los días: incorpora obras clásicas de dominio público que la biblioteca
+# todavía no tiene, les da ficha de repertorio, las indexa y recalcula los
+# contadores. Los PDF, su texto y los fragmentos del índice van SOLO a Cloudflare
+# R2; al repositorio entran únicamente los catálogos, las fichas y los
+# manifiestos, que son livianos. No borra nada y no repite una obra que ya está
+# en la biblioteca: sólo admite otra edición si el candidato la justifica.
+
+on:
+  schedule:
+    - cron: "43 5 * * *"
+  workflow_dispatch:
+    inputs:
+      limite:
+        description: "Máximo de obras en la tanda (0 = todas las pendientes)"
+        default: "8"
+
+concurrency:
+  group: r2-biblioteca-diaria
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  tanda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet "boto3>=1.36" pymupdf
+
+      - name: Estado de la biblioteca antes de la tanda
+        run: python scripts/r2-duplicados.py
+
+      - name: Incorporar obras nuevas a R2
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          LIMITE: ${{ inputs.limite || '8' }}
+        run: python scripts/r2-importar-clasicos.py
+
+      - name: Ficha de repertorio para las obras nuevas
+        if: always()
+        run: python scripts/r2-fichas-obras-nuevas.py
+
+      - name: Vincular facsímiles con el repertorio
+        if: always()
+        run: python scripts/r2-vincular-repertorio.py
+
+      - name: Completar los campos derivados de las fichas
+        if: always()
+        run: node scripts/enrich-classical-records.mjs
+
+      - name: Rehacer los datos derivados del repertorio
+        if: always()
+        run: |
+          python scripts/build_ecdotics_222.py --write
+          python scripts/build_codicological_trees_222.py --write
+          python scripts/audit-classics-222-roadmap.py
+
+      - name: Indexar las obras de la tanda y subir el índice a R2
+        if: always()
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          NUEVAS=$(python scripts/r2-ids-tanda.py)
+          if [ -z "$NUEVAS" ]; then echo "Sin obras nuevas: el índice queda como está."; exit 0; fi
+          echo "Indexando: $NUEVAS"
+          node scripts/r2-indexar-clasicos.mjs --salida /tmp/indice-r2 --obras "$NUEVAS"
+          python scripts/r2-subir-indice.py --origen /tmp/indice-r2/indice
+
+      - name: Comprobar el visor, la búsqueda y la fusión del índice
+        if: always()
+        run: |
+          npm install --no-save jsdom
+          node scripts/test-visor-facsimiles-r2.mjs
+          node scripts/test-r2-busqueda-clasicos.mjs
+          node scripts/test-r2-indice-fusion.mjs
+
+      - name: Guardar catálogos, fichas y manifiestos (solo archivos livianos)
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/r2 data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus data/perseus-provenance-audit.json reports
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git commit -m "Biblioteca clásica: tanda diaria incorporada, indexada y contada"
+          for i in 1 2 3 4 5; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 8; done
+
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r2-tanda-diaria
+          path: |
+            r2-clasicos-informe.json
+            reports/fichas-clasicas-pendientes.md
+          if-no-files-found: ignore

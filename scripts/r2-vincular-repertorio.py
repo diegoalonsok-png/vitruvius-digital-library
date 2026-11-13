@@ -4,7 +4,10 @@
 El mapa (clave «mapa») se revisa a mano: id R2 → lista de fichas del repertorio.
 Una lista vacía declara una obra NUEVA (sin ficha previa). Las ediciones R2 que aún
 no figuran en el mapa quedan en «sinRevisar» y no se suman a ningún recuento.
-El repertorio de 222 fichas no se modifica.
+
+Este guion no modifica el repertorio. Cuando scripts/r2-fichas-obras-nuevas.py le da
+ficha a una obra nueva —la ficha lleva el mismo id que la edición alojada—, aquí deja
+de contarse como nueva y pasa a contarse como ficha, sin duplicarse.
 """
 import json
 from pathlib import Path
@@ -28,11 +31,15 @@ for x in cat["items"]:
     if x["id"] not in mapa:
         sin_revisar.append(x["id"])
         continue
-    for w in mapa[x["id"]]:
+    fichas = mapa[x["id"]]
+    # Una obra que ya tiene ficha propia (mismo id) deja de ser una incorporación nueva.
+    if not fichas and x["id"] in rep:
+        fichas = [x["id"]]
+    for w in fichas:
         por_obra.setdefault(w, []).append({
             "r2": x["id"], "pdf": x["pdf"], "edicion": x["tituloEdicion"], "anio": x["anio"],
             "volumen": x.get("volumen"), "loeb": x.get("bilingueLoeb"), "alcance": x.get("alcance")})
-    if not mapa[x["id"]]:
+    if not fichas:
         nuevas.append({"r2": x["id"], "autor": x["autor"], "obra": x["obra"], "lengua": x["lengua"], "pdf": x["pdf"]})
 
 out = {

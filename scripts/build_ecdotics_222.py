@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Build a conservative, reproducible ecdotic overlay for 222 classical works.
+"""Build a conservative, reproducible ecdotic overlay for the classical catalogue.
 
 Python 3.11+ / standard library only. Does NOT overwrite the master catalogue,
 manuscript registry, textual indices or historical research. Missing scholarly
@@ -60,13 +60,16 @@ def classify_witness(record):
 
 def create_overlay(catalog, registry, authorities, standard):
     works = catalog.get("works", [])
-    if len(works) != 222 or len({w.get("id") for w in works}) != 222:
-        raise ValueError("Expected exactly 222 distinct works in master catalogue")
+    # El repertorio crece cuando entra una obra nueva (hoy, por facsímil alojado),
+    # de modo que la cifra no se fija aquí: se exige que no haya ids repetidos y
+    # que los datos derivados estén alineados con el catálogo maestro.
+    if not works or len({w.get("id") for w in works}) != len(works):
+        raise ValueError("Master catalogue is empty or has duplicate work ids")
     ids = {w["id"] for w in works}
     auth_by = {x.get("workId"): x for x in authorities.get("records", [])}
     std_by = {x.get("workId"): x for x in standard.get("records", [])}
     if set(std_by) != ids:
-        raise ValueError("The 222-record standard is not aligned with the master catalogue")
+        raise ValueError("The standard registry is not aligned with the master catalogue")
 
     linked = {id_: [] for id_ in ids}
     seen = set()

@@ -7,7 +7,7 @@
     "data/classics-corpus/vitruvius-standard-222.json"
   ],
   "policy": "No conjectural editorial genealogies or identifiers; never modify sources.",
-  "count": 222,
+  "count": 227,
   "records": [
     {
       "workId": "vitruvius",
@@ -41,6 +41,7 @@
       "witnesses": [
         {
           "witnessId": "vitruvius-h",
+          "canonicalPhysicalId": "codex-vitruvius-h",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -65,10 +66,7 @@
             "subscriptiones": null,
             "origin": "¿Colonia o Aquisgrán (Alemania occidental)? Atribución geográfica no segura; posible scriptorium palatino de Carlomagno según bibliografía citada por British Library.",
             "provenance": "Abadía benedictina de San Pantaleón, Colonia (anotación Goderamnus prepositus, f. 145r); colección Johann Georg Graevius; posteriormente colección Harley.",
-            "foliation": "ff. 1r–162v (Harley MS 2767); dos hojas desprendidas en Oxford, Rawlinson MS D. 893, ff. 135–136.",
-            "diagrams": "Diagrama de los vientos en tinta parda, f. 16v; la afirmación de ausencia total de diagramas es errónea.",
-            "ruling": "Pautado a punta seca (hardpoint), según British Library Archives and Manuscripts Catalogue.",
-            "quireSignatures": "Signaturas de cuadernos presentes, según catálogo British Library (sin reconstrucción de colación cuaderno por cuaderno)."
+            "foliation": "ff. 1r–162v (Harley MS 2767); dos hojas desprendidas en Oxford, Rawlinson MS D. 893, ff. 135–136."
           },
           "textualIntegrity": {
             "coverage": "Testimonio completo del tratado; dos folios separados se conservan en Oxford (Rawlinson MS D. 893, ff. 135–136).",
@@ -80,14 +78,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048598",
+            "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
+            "iiifManifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
             "verification": "https://searcharchives.bl.uk/catalog/040-002048598",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-vitruvius-h"
+          }
         }
       ],
       "digitalEdition": {
@@ -149,6 +146,7 @@
       "witnesses": [
         {
           "witnessId": "cicero-officiis-geneva",
+          "canonicalPhysicalId": "codex-cicero-officiis-geneva",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -185,17 +183,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
+            "viewer": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
+            "iiifManifest": "https://e-codices.unifr.ch/metadata/iiif/bge-lat0088/manifest.json",
+            "verification": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-cicero-officiis-geneva"
+          }
         },
         {
           "witnessId": "cicero-catilina-harley2716",
+          "canonicalPhysicalId": "codex-cicero-catilina-harley2716",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -232,14 +230,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048547",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://searcharchives.bl.uk/catalog/040-002048547",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-cicero-catilina-harley2716"
+          }
         }
       ],
       "digitalEdition": {
@@ -303,6 +300,7 @@
       "witnesses": [
         {
           "witnessId": "cicero-de-oratore-harley2736",
+          "canonicalPhysicalId": "codex-cicero-de-oratore-harley2736",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -339,17 +337,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048567",
+            "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038199.0x000001",
+            "iiifManifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038199.0x000001",
+            "verification": "https://searcharchives.bl.uk/catalog/040-002048567",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-cicero-de-oratore-harley2736"
+          }
         },
         {
           "witnessId": "cicero-de-oratore-nls-18-3-16",
+          "canonicalPhysicalId": "codex-cicero-de-oratore-nls-18-3-16",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -386,14 +384,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://manuscripts.nls.uk/repositories/2/resources/15184",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-cicero-de-oratore-nls-18-3-16"
+          }
         }
       ],
       "digitalEdition": {
@@ -455,6 +452,7 @@
       "witnesses": [
         {
           "witnessId": "cicero-republica-vat5757",
+          "canonicalPhysicalId": "codex-cicero-republica-vat5757",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -491,14 +489,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://spotlight.vatlib.it/overview/catalog/Vat_lat_5757",
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.5757",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.5757/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-cicero-republica-vat5757"
+          }
         }
       ],
       "digitalEdition": {
@@ -560,6 +557,7 @@
       "witnesses": [
         {
           "witnessId": "caesar-add-ms-10084",
+          "canonicalPhysicalId": "codex-caesar-add-ms-10084",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -596,17 +594,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/032-002107866",
+            "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100055964761.0x000001",
+            "iiifManifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100055964761.0x000001",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-caesar-add-ms-10084"
+          }
         },
         {
           "witnessId": "caesar-gallico-harley4834",
+          "canonicalPhysicalId": "codex-caesar-gallico-harley4834",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -643,14 +641,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002050677",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-caesar-gallico-harley4834"
+          }
         }
       ],
       "digitalEdition": {
@@ -712,6 +709,7 @@
       "witnesses": [
         {
           "witnessId": "caesar-add-ms-10084",
+          "canonicalPhysicalId": "codex-caesar-add-ms-10084",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -748,14 +746,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/032-002107866",
+            "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100055964761.0x000001",
+            "iiifManifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100055964761.0x000001",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-caesar-add-ms-10084"
+          }
         }
       ],
       "digitalEdition": {
@@ -817,6 +814,7 @@
       "witnesses": [
         {
           "witnessId": "sallust-paris16024",
+          "canonicalPhysicalId": "codex-sallust-paris16024",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -853,17 +851,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sallust-paris16024"
+          }
         },
         {
           "witnessId": "sallust-paris16025",
+          "canonicalPhysicalId": "codex-sallust-paris16025",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -900,14 +898,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sallust-paris16025"
+          }
         }
       ],
       "digitalEdition": {
@@ -969,6 +966,7 @@
       "witnesses": [
         {
           "witnessId": "sallust-paris16024",
+          "canonicalPhysicalId": "codex-sallust-paris16024",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -1005,17 +1003,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sallust-paris16024"
+          }
         },
         {
           "witnessId": "sallust-paris16025",
+          "canonicalPhysicalId": "codex-sallust-paris16025",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -1052,14 +1050,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sallust-paris16025"
+          }
         }
       ],
       "digitalEdition": {
@@ -1176,6 +1173,7 @@
       "witnesses": [
         {
           "witnessId": "lucretius-oblongus",
+          "canonicalPhysicalId": "codex-lucretius-oblongus",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1212,14 +1210,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://portail.biblissima.fr/en/ark:/43093/mdataf212112b405b61b0e8e15847a6636ba25c322e9a",
+            "viewer": "https://digitalcollections.universiteitleiden.nl/view/item/4127827",
+            "iiifManifest": "https://digitalcollections.universiteitleiden.nl/iiif_manifest/item:4127827/manifest",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-lucretius-oblongus"
+          }
         }
       ],
       "digitalEdition": {
@@ -1281,6 +1278,7 @@
       "witnesses": [
         {
           "witnessId": "vergil-vaticanus-aeneid",
+          "canonicalPhysicalId": "codex-vat-lat-3225",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1317,17 +1315,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3225/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-vat-lat-3225"
+          }
         },
         {
           "witnessId": "vergil-romanus",
+          "canonicalPhysicalId": "codex-vergil-romanus",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1364,14 +1362,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://spotlight.vatlib.it/latin-paleography/catalog/Vat_lat_3867",
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3867",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3867/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-vergil-romanus"
+          }
         }
       ],
       "digitalEdition": {
@@ -1433,6 +1430,7 @@
       "witnesses": [
         {
           "witnessId": "vergil-vaticanus-georgica",
+          "canonicalPhysicalId": "codex-vat-lat-3225",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1469,17 +1467,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3225/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-vat-lat-3225"
+          }
         },
         {
           "witnessId": "vergil-romanus",
+          "canonicalPhysicalId": "codex-vergil-romanus",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1516,14 +1514,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://spotlight.vatlib.it/latin-paleography/catalog/Vat_lat_3867",
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.3867",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.3867/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-vergil-romanus"
+          }
         }
       ],
       "digitalEdition": {
@@ -1585,6 +1582,7 @@
       "witnesses": [
         {
           "witnessId": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1621,17 +1619,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048555",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          }
         },
         {
           "witnessId": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1668,14 +1666,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002049834",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          }
         }
       ],
       "digitalEdition": {
@@ -1737,6 +1734,7 @@
       "witnesses": [
         {
           "witnessId": "livy-pal-lat24-palimp",
+          "canonicalPhysicalId": "codex-livy-pal-lat24-palimp",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1773,17 +1771,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://elmss.universityofgalway.ie/catalogue/86",
+            "viewer": "https://digi.vatlib.it/view/MSS_Pal.lat.24/0320",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-livy-pal-lat24-palimp"
+          }
         },
         {
           "witnessId": "livy-verona-palimp",
+          "canonicalPhysicalId": "codex-livy-verona-palimp",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1820,17 +1818,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://elmss.universityofgalway.ie/catalogue/847",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-livy-verona-palimp"
+          }
         },
         {
           "witnessId": "livy-pal-lat878",
+          "canonicalPhysicalId": "codex-livy-pal-lat878",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1867,17 +1865,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/cc2a508d191e5f37982f907e3531b2644b4e74cc",
+            "viewer": "https://iiif.biblissima.fr/collections/manifest/cc2a508d191e5f37982f907e3531b2644b4e74cc",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-livy-pal-lat878"
+          }
         },
         {
           "witnessId": "livy-pal-lat873",
+          "canonicalPhysicalId": "codex-livy-pal-lat873",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -1914,14 +1912,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_873/0330",
+            "viewer": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_873/0330",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-livy-pal-lat873"
+          }
         }
       ],
       "digitalEdition": {
@@ -1983,6 +1980,7 @@
       "witnesses": [
         {
           "witnessId": "ovid-metamorphoses-vat-lat-2781",
+          "canonicalPhysicalId": "codex-ovid-metamorphoses-vat-lat-2781",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -2019,17 +2017,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://digi.vatlib.it/mss/detail/Vat.lat.2781",
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.lat.2781",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.lat.2781/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ovid-metamorphoses-vat-lat-2781"
+          }
         },
         {
           "witnessId": "ovid-fasti-harley2737",
+          "canonicalPhysicalId": "codex-ovid-fasti-harley2737",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -2066,14 +2064,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048568",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ovid-fasti-harley2737"
+          }
         }
       ],
       "digitalEdition": {
@@ -2135,6 +2132,7 @@
       "witnesses": [
         {
           "witnessId": "ovid-fasti-harley2737",
+          "canonicalPhysicalId": "codex-ovid-fasti-harley2737",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -2171,17 +2169,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048568",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ovid-fasti-harley2737"
+          }
         },
         {
           "witnessId": "ovid-fasti-harley2738",
+          "canonicalPhysicalId": "codex-ovid-fasti-harley2738",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -2218,14 +2216,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/?f%5Blevel_ssi%5D%5B%5D=%5B40%5D+File&f%5Bproject_collections_ssim%5D%5B%5D=Harley+Collection&f%5Broot_ancestor_reference_ssi%5D%5B%5D=Harley+MS+1-7661&page=22&per_page=100&sort=relevance",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ovid-fasti-harley2738"
+          }
         }
       ],
       "digitalEdition": {
@@ -2359,7 +2356,6 @@
             "shelfmark": "Grec 1642",
             "paleographicDate": "siglo XV",
             "support": null,
-            "dimensions": null,
             "script": null,
             "hands": null,
             "correctors": null,
@@ -2368,8 +2364,7 @@
             "subscriptiones": null,
             "origin": null,
             "provenance": null,
-            "foliation": "Apiano, Bellum civile ff. 263r–264v y Celtica ff. 264v–275v; Diodoro, Bibliotheca historica ff. 275v–276v.",
-            "binding": null
+            "foliation": "Apiano, Bellum civile ff. 263r–264v y Celtica ff. 264v–275v; Diodoro, Bibliotheca historica ff. 275v–276v."
           },
           "textualIntegrity": {
             "coverage": "Testimonios fragmentarios: Apiano, Bellum civile y Celtica, en extractos; Diodoro, pasajes del libro XVIII (18.1.1–5 y 18.26.1–28.4 según Pinakes). NO representa ejemplar completo.",
@@ -2506,6 +2501,7 @@
       "witnesses": [
         {
           "witnessId": "strabo-bnf-grec1393",
+          "canonicalPhysicalId": "codex-strabo-bnf-grec1393",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -2542,14 +2538,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/1d904e660eea62e5b3dfb26cfec5cfdc34956c75",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b8468312f",
+            "iiifManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b8468312f/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-strabo-bnf-grec1393"
+          }
         }
       ],
       "digitalEdition": {
@@ -2685,7 +2680,6 @@
             "shelfmark": "Harley MS 2752",
             "paleographicDate": "primera mitad del siglo XV (1400–1449)",
             "support": "Pergamino; códice de 89 folios; 260 × 175 mm; caja de escritura 190 × 120 mm",
-            "dimensions": "260 × 175 mm; caja escrita 190 × 120 mm",
             "script": "Gótica",
             "hands": null,
             "correctors": null,
@@ -2694,8 +2688,7 @@
             "subscriptiones": null,
             "origin": "Países Bajos septentrionales",
             "provenance": "John Chamberlayne; colección Harley; adquirido por el Estado británico en 1753.",
-            "foliation": "ff. 1r–89r; f. 89v en blanco",
-            "binding": "Encuadernación posterior a 1600, cuero rojo decorado y guardas jaspeadas."
+            "foliation": "ff. 1r–89r; f. 89v en blanco"
           },
           "textualIntegrity": {
             "coverage": "Epistulae morales ad Lucilium, colección de 124 cartas según registro British Library; no se ha auditado la integridad de cada carta.",
@@ -2734,7 +2727,6 @@
             "shelfmark": "Harley MS 5006",
             "paleographicDate": "segunda mitad del siglo XV (1450–1499)",
             "support": "Pergamino, 78 folios; 305 × 225 mm; caja escrita 245 × 155 mm",
-            "dimensions": "305 × 225 mm; caja escrita 245 × 155 mm",
             "script": "Gótica",
             "hands": null,
             "correctors": null,
@@ -2743,8 +2735,7 @@
             "subscriptiones": null,
             "origin": "Italia septentrional o central, localización alternativa sin precisar",
             "provenance": "Colegio jesuita de Agen, Francia, anotación del siglo XVII; colección Harley.",
-            "foliation": "Tragedias ff. 1r–30v y fragmento 77r–78v; Epistulae morales ff. 31r–76v.",
-            "binding": "Encuadernación posterior a 1600, cuero marrón jaspeado con decoración dorada"
+            "foliation": "Tragedias ff. 1r–30v y fragmento 77r–78v; Epistulae morales ff. 31r–76v."
           },
           "textualIntegrity": {
             "coverage": "Tragedias de Séneca (ff. 1r–30v y fragmento final 77r–78v); cartas morales (ff. 31r–76v), precedidas por la correspondencia apócrifa entre Séneca y san Pablo. No atribuir esta última correspondencia a Séneca auténtico.",
@@ -2938,6 +2929,7 @@
       "witnesses": [
         {
           "witnessId": "pliny-naturalis-bamberg42",
+          "canonicalPhysicalId": "codex-pliny-naturalis-bamberg42",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -2974,17 +2966,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://handschriftenportal.de/?id=HSP-ca46031b-642a-3460-b9b1-9e823df6a7d9",
+            "viewer": "https://mdz-nbn-resolving.de/urn:nbn:de:bvb:12-bsb00140752-2",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pliny-naturalis-bamberg42"
+          }
         },
         {
           "witnessId": "pliny-naturalis-harley2676",
+          "canonicalPhysicalId": "codex-pliny-naturalis-harley2676",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3021,14 +3013,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-001609021",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pliny-naturalis-harley2676"
+          }
         }
       ],
       "digitalEdition": {
@@ -3090,6 +3081,7 @@
       "witnesses": [
         {
           "witnessId": "dioscorides-vienna",
+          "canonicalPhysicalId": "codex-dioscorides-vienna",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3126,17 +3118,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://onb.digital/search/811603",
+            "viewer": "https://onb.digital/search/811603",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-dioscorides-vienna"
+          }
         },
         {
           "witnessId": "dioscorides-paris",
+          "canonicalPhysicalId": "codex-dioscorides-paris",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3173,14 +3165,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-dioscorides-paris"
+          }
         }
       ],
       "digitalEdition": {
@@ -3242,6 +3233,7 @@
       "witnesses": [
         {
           "witnessId": "josephus-vat-gr-984",
+          "canonicalPhysicalId": "codex-josephus-vat-gr-984",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3278,14 +3270,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://digi.vatlib.it/view/MSS_Vat.gr.984",
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.984",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.984/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-josephus-vat-gr-984"
+          }
         }
       ],
       "digitalEdition": {
@@ -3347,6 +3338,7 @@
       "witnesses": [
         {
           "witnessId": "josephus-pal-gr-14",
+          "canonicalPhysicalId": "codex-josephus-pal-gr-14",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3383,17 +3375,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://digi.vatlib.it/view/MSS_Pal.gr.14",
+            "viewer": "https://digi.vatlib.it/view/MSS_Pal.gr.14",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Pal.gr.14/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-josephus-pal-gr-14"
+          }
         },
         {
           "witnessId": "josephus-vat-gr-984",
+          "canonicalPhysicalId": "codex-josephus-vat-gr-984",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3430,14 +3422,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://digi.vatlib.it/view/MSS_Vat.gr.984",
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.984",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.984/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-josephus-vat-gr-984"
+          }
         }
       ],
       "digitalEdition": {
@@ -3499,6 +3490,7 @@
       "witnesses": [
         {
           "witnessId": "quintilian-harley2664",
+          "canonicalPhysicalId": "codex-quintilian-harley2664",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3535,17 +3527,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048495",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-quintilian-harley2664"
+          }
         },
         {
           "witnessId": "quintilian-burney244",
+          "canonicalPhysicalId": "codex-quintilian-burney244",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3582,14 +3574,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002237125",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-quintilian-burney244"
+          }
         }
       ],
       "digitalEdition": {
@@ -3881,6 +3872,7 @@
       "witnesses": [
         {
           "witnessId": "sinaiticus-gospels-apostolic",
+          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3917,17 +3909,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002169730",
+            "viewer": "https://codexsinaiticus.org.uk/en/codex/content.aspx",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://codexsinaiticus.org.uk/en/codex/content.aspx",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic"
+          }
         },
         {
           "witnessId": "alexandrinus-nt-clement",
+          "canonicalPhysicalId": "codex-alexandrinus-nt-clement",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -3964,14 +3956,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002353500",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://searcharchives.bl.uk/catalog/040-002353500",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-alexandrinus-nt-clement"
+          }
         }
       ],
       "digitalEdition": {
@@ -4033,6 +4024,7 @@
       "witnesses": [
         {
           "witnessId": "alexandrinus-nt-clement",
+          "canonicalPhysicalId": "codex-alexandrinus-nt-clement",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -4069,17 +4061,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002353500",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://searcharchives.bl.uk/catalog/040-002353500",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-alexandrinus-nt-clement"
+          }
         },
         {
           "witnessId": "clement-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -4116,14 +4108,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+            "viewer": "https://www.loc.gov/item/00279389694-jo/",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          }
         }
       ],
       "digitalEdition": {
@@ -4185,6 +4176,7 @@
       "witnesses": [
         {
           "witnessId": "didache-poxy-xv-1782",
+          "canonicalPhysicalId": "codex-didache-poxy-xv-1782",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -4221,17 +4213,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://4care-skos.mf.no/4care-artefacts/260/",
+            "viewer": "https://commons.wikimedia.org/wiki/Category:Papyrus_Oxyrhynchus_1782",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.sds.ox.ac.uk/oxyrhynchus-papyri",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-didache-poxy-xv-1782"
+          }
         },
         {
           "witnessId": "didache-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -4268,17 +4260,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+            "viewer": "https://www.loc.gov/item/00279389694-jo/",
             "iiifManifest": null,
             "verification": "https://www.loc.gov/item/00279389694-jo/",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          }
         },
         {
           "witnessId": "didache-elbasan-82",
+          "canonicalPhysicalId": "codex-didache-elbasan-82",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -4287,10 +4279,8 @@
             "editorialSiglum": "Elbasan 82 (designación catalográfica; sin sigla crítica universal acreditada)",
             "siglumSourceEdition": null,
             "stemmaPosition": null,
-            "copyOf": "didache-hierosolymitanus-54",
-            "indirectSourceType": null,
-            "copyOfStatus": "probable_direct_apograph_according_to_scholarly_study",
-            "copyOfSource": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/"
+            "copyOf": null,
+            "indirectSourceType": null
           },
           "codicology": {
             "repository": "Tirana, Arkivi Qëndror i Shtetit (Archivo Central del Estado, Albania)",
@@ -4317,17 +4307,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/63441/",
             "viewer": null,
             "iiifManifest": null,
             "verification": "https://pinakes.irht.cnrs.fr/notices/bibliographie/S8XN5V7D/",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-didache-elbasan-82"
+          }
         },
         {
           "witnessId": "didache-coptic-or9271",
+          "canonicalPhysicalId": "codex-didache-coptic-or9271",
           "transmission": {
             "type": "indirect",
             "classificationBasis": "ancient_translation_coptic",
@@ -4364,14 +4354,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://4care-skos.mf.no/4care-artefacts/39/",
+            "viewer": "https://4care-skos.mf.no/4care-artefacts/39/",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://libraryguides.helsinki.fi/apostolicfathers/didache",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-didache-coptic-or9271"
+          }
         }
       ],
       "digitalEdition": {
@@ -4436,6 +4425,7 @@
       "witnesses": [
         {
           "witnessId": "sinaiticus-gospels-apostolic",
+          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -4472,14 +4462,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002169730",
+            "viewer": "https://codexsinaiticus.org.uk/en/codex/content.aspx",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://codexsinaiticus.org.uk/en/codex/content.aspx",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic"
+          }
         }
       ],
       "digitalEdition": {
@@ -4539,6 +4528,7 @@
       "witnesses": [
         {
           "witnessId": "faventinus-gudianus-132",
+          "canonicalPhysicalId": "codex-faventinus-gudianus-132",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -4575,14 +4565,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms",
+            "viewer": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-faventinus-gudianus-132"
+          }
         }
       ],
       "digitalEdition": {
@@ -4647,6 +4636,7 @@
       "witnesses": [
         {
           "witnessId": "sinaiticus-gospels-apostolic",
+          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -4683,17 +4673,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002169730",
+            "viewer": "https://codexsinaiticus.org.uk/en/codex/content.aspx",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://codexsinaiticus.org.uk/en/codex/content.aspx",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic"
+          }
         },
         {
           "witnessId": "barnabas-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -4730,14 +4720,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+            "viewer": "https://www.loc.gov/item/00279389694-jo/",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          }
         }
       ],
       "digitalEdition": {
@@ -4799,6 +4788,7 @@
       "witnesses": [
         {
           "witnessId": "ignatius-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -4835,14 +4825,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+            "viewer": "https://www.loc.gov/item/00279389694-jo/",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://libraryguides.helsinki.fi/apostolicfathers/ignatius",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          }
         }
       ],
       "digitalEdition": {
@@ -4961,6 +4950,7 @@
       "witnesses": [
         {
           "witnessId": "alexandrinus-nt-clement",
+          "canonicalPhysicalId": "codex-alexandrinus-nt-clement",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -4997,17 +4987,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002353500",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://searcharchives.bl.uk/catalog/040-002353500",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-alexandrinus-nt-clement"
+          }
         },
         {
           "witnessId": "clement2-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -5044,14 +5034,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
+            "viewer": "https://www.loc.gov/item/00279389694-jo/",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          }
         }
       ],
       "digitalEdition": {
@@ -5563,6 +5552,7 @@
       "witnesses": [
         {
           "witnessId": "frontinus-strategemata-harley2666",
+          "canonicalPhysicalId": "codex-frontinus-strategemata-harley2666",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -5599,14 +5589,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048497",
+            "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056035465.0x000001",
+            "iiifManifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056035465.0x000001",
+            "verification": "https://searcharchives.bl.uk/catalog/040-002048497",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-frontinus-strategemata-harley2666"
+          }
         }
       ],
       "digitalEdition": {
@@ -6614,6 +6603,7 @@
       "witnesses": [
         {
           "witnessId": "cicero-catilina-add47678",
+          "canonicalPhysicalId": "codex-cicero-catilina-add47678",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -6650,17 +6640,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002104026",
+            "viewer": "https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056002648.0x000001",
+            "iiifManifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056002648.0x000001",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-cicero-catilina-add47678"
+          }
         },
         {
           "witnessId": "cicero-catilina-harley2716",
+          "canonicalPhysicalId": "codex-cicero-catilina-harley2716",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -6697,14 +6687,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048547",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://searcharchives.bl.uk/catalog/040-002048547",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-cicero-catilina-harley2716"
+          }
         }
       ],
       "digitalEdition": {
@@ -6766,6 +6755,7 @@
       "witnesses": [
         {
           "witnessId": "catullus-thuaneus-8071",
+          "canonicalPhysicalId": "codex-catullus-thuaneus-8071",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -6802,17 +6792,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://www.gutenberg.org/files/23294/23294-h/23294-h.htm",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b9078246d",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-catullus-thuaneus-8071"
+          }
         },
         {
           "witnessId": "catullus-oxford-o",
+          "canonicalPhysicalId": "codex-catullus-oxford-o",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -6849,14 +6839,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/c691ed800d5576a3f70898d3d0dd0eaa4f375c18",
+            "viewer": "https://digital.bodleian.ox.ac.uk/objects/c645f804-d10b-45e4-8a14-c9b22676b87d/",
+            "iiifManifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/c645f804-d10b-45e4-8a14-c9b22676b87d.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-catullus-oxford-o"
+          }
         }
       ],
       "digitalEdition": {
@@ -6921,6 +6910,7 @@
       "witnesses": [
         {
           "witnessId": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -6957,17 +6947,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048555",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          }
         },
         {
           "witnessId": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -7004,14 +6994,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002049834",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          }
         }
       ],
       "digitalEdition": {
@@ -7073,6 +7062,7 @@
       "witnesses": [
         {
           "witnessId": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -7109,17 +7099,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048555",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          }
         },
         {
           "witnessId": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -7156,14 +7146,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002049834",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          }
         }
       ],
       "digitalEdition": {
@@ -7225,6 +7214,7 @@
       "witnesses": [
         {
           "witnessId": "ovid-ars-parisinus-lat7311",
+          "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -7261,17 +7251,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.persee.fr/doc/dirht_0073-8212_2014_mon_26_42?pageId=T1_454",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://dcc.dickinson.edu/pl/ovid-amores/manuscript-tradition-ovids-amores",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311"
+          }
         },
         {
           "witnessId": "ovid-ars-bodleian-auct-f4-32",
+          "canonicalPhysicalId": "codex-ovid-ars-bodleian-auct-f4-32",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -7308,14 +7298,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.historyofinformation.com/detail.php?entryid=1887",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.persee.fr/doc/dirht_0073-8212_2014_mon_26_42?pageId=T1_454",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ovid-ars-bodleian-auct-f4-32"
+          }
         }
       ],
       "digitalEdition": {
@@ -7403,7 +7392,6 @@
             "shelfmark": "Harley MS 5006",
             "paleographicDate": "segunda mitad del siglo XV (1450–1499)",
             "support": "Pergamino, 78 folios; 305 × 225 mm; caja escrita 245 × 155 mm",
-            "dimensions": "305 × 225 mm; caja escrita 245 × 155 mm",
             "script": "Gótica",
             "hands": null,
             "correctors": null,
@@ -7412,8 +7400,7 @@
             "subscriptiones": null,
             "origin": "Italia septentrional o central, localización alternativa sin precisar",
             "provenance": "Colegio jesuita de Agen, Francia, anotación del siglo XVII; colección Harley.",
-            "foliation": "Tragedias ff. 1r–30v y fragmento 77r–78v; Epistulae morales ff. 31r–76v.",
-            "binding": "Encuadernación posterior a 1600, cuero marrón jaspeado con decoración dorada"
+            "foliation": "Tragedias ff. 1r–30v y fragmento 77r–78v; Epistulae morales ff. 31r–76v."
           },
           "textualIntegrity": {
             "coverage": "Tragedias de Séneca (ff. 1r–30v y fragmento final 77r–78v); cartas morales (ff. 31r–76v), precedidas por la correspondencia apócrifa entre Séneca y san Pablo. No atribuir esta última correspondencia a Séneca auténtico.",
@@ -7548,6 +7535,7 @@
       "witnesses": [
         {
           "witnessId": "tacitus-mediceus-1",
+          "canonicalPhysicalId": "codex-tacitus-mediceus-1",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -7584,17 +7572,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/62b4f03e4446b2d1df4529cb493ce95ed92bac55",
+            "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/1334704",
+            "iiifManifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:1334704/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-tacitus-mediceus-1"
+          }
         },
         {
           "witnessId": "tacitus-mediceus-2",
+          "canonicalPhysicalId": "codex-laur-plut-68-2",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -7631,14 +7619,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23",
+            "viewer": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-laur-plut-68-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -7700,6 +7687,7 @@
       "witnesses": [
         {
           "witnessId": "tacitus-mediceus-2",
+          "canonicalPhysicalId": "codex-laur-plut-68-2",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -7736,14 +7724,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23",
+            "viewer": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-laur-plut-68-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -7862,6 +7849,7 @@
       "witnesses": [
         {
           "witnessId": "juvenal-harley2772",
+          "canonicalPhysicalId": "codex-juvenal-harley2772",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -7898,14 +7886,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048603",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-juvenal-harley2772"
+          }
         }
       ],
       "digitalEdition": {
@@ -7967,6 +7954,7 @@
       "witnesses": [
         {
           "witnessId": "apuleius-laurentianus-68-2",
+          "canonicalPhysicalId": "codex-laur-plut-68-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -8003,17 +7991,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://read.uolpress.co.uk/read/the-afterlife-of-apuleius/section/3daa2b8e-04f4-407f-a144-ce658dad393f",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-laur-plut-68-2"
+          }
         },
         {
           "witnessId": "apuleius-laurentianus-29-2",
+          "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -8050,14 +8038,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/manuscripts-of-the-metamorphoses-of-apvleivs-i/88C29964AB669E5E33CAAF37A52C46E0",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -8484,10 +8471,7 @@
             "subscriptiones": null,
             "origin": "Nordeste de Italia, posiblemente Padua o Bolonia (atribución de BL).",
             "provenance": "Colección Harley; antes de nacionalización en 1753.",
-            "foliation": "ff. 1r–201r: Noctes Atticae; ff. 201v–205r: índice latino; ff. 205v–206v: definiciones y etimologías.",
-            "dimensions": "255 × 175 mm; caja de escritura 165 × 110 mm.",
-            "collationFormula": null,
-            "binding": "Encuadernación posterior a 1600, cuero marrón moteado con decoración dorada."
+            "foliation": "ff. 1r–201r: Noctes Atticae; ff. 201v–205r: índice latino; ff. 205v–206v: definiciones y etimologías."
           },
           "textualIntegrity": {
             "coverage": "Texto de Noctes Atticae, con notas marginales, índices de voces y frases; no se afirma integridad crítica ni prioridad cronológica mundial.",
@@ -8534,10 +8518,7 @@
             "subscriptiones": null,
             "origin": "Italia central, Roma (atribución BL).",
             "provenance": "Mario Maffei; Anthony Askew; duque de Grafton; Charles Burney; adquirida por el British Museum en 1818.",
-            "foliation": "ff. 2r–237v Noctes Atticae; ff. 237v–239v prefacio (orden material posterior al texto).",
-            "dimensions": "295 × 200 mm; caja de escritura 205 × 110 mm.",
-            "collationFormula": "i–xxiii¹⁰ (ff. 2–231); xxiv⁸ (ff. 232–239), según catálogo institucional; reclamos verticales.",
-            "binding": "Encuadernación Askew posterior a 1600 en cuero marrón; restaurada en 1962."
+            "foliation": "ff. 2r–237v Noctes Atticae; ff. 237v–239v prefacio (orden material posterior al texto)."
           },
           "textualIntegrity": {
             "coverage": "Noctes Atticae con prefacio colocado a continuación; iniciales y rúbricas ornamentadas; estado de integridad de cada libro requiere cotejo textual.",
@@ -8805,7 +8786,6 @@
             "shelfmark": "Vulc. 002",
             "paleographicDate": "finales del siglo XV a comienzos del XVI, según unidad descrita por Pinakes",
             "support": "Papel; manuscrito misceláneo",
-            "dimensions": null,
             "script": null,
             "hands": null,
             "correctors": null,
@@ -8814,8 +8794,7 @@
             "subscriptiones": null,
             "origin": null,
             "provenance": null,
-            "foliation": "Memorabilia ff. 7v–51r; Historiae de Polibio ff. 87r–110r (f. 110v en blanco).",
-            "binding": null
+            "foliation": "Memorabilia ff. 7v–51r; Historiae de Polibio ff. 87r–110r (f. 110v en blanco)."
           },
           "textualIntegrity": {
             "coverage": "Jenofonte, Memorabilia, y sección de Historiae de Polibio; la integridad de la obra de Polibio no está demostrada por el catálogo.",
@@ -9674,6 +9653,7 @@
       "witnesses": [
         {
           "witnessId": "ptolemy-almagest-vatgr1594",
+          "canonicalPhysicalId": "codex-ptolemy-almagest-vatgr1594",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -9710,17 +9690,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/68225/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/oeuvre/12764/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ptolemy-almagest-vatgr1594"
+          }
         },
         {
           "witnessId": "ptolemy-almagest-paris2389",
+          "canonicalPhysicalId": "codex-ptolemy-almagest-paris2389",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -9757,14 +9737,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://journals.sagepub.com/doi/full/10.1177/00218286221140848",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://journals.sagepub.com/doi/full/10.1177/00218286221140848",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ptolemy-almagest-paris2389"
+          }
         }
       ],
       "digitalEdition": {
@@ -9824,6 +9803,7 @@
       "witnesses": [
         {
           "witnessId": "ptolemy-geography-urbgr82",
+          "canonicalPhysicalId": "codex-ptolemy-geography-urbgr82",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -9860,14 +9840,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://digi.vatlib.it/view/MSS_Urb.gr.82",
+            "viewer": "https://digi.vatlib.it/view/MSS_Urb.gr.82",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Urb.gr.82/manifest.json",
+            "verification": "https://digi.vatlib.it/view/MSS_Urb.gr.82",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ptolemy-geography-urbgr82"
+          }
         }
       ],
       "digitalEdition": {
@@ -9959,7 +9938,6 @@
             "shelfmark": "Grec 1642",
             "paleographicDate": "siglo XV",
             "support": null,
-            "dimensions": null,
             "script": null,
             "hands": null,
             "correctors": null,
@@ -9968,8 +9946,7 @@
             "subscriptiones": null,
             "origin": null,
             "provenance": null,
-            "foliation": "Apiano, Bellum civile ff. 263r–264v y Celtica ff. 264v–275v; Diodoro, Bibliotheca historica ff. 275v–276v.",
-            "binding": null
+            "foliation": "Apiano, Bellum civile ff. 263r–264v y Celtica ff. 264v–275v; Diodoro, Bibliotheca historica ff. 275v–276v."
           },
           "textualIntegrity": {
             "coverage": "Testimonios fragmentarios: Apiano, Bellum civile y Celtica, en extractos; Diodoro, pasajes del libro XVIII (18.1.1–5 y 18.26.1–28.4 según Pinakes). NO representa ejemplar completo.",
@@ -10049,6 +10026,7 @@
       "witnesses": [
         {
           "witnessId": "marcus-aurelius-vat1950",
+          "canonicalPhysicalId": "codex-marcus-aurelius-vat1950",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -10085,14 +10063,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2",
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.1950.pt.2/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-marcus-aurelius-vat1950"
+          }
         }
       ],
       "digitalEdition": {
@@ -10156,6 +10133,7 @@
       "witnesses": [
         {
           "witnessId": "homer-iliad-venetus-a",
+          "canonicalPhysicalId": "codex-homer-iliad-venetus-a",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -10192,14 +10170,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://www.homermultitext.org/manuscripts/venetusA/",
+            "viewer": "https://homermultitext.github.io/facsimiles/venetus-a/",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-homer-iliad-venetus-a"
+          }
         }
       ],
       "digitalEdition": {
@@ -10261,6 +10238,7 @@
       "witnesses": [
         {
           "witnessId": "homer-odyssey-laur-plut32-24",
+          "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-24",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -10297,17 +10275,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/0458bd9b9a6ac2ab339571c823145a36b8a3fc7e",
+            "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/735325",
+            "iiifManifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:735325/manifest.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/0458bd9b9a6ac2ab339571c823145a36b8a3fc7e",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-24"
+          }
         },
         {
           "witnessId": "homer-odyssey-heidelberg-cpg45",
+          "canonicalPhysicalId": "codex-homer-odyssey-heidelberg-cpg45",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -10344,17 +10322,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/65a6a766bf90f053758b546ac44f29f074a32057",
+            "viewer": "https://digi.ub.uni-heidelberg.de/diglit/cpgraec45",
+            "iiifManifest": "https://digi.ub.uni-heidelberg.de/diglit/iiif/cpgraec45/manifest.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/65a6a766bf90f053758b546ac44f29f074a32057",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-homer-odyssey-heidelberg-cpg45"
+          }
         },
         {
           "witnessId": "homer-odyssey-laur-plut32-23",
+          "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-23",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -10391,14 +10369,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/6045dff3bafa36133d66808966041fc118746e54",
+            "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/631374",
+            "iiifManifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:631374/manifest.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/6045dff3bafa36133d66808966041fc118746e54",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-23"
+          }
         }
       ],
       "digitalEdition": {
@@ -10460,6 +10437,7 @@
       "witnesses": [
         {
           "witnessId": "hesiod-theogony-suppl-gr1099",
+          "canonicalPhysicalId": "codex-hesiod-theogony-suppl-gr1099",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -10496,17 +10474,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/eec0b144514155ac2debf3a3a455f5a6a90dcbc6",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b11000137n",
+            "iiifManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b11000137n/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-hesiod-theogony-suppl-gr1099"
+          }
         },
         {
           "witnessId": "hesiod-works-bnf2708",
+          "canonicalPhysicalId": "codex-hesiod-works-bnf2708",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -10543,14 +10521,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/52343/",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b107222371",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-hesiod-works-bnf2708"
+          }
         }
       ],
       "digitalEdition": {
@@ -10614,6 +10591,7 @@
       "witnesses": [
         {
           "witnessId": "hesiod-works-bnf2708",
+          "canonicalPhysicalId": "codex-hesiod-works-bnf2708",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -10650,17 +10628,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/52343/",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b107222371",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-hesiod-works-bnf2708"
+          }
         },
         {
           "witnessId": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -10703,8 +10681,7 @@
             "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          }
         }
       ],
       "digitalEdition": {
@@ -10770,6 +10747,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -10806,14 +10784,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -10875,6 +10852,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -10911,14 +10889,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -10980,6 +10957,7 @@
       "witnesses": [
         {
           "witnessId": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -11016,14 +10994,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -11085,6 +11062,7 @@
       "witnesses": [
         {
           "witnessId": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -11121,17 +11099,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          }
         },
         {
           "witnessId": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -11174,8 +11152,7 @@
             "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          }
         }
       ],
       "digitalEdition": {
@@ -11237,6 +11214,7 @@
       "witnesses": [
         {
           "witnessId": "herodotus-laur-plut70-3",
+          "canonicalPhysicalId": "codex-herodotus-laur-plut70-3",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -11273,17 +11251,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16568/",
+            "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/1358114",
+            "iiifManifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:1358114/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-herodotus-laur-plut70-3"
+          }
         },
         {
           "witnessId": "herodotus-laur-plut70-32",
+          "canonicalPhysicalId": "codex-herodotus-laur-plut70-32",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -11320,14 +11298,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/c6a20f9dcfdd1f5a7110d3f909ea4fc6a432022e",
+            "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/1198220",
+            "iiifManifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:1198220/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-herodotus-laur-plut70-32"
+          }
         }
       ],
       "digitalEdition": {
@@ -11391,6 +11368,7 @@
       "witnesses": [
         {
           "witnessId": "thucydides-laur-plut69-2",
+          "canonicalPhysicalId": "codex-thucydides-laur-plut69-2",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -11427,14 +11405,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16529/",
+            "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/1363683",
+            "iiifManifest": "https://tecabml.contentdm.oclc.org/iiif/info/plutei/1364710/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-thucydides-laur-plut69-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -11496,6 +11473,7 @@
       "witnesses": [
         {
           "witnessId": "xenophon-anabasis-vatgr1335",
+          "canonicalPhysicalId": "codex-xenophon-anabasis-vatgr1335",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -11538,11 +11516,11 @@
             "verification": "https://pinakes.irht.cnrs.fr/notices/cote/67966/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-xenophon-anabasis-vatgr1335"
+          }
         },
         {
           "witnessId": "xenophon-anabasis-paris1640",
+          "canonicalPhysicalId": "codex-xenophon-anabasis-paris1640",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -11585,8 +11563,7 @@
             "verification": "https://pinakes.irht.cnrs.fr/notices/oeuvre/559/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-xenophon-anabasis-paris1640"
+          }
         }
       ],
       "digitalEdition": {
@@ -11648,6 +11625,7 @@
       "witnesses": [
         {
           "witnessId": "plato-parisinus-graecus-1807",
+          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -11684,14 +11662,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b8419248n",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807"
+          }
         }
       ],
       "digitalEdition": {
@@ -11753,6 +11730,7 @@
       "witnesses": [
         {
           "witnessId": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -11789,14 +11767,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
+            "viewer": "https://digital.bodleian.ox.ac.uk/inquire/p/f57d074b-cff1-4172-8236-797c7b8f0403",
+            "iiifManifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/f57d074b-cff1-4172-8236-797c7b8f0403.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          }
         }
       ],
       "digitalEdition": {
@@ -11858,6 +11835,7 @@
       "witnesses": [
         {
           "witnessId": "aristotle-poetics-paris-gr1741",
+          "canonicalPhysicalId": "codex-aristotle-poetics-paris-gr1741",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -11894,17 +11872,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51367/",
+            "viewer": "https://iiif.biblissima.fr/collections/manifest/3537c4f067a3c803fac04f2740a3cf64c35d246c",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristotle-poetics-paris-gr1741"
+          }
         },
         {
           "witnessId": "aristotle-parisinus-gr1741",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -11941,14 +11919,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51367/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/51367/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741"
+          }
         }
       ],
       "digitalEdition": {
@@ -12010,6 +11987,7 @@
       "witnesses": [
         {
           "witnessId": "aristotle-vatgr1298-politics",
+          "canonicalPhysicalId": "codex-aristotle-vatgr1298-politics",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -12046,14 +12024,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://plato.stanford.edu/archives/win2025/entries/aristotle-text/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://plato.stanford.edu/archives/win2025/entries/aristotle-text/",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristotle-vatgr1298-politics"
+          }
         }
       ],
       "digitalEdition": {
@@ -12448,6 +12425,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -12484,17 +12462,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         },
         {
           "witnessId": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -12537,8 +12515,7 @@
             "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          }
         }
       ],
       "digitalEdition": {
@@ -12600,6 +12577,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -12636,17 +12614,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         },
         {
           "witnessId": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -12689,8 +12667,7 @@
             "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          }
         }
       ],
       "digitalEdition": {
@@ -12752,6 +12729,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -12788,14 +12766,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -12857,6 +12834,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -12893,14 +12871,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -12962,6 +12939,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -12998,14 +12976,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -13067,6 +13044,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -13103,14 +13081,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -13172,6 +13149,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -13208,14 +13186,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -13277,6 +13254,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -13313,14 +13291,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -13382,6 +13359,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -13418,14 +13396,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -13487,6 +13464,7 @@
       "witnesses": [
         {
           "witnessId": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -13523,14 +13501,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://paratext.unipv.it/rht-repertoire-of-hypertext-transcriptions/access-to-the-rht/laur-plut-329/laur-plut-32-9-metadata/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          }
         }
       ],
       "digitalEdition": {
@@ -13592,6 +13569,7 @@
       "witnesses": [
         {
           "witnessId": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -13628,14 +13606,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -13697,6 +13674,7 @@
       "witnesses": [
         {
           "witnessId": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -13733,14 +13711,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -13802,6 +13779,7 @@
       "witnesses": [
         {
           "witnessId": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -13838,14 +13816,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -13907,6 +13884,7 @@
       "witnesses": [
         {
           "witnessId": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -13943,14 +13921,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -14012,6 +13989,7 @@
       "witnesses": [
         {
           "witnessId": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14048,14 +14026,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -14117,6 +14094,7 @@
       "witnesses": [
         {
           "witnessId": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14153,14 +14131,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -14222,6 +14199,7 @@
       "witnesses": [
         {
           "witnessId": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14258,14 +14236,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -14327,6 +14304,7 @@
       "witnesses": [
         {
           "witnessId": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14363,14 +14341,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          }
         }
       ],
       "digitalEdition": {
@@ -14432,6 +14409,7 @@
       "witnesses": [
         {
           "witnessId": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14468,17 +14446,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          }
         },
         {
           "witnessId": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14521,8 +14499,7 @@
             "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          }
         }
       ],
       "digitalEdition": {
@@ -14584,6 +14561,7 @@
       "witnesses": [
         {
           "witnessId": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14620,14 +14598,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          }
         }
       ],
       "digitalEdition": {
@@ -14689,6 +14666,7 @@
       "witnesses": [
         {
           "witnessId": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14725,14 +14703,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          }
         }
       ],
       "digitalEdition": {
@@ -14794,6 +14771,7 @@
       "witnesses": [
         {
           "witnessId": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14830,14 +14808,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          }
         }
       ],
       "digitalEdition": {
@@ -14899,6 +14876,7 @@
       "witnesses": [
         {
           "witnessId": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -14935,14 +14913,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          }
         }
       ],
       "digitalEdition": {
@@ -15004,6 +14981,7 @@
       "witnesses": [
         {
           "witnessId": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -15040,14 +15018,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
+            "viewer": "https://digital.bodleian.ox.ac.uk/inquire/p/f57d074b-cff1-4172-8236-797c7b8f0403",
+            "iiifManifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/f57d074b-cff1-4172-8236-797c7b8f0403.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          }
         }
       ],
       "digitalEdition": {
@@ -15109,6 +15086,7 @@
       "witnesses": [
         {
           "witnessId": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -15145,14 +15123,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
+            "viewer": "https://digital.bodleian.ox.ac.uk/inquire/p/f57d074b-cff1-4172-8236-797c7b8f0403",
+            "iiifManifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/f57d074b-cff1-4172-8236-797c7b8f0403.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          }
         }
       ],
       "digitalEdition": {
@@ -15214,6 +15191,7 @@
       "witnesses": [
         {
           "witnessId": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -15250,14 +15228,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
+            "viewer": "https://digital.bodleian.ox.ac.uk/inquire/p/f57d074b-cff1-4172-8236-797c7b8f0403",
+            "iiifManifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/f57d074b-cff1-4172-8236-797c7b8f0403.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          }
         }
       ],
       "digitalEdition": {
@@ -15319,6 +15296,7 @@
       "witnesses": [
         {
           "witnessId": "plato-parisinus-graecus-1807",
+          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -15355,14 +15333,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b8419248n",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807"
+          }
         }
       ],
       "digitalEdition": {
@@ -15424,6 +15401,7 @@
       "witnesses": [
         {
           "witnessId": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -15460,14 +15438,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
+            "viewer": "https://digital.bodleian.ox.ac.uk/inquire/p/f57d074b-cff1-4172-8236-797c7b8f0403",
+            "iiifManifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/f57d074b-cff1-4172-8236-797c7b8f0403.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          }
         }
       ],
       "digitalEdition": {
@@ -15529,6 +15506,7 @@
       "witnesses": [
         {
           "witnessId": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -15565,14 +15543,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
+            "viewer": "https://digital.bodleian.ox.ac.uk/inquire/p/f57d074b-cff1-4172-8236-797c7b8f0403",
+            "iiifManifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/f57d074b-cff1-4172-8236-797c7b8f0403.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          }
         }
       ],
       "digitalEdition": {
@@ -15634,6 +15611,7 @@
       "witnesses": [
         {
           "witnessId": "plato-parisinus-graecus-1807",
+          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -15670,14 +15648,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b8419248n",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807"
+          }
         }
       ],
       "digitalEdition": {
@@ -15739,6 +15716,7 @@
       "witnesses": [
         {
           "witnessId": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -15775,14 +15753,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
+            "viewer": "https://digital.bodleian.ox.ac.uk/inquire/p/f57d074b-cff1-4172-8236-797c7b8f0403",
+            "iiifManifest": "https://iiif.bodleian.ox.ac.uk/iiif/manifest/f57d074b-cff1-4172-8236-797c7b8f0403.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          }
         }
       ],
       "digitalEdition": {
@@ -15844,6 +15821,7 @@
       "witnesses": [
         {
           "witnessId": "aristotle-parisinus-gr1853",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -15880,14 +15858,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
+          }
         }
       ],
       "digitalEdition": {
@@ -15949,6 +15926,7 @@
       "witnesses": [
         {
           "witnessId": "aristotle-parisinus-gr1853",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -15985,14 +15963,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
+          }
         }
       ],
       "digitalEdition": {
@@ -16054,6 +16031,7 @@
       "witnesses": [
         {
           "witnessId": "aristotle-parisinus-gr1853",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -16090,14 +16068,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
+          }
         }
       ],
       "digitalEdition": {
@@ -16159,6 +16136,7 @@
       "witnesses": [
         {
           "witnessId": "aristotle-parisinus-gr1741",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -16195,14 +16173,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51367/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/51367/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741"
+          }
         }
       ],
       "digitalEdition": {
@@ -16264,6 +16241,7 @@
       "witnesses": [
         {
           "witnessId": "aristotle-parisinus-gr1853",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -16300,14 +16278,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
+          }
         }
       ],
       "digitalEdition": {
@@ -16386,7 +16363,6 @@
             "shelfmark": "Grec 1642",
             "paleographicDate": "siglo XV",
             "support": null,
-            "dimensions": null,
             "script": null,
             "hands": null,
             "correctors": null,
@@ -16395,8 +16371,7 @@
             "subscriptiones": null,
             "origin": null,
             "provenance": null,
-            "foliation": "ff. 65r–107v (Pinakes: 065–107v)",
-            "binding": null
+            "foliation": "ff. 65r–107v (Pinakes: 065–107v)"
           },
           "textualIntegrity": {
             "coverage": "Memorabilia de Jenofonte; el códice contiene también Hellenica y obras de Platón. No se afirma ser el testimonio más antiguo de Memorabilia.",
@@ -16435,7 +16410,6 @@
             "shelfmark": "Vulc. 002",
             "paleographicDate": "finales del siglo XV a comienzos del XVI, según unidad descrita por Pinakes",
             "support": "Papel; manuscrito misceláneo",
-            "dimensions": null,
             "script": null,
             "hands": null,
             "correctors": null,
@@ -16444,8 +16418,7 @@
             "subscriptiones": null,
             "origin": null,
             "provenance": null,
-            "foliation": "Memorabilia ff. 7v–51r; Historiae de Polibio ff. 87r–110r (f. 110v en blanco).",
-            "binding": null
+            "foliation": "Memorabilia ff. 7v–51r; Historiae de Polibio ff. 87r–110r (f. 110v en blanco)."
           },
           "textualIntegrity": {
             "coverage": "Jenofonte, Memorabilia, y sección de Historiae de Polibio; la integridad de la obra de Polibio no está demostrada por el catálogo.",
@@ -16525,6 +16498,7 @@
       "witnesses": [
         {
           "witnessId": "xenophon-hellenica-paris1738",
+          "canonicalPhysicalId": "codex-xenophon-hellenica-paris1738",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -16567,8 +16541,7 @@
             "verification": "https://pinakes.irht.cnrs.fr/notices/cote/51364/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-xenophon-hellenica-paris1738"
+          }
         }
       ],
       "digitalEdition": {
@@ -16630,6 +16603,7 @@
       "witnesses": [
         {
           "witnessId": "demosthenes-paris2934",
+          "canonicalPhysicalId": "codex-demosthenes-paris2934",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -16672,8 +16646,7 @@
             "verification": "https://clahresearch.wordpress.com/wp-content/uploads/2020/05/demosthenesv5finalweb.pdf",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-demosthenes-paris2934"
+          }
         }
       ],
       "digitalEdition": {
@@ -16738,6 +16711,7 @@
       "witnesses": [
         {
           "witnessId": "demosthenes-paris2934",
+          "canonicalPhysicalId": "codex-demosthenes-paris2934",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -16780,8 +16754,7 @@
             "verification": "https://clahresearch.wordpress.com/wp-content/uploads/2020/05/demosthenesv5finalweb.pdf",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-demosthenes-paris2934"
+          }
         }
       ],
       "digitalEdition": {
@@ -16843,6 +16816,7 @@
       "witnesses": [
         {
           "witnessId": "pindar-vatgr1312",
+          "canonicalPhysicalId": "codex-pindar-vatgr1312",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -16885,11 +16859,11 @@
             "verification": "https://pinakes.irht.cnrs.fr/notices/cote/67943/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pindar-vatgr1312"
+          }
         },
         {
           "witnessId": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -16932,8 +16906,7 @@
             "verification": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
             "evidenceStatus": "scholarly_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          }
         }
       ],
       "digitalEdition": {
@@ -16995,6 +16968,7 @@
       "witnesses": [
         {
           "witnessId": "pindar-vatgr1312",
+          "canonicalPhysicalId": "codex-pindar-vatgr1312",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_greek",
@@ -17037,8 +17011,7 @@
             "verification": "https://pinakes.irht.cnrs.fr/notices/cote/67943/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-pindar-vatgr1312"
+          }
         }
       ],
       "digitalEdition": {
@@ -18155,6 +18128,7 @@
       "witnesses": [
         {
           "witnessId": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -18191,17 +18165,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048555",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          }
         },
         {
           "witnessId": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -18238,14 +18212,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002049834",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          }
         }
       ],
       "digitalEdition": {
@@ -18307,6 +18280,7 @@
       "witnesses": [
         {
           "witnessId": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -18343,17 +18317,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002048555",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          }
         },
         {
           "witnessId": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -18390,14 +18364,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/catalog/040-002049834",
             "viewer": null,
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          }
         }
       ],
       "digitalEdition": {
@@ -18573,6 +18546,7 @@
       "witnesses": [
         {
           "witnessId": "ovid-ars-parisinus-lat7311",
+          "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -18609,14 +18583,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.persee.fr/doc/dirht_0073-8212_2014_mon_26_42?pageId=T1_454",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://dcc.dickinson.edu/pl/ovid-amores/manuscript-tradition-ovids-amores",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311"
+          }
         }
       ],
       "digitalEdition": {
@@ -18792,6 +18765,7 @@
       "witnesses": [
         {
           "witnessId": "apuleius-laurentianus-68-2",
+          "canonicalPhysicalId": "codex-laur-plut-68-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -18828,17 +18802,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://read.uolpress.co.uk/read/the-afterlife-of-apuleius/section/3daa2b8e-04f4-407f-a144-ce658dad393f",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-laur-plut-68-2"
+          }
         },
         {
           "witnessId": "apuleius-laurentianus-29-2",
+          "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -18875,14 +18849,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/manuscripts-of-the-metamorphoses-of-apvleivs-i/88C29964AB669E5E33CAAF37A52C46E0",
             "evidenceStatus": "secondary_scholarly_source_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2"
+          }
         }
       ],
       "digitalEdition": {
@@ -19164,6 +19137,7 @@
       "witnesses": [
         {
           "witnessId": "boethius-harley-2685",
+          "canonicalPhysicalId": "codex-boethius-harley-2685",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -19200,14 +19174,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
+            "catalogue": "https://searcharchives.bl.uk/?f%5Blanguage_ssim%5D%5B%5D=Latin&f%5Bmaterial_type_si%5D%5B%5D=Archives+and+Manuscripts&f%5Brelated_places_ssim%5D%5B%5D=Western+Germany&f%5Brelated_subjects_ssim%5D%5B%5D=Philosophy&f%5Burl_non_blank_si%5D%5B%5D=Yes+%28available%29&f%5Burl_stub_si%5D%5B%5D=iiif.bl.uk&per_page=50&search_field=all_fields&sort=title_for_sort_si+asc%2C+scope_and_content_for_sort_si+asc%2C+reference_for_sort_si+asc",
             "viewer": null,
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://searcharchives.bl.uk/?f%5Brelated_subjects_ssim%5D%5B%5D=Philosophy&f%5Burl_non_blank_si%5D%5B%5D=Yes+%28available%29&f%5Burl_stub_si%5D%5B%5D=iiif.bl.uk&per_page=20&search_field=all_fields&sort=title_for_sort_si+asc%2C+scope_and_content_for_sort_si+asc%2C+reference_for_sort_si+asc",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-boethius-harley-2685"
+          }
         }
       ],
       "digitalEdition": {
@@ -19938,6 +19911,7 @@
       "witnesses": [
         {
           "witnessId": "isidore-stgall-1394-fragment",
+          "canonicalPhysicalId": "codex-isidore-stgall-1394-fragment",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -19974,17 +19948,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://www.e-codices.ch/en/description/csg/1394/",
+            "viewer": "https://www.e-codices.ch/en/list/one/csg/1394",
             "iiifManifest": null,
-            "verification": null,
+            "verification": "https://www.e-codices.ch/en/description/csg/1394/",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-isidore-stgall-1394-fragment"
+          }
         },
         {
           "witnessId": "isidore-stgall-233",
+          "canonicalPhysicalId": "codex-isidore-stgall-233",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -20021,17 +19995,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://www.e-codices.ch/en/list/one/csg/0233",
+            "viewer": "https://www.e-codices.ch/en/list/one/csg/0233",
+            "iiifManifest": "https://www.e-codices.unifr.ch/metadata/iiif/csg-0233/manifest.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/ffad3acb5fa8c3fbeeb2254bc9d618ef5b0cbc60",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-isidore-stgall-233"
+          }
         },
         {
           "witnessId": "isidore-stgall-231",
+          "canonicalPhysicalId": "codex-isidore-stgall-231",
           "transmission": {
             "type": "direct",
             "classificationBasis": "direct_original_latin",
@@ -20068,14 +20042,13 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
-            "verification": null,
+            "catalogue": "https://www.e-codices.ch/en/list/one/csg/0231",
+            "viewer": "https://www.e-codices.ch/en/list/one/csg/0231",
+            "iiifManifest": "https://e-codices.ch/metadata/iiif/csg-0231/manifest.json",
+            "verification": "https://e-codices.ch/en/description/csg/0231/Hendrix",
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-isidore-stgall-231"
+          }
         }
       ],
       "digitalEdition": {
@@ -20247,6 +20220,7 @@
       "witnesses": [
         {
           "witnessId": "euclid-vat-gr-190",
+          "canonicalPhysicalId": "codex-euclid-vat-gr-190",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -20284,13 +20258,12 @@
           },
           "sources": {
             "catalogue": null,
-            "viewer": null,
-            "iiifManifest": null,
+            "viewer": "https://digi.vatlib.it/view/MSS_Vat.gr.190.pt.1",
+            "iiifManifest": "https://digi.vatlib.it/iiif/MSS_Vat.gr.190.pt.1/manifest.json",
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-euclid-vat-gr-190"
+          }
         }
       ],
       "digitalEdition": {
@@ -20917,6 +20890,7 @@
       "witnesses": [
         {
           "witnessId": "agrimensores-arcerianus",
+          "canonicalPhysicalId": "codex-agrimensores-arcerianus",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -20953,17 +20927,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://diglib.hab.de/?db=mss&list=ms&id=36-23-aug-2f",
+            "viewer": "https://diglib.hab.de/mss/36-23-aug-2f/start.htm",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-agrimensores-arcerianus"
+          }
         },
         {
           "witnessId": "agrimensores-pal-lat-1564",
+          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -21001,13 +20975,12 @@
           },
           "sources": {
             "catalogue": null,
-            "viewer": null,
+            "viewer": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_1564",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564"
+          }
         }
       ],
       "digitalEdition": {
@@ -21067,6 +21040,7 @@
       "witnesses": [
         {
           "witnessId": "agrimensores-arcerianus",
+          "canonicalPhysicalId": "codex-agrimensores-arcerianus",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -21103,17 +21077,17 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": null,
-            "viewer": null,
+            "catalogue": "https://diglib.hab.de/?db=mss&list=ms&id=36-23-aug-2f",
+            "viewer": "https://diglib.hab.de/mss/36-23-aug-2f/start.htm",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-agrimensores-arcerianus"
+          }
         },
         {
           "witnessId": "agrimensores-pal-lat-1564",
+          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -21151,13 +21125,12 @@
           },
           "sources": {
             "catalogue": null,
-            "viewer": null,
+            "viewer": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_1564",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564"
+          }
         }
       ],
       "digitalEdition": {
@@ -21217,6 +21190,7 @@
       "witnesses": [
         {
           "witnessId": "agrimensores-pal-lat-1564",
+          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564",
           "transmission": {
             "type": "undetermined",
             "classificationBasis": null,
@@ -21254,13 +21228,12 @@
           },
           "sources": {
             "catalogue": null,
-            "viewer": null,
+            "viewer": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_1564",
             "iiifManifest": null,
             "verification": null,
             "evidenceStatus": "not_reviewed",
             "criticalEditionChicago18": null
-          },
-          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564"
+          }
         }
       ],
       "digitalEdition": {
@@ -21342,7 +21315,281 @@
         "candidateWitnessCount": 0,
         "isManuscriptAgePriorityProven": false
       }
+    },
+    {
+      "workId": "apolonio-argonauticas",
+      "work": {
+        "author": "Apolonio de Rodas",
+        "title": "Ἀργοναυτικά · Argonautica",
+        "originalLanguage": "grc",
+        "compositionDate": "c. 250 a. C.",
+        "genre": "Poesía épica helenística"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "isocrates-discursos",
+      "work": {
+        "author": "Isócrates",
+        "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+        "originalLanguage": "grc",
+        "compositionDate": "Siglo IV a. C.",
+        "genre": "Oratoria y prosa didáctica"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "lisias-discursos",
+      "work": {
+        "author": "Lisias",
+        "title": "Λόγοι · Discursos",
+        "originalLanguage": "grc",
+        "compositionDate": "c. 403–380 a. C.",
+        "genre": "Oratoria judicial"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "longino-sublime",
+      "work": {
+        "author": "Pseudo-Longino",
+        "title": "Περὶ ὕψους · De sublimitate",
+        "originalLanguage": "grc",
+        "compositionDate": "Siglo I d. C.; autoría y datación discutidas",
+        "genre": "Crítica literaria y retórica"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "teocrito-bucolicos",
+      "work": {
+        "author": "Teócrito, Bión y Mosco",
+        "title": "Εἰδύλλια · Idilios",
+        "originalLanguage": "grc",
+        "compositionDate": "Primera mitad del siglo III a. C.",
+        "genre": "Poesía bucólica"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
     }
-  ],
-  "updated": "2026-11-10"
+  ]
 }

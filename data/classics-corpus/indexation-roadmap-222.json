@@ -1,29 +1,29 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
-  "updated": "2026-11-11",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. Cruce editorial V514/V554/V297 (reutilización sin doble conteo); fuentes de Ptolomeo y Procopio registradas con estatus de original/traducción diferenciado.",
-  "targetWorks": 222,
+  "updated": "2026-11-13",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot.",
+  "targetWorks": 227,
   "counts": {
     "originalsIndexed": 182,
-    "originalsMissing": 40,
+    "originalsMissing": 45,
     "worksWithHostedTranslation": 59,
-    "worksMissingTranslation": 163,
+    "worksMissingTranslation": 168,
     "textVersions": 247,
     "offsiteOriginalsIndexed": 28,
     "effectiveOriginalsIndexed": 210,
-    "effectiveOriginalsMissing": 12,
+    "effectiveOriginalsMissing": 17,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 9,
+    "distinctAncientWorksStillMissingOriginalIndex": 14,
     "offsiteTextVersionsOutsidePages": 28,
     "states": {
-      "original_pendiente": 40,
+      "original_pendiente": 45,
       "original_sin_traduccion_local": 123,
       "original_y_traduccion_local": 59
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
       "requiere_fuente_no_canonica_o_edicion_especifica": 7,
-      "sin_fuente_en_mapa_perseus": 15,
+      "sin_fuente_en_mapa_perseus": 20,
       "tei_perseus_candidato_por_verificar": 15
     }
   },
@@ -825,15 +825,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": true,
-      "sourceDiscovery": {
-        "checked": "2026-11-11",
-        "status": "latino_rose_1899_transcripcion_hospedada",
-        "source": "https://www.gutenberg.org/ebooks/51812",
-        "index": "data/classics-corpus/faventinus-la.json",
-        "units": 32,
-        "method": "Párrafos editoriales consecutivos de la edición Rose 1899, sin locus canónico; no certificado contra facsímil ni códice."
-      }
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "barnabas",
@@ -1265,18 +1257,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "indexReuse": {
-        "workId": "vitruvius",
-        "language": "es",
-        "originalLanguage": "la",
-        "path": "data/structured/recensio-es.json",
-        "reader": "lector-bilingue.html?edition=recensio-es",
-        "edition": "V514",
-        "type": "editorial-edition-reuses-index",
-        "verified": "2026-11-11",
-        "explanation": "La edición cuenta ya como versión bajo workId vitruvius en search-registry.json; no es otra obra antigua y no crea nueva versión indexada."
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "vitruvio-v554-pdf",
@@ -1292,18 +1273,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "indexReuse": {
-        "workId": "vitruvius",
-        "language": "fr",
-        "originalLanguage": "la",
-        "path": "data/structured/recensio-fr.json",
-        "reader": "lector-bilingue.html?edition=recensio-fr",
-        "edition": "V554",
-        "type": "editorial-edition-reuses-index",
-        "verified": "2026-11-11",
-        "explanation": "La edición cuenta ya como versión bajo workId vitruvius en search-registry.json; no es otra obra antigua y no crea nueva versión indexada."
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "theory-v297-pdf",
@@ -1319,18 +1289,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "indexReuse": {
-        "workId": "vitruvius",
-        "language": "en",
-        "originalLanguage": "la",
-        "path": "data/structured/theory-en.json",
-        "reader": "lector-bilingue.html?edition=theory-en",
-        "edition": "V297",
-        "type": "editorial-edition-reuses-index",
-        "verified": "2026-11-11",
-        "explanation": "La edición cuenta ya como versión bajo workId vitruvius en search-registry.json; no es otra obra antigua y no crea nueva versión indexada."
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "krohn-1912-pdf",
@@ -2238,27 +2197,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "sourceDiscovery": {
-        "status": "edition-catalogued-original-not-yet-hosted",
-        "language": "grc",
-        "sources": [
-          {
-            "url": "https://catalog.perseus.tufts.edu/catalog/urn%3Acts%3AgreekLit%3Atlg0363.tlg009",
-            "urn": "urn:cts:greekLit:tlg0363.tlg009",
-            "scope": "libri I–III",
-            "editor": "C. F. A. Nobbe, 1843"
-          },
-          {
-            "url": "https://catalog.perseus.tufts.edu/catalog/urn%3Acts%3AgreekLit%3Atlg0363.tlg014.opp-grc2",
-            "urn": "urn:cts:greekLit:tlg0363.tlg014",
-            "scope": "libri IV–VIII",
-            "editor": "C. F. A. Nobbe, 1843–1845"
-          }
-        ],
-        "caution": "Registros de ediciones: verificar que las transcripciones sean recuperables y completas antes de contabilizar texto indexado.",
-        "checked": "2026-11-11"
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "appian-romaika",
@@ -4472,20 +4411,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "sourceDiscovery": {
-        "status": "historical-latin-translation-identified-original-greek-not-indexed",
-        "language": "la",
-        "sources": [
-          {
-            "url": "https://la.wikisource.org/wiki/De_aedificiis",
-            "scope": "libri I–VI",
-            "editor": "Claudio Maltret (versión latina, 1663); publicación citada de 1838"
-          }
-        ],
-        "caution": "Esta versión latina es traducción de la obra griega; nunca computarla como original griego.",
-        "checked": "2026-11-11"
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "isidore-etymologiae",
@@ -4804,24 +4730,7 @@
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false,
-      "sourceDiscovery": {
-        "checked": "2026-11-11",
-        "status": "ancient-latin-edition-transcription-identified-not-hosted",
-        "sources": [
-          {
-            "url": "https://latin.packhum.org/loc/1266/4/0",
-            "kind": "academic-latin-text",
-            "description": "Packhum, Constitutio Limitum, referencia 131.1"
-          },
-          {
-            "url": "https://www.intratext.com/IXT/LAT0348/_P1.HTM",
-            "kind": "transcription",
-            "description": "IntraText, capítulos I–III"
-          }
-        ],
-        "caution": "Comprobar edición de base, segmentación y condiciones de reutilización antes de alojar."
-      }
+      "effectiveOriginalIndexed": false
     },
     {
       "id": "frontinus-gromatica",
@@ -4885,6 +4794,86 @@
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
+    },
+    {
+      "id": "apolonio-argonauticas",
+      "author": "Apolonio de Rodas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "originalLanguage": "grc",
+      "dating": "c. 250 a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
+    },
+    {
+      "id": "isocrates-discursos",
+      "author": "Isócrates",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "originalLanguage": "grc",
+      "dating": "Siglo IV a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
+    },
+    {
+      "id": "lisias-discursos",
+      "author": "Lisias",
+      "title": "Λόγοι · Discursos",
+      "originalLanguage": "grc",
+      "dating": "c. 403–380 a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
+    },
+    {
+      "id": "longino-sublime",
+      "author": "Pseudo-Longino",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "originalLanguage": "grc",
+      "dating": "Siglo I d. C.; autoría y datación discutidas",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
+    },
+    {
+      "id": "teocrito-bucolicos",
+      "author": "Teócrito, Bión y Mosco",
+      "title": "Εἰδύλλια · Idilios",
+      "originalLanguage": "grc",
+      "dating": "Primera mitad del siglo III a. C.",
+      "indexedLanguages": [],
+      "originalIndexed": false,
+      "translationHosted": false,
+      "state": "original_pendiente",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "translationSourceClaim": false,
+      "offsiteOriginalIndexed": false,
+      "effectiveOriginalIndexed": false
     }
   ]
 }

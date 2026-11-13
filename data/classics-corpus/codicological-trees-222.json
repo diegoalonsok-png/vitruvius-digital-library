@@ -1,10 +1,10 @@
 {
   "schema": "vitruvius-codicological-trees-222-v1",
-  "updated": "2026-11-10",
-  "count": 222,
+  "count": 227,
   "physicalWitnessCount": 93,
-  "interpretation": "All work-to-manuscript lines express attestations, not copying. Only separately documented manuscript-to-manuscript lines support filiations. No family or lost archetype is invented.",
-  "method": "physicalWitnessCount counts unique canonicalPhysicalId, not individual text transmissions. Every work has its own attestation link; family trees require source-backed relations.",
+  "textualWitnessRecordCount": 100,
+  "interpretation": "Work-to-manuscript links are attestations; ancestry is explicit and source-backed. No unidentified archetypes are invented.",
+  "method": "Physical witness IDs are stable across works; recensiones require scholarship.",
   "records": [
     {
       "workId": "vitruvius",
@@ -18,6 +18,7 @@
       "witnesses": [
         {
           "id": "vitruvius-h",
+          "canonicalPhysicalId": "codex-vitruvius-h",
           "type": "physical_witness",
           "label": "Harley MS 2767",
           "repository": "Londres, British Library",
@@ -27,8 +28,7 @@
           "coverage": "Testimonio completo del tratado; dos folios separados se conservan en Oxford (Rawlinson MS D. 893, ff. 135–136).",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048598",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-vitruvius-h"
+          "siglum": null
         }
       ],
       "links": [
@@ -67,6 +67,7 @@
       "witnesses": [
         {
           "id": "cicero-officiis-geneva",
+          "canonicalPhysicalId": "codex-cicero-officiis-geneva",
           "type": "physical_witness",
           "label": "Ms. lat. 88",
           "repository": "Ginebra, Bibliothèque de Genève",
@@ -76,11 +77,11 @@
           "coverage": "De officiis completo con comentario marginal; no es un manuscrito contemporáneo de Cicerón.",
           "sourceUrl": "https://e-codices.unifr.ch/en/list/one/bge/lat0088",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-cicero-officiis-geneva"
+          "siglum": null
         },
         {
           "id": "cicero-catilina-harley2716",
+          "canonicalPhysicalId": "codex-cicero-catilina-harley2716",
           "type": "physical_witness",
           "label": "Harley MS 2716",
           "repository": "Londres, British Library",
@@ -90,8 +91,7 @@
           "coverage": "Codex compositus: Catilinariae ff. 1r–24r; De officiis ff. 34r–74r; dos unidades producidas en Alemania occidental.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048547",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-cicero-catilina-harley2716"
+          "siglum": null
         }
       ],
       "links": [
@@ -138,6 +138,7 @@
       "witnesses": [
         {
           "id": "cicero-de-oratore-harley2736",
+          "canonicalPhysicalId": "codex-cicero-de-oratore-harley2736",
           "type": "physical_witness",
           "label": "Harley MS 2736",
           "repository": "Londres, British Library",
@@ -147,11 +148,11 @@
           "coverage": "De oratore, ff. 1r–106v; ff. 17–24 desordenados y dos cuadernos ausentes tras f. 24. No es completo.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048567",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-cicero-de-oratore-harley2736"
+          "siglum": null
         },
         {
           "id": "cicero-de-oratore-nls-18-3-16",
+          "canonicalPhysicalId": "codex-cicero-de-oratore-nls-18-3-16",
           "type": "physical_witness",
           "label": "Adv.MS.18.3.16",
           "repository": "Edimburgo, National Library of Scotland",
@@ -161,8 +162,7 @@
           "coverage": "De oratore y Orator; falta I.1–9 del De oratore; copia indirecta relacionada con el perdido codex Laudensis; otros cortes en Orator.",
           "sourceUrl": "https://manuscripts.nls.uk/repositories/2/resources/15184",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-cicero-de-oratore-nls-18-3-16"
+          "siglum": null
         }
       ],
       "links": [
@@ -209,6 +209,7 @@
       "witnesses": [
         {
           "id": "cicero-republica-vat5757",
+          "canonicalPhysicalId": "codex-cicero-republica-vat5757",
           "type": "physical_witness",
           "label": "Vat. lat. 5757",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -218,8 +219,7 @@
           "coverage": "Testimonio fragmentario de De re publica en la escritura inferior. La copia de Agustín del siglo VII pertenece al texto superior; las dos fechas no deben confundirse. No es De officiis ni la obra completa de Cicerón.",
           "sourceUrl": "https://spotlight.vatlib.it/overview/catalog/Vat_lat_5757",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-cicero-republica-vat5757"
+          "siglum": null
         }
       ],
       "links": [
@@ -258,6 +258,7 @@
       "witnesses": [
         {
           "id": "caesar-add-ms-10084",
+          "canonicalPhysicalId": "codex-caesar-add-ms-10084",
           "type": "physical_witness",
           "label": "Add MS 10084",
           "repository": "Londres, British Library",
@@ -267,11 +268,11 @@
           "coverage": "Bellum Gallicum ff. 2r–60r; Bellum Civile ff. 60r–94r; contiene también Bella Alexandrinum et Africanum (atribución distinta de la de César).",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/032-002107866",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-caesar-add-ms-10084"
+          "siglum": null
         },
         {
           "id": "caesar-gallico-harley4834",
+          "canonicalPhysicalId": "codex-caesar-gallico-harley4834",
           "type": "physical_witness",
           "label": "Harley MS 4834",
           "repository": "Londres, British Library",
@@ -281,8 +282,7 @@
           "coverage": "Bellum Gallicum; códice latino de pergamino, tercer cuarto del s. XV.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002050677",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-caesar-gallico-harley4834"
+          "siglum": null
         }
       ],
       "links": [
@@ -329,6 +329,7 @@
       "witnesses": [
         {
           "id": "caesar-add-ms-10084",
+          "canonicalPhysicalId": "codex-caesar-add-ms-10084",
           "type": "physical_witness",
           "label": "Add MS 10084",
           "repository": "Londres, British Library",
@@ -338,8 +339,7 @@
           "coverage": "Bellum Gallicum ff. 2r–60r; Bellum Civile ff. 60r–94r; contiene también Bella Alexandrinum et Africanum (atribución distinta de la de César).",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/032-002107866",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-caesar-add-ms-10084"
+          "siglum": null
         }
       ],
       "links": [
@@ -378,6 +378,7 @@
       "witnesses": [
         {
           "id": "sallust-paris16024",
+          "canonicalPhysicalId": "codex-sallust-paris16024",
           "type": "physical_witness",
           "label": "P · Latin 16024 (olim Sorbonnensis 500)",
           "repository": "París, Bibliothèque nationale de France",
@@ -387,11 +388,11 @@
           "coverage": "Testigo mutilus de los dos escritos históricos salustianos según la clasificación editorial; presencia de laguna en la tradición. Foliación y límites exactos pendientes.",
           "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": "P",
-          "canonicalPhysicalId": "codex-sallust-paris16024"
+          "siglum": "P"
         },
         {
           "id": "sallust-paris16025",
+          "canonicalPhysicalId": "codex-sallust-paris16025",
           "type": "physical_witness",
           "label": "A · Latin 16025 (olim Sorbonnensis 1576)",
           "repository": "París, Bibliothèque nationale de France",
@@ -401,8 +402,7 @@
           "coverage": "Codex mutilus salustiano en familia textual identificada por la edición de J. C. Rolfe; cotejo de folios pendiente.",
           "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": "A",
-          "canonicalPhysicalId": "codex-sallust-paris16025"
+          "siglum": "A"
         }
       ],
       "links": [
@@ -449,6 +449,7 @@
       "witnesses": [
         {
           "id": "sallust-paris16024",
+          "canonicalPhysicalId": "codex-sallust-paris16024",
           "type": "physical_witness",
           "label": "P · Latin 16024 (olim Sorbonnensis 500)",
           "repository": "París, Bibliothèque nationale de France",
@@ -458,11 +459,11 @@
           "coverage": "Testigo mutilus de los dos escritos históricos salustianos según la clasificación editorial; presencia de laguna en la tradición. Foliación y límites exactos pendientes.",
           "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": "P",
-          "canonicalPhysicalId": "codex-sallust-paris16024"
+          "siglum": "P"
         },
         {
           "id": "sallust-paris16025",
+          "canonicalPhysicalId": "codex-sallust-paris16025",
           "type": "physical_witness",
           "label": "A · Latin 16025 (olim Sorbonnensis 1576)",
           "repository": "París, Bibliothèque nationale de France",
@@ -472,8 +473,7 @@
           "coverage": "Codex mutilus salustiano en familia textual identificada por la edición de J. C. Rolfe; cotejo de folios pendiente.",
           "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Sallust/Introduction%2A.html",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": "A",
-          "canonicalPhysicalId": "codex-sallust-paris16025"
+          "siglum": "A"
         }
       ],
       "links": [
@@ -545,6 +545,7 @@
       "witnesses": [
         {
           "id": "lucretius-oblongus",
+          "canonicalPhysicalId": "codex-lucretius-oblongus",
           "type": "physical_witness",
           "label": "VLF 30 (Voss. lat. F. 30)",
           "repository": "Leiden, Universiteitsbibliotheek",
@@ -554,8 +555,7 @@
           "coverage": "Testimonio carolingio de De rerum natura, con correcciones; no es autógrafo de Lucrecio.",
           "sourceUrl": "https://portail.biblissima.fr/en/ark:/43093/mdataf212112b405b61b0e8e15847a6636ba25c322e9a",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-lucretius-oblongus"
+          "siglum": null
         }
       ],
       "links": [
@@ -594,6 +594,7 @@
       "witnesses": [
         {
           "id": "vergil-vaticanus-aeneid",
+          "canonicalPhysicalId": "codex-vat-lat-3225",
           "type": "physical_witness",
           "label": "Vat. lat. 3225",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -603,11 +604,11 @@
           "coverage": "Fragmentos de Aeneis I–IX y XI; el códice no contiene la obra íntegra.",
           "sourceUrl": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-vat-lat-3225"
+          "siglum": null
         },
         {
           "id": "vergil-romanus",
+          "canonicalPhysicalId": "codex-vergil-romanus",
           "type": "physical_witness",
           "label": "Vat. lat. 3867",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -617,8 +618,7 @@
           "coverage": "Bucolica, Georgica y Aeneis con lagunas textuales; codex tardorromano.",
           "sourceUrl": "https://spotlight.vatlib.it/latin-paleography/catalog/Vat_lat_3867",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-vergil-romanus"
+          "siglum": null
         }
       ],
       "links": [
@@ -665,6 +665,7 @@
       "witnesses": [
         {
           "id": "vergil-vaticanus-georgica",
+          "canonicalPhysicalId": "codex-vat-lat-3225",
           "type": "physical_witness",
           "label": "Vat. lat. 3225, ff. 1r–10v",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -674,11 +675,11 @@
           "coverage": "Fragmentos de Georgica III y IV, no los cuatro libros completos.",
           "sourceUrl": "https://digi.vatlib.it/view/MSS_Vat.lat.3225",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-vat-lat-3225"
+          "siglum": null
         },
         {
           "id": "vergil-romanus",
+          "canonicalPhysicalId": "codex-vergil-romanus",
           "type": "physical_witness",
           "label": "Vat. lat. 3867",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -688,8 +689,7 @@
           "coverage": "Bucolica, Georgica y Aeneis con lagunas textuales; codex tardorromano.",
           "sourceUrl": "https://spotlight.vatlib.it/latin-paleography/catalog/Vat_lat_3867",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-vergil-romanus"
+          "siglum": null
         }
       ],
       "links": [
@@ -736,6 +736,7 @@
       "witnesses": [
         {
           "id": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "type": "physical_witness",
           "label": "Harley MS 2724",
           "repository": "Londres, British Library",
@@ -745,11 +746,11 @@
           "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          "siglum": null
         },
         {
           "id": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "type": "physical_witness",
           "label": "Harley MS 3997",
           "repository": "Londres, British Library",
@@ -759,8 +760,7 @@
           "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          "siglum": null
         }
       ],
       "links": [
@@ -807,6 +807,7 @@
       "witnesses": [
         {
           "id": "livy-pal-lat24-palimp",
+          "canonicalPhysicalId": "codex-livy-pal-lat24-palimp",
           "type": "physical_witness",
           "label": "Pal. lat. 24, ff. 73, 75, 76, 78 (scriptio inferior)",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -816,11 +817,11 @@
           "coverage": "Fragmentos palimpsestos del libro XCI; NO transmiten los libros 1–10 ni la obra completa.",
           "sourceUrl": "https://elmss.universityofgalway.ie/catalogue/86",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-livy-pal-lat24-palimp"
+          "siglum": null
         },
         {
           "id": "livy-verona-palimp",
+          "canonicalPhysicalId": "codex-livy-verona-palimp",
           "type": "physical_witness",
           "label": "XL (38), ff. 267–314, etc. (scriptio inferior)",
           "repository": "Verona, Biblioteca Capitolare",
@@ -830,11 +831,11 @@
           "coverage": "Palimpsesto parcial de libros III.6–VI.7, no obra completa.",
           "sourceUrl": "https://elmss.universityofgalway.ie/catalogue/847",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-livy-verona-palimp"
+          "siglum": null
         },
         {
           "id": "livy-pal-lat878",
+          "canonicalPhysicalId": "codex-livy-pal-lat878",
           "type": "physical_witness",
           "label": "Pal. lat. 878",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -844,11 +845,11 @@
           "coverage": "Ab urbe condita, ff. 1r–218v (cobertura y libros exactos: revisar descripción del códice).",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/cc2a508d191e5f37982f907e3531b2644b4e74cc",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-livy-pal-lat878"
+          "siglum": null
         },
         {
           "id": "livy-pal-lat873",
+          "canonicalPhysicalId": "codex-livy-pal-lat873",
           "type": "physical_witness",
           "label": "Pal. lat. 873",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -858,8 +859,7 @@
           "coverage": "Década I de Ab urbe condita, manuscrito italiano del siglo XV; no todos los libros sobrevivientes.",
           "sourceUrl": "https://digi.ub.uni-heidelberg.de/diglit/bav_pal_lat_873/0330",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-livy-pal-lat873"
+          "siglum": null
         }
       ],
       "links": [
@@ -922,6 +922,7 @@
       "witnesses": [
         {
           "id": "ovid-metamorphoses-vat-lat-2781",
+          "canonicalPhysicalId": "codex-ovid-metamorphoses-vat-lat-2781",
           "type": "physical_witness",
           "label": "Vat. lat. 2781",
           "repository": "Biblioteca Apostolica Vaticana, Ciudad del Vaticano",
@@ -931,11 +932,11 @@
           "coverage": "Metamorphoses, ff. 1r–185v; Accessus ad Ovidii Metamorphoses, ff. 185v–189r; índice, f. 189v, según catálogo de DigiVatLib. No se presenta como el testimonio más antiguo conservado.",
           "sourceUrl": "https://digi.vatlib.it/mss/detail/Vat.lat.2781",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ovid-metamorphoses-vat-lat-2781"
+          "siglum": null
         },
         {
           "id": "ovid-fasti-harley2737",
+          "canonicalPhysicalId": "codex-ovid-fasti-harley2737",
           "type": "physical_witness",
           "label": "Harley MS 2737",
           "repository": "Londres, British Library",
@@ -945,8 +946,7 @@
           "coverage": "Metamorphoses ff. 1r–103r incompleta; Fasti I.1–II.156 ff. 104r–111v; VI.365–812 ff. 111v–115v.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048568",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ovid-fasti-harley2737"
+          "siglum": null
         }
       ],
       "links": [
@@ -993,6 +993,7 @@
       "witnesses": [
         {
           "id": "ovid-fasti-harley2737",
+          "canonicalPhysicalId": "codex-ovid-fasti-harley2737",
           "type": "physical_witness",
           "label": "Harley MS 2737",
           "repository": "Londres, British Library",
@@ -1002,11 +1003,11 @@
           "coverage": "Metamorphoses ff. 1r–103r incompleta; Fasti I.1–II.156 ff. 104r–111v; VI.365–812 ff. 111v–115v.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048568",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ovid-fasti-harley2737"
+          "siglum": null
         },
         {
           "id": "ovid-fasti-harley2738",
+          "canonicalPhysicalId": "codex-ovid-fasti-harley2738",
           "type": "physical_witness",
           "label": "Harley MS 2738",
           "repository": "Londres, British Library",
@@ -1016,8 +1017,7 @@
           "coverage": "Fasti ff. 2r–48v, glosado pero imperfecto: laguna III.577–IV.416 (posibles 8 folios perdidos).",
           "sourceUrl": "https://searcharchives.bl.uk/?f%5Blevel_ssi%5D%5B%5D=%5B40%5D+File&f%5Bproject_collections_ssim%5D%5B%5D=Harley+Collection&f%5Broot_ancestor_reference_ssi%5D%5B%5D=Harley+MS+1-7661&page=22&per_page=100&sort=relevance",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ovid-fasti-harley2738"
+          "siglum": null
         }
       ],
       "links": [
@@ -1163,6 +1163,7 @@
       "witnesses": [
         {
           "id": "strabo-bnf-grec1393",
+          "canonicalPhysicalId": "codex-strabo-bnf-grec1393",
           "type": "physical_witness",
           "label": "Grec 1393",
           "repository": "París, Bibliothèque nationale de France",
@@ -1172,8 +1173,7 @@
           "coverage": "Strabonis rerum geographicarum libri XVII, según ficha BnF; 260 folios de códice griego.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/1d904e660eea62e5b3dfb26cfec5cfdc34956c75",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-strabo-bnf-grec1393"
+          "siglum": null
         }
       ],
       "links": [
@@ -1358,6 +1358,7 @@
       "witnesses": [
         {
           "id": "pliny-naturalis-bamberg42",
+          "canonicalPhysicalId": "codex-pliny-naturalis-bamberg42",
           "type": "physical_witness",
           "label": "Msc.Class.42",
           "repository": "Bamberg, Staatsbibliothek Bamberg",
@@ -1367,11 +1368,11 @@
           "coverage": "Libros XXXII–XXXVII únicamente (no toda Naturalis historia); 165 folios.",
           "sourceUrl": "https://handschriftenportal.de/?id=HSP-ca46031b-642a-3460-b9b1-9e823df6a7d9",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-pliny-naturalis-bamberg42"
+          "siglum": null
         },
         {
           "id": "pliny-naturalis-harley2676",
+          "canonicalPhysicalId": "codex-pliny-naturalis-harley2676",
           "type": "physical_witness",
           "label": "Harley MS 2676",
           "repository": "Londres, British Library",
@@ -1381,8 +1382,7 @@
           "coverage": "Naturalis historia (manuscrito humanístico); 356 folios. No se presupone que todos los libros se encuentren intactos sin inspección.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-001609021",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-pliny-naturalis-harley2676"
+          "siglum": null
         }
       ],
       "links": [
@@ -1429,6 +1429,7 @@
       "witnesses": [
         {
           "id": "dioscorides-vienna",
+          "canonicalPhysicalId": "codex-dioscorides-vienna",
           "type": "physical_witness",
           "label": "Cod. med. gr. 1",
           "repository": "Viena, Österreichische Nationalbibliothek",
@@ -1438,11 +1439,11 @@
           "coverage": "Códice de la Materia medica con imágenes y otros textos médicos; el enlace institucional da acceso a folios digitalizados, no se acredita aquí un único PDF íntegro.",
           "sourceUrl": "https://onb.digital/search/811603",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-dioscorides-vienna"
+          "siglum": null
         },
         {
           "id": "dioscorides-paris",
+          "canonicalPhysicalId": "codex-dioscorides-paris",
           "type": "physical_witness",
           "label": "Grec 2179",
           "repository": "París, Bibliothèque nationale de France",
@@ -1452,8 +1453,7 @@
           "coverage": "Testimonio griego digitalizado de textos de Dioscórides; cotejar la extensión y su relación con la obra en la ficha de Gallica.",
           "sourceUrl": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-dioscorides-paris"
+          "siglum": null
         }
       ],
       "links": [
@@ -1500,6 +1500,7 @@
       "witnesses": [
         {
           "id": "josephus-vat-gr-984",
+          "canonicalPhysicalId": "codex-josephus-vat-gr-984",
           "type": "physical_witness",
           "label": "Vat. gr. 984",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -1509,8 +1510,7 @@
           "coverage": "Antiquitates Iudaicae, Vita Iosephi y De bello Iudaico; cotejar secciones por folio en el catálogo.",
           "sourceUrl": "https://digi.vatlib.it/view/MSS_Vat.gr.984",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-josephus-vat-gr-984"
+          "siglum": null
         }
       ],
       "links": [
@@ -1549,6 +1549,7 @@
       "witnesses": [
         {
           "id": "josephus-pal-gr-14",
+          "canonicalPhysicalId": "codex-josephus-pal-gr-14",
           "type": "physical_witness",
           "label": "Pal. gr. 14",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -1558,11 +1559,11 @@
           "coverage": "Solo libros XI–XVII de Antiquitates Iudaicae; incluye Vita Iosephi.",
           "sourceUrl": "https://digi.vatlib.it/view/MSS_Pal.gr.14",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-josephus-pal-gr-14"
+          "siglum": null
         },
         {
           "id": "josephus-vat-gr-984",
+          "canonicalPhysicalId": "codex-josephus-vat-gr-984",
           "type": "physical_witness",
           "label": "Vat. gr. 984",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -1572,8 +1573,7 @@
           "coverage": "Antiquitates Iudaicae, Vita Iosephi y De bello Iudaico; cotejar secciones por folio en el catálogo.",
           "sourceUrl": "https://digi.vatlib.it/view/MSS_Vat.gr.984",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-josephus-vat-gr-984"
+          "siglum": null
         }
       ],
       "links": [
@@ -1620,6 +1620,7 @@
       "witnesses": [
         {
           "id": "quintilian-harley2664",
+          "canonicalPhysicalId": "codex-quintilian-harley2664",
           "type": "physical_witness",
           "label": "Harley MS 2664",
           "repository": "Londres, British Library",
@@ -1629,11 +1630,11 @@
           "coverage": "Institutio oratoria ff. 1v–188r; ff. 90r–91v añadidos de reemplazo más tardíos.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048495",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-quintilian-harley2664"
+          "siglum": null
         },
         {
           "id": "quintilian-burney244",
+          "canonicalPhysicalId": "codex-quintilian-burney244",
           "type": "physical_witness",
           "label": "Burney MS 244",
           "repository": "Londres, British Library",
@@ -1643,8 +1644,7 @@
           "coverage": "Institutio oratoria; manuscrito italiano renacentista; verificar límites textuales antes de declararlo completo.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002237125",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-quintilian-burney244"
+          "siglum": null
         }
       ],
       "links": [
@@ -1791,6 +1791,7 @@
       "witnesses": [
         {
           "id": "sinaiticus-gospels-apostolic",
+          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic",
           "type": "physical_witness",
           "label": "Add MS 43725, ff. 200r–347v; Codex Sinaiticus GA 01 (ℵ)",
           "repository": "British Library (Londres), con fragmentos en Leipzig, San Petersburgo y Santa Catalina del Sinaí",
@@ -1800,11 +1801,11 @@
           "coverage": "El volumen incluye el Evangelio de Marcos, la Epístola de Bernabé y solo partes de El Pastor de Hermas (Herm. 1:1–27:6 y 28:5–30:3 según catálogo BL). La transmisión es manuscrita, no una edición crítica ni traducción moderna.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002169730",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic"
+          "siglum": null
         },
         {
           "id": "alexandrinus-nt-clement",
+          "canonicalPhysicalId": "codex-alexandrinus-nt-clement",
           "type": "physical_witness",
           "label": "Royal MS 1 D VIII (Codex Alexandrinus, GA 02 / A)",
           "repository": "Londres, British Library",
@@ -1814,8 +1815,7 @@
           "coverage": "Marcos: ff. 6r–18v. 1 Clemente: ff. 134r–143r, con pérdida de un folio correspondiente a 57:7–63:4. 2 Clemente: ff. 143r–144v, solo 1:1–12:5 (final incompleto). No se atribuye la segunda homilía al mismo autor de 1 Clemente.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002353500",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-alexandrinus-nt-clement"
+          "siglum": null
         }
       ],
       "links": [
@@ -1862,6 +1862,7 @@
       "witnesses": [
         {
           "id": "alexandrinus-nt-clement",
+          "canonicalPhysicalId": "codex-alexandrinus-nt-clement",
           "type": "physical_witness",
           "label": "Royal MS 1 D VIII (Codex Alexandrinus, GA 02 / A)",
           "repository": "Londres, British Library",
@@ -1871,11 +1872,11 @@
           "coverage": "Marcos: ff. 6r–18v. 1 Clemente: ff. 134r–143r, con pérdida de un folio correspondiente a 57:7–63:4. 2 Clemente: ff. 143r–144v, solo 1:1–12:5 (final incompleto). No se atribuye la segunda homilía al mismo autor de 1 Clemente.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002353500",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-alexandrinus-nt-clement"
+          "siglum": null
         },
         {
           "id": "clement-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "type": "physical_witness",
           "label": "Hieros. 54 (H del códice; cotejar sigla de edición para 1 Clem.) · Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54",
           "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -1885,8 +1886,7 @@
           "coverage": "Primera carta a los Corintios atribuida a Clemente; CPG 1001; no desplaza a otros testigos griegos más antiguos.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
           "sourceStatus": "needs_review",
-          "siglum": "Hieros. 54 (H del códice; cotejar sigla de edición para 1 Clem.)",
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          "siglum": "Hieros. 54 (H del códice; cotejar sigla de edición para 1 Clem.)"
         }
       ],
       "links": [
@@ -1933,6 +1933,7 @@
       "witnesses": [
         {
           "id": "didache-poxy-xv-1782",
+          "canonicalPhysicalId": "codex-didache-poxy-xv-1782",
           "type": "physical_witness",
           "label": "P. Oxy. XV 1782 (sigla de publicación; no se atribuye una sigla editorial única) · P. Oxy. XV 1782",
           "repository": "Oxford, Bodleian Art, Archaeology and Ancient World Library (colección EES)",
@@ -1942,11 +1943,11 @@
           "coverage": "Dos hojas de pergamino de un códice miniatura; Did. 1.3d–1.4a y 2.7b–3.2b según Layton (1968); la delimitación varía ligeramente entre ediciones. Fragmentario.",
           "sourceUrl": "https://4care-skos.mf.no/4care-artefacts/260/",
           "sourceStatus": "needs_review",
-          "siglum": "P. Oxy. XV 1782 (sigla de publicación; no se atribuye una sigla editorial única)",
-          "canonicalPhysicalId": "codex-didache-poxy-xv-1782"
+          "siglum": "P. Oxy. XV 1782 (sigla de publicación; no se atribuye una sigla editorial única)"
         },
         {
           "id": "didache-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "type": "physical_witness",
           "label": "H (Hierosolymitanus) · Παναγίου Τάφου 54 / Panagios Taphos 54",
           "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -1956,11 +1957,11 @@
           "coverage": "Didaché 1–16, texto griego continuo en ff. 76–81 según Pinakes. La correspondencia exacta entre números de imagen de microfilme y folios requiere cotejo.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
           "sourceStatus": "needs_review",
-          "siglum": "H (Hierosolymitanus)",
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          "siglum": "H (Hierosolymitanus)"
         },
         {
           "id": "didache-elbasan-82",
+          "canonicalPhysicalId": "codex-didache-elbasan-82",
           "type": "physical_witness",
           "label": "Elbasan 82 (designación catalográfica; sin sigla crítica universal acreditada) · Kodikët e Shqipërisë 488, Dosja 082",
           "repository": "Tirana, Arkivi Qëndror i Shtetit (Archivo Central del Estado, Albania)",
@@ -1970,11 +1971,11 @@
           "coverage": "Didaché griega completa. El texto se considera apógrafo probablemente directo de H (Guida); no equivale a un testimonio independiente de la tradición antigua.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/63441/",
           "sourceStatus": "needs_review",
-          "siglum": "Elbasan 82 (designación catalográfica; sin sigla crítica universal acreditada)",
-          "canonicalPhysicalId": "codex-didache-elbasan-82"
+          "siglum": "Elbasan 82 (designación catalográfica; sin sigla crítica universal acreditada)"
         },
         {
           "id": "didache-coptic-or9271",
+          "canonicalPhysicalId": "codex-didache-coptic-or9271",
           "type": "physical_witness",
           "label": "Or. 9271 / P.Lond.Copt. II 189 (signatura y número de publicación, no siglum griego) · Or. 9271 · P. Lond. Copt. II 189",
           "repository": "Londres, British Library",
@@ -1984,8 +1985,7 @@
           "coverage": "Traducción copta fragmentaria de Didaché 10.3b–12.2a; contiene la oración del myron no transmitida en el griego H. No se debe equiparar un testimonio de traducción con el texto griego original.",
           "sourceUrl": "https://4care-skos.mf.no/4care-artefacts/39/",
           "sourceStatus": "needs_review",
-          "siglum": "Or. 9271 / P.Lond.Copt. II 189 (signatura y número de publicación, no siglum griego)",
-          "canonicalPhysicalId": "codex-didache-coptic-or9271"
+          "siglum": "Or. 9271 / P.Lond.Copt. II 189 (signatura y número de publicación, no siglum griego)"
         }
       ],
       "links": [
@@ -2057,6 +2057,7 @@
       "witnesses": [
         {
           "id": "sinaiticus-gospels-apostolic",
+          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic",
           "type": "physical_witness",
           "label": "Add MS 43725, ff. 200r–347v; Codex Sinaiticus GA 01 (ℵ)",
           "repository": "British Library (Londres), con fragmentos en Leipzig, San Petersburgo y Santa Catalina del Sinaí",
@@ -2066,8 +2067,7 @@
           "coverage": "El volumen incluye el Evangelio de Marcos, la Epístola de Bernabé y solo partes de El Pastor de Hermas (Herm. 1:1–27:6 y 28:5–30:3 según catálogo BL). La transmisión es manuscrita, no una edición crítica ni traducción moderna.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002169730",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic"
+          "siglum": null
         }
       ],
       "links": [
@@ -2106,6 +2106,7 @@
       "witnesses": [
         {
           "id": "faventinus-gudianus-132",
+          "canonicalPhysicalId": "codex-faventinus-gudianus-132",
           "type": "physical_witness",
           "label": "Cod. Guelf. 132 Gud. lat.",
           "repository": "Wolfenbüttel, Herzog August Bibliothek",
@@ -2115,8 +2116,7 @@
           "coverage": "Epítome de M. Cetius Faventinus y extractos de De architectura; testimonio parcial, no edición completa.",
           "sourceUrl": "https://diglib.hab.de/?db=mss&id=132-gud-lat&lang=en&list=ms",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-faventinus-gudianus-132"
+          "siglum": null
         }
       ],
       "links": [
@@ -2155,6 +2155,7 @@
       "witnesses": [
         {
           "id": "sinaiticus-gospels-apostolic",
+          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic",
           "type": "physical_witness",
           "label": "Add MS 43725, ff. 200r–347v; Codex Sinaiticus GA 01 (ℵ)",
           "repository": "British Library (Londres), con fragmentos en Leipzig, San Petersburgo y Santa Catalina del Sinaí",
@@ -2164,11 +2165,11 @@
           "coverage": "El volumen incluye el Evangelio de Marcos, la Epístola de Bernabé y solo partes de El Pastor de Hermas (Herm. 1:1–27:6 y 28:5–30:3 según catálogo BL). La transmisión es manuscrita, no una edición crítica ni traducción moderna.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002169730",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-sinaiticus-gospels-apostolic"
+          "siglum": null
         },
         {
           "id": "barnabas-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "type": "physical_witness",
           "label": "H (en ediciones de Epistula Barnabae) · Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54",
           "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -2178,8 +2179,7 @@
           "coverage": "Texto griego de Epistula Barnabae; testimonio distinto del Codex Sinaiticus, s. IV.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
           "sourceStatus": "needs_review",
-          "siglum": "H (en ediciones de Epistula Barnabae)",
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          "siglum": "H (en ediciones de Epistula Barnabae)"
         }
       ],
       "links": [
@@ -2226,6 +2226,7 @@
       "witnesses": [
         {
           "id": "ignatius-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "type": "physical_witness",
           "label": "H en repertorios de la recensión larga; no extrapolar a la recensión media · Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54",
           "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -2235,8 +2236,7 @@
           "coverage": "Recensión larga griega de las cartas ignacianas. NO es testigo idéntico del corpus de siete cartas de la recensión media; la transmisión es distinta.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
           "sourceStatus": "needs_review",
-          "siglum": "H en repertorios de la recensión larga; no extrapolar a la recensión media",
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          "siglum": "H en repertorios de la recensión larga; no extrapolar a la recensión media"
         }
       ],
       "links": [
@@ -2300,6 +2300,7 @@
       "witnesses": [
         {
           "id": "alexandrinus-nt-clement",
+          "canonicalPhysicalId": "codex-alexandrinus-nt-clement",
           "type": "physical_witness",
           "label": "Royal MS 1 D VIII (Codex Alexandrinus, GA 02 / A)",
           "repository": "Londres, British Library",
@@ -2309,11 +2310,11 @@
           "coverage": "Marcos: ff. 6r–18v. 1 Clemente: ff. 134r–143r, con pérdida de un folio correspondiente a 57:7–63:4. 2 Clemente: ff. 143r–144v, solo 1:1–12:5 (final incompleto). No se atribuye la segunda homilía al mismo autor de 1 Clemente.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002353500",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-alexandrinus-nt-clement"
+          "siglum": null
         },
         {
           "id": "clement2-hierosolymitanus-54",
+          "canonicalPhysicalId": "codex-hierosolymitanus-54",
           "type": "physical_witness",
           "label": "Hieros. 54 (sigla de códice; no confundir con atribución de la obra) · Πατριαρχικὴ Βιβλιοθήκη, Παναγίου Τάφου 54",
           "repository": "Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego",
@@ -2323,8 +2324,7 @@
           "coverage": "Texto griego tradicionalmente denominado 2 Clemente, pero de autor anónimo; CPG 1003; distinguir del Codex Alexandrinus, s. V, con cobertura incompleta.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/35291/",
           "sourceStatus": "needs_review",
-          "siglum": "Hieros. 54 (sigla de códice; no confundir con atribución de la obra)",
-          "canonicalPhysicalId": "codex-hierosolymitanus-54"
+          "siglum": "Hieros. 54 (sigla de códice; no confundir con atribución de la obra)"
         }
       ],
       "links": [
@@ -2571,6 +2571,7 @@
       "witnesses": [
         {
           "id": "frontinus-strategemata-harley2666",
+          "canonicalPhysicalId": "codex-frontinus-strategemata-harley2666",
           "type": "physical_witness",
           "label": "Harley MS 2666",
           "repository": "Londres, British Library",
@@ -2580,8 +2581,7 @@
           "coverage": "Strategemata, ff. 1r–37v; el catálogo de la British Library lo presenta como el testimonio superviviente más antiguo conocido de esta obra.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048497",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-frontinus-strategemata-harley2666"
+          "siglum": null
         }
       ],
       "links": [
@@ -3016,6 +3016,7 @@
       "witnesses": [
         {
           "id": "cicero-catilina-add47678",
+          "canonicalPhysicalId": "codex-cicero-catilina-add47678",
           "type": "physical_witness",
           "label": "Add MS 47678",
           "repository": "Londres, British Library",
@@ -3025,11 +3026,11 @@
           "coverage": "In Catilinam ff. 1r–18v, testimonio imperfecto, copiado en Tours; contiene otras oraciones ciceronianas.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002104026",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-cicero-catilina-add47678"
+          "siglum": null
         },
         {
           "id": "cicero-catilina-harley2716",
+          "canonicalPhysicalId": "codex-cicero-catilina-harley2716",
           "type": "physical_witness",
           "label": "Harley MS 2716",
           "repository": "Londres, British Library",
@@ -3039,8 +3040,7 @@
           "coverage": "Codex compositus: Catilinariae ff. 1r–24r; De officiis ff. 34r–74r; dos unidades producidas en Alemania occidental.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048547",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-cicero-catilina-harley2716"
+          "siglum": null
         }
       ],
       "links": [
@@ -3087,6 +3087,7 @@
       "witnesses": [
         {
           "id": "catullus-thuaneus-8071",
+          "canonicalPhysicalId": "codex-catullus-thuaneus-8071",
           "type": "physical_witness",
           "label": "Latin 8071",
           "repository": "París, Bibliothèque nationale de France",
@@ -3096,11 +3097,11 @@
           "coverage": "Testimonio parcial: únicamente carmen 62 de Catulo; no contiene el corpus completo. Siglum T y datación en los sigla de Robinson Ellis, Catulli Carmina (1904).",
           "sourceUrl": "https://www.gutenberg.org/files/23294/23294-h/23294-h.htm",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-catullus-thuaneus-8071"
+          "siglum": null
         },
         {
           "id": "catullus-oxford-o",
+          "canonicalPhysicalId": "codex-catullus-oxford-o",
           "type": "physical_witness",
           "label": "MS. Canon. Class. Lat. 30",
           "repository": "Oxford, Bodleian Library",
@@ -3110,8 +3111,7 @@
           "coverage": "Testimonio del corpus de poemas, posterior al testimonio parcial T del carmen 62. Manifiesto institucional comprobado: 84 imágenes digitales. La imagen digital y el folio manuscrito no son numeraciones equivalentes.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/c691ed800d5576a3f70898d3d0dd0eaa4f375c18",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-catullus-oxford-o"
+          "siglum": null
         }
       ],
       "links": [
@@ -3158,6 +3158,7 @@
       "witnesses": [
         {
           "id": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "type": "physical_witness",
           "label": "Harley MS 2724",
           "repository": "Londres, British Library",
@@ -3167,11 +3168,11 @@
           "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          "siglum": null
         },
         {
           "id": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "type": "physical_witness",
           "label": "Harley MS 3997",
           "repository": "Londres, British Library",
@@ -3181,8 +3182,7 @@
           "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          "siglum": null
         }
       ],
       "links": [
@@ -3229,6 +3229,7 @@
       "witnesses": [
         {
           "id": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "type": "physical_witness",
           "label": "Harley MS 2724",
           "repository": "Londres, British Library",
@@ -3238,11 +3239,11 @@
           "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          "siglum": null
         },
         {
           "id": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "type": "physical_witness",
           "label": "Harley MS 3997",
           "repository": "Londres, British Library",
@@ -3252,8 +3253,7 @@
           "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          "siglum": null
         }
       ],
       "links": [
@@ -3300,6 +3300,7 @@
       "witnesses": [
         {
           "id": "ovid-ars-parisinus-lat7311",
+          "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311",
           "type": "physical_witness",
           "label": "Latin 7311",
           "repository": "París, Bibliothèque nationale de France",
@@ -3309,11 +3310,11 @@
           "coverage": "Contiene Ars amatoria y Remedia amoris; también fragmentos de Amores. Alcance por folios pendiente de comprobación contra catálogo BnF.",
           "sourceUrl": "https://www.persee.fr/doc/dirht_0073-8212_2014_mon_26_42?pageId=T1_454",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311"
+          "siglum": null
         },
         {
           "id": "ovid-ars-bodleian-auct-f4-32",
+          "canonicalPhysicalId": "codex-ovid-ars-bodleian-auct-f4-32",
           "type": "physical_witness",
           "label": "Auct. F. 4.32 (2176)",
           "repository": "Oxford, Bodleian Libraries",
@@ -3323,8 +3324,7 @@
           "coverage": "Cuaderno de diez hojas con el libro I de Ars amatoria dentro de un manuscrito misceláneo; NO contiene necesariamente los tres libros.",
           "sourceUrl": "https://www.historyofinformation.com/detail.php?entryid=1887",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ovid-ars-bodleian-auct-f4-32"
+          "siglum": null
         }
       ],
       "links": [
@@ -3445,6 +3445,7 @@
       "witnesses": [
         {
           "id": "tacitus-mediceus-1",
+          "canonicalPhysicalId": "codex-tacitus-mediceus-1",
           "type": "physical_witness",
           "label": "Plut. 68.1",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -3454,11 +3455,11 @@
           "coverage": "Principal testimonio para Annales I–VI; no confundir con el Mediceus posterior.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/62b4f03e4446b2d1df4529cb493ce95ed92bac55",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-tacitus-mediceus-1"
+          "siglum": null
         },
         {
           "id": "tacitus-mediceus-2",
+          "canonicalPhysicalId": "codex-laur-plut-68-2",
           "type": "physical_witness",
           "label": "Plut. 68.2",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -3468,8 +3469,7 @@
           "coverage": "Contiene Annales XI–XVI y secciones de Historiae; no contiene todo lo perdido del corpus.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-laur-plut-68-2"
+          "siglum": null
         }
       ],
       "links": [
@@ -3516,6 +3516,7 @@
       "witnesses": [
         {
           "id": "tacitus-mediceus-2",
+          "canonicalPhysicalId": "codex-laur-plut-68-2",
           "type": "physical_witness",
           "label": "Plut. 68.2",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -3525,8 +3526,7 @@
           "coverage": "Contiene Annales XI–XVI y secciones de Historiae; no contiene todo lo perdido del corpus.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/7732b9be3e8d876682156a09a60aeb9b863c5e23",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-laur-plut-68-2"
+          "siglum": null
         }
       ],
       "links": [
@@ -3590,6 +3590,7 @@
       "witnesses": [
         {
           "id": "juvenal-harley2772",
+          "canonicalPhysicalId": "codex-juvenal-harley2772",
           "type": "physical_witness",
           "label": "Harley MS 2772, ff. 16r–27v",
           "repository": "Londres, British Library",
@@ -3599,8 +3600,7 @@
           "coverage": "Satirae XI.154–XIV.160 ff. 16r–25v y XIII.234–XIV.110 ff. 26r–27v; fragmentos glosados y encuadernados con textos de Virgilio, Sedulio y Macrobio.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048603",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-juvenal-harley2772"
+          "siglum": null
         }
       ],
       "links": [
@@ -3639,6 +3639,7 @@
       "witnesses": [
         {
           "id": "apuleius-laurentianus-68-2",
+          "canonicalPhysicalId": "codex-laur-plut-68-2",
           "type": "physical_witness",
           "label": "Plut. 68.2 (Laur. 68.2)",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -3648,11 +3649,11 @@
           "coverage": "Transmite Metamorphoses, Apologia y Florida de Apuleyo; volumen misceláneo que también contiene obras de Tácito. Foliación exacta de Apuleyo pendiente de catálogo institucional.",
           "sourceUrl": "https://read.uolpress.co.uk/read/the-afterlife-of-apuleius/section/3daa2b8e-04f4-407f-a144-ce658dad393f",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-laur-plut-68-2"
+          "siglum": null
         },
         {
           "id": "apuleius-laurentianus-29-2",
+          "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2",
           "type": "physical_witness",
           "label": "Plut. 29.2 (Laur. 29.2)",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -3662,8 +3663,7 @@
           "coverage": "Copia medieval de la sección apuleyana de Laur. 68.2; útil donde el modelo F está dañado o ilegible.",
           "sourceUrl": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2"
+          "siglum": null
         }
       ],
       "links": [
@@ -3913,7 +3913,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -4374,6 +4374,7 @@
       "witnesses": [
         {
           "id": "ptolemy-almagest-vatgr1594",
+          "canonicalPhysicalId": "codex-ptolemy-almagest-vatgr1594",
           "type": "physical_witness",
           "label": "Vat. gr. 1594",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -4383,11 +4384,11 @@
           "coverage": "Syntaxis mathematica / Almagestum, testimonio griego temprano; no es el único testigo del siglo IX.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/68225/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ptolemy-almagest-vatgr1594"
+          "siglum": null
         },
         {
           "id": "ptolemy-almagest-paris2389",
+          "canonicalPhysicalId": "codex-ptolemy-almagest-paris2389",
           "type": "physical_witness",
           "label": "Grec 2389",
           "repository": "París, Bibliothèque nationale de France",
@@ -4397,8 +4398,7 @@
           "coverage": "Testimonio griego del Almagesto mencionado entre los dos manuscritos más antiguos conservados, junto al Vat. gr. 1594.",
           "sourceUrl": "https://journals.sagepub.com/doi/full/10.1177/00218286221140848",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ptolemy-almagest-paris2389"
+          "siglum": null
         }
       ],
       "links": [
@@ -4445,6 +4445,7 @@
       "witnesses": [
         {
           "id": "ptolemy-geography-urbgr82",
+          "canonicalPhysicalId": "codex-ptolemy-geography-urbgr82",
           "type": "physical_witness",
           "label": "Urb. gr. 82",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -4454,8 +4455,7 @@
           "coverage": "Geographia, con escolios, tablas e índices; mapas asociados a Agatodemon. Ejemplar histórico importante, no necesariamente el más antiguo de la obra.",
           "sourceUrl": "https://digi.vatlib.it/view/MSS_Urb.gr.82",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ptolemy-geography-urbgr82"
+          "siglum": null
         }
       ],
       "links": [
@@ -4543,6 +4543,7 @@
       "witnesses": [
         {
           "id": "marcus-aurelius-vat1950",
+          "canonicalPhysicalId": "codex-marcus-aurelius-vat1950",
           "type": "physical_witness",
           "label": "Vat. gr. 1950, parte 2",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -4552,8 +4553,7 @@
           "coverage": "Meditaciones, ff. 341r–392v, dentro de un códice misceláneo. Testimonio conservado; el códice usado por Xylander para la edición de 1558–1559 se perdió y no se ofrece un visor de ese códice perdido.",
           "sourceUrl": "https://digi.vatlib.it/view/MSS_Vat.gr.1950.pt.2",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-marcus-aurelius-vat1950"
+          "siglum": null
         }
       ],
       "links": [
@@ -4592,6 +4592,7 @@
       "witnesses": [
         {
           "id": "homer-iliad-venetus-a",
+          "canonicalPhysicalId": "codex-homer-iliad-venetus-a",
           "type": "physical_witness",
           "label": "Marc. gr. Z. 454 (= 822)",
           "repository": "Venecia, Biblioteca Nazionale Marciana",
@@ -4601,8 +4602,7 @@
           "coverage": "El testimonio medieval completo conservado más antiguo de la Ilíada, con escolios marginales; existen papiros y testimonios fragmentarios anteriores. No es un autógrafo de Homero.",
           "sourceUrl": "https://www.homermultitext.org/manuscripts/venetusA/",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-homer-iliad-venetus-a"
+          "siglum": null
         }
       ],
       "links": [
@@ -4641,6 +4641,7 @@
       "witnesses": [
         {
           "id": "homer-odyssey-laur-plut32-24",
+          "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-24",
           "type": "physical_witness",
           "label": "Plut. 32.24",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -4650,11 +4651,11 @@
           "coverage": "Ὀδύσσεια (Odisea); el registro identifica el poema. La integridad versículo a versículo y las lagunas requieren colación independiente.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/0458bd9b9a6ac2ab339571c823145a36b8a3fc7e",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-24"
+          "siglum": null
         },
         {
           "id": "homer-odyssey-heidelberg-cpg45",
+          "canonicalPhysicalId": "codex-homer-odyssey-heidelberg-cpg45",
           "type": "physical_witness",
           "label": "Cod. Pal. graec. 45",
           "repository": "Heidelberg, Universitätsbibliothek Heidelberg",
@@ -4664,11 +4665,11 @@
           "coverage": "Odisea libros I–XXIV, desde f. 1r (libro I) hasta f. 214v (libro XXIV), con escolios; se enumeran inicios de libros; no se infiere integridad de cada verso.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/65a6a766bf90f053758b546ac44f29f074a32057",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-homer-odyssey-heidelberg-cpg45"
+          "siglum": null
         },
         {
           "id": "homer-odyssey-laur-plut32-23",
+          "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-23",
           "type": "physical_witness",
           "label": "Plut. 32.23",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -4678,8 +4679,7 @@
           "coverage": "Ὀδύσσεια (Odisea) en copia manuscrita griega; alcance y variantes no sometidos a collatio propia.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/6045dff3bafa36133d66808966041fc118746e54",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-homer-odyssey-laur-plut32-23"
+          "siglum": null
         }
       ],
       "links": [
@@ -4734,6 +4734,7 @@
       "witnesses": [
         {
           "id": "hesiod-theogony-suppl-gr1099",
+          "canonicalPhysicalId": "codex-hesiod-theogony-suppl-gr1099",
           "type": "physical_witness",
           "label": "Supplément grec 1099, ff. I–II",
           "repository": "París, Bibliothèque nationale de France",
@@ -4743,11 +4744,11 @@
           "coverage": "Fragmentos de Θεογονία (v. 75–106 y 108–144, más vestigio del v. 124 en f. I); NO manuscrito completo.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/eec0b144514155ac2debf3a3a455f5a6a90dcbc6",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-hesiod-theogony-suppl-gr1099"
+          "siglum": null
         },
         {
           "id": "hesiod-works-bnf2708",
+          "canonicalPhysicalId": "codex-hesiod-works-bnf2708",
           "type": "physical_witness",
           "label": "Grec 2708",
           "repository": "París, Bibliothèque nationale de France",
@@ -4757,8 +4758,7 @@
           "coverage": "Θεογονία ff. 1r–17v; Ἔργα καὶ ἡμέραι ff. 41v–55v; abundantes escolios en folios adicionales, que no deben contarse como texto directo.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52343/",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-hesiod-works-bnf2708"
+          "siglum": null
         }
       ],
       "links": [
@@ -4805,6 +4805,7 @@
       "witnesses": [
         {
           "id": "hesiod-works-bnf2708",
+          "canonicalPhysicalId": "codex-hesiod-works-bnf2708",
           "type": "physical_witness",
           "label": "Grec 2708",
           "repository": "París, Bibliothèque nationale de France",
@@ -4814,11 +4815,11 @@
           "coverage": "Θεογονία ff. 1r–17v; Ἔργα καὶ ἡμέραι ff. 41v–55v; abundantes escolios en folios adicionales, que no deben contarse como texto directo.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/52343/",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-hesiod-works-bnf2708"
+          "siglum": null
         },
         {
           "id": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "type": "physical_witness",
           "label": "C 222 inf.",
           "repository": "Milano, Biblioteca Ambrosiana",
@@ -4828,8 +4829,7 @@
           "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
           "sourceUrl": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          "siglum": null
         }
       ],
       "links": [
@@ -4876,6 +4876,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -4885,8 +4886,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -4925,6 +4925,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -4934,8 +4935,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -4974,6 +4974,7 @@
       "witnesses": [
         {
           "id": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "type": "physical_witness",
           "label": "L · Plut. 32.2",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -4983,8 +4984,7 @@
           "coverage": "Bacchae 76r–81r (versos 1–755, resto no conservado aquí); Hippolytus 157r–166v; Medea 166v–176v; Alcestis 177r–183v; Electra 192r–200v; Hecuba 201r–209v; Iphigenia Aulidensis 144v–154r; otros dramas en ff. 68r–232r. No es el códice medieval más antiguo para todas estas tragedias.",
           "sourceUrl": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L",
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          "siglum": "L"
         }
       ],
       "links": [
@@ -5023,6 +5023,7 @@
       "witnesses": [
         {
           "id": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "type": "physical_witness",
           "label": "R · Ms. 429",
           "repository": "Ravenna, Biblioteca Classense",
@@ -5032,11 +5033,11 @@
           "coverage": "Único manuscrito antiguo que contiene las once comedias completas supervivientes de Aristófanes; entre las fichas de este catálogo figuran Nubes, Aves, Ranas, Lisístrata, Avispas, Paz y Acarnienses.",
           "sourceUrl": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "R",
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          "siglum": "R"
         },
         {
           "id": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "type": "physical_witness",
           "label": "C 222 inf.",
           "repository": "Milano, Biblioteca Ambrosiana",
@@ -5046,8 +5047,7 @@
           "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
           "sourceUrl": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          "siglum": null
         }
       ],
       "links": [
@@ -5094,6 +5094,7 @@
       "witnesses": [
         {
           "id": "herodotus-laur-plut70-3",
+          "canonicalPhysicalId": "codex-herodotus-laur-plut70-3",
           "type": "physical_witness",
           "label": "Plut.70.3",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -5103,11 +5104,11 @@
           "coverage": "Manuscrito griego de Heródoto; 374 folios en inventario digital. El alcance exacto de cada libro requiere cotejo de índice del manuscrito.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16568/",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-herodotus-laur-plut70-3"
+          "siglum": null
         },
         {
           "id": "herodotus-laur-plut70-32",
+          "canonicalPhysicalId": "codex-herodotus-laur-plut70-32",
           "type": "physical_witness",
           "label": "Plut.70.32",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -5117,8 +5118,7 @@
           "coverage": "Manuscrito de Heródoto de 345 hojas, sin afirmación aquí de completitud material.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/c6a20f9dcfdd1f5a7110d3f909ea4fc6a432022e",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-herodotus-laur-plut70-32"
+          "siglum": null
         }
       ],
       "links": [
@@ -5165,6 +5165,7 @@
       "witnesses": [
         {
           "id": "thucydides-laur-plut69-2",
+          "canonicalPhysicalId": "codex-thucydides-laur-plut69-2",
           "type": "physical_witness",
           "label": "Plut.69.2",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -5174,8 +5175,7 @@
           "coverage": "Tucídides en códice griego; 512 hojas (no equivale necesariamente a 512 folios textuales de la obra).",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16529/",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-thucydides-laur-plut69-2"
+          "siglum": null
         }
       ],
       "links": [
@@ -5214,6 +5214,7 @@
       "witnesses": [
         {
           "id": "xenophon-anabasis-vatgr1335",
+          "canonicalPhysicalId": "codex-xenophon-anabasis-vatgr1335",
           "type": "physical_witness",
           "label": "F (según clasificación usada en algunos estudios; comprobar en cada edición) · Vat. gr. 1335",
           "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
@@ -5223,11 +5224,11 @@
           "coverage": "Anabasis, libros I–VII, en ff. 116v–205v. Volumen contiene también otros tratados de Jenofonte. Partes del volumen fueron restauradas entre los siglos XI–XIV.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/67966/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "F (según clasificación usada en algunos estudios; comprobar en cada edición)",
-          "canonicalPhysicalId": "codex-xenophon-anabasis-vatgr1335"
+          "siglum": "F (según clasificación usada en algunos estudios; comprobar en cada edición)"
         },
         {
           "id": "xenophon-anabasis-paris1640",
+          "canonicalPhysicalId": "codex-xenophon-anabasis-paris1640",
           "type": "physical_witness",
           "label": "C (según ediciones tradicionales) · Grec 1640",
           "repository": "Paris, Bibliothèque nationale de France",
@@ -5237,8 +5238,7 @@
           "coverage": "Anabasis; testimonio importante de la familia tradicionalmente llamada codices meliores, pero más tardío que Vat. gr. 1335. Familia pendiente de reconstrucción propia.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/oeuvre/559/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "C (según ediciones tradicionales)",
-          "canonicalPhysicalId": "codex-xenophon-anabasis-paris1640"
+          "siglum": "C (según ediciones tradicionales)"
         }
       ],
       "links": [
@@ -5285,6 +5285,7 @@
       "witnesses": [
         {
           "id": "plato-parisinus-graecus-1807",
+          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807",
           "type": "physical_witness",
           "label": "Grec 1807",
           "repository": "Bibliothèque nationale de France, París",
@@ -5294,8 +5295,7 @@
           "coverage": "Testimonio griego en pergamino: República, ff. 3r–114r; Timeo, ff. 114r–144v; Leyes, ff. 155r–291r. Es un códice medieval, no un autógrafo de Platón. La numeración de la digitalización puede diferir de la foliación.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807"
+          "siglum": null
         }
       ],
       "links": [
@@ -5334,6 +5334,7 @@
       "witnesses": [
         {
           "id": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "type": "physical_witness",
           "label": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
           "repository": "Oxford, Bodleian Library",
@@ -5343,8 +5344,7 @@
           "coverage": "24 diálogos de las tetralogías I–VI, entre ellos Apología, Critón, Fedón, Banquete, Fedro, Gorgias y Menón. NO contiene República, Timeo ni Leyes. Incluye escolios marginales. Otros testimonios papiráceos pueden ser anteriores.",
           "sourceUrl": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          "siglum": null
         }
       ],
       "links": [
@@ -5383,6 +5383,7 @@
       "witnesses": [
         {
           "id": "aristotle-poetics-paris-gr1741",
+          "canonicalPhysicalId": "codex-aristotle-poetics-paris-gr1741",
           "type": "physical_witness",
           "label": "Grec 1741",
           "repository": "París, Bibliothèque nationale de France",
@@ -5392,11 +5393,11 @@
           "coverage": "Testigo griego medieval de Poética dentro de códice de retórica y literatura; la foliación precisa del tratado deberá cotejarse con Pinakes/BNF.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51367/",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-aristotle-poetics-paris-gr1741"
+          "siglum": null
         },
         {
           "id": "aristotle-parisinus-gr1741",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741",
           "type": "physical_witness",
           "label": "Aᶜ · Grec 1741",
           "repository": "París, Bibliothèque nationale de France",
@@ -5406,8 +5407,7 @@
           "coverage": "Testimonios de Retórica y Poética en volumen con otros tratados retóricos. La datación y los límites de folios son del registro IRHT–CNRS.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51367/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "Aᶜ",
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741"
+          "siglum": "Aᶜ"
         }
       ],
       "links": [
@@ -5454,6 +5454,7 @@
       "witnesses": [
         {
           "id": "aristotle-vatgr1298-politics",
+          "canonicalPhysicalId": "codex-aristotle-vatgr1298-politics",
           "type": "physical_witness",
           "label": "Vat. gr. 1298",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -5463,8 +5464,7 @@
           "coverage": "Fragmentos palimpsestos de Política; no se trata de una copia completa del tratado. El texto superior pertenece a otra fase de uso del códice.",
           "sourceUrl": "https://plato.stanford.edu/archives/win2025/entries/aristotle-text/",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-aristotle-vatgr1298-politics"
+          "siglum": null
         }
       ],
       "links": [
@@ -5652,6 +5652,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -5661,11 +5662,11 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         },
         {
           "id": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "type": "physical_witness",
           "label": "C 222 inf.",
           "repository": "Milano, Biblioteca Ambrosiana",
@@ -5675,8 +5676,7 @@
           "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
           "sourceUrl": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          "siglum": null
         }
       ],
       "links": [
@@ -5723,6 +5723,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -5732,11 +5733,11 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         },
         {
           "id": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "type": "physical_witness",
           "label": "C 222 inf.",
           "repository": "Milano, Biblioteca Ambrosiana",
@@ -5746,8 +5747,7 @@
           "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
           "sourceUrl": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          "siglum": null
         }
       ],
       "links": [
@@ -5794,6 +5794,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -5803,8 +5804,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -5843,6 +5843,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -5852,8 +5853,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -5892,6 +5892,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -5901,8 +5902,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -5941,6 +5941,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -5950,8 +5951,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -5990,6 +5990,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -5999,8 +6000,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -6039,6 +6039,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6048,8 +6049,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -6088,6 +6088,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6097,8 +6098,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -6137,6 +6137,7 @@
       "witnesses": [
         {
           "id": "sophocles-aeschylus-laurentianus-32-9",
+          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9",
           "type": "physical_witness",
           "label": "L (Sófocles); M (Esquilo) · Plut. 32.9",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6146,8 +6147,7 @@
           "coverage": "Sófocles: siete tragedias conservadas (Ajax, Electra, Oedipus Tyrannus, Antigona, Trachiniae, Philoctetes, Oedipus Coloneus). Esquilo: Persae, Agamemnon, Choephori, Prometheus Vinctus (atribución discutida), Eumenides, Septem contra Thebas, Supplices. El Agamemnon y el comienzo de Choephori presentan lagunas manuscritas; no se declara texto íntegro.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/16274/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L (Sófocles); M (Esquilo)",
-          "canonicalPhysicalId": "codex-sophocles-aeschylus-laurentianus-32-9"
+          "siglum": "L (Sófocles); M (Esquilo)"
         }
       ],
       "links": [
@@ -6186,6 +6186,7 @@
       "witnesses": [
         {
           "id": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "type": "physical_witness",
           "label": "L · Plut. 32.2",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6195,8 +6196,7 @@
           "coverage": "Bacchae 76r–81r (versos 1–755, resto no conservado aquí); Hippolytus 157r–166v; Medea 166v–176v; Alcestis 177r–183v; Electra 192r–200v; Hecuba 201r–209v; Iphigenia Aulidensis 144v–154r; otros dramas en ff. 68r–232r. No es el códice medieval más antiguo para todas estas tragedias.",
           "sourceUrl": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L",
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          "siglum": "L"
         }
       ],
       "links": [
@@ -6235,6 +6235,7 @@
       "witnesses": [
         {
           "id": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "type": "physical_witness",
           "label": "L · Plut. 32.2",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6244,8 +6245,7 @@
           "coverage": "Bacchae 76r–81r (versos 1–755, resto no conservado aquí); Hippolytus 157r–166v; Medea 166v–176v; Alcestis 177r–183v; Electra 192r–200v; Hecuba 201r–209v; Iphigenia Aulidensis 144v–154r; otros dramas en ff. 68r–232r. No es el códice medieval más antiguo para todas estas tragedias.",
           "sourceUrl": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L",
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          "siglum": "L"
         }
       ],
       "links": [
@@ -6284,6 +6284,7 @@
       "witnesses": [
         {
           "id": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "type": "physical_witness",
           "label": "L · Plut. 32.2",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6293,8 +6294,7 @@
           "coverage": "Bacchae 76r–81r (versos 1–755, resto no conservado aquí); Hippolytus 157r–166v; Medea 166v–176v; Alcestis 177r–183v; Electra 192r–200v; Hecuba 201r–209v; Iphigenia Aulidensis 144v–154r; otros dramas en ff. 68r–232r. No es el códice medieval más antiguo para todas estas tragedias.",
           "sourceUrl": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L",
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          "siglum": "L"
         }
       ],
       "links": [
@@ -6333,6 +6333,7 @@
       "witnesses": [
         {
           "id": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "type": "physical_witness",
           "label": "L · Plut. 32.2",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6342,8 +6343,7 @@
           "coverage": "Bacchae 76r–81r (versos 1–755, resto no conservado aquí); Hippolytus 157r–166v; Medea 166v–176v; Alcestis 177r–183v; Electra 192r–200v; Hecuba 201r–209v; Iphigenia Aulidensis 144v–154r; otros dramas en ff. 68r–232r. No es el códice medieval más antiguo para todas estas tragedias.",
           "sourceUrl": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L",
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          "siglum": "L"
         }
       ],
       "links": [
@@ -6382,6 +6382,7 @@
       "witnesses": [
         {
           "id": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "type": "physical_witness",
           "label": "L · Plut. 32.2",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6391,8 +6392,7 @@
           "coverage": "Bacchae 76r–81r (versos 1–755, resto no conservado aquí); Hippolytus 157r–166v; Medea 166v–176v; Alcestis 177r–183v; Electra 192r–200v; Hecuba 201r–209v; Iphigenia Aulidensis 144v–154r; otros dramas en ff. 68r–232r. No es el códice medieval más antiguo para todas estas tragedias.",
           "sourceUrl": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L",
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          "siglum": "L"
         }
       ],
       "links": [
@@ -6431,6 +6431,7 @@
       "witnesses": [
         {
           "id": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "type": "physical_witness",
           "label": "L · Plut. 32.2",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6440,8 +6441,7 @@
           "coverage": "Bacchae 76r–81r (versos 1–755, resto no conservado aquí); Hippolytus 157r–166v; Medea 166v–176v; Alcestis 177r–183v; Electra 192r–200v; Hecuba 201r–209v; Iphigenia Aulidensis 144v–154r; otros dramas en ff. 68r–232r. No es el códice medieval más antiguo para todas estas tragedias.",
           "sourceUrl": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L",
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          "siglum": "L"
         }
       ],
       "links": [
@@ -6480,6 +6480,7 @@
       "witnesses": [
         {
           "id": "euripides-laurentianus-32-2",
+          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2",
           "type": "physical_witness",
           "label": "L · Plut. 32.2",
           "repository": "Firenze, Biblioteca Medicea Laurenziana",
@@ -6489,8 +6490,7 @@
           "coverage": "Bacchae 76r–81r (versos 1–755, resto no conservado aquí); Hippolytus 157r–166v; Medea 166v–176v; Alcestis 177r–183v; Electra 192r–200v; Hecuba 201r–209v; Iphigenia Aulidensis 144v–154r; otros dramas en ff. 68r–232r. No es el códice medieval más antiguo para todas estas tragedias.",
           "sourceUrl": "https://euripidesscholia.org/release3/EurSch2025_Manuscripts.html",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": "L",
-          "canonicalPhysicalId": "codex-euripides-laurentianus-32-2"
+          "siglum": "L"
         }
       ],
       "links": [
@@ -6529,6 +6529,7 @@
       "witnesses": [
         {
           "id": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "type": "physical_witness",
           "label": "R · Ms. 429",
           "repository": "Ravenna, Biblioteca Classense",
@@ -6538,8 +6539,7 @@
           "coverage": "Único manuscrito antiguo que contiene las once comedias completas supervivientes de Aristófanes; entre las fichas de este catálogo figuran Nubes, Aves, Ranas, Lisístrata, Avispas, Paz y Acarnienses.",
           "sourceUrl": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "R",
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          "siglum": "R"
         }
       ],
       "links": [
@@ -6578,6 +6578,7 @@
       "witnesses": [
         {
           "id": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "type": "physical_witness",
           "label": "R · Ms. 429",
           "repository": "Ravenna, Biblioteca Classense",
@@ -6587,11 +6588,11 @@
           "coverage": "Único manuscrito antiguo que contiene las once comedias completas supervivientes de Aristófanes; entre las fichas de este catálogo figuran Nubes, Aves, Ranas, Lisístrata, Avispas, Paz y Acarnienses.",
           "sourceUrl": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "R",
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          "siglum": "R"
         },
         {
           "id": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "type": "physical_witness",
           "label": "C 222 inf.",
           "repository": "Milano, Biblioteca Ambrosiana",
@@ -6601,8 +6602,7 @@
           "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
           "sourceUrl": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          "siglum": null
         }
       ],
       "links": [
@@ -6649,6 +6649,7 @@
       "witnesses": [
         {
           "id": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "type": "physical_witness",
           "label": "R · Ms. 429",
           "repository": "Ravenna, Biblioteca Classense",
@@ -6658,8 +6659,7 @@
           "coverage": "Único manuscrito antiguo que contiene las once comedias completas supervivientes de Aristófanes; entre las fichas de este catálogo figuran Nubes, Aves, Ranas, Lisístrata, Avispas, Paz y Acarnienses.",
           "sourceUrl": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "R",
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          "siglum": "R"
         }
       ],
       "links": [
@@ -6698,6 +6698,7 @@
       "witnesses": [
         {
           "id": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "type": "physical_witness",
           "label": "R · Ms. 429",
           "repository": "Ravenna, Biblioteca Classense",
@@ -6707,8 +6708,7 @@
           "coverage": "Único manuscrito antiguo que contiene las once comedias completas supervivientes de Aristófanes; entre las fichas de este catálogo figuran Nubes, Aves, Ranas, Lisístrata, Avispas, Paz y Acarnienses.",
           "sourceUrl": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "R",
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          "siglum": "R"
         }
       ],
       "links": [
@@ -6747,6 +6747,7 @@
       "witnesses": [
         {
           "id": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "type": "physical_witness",
           "label": "R · Ms. 429",
           "repository": "Ravenna, Biblioteca Classense",
@@ -6756,8 +6757,7 @@
           "coverage": "Único manuscrito antiguo que contiene las once comedias completas supervivientes de Aristófanes; entre las fichas de este catálogo figuran Nubes, Aves, Ranas, Lisístrata, Avispas, Paz y Acarnienses.",
           "sourceUrl": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "R",
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          "siglum": "R"
         }
       ],
       "links": [
@@ -6796,6 +6796,7 @@
       "witnesses": [
         {
           "id": "aristophanes-ravennas-429",
+          "canonicalPhysicalId": "codex-aristophanes-ravennas-429",
           "type": "physical_witness",
           "label": "R · Ms. 429",
           "repository": "Ravenna, Biblioteca Classense",
@@ -6805,8 +6806,7 @@
           "coverage": "Único manuscrito antiguo que contiene las once comedias completas supervivientes de Aristófanes; entre las fichas de este catálogo figuran Nubes, Aves, Ranas, Lisístrata, Avispas, Paz y Acarnienses.",
           "sourceUrl": "https://www.classense.ra.it/manoscritti-ed-edizioni-antiche/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "R",
-          "canonicalPhysicalId": "codex-aristophanes-ravennas-429"
+          "siglum": "R"
         }
       ],
       "links": [
@@ -6845,6 +6845,7 @@
       "witnesses": [
         {
           "id": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "type": "physical_witness",
           "label": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
           "repository": "Oxford, Bodleian Library",
@@ -6854,8 +6855,7 @@
           "coverage": "24 diálogos de las tetralogías I–VI, entre ellos Apología, Critón, Fedón, Banquete, Fedro, Gorgias y Menón. NO contiene República, Timeo ni Leyes. Incluye escolios marginales. Otros testimonios papiráceos pueden ser anteriores.",
           "sourceUrl": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          "siglum": null
         }
       ],
       "links": [
@@ -6894,6 +6894,7 @@
       "witnesses": [
         {
           "id": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "type": "physical_witness",
           "label": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
           "repository": "Oxford, Bodleian Library",
@@ -6903,8 +6904,7 @@
           "coverage": "24 diálogos de las tetralogías I–VI, entre ellos Apología, Critón, Fedón, Banquete, Fedro, Gorgias y Menón. NO contiene República, Timeo ni Leyes. Incluye escolios marginales. Otros testimonios papiráceos pueden ser anteriores.",
           "sourceUrl": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          "siglum": null
         }
       ],
       "links": [
@@ -6943,6 +6943,7 @@
       "witnesses": [
         {
           "id": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "type": "physical_witness",
           "label": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
           "repository": "Oxford, Bodleian Library",
@@ -6952,8 +6953,7 @@
           "coverage": "24 diálogos de las tetralogías I–VI, entre ellos Apología, Critón, Fedón, Banquete, Fedro, Gorgias y Menón. NO contiene República, Timeo ni Leyes. Incluye escolios marginales. Otros testimonios papiráceos pueden ser anteriores.",
           "sourceUrl": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          "siglum": null
         }
       ],
       "links": [
@@ -6992,6 +6992,7 @@
       "witnesses": [
         {
           "id": "plato-parisinus-graecus-1807",
+          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807",
           "type": "physical_witness",
           "label": "Grec 1807",
           "repository": "Bibliothèque nationale de France, París",
@@ -7001,8 +7002,7 @@
           "coverage": "Testimonio griego en pergamino: República, ff. 3r–114r; Timeo, ff. 114r–144v; Leyes, ff. 155r–291r. Es un códice medieval, no un autógrafo de Platón. La numeración de la digitalización puede diferir de la foliación.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807"
+          "siglum": null
         }
       ],
       "links": [
@@ -7041,6 +7041,7 @@
       "witnesses": [
         {
           "id": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "type": "physical_witness",
           "label": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
           "repository": "Oxford, Bodleian Library",
@@ -7050,8 +7051,7 @@
           "coverage": "24 diálogos de las tetralogías I–VI, entre ellos Apología, Critón, Fedón, Banquete, Fedro, Gorgias y Menón. NO contiene República, Timeo ni Leyes. Incluye escolios marginales. Otros testimonios papiráceos pueden ser anteriores.",
           "sourceUrl": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          "siglum": null
         }
       ],
       "links": [
@@ -7090,6 +7090,7 @@
       "witnesses": [
         {
           "id": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "type": "physical_witness",
           "label": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
           "repository": "Oxford, Bodleian Library",
@@ -7099,8 +7100,7 @@
           "coverage": "24 diálogos de las tetralogías I–VI, entre ellos Apología, Critón, Fedón, Banquete, Fedro, Gorgias y Menón. NO contiene República, Timeo ni Leyes. Incluye escolios marginales. Otros testimonios papiráceos pueden ser anteriores.",
           "sourceUrl": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          "siglum": null
         }
       ],
       "links": [
@@ -7139,6 +7139,7 @@
       "witnesses": [
         {
           "id": "plato-parisinus-graecus-1807",
+          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807",
           "type": "physical_witness",
           "label": "Grec 1807",
           "repository": "Bibliothèque nationale de France, París",
@@ -7148,8 +7149,7 @@
           "coverage": "Testimonio griego en pergamino: República, ff. 3r–114r; Timeo, ff. 114r–144v; Leyes, ff. 155r–291r. Es un códice medieval, no un autógrafo de Platón. La numeración de la digitalización puede diferir de la foliación.",
           "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/5b244070ea9e71d8b38589d725fa81314d33047f",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-parisinus-graecus-1807"
+          "siglum": null
         }
       ],
       "links": [
@@ -7188,6 +7188,7 @@
       "witnesses": [
         {
           "id": "plato-clarke-39",
+          "canonicalPhysicalId": "codex-plato-clarke-39",
           "type": "physical_witness",
           "label": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
           "repository": "Oxford, Bodleian Library",
@@ -7197,8 +7198,7 @@
           "coverage": "24 diálogos de las tetralogías I–VI, entre ellos Apología, Critón, Fedón, Banquete, Fedro, Gorgias y Menón. NO contiene República, Timeo ni Leyes. Incluye escolios marginales. Otros testimonios papiráceos pueden ser anteriores.",
           "sourceUrl": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-plato-clarke-39"
+          "siglum": null
         }
       ],
       "links": [
@@ -7237,6 +7237,7 @@
       "witnesses": [
         {
           "id": "aristotle-parisinus-gr1853",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853",
           "type": "physical_witness",
           "label": "E · Grec 1853",
           "repository": "París, Bibliothèque nationale de France",
@@ -7246,8 +7247,7 @@
           "coverage": "Contiene Física, Metafísica, De anima y Ética a Nicómaco; diferentes partes y manos requieren descripción diferenciada. No se presupone integridad ni prioridad universal.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "E",
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
+          "siglum": "E"
         }
       ],
       "links": [
@@ -7286,6 +7286,7 @@
       "witnesses": [
         {
           "id": "aristotle-parisinus-gr1853",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853",
           "type": "physical_witness",
           "label": "E · Grec 1853",
           "repository": "París, Bibliothèque nationale de France",
@@ -7295,8 +7296,7 @@
           "coverage": "Contiene Física, Metafísica, De anima y Ética a Nicómaco; diferentes partes y manos requieren descripción diferenciada. No se presupone integridad ni prioridad universal.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "E",
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
+          "siglum": "E"
         }
       ],
       "links": [
@@ -7335,6 +7335,7 @@
       "witnesses": [
         {
           "id": "aristotle-parisinus-gr1853",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853",
           "type": "physical_witness",
           "label": "E · Grec 1853",
           "repository": "París, Bibliothèque nationale de France",
@@ -7344,8 +7345,7 @@
           "coverage": "Contiene Física, Metafísica, De anima y Ética a Nicómaco; diferentes partes y manos requieren descripción diferenciada. No se presupone integridad ni prioridad universal.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "E",
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
+          "siglum": "E"
         }
       ],
       "links": [
@@ -7384,6 +7384,7 @@
       "witnesses": [
         {
           "id": "aristotle-parisinus-gr1741",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741",
           "type": "physical_witness",
           "label": "Aᶜ · Grec 1741",
           "repository": "París, Bibliothèque nationale de France",
@@ -7393,8 +7394,7 @@
           "coverage": "Testimonios de Retórica y Poética en volumen con otros tratados retóricos. La datación y los límites de folios son del registro IRHT–CNRS.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51367/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "Aᶜ",
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1741"
+          "siglum": "Aᶜ"
         }
       ],
       "links": [
@@ -7433,6 +7433,7 @@
       "witnesses": [
         {
           "id": "aristotle-parisinus-gr1853",
+          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853",
           "type": "physical_witness",
           "label": "E · Grec 1853",
           "repository": "París, Bibliothèque nationale de France",
@@ -7442,8 +7443,7 @@
           "coverage": "Contiene Física, Metafísica, De anima y Ética a Nicómaco; diferentes partes y manos requieren descripción diferenciada. No se presupone integridad ni prioridad universal.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51479/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "E",
-          "canonicalPhysicalId": "codex-aristotle-parisinus-gr1853"
+          "siglum": "E"
         }
       ],
       "links": [
@@ -7553,6 +7553,7 @@
       "witnesses": [
         {
           "id": "xenophon-hellenica-paris1738",
+          "canonicalPhysicalId": "codex-xenophon-hellenica-paris1738",
           "type": "physical_witness",
           "label": "B (en ediciones de Hellenica; verificar correspondencia editorial) · Grec 1738",
           "repository": "Paris, Bibliothèque nationale de France",
@@ -7562,8 +7563,7 @@
           "coverage": "Hellenica con lagunas textuales declaradas por catálogo; no es testimonio completo y no se afirma prioridad cronológica mundial.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51364/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "B (en ediciones de Hellenica; verificar correspondencia editorial)",
-          "canonicalPhysicalId": "codex-xenophon-hellenica-paris1738"
+          "siglum": "B (en ediciones de Hellenica; verificar correspondencia editorial)"
         }
       ],
       "links": [
@@ -7602,6 +7602,7 @@
       "witnesses": [
         {
           "id": "demosthenes-paris2934",
+          "canonicalPhysicalId": "codex-demosthenes-paris2934",
           "type": "physical_witness",
           "label": "S (tradición de Demóstenes) · Grec 2934",
           "repository": "Paris, Bibliothèque nationale de France",
@@ -7611,8 +7612,7 @@
           "coverage": "Gran colección de discursos demosténicos (59 discursos, falta el discurso 12); contiene el discurso 18 De corona y los discursos 1–4 tradicionalmente asociados a las Filípicas/Olínticas. El alcance de cada serie debe precisarse por loci.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/oeuvre/5953/",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": "S (tradición de Demóstenes)",
-          "canonicalPhysicalId": "codex-demosthenes-paris2934"
+          "siglum": "S (tradición de Demóstenes)"
         }
       ],
       "links": [
@@ -7651,6 +7651,7 @@
       "witnesses": [
         {
           "id": "demosthenes-paris2934",
+          "canonicalPhysicalId": "codex-demosthenes-paris2934",
           "type": "physical_witness",
           "label": "S (tradición de Demóstenes) · Grec 2934",
           "repository": "Paris, Bibliothèque nationale de France",
@@ -7660,8 +7661,7 @@
           "coverage": "Gran colección de discursos demosténicos (59 discursos, falta el discurso 12); contiene el discurso 18 De corona y los discursos 1–4 tradicionalmente asociados a las Filípicas/Olínticas. El alcance de cada serie debe precisarse por loci.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/oeuvre/5953/",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": "S (tradición de Demóstenes)",
-          "canonicalPhysicalId": "codex-demosthenes-paris2934"
+          "siglum": "S (tradición de Demóstenes)"
         }
       ],
       "links": [
@@ -7700,6 +7700,7 @@
       "witnesses": [
         {
           "id": "pindar-vatgr1312",
+          "canonicalPhysicalId": "codex-pindar-vatgr1312",
           "type": "physical_witness",
           "label": "B (en algunas ediciones pindáricas) · Vat. gr. 1312",
           "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
@@ -7709,11 +7710,11 @@
           "coverage": "Olímpicas acephala en el inicio (falta Olímpica I.1–106), con escolios; Píticas comienza en Pítica II.105, faltan partes del comienzo. Textos Nemeas e Ístmicas presentes, pero no figuran como obras independientes en la matriz actual.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/67943/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "B (en algunas ediciones pindáricas)",
-          "canonicalPhysicalId": "codex-pindar-vatgr1312"
+          "siglum": "B (en algunas ediciones pindáricas)"
         },
         {
           "id": "pindar-ambros-c222inf",
+          "canonicalPhysicalId": "codex-pindar-ambros-c222inf",
           "type": "physical_witness",
           "label": "C 222 inf.",
           "repository": "Milano, Biblioteca Ambrosiana",
@@ -7723,8 +7724,7 @@
           "coverage": "Antología griega de contenido múltiple con escolios y glosas interlineales. Inicio de Siete contra Tebas mutilado: faltan once cuadernos originales; folios iniciales restaurados posteriormente.",
           "sourceUrl": "https://paratext.unipv.it/virtual-exhibition/enter-the-exhibition/ambr-c-222-inf-f-349v-description/222-description/",
           "sourceStatus": "scholarly_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-pindar-ambros-c222inf"
+          "siglum": null
         }
       ],
       "links": [
@@ -7776,7 +7776,7 @@
       "stemmaStatus": "published_recensional_classification_partial_no_complete_stemma",
       "gaps": {
         "witnessesPending": false,
-        "criticalFamilyClassificationPending": true,
+        "criticalFamilyClassificationPending": false,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
       },
@@ -7794,6 +7794,7 @@
       "witnesses": [
         {
           "id": "pindar-vatgr1312",
+          "canonicalPhysicalId": "codex-pindar-vatgr1312",
           "type": "physical_witness",
           "label": "B (en algunas ediciones pindáricas) · Vat. gr. 1312",
           "repository": "Città del Vaticano, Biblioteca Apostolica Vaticana",
@@ -7803,8 +7804,7 @@
           "coverage": "Olímpicas acephala en el inicio (falta Olímpica I.1–106), con escolios; Píticas comienza en Pítica II.105, faltan partes del comienzo. Textos Nemeas e Ístmicas presentes, pero no figuran como obras independientes en la matriz actual.",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/67943/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": "B (en algunas ediciones pindáricas)",
-          "canonicalPhysicalId": "codex-pindar-vatgr1312"
+          "siglum": "B (en algunas ediciones pindáricas)"
         }
       ],
       "links": [
@@ -7837,7 +7837,7 @@
       "stemmaStatus": "published_recensional_classification_partial_no_complete_stemma",
       "gaps": {
         "witnessesPending": false,
-        "criticalFamilyClassificationPending": true,
+        "criticalFamilyClassificationPending": false,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
       }
@@ -8303,6 +8303,7 @@
       "witnesses": [
         {
           "id": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "type": "physical_witness",
           "label": "Harley MS 2724",
           "repository": "Londres, British Library",
@@ -8312,11 +8313,11 @@
           "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          "siglum": null
         },
         {
           "id": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "type": "physical_witness",
           "label": "Harley MS 3997",
           "repository": "Londres, British Library",
@@ -8326,8 +8327,7 @@
           "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          "siglum": null
         }
       ],
       "links": [
@@ -8374,6 +8374,7 @@
       "witnesses": [
         {
           "id": "horace-works-harley2724",
+          "canonicalPhysicalId": "codex-horace-works-harley2724",
           "type": "physical_witness",
           "label": "Harley MS 2724",
           "repository": "Londres, British Library",
@@ -8383,11 +8384,11 @@
           "coverage": "Carmina ff. 2r–46r; Ars poetica ff. 47r–54v; Epodae ff. 55r–66r; Epistulae ff. 67v–94v; Sermones ff. 94v–130r; otros textos.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002048555",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-works-harley2724"
+          "siglum": null
         },
         {
           "id": "horace-harley3997",
+          "canonicalPhysicalId": "codex-horace-harley3997",
           "type": "physical_witness",
           "label": "Harley MS 3997",
           "repository": "Londres, British Library",
@@ -8397,8 +8398,7 @@
           "coverage": "Ars poetica ff. 3r–12v; Odes ff. 13r–75v; Epodes ff. 75v–89v; Epistulae ff. 90r–120r; Sermones ff. 120r–162v.",
           "sourceUrl": "https://searcharchives.bl.uk/catalog/040-002049834",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-horace-harley3997"
+          "siglum": null
         }
       ],
       "links": [
@@ -8495,6 +8495,7 @@
       "witnesses": [
         {
           "id": "ovid-ars-parisinus-lat7311",
+          "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311",
           "type": "physical_witness",
           "label": "Latin 7311",
           "repository": "París, Bibliothèque nationale de France",
@@ -8504,8 +8505,7 @@
           "coverage": "Contiene Ars amatoria y Remedia amoris; también fragmentos de Amores. Alcance por folios pendiente de comprobación contra catálogo BnF.",
           "sourceUrl": "https://www.persee.fr/doc/dirht_0073-8212_2014_mon_26_42?pageId=T1_454",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-ovid-ars-parisinus-lat7311"
+          "siglum": null
         }
       ],
       "links": [
@@ -8594,6 +8594,7 @@
       "witnesses": [
         {
           "id": "apuleius-laurentianus-68-2",
+          "canonicalPhysicalId": "codex-laur-plut-68-2",
           "type": "physical_witness",
           "label": "Plut. 68.2 (Laur. 68.2)",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -8603,11 +8604,11 @@
           "coverage": "Transmite Metamorphoses, Apologia y Florida de Apuleyo; volumen misceláneo que también contiene obras de Tácito. Foliación exacta de Apuleyo pendiente de catálogo institucional.",
           "sourceUrl": "https://read.uolpress.co.uk/read/the-afterlife-of-apuleius/section/3daa2b8e-04f4-407f-a144-ce658dad393f",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-laur-plut-68-2"
+          "siglum": null
         },
         {
           "id": "apuleius-laurentianus-29-2",
+          "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2",
           "type": "physical_witness",
           "label": "Plut. 29.2 (Laur. 29.2)",
           "repository": "Florencia, Biblioteca Medicea Laurenziana",
@@ -8617,8 +8618,7 @@
           "coverage": "Copia medieval de la sección apuleyana de Laur. 68.2; útil donde el modelo F está dañado o ilegible.",
           "sourceUrl": "https://www.cambridge.org/core/journals/classical-quarterly/article/abs/unique-manuscript-of-apvleivs-metamorphoses-laurentian-682-and-its-oldest-transcript-laurentian-292/8F06BEABE9FB391BEC55904F373C769A",
           "sourceStatus": "secondary_scholarly_source_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-apuleius-laurentianus-29-2"
+          "siglum": null
         }
       ],
       "links": [
@@ -8765,6 +8765,7 @@
       "witnesses": [
         {
           "id": "boethius-harley-2685",
+          "canonicalPhysicalId": "codex-boethius-harley-2685",
           "type": "physical_witness",
           "label": "Harley MS 2685",
           "repository": "London, British Library",
@@ -8774,8 +8775,7 @@
           "coverage": "Los cinco libros de Consolatio philosophiae, con glosas contemporáneas y del siglo X; otros textos de Fulgencio y Marciano Capela siguen en el volumen.",
           "sourceUrl": "https://searcharchives.bl.uk/?f%5Blanguage_ssim%5D%5B%5D=Latin&f%5Bmaterial_type_si%5D%5B%5D=Archives+and+Manuscripts&f%5Brelated_places_ssim%5D%5B%5D=Western+Germany&f%5Brelated_subjects_ssim%5D%5B%5D=Philosophy&f%5Burl_non_blank_si%5D%5B%5D=Yes+%28available%29&f%5Burl_stub_si%5D%5B%5D=iiif.bl.uk&per_page=50&search_field=all_fields&sort=title_for_sort_si+asc%2C+scope_and_content_for_sort_si+asc%2C+reference_for_sort_si+asc",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-boethius-harley-2685"
+          "siglum": null
         }
       ],
       "links": [
@@ -9113,6 +9113,7 @@
       "witnesses": [
         {
           "id": "isidore-stgall-1394-fragment",
+          "canonicalPhysicalId": "codex-isidore-stgall-1394-fragment",
           "type": "physical_witness",
           "label": "Cod. Sang. 1394, pp. 123–124",
           "repository": "St. Gallen, Stiftsbibliothek",
@@ -9122,11 +9123,11 @@
           "coverage": "Etymologiae I.37.5–10 únicamente. No es un códice completo de la obra.",
           "sourceUrl": "https://www.e-codices.ch/en/description/csg/1394/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-isidore-stgall-1394-fragment"
+          "siglum": null
         },
         {
           "id": "isidore-stgall-233",
+          "canonicalPhysicalId": "codex-isidore-stgall-233",
           "type": "physical_witness",
           "label": "Cod. Sang. 233",
           "repository": "St. Gallen, Stiftsbibliothek",
@@ -9136,11 +9137,11 @@
           "coverage": "Etymologiae VI–VIII y XII–XV; otros libros no presentes en este códice.",
           "sourceUrl": "https://www.e-codices.ch/en/list/one/csg/0233",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-isidore-stgall-233"
+          "siglum": null
         },
         {
           "id": "isidore-stgall-231",
+          "canonicalPhysicalId": "codex-isidore-stgall-231",
           "type": "physical_witness",
           "label": "Cod. Sang. 231",
           "repository": "St. Gallen, Stiftsbibliothek",
@@ -9150,8 +9151,7 @@
           "coverage": "Libros I–X; forma unidad codicológica con Cod. Sang. 232, no debe describirse como obra completa por sí solo.",
           "sourceUrl": "https://www.e-codices.ch/en/list/one/csg/0231",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-isidore-stgall-231"
+          "siglum": null
         }
       ],
       "links": [
@@ -9256,6 +9256,7 @@
       "witnesses": [
         {
           "id": "euclid-vat-gr-190",
+          "canonicalPhysicalId": "codex-euclid-vat-gr-190",
           "type": "physical_witness",
           "label": "Vat. gr. 190, pt. 1",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -9265,8 +9266,7 @@
           "coverage": "Elementa de Euclides en la recensión anterior a Teón; testimonio principal de la edición de Heiberg (sigla P). La parte 2 contiene el resto del códice.",
           "sourceUrl": null,
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-euclid-vat-gr-190"
+          "siglum": null
         }
       ],
       "links": [
@@ -9555,6 +9555,7 @@
       "witnesses": [
         {
           "id": "agrimensores-arcerianus",
+          "canonicalPhysicalId": "codex-agrimensores-arcerianus",
           "type": "physical_witness",
           "label": "Cod. Guelf. 36.23 Aug. 2°",
           "repository": "Wolfenbüttel, Herzog August Bibliothek",
@@ -9564,11 +9565,11 @@
           "coverage": "Códice uncial ilustrado de los agrimensores; reúne dos códices (A y B) encuadernados juntos. El texto de Sículo Flaco no figura en él salvo un extracto.",
           "sourceUrl": "https://diglib.hab.de/?db=mss&list=ms&id=36-23-aug-2f",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-agrimensores-arcerianus"
+          "siglum": null
         },
         {
           "id": "agrimensores-pal-lat-1564",
+          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564",
           "type": "physical_witness",
           "label": "Pal. lat. 1564",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -9578,8 +9579,7 @@
           "coverage": "Agrimensores (ff. 9r–149v) con fragmentos jurídicos; testimonio de segunda clase en la edición de Thulin.",
           "sourceUrl": null,
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564"
+          "siglum": null
         }
       ],
       "links": [
@@ -9626,6 +9626,7 @@
       "witnesses": [
         {
           "id": "agrimensores-arcerianus",
+          "canonicalPhysicalId": "codex-agrimensores-arcerianus",
           "type": "physical_witness",
           "label": "Cod. Guelf. 36.23 Aug. 2°",
           "repository": "Wolfenbüttel, Herzog August Bibliothek",
@@ -9635,11 +9636,11 @@
           "coverage": "Códice uncial ilustrado de los agrimensores; reúne dos códices (A y B) encuadernados juntos. El texto de Sículo Flaco no figura en él salvo un extracto.",
           "sourceUrl": "https://diglib.hab.de/?db=mss&list=ms&id=36-23-aug-2f",
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-agrimensores-arcerianus"
+          "siglum": null
         },
         {
           "id": "agrimensores-pal-lat-1564",
+          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564",
           "type": "physical_witness",
           "label": "Pal. lat. 1564",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -9649,8 +9650,7 @@
           "coverage": "Agrimensores (ff. 9r–149v) con fragmentos jurídicos; testimonio de segunda clase en la edición de Thulin.",
           "sourceUrl": null,
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564"
+          "siglum": null
         }
       ],
       "links": [
@@ -9697,6 +9697,7 @@
       "witnesses": [
         {
           "id": "agrimensores-pal-lat-1564",
+          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564",
           "type": "physical_witness",
           "label": "Pal. lat. 1564",
           "repository": "Ciudad del Vaticano, Biblioteca Apostolica Vaticana",
@@ -9706,8 +9707,7 @@
           "coverage": "Agrimensores (ff. 9r–149v) con fragmentos jurídicos; testimonio de segunda clase en la edición de Thulin.",
           "sourceUrl": null,
           "sourceStatus": "needs_review",
-          "siglum": null,
-          "canonicalPhysicalId": "codex-agrimensores-pal-lat-1564"
+          "siglum": null
         }
       ],
       "links": [
@@ -9758,7 +9758,131 @@
         "collationPending": true,
         "apographsRequiresEditionCitation": true
       }
+    },
+    {
+      "workId": "apolonio-argonauticas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "apolonio-argonauticas",
+        "type": "classical_work",
+        "label": "Apolonio de Rodas · Ἀργοναυτικά · Argonautica"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "isocrates-discursos",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "isocrates-discursos",
+        "type": "classical_work",
+        "label": "Isócrates · Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "lisias-discursos",
+      "title": "Λόγοι · Discursos",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "lisias-discursos",
+        "type": "classical_work",
+        "label": "Lisias · Λόγοι · Discursos"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "longino-sublime",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "longino-sublime",
+        "type": "classical_work",
+        "label": "Pseudo-Longino · Περὶ ὕψους · De sublimitate"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "teocrito-bucolicos",
+      "title": "Εἰδύλλια · Idilios",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "teocrito-bucolicos",
+        "type": "classical_work",
+        "label": "Teócrito, Bión y Mosco · Εἰδύλλια · Idilios"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
     }
-  ],
-  "textualWitnessRecordCount": 100
+  ]
 }

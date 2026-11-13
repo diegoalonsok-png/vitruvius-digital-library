@@ -13,7 +13,7 @@
  * Los fragmentos se suben a R2 en un paso aparte (scripts/r2-subir-indice.py).
  *
  * Uso: node scripts/r2-indexar-clasicos.mjs [--salida DIR] [--limite N]
- *       [--obras id1,id2] [--manifiesto ARCHIVO]
+ *       [--obras id1,id2] [--manifiesto ARCHIVO] [--fusionar | --sin-fusionar]
  */
 import {readFileSync,writeFileSync,mkdirSync,rmSync,existsSync,createWriteStream,readdirSync,createReadStream} from "node:fs";
 import {createInterface} from "node:readline";
@@ -27,6 +27,11 @@ const SALIDA=opcion("--salida","/tmp/indice-r2");
 const LIMITE=Number(opcion("--limite","0"))||0;
 const SOLO=(opcion("--obras","")||"").split(",").map(s=>s.trim()).filter(Boolean);
 const CATALOGO="data/r2/catalogo-clasicos-r2.json";
+const BASE_PUBLICA=opcion("--base","https://libros.vitruvius-digital-library.org/clasicos/indice/");
+/* Al indexar sólo las obras nuevas del día, el fragmento publicado se funde con
+   el nuevo: se conservan las raíces de las demás obras y se reemplazan las de
+   las obras reindexadas. Sin esto, una tanda diaria borraría el índice anterior. */
+const FUSIONAR=!args.includes("--sin-fusionar")&&(SOLO.length>0||args.includes("--fusionar"));
 const MANIFIESTO=opcion("--manifiesto","data/r2/indice-semantico-manifest.json");
 const MAX_PAGINAS=24;      // páginas guardadas por raíz y obra
 const MIN_TOKEN=3;         // el OCR produce mucha basura de una y dos letras
@@ -97,6 +102,12 @@ await cerrar();
    memoria no crece con el corpus entero. */
 mkdirSync(SALIDA+"/indice",{recursive:true});
 const fragmentos=[];
+const reindexadas=new Set(obras.map(o=>o.id));
+async function publicado(nombre){
+ if(!FUSIONAR)return null;
+ try{const r=await fetch(BASE_PUBLICA+nombre);if(!r.ok)return null;return await r.json()}
+ catch{return null}
+}
 for(const archivo of readdirSync(SALIDA+"/crudo")){
  const key=archivo.replace(/\.jsonl$/,"");
  const raices={};
@@ -106,12 +117,32 @@ for(const archivo of readdirSync(SALIDA+"/crudo")){
   const {s,o,c,p}=JSON.parse(linea);
   (raices[s]||(raices[s]={}))[o]=[c,p];
  }
- const texto=JSON.stringify({schema:"vdl-r2-indice-clasicos-1",k:key,raices});
  const destino="s-"+key+".json";
+ const previo=await publicado(destino);
+ if(previo&&previo.raices){
+  for(const [raiz,entradas] of Object.entries(previo.raices)){
+   const destinoRaiz=raices[raiz]||(raices[raiz]={});
+   for(const [obra,valor] of Object.entries(entradas))
+    if(!reindexadas.has(obra)&&!(obra in destinoRaiz))destinoRaiz[obra]=valor;
+  }
+ }
+ const texto=JSON.stringify({schema:"vdl-r2-indice-clasicos-1",k:key,raices});
  writeFileSync(SALIDA+"/indice/"+destino,texto);
  fragmentos.push({k:key,f:destino,raices:Object.keys(raices).length,bytes:texto.length});
 }
 rmSync(SALIDA+"/crudo",{recursive:true,force:true});
+/* El listado y el manifiesto describen el índice completo, no sólo la tanda. */
+const previoListado=FUSIONAR?await (async()=>{try{const r=await fetch(BASE_PUBLICA+"fragmentos.json");return r.ok?await r.json():null}catch{return null}})():null;
+if(previoListado){
+ const porId=new Map((previoListado.obras||[]).map(o=>[o.id,o]));
+ for(const o of resumen)porId.set(o.id,o);
+ resumen.length=0;resumen.push(...porId.values());
+ const porClave=new Map((previoListado.fragmentos||[]).map(f=>[f.k,{k:f.k,f:f.f,raices:f.n,bytes:0}]));
+ for(const f of fragmentos)porClave.set(f.k,f);
+ fragmentos.length=0;fragmentos.push(...porClave.values());
+ paginasTotales=resumen.reduce((n,o)=>n+(o.paginasConTexto||0),0);
+ raicesTotales=resumen.reduce((n,o)=>n+(o.raices||0),0);
+}
 fragmentos.sort((a,b)=>a.k.localeCompare(b.k));
 const bytes=fragmentos.reduce((n,f)=>n+f.bytes,0);
 const indice={schema:"vdl-r2-indice-clasicos-fragmentos-1",generado:new Date().toISOString().slice(0,10),
