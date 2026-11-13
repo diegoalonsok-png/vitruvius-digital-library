@@ -235,7 +235,11 @@ function readerLink(D,p){
 }
 function vitruvianLinks(locus){
  const l=encodeURIComponent(locus);
- return [["Lector bilingüe ES",`lector-bilingue.html?edition=recensio-es&locus=${l}`],["FR",`lector-bilingue.html?edition=recensio-fr&locus=${l}`],["EN",`lector-bilingue.html?edition=theory-en&locus=${l}`],["Aparato crítico",`aparato-critico.html?locus=${l}`],["Colación Rose / Krohn",`colacion.html?locus=${l}`],["Codex H",`codex-h-folios-local.html?locus=${l}`]];
+ // Only a simple searched lemma can be highlighted literally in the reader.
+ // Expressions or inferred equivalents must not be presented as verified matches.
+ const term=String(S.q||"").trim().replace(/^[@~]/,"");
+ const query=/^[\\p{L}\\p{M}][\\p{L}\\p{M}'’\-]*$/u.test(term)?"&q="+encodeURIComponent(term):"";
+ return [["Lector bilingüe ES",`lector-bilingue.html?edition=recensio-es&locus=${l}${query}`],["FR",`lector-bilingue.html?edition=recensio-fr&locus=${l}${query}`],["EN",`lector-bilingue.html?edition=theory-en&locus=${l}${query}`],["Aparato crítico",`aparato-critico.html?q=${l}`],["Colación Rose / Krohn",`colacion.html?locus=${l}`],["Codex H",`codex-h-folios-local.html?locus=${l}`]];
 }
 
 /* ---------- Estado e interfaz ---------- */
@@ -448,7 +452,7 @@ async function run(push=true){
  if(isCurrent())$("#lx-state").dataset.completeQuery=q;
 }
 function resolveLang(q){if(S.lang!=="auto")return S.lang;const rest=q.replace(/\[[^\]]*\]/g,"").replace(/\b(NEAR\/\d+)\b|\.\.\d+/g,"");if(/\[/.test(q)&&!/[a-z]/i.test(rest.replace(/[^\p{L}]/gu,"")))return "grc";return detectLang(rest)}
-function fillWorks(D){const sel=$("#lx-work");const cur=S.work;sel.replaceChildren(el("option",{value:""},"Todas las obras"));for(const [id,w] of Object.entries(D.corpus.works).sort((a,b)=>(CHRONO[a[0]]??0)-(CHRONO[b[0]]??0)))sel.append(el("option",{value:id,selected:id===cur},`${w.author} · ${w.title}`));if(!D.corpus.works[cur]){S.work="";sel.value=""}}
+function fillWorks(D){const sel=$("#lx-work");const cur=S.work;sel.replaceChildren(el("option",{value:""},"Todas las obras"));for(const [id,w] of Object.entries(D.corpus.works).sort((a,b)=>(CHRONO[a[0]]??0)-(CHRONO[b[0]]??0)))sel.append(el("option",{value:id,selected:id===cur},`${w.author} · ${w.title}`));if(!D.corpus.works[cur]){S.work="";sel.value=""}const only=$("#lx-only-vitruvius");if(only)only.checked=S.work==="vitruvius"}
 
 let hitsRenderRevision=0;
 function renderHits(D,res){
@@ -2559,7 +2563,8 @@ async function init(){
   const primary=$("#lx-lang");primary.value=e.target.value;
   primary.dispatchEvent(new Event("change",{bubbles:true}));
  });
- $("#lx-work").addEventListener("change",e=>{S.work=e.target.value;if(S.q)run()});
+ $("#lx-work").addEventListener("change",e=>{S.work=e.target.value;const only=$("#lx-only-vitruvius");if(only)only.checked=S.work==="vitruvius";if(S.q)run()});
+ $("#lx-only-vitruvius")?.addEventListener("change",e=>{const select=$("#lx-work");if(e.target.checked&&!select.querySelector('option[value="vitruvius"]'))select.append(el("option",{value:"vitruvius"},"Vitruvio · De architectura"));S.work=e.target.checked?"vitruvius":"";select.value=S.work;if(S.q)run();else{const u=new URL(location.href);if(S.work)u.searchParams.set("work",S.work);else u.searchParams.delete("work");history.replaceState(null,"",u)}});
  $("#lx-order").addEventListener("change",()=>{if(S.result&&S.D){S.page=0;$("#lx-results").replaceChildren();$("#lx-side-extra").replaceChildren();if(S.mode==="sintaxis")renderCollocations(S.D,S.result);renderHits(S.D,S.result)}});
  ["#lx-variants","#lx-lemmatize"].forEach(id=>$(id).addEventListener("change",()=>{if(S.q)run()}));
  $("#lx-clear").addEventListener("click",()=>{++runRevision;$("#lx-q").value="";$("#lx-results").replaceChildren();$("#lx-entry").replaceChildren();$("#lx-entry").hidden=true;resetWordTree();setState("Introduzca una nueva búsqueda.");$("#lx-q").focus()});
