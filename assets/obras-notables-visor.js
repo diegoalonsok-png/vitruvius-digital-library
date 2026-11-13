@@ -195,7 +195,10 @@ function ficha() {
  $("e-edicion").textContent = indice.edicion;
  $("e-lengua").textContent = indice.lengua;
  $("e-imagenes").textContent = `${indice.imagenes} folios alojados en la biblioteca`;
- $("e-derechos").textContent = indice.derechos;
+ $("e-derechos").textContent = indice.derechos || "Consultar condiciones de la institución digitalizadora";
+ $("e-institucion").textContent = indice.institucion || "Institución conservadora no documentada";
+ $("e-signatura").textContent = indice.signatura || "Signatura no verificada";
+ $("e-colacion").textContent = indice.colacion || "Colación pendiente de verificación";
  const dd = $("e-fuente");
  dd.replaceChildren();
  if (indice.fuente) {
