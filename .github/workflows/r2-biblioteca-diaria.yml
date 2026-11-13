@@ -96,6 +96,7 @@ jobs:
           node scripts/test-r2-busqueda-clasicos.mjs
           node scripts/test-r2-indice-fusion.mjs
           node scripts/test-cifra-obras.mjs
+          node scripts/test-export-xlsx-datos.mjs
 
       - name: Guardar catálogos, fichas y manifiestos (solo archivos livianos)
         if: always()

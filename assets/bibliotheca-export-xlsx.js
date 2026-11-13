@@ -7,7 +7,9 @@ const FILES={
  ecdotics:"data/classics-corpus/ecdotics-222.json",
  witnesses:"data/bibliotheca-testimonia-verified.json",
  authority:"data/perseus-provenance-audit.json",
- trees:"data/classics-corpus/codicological-trees-222.json"
+ trees:"data/classics-corpus/codicological-trees-222.json",
+ facsimiles:"data/r2/vinculos-repertorio.json",
+ r2:"data/r2/catalogo-clasicos-r2.json"
 };
 const compact=v=>v==null?"":Array.isArray(v)?v.join(" | "):typeof v==="object"?JSON.stringify(v):String(v);
 const clean=s=>typeof s==="string"&&/^[=+@\-\t\r]/.test(s)?"'"+s:s;
@@ -45,6 +47,13 @@ async function exportAll(button,statusNode){
    getJSON(FILES.catalog),getJSON(FILES.standard),getJSON(FILES.ecdotics),
    getJSON(FILES.witnesses),getJSON(FILES.authority),getJSON(FILES.trees),ensureXLSX()
   ]);
+  /* Los facsímiles alojados en R2 son parte del listado: si no cargan, la
+     planilla sale igual, sin la columna, en vez de no salir. */
+  const [vinculos,catR2]=await Promise.all([
+   getJSON(FILES.facsimiles).catch(()=>null),getJSON(FILES.r2).catch(()=>null)
+  ]);
+  const porObra=vinculos?.porObra||{};
+  const edicionesR2=new Map((catR2?.items||[]).map(x=>[x.id,x]));
   const works=catalog.works||[],stand=new Map((standard.records||[]).map(x=>[x.workId,x])),ed=new Map((ecd.records||[]).map(x=>[x.workId,x])),auth=new Map((authority.records||[]).map(x=>[x.workId,x])),graph=new Map((trees.records||[]).map(x=>[x.workId,x]));
   const total=works.length;
   /* El repertorio crece cuando entra una obra nueva: en vez de una cifra fija se
@@ -67,6 +76,12 @@ async function exportAll(button,statusNode){
     "Madurez ecdótica":e.maturity?.level??0,
     "Estado de madurez":e.maturity?.levelName||"",
     "Ficha permanente":"https://vitruvius-digital-library.org/classics-work-record?work="+encodeURIComponent(w.id),
+    "Facsímiles alojados":(porObra[w.id]||[]).length,
+    "Lectura en el visor":(porObra[w.id]||[]).length
+     ?"https://vitruvius-digital-library.org/buscador-facsimiles-clasicos?obra="+encodeURIComponent(porObra[w.id][0].r2):"",
+    "Edición en facsímil":compact((porObra[w.id]||[]).map(f=>f.edicion+" ("+f.anio+")"+(f.loeb?" · Loeb bilingüe":""))),
+    "PDF del facsímil":compact((porObra[w.id]||[]).map(f=>f.pdf)),
+    "Páginas del facsímil":compact((porObra[w.id]||[]).map(f=>edicionesR2.get(f.r2)?.paginas||"")),
     "Información editorial (JSON)":clean(JSON.stringify(w.bibliography||{})),
     "Metadatos adicionales (JSON)":clean(JSON.stringify({pdf:w.pdf,reading:w.reading,translation:w.translation,localReader:w.localReader,localEdition:w.localEdition,links:w.links})),
    });
@@ -173,8 +188,26 @@ async function exportAll(button,statusNode){
   addSheet(X,wb,"Ediciones",ediciones);
   addSheet(X,wb,"Arboles codices",arboles);
   addSheet(X,wb,"Fuentes",fuentes);
+  /* Hoja propia de los facsímiles: una fila por edición alojada, con su obra,
+     su visor y la constancia de que el OCR no está revisado. */
+  if(catR2?.items?.length){
+   const fichaPorEdicion=new Map();
+   for(const [workId,lista] of Object.entries(porObra))for(const f of lista)fichaPorEdicion.set(f.r2,workId);
+   addSheet(X,wb,"Facsimiles R2",catR2.items.map(x=>({
+    "ID edición":x.id,"Obra en el repertorio":fichaPorEdicion.get(x.id)||"sin ficha vinculada",
+    "Autor":x.autor,"Obra":x.obra,"Lengua":x.lengua,
+    "Edición":x.tituloEdicion,"Año":x.anio,"Volumen":x.volumen||"","Editor":x.editor||"",
+    "Bilingüe Loeb":x.bilingueLoeb?"sí":"no","Alcance":x.alcance||"",
+    "Páginas":x.paginas,"Páginas con capa de texto":x.paginasConTexto,
+    "Derechos":x.derechos,"Fuente":x.fuente,"SHA-256":x.sha256,
+    "PDF":x.pdf,"Texto por página (JSON)":x.texto,
+    "Lectura en el visor":"https://vitruvius-digital-library.org/buscador-facsimiles-clasicos?obra="+encodeURIComponent(x.id),
+    "Estado del texto":"OCR de Internet Archive sin revisar; localiza la página, no es locus verificado"
+   })));
+  }
   addSheet(X,wb,"Metodologia",[
-   {"Campo":"Alcance","Descripción":works.length+" obras del repertorio; testigos separados por vínculo obra-manuscrito. No todos los datos están acreditados."},
+   {"Campo":"Alcance","Descripción":works.length+" obras del repertorio y "+(catR2?.items?.length||0)+" ediciones en facsímil alojadas; testigos separados por vínculo obra-manuscrito. No todos los datos están acreditados."},
+    {"Campo":"Fecha de la planilla","Descripción":new Date().toISOString().slice(0,10)+". La planilla se arma en el navegador con los datos del día: no es un archivo guardado."},
    {"Campo":"Nulo / vacío","Descripción":"Información no disponible o no verificada; nunca equivale a dato negativo."},
    {"Campo":"PHI/TLG","Descripción":"Los códigos candidatos exigen revisión de autoridad. No implican CTS de edición validada."},
    {"Campo":"Stemma","Descripción":"Familias, arquetipos y posiciones solo se completan cuando hay bibliografía crítica suficiente."},
