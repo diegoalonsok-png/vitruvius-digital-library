@@ -65,8 +65,15 @@ function snippet(text,[a,b]){
 function loadJson(e){
  if(e.format==="remote-json-passages")
   return (e.language==="grc"?window.ClassicsOffsiteGreek?.load(e):e.language==="la"?window.ClassicsOffsiteLatin?.load(e):null)||Promise.resolve(null);
+ /* El texto de las obras nuevas se sirve desde el dominio de la biblioteca
+    en R2: no es del mismo origen que la página, y el cargador local lo
+    rechaza. Esas rutas van por el camino remoto, que ya trae su propia
+    caché y su espera entre reintentos. */
+ const remota=/^https:\/\/libros\.vitruvius-digital-library\.org\//.test(e.path||"");
  if(!cache.has(e.path))cache.set(e.path,
-  (window.VitruviaData?.json?window.VitruviaData.json(e.path):fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
+  (remota&&window.VitruviaData?.remoteJSON?window.VitruviaData.remoteJSON(e.path):
+   window.VitruviaData?.json&&!remota?window.VitruviaData.json(e.path):
+   fetch(e.path).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))
    .then(d=>d?.workId===(e.sourceWorkId||e.workId)&&d?.language===e.language&&Array.isArray(d.passages)?d:null).catch(()=>null));
  return cache.get(e.path);
 }

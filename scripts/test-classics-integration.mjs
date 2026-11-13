@@ -15,6 +15,7 @@ assert.equal(registry.entries.length,registry.count);
 assert.equal(coverage.works.length,coverage.totals.cataloguedWorks);
 const byId=new Map(coverage.works.map(w=>[w.id,w]));
 assert.equal(byId.size,coverage.works.length,"Duplicate works in coverage");
+const manifiestoR2=fs.existsSync(path.join(root,"data/r2/corpus-manifest.json"))?JSON.parse(read("data/r2/corpus-manifest.json")).obras:[];
 const seen=new Set(),seenWorks=new Set(),errors=[];
 const fileCache=new Map();
 for(const e of registry.entries){
@@ -25,8 +26,16 @@ for(const e of registry.entries){
  if(!work){errors.push("Missing catalogue record for "+e.workId);continue}
  if(!work.localEditionLanguages.includes(e.language))
   errors.push("Unreported local language "+e.workId+"/"+e.language);
- if(!/^(data\/(?:classics-corpus|structured|text|lexicon\/fontes)\/[a-zA-Z0-9._/-]+\.json|corpus\/[a-zA-Z0-9._/-]+\.html)$/.test(e.path||""))
+ if(!/^(data\/(?:classics-corpus|structured|text|lexicon\/fontes)\/[a-zA-Z0-9._/-]+\.json|corpus\/[a-zA-Z0-9._/-]+\.html|https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json)$/.test(e.path||""))
   {errors.push("Unsafe registry path "+e.path);continue}
+ if(/^https:/.test(e.path)){
+  /* Texto alojado en R2: consta en el manifiesto, no en el repositorio. */
+  const ficha=manifiestoR2.find(o=>e.path.endsWith(o.archivo));
+  if(!ficha){errors.push("Texto en R2 sin constancia en el manifiesto: "+e.path);continue}
+  if(ficha.workId!==e.workId||ficha.language!==e.language)errors.push("El manifiesto no coincide con el registro: "+e.path);
+  if(!(ficha.pasajes>0))errors.push("Texto en R2 sin pasajes: "+e.path);
+  continue;
+ }
  if(!fs.existsSync(path.join(root,e.path))){errors.push("Missing source: "+e.path);continue}
  if(!fileCache.has(e.path)){
   try{

@@ -1,13 +1,13 @@
 {
   "schema": "vitruvius-scholarly-citation-transparency-v1",
-  "generated": "2026-11-13T16:09:16.736Z",
+  "generated": "2026-11-13T16:14:59.461Z",
   "method": "Static metadata consistency check. Paths checked for existence, not textual accuracy, copyright status, editorial collation or external URL availability.",
   "counts": {
-    "cataloguedWorks": 256,
+    "cataloguedWorks": 271,
     "indexedTextVersions": 279,
     "worksWithAtLeastOneIndexedVersion": 214,
     "catalogueWorksWithStructuredEditionCitation": 59,
-    "catalogueWorksWithoutStructuredEditionCitation": 197,
+    "catalogueWorksWithoutStructuredEditionCitation": 212,
     "localReadingClaims": 145,
     "localReadingClaimsWithoutStructuredEditionCitation": 101,
     "catalogueWorksWithPartialBibliography": 10,
@@ -17,7 +17,7 @@
     "extractedUploadedDocuments": 30,
     "uploadedDocumentParagraphs": 25794,
     "hostedTranslationWorks": 59,
-    "worksWithoutHostedTranslation": 199
+    "worksWithoutHostedTranslation": 214
   },
   "priorityEditorialReview": [
     {
@@ -2929,6 +2929,111 @@
       "author": "Valerio Flaco",
       "status": "fuente-externa-identificada",
       "indexedVersions": 1
+    },
+    {
+      "workId": "aristoteles-meteorologica",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "author": "Aristóteles",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "galeno-opera-kuhn",
+      "title": "Opera omnia (ed. Kühn): volumen adicional",
+      "author": "Galeno",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "galeno-kuhn-vol01",
+      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "author": "Galeno",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "galeno-kuhn-vol19",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "author": "Galeno",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "galeno-scripta-minora",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "author": "Galeno",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "jamblico-vida-pitagorica",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "author": "Jámblico",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "proclo-comentario-euclides",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "author": "Proclo",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "sexto-empirico-obras",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "author": "Sexto Empírico",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "teon-esmirna-expositio",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "author": "Teón de Esmirna",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "anthologia-latina",
+      "title": "Anthologia Latina",
+      "author": "Antología latina",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "casiodoro-variae",
+      "title": "Variae",
+      "author": "Casiodoro",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "festo-verborum-significatu",
+      "title": "De verborum significatu",
+      "author": "Festo (y Verrio Flaco)",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "marciano-capela-nuptiis",
+      "title": "De nuptiis Philologiae et Mercurii",
+      "author": "Marciano Capela",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "nonio-marcelo-doctrina",
+      "title": "De compendiosa doctrina",
+      "author": "Nonio Marcelo",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
+    },
+    {
+      "workId": "paladio-opus-agriculturae",
+      "title": "Opus agriculturae",
+      "author": "Paladio",
+      "status": "fuente-externa-identificada",
+      "indexedVersions": 0
     }
   ],
   "warnings": [
@@ -3066,7 +3171,7 @@
     },
     {
       "id": "bibliography-backlog",
-      "message": "197 catalogue records lack a work-level or local-version structured edition citation; do not fabricate one."
+      "message": "212 catalogue records lack a work-level or local-version structured edition citation; do not fabricate one."
     }
   ],
   "failures": [],
