@@ -35,5 +35,5 @@ assert(page.includes('href="index.html"')&&page.includes('href="lector-bilingue.
 for(const nav of ["index.html","bibliotheca-graeca-latina.html"]){
  assert(fs.readFileSync(nav,"utf8").includes('href="tablas-explicativas.html"'));
 }
-assert(fs.readFileSync("sitemap.xml","utf8").includes("/tablas-explicativas.html"));
+assert(fs.readFileSync("sitemap.xml","utf8").includes("/tablas-explicativas<"));
 console.log("PASS: 9 tablas reales V297, DOI, loci, códice H y enlaces preservados.");

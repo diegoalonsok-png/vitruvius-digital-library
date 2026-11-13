@@ -5,6 +5,6 @@
   <InputEncoding>UTF-8</InputEncoding>
   <Language>es</Language>
   <Image width="16" height="16" type="image/svg+xml">https://vitruvius-digital-library.org/assets/favicon.svg</Image>
-  <Url type="text/html" method="get" template="https://vitruvius-digital-library.org/vitruvia-lexicon.html?q={searchTerms}"/>
-  <moz:SearchForm>https://vitruvius-digital-library.org/vitruvia-lexicon.html</moz:SearchForm>
+  <Url type="text/html" method="get" template="https://vitruvius-digital-library.org/vitruvia-lexicon?q={searchTerms}"/>
+  <moz:SearchForm>https://vitruvius-digital-library.org/vitruvia-lexicon</moz:SearchForm>
 </OpenSearchDescription>

@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGE = ROOT / "vitruvia-lexicon.html"
-URL = "https://vitruvius-digital-library.org/vitruvia-lexicon.html"
+URL = "https://vitruvius-digital-library.org/vitruvia-lexicon"
 E = json.loads((ROOT / "data/lexicon/etymologicum.json").read_text())
 SENT = json.loads((ROOT / "data/lexicon/sententiae.json").read_text())
 stats = {}

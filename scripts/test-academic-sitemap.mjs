@@ -4,6 +4,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 const base="https://vitruvius-digital-library.org/";
+const pretty=p=>p.replace(/(^|\/)index\.html$/,"$1").replace(/\.html$/,"");
 const pages=[
  "buscador-parrafos-vitruvio.html",
  "centro-control-academico.html",
@@ -25,7 +26,7 @@ assert(!urlList.some(url=>/\/google[a-z0-9]+\.html$|\/offline\.html$|\/escritori
 for(const path of pages){
  assert(fs.existsSync(path),"Missing research page "+path);
  const text=fs.readFileSync(path,"utf8");
- const expected=base+path;
+ const expected=base+pretty(path);
  assert(urlList.includes(expected),"Research page missing from sitemap: "+path);
  assert(/<title\b[^>]*>[^<]{8,}<\/title>/i.test(text),"Missing page title: "+path);
  assert(/<h1\b/i.test(text),"Missing H1: "+path);

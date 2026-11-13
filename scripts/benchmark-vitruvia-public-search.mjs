@@ -5,7 +5,7 @@
  */
 import {chromium} from "playwright";
 import {mkdirSync,writeFileSync} from "node:fs";
-const BASE="https://vitruvius-digital-library.org/vitruvia.html";
+const BASE="https://vitruvius-digital-library.org/vitruvia";
 const testCases=[
  {term:"Akhenaten",type:"egyptian-person",aliases:["Akhenaten","Akenatón","Ajenatón","Akhenatón"]},
  {term:"Cicerón",type:"classical-person",aliases:["Cicerón","Cicero"]},

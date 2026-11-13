@@ -16,7 +16,7 @@ Citation metadata and DOI references are already present in [CITATION.cff](CITAT
 **Independent open-access research resource for Vitruvius' *De architectura*.**  
 Editor and project lead: **Diego A. Kurilo**, architect and urbanist (Buenos Aires, Argentina).
 
-**Website:** https://vitruvius-digital-library.org/index.html
+**Website:** https://vitruvius-digital-library.org/
 
 ## Vitruvia Lexicon (léxico, etimología, sintaxis y frases del mundo antiguo)
 

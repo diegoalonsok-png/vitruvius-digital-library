@@ -5,6 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 const root=path.resolve(import.meta.dirname,"..");
+const pretty=p=>p.replace(/(^|\/)index\.html$/,"$1").replace(/\.html$/,"");
 const base="https://vitruvius-digital-library.org/";
 const editions=[
  ["V514","documents/edicion-v514.html","documents/kurilo-recensio-es.pdf","10.5281/zenodo.23884757","es"],
@@ -16,7 +17,7 @@ for(const [version,html,pdf,doi,lang] of editions){
  const hp=path.join(root,html),pp=path.join(root,pdf);
  if(!fs.existsSync(hp)||!fs.existsSync(pp)){errors.push(version+": missing HTML or PDF");continue}
  const content=fs.readFileSync(hp,"utf8"),size=fs.statSync(pp).size;
- const expectedCanonical=base+html,expectedPDF=base+pdf;
+ const expectedCanonical=base+pretty(html),expectedPDF=base+pdf;
  const checks={
   canonical:content.includes('<link rel="canonical" href="'+expectedCanonical+'">'),
   citationTitle:/<meta name="citation_title" content="[^"]+"/.test(content),

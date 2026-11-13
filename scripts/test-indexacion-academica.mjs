@@ -9,6 +9,7 @@ import assert from "node:assert/strict";
 import {existsSync,readFileSync} from "node:fs";
 const read=p=>readFileSync(p,"utf8");
 const base="https://vitruvius-digital-library.org/";
+const pretty=p=>p.replace(/(^|\/)index\.html$/,"$1").replace(/\.html$/,"");
 const hub="indice-busquedas-academicas.html";
 const terms=["domus","aedes","symmetria","locus","architectura"];
 const engines=["index.html","vitruvia.html","vitruvia-lexicon.html",
@@ -16,14 +17,14 @@ const engines=["index.html","vitruvia.html","vitruvia-lexicon.html",
 const sitemap=read("sitemap.xml");
 const listed=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
 assert.equal(new Set(listed).size,listed.length,"Duplicate sitemap URLs");
-assert(listed.includes(base+hub),"Academic search hub absent from sitemap");
+assert(listed.includes(base+pretty(hub)),"Academic search hub absent from sitemap");
 const hubHtml=read(hub);
 const head=html=>html.split(/<\/head>/i)[0];
 const canonical=(html,url)=>assert(
  head(html).includes('<link rel="canonical" href="'+url+'">'),
  "Missing expected canonical URL: "+url
 );
-canonical(hubHtml,base+hub);
+canonical(hubHtml,base+pretty(hub));
 assert(/<meta name="description" content="[^"]{30,}"/.test(head(hubHtml)),
  "Missing meaningful hub description");
 assert(!/noindex/i.test(head(hubHtml)),"Hub inadvertently noindexed");
@@ -33,8 +34,8 @@ for(const term of terms){
  const path=term+"-en-vitruvio.html";
  assert(existsSync(path),path+" missing");
  const source=read(path);
- assert(listed.includes(base+path),path+" missing from sitemap");
- canonical(source,base+path);
+ assert(listed.includes(base+pretty(path)),path+" missing from sitemap");
+ canonical(source,base+pretty(path));
  assert(!/noindex/i.test(head(source)),path+" inadvertently noindexed");
  assert(/10\.5281\/zenodo\./.test(source),path+" lacks citable DOI");
  assert(/<h1\b/i.test(source),path+" has no document heading");

@@ -65,4 +65,4 @@
 5. Capturar pantalla real: no usar maquetas de la interfaz presentadas como funcionamiento en vivo.
 6. Publicar el video solo cuando su contenido represente el estado real de la biblioteca.
 
-**Enlace de referencia:** https://vitruvius-digital-library.org/docencia-clasica.html
+**Enlace de referencia:** https://vitruvius-digital-library.org/docencia-clasica

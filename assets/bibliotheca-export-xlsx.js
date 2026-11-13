@@ -63,7 +63,7 @@ async function exportAll(button,statusNode){
     "Testimonios vinculados":ms.length,
     "Madurez ecdótica":e.maturity?.level??0,
     "Estado de madurez":e.maturity?.levelName||"",
-    "Ficha permanente":"https://vitruvius-digital-library.org/classics-work-record.html?work="+encodeURIComponent(w.id),
+    "Ficha permanente":"https://vitruvius-digital-library.org/classics-work-record?work="+encodeURIComponent(w.id),
     "Información editorial (JSON)":clean(JSON.stringify(w.bibliography||{})),
     "Metadatos adicionales (JSON)":clean(JSON.stringify({pdf:w.pdf,reading:w.reading,translation:w.translation,localReader:w.localReader,localEdition:w.localEdition,links:w.links})),
    });

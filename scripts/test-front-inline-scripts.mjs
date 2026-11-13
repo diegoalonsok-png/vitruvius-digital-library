@@ -120,7 +120,7 @@ assert(perseusAudit.records.filter(x=>x.ctsEditionUrn===null).every(x=>x.ctsStat
 assert(perseusPage.includes("https://scaife.perseus.org/")&&
  perseusPage.includes("data/perseus-provenance-audit.json"),
  "Auditoría Perseus debe enlazar fuentes y datos");
-assert(siteMap.includes("perseus-procedencia-textual.html")&&siteMap.trimEnd().endsWith("</urlset>"),
+assert(siteMap.includes("/perseus-procedencia-textual<")&&siteMap.trimEnd().endsWith("</urlset>"),
  "Sitemap académico debe estar íntegro y cerrar XML");
 console.log("PASS procedencia Perseus: 222 obras, códigos candidatos y URN de edición con evidencia TEI diferenciada");
 
@@ -154,8 +154,8 @@ assert(academicTools.includes("URLSearchParams")===false||academicTools.includes
  "Shared tool must retain query in a reproducible URL");
 assert(academicTools.includes("DOI del portal")&&academicTools.includes("las citas de pasajes requieren"),
  "The search citation must not claim the project DOI identifies a classical edition");
-const scholSitemap=readFileSync("sitemap.xml","utf8");
-assert(scholSitemap.includes("guia-investigacion-universitaria.html")&&
+const scholSitemap=readFileSync("sitemap.xml","utf8").replace(/<loc>([^<]*)<\/loc>/g,(m,u)=>m+"<!-- "+(u.endsWith("/")?u+"index.html":u+".html")+" -->"); // URLs canónicas sin .html
+assert(scholSitemap.includes("/guia-investigacion-universitaria<")&&
  scholSitemap.trimEnd().endsWith("</urlset>"),"University guide missing from valid sitemap");
 console.log("PASS universidad: enlaces y citas en cinco buscadores, alternativa estática y DOI");
 
