@@ -27,9 +27,22 @@ for(const scope of sourceScopes.entries){
 const originals=new Set(["la","grc"]);
 const targetLanguages=new Set(["en","es","fr"]);
 const entries=new Map();
+const remoteRecords=[];
 for(const e of registry.entries){
  assert(e.workId&&e.language&&e.path,"Incomplete indexed record");
- assert(existsSync(new URL("../"+e.path,import.meta.url)),"Indexed source absent: "+e.path);
+ if(/^https?:\\/\\//i.test(e.path)){
+  const remote=new URL(e.path);
+  assert(remote.protocol==="https:"&&remote.hostname==="libros.vitruvius-digital-library.org"&&
+   /^\\/corpus\\/[a-z0-9/_-]+\\.json$/i.test(remote.pathname),
+   "Remote text index has an unexpected URL: "+e.path);
+  assert(typeof e.sourceDescription==="string"&&e.sourceDescription.trim(),
+   "Remote index lacks source attribution: "+e.path);
+  // The repository cannot test remote R2 object existence with existsSync.
+  // Treat these as declared remote sources, never as locally verified files.
+  remoteRecords.push(e);
+  continue;
+ }
+ assert(existsSync(new URL("../"+e.path,import.meta.url)),"Local indexed source absent: "+e.path);
  if(!entries.has(e.workId))entries.set(e.workId,new Map());
  const languages=entries.get(e.workId);
  assert(!languages.has(e.language),"Repeated indexed language: "+e.workId+"/"+e.language);
@@ -71,4 +84,4 @@ const report={
 };
 console.log(JSON.stringify(report,null,2));
 assert(concepts.length>0&&ancientTerms>0&&modernTerms>0,"Semantic repertory missing");
-console.log("PASS: translation coverage reported and semantic source structurally checked; missing translations remain explicit.");
+console.log("PASS: local translation coverage and semantic source structurally checked; R2 sources are declared but availability is not verified; missing translations remain explicit.");
