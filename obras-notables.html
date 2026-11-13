@@ -52,6 +52,19 @@ a{color:var(--tinta)}
 .ficha-folio b{font:600 13px/1.3 Arial,Helvetica,sans-serif}
 .ficha-folio small{font:12px/1.3 Arial,Helvetica,sans-serif;color:#b9a98f}
 .galeria .barra button{background:#12202b;color:#f7eee3;border-color:#5d7a90}
+.traducciones-lectura{padding:24px 0 2px;margin-top:28px;border-top:2px solid var(--borde)}
+.traducciones-lectura[hidden]{display:none!important}
+.traducciones-lectura>h2{font:normal clamp(24px,3vw,32px)/1.25 Georgia,serif;margin:0 0 8px}
+.traducciones-nota{font:14px/1.65 Arial,Helvetica,sans-serif;color:var(--gris);max-width:1050px;margin:0 0 22px}
+.visor-edicion{background:#fff;border:1px solid var(--borde);border-radius:7px;overflow:hidden;margin:0 0 24px}
+.visor-edicion-cabecera{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:15px 18px;background:#f2eee7;border-bottom:1px solid var(--borde)}
+.visor-edicion-cabecera h3{font:normal 22px/1.3 Georgia,serif;margin:0 0 5px}
+.visor-edicion-cabecera p{font:13px/1.55 Arial,Helvetica,sans-serif;color:var(--gris);margin:0}
+.visor-edicion-cabecera a{white-space:nowrap;font:600 13px Arial,Helvetica,sans-serif;border:1px solid var(--tinta);border-radius:4px;padding:10px 13px;text-decoration:none}
+.visor-edicion iframe{display:block;width:100%;height:clamp(530px,78vh,850px);border:0;background:#e8e6e2}
+.visor-aviso{padding:9px 18px 13px;margin:0;color:var(--gris);font:12px/1.55 Arial,Helvetica,sans-serif}
+@media(max-width:760px){.visor-edicion-cabecera{flex-direction:column;align-items:flex-start}.visor-edicion iframe{height:65vh;min-height:470px}}
+
 footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:12px/1.6 Arial,Helvetica,sans-serif;color:var(--gris)}
 </style>
 </head>
@@ -118,12 +131,12 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
    </section>
    <section id="palladio-traducciones" hidden>
     <h2>Traducciones históricas de Palladio</h2>
-    <p class="aviso">Ediciones completas de dominio público por su antigüedad. La correspondencia entre folios de 1570 y páginas traducidas aún no está cotejada; no se anuncia sincronización automática.</p>
+    <p class="aviso">Castellano de Ortiz y Sanz (1797): solo libros I y II; el tomo II nunca se publicó. Inglés de Isaac Ware (1738): los cuatro libros. Los visores adicionales están más abajo; no existe todavía sincronización editorial por capítulo.</p>
     <dl>
      <dt>Castellano · Ortiz y Sanz, 1797</dt>
-     <dd><a href="https://www.sedhc.es/bibliotecaD/1797_Andrea_Palladio_Los_cuatro_libros_de_arquitectura.pdf" target="_blank" rel="noopener noreferrer">Consultar traducción castellana completa (PDF)</a></dd>
+     <dd><a href="https://www.sedhc.es/bibliotecaD/1797_Andrea_Palladio_Los_cuatro_libros_de_arquitectura.pdf" target="_blank" rel="noopener noreferrer">Consultar tomo castellano I–II (PDF)</a></dd>
      <dt>Inglés · Isaac Ware, 1738</dt>
-     <dd><a href="https://www.si.edu/object/four-books-architecture-andrea-palladio-literally-translated-original-italian-isaac-ware-particular%3Asiris_sil_248300" target="_blank" rel="noopener noreferrer">Consultar edición inglesa histórica (Smithsonian)</a></dd>
+     <dd><a href="https://archive.org/details/gri_33125011569684" target="_blank" rel="noopener noreferrer">Consultar edición inglesa completa (Internet Archive)</a></dd>
     </dl>
     <p class="aviso">Se conserva el italiano de Palladio (1570) como testimonio de base. Los paralelos por libro y capítulo se incorporarán únicamente al verificar las equivalencias.</p>
    </section>
@@ -152,6 +165,26 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
    </section>
   </aside>
  </div>
+ <section id="palladio-visores" class="traducciones-lectura" aria-labelledby="traducciones-titulo" hidden>
+  <h2 id="traducciones-titulo">Palladio · traducciones históricas en lectura directa</h2>
+  <p class="traducciones-nota">Lectores adicionales debajo del facsímil italiano de 1570. La edición castellana de Ortiz y Sanz (1797) comprende únicamente los libros I y II; la inglesa de Isaac Ware (1738), los cuatro. Cada visor tiene navegación independiente: las páginas y los folios todavía no están sincronizados entre ediciones.</p>
+  <article class="visor-edicion" id="palladio-visor-castellano">
+   <div class="visor-edicion-cabecera">
+    <div><h3>01 · Castellano · Ortiz y Sanz, 1797</h3><p>Los quatro libros de arquitectura · tomo publicado: libros I y II · Imprenta Real, Madrid. Reproducción difundida por la Sociedad Española de Historia de la Construcción.</p></div>
+    <a href="https://www.sedhc.es/bibliotecaD/1797_Andrea_Palladio_Los_cuatro_libros_de_arquitectura.pdf" target="_blank" rel="noopener noreferrer">Abrir PDF original</a>
+   </div>
+   <iframe title="Lector de la traducción castellana de Palladio por Ortiz y Sanz de 1797, libros I y II" data-src="https://www.sedhc.es/bibliotecaD/1797_Andrea_Palladio_Los_cuatro_libros_de_arquitectura.pdf#page=1&amp;view=FitH" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+   <p class="visor-aviso">El PDF se consulta desde la institución que lo publica, sin duplicarlo en Vitruvius. Si el navegador bloquea la visualización integrada, utilizá «Abrir PDF original».</p>
+  </article>
+  <article class="visor-edicion" id="palladio-visor-ingles">
+   <div class="visor-edicion-cabecera">
+    <div><h3>02 · Inglés · Isaac Ware, 1738</h3><p>The four books of architecture · traducción de los cuatro libros. Ejemplar digitalizado del Getty Research Institute, disponible mediante Internet Archive.</p></div>
+    <a href="https://archive.org/details/gri_33125011569684" target="_blank" rel="noopener noreferrer">Abrir edición original</a>
+   </div>
+   <iframe title="Lector de The Four Books of Architecture traducidos por Isaac Ware en 1738" data-src="https://archive.org/embed/gri_33125011569684/page/n1/mode/1up" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+   <p class="visor-aviso">La navegación de esta digitalización es independiente del italiano de 1570. Para estudiar un capítulo paralelo debe comprobarse previamente su equivalencia editorial.</p>
+  </article>
+ </section>
 </div>
 
 <footer>
@@ -162,6 +195,6 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <script defer src="assets/vitruvia-philology.js?v=20261113-obras"></script>
 <script defer src="assets/r2-clasicos-busqueda.js?v=20261113-obras"></script>
-<script defer src="assets/obras-notables-visor.js?v=20261113-traducciones-historicas-v7"></script>
+<script defer src="assets/obras-notables-visor.js?v=20261113-visores-traducciones-v8"></script>
 </body>
 </html>
