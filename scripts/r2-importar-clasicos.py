@@ -51,9 +51,17 @@ def fold(s):
 
 
 def buscar_ia(o, anio_max):
-    base = f'creator:({o["creador"]}) AND mediatype:texts AND date:[1800-01-01 TO {anio_max}-12-31]'
+    creadores = [c.strip() for c in o["creador"].split("|")]
+    cre = " OR ".join(f'"{c}"' if " " in c else c for c in creadores)
+    base = f"creator:({cre}) AND mediatype:texts AND date:[1500-01-01 TO {anio_max}-12-31]"
     kw = " AND ".join(f'title:("{t}")' for t in o["titulo"])
-    consultas = [f'{base} AND {kw} AND title:("english translation")', f"{base} AND {kw}"]
+    idioma = o.get("idioma")
+    if idioma == "spa":
+        consultas = [f"{base} AND {kw} AND language:(spa OR Spanish OR Español)", f"{base} AND {kw}"]
+    elif idioma == "grc":
+        consultas = [f"{base} AND {kw} AND language:(grc OR gre OR Greek)", f"{base} AND {kw}"]
+    else:
+        consultas = [f'{base} AND {kw} AND title:("english translation")', f"{base} AND {kw}"]
     vistos, out = set(), []
     for q in consultas:
         url = ("https://archive.org/advancedsearch.php?" + urllib.parse.urlencode(
@@ -83,6 +91,12 @@ def elegir_pdf(ident, anio_max, max_bytes):
     return m, pdfs[0], anio
 
 
+def es_castellano(doc):
+    l = doc.get("language") or ""
+    l = " ".join(l) if isinstance(l, list) else l
+    return any(w in fold(l) for w in ("spa", "spanish", "espanol", "castellano"))
+
+
 def es_loeb(titulo, editor, anio):
     ed = " ".join(editor) if isinstance(editor, list) else (editor or "")
     return ("english translation" in fold(titulo) and anio >= 1911
@@ -102,6 +116,8 @@ def procesar(o, ctx):
                 titulo = titulo[0]
             if not all(fold(t) in fold(titulo) for t in o["titulo"]):
                 raise ValueError("título no coincide")
+            if o.get("idioma") == "spa" and not es_castellano(doc):
+                raise ValueError("la edición no figura en castellano")
             m, f, anio = elegir_pdf(ident, ctx["anio_max"], ctx["max_bytes"])
             datos = get(f"https://archive.org/download/{ident}/{urllib.parse.quote(f['name'])}", binario=True,
                         timeout=600)
@@ -116,7 +132,7 @@ def procesar(o, ctx):
             if con_texto < len(paginas) * 0.4:
                 raise ValueError("sin capa de texto suficiente")
             portada = fold(" ".join(paginas[:20]))
-            if fold(o["creador"]).split()[0] not in portada:
+            if not any(fold(c).split()[0] in portada for c in o["creador"].split("|")):
                 raise ValueError("el autor no aparece en las primeras páginas")
             clave_pdf = f"clasicos/pdf/{o['id']}.pdf"
             clave_txt = f"clasicos/texto/{o['id']}.json"
@@ -133,6 +149,8 @@ def procesar(o, ctx):
                 raise ValueError("SHA-256 del objeto público distinto")
             ficha = {
                 "id": o["id"], "autor": o["autor"], "obra": o["obra"], "lengua": o["lengua"],
+                "idiomaEdicion": o.get("idioma") or ("bilingue-en" if "english translation" in fold(titulo) else "s/d"),
+                "tanda": o.get("tanda", 1),
                 "tituloEdicion": titulo, "anio": int(anio), "volumen": m.get("volume") or doc.get("volume"),
                 "editor": m.get("publisher"), "creadorIA": m.get("creator"),
                 "bilingueLoeb": es_loeb(titulo, m.get("publisher"), int(anio)),

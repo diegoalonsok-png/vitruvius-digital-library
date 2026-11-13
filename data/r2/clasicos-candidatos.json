@@ -1,6 +1,6 @@
 {
  "schema": "vdl-r2-clasicos-candidatos-1",
- "descripcion": "Obras clásicas griegas y latinas que todavía no tienen PDF en la biblioteca (documents/clasicos, documents/classics). Se buscan en Internet Archive ediciones de dominio público (anteriores a 1929), con preferencia por volúmenes bilingües Loeb (original y traducción inglesa enfrentados). Cada PDF elegido debe mencionar al autor en sus primeras páginas.",
+ "descripcion": "Obras clásicas griegas y latinas que todavía no tienen PDF en la biblioteca (documents/clasicos, documents/classics). Se buscan en Internet Archive ediciones de dominio público (anteriores a 1929), con preferencia por volúmenes bilingües Loeb (original y traducción inglesa enfrentados). Cada PDF elegido debe mencionar al autor en sus primeras páginas. Tanda 2: obras ausentes del sitio, en ediciones con el texto griego o en traducciones castellanas de dominio público.",
  "limites": {
   "maxMiB": 180,
   "anioMaximo": 1928
@@ -549,6 +549,477 @@
     "civil wars"
    ],
    "creador": "caesar"
+  },
+  {
+   "id": "longo-dafnis-cloe",
+   "autor": "Longo",
+   "obra": "Dafnis y Cloe",
+   "lengua": "grc",
+   "titulo": [
+    "daphnis"
+   ],
+   "creador": "longus",
+   "tanda": 2
+  },
+  {
+   "id": "aquiles-tacio-leucipa",
+   "autor": "Aquiles Tacio",
+   "obra": "Leucipa y Clitofonte",
+   "lengua": "grc",
+   "titulo": [
+    "achilles tatius"
+   ],
+   "creador": "achilles tatius",
+   "tanda": 2
+  },
+  {
+   "id": "filostrato-apolonio",
+   "autor": "Filóstrato",
+   "obra": "Vida de Apolonio de Tiana",
+   "lengua": "grc",
+   "titulo": [
+    "apollonius of tyana"
+   ],
+   "creador": "philostratus",
+   "tanda": 2
+  },
+  {
+   "id": "quinto-esmirna-posthomericas",
+   "autor": "Quinto de Esmirna",
+   "obra": "Posthoméricas (La caída de Troya)",
+   "lengua": "grc",
+   "titulo": [
+    "fall of troy"
+   ],
+   "creador": "quintus smyrnaeus|quintus",
+   "tanda": 2
+  },
+  {
+   "id": "juliano-obras",
+   "autor": "Juliano el Apóstata",
+   "obra": "Obras",
+   "lengua": "grc",
+   "titulo": [
+    "julian"
+   ],
+   "creador": "julian",
+   "tanda": 2
+  },
+  {
+   "id": "menandro-comedias",
+   "autor": "Menandro",
+   "obra": "Comedias (fragmentos)",
+   "lengua": "grc",
+   "titulo": [
+    "menander"
+   ],
+   "creador": "menander",
+   "tanda": 2
+  },
+  {
+   "id": "calimaco-himnos",
+   "autor": "Calímaco y Licofrón",
+   "obra": "Himnos, epigramas; Alejandra",
+   "lengua": "grc",
+   "titulo": [
+    "callimachus"
+   ],
+   "creador": "callimachus",
+   "tanda": 2
+  },
+  {
+   "id": "antologia-griega",
+   "autor": "Antología griega",
+   "obra": "Antología Palatina",
+   "lengua": "grc",
+   "titulo": [
+    "greek anthology"
+   ],
+   "creador": "paton|greek anthology",
+   "tanda": 2
+  },
+  {
+   "id": "lyra-graeca",
+   "autor": "Poetas líricos griegos",
+   "obra": "Lyra Graeca",
+   "lengua": "grc",
+   "titulo": [
+    "lyra graeca"
+   ],
+   "creador": "edmonds",
+   "tanda": 2
+  },
+  {
+   "id": "jenofonte-ciropedia",
+   "autor": "Jenofonte",
+   "obra": "Ciropedia",
+   "lengua": "grc",
+   "titulo": [
+    "cyropaedia"
+   ],
+   "creador": "xenophon",
+   "tanda": 2
+  },
+  {
+   "id": "jenofonte-economico",
+   "autor": "Jenofonte",
+   "obra": "Económico",
+   "lengua": "grc",
+   "titulo": [
+    "oeconomicus"
+   ],
+   "creador": "xenophon",
+   "tanda": 2
+  },
+  {
+   "id": "platon-teeteto-sofista",
+   "autor": "Platón",
+   "obra": "Teeteto y Sofista",
+   "lengua": "grc",
+   "titulo": [
+    "theaetetus"
+   ],
+   "creador": "plato",
+   "tanda": 2
+  },
+  {
+   "id": "platon-cratilo-parmenides",
+   "autor": "Platón",
+   "obra": "Crátilo, Parménides, Hipias, Hipias mayor",
+   "lengua": "grc",
+   "titulo": [
+    "cratylus"
+   ],
+   "creador": "plato",
+   "tanda": 2
+  },
+  {
+   "id": "platon-protagoras",
+   "autor": "Platón",
+   "obra": "Laques, Protágoras, Menón, Eutidemo",
+   "lengua": "grc",
+   "titulo": [
+    "protagoras"
+   ],
+   "creador": "plato",
+   "tanda": 2
+  },
+  {
+   "id": "esquines-discursos",
+   "autor": "Esquines",
+   "obra": "Discursos",
+   "lengua": "grc",
+   "titulo": [
+    "aeschines"
+   ],
+   "creador": "aeschines",
+   "tanda": 2
+  },
+  {
+   "id": "iseo-discursos",
+   "autor": "Iseo",
+   "obra": "Discursos",
+   "lengua": "grc",
+   "titulo": [
+    "isaeus"
+   ],
+   "creador": "isaeus",
+   "tanda": 2
+  },
+  {
+   "id": "hipocrates-obras",
+   "autor": "Hipócrates",
+   "obra": "Obras (Loeb)",
+   "lengua": "grc",
+   "titulo": [
+    "hippocrates"
+   ],
+   "creador": "hippocrates",
+   "tanda": 2
+  },
+  {
+   "id": "galeno-facultades-naturales",
+   "autor": "Galeno",
+   "obra": "Sobre las facultades naturales",
+   "lengua": "grc",
+   "titulo": [
+    "natural faculties"
+   ],
+   "creador": "galen",
+   "tanda": 2
+  },
+  {
+   "id": "epicuro-restos",
+   "autor": "Epicuro",
+   "obra": "Los restos existentes (ed. Bailey)",
+   "lengua": "grc",
+   "titulo": [
+    "epicurus"
+   ],
+   "creador": "epicurus|bailey",
+   "tanda": 2
+  },
+  {
+   "id": "baquilides-poemas",
+   "autor": "Baquílides",
+   "obra": "Poemas y fragmentos (ed. Jebb)",
+   "lengua": "grc",
+   "titulo": [
+    "bacchylides"
+   ],
+   "creador": "bacchylides",
+   "tanda": 2
+  },
+  {
+   "id": "aristoteles-historia-animales",
+   "autor": "Aristóteles",
+   "obra": "Historia de los animales",
+   "lengua": "grc",
+   "titulo": [
+    "historia animalium"
+   ],
+   "creador": "aristotle",
+   "tanda": 2
+  },
+  {
+   "id": "aristoteles-del-cielo",
+   "autor": "Aristóteles",
+   "obra": "Acerca del cielo",
+   "lengua": "grc",
+   "titulo": [
+    "de caelo"
+   ],
+   "creador": "aristotle",
+   "tanda": 2
+  },
+  {
+   "id": "nicomaco-aritmetica",
+   "autor": "Nicómaco de Gerasa",
+   "obra": "Introducción a la aritmética",
+   "lengua": "grc",
+   "titulo": [
+    "arithmetic"
+   ],
+   "creador": "nicomachus",
+   "tanda": 2
+  },
+  {
+   "id": "plotino-eneadas",
+   "autor": "Plotino",
+   "obra": "Enéadas",
+   "lengua": "grc",
+   "titulo": [
+    "enneades"
+   ],
+   "creador": "plotinus|plotin",
+   "tanda": 2
+  },
+  {
+   "id": "heliodoro-etiopicas",
+   "autor": "Heliodoro",
+   "obra": "Etiópicas",
+   "lengua": "grc",
+   "titulo": [
+    "aethiopic"
+   ],
+   "creador": "heliodorus",
+   "tanda": 2
+  },
+  {
+   "id": "curcio-alejandro-es",
+   "autor": "Quinto Curcio Rufo",
+   "obra": "Historia de Alejandro Magno (trad. castellana)",
+   "lengua": "la",
+   "titulo": [
+    "alejandro"
+   ],
+   "creador": "curcio|curtius|quintus curtius",
+   "tanda": 2,
+   "idioma": "spa"
+  },
+  {
+   "id": "floro-epitome-es",
+   "autor": "Floro",
+   "obra": "Compendio de la historia romana (trad. castellana)",
+   "lengua": "la",
+   "titulo": [
+    "historia romana"
+   ],
+   "creador": "floro|florus",
+   "tanda": 2,
+   "idioma": "spa"
+  },
+  {
+   "id": "justino-trogo-es",
+   "autor": "Justino",
+   "obra": "Epítome de las Historias filípicas de Trogo (trad. castellana)",
+   "lengua": "la",
+   "titulo": [
+    "justino"
+   ],
+   "creador": "justino|justinus|justin",
+   "tanda": 2,
+   "idioma": "spa"
+  },
+  {
+   "id": "eutropio-es",
+   "autor": "Eutropio",
+   "obra": "Compendio de la historia romana (trad. castellana)",
+   "lengua": "la",
+   "titulo": [
+    "eutropio"
+   ],
+   "creador": "eutropio|eutropius",
+   "tanda": 2,
+   "idioma": "spa"
+  },
+  {
+   "id": "amiano-marcelino-es",
+   "autor": "Amiano Marcelino",
+   "obra": "Historia del Imperio romano (trad. castellana)",
+   "lengua": "la",
+   "titulo": [
+    "historia"
+   ],
+   "creador": "ammiano|amiano|ammianus",
+   "tanda": 2,
+   "idioma": "spa"
+  },
+  {
+   "id": "plauto-comedias-es",
+   "autor": "Plauto",
+   "obra": "Comedias (trad. castellana)",
+   "lengua": "la",
+   "titulo": [
+    "comedias"
+   ],
+   "creador": "plauto|plautus",
+   "tanda": 2,
+   "idioma": "spa"
+  },
+  {
+   "id": "valerio-flaco-argonautica",
+   "autor": "Valerio Flaco",
+   "obra": "Argonáuticas",
+   "lengua": "la",
+   "titulo": [
+    "argonautica"
+   ],
+   "creador": "valerius flaccus|flaccus",
+   "tanda": 2
+  },
+  {
+   "id": "manilio-astronomica",
+   "autor": "Manilio",
+   "obra": "Astronomica",
+   "lengua": "la",
+   "titulo": [
+    "astronomica"
+   ],
+   "creador": "manilius",
+   "tanda": 2
+  },
+  {
+   "id": "claudiano-poemas",
+   "autor": "Claudiano",
+   "obra": "Poemas",
+   "lengua": "la",
+   "titulo": [
+    "claudian"
+   ],
+   "creador": "claudian|claudianus",
+   "tanda": 2
+  },
+  {
+   "id": "ausonio-obras",
+   "autor": "Ausonio",
+   "obra": "Obras",
+   "lengua": "la",
+   "titulo": [
+    "ausonius"
+   ],
+   "creador": "ausonius",
+   "tanda": 2
+  },
+  {
+   "id": "prudencio-poemas",
+   "autor": "Prudencio",
+   "obra": "Poemas",
+   "lengua": "la",
+   "titulo": [
+    "prudentius"
+   ],
+   "creador": "prudentius|prudencio",
+   "tanda": 2
+  },
+  {
+   "id": "lactancio-instituciones",
+   "autor": "Lactancio",
+   "obra": "Instituciones divinas",
+   "lengua": "la",
+   "titulo": [
+    "divine institutes"
+   ],
+   "creador": "lactantius",
+   "tanda": 2
+  },
+  {
+   "id": "minucio-felix-octavio",
+   "autor": "Minucio Félix",
+   "obra": "Octavio",
+   "lengua": "la",
+   "titulo": [
+    "octavius"
+   ],
+   "creador": "minucius felix|minucius",
+   "tanda": 2
+  },
+  {
+   "id": "pomponio-mela-es",
+   "autor": "Pomponio Mela",
+   "obra": "Compendio de geografía (trad. castellana)",
+   "lengua": "la",
+   "titulo": [
+    "geografia"
+   ],
+   "creador": "mela|pomponio",
+   "tanda": 2,
+   "idioma": "spa"
+  },
+  {
+   "id": "higino-fabulas",
+   "autor": "Higino",
+   "obra": "Fábulas y Astronomía poética",
+   "lengua": "la",
+   "titulo": [
+    "fabulae"
+   ],
+   "creador": "hyginus",
+   "tanda": 2
+  },
+  {
+   "id": "heliodoro-es",
+   "autor": "Heliodoro",
+   "obra": "Historia etiópica de los amores de Teágenes y Cariclea (trad. castellana)",
+   "lengua": "grc",
+   "titulo": [
+    "teagenes"
+   ],
+   "creador": "heliodoro|heliodorus",
+   "tanda": 2,
+   "idioma": "spa"
+  },
+  {
+   "id": "longo-dafnis-es",
+   "autor": "Longo",
+   "obra": "Dafnis y Cloe (trad. castellana de Juan Valera)",
+   "lengua": "grc",
+   "titulo": [
+    "dafnis"
+   ],
+   "creador": "longo|longus|valera",
+   "tanda": 2,
+   "idioma": "spa"
   }
  ]
 }
