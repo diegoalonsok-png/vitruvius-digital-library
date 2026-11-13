@@ -26,6 +26,12 @@ h1 em{font-style:italic}
 .marcas{position:absolute;inset:0;pointer-events:none}
 .marca{position:absolute;background:rgba(201,168,76,.38);border-top:1px solid rgba(201,168,76,.8);border-bottom:1px solid rgba(201,168,76,.8)}
 .barra{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.lupa-folio{display:inline-flex;align-items:center;gap:6px;min-height:43px!important;padding:7px 12px!important}
+.lupa-folio svg{flex:none;display:block}
+.button-traducciones{display:inline-flex;align-items:center;text-decoration:none;background:#1b2a4a;color:#fff;border:1px solid #1b2a4a;border-radius:4px;padding:9px 13px;font:600 13px/1.4 Arial,Helvetica,sans-serif}
+.button-traducciones[hidden]{display:none!important}
+.button-traducciones:hover{background:#33466c}
+
 button,select,input{font:14px/1.3 Arial,Helvetica,sans-serif;color:var(--tinta);background:#fff;border:1px solid var(--tinta);border-radius:4px;padding:7px 11px;cursor:pointer}
 button[aria-pressed="true"]{background:var(--tinta);color:#fff}
 button:disabled{opacity:.45;cursor:not-allowed}
@@ -100,8 +106,9 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
  <div class="cols">
   <div>
    <div class="barra" role="group" aria-label="Herramientas de lectura">
-    <button id="menos" type="button" title="Lupa: alejar la página" aria-label="Lupa alejar">⌕− Alejar</button>
-    <button id="mas" type="button" title="Lupa: acercar la página" aria-label="Lupa acercar">⌕+ Acercar</button>
+    <button id="menos" class="lupa-folio" type="button" title="Lupa: alejar el folio" aria-label="Lupa alejar"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21M7.5 10.5h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Alejar</span></button>
+    <button id="mas" class="lupa-folio" type="button" title="Lupa: acercar el folio" aria-label="Lupa acercar"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21M7.5 10.5h6M10.5 7.5v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Acercar</span></button>
+    <a class="button-traducciones" id="ir-traducciones" href="#palladio-visores">Leer traducciones ES / EN ↓</a>
     <button id="ajustar" type="button" title="Volver a mostrar el folio completo">Ajustar a la caja</button>
     <button id="invertir" type="button" aria-pressed="false" title="Invertir colores del folio">◐ Invertir colores</button>
     <label>Visualización <select id="modo"><option value="original">Original</option><option value="gris">Blanco y negro</option><option value="negativo">Negativo · letras claras</option></select></label>
@@ -195,6 +202,6 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <script defer src="assets/vitruvia-philology.js?v=20261113-obras"></script>
 <script defer src="assets/r2-clasicos-busqueda.js?v=20261113-obras"></script>
-<script defer src="assets/obras-notables-visor.js?v=20261113-visores-traducciones-v8"></script>
+<script defer src="assets/obras-notables-visor.js?v=20261113-lupas-svg-traducciones-v9"></script>
 </body>
 </html>
