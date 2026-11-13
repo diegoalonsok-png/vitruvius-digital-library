@@ -23,7 +23,8 @@ if(!document.querySelector('script[data-research-crosslinks]')){
  * The module skips embedded readers, folios, the main apps and other bespoke
  * manuscript views on its own; never insert two copies.
  */
-const secondaryPage=(location.pathname.split("/").pop()||"index.html").toLowerCase();
+const secondaryPageRaw=(location.pathname.split("/").pop()||"index.html").toLowerCase();
+const secondaryPage=secondaryPageRaw.endsWith(".html")?secondaryPageRaw:secondaryPageRaw+".html";
 const secondarySkip=new Set([
  "index.html","vitruvia.html","vitruvia-lexicon.html","aparato-critico.html",
  "bibliotheca-graeca-latina.html","onomasticon.html",
