@@ -2961,7 +2961,10 @@
    "manifest": null,
    "rights": "Biblioteca Medicea Laurenziana: consultar y respetar condiciones institucionales.",
    "verification": "Repertorio de Diels, Die Handschriften der antiken Ärzte (base de datos Medical Traditions), consultado el 13 nov. 2026. Digitalización en línea NO verificada: la lectura del original requiere la Teca Digitale de la Laurenziana o el permiso de la biblioteca.",
-   "oldestKnownWitnessNote": "Es el testimonio más antiguo registrado en el repertorio para varios de estos tratados; no se afirma que sea el más antiguo existente del corpus galénico entero."
+   "oldestKnownWitnessNote": "Es el testimonio más antiguo registrado en el repertorio para varios de estos tratados; no se afirma que sea el más antiguo existente del corpus galénico entero.",
+   "dateStart": 1100,
+   "dateEnd": 1199,
+   "dateEvidence": "Datación por siglo según la ficha de la institución o el repertorio; los años son los extremos del siglo, no una datación precisa del códice."
   },
   {
    "id": "galen-parisinus-gr-2154",
@@ -2980,7 +2983,10 @@
    "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b10723348m",
    "manifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b10723348m/manifest.json",
    "rights": "Bibliothèque nationale de France · condiciones de uso de Gallica.",
-   "verification": "Ficha y digitalización de Gallica (ark:/12148/btv1b10723348m), datación declarada 1301-1400; consultado el 13 nov. 2026."
+   "verification": "Ficha y digitalización de Gallica (ark:/12148/btv1b10723348m), datación declarada 1301-1400; consultado el 13 nov. 2026.",
+   "dateStart": 1301,
+   "dateEnd": 1400,
+   "dateEvidence": "Datación por siglo según la ficha de la institución o el repertorio; los años son los extremos del siglo, no una datación precisa del códice."
   },
   {
    "id": "galen-parisinus-gr-2153",
@@ -2999,7 +3005,10 @@
    "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b107229115",
    "manifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b107229115/manifest.json",
    "rights": "Bibliothèque nationale de France · condiciones de uso de Gallica.",
-   "verification": "Pinakes (IRHT-CNRS), diktyon 51782, y digitalización de Gallica (ark:/12148/btv1b107229115), datación declarada 1401-1500; consultado el 13 nov. 2026."
+   "verification": "Pinakes (IRHT-CNRS), diktyon 51782, y digitalización de Gallica (ark:/12148/btv1b107229115), datación declarada 1401-1500; consultado el 13 nov. 2026.",
+   "dateStart": 1401,
+   "dateEnd": 1500,
+   "dateEvidence": "Datación por siglo según la ficha de la institución o el repertorio; los años son los extremos del siglo, no una datación precisa del códice."
   }
  ],
  "editions": [

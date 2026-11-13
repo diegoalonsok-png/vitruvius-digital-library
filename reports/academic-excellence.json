@@ -1,0 +1,1289 @@
+{
+  "schema": "vitruvius-academic-evidence-matrix-v1",
+  "generated": "2026-11-13T15:26:23.627Z",
+  "purpose": "Auditoría reproducible de metadatos y trazabilidad; NO equivale a evaluación universitaria ni asigna nota 9,75/10.",
+  "limitations": "No certifica lectura humana, traducciones, derechos, sitios externos ni colación autóptica. No modifica el material de Vitruvio.",
+  "scope": {
+    "cataloguedWorks": 256,
+    "indexedVersions": 247,
+    "indexedWorks": 182,
+    "indexedOriginals": 182,
+    "unindexedOriginals": 74,
+    "worksWithHostedTranslations": 59,
+    "worksWithoutHostedTranslations": 197
+  },
+  "originalCoveragePercent": 71.09,
+  "hostedTranslationCoveragePercent": 23.05,
+  "provenance": {
+    "localVersions": 59,
+    "explicitChicago18VersionCitations": 36,
+    "versionsWithWorkLevelEditionCitation": 8,
+    "versionCitationsPending": 15,
+    "manuscriptWitnesses": 103,
+    "incompleteWitnesses": 0,
+    "originalDocumentFingerprintsVerified": 30,
+    "documentCount": 30
+  },
+  "apparatus": {
+    "notes": 811,
+    "explicitNotes": 41,
+    "candidateNotes": 519,
+    "unlocatedNotes": 251,
+    "notesWithoutSource": 0,
+    "ecdoticDecisions": 0,
+    "certifiedDecisions": 0
+  },
+  "lexicon": {
+    "etymologicalEntries": 115,
+    "withoutBibliographicReferences": 0,
+    "withoutLocalLoci": 47
+  },
+  "alignment": {
+    "pairs": 16,
+    "notVerifiedWithSource": 16
+  },
+  "backlog": {
+    "missingOriginals": [
+      {
+        "id": "seneca-naturales",
+        "title": "Naturales quaestiones"
+      },
+      {
+        "id": "origenes",
+        "title": "Περὶ ἀρχῶν · De principiis"
+      },
+      {
+        "id": "plutarch-lives",
+        "title": "Βίοι Παράλληλοι · Vidas paralelas"
+      },
+      {
+        "id": "apollodorus-poliorcetics",
+        "title": "Πολιορκητικά · Poliorketika"
+      },
+      {
+        "id": "athenaeus-mechanicus",
+        "title": "Περὶ μηχανημάτων · De machinis"
+      },
+      {
+        "id": "vitruvio-v514-pdf",
+        "title": "De architectura · Recensio V514 (latín–castellano)"
+      },
+      {
+        "id": "vitruvio-v554-pdf",
+        "title": "De architectura · Recensio V554 (latín–francés)"
+      },
+      {
+        "id": "theory-v297-pdf",
+        "title": "The Architect of Theory · V297 (inglés)"
+      },
+      {
+        "id": "velleius-historia",
+        "title": "Historia Romana"
+      },
+      {
+        "id": "plutarch-moralia",
+        "title": "Ἠθικά (Moralia)"
+      },
+      {
+        "id": "ptolemy-geographia",
+        "title": "Γεωγραφικὴ ὑφήγησις"
+      },
+      {
+        "id": "thucydides-war",
+        "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου"
+      },
+      {
+        "id": "cassius-dio-historia",
+        "title": "Ῥωμαϊκὴ ἱστορία"
+      },
+      {
+        "id": "athenaeus-deipnosophistae",
+        "title": "Δειπνοσοφισταί"
+      },
+      {
+        "id": "theophrastus-historia-plantarum",
+        "title": "Περὶ φυτῶν ἱστορίας"
+      },
+      {
+        "id": "seneca-de-ira",
+        "title": "De ira"
+      },
+      {
+        "id": "seneca-de-tranquillitate",
+        "title": "De tranquillitate animi"
+      },
+      {
+        "id": "apuleius-de-deo-socratis",
+        "title": "De deo Socratis"
+      },
+      {
+        "id": "vegetius-epitoma",
+        "title": "Epitoma rei militaris"
+      },
+      {
+        "id": "macrobius-saturnalia",
+        "title": "Saturnalia"
+      },
+      {
+        "id": "archimedes-fluitantibus",
+        "title": "Περὶ τῶν ὀχουμένων"
+      },
+      {
+        "id": "ennius-annales",
+        "title": "Annales (fragmenta)"
+      },
+      {
+        "id": "accius-fragmenta",
+        "title": "Tragoediae (fragmenta)"
+      },
+      {
+        "id": "ps-aristotle-mechanica",
+        "title": "Μηχανικὰ προβλήματα"
+      },
+      {
+        "id": "procopius-aedificiis",
+        "title": "Περὶ κτισμάτων"
+      },
+      {
+        "id": "isidore-etymologiae",
+        "title": "Etymologiae"
+      },
+      {
+        "id": "censorinus-die-natali",
+        "title": "De die natali"
+      },
+      {
+        "id": "euclid-optica",
+        "title": "Ὀπτικά · Optica"
+      },
+      {
+        "id": "euclid-phaenomena",
+        "title": "Φαινόμενα · Phaenomena y escritos musicales"
+      },
+      {
+        "id": "cleonides-harmonica",
+        "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica"
+      },
+      {
+        "id": "hero-belopoeica",
+        "title": "Βελοποιικά · Belopoeica"
+      },
+      {
+        "id": "philo-belopoeica",
+        "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)"
+      },
+      {
+        "id": "biton-kataskeuai",
+        "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν"
+      },
+      {
+        "id": "geminus-isagoge",
+        "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae"
+      },
+      {
+        "id": "aristarchus-magnitudines",
+        "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης"
+      },
+      {
+        "id": "apollonius-conica",
+        "title": "Κωνικά · Conica"
+      },
+      {
+        "id": "pappus-synagoge",
+        "title": "Συναγωγή · Collectio (libro VIII: mecánica)"
+      },
+      {
+        "id": "hyginus-gromaticus",
+        "title": "Constitutio limitum"
+      },
+      {
+        "id": "frontinus-gromatica",
+        "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)"
+      },
+      {
+        "id": "siculus-flaccus",
+        "title": "De condicionibus agrorum"
+      },
+      {
+        "id": "apolonio-argonauticas",
+        "title": "Ἀργοναυτικά · Argonautica"
+      },
+      {
+        "id": "isocrates-discursos",
+        "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)"
+      },
+      {
+        "id": "lisias-discursos",
+        "title": "Λόγοι · Discursos"
+      },
+      {
+        "id": "longino-sublime",
+        "title": "Περὶ ὕψους · De sublimitate"
+      },
+      {
+        "id": "teocrito-bucolicos",
+        "title": "Εἰδύλλια · Idilios"
+      },
+      {
+        "id": "antologia-griega",
+        "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)"
+      },
+      {
+        "id": "aquiles-tacio-leucipa",
+        "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte"
+      },
+      {
+        "id": "aristoteles-del-cielo",
+        "title": "Περὶ οὐρανοῦ · De caelo"
+      },
+      {
+        "id": "aristoteles-historia-animales",
+        "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium"
+      },
+      {
+        "id": "baquilides-poemas",
+        "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos"
+      },
+      {
+        "id": "calimaco-himnos",
+        "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)"
+      },
+      {
+        "id": "epicuro-restos",
+        "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales"
+      },
+      {
+        "id": "esquines-discursos",
+        "title": "Λόγοι · Discursos"
+      },
+      {
+        "id": "filostrato-apolonio",
+        "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana"
+      },
+      {
+        "id": "galeno-facultades-naturales",
+        "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus"
+      },
+      {
+        "id": "hipocrates-obras",
+        "title": "Corpus Hippocraticum (selección)"
+      },
+      {
+        "id": "iseo-discursos",
+        "title": "Λόγοι · Discursos"
+      },
+      {
+        "id": "jenofonte-ciropedia",
+        "title": "Κύρου παιδεία · Cyropaedia"
+      },
+      {
+        "id": "jenofonte-economico",
+        "title": "Οἰκονομικός · Oeconomicus"
+      },
+      {
+        "id": "longo-dafnis-cloe",
+        "title": "Δάφνις καὶ Χλόη · Poimeniká"
+      },
+      {
+        "id": "menandro-comedias",
+        "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)"
+      },
+      {
+        "id": "platon-cratilo-parmenides",
+        "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)"
+      },
+      {
+        "id": "platon-protagoras",
+        "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος"
+      },
+      {
+        "id": "platon-teeteto-sofista",
+        "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista"
+      },
+      {
+        "id": "plotino-eneadas",
+        "title": "Ἐννεάδες · Enneades"
+      },
+      {
+        "id": "lyra-graeca",
+        "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)"
+      },
+      {
+        "id": "quinto-esmirna-posthomericas",
+        "title": "Τὰ μεθ' Ὅμηρον · Posthomerica"
+      },
+      {
+        "id": "amiano-marcelino-es",
+        "title": "Res gestae"
+      },
+      {
+        "id": "ausonio-obras",
+        "title": "Opuscula · Obras"
+      },
+      {
+        "id": "claudiano-poemas",
+        "title": "Carmina · Poemas"
+      },
+      {
+        "id": "higino-fabulas",
+        "title": "Fabulae · Astronomica poetica"
+      },
+      {
+        "id": "manilio-astronomica",
+        "title": "Astronomica"
+      },
+      {
+        "id": "minucio-felix-octavio",
+        "title": "Octavius"
+      },
+      {
+        "id": "valerio-flaco-argonautica",
+        "title": "Argonautica"
+      }
+    ],
+    "missingTranslations": [
+      {
+        "id": "cicero-oratore",
+        "title": "De oratore"
+      },
+      {
+        "id": "cicero-republica",
+        "title": "De re publica"
+      },
+      {
+        "id": "varro-rustica",
+        "title": "Rerum rusticarum libri tres"
+      },
+      {
+        "id": "horace-odes",
+        "title": "Carmina"
+      },
+      {
+        "id": "livy",
+        "title": "Ab urbe condita"
+      },
+      {
+        "id": "ovid",
+        "title": "Metamorphoses"
+      },
+      {
+        "id": "ovid-fasti",
+        "title": "Fasti"
+      },
+      {
+        "id": "nepos",
+        "title": "De viris illustribus"
+      },
+      {
+        "id": "diodorus",
+        "title": "Βιβλιοθήκη ἱστορική"
+      },
+      {
+        "id": "dionysius",
+        "title": "Ῥωμαϊκὴ ἀρχαιολογία"
+      },
+      {
+        "id": "strabo",
+        "title": "Γεωγραφικά"
+      },
+      {
+        "id": "seneca-epistulae",
+        "title": "Epistulae morales ad Lucilium"
+      },
+      {
+        "id": "seneca-naturales",
+        "title": "Naturales quaestiones"
+      },
+      {
+        "id": "lucan",
+        "title": "Bellum civile"
+      },
+      {
+        "id": "pliny",
+        "title": "Naturalis historia"
+      },
+      {
+        "id": "dioscorides",
+        "title": "Περὶ ὕλης ἰατρικῆς"
+      },
+      {
+        "id": "josephus-war",
+        "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου"
+      },
+      {
+        "id": "josephus-antiquities",
+        "title": "Ἰουδαϊκὴ ἀρχαιολογία"
+      },
+      {
+        "id": "quintilian",
+        "title": "Institutio oratoria"
+      },
+      {
+        "id": "martial",
+        "title": "Epigrammata"
+      },
+      {
+        "id": "tacitus-germania",
+        "title": "Germania"
+      },
+      {
+        "id": "frontinus",
+        "title": "De aquaeductu urbis Romae"
+      },
+      {
+        "id": "mark",
+        "title": "Εὐαγγέλιον κατὰ Μᾶρκον"
+      },
+      {
+        "id": "clement",
+        "title": "Πρὸς Κορινθίους Αʹ"
+      },
+      {
+        "id": "pastor-hermas",
+        "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas"
+      },
+      {
+        "id": "faventinus",
+        "title": "Artis architectonicae privatis usibus adbreviatus liber"
+      },
+      {
+        "id": "barnabas",
+        "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae"
+      },
+      {
+        "id": "ignatius",
+        "title": "Ἐπιστολαί · Cartas de Ignacio"
+      },
+      {
+        "id": "polycarp",
+        "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses"
+      },
+      {
+        "id": "clement-2",
+        "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente"
+      },
+      {
+        "id": "diognetus",
+        "title": "Πρὸς Διόγνητον · Carta a Diogneto"
+      },
+      {
+        "id": "justin",
+        "title": "Ἀπολογία πρώτη · Primera Apología"
+      },
+      {
+        "id": "irenaeus",
+        "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses"
+      },
+      {
+        "id": "tertullian",
+        "title": "Apologeticum"
+      },
+      {
+        "id": "origenes",
+        "title": "Περὶ ἀρχῶν · De principiis"
+      },
+      {
+        "id": "eusebio",
+        "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica"
+      },
+      {
+        "id": "columella",
+        "title": "De re rustica"
+      },
+      {
+        "id": "celsus",
+        "title": "De medicina"
+      },
+      {
+        "id": "frontinus-strategemata",
+        "title": "Strategemata"
+      },
+      {
+        "id": "plutarch-lives",
+        "title": "Βίοι Παράλληλοι · Vidas paralelas"
+      },
+      {
+        "id": "apollodorus-poliorcetics",
+        "title": "Πολιορκητικά · Poliorketika"
+      },
+      {
+        "id": "hero-pneumatica",
+        "title": "Πνευματικά · Pneumatica"
+      },
+      {
+        "id": "hero-automata",
+        "title": "Αὐτοματοποιητική · Automata"
+      },
+      {
+        "id": "athenaeus-mechanicus",
+        "title": "Περὶ μηχανημάτων · De machinis"
+      },
+      {
+        "id": "vitruvio-v514-pdf",
+        "title": "De architectura · Recensio V514 (latín–castellano)"
+      },
+      {
+        "id": "vitruvio-v554-pdf",
+        "title": "De architectura · Recensio V554 (latín–francés)"
+      },
+      {
+        "id": "theory-v297-pdf",
+        "title": "The Architect of Theory · V297 (inglés)"
+      },
+      {
+        "id": "krohn-1912-pdf",
+        "title": "Vitruvii De architectura libri decem · Krohn 1912"
+      },
+      {
+        "id": "plautus-amphitruo",
+        "title": "Amphitruo"
+      },
+      {
+        "id": "plautus-aulularia",
+        "title": "Aulularia"
+      },
+      {
+        "id": "terentius-andria",
+        "title": "Andria"
+      },
+      {
+        "id": "terentius-heautontimorumenos",
+        "title": "Heautontimorumenos"
+      },
+      {
+        "id": "cato-agri-cultura",
+        "title": "De agri cultura"
+      },
+      {
+        "id": "horace-sermones",
+        "title": "Sermones (Satirae)"
+      },
+      {
+        "id": "horace-ars-poetica",
+        "title": "Ars poetica"
+      },
+      {
+        "id": "ovid-ars-amatoria",
+        "title": "Ars amatoria"
+      },
+      {
+        "id": "seneca-tragoediae",
+        "title": "Tragoediae (colección)"
+      },
+      {
+        "id": "tacitus-annales",
+        "title": "Annales"
+      },
+      {
+        "id": "tacitus-historiae",
+        "title": "Historiae"
+      },
+      {
+        "id": "suetonius-caesares",
+        "title": "De vita Caesarum"
+      },
+      {
+        "id": "juvenal-saturae",
+        "title": "Saturae"
+      },
+      {
+        "id": "varro-de-lingua-latina",
+        "title": "De lingua Latina"
+      },
+      {
+        "id": "tibullus-elegiae",
+        "title": "Elegiae"
+      },
+      {
+        "id": "propertius-elegiae",
+        "title": "Elegiae"
+      },
+      {
+        "id": "statius-thebais",
+        "title": "Thebais"
+      },
+      {
+        "id": "pliny-younger-epistulae",
+        "title": "Epistulae"
+      },
+      {
+        "id": "aulus-gellius-noctes",
+        "title": "Noctes Atticae"
+      },
+      {
+        "id": "valerius-maximus-facta",
+        "title": "Facta et dicta memorabilia"
+      },
+      {
+        "id": "velleius-historia",
+        "title": "Historia Romana"
+      },
+      {
+        "id": "silius-punica",
+        "title": "Punica"
+      },
+      {
+        "id": "polybius-historiae",
+        "title": "Ἱστορίαι"
+      },
+      {
+        "id": "pseudo-apollodorus-bibliotheca",
+        "title": "Βιβλιοθήκη (Bibliotheca)"
+      },
+      {
+        "id": "plutarch-moralia",
+        "title": "Ἠθικά (Moralia)"
+      },
+      {
+        "id": "lucian-dialogi-mortuorum",
+        "title": "Νεκρικοὶ διάλογοι"
+      },
+      {
+        "id": "pausanias-periegesis",
+        "title": "Ἑλλάδος περιήγησις"
+      },
+      {
+        "id": "galen-ars-medica",
+        "title": "Τέχνη ἰατρική"
+      },
+      {
+        "id": "galen-de-usu-partium",
+        "title": "Περὶ χρείας μορίων"
+      },
+      {
+        "id": "ptolemy-almagest",
+        "title": "Μαθηματικὴ σύνταξις (Almagestum)"
+      },
+      {
+        "id": "ptolemy-geographia",
+        "title": "Γεωγραφικὴ ὑφήγησις"
+      },
+      {
+        "id": "appian-romaika",
+        "title": "Ῥωμαϊκά"
+      },
+      {
+        "id": "aeschylus-oresteia",
+        "title": "Ὀρέστεια"
+      },
+      {
+        "id": "herodotus-historiae",
+        "title": "Ἱστορίαι"
+      },
+      {
+        "id": "thucydides-war",
+        "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου"
+      },
+      {
+        "id": "xenophon-anabasis",
+        "title": "Ἀνάβασις"
+      },
+      {
+        "id": "plato-republic",
+        "title": "Πολιτεία"
+      },
+      {
+        "id": "epictetus-discourses",
+        "title": "Διατριβαί"
+      },
+      {
+        "id": "arrian-anabasis-alexandri",
+        "title": "Ἀλεξάνδρου Ἀνάβασις"
+      },
+      {
+        "id": "cassius-dio-historia",
+        "title": "Ῥωμαϊκὴ ἱστορία"
+      },
+      {
+        "id": "athenaeus-deipnosophistae",
+        "title": "Δειπνοσοφισταί"
+      },
+      {
+        "id": "sophocles-ajax",
+        "title": "Αἴας"
+      },
+      {
+        "id": "sophocles-trachiniae",
+        "title": "Τραχίνιαι"
+      },
+      {
+        "id": "aristophanes-aves",
+        "title": "Ὄρνιθες"
+      },
+      {
+        "id": "aristophanes-ranae",
+        "title": "Βάτραχοι"
+      },
+      {
+        "id": "aristophanes-lysistrata",
+        "title": "Λυσιστράτη"
+      },
+      {
+        "id": "aristophanes-vespae",
+        "title": "Σφῆκες"
+      },
+      {
+        "id": "aristophanes-pax",
+        "title": "Εἰρήνη"
+      },
+      {
+        "id": "aristophanes-acharnenses",
+        "title": "Ἀχαρνῆς"
+      },
+      {
+        "id": "plato-laws",
+        "title": "Νόμοι"
+      },
+      {
+        "id": "aristotle-metaphysics",
+        "title": "Τὰ μετὰ τὰ φυσικά"
+      },
+      {
+        "id": "aristotle-physics",
+        "title": "Φυσικὴ ἀκρόασις"
+      },
+      {
+        "id": "aristotle-rhetoric",
+        "title": "Ῥητορική"
+      },
+      {
+        "id": "aristotle-de-anima",
+        "title": "Περὶ ψυχῆς"
+      },
+      {
+        "id": "xenophon-memorabilia",
+        "title": "Ἀπομνημονεύματα"
+      },
+      {
+        "id": "xenophon-hellenica",
+        "title": "Ἑλληνικά"
+      },
+      {
+        "id": "demosthenes-de-corona",
+        "title": "Περὶ τοῦ στεφάνου"
+      },
+      {
+        "id": "demosthenes-philippicae",
+        "title": "Φιλιππικοί"
+      },
+      {
+        "id": "pindar-olympian",
+        "title": "Ὀλυμπιόνικοι"
+      },
+      {
+        "id": "pindar-pythian",
+        "title": "Πυθιόνικοι"
+      },
+      {
+        "id": "homeric-hymns",
+        "title": "Ὁμηρικοὶ ὕμνοι"
+      },
+      {
+        "id": "theophrastus-historia-plantarum",
+        "title": "Περὶ φυτῶν ἱστορίας"
+      },
+      {
+        "id": "diogenes-laertius-vitae",
+        "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων"
+      },
+      {
+        "id": "cicero-pro-archia",
+        "title": "Pro Archia poeta"
+      },
+      {
+        "id": "cicero-de-finibus",
+        "title": "De finibus bonorum et malorum"
+      },
+      {
+        "id": "cicero-tusculanae",
+        "title": "Tusculanae disputationes"
+      },
+      {
+        "id": "cicero-de-natura-deorum",
+        "title": "De natura deorum"
+      },
+      {
+        "id": "cicero-de-amicitia",
+        "title": "Laelius de amicitia"
+      },
+      {
+        "id": "cicero-de-senectute",
+        "title": "Cato Maior de senectute"
+      },
+      {
+        "id": "cicero-de-divinatione",
+        "title": "De divinatione"
+      },
+      {
+        "id": "cicero-brutus",
+        "title": "Brutus"
+      },
+      {
+        "id": "cicero-philippicae",
+        "title": "Philippicae"
+      },
+      {
+        "id": "seneca-de-ira",
+        "title": "De ira"
+      },
+      {
+        "id": "seneca-de-clementia",
+        "title": "De clementia"
+      },
+      {
+        "id": "seneca-de-tranquillitate",
+        "title": "De tranquillitate animi"
+      },
+      {
+        "id": "horace-epodi",
+        "title": "Epodi"
+      },
+      {
+        "id": "horace-epistulae",
+        "title": "Epistulae"
+      },
+      {
+        "id": "ovid-tristia",
+        "title": "Tristia"
+      },
+      {
+        "id": "ovid-heroides",
+        "title": "Heroides"
+      },
+      {
+        "id": "ovid-remedia-amoris",
+        "title": "Remedia amoris"
+      },
+      {
+        "id": "ovid-ex-ponto",
+        "title": "Epistulae ex Ponto"
+      },
+      {
+        "id": "tacitus-dialogus",
+        "title": "Dialogus de oratoribus"
+      },
+      {
+        "id": "apuleius-apologia",
+        "title": "Apologia"
+      },
+      {
+        "id": "apuleius-de-deo-socratis",
+        "title": "De deo Socratis"
+      },
+      {
+        "id": "vegetius-epitoma",
+        "title": "Epitoma rei militaris"
+      },
+      {
+        "id": "augustine-confessiones",
+        "title": "Confessiones"
+      },
+      {
+        "id": "augustine-civitate-dei",
+        "title": "De civitate Dei"
+      },
+      {
+        "id": "boethius-consolatio",
+        "title": "De consolatione philosophiae"
+      },
+      {
+        "id": "macrobius-saturnalia",
+        "title": "Saturnalia"
+      },
+      {
+        "id": "cebes-tabula",
+        "title": "Πίναξ · Tabula Cebetis"
+      },
+      {
+        "id": "aristoxenus-harmonica",
+        "title": "Ἁρμονικὰ στοιχεῖα"
+      },
+      {
+        "id": "archimedes-fluitantibus",
+        "title": "Περὶ τῶν ὀχουμένων"
+      },
+      {
+        "id": "aratus-phaenomena",
+        "title": "Φαινόμενα"
+      },
+      {
+        "id": "ennius-annales",
+        "title": "Annales (fragmenta)"
+      },
+      {
+        "id": "accius-fragmenta",
+        "title": "Tragoediae (fragmenta)"
+      },
+      {
+        "id": "ps-aristotle-mechanica",
+        "title": "Μηχανικὰ προβλήματα"
+      },
+      {
+        "id": "aeneas-tacticus-poliorketika",
+        "title": "Πολιορκητικά"
+      },
+      {
+        "id": "procopius-aedificiis",
+        "title": "Περὶ κτισμάτων"
+      },
+      {
+        "id": "isidore-etymologiae",
+        "title": "Etymologiae"
+      },
+      {
+        "id": "censorinus-die-natali",
+        "title": "De die natali"
+      },
+      {
+        "id": "augustus-res-gestae",
+        "title": "Res gestae divi Augusti"
+      },
+      {
+        "id": "euclid-elementa",
+        "title": "Στοιχεῖα · Elementa"
+      },
+      {
+        "id": "euclid-optica",
+        "title": "Ὀπτικά · Optica"
+      },
+      {
+        "id": "euclid-phaenomena",
+        "title": "Φαινόμενα · Phaenomena y escritos musicales"
+      },
+      {
+        "id": "cleonides-harmonica",
+        "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica"
+      },
+      {
+        "id": "hero-belopoeica",
+        "title": "Βελοποιικά · Belopoeica"
+      },
+      {
+        "id": "philo-belopoeica",
+        "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)"
+      },
+      {
+        "id": "biton-kataskeuai",
+        "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν"
+      },
+      {
+        "id": "geminus-isagoge",
+        "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae"
+      },
+      {
+        "id": "aristarchus-magnitudines",
+        "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης"
+      },
+      {
+        "id": "apollonius-conica",
+        "title": "Κωνικά · Conica"
+      },
+      {
+        "id": "pappus-synagoge",
+        "title": "Συναγωγή · Collectio (libro VIII: mecánica)"
+      },
+      {
+        "id": "hyginus-gromaticus",
+        "title": "Constitutio limitum"
+      },
+      {
+        "id": "frontinus-gromatica",
+        "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)"
+      },
+      {
+        "id": "siculus-flaccus",
+        "title": "De condicionibus agrorum"
+      },
+      {
+        "id": "apolonio-argonauticas",
+        "title": "Ἀργοναυτικά · Argonautica"
+      },
+      {
+        "id": "isocrates-discursos",
+        "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)"
+      },
+      {
+        "id": "lisias-discursos",
+        "title": "Λόγοι · Discursos"
+      },
+      {
+        "id": "longino-sublime",
+        "title": "Περὶ ὕψους · De sublimitate"
+      },
+      {
+        "id": "teocrito-bucolicos",
+        "title": "Εἰδύλλια · Idilios"
+      },
+      {
+        "id": "antologia-griega",
+        "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)"
+      },
+      {
+        "id": "aquiles-tacio-leucipa",
+        "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte"
+      },
+      {
+        "id": "aristoteles-del-cielo",
+        "title": "Περὶ οὐρανοῦ · De caelo"
+      },
+      {
+        "id": "aristoteles-historia-animales",
+        "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium"
+      },
+      {
+        "id": "baquilides-poemas",
+        "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos"
+      },
+      {
+        "id": "calimaco-himnos",
+        "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)"
+      },
+      {
+        "id": "epicuro-restos",
+        "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales"
+      },
+      {
+        "id": "esquines-discursos",
+        "title": "Λόγοι · Discursos"
+      },
+      {
+        "id": "filostrato-apolonio",
+        "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana"
+      },
+      {
+        "id": "galeno-facultades-naturales",
+        "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus"
+      },
+      {
+        "id": "hipocrates-obras",
+        "title": "Corpus Hippocraticum (selección)"
+      },
+      {
+        "id": "iseo-discursos",
+        "title": "Λόγοι · Discursos"
+      },
+      {
+        "id": "jenofonte-ciropedia",
+        "title": "Κύρου παιδεία · Cyropaedia"
+      },
+      {
+        "id": "jenofonte-economico",
+        "title": "Οἰκονομικός · Oeconomicus"
+      },
+      {
+        "id": "longo-dafnis-cloe",
+        "title": "Δάφνις καὶ Χλόη · Poimeniká"
+      },
+      {
+        "id": "menandro-comedias",
+        "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)"
+      },
+      {
+        "id": "platon-cratilo-parmenides",
+        "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)"
+      },
+      {
+        "id": "platon-protagoras",
+        "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος"
+      },
+      {
+        "id": "platon-teeteto-sofista",
+        "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista"
+      },
+      {
+        "id": "plotino-eneadas",
+        "title": "Ἐννεάδες · Enneades"
+      },
+      {
+        "id": "lyra-graeca",
+        "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)"
+      },
+      {
+        "id": "quinto-esmirna-posthomericas",
+        "title": "Τὰ μεθ' Ὅμηρον · Posthomerica"
+      },
+      {
+        "id": "amiano-marcelino-es",
+        "title": "Res gestae"
+      },
+      {
+        "id": "ausonio-obras",
+        "title": "Opuscula · Obras"
+      },
+      {
+        "id": "claudiano-poemas",
+        "title": "Carmina · Poemas"
+      },
+      {
+        "id": "higino-fabulas",
+        "title": "Fabulae · Astronomica poetica"
+      },
+      {
+        "id": "manilio-astronomica",
+        "title": "Astronomica"
+      },
+      {
+        "id": "minucio-felix-octavio",
+        "title": "Octavius"
+      },
+      {
+        "id": "valerio-flaco-argonautica",
+        "title": "Argonautica"
+      }
+    ],
+    "editionCitationsPending": [
+      {
+        "id": "lucretius",
+        "title": "De rerum natura",
+        "language": "la",
+        "versionKind": "original-transcription",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "lucretius",
+        "title": "De rerum natura",
+        "language": "en",
+        "versionKind": "translation",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "lucretius",
+        "title": "De rerum natura",
+        "language": "es",
+        "versionKind": "adaptation",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "didache",
+        "title": "Διδαχή · Didaché",
+        "language": "grc",
+        "versionKind": "edition",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "didache",
+        "title": "Διδαχή · Didaché",
+        "language": "en",
+        "versionKind": "historical-translation",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "petronius-satyrica",
+        "title": "Satyrica",
+        "language": "la",
+        "versionKind": "edited-text",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "petronius-satyrica",
+        "title": "Satyrica",
+        "language": "en",
+        "versionKind": "historical-translation",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "apuleius-metamorphoses",
+        "title": "Metamorphoses (Asinus aureus)",
+        "language": "la",
+        "versionKind": "edited-text",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "apuleius-metamorphoses",
+        "title": "Metamorphoses (Asinus aureus)",
+        "language": "en",
+        "versionKind": "historical-translation",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "apuleius-metamorphoses",
+        "title": "Metamorphoses (Asinus aureus)",
+        "language": "es",
+        "versionKind": "historical-translation",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "homer-iliad",
+        "title": "Ἰλιάς",
+        "language": "en",
+        "versionKind": "historical-translation",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "theophrastus-characters",
+        "title": "Ἠθικοὶ χαρακτῆρες",
+        "language": "en",
+        "versionKind": "historical-translation",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "augustus-res-gestae",
+        "title": "Res gestae divi Augusti",
+        "language": "la",
+        "versionKind": "edition",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "sulpicia-elegiae",
+        "title": "Elegiae · Corpus Tibullianum 3.13–18",
+        "language": "la",
+        "versionKind": "edition",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      },
+      {
+        "id": "sulpicia-elegiae",
+        "title": "Elegiae · Corpus Tibullianum 3.13–18",
+        "language": "es",
+        "versionKind": "historical-translation",
+        "reason": "Sin cita de edición concreta verificada en la versión ni en bibliography.editionCitation"
+      }
+    ]
+  },
+  "failures": [
+    {
+      "code": "original-coverage-total",
+      "detail": "Originales indexados y pendientes no suman el catálogo"
+    }
+  ],
+  "advisories": [
+    {
+      "code": "originals",
+      "detail": "74 obras están catalogadas pero no cuentan con original indexado en el registro principal"
+    },
+    {
+      "code": "translations",
+      "detail": "197 obras carecen de traducción local registrada"
+    },
+    {
+      "code": "bibliography",
+      "detail": "15 versiones locales necesitan ficha de edición específica"
+    },
+    {
+      "code": "candidate-notes",
+      "detail": "519 notas del autor tienen locus candidato pendiente de revisión"
+    },
+    {
+      "code": "unlocated-notes",
+      "detail": "251 notas auténticas aún no están localizadas por locus"
+    },
+    {
+      "code": "lexicon-loci",
+      "detail": "47 voces etimológicas no citan un locus local"
+    },
+    {
+      "code": "aligned-texts",
+      "detail": "16 pares de traducción/original no están certificados por colación"
+    },
+    {
+      "code": "ecdotic-review",
+      "detail": "El registro aún no certifica ninguna decisión de variante manuscrita; no extrapolar resultados automáticos"
+    }
+  ],
+  "publicationPolicy": [
+    "No atribuir una lección manuscrita sin testigo, signatura, folio y referencia comprobable.",
+    "No llamar variantes ecdóticas a divergencias entre textos digitales sin colación.",
+    "No presentar la existencia de un documento o URL como traducción indexada.",
+    "No alterar folios, imágenes, documentos originales, visores ni estética.",
+    "La calidad académica final requiere revisión externa por especialistas; la CI solo verifica estructura y trazabilidad."
+  ]
+}

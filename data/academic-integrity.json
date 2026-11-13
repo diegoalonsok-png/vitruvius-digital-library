@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "generated": "2026-11-12",
+  "generated": "2026-11-13",
   "scope": "Integridad del índice y trazabilidad editorial; no certifica cotejo filológico, calidad de traducción ni disponibilidad de servidores externos.",
   "sourceFingerprint": "2e4738a753404c17cd63dae378f3a3a6aba7ddaee1d3c1746478619bdf4a4a5c",
   "sourceFingerprintMethod": "SHA-256 de JSON.stringify([recensio-es, recensio-fr, theory-en]); sin dependencia de espacios o saltos de línea.",
@@ -774,10 +774,10 @@
     "9.praef.9"
   ],
   "manuscripts": {
-    "records": 100,
-    "withRepositoryShelfmarkDateAndSource": 100,
-    "catalogueWorksWithLinkedWitness": 122,
-    "catalogueWorksWithoutLinkedWitness": 100,
+    "records": 103,
+    "withRepositoryShelfmarkDateAndSource": 103,
+    "catalogueWorksWithLinkedWitness": 125,
+    "catalogueWorksWithoutLinkedWitness": 131,
     "directOriginalWitnesses": 42,
     "note": "Una signatura documentada no acredita por sí sola que el códice sea el más antiguo conservado ni el testigo crítico más importante."
   },
@@ -799,7 +799,7 @@
     "method": "Bloques del aparato localizados por encabezado en el texto de los PDF y notas DOCX del autor. El vínculo con el locus es el de la página impresa; no equivale a una collatio verificada. Vocabulario de rótulos ampliado el 2026-11-11 por unión: además de los rótulos de la lista original se reconocen los rótulos en versales de cualquier especialidad (metrológica, hermenéutica, constructiva…), las bibliografías críticas por locus y las entradas del diccionario vitruviano del autor."
   },
   "catalogue": {
-    "records": 222,
+    "records": 256,
     "declaredLocalReadings": 145,
     "declaredCompleteLocalReadings": 32,
     "declaredPartialLocalReadings": 113,
@@ -808,12 +808,12 @@
     "caveat": "El estado público de lectura es un dato de catálogo; no equivale a verificar el texto completo contra una edición crítica."
   },
   "codicology": {
-    "registeredWitnessRecords": 100,
-    "uniquePhysicalObjects": 93,
+    "registeredWitnessRecords": 103,
+    "uniquePhysicalObjects": 96,
     "fieldsPerWitness": 22,
-    "fieldSlots": 2200,
-    "filledFieldSlots": 458,
-    "pendingFieldSlots": 1742,
+    "fieldSlots": 2266,
+    "filledFieldSlots": 468,
+    "pendingFieldSlots": 1798,
     "allFieldsFilled": 0,
     "caveat": "Pendiente no significa necesariamente aplicable; por ejemplo, la filigrana puede no corresponder al pergamino. Datos no comprobados no se infieren."
   },
