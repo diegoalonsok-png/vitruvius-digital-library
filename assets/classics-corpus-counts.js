@@ -118,12 +118,25 @@ function paint(a,data){
    const li=document.createElement("li");
    // Cada registro abre su ficha crítica (autoría, datación, tradición manuscrita,
    // ediciones y estado documental), también los pendientes de original indexado.
-   const strong=rec.id?document.createElement("a"):document.createElement("span");strong.textContent=rec.title;
-   if(rec.id){strong.href="classics-work-record.html?work="+encodeURIComponent(rec.id);strong.className="tally-record";strong.title="Abrir la ficha crítica de la obra"}
+   // A selected work opens its hosted text first, whenever it exists.
+   // Bibliographic records remain accessible through a separate link.
+   const preferred=rec.versions?.pair?.url||rec.versions?.links?.find(v=>["la","grc"].includes(v.language))?.url||
+     rec.versions?.links?.[0]?.url||rec.url;
+   const strong=(preferred||rec.id)?document.createElement("a"):document.createElement("span");
+   strong.textContent=rec.title;
+   if(preferred){strong.href=preferred;strong.className="tally-record";strong.title="Leer la obra en el visor disponible";}
+   else if(rec.id){strong.href="classics-work-record.html?work="+encodeURIComponent(rec.id);strong.className="tally-record";strong.title="Solo ficha crítica: texto no alojado";}
    li.append(strong);
+   if(rec.id && i!==3){
+    const record=document.createElement("a");record.className="tally-record-link";
+    record.href="classics-work-record.html?work="+encodeURIComponent(rec.id);
+    record.textContent="Ficha crítica";record.title="Autoría, fuentes, ediciones y estado de la obra";
+    li.append(" · ",record);
+   }
    if(rec.meta){const meta=document.createElement("small");meta.textContent=" · "+rec.meta;li.append(meta);}
    if(rec.versions?.links.length){
     const versions=document.createElement("div");versions.className="tally-editions";
+    const readLabel=document.createElement("small");readLabel.textContent="Lectura disponible:";versions.append(readLabel);
     for(const edition of rec.versions.links){
      const a=document.createElement("a");a.href=edition.url;
      a.textContent=edition.label;versions.append(a);
@@ -138,10 +151,12 @@ function paint(a,data){
     }
     li.append(versions);
    }else if(rec.url){
-    const link=document.createElement("a");link.href=rec.url;link.textContent="Abrir versión";li.append(" ",link);
-   }else if(i===4&&rec.id){
-    const ficha=document.createElement("a");ficha.href="classics-work-record.html?work="+encodeURIComponent(rec.id);ficha.textContent="Ficha crítica y fuentes externas";
-    const box=document.createElement("div");box.className="tally-editions";box.append(ficha);li.append(box);
+    // The title above already opens this hosted reading.
+    const link=document.createElement("a");link.href=rec.url;link.textContent="Leer texto";li.append(" · ",link);
+   }else if(!preferred&&rec.id){
+    const notice=document.createElement("small");notice.className="tally-unavailable";
+    notice.textContent=" · Texto no disponible para lectura en el sitio";
+    li.append(notice);
    }
    ol.append(li);
   }
