@@ -7,7 +7,7 @@
     "data/classics-corpus/vitruvius-standard-222.json"
   ],
   "policy": "No conjectural editorial genealogies or identifiers; never modify sources.",
-  "count": 227,
+  "count": 258,
   "records": [
     {
       "workId": "vitruvius",
@@ -21544,6 +21544,1711 @@
         "originalLanguage": "grc",
         "compositionDate": "Primera mitad del siglo III a. C.",
         "genre": "Poesía bucólica"
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "antologia-griega",
+      "work": {
+        "author": "Antología griega",
+        "title": "Antología Palatina",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "aquiles-tacio-leucipa",
+      "work": {
+        "author": "Aquiles Tacio",
+        "title": "Leucipa y Clitofonte",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "work": {
+        "author": "Aristóteles",
+        "title": "Acerca del cielo",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "aristoteles-historia-animales",
+      "work": {
+        "author": "Aristóteles",
+        "title": "Historia de los animales",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "baquilides-poemas",
+      "work": {
+        "author": "Baquílides",
+        "title": "Poemas y fragmentos (ed. Jebb)",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "calimaco-himnos",
+      "work": {
+        "author": "Calímaco y Licofrón",
+        "title": "Himnos, epigramas; Alejandra",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "epicuro-restos",
+      "work": {
+        "author": "Epicuro",
+        "title": "Los restos existentes (ed. Bailey)",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "esquines-discursos",
+      "work": {
+        "author": "Esquines",
+        "title": "Discursos",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "filostrato-apolonio",
+      "work": {
+        "author": "Filóstrato",
+        "title": "Vida de Apolonio de Tiana",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "galeno-facultades-naturales",
+      "work": {
+        "author": "Galeno",
+        "title": "Sobre las facultades naturales",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "hipocrates-obras",
+      "work": {
+        "author": "Hipócrates",
+        "title": "Obras (Loeb)",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "iseo-discursos",
+      "work": {
+        "author": "Iseo",
+        "title": "Discursos",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "jenofonte-ciropedia",
+      "work": {
+        "author": "Jenofonte",
+        "title": "Ciropedia",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "jenofonte-economico",
+      "work": {
+        "author": "Jenofonte",
+        "title": "Económico",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "longo-dafnis-cloe",
+      "work": {
+        "author": "Longo",
+        "title": "Dafnis y Cloe",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "longo-dafnis-es",
+      "work": {
+        "author": "Longo",
+        "title": "Dafnis y Cloe (trad. castellana de Juan Valera)",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "menandro-comedias",
+      "work": {
+        "author": "Menandro",
+        "title": "Comedias (fragmentos)",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "platon-cratilo-parmenides",
+      "work": {
+        "author": "Platón",
+        "title": "Crátilo, Parménides, Hipias, Hipias mayor",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "platon-protagoras",
+      "work": {
+        "author": "Platón",
+        "title": "Laques, Protágoras, Menón, Eutidemo",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "platon-teeteto-sofista",
+      "work": {
+        "author": "Platón",
+        "title": "Teeteto y Sofista",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "plotino-eneadas",
+      "work": {
+        "author": "Plotino",
+        "title": "Enéadas",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "lyra-graeca",
+      "work": {
+        "author": "Poetas líricos griegos",
+        "title": "Lyra Graeca",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "quinto-esmirna-posthomericas",
+      "work": {
+        "author": "Quinto de Esmirna",
+        "title": "Posthoméricas (La caída de Troya)",
+        "originalLanguage": "grc",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "amiano-marcelino-es",
+      "work": {
+        "author": "Amiano Marcelino",
+        "title": "Historia del Imperio romano (trad. castellana)",
+        "originalLanguage": "la",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "ausonio-obras",
+      "work": {
+        "author": "Ausonio",
+        "title": "Obras",
+        "originalLanguage": "la",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "claudiano-poemas",
+      "work": {
+        "author": "Claudiano",
+        "title": "Poemas",
+        "originalLanguage": "la",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "higino-fabulas",
+      "work": {
+        "author": "Higino",
+        "title": "Fábulas y Astronomía poética",
+        "originalLanguage": "la",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "manilio-astronomica",
+      "work": {
+        "author": "Manilio",
+        "title": "Astronomica",
+        "originalLanguage": "la",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "minucio-felix-octavio",
+      "work": {
+        "author": "Minucio Félix",
+        "title": "Octavio",
+        "originalLanguage": "la",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "prudencio-poemas",
+      "work": {
+        "author": "Prudencio",
+        "title": "Poemas",
+        "originalLanguage": "la",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
+      },
+      "canonicalIdentifiers": {
+        "candidateTLGPHI": [],
+        "candidateStatus": "requires_authority_review",
+        "ctsEditionUrn": null,
+        "ctsEditionStatus": "not_verified"
+      },
+      "textualTradition": {
+        "directIndirectReview": "incomplete",
+        "traditionType": null,
+        "isOpenTradition": null,
+        "archetype": null,
+        "families": [],
+        "recensions": [],
+        "indirectWitnesses": [],
+        "stemmaCodicum": {
+          "status": "not_established",
+          "sourceEdition": null,
+          "edges": []
+        }
+      },
+      "witnesses": [],
+      "digitalEdition": {
+        "baseEdition": null,
+        "editionType": "not_verified",
+        "criticalApparatus": "not_audited",
+        "normalization": {
+          "latinUV": null,
+          "latinIJ": null,
+          "latinAssimilation": null,
+          "greekAccents": null,
+          "greekBreathings": null,
+          "punctuation": null,
+          "editorialConjectures": null
+        },
+        "chicago18References": [],
+        "ctsEditionUrn": null,
+        "lociAlignment": "not_verified"
+      },
+      "maturity": {
+        "level": 0,
+        "levelName": "pending_ecdotic_baseline",
+        "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
+        "candidateWitnessCount": 0,
+        "isManuscriptAgePriorityProven": false
+      }
+    },
+    {
+      "workId": "valerio-flaco-argonautica",
+      "work": {
+        "author": "Valerio Flaco",
+        "title": "Argonáuticas",
+        "originalLanguage": "la",
+        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
+        "genre": "Pendiente de consignar: no se deduce del facsímil."
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],

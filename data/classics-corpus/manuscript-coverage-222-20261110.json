@@ -3,10 +3,10 @@
  "updated": "2026-11-10",
  "scope": "Manuscript identification is not proof of globally earliest text witness. Catalog data may refer to partial manuscripts.",
  "counts": {
-  "catalogued": 227,
+  "catalogued": 258,
   "witnesses": 100,
   "worksWithWitnesses": 122,
-  "worksWithoutWitnesses": 105,
+  "worksWithoutWitnesses": 136,
   "worksWithThisBatchSourceReview": 69
  },
  "records": [
@@ -2346,6 +2346,285 @@
   },
   {
    "workId": "teocrito-bucolicos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "antologia-griega",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aquiles-tacio-leucipa",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristoteles-del-cielo",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "aristoteles-historia-animales",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "baquilides-poemas",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "calimaco-himnos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "epicuro-restos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "esquines-discursos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "filostrato-apolonio",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "galeno-facultades-naturales",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "hipocrates-obras",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "iseo-discursos",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "jenofonte-ciropedia",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "jenofonte-economico",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "longo-dafnis-cloe",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "longo-dafnis-es",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "menandro-comedias",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "platon-cratilo-parmenides",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "platon-protagoras",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "platon-teeteto-sofista",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "plotino-eneadas",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "lyra-graeca",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "quinto-esmirna-posthomericas",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "amiano-marcelino-es",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "ausonio-obras",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "claudiano-poemas",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "higino-fabulas",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "manilio-astronomica",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "minucio-felix-octavio",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "prudencio-poemas",
+   "witnessCount": 0,
+   "verifiedInstitutionalCount": 0,
+   "scholarlySourceCount": 0,
+   "witnessIds": [],
+   "status": "individual_witness_pending",
+   "oldestGlobalClaimVerified": false
+  },
+  {
+   "workId": "valerio-flaco-argonautica",
    "witnessCount": 0,
    "verifiedInstitutionalCount": 0,
    "scholarlySourceCount": 0,

@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-codicological-trees-222-v1",
-  "count": 227,
+  "count": 258,
   "physicalWitnessCount": 93,
   "textualWitnessRecordCount": 100,
   "interpretation": "Work-to-manuscript links are attestations; ancestry is explicit and source-backed. No unidentified archetypes are invented.",
@@ -9867,6 +9867,781 @@
         "id": "teocrito-bucolicos",
         "type": "classical_work",
         "label": "Teócrito, Bión y Mosco · Εἰδύλλια · Idilios"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "antologia-griega",
+      "title": "Antología Palatina",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "antologia-griega",
+        "type": "classical_work",
+        "label": "Antología griega · Antología Palatina"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "aquiles-tacio-leucipa",
+      "title": "Leucipa y Clitofonte",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "aquiles-tacio-leucipa",
+        "type": "classical_work",
+        "label": "Aquiles Tacio · Leucipa y Clitofonte"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "title": "Acerca del cielo",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "aristoteles-del-cielo",
+        "type": "classical_work",
+        "label": "Aristóteles · Acerca del cielo"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "aristoteles-historia-animales",
+      "title": "Historia de los animales",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "aristoteles-historia-animales",
+        "type": "classical_work",
+        "label": "Aristóteles · Historia de los animales"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "baquilides-poemas",
+      "title": "Poemas y fragmentos (ed. Jebb)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "baquilides-poemas",
+        "type": "classical_work",
+        "label": "Baquílides · Poemas y fragmentos (ed. Jebb)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "calimaco-himnos",
+      "title": "Himnos, epigramas; Alejandra",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "calimaco-himnos",
+        "type": "classical_work",
+        "label": "Calímaco y Licofrón · Himnos, epigramas; Alejandra"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "epicuro-restos",
+      "title": "Los restos existentes (ed. Bailey)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "epicuro-restos",
+        "type": "classical_work",
+        "label": "Epicuro · Los restos existentes (ed. Bailey)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "esquines-discursos",
+      "title": "Discursos",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "esquines-discursos",
+        "type": "classical_work",
+        "label": "Esquines · Discursos"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "filostrato-apolonio",
+      "title": "Vida de Apolonio de Tiana",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "filostrato-apolonio",
+        "type": "classical_work",
+        "label": "Filóstrato · Vida de Apolonio de Tiana"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "galeno-facultades-naturales",
+      "title": "Sobre las facultades naturales",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "galeno-facultades-naturales",
+        "type": "classical_work",
+        "label": "Galeno · Sobre las facultades naturales"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "hipocrates-obras",
+      "title": "Obras (Loeb)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "hipocrates-obras",
+        "type": "classical_work",
+        "label": "Hipócrates · Obras (Loeb)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "iseo-discursos",
+      "title": "Discursos",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "iseo-discursos",
+        "type": "classical_work",
+        "label": "Iseo · Discursos"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "jenofonte-ciropedia",
+      "title": "Ciropedia",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "jenofonte-ciropedia",
+        "type": "classical_work",
+        "label": "Jenofonte · Ciropedia"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "jenofonte-economico",
+      "title": "Económico",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "jenofonte-economico",
+        "type": "classical_work",
+        "label": "Jenofonte · Económico"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "longo-dafnis-cloe",
+      "title": "Dafnis y Cloe",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "longo-dafnis-cloe",
+        "type": "classical_work",
+        "label": "Longo · Dafnis y Cloe"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "longo-dafnis-es",
+      "title": "Dafnis y Cloe (trad. castellana de Juan Valera)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "longo-dafnis-es",
+        "type": "classical_work",
+        "label": "Longo · Dafnis y Cloe (trad. castellana de Juan Valera)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "menandro-comedias",
+      "title": "Comedias (fragmentos)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "menandro-comedias",
+        "type": "classical_work",
+        "label": "Menandro · Comedias (fragmentos)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "platon-cratilo-parmenides",
+      "title": "Crátilo, Parménides, Hipias, Hipias mayor",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "platon-cratilo-parmenides",
+        "type": "classical_work",
+        "label": "Platón · Crátilo, Parménides, Hipias, Hipias mayor"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "platon-protagoras",
+      "title": "Laques, Protágoras, Menón, Eutidemo",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "platon-protagoras",
+        "type": "classical_work",
+        "label": "Platón · Laques, Protágoras, Menón, Eutidemo"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "platon-teeteto-sofista",
+      "title": "Teeteto y Sofista",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "platon-teeteto-sofista",
+        "type": "classical_work",
+        "label": "Platón · Teeteto y Sofista"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "plotino-eneadas",
+      "title": "Enéadas",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "plotino-eneadas",
+        "type": "classical_work",
+        "label": "Plotino · Enéadas"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "lyra-graeca",
+      "title": "Lyra Graeca",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "lyra-graeca",
+        "type": "classical_work",
+        "label": "Poetas líricos griegos · Lyra Graeca"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "quinto-esmirna-posthomericas",
+      "title": "Posthoméricas (La caída de Troya)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "quinto-esmirna-posthomericas",
+        "type": "classical_work",
+        "label": "Quinto de Esmirna · Posthoméricas (La caída de Troya)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "amiano-marcelino-es",
+      "title": "Historia del Imperio romano (trad. castellana)",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "amiano-marcelino-es",
+        "type": "classical_work",
+        "label": "Amiano Marcelino · Historia del Imperio romano (trad. castellana)"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "ausonio-obras",
+      "title": "Obras",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "ausonio-obras",
+        "type": "classical_work",
+        "label": "Ausonio · Obras"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "claudiano-poemas",
+      "title": "Poemas",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "claudiano-poemas",
+        "type": "classical_work",
+        "label": "Claudiano · Poemas"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "higino-fabulas",
+      "title": "Fábulas y Astronomía poética",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "higino-fabulas",
+        "type": "classical_work",
+        "label": "Higino · Fábulas y Astronomía poética"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "manilio-astronomica",
+      "title": "Astronomica",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "manilio-astronomica",
+        "type": "classical_work",
+        "label": "Manilio · Astronomica"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "minucio-felix-octavio",
+      "title": "Octavio",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "minucio-felix-octavio",
+        "type": "classical_work",
+        "label": "Minucio Félix · Octavio"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "prudencio-poemas",
+      "title": "Poemas",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "prudencio-poemas",
+        "type": "classical_work",
+        "label": "Prudencio · Poemas"
+      },
+      "witnesses": [],
+      "links": [],
+      "documentedFiliation": [],
+      "archetype": null,
+      "subarchetypes": [],
+      "families": [],
+      "indirectSources": [],
+      "openOrClosedTradition": null,
+      "stemmaStatus": "not_established",
+      "gaps": {
+        "witnessesPending": true,
+        "criticalFamilyClassificationPending": true,
+        "collationPending": true,
+        "apographsRequiresEditionCitation": true
+      }
+    },
+    {
+      "workId": "valerio-flaco-argonautica",
+      "title": "Argonáuticas",
+      "kind": "documentary_witness_tree_not_stemma",
+      "root": {
+        "id": "valerio-flaco-argonautica",
+        "type": "classical_work",
+        "label": "Valerio Flaco · Argonáuticas"
       },
       "witnesses": [],
       "links": [],

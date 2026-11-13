@@ -3,18 +3,18 @@
  "updated": "2026-11-10",
  "method": "Cada registro separa autoría, título uniforme, nomenclatura PHI/TLG/CTS, integridad de conservación e indexación, manuscritos individuales y sus signaturas, versión impresa más temprana en los datos verificados y bibliografía. El primer testimonio de este registro no se confunde con el más antiguo universal. No se inventan variantes ni stemmata.",
  "counts": {
-  "total": 227,
+  "total": 258,
   "manuscriptRecords": 64,
   "worksWithManuscripts": 59,
-  "withoutOriginalIndex": 15,
+  "withoutOriginalIndex": 46,
   "modernEditions": 3,
   "explicitlyPartial": 11,
   "unverifiedIndexCompleteness": 196,
   "withDatedEdition": 18,
   "withTwoOrMoreWitnesses": 30,
   "withVerifiedViewer": 51,
-  "automatedAuditWorks": 227,
-  "worksPendingManuscript": 168
+  "automatedAuditWorks": 258,
+  "worksPendingManuscript": 199
  },
  "records": [
   {
@@ -17673,6 +17673,781 @@
      "Idilios",
      "Idylls",
      "Bucólicos griegos"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "antologia-griega",
+   "authority": {
+    "author": "Antología griega",
+    "normalizedAuthor": "Antología griega",
+    "uniformTitle": "Antología Palatina",
+    "displayTitle": "Antología griega · Antología Palatina",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Antología Palatina"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "aquiles-tacio-leucipa",
+   "authority": {
+    "author": "Aquiles Tacio",
+    "normalizedAuthor": "Aquiles Tacio",
+    "uniformTitle": "Leucipa y Clitofonte",
+    "displayTitle": "Aquiles Tacio · Leucipa y Clitofonte",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Leucipa y Clitofonte"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "aristoteles-del-cielo",
+   "authority": {
+    "author": "Aristóteles",
+    "normalizedAuthor": "Aristóteles",
+    "uniformTitle": "Acerca del cielo",
+    "displayTitle": "Aristóteles · Acerca del cielo",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Acerca del cielo"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "aristoteles-historia-animales",
+   "authority": {
+    "author": "Aristóteles",
+    "normalizedAuthor": "Aristóteles",
+    "uniformTitle": "Historia de los animales",
+    "displayTitle": "Aristóteles · Historia de los animales",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Historia de los animales"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "baquilides-poemas",
+   "authority": {
+    "author": "Baquílides",
+    "normalizedAuthor": "Baquílides",
+    "uniformTitle": "Poemas y fragmentos (ed. Jebb)",
+    "displayTitle": "Baquílides · Poemas y fragmentos (ed. Jebb)",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Poemas y fragmentos (ed. Jebb)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "calimaco-himnos",
+   "authority": {
+    "author": "Calímaco y Licofrón",
+    "normalizedAuthor": "Calímaco y Licofrón",
+    "uniformTitle": "Himnos, epigramas; Alejandra",
+    "displayTitle": "Calímaco y Licofrón · Himnos, epigramas; Alejandra",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Himnos, epigramas; Alejandra"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "epicuro-restos",
+   "authority": {
+    "author": "Epicuro",
+    "normalizedAuthor": "Epicuro",
+    "uniformTitle": "Los restos existentes (ed. Bailey)",
+    "displayTitle": "Epicuro · Los restos existentes (ed. Bailey)",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Los restos existentes (ed. Bailey)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "esquines-discursos",
+   "authority": {
+    "author": "Esquines",
+    "normalizedAuthor": "Esquines",
+    "uniformTitle": "Discursos",
+    "displayTitle": "Esquines · Discursos",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Discursos"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "filostrato-apolonio",
+   "authority": {
+    "author": "Filóstrato",
+    "normalizedAuthor": "Filóstrato",
+    "uniformTitle": "Vida de Apolonio de Tiana",
+    "displayTitle": "Filóstrato · Vida de Apolonio de Tiana",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Vida de Apolonio de Tiana"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "galeno-facultades-naturales",
+   "authority": {
+    "author": "Galeno",
+    "normalizedAuthor": "Galeno",
+    "uniformTitle": "Sobre las facultades naturales",
+    "displayTitle": "Galeno · Sobre las facultades naturales",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Sobre las facultades naturales"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "hipocrates-obras",
+   "authority": {
+    "author": "Hipócrates",
+    "normalizedAuthor": "Hipócrates",
+    "uniformTitle": "Obras (Loeb)",
+    "displayTitle": "Hipócrates · Obras (Loeb)",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Obras (Loeb)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "iseo-discursos",
+   "authority": {
+    "author": "Iseo",
+    "normalizedAuthor": "Iseo",
+    "uniformTitle": "Discursos",
+    "displayTitle": "Iseo · Discursos",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Discursos"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "jenofonte-ciropedia",
+   "authority": {
+    "author": "Jenofonte",
+    "normalizedAuthor": "Jenofonte",
+    "uniformTitle": "Ciropedia",
+    "displayTitle": "Jenofonte · Ciropedia",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Ciropedia"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "jenofonte-economico",
+   "authority": {
+    "author": "Jenofonte",
+    "normalizedAuthor": "Jenofonte",
+    "uniformTitle": "Económico",
+    "displayTitle": "Jenofonte · Económico",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Económico"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "longo-dafnis-cloe",
+   "authority": {
+    "author": "Longo",
+    "normalizedAuthor": "Longo",
+    "uniformTitle": "Dafnis y Cloe",
+    "displayTitle": "Longo · Dafnis y Cloe",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Dafnis y Cloe"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "longo-dafnis-es",
+   "authority": {
+    "author": "Longo",
+    "normalizedAuthor": "Longo",
+    "uniformTitle": "Dafnis y Cloe (trad. castellana de Juan Valera)",
+    "displayTitle": "Longo · Dafnis y Cloe (trad. castellana de Juan Valera)",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Dafnis y Cloe (trad. castellana de Juan Valera)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "menandro-comedias",
+   "authority": {
+    "author": "Menandro",
+    "normalizedAuthor": "Menandro",
+    "uniformTitle": "Comedias (fragmentos)",
+    "displayTitle": "Menandro · Comedias (fragmentos)",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Comedias (fragmentos)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "platon-cratilo-parmenides",
+   "authority": {
+    "author": "Platón",
+    "normalizedAuthor": "Platón",
+    "uniformTitle": "Crátilo, Parménides, Hipias, Hipias mayor",
+    "displayTitle": "Platón · Crátilo, Parménides, Hipias, Hipias mayor",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Crátilo, Parménides, Hipias, Hipias mayor"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "platon-protagoras",
+   "authority": {
+    "author": "Platón",
+    "normalizedAuthor": "Platón",
+    "uniformTitle": "Laques, Protágoras, Menón, Eutidemo",
+    "displayTitle": "Platón · Laques, Protágoras, Menón, Eutidemo",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Laques, Protágoras, Menón, Eutidemo"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "platon-teeteto-sofista",
+   "authority": {
+    "author": "Platón",
+    "normalizedAuthor": "Platón",
+    "uniformTitle": "Teeteto y Sofista",
+    "displayTitle": "Platón · Teeteto y Sofista",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Teeteto y Sofista"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "plotino-eneadas",
+   "authority": {
+    "author": "Plotino",
+    "normalizedAuthor": "Plotino",
+    "uniformTitle": "Enéadas",
+    "displayTitle": "Plotino · Enéadas",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Enéadas"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "lyra-graeca",
+   "authority": {
+    "author": "Poetas líricos griegos",
+    "normalizedAuthor": "Poetas líricos griegos",
+    "uniformTitle": "Lyra Graeca",
+    "displayTitle": "Poetas líricos griegos · Lyra Graeca",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Lyra Graeca"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "quinto-esmirna-posthomericas",
+   "authority": {
+    "author": "Quinto de Esmirna",
+    "normalizedAuthor": "Quinto de Esmirna",
+    "uniformTitle": "Posthoméricas (La caída de Troya)",
+    "displayTitle": "Quinto de Esmirna · Posthoméricas (La caída de Troya)",
+    "originalLanguage": "grc",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Posthoméricas (La caída de Troya)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "amiano-marcelino-es",
+   "authority": {
+    "author": "Amiano Marcelino",
+    "normalizedAuthor": "Amiano Marcelino",
+    "uniformTitle": "Historia del Imperio romano (trad. castellana)",
+    "displayTitle": "Amiano Marcelino · Historia del Imperio romano (trad. castellana)",
+    "originalLanguage": "la",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Historia del Imperio romano (trad. castellana)"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "ausonio-obras",
+   "authority": {
+    "author": "Ausonio",
+    "normalizedAuthor": "Ausonio",
+    "uniformTitle": "Obras",
+    "displayTitle": "Ausonio · Obras",
+    "originalLanguage": "la",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Obras"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "claudiano-poemas",
+   "authority": {
+    "author": "Claudiano",
+    "normalizedAuthor": "Claudiano",
+    "uniformTitle": "Poemas",
+    "displayTitle": "Claudiano · Poemas",
+    "originalLanguage": "la",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Poemas"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "higino-fabulas",
+   "authority": {
+    "author": "Higino",
+    "normalizedAuthor": "Higino",
+    "uniformTitle": "Fábulas y Astronomía poética",
+    "displayTitle": "Higino · Fábulas y Astronomía poética",
+    "originalLanguage": "la",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Fábulas y Astronomía poética"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "manilio-astronomica",
+   "authority": {
+    "author": "Manilio",
+    "normalizedAuthor": "Manilio",
+    "uniformTitle": "Astronomica",
+    "displayTitle": "Manilio · Astronomica",
+    "originalLanguage": "la",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Astronomica"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "minucio-felix-octavio",
+   "authority": {
+    "author": "Minucio Félix",
+    "normalizedAuthor": "Minucio Félix",
+    "uniformTitle": "Octavio",
+    "displayTitle": "Minucio Félix · Octavio",
+    "originalLanguage": "la",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Octavio"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "prudencio-poemas",
+   "authority": {
+    "author": "Prudencio",
+    "normalizedAuthor": "Prudencio",
+    "uniformTitle": "Poemas",
+    "displayTitle": "Prudencio · Poemas",
+    "originalLanguage": "la",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Poemas"
+    ],
+    "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
+    "candidateWorkCodes": [],
+    "ctsEditionUrn": null,
+    "ctsEditionStatus": "not_verified"
+   },
+   "integrity": {
+    "status": "facsimile_only",
+    "description": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay transcripción indexada ni cotejo contra edición de control.",
+    "indexed": false,
+    "storage": "cloudflare_r2"
+   }
+  },
+  {
+   "workId": "valerio-flaco-argonautica",
+   "authority": {
+    "author": "Valerio Flaco",
+    "normalizedAuthor": "Valerio Flaco",
+    "uniformTitle": "Argonáuticas",
+    "displayTitle": "Valerio Flaco · Argonáuticas",
+    "originalLanguage": "la",
+    "genre": "Pendiente de consignar: no se deduce del facsímil.",
+    "dating": "Pendiente de consignar: no se deduce del facsímil.",
+    "aliases": [
+     "Argonáuticas"
     ],
     "nomenclatureNote": "Título uniforme catalográfico tomado de data/r2/fichas-nuevas-metadatos.json; rúbrica manuscrita y atribución sin comprobar.",
     "candidateWorkCodes": [],

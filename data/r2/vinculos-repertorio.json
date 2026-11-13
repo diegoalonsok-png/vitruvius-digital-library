@@ -1,14 +1,14 @@
 {
  "schema": "vdl-r2-vinculos-repertorio-1",
  "actualizado": "2026-11-13",
- "descripcion": "Correspondencia, revisada a mano, entre las ediciones en facsímil alojadas en R2 y las 227 fichas del repertorio (data/bibliotheca-graeca-latina-I-bce-I-ce.json, que no se modifica). Las obras sin ficha previa se cuentan como incorporaciones nuevas; las ediciones aún no revisadas no se cuentan.",
+ "descripcion": "Correspondencia, revisada a mano, entre las ediciones en facsímil alojadas en R2 y las 258 fichas del repertorio (data/bibliotheca-graeca-latina-I-bce-I-ce.json, que no se modifica). Las obras sin ficha previa se cuentan como incorporaciones nuevas; las ediciones aún no revisadas no se cuentan.",
  "recuentos": {
-  "fichasRepertorio": 227,
+  "fichasRepertorio": 258,
   "obrasNuevas": 0,
-  "obrasTotales": 227,
+  "obrasTotales": 258,
   "edicionesFacsimil": 53,
   "fichasConFacsimil": 61,
-  "sinRevisar": 0
+  "sinRevisar": 31
  },
  "porObra": {
   "apolonio-argonauticas": [
@@ -745,7 +745,39 @@
   ]
  },
  "obrasNuevas": [],
- "sinRevisar": [],
+ "sinRevisar": [
+  "antologia-griega",
+  "aquiles-tacio-leucipa",
+  "aristoteles-del-cielo",
+  "aristoteles-historia-animales",
+  "baquilides-poemas",
+  "calimaco-himnos",
+  "epicuro-restos",
+  "esquines-discursos",
+  "filostrato-apolonio",
+  "galeno-facultades-naturales",
+  "hipocrates-obras",
+  "iseo-discursos",
+  "jenofonte-ciropedia",
+  "jenofonte-economico",
+  "longo-dafnis-cloe",
+  "longo-dafnis-es",
+  "menandro-comedias",
+  "platon-cratilo-parmenides",
+  "platon-protagoras",
+  "platon-teeteto-sofista",
+  "plotino-eneadas",
+  "lyra-graeca",
+  "quinto-esmirna-posthomericas",
+  "amiano-marcelino-es",
+  "ausonio-obras",
+  "claudiano-poemas",
+  "higino-fabulas",
+  "manilio-astronomica",
+  "minucio-felix-octavio",
+  "prudencio-poemas",
+  "valerio-flaco-argonautica"
+ ],
  "mapa": {
   "herodoto-historias": [
    "herodotus-historiae"

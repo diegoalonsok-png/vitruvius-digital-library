@@ -7,17 +7,17 @@
     "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/corpus-originales-latinos-20261108/data/offsite-latin/manifest.json"
   ],
   "counts": {
-    "worksCatalogued": 227,
+    "worksCatalogued": 258,
     "hostedOriginalsIndexed": 182,
     "remoteOriginalsIndexed": 28,
     "combinedOriginalsIndexed": 210,
-    "originalsStillWithoutIndex": 17,
+    "originalsStillWithoutIndex": 48,
     "remoteGreek": 16,
     "remoteLatin": 12,
     "hostedTranslations": 59,
     "hostedTextVersions": 247,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 14
+    "distinctAncientWorksStillMissingOriginalIndex": 45
   },
   "remoteEntries": [
     {
@@ -449,6 +449,223 @@
     {
       "workId": "teocrito-bucolicos",
       "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "antologia-griega",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "aquiles-tacio-leucipa",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "aristoteles-del-cielo",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "aristoteles-historia-animales",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "baquilides-poemas",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "calimaco-himnos",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "epicuro-restos",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "esquines-discursos",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "filostrato-apolonio",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "galeno-facultades-naturales",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "hipocrates-obras",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "iseo-discursos",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "jenofonte-ciropedia",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "jenofonte-economico",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "longo-dafnis-cloe",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "longo-dafnis-es",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "menandro-comedias",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "platon-cratilo-parmenides",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "platon-protagoras",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "platon-teeteto-sofista",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "plotino-eneadas",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "lyra-graeca",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "quinto-esmirna-posthomericas",
+      "originalLanguage": "grc",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "amiano-marcelino-es",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "ausonio-obras",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "claudiano-poemas",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "higino-fabulas",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "manilio-astronomica",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "minucio-felix-octavio",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "prudencio-poemas",
+      "originalLanguage": "la",
+      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "bibliographyCandidateUrns": [],
+      "recordKind": "independent-work"
+    },
+    {
+      "workId": "valerio-flaco-argonautica",
+      "originalLanguage": "la",
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "recordKind": "independent-work"
