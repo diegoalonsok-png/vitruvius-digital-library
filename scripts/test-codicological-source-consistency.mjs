@@ -71,5 +71,6 @@ for(const [group,key] of genevaPaths){
   'The catalogue record must not be mislabeled as an autoptic examination');
 }
 assert.equal(ciceroGeneva.missingCount,8,'No unsupported completion of other Geneva codicological fields');
-assert.equal(allMissing,1742,'Ten sourced Geneva fields should reduce the outstanding research backlog by exactly ten');
-console.log('PASS: '+catalogue.works.length+' works catalogued; 100 codicological records, 22 fields, 1742 genuinely pending; Harley and ten Geneva fields sourced to institutional catalogues');
+assert.equal(allMissing,report.codicology.pendingFieldSlots,'Pending fields must agree with the academic integrity report');
+assert.equal(matrix.records.length,report.codicology.registeredWitnessRecords,'Manuscript dossier count must agree with the academic report');
+console.log('PASS: '+catalogue.works.length+' works catalogued; '+matrix.records.length+' manuscript records, 22 fields, '+allMissing+' genuinely pending; Harley and ten Geneva fields sourced to institutional catalogues');
