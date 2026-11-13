@@ -1,0 +1,56 @@
+name: Verificar publicación Lexicon en dominio .org
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'vitruvia-lexicon.html'
+      - 'assets/site-bar.js'
+      - '.github/workflows/verificar-lexicon-org.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verificacion-lexicon-org
+  cancel-in-progress: true
+
+jobs:
+  verificar:
+    name: Confirmar que vitruvius-digital-library.org refleja GitHub
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar marcador de la corrección Aa en el archivo fuente
+        run: |
+          set -euo pipefail
+          grep -Fq 'grid-template-columns:repeat(5,max-content)' vitruvia-lexicon.html
+          grep -Fq '.site-typeface-tool{grid-column:5;grid-row:1' vitruvia-lexicon.html
+      - name: Esperar publicación del sitio .org y verificar Aa
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://vitruvius-digital-library.org/vitruvia-lexicon.html"
+          echo "Archivo fuente: vitruvia-lexicon.html (main)"
+          echo "URL pública: $url"
+          for attempt in $(seq 1 20); do
+            echo "Intento $attempt/20"
+            if curl --fail --location --silent --show-error \
+               --connect-timeout 10 --max-time 25 \
+               --header 'Cache-Control: no-cache' \
+               "$url?verify_lexicon=${GITHUB_SHA}" -o /tmp/lexicon-org.html; then
+              if grep -Fq 'grid-template-columns:repeat(5,max-content)' /tmp/lexicon-org.html \
+                 && grep -Fq '.site-typeface-tool{grid-column:5;grid-row:1' /tmp/lexicon-org.html; then
+                echo "OK: el dominio .org contiene la corrección Aa del repositorio."
+                exit 0
+              fi
+              echo "El dominio responde, pero todavía no contiene la corrección Aa."
+            else
+              echo "El dominio .org aún no respondió con HTTP 200."
+            fi
+            if [ "$attempt" -lt 20 ]; then sleep 20; fi
+          done
+          echo "::error::El dominio .org no refleja la corrección Aa. Revisar Cloudflare Pages/Workers: repositorio conectado, rama main y estado del último despliegue."
+          exit 1
