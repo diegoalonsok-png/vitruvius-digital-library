@@ -17,7 +17,12 @@ const TIPOS={
 const PL={"decision":["decisión ecdótica","decisiones ecdóticas"],"lectura-h":["lectura del Codex H","lecturas del Codex H"],"glosa":["glosa explicativa","glosas explicativas"],"nota":["nota del aparato","notas del aparato"]};
 const EDIC={V514:"V514 · castellano",V554:"V554 · francés",V297:"V297 · inglés",H:"Codex H"};
 const POR_PAGINA=25;
-let todos=[],vistos=0,grupos=[];
+let todos=[],vistos=0,grupos=[],ediciones={};
+const EDID={V514:"recensio-es",V554:"recensio-fr",V297:"theory-en"};
+const EDLANG={V514:"latín y castellano",V554:"latín y francés",V297:"latín e inglés"};
+const libroEditorial=ed=>ed?.bibliographic_title||[ed?.title,ed?.subtitle].filter(Boolean).join(": ");
+const urlCatalogo=href=>typeof href==="string"&&/^(?:documents\/|https:\/\/doi\.org\/)/.test(href)?href:"";
+
 
 const vitr=l=>{const m=/^(\d+)\.(.*)$/.exec(l||"");return m?"Vitr. "+(R[+m[1]]||m[1])+"."+m[2]:(l||"")};
 const esLocus=q=>/^(?:vitr\.?\s*)?([ivx]+|\d{1,2})[.\s]+(praef|\d{1,2})(?:[.\s]+(\d{1,2}))?$/i.exec(q.trim());
@@ -111,6 +116,69 @@ function lineaAparato(r){
  if(r.tipo==="decision"&&r.lema)return el("p",{class:"re-ap"},el("span",{class:"re-lema"},marcar(r.lema)));
  return null;
 }
+
+/* Referencia de la EDICIÓN que contiene cada nota, distinta de la
+   autoridad del testimonio manuscrito o de una atribución candidata. */
+function fichaFuente(r){
+ const box=el("section",{class:"re-ficha","aria-label":"Identificación bibliográfica y ecdótica"});
+ const row=el("div",{class:"re-ficha-top"});
+ row.append(el("strong",{text:"Fuente bibliográfica del registro"}),
+  el("span",{class:"re-ficha-version",text:r.version==="H"?"TESTIMONIUM H":(r.version||"EDICIÓN")}));
+ box.append(row);
+ if(r.version==="H"){
+  box.append(
+   el("p",{class:"re-ficha-titulo"},el("cite",{text:"Harley MS 2767 · Codex H · De architectura"})),
+   el("dl",{class:"re-ficha-datos"},
+    el("div",{},el("dt",{text:"Autor antiguo"}),el("dd",{text:"Marco Vitruvio Polión"})),
+    el("div",{},el("dt",{text:"Testimonio"}),el("dd",{text:"Harley MS 2767 (H), British Library · transmisión manuscrita del De architectura"})),
+    el("div",{},el("dt",{text:"Identificación"}),el("dd",{text:"Manuscrito histórico: no se le asignan ISBN ni DOI de las ediciones modernas"})),
+    el("div",{},el("dt",{text:"Evidencia"}),el("dd",{text:r.gradoRotulo||r.locusEstado||"Observación pendiente de cotejo"}))
+   ),
+   el("p",{class:"re-ficha-nota",text:"La lectura de H procede del facsímil y conserva su grado de comprobación. La edición V514 es un término de comparación, no el identificador bibliográfico del códice."}),
+   el("div",{class:"re-ficha-links"},
+    el("a",{href:"codex-h-folios-local.html",text:"Consultar Codex H"}),
+    el("a",{href:"documents/edicion-v514.html",text:"Edición V514 utilizada para el contraste"})
+   )
+  );
+  return box;
+ }
+ const ed=ediciones[EDID[r.version]];
+ if(!ed){
+  box.append(el("p",{class:"re-ficha-nota",text:"No se ha cargado la ficha editorial. El registro textual conserva su procedencia, pero no se atribuyen ISBN ni DOI sin metadatos disponibles."}));
+  if(EDID[r.version])box.append(el("a",{href:"documents/edicion-"+r.version.toLowerCase()+".html",text:"Consultar ficha editorial"}));
+  return box;
+ }
+ const role=String(ed.editorial_role||"Edición y traducción").replace(/Diego Kurilo/g,"Diego A. Kurilo");
+ const isbn=String(ed.isbn||"").trim(),doi=String(ed.doi||"").trim();
+ const dl=el("dl",{class:"re-ficha-datos"});
+ const line=(term,...values)=>dl.append(el("div",{},el("dt",{text:term}),el("dd",{},...values)));
+ line("Autor antiguo",document.createTextNode("Marco Vitruvio Polión · De architectura"));
+ line("Responsable moderno",el("strong",{text:"Diego A. Kurilo"}),document.createTextNode(" · Arquitecto con orientación en Urbanismo"));
+ line("Labor editorial",document.createTextNode(role+" · "+EDLANG[r.version]));
+ line("Edición",document.createTextNode([ed.publisher,ed.publication_place,ed.year,ed.pages?ed.pages+" páginas":null].filter(Boolean).join(" · ")));
+ line("ISBN",document.createTextNode(isbn||"No consta ISBN documentado"),...(isbn?[el("small",{class:"re-ficha-cautela",text:"V514 y V554 consignan el mismo número en sus paratextos; su asignación registral independiente no está corroborada."})]:[]));
+ line("DOI de edición",doi?el("a",{href:"https://doi.org/"+encodeURIComponent(doi),target:"_blank",rel:"noopener noreferrer",text:doi}):document.createTextNode("No documentado"));
+ line("Localización",document.createTextNode([r.locus?"Vitr. "+r.locus:"Sin locus canónico",r.nota?"nota "+r.nota:null,r.pagina?"p. "+r.pagina:null].filter(Boolean).join(" · ")));
+ line("Evidencia",document.createTextNode([r.locusEstado,r.gradoRotulo].filter((v,i,a)=>v&&a.indexOf(v)===i).join(" · ")||"Vinculación sin comprobación declarada"));
+ box.append(el("p",{class:"re-ficha-titulo"},el("cite",{text:libroEditorial(ed)})),dl);
+ const links=el("div",{class:"re-ficha-links"});
+ links.append(el("a",{href:"documents/edicion-"+r.version.toLowerCase()+".html",text:"Ficha de la edición"}));
+ const pdf=urlCatalogo(ed.read_url||ed.source_url);
+ if(pdf)links.append(el("a",{href:pdf,target:"_blank",rel:"noopener noreferrer",text:"Consultar libro completo (PDF)"}));
+ if(r.locus&&r.locusEstado!=="no canónico")links.append(el("a",{href:"lector-bilingue.html?edition="+encodeURIComponent(ed.id)+"&locus="+encodeURIComponent(r.locus),text:"Abrir pasaje de esta edición"}));
+ box.append(links);
+ box.append(el("p",{class:"re-ficha-nota",text:"El DOI identifica la publicación moderna, no el manuscrito ni esta nota individual. La coincidencia por locus y el grado del registro no implican colación autóptica. Las páginas PDF solo se muestran cuando están documentadas."}));
+ const cite=[ "Kurilo, Diego A.",libroEditorial(ed)+".",ed.edition_statement?ed.edition_statement+".":"",ed.publication_place?ed.publication_place+":":"",ed.publisher+",",String(ed.year)+".",doi?"https://doi.org/"+doi+".":"",r.locus?"Vitr. "+r.locus+".":"",r.nota?"Nota "+r.nota+".":"",r.gradoRotulo?"Estado: "+r.gradoRotulo+".":""].filter(Boolean).join(" ");
+ const copy=el("button",{type:"button",class:"re-ficha-copiar",text:"Copiar referencia de la edición y el registro"});
+ copy.addEventListener("click",async()=>{
+  try{await navigator.clipboard.writeText(cite);copy.textContent="Referencia copiada"}catch{
+   copy.textContent="No se pudo copiar; consulte la ficha bibliográfica";
+  }
+ });
+ box.append(copy);
+ return box;
+}
+
 function registro(r,sinLocus){
  const t=TIPOS[r.tipo]||{rot:r.tipo,que:""};
  const d=el("div",{class:"re-reg"});
@@ -128,13 +196,18 @@ function registro(r,sinLocus){
  if(r.nota)meta.append(el("span",{text:"nota "+r.nota+(r.parrafo?" · párrafo DOCX "+r.parrafo:"")}));
  if(r.pagina&&r.pdf)meta.append(el("a",{href:r.pdf,target:"_blank",rel:"noopener",text:(r.version||"")+" p. "+r.pagina+" ↗"}));
  if(r.lociPosibles?.length)meta.append(el("span",{text:"también en "+r.lociPosibles.slice(0,4).join(", ")}));
- d.append(meta);return d;
+ d.append(meta);
+ d.append(fichaFuente(r));return d;
 }
 function exportar(f,res){
  const box=$("re-export");box.hidden=!res.length;if(!res.length)return;
  const limpio=res.map(({_h,orden,...r})=>r);
+ const bibliografia=[...new Set(res.map(r=>r.version).filter(v=>EDID[v]))].map(version=>{
+  const ed=ediciones[EDID[version]];
+  return ed?{version,title:libroEditorial(ed),author:"Diego A. Kurilo",authorQualification:"Arquitecto con orientación en Urbanismo",ancientAuthor:"Marco Vitruvio Polión",editorialRole:ed.editorial_role,publisher:ed.publisher,publicationPlace:ed.publication_place,year:ed.year,pages:ed.pages,isbn:ed.isbn||null,isbnStatus:ed.isbn?"Consignado en paratexto; V514 y V554 comparten número, asignación independiente pendiente de corroboración":"No consignado",doi:ed.doi||null,editionType:ed.edition_statement}:null;
+ }).filter(Boolean);
  const a=$("re-json");URL.revokeObjectURL(a.href);
- a.href=URL.createObjectURL(new Blob([JSON.stringify({consulta:f,fecha:new Date().toISOString(),registros:limpio},null,1)],{type:"application/json"}));
+ a.href=URL.createObjectURL(new Blob([JSON.stringify({consulta:f,fecha:new Date().toISOString(),bibliografiaEdiciones:bibliografia,registros:limpio},null,1)],{type:"application/json"}));
  $("re-cita").textContent=`Cítese: Registro ecdótico de De architectura, Vitruvius Digital Library (D. A. Kurilo), consulta ${f.q?"«"+f.q+"»":"por filtros"}, ${new Date().toLocaleDateString("es-AR")}, ${location.href}`;
 }
 function guardarURL(f){
@@ -182,8 +255,13 @@ function init(){
  for(const id of ["re-tipo","re-libro","re-locus","re-edicion","re-sigla"])$(id).addEventListener("change",buscar);
  $("re-mas").addEventListener("click",pintarMas);
  $("re-aviso").hidden=false;$("re-aviso").textContent="Cargando el aparato…";
- fetch("data/index/registro-ecdotico.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
-  .then(d=>{$("re-aviso").hidden=true;poblar(d)})
+ Promise.all([
+  fetch("data/index/registro-ecdotico.json").then(r=>{if(!r.ok)throw Error("Índice: HTTP "+r.status);return r.json()}),
+  fetch("data/catalog.json").then(r=>{if(!r.ok)throw Error("Catálogo: HTTP "+r.status);return r.json()}).catch(()=>null)
+ ]).then(([d,catalogo])=>{
+  ediciones=Object.fromEntries((catalogo?.editions||[]).filter(e=>Object.values(EDID).includes(e.id)).map(e=>[e.id,e]));
+  $("re-aviso").hidden=true;poblar(d);
+ })
   .catch(e=>{$("re-aviso").textContent="No se pudo cargar el registro ("+e.message+"). No se muestran cifras inventadas."});
  fetch("data/ecdotic-decisions.json").then(r=>r.ok?r.json():null).then(d=>{if(!d)return;
   const n=(d.decisions||[]).length;
