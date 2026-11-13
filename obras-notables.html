@@ -19,9 +19,9 @@ h1 em{font-style:italic}
 .ed{margin:0;font:13px/1.5 Arial,Helvetica,sans-serif;color:var(--gris)}
 .wrap{max-width:1280px;margin:0 auto;padding:18px}
 .cols{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px}
-@media(max-width:980px){.cols{grid-template-columns:minmax(0,1fr)}}
-.lamina{background:#1d1d1f;border:1px solid var(--borde);border-radius:6px;overflow:hidden;position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center}
-.lamina img{display:block;max-width:none;transform-origin:center center;cursor:grab;user-select:none}
+@media(max-width:980px){.cols{grid-template-columns:minmax(0,1fr)}.lamina{height:clamp(480px,72vh,820px)}}
+.lamina{background:#1d1d1f;border:1px solid var(--borde);border-radius:6px;overflow:hidden;position:relative;height:clamp(520px,76vh,960px);min-height:0;display:flex;align-items:center;justify-content:center;touch-action:none}
+.lamina img{display:block;width:auto;height:auto;max-width:calc(100% - 24px);max-height:calc(100% - 24px);object-fit:contain;transform-origin:center center;cursor:grab;user-select:none;-webkit-user-drag:none;will-change:transform}
 .lamina.arrastrando img{cursor:grabbing}
 .marcas{position:absolute;inset:0;pointer-events:none}
 .marca{position:absolute;background:rgba(201,168,76,.38);border-top:1px solid rgba(201,168,76,.8);border-bottom:1px solid rgba(201,168,76,.8)}
@@ -149,6 +149,6 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <script defer src="assets/vitruvia-philology.js?v=20261113-obras"></script>
 <script defer src="assets/r2-clasicos-busqueda.js?v=20261113-obras"></script>
-<script defer src="assets/obras-notables-visor.js?v=20261113-folios-cotejo-2"></script>
+<script defer src="assets/obras-notables-visor.js?v=20261113-encuadre-folio-v3"></script>
 </body>
 </html>
