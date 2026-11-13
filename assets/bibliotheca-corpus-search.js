@@ -37,6 +37,7 @@ function valid(e){
  return e&&/^[a-z0-9-]+$/.test(e.workId||"")&&["grc","la","en","es","fr","it","de","pt"].includes(e.language)
   &&(e.format==="html-text"?/^corpus\/[a-z0-9-]+\.html$/.test(e.path||"")
     :e.format==="json-passages"&&(/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(e.path||"")||
+       /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json$/.test(e.path||"")||
        (e.language==="la"&&e.path===SHARED_LATIN_SOURCES[e.workId]&&Boolean(e.sourceWorkId)))
      ||e.format==="structured-bilingual"&&e.workId==="vitruvius"&&
       /^data\/structured\/(?:recensio-es|recensio-fr|theory-en)\.json$/.test(e.path||"")

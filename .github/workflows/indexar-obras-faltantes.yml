@@ -1,0 +1,64 @@
+name: Indexar las obras del repertorio que no tienen texto buscable
+
+# Toma las fichas que figuran en el repertorio pero cuyo texto no se podía
+# buscar, baja la edición TEI declarada en data/perseus-obras-faltantes.json,
+# la convierte al contrato de pasajes del sitio y la deja en Cloudflare R2.
+# Al repositorio entra sólo el registro de búsqueda, que es liviano.
+
+on:
+  workflow_dispatch:
+    inputs:
+      fichas:
+        description: "Fichas a indexar, separadas por espacios (vacío = todas las declaradas)"
+        default: ""
+
+concurrency:
+  group: indexar-obras-faltantes
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  indexar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet "boto3>=1.36"
+
+      - name: Convertir las ediciones TEI
+        run: |
+          mkdir -p /tmp/corpus-nuevo
+          python scripts/indexar-perseus-lote.py ${{ inputs.fichas }} --destino /tmp/corpus-nuevo --r2
+
+      - name: Subir el texto a R2
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: python scripts/r2-subir-corpus.py --origen /tmp/corpus-nuevo
+
+      - name: Recalcular las cifras del repertorio
+        run: python scripts/cifras-corpus.py
+
+      - name: Comprobar el registro y la búsqueda
+        run: |
+          npm install --no-save jsdom
+          node scripts/test-registro-corpus-r2.mjs
+          node scripts/test-r2-busqueda-clasicos.mjs
+
+      - name: Publicar el registro
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/classics-corpus/search-registry.json data/perseus-obras-faltantes.json data/cifras-corpus.json
+          git diff --cached --quiet && echo "Sin cambios" && exit 0
+          git commit -m "Texto buscable de las obras que faltaban, alojado en R2"
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main

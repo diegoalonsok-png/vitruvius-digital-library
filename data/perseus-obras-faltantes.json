@@ -1,0 +1,1330 @@
+{
+ "schema": "vdl-perseus-obras-faltantes-1",
+ "nota": "Fuentes TEI para las fichas del repertorio que no tenían texto buscable. Una ficha puede reunir varias obras; cada pasaje conserva su URN.",
+ "fichas": {
+  "origenes": {
+   "titulo": "Περὶ ἀρχῶν · De principiis",
+   "autor": "Orígenes",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg2042.tlg001",
+     "titulo": "Contra Celsum",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2042/tlg001/tlg2042.tlg001.perseus-grc1.xml"
+    }
+   ]
+  },
+  "apolonio-argonauticas": {
+   "titulo": "Ἀργοναυτικά · Argonautica",
+   "autor": "Apolonio de Rodas",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0001.tlg001",
+     "titulo": "Argonautica",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0001/tlg001/tlg0001.tlg001.perseus-grc2.xml"
+    }
+   ]
+  },
+  "isocrates-discursos": {
+   "titulo": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+   "autor": "Isócrates",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg001",
+     "titulo": "Against Euthynus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg001/tlg0010.tlg001.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg002",
+     "titulo": "Against Callimachus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg002/tlg0010.tlg002.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg003",
+     "titulo": "Against Lochites",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg003/tlg0010.tlg003.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg004",
+     "titulo": "Concerning the Team of Horses",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg004/tlg0010.tlg004.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg005",
+     "titulo": "Trapeziticus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg005/tlg0010.tlg005.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg006",
+     "titulo": "Aegineticus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg006/tlg0010.tlg006.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg007",
+     "titulo": "To Demonicus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg007/tlg0010.tlg007.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg008",
+     "titulo": "Against the Sophists",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg008/tlg0010.tlg008.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg009",
+     "titulo": "Helen",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg009/tlg0010.tlg009.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg010",
+     "titulo": "Busiris",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg010/tlg0010.tlg010.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg011",
+     "titulo": "Panegyricus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg011/tlg0010.tlg011.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg012",
+     "titulo": "Plataicus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg012/tlg0010.tlg012.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg013",
+     "titulo": "To Nicocles",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg013/tlg0010.tlg013.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg014",
+     "titulo": "Nicocles or the Cyprians",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg014/tlg0010.tlg014.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg015",
+     "titulo": "Evagoras",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg015/tlg0010.tlg015.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg016",
+     "titulo": "Archidamus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg016/tlg0010.tlg016.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg017",
+     "titulo": "On the Peace",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg017/tlg0010.tlg017.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg018",
+     "titulo": "Areopagiticus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg018/tlg0010.tlg018.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg019",
+     "titulo": "Antidosis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg019/tlg0010.tlg019.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg020",
+     "titulo": "To Philip",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg020/tlg0010.tlg020.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg021",
+     "titulo": "Panathenaicus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg021/tlg0010.tlg021.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg022",
+     "titulo": "To Dionysius",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg022/tlg0010.tlg022.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg023",
+     "titulo": "To the Children of Jason",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg023/tlg0010.tlg023.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg024",
+     "titulo": "To Archidamus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg024/tlg0010.tlg024.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg025",
+     "titulo": "To the Rulers of the Mytilenaeans",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg025/tlg0010.tlg025.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg026",
+     "titulo": "To Timotheus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg026/tlg0010.tlg026.perseus-grc3.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg027",
+     "titulo": "To Philip, I",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg027/tlg0010.tlg027.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg028",
+     "titulo": "To Alexander",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg028/tlg0010.tlg028.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg029",
+     "titulo": "To Antipater",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg029/tlg0010.tlg029.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0010.tlg030",
+     "titulo": "To Philip, II",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0010/tlg030/tlg0010.tlg030.perseus-grc2.xml"
+    }
+   ]
+  },
+  "lisias-discursos": {
+   "titulo": "Λόγοι · Discursos",
+   "autor": "Lisias",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg001",
+     "titulo": "On the Murder of Eratosthenes",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg001/tlg0540.tlg001.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg002",
+     "titulo": "Funeral Oration",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg002/tlg0540.tlg002.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg003",
+     "titulo": "Against Simon",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg003/tlg0540.tlg003.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg004",
+     "titulo": "On A Wound By Premeditation",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg004/tlg0540.tlg004.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg005",
+     "titulo": "For Callias",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg005/tlg0540.tlg005.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg006",
+     "titulo": "Against Andocides",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg006/tlg0540.tlg006.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg007",
+     "titulo": "On the Olive Stump",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg007/tlg0540.tlg007.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg008",
+     "titulo": "Accusation of Calumny",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg008/tlg0540.tlg008.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg009",
+     "titulo": "For The Soldier",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg009/tlg0540.tlg009.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg010",
+     "titulo": "Against Theomnestus 1",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg010/tlg0540.tlg010.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg011",
+     "titulo": "Against Theomnestus 2",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg011/tlg0540.tlg011.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg012",
+     "titulo": "Against Eratosthenes",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg012/tlg0540.tlg012.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg013",
+     "titulo": "Against Agoratus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg013/tlg0540.tlg013.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg014",
+     "titulo": "Against Alcibiades 1",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg014/tlg0540.tlg014.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg015",
+     "titulo": "Against Alcibiades 2",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg015/tlg0540.tlg015.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg016",
+     "titulo": "In Defense of Mantitheus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg016/tlg0540.tlg016.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg017",
+     "titulo": "On The Property Of Eraton",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg017/tlg0540.tlg017.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg018",
+     "titulo": "On the Confiscation of the Property Of The Brother Of Nicias",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg018/tlg0540.tlg018.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg019",
+     "titulo": "On the Property of Aristophanes",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg019/tlg0540.tlg019.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg020",
+     "titulo": "For Polystratus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg020/tlg0540.tlg020.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg021",
+     "titulo": "Defense Against A Charge Of Taking Bribes",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg021/tlg0540.tlg021.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg022",
+     "titulo": "Against The Corn-Dealers",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg022/tlg0540.tlg022.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg023",
+     "titulo": "Against Pancleon",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg023/tlg0540.tlg023.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg024",
+     "titulo": "On The Refusal Of A Pension",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg024/tlg0540.tlg024.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg025",
+     "titulo": "Defense Against a Charge of Subverting the Democracy",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg025/tlg0540.tlg025.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg026",
+     "titulo": "On the Scrutiny of Evandros",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg026/tlg0540.tlg026.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg027",
+     "titulo": "Against Epicrates and his Fellow-envoys",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg027/tlg0540.tlg027.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg028",
+     "titulo": "Against Ergocles",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg028/tlg0540.tlg028.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg029",
+     "titulo": "Against Philocrates",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg029/tlg0540.tlg029.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg030",
+     "titulo": "Against Nicomachus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg030/tlg0540.tlg030.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg031",
+     "titulo": "Against Philon",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg031/tlg0540.tlg031.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg032",
+     "titulo": "Against Diogeiton",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg032/tlg0540.tlg032.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg033",
+     "titulo": "Olympic Oration",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg033/tlg0540.tlg033.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0540.tlg034",
+     "titulo": "Against The Subversion of the Ancestral Constitution",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0540/tlg034/tlg0540.tlg034.perseus-grc2.xml"
+    }
+   ]
+  },
+  "esquines-discursos": {
+   "titulo": "Λόγοι · Discursos",
+   "autor": "Esquines",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0026.tlg001",
+     "titulo": "Against Timarchus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0026/tlg001/tlg0026.tlg001.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0026.tlg002",
+     "titulo": "On the Embassy",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0026/tlg002/tlg0026.tlg002.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0026.tlg003",
+     "titulo": "Against Ctesiphon",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0026/tlg003/tlg0026.tlg003.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0026.tlg004",
+     "titulo": "Epistolae",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0026/tlg004/tlg0026.tlg004.1st1K-grc1.xml"
+    }
+   ]
+  },
+  "iseo-discursos": {
+   "titulo": "Λόγοι · Discursos",
+   "autor": "Iseo",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg001",
+     "titulo": "On The Estate of Cleonymus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg001/tlg0017.tlg001.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg002",
+     "titulo": "On the Estate of Menecles",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg002/tlg0017.tlg002.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg003",
+     "titulo": "On The Estate Of Pyrrhus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg003/tlg0017.tlg003.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg004",
+     "titulo": "On the Estate of Nicostratus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg004/tlg0017.tlg004.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg005",
+     "titulo": "On the Estate of Dicaeogenes",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg005/tlg0017.tlg005.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg006",
+     "titulo": "On the Estate of Philoctemon",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg006/tlg0017.tlg006.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg007",
+     "titulo": "On The Estate of Apollodorus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg007/tlg0017.tlg007.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg008",
+     "titulo": "On The Estate of Ciron",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg008/tlg0017.tlg008.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg009",
+     "titulo": "On the Estate of Astyphilus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg009/tlg0017.tlg009.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg010",
+     "titulo": "On The Estate of Aristarchus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg010/tlg0017.tlg010.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg011",
+     "titulo": "On the Estate of Hagnias",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg011/tlg0017.tlg011.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0017.tlg012",
+     "titulo": "On Behalf of Euphiletus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0017/tlg012/tlg0017.tlg012.perseus-grc2.xml"
+    }
+   ]
+  },
+  "longino-sublime": {
+   "titulo": "Περὶ ὕψους · De sublimitate",
+   "autor": "Pseudo-Longino",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0560.tlg001",
+     "titulo": "On the Sublime",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0560/tlg001/tlg0560.tlg001.perseus-grc2.xml"
+    }
+   ]
+  },
+  "teocrito-bucolicos": {
+   "titulo": "Εἰδύλλια · Idilios",
+   "autor": "Teócrito, Bión y Mosco",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0005.tlg001",
+     "titulo": "Εἰδύλλια",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0005/tlg001/tlg0005.tlg001.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0005.tlg002",
+     "titulo": "Ἐπιγράμματα",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0005/tlg002/tlg0005.tlg002.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0005.tlg003",
+     "titulo": "Syrinx",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0005/tlg003/tlg0005.tlg003.1st1K-grc1.xml"
+    }
+   ]
+  },
+  "antologia-griega": {
+   "titulo": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
+   "autor": "Antología griega",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg7000.tlg001",
+     "titulo": "Greek Anthology",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg7000/tlg001/tlg7000.tlg001.perseus-grc9.xml"
+    }
+   ]
+  },
+  "aquiles-tacio-leucipa": {
+   "titulo": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
+   "autor": "Aquiles Tacio",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0532.tlg001",
+     "titulo": "Leucippe and Clitophon",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0532/tlg001/tlg0532.tlg001.perseus-grc2.xml"
+    }
+   ]
+  },
+  "aristoteles-del-cielo": {
+   "titulo": "Περὶ οὐρανοῦ · De caelo",
+   "autor": "Aristóteles",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0086.tlg005",
+     "titulo": "De caelo",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg005/tlg0086.tlg005.1st1K-grc1.xml"
+    }
+   ]
+  },
+  "aristoteles-historia-animales": {
+   "titulo": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+   "autor": "Aristóteles",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0086.tlg014",
+     "titulo": "Historia animalium",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0086/tlg014/tlg0086.tlg014.1st1K-grc1.xml"
+    }
+   ]
+  },
+  "baquilides-poemas": {
+   "titulo": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
+   "autor": "Baquílides",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0199.tlg001",
+     "titulo": "Epinicians",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0199/tlg001/tlg0199.tlg001.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0199.tlg002",
+     "titulo": "Dithyrambs",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0199/tlg002/tlg0199.tlg002.perseus-grc2.xml"
+    }
+   ]
+  },
+  "calimaco-himnos": {
+   "titulo": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
+   "autor": "Calímaco y Licofrón",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg003",
+     "titulo": "Epigrams",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg003/tlg0533.tlg003.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg004",
+     "titulo": "Epigrams and Fragments",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg004/tlg0533.tlg004.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg006",
+     "titulo": "Aetia",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0533/tlg006/tlg0533.tlg006.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg007",
+     "titulo": "Iambi",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0533/tlg007/tlg0533.tlg007.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg009",
+     "titulo": "Hecala",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0533/tlg009/tlg0533.tlg009.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg015",
+     "titulo": "Hymn to Zeus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg015/tlg0533.tlg015.perseus-grc4.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg016",
+     "titulo": "Hymn to Apollo",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg016/tlg0533.tlg016.perseus-grc4.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg017",
+     "titulo": "Hymn to Artemis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg017/tlg0533.tlg017.perseus-grc4.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg018",
+     "titulo": "Hymn to Delos",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg018/tlg0533.tlg018.perseus-grc4.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg019",
+     "titulo": "Hymn to Athena",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg019/tlg0533.tlg019.perseus-grc4.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0533.tlg020",
+     "titulo": "Hymn to Demeter",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0533/tlg020/tlg0533.tlg020.perseus-grc4.xml"
+    }
+   ]
+  },
+  "epicuro-restos": {
+   "titulo": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
+   "autor": "Epicuro",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0537.tlg010",
+     "titulo": "Epistula ad Herodotum",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0537/tlg010/tlg0537.tlg010.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0537.tlg011",
+     "titulo": "Epistula ad Pythoclem",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0537/tlg011/tlg0537.tlg011.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0537.tlg012",
+     "titulo": "Epistula ad Menoeceum",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0537/tlg012/tlg0537.tlg012.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0537.tlg013",
+     "titulo": "Ratae Sententiae",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0537/tlg013/tlg0537.tlg013.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0537.tlg014",
+     "titulo": "Gnomologium Vaticanum Epicureum",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0537/tlg014/tlg0537.tlg014.1st1K-grc1.xml"
+    }
+   ]
+  },
+  "filostrato-apolonio": {
+   "titulo": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
+   "autor": "Filóstrato",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0638.tlg001",
+     "titulo": "Life of Apollonius of Tyana",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0638/tlg001/tlg0638.tlg001.perseus-grc2.xml"
+    }
+   ]
+  },
+  "galeno-facultades-naturales": {
+   "titulo": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+   "autor": "Galeno",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0057.tlg010",
+     "titulo": "De naturalibus facultatibus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0057/tlg010/tlg0057.tlg010.perseus-grc2.xml"
+    }
+   ]
+  },
+  "hipocrates-obras": {
+   "titulo": "Corpus Hippocraticum (selección)",
+   "autor": "Hipócrates",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg012",
+     "titulo": "Aphorismi",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg012/tlg0627.tlg012.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg001",
+     "titulo": "De prisca medicina",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg001/tlg0627.tlg001.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg002",
+     "titulo": "De aere, aquis, locis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg002/tlg0627.tlg002.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg003",
+     "titulo": "Prognosticon",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg003/tlg0627.tlg003.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg004",
+     "titulo": "De diaeta in morbis acutis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg004/tlg0627.tlg004.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg005",
+     "titulo": "De diaeta acutorum",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg005/tlg0627.tlg005.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg006",
+     "titulo": "De morbis popularibus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg006/tlg0627.tlg006.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg007",
+     "titulo": "De capitis vulneribus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg007/tlg0627.tlg007.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg008",
+     "titulo": "De officina medici",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg008/tlg0627.tlg008.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg009",
+     "titulo": "De fracturis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg009/tlg0627.tlg009.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg010",
+     "titulo": "De articulis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg010/tlg0627.tlg010.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg011",
+     "titulo": "Vectiarius",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg011/tlg0627.tlg011.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg013",
+     "titulo": "Jusjurandum",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg013/tlg0627.tlg013.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg014",
+     "titulo": "Lex",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg014/tlg0627.tlg014.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg015",
+     "titulo": "De humoribus",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg015/tlg0627.tlg015.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg016",
+     "titulo": "Prorrheticon I",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg016/tlg0627.tlg016.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg017",
+     "titulo": "Coa praesagia",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg017/tlg0627.tlg017.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg018",
+     "titulo": "De arte",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg018/tlg0627.tlg018.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg019",
+     "titulo": "De natura hominis",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg019/tlg0627.tlg019.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg020",
+     "titulo": "De salubri diaeta",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg020/tlg0627.tlg020.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg021",
+     "titulo": "De flatibus",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg021/tlg0627.tlg021.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg022",
+     "titulo": "De liquidorum usu",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg022/tlg0627.tlg022.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg023",
+     "titulo": "De morbis i-iii",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg023/tlg0627.tlg023.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg024a",
+     "titulo": "De genitura",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg024a/tlg0627.tlg024a.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg024b",
+     "titulo": "De natura pueri",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg024b/tlg0627.tlg024b.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg025",
+     "titulo": "De affectionibus",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg025/tlg0627.tlg025.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg026",
+     "titulo": "De locis in homine",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg026/tlg0627.tlg026.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg027",
+     "titulo": "De morbo sacro",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg027/tlg0627.tlg027.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg028",
+     "titulo": "De ulceribus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg028/tlg0627.tlg028.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg029",
+     "titulo": "De haemorrhoidibus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg029/tlg0627.tlg029.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg030",
+     "titulo": "De fistulis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg030/tlg0627.tlg030.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg031",
+     "titulo": "De diaeta",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg031/tlg0627.tlg031.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg032",
+     "titulo": "De affectionibus interioribus",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg032/tlg0627.tlg032.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg033",
+     "titulo": "De natura muliebri",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg033/tlg0627.tlg033.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg035",
+     "titulo": "De octimestri partu",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg035/tlg0627.tlg035.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg036",
+     "titulo": "De muliebribus",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg036/tlg0627.tlg036.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg037",
+     "titulo": "De virginum morbis",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg037/tlg0627.tlg037.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg038",
+     "titulo": "De superfoetatione",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg038/tlg0627.tlg038.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg039",
+     "titulo": "De exsectione foetus",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg039/tlg0627.tlg039.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg040",
+     "titulo": "De anatomia",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg040/tlg0627.tlg040.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg041",
+     "titulo": "De dentitione",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg041/tlg0627.tlg041.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg042",
+     "titulo": "De glandulis",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg042/tlg0627.tlg042.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg043",
+     "titulo": "De carnibus",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg043/tlg0627.tlg043.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg045",
+     "titulo": "De corde",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg045/tlg0627.tlg045.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg046",
+     "titulo": "De alimento",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg046/tlg0627.tlg046.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg047",
+     "titulo": "De visu",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg047/tlg0627.tlg047.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg048",
+     "titulo": "De natura ossium",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg048/tlg0627.tlg048.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg049",
+     "titulo": "De medico",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg049/tlg0627.tlg049.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg050",
+     "titulo": "De habitu decenti",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg050/tlg0627.tlg050.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg051",
+     "titulo": "Praeceptiones",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0627/tlg051/tlg0627.tlg051.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg052",
+     "titulo": "De crisibus",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg052/tlg0627.tlg052.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg053",
+     "titulo": "De diebus criticis",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg053/tlg0627.tlg053.1st1K-grc1.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0627.tlg055",
+     "titulo": "Epistulae, Decretum, Orationes",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0627/tlg055/tlg0627.tlg055.1st1K-grc1.xml"
+    }
+   ]
+  },
+  "jenofonte-ciropedia": {
+   "titulo": "Κύρου παιδεία · Cyropaedia",
+   "autor": "Jenofonte",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0032.tlg007",
+     "titulo": "Cyropaedia",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0032/tlg007/tlg0032.tlg007.perseus-grc2.xml"
+    }
+   ]
+  },
+  "jenofonte-economico": {
+   "titulo": "Οἰκονομικός · Oeconomicus",
+   "autor": "Jenofonte",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0032.tlg003",
+     "titulo": "Economics",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0032/tlg003/tlg0032.tlg003.perseus-grc2.xml"
+    }
+   ]
+  },
+  "longo-dafnis-cloe": {
+   "titulo": "Δάφνις καὶ Χλόη · Poimeniká",
+   "autor": "Longo",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0561.tlg001",
+     "titulo": "Daphnis and Chloe",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0561/tlg001/tlg0561.tlg001.perseus-grc2.xml"
+    }
+   ]
+  },
+  "menandro-comedias": {
+   "titulo": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
+   "autor": "Menandro",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0541.tlg042",
+     "titulo": "Sententiae (corresponds to version Men Ar I) (Greek)",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg0541/tlg042/tlg0541.tlg042.1st1K-grc1.xml"
+    }
+   ]
+  },
+  "platon-cratilo-parmenides": {
+   "titulo": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
+   "autor": "Platón",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0059.tlg005",
+     "titulo": "Cratylus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg005/tlg0059.tlg005.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0059.tlg009",
+     "titulo": "Parmenides",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg009/tlg0059.tlg009.perseus-grc2.xml"
+    }
+   ]
+  },
+  "platon-protagoras": {
+   "titulo": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
+   "autor": "Platón",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0059.tlg024",
+     "titulo": "Meno",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg024/tlg0059.tlg024.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0059.tlg019",
+     "titulo": "Laches",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg019/tlg0059.tlg019.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0059.tlg021",
+     "titulo": "Euthydemus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg021/tlg0059.tlg021.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0059.tlg022",
+     "titulo": "Protagoras",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg022/tlg0059.tlg022.perseus-grc2.xml"
+    }
+   ]
+  },
+  "platon-teeteto-sofista": {
+   "titulo": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
+   "autor": "Platón",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg0059.tlg006",
+     "titulo": "Theaetetus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg006/tlg0059.tlg006.perseus-grc2.xml"
+    },
+    {
+     "urn": "urn:cts:greekLit:tlg0059.tlg007",
+     "titulo": "Sophist",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0059/tlg007/tlg0059.tlg007.perseus-grc2.xml"
+    }
+   ]
+  },
+  "plotino-eneadas": {
+   "titulo": "Ἐννεάδες · Enneades",
+   "autor": "Plotino",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg2000.tlg001",
+     "titulo": "Enneades",
+     "url": "https://raw.githubusercontent.com/OpenGreekAndLatin/First1KGreek/master/data/tlg2000/tlg001/tlg2000.tlg001.1st1K-grc1.xml"
+    }
+   ]
+  },
+  "quinto-esmirna-posthomericas": {
+   "titulo": "Τὰ μεθ' Ὅμηρον · Posthomerica",
+   "autor": "Quinto de Esmirna",
+   "lengua": "grc",
+   "obras": [
+    {
+     "urn": "urn:cts:greekLit:tlg2046.tlg001",
+     "titulo": "Fall of Troy",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg2046/tlg001/tlg2046.tlg001.perseus-grc2.xml"
+    }
+   ]
+  },
+  "amiano-marcelino-es": {
+   "titulo": "Res gestae",
+   "autor": "Amiano Marcelino",
+   "lengua": "la",
+   "obras": [
+    {
+     "urn": "urn:cts:latinLit:stoa0023.stoa001",
+     "titulo": "Res Gestae",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0023/stoa001/stoa0023.stoa001.perseus-lat2.xml"
+    }
+   ]
+  },
+  "ausonio-obras": {
+   "titulo": "Opuscula · Obras",
+   "autor": "Ausonio",
+   "lengua": "la",
+   "obras": [
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa001",
+     "titulo": "De Bissula",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa001/stoa0045.stoa001.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa002",
+     "titulo": "Caesares",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa002/stoa0045.stoa002.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa003",
+     "titulo": "Cento Nuptialis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa003/stoa0045.stoa003.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa004",
+     "titulo": "Commemoratio Professorum Burdigalensium",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa004/stoa0045.stoa004.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa005",
+     "titulo": "Cupido Cruciatus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa005/stoa0045.stoa005.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa006",
+     "titulo": "De Herediolo",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa006/stoa0045.stoa006.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa007",
+     "titulo": "Eclogarum Liber",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa007/stoa0045.stoa007.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa008",
+     "titulo": "Ephemeris",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa008/stoa0045.stoa008.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa009",
+     "titulo": "Epicedion in Patrem",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa009/stoa0045.stoa009.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa010",
+     "titulo": "Epigrammaton Liber",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa010/stoa0045.stoa010.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa011",
+     "titulo": "Epistulae",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa011/stoa0045.stoa011.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa012",
+     "titulo": "Epitaphia",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa012/stoa0045.stoa012.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa013",
+     "titulo": "Genethliacon ad Ausonium Nepotem",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa013/stoa0045.stoa013.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa014",
+     "titulo": "Gratiarum Actio",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa014/stoa0045.stoa014.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa015",
+     "titulo": "Griphus Ternarii Numeri",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa015/stoa0045.stoa015.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa016",
+     "titulo": "Liber Protrepticus ad Nepotem",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa016/stoa0045.stoa016.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa017",
+     "titulo": "[Libri de Fastis] Conclusio",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa017/stoa0045.stoa017.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa018",
+     "titulo": "Ludus Septem Sapientum",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa018/stoa0045.stoa018.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa019",
+     "titulo": "Mosella",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa019/stoa0045.stoa019.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa020",
+     "titulo": "Oratio Versibus Rhopalicis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa020/stoa0045.stoa020.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa021",
+     "titulo": "Ordo Urbium Nobilium",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa021/stoa0045.stoa021.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa022",
+     "titulo": "Parentalia",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa022/stoa0045.stoa022.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa025",
+     "titulo": "Praefatiunculae",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa025/stoa0045.stoa025.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa026",
+     "titulo": "Precationes",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa026/stoa0045.stoa026.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa027",
+     "titulo": "Versus Paschales Prosodic",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa027/stoa0045.stoa027.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0045.stoa028",
+     "titulo": "Technopaegnion",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0045/stoa028/stoa0045.stoa028.perseus-lat2.xml"
+    }
+   ]
+  },
+  "claudiano-poemas": {
+   "titulo": "Carmina · Poemas",
+   "autor": "Claudiano",
+   "lengua": "la",
+   "obras": [
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa001",
+     "titulo": "Carminum minorum corpusculum",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa001/stoa0089.stoa001.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa002",
+     "titulo": "de bello Gildonico",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa002/stoa0089.stoa002.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa003",
+     "titulo": "de Bello Gothico",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa003/stoa0089.stoa003.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa004",
+     "titulo": "de consulatu Stilichonis",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa004/stoa0089.stoa004.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa005",
+     "titulo": "de raptu Proserpinae",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa005/stoa0089.stoa005.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa006",
+     "titulo": "Epithalamium de nuptiis Honorii Augusti",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa006/stoa0089.stoa006.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa007",
+     "titulo": "Fescinnina de nuptiis Honorii Augusti",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa007/stoa0089.stoa007.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa008",
+     "titulo": "In Eutropium",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa008/stoa0089.stoa008.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa009",
+     "titulo": "In Rufinum",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa009/stoa0089.stoa009.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa010",
+     "titulo": "Panegyricus de tertio consulatu Honorii Augusti",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa010/stoa0089.stoa010.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa011",
+     "titulo": "Panegyricus de quarto consulatu Honorii Augusti",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa011/stoa0089.stoa011.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa012",
+     "titulo": "Panegyricus de sexto consulatu Honorii Augusti",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa012/stoa0089.stoa012.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa013",
+     "titulo": "Panegyricus dictus Manlio Theodoro consuli",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa013/stoa0089.stoa013.perseus-lat2.xml"
+    },
+    {
+     "urn": "urn:cts:latinLit:stoa0089.stoa014",
+     "titulo": "Panegyricus dictus Probino et Olybrio consulibus",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0089/stoa014/stoa0089.stoa014.perseus-lat2.xml"
+    }
+   ]
+  },
+  "minucio-felix-octavio": {
+   "titulo": "Octavius",
+   "autor": "Minucio Félix",
+   "lengua": "la",
+   "obras": [
+    {
+     "urn": "urn:cts:latinLit:stoa0203.stoa001",
+     "titulo": "Octavius",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/stoa0203/stoa001/stoa0203.stoa001.perseus-lat2.xml"
+    }
+   ]
+  },
+  "valerio-flaco-argonautica": {
+   "titulo": "Argonautica",
+   "autor": "Valerio Flaco",
+   "lengua": "la",
+   "obras": [
+    {
+     "urn": "urn:cts:latinLit:phi1035.phi001",
+     "titulo": "Argonautica",
+     "url": "https://raw.githubusercontent.com/PerseusDL/canonical-latinLit/master/data/phi1035/phi001/phi1035.phi001.perseus-lat2.xml"
+    }
+   ]
+  }
+ }
+}
