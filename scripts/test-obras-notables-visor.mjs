@@ -120,8 +120,8 @@ const dom2=abrir("?obra=alberti-diez-libros-1582",async()=>({ok:false,status:404
 await sleep(120);
 check("sin folios alojados, avisa y deriva al visor de facsímiles",()=>{
  const estado=dom2.window.document.getElementById("estado");
- assert.match(estado.textContent,/todavía no están alojados/);
- const a=estado.querySelector("a");
+ assert.match(estado.textContent,/todavía no están publicados/);
+ const a=dom2.window.document.querySelector("#lamina a");
  assert.match(a.getAttribute("href"),/^https:\/\/archive\.org\/details\/ARes12403$/);
 });
 dom2.window.close();
