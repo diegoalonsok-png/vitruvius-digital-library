@@ -8,7 +8,9 @@ const support=!!(window.CSS&&CSS.highlights&&window.Highlight);
 let mode="underline",color="amarillo";
 const bar=document.createElement("div");bar.className="vdl-annotation-bar";
 bar.innerHTML='<strong>Marcas</strong><button type="button" data-mode="underline" aria-pressed="true">Subrayar</button><button type="button" data-mode="highlight" aria-pressed="false">Resaltar</button><span id="vdl-annotation-palette"></span><button type="button" data-action="erase">Borrar selección</button><button type="button" data-action="clear">Limpiar pasaje</button><span class="vdl-annotation-divider"></span><button type="button" data-action="find" title="Buscar en este panel" aria-label="Lupa buscar">⌕</button><button type="button" data-action="smaller" title="Lupa reducir" aria-label="Lupa reducir">−</button><button type="button" data-action="larger" title="Lupa ampliar" aria-label="Lupa ampliar">＋</button><output aria-live="polite"></output>';
-article.insertBefore(bar,article.querySelector(".reader-toolbar"));
+const sourcePanel=document.querySelector(".cl-source-column");
+if(sourcePanel)sourcePanel.insertBefore(bar,sourcePanel.querySelector("#hit-nav")||text);
+else article.insertBefore(bar,article.querySelector(".reader-toolbar"));
 const css=document.createElement("style");css.textContent=[
 '.vdl-annotation-bar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;background:#171719;border:1px solid #434349;padding:8px;margin:0 0 10px;border-radius:4px;color:#eee;font:11px system-ui}',
 '.vdl-annotation-bar button{font:inherit;cursor:pointer;background:#29292b;color:#eee;border:1px solid #555;border-radius:4px;min-height:28px;padding:4px 7px}',
@@ -80,6 +82,22 @@ function action(which){
   if(save(rows.concat({...chosen,color,mode}))){redraw();output.textContent="Marca guardada en este navegador."}
  }
 }
+// Bring independent source background/text controls into the left panel,
+ // while retaining the existing global reader-appearance controls and persistence.
+if(sourcePanel){
+ const colorsWrap=document.createElement("span");colorsWrap.className="vdl-annotation-colors";
+ for(const [id,title] of [["reader-bg","Fondo"],["reader-fg","Texto"]]){
+  const base=document.getElementById(id);if(!base)continue;
+  const label=document.createElement("label");label.textContent=title+" ";
+  const control=document.createElement("input");control.type="color";control.value=base.value;
+  control.setAttribute("aria-label",title+" del texto original");
+  control.addEventListener("input",()=>{base.value=control.value;base.dispatchEvent(new Event("input",{bubbles:true}))});
+  base.addEventListener("input",()=>{control.value=base.value});
+  label.append(control);colorsWrap.append(label);
+ }
+ bar.insertBefore(colorsWrap,bar.querySelector("output"));
+}
+
 bar.addEventListener("mousedown",e=>{if(e.target.closest("button"))e.preventDefault()});
 bar.addEventListener("click",e=>{
  const b=e.target.closest("button");if(!b)return;
