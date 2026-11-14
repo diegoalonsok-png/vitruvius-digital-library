@@ -9,6 +9,9 @@ on:
       - "classics-r2-parallel.html"
       - "taccola-de-machinis.html"
       - "scripts/test-bibliotheca-publicacion-online.py"
+      - "data/r2/aparato-academico.json"
+      - "data/academic-integrity.json"
+      - "data/catalog.json"
 permissions:
   contents: read
 jobs:
