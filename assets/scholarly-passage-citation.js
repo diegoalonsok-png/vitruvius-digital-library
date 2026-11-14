@@ -133,7 +133,7 @@
     [data.title,data.version,data.locus?data.locusLabel+" "+data.locus:"",
      data.doi?"DOI "+data.doi:"",data.isbn?"ISBN "+data.isbn:"ISBN no documentado"].filter(Boolean).join(" · "):
     [data.bibliography,data.locus?data.locusLabel+" "+data.locus:"",
-     "DOI/ISBN de esta edición no acreditados"].filter(Boolean).join(" · ");
+     "Identificadores de esta edición: consultar ficha bibliográfica"].filter(Boolean).join(" · ");
    metadata.title=data.notice+(data.isbnNote?" "+data.isbnNote:"");
    button.disabled=false;
    return data;
