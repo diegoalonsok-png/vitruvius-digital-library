@@ -14,7 +14,8 @@
 (()=>{
 "use strict";
 const marcados=document.querySelectorAll("[data-cifra]");
-if(!marcados.length)return;
+const fechas=document.querySelectorAll("time[data-cifra-fecha]");
+if(!marcados.length&&!fechas.length)return;
 const titulos=document.querySelectorAll("[data-cifra-titulo]");
 fetch("data/cifras-corpus.json",{cache:"no-cache"})
  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
@@ -24,6 +25,15 @@ fetch("data/cifras-corpus.json",{cache:"no-cache"})
   for(const nodo of marcados){
    const valor=cifras[nodo.dataset.cifra];
    if(typeof valor==="number"&&valor>0)nodo.textContent=fmt(valor);
+  }
+  // Fecha de corte del inventario procedente de la misma fuente que las cifras.
+  const fecha=cifras.actualizado;
+  if(typeof fecha==="string"&&fecha.length===10&&fecha[4]==="-"&&fecha[7]==="-"){
+   const parsed=new Date(fecha+"T12:00:00Z");
+   if(!Number.isNaN(parsed.getTime()))for(const nodo of fechas){
+    nodo.dateTime=fecha;
+    nodo.textContent=new Intl.DateTimeFormat("es-AR",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(parsed);
+   }
   }
   /* Títulos y atributos: se reemplaza la cifra anterior por la vigente, sin
      tocar el resto del texto. */
