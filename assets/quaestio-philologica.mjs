@@ -61,7 +61,7 @@ function updateFederatedLinks(query){
 function run(shouldScroll=true){
  if(!loaded){status("Los textos aún se están cargando; se ejecutará la búsqueda al terminar.");return}
  const q=$("q-term").value.trim(),edition=$("q-edition").value,scope=$("q-scope").value,mode=$("q-mode").value;
- updateFederatedLinks(q);if(!q){status("Escribí una palabra o expresión.");return}
+ updateFederatedLinks(q);if(!q){status("Escribe una palabra o expresión.");return}
  const terms=normalized(q).split(/\s+/).filter(Boolean);
  results=corpus.filter(p=>{
   if(edition&&p.edition!==edition)return false;
@@ -70,7 +70,7 @@ function run(shouldScroll=true){
   return mode==="all-words"?terms.every(v=>body.includes(v)):body.includes(normalized(q));
  });
  $("q-hits").replaceChildren();displayed=0;
- if(results.length)renderMore();else{status("Sin coincidencias. Probá otras formas de la palabra; la búsqueda actual no es lematizada.")}
+ if(results.length)renderMore();else{status("Sin coincidencias. Prueba otras formas de la palabra; la búsqueda actual no es lematizada.")}
  if(shouldScroll){$("q-status").scrollIntoView({behavior:"smooth",block:"start"});$("q-status").focus({preventScroll:true})}
 }
 $("q-form").addEventListener("submit",e=>{e.preventDefault();run()});
