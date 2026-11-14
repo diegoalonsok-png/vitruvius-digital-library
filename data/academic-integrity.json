@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "generated": "2026-11-13",
+  "generated": "2026-11-14",
   "scope": "Integridad del índice y trazabilidad editorial; no certifica cotejo filológico, calidad de traducción ni disponibilidad de servidores externos.",
   "sourceFingerprint": "2e4738a753404c17cd63dae378f3a3a6aba7ddaee1d3c1746478619bdf4a4a5c",
   "sourceFingerprintMethod": "SHA-256 de JSON.stringify([recensio-es, recensio-fr, theory-en]); sin dependencia de espacios o saltos de línea.",
@@ -774,10 +774,10 @@
     "9.praef.9"
   ],
   "manuscripts": {
-    "records": 103,
-    "withRepositoryShelfmarkDateAndSource": 103,
-    "catalogueWorksWithLinkedWitness": 125,
-    "catalogueWorksWithoutLinkedWitness": 146,
+    "records": 106,
+    "withRepositoryShelfmarkDateAndSource": 106,
+    "catalogueWorksWithLinkedWitness": 127,
+    "catalogueWorksWithoutLinkedWitness": 144,
     "directOriginalWitnesses": 42,
     "note": "Una signatura documentada no acredita por sí sola que el códice sea el más antiguo conservado ni el testigo crítico más importante."
   },
@@ -800,20 +800,20 @@
   },
   "catalogue": {
     "records": 271,
-    "declaredLocalReadings": 145,
+    "declaredLocalReadings": 184,
     "declaredCompleteLocalReadings": 32,
-    "declaredPartialLocalReadings": 113,
-    "withLocalTranslation": 41,
-    "withExplicitEditionCitation": 19,
+    "declaredPartialLocalReadings": 152,
+    "withLocalTranslation": 53,
+    "withExplicitEditionCitation": 22,
     "caveat": "El estado público de lectura es un dato de catálogo; no equivale a verificar el texto completo contra una edición crítica."
   },
   "codicology": {
-    "registeredWitnessRecords": 103,
-    "uniquePhysicalObjects": 96,
+    "registeredWitnessRecords": 106,
+    "uniquePhysicalObjects": 99,
     "fieldsPerWitness": 22,
-    "fieldSlots": 2266,
-    "filledFieldSlots": 468,
-    "pendingFieldSlots": 1798,
+    "fieldSlots": 2332,
+    "filledFieldSlots": 482,
+    "pendingFieldSlots": 1850,
     "allFieldsFilled": 0,
     "caveat": "Pendiente no significa necesariamente aplicable; por ejemplo, la filigrana puede no corresponder al pergamino. Datos no comprobados no se infieren."
   },
