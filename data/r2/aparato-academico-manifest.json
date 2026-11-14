@@ -1,0 +1,51 @@
+{
+  "schema": "vitruvius-academic-apparatus-manifest/1",
+  "kind": "bibliographic-index-manifest",
+  "canonical_source": "data/apparatus-index.json",
+  "apparatus_data_source": "data/r2/aparato-academico.json",
+  "integrity_source": "data/academic-integrity.json",
+  "bibliographic_source": "data/catalog.json",
+  "apparatus_entries": 3220,
+  "relation_status_counts": {
+    "contexto de página": 746,
+    "sin locus en la página": 504,
+    "sin locus": 579,
+    "locus explícito": 41,
+    "locus candidato sin verificar": 519,
+    "locus verificado por el lema": 567,
+    "lema no localizado en el texto latino": 104,
+    "lema en varios loci, sin desambiguar": 80,
+    "locus verificado por el lema y la sección de comentario": 19,
+    "locus verificado por el lema y la página": 33,
+    "locus citado en la definición": 28
+  },
+  "fingerprint": "2e4738a753404c17cd63dae378f3a3a6aba7ddaee1d3c1746478619bdf4a4a5c",
+  "canonical_loci": 731,
+  "editions": [
+    {
+      "id": "recensio-es",
+      "version": "V514",
+      "bibliographic_title": "Vitruvio. De architectura. Nueva recensio académica bilingüe: El arquitecto de la teoría",
+      "doi": "10.5281/zenodo.23884757",
+      "isbn": "978-631-01-6651-3",
+      "isbn_note": "ISBN declarado por la editorial como compartido entre las tres ediciones V514, V554 y V297. ISBN común declarado por el editor: 978-631-01-6651-3. ISBN individuales por edición pendientes de asignación o comprobación registral. Cada edición tiene su DOI específico. Esta nota de identificación bibliográfica no implica que la edición académica sea provisional."
+    },
+    {
+      "id": "recensio-fr",
+      "version": "V554",
+      "bibliographic_title": "Vitruve. De architectura. Nouvelle recensio académique bilingue: L’architecte de la théorie",
+      "doi": "10.5281/zenodo.23885110",
+      "isbn": "978-631-01-6651-3",
+      "isbn_note": "ISBN declarado por la editorial como compartido entre las tres ediciones V514, V554 y V297. ISBN común declarado por el editor: 978-631-01-6651-3. ISBN individuales por edición pendientes de asignación o comprobación registral. Cada edición tiene su DOI específico. Esta nota de identificación bibliográfica no implica que la edición académica sea provisional."
+    },
+    {
+      "id": "theory-en",
+      "version": "V297",
+      "bibliographic_title": "The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",
+      "doi": "10.5281/zenodo.23885404",
+      "isbn": "978-631-01-6651-3",
+      "isbn_note": "ISBN declarado por la editorial como compartido entre las tres ediciones V514, V554 y V297. ISBN común declarado por el editor: 978-631-01-6651-3. ISBN individuales por edición pendientes de asignación o comprobación registral. Cada edición tiene su DOI específico. Esta nota de identificación bibliográfica no implica que la edición académica sea provisional."
+    }
+  ],
+  "limits": "El DOI identifica una edición y no avala por sí solo la calidad filológica; Loci candidatos no equivalen a collatio verificada. El ISBN común declarado no sustituye la asignación registral individual de cada edición."
+}
