@@ -1,0 +1,3 @@
+(()=>{"use strict";const root=document.getElementById("conspectus-sigla");if(!root)return;fetch("data/apparatus/aparato-comparativo.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+ root.replaceChildren();for(const [sigla,description] of Object.entries(d.testimonios||{})){const dt=document.createElement("dt");dt.textContent=sigla;const dd=document.createElement("dd");dd.textContent=description;root.append(dt,dd)}
+}).catch(e=>{root.replaceChildren();const dt=document.createElement("dt");dt.textContent="—";const dd=document.createElement("dd");dd.textContent="El catálogo de siglas no está disponible. Consulte el aparato crítico.";root.append(dt,dd);console.warn(e)});})();
