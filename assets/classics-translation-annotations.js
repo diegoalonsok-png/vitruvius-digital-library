@@ -21,7 +21,7 @@ const colors=make("span","cl-annotation-palette");bar.append(colors);
 const erase=make("button",null,"Borrar selección"),clear=make("button",null,"Limpiar pasaje");
 erase.type=clear.type="button";bar.append(erase,clear);
 const appearance=make("span","cl-annotation-appearance");bar.append(appearance);
-const feedback=make("output","cl-annotations-feedback","Seleccioná palabras de la traducción para marcarlas.");
+const feedback=make("output","cl-annotations-feedback","Selecciona palabras de la traducción para marcarlas.");
 feedback.setAttribute("aria-live","polite");bar.append(feedback);
 controls.insertAdjacentElement("afterend",bar);
 const css=make("style");
@@ -128,7 +128,7 @@ function redraw(){
 function applySelection(){
  if(!support){feedback.textContent="Los resaltados requieren un navegador con CSS Highlights.";return}
  const chosen=selection();
- if(!chosen){feedback.textContent="Seleccioná primero una frase dentro de la traducción.";return}
+ if(!chosen){feedback.textContent="Selecciona primero una frase dentro de la traducción.";return}
  const marks=read();
  if(!marks.some(x=>x.a===chosen.a&&x.b===chosen.b&&x.mode===currentMode&&x.color===currentColor)){
   if(save([...marks,{...chosen,mode:currentMode,color:currentColor}])){
@@ -137,7 +137,7 @@ function applySelection(){
  }
 }
 erase.addEventListener("click",()=>{
- const chosen=selection();if(!chosen){feedback.textContent="Seleccioná el texto marcado que querés borrar.";return}
+ const chosen=selection();if(!chosen){feedback.textContent="Selecciona el texto marcado que querés borrar.";return}
  if(save(read().filter(x=>x.b<=chosen.a||x.a>=chosen.b))){
   redraw();feedback.textContent="Marcas seleccionadas eliminadas.";
  }
