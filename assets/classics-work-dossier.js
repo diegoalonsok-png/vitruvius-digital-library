@@ -499,6 +499,23 @@ function renderResearchAssist(dest,w){
  row(sec,"Alcance de la búsqueda externa","Los resultados de IA o de buscadores son pistas y requieren comprobación en el catálogo custodio.");
  dest.append(sec);
 }
+function renderDocumentaryHistory(dest,w,d){
+ const part=html("section","cwd-historical-summary");
+ part.append(html("h3",null,"Historia de la obra, testimonios y editores"));
+ part.append(html("p",null,makeContext(w)));
+ const witnesses=witnessesFor(d,w.id);
+ const direct=witnesses.filter(x=>!String(x.witnessKind||"").startsWith("ancient_translation"));
+ if(direct.length){
+  const first=direct[0];
+  const description=[first.shelfmark||first.title,first.library,first.date].filter(Boolean).join(" · ");
+  part.append(html("p",null,"Testimonio manuscrito individualizado en este repertorio: "+description+". La antigüedad relativa solo corresponde a los testimonios aquí registrados; no se asegura prioridad universal."));
+  const p=html("p","cwd-links");addA(p,"Biblioteca custodia y registro del manuscrito ↗",first.record||first.verificationUrl);if(p.childNodes.length)part.append(p);
+ }else part.append(html("p","cwd-muted","No existe aún un testimonio manuscrito individualizado con fuente documental en esta ficha."));
+ const citations=sources(w);
+ if(citations.length)part.append(html("p",null,"Historia editorial documentada: "+citations.slice(0,2).map(x=>x.value).join(" · ").slice(0,850)));
+ else part.append(html("p","cwd-muted","Los editores y traductores históricos se identificarán desde las ediciones concretas, sin atribuciones automáticas."));
+ dest.append(part);
+}
 const LIBRARY_DOI="10.5281/zenodo.23868911";
 function renderCitationTools(dest,w){
  const strip=s=>String(s||"").replace(/\\s+/g," ").trim();
@@ -570,6 +587,7 @@ function renderInto(target,id,opts={}){
   if(/atribuci[oó]n|debati|discuti|fragment/i.test(w.author+" "+w.dating+" "+w.title)){
    target.append(html("p","cwd-muted","Advertencia filológica: la atribución, la datación o la transmisión de esta obra puede ser discutida o fragmentaria; cotejar estudios especializados."));
   }
+  renderDocumentaryHistory(target,w,d);
   renderVitruviusStandard(target,w,d);
   renderAcademicSummary(target,w,d);
   renderCriticalAuthority(target,w,d);
