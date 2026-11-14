@@ -8,7 +8,7 @@
 .translate-action{margin-top:20px;background:#464646;color:#fff;border:1px solid #777;border-radius:9px;padding:10px 14px;cursor:pointer;font:13px system-ui}.translate-action[hidden]{display:none}.translate-action:disabled{opacity:.6;cursor:wait}
 .toolbar{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap;margin:-14px 0 19px}
 .toolbar input,.toolbar select,.toolbar button{font:13px system-ui;background:#181819;color:#eee;border:1px solid #48484b;border-radius:7px;padding:8px 10px;min-height:36px}
-.toolbar input{width:150px;max-width:32vw}.toolbar button{cursor:pointer}.toolbar button:hover{background:#303033}
+.toolbar input{width:135px;max-width:32vw}.toolbar #original-lang,.toolbar #translation-lang{max-width:170px}.toolbar #go-button{border:1px solid #a0a0a4;background:#38383b;color:#fff;font-weight:600}.toolbar button{cursor:pointer}.toolbar button:hover{background:#303033}
 .toolbar label{font:12px system-ui;color:#c4c4c5;display:flex;align-items:center;gap:5px}
 .toolbar button:focus-visible,.toolbar input:focus-visible,.toolbar select:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .cards{--card-bg:#303030;--text-color:#f2f2f3;--body-font:Georgia,serif;--body-size:30px}.card{background:var(--card-bg);color:var(--text-color)}
@@ -26,14 +26,14 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 @media print{.panel-colors{display:none}}
 </style></head><body><main>
 <div class="top"><h1 id="title">BIBLIOTHECA · LECTURA SIMPLE</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
-<div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Locus <input id="go-locus" type="search" placeholder="p. ej., 1.2" aria-label="Ir a locus"></label><button id="go-button" type="button">Ir</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><label>Letra <select id="font" aria-label="Tipografía"><option value="georgia">Clásica</option><option value="palatino">Palatino</option><option value="sans">Sans</option></select></label><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
+<div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Original <select id="original-lang" aria-label="Idioma original"></select></label><label>Traducción <select id="translation-lang" aria-label="Idioma de la traducción"></select></label><label>Locus <input id="go-locus" type="search" placeholder="Ej. 2" aria-label="Locus o capítulo"></label><button id="go-button" type="button">Ir al locus</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><label>Letra <select id="font" aria-label="Tipografía"><option value="georgia">Clásica</option><option value="palatino">Palatino</option><option value="sans">Sans</option></select></label><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
 <div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><div class="panel-colors" id="left-colors" aria-label="Fondo y resaltado del original"></div><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><div class="panel-colors" id="right-colors" aria-label="Fondo y resaltado de traducción"></div><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div><button class="translate-action" id="translate" type="button" hidden>Traducir automáticamente este pasaje</button></section></div>
 <p class="note" id="note" role="status">Se utilizan las ediciones existentes en la Bibliotheca. Un locus compartido no demuestra identidad textual de las versiones.</p>
 </main><script defer src="assets/academic-inline-translation.js?v=20261109-v1"></script><script>
 (()=>{"use strict";
 const q=new URLSearchParams(location.search),work=q.get("work")||"didache";
 const LANG={grc:"GRIEGO",la:"LATÍN",es:"CASTELLANO",en:"INGLÉS",fr:"FRANCÉS",it:"ITALIANO",de:"ALEMÁN",pt:"PORTUGUÉS"};
-const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;let searchTerm="",targetLang="en",renderToken=0;
+const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;let searchTerm="",targetLang="en",renderToken=0;let availableEditions=new Map(),loadingVersion=0;
 const key=v=>String(v??"").trim().toLowerCase().replace(/\s+/g,"");
 const status=msg=>el("note").textContent=msg;
 const highlightSets={left:new Map(),right:new Map()},visibleText={left:"",right:""};
@@ -107,7 +107,7 @@ function draw(){
   el("translate").hidden=false;
  }
  el("previous").disabled=pos<=0;el("next").disabled=pos>=source.length-1;
- if(a?.locus){q.set("locus",a.locus);history.replaceState(null,"",location.pathname+"?"+q.toString());}
+ if(a?.locus){q.set("locus",a.locus);el("go-locus").value=a.locus;history.replaceState(null,"",location.pathname+"?"+q.toString());}
  linkBack();
  status(exact?"Texto original y traducción alojada. La coincidencia de locus no acredita por sí sola equivalencia filológica.":"No se inventan traducciones ni se presentan pasajes diferentes como equivalentes.");
 }
@@ -132,19 +132,53 @@ async function load(){
   if(e.workId!==work||!["json-passages","structured-bilingual"].includes(e.format)||!LANG[e.language])continue;
   if(!entries.has(e.language)||e.format==="json-passages")entries.set(e.language,e);
  }
+ availableEditions=entries;
+ const fillSelect=(id,options)=>{const sel=el(id);sel.replaceChildren();for(const [value,label] of options){const opt=document.createElement("option");opt.value=value;opt.textContent=label;sel.append(opt);}};
+ fillSelect("original-lang",["grc","la"].filter(l=>entries.has(l)).map(l=>[l,LANG[l]]));
+ if(!el("original-lang").options.length)fillSelect("original-lang",[...entries.keys()].map(l=>[l,LANG[l]]));
+ fillSelect("translation-lang",[
+ ...["es","en","fr","it","de","pt"].filter(l=>entries.has(l)).map(l=>[l,LANG[l]+" · edición alojada"]),
+ ...["es","en","fr"].map(l=>["auto-"+l,LANG[l]+" · automática"])
+ ]);
  leftLang=entries.has(q.get("left"))?q.get("left"):(entries.has(q.get("lang"))?q.get("lang"):(["grc","la"].find(l=>entries.has(l))||[...entries.keys()][0]));
  if(!leftLang)throw Error("La obra no dispone de edición textual estructurada para este lector.");
  const requested=q.get("right");
  targetLang=(requested||"").replace(/^auto-/,"");if(!["es","en","fr"].includes(targetLang))targetLang="en";
  rightLang=entries.has(requested)&&requested!==leftLang?requested:
   (["es","en","fr","it","de","pt"].find(l=>l!==leftLang&&entries.has(l))||[...entries.keys()].find(l=>l!==leftLang)||"");
+ el("original-lang").value=leftLang;
  source=await getEdition(entries.get(leftLang),leftLang);
  if(!source.length)throw Error("No hay pasajes de la edición original.");
  translation=rightLang?await getEdition(entries.get(rightLang),rightLang):[];
  if(requested?.startsWith("auto-")){translation=[];rightLang=targetLang;}
+ el("translation-lang").value=requested?.startsWith("auto-")?requested:(requested&&entries.has(requested)?requested:(rightLang&&entries.has(rightLang)?rightLang:"auto-es"));
+ if(!el("translation-lang").value)el("translation-lang").value="auto-es";
 
  const wanted=q.get("locus");const found=source.findIndex(p=>key(p.locus)===key(wanted));pos=found<0?0:found;draw();
 }
+async function changeVersion(side,value){
+ const stamp=++loadingVersion,previousLocus=source[pos]?.locus||q.get("locus")||"";
+ if(side==="left"){
+  if(!availableEditions.has(value))return;
+  const updated=await getEdition(availableEditions.get(value),value);
+  if(stamp!==loadingVersion)return;
+  if(!updated.length){status("La edición original seleccionada no tiene pasajes legibles.");return;}
+  source=updated;leftLang=value;q.set("left",value);
+  if(el("translation-lang").value===value){el("translation-lang").value="auto-es";}
+ }else if(!value.startsWith("auto-")&&!availableEditions.has(value))return;
+ const choice=el("translation-lang").value;
+ if(choice.startsWith("auto-")){
+  targetLang=choice.slice(5);rightLang=targetLang;translation=[];q.set("right",choice);
+ }else{
+  const updated=await getEdition(availableEditions.get(choice),choice);
+  if(stamp!==loadingVersion)return;
+  translation=updated;rightLang=choice;targetLang=["es","en","fr"].includes(choice)?choice:"es";q.set("right",choice);
+ }
+ const found=source.findIndex(p=>key(p.locus)===key(previousLocus));
+ pos=found>=0?found:0;draw();
+}
+el("original-lang").addEventListener("change",e=>{void changeVersion("left",e.target.value);});
+el("translation-lang").addEventListener("change",e=>{void changeVersion("right",e.target.value);});
 el("translate").addEventListener("click",async()=>{
  const button=el("translate"),record=source[pos],token=renderToken;
  if(!record?.text||!window.VitruviaInlineTranslation?.translate){status("El servicio de traducción automática no está disponible.");return;}
