@@ -80,6 +80,18 @@ Promise.all([
   const box=document.createElement("aside");box.dataset.r2Box="";
   box.style.cssText="border:1px solid rgba(128,128,128,.45);padding:12px 16px;margin:16px auto;max-width:1100px;font:14px/1.6 Georgia,serif";
   const h=document.createElement("strong");h.textContent=T.box;box.append(h);
+  const coverRecord=v.porObra[work].map(e=>editionLine(e).record).find(m=>/^[A-Za-z0-9_-]+$/.test(m.identificadorIA||""));
+  if(coverRecord){
+   const figure=document.createElement("figure");figure.style.cssText="float:left;width:118px;max-width:31%;margin:10px 18px 10px 0";
+   const im=document.createElement("img");im.src="https://archive.org/services/img/"+encodeURIComponent(coverRecord.identificadorIA);
+   im.alt="Miniatura de la reproducción catalogada: "+(coverRecord.tituloEdicion||"edición histórica");
+   im.loading="lazy";im.referrerPolicy="no-referrer";
+   im.style.cssText="width:100%;height:auto;max-height:165px;object-fit:contain;display:block;border:1px solid #9995;background:#eee";
+   im.onerror=()=>{figure.remove()};
+   const cap=document.createElement("figcaption");cap.textContent="Cubierta o primera imagen de la reproducción · Internet Archive";cap.style.cssText="font:11px/1.45 system-ui;margin-top:6px;opacity:.85";
+   const a=document.createElement("a");a.href=coverRecord.fuente||("https://archive.org/details/"+encodeURIComponent(coverRecord.identificadorIA));a.rel="noopener noreferrer";a.target="_blank";a.append(im);
+   figure.append(a,cap);box.append(figure);
+  }
   const ul=document.createElement("ul");ul.style.margin="6px 0";
   v.porObra[work].forEach(e=>{const li=document.createElement("li");const a=document.createElement("a");a.href=e.pdf;a.rel="noopener";a.textContent=e.edicion+" ("+e.anio+(e.volumen?", "+T.vol+" "+e.volumen:"")+")";li.append(a);
    const info=editionLine(e);
@@ -89,7 +101,7 @@ Promise.all([
   const p=document.createElement("p");p.style.cssText="font:12px/1.5 system-ui;margin:0;opacity:.8";
   const more=document.createElement("a");more.href="bibliotheca-ampliada.html";more.textContent="Bibliotheca ampliada";
   p.append(T.note+" ",more);
-  box.append(ul,p);
+  box.append(ul,p);box.style.display="flow-root";
   (document.querySelector("main")||document.body).prepend(box);
  }
 }).catch(()=>{});
