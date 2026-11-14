@@ -41,6 +41,13 @@ h2{font:400 24px/1.3 Georgia,serif}h3{font:600 15px system-ui}
 .cp-notes-count{font:12px system-ui;color:var(--cp-muted)}
 .cp-absent{font:13px/1.7 system-ui;color:var(--cp-muted)}
 .cp-biblio{font:12px/1.65 system-ui;color:var(--cp-muted)}
+.cp-long-entry{padding:13px 0;border-top:1px solid var(--cp-line)}
+.cp-long-entry summary{font:600 13px/1.55 system-ui;cursor:pointer}
+.cp-long-entry pre{font:14px/1.75 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere;margin:14px 0}
+.cp-h-entry{padding:12px 0;border-top:1px solid var(--cp-line);font:13px/1.6 system-ui}
+.cp-h-entry strong{display:block}
+.cp-h-entry small{display:block;color:var(--cp-muted)}
+
 @media(max-width:950px){.cp-shell{grid-template-columns:1fr}.cp-index{max-height:220px}.cp-spread{grid-template-columns:1fr}.cp-leaf{min-height:0}}
 @media print{.cp-nav,.cp-index,.cp-toolset{display:none!important}.cp-shell{display:block}main{padding:0}.cp-spread{grid-template-columns:1fr 1fr}}
 </style></head><body><main>
@@ -67,7 +74,9 @@ h2{font:400 24px/1.3 Georgia,serif}h3{font:600 15px system-ui}
 <p class="cp-small">Glosas, comentarios y referencias conservados en su lengua original. No se sustituyen por paráfrasis generadas.</p>
 <section class="cp-block"><h3>Notae ad locum · localización explícita</h3><p class="cp-notes-count" id="cp-exact-count"></p><div id="cp-exact"></div></section>
 <section class="cp-block"><h3>Adnotationes ad locum pertinentes · localización propuesta</h3><p class="cp-notes-count" id="cp-candidate-count"></p><div id="cp-candidate"></div></section>
+<section class="cp-block" aria-labelledby="cp-long-title"><h3 id="cp-long-title">Commentarius auctoris · comentarios extensos de los libros</h3><p class="cp-small">Secciones con encabezamiento de locus conservadas de los libros originales V514 y V554. Las ediciones se presentan por separado, sin fusionar su redacción. Los saltos de página y rótulos de la maqueta original pueden afectar la transcripción digital.</p><p id="cp-long-state" class="cp-notes-count">Cargando comentarios originales…</p><div id="cp-long"></div></section>
+<section class="cp-block" aria-labelledby="cp-h-title"><h3 id="cp-h-title">Testimonium H · documentos gráficos del Codex Harleianus</h3><p class="cp-small">Registro de los recortes de Harley MS 2767 ya incorporados en las ediciones de Kurilo. Se muestran únicamente las concordancias de locus expresas en las leyendas del libro.</p><div id="cp-h"></div></section>
 <div class="cp-links"><a id="cp-original-es" href="documents/kurilo-recensio-es.pdf">Edición V514 · PDF</a><a href="documents/kurilo-recensio-fr.pdf">Edición V554 · PDF</a><a id="cp-inventory" href="inventario-aparato-autoral.html">Inventario autoral completo y notas sin locus</a></div>
 <p class="cp-biblio">Edición latina y traducción: Diego Kurilo, <i>De architectura</i>, V514, DOI 10.5281/zenodo.23884757. La traducción seleccionada corresponde a su propia edición y no se atribuye a Rose, Krohn ni Budé. Las notas V554 conservan su propio registro de origen.</p>
 </section></article></div>
-</main><script defer src="assets/commentarius-perpetuus.js?v=20261113-1"></script></body></html>
+</main><script defer src="assets/commentarius-perpetuus.js?v=20261114-commentary-1"></script></body></html>
