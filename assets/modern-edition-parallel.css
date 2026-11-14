@@ -44,6 +44,8 @@ main.modern-edition.compared{max-width:1760px;padding-top:22px}
 #parallel-text :is(h3,p,small,strong){color:inherit!important}
 #parallel-text p{text-align:justify;text-align-last:start;hyphens:auto;overflow-wrap:anywhere;margin:9px 0 16px}
 #parallel-text article{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #8885}
+/* The reader's selected paper and ink also apply inside loci in both site themes. */
+html body.compared #parallel-text article{background:transparent!important;color:inherit!important}
 #parallel-text h3{font:650 15px system-ui,sans-serif;line-height:1.55;margin:0 0 8px}
 #parallel-text .parallel-context{font:12px/1.6 system-ui,sans-serif;opacity:.9;margin:4px 0 10px}
 #parallel-text .parallel-current{outline:2px solid #bc9c67;outline-offset:6px}
