@@ -3,7 +3,7 @@
    "Earliest in local register" does not mean "oldest manuscript in existence".
    Publication details are never invented to force a Chicago 18 citation. */
 (()=>{"use strict";
-const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261111-editorial-identifiers-v1",witness:"data/bibliotheca-testimonia-verified.json?v=20261110-100witnesses-v24",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-100witnesses-v24",standard:"data/classics-corpus/vitruvius-standard-222.json?v=20261110-100witnesses-v24",trees:"data/classics-corpus/codicological-trees-222.json?v=20261110-100witnesses-v24"};
+const PATHS={catalog:"data/bibliotheca-graeca-latina-I-bce-I-ce.json?v=20261114-codicology-v2",witness:"data/bibliotheca-testimonia-verified.json?v=20261114-three-records-v2",text:"data/classics-corpus/search-registry.json",authority:"data/perseus-provenance-audit.json",critical:"data/classics-corpus/critical-authorities-222.json?v=20261110-100witnesses-v24",standard:"data/classics-corpus/vitruvius-standard-222.json?v=20261110-100witnesses-v24",trees:"data/classics-corpus/codicological-trees-222.json?v=20261110-100witnesses-v24"};
 const P={};const N=s=>String(s==null?"":s).trim();
 const html=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=N(value);return e};
 const norm=s=>N(s).normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
