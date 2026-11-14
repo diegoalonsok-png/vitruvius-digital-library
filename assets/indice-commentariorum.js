@@ -123,7 +123,7 @@ function render(reset){
  all.filter(x=>x.type==="commentary").length+" comentarios extensos, "+
  all.filter(x=>x.type==="footnote").length+" notas y "+
  all.filter(x=>x.type==="study").length+" páginas de estudio en el índice.",visible.length?"ready":"empty");
- if(!shown)create("p","No hay coincidencias con estos filtros. Probá otra palabra, revisá la edición o restablecé el concepto mayor.",$("ic-results"),"note");
+ if(!shown)create("p","No hay coincidencias con estos filtros. Prueba otra palabra, revisa la edición o restablece el concepto mayor.",$("ic-results"),"note");
 }
 function apply(scroll){if(!ready){status("El índice todavía se está cargando. La búsqueda se ejecutará al terminar.","loading");return}visible=all.filter(matches).sort(sortRecords);render(true);if(scroll)goToResults()}
 $("ic-form").addEventListener("submit",e=>{
