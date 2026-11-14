@@ -578,6 +578,25 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
         <a class="principal-catalog-link" href="#coleccion">Todas las versiones y traducciones <span aria-hidden="true">→</span></a>
       </aside>
     </section>
+    <section class="wrap" id="estado-corpus" aria-labelledby="estado-corpus-title" style="margin:18px auto 26px">
+      <div style="border:1px solid #7777;border-radius:9px;padding:clamp(17px,2.4vw,25px);background:rgba(135,122,95,.07)">
+        <header style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;align-items:baseline">
+          <h2 id="estado-corpus-title" style="font:400 clamp(20px,2.2vw,27px)/1.3 Georgia,serif;margin:0">Estado del corpus · consulta documentada</h2>
+          <p style="font:12px/1.5 system-ui,sans-serif;margin:0">Inventario: <time data-cifra-fecha datetime="2026-11-13">13 de noviembre de 2026</time> · <a href="auditoria-academica.html">ver auditoría</a></p>
+        </header>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:16px 0;font:13px/1.65 system-ui,sans-serif">
+          <div><strong>Bibliotheca Graeca et Latina</strong><p style="margin:4px 0"><strong data-cifra="obrasConTextoIndexado">214</strong> de <strong data-cifra="obras">271</strong> obras catalogadas cuentan con texto indexado. El resto no debe presentarse como texto completo buscable.</p></div>
+          <div><strong>De architectura · tres ediciones</strong><p style="margin:4px 0"><strong>731 loci</strong> cubiertos por la estructura de V514, V554 y V297. V297 conserva agrupaciones de pasajes; la coincidencia de locus no certifica cotejo manuscrito independiente.</p></div>
+          <div><strong>Fuentes y labor editorial</strong><p style="margin:4px 0">V514, V554 y V297 son ediciones de Diego Kurilo; los códices y facsímiles son testimonios conservados por sus respectivas bibliotecas. <a href="status-textus.html">Alcance de la verificación</a> · <a href="data/corpus-snapshot-2026-11-14.json">versión documental fechada</a>.</p></div>
+        </div>
+        <nav aria-label="Ejemplo de investigación en cuatro pasos" style="font:13px/1.65 system-ui,sans-serif;border-top:1px solid #7775;padding-top:12px"><strong>Ejemplo de consulta:</strong>
+          <a href="vitruvia.html?q=symmetria&amp;mode=all">1. Buscar symmetria</a> →
+          <a href="lector-bilingue.html?edition=recensio-es&amp;locus=3.1.2">2. Leer III.1.2 en V514</a> →
+          <a href="concordancia-folios.html">3. Examinar la concordancia con folios (cuando esté documentada)</a> →
+          <a href="como-citar.html#corpus-version">4. Preparar una cita verificable</a>.
+        </nav>
+      </div>
+    </section>
     <section class="editorial-reading" id="lecturas-destacadas" aria-labelledby="ed-readings-title">
       <div class="editorial-inner">
         <div class="editorial-main">
@@ -777,7 +796,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
   const escapeText=value=>String(value).replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
   const printWindow=window.open('','_blank');
   if(!printWindow){inform('Permite las ventanas emergentes para abrir la vista imprimible.');return}
-  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer></body></html>';
+  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer><script defer src="assets/cifra-obras.js?v=20261114-status-corpus"></script></body></html>';
   printWindow.document.open();printWindow.document.write(doc);printWindow.document.close();
   printWindow.focus();printWindow.print();
  });
