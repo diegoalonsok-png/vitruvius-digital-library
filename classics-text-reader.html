@@ -113,6 +113,27 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
 
 @media(max-width:700px){.reader-appearance{gap:6px;padding:9px}.reader-appearance :is(button,select){min-height:39px}html body #passages{font-size:var(--reader-size,18px)}}
 @media print{.reader-appearance{display:none!important}html body .reader,html body #passages{background:#fff!important;color:#111!important}}
+/* Búsqueda global de la edición: resultados arriba, fuente íntegra debajo. */
+.search-results-section[hidden]{display:none!important}
+.search-results-section{margin:16px 0 19px;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:18px 20px;color:var(--fg)}
+.search-results-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px}
+.search-results-head h2{font:400 23px/1.25 Georgia,serif;margin:0 0 7px;color:var(--fg)}
+.search-results-head p{font:13px/1.6 system-ui,sans-serif;margin:0;color:var(--muted)}
+.search-results-head>a{color:#e2c48c;white-space:nowrap}
+.search-summary{font:600 13px/1.6 system-ui,sans-serif;margin:14px 0;color:var(--fg)}
+.search-passage-list{list-style:decimal;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 15px;margin:10px 0;padding-left:26px}
+.search-passage-list li{padding:0;min-width:0}
+.search-passage-jump{display:block;cursor:pointer;text-align:left;width:100%;border:1px solid var(--line);border-radius:6px;color:var(--fg);background:#1c1d20;padding:12px 14px;min-height:86px}
+.search-passage-jump:hover,.search-passage-jump:focus-visible{border-color:#dbbd80;outline:1px solid #dbbd80}
+.search-passage-jump strong{display:block;font:600 13px/1.4 system-ui,sans-serif;color:#f1d69a;margin-bottom:7px}
+.search-passage-excerpt{display:block;font:15px/1.55 "Gentium Book Plus",Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere;color:#e4e4e5}
+.search-pagination{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:14px;font:12px/1.4 system-ui,sans-serif}
+.search-pagination button{padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:#252528;color:var(--fg);cursor:pointer}
+.search-pagination button:disabled{opacity:.4;cursor:default}
+.search-empty{padding:9px 0;font:14px/1.65 system-ui,sans-serif;color:var(--muted)}
+#passages[lang="grc"],#passages[lang="la"]{cursor:text}
+@media(max-width:700px){.search-passage-list{grid-template-columns:1fr}.search-results-section{padding:14px}}
+@media print{.search-results-section{display:none!important}}
 </style>
 <link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1">
 <link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v3">
@@ -150,11 +171,15 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
   <button type="button" id="reader-align" aria-pressed="true" title="Alternar texto justificado y alineación izquierda">Justificado</button>
   <button type="button" id="reader-reset" title="Restablecer la apariencia de lectura">↺ Restablecer</button>
 </div>
+<section id="search-results-section" class="search-results-section" aria-labelledby="search-results-title" hidden>
+ <div class="search-results-head"><div><h2 id="search-results-title">Pasajes encontrados en toda la obra</h2><p>Seleccione cualquier resultado para abrir el texto original en su locus. La búsqueda recorre la edición completa, no solo la página visible.</p></div><a href="#passages">Ir al lector</a></div>
+ <div id="results" role="status" aria-live="polite"></div>
+</section>
 <div class="reader-grid">
 <aside><strong id="toc-title">Capítulos / unidades editoriales</strong><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc" aria-label="Índice de loci y unidades textuales"></ol></aside>
 <article class="reader">
 <div class="reader-toolbar"><button id="prev" type="button">← Anterior</button><strong id="current-locus" aria-live="polite" aria-atomic="true"></strong><button id="next" type="button">Siguiente →</button></div>
-<div id="results" role="status" aria-live="polite"></div>
+
 <div id="hit-nav" class="hit-nav" hidden><button id="hit-prev" type="button" aria-label="Coincidencia anterior">↑</button><span id="hit-count"></span><button id="hit-next" type="button" aria-label="Coincidencia siguiente">↓</button></div>
 <div id="passages" class="passages" lang="la" aria-label="Texto de la unidad editorial seleccionada"></div>
 <div id="lexicon" role="status">Haz clic en cualquier palabra griega o latina del pasaje para abrir una ficha con su lema, significado y fuentes. Si no hay glosa comprobada, se mostrarán enlaces lexicográficos.</div>
@@ -164,8 +189,8 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
 </main>
 <script defer src="assets/academic-inline-translation.js?v=20261110-passage-translation-v1"></script>
 <script defer src="assets/classical-lexicon.js?v=20261112-externo"></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
-<script defer src="assets/classics-lexical-popup.js?v=20261113-any-word-v2"></script>
-<script defer src="assets/classics-text-reader.js?v=20261110-reader-navigation-performance-v1"></script>
+<script defer src="assets/classics-lexical-popup.js?v=20261114-word-click-v2"></script>
+<script defer src="assets/classics-text-reader.js?v=20261114-full-edition-results-v2"></script>
 <script defer src="assets/classics-reader-annotations.js?v=20261113-markup-v1"></script>
 <script>
 (()=>{"use strict";
