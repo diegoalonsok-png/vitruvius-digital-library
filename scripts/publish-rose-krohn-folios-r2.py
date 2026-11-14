@@ -20,10 +20,15 @@ import tempfile
 import urllib.request
 
 ROSE_SOURCES = [
+ "https://upload.wikimedia.org/wikipedia/commons/b/b2/Vitruvii_De_architectura_libri_decem_%28IA_vitruviidearchit00vitr_0%29.pdf",
  "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf",
  "https://archive.org/download/vitruviidearchi00pollgoog/vitruviidearchi00pollgoog.pdf",
 ]
 KROHN = pathlib.Path("documents/krohn-1912.pdf")
+KROHN_FALLBACK = [
+ "https://archive.org/download/vitruviidearchit00vitr/vitruviidearchit00vitr.pdf",
+ "https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf",
+]
 BASE = os.getenv("R2_PUBLIC_BASE", "https://libros.vitruvius-digital-library.org").rstrip("/")
 BUCKET = os.getenv("R2_BUCKET_NAME", os.getenv("R2_BUCKET", "vitruvius-bibliotheca"))
 EDITIONS = {
@@ -45,6 +50,29 @@ EDITIONS = {
  }
 }
 
+def evaluate_scan(pdf: pathlib.Path, edition: str) -> dict:
+ """Check actual original image detail; upscaling never adds readable information."""
+ import fitz
+ from statistics import median
+ with fitz.open(str(pdf)) as doc:
+  count = len(doc)
+  if count < 280 or count > 850: raise RuntimeError(f"{edition}: suspicious page count {count}")
+  picks=sorted(set(max(0,min(count-1,int(count*f))) for f in (.08,.16,.25,.35,.45,.55,.65,.75,.84,.93)))
+  resolutions=[]
+  for i in picks:
+   pg=doc[i]
+   images=pg.get_images(full=True)
+   if images:
+    sizes=[(im[2],im[3]) for im in images if im[2] and im[3]]
+    if sizes: resolutions.append(max(h for w,h in sizes))
+  # PDFs consisting of real vector glyphs are allowed, but tiny raster scans
+  # are not misrepresented as a high-resolution source.
+  if resolutions and median(resolutions)<1050:
+   raise RuntimeError(f"{edition}: source image resolution too low, median {median(resolutions):.0f}px high")
+  if not resolutions and sum(len(doc[i].get_text().strip()) for i in picks)<1000:
+   raise RuntimeError(f"{edition}: neither readable vector text nor sufficient raster evidence")
+  return {"pages":count,"sample_native_heights":resolutions,"minimum_sample_height_px":min(resolutions) if resolutions else None}
+
 def download_rose(tmp: pathlib.Path) -> pathlib.Path:
  dest = tmp / "rose-1899.pdf"
  errors = []
@@ -63,13 +91,37 @@ def download_rose(tmp: pathlib.Path) -> pathlib.Path:
     front = " ".join(doc[i].get_text()[:2500] for i in range(min(12,len(doc)))).lower()
     if front and "rose" not in front and "vitruv" not in front:
      raise RuntimeError("No Vitruvius/Rose identification in the front matter")
-   print("Rose PDF downloaded and checked:", url, flush=True)
+   quality=evaluate_scan(dest,"rose-1899")
+   print("Rose source validated:",url,quality,flush=True)
    return dest
   except Exception as exc:
    errors.append(f"{url}: {exc}")
    if dest.exists(): dest.unlink()
  raise RuntimeError("Neither verified Rose PDF source could be downloaded: " + " | ".join(errors))
 
+
+def select_krohn(tmp: pathlib.Path) -> pathlib.Path:
+ if KROHN.is_file():
+  try:
+   details=evaluate_scan(KROHN,"krohn-1912")
+   print("Krohn local PDF validated:",details,flush=True)
+   return KROHN
+  except Exception as exc:
+   print("Local Krohn copy rejected for scan quality:",exc,flush=True)
+ issues=[]
+ for url in KROHN_FALLBACK:
+  dest=tmp/"krohn-1912.pdf"
+  try:
+   request=urllib.request.Request(url,headers={"User-Agent":"VitruviusDigitalLibrary/1.0 (academic digitization)"})
+   with urllib.request.urlopen(request,timeout=120) as res,dest.open("wb") as file:
+    while chunk:=res.read(1024*1024): file.write(chunk)
+   details=evaluate_scan(dest,"krohn-1912")
+   print("Krohn scan validated:",url,details,flush=True)
+   return dest
+  except Exception as exc:
+   issues.append(f"{url}: {exc}")
+   if dest.exists(): dest.unlink()
+ raise RuntimeError("No acceptable Krohn scan found: "+" | ".join(issues))
 
 def client():
  import boto3
@@ -99,7 +151,8 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
  with fitz.open(str(pdf)) as doc:
   count = len(doc)
   if not count: raise RuntimeError(f"{edition}: zero pages")
-  print(f"{edition}: {count} independent digital images; PDF={pdf} ({pdf.stat().st_size} bytes)", flush=True)
+  quality=evaluate_scan(pdf,slug)
+  print(f"{edition}: {count} independent digital images; PDF={pdf} ({pdf.stat().st_size} bytes); quality={quality}", flush=True)
   entries = []
   for i in range(count):
    n = i + 1
@@ -121,7 +174,7 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
    from PIL import Image
    im = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
    output = io.BytesIO()
-   im.save(output, format="JPEG", quality=83, optimize=True)
+   im.save(output, format="JPEG", quality=92, optimize=True, subsampling=0)
    s3.put_object(Bucket=BUCKET, Key=key, Body=output.getvalue(), ContentType="image/jpeg",
                  CacheControl="public, max-age=31536000, immutable")
    if n % 30 == 0 or n == count: print(f"{slug} {n}/{count}", flush=True)
@@ -129,7 +182,7 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
    "schema": "vdl-folios-obra-1", "obra": slug, "titulo": info["title"],
    "autor": info["author"], "editor": info["editor"], "edicion": info["date"],
    "lengua": info["language"], "fuente": info["source"], "custodia": info["holding"],
-   "derechos": info["rights"], "imagenes": count, "folios": entries,
+   "derechos": info["rights"], "imagenes": count, "folios": entries,\n   "calidad": quality, "dpi_exportacion": dpi, "jpeg_calidad":92,
    "criterio": "One scanned PDF page per image; image number is NOT printed pagination or manuscript foliation.",
    "estadoOCR": "Texto OCR e índice de loci separados; todavía sin coordenadas verificadas sobre cada imagen."
   }
@@ -148,16 +201,16 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
 def main():
  parser=argparse.ArgumentParser()
  parser.add_argument("--edition",choices=["rose","krohn","both"],default="both")
- parser.add_argument("--dpi",type=int,default=145)
+ parser.add_argument("--dpi",type=int,default=195)
  parser.add_argument("--force",action="store_true")
  parser.add_argument("--dry-run",action="store_true")
  args=parser.parse_args()
- if not 90<=args.dpi<=210: parser.error("DPI must be between 90 and 210")
- editions=["rose","krohn"] if args.edition=="both" else [args.edition]
+ if not 150<=args.dpi<=240: parser.error("DPI must be between 150 and 240")
+ editions=["krohn","rose"] if args.edition=="both" else [args.edition]
  s3=None if args.dry_run else client()
  with tempfile.TemporaryDirectory(prefix="vitruvius-folios-") as temporary:
   for edition in editions:
-   pdf=download_rose(pathlib.Path(temporary)) if edition=="rose" else KROHN
+   pdf=download_rose(pathlib.Path(temporary)) if edition=="rose" else select_krohn(pathlib.Path(temporary))
    if not pdf.is_file(): raise FileNotFoundError(pdf)
    publish(edition,pdf,s3,args.dpi,args.force,args.dry_run)
 
