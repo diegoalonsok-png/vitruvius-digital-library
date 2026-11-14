@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mesa de revisión de anclajes ecdóticos · I.1 y III.1 — Vitruvius Digital Library</title>
+<meta name="description" content="Revisión académica de 44 notas con locus candidato, con edición, fuente DOCX, párrafo original, pasaje y plantilla de comprobación. Ninguna asignación se certifica automáticamente.">
+<link rel="canonical" href="https://vitruvius-digital-library.org/revision-anclajes-ecdoticos.html">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+:root{color-scheme:light;--cream:#faf8f2;--ink:#28251f;--line:#c6bfae;--gold:#98764f;--shade:#efeae0}
+body{color:var(--ink);background:var(--cream);font:15px/1.7 system-ui,sans-serif;margin:0}
+a{color:#654b28;text-underline-offset:3px;overflow-wrap:anywhere}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ac7735;outline-offset:3px}
+main{width:min(1100px,calc(100% - 32px));margin:auto;padding:24px 0 90px}
+nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;margin:0 0 24px}
+h1,h2{font-family:Georgia,serif;font-weight:400;line-height:1.23}h1{font-size:clamp(29px,4vw,43px);margin:10px 0}h2{font-size:24px}
+.kicker{font:700 11px/1.4 system-ui;letter-spacing:.13em;color:#715c42;text-transform:uppercase}
+.lede{max-width:940px;font:16px/1.7 Georgia,serif}
+.notice{border-left:3px solid var(--gold);background:var(--shade);padding:12px 17px;margin:20px 0}
+.filters{display:flex;flex-wrap:wrap;gap:13px;margin:22px 0 8px;padding:17px;border:1px solid var(--line);background:#fff}
+.filters label{display:flex;flex-direction:column;gap:5px;font:600 12px/1.45 system-ui;min-width:130px;flex:1}
+input,select,button{font:14px/1.35 system-ui;border:1px solid #aca08d;border-radius:3px;padding:9px 11px;background:white;color:inherit;min-height:42px}
+button{cursor:pointer;background:#e9e1d2}button:hover{background:#dfd2bc}
+.results-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center}
+#results{display:grid;gap:16px;margin:17px 0}
+.record{border:1px solid var(--line);background:#fff;padding:16px clamp(14px,2.5vw,24px)}
+.record-head{display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;justify-content:space-between}
+.record h3{font:400 22px/1.3 Georgia,serif;margin:0}
+.state{font:600 11px/1.4 system-ui;color:#79552c}
+.record dl{display:grid;grid-template-columns:170px minmax(0,1fr);gap:6px 14px;margin:15px 0;font:13px/1.55 system-ui}
+.record dt{font-weight:700}.record dd{margin:0;overflow-wrap:anywhere}
+.excerpt{border-left:2px solid #a99880;padding:6px 12px;background:#f8f6f0;white-space:pre-wrap;overflow-wrap:anywhere}
+.excerpt strong{display:block;font:700 12px/1.4 system-ui;margin-bottom:5px}
+.links{display:flex;flex-wrap:wrap;gap:11px 17px;margin-top:13px;font:13px/1.5 system-ui;align-items:center}
+#status{font:13px/1.5 system-ui;min-height:24px}
+.bottom{border-top:1px solid var(--line);margin-top:30px;padding-top:17px;font-size:13px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:650px){.record dl{grid-template-columns:1fr}.record dt{margin-top:6px}.record dd{margin:0}.filters{display:grid;grid-template-columns:1fr 1fr}.filters label:first-child{grid-column:1/-1}}
+@media print{nav,.filters,.links,button{display:none!important}body{background:#fff;color:#000}.record{break-inside:avoid}main{max-width:none;width:100%}a{color:inherit}}
+</style>
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+<script defer src="assets/ecdotic-review-queue.js?v=20261114-academic-v1"></script>
+</head><body>
+<a class="sr-only" href="#records">Saltar a las notas</a>
+<main>
+<nav aria-label="Navegación académica"><a href="index.html">Biblioteca</a><a href="aparato-critico.html">Aparato crítico</a><a href="registro-ecdotico.html">Registro ecdótico</a><a href="guia-aparato-digital.html">Criterios y límites</a><a href="cobertura-aparato-critico.html">Mapa de los 731 loci</a></nav>
+<p class="kicker">Instrumentum recensendi · tabula ad recognitionem</p>
+<h1>Mesa de revisión de anclajes ecdóticos</h1>
+<p class="lede">Muestra prioritaria de notas autorales con localizador candidato en los capítulos I.1 y III.1. Se conserva la nota tal como fue indexada, su edición y su párrafo de origen. Esta mesa prepara y documenta el trabajo humano: <strong>no constituye una revisión efectuada ni cambia el estado de los registros</strong>.</p>
+<div class="notice"><strong>Estado de evidencia:</strong> 44 notas de la categoría B (ubicación propuesta) · <strong>0 verificaciones humanas nuevas</strong> por esta herramienta. Las 41 notas originales con locus explícito (A) figuran por separado en la <a href="data/tei/notae-auctoris-locis-explicitis-2026-11-14.xml">edición documental TEI-XML</a>. Un anclaje explícito no acredita una colación autóptica.</div>
+<form class="filters" id="review-filters" role="search">
+<label>Buscar término o nota<input id="review-query" type="search" placeholder="symmetria · número de nota" autocomplete="off"></label>
+<label>Edición<select id="review-edition"><option value="">Todas</option><option value="V514">V514 · castellano</option><option value="V554">V554 · francés</option></select></label>
+<label>Capítulo<select id="review-chapter"><option value="">I.1 y III.1</option><option value="1.1">Libro I, cap. 1</option><option value="3.1">Libro III, cap. 1</option></select></label>
+<label>Locus<select id="review-locus"><option value="">Todos los loci</option></select></label>
+</form>
+<section id="records" aria-labelledby="records-title">
+<div class="results-top"><h2 id="records-title">Notas a comprobar</h2><p id="status" role="status" aria-live="polite">Leyendo inventario…</p></div>
+<div id="results"><p>El inventario de revisión no está cargado. <a href="data/ecdotic-note-review-queue-2026-11-14.json">Abrir la fuente JSON</a>.</p></div>
+</section>
+<section class="bottom">
+<h2>Protocolo de validación</h2>
+<p>Una nota conserva su estado de localización digital B hasta que pueda comprobarse su correspondencia con el locus en el documento fuente. Registrar el resultado, el párrafo de procedencia, el responsable y la fecha sin sobrescribir el anclaje original. Si aparece una lectura de manuscrito, documentarla por separado con signatura, folio, fuente institucional y una decisión ecdótica identificada. Ninguna clasificación automática aumenta el número de registros verificados.</p>
+<p><a href="data/ecdotic-note-review-queue-2026-11-14.json">Inventario citable JSON (44 entradas)</a> · <a href="data/critical-notes.json">Corpus original de notas (811)</a> · <a href="data/ecdotic-decisions.json">Registro estricto de decisiones</a> · <a href="https://www.tei-c.org/release/doc/tei-p5-doc/en/html/TC.html">Directrices TEI P5, Critical Apparatus</a>.</p>
+</section>
+</main></body></html>
