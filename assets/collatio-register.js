@@ -90,8 +90,9 @@ function pinta(){
  const sig=$("coll-siglum").value;
  const gr=$("coll-grade")?.value||"";
  const status=$("coll-status")?.value||"controlled";
+ const effectiveStatus=(gr&&!CONTROLES.has(gr)&&status==="controlled")?"all":status;
  filas=(datos.entradas||datos.confirmadas).filter(e=>{
-  if(!estadoFiltro(e,status))return false;
+  if(!estadoFiltro(e,effectiveStatus))return false;
   if(gr&&e.grado!==gr)return false;
   if(loc&&!(e.locus===loc||e.locus.startsWith(loc+".")))return false;
   if(sig&&!(e.siglaCitadas||[]).includes(sig))return false;
