@@ -126,7 +126,13 @@
   // never floating over the page content.
   const headerTools=document.querySelector("body.indices-lexicon .indices-navtools");
   if(headerTools){headerTools.prepend(pane);pane.classList.add("vitruvius-secondary-inline");}
-  else document.body.append(pane);
+  else {
+   // Minimal positioning before the stylesheet loads: no selector may
+   // flash at the end of the page when CSS arrives late or fails.
+   pane.style.position="fixed";pane.style.top="9px";pane.style.right="11px";
+   pane.style.zIndex="9000";
+   document.body.append(pane);
+  }
   document.body.classList.add("vitruvius-secondary-controls");
   theme=defaultTheme();
   select.addEventListener("change",()=>setLanguage(select.value));
