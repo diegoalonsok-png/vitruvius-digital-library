@@ -58,7 +58,11 @@ function renderOne(e){
  const title=(e.type==="commentary"?"Commentarius":e.type==="study"?"Estudio preliminar · p. "+e.ordinal:"Nota "+e.ordinal)+" · "+e.edition+(e.locus?" · "+e.locus:"");
  create("h3",title,box);
  create("p",e.type==="study"?"Texto del estudio preliminar · documento fuente por página digital":e.type==="commentary"?"Comentario original con encabezamiento de locus en el libro":e.position==="explicit"?"Nota original con locus explícito":e.position==="suggested"?"Nota original con ubicación digital sugerida":"Nota original sin localizador digital asignado",box,"meta");
- const preview=e.text.length>670?e.text.slice(0,670).trim()+"…":e.text;
+ const q=$("ic-search").value.trim()||$("ic-term").value;
+ const pos=q?fold(e.text).indexOf(fold(q)):-1;
+ const begin=pos>200?Math.max(0,pos-180):0;
+ const end=Math.min(e.text.length,begin+670);
+ const preview=(begin?"…":"")+e.text.slice(begin,end).trim()+(end<e.text.length?"…":"");
  highlight(create("p",null,box),preview);
  if(e.text.length>670){const details=create("details",null,box);create("summary","Leer el comentario íntegro",details);highlight(create("pre",null,details),e.text)}
  create("p",e.source+(e.original_location?" · "+e.original_location:""),box,"meta");
