@@ -1,0 +1,25 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Corpus TEI · Vitruvius Digital Library</title>
+<meta name="description" content="Exportación académica TEI XML P5 por libro y edición del texto latino y traducciones de Diego Kurilo V514 V554 V297.">
+<link rel="canonical" href="https://vitruvius-digital-library.org/corpus-tei.html">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<style>body{background:#f8f6f0;color:#2a2722}main{max-width:950px;margin:auto;padding:25px clamp(16px,4vw,44px) 80px}
+h1{font:400 clamp(30px,4vw,43px) Georgia,serif}h2{font:400 23px Georgia,serif}
+nav{font:12px/1.8 system-ui;display:flex;flex-wrap:wrap;gap:16px}
+p{font:15px/1.8 Georgia,serif}form{display:flex;flex-wrap:wrap;gap:12px;align-items:end;padding:20px 0;border-block:1px solid #c5bca9}
+form label{display:grid;gap:5px;font:600 12px system-ui}
+select,button{border:1px solid #ab9e88;border-radius:3px;background:#fffdf8;color:#25221c;padding:9px;min-height:43px;font:14px system-ui}
+button{cursor:pointer;background:#6e5b3d;color:white}
+.note{font:12px/1.65 system-ui;color:#5c554a}
+#tei-status{padding:13px;background:#f0ebe2;border-left:3px solid #88704d;font:13px system-ui}</style></head>
+<body><main><nav><a href="index.html">Biblioteca</a><a href="quaestio-philologica.html">Quaestio philologica</a><a href="lector-bilingue.html">Lector por locus</a><a href="metodologia-filologica.html">Metodología</a></nav>
+<header><p class="note">VITRVVIVS · TEXTVS STRUCTVRATI · TEI P5</p><h1>Corpus TEI · De architectura</h1>
+<p>Descarga la transcodificación en TEI XML de un libro completo de una de las tres ediciones de Diego Kurilo. Los pasajes mantienen sus loci, el texto latino y la traducción propia de cada edición, además de datos bibliográficos, DOI, ISBN y procedencia del DOCX original.</p></header>
+<form id="tei-form">
+<label>Edición<select id="tei-edition"><option value="recensio-es">V514 · castellano</option><option value="recensio-fr">V554 · francés</option><option value="theory-en">V297 · inglés</option></select></label>
+<label>Libro<select id="tei-book"><option value="1">Liber I</option><option value="2">Liber II</option><option value="3">Liber III</option><option value="4">Liber IV</option><option value="5">Liber V</option><option value="6">Liber VI</option><option value="7">Liber VII</option><option value="8">Liber VIII</option><option value="9">Liber IX</option><option value="10">Liber X</option></select></label>
+<button id="tei-submit" type="submit">Descargar TEI XML</button></form>
+<p id="tei-status" role="status">Elegí el libro y la edición.</p>
+<section><h2>Convenciones editoriales</h2>
+<p>El formato exportado contiene <code>teiHeader</code>, declaración de edición, DOI e ISBN, identificador de procedencia y divisiones por locus. Es una transcodificación de los textos estructurados, no una nueva lectura de los manuscritos. Los comentarios y variantes tienen catálogos propios y no se incorporan como aparato manuscrito verificado sin control editorial.</p>
+<p class="note">Este generador ofrece archivos TEI para descarga directa. No constituye todavía un repositorio CTS/TEI completo con servicio API, validación contra esquema Relax NG y endpoints permanentes por cada XML. Para un pasaje individual, utilice la exportación del <a href="lector-bilingue.html">lector bilingüe</a>.</p></section>
+</main><script type="module" src="assets/tei-book-export.mjs?v=20261114-1"></script></body></html>
