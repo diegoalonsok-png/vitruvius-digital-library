@@ -36,6 +36,10 @@ Promise.all([
   if(m.creadorIA)pieces.push("Responsables registrados por la fuente (función por verificar): "+(Array.isArray(m.creadorIA)?m.creadorIA.join("; "):m.creadorIA));
   if(m.identificadorIA)pieces.push("Identificador de la reproducción: "+m.identificadorIA);
   if(m.alcance||e.alcance)pieces.push("Cobertura: "+(m.alcance||e.alcance));
+  if(m.tipoEdicion)pieces.push("Tipo de edición: "+m.tipoEdicion.replaceAll("_"," "));
+  if(m.notaFilologica)pieces.push("Nota filológica: "+m.notaFilologica);
+  if(m.incidenciaCatalografica)pieces.push("ADVERTENCIA CATALOGRÁFICA: "+m.incidenciaCatalografica);
+  if(m.estadoRevision)pieces.push("Estado documental: "+m.estadoRevision.replaceAll("_"," "));
   return {detail:pieces.join(" · "),record:m};
  };
  if(v?.schema!=="vdl-r2-vinculos-repertorio-1"||!v.recuentos||!v.porObra)return;
@@ -62,7 +66,7 @@ Promise.all([
    if(!eds||!eds.length||link.closest("[data-r2-box]"))return;
    const frag=document.createDocumentFragment();
    eds.forEach(e=>{const x=document.createElement("a");x.href=e.pdf;x.rel="noopener";x.className=link.className||"genre-work-version";
-    const info=editionLine(e);x.textContent=label(e)+(Number.isFinite(info.record.paginas)?" · "+info.record.paginas+" págs.":"");x.title=info.detail||e.edicion;x.dataset.r2Pdf="";x.style.marginLeft="8px";frag.append(x)});
+    const info=editionLine(e);x.textContent=label(e)+(Number.isFinite(info.record.paginas)?" · "+info.record.paginas+" págs.":"")+(info.record.incidenciaCatalografica?" · revisar ficha":"");x.title=info.detail||e.edicion;x.dataset.r2Pdf="";x.style.marginLeft="8px";frag.append(x)});
    link.after(frag);
   });
  };
