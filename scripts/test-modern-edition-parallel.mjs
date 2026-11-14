@@ -83,6 +83,13 @@ for(const id of ['rose-1899','krohn-1912']){
  $('parallel-stop').click();emit(9,'FOLIO C LATINUM');await settle();assert.equal(calls.length,before,'Stopping prevents new automatic requests');
  // Missing editorial pages expose their actual OCR instead of another locus.
  $('parallel-reading').value='edition';$('parallel-reading').dispatchEvent(new w.Event('change'));emit(1,'REAL COVER OCR');await settle();assert.match($('parallel-text').textContent,/REAL COVER OCR/);assert.match($('parallel-source-note').textContent,/no tiene loci/);
+ // Interface localisation must never rewrite the author's source readings or search excerpts.
+ emit(image,'LATIN OCR');$('parallel-language').value='es';$('parallel-language').dispatchEvent(new w.Event('change'));
+ const sourceReading=$('parallel-text').textContent,sourceExcerpts=$('parallel-results').querySelector('p').textContent;
+ w.Translator={availability:async()=> 'available',create:async()=>({translate:async text=>'INTERFACE TRANSLATED '+text})};
+ w.document.documentElement.lang='en';w.eval(readFileSync('assets/page-autotranslate.js','utf8'));await w.PageAutoTranslate.sync();
+ assert.equal($('parallel-text').textContent,sourceReading,'Interface translation preserves full author readings');
+ assert.equal($('parallel-results').querySelector('p').textContent,sourceExcerpts,'Interface translation preserves cited excerpts');
  dom.window.close();
 }
 console.log('PASS: 731 loci in LA/ES/FR, real page mappings and continuations, semantic/phrase/locus search, both split readers, no external requests for author translations, full-source chunking and stale-translation protection');

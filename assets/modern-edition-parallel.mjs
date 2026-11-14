@@ -170,7 +170,7 @@ function openResult(hit){
 function moreResults(){
  const frag=document.createDocumentFragment();for(const hit of searchHits.slice(shown,shown+15)){
   const article=make('article');article.append(make('h3','Vitr. '+locusLabel(hit.locus)+' · imagen '+hit.page+' · '+({la:'latín',es:'castellano',fr:'français'}[hit.language])));
-  const a=Math.max(0,(hit.ranges[0]?.[0]||0)-65),b=Math.min(hit.text.length,a+310),p=make('p');p.lang=hit.language;
+  const a=Math.max(0,(hit.ranges[0]?.[0]||0)-65),b=Math.min(hit.text.length,a+310),p=make('p');p.lang=hit.language;p.setAttribute('translate','no');
   p.append(a?'…':'',markText(hit.text.slice(a,b),hit.terms?.[hit.language]||[]),b<hit.text.length?'…':'');article.append(p);
   const button=make('button','Abrir hoja y lectura');button.type='button';button.onclick=()=>openResult(hit);article.append(button);frag.append(article);
  }
