@@ -49,29 +49,54 @@ async function browserTranslation(text,source,target){
    partial:text.length>MAX_INPUT}:null;
  }finally{translator.destroy?.()}
 }
+/* Two network routes, bounded per passage. Neither produces a citable edition. */
+async function providerMyMemory(fragment,source,target){
+ const lang=source==="grc"?"el":source==="hbo"?"he":source;
+ const query=new URLSearchParams({q:fragment,langpair:lang+"|"+target,mt:"1"});
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),7500);
+ try{
+  const response=await fetch("https://api.mymemory.translated.net/get?"+query,{
+   method:"GET",mode:"cors",cache:"no-store",referrerPolicy:"no-referrer",signal:controller.signal
+  });
+  if(!response.ok)throw Error("HTTP "+response.status);
+  const data=await response.json(),value=data?.responseData?.translatedText;
+  if(Number(data?.responseStatus)!==200||typeof value!=="string"||!value.trim()||
+   /QUERY LENGTH LIMIT|MYMEMORY WARNING|DAILY LIMIT|INVALID LANGUAGE|YOU HAVE USED ALL/i.test(value))
+    throw Error("Proveedor no entregó traducción");
+  return {text:value.trim(),provider:"MyMemory / Translated"};
+ }finally{clearTimeout(timer)}
+}
+async function providerAlternate(fragment,source,target){
+ const lang=source==="grc"?"el":source==="hbo"?"he":source;
+ const query=new URLSearchParams({client:"gtx",sl:lang,tl:target,dt:"t",q:fragment});
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),7500);
+ try{
+  const response=await fetch("https://translate.googleapis.com/translate_a/single?"+query,{
+   mode:"cors",cache:"no-store",referrerPolicy:"no-referrer",signal:controller.signal
+  });
+  if(!response.ok)throw Error("Proveedor alternativo HTTP "+response.status);
+  const data=await response.json();
+  const value=Array.isArray(data?.[0])?
+    data[0].map(part=>Array.isArray(part)?String(part[0]||""):"").join(""):"";
+  if(!value.trim())throw Error("Proveedor alternativo no disponible");
+  return {text:value.trim(),provider:"Traducción automática externa alternativa"};
+ }finally{clearTimeout(timer)}
+}
 async function externalTranslation(text,source,target,fullPassage=false){
- const fragments=fullPassage?chunks(text,MAX_PART_BYTES,20,4500):chunks(text),translated=[];
+ const fragments=fullPassage?chunks(text,MAX_PART_BYTES,12,4500):chunks(text);
  if(!fragments.length)return null;
- for(const fragment of fragments){
-  const externalSource=source==="grc"?"el":source==="hbo"?"he":source;
-  const query=new URLSearchParams({q:fragment,langpair:externalSource+"|"+target,mt:"1"});
-  const url="https://api.mymemory.translated.net/get?"+query;
-  // This is called ONLY after the reader presses the explicitly marked
-  // external-translation button. No background requests or bulk crawling.
-  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
-  try{
-   const response=await fetch(url,{method:"GET",mode:"cors",cache:"no-store",
-    referrerPolicy:"no-referrer",signal:controller.signal});
-   if(!response.ok)throw Error("HTTP "+response.status);
-   const data=await response.json();
-   const value=data?.responseData?.translatedText;
-   if(Number(data?.responseStatus)!==200||typeof value!=="string"||
-      !value.trim()||/QUERY LENGTH LIMIT|MYMEMORY WARNING|DAILY LIMIT|INVALID LANGUAGE/i.test(value))
-    throw Error("El proveedor no entregó una traducción utilizable");
-   translated.push(value.trim());
-  }finally{clearTimeout(timer)}
+ let alternateUsed=false;
+ const translated=[];
+ // At most three simultaneous requests; batch failures do not freeze the entire reader.
+ for(let offset=0;offset<fragments.length;offset+=3){
+  const part=await Promise.all(fragments.slice(offset,offset+3).map(async fragment=>{
+   try{return await providerMyMemory(fragment,source,target)}
+   catch(_){const result=await providerAlternate(fragment,source,target);alternateUsed=true;return result}
+  }));
+  translated.push(...part.map(x=>x.text));
  }
- return {text:translated.join(" "),provider:"MyMemory / Translated · traducción automática externa",
+ return {text:translated.join(" "),provider:alternateUsed?
+  "MyMemory / traducción automática alternativa":"MyMemory / Translated · traducción automática externa",
   partial:fragments.join("").replace(/\s+/g,"")!==text.trim().replace(/\s+/g,"")};
 }
 function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceLanguage,referenceLabel}={}){
