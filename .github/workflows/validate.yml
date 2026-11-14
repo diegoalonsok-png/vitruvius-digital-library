@@ -345,6 +345,9 @@ jobs:
       - name: Evidencia y navegación · aparato, registro, colación, comparador y conspectus
         if: always()
         run: node scripts/test-ecdotic-instrument-navigation.mjs
+      - name: TEI P5 · conservar notas autorales explícitas y procedencia sin inventar variantes
+        if: always()
+        run: python scripts/test-tei-editorial-notes.py
       - name: Comprobar catálogo y archivos publicados
         run: |
           python - <<'PY'
