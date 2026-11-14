@@ -28,8 +28,8 @@ async function run(){try{
  const details=document.createElement("div");details.className="evidence-explanation";
  details.append(
   p("Ecdótica.",decisions.baseline.extractedNotes+" notas extraídas; "+decisions.baseline.explicitLocus+
-     " con locus explícito, "+decisions.baseline.candidateLocus+" con locus candidato y "+
-     decisions.baseline.unlocated+" sin anclaje. Ninguna constituye por sí sola una variante cotejada."),
+     " con locus explícito, "+decisions.baseline.candidateLocus+" con ubicación digital propuesta y "
+     decisions.baseline.unlocated+" sin ubicación digital asignada. Son indicadores de localización informática, no una calificación de las notas editoriales ni de sus argumentos filológicos."),
   p("Indexación.",registry.count+" versiones textuales locales y "+c.offsiteOriginalsIndexed+" obras con índice externo documental; "+c.effectiveOriginalsMissing+" registros sin índice original. Los manifiestos no certifican por sí solos que cada lector remoto esté disponible."),
   p("Semántica.", "El índice Conceptus relaciona términos atestiguados con conceptos; no acredita por sí solo embeddings neuronales, comprensión histórica, equivalencia de traducciones ni colación."),
   p("Revisión.", "Las decisiones filológicas exigen fuente, testimonio o edición, signatura, locus, lectura, argumento y responsable. La revisión de especialistas sigue pendiente."));
