@@ -65,12 +65,13 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <label>Visualización<select id="mode"><option value="all">Texto y aparato</option><option value="v514">Solo decisiones V514</option><option value="source">Comparación documental</option></select></label>
 </form>
 <p id="status" class="ab-status" role="status" aria-live="polite">Cargando los datos existentes…</p>
+<div id="ab-textual-status" role="status" aria-live="polite" style="padding:12px 16px;border:1px solid var(--ab-rule);font:13px/1.65 system-ui;margin:0 0 20px"></div>
 <section aria-labelledby="triple-title">
 <h2 id="triple-title">Collatio textuum · Rose, Krohn, Kurilo</h2>
-<p class="ab-sub">Tres textos latinos alineados por <i>locus</i>. Los textos de Rose y Krohn son segmentos OCR históricos, no transcripciones revisadas. Las diferencias de OCR no se consideran variantes críticas verificadas.</p>
+<p class="ab-sub">Tres textos latinos alineados por <i>locus</i>. Los textos de Rose y Krohn son segmentos OCR históricos alineados automáticamente. Se pueden leer y comparar por locus, independientemente de la verificación paleográfica de variantes manuscritas. El ruido OCR no se considera variante crítica.</p>
 <div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
-<article><h3>Rose · 1899</h3><small>Texto latino OCR · cotejo pendiente</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
-<article><h3>Krohn · 1912</h3><small>Texto latino OCR · cotejo pendiente</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
+<article><h3>Rose · 1899</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
+<article><h3>Krohn · 1912</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
 <article><h3>Kurilo · V514</h3><small>Texto latino de la recensio provisional</small><div class="ab-text" lang="la" id="compare-kurilo"></div><small>Fuente: V514, pasaje estructurado.</small><a id="compare-kurilo-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Lector de Kurilo</a></article>
 </div></section>
 <section class="ab-leaves" aria-label="Texto latino y traducción de Kurilo">
@@ -142,6 +143,14 @@ function load(locus){
  set("#translation-heading",trMeta[0]);document.querySelector(".ab-leaf:first-child").lang=lang;
  document.querySelector(".ab-leaf:first-child .ab-edition").textContent=trMeta[1]+" · traducción independiente de Rose y Krohn";
  const c=collation?.loci?.[locus]||{};
+ const availability=[
+   "Kurilo V514: "+(passage.latin?.trim()?"texto latino existente y consultable":"sin texto latino para este locus"),
+   "Rose 1899: "+(c["rose-1899"]?.text?.trim()?"texto OCR existente y comparable":"sin segmento OCR alineado"),
+   "Krohn 1912: "+(c["krohn-1912"]?.text?.trim()?"texto OCR existente y comparable":"sin segmento OCR alineado"),
+   "Traducción "+lang.toUpperCase()+": "+(trow?.translation?.trim()?"texto disponible":"no disponible en este índice"),
+   "Verificación de lecturas manuscritas: independiente del estado del texto"
+ ];
+ set("#ab-textual-status",availability.join(" · "));
  set("#compare-rose",c["rose-1899"]?.text||"No hay segmento OCR alineado para el locus.");set("#compare-krohn",c["krohn-1912"]?.text||"No hay segmento OCR alineado para el locus.");
  set("#compare-kurilo",passage.latin||"Sin texto latino estructurado.");
  for(const [name,id,defaultPdf] of [["rose-1899","rose","https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"],["krohn-1912","krohn","documents/krohn-1912.pdf"]]){
@@ -188,12 +197,12 @@ function load(locus){
    for(const e of (d?.["rose-1899"]?.entradas||[])){const item=document.createElement("div");item.className="ab-entry";item.textContent=e.texto||"";const meta=document.createElement("span");meta.className="ab-meta";meta.textContent="Rose 1899 · OCR candidato, p. "+(e.pagina||d["rose-1899"].pagina||"sin identificar")+" · cotejar con facsímil";item.append(meta);minor.append(item);count++}
  }
  if(editorialDuplicate||editorialSuspicious){const info=document.createElement("p");info.className="ab-none";info.textContent=(editorialDuplicate?editorialDuplicate+" duplicado(s) editorial(es) agrupado(s). ":"")+(editorialSuspicious?editorialSuspicious+" extracción(es) con posible error OCR excluida(s) del aparato breve; permanecen en el libro y registro de origen.":"");minor.append(info)}
- if(!count){const p=document.createElement("p");p.className="ab-none";p.textContent=edition==="rose"?"No hay entrada OCR de Rose atribuida a este locus; ello no demuestra ausencia de variantes.":mode==="source"?"Modo documental: consultar los aparatos históricos desplegables.":"No hay una entrada V514 apta para presentar como variante breve en este locus. La ausencia de entradas no significa unanimidad manuscrita.";minor.append(p)}
+ if(!count){const p=document.createElement("p");p.className="ab-none";p.textContent=edition==="rose"?"No hay entrada OCR de Rose atribuida a este locus; ello no demuestra ausencia de variantes.":mode==="source"?"Modo documental: consultar los aparatos históricos desplegables.":"El texto latino del locus está disponible; no hay variante breve documentada en este índice. Esto no significa que todo el pasaje esté pendiente de cotejo.";minor.append(p)}
  if(mode==="v514"&&edition!=="rose"){$(".ab-documentation").querySelectorAll("details").forEach(x=>x.open=false)}
  source("#rose",d?.["rose-1899"],"Rose 1899");source("#krohn",d?.["krohn-1912"],"Krohn 1912");
  $("#reader-link").href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);
  $("#notes-link").href="inventario-aparato-autoral.html?locus="+encodeURIComponent(locus);
- set("#status","Locus "+format(locus)+" · "+(edition==="rose"?"Rose 1899 (OCR no cotejado)":"Kurilo V514")+" · "+count+" entradas mostradas en aparato · "+((d?.["rose-1899"]?.entradas||[]).length)+" fragmentos OCR Rose · "+((d?.["krohn-1912"]?.entradas||[]).length)+" fragmentos OCR Krohn. Estas cifras no acreditan variantes revisadas.");
+ set("#status","Locus "+format(locus)+" · "+(edition==="rose"?"Rose 1899 (OCR no cotejado)":"Kurilo V514")+" · "+count+" entradas mostradas en aparato · "+((d?.["rose-1899"]?.entradas||[]).length)+" fragmentos OCR Rose · "+((d?.["krohn-1912"]?.entradas||[]).length)+" fragmentos OCR Krohn. Las lecturas editoriales se documentan por su fuente; la verificación paleográfica se registra solo para las variantes pertinentes.");
 }
 $("#controls").addEventListener("submit",e=>{e.preventDefault();load($("#locus").value.trim().toLowerCase())});
 $("#mode").addEventListener("change",()=>current&&load(current));
