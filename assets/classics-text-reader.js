@@ -9,7 +9,7 @@ if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no ident
 const base="data/classics-corpus/"+work+"-";
 const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0;
 // Deep links from documented concordances require literal evidence, not heuristic synonyms.
-const exactConcordance=p.get("literal")==="1";
+const exactConcordance=p.get("semantic")!=="1";
 /* A trusted same-origin parallel reader may request ordinal passage navigation.
    Does not infer lexical/critical alignment across editions. */
 window.addEventListener("message",event=>{
