@@ -271,6 +271,22 @@ function mount(){
  });
  $("wb-lookup").addEventListener("click",lookup);
  $("wb-add-note").addEventListener("click",()=>openEditor(getSelectionInfo()));
+ // Persistent controls: work even when the contextual selection toolbar is
+ // hidden by the browser or inaccessible to keyboard-only readers.
+ for(const id of ["wb-underline-selection","wb-annotate-selection"]){
+  $(id)?.addEventListener("pointerdown",e=>e.preventDefault());
+ }
+ $("wb-underline-selection")?.addEventListener("click",()=>{
+  const info=getSelectionInfo()||selection;
+  if(!info?.quote){status("Seleccione con el mouse o el teclado una frase del texto latino o de la traducción.");return}
+  if(createNote(info,"")){sync();status("Selección subrayada y vinculada al locus y la edición; es una anotación personal, no una variante crítica.");}
+  window.getSelection()?.removeAllRanges();closeBar();
+ });
+ $("wb-annotate-selection")?.addEventListener("click",()=>{
+  const info=getSelectionInfo()||selection;
+  if(!info?.quote){status("Seleccione primero un fragmento latino o traducido.");return}
+  openEditor(info);
+ });
  $("wb-cancel-note").addEventListener("click",hideEditor);
  $("wb-save-note").addEventListener("click",()=>{
   if(createNote(draft,$("wb-note-input").value)){hideEditor();sync();status("Nota privada guardada con edición y locus. No se incorpora al aparato crítico.");}
