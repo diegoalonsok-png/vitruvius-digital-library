@@ -251,13 +251,13 @@ function renderExpandedCodicology(dest,w,d){
   if(!details.open||details.dataset.loaded)return;
   details.dataset.loaded="loading";output.replaceChildren(html("p",null,"Consultando descripción especializada…"));
   try{
-   if(!teiMatrixTask)teiMatrixTask=fetch("data/classics-corpus/tei-codicology-research-matrix-89.json?v=20261111-source-fields-v1").then(r=>{if(!r.ok)throw Error("Matriz no disponible");return r.json()}).catch(e=>{teiMatrixTask=null;throw e});
+   if(!teiMatrixTask)teiMatrixTask=fetch("data/classics-corpus/tei-codicology-research-matrix-89.json?v=20261114-clarke39-reviewed").then(r=>{if(!r.ok)throw Error("Matriz no disponible");return r.json()}).catch(e=>{teiMatrixTask=null;throw e});
    const matrix=await teiMatrixTask,ids=new Set(witnesses.map(x=>x.id));
    const records=(matrix.records||[]).filter(r=>ids.has(r.witnessId));
    output.replaceChildren();
    output.append(html("p","cwd-muted","Se distingue el dato de catálogo del cotejo visual y filológico. Un campo sin documentar no equivale a ausencia del rasgo en el manuscrito."));
    const labels={material:"Soporte",dimensions:"Dimensiones y caja escrita",collationFormula:"Fórmula de cuadernos",ruling:"Pautado",binding:"Encuadernación",watermarks:"Filigranas",script:"Escritura",hands:"Manos",corrections:"Correctores",scholia:"Escolios",glosses:"Glosas",subscriptiones:"Subscriptiones",origin:"Origen",provenance:"Procedencia",folioRange:"Folios o páginas",coverage:"Contenido conservado",lacunae:"Lagunas",transpositions:"Transposiciones",palimpsest:"Palimpsesto",record:"Catálogo custodio",viewer:"Visor documentado",manifest:"Manifest IIIF"};
-   const states={institutional_catalogue_verified:"Contrastado con catálogo institucional",recorded_not_individually_collated:"Dato registrado; sin cotejo individual",missing_requires_source:"Fuente documental aún no consignada"};
+   const states={institutional_catalogue_verified:"Contrastado con catálogo institucional",institutional_aggregator_verified:"Contrastado con agregador académico e identificación del custodio",recorded_not_individually_collated:"Dato registrado; sin cotejo individual",missing_requires_source:"Fuente documental aún no consignada"};
    for(const record of records){
     const block=html("section","cwd-ms");block.append(html("h4",null,[record.repository,record.shelfmark].filter(Boolean).join(" · ")));
     for(const fields of Object.values(record.fields||{}))for(const [key,field] of Object.entries(fields)){
