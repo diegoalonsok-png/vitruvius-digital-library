@@ -39,7 +39,12 @@ assert.ok(french.citation.includes('10.5281/zenodo.23885110'));
 assert.ok(!french.citation.includes('10.5281/zenodo.23884757'));
 const english=reference({...record,edition:'theory-en'},eds.find(e=>e.id==='theory-en'));
 assert.ok(english.citation.includes('10.5281/zenodo.23885404'));
-assert.equal(english.isbn,'','V297: no ISBN attested');
+assert.equal(english.isbn,eds.find(e=>e.id==='theory-en').isbn||'',
+ 'V297 must reflect the current recorded edition metadata, not a historical assumption');
+assert.match(english.citation,/Observación ISBN:/,
+ 'Shared ISBN is an editorial declaration with a transparent caveat');
+assert.match(english.citation,/ISBN común declarado por el editor/,
+ 'Never turn a shared ISBN into independently verified edition-specific ISBN');
 const noMetadata=reference(record,null,url);
 assert.equal(noMetadata.doi,'');
 assert.equal(noMetadata.isbn,'');
