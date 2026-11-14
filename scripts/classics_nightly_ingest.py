@@ -28,7 +28,7 @@ MAX_BYTES=18_000_000
 def sha(data): return hashlib.sha256(data).hexdigest()
 def now(): return dt.datetime.now(dt.timezone.utc).isoformat()
 def tokens(text):
-    return re.findall(r"[^\\W\\d_]+",unicodedata.normalize("NFC",text).lower(),flags=re.UNICODE)
+    return re.findall(r"[^\W\d_]+",unicodedata.normalize("NFC",text).lower(),flags=re.UNICODE)
 def clean_text(node):
     parts=[]
     for element in node.iter():
