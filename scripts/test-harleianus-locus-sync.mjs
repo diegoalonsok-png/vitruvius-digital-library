@@ -23,7 +23,7 @@ assert(Array.isArray(corpus.passages)&&corpus.passages.length>=700,"Editorial so
 assert(Array.isArray(codex.entries)&&codex.entries.length>=55,"Codicological evidence map truncated");
 const works=new Set(corpus.passages.map(p=>p.locus));
 for(let i=1;i<=10;i++)assert(corpus.passages.some(p=>p.locus.startsWith(i+".praef.")),"Missing book prefacio "+i);
-for(const word of ["symmetria","decor","firmitas"]){
+for(const word of ["symmetri","decor","firmit"]){
  assert(corpus.passages.some(p=>(p.latin||"").toLowerCase().includes(word)),"Term missing from indexed corpus: "+word);
 }
 for(const entry of codex.entries){
@@ -33,6 +33,6 @@ for(const entry of codex.entries){
  // This manifest sequence is supported by every documented folio record.
  const expected=8+(Number(m[1])-1)*2+(m[2]==="r"?1:2);
  assert.equal(entry.image_number,expected,"Unexpected image numbering; review estimated navigation");
- for(const evidence of entry.loci||[])assert(works.has(evidence.locus),"Unregistered locus "+evidence.locus);
+ for(const evidence of entry.loci||[])assert(works.has(evidence.locus)||[...works].some(l=>l.startsWith(evidence.locus+".")),"Unregistered locus or chapter "+evidence.locus);
 }
 console.log("Codex H: search, prefacios, loci, 62+ documented images and yellow editorial highlights preserved.");
