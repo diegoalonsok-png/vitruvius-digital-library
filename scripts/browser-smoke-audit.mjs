@@ -269,9 +269,12 @@ try{
    // V514 (Spanish), V554 (French), and V297 (English).
    const allPairs=page.locator('#search-results .result-parallel');
    assert.equal(await allPairs.count(),3,'Each of V514, V554 and V297 must have its own facing-text pair');
+   // Verify the actual original-text headings, not generic metadata that may
+   // mention multiple versions in a bibliography or scholarly citation.
+   const latinHeadings=await allPairs.locator('.parallel-latin .parallel-heading span').allTextContents();
    for(const version of ['V514','V554','V297']){
-     assert.equal(await page.locator('#search-results .result-meta', {hasText:version}).count(),1,
-       version+' must appear once as a separately attributable edition');
+     assert.equal(latinHeadings.filter(t=>t.includes('EDICIÓN '+version)).length,1,
+       version+' must have one original Latin witness and facing translation');
    }
    assert.match(await first.locator('.parallel-latin').innerText(),/Sed haec|haec omnia/i,'No aparece el latín de II.7.2');
    const latinBefore=await first.locator('.parallel-latin .parallel-passage').innerText();
