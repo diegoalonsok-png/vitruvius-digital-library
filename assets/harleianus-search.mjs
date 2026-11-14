@@ -95,7 +95,7 @@ function search(){
  const concept=type==="concept"?findConcept(q):null;
  // No query? Listing prefaces is useful; otherwise ask for a term.
  if(!q&&scope.value!=="praef"){
-  status.textContent="Escribí una palabra, un concepto, una frase o un locus (por ejemplo, 1.praef.1).";
+  status.textContent="Escriba una palabra, un concepto, una frase o un locus (por ejemplo, 1.praef.1).";
   results.replaceChildren();more.hidden=true;return;
  }
  const found=[];
@@ -194,13 +194,13 @@ async function init(){
  }
  passages=sources[0].value.passages.filter(x=>x.locus&&typeof x.latin==="string"&&x.latin.trim());
  if(sources[1].status==="fulfilled")folioMap=sources[1].value;
- status.textContent=passages.length+" loci latinos disponibles. Buscá por palabra, frase, prefacio o locus; el visor original se conserva.";
+ status.textContent=passages.length+" loci latinos disponibles. Busque por palabra, frase, prefacio o locus; el visor original se conserva.";
  const params=new URLSearchParams(location.search);
  if(params.get("q")){input.value=params.get("q").slice(0,120);search()}
 }
 form.addEventListener("submit",e=>{e.preventDefault();search()});
 more.addEventListener("click",showMore);
-byId("h-search-clear").addEventListener("click",()=>{input.value="";mode.value="concept";scope.value="all";visible=[];results.replaceChildren();more.hidden=true;status.textContent=passages.length+" loci latinos disponibles. Escribí un término para buscar.";});
+byId("h-search-clear").addEventListener("click",()=>{input.value="";mode.value="concept";scope.value="all";visible=[];results.replaceChildren();more.hidden=true;status.textContent=passages.length+" loci latinos disponibles. Escriba un término para buscar.";});
 root.querySelectorAll("[data-h-term]").forEach(btn=>btn.addEventListener("click",()=>{input.value=btn.dataset.hTerm;mode.value="concept";search();}));
 scope.addEventListener("change",()=>{if(input.value.trim()||scope.value==="praef")search()});
 mode.addEventListener("change",()=>{if(input.value.trim())search()});
