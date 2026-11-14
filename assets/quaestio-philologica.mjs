@@ -30,12 +30,9 @@ function renderMore(){
   const actions=node("div",null,box,"q-actions");
   const link=node("a","Leer locus, notas y exportar TEI",actions);link.href=permanentLocusUrl(p.locus,p.edition)||"lector-bilingue.html";
   const cite=bibliographicCitation(p.edition,meta,p.locus);
-  for(const [label,cb] of [
-   ["Copiar Chicago 18",()=>copy(cite,btn)],
-   ["RIS",()=>download(ris(p.edition,meta),EDITIONS[p.edition].version+"-"+p.locus+".ris","application/x-research-info-systems")],
-   ["BibTeX",()=>download(bibtex(p.edition,meta),EDITIONS[p.edition].version+"-"+p.locus+".bib","application/x-bibtex")]
-  ]){
-   const btn=node("button",label,actions);btn.type="button";btn.addEventListener("click",()=>{
+  for(const label of ["Copiar Chicago 18","RIS","BibTeX"]){
+   const btn=node("button",label,actions);btn.type="button";
+   btn.addEventListener("click",()=>{
     if(label==="Copiar Chicago 18")copy(cite,btn);
     else if(label==="RIS")download(ris(p.edition,meta),EDITIONS[p.edition].version+"-"+p.locus+".ris","application/x-research-info-systems");
     else download(bibtex(p.edition,meta),EDITIONS[p.edition].version+"-"+p.locus+".bib","application/x-bibtex");
