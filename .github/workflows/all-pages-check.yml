@@ -6,6 +6,12 @@ on:
   push:
     branches: [main]
     paths:
+      - "**/*.html"
+      - "assets/site-bar.js"
+      - "assets/secondary-reader-controls.js"
+      - "assets/secondary-reader-controls.css"
+      - "assets/ui-idioma.js"
+      - "assets/auditoria-academica-i18n.js"
       - "scripts/all-pages-check.mjs"
       - "scripts/benchmark-site-searches.mjs"
       - ".github/workflows/all-pages-check.yml"
