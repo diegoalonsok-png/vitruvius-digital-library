@@ -98,7 +98,7 @@ function draw(){
 async function begin(){
  const sel=document.getElementById("classic-work");
  if(!sel)return;
- try{const r=await fetch(CATALOG);if(!r.ok)throw Error("Catálogo inaccesible");const data=await r.json();
+ try{const r=await fetch(CATALOG,{cache:"no-cache"});if(!r.ok)throw Error("Catálogo inaccesible");const data=await r.json();
   if(!Array.isArray(data.works))throw Error("Catálogo sin obras");
   records=new Map(data.works.map(w=>[w.id,w]));
  }catch(e){console.warn("Ficha crítica:",e.message);return}
