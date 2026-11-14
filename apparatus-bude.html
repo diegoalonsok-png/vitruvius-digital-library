@@ -157,7 +157,7 @@ function load(locus){
  const d=comp?.loci?.find(v=>v.locus===locus),minor=$("#minor");minor.replaceChildren();let count=0;const mode=$("#mode").value;
  const seenEditorial=new Set();
  let editorialDuplicate=0,editorialSuspicious=0;
- function normalizeEditorial(value){return String(value||"").replace(/\\s+/g," ").replace(/\\s*([;,])\\s*/g,"$1").trim().toLowerCase()}
+ function normalizeEditorial(value){return String(value||"").replace(/\s+/g," ").replace(/\s*([;,])\s*/g,"$1").trim().toLowerCase()}
  function labelEditorial(v){
   const state=String(v.grado||"");
   if(state==="comprobada en V514 y V554")return "Coincidencia entre V514 y V554 indicada en el registro editorial; lectura manuscrita independiente no acreditada";
@@ -174,7 +174,7 @@ function load(locus){
    seenEditorial.add(entryKey);
    // Ambiguous PDF/OCR extraction is retained in the complete original book,
    // not displayed as a clean ecdotic reading without an identifiable lemma.
-   if(/\\bom\\.\\s*proba|\\bprob\\s+ceteris|\\b1v\\s+antur\\b/i.test(rawEntry)){editorialSuspicious++;continue}
+   if(/\bom\.\s*proba|\bprob\s+ceteris|\b1v\s+antur\b/i.test(rawEntry)){editorialSuspicious++;continue}
 
    const item=document.createElement("div");item.className="ab-entry";
    const first=document.createElement("span");
