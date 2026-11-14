@@ -1,0 +1,347 @@
+{
+  "schema": "bibliotheca-work-title-search-aliases-v1",
+  "description": "Claves de búsqueda multilingües orientativas, no títulos de traducciones alojadas ni atribuciones manuscritas.",
+  "languages": [
+    "la",
+    "grc",
+    "es",
+    "en",
+    "fr"
+  ],
+  "aliases": {
+    "vitruvius": [
+      "Vitruvio",
+      "Vitruvius",
+      "Vitruve",
+      "Los diez libros de arquitectura",
+      "Ten Books on Architecture",
+      "Dix livres d'architecture"
+    ],
+    "cicero-officiis": [
+      "Los deberes",
+      "On Duties",
+      "Des devoirs"
+    ],
+    "cicero-oratore": [
+      "Del orador",
+      "On the Orator",
+      "De l'orateur"
+    ],
+    "cicero-republica": [
+      "Sobre la república",
+      "On the Republic",
+      "De la République"
+    ],
+    "caesar-gallico": [
+      "Guerra de las Galias",
+      "Gallic Wars",
+      "La Guerre des Gaules"
+    ],
+    "caesar-civili": [
+      "Guerra civil",
+      "Civil War",
+      "La Guerre civile"
+    ],
+    "lucretius": [
+      "De la naturaleza de las cosas",
+      "On the Nature of Things",
+      "De la nature des choses"
+    ],
+    "virgil-aeneid": [
+      "Eneida",
+      "Aeneid",
+      "Énéide"
+    ],
+    "virgil-georgica": [
+      "Geórgicas",
+      "Georgics",
+      "Géorgiques"
+    ],
+    "horace-odes": [
+      "Odas",
+      "Odes"
+    ],
+    "livy": [
+      "Historia de Roma",
+      "History of Rome",
+      "Histoire romaine"
+    ],
+    "ovid": [
+      "Metamorfosis",
+      "Metamorphoses",
+      "Métamorphoses"
+    ],
+    "pliny": [
+      "Historia natural",
+      "Natural History",
+      "Histoire naturelle"
+    ],
+    "frontinus": [
+      "Sobre los acueductos de Roma",
+      "On the Aqueducts of Rome",
+      "Les aqueducs de Rome"
+    ],
+    "tacitus-annales": [
+      "Anales",
+      "Annals",
+      "Annales"
+    ],
+    "seneca-epistulae": [
+      "Cartas a Lucilio",
+      "Letters to Lucilius",
+      "Lettres à Lucilius"
+    ],
+    "seneca-de-brevitate": [
+      "De la brevedad de la vida",
+      "On the Shortness of Life",
+      "De la brièveté de la vie"
+    ],
+    "plato-republic": [
+      "La República",
+      "The Republic",
+      "La République",
+      "Politeia"
+    ],
+    "plato-apology": [
+      "Apología de Sócrates",
+      "Apology of Socrates",
+      "Apologie de Socrate"
+    ],
+    "plato-symposium": [
+      "El banquete",
+      "Symposium",
+      "Le Banquet"
+    ],
+    "plato-phaedo": [
+      "Fedón",
+      "Phaedo",
+      "Phédon"
+    ],
+    "plato-timaeus": [
+      "Timeo",
+      "Timaeus",
+      "Timée"
+    ],
+    "plato-phaedrus": [
+      "Fedro",
+      "Phaedrus",
+      "Phèdre"
+    ],
+    "aristotle-poetics": [
+      "Poética",
+      "Poetics",
+      "Poétique"
+    ],
+    "aristotle-politics": [
+      "Política",
+      "Politics",
+      "Politique"
+    ],
+    "aristotle-nicomachean-ethics": [
+      "Ética a Nicómaco",
+      "Nicomachean Ethics",
+      "Éthique à Nicomaque"
+    ],
+    "aristotle-metaphysics": [
+      "Metafísica",
+      "Metaphysics",
+      "Métaphysique"
+    ],
+    "aristotle-physics": [
+      "Física",
+      "Physics",
+      "Physique"
+    ],
+    "aristotle-rhetoric": [
+      "Retórica",
+      "Rhetoric",
+      "Rhétorique"
+    ],
+    "aristotle-de-anima": [
+      "Sobre el alma",
+      "On the Soul",
+      "De l'âme"
+    ],
+    "homer-iliad": [
+      "Ilíada",
+      "Iliada",
+      "Iliad",
+      "Iliade",
+      "L'Iliade",
+      "Ilias"
+    ],
+    "homer-odyssey": [
+      "Odisea",
+      "Odyssey",
+      "Odyssée",
+      "L'Odyssée",
+      "Odysseia"
+    ],
+    "hesiod-theogony": [
+      "Teogonía",
+      "Theogony",
+      "Théogonie"
+    ],
+    "hesiod-works-days": [
+      "Los trabajos y los días",
+      "Works and Days",
+      "Les Travaux et les Jours"
+    ],
+    "aeschylus-oresteia": [
+      "Orestíada",
+      "Oresteia",
+      "Orestie"
+    ],
+    "sophocles-oedipus": [
+      "Edipo rey",
+      "Oedipus the King",
+      "Œdipe roi"
+    ],
+    "sophocles-antigone": [
+      "Antígona",
+      "Antigone"
+    ],
+    "euripides-medea": [
+      "Medea",
+      "Médée"
+    ],
+    "aristophanes-clouds": [
+      "Las nubes",
+      "The Clouds",
+      "Les Nuées"
+    ],
+    "aristophanes-lysistrata": [
+      "Lisístrata",
+      "Lysistrata"
+    ],
+    "herodotus-historiae": [
+      "Historias de Heródoto",
+      "The Histories",
+      "Histoires d'Hérodote"
+    ],
+    "thucydides-war": [
+      "Guerra del Peloponeso",
+      "The Peloponnesian War",
+      "Guerre du Péloponnèse"
+    ],
+    "xenophon-anabasis": [
+      "Anábasis",
+      "Anabasis",
+      "Anabase"
+    ],
+    "strabo": [
+      "Geografía",
+      "Geography",
+      "Géographie"
+    ],
+    "ptolemy-geographia": [
+      "Geografía",
+      "Geography",
+      "Géographie"
+    ],
+    "ptolemy-almagest": [
+      "Almagesto",
+      "Almagest",
+      "Almageste"
+    ],
+    "euclid-elementa": [
+      "Elementos",
+      "Elements",
+      "Éléments",
+      "Stoicheia"
+    ],
+    "plutarch-lives": [
+      "Vidas paralelas",
+      "Parallel Lives",
+      "Vies parallèles"
+    ],
+    "marcus-aurelius-meditations": [
+      "Meditaciones",
+      "Meditations",
+      "Pensées pour moi-même"
+    ],
+    "epictetus-enchiridion": [
+      "Manual de Epicteto",
+      "Enchiridion",
+      "Handbook",
+      "Manuel d'Épictète"
+    ],
+    "eusebio": [
+      "Historia eclesiástica",
+      "Ecclesiastical History",
+      "Histoire ecclésiastique"
+    ],
+    "augustine-confessiones": [
+      "Confesiones",
+      "Confessions",
+      "Les Confessions"
+    ],
+    "augustine-civitate-dei": [
+      "La ciudad de Dios",
+      "City of God",
+      "Cité de Dieu"
+    ],
+    "boethius-consolatio": [
+      "Consolación de la filosofía",
+      "Consolation of Philosophy",
+      "Consolation de la philosophie"
+    ],
+    "josephus-war": [
+      "Guerra de los judíos",
+      "Jewish War",
+      "Guerre des Juifs"
+    ],
+    "josephus-antiquities": [
+      "Antigüedades judías",
+      "Jewish Antiquities",
+      "Antiquités judaïques"
+    ],
+    "pseudo-apollodorus-bibliotheca": [
+      "Biblioteca mitológica",
+      "The Library",
+      "Bibliothèque"
+    ],
+    "pausanias-periegesis": [
+      "Descripción de Grecia",
+      "Description of Greece",
+      "Description de la Grèce"
+    ],
+    "proclo-comentario-euclides": [
+      "Comentario al primer libro de los Elementos",
+      "Commentary on Euclid's Elements"
+    ],
+    "procopius-aedificiis": [
+      "Sobre los edificios",
+      "On Buildings",
+      "Les Édifices"
+    ],
+    "isidore-etymologiae": [
+      "Etimologías",
+      "Etymologies",
+      "Étymologies"
+    ],
+    "palladio-quattro-libri": [
+      "Los cuatro libros de arquitectura",
+      "The Four Books of Architecture",
+      "Les Quatre Livres de l'architecture"
+    ],
+    "vignola-cinque-ordini": [
+      "Los cinco órdenes de arquitectura",
+      "Five Orders of Architecture"
+    ],
+    "alberti-de-re-aedificatoria": [
+      "Los diez libros de arquitectura de Alberti",
+      "On the Art of Building",
+      "L'Art d'édifier"
+    ],
+    "vasari-vite": [
+      "Vidas de los artistas",
+      "Lives of the Artists",
+      "Les Vies des artistes"
+    ],
+    "serlio-architettura": [
+      "Libros de arquitectura de Serlio",
+      "Books of Architecture"
+    ]
+  }
+}
