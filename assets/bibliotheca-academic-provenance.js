@@ -22,39 +22,77 @@ function style(){
 function line(label,value){
  const p=txt("p","");p.append(txt("strong",label+" "));p.append(document.createTextNode(value));box.append(p);
 }
+function renderLink(host,label,url){
+ if(!url||typeof url!=="string")return;
+ try{const u=new URL(url,location.href);if(u.protocol!=="https:"&&u.origin!==location.origin)return;
+  const a=link(label,u.href);a.rel="noopener noreferrer";host.append(a,document.createTextNode(" · "));
+ }catch(e){}
+}
+function detail(container,label,value){
+ if(value===null||value===undefined||String(value).trim()==="")return;
+ const p=txt("p","");p.append(txt("strong",label+" "),document.createTextNode(String(value)));container.append(p);
+}
+function evidenceHeading(label){const h=txt("h4",label);h.style.cssText="font:600 14px/1.5 system-ui,sans-serif;margin:15px 0 7px";box.append(h)}
+function renderWitness(ms,i,total){
+ const item=txt("section","");item.style.cssText="border-top:1px solid #8886;padding:10px 0 6px;margin-top:8px";
+ const h=txt("h5",[ms.shelfmark,ms.library].filter(Boolean).join(" · ")||ms.title||"Testimonio documental");h.style.cssText="font:600 13px/1.55 system-ui,sans-serif;margin:0 0 4px";item.append(h);
+ if(i===0&&total>1)item.append(txt("p","Primero en el orden cronológico de ESTA selección; no se atribuye prioridad sobre toda la tradición manuscrita.","status"));
+ detail(item,"Datación:",ms.date||"La ficha consultada no ofrece fecha precisa");
+ detail(item,"Extensión textual / loci:",ms.coverage);
+ detail(item,"Extensión material o foliación:",ms.folioRange||ms.extent);
+ detail(item,"Soporte:",ms.material);
+ detail(item,"Escritura:",ms.script);
+ detail(item,"Disposición o pautado:",ms.layout||ms.ruling);
+ detail(item,"Procedencia:",ms.provenance||ms.origin);
+ detail(item,"Base documental:",ms.verification||ms.cataloguingStatus);
+ detail(item,"Reserva ecdótica:",ms.collationStatus);
+ const p=txt("p","");renderLink(p,"Leer folios en la biblioteca custodia",ms.viewer);
+ renderLink(p,"Registro institucional y signatura",ms.record);
+ renderLink(p,"Manifiesto IIIF",ms.manifest);
+ renderLink(p,"Visor de folios de Vitruvius",ms.localViewer);
+ renderLink(p,"Fuente de verificación",ms.verificationUrl);
+ if(p.childNodes.length)item.append(p);
+ if(ms.rights)detail(item,"Derechos de imagen:",ms.rights);
+ box.append(item);
+}
 function draw(){
  const sel=document.getElementById("classic-work");if(!sel)return;
- box.replaceChildren();box.hidden=true;const id=sel.value;
+ box.replaceChildren();box.hidden=true;
+ const id=sel.value||new URLSearchParams(location.search).get("work");
  const w=records.get(id);if(!w)return;
- const heading=txt("h3",w.author+" · "+w.title);
+ const heading=txt("h3",(w.author||"Autor no identificado")+" · "+(w.title||id));
  if(w.language==="grc")heading.lang="grc";
- box.append(txt("p","FICHA DE FUENTE · NOMBRE ANTIGUO Y TESTIMONIOS","status"),heading);
- line("Cronología editorial:",w.dating||"sin datación consignada");
- if(w.bibliography?.editionCitation){
-  line("Edición documentada (revisar según Chicago 18):",w.bibliography.editionCitation);
+ box.append(txt("p","FICHA CODICOLÓGICA Y FILOLÓGICA · FUENTES DOCUMENTADAS","status"),heading);
+ detail(box,"Datación de la composición:",w.dating);
+ detail(box,"Lengua del original:",w.language==="grc"?"griego antiguo":w.language==="la"?"latín":w.language);
+ const perm=txt("p","");renderLink(perm,"Abrir ficha crítica extensa", "classics-work-record.html?work="+encodeURIComponent(w.id));box.append(perm);
+ evidenceHeading("Testimonios manuscritos");
+ const witnesses=(Array.isArray(w.witnessRecords)?w.witnessRecords:[]).slice().sort((a,b)=>(a.dateStart||9999)-(b.dateStart||9999));
+ if(witnesses.length){
+  box.append(txt("p",witnesses.length+" testimonio(s) individualizado(s) en este catálogo. El orden local no establece un stemma codicum."));
+  witnesses.slice(0,12).forEach((ms,i)=>renderWitness(ms,i,witnesses.length));
+  if(witnesses.length>12)box.append(txt("p","Ver los restantes testimonios en la ficha crítica extensa."));
+ }else if(w.manuscript?.record||w.manuscript?.manifest){
+  renderWitness({shelfmark:w.manuscript.shelfmark,library:w.manuscript.institution,record:w.manuscript.record,manifest:w.manuscript.manifest,date:w.manuscript.dating,coverage:w.manuscript.status,verification:"Datos del registro editorial, sin autopsia paleográfica documentada."},0,1);
  }else{
-  line("Cita bibliográfica:", "Ficha bibliográfica incompleta; no se atribuyen datos ausentes");
+  box.append(txt("p","Todavía no hay una signatura manuscrita individualizada con respaldo documental en este registro. No se infiere de ello ausencia de testigos."));
+  const searches=Array.isArray(w.witnessLookup?.searches)?w.witnessLookup.searches:[];
+  if(searches.length){const p=txt("p","");for(const q of searches)renderLink(p,"Buscar en "+q.catalogue,q.url);if(p.childNodes.length){box.append(txt("p","Consultas exploratorias en repertorios (no equivalen a identificación de un códice):","status"),p)}}
  }
- const ms=w.manuscript||{},old=ms.oldest||{};
- if(old.record&&/^https:/.test(old.record)){
-  const p=txt("p","");p.append(txt("strong","Testimonio temprano identificado: "));p.append(link("Ficha de manuscrito",old.record));box.append(p);
- }else{
-  line("Testimonio más antiguo digitalizado:","sin acreditación documental suficiente en este registro");
+ evidenceHeading("Ediciones históricas y lecturas");
+ if(w.bibliography?.editionCitation)detail(box,"Referencia editorial (revisar Chicago 18):",w.bibliography.editionCitation);
+ for(const e of Array.isArray(w.historicEditions)?w.historicEditions:[]){
+  const sec=txt("section","");sec.style.cssText="padding:8px 0;border-top:1px solid #8885";
+  detail(sec,"Edición histórica:",[e.title,e.editor?"ed. "+e.editor:"",e.year,e.provider].filter(Boolean).join(" · "));
+  detail(sec,"Cobertura:",e.coverage);
+  detail(sec,"Nota bibliográfica:",e.note);
+  const l=txt("p","");renderLink(l,"Leer edición histórica",e.url);renderLink(l,"Registro bibliográfico",e.record);if(l.childNodes.length)sec.append(l);box.append(sec);
  }
- if(ms.status)line("Estado codicológico declarado:",ms.status);
- if(ms.record&&/^https:/.test(ms.record)){
-  const p=txt("p","");p.append(txt("strong","Manuscrito documentado (no necesariamente el más antiguo): "));p.append(link("Registro institucional",ms.record));box.append(p);
- }
- if(ms.manifest&&/^https:/.test(ms.manifest)){
-  const p=txt("p","");p.append(txt("strong","IIIF del testimonio identificado: "));p.append(link("Manifiesto de imágenes",ms.manifest));box.append(p);
- }
- if(w.id==="vitruvius"){
-  const p=txt("p","");p.append(txt("strong","Visor del testimonio H: "));p.append(link("Codex H · lectura de folios", "codex-h-doble-folio.html"));box.append(p);
- }
- if(w.reading?.url&&/^https:/.test(w.reading.url)){
-  const p=txt("p","");p.append(txt("strong","Fuente de lectura externa: "));p.append(link("Consultar texto",w.reading.url));box.append(p);
- }
- box.append(txt("p","Un texto de lectura, una edición impresa, una traducción y una imagen del códice son testimonios distintos; los enlaces no acreditan por sí solos colación ecdótica.","status"));
+ if(w.reading?.url){const p=txt("p","");renderLink(p,"Consultar texto de referencia",w.reading.url);box.append(p)}
+ if(w.reading?.status)detail(box,"Identificación de lectura:",w.reading.status);
+ if(w.pdf?.url){const p=txt("p","");renderLink(p,"Abrir PDF o facsímil de impreso",w.pdf.url);box.append(p)}
+ if(w.pdf?.url&&w.pdf?.status)detail(box,"Naturaleza del PDF:",w.pdf.status);
+ box.append(txt("p","Criterio ecdótico: la obra antigua, su testimonio físico, el facsímil, la transcripción, la edición impresa y la traducción constituyen objetos documentales distintos. Los metadatos y enlaces NO constituyen colación independiente de variantes ni prueba de que el testigo mostrado sea el más antiguo conservado.","status"));
  box.hidden=false;
 }
 async function begin(){
@@ -67,7 +105,7 @@ async function begin(){
  style();(document.querySelector(".workrow")||sel).insertAdjacentElement("afterend",box);
  sel.addEventListener("change",draw);
  const requested=new URLSearchParams(location.search).get("work");
- if(requested&&records.has(requested))requestAnimationFrame(draw);
+ if(requested&&records.has(requested))requestAnimationFrame(()=>{if(!sel.value)sel.value=requested;draw()});
  else draw();
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",begin,{once:true});else begin();
