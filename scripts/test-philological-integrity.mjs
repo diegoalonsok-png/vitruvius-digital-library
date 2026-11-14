@@ -1,0 +1,38 @@
+import assert from "node:assert/strict";
+import {readFileSync,existsSync} from "node:fs";
+import {canonicalLocus,localURN,permanentLocusUrl,normalized,searchAttested,bibliographicCitation,ris,bibtex} from "../assets/philological-core.mjs";
+const root=new URL("../",import.meta.url),read=p=>JSON.parse(readFileSync(new URL(p,root),"utf8"));
+const catalog=read("data/catalog.json");
+const editionIds=["recensio-es","recensio-fr","theory-en"];
+assert.equal(canonicalLocus("I.1.3"),"1.1.3");
+assert.equal(canonicalLocus("1.praef.1"),"1.praef.1");
+assert.equal(canonicalLocus("XI.1.1"),null);
+assert.equal(localURN("recensio-es","1.1.3"),"urn:cts:latinLit:phi1056.phi001.vdl-v514:1.1.3");
+assert.ok(permanentLocusUrl("I.1.3","recensio-es").includes("locus=1.1.3"));
+assert.equal(normalized("SYMMÉTRIA"),"symmetria");
+assert.equal(searchAttested([{locus:"1.1.1",edition:"recensio-es",latin:"symmetria",translation:"proporción"}],"symmetria").length,1);
+const inventory={};
+for(const id of editionIds){
+ const e=catalog.editions.find(x=>x.id===id);assert.ok(e,"missing edition "+id);
+ assert.match(e.doi,/^10\.\d{4,9}\/\S+$/);
+ assert.match(e.isbn,/^\d{3}-\d+/);
+ assert.ok(!/provisiona|provisoire/i.test(e.edition_statement),"provisional label on "+id);
+ assert.ok(existsSync(new URL("data/structured/"+id+".json",root)));
+ const structured=read("data/structured/"+id+".json");
+ assert.ok(structured.passages.length>500,"incomplete indexed passages "+id);
+ const loci=new Set(structured.passages.map(x=>x.locus));
+ assert.ok(loci.size>500,"incomplete loci "+id);
+ for(const p of structured.passages)assert.ok(p.locus&&p.latin,"passage missing locator or Latin in "+id);
+ assert.ok(bibliographicCitation(id,e,"1.1.3").includes(e.doi));
+ assert.ok(bibtex(id,e).includes(e.isbn));assert.ok(ris(id,e).includes(e.doi));
+ inventory[id]={loci:loci.size,passages:structured.passages.length,doi:e.doi};
+}
+const notes=read("data/critical-notes.json");
+assert.ok(notes.entries.length>=800,"authorial notes unexpectedly lost");
+const manuscripts=read("data/commentary/codex-h-illustrations.json");
+assert.equal(manuscripts.records.length,12);
+assert.ok(manuscripts.records.every(x=>x.folio&&x.media_in_docx));
+const errata=read("data/errata-editionum.json");
+assert.equal(errata.editions.length,3);
+for(const p of ["quaestio-philologica.html","assets/quaestio-philologica.mjs","assets/philological-core.mjs","conspectus-testimoniorum.html","assets/locus-scholarly.js"])assert.ok(existsSync(new URL(p,root)));
+console.log(JSON.stringify({ok:true,inventory,footnotes:notes.entries.length,codex_h_images_catalogued:manuscripts.records.length,errata_registers:errata.editions.length},null,2));
