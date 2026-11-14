@@ -45,6 +45,8 @@ assert.match(english.citation,/Observación ISBN:/,
  'Shared ISBN is an editorial declaration with a transparent caveat');
 assert.match(english.citation,/ISBN común declarado por el editor/,
  'Never turn a shared ISBN into independently verified edition-specific ISBN');
+assert.equal(eds.find(e=>e.id==='theory-en').isbn_source.type,'publisher_statement');
+assert.match(english.isbnNote,/ISBN individuales.*pendientes/);
 const noMetadata=reference(record,null,url);
 assert.equal(noMetadata.doi,'');
 assert.equal(noMetadata.isbn,'');
