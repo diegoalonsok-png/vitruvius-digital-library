@@ -110,7 +110,14 @@ function ensureTypography(){
  else if(anchor?.classList?.contains('classic-view-colorbar'))anchor.append(tool);
  else if(fila&&(fila.contains(theme)||fila.contains(palette)))fila.append(tool);
  else if(anchor?.parentElement)anchor.after(tool);
- else(document.querySelector('.research-nav-controls')||document.querySelector('.site-header .header-inner')||document.querySelector('header')||document.body).append(tool);
+ else {
+  // Never put Aa at the end of <body>: on pages without a header it
+  // looked like an orphan control below the editorial footer.
+  const top=document.querySelector('.research-nav-controls, .site-header .header-inner, header, main');
+  if(!top)return;
+  if(top.matches('main'))top.prepend(tool);
+  else top.append(tool);
+ }
  const button=tool.querySelector('#site-typeface-toggle'),panel=tool.querySelector('#site-typeface-panel'),select=tool.querySelector('#site-typeface-select'),italic=tool.querySelector('#site-typeface-italic');
  function apply(){
   document.documentElement.dataset.siteReadingFont=saved.font;
