@@ -7,6 +7,16 @@ const json=path=>JSON.parse(read(path));
 const registry=json("data/index/registro-ecdotico.json");
 const originalNotes=json("data/critical-notes.json");
 const strict=json("data/ecdotic-decisions.json");
+const reviewQueue=json("data/ecdotic-note-review-queue-2026-11-14.json");
+assert.equal(reviewQueue.schema,"vdl-ecdotic-note-review-queue-v1");
+assert.equal(reviewQueue.items.length,reviewQueue.priority_candidate_count);
+assert.equal(new Set(reviewQueue.items.map(item=>item.queue_id)).size,reviewQueue.items.length);
+assert(reviewQueue.items.every(item=>item.verification_status==="pending_human_review"
+ &&item.original_locus===null&&item.candidate_locus
+ &&/^(1\.1|3\.1)\./.test(item.candidate_locus)
+ &&item.source_file&&Number.isInteger(item.source_paragraph)
+ &&!item.reviewer&&!item.reviewed_on&&!item.evidence_uri),
+ "Reviewer worklist cannot silently certify candidate notes");
 assert.equal(registry.schema,"registro-ecdotico/1","Unexpected apparatus registry schema");
 assert.equal(registry.recuentos.total,registry.registros.length,"Ecdotic registry total is stale");
 const labels={"decision":"aparato editorial","glosa":"glosas","nota":"notas","lectura-h":"observaciones H"};
@@ -35,6 +45,9 @@ for(const page of pages){
  assert(/<h1\b/i.test(html),page+" lacks a title");
 }
 assert(guide.includes("data/ecdotic-decisions.json"),"Guide must name strict review register");
+assert(guide.includes("data/ecdotic-note-review-queue-2026-11-14.json")
+ &&read("registro-ecdotico.html").includes("data/ecdotic-note-review-queue-2026-11-14.json"),
+ "The transparent candidate worklist must be accessible from the apparatus tools");
 assert(guide.includes("no certifica")||guide.includes("no constituyen"),
  "Guide must distinguish editorial extraction from manuscript collation");
 for(const [type,count] of Object.entries(counts)){
