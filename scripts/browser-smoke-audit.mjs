@@ -15,6 +15,25 @@ try{
  for(const path of ['index.html','scriptorium.html','facsimiles.html','bibliografia.html','ediciones-historicas.html','concordancia-historica.html','estudios.html','harleianus.html']){
   await test('Carga '+path,async()=>{const page=await pageFor(path);await page.waitForTimeout(1500);await page.close()});
  }
+ await test('Aa global: ubicacion superior en paginas heterogeneas',async()=>{
+  for(const file of ['status-textus.html','bibliografia.html','estudios.html','registro-ecdotico.html','metodologia-filologica.html']){
+   const page=await pageFor(file);
+   await page.locator('#site-typeface-toggle').waitFor({state:'attached',timeout:12000});
+   const result=await page.evaluate(()=>{
+    const button=document.getElementById('site-typeface-toggle');
+    const tool=button?.closest('.site-typeface-tool');
+    const rect=button?.getBoundingClientRect();
+    const footer=!!button?.closest('footer,[role="contentinfo"]');
+    const y=(rect?.top||0)+scrollY;
+    const fixed=tool&&getComputedStyle(tool).position==='fixed';
+    return {count:document.querySelectorAll('#site-typeface-toggle').length,footer,y,fixed,viewport:innerHeight};
+   });
+   assert.equal(result.count,1,file+' should have one Aa');
+   assert(!result.footer,file+' Aa in footer');
+   assert(result.fixed||result.y<Math.max(550,result.viewport*.8),file+' Aa below top controls: '+JSON.stringify(result));
+   await page.close();
+  }
+ });
  await test('Controles: Aa y selector de idioma nunca quedan sueltos bajo el pie',async()=>{
   for(const file of ['index.html','bibliografia.html','estudios.html','harleianus.html']){
    const page=await pageFor(file);
