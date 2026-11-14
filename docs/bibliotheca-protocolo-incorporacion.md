@@ -26,3 +26,11 @@ Distinguir texto original, traducción, aparato crítico, comentario e índice d
 
 ## Flujo continuo
 En cada revisión, contrastar los inventarios actualizados, seleccionar candidatos no repetidos, verificar licencias, incorporar si existe acceso operativo a R2 y ejecutar controles. Si falta acceso, preparar registros y fuentes sin declarar una carga inexistente.
+
+## Sincronización obligatoria de originales y traducciones
+Cuando existe una traducción alojable, ofrecer por defecto el visor paralelo original/traducción. El sistema debe sincronizar los paneles al navegar, preferentemente por el mismo identificador canónico de libro, capítulo, sección o verso. Registrar la tabla explícita de correspondencias de pasajes por pareja de versiones (original y traducción), la granularidad, el procedimiento de cotejo y la revisión humana.
+- **Exacta:** locus canónico acreditado en ambos textos; indicar que compartir identificador no demuestra equivalencia crítica palabra por palabra.
+- **Parcial:** intervalo o agrupación de versos/párrafos que se solapan de manera documentalmente verificable, conservando sus extremos.
+- **Aproximada:** coincidencia narrativa o por libro marcada como orientativa, nunca fingir precisión de sección.
+- **Sin correspondencia:** mantener cada panel independiente, mostrar aviso y no desplazar a un supuesto equivalente.
+No se deben emparejar párrafos por ordinal como si fueran traducciones exactas. La vinculación de lemas, semántica, concordancias y citas debe preservar siempre el locus y la edición de origen. No indexar traducciones automáticas como versiones académicas. Las ediciones sin traducción utilizable deberán seguir disponibles en visor monolingüe.
