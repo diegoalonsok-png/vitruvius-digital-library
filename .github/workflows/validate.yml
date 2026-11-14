@@ -254,6 +254,13 @@ jobs:
       - name: Test 2 · node scripts/test-citations.mjs
         if: always()
         run: node scripts/test-citations.mjs
+      - name: Regresión Codex H · búsqueda por loci, prefacios y términos
+        shell: bash
+        run: |
+          node --check assets/harleianus-search.mjs
+          node --check assets/harleianus-locus-sync.mjs
+          node --check assets/harley-reader-zoom-v2.mjs
+          node scripts/test-harleianus-locus-sync.mjs
       - name: Test 3 · node scripts/test-no-voseo.mjs
         if: always()
         run: node scripts/test-no-voseo.mjs
