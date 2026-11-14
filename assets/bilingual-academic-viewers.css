@@ -1,0 +1,37 @@
+/* Visores tipográficos académicos; sólo presentación, nunca cambia las lecturas. */
+#academic-viewer-master{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;flex-basis:100%;width:100%;padding:11px 0 1px;border-top:1px solid var(--line,#65666b);font:12px/1.5 system-ui,sans-serif}
+#academic-viewer-master .av-master-title{font-weight:700;letter-spacing:.055em;color:var(--ink,inherit)}
+#academic-viewer-master label{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+#academic-viewer-master input{width:17px;height:17px;accent-color:#b99a5c}
+#academic-viewer-master button{border-radius:6px;padding:6px 10px;min-height:34px}
+#academic-viewer-master .av-master-note{flex-basis:100%;margin:0;font-size:11px;opacity:.86}
+#reading[data-academic-viewers] .scholarly-columns > .academic-viewer-panel{position:relative;min-width:0;isolation:isolate}
+#reading[data-academic-viewers] .academic-viewer-panel .academic-panel-tools{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:10px 0 13px;margin:18px 0 5px;border-bottom:1px solid currentColor;opacity:1!important;position:relative;z-index:3}
+#reading .academic-panel-tools .av-label{font:700 11px/1.4 system-ui,sans-serif;letter-spacing:.04em;margin-right:auto}
+#reading .academic-panel-tools button,#reading .academic-panel-tools select{font:600 12px/1.3 system-ui,sans-serif;min-height:35px;min-width:35px;padding:6px 9px;border:1px solid #8f9193;border-radius:6px;color:inherit;background:transparent;cursor:pointer}
+#reading .academic-panel-tools button[aria-pressed=true]{background:#a47d41;color:#111!important;border-color:#e1bb79}
+#reading .academic-panel-tools select{max-width:160px;color:#17202a;background:#f7f5f0}
+#reading .academic-panel-tools .av-zoom-readout{font:700 12px/1.4 system-ui,sans-serif;min-width:40px;text-align:center;font-variant-numeric:tabular-nums}
+#reading .academic-panel-tools :is(button,select):focus-visible{outline:3px solid #e7bc65;outline-offset:3px}
+#reading .academic-panel-tools button:hover{border-color:#e7bc65}
+#reading .academic-panel-tools .av-fullscreen{margin-left:auto}
+#reading[data-academic-viewers] .scholarly-columns > .academic-viewer-panel .scholarly-text{font-size:var(--academic-font-size,20px)!important;line-height:1.83!important;max-width:none!important;position:relative;z-index:1;overflow-wrap:break-word;hyphens:none!important}
+#reading[data-academic-viewers] .scholarly-columns > .academic-viewer-panel .scholarly-text :is(p,div){font-size:inherit!important;line-height:inherit!important}
+#reading[data-academic-viewers] .scholarly-columns > .academic-viewer-panel[data-academic-palette]:not([data-academic-palette="inherit"]){background:var(--academic-panel-bg)!important;color:var(--academic-panel-fg)!important;border-color:var(--academic-panel-border)!important}
+#reading[data-academic-viewers] .scholarly-columns > .academic-viewer-panel[data-academic-palette]:not([data-academic-palette="inherit"]) :is(.scholarly-text,h2,p,.source,.eyebrow){background:transparent!important;color:var(--academic-panel-fg)!important}
+#reading[data-academic-viewers] .scholarly-columns > .academic-viewer-panel[data-academic-palette]:not([data-academic-palette="inherit"]) .scholarly-text :is(span,em,strong){color:inherit}
+#reading[data-academic-viewers] .scholarly-columns > .academic-viewer-panel[data-academic-palette]:not([data-academic-palette="inherit"]) .academic-panel-tools{border-color:var(--academic-panel-border)}
+#reading .academic-viewer-panel .av-guide{position:absolute;left:clamp(14px,2vw,32px);right:clamp(14px,2vw,32px);height:36px;z-index:2;pointer-events:none;border-block:2px solid #e5b759;background:rgba(222,183,91,.13);box-shadow:0 0 0 1px rgba(0,0,0,.18);display:none}
+#reading .academic-viewer-panel[data-reading-rule=true] .av-guide{display:block}
+#reading .academic-viewer-panel[data-reading-rule=true] .av-guide[hidden]{display:none!important}
+#reading .academic-viewer-panel[data-ruler=true]::before{content:"";position:absolute;top:115px;bottom:15px;left:8px;width:13px;pointer-events:none;z-index:2;border-left:2px solid #bc9e68;background:repeating-linear-gradient(to bottom,rgba(207,166,94,.9) 0 1px,transparent 1px 12px,rgba(207,166,94,.55) 12px 13px,transparent 13px 24px);opacity:.83}
+#academic-magnifier{position:fixed;z-index:2147480000;max-width:min(440px,calc(100vw - 25px));pointer-events:none;background:#12181f;color:#f5f1e9;border:2px solid #d4b374;border-radius:9px;padding:11px 15px;box-shadow:0 8px 26px #000a}
+#academic-magnifier[hidden]{display:none!important}
+#academic-magnifier strong{display:block;margin-bottom:6px;font:700 10px/1.4 system-ui,sans-serif;letter-spacing:.1em;color:#e7c996}
+#academic-magnifier .av-lens-text{font:normal 25px/1.5 Georgia,serif;color:#faf6ec;white-space:normal;overflow-wrap:anywhere;letter-spacing:.015em}
+#reading .academic-viewer-panel.academic-expanded{position:fixed!important;inset:10px!important;width:auto!important;min-width:0!important;height:auto!important;max-height:calc(100vh - 20px);overflow:auto;z-index:2147479000;box-shadow:0 0 0 100vmax rgba(0,0,0,.78),0 12px 50px #000a;border:2px solid #bfa069!important;border-radius:8px;padding:clamp(20px,4vw,52px)!important}
+body.academic-viewer-expanded{overflow:hidden!important}
+#reading .academic-viewer-panel.academic-expanded .scholarly-text{max-width:95ch!important;margin-inline:auto}
+#reading .academic-viewer-panel.academic-expanded .academic-panel-tools{position:sticky;top:0;background:inherit;backdrop-filter:blur(10px);padding:12px 7px;z-index:5}
+@media(max-width:760px){#reading .academic-panel-tools{gap:5px}#reading .academic-panel-tools select{max-width:140px}#reading .academic-panel-tools .av-fullscreen{margin-left:0}}
+@media print{#academic-viewer-master,#reading .academic-panel-tools,#academic-magnifier,#reading .academic-viewer-panel .av-guide{display:none!important}#reading .academic-viewer-panel.academic-expanded{position:static!important;box-shadow:none!important;height:auto!important}#reading .academic-viewer-panel[data-ruler=true]::before{display:none!important}#reading[data-academic-viewers] .scholarly-columns>.academic-viewer-panel .scholarly-text{font-size:12pt!important;line-height:1.65!important}}
