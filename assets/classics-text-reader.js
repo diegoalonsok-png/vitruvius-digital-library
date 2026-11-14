@@ -9,7 +9,7 @@ if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no ident
 const base="data/classics-corpus/"+work+"-";
 const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0,searchIndex=null,searchMeta="",suggestions=[];
 const searchMode=$("search-mode");
-if(searchMode)searchMode.value=p.get("literal")==="1"?"literal":"lexical";
+if(searchMode)searchMode.value=p.get("expanded")==="1"?"lexical":"literal";
 /* A trusted same-origin parallel reader may request ordinal passage navigation.
    Does not infer lexical/critical alignment across editions. */
 window.addEventListener("message",event=>{
@@ -141,7 +141,7 @@ function select(i){
   selectedTocButton=nextTocButton;
  }
  const u=new URL(location.href);u.searchParams.set("locus",rec.locus);if(search)u.searchParams.set("q",search);else u.searchParams.delete("q");
- if(searchMode?.value==="literal")u.searchParams.set("literal","1");else u.searchParams.delete("literal");
+ if(searchMode?.value==="literal"){u.searchParams.set("literal","1");u.searchParams.delete("expanded")}else{u.searchParams.delete("literal");u.searchParams.set("expanded","1")};
  history.replaceState(null,"",u);
  if(p.get("parallel")==="1"&&window.parent!==window){
   window.parent.postMessage({type:"vitruvia-parallel-position",work,lang:data.language,index:active,locus:rec.locus},location.origin);
@@ -251,7 +251,7 @@ function interpretQuery(query){
   return variants.some(v=>sameQuery(v)||aliasTerms.some(term=>fold(v)===fold(term)));
  });
  for(const concept of matchedConcepts){
-  for(const term of concept[data.language]||[]){
+  for(const term of concept[data.language]||concept.modern?.[data.language]||[]){
    targets.add(fold(term));
    const termKey=romanKey(term,data.language);
    for(const lemma of searchIndex?.lemmasByRoman.get(termKey)||[])targets.add(fold(lemma));
@@ -302,7 +302,10 @@ function locateQuery(query){
    locations.push([token.start,token.end]);forms.add(token.original);
   }
   return {i,r:data.passages[i],locations,forms:[...forms],literalCount,indexedCount,equivalentCount};
- }).filter(x=>x.locations.length);
+ }).filter(x=>x.locations.length).sort((a,b)=>{
+   const rank=x=>x.literalCount?0:x.indexedCount?1:2;
+   return rank(a)-rank(b)||a.i-b.i;
+  });
  searchMeta=searchMode?.value==="literal"?"Búsqueda literal; admite diacríticos, grafías u/v e i/j y transliteración del griego.":meaning.label&&queryWords.length===1?"Equivalencias léxicas o glosas de consulta: "+meaning.label+". La acepción se verifica en cada pasaje.":
   "Coincidencias textuales y, en modo léxico, formas indexadas sin desambiguación contextual.";
  // For unknown/typo queries, show proposals but never put them in concordance.
@@ -343,6 +346,11 @@ function renderSearch(){
   no.textContent="No se encontraron pasajes con esta expresión en la edición "+(data.language==="grc"?"griega":data.language==="la"?"latina":"seleccionada")+
    ". El buscador distingue lemas y equivalencias documentadas. Las erratas se muestran como sugerencias; no como pasajes encontrados.";
   target.append(no);
+  if(searchMode?.value==="literal"){
+   const retry=document.createElement("button");retry.type="button";retry.className="lexical-suggestion";
+   retry.textContent="Probar búsqueda ampliada";retry.addEventListener("click",()=>document.getElementById("mode-expanded")?.click());
+   target.append(retry);
+  }
   if(suggestions.length){
    const label=document.createElement("p");label.className="search-empty";label.textContent="Posibles correcciones (no son resultados): ";target.append(label);
    for(const suggestion of suggestions.slice(0,6)){
@@ -480,7 +488,19 @@ async function swap(lang){try{await load(lang)}catch(err){console.error("Classic
 const setTitle=t=>{$("work-title").textContent=t;document.title=t+" · Bibliotheca Graeca et Latina"};if(allowed[work])setTitle(allowed[work]);$("codex-link").href="bibliotheca-graeca-latina.html?work="+work+"&view=triplecodex";
 $("language").addEventListener("change",e=>swap(e.target.value));
 $("find").addEventListener("click",()=>{if(!data)return;setQuery(input.value);resultPage=0;renderSearch();select(results.length?results[0].i:active)});
-searchMode?.addEventListener("change",()=>$("find").click());
+function syncSearchModeButtons(){
+ for(const [mode,id] of [["literal","mode-exact"],["lexical","mode-expanded"]]){
+  $(id)?.setAttribute("aria-pressed",String(searchMode?.value===mode));
+ }
+}
+for(const [mode,id] of [["literal","mode-exact"],["lexical","mode-expanded"]]){
+ $(id)?.addEventListener("click",()=>{
+  if(!searchMode)return;
+  searchMode.value=mode;searchMode.dispatchEvent(new Event("change"));
+ });
+}
+syncSearchModeButtons();
+searchMode?.addEventListener("change",()=>{syncSearchModeButtons();$("find").click()});
 /* Same-origin parallel study: independent literal queries and amber highlights. */
 window.addEventListener("message",event=>{
  if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
