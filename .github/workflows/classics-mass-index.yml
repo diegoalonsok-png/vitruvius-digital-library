@@ -44,6 +44,7 @@ jobs:
           python-version: '3.12'
       - run: python -m py_compile scripts/ingest_texts.py scripts/mass-index-classics.py scripts/test-mass-index-completeness.py scripts/test-classics-historical-translations.py scripts/repair-classics-mixed-tei.py
       - run: python scripts/test-mass-index-completeness.py
+      - run: python scripts/sync-classics-coverage.py
       - run: python scripts/test-classics-historical-translations.py
   index-and-validate:
     if: github.event_name != 'pull_request'
@@ -91,6 +92,7 @@ jobs:
                 break
               fi
             done
+            python scripts/sync-classics-coverage.py
             python scripts/audit-classics-222-roadmap.py
             if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard data/classics-corpus)" ]; then
               echo 'No hay nuevos originales TEI incorporables en este lote.'
@@ -101,6 +103,7 @@ jobs:
             node scripts/test-classics-integration.mjs
             python scripts/test-classics-historical-translations.py
             python scripts/build_classics_semantic_index.py
+            python scripts/sync-classics-coverage.py
             python scripts/audit-classics-222-roadmap.py
             git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
             git add data/classics-corpus
