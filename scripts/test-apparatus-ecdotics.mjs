@@ -65,4 +65,24 @@ assert.match(apparatus,/doiLink\.href='https:\/\/doi\.org\/'\+ref\.doi/);
 assert.match(apparatus,/interventions\(e\)/);
 assert.match(apparatus,/const copy=document\.createElement\('button'\)/);
 assert.match(apparatus,/if\(readLocus&&!ref\.locus\.reliable\)/);
+// Critical-apparatus edition selectors must not create overwide native menus.
+// Metadata is retained, but in bibliographic panels underneath each selector.
+const compact=readFileSync('assets/apparatus-edition-bibliography.js','utf8');
+for(const id of ['critical-unified-edition','critical-edition','kw-ed','apparatus-catalog-edition']){
+ const fragment=html.match(new RegExp('<select\\b[^>]*\\bid="'+id+'"[^>]*>([\\s\\S]*?)<\\/select>'));
+ assert.ok(fragment,'Required edition filter missing: '+id);
+ const optionLabels=[...fragment[1].matchAll(/<option\b[^>]*>([^<]*)<\/option>/g)].map(x=>x[1]);
+ assert.ok(optionLabels.length>=2,'Expected edition choices: '+id);
+ for(const label of optionLabels){
+  assert.ok(label.length<55,'Native select label must remain compact: '+id+' '+label);
+  assert.doesNotMatch(label,/DOI|ISBN|10\.5281|[A-Z].*Intellectual World/);
+ }
+ assert.ok(compact.includes('"'+id+'"'),'Missing bibliographic panel for '+id);
+}
+assert.match(compact,/fetch\("data\/catalog\.json"/);
+assert.match(compact,/aria-describedby/);
+assert.match(compact,/insertAdjacentElement\("afterend",host\)/);
+assert.match(compact,/new Set\(Object\.values\(map\)\)/);
+assert.match(compact,/book\.isbn_note/);
+
 console.log('PASS: VI.2 chapter not fabricated as section, source-grade transparent, supplement signs, catalogued DOI/ISBN, page and clickable highlighted Lexicon forms.');
