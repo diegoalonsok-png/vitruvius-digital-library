@@ -13,7 +13,7 @@ for(const id of ['rose-1899','krohn-1912']){
  const pages=folios.map((_,i)=>({page:i+1,text}));
  const words=[{text:'Symmetria',start:0,end:9,x:.2,y:.2,w:.15,h:.02},{text:'decor',start:13,end:18,x:.4,y:.2,w:.08,h:.02}];
  w.fetch=async url=>{
-  const path=String(url);let value=null;
+  const path=String(url).split('?')[0];let value=null;
   if(path===`data/r2/folios/${id}.json`)value={schema:'vdl-folios-obra-1',obra:id,imagenes:55,folios};
   if(path.endsWith(id+'-ocr.json'))value={schema:'vdl-edition-ocr-1',edition:id,pages};
   if(path.endsWith(id+'-loci.json'))value={loci:{'1.2.3':{page:7,status:'strong_textual_candidate'},'2.praef.1':{page:15,status:'ambiguous_textual_candidate',runner_up_page:16}}};
