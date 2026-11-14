@@ -37,16 +37,40 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 .panel-italic span{font:12px/1.3 system-ui,sans-serif}
 .panel-italic[aria-pressed="true"]{background:#6a6a6e;color:#fff;border-color:#ddd}
 .panel-italic:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* Academic parallel reading: understated Budé-inspired editorial hierarchy. */
+.bude-apparatus{margin:24px 0 16px;padding:22px 26px;border:1px solid #81776666;border-top:3px double #bfa374;border-radius:10px;background:#171719;color:#eee9df;font:14px/1.65 Georgia,serif}
+.bude-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #8678615c;padding:0 0 15px;margin:0 0 17px}
+.bude-kicker{font:600 10px/1.5 system-ui,sans-serif;letter-spacing:.14em;color:#d9be8f}
+.bude-heading h2{font:400 clamp(19px,2vw,25px)/1.3 Georgia,serif;margin:5px 0 0;color:#f4eee5}
+.bude-apparatus a{color:#e2c79c;text-decoration:underline;text-underline-offset:3px}
+.bude-heading a{font:12px/1.5 system-ui,sans-serif}
+.bude-editions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.bude-edition h3,.bude-scholion h3{margin:6px 0 12px;padding:0 0 7px;border-bottom:1px solid #81776666;font:600 11px/1.6 system-ui,sans-serif;letter-spacing:.1em;color:#d9c9ac}
+.bude-edition dl{margin:0}
+.bude-edition dt{font:600 11px/1.6 system-ui,sans-serif;color:#b9ae9b;margin:11px 0 2px;letter-spacing:.02em}
+.bude-edition dd{font:14px/1.65 Georgia,serif;margin:0;overflow-wrap:anywhere}
+.bude-scholion{border-top:1px solid #81776666;margin-top:18px;padding-top:12px}
+.bude-scholion p{margin:7px 0 11px;overflow-wrap:anywhere}
+.bude-method{font:12px/1.6 system-ui,sans-serif;color:#bcb8b1;border-top:1px solid #81776666;padding-top:12px;margin:17px 0 0}
+@media(max-width:750px){.bude-editions{grid-template-columns:1fr;gap:12px}.bude-heading{flex-direction:column;align-items:flex-start}.bude-apparatus{padding:16px}}
+@media print{.bude-apparatus{background:#fff;color:#222;border-color:#444}.bude-edition h3,.bude-scholion h3{color:#333}.bude-method{color:#555}}
 </style></head><body><main>
 <div class="top"><h1 id="title">BIBLIOTHECA · LECTURA SIMPLE</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
 <div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Original <select id="original-lang" aria-label="Idioma original"></select></label><label>Traducción <select id="translation-lang" aria-label="Idioma de la traducción"></select></label><label>Locus <input id="go-locus" type="search" placeholder="Ej. 2" aria-label="Locus o capítulo"></label><button id="go-button" type="button">Ir al locus</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
 <div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><label class="panel-font-label" for="left-font">Tipografía original <select id="left-font" aria-label="Tipografía del original"><option value="gentium">Gentium Book Plus · clásica</option><option value="cardo">Cardo · filológica</option><option value="georgia">Georgia</option><option value="palatino">Palatino</option><option value="times">Times New Roman</option><option value="garamond">Garamond</option><option value="baskerville">Baskerville</option><option value="cambria">Cambria</option><option value="sans">Sans moderna</option><option value="mono">Monoespaciada</option></select></label><button type="button" id="left-italic" class="panel-italic" aria-pressed="false" aria-label="Activar cursiva en el original" title="Alternar cursiva del texto original">I <span>Itálica</span></button><div class="panel-colors" id="left-colors" aria-label="Fondo y resaltado del original"></div><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><label class="panel-font-label" for="right-font">Tipografía traducción <select id="right-font" aria-label="Tipografía de la traducción"><option value="gentium">Gentium Book Plus · clásica</option><option value="cardo">Cardo · filológica</option><option value="georgia">Georgia</option><option value="palatino">Palatino</option><option value="times">Times New Roman</option><option value="garamond">Garamond</option><option value="baskerville">Baskerville</option><option value="cambria">Cambria</option><option value="sans">Sans moderna</option><option value="mono">Monoespaciada</option></select></label><button type="button" id="right-italic" class="panel-italic" aria-pressed="false" aria-label="Activar cursiva en la traducción" title="Alternar cursiva del texto traducido">I <span>Itálica</span></button><div class="panel-colors" id="right-colors" aria-label="Fondo y resaltado de traducción"></div><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div><button class="translate-action" id="translate" type="button" hidden>Traducir automáticamente este pasaje</button></section></div>
+<section id="bude-apparatus" class="bude-apparatus" aria-labelledby="bude-title">
+ <div class="bude-heading"><div><span class="bude-kicker">BIBLIOTHECA GRAECA ET LATINA · APPARATVS LECTORIS</span><h2 id="bude-title">Edición, traducción y comentario</h2></div><a id="bude-dossier" href="classics-work-record.html">Ficha filológica de la obra</a></div>
+ <div class="bude-editions"><section class="bude-edition"><h3>TEXTVS · Edición original</h3><dl id="bude-original-details"></dl></section><section class="bude-edition"><h3>VERSIO · Traducción enfrentada</h3><dl id="bude-translation-details"></dl></section></div>
+ <div class="bude-scholion"><h3>SCHOLIA ET COMMENTARII · Notas del pasaje</h3><div id="bude-comments-body">Consultando los datos editoriales…</div></div>
+ <p class="bude-method">Aparato informativo de lectura inspirado en la tradición de ediciones bilingües. Solo se presentan notas y datos documentados; no se infieren variantes manuscritas. La traducción automática se identifica y no constituye edición crítica cotejada.</p>
+</section>
 <p class="note" id="note" role="status">Se utilizan las ediciones existentes en la Bibliotheca. Un locus compartido no demuestra identidad textual de las versiones.</p>
 </main><script src="assets/academic-inline-translation.js?v=20261114-machine-pivot-v3"></script><script>
 (()=>{"use strict";
 const q=new URLSearchParams(location.search),work=q.get("work")||"didache";
 const LANG={grc:"GRIEGO",la:"LATÍN",es:"CASTELLANO",en:"INGLÉS",fr:"FRANCÉS",it:"ITALIANO",de:"ALEMÁN",pt:"PORTUGUÉS"};
-const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;let searchTerm="",targetLang="en",renderToken=0;let availableEditions=new Map(),loadingVersion=0;
+const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;let searchTerm="",targetLang="en",renderToken=0;let availableEditions=new Map(),loadingVersion=0;const editionMetadata=new Map();
 const key=v=>String(v??"").trim().toLowerCase().replace(/\s+/g,"");
 const status=msg=>el("note").textContent=msg;
 const highlightSets={left:new Map(),right:new Map()},visibleText={left:"",right:""};
@@ -183,6 +207,7 @@ async function translateCurrent(token){
   if(automaticCache.has(id))return;
   paragraph("right-text",historic.text);
   el("right-head").textContent="EDICIÓN HISTÓRICA · "+(LANG[historic.language]||historic.language.toUpperCase())+" · "+record.locus;
+  budeUpdate("historical",historic.language);
   status("Edición histórica alojada visible mientras se solicita la traducción automática al "+(LANG[target]||target)+".");
  });
  try{
@@ -198,6 +223,7 @@ async function translateCurrent(token){
   if(!result?.text||!translationValid(record.text,result.text,leftLang,target))throw Error("No hay traducción válida");
   paragraph("right-text",result.text);
   el("right-head").textContent="TRADUCCIÓN AUTOMÁTICA · "+(LANG[target]||target.toUpperCase())+" · "+record.locus;
+  budeUpdate("automatic",target);
   status("Traducción automática orientativa · "+result.provider+(result.partial?" · Traducción parcial.":"")+
    (leftLang==="grc"?" · El proveedor trata el griego antiguo como moderno; requiere cotejo filológico.":""));
  }catch(_){
@@ -215,6 +241,72 @@ async function translateCurrent(token){
   button.textContent="Reintentar traducción automática";button.hidden=false;
  }
 }
+function budeRows(id,values){
+ const root=el(id);root.replaceChildren();
+ for(const [term,value,url] of values){
+  if(value===undefined||value===null||String(value).trim()==="")continue;
+  const dt=document.createElement("dt");dt.textContent=term;
+  const dd=document.createElement("dd");
+  if(typeof url==="string"&&url.startsWith("https://")){
+   const link=document.createElement("a");link.textContent=String(value);link.href=url;
+   link.target="_blank";link.rel="noopener noreferrer";dd.append(link);
+  }else dd.textContent=String(value);
+  root.append(dt,dd);
+ }
+}
+function budeComments(record){
+ const container=el("bude-comments-body");container.replaceChildren();
+ const notes=[];
+ for(const prop of ["notes","footnotes","commentary","comments","scholia","editorialNotes"]){
+  const value=record?.[prop];
+  if(typeof value==="string"&&value.trim())notes.push(value.trim());
+  if(Array.isArray(value))for(const row of value){
+   if(typeof row==="string"&&row.trim())notes.push(row.trim());
+   else if(row&&typeof row==="object"){
+    const text=row.text||row.note||row.comment||"";
+    if(typeof text==="string"&&text.trim())notes.push(text.trim());
+   }
+  }
+ }
+ if(notes.length){
+  for(const note of notes.slice(0,20)){const p=document.createElement("p");p.textContent=note;container.append(p)}
+ }else{
+  const p=document.createElement("p");
+  p.textContent="Esta edición no contiene comentarios filológicos vinculados a este locus en el registro consultado. La ficha académica ofrece la procedencia y los testimonios documentados de la obra.";
+  container.append(p);
+ }
+}
+function budeUpdate(kind="pending",versionLanguage=""){
+ const passage=source[pos],orig=editionMetadata.get(leftLang)||{},origEntry=availableEditions.get(leftLang)||{};
+ const translationLang=versionLanguage||rightLang||targetLang;
+ const vers=editionMetadata.get(translationLang)||{},versEntry=availableEditions.get(translationLang)||{};
+ el("bude-dossier").href="classics-work-record.html?work="+encodeURIComponent(work);
+ budeRows("bude-original-details",[
+  ["Locus / identificador",passage?.locus||""],
+  ["Lengua",LANG[leftLang]||leftLang],
+  ["Fuente y atribución",orig.attribution||origEntry.sourceDescription||""],
+  ["Fuente editorial",orig.source||"",orig.source||""],
+  ["Naturaleza del texto",orig.sourceType||origEntry.format||""],
+  ["Estado ecdótico",orig.editorialStatus||""],
+  ["Concordancia / alineación",orig.alignment||""],
+  ["Licencia declarada",orig.license||""]
+ ]);
+ const automatic=kind==="pending"||kind==="automatic";
+ const description=kind==="pending"?"Solicitud de traducción automática en curso":
+  kind==="automatic"?"Traducción automática orientativa":
+  kind==="historical"?"Edición histórica alojada, mostrada como alternativa":
+  "Edición de traducción alojada";
+ budeRows("bude-translation-details",[
+  ["Estado de la versión",description],
+  ["Lengua",LANG[automatic?targetLang:translationLang]||(automatic?targetLang:translationLang)],
+  ["Traductor / atribución documentada",automatic?"Sin traductor editorial asignado: generación automática":vers.attribution||versEntry.sourceDescription||"No indicada en esta fuente"],
+  ["Fuente de la versión",automatic?"":vers.source||"",automatic?"":vers.source||""],
+  ["Estado editorial",automatic?"No es edición crítica ni versión cotejada":vers.editorialStatus||""],
+  ["Correspondencia por locus",automatic?"Traducción orientativa de la unidad original":vers.alignment||"Locus nominal; equivalencia filológica no certificada"],
+  ["Licencia declarada",automatic?"":vers.license||""]
+ ]);
+ budeComments(passage);
+}
 function draw(){
  const token=++renderToken;el("translate").hidden=true;
  const a=source[pos],locus=a?.locus||"";
@@ -223,8 +315,8 @@ function draw(){
  paragraph("left-text",a?.text);
  const exact=translation.find(p=>key(p.locus)===key(locus));
  el("right-head").textContent=(exact?"EDICIÓN ALOJADA · ":"TRADUCCIÓN AUTOMÁTICA · ")+(LANG[exact?rightLang:targetLang]||"TRADUCCIÓN")+" · "+locus;
- if(exact){paragraph("right-text",exact.text);status("Traducción histórica alojada; verificar procedencia editorial y equivalencia del locus.");}
- else {void translateCurrent(token);}
+ if(exact){paragraph("right-text",exact.text);status("Traducción histórica alojada; verificar procedencia editorial y equivalencia del locus.");budeUpdate("indexed",rightLang);}
+ else {budeUpdate("pending");void translateCurrent(token);}
  el("previous").disabled=pos<=0;el("next").disabled=pos>=source.length-1;
  if(a?.locus){q.set("locus",a.locus);el("go-locus").value=a.locus;history.replaceState(null,"",location.pathname+"?"+q.toString());}
  linkBack();
@@ -233,6 +325,11 @@ async function getEdition(entry,lang){
  if(!entry||!/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||""))return [];
  const r=await fetch(entry.path);if(!r.ok)throw Error("No se pudo abrir la edición "+lang);
  const data=await r.json();if(!Array.isArray(data.passages))return [];
+ editionMetadata.set(lang,{
+  sourceType:data.sourceType||"",editorialStatus:data.editorialStatus||"",
+  source:data.source||"",attribution:data.attribution||"",license:data.license||"",
+  alignment:data.alignment||"",completeness:data.completeness||"",sourceUrn:data.sourceUrn||""
+ });
  if(entry.format==="structured-bilingual")return data.passages.map(p=>({locus:String(p.locus||""),text:lang==="la"?p.latin:p.translation})).filter(p=>p.locus&&typeof p.text==="string"&&p.text.trim());
  if(data.workId!==(entry.sourceWorkId||work)||data.language!==lang)return [];
  return data.passages.filter(p=>p.locus&&typeof p.text==="string"&&p.text.trim());
