@@ -55,7 +55,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <nav class="ab-nav" aria-label="Navegación académica"><a href="index.html">Biblioteca</a><a href="aparato-critico.html">Aparato autoral</a><a href="aparato-comparativo.html">Aparato comparativo</a><a href="scriptorium.html">Scriptorium</a><a href="como-citar.html">Cómo citar</a></nav>
 <header><div class="ab-eyebrow">VITRVVIVS · DE ARCHITECTVRA · EDITIO DIGITALIS</div><h1>Apparatus criticus</h1>
 <p class="ab-sub">Lectura bilingüe y aparato textual de presentación concisa, <strong>inspirada en la disposición editorial de la Collection Budé</strong>. Esta interfaz es una adaptación independiente de Vitruvius Digital Library; no reproduce una edición Budé ni representa una colaboración o aval de Les Belles Lettres.</p></header>
-<div class="ab-notice">El texto latino y la traducción proceden de V514 (recensio provisional). Las entradas de V514 conservan su estado declarado; Rose (1899) y Krohn (1912) se muestran como <strong>transcripciones OCR candidatas</strong> con enlace a la página impresa. No equivalen a una nueva colación de H, G, E o S. No se muestran lecturas ni decisiones de una edición Budé sin fuente comprobada.</div>
+<div class="ab-notice">El texto latino y la traducción proceden de V514 (edición académica bilingüe). Las entradas de V514 conservan su estado declarado; Rose (1899) y Krohn (1912) se muestran como <strong>transcripciones OCR candidatas</strong> con enlace a la página impresa. No equivalen a una nueva colación de H, G, E o S. No se muestran lecturas ni decisiones de una edición Budé sin fuente comprobada.</div>
 <form id="controls" class="ab-tools">
 <label>Locus (libro.capítulo.sección)<input id="locus" name="locus" value="1.1.1" spellcheck="false" placeholder="1.1.1"></label>
 <button type="submit">Consultar pasaje</button>
@@ -72,11 +72,11 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
 <article><h3>Rose · 1899</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><details id="compare-rose-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-rose-changes"></p><div class="ab-text" id="compare-rose-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
 <article><h3>Krohn · 1912</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><details id="compare-krohn-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-krohn-changes"></p><div class="ab-text" id="compare-krohn-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
-<article><h3>Kurilo · V514</h3><small>Texto latino de la recensio provisional</small><div class="ab-text" lang="la" id="compare-kurilo"></div><small>Fuente: V514, pasaje estructurado.</small><a id="compare-kurilo-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Lector de Kurilo</a></article>
+<article><h3>Kurilo · V514</h3><small>Texto latino de la edición académica V514</small><div class="ab-text" lang="la" id="compare-kurilo"></div><small>Fuente: V514, pasaje estructurado.</small><a id="compare-kurilo-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Lector de Kurilo</a></article>
 </div></section>
 <section class="ab-leaves" aria-label="Texto latino y traducción de Kurilo">
 <article class="ab-leaf" lang="es"><header class="ab-leaf-head"><span class="ab-locus" id="left-locus">—</span><h2 id="translation-heading">Traducción castellana</h2><span class="ab-edition">KURILO · V514 · 2026</span></header><div id="translation" class="ab-text"></div><div class="ab-apparatus"><h3>Nota editorial</h3><p class="ab-none">La traducción se reproduce de V514. Las notas interpretativas se consultan por separado en el inventario de aparato autoral.</p><a id="notes-link" href="inventario-aparato-autoral.html">Consultar notas del autor →</a></div></article>
-<article class="ab-leaf" lang="la"><header class="ab-leaf-head"><span class="ab-locus" id="right-locus">—</span><h2>Textus Latinus</h2><span class="ab-edition">RECENSIO V514 · PROVISORIA</span></header><div id="latin" class="ab-text ab-latin"></div>
+<article class="ab-leaf" lang="la"><header class="ab-leaf-head"><span class="ab-locus" id="right-locus">—</span><h2>Textus Latinus</h2><span class="ab-edition">RECENSIO V514 · EDITIO ACADEMICA</span></header><div id="latin" class="ab-text ab-latin"></div>
 <section class="ab-apparatus" aria-label="Aparato conciso"><h3 id="minor-heading">Apparatus criticus minor · V514</h3><div id="minor"></div></section></article>
 </section>
 <section id="ab-autor" aria-labelledby="ab-autor-title" style="margin:30px 0;border-top:1px solid var(--ab-rule);padding-top:22px">
@@ -168,7 +168,7 @@ function load(locus){
    $("#compare-"+id+"-link").href=pdf;
  }
  $("#compare-kurilo-link").href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);
- document.querySelector(".ab-leaf[lang=la] .ab-edition").textContent=edition==="rose"?"ROSE 1899 · OCR HISTÓRICO NO REVISADO":"RECENSIO V514 · PROVISORIA";
+ document.querySelector(".ab-leaf[lang=la] .ab-edition").textContent=edition==="rose"?"ROSE 1899 · OCR HISTÓRICO NO REVISADO":"RECENSIO V514 · EDITIO ACADEMICA";
  set("#minor-heading",edition==="rose"?"Apparatus criticus · Rose 1899 (OCR)":"Apparatus criticus minor · V514");
  const pdf=comp?.loci?.find(v=>v.locus===locus)?.["rose-1899"]?.pdf||"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf";
  $("#rose-pdf-link").href=pdf;$("#rose-pdf-frame").src=pdf;
