@@ -265,7 +265,14 @@ try{
    await page.locator('#search-button').click();
    const first=page.locator('#search-results .result-parallel').first();
    await first.waitFor({state:'visible',timeout:25000});
-   assert.equal(await page.locator('#search-results .parallel-columns').count(),1,'Un locus repetido debe aparecer una vez como pareja');
+   // Three independent editorial witnesses of one canonical locus are intentional:
+   // V514 (Spanish), V554 (French), and V297 (English).
+   const allPairs=page.locator('#search-results .result-parallel');
+   assert.equal(await allPairs.count(),3,'Each of V514, V554 and V297 must have its own facing-text pair');
+   for(const version of ['V514','V554','V297']){
+     assert.equal(await page.locator('#search-results .result-meta', {hasText:version}).count(),1,
+       version+' must appear once as a separately attributable edition');
+   }
    assert.match(await first.locator('.parallel-latin').innerText(),/Sed haec|haec omnia/i,'No aparece el latín de II.7.2');
    const latinBefore=await first.locator('.parallel-latin .parallel-passage').innerText();
    const translated=first.locator('.parallel-translation-text');
