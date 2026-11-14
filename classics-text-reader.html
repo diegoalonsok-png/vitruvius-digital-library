@@ -134,6 +134,12 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
 #passages[lang="grc"],#passages[lang="la"]{cursor:text}
 @media(max-width:700px){.search-passage-list{grid-template-columns:1fr}.search-results-section{padding:14px}}
 @media print{.search-results-section{display:none!important}}
+
+/* Concordancias por libro completo: fragmentos atestiguados, con aparición resaltada. */
+.search-passage-jump .search-passage-excerpt{display:block;margin-top:8px;white-space:pre-wrap}
+.search-passage-jump .search-excerpt-hit{background:#ffdf54!important;color:#17212c!important;padding:1px 2px;border-radius:2px;font-weight:700}
+.search-passage-jump .search-passage-more{display:block;margin-top:8px;font:12px/1.4 system-ui,sans-serif;color:#e6c88b}
+html[data-theme="light"] .search-passage-jump .search-excerpt-hit{background:#ffe16b!important;color:#17212c!important}
 </style>
 <link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1">
 <link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v3">
@@ -190,7 +196,7 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
 <script defer src="assets/academic-inline-translation.js?v=20261110-passage-translation-v1"></script>
 <script defer src="assets/classical-lexicon.js?v=20261112-externo"></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261114-word-click-v2"></script>
-<script defer src="assets/classics-text-reader.js?v=20261114-full-edition-results-v2"></script>
+<script defer src="assets/classics-text-reader.js?v=20261114-full-concordance-v3"></script>
 <script defer src="assets/classics-reader-annotations.js?v=20261113-markup-v1"></script>
 <script>
 (()=>{"use strict";
