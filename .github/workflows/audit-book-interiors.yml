@@ -38,12 +38,16 @@ jobs:
           LIMIT: ${{ github.event.inputs.limit || '12' }}
         run: |
           python scripts/audit-book-interiors.py --start "$START" --limit "$LIMIT" --output reports/document-interiors/latest.json
+      - name: Compare GitHub's classic DOCX/PDF pairs (read-only)
+        run: |
+          python -m py_compile scripts/audit-local-classics-pairs.py
+          python scripts/audit-local-classics-pairs.py
       - name: Publish investigation, NOT replace documents
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: bibliotheca-content-identity-${{ github.run_id }}
-          path: reports/document-interiors/latest.json
+          path: reports/document-interiors/*.json
           if-no-files-found: warn
           retention-days: 30
       - name: Report reviewed versus unresolved
