@@ -470,6 +470,28 @@ async function load(language){
  try{searchIndex=await loadSearchResources(language)}catch(err){console.warn("Índice léxico complementario no disponible",err)}
  // The lexical index is optional; source text and literal search always remain available.
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
+ const sourceBox=$("reader-source-identification");
+ if(sourceBox){
+  const mk=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e};
+  sourceBox.replaceChildren();
+  const original=["grc","la"].includes(language);
+  const workName=work==="homer-odyssey"?"Homero · Odisea":work;
+  sourceBox.append(mk("strong","Identificación de la versión en lectura · "+workName));
+  sourceBox.append(mk("p",original?
+   "Texto en lengua original ("+(language==="grc"?"griego antiguo":"latín")+"): edición/transcripción moderna de una obra antigua; no es una traducción.":
+   "Traducción al "+({en:"inglés",es:"castellano",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"}[language]||language)+"."));
+  const add=(label,value)=>{if(value){const row=mk("p",label+": "+value);row.style.margin="4px 0";sourceBox.append(row)}};
+  add("Fuente declarada por el archivo",corpus.attribution||indexed?.sourceDescription||corpus.source);
+  add("Edición o referencia bibliográfica",corpus.chicago18Bibliography||indexed?.editionCitation||"No identificada inequívocamente en los metadatos de esta versión");
+  if(!original)add("Traductor",corpus.translator||indexed?.translator||"No acreditado para este archivo; no se atribuye automáticamente");
+  else add("Editor del texto",corpus.editor||indexed?.editor||"La fuente debe identificarse desde el archivo y su registro editorial");
+  add("Versión/URN",corpus.ctsUrn||corpus.sourceUrn||indexed?.sourceUrn||indexed?.urn||"Sin identificador de edición acreditado");
+  if(work==="homer-odyssey"){
+   const ref=mk("p","Referencia editorial externa: Perseus/Scaife documenta la edición griega de A. T. Murray (1919) y su traducción inglesa. No se atribuye automáticamente a este archivo sin cotejar sus metadatos.");
+   const a=document.createElement("a");a.href="https://atlas.perseus.tufts.edu/library/urn:cts:greekLit:tlg0012.tlg002/";a.target="_blank";a.rel="noopener noreferrer";a.textContent="Consultar versiones de la Odisea en Perseus ↗";
+   sourceBox.append(ref,a);
+  }
+ }
  const declaredAlignment=corpus.alignment||"No existe alineación filológica certificada entre este texto, traducciones y manuscritos.";
  const sourceCoverage=indexed?.sourceWorkId?indexed.sourceDescription:"";
  $("method-note").textContent=[corpus.editorialStatus,declaredAlignment,sourceCoverage,"Fuente y atribución: "+corpus.attribution].filter(Boolean).join(" · ");
