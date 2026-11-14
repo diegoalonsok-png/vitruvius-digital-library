@@ -1,20 +1,23 @@
 {
  "schema": "vitruvius-classics-translation-availability-v1",
- "generated": "2026-11-08",
+ "generated": "2026-11-14",
  "basis": "Registro de archivos textuales localmente indexados en coverage-audit.json (construido desde search-registry.json). A translation.status external is bibliographic only and is not verified as locally readable. HTML/JSON count only if registered as indexed. Counts are works, not files. A book can count in multiple languages.",
- "scope": "222 classical work catalogue records; local translations ES/EN/FR",
+ "scope": "271 catalogue records; registered textual translations ES/EN/FR; local and declared R2 indexes counted separately",
  "totals": {
   "cataloguedWorks": 271,
   "locallyIndexedWorks": 214,
   "translatedWorksLocal": 59,
-  "worksWithoutHostedTranslation": 214,
+  "worksWithoutHostedTranslation": 212,
   "localTranslationLanguages": {
    "es": 5,
    "en": 58,
    "fr": 2
   },
-  "originalTextIndexed": 182,
-  "originalTextNotIndexed": 91
+  "originalTextIndexed": 214,
+  "originalTextNotIndexed": 57,
+  "verifiedLocalFileWorks": 182,
+  "declaredRemoteOnlyWorks": 32,
+  "verifiedLocalOriginalTextIndexed": 182
  },
  "works": [
   {
@@ -24,8 +27,8 @@
    "originalLanguage": "la",
    "originalIndexed": true,
    "translationLanguages": [
-    "es",
     "en",
+    "es",
     "fr"
    ],
    "localEditionLanguages": [
@@ -70,7 +73,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -86,7 +89,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -139,8 +142,8 @@
     "en"
    ],
    "localEditionLanguages": [
-    "la",
-    "en"
+    "en",
+    "la"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "lectura-local-completa",
@@ -190,7 +193,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -202,8 +205,8 @@
    "originalLanguage": "la",
    "originalIndexed": true,
    "translationLanguages": [
-    "es",
-    "en"
+    "en",
+    "es"
    ],
    "localEditionLanguages": [
     "en",
@@ -265,7 +268,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -281,7 +284,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -313,7 +316,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -329,7 +332,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -345,7 +348,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -361,7 +364,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -377,7 +380,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "fuente-externa-identificada",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -396,7 +399,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1854), texto completo de la fuente TEI OpenGreekAndLatin First1KGreek con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -412,7 +415,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -442,7 +445,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -458,7 +461,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -474,7 +477,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -490,7 +493,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -506,7 +509,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -522,7 +525,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -538,7 +541,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -557,7 +560,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: Alfred John Church y William Jackson Brodribb (1877), edición histórica documentada e indexada desde Perseus TEI. No alineada automáticamente al original. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -573,7 +576,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -589,7 +592,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -605,7 +608,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -621,7 +624,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -656,7 +659,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -691,7 +694,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -707,7 +710,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -723,7 +726,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -739,7 +742,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -755,7 +758,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -771,7 +774,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -787,7 +790,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -803,7 +806,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -813,7 +816,7 @@
    "author": "Orígenes",
    "title": "Περὶ ἀρχῶν · De principiis",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
@@ -822,7 +825,7 @@
    "readingStatus": "pendiente-de-incorporar",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
-   "indexed": false
+   "indexed": true
   },
   {
    "id": "eusebio",
@@ -835,7 +838,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -851,7 +854,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -867,7 +870,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -927,7 +930,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "fuente-externa-identificada",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción alemana de Schmidt en la misma edición.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -943,7 +946,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "fuente-externa-identificada",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción alemana de Schmidt en la misma edición.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1031,7 +1034,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1047,7 +1050,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1063,7 +1066,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1079,7 +1082,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1095,7 +1098,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1114,7 +1117,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1856), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1149,7 +1152,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1165,7 +1168,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1181,7 +1184,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1197,7 +1200,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1232,7 +1235,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1248,7 +1251,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1264,7 +1267,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1280,7 +1283,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1292,8 +1295,8 @@
    "originalLanguage": "la",
    "originalIndexed": true,
    "translationLanguages": [
-    "es",
-    "en"
+    "en",
+    "es"
    ],
    "localEditionLanguages": [
     "en",
@@ -1333,7 +1336,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1349,7 +1352,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1384,7 +1387,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1400,7 +1403,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1416,7 +1419,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1432,7 +1435,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1462,7 +1465,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1478,7 +1481,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1494,7 +1497,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1513,7 +1516,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1854), texto completo de la fuente TEI OpenGreekAndLatin First1KGreek con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1532,7 +1535,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1855), texto completo de la fuente TEI OpenGreekAndLatin First1KGreek con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1562,7 +1565,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1581,7 +1584,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Austin Morris Harmon (1913), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1597,7 +1600,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1613,7 +1616,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1629,7 +1632,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1645,7 +1648,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1675,7 +1678,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1694,7 +1697,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "texto griego indexado; inglés histórico indexado; cotejo y alineación pendientes",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "EN: George Long (1862), transcripción digital Standard Ebooks indexada localmente; Haines/Loeb (1916) solo referencia bibliográfica externa. ES/FR pendientes de fuentes verificadas.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1751,7 +1754,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: Hugh G. Evelyn-White (1914), edición histórica documentada e indexada desde Perseus TEI. No alineada automáticamente al original. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1770,7 +1773,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: Hugh G. Evelyn-White (1914), edición histórica documentada e indexada desde Perseus TEI. No alineada automáticamente al original. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1786,7 +1789,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1805,7 +1808,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Richard Jebb (1887), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1824,7 +1827,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1843,7 +1846,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: William James Hickie (1853), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1859,7 +1862,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1889,7 +1892,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1907,7 +1910,7 @@
    "externalTranslationUnverified": [
     "en"
    ],
-   "readingStatus": "fuente-externa-identificada",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Paul Shorey (inglés; Perseus/Scaife). Enlace documentado en la pestaña «Edición y traducción». No está alojada ni cotejada localmente.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -1964,7 +1967,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Harris Rackham (1944), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1983,7 +1986,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Francis Adams (1886), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -1999,7 +2002,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2015,7 +2018,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "pendiente-de-incorporar",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2062,7 +2065,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2081,7 +2084,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2100,7 +2103,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2119,7 +2122,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2138,7 +2141,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Richard Jebb (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2154,7 +2157,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2173,7 +2176,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Richard Jebb (1894), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2192,7 +2195,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Richard Jebb (1898), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2211,7 +2214,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Richard Jebb (1889), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2227,7 +2230,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2246,7 +2249,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: T. A. Buckley (1850), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2265,7 +2268,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2284,7 +2287,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2303,7 +2306,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2322,7 +2325,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2341,7 +2344,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2360,7 +2363,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2376,7 +2379,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2392,7 +2395,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2408,7 +2411,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2424,7 +2427,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2440,7 +2443,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2456,7 +2459,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2475,7 +2478,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1925), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2494,7 +2497,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Harold North Fowler (1914), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2513,7 +2516,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1925), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2534,7 +2537,7 @@
    "externalTranslationUnverified": [
     "en"
    ],
-   "readingStatus": "fuente-externa-identificada",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Robert Gregg Bury (1929), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2553,7 +2556,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1924), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2572,7 +2575,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Harold North Fowler (1914), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2590,7 +2593,7 @@
    "externalTranslationUnverified": [
     "en"
    ],
-   "readingStatus": "fuente-externa-identificada",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "R. G. Bury (inglés; Perseus/Scaife). Enlace en «Edición y traducción». Sin alineación local con los folios.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2609,7 +2612,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Harold North Fowler (1914), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2628,7 +2631,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés histórico: Harris Rackham (1926), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
    "translationRegisteredButNotHosted": false,
    "indexed": true
@@ -2644,7 +2647,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2660,7 +2663,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2676,7 +2679,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2692,7 +2695,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2708,7 +2711,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2724,7 +2727,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2740,7 +2743,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2756,7 +2759,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2772,7 +2775,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2788,7 +2791,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2804,7 +2807,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2853,7 +2856,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2869,7 +2872,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2885,7 +2888,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2901,7 +2904,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2917,7 +2920,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2933,7 +2936,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2949,7 +2952,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2965,7 +2968,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2981,7 +2984,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -2997,7 +3000,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3050,7 +3053,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3080,7 +3083,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3096,7 +3099,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3112,7 +3115,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3128,7 +3131,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3144,7 +3147,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3160,7 +3163,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3176,7 +3179,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3192,7 +3195,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3268,7 +3271,7 @@
     "la"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3333,7 +3336,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3363,7 +3366,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3421,7 +3424,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "repertoriado-busqueda-externa",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3495,7 +3498,7 @@
     "grc"
    ],
    "externalTranslationUnverified": [],
-   "readingStatus": "fuente-externa-identificada",
+   "readingStatus": "lectura-local-parcial",
    "translationSourceDescription": "Traducción latina de Heiberg en la misma edición (página enfrentada).",
    "translationRegisteredButNotHosted": true,
    "indexed": true
@@ -3708,350 +3711,375 @@
    "author": "Apolonio de Rodas",
    "title": "Ἀργοναυτικά · Argonautica",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+   "indexed": true
   },
   {
    "id": "isocrates-discursos",
    "author": "Isócrates",
    "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "lisias-discursos",
    "author": "Lisias",
    "title": "Λόγοι · Discursos",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "longino-sublime",
    "author": "Pseudo-Longino",
    "title": "Περὶ ὕψους · De sublimitate",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "teocrito-bucolicos",
    "author": "Teócrito, Bión y Mosco",
    "title": "Εἰδύλλια · Idilios",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "antologia-griega",
    "author": "Antología griega",
    "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+   "indexed": true
   },
   {
    "id": "aquiles-tacio-leucipa",
    "author": "Aquiles Tacio",
    "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "aristoteles-del-cielo",
    "author": "Aristóteles",
    "title": "Περὶ οὐρανοῦ · De caelo",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "aristoteles-historia-animales",
    "author": "Aristóteles",
    "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "baquilides-poemas",
    "author": "Baquílides",
    "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "calimaco-himnos",
    "author": "Calímaco y Licofrón",
    "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "epicuro-restos",
    "author": "Epicuro",
    "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "esquines-discursos",
    "author": "Esquines",
    "title": "Λόγοι · Discursos",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "filostrato-apolonio",
    "author": "Filóstrato",
    "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+   "indexed": true
   },
   {
    "id": "galeno-facultades-naturales",
    "author": "Galeno",
    "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "hipocrates-obras",
    "author": "Hipócrates",
    "title": "Corpus Hippocraticum (selección)",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+   "indexed": true
   },
   {
    "id": "iseo-discursos",
    "author": "Iseo",
    "title": "Λόγοι · Discursos",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "jenofonte-ciropedia",
    "author": "Jenofonte",
    "title": "Κύρου παιδεία · Cyropaedia",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+   "indexed": true
   },
   {
    "id": "jenofonte-economico",
    "author": "Jenofonte",
    "title": "Οἰκονομικός · Oeconomicus",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "longo-dafnis-cloe",
    "author": "Longo",
    "title": "Δάφνις καὶ Χλόη · Poimeniká",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+   "indexed": true
   },
   {
    "id": "menandro-comedias",
    "author": "Menandro",
    "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "platon-cratilo-parmenides",
    "author": "Platón",
    "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "platon-protagoras",
    "author": "Platón",
    "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "platon-teeteto-sofista",
    "author": "Platón",
    "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "plotino-eneadas",
    "author": "Plotino",
    "title": "Ἐννεάδες · Enneades",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "lyra-graeca",
@@ -4063,63 +4091,68 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "quinto-esmirna-posthomericas",
    "author": "Quinto de Esmirna",
    "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
    "originalLanguage": "grc",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "grc"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+   "indexed": true
   },
   {
    "id": "amiano-marcelino-es",
    "author": "Amiano Marcelino",
    "title": "Res gestae",
    "originalLanguage": "la",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "la"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "ausonio-obras",
    "author": "Ausonio",
    "title": "Opuscula · Obras",
    "originalLanguage": "la",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "la"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+   "indexed": true
   },
   {
    "id": "claudiano-poemas",
    "author": "Claudiano",
    "title": "Carmina · Poemas",
    "originalLanguage": "la",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "la"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+   "indexed": true
   },
   {
    "id": "higino-fabulas",
@@ -4131,7 +4164,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "manilio-astronomica",
@@ -4143,35 +4177,38 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "minucio-felix-octavio",
    "author": "Minucio Félix",
    "title": "Octavius",
    "originalLanguage": "la",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "la"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "valerio-flaco-argonautica",
    "author": "Valerio Flaco",
    "title": "Argonautica",
    "originalLanguage": "la",
-   "originalIndexed": false,
+   "originalIndexed": true,
    "translationLanguages": [],
    "localEditionLanguages": [
     "la"
    ],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": true
   },
   {
    "id": "aristoteles-meteorologica",
@@ -4183,31 +4220,34 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "galeno-opera-kuhn",
    "author": "Galeno",
-   "title": "Opera omnia (ed. Kühn): volumen adicional",
+   "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
    "originalLanguage": "grc",
    "originalIndexed": false,
    "translationLanguages": [],
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "galeno-kuhn-vol01",
    "author": "Galeno",
-   "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+   "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
    "originalLanguage": "grc",
    "originalIndexed": false,
    "translationLanguages": [],
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "galeno-kuhn-vol19",
@@ -4219,7 +4259,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "galeno-scripta-minora",
@@ -4231,7 +4272,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "jamblico-vida-pitagorica",
@@ -4243,7 +4285,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "proclo-comentario-euclides",
@@ -4255,7 +4298,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "sexto-empirico-obras",
@@ -4267,7 +4311,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "teon-esmirna-expositio",
@@ -4279,7 +4324,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "anthologia-latina",
@@ -4291,7 +4337,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "casiodoro-variae",
@@ -4303,7 +4350,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "festo-verborum-significatu",
@@ -4315,7 +4363,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "marciano-capela-nuptiis",
@@ -4327,7 +4376,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "nonio-marcelo-doctrina",
@@ -4339,7 +4389,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   },
   {
    "id": "paladio-opus-agriculturae",
@@ -4351,7 +4402,8 @@
    "localEditionLanguages": [],
    "externalTranslationUnverified": [],
    "readingStatus": "fuente-externa-identificada",
-   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+   "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+   "indexed": false
   }
  ]
 }

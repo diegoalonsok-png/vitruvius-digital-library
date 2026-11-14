@@ -1,0 +1,49 @@
+{
+  "editions": [
+    {
+      "edition": "V514",
+      "passages": 731,
+      "translationCoverage": 731,
+      "duplicateLoci": 0
+    },
+    {
+      "edition": "V554",
+      "passages": 731,
+      "translationCoverage": 731,
+      "duplicateLoci": 0
+    },
+    {
+      "edition": "V297",
+      "passages": 728,
+      "translationCoverage": 728,
+      "duplicateLoci": 0
+    }
+  ],
+  "concordance": {
+    "distinctLoci": 731,
+    "availableInAllThreeEdtions": 728,
+    "differingLatinStringsWithinSameLocus": 619,
+    "note": "Las diferencias de cadenas latinas entre ediciones son señales para cotejo editorial; no son variantes manuscritas certificadas."
+  },
+  "notes": {
+    "total": 811,
+    "provenanceDocumentAndParagraph": 811,
+    "withText": 811,
+    "byMappingStatus": {
+      "explicit_in_anchor": 41,
+      "requires_locus_review": 770,
+      "other": 0
+    },
+    "explicitWithoutLocus": 0,
+    "explicitNotFoundInMatchingEdition": 0,
+    "unresolvedExamples": [],
+    "editorialNote": "Las notas con locus candidato o ausente son evidencia documental, no aparato adjudicado automáticamente a un párrafo."
+  },
+  "ecdotics": {
+    "total": 0,
+    "certified": 0,
+    "invalidCertified": 0
+  },
+  "errors": [],
+  "warnings": []
+}

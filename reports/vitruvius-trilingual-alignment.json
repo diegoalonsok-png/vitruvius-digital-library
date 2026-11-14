@@ -1,0 +1,1316 @@
+{
+  "schema": "vitruvius-trilingual-alignment-preliminary-v1",
+  "generatedAt": "2026-11-14T21:55:08.175Z",
+  "editorialRule": "Castellano V514 como referencia inicial; francés V554 edición consolidada; inglés V297 más breve y con menor revisión. Las tres lecturas latinas necesitan cotejo de edición antes de resolver discrepancias.",
+  "independentCriticalWitnesses": {
+    "krohn": "data/text/krohn-1912.json",
+    "rose": "data/text/rose-1899.json",
+    "bude": {
+      "registry": "data/structured/bude-bibliographic-witnesses.json",
+      "tenVolumes": 10,
+      "compactEdition": 2015,
+      "contentStatus": "NOT_PERFORMED — bibliographic metadata only; access to authorized text needed",
+      "scoresCalculated": false,
+      "scope": "Budé es referencia bibliográfica para cotejar lecturas puntuales con acceso autorizado. No se comparó su texto protegido."
+    }
+  },
+  "scope": "Comparación de JSON segmentados por locus y latín; NO analiza aún de forma exhaustiva el aparato crítico de DOCX/PDF y NO certifica traducciones.",
+  "editions": [
+    {
+      "id": "V514-ES",
+      "language": "es",
+      "version": "V514",
+      "passages": 731,
+      "chapters": 105,
+      "emptyLatin": [],
+      "emptyTranslation": [],
+      "editorialPriority": "referencia inicial"
+    },
+    {
+      "id": "V554-FR",
+      "language": "fr",
+      "version": "V554",
+      "passages": 731,
+      "chapters": 105,
+      "emptyLatin": [],
+      "emptyTranslation": [],
+      "editorialPriority": "segunda edición consolidada"
+    },
+    {
+      "id": "V297-EN",
+      "language": "en",
+      "version": "V297",
+      "passages": 728,
+      "chapters": 105,
+      "emptyLatin": [],
+      "emptyTranslation": [],
+      "editorialPriority": "requiere revisión comparativa"
+    }
+  ],
+  "pairwiseLocusComparisons": [
+    {
+      "left": "V514-ES",
+      "right": "V554-FR",
+      "sharedLocusIds": 731,
+      "uniqueToLeftCount": 0,
+      "uniqueToRightCount": 0,
+      "onlyLeft": [],
+      "onlyRight": [],
+      "normalizedLatinSameAtSharedId": 451,
+      "normalizedLatinDifferentAtSharedId": 280,
+      "differenceSamples": [
+        {
+          "locus": "1.praef.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 63
+          }
+        },
+        {
+          "locus": "1.1.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 42
+          }
+        },
+        {
+          "locus": "1.1.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 80
+          }
+        },
+        {
+          "locus": "1.1.4",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 80
+          }
+        },
+        {
+          "locus": "1.1.7",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 105
+          }
+        },
+        {
+          "locus": "1.1.8",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 68
+          }
+        },
+        {
+          "locus": "1.1.10",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 109
+          }
+        },
+        {
+          "locus": "1.1.12",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 92
+          }
+        },
+        {
+          "locus": "1.1.14",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 65
+          }
+        },
+        {
+          "locus": "1.1.15",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 73
+          }
+        },
+        {
+          "locus": "1.1.16",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 77
+          }
+        },
+        {
+          "locus": "1.2.5",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 107
+          }
+        },
+        {
+          "locus": "1.2.8",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 71
+          }
+        },
+        {
+          "locus": "1.2.9",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 51
+          }
+        },
+        {
+          "locus": "1.3.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 50
+          }
+        },
+        {
+          "locus": "1.4.1",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 82
+          }
+        },
+        {
+          "locus": "1.4.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 53
+          }
+        },
+        {
+          "locus": "1.4.4",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 54
+          }
+        }
+      ],
+      "caution": "Las diferencias son candidatos para revisión, NO errores demostrados"
+    },
+    {
+      "left": "V514-ES",
+      "right": "V297-EN",
+      "sharedLocusIds": 728,
+      "uniqueToLeftCount": 3,
+      "uniqueToRightCount": 0,
+      "onlyLeft": [
+        "7.7.2",
+        "7.7.3",
+        "7.7.5"
+      ],
+      "onlyRight": [],
+      "normalizedLatinSameAtSharedId": 172,
+      "normalizedLatinDifferentAtSharedId": 556,
+      "differenceSamples": [
+        {
+          "locus": "1.praef.1",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 56
+          }
+        },
+        {
+          "locus": "1.praef.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 99
+          }
+        },
+        {
+          "locus": "1.1.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 42
+          }
+        },
+        {
+          "locus": "1.1.3",
+          "similarity": {
+            "score": 0.688,
+            "coverage": 0.688,
+            "common": 55
+          }
+        },
+        {
+          "locus": "1.1.4",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 80
+          }
+        },
+        {
+          "locus": "1.1.5",
+          "similarity": {
+            "score": 0.367,
+            "coverage": 0.367,
+            "common": 44
+          }
+        },
+        {
+          "locus": "1.1.7",
+          "similarity": {
+            "score": 0.457,
+            "coverage": 0.457,
+            "common": 48
+          }
+        },
+        {
+          "locus": "1.1.8",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 68
+          }
+        },
+        {
+          "locus": "1.1.9",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 60
+          }
+        },
+        {
+          "locus": "1.1.10",
+          "similarity": {
+            "score": 0.78,
+            "coverage": 0.78,
+            "common": 85
+          }
+        },
+        {
+          "locus": "1.1.11",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 40
+          }
+        },
+        {
+          "locus": "1.1.12",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 92
+          }
+        },
+        {
+          "locus": "1.1.13",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 55
+          }
+        },
+        {
+          "locus": "1.1.14",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 65
+          }
+        },
+        {
+          "locus": "1.1.15",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 73
+          }
+        },
+        {
+          "locus": "1.1.16",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 77
+          }
+        },
+        {
+          "locus": "1.2.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 99
+          }
+        },
+        {
+          "locus": "1.2.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 27
+          }
+        }
+      ],
+      "caution": "Las diferencias son candidatos para revisión, NO errores demostrados"
+    },
+    {
+      "left": "V554-FR",
+      "right": "V297-EN",
+      "sharedLocusIds": 728,
+      "uniqueToLeftCount": 3,
+      "uniqueToRightCount": 0,
+      "onlyLeft": [
+        "7.7.2",
+        "7.7.3",
+        "7.7.5"
+      ],
+      "onlyRight": [],
+      "normalizedLatinSameAtSharedId": 127,
+      "normalizedLatinDifferentAtSharedId": 601,
+      "differenceSamples": [
+        {
+          "locus": "1.praef.1",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 56
+          }
+        },
+        {
+          "locus": "1.praef.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 99
+          }
+        },
+        {
+          "locus": "1.praef.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 63
+          }
+        },
+        {
+          "locus": "1.1.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 42
+          }
+        },
+        {
+          "locus": "1.1.3",
+          "similarity": {
+            "score": 0.688,
+            "coverage": 0.688,
+            "common": 55
+          }
+        },
+        {
+          "locus": "1.1.4",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 80
+          }
+        },
+        {
+          "locus": "1.1.5",
+          "similarity": {
+            "score": 0.367,
+            "coverage": 0.367,
+            "common": 44
+          }
+        },
+        {
+          "locus": "1.1.7",
+          "similarity": {
+            "score": 0.457,
+            "coverage": 0.457,
+            "common": 48
+          }
+        },
+        {
+          "locus": "1.1.8",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 68
+          }
+        },
+        {
+          "locus": "1.1.9",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 60
+          }
+        },
+        {
+          "locus": "1.1.10",
+          "similarity": {
+            "score": 0.78,
+            "coverage": 0.78,
+            "common": 85
+          }
+        },
+        {
+          "locus": "1.1.11",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 40
+          }
+        },
+        {
+          "locus": "1.1.12",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 92
+          }
+        },
+        {
+          "locus": "1.1.13",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 55
+          }
+        },
+        {
+          "locus": "1.1.14",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 65
+          }
+        },
+        {
+          "locus": "1.1.15",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 73
+          }
+        },
+        {
+          "locus": "1.1.16",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 77
+          }
+        },
+        {
+          "locus": "1.2.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 99
+          }
+        }
+      ],
+      "caution": "Las diferencias son candidatos para revisión, NO errores demostrados"
+    }
+  ],
+  "unmatchedLociCandidates": [
+    {
+      "edition": "V514-ES",
+      "locus": "7.7.2",
+      "language": "es",
+      "target": "V297-EN",
+      "chapter": "7.7",
+      "candidateSameChapter": [
+        {
+          "locus": "7.7.1",
+          "score": 0.259,
+          "coverage": 1,
+          "common": 30
+        },
+        {
+          "locus": "7.7.4",
+          "score": 0.098,
+          "coverage": 0.2,
+          "common": 6
+        }
+      ],
+      "status": "SIN LOCUS HOMÓNIMO; revisar contenido, no equivale a omisión"
+    },
+    {
+      "edition": "V514-ES",
+      "locus": "7.7.3",
+      "language": "es",
+      "target": "V297-EN",
+      "chapter": "7.7",
+      "candidateSameChapter": [
+        {
+          "locus": "7.7.1",
+          "score": 0.181,
+          "coverage": 1,
+          "common": 21
+        },
+        {
+          "locus": "7.7.4",
+          "score": 0.137,
+          "coverage": 0.333,
+          "common": 7
+        }
+      ],
+      "status": "SIN LOCUS HOMÓNIMO; revisar contenido, no equivale a omisión"
+    },
+    {
+      "edition": "V514-ES",
+      "locus": "7.7.5",
+      "language": "es",
+      "target": "V297-EN",
+      "chapter": "7.7",
+      "candidateSameChapter": [
+        {
+          "locus": "7.7.4",
+          "score": 0.459,
+          "coverage": 1,
+          "common": 17
+        },
+        {
+          "locus": "7.7.1",
+          "score": 0.09,
+          "coverage": 0.647,
+          "common": 11
+        }
+      ],
+      "status": "SIN LOCUS HOMÓNIMO; revisar contenido, no equivale a omisión"
+    },
+    {
+      "edition": "V554-FR",
+      "locus": "7.7.2",
+      "language": "fr",
+      "target": "V297-EN",
+      "chapter": "7.7",
+      "candidateSameChapter": [
+        {
+          "locus": "7.7.1",
+          "score": 0.259,
+          "coverage": 1,
+          "common": 30
+        },
+        {
+          "locus": "7.7.4",
+          "score": 0.098,
+          "coverage": 0.2,
+          "common": 6
+        }
+      ],
+      "status": "SIN LOCUS HOMÓNIMO; revisar contenido, no equivale a omisión"
+    },
+    {
+      "edition": "V554-FR",
+      "locus": "7.7.3",
+      "language": "fr",
+      "target": "V297-EN",
+      "chapter": "7.7",
+      "candidateSameChapter": [
+        {
+          "locus": "7.7.1",
+          "score": 0.181,
+          "coverage": 1,
+          "common": 21
+        },
+        {
+          "locus": "7.7.4",
+          "score": 0.137,
+          "coverage": 0.333,
+          "common": 7
+        }
+      ],
+      "status": "SIN LOCUS HOMÓNIMO; revisar contenido, no equivale a omisión"
+    },
+    {
+      "edition": "V554-FR",
+      "locus": "7.7.5",
+      "language": "fr",
+      "target": "V297-EN",
+      "chapter": "7.7",
+      "candidateSameChapter": [
+        {
+          "locus": "7.7.4",
+          "score": 0.459,
+          "coverage": 1,
+          "common": 17
+        },
+        {
+          "locus": "7.7.1",
+          "score": 0.09,
+          "coverage": 0.647,
+          "common": 11
+        }
+      ],
+      "status": "SIN LOCUS HOMÓNIMO; revisar contenido, no equivale a omisión"
+    }
+  ],
+  "incidenceRegister": [
+    {
+      "id": "CAND-0001",
+      "priority": "P1",
+      "classification": "locus sin identificador homónimo",
+      "sourceEdition": "V514-ES",
+      "locus": "7.7.2",
+      "targetEdition": "V297-EN",
+      "sameChapterCandidates": [
+        {
+          "locus": "7.7.1",
+          "score": 0.259,
+          "coverage": 1,
+          "common": 30
+        },
+        {
+          "locus": "7.7.4",
+          "score": 0.098,
+          "coverage": 0.2,
+          "common": 6
+        }
+      ],
+      "status": "PENDIENTE_DE_COTEJO",
+      "isConfirmedError": false,
+      "proposedCorrection": null,
+      "evidence": "Falta coincidencia exacta de ID; verificar si la división del capítulo es distinta."
+    },
+    {
+      "id": "CAND-0002",
+      "priority": "P1",
+      "classification": "locus sin identificador homónimo",
+      "sourceEdition": "V514-ES",
+      "locus": "7.7.3",
+      "targetEdition": "V297-EN",
+      "sameChapterCandidates": [
+        {
+          "locus": "7.7.1",
+          "score": 0.181,
+          "coverage": 1,
+          "common": 21
+        },
+        {
+          "locus": "7.7.4",
+          "score": 0.137,
+          "coverage": 0.333,
+          "common": 7
+        }
+      ],
+      "status": "PENDIENTE_DE_COTEJO",
+      "isConfirmedError": false,
+      "proposedCorrection": null,
+      "evidence": "Falta coincidencia exacta de ID; verificar si la división del capítulo es distinta."
+    },
+    {
+      "id": "CAND-0003",
+      "priority": "P1",
+      "classification": "locus sin identificador homónimo",
+      "sourceEdition": "V514-ES",
+      "locus": "7.7.5",
+      "targetEdition": "V297-EN",
+      "sameChapterCandidates": [
+        {
+          "locus": "7.7.4",
+          "score": 0.459,
+          "coverage": 1,
+          "common": 17
+        },
+        {
+          "locus": "7.7.1",
+          "score": 0.09,
+          "coverage": 0.647,
+          "common": 11
+        }
+      ],
+      "status": "PENDIENTE_DE_COTEJO",
+      "isConfirmedError": false,
+      "proposedCorrection": null,
+      "evidence": "Falta coincidencia exacta de ID; verificar si la división del capítulo es distinta."
+    },
+    {
+      "id": "CAND-0004",
+      "priority": "P1",
+      "classification": "locus sin identificador homónimo",
+      "sourceEdition": "V554-FR",
+      "locus": "7.7.2",
+      "targetEdition": "V297-EN",
+      "sameChapterCandidates": [
+        {
+          "locus": "7.7.1",
+          "score": 0.259,
+          "coverage": 1,
+          "common": 30
+        },
+        {
+          "locus": "7.7.4",
+          "score": 0.098,
+          "coverage": 0.2,
+          "common": 6
+        }
+      ],
+      "status": "PENDIENTE_DE_COTEJO",
+      "isConfirmedError": false,
+      "proposedCorrection": null,
+      "evidence": "Falta coincidencia exacta de ID; verificar si la división del capítulo es distinta."
+    },
+    {
+      "id": "CAND-0005",
+      "priority": "P1",
+      "classification": "locus sin identificador homónimo",
+      "sourceEdition": "V554-FR",
+      "locus": "7.7.3",
+      "targetEdition": "V297-EN",
+      "sameChapterCandidates": [
+        {
+          "locus": "7.7.1",
+          "score": 0.181,
+          "coverage": 1,
+          "common": 21
+        },
+        {
+          "locus": "7.7.4",
+          "score": 0.137,
+          "coverage": 0.333,
+          "common": 7
+        }
+      ],
+      "status": "PENDIENTE_DE_COTEJO",
+      "isConfirmedError": false,
+      "proposedCorrection": null,
+      "evidence": "Falta coincidencia exacta de ID; verificar si la división del capítulo es distinta."
+    },
+    {
+      "id": "CAND-0006",
+      "priority": "P1",
+      "classification": "locus sin identificador homónimo",
+      "sourceEdition": "V554-FR",
+      "locus": "7.7.5",
+      "targetEdition": "V297-EN",
+      "sameChapterCandidates": [
+        {
+          "locus": "7.7.4",
+          "score": 0.459,
+          "coverage": 1,
+          "common": 17
+        },
+        {
+          "locus": "7.7.1",
+          "score": 0.09,
+          "coverage": 0.647,
+          "common": 11
+        }
+      ],
+      "status": "PENDIENTE_DE_COTEJO",
+      "isConfirmedError": false,
+      "proposedCorrection": null,
+      "evidence": "Falta coincidencia exacta de ID; verificar si la división del capítulo es distinta."
+    },
+    {
+      "id": "CAND-0007",
+      "priority": "P1",
+      "classification": "lecturas latinas divergentes",
+      "sourceEdition": "V514-ES",
+      "targetEdition": "V554-FR",
+      "locus": "varios (280 loci)",
+      "status": "PENDIENTE_DE_COTEJO",
+      "isConfirmedError": false,
+      "proposedCorrection": null,
+      "evidence": "Variaciones normalizadas de texto latino en IDs compartidos. No implica errores: distintas ediciones o segmentaciones.",
+      "sample": [
+        {
+          "locus": "1.praef.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 63
+          }
+        },
+        {
+          "locus": "1.1.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 42
+          }
+        },
+        {
+          "locus": "1.1.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 80
+          }
+        },
+        {
+          "locus": "1.1.4",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 80
+          }
+        },
+        {
+          "locus": "1.1.7",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 105
+          }
+        },
+        {
+          "locus": "1.1.8",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 68
+          }
+        },
+        {
+          "locus": "1.1.10",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 109
+          }
+        },
+        {
+          "locus": "1.1.12",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 92
+          }
+        },
+        {
+          "locus": "1.1.14",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 65
+          }
+        },
+        {
+          "locus": "1.1.15",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 73
+          }
+        },
+        {
+          "locus": "1.1.16",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 77
+          }
+        },
+        {
+          "locus": "1.2.5",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 107
+          }
+        },
+        {
+          "locus": "1.2.8",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 71
+          }
+        },
+        {
+          "locus": "1.2.9",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 51
+          }
+        },
+        {
+          "locus": "1.3.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 50
+          }
+        },
+        {
+          "locus": "1.4.1",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 82
+          }
+        },
+        {
+          "locus": "1.4.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 53
+          }
+        },
+        {
+          "locus": "1.4.4",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 54
+          }
+        }
+      ]
+    },
+    {
+      "id": "CAND-0008",
+      "priority": "P1",
+      "classification": "lecturas latinas divergentes",
+      "sourceEdition": "V514-ES",
+      "targetEdition": "V297-EN",
+      "locus": "varios (556 loci)",
+      "status": "PENDIENTE_DE_COTEJO",
+      "isConfirmedError": false,
+      "proposedCorrection": null,
+      "evidence": "Variaciones normalizadas de texto latino en IDs compartidos. No implica errores: distintas ediciones o segmentaciones.",
+      "sample": [
+        {
+          "locus": "1.praef.1",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 56
+          }
+        },
+        {
+          "locus": "1.praef.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 99
+          }
+        },
+        {
+          "locus": "1.1.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 42
+          }
+        },
+        {
+          "locus": "1.1.3",
+          "similarity": {
+            "score": 0.688,
+            "coverage": 0.688,
+            "common": 55
+          }
+        },
+        {
+          "locus": "1.1.4",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 80
+          }
+        },
+        {
+          "locus": "1.1.5",
+          "similarity": {
+            "score": 0.367,
+            "coverage": 0.367,
+            "common": 44
+          }
+        },
+        {
+          "locus": "1.1.7",
+          "similarity": {
+            "score": 0.457,
+            "coverage": 0.457,
+            "common": 48
+          }
+        },
+        {
+          "locus": "1.1.8",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 68
+          }
+        },
+        {
+          "locus": "1.1.9",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 60
+          }
+        },
+        {
+          "locus": "1.1.10",
+          "similarity": {
+            "score": 0.78,
+            "coverage": 0.78,
+            "common": 85
+          }
+        },
+        {
+          "locus": "1.1.11",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 40
+          }
+        },
+        {
+          "locus": "1.1.12",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 92
+          }
+        },
+        {
+          "locus": "1.1.13",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 55
+          }
+        },
+        {
+          "locus": "1.1.14",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 65
+          }
+        },
+        {
+          "locus": "1.1.15",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 73
+          }
+        },
+        {
+          "locus": "1.1.16",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 77
+          }
+        },
+        {
+          "locus": "1.2.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 99
+          }
+        },
+        {
+          "locus": "1.2.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 27
+          }
+        }
+      ]
+    },
+    {
+      "id": "CAND-0009",
+      "priority": "P1",
+      "classification": "lecturas latinas divergentes",
+      "sourceEdition": "V554-FR",
+      "targetEdition": "V297-EN",
+      "locus": "varios (601 loci)",
+      "status": "PENDIENTE_DE_COTEJO",
+      "isConfirmedError": false,
+      "proposedCorrection": null,
+      "evidence": "Variaciones normalizadas de texto latino en IDs compartidos. No implica errores: distintas ediciones o segmentaciones.",
+      "sample": [
+        {
+          "locus": "1.praef.1",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 56
+          }
+        },
+        {
+          "locus": "1.praef.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 99
+          }
+        },
+        {
+          "locus": "1.praef.3",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 63
+          }
+        },
+        {
+          "locus": "1.1.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 42
+          }
+        },
+        {
+          "locus": "1.1.3",
+          "similarity": {
+            "score": 0.688,
+            "coverage": 0.688,
+            "common": 55
+          }
+        },
+        {
+          "locus": "1.1.4",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 80
+          }
+        },
+        {
+          "locus": "1.1.5",
+          "similarity": {
+            "score": 0.367,
+            "coverage": 0.367,
+            "common": 44
+          }
+        },
+        {
+          "locus": "1.1.7",
+          "similarity": {
+            "score": 0.457,
+            "coverage": 0.457,
+            "common": 48
+          }
+        },
+        {
+          "locus": "1.1.8",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 68
+          }
+        },
+        {
+          "locus": "1.1.9",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 60
+          }
+        },
+        {
+          "locus": "1.1.10",
+          "similarity": {
+            "score": 0.78,
+            "coverage": 0.78,
+            "common": 85
+          }
+        },
+        {
+          "locus": "1.1.11",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 40
+          }
+        },
+        {
+          "locus": "1.1.12",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 92
+          }
+        },
+        {
+          "locus": "1.1.13",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 55
+          }
+        },
+        {
+          "locus": "1.1.14",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 65
+          }
+        },
+        {
+          "locus": "1.1.15",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 73
+          }
+        },
+        {
+          "locus": "1.1.16",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 77
+          }
+        },
+        {
+          "locus": "1.2.2",
+          "similarity": {
+            "score": 1,
+            "coverage": 1,
+            "common": 99
+          }
+        }
+      ]
+    }
+  ],
+  "confirmedErrors": [],
+  "approvedCorrections": [],
+  "correctionsApplied": 0,
+  "editorialApprovalRequired": true,
+  "policy": {
+    "noAutomaticEdits": true,
+    "noManuscriptEdits": true,
+    "priorityOrder": [
+      "pasaje omitido realmente",
+      "traducción asociada a otro pasaje",
+      "segmentación diferente",
+      "aparato crítico y notas"
+    ],
+    "distinction": "Falta de locus homónimo ≠ falta de texto; coincidencia de locus ≠ traducción correcta",
+    "nextStep": "Cotejo humano por capítulo y por frase latina, después de recuperar libro y aparato crítico de los DOCX/PDF originales"
+  }
+}

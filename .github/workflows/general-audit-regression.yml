@@ -1,0 +1,50 @@
+name: Auditoría general · lectores y cobertura
+on:
+  pull_request:
+    paths:
+      - 'sw.js'
+      - 'buscador-facsimiles-clasicos.html'
+      - 'assets/facsimile-facing-reader.*'
+      - 'assets/academic-inline-translation.js'
+      - 'data/classics-corpus/*coverage*.json'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'data/classics-corpus/indexation-roadmap-222.json'
+      - 'data/perseus-provenance-audit.json'
+      - 'scripts/test-coverage-snapshot.mjs'
+      - 'scripts/test-pwa-reader-freshness.mjs'
+      - 'scripts/test-facsimile-facing-reader.mjs'
+      - '.github/workflows/general-audit-regression.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'sw.js'
+      - 'buscador-facsimiles-clasicos.html'
+      - 'assets/facsimile-facing-reader.*'
+      - 'assets/academic-inline-translation.js'
+      - 'data/classics-corpus/translation-availability-222.json'
+      - 'data/classics-corpus/coverage-audit.json'
+      - 'data/perseus-provenance-audit.json'
+      - '.github/workflows/general-audit-regression.yml'
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --ignore-scripts --no-package-lock
+      - run: |
+          node scripts/test-coverage-snapshot.mjs
+          node scripts/test-pwa-reader-freshness.mjs
+          node scripts/test-facsimile-facing-reader.mjs
+          node scripts/test-visor-facsimiles-r2.mjs
+          node scripts/test-perseus-provenance.mjs
+          node scripts/test-prefacios-folio.mjs
+          node scripts/test-no-voseo.mjs
+          node scripts/test-front-inline-scripts.mjs

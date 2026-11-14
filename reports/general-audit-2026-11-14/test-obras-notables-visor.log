@@ -1,0 +1,15 @@
+PASS lee el índice de la biblioteca, no la portada que devuelve el dominio
+PASS abre la imagen pedida en el enlace, no la primera
+PASS declara la edición y los derechos de la digitalización
+PASS la nomenclatura no inventa folio ni página impresa
+PASS cada folio es independiente: se avanza y se retrocede
+PASS el índice ofrece todos los folios
+PASS los modos de visualización y el contraste se aplican a la imagen
+PASS la galería lista los folios con su número de imagen
+PASS elegir un folio en la galería lo abre en el lector
+PASS a loaded folio automatically fits the existing reading area
+PASS el zoom escala la imagen
+PASS el estado informa cuántas imágenes hay y cuántas declara la fuente
+PASS sin folios alojados, avisa y deriva al visor de facsímiles
+
+Visor de obras notables: todas las comprobaciones pasaron

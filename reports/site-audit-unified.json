@@ -1,0 +1,104 @@
+{
+  "schema": "vitruvius-unified-site-audit-v1",
+  "generatedAt": "2026-11-14T21:55:07.983Z",
+  "method": "Comprobación estática y estructural; no sustituye navegador real, HTTP ni cotejo manuscrito",
+  "html": {
+    "pages": 178,
+    "missingTitles": [
+      "google3c5cb2d9ef8db916.html"
+    ],
+    "duplicateIds": [],
+    "missingAlt": [],
+    "unsafeLocalLinks": []
+  },
+  "bibliotheca": {
+    "catalogueWorks": 271,
+    "registeredTextVersions": 279,
+    "locallyIndexedOriginalWorks": 182,
+    "registeredR2OriginalWorks": 32,
+    "projectIndexedOriginalWorks": 214,
+    "externalIndexedOriginalWorks": 28,
+    "distinctOriginalWorksIndexed": 242,
+    "notIndexed": 29,
+    "registryDuplicate": [],
+    "registryBad": [],
+    "roadmapOrphans": []
+  },
+  "vitruvius": {
+    "editions": {
+      "recensio-es": {
+        "count": 731,
+        "distinctLoci": 731,
+        "duplicates": [],
+        "books": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "missingLatin": [],
+        "missingTranslation": []
+      },
+      "recensio-fr": {
+        "count": 731,
+        "distinctLoci": 731,
+        "duplicates": [],
+        "books": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "missingLatin": [],
+        "missingTranslation": []
+      },
+      "theory-en": {
+        "count": 728,
+        "distinctLoci": 728,
+        "duplicates": [],
+        "books": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "missingLatin": [],
+        "missingTranslation": []
+      }
+    },
+    "alignment": {
+      "missingEnglishLoci": [
+        "7.7.2",
+        "7.7.3",
+        "7.7.5"
+      ],
+      "missingSpanishLoci": [],
+      "latinTextLiteralDifferences": 576,
+      "latinTextNormalizedDifferences": 556,
+      "interpretation": "Advertencias, no errores automáticos: las ediciones y divisiones de párrafos pueden ser diferentes; cotejo editorial obligatorio antes de reasignar traducciones."
+    }
+  },
+  "warnings": [
+    "Diferencias de segmentación o cobertura EN/ES: 7.7.2, 7.7.3, 7.7.5",
+    "Latín de versiones inglesas y españolas difiere en 556 loci después de normalización; no cambiar sin cotejo"
+  ],
+  "errors": []
+}

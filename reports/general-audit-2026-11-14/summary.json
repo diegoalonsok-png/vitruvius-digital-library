@@ -1,0 +1,29 @@
+{
+  "schema": "vdl-general-audit-summary-1",
+  "date": "2026-11-14",
+  "baseCommit": "cb62211b774b2b822129d0e600c3c8b015dd2158",
+  "programs": 53,
+  "passed": 53,
+  "failed": 0,
+  "originalSourcesModified": false,
+  "catalogueWorks": 271,
+  "projectOriginalWorks": 214,
+  "projectLocalOriginalWorks": 182,
+  "projectR2OriginalWorks": 32,
+  "additionalExternalOriginalWorks": 28,
+  "combinedOriginalWorks": 242,
+  "registeredTextVersions": 279,
+  "witnessRecords": 106,
+  "worksWithHostedTranslation": 59,
+  "facsimileReader": {
+    "default": "PDF and same-page automatic Spanish translation",
+    "rawOCRAvailable": true,
+    "wholePageChunking": true,
+    "staleResponseProtection": true,
+    "defaultFirstReadablePage": true,
+    "acciusPagesWithOCR": 439,
+    "acciusPages": 456
+  },
+  "publicPostDeploymentVerification": "pending",
+  "report": "docs/auditoria-general-2026-11-14.md"
+}

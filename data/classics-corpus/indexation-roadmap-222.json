@@ -1,29 +1,29 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
-  "updated": "2026-11-13",
+  "updated": "2026-11-14",
   "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot.",
   "targetWorks": 271,
   "counts": {
-    "originalsIndexed": 182,
-    "originalsMissing": 89,
+    "originalsIndexed": 214,
+    "originalsMissing": 57,
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 212,
-    "textVersions": 247,
+    "textVersions": 279,
     "offsiteOriginalsIndexed": 28,
-    "effectiveOriginalsIndexed": 210,
-    "effectiveOriginalsMissing": 61,
+    "effectiveOriginalsIndexed": 242,
+    "effectiveOriginalsMissing": 29,
     "unindexedEditionRecordsOfExistingVitruviusWork": 3,
-    "distinctAncientWorksStillMissingOriginalIndex": 58,
+    "distinctAncientWorksStillMissingOriginalIndex": 26,
     "offsiteTextVersionsOutsidePages": 28,
     "states": {
-      "original_pendiente": 89,
-      "original_sin_traduccion_local": 123,
+      "original_pendiente": 57,
+      "original_sin_traduccion_local": 155,
       "original_y_traduccion_local": 59
     },
     "sourceReadinessForMissingOriginals": {
       "correspondencia_bibliografica_ambigua": 3,
       "requiere_fuente_no_canonica_o_edicion_especifica": 7,
-      "sin_fuente_en_mapa_perseus": 64,
+      "sin_fuente_en_mapa_perseus": 32,
       "tei_perseus_candidato_por_verificar": 15
     }
   },
@@ -993,15 +993,17 @@
       "title": "Περὶ ἀρχῶν · De principiis",
       "originalLanguage": "grc",
       "dating": "Primera mitad del siglo III d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "eusebio",
@@ -4801,15 +4803,17 @@
       "title": "Ἀργοναυτικά · Argonautica",
       "originalLanguage": "grc",
       "dating": "c. 250 a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "isocrates-discursos",
@@ -4817,15 +4821,17 @@
       "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "lisias-discursos",
@@ -4833,15 +4839,17 @@
       "title": "Λόγοι · Discursos",
       "originalLanguage": "grc",
       "dating": "c. 403–380 a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "longino-sublime",
@@ -4849,15 +4857,17 @@
       "title": "Περὶ ὕψους · De sublimitate",
       "originalLanguage": "grc",
       "dating": "Siglo I d. C.; autoría y datación discutidas",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "teocrito-bucolicos",
@@ -4865,15 +4875,17 @@
       "title": "Εἰδύλλια · Idilios",
       "originalLanguage": "grc",
       "dating": "Primera mitad del siglo III a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "antologia-griega",
@@ -4881,15 +4893,17 @@
       "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
       "originalLanguage": "grc",
       "dating": "Compilación bizantina (s. X) de poesía de los s. VII a. C. – VI d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aquiles-tacio-leucipa",
@@ -4897,15 +4911,17 @@
       "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
       "originalLanguage": "grc",
       "dating": "Siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristoteles-del-cielo",
@@ -4913,15 +4929,17 @@
       "title": "Περὶ οὐρανοῦ · De caelo",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristoteles-historia-animales",
@@ -4929,15 +4947,17 @@
       "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "baquilides-poemas",
@@ -4945,15 +4965,17 @@
       "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
       "originalLanguage": "grc",
       "dating": "Siglo V a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "calimaco-himnos",
@@ -4961,15 +4983,17 @@
       "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
       "originalLanguage": "grc",
       "dating": "Siglo III a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "epicuro-restos",
@@ -4977,15 +5001,17 @@
       "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
       "originalLanguage": "grc",
       "dating": "Siglos IV–III a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "esquines-discursos",
@@ -4993,15 +5019,17 @@
       "title": "Λόγοι · Discursos",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "filostrato-apolonio",
@@ -5009,15 +5037,17 @@
       "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
       "originalLanguage": "grc",
       "dating": "Siglo III d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "galeno-facultades-naturales",
@@ -5025,15 +5055,17 @@
       "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
       "originalLanguage": "grc",
       "dating": "Siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "hipocrates-obras",
@@ -5041,15 +5073,17 @@
       "title": "Corpus Hippocraticum (selección)",
       "originalLanguage": "grc",
       "dating": "Siglos V–IV a. C.; corpus de autoría múltiple",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "iseo-discursos",
@@ -5057,15 +5091,17 @@
       "title": "Λόγοι · Discursos",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "jenofonte-ciropedia",
@@ -5073,15 +5109,17 @@
       "title": "Κύρου παιδεία · Cyropaedia",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "jenofonte-economico",
@@ -5089,15 +5127,17 @@
       "title": "Οἰκονομικός · Oeconomicus",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "longo-dafnis-cloe",
@@ -5105,15 +5145,17 @@
       "title": "Δάφνις καὶ Χλόη · Poimeniká",
       "originalLanguage": "grc",
       "dating": "Siglo II d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "menandro-comedias",
@@ -5121,15 +5163,17 @@
       "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
       "originalLanguage": "grc",
       "dating": "Siglos IV–III a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "platon-cratilo-parmenides",
@@ -5137,15 +5181,17 @@
       "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "platon-protagoras",
@@ -5153,15 +5199,17 @@
       "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "platon-teeteto-sofista",
@@ -5169,15 +5217,17 @@
       "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
       "originalLanguage": "grc",
       "dating": "Siglo IV a. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "plotino-eneadas",
@@ -5185,15 +5235,17 @@
       "title": "Ἐννεάδες · Enneades",
       "originalLanguage": "grc",
       "dating": "Siglo III d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "lyra-graeca",
@@ -5217,15 +5269,17 @@
       "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
       "originalLanguage": "grc",
       "dating": "Siglos III–IV d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "grc"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "amiano-marcelino-es",
@@ -5233,15 +5287,17 @@
       "title": "Res gestae",
       "originalLanguage": "la",
       "dating": "Siglo IV d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "ausonio-obras",
@@ -5249,15 +5305,17 @@
       "title": "Opuscula · Obras",
       "originalLanguage": "la",
       "dating": "Siglo IV d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "claudiano-poemas",
@@ -5265,15 +5323,17 @@
       "title": "Carmina · Poemas",
       "originalLanguage": "la",
       "dating": "Siglos IV–V d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "higino-fabulas",
@@ -5313,15 +5373,17 @@
       "title": "Octavius",
       "originalLanguage": "la",
       "dating": "Siglos II–III d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "valerio-flaco-argonautica",
@@ -5329,15 +5391,17 @@
       "title": "Argonautica",
       "originalLanguage": "la",
       "dating": "Siglo I d. C.",
-      "indexedLanguages": [],
-      "originalIndexed": false,
+      "indexedLanguages": [
+        "la"
+      ],
+      "originalIndexed": true,
       "translationHosted": false,
-      "state": "original_pendiente",
-      "sourceReadiness": "sin_fuente_en_mapa_perseus",
+      "state": "original_sin_traduccion_local",
+      "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
       "offsiteOriginalIndexed": false,
-      "effectiveOriginalIndexed": false
+      "effectiveOriginalIndexed": true
     },
     {
       "id": "aristoteles-meteorologica",
@@ -5358,9 +5422,9 @@
     {
       "id": "galeno-opera-kuhn",
       "author": "Galeno",
-      "title": "Opera omnia (ed. Kühn): volumen adicional",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
-      "dating": "Pendiente de consignar: no se deduce del facsímil.",
+      "dating": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
       "indexedLanguages": [],
       "originalIndexed": false,
       "translationHosted": false,
@@ -5374,9 +5438,9 @@
     {
       "id": "galeno-kuhn-vol01",
       "author": "Galeno",
-      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
-      "dating": "Pendiente de consignar: no se deduce del facsímil.",
+      "dating": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
       "indexedLanguages": [],
       "originalIndexed": false,
       "translationHosted": false,

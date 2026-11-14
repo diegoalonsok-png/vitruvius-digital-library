@@ -50,7 +50,7 @@ assert(reg.entries.length===reg.count,'El conteo declarado no coincide con las v
 assert(road.items.length===catalog.works.length,'Roadmap de indexación incompleto');
 assert(ext.remoteEntries.length===ext.counts.remoteOriginalsIndexed,'Índices externos desincronizados');
 const registryDuplicate=[],registryBad=[];
-const seen=new Set(),originals=new Set(),versions=new Set();
+const seen=new Set(),originals=new Set(),localOriginals=new Set(),r2Originals=new Set(),versions=new Set();
 for(const e of reg.entries){
  const key=[e.workId,e.language,e.edition||'',e.path].join('|');
  if(seen.has(key))registryDuplicate.push(key);seen.add(key);
@@ -61,7 +61,7 @@ for(const e of reg.entries){
  if(!works.has(e.workId)||!e.path||!(remote?remoteValid:has(e.path))||
     !['la','grc','es','en','fr','de','it','pt'].includes(e.language))
   registryBad.push({id:e.workId,language:e.language,path:e.path});
- if(!remote&&['la','grc'].includes(e.language))originals.add(e.workId);
+ if(['la','grc'].includes(e.language)){originals.add(e.workId);(remote?r2Originals:localOriginals).add(e.workId);}
  versions.add(e.workId);
 }
 assert(registryDuplicate.length===0,'Entradas duplicadas en registro de búsquedas');
@@ -112,7 +112,8 @@ const report={
  method:'Comprobación estática y estructural; no sustituye navegador real, HTTP ni cotejo manuscrito',
  html:htmlReport,
  bibliotheca:{catalogueWorks:catalog.works.length,registeredTextVersions:reg.entries.length,
-  locallyIndexedOriginalWorks:originals.size,externalIndexedOriginalWorks:remoteSet.size,
+  locallyIndexedOriginalWorks:localOriginals.size,registeredR2OriginalWorks:r2Originals.size,
+  projectIndexedOriginalWorks:originals.size,externalIndexedOriginalWorks:remoteSet.size,
   distinctOriginalWorksIndexed:totalOriginals,notIndexed:catalog.works.length-totalOriginals,
   registryDuplicate,registryBad,roadmapOrphans},
  vitruvius:{editions,alignment},warnings,errors

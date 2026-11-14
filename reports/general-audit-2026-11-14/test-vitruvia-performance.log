@@ -1,0 +1,3 @@
+PASS: shared indexes, version separation, retries, source cooldowns, result caching and cancellation.
+{"queries":24,"baselineMs":null,"optimizedMs":475,"ratio":null,"corpusPassages":4163}
+PASS: source passages, references and retrieval scores preserved. Timings measure local retrieval, not internet latency.

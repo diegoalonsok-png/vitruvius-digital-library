@@ -1,21 +1,21 @@
 {
   "schema": "vitruvia-classics-coverage-audit-v1",
-  "date": "2026-11-10",
+  "date": "2026-11-14",
   "scope": "Se auditan exclusivamente 271 fichas de obras del catálogo local; no es un censo universal de literatura grecolatina.",
   "method": "Cruce de fichas bibliográficas, vínculos locales, corpus legible, registro de búsqueda y testimonios manuscritos; sin OCR ni verificación externa de los enlaces.",
   "counts": {
     "cataloguedWorks": 271,
     "catalogueStatuses": {
       "lectura-local-completa": 32,
-      "lectura-local-parcial": 113,
-      "pendiente-de-incorporar": 44,
+      "lectura-local-parcial": 152,
+      "fuente-externa-identificada": 65,
       "repertoriado-busqueda-externa": 18,
-      "fuente-externa-identificada": 64
+      "pendiente-de-incorporar": 4
     },
-    "locallyReadableClaims": 145,
+    "locallyReadableClaims": 184,
     "indexedTextVersions": 279,
     "indexedDistinctWorks": 214,
-    "manuscriptWitnesses": 23
+    "manuscriptWitnesses": 106
   },
   "works": [
     {
@@ -33,9 +33,9 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/structured/theory-en.json",
         "data/structured/recensio-es.json",
-        "data/structured/recensio-fr.json"
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": true,
@@ -170,8 +170,8 @@
       "dating": "c. 43–40 a. C.",
       "catalogueStatus": "lectura-local-completa",
       "indexedTextLanguages": [
-        "la",
-        "en"
+        "en",
+        "la"
       ],
       "indexedTextFiles": [
         "data/classics-corpus/sallust-catiline-en.json",
@@ -1063,7 +1063,9 @@
       "genre": "Cristianismo primitivo",
       "dating": "Primera mitad del siglo III d. C.",
       "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json"
       ],
@@ -1487,8 +1489,8 @@
         "la"
       ],
       "indexedTextFiles": [
-        "data/classics-corpus/catullus-carmina-en.json",
-        "corpus/catullus-carmina-la.html"
+        "corpus/catullus-carmina-la.html",
+        "data/classics-corpus/catullus-carmina-en.json"
       ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
@@ -4884,7 +4886,9 @@
       "genre": "Poesía épica helenística",
       "dating": "c. 250 a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json"
       ],
@@ -4907,7 +4911,9 @@
       "genre": "Oratoria y prosa didáctica",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json"
       ],
@@ -4930,7 +4936,9 @@
       "genre": "Oratoria judicial",
       "dating": "c. 403–380 a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json"
       ],
@@ -4953,7 +4961,9 @@
       "genre": "Crítica literaria y retórica",
       "dating": "Siglo I d. C.; autoría y datación discutidas",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json"
       ],
@@ -4976,7 +4986,9 @@
       "genre": "Poesía bucólica",
       "dating": "Primera mitad del siglo III a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json"
       ],
@@ -4999,7 +5011,9 @@
       "genre": "Epigrama",
       "dating": "Compilación bizantina (s. X) de poesía de los s. VII a. C. – VI d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json"
       ],
@@ -5022,7 +5036,9 @@
       "genre": "Novela griega",
       "dating": "Siglo II d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json"
       ],
@@ -5045,7 +5061,9 @@
       "genre": "Filosofía natural y cosmología",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json"
       ],
@@ -5068,7 +5086,9 @@
       "genre": "Zoología",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json"
       ],
@@ -5091,7 +5111,9 @@
       "genre": "Lírica coral",
       "dating": "Siglo V a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json"
       ],
@@ -5114,7 +5136,9 @@
       "genre": "Poesía helenística",
       "dating": "Siglo III a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json"
       ],
@@ -5137,7 +5161,9 @@
       "genre": "Filosofía epicúrea",
       "dating": "Siglos IV–III a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json"
       ],
@@ -5160,7 +5186,9 @@
       "genre": "Oratoria ática",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json"
       ],
@@ -5183,7 +5211,9 @@
       "genre": "Biografía",
       "dating": "Siglo III d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json"
       ],
@@ -5206,7 +5236,9 @@
       "genre": "Medicina y fisiología",
       "dating": "Siglo II d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json"
       ],
@@ -5229,7 +5261,9 @@
       "genre": "Medicina",
       "dating": "Siglos V–IV a. C.; corpus de autoría múltiple",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json"
       ],
@@ -5252,7 +5286,9 @@
       "genre": "Oratoria judicial (derecho sucesorio)",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json"
       ],
@@ -5275,7 +5311,9 @@
       "genre": "Historia novelada y teoría del mando",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json"
       ],
@@ -5298,7 +5336,9 @@
       "genre": "Economía doméstica y agricultura",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json"
       ],
@@ -5321,7 +5361,9 @@
       "genre": "Novela pastoril",
       "dating": "Siglo II d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json"
       ],
@@ -5344,7 +5386,9 @@
       "genre": "Comedia nueva",
       "dating": "Siglos IV–III a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json"
       ],
@@ -5367,7 +5411,9 @@
       "genre": "Diálogos platónicos",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json"
       ],
@@ -5390,7 +5436,9 @@
       "genre": "Diálogos platónicos",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json"
       ],
@@ -5413,7 +5461,9 @@
       "genre": "Diálogos platónicos",
       "dating": "Siglo IV a. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json"
       ],
@@ -5436,7 +5486,9 @@
       "genre": "Neoplatonismo",
       "dating": "Siglo III d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json"
       ],
@@ -5477,7 +5529,9 @@
       "genre": "Épica tardía",
       "dating": "Siglos III–IV d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "grc"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json"
       ],
@@ -5500,7 +5554,9 @@
       "genre": "Historia del Imperio romano",
       "dating": "Siglo IV d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/amiano-marcelino-es-la.json"
       ],
@@ -5523,7 +5579,9 @@
       "genre": "Poesía tardolatina",
       "dating": "Siglo IV d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/ausonio-obras-la.json"
       ],
@@ -5546,7 +5604,9 @@
       "genre": "Poesía épica y panegírica",
       "dating": "Siglos IV–V d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/claudiano-poemas-la.json"
       ],
@@ -5605,7 +5665,9 @@
       "genre": "Apologética cristiana",
       "dating": "Siglos II–III d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/minucio-felix-octavio-la.json"
       ],
@@ -5628,7 +5690,9 @@
       "genre": "Épica latina",
       "dating": "Siglo I d. C.",
       "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
+      "indexedTextLanguages": [
+        "la"
+      ],
       "indexedTextFiles": [
         "https://libros.vitruvius-digital-library.org/corpus/valerio-flaco-argonautica-la.json"
       ],

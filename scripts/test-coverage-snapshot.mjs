@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const read=p=>JSON.parse(readFileSync(p,'utf8'));
+const catalog=read('data/bibliotheca-graeca-latina-I-bce-I-ce.json').works;
+const registry=read('data/classics-corpus/search-registry.json').entries;
+const translations=read('data/classics-corpus/translation-availability-222.json');
+const coverage=read('data/classics-corpus/coverage-audit.json');
+const road=read('data/classics-corpus/indexation-roadmap-222.json');
+const external=read('data/classics-corpus/external-index-reconciliation.json');
+const ids=new Set(catalog.map(w=>w.id));
+assert.equal(translations.works.length,ids.size);
+assert.equal(new Set(translations.works.map(w=>w.id)).size,ids.size);
+const translated=translations.works.filter(w=>w.translationLanguages.length).length;
+assert.equal(translations.totals.translatedWorksLocal,translated);
+assert.equal(translations.totals.worksWithoutHostedTranslation+translated,ids.size,'Translation coverage totals must add up to the catalogue');
+for(const lang of ['es','en','fr'])assert.equal(translations.totals.localTranslationLanguages[lang],translations.works.filter(w=>w.translationLanguages.includes(lang)).length);
+const statuses={};for(const w of catalog)statuses[w.publicStatus]=(statuses[w.publicStatus]||0)+1;
+assert.deepEqual(coverage.counts.catalogueStatuses,statuses);
+assert.equal(coverage.counts.indexedTextVersions,registry.length);
+assert.equal(coverage.counts.manuscriptWitnesses,read('data/bibliotheca-testimonia-verified.json').records.length);
+const project=new Set(registry.filter(e=>['la','grc'].includes(e.language)).map(e=>e.workId));
+const remote=new Set(external.remoteEntries.map(e=>e.workId));
+assert.equal(road.counts.originalsIndexed,project.size,'Own R2 texts must not disappear from project-hosted totals');
+assert.equal(road.counts.effectiveOriginalsIndexed,new Set([...project,...remote]).size);
+assert.equal(road.counts.effectiveOriginalsMissing+road.counts.effectiveOriginalsIndexed,ids.size);
+assert.equal(external.counts.combinedOriginalsIndexed,road.counts.effectiveOriginalsIndexed);
+const r2=read('data/r2/corpus-manifest.json');
+for(const e of registry.filter(e=>e.path.startsWith('https:'))){
+ const source=r2.obras.find(x=>x.workId===e.workId&&x.language===e.language&&e.path===r2.base+x.archivo);
+ assert(source&&source.pasajes>0&&/^[a-f0-9]{64}$/.test(source.sha256),'Remote registered text needs its own recorded object identity');
+}
+console.log('PASS: catalogue, translations, witnesses, project/R2 originals, external indexes and pending totals agree without double counting');
