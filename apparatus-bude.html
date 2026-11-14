@@ -113,7 +113,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 </tbody></table>
 <p class="ab-warning">Estas abreviaturas siguen usos comunes de la ecdótica latina, compatibles con la tradición editorial Budé. No constituyen una nomenclatura exclusiva o uniforme de todos sus volúmenes. No se asignan automáticamente a diferencias OCR.</p></details>
 <details><summary>Conspectus siglorum · identificación de testimonios</summary><dl id="sigla"></dl><p>Las referencias de los editores históricos no implican autopsia digital ni lectura directa realizada por este proyecto.</p></details>
-<details><summary>Criterios ecdóticos de esta presentación</summary><p>El texto V514, las lecturas propuestas en su aparato y los extractos OCR históricos permanecen diferenciados. Un lema con corchete editorial no es una lectura diplomática; una coincidencia de búsqueda no demuestra una variante. El estado “comprobada en V514 y V554” remite a concordancia interna de ediciones, no a lectura manuscrita verificada. Los aparatos originales se deben cotejar en los facsímiles enlazados.</p></details>
+<details><summary>Criterios ecdóticos de esta presentación</summary><p>El texto V514, las lecturas propuestas en su aparato y los extractos OCR históricos permanecen diferenciados. Un lema con corchete editorial no es una lectura diplomática; una coincidencia de búsqueda no demuestra una variante. El estado “comprobada en V514 y V554” remite a concordancia interna de ediciones, no a lectura manuscrita verificada. Los aparatos originales se deben cotejar en los facsímiles enlazados. Las notas efectivamente documentadas en V514/V554 no se clasifican automáticamente como pendientes: se distingue su existencia editorial del estado de verificación de la lectura manuscrita.</p></details>
 <div class="ab-actions"><button type="button" id="copy">Copiar referencia</button><button type="button" id="print">Imprimir ficha</button><a id="reader-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Abrir lector completo</a><a href="protocolo-verificacion-cientifica.html">Protocolo científico</a></div>
 </section>
 </main>
@@ -155,19 +155,39 @@ function load(locus){
  const pdf=comp?.loci?.find(v=>v.locus===locus)?.["rose-1899"]?.pdf||"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf";
  $("#rose-pdf-link").href=pdf;$("#rose-pdf-frame").src=pdf;
  const d=comp?.loci?.find(v=>v.locus===locus),minor=$("#minor");minor.replaceChildren();let count=0;const mode=$("#mode").value;
+ const seenEditorial=new Set();
+ let editorialDuplicate=0,editorialSuspicious=0;
+ function normalizeEditorial(value){return String(value||"").replace(/\\s+/g," ").replace(/\\s*([;,])\\s*/g,"$1").trim().toLowerCase()}
+ function labelEditorial(v){
+  const state=String(v.grado||"");
+  if(state==="comprobada en V514 y V554")return "Coincidencia entre V514 y V554 indicada en el registro editorial; lectura manuscrita independiente no acreditada";
+  if(state==="una sola edición")return "Entrada documentada en V514; sin cotejo cruzado registrado";
+  if(state==="transcripción por comprobar")return "Transcripción de lectura atribuida a un testimonio: cotejo paleográfico pendiente";
+  if(state==="aparato en prosa")return "Comentario editorial documentado en la edición; no formulado como variante";
+  return "Entrada documentada en la edición; grado de cotejo no especificado";
+ }
  if(d&&mode!=="source"&&edition!=="rose")for(const v of (d.v514||[])){
    if(!v.lema||!v.aparato?.trim())continue;
+   const rawEntry=v.aparato.trim();
+   const entryKey=normalizeEditorial(rawEntry);
+   if(seenEditorial.has(entryKey)){editorialDuplicate++;continue}
+   seenEditorial.add(entryKey);
+   // Ambiguous PDF/OCR extraction is retained in the complete original book,
+   // not displayed as a clean ecdotic reading without an identifiable lemma.
+   if(/\\bom\\.\\s*proba|\\bprob\\s+ceteris|\\b1v\\s+antur\\b/i.test(rawEntry)){editorialSuspicious++;continue}
+
    const item=document.createElement("div");item.className="ab-entry";
    const first=document.createElement("span");
    const raw=v.aparato.trim(),pos=raw.indexOf(" ] ");
    if(pos>=0){const lemma=document.createElement("span");lemma.className="lemma";lemma.textContent=raw.slice(0,pos);const sep=document.createElement("span");sep.className="divider-lemma";sep.textContent=" ] ";const reading=document.createElement("span");reading.textContent=raw.slice(pos+3);first.append(lemma,sep,reading)}
    else{first.textContent=raw}
    item.append(first);
-   const meta=document.createElement("span");meta.className="ab-meta";meta.textContent="V514 · p. "+(v.pagina||"sin localizar")+" · "+(v.grado||"estado no especificado")+" · entrada editorial pendiente de revisión individual";item.append(meta);minor.append(item);count++;
+   const meta=document.createElement("span");meta.className="ab-meta";meta.textContent="Fuente: V514 · p. "+(v.pagina||"sin localizar")+" · "+labelEditorial(v);item.append(meta);minor.append(item);count++;
  }
  if(edition==="rose"&&mode!=="source"){
    for(const e of (d?.["rose-1899"]?.entradas||[])){const item=document.createElement("div");item.className="ab-entry";item.textContent=e.texto||"";const meta=document.createElement("span");meta.className="ab-meta";meta.textContent="Rose 1899 · OCR candidato, p. "+(e.pagina||d["rose-1899"].pagina||"sin identificar")+" · cotejar con facsímil";item.append(meta);minor.append(item);count++}
  }
+ if(editorialDuplicate||editorialSuspicious){const info=document.createElement("p");info.className="ab-none";info.textContent=(editorialDuplicate?editorialDuplicate+" duplicado(s) editorial(es) agrupado(s). ":"")+(editorialSuspicious?editorialSuspicious+" extracción(es) con posible error OCR excluida(s) del aparato breve; permanecen en el libro y registro de origen.":"");minor.append(info)}
  if(!count){const p=document.createElement("p");p.className="ab-none";p.textContent=edition==="rose"?"No hay entrada OCR de Rose atribuida a este locus; ello no demuestra ausencia de variantes.":mode==="source"?"Modo documental: consultar los aparatos históricos desplegables.":"No hay una entrada V514 apta para presentar como variante breve en este locus. La ausencia de entradas no significa unanimidad manuscrita.";minor.append(p)}
  if(mode==="v514"&&edition!=="rose"){$(".ab-documentation").querySelectorAll("details").forEach(x=>x.open=false)}
  source("#rose",d?.["rose-1899"],"Rose 1899");source("#krohn",d?.["krohn-1912"],"Krohn 1912");
