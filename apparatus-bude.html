@@ -70,8 +70,8 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <h2 id="triple-title">Collatio textuum · Rose, Krohn, Kurilo</h2>
 <p class="ab-sub">Tres textos latinos alineados por <i>locus</i>. Los textos de Rose y Krohn son segmentos OCR históricos alineados automáticamente. Se pueden leer y comparar por locus, independientemente de la verificación paleográfica de variantes manuscritas. El ruido OCR no se considera variante crítica.</p>
 <div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
-<article><h3>Rose · 1899</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
-<article><h3>Krohn · 1912</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
+<article><h3>Rose · 1899</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><details id="compare-rose-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-rose-changes"></p><div class="ab-text" id="compare-rose-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
+<article><h3>Krohn · 1912</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><details id="compare-krohn-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-krohn-changes"></p><div class="ab-text" id="compare-krohn-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
 <article><h3>Kurilo · V514</h3><small>Texto latino de la recensio provisional</small><div class="ab-text" lang="la" id="compare-kurilo"></div><small>Fuente: V514, pasaje estructurado.</small><a id="compare-kurilo-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Lector de Kurilo</a></article>
 </div></section>
 <section class="ab-leaves" aria-label="Texto latino y traducción de Kurilo">
@@ -122,7 +122,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 (()=>{"use strict";
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
 const pUrl=new URL(location.href),params=new URLSearchParams(pUrl.search);
-let data=null,comp=null,collation=null,translations={es:null,fr:null,en:null},rows=[],current="";
+let data=null,comp=null,collation=null,ocrFixes={loci:{}},translations={es:null,fr:null,en:null},rows=[],current="";
 function source(div,record,name){
  const host=$(div);host.replaceChildren();
  const entries=record?.entradas||[];if(!entries.length){const p=document.createElement("p");p.className="ab-none";p.textContent="Sin entradas extraídas para este locus.";host.append(p);return}
@@ -136,7 +136,7 @@ function load(locus){
  current=locus;$("#locus").value=locus;params.set("locus",locus);params.set("edition",$("#edition").value);params.set("translation",$("#translation-edition").value);history.replaceState(null,"",location.pathname+"?"+params.toString());
  set("#left-locus",format(locus));set("#right-locus",format(locus));
  const edition=$("#edition").value,roseText=collation?.loci?.[locus]?.["rose-1899"]?.text;
- set("#latin",edition==="rose"?(roseText||"No existe un fragmento OCR asignado a este locus. Consultar el facsímil."):passage.latin||"Texto latino no documentado");
+ set("#latin",edition==="rose"?(ocrFixes.loci?.[locus]?.["rose-1899"]?.text||roseText||"No existe un fragmento OCR asignado a este locus. Consultar el facsímil."):passage.latin||"Texto latino no documentado");
  const lang=$("#translation-edition").value,trow=translations[lang]?.passages?.find(x=>x.locus===locus);
  set("#translation",trow?.translation||"Traducción no disponible para este locus en la versión seleccionada.");
  const trMeta={es:["Traducción castellana","KURILO · V514"],fr:["Traduction française","KURILO · V554"],en:["English translation","KURILO · V297"]}[lang];
@@ -151,10 +151,18 @@ function load(locus){
    "Verificación de lecturas manuscritas: independiente del estado del texto"
  ];
  set("#ab-textual-status",availability.join(" · "));
- set("#compare-rose",c["rose-1899"]?.text||"No hay segmento OCR alineado para el locus.");set("#compare-krohn",c["krohn-1912"]?.text||"No hay segmento OCR alineado para el locus.");
+ for(const [source,id] of [["rose-1899","rose"],["krohn-1912","krohn"]]){
+ const candidate=ocrFixes.loci?.[locus]?.[source],raw=c[source]?.text;
+ set("#compare-"+id,candidate?.text||raw||"No hay segmento OCR alineado para el locus.");
+ $("#compare-"+id+"-ocr-detail").hidden=!candidate;
+ $("#compare-"+id+"-ocr-detail").open=false;
+ set("#compare-"+id+"-changes",candidate?.interventions?.join(" · ")||"");
+ set("#compare-"+id+"-original",raw||"No hay OCR original para este pasaje.");
+ }
  set("#compare-kurilo",passage.latin||"Sin texto latino estructurado.");
  for(const [name,id,defaultPdf] of [["rose-1899","rose","https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"],["krohn-1912","krohn","documents/krohn-1912.pdf"]]){
-   const item=c[name];set("#compare-"+id+"-status",item?"Coincidencia automática de alineación "+Math.round((item.score||0)*100)+" % · página digital "+item.page:"Sin correspondencia automática documentada");
+   const item=c[name],clean=ocrFixes.loci?.[locus]?.[name];
+ set("#compare-"+id+"-status",item?(clean?"Lectura OCR depurada para consulta, con original y cambios disponibles · ":"OCR de archivo · ")+"alineación "+Math.round((item.score||0)*100)+" % · página digital "+item.page:"Sin correspondencia automática documentada");
    const pdf=comp?.loci?.find(v=>v.locus===locus)?.[name]?.pdf||defaultPdf;
    $("#compare-"+id+"-link").href=pdf;
  }
@@ -217,7 +225,9 @@ $("#copy").addEventListener("click",async()=>{
 (async()=>{
  try{const urls=["data/structured/recensio-es.json","data/apparatus/aparato-comparativo.json","data/collation-loci.json"];
  const resp=await Promise.all(urls.map(u=>fetch(u,{headers:{Accept:"application/json"}})));for(let i=0;i<resp.length;i++)if(!resp[i].ok)throw Error(urls[i]+": HTTP "+resp[i].status);
- [data,comp,collation]=await Promise.all(resp.map(r=>r.json()));if(!Array.isArray(data.passages)||!Array.isArray(comp.loci)||!collation.loci)throw Error("Estructura de datos no reconocida");
+ [data,comp,collation]=await Promise.all(resp.map(r=>r.json()));
+ try{const fixResponse=await fetch("data/apparatus/ocr-reading-corrections.json",{headers:{Accept:"application/json"}});if(fixResponse.ok){const candidate=await fixResponse.json();if(candidate&&candidate.loci)ocrFixes=candidate}}catch(e){console.warn("No se pudieron cargar los ajustes de lectura OCR",e)}
+ if(!Array.isArray(data.passages)||!Array.isArray(comp.loci)||!collation.loci)throw Error("Estructura de datos no reconocida");
  rows=data.passages;translations.es=data;
  const additional=[["fr","data/structured/recensio-fr.json"],["en","data/structured/theory-en.json"]];
  await Promise.all(additional.map(async ([key,url])=>{try{const r=await fetch(url);if(!r.ok)throw Error("HTTP "+r.status);const obj=await r.json();if(!Array.isArray(obj.passages))throw Error("Sin pasajes");translations[key]=obj}catch(e){translations[key]={passages:[]};console.warn("Traducción "+key+" no disponible: "+e.message)}}));
