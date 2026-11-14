@@ -16,7 +16,28 @@ const T=({
 })[lang]||{total:"obras en la biblioteca",fichas:"fichas académicas",nuevas:"obras nuevas",fac:"facsímiles PDF de dominio público",pdf:"Facsímil PDF",loeb:"Loeb",vol:"vol.",box:"Facsímil de dominio público",note:"Alojado en libros.vitruvius-digital-library.org; el texto OCR no está revisado."};
 const fmt=n=>Number(n).toLocaleString("es-AR");
 const label=e=>T.pdf+" · "+[e.loeb?T.loeb:"",e.anio,e.volumen?T.vol+" "+String(e.volumen).replace(/^vol(ume)?\.?\s*/i,""):""].filter(Boolean).join(" ");
-fetch("data/r2/vinculos-repertorio.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(v=>{
+Promise.all([
+ fetch("data/r2/vinculos-repertorio.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}),
+ fetch("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{items:[]}).catch(()=>({items:[]}))
+]).then(([v,editionCatalogue])=>{
+ const editionById=new Map((editionCatalogue.items||[]).map(x=>[x.id,x]));
+ const editionLine=(e)=>{
+  const m=editionById.get(e.r2)||{};
+  const pieces=[];
+  if(m.autor)pieces.push("Autor: "+m.autor);
+  if(m.tituloEdicion)pieces.push("Versión: "+m.tituloEdicion);
+  if(m.editor)pieces.push("Pie editorial: "+m.editor);
+  if(m.anio)pieces.push("Año: "+m.anio);
+  if(m.volumen)pieces.push("Volumen: "+m.volumen);
+  if(Number.isFinite(m.paginas))pieces.push("Páginas del PDF: "+m.paginas);
+  if(Number.isFinite(m.paginasConTexto))pieces.push("Páginas con capa de texto: "+m.paginasConTexto);
+  if(m.traductor)pieces.push("Traductor: "+m.traductor);
+  if(m.editorCritico)pieces.push("Editor crítico: "+m.editorCritico);
+  if(m.creadorIA)pieces.push("Responsables registrados por la fuente (función por verificar): "+(Array.isArray(m.creadorIA)?m.creadorIA.join("; "):m.creadorIA));
+  if(m.identificadorIA)pieces.push("Identificador de la reproducción: "+m.identificadorIA);
+  if(m.alcance||e.alcance)pieces.push("Cobertura: "+(m.alcance||e.alcance));
+  return {detail:pieces.join(" · "),record:m};
+ };
  if(v?.schema!=="vdl-r2-vinculos-repertorio-1"||!v.recuentos||!v.porObra)return;
  const c=v.recuentos;
  // 1) Portadas
@@ -41,7 +62,7 @@ fetch("data/r2/vinculos-repertorio.json",{cache:"no-cache"}).then(r=>{if(!r.ok)t
    if(!eds||!eds.length||link.closest("[data-r2-box]"))return;
    const frag=document.createDocumentFragment();
    eds.forEach(e=>{const x=document.createElement("a");x.href=e.pdf;x.rel="noopener";x.className=link.className||"genre-work-version";
-    x.textContent=label(e);x.title=e.edicion+(e.alcance?" — "+e.alcance:"");x.dataset.r2Pdf="";x.style.marginLeft="8px";frag.append(x)});
+    const info=editionLine(e);x.textContent=label(e)+(Number.isFinite(info.record.paginas)?" · "+info.record.paginas+" págs.":"");x.title=info.detail||e.edicion;x.dataset.r2Pdf="";x.style.marginLeft="8px";frag.append(x)});
    link.after(frag);
   });
  };
@@ -57,7 +78,10 @@ fetch("data/r2/vinculos-repertorio.json",{cache:"no-cache"}).then(r=>{if(!r.ok)t
   const h=document.createElement("strong");h.textContent=T.box;box.append(h);
   const ul=document.createElement("ul");ul.style.margin="6px 0";
   v.porObra[work].forEach(e=>{const li=document.createElement("li");const a=document.createElement("a");a.href=e.pdf;a.rel="noopener";a.textContent=e.edicion+" ("+e.anio+(e.volumen?", "+T.vol+" "+e.volumen:"")+")";li.append(a);
-   if(e.alcance)li.append(" — "+e.alcance);ul.append(li)});
+   const info=editionLine(e);
+   if(info.detail){const d=document.createElement("p");d.style.cssText="margin:3px 0 12px;font:12px/1.55 system-ui";d.textContent=info.detail;li.append(d)}
+   if(info.record.fuente){const src=document.createElement("a");src.href=info.record.fuente;src.rel="noopener";src.textContent="Registro de la edición y procedencia ↗";li.append(src)}
+   if(e.alcance&&!info.record.alcance)li.append(" — "+e.alcance);ul.append(li)});
   const p=document.createElement("p");p.style.cssText="font:12px/1.5 system-ui;margin:0;opacity:.8";
   const more=document.createElement("a");more.href="bibliotheca-ampliada.html";more.textContent="Bibliotheca ampliada";
   p.append(T.note+" ",more);
