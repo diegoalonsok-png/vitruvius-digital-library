@@ -66,6 +66,14 @@ function draw(){
  detail(box,"Datación de la composición:",w.dating);
  detail(box,"Lengua del original:",w.language==="grc"?"griego antiguo":w.language==="la"?"latín":w.language);
  const perm=txt("p","");renderLink(perm,"Abrir ficha crítica extensa", "classics-work-record.html?work="+encodeURIComponent(w.id));box.append(perm);
+ // Priority among digitized witnesses is not equivalent to priority in the entire manuscript tradition.
+ detail(box,"Testimonio más antiguo digitalizado:",
+   "sin acreditación documental suficiente para afirmar que el primer testigo local sea el más antiguo conservado; consultar dataciones y catálogos individuales.");
+ if(w.id==="vitruvius"){
+  const local=txt("p","");
+  renderLink(local,"Harley MS 2767 · visor de dos folios","codex-h-doble-folio.html");
+  if(local.childNodes.length)box.append(local);
+ }
  evidenceHeading("Testimonios manuscritos");
  const witnesses=(Array.isArray(w.witnessRecords)?w.witnessRecords:[]).slice().sort((a,b)=>(a.dateStart||9999)-(b.dateStart||9999));
  if(witnesses.length){
