@@ -1,0 +1,65 @@
+name: Bibliotheca - descarga nocturna controlada
+
+on:
+  schedule:
+    # Buenos Aires (UTC-3), diariamente a las 01:00-07:00 inclusive.
+    # GitHub schedules use UTC. Hours 04:00-10:00 UTC.
+    - cron: "0 4-10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bibliotheca-classics-nightly
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    name: Fuente y preíndice académico
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependencias de recopilación
+        run: python -m pip install --disable-pip-version-check "requests>=2.32,<3" "boto3>=1.35,<2"
+      - name: Hora local e ingestión sin mutar el catálogo público
+        shell: bash
+        run: |
+          echo "NIGHTLY_LOCAL_HOUR=$(TZ=America/Argentina/Buenos_Aires date +%H)" >> "$GITHUB_ENV"
+      - name: Descargar fuente TEI y generar índices preliminares
+        run: python scripts/classics_nightly_ingest.py
+      - name: Informe y paquete de staging para auditoría
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-nightly-${{ github.run_id }}
+          path: nightly-classics-staging/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Resumen transparente de la ejecución
+        if: always()
+        shell: bash
+        run: |
+          if [ -f nightly-classics-staging/run-report.json ]; then
+            python - <<'PY'
+          import json, pathlib, os
+          p=pathlib.Path("nightly-classics-staging/run-report.json")
+          d=json.loads(p.read_text())
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+              f.write("### Bibliotheca — descarga nocturna\n")
+              f.write(f"Hora Argentina: {d['hour_argentina']}:00; R2 configurado: {d['r2_configured']}\n\n")
+              for item in d["runs"]:
+                  f.write(f"- {item['id']}: **{item['status']}**\n")
+              f.write("\n**Publicaciones certificadas en esta ejecución: 0**. El material pertenece a staging editorial.\n")
+          PY
+          fi
