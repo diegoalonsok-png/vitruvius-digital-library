@@ -98,7 +98,7 @@
  const chronologicalTypes=new Set([
   "Q5","Q571","Q7725634","Q47461344","Q11424","Q482994",
   "Q1656682","Q178561","Q1190554","Q13418847",
-  "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453"
+  "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453","Q215380"
  ]);
  const hasHistoricalSubject=()=>{
   if(isAkhenaten())return true;
