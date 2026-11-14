@@ -52,12 +52,12 @@ h2{font:400 24px/1.3 Georgia,serif}h3{font:600 15px system-ui}
 <label>Libro<select id="cp-book" aria-label="Libro"></select></label>
 <label>Sección<select id="cp-chapter" aria-label="Prefacio o capítulo"></select></label>
 <label>Locus<select id="cp-locus" aria-label="Locus"></select></label>
-<label>Traducción<select id="cp-language"><option value="es">Castellano · V514</option><option value="fr">Français · V554</option><option value="en">English · V297</option></select></label>
+<label>Voz mayor<select id="cp-keyword"><option value="">Todas las voces</option></select></label><label>Traducción<select id="cp-language"><option value="es">Castellano · V514</option><option value="fr">Français · V554</option><option value="en">English · V297</option></select></label>
 <button type="button" id="cp-prev">Anterior</button><button type="button" id="cp-next">Siguiente</button>
 <button type="submit">Consultar</button>
 </form>
-<p class="cp-small" id="cp-status" role="status" aria-live="polite">Cargando el índice canónico de pasajes…</p>
-<div class="cp-shell"><aside class="cp-index"><h2>Index locorum</h2><p class="cp-small">Prefacio y capítulos del libro elegido.</p><div id="cp-index"></div></aside>
+<p class="cp-small" id="cp-keyword-status" role="status">Seleccione una voz mayor para localizar sus loci y notas.</p><p class="cp-small" id="cp-status" role="status" aria-live="polite">Cargando el índice canónico de pasajes…</p>
+<div class="cp-shell"><aside class="cp-index"><h2>Index locorum</h2><p class="cp-small">Prefacio y capítulos del libro elegido. La voz seleccionada permite recorrer los pasajes donde está atestiguada.</p><div id="cp-index"></div></aside>
 <article class="cp-passage">
 <section class="cp-spread" aria-label="Texto latino y traducción enfrentados">
 <div class="cp-leaf" lang="la"><div class="cp-roman" id="cp-latin-locus">—</div><h2>Textus Latinus</h2><p class="cp-roman">KURILO · V514</p><div class="cp-text" id="cp-latin"></div></div>
