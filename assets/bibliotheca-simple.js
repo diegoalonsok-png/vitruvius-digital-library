@@ -629,6 +629,15 @@ function render(rows,q,details){
    ctx.searchParams.set("side",["la","grc"].includes(r.language)?"left":"right");
    const a=el("a","passage-link",({es:"Leer en contexto (original · traducción)",en:"Read in context (original · translation)",fr:"Lire en contexte (original · traduction)"})[locale]);a.href=ctx.href;li.append(a);
   }
+  if(r.workId&&/^[a-z0-9-]+$/.test(r.workId)&&["la","grc"].includes(r.language)&&r.locus){
+   const simpleUrl=new URL("classics-simple-parallel.html",location.href);
+   simpleUrl.searchParams.set("work",r.workId);
+   simpleUrl.searchParams.set("left",r.language);
+   simpleUrl.searchParams.set("right","auto-es");
+   simpleUrl.searchParams.set("locus",String(r.locus));
+   const simpleLink=el("a","passage-link","Visor simple");
+   simpleLink.href=simpleUrl.href;li.append(simpleLink);
+  }
   li.append(passageActions(r,byId.get(r.workId)||{},p));
   passages.append(li);
   }
