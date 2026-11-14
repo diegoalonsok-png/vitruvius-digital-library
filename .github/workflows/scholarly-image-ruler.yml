@@ -6,6 +6,9 @@ on:
       - 'assets/academic-image-ruler.js'
       - 'assets/obras-notables-visor.js'
       - 'scripts/test-academic-image-ruler.mjs'
+      - 'scripts/test-codex-h-study-panels.mjs'
+      - 'assets/codex-h-study-panels.js'
+      - 'data/codex-h/folio-locus-map.json'
       - 'scripts/test-obras-notables-visor.mjs'
       - 'obras-notables.html'
       - 'codex-h-doble-folio.html'
@@ -20,6 +23,9 @@ on:
       - 'assets/academic-image-ruler.js'
       - 'assets/obras-notables-visor.js'
       - 'scripts/test-academic-image-ruler.mjs'
+      - 'scripts/test-codex-h-study-panels.mjs'
+      - 'assets/codex-h-study-panels.js'
+      - 'data/codex-h/folio-locus-map.json'
       - 'scripts/test-obras-notables-visor.mjs'
       - 'obras-notables.html'
       - 'codex-h-doble-folio.html'
@@ -49,4 +55,5 @@ jobs:
           node --check assets/academic-image-ruler.js
           node --check assets/obras-notables-visor.js
           node scripts/test-academic-image-ruler.mjs
+          node scripts/test-codex-h-study-panels.mjs
           node scripts/test-obras-notables-visor.mjs
