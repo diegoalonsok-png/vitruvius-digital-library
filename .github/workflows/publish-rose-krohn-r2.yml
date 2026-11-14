@@ -1,0 +1,44 @@
+name: Publicar Rose y Krohn folio por folio en R2
+on:
+  push:
+    paths:
+      - 'scripts/publish-rose-krohn-folios-r2.py'
+      - '.github/workflows/publish-rose-krohn-r2.yml'
+  workflow_dispatch:
+jobs:
+  folios:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar disponibilidad de credenciales R2
+        id: credentials
+        env:
+          ACCOUNT: ${{ secrets.R2_ACCOUNT_ID }}
+          ACCESS: ${{ secrets.R2_ACCESS_KEY_ID }}
+          SECRET: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          BUCKET: ${{ secrets.R2_BUCKET_NAME }}
+        run: |
+          if [[ -n "$ACCOUNT" && -n "$ACCESS" && -n "$SECRET" && -n "$BUCKET" ]]; then
+            echo 'available=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'available=false' >> "$GITHUB_OUTPUT"
+            echo '::warning::Faltan credenciales R2 para publicar folios: revisar R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME. No se publica un índice ficticio.'
+          fi
+      - name: Instalar conversor de PDF e interfaz R2
+        if: steps.credentials.outputs.available == 'true'
+        run: python -m pip install --disable-pip-version-check pymupdf pillow boto3
+      - name: Publicar folios en R2 y comprobar cada imagen
+        if: steps.credentials.outputs.available == 'true'
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
+          R2_PUBLIC_BASE: https://libros.vitruvius-digital-library.org
+        run: python scripts/publish-rose-krohn-folios-r2.py --edition both --dpi 145
