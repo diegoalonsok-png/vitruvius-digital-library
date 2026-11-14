@@ -416,6 +416,11 @@ function liveBooks(q,concept){return S.works.map(w=>{
  // Preserve the independently verified external original alongside the local
  // indexed TEI transcription; the two represent distinct editorial editions.
  if(w.reading?.url)addOriginal(w.reading.url,"external","Edición original externa · comprobar edición y cobertura");
+ if(w.id==="marcus-aurelius-meditations"){
+  // Wikisource hosts Greek text; its base printed edition is not stated,
+  // so this is never labeled a critically established or locally hosted version.
+  addOriginal("https://el.wikisource.org/wiki/Τα_εις_εαυτόν/1","external","Griego antiguo · Wikisource · edición base no identificada");
+ }
  return {type:"book",workId:w.id,originalReadings,originalLanguage:w.language,originalEditionStatus:w.publicStatus,catalogueReadings:[...(w.localVersions||[]).filter(v=>v.kind==="translation").map(v=>({title:v.label,url:v.path,note:w.bibliography?.editionCitation||w.localEdition?.source||"",kind:"translation",year:w.localEdition?.year,fulltext:true})),...editions.filter(e=>(e.langs||[]).some(l=>l!==w.language)).map(e=>({title:e.title,url:e.url,note:[e.editor,e.year,e.provider,e.note].filter(Boolean).join(" · "),kind:"translation",year:e.year,fulltext:e.type!=="academic-translation-catalogue"}))],title:w.title,author:w.author,aliases:w.aliases||[],excerpt:[w.genre,w.dating,status].filter(Boolean).join(" · "),
   meta:"BIBLIOTHECA GRAECA ET LATINA · "+(w.language==="grc"?"GRIEGO":"LATÍN"),
   baseRating:rating,rating:rating+(local?4:0)+(witnesses.length?3:0),link:libraryURL(w.id),pdf,
