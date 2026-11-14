@@ -31,12 +31,14 @@ const VITRUVIAN=[
  {lemma:"scaenographia",aliases:["scaenographia","escenografía","perspective","perspectiva"],forms:["scaenographia","scaenographiae","scaenographiam"]}
 ];
 let passages=[],folioMap=null,visible=[],shown=0,lastMatches=[];
-const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[j]/g,"i").replace(/[v]/g,"u").replace(/[\u00a0\s]+/gu," ").trim();
+const foldChars=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
+const fold=s=>foldChars(s).replace(/[\u00a0\s]+/gu," ").trim();
 function foldMap(text){
  const source=String(text||"");let norm="",map=[];
  for(let i=0;i<source.length;){
   const ch=String.fromCodePoint(source.codePointAt(i));
-  let bit=fold(ch);
+  let bit=foldChars(ch).replace(/[\u00a0\s]/gu," ");
+  if(bit===" "&&(!norm||norm.endsWith(" "))){i+=ch.length;continue}
   for(const c of bit){norm+=c;map.push(i)}
   i+=ch.length;
  }
