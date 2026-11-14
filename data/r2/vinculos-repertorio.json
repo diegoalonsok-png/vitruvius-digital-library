@@ -1,12 +1,12 @@
 {
  "schema": "vdl-r2-vinculos-repertorio-1",
- "actualizado": "2026-11-13",
+ "actualizado": "2026-11-14",
  "descripcion": "Correspondencia, revisada a mano, entre las ediciones en facsímil alojadas en R2 y las 271 fichas del repertorio (data/bibliotheca-graeca-latina-I-bce-I-ce.json, que no se modifica). Las obras sin ficha previa se cuentan como incorporaciones nuevas; las ediciones aún no revisadas no se cuentan.",
  "recuentos": {
   "fichasRepertorio": 271,
-  "obrasNuevas": 7,
-  "obrasTotales": 278,
-  "edicionesFacsimil": 113,
+  "obrasNuevas": 11,
+  "obrasTotales": 282,
+  "edicionesFacsimil": 117,
   "fichasConFacsimil": 113,
   "sinRevisar": 0
  },
@@ -1415,6 +1415,34 @@
    "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/scamozzi-idea-architettura.pdf"
   },
   {
+   "r2": "beda-de-temporum-ratione",
+   "autor": "Beda el Venerable",
+   "obra": "De temporum ratione",
+   "lengua": "la",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/beda-de-temporum-ratione.pdf"
+  },
+  {
+   "r2": "petrarca-africa",
+   "autor": "Francesco Petrarca",
+   "obra": "Africa",
+   "lengua": "la",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-africa.pdf"
+  },
+  {
+   "r2": "petrarca-secretum",
+   "autor": "Francesco Petrarca",
+   "obra": "Secretum meum",
+   "lengua": "la",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-secretum.pdf"
+  },
+  {
+   "r2": "isidoro-etymologiae",
+   "autor": "Isidoro de Sevilla",
+   "obra": "Etymologiae sive Origines",
+   "lengua": "la",
+   "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/isidoro-etymologiae.pdf"
+  },
+  {
    "r2": "alberti-de-re-aedificatoria",
    "autor": "Leon Battista Alberti",
    "obra": "De re aedificatoria",
@@ -1751,6 +1779,10 @@
   "paladio-opus-agriculturae": [
    "paladio-opus-agriculturae"
   ],
-  "rose-vitruvius-1899": []
+  "rose-vitruvius-1899": [],
+  "beda-de-temporum-ratione": [],
+  "petrarca-africa": [],
+  "petrarca-secretum": [],
+  "isidoro-etymologiae": []
  }
 }
