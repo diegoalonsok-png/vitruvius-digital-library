@@ -145,7 +145,14 @@ function genreOf(w){
  if(/linguistica|erudita|erudicion/.test(s))return "linguistics";
  return "other";
 }
-const era=$("classic-era"),genre=$("classic-genre");
+const era=$("classic-era"),genre=$("classic-genre"),order=$("classic-order");
+const alphabetic=(a,b)=>String(a||"").localeCompare(String(b||""),"es",{sensitivity:"base",numeric:true});
+function compareWorks(a,b){
+ const mode=order?.value||"author";
+ if(mode==="date")return dating(a)-dating(b)||alphabetic(a.author,b.author)||alphabetic(a.title,b.title)||alphabetic(a.id,b.id);
+ if(mode==="title")return alphabetic(a.title,b.title)||alphabetic(a.author,b.author)||alphabetic(a.id,b.id);
+ return alphabetic(a.author,b.author)||alphabetic(a.title,b.title)||alphabetic(a.id,b.id);
+}
 function chosenWorks(){return works.filter(w=>(!era.value||periodOf(w)===era.value)&&(!genre.value||genreOf(w)===genre.value))}
 function refreshFacets(){
  const labels=locale==="fr"?{period:"Époque",genre:"Matière / genre",allPeriod:"Toutes les époques",allGenre:"Toutes les matières"}:locale==="en"?
@@ -158,9 +165,13 @@ function refreshFacets(){
  genre.replaceChildren(new Option(labels.allGenre,""));
  for(const [key,names] of genres)if(works.some(w=>genreOf(w)===key))genre.append(new Option(names[locale],key));
  era.value=oldEra;genre.value=oldGenre;
- $("filter-method").textContent=locale==="en"?"Editorial categories from catalogue genres; approximate composition date (not manuscript or edition date). Disputed datings remain identified.":
-  locale==="fr"?"Catégories tirées du catalogue ; date approximative de composition, non de copie ou d'édition. Datations discutées signalées.":
-  "Categorías según el género catalogado y la fecha aproximada de composición, no la copia manuscrita ni la edición. Dataciones discutidas identificadas.";
+ $("order-label").textContent=({es:"Orden del catálogo",en:"Catalogue order",fr:"Ordre du catalogue"})[locale];
+ order.options[0].textContent=({es:"Autor · título (A–Z)",en:"Author · title (A–Z)",fr:"Auteur · titre (A–Z)"})[locale];
+ order.options[1].textContent=({es:"Título (A–Z)",en:"Title (A–Z)",fr:"Titre (A–Z)"})[locale];
+ order.options[2].textContent=({es:"Cronología aproximada",en:"Approximate chronology",fr:"Chronologie approximative"})[locale];
+ $("filter-method").textContent=locale==="en"?"Alphabetical author/title is the default; optional chronology uses approximate composition dates, never manuscript or edition dates.":
+  locale==="fr"?"Classement alphabétique par auteur et titre par défaut ; la chronologie facultative utilise la composition approximative, non la date des manuscrits.":
+  "Orden alfabético por autor y título de forma predeterminada; la cronología opcional usa fechas aproximadas de composición, no de los manuscritos.";
 }
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
 const foldedMap=text=>{
@@ -262,9 +273,9 @@ function refresh(){
  refreshFacets();
  const t=dict[locale],selected=work.value||new URLSearchParams(location.search).get("work")||"";
  work.replaceChildren(new Option(t.all,""));
- for(const w of chosenWorks().slice().sort((a,b)=>dating(a)-dating(b)||String(a.title).localeCompare(String(b.title),"es"))){
+ for(const w of chosenWorks().slice().sort(compareWorks)){
   const docxAvailable=window.ClassicsUploadedDocuments?.workIds?.has(w.id);
-  const name=[w.title,w.author].filter(Boolean).join(" · ")+(indexed.has(w.id)?"":" "+t.missing)+(docxAvailable?" · DOCX":"");
+  const name=(order?.value==="title"?[w.title,w.author]:[w.author,w.title]).filter(Boolean).join(" · ")+(indexed.has(w.id)?"":" "+t.missing)+(docxAvailable?" · DOCX":"");
   work.append(new Option(name,w.id));
  }
  for(const document of window.ClassicsUploadedDocuments?.uncataloguedDocs||[])
@@ -833,6 +844,7 @@ async function search(updateHistory=true,options={}){
 $("search-form").addEventListener("submit",ev=>{ev.preventDefault();void search()});
 work.addEventListener("change",()=>{drawRemote();if(input.value.trim())void search()});
 for(const facet of [era,genre])facet.addEventListener("change",()=>{refresh();if(input.value.trim())void search()});
+ order.addEventListener("change",()=>{refresh();window.dispatchEvent(new Event("bibliotheca:order-changed"))});
 input.addEventListener("input",()=>{
  // Editing a new term cancels the visual authority of the preceding search.
  // The old asynchronous scan may finish, but its serial can no longer paint.
