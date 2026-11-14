@@ -27,6 +27,7 @@ for(const id of ['rose-1899','krohn-1912']){
  const img=$('folio');Object.defineProperty(img,'naturalWidth',{value:1200});Object.defineProperty(img,'naturalHeight',{value:1800});img.dispatchEvent(new w.Event('load'));
  w.document.querySelector('#h-folio-grid [data-page="7"]').click();await pause();
  assert.equal($('page').value,'7');assert.equal(w.document.querySelector('[data-page="7"]').getAttribute('aria-pressed'),'true');
+ const compared=new URL($('open-compared').href);assert.equal(compared.searchParams.get('edition'),id);assert.equal(compared.searchParams.get('image'),'7');
  assert.equal($('folio').getAttribute('src'),folios[6].imagen);
  $('zoom-in').click();assert.equal($('zval').textContent,'125%');
  $('negative').checked=true;$('negative').dispatchEvent(new w.Event('change'));assert.match(img.style.filter,/invert\(1\)/);

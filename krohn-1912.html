@@ -2,14 +2,14 @@
 <html lang="es" translate="no"><head><meta charset="utf-8"><meta name="google" content="notranslate"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Krohn 1912 · Scriptorium · Vitruvius Digital Library</title>
 <link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
-<link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/modern-edition-reader.css?v=20261114-2"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
-<script defer src="assets/site-bar.js?v=20261113-aa-en-linea"></script><meta name="description" content="Lector de folios de Fritz Krohn, 1912, biblioteca Vitruvius."><link rel="canonical" href="https://vitruvius-digital-library.org/krohn-1912">
-<meta name="citation_title" content="De architectura · Fritz Krohn, 1912"><meta name="citation_author" content="Vitruvius Pollio"><meta name="citation_editor" content="Fritz Krohn"><meta name="citation_publication_date" content="1912"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="la"><meta name="citation_public_url" content="https://vitruvius-digital-library.org/krohn-1912"><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body data-edition="krohn-1912"><main class="modern-edition" id="main-content">
+<link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/modern-edition-reader.css?v=20261114-2"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer="" src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<script defer="" src="assets/site-bar.js?v=20261113-aa-en-linea"></script><meta name="description" content="Lector de folios de Fritz Krohn, 1912, biblioteca Vitruvius."><link rel="canonical" href="https://vitruvius-digital-library.org/krohn-1912">
+<meta name="citation_title" content="De architectura · Fritz Krohn, 1912"><meta name="citation_author" content="Vitruvius Pollio"><meta name="citation_editor" content="Fritz Krohn"><meta name="citation_publication_date" content="1912"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="la"><meta name="citation_public_url" content="https://vitruvius-digital-library.org/krohn-1912"><script defer="" src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer="" src="assets/analytics.js?v=20261106-ga4-1"></script><style>.edition-reading-link{display:inline-block;padding:11px 16px;border:1px solid #ac8c56;border-radius:4px;background:var(--paper,#f7f4ee);color:inherit;text-decoration:none;font-weight:600}.edition-reading-link:hover{outline:2px solid #bc9c67;outline-offset:2px}</style></head><body data-edition="krohn-1912"><main class="modern-edition" id="main-content">
 <p><a href="index.html">← Portada</a> · <a href="scriptorium.html">Scriptorium</a> · <a href="rose-1899.html">Rose · 1899</a> · <a href="cesariano-1521.html">Cesariano · 1521</a></p>
 <p class="eyebrow">VITRVVIVS · EDITIONES IMPRESSAE · LECTIO</p><h1>Scriptorium Krohn · 1912</h1>
 <p><em>Vitruvii De architectura libri decem</em>. Edición crítica latina de Fritz Krohn, Leipzig: B. G. Teubner, 1912.</p>
 <p>Elige una miniatura debajo del visor para abrir y ampliar esa página. Consulta la obra por palabras, frases, conceptos, loci y prefacios.</p>
-<div id="reading-frame">
+<p><a id="open-compared" class="edition-reading-link" href="lectura-comparada.html?edition=krohn-1912&amp;image=5">Lectura enfrentada con traducción</a></p><div id="reading-frame">
 <div class="edition-toolbar" role="group" aria-label="Herramientas de lectura de Krohn">
 <label>Imagen digital <input id="page" type="number" min="1" value="5"></label>
 <button type="button" id="prev">← Anterior</button><button type="button" id="open">Abrir imagen</button><button type="button" id="next">Siguiente →</button>
@@ -20,8 +20,8 @@
 <label>Brillo <input id="brightness" type="range" min="50" max="180" value="100"><output id="bval">100%</output></label>
 <label class="check"><input id="grayscale" type="checkbox"> Blanco y negro</label>
 <label class="check"><input id="negative" type="checkbox"> Invertir colores</label>
-<label class="check"><input id="loupe-enabled" type="checkbox" checked> Lupa ×3</label>
-<label class="check"><input id="key-highlights" type="checkbox" checked> Subrayar términos clave</label>
+<label class="check"><input id="loupe-enabled" type="checkbox" checked=""> Lupa ×3</label>
+<label class="check"><input id="key-highlights" type="checkbox" checked=""> Subrayar términos clave</label>
 <label class="check"><input id="manual-mark" type="checkbox"> Subrayar a mano</label><button type="button" id="clear-marks">Borrar mis trazos de esta hoja</button>
 <button type="button" id="fullscreen">Pantalla completa</button><button type="button" id="reset-view">Restablecer lectura</button>
 </div>
@@ -39,7 +39,7 @@
 <button id="h-gallery-search" type="submit">Buscar imágenes</button><button id="h-gallery-reset" type="button">Mostrar todas</button></form>
 <p id="h-gallery-status" class="edition-status" role="status" aria-live="polite">Cargando miniaturas…</p>
 <div class="edition-scroll"><div id="h-folio-grid" aria-label="Elegir página para ampliar"></div></div>
-<button id="h-gallery-more" type="button" hidden>Mostrar más imágenes</button>
+<button id="h-gallery-more" type="button" hidden="">Mostrar más imágenes</button>
 </section>
 <section class="edition-search" aria-labelledby="search-heading">
 <h2 id="search-heading">Buscar palabras, conceptos y loci</h2>
@@ -49,7 +49,7 @@
 <button id="search-submit" type="submit">Buscar</button><button id="search-clear" type="button">Limpiar</button></form>
 <div class="edition-terms" role="group" aria-label="Términos de Vitruvio"><button type="button" data-term="symmetria">symmetria</button><button type="button" data-term="decor">decor</button><button type="button" data-term="firmitas">firmitas</button><button type="button" data-term="utilitas">utilitas</button><button type="button" data-term="venustas">venustas</button><button type="button" data-term="eurythmia">eurythmia</button><button type="button" data-term="ordinatio">ordinatio</button><button type="button" data-term="dispositio">dispositio</button></div>
 <p id="search-status" class="edition-status" role="status" aria-live="polite">Preparando el índice de esta edición…</p>
-<div id="search-results"></div><button id="search-more" type="button" hidden>Mostrar más resultados</button>
+<div id="search-results"></div><button id="search-more" type="button" hidden="">Mostrar más resultados</button>
 <p class="edition-note">La búsqueda conceptual emplea un vocabulario controlado de equivalencias y formas latinas. Los loci y prefacios se localizan por coincidencias textuales: cada propuesta indica su grado de certeza. El OCR puede contener errores y debe cotejarse con la imagen.</p>
 <details id="ocr-panel"><summary>Leer texto OCR de la página abierta</summary><p id="ocr-status" class="edition-note"></p><div id="ocr-text" lang="la"></div></details>
 </section>
@@ -57,4 +57,5 @@
 <p id="scan-credit">Digitalización: Internet Archive. <a href="https://archive.org/details/vitruviidearchit00vitr" target="_blank" rel="noopener">Consultar ejemplar de origen ↗</a></p>
 <p><a id="edition-pdf" href="documents/krohn-1912.pdf" target="_blank" rel="noopener">Abrir PDF completo</a> · <button type="button" id="copy-link">Copiar enlace a esta página</button> · <a href="colacion.html?locus=1.1.1">Colación y traducciones LA / ES / FR / EN</a></p>
 <p class="edition-note">La imagen digital y la paginación impresa se distinguen en las referencias. Las ediciones originales son históricas; el OCR y los enlaces por locus son ayudas de consulta, con el facsímil como referencia de lectura.</p></footer>
-</main><script type="module" src="assets/rose-krohn-harleianus-reader.mjs?v=20261114-4"></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
+</main><script type="module" src="assets/rose-krohn-harleianus-reader.mjs?v=20261114-5"></script><script src="assets/theme.js?v=20261105-merge-v1" defer=""></script><script defer="" src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer="" src="assets/ui-idioma.js?v=20261112-sitio3"></script>
+</body></html>
