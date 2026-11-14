@@ -26,3 +26,20 @@
 #bibliotheca-work-search .bws-help{font:10.5px/1.5 system-ui,sans-serif;color:#d6d3cc;margin:8px 0 0;opacity:1}
 @media(max-width:680px){#bibliotheca-work-search{padding:11px 10px}#bibliotheca-work-search .bws-row{flex-wrap:wrap}#bibliotheca-work-search .bws-row>button{flex:1 1 100%}#bibliotheca-work-search input[type=search]{font-size:16px}#bibliotheca-work-search .bws-results{max-height:420px}}
 @media print{#bibliotheca-work-search{display:none!important}}
+/* 2026-11-14: buscador primario en la portada y Bibliotheca. */
+#bibliotheca-work-search{margin:22px 0 20px;padding:22px 26px 20px;border-radius:11px;border-color:#9a8c77}
+#bibliotheca-work-search h3{font-size:clamp(23px,2.4vw,31px);margin-bottom:7px}
+#bibliotheca-work-search .bws-intro{font-size:14px;line-height:1.55;margin:0 0 15px}
+#bibliotheca-work-search form>label{font-size:14px;margin-bottom:7px}
+#bibliotheca-work-search .bws-row{gap:10px}
+#bibliotheca-work-search input[type=search]{min-height:52px;height:52px;font-size:17px;padding:11px 16px}
+#bibliotheca-work-search .bws-row>button{height:52px;min-height:52px;padding:11px 20px;font-size:15px;font-weight:650}
+#bibliotheca-work-search .bws-count{font-size:13px;margin:14px 0 8px}
+#bibliotheca-work-search .bws-results{max-height:590px}
+#bibliotheca-work-search .bws-item{padding:14px 5px}
+#bibliotheca-work-search .bws-heading{font-size:17px;line-height:1.45}
+#bibliotheca-work-search .bws-heading span{font-size:15px}
+#bibliotheca-work-search .bws-meta{font-size:13px}
+#bibliotheca-work-search .bws-actions{font-size:13px}
+#bibliotheca-work-search .bws-help{font-size:12px}
+@media(max-width:680px){#bibliotheca-work-search{padding:16px 13px}#bibliotheca-work-search input[type=search]{height:52px;font-size:16px}}
