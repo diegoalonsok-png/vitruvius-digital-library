@@ -6,7 +6,11 @@ const escapeHtml=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;"
 const topics=["symmetria","decor","eurythmia","ordinatio","dispositio","distributio","firmitas","utilitas","venustas","fabrica","ratiocinatio","proportio","commensuratio","ichnographia","orthographia","scaenographia","entasis","triglyphus","analemma","metrologia","architectura","templum","columna","machina","aqua","codex","Harleianus"];
 const books=[1,2,3,4,5,6,7,8,9,10],romans=["I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const create=(tag,txt,parent,cls)=>{const e=document.createElement(tag);if(txt!==null)e.textContent=String(txt);if(cls)e.className=cls;if(parent)parent.append(e);return e};
-let all=[],visible=[],shown=0;const STEP=30;let bibliography={};
+let all=[],visible=[],shown=0,ready=false;const STEP=30;let bibliography={};
+function status(message,state){const target=$("ic-status");target.textContent=message;target.dataset.state=state||"ready"}
+function goToResults(){const target=$("ic-status");target.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});target.focus({preventScroll:true})}
+function buttonState(searching){const btn=$("ic-submit");btn.classList.toggle("is-searching",searching);btn.textContent=searching?"Buscando…":"Buscar";btn.setAttribute("aria-busy",searching?"true":"false");btn.disabled=searching}
+
 function highlight(container,value){
  const text=String(value||""),words=[$("ic-term").value,$("ic-search").value.trim()].filter(Boolean);
  if(!words.length){container.textContent=text;return}
@@ -80,14 +84,24 @@ function render(reset){
  if(reset){shown=0;$("ic-results").replaceChildren()}
  const slice=visible.slice(shown,shown+STEP);for(const item of slice)renderOne(item);
  shown+=slice.length;$("ic-more").hidden=shown>=visible.length;
- $("ic-status").textContent=visible.length+" entradas documentales encontradas · "+shown+" visibles. "+all.filter(x=>x.type==="commentary").length+" comentarios extensos y "+all.filter(x=>x.type==="footnote").length+" notas; "+all.filter(x=>x.type==="study").length+" páginas del estudio preliminar.";
- if(!shown)create("p","No hay coincidencias con estos filtros. Pruebe una raíz latina o elija todos los libros.",$("ic-results"),"note");
+ const q=$("ic-search").value.trim(),topic=$("ic-term").value;
+ const resultLabel=visible.length===1?"1 resultado encontrado":visible.length+" resultados encontrados";
+ status(resultLabel+" · "+shown+" visibles. "+(q?"Búsqueda: «"+q+"». ":"")+(topic?"Concepto: "+topic+". ":"")+
+ all.filter(x=>x.type==="commentary").length+" comentarios extensos, "+
+ all.filter(x=>x.type==="footnote").length+" notas y "+
+ all.filter(x=>x.type==="study").length+" páginas de estudio en el índice.",visible.length?"ready":"empty");
+ if(!shown)create("p","No hay coincidencias con estos filtros. Probá otra palabra, revisá la edición o restablecé el concepto mayor.",$("ic-results"),"note");
 }
-function apply(){visible=all.filter(matches);render(true)}
-$("ic-form").addEventListener("submit",e=>{e.preventDefault();apply()});
+function apply(scroll){if(!ready){status("El índice todavía se está cargando. La búsqueda se ejecutará al terminar.","loading");return}visible=all.filter(matches);render(true);if(scroll)goToResults()}
+$("ic-form").addEventListener("submit",e=>{
+ e.preventDefault();buttonState(true);
+ try{apply(true)}finally{buttonState(false)}
+});
 $("ic-more").addEventListener("click",()=>render(false));
-for(const key of ["ic-book","ic-edition","ic-term","ic-type"])$(key).addEventListener("change",apply);
-$("ic-search").addEventListener("input",apply);
+for(const key of ["ic-book","ic-edition","ic-type"])$(key).addEventListener("change",()=>apply(false));
+$("ic-term").addEventListener("change",()=>{if($("ic-term").value)$("ic-search").value="";apply(false)});
+
+$("ic-search").addEventListener("input",()=>{if($("ic-search").value.trim())$("ic-term").value="";$("ic-hint").textContent="Presioná Buscar o Enter para ver las coincidencias resaltadas en amarillo."});
 (async()=>{
  try{
   const tasks=books.flatMap(book=>["V514","V554"].map(ed=>({book,ed,path:"data/commentary/"+ed.toLowerCase()+"-libro-"+book+".json"})));
@@ -102,7 +116,7 @@ $("ic-search").addEventListener("input",apply);
   if(url.get("book")&&books.includes(Number(url.get("book"))))$("ic-book").value=url.get("book");
   if(url.get("locus"))$("ic-search").value=url.get("locus");
   if(topics.includes(url.get("term")))$("ic-term").value=url.get("term");
-  apply();
- }catch(e){$("ic-status").textContent="No se pudo cargar el índice: "+e.message}
+  ready=true;apply(false);
+ }catch(e){status("No se pudo cargar el índice: "+e.message,"empty");buttonState(false)}
 })();
 })();
