@@ -68,7 +68,7 @@ function celdaAp(f,k){const td=document.createElement("td");const a=f[k];if(!a){
  a.entradas.forEach(e=>{const s=el("span",null,"e");s.append(e.texto);s.append(el("span","l. "+e.linea,"src"));td.append(s)});
  const ln=el("a","p. "+a.pagina+" ↗","small");ln.href=a.pdf;ln.target="_blank";ln.rel="noopener";td.append(ln);return td}
 function fila(f){const tr=document.createElement("tr");
- const l=el("td",null,"l");const a=el("a",f.locus);a.href="lector-bilingue.html?locus="+encodeURIComponent(f.locus);l.append(a);
+ const l=el("td",null,"l");const a=el("a",f.locus);a.href="apparatus-bude.html?locus="+encodeURIComponent(f.locus);a.title="Abrir pasaje en el lector crítico integrado";l.append(a);const traditional=el("a"," · lector bilingüe","src");traditional.href="lector-bilingue.html?locus="+encodeURIComponent(f.locus);l.append(traditional);
  if(f.testigos?.length){l.append(document.createElement("br"));f.testigos.forEach(s=>l.append(el("span",s,"sig")))}tr.append(l);
  const v=document.createElement("td");
  if(!f.v514.length&&!f.v514SinLema)v.append(el("span","—","g"));
