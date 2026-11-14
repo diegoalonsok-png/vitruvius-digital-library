@@ -60,7 +60,7 @@ const callbacks={}, observers=[],win={
  addEventListener:(name,callback)=>{callbacks[name]=callback},
  VitruviaSearchSnapshot:null,
  VitruviaEntityResolver:{resolve:async q=>({wikidataId:q==="Pink Floyd"?"Q1":"Q2",
-  canonical:q,inceptionYear:q==="Pink Floyd"?1965:null,
+  canonical:q,instanceOf:q==="Pink Floyd"?["Q215380"]:["Q5"],inceptionYear:q==="Pink Floyd"?1965:null,
   birthYear:q==="Ramses II"?-1303:q==="Mozart"?1756:null,
   deathYear:q==="Mozart"?1791:null})}
 };
