@@ -41,7 +41,7 @@
       "indexed_passages": 731,
       "bibliographic_author": "Kurilo, Diego",
       "isbn": "978-631-01-6651-3",
-      "isbn_note": "ISBN compartido por las ediciones V514 (latín–castellano) y V554 (latín–francés) por decisión editorial; cada versión se identifica por su DOI de Zenodo.",
+      "isbn_note": "ISBN común declarado por el editor para V514, V554 y V297; los ISBN individuales por versión están pendientes. Cada versión se identifica por su DOI propio.",
       "edition_statement": "Recensio académica provisional, edición digital V514",
       "metadata_source": {
         "type": "author_docx_front_matter",
@@ -60,7 +60,13 @@
       "doi": "10.5281/zenodo.23884757",
       "publication_date": "2026-11-02",
       "doi_metadata_source": "https://zenodo.org/records/23884757",
-      "doi_verified_at": "2026-11-11"
+      "doi_verified_at": "2026-11-11",
+      "isbn_status": "publisher-declared-shared",
+      "isbn_source": {
+        "type": "publisher_statement",
+        "date": "2026-11-13",
+        "note": "El editor confirmó que las tres versiones comparten actualmente el ISBN; mantienen DOI diferentes."
+      }
     },
     {
       "id": "recensio-fr",
@@ -94,7 +100,7 @@
       "indexed_passages": 731,
       "bibliographic_author": "Kurilo, Diego",
       "isbn": "978-631-01-6651-3",
-      "isbn_note": "ISBN compartido por las ediciones V514 (latín–castellano) y V554 (latín–francés) por decisión editorial; cada versión se identifica por su DOI de Zenodo.",
+      "isbn_note": "ISBN común declarado por el editor para V514, V554 y V297; los ISBN individuales por versión están pendientes. Cada versión se identifica por su DOI propio.",
       "edition_statement": "Recensio académica provisional, edición digital V554",
       "metadata_source": {
         "type": "author_docx_front_matter",
@@ -113,7 +119,13 @@
       "doi": "10.5281/zenodo.23885110",
       "publication_date": "2026-11-02",
       "doi_metadata_source": "https://zenodo.org/records/23885110",
-      "doi_verified_at": "2026-11-11"
+      "doi_verified_at": "2026-11-11",
+      "isbn_status": "publisher-declared-shared",
+      "isbn_source": {
+        "type": "publisher_statement",
+        "date": "2026-11-13",
+        "note": "El editor confirmó que las tres versiones comparten actualmente el ISBN; mantienen DOI diferentes."
+      }
     },
     {
       "id": "theory-en",
@@ -146,8 +158,8 @@
       "structured_index": "data/structured/theory-en.json",
       "indexed_passages": 728,
       "bibliographic_author": "Kurilo, Diego",
-      "isbn": null,
-      "isbn_note": "El PDF V297 depositado en Zenodo (DOI 10.5281/zenodo.23885404), portada y créditos revisados el 11-11-2026, no consigna ISBN. Se necesita el identificador asignado por el editor para completar este campo.",
+      "isbn": "978-631-01-6651-3",
+      "isbn_note": "ISBN común declarado por el editor para V514, V554 y V297; los ISBN individuales por versión están pendientes. Cada versión se identifica por su DOI propio.",
       "edition_statement": "Primera edición inglesa, revisión editorial V297",
       "metadata_source": {
         "type": "author_docx_front_matter",
@@ -164,7 +176,13 @@
       "doi": "10.5281/zenodo.23885404",
       "publication_date": "2026-11-02",
       "doi_metadata_source": "https://zenodo.org/records/23885404",
-      "doi_verified_at": "2026-11-11"
+      "doi_verified_at": "2026-11-11",
+      "isbn_status": "publisher-declared-shared",
+      "isbn_source": {
+        "type": "publisher_statement",
+        "date": "2026-11-13",
+        "note": "El editor confirmó que las tres versiones comparten actualmente el ISBN; mantienen DOI diferentes."
+      }
     },
     {
       "id": "theory-es",

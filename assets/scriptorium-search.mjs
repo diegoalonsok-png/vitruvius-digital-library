@@ -17,8 +17,8 @@ const selectedIndex = () => searchSourceMap[selectedPDF()] || null;
 const semanticConcepts = [
  // Documented technical synonym sets: not an AI embedding model.
  ['symmetria','symmetriae','simetría','symétrie','symmetry','proporción','proportion','proportio','proportiones','conmensurabilidad','commensuratio','commensurabilité','συμμετρία'],
- ['ordinatio','ordenación','ordenacion','ordonnance','ordering','order','modulatio','modulus','módulo','module'],
- ['dispositio','disposición','disposition','arrangement','taxis','τάξις'],
+ ['ordinatio','ordenación','ordenacion','ordonnance','ordering','order','modulatio','modulus','módulo','module','taxis','τάξις'],
+ ['dispositio','disposición','disposition','arrangement','diathesis','διάθεσις'],
  ['eurythmia','euritmia','eurythmie','eurythmy','εὐρυθμία'],
  ['firmitas','solidez','solidity','stability','solidité','estabilidad','estabilite','stabilitas','resistencia','strength'],
  ['utilitas','utilidad','utility','usefulness','fonction','función','function','fonctionnalité','functionality'],
@@ -50,6 +50,9 @@ statusSelected();
 
 const cache = new Map();
 let live = [], attempt = 0;
+let shown=30;
+const nextResults=document.createElement('div');nextResults.className='script-result-pagination';
+$('script-search-results').after(nextResults);
 const fold = value => String(value||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase().replace(/v/g,'u').replace(/j/g,'i').replace(/ς/g,'σ');
 const numberFromRoman = value => {
  const s=String(value).toUpperCase(), roman=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
@@ -149,17 +152,17 @@ function matchEdition(src,data,query,parsed,terms){
   const isLocus=Boolean(parsed);
   if(isLocus&&!chapterMatches(p,parsed))continue;
   let term=null,field=null;
+  if(isLocus)field=p.latin?'latin':'translation';
   if(!isLocus){
    term=firstHit(p.latin||'',terms);
    if(term)field='latin';
    if(!term){term=firstHit(p.translation||'',terms);if(term)field='translation';}
    if(!term)continue;
   }
-  const page=Number(p.pdf_pages?.[field||'latin']||(isLocus?p.pdf_pages?.translation:0)||0)||null;
+  const page=Number(p.pdf_pages?.[field||'latin']||0)||null;
   found.push({kind:'edition',id:src.id,source:src,p,field,term,page,
    snippet:field==='latin'?p.latin:p.translation||p.latin,
    label:'De architectura '+p.locus});
-  if(found.length>=100)break;
  }
  return found;
 }
@@ -170,7 +173,6 @@ function matchOCR(src,data,terms){
   const term=firstHit(p.text||'',terms);
   if(!term)continue;
   results.push({kind:'ocr',id:src.id,source:src,term,page:Number(p.page),snippet:p.text,label:'Página OCR '+p.page});
-  if(results.length>=80)break;
  }
  return results;
 }
@@ -196,7 +198,7 @@ function addButton(parent,label,onclick){
 }
 function render(){
  const out=$('script-search-results');out.replaceChildren();
- const count=Math.min(80,live.length);
+ const count=Math.min(shown,live.length);
  for(let i=0;i<count;i++){
   const r=live[i],card=document.createElement('article');card.className='script-result';
   const h=document.createElement('h3');h.textContent=r.source.label+' · '+r.label;card.append(h);
@@ -223,6 +225,7 @@ function render(){
     const n=document.createElement('small');n.textContent=' Página localizada comparando el latín del locus con el OCR ('+ok.map(([s,f])=>s.label.split(' · ')[0]+': '+f.share+' % de coincidencia').join('; ')+'). Coteja la imagen.';box.append(n);
    });
   }
+  if(window.ScriptoriumScholar){const ref=document.createElement('div');ref.className='script-reference';card.append(ref);window.ScriptoriumScholar.mount(ref,()=>({editionId:r.id,locus:r.p?.locus,page:r.page,translation:r.field==='translation',readerOnly:r.kind==='ocr'}),{compact:true})}
   if(r.p?.locus){const ap=document.createElement('a');ap.href='aparato-critico.html?locus='+encodeURIComponent(r.p.locus);ap.textContent='Aparato crítico de este locus →';ap.style.marginRight='14px';card.append(ap)}
   if(r.p){
    const a=document.createElement('a');a.href='lector-bilingue.html?locus='+encodeURIComponent(r.p.locus)+'&lang='+({recensio:'es','recensio-es':'es','recensio-fr':'fr','theory-en':'en'}[r.id]||'es');a.textContent='Consultar locus con texto y traducción →';card.append(a);
@@ -230,7 +233,9 @@ function render(){
   }
   out.append(card);
  }
- if(live.length>count){const last=document.createElement('p');last.textContent='Se muestran los primeros '+count+' resultados. Precisa el término o elige una edición para acotar la búsqueda.';out.append(last);}
+ nextResults.replaceChildren();
+ const info=document.createElement('span');info.textContent='Se muestran '+count+' de '+live.length+' resultados.';nextResults.append(info);
+ if(live.length>count)addButton(nextResults,'Mostrar 30 resultados más',()=>{shown+=30;render()});
 }
 let running=0,ocrFocus=null;
 const EDITION_NAMES=[['krohn-1912',['krohn']],['rose-1899',['rose']],['recensio-es',['v514']],['recensio-fr',['v554']],['theory-en',['v297']]];
@@ -252,7 +257,8 @@ $('script-search-form').addEventListener('submit',async event=>{
  const named=editionInQuery($('script-query').value.trim());ocrFocus=named&&/krohn|rose/.test(named.id)?named.id:null;
  const serial=++running,q=named?.rest||$('script-query').value.trim(),scope=named?named.id:$('script-search-scope').value,mode=$('script-search-mode').value,status=$('script-search-status');
  if(!q){status.textContent='Ingresa un locus, palabra o frase.';return;}
- live=[];$('script-search-results').replaceChildren();
+ live=[];shown=30;$('script-search-results').replaceChildren();nextResults.replaceChildren();
+ const searchUrl=new URL(location.href);searchUrl.searchParams.set('q',q);searchUrl.searchParams.set('scope',scope);searchUrl.searchParams.set('match',mode);history.replaceState(null,'',searchUrl);
  const locus=locusQuery(q);
  status.textContent='Consultando índices del tratado y OCR histórico…';
  // Si la fuente elegida arriba no tiene índice de texto (p. ej., un manuscrito), se busca en todas las ediciones y OCR.
@@ -298,4 +304,7 @@ $('script-search-form').addEventListener('submit',async event=>{
  status.textContent=live.length+' resultados'+suffix+(missing?' · Sin acceso al índice: '+missing:'')+(locus&&chosen.some(x=>x.kind==='ocr')?' · Krohn y Rose no disponen de anclajes por locus verificados.':'')+(mode==='concept'&&terms.length===1?' · Concepto sin equivalencias en el índice: se realizó búsqueda literal.':'');
 });
 // Enlace directo desde Vitruvia y otras páginas: scriptorium.html?q=término lanza la búsqueda.
-{const q=new URLSearchParams(location.search).get('q');if(q&&$('script-query')){$('script-query').value=q.slice(0,180);$('script-search-form').requestSubmit()}}
+{const params=new URLSearchParams(location.search),q=params.get('q');
+ for(const [id,key] of [['script-search-scope','scope'],['script-search-mode','match']])if(Array.from($(id).options).some(o=>o.value===params.get(key)))$(id).value=params.get(key);
+ statusSelected();if(q&&$('script-query')){$('script-query').value=q.slice(0,180);$('script-search-form').requestSubmit()}}
+
