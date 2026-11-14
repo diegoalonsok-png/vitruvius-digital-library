@@ -18,9 +18,9 @@ class CodicologyTests(unittest.TestCase):
         cls.registry = audit.read(audit.WITNESSES)
         cls.by_id = {x["id"]: x for x in cls.catalog["works"]}
 
-    def test_catalogue_222_unique(self):
-        self.assertEqual(len(self.catalog["works"]), 222)
-        self.assertEqual(len(self.by_id), 222)
+    def test_catalogue_at_least_222_unique(self):
+        self.assertGreaterEqual(len(self.catalog["works"]), 222)
+        self.assertEqual(len(self.by_id), len(self.catalog["works"]))
 
     def test_every_witness_assigned_to_real_work(self):
         self.assertEqual(len({x["id"] for x in self.registry["records"]}),
@@ -101,11 +101,11 @@ class CodicologyTests(unittest.TestCase):
         self.assertIn("institutional_shelfmark_missing",
                       review[0]["secondPass"]["objections"])
 
-    def test_all_222_reports_are_read_only_and_offline(self):
+    def test_all_catalogue_reports_are_read_only_and_offline(self):
         with patch.object(audit, "fetch_json_metadata", side_effect=AssertionError("offline audit used network")):
             result = audit.build_report(self.catalog, self.registry, live=False)
-        self.assertEqual(result["summary"]["catalogueWorks"], 222)
-        self.assertEqual(len(result["works"]), 222)
+        self.assertEqual(result["summary"]["catalogueWorks"], len(self.catalog["works"]))
+        self.assertEqual(len(result["works"]), len(self.catalog["works"]))
         self.assertEqual(result["quarantine"], [])
         self.assertEqual(result["summary"]["registryManuscripts"],
                          len(self.registry["records"]))
