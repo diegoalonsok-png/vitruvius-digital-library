@@ -60,6 +60,9 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <label>Contraste <input id="contrast" type="range" min="70" max="220" value="100"> <output id="cval">100%</output></label>
 <div id="image-mode" role="group" aria-label="Visualización del impreso"><strong class="image-mode-heading">Visualización</strong><button type="button" data-image-mode="original" aria-pressed="true">Original</button><button type="button" data-image-mode="bw" aria-pressed="false">Blanco y negro</button><button type="button" data-image-mode="negative" aria-pressed="false">Negativo · letras blancas</button></div></div>
 <div id="folio-identification" aria-live="polite" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#f1e9da;border:1px solid #b59b72;padding:13px 18px;margin:16px 0;font-size:16px"><strong style="font-size:19px">Folio identificado: <span id="current-folio">—</span></strong><span>Imagen digital: <strong id="current-image">—</strong></span><span style="font-size:13px">Paginación: <strong id="current-label">—</strong></span></div><p id="folio-info" aria-live="polite" style="font-size:13px">La paginación impresa se muestra solo cuando esté documentada.</p><p id="status" role="status">Consultando las imágenes de R2…</p>
+
+<p style="font-size:13px;margin:5px 0 10px">Para leer las letras latinas, usa <strong>+ Ampliar</strong>, el deslizador o doble clic sobre el folio. Desplázate dentro del visor para examinar la escritura.</p>
+<div id="stage" tabindex="0" aria-label="Visor ampliable de Rose: teclas más, menos y cero para zoom"><img id="folio" alt="Imagen digital de Rose 1899"></div><div id="loupe"><img alt="Imagen del documento" id="magnified"></div>
 <section class="h-gallery" id="h-folios" aria-labelledby="h-gallery-title">
 <h2 id="h-gallery-title">Buscar por imagen · Galería visual de Rose 1899</h2>
 <p>Elige una miniatura para abrir esa imagen real del ejemplar publicado en R2. Lupa, zoom, inversión y filtros. <strong>El número de imagen digital no equivale a una foliación histórica.</strong></p>
@@ -71,7 +74,5 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <div id="h-folio-grid" aria-label="Seleccionar folio para leer en el visor inferior"></div>
 <button id="h-gallery-more" type="button" hidden>Mostrar más folios</button>
 </section>
-<p style="font-size:13px;margin:5px 0 10px">Para leer las letras latinas, usa <strong>+ Ampliar</strong>, el deslizador o doble clic sobre el folio. Desplázate dentro del visor para examinar la escritura.</p>
-<div id="stage" tabindex="0" aria-label="Visor ampliable de Rose: teclas más, menos y cero para zoom"><img id="folio" alt="Imagen digital de Rose 1899"></div><div id="loupe"><img alt="Imagen del documento" id="magnified"></div>
 
 <p>Referencia: Valentin Rose, <em>Vitruvii De architectura libri decem</em>, Leipzig: Teubner, 1899. La institución responsable de la digitalización y sus condiciones de reproducción se acreditarán cuando se verifique el ejemplar. <a href="colacion.html?locus=1.1.1">Ver loci, aparato y traducciones LA / ES / FR / EN</a>.</p></main><script type="module" src="assets/rose-krohn-harleianus-reader.mjs?v=20261114-1"></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
