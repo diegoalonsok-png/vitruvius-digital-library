@@ -176,7 +176,7 @@ html[data-theme=dark] .research-nav-inner .research-prints>a:hover{background:#3
 .historic-top-heading span{color:var(--muted);font-size:11px}
 .historic-top-heading-obras{margin-top:0}
 /* Obras notables y ediciones modernas comparten la misma fila en el front. */
-.historic-top-collections{grid-column:1 / -1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 26px;align-items:start}
+.historic-top-collections{grid-column:1 / -1;display:grid;grid-template-columns:max-content minmax(0,1fr);gap:16px 18px;align-items:start;justify-content:start}
 .historic-top-collection{min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:10px}
 .historic-top-collection .historic-top-links{align-items:stretch}
 @media(max-width:850px){.historic-top-collections{grid-column:1;grid-template-columns:minmax(0,1fr);gap:20px}}
