@@ -6,7 +6,7 @@ const $=id=>document.getElementById(id);
 const KEY="vitruvius-reader-annotations-v1";
 const EDITIONS={es:"recensio-es",fr:"recensio-fr",en:"theory-en"};
 const VERSIONS={es:"V514",fr:"V554",en:"V297"};
-let catalogue={},draft=null,selection=null,annotations=[],memory=[],busy=false;
+let catalogue={},draft=null,selection=null,annotations=[],memory=[],busy=false,passageState=null;
 const textValue=s=>String(s??"");
 const label=(es,en,fr)=>document.documentElement.lang==="en"?en:document.documentElement.lang==="fr"?fr:es;
 function status(s){const x=$("wb-status");if(x)x.textContent=s}
@@ -176,7 +176,7 @@ function ris(ctx){
  const field=(k,v)=>v?k+"  - "+textValue(v).replace(/[\r\n]+/g," "):"";
  return [["TY  - BOOK",field("AU","Kurilo, Diego A."),field("TI",title(e)),field("PY",e.year||"2026"),
   field("PB",e.publisher),field("CY",e.publication_place),field("SN",e.isbn),field("DO",e.doi),
-  field("UR",ctx.url),field("N1","Vitr. "+ctx.locus+"; edición "+ctx.version+". ISBN de V514/V554 pendiente de corroboración independiente; anotaciones privadas no son aparato crítico."),"ER  - "].filter(Boolean).join("\n"),"\n"].join("");
+  field("UR",ctx.url),field("N1","Vitr. "+ctx.locus+"; edición "+ctx.version+". "+(e.isbn?"ISBN consignado en V514/V554: asignación independiente pendiente de corroboración. ":"")+"Las anotaciones privadas no forman parte del aparato crítico."),"ER  - "].filter(Boolean).join("\n"),"\n"].join("");
 }
 function passageData(ctx){
  return {schema:"vitruvius-reader-research-v1",source:"Vitruvius Digital Library",editorialStatus:"Edición según su catálogo; sin colación autóptica general inferida",
@@ -184,7 +184,8 @@ function passageData(ctx){
   version:ctx.version,editionId:ctx.edition,locus:ctx.locus,sourceUrl:ctx.url,
   bibliography:ctx.bib?{title:title(ctx.bib),publisher:ctx.bib.publisher,place:ctx.bib.publication_place,year:ctx.bib.year,
    isbn:ctx.bib.isbn||null,isbnNote:ctx.bib.isbn_note||null,doi:ctx.bib.doi||null}:null,
-  latin:$("latin-text")?.textContent||"",translation:$("translation-text")?.textContent||"",translationLanguage:ctx.lang,
+  latin:$("latin-text")?.textContent||"",translation:passageState?.hasAlignedTranslation?($("translation-text")?.textContent||""):null,translationLanguage:ctx.lang,
+  pdfPages:passageState?.pdfPages||null,translationAlignment:passageState?.hasAlignedTranslation===true?"Alineación por locus (no cotejo manuscrito)":"Sin traducción alineada para este locus",
   annotations:relevant(ctx)};
 }
 function markdown(ctx){
@@ -200,7 +201,7 @@ function markdown(ctx){
  "",
  "## Texto latino de "+ctx.version,"",data.latin,
  "",
- "## Traducción ("+ctx.lang+")", "",data.translation,
+ "## Traducción ("+ctx.lang+")", "",data.translation===null?"Sin correspondencia textual disponible para este locus; no se ha añadido traducción sustituta.":data.translation,
  "",
  "## Notas personales del investigador (no forman parte del texto ni del aparato crítico)",
  ...(!notes.length?["","Sin notas personales."]:notes.flatMap(n=>["",
@@ -240,7 +241,7 @@ function lookup(){
  }else slot.append(node("p",null,"El módulo de diccionario local no está disponible en esta sesión."));
  const link=document.createElement("a");link.href="vitruvia-lexicon.html?"+new URLSearchParams({q:raw,mode:"palabra"});
  link.textContent="Abrir investigación completa en Lexicon";slot.append(link);
- panel.append(node("p","wb-muted","Las glosas y propuestas de lematización requieren confirmación contextual; no constituyen por sí solas una decisión crítica."));
+ if(!panel.querySelector(".wb-method-note"))panel.append(node("p","wb-muted wb-method-note","Las glosas y propuestas de lematización requieren confirmación contextual; no constituyen por sí solas una decisión crítica."));
  panel.scrollIntoView({block:"nearest",behavior:"smooth"});closeBar();
 }
 function mount(){
@@ -298,7 +299,8 @@ function mount(){
   if(!t.contains(e.target)&&!["latin-text","translation-text"].some(id=>$(id)?.contains(e.target)))closeBar();
  });
  document.addEventListener("scroll",()=>{t.hidden=true},{capture:true,passive:true});
- document.addEventListener("vitruvius:passage-rendered",()=>{
+ document.addEventListener("vitruvius:passage-rendered",event=>{
+  passageState=event.detail||null;
   closeBar();selection=null;hideEditor();
   sync();
  });
