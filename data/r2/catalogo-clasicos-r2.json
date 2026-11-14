@@ -689,7 +689,7 @@
     {
       "id": "galeno-opera-kuhn",
       "autor": "Galeno",
-      "obra": "Opera omnia (ed. Kühn): volumen adicional",
+      "obra": "Opera omnia de Galeno — volumen XIV según el registro digital",
       "lengua": "grc",
       "idiomaEdicion": "s/d",
       "tanda": 1,
@@ -712,12 +712,13 @@
       "paginas": 801,
       "paginasConTexto": 800,
       "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
-      "notaFilologica": "El documento digital se identifica en el título del registro como volumen XIV; confirmar contra la portada."
+      "notaFilologica": "El documento digital se identifica en el título del registro como volumen XIV; confirmar contra la portada.",
+      "incidenciaCatalografica": "La atribución al volumen XIV proviene del título del registro fuente. Debe cotejarse con la portada y la paginación física; comparte huella digital con galeno-kuhn-vol01."
     },
     {
       "id": "galeno-kuhn-vol01",
       "autor": "Galeno",
-      "obra": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "obra": "Opera omnia de Galeno — volumen XIV según el registro digital (ID histórico vol01 no validado)",
       "lengua": "grc",
       "idiomaEdicion": "s/d",
       "tanda": 1,
@@ -740,7 +741,7 @@
       "paginas": 801,
       "paginasConTexto": 800,
       "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
-      "incidenciaCatalografica": "El ID indica volumen I, pero el título y el SHA-256 coinciden con el PDF catalogado como volumen XIV; identificación del tomo sin resolver. No citar como vol. I.",
+      "incidenciaCatalografica": "El PDF comparte SHA-256 con galeno-opera-kuhn y el título catalogado identifica vol. XIV. El identificador histórico «vol01» NO demuestra volumen I; mantener ambos objetos y comprobar portada y colación.",
       "estadoRevision": "requiere_verificacion_portada"
     },
     {
@@ -2379,7 +2380,7 @@
     {
       "id": "petrarca-secretum",
       "autor": "Francesco Petrarca",
-      "obra": "Secretum meum",
+      "obra": "Secretum de Petrarca — texto dentro de volumen colectivo",
       "lengua": "la",
       "coleccion": "Humanismo temprano",
       "idiomaEdicion": "s/d",
@@ -2400,7 +2401,7 @@
       "paginas": 891,
       "paginasConTexto": 885,
       "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
-      "incidenciaCatalografica": "El PDF corresponde a un volumen de obras de Petrarca que incluye De remediis utriusque fortunae; comprobar páginas exactas del Secretum antes de describir este PDF como edición independiente.",
+      "incidenciaCatalografica": "El PDF es un volumen colectivo que contiene De remediis utriusque fortunae y anuncia De contemptu mundi / Secretum. Verificar páginas precisas del Secretum; no catalogarlo como edición independiente.",
       "estadoRevision": "requiere_localizacion_texto"
     },
     {
@@ -2976,7 +2977,7 @@
     {
       "id": "rose-vitruvius-1899",
       "autor": "Valentin Rose (ed.)",
-      "obra": "Vitruvii De architectura libri decem (ed. Rose, 1899)",
+      "obra": "De architectura libri decem — edición latina atribuida a Rose (fecha por verificar)",
       "lengua": "la",
       "coleccion": "recepcion-vitruviana",
       "idiomaEdicion": "s/d",
@@ -3001,13 +3002,13 @@
       "paginas": 344,
       "paginasConTexto": 329,
       "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
-      "incidenciaCatalografica": "El identificador interno menciona 1899, pero el registro bibliográfico vinculado declara 1867. Verificar la portada antes de citar la fecha de esta reproducción.",
+      "incidenciaCatalografica": "La clave histórica menciona 1899, mientras la fecha registrada de reproducción indica 1867: no atribuir año definitivo a este ejemplar sin examen de portada y pie de imprenta.",
       "estadoRevision": "requiere_verificacion_portada"
     },
     {
       "id": "valerio-flaco-argonautica",
       "autor": "Valerio Flaco",
-      "obra": "Argonáuticas",
+      "obra": "Argonáuticas — libro I únicamente (edición histórica)",
       "lengua": "la",
       "idiomaEdicion": "s/d",
       "tanda": 2,
@@ -3031,7 +3032,8 @@
       "paginasConTexto": 142,
       "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
       "alcance": "Solo el libro I.",
-      "notaFilologica": "Edición del libro I solamente."
+      "notaFilologica": "Edición del libro I solamente.",
+      "incidenciaCatalografica": "El ejemplar corresponde únicamente al libro I de la Argonáutica; no citar como edición completa."
     },
     {
       "id": "varron-de-re-rustica",
