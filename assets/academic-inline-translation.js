@@ -93,21 +93,47 @@ async function providerAlternate(fragment,source,target){
   return {text:value.trim(),provider:"Traducción automática externa alternativa"};
  }finally{clearTimeout(timer)}
 }
+async function translateFragment(fragment,source,target){
+ const errors=[];
+ for(const candidate of [providerMyMemory,providerAlternate]){
+  try{
+   const r=await candidate(fragment,source,target);
+   if(r?.text&&!translationLooksUnchanged(fragment,r.text,source,target))return r;
+  }catch(e){errors.push(e?.message||"Error externo")}
+ }
+ // When Greek -> Romance fails, a documented two-stage machine translation
+ // can occasionally produce a usable result: Greek -> English -> requested target.
+ // Still generated text; never cite as an existing editorial translation.
+ if(source==="grc"&&["es","fr"].includes(target)){
+  for(const first of [providerMyMemory,providerAlternate]){
+   try{
+    const intermediate=await first(fragment,source,"en");
+    if(translationLooksUnchanged(fragment,intermediate.text,source,"en"))continue;
+    for(const second of [providerMyMemory,providerAlternate]){
+     try{
+      const final=await second(intermediate.text,"en",target);
+      if(!translationLooksUnchanged(fragment,final.text,source,target)&&
+         !translationLooksUnchanged(intermediate.text,final.text,"en",target))
+       return {text:final.text,provider:"Traducción automática indirecta · griego → inglés → "+target};
+     }catch(e){errors.push(e?.message||"Error de traducción indirecta")}
+    }
+   }catch(e){errors.push(e?.message||"Error de traducción indirecta")}
+  }
+ }
+ throw Error("No se pudo producir una traducción real ("+errors.slice(0,2).join("; ")+")");
+}
 async function externalTranslation(text,source,target,fullPassage=false){
  const fragments=fullPassage?chunks(text,MAX_PART_BYTES,12,4500):chunks(text);
- if(!fragments.length)return null;
- let alternateUsed=false;
+ if(!fragments.length)throw Error("Pasaje vacío");
  const translated=[];
- // At most three simultaneous requests; batch failures do not freeze the entire reader.
+ // Sequential groups bound traffic without sending hundreds of passages at once.
  for(let offset=0;offset<fragments.length;offset+=3){
-  const part=await Promise.all(fragments.slice(offset,offset+3).map(async fragment=>{
-   try{return await providerMyMemory(fragment,source,target)}
-   catch(_){const result=await providerAlternate(fragment,source,target);alternateUsed=true;return result}
-  }));
-  translated.push(...part.map(x=>x.text));
+  const batch=await Promise.all(fragments.slice(offset,offset+3).map(fragment=>translateFragment(fragment,source,target)));
+  translated.push(...batch);
  }
- return {text:translated.join(" "),provider:alternateUsed?
-  "MyMemory / traducción automática alternativa":"MyMemory / Translated · traducción automática externa",
+ const output=translated.map(x=>x.text).join(" ");
+ if(translationLooksUnchanged(text,output,source,target))throw Error("El resultado mantiene el idioma original");
+ return {text:output,provider:[...new Set(translated.map(x=>x.provider))].join(" + "),
   partial:fragments.join("").replace(/\s+/g,"")!==text.trim().replace(/\s+/g,"")};
 }
 function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceLanguage,referenceLabel}={}){
