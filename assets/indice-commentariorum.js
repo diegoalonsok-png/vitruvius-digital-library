@@ -6,7 +6,28 @@ const escapeHtml=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;"
 const topics=["symmetria","decor","eurythmia","ordinatio","dispositio","distributio","firmitas","utilitas","venustas","fabrica","ratiocinatio","proportio","commensuratio","ichnographia","orthographia","scaenographia","entasis","triglyphus","analemma","metrologia","architectura","templum","columna","machina","aqua","codex","Harleianus"];
 const books=[1,2,3,4,5,6,7,8,9,10],romans=["I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const create=(tag,txt,parent,cls)=>{const e=document.createElement(tag);if(txt!==null)e.textContent=String(txt);if(cls)e.className=cls;if(parent)parent.append(e);return e};
-let all=[],visible=[],shown=0;const STEP=30;
+let all=[],visible=[],shown=0;const STEP=30;let bibliography={};
+function highlight(container,value){
+ const text=String(value||""),words=[$("ic-term").value,$("ic-search").value.trim()].filter(Boolean);
+ if(!words.length){container.textContent=text;return;}
+ const rx=words.map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,"\\let all=[],visible=[],shown=0;const STEP=30;")).filter(Boolean);
+ if(!rx.length){container.textContent=text;return;}
+ const re=new RegExp("("+rx.join("|")+")","gi");let last=0,m;
+ while((m=re.exec(text))!==null){container.append(document.createTextNode(text.slice(last,m.index)));const mark=document.createElement("mark");mark.textContent=m[0];container.append(mark);last=re.lastIndex;if(!m[0])re.lastIndex++}
+ container.append(document.createTextNode(text.slice(last)));
+}
+function chicago(ed,place){
+ const b=bibliography[ed];if(!b)return ed+(place?" · "+place:"");
+ return b.bibliographic_author+". "+b.bibliographic_title+". "+b.edition_statement+". "+b.publication_place+": "+b.publisher+", "+b.year+(place?". "+place:"")+". https://doi.org/"+b.doi+".";
+}
+function showBibliography(){
+ const host=$("ic-biblio-entries");if(!host)return;host.replaceChildren();
+ for(const ed of ["V514","V554","V297"]){const b=bibliography[ed];if(!b)continue;const box=create("div",null,host);
+ const label=create("p",null,box);create("strong",ed+" · ",label);label.append(document.createTextNode(b.bibliographic_author+". "));create("em",b.bibliographic_title,label);label.append(document.createTextNode(". "+b.edition_statement+". "+b.publication_place+": "+b.publisher+", "+b.year+". "));
+ const link=create("a","DOI: "+b.doi,label);link.href="https://doi.org/"+b.doi;
+ create("p","ISBN: "+b.isbn+" · "+(b.isbn_status==="publisher-declared-shared"?"ISBN declarado como compartido entre versiones":"ISBN bibliográfico"),box,"ic-citation");
+ }
+}
 for(let book of books){const o=create("option","Liber "+romans[book-1],$("ic-book"));o.value=String(book)}
 for(const topic of topics){const o=create("option",topic,$("ic-term"));o.value=topic}
 async function load(path){const r=await fetch(path,{headers:{Accept:"application/json"}});if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json()}
@@ -28,9 +49,14 @@ function renderOne(e){
  create("h3",title,box);
  create("p",e.type==="study"?"Texto del estudio preliminar · documento fuente por página digital":e.type==="commentary"?"Comentario original con encabezamiento de locus en el libro":e.position==="explicit"?"Nota original con locus explícito":e.position==="suggested"?"Nota original con ubicación digital sugerida":"Nota original sin localizador digital asignado",box,"meta");
  const preview=e.text.length>670?e.text.slice(0,670).trim()+"…":e.text;
- create("p",preview,box);
- if(e.text.length>670){const details=create("details",null,box);create("summary","Leer el comentario íntegro",details);create("pre",e.text,details)}
- const source=create("p",e.source+(e.original_location?" · "+e.original_location:""),box,"meta");
+ highlight(create("p",null,box),preview);
+ if(e.text.length>670){const details=create("details",null,box);create("summary","Leer el comentario íntegro",details);highlight(create("pre",null,details),e.text)}
+ create("p",e.source+(e.original_location?" · "+e.original_location:""),box,"meta");
+ const locator=e.type==="study"?"página digital "+e.ordinal:e.locus?"Vitr. "+e.locus:(e.original_location||"");
+ const citation=create("p",chicago(e.edition,locator),box,"ic-citation");
+ const btn=create("button","Copiar cita Chicago 18",box,"ic-copy");
+ btn.type="button";btn.addEventListener("click",()=>{if(navigator.clipboard?.writeText)navigator.clipboard.writeText(citation.textContent).catch(()=>{});});
+
  const link=create("a",e.locus?"Leer texto latino, traducción y notas por locus":"Consultar inventario autoral",box);
  link.textContent=e.type==="study"?"Abrir página de la edición de origen":link.textContent;
  link.href=e.type==="study"?(e.source_pdf||"indice-commentariorum.html"):e.locus?"commentarius-perpetuus.html?locus="+encodeURIComponent(e.locus):"inventario-aparato-autoral.html";
@@ -54,8 +80,10 @@ $("ic-search").addEventListener("input",apply);
   const requests=tasks.map(async t=>{try{const json=await load(t.path);return (json.entries||[]).map(e=>record(t.book,t.ed,e))}catch(e){console.warn(t.path,e.message);return []}});
   const studyRequests=["V514","V554"].flatMap(ed=>["61-90","91-120","121-150"].map(range=>({edition:ed,path:"data/commentary/estudio-preliminar-"+ed.toLowerCase()+"-"+range+".json"})));
   for(const task of studyRequests)requests.push(load(task.path).then(doc=>(doc.pages||[]).map(page=>study(task.edition,page,doc))).catch(e=>{console.warn(task.path,e.message);return []}));
-  const results=await Promise.all([...requests,load("data/critical-notes.json").then(j=>(j.entries||[]).filter(e=>["recensio-es","recensio-fr"].includes(e.edition)).map(note))]);
-  all=results.flat();const url=new URLSearchParams(location.search);
+  const results=await Promise.all([...requests,load("data/critical-notes.json").then(j=>(j.entries||[]).filter(e=>["recensio-es","recensio-fr","theory-en"].includes(e.edition)).map(note))]);
+  all=results.flat();const catalog=await load("data/catalog.json");
+ for(const b of catalog.editions||[]){const id=({"recensio-es":"V514","recensio-fr":"V554","theory-en":"V297"})[b.id];if(id)bibliography[id]=b}
+ showBibliography();const url=new URLSearchParams(location.search);
   if(url.get("q"))$("ic-search").value=url.get("q").slice(0,200);
   if(url.get("book")&&books.includes(Number(url.get("book"))))$("ic-book").value=url.get("book");
   if(url.get("locus"))$("ic-search").value=url.get("locus");
