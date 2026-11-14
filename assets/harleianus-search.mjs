@@ -150,7 +150,7 @@ function highlightedSpan(text,ranges){
 function showMore(){
  const batch=visible.slice(shown,shown+20),fragment=document.createDocumentFragment();
  for(const entry of batch){
-  const p=entry.passage,row=document.createElement("article");row.className="h-s-hit";
+  const p=entry.passage,row=document.createElement("article");row.className="h-s-hit";row.dataset.locus=p.locus;
   const title=document.createElement("h3");title.textContent="Vitr. "+p.locus+(String(p.locus).includes(".praef.")?" · Prefacio":"");
   row.append(title);
   const excerpt=highlightedSpan(p.latin,entry.hits);row.append(excerpt);
