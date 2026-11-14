@@ -6,6 +6,12 @@ on:
       - "documents/kurilo-*.pdf"
       - "scripts/audit-edition-discoverability.mjs"
       - "sitemap.xml"
+      - "robots.txt"
+      - "index.html"
+      - "vitruvia.html"
+      - "vitruvia-lexicon.html"
+      - "bibliotheca-graeca-latina.html"
+      - "scripts/audit-doi-citation-integrity.mjs"
       - "scripts/test-academic-sitemap.mjs"
       - "buscador-parrafos-vitruvio.html"
       - "centro-control-academico.html"
@@ -24,6 +30,12 @@ on:
       - "documents/kurilo-*.pdf"
       - "scripts/audit-edition-discoverability.mjs"
       - "sitemap.xml"
+      - "robots.txt"
+      - "index.html"
+      - "vitruvia.html"
+      - "vitruvia-lexicon.html"
+      - "bibliotheca-graeca-latina.html"
+      - "scripts/audit-doi-citation-integrity.mjs"
       - "scripts/test-academic-sitemap.mjs"
       - "buscador-parrafos-vitruvio.html"
       - "centro-control-academico.html"
@@ -50,3 +62,5 @@ jobs:
         run: node scripts/audit-edition-discoverability.mjs
       - name: Verify canonical research pages and sitemap
         run: node scripts/test-academic-sitemap.mjs
+      - name: Verify individual DOI and scholarly schema mapping
+        run: node scripts/audit-doi-citation-integrity.mjs
