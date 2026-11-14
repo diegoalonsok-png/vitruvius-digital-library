@@ -19,7 +19,10 @@ import sys
 import tempfile
 import urllib.request
 
-ROSE = "https://archive.org/download/vitruviidearchi00pollgoog/vitruviidearchi00pollgoog.pdf"
+ROSE_SOURCES = [
+ "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf",
+ "https://archive.org/download/vitruviidearchi00pollgoog/vitruviidearchi00pollgoog.pdf",
+]
 KROHN = pathlib.Path("documents/krohn-1912.pdf")
 BASE = os.getenv("R2_PUBLIC_BASE", "https://libros.vitruvius-digital-library.org").rstrip("/")
 BUCKET = os.getenv("R2_BUCKET_NAME", os.getenv("R2_BUCKET", "vitruvius-bibliotheca"))
@@ -28,8 +31,8 @@ EDITIONS = {
   "key": "rose-1899", "title": "Vitruvii De architectura libri decem",
   "author": "Marcus Vitruvius Pollio", "editor": "Valentin Rose",
   "date": "1899", "language": "la",
-  "source": "https://archive.org/details/vitruviidearchi00pollgoog",
-  "holding": "University of Michigan · digitized by Google · Internet Archive",
+  "source": "https://archive.org/details/vitruviidearchit00vitr_0",
+  "holding": "Getty Research Institute · Internet Archive digitization (source copy for this import)",
   "rights": "Historical public-domain edition; scan provenance credited to the holding institution."
  },
  "krohn": {
@@ -44,14 +47,29 @@ EDITIONS = {
 
 def download_rose(tmp: pathlib.Path) -> pathlib.Path:
  dest = tmp / "rose-1899.pdf"
- request = urllib.request.Request(ROSE, headers={"User-Agent": "VitruviusDigitalLibrary/1.0 (scholarly indexing)"})
- with urllib.request.urlopen(request, timeout=120) as src, dest.open("wb") as target:
-  while True:
-   buf = src.read(1024 * 1024)
-   if not buf: break
-   target.write(buf)
- if dest.stat().st_size < 100_000: raise RuntimeError("Rose PDF seems incomplete")
- return dest
+ errors = []
+ for url in ROSE_SOURCES:
+  try:
+   request = urllib.request.Request(url, headers={"User-Agent": "VitruviusDigitalLibrary/1.0 (scholarly indexing)"})
+   with urllib.request.urlopen(request, timeout=120) as src, dest.open("wb") as target:
+    while True:
+     buf = src.read(1024 * 1024)
+     if not buf: break
+     target.write(buf)
+   if dest.stat().st_size < 100_000: raise RuntimeError("Incomplete PDF")
+   import fitz
+   with fitz.open(str(dest)) as doc:
+    if len(doc) < 200: raise RuntimeError("Insufficient scanned pages")
+    front = " ".join(doc[i].get_text()[:2500] for i in range(min(12,len(doc)))).lower()
+    if front and "rose" not in front and "vitruv" not in front:
+     raise RuntimeError("No Vitruvius/Rose identification in the front matter")
+   print("Rose PDF downloaded and checked:", url, flush=True)
+   return dest
+  except Exception as exc:
+   errors.append(f"{url}: {exc}")
+   if dest.exists(): dest.unlink()
+ raise RuntimeError("Neither verified Rose PDF source could be downloaded: " + " | ".join(errors))
+
 
 def client():
  import boto3
