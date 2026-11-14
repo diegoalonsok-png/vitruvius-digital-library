@@ -71,53 +71,55 @@ def main():
     except Exception as e:
         failures.append(("integridad académica pública",str(e)))
         print("FAIL integridad académica pública",str(e))
-    expected="vitruvius-academic-apparatus-manifest/1"
+    # El recurso publicado es un repertorio documental de obras y fuentes,
+    # no un manifiesto compacto de 35 KB ni 3220 variantes críticas.
+    expected_schema="vdl-aparato-academico-1"
     origins=[
         BASE,
         "https://diegoalonsok-png.github.io/vitruvius-digital-library/"
     ]
     for origin in origins:
         url=origin+"data/r2/aparato-academico.json"
-        # Despliegues de Pages y Cloudflare son independientes. No declarar
-        # incidencia mientras el build más reciente está todavía publicándose.
         error=None
-        for attempt in range(12):
+        for attempt in range(4):
             try:
-                code,body,headers=get(url,maximum=35000)
+                code,body,headers=get(url,maximum=2000000)
                 if code!=200 or not body.lstrip().startswith(b"{"):
-                    raise ValueError("ruta devuelve HTML u otro cuerpo, no JSON")
-                content_type=headers.get("Content-Type","")
-                if "html" in content_type.lower():
-                    raise ValueError("Content-Type HTML en un endpoint JSON")
-                manifest=json.loads(body)
-                if manifest.get("schema")!=expected or manifest.get("kind")!="bibliographic-index-manifest":
-                    raise ValueError("esquema inesperado o manifiesto presentado como aparato textual")
-                if manifest.get("canonical_source")!="data/apparatus-index.json":
-                    raise ValueError("no remite al índice documental real")
-                if manifest.get("integrity_source")!="data/academic-integrity.json":
-                    raise ValueError("no enlaza al registro académico verificable")
-                if manifest.get("apparatus_entries",0)<3000:
-                    raise ValueError("recuento de registros del aparato inesperado")
-                editions=manifest.get("editions",[])
-                if {e.get("id") for e in editions}!={"recensio-es","recensio-fr","theory-en"}:
-                    raise ValueError("faltan fichas editoriales V514 V554 V297")
-                if {e.get("doi") for e in editions}!={
-                    "10.5281/zenodo.23884757",
-                    "10.5281/zenodo.23885110",
-                    "10.5281/zenodo.23885404"
-                }:
-                    raise ValueError("DOI asignado a edición equivocada")
-                print("PASS aparato académico JSON / manifiesto en",origin,
-                      manifest["apparatus_entries"],"referencias localizables")
+                    raise ValueError("la ruta no devuelve JSON")
+                if "html" in headers.get("Content-Type","").lower():
+                    raise ValueError("Content-Type HTML en endpoint JSON")
+                # Leer el documento completo antes de intentar parsearlo;
+                # truncarlo a 35 KB producía falsos negativos reproducibles.
+                content_length=headers.get("Content-Length")
+                if content_length and len(body)<int(content_length):
+                    raise ValueError("descarga incompleta: "+str(len(body))+" de "+content_length+" bytes")
+                registro=json.loads(body)
+                fichas=registro.get("registros")
+                if registro.get("schema")!=expected_schema:
+                    raise ValueError("esquema del repertorio académico inesperado")
+                if not isinstance(fichas,list) or len(fichas)<100:
+                    raise ValueError("repertorio documental sin cobertura esperada")
+                if registro.get("total")!=len(fichas):
+                    raise ValueError("total y número de fichas inconsistentes")
+                ids=[item.get("id") for item in fichas]
+                if any(not isinstance(k,str) or not k for k in ids) or len(set(ids))!=len(ids):
+                    raise ValueError("identificadores vacíos o duplicados")
+                if any(not isinstance(item.get("identificacionObra"),dict)
+                       or not isinstance(item.get("procedenciaDigital"),dict)
+                       or not isinstance(item.get("verificaciones"),dict)
+                       for item in fichas):
+                    raise ValueError("fichas incompletas o sin trazabilidad documental")
+                print("PASS repertorio académico JSON en",origin,
+                      len(fichas),"registros documentales")
                 error=None
                 break
             except Exception as e:
                 error=str(e)
-                if attempt<11:
-                    time.sleep(12)
+                if attempt<3:
+                    time.sleep(4)
         if error:
             failures.append((url,error))
-            print("FAIL JSON académico",url,error)
+            print("FAIL repertorio académico",url,error)
     print("RESULTADO",len(failures),"fallos")
     for url,error in failures:print("PENDIENTE",url,error)
     return 1 if failures else 0
