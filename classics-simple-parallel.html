@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="es" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Visor simple · Bibliotheca Graeca et Latina</title><meta name="description" content="Lectura sencilla de textos clásicos originales y sus traducciones alojadas, por locus.">
+<title>Visor simple · Bibliotheca Graeca et Latina</title><meta name="description" content="Lectura sencilla de textos clásicos originales y sus traducciones indexadas y traducción automática opcional, por locus.">
 <style>
 :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#050505;color:#f0f0f1;font-family:system-ui,-apple-system,sans-serif}main{max-width:1720px;margin:0 auto;padding:30px clamp(14px,4vw,64px)}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 30px}.top h1{font-size:clamp(20px,2.1vw,32px);font-weight:400;line-height:1.35;color:#dedee0;margin:0}.actions{display:flex;align-items:center;gap:12px}.actions a,.actions button{font:14px system-ui;color:#ececef;background:#151515;border:1px solid #4b4b4b;padding:9px 12px;text-decoration:none;border-radius:9px;cursor:pointer}.actions button{font-size:22px;min-width:42px}.actions button:disabled{opacity:.4;cursor:default}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.card{background:#303030;border-radius:17px;padding:clamp(20px,2vw,38px);min-width:0;min-height:65vh}.card h2{font:400 clamp(16px,1.6vw,23px)/1.4 system-ui;color:#cecece;margin:0 0 28px}.passage{font:clamp(21px,2.4vw,35px)/1.8 Georgia,"Times New Roman",serif;white-space:pre-wrap;overflow-wrap:anywhere}.passage p{margin:0 0 1.25em}.empty{font:17px/1.65 system-ui;color:#ddd}.note{color:#aaa;font:12px/1.6 system-ui;margin-top:14px}.note a{color:#ddd}button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:3px}@media(max-width:750px){.cards{grid-template-columns:1fr;gap:14px}.card{min-height:38vh}.top{align-items:flex-start;flex-direction:column}.actions{flex-wrap:wrap}.passage{font-size:24px}}@media print{.actions{display:none}main{padding:0}.card{min-height:0;break-inside:avoid}}
 
 /* Herramientas mínimas de lectura, sin alterar ni fabricar traducciones. */
+.translate-action{margin-top:20px;background:#464646;color:#fff;border:1px solid #777;border-radius:9px;padding:10px 14px;cursor:pointer;font:13px system-ui}.translate-action[hidden]{display:none}.translate-action:disabled{opacity:.6;cursor:wait}
 .toolbar{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap;margin:-14px 0 19px}
 .toolbar input,.toolbar select,.toolbar button{font:13px system-ui;background:#181819;color:#eee;border:1px solid #48484b;border-radius:7px;padding:8px 10px;min-height:36px}
 .toolbar input{width:150px;max-width:32vw}.toolbar button{cursor:pointer}.toolbar button:hover{background:#303033}
@@ -18,25 +19,30 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 </style></head><body><main>
 <div class="top"><h1 id="title">BIBLIOTHECA · LECTURA SIMPLE</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
 <div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Locus <input id="go-locus" type="search" placeholder="p. ej., 1.2" aria-label="Ir a locus"></label><button id="go-button" type="button">Ir</button><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><label>Letra <select id="font" aria-label="Tipografía"><option value="georgia">Clásica</option><option value="palatino">Palatino</option><option value="sans">Sans</option></select></label><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
-<div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div></section></div>
+<div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div><button class="translate-action" id="translate" type="button" hidden>Traducir automáticamente este pasaje</button></section></div>
 <p class="note" id="note" role="status">Se utilizan las ediciones existentes en la Bibliotheca. Un locus compartido no demuestra identidad textual de las versiones.</p>
-</main><script>
+</main><script defer src="assets/academic-inline-translation.js?v=20261109-v1"></script><script>
 (()=>{"use strict";
 const q=new URLSearchParams(location.search),work=q.get("work")||"didache";
 const LANG={grc:"GRIEGO",la:"LATÍN",es:"CASTELLANO",en:"INGLÉS",fr:"FRANCÉS",it:"ITALIANO",de:"ALEMÁN",pt:"PORTUGUÉS"};
-const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;let searchTerm="";
+const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;let searchTerm="",targetLang="en",renderToken=0;
 const key=v=>String(v??"").trim().toLowerCase().replace(/\s+/g,"");
 const status=msg=>el("note").textContent=msg;
 function paragraph(id,value){const target=el(id);target.replaceChildren();const data=value||"Pasaje sin texto disponible.";const p=document.createElement("p");if(!searchTerm){p.textContent=data;}else{const low=data.toLocaleLowerCase(),find=searchTerm.toLocaleLowerCase();let at=0,i;while((i=low.indexOf(find,at))>=0){p.append(document.createTextNode(data.slice(at,i)));const mark=document.createElement("mark");mark.className="simple-match";mark.textContent=data.slice(i,i+find.length);p.append(mark);at=i+find.length;}p.append(document.createTextNode(data.slice(at)));}target.append(p);}
 function linkBack(){const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",leftLang||"grc");u.searchParams.set("right",q.get("right")||rightLang||"auto-es");if(source[pos]?.locus)u.searchParams.set("locus",source[pos].locus);el("academic").href=u.href;}
 function draw(){
+ renderToken++;el("translate").hidden=true;
  const a=source[pos],locus=a?.locus||"";el("title").textContent=title.toUpperCase()+" · "+locus;
  el("left-head").textContent=(LANG[leftLang]||leftLang.toUpperCase())+" · "+locus;
  paragraph("left-text",a?.text);
  const exact=translation.find(p=>key(p.locus)===key(locus));
  el("right-head").textContent=(LANG[rightLang]||"TRADUCCIÓN")+" · "+(exact?.locus||locus);
  if(exact)paragraph("right-text",exact.text);
- else paragraph("right-text","No hay traducción alojada correspondiente a este locus. Consultá el visor académico para otras versiones o la traducción automática opcional.");
+ else {
+  paragraph("right-text","No hay traducción indexada verificable para este locus.");
+  el("right-head").textContent="TRADUCCIÓN AUTOMÁTICA · "+(LANG[targetLang]||targetLang.toUpperCase());
+  el("translate").hidden=false;
+ }
  el("previous").disabled=pos<=0;el("next").disabled=pos>=source.length-1;
  if(a?.locus){q.set("locus",a.locus);history.replaceState(null,"",location.pathname+"?"+q.toString());}
  linkBack();
@@ -66,13 +72,29 @@ async function load(){
  leftLang=entries.has(q.get("left"))?q.get("left"):(entries.has(q.get("lang"))?q.get("lang"):(["grc","la"].find(l=>entries.has(l))||[...entries.keys()][0]));
  if(!leftLang)throw Error("La obra no dispone de edición textual estructurada para este lector.");
  const requested=q.get("right");
+ targetLang=(requested||"").replace(/^auto-/,"");if(!["es","en","fr"].includes(targetLang))targetLang="en";
  rightLang=entries.has(requested)&&requested!==leftLang?requested:
   (["es","en","fr","it","de","pt"].find(l=>l!==leftLang&&entries.has(l))||[...entries.keys()].find(l=>l!==leftLang)||"");
  source=await getEdition(entries.get(leftLang),leftLang);
  if(!source.length)throw Error("No hay pasajes de la edición original.");
  translation=rightLang?await getEdition(entries.get(rightLang),rightLang):[];
+ if(requested?.startsWith("auto-")){translation=[];rightLang=targetLang;}
+
  const wanted=q.get("locus");const found=source.findIndex(p=>key(p.locus)===key(wanted));pos=found<0?0:found;draw();
 }
+el("translate").addEventListener("click",async()=>{
+ const button=el("translate"),record=source[pos],token=renderToken;
+ if(!record?.text||!window.VitruviaInlineTranslation?.translate){status("El servicio de traducción automática no está disponible.");return;}
+ button.disabled=true;button.textContent="Traduciendo…";
+ paragraph("right-text","Procesando traducción orientativa…");
+ try{
+  const result=await window.VitruviaInlineTranslation.translate(record.text,leftLang,targetLang);
+  if(token!==renderToken)return;
+  paragraph("right-text",result.text);button.hidden=true;
+  status("Traducción automática orientativa · "+result.provider+(result.partial?" · Traducción parcial.":"")+(leftLang==="grc"?" · El servicio interpreta griego antiguo como moderno: requiere revisión filológica.":"")+" No equivale a una traducción académica verificada.");
+ }catch(e){if(token===renderToken){paragraph("right-text","No se pudo obtener la traducción automática de este pasaje.");status("El proveedor de traducción no respondió. El original permanece disponible.");}}
+ finally{button.disabled=false;button.textContent="Traducir automáticamente este pasaje";}
+});
 const cards=document.querySelector(".cards");let fontSize=30;const FONTS={georgia:'Georgia, "Times New Roman", serif',palatino:'Palatino, "Book Antiqua", serif',sans:'system-ui, sans-serif'};
 function appearance(){cards.style.setProperty("--body-size",fontSize+"px");cards.style.setProperty("--body-font",FONTS[el("font").value]||FONTS.georgia);const palettes={dark:["#303030","#f2f2f3"],sepia:["#493e34","#fff0d7"],light:["#f1e9db","#252525"]};const pair=palettes[el("palette").value]||palettes.dark;cards.style.setProperty("--card-bg",pair[0]);cards.style.setProperty("--text-color",pair[1]);}
 el("smaller").onclick=()=>{fontSize=Math.max(17,fontSize-2);appearance();};el("larger").onclick=()=>{fontSize=Math.min(44,fontSize+2);appearance();};el("font").onchange=appearance;el("palette").onchange=appearance;
