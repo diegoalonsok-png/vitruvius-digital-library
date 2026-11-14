@@ -1,64 +1,99 @@
-/* Edition labels and source-based identifiers for the critical apparatus.
- * Draw from the same authoritative data/catalog.json used by the bilingual
- * reader. Text filters keep their exact original option values.
+/* Bibliographic details live below concise academic-edition filters.
+ * One source of truth: data/catalog.json. Preserve option values and filters.
+ * Never confuse the DOI of a modern edition with that of a manuscript locus.
  */
 (()=>{
 "use strict";
-const select=document.getElementById("apparatus-catalog-edition");
-const target=document.getElementById("apparatus-catalog-edition-reference");
-if(!select||!target)return;
-let items=null,failed=false;
-const editions=new Set(["recensio-es","recensio-fr","theory-en"]);
-const el=(tag,text)=>{const n=document.createElement(tag);if(text!=null)n.textContent=String(text);return n};
-async function load(){
+const mappings={
+ "critical-unified-edition":{"recensio-es":"recensio-es","recensio-fr":"recensio-fr","theory-en":"theory-en"},
+ "critical-edition":{"recensio-es":"recensio-es","recensio-fr":"recensio-fr","theory-en":"theory-en"},
+ "kw-ed":{"V514":"recensio-es","V297":"theory-en"},
+ "apparatus-catalog-edition":{"recensio-es":"recensio-es","recensio-fr":"recensio-fr","theory-en":"theory-en"}
+};
+const needed=new Set(["recensio-es","recensio-fr","theory-en"]);
+const display=new Map();
+const el=(tag,text)=>{
+ const n=document.createElement(tag);
+ if(text!==undefined)n.textContent=String(text);
+ return n;
+};
+function format(book,host){
+ const name=el("strong",(book.version||"Edición")+" · "+(book.bibliographic_title||book.title));
+ const role=book.editorial_role||book.bibliographic_author||"Responsable editorial no consignado";
+ const imprint=[book.publication_place,book.publisher,book.year].filter(Boolean).join(" · ");
+ const p=el("p");p.append(name,el("span"," · "+role+(imprint?" · "+imprint:"")+" · "));
+ p.append(el("span","ISBN: "+(book.isbn||"no consignado")+" · "));
+ if(book.doi){
+  const a=el("a","DOI: "+book.doi);
+  a.href="https://doi.org/"+book.doi;
+  a.target="_blank";a.rel="noopener noreferrer";
+  p.append(a);
+ }else p.append(el("span","DOI no consignado"));
+ host.append(p);
+ if(book.isbn_note)host.append(el("small","Nota sobre ISBN: "+book.isbn_note));
+}
+function mount(){
+ for(const [id,map] of Object.entries(mappings)){
+  const select=document.getElementById(id);
+  if(!select)continue;
+  let host=document.getElementById(id+"-reference");
+  if(!host){
+   host=el("div");
+   host.id=id+"-reference";
+   host.className="apparatus-compact-bibliography";
+   host.setAttribute("role","status");
+   const form=select.closest("form");
+   if(form)form.insertAdjacentElement("afterend",host);
+   else select.closest("label")?.insertAdjacentElement("afterend",host);
+  }
+  select.setAttribute("aria-describedby",host.id);
+  host.classList.add("apparatus-compact-bibliography");
+  display.set(id,{select,host,map});
+ }
+}
+function update({select,host,map},books){
+ host.replaceChildren();
+ if(!books){
+  host.textContent="Fichas académicas: consultando el catálogo editorial…";
+  return;
+ }
+ const book=books.get(map[select.value]);
+ if(book){
+  format(book,host);
+  host.append(el("small","Los identificadores corresponden a esta edición, no a un códice ni al locus aislado."));
+ }else if(map[select.value]){
+  host.textContent="Ficha bibliográfica de la edición temporalmente no disponible.";
+ }else{
+  const details=el("details");
+  const summary=el("summary","Fichas de las ediciones incluidas · título, ISBN y DOI");
+  details.append(summary);
+  for(const editionId of new Set(Object.values(map))){
+   const record=books.get(editionId);
+   if(record)format(record,details);
+  }
+  details.append(el("small","V514 y V554 comparten el ISBN declarado en el catálogo; la corroboración registral es independiente. Los DOI identifican cada edición."));
+  host.append(details);
+ }
+}
+async function fetchCatalog(){
  const response=await fetch("data/catalog.json",{headers:{Accept:"application/json"}});
  if(!response.ok)throw Error("HTTP "+response.status);
  const data=await response.json();
- if(!Array.isArray(data.editions))throw Error("Catálogo bibliográfico incompleto");
- const map=new Map(data.editions.filter(e=>editions.has(e.id)).map(e=>[e.id,e]));
- if(map.size!==editions.size)throw Error("Falta una ficha bibliográfica de las tres ediciones");
- return map;
+ if(!Array.isArray(data.editions))throw Error("Faltan datos bibliográficos");
+ const books=new Map(data.editions.filter(book=>needed.has(book.id)).map(book=>[book.id,book]));
+ if(books.size!==3)throw Error("Faltan fichas de las tres ediciones");
+ return books;
 }
-function show(){
- target.replaceChildren();
- if(failed){
-  target.textContent="No se pudo recuperar la ficha bibliográfica; se conservan los identificadores acreditados en el selector.";
-  return;
+mount();
+for(const x of display.values())update(x,null);
+fetchCatalog().then(books=>{
+ for(const x of display.values()){
+  update(x,books);
+  x.select.addEventListener("change",()=>update(x,books));
  }
- if(!items){
-  target.textContent="Consultando fichas editoriales originales…";
-  return;
+}).catch(()=>{
+ for(const x of display.values()){
+  x.host.replaceChildren(el("span","Ficha bibliográfica temporalmente no disponible. Los filtros continúan operativos."));
  }
- const selected=select.value;
- if(!selected){
-  target.append(el("strong","Ediciones documentadas · "));
-  for(const e of items.values()){
-   const line=el("span");
-   line.append(el("span",(e.version||e.id)+": "+(e.bibliographic_title||e.title)+". "));
-   if(e.doi){
-    const a=el("a","DOI "+e.doi);a.href="https://doi.org/"+encodeURI(e.doi);
-    a.target="_blank";a.rel="noopener noreferrer";line.append(a);
-   }
-   line.append(document.createTextNode(" · ISBN "+(e.isbn||"no consignado")+"; "));
-   target.append(line);
-  }
-  target.append(el("small","El ISBN compartido V514/V554 se declara en los paratextos editoriales y requiere corroboración registral independiente. El DOI identifica la edición, no el locus."));
-  return;
- }
- const e=items.get(selected);
- if(!e){target.textContent="No se encontró esta edición en el catálogo bibliográfico.";return}
- target.append(el("strong",e.bibliographic_title||e.title),el("span"," · "+
-  [e.edition_statement,e.editorial_role||e.bibliographic_author,
-   [e.publication_place,e.publisher].filter(Boolean).join(" · "),e.year].filter(Boolean).join(" · ")+" · "));
- target.append(el("span","ISBN: "+(e.isbn||"no consignado")+". "));
- if(e.doi){
-  const doi=el("a","DOI: "+e.doi);doi.href="https://doi.org/"+encodeURI(e.doi);
-  doi.target="_blank";doi.rel="noopener noreferrer";target.append(doi);
- }
- if(e.isbn_note)target.append(el("small"," · "+e.isbn_note));
- target.append(el("small"," · Identificadores de la edición; no implican paginación del manuscrito ni colación de variantes."));
-}
-select.addEventListener("change",show);
-show();
-load().then(r=>{items=r;show()}).catch(()=>{failed=true;show()});
+});
 })();
