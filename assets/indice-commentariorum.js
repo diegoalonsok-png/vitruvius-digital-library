@@ -52,7 +52,7 @@ $("ic-search").addEventListener("input",apply);
  try{
   const tasks=books.flatMap(book=>["V514","V554"].map(ed=>({book,ed,path:"data/commentary/"+ed.toLowerCase()+"-libro-"+book+".json"})));
   const requests=tasks.map(async t=>{try{const json=await load(t.path);return (json.entries||[]).map(e=>record(t.book,t.ed,e))}catch(e){console.warn(t.path,e.message);return []}});
-  const studyRequests=["V514","V554"].flatMap(ed=>["61-90","91-120"].map(range=>({edition:ed,path:"data/commentary/estudio-preliminar-"+ed.toLowerCase()+"-"+range+".json"})));
+  const studyRequests=["V514","V554"].flatMap(ed=>["61-90","91-120","121-150"].map(range=>({edition:ed,path:"data/commentary/estudio-preliminar-"+ed.toLowerCase()+"-"+range+".json"})));
   for(const task of studyRequests)requests.push(load(task.path).then(doc=>(doc.pages||[]).map(page=>study(task.edition,page,doc))).catch(e=>{console.warn(task.path,e.message);return []}));
   const results=await Promise.all([...requests,load("data/critical-notes.json").then(j=>(j.entries||[]).filter(e=>["recensio-es","recensio-fr"].includes(e.edition)).map(note))]);
   all=results.flat();const url=new URLSearchParams(location.search);
