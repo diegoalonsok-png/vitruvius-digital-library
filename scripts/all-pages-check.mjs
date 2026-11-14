@@ -32,12 +32,23 @@ async function worker(){
     const controlList=[...document.querySelectorAll("button, input[type=button], input[type=submit], [role=button]")];
     const visible=x=>{const r=x.getBoundingClientRect(),st=getComputedStyle(x);return r.width>0&&r.height>0&&st.display!=="none"&&st.visibility!=="hidden"};
     const unnamed=controlList.filter(x=>visible(x)&&!(x.getAttribute("aria-label")||x.getAttribute("aria-labelledby")||x.innerText||x.textContent||x.value||x.getAttribute("title")||"").trim());
+    const typography=[...document.querySelectorAll('#site-typeface-toggle')];
+    const typographyIssues=[];
+    for(const element of typography){
+      const tool=element.closest('.site-typeface-tool')||element;
+      const rect=element.getBoundingClientRect(),sty=getComputedStyle(tool);
+      const documentTop=rect.top+window.scrollY;
+      if(element.closest('footer,[role="contentinfo"]'))typographyIssues.push('Aa mounted in footer');
+      if(sty.position!=='fixed'&&documentTop>Math.max(600,innerHeight*.85))typographyIssues.push('Aa below top controls at y='+Math.round(documentTop));
+    }
+    if(typography.length>1)typographyIssues.push(typography.length+' duplicated Aa controls');
     return {
      timing:{domContentLoadedMs:Math.round(nav?.domContentLoadedEventEnd||0),loadMs:nav?.loadEventEnd?Math.round(nav.loadEventEnd):null,ttfbMs:Math.round((nav?.responseStart||0)-(nav?.requestStart||0)),resourceRequests:performance.getEntriesByType("resource").length},
-     controls:{total:controlList.length,visible:controlList.filter(visible).length,unlabeled:unnamed.slice(0,12).map(x=>x.outerHTML.slice(0,180)),disabled:controlList.filter(x=>x.disabled).length}
+     controls:{total:controlList.length,visible:controlList.filter(visible).length,unlabeled:unnamed.slice(0,12).map(x=>x.outerHTML.slice(0,180)),disabled:controlList.filter(x=>x.disabled).length,typographyCount:typography.length,typographyIssues}
     };
    });
    timing=observed.timing;controls=observed.controls;
+   for(const issue of controls.typographyIssues||[])errs.push('TYPOGRAPHY '+issue);
   }catch(e){errs.push("LOAD "+e.message.slice(0,140))}
   finally{await page.close()}
   results[index]={filename,errs:[...new Set(errs)],miss:[...new Set(miss)],timing,controls};
