@@ -3194,8 +3194,8 @@
     "manifest": null,
     "status": "Testimonio individualizado en BnF Grec 2179, s. IX, texto en ff. 1–171v. La signatura y el acceso digital están documentados; no se declara colación ecdótica autóptica.",
     "researchStatus": "individual_witnesses_documented",
-    "witnessCount": 3,
-    "witnessWithViewerCount": 3,
+    "witnessCount": 2,
+    "witnessWithViewerCount": 2,
     "needsAdditionalWitnesses": false,
     "record": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j",
     "automatedAudit": {
@@ -3262,37 +3262,25 @@
     {
      "id": "dioscorides-paris",
      "shelfmark": "Grec 2179",
-     "library": "París, Bibliothèque nationale de France",
-     "date": "siglo IX",
+     "library": "París, Bibliothèque nationale de France, Département des manuscrits",
+     "date": "siglo IX, según INHA y BnF",
      "dateStart": 801,
      "language": "grc",
-     "coverage": "Testimonio griego digitalizado de textos de Dioscórides; cotejar la extensión y su relación con la obra en la ficha de Gallica.",
-     "verification": "BnF Gallica shelfmark and digital record",
-     "rights": "BnF: uso conforme a condiciones de Gallica.",
-     "record": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
-     "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505"
-    },
-    {
-     "id": "dioscorides-bnf-grec2179",
+     "coverage": "De materia medica, en manuscrito griego ilustrado. Los límites por folio documentados se refieren a esta obra dentro del códice, no a un cotejo por capítulo.",
+     "verification": "INHA-AGORHA, Grec 2179 (siglo IX), y BBAW/CMG, tabla Dioscurides (De materia medica ff. 1–171v); consultados el 14-11-2026. Se conserva el ID de autoridad interno preexistente 'dioscorides-paris'.",
+     "rights": "BnF/Gallica: respetar licencia y condiciones de imagen del catálogo.",
+     "record": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j",
+     "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505/f1.item",
      "workIds": [
       "dioscorides"
      ],
      "title": "Dioscórides, Περὶ ὕλης ἰατρικῆς (De materia medica)",
-     "library": "París, Bibliothèque nationale de France, Département des manuscrits",
-     "shelfmark": "Grec 2179",
-     "date": "Siglo IX (según INHA y BnF)",
-     "dateStart": 801,
-     "language": "grc",
      "folioRange": "ff. 1r–171v para De materia medica, según el repertorio de la Berlin-Brandenburgische Akademie der Wissenschaften",
-     "coverage": "De materia medica, en manuscrito griego ilustrado. Los límites por folio documentados se refieren a esta obra dentro del códice, no a un cotejo por capítulo.",
      "origin": "Sinaí o Palestina según registro INHA; atribuición geográfica a contrastar en la bibliografía paleográfica especializada.",
-     "record": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j",
-     "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505/f1.item",
-     "verification": "INHA-AGORHA, Grec 2179 (siglo IX), y BBAW/CMG, tabla Dioscurides (De materia medica ff. 1–171v); consultados el 14-11-2026.",
      "verificationUrl": "https://cmg.bbaw.de/en/homepage/resources/catalogues/dioscurides/",
      "verificationLevel": "institutional_catalogue_plus_research_academy_2026-11-14",
      "collationStatus": "El registro identifica códice y extensión; no se ha establecido la relación con la edición de Wellmann ni cotejado una lectura de forma autónoma.",
-     "rights": "BnF/Gallica: respetar licencia y condiciones de imagen del catálogo."
+     "catalogueAlternative": "https://gallica.bnf.fr/ark:/12148/btv1b525002505"
     }
    ],
    "earliestWitness": {
@@ -28018,7 +28006,7 @@
    "strabo"
   ],
   "externalReadersBasis": "LacusCurtius / University of Chicago: índice textual por libros; no incorporar ni replicar material protegido.",
-  "latestDioscoridesCodex": "BnF Grec 2179, folios 1–171v (BBAW/CMG + INHA)",
+  "latestDioscoridesCodex": "BnF Grec 2179: metadata enriched on existing witness dioscorides-paris (deduplicated by library+shelfmark)",
   "latestPrintEdition": "Dioscorides Aldine Greek 1499 BSB viewer"
  }
 }
