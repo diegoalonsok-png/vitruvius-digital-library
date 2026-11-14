@@ -27,6 +27,10 @@ const documents=read("data/classics-documents/manifest.json");
 
 const bookIds=new Set(catalogue.map(w=>w.id));
 const indexedIds=new Set(registry.entries.map(e=>e.workId));
+const remoteEntries=registry.entries.filter(e=>/^https:\/\//.test(e.path||""));
+const localIndexedIds=new Set(registry.entries.filter(e=>!/^https:\/\//.test(e.path||"")).map(e=>e.workId));
+const remoteIndexedIds=new Set(remoteEntries.map(e=>e.workId));
+const allowedR2Corpus=/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9][a-z0-9._-]*\.json$/i;
 const coverageIds=new Set(coverage.works.map(w=>w.id));
 if(bookIds.size!==catalogue.length)error("duplicate-book","El catálogo contiene IDs duplicados");
 if(coverageIds.size!==coverage.works.length)error("duplicate-coverage","Hay obras duplicadas en la cobertura");
@@ -43,10 +47,17 @@ if(coverage.totals.originalTextNotIndexed+coverage.totals.originalTextIndexed!==
 const orphanRegistry=registry.entries.filter(e=>!bookIds.has(e.workId));
 if(orphanRegistry.length)error("orphan-index","Ediciones sin ficha de obra: "+orphanRegistry.map(e=>e.workId).slice(0,10).join(", "));
 for(const e of registry.entries){
+ if(/^https:\/\//.test(e.path||"")){
+  // R2 indexes are declarations, not local files. They need a separate live
+  // smoke test: this repository-only audit cannot certify their HTTP status.
+  if(!allowedR2Corpus.test(e.path))
+   error("invalid-remote-edition","Ruta externa fuera del bucket autorizado: "+e.path);
+  continue;
+ }
  if(!/^(data\/[a-zA-Z0-9/_-]+\.json|corpus\/[a-zA-Z0-9/_-]+\.html)$/.test(e.path||"")||!present(e.path))
-  error("missing-edition","El índice no apunta a una edición válida: "+e.path);
+  error("missing-edition","La edición local indexada no existe: "+e.path);
 }
-const falselyIndexed=coverage.works.filter(w=>Boolean(w.originalIndexed)!==indexedIds.has(w.id));
+const falselyIndexed=coverage.works.filter(w=>Boolean(w.originalIndexed)!==localIndexedIds.has(w.id));
 if(falselyIndexed.length)error("incorrect-index-flags","Se anuncian obras indexadas sin registro o viceversa: "+falselyIndexed.map(w=>w.id).slice(0,12).join(", "));
 const missingOriginals=coverage.works.filter(w=>!w.originalIndexed).map(w=>({id:w.id,title:w.title}));
 const missingTranslations=coverage.works.filter(w=>!w.translationLanguages?.length).map(w=>({id:w.id,title:w.title}));
@@ -82,7 +93,8 @@ const lexicalWithoutLoci=lexical.filter(e=>!Array.isArray(e.loci)||e.loci.length
 if(lexicalWithoutBibliography.length)error("unreferenced-etymologies","Etimologías sin fuente bibliográfica: "+lexicalWithoutBibliography.map(e=>e.lemma).slice(0,10).join(", "));
 const alignmentsUnverified=alignments.filter(e=>e.status!=="verified_with_source"&&e.status!=="philologically-verified");
 const manuscriptVariantClaims=ecdotics.filter(e=>e.recordStatus==="verified_with_source").length;
-if(missingOriginals.length)advisory("originals",missingOriginals.length+" obras están catalogadas pero no cuentan con original indexado en el registro principal");
+if(missingOriginals.length)advisory("originals",missingOriginals.length+" obras no tienen original indexado localmente (incluidos registros con URL remota)");
+if(remoteEntries.length)advisory("remote-index-verification",remoteEntries.length+" versiones apuntan a objetos R2 declarados; esta prueba no certifica su disponibilidad HTTP ni su cotejo filológico");
 if(missingTranslations.length)advisory("translations",missingTranslations.length+" obras carecen de traducción local registrada");
 if(editorialCitations.length)advisory("bibliography",editorialCitations.length+" versiones locales necesitan ficha de edición específica");
 if(notesCandidate.length)advisory("candidate-notes",notesCandidate.length+" notas del autor tienen locus candidato pendiente de revisión");
