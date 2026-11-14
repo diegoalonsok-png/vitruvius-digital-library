@@ -93,23 +93,43 @@ for(const side of ["left","right"]){
  }
 }
 function linkBack(){const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",leftLang||"grc");u.searchParams.set("right",q.get("right")||rightLang||"auto-es");if(source[pos]?.locus)u.searchParams.set("locus",source[pos].locus);el("academic").href=u.href;}
+const automaticCache=new Map();
+async function translateCurrent(token,force=false){
+ const record=source[pos];if(!record?.text)return;
+ const lang=targetLang,cacheKey=[leftLang,lang,record.locus,record.text].join("|");
+ const button=el("translate");button.hidden=true;
+ if(automaticCache.has(cacheKey)&&!force){
+  paragraph("right-text",automaticCache.get(cacheKey).text);return;
+ }
+ paragraph("right-text","Traduciendo automáticamente…");
+ if(!window.VitruviaInlineTranslation?.translate){
+  paragraph("right-text","Servicio de traducción no disponible.");button.hidden=false;return;
+ }
+ try{
+  const result=await window.VitruviaInlineTranslation.translate(record.text,leftLang,lang);
+  if(token!==renderToken)return;
+  automaticCache.set(cacheKey,result);paragraph("right-text",result.text);
+  status("Versión automática orientativa · "+result.provider+(result.partial?" · Traducción parcial.":"")+(leftLang==="grc"?" · El proveedor procesa el griego antiguo como griego moderno; requiere cotejo.":""));
+ }catch(e){
+  if(token!==renderToken)return;
+  paragraph("right-text","No fue posible traducir automáticamente. Reintentá cuando el servicio esté disponible.");
+  button.textContent="Reintentar traducción";button.hidden=false;
+  status("No respondió el servicio de traducción; la edición original permanece disponible.");
+ }
+}
 function draw(){
- renderToken++;el("translate").hidden=true;
- const a=source[pos],locus=a?.locus||"";el("title").textContent=title.toUpperCase()+" · "+locus;
+ const token=++renderToken;el("translate").hidden=true;
+ const a=source[pos],locus=a?.locus||"";
+ el("title").textContent=title.toUpperCase()+" · "+locus;
  el("left-head").textContent=(LANG[leftLang]||leftLang.toUpperCase())+" · "+locus;
  paragraph("left-text",a?.text);
  const exact=translation.find(p=>key(p.locus)===key(locus));
- el("right-head").textContent=(LANG[rightLang]||"TRADUCCIÓN")+" · "+(exact?.locus||locus);
- if(exact)paragraph("right-text",exact.text);
- else {
-  paragraph("right-text","No hay traducción indexada verificable para este locus.");
-  el("right-head").textContent="TRADUCCIÓN AUTOMÁTICA · "+(LANG[targetLang]||targetLang.toUpperCase());
-  el("translate").hidden=false;
- }
+ el("right-head").textContent=(LANG[exact?rightLang:targetLang]||"TRADUCCIÓN")+" · "+locus;
+ if(exact){paragraph("right-text",exact.text);status("Traducción indexada de la edición alojada; cotejar las fuentes editoriales.");}
+ else {void translateCurrent(token);}
  el("previous").disabled=pos<=0;el("next").disabled=pos>=source.length-1;
  if(a?.locus){q.set("locus",a.locus);history.replaceState(null,"",location.pathname+"?"+q.toString());}
  linkBack();
- status(exact?"Texto original y traducción alojada. La coincidencia de locus no acredita por sí sola equivalencia filológica.":"No se inventan traducciones ni se presentan pasajes diferentes como equivalentes.");
 }
 async function getEdition(entry,lang){
  if(!entry||!/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||""))return [];
@@ -141,23 +161,14 @@ async function load(){
  source=await getEdition(entries.get(leftLang),leftLang);
  if(!source.length)throw Error("No hay pasajes de la edición original.");
  translation=rightLang?await getEdition(entries.get(rightLang),rightLang):[];
- if(requested?.startsWith("auto-")){translation=[];rightLang=targetLang;}
+ if(requested?.startsWith("auto-")){
+ rightLang=targetLang;
+ translation=entries.has(targetLang)&&targetLang!==leftLang?await getEdition(entries.get(targetLang),targetLang):[];
+}
 
  const wanted=q.get("locus");const found=source.findIndex(p=>key(p.locus)===key(wanted));pos=found<0?0:found;draw();
 }
-el("translate").addEventListener("click",async()=>{
- const button=el("translate"),record=source[pos],token=renderToken;
- if(!record?.text||!window.VitruviaInlineTranslation?.translate){status("El servicio de traducción automática no está disponible.");return;}
- button.disabled=true;button.textContent="Traduciendo…";
- paragraph("right-text","Procesando traducción orientativa…");
- try{
-  const result=await window.VitruviaInlineTranslation.translate(record.text,leftLang,targetLang);
-  if(token!==renderToken)return;
-  paragraph("right-text",result.text);button.hidden=true;
-  status("Traducción automática orientativa · "+result.provider+(result.partial?" · Traducción parcial.":"")+(leftLang==="grc"?" · El servicio interpreta griego antiguo como moderno: requiere revisión filológica.":"")+" No equivale a una traducción académica verificada.");
- }catch(e){if(token===renderToken){paragraph("right-text","No se pudo obtener la traducción automática de este pasaje.");status("El proveedor de traducción no respondió. El original permanece disponible.");}}
- finally{button.disabled=false;button.textContent="Traducir automáticamente este pasaje";}
-});
+el("translate").addEventListener("click",()=>{void translateCurrent(renderToken,true);});
 const cards=document.querySelector(".cards");let fontSize=30;const FONTS={georgia:'Georgia, "Times New Roman", serif',palatino:'Palatino, "Book Antiqua", serif',sans:'system-ui, sans-serif'};
 function appearance(){cards.style.setProperty("--body-size",fontSize+"px");cards.style.setProperty("--body-font",FONTS[el("font").value]||FONTS.georgia);const palettes={dark:["#303030","#f2f2f3"],sepia:["#493e34","#fff0d7"],light:["#f1e9db","#252525"]};const pair=palettes[el("palette").value]||palettes.dark;cards.style.setProperty("--card-bg",pair[0]);cards.style.setProperty("--text-color",pair[1]);}
 el("smaller").onclick=()=>{fontSize=Math.max(17,fontSize-2);appearance();};el("larger").onclick=()=>{fontSize=Math.min(44,fontSize+2);appearance();};el("font").onchange=appearance;el("palette").onchange=appearance;
