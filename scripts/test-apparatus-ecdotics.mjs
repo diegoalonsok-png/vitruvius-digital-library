@@ -47,7 +47,7 @@ assert.match(noMetadata.citation,/datos bibliográficos completos no recuperados
 const html=readFileSync('aparato-critico.html','utf8');
 const bridge=readFileSync('assets/critical-lexical-bridge.js','utf8');
 const apparatus=readFileSync('assets/apparatus-catalog.mjs','utf8');
-assert.ok(html.includes('assets/critical-lexical-bridge.js?v=20261113-app-catalog'));
+assert.ok(html.includes('assets/critical-lexical-bridge.js?v=20261113-direct-dictionary-v2'));
 assert.ok(html.includes('assets/apparatus-catalog.mjs?v=20261113-cite-ecdotics-v1'));
 assert.match(html,/#apparatus-catalog-results .ac-ficha mark/);
 assert.match(bridge,/#apparatus-catalog-results .ac-ficha mark/);
