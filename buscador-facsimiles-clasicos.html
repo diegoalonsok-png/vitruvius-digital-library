@@ -20,6 +20,51 @@
 .pager input{width:76px}
 .reader-tools .reader-active{background:#576e7c}
 @media(max-width:850px){.reader-shell{grid-template-columns:1fr}.reader-frame{height:64vh;min-height:360px}.reader-column .folio{height:auto;max-height:40vh}}
+
+/* CONTRASTE TEMÁTICO: paneles de facsímiles coherentes con el selector claro/oscuro.
+   La barra compartida modifica colores globales con !important, de modo que
+   estas reglas explícitas deben abarcar texto, superficies, enlaces y controles. */
+html[data-theme="light"] body.vitruvius-secondary-controls main{
+ --fac-paper:#fffdf8;--fac-paper-alt:#f5f0e5;--fac-ink:#253443;
+ --fac-muted:#455765;--fac-link:#174e78;--fac-edge:#c8bfae;
+}
+html[data-theme="dark"] body.vitruvius-secondary-controls main{
+ --fac-paper:#20262d;--fac-paper-alt:#29323b;--fac-ink:#f1f4f6;
+ --fac-muted:#d2dce4;--fac-link:#9ed7ff;--fac-edge:#647481;
+}
+html[data-theme] body.vitruvius-secondary-controls main :is(.warning,.cita,.pager,.reader-column,.reader-head,.reader-note,.folio,article){
+ background:var(--fac-paper)!important;color:var(--fac-ink)!important;
+ border-color:var(--fac-edge)!important;
+}
+html[data-theme] body.vitruvius-secondary-controls main :is(.warning,.reader-head,.reader-note){
+ background:var(--fac-paper-alt)!important;
+}
+html[data-theme] body.vitruvius-secondary-controls main :is(.warning,.cita,.pager,.reader-column,.reader-head,.reader-note,.folio,article) :is(p,span,strong,b,small,em,div,h2,label){
+ color:inherit!important;
+}
+html[data-theme] body.vitruvius-secondary-controls main :is(.cita,.pager,.reader-head,.reader-note,article,.folio) a{
+ color:var(--fac-link)!important;text-decoration:underline;
+}
+html[data-theme] body.vitruvius-secondary-controls main :is(.reader-head,.reader-note,.cita) small{
+ color:var(--fac-muted)!important;
+}
+html[data-theme] body.vitruvius-secondary-controls main :is(select,input){
+ background:var(--fac-paper)!important;color:var(--fac-ink)!important;
+ border-color:var(--fac-edge)!important;
+}
+html[data-theme] body.vitruvius-secondary-controls main button{
+ background:var(--fac-paper-alt)!important;color:var(--fac-ink)!important;
+ border:1px solid var(--fac-edge)!important;
+}
+html[data-theme] body.vitruvius-secondary-controls main button:hover,
+html[data-theme] body.vitruvius-secondary-controls main button:focus-visible{
+ outline:2px solid var(--fac-link);outline-offset:2px;
+}
+html[data-theme] body.vitruvius-secondary-controls main .reader-tools .reader-active{
+ background:var(--fac-link)!important;
+ color:var(--fac-paper)!important;
+}
+
 </style><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261113-grc-visor"></head><body><header><h1>Facsímiles clásicos · lector de folios</h1><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></header><main><p class="warning">El folio original es la fuente principal de lectura. El OCR se muestra como ayuda de búsqueda y puede contener errores de reconocimiento, especialmente en impresos antiguos, griego, latín y abreviaturas. La página digital del PDF no equivale a un locus filológico verificado.</p><div class="form"><label>Edición<select id="edition"><option>Cargando...</option></select></label><label>Buscar en las páginas<input id="term" type="search" placeholder="Término o frase"></label><button id="go">Buscar</button><button id="read" type="button">Leer página a página</button></div><div id="cita" class="cita" hidden></div><div id="pager" class="pager" hidden><button id="prev" type="button">← Anterior</button><label>Página digital <input id="pageno" type="number" min="1" step="1" value="1"></label><button id="next" type="button">Siguiente →</button><a id="facsimil" href="#" target="_blank" rel="noopener">Abrir página en PDF</a></div><section id="reader-shell" class="reader-shell" hidden aria-label="Lector de facsímil y transcripción OCR">
 <div class="reader-column"><div class="reader-head"><h2>Folio original</h2><div class="reader-tools">
 <button id="invert" type="button" aria-pressed="false">Invertir colores</button>
