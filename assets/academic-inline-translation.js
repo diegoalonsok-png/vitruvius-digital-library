@@ -49,49 +49,30 @@ async function browserTranslation(text,source,target){
    partial:text.length>MAX_INPUT}:null;
  }finally{translator.destroy?.()}
 }
-/* Secondary provider when MyMemory is unavailable or rate-limited.
-   Unofficial endpoint; failures remain visible and are never treated as verified editions. */
-async function secondaryTranslation(fragment,source,target){
- const sl=source==="grc"?"el":source==="hbo"?"he":source;
- const q=new URLSearchParams({client:"gtx",sl,tl:target,dt:"t",q:fragment});
- const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
- try{
-  const response=await fetch("https://translate.googleapis.com/translate_a/single?"+q,
-   {mode:"cors",referrerPolicy:"no-referrer",cache:"no-store",signal:controller.signal});
-  if(!response.ok)throw Error("Servicio alternativo no disponible");
-  const data=await response.json();
-  const value=Array.isArray(data?.[0])?data[0].map(segment=>Array.isArray(segment)?segment[0]:"").join(""):"";
-  if(!value.trim())throw Error("Traducción alternativa vacía");
-  return value.trim();
- }finally{clearTimeout(timer)}
-}
 async function externalTranslation(text,source,target,fullPassage=false){
- const fragments=fullPassage?chunks(text,MAX_PART_BYTES,12,4500):chunks(text),translated=[];
+ const fragments=fullPassage?chunks(text,MAX_PART_BYTES,20,4500):chunks(text),translated=[];
  if(!fragments.length)return null;
- let usedFallback=false;
  for(const fragment of fragments){
   const externalSource=source==="grc"?"el":source==="hbo"?"he":source;
   const query=new URLSearchParams({q:fragment,langpair:externalSource+"|"+target,mt:"1"});
-  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),9000);
-  let value="";
+  const url="https://api.mymemory.translated.net/get?"+query;
+  // This is called ONLY after the reader presses the explicitly marked
+  // external-translation button. No background requests or bulk crawling.
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
   try{
-   const response=await fetch("https://api.mymemory.translated.net/get?"+query,
-    {method:"GET",mode:"cors",cache:"no-store",referrerPolicy:"no-referrer",signal:controller.signal});
+   const response=await fetch(url,{method:"GET",mode:"cors",cache:"no-store",
+    referrerPolicy:"no-referrer",signal:controller.signal});
    if(!response.ok)throw Error("HTTP "+response.status);
    const data=await response.json();
-   value=data?.responseData?.translatedText;
-   if(Number(data?.responseStatus)!==200||typeof value!=="string"||!value.trim()||
-    /QUERY LENGTH LIMIT|MYMEMORY WARNING|DAILY LIMIT|INVALID LANGUAGE|YOU HAVE USED ALL/i.test(value))
-    throw Error("Traducción no utilizable");
-   value=value.trim();
-  }catch(_){
-   usedFallback=true;value=await secondaryTranslation(fragment,source,target);
+   const value=data?.responseData?.translatedText;
+   if(Number(data?.responseStatus)!==200||typeof value!=="string"||
+      !value.trim()||/QUERY LENGTH LIMIT|MYMEMORY WARNING|DAILY LIMIT|INVALID LANGUAGE/i.test(value))
+    throw Error("El proveedor no entregó una traducción utilizable");
+   translated.push(value.trim());
   }finally{clearTimeout(timer)}
-  translated.push(value);
  }
- return {text:translated.join(" "),provider:usedFallback?
-  "Traducción automática externa · proveedor alternativo":"MyMemory / Translated · traducción automática externa",
-  partial:fragments.join("").replace(/\\s+/g,"")!==text.trim().replace(/\\s+/g,"")};
+ return {text:translated.join(" "),provider:"MyMemory / Translated · traducción automática externa",
+  partial:fragments.join("").replace(/\s+/g,"")!==text.trim().replace(/\s+/g,"")};
 }
 function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceLanguage,referenceLabel}={}){
  if(!(sourceNode instanceof Element)||sourceNode.dataset.inlineTranslationReady==="1")return false;
