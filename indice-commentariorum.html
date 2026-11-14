@@ -5,19 +5,19 @@
 <link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
 <style>
 :root{--ic-rule:#c5bcab;--ic-paper:#fffdf8;--ic-ink:#28241d;--ic-muted:#615b51}
-body{background:#f8f6f0;color:var(--ic-ink)}main{max-width:1180px;margin:auto;padding:25px clamp(16px,3vw,40px) 85px}
+body{background:#f8f6f0;color:var(--ic-ink);overflow-x:hidden}main{max-width:1180px;width:100%;box-sizing:border-box;margin:auto;padding:25px clamp(16px,3vw,40px) 85px;min-width:0;overflow-wrap:anywhere}
 h1{font:400 clamp(28px,4vw,43px)/1.2 Georgia,serif;margin:14px 0}h2{font:400 23px/1.35 Georgia,serif}
 nav{display:flex;flex-wrap:wrap;gap:15px;font:12px/1.6 system-ui}
 .intro{max-width:95ch;font:15px/1.75 Georgia,serif}
-.filters{display:flex;flex-wrap:wrap;gap:12px;align-items:end;border-block:1px solid var(--ic-rule);padding:15px 0}
+.filters{display:flex;flex-wrap:wrap;gap:12px;align-items:end;border-block:1px solid var(--ic-rule);padding:15px 0;max-width:100%;min-width:0}
 .filters label{display:grid;gap:6px;font:600 12px system-ui}.filters select,.filters input,.filters button{border:1px solid #aaa195;color:inherit;background:var(--ic-paper);min-height:40px;padding:8px 10px;font:14px system-ui;border-radius:3px}
 .filters input{min-width:220px}.filters button{cursor:pointer}
-.note{font:12px/1.7 system-ui;color:var(--ic-muted)}.result{border-bottom:1px solid var(--ic-rule);padding:17px 0}
+.note{font:12px/1.7 system-ui;color:var(--ic-muted)}.result{border-bottom:1px solid var(--ic-rule);padding:17px 0;max-width:100%;min-width:0;overflow:hidden;overflow-wrap:anywhere;word-break:normal}
 .result h3{font:400 20px/1.4 Georgia,serif;margin:0 0 5px}.result .meta{font:12px/1.6 system-ui;color:var(--ic-muted)}
 .result p{font:15px/1.75 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}
 .result details{padding:6px 0}.result summary{font:13px system-ui;cursor:pointer}
-.result pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.75 Georgia,serif}
-.result a{font:13px system-ui}.result mark{background:#ffe25c;color:#201800;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px;border-radius:1px;padding:0 1px}.ic-biblio{font:13px/1.7 Georgia,serif;border:1px solid var(--ic-rule);background:var(--ic-paper);padding:16px 20px;margin:16px 0 22px}.ic-biblio p{margin:8px 0}.ic-biblio h2{margin:0 0 8px}.ic-citation{font:12px/1.7 Georgia,serif;color:var(--ic-muted)}.ic-citation a{overflow-wrap:anywhere}.ic-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.ic-actions button{font:12px system-ui;border:1px solid var(--ic-rule);background:var(--ic-paper);padding:5px 9px;cursor:pointer}
+.result pre{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-width:100%;font:14px/1.75 Georgia,serif}
+.result a{font:13px system-ui}.result mark{background:#ffdf40;color:#201800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:2px;border-radius:1px;padding:0 1px}.ic-biblio{font:13px/1.7 Georgia,serif;border:1px solid var(--ic-rule);background:var(--ic-paper);padding:16px 20px;margin:16px 0 22px}.ic-biblio p{margin:8px 0}.ic-biblio h2{margin:0 0 8px}.ic-citation{font:12px/1.7 Georgia,serif;color:var(--ic-muted)}.ic-citation a{overflow-wrap:anywhere}.ic-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.ic-actions button{font:12px system-ui;border:1px solid var(--ic-rule);background:var(--ic-paper);padding:5px 9px;cursor:pointer}
 #more{font:13px system-ui;border:1px solid var(--ic-rule);background:var(--ic-paper);padding:10px 14px;cursor:pointer}
 @media print{nav,.filters,#more{display:none}}
 </style></head><body><main>
@@ -28,7 +28,7 @@ nav{display:flex;flex-wrap:wrap;gap:15px;font:12px/1.6 system-ui}
 <form id="ic-form" class="filters">
 <label>Palabra o expresión<input id="ic-search" type="search" placeholder="symmetria, decor, Cicerón…" autocomplete="off"></label>
 <label>Libro<select id="ic-book"><option value="">Todos los libros</option></select></label>
-<label>Edición<select id="ic-edition"><option value="">V514 y V554</option><option value="V514">V514 · español</option><option value="V554">V554 · français</option></select></label>
+<label>Edición<select id="ic-edition"><option value="">V514 y V554</option><option value="V514">V514 · español</option><option value="V554">V554 · français</option><option value="V297">V297 · English</option></select></label>
 <label>Concepto mayor<select id="ic-term"><option value="">Todos los conceptos</option></select></label>
 <label>Tipo<select id="ic-type"><option value="">Todo el material</option><option value="commentary">Comentarios por locus</option><option value="footnote">Notas al pie</option><option value="study">Estudios preliminares</option></select></label>
 <button type="submit">Buscar</button>
@@ -36,4 +36,4 @@ nav{display:flex;flex-wrap:wrap;gap:15px;font:12px/1.6 system-ui}
 <p class="note">Las coincidencias textuales son instrumentos de búsqueda. El locus explícito procede del encabezamiento original; cuando una nota tiene una ubicación sugerida por el índice digital, se identifica como tal. No se modifican las conclusiones filológicas del autor.</p>
 <p id="ic-status" role="status" aria-live="polite" class="note">Cargando el corpus de comentarios…</p>
 <div id="ic-results"></div><button id="ic-more" type="button" hidden>Mostrar más entradas</button>
-</main><script defer src="assets/indice-commentariorum.js?v=20261114-chicago18-highlight-1"></script></body></html>
+</main><script defer src="assets/indice-commentariorum.js?v=20261114-chicago18-highlight-v297-2"></script></body></html>
