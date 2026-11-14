@@ -43,10 +43,25 @@ function renderMore(){
  displayed=Math.min(results.length,displayed+PAGE);$("q-more").hidden=displayed>=results.length;
  status(results.length+" resultados; "+displayed+" visibles. Coincidencias documentales de las ediciones seleccionadas.");
 }
+function updateFederatedLinks(query){
+ const q=String(query||"").trim();
+ const links=[
+  ["q-comments","indice-commentariorum.html",{q}],
+  ["q-lexicon","vitruvia-lexicon.html",{q,mode:"palabra"}],
+  ["q-lemma","vitruvia-lexicon.html",{q,mode:"lema"}],
+  ["q-bibliotheca","bibliotheca-graeca-latina.html",{q}]
+ ];
+ for(const [id,path,params] of links){
+  const el=$(id);if(!el)continue;
+  const url=new URL(path,location.href);
+  for(const [key,val] of Object.entries(params))if(val)url.searchParams.set(key,val);
+  el.href=url.href;
+ }
+}
 function run(shouldScroll=true){
  if(!loaded){status("Los textos aún se están cargando; se ejecutará la búsqueda al terminar.");return}
  const q=$("q-term").value.trim(),edition=$("q-edition").value,scope=$("q-scope").value,mode=$("q-mode").value;
- if(!q){status("Escribí una palabra o expresión.");return}
+ updateFederatedLinks(q);if(!q){status("Escribí una palabra o expresión.");return}
  const terms=normalized(q).split(/\s+/).filter(Boolean);
  results=corpus.filter(p=>{
   if(edition&&p.edition!==edition)return false;
