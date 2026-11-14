@@ -518,9 +518,9 @@ function renderDocumentaryHistory(dest,w,d){
 }
 const LIBRARY_DOI="10.5281/zenodo.23868911";
 function renderCitationTools(dest,w){
- const strip=s=>String(s||"").replace(/\\s+/g," ").trim();
+ const strip=s=>String(s||"").replace(/\s+/g," ").trim();
  const ownDOI=strip(w.doi||w.identifiers?.doi||w.bibliography?.doi);
- const editionDOI=/^10\\.\\d{4,9}\\/\\S+$/i.test(ownDOI)?ownDOI:null;
+ const editionDOI=/^10\.\d{4,9}\/\S+$/i.test(ownDOI)?ownDOI:null;
  const page=new URL("classics-work-record.html",location.href);
  page.searchParams.set("work",w.id);
  const pageUrl=page.href.split("#")[0];
