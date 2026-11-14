@@ -251,6 +251,7 @@ function attachWordDictionary(excerpt,card,row){
  if(!["la","grc"].includes(row.language))return;
  let panel=null,selected=null;
  excerpt.addEventListener("click",event=>{
+  const selection=window.getSelection?.();if(selection&&!selection.isCollapsed&&selection.toString().trim())return;
   const wordButton=event.target.closest?.("button.lx-library-word");
   if(!wordButton||!excerpt.contains(wordButton))return;
   const word=wordButton.dataset.word||wordButton.textContent;
