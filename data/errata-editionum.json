@@ -1,0 +1,34 @@
+{
+  "schema": "vdl-errata-editionum-v1",
+  "policy": "Registro de erratas y correcciones de ediciones publicadas, no declaración de provisionalidad editorial. Nunca se inventarán erratas ni lecturas de manuscritos. Cada entrada requiere locus o página, lectura previa, corrección y fundamento, versión y fecha.",
+  "editions": [
+    {
+      "id": "V514",
+      "catalog_id": "recensio-es",
+      "entries": []
+    },
+    {
+      "id": "V554",
+      "catalog_id": "recensio-fr",
+      "entries": []
+    },
+    {
+      "id": "V297",
+      "catalog_id": "theory-en",
+      "entries": []
+    }
+  ],
+  "entry_fields": [
+    "id",
+    "version",
+    "locus_or_page",
+    "kind",
+    "reading_printed",
+    "reading_corrected",
+    "rationale",
+    "evidence",
+    "date",
+    "amended_in_version"
+  ],
+  "note": "La ausencia de registros en este fichero no certifica que una edición carezca de errores, ni convierte notas ecdóticas o variantes legítimas en erratas."
+}
