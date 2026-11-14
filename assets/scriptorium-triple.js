@@ -350,6 +350,18 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
    editorialIds.replaceChildren();
    if(record.doi){const a=document.createElement("a");a.href="https://doi.org/"+record.doi;a.textContent="DOI "+record.doi;a.target="_blank";a.rel="noopener noreferrer";editorialIds.append(a)}
    if(record.isbn){const label=document.createElement("span");label.textContent="ISBN declarado "+record.isbn+" · compartido por V514/V554/V297";label.title=record.isbnNote||"";editorialIds.append(label)}
+   if(["kurilo","fr","en"].includes(key)){
+    const raw=catalog.editions?.find(e=>e.id===({"kurilo":"recensio-es","fr":"recensio-fr","en":"theory-en"}[key]))||{};
+    const chicago=document.createElement("p");chicago.className="script-triple-chicago";
+    const title=raw.bibliographic_title||raw.title||record.title;
+    const italic=document.createElement("i");italic.textContent=title;
+    chicago.append(document.createTextNode("Chicago 18 · bibliografía: Kurilo, Diego A. "),italic,
+      document.createTextNode(". "+(raw.edition_statement||raw.version||"Edición digital")+". Buenos Aires: "+(raw.publisher||"Sophia Lux")+", "+(raw.year||"2026")+". https://doi.org/"+(raw.doi||record.doi)+"."));
+    editorialIds.append(chicago);
+    const distinction=document.createElement("small");distinction.className="script-triple-edition-role";
+    distinction.textContent="Edición, traducción y comentario de Diego A. Kurilo · "+(raw.version||"")+". ISBN compartido declarado por el editor; no es una asignación independiente de esta versión.";
+    editorialIds.append(distinction);
+   }
    if(!record.doi&&!record.isbn){const link=document.createElement("a");link.href=record.reference||"#";link.textContent="Edición histórica · "+(record.year||"")+" · ficha de procedencia";if(record.reference){link.target="_blank";link.rel="noopener noreferrer"}editorialIds.append(link)}
   }catch{editorialIds.textContent="Identificación editorial accesible en la ficha de cita"}
  }
