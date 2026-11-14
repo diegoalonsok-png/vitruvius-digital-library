@@ -6,6 +6,8 @@ on:
       - 'scripts/academic-integrity.mjs'
       - 'scripts/test-codicological-source-consistency.mjs'
       - 'data/academic-integrity.json'
+      - 'data/r2/aparato-academico.json'
+      - 'scripts/test-academic-apparatus-manifest.mjs'
       - 'assets/apparatus-ecdotics.mjs'
       - 'assets/concordancia-kwic.js'
       - 'assets/scholarly-passage-citation.js'
@@ -43,6 +45,8 @@ on:
       - 'scripts/academic-integrity.mjs'
       - 'scripts/test-codicological-source-consistency.mjs'
       - 'data/academic-integrity.json'
+      - 'data/r2/aparato-academico.json'
+      - 'scripts/test-academic-apparatus-manifest.mjs'
       - 'assets/apparatus-ecdotics.mjs'
       - 'assets/concordancia-kwic.js'
       - 'assets/scholarly-passage-citation.js'
@@ -101,6 +105,8 @@ jobs:
           node --check assets/concordancia-kwic.js
           node --check assets/scholarly-passage-citation.js
           node scripts/test-kwic-citability.mjs
+      - name: Check public apparatus manifest references source data and edition metadata
+        run: node scripts/test-academic-apparatus-manifest.mjs
       - name: Confirm published integrity data matches current immutable sources
         run: node scripts/academic-integrity.mjs --check
       - name: Verify codicological dossier fields and British Library references
