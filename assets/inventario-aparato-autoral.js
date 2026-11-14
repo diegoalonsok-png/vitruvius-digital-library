@@ -149,7 +149,7 @@ function renderMetrics(integrity){
  addStat(box,notes.length,"Notas originales de los tres libros");
  for(const [id,label] of Object.entries(names))addStat(box,notes.filter(n=>n.edition===id).length,label);
  addStat(box,notes.filter(n=>status(n)==="explicit_in_anchor").length,"Notas con locus explícito");
- addStat(box,notes.filter(n=>status(n)==="candidate").length,"Loci candidatos sin certificar");
+ addStat(box,notes.filter(n=>status(n)==="candidate").length,"Notas con locus sugerido automáticamente");
  addStat(box,notes.filter(n=>status(n)==="unmapped").length,"Notas sin locus propuesto");
  addStat(box,notes.filter(n=>status(n)==="noncanonical").length,"Notas con locus candidato no canónico (7 loci distintos)");
 }
@@ -165,11 +165,11 @@ function renderApparatus(integrity){
 function entry(n){
  const section=make("article","apa-entry"),typ=status(n),loc=locusOf(n);
  section.append(highlightQuery(make("h3",""),(names[n.edition]||n.edition)+" · Nota "+n.footnote_id));
- const label=typ==="explicit_in_anchor"?"Locus explícito en contexto":typ==="candidate"?"Locus candidato, sin cotejar":typ==="noncanonical"?"Locus candidato NO canónico; requiere conciliación de numeración":"Sin locus atribuido";
+ const label=typ==="explicit_in_anchor"?"Locus explícito en contexto":typ==="candidate"?"Locus sugerido por el índice digital":typ==="noncanonical"?"Locus candidato NO canónico; requiere conciliación de numeración":"Sin locus atribuido";
  section.append(highlightQuery(make("p","meta"),label+(loc?" · "+loc:"")+" · Párrafo DOCX "+(n.source_paragraph??"no indicado")+" · "+(n.source_file||"Documento sin identificar")));
  const cited=references(n);
  if(cited.length){
-  const line=make("p","apa-refs");line.append(make("strong","", "Referencias mencionadas (no cotejadas): "));
+  const line=make("p","apa-refs");line.append(make("strong","", "Autores y ediciones citados en la nota: "));
   for(const ref of cited)line.append(make("span","apa-ref-tag",ref.name));
   section.append(line);
  }
