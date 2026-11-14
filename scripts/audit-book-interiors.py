@@ -30,7 +30,7 @@ def pdf_read(path):
  import fitz
  with fitz.open(path) as doc:
   if not doc.is_pdf or doc.needs_pass:raise ValueError("Unreadable PDF")
-  pages=len(doc);positions=sorted(set(range(min(16,pages)))|set(range(max(0,pages-2),pages)))
+  pages=len(doc);positions=sorted(set(range(min(16,pages)))|set(range(max(0,pages-2),pages))|{int(pages*f) for f in (0.25,0.50,0.75) if pages})
   parts=[{"page":i+1,"text":doc[i].get_text("text").strip()} for i in positions]
   return pages,parts,doc.metadata or {}
 def docx_read(path):
@@ -55,9 +55,14 @@ def inspect(item,local_dir):
     for chunk in iter(lambda:file.read(262144),b""):sha256.update(chunk)
    sha,nbytes=sha256.hexdigest(),target.stat().st_size
   pages,parts,metadata=docx_read(target) if suffix==".docx" else pdf_read(target)
-  sample=fold(" ".join(x["text"] for x in parts if x["page"] is None or x["page"]<=12))
+  opening=fold(" ".join(x["text"] for x in parts if x["page"] is None or x["page"]<=16))
+  sample=fold(" ".join(x["text"] for x in parts))
+  author=fold(item.get("autor"))
+  author_tokens=[w for w in re.findall(r"[a-z]{5,}",author) if w not in ("pseudo","saint","santo","autor","anonimo","varios")]
+  title_sample=opening
   words=[x for x in re.findall("[a-z]{5,}",fold(item.get("tituloEdicion"))) if x not in ("volume","translation","translated","edition","books","greek","latin","english","opera","libri")]
-  found=list(dict.fromkeys(x for x in words if x in sample))[:12]
+  found=list(dict.fromkeys(x for x in words if x in title_sample))[:12]
+  author_found=list(dict.fromkeys(x for x in author_tokens if x in sample))[:8]
   flags=[]
   if item.get("sha256") and sha!=item["sha256"]:flags.append("SHA256_MISMATCH")
   if item.get("bytes") and nbytes!=item["bytes"]:flags.append("BYTES_MISMATCH")
@@ -72,16 +77,21 @@ def inspect(item,local_dir):
   author=fold(item.get("autor"))
   name_parts=[w for w in re.findall(r"[a-z]{5,}",author) if w not in {"atribucion","tradicional","antologia","griega","the","de","del","editor"}]
   author_hits=[w for w in name_parts if w in front]
-  if sum(len(x["text"]) for x in parts)<150:flags.append("NO_EXTRACTABLE_FRONT_TEXT")
+  if sum(len(x["text"]) for x in parts if x["page"] is None or x["page"]<=16)<150:flags.append("NO_EXTRACTABLE_FRONT_TEXT")
   elif words and not found:flags.append("EDITION_TITLE_NOT_DETECTED_IN_SAMPLE")
   if meaningful and not title_hits:flags.append("WORK_TITLE_NOT_DETECTED_IN_OPENING_PAGES")
   if name_parts and not author_hits:flags.append("AUTHOR_NOT_DETECTED_IN_OPENING_PAGES")
+  if author_tokens and not author_found and len(sample)>150:flags.append("AUTHOR_NOT_DETECTED_IN_SAMPLED_TEXT")
+  if item.get("traductor"):
+   translator_tokens=[w for w in re.findall(r"[a-z]{5,}",fold(item["traductor"])) if w not in ("translated","traductor")]
+   if translator_tokens and not any(w in sample for w in translator_tokens):flags.append("TRANSLATOR_NOT_DETECTED_IN_SAMPLE")
   if item.get("incidenciaCatalografica"):flags.append("EXISTING_CATALOGUE_WARNING")
   return {"id":item["id"],"declaredAuthor":item.get("autor"),"declaredTitle":item.get("tituloEdicion"),
           "declaredVolume":item.get("volumen"),"declaredTranslator":item.get("traductor"),
           "source":item.get("pdf"),"archiveRecord":item.get("fuente"),
           "observed":{"pages":pages,"sha256":sha,"bytes":nbytes,"metadata":metadata,
-                      "openingTextLength":sum(len(x["text"]) for x in parts),"matchingTitleTerms":found,
+                      "openingTextLength":sum(len(x["text"]) for x in parts if x["page"] is None or x["page"]<=16),
+                      "sampledPages":[x["page"] for x in parts],"matchingTitleTerms":found,"matchingAuthorTerms":author_found,
                       "printedVolumeCandidates":list(dict.fromkeys(printed))[:6],
                       "declaredWorkTitle":item.get("obra"),"workTitleTerms":meaningful[:12],
                       "workTitleTermsSeen":title_hits[:12],"authorTermsSeen":author_hits[:12],
@@ -102,7 +112,7 @@ def main():
   except Exception as exc:results.append({"id":item["id"],"source":item.get("pdf"),"status":"could_not_inspect","reason":type(exc).__name__+": "+str(exc)[:300]})
  result={"schema":"vdl-content-identity-audit-v1","createdAt":datetime.now(timezone.utc).isoformat(),
          "scope":{"start":opts.start,"limit":opts.limit,"total":len(items)},
-         "method":"SHA256 + actual page count + sampled PDF text or OOXML text. Matching title words do not certify edition or full-text contents.",
+         "method":"SHA256 + page count + title/author/translator clues in PDF front matter, final pages and 25/50/75% samples or OOXML text. Machine matches never certify textual identity, translation or full coverage.",
          "safety":"READ ONLY: never delete, edit, replace, rename, or upload original books, codices or folios",
          "results":results}
  output=pathlib.Path(opts.output);output.parent.mkdir(parents=True,exist_ok=True)
