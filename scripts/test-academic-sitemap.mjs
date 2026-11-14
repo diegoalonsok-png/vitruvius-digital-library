@@ -68,4 +68,32 @@ assert(fs.readFileSync("vitruvia.html","utf8").includes('href="index-auctorum-op
   "Vitruvia must provide a crawlable route to the static author/work index");
 assert(fs.readFileSync("bibliotheca-graeca-latina.html","utf8").includes('href="index-auctorum-operum.html"'),
   "Bibliotheca must link to its static academic index");
+
+// HOME CORPUS STATUS CONTRACT: statistical coverage is not certified collation.
+const home=fs.readFileSync("index.html","utf8");
+const reader=fs.readFileSync("lector-bilingue.html","utf8");
+const search=fs.readFileSync("vitruvia.html","utf8");
+const citationGuide=fs.readFileSync("como-citar.html","utf8");
+const counts=JSON.parse(fs.readFileSync("data/cifras-corpus.json","utf8"));
+const snapshot=JSON.parse(fs.readFileSync("data/corpus-snapshot-2026-11-14.json","utf8"));
+assert(counts.schema==="vdl-cifras-corpus-1"&&counts.obrasConTextoIndexado<=counts.obras,
+  "Corpus counters must remain self-consistent");
+assert(home.includes('id="estado-corpus"')&&home.includes('data-cifra="obrasConTextoIndexado"')&&home.includes('data-cifra="obras"'),
+  "Home must expose real indexed-versus-catalogued work coverage");
+assert(home.includes('data-cifra-fecha')&&home.includes('assets/cifra-obras.js'),
+  "Corpus date and totals must update from the shared published JSON");
+assert(home.includes('href="concordancia-folios.html"')&&home.includes('href="como-citar.html#corpus-version"'),
+  "Home research path must reach evidence and citation guidance");
+assert(reader.includes('id="reader-certainty-note"')&&reader.includes('no un cotejo manuscrito independiente'),
+  "Bilingual reader must explain limits of structural alignment");
+assert(search.includes('id="semantic-scope-note"')&&search.includes("no toda Bibliotheca"),
+  "Vitruvia must disclose semantic coverage before the user opens the technical details");
+assert(snapshot.schema==="vdl-corpus-snapshot-metadata-v1"&&snapshot.records.length===3
+ &&snapshot.canonical_loci===731&&snapshot.source_fingerprint_sha256===JSON.parse(fs.readFileSync("data/academic-integrity.json","utf8")).sourceFingerprint,
+  "Dated editorial snapshot must match the published three-edition integrity fingerprint");
+assert(citationGuide.includes('id="corpus-version"')&&citationGuide.includes('data/corpus-snapshot-2026-11-14.json')
+ &&citationGuide.includes('lector-bilingue.html?edition=recensio-es&amp;locus=3.1.2'),
+  "Citations must expose verifiable dated source and a real locus link");
+assert(!/Recensio provisional y aparato crítico comparativo selectivo/.test(citationGuide),
+  "Citation guide must not label published books generically as provisional");
 console.log("PASS: "+pages.length+" scholarly research pages have a canonical URL, heading and a unique sitemap entry. External indexing is not asserted.");
