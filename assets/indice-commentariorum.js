@@ -9,12 +9,22 @@ const create=(tag,txt,parent,cls)=>{const e=document.createElement(tag);if(txt!=
 let all=[],visible=[],shown=0;const STEP=30;let bibliography={};
 function highlight(container,value){
  const text=String(value||""),words=[$("ic-term").value,$("ic-search").value.trim()].filter(Boolean);
- if(!words.length){container.textContent=text;return;}
- const rx=words.map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,"\\let all=[],visible=[],shown=0;const STEP=30;")).filter(Boolean);
- if(!rx.length){container.textContent=text;return;}
- const re=new RegExp("("+rx.join("|")+")","gi");let last=0,m;
- while((m=re.exec(text))!==null){container.append(document.createTextNode(text.slice(last,m.index)));const mark=document.createElement("mark");mark.textContent=m[0];container.append(mark);last=re.lastIndex;if(!m[0])re.lastIndex++}
- container.append(document.createTextNode(text.slice(last)));
+ if(!words.length){container.textContent=text;return}
+ let segments=[{value:text,marked:false}];
+ for(const word of words){
+   const needle=word.toLocaleLowerCase(),updated=[];
+   for(const segment of segments){
+     if(segment.marked){updated.push(segment);continue}
+     const hay=segment.value.toLocaleLowerCase();let at=0,idx;
+     while((idx=hay.indexOf(needle,at))>=0){
+       if(idx>at)updated.push({value:segment.value.slice(at,idx),marked:false});
+       updated.push({value:segment.value.slice(idx,idx+word.length),marked:true});at=idx+word.length
+     }
+     if(at<segment.value.length)updated.push({value:segment.value.slice(at),marked:false})
+   }
+   segments=updated;
+ }
+ for(const piece of segments){if(piece.marked){const mark=document.createElement("mark");mark.textContent=piece.value;container.append(mark)}else container.append(document.createTextNode(piece.value))}
 }
 function chicago(ed,place){
  const b=bibliography[ed];if(!b)return ed+(place?" · "+place:"");
