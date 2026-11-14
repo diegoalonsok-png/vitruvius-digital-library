@@ -49,15 +49,15 @@ td small{display:block;color:#635d54;font:12px/1.5 system-ui}
 <section class="metrics" id="metrics" aria-label="Cobertura"></section>
 <p class="note"><strong>Alcance académico.</strong> Los registros de colación proceden principalmente del aparato impreso en las ediciones modernas; las coincidencias entre V514 y V554 son controles de extracción del mismo trabajo autoral, no testigos independientes. Los loci sin entradas de colación pueden contener texto, traducción y comentario. Las glosas, las notas y el diccionario no se cuentan como variantes críticas. Este mapa no declara una nueva recensio completa ni autopsia de todos los códices.</p>
 <h2>Resumen de los diez libros</h2>
-<div class="table-wrap"><table><thead><tr><th>Libro</th><th class="num">Loci</th><th class="num">Colación registrada</th><th class="num">Extracción controlada</th><th class="num">Glosas localizadas</th><th class="num">Notas explícitas</th><th class="num">Diccionario contextual</th></tr></thead><tbody id="byBook"></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Libro</th><th class="num">Loci</th><th class="num">Colación registrada</th><th class="num">Extracción controlada</th><th class="num">Glosas localizadas</th><th class="num">Notas explícitas</th><th class="num">Diccionario contextual</th><th class="num">Rose/Krohn · OCR</th><th class="num">Codex H · folio</th></tr></thead><tbody id="byBook"></tbody></table></div>
 <h2>Explorar los 731 loci</h2>
-<div class="controls"><label>Libro<select id="book"><option value="">Todos</option></select></label><label>Estado<select id="filter"><option value="all">Todos los loci</option><option value="with">Con colación registrada</option><option value="strong">Con extracción controlada</option><option value="without">Sin colación registrada</option><option value="comment">Con comentario autoral</option></select></label><label>Locus<input id="query" type="search" placeholder="Ej.: 1.1.1, 3.praef"></label><button type="button" id="csv">Exportar cobertura CSV</button></div>
+<div class="controls"><label>Libro<select id="book"><option value="">Todos</option></select></label><label>Estado<select id="filter"><option value="all">Todos los loci</option><option value="with">Con colación registrada</option><option value="strong">Con extracción controlada</option><option value="without">Sin colación registrada</option><option value="comment">Con comentario autoral</option><option value="historic">Con aparato histórico OCR</option><option value="hfolio">Con folio H localizado</option></select></label><label>Locus<input id="query" type="search" placeholder="Ej.: 1.1.1, 3.praef"></label><button type="button" id="csv">Exportar cobertura CSV</button></div>
 <p id="detailCount"></p>
 <div class="table-wrap"><table><thead><tr><th>Locus y lectura</th><th>Estado documental</th><th>Material editorial asociado</th></tr></thead><tbody id="byLocus"></tbody></table></div>
 <p class="small" id="limitInfo"></p>
 <section id="dossier" hidden aria-live="polite" aria-label="Dossier ecdótico y comparativo del locus"></section>
 <h2>Procedencia y reproducibilidad</h2>
-<p class="lead">Los datos se leen directamente de <a href="data/academic-integrity.json">referencias canónicas</a>, <a href="data/apparatus/collatio-validada.json">colación extraída y clasificada</a>, <a href="data/apparatus/aparato-autoral.json">comentarios y diccionario</a> y <a href="data/critical-notes.json">notas originales de los DOCX</a>. Los estados se calculan sobre los archivos disponibles en esta publicación. Las cifras no deben citarse como cobertura manuscrita integral; para el texto de una lectura debe abrirse siempre su edición y página original.</p>
+<p class="lead">Los datos se leen directamente de <a href="data/academic-integrity.json">referencias canónicas</a>, <a href="data/apparatus/collatio-validada.json">colación extraída y clasificada</a>, <a href="data/apparatus/aparato-autoral.json">comentarios y diccionario</a> y <a href="data/critical-notes.json">notas originales de los DOCX</a>. Los estados se calculan sobre los archivos disponibles en esta publicación. Las columnas Rose/Krohn muestran entradas OCR asociadas automáticamente y la columna H muestra localizaciones codicológicas sin presumir cotejo diplomático. Las cifras no deben citarse como cobertura manuscrita integral; para el texto de una lectura debe abrirse siempre su edición y página original.</p>
 </main>
 <script>
 (function(){
@@ -72,7 +72,7 @@ const count=(arr)=>arr.length;
 const uniq=(items)=>new Set(items).size;
 const validLocus=(l)=>typeof l==='string'&&/^([1-9]|10)\.(praef|[0-9]+)(\.[0-9]+)?$/.test(l);
 async function load(url){const r=await fetch(url);if(!r.ok)throw Error(url+' · HTTP '+r.status);return r.json()}
-function item(l){return {locus:l,coll:[],high:[],gloss:[],notes:[],candidate:[],sections:[],dictionary:[]}}
+function item(l){return {locus:l,coll:[],high:[],gloss:[],notes:[],candidate:[],sections:[],dictionary:[],history:[],hFolio:[]}}
 function extend(map,rows,field,locusOf){for(const e of rows){const l=locusOf(e);const r=map.get(l);if(r)r[field].push(e)}}
 function render(){
  const sums=[
@@ -81,19 +81,21 @@ function render(){
  ['Loci con extracción controlada',records.filter(x=>x.high.length).length],
  ['Loci con glosa localizada',records.filter(x=>x.gloss.length).length],
  ['Loci con notas de anclaje explícito',records.filter(x=>x.notes.length).length],
- ['Loci sin colación registrada',records.filter(x=>!x.coll.length).length]
+ ['Loci sin colación registrada',records.filter(x=>!x.coll.length).length],
+ ['Loci con notas Rose/Krohn (OCR)',records.filter(x=>x.history.length).length],
+ ['Loci con folio H localizado',records.filter(x=>x.hFolio.length).length]
  ];
  $('metrics').replaceChildren(...sums.map(pair=>{let d=create('div',undefined,'metric');d.append(create('strong',pair[1]),create('span',pair[0]));return d}));
  const tbody=$('byBook');tbody.replaceChildren();
  for(let b=1;b<=10;b++){const x=records.filter(r=>Number(r.locus.split('.')[0])===b);
- const n=f=>x.filter(f).length,tr=create('tr');cell(tr,'Liber '+R[b]);cell(tr,x.length,'num');cell(tr,n(r=>r.coll.length),'num');cell(tr,n(r=>r.high.length),'num');cell(tr,n(r=>r.gloss.length),'num');cell(tr,n(r=>r.notes.length),'num');cell(tr,n(r=>r.dictionary.length),'num');tbody.append(tr)}
+ const n=f=>x.filter(f).length,tr=create('tr');cell(tr,'Liber '+R[b]);cell(tr,x.length,'num');cell(tr,n(r=>r.coll.length),'num');cell(tr,n(r=>r.high.length),'num');cell(tr,n(r=>r.gloss.length),'num');cell(tr,n(r=>r.notes.length),'num');cell(tr,n(r=>r.dictionary.length),'num');cell(tr,n(r=>r.history.length),'num');cell(tr,n(r=>r.hFolio.length),'num');tbody.append(tr)}
  const select=$('book');for(let b=1;b<=10;b++){const o=create('option','Liber '+R[b]);o.value=String(b);select.append(o)}
  renderLoci();
 }
 function renderLoci(){
  const b=$('book').value,f=$('filter').value,q=$('query').value.trim().toLowerCase().replace(/^vitr\.?\s*/,'');
  const shown=records.filter(r=>(!b||r.locus.split('.')[0]===b)&&(!q||r.locus.toLowerCase().includes(q))&&
- (f==='all'||f==='with'&&r.coll.length||f==='strong'&&r.high.length||f==='without'&&!r.coll.length||f==='comment'&&(r.gloss.length||r.notes.length||r.candidate.length||r.sections.length||r.dictionary.length)));
+ (f==='all'||f==='with'&&r.coll.length||f==='strong'&&r.high.length||f==='without'&&!r.coll.length||f==='comment'&&(r.gloss.length||r.notes.length||r.candidate.length||r.sections.length||r.dictionary.length)||f==='historic'&&r.history.length||f==='hfolio'&&r.hFolio.length));
  $('detailCount').textContent=shown.length+' loci cumplen los filtros.';
  const tbody=$('byLocus');tbody.replaceChildren();
  for(const r of shown.slice(0,150)){
@@ -105,22 +107,23 @@ function renderLoci(){
  else status.append(create('span','Sin colación registrada','badge pending'));
  tr.append(status);
  const detail=create('td');
- const counts=[['Glosas',r.gloss],['Notas explícitas',r.notes],['Notas candidatas',r.candidate],['Secciones',r.sections],['Diccionario (por sección)',r.dictionary]];
+ const counts=[['Glosas',r.gloss],['Notas explícitas',r.notes],['Notas candidatas',r.candidate],['Secciones',r.sections],['Diccionario (por sección)',r.dictionary],['Rose/Krohn (OCR)',r.history],['H: folios',r.hFolio]];
  const present=counts.filter(v=>v[1].length).map(v=>v[0]+': '+v[1].length);
  detail.textContent=present.length?present.join(' · '):'Sin material editorial anclado en estos índices';tr.append(detail);tbody.append(tr);
  }
  $('limitInfo').textContent=shown.length>150?'Se muestran los primeros 150 loci de la selección. Acote el libro o exporte el CSV para consultar todos.':'';
 }
 function csv(){
- const rows=[['locus','collatio_impresa','extraccion_controlada','glosas','notas_explicitas','notas_candidatas','secciones','diccionario_contextual'],
- ...records.map(r=>[r.locus,r.coll.length,r.high.length,r.gloss.length,r.notes.length,r.candidate.length,r.sections.length,r.dictionary.length])];
+ const rows=[['locus','collatio_impresa','extraccion_controlada','glosas','notas_explicitas','notas_candidatas','secciones','diccionario_contextual','rose_krohn_ocr','codex_h_folios'],
+ ...records.map(r=>[r.locus,r.coll.length,r.high.length,r.gloss.length,r.notes.length,r.candidate.length,r.sections.length,r.dictionary.length,r.history.length,r.hFolio.length])];
  const t=rows.map(r=>r.join(',')).join('\r\n'),url=URL.createObjectURL(new Blob([t],{type:'text/csv;charset=utf-8'}));const a=create('a');a.href=url;a.download='vitruvius-cobertura-aparato.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)
 }
 async function init(){
  try{
- const [acad,coll,appar,notes]=await Promise.all([
+ const [acad,coll,appar,notes,historical,hmap]=await Promise.all([
  load('data/academic-integrity.json'),load('data/apparatus/collatio-validada.json'),
- load('data/apparatus/aparato-autoral.json'),load('data/critical-notes.json')]);
+ load('data/apparatus/aparato-autoral.json'),load('data/critical-notes.json'),
+ load('data/apparatus/aparato-comparativo.json'),load('data/codex-h/folio-locus-map.json')]);
  const canonical=(acad.canonicalReferences||[]).filter(validLocus);const map=new Map(canonical.map(l=>[l,item(l)]));
  extend(map,coll.entradas||[],'coll',e=>e.locus);
  extend(map,(coll.entradas||[]).filter(e=>high.has(e.grado)),'high',e=>e.locus);
@@ -129,6 +132,8 @@ async function init(){
  extend(map,(notes.entries||[]).filter(e=>!e.locus&&e.candidate_locus),'candidate',e=>e.candidate_locus);
  extend(map,appar.secciones||[],'sections',e=>e.locus);
  extend(map,appar.diccionario||[],'dictionary',e=>e.seccion);
+ extend(map,(historical.loci||[]).filter(e=>(e['rose-1899']?.entradas?.length||0)+(e['krohn-1912']?.entradas?.length||0)>0),'history',e=>e.locus);
+ for(const folio of hmap.entries||[]){for(const entry of folio.loci||[]){const row=map.get(entry.locus);if(row)row.hFolio.push({folio:folio.folio,status:entry.status});}}
  records=[...map.values()];
  window.VDL_ECDOTIC_COVERAGE=records;
  document.dispatchEvent(new CustomEvent('vdl:coverage-ready',{detail:{loci:records.length}}));
