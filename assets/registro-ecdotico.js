@@ -265,7 +265,7 @@ function init(){
   .catch(e=>{$("re-aviso").textContent="No se pudo cargar el registro ("+e.message+"). No se muestran cifras inventadas."});
  fetch("data/ecdotic-decisions.json").then(r=>r.ok?r.json():null).then(d=>{if(!d)return;
   const n=(d.decisions||[]).length;
-  $("re-estricto").textContent=`Registro estricto de decisiones verificadas por autopsia del editor (data/ecdotic-decisions.json): ${n} ${n===1?"decisión":"decisiones"}. Lo que aquí se muestra es el aparato impreso y las observaciones sobre H con su grado; no sustituye ese registro.`}).catch(()=>{});
+  $("re-estricto").textContent=`Registro estricto de decisiones con estado de revisión y fuente documentados (data/ecdotic-decisions.json): ${n} ${n===1?"decisión":"decisiones"}. Lo que aquí se muestra es el aparato impreso y las observaciones sobre H con su grado; no sustituye ese registro.`}).catch(()=>{});
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
