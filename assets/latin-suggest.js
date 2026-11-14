@@ -115,6 +115,9 @@
   if(queryWords.length!==1)return;
   const entry=entries.find(e=>[e.lemma,...(e.forms||[]),e.greek,e.transliteration].filter(Boolean).some(v=>normalizeWord(v)===token));
   const forms=new Set([searched,...(entry?[entry.lemma,...(entry.forms||[]),entry.transliteration,entry.greek]:[])].filter(Boolean).map(normalizeWord));
+  // In Roman-script queries, logos is the accepted transliteration of λόγος.
+  // Count only the actual Greek tokens in each edition, not conceptual synonyms.
+  if(token==='logos')forms.add(normalizeWord('λόγος'));
   const title=document.createElement('h3');title.textContent='Concordancia de las ediciones · '+searched;occurrences.append(title,concordanceControls());occurrences.hidden=false;
   const status=document.createElement('p');status.textContent='Consultando latín y traducciones en las tres ediciones…';occurrences.append(status);
   try{
