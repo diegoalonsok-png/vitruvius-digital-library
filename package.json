@@ -19,6 +19,7 @@
     "check:boot": "node scripts/test-page-boot.mjs",
     "check:busqueda-r2": "node scripts/test-r2-busqueda-clasicos.mjs",
     "check:cifra-obras": "node scripts/test-cifra-obras.mjs",
+    "check:dossier": "node scripts/test-dossier-ecdotico.mjs",
     "check:collatio": "node scripts/test-collatio-register.mjs",
     "check:excel-datos": "node scripts/test-export-xlsx-datos.mjs",
     "check:fusion-r2": "node scripts/test-r2-indice-fusion.mjs",
