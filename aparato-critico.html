@@ -162,6 +162,7 @@ html[data-theme="dark"] .critical-unified .critical-unified-text,html[data-theme
  <a href="#apparatus-catalog"><b>3 · Notas del autor</b><span>Sólo el aparato: notas, glosas, comentarios y notas técnicas de los libros.</span></a>
  <a href="#kwic"><b>4 · Concordancia del latín</b><span>Cada aparición en su contexto (KWIC), por raíz, frase o proximidad, con su distribución por libro.</span></a>
  <a href="registro-ecdotico.html"><b>5 · Registro ecdótico ↗</b><span>Decisiones de la <i>collatio</i>, lecturas del Codex H y todo el aparato agrupado por locus.</span></a>
+ <a href="#aparato-bude-integrado"><b>6 · Lectura estilo Budé</b><span>Texto latino, traducción enfrentada y aparato minor y maior en una misma consulta.</span></a>
 </nav>
 <section id="ac-estado-evidencia" aria-label="Estado de verificación del aparato" style="margin:20px 0;padding:16px 19px;border:1px solid var(--line,#8f9a9c);border-left:3px solid var(--gold,#b59a68);border-radius:5px;font:13px/1.65 system-ui,sans-serif">
 <strong>Estado de verificación del aparato · 13 de noviembre de 2026</strong>
@@ -174,6 +175,22 @@ html[data-theme="dark"] .critical-unified .critical-unified-text,html[data-theme
 <p class="source-note"><strong>Notas autorales de los tres libros:</strong> <a href="inventario-aparato-autoral.html">Consultar el inventario completo de notas críticas y comparativas de V514, V554 y V297</a> · <a href="indexacion-historica-parrafos.html">Buscar fragmentos OCR de Krohn, Rose y Cesariano</a>, con búsqueda textual, fuente DOCX y estado de vinculación por locus. La obra crítica preexistente se conserva íntegra; la integración digital se distingue del cotejo manuscrito.</p>
 <p class="source-note"><strong>Niveles visibles por registro:</strong> A = nota extraída del DOCX con locus explícito (no implica colación manuscrita); B = locus candidato pendiente de cotejo; C = nota sin locus comprobado. Los bloques procedentes de PDF se etiquetan aparte. <strong>Ninguno de estos niveles acredita por sí mismo una variante autóptica H/G.</strong> Consultar <a href="status-textus.html">Status textus</a> · <a href="registro-ecdotico.html">Registro ecdótico documentado</a> y el ejemplo <a href="modelo-critico-prefacio.html">folio H / texto / traducción</a>.</p><div class="critical-caution"><strong>Estado editorial.</strong> Esta herramienta consulta pasajes del índice textual de las ediciones V514, V554 y V297. También permite buscar en el OCR de Krohn (1912), identificado separadamente y sujeto a errores de reconocimiento. <strong>No constituye una colación manuscrita ni un aparato de variantes exhaustivo.</strong> Las notas y lecciones divergentes deben cotejarse con el aparato impreso de cada edición. No se generan lecturas atribuidas a códices automáticamente.</div>
 </details>
+<section id="aparato-bude-integrado" aria-labelledby="ab-integrated-title" style="margin:28px 0;border:1px solid var(--line,#aca28e);padding:clamp(12px,2vw,22px)">
+<h2 id="ab-integrated-title" style="font:400 clamp(24px,3vw,34px)/1.25 Georgia,serif;margin:0 0 8px">Lectura crítica · disposición inspirada en Budé</h2>
+<p style="font:14px/1.65 system-ui;margin:0 0 12px">Texto latino y traducción V514 enfrentados, con <i>apparatus minor</i> y documentación ampliada de Rose y Krohn. Se conservan íntegros los buscadores y el inventario de notas de esta página. Los fragmentos OCR son candidatos de cotejo, no variantes manuscritas certificadas.</p>
+<details id="ab-integrated-details">
+<summary style="cursor:pointer;font:600 14px/1.5 system-ui;padding:12px;border:1px solid var(--line,#aca28e)">Abrir lector crítico integrado</summary>
+<div style="padding-top:12px">
+<iframe id="ab-integrated-frame" title="Lector académico de Vitruvio con aparato estilo Budé" data-src="apparatus-bude.html?locus=1.1.1" loading="lazy" style="width:100%;height:1000px;max-height:85vh;border:1px solid var(--line,#aca28e);background:#f8f6f0" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<p style="font:12px/1.5 system-ui;margin:8px 0">Para imprimir, citar o consultar el aparato a página completa: <a href="apparatus-bude.html?locus=1.1.1">abrir lector independiente</a>.</p>
+</div></details></section>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+ const d=document.getElementById("ab-integrated-details"),f=document.getElementById("ab-integrated-frame");
+ if(!d||!f)return;
+ d.addEventListener("toggle",function(){if(d.open&&!f.src)f.src=f.dataset.src},{once:true});
+});
+</script>
 <section id="critical-unified" aria-labelledby="critical-unified-title" class="critical-unified">
 <h2 id="critical-unified-title">Concordancia integral · textos y aparato de las tres ediciones</h2>
 <p class="critical-unified-intro">Busca <strong>una palabra, una frase o un locus completo</strong> (por ejemplo, <code>III.1.2</code>) en el texto latino, las traducciones, las explicaciones y las notas existentes de los libros de Diego Kurilo. Las referencias por locus recuperan únicamente las notas explícitamente ancladas; una asociación candidata no equivale a comentario confirmado. También se aceptan <em>prefacion</em> y <em>prefación</em> para consultar los prefacios, sin cambiar la grafía del texto latino. Cada coincidencia permite desplegar el párrafo íntegro y consultar su edición. Los resultados se distinguen por edición y naturaleza de la fuente; el inglés V297 tiene menos material crítico que las versiones castellana y francesa.</p>
