@@ -246,7 +246,7 @@ function renderExpandedCodicology(dest,w,d){
    output.replaceChildren();
    output.append(html("p","cwd-muted","Se distingue el dato de catálogo del cotejo visual y filológico. Un campo sin documentar no equivale a ausencia del rasgo en el manuscrito."));
    const labels={material:"Soporte",dimensions:"Dimensiones y caja escrita",collationFormula:"Fórmula de cuadernos",ruling:"Pautado",binding:"Encuadernación",watermarks:"Filigranas",script:"Escritura",hands:"Manos",corrections:"Correctores",scholia:"Escolios",glosses:"Glosas",subscriptiones:"Subscriptiones",origin:"Origen",provenance:"Procedencia",folioRange:"Folios o páginas",coverage:"Contenido conservado",lacunae:"Lagunas",transpositions:"Transposiciones",palimpsest:"Palimpsesto",record:"Catálogo custodio",viewer:"Visor documentado",manifest:"Manifest IIIF"};
-   const states={institutional_catalogue_verified:"Contrastado con catálogo institucional",recorded_not_individually_collated:"Dato registrado; sin cotejo individual",missing_requires_source:"Pendiente de fuente y cotejo"};
+   const states={institutional_catalogue_verified:"Contrastado con catálogo institucional",recorded_not_individually_collated:"Dato registrado; sin cotejo individual",missing_requires_source:"Fuente documental aún no consignada"};
    for(const record of records){
     const block=html("section","cwd-ms");block.append(html("h4",null,[record.repository,record.shelfmark].filter(Boolean).join(" · ")));
     for(const fields of Object.values(record.fields||{}))for(const [key,field] of Object.entries(fields)){
@@ -441,7 +441,7 @@ function renderVitruviusStandard(dest,w,d){
  }
  const refs=rec.editorialControl?.chicago18References||[];
  if(refs.length){row(dest,"Referencias editoriales registradas (revisar formato Chicago 18)",refs.join(" | "))}
- else row(dest,"Edición crítica y cita Chicago 18","Pendiente de cotejo contra datos bibliográficos reales; no se generan campos ausentes");
+ else row(dest,"Edición crítica y cita Chicago 18","Referencia editorial incompleta en este registro");
  const a=html("p","cwd-links");
  addA(a,"Consultar la matriz de fichas ↗","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/data/classics-corpus/vitruvius-standard-222.json");
  dest.append(a);
@@ -485,7 +485,7 @@ function renderResearchAssist(dest,w){
  addA(links,"Consultar en Google Modo IA ↗","https://www.google.com/search?udm=50&q="+encodeURIComponent(q));
  addA(links,"Búsqueda web de catálogos ↗","https://www.google.com/search?q="+encodeURIComponent(w.author+" "+w.title+" oldest manuscript codex shelfmark library"));
  sec.append(links);
- row(sec,"Ficha pendiente de verificación externa","Una respuesta generada por IA es una hipótesis de trabajo y no equivale a un testigo documentado.");
+ row(sec,"Alcance de la búsqueda externa","Los resultados de IA o de buscadores son pistas y requieren comprobación en el catálogo custodio.");
  dest.append(sec);
 }
 function renderInto(target,id,opts={}){
@@ -507,7 +507,7 @@ function renderInto(target,id,opts={}){
   else row(head,"Título original",form.description);
   head.append(html("p","cwd-muted",form.description));
   row(head,"Lengua",[langLabel[w.language]||w.language,w.genre].filter(Boolean).join(" · "));
-  row(head,"Datación de composición",w.dating||"Pendiente de cotejo");
+  row(head,"Datación de composición",w.dating||"Sin datación consignada");
   if(w.century)row(head,"Siglo editorial del registro",w.century);
   if(w.period&&w.period!==w.century)row(head,"Período catalográfico",w.period);
   if(w.aliases?.length)row(head,"Formas y títulos alternativos",w.aliases.join(" · "));
