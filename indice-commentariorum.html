@@ -1,0 +1,38 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Index commentariorum · Vitruvius Digital Library</title>
+<meta name="description" content="Índice de comentarios originales de las recensiones V514 y V554, organizado por libro, locus y conceptos mayores.">
+<link rel="canonical" href="https://vitruvius-digital-library.org/indice-commentariorum.html">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+:root{--ic-rule:#c5bcab;--ic-paper:#fffdf8;--ic-ink:#28241d;--ic-muted:#615b51}
+body{background:#f8f6f0;color:var(--ic-ink)}main{max-width:1180px;margin:auto;padding:25px clamp(16px,3vw,40px) 85px}
+h1{font:400 clamp(28px,4vw,43px)/1.2 Georgia,serif;margin:14px 0}h2{font:400 23px/1.35 Georgia,serif}
+nav{display:flex;flex-wrap:wrap;gap:15px;font:12px/1.6 system-ui}
+.intro{max-width:95ch;font:15px/1.75 Georgia,serif}
+.filters{display:flex;flex-wrap:wrap;gap:12px;align-items:end;border-block:1px solid var(--ic-rule);padding:15px 0}
+.filters label{display:grid;gap:6px;font:600 12px system-ui}.filters select,.filters input,.filters button{border:1px solid #aaa195;color:inherit;background:var(--ic-paper);min-height:40px;padding:8px 10px;font:14px system-ui;border-radius:3px}
+.filters input{min-width:220px}.filters button{cursor:pointer}
+.note{font:12px/1.7 system-ui;color:var(--ic-muted)}.result{border-bottom:1px solid var(--ic-rule);padding:17px 0}
+.result h3{font:400 20px/1.4 Georgia,serif;margin:0 0 5px}.result .meta{font:12px/1.6 system-ui;color:var(--ic-muted)}
+.result p{font:15px/1.75 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}
+.result details{padding:6px 0}.result summary{font:13px system-ui;cursor:pointer}
+.result pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.75 Georgia,serif}
+.result a{font:13px system-ui}.result mark{background:#eee3c6;color:inherit}
+#more{font:13px system-ui;border:1px solid var(--ic-rule);background:var(--ic-paper);padding:10px 14px;cursor:pointer}
+@media print{nav,.filters,#more{display:none}}
+</style></head><body><main>
+<nav aria-label="Navegación"><a href="index.html">Biblioteca</a><a href="aparato-critico.html">Aparato crítico</a><a href="commentarius-perpetuus.html">Edición comentada</a><a href="inventario-aparato-autoral.html">Notas al pie originales</a></nav>
+<header><p class="note">VITRVVIVS · DE ARCHITECTVRA · INDEX COMMENTARIORVM</p><h1>Index commentariorum</h1>
+<p class="intro">Índice de los comentarios redactados por Diego Kurilo e incorporados a sus ediciones castellana (V514) y francesa (V554). La consulta permite explorar el material por libro, locus, idioma o voz mayor. Los textos se conservan en su idioma y con su atribución editorial.</p></header>
+<form id="ic-form" class="filters">
+<label>Palabra o expresión<input id="ic-search" type="search" placeholder="symmetria, decor, Cicerón…" autocomplete="off"></label>
+<label>Libro<select id="ic-book"><option value="">Todos los libros</option></select></label>
+<label>Edición<select id="ic-edition"><option value="">V514 y V554</option><option value="V514">V514 · español</option><option value="V554">V554 · français</option></select></label>
+<label>Concepto mayor<select id="ic-term"><option value="">Todos los conceptos</option></select></label>
+<label>Tipo<select id="ic-type"><option value="">Comentarios y notas</option><option value="commentary">Comentarios extensos</option><option value="footnote">Notas al pie</option></select></label>
+<button type="submit">Buscar</button>
+</form>
+<p class="note">Las coincidencias textuales son instrumentos de búsqueda. El locus explícito procede del encabezamiento original; cuando una nota tiene una ubicación sugerida por el índice digital, se identifica como tal. No se modifican las conclusiones filológicas del autor.</p>
+<p id="ic-status" role="status" aria-live="polite" class="note">Cargando el corpus de comentarios…</p>
+<div id="ic-results"></div><button id="ic-more" type="button" hidden>Mostrar más entradas</button>
+</main><script defer src="assets/indice-commentariorum.js?v=20261114-1"></script></body></html>
