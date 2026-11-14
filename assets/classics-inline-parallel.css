@@ -50,3 +50,61 @@
  .cl-source-column,.cl-translation-column{max-height:none;overflow:visible}
  .cl-translation-output{color:#111!important;background:white!important}
 }
+
+/* Full justification in both panes. Keep intentional line breaks in verse. */
+html body .cl-source-column #passages p,
+html body .cl-translation-column .cl-translation-output > p:not(.cl-caution){
+ text-align:justify!important;text-align-last:left!important;hyphens:auto;
+ overflow-wrap:anywhere;white-space:pre-line;
+}
+html body .cl-source-column #passages .locus{text-align:left!important;text-align-last:left!important}
+html body .cl-translation-column .cl-translation-output > p:not(.cl-caution){
+ color:inherit!important;font:inherit;line-height:1.85!important;
+}
+.cl-source-column .vdl-annotation-bar{margin:0 0 16px;max-width:100%;font-size:12px}
+.cl-source-column .vdl-annotation-colors{
+ display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-inline-start:auto;
+}
+.cl-source-column .vdl-annotation-colors label,
+.cl-annotation-appearance label{display:inline-flex;gap:5px;align-items:center;font:12px/1.4 system-ui,sans-serif}
+.cl-source-column .vdl-annotation-colors input[type=color],
+.cl-annotation-appearance input[type=color]{
+ width:34px;height:32px;padding:2px;cursor:pointer;
+ border:1px solid #737377;border-radius:5px;background:#242428;
+}
+.cl-translation-annotations{
+ display:flex;flex-wrap:wrap;align-items:center;gap:7px;
+ padding:9px 0 13px;margin:0 0 14px;border-bottom:1px solid #49494e;
+ font:12px/1.4 system-ui,sans-serif;
+}
+.cl-translation-annotations strong{color:inherit}
+.cl-translation-annotations button{
+ background:#28282b;color:#f4f3f2;border:1px solid #606065;
+ border-radius:5px;padding:6px 9px;cursor:pointer;min-height:33px;
+ font:12px/1.35 system-ui,sans-serif;
+}
+.cl-translation-annotations button:hover{border-color:#e3c684}
+.cl-translation-annotations button[aria-pressed=true]:not(.cl-annotation-dot){
+ background:#524735;border-color:#d7bc86;color:white;
+}
+.cl-annotation-palette,.cl-annotation-appearance{
+ display:inline-flex;flex-wrap:wrap;align-items:center;gap:7px;
+}
+.cl-annotation-appearance{margin-inline-start:auto}
+.cl-translation-annotations button.cl-annotation-dot{
+ width:25px;height:25px;min-height:25px;border-radius:50%;
+ border:2px solid #62636a;padding:0;background:var(--cl-dot);
+}
+.cl-translation-annotations .cl-annotation-dot[aria-pressed=true]{
+ outline:2px solid #fafafa;outline-offset:2px;
+}
+.cl-annotations-feedback{flex-basis:100%;font:11px/1.4 system-ui,sans-serif;opacity:.86}
+.cl-translation-output p::selection,
+.cl-source-column #passages ::selection{background:#cfa943;color:#171717}
+@media(max-width:700px){
+ .cl-source-column .vdl-annotation-bar,.cl-translation-annotations{gap:6px}
+ .cl-annotation-appearance{margin-inline-start:0}
+}
+@media print{
+ .cl-translation-annotations,.cl-source-column .vdl-annotation-bar{display:none!important}
+}

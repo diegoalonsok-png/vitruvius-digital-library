@@ -9,6 +9,18 @@ const codex=JSON.parse(read("data/codex-h/folio-locus-map.json"));
 for(const id of ["h-locus-form","h-locus-input","h-preface-pick","h-loci-list","h-locus-status","h-locus-actions","h-folio-context","h-search-form","h-search-query","stage","folio","page"]){
  assert(html.includes('id="'+id+'"'),"Harleianus missing "+id);
 }
+for(const id of ["h-active-folio-plate","h-active-folio","h-active-book","h-active-image","h-active-loci","h-active-certainty"]){
+ assert(html.includes('id="'+id+'"'),"Missing live folio identifier "+id);
+}
+assert(html.indexOf('id="h-active-folio-plate"')<html.indexOf('id="stage"'),
+ "Folio identifier must be immediately above the image viewer");
+assert(sync.includes("function updateActiveFolioPlate()"),"Live codicological identifier missing");
+assert(sync.includes("updateActiveFolioPlate();"),"Folio identifier not synchronized on navigation");
+assert(sync.includes("folioFromIIIFLabel"),"IIIF folio labels no longer parsed");
+assert(sync.includes("expectedFolioBySequence"),"Sequence-based provisional label removed");
+assert(sync.includes('basis==="sequence"'),"Estimated folio must be visibly qualified");
+assert(sync.includes("h-active-loci"),"Editorial locus list missing from folio identifier");
+assert(css.includes("#h-active-folio-plate.h-folio-plate"),"Folio label styling removed");
 for(const script of ["harley-reader-zoom-v2.mjs","harley-folio-gallery.mjs","harleianus-search.mjs","codex-h-concordance.js","harleianus-locus-sync.mjs"]){
  assert(html.includes(script),"Harleianus script missing "+script);
 }

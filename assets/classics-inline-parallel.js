@@ -44,7 +44,7 @@ smaller.setAttribute("aria-label","Reducir letra de traducción");
 larger.setAttribute("aria-label","Aumentar letra de traducción");
 controls.append(languageLabel,translate,stop,smaller,larger);
 const label=el("p","cl-translation-label","Pasaje seleccionado");
-const output=el("div","cl-translation-output","Seleccioná el idioma y pulsá «Activar traducción automática».");
+const output=el("div","cl-translation-output","Selecciona el idioma y pulsa «Activar traducción automática».");
 output.setAttribute("role","status");output.setAttribute("aria-live","polite");
 const note=el("p","cl-translation-meta","La traducción es automática y orientativa, no una edición académica. El original permanece intacto. No se envía texto a terceros hasta activar la traducción.");
 translation.append(translationHeading,controls,label,output,note);
@@ -94,7 +94,7 @@ function showState(){
  const ok=updateLang();
  if(!ok)return;
  label.textContent="Locus "+(current?.locus||"—")+(current?.title?" · "+current.title:"");
- if(!enabled){output.textContent="Elegí castellano, inglés o francés y activá la traducción automática.";return}
+ if(!enabled){output.textContent="Elige castellano, inglés o francés y activa la traducción automática.";return}
  if(!current?.text){output.textContent="El pasaje todavía no está disponible.";return}
  runTranslation();
 }
