@@ -59,6 +59,7 @@ function render(){
    const actions=make("nav",null,"bws-actions");
    const o=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader)),t=w.versions.find(v=>!["la","grc"].includes(v.language)&&safeReader(v.reader));
    if(o)addLink(actions,"Leer original",safeReader(o.reader));
+   if(o){const u=new URL("classics-simple-parallel.html",location.href);u.searchParams.set("work",w.id);u.searchParams.set("left",o.language);u.searchParams.set("right","auto-es");addLink(actions,"Lectura simplificada",u.pathname+u.search);}
    if(t)addLink(actions,"Leer traducción · "+(lang[t.language]||t.language),safeReader(t.reader));
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
    if(!w.newWork)addLink(actions,"Ficha académica",workLink(w.id));
@@ -88,6 +89,7 @@ function render(){
   const original=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
   const translation=w.versions.find(v=>!["la","grc"].includes(v.language)&&safeReader(v.reader));
   if(original)addLink(actions,"Leer original",safeReader(original.reader));
+  if(original){const u=new URL("classics-simple-parallel.html",location.href);u.searchParams.set("work",w.id);u.searchParams.set("left",original.language);u.searchParams.set("right","auto-es");addLink(actions,"Lectura simplificada",u.pathname+u.search);}
   if(translation)addLink(actions,"Leer traducción · "+(lang[translation.language]||translation.language),safeReader(translation.reader));
   if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
   if(!w.newWork)addLink(actions,"Ficha académica",workLink(w.id));
