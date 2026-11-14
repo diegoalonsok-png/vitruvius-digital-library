@@ -18,6 +18,11 @@ import pathlib
 import sys
 import tempfile
 import urllib.request
+import hashlib
+import re
+import unicodedata
+from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
 
 ROSE_SOURCES = [
  "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vitruvii_De_architectura_libri_decem_%28IA_vitruviidearchit00vitr_0%29.pdf",
@@ -38,16 +43,16 @@ EDITIONS = {
   "author": "Marcus Vitruvius Pollio", "editor": "Valentin Rose",
   "date": "1899", "language": "la",
   "source": "https://archive.org/details/vitruviidearchit00vitr_0",
-  "holding": "Getty Research Institute · Internet Archive digitization (source copy for this import)",
+  "holding": "Internet Archive · ejemplar vitruviidearchit00vitr_0",
   "rights": "Historical public-domain edition; scan provenance credited to the holding institution."
  },
  "krohn": {
   "key": "krohn-1912", "title": "Vitruvii De architectura libri decem",
   "author": "Marcus Vitruvius Pollio", "editor": "Fritz Krohn",
   "date": "1912", "language": "la",
-  "source": "https://vitruvius-digital-library.org/documents/krohn-1912.pdf",
-  "holding": "Scan held by Vitruvius Digital Library; original institutional holding not yet established",
-  "rights": "Historical edition; identify the source copy and reproduction terms before external redistribution."
+  "source": "https://archive.org/details/vitruviidearchit00vitr",
+  "holding": "University of Toronto · Internet Archive (crédito de la imagen digital 3)",
+  "rights": "Edición histórica de dominio público. Se conserva el crédito de la digitalización de Internet Archive y University of Toronto."
  }
 }
 
@@ -146,6 +151,56 @@ def exists(s3, key):
    return False
   raise
 
+def latin_tokens(text):
+ normalized=unicodedata.normalize("NFD",text).lower().replace("v","u").replace("j","i")
+ return re.findall(r"[a-z]+", "".join(c for c in normalized if not unicodedata.combining(c)))
+
+def locus_index(pages):
+ """Page candidates supported by actual OCR trigrams, with explicit uncertainty."""
+ source=pathlib.Path("data/structured/recensio-es.json")
+ if not source.is_file(): raise RuntimeError("Reference Latin is missing")
+ inverted=defaultdict(set)
+ for page in pages:
+  tokens=latin_tokens(page["text"])
+  for i in range(len(tokens)-2): inverted[tuple(tokens[i:i+3])].add(page["page"])
+ loci={}
+ for passage in json.loads(source.read_text(encoding="utf8"))["passages"]:
+  tokens=latin_tokens(passage["latin"])
+  triples=set(tuple(tokens[i:i+3]) for i in range(len(tokens)-2))
+  votes=Counter()
+  for triple in triples: votes.update(inverted.get(triple,()))
+  best=votes.most_common(2)
+  if not best: continue
+  page,hits=best[0]; runner=best[1][1] if len(best)>1 else 0
+  overlap=hits/max(1,len(triples))
+  if hits<3 or overlap<.08: continue
+  strong=hits>=5 and overlap>=.15 and (hits+1)/(runner+1)>=1.35
+  loci[passage["locus"]]={"page":page,"status":"strong_textual_candidate" if strong else "ambiguous_textual_candidate",
+    "matched_trigrams":hits,"overlap":round(overlap,3),"runner_up_page":best[1][0] if len(best)>1 else None}
+ return {"schema":"vdl-edition-loci-1","loci":loci,
+  "reference":"data/structured/recensio-es.json",
+  "method":"Coincidencias de trigramas latinos normalizados en el OCR del mismo PDF. Son propuestas de navegación, no colación verificada."}
+
+def page_ocr(page, number, slug):
+ """Text offsets and boxes share ONE reading order from the same scanned page."""
+ words=[]; fragments=[]; position=0; rect=page.rect
+ for item in page.get_text("words",sort=True):
+  x0,y0,x1,y1,term=item[:5]
+  if not term.strip(): continue
+  if fragments: fragments.append(" ");position+=1
+  start=position;fragments.append(term);position+=len(term)
+  x=max(0,min(1,(x0-rect.x0)/rect.width));y=max(0,min(1,(y0-rect.y0)/rect.height))
+  words.append({"text":term,"start":start,"end":position,"x":round(x,6),"y":round(y,6),
+   "w":round(max(0,min(1-x,(x1-x0)/rect.width)),6),"h":round(max(0,min(1-y,(y1-y0)/rect.height)),6)})
+ return {"schema":"vdl-page-ocr-1","edition":slug,"page":number,"text":"".join(fragments),"words":words,
+  "method":"Capa OCR del PDF original: coordenadas automáticas, pendientes de revisión."}
+
+def object_inventory(s3,prefix):
+ result={}
+ for batch in s3.get_paginator("list_objects_v2").paginate(Bucket=BUCKET,Prefix=prefix+"/"):
+  result.update({x["Key"]:x["Size"] for x in batch.get("Contents",[])})
+ return result
+
 def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run: bool):
  import fitz
  info = EDITIONS[edition]; slug = info["key"]; prefix = f"folios/{slug}"
@@ -154,30 +209,50 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
   if not count: raise RuntimeError(f"{edition}: zero pages")
   quality=evaluate_scan(pdf,slug)
   print(f"{edition}: {count} independent digital images; PDF={pdf} ({pdf.stat().st_size} bytes); quality={quality}", flush=True)
+  # The original PDF remains available without adding a large binary to GitHub.
+  source_hash=hashlib.sha256(pdf.read_bytes()).hexdigest()
+  known={} if dry_run else object_inventory(s3,prefix)
+  expected=set(); pending=[]; pages=[]
+  pool=ThreadPoolExecutor(max_workers=8)
+  def put(key,body,content_type,replace=False):
+   expected.add(key)
+   if dry_run or not replace and not force and known.get(key,0)>0:return
+   pending.append(pool.submit(s3.put_object,Bucket=BUCKET,Key=key,Body=body,
+    ContentType=content_type,CacheControl="public, max-age=3600"))
+  def put_json(key,data):
+   put(key,json.dumps(data,ensure_ascii=False,separators=(",",":")).encode("utf8"),"application/json; charset=utf-8",True)
+  put(f"{prefix}/source.pdf",pdf.read_bytes(),"application/pdf")
   entries = []
   for i in range(count):
    n = i + 1
    key = f"{prefix}/imagen-{n:04d}.jpg"
    public = f"{BASE}/{key}"
+   thumbnail=f"{prefix}/miniatura-{n:04d}.jpg"
+   ocr_key=f"{prefix}/ocr/pagina-{n:04d}.json"
+   page=doc.load_page(i);ocr=page_ocr(page,n,slug)
+   pages.append({"page":n,"text":ocr["text"]})
+   put_json(ocr_key,ocr)
    entries.append({
-    "imagenDigital": n, "imagen": public, "miniatura": None,
+    "imagenDigital": n, "imagen": public, "miniatura": f"{BASE}/{thumbnail}",
+    "texto":f"{BASE}/{ocr_key}",
     "folio": None, "paginaImpresa": None,
     "etiquetaFuente": f"Imagen digital {n}",
     "numeracion": "digital-only-unverified-printed-pagination"
    })
+   expected.add(key);expected.add(thumbnail)
    if dry_run: continue
-   if not force and exists(s3, key):
-    if n % 30 == 0: print(f"{slug} {n}/{count} (already uploaded)", flush=True)
-    continue
-   page = doc.load_page(i)
-   pix = page.get_pixmap(matrix=fitz.Matrix(dpi/72, dpi/72), colorspace=fitz.csRGB, alpha=False)
-   # Pillow used for compact and legible folio images (~130-160 dpi).
    from PIL import Image
-   im = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
-   output = io.BytesIO()
-   im.save(output, format="JPEG", quality=92, optimize=True, subsampling=0)
-   s3.put_object(Bucket=BUCKET, Key=key, Body=output.getvalue(), ContentType="image/jpeg",
-                 CacheControl="public, max-age=31536000, immutable")
+   if force or not known.get(key):
+    pix=page.get_pixmap(matrix=fitz.Matrix(dpi/72,dpi/72),colorspace=fitz.csRGB,alpha=False)
+    im=Image.frombytes("RGB",(pix.width,pix.height),pix.samples);output=io.BytesIO()
+    im.save(output,format="JPEG",quality=92,optimize=True,subsampling=0)
+    put(key,output.getvalue(),"image/jpeg")
+   if force or not known.get(thumbnail):
+    scale=280/page.rect.width
+    pix=page.get_pixmap(matrix=fitz.Matrix(scale,scale),colorspace=fitz.csRGB,alpha=False)
+    im=Image.frombytes("RGB",(pix.width,pix.height),pix.samples);output=io.BytesIO()
+    im.save(output,format="JPEG",quality=82,optimize=True)
+    put(thumbnail,output.getvalue(),"image/jpeg")
    if n % 30 == 0 or n == count: print(f"{slug} {n}/{count}", flush=True)
   manifest = {
    "schema": "vdl-folios-obra-1", "obra": slug, "titulo": info["title"],
@@ -186,18 +261,31 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
    "derechos": info["rights"], "imagenes": count, "folios": entries,
    "calidad": quality, "dpi_exportacion": dpi, "jpeg_calidad":92,
    "criterio": "One scanned PDF page per image; image number is NOT printed pagination or manuscript foliation.",
-   "estadoOCR": "Texto OCR e índice de loci separados; todavía sin coordenadas verificadas sobre cada imagen."
+   "pdf":f"{BASE}/{prefix}/source.pdf","sha256_pdf":source_hash,
+   "textoIndice":f"{BASE}/{prefix}/ocr.json","lociIndice":f"{BASE}/{prefix}/loci.json",
+   "estadoOCR":"OCR del mismo PDF con coordenadas automáticas de palabras; no transcripción crítica revisada."
   }
+  navigation=locus_index(pages)
+  put_json(f"{prefix}/ocr.json",{"schema":"vdl-edition-ocr-1","edition":slug,"sha256_pdf":source_hash,"pages":pages})
+  put_json(f"{prefix}/loci.json",navigation)
+  for job in pending:job.result()
+  pool.shutdown(wait=True)
   if dry_run:
    print(json.dumps({k:v for k,v in manifest.items() if k!="folios"},ensure_ascii=False,indent=2))
    return
   # Verify EVERY image exists before making the public index visible.
-  missing=[entry["imagenDigital"] for entry in entries
-           if not exists(s3, f'{prefix}/imagen-{entry["imagenDigital"]:04d}.jpg')]
+  inventory=object_inventory(s3,prefix)
+  missing=[key for key in expected if inventory.get(key,0)<=0]
   if missing: raise RuntimeError(f"{edition}: upload incomplete: {missing[:12]}")
   payload=json.dumps(manifest,ensure_ascii=False,indent=2).encode("utf-8")
   s3.put_object(Bucket=BUCKET,Key=f"{prefix}/indice-folios.json",Body=payload,
                 ContentType="application/json; charset=utf-8",CacheControl="public, max-age=300")
+  local=pathlib.Path("data/r2/folios")/f"{slug}.json"
+  local.parent.mkdir(parents=True,exist_ok=True);local.write_bytes(payload)
+  # Small same-origin indexes let both GitHub Pages and .org search even when
+  # a visitor's network blocks cross-origin R2 JSON. Images still live in R2.
+  for name,data in [("ocr",{"schema":"vdl-edition-ocr-1","edition":slug,"sha256_pdf":source_hash,"pages":pages}),("loci",navigation)]:
+   (local.parent/f"{slug}-{name}.json").write_text(json.dumps(data,ensure_ascii=False,separators=(",",":")),encoding="utf8")
   print(f"PUBLIC {BASE}/{prefix}/indice-folios.json ({count} pages)",flush=True)
 
 def main():
