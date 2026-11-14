@@ -499,6 +499,39 @@ function renderResearchAssist(dest,w){
  row(sec,"Alcance de la búsqueda externa","Los resultados de IA o de buscadores son pistas y requieren comprobación en el catálogo custodio.");
  dest.append(sec);
 }
+const LIBRARY_DOI="10.5281/zenodo.23868911";
+function renderCitationTools(dest,w){
+ const strip=s=>String(s||"").replace(/\\s+/g," ").trim();
+ const ownDOI=strip(w.doi||w.identifiers?.doi||w.bibliography?.doi);
+ const editionDOI=/^10\\.\\d{4,9}\\/\\S+$/i.test(ownDOI)?ownDOI:null;
+ const page=new URL("classics-work-record.html",location.href);
+ page.searchParams.set("work",w.id);
+ const pageUrl=page.href.split("#")[0];
+ const author=strip(w.author)||"Autor no identificado";
+ const label=strip(w.title)||w.id;
+ const year="2026";
+ const citation=author+". “"+label+".” En Vitruvia Bibliotheca Graeca et Latina, dirigida por Diego Kurilo. Vitruvius Digital Library, "+year+". "+pageUrl+". DOI del proyecto: https://doi.org/"+LIBRARY_DOI+".";
+ const sec=html("section","cwd-citation-tools");
+ sec.append(html("h3",null,"Citación académica e identificadores persistentes"));
+ sec.append(html("p","cwd-muted","Cita de la ficha digital, distinta de la cita de una edición histórica o de un códice. DOI del proyecto: no atribuido a esta obra individual."));
+ const buttons=html("div","cwd-citation-actions");
+ function linkButton(label,url){
+  const a=document.createElement("a");a.className="cwd-cite-button";a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=label;buttons.append(a);
+ }
+ function copyButton(label,value){
+  const b=document.createElement("button");b.type="button";b.className="cwd-cite-button";b.textContent=label;
+  b.addEventListener("click",async()=>{
+   try{await navigator.clipboard.writeText(value);b.textContent="Copiado";setTimeout(()=>b.textContent=label,1800)}
+   catch{b.textContent="Seleccione la cita inferior"}
+  });buttons.append(b);
+ }
+ linkButton("DOI · Vitruvius Digital Library","https://doi.org/"+LIBRARY_DOI);
+ if(editionDOI)linkButton("DOI de esta edición","https://doi.org/"+editionDOI);
+ copyButton("Copiar cita de Bibliotheca",citation);
+ copyButton("Copiar enlace permanente",pageUrl);
+ sec.append(buttons,html("p","cwd-citation-text",citation));
+ dest.append(sec);
+}
 function renderInto(target,id,opts={}){
  if(!target)return Promise.resolve(null);
  if(window.EditorialWorkRecords?.has(id))return window.EditorialWorkRecords.render(target,id);
@@ -547,6 +580,7 @@ function renderInto(target,id,opts={}){
   renderCodicology(target,w);
   renderEditions(target,w,d);
   renderBibliography(target,w);
+  renderCitationTools(target,w);
   section(target,"Metodología de la ficha");
   target.append(html("p","cwd-muted","Los loci clásicos identifican lugares del texto; un número de página de edición y un folio físico son sistemas de referencia diferentes. Un manuscrito puede contener solo fragmentos. Los datos manuscritos provienen del registro de testimonios verificados; la bibliografía, del catálogo editorial. Enlaces a recursos externos no implican derechos de reproducción ni aval institucional."));
   const coverage=html("p","cwd-links");addA(coverage,"Consultar la matriz completa del repertorio ↗","classics-manuscript-coverage.html");target.append(coverage);
