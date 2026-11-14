@@ -9,7 +9,7 @@ const jsonCache=new Map();
 async function open({query="logos",locus="11.24",literal=false,noIndexes=false,fixture=null}={}){
  const errors=[],requested=[];
  const dom=new JSDOM(read("classics-text-reader.html"),{
-  url:"https://example.org/classics-text-reader?work=augustine-civitate-dei&lang=la&locus="+locus+"&q="+encodeURIComponent(query)+(literal?"&literal=1":""),
+  url:"https://example.org/classics-text-reader?work=augustine-civitate-dei&lang=la&locus="+locus+"&q="+encodeURIComponent(query)+(literal?"&literal=1":"&expanded=1"),
   runScripts:"outside-only",pretendToBeVisual:true
  });
  const w=dom.window,d=w.document;
