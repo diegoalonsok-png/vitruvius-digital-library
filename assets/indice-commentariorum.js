@@ -40,6 +40,9 @@ function showBibliography(){
  const label=create("p",null,box);create("strong",ed+" · ",label);label.append(document.createTextNode(b.bibliographic_author+". "));create("em",b.bibliographic_title,label);label.append(document.createTextNode(". "+b.edition_statement+". "+b.publication_place+": "+b.publisher+", "+b.year+". "));
  const link=create("a","DOI: "+b.doi,label);link.href="https://doi.org/"+b.doi;
  create("p","ISBN: "+b.isbn+" · "+(b.isbn_status==="publisher-declared-shared"?"ISBN declarado como compartido entre versiones":"ISBN bibliográfico"),box,"ic-citation");
+ const source=create("a","Consultar la edición original",box);
+ source.href=b.read_url||b.pdf_url||b.source_url||"#ic-biblio-heading";source.style.fontSize="12px";
+
  }
 }
 for(let book of books){const o=create("option","Liber "+romans[book-1],$("ic-book"));o.value=String(book)}
@@ -128,6 +131,11 @@ $("ic-form").addEventListener("submit",e=>{
  try{apply(true)}finally{buttonState(false)}
 });
 $("ic-more").addEventListener("click",()=>render(false));
+$("ic-clear").addEventListener("click",()=>{
+ $("ic-search").value="";$("ic-term").value="";$("ic-book").value="";$("ic-edition").value="";$("ic-type").value="";
+ $("ic-hint").textContent="Filtros restablecidos. El índice reúne V514, V554 y V297.";
+ apply(true);
+});
 for(const key of ["ic-book","ic-edition","ic-type"])$(key).addEventListener("change",()=>apply(false));
 $("ic-term").addEventListener("change",()=>{if($("ic-term").value)$("ic-search").value="";apply(false)});
 
