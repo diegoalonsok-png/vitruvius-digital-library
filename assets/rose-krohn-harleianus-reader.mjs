@@ -8,7 +8,7 @@ let manifest=null,folios=[],pages=[],locusIndex={loci:{}},selected=5,serial=0,vi
 let activeTerms=[],wordPage=null,searchSerial=0,ready=false,drawing=null,fitWhole=false;
 const wordCache=new Map(),clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
-async function json(url){const r=await fetch(url,{signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error('HTTP '+r.status);return r.json();}
+async function json(url){const r=await fetch(url,{cache:'no-cache',signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error('HTTP '+r.status);return r.json();}
 async function either(local,remote){try{return await json(local);}catch(error){if(!remote)throw error;return json(remote);}}
 function settingsFilter(){return `contrast(${$('contrast').value}%) brightness(${$('brightness').value}%) grayscale(${$('grayscale').checked?1:0}) invert(${$('negative').checked?1:0})`;}
 function apply(preserve=true){
