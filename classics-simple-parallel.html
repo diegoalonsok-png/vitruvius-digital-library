@@ -142,12 +142,12 @@ for(const side of ["left","right"]){
  const sep=document.createElement("span");sep.className="separator";toolbar.append(sep);label("Resaltar");
  for(const [name,color] of highlighters){
   const button=document.createElement("button");button.type="button";button.style.setProperty("--sample",color);
-  button.title="Seleccioná texto y resaltá en "+name;button.setAttribute("aria-label","Resaltar texto seleccionado en "+name);
+  button.title="Selecciona texto y resalta en "+name;button.setAttribute("aria-label","Resaltar texto seleccionado en "+name);
   button.addEventListener("click",()=>{
    const selection=window.getSelection(),phrase=selection?.toString().trim()||"";
    const area=el(side+"-text");
    if(!phrase||phrase.length>400||!area.contains(selection.anchorNode)||!area.contains(selection.focusNode)){
-    status("Primero seleccioná una palabra o frase del "+(side==="left"?"original":"texto traducido")+" y luego elegí el círculo de resaltado.");return;
+    status("Primero selecciona una palabra o frase del "+(side==="left"?"original":"texto traducido")+" y luego elegí el círculo de resaltado.");return;
    }
    if(!visibleText[side].includes(phrase)){status("La selección no corresponde al pasaje visible.");return;}
    const key=currentHighlightKey(side),list=highlightSets[side].get(key)||[];
@@ -439,6 +439,6 @@ const lexiconLink=el("lexicon-link");document.addEventListener("selectionchange"
 el("word-find").onclick=()=>{searchTerm=el("word-query").value.trim().slice(0,80);if(!searchTerm){draw();return;}const low=searchTerm.toLocaleLowerCase();const matches=record=>String(record?.text||"").toLocaleLowerCase().includes(low);let next=-1;for(let n=0;n<source.length;n++){const idx=(pos+n)%source.length;if(matches(source[idx])||matches(translation.find(p=>key(p.locus)===key(source[idx].locus)))){next=idx;break;}}if(next<0){status("No se encontró esa palabra en los pasajes con locus correspondiente.");return;}pos=next;draw();};el("word-query").addEventListener("keydown",e=>{if(e.key==="Enter")el("word-find").click();});appearance();
 el("previous").onclick=()=>{if(pos>0){pos--;draw();}};
 el("next").onclick=()=>{if(pos<source.length-1){pos++;draw();}};
-load().catch(e=>{paragraph("left-text",e.message);paragraph("right-text","Volvé al visor académico para consultar las ediciones disponibles.");status("No se modificó ningún texto del catálogo.");linkBack();});
+load().catch(e=>{paragraph("left-text",e.message);paragraph("right-text","Vuelve al visor académico para consultar las ediciones disponibles.");status("No se modificó ningún texto del catálogo.");linkBack();});
 })();
 </script></body></html>
