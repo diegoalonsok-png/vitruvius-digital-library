@@ -35,4 +35,37 @@ for(const path of pages){
  assert(!/<meta[^>]+name=["']robots["'][^>]+noindex/i.test(text),
   "A noindex research page is falsely listed: "+path);
 }
+
+/* Persistent discovery gate for the three flagship research tools.
+ * This tests HTML metadata and links, never external search rankings. */
+const flagshipPages=[
+ ["index.html",base],
+ ["bibliotheca-graeca-latina.html",base+"bibliotheca-graeca-latina"],
+ ["vitruvia.html",base+"vitruvia"],
+ ["vitruvia-lexicon.html",base+"vitruvia-lexicon"],
+ ["index-auctorum-operum.html",base+"index-auctorum-operum.html"],
+ ["classics-manuscript-coverage.html",base+"classics-manuscript-coverage"]
+];
+for(const [path,canonicalUrl] of flagshipPages){
+ const document=fs.readFileSync(path,"utf8");
+ const head=document.split(/<\/head>/i)[0];
+ assert(urlList.includes(canonicalUrl),"Flagship URL missing from sitemap: "+path);
+ assert(head.includes('<link rel="canonical" href="'+canonicalUrl+'">'),
+   "Flagship canonical URL mismatch: "+path);
+ assert(/<title\b[^>]*>[^<]{8,}<\/title>/i.test(head),
+   "Missing meaningful title: "+path);
+ assert(/<meta\s+name="description"\s+content="[^"]{55,}"/i.test(head),
+   "Missing full search description: "+path);
+ assert(/<h1\b/i.test(document),"Missing main heading: "+path);
+ assert(!/<meta[^>]+name=["']robots["'][^>]+noindex/i.test(head),
+   "Core academic page accidentally excluded: "+path);
+ if(path==="bibliotheca-graeca-latina.html"||path==="index-auctorum-operum.html"){
+  assert(/property="og:title"/.test(head)&&/property="og:description"/.test(head),
+    "Academic catalogue lacks link preview metadata: "+path);
+ }
+}
+assert(fs.readFileSync("vitruvia.html","utf8").includes('href="index-auctorum-operum.html"'),
+  "Vitruvia must provide a crawlable route to the static author/work index");
+assert(fs.readFileSync("bibliotheca-graeca-latina.html","utf8").includes('href="index-auctorum-operum.html"'),
+  "Bibliotheca must link to its static academic index");
 console.log("PASS: "+pages.length+" scholarly research pages have a canonical URL, heading and a unique sitemap entry. External indexing is not asserted.");
