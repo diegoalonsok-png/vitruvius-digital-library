@@ -1,9 +1,6 @@
-/* Registro de variantes de la collatio del Apéndice T de las ediciones Kurilo.
-   Fuente: data/apparatus/collatio-validada.json (scripts/parse-collatio-codicum.py
-   + scripts/validate-collatio.py). Sólo se publican como aparato las entradas
-   CONFIRMADAS: impresas en las dos ediciones del autor con la misma lectura latina,
-   sin arrastre de columna y coherentes con el orden de folios y con el mapa del
-   facsímil. La cola de revisión se muestra aparte y rotulada como tal. */
+/* Registro documentado de la collatio impresa del Apéndice T.
+   Se distingue el control de extracción editorial de la verificación autóptica
+   de un testimonio manuscrito. Las entradas pendientes se consultan aparte. */
 (()=>{
 "use strict";
 const URL_DATA="data/apparatus/collatio-validada.json?v=20261111";
@@ -24,7 +21,11 @@ const GRADO={
  "orden-dudoso":"Orden de folio dudoso",
  "conflicto-con-el-facsimil":"En conflicto con el facsímil",
  "aparato-en-prosa":"Aparato en prosa del Apéndice T"};
-let datos=null,filas=[];
+let datos=null,filas=[],visibleCount=220;
+const CONTROLES=new Set(["doble-fuente","fuente-unica"]);
+function estadoFiltro(e,estado){if(estado==="controlled")return CONTROLES.has(e.grado);
+ if(estado==="review")return !CONTROLES.has(e.grado);
+ if(estado==="prose")return e.grado==="aparato-en-prosa";return true;}
 
 function enlaces(e){
  const box=el("p","source-links");
@@ -38,9 +39,7 @@ function enlaces(e){
   box.append(a);
  }
  box.append(document.createTextNode(" · "));
- const pdf=el("a",null,"Página "+e.page+" del aparato impreso");
- pdf.href=e.pdf;pdf.rel="noopener";
- box.append(pdf);
+ if(e.pdf&&e.page){const pdf=el("a",null,"Página "+e.page+" del aparato impreso");pdf.href=e.pdf;pdf.rel="noopener";box.append(pdf);}
  return box;
 }
 
@@ -58,7 +57,8 @@ function fila(e){
  tr.append(lemma);
  const lectura=el("td");
  lectura.lang="la";
- lectura.textContent=e.campos.testigoH||e.campos.lecturaVisible||e.campos.krohn||e.campos.vulgata||"—";
+ lectura.textContent=e.campos.testigoH||e.campos.lecturaVisible||e.campos.krohn||e.campos.vulgata||e.campos.lectura||e.campos.lectura2||e.campos.col2||"—";
+ if(e.campos.lectura2&&!["testigoH","lecturaVisible","krohn","vulgata"].some(k=>e.campos[k]))lectura.append(el("small",null," · "+e.campos.lectura2));
  tr.append(lectura);
  tr.append(el("td",null,(e.folios||[]).join(", ")||"—"));
  const val=el("td");
@@ -89,7 +89,9 @@ function pinta(){
  const loc=($("coll-locus").value||"").trim();
  const sig=$("coll-siglum").value;
  const gr=$("coll-grade")?.value||"";
+ const status=$("coll-status")?.value||"controlled";
  filas=(datos.entradas||datos.confirmadas).filter(e=>{
+  if(!estadoFiltro(e,status))return false;
   if(gr&&e.grado!==gr)return false;
   if(loc&&!(e.locus===loc||e.locus.startsWith(loc+".")))return false;
   if(sig&&!(e.siglaCitadas||[]).includes(sig))return false;
@@ -108,18 +110,19 @@ function pinta(){
   return x[0]-y[0]||x[1]-y[1]||x[2]-y[2];
  });
  const tb=$("coll-rows");tb.replaceChildren();
- for(const e of filas.slice(0,220))tb.append(fila(e));
- $("coll-count").textContent=filas.length+" entradas"+
-  (filas.length>220?" (se muestran las primeras 220)":"")+
-  (loc||sig||q||gr?" con el filtro aplicado":"")+".";
+ for(const e of filas.slice(0,visibleCount))tb.append(fila(e));
+ const more=$("coll-more");if(more){more.hidden=filas.length<=visibleCount;if(!more.hidden)more.textContent="Mostrar más entradas ("+(filas.length-visibleCount)+" restantes)";}
+ $("coll-count").textContent=filas.length+" entradas del aparato impreso"+
+  (filas.length>visibleCount?" (se muestran las primeras "+visibleCount+")":"")+
+  (loc||sig||q||gr||status!=="controlled"?" con el filtro aplicado":"")+". Grados de extracción: no equivalen a autopsia manuscrita.";
 }
 
 function metricas(){
  const r=datos.recuentos,box=$("coll-metrics");box.replaceChildren();
  const p=el("p","verification-label");
- p.append(el("strong",null,(r.publicadas??r.confirmadas)+" entradas publicadas"));
+ p.append(el("strong",null,(r.publicadas??r.confirmadas)+" registros extraídos"));
  p.append(document.createTextNode(
-  ` del Apéndice T · ${r.foliosConfirmados} folios del códice H con locus · ${r.lociConfirmados} loci.`));
+  ` del Apéndice T · ${r.confirmadas} con coincidencia entre publicaciones V514/V554 · ${r.foliosConfirmados} folios H vinculados · ${r.lociConfirmados} loci en el subconjunto de doble control.`));
  box.append(p);
  const dl=el("dl");
  for(const [g,n] of Object.entries(r.porGrado||{})){
@@ -169,7 +172,8 @@ async function init(){
   $("coll-count").textContent="No se pudo cargar el registro de colación ("+e.message+"). No se muestran cifras sin su fuente.";
  }
 }
-for(const id of ["coll-q","coll-locus","coll-siglum","coll-grade"])
- document.addEventListener("DOMContentLoaded",()=>$(id)?.addEventListener("input",()=>{if(datos)pinta()}),{once:true});
+for(const id of ["coll-q","coll-locus","coll-siglum","coll-grade","coll-status"])
+ document.addEventListener("DOMContentLoaded",()=>$(id)?.addEventListener("input",()=>{if(datos){visibleCount=220;pinta()}}),{once:true});
+document.addEventListener("DOMContentLoaded",()=>$("coll-more")?.addEventListener("click",()=>{visibleCount+=220;if(datos)pinta()}),{once:true});
 document.addEventListener("DOMContentLoaded",init,{once:true});
 })();
