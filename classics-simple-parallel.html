@@ -16,10 +16,18 @@
 mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 @media(max-width:750px){.toolbar{justify-content:flex-start;margin-top:0}.toolbar input{width:125px;max-width:45vw}}
 @media print{.toolbar{display:none}}
+
+.panel-colors{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:0 0 22px;font:12px system-ui;color:inherit}
+.panel-colors .group-label{opacity:.76}.panel-colors .separator{height:16px;border-left:1px solid #888;margin:0 6px}
+.panel-colors button{width:24px;height:24px;border-radius:50%;background:var(--sample);border:2px solid #888;cursor:pointer;padding:0}
+.panel-colors button:hover{transform:scale(1.08)}.panel-colors button[aria-pressed="true"]{outline:2px solid #eee;outline-offset:2px}
+.panel-colors button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.card mark.user-highlight{color:#181818;border-radius:3px;padding:0 2px}
+@media print{.panel-colors{display:none}}
 </style></head><body><main>
 <div class="top"><h1 id="title">BIBLIOTHECA · LECTURA SIMPLE</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
 <div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Locus <input id="go-locus" type="search" placeholder="p. ej., 1.2" aria-label="Ir a locus"></label><button id="go-button" type="button">Ir</button><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><label>Letra <select id="font" aria-label="Tipografía"><option value="georgia">Clásica</option><option value="palatino">Palatino</option><option value="sans">Sans</option></select></label><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
-<div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div><button class="translate-action" id="translate" type="button" hidden>Traducir automáticamente este pasaje</button></section></div>
+<div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><div class="panel-colors" id="left-colors" aria-label="Fondo y resaltado del original"></div><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><div class="panel-colors" id="right-colors" aria-label="Fondo y resaltado de traducción"></div><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div><button class="translate-action" id="translate" type="button" hidden>Traducir automáticamente este pasaje</button></section></div>
 <p class="note" id="note" role="status">Se utilizan las ediciones existentes en la Bibliotheca. Un locus compartido no demuestra identidad textual de las versiones.</p>
 </main><script defer src="assets/academic-inline-translation.js?v=20261109-v1"></script><script>
 (()=>{"use strict";
@@ -28,7 +36,62 @@ const LANG={grc:"GRIEGO",la:"LATÍN",es:"CASTELLANO",en:"INGLÉS",fr:"FRANCÉS",
 const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;let searchTerm="",targetLang="en",renderToken=0;
 const key=v=>String(v??"").trim().toLowerCase().replace(/\s+/g,"");
 const status=msg=>el("note").textContent=msg;
-function paragraph(id,value){const target=el(id);target.replaceChildren();const data=value||"Pasaje sin texto disponible.";const p=document.createElement("p");if(!searchTerm){p.textContent=data;}else{const low=data.toLocaleLowerCase(),find=searchTerm.toLocaleLowerCase();let at=0,i;while((i=low.indexOf(find,at))>=0){p.append(document.createTextNode(data.slice(at,i)));const mark=document.createElement("mark");mark.className="simple-match";mark.textContent=data.slice(i,i+find.length);p.append(mark);at=i+find.length;}p.append(document.createTextNode(data.slice(at)));}target.append(p);}
+const highlightSets={left:new Map(),right:new Map()},visibleText={left:"",right:""};
+function currentHighlightKey(side){return work+"|"+side+"|"+(source[pos]?.locus||"");}
+function paragraph(id,value){
+ const side=id==="left-text"?"left":"right",target=el(id),data=value||"Pasaje sin texto disponible.";
+ visibleText[side]=data;target.replaceChildren();const p=document.createElement("p");
+ const highlights=highlightSets[side].get(currentHighlightKey(side))||[];
+ const choices=[...highlights.map(x=>({...x,custom:true})),...(searchTerm?[{phrase:searchTerm,color:"#d8a442",custom:false}]:[])];
+ const lower=data.toLocaleLowerCase();let cursor=0;
+ while(cursor<data.length){
+  let chosen=null;
+  for(const item of choices){if(!item.phrase)continue;const index=lower.indexOf(item.phrase.toLocaleLowerCase(),cursor);
+   if(index>=0&&(!chosen||index<chosen.index||(index===chosen.index&&item.custom)))chosen={index,item};
+  }
+  if(!chosen){p.append(document.createTextNode(data.slice(cursor)));break;}
+  if(chosen.index>cursor)p.append(document.createTextNode(data.slice(cursor,chosen.index)));
+  const mark=document.createElement("mark");mark.className=chosen.item.custom?"user-highlight":"simple-match";
+  if(chosen.item.custom)mark.style.backgroundColor=chosen.item.color;
+  mark.textContent=data.slice(chosen.index,chosen.index+chosen.item.phrase.length);p.append(mark);
+  cursor=chosen.index+chosen.item.phrase.length;
+ }
+ target.append(p);
+}
+const colors=[["Gris","#303030","#f2f2f3"],["Negro","#151515","#f2f2f3"],["Sepia","#493e34","#fff0d7"],["Marfil","#f1e9db","#252525"],["Azul","#293d50","#f5f5f5"]];
+const highlighters=[["Amarillo","#ffdf65"],["Verde","#a5e5aa"],["Celeste","#97d9ef"],["Rosa","#efa8ca"]];
+for(const side of ["left","right"]){
+ const toolbar=el(side+"-colors"),card=el(side+"-text").closest(".card");
+ function label(value){const span=document.createElement("span");span.className="group-label";span.textContent=value;toolbar.append(span);}
+ label("Fondo");
+ for(const [name,bg,fg] of colors){
+  const button=document.createElement("button");button.type="button";button.style.setProperty("--sample",bg);
+  button.title="Fondo "+name;button.setAttribute("aria-label","Fondo "+name+" del "+side);
+  button.setAttribute("aria-pressed",String(bg==="#303030"));toolbar.append(button);
+  button.addEventListener("click",()=>{
+   card.style.setProperty("--card-bg",bg);card.style.setProperty("--text-color",fg);
+   for(const x of toolbar.querySelectorAll('button[data-background]'))x.setAttribute("aria-pressed",String(x.dataset.background===bg));
+  });button.dataset.background=bg;
+ }
+ const sep=document.createElement("span");sep.className="separator";toolbar.append(sep);label("Resaltar");
+ for(const [name,color] of highlighters){
+  const button=document.createElement("button");button.type="button";button.style.setProperty("--sample",color);
+  button.title="Seleccioná texto y resaltá en "+name;button.setAttribute("aria-label","Resaltar texto seleccionado en "+name);
+  button.addEventListener("click",()=>{
+   const selection=window.getSelection(),phrase=selection?.toString().trim()||"";
+   const area=el(side+"-text");
+   if(!phrase||phrase.length>400||!area.contains(selection.anchorNode)||!area.contains(selection.focusNode)){
+    status("Primero seleccioná una palabra o frase del "+(side==="left"?"original":"texto traducido")+" y luego elegí el círculo de resaltado.");return;
+   }
+   if(!visibleText[side].includes(phrase)){status("La selección no corresponde al pasaje visible.");return;}
+   const key=currentHighlightKey(side),list=highlightSets[side].get(key)||[];
+   const found=list.find(x=>x.phrase===phrase);
+   if(found)found.color=color;else list.push({phrase,color});
+   highlightSets[side].set(key,list);paragraph(side+"-text",visibleText[side]);selection.removeAllRanges();
+   status("Resaltado local aplicado; no se modificó la edición original.");
+  });toolbar.append(button);
+ }
+}
 function linkBack(){const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",leftLang||"grc");u.searchParams.set("right",q.get("right")||rightLang||"auto-es");if(source[pos]?.locus)u.searchParams.set("locus",source[pos].locus);el("academic").href=u.href;}
 function draw(){
  renderToken++;el("translate").hidden=true;
