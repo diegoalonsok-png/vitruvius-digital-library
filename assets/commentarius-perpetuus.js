@@ -10,6 +10,48 @@ const fold=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLo
 const matches=(s,term)=>new RegExp("(^|[^a-z])"+term+"([a-z]*)(?=$|[^a-z])").test(fold(s));
 let passages=[],byLocus=new Map(),notes=[],translations={},current="";
 let keywordLoci=[];
+let hManifest=null;
+const commentaryCache=new Map();
+let supplementsSerial=0;
+async function loadBookCommentary(book){
+ const key=String(book);if(commentaryCache.has(key))return commentaryCache.get(key);
+ const promise=Promise.all(["v514","v554"].map(async ed=>{
+  try{const response=await fetch("data/commentary/"+ed+"-libro-"+key+".json");if(!response.ok)throw Error("HTTP "+response.status);const obj=await response.json();return {edition:ed,entries:Array.isArray(obj.entries)?obj.entries:[]}}
+  catch(e){console.warn("Comentario "+ed+" libro "+book,e.message);return {edition:ed,entries:[]}}}));
+ commentaryCache.set(key,promise);return promise;
+}
+async function renderSupplements(locus,book){
+ const request=++supplementsSerial;
+ $("cp-long-state").textContent="Cargando comentarios de las ediciones…";
+ const [groups,manifest]=await Promise.all([loadBookCommentary(book),
+  hManifest===null?fetch("data/commentary/codex-h-illustrations.json").then(r=>r.ok?r.json():null).catch(()=>null):Promise.resolve(hManifest)]);
+ if(request!==supplementsSerial)return;
+ hManifest=manifest||{records:[]};
+ const host=$("cp-long");host.replaceChildren();let count=0;
+ for(const group of groups){for(const item of group.entries.filter(e=>e.locus===locus)){
+  count++;const details=el("details",null,host,"cp-long-entry");
+  const label=group.edition==="v514"?"Kurilo V514 · comentario castellano":"Kurilo V554 · commentaire français";
+  el("summary",label+" · "+locus,details);
+  el("pre",item.text,details);
+  el("small","Edición fuente: "+(group.edition==="v514"?"Vitruvio V514 (2026)":"Vitruve V554 (2026)")+" · comentario publicado en el cuerpo del libro.",details,"cp-small");
+ }}
+ if(!count)el("p","Este locus no tiene un apartado extenso identificado por encabezamiento propio; las notas al pie y el comentario general del libro siguen disponibles en su fuente.",host,"cp-absent");
+ $("cp-long-state").textContent=count?count+" secciones de comentario autoral asociadas a este locus.":"Sin sección extensa individualizada para este locus.";
+ const h=$("cp-h");h.replaceChildren();
+ const records=(hManifest.records||[]).filter(x=>x.locus_from&&x.locus_to&&
+  (x.locus_from===locus||x.locus_to===locus||isWithinLocus(locus,x.locus_from,x.locus_to)));
+ for(const item of records){const div=el("div",null,h,"cp-h-entry");el("strong","Harley MS 2767 · f. "+item.folio,div);
+ el("span",item.caption,div);el("small","Documentado en Kurilo V514 · imagen original insertada como "+item.media_in_docx,div);
+ const link=el("a","Consultar dossier gráfico en V514",div);link.href="documents/kurilo-recensio-es.pdf";link.target="_blank";link.rel="noopener noreferrer";
+ }
+ if(!records.length)el("p","No consta un recorte de H vinculado expresamente a este locus en el inventario gráfico; el testimonio se estudia asimismo en las notas del editor.",h,"cp-absent");
+}
+function isWithinLocus(loc,start,end){
+ const arr=x=>String(x).split(".").map(Number),a=arr(loc),b=arr(start),c=arr(end);
+ if(a.length!==3||b.length!==3||c.length!==3||[...a,...b,...c].some(Number.isNaN))return false;
+ const n=x=>x[0]*1e6+x[1]*1e3+x[2];return n(b)<=n(a)&&n(a)<=n(c);
+}
+
 const chapterName=c=>c==="praef"?"Praefatio":"Capítulo "+c;
 function getChapters(book){return [...new Set(passages.filter(p=>String(p.book)===String(book)).map(p=>String(p.chapter)))].sort((a,b)=>a==="praef"?-1:b==="praef"?1:Number(a)-Number(b))}
 function refreshChapters(book,chapter){const x=$("cp-chapter");x.replaceChildren();for(const c of getChapters(book))option(x,c,chapterName(c));if(chapter&&getChapters(book).includes(String(chapter)))x.value=String(chapter)}
@@ -35,7 +77,7 @@ function display(locus){const p=byLocus.get(locus);if(!p){$("cp-status").textCon
  $("cp-latin").textContent=p.latin||"Texto latino no disponible para este locus.";
  $("cp-translation").textContent=t?.translation||"Traducción no recuperada para este locus en el índice de la edición seleccionada.";
  $("cp-translation-title").textContent=data[0];$("cp-translation-edition").textContent=data[1];$("cp-translation-leaf").lang=lang;
- $("cp-apparatus-link").href="apparatus-bude.html?locus="+encodeURIComponent(locus);displayNotes(locus);
+ $("cp-apparatus-link").href="apparatus-bude.html?locus="+encodeURIComponent(locus);displayNotes(locus);renderSupplements(locus,p.book);
  const url=new URL(location.href);url.searchParams.set("locus",locus);url.searchParams.set("lang",lang);if($("cp-keyword").value)url.searchParams.set("keyword",$("cp-keyword").value);else url.searchParams.delete("keyword");history.replaceState(null,"",url.pathname+url.search);
  $("cp-status").textContent="Liber "+roman(Number(p.book))+" · "+chapterName(p.chapter)+" · "+locus+" · latín V514 disponible · notas originales presentadas al pie del pasaje.";
 }
