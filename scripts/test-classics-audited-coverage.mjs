@@ -87,7 +87,7 @@ assert.equal(drift.state,"unavailable","A conflicting source may never be called
 assert.equal(drift.values.remote,"Sin datos conciliados");
 const offline=await render({unavailable:true});
 assert.equal(offline.state,"remote-unavailable","Offline remote source must not be counted as verified");
-assert.equal(offline.values.remote,"No verificado");
+assert.equal(offline.values.remote,"Consulta remota indisponible");
 for(const file of ["index.html","bibliotheca-graeca-latina.html"]){
  const html=fs.readFileSync(file,"utf8");
  assert(html.includes('id="classics-audit-coverage"'),file+" missing counter");
