@@ -70,12 +70,12 @@ function mount(){
  }
  addButton("Subrayar",()=>{if(remembered)underline(remembered)});
  const copy=addButton("Copiar",async()=>{
-  try{await navigator.clipboard.writeText(text);copy.textContent="Copiado"}catch{copy.textContent="Usá Ctrl+C / Cmd+C"}
+  try{await navigator.clipboard.writeText(text);copy.textContent="Copiado"}catch{copy.textContent="Usa Ctrl+C / Cmd+C"}
  });
  addButton("Cerrar",close);
  document.body.append(toolbar);
  const help=document.createElement("p");help.id="lx-selection-help";
- help.append(document.createTextNode("Seleccioná libremente una palabra o frase del resultado; después elegí «Subrayar» o «Copiar». El resaltado de búsqueda es independiente."));
+ help.append(document.createTextNode("Selecciona libremente una palabra o frase del resultado; después elegí «Subrayar» o «Copiar». El resaltado de búsqueda es independiente."));
  const reset=document.createElement("button");reset.type="button";reset.textContent="Quitar mis subrayados";
  reset.addEventListener("click",()=>{
   for(const span of root.querySelectorAll("[data-lx-manual='1']")){
