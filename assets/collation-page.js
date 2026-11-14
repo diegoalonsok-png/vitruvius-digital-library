@@ -166,8 +166,8 @@ async function show(locus){
  const witnesses=el("section","coll-witnesses");
  witnesses.setAttribute("aria-label","Fuentes históricas en facsímil");
  const historicalSources={
-  "rose-1899":"https://archive.org/details/vitruviidearchi00pollgoog",
-  "krohn-1912":"documents/krohn-1912.pdf"
+  "rose-1899":"rose-1899.html",
+  "krohn-1912":"krohn-1912.html"
  };
  for(const {w,rec} of rows){
   const box=el("section","coll-row");
