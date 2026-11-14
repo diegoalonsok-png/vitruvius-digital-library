@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Synchronize derived classical coverage metadata from registered editions.
 
-Only local, existing files count as hosted texts. Remote R2 declarations are
-not assumed verified. Does not alter source passages or editorial provenance.
+Registry counts include separately declared R2 index entries for compatibility.
+Verified local files are counted separately; remote availability is NOT assumed.
+Does not alter source passages or editorial provenance.
 """
 import json
 from pathlib import Path
@@ -21,14 +22,15 @@ def main():
     catalog = load(CATALOG)["works"]
     coverage = load(COVERAGE)
     indexed = {}
+    verified_local = {}
     for edition in registry["entries"]:
         path = edition["path"]
-        if path.startswith(("https://", "http://")):
-            # R2 URLs must be checked separately, not counted as local holdings.
-            continue
-        if not (ROOT / path).is_file():
+        remote = path.startswith(("https://", "http://"))
+        if not remote and not (ROOT / path).is_file():
             raise SystemExit("Missing locally registered text: " + path)
         indexed.setdefault(edition["workId"], set()).add(edition["language"])
+        if not remote:
+            verified_local.setdefault(edition["workId"], set()).add(edition["language"])
     by_id = {w["id"]: w for w in catalog}
     assert len(by_id) == len(catalog), "Duplicated catalog identifiers"
     assert set(indexed) <= set(by_id), "Uncatalogued local edition"
@@ -44,10 +46,15 @@ def main():
     totals = coverage["totals"]
     totals["cataloguedWorks"] = len(catalog)
     totals["locallyIndexedWorks"] = len(indexed)
+    totals["verifiedLocalFileWorks"] = len(verified_local)
+    totals["declaredRemoteOnlyWorks"] = len(set(indexed) - set(verified_local))
     totals["translatedWorksLocal"] = sum(bool(w["translationLanguages"]) for w in coverage["works"])
     totals["worksWithoutHostedTranslation"] = len(catalog) - totals["translatedWorksLocal"]
     totals["originalTextIndexed"] = sum(bool(w["originalIndexed"]) for w in coverage["works"])
     totals["originalTextNotIndexed"] = len(catalog) - totals["originalTextIndexed"]
+    totals["verifiedLocalOriginalTextIndexed"] = sum(
+        by_id[wid]["language"] in languages for wid, languages in verified_local.items()
+    )
     totals["localTranslationLanguages"] = {
         language: sum(language in w["translationLanguages"] for w in coverage["works"])
         for language in ("es", "en", "fr")
