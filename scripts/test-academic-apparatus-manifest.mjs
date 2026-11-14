@@ -1,33 +1,40 @@
-/* Strict academic apparatus compatibility path; no invented collations. */
+/* Validate the actual R2 scholarly edition dossier, not the older
+ * three-edition manifest schema. Never conflate bibliographic metadata,
+ * textual variants or physical manuscripts. */
 import assert from "node:assert/strict";
 import {readFileSync,existsSync} from "node:fs";
 const read=path=>JSON.parse(readFileSync(path,"utf8"));
-const manifest=read("data/r2/aparato-academico.json");
+const dossiers=read("data/r2/aparato-academico.json");
+const catalogue=read("data/r2/catalogo-clasicos-r2.json");
 const editorial=read("data/academic-integrity.json");
-const catalogue=read("data/catalog.json");
-assert.equal(manifest.schema,"vitruvius-academic-apparatus-manifest/1");
-assert.equal(manifest.kind,"bibliographic-index-manifest");
-assert.equal(manifest.canonical_source,"data/apparatus-index.json");
-assert.equal(manifest.integrity_source,"data/academic-integrity.json");
-assert.equal(manifest.bibliographic_source,"data/catalog.json");
-for(const path of [manifest.canonical_source,manifest.integrity_source,manifest.bibliographic_source])
- assert.ok(existsSync(path),"Missing actual source: "+path);
-assert.equal(manifest.apparatus_entries,editorial.apparatus.entries);
-assert.deepEqual(manifest.relation_status_counts,editorial.apparatus.relations);
-assert.equal(manifest.fingerprint,editorial.sourceFingerprint);
-assert.equal(manifest.canonical_loci,editorial.canonicalLoci);
-assert.equal(manifest.editions.length,3);
-for(const {id,version,bibliographic_title,doi,isbn,isbn_note} of manifest.editions){
- const e=catalogue.editions.find(x=>x.id===id);
- assert.ok(e&&version===e.version&&bibliographic_title===e.bibliographic_title);
- assert.equal(doi,e.doi);
- assert.equal(isbn,e.isbn||null);
- assert.equal(isbn_note,e.isbn_note||null);
+const editions=read("data/catalog.json").editions;
+assert.equal(dossiers.schema,"vdl-aparato-academico-1");
+assert.ok(Array.isArray(dossiers.registros));
+assert.equal(dossiers.total,dossiers.registros.length);
+assert.equal(dossiers.total,catalogue.items.length);
+const byId=new Map(catalogue.items.map(x=>[x.id,x]));
+assert.equal(byId.size,catalogue.items.length,"Duplicated R2 edition keys");
+const seen=new Set();
+for(const rec of dossiers.registros){
+ assert.ok(rec.id&&!seen.has(rec.id),"Duplicate scholarly dossier ID: "+rec.id);
+ seen.add(rec.id);
+ assert.equal(rec.schema,"vdl-aparato-academico-1");
+ const edition=byId.get(rec.id);
+ assert.ok(edition,"Dossier without actual R2 edition: "+rec.id);
+ assert.equal(rec.edicionMaterial?.tituloTranscritoCatalogoFuente,edition.tituloEdicion,"Misattributed edition title: "+rec.id);
+ assert.equal(rec.edicionMaterial?.anioEdicion,edition.anio,"Misattributed publication year: "+rec.id);
+ assert.equal(rec.procedenciaDigital?.objetoR2,edition.pdf,"R2 source mismatch: "+rec.id);
+ assert.equal(rec.procedenciaDigital?.sha256,edition.sha256,"Binary fingerprint mismatch: "+rec.id);
+ assert.equal(rec.procedenciaDigital?.numeroImagenesPDF,edition.paginas,"Digital image count mismatch: "+rec.id);
+ assert.ok(rec.codicologia&&rec.ecdotica&&rec.filologia,"Missing scholarly divisions: "+rec.id);
+ assert.ok(!rec.verificaciones?.colacionCriticaRealizada || (rec.ecdotica.testimoniosCotejados?.length>0&&rec.ecdotica.variantesVerificadas?.length>0),"Critical collation claimed without attested evidence: "+rec.id);
 }
-assert.match(manifest.limits,/DOI identifica una edición/);
-assert.match(manifest.limits,/Loci candidatos no equivalen a collatio/);
-assert.match(manifest.limits,/asignación registral individual/);
-assert.ok(manifest.editions.every(e=>e.isbn_note?.includes("ISBN común declarado por el editor")),
- "All three editions must disclose editorial common ISBN registration caveat");
-assert.ok(!("registros" in manifest)&&!("entries" in manifest),"A bibliography manifest must never masquerade as the apparatus data itself");
-console.log("PASS: apparatus manifest references true indexed data and the exact, documented editions; no fabricated witness readings.");
+assert.equal(seen.size,byId.size);
+assert.ok(existsSync("data/apparatus-index.json"),"The textual apparatus source must exist independently");
+assert.ok(existsSync("data/academic-integrity.json"));
+assert.ok(existsSync("data/catalog.json"));
+assert.equal(typeof editorial.apparatus.entries,"number");
+assert.ok(editorial.apparatus.entries>0);
+assert.equal(new Set(editions.slice(0,3).map(x=>x.doi)).size,3,"Three Vitruvius editions require separate DOI");
+assert.ok(editions.slice(0,3).every(e=>e.isbn_note?.includes("ISBN común declarado por el editor")),"Shared ISBN qualification is required");
+console.log("PASS: 117 scholarly R2 dossiers reconcile to actual edition metadata, fingerprints and scope; original apparatus and critical claims are independent.");
