@@ -10,8 +10,8 @@ const TARGETS=["es","en","fr"];
 const MAX_INPUT=1200,MAX_PARTS=3,MAX_PART_BYTES=420;
 const cache=new Map();
 const utfBytes=value=>new TextEncoder().encode(value).length;
-function chunks(text,maxBytes=MAX_PART_BYTES,maxParts=MAX_PARTS){
- const value=String(text||"").trim().slice(0,MAX_INPUT),parts=[];
+function chunks(text,maxBytes=MAX_PART_BYTES,maxParts=MAX_PARTS,maxInput=MAX_INPUT){
+ const value=String(text||"").trim().slice(0,maxInput),parts=[];
  let part="";
  for(const character of value){
   if(utfBytes(part+character)>maxBytes){
@@ -49,8 +49,8 @@ async function browserTranslation(text,source,target){
    partial:text.length>MAX_INPUT}:null;
  }finally{translator.destroy?.()}
 }
-async function externalTranslation(text,source,target){
- const fragments=chunks(text),translated=[];
+async function externalTranslation(text,source,target,fullPassage=false){
+ const fragments=fullPassage?chunks(text,MAX_PART_BYTES,20,4500):chunks(text),translated=[];
  if(!fragments.length)return null;
  for(const fragment of fragments){
   const externalSource=source==="grc"?"el":source==="hbo"?"he":source;
@@ -146,7 +146,7 @@ async function translate(text,source,target){
  if(cache.has(key))return cache.get(key);
  let result=null;
  try{result=await browserTranslation(original,source,target)}catch(_){result=null}
- if(!result)result=await externalTranslation(original,source,target);
+ if(!result)result=await externalTranslation(original,source,target,true);
  if(!result||!result.text)throw Error("El proveedor no entregó texto");
  cache.set(key,result);return result;
 }
