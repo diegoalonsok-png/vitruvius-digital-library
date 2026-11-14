@@ -5,6 +5,9 @@ on:
       - 'scripts/publish-rose-krohn-folios-r2.py'
       - '.github/workflows/publish-rose-krohn-r2.yml'
   workflow_dispatch:
+concurrency:
+  group: rose-krohn-folios-r2
+  cancel-in-progress: false
 jobs:
   folios:
     runs-on: ubuntu-latest
@@ -38,3 +41,12 @@ jobs:
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_PUBLIC_BASE: https://libros.vitruvius-digital-library.org
         run: python scripts/publish-rose-krohn-folios-r2.py --edition both --dpi 195
+      - name: Conservar índices comprobados para revisión
+        if: steps.credentials.outputs.available == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: rose-krohn-indices-verificados
+          path: |
+            data/r2/folios/rose-1899*.json
+            data/r2/folios/krohn-1912*.json
+          if-no-files-found: error

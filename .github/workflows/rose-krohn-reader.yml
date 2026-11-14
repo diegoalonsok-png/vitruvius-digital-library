@@ -1,0 +1,39 @@
+name: Rose y Krohn — visor y búsquedas
+on:
+  push:
+    paths:
+      - 'rose-1899.html'
+      - 'krohn-1912.html'
+      - 'assets/modern-edition-*'
+      - 'assets/rose-krohn-harleianus-reader.mjs'
+      - 'scripts/test-modern-edition-*'
+      - '.github/workflows/rose-krohn-reader.yml'
+  pull_request:
+    paths:
+      - 'rose-1899.html'
+      - 'krohn-1912.html'
+      - 'assets/modern-edition-*'
+      - 'assets/rose-krohn-harleianus-reader.mjs'
+      - 'scripts/test-modern-edition-*'
+permissions:
+  contents: read
+jobs:
+  readers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --ignore-scripts --no-package-lock
+      - run: |
+          node --check assets/rose-krohn-harleianus-reader.mjs
+          node --check assets/modern-edition-search.mjs
+          node scripts/test-modern-edition-search.mjs
+          node scripts/test-modern-edition-reader.mjs
+          node scripts/test-krohn-locus-sync.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --disable-pip-version-check pymupdf pillow
+      - run: python scripts/test-modern-edition-import.py
