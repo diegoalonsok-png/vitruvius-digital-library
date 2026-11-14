@@ -1,7 +1,14 @@
 /* Faceted catalogue preview: uses existing catalogue and edition readers, never copies corpus texts. */
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
-const panel=$("genre-work-list"),list=$("genre-work-items"),heading=$("genre-work-heading"),note=$("genre-work-note");
+const panel=$("genre-work-list"),list=$("genre-work-items"),heading=$("genre-work-heading"),note=$("genre-work-note"),order=$("classic-order");
+const alphabetical=(a,b)=>String(a||"").localeCompare(String(b||""),"es",{sensitivity:"base",numeric:true});
+function compareWorks(a,b){
+ const mode=order?.value||"author";
+ if(mode==="date")return dating(a)-dating(b)||alphabetical(a.author,b.author)||alphabetical(a.title,b.title)||alphabetical(a.id,b.id);
+ if(mode==="title")return alphabetical(a.title,b.title)||alphabetical(a.author,b.author)||alphabetical(a.id,b.id);
+ return alphabetical(a.author,b.author)||alphabetical(a.title,b.title)||alphabetical(a.id,b.id);
+}
 if(!panel||!list||!heading||!note)return;
 const CATALOG="data/bibliotheca-graeca-latina-I-bce-I-ce.json",REGISTRY="data/classics-corpus/search-registry.json";
 const tr={es:{heading:"Obras del género seleccionado",count:n=>n+" obras catalogadas",read:"Leer en visor",external:"Consultar fuente externa",unavailable:"Sin texto legible acreditado",note:"Los visores locales muestran ediciones indexadas. Los enlaces externos no equivalen a texto alojado ni a cotejo de manuscritos.",empty:"No hay obras catalogadas para estos filtros.",error:"No fue posible cargar el catálogo."},en:{heading:"Works in the selected subject",count:n=>n+" catalogued works",read:"Read in viewer",external:"Open external source",unavailable:"No verified reading text",note:"Local viewers display indexed editions. External links are not hosted texts or manuscript collation.",empty:"No catalogued works match these filters.",error:"Could not load catalogue."},fr:{heading:"Œuvres de la catégorie choisie",count:n=>n+" œuvres cataloguées",read:"Lire dans le lecteur",external:"Consulter la source externe",unavailable:"Aucun texte vérifié",note:"Les lecteurs locaux affichent des éditions indexées. Les liens externes ne sont ni hébergés ni collationnés.",empty:"Aucune œuvre pour ces filtres.",error:"Catalogue indisponible."}};
@@ -74,7 +81,7 @@ function render(){
  panel.hidden=!genre&&!era;
  if(panel.hidden)return;
  const matching=works.filter(w=>(!genre||genreOf(w)===genre)&&(!era||eraOf(w)===era))
-  .sort((a,b)=>dating(a)-dating(b)||String(a.author).localeCompare(String(b.author),"es")||String(a.title).localeCompare(String(b.title),"es"));
+  .sort(compareWorks);
  heading.textContent=t.heading+" · "+t.count(matching.length);note.textContent=t.note;
  list.replaceChildren();
  if(!matching.length){const p=document.createElement("p");p.className="genre-work-empty";p.textContent=t.empty;list.append(p);return}
@@ -137,6 +144,7 @@ function render(){
  list.append(frag);
 }
 window.addEventListener("bibliotheca:filters-ready",render);
+window.addEventListener("bibliotheca:order-changed",render);
 for(const id of ["classic-genre","classic-era"])$(id)?.addEventListener("change",render);
 $("language-toggle")?.addEventListener("click",()=>queueMicrotask(render));
 Promise.all([fetch(CATALOG).then(r=>{if(!r.ok)throw Error("catalog");return r.json()}),fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("registry");return r.json()}),fetch("data/classics-corpus/remote-translations.json").then(r=>r.ok?r.json():null).catch(()=>null)])
