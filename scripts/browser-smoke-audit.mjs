@@ -15,6 +15,49 @@ try{
  for(const path of ['index.html','scriptorium.html','facsimiles.html','bibliografia.html','ediciones-historicas.html','concordancia-historica.html','estudios.html','harleianus.html']){
   await test('Carga '+path,async()=>{const page=await pageFor(path);await page.waitForTimeout(1500);await page.close()});
  }
+ await test('Portada: etiquetas ES/EN/FR y restauración de idioma',async()=>{
+  const page=await pageFor('index.html');
+  const select=page.locator('.header-languages select').first();
+  await select.waitFor({state:'visible',timeout:12000});
+  const heading=page.locator('#modern-editions-heading strong');
+  const subtitle=page.locator('#modern-editions-heading span');
+  const notable=page.locator('#obras-notables-heading strong');
+  for(const [lang,title,detail,works] of [
+    ['en','MODERN EDITIONS','Rose and Krohn','NOTABLE WORKS'],
+    ['fr','ÉDITIONS MODERNES','Rose et Krohn','ŒUVRES REMARQUABLES'],
+    ['es','TRADUCCIONES MODERNAS','Rose y Krohn','OBRAS NOTABLES']
+  ]){
+   await select.selectOption(lang);
+   await page.waitForFunction(([expected,fragment,other])=>{
+    const a=document.querySelector('#modern-editions-heading strong')?.textContent?.trim();
+    const b=document.querySelector('#modern-editions-heading span')?.textContent||'';
+    const c=document.querySelector('#obras-notables-heading strong')?.textContent?.trim();
+    return a===expected&&b.includes(fragment)&&c===other;
+   },[title,detail,works],{timeout:10000});
+   assert.equal((await heading.innerText()).trim(),title);
+   assert((await subtitle.innerText()).includes(detail));
+   assert.equal((await notable.innerText()).trim(),works);
+   assert.equal(await page.locator('html').getAttribute('lang'),lang);
+  }
+  for(const [name,target] of [['Rose','rose-1899.html'],['Krohn','krohn-1912.html']]){
+   const link=page.locator('#modern-editions-heading + nav a[href="'+target+'"]');
+   assert.equal(await link.count(),1,name+' debe conducir a su propio visor');
+   assert(await link.isVisible(),name+' debe ser visible');
+  }
+  await page.close();
+ });
+ await test('Portada: botones académicos principales tienen enlaces y destinos internos',async()=>{
+  const page=await pageFor('index.html');
+  for(const target of ['rose-1899.html','krohn-1912.html','obras-notables.html?obra=palladio-quattro-libri','obras-notables.html?obra=alberti-diez-libros-1582']){
+   const anchor=page.locator('.historic-top-links a[href="'+target+'"]');
+   assert.equal(await anchor.count(),1,'Acceso faltante o duplicado: '+target);
+   assert(await anchor.isVisible(),'Acceso no visible: '+target);
+   const pathname=new URL(await anchor.getAttribute('href'),base).pathname;
+   const response=await page.request.get(new URL(pathname,base).href);
+   assert.equal(response.status(),200,'Destino no accesible: '+target);
+  }
+  await page.close();
+ });
  await test('Lexicon: búsqueda enlazada ?q=, resultado local y restauración con Atrás',async()=>{
   const page=await pageFor('vitruvia-lexicon.html?q=symmetria&mode=palabra&lang=la');
   await page.waitForFunction(()=>document.querySelector('#lx-q')?.value==='symmetria'
