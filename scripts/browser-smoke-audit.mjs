@@ -54,6 +54,20 @@ try{
   }
   await page.close();
  });
+ await test('Auditoría académica: contenido editorial traducido ES/EN/FR',async()=>{
+  const page=await pageFor('auditoria-academica.html');
+  const select=page.locator('#secondary-language');
+  await select.waitFor({state:'visible',timeout:12000});
+  for(const [lang,heading,section] of [
+   ['en','Academic audit and editorial transparency','Coverage of textual works'],
+   ['fr','Audit académique et transparence éditoriale','Couverture des œuvres textuelles'],
+   ['es','Auditoría académica y transparencia editorial','Cobertura de obras textuales']]){
+   await select.selectOption(lang);
+   await page.waitForFunction(([heading,section])=>document.querySelector('h1')?.textContent?.trim()===heading&&[...document.querySelectorAll('h2')].some(x=>x.textContent.trim()===section),[heading,section],{timeout:8000});
+   assert.equal((await page.locator('h1').innerText()).trim(),heading);
+  }
+  await page.close();
+ });
  await test('Portada: etiquetas ES/EN/FR y restauración de idioma',async()=>{
   const page=await pageFor('index.html');
   const select=page.locator('.header-languages select').first();
