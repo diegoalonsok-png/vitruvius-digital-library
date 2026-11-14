@@ -233,12 +233,13 @@ function renderSearch(){
  const start=resultPage*SEARCH_PAGE_SIZE;
  const page=results.slice(start,start+SEARCH_PAGE_SIZE);
  const list=document.createElement("ol");list.className="search-passage-list";list.start=start+1;
- for(const {i,r,locations} of page){
+ for(const {i,r,locations,forms,approx} of page){
   const li=document.createElement("li"),button=document.createElement("button");
   button.type="button";button.className="search-passage-jump";
   const title=document.createElement("strong");title.textContent=unitLabel()+" "+r.locus+(r.title?" · "+r.title:"")+
     (locations.length?" · "+locations.length+" "+(locations.length===1?"aparición":"apariciones"):" · coincidencia experimental");
   button.append(title);
+  if(forms?.length){const note=document.createElement("span");note.className="search-passage-more";note.textContent=(approx?"Grafías próximas encontradas: ":"Forma encontrada: ")+forms.slice(0,6).join(", ")+(forms.length>6?"…":"");button.append(note);}
   if(locations.length){
    for(const [a,b] of locations.slice(0,3)){
     const excerpt=makeConcordanceExcerpt(r.text,a,b);excerpt.lang=data.language;
