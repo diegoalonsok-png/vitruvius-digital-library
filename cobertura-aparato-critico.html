@@ -98,7 +98,7 @@ function renderLoci(){
  (f==='all'||f==='with'&&r.coll.length||f==='strong'&&r.high.length||f==='without'&&!r.coll.length||f==='comment'&&(r.gloss.length||r.notes.length||r.candidate.length||r.sections.length||r.dictionary.length)||f==='historic'&&r.history.length||f==='hfolio'&&r.hFolio.length));
  $('detailCount').textContent=shown.length+' loci cumplen los filtros.';
  const tbody=$('byLocus');tbody.replaceChildren();
- for(const r of shown.slice(0,150)){
+ for(const r of shown){
  const tr=create('tr'),first=create('td'),a=create('a','Vitr. '+r.locus);a.href='registro-ecdotico.html?locus='+encodeURIComponent(r.locus);first.append(a);
  first.append(create('small','Abrir el registro por locus'));
  const dossier=create('a','Comparar texto, Rose, Krohn y H','dl-open');dossier.href='cobertura-aparato-critico.html?locus='+encodeURIComponent(r.locus)+'#dossier';dossier.setAttribute('data-dossier',r.locus);first.append(dossier);tr.append(first);
