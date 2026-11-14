@@ -27,7 +27,7 @@
    row(root,'Publicación',site?'2026 · registro Zenodo publicado el 1 de noviembre de 2026':book.year+' · '+book.edition_statement);
    const identifier=el('p');identifier.append(el('strong','DOI: '),link(doi,'https://doi.org/'+doi));root.append(identifier);
    if(!site){
-    row(root,'ISBN',book.isbn||'Pendiente de cotejo: el catálogo y el paratexto de referencia consultado no consignan el ISBN de esta edición');
+    row(root,'ISBN',book.isbn||'ISBN no consignado para esta edición');
     if(book.isbn_note)row(root,'Nota del ISBN',book.isbn_note);
     row(root,'Lenguas',book.languages.map(l=>({la:'latín',es:'castellano',fr:'francés',en:'inglés'})[l]||l).join(' / '));
     row(root,'Extensión del PDF',book.pages+' páginas; la paginación editorial no se confunde con foliación manuscrita');
@@ -48,7 +48,7 @@
     p.append(link(e.version+' · '+e.bibliographic_title,'classics-work-record.html?work='+workId),document.createTextNode(' · '),link(e.doi,'https://doi.org/'+e.doi));root.append(p);
    }
    root.append(link('Ficha del proyecto y DOI','classics-work-record.html?work='+siteId));
-   row(root,'Control de los datos','DOI de cada edición contrastado con el registro público de Zenodo el 11-11-2026. Los datos de impresión y el ISBN proceden del catálogo editorial y de su fuente declarada; los campos ausentes siguen pendientes de cotejo.');
+   row(root,'Control de los datos','DOI de cada edición contrastado con el registro público de Zenodo el 11-11-2026. Los datos de impresión y el ISBN proceden del catálogo editorial y de su fuente declarada; los campos ausentes permanecen sin atribución.');
    return {id,title,doi,...(book||{})};
   }catch(error){root.replaceChildren(el('p','No se pudo cargar la ficha editorial: '+error.message));return null}
  }
