@@ -622,19 +622,27 @@ function renderInto(target,id,opts={}){
   if(/atribuci[oó]n|debati|discuti|fragment/i.test(w.author+" "+w.dating+" "+w.title)){
    target.append(html("p","cwd-muted","Advertencia filológica: la atribución, la datación o la transmisión de esta obra puede ser discutida o fragmentaria; cotejar estudios especializados."));
   }
-  renderDocumentaryHistory(target,w,d);
-  renderVitruviusStandard(target,w,d);
+  // Lead with usable academic data and its citations. Keep the full
+  // documentary/ecdotic audit accessible without displaying numerous unresolved
+  // fields as if they were independent, validated catalogue facts.
   renderAcademicSummary(target,w,d);
-  renderCriticalAuthority(target,w,d);
   renderWitness(target,w,d);
-  renderExpandedCodicology(target,w,d);
-  renderCodicologicalTree(target,w,d);
-  renderResearchAssist(target,w);
-  renderCodicology(target,w);
   renderEditions(target,w,d);
   renderBibliography(target,w);
-  renderAuthorityIdentifiers(target,w,d);
   renderCitationTools(target,w);
+  const verification=html("details","cwd-verification-details");
+  const verificationTitle=html("summary",null,"Expediente documental ampliado · fuentes, cotejos y campos por verificar");
+  const verificationBody=html("div","cwd-verification-body");
+  verification.append(verificationTitle,verificationBody);
+  target.append(verification);
+  renderDocumentaryHistory(verificationBody,w,d);
+  renderVitruviusStandard(verificationBody,w,d);
+  renderCriticalAuthority(verificationBody,w,d);
+  renderExpandedCodicology(verificationBody,w,d);
+  renderCodicologicalTree(verificationBody,w,d);
+  renderResearchAssist(verificationBody,w);
+  renderCodicology(verificationBody,w);
+  renderAuthorityIdentifiers(verificationBody,w,d);
   section(target,"Metodología de la ficha");
   target.append(html("p","cwd-muted","Los loci clásicos identifican lugares del texto; un número de página de edición y un folio físico son sistemas de referencia diferentes. Un manuscrito puede contener solo fragmentos. Los datos manuscritos provienen del registro de testimonios verificados; la bibliografía, del catálogo editorial. Enlaces a recursos externos no implican derechos de reproducción ni aval institucional."));
   const coverage=html("p","cwd-links");addA(coverage,"Consultar la matriz completa del repertorio ↗","classics-manuscript-coverage.html");target.append(coverage);
