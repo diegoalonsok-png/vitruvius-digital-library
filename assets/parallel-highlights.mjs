@@ -8,9 +8,9 @@ const VOCABULARY=[
     occurrence of ratio, sermo or verbum in an unrelated Latin passage.
     Equivalents in the facing version remain explicitly interpretative. */
  {id:"logos",la:["logos","λόγος","λογος"],
-  es:["logos","palabra","palabras","verbo","verbos","razón","razones","discurso","discursos"],
-  fr:["logos","parole","paroles","verbe","verbes","raison","raisons","discours"],
-  en:["logos","word","words","reason","reasons","speech","discourse","discourses"]},
+  es:["logos","λόγος","palabra","palabras","verbo","verbos","razón","razones","discurso","discursos"],
+  fr:["logos","λόγος","parole","paroles","verbe","verbes","raison","raisons","discours"],
+  en:["logos","λόγος","word","words","reason","reasons","speech","discourse","discourses"]},
  {id:"domus",la:["domus","domum","domo","domi","domos","domuum","domibus","domvs","domvm","domibvs"],
   es:["casa","casas","vivienda","viviendas","hogar","hogares","residencia","residencias"],
   fr:["maison","maisons","demeure","demeures","habitation","habitations","logement","logements"],
