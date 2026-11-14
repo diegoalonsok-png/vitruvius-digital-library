@@ -20,12 +20,13 @@ import tempfile
 import urllib.request
 
 ROSE_SOURCES = [
- "https://upload.wikimedia.org/wikipedia/commons/b/b2/Vitruvii_De_architectura_libri_decem_%28IA_vitruviidearchit00vitr_0%29.pdf",
+ "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vitruvii_De_architectura_libri_decem_%28IA_vitruviidearchit00vitr_0%29.pdf",
  "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf",
  "https://archive.org/download/vitruviidearchi00pollgoog/vitruviidearchi00pollgoog.pdf",
 ]
 KROHN = pathlib.Path("documents/krohn-1912.pdf")
 KROHN_FALLBACK = [
+ "https://commons.wikimedia.org/wiki/Special:Redirect/file/Vitruvii_De_architectura_libri_decem_%28IA_vitruviidearchit00vitr%29.pdf",
  "https://archive.org/download/vitruviidearchit00vitr/vitruviidearchit00vitr.pdf",
  "https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf",
 ]
