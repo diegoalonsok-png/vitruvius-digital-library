@@ -60,6 +60,18 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <div class="h-zoom-controls" role="group" aria-label="Ampliación del folio"><button type="button" id="zoom-out" title="Reducir imagen">−</button><label>Zoom <input id="zoom" type="range" min="50" max="500" step="25" value="100" aria-label="Zoom del folio, de 50 a 500 por ciento"> <output id="zval">100%</output></label><button type="button" id="zoom-in" title="Ampliar imagen">+ Ampliar</button><button type="button" id="zoom-fit" title="Ajustar folio al ancho del visor">Ajustar</button></div>
 <label>Contraste <input id="contrast" type="range" min="70" max="220" value="100"> <output id="cval">100%</output></label>
 <div id="image-mode" role="group" aria-label="Visualización del manuscrito"><strong class="image-mode-heading">Visualización</strong><button type="button" data-image-mode="original" aria-pressed="true">Original</button><button type="button" data-image-mode="bw" aria-pressed="false">Blanco y negro</button><button type="button" data-image-mode="negative" aria-pressed="false">Negativo · letras blancas</button></div></div>
+<section id="h-locus-jump" aria-label="Localización de folios por locus, prefacio o palabra clave">
+<h2>Localizar el folio por locus, prefacio o palabra</h2>
+<form id="h-locus-form" role="search">
+<label for="h-locus-input">Locus, prefacio o término<input id="h-locus-input" type="search" list="h-loci-list" autocomplete="off" placeholder="1.praef.1 · 6.2.3 · symmetria · decor"></label>
+<datalist id="h-loci-list"></datalist>
+<label for="h-preface-pick">Prefacios<select id="h-preface-pick"><option value="">Elegir prefacio…</option><option value="1.praef">I · Praefatio</option><option value="2.praef">II · Praefatio</option><option value="3.praef">III · Praefatio</option><option value="4.praef">IV · Praefatio</option><option value="5.praef">V · Praefatio</option><option value="6.praef">VI · Praefatio</option><option value="7.praef">VII · Praefatio</option><option value="8.praef">VIII · Praefatio</option><option value="9.praef">IX · Praefatio</option><option value="10.praef">X · Praefatio</option></select></label>
+<button type="submit">Localizar en H</button>
+</form>
+<p id="h-locus-status" role="status" aria-live="polite">Preparando los loci y las correspondencias de folios…</p>
+<div id="h-locus-actions"></div>
+<p class="h-sync-warning">Las correspondencias documentadas se abren directamente. Cuando no hay cotejo, se puede explorar un folio <em>estimado</em>, señalado expresamente como orientativo.</p>
+</section>
 <div id="h-image-tools" role="group" aria-label="Herramientas visuales adicionales">
 <label>Brillo <input id="brightness" type="range" min="60" max="180" step="5" value="100"><output id="bval">100%</output></label>
 <label>Saturación <input id="saturation" type="range" min="0" max="200" step="10" value="100"><output id="sval">100%</output></label>
@@ -97,6 +109,7 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 </section>
 <p style="font-size:13px;margin:5px 0 10px">Para leer las letras latinas, usa <strong>+ Ampliar</strong>, el deslizador o doble clic sobre el folio. Desplázate dentro del visor para examinar la escritura.</p>
 <div id="stage" tabindex="0" aria-label="Visor ampliable del Codex H: teclas más, menos y cero para zoom"><img id="folio" alt="Folio digital del Harleianus 2767"></div><div id="loupe"><img alt="Imagen del documento" id="magnified"></div>
+<section id="h-folio-context" aria-live="polite" aria-label="Lectura editorial vinculada al folio abierto"><h3>Texto editorial y términos vitruvianos</h3><p>Al abrir un folio se mostrarán los loci vinculados y los términos importantes resaltados en amarillo, cuando haya una relación documentada o una orientación editorial explícita.</p></section>
 
 <p>Procedencia: British Library, <em>Harley MS 2767</em>. <a href="concordancia-folios.html" style="font-weight:650">Concordancia entre folios y loci</a> · <a id="source" href="https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">Ver original en el visor institucional</a>. Las condiciones de reutilización corresponden al proveedor institucional. Esta página no almacena ni redistribuye imágenes del códice.</p>
-</main><script type="module" src="assets/harley-reader-zoom-v2.mjs?v=20261114-image-controls-v2"></script><script type="module" src="assets/harley-folio-gallery.mjs?v=20261103"></script><script type="module" src="assets/harleianus-search.mjs?v=20261114-h-search-v1"></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
+</main><script type="module" src="assets/harley-reader-zoom-v2.mjs?v=20261114-image-controls-v2"></script><script type="module" src="assets/harley-folio-gallery.mjs?v=20261103"></script><script type="module" src="assets/harleianus-search.mjs?v=20261114-h-search-v1"></script><script defer src="assets/codex-h-concordance.js?v=20261114-sincronizacion-h-v1"></script><script type="module" src="assets/harleianus-locus-sync.mjs?v=20261114-sincronizacion-h-v1"></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
