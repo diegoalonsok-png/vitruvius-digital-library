@@ -64,7 +64,7 @@ function render(cardId){
  const selected=editions.find(e=>e.lang===x.lang),record=index.get(selected.key)?.get(current);
  const value=String(record?.[selected.field]||"").trim();
  x.content.replaceChildren();x.content.lang=x.lang;
- const title=make("p",null,value||"No hay un pasaje alineado y verificable para este locus en esta versión. Consultá el lector de la edición.");
+ const title=make("p",null,value||"No hay un pasaje alineado y verificable para este locus en esta versión. Consulta el lector de la edición.");
  if(value){title.style.fontSize=x.size+"px";highlighted(title,value,x.query.value)}
  x.content.append(title);
  if(value&&x.underlines.has(key(cardId,x.lang,current))){
