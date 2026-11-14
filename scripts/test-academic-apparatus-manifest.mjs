@@ -25,6 +25,9 @@ for(const {id,version,bibliographic_title,doi,isbn,isbn_note} of manifest.editio
  assert.equal(isbn_note,e.isbn_note||null);
 }
 assert.match(manifest.limits,/DOI identifica una edición/);
-assert.match(manifest.limits,/loci candidatos no deben citarse como collatio/);
+assert.match(manifest.limits,/Loci candidatos no equivalen a collatio/);
+assert.match(manifest.limits,/asignación registral individual/);
+assert.ok(manifest.editions.every(e=>e.isbn_note?.includes("ISBN común declarado por el editor")),
+ "All three editions must disclose editorial common ISBN registration caveat");
 assert.ok(!("registros" in manifest)&&!("entries" in manifest),"A bibliography manifest must never masquerade as the apparatus data itself");
 console.log("PASS: apparatus manifest references true indexed data and the exact, documented editions; no fabricated witness readings.");
