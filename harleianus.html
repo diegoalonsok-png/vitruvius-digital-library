@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es" translate="no"><head><meta charset="utf-8"><meta name="google" content="notranslate"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Harleianus 2767 · prueba de lectura IIIF</title>
-<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css"><link rel="stylesheet" href="assets/harleianus-search.css?v=20261114-h-search-v1">
 <style>
 main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 .controls{display:flex;flex-wrap:wrap;gap:14px;align-items:center;border:1px solid #b9ad91;padding:15px;margin:18px 0}
@@ -60,7 +60,30 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <div class="h-zoom-controls" role="group" aria-label="Ampliación del folio"><button type="button" id="zoom-out" title="Reducir imagen">−</button><label>Zoom <input id="zoom" type="range" min="50" max="500" step="25" value="100" aria-label="Zoom del folio, de 50 a 500 por ciento"> <output id="zval">100%</output></label><button type="button" id="zoom-in" title="Ampliar imagen">+ Ampliar</button><button type="button" id="zoom-fit" title="Ajustar folio al ancho del visor">Ajustar</button></div>
 <label>Contraste <input id="contrast" type="range" min="70" max="220" value="100"> <output id="cval">100%</output></label>
 <div id="image-mode" role="group" aria-label="Visualización del manuscrito"><strong class="image-mode-heading">Visualización</strong><button type="button" data-image-mode="original" aria-pressed="true">Original</button><button type="button" data-image-mode="bw" aria-pressed="false">Blanco y negro</button><button type="button" data-image-mode="negative" aria-pressed="false">Negativo · letras blancas</button></div></div>
+<div id="h-image-tools" role="group" aria-label="Herramientas visuales adicionales">
+<label>Brillo <input id="brightness" type="range" min="60" max="180" step="5" value="100"><output id="bval">100%</output></label>
+<label>Saturación <input id="saturation" type="range" min="0" max="200" step="10" value="100"><output id="sval">100%</output></label>
+<label>Sepia <input id="sepia" type="range" min="0" max="100" step="10" value="0"><output id="sepval">0%</output></label>
+<button id="image-reset" type="button">Restablecer imagen</button>
+<button id="image-fullscreen" type="button">Pantalla completa</button>
+</div>
 <div id="folio-identification" aria-live="polite" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#f1e9da;border:1px solid #b59b72;padding:13px 18px;margin:16px 0;font-size:16px"><strong style="font-size:19px">Folio leído: <span id="current-folio">—</span></strong><span>Imagen digital: <strong id="current-image">—</strong></span><span style="font-size:13px">Etiqueta IIIF: <strong id="current-label">—</strong></span></div><p id="folio-info" aria-live="polite" style="font-size:13px">El folio se identifica mediante las etiquetas del manifiesto institucional.</p><p id="status" role="status">Consultando el manifiesto IIIF…</p>
+<section id="h-search-academic" aria-labelledby="h-search-title">
+<h2 id="h-search-title">Concordancia académica · términos de Vitruvio</h2>
+<p class="h-s-description">Buscar <i>symmetria</i>, <i>decor</i>, términos relacionados, frases completas y loci en los diez libros y sus prefacios. Los resultados y las marcas amarillas pertenecen al <strong>texto editorial latino V514</strong>, no a una transcripción diplomática completa ni a posiciones automáticas de las letras sobre la imagen del Codex H.</p>
+<form id="h-search-form" class="h-s-form" role="search">
+<label for="h-search-query">Término, frase o locus<input id="h-search-query" type="search" placeholder="symmetria · decor · 1.2.1 · Cum divina tua mens…" autocomplete="off"></label>
+<label for="h-search-mode">Buscar por<select id="h-search-mode"><option value="concept">Término vitruviano</option><option value="phrase">Frase literal</option><option value="locus">Locus preciso</option></select></label>
+<label for="h-search-scope">Ámbito<select id="h-search-scope"><option value="all">Toda la obra</option><option value="praef">Solo prefacios</option><option value="1">Libro I</option><option value="2">Libro II</option><option value="3">Libro III</option><option value="4">Libro IV</option><option value="5">Libro V</option><option value="6">Libro VI</option><option value="7">Libro VII</option><option value="8">Libro VIII</option><option value="9">Libro IX</option><option value="10">Libro X</option></select></label>
+<button type="submit">Buscar</button><button type="button" id="h-search-clear">Limpiar</button>
+</form>
+<div class="h-s-quick" aria-label="Términos vitruvianos sugeridos"><small>Accesos rápidos:</small>
+<button type="button" data-h-term="symmetria">symmetria</button><button type="button" data-h-term="decor">decor</button><button type="button" data-h-term="eurythmia">eurythmia</button><button type="button" data-h-term="ordinatio">ordinatio</button><button type="button" data-h-term="dispositio">dispositio</button><button type="button" data-h-term="firmitas">firmitas</button><button type="button" data-h-term="utilitas">utilitas</button><button type="button" data-h-term="venustas">venustas</button></div>
+<p id="h-search-status" role="status" aria-live="polite">Preparando el índice latino…</p>
+<div id="h-search-results" aria-label="Pasajes y loci encontrados"></div>
+<button type="button" id="h-search-more" hidden>Mostrar más loci</button>
+<p class="h-s-description"><strong>Criterio:</strong> los enlaces a imágenes de H se presentan exclusivamente cuando la tabla codicológica registra su correspondencia y nivel de evidencia. No se presupone una alineación palabra por palabra entre edición y códice.</p>
+</section>
 <section class="h-gallery" id="h-folios" aria-labelledby="h-gallery-title">
 <h2 id="h-gallery-title">Buscar por imagen · Galería visual del Codex H</h2>
 <p>Elige la miniatura que quieres leer: se abrirá debajo en este mismo lector, con lupa, zoom y filtros. Las imágenes siguen la secuencia digital IIIF de la British Library. <strong>El número de imagen no siempre coincide con el folio histórico.</strong></p>
@@ -76,4 +99,4 @@ main{max-width:1200px;margin:auto;padding:28px 18px 65px}
 <div id="stage" tabindex="0" aria-label="Visor ampliable del Codex H: teclas más, menos y cero para zoom"><img id="folio" alt="Folio digital del Harleianus 2767"></div><div id="loupe"><img alt="Imagen del documento" id="magnified"></div>
 
 <p>Procedencia: British Library, <em>Harley MS 2767</em>. <a href="concordancia-folios.html" style="font-weight:650">Concordancia entre folios y loci</a> · <a id="source" href="https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001" target="_blank" rel="noopener">Ver original en el visor institucional</a>. Las condiciones de reutilización corresponden al proveedor institucional. Esta página no almacena ni redistribuye imágenes del códice.</p>
-</main><script type="module" src="assets/harley-reader-zoom-v2.mjs?v=20261103-zoom-500"></script><script type="module" src="assets/harley-folio-gallery.mjs?v=20261103"></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
+</main><script type="module" src="assets/harley-reader-zoom-v2.mjs?v=20261103-zoom-500"></script><script type="module" src="assets/harley-folio-gallery.mjs?v=20261103"></script><script type="module" src="assets/harleianus-search.mjs?v=20261114-h-search-v1"></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
