@@ -7,7 +7,7 @@ const colors={amarillo:"#f6dc68",verde:"#8ed6a3",azul:"#91bff0",rosa:"#e9a6d2"};
 const support=!!(window.CSS&&CSS.highlights&&window.Highlight);
 let mode="underline",color="amarillo";
 const bar=document.createElement("div");bar.className="vdl-annotation-bar";
-bar.innerHTML='<strong>Marcas</strong><button type="button" data-mode="underline" aria-pressed="true">Subrayar</button><button type="button" data-mode="highlight" aria-pressed="false">Resaltar</button><span id="vdl-annotation-palette"></span><button type="button" data-action="erase">Borrar selección</button><button type="button" data-action="clear">Limpiar pasaje</button><span class="vdl-annotation-divider"></span><button type="button" data-action="find" title="Buscar en este panel" aria-label="Lupa buscar">⌕</button><button type="button" data-action="smaller" title="Lupa reducir" aria-label="Lupa reducir">−</button><button type="button" data-action="larger" title="Lupa ampliar" aria-label="Lupa ampliar">＋</button><output aria-live="polite"></output>';
+bar.innerHTML='<strong>Marcas</strong><button type="button" data-mode="underline" aria-pressed="true">Subrayar</button><button type="button" data-mode="highlight" aria-pressed="false">Resaltar</button><span id="vdl-annotation-palette"></span><button type="button" data-action="mark">Aplicar marca</button><button type="button" data-action="erase">Borrar selección</button><button type="button" data-action="clear">Limpiar pasaje</button><span class="vdl-annotation-divider"></span><button type="button" data-action="find" title="Buscar en este panel" aria-label="Lupa buscar">⌕</button><button type="button" data-action="smaller" title="Lupa reducir" aria-label="Lupa reducir">−</button><button type="button" data-action="larger" title="Lupa ampliar" aria-label="Lupa ampliar">＋</button><output aria-live="polite"></output>';
 const sourcePanel=document.querySelector(".cl-source-column");
 if(sourcePanel)sourcePanel.insertBefore(bar,sourcePanel.querySelector("#hit-nav")||text);
 else article.insertBefore(bar,article.querySelector(".reader-toolbar"));
@@ -101,7 +101,7 @@ if(sourcePanel){
 bar.addEventListener("mousedown",e=>{if(e.target.closest("button"))e.preventDefault()});
 bar.addEventListener("click",e=>{
  const b=e.target.closest("button");if(!b)return;
- if(b.dataset.mode){mode=b.dataset.mode;bar.querySelectorAll("[data-mode]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));return}
+ if(b.dataset.mode){mode=b.dataset.mode;bar.querySelectorAll("[data-mode]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));if(selection())action("mark");return}
  if(b.dataset.color){color=b.dataset.color;bar.querySelectorAll("[data-color]").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));action("mark");return}
  if(b.dataset.action)action(b.dataset.action);
 });
