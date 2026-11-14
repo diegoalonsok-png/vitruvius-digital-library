@@ -424,6 +424,50 @@ if(LEX)LEX.attachClick($("passages"),$("lexicon"),()=>(data&&["la","grc"].includ
 else{
 $("passages").addEventListener("dblclick",()=>{if(data?.language!=="la")return;const selection=window.getSelection()?.toString()?.trim();if(selection&&/^[A-Za-zÀ-ž]{3,40}$/.test(selection))morphology(selection)});
 }
+let manuscriptRequest=null;
+async function showHoldingLibraries(){
+ const host=$("reader-manuscripts");if(!host)return;
+ const h=document.createElement("strong");h.textContent="Códices y bibliotecas custodias";
+ const p=document.createElement("p");
+ const link=(root,label,url)=>{
+  if(!/^https:\/\//.test(url||""))return;
+  const a=document.createElement("a");a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=label;root.append(a);
+ };
+ host.replaceChildren(h);
+ try{
+  if(!manuscriptRequest)manuscriptRequest=fetch("data/bibliotheca-testimonia-verified.json")
+   .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+   .catch(e=>{manuscriptRequest=null;throw e});
+  const catalog=await manuscriptRequest;
+  const items=(catalog.records||[]).filter(x=>Array.isArray(x.workIds)&&x.workIds.includes(work))
+   .sort((a,b)=>(Number.isFinite(a.dateStart)?a.dateStart:99999)-(Number.isFinite(b.dateStart)?b.dateStart:99999));
+  if(!items.length){
+   p.textContent="No hay todavía un testimonio material individualizado en el registro de esta obra. No se infiere ausencia de manuscritos.";
+   host.append(p);
+  }else{
+   p.textContent=items.length+" testimonio(s) identificados. Orden cronológico del registro local, no afirmación del códice más antiguo conservado universalmente.";
+   host.append(p);
+   const list=document.createElement("ul");list.style.cssText="margin:8px 0;padding-left:22px";
+   for(const ms of items.slice(0,8)){
+    const li=document.createElement("li");li.style.margin="7px 0";
+    const title=document.createElement("strong");
+    title.textContent=[ms.title||ms.shelfmark,ms.date].filter(Boolean).join(" · ");
+    li.append(title,document.createTextNode(" — "+[ms.library,ms.shelfmark].filter(Boolean).join(" · ")));
+    if(ms.coverage){const small=document.createElement("div");small.textContent="Contenido conservado: "+ms.coverage;li.append(small)}
+    const sources=document.createElement("div");sources.style.cssText="display:flex;flex-wrap:wrap;gap:12px";
+    link(sources,"Catálogo de la biblioteca",ms.record||ms.verificationUrl);
+    link(sources,"Leer folios",ms.viewer||ms.localViewer);
+    link(sources,"IIIF",ms.manifest);
+    if(sources.childNodes.length)li.append(sources);
+    list.append(li);
+   }
+   host.append(list);
+  }
+ }catch(err){p.textContent="No se pudo cargar el registro de manuscritos. Consulte la ficha codicológica individual.";host.append(p)}
+ const foot=document.createElement("p");
+ link(foot,"Ficha codicológica y filológica completa","https://vitruvius-digital-library.org/classics-work-record.html?work="+encodeURIComponent(work));
+ host.append(foot);
+}
 async function load(language){
  const indexed=hostedEditions.find(e=>e.language===language);
   const path=indexed?.path||base+language+".json",response=await fetch(path);
@@ -467,6 +511,7 @@ async function load(language){
  }
 
  data=corpus;active=0;searchIndex=null;
+ void showHoldingLibraries();
  try{searchIndex=await loadSearchResources(language)}catch(err){console.warn("Índice léxico complementario no disponible",err)}
  // The lexical index is optional; source text and literal search always remain available.
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
