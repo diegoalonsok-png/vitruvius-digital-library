@@ -394,8 +394,15 @@ function groupMatchesByLocus(hits){
   groups.get(key).hits.push(hit);
  }
  const sourceHasQuery=group=>group.hits.some(h=>h.latin&&hasLatinConcept(lastQuery,h.latin));
- // Always put source-attested original forms ahead of translated-only results.
- return [...groups.values()].sort((a,b)=>Number(sourceHasQuery(b))-Number(sourceHasQuery(a)));
+ const editionRank={'recensio-es':0,'recensio-fr':1,'theory-en':2};
+ const groupEdition=group=>group.hits[0]?.edition;
+ // Keep source-attested passages first and all editions of a locus adjacent.
+ return [...groups.values()].sort((a,b)=>
+  Number(sourceHasQuery(b))-Number(sourceHasQuery(a))||
+  Number(a.book||0)-Number(b.book||0)||
+  Number(a.chapter||0)-Number(b.chapter||0)||
+  Number(a.section||0)-Number(b.section||0)||
+  (editionRank[groupEdition(a)]??9)-(editionRank[groupEdition(b)]??9));
 }
 function preferredLatinHit(group){
  const chosenEdition=translationEditionIds[selectedTranslationLanguage];
@@ -545,15 +552,19 @@ function renderMore(){
   const group=next[i],r=preferredLatinHit(group),e=edition(r.edition);
   if(!e)continue;
   const editionLang=({'recensio-es':'es','recensio-fr':'fr','theory-en':'en'})[r.edition]||'es';
-  const rowLanguage=translationLanguageForSelection()||editionLang;
+  // Each result opens with the translation belonging to its own edition.
+  const rowLanguage=editionLang;
   const article=document.createElement('article');
   article.className='result result-parallel';
   article.dataset.groupIndex=String(shown+i);
-  const word=group.hits.length===1?'resultado documentado':'resultados documentados';
+  const directHits=group.hits.filter(h=>!h.partial_match&&!['aligned_locus','related_concept'].includes(h.match_type));
+  const resultType=directHits.length
+   ?'Coincidencia en esta edición · '+directHits.length+' resultado'+(directHits.length===1?'':'s')+' textual'+(directHits.length===1?'':'es')
+   :'Pasaje paralelo del mismo locus · sin coincidencia literal acreditada en esta edición';
   const pdfpage=group.hits.find(x=>x.edition===r.edition&&x.language==='la')?.page;
   const latinParagraph=parallelExcerpt(r.latin,{query:lastQuery,lang:'la',latin:r.latin,max:1700});
   article.innerHTML=
-   '<div class="result-meta">VITRUVIO · '+escapeHTML(e.version)+' · latín / '+escapeHTML(languages[editionLang]||editionLang)+' · '+escapeHTML(group.hits.length)+' '+word+' de esta edición</div>'+
+   '<div class="result-meta">VITRUVIO · '+escapeHTML(e.version)+' · latín / '+escapeHTML(languages[editionLang]||editionLang)+' · '+escapeHTML(resultType)+'</div>'+
    '<h3>'+escapeHTML(citation(r))+'</h3>'+
    '<p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+escapeHTML(r.chapter))+' · Sección '+escapeHTML(r.section)+'</p>'+
    '<div class="parallel-columns">'+
