@@ -15,7 +15,7 @@ const safeReader=s=>typeof s==="string"&&(
  /^corpus\/[a-z0-9/_-]+\.html$/i.test(s))?s:null;
 const workLink=id=>"classics-work-record.html?work="+encodeURIComponent(id);
 const facLink=id=>"buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(id);
-let model=null;
+let model=null,loadedAliases={};
 function rank(w,query){
  const qs=[normal(query),roman(query)],fields=w.forms||[];
  let best=0;
@@ -115,7 +115,8 @@ function mount(parent,data){
  input.addEventListener("input",()=>{model.limit=10;render()});
  more.addEventListener("click",()=>{model.limit+=10;render()});
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
-  for(const [id,forms] of Object.entries(j.aliases||{})){
+  loadedAliases=j.aliases||{};
+  for(const [id,forms] of Object.entries(loadedAliases)){
    const w=index.get(id);if(w&&Array.isArray(forms))w.forms.push(...forms);
   }
   if(input.value.trim())render();
@@ -123,13 +124,24 @@ function mount(parent,data){
 }
 function addFacsimiles(v,cat){
  if(!model||!Array.isArray(cat?.items))return;
+ const byEdition=new Map(cat.items.map(e=>[e.id,e]));
+ // R2 edition IDs need not match the ancient-work catalogue ID.
+ // Use the existing audited work-to-edition concordance.
+ for(const [workId,editions] of Object.entries(v?.porObra||{})){
+  const w=model.index.get(workId);if(!w)continue;
+  for(const ed of editions){
+   const fac=byEdition.get(ed.r2);
+   w.facsimile ||= ed.r2;
+   w.forms.push(ed.edicion||"",fac?.obra||"",fac?.tituloEdicion||"");
+  }
+ }
  for(const e of cat.items){
   const w=model.index.get(e.id);
-  if(w){w.facsimile=e.id;w.forms.push(e.obra||"",e.tituloEdicion||"");}
+  if(w){w.facsimile ||= e.id;w.forms.push(e.obra||"",e.tituloEdicion||"");}
  }
  for(const entry of v?.obrasNuevas||[]){
   if(model.index.has(entry.r2))continue;
-  const w={id:entry.r2,title:entry.obra,author:entry.autor,dating:"",forms:[entry.obra,entry.r2.replaceAll("-"," ")],
+  const w={id:entry.r2,title:entry.obra,author:entry.autor,dating:"",forms:[entry.obra,entry.r2.replaceAll("-"," "),...(loadedAliases[entry.r2]||[])],
    versions:[],facsimile:entry.r2,newWork:true};
   model.index.set(w.id,w);model.items.push(w);
  }
