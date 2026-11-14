@@ -202,7 +202,7 @@ function load(locus){
  source("#rose",d?.["rose-1899"],"Rose 1899");source("#krohn",d?.["krohn-1912"],"Krohn 1912");
  $("#reader-link").href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);
  $("#notes-link").href="inventario-aparato-autoral.html?locus="+encodeURIComponent(locus);
- set("#status","Locus "+format(locus)+" · "+(edition==="rose"?"Rose 1899 (OCR no cotejado)":"Kurilo V514")+" · "+count+" entradas mostradas en aparato · "+((d?.["rose-1899"]?.entradas||[]).length)+" fragmentos OCR Rose · "+((d?.["krohn-1912"]?.entradas||[]).length)+" fragmentos OCR Krohn. Las lecturas editoriales se documentan por su fuente; la verificación paleográfica se registra solo para las variantes pertinentes.");
+ set("#status","Locus "+format(locus)+" · "+(edition==="rose"?"Rose 1899 (OCR histórico)":"Kurilo V514")+" · "+count+" entradas mostradas en aparato · "+((d?.["rose-1899"]?.entradas||[]).length)+" fragmentos OCR Rose · "+((d?.["krohn-1912"]?.entradas||[]).length)+" fragmentos OCR Krohn. Las lecturas editoriales se documentan por su fuente; la verificación paleográfica se registra solo para las variantes pertinentes.");
 }
 $("#controls").addEventListener("submit",e=>{e.preventDefault();load($("#locus").value.trim().toLowerCase())});
 $("#mode").addEventListener("change",()=>current&&load(current));
