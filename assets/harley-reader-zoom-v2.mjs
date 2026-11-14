@@ -7,7 +7,14 @@ let displayMode='original';
 const stage=$('stage');
 const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
 
-function imageFilter(){const contrast='contrast('+$('contrast').value+'%)';return displayMode==='bw'?'grayscale(1) '+contrast+' brightness(1.15)':displayMode==='negative'?'grayscale(1) invert(1) '+contrast:contrast;}
+function imageFilter(){
+ const contrast='contrast('+$('contrast').value+'%)';
+ const brightness=' brightness('+$('brightness').value+'%)';
+ const saturation=' saturate('+$('saturation').value+'%)';
+ const sepia=' sepia('+(Number($('sepia').value)/100)+')';
+ const mode=displayMode==='bw'?'grayscale(1) ':displayMode==='negative'?'grayscale(1) invert(1) ':'';
+ return mode+contrast+brightness+saturation+sepia;
+}
 document.querySelectorAll('[data-image-mode]').forEach(button=>button.addEventListener('click',()=>{displayMode=button.dataset.imageMode;document.querySelectorAll('[data-image-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));setFilters();}));
 function setFilters(){
  const z=clamp(Number($('zoom').value)||100,50,500);
@@ -19,7 +26,7 @@ function setFilters(){
  const base=Math.max(240,stage.clientWidth-28);
  img.style.maxWidth='none';img.style.width=Math.round(base*z/100)+'px';img.style.height='auto';
  img.style.filter=imageFilter();mag.style.filter=imageFilter();
- $('zval').textContent=z+'%';$('cval').textContent=$('contrast').value+'%';
+ $('zval').textContent=z+'%';$('cval').textContent=$('contrast').value+'%';$('bval').textContent=$('brightness').value+'%';$('sval').textContent=$('saturation').value+'%';$('sepval').textContent=$('sepia').value+'%';
  if(img.complete&&img.naturalWidth){
    stage.scrollLeft=Math.max(0,relativeX*img.getBoundingClientRect().width-stage.clientWidth/2);
    stage.scrollTop=Math.max(0,relativeY*img.getBoundingClientRect().height-stage.clientHeight/2);
@@ -36,7 +43,25 @@ stage.addEventListener('keydown',e=>{
  if(e.key==='-'){e.preventDefault();setZoom(Number($('zoom').value)-25);}
  if(e.key==='0'){e.preventDefault();$('zoom-fit').click();}
 });
-for(const id of ['zoom','contrast'])$(id).addEventListener('input',setFilters);
+for(const id of ['zoom','contrast','brightness','saturation','sepia'])$(id).addEventListener('input',setFilters);
+$('image-reset')?.addEventListener('click',()=>{
+ $('contrast').value='100';$('brightness').value='100';$('saturation').value='100';$('sepia').value='0';
+ displayMode='original';
+ document.querySelectorAll('[data-image-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.imageMode==='original')));
+ setFilters();
+});
+$('image-fullscreen')?.addEventListener('click',async()=>{
+ try{
+  if(document.fullscreenElement)await document.exitFullscreen();
+  else if(stage.requestFullscreen)await stage.requestFullscreen();
+  else status.textContent='Este navegador no admite el modo de pantalla completa.';
+ }catch(e){status.textContent='No se pudo activar la pantalla completa. El visor sigue disponible.'}
+});
+document.addEventListener('fullscreenchange',()=>{
+ const b=$('image-fullscreen');
+ if(b)b.textContent=document.fullscreenElement?'Salir de pantalla completa':'Pantalla completa';
+});
+
 function imageUrls(canvas){
  const resource=canvas.images?.[0]?.resource||canvas.items?.[0]?.items?.[0]?.body;
  const raw=resource?.service||resource?.services;
