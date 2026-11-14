@@ -72,6 +72,9 @@ function ensureTypography(){
  const style=document.createElement('style');style.id='site-typeface-styles';
  style.textContent=[
   '.site-typeface-tool{position:relative;display:inline-flex;align-items:center;vertical-align:middle}',
+  '.site-typeface-tool.site-typeface-docked{position:fixed!important;top:64px!important;right:12px!important;left:auto!important;bottom:auto!important;z-index:15014!important;display:inline-flex!important;align-items:center;padding:3px;border-radius:9px;background:#25282a;box-shadow:0 3px 14px #0005}',
+  'body.vitruvius-secondary-controls .site-typeface-tool.site-typeface-docked{right:12px!important;top:69px!important}',
+  '@media(max-width:670px){.site-typeface-tool.site-typeface-docked{top:55px!important;right:6px!important}body.vitruvius-secondary-controls .site-typeface-tool.site-typeface-docked{top:54px!important;right:6px!important}}',
   '.site-typeface-button{display:inline-flex;justify-content:center;align-items:center;min-width:36px;min-height:35px;padding:6px 9px;border:1px solid #6e7278;border-radius:8px;background:#2d2d31;color:#f4f3f1;font:italic 600 19px Georgia,serif;cursor:pointer;transition:background .15s ease,border-color .15s ease}',
   '.site-typeface-button:hover{background:#3a3b40;border-color:#a4a5aa}',
   '.site-typeface-button:focus-visible{outline:2px solid #c9ced4;outline-offset:3px}',
@@ -96,27 +99,28 @@ function ensureTypography(){
  '<option value="original">Original</option><option value="georgia">Georgia</option><option value="palatino">Palatino</option><option value="times">Times New Roman</option><option value="arial">Arial</option><option value="system">Sistema</option>'+
  '</select></label><label><input id="site-typeface-italic" type="checkbox"> Cursiva</label>'+
  '<button id="site-typeface-reset" type="button">Restablecer</button></div>';
- const palette=document.getElementById('home-palette-toggle')||document.getElementById('front-background-toggle');
- const theme=document.querySelector('.research-nav-controls .theme-switch, .nav .theme-switch, .theme-switch');
- const anchor=palette?.closest('.home-color-tools, details')||palette||document.querySelector('.classic-view-colorbar')||theme;
- /* Si la página declara dónde va el control, va ahí: depender de un selector
-    de maquetación lo dejaba fuera de la botonera cuando ese selector cambiaba. */
- const hueco=document.getElementById('site-typeface-slot')||document.getElementById('indices-typeface-slot');
- /* El control va siempre en la misma fila que el botón de apariencia o el de
-    color: la ruta ya no decide nada, porque el sitio sirve URLs sin «.html»
-    y la comparación por nombre de archivo dejaba la «Aa» fuera de la botonera. */
- const fila=document.querySelector('.navtools')||theme?.parentElement||palette?.parentElement;
- if(hueco)hueco.append(tool);
- else if(anchor?.classList?.contains('classic-view-colorbar'))anchor.append(tool);
- else if(fila&&(fila.contains(theme)||fila.contains(palette)))fila.append(tool);
- else if(anchor?.parentElement)anchor.after(tool);
+ // Use only explicit top slots or a navigation row near the beginning
+ // of the document. Theme controls elsewhere (especially the footer)
+ // must never drag Aa to the bottom of long pages.
+ const slot=document.getElementById('site-typeface-slot')||document.getElementById('indices-typeface-slot');
+ const isTop=el=>{
+  if(!el||el.closest('footer,[role="contentinfo"]'))return false;
+  const r=el.getBoundingClientRect();
+  return r.width>0&&r.top+window.scrollY<Math.max(450,innerHeight*.7);
+ };
+ const topRow=[
+  '.research-nav-controls','.status-nav','.header-actions','.header-controls',
+  '.navtools','.classic-view-colorbar','.home-color-tools',
+  '.site-header .header-inner','header .header-inner','header nav'
+ ].map(x=>document.querySelector(x)).find(isTop);
+ const language=document.getElementById('vitruvius-secondary-toolbar');
+ if(slot&&!slot.closest('footer,[role="contentinfo"]'))slot.append(tool);
+ else if(topRow)topRow.append(tool);
  else {
-  // Never put Aa at the end of <body>: on pages without a header it
-  // looked like an orphan control below the editorial footer.
-  const top=document.querySelector('.research-nav-controls, .site-header .header-inner, header, main');
-  if(!top)return;
-  if(top.matches('main'))top.prepend(tool);
-  else top.append(tool);
+  // A floating tool by the upper right is safer than guessing a footer/
+  // palette node or appending after an arbitrary control below the page.
+  tool.classList.add('site-typeface-docked');
+  document.body.append(tool);
  }
  const button=tool.querySelector('#site-typeface-toggle'),panel=tool.querySelector('#site-typeface-panel'),select=tool.querySelector('#site-typeface-select'),italic=tool.querySelector('#site-typeface-italic');
  function apply(){
