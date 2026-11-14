@@ -36,6 +36,7 @@ jobs:
       - name: Comprobar sintaxis e integridad previa
         run: |
           python -m py_compile scripts/import-classics-verified-translations.py scripts/build_classics_semantic_index.py
+          python scripts/sync-classics-coverage.py
           python scripts/test-classics-historical-translations.py
       - name: Importar traducciones históricas con SHA, probar índices y publicar
         shell: bash
@@ -50,12 +51,14 @@ jobs:
             git reset --hard origin/main
             python scripts/import-classics-verified-translations.py --max-new 12
             python scripts/build_classics_semantic_index.py
+            python scripts/sync-classics-coverage.py
             python scripts/audit-classics-222-roadmap.py
             node scripts/audit-classical-corpus.mjs
             python scripts/audit-classics-coverage.py --strict
             python scripts/test-classics-historical-translations.py
             node scripts/test-classics-integration.mjs
             node scripts/audit-classical-translation-coverage.mjs
+            python scripts/sync-classics-coverage.py
             python scripts/audit-classics-222-roadmap.py
             git add data/bibliotheca-graeca-latina-I-bce-I-ce.json
             git add data/classics-corpus
