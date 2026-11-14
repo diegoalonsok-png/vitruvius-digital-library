@@ -1,0 +1,69 @@
+{
+  "schema": "vdl-classics-ingestion-candidates-v1",
+  "updated": "2026-11-14",
+  "kind": "editorial_staging_only",
+  "publicly_readable_count_delta": 0,
+  "notice": "Fuentes bibliográficas verificadas. Este manifiesto NO acredita subida a R2, texto local, traducción alojada, indexación, ni disponibilidad en el visor. Incorporar al registro público solo después de verificar archivo y lectura.",
+  "candidates": [
+    {
+      "workId": "pliny-naturalis",
+      "author": "Plinius Maior",
+      "title": "Naturalis historia, liber XXXVII",
+      "language": "la",
+      "action": "extend_existing",
+      "existingRegistryWorkId": "pliny",
+      "existingCoverage": "XXXIII-XXXVI, 745 loci (según search-registry.json)",
+      "sourceEdition": "Karl Friedrich Theodor Mayhoff, editor",
+      "sourceUrn": "urn:cts:latinLit:phi0978.phi001.perseus-lat2",
+      "sourceUrl": "https://atlas.perseus.tufts.edu/library/urn:cts:latinLit:phi0978.phi001.perseus-lat2/",
+      "accessibleTextUrl": "https://morcus.net/work/pliny_the_elder/naturalis_historia/37",
+      "textReuse": "Perseus CC BY-SA 4.0, comprobar atribución y ShareAlike",
+      "status": "source_identified_not_imported",
+      "next": "Extraer y validar texto completo de libro XXXVII; preservar loci; cotejar R2; fusionar sin duplicar XXXIII-XXXVI; buscar traducción histórica con derechos."
+    },
+    {
+      "workId": "procopius-de-aedificiis",
+      "author": "Procopius Caesariensis",
+      "title": "Περὶ Κτισμάτων / De aedificiis",
+      "language": "grc",
+      "action": "new_work_if_absent_in_R2",
+      "sourceEdition": "H. B. Dewing, Loeb Classical Library vol. VII (1940)",
+      "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/home.html",
+      "translation": {
+        "language": "en",
+        "translator": "Henry Bronson Dewing",
+        "sourceUrl": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/home.html",
+        "rights": "Comprobar condiciones sobre transcripción y jurisdicción antes de redistribuir"
+      },
+      "status": "source_identified_not_imported",
+      "next": "Verificar duplicados R2, transcripción griega completa, derechos de reutilización, alinear seis libros por libro/capítulo/sección."
+    },
+    {
+      "workId": "corpus-agrimensorum-romanorum",
+      "author": "Gromatici veteres (varios autores)",
+      "title": "Corpus Agrimensorum Romanorum",
+      "language": "la",
+      "action": "split_into_individual_works",
+      "sourceEdition": "Karl Lachmann et al. (1848/1852); Carl Thulin (1913, ed. incompleta)",
+      "sourceUrls": [
+        "https://commons.wikimedia.org/wiki/File:Gromatici_veteres_(IA_gromaticivetere00mommgoog).pdf",
+        "https://archive.org/details/corpusagrimensor01thuluoft"
+      ],
+      "status": "editions_identified_not_imported",
+      "next": "Identificar obras individuales de Hyginus, Siculus Flaccus, Frontinus agrimensor y Agennius Urbicus; conseguir texto verificable no OCR sin revisar; comprobar traducciones y derechos."
+    }
+  ],
+  "qualityGates": [
+    "anti-duplicate-check-catalog-and-r2",
+    "edition-and-license",
+    "complete-text-validation",
+    "canonical-loci",
+    "lemma-and-morphology",
+    "semantic-and-entity-index",
+    "parallel-alignment-only-if-evidenced",
+    "reader-and-index-smoke-tests",
+    "public-availability-verified"
+  ],
+  "notificationPolicy": "Avisar al usuario solo cuando una nueva obra o versión esté efectivamente cargada, indexada y legible, indicando idiomas, fuente, loci y URL.",
+  "sourceRegistry": "data/classics-corpus/search-registry.json"
+}
