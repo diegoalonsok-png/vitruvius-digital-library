@@ -68,6 +68,33 @@ try{
   }
   await page.close();
  });
+ await test('Status textus: Aa integrado en barra superior derecha',async()=>{
+  const page=await pageFor('status-textus.html');
+  await page.locator('#site-typeface-toggle').waitFor({state:'visible',timeout:12000});
+  const data=await page.evaluate(()=>{
+   const btn=document.querySelector('#site-typeface-toggle');
+   const slot=document.querySelector('.status-nav #site-typeface-slot');
+   const a=btn.getBoundingClientRect(),b=document.querySelector('.status-nav').getBoundingClientRect();
+   return {inSlot:!!slot?.contains(btn),y:a.y,navBottom:b.bottom,x:a.x,width:a.width,viewport:innerWidth};
+  });
+  assert(data.inSlot,'Aa must be inside #site-typeface-slot');
+  assert(data.y<=data.navBottom,'Aa must stay beside top navigation');
+  assert(data.x>data.viewport*.4,'Aa must be on the right of the top row');
+  await page.close();
+ });
+ await test('Bibliotheca: unresolved provenance grouped in expandable dossier',async()=>{
+  const page=await pageFor('classics-work-record.html?work=galeno-kuhn-vol01');
+  // This work can be loaded from R2 or from the primary catalogue.
+  const dossier=page.locator('#work-record');
+  await dossier.waitFor({state:'visible',timeout:15000});
+  await page.waitForFunction(()=>document.querySelector('#work-record')?.textContent?.length>120,null,{timeout:15000});
+  const details=dossier.locator('.cwd-verification-details');
+  if(await details.count()){
+   assert.equal(await details.getAttribute('open'),null,'Verification details should start collapsed');
+   assert((await details.locator('summary').innerText()).includes('Expediente documental'));
+  }
+  await page.close();
+ });
  await test('Portada: etiquetas ES/EN/FR y restauración de idioma',async()=>{
   const page=await pageFor('index.html');
   const select=page.locator('.header-languages select').first();
