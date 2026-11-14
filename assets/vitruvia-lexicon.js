@@ -2602,7 +2602,7 @@ async function init(){
  $$(".suggestions [data-q]").forEach(b=>b.addEventListener("click",()=>{$("#lx-q").value=b.dataset.q;if(b.dataset.mode){S.mode=b.dataset.mode;renderTabs()}run();$("#results").scrollIntoView({behavior:"smooth",block:"start"})}));
  $$("[data-tool-mode]").forEach(a=>a.addEventListener("click",e=>{const m=a.dataset.toolMode;if(MODES[m]){e.preventDefault();S.mode=m;renderTabs();if(m==="sententiae")run();$("#lx-q").focus()}}));
  /* Interconexión: toda palabra de una cita abre su propia ficha. */
- document.addEventListener("click",e=>{const w=e.target.closest?.(".w");if(!w||!w.closest("#lx-results,#lx-entry"))return;$("#lx-q").value=w.dataset.w;S.mode="palabra";renderTabs();run();window.scrollTo({top:$("#results").offsetTop-10,behavior:"smooth"})});
+ document.addEventListener("click",e=>{const w=e.target.closest?.(".w");if(!w||!w.closest("#lx-results,#lx-entry"))return;const selection=window.getSelection?.();if(selection&&!selection.isCollapsed&&selection.toString().trim())return;$("#lx-q").value=w.dataset.w;S.mode="palabra";renderTabs();run();window.scrollTo({top:$("#results").offsetTop-10,behavior:"smooth"})});
  $("#col-run").addEventListener("click",collate);$("#col-example").addEventListener("click",loadCollationExample);
  $("#col-add").addEventListener("click",()=>{const n=$$(".col-wit").length;if(n>=6)return;const t=$(".col-wit").cloneNode(true);t.querySelector(".col-sig").value=String.fromCharCode(66+n);t.querySelector("textarea").value="";$("#col-wits").append(t)});
  $("#nb-add").addEventListener("click",()=>{const text=prompt("Texto del pasaje (latín, griego o hebreo):");if(!text)return;const cite=prompt("Referencia (p. ej. Vitr. 1.1.1):")||"Pasaje";addToNotebook({cite,text,lang:detectLang(text)})});
