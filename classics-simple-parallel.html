@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visor simple · Bibliotheca Graeca et Latina</title><meta name="description" content="Lectura sencilla de textos clásicos originales y sus traducciones alojadas, por locus.">
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#050505;color:#f0f0f1;font-family:system-ui,-apple-system,sans-serif}main{max-width:1720px;margin:0 auto;padding:30px clamp(14px,4vw,64px)}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 30px}.top h1{font-size:clamp(20px,2.1vw,32px);font-weight:400;line-height:1.35;color:#dedee0;margin:0}.actions{display:flex;align-items:center;gap:12px}.actions a,.actions button{font:14px system-ui;color:#ececef;background:#151515;border:1px solid #4b4b4b;padding:9px 12px;text-decoration:none;border-radius:9px;cursor:pointer}.actions button{font-size:22px;min-width:42px}.actions button:disabled{opacity:.4;cursor:default}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.card{background:#303030;border-radius:17px;padding:clamp(20px,2vw,38px);min-width:0;min-height:65vh}.card h2{font:400 clamp(16px,1.6vw,23px)/1.4 system-ui;color:#cecece;margin:0 0 28px}.passage{font:clamp(21px,2.4vw,35px)/1.8 Georgia,"Times New Roman",serif;white-space:pre-wrap;overflow-wrap:anywhere}.passage p{margin:0 0 1.25em}.empty{font:17px/1.65 system-ui;color:#ddd}.note{color:#aaa;font:12px/1.6 system-ui;margin-top:14px}.note a{color:#ddd}button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:3px}@media(max-width:750px){.cards{grid-template-columns:1fr;gap:14px}.card{min-height:38vh}.top{align-items:flex-start;flex-direction:column}.actions{flex-wrap:wrap}.passage{font-size:24px}}@media print{.actions{display:none}main{padding:0}.card{min-height:0;break-inside:avoid}}
+</style></head><body><main>
+<div class="top"><h1 id="title">BIBLIOTHECA · LECTURA SIMPLE</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
+<div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div></section></div>
+<p class="note" id="note" role="status">Se utilizan las ediciones existentes en la Bibliotheca. Un locus compartido no demuestra identidad textual de las versiones.</p>
+</main><script>
+(()=>{"use strict";
+const q=new URLSearchParams(location.search),work=q.get("work")||"didache";
+const LANG={grc:"GRIEGO",la:"LATÍN",es:"CASTELLANO",en:"INGLÉS",fr:"FRANCÉS",it:"ITALIANO",de:"ALEMÁN",pt:"PORTUGUÉS"};
+const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;
+const key=v=>String(v??"").trim().toLowerCase().replace(/\s+/g,"");
+const status=msg=>el("note").textContent=msg;
+function paragraph(id,value){const target=el(id);target.replaceChildren();const p=document.createElement("p");p.textContent=value||"Pasaje sin texto disponible.";target.append(p);}
+function linkBack(){const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",leftLang||"grc");u.searchParams.set("right",q.get("right")||rightLang||"auto-es");if(source[pos]?.locus)u.searchParams.set("locus",source[pos].locus);el("academic").href=u.href;}
+function draw(){
+ const a=source[pos],locus=a?.locus||"";el("title").textContent=title.toUpperCase()+" · "+locus;
+ el("left-head").textContent=(LANG[leftLang]||leftLang.toUpperCase())+" · "+locus;
+ paragraph("left-text",a?.text);
+ const exact=translation.find(p=>key(p.locus)===key(locus));
+ el("right-head").textContent=(LANG[rightLang]||"TRADUCCIÓN")+" · "+(exact?.locus||locus);
+ if(exact)paragraph("right-text",exact.text);
+ else paragraph("right-text","No hay traducción alojada correspondiente a este locus. Consultá el visor académico para otras versiones o la traducción automática opcional.");
+ el("previous").disabled=pos<=0;el("next").disabled=pos>=source.length-1;
+ if(a?.locus){q.set("locus",a.locus);history.replaceState(null,"",location.pathname+"?"+q.toString());}
+ linkBack();
+ status(exact?"Texto original y traducción alojada. La coincidencia de locus no acredita por sí sola equivalencia filológica.":"No se inventan traducciones ni se presentan pasajes diferentes como equivalentes.");
+}
+async function getEdition(entry,lang){
+ if(!entry||!/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||""))return [];
+ const r=await fetch(entry.path);if(!r.ok)throw Error("No se pudo abrir la edición "+lang);
+ const data=await r.json();if(!Array.isArray(data.passages))return [];
+ if(entry.format==="structured-bilingual")return data.passages.map(p=>({locus:String(p.locus||""),text:lang==="la"?p.latin:p.translation})).filter(p=>p.locus&&typeof p.text==="string"&&p.text.trim());
+ if(data.workId!==(entry.sourceWorkId||work)||data.language!==lang)return [];
+ return data.passages.filter(p=>p.locus&&typeof p.text==="string"&&p.text.trim());
+}
+async function load(){
+ if(!/^[a-z0-9-]{3,60}$/.test(work))throw Error("Identificador de obra inválido.");
+ const [cat,reg]=await Promise.all([
+  fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json").then(r=>r.json()),
+  fetch("data/classics-corpus/search-registry.json").then(r=>r.json())
+ ]);
+ const item=(cat.works||[]).find(w=>w.id===work);
+ title=(item?.author?item.author+" · ":"")+(item?.title||work);
+ const entries=new Map();
+ for(const e of reg.entries||[]){
+  if(e.workId!==work||!["json-passages","structured-bilingual"].includes(e.format)||!LANG[e.language])continue;
+  if(!entries.has(e.language)||e.format==="json-passages")entries.set(e.language,e);
+ }
+ leftLang=entries.has(q.get("left"))?q.get("left"):(entries.has(q.get("lang"))?q.get("lang"):(["grc","la"].find(l=>entries.has(l))||[...entries.keys()][0]));
+ if(!leftLang)throw Error("La obra no dispone de edición textual estructurada para este lector.");
+ const requested=q.get("right");
+ rightLang=entries.has(requested)&&requested!==leftLang?requested:
+  (["es","en","fr","it","de","pt"].find(l=>l!==leftLang&&entries.has(l))||[...entries.keys()].find(l=>l!==leftLang)||"");
+ source=await getEdition(entries.get(leftLang),leftLang);
+ if(!source.length)throw Error("No hay pasajes de la edición original.");
+ translation=rightLang?await getEdition(entries.get(rightLang),rightLang):[];
+ const wanted=q.get("locus");const found=source.findIndex(p=>key(p.locus)===key(wanted));pos=found<0?0:found;draw();
+}
+el("previous").onclick=()=>{if(pos>0){pos--;draw();}};
+el("next").onclick=()=>{if(pos<source.length-1){pos++;draw();}};
+load().catch(e=>{paragraph("left-text",e.message);paragraph("right-text","Volvé al visor académico para consultar las ediciones disponibles.");status("No se modificó ningún texto del catálogo.");linkBack();});
+})();
+</script></body></html>
