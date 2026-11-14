@@ -549,6 +549,41 @@ function renderCitationTools(dest,w){
  sec.append(buttons,html("p","cwd-citation-text",citation));
  dest.append(sec);
 }
+function renderAuthorityIdentifiers(dest,w,d){
+ const sec=html("section","cwd-authority-identifiers");
+ sec.append(html("h3",null,"Identificadores académicos · obra, edición y códice"));
+ row(sec,"Identificador local de obra (Bibliotheca)",w.id);
+ const code=d.audit.get(w.id)?.candidateWorkCodes||[];
+ if(code.length)row(sec,"Códigos TLG/PHI candidatos (no CTS de edición)",code.join(" · "));
+ const cts=w.ctsWorkUrn||w.identifiers?.ctsWorkUrn;
+ if(typeof cts==="string"&&/^urn:cts:[a-z0-9.-]+:[a-zA-Z0-9._-]+$/i.test(cts)){
+  row(sec,"URN CTS de obra documentada",cts);
+ }else row(sec,"CTS de obra","No identificado documentalmente; se conserva el ID local sin inventar URN");
+ const versions=d.texts.get(w.id)||[];
+ const verifiedCts=versions.filter(e=>typeof(e.ctsUrn||e.sourceUrn)==="string"&&/^urn:cts:[^\s]+$/i.test(e.ctsUrn||e.sourceUrn));
+ if(verifiedCts.length){
+  const list=html("ul","cwd-citations");
+  for(const e of verifiedCts){const li=html("li",null,(langLabel[e.language]||e.language)+" · "+(e.ctsUrn||e.sourceUrn));list.append(li)}sec.append(list);
+ }else row(sec,"CTS de versión / traducción","No consignado por las fuentes digitales indexadas en este registro");
+ const witnesses=witnessesFor(d,w.id);
+ if(witnesses.length){
+  const list=html("ul","cwd-citations");
+  for(const ms of witnesses){
+   const li=html("li",null,[ms.library,ms.shelfmark,ms.academicId].filter(Boolean).join(" · "));
+   const refs=html("span","cwd-links");
+   addA(refs,"Catálogo custodio ↗",ms.record||ms.verificationUrl);
+   addA(refs,"Reproducción/IIIF ↗",ms.manifest||ms.viewer);
+   if(refs.childNodes.length)li.append(" ",refs);
+   list.append(li);
+  }
+  sec.append(html("p","cwd-muted","Signaturas institucionales y códigos de testigos: distintos de CTS y de los DOI de publicaciones."));
+  sec.append(list);
+ }else row(sec,"Signatura de códice","Ninguna individualizada en el registro; no se presupone manuscrito más antiguo");
+ const links=html("p","cwd-links");
+ addA(links,"Protocolo CTS · TEI · IIIF · ARK · Diktyon ↗","docs/norma-identificadores-academicos-interoperables.md");
+ sec.append(links);
+ dest.append(sec);
+}
 function renderInto(target,id,opts={}){
  if(!target)return Promise.resolve(null);
  if(window.EditorialWorkRecords?.has(id))return window.EditorialWorkRecords.render(target,id);
@@ -598,6 +633,7 @@ function renderInto(target,id,opts={}){
   renderCodicology(target,w);
   renderEditions(target,w,d);
   renderBibliography(target,w);
+  renderAuthorityIdentifiers(target,w,d);
   renderCitationTools(target,w);
   section(target,"Metodología de la ficha");
   target.append(html("p","cwd-muted","Los loci clásicos identifican lugares del texto; un número de página de edición y un folio físico son sistemas de referencia diferentes. Un manuscrito puede contener solo fragmentos. Los datos manuscritos provienen del registro de testimonios verificados; la bibliografía, del catálogo editorial. Enlaces a recursos externos no implican derechos de reproducción ni aval institucional."));
