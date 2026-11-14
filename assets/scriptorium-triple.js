@@ -440,6 +440,7 @@ function underlineTerm(){
   if(found){frag.append(document.createTextNode(value.slice(cursor)));node.replaceWith(frag)}
  }
  }
+}
  const reference=document.createElement("div");reference.className="script-reference";panel.append(reference);
  let referenceUI=null;
  const pageFor=item=>data?.ed.format==="ocr"?item.page:translated?(item.translationPage||null):(item.latinPage||null);
