@@ -26,7 +26,7 @@ async function init(){
    original.style.marginLeft="1em";
   }
   const links=create("div",null,root,"vdl-linkrow");
-  for(const [label,href] of [["Apparatus criticus","apparato-critico.html"],["Commentarius perpetuus","commentarius-perpetuus.html"],["Index commentariorum","indice-commentariorum.html"],["Lector bilingüe","lector-bilingue.html"]]){
+  for(const [label,href] of [["Apparatus criticus","apparato-critico.html"],["Commentarius perpetuus","commentarius-perpetuus.html"],["Index commentariorum","indice-commentariorum.html"],["Lector bilingüe","lector-bilingue.html"],["Conspectus testimoniorum","conspectus-testimoniorum.html"]]){
    const a=create("a",label,links);a.href=href;
   }
  }catch(e){root.classList.add("vdl-editions");root.textContent="No fue posible cargar las referencias bibliográficas desde el catálogo. Consulte data/catalog.json.";console.warn(e)}
