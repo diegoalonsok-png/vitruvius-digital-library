@@ -147,6 +147,9 @@ self.onmessage=async({data:m})=>{
   // sin afirmar que una forma española figure literalmente en el texto latino.
   const normalizeConcept=x=>String(x||'').normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
   const conceptTerms={
+    // Latin source citations can contain Greek λόγος; search that attested
+    // spelling when the reader enters the Roman transliteration "logos".
+    logos:{la:['λόγος','logos']},
     simetria:{la:['symmetria','symmetriae','symmetriam','symmetriarum'],es:['simetría','simetria','proporción'],fr:['symétrie','proportion'],en:['symmetry','proportion']},
     symmetry:{la:['symmetria','symmetriae','symmetriam'],es:['simetría'],fr:['symétrie'],en:['symmetry']},
     symmetria:{la:['symmetria','symmetriae','symmetriam'],es:['simetría'],fr:['symétrie'],en:['symmetry']},
@@ -170,7 +173,7 @@ self.onmessage=async({data:m})=>{
     conceptResults=[...matched.values()];
   }
   let output=searchCorpus(datasets,effective);
-  if(conceptResults?.length){const seen=new Set(output.results.map(x=>x.edition+'|'+x.locus+'|'+x.language));for(const hit of conceptResults){const k=hit.edition+'|'+hit.locus+'|'+hit.language;if(!seen.has(k)){seen.add(k);output.results.push(hit);}}warnings.push('Consulta multilingüe: se incluyen pasajes que contienen equivalencias latinas y traducciones documentadas; las equivalencias no cuentan como coincidencias literales de la palabra solicitada.');}
+  if(conceptResults?.length){const seen=new Set(output.results.map(x=>x.edition+'|'+x.locus+'|'+x.language));for(const hit of conceptResults){const k=hit.edition+'|'+hit.locus+'|'+hit.language;if(!seen.has(k)){seen.add(k);output.results.push(hit);}}warnings.push(normalizeConcept(requested)==='logos'?'La consulta «logos» incluye la grafía griega λόγος cuando está realmente atestiguada en el texto latino. La transliteración no se cuenta como coincidencia de la grafía latina.':'Consulta multilingüe: se incluyen pasajes que contienen equivalencias latinas y traducciones documentadas; las equivalencias no cuentan como coincidencias literales de la palabra solicitada.');}
   if(!output.results.length && !direct && !heading && m.kind==='words' && /^[\p{L}\p{M}]{3,}$/u.test(requested)){
    output=searchCorpus(datasets,{...effective,prefixFallback:true});
    if(output.results.length)warnings.push('Búsqueda ampliada por raíz: se incluyen palabras que comienzan por «'+requested+'».');
