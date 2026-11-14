@@ -65,15 +65,27 @@ def inspect(item,local_dir):
   volume=fold(item.get("volumen"))
   printed=re.findall(r"\b(?:volume|vol\.?|tomo|tomus|tome)\s*(?:no\.?\s*)?([ivxlcdm]+|\d{1,2})\b",sample[:10000])
   if volume and printed and volume not in printed:flags.append("PRINTED_VOLUME_NEEDS_REVIEW")
+  front=fold(" ".join(x["text"] for x in parts[:min(8,len(parts))]))
+  title=fold(item.get("obra") or item.get("tituloEdicion"))
+  meaningful=[w for w in re.findall(r"[a-z]{4,}",title) if w not in {"opera","libri","liber","greek","latin","english","historia","histories","the","book","volumen","edition","volume","complete","translation","libros","obras","traites"}]
+  title_hits=[w for w in dict.fromkeys(meaningful) if w in front]
+  author=fold(item.get("autor"))
+  name_parts=[w for w in re.findall(r"[a-z]{5,}",author) if w not in {"atribucion","tradicional","antologia","griega","the","de","del","editor"}]
+  author_hits=[w for w in name_parts if w in front]
   if sum(len(x["text"]) for x in parts)<150:flags.append("NO_EXTRACTABLE_FRONT_TEXT")
-  elif words and not found:flags.append("TITLE_NOT_DETECTED_IN_SAMPLE")
+  elif words and not found:flags.append("EDITION_TITLE_NOT_DETECTED_IN_SAMPLE")
+  if meaningful and not title_hits:flags.append("WORK_TITLE_NOT_DETECTED_IN_OPENING_PAGES")
+  if name_parts and not author_hits:flags.append("AUTHOR_NOT_DETECTED_IN_OPENING_PAGES")
   if item.get("incidenciaCatalografica"):flags.append("EXISTING_CATALOGUE_WARNING")
   return {"id":item["id"],"declaredAuthor":item.get("autor"),"declaredTitle":item.get("tituloEdicion"),
           "declaredVolume":item.get("volumen"),"declaredTranslator":item.get("traductor"),
           "source":item.get("pdf"),"archiveRecord":item.get("fuente"),
           "observed":{"pages":pages,"sha256":sha,"bytes":nbytes,"metadata":metadata,
                       "openingTextLength":sum(len(x["text"]) for x in parts),"matchingTitleTerms":found,
-                      "printedVolumeCandidates":list(dict.fromkeys(printed))[:6]},
+                      "printedVolumeCandidates":list(dict.fromkeys(printed))[:6],
+                      "declaredWorkTitle":item.get("obra"),"workTitleTerms":meaningful[:12],
+                      "workTitleTermsSeen":title_hits[:12],"authorTermsSeen":author_hits[:12],
+                      "openingPageExcerpt":(parts[0]["text"] if parts else "")[:450]},
           "flags":flags,"catalogueWarning":item.get("incidenciaCatalografica"),
           "status":"binary_discrepancy" if any(x in flags for x in ("SHA256_MISMATCH","BYTES_MISMATCH","PAGE_COUNT_MISMATCH")) else "manual_review_needed" if flags else "consistent_metadata_NOT_certified_edition"}
 def main():
