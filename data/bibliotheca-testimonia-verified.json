@@ -2,7 +2,7 @@
  "schema": 1,
  "updated": "2026-11-14",
  "scope": "Repertorio de testimonios manuscritos individualizados para Bibliotheca Graeca et Latina; incluye registros procedentes de catálogos institucionales o bibliografía especializada, con nivel de verificación por testimonio.",
- "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto. Tanda latina de fuentes institucionales: los enlaces no acreditan prioridad cronológica global ni completitud textual; distinción expresa entre visor publicado y catálogo sin imágenes. Se incorpora Or. 9271 como versión copta indirecta de la Didaché: puede ser más antiguo que H, pero no se colaciona carácter por carácter como griego sin retroversión filológica. Actualización 2026-11-14: BnF Grec 1662 (Diodoro, libros XI–XV), Laurenziana Plut.73.1 (Celso, datación agregada a distinguir del catálogo descriptivo), Parisinus gr. 2722 (Pseudo-Apolodoro; referencia secundaria, visor Gallica no inspeccionado directamente).",
+ "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto. Tanda latina de fuentes institucionales: los enlaces no acreditan prioridad cronológica global ni completitud textual; distinción expresa entre visor publicado y catálogo sin imágenes. Se incorpora Or. 9271 como versión copta indirecta de la Didaché: puede ser más antiguo que H, pero no se colaciona carácter por carácter como griego sin retroversión filológica. Actualización 2026-11-14: BnF Grec 1662 (Diodoro, libros XI–XV), Laurenziana Plut.73.1 (Celso, datación agregada a distinguir del catálogo descriptivo), Parisinus gr. 2722 (Pseudo-Apolodoro; referencia secundaria, visor Gallica no inspeccionado directamente). Incorporación de BnF Grec 2179, ff. 1–171v, cotejando los metadatos INHA-AGORHA con el repertorio BBAW/CMG; se citan las fuentes primarias y especializadas sin afirmar colación de variantes.",
  "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
  "records": [
   {
@@ -3076,6 +3076,28 @@
    "verificationLevel": "secondary_specialist_reference_2026-11-14",
    "collationStatus": "Siglum R bibliográfico, no asignado por colación propia. Stemma discutido: ver Eugenio Villa, Lexis 43 (2025), DOI 10.30687/Lexis/2724-1564/2025/01/006.",
    "rights": "BnF/Gallica: respetar condiciones de uso de la digitalización."
+  },
+  {
+   "id": "dioscorides-bnf-grec2179",
+   "workIds": [
+    "dioscorides"
+   ],
+   "title": "Dioscórides, Περὶ ὕλης ἰατρικῆς (De materia medica)",
+   "library": "París, Bibliothèque nationale de France, Département des manuscrits",
+   "shelfmark": "Grec 2179",
+   "date": "Siglo IX (según INHA y BnF)",
+   "dateStart": 801,
+   "language": "grc",
+   "folioRange": "ff. 1r–171v para De materia medica, según el repertorio de la Berlin-Brandenburgische Akademie der Wissenschaften",
+   "coverage": "De materia medica, en manuscrito griego ilustrado. Los límites por folio documentados se refieren a esta obra dentro del códice, no a un cotejo por capítulo.",
+   "origin": "Sinaí o Palestina según registro INHA; atribuición geográfica a contrastar en la bibliografía paleográfica especializada.",
+   "record": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j",
+   "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505/f1.item",
+   "verification": "INHA-AGORHA, Grec 2179 (siglo IX), y BBAW/CMG, tabla Dioscurides (De materia medica ff. 1–171v); consultados el 14-11-2026.",
+   "verificationUrl": "https://cmg.bbaw.de/en/homepage/resources/catalogues/dioscurides/",
+   "verificationLevel": "institutional_catalogue_plus_research_academy_2026-11-14",
+   "collationStatus": "El registro identifica códice y extensión; no se ha establecido la relación con la edición de Wellmann ni cotejado una lectura de forma autónoma.",
+   "rights": "BnF/Gallica: respetar licencia y condiciones de imagen del catálogo."
   }
  ],
  "editions": [
