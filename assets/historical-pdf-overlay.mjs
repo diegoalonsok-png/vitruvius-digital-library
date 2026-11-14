@@ -1,5 +1,5 @@
 // PDF text-layer highlighting. The original PDF stays unchanged.
-const pdfURLs={'krohn-1912':'documents/krohn-1912.pdf','rose-1899':'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf'};
+const pdfURLs={'krohn-1912':'https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf','rose-1899':'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf'};
 const viewer=document.querySelector('#pdfjs-viewer');
 const canvas=document.querySelector('#pdfjs-canvas');
 const layer=document.querySelector('#pdfjs-highlights');
