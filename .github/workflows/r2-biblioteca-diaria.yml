@@ -67,6 +67,10 @@ jobs:
         if: always()
         run: python scripts/r2-vincular-repertorio.py
 
+      - name: Sincronizar inventario académico GitHub y R2
+        if: always()
+        run: python scripts/sync-bibliotheca-github-r2.py
+
       - name: Completar los campos derivados de las fichas
         if: always()
         run: node scripts/enrich-classical-records.mjs
