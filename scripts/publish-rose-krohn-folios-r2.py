@@ -22,7 +22,7 @@ import urllib.request
 ROSE = "https://archive.org/download/vitruviidearchi00pollgoog/vitruviidearchi00pollgoog.pdf"
 KROHN = pathlib.Path("documents/krohn-1912.pdf")
 BASE = os.getenv("R2_PUBLIC_BASE", "https://libros.vitruvius-digital-library.org").rstrip("/")
-BUCKET = os.getenv("R2_BUCKET_NAME", os.getenv("R2_BUCKET", ""))
+BUCKET = os.getenv("R2_BUCKET_NAME", os.getenv("R2_BUCKET", "vitruvius-bibliotheca"))
 EDITIONS = {
  "rose": {
   "key": "rose-1899", "title": "Vitruvii De architectura libri decem",
@@ -55,7 +55,7 @@ def download_rose(tmp: pathlib.Path) -> pathlib.Path:
 
 def client():
  import boto3
- account = os.getenv("R2_ACCOUNT_ID", os.getenv("CLOUDFLARE_ACCOUNT_ID", ""))
+ account = os.getenv("R2_ACCOUNT_ID", os.getenv("CLOUDFLARE_ACCOUNT_ID", "4e936bf2c4f185a87075ca506de93e69"))
  access = os.getenv("R2_ACCESS_KEY_ID", "")
  secret = os.getenv("R2_SECRET_ACCESS_KEY", "")
  if not all((account, access, secret, BUCKET)):
