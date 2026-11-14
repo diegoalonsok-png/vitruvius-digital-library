@@ -25,8 +25,14 @@ for(const [version,editionId,doi] of [
  assert.ok(ref.citation.includes("data/index/latin-texto.json"));
  assert.ok(ref.url.includes("lector-bilingue?edition="+editionId));
  assert.ok(ref.citation.includes("no es transcripción diplomática"));
- assert.equal(ref.isbn,version==="V514"?"978-631-01-6651-3":"",
-  "No inventar ISBN para V297");
+ assert.equal(ref.isbn,published.isbn||"",
+  "The reference must reflect the real current catalogue for each edition");
+ assert.equal(ref.isbnNote,published.isbn_note||"",
+  "Disclose the editorial shared-ISBN note, not just its check digit");
+ if(version==="V297"){
+  assert.match(ref.citation,/ISBN común declarado por el editor/,
+   "Shared ISBN for V297 must never be represented as independent registration");
+ }
 }
 for(const needle of [
  "function readerUrl(h)","readerUrl(h);","hit(x,i,i,ed)","hit(x,i,i+n-1,ed)",
