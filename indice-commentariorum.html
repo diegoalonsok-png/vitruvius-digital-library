@@ -17,13 +17,14 @@ nav{display:flex;flex-wrap:wrap;gap:15px;font:12px/1.6 system-ui}
 .result p{font:15px/1.75 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}
 .result details{padding:6px 0}.result summary{font:13px system-ui;cursor:pointer}
 .result pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.75 Georgia,serif}
-.result a{font:13px system-ui}.result mark{background:#eee3c6;color:inherit}
+.result a{font:13px system-ui}.result mark{background:#ffe25c;color:#201800;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px;border-radius:1px;padding:0 1px}.ic-biblio{font:13px/1.7 Georgia,serif;border:1px solid var(--ic-rule);background:var(--ic-paper);padding:16px 20px;margin:16px 0 22px}.ic-biblio p{margin:8px 0}.ic-biblio h2{margin:0 0 8px}.ic-citation{font:12px/1.7 Georgia,serif;color:var(--ic-muted)}.ic-citation a{overflow-wrap:anywhere}.ic-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.ic-actions button{font:12px system-ui;border:1px solid var(--ic-rule);background:var(--ic-paper);padding:5px 9px;cursor:pointer}
 #more{font:13px system-ui;border:1px solid var(--ic-rule);background:var(--ic-paper);padding:10px 14px;cursor:pointer}
 @media print{nav,.filters,#more{display:none}}
 </style></head><body><main>
 <nav aria-label="Navegación"><a href="index.html">Biblioteca</a><a href="aparato-critico.html">Aparato crítico</a><a href="commentarius-perpetuus.html">Edición comentada</a><a href="inventario-aparato-autoral.html">Notas al pie originales</a></nav>
 <header><p class="note">VITRVVIVS · DE ARCHITECTVRA · INDEX COMMENTARIORVM</p><h1>Index commentariorum</h1>
 <p class="intro">Índice del material redactado por Diego Kurilo en sus ediciones castellana (V514) y francesa (V554): comentarios por locus, notas al pie y estudios preliminares con paginación de origen. La consulta permite explorar el material por libro, locus, idioma o voz mayor. Los textos se conservan en su idioma y con su atribución editorial.</p></header>
+<section class="ic-biblio" aria-labelledby="ic-biblio-heading"><h2 id="ic-biblio-heading">Editiones fontium · Referencias bibliográficas</h2><p class="note">Citas bibliográficas en el sistema de notas y bibliografía de Chicago 18. Se indican la versión editorial, el DOI específico de cada edición y el ISBN actualmente declarado como compartido; las notas de pasaje agregan el locus o la página identificada.</p><div id="ic-biblio-entries">Cargando datos de edición…</div></section>
 <form id="ic-form" class="filters">
 <label>Palabra o expresión<input id="ic-search" type="search" placeholder="symmetria, decor, Cicerón…" autocomplete="off"></label>
 <label>Libro<select id="ic-book"><option value="">Todos los libros</option></select></label>
@@ -35,4 +36,4 @@ nav{display:flex;flex-wrap:wrap;gap:15px;font:12px/1.6 system-ui}
 <p class="note">Las coincidencias textuales son instrumentos de búsqueda. El locus explícito procede del encabezamiento original; cuando una nota tiene una ubicación sugerida por el índice digital, se identifica como tal. No se modifican las conclusiones filológicas del autor.</p>
 <p id="ic-status" role="status" aria-live="polite" class="note">Cargando el corpus de comentarios…</p>
 <div id="ic-results"></div><button id="ic-more" type="button" hidden>Mostrar más entradas</button>
-</main><script defer src="assets/indice-commentariorum.js?v=20261114-studies-2"></script></body></html>
+</main><script defer src="assets/indice-commentariorum.js?v=20261114-chicago18-highlight-1"></script></body></html>
