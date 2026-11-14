@@ -456,7 +456,7 @@ async function renderPdfHighlight(){
    }
   }
   if(!matches.length){pdfOverlay.hidden=true;facsimile.hidden=false;
-   pdfEvidence.textContent=words.items.some(x=>x.str?.trim())?"El texto digital del PDF no contiene «"+q+"» en esta página. Verificá la forma buscada en el OCR adjunto.":"Este PDF es una imagen sin capa textual posicionada. El OCR amarillo aparece debajo del facsímil; no se inventan coordenadas sobre el impreso.";
+   pdfEvidence.textContent=words.items.some(x=>x.str?.trim())?"El texto digital del PDF no contiene «"+q+"» en esta página. Verifica la forma buscada en el OCR adjunto.":"Este PDF es una imagen sin capa textual posicionada. El OCR amarillo aparece debajo del facsímil; no se inventan coordenadas sobre el impreso.";
    return;
   }
   const base=page.getViewport({scale:1});const width=Math.max(220,panel.clientWidth-30);
