@@ -64,6 +64,23 @@ assert(guide.includes("No se")||guide.includes("no contiene"),
  "The guide must explain certification limits");
 assert(read("sitemap.xml").includes("<loc>https://vitruvius-digital-library.org/guia-aparato-digital.html</loc>"),
  "The methodological guide needs a discoverable sitemap URL");
+// Review UI contract: manual workflow only, never a change to editorial proof.
+const reviewPage=read("revision-anclajes-ecdoticos.html");
+const reviewClient=read("assets/ecdotic-review-queue.js");
+const teiNotes=read("data/tei/notae-auctoris-locis-explicitis-2026-11-14.xml");
+for(const page of ["guia-aparato-digital.html","registro-ecdotico.html","aparato-critico.html","cobertura-aparato-critico.html"])
+ assert(read(page).includes("revision-anclajes-ecdoticos.html"),"Worklist not linked from "+page);
+assert(read("sitemap.xml").includes("revision-anclajes-ecdoticos.html</loc>"),"Review worklist missing sitemap");
+assert(reviewPage.includes("data/ecdotic-note-review-queue-2026-11-14.json")
+ &&reviewPage.includes("data/tei/notae-auctoris-locis-explicitis-2026-11-14.xml"),
+ "Review UI must identify original reviewed and unreviewed note sources");
+assert(reviewClient.includes("pending_human_review")&&reviewClient.includes("original_locus===null")
+ &&reviewClient.includes("no cambia el estado")&&reviewClient.includes("textContent"),
+ "Client must never upgrade pending note status or inject original note text as HTML");
+assert(teiNotes.includes("http://www.tei-c.org/ns/1.0")
+ &&!/<app\\b|<rdg\\b|<lem\\b/.test(teiNotes),
+ "TEI source-explicit notes cannot be encoded as certified manuscript variants");
+new (await import("node:vm")).Script(reviewClient,{filename:"assets/ecdotic-review-queue.js"});
 const viewer=read("assets/registro-ecdotico.js");
 assert(viewer.includes('new URLSearchParams(location.search)') && viewer.includes('["tipo","re-tipo"]'),
  "The linked typed searches must be accepted from the URL");
