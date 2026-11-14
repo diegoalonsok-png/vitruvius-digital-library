@@ -76,6 +76,7 @@ jobs:
         run: |
           python scripts/build_ecdotics_222.py --write
           python scripts/build_codicological_trees_222.py --write
+          python scripts/sync-classics-coverage.py
           python scripts/audit-classics-222-roadmap.py
           python scripts/sincronizar-reconciliacion.py
           python scripts/cifras-corpus.py
