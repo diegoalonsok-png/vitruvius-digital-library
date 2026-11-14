@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="es">
+ <teiHeader>
+  <fileDesc>
+   <titleStmt>
+    <title>Notae auctoris · notas de las ediciones con locus explícito en el documento de origen</title>
+    <editor xml:id="diego-kurilo">Diego Kurilo</editor>
+   </titleStmt>
+   <publicationStmt>
+    <publisher>Vitruvius Digital Library</publisher>
+    <date when="2026-11-14">14 de noviembre de 2026</date>
+    <availability><p>Registro de acceso abierto de notas autorales; no incorpora testimonios ajenos ni modifica las ediciones originales.</p></availability>
+    <ptr type="source-index" target="https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/data/critical-notes.json"/>
+    <idno type="GitBlobSHA1">4961a43046daa6c19e7d05b3455d05b6c8b2a1d0</idno>
+   </publicationStmt>
+   <sourceDesc>
+    <p>Extracción literal de las notas de los DOCX originales publicados por el autor. Solo se incluyen las referencias explícitas en el anclaje de la nota en el documento fuente. Este documento no atribuye variantes a ningún manuscrito.</p>
+    <listBibl>
+     <bibl xml:id="source-v514"><title>De architectura · V514 (latín/castellano)</title><editor>Diego Kurilo</editor><idno type="DOI">10.5281/zenodo.23884757</idno><ref target="https://doi.org/10.5281/zenodo.23884757">Edición depositada</ref></bibl>
+     <bibl xml:id="source-v554"><title>De architectura · V554 (latín/francés)</title><editor>Diego Kurilo</editor><idno type="DOI">10.5281/zenodo.23885110</idno><ref target="https://doi.org/10.5281/zenodo.23885110">Edición depositada</ref></bibl>
+     <bibl xml:id="source-v297"><title>The Architect of Theory · V297 (inglés)</title><editor>Diego Kurilo</editor><idno type="DOI">10.5281/zenodo.23885404</idno><ref target="https://doi.org/10.5281/zenodo.23885404">Edición depositada</ref></bibl>
+    </listBibl>
+   </sourceDesc>
+  </fileDesc>
+  <encodingDesc>
+   <projectDesc><p>Esta transcripción TEI distingue una nota autoral con locus explícito de una entrada del aparato crítico de variantes. Por ese motivo usa note, no app/lem/rdg. No implica colación autóptica ni comprobación paleográfica.</p></projectDesc>
+  </encodingDesc>
+  <revisionDesc>
+   <change when="2026-11-14">Primera selección reproducible de 41 notas con locus explícito, de 811 notas autorales. Se excluyen 519 asociaciones candidatas y 251 notas sin locus.</change>
+  </revisionDesc>
+ </teiHeader>
+ <text><body><div type="authorialNotes" subtype="explicitSourceLocus">
+   <head>Notas de fuente editorial con localizador explícito</head>
+    <note xml:id="nota-v514-6" type="authorialFootnote" subtype="explicitInSource" n="6" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.praef.2">
+      <label>V514 · nota 6 · locus 1.praef.2</label>
+      <p>Augusto (Augustus), nacido Gaius Octavius en 63 a. C., fue el primer emperador romano. Adoptado testamentariamente por Julio César, después de 44 a. C. llevó el nombre de Gaius Julius Caesar Octavianus según el uso historiográfico moderno, y en 27 a. C. recibió del Senado el título de Augustus. En las fuentes griegas, Καῖσαρ (Kaisar) corresponde al latín Caesar.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 320. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.praef.2">De architectura 1.praef.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v514-8" type="authorialFootnote" subtype="explicitInSource" n="8" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.1.3">
+      <label>V514 · nota 8 · locus 1.1.3</label>
+      <p>Marcus Tullius Cicero (106–43 a. C.), Cicerón, fue orador, político, filósofo y escritor romano. Su prosa constituye una referencia central para el latín de fines de la República.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 359. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.1.3">De architectura 1.1.3</ref>.</p>
+    </note>
+    <note xml:id="nota-v514-9" type="authorialFootnote" subtype="explicitInSource" n="9" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.3.2">
+      <label>V514 · nota 9 · locus 1.3.2</label>
+      <p>Firmitas, utilitas y venustas son términos técnicos del pasaje. Su recepción moderna los ha convertido con frecuencia en «solidez, utilidad y belleza», pero el texto de Vitruvio los define mediante cimientos y materiales, disposición adecuada al uso y correspondencia proporcional de los miembros.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 360. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.3.2">De architectura 1.3.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v514-19" type="authorialFootnote" subtype="explicitInSource" n="19" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.praef.2">
+      <label>V514 · nota 19 · locus 1.praef.2</label>
+      <p>fabrum: genitivo plural de faber, «artesano/obrero»; praefectus fabrum: «prefecto de los artesanos/obreros», título cuya función concreta depende del contexto histórico. Las formas latinas deben analizarse morfológicamente antes de traducirse y no tratarse como equivalentes léxicos aislados.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 524. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.praef.2">De architectura 1.praef.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v514-20" type="authorialFootnote" subtype="explicitInSource" n="20" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.praef.2">
+      <label>V514 · nota 20 · locus 1.praef.2</label>
+      <p>Lucio Cornelio Balbo el Mayor (L. Cornelius Balbus, natural de Gades), praefectus fabrum de César y cónsul sufecto en el 40 a. C. La relación de Vitruvio con Balbo es una conjetura moderna: el texto (1 praef. 2) solo nombra como colegas a M. Aurelio, P. Minidio y Cn. Cornelio.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 524. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=1.praef.2">De architectura 1.praef.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v514-22" type="authorialFootnote" subtype="explicitInSource" n="22" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=2.praef.3">
+      <label>V514 · nota 22 · locus 2.praef.3</label>
+      <p>Frumentaria ratio alude a la capacidad de abastecer de grano a la población. La comparación con una criatura privada de leche convierte el abastecimiento territorial en argumento de viabilidad urbana.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 556. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=2.praef.3">De architectura 2.praef.3</ref>.</p>
+    </note>
+    <note xml:id="nota-v514-23" type="authorialFootnote" subtype="explicitInSource" n="23" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=2.praef.1">
+      <label>V514 · nota 23 · locus 2.praef.1</label>
+      <p>La maza, junto con la piel de león, es uno de los atributos iconográficos habituales de Heracles/Hércules.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 559. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=2.praef.1">De architectura 2.praef.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v514-24" type="authorialFootnote" subtype="explicitInSource" n="24" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=2.praef.1">
+      <label>V514 · nota 24 · locus 2.praef.1</label>
+      <p>Athos es, en la tradición mitográfica griega, una personificación asociada al monte homónimo. Las genealogías de las montañas personificadas varían según las fuentes y no son necesarias para la interpretación arquitectónica del pasaje.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 559. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=2.praef.1">De architectura 2.praef.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v514-26" type="authorialFootnote" subtype="explicitInSource" n="26" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=4.3.9">
+      <label>V514 · nota 26 · locus 4.3.9</label>
+      <p>El orden toscano (Tuscanicae dispositiones, 4.7) es la variante itálica que Vitruvio describe a partir del templo etrusco: columna de basa simple, fuste liso y capitel sin ornato, con proporciones más robustas que las del dórico. La tratadística del Renacimiento (Serlio, Vignola, Palladio) lo codificó como el primero y el más sencillo de los órdenes.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 759. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=4.3.9">De architectura 4.3.9</ref>.</p>
+    </note>
+    <note xml:id="nota-v514-29" type="authorialFootnote" subtype="explicitInSource" n="29" xml:lang="es" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=4.1.8">
+      <label>V514 · nota 29 · locus 4.1.8</label>
+      <p>Calímaco de Cirene (ca. 310–240 a. C.) fue poeta y erudito helenístico vinculado a Alejandría y a su ambiente bibliotecario.</p>
+      <p><ref target="#source-v514">DOCX editorial de V514</ref>; párrafo de origen 790. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-es&amp;locus=4.1.8">De architectura 4.1.8</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-6" type="authorialFootnote" subtype="explicitInSource" n="6" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=5.1.6">
+      <label>V554 · nota 6 · locus 5.1.6</label>
+      <p>Auguste (Augustus), né Gaius Octavius en 63 av. J.-C., fut le premier empereur romain. Adopté par testament par Jules César, il porta après 44 av. J.-C. le nom de Gaius Julius Caesar Octavianus selon l’usage historiographique moderne, puis reçut du Sénat le titre d’Augustus en 27 av. J.-C. Dans les sources grecques, Καῖσαρ (Kaisar) correspond au latin Caesar, devenu « César » en français.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 322. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=5.1.6">De architectura 5.1.6</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-9" type="authorialFootnote" subtype="explicitInSource" n="9" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.1.3">
+      <label>V554 · nota 9 · locus 1.1.3</label>
+      <p>Marcus Tullius Cicero (106–43 av. J.-C.), Cicéron, fut orateur, homme d’État, philosophe et écrivain romain. Sa prose constitue une référence majeure pour le latin de la fin de la République.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 362. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.1.3">De architectura 1.1.3</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-10" type="authorialFootnote" subtype="explicitInSource" n="10" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.3.2">
+      <label>V554 · nota 10 · locus 1.3.2</label>
+      <p>Firmitas, utilitas et venustas sont des termes techniques du passage. Leur réception moderne les résume souvent par « solidité, utilité et beauté », mais Vitruve les définit par les fondations et les matériaux, l’adéquation de la disposition à l’usage et la correspondance proportionnelle des membres.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 363. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.3.2">De architectura 1.3.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-21" type="authorialFootnote" subtype="explicitInSource" n="21" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.praef.2">
+      <label>V554 · nota 21 · locus 1.praef.2</label>
+      <p>fabrum : « des ouvriers / artisans » ; praefectus fabrum : « préfet des ouvriers » ou officier responsable du corps technique selon le contexte. Les formes latines doivent être analysées morphologiquement avant toute traduction et ne doivent pas être traitées comme des équivalents lexicaux isolés.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 527. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.praef.2">De architectura 1.praef.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-22" type="authorialFootnote" subtype="explicitInSource" n="22" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.praef.2">
+      <label>V554 · nota 22 · locus 1.praef.2</label>
+      <p>Lucius Cornelius Balbus l’Ancien (natif de Gadès), praefectus fabrum de César et consul suffect en 40 av. J.-C. Le lien de Vitruve avec Balbus est une conjecture moderne : le texte (1 praef. 2) ne nomme comme collègues que M. Aurelius, P. Minidius et Cn. Cornelius.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 527. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.praef.2">De architectura 1.praef.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-24" type="authorialFootnote" subtype="explicitInSource" n="24" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=2.praef.3">
+      <label>V554 · nota 24 · locus 2.praef.3</label>
+      <p>Frumentaria ratio renvoie à la capacité d’approvisionner la population en grain. La comparaison avec un être privé de lait transforme l’approvisionnement territorial en argument de viabilité urbaine.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 559. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=2.praef.3">De architectura 2.praef.3</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-25" type="authorialFootnote" subtype="explicitInSource" n="25" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=2.praef.1">
+      <label>V554 · nota 25 · locus 2.praef.1</label>
+      <p>La massue, avec la peau du lion, constitue l’un des attributs iconographiques habituels d’Héraclès/Hercule.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 562. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=2.praef.1">De architectura 2.praef.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-26" type="authorialFootnote" subtype="explicitInSource" n="26" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=2.praef.1">
+      <label>V554 · nota 26 · locus 2.praef.1</label>
+      <p>Athos est, dans la tradition mythographique grecque, une personnification associée au mont homonyme. Les généalogies des montagnes personnifiées varient selon les sources et ne sont pas nécessaires à l’interprétation architecturale du passage.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 562. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=2.praef.1">De architectura 2.praef.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-28" type="authorialFootnote" subtype="explicitInSource" n="28" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=4.3.9">
+      <label>V554 · nota 28 · locus 4.3.9</label>
+      <p>L’ordre toscan (Tuscanicae dispositiones, 4.7) est la variante italique que Vitruve décrit à partir du temple étrusque : colonne à base simple, fût lisse et chapiteau sans ornement, aux proportions plus robustes que celles du dorique. Les traités de la Renaissance (Serlio, Vignole, Palladio) l’ont codifié comme le premier et le plus simple des ordres.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 762. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=4.3.9">De architectura 4.3.9</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-30" type="authorialFootnote" subtype="explicitInSource" n="30" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=4.1.9">
+      <label>V554 · nota 30 · locus 4.1.9</label>
+      <p>Callimaque de Cyrène (vers 310–240 av. J.-C.) fut poète et érudit hellénistique, lié à Alexandrie et à son milieu bibliothécaire.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 786. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=4.1.9">De architectura 4.1.9</ref>.</p>
+    </note>
+    <note xml:id="nota-v554-64" type="authorialFootnote" subtype="explicitInSource" n="64" xml:lang="fr" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.1.12">
+      <label>V554 · nota 64 · locus 1.1.12</label>
+      <p>Pythée était l’un des architectes les plus renommés. Issu de la Grèce antique du IVe siècle av. J.-C., il cultivait également la sculpture. Il dénigrait l’ordre dorique, selon Vitruve (IV.3.1), en raison des « défauts et incohérences » causés par l’emplacement peu pratique des triglyphes. Il se tourna alors vers l’ordre ionique, avec lequel il fit construire le temple d’Athéna à Priène vers 340–330 av. J.-C. L’inscription dédicatoire, conservée au British Museum, rappelle que son fondateur était Alexandre le Grand.</p>
+      <p><ref target="#source-v554">DOCX editorial de V554</ref>; párrafo de origen 1521. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=recensio-fr&amp;locus=1.1.12">De architectura 1.1.12</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-1" type="authorialFootnote" subtype="explicitInSource" n="1" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=5.1.6">
+      <label>V297 · nota 1 · locus 5.1.6</label>
+      <p>The basilica described by Vitruvius at Fanum Fortunae (Fano) must be distinguished from other Augustan basilicas excavated in Italy. Fanum denotes a consecrated place or sanctuary; fanaticus originally describes a person inspired by, or associated with, a sanctuary, before acquiring later pejorative senses. Profanus is formed from pro and fanum and denotes what lies before or outside the consecrated space; hence ‘profane’.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 174. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=5.1.6">De architectura 5.1.6</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-7" type="authorialFootnote" subtype="explicitInSource" n="7" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.1.11">
+      <label>V297 · nota 7 · locus 1.1.11</label>
+      <p>Marcus Tullius Cicero (106–43 BCE) was a Roman orator, statesman, philosopher and author. His prose is a central point of reference for the Latin of the late Republic.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 213. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.1.11">De architectura 1.1.11</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-36" type="authorialFootnote" subtype="explicitInSource" n="36" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.1">
+      <label>V297 · nota 36 · locus 2.praef.1</label>
+      <p>A club is a mace, cudgel, or club, usually made of wood, that increases in diameter from its handle to its end and which, since ancient times, has been used as a melee or contact weapon. The club, along with the lion skin, are attributes of Heracles (or Hercules) in Western art. In Buddhism, it is the weapon of the Dvarapalas. In the hands of Vishnu, it symbolizes primordial knowledge, and with Kali, it represents the power of time, which destroys all that opposes it.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 414. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.1">De architectura 2.praef.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-37" type="authorialFootnote" subtype="explicitInSource" n="37" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.1">
+      <label>V297 · nota 37 · locus 2.praef.1</label>
+      <p>In Greek mythographical tradition Athos personifies the mountain of that name. The genealogies of personified mountains vary between sources and are not essential to the architectural interpretation of Vitruvius’s narrative.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 414. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.1">De architectura 2.praef.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-121" type="authorialFootnote" subtype="explicitInSource" n="121" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.4.1">
+      <label>V297 · nota 121 · locus 1.4.1</label>
+      <p>This explanation belongs to ancient environmental medicine: Vitruvius links mist, marshes, exhalations and disease. The note preserves that historical reasoning without recasting it as knowledge of microorganisms.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2077. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.4.1">De architectura 1.4.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-122" type="authorialFootnote" subtype="explicitInSource" n="122" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.4.5">
+      <label>V297 · nota 122 · locus 1.4.5</label>
+      <p>Στοιχεῖα (stoicheia) here means “elements” or “constituent principles”. Vitruvius enumerates heat, moisture, the earthy component and air within an ancient physical theory; these are not chemical elements in the modern sense.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2127. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.4.5">De architectura 1.4.5</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-123" type="authorialFootnote" subtype="explicitInSource" n="123" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.5.2">
+      <label>V297 · nota 123 · locus 1.5.2</label>
+      <p>Scaeva describes an oblique or skewed approach. Vitruvius’s explanation presupposes a shield carried on the left arm: the attacker’s right side is more exposed as he approaches the wall.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2265. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.5.2">De architectura 1.5.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-124" type="authorialFootnote" subtype="explicitInSource" n="124" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.5.5">
+      <label>V297 · nota 124 · locus 1.5.5</label>
+      <p>The preference for circular or polygonal towers is explained within the siege technology known to Vitruvius, especially the impact of a battering ram on projecting corners. It is not a universal structural law.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2302. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.5.5">De architectura 1.5.5</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-125" type="authorialFootnote" subtype="explicitInSource" n="125" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.2">
+      <label>V297 · nota 125 · locus 1.6.2</label>
+      <p>The aeolipile is used here to demonstrate the action of heat on water and the resulting flow of air, in support of Vitruvius’s account of the winds (1.6.2).</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2371. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.2">De architectura 1.6.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-126" type="authorialFootnote" subtype="explicitInSource" n="126" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.4">
+      <label>V297 · nota 126 · locus 1.6.4</label>
+      <p>The so-called Tower of the Winds at Athens, attributed to Andronicus of Cyrrhus, is a Hellenistic octagonal building associated with representations of eight winds. Vitruvius uses it as material support for his anemological system.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2399. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.4">De architectura 1.6.4</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-127" type="authorialFootnote" subtype="explicitInSource" n="127" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.4">
+      <label>V297 · nota 127 · locus 1.6.4</label>
+      <p>Vitruvius’s account of the winds (1.6) begins with eight principal winds, associated with Andronicus of Cyrrhus and the Tower of the Winds at Athens. Streets laid along the bisectors of the octants are intended to exclude direct currents from their axes. At 1.6.10 he adds sixteen subsidiary names to the eight principal winds, giving a twenty-four-wind scheme. Compare Aristotle, Meteorologica 2.6, and Pliny, Natural History 2.119–121.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2399. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.4">De architectura 1.6.4</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-128" type="authorialFootnote" subtype="explicitInSource" n="128" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.6">
+      <label>V297 · nota 128 · locus 1.6.6</label>
+      <p>Σκιαθήρας literally means “shadow hunter” or “shadow observer”. The procedure using morning and afternoon shadows of equal length establishes a meridian line without using a magnetic compass.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2429. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.6">De architectura 1.6.6</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-129" type="authorialFootnote" subtype="explicitInSource" n="129" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.9">
+      <label>V297 · nota 129 · locus 1.6.9</label>
+      <p>Eratosthenes of Cyrene (Greek Ἐρατοσθένης; born between 276 and 273 BC at Cyrene, died around 194 BC at Alexandria) was an exceptionally versatile Greek scholar at the height of Hellenistic science.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2475. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.9">De architectura 1.6.9</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-130" type="authorialFootnote" subtype="explicitInSource" n="130" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.9">
+      <label>V297 · nota 130 · locus 1.6.9</label>
+      <p>Vitruvius attributes a circumference of 252,000 stadia for the Earth to Eratosthenes. Conversion into modern units depends on the length assigned to the stadium; the edition therefore retains the ancient value without imposing a single equivalent.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2475. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.6.9">De architectura 1.6.9</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-131" type="authorialFootnote" subtype="explicitInSource" n="131" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.7.1">
+      <label>V297 · nota 131 · locus 1.7.1</label>
+      <p>Vitruvius presents the reasons for placing the temples of Venus, Vulcan and Mars outside the walls as prescriptions of the discipline of the Etruscan haruspices. They should be read as ancient religious rationalizations rather than secular zoning criteria.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2545. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=1.7.1">De architectura 1.7.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-132" type="authorialFootnote" subtype="explicitInSource" n="132" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.1">
+      <label>V297 · nota 132 · locus 2.praef.1</label>
+      <p>Dinocrates (Δεινοκράτης; transmitted forms Dinocrates and Deinochares) was a Greek architect contemporary with Alexander the Great. Vitruvius devotes the preface to Book II (2.pref.1–4) to him, recounting how he presented himself to the king and proposed carving Mount Athos into a colossal statue, with a city in its left hand and, in its right, a basin collecting the mountain’s waters and discharging them into the sea. Alexander rejected the project after asking about land capable of feeding the city, but retained its author. Tradition attributes to Dinocrates the plan of Alexandria, founded in 331 BC, and its orthogonal Hippodamian layout. His identification with the Chirocrates mentioned by Strabo remains disputed, as do the attribution of Hephaestion’s funeral pyre at Babylon and of work on the temple of Artemis at Ephesus. In Vitruvius the episode serves an argumentative purpose: it contrasts princely favor with professional competence alone and introduces the author’s vindication of his own position.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2589. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.1">De architectura 2.praef.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-133" type="authorialFootnote" subtype="explicitInSource" n="133" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.2">
+      <label>V297 · nota 133 · locus 2.praef.2</label>
+      <p>The Athos project is discussed on the basis of Vitruvius’s account. The parallel ancient testimonies are not identical and should not be merged into a single biography of Dinocrates without indicating their differences.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2604. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.2">De architectura 2.praef.2</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-134" type="authorialFootnote" subtype="explicitInSource" n="134" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.3">
+      <label>V297 · nota 134 · locus 2.praef.3</label>
+      <p>Frumentaria ratio concerns the capacity to supply the population with grain. The comparison with an infant deprived of milk turns territorial food supply into a criterion for the viability of a city.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2626. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.praef.3">De architectura 2.praef.3</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-135" type="authorialFootnote" subtype="explicitInSource" n="135" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.1.1">
+      <label>V297 · nota 135 · locus 2.1.1</label>
+      <p>The origin of fire and language belongs to an ancient genealogy of civilisation. Parallels with Lucretius or other intellectual traditions are comparative; Vitruvius does not declare any precise doctrinal dependence here.</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2662. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.1.1">De architectura 2.1.1</ref>.</p>
+    </note>
+    <note xml:id="nota-v297-136" type="authorialFootnote" subtype="explicitInSource" n="136" xml:lang="en" resp="#diego-kurilo" corresp="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.1.2">
+      <label>V297 · nota 136 · locus 2.1.2</label>
+      <p>Upright posture and manual skill form part of the ancient anthropology through which Vitruvius explains the origins of civic life (2.1.2).</p>
+      <p><ref target="#source-v297">DOCX editorial de V297</ref>; párrafo de origen 2678. <ref type="locus" target="https://vitruvius-digital-library.org/lector-bilingue?edition=theory-en&amp;locus=2.1.2">De architectura 2.1.2</ref>.</p>
+    </note>
+  </div></body></text>
+</TEI>
