@@ -16,8 +16,10 @@ Los textos publicados V514 (español), V554 (francés) y V297 (inglés) se trata
 ## Identificadores, interoperabilidad y exportación
 
 - El lector `lector-bilingue.html` genera TEI XML P5 de un locus seleccionado y expone una referencia canónica CTS (Perseus para el texto latino donde corresponde).
+- `corpus-tei.html` genera TEI P5 por libro completo y versión (V514/V554/V297), a demanda y a partir de `data/structured/`. Incluye encabezamiento de edición, DOI, ISBN, archivo fuente y loci. La descarga dinámica no equivale todavía a alojamiento de XML estáticos validados contra Relax NG.
 - `assets/philological-core.mjs` genera URN **locales VDL** para las recensiones de Kurilo (`urn:cts:latinLit:phi1056.phi001.vdl-v514:<locus>` y equivalentes). Estos identificadores NO constituyen inscripción en un registro CTS externo.
 - `quaestio-philologica.html` integra búsqueda literal en texto latino y traducciones, con exportaciones bibliográficas Chicago 18, RIS y BibTeX. La búsqueda de expresiones no ofrece lematización morfológica experta y no debe describirse como tal.
+- `quaestio-philologica.html` enlaza la misma consulta a `indice-commentariorum.html`, `vitruvia-lexicon.html` (forma y lema) y `bibliotheca-graeca-latina.html`; esos índices no están incorporados en el mismo conteo de resultados y no se presentan como un único motor morfológico.
 - `vitruvia-lexicon.html` mantiene los recursos lexicográficos del sitio; conviene vincular resultados a lemas documentados antes de atribuir información morfosintáctica verificada.
 - `bibliotheca-graeca-latina.html` proporciona consulta de otros autores, con derechos y coberturas propios de cada fuente.
 - Fuentes gráficas: `concordantia-harleiana.html` enlaza los doce recortes citados por V514 al manifiesto global H. La determinación de cada canvas sigue pendiente, sin enlaces fabricados.
