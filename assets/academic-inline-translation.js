@@ -139,5 +139,16 @@ function attach(sourceNode,{sourceLanguage,originalText,referenceText,referenceL
  });
  return true;
 }
-window.VitruviaInlineTranslation=Object.freeze({attach,chunkForTest:chunks,bytesForTest:utfBytes});
+async function translate(text,source,target){
+ const original=String(text||"").trim();
+ if(!TARGETS.includes(target)||!Object.hasOwn(LANGS,source)||!original)throw Error("Idioma o fragmento no disponible");
+ const key=[source,target,original].join("|");
+ if(cache.has(key))return cache.get(key);
+ let result=null;
+ try{result=await browserTranslation(original,source,target)}catch(_){result=null}
+ if(!result)result=await externalTranslation(original,source,target);
+ if(!result||!result.text)throw Error("El proveedor no entregó texto");
+ cache.set(key,result);return result;
+}
+window.VitruviaInlineTranslation=Object.freeze({attach,translate,chunkForTest:chunks,bytesForTest:utfBytes});
 })();
