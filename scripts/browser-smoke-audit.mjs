@@ -62,7 +62,7 @@ try{
    await page.evaluate(mode=>document.documentElement.dataset.theme=mode,mode);
    const observations=await page.evaluate(()=>{
     const elements=['.warning','#edition','#term'];
-    const parse=s=>{const a=s.match(/[\\d.]+/g)||[];return a.slice(0,3).map(Number)};
+    const parse=s=>{const a=s.match(/\d+(?:\.\d+)?/g)||[];return a.slice(0,3).map(Number)};
     const l=rgb=>rgb.map(x=>{const v=x/255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((a,v,i)=>a+v*[.2126,.7152,.0722][i],0);
     return elements.map(sel=>{const el=document.querySelector(sel),style=getComputedStyle(el);
      const bg=l(parse(style.backgroundColor)),fg=l(parse(style.color));
