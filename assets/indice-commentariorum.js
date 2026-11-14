@@ -74,6 +74,14 @@ function sortRecords(a,b){
  if(a.edition!==b.edition)return a.edition.localeCompare(b.edition);
  return (Number(a.ordinal)||0)-(Number(b.ordinal)||0)
 }
+function composeCommentary(text){
+ // Los saltos simples proceden de la diagramación/OCR. Se conserva el
+ // salto de párrafo doble y la fuente original no se modifica.
+ return String(text||"").replace(/\r\n?/g,"\n")
+  .replace(/([\p{L}])-\n([\p{Ll}])/gu,"$1$2")
+  .replace(/([^\n])\n([^\n])/g,"$1 $2")
+  .replace(/[\t ]{2,}/g," ");
+}
 function renderOne(e){
  const box=create("article",null,$("ic-results"),"result");
  const title=(e.type==="commentary"?"Commentarius":e.type==="study"?"Estudio preliminar · p. "+e.ordinal:"Nota "+e.ordinal)+" · "+e.edition+(e.locus?" · "+e.locus:"");
@@ -84,8 +92,8 @@ function renderOne(e){
  const begin=pos>200?Math.max(0,pos-180):0;
  const end=Math.min(e.text.length,begin+670);
  const preview=(begin?"…":"")+e.text.slice(begin,end).trim()+(end<e.text.length?"…":"");
- highlight(create("p",null,box),preview);
- if(e.text.length>670){const details=create("details",null,box);create("summary","Leer el comentario íntegro",details);highlight(create("pre",null,details),e.text)}
+ highlight(create("p",null,box,"ic-prose"),composeCommentary(preview));
+ if(e.text.length>670){const details=create("details",null,box);create("summary","Leer el comentario íntegro",details);highlight(create("div",null,details,"ic-full-commentary"),composeCommentary(e.text))}
  create("p",e.source+(e.original_location?" · "+e.original_location:""),box,"meta");
  const locator=e.type==="study"?"página digital "+e.ordinal:e.locus?"Vitr. "+e.locus:(e.original_location||"");
  const citation=create("p",chicago(e.edition,locator),box,"ic-citation");
