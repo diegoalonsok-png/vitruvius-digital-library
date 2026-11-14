@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Visor simple · Bibliotheca Graeca et Latina</title><meta name="description" content="Lectura sencilla de textos clásicos originales y sus traducciones indexadas y traducción automática opcional, por locus.">
-<style>
+<link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1"><style>
 :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#050505;color:#f0f0f1;font-family:system-ui,-apple-system,sans-serif}main{max-width:1720px;margin:0 auto;padding:30px clamp(14px,4vw,64px)}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 30px}.top h1{font-size:clamp(20px,2.1vw,32px);font-weight:400;line-height:1.35;color:#dedee0;margin:0}.actions{display:flex;align-items:center;gap:12px}.actions a,.actions button{font:14px system-ui;color:#ececef;background:#151515;border:1px solid #4b4b4b;padding:9px 12px;text-decoration:none;border-radius:9px;cursor:pointer}.actions button{font-size:22px;min-width:42px}.actions button:disabled{opacity:.4;cursor:default}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.card{background:#303030;border-radius:17px;padding:clamp(20px,2vw,38px);min-width:0;min-height:65vh}.card h2{font:400 clamp(16px,1.6vw,23px)/1.4 system-ui;color:#cecece;margin:0 0 28px}.passage{font:clamp(21px,2.4vw,35px)/1.8 Georgia,"Times New Roman",serif;white-space:pre-wrap;overflow-wrap:anywhere}.passage p{margin:0 0 1.25em}.empty{font:17px/1.65 system-ui;color:#ddd}.note{color:#aaa;font:12px/1.6 system-ui;margin-top:14px}.note a{color:#ddd}button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:3px}@media(max-width:750px){.cards{grid-template-columns:1fr;gap:14px}.card{min-height:38vh}.top{align-items:flex-start;flex-direction:column}.actions{flex-wrap:wrap}.passage{font-size:24px}}@media print{.actions{display:none}main{padding:0}.card{min-height:0;break-inside:avoid}}
 
 /* Herramientas mínimas de lectura, sin alterar ni fabricar traducciones. */
@@ -28,10 +28,15 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 .panel-colors .color-custom::-moz-color-swatch{border:0;border-radius:50%}
 .card mark.user-highlight{color:#181818;border-radius:3px;padding:0 2px}
 @media print{.panel-colors{display:none}}
+
+.panel-font-label{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:12px/1.4 system-ui;margin:0 0 12px;color:inherit}
+.panel-font-label select{background:#202023;color:#f5f5f5;border:1px solid #777;border-radius:7px;padding:6px 9px;font:13px system-ui;max-width:100%;min-height:34px}
+.panel-font-label select:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.card .passage{font-family:var(--panel-font,Georgia,serif)}
 </style></head><body><main>
 <div class="top"><h1 id="title">BIBLIOTHECA · LECTURA SIMPLE</h1><nav class="actions" aria-label="Navegación de lectura"><a id="academic" href="classics-parallel-reader.html">Visor académico</a><button id="previous" type="button" aria-label="Pasaje anterior">‹</button><button id="next" type="button" aria-label="Pasaje siguiente">›</button></nav></div>
-<div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Original <select id="original-lang" aria-label="Idioma original"></select></label><label>Traducción <select id="translation-lang" aria-label="Idioma de la traducción"></select></label><label>Locus <input id="go-locus" type="search" placeholder="Ej. 2" aria-label="Locus o capítulo"></label><button id="go-button" type="button">Ir al locus</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><label>Letra <select id="font" aria-label="Tipografía"><option value="georgia">Clásica</option><option value="palatino">Palatino</option><option value="sans">Sans</option></select></label><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
-<div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><div class="panel-colors" id="left-colors" aria-label="Fondo y resaltado del original"></div><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><div class="panel-colors" id="right-colors" aria-label="Fondo y resaltado de traducción"></div><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div><button class="translate-action" id="translate" type="button" hidden>Traducir automáticamente este pasaje</button></section></div>
+<div class="toolbar" role="group" aria-label="Herramientas de lectura"><label>Original <select id="original-lang" aria-label="Idioma original"></select></label><label>Traducción <select id="translation-lang" aria-label="Idioma de la traducción"></select></label><label>Locus <input id="go-locus" type="search" placeholder="Ej. 2" aria-label="Locus o capítulo"></label><button id="go-button" type="button">Ir al locus</button><a id="lexicon-link" href="vitruvia-lexicon.html" style="border:1px solid #555;border-radius:7px;padding:8px 10px;color:#eee;text-decoration:none;font:13px system-ui">Diccionario · Lexicon</a><label>Palabra <input id="word-query" type="search" placeholder="Buscar palabra" aria-label="Buscar palabra"></label><button id="word-find" type="button" aria-label="Buscar próxima coincidencia">⌕</button><button id="smaller" type="button" aria-label="Reducir texto">A−</button><button id="larger" type="button" aria-label="Ampliar texto">A+</button><label>Color <select id="palette" aria-label="Colores"><option value="dark">Gris</option><option value="sepia">Sepia</option><option value="light">Marfil</option></select></label></div>
+<div class="cards"><section class="card"><h2 id="left-head">TEXTO ORIGINAL</h2><label class="panel-font-label" for="left-font">Tipografía original <select id="left-font" aria-label="Tipografía del original"><option value="gentium">Gentium Book Plus · clásica</option><option value="cardo">Cardo · filológica</option><option value="georgia">Georgia</option><option value="palatino">Palatino</option><option value="times">Times New Roman</option><option value="garamond">Garamond</option><option value="baskerville">Baskerville</option><option value="cambria">Cambria</option><option value="sans">Sans moderna</option><option value="mono">Monoespaciada</option></select></label><div class="panel-colors" id="left-colors" aria-label="Fondo y resaltado del original"></div><div class="passage" id="left-text" aria-live="polite">Cargando texto…</div></section><section class="card"><h2 id="right-head">TRADUCCIÓN</h2><label class="panel-font-label" for="right-font">Tipografía traducción <select id="right-font" aria-label="Tipografía de la traducción"><option value="gentium">Gentium Book Plus · clásica</option><option value="cardo">Cardo · filológica</option><option value="georgia">Georgia</option><option value="palatino">Palatino</option><option value="times">Times New Roman</option><option value="garamond">Garamond</option><option value="baskerville">Baskerville</option><option value="cambria">Cambria</option><option value="sans">Sans moderna</option><option value="mono">Monoespaciada</option></select></label><div class="panel-colors" id="right-colors" aria-label="Fondo y resaltado de traducción"></div><div class="passage" id="right-text" aria-live="polite">Cargando traducción…</div><button class="translate-action" id="translate" type="button" hidden>Traducir automáticamente este pasaje</button></section></div>
 <p class="note" id="note" role="status">Se utilizan las ediciones existentes en la Bibliotheca. Un locus compartido no demuestra identidad textual de las versiones.</p>
 </main><script defer src="assets/academic-inline-translation.js?v=20261109-v1"></script><script>
 (()=>{"use strict";
@@ -225,9 +230,33 @@ el("translate").addEventListener("click",async()=>{
  }catch(e){if(token===renderToken){paragraph("right-text","No se pudo obtener la traducción automática de este pasaje.");status("El proveedor de traducción no respondió. El original permanece disponible.");}}
  finally{button.disabled=false;button.textContent="Traducir automáticamente este pasaje";}
 });
-const cards=document.querySelector(".cards");let fontSize=30;const FONTS={georgia:'Georgia, "Times New Roman", serif',palatino:'Palatino, "Book Antiqua", serif',sans:'system-ui, sans-serif'};
-function appearance(){cards.style.setProperty("--body-size",fontSize+"px");cards.style.setProperty("--body-font",FONTS[el("font").value]||FONTS.georgia);const palettes={dark:["#303030","#f2f2f3"],sepia:["#493e34","#fff0d7"],light:["#f1e9db","#252525"]};const pair=palettes[el("palette").value]||palettes.dark;cards.style.setProperty("--card-bg",pair[0]);cards.style.setProperty("--text-color",pair[1]);}
-el("smaller").onclick=()=>{fontSize=Math.max(17,fontSize-2);appearance();};el("larger").onclick=()=>{fontSize=Math.min(44,fontSize+2);appearance();};el("font").onchange=appearance;el("palette").onchange=appearance;
+const cards=document.querySelector(".cards");let fontSize=30;
+const FONTS={
+ gentium:'"Gentium Book Plus","Noto Serif",Georgia,serif',
+ cardo:'Cardo,"Gentium Book Plus",Georgia,serif',
+ georgia:'Georgia,"Gentium Book Plus",serif',
+ palatino:'Palatino,"Palatino Linotype","Book Antiqua","Gentium Book Plus",serif',
+ times:'"Times New Roman","Gentium Book Plus",serif',
+ garamond:'Garamond,"EB Garamond","Gentium Book Plus",Georgia,serif',
+ baskerville:'Baskerville,"Libre Baskerville","Gentium Book Plus",Georgia,serif',
+ cambria:'Cambria,"Gentium Book Plus",Georgia,serif',
+ sans:'system-ui,"Noto Sans",sans-serif',
+ mono:'ui-monospace,"DejaVu Sans Mono",monospace'
+};
+for(const side of ["left","right"]){
+ const select=el(side+"-font"),card=el(side+"-text").closest(".card");
+ select.value=side==="left"?"gentium":"cardo";
+ const apply=()=>card.style.setProperty("--panel-font",FONTS[select.value]||FONTS.georgia);
+ select.addEventListener("change",apply);apply();
+}
+function appearance(){cards.style.setProperty("--body-size",fontSize+"px");
+ const palettes={dark:["#303030","#f2f2f3"],sepia:["#493e34","#fff0d7"],light:["#f1e9db","#252525"]};
+ const pair=palettes[el("palette").value]||palettes.dark;
+ cards.style.setProperty("--card-bg",pair[0]);cards.style.setProperty("--text-color",pair[1]);
+}
+el("smaller").onclick=()=>{fontSize=Math.max(17,fontSize-2);appearance();};
+el("larger").onclick=()=>{fontSize=Math.min(44,fontSize+2);appearance();};
+el("palette").onchange=appearance;
 el("go-button").onclick=()=>{const wanted=key(el("go-locus").value);const i=source.findIndex(p=>key(p.locus)===wanted);if(i<0){status("No se encontró ese locus en esta edición.");return;}pos=i;draw();};el("go-locus").addEventListener("keydown",e=>{if(e.key==="Enter")el("go-button").click();});
 const lexiconLink=el("lexicon-link");document.addEventListener("selectionchange",()=>{
  const selection=window.getSelection(),word=selection?.toString().trim()||"";
