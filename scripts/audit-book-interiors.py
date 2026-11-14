@@ -63,7 +63,7 @@ def inspect(item,local_dir):
   if item.get("bytes") and nbytes!=item["bytes"]:flags.append("BYTES_MISMATCH")
   if pages is not None and isinstance(item.get("paginas"),int) and pages!=item["paginas"]:flags.append("PAGE_COUNT_MISMATCH")
   volume=fold(item.get("volumen"))
-  printed=re.findall(r"\\b(?:volume|vol\\.?|tomo|tomus|tome)\\s*(?:no\\.?\\s*)?([ivxlcdm]+|\\d{1,2})\\b",sample[:10000])
+  printed=re.findall(r"\b(?:volume|vol\.?|tomo|tomus|tome)\s*(?:no\.?\s*)?([ivxlcdm]+|\d{1,2})\b",sample[:10000])
   if volume and printed and volume not in printed:flags.append("PRINTED_VOLUME_NEEDS_REVIEW")
   if sum(len(x["text"]) for x in parts)<150:flags.append("NO_EXTRACTABLE_FRONT_TEXT")
   elif words and not found:flags.append("TITLE_NOT_DETECTED_IN_SAMPLE")
@@ -94,6 +94,6 @@ def main():
          "safety":"READ ONLY: never delete, edit, replace, rename, or upload original books, codices or folios",
          "results":results}
  output=pathlib.Path(opts.output);output.parent.mkdir(parents=True,exist_ok=True)
- output.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\\n",encoding="utf8")
+ output.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf8")
  print(json.dumps({"results":dict(Counter(x["status"] for x in results)),"output":str(output)},ensure_ascii=False))
 if __name__=="__main__":main()
