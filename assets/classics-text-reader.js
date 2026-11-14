@@ -185,7 +185,9 @@ function loadSearchResources(language){
  const key=work+":"+language;
  if(!semanticResourceCache.has(key)){
   const safeWork=/^[a-z0-9-]{3,60}$/.test(work);
-  const glossary=(safeWork?optionalSearchJson("data/classics-lexicon/"+work+"-"+language+".json"):Promise.resolve(null))
+  // Didache has no work-specific glossary files: avoid known 404s in the parallel reader.
+  // Common validated Greek/Latin forms remain available as fallback.
+  const glossary=(safeWork&&work!=="didache"?optionalSearchJson("data/classics-lexicon/"+work+"-"+language+".json"):Promise.resolve(null))
    .then(doc=>{
     if(doc?.forms&&doc?.lemmas)return doc;
     if(!["la","grc"].includes(language))return null;
