@@ -1,5 +1,35 @@
 <!doctype html><html lang="es" translate="no"><head>
-<link rel="canonical" href="https://vitruvius-digital-library.org/buscador-facsimiles-clasicos"><meta charset="utf-8"><meta name="google" content="notranslate"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Facsímiles clásicos · lectura y búsqueda por página</title><style>body{margin:0;background:#f4efe6;color:#243a4d;font:15px/1.55 system-ui}header{background:#243c4e;color:white;padding:20px}h1{font:normal 30px Georgia,serif;margin:0}header a{color:#ffe3aa}main{max-width:1200px;margin:auto;padding:20px}.warning{background:#fff8e8;border-left:4px solid #af8c53;padding:12px}.form{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:18px 0}label{display:grid;gap:5px;font-weight:600}select,input,button{font:inherit;padding:10px;border:1px solid #baa98e;background:white;color:#203a4c}button{background:#243c4e;color:white;cursor:pointer}article{padding:14px;background:#fff;border-bottom:1px solid #d5c9b8}article p{white-space:pre-wrap;max-height:230px;overflow:auto}small{color:#5a6b78}.pager{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}.pager button{min-width:112px}.pager input{width:92px}.cita{background:#fffdf7;border:1px solid #d9cbb2;padding:12px;margin:14px 0;font-size:14px}.cita b{font-weight:700}.folio{white-space:pre-wrap;background:#fff;border:1px solid #d5c9b8;padding:16px;font:16px/1.7 "Gentium Book Plus",Georgia,serif;max-height:70vh;overflow:auto}</style><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261113-grc-visor"></head><body><header><h1>Facsímiles · lectura OCR por página</h1><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></header><main><p class="warning">Texto automático no corregido: pueden existir errores de reconocimiento en griego, latín, abreviaturas, paginación y notas. Los resultados remiten a la página digital del PDF exacto, no a un locus antiguo verificado. Si aún no aparecen los índices, está pendiente la ejecución de GitHub Actions.</p><div class="form"><label>Edición<select id="edition"><option>Cargando...</option></select></label><label>Buscar en las páginas<input id="term" type="search" placeholder="Término o frase"></label><button id="go">Buscar</button><button id="read" type="button">Leer página a página</button></div><div id="cita" class="cita" hidden></div><div id="pager" class="pager" hidden><button id="prev" type="button">← Anterior</button><label>Página <input id="pageno" type="number" min="1" step="1" value="1"></label><button id="next" type="button">Siguiente →</button><a id="facsimil" href="#" target="_blank" rel="noopener">Ver el facsímil de esta página</a></div><div id="folio" class="folio" hidden></div><p id="status" role="status">Cargando cobertura...</p><div id="results"></div></main><script>
+<link rel="canonical" href="https://vitruvius-digital-library.org/buscador-facsimiles-clasicos"><meta charset="utf-8"><meta name="google" content="notranslate"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Facsímiles clásicos · lectura y búsqueda por página</title><style>body{margin:0;background:#f4efe6;color:#243a4d;font:15px/1.55 system-ui}header{background:#243c4e;color:white;padding:20px}h1{font:normal 30px Georgia,serif;margin:0}header a{color:#ffe3aa}main{max-width:1200px;margin:auto;padding:20px}.warning{background:#fff8e8;border-left:4px solid #af8c53;padding:12px}.form{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:18px 0}label{display:grid;gap:5px;font-weight:600}select,input,button{font:inherit;padding:10px;border:1px solid #baa98e;background:white;color:#203a4c}button{background:#243c4e;color:white;cursor:pointer}article{padding:14px;background:#fff;border-bottom:1px solid #d5c9b8}article p{white-space:pre-wrap;max-height:230px;overflow:auto}small{color:#5a6b78}.pager{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}.pager button{min-width:112px}.pager input{width:92px}.cita{background:#fffdf7;border:1px solid #d9cbb2;padding:12px;margin:14px 0;font-size:14px}.cita b{font-weight:700}.folio{white-space:pre-wrap;background:#fff;border:1px solid #d5c9b8;padding:16px;font:16px/1.7 "Gentium Book Plus",Georgia,serif;max-height:70vh;overflow:auto}/* Lector académico: PDF original y OCR auxiliar, barra de controles compacta y ordenada. */
+.reader-shell{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(270px,.8fr);gap:14px;margin:14px 0}
+.reader-column{min-width:0;border:1px solid #cbbfae;background:#fff;border-radius:9px;overflow:hidden}
+.reader-column h2{margin:0;font:normal 19px Georgia,serif}
+.reader-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#f7f4ed;border-bottom:1px solid #ded4c3;padding:10px 13px}
+.reader-tools{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.reader-tools button{padding:6px 10px;border-radius:5px}
+.reader-tools a{font-size:13px}
+.reader-frame{height:72vh;min-height:460px;background:#e8e6e2}
+.reader-frame iframe{width:100%;height:100%;border:0}
+.reader-frame.inverted iframe{filter:invert(1) hue-rotate(180deg)}
+.reader-column .folio{border:0;margin:0;height:72vh;max-height:72vh;box-sizing:border-box;overflow:auto;overflow-wrap:anywhere;font-size:15px;line-height:1.75}
+.reader-note{margin:0;padding:10px 13px;background:#fbf6eb;color:#645442;font-size:13px;border-bottom:1px solid #ded4c3}
+.reader-shell.ocr-hidden{grid-template-columns:minmax(0,1fr)}
+.reader-shell.ocr-hidden .reader-ocr{display:none}
+.pager{padding:10px;border:1px solid #d5c9b8;background:#fff;align-items:center}
+.pager button{min-width:0;border-radius:5px;padding:8px 12px}
+.pager label{display:flex;align-items:center;gap:8px}
+.pager input{width:76px}
+.reader-tools .reader-active{background:#576e7c}
+@media(max-width:850px){.reader-shell{grid-template-columns:1fr}.reader-frame{height:64vh;min-height:360px}.reader-column .folio{height:auto;max-height:40vh}}
+</style><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261113-grc-visor"></head><body><header><h1>Facsímiles clásicos · lector de folios</h1><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></header><main><p class="warning">El folio original es la fuente principal de lectura. El OCR se muestra como ayuda de búsqueda y puede contener errores de reconocimiento, especialmente en impresos antiguos, griego, latín y abreviaturas. La página digital del PDF no equivale a un locus filológico verificado.</p><div class="form"><label>Edición<select id="edition"><option>Cargando...</option></select></label><label>Buscar en las páginas<input id="term" type="search" placeholder="Término o frase"></label><button id="go">Buscar</button><button id="read" type="button">Leer página a página</button></div><div id="cita" class="cita" hidden></div><div id="pager" class="pager" hidden><button id="prev" type="button">← Anterior</button><label>Página digital <input id="pageno" type="number" min="1" step="1" value="1"></label><button id="next" type="button">Siguiente →</button><a id="facsimil" href="#" target="_blank" rel="noopener">Abrir página en PDF</a></div><section id="reader-shell" class="reader-shell" hidden aria-label="Lector de facsímil y transcripción OCR">
+<div class="reader-column"><div class="reader-head"><h2>Folio original</h2><div class="reader-tools">
+<button id="invert" type="button" aria-pressed="false">Invertir colores</button>
+<button id="toggle-ocr" type="button" aria-pressed="true">Ocultar OCR</button>
+<a id="pdf-completo" target="_blank" rel="noopener noreferrer">Abrir PDF completo</a>
+</div></div>
+<div id="reader-frame" class="reader-frame"><iframe id="pdf-viewer" title="Facsímil PDF de la edición seleccionada" loading="eager"></iframe></div>
+<p class="reader-note">Imagen del impreso histórico. La numeración corresponde a las páginas digitales del PDF, no necesariamente a los folios originales.</p></div>
+<div class="reader-column reader-ocr"><div class="reader-head"><h2>OCR de la página</h2><small>Transcripción automática no corregida</small></div>
+<div id="folio" class="folio" aria-live="polite"></div></div></section><p id="status" role="status">Cargando cobertura...</p><div id="results"></div></main><script>
 (async()=>{const $=x=>document.getElementById(x);
 const params=new URLSearchParams(location.search);
 const cache=new Map();let locales=[],r2=[],actual=null,datos=null,pagina=1;
@@ -43,11 +73,14 @@ function cita(){const c=$("cita");const f=datos.ficha;
  }else{c.hidden=false;c.textContent="Facsímil del repositorio: "+f.path.split("/").pop()}}
 function pintarFolio(){const p=datos.paginas.find(x=>x.page===pagina)||datos.paginas[0];if(!p)return;
  pagina=p.page;$("pageno").value=pagina;$("pageno").max=datos.paginas.length;
- $("folio").hidden=false;$("pager").hidden=false;$("results").replaceChildren();
+ $("reader-shell").hidden=false;$("pager").hidden=false;$("results").replaceChildren();
  const lenguaFicha=(datos.ficha&&datos.ficha.lengua)||"";
  const lang=lenguaFicha==="grc"?"grc-x-polytonic":lenguaFicha==="la"?"la":"";
  $("folio").lang=lang;$("folio").classList.toggle("grc",lenguaFicha==="grc");
- $("folio").textContent=p.text.trim()||"Esta página no tiene capa de texto reconocible. Consultar el facsímil.";
+ $("folio").textContent=p.text.trim()||"OCR no disponible para esta página; consulte el facsímil original.";
+ const pdfUrl=datos.pdf+"#page="+pagina+"&view=FitH";
+ if($("pdf-viewer").dataset.current!==pdfUrl){$("pdf-viewer").src=pdfUrl;$("pdf-viewer").dataset.current=pdfUrl}
+ $("pdf-completo").href=datos.pdf;
  $("facsimil").href=datos.pdf+"#page="+pagina;
  $("status").textContent="Página "+pagina+" de "+datos.paginas.length+" · "+p.method;}
 async function leer(){try{$("status").textContent="Cargando el texto por páginas…";
@@ -57,7 +90,7 @@ async function buscar(){try{const needle=$("term").value.trim().toLocaleLowerCas
  if(!needle){return leer()}
  $("status").textContent="Buscando…";
  if(actual!==$("edition").value||!datos)await cargar($("edition").value);
- $("folio").hidden=true;$("pager").hidden=true;
+ $("reader-shell").hidden=true;$("pager").hidden=true;
  const hits=datos.paginas.filter(p=>p.text.toLocaleLowerCase().includes(needle));
  $("results").replaceChildren();
  $("status").textContent=hits.length+" páginas coincidentes de "+datos.paginas.length;
@@ -76,12 +109,14 @@ async function buscar(){try{const needle=$("term").value.trim().toLocaleLowerCas
 }catch(e){$("status").textContent=e.message}}
 $("go").addEventListener("click",buscar);
 $("read").addEventListener("click",leer);
+$("invert").addEventListener("click",()=>{const active=$("reader-frame").classList.toggle("inverted");$("invert").setAttribute("aria-pressed",String(active));});
+$("toggle-ocr").addEventListener("click",()=>{const hidden=$("reader-shell").classList.toggle("ocr-hidden");$("toggle-ocr").textContent=hidden?"Mostrar OCR":"Ocultar OCR";$("toggle-ocr").setAttribute("aria-pressed",String(!hidden));});
 $("prev").addEventListener("click",()=>{if(pagina>1){pagina--;pintarFolio()}});
 $("next").addEventListener("click",()=>{if(datos&&pagina<datos.paginas.length){pagina++;pintarFolio()}});
 $("pageno").addEventListener("change",()=>{const n=parseInt($("pageno").value,10);
  if(datos&&n>=1&&n<=datos.paginas.length){pagina=n;pintarFolio()}});
 $("term").addEventListener("keydown",e=>{if(e.key==="Enter")buscar()});
-$("edition").addEventListener("change",()=>{datos=null;actual=null;$("folio").hidden=true;$("pager").hidden=true;$("cita").hidden=true;$("results").replaceChildren()});
+$("edition").addEventListener("change",()=>{datos=null;actual=null;$("reader-shell").hidden=true;$("pager").hidden=true;$("cita").hidden=true;$("results").replaceChildren()});
 const obra=params.get("obra");
 if(obra&&r2.some(x=>x.id===obra)){$("edition").value="r2:"+obra;
  const q=params.get("q");if(q)$("term").value=q;
