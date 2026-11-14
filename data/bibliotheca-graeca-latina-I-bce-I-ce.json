@@ -2348,8 +2348,8 @@
    "genre": "Historia universal",
    "dating": "c. 60–30 a. C.",
    "reading": {
-    "url": null,
-    "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+    "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/home.html",
+    "status": "Índice externo de lectura de la Bibliotheca historica: traducción inglesa Loeb y partes del original griego, con cobertura desigual por libro. Las ediciones del proyecto y los libros de Loeb no son homogéneos; algunos volúmenes conservan restricciones de derechos. No se considera texto íntegro indexado en Vitruvius."
    },
    "manuscript": {
     "manifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b107233799/manifest.json",
@@ -2380,7 +2380,8 @@
     "scaife": "https://scaife.perseus.org/library/",
     "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
     "archive": "https://archive.org/search?query=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE%20Diodoro%20S%C3%ADculo",
-    "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE"
+    "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20%E1%BC%B1%CF%83%CF%84%CE%BF%CF%81%CE%B9%CE%BA%CE%AE",
+    "externalOriginalIndex": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Diodorus_Siculus/home.html"
    },
    "publicStatus": "lectura-local-parcial",
    "localReader": null,
@@ -2560,8 +2561,8 @@
    "genre": "Geografía",
    "dating": "c. 20 a. C.–23 d. C.",
    "reading": {
-    "url": null,
-    "status": "Buscar la obra y escoger una edición en Perseus/Scaife"
+    "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Strabo/home.html",
+    "status": "Lectura externa de Geography/Γεωγραφικά de Estrabón: original griego y traducción inglesa según la edición Loeb de H. L. Jones (ocho volúmenes, 1917–1932). Comprobar cobertura por libro en el índice externo. Enlace de lectura, no transcripción acreditada como cotejada en Vitruvius."
    },
    "manuscript": {
     "manifest": null,
@@ -2590,9 +2591,10 @@
     "scaife": "https://scaife.perseus.org/library/",
     "perseus": "https://www.perseus.tufts.edu/hopper/collections?collection=Perseus%3Acollection%3AGreco-Roman",
     "archive": "https://archive.org/search?query=%CE%93%CE%B5%CF%89%CE%B3%CF%81%CE%B1%CF%86%CE%B9%CE%BA%CE%AC%20Estrab%C3%B3n",
-    "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%93%CE%B5%CF%89%CE%B3%CF%81%CE%B1%CF%86%CE%B9%CE%BA%CE%AC"
+    "gallica": "https://gallica.bnf.fr/Search?ArianeWireIndex=index&p=1&q=%CE%93%CE%B5%CF%89%CE%B3%CF%81%CE%B1%CF%86%CE%B9%CE%BA%CE%AC",
+    "externalOriginalIndex": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Strabo/home.html"
    },
-   "publicStatus": "pendiente-de-incorporar",
+   "publicStatus": "fuente-externa-identificada",
    "localReader": null,
    "aliases": [
     "Estrabón",
@@ -27991,6 +27993,11 @@
    "pseudo-apollodorus-parisinus2722"
   ],
   "sourcePolicy": "Datos de bibliotecas custodias / agregadores institucionales separados de hipótesis ecdóticas; jamás se infiere colación de metadatos.",
-  "paladiusSourceCorrection": "PDF R2 de 1896 es traducción al inglés medio; original latino Schmitt 1898 vinculado a Perseus e Internet Archive."
+  "paladiusSourceCorrection": "PDF R2 de 1896 es traducción al inglés medio; original latino Schmitt 1898 vinculado a Perseus e Internet Archive.",
+  "externalReadersAdded": [
+   "diodorus",
+   "strabo"
+  ],
+  "externalReadersBasis": "LacusCurtius / University of Chicago: índice textual por libros; no incorporar ni replicar material protegido."
  }
 }
