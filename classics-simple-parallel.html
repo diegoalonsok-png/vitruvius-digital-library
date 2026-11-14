@@ -237,6 +237,7 @@ async function translateCurrent(token){
   }else{
    paragraph("right-text","Los servicios de traducción automática no respondieron para este pasaje.");
    status("Traducción automática no disponible; no se genera ni inventa un texto.");
+   budeUpdate("error");
   }
   button.textContent="Reintentar traducción automática";button.hidden=false;
  }
@@ -283,16 +284,20 @@ function budeUpdate(kind="pending",versionLanguage=""){
  el("bude-dossier").href="classics-work-record.html?work="+encodeURIComponent(work);
  budeRows("bude-original-details",[
   ["Locus / identificador",passage?.locus||""],
+  ["Tipo de unidad",passage?.locusKind||""],
+  ["Identificador de la fuente",passage?.sourceUrn||(typeof orig.sourceUrn==="string"?orig.sourceUrn:"")],
   ["Lengua",LANG[leftLang]||leftLang],
   ["Fuente y atribución",orig.attribution||origEntry.sourceDescription||""],
   ["Fuente editorial",orig.source||"",orig.source||""],
+  ["Huella SHA-256 de la fuente",orig.sourceSha256||""],
   ["Naturaleza del texto",orig.sourceType||origEntry.format||""],
   ["Estado ecdótico",orig.editorialStatus||""],
   ["Concordancia / alineación",orig.alignment||""],
   ["Licencia declarada",orig.license||""]
  ]);
- const automatic=kind==="pending"||kind==="automatic";
+ const automatic=kind==="pending"||kind==="automatic"||kind==="error";
  const description=kind==="pending"?"Solicitud de traducción automática en curso":
+  kind==="error"?"Traducción automática no disponible; sin texto inventado":
   kind==="automatic"?"Traducción automática orientativa":
   kind==="historical"?"Edición histórica alojada, mostrada como alternativa":
   "Edición de traducción alojada";
@@ -328,7 +333,7 @@ async function getEdition(entry,lang){
  editionMetadata.set(lang,{
   sourceType:data.sourceType||"",editorialStatus:data.editorialStatus||"",
   source:data.source||"",attribution:data.attribution||"",license:data.license||"",
-  alignment:data.alignment||"",completeness:data.completeness||"",sourceUrn:data.sourceUrn||""
+  alignment:data.alignment||"",completeness:data.completeness||"",sourceUrn:data.sourceUrn||"",sourceSha256:data.sourceSha256||""
  });
  if(entry.format==="structured-bilingual")return data.passages.map(p=>({locus:String(p.locus||""),text:lang==="la"?p.latin:p.translation})).filter(p=>p.locus&&typeof p.text==="string"&&p.text.trim());
  if(data.workId!==(entry.sourceWorkId||work)||data.language!==lang)return [];
