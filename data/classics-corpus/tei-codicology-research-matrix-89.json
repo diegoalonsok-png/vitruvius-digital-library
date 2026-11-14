@@ -4,140 +4,7 @@
   "model": "TEI P5 msDesc: msIdentifier, msContents, physDesc (objectDesc, handDesc, decoDesc, bindingDesc), history (origin, provenance, acquisition), additional; source status attached per field",
   "registeredWitnesses": 106,
   "fieldCount": 22,
-  "globalMissing": [
-    {
-      "category": "physical",
-      "key": "material",
-      "label": "Soporte material",
-      "missing": 60
-    },
-    {
-      "category": "physical",
-      "key": "dimensions",
-      "label": "Dimensiones y caja escrita",
-      "missing": 99
-    },
-    {
-      "category": "physical",
-      "key": "collationFormula",
-      "label": "Fórmula de cuadernos",
-      "missing": 104
-    },
-    {
-      "category": "physical",
-      "key": "ruling",
-      "label": "Pautado",
-      "missing": 104
-    },
-    {
-      "category": "physical",
-      "key": "binding",
-      "label": "Encuadernación",
-      "missing": 99
-    },
-    {
-      "category": "physical",
-      "key": "watermarks",
-      "label": "Filigranas",
-      "missing": 105
-    },
-    {
-      "category": "scribal",
-      "key": "script",
-      "label": "Tipo de escritura",
-      "missing": 83
-    },
-    {
-      "category": "scribal",
-      "key": "hands",
-      "label": "Manos",
-      "missing": 105
-    },
-    {
-      "category": "scribal",
-      "key": "corrections",
-      "label": "Correctores",
-      "missing": 106
-    },
-    {
-      "category": "paratext",
-      "key": "scholia",
-      "label": "Escolios",
-      "missing": 102
-    },
-    {
-      "category": "paratext",
-      "key": "glosses",
-      "label": "Glosas",
-      "missing": 105
-    },
-    {
-      "category": "paratext",
-      "key": "subscriptiones",
-      "label": "Subscriptiones",
-      "missing": 106
-    },
-    {
-      "category": "history",
-      "key": "origin",
-      "label": "Origen",
-      "missing": 89
-    },
-    {
-      "category": "history",
-      "key": "provenance",
-      "label": "Procedencia",
-      "missing": 90
-    },
-    {
-      "category": "text",
-      "key": "folioRange",
-      "label": "Folios",
-      "missing": 54
-    },
-    {
-      "category": "text",
-      "key": "coverage",
-      "label": "Cobertura",
-      "missing": 0
-    },
-    {
-      "category": "text",
-      "key": "lacunae",
-      "label": "Lagunas",
-      "missing": 106
-    },
-    {
-      "category": "text",
-      "key": "transpositions",
-      "label": "Transposiciones",
-      "missing": 106
-    },
-    {
-      "category": "text",
-      "key": "palimpsest",
-      "label": "Palimpsesto",
-      "missing": 106
-    },
-    {
-      "category": "digital",
-      "key": "record",
-      "label": "Catálogo",
-      "missing": 2
-    },
-    {
-      "category": "digital",
-      "key": "viewer",
-      "label": "Visor",
-      "missing": 47
-    },
-    {
-      "category": "digital",
-      "key": "manifest",
-      "label": "IIIF",
-      "missing": 72
-    }
-  ],
+  "globalMissing": 1845,
   "records": [
     {
       "witnessId": "vitruvius-h",
@@ -3811,7 +3678,7 @@
       "shelfmark": "MS. E. D. Clarke 39 (siglum B en ediciones platónicas)",
       "repository": "Oxford, Bodleian Library",
       "repositoryUrl": "https://medieval.bodleian.ox.ac.uk/catalog/manuscript_4004",
-      "verificationSource": "Digital Bodleian / Bodleian Medieval Manuscripts / Biblissima IIIF Collections, ficha de MS. E. D. Clarke 39",
+      "verificationSource": "Biblissima IIIF Collections / Digital Bodleian (datos de testimonio, mano y cobertura; 14-11-2026)",
       "fields": {
         "physical": {
           "material": {
@@ -3847,14 +3714,20 @@
         },
         "scribal": {
           "script": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Escritura y fecha paleográfica"
+            "value": "Texto copiado por Ioannes / Johannes calligraphus (895); el repertorio identifica al copista, pero esta ficha no impone clasificación paleográfica más específica.",
+            "status": "institutional_aggregator_verified",
+            "scholarlyQuestion": "Escritura y fecha paleográfica",
+            "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
+            "verificationDate": "2026-11-14",
+            "note": "No confundir nombre del copista con una tipología de letra acreditada."
           },
           "hands": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Número de manos y distribución por folios"
+            "value": "Ioannes (texto principal); escolios añadidos por Aretas en pequeña escritura uncial y al menos otra mano contemporánea según Biblissima.",
+            "status": "institutional_aggregator_verified",
+            "scholarlyQuestion": "Número de manos y distribución por folios",
+            "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
+            "verificationDate": "2026-11-14",
+            "note": "La distribución exacta de manos por folio necesita examen del facsímil."
           },
           "corrections": {
             "value": null,
@@ -3864,9 +3737,11 @@
         },
         "paratext": {
           "scholia": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Escolios marginales"
+            "value": "Escolios marginales: intervenciones de Aretas y al menos una mano contemporánea, según descripción Biblissima / Digital Bodleian.",
+            "status": "institutional_aggregator_verified",
+            "scholarlyQuestion": "Escolios marginales",
+            "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
+            "verificationDate": "2026-11-14"
           },
           "glosses": {
             "value": null,
@@ -3881,14 +3756,20 @@
         },
         "history": {
           "origin": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Origen / scriptorium"
+            "value": "Constantinopla (atribución geográfica del repertorio Biblissima); copia fechada en 895, encargada por Aretas de Patras / Cesarea.",
+            "status": "institutional_aggregator_verified",
+            "scholarlyQuestion": "Origen / scriptorium",
+            "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
+            "verificationDate": "2026-11-14",
+            "note": "La adscripción a Constantinopla se mantiene como atribución catalográfica, no constatación paleográfica independiente."
           },
           "provenance": {
-            "value": null,
-            "status": "missing_requires_source",
-            "scholarlyQuestion": "Historia de propietarios y transferencias"
+            "value": "Encargado por Aretas, quien pagó 21 monedas de oro por copia y pergamino; custodia actual: Bodleian Library, Oxford.",
+            "status": "institutional_aggregator_verified",
+            "scholarlyQuestion": "Historia de propietarios y transferencias",
+            "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
+            "verificationDate": "2026-11-14",
+            "note": "No se reconstruye aquí toda la historia de posesión anterior a Oxford."
           }
         },
         "text": {
@@ -3898,9 +3779,11 @@
             "scholarlyQuestion": "Folios y distribución por libros"
           },
           "coverage": {
-            "value": "24 diálogos de las tetralogías I–VI, entre ellos Apología, Critón, Fedón, Banquete, Fedro, Gorgias y Menón. NO contiene República, Timeo ni Leyes. Incluye escolios marginales. Otros testimonios papiráceos pueden ser anteriores.",
-            "status": "recorded_not_individually_collated",
-            "scholarlyQuestion": "Inc./expl., lagunas y cobertura exacta"
+            "value": "Tetralogías I–VI de Platón, 24 diálogos enumerados por el registro: Eutifrón, Apología, Critón, Fedón, Crátilo, Teeteto, Sofista, Político, Parménides, Filebo, Banquete, Fedro, Alcibíades I y II, Hiparco, Rivales, Teages, Cármides, Laques, Lisis, Eutidemo, Protágoras, Gorgias, Menón. Con escolios; NO incluye República, Timeo ni Leyes.",
+            "status": "institutional_aggregator_verified",
+            "scholarlyQuestion": "Inc./expl., lagunas y cobertura exacta",
+            "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
+            "verificationDate": "2026-11-14"
           },
           "lacunae": {
             "value": null,
@@ -3936,7 +3819,7 @@
           }
         }
       },
-      "missingCount": 18,
+      "missingCount": 13,
       "missingKeys": [
         "material",
         "dimensions",
@@ -3944,21 +3827,21 @@
         "ruling",
         "binding",
         "watermarks",
-        "script",
-        "hands",
         "corrections",
-        "scholia",
         "glosses",
         "subscriptiones",
-        "origin",
-        "provenance",
         "folioRange",
         "lacunae",
         "transpositions",
         "palimpsest"
       ],
       "sourcePolicy": "Only fill missing properties after consulting an institutional catalogue or specialist codicology; distinguish digital images from folios.",
-      "canonicalPhysicalId": "codex-plato-clarke-39"
+      "canonicalPhysicalId": "codex-plato-clarke-39",
+      "verifiedSupplement": {
+        "date": "2026-11-14",
+        "source": "https://iiif.biblissima.fr/collections/manifest/6132de9c6ca8e5acff4d95487199446028cca46b",
+        "scope": "Identificación de mano, escolios, procedencia tradicional, patrocinio y 24 diálogos según catálogo; no collatio ni examen de cada folio."
+      }
     },
     {
       "witnessId": "sinaiticus-gospels-apostolic",
