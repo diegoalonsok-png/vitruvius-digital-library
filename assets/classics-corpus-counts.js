@@ -163,6 +163,8 @@ function paint(a,data){
   const note=document.createElement("p");note.textContent=records.length+" registros listados (según inventarios consultados).";details.append(note,ol);
   group.append(details);dl.append(group);
  });wrap.append(dl);
+ // The title finder reuses the already audited catalogue and version registry.
+ window.BibliothecaWorkSearch?.mount?.(wrap,data);
  const foot=document.createElement("p");foot.textContent=a.complete?
   "Datos desde los registros locales y manifiestos externos verificados. Se cuentan por separado las versiones; las traducciones externas solo enlazadas no se suman. Las fichas editoriales de Vitruvio pueden corresponder a versiones de la misma obra.":
   "Cobertura parcial: algún índice externo no fue verificable en esta carga; los originales no accesibles no se presentan como indexados.";
@@ -251,6 +253,8 @@ async function ampliar(fichas){
   });
   const all=document.createElement("a");all.href="bibliotheca-ampliada.html";all.textContent="Abrir Bibliotheca ampliada";
   det.append(p,ol,all);g.append(det);dl.append(g);
+  // Supplement catalogue matches with real R2 titles and identified facsimile editions.
+  window.BibliothecaWorkSearch?.addFacsimiles?.(v,cat);
  }catch(e){console.warn("Capa R2 no disponible:",e.message)}
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",begin,{once:true});else begin();
