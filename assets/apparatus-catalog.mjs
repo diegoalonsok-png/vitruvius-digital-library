@@ -136,7 +136,7 @@ function renderNext(){
   const t=TIPO[e.type]?e.type:'otro',info=TIPO[t];
   const article=document.createElement('article');article.className='critical-result ac-ficha';
   const readLocus=e.locusMention&&/^\d+\.(?:praef\.)?\d+(?:\.\d+)?$/.test(e.locusMention)?e.locusMention:(e.pageLoci||[])[0];
-  const anclaje=e.source==='nota'?(e.locusCertified?'locus explícito en la nota':e.locusMention?'locus candidato, sin cotejar':'sin locus')
+  const anclaje=e.source==='nota'?(e.locusCertified?'locus explícito en la nota':e.locusMention?'asociación de locus propuesta por índice':'sin locus')
    :e.source==='glosa'?(e.locusLink||'locus por el lema'):(e.locusCertified?'locus en el rótulo':'locus por contexto de página');
   // Glosas: el texto ya trae «lema] explicación»; se separa para no repetir el lema.
   let cuerpo;
