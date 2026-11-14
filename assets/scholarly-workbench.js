@@ -129,10 +129,19 @@ function renderNotes(){
   card.append(meta);
   if(n.quote)card.append(node("blockquote",null,n.quote.trim()));
   if(n.comment)card.append(node("p",null,n.comment));
-  card.append(button("Eliminar nota personal",()=>{
-   if(!window.confirm("¿Eliminar esta anotación privada?"))return;
-   annotations=annotations.filter(v=>v.id!==n.id);saveNotes(annotations);sync();
-  }));
+  let armed=false;
+  const remove=button("Eliminar nota personal",()=>{
+   if(!armed){
+    armed=true;remove.textContent="Confirmar eliminación";remove.setAttribute("aria-label","Confirmar eliminación irreversible de esta anotación privada");
+    return;
+   }
+   annotations=annotations.filter(v=>v.id!==n.id);
+   saveNotes(annotations);
+   sync();
+   status("Anotación personal eliminada. El texto de la edición y el aparato crítico permanecen intactos.");
+  });
+  remove.addEventListener("blur",()=>{if(armed&&remove.isConnected){armed=false;remove.textContent="Eliminar nota personal"}});
+  card.append(remove);
   list.append(card);
  }
 }
