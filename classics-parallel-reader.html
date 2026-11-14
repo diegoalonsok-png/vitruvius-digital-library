@@ -285,41 +285,44 @@ function buttons(){const n=count(),ok=Boolean(n&&ready.left&&(isAuto(right.value
  $("sync-start").disabled=!ok;$("sync-prev").disabled=!ok||position===0;$("sync-next").disabled=!ok||position>=n-1;
  $("sync-position").textContent=n?(position+1)+" / "+n+" pasos de lectura":"Sin datos comparables";
 }
+let autoRequestId=0,autoPassageKey="",autoTranslationCache=new Map();
 function renderAuto(){
  if(!isAuto(right.value))return;
- const source=versions[left.value],record=source?.passages?.[Math.max(0,Math.min(position,(source?.passages?.length||1)-1))];
+ const record=versions[left.value]?.passages?.[Math.max(0,Math.min(position,(versions[left.value]?.passages?.length||1)-1))];
+ const target=right.value.slice(5),key=[work,left.value,target,record?.locus||"",record?.text||""].join("|");
+ if(key===autoPassageKey&&$("auto-content").childElementCount)return;
+ autoPassageKey=key;autoRequestId++;
  const content=$("auto-content");content.replaceChildren();
- const title=$("auto-title"),target=right.value.slice(5);
- title.textContent="Locus "+(record?.locus||"no disponible")+" · "+(LANG[right.value]||"traducción automática");
- if(!record?.text){
-  content.textContent="El texto original todavía no está disponible para traducir.";return;
+ $("auto-title").textContent="Locus "+(record?.locus||"—")+" · "+LANG[right.value];
+ if(!record?.text){content.textContent="El texto original todavía no está disponible.";return;}
+ const output=document.createElement("div");output.className="academic-inline-translation-output";
+ const note=document.createElement("p");note.className="academic-inline-translation-note";
+ note.textContent="Versión automática orientativa, no edición crítica. El texto solo se envía al proveedor externo al solicitarlo. El griego antiguo puede procesarse como griego moderno.";
+ const button=document.createElement("button");button.type="button";button.className="academic-inline-translate-button";
+ button.textContent="Traducir este pasaje aquí";
+ button.style.cssText="background:#29292b;color:#f5f5f5;border:1px solid #666;border-radius:6px;padding:10px 15px;cursor:pointer";
+ content.append(button,output,note);
+ if(autoTranslationCache.has(key)){
+  output.textContent=autoTranslationCache.get(key);button.textContent="Volver a traducir";return;
  }
- /* El original ya se lee en el visor izquierdo: no duplicarlo aquí.
-    Solo se envía texto al servicio externo después de pulsar traducir. */
- const sourceLine=document.createElement("p");sourceLine.className="auto-source";
- sourceLine.lang=left.value;sourceLine.hidden=true;
- sourceLine.setAttribute("aria-hidden","true");sourceLine.textContent=record.text;
- content.append(sourceLine);
- if(window.VitruviaInlineTranslation?.attach){
-  const added=window.VitruviaInlineTranslation.attach(sourceLine,{sourceLanguage:left.value,originalText:record.text});
-  if(added){
-   const widget=content.querySelector(".academic-inline-translation");
-   widget.classList.add("parallel-auto-translation");
-   const select=widget.querySelector("select");
-   if(select)select.value=target;
-   const button=widget.querySelector(".academic-inline-translate-button");
-   if(button)button.textContent="Traducir este pasaje aquí";
-   const output=widget.querySelector(".academic-inline-translation-output");
-   const note=widget.querySelector(".academic-inline-translation-note");
-   if(output){
-    const pending=document.createElement("p");pending.className="auto-pending";
-    pending.textContent="El original está en el visor izquierdo. Pulsa «Traducir este pasaje aquí» para ver en esta columna una versión automática orientativa.";
-    output.append(pending);
-    if(note)widget.insertBefore(output,note);
-   }
-   if(note)note.textContent="El fragmento solo se envía al proveedor externo después del clic. El griego antiguo se procesa como griego moderno; esta traducción puede ser parcial y no está validada filológicamente.";
-  }else content.append("Este idioma no dispone de traducción automática compatible.");
- }else content.append("Servicio de traducción automática no disponible; utilice el lector del original.");
+ output.textContent="Pulsa «Traducir este pasaje aquí» para solicitar la traducción.";
+ button.addEventListener("click",async()=>{
+  const id=++autoRequestId;button.disabled=true;button.textContent="Traduciendo…";
+  output.textContent="Solicitando traducción automática…";
+  try{
+   if(!window.VitruviaInlineTranslation?.translate)throw Error("Servicio de traducción no cargado");
+   const result=await window.VitruviaInlineTranslation.translate(record.text,left.value,target);
+   if(id!==autoRequestId||key!==autoPassageKey)return;
+   const info=result.text+(result.partial?"\n\n[Traducción parcial]":"");
+   output.textContent=info;autoTranslationCache.set(key,info);
+   note.textContent=result.provider+". Traducción orientativa sin cotejo filológico."+
+    (left.value==="grc"?" El proveedor puede procesar griego antiguo como griego moderno.":"");
+  }catch(err){
+   if(id!==autoRequestId||key!==autoPassageKey)return;
+   output.textContent="La traducción automática no está disponible en este momento. Volvé a intentarlo o seleccioná una traducción editorial alojada.";
+   note.textContent="El servicio externo puede fallar por límites de uso o indisponibilidad. El texto original y el visor académico siguen disponibles.";
+  }finally{if(id===autoRequestId&&key===autoPassageKey){button.disabled=false;button.textContent="Volver a traducir";}}
+ });
 }
 function navigatePane(side,index){
  if(!ready[side])return;
