@@ -48,8 +48,8 @@
 <script defer src="assets/bibliotheca-corpus-search.js?v=20261111-responsive-literal-v1"></script>
 <script defer src="assets/bibliotheca-uploaded-docx.js?v=20261111-responsive-literal-v1"></script>
 <script defer src="assets/academic-inline-translation.js?v=20261109-v1"></script><script defer src="assets/scholarly-passage-citation.js?v=20261113-citable-1"></script>
-<script defer src="assets/bibliotheca-simple.js?v=20261111-responsive-literal-v3"></script>
-<script defer src="assets/bibliotheca-genre-work-list.js?v=20261110-work-dossiers-v3"></script>
+<script defer src="assets/bibliotheca-simple.js?v=20261114-academic-order-v1"></script>
+<script defer src="assets/bibliotheca-genre-work-list.js?v=20261114-academic-order-v1"></script>
 <script defer src="assets/classics-corpus-counts.js?v=20261113-reader-first-2"></script>
 <script defer src="assets/bibliotheca-academic-provenance.js?v=20261110-provenance-v1"></script>
 <script defer src="assets/editorial-work-records.js?v=20261111-identifiers-v1"></script><script defer src="assets/classics-work-dossier.js?v=20261111-editorial-tei-v1"></script>
@@ -138,6 +138,7 @@
 <button id="search-submit" type="submit">Buscar</button>
 </form>
 <div class="workrow bibliotheca-filters" role="group" aria-label="Filtros filológicos del corpus">
+<div class="filter-field"><label for="classic-order" id="order-label">Orden del catálogo</label><select id="classic-order" aria-label="Ordenar obras clásicas"><option value="author">Autor · título (A–Z)</option><option value="title">Título (A–Z)</option><option value="date">Cronología aproximada</option></select></div>
 <div class="filter-field"><label for="classic-work" id="work-label">Obra</label>
 <select id="classic-work" aria-label="Buscar en todos los libros o una obra"><option value="">Todos los libros indexados</option></select></div>
 <div class="filter-field"><label for="classic-era" id="era-label">Época</label>
@@ -150,7 +151,7 @@
  <ol id="genre-work-items" class="genre-work-items"></ol>
  <p id="genre-work-note" class="genre-work-note"></p>
 </section>
-<p class="filter-method" id="filter-method">Clasificación por fecha aproximada de composición y género registrado; no por datación del manuscrito ni de la edición. Las atribuciones debatidas no se convierten en fechas ciertas.</p>
+<p class="filter-method" id="filter-method">Catálogo por autor y título; orden cronológico opcional por fecha aproximada de composición, nunca por datación del manuscrito ni de la edición.</p>
 <p class="coverage" id="catalogue-status" role="status" aria-live="polite">Cargando el registro de obras indexadas…</p>
 </section>
 <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
