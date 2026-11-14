@@ -57,6 +57,23 @@ function matches(entry){
  if(query&&!content.includes(query))return false;
  return true;
 }
+function bookKey(e){return Number(e.book)>=1&&Number(e.book)<=10?String(e.book):e.type==="study"?"study":"sine-loco"}
+function groupHeading(key){
+ const root=$("ic-results");
+ const title=key==="study"?"Studia praeliminaria":key==="sine-loco"?"Adnotationes generales · sin locus asignado":"LIBER "+romans[Number(key)-1];
+ const h=create("h2",title,root,"ic-book-heading");
+ if(key==="study")create("small"," · Documentación por página original",h);
+ else if(key==="sine-loco")create("small"," · Notas autorales sin referencia canónica asociada en este índice",h);
+}
+function sortRecords(a,b){
+ const key=x=>bookKey(x)==="study"?11:bookKey(x)==="sine-loco"?12:Number(bookKey(x));
+ const compare=key(a)-key(b);if(compare)return compare;
+ const locusParts=x=>String(x.locus||"").split(".").map(v=>v==="praef"?0:Number(v)||0);
+ const aa=locusParts(a),bb=locusParts(b);
+ for(let i=0;i<3;i++){let d=(aa[i]||0)-(bb[i]||0);if(d)return d}
+ if(a.edition!==b.edition)return a.edition.localeCompare(b.edition);
+ return (Number(a.ordinal)||0)-(Number(b.ordinal)||0)
+}
 function renderOne(e){
  const box=create("article",null,$("ic-results"),"result");
  const title=(e.type==="commentary"?"Commentarius":e.type==="study"?"Estudio preliminar · p. "+e.ordinal:"Nota "+e.ordinal)+" · "+e.edition+(e.locus?" · "+e.locus:"");
@@ -82,7 +99,12 @@ function renderOne(e){
 }
 function render(reset){
  if(reset){shown=0;$("ic-results").replaceChildren()}
- const slice=visible.slice(shown,shown+STEP);for(const item of slice)renderOne(item);
+ const slice=visible.slice(shown,shown+STEP);
+ for(let i=0;i<slice.length;i++){
+   const item=slice[i],previous=visible[shown+i-1];
+   if(!previous||bookKey(previous)!==bookKey(item))groupHeading(bookKey(item));
+   renderOne(item);
+ }
  shown+=slice.length;$("ic-more").hidden=shown>=visible.length;
  const q=$("ic-search").value.trim(),topic=$("ic-term").value;
  const resultLabel=visible.length===1?"1 resultado encontrado":visible.length+" resultados encontrados";
@@ -92,7 +114,7 @@ function render(reset){
  all.filter(x=>x.type==="study").length+" páginas de estudio en el índice.",visible.length?"ready":"empty");
  if(!shown)create("p","No hay coincidencias con estos filtros. Probá otra palabra, revisá la edición o restablecé el concepto mayor.",$("ic-results"),"note");
 }
-function apply(scroll){if(!ready){status("El índice todavía se está cargando. La búsqueda se ejecutará al terminar.","loading");return}visible=all.filter(matches);render(true);if(scroll)goToResults()}
+function apply(scroll){if(!ready){status("El índice todavía se está cargando. La búsqueda se ejecutará al terminar.","loading");return}visible=all.filter(matches).sort(sortRecords);render(true);if(scroll)goToResults()}
 $("ic-form").addEventListener("submit",e=>{
  e.preventDefault();buttonState(true);
  try{apply(true)}finally{buttonState(false)}
