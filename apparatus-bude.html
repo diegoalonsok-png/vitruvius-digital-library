@@ -50,6 +50,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 .ab-warning{font:12px/1.65 system-ui;color:#755228}
 @media(max-width:900px){.ab-compare{grid-template-columns:1fr}.ab-compare .ab-text{max-height:230px}}
 @media print{.ab-compare{page-break-inside:avoid}}
+.ab-autor-note{border-bottom:1px solid var(--ab-rule);padding:15px 5px}.ab-autor-note h3{font:600 14px/1.5 system-ui;margin:0 0 5px}.ab-autor-note .ab-autor-body{font:16px/1.7 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}.ab-autor-level,.ab-autor-detail{font:12px/1.6 system-ui;color:var(--ab-muted)}.ab-autor-links{display:flex;gap:14px;flex-wrap:wrap;font:12px system-ui}.ab-autor-note details{padding:5px 0}.ab-autor-note summary{cursor:pointer;font:12px system-ui}
 </style></head><body><main>
 <nav class="ab-nav" aria-label="Navegación académica"><a href="index.html">Biblioteca</a><a href="aparato-critico.html">Aparato autoral</a><a href="aparato-comparativo.html">Aparato comparativo</a><a href="scriptorium.html">Scriptorium</a><a href="como-citar.html">Cómo citar</a></nav>
 <header><div class="ab-eyebrow">VITRVVIVS · DE ARCHITECTVRA · EDITIO DIGITALIS</div><h1>Apparatus criticus</h1>
@@ -76,6 +77,22 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <article class="ab-leaf" lang="es"><header class="ab-leaf-head"><span class="ab-locus" id="left-locus">—</span><h2 id="translation-heading">Traducción castellana</h2><span class="ab-edition">KURILO · V514 · 2026</span></header><div id="translation" class="ab-text"></div><div class="ab-apparatus"><h3>Nota editorial</h3><p class="ab-none">La traducción se reproduce de V514. Las notas interpretativas se consultan por separado en el inventario de aparato autoral.</p><a id="notes-link" href="inventario-aparato-autoral.html">Consultar notas del autor →</a></div></article>
 <article class="ab-leaf" lang="la"><header class="ab-leaf-head"><span class="ab-locus" id="right-locus">—</span><h2>Textus Latinus</h2><span class="ab-edition">RECENSIO V514 · PROVISORIA</span></header><div id="latin" class="ab-text ab-latin"></div>
 <section class="ab-apparatus" aria-label="Aparato conciso"><h3 id="minor-heading">Apparatus criticus minor · V514</h3><div id="minor"></div></section></article>
+</section>
+<section id="ab-autor" aria-labelledby="ab-autor-title" style="margin:30px 0;border-top:1px solid var(--ab-rule);padding-top:22px">
+<h2 id="ab-autor-title">Apparatus auctoris · V514 et V554</h2>
+<p class="ab-sub">Consulta de las notas íntegramente extraídas de las ediciones castellana y francesa de Kurilo. Organización por <i>locus</i>, prefacios y términos mayores; la coincidencia temática no constituye una variante crítica y las asociaciones candidatas no son loci comprobados.</p>
+<div class="ab-tools" style="align-items:end">
+<label>Locus exacto<input id="ab-autor-locus" placeholder="1.1.1" type="search" spellcheck="false"></label>
+<label>Prefacio<select id="ab-autor-preface"><option value="">Todos los libros</option></select></label>
+<label>Concepto mayor<select id="ab-autor-topic"><option value="">Todos los conceptos</option></select></label>
+<label>Edición<select id="ab-autor-edition"><option value="">V514 + V554</option><option value="recensio-es">V514 · español</option><option value="recensio-fr">V554 · français</option></select></label>
+<label>Vinculación<select id="ab-autor-evidence"><option value="">Todos los estados</option><option value="explicit">Locus explícito</option><option value="candidate">Locus candidato</option><option value="unmapped">Sin locus</option></select></label>
+<button type="button" id="ab-autor-clear">Restablecer</button>
+</div>
+<p id="ab-autor-state" class="ab-status" role="status">Cargando notas documentales…</p>
+<div id="ab-autor-results"></div><button id="ab-autor-more" type="button" hidden style="padding:10px;margin:15px 0">Mostrar más notas</button>
+<p class="ab-warning">Criterio comparativo permanente: <b>Kurilo — Rose (1899) — Krohn (1912) — Collection Budé</b>. Las lecturas Budé se incorporarán únicamente con libro, editor, edición y página comprobados. Las referencias a Budé presentes en las notas autorales se conservan como citas del autor, no como cotejo propio de esa edición.</p>
+<p class="ab-reference"><a href="inventario-aparato-autoral.html">Inventario íntegro de las tres ediciones (incluye V297)</a> · <a href="aparato-comparativo.html">Comparación documental de Rose y Krohn</a></p>
 </section>
 <section class="ab-documentation" aria-label="Documentación y testimonios">
 <h2>Documentación crítica · Apparatus maior</h2>
@@ -182,4 +199,4 @@ $("#copy").addEventListener("click",async()=>{
  }catch(e){set("#status","No se pudo cargar el aparato: "+e.message+". El lector no sustituye los datos que faltan por lecturas supuestas.")}
 })();
 })();
-</script></body></html>
+</script><script defer src="assets/apparatus-bude-authorial.js?v=20261113-loci-concepts-v1"></script></body></html>
