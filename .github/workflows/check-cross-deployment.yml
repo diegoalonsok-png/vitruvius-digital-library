@@ -1,0 +1,28 @@
+name: Publicación · equivalencia GitHub Pages y Cloudflare
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '51 9 * * *'
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspección de sintaxis
+        run: python -m py_compile scripts/check-cross-deployment.py
+      - name: Comparar archivos publicados y detectar diferencias de versión
+        run: python scripts/check-cross-deployment.py
+      - name: Conservar evidencia de ambas publicaciones
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-github-pages-cloudflare
+          path: reports/deployment/cross-deployment-audit.json
+          if-no-files-found: warn
+          retention-days: 30
