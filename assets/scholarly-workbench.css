@@ -1,0 +1,45 @@
+/* Scholarly workbench: reader notes remain editorially separate from critical evidence. */
+.scholarly-workbench{margin:28px 0 24px;padding:23px clamp(14px,2.5vw,30px);background:#171b20;color:#f0eee9;border:1px solid #777165;border-top:3px solid #c7a665;border-radius:8px}
+.scholarly-workbench *{box-sizing:border-box}
+.scholarly-workbench .eyebrow{color:#d6c6a3!important;font:700 11px/1.5 system-ui,sans-serif;letter-spacing:.12em}
+.scholarly-workbench h2{margin:5px 0 9px;color:#faf7ef;font:400 clamp(23px,2.7vw,30px)/1.3 Georgia,serif}
+.scholarly-workbench h3{margin:6px 0 12px;color:#f1eee8;font:400 18px/1.4 Georgia,serif}
+.scholarly-workbench .wb-intro{margin:7px 0 19px;color:#dad9d5;font:13px/1.75 system-ui,sans-serif;max-width:95ch}
+.wb-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding-bottom:17px;border-bottom:1px solid #5c5d5e}
+.wb-toolbar button,.wb-toolbar a,.wb-editor-actions button,.wb-export button,.wb-note-remove{padding:9px 12px;border:1px solid #8e8b82;background:#262b32;color:#faf4e6;text-decoration:none;border-radius:5px;min-height:38px;font:600 12px/1.4 system-ui,sans-serif;cursor:pointer}
+.wb-toolbar :is(button,a):hover,.wb-editor-actions button:hover,.wb-export button:hover{background:#3a4249;border-color:#e2c38d}
+.wb-toolbar button[aria-pressed=true]{background:#756039;border-color:#e5c489}
+.wb-toolbar :is(a,button):focus-visible,.scholarly-workbench :is(a,button,textarea,select):focus-visible,.wb-selection-toolbar button:focus-visible{outline:3px solid #f3d084;outline-offset:3px}
+.wb-word-panel,.wb-annotation-editor{padding:16px 18px;margin-top:16px;background:#22272d;color:#f5f3ec;border:1px solid #6a6e73;border-radius:6px}
+.wb-word-panel a,.scholarly-workbench a:not(.wb-toolbar a){color:#eed3a3;text-decoration:underline;text-underline-offset:3px}
+.wb-word-panel :is(p,li,dd,dt){color:#e8e6e0}
+.wb-selected-quote{padding:10px 13px;border-left:3px solid #d7b779;background:#151b21;font:italic 15px/1.6 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}
+.wb-annotation-editor label{display:block;color:#dedbd3;margin:9px 0 7px;font:600 12px/1.5 system-ui,sans-serif}
+.wb-annotation-editor textarea{display:block;width:100%;resize:vertical;min-height:86px;color:#f7f6f0;background:#111920;border:1px solid #7a848b;border-radius:5px;padding:11px;font:14px/1.55 system-ui,sans-serif}
+.wb-editor-actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:12px}
+.wb-editor-actions label{display:flex;align-items:center;gap:8px;margin:0}
+.wb-editor-actions select{min-height:38px;border:1px solid #8b8b89;border-radius:5px;background:#222b34;color:#fff;padding:5px 10px}
+.wb-editor-actions #wb-save-note{background:#856537;border-color:#c2a575}
+.wb-bottom{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(225px,1fr);gap:24px;padding-top:16px}
+.wb-muted,.wb-status{color:#d4d0c8;font:12px/1.7 system-ui,sans-serif}
+.wb-note{border-bottom:1px solid #54575a;padding:11px 0 15px;font:13px/1.65 system-ui,sans-serif}
+.wb-note blockquote{padding:0 10px;border-left:3px solid #d7b46d;margin:8px 0;color:#e3e2dc;white-space:pre-wrap}
+.wb-note .wb-note-meta{font:11px/1.5 system-ui,sans-serif;color:#c9bda9}
+.wb-note-remove{font-size:11px;min-height:32px;padding:6px 10px}
+.wb-export{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.wb-export strong{color:#f4f2ee;font:600 13px/1.4 system-ui,sans-serif;margin:5px 0}
+.wb-export button{text-align:left}
+.wb-status{border-top:1px solid #555a5e;padding-top:14px;margin:15px 0 0}
+.wb-selection-toolbar{position:fixed;z-index:2147481000;display:flex;gap:5px;flex-wrap:wrap;max-width:calc(100vw - 18px);padding:7px;background:#1a2028;color:#fff;border:1px solid #d5b773;border-radius:8px;box-shadow:0 8px 25px #0008}
+.wb-selection-toolbar[hidden]{display:none!important}
+.wb-selection-toolbar button{padding:7px 9px;min-height:34px;background:#303843;border:1px solid #a1a1a1;border-radius:5px;color:#f5f1e9;font:600 12px system-ui,sans-serif;cursor:pointer}
+.wb-selection-toolbar #wb-underline{background:#9c7940;color:#fff;border-color:#d7b674}
+#latin-text,#translation-text{user-select:text!important;-webkit-user-select:text!important}
+:is(#latin-text,#translation-text) ::selection{background:#7fb7ea!important;color:#132235!important}
+:is(#latin-text,#translation-text) .wb-personal-mark{background:rgba(228,180,72,.23)!important;text-decoration-line:underline!important;text-decoration-thickness:2.5px!important;text-underline-offset:3px;box-decoration-break:clone}
+:is(#latin-text,#translation-text) .wb-personal-mark[data-color=blue]{text-decoration-color:#68baff!important}
+:is(#latin-text,#translation-text) .wb-personal-mark[data-color=green]{text-decoration-color:#79cd91!important}
+:is(#latin-text,#translation-text) .wb-personal-mark[data-color=violet]{text-decoration-color:#d0a0ec!important}
+:is(#latin-text,#translation-text) .wb-personal-mark[data-color=gold]{text-decoration-color:#ddb45f!important}
+@media(max-width:780px){.wb-bottom{grid-template-columns:1fr}.wb-selection-toolbar{gap:4px}.wb-toolbar{gap:6px}.scholarly-workbench{padding:18px 14px}}
+@media print{.wb-toolbar,.wb-selection-toolbar,.wb-export,.wb-annotation-editor,.wb-note-remove{display:none!important}.scholarly-workbench{background:#fff!important;color:#111!important;border:1px solid #888}.scholarly-workbench :is(h2,h3,p,strong){color:#111!important}}
