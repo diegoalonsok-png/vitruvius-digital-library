@@ -1,10 +1,9 @@
 name: Bibliotheca - descarga nocturna controlada
 
+# La incorporación nocturna automática queda suspendida durante la
+# auditoría integral de identificaciones bibliográficas y ediciones.
+# La ejecución manual se conserva, sin publicar fichas ni corpus.
 on:
-  schedule:
-    # Buenos Aires (UTC-3), diariamente a las 01:00-07:00 inclusive.
-    # GitHub schedules use UTC. Hours 04:00-10:00 UTC.
-    - cron: "0 4-10 * * *"
   workflow_dispatch:
 
 permissions:
