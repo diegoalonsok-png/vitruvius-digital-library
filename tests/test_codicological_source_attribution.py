@@ -35,7 +35,7 @@ class InstitutionalWitnesses(unittest.TestCase):
     def test_missing_totals_recomputed(self):
         fields=[f for rec in self.data["records"] for group in rec["fields"].values() for f in group.values()]
         missing=sum(not str(f.get("value") or "").strip() for f in fields)
-        self.assertEqual(self.data["globalMissing"],missing)
+        self.assertEqual(sum(row["missing"] for row in self.data["globalMissing"]),missing)
         integrity=json.loads((ROOT/"data/academic-integrity.json").read_text(encoding="utf8"))
         self.assertEqual(integrity["codicology"]["pendingFieldSlots"],missing)
         self.assertEqual(integrity["codicology"]["filledFieldSlots"],len(fields)-missing)
