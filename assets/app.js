@@ -1,6 +1,6 @@
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261105-chicago18';
 import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
-import {parallelHighlight,parallelExcerpt} from './parallel-highlights.mjs?v=20261114-logos-v6';
+import {parallelHighlight,parallelExcerpt,hasLatinConcept} from './parallel-highlights.mjs?v=20261114-logos-sources-v7';
 import {readSearchState,searchStateURL} from './home-search-state.mjs?v=20261104-query-1';
 const $ = (q, root=document) => root.querySelector(q);
 const $$ = (q, root=document) => [...root.querySelectorAll(q)];
@@ -285,7 +285,7 @@ async function renderComparePane(pane){
 
 function ensureWorker(){
  if(worker)return worker;
- worker=new Worker(new URL('./search-worker.js?v=20261107-typo-recovery-v25',import.meta.url),{type:'module'});
+ worker=new Worker(new URL('./search-worker.js?v=20261114-logos-greek-v26',import.meta.url),{type:'module'});
  worker.onmessage=event=>{
   const data=event.data;if(data.requestId!==requestId)return;
   if(data.type==='progress'){$('#search-status').textContent=data.message;return;}
@@ -382,7 +382,9 @@ function groupMatchesByLocus(hits){
   if(!groups.has(key))groups.set(key,{key,locus:hit.locus,book:hit.book,chapter:hit.chapter,section:hit.section,hits:[]});
   groups.get(key).hits.push(hit);
  }
- return [...groups.values()];
+ const sourceHasQuery=group=>group.hits.some(h=>h.latin&&hasLatinConcept(lastQuery,h.latin));
+ // Always put source-attested original forms ahead of translated-only results.
+ return [...groups.values()].sort((a,b)=>Number(sourceHasQuery(b))-Number(sourceHasQuery(a)));
 }
 function preferredLatinHit(group){
  const chosenEdition=translationEditionIds[selectedTranslationLanguage];
@@ -440,7 +442,8 @@ async function renderRightTranslation(article,group){
    source.innerHTML='<a href="'+escapeHTML(readerURL(ed.id,group.locus))+'">Comprobar el locus en el lector bilingüe →</a>';
    return;
   }
-  const latinAnchor=p.latin||preferredLatinHit(group)?.latin||'';
+  const originalLatin=preferredLatinHit(group)?.latin||'';
+  const latinAnchor=hasLatinConcept(lastQuery,p.latin||'')?p.latin:(originalLatin||p.latin||'');
   const excerpt=parallelExcerpt(p.translation,{query:lastQuery,lang,latin:latinAnchor,max:1700});
   const paired=parallelHighlight(excerpt,{query:lastQuery,lang,latin:latinAnchor});
   holder.innerHTML=(paired?.equivalent||paired?.direct)?paired.html:resultSnippet({snippet:excerpt,form:'',context_start:null,context_length:null});
