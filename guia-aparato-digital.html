@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qué es y qué no es el aparato crítico digital · Vitruvius Digital Library</title>
+<meta name="description" content="Guía filológica del aparato crítico digital de Vitruvio: notas autorales, glosas, decisiones editoriales, observaciones del Codex H, grado de evidencia y límites de la colación.">
+<link rel="canonical" href="https://vitruvius-digital-library.org/guia-aparato-digital.html">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
+<style>
+main{max-width:1020px;margin:0 auto;padding:25px clamp(17px,4vw,40px) 85px;line-height:1.7}h1,h2{font-family:Georgia,serif;font-weight:400}h1{font-size:clamp(31px,4vw,45px);line-height:1.2}h2{margin:30px 0 12px;font-size:25px}a{overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:10px 19px;font:13px/1.7 system-ui}.note{padding:12px 16px;border-inline-start:3px solid #9f875e;background:rgba(140,112,71,.08)}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:650px;font:13px/1.65 system-ui}th,td{padding:11px;text-align:left;vertical-align:top;border-bottom:1px solid #8f8f8f66}th{font-weight:700}code{overflow-wrap:anywhere}a:focus-visible{outline:3px solid #b49459;outline-offset:3px}@media print{nav{display:none}main{max-width:none;padding:0 10mm}body{background:#fff;color:#000}a{color:#000}} 
+</style>
+<script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+<script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
+</head>
+<body>
+<main>
+<nav aria-label="Instrumentos de crítica textual">
+<a href="index.html">Biblioteca</a><a href="aparato-critico.html">Índice de notas</a><a href="registro-ecdotico.html">Registro ecdótico</a><a href="colacion.html">Colación</a><a href="comparador-loci.html">Comparador</a><a href="conspectus-testimoniorum.html">Conspectus</a>
+</nav>
+<p>DE ARCHITECTVRA · RATIO APPARATUS · DOCUMENTACIÓN DEL MÉTODO</p>
+<h1>Qué es y qué no es el aparato crítico digital</h1>
+<p>Este instrumento distingue cuatro objetos documentales que no deben confundirse: <strong>la nota del autor</strong>, <strong>la glosa explicativa</strong>, <strong>la lectura registrada en el aparato editorial</strong> y <strong>la observación sobre un testimonio manuscrito</strong>. La clasificación y la recuperación informática de esas piezas no constituyen por sí mismas una nueva <i>collatio codicum</i> ni una edición crítica exhaustiva de variantes.</p>
+<p class="note"><strong>Principio editorial:</strong> una referencia al locus identifica un lugar en la obra; no demuestra que su lectura latina haya sido cotejada con H, G, E, S u otro manuscrito. Un acuerdo entre dos versiones impresas del autor tampoco equivale a dos testimonios manuscritos independientes.</p>
+<h2>1. Inventario del registro digital</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Estrato</th><th>Registros del índice</th><th>Qué identifica</th><th>Qué no certifica</th><th>Consulta separada</th></tr></thead>
+<tbody>
+<tr><td><strong>Notas autorales</strong></td><td>811</td><td>Notas de los DOCX de V514, V554 y V297, con procedencia editorial conservada</td><td>Colación directa de cada testigo ni validez del anclaje propuesto</td><td><a href="registro-ecdotico.html?tipo=nota">Filtrar notas</a></td></tr>
+<tr><td><strong>Glosas</strong></td><td>803</td><td>Comentarios explicativos lematizados del aparato editorial</td><td>Acepción validada por revisión externa o lectura de manuscrito</td><td><a href="registro-ecdotico.html?tipo=glosa">Filtrar glosas</a></td></tr>
+<tr><td><strong>Entradas del aparato comparativo</strong></td><td>640</td><td>Lecturas y formulaciones transmitidas en el material editorial de las ediciones</td><td>640 decisiones ecdóticas independientemente verificadas; las etiquetas de doble fuente describen controles entre ediciones</td><td><a href="registro-ecdotico.html?tipo=decision">Filtrar aparato editorial</a></td></tr>
+<tr><td><strong>Observaciones del códice H</strong></td><td>37</td><td>Discrepancias u observaciones tomadas sobre el facsímil, marcadas para revisión</td><td>Variantes manuscritas establecidas; todas figuran como «a revisar»</td><td><a href="registro-ecdotico.html?tipo=lectura-h">Filtrar observaciones H</a></td></tr>
+</tbody>
+</table></div>
+<p>Fuente: <a href="data/index/registro-ecdotico.json">índice JSON de 2.291 entradas</a>, generado a partir de los documentos de la edición y registros auxiliares. Los recuentos corresponden al manifiesto consultado el 14 de noviembre de 2026 y deben regenerarse cuando cambie el corpus.</p>
+<h2>2. El anclaje de las 811 notas no es el grado de verificación textual</h2>
+<div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Cantidad</th><th>Significado estricto</th></tr></thead><tbody>
+<tr><td><strong>A · locus explícito</strong></td><td>41</td><td>La referencia al locus consta explícitamente en el documento fuente. No implica cotejo autóptico.</td></tr>
+<tr><td><strong>B · locus candidato</strong></td><td>519</td><td>Asignación digital sugerida, sujeta a comprobación humana.</td></tr>
+<tr><td><strong>C · sin locus</strong></td><td>251</td><td>La nota conserva texto, edición y párrafo de origen; no se inventa una ubicación.</td></tr>
+</tbody></table></div>
+<p>Por otra parte, el <a href="data/ecdotic-decisions.json">registro estricto de decisiones ecdóticas</a> mantiene campos de fuente, responsable, lectura base y lectura adoptada, fecha y revisión. Actualmente no contiene decisiones individuales elevadas a «verificadas con fuente». Esta ausencia no borra ni descalifica las variantes y comentarios impresos en las ediciones.</p>
+<h2>3. Para que una lectura se considere documentada</h2>
+<p>Una entrada ecdótica verificable debe identificar la edición y el <i>locus</i>, distinguir <i>lemma</i> y <i>lectio</i>, atribuir la fuente (biblioteca y signatura si es manuscrito; responsable, fecha y página si es edición), aportar folio o página y enlace comprobable, indicar quién realizó la revisión y cuándo, y dejar una justificación e historial de cambios. Las lecturas derivadas del OCR y las correspondencias aproximadas se publican como tales.</p>
+<p>La evidencia <strong>autóptica</strong> exige observación documentada del folio o de su reproducción identificada; la evidencia <strong>reportada</strong> remite a un editor o aparato histórico. Una <i>emendatio</i> se registra como intervención editorial, no como lectura automáticamente presente en un códice. Una nota de traducción no es una variante de la tradición latina.</p>
+<h2>4. Recorrido por locus y testimonio</h2>
+<nav aria-label="Recorrido de consulta">
+<a href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">I.1.1 · texto y traducción</a>
+<a href="registro-ecdotico.html?q=1.1.1">I.1.1 · entradas localizadas</a>
+<a href="colacion.html?locus=1.1.1">I.1.1 · lectura comparada</a>
+<a href="registro-ecdotico.html?tipo=lectura-h&amp;q=1.2.4">I.2.4 · observaciones de H pendientes</a>
+<a href="harleianus.html">Harley MS 2767 · visor</a>
+</nav>
+<p>Para estudiar los testigos, consultar el <a href="conspectus-testimoniorum.html">Conspectus</a> y el <a href="index-codicum.html">Index codicum</a>. La relación entre locus editorial y folio puede ser parcial: no se deben inferir de forma automática correspondencias que aún no constan en la fuente.</p>
+<h2>5. Procedencia, citas y límites</h2>
+<p>V514, V554 y V297 son ediciones del proyecto de Diego Kurilo y conservan sus <a href="como-citar.html">DOI bibliográficos individuales</a>. Los manuscritos históricos conservan su identificación institucional independiente. Para documentar una corrección posterior, véanse <a href="errata-editionum.html">Errata editionum</a>, <a href="status-textus.html">Status textus</a> y el <a href="programa-revision-academica.html">programa de revisión académica</a>.</p>
+<p><strong>Alcance efectivo:</strong> es un sistema digital de búsqueda, contextualización, comparación y trazabilidad de material editorial. No se presenta como sustituto de las ediciones críticas especializadas ni como <i>collatio</i> autóptica completa. La revisión externa de variantes y traducciones debe atribuirse a investigadores identificados y documentarse por locus.</p>
+</main>
+</body>
+</html>
