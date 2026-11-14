@@ -75,7 +75,7 @@ function mount(){
  addButton("Cerrar",close);
  document.body.append(toolbar);
  const help=document.createElement("p");help.id="lx-selection-help";
- help.append(document.createTextNode("Selecciona libremente una palabra o frase del resultado; después elegí «Subrayar» o «Copiar». El resaltado de búsqueda es independiente."));
+ help.append(document.createTextNode("Selecciona libremente una palabra o frase del resultado; después elige «Subrayar» o «Copiar». El resaltado de búsqueda es independiente."));
  const reset=document.createElement("button");reset.type="button";reset.textContent="Quitar mis subrayados";
  reset.addEventListener("click",()=>{
   for(const span of root.querySelectorAll("[data-lx-manual='1']")){
