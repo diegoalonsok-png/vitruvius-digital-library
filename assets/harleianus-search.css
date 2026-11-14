@@ -84,3 +84,34 @@ html[data-theme=dark] #h-locus-status,html[data-theme=dark] .h-sync-evidence{col
 html[data-theme=dark] .h-locus-row,html[data-theme=dark] .h-sync-editorial{background:#2b4153;color:#f2e5d5;border-color:#6f8493}
 html[data-theme=dark] .h-sync-warning{color:#f2d39b!important}
 html[data-theme=dark] #h-folio-context a,html[data-theme=dark] .h-locus-row a{color:#d6e8ff}
+
+/* Siglum/folio/page plate attached to the image, independent of the search results. */
+#h-active-folio-plate.h-folio-plate{
+ position:relative;z-index:1;margin:15px 0 0;padding:14px 20px 12px;
+ border:1px solid #7e96a2;border-bottom:3px solid #bd9b61;border-radius:7px 7px 0 0;
+ background:#1d3141;color:#fbf6eb;box-shadow:0 2px 10px #15253120;
+}
+#h-active-folio-plate .h-folio-plate-main{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 22px}
+#h-active-folio-plate .h-folio-plate-identity{min-width:220px;flex:1 1 400px;display:grid;gap:3px}
+#h-active-folio-plate .h-folio-siglum{display:block;color:#dfca9e;letter-spacing:.13em;font:700 10px/1.4 system-ui,sans-serif}
+#h-active-folio-plate .h-folio-number{display:block;color:#fff9eb;font:400 clamp(23px,2.6vw,34px)/1.14 Georgia,serif;letter-spacing:.01em}
+#h-active-folio-plate .h-folio-book{font:13px/1.5 Georgia,serif;color:#e2e8e9}
+#h-active-folio-plate .h-folio-digital{display:grid;gap:3px;text-align:right;min-width:145px;font-variant-numeric:tabular-nums}
+#h-active-folio-plate .h-folio-digital>span{font:700 10px/1.4 system-ui,sans-serif;letter-spacing:.12em;color:#dfca9e}
+#h-active-folio-plate .h-folio-digital>strong{font:600 23px/1.2 Georgia,serif;color:#fbf7ec}
+#h-active-folio-plate .h-folio-digital>small{font:11px/1.45 system-ui,sans-serif;color:#c6d0d5}
+#h-active-folio-plate .h-folio-plate-detail{
+ display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:5px 18px;
+ border-top:1px solid #526577;margin-top:12px;padding-top:9px;
+ font:12px/1.55 system-ui,sans-serif;color:#e9ece9}
+#h-active-folio-plate #h-active-loci{flex:1 1 280px;color:#f2d9a1}
+#h-active-folio-plate #h-active-certainty{flex:1 1 320px;text-align:right;color:#dde5e7}
+#h-active-folio-plate #h-active-certainty[data-verification="sequence"]{color:#ffdc91}
+#h-active-folio-plate #h-active-certainty[data-verification="none"]{color:#ffdc91}
+#h-active-folio-plate+#stage{margin-top:0;border-top:0;border-radius:0 0 6px 6px}
+@media(max-width:750px){
+ #h-active-folio-plate.h-folio-plate{padding:12px 13px 10px}
+ #h-active-folio-plate .h-folio-digital{text-align:left}
+ #h-active-folio-plate #h-active-certainty{text-align:left}
+}
+@media print{#h-active-folio-plate{break-after:avoid;page-break-after:avoid}}
