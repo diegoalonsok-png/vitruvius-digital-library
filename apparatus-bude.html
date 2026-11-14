@@ -46,18 +46,20 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <label>Locus (libro.capítulo.sección)<input id="locus" name="locus" value="1.1.1" spellcheck="false" placeholder="1.1.1"></label>
 <button type="submit">Consultar pasaje</button>
 <button type="button" id="prev">Anterior</button><button type="button" id="next">Siguiente</button>
+<label>Edición latina de referencia<select id="edition"><option value="v514">Kurilo V514 · texto estructurado</option><option value="rose">Valentin Rose 1899 · OCR histórico</option></select></label>
 <label>Visualización<select id="mode"><option value="all">Texto y aparato</option><option value="v514">Solo decisiones V514</option><option value="source">Comparación documental</option></select></label>
 </form>
 <p id="status" class="ab-status" role="status" aria-live="polite">Cargando los datos existentes…</p>
 <section class="ab-leaves" aria-label="Texto y traducción en páginas enfrentadas">
 <article class="ab-leaf" lang="es"><header class="ab-leaf-head"><span class="ab-locus" id="left-locus">—</span><h2>Traducción castellana</h2><span class="ab-edition">KURILO · V514 · 2026</span></header><div id="translation" class="ab-text"></div><div class="ab-apparatus"><h3>Nota editorial</h3><p class="ab-none">La traducción se reproduce de V514. Las notas interpretativas se consultan por separado en el inventario de aparato autoral.</p><a id="notes-link" href="inventario-aparato-autoral.html">Consultar notas del autor →</a></div></article>
 <article class="ab-leaf" lang="la"><header class="ab-leaf-head"><span class="ab-locus" id="right-locus">—</span><h2>Textus Latinus</h2><span class="ab-edition">RECENSIO V514 · PROVISORIA</span></header><div id="latin" class="ab-text ab-latin"></div>
-<section class="ab-apparatus" aria-label="Aparato conciso"><h3>Apparatus criticus minor</h3><div id="minor"></div></section></article>
+<section class="ab-apparatus" aria-label="Aparato conciso"><h3 id="minor-heading">Apparatus criticus minor · V514</h3><div id="minor"></div></section></article>
 </section>
 <section class="ab-documentation" aria-label="Documentación y testimonios">
 <h2>Documentación crítica · Apparatus maior</h2>
 <p>Las entradas se reproducen para cotejo documental; no se normalizan automáticamente variantes ni se fabrican siglas. La atribución de cada fragmento OCR exige verificación contra la página original y el locus.</p>
 <details open><summary>Rose 1899 · aparato histórico OCR</summary><div id="rose"></div></details>
+<details id="rose-facsimile"><summary>Rose 1899 · facsímil de la página impresa</summary><p>Imagen de la edición de Valentin Rose, <i>Vitruvii De architectura libri decem</i>, Leipzig: Teubner, 1899. La correspondencia de página procede de la alineación automática y requiere comprobación.</p><p><a id="rose-pdf-link" target="_blank" rel="noopener noreferrer" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf">Abrir PDF histórico de Rose</a></p><iframe id="rose-pdf-frame" loading="lazy" title="Fascímil histórico de Rose 1899" style="display:block;width:100%;height:min(70vh,690px);border:1px solid var(--ab-rule)"></iframe><p class="ab-none">Si el archivo externo impide su visualización incrustada, usar el enlace al PDF original.</p></details>
 <details><summary>Krohn 1912 · aparato histórico OCR</summary><div id="krohn"></div></details>
 <details><summary>Conspectus siglorum · identificación de testimonios</summary><dl id="sigla"></dl><p>Las referencias de los editores históricos no implican autopsia digital ni lectura directa realizada por este proyecto.</p></details>
 <details><summary>Criterios ecdóticos de esta presentación</summary><p>El texto V514, las lecturas propuestas en su aparato y los extractos OCR históricos permanecen diferenciados. Un lema con corchete editorial no es una lectura diplomática; una coincidencia de búsqueda no demuestra una variante. El estado “comprobada en V514 y V554” remite a concordancia interna de ediciones, no a lectura manuscrita verificada. Los aparatos originales se deben cotejar en los facsímiles enlazados.</p></details>
@@ -68,7 +70,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 (()=>{"use strict";
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
 const pUrl=new URL(location.href),params=new URLSearchParams(pUrl.search);
-let data=null,comp=null,rows=[],current="";
+let data=null,comp=null,collation=null,rows=[],current="";
 function source(div,record,name){
  const host=$(div);host.replaceChildren();
  const entries=record?.entradas||[];if(!entries.length){const p=document.createElement("p");p.className="ab-none";p.textContent="Sin entradas extraídas para este locus.";host.append(p);return}
@@ -79,16 +81,26 @@ function source(div,record,name){
 }
 function load(locus){
  const passage=rows.find(p=>p.locus===locus);if(!passage){set("#status","El locus no figura en la edición estructurada V514. Compruebe su numeración.");return}
- current=locus;$("#locus").value=locus;params.set("locus",locus);history.replaceState(null,"",location.pathname+"?"+params.toString());
- set("#left-locus",format(locus));set("#right-locus",format(locus));set("#latin",passage.latin||"Texto latino no documentado");set("#translation",passage.translation||"Traducción no documentada");
+ current=locus;$("#locus").value=locus;params.set("locus",locus);params.set("edition",$("#edition").value);history.replaceState(null,"",location.pathname+"?"+params.toString());
+ set("#left-locus",format(locus));set("#right-locus",format(locus));
+ const edition=$("#edition").value,roseText=collation?.loci?.[locus]?.["rose-1899"]?.text;
+ set("#latin",edition==="rose"?(roseText||"No existe un fragmento OCR asignado a este locus. Consultar el facsímil."):passage.latin||"Texto latino no documentado");
+ set("#translation",passage.translation||"Traducción no documentada");
+ document.querySelector(".ab-leaf[lang=la] .ab-edition").textContent=edition==="rose"?"ROSE 1899 · OCR HISTÓRICO NO REVISADO":"RECENSIO V514 · PROVISORIA";
+ set("#minor-heading",edition==="rose"?"Apparatus criticus · Rose 1899 (OCR)":"Apparatus criticus minor · V514");
+ const pdf=comp?.loci?.find(v=>v.locus===locus)?.["rose-1899"]?.pdf||"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf";
+ $("#rose-pdf-link").href=pdf;$("#rose-pdf-frame").src=pdf;
  const d=comp?.loci?.find(v=>v.locus===locus),minor=$("#minor");minor.replaceChildren();let count=0;const mode=$("#mode").value;
- if(d&&mode!=="source")for(const v of (d.v514||[])){
+ if(d&&mode!=="source"&&edition!=="rose")for(const v of (d.v514||[])){
    if(!v.lema||!v.aparato?.trim())continue;
    const item=document.createElement("div");item.className="ab-entry";
    const first=document.createElement("span");first.textContent=v.aparato;item.append(first);
    const meta=document.createElement("span");meta.className="ab-meta";meta.textContent="V514 · p. "+(v.pagina||"sin localizar")+" · "+(v.grado||"estado no especificado")+" · entrada editorial pendiente de revisión individual";item.append(meta);minor.append(item);count++;
  }
- if(!count){const p=document.createElement("p");p.className="ab-none";p.textContent=mode==="source"?"Modo documental: consultar los aparatos históricos desplegables.":"No hay una entrada V514 apta para presentar como variante breve en este locus. La ausencia de entradas no significa unanimidad manuscrita.";minor.append(p)}
+ if(edition==="rose"&&mode!=="v514"){
+   for(const e of (d?.["rose-1899"]?.entradas||[])){const item=document.createElement("div");item.className="ab-entry";item.textContent=e.texto||"";const meta=document.createElement("span");meta.className="ab-meta";meta.textContent="Rose 1899 · OCR candidato, p. "+(e.pagina||d["rose-1899"].pagina||"sin identificar")+" · cotejar con facsímil";item.append(meta);minor.append(item);count++}
+ }
+ if(!count){const p=document.createElement("p");p.className="ab-none";p.textContent=edition==="rose"?"No hay entrada OCR de Rose atribuida a este locus; ello no demuestra ausencia de variantes.":mode==="source"?"Modo documental: consultar los aparatos históricos desplegables.":"No hay una entrada V514 apta para presentar como variante breve en este locus. La ausencia de entradas no significa unanimidad manuscrita.";minor.append(p)}
  if(mode==="v514"){$(".ab-documentation").querySelectorAll("details").forEach(x=>x.open=false)}
  source("#rose",d?.["rose-1899"],"Rose 1899");source("#krohn",d?.["krohn-1912"],"Krohn 1912");
  $("#reader-link").href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);
@@ -97,18 +109,19 @@ function load(locus){
 }
 $("#controls").addEventListener("submit",e=>{e.preventDefault();load($("#locus").value.trim().toLowerCase())});
 $("#mode").addEventListener("change",()=>current&&load(current));
+$("#edition").addEventListener("change",()=>current&&load(current));
 for(const [id,offset] of [["#prev",-1],["#next",1]])$(id).addEventListener("click",()=>{const i=rows.findIndex(p=>p.locus===current);if(i>=0&&rows[i+offset])load(rows[i+offset].locus)});
 $("#print").addEventListener("click",()=>window.print());
 $("#copy").addEventListener("click",async()=>{
- const t="Vitruvio, De architectura, "+format(current)+", ed. y trad. Diego A. Kurilo, V514 (2026), DOI: 10.5281/zenodo.23884757; https://vitruvius-digital-library.org/apparatus-bude?locus="+encodeURIComponent(current)+". Aparato histórico: Rose (1899) y Krohn (1912), OCR pendiente de cotejo.";
+ const t=$("#edition").value==="rose"?"Vitruvius, De architectura, "+format(current)+", ed. Valentin Rose, Vitruvii De architectura libri decem, Leipzig: Teubner, 1899 (2.ª ed.); facsímil: "+$("#rose-pdf-link").href+". El texto presentado en este lector es OCR provisional, no transcripción revisada.":"Vitruvio, De architectura, "+format(current)+", ed. y trad. Diego A. Kurilo, V514 (2026), DOI: 10.5281/zenodo.23884757; https://vitruvius-digital-library.org/apparatus-bude?locus="+encodeURIComponent(current)+". Aparato histórico: Rose (1899) y Krohn (1912), OCR pendiente de cotejo.";
  try{await navigator.clipboard.writeText(t);set("#status","Referencia copiada; comprobar los datos bibliográficos antes de publicarla.")}catch{window.prompt("Copiar referencia:",t)}
 });
 (async()=>{
- try{const urls=["data/structured/recensio-es.json","data/apparatus/aparato-comparativo.json"];
+ try{const urls=["data/structured/recensio-es.json","data/apparatus/aparato-comparativo.json","data/collation-loci.json"];
  const resp=await Promise.all(urls.map(u=>fetch(u,{headers:{Accept:"application/json"}})));for(let i=0;i<resp.length;i++)if(!resp[i].ok)throw Error(urls[i]+": HTTP "+resp[i].status);
- [data,comp]=await Promise.all(resp.map(r=>r.json()));if(!Array.isArray(data.passages)||!Array.isArray(comp.loci))throw Error("Estructura de datos no reconocida");
+ [data,comp,collation]=await Promise.all(resp.map(r=>r.json()));if(!Array.isArray(data.passages)||!Array.isArray(comp.loci)||!collation.loci)throw Error("Estructura de datos no reconocida");
  rows=data.passages;const sig=$("#sigla");for(const [k,v] of Object.entries(comp.testimonios||{})){const dt=document.createElement("dt");dt.textContent=k;const dd=document.createElement("dd");dd.textContent=v;sig.append(dt,dd)}
- load(params.get("locus")||"1.1.1");
+ if(params.get("edition")==="rose")$("#edition").value="rose";load(params.get("locus")||"1.1.1");
  }catch(e){set("#status","No se pudo cargar el aparato: "+e.message+". El lector no sustituye los datos que faltan por lecturas supuestas.")}
 })();
 })();
