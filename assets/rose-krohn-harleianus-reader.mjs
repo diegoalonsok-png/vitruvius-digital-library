@@ -122,6 +122,7 @@ async function load(){
   if(manifest.custodia){const credit=$('scan-credit'),a=node('a','Consultar ejemplar de origen ↗');a.href=manifest.fuente;a.target='_blank';a.rel='noopener';credit.replaceChildren(document.createTextNode('Digitalización: '+manifest.custodia+'. '),a);}
   gallery();const params=new URLSearchParams(location.search);open(Number(params.get('image')||params.get('page'))||5);
   const data=await either('data/r2/folios/'+id+'-ocr.json',manifest.textoIndice||'data/text/'+id+'.json');
+  if(data.sha256_pdf&&manifest.sha256_pdf&&data.sha256_pdf!==manifest.sha256_pdf)throw Error('El OCR pertenece a otro PDF');
   const rows=Array.isArray(data)?data:data.edition===id?data.pages:null;
   if(!Array.isArray(rows)||rows.length!==folios.length||rows.some((p,i)=>p.page!==i+1))throw Error('El texto OCR no corresponde a la secuencia de imágenes de esta edición');
   pages=rows;

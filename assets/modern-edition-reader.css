@@ -15,7 +15,7 @@ main.modern-edition{max-width:1380px;margin:auto;padding:27px 18px 70px;color:va
 .edition-label{background:var(--white,#fffdf8);color:var(--ink,#172b3c);padding:12px 17px;margin:12px 0;border-left:3px solid #bc9c67;line-height:1.6}
 .edition-status{min-height:1.5em;font-size:14px;line-height:1.6}
 #reading-frame:fullscreen{padding:12px;background:var(--paper,#f7f4ee);overflow:auto;color:var(--ink,#172b3c)}
-#reading-frame:fullscreen #stage{height:calc(100vh - 115px)}
+#reading-frame:fullscreen #stage{height:calc(100vh - 340px);min-height:280px}
 #stage{position:relative;overflow:auto;height:72vh;min-height:440px;background:#d3cec3;border:1px solid #aa997e;overscroll-behavior:contain;scrollbar-gutter:stable}
 #page-sheet{position:relative;width:100%;margin:0 auto;line-height:0;touch-action:pan-x pan-y}
 #folio{display:block;max-width:none!important;width:100%;height:auto;margin:0}

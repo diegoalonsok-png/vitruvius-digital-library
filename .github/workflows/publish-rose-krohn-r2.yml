@@ -5,6 +5,9 @@ on:
       - 'scripts/publish-rose-krohn-folios-r2.py'
       - '.github/workflows/publish-rose-krohn-r2.yml'
   workflow_dispatch:
+concurrency:
+  group: rose-krohn-folios-r2
+  cancel-in-progress: false
 jobs:
   folios:
     runs-on: ubuntu-latest

@@ -17,4 +17,11 @@ for word in data["words"]:
  assert 0<word["w"]<=1-word["x"]+0.000002
  assert 0<word["h"]<=1-word["y"]+0.000002
 assert module.latin_tokens("VITRVVII symmetriā") == ["uitruuii","symmetria"]
+assert module.reading_scale(page,195)*page.rect.width>=2200
+# An unusually small PDF MediaBox must not reduce a native 3000 px scan.
+import io
+from PIL import Image
+raster=Image.new('RGB',(3000,4000),'white');stream=io.BytesIO();raster.save(stream,format='PNG')
+scan=doc.new_page(width=300,height=400);scan.insert_image(scan.rect,stream=stream.getvalue())
+assert module.reading_scale(scan,195)>=10
 print("PASS: PDF word boxes, exact text offsets, normalized Latin and scan identity")

@@ -195,6 +195,17 @@ def page_ocr(page, number, slug):
  return {"schema":"vdl-page-ocr-1","edition":slug,"page":number,"text":"".join(fragments),"words":words,
   "method":"Capa OCR del PDF original: coordenadas automáticas, pendientes de revisión."}
 
+def reading_scale(page,dpi):
+ """Retain the native resolution of the full-page scan, not its MediaBox DPI."""
+ scale=max(dpi/72,2200/page.rect.width)
+ images=page.get_images(full=True)
+ if images:
+  image=max(images,key=lambda item:item[2]*item[3])
+  for rect in page.get_image_rects(image[0]):
+   if rect.width>0 and rect.height>0 and rect.width*rect.height>=page.rect.width*page.rect.height*.5:
+    scale=max(scale,image[2]/rect.width,image[3]/rect.height)
+ return scale
+
 def object_inventory(s3,prefix):
  result={}
  for batch in s3.get_paginator("list_objects_v2").paginate(Bucket=BUCKET,Prefix=prefix+"/"):
@@ -228,7 +239,7 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
    # Several source PDFs have very small physical MediaBoxes. A DPI setting
    # alone produced pages only ~800 px wide despite a 3300–4000 px native scan.
    # Version the new objects so old immutable-cache responses cannot persist.
-   key = f"{prefix}/imagen-hq-{n:04d}.jpg"
+   key = f"{prefix}/imagen-master-{n:04d}.jpg"
    public = f"{BASE}/{key}"
    thumbnail=f"{prefix}/miniatura-{n:04d}.jpg"
    ocr_key=f"{prefix}/ocr/pagina-{n:04d}.json"
@@ -246,7 +257,7 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
    if dry_run: continue
    from PIL import Image
    if force or not known.get(key):
-    scale=max(dpi/72,2200/page.rect.width)
+    scale=reading_scale(page,dpi)
     pix=page.get_pixmap(matrix=fitz.Matrix(scale,scale),colorspace=fitz.csRGB,alpha=False)
     im=Image.frombytes("RGB",(pix.width,pix.height),pix.samples);output=io.BytesIO()
     im.save(output,format="JPEG",quality=92,optimize=True,subsampling=0)
@@ -265,6 +276,7 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
    "derechos": info["rights"], "imagenes": count, "folios": entries,
    "calidad": quality, "dpi_exportacion": dpi, "jpeg_calidad":92,
    "ancho_minimo_exportacion_px":2200,
+   "resolucion":"Se conserva al menos la resolución nativa del escaneo de página completa; el PDF maestro se conserva íntegro.",
    "criterio": "One scanned PDF page per image; image number is NOT printed pagination or manuscript foliation.",
    "pdf":f"{BASE}/{prefix}/source.pdf","sha256_pdf":source_hash,
    "textoIndice":f"{BASE}/{prefix}/ocr.json","lociIndice":f"{BASE}/{prefix}/loci.json",
