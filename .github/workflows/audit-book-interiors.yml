@@ -27,10 +27,6 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        batch: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    strategy:
-      fail-fast: false
-      matrix:
         start: [0, 30, 60, 90]
     steps:
       - uses: actions/checkout@v4
@@ -56,12 +52,12 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bibliotheca-content-identity-${{ github.run_id }}-batch-${{ matrix.batch }}-${{ matrix.start }}
+          name: bibliotheca-content-identity-${{ github.run_id }}-batch-${{ matrix.start }}
           path: reports/document-interiors/*.json
           if-no-files-found: warn
           retention-days: 30
       - name: Report reviewed versus unresolved
-        if: success() && (github.event_name == 'push' || matrix.batch == 0)
+        if: success()
         run: |
           python - <<'PY'
           import json,os,collections
