@@ -23,6 +23,10 @@ jobs:
   verify-existing-files:
     runs-on: ubuntu-latest
     timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        start: [0, 30, 60, 90]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -34,11 +38,12 @@ jobs:
         run: python -m py_compile scripts/audit-book-interiors.py
       - name: Verify PDF opening pages, file hash, volume and count
         env:
-          START: ${{ github.event.inputs.start || '0' }}
-          LIMIT: ${{ github.event.inputs.limit || '12' }}
+          START: ${{ matrix.start }}
+          LIMIT: "30"
         run: |
-          python scripts/audit-book-interiors.py --start "$START" --limit "$LIMIT" --output reports/document-interiors/latest.json
+          python scripts/audit-book-interiors.py --start "$START" --limit "$LIMIT" --output reports/document-interiors/r2-${{ matrix.start }}.json
       - name: Compare GitHub's classic DOCX/PDF pairs (read-only)
+        if: matrix.start == 0
         run: |
           python -m py_compile scripts/audit-local-classics-pairs.py
           python scripts/audit-local-classics-pairs.py
@@ -46,7 +51,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bibliotheca-content-identity-${{ github.run_id }}
+          name: bibliotheca-content-identity-${{ github.run_id }}-${{ matrix.start }}
           path: reports/document-interiors/*.json
           if-no-files-found: warn
           retention-days: 30
@@ -55,7 +60,7 @@ jobs:
         run: |
           python - <<'PY'
           import json,os,collections
-          p='reports/document-interiors/latest.json'
+          p='reports/document-interiors/r2-${{ matrix.start }}.json'
           data=json.load(open(p,encoding='utf8'))
           counts=collections.Counter(x['status'] for x in data['results'])
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as out:
