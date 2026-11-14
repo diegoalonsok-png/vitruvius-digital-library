@@ -47,7 +47,26 @@ function render(){
  if(!model)return;
  const {input,list,count,more,items,limit}=model,q=input.value.trim();
  list.replaceChildren();more.hidden=true;
- if(!q){model.region.hidden=true;return}
+ if(!q){
+  model.region.hidden=false;
+  count.textContent="Catálogo completo · "+items.length+" obras. Escriba para filtrar por título o autor.";
+  const all=[...items].sort((a,b)=>a.author.localeCompare(b.author,"es",{sensitivity:"base"})||a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
+  for(const w of all.slice(0,limit)){
+   const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");
+   heading.append(make("strong",w.title),make("span"," · "+w.author));li.append(heading);
+   const meta=make("p",null,"bws-meta"),languages=[...new Set(w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language))];
+   meta.textContent=languages.length?"Textos con acceso: "+languages.join(", "):w.facsimile?"Facsímil disponible · OCR automático":"Ficha catalográfica; texto no alojado";li.append(meta);
+   const actions=make("nav",null,"bws-actions");
+   const o=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader)),t=w.versions.find(v=>!["la","grc"].includes(v.language)&&safeReader(v.reader));
+   if(o)addLink(actions,"Leer original",safeReader(o.reader));
+   if(t)addLink(actions,"Leer traducción · "+(lang[t.language]||t.language),safeReader(t.reader));
+   if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
+   if(!w.newWork)addLink(actions,"Ficha académica",workLink(w.id));
+   li.append(actions);list.append(li);
+  }
+  if(all.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(all.length-limit)+" restantes)"}
+  return;
+ }
  model.region.hidden=false;
  if(normal(q).length<2){count.textContent="Escriba al menos dos caracteres.";return}
  const found=items.map(w=>({w,rank:rank(w,q)})).filter(r=>r.rank>0)
@@ -109,17 +128,18 @@ function mount(parent,data){
  addLink(help,"Vitruvia","vitruvia.html");help.append(" o ");addLink(help,"Lexicon","vitruvia-lexicon.html");help.append(".");
  section.append(title,subtitle,form,region,help);
  const metric=parent.querySelector(":scope > dl");
- if(metric)metric.insertAdjacentElement("afterend",section);else parent.append(section);
+ if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
  model={items:[...index.values()],index,input,list,count,more,region,limit:10};
  form.addEventListener("submit",e=>{e.preventDefault();model.limit=10;render()});
  input.addEventListener("input",()=>{model.limit=10;render()});
- more.addEventListener("click",()=>{model.limit+=10;render()});
+ more.addEventListener("click",()=>{model.limit+=20;render()});
+ render();
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
   loadedAliases=j.aliases||{};
   for(const [id,forms] of Object.entries(loadedAliases)){
    const w=index.get(id);if(w&&Array.isArray(forms))w.forms.push(...forms);
   }
-  if(input.value.trim())render();
+  render();
  }).catch(()=>{/* Original-language catalogue remains searchable. */});
 }
 function addFacsimiles(v,cat){
@@ -145,7 +165,7 @@ function addFacsimiles(v,cat){
    versions:[],facsimile:entry.r2,newWork:true};
   model.index.set(w.id,w);model.items.push(w);
  }
- if(model.input.value.trim())render();
+ render();
 }
 window.BibliothecaWorkSearch={mount,addFacsimiles};
 })();
