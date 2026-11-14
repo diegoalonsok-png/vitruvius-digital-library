@@ -311,6 +311,29 @@ try{
    assert(await first.locator('.parallel-translation').isVisible(),'Columna derecha no visible');
    await page.close();
  });
+ await test('Buscador principal: logos encuentra y resalta las tres recensiones',async()=>{
+   const page=await pageFor('index.html');
+   await page.locator('#scope').selectOption('all');
+   await page.locator('#query').fill('logos');
+   await page.locator('#search-button').click();
+   await page.waitForFunction(()=>{
+     const cards=[...document.querySelectorAll('#search-results .result-parallel')];
+     if(cards.length!==3)return false;
+     const map={V514:'es',V554:'fr',V297:'en'};
+     return cards.every(card=>{
+       const version=card.querySelector('.parallel-latin .parallel-heading span')?.textContent?.match(/V(?:514|554|297)/)?.[0];
+       const source=card.querySelector('.parallel-latin .parallel-passage')?.textContent||'';
+       const sourceMark=card.querySelector('.parallel-latin .parallel-passage mark')?.textContent||'';
+       const facing=card.querySelector('.parallel-translation-text')?.textContent||'';
+       const targetMark=card.querySelector('.parallel-translation-text mark')?.textContent||'';
+       const attribution=card.querySelector('.parallel-translation-source')?.textContent||'';
+       const language=card.querySelector('.parallel-language')?.value;
+       return map[version]===language && /λόγος/.test(source) && /λόγος/.test(sourceMark)
+         && facing.length>80 && !!targetMark && attribution.includes(version);
+     });
+   },null,{timeout:30000});
+   await page.close();
+ });
  await test('Index codicum internacional: 78 registros y sin nuevos visores',async()=>{
    const page=await pageFor('index-codicum.html');
    assert(await page.locator('a[href="https://catalogue.etoncollege.com/B50099"]').count()>0,'Falta Eton MS 137');
