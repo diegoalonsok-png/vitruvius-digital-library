@@ -1,6 +1,6 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Index commentariorum · Vitruvius Digital Library</title>
-<meta name="description" content="Índice de comentarios originales de las recensiones V514 y V554, organizado por libro, locus y conceptos mayores.">
+<meta name="description" content="Índice de comentarios, estudios preliminares y notas originales de Diego Kurilo: V514, V554 y V297. Referencias Chicago 18, DOI, ISBN y búsqueda académica por locus y concepto.">
 <link rel="canonical" href="https://vitruvius-digital-library.org/indice-commentariorum.html">
 <link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
 <style>
@@ -15,6 +15,7 @@ nav{display:flex;flex-wrap:wrap;gap:15px;font:12px/1.6 system-ui}
 #ic-submit{background:#756244;color:#fff;font-weight:650;border:1px solid #756244;padding:10px 18px;min-height:43px}
 #ic-submit:focus-visible{outline:3px solid #dbb74c;outline-offset:2px}
 #ic-submit.is-searching{background:#ae8b43;color:#1d160a}
+#ic-clear{font-size:12px;background:transparent;border-color:var(--ic-rule)}
 #ic-status{padding:13px 16px;border-left:3px solid #88704d;background:#f1ede4;scroll-margin-top:16px;font-weight:600}
 #ic-status:focus{outline:none}
 #ic-status[data-state="ready"]{border-left-color:#476e51}
@@ -44,13 +45,13 @@ nav{display:flex;flex-wrap:wrap;gap:15px;font:12px/1.6 system-ui}
 <form id="ic-form" class="filters">
 <label>Palabra o expresión<input id="ic-search" type="search" placeholder="symmetria, decor, Cicerón…" autocomplete="off"></label>
 <label>Libro<select id="ic-book"><option value="">Todos los libros</option></select></label>
-<label>Edición<select id="ic-edition"><option value="">V514 y V554</option><option value="V514">V514 · español</option><option value="V554">V554 · français</option><option value="V297">V297 · English</option></select></label>
+<label>Edición<select id="ic-edition"><option value="">V514 · V554 · V297</option><option value="V514">V514 · español</option><option value="V554">V554 · français</option><option value="V297">V297 · English</option></select></label>
 <label>Concepto mayor<select id="ic-term"><option value="">Todos los conceptos</option></select></label>
 <label>Tipo<select id="ic-type"><option value="">Todo el material</option><option value="commentary">Comentarios por locus</option><option value="footnote">Notas al pie</option><option value="study">Estudios preliminares</option></select></label>
-<button id="ic-submit" type="submit" aria-controls="ic-results">Buscar</button>
+<button id="ic-submit" type="submit" aria-controls="ic-results">Buscar</button><button id="ic-clear" type="button" aria-controls="ic-results">Restablecer filtros</button>
 </form>
 <p class="note">Las coincidencias textuales son instrumentos de búsqueda. El locus explícito procede del encabezamiento original; cuando una nota tiene una ubicación sugerida por el índice digital, se identifica como tal. No se modifican las conclusiones filológicas del autor.</p>
-<p id="ic-hint">Escribí una palabra o elegí un concepto mayor. Al buscar, la página te llevará directamente a los resultados.</p>
+<p id="ic-hint">Buscá en las tres ediciones (V514, V554, V297). Al presionar Buscar, se muestran los resultados y se resalta la palabra en amarillo. Los comentarios se agrupan por libro y locus.</p>
 <p id="ic-status" role="status" aria-live="polite" tabindex="-1" class="note" data-state="loading">Cargando el corpus de comentarios…</p>
 <p class="ic-structure">Conspectus: <i>liber</i> → <i>locus</i> → comentario y notas autorales. La documentación preliminar se cita por página; el aparato de variantes pertenece a su sección propia.</p><div id="ic-results"></div><button id="ic-more" type="button" hidden>Mostrar más entradas</button>
-</main><script defer src="assets/indice-commentariorum.js?v=20261114-justificado-v5"></script></body></html>
+</main><script defer src="assets/indice-commentariorum.js?v=20261114-fusionado-v6"></script></body></html>
