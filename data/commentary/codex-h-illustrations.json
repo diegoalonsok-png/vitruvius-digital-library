@@ -1,0 +1,141 @@
+{
+  "schema": "vdl-h-documentary-clippings-v1",
+  "description": "Inventario de 12 reproducciones/recortes de Harley MS 2767 incrustados en el DOCX castellano V514. Las imágenes aún no están alojadas individualmente en el repositorio; el catálogo es documental y conserva leyendas y correspondencias expresas, sin atribuir nuevos folios.",
+  "source_file": "Vitruvio_V514_ESPANOL_MASTER_IMPRENTA_2026-10-02(2).docx",
+  "institution": "British Library, Harley MS 2767",
+  "attribution": "British Library; el libro fuente consigna Public Domain Mark para las imágenes indicadas.",
+  "records": [
+    {
+      "id": "H-01",
+      "folio": "1r",
+      "locus_from": "1.praef.1",
+      "locus_to": "1.praef.2",
+      "media_in_docx": "word/media/harley_1.jpeg",
+      "caption": "Figura 13. Inicio del libro I, prefacio 1–2.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 13",
+      "asset_url": null
+    },
+    {
+      "id": "H-02",
+      "folio": "1v",
+      "locus_from": "1.praef.2",
+      "locus_to": "1.1.2",
+      "media_in_docx": "word/media/harley_2.jpeg",
+      "caption": "Figura 14. Final del prefacio y comienzo del capítulo I.1.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 14",
+      "asset_url": null
+    },
+    {
+      "id": "H-03",
+      "folio": "14r",
+      "locus_from": "1.6.2",
+      "locus_to": "1.6.3",
+      "media_in_docx": "word/media/harley_3.jpeg",
+      "caption": "Figura 15. I.6.2–3; lectura incerta según el comentario editorial.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 15",
+      "asset_url": null
+    },
+    {
+      "id": "H-04",
+      "folio": "61r",
+      "locus_from": "5.1.6",
+      "locus_to": "5.1.8",
+      "media_in_docx": "word/media/harley_4.jpeg",
+      "caption": "Figura 16. V.1.6–8; basílica de Fano.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 16",
+      "asset_url": null
+    },
+    {
+      "id": "H-05",
+      "folio": "122r",
+      "locus_from": "8.6.10",
+      "locus_to": "8.6.11",
+      "media_in_docx": "word/media/image13.png",
+      "caption": "VIII.6.10–11; plumbum y salubridad. Canvas 251 en la fuente.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 17",
+      "asset_url": null
+    },
+    {
+      "id": "H-06",
+      "folio": "123r",
+      "locus_from": null,
+      "locus_to": null,
+      "media_in_docx": "word/media/image14.png",
+      "caption": "Explicit del libro VIII e incipit del IX; canvas 253 en la fuente.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 18",
+      "asset_url": null
+    },
+    {
+      "id": "H-07",
+      "folio": "139r",
+      "locus_from": null,
+      "locus_to": null,
+      "media_in_docx": "word/media/image15.png",
+      "caption": "Explicit del libro IX e incipit del X; canvas 285 en la fuente.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 19",
+      "asset_url": null
+    },
+    {
+      "id": "H-08",
+      "folio": "162r",
+      "locus_from": null,
+      "locus_to": null,
+      "media_in_docx": "word/media/image16.png",
+      "caption": "Explicit del libro X y material postextual; canvas 331 en la fuente.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 20",
+      "asset_url": null
+    },
+    {
+      "id": "H-09",
+      "folio": "154r",
+      "locus_from": "10.11.3",
+      "locus_to": "10.11.3",
+      "media_in_docx": "word/media/image17.png",
+      "caption": "X.11.3; medidas de las ballistae; canvas 315 en la fuente.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 21",
+      "asset_url": null
+    },
+    {
+      "id": "H-10",
+      "folio": "159v",
+      "locus_from": "10.15.7",
+      "locus_to": "10.15.7",
+      "media_in_docx": "word/media/image18.png",
+      "caption": "X.15.7; cierre y CCCCLXXX pondo; canvas 326 en la fuente.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 22",
+      "asset_url": null
+    },
+    {
+      "id": "H-11",
+      "folio": "154v",
+      "locus_from": "10.11.5",
+      "locus_to": "10.11.7",
+      "media_in_docx": "word/media/image19.png",
+      "caption": "X.11.5–7; signos fraccionarios; canvas 316 en la fuente.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 23",
+      "asset_url": null
+    },
+    {
+      "id": "H-12",
+      "folio": "155r",
+      "locus_from": "10.11.7",
+      "locus_to": "10.11.9",
+      "media_in_docx": "word/media/image20.png",
+      "caption": "X.11.7–9; chele y anterides; canvas 317 en la fuente.",
+      "source_edition": "Kurilo V514",
+      "illustration": "Figura 24",
+      "asset_url": null
+    }
+  ]
+}
