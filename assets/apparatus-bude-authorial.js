@@ -13,7 +13,7 @@ function renderNote(note){
  const box=element("article",null,$("ab-autor-results"),"ab-autor-note");
  element("h3",(editions[note.edition]||note.edition)+" · nota "+note.footnote_id,box);
  const exact=!!note.locus,loc=note.locus||note.candidate_locus;
- element("p",exact?"Locus explícito en la fuente: "+note.locus:loc?"Locus candidato sin verificar: "+loc:"Sin locus identificado",box,"ab-autor-level");
+ element("p",exact?"Locus explícito en la fuente: "+note.locus:loc?"Locus propuesto por indexación: "+loc:"Sin locus identificado",box,"ab-autor-level");
  element("p",note.text||"Nota sin texto",box,"ab-autor-body");
  const details=element("details",null,box);
  element("summary","Procedencia y contexto original",details);
