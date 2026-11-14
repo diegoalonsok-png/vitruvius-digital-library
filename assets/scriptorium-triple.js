@@ -15,7 +15,7 @@ const requestedEditions=(initialParams.get("readers")||"").split(",");
 const primaryKey=keyFor(initialParams.get("edition"));
 let stateReady=false,urlTimer=0;
 const editions={
- krohn:{name:"Krohn · 1912 · OCR latín",file:"data/text/krohn-1912.json",format:"ocr",pdf:"documents/krohn-1912.pdf"},
+ krohn:{name:"Krohn · 1912 · OCR latín",file:"data/text/krohn-1912.json",format:"ocr",pdf:"https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf"},
  kurilo:{name:"Kurilo · V514 · Latín y castellano",file:"data/structured/recensio-es.json",format:"structured",pdf:"documents/kurilo-recensio-es.pdf"},
  rose:{name:"Rose · 1899 · OCR latín",file:"data/text/rose-1899.json",format:"ocr",pdf:"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"},
  fr:{name:"Kurilo · V554 · Latín y francés",file:"data/structured/recensio-fr.json",format:"structured",pdf:"documents/kurilo-recensio-fr.pdf"},
@@ -177,6 +177,7 @@ function irA(){
  const base=states.find(st=>st.data?.ed.format==="structured");
  if(!base){syncStatus.textContent="Ningún visor tiene cargada una edición por loci (Kurilo V514, V554 o V297).";return}
  const q=irPalabra.value.trim();
+ highlightTerm=q;
  let locus=irLocus.value;
  if(q){
   const f=fold(q).replace(/j/g,"i").replace(/v/g,"u"),r=f.length>6?f.replace(/(ae|am|as|um|us|is|es|em|a|e|i|o)$/,""):f;
@@ -197,7 +198,32 @@ irBoton.addEventListener("click",irA);
 irLocus.addEventListener("change",()=>{irPalabra.value="";irBoton.textContent="Sincronizar los tres visores";irA()});
 irPalabra.addEventListener("input",()=>{ultimaPalabra={q:"",i:-1};irBoton.textContent="Sincronizar los tres visores"});
 irPalabra.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();irA()}});
-toolbar.append(irBox,syncLabel,candidateLabel,syncStatus);grid.before(toolbar);
+const quick=document.createElement("div");quick.className="script-triple-quick";
+for(const [label,value] of [["Praefatio I","1.praef.1"],["symmetria","symmetria"],["decor","decor"],["eurythmia","eurythmia"]]){
+ const button=document.createElement("button");button.type="button";button.textContent=label;button.title="Localizar y sincronizar por locus o voz técnica";
+ button.addEventListener("click",()=>{if(label==="Praefatio I"){irPalabra.value="";irLocus.value=value;highlightTerm=""}else{irPalabra.value=value;irLocus.value="";ultimaPalabra={q:"",i:-1};highlightTerm=value}irA()});
+ quick.append(button);
+}
+const layoutStatus=document.createElement("span");layoutStatus.className="script-triple-arrangement";layoutStatus.setAttribute("role","status");
+layoutStatus.textContent="Ordenar columnas con ← →; anchuras ajustables.";
+toolbar.append(irBox,quick,syncLabel,candidateLabel,syncStatus,layoutStatus);grid.before(toolbar);
+let highlightTerm="",widths=[1,1,1];
+function applyWidths(){grid.style.gridTemplateColumns=widths.map(v=>"minmax(0,"+v+"fr)").join(" ")}
+function movePane(st,to){
+ const from=states.indexOf(st);if(from<0||to<0||to>=states.length||from===to)return;
+ states.splice(from,1);states.splice(to,0,st);states.forEach(x=>grid.append(x.element));
+ states.forEach((x,i)=>x.renumber(i));layoutStatus.textContent="Orden: "+states.map(x=>editions[x.editionId()].name.split(" · ")[0]).join(" · ");savePosition();
+}
+function adjustWidths(i,diff){
+ const box=grid.getBoundingClientRect(),total=widths.reduce((a,b)=>a+b,0),delta=diff/Math.max(1,box.width)*total,combined=widths[i]+widths[i+1];
+ const next=Math.max(.45,Math.min(combined-.45,widths[i]+delta));widths[i+1]=combined-next;widths[i]=next;applyWidths();
+}
+const widthControls=[0,1].map(i=>{
+ const control=document.createElement("input");control.type="range";control.className="script-triple-width";control.min="20";control.max="80";control.value="50";control.setAttribute("aria-label","Distribuir ancho entre columna "+(i+1)+" y "+(i+2));
+ control.addEventListener("input",()=>{const sum=widths[i]+widths[i+1],ratio=Number(control.value)/100;widths[i]=Math.max(.45,sum*ratio);widths[i+1]=Math.max(.45,sum-widths[i]);applyWidths()});
+ return control;
+});
+const widthBox=document.createElement("div");widthBox.className="script-triple-width-box";widthBox.append(document.createTextNode("Ancho I/II"),widthControls[0],document.createTextNode("II/III"),widthControls[1]);toolbar.append(widthBox);
 let syncActive=false;
 /* Desde una página de Krohn o Rose: el primer locus que el cotejo sitúa en esa
    página lleva a Kurilo a ese locus y al otro OCR a su página concordante. */
@@ -278,6 +304,13 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  edition.value=editions[requestedEditions[slot]]?requestedEditions[slot]:(editions[primaryKey]&&((slot===1&&editions[primaryKey].format==="structured")||(slot===0&&primaryKey==="krohn")||(slot===2&&primaryKey==="rose"))?primaryKey:defaultKey);
  const ficha=document.createElement("p");ficha.className="script-triple-ficha";ficha.textContent=FICHA[defaultKey]||"";
  const head=document.createElement("div");head.className="script-triple-head";head.append(title,ficha,edition);panel.append(head);
+const arrange=document.createElement("div");arrange.className="script-triple-move";
+const left=document.createElement("button");left.type="button";left.textContent="←";left.title="Mover visor a la izquierda";
+const right=document.createElement("button");right.type="button";right.textContent="→";right.title="Mover visor a la derecha";
+const expand=document.createElement("button");expand.type="button";expand.textContent="⛶";expand.title="Ampliar este visor";
+left.addEventListener("click",()=>movePane(state,states.indexOf(state)-1));right.addEventListener("click",()=>movePane(state,states.indexOf(state)+1));
+expand.addEventListener("click",()=>{const active=panel.classList.contains("script-triple-expanded");states.forEach(x=>x.element.classList.remove("script-triple-expanded"));panel.classList.toggle("script-triple-expanded",!active);grid.classList.toggle("script-triple-focus",!active)});
+arrange.append(left,right,expand);head.append(arrange);
  edition.addEventListener("change",()=>{ficha.textContent=FICHA[edition.value]||""});
  const bar=document.createElement("div");bar.className="script-triple-tools";
  const prev=document.createElement("button");prev.type="button";prev.textContent="←";
@@ -304,13 +337,53 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  const showText=document.createElement("button");showText.type="button";showText.textContent="Texto OCR / edición";showText.setAttribute("aria-pressed","true");
  const showFacsimile=document.createElement("button");showFacsimile.type="button";showFacsimile.textContent="Ver PDF original";showFacsimile.setAttribute("aria-pressed","false");
  viewBar.append(showText,showFacsimile);panel.append(viewBar);
+const optics=document.createElement("div");optics.className="script-triple-optics";optics.setAttribute("role","group");optics.setAttribute("aria-label","Herramientas de lectura");
+const palette=document.createElement("select");palette.setAttribute("aria-label","Paleta de lectura");
+for(const [value,label] of [["dark","Fondo negro"],["ivory","Papel marfil"],["white","Papel blanco"],["sepia","Sepia"],["blue","Azul nocturno"]])palette.append(new Option(label,value));
+const rulerToggle=document.createElement("button");rulerToggle.type="button";rulerToggle.textContent="Regla";rulerToggle.setAttribute("aria-pressed","false");
+const invert=document.createElement("button");invert.type="button";invert.textContent="Invertir";invert.setAttribute("aria-pressed","false");
+const contrast=document.createElement("button");contrast.type="button";contrast.textContent="Contraste";contrast.setAttribute("aria-pressed","false");
+const pdfMinus=document.createElement("button");pdfMinus.type="button";pdfMinus.textContent="Lupa −";
+const pdfPlus=document.createElement("button");pdfPlus.type="button";pdfPlus.textContent="Lupa +";
+const zoomLabel=document.createElement("output");zoomLabel.textContent="100%";
+optics.append(palette,rulerToggle,invert,contrast,pdfMinus,pdfPlus,zoomLabel);panel.append(optics);
  const body=document.createElement("div");body.className="script-triple-text notranslate";body.translate=false;body.tabIndex=0;body.setAttribute("aria-label","Texto del visor "+(slot+1));panel.append(body);
  const facsimile=document.createElement("iframe");facsimile.className="script-triple-pdf";facsimile.title="Facsímil PDF de la edición seleccionada";facsimile.loading="lazy";facsimile.hidden=true;panel.append(facsimile);
  const foot=document.createElement("div");foot.className="script-triple-footer";
  const translation=document.createElement("button");translation.type="button";translation.textContent="Mostrar traducción";translation.hidden=true;
  const pdf=document.createElement("a");pdf.target="_blank";pdf.rel="noopener noreferrer";pdf.textContent="Abrir PDF de esta edición ↗";
  foot.append(translation,pdf);panel.append(foot);
- let data=null,index=0,token=0,translated=false,size=18,view="text",resalte=null;
+ let data=null,index=0,token=0,translated=false,size=18,view="text",resalte=null,pdfZoom=100;
+const ruler=document.createElement("div");ruler.className="script-triple-ruler";ruler.hidden=true;ruler.setAttribute("aria-hidden","true");
+const surface=document.createElement("div");surface.className="script-triple-reading-surface";body.before(surface);surface.append(body,ruler);
+palette.addEventListener("change",()=>{panel.dataset.palette=palette.value});
+rulerToggle.addEventListener("click",()=>{const active=rulerToggle.getAttribute("aria-pressed")!=="true";rulerToggle.setAttribute("aria-pressed",String(active));ruler.hidden=!active});
+body.addEventListener("pointermove",event=>{if(!ruler.hidden){const rect=body.getBoundingClientRect();ruler.style.top=Math.max(0,Math.min(rect.height-12,event.clientY-rect.top))+"px"}});
+invert.addEventListener("click",()=>{const active=invert.getAttribute("aria-pressed")!=="true";invert.setAttribute("aria-pressed",String(active));facsimile.style.filter=active?"invert(1)":"none";body.classList.toggle("script-inverted",active)});
+contrast.addEventListener("click",()=>{const active=contrast.getAttribute("aria-pressed")!=="true";contrast.setAttribute("aria-pressed",String(active));panel.classList.toggle("script-high-contrast",active)});
+function changeZoom(delta){pdfZoom=Math.max(50,Math.min(250,pdfZoom+delta));zoomLabel.textContent=pdfZoom+"%";if(view==="pdf")updatePdf()}
+pdfMinus.addEventListener("click",()=>changeZoom(-25));pdfPlus.addEventListener("click",()=>changeZoom(25));
+function underlineTerm(){
+ if(!highlightTerm||translated||!data)return;
+ const term=highlightTerm.trim().toLowerCase().replace(/[vj]/g,c=>c==="v"?"u":"i");
+ if(term.length<3)return;
+ const walker=document.createTreeWalker(body,NodeFilter.SHOW_TEXT);
+ const nodes=[];while(walker.nextNode())if(walker.currentNode.parentElement?.tagName!=="MARK")nodes.push(walker.currentNode);
+ let total=0;
+ for(const node of nodes){
+  if(total>=100)break;
+  const value=node.textContent,normalized=value.toLowerCase().replace(/[vj]/g,c=>c==="v"?"u":"i");
+  let cursor=0,index=normalized.indexOf(term),found=false;
+  if(index<0)continue;
+  const frag=document.createDocumentFragment();
+  while(index>=0&&total<100){
+   frag.append(document.createTextNode(value.slice(cursor,index)));
+   const mark=document.createElement("mark");mark.className="script-triple-search-hit";mark.textContent=value.slice(index,index+term.length);mark.title="Coincidencia literal de búsqueda; no equivale a cotejo ecdótico";
+   frag.append(mark);cursor=index+term.length;total++;found=true;index=normalized.indexOf(term,cursor);
+  }
+  if(found){frag.append(document.createTextNode(value.slice(cursor)));node.replaceWith(frag)}
+ }
+}
  const reference=document.createElement("div");reference.className="script-reference";panel.append(reference);
  let referenceUI=null;
  const pageFor=item=>data?.ed.format==="ocr"?item.page:translated?(item.translationPage||null):(item.latinPage||null);
@@ -325,12 +398,14 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   const item=data.pages[index];
   const page=Number(pageFor(item))||null;
   const source=new URL(data.ed.pdf,location.href).href;
-  const url=source+(page?"#page="+page+"&zoom=page-width":"");
+  const url=source+"#"+(page?"page="+page+"&":"")+"zoom="+pdfZoom;
   if(facsimile.dataset.currentPdf!==url){facsimile.src=url;facsimile.dataset.currentPdf=url;}
  }
  showText.addEventListener("click",()=>setView("text"));
  showFacsimile.addEventListener("click",()=>setView("pdf"));
  const state={
+  element:panel,
+  renumber(i){title.textContent=(i+1)+" · "+editions[edition.value].name.split(" · ").slice(0,2).join(" · ")},
   get data(){return data},
   get index(){return index},
   view(){return view},
@@ -359,7 +434,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   if(!data)return;
   const item=data.pages[index];locus.value=String(index);
   body.lang=translated?({kurilo:"es",fr:"fr",en:"en"}[edition.value]||"es"):"la";
-  title.textContent=["I","II","III"][slot]+" · "+editions[edition.value].name.split(" · ").slice(0,2).join(" · ");
+  title.textContent=(states.indexOf(state)+1)+" · "+editions[edition.value].name.split(" · ").slice(0,2).join(" · ");
   ficha.textContent=FICHA[edition.value]||"";
   body.textContent=translated?item.translation:(item.text||"Esta página carece de OCR legible. Consultar facsímil.");
   let marca=null;
@@ -367,6 +442,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
    const r=ubicarTramo(item.text,resalte.t);
    if(r){body.innerHTML=esc(item.text.slice(0,r.a))+'<mark class="st-pasaje" title="Tramo que el cotejo atribuye al locus · '+esc(gradoConcordancia(resalte.score).texto)+'">'+esc(item.text.slice(r.a,r.b))+'</mark>'+esc(item.text.slice(r.b));marca=body.querySelector(".st-pasaje")}
   }
+  underlineTerm();
   message.textContent=(data.ed.format==="ocr"?"Página digital ":"Locus ")+item.locus+" · "+(index+1)+" / "+data.pages.length+
    (data.ed.format==="ocr"?" · OCR no corregido"+(resalte?.index===index&&resalte.pageEnd?" · pasaje candidato continúa hasta página digital "+resalte.pageEnd:""):" · Edición indexada por loci"+(pageFor(item)?" · página digital "+pageFor(item):" · sin página PDF vinculada a este texto"));
   showFacsimile.textContent=pageFor(item)?"Ver esta página en PDF":"Ver PDF completo";
@@ -423,7 +499,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
   searchCursor=hits.length?(searchCursor+1)%hits.length:-1;
   const found=hits[searchCursor]??-1;
   if(found<0){message.textContent="Sin coincidencias en esta edición y lengua. "+(mode.value==="semantic"?"La búsqueda semántica usa equivalencias editoriales, no IA vectorial.":"");return}
-  index=found;show();synchronize(state);
+  index=found;highlightTerm=q;show();synchronize(state);
   const passages=counts.filter(n=>n>0).length;
   message.textContent+=" · Pasaje "+(searchCursor+1)+" de "+passages+" con coincidencias; "+total+" coincidencia(s) en total. "+
     (concept?"Conceptus: "+concept.id+" · términos "+terms.join(", ")+" (equivalencia editorial, no lematización certificada).":"");
@@ -438,8 +514,8 @@ const mainSource=document.getElementById("source");
 if(mainSource)mainSource.addEventListener("change",()=>{
  const key={"pdf:krohn":"krohn","pdf:rose-1899":"rose"}[mainSource.value];
  if(!key)return;
- const slot=key==="krohn"?0:2;
- states[slot]?.selectEdition(key);
+ const matching=states.find(st=>st.editionId()===key);
+ (matching||states[key==="krohn"?0:2])?.selectEdition(key);
 });
 window.ScriptTripleCompare={
  async compareEditorialLocus(locus){
