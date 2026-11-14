@@ -339,6 +339,9 @@ jobs:
       - name: Test 26 · python -m py_compile tools/papyrology/lector_antiguo_gemini.py
         if: always()
         run: python -m py_compile tools/papyrology/lector_antiguo_gemini.py
+      - name: Posicionamiento académico · sitemap, canónicas y accesos a Bibliotheca, Vitruvia y Lexicon
+        if: always()
+        run: node scripts/test-academic-sitemap.mjs
       - name: Comprobar catálogo y archivos publicados
         run: |
           python - <<'PY'
