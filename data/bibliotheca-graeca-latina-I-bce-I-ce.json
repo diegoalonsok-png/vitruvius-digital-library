@@ -3192,19 +3192,20 @@
    },
    "manuscript": {
     "manifest": null,
-    "status": "2 registro(s) manuscritos asignados; 2 con ruta a visor o imágenes; prioridad cronológica LIMITADA al conjunto catalogado. Consulte testimonios individuales y reservas.",
+    "status": "Testimonio individualizado en BnF Grec 2179, s. IX, texto en ff. 1–171v. La signatura y el acceso digital están documentados; no se declara colación ecdótica autóptica.",
     "researchStatus": "individual_witnesses_documented",
-    "witnessCount": 2,
-    "witnessWithViewerCount": 2,
+    "witnessCount": 3,
+    "witnessWithViewerCount": 3,
     "needsAdditionalWitnesses": false,
-    "record": "https://onb.digital/search/811603",
+    "record": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j",
     "automatedAudit": {
      "type": "metadata_only",
      "catalogueCount": 271,
      "reviewRequiredBeforePublication": true,
      "pipeline": "scripts/codicology_auditor.py",
      "status": "automated_check_configured_not_autoptically_collated"
-    }
+    },
+    "metadataReviewed": "2026-11-14"
    },
    "pdf": {
     "url": null,
@@ -3270,6 +3271,28 @@
      "rights": "BnF: uso conforme a condiciones de Gallica.",
      "record": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
      "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505"
+    },
+    {
+     "id": "dioscorides-bnf-grec2179",
+     "workIds": [
+      "dioscorides"
+     ],
+     "title": "Dioscórides, Περὶ ὕλης ἰατρικῆς (De materia medica)",
+     "library": "París, Bibliothèque nationale de France, Département des manuscrits",
+     "shelfmark": "Grec 2179",
+     "date": "Siglo IX (según INHA y BnF)",
+     "dateStart": 801,
+     "language": "grc",
+     "folioRange": "ff. 1r–171v para De materia medica, según el repertorio de la Berlin-Brandenburgische Akademie der Wissenschaften",
+     "coverage": "De materia medica, en manuscrito griego ilustrado. Los límites por folio documentados se refieren a esta obra dentro del códice, no a un cotejo por capítulo.",
+     "origin": "Sinaí o Palestina según registro INHA; atribuición geográfica a contrastar en la bibliografía paleográfica especializada.",
+     "record": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j",
+     "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505/f1.item",
+     "verification": "INHA-AGORHA, Grec 2179 (siglo IX), y BBAW/CMG, tabla Dioscurides (De materia medica ff. 1–171v); consultados el 14-11-2026.",
+     "verificationUrl": "https://cmg.bbaw.de/en/homepage/resources/catalogues/dioscurides/",
+     "verificationLevel": "institutional_catalogue_plus_research_academy_2026-11-14",
+     "collationStatus": "El registro identifica códice y extensión; no se ha establecido la relación con la edición de Wellmann ni cotejado una lectura de forma autónoma.",
+     "rights": "BnF/Gallica: respetar licencia y condiciones de imagen del catálogo."
     }
    ],
    "earliestWitness": {
@@ -3289,7 +3312,19 @@
     "lexicalIndex": "recuentos del índice léxico",
     "witnessRecords": "testimonios catalogados en data/bibliotheca-testimonia-verified.json, ordenados por fecha de inicio",
     "earliestWitness": "elegido por la fecha de inicio más temprana entre los testimonios catalogados"
-   }
+   },
+   "historicEditions": [
+    {
+     "title": "Περὶ ὕλης ἰατρικῆς · edición aldina griega histórica",
+     "year": 1499,
+     "language": "grc",
+     "provider": "Bayerische Staatsbibliothek / Münchener DigitalisierungsZentrum; referencia de la BBAW",
+     "url": "https://www.digitale-sammlungen.de/view/bsb00052283",
+     "record": "https://cmg.bbaw.de/en/homepage/resources/catalogues/dioscurides/",
+     "coverage": "Edición impresa griega, testimonio editorial de 1499, distinta del manuscrito BnF Grec 2179.",
+     "note": "Enlace bibliográfico institucional; no se ha efectuado cotejo de lecciones entre el impreso y el códice."
+    }
+   ]
   },
   {
    "id": "josephus-war",
@@ -27982,6 +28017,8 @@
    "diodorus",
    "strabo"
   ],
-  "externalReadersBasis": "LacusCurtius / University of Chicago: índice textual por libros; no incorporar ni replicar material protegido."
+  "externalReadersBasis": "LacusCurtius / University of Chicago: índice textual por libros; no incorporar ni replicar material protegido.",
+  "latestDioscoridesCodex": "BnF Grec 2179, folios 1–171v (BBAW/CMG + INHA)",
+  "latestPrintEdition": "Dioscorides Aldine Greek 1499 BSB viewer"
  }
 }
