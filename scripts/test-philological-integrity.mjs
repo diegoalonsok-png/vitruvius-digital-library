@@ -32,7 +32,19 @@ assert.ok(notes.entries.length>=800,"authorial notes unexpectedly lost");
 const manuscripts=read("data/commentary/codex-h-illustrations.json");
 assert.equal(manuscripts.records.length,12);
 assert.ok(manuscripts.records.every(x=>x.folio&&x.media_in_docx));
+const collatio=read("data/apparatus/collatio-validada.json");
+const grades=new Set(Object.keys(collatio.grados||{}));
+assert.ok(collatio.entradas.length>500,"critical apparatus has too few entries");
+assert.ok(grades.has("doble-fuente")&&grades.has("transcripcion-por-comprobar"));
+for(const e of collatio.entradas){
+ assert.ok(e.locus||e.page,"critical entry without source locator");
+ assert.ok(grades.has(e.grado),"critical entry without provenance grade");
+}
+const comparison=read("data/apparatus/aparato-comparativo.json");
+for(const siglum of ["H","G","E","S"])assert.ok(comparison.testimonios[siglum],"missing manuscript siglum "+siglum);
+const hInventory=read("data/commentary/codex-h-illustrations.json");
+assert.ok(hInventory.iiif_manifest?.startsWith("https://bl.digirati.io/iiif/"));
 const errata=read("data/errata-editionum.json");
 assert.equal(errata.editions.length,3);
-for(const p of ["quaestio-philologica.html","assets/quaestio-philologica.mjs","assets/philological-core.mjs","conspectus-testimoniorum.html","assets/locus-scholarly.js"])assert.ok(existsSync(new URL(p,root)));
-console.log(JSON.stringify({ok:true,inventory,footnotes:notes.entries.length,codex_h_images_catalogued:manuscripts.records.length,errata_registers:errata.editions.length},null,2));
+for(const p of ["quaestio-philologica.html","assets/quaestio-philologica.mjs","assets/philological-core.mjs","conspectus-testimoniorum.html","concordantia-harleiana.html","assets/concordantia-harleiana.js","corpus-tei.html","assets/tei-book-export.mjs","assets/locus-scholarly.js"])assert.ok(existsSync(new URL(p,root)));
+console.log(JSON.stringify({ok:true,inventory,footnotes:notes.entries.length,codex_h_images_catalogued:manuscripts.records.length,ecdotic_entries_with_grades:collatio.entradas.length,errata_registers:errata.editions.length},null,2));
