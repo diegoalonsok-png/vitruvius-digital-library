@@ -166,6 +166,15 @@ async function translateCurrent(token){
  const button=el("translate"),target=targetLang;
  const id=[leftLang,target,record.locus,record.text].join("|");
  button.hidden=true;paragraph("right-text","Obteniendo traducción…");
+ // A documented edition may be displayed while the automatic service responds.
+ // It is never labelled as the requested automatic translation.
+ void availableHistorical(record.locus).then(historic=>{
+  if(token!==renderToken||!historic)return;
+  if(automaticCache.has(id))return;
+  paragraph("right-text",historic.text);
+  el("right-head").textContent="EDICIÓN HISTÓRICA · "+(LANG[historic.language]||historic.language.toUpperCase())+" · "+record.locus;
+  status("Edición histórica alojada visible mientras se solicita la traducción automática al "+(LANG[target]||target)+".");
+ });
  try{
   let result=automaticCache.get(id);
   if(!result){
@@ -178,6 +187,7 @@ async function translateCurrent(token){
   if(token!==renderToken)return;
   if(!result?.text)throw Error("No hay traducción");
   paragraph("right-text",result.text);
+  el("right-head").textContent="TRADUCCIÓN AUTOMÁTICA · "+(LANG[target]||target.toUpperCase())+" · "+record.locus;
   status("Traducción automática orientativa · "+result.provider+(result.partial?" · Traducción parcial.":"")+
    (leftLang==="grc"?" · El proveedor trata el griego antiguo como moderno; requiere cotejo filológico.":""));
  }catch(_){
