@@ -20,7 +20,7 @@ try{
    // The authority is an intentionally synthetic test fixture. Its events are
    // not indexed, published or misrepresented as real history.
    window.VitruviaEntityResolver={
-    resolve:async()=>({wikidataId:"Q987654",canonical:"Personaje hipotético de prueba",
+    resolve:async()=>({wikidataId:"Q987654",instanceOf:["Q5"],canonical:"Personaje hipotético de prueba",
       birthYear:1500,deathYear:1570})
    };
    window.dispatchEvent(new CustomEvent("vitruvia:search",{detail:{query:"Cronología de prueba"}}));
