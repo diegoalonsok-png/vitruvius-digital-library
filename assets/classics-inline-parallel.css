@@ -54,8 +54,12 @@
 /* Full justification in both panes. Keep intentional line breaks in verse. */
 html body .cl-source-column #passages p,
 html body .cl-translation-column .cl-translation-output > p:not(.cl-caution){
- text-align:justify!important;text-align-last:left!important;hyphens:auto;
+ text-align-last:left!important;hyphens:auto;
  overflow-wrap:anywhere;white-space:pre-line;
+}
+html body .cl-source-column #passages p{text-align:var(--reader-align,justify)!important}
+html body .cl-translation-column .cl-translation-output > p:not(.cl-caution){
+ text-align:var(--cl-translation-align,justify)!important
 }
 html body .cl-source-column #passages .locus{text-align:left!important;text-align-last:left!important}
 html body .cl-translation-column .cl-translation-output > p:not(.cl-caution){
