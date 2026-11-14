@@ -34,3 +34,8 @@ Cuando existe una traducción alojable, ofrecer por defecto el visor paralelo or
 - **Aproximada:** coincidencia narrativa o por libro marcada como orientativa, nunca fingir precisión de sección.
 - **Sin correspondencia:** mantener cada panel independiente, mostrar aviso y no desplazar a un supuesto equivalente.
 No se deben emparejar párrafos por ordinal como si fueran traducciones exactas. La vinculación de lemas, semántica, concordancias y citas debe preservar siempre el locus y la edición de origen. No indexar traducciones automáticas como versiones académicas. Las ediciones sin traducción utilizable deberán seguir disponibles en visor monolingüe.
+
+## Patrimonio manuscrito prioritario — visor de folios
+Cuando una obra clásica técnica importante tenga imágenes de manuscrito o impreso antiguo verificadas, ofrecer además una ficha codicológica y acceso folio a folio, distinto del texto transcrito. Conservar institución, signatura, datación, material, folios, procedencia, URL institucional/IIIF, derechos de reproducción y, cuando exista prueba documental, correspondencia folio↔locus. No inventar folios ni confundir paginación impresa con foliación manuscrita.
+
+Casos prioritarios: Frontino *De aquaeductu* (Montecassino, Casinensis 361; imágenes institucionales aún por verificar) y *Corpus Agrimensorum Romanorum* (Codex Arcerianus, HAB, Cod. Guelf. 36.23 Aug. 2°; folios en visor institucional; también Pal. lat. 1564). Portal documental: `folios-ingenieria-romana.html`. No declarar facsímiles alojados en R2 sin comprobar la carga.
