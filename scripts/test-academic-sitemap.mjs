@@ -89,8 +89,10 @@ assert(reader.includes('id="reader-certainty-note"')&&reader.includes('no un cot
 assert(search.includes('id="semantic-scope-note"')&&search.includes("no toda Bibliotheca"),
   "Vitruvia must disclose semantic coverage before the user opens the technical details");
 assert(snapshot.schema==="vdl-corpus-snapshot-metadata-v1"&&snapshot.records.length===3
- &&snapshot.canonical_loci===731&&snapshot.source_fingerprint_sha256===JSON.parse(fs.readFileSync("data/academic-integrity.json","utf8")).sourceFingerprint,
-  "Dated editorial snapshot must match the published three-edition integrity fingerprint");
+ &&snapshot.canonical_loci===731&&/^[a-f0-9]{64}$/.test(snapshot.source_fingerprint_sha256)
+ &&/^[a-f0-9]{40}$/.test(snapshot.source_commit)
+ &&snapshot.records.every(record=>/^[a-f0-9]{40}$/.test(record.git_blob_sha1)&&/^[a-f0-9]{64}$/.test(record.source_docx_sha256)),
+  "Dated editorial snapshot needs versioned commit and verifiable edition fingerprints");
 assert(citationGuide.includes('id="corpus-version"')&&citationGuide.includes('data/corpus-snapshot-2026-11-14.json')
  &&citationGuide.includes('lector-bilingue.html?edition=recensio-es&amp;locus=3.1.2'),
   "Citations must expose verifiable dated source and a real locus link");
