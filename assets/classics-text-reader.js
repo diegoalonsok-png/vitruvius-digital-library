@@ -71,8 +71,18 @@ function match(text,q,semantic=false){
  const words=tokenize(text);
  return qstems.some(t=>words.some(w=>w===t||((t.length>=5)&&(stem(w).length>=4)&&stem(t)===stem(w))));
 }
-function markText(target,text,q){
- // Marca visual de todas las coincidencias; el texto editado no se altera.
+function markText(target,text,q,spans){
+ // The concordance and reader highlight the very same attested source forms.
+ if(Array.isArray(spans)){
+  target.replaceChildren();let cursor=0;const hits=[];
+  for(const [a,b] of spans){
+   if(a<cursor||b<=a)continue;
+   target.append(document.createTextNode(text.slice(cursor,a)));
+   const m=document.createElement("mark");m.className=p.get("parallel")==="1"?"cl-hit cl-parallel-hit":"cl-hit";
+   m.textContent=text.slice(a,b);target.append(m);hits.push(m);cursor=b;
+  }
+  target.append(document.createTextNode(text.slice(cursor)));return hits;
+ }
  if(LEX){const found=LEX.highlightInto(target,text,q)||[];if(p.get("parallel")==="1")for(const mark of found)mark.classList.add("cl-parallel-hit");return found;}
  target.replaceChildren();target.textContent=text;return[];
 }
@@ -108,7 +118,8 @@ function select(i){
  $("prev").disabled=active===0;$("next").disabled=active>=data.passages.length-1;
  const target=$("passages"),p1=document.createElement("p"),label=document.createElement("span");
  label.className="locus";label.textContent=unitLabel()+" "+rec.locus+(rec.title?" · "+rec.title:"");
- p1.append(label);const txt=document.createElement("span");hitMarks=markText(txt,rec.text,search)||[];hitAt=-1;p1.append(txt);
+ p1.append(label);const txt=document.createElement("span");const matches=results.find(x=>x.i===active);
+ hitMarks=markText(txt,rec.text,search,matches?.locations)||[];hitAt=-1;p1.append(txt);
  target.replaceChildren(p1);target.setAttribute("lang",data.language);
  // Original-only editions: on-demand machine translation of ONE selected passage.
  // Never replace the source or count generated output as an accredited translation.
@@ -131,18 +142,63 @@ function select(i){
  }
 }
 const SEARCH_PAGE_SIZE=18;
-function literalLocations(text,query){
- // La lista y el subrayado comparten exactamente el mismo algoritmo de concordancia.
- // Así evitamos que un resultado diga "coincidencia" cuando la palabra no aparece.
- if(LEX?.find)return LEX.find(text,query,{prefix:false});
- const source=fold(text),needle=fold(query);if(!needle)return[];
- const spans=[];let at=0;
- while((at=source.indexOf(needle,at))!==-1){
-  const before=source[at-1]||"",after=source[at+needle.length]||"";
-  if(!/[\p{L}]/u.test(before)&&!/[\p{L}]/u.test(after))spans.push([at,at+needle.length]);
-  at+=Math.max(needle.length,1);
+const GREEK_QUERY=/[\u0370-\u03ff\u1f00-\u1fff]/u;
+const GREEK_ROMAN={α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",θ:"th",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ξ:"x",ο:"o",π:"p",ρ:"r",σ:"s",ς:"s",τ:"t",υ:"y",φ:"ph",χ:"ch",ψ:"ps",ω:"o"};
+const WORD_TOKEN=/[\p{L}][\p{L}\p{M}'’ʼ-]*/gu;
+function greekRoman(word){
+ const normalized=String(word||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+ return [...normalized].map(ch=>GREEK_ROMAN[ch]||ch).join("");
+}
+function romanKey(word,language){
+ if(language==="grc")return greekRoman(word).replace(/ou/g,"u").replace(/ph/g,"f").replace(/th/g,"t");
+ return fold(word).replace(/ph/g,"f").replace(/th/g,"t");
+}
+function limitedDistance(a,b,limit){
+ if(Math.abs(a.length-b.length)>limit)return limit+1;
+ let prev=Array.from({length:b.length+1},(_,i)=>i);
+ for(let i=1;i<=a.length;i++){
+  const next=[i];let min=i;
+  for(let j=1;j<=b.length;j++){
+   const d=Math.min(prev[j]+1,next[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));
+   next[j]=d;min=Math.min(min,d);
+  }
+  if(min>limit)return limit+1;
+  prev=next;
  }
- return spans;
+ return prev[b.length];
+}
+function editionTokens(){
+ if(!data)return[];
+ if(data._tokens)return data._tokens;
+ data._tokens=data.passages.map(r=>{
+  const words=[];for(const m of r.text.matchAll(WORD_TOKEN)){
+   const word=m[0].replace(/['’ʼ-]+$/u,"");
+   if(word.length<2)continue;
+   words.push({start:m.index,end:m.index+word.length,original:word,key:romanKey(word,data.language)});
+  }
+  return words;
+ });
+ return data._tokens;
+}
+function locateQuery(query,approx=false){
+ // Each returned match is grounded in an actual word and character range.
+ const tokens=editionTokens(),q=String(query||"").trim(),key=romanKey(q,data.language);
+ if(!key||key.length<2)return [];
+ const fuzzyMax=approx?(key.length>=7?2:key.length>=4?1:0):0;
+ return tokens.map((words,i)=>{
+  const locations=[],forms=new Set();
+  for(const token of words){
+   const distance=token.key===key?0:(fuzzyMax?limitedDistance(token.key,key,fuzzyMax):fuzzyMax+1);
+   if(distance>fuzzyMax)continue;
+   locations.push([token.start,token.end]);forms.add(token.original);
+  }
+  return {i,r:data.passages[i],locations,forms:[...forms],approx};
+ }).filter(x=>x.locations.length);
+}
+function literalLocations(text,query){
+ // Retained for literal concordances, using the same native manuscript letters.
+ if(LEX?.find)return LEX.find(text,query,{prefix:false});
+ return [];
 }
 function makeConcordanceExcerpt(text,from,to){
  const left=Math.max(0,from-95),right=Math.min(text.length,to+150);
@@ -159,20 +215,19 @@ function renderSearch(){
  const section=$("search-results-section");
  if(!search){results=[];resultPage=0;if(section)section.hidden=true;return}
  if(section)section.hidden=false;
- // Se examina el corpus cargado COMPLETO; no solamente el locus abierto.
- results=data.passages.map((r,i)=>{
-  const locations=literalLocations(r.text,search);
-  return {i,r,locations};
- }).filter(x=>exactConcordance?x.locations.length>0:match(x.r.text,search,true));
+ // The full indexed edition is scanned; Roman-letter queries transliterate Greek.
+ results=locateQuery(search,false);
+ let approximate=false;
+ if(!results.length&&search.trim().length>=4){results=locateQuery(search,true);approximate=results.length>0;}
  const literalTotal=results.reduce((n,x)=>n+x.locations.length,0);
  const header=document.createElement("p");header.className="search-summary";
- header.textContent=results.length+" pasajes encontrados entre "+data.passages.length+" unidades de toda la edición"+
-  (exactConcordance?" · "+literalTotal+" apariciones literales documentadas.":" · expansión experimental; compruebe las equivalencias antes de citarlas.");
+ header.textContent=results.length+" pasajes en toda la edición ("+data.passages.length+" unidades) · "+literalTotal+
+   (approximate?" apariciones aproximadas; revisar grafía y significado.":" apariciones de formas correspondientes a la consulta.");
  target.append(header);
  if(!results.length){
   const no=document.createElement("p");no.className="search-empty";
   no.textContent="No se encontraron pasajes con esta expresión en la edición "+(data.language==="grc"?"griega":data.language==="la"?"latina":"seleccionada")+
-   ". Las palabras latinas no se convierten automáticamente en palabras griegas (ni a la inversa). Consulte el diccionario para determinar una forma equivalente y vuelva a buscarla.";
+   ". Se admiten letras latinas para transcribir términos griegos y pequeñas erratas; no se inventan equivalencias semánticas. Pruebe otra forma o consulte el diccionario.";
   target.append(no);return;
  }
  const start=resultPage*SEARCH_PAGE_SIZE;
