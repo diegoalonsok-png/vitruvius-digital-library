@@ -37,7 +37,7 @@
       "doi": "10.5281/zenodo.23884757",
       "doi_url": "https://doi.org/10.5281/zenodo.23884757",
       "isbn": "978-631-01-6651-3",
-      "isbn_note": "ISBN compartido por las ediciones V514 (latín–castellano) y V554 (latín–francés) por decisión editorial; cada versión se identifica por su DOI de Zenodo.",
+      "isbn_note": "ISBN común declarado por el editor para V514, V554 y V297; los ISBN individuales por versión están pendientes. Cada versión se identifica por su DOI propio.",
       "edition_statement": "Recensio académica provisional, edición digital V514",
       "reference_file": "documents/kurilo-recensio-es.pdf"
     },
@@ -53,7 +53,7 @@
       "doi": "10.5281/zenodo.23885110",
       "doi_url": "https://doi.org/10.5281/zenodo.23885110",
       "isbn": "978-631-01-6651-3",
-      "isbn_note": "ISBN compartido por las ediciones V514 (latín–castellano) y V554 (latín–francés) por decisión editorial; cada versión se identifica por su DOI de Zenodo.",
+      "isbn_note": "ISBN común declarado por el editor para V514, V554 y V297; los ISBN individuales por versión están pendientes. Cada versión se identifica por su DOI propio.",
       "edition_statement": "Recensio académica provisional, edición digital V554",
       "reference_file": "documents/kurilo-recensio-fr.pdf"
     },
@@ -68,8 +68,8 @@
       "publication_place": "Buenos Aires",
       "doi": "10.5281/zenodo.23885404",
       "doi_url": "https://doi.org/10.5281/zenodo.23885404",
-      "isbn": null,
-      "isbn_note": "El PDF V297 depositado en Zenodo (DOI 10.5281/zenodo.23885404), portada y créditos revisados el 11-11-2026, no consigna ISBN. Se necesita el identificador asignado por el editor para completar este campo.",
+      "isbn": "978-631-01-6651-3",
+      "isbn_note": "ISBN común declarado por el editor para V514, V554 y V297; los ISBN individuales por versión están pendientes. Cada versión se identifica por su DOI propio.",
       "edition_statement": "Primera edición inglesa, revisión editorial V297",
       "reference_file": "documents/kurilo-theory-en.pdf"
     }
@@ -81,7 +81,7 @@
     "scope_note": "Pendiente no significa necesariamente aplicable; por ejemplo, la filigrana puede no corresponder al pergamino. Datos no comprobados no se infieren."
   },
   "methodology": "Bloques del aparato localizados por encabezado en el texto de los PDF y notas DOCX del autor. El vínculo con el locus es el de la página impresa; no equivale a una collatio verificada. Vocabulario de rótulos ampliado el 2026-11-11 por unión: además de los rótulos de la lista original se reconocen los rótulos en versales de cualquier especialidad (metrológica, hermenéutica, constructiva…), las bibliografías críticas por locus y las entradas del diccionario vitruviano del autor.",
-  "limits": "El DOI identifica una edición, no un locus ni un códice. El ISBN procede de los paratextos editoriales; su asignación registral independiente no queda certificada. Página de PDF, página impresa, folio y locus son localizadores diferentes. Los loci candidatos no deben citarse como collatio o lecturas paleográficas comprobadas.",
+  "limits": "El DOI identifica una edición, no un locus ni un códice. ISBN 978-631-01-6651-3: común a V514, V554 y V297 según declaración editorial; la asignación registral individual de cada versión está pendiente de corroboración independiente. Página PDF, paginación impresa, folio y locus son localizadores distintos. Loci candidatos no equivalen a collatio o lecturas paleográficas comprobadas.",
   "how_to_cite": "Abrir data/apparatus-index.json o el buscador del aparato y citar el registro o pasaje con la edición concreta, su PDF y página digital, el locus y el grado de asociación documental. Para cambios futuros, revisar la fuente y su fecha.",
   "warning": "No rellenar con información conjetural campos codicológicos, filiación de testimonios, derechos de imagen o concordancias sin respaldo."
 }
