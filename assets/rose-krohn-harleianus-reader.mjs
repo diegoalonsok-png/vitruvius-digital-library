@@ -25,6 +25,12 @@ function savedMarks(){try{const value=JSON.parse(localStorage.getItem('vdl-marks
 function saveMarks(marks){try{localStorage.setItem('vdl-marks-'+id+'-'+selected,JSON.stringify(marks));}catch{$('highlight-status').textContent='Este navegador no permite guardar los trazos entre sesiones.';}}
 function boxMark(word,manual=false){const m=node('span',undefined,'image-hit'+(manual?' manual':''));m.style.left=word.x*100+'%';m.style.top=word.y*100+'%';m.style.width=word.w*100+'%';m.style.height=word.h*100+'%';return m;}
 function markedText(text,ranges){const out=document.createDocumentFragment();let end=0;for(const [a,b] of ranges){if(a<end)continue;out.append(document.createTextNode(text.slice(end,a)),node('mark',text.slice(a,b)));end=b;}out.append(document.createTextNode(text.slice(end)));return out;}
+function readingLinks(){
+ const params=new URLSearchParams(location.search);params.set('edition',id);params.set('image',selected);
+ if($('open-compared'))$('open-compared').href='lectura-comparada.html?'+params;
+ params.delete('edition');for(const key of ['reading','lang','layout','auto'])params.delete(key);
+ if($('back-to-single'))$('back-to-single').href=id+'.html?'+params;
+}
 function paint(){
  overlay.replaceChildren();let count=0;
  if(wordPage?.page===selected){
@@ -40,6 +46,9 @@ function paint(){
   $('highlight-status').textContent='Coordenadas OCR aún no disponibles para esta hoja. El subrayado manual está disponible.';
  }
  for(const mark of savedMarks())overlay.append(boxMark(mark,true));
+ document.dispatchEvent(new CustomEvent('vdl:edition-text',{detail:{edition:id,image:selected,total:folios.length,
+  text:wordPage?.page===selected?wordPage.text:pages.find(p=>p.page===selected)?.text||'',
+  sha256_pdf:manifest?.sha256_pdf||'',terms:activeTerms.length?activeTerms:$('key-highlights').checked?KEY_TERMS:[]}}));
 }
 async function loadWords(n,token){
  const path=folios[n-1]?.texto;if(!path){paint();return;}
@@ -49,7 +58,7 @@ async function loadWords(n,token){
   if(token!==serial)return;wordPage=data;paint();
  }catch(error){wordCache.delete(n);if(token===serial){wordPage=null;paint();}}
 }
-function updateURL(){const url=new URL(location.href);url.searchParams.set('image',selected);history.replaceState(null,'',url);}
+function updateURL(){const url=new URL(location.href);url.searchParams.set('image',selected);history.replaceState(null,'',url);readingLinks();}
 function open(n,scroll=false){
  if(!folios.length)return;selected=clamp(Math.floor(Number(n)||1),1,folios.length);const f=folios[selected-1],token=++serial;
  drawing=null;wordPage=null;overlay.replaceChildren();loupe.style.display='none';
@@ -109,7 +118,7 @@ async function search(){
   else{activeTerms=mode==='words'?query.split(/\s+/):termsFor(query,mode);hits=searchPages(pages,query,mode);}
   shown=0;moreResults();paint();
   $('search-status').textContent=hits.length+(reference?' loci localizados mediante coincidencias OCR.':' páginas con coincidencias en el OCR de esta edición.')+(reference&&!hits.length?' Pruebe una frase del pasaje para localizarlo manualmente.':'')+(mode==='concept'&&!reference?' Conceptos y formas latinas del vocabulario controlado.':'');
-  const url=new URL(location.href);url.searchParams.set(reference?'locus':'q',reference?reference.key:query);url.searchParams.delete(reference?'q':'locus');url.searchParams.set('match',mode);history.replaceState(null,'',url);
+  const url=new URL(location.href);url.searchParams.set(reference?'locus':'q',reference?reference.key:query);url.searchParams.delete(reference?'q':'locus');url.searchParams.set('match',mode);history.replaceState(null,'',url);readingLinks();
  }catch(error){$('search-status').textContent=error.message+' El facsímil sigue disponible para lectura.';}
  finally{if(revision===searchSerial)$('search-submit').disabled=false;}
 }
@@ -164,8 +173,17 @@ sheet.addEventListener('pointerup',e=>{if(!drawing||drawing.page!==selected)retu
 sheet.addEventListener('pointercancel',()=>drawing=null);
 $('gallery-form').onsubmit=e=>{e.preventDefault();gallery();};$('h-gallery-reset').onclick=()=>{$('h-gallery-query').value='';gallery();};$('h-gallery-more').onclick=addThumbs;
 $('edition-search-form').onsubmit=e=>{e.preventDefault();search();};$('search-more').onclick=moreResults;
-$('search-clear').onclick=()=>{searchSerial++;hits=[];shown=0;activeTerms=[];$('edition-query').value='';$('preface-pick').value='';$('search-results').replaceChildren();$('search-more').hidden=true;$('search-submit').disabled=false;$('search-status').textContent='Escriba una palabra, frase o locus para buscar.';const u=new URL(location.href);for(const k of ['q','locus','match'])u.searchParams.delete(k);history.replaceState(null,'',u);paint();};
+$('search-clear').onclick=()=>{searchSerial++;hits=[];shown=0;activeTerms=[];$('edition-query').value='';$('preface-pick').value='';$('search-results').replaceChildren();$('search-more').hidden=true;$('search-submit').disabled=false;$('search-status').textContent='Escriba una palabra, frase o locus para buscar.';const u=new URL(location.href);for(const k of ['q','locus','match'])u.searchParams.delete(k);history.replaceState(null,'',u);readingLinks();paint();};
 $('preface-pick').onchange=()=>{if($('preface-pick').value){$('edition-query').value=$('preface-pick').value;search();}};
 document.querySelectorAll('[data-term]').forEach(button=>button.onclick=()=>{$('edition-query').value=button.dataset.term;$('edition-search-mode').value='concept';search();});
 $('copy-link').onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$('copy-link').textContent='Enlace copiado';}catch{$('copy-link').textContent='Copie la dirección de esta página';}};
+document.addEventListener('vdl:edition-open',event=>{
+ const info=event.detail;if(info?.edition!==id||!Number.isInteger(info.image)||info.image<1||info.image>folios.length)return;
+ if(Array.isArray(info.terms))activeTerms=info.terms.filter(x=>typeof x==='string');open(info.image,!!info.scroll);
+});
+document.addEventListener('vdl:edition-highlight',event=>{
+ if(event.detail?.edition!==id||!Array.isArray(event.detail.terms))return;
+ activeTerms=event.detail.terms.filter(x=>typeof x==='string');paint();
+});
+readingLinks();
 const readingTask=load();

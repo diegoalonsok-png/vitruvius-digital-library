@@ -4,17 +4,23 @@ on:
     paths:
       - 'rose-1899.html'
       - 'krohn-1912.html'
+      - 'lectura-comparada.html'
+      - 'data/r2/folios/*-parallel.json'
       - 'assets/modern-edition-*'
       - 'assets/rose-krohn-harleianus-reader.mjs'
       - 'scripts/test-modern-edition-*'
+      - 'scripts/build-modern-edition-parallel-index.mjs'
       - '.github/workflows/rose-krohn-reader.yml'
   pull_request:
     paths:
       - 'rose-1899.html'
       - 'krohn-1912.html'
+      - 'lectura-comparada.html'
+      - 'data/r2/folios/*-parallel.json'
       - 'assets/modern-edition-*'
       - 'assets/rose-krohn-harleianus-reader.mjs'
       - 'scripts/test-modern-edition-*'
+      - 'scripts/build-modern-edition-parallel-index.mjs'
 permissions:
   contents: read
 jobs:
@@ -31,6 +37,8 @@ jobs:
           node --check assets/modern-edition-search.mjs
           node scripts/test-modern-edition-search.mjs
           node scripts/test-modern-edition-reader.mjs
+          node --check assets/modern-edition-parallel.mjs
+          node scripts/test-modern-edition-parallel.mjs
           node scripts/test-krohn-locus-sync.mjs
       - uses: actions/setup-python@v5
         with:
