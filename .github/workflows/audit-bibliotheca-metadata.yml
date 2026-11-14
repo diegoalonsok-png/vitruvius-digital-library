@@ -1,0 +1,35 @@
+name: Bibliotheca · auditoría general de fichas, enlaces y duplicados
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 7 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-bibliotheca-metadata.mjs'
+      - 'data/r2/catalogo-clasicos-r2.json'
+      - 'data/r2/vinculos-repertorio.json'
+      - '.github/workflows/audit-bibliotheca-metadata.yml'
+permissions:
+  contents: read
+jobs:
+  records:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar código del auditor
+        run: node --check scripts/audit-bibliotheca-metadata.mjs
+      - name: Auditoría de integridad editorial y bibliográfica
+        run: node scripts/audit-bibliotheca-metadata.mjs
+      - name: Subir informe reproducible sin alterar obras
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-auditoria-metadatos
+          path: reports/bibliotheca/catalogue-metadata-audit.json
+          if-no-files-found: warn
+          retention-days: 30
