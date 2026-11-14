@@ -22,6 +22,10 @@ const apply=make("button",null,"Aplicar marca");apply.type="button";bar.append(a
 const erase=make("button",null,"Borrar selección"),clear=make("button",null,"Limpiar pasaje");
 erase.type=clear.type="button";bar.append(erase,clear);
 const appearance=make("span","cl-annotation-appearance");bar.append(appearance);
+const alignButton=make("button",null,"Justificado");
+alignButton.type="button";alignButton.setAttribute("aria-label","Alternar texto justificado y alineado a izquierda en la traducción");
+alignButton.setAttribute("aria-pressed","true");
+appearance.append(alignButton);
 const feedback=make("output","cl-annotations-feedback","Selecciona palabras de la traducción para marcarlas.");
 feedback.setAttribute("aria-live","polite");bar.append(feedback);
 controls.insertAdjacentElement("afterend",bar);
@@ -53,17 +57,22 @@ for(const [name,hex] of Object.entries(palette)){
  });
 }
 const appearanceKey="vdl.classics.translation.appearance.v1."+work;
-let fg="#ece9e4",bg="#151516";
+let fg="#ece9e4",bg="#151516",align="justify";
 try{const saved=JSON.parse(localStorage.getItem(appearanceKey)||"null");
  if(/^#[0-9a-f]{6}$/i.test(saved?.bg))bg=saved.bg;
  if(/^#[0-9a-f]{6}$/i.test(saved?.fg))fg=saved.fg;
+ if(["justify","left"].includes(saved?.align))align=saved.align;
 }catch{}
 function paint(){
  column.style.setProperty("--cl-translation-bg",bg);
  column.style.setProperty("--cl-translation-fg",fg);
- try{localStorage.setItem(appearanceKey,JSON.stringify({bg,fg}))}catch{}
+ column.style.setProperty("--cl-translation-align",align);
+ alignButton.setAttribute("aria-pressed",String(align==="justify"));
+ alignButton.textContent=align==="justify"?"Justificado":"Izquierda";
+ try{localStorage.setItem(appearanceKey,JSON.stringify({bg,fg,align}))}catch{}
 }
 paint();
+alignButton.addEventListener("click",()=>{align=align==="justify"?"left":"justify";paint()});
 for(const [kind,label] of [["bg","Fondo"],["fg","Texto"]]){
  const wrapper=make("label",null,label+" ");
  const input=make("input");input.type="color";input.value=kind==="bg"?bg:fg;
