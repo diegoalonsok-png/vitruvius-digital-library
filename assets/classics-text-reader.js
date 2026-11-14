@@ -139,7 +139,7 @@ function literalLocations(text,query){
  const spans=[];let at=0;
  while((at=source.indexOf(needle,at))!==-1){
   const before=source[at-1]||"",after=source[at+needle.length]||"";
-  if(!/[\\p{L}]/u.test(before)&&!/[\\p{L}]/u.test(after))spans.push([at,at+needle.length]);
+  if(!/[\p{L}]/u.test(before)&&!/[\p{L}]/u.test(after))spans.push([at,at+needle.length]);
   at+=Math.max(needle.length,1);
  }
  return spans;
