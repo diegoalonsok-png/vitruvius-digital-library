@@ -1,0 +1,70 @@
+{
+  "schema": "vdl-classics-nightly-source-queue-v1",
+  "updated": "2026-11-14",
+  "note": "Approved upstream source files only; no work is declared published from this queue. Add future works after rights verification.",
+  "sources": [
+    {
+      "id": "athenaeus-deipnosophistae-grc-kaibel",
+      "workId": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "language": "grc",
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0008/tlg001/tlg0008.tlg001.perseus-grc3.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0008.tlg001.perseus-grc3",
+      "editorialAttribution": "Georg Kaibel, ed., 1887–1892. PerseusDL TEI",
+      "rights": "PerseusDL CC BY-SA 4.0; conserve la atribución y términos ShareAlike",
+      "semantic_keywords": {
+        "alimentación": [
+          "τροφὴ",
+          "σίτου"
+        ],
+        "convivio": [
+          "δεῖπνον",
+          "συμπόσιον"
+        ]
+      }
+    },
+    {
+      "id": "athenaeus-deipnosophistae-en-yonge",
+      "workId": "athenaeus-deipnosophistae",
+      "author": "Athenaeus",
+      "title": "The Deipnosophists",
+      "language": "en",
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0008/tlg001/tlg0008.tlg001.perseus-eng2.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg0008.tlg001.perseus-eng2",
+      "editorialAttribution": "Charles Duke Yonge, translation, 1854. PerseusDL TEI",
+      "rights": "1854 historical translation; PerseusDL CC BY-SA 4.0 transcription",
+      "semantic_keywords": {
+        "food": [
+          "food",
+          "dinner"
+        ],
+        "banquet": [
+          "banquet",
+          "feast"
+        ]
+      }
+    },
+    {
+      "id": "nonnus-dionysiaca-grc",
+      "workId": "nonnus-dionysiaca",
+      "author": "Nono de Panópolis",
+      "title": "Διονυσιακά",
+      "language": "grc",
+      "source": "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg2045/tlg001/tlg2045.tlg001.perseus-grc2.xml",
+      "sourceUrn": "urn:cts:greekLit:tlg2045.tlg001.perseus-grc2",
+      "editorialAttribution": "W. H. D. Rouse, ed., 1940–1942. PerseusDL TEI",
+      "rights": "PerseusDL CC BY-SA 4.0; verify editorial jurisdiction for hosted redistribution",
+      "semantic_keywords": {
+        "Dioniso": [
+          "Διόνυσος",
+          "Διονύσου"
+        ],
+        "vino": [
+          "οἶνος",
+          "οἴνου"
+        ]
+      }
+    }
+  ]
+}
