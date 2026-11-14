@@ -225,7 +225,10 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
   entries = []
   for i in range(count):
    n = i + 1
-   key = f"{prefix}/imagen-{n:04d}.jpg"
+   # Several source PDFs have very small physical MediaBoxes. A DPI setting
+   # alone produced pages only ~800 px wide despite a 3300–4000 px native scan.
+   # Version the new objects so old immutable-cache responses cannot persist.
+   key = f"{prefix}/imagen-hq-{n:04d}.jpg"
    public = f"{BASE}/{key}"
    thumbnail=f"{prefix}/miniatura-{n:04d}.jpg"
    ocr_key=f"{prefix}/ocr/pagina-{n:04d}.json"
@@ -243,7 +246,8 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
    if dry_run: continue
    from PIL import Image
    if force or not known.get(key):
-    pix=page.get_pixmap(matrix=fitz.Matrix(dpi/72,dpi/72),colorspace=fitz.csRGB,alpha=False)
+    scale=max(dpi/72,2200/page.rect.width)
+    pix=page.get_pixmap(matrix=fitz.Matrix(scale,scale),colorspace=fitz.csRGB,alpha=False)
     im=Image.frombytes("RGB",(pix.width,pix.height),pix.samples);output=io.BytesIO()
     im.save(output,format="JPEG",quality=92,optimize=True,subsampling=0)
     put(key,output.getvalue(),"image/jpeg")
@@ -260,6 +264,7 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
    "lengua": info["language"], "fuente": info["source"], "custodia": info["holding"],
    "derechos": info["rights"], "imagenes": count, "folios": entries,
    "calidad": quality, "dpi_exportacion": dpi, "jpeg_calidad":92,
+   "ancho_minimo_exportacion_px":2200,
    "criterio": "One scanned PDF page per image; image number is NOT printed pagination or manuscript foliation.",
    "pdf":f"{BASE}/{prefix}/source.pdf","sha256_pdf":source_hash,
    "textoIndice":f"{BASE}/{prefix}/ocr.json","lociIndice":f"{BASE}/{prefix}/loci.json",
