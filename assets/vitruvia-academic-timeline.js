@@ -86,7 +86,11 @@
   "nous","νους","techne","τεχνη",
   "episteme","επιστημη"
  ]);
- const isAbstractTerm=()=>abstractTerms.has(normalize(state.query));
+ // Lexical headwords are not historical events; citations of a word in books
+ // must not become artificial milestones for the meaning of that word.
+ const lexicalHeadwords=new Set(["domus","casa","aedes","aedificium","tectum","insula","villa","οικος","οικια","δομος"]);
+ const isLexicalHeadword=()=>lexicalHeadwords.has(normalize(state.query));
+ const isAbstractTerm=()=>abstractTerms.has(normalize(state.query))||isLexicalHeadword();
 
  // Akhenaten has a biographical scale: c. 1370–1336 BCE. Birth is not
  // attested precisely and these milestones are approximate, not regnal-date
@@ -258,6 +262,7 @@
     "L'échelle biographique s'arrête au décès approximatif. Dates discutées; les études modernes sont exclues.");
   root.append(method);
   if(!events.length){
+   if(isLexicalHeadword()){root.hidden=true;root.replaceChildren();return}
    const empty=el("p","vat-empty",L(
     "Todavía no se recuperaron acontecimientos con fecha y fuente acreditada para esta consulta. Los demás resultados del buscador siguen disponibles.",
     "No sourced dated records have been retrieved for this query yet. Other search results remain available.",
