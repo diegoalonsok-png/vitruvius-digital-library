@@ -12,7 +12,40 @@ const $=id=>document.getElementById(id);
 const R=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const plegar=s=>String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
 const vitr=l=>{const m=/^(\d+)\.(.*)$/.exec(l||"");return m?(R[+m[1]]||m[1])+"."+m[2]:l};
-const ANCHO=7,PASO=200;
+const ANCHO=7,ORDEN_VECINOS=32,PASO=200;
+const BOOKS={V514:"recensio-es",V297:"theory-en"};
+const AUTHORITY=window.VitruviusScholarlyPassages;
+const ANCIENT={author:"Marco Vitruvio Polión",title:"De architectura"};
+function readerUrl(h){
+ return "lector-bilingue.html?edition="+encodeURIComponent(BOOKS[h.ed])+
+  "&locus="+encodeURIComponent(h.locus);
+}
+function sourceRow(h){
+ return {workId:"vitruvius",editionId:BOOKS[h.ed],edition:h.ed,language:"la",
+  title:"De architectura",author:ANCIENT.author,locus:h.locus,
+  source:"data/index/latin-texto.json · edición latina digital",
+  url:"https://vitruvius-digital-library.org/lector-bilingue?edition="+
+   encodeURIComponent(BOOKS[h.ed])+"&locus="+encodeURIComponent(h.locus)};
+}
+async function editions(){
+ if(!AUTHORITY?.catalog)throw Error("Módulo de referencias no disponible");
+ return AUTHORITY.catalog().catch(()=>[]);
+}
+async function copyReference(h,button){
+ button.disabled=true;
+ try{
+  const records=await editions();
+  const citation=AUTHORITY.resolve(sourceRow(h),ANCIENT,records);
+  const context=[h.izq,h.clave,h.der].filter(Boolean).join(" ");
+  const text=citation.citation+"\nContexto KWIC parcial (no pasaje íntegro): "+context+
+   "\nVerificar el texto completo en la edición enlazada.";
+  if(navigator.clipboard?.writeText){
+   await navigator.clipboard.writeText(text);button.textContent="Copiada";
+  }else if(typeof window.prompt==="function")window.prompt("Cita académica para copiar:",text);
+ }catch(e){$("kw-aviso").textContent="No se pudo copiar la referencia: "+e.message}
+ finally{button.disabled=false}
+}
+
 let datos=null,corpus={},hits=[],vistos=0,orden="locus";
 
 function preparar(ed){
@@ -45,11 +78,11 @@ function buscar(){
  for(const x of pas){
   if(libro&&String(x.libro)!==libro)continue;
   const T=x.toks;
-  if(q.tipo==="palabra"){T.forEach((tok,i)=>{if(casa(q.t,tok))hits.push(hit(x,i,i))})}
+  if(q.tipo==="palabra"){T.forEach((tok,i)=>{if(casa(q.t,tok))hits.push(hit(x,i,i,ed))})}
   else if(q.tipo==="frase"){const n=q.partes.length;
-   for(let i=0;i+n<=T.length;i++){let ok=true;for(let k=0;k<n;k++){const w=q.partes[k];if(w.endsWith("*")?!T[i+k].p.startsWith(w.slice(0,-1)):T[i+k].p!==w){ok=false;break}}if(ok)hits.push(hit(x,i,i+n-1))}}
+   for(let i=0;i+n<=T.length;i++){let ok=true;for(let k=0;k<n;k++){const w=q.partes[k];if(w.endsWith("*")?!T[i+k].p.startsWith(w.slice(0,-1)):T[i+k].p!==w){ok=false;break}}if(ok)hits.push(hit(x,i,i+n-1,ed))}}
   else{T.forEach((tok,i)=>{if(!casa(q.a,tok))return;
-   for(let j=Math.max(0,i-q.n);j<=Math.min(T.length-1,i+q.n);j++)if(j!==i&&casa(q.b,T[j])){hits.push(hit(x,Math.min(i,j),Math.max(i,j)));break}})}
+   for(let j=Math.max(0,i-q.n);j<=Math.min(T.length-1,i+q.n);j++)if(j!==i&&casa(q.b,T[j])){hits.push(hit(x,Math.min(i,j),Math.max(i,j),ed));break}})}
  }
  ordenar();
  const porLibro={};for(const h of hits)porLibro[h.libro]=(porLibro[h.libro]||0)+1;
@@ -59,10 +92,10 @@ function buscar(){
  distribucion(porLibro,palabrasPorLibro);
  pintar();
 }
-function hit(x,i,j){const T=x.toks;
- return {locus:x.locus,libro:x.libro,izq:T.slice(Math.max(0,i-ANCHO),i).map(t=>t.f).join(" "),
+function hit(x,i,j,ed){const T=x.toks;
+ return {ed,locus:x.locus,libro:x.libro,izq:T.slice(Math.max(0,i-ANCHO),i).map(t=>t.f).join(" "),
   clave:T.slice(i,j+1).map(t=>t.f).join(" "),der:T.slice(j+1,j+1+ANCHO).map(t=>t.f).join(" "),
-  izqOrd:T.slice(0,i).reverse().map(t=>t.p).join(" "),derOrd:T.slice(j+1).map(t=>t.p).join(" ")}}
+  izqOrd:T.slice(Math.max(0,i-ORDEN_VECINOS),i).reverse().map(t=>t.p).join(" "),derOrd:T.slice(j+1,j+1+ORDEN_VECINOS).map(t=>t.p).join(" ")}}
 function ordenar(){
  const c=new Intl.Collator("la");
  if(orden==="izq")hits.sort((a,b)=>c.compare(a.izqOrd,b.izqOrd));
@@ -71,10 +104,16 @@ function ordenar(){
 }
 function pintar(){
  const out=$("kw-res"),lote=hits.slice(vistos,vistos+PASO);
- for(const h of lote){
+ for(let k=0;k<lote.length;k++){
+  const h=lote[k];
   const tr=document.createElement("tr");
-  const a=document.createElement("a");a.href="concordancia-folios.html?locus="+encodeURIComponent(h.locus);a.textContent=vitr(h.locus);a.title="Abrir el pasaje con el folio de H y la traducción";
+  const a=document.createElement("a");a.href=readerUrl(h);a.textContent=vitr(h.locus);a.title="Abrir en edición latina "+h.ed+"; no atribuye folio del Codex H";
   const td0=document.createElement("td");td0.className="kw-loc";td0.append(a);
+  const cite=document.createElement("button");cite.type="button";cite.className="kw-cite";
+  cite.textContent="Citar";cite.dataset.position=String(vistos+k);
+  cite.title="Copiar referencia editorial del locus, con DOI e ISBN cuando constan";
+  cite.setAttribute("aria-label","Citar "+vitr(h.locus)+" en edición "+h.ed);
+  td0.append(cite);
   const td1=document.createElement("td");td1.className="kw-izq";td1.textContent=h.izq;
   const td2=document.createElement("td");td2.className="kw-clave";const mk=document.createElement("mark");mk.textContent=h.clave;td2.append(mk);
   const td3=document.createElement("td");td3.className="kw-der";td3.textContent=h.der;
@@ -102,11 +141,31 @@ function distribucion(por,pal){
   g.append(col)});
  box.append(g);
 }
-function csv(){
- const esc=v=>'"'+String(v).replace(/"/g,'""')+'"';
- const filas=[["locus","contexto izquierdo","forma","contexto derecho"],...hits.map(h=>[h.locus,h.izq,h.clave,h.der])];
- const blob=new Blob(["﻿"+filas.map(f=>f.map(esc).join(",")).join("\n")],{type:"text/csv"});
- const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="concordancia-"+plegar($("kw-q").value).replace(/[^a-z0-9]+/g,"-")+".csv";a.click();
+async function csv(){
+ if(!hits.length)return;
+ let records=[];
+ try{records=await editions()}
+ catch(e){$("kw-aviso").textContent="CSV con referencias parciales: metadatos editoriales no disponibles."}
+ const head=["Autor antiguo","Obra antigua","Locus editorial","Versión","Responsable editorial","Título de edición",
+  "Editorial","Año","ISBN","Nota ISBN","DOI","Estado de cita","Contexto izquierdo","Forma o frase",
+  "Contexto derecho","Enlace permanente al lector","Origen del índice"];
+ const rows=hits.map(h=>{
+  const ref=AUTHORITY?.resolve?AUTHORITY.resolve(sourceRow(h),ANCIENT,records):null;
+  return [ANCIENT.author,ANCIENT.title,h.locus,h.ed,ref?.editor||"",ref?.title||"",ref?.publisher||"",
+   ref?.year||"",ref?.isbn||"",ref?.isbnNote||"",ref?.doi||"",ref?.level||"referencia-parcial",
+   h.izq,h.clave,h.der,sourceRow(h).url,"data/index/latin-texto.json"];
+ });
+ const esc=v=>{
+  let x=String(v??"");
+  if(/^[=+@\t\r]/.test(x))x="'"+x;
+  return '"'+x.replace(/"/g,'""')+'"';
+ };
+ const blob=new Blob(["\uFEFF"+[head,...rows].map(r=>r.map(esc).join(",")).join("\r\n")],
+  {type:"text/csv;charset=utf-8"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");a.href=url;
+ a.download="concordancia-"+plegar($("kw-q").value).replace(/[^a-z0-9]+/g,"-")+"-"+$("kw-ed").value+".csv";
+ a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);
 }
 async function cargar(){
  if(datos)return;
@@ -124,7 +183,13 @@ function init(){
   if(hits.length){ordenar();vistos=0;$("kw-res").replaceChildren();pintar()}});
  for(const b of document.querySelectorAll("#kw-ej button"))b.addEventListener("click",()=>{$("kw-q").value=b.textContent;go()});
  $("kw-mas").addEventListener("click",pintar);
- $("kw-csv").addEventListener("click",csv);
+ $("kw-csv").addEventListener("click",()=>void csv());
+  $("kw-res").addEventListener("click",event=>{
+   const button=event.target.closest?.("button.kw-cite");
+   if(!button)return;
+   const pos=Number(button.dataset.position);
+   if(Number.isInteger(pos)&&hits[pos])void copyReference(hits[pos],button);
+  });
  for(let b=1;b<=10;b++){const o=document.createElement("option");o.value=String(b);o.textContent="Libro "+R[b];$("kw-libro").append(o)}
  const u=new URLSearchParams(location.search).get("kwic");if(u){$("kw-q").value=u;go()}
 }
