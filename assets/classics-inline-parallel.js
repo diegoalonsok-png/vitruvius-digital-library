@@ -50,7 +50,7 @@ const note=el("p","cl-translation-meta","La traducción es automática y orienta
 translation.append(translationHeading,controls,label,output,note);
 root.append(original,separator,translation);
 article.append(root);
-let enabled=false,current=null,sequence=0,translateSize=20,width=50;
+let enabled=["es","en","fr"].includes(new URLSearchParams(location.search).get("to"))&&new URLSearchParams(location.search).get("parallel")!=="1",current=null,sequence=0,translateSize=20,width=50;
 try{const stored=Number(localStorage.getItem(key));if(stored>=25&&stored<=75)width=stored}catch{}
 function setWidth(value){
  width=Math.max(25,Math.min(75,Math.round(value)));
@@ -119,11 +119,12 @@ async function runTranslation(){
   note.textContent="Locus "+entry.locus+" · "+(entry.number||"")+" de "+(entry.total||"")+" · Texto fuente conservado íntegro a la izquierda.";
  }catch(error){
   if(stamp!==sequence||!enabled)return;
-  output.textContent="No fue posible traducir este pasaje mediante el servicio disponible. El texto original permanece legible a la izquierda.";
-  note.textContent="Error del proveedor de traducción: "+(error?.message||"Servicio no disponible")+". No se inventa una traducción.";
+  output.textContent="No fue posible traducir el pasaje. Pulsa «Reintentar» para volver a consultar el proveedor.";
+  note.textContent="Error del proveedor de traducción: "+(error?.message||"Servicio no disponible")+". No se inventa una traducción."; translate.hidden=false;translate.textContent="Reintentar traducción";
  }finally{if(stamp===sequence)output.removeAttribute("aria-busy")}
 }
 function activate(){enabled=true;translate.hidden=true;stop.hidden=false;showState()}
+if(enabled){translate.hidden=true;stop.hidden=false;}
 translate.addEventListener("click",activate);
 stop.addEventListener("click",()=>{
  enabled=false;sequence++;translate.hidden=false;stop.hidden=true;
