@@ -154,6 +154,14 @@ async function conceptTerms(q,language){
   .some(v=>typeof v==="string"&&fold(v)===needle));
  return concept?{id:concept.id,terms:(concept[language]||[]).filter(t=>typeof t==="string"&&t.length>1)}:null;
 }
+/* Palabras recuperables del OCR: no se equiparan a lecturas ecdóticas certificadas. */
+function ocrTerms(text,query){
+ const normalize=t=>fold(t).replace(/j/g,"i").replace(/v/g,"u");
+ const q=normalize(query).replace(/[^a-z]/g,"");
+ if(q.length<3)return false;
+ const stem=q.length>6?q.replace(/(arum|orum|ibus|ae|am|as|um|us|is|es|em|a|e|i|o)$/,""):q;
+ return termsOf(text).some(token=>normalize(token).startsWith(stem));
+}
 const toolbar=document.createElement("div");toolbar.className="script-triple-sync";
 const syncToggle=document.createElement("input");syncToggle.type="checkbox";syncToggle.checked=initialParams.get("sync")!=="0";
 const syncLabel=document.createElement("label");syncLabel.append(syncToggle,document.createTextNode(" Sincronizar los visores por locus"));
@@ -193,10 +201,11 @@ function irA(){
  irLocus.value=locus;
  if(!base.seekLocus(locus)){syncStatus.textContent="Locus "+locus+" no figura en "+editions[base.editionId()].name+".";return}
  const prev=syncToggle.checked;syncToggle.checked=true;synchronize(base);syncToggle.checked=prev;
+ if(q)void synchronizeKeyword(q,locus);
 }
 irBoton.addEventListener("click",irA);
 irLocus.addEventListener("change",()=>{irPalabra.value="";irBoton.textContent="Sincronizar los tres visores";irA()});
-irPalabra.addEventListener("input",()=>{ultimaPalabra={q:"",i:-1};irBoton.textContent="Sincronizar los tres visores"});
+irPalabra.addEventListener("input",()=>{ultimaPalabra={q:"",i:-1};highlightTerm=irPalabra.value.trim();irBoton.textContent="Sincronizar los tres visores"});
 irPalabra.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();irA()}});
 const quick=document.createElement("div");quick.className="script-triple-quick";
 for(const [label,value] of [["Praefatio I","1.praef.1"],["symmetria","symmetria"],["decor","decor"],["eurythmia","eurythmia"]]){
@@ -224,7 +233,32 @@ const widthControls=[0,1].map(i=>{
  return control;
 });
 const widthBox=document.createElement("div");widthBox.className="script-triple-width-box";widthBox.append(document.createTextNode("Ancho I/II"),widthControls[0],document.createTextNode("II/III"),widthControls[1]);toolbar.append(widthBox);
-let syncActive=false;
+let syncActive=false,keywordRun=0;
+async function synchronizeKeyword(term,locus){
+ const run=++keywordRun;
+ try{
+  const concordance=await concordanciaLoci();
+  if(run!==keywordRun)return;
+  const row=concordance.loci[locus]||{};
+  const results=[];
+  for(const state of states){
+   if(state.data?.ed.format!=="ocr")continue;
+   const witness=TESTIGO[state.editionId()];
+   const expected=Number(row[witness]?.page)||0;
+   const candidates=state.data.pages.map((p,i)=>({p,i})).filter(({p})=>ocrTerms(p.text,term));
+   const nearest=candidates.sort((a,b)=>Math.abs(a.p.page-expected)-Math.abs(b.p.page-expected))[0];
+   if(nearest&&(!expected||Math.abs(nearest.p.page-expected)<=3)){
+    state.seek(nearest.i);
+    state.explain("OCR "+state.editionId()+" · «"+term+"» atestiguado en página digital "+nearest.p.page+". Locus "+locus+" asociado por concordancia automática; comprobar lectura contra imagen.");
+    results.push(state.editionId()+": p. "+nearest.p.page+" (OCR)");
+   }else{
+    results.push(state.editionId()+": sin coincidencia OCR próxima al locus; se conserva la página de concordancia");
+   }
+  }
+  if(run===keywordRun)syncStatus.textContent="Búsqueda «"+term+"» · locus "+locus+" · "+results.join(" · ")+". Coincidencia OCR y atribución de locus son evidencias distintas.";
+ }catch(error){if(run===keywordRun)syncStatus.textContent="Búsqueda OCR parcial: "+error.message}
+}
+
 /* Desde una página de Krohn o Rose: el primer locus que el cotejo sitúa en esa
    página lleva a Kurilo a ese locus y al otro OCR a su página concordante. */
 function desdeOCR(source,current){
@@ -304,6 +338,22 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  edition.value=editions[requestedEditions[slot]]?requestedEditions[slot]:(editions[primaryKey]&&((slot===1&&editions[primaryKey].format==="structured")||(slot===0&&primaryKey==="krohn")||(slot===2&&primaryKey==="rose"))?primaryKey:defaultKey);
  const ficha=document.createElement("p");ficha.className="script-triple-ficha";ficha.textContent=FICHA[defaultKey]||"";
  const head=document.createElement("div");head.className="script-triple-head";head.append(title,ficha,edition);panel.append(head);
+ const editorialIds=document.createElement("div");editorialIds.className="script-triple-identifiers";editorialIds.setAttribute("aria-label","Identificación editorial de la edición");head.append(editorialIds);
+ async function refreshEditorialIds(){
+  editorialIds.textContent="Identificación bibliográfica…";
+  const key=edition.value;
+  try{
+   const scholar=window.ScriptoriumScholar;
+   if(!scholar)return;
+   const catalog=await scholar.catalog(),record=scholar.record(key,catalog);
+   if(edition.value!==key)return;
+   editorialIds.replaceChildren();
+   if(record.doi){const a=document.createElement("a");a.href="https://doi.org/"+record.doi;a.textContent="DOI "+record.doi;a.target="_blank";a.rel="noopener noreferrer";editorialIds.append(a)}
+   if(record.isbn){const label=document.createElement("span");label.textContent="ISBN declarado "+record.isbn+" · compartido por V514/V554/V297";label.title=record.isbnNote||"";editorialIds.append(label)}
+   if(!record.doi&&!record.isbn){const link=document.createElement("a");link.href=record.reference||"#";link.textContent="Edición histórica · "+(record.year||"")+" · ficha de procedencia";if(record.reference){link.target="_blank";link.rel="noopener noreferrer"}editorialIds.append(link)}
+  }catch{editorialIds.textContent="Identificación editorial accesible en la ficha de cita"}
+ }
+ void refreshEditorialIds();
 const arrange=document.createElement("div");arrange.className="script-triple-move";
 const left=document.createElement("button");left.type="button";left.textContent="←";left.title="Mover visor a la izquierda";
 const right=document.createElement("button");right.type="button";right.textContent="→";right.title="Mover visor a la derecha";
@@ -311,7 +361,7 @@ const expand=document.createElement("button");expand.type="button";expand.textCo
 left.addEventListener("click",()=>movePane(state,states.indexOf(state)-1));right.addEventListener("click",()=>movePane(state,states.indexOf(state)+1));
 expand.addEventListener("click",()=>{const active=panel.classList.contains("script-triple-expanded");states.forEach(x=>x.element.classList.remove("script-triple-expanded"));panel.classList.toggle("script-triple-expanded",!active);grid.classList.toggle("script-triple-focus",!active)});
 arrange.append(left,right,expand);head.append(arrange);
- edition.addEventListener("change",()=>{ficha.textContent=FICHA[edition.value]||""});
+ edition.addEventListener("change",()=>{ficha.textContent=FICHA[edition.value]||"";void refreshEditorialIds()});
  const bar=document.createElement("div");bar.className="script-triple-tools";
  const prev=document.createElement("button");prev.type="button";prev.textContent="←";
  const locus=document.createElement("select");locus.setAttribute("aria-label","Página o locus del visor "+(slot+1));
@@ -349,6 +399,11 @@ const zoomLabel=document.createElement("output");zoomLabel.textContent="100%";
 optics.append(palette,rulerToggle,invert,contrast,pdfMinus,pdfPlus,zoomLabel);panel.append(optics);
  const body=document.createElement("div");body.className="script-triple-text notranslate";body.translate=false;body.tabIndex=0;body.setAttribute("aria-label","Texto del visor "+(slot+1));panel.append(body);
  const facsimile=document.createElement("iframe");facsimile.className="script-triple-pdf";facsimile.title="Facsímil PDF de la edición seleccionada";facsimile.loading="lazy";facsimile.hidden=true;panel.append(facsimile);
+const ocrCompanion=document.createElement("section");ocrCompanion.className="script-triple-ocr-companion";ocrCompanion.hidden=true;
+const ocrHeading=document.createElement("h4");ocrHeading.textContent="OCR de la misma página digital · texto buscable";
+const ocrNote=document.createElement("p");ocrNote.className="script-triple-ocr-note";ocrNote.textContent="Transcripción automática de la página mostrada arriba; su marcado no se superpone a los píxeles del PDF ni sustituye la comprobación del facsímil.";
+const ocrText=document.createElement("div");ocrText.className="script-triple-ocr-text";ocrText.tabIndex=0;ocrText.setAttribute("aria-label","Texto OCR correspondiente a la página digital de este facsímil");
+ocrCompanion.append(ocrHeading,ocrNote,ocrText);panel.append(ocrCompanion);
  const foot=document.createElement("div");foot.className="script-triple-footer";
  const translation=document.createElement("button");translation.type="button";translation.textContent="Mostrar traducción";translation.hidden=true;
  const pdf=document.createElement("a");pdf.target="_blank";pdf.rel="noopener noreferrer";pdf.textContent="Abrir PDF de esta edición ↗";
@@ -367,7 +422,8 @@ function underlineTerm(){
  if(!highlightTerm||translated||!data)return;
  const term=highlightTerm.trim().toLowerCase().replace(/[vj]/g,c=>c==="v"?"u":"i");
  if(term.length<3)return;
- const walker=document.createTreeWalker(body,NodeFilter.SHOW_TEXT);
+ const containers=[body];if(!ocrCompanion.hidden)containers.push(ocrText);
+ for(const container of containers){const walker=document.createTreeWalker(container,NodeFilter.SHOW_TEXT);
  const nodes=[];while(walker.nextNode())if(walker.currentNode.parentElement?.tagName!=="MARK")nodes.push(walker.currentNode);
  let total=0;
  for(const node of nodes){
@@ -383,12 +439,13 @@ function underlineTerm(){
   }
   if(found){frag.append(document.createTextNode(value.slice(cursor)));node.replaceWith(frag)}
  }
-}
+ }
  const reference=document.createElement("div");reference.className="script-reference";panel.append(reference);
  let referenceUI=null;
  const pageFor=item=>data?.ed.format==="ocr"?item.page:translated?(item.translationPage||null):(item.latinPage||null);
  function setView(next){
   view=next;body.hidden=next==="pdf";facsimile.hidden=next!=="pdf";
+ ocrCompanion.hidden=next!=="pdf"||data?.ed.format!=="ocr";
   showText.setAttribute("aria-pressed",String(next==="text"));
   showFacsimile.setAttribute("aria-pressed",String(next==="pdf"));
   if(next==="pdf")updatePdf();savePosition();
@@ -437,6 +494,8 @@ function underlineTerm(){
   title.textContent=(states.indexOf(state)+1)+" · "+editions[edition.value].name.split(" · ").slice(0,2).join(" · ");
   ficha.textContent=FICHA[edition.value]||"";
   body.textContent=translated?item.translation:(item.text||"Esta página carece de OCR legible. Consultar facsímil.");
+  ocrCompanion.hidden=view!=="pdf"||data.ed.format!=="ocr";
+  ocrText.textContent=data.ed.format==="ocr"?(item.text||"No hay OCR legible para esta página; consultar facsímil."):"";
   let marca=null;
   if(!translated&&resalte&&resalte.index===index&&data.ed.format==="ocr"){
    const r=ubicarTramo(item.text,resalte.t);
@@ -481,6 +540,7 @@ function underlineTerm(){
   if((ev.type==="keydown"&&ev.key!=="Enter")||!data)return;
   ev.preventDefault();
   const q=search.value.trim();if(!q)return;
+   highlightTerm=q;
   const selectedEdition=edition.value;
   let terms=[q],concept=null;
   if(mode.value==="semantic"){
