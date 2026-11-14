@@ -582,7 +582,7 @@ function render(rows,q,details){
   }
   const li=el("li","hit");li.lang=r.language==="grc"?"el":r.language||"es";
   li.append(el("span","locus",t.loc+" "+(r.locus||"—")+" · "+(languages[r.language]||r.language)+" · "+(r.hitsInPassage||1)));
-  const evidenceLabel=r.ocr?"OCR digital · transcripción no cotejada":
+  const evidenceLabel=r.ocr?"OCR automático · texto sin revisión editorial de lecturas":
    ["la","grc"].includes(r.language)?
     "Texto de edición digital · no equivale a transcripción diplomática de un códice":
     "Versión o traducción digital · el locus compartido no acredita alineación palabra a palabra";
