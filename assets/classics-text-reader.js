@@ -121,6 +121,10 @@ function select(i){
  p1.append(label);const txt=document.createElement("span");const matches=results.find(x=>x.i===active);
  hitMarks=markText(txt,rec.text,search,matches?.locations)||[];hitAt=-1;p1.append(txt);
  target.replaceChildren(p1);target.setAttribute("lang",data.language);
+ document.dispatchEvent(new CustomEvent("vitruvia:classics-passage",{
+  detail:{work,language:data.language,locus:rec.locus,title:rec.title||"",text:rec.text,
+   number:active+1,total:data.passages.length}
+ }));
  // Original-only editions: on-demand machine translation of ONE selected passage.
  // Never replace the source or count generated output as an accredited translation.
  const localTranslationAvailable=hostedEditions.some(e=>e.workId===work&&["es","en","fr","it","de","pt"].includes(e.language));
