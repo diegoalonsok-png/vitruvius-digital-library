@@ -135,23 +135,79 @@ for(const side of ["left","right"]){
  }
 }
 function linkBack(){const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",leftLang||"grc");u.searchParams.set("right",q.get("right")||rightLang||"auto-es");if(source[pos]?.locus)u.searchParams.set("locus",source[pos].locus);el("academic").href=u.href;}
+const automaticCache=new Map(),historicalCache=new Map();
+async function alternateAutomatic(text,source,target){
+ const parts=[];for(let i=0;i<text.length;i+=380)parts.push(text.slice(i,i+380));
+ const rendered=[];
+ for(const fragment of parts.slice(0,12)){
+  const qp=new URLSearchParams({client:"gtx",sl:source==="grc"?"el":source,tl:target,dt:"t",q:fragment});
+  const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),9000);
+  try{
+   const response=await fetch("https://translate.googleapis.com/translate_a/single?"+qp,
+    {mode:"cors",cache:"no-store",referrerPolicy:"no-referrer",signal:ctrl.signal});
+   if(!response.ok)throw Error("HTTP "+response.status);
+   const json=await response.json();
+   const value=Array.isArray(json?.[0])?json[0].map(item=>Array.isArray(item)?String(item[0]||""):"").join(""):"";
+   if(!value.trim())throw Error("Traducción no disponible");
+   rendered.push(value.trim());
+  }finally{clearTimeout(timer)}
+ }
+ return {text:rendered.join(" "),provider:"Servicio automático alternativo",partial:parts.length>12};
+}
+async function availableHistorical(locus){
+ const lang=["en","fr","es","it","pt","de"].find(k=>k!==leftLang&&availableEditions.has(k));
+ if(!lang)return null;
+ if(!historicalCache.has(lang))historicalCache.set(lang,getEdition(availableEditions.get(lang),lang).catch(()=>[]));
+ const edition=await historicalCache.get(lang),record=edition.find(x=>key(x.locus)===key(locus));
+ return record?{text:record.text,language:lang}:null;
+}
+async function translateCurrent(token){
+ const record=source[pos];if(!record?.text)return;
+ const button=el("translate"),target=targetLang;
+ const id=[leftLang,target,record.locus,record.text].join("|");
+ button.hidden=true;paragraph("right-text","Obteniendo traducción…");
+ try{
+  let result=automaticCache.get(id);
+  if(!result){
+   try{
+    if(!window.VitruviaInlineTranslation?.translate)throw Error("Servicio principal no cargado");
+    result=await window.VitruviaInlineTranslation.translate(record.text,leftLang,target);
+   }catch(_){result=await alternateAutomatic(record.text,leftLang,target);}
+   if(result?.text)automaticCache.set(id,result);
+  }
+  if(token!==renderToken)return;
+  if(!result?.text)throw Error("No hay traducción");
+  paragraph("right-text",result.text);
+  status("Traducción automática orientativa · "+result.provider+(result.partial?" · Traducción parcial.":"")+
+   (leftLang==="grc"?" · El proveedor trata el griego antiguo como moderno; requiere cotejo filológico.":""));
+ }catch(_){
+  if(token!==renderToken)return;
+  const historic=await availableHistorical(record.locus);
+  if(token!==renderToken)return;
+  if(historic){
+   paragraph("right-text",historic.text);
+   el("right-head").textContent=(LANG[historic.language]||historic.language.toUpperCase())+" · EDICIÓN HISTÓRICA · "+record.locus;
+   status("No respondió la traducción automática al "+(LANG[target]||target)+". Se muestra una edición histórica alojada en "+(LANG[historic.language]||historic.language)+", no una traducción al idioma solicitado.");
+  }else{
+   paragraph("right-text","Los servicios de traducción automática no respondieron para este pasaje.");
+   status("Traducción automática no disponible; no se genera ni inventa un texto.");
+  }
+  button.textContent="Reintentar traducción automática";button.hidden=false;
+ }
+}
 function draw(){
- renderToken++;el("translate").hidden=true;
- const a=source[pos],locus=a?.locus||"";el("title").textContent=title.toUpperCase()+" · "+locus;
+ const token=++renderToken;el("translate").hidden=true;
+ const a=source[pos],locus=a?.locus||"";
+ el("title").textContent=title.toUpperCase()+" · "+locus;
  el("left-head").textContent=(LANG[leftLang]||leftLang.toUpperCase())+" · "+locus;
  paragraph("left-text",a?.text);
  const exact=translation.find(p=>key(p.locus)===key(locus));
- el("right-head").textContent=(LANG[rightLang]||"TRADUCCIÓN")+" · "+(exact?.locus||locus);
- if(exact)paragraph("right-text",exact.text);
- else {
-  paragraph("right-text","No hay traducción indexada verificable para este locus.");
-  el("right-head").textContent="TRADUCCIÓN AUTOMÁTICA · "+(LANG[targetLang]||targetLang.toUpperCase());
-  el("translate").hidden=false;
- }
+ el("right-head").textContent=(exact?"EDICIÓN ALOJADA · ":"TRADUCCIÓN AUTOMÁTICA · ")+(LANG[exact?rightLang:targetLang]||"TRADUCCIÓN")+" · "+locus;
+ if(exact){paragraph("right-text",exact.text);status("Traducción histórica alojada; verificar procedencia editorial y equivalencia del locus.");}
+ else {void translateCurrent(token);}
  el("previous").disabled=pos<=0;el("next").disabled=pos>=source.length-1;
  if(a?.locus){q.set("locus",a.locus);el("go-locus").value=a.locus;history.replaceState(null,"",location.pathname+"?"+q.toString());}
  linkBack();
- status(exact?"Texto original y traducción alojada. La coincidencia de locus no acredita por sí sola equivalencia filológica.":"No se inventan traducciones ni se presentan pasajes diferentes como equivalentes.");
 }
 async function getEdition(entry,lang){
  if(!entry||!/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||""))return [];
@@ -221,19 +277,7 @@ async function changeVersion(side,value){
 }
 el("original-lang").addEventListener("change",e=>{void changeVersion("left",e.target.value);});
 el("translation-lang").addEventListener("change",e=>{void changeVersion("right",e.target.value);});
-el("translate").addEventListener("click",async()=>{
- const button=el("translate"),record=source[pos],token=renderToken;
- if(!record?.text||!window.VitruviaInlineTranslation?.translate){status("El servicio de traducción automática no está disponible.");return;}
- button.disabled=true;button.textContent="Traduciendo…";
- paragraph("right-text","Procesando traducción orientativa…");
- try{
-  const result=await window.VitruviaInlineTranslation.translate(record.text,leftLang,targetLang);
-  if(token!==renderToken)return;
-  paragraph("right-text",result.text);button.hidden=true;
-  status("Traducción automática orientativa · "+result.provider+(result.partial?" · Traducción parcial.":"")+(leftLang==="grc"?" · El servicio interpreta griego antiguo como moderno: requiere revisión filológica.":"")+" No equivale a una traducción académica verificada.");
- }catch(e){if(token===renderToken){paragraph("right-text","No se pudo obtener la traducción automática de este pasaje.");status("El proveedor de traducción no respondió. El original permanece disponible.");}}
- finally{button.disabled=false;button.textContent="Traducir automáticamente este pasaje";}
-});
+el("translate").addEventListener("click",()=>{void translateCurrent(renderToken);});
 const cards=document.querySelector(".cards");let fontSize=30;
 const FONTS={
  gentium:'"Gentium Book Plus","Noto Serif",Georgia,serif',
