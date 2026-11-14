@@ -34,7 +34,7 @@ Ejemplo: **Jerusalén, Biblioteca del Patriarcado Ortodoxo Griego, Παναγί�
 
 **Advertencia:** los campos JSON descriptivos actuales no equivalen por sí solos a una exportación TEI-XML validada. Su transformación y validación serán una fase aparte.
 
-## 4. Secuencia de auditoría de 222 registros
+## 4. Secuencia de auditoría del catálogo vigente (271 obras al 14-11-2026)
 
 1. Verificar obra, título original, atribución, límites del texto, fuentes de edición y CTS/TLG/PHI/CPG cuando corresponda.
 2. Buscar **cada** manuscrito pertinente en bibliotecas propietarias y catálogos de autoridad (Pinakes/IRHT, Manuscripta, BnF, Vaticano, British Library, Bodleian, e-codices, Cambridge, LoC, etc.), registrando la signatura institucional.
