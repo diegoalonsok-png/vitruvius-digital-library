@@ -47,7 +47,7 @@ async function renderSupplements(locus,book){
  if(!records.length)el("p","No consta un recorte de H vinculado expresamente a este locus en el inventario gráfico; el testimonio se estudia asimismo en las notas del editor.",h,"cp-absent");
 }
 function isWithinLocus(loc,start,end){
- const arr=x=>String(x).split(".").map(Number),a=arr(loc),b=arr(start),c=arr(end);
+ const arr=x=>String(x).split(".").map(v=>v==="praef"?0:Number(v)),a=arr(loc),b=arr(start),c=arr(end);
  if(a.length!==3||b.length!==3||c.length!==3||[...a,...b,...c].some(Number.isNaN))return false;
  const n=x=>x[0]*1e6+x[1]*1e3+x[2];return n(b)<=n(a)&&n(a)<=n(c);
 }
