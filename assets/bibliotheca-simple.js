@@ -169,9 +169,9 @@ function refreshFacets(){
  order.options[0].textContent=({es:"Autor · título (A–Z)",en:"Author · title (A–Z)",fr:"Auteur · titre (A–Z)"})[locale];
  order.options[1].textContent=({es:"Título (A–Z)",en:"Title (A–Z)",fr:"Titre (A–Z)"})[locale];
  order.options[2].textContent=({es:"Cronología aproximada",en:"Approximate chronology",fr:"Chronologie approximative"})[locale];
- $("filter-method").textContent=locale==="en"?"Editorial categories from catalogue genres; approximate composition date (not manuscript or edition date). Disputed datings remain identified.":
-  locale==="fr"?"Catégories tirées du catalogue ; date approximative de composition, non de copie ou d'édition. Datations discutées signalées.":
-  "Categorías según el género catalogado y la fecha aproximada de composición, no la copia manuscrita ni la edición. Dataciones discutidas identificadas.";
+ $("filter-method").textContent=locale==="en"?"Alphabetical author/title is the default; optional chronology uses approximate composition dates, never manuscript or edition dates.":
+  locale==="fr"?"Classement alphabétique par auteur et titre par défaut ; la chronologie facultative utilise la composition approximative, non la date des manuscrits.":
+  "Orden alfabético por autor y título de forma predeterminada; la cronología opcional usa fechas aproximadas de composición, no de los manuscritos.";
 }
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=String(text);return n};
 const foldedMap=text=>{
