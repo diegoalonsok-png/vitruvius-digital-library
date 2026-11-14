@@ -91,6 +91,21 @@
  const lexicalHeadwords=new Set(["domus","casa","aedes","aedificium","tectum","insula","villa","οικος","οικια","δομος"]);
  const isLexicalHeadword=()=>lexicalHeadwords.has(normalize(state.query));
  const isAbstractTerm=()=>abstractTerms.has(normalize(state.query))||isLexicalHeadword();
+ // Chronologies describe a *dated historical subject*, never all the dated
+ // documents that happen to contain a generic lexical search term.
+ // Wikidata P31 IDs: people; literary/artistic works; historical events;
+ // buildings and archaeological sites; states and organizations.
+ const chronologicalTypes=new Set([
+  "Q5","Q571","Q7725634","Q47461344","Q11424","Q482994",
+  "Q1656682","Q178561","Q1190554","Q13418847",
+  "Q41176","Q839954","Q23413","Q6256","Q43229","Q4830453"
+ ]);
+ const hasHistoricalSubject=()=>{
+  if(isAkhenaten())return true;
+  if(isAbstractTerm())return false;
+  const a=state.authority;
+  return Boolean(a&&Array.isArray(a.instanceOf)&&a.instanceOf.some(id=>chronologicalTypes.has(id)));
+ };
 
  // Akhenaten has a biographical scale: c. 1370–1336 BCE. Birth is not
  // attested precisely and these milestones are approximate, not regnal-date
@@ -119,7 +134,7 @@
   ];
  }
  function collect(){
-  if(isAbstractTerm())return []; // No timeline without direct, dated, academically sourced concept history.
+  if(!hasHistoricalSubject())return []; // Never generate incidental-result timelines for generic words.
   if(isAkhenaten())return akhenatenEvents();
   let ev=[],a=state.authority;
   // All Wikidata authority properties keep their distinct meanings.
@@ -262,7 +277,7 @@
     "L'échelle biographique s'arrête au décès approximatif. Dates discutées; les études modernes sont exclues.");
   root.append(method);
   if(!events.length){
-   if(isLexicalHeadword()){root.hidden=true;root.replaceChildren();return}
+   root.hidden=true;root.replaceChildren();return; // No timeline without documented milestones for a historical entity.
    const empty=el("p","vat-empty",L(
     "Todavía no se recuperaron acontecimientos con fecha y fuente acreditada para esta consulta. Los demás resultados del buscador siguen disponibles.",
     "No sourced dated records have been retrieved for this query yet. Other search results remain available.",
