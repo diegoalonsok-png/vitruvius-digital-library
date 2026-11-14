@@ -225,7 +225,7 @@ try{
    await p.waitForFunction(()=>document.querySelectorAll('.hit').length>0,{timeout:65000});
    assert.match(await p.locator('.group h3').first().innerText(),/Carmina/i);
    assert.match(await p.locator('.hit .locus').first().innerText(),/Locus/);
-   assert.match(await p.locator('.hit p').first().innerText(),/Viuamus/i);
+   assert.match(await p.locator('.hit > p:not(.meta):not(.lexeme-attested)').first().innerText(),/Viuamus/i);
    assert((await p.locator('.hit p').first().evaluate(e=>getComputedStyle(e).color))==='rgb(255, 255, 255)');
    const href=await p.locator('#lexicon-link').getAttribute('href');
    assert.match(href,/vitruvia-lexicon\.html\?q=Viuamus&mode=palabra/);
