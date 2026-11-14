@@ -2464,6 +2464,10 @@
     "lexicalIndex": "recuentos del índice léxico",
     "witnessRecords": "testimonios acreditados en fuentes bibliográficas o catálogos institucionales; fecha y cobertura por registro",
     "earliestWitness": "no se atribuye prioridad global sin estudio stemmático"
+   },
+   "bibliography": {
+    "editionCitation": "Diodorus Siculus. Library of History. Translated by C. H. Oldfather et al. 12 vols. Loeb Classical Library. Cambridge, MA: Harvard University Press, 1933–1967.",
+    "method": "El índice de lectura externo reúne volúmenes de distintas fechas y traducciones, con coberturas y derechos diferentes. No es una colación del Grec 1662 ni de los demás testigos."
    }
   },
   {
@@ -2656,6 +2660,10 @@
     "lexicalIndex": "recuentos del índice léxico",
     "witnessRecords": "testimonios catalogados en data/bibliotheca-testimonia-verified.json, ordenados por fecha de inicio",
     "earliestWitness": "elegido por la fecha de inicio más temprana entre los testimonios catalogados"
+   },
+   "bibliography": {
+    "editionCitation": "Strabo. Geography. Translated by Horace Leonard Jones. 8 vols. Loeb Classical Library. Cambridge, MA: Harvard University Press, 1917–1932.",
+    "method": "La edición impresa Loeb y los testimonios medievales enlazados son fuentes documentales distintas; texto y traducción requieren referencias por volumen, libro y pasaje."
    }
   },
   {
@@ -5654,7 +5662,7 @@
      "status": "automated_check_configured_not_autoptically_collated"
     },
     "metadataReviewed": "2026-11-14",
-    "reviewBasis": "institutional_aggregator_metadata_checked_2026-11-14"
+    "reviewBasis": "institutional_aggregator_metadata_checked_2026-11-14; date discrepancy noted"
    },
    "pdf": {
     "url": null,
@@ -5692,20 +5700,6 @@
       "tokens": 117709
      }
     }
-   },
-   "witnessLookup": {
-    "status": "sin testimonio catalogado en el sitio",
-    "note": "Enlaces de búsqueda en repertorios de referencia. Son una búsqueda, no una determinación del testimonio más antiguo.",
-    "searches": [
-     {
-      "catalogue": "Biblissima",
-      "url": "https://portail.biblissima.fr/recherche?q=De%20medicina"
-     },
-     {
-      "catalogue": "Mirabile · SISMEL",
-      "url": "https://www.mirabileweb.it/search?search=De%20medicina"
-     }
-    ]
    },
    "derivedFields": {
     "lexicalIndex": "recuentos del índice léxico",
@@ -9500,16 +9494,6 @@
       "tokens": 35792
      }
     }
-   },
-   "witnessLookup": {
-    "status": "sin testimonio catalogado en el sitio",
-    "note": "Enlaces de búsqueda en repertorios de referencia. Son una búsqueda, no una determinación del testimonio más antiguo.",
-    "searches": [
-     {
-      "catalogue": "Pinakes · IRHT-CNRS",
-      "url": "https://pinakes.irht.cnrs.fr/notices/oeuvre/?search=%CE%92%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7%20(Bibliotheca)"
-     }
-    ]
    },
    "derivedFields": {
     "century": "interpretado del campo dating de esta ficha",
