@@ -209,6 +209,7 @@ async function show(locus){
  }catch{apBox.append(el("p","coll-meta","Aparato no disponible."))}
  root.append(apBox);
  root.append(el("p","coll-method","Criterio editorial: las ediciones críticas históricas de Rose y Krohn están identificadas y disponibles en facsímil. Sus correspondencias digitales por locus sirven para navegar; las lecturas OCR no equivalen por sí mismas a variantes filológicas verificadas."));
+ window.dispatchEvent(new CustomEvent("vitruvius:collation-locus",{detail:{locus}}));
 }
 function parse(v){
  const q=String(v||"").trim();if(!q)return null;
