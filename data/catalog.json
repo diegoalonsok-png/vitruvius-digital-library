@@ -41,8 +41,8 @@
       "indexed_passages": 731,
       "bibliographic_author": "Kurilo, Diego",
       "isbn": "978-631-01-6651-3",
-      "isbn_note": "ISBN común declarado por el editor para V514, V554 y V297; los ISBN individuales por versión están pendientes. Cada versión se identifica por su DOI propio.",
-      "edition_statement": "Recensio académica provisional, edición digital V514",
+      "isbn_note": "ISBN declarado por la editorial como compartido entre V514, V554 y V297. Cada edición mantiene su DOI específico. La identificación registral no constituye una valoración de la calidad filológica.",
+      "edition_statement": "Edición académica bilingüe, versión V514",
       "metadata_source": {
         "type": "author_docx_front_matter",
         "filename": "Vitruvio_V514_ESPANOL_MASTER_IMPRENTA_2026-10-02(2).docx",
@@ -66,7 +66,8 @@
         "type": "publisher_statement",
         "date": "2026-11-13",
         "note": "El editor confirmó que las tres versiones comparten actualmente el ISBN; mantienen DOI diferentes."
-      }
+      },
+      "errata_policy": "Las correcciones puntuales se documentan en una fe de erratas por versión, locus, lectura anterior, lectura corregida, fundamento y fecha; el ejemplar fuente se conserva íntegro."
     },
     {
       "id": "recensio-fr",
@@ -100,8 +101,8 @@
       "indexed_passages": 731,
       "bibliographic_author": "Kurilo, Diego",
       "isbn": "978-631-01-6651-3",
-      "isbn_note": "ISBN común declarado por el editor para V514, V554 y V297; los ISBN individuales por versión están pendientes. Cada versión se identifica por su DOI propio.",
-      "edition_statement": "Recensio académica provisional, edición digital V554",
+      "isbn_note": "ISBN declarado por la editorial como compartido entre V514, V554 y V297. Cada edición mantiene su DOI específico. La identificación registral no constituye una valoración de la calidad filológica.",
+      "edition_statement": "Édition académique bilingue, version V554",
       "metadata_source": {
         "type": "author_docx_front_matter",
         "filename": "Vitruvio_V554_FRANCAIS_MASTER_IMPRESSION_2026-10-02(2).docx",
@@ -125,7 +126,8 @@
         "type": "publisher_statement",
         "date": "2026-11-13",
         "note": "El editor confirmó que las tres versiones comparten actualmente el ISBN; mantienen DOI diferentes."
-      }
+      },
+      "errata_policy": "Las correcciones puntuales se documentan en una fe de erratas por versión, locus, lectura anterior, lectura corregida, fundamento y fecha; el ejemplar fuente se conserva íntegro."
     },
     {
       "id": "theory-en",
@@ -159,7 +161,7 @@
       "indexed_passages": 728,
       "bibliographic_author": "Kurilo, Diego",
       "isbn": "978-631-01-6651-3",
-      "isbn_note": "ISBN común declarado por el editor para V514, V554 y V297; los ISBN individuales por versión están pendientes. Cada versión se identifica por su DOI propio.",
+      "isbn_note": "ISBN declarado por la editorial como compartido entre V514, V554 y V297. Cada edición mantiene su DOI específico. La identificación registral no constituye una valoración de la calidad filológica.",
       "edition_statement": "Primera edición inglesa, revisión editorial V297",
       "metadata_source": {
         "type": "author_docx_front_matter",
@@ -182,7 +184,8 @@
         "type": "publisher_statement",
         "date": "2026-11-13",
         "note": "El editor confirmó que las tres versiones comparten actualmente el ISBN; mantienen DOI diferentes."
-      }
+      },
+      "errata_policy": "Las correcciones puntuales se documentan en una fe de erratas por versión, locus, lectura anterior, lectura corregida, fundamento y fecha; el ejemplar fuente se conserva íntegro."
     },
     {
       "id": "theory-es",
