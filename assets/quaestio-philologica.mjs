@@ -29,6 +29,7 @@ function renderMore(){
   mark(node("p",null,box,"excerpt"),previewText(p,$("q-term").value.trim(),$("q-scope").value),$("q-term").value.trim());
   const actions=node("div",null,box,"q-actions");
   const link=node("a","Leer locus, notas y exportar TEI",actions);link.href=permanentLocusUrl(p.locus,p.edition)||"lector-bilingue.html";
+  const lex=node("a","Analizar en Lexicon",actions);lex.href="vitruvia-lexicon.html?q="+encodeURIComponent($("q-term").value.trim())+"&mode=palabra";
   const cite=bibliographicCitation(p.edition,meta,p.locus);
   for(const label of ["Copiar Chicago 18","RIS","BibTeX"]){
    const btn=node("button",label,actions);btn.type="button";
