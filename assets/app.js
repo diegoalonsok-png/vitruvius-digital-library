@@ -1,6 +1,6 @@
 import {bookTitle,bibliographyHTML,bibliographyText} from './edition-citation.mjs?v=20261105-chicago18';
 import {citation, roman, parseLocus} from './search-core.mjs?v=20261030-docx-1';
-import {parallelHighlight,parallelExcerpt} from './parallel-highlights.mjs?v=20261110-sourced-domus-equivalents-v5';
+import {parallelHighlight,parallelExcerpt} from './parallel-highlights.mjs?v=20261114-logos-v6';
 import {readSearchState,searchStateURL} from './home-search-state.mjs?v=20261104-query-1';
 const $ = (q, root=document) => root.querySelector(q);
 const $$ = (q, root=document) => [...root.querySelectorAll(q)];
@@ -535,7 +535,7 @@ function renderMore(){
   article.dataset.groupIndex=String(shown+i);
   const word=group.hits.length===1?'coincidencia documentada':'coincidencias documentadas';
   const pdfpage=group.hits.find(x=>x.edition===r.edition&&x.language==='la')?.page;
-  const latinParagraph=searchExcerpt(r.latin);
+  const latinParagraph=parallelExcerpt(r.latin,{query:lastQuery,lang:'la',latin:r.latin,max:1700});
   article.innerHTML=
    '<div class="result-meta">VITRUVIO · '+escapeHTML(group.hits.length)+' '+word+' en '+escapeHTML([...new Set(group.hits.map(h=>edition(h.edition)?.version||h.edition))].join(' · '))+'</div>'+
    '<h3>'+escapeHTML(citation(r))+'</h3>'+
