@@ -2,77 +2,59 @@
 <html lang="es" translate="no"><head><meta charset="utf-8"><meta name="google" content="notranslate"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Krohn 1912 · Scriptorium · Vitruvius Digital Library</title>
 <link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academic.css">
-<style>
-main{max-width:1200px;margin:auto;padding:28px 18px 65px}
-.controls{display:flex;flex-wrap:wrap;gap:14px;align-items:center;border:1px solid #b9ad91;padding:15px;margin:18px 0}
-.controls button{padding:8px 12px;cursor:pointer}
-#page{width:90px}#folio{display:block;max-width:none;margin:auto}
-#stage{height:112vh;min-height:900px;overflow:auto;background:#ded9ce;border:1px solid #ada594}
-#loupe{position:fixed;display:none;width:180px;height:180px;overflow:hidden;pointer-events:none;border:3px solid #bc9a65;border-radius:50%;background:#eee;z-index:10;box-shadow:0 6px 18px #0006}
-#loupe img{position:absolute;max-width:none}
-#status{min-height:2.5em}
-#image-mode{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px!important;border:1px solid #ad9368!important;padding:12px!important;background:#efe8db!important}
-#image-mode .image-mode-heading{display:block;flex-basis:100%;width:100%;font:700 16px Arial,sans-serif;line-height:1.5;color:#172b3c!important;margin:0 0 5px;padding:0;border:0;background:transparent}
-#image-mode button{appearance:none;background:#fffdf8!important;color:#172b3c!important;border:2px solid #aa8d5c!important;border-radius:5px;padding:10px 16px!important;font-weight:650;cursor:pointer}
-#image-mode button[aria-pressed="true"]{background:#20354b!important;color:white!important;border-color:#20354b!important}
-#folio-identification{position:relative;font-variant-numeric:tabular-nums}
-#folio-identification strong{color:#172b3c}
-
-/* Galería visual debajo del visor, modelo Cesariano */
-.h-gallery{border:1px solid #ac9775;padding:18px;margin:28px 0;background:#f1eadd;color:#172b3c}
-.h-gallery h2{font:normal 28px Georgia,serif;margin:0 0 8px;color:#172b3c}
-.h-gallery-tools{display:flex;flex-wrap:wrap;align-items:end;gap:12px;margin:16px 0}
-.h-gallery-tools label{display:grid;gap:6px;flex:1 1 220px;font-size:14px}
-.h-gallery-tools input{padding:10px;border:1px solid #a99d8c;background:#fff;color:#172b3c;min-height:43px}
-.h-gallery-tools button,#h-gallery-more{cursor:pointer;padding:10px 15px;border:1px solid #ad936b;background:#fffaf2;color:#172b3c;min-height:43px}
-#h-folio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:13px}
-.h-folio-card{display:flex;flex-direction:column;gap:7px;border:2px solid #b4aa98;background:#fffdf9;color:#172b3c;padding:8px;cursor:pointer;text-align:left;min-width:0}
-.h-folio-card img{width:100%;height:195px;object-fit:contain;background:#ded9cf}
-.h-folio-card strong{font-size:14px;color:#172b3c}.h-folio-card span{font-size:12px;overflow-wrap:anywhere;color:#172b3c}
-.h-folio-card[aria-pressed="true"]{border:3px solid #b07b20;box-shadow:0 0 0 2px #e8c987}
-#h-gallery-more{display:block;margin:20px auto}#h-gallery-more[hidden]{display:none}
-@media(max-width:600px){#h-folio-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.h-folio-card img{height:165px}}
-.h-gallery{background:#1f2d3c!important;color:#f4eee5!important;border-color:#738597!important}
-.h-gallery h2,.h-gallery p,.h-gallery label{color:#f4eee5!important}
-.h-gallery-tools input,.h-gallery-tools button,#h-gallery-more{background:#294158!important;color:#fff!important;border-color:#8ca0b0!important}
-#h-folio-grid{max-height:620px;overflow-y:auto;border:1px solid #7c8b98;padding:8px;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:10px;align-content:start}
-.h-folio-card{background:#29445a!important;color:#fff!important;border-color:#8496a5!important}
-.h-folio-card strong,.h-folio-card span{color:#fff!important}
-.h-folio-card[aria-pressed="true"]{border:3px solid #e7b452!important;box-shadow:0 0 0 2px #f1d18b}
-.h-folio-card img{height:175px}
-#stage{height:85vh;min-height:540px;overscroll-behavior:contain;scrollbar-gutter:stable;cursor:zoom-in}
-#stage img#folio{max-width:none!important;height:auto}
-.h-zoom-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.h-zoom-controls label{display:flex;align-items:center;gap:8px}
-.h-zoom-controls input{width:170px}
-.h-zoom-controls button{background:#f9f3e8;border:1px solid #a8906d;color:#152b3f;padding:8px 13px;font-weight:650;min-height:42px;border-radius:3px}
-.h-zoom-controls output{display:inline-block;min-width:46px;font-variant-numeric:tabular-nums}
-</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
+<link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/modern-edition-reader.css?v=20261114-2"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261113-aa-en-linea"></script><meta name="description" content="Lector de folios de Fritz Krohn, 1912, biblioteca Vitruvius."><link rel="canonical" href="https://vitruvius-digital-library.org/krohn-1912">
-<meta name="citation_title" content="De architectura · Fritz Krohn, 1912"><meta name="citation_author" content="Vitruvius Pollio"><meta name="citation_editor" content="Fritz Krohn"><meta name="citation_publication_date" content="2026"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://vitruvius-digital-library.org/krohn-1912"><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body data-edition="krohn-1912"><main>
-<p><a href="index.html">← Portada</a> · <a href="colacion.html?locus=1.1.1">Colación por locus y traducciones</a></p>
-<p class="eyebrow">LECTIO · IMAGO · KROHN 1912</p><h1>Krohn · 1912</h1>
-<p>Marco Vitruvio Polión, <em>De architectura libri decem</em>. Edición crítica latina de Fritz Krohn, Leipzig, Teubner, 1912. Lector propio de imágenes tomadas del PDF de esta edición y publicadas individualmente en R2. Lupa, zoom y galería igual que Codex H. La imagen digital no equivale automáticamente a una página impresa.</p>
-<div class="controls">
-<label><strong>Buscar página o folio identificado</strong> <input id="folio-ref" type="text" placeholder="Ej.: 12" style="width:115px" aria-label="Buscar folio histórico"></label><button type="button" id="go-folio">Ir al folio</button><label style="font-size:12px;opacity:.75">N.º de imagen digital (referencia técnica) <input id="page" type="number" value="1" min="1"></label>
-<button type="button" id="prev">← Anterior</button><button type="button" id="next">Siguiente →</button><button type="button" id="open">Abrir imagen</button>
-<div class="h-zoom-controls" role="group" aria-label="Ampliación del folio"><button type="button" id="zoom-out" title="Reducir imagen">−</button><label>Zoom <input id="zoom" type="range" min="50" max="500" step="25" value="100" aria-label="Zoom del folio, de 50 a 500 por ciento"> <output id="zval">100%</output></label><button type="button" id="zoom-in" title="Ampliar imagen">+ Ampliar</button><button type="button" id="zoom-fit" title="Ajustar folio al ancho del visor">Ajustar</button></div>
-<label>Contraste <input id="contrast" type="range" min="70" max="220" value="100"> <output id="cval">100%</output></label>
-<div id="image-mode" role="group" aria-label="Visualización del impreso"><strong class="image-mode-heading">Visualización</strong><button type="button" data-image-mode="original" aria-pressed="true">Original</button><button type="button" data-image-mode="bw" aria-pressed="false">Blanco y negro</button><button type="button" data-image-mode="negative" aria-pressed="false">Negativo · letras blancas</button></div></div>
-<div id="folio-identification" aria-live="polite" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;background:#f1e9da;border:1px solid #b59b72;padding:13px 18px;margin:16px 0;font-size:16px"><strong style="font-size:19px">Folio identificado: <span id="current-folio">—</span></strong><span>Imagen digital: <strong id="current-image">—</strong></span><span style="font-size:13px">Paginación: <strong id="current-label">—</strong></span></div><p id="folio-info" aria-live="polite" style="font-size:13px">La paginación impresa se muestra solo cuando esté documentada.</p><p id="status" role="status">Consultando las imágenes de R2…</p>
-
-<p style="font-size:13px;margin:5px 0 10px">Para leer las letras latinas, usa <strong>+ Ampliar</strong>, el deslizador o doble clic sobre el folio. Desplázate dentro del visor para examinar la escritura.</p>
-<div id="stage" tabindex="0" aria-label="Visor ampliable de Krohn: teclas más, menos y cero para zoom"><img id="folio" alt="Imagen digital de Krohn 1912"></div><div id="loupe"><img alt="Imagen del documento" id="magnified"></div>
-<section class="h-gallery" id="h-folios" aria-labelledby="h-gallery-title">
-<h2 id="h-gallery-title">Buscar por imagen · Galería visual de Krohn 1912</h2>
-<p>Elige una miniatura para abrir esa imagen real del ejemplar publicado en R2. Lupa, zoom, inversión y filtros. <strong>El número de imagen digital no equivale a una foliación histórica.</strong></p>
-<div class="h-gallery-tools" role="search">
-<label>Buscar folio o número de imagen<input id="h-gallery-query" type="search" placeholder="f.1r · 16v · 150"></label>
-<button id="h-gallery-search" type="button">Buscar</button><button id="h-gallery-reset" type="button">Mostrar todas</button>
+<meta name="citation_title" content="De architectura · Fritz Krohn, 1912"><meta name="citation_author" content="Vitruvius Pollio"><meta name="citation_editor" content="Fritz Krohn"><meta name="citation_publication_date" content="1912"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="la"><meta name="citation_public_url" content="https://vitruvius-digital-library.org/krohn-1912"><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script></head><body data-edition="krohn-1912"><main class="modern-edition" id="main-content">
+<p><a href="index.html">← Portada</a> · <a href="scriptorium.html">Scriptorium</a> · <a href="rose-1899.html">Rose · 1899</a> · <a href="cesariano-1521.html">Cesariano · 1521</a></p>
+<p class="eyebrow">VITRVVIVS · EDITIONES IMPRESSAE · LECTIO</p><h1>Scriptorium Krohn · 1912</h1>
+<p><em>Vitruvii De architectura libri decem</em>. Edición crítica latina de Fritz Krohn, Leipzig: B. G. Teubner, 1912.</p>
+<p>Elige una miniatura debajo del visor para abrir y ampliar esa página. Consulta la obra por palabras, frases, conceptos, loci y prefacios.</p>
+<div class="edition-toolbar" role="group" aria-label="Herramientas de lectura de Krohn">
+<label>Imagen digital <input id="page" type="number" min="1" value="5"></label>
+<button type="button" id="prev">← Anterior</button><button type="button" id="open">Abrir imagen</button><button type="button" id="next">Siguiente →</button>
+<button type="button" id="zoom-out" aria-label="Reducir imagen">−</button>
+<label>Ampliación <input id="zoom" type="range" min="25" max="500" step="25" value="100"><output id="zval">100%</output></label>
+<button type="button" id="zoom-in">+ Ampliar</button><button type="button" id="zoom-fit">Ajustar ancho</button><button type="button" id="zoom-page">Hoja entera</button>
+<label>Contraste <input id="contrast" type="range" min="60" max="220" value="100"><output id="cval">100%</output></label>
+<label>Brillo <input id="brightness" type="range" min="50" max="180" value="100"><output id="bval">100%</output></label>
+<label class="check"><input id="grayscale" type="checkbox"> Blanco y negro</label>
+<label class="check"><input id="negative" type="checkbox"> Invertir colores</label>
+<label class="check"><input id="loupe-enabled" type="checkbox" checked> Lupa ×3</label>
+<label class="check"><input id="key-highlights" type="checkbox" checked> Subrayar términos clave</label>
+<label class="check"><input id="manual-mark" type="checkbox"> Subrayar a mano</label><button type="button" id="clear-marks">Borrar mis trazos de esta hoja</button>
+<button type="button" id="fullscreen">Pantalla completa</button><button type="button" id="reset-view">Restablecer lectura</button>
 </div>
-<p id="h-gallery-status" role="status" aria-live="polite">Comprobando el índice de imágenes en R2…</p>
-<div id="h-folio-grid" aria-label="Seleccionar folio para leer en el visor inferior"></div>
-<button id="h-gallery-more" type="button" hidden>Mostrar más folios</button>
+<div id="reading-frame">
+<p class="edition-label" id="folio-identification"><strong id="current-label">Imagen —</strong> · <span id="current-image">—</span> · <span id="current-locus">Paginación digital del ejemplar</span></p>
+<p id="status" class="edition-status" role="status" aria-live="polite">Cargando las páginas de Krohn…</p>
+<div id="stage" tabindex="0" aria-label="Página ampliable de Krohn. Teclas más, menos y cero para zoom; flechas izquierda y derecha para cambiar de página."><div id="page-sheet"><img id="folio" alt="Página digitalizada de Krohn 1912"><div id="image-highlights" aria-hidden="true"></div></div></div>
+</div>
+<div id="loupe" aria-hidden="true"><img alt="" id="magnified"></div>
+<p id="highlight-status" class="edition-note" role="status">Los subrayados automáticos se ubican mediante las coordenadas OCR de la misma imagen.</p>
+<p class="edition-note">Doble clic para ampliar. La lupa sigue el puntero. Para trazar un subrayado propio, activa «Subrayar a mano» y arrastra sobre la hoja; los trazos se guardan en este navegador.</p>
+<section class="edition-browser" id="h-folios" aria-labelledby="h-gallery-title">
+<h2 id="h-gallery-title">Buscar por imagen · Galería visual de Krohn 1912</h2>
+<p>Miniaturas en el orden original del ejemplar. Al pulsar una miniatura se abre esa página en el lector superior, con zoom y lupa.</p>
+<form id="gallery-form" role="search"><label>Número de imagen digital<input id="h-gallery-query" type="search" placeholder="Ej.: imagen 50"></label>
+<button id="h-gallery-search" type="submit">Buscar imágenes</button><button id="h-gallery-reset" type="button">Mostrar todas</button></form>
+<p id="h-gallery-status" class="edition-status" role="status" aria-live="polite">Cargando miniaturas…</p>
+<div class="edition-scroll"><div id="h-folio-grid" aria-label="Elegir página para ampliar"></div></div>
+<button id="h-gallery-more" type="button" hidden>Mostrar más imágenes</button>
 </section>
-
-<p>Referencia: Fritz Krohn, <em>Vitruvii De architectura libri decem</em>, Leipzig: Teubner, 1912. La institución responsable de la digitalización y sus condiciones de reproducción se acreditarán cuando se verifique el ejemplar. <a href="colacion.html?locus=1.1.1">Ver loci, aparato y traducciones LA / ES / FR / EN</a>.</p></main><script type="module" src="assets/rose-krohn-harleianus-reader.mjs?v=20261114-1"></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
+<section class="edition-search" aria-labelledby="search-heading">
+<h2 id="search-heading">Buscar palabras, conceptos y loci</h2>
+<form id="edition-search-form" role="search"><label class="query-label">Palabra, frase o locus<input id="edition-query" type="search" placeholder="symmetria · decor · firmitas · I.2.3 · II.praef.1" maxlength="180"></label>
+<label>Coincidencia<select id="edition-search-mode"><option value="concept">Conceptos y formas latinas</option><option value="phrase">Palabra o frase literal</option><option value="words">Todas las palabras</option></select></label>
+<label>Prefacios<select id="preface-pick"><option value="">Elegir libro…</option><option value="1.praef">Libro I</option><option value="2.praef">Libro II</option><option value="3.praef">Libro III</option><option value="4.praef">Libro IV</option><option value="5.praef">Libro V</option><option value="6.praef">Libro VI</option><option value="7.praef">Libro VII</option><option value="8.praef">Libro VIII</option><option value="9.praef">Libro IX</option><option value="10.praef">Libro X</option></select></label>
+<button id="search-submit" type="submit">Buscar</button><button id="search-clear" type="button">Limpiar</button></form>
+<div class="edition-terms" role="group" aria-label="Términos de Vitruvio"><button type="button" data-term="symmetria">symmetria</button><button type="button" data-term="decor">decor</button><button type="button" data-term="firmitas">firmitas</button><button type="button" data-term="utilitas">utilitas</button><button type="button" data-term="venustas">venustas</button><button type="button" data-term="eurythmia">eurythmia</button><button type="button" data-term="ordinatio">ordinatio</button><button type="button" data-term="dispositio">dispositio</button></div>
+<p id="search-status" class="edition-status" role="status" aria-live="polite">Preparando el índice de esta edición…</p>
+<div id="search-results"></div><button id="search-more" type="button" hidden>Mostrar más resultados</button>
+<p class="edition-note">La búsqueda conceptual emplea un vocabulario controlado de equivalencias y formas latinas. Los loci y prefacios se localizan por coincidencias textuales: cada propuesta indica su grado de certeza. El OCR puede contener errores y debe cotejarse con la imagen.</p>
+<details id="ocr-panel"><summary>Leer texto OCR de la página abierta</summary><p id="ocr-status" class="edition-note"></p><div id="ocr-text" lang="la"></div></details>
+</section>
+<footer class="edition-credits"><p><strong>Referencia:</strong> Vitruvius Pollio. <em>Vitruvii De architectura libri decem</em>. Edición de Fritz Krohn. Leipzig: B. G. Teubner, 1912.</p>
+<p id="scan-credit">Digitalización: Internet Archive. <a href="https://archive.org/details/vitruviidearchit00vitr" target="_blank" rel="noopener">Consultar ejemplar de origen ↗</a></p>
+<p><a id="edition-pdf" href="documents/krohn-1912.pdf" target="_blank" rel="noopener">Abrir PDF completo</a> · <button type="button" id="copy-link">Copiar enlace a esta página</button> · <a href="colacion.html?locus=1.1.1">Colación y traducciones LA / ES / FR / EN</a></p>
+<p class="edition-note">La imagen digital y la paginación impresa se distinguen en las referencias. Las ediciones originales son históricas; el OCR y los enlaces por locus son ayudas de consulta, con el facsímil como referencia de lectura.</p></footer>
+</main><script type="module" src="assets/rose-krohn-harleianus-reader.mjs?v=20261114-2"></script><script src="assets/theme.js?v=20261105-merge-v1" defer></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
