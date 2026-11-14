@@ -29,9 +29,10 @@ Promise.all([
   if(m.editor)pieces.push("Pie editorial: "+m.editor);
   if(m.anio)pieces.push("Año: "+m.anio);
   if(m.volumen)pieces.push("Volumen: "+m.volumen);
-  if(Number.isFinite(m.paginas))pieces.push("Páginas del PDF: "+m.paginas);
-  if(Number.isFinite(m.paginasConTexto))pieces.push("Páginas con capa de texto: "+m.paginasConTexto);
+  if(Number.isFinite(m.paginas))pieces.push("Páginas digitalizadas del PDF: "+m.paginas);
+  if(Number.isFinite(m.paginasConTexto))pieces.push("Páginas con texto extraído: "+m.paginasConTexto);
   if(m.traductor)pieces.push("Traductor: "+m.traductor);
+  if(!m.traductor&&/translated|translation|traduc|version française|traduction/i.test(m.tituloEdicion||""))pieces.push("Traductor: identificación individual por revisar en la portada de esta edición");
   if(m.editorCritico)pieces.push("Editor crítico: "+m.editorCritico);
   if(m.creadorIA)pieces.push("Responsables registrados por la fuente (función por verificar): "+(Array.isArray(m.creadorIA)?m.creadorIA.join("; "):m.creadorIA));
   if(m.identificadorIA)pieces.push("Identificador de la reproducción: "+m.identificadorIA);
