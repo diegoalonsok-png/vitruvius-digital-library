@@ -10,6 +10,7 @@ const base="data/classics-corpus/"+work+"-";
 const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0,searchIndex=null,searchMeta="",suggestions=[];
 const searchMode=$("search-mode");
 if(searchMode)searchMode.value=p.get("expanded")==="1"?"lexical":"literal";
+input.value=p.get("q")||"";
 /* A trusted same-origin parallel reader may request ordinal passage navigation.
    Does not infer lexical/critical alignment across editions. */
 window.addEventListener("message",event=>{
@@ -96,6 +97,10 @@ function focusHit(step){
 }
 const unitLabel=()=>data?.language==="la"?"Locus":data?.language==="grc"?(work==="theophrastus-characters"?"Carácter":work==="plato-apology"?"Stephanus":"Capítulo"):"Bloque";
 function setQuery(q){search=q.trim();input.value=search;}
+function unquoteQuery(value){
+ const q=String(value||"").trim(),pairs={'"':'"',"'":"'","“":"”","‘":"’","«":"»"};
+ return q.length>1&&pairs[q[0]]===q.at(-1)?q.slice(1,-1).trim():q;
+}
 // Keep direct references instead of re-querying every TOC button on each locus change.
 let tocButtons=[],selectedTocButton=null;
 function renderToc(){
@@ -233,7 +238,7 @@ function editionTokens(){
  return data._tokens;
 }
 function interpretQuery(query){
- const q=String(query||"").trim(),key=romanKey(q,data.language),direct=new Set([fold(q)]),targets=new Set(),explanations=[];
+ const q=unquoteQuery(query),key=romanKey(q,data.language),direct=new Set([fold(q)]),targets=new Set(),explanations=[];
  const glossary=searchIndex?.glossary,concepts=searchIndex?.concepts||[];
  if(searchMode?.value==="literal")return {key,direct:new Set(),targets,label:"",concepts:[]};
  for(const lemma of searchIndex?.lemmasByRoman.get(key)||[])direct.add(fold(lemma));
@@ -281,7 +286,7 @@ function interpretQuery(query){
  return {key,direct,targets,label,concepts:explanations};
 }
 function locateQuery(query){
- const tokens=editionTokens(),q=String(query||"").trim(),key=romanKey(q,data.language),meaning=interpretQuery(q);
+ const tokens=editionTokens(),q=unquoteQuery(query),key=romanKey(q,data.language),meaning=interpretQuery(q);
  const queryWords=[...q.matchAll(WORD_TOKEN)].map(m=>romanKey(m[0],data.language));
  if(!key||key.length<2)return [];
  const result=tokens.map((words,i)=>{
@@ -470,7 +475,9 @@ async function showHoldingLibraries(){
  link(foot,"Ficha codicológica y filológica completa","https://vitruvius-digital-library.org/classics-work-record.html?work="+encodeURIComponent(work));
  host.append(foot);
 }
-async function load(language){
+let editionRequest=0;
+async function load(language,requestId){
+ const resourceRequest=loadSearchResources(language).catch(err=>{console.warn("Índice léxico complementario no disponible",err);return null});
  const indexed=hostedEditions.find(e=>e.language===language);
   const path=indexed?.path||base+language+".json",response=await fetch(path);
  if(!response.ok)throw Error("Edición todavía no incorporada: "+language+" · HTTP "+response.status);
@@ -491,6 +498,9 @@ async function load(language){
   };
  }
  if(corpus.workId!==(indexed?.sourceWorkId||work)||corpus.language!==language||!Array.isArray(corpus.passages)||!corpus.passages.length||corpus.passages.reduce((n,p)=>n+(typeof p.text==="string"?p.text.trim().length:0),0)<350)throw Error("El documento no pasó validación de integridad");
+ const editionSearchIndex=await resourceRequest;
+ // Only the most recent selection may replace the visible edition and index.
+ if(requestId!==editionRequest)return;
  if(work==="apuleius-metamorphoses"&&language==="es"){
   // Never block access to any of the 312 original anthology units on optional metadata.
   // The note is visible immediately; the provenance file may refine it asynchronously.
@@ -512,9 +522,8 @@ async function load(language){
    .finally(()=>clearTimeout(timeout));
  }
 
- data=corpus;active=0;searchIndex=null;
+ data=corpus;active=0;resultPage=0;searchIndex=editionSearchIndex;
  void showHoldingLibraries();
- try{searchIndex=await loadSearchResources(language)}catch(err){console.warn("Índice léxico complementario no disponible",err)}
  // The lexical index is optional; source text and literal search always remain available.
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
  const sourceBox=$("reader-source-identification");
@@ -546,14 +555,20 @@ async function load(language){
  $("toc-help").textContent=sourceCoverage||declaredAlignment;
  const u=new URL(location.href);u.searchParams.set("lang",language);history.replaceState(null,"",u);
  renderToc();
- const locus=p.get("locus")||new URLSearchParams(location.search).get("locus");
+ const locus=new URLSearchParams(location.search).get("locus");
  const at=data.passages.findIndex(x=>x.locus===locus);
- const chosen=at>=0?at:0;setQuery(p.get("q")||input.value||"");
+ const chosen=at>=0?at:0;setQuery(input.value||"");
  if(search){renderSearch();const first=results[0]?.i;const anchored=results.some(x=>x.i===at);select(anchored?at:Number.isInteger(first)?first:chosen)}
  else{renderSearch();select(chosen)}
  if(window.parent!==window)window.parent.postMessage({type:"vitruvia-parallel-ready",work,lang:language,count:data.passages.length},"*");
 }
-async function swap(lang){try{await load(lang)}catch(err){console.error("Classics reader failed to load",work,lang,err);$("source-title").textContent=err.message;data=null;$("passages").textContent="No se puede mostrar esta traducción sin un archivo local acreditado."}}
+async function swap(lang){
+ const requestId=++editionRequest;
+ try{await load(lang,requestId)}catch(err){
+  if(requestId!==editionRequest)return;
+  console.error("Classics reader failed to load",work,lang,err);$("source-title").textContent=err.message;data=null;$("passages").textContent="No se puede mostrar esta traducción sin un archivo local acreditado.";
+ }
+}
 const setTitle=t=>{$("work-title").textContent=t;document.title=t+" · Bibliotheca Graeca et Latina"};if(allowed[work])setTitle(allowed[work]);$("codex-link").href="bibliotheca-graeca-latina.html?work="+work+"&view=triplecodex";
 $("language").addEventListener("change",e=>swap(e.target.value));
 $("find").addEventListener("click",()=>{if(!data)return;setQuery(input.value);resultPage=0;renderSearch();select(results.length?results[0].i:active)});
