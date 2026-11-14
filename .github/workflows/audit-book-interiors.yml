@@ -1,0 +1,62 @@
+name: Bibliotheca · comprobar el contenido real de PDF y DOCX
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: "Índice inicial de ediciones R2 (0-116)"
+        required: false
+        default: "0"
+      limit:
+        description: "Cantidad de archivos (máximo 30)"
+        required: false
+        default: "12"
+  push:
+    paths:
+      - "scripts/audit-book-interiors.py"
+      - ".github/workflows/audit-book-interiors.yml"
+permissions:
+  contents: read
+concurrency:
+  group: bibliotheca-document-interiors
+  cancel-in-progress: false
+jobs:
+  verify-existing-files:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PDF parser only
+        run: python -m pip install --disable-pip-version-check "pymupdf>=1.24,<2"
+      - name: Syntax check (read-only)
+        run: python -m py_compile scripts/audit-book-interiors.py
+      - name: Verify PDF opening pages, file hash, volume and count
+        env:
+          START: ${{ github.event.inputs.start || '0' }}
+          LIMIT: ${{ github.event.inputs.limit || '12' }}
+        run: |
+          python scripts/audit-book-interiors.py --start "$START" --limit "$LIMIT" --output reports/document-interiors/latest.json
+      - name: Publish investigation, NOT replace documents
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-content-identity-${{ github.run_id }}
+          path: reports/document-interiors/latest.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Report reviewed versus unresolved
+        if: success()
+        run: |
+          python - <<'PY'
+          import json,os,collections
+          p='reports/document-interiors/latest.json'
+          data=json.load(open(p,encoding='utf8'))
+          counts=collections.Counter(x['status'] for x in data['results'])
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as out:
+              out.write('## Correspondencia entre ficha y libro real\n')
+              out.write('Archivos examinados: '+str(len(data['results']))+'\n\n')
+              for key,value in counts.items():out.write('- '+key+': '+str(value)+'\n')
+              out.write('\nNo se modifica, elimina ni sustituye ningún PDF, DOCX o manuscrito.\n')
+          PY
