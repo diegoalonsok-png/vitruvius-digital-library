@@ -22,6 +22,10 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 .panel-colors button{width:24px;height:24px;border-radius:50%;background:var(--sample);border:2px solid #888;cursor:pointer;padding:0}
 .panel-colors button:hover{transform:scale(1.08)}.panel-colors button[aria-pressed="true"]{outline:2px solid #eee;outline-offset:2px}
 .panel-colors button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.panel-colors .color-custom{width:28px;height:28px;border:1px solid #aaa;border-radius:50%;padding:2px;background:#282828;cursor:pointer}
+.panel-colors .color-custom::-webkit-color-swatch-wrapper{padding:0}
+.panel-colors .color-custom::-webkit-color-swatch{border:0;border-radius:50%}
+.panel-colors .color-custom::-moz-color-swatch{border:0;border-radius:50%}
 .card mark.user-highlight{color:#181818;border-radius:3px;padding:0 2px}
 @media print{.panel-colors{display:none}}
 </style></head><body><main>
@@ -59,9 +63,23 @@ function paragraph(id,value){
  target.append(p);
 }
 const colors=[["Gris","#303030","#f2f2f3"],["Negro","#151515","#f2f2f3"],["Sepia","#493e34","#fff0d7"],["Marfil","#f1e9db","#252525"],["Azul","#293d50","#f5f5f5"]];
+const inkColors=[["Blanco","#f2f2f3"],["Marfil","#fff0d7"],["Negro","#252525"],["Azul claro","#b9e0ff"],["Amarillo","#ffe5a0"]];
 const highlighters=[["Amarillo","#ffdf65"],["Verde","#a5e5aa"],["Celeste","#97d9ef"],["Rosa","#efa8ca"]];
 for(const side of ["left","right"]){
  const toolbar=el(side+"-colors"),card=el(side+"-text").closest(".card");
+ let inkCustomized=false;
+ const addPicker=(type,initial)=>{
+  const picker=document.createElement("input");picker.type="color";picker.className="color-custom";
+  picker.value=initial;picker.title="Elegir color personalizado de "+(type==="background"?"fondo":"tipografía");
+  picker.setAttribute("aria-label",picker.title);
+  picker.addEventListener("input",()=>{
+   if(type==="background")card.style.setProperty("--card-bg",picker.value);
+   else{inkCustomized=true;card.style.setProperty("--text-color",picker.value);}
+   for(const x of toolbar.querySelectorAll('button[data-'+type+']'))x.setAttribute("aria-pressed","false");
+  });
+  toolbar.append(picker);return picker;
+ };
+
  function label(value){const span=document.createElement("span");span.className="group-label";span.textContent=value;toolbar.append(span);}
  label("Fondo");
  for(const [name,bg,fg] of colors){
@@ -69,10 +87,25 @@ for(const side of ["left","right"]){
   button.title="Fondo "+name;button.setAttribute("aria-label","Fondo "+name+" del "+side);
   button.setAttribute("aria-pressed",String(bg==="#303030"));toolbar.append(button);
   button.addEventListener("click",()=>{
-   card.style.setProperty("--card-bg",bg);card.style.setProperty("--text-color",fg);
+   card.style.setProperty("--card-bg",bg);
+   if(!inkCustomized)card.style.setProperty("--text-color",fg);
    for(const x of toolbar.querySelectorAll('button[data-background]'))x.setAttribute("aria-pressed",String(x.dataset.background===bg));
   });button.dataset.background=bg;
  }
+ addPicker("background","#303030");
+ const inkSep=document.createElement("span");inkSep.className="separator";toolbar.append(inkSep);label("Letra");
+ for(const [name,color] of inkColors){
+  const button=document.createElement("button");button.type="button";button.style.setProperty("--sample",color);
+  button.dataset.foreground=color;button.title="Color de tipografía: "+name;
+  button.setAttribute("aria-label",button.title);
+  button.setAttribute("aria-pressed",String(color==="#f2f2f3"));
+  button.addEventListener("click",()=>{
+   inkCustomized=true;card.style.setProperty("--text-color",color);
+   for(const x of toolbar.querySelectorAll('button[data-foreground]'))x.setAttribute("aria-pressed",String(x.dataset.foreground===color));
+  });
+  toolbar.append(button);
+ }
+ addPicker("foreground","#f2f2f3");
  const sep=document.createElement("span");sep.className="separator";toolbar.append(sep);label("Resaltar");
  for(const [name,color] of highlighters){
   const button=document.createElement("button");button.type="button";button.style.setProperty("--sample",color);
