@@ -153,12 +153,37 @@ function renderNext(){
   // This citation belongs to the ACTUAL edition and PDF page of this record.
   const pdfLink=e.page&&e.pdf?new URL(pdfURL(e,e.page),location.href).href:'';
   const ref=reference(e,editionMetadata.get(e.edition),pdfLink);
+  // Bibliographic record belongs to the exact edition of the result.
+  // Keep ancient author separate from the contemporary editor/translator.
+  const editionInfo=editionMetadata.get(e.edition);
   const editionLine=document.createElement('p');
   editionLine.className='ac-meta ac-edition-bibliography';
-  editionLine.textContent='Libro / edición: '+ref.editionName+
-   ' · '+(editionMetadata.get(e.edition)?.version||e.editionName)+
-   ' · DOI: '+(ref.doi||'no consignado')+' · ISBN: '+(ref.isbn||'no consignado')+
-   ' · '+ref.pageLabel;
+  const version=editionInfo?.version||e.editionName;
+  const credit=editionInfo?.editorial_role||editionInfo?.bibliographic_author||'Responsable editorial por verificar';
+  const imprint=[editionInfo?.publication_place,editionInfo?.publisher,editionInfo?.year].filter(Boolean).join(' · ');
+  editionLine.append(document.createTextNode(
+   'Autor antiguo: Marco Vitruvio Polión · Título / edición: '+ref.editionName+
+   ' · '+version+' · '+credit+
+   (imprint?' · '+imprint:'')+
+   ' · DOI: '+(ref.doi||'no acreditado en esta ficha')+
+   ' · ISBN: '+(ref.isbn||'no consignado')+
+   ' · '+ref.pageLabel+
+   ' · '+ref.grade.display+
+   ' · '+(ref.locus.reliable?'sección editorial individualizada':'localizador de capítulo o candidato, sin sección individual comprobada')
+  ));
+  if(ref.doi){
+   editionLine.append(document.createTextNode(' · '));
+   const doiLink=document.createElement('a');
+   doiLink.href='https://doi.org/'+ref.doi;
+   doiLink.target='_blank';doiLink.rel='noopener noreferrer';
+   doiLink.textContent='Registro DOI de la edición';
+   editionLine.append(doiLink);
+  }
+  if(editionInfo?.isbn_note){
+   const note=document.createElement('small');
+   note.textContent=' · Nota registral ISBN: '+editionInfo.isbn_note;
+   editionLine.append(note);
+  }
   article.append(editionLine);
   const details=document.createElement('details');details.className='ac-scholarly-reference';
   const summary=document.createElement('summary');
@@ -167,7 +192,7 @@ function renderNext(){
   const bib=document.createElement('p');bib.className='ac-meta';
   bib.textContent='Cita editorial: '+ref.bib;details.append(bib);
   if(ref.doi){
-   const doi=document.createElement('a');doi.href='https://doi.org/'+encodeURIComponent(ref.doi);
+   const doi=document.createElement('a');doi.href='https://doi.org/'+ref.doi;
    doi.target='_blank';doi.rel='noopener noreferrer';doi.textContent='DOI de la edición: '+ref.doi;
    details.append(doi);
   }
