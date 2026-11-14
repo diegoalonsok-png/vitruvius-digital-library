@@ -58,9 +58,9 @@ async function remote(spec,known,local){
   host.dataset.state="local-valid";
   const responses=await Promise.allSettled(manifestSources.map(s=>remote(s,known,local)));
   if(responses.some(r=>r.status!=="fulfilled")){
-   set("remote","No verificado");
+   set("remote","Consulta remota indisponible");
    set("searchable",fmt(local.size)+" locales");
-   set("pending","Sin verificar");
+   set("pending","Cálculo suspendido");
    set("method","No se pudo verificar la cobertura remota. Se muestran separadamente las cifras locales auditadas; nunca se presume que una edición externa esté alojada en Pages.");
    host.dataset.state="remote-unavailable";
    return;
@@ -101,9 +101,9 @@ async function remote(spec,known,local){
   host.dataset.state="verified";
  }catch(error){
   host.dataset.state="unavailable";
-  set("remote","Sin certificar");
-  set("searchable","Sin certificar");
-  set("pending","Sin certificar");
+  set("remote","Sin datos conciliados");
+  set("searchable","Sin datos conciliados");
+  set("pending","Sin datos conciliados");
   set("method","No fue posible certificar la conciliación documental: "+error.message+". Los números pendientes no deben citarse hasta comprobar los inventarios.");
  }
 })();
