@@ -441,7 +441,19 @@ function underlineTerm(){
  }
  }
 }
+ const criticalNavigation=document.createElement("nav");criticalNavigation.className="script-triple-critical-links";criticalNavigation.setAttribute("aria-label","Acceso a aparatos académicos por locus");
+ const criticalLink=document.createElement("a");criticalLink.textContent="Aparato crítico";
+ const budeLink=document.createElement("a");budeLink.textContent="Aparato comparativo Budé";
+ criticalNavigation.append(criticalLink,budeLink);panel.append(criticalNavigation);
  const reference=document.createElement("div");reference.className="script-reference";panel.append(reference);
+ function updateCriticalNavigation(){
+  const locusId=data?.ed.format==="structured"?data.pages[index]?.locus:"";
+  criticalNavigation.hidden=!locusId;
+  if(!locusId)return;
+  criticalLink.href="aparato-critico.html?locus="+encodeURIComponent(locusId);
+  budeLink.href="apparatus-bude.html?locus="+encodeURIComponent(locusId);
+  criticalLink.title=budeLink.title="Consulta documental por identificador de locus; no atribuye lecturas de un testigo a otro";
+ }
  let referenceUI=null;
  const pageFor=item=>data?.ed.format==="ocr"?item.page:translated?(item.translationPage||null):(item.latinPage||null);
  function setView(next){
@@ -513,7 +525,7 @@ function underlineTerm(){
   translation.textContent=translated?"Mostrar latín":"Mostrar traducción";
   body.scrollTop=0;
   if(marca)requestAnimationFrame(()=>{body.scrollTop=Math.max(0,marca.offsetTop-body.offsetTop-40)});
-  updatePdf();
+  updatePdf();updateCriticalNavigation();
   recount();
   referenceUI?.refresh();referenceUI?.updateLink();savePosition();
  }
