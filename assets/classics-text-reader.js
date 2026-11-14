@@ -128,7 +128,7 @@ function select(i){
  // Original-only editions: on-demand machine translation of ONE selected passage.
  // Never replace the source or count generated output as an accredited translation.
  const localTranslationAvailable=hostedEditions.some(e=>e.workId===work&&["es","en","fr","it","de","pt"].includes(e.language));
- if(p.get("parallel")!=="1"&&["la","grc"].includes(data.language)&&!localTranslationAvailable){
+ if(p.get("parallel")!=="1"&&["la","grc"].includes(data.language)&&!localTranslationAvailable&&!document.querySelector(".cl-dual-reader")){
   window.VitruviaInlineTranslation?.attach(p1,{sourceLanguage:data.language,originalText:rec.text});
  }
  const nav=$("hit-nav");if(nav){nav.hidden=!hitMarks.length;$("hit-count").textContent=hitMarks.length?hitMarks.length+" en este pasaje":"";}
