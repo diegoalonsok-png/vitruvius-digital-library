@@ -5664,7 +5664,7 @@
     {
       "id": "galeno-opera-kuhn",
       "author": "Galeno",
-      "title": "Opera omnia (ed. Kühn): volumen adicional",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
       "genre": "Pendiente de consignar: no se deduce del facsímil.",
       "dating": "Pendiente de consignar: no se deduce del facsímil.",
@@ -5677,12 +5677,14 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
-      "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
+      "notes": [
+        "Corrección bibliográfica 2026-11-14: tomus XIV (1827), no vol. I; archivo duplicado con idéntico SHA-256 entre dos accesos históricos."
+      ]
     },
     {
       "id": "galeno-kuhn-vol01",
       "author": "Galeno",
-      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
       "genre": "Pendiente de consignar: no se deduce del facsímil.",
       "dating": "Pendiente de consignar: no se deduce del facsímil.",
@@ -5695,7 +5697,9 @@
       "hasManuscriptRecord": false,
       "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
-      "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
+      "notes": [
+        "Corrección bibliográfica 2026-11-14: tomus XIV (1827), no vol. I; archivo duplicado con idéntico SHA-256 entre dos accesos históricos."
+      ]
     },
     {
       "id": "galeno-kuhn-vol19",
