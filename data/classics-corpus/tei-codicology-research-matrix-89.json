@@ -4,7 +4,118 @@
   "model": "TEI P5 msDesc: msIdentifier, msContents, physDesc (objectDesc, handDesc, decoDesc, bindingDesc), history (origin, provenance, acquisition), additional; source status attached per field",
   "registeredWitnesses": 106,
   "fieldCount": 22,
-  "globalMissing": 1833,
+  "globalMissing": [
+    {
+      "category": "physical",
+      "key": "material",
+      "missing": 60
+    },
+    {
+      "category": "physical",
+      "key": "dimensions",
+      "missing": 97
+    },
+    {
+      "category": "physical",
+      "key": "collationFormula",
+      "missing": 104
+    },
+    {
+      "category": "physical",
+      "key": "ruling",
+      "missing": 104
+    },
+    {
+      "category": "physical",
+      "key": "binding",
+      "missing": 97
+    },
+    {
+      "category": "physical",
+      "key": "watermarks",
+      "missing": 105
+    },
+    {
+      "category": "scribal",
+      "key": "script",
+      "missing": 81
+    },
+    {
+      "category": "scribal",
+      "key": "hands",
+      "missing": 103
+    },
+    {
+      "category": "scribal",
+      "key": "corrections",
+      "missing": 106
+    },
+    {
+      "category": "paratext",
+      "key": "scholia",
+      "missing": 101
+    },
+    {
+      "category": "paratext",
+      "key": "glosses",
+      "missing": 105
+    },
+    {
+      "category": "paratext",
+      "key": "subscriptiones",
+      "missing": 106
+    },
+    {
+      "category": "history",
+      "key": "origin",
+      "missing": 87
+    },
+    {
+      "category": "history",
+      "key": "provenance",
+      "missing": 87
+    },
+    {
+      "category": "text",
+      "key": "folioRange",
+      "missing": 54
+    },
+    {
+      "category": "text",
+      "key": "coverage",
+      "missing": 0
+    },
+    {
+      "category": "text",
+      "key": "lacunae",
+      "missing": 104
+    },
+    {
+      "category": "text",
+      "key": "transpositions",
+      "missing": 105
+    },
+    {
+      "category": "text",
+      "key": "palimpsest",
+      "missing": 106
+    },
+    {
+      "category": "digital",
+      "key": "record",
+      "missing": 2
+    },
+    {
+      "category": "digital",
+      "key": "viewer",
+      "missing": 47
+    },
+    {
+      "category": "digital",
+      "key": "manifest",
+      "missing": 72
+    }
+  ],
   "records": [
     {
       "witnessId": "vitruvius-h",
