@@ -41,12 +41,7 @@
       "hasStructuredVitruviusReader": true,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "vitruvius-h",
-          "shelfmark": "Harley MS 2767"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. Se indexan ambos campos (latín y traducción) sin duplicar el archivo V514; el registro de versiones distingue cuatro lenguas en tres fuentes estructuradas. Diferencias de recensio no garantizan identidad textual."
     },
@@ -70,12 +65,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "cicero-officiis-geneva",
-          "shelfmark": "Ms. lat. 88"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -96,8 +86,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -119,12 +109,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "cicero-republica-vat5757",
-          "shelfmark": "Vat. lat. 5757"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -147,8 +132,8 @@
       "localPDF": "documents/classics/caesar-de-bello-gallico-smith-1842.pdf",
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -171,8 +156,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "Tres libros (243 capítulos) indexados en latín e inglés desde TEI Perseus; cotejo por capítulo, sin alineación textual certificada."
     },
@@ -195,8 +180,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "Original latino indexado en 61 capítulos. Traducción inglesa de John Selby Watson (1899), 59 de 61 capítulos disponibles; faltan los capítulos 35 y 57 de la fuente TEI. Correspondencia solamente por número de capítulo existente, sin alineación palabra por palabra."
     },
@@ -219,8 +204,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "Texto latino e inglés de Perseus indexados por 114 capítulos. La correspondencia por número de capítulo es orientativa; no es cotejo textual automático."
     },
@@ -242,7 +227,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente. Archivo fuente ya presente en data/lexicon/fontes/varro-rustica-la.json; sin copia ni cotejo independiente."
     },
@@ -268,12 +253,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "lucretius-oblongus",
-          "shelfmark": "VLF 30 (Voss. lat. F. 30)"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -297,16 +277,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "vergil-vaticanus-aeneid",
-          "shelfmark": "Vat. lat. 3225"
-        },
-        {
-          "id": "vergil-romanus",
-          "shelfmark": "Vat. lat. 3867"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -330,16 +301,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "vergil-vaticanus-georgica",
-          "shelfmark": "Vat. lat. 3225, ff. 1r–10v"
-        },
-        {
-          "id": "vergil-romanus",
-          "shelfmark": "Vat. lat. 3867"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -360,8 +322,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -382,8 +344,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 4,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -405,12 +367,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "ovid-metamorphoses-vat-lat-2781",
-          "shelfmark": "Vat. lat. 2781"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "15 libros completos, 11.986 versos latinos en 306 bloques de lectura, ed. Hugo Magnus (1892–1919), TEI Perseus CC BY-SA 4.0. Sin traducción alojada; versión de Brookes More solo enlazada externamente. La indexación no prueba cotejo filológico."
     },
@@ -431,8 +388,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -454,7 +411,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -475,8 +432,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -498,7 +455,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -519,8 +476,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -531,7 +488,7 @@
       "originalLanguage": "grc",
       "genre": "Filosofía religiosa",
       "dating": "siglo I d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -544,7 +501,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -565,8 +522,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -584,7 +541,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -606,7 +563,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -617,7 +574,7 @@
       "originalLanguage": "la",
       "genre": "Historia natural",
       "dating": "77 d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "la"
       ],
@@ -627,8 +584,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. TEXTO PARCIAL: solo libros XXXIII a XXXVI (33-36) de 37 libros de Naturalis historia (745 loci). No declarar íntegra la obra. Archivo fuente ya presente en data/lexicon/fontes/pliny-naturalis-la.json; sin copia ni cotejo independiente."
     },
@@ -639,7 +596,7 @@
       "originalLanguage": "grc",
       "genre": "Farmacología",
       "dating": "c. 50–70 d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -650,16 +607,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "dioscorides-vienna",
-          "shelfmark": "Cod. med. gr. 1"
-        },
-        {
-          "id": "dioscorides-paris",
-          "shelfmark": "Grec 2179"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -670,7 +618,7 @@
       "originalLanguage": "grc",
       "genre": "Historia",
       "dating": "c. 75–79 d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -681,12 +629,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "josephus-vat-gr-984",
-          "shelfmark": "Vat. gr. 984"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -697,7 +640,7 @@
       "originalLanguage": "grc",
       "genre": "Historia y religión",
       "dating": "93–94 d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -708,16 +651,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "josephus-pal-gr-14",
-          "shelfmark": "Pal. gr. 14"
-        },
-        {
-          "id": "josephus-vat-gr-984",
-          "shelfmark": "Vat. gr. 984"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -738,8 +672,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -761,7 +695,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -785,7 +719,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Traducción histórica inglesa Alfred John Church y William Jackson Brodribb (1877), índice TEI completo de la fuente; sin cotejo propio ni alineación con el original. Edición y traductor identificados según Chicago 18."
     },
@@ -807,7 +741,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -829,7 +763,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. 130 secciones numeradas de De aquaeductu, a partir de un texto digital editado sin cotejo propio. Archivo fuente ya presente en data/lexicon/fontes/frontinus-aquaeductu-la.json; sin copia ni cotejo independiente."
     },
@@ -840,7 +774,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "c. 65–75 d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -850,8 +784,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -862,7 +796,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "c. 95–100 d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -872,8 +806,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -896,8 +830,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 4,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -908,7 +842,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "Siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -918,8 +852,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -930,7 +864,7 @@
       "originalLanguage": "la",
       "genre": "Arquitectura e ingeniería",
       "dating": "Finales del siglo III – comienzos del IV d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "la"
       ],
@@ -941,12 +875,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "faventinus-gudianus-132",
-          "shelfmark": "Cod. Guelf. 132 Gud. lat."
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "Índice derivado en 32 párrafos del apéndice latino de Rose 1899 / Project Gutenberg; el catálogo maestro mantiene su clasificación original. Texto no cotejado con manuscrito ni foliación canónica."
     },
@@ -957,7 +886,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "Finales del siglo I – primera mitad del II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -967,8 +896,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -979,7 +908,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "Siglo II d. C. (cronología debatida)",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -989,8 +918,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1001,7 +930,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "Primera mitad del siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -1012,7 +941,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1023,7 +952,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "Siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -1033,8 +962,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1045,7 +974,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "Siglo II–III d. C. (discutido)",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -1056,7 +985,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1067,7 +996,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "Mediados del siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -1078,7 +1007,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1089,7 +1018,7 @@
       "originalLanguage": "grc",
       "genre": "Cristianismo primitivo",
       "dating": "Finales del siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -1100,7 +1029,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1111,7 +1040,7 @@
       "originalLanguage": "la",
       "genre": "Cristianismo primitivo",
       "dating": "197 d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "la"
       ],
@@ -1122,7 +1051,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1142,7 +1071,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador.",
       "localEditionLanguages": [
@@ -1156,7 +1085,7 @@
       "originalLanguage": "grc",
       "genre": "Historia y cristianismo",
       "dating": "Principios del siglo IV d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -1167,7 +1096,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1189,7 +1118,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1210,8 +1139,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1232,8 +1161,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "Edición histórica latina académica TEI Corpus Corporum / UZH, 595 loci de 4 libros; libro IV de autoría debatida y anomalías numerales documentadas. Sin cotejo de testigos manuscritos ni traducciones alojadas."
     },
@@ -1250,8 +1179,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1269,7 +1198,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1291,7 +1220,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1313,7 +1242,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1331,7 +1260,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1349,7 +1278,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1367,7 +1296,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1385,7 +1314,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1407,7 +1336,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador. La transcripción indexada es OCR por páginas del PDF; NO equivale a texto crítico por loci ni cotejo con V514 u otras ediciones."
     },
@@ -1429,7 +1358,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1451,7 +1380,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1473,7 +1402,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1495,7 +1424,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1517,7 +1446,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1540,8 +1469,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1565,16 +1494,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "catullus-thuaneus-8071",
-          "shelfmark": "Latin 8071"
-        },
-        {
-          "id": "catullus-oxford-o",
-          "shelfmark": "MS. Canon. Class. Lat. 30"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1595,8 +1515,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1617,8 +1537,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1639,8 +1559,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1661,8 +1581,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1686,7 +1606,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1708,16 +1628,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "tacitus-mediceus-1",
-          "shelfmark": "Plut. 68.1"
-        },
-        {
-          "id": "tacitus-mediceus-2",
-          "shelfmark": "Plut. 68.2"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1739,12 +1650,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "tacitus-mediceus-2",
-          "shelfmark": "Plut. 68.2"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1766,7 +1672,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1787,8 +1693,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1813,8 +1719,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1836,7 +1742,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Original latino V–X, Müller 1833, Corpus Corporum UZH TEI 2013: 666 secciones; fuente con algunos errores de etiquetas y 11 hitos repetidos. Sin edición crítica propia/cotejo, no se afirman libros perdidos ni traducciones alojadas."
     },
@@ -1858,7 +1764,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1880,7 +1786,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1904,7 +1810,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Perseus TEI: 132 loci latinos de Müller (1876), 91 pasajes ingleses efectivos de Smart (1913); 10 omisiones explícitas; sin colación ni alineación automática."
     },
@@ -1926,7 +1832,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1948,7 +1854,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1969,8 +1875,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -1992,7 +1898,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2010,7 +1916,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2032,7 +1938,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2053,8 +1959,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2065,7 +1971,7 @@
       "originalLanguage": "grc",
       "genre": "Mitografía",
       "dating": "datación discutida, posiblemente siglos I–II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2075,8 +1981,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2087,7 +1993,7 @@
       "originalLanguage": "grc",
       "genre": "Exégesis",
       "dating": "siglo I d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2100,7 +2006,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2111,7 +2017,7 @@
       "originalLanguage": "grc",
       "genre": "Exégesis",
       "dating": "siglo I d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2124,7 +2030,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2141,8 +2047,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2153,7 +2059,7 @@
       "originalLanguage": "grc",
       "genre": "Sátira y diálogo",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2163,8 +2069,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2175,7 +2081,7 @@
       "originalLanguage": "grc",
       "genre": "Ficción satírica",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2187,8 +2093,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2199,7 +2105,7 @@
       "originalLanguage": "grc",
       "genre": "Geografía",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2210,7 +2116,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2221,7 +2127,7 @@
       "originalLanguage": "grc",
       "genre": "Medicina",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2231,8 +2137,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 3,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2243,7 +2149,7 @@
       "originalLanguage": "grc",
       "genre": "Medicina",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2253,8 +2159,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 3,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2265,7 +2171,7 @@
       "originalLanguage": "grc",
       "genre": "Astronomía",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2275,8 +2181,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2293,8 +2199,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2315,8 +2221,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2327,7 +2233,7 @@
       "originalLanguage": "grc",
       "genre": "Filosofía estoica",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2340,12 +2246,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "marcus-aurelius-vat1950",
-          "shelfmark": "Vat. gr. 1950, parte 2"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "Griego Perseus TEI y traducción inglesa histórica George Long (1862)/Standard Ebooks, indexados con visores independientes. Las unidades editoriales no equivalen a cotejo crítico ni alineación por loci."
     },
@@ -2369,12 +2270,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "homer-iliad-venetus-a",
-          "shelfmark": "Marc. gr. Z. 454 (= 822)"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2397,8 +2293,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 3,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2409,7 +2305,7 @@
       "originalLanguage": "grc",
       "genre": "Poesía didáctica",
       "dating": "época arcaica",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2421,8 +2317,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "Traducción histórica inglesa Hugh G. Evelyn-White (1914), índice TEI completo de la fuente; sin cotejo propio ni alineación con el original. Edición y traductor identificados según Chicago 18."
     },
@@ -2433,7 +2329,7 @@
       "originalLanguage": "grc",
       "genre": "Poesía didáctica",
       "dating": "época arcaica",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2445,8 +2341,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "Traducción histórica inglesa Hugh G. Evelyn-White (1914), índice TEI completo de la fuente; sin cotejo propio ni alineación con el original. Edición y traductor identificados según Chicago 18."
     },
@@ -2457,7 +2353,7 @@
       "originalLanguage": "grc",
       "genre": "Tragedia",
       "dating": "458 a. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2467,8 +2363,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2479,7 +2375,7 @@
       "originalLanguage": "grc",
       "genre": "Tragedia",
       "dating": "siglo V a. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2491,8 +2387,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2503,7 +2399,7 @@
       "originalLanguage": "grc",
       "genre": "Tragedia",
       "dating": "431 a. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2515,8 +2411,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2527,7 +2423,7 @@
       "originalLanguage": "grc",
       "genre": "Comedia",
       "dating": "siglo V a. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2539,8 +2435,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2561,8 +2457,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2579,8 +2475,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2591,7 +2487,7 @@
       "originalLanguage": "grc",
       "genre": "Historia",
       "dating": "siglo IV a. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2601,8 +2497,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2624,12 +2520,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "plato-parisinus-graecus-1807",
-          "shelfmark": "Grec 1807"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2652,8 +2543,8 @@
       "localPDF": "documents/classics/plato-apologia-socratis-adam-1891.pdf",
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2676,8 +2567,8 @@
       "localPDF": "documents/classics/aristotle-poetics-greek-christ-1893.pdf",
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2688,7 +2579,7 @@
       "originalLanguage": "grc",
       "genre": "Filosofía política",
       "dating": "siglo IV a. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2700,8 +2591,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2712,7 +2603,7 @@
       "originalLanguage": "grc",
       "genre": "Medicina",
       "dating": "composición y atribuciones debatidas",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "en",
         "grc"
@@ -2725,7 +2616,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2736,7 +2627,7 @@
       "originalLanguage": "grc",
       "genre": "Filosofía estoica",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2747,7 +2638,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2758,7 +2649,7 @@
       "originalLanguage": "grc",
       "genre": "Historia",
       "dating": "siglo II d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
+      "catalogueStatus": "lectura-local-parcial",
       "indexedTextLanguages": [
         "grc"
       ],
@@ -2768,8 +2659,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2787,7 +2678,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2805,7 +2696,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2828,8 +2719,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2852,8 +2743,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2876,8 +2767,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2900,8 +2791,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2924,8 +2815,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2946,8 +2837,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2970,8 +2861,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -2994,8 +2885,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3018,8 +2909,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3040,8 +2931,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3064,8 +2955,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3088,8 +2979,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3112,8 +3003,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3136,8 +3027,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3160,8 +3051,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3184,8 +3075,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3208,8 +3099,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3230,8 +3121,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3252,8 +3143,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3274,8 +3165,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3296,8 +3187,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3318,8 +3209,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3340,8 +3231,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3364,8 +3255,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3388,8 +3279,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3412,8 +3303,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3437,12 +3328,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "plato-parisinus-graecus-1807",
-          "shelfmark": "Grec 1807"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3465,8 +3351,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3489,8 +3375,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3512,12 +3398,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "plato-parisinus-graecus-1807",
-          "shelfmark": "Grec 1807"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3540,8 +3421,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3564,8 +3445,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3586,8 +3467,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3608,8 +3489,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3630,8 +3511,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3652,8 +3533,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3674,8 +3555,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3696,8 +3577,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3718,8 +3599,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3740,8 +3621,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3762,8 +3643,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3784,8 +3665,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3807,7 +3688,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3831,7 +3712,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3849,7 +3730,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3870,8 +3751,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3893,7 +3774,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3915,7 +3796,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3937,7 +3818,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3959,7 +3840,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -3981,7 +3862,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4003,7 +3884,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4025,7 +3906,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4047,7 +3928,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4069,7 +3950,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4097,7 +3978,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "20 capítulos en inglés (Aubrey Stewart, 1889) añadidos a los 20 latinos, 20 franceses y 21 castellanos. Sin presumir cotejo ni equivalencia textual de pasajes."
     },
@@ -4115,7 +3996,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4137,7 +4018,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4155,7 +4036,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4176,8 +4057,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4198,8 +4079,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4221,7 +4102,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4243,7 +4124,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4264,8 +4145,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4287,7 +4168,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4309,7 +4190,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4330,8 +4211,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4349,7 +4230,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4367,7 +4248,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4389,7 +4270,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "Original latino TEI CSEL (Pius Knöll (CSEL 33, 1896)), 453 loci; notas/aparato crítico separados y excluidos de la búsqueda. No certifica revisión filológica autóptica ni OCR definitivo."
     },
@@ -4411,7 +4292,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "Original latino TEI CSEL (Emmanuel Hoffmann (CSEL 40, 1899–1900)), 664 loci; notas/aparato crítico separados y excluidos de la búsqueda. No certifica revisión filológica autóptica ni OCR definitivo."
     },
@@ -4432,8 +4313,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4451,7 +4332,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4475,7 +4356,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4497,7 +4378,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4519,7 +4400,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4537,7 +4418,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4559,7 +4440,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4577,7 +4458,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4595,7 +4476,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": false,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4613,7 +4494,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4635,7 +4516,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4652,8 +4533,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4670,8 +4551,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 3,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4689,7 +4570,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4711,7 +4592,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4733,12 +4614,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "euclid-vat-gr-190",
-          "shelfmark": "Vat. gr. 190, pt. 1"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4756,7 +4632,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4774,7 +4650,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4792,7 +4668,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4810,7 +4686,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4828,7 +4704,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4846,7 +4722,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4864,7 +4740,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4882,7 +4758,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4900,7 +4776,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4918,7 +4794,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4936,16 +4812,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "agrimensores-arcerianus",
-          "shelfmark": "Cod. Guelf. 36.23 Aug. 2°"
-        },
-        {
-          "id": "agrimensores-pal-lat-1564",
-          "shelfmark": "Pal. lat. 1564"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4963,16 +4830,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "agrimensores-arcerianus",
-          "shelfmark": "Cod. Guelf. 36.23 Aug. 2°"
-        },
-        {
-          "id": "agrimensores-pal-lat-1564",
-          "shelfmark": "Pal. lat. 1564"
-        }
-      ],
+      "manuscriptRecords": 2,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -4990,12 +4848,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
       "hasManuscriptRecord": true,
-      "manuscriptRecords": [
-        {
-          "id": "agrimensores-pal-lat-1564",
-          "shelfmark": "Pal. lat. 1564"
-        }
-      ],
+      "manuscriptRecords": 1,
       "hasDeclaredExternalReading": true,
       "notes": "La catalogación y existencia del archivo no constituyen cotejo filológico ni prueba funcional en navegador."
     },
@@ -5019,7 +4872,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Ficha descriptiva y registro del estado de lectura; no certifica colación de manuscritos."
     },
@@ -5039,7 +4892,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5062,7 +4915,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5085,7 +4938,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5108,7 +4961,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5131,7 +4984,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5154,7 +5007,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5177,7 +5030,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5200,7 +5053,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5223,7 +5076,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5246,7 +5099,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5269,7 +5122,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5292,7 +5145,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5315,7 +5168,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5338,7 +5191,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5360,8 +5213,8 @@
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
-      "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "hasManuscriptRecord": true,
+      "manuscriptRecords": 3,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5384,7 +5237,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5407,7 +5260,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5430,7 +5283,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5453,7 +5306,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5476,7 +5329,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5499,7 +5352,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5522,7 +5375,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5545,7 +5398,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5568,7 +5421,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5591,7 +5444,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5612,7 +5465,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5632,7 +5485,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5655,7 +5508,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5678,7 +5531,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5701,7 +5554,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5722,7 +5575,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5740,7 +5593,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5760,7 +5613,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5783,7 +5636,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico.",
       "localEditionLanguages": [
@@ -5804,7 +5657,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5822,7 +5675,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5840,7 +5693,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5858,7 +5711,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5876,7 +5729,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5894,7 +5747,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5912,7 +5765,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5930,7 +5783,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5948,7 +5801,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5966,7 +5819,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -5984,7 +5837,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -6002,7 +5855,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -6020,7 +5873,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -6038,7 +5891,7 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     },
@@ -6056,9 +5909,10 @@
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": true,
       "hasManuscriptRecord": false,
-      "manuscriptRecords": [],
+      "manuscriptRecords": 0,
       "hasDeclaredExternalReading": true,
       "notes": "Facsímil alojado en Cloudflare R2, legible página a página en el visor del sitio (buscador-facsimiles-clasicos.html). El texto por página es OCR sin revisar: no es transcripción indexada ni cotejo filológico."
     }
-  ]
+  ],
+  "updated": "2026-11-14"
 }
