@@ -10,7 +10,7 @@
  const CANONICAL="https://vitruvius-digital-library.org/scriptorium";
  const ALIASES={kurilo:"recensio-es",fr:"recensio-fr",en:"theory-en",krohn:"krohn-1912",rose:"rose-1899","pdf:krohn":"krohn-1912","pdf:rose-1899":"rose-1899","pdf:ortiz-1787":"ortiz-1787","own:recensio-es":"recensio-es","own:recensio-fr":"recensio-fr","own:theory-en":"theory-en"};
  const HISTORICAL={
-  "krohn-1912":{title:"Vitruvii De architectura libri decem",editor:"Fritz Krohn",place:"Leipzig",publisher:"B. G. Teubner",year:"1912",version:"Krohn 1912",reference:"https://archive.org/details/vitruviidearchit00vitr",pdf:"https://archive.org/download/vitruviidearchit00vitr/vitruviidearchit00vitr.pdf"},
+  "krohn-1912":{title:"Vitruvii De architectura libri decem",editor:"Fritz Krohn",place:"Leipzig",publisher:"B. G. Teubner",year:"1912",version:"Krohn 1912",reference:"https://archive.org/details/vitruviidearchit00vitr",pdf:"https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf"},
   "rose-1899":{title:"Vitruvii De architectura libri decem",editor:"Valentin Rose",place:"Leipzig",publisher:"B. G. Teubner",year:"1899",version:"Rose 1899 · 2.ª edición",reference:"https://archive.org/details/vitruviidearchit00vitr_0",pdf:"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"},
   "ortiz-1787":{title:"Los diez libros de architectura de M. Vitruvio Polión",editor:"Joseph Ortiz y Sanz",role:"Traducción y notas",place:"Madrid",publisher:"Imprenta Real",year:"1787",version:"Ortiz y Sanz 1787",reference:"https://archive.org/details/A065112",pdf:"https://archive.org/download/A065112/A065112.pdf"}
  };
