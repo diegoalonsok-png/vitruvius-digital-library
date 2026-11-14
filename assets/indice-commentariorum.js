@@ -13,6 +13,7 @@ async function load(path){const r=await fetch(path,{headers:{Accept:"application
 function normalizedLocus(value){return String(value||"").replace(/^([IVX]+)\./,(_,v)=>(romans.indexOf(v)+1)+".")}
 function record(book,edition,e){return{type:"commentary",book:String(book),edition,locus:normalizedLocus(e.locus),position:"explicit",text:e.text||"",ordinal:"",source:e.source||"Comentario en el cuerpo de la edición",source_file:"",original_location:""}}
 function note(e){const locus=normalizedLocus(e.locus||e.candidate_locus);return{type:"footnote",book:locus.split(".")[0]||"",edition:e.edition==="recensio-es"?"V514":e.edition==="recensio-fr"?"V554":"V297",locus,position:e.locus?"explicit":e.candidate_locus?"suggested":"unspecified",text:e.text||"",ordinal:e.footnote_id||"",source:"Nota al pie extraída del DOCX original",source_file:e.source_file||"",original_location:e.source_paragraph?"párrafo DOCX "+e.source_paragraph:""}}
+function study(edition,page,doc){return{type:"study",book:"",edition,locus:"",position:"page",text:page.text||"",ordinal:String(page.page),source:"Estudio preliminar de "+edition+" · página digital "+page.page,source_file:doc.source_file||"",original_location:"página "+page.page,source_pdf:(doc.source_pdf||"")+(doc.source_pdf?"#page="+page.page:"")}}
 function matches(entry){
  const book=$("ic-book").value,edition=$("ic-edition").value,type=$("ic-type").value,term=fold($("ic-term").value),query=fold($("ic-search").value.trim());
  if(book&&entry.book!==book)return false;if(edition&&entry.edition!==edition)return false;if(type&&entry.type!==type)return false;
@@ -23,22 +24,23 @@ function matches(entry){
 }
 function renderOne(e){
  const box=create("article",null,$("ic-results"),"result");
- const title=(e.type==="commentary"?"Commentarius":"Nota "+e.ordinal)+" · "+e.edition+" · "+(e.locus||"referencia general");
+ const title=(e.type==="commentary"?"Commentarius":e.type==="study"?"Estudio preliminar · p. "+e.ordinal:"Nota "+e.ordinal)+" · "+e.edition+(e.locus?" · "+e.locus:"");
  create("h3",title,box);
- create("p",e.type==="commentary"?"Comentario original con encabezamiento de locus en el libro":e.position==="explicit"?"Nota original con locus explícito":e.position==="suggested"?"Nota original con ubicación digital sugerida":"Nota original sin localizador digital asignado",box,"meta");
+ create("p",e.type==="study"?"Texto del estudio preliminar · documento fuente por página digital":e.type==="commentary"?"Comentario original con encabezamiento de locus en el libro":e.position==="explicit"?"Nota original con locus explícito":e.position==="suggested"?"Nota original con ubicación digital sugerida":"Nota original sin localizador digital asignado",box,"meta");
  const preview=e.text.length>670?e.text.slice(0,670).trim()+"…":e.text;
  create("p",preview,box);
  if(e.text.length>670){const details=create("details",null,box);create("summary","Leer el comentario íntegro",details);create("pre",e.text,details)}
  const source=create("p",e.source+(e.original_location?" · "+e.original_location:""),box,"meta");
  const link=create("a",e.locus?"Leer texto latino, traducción y notas por locus":"Consultar inventario autoral",box);
- link.href=e.locus?"commentarius-perpetuus.html?locus="+encodeURIComponent(e.locus):"inventario-aparato-autoral.html";
+ link.textContent=e.type==="study"?"Abrir página de la edición de origen":link.textContent;
+ link.href=e.type==="study"?(e.source_pdf||"indice-commentariorum.html"):e.locus?"commentarius-perpetuus.html?locus="+encodeURIComponent(e.locus):"inventario-aparato-autoral.html";
  if(e.locus){const a=create("a"," · Aparato crítico",box);a.href="apparatus-bude.html?locus="+encodeURIComponent(e.locus)}
 }
 function render(reset){
  if(reset){shown=0;$("ic-results").replaceChildren()}
  const slice=visible.slice(shown,shown+STEP);for(const item of slice)renderOne(item);
  shown+=slice.length;$("ic-more").hidden=shown>=visible.length;
- $("ic-status").textContent=visible.length+" entradas documentales encontradas · "+shown+" visibles. "+all.filter(x=>x.type==="commentary").length+" comentarios extensos y "+all.filter(x=>x.type==="footnote").length+" notas integradas al índice.";
+ $("ic-status").textContent=visible.length+" entradas documentales encontradas · "+shown+" visibles. "+all.filter(x=>x.type==="commentary").length+" comentarios extensos y "+all.filter(x=>x.type==="footnote").length+" notas; "+all.filter(x=>x.type==="study").length+" páginas del estudio preliminar.";
  if(!shown)create("p","No hay coincidencias con estos filtros. Pruebe una raíz latina o elija todos los libros.",$("ic-results"),"note");
 }
 function apply(){visible=all.filter(matches);render(true)}
@@ -50,6 +52,8 @@ $("ic-search").addEventListener("input",apply);
  try{
   const tasks=books.flatMap(book=>["V514","V554"].map(ed=>({book,ed,path:"data/commentary/"+ed.toLowerCase()+"-libro-"+book+".json"})));
   const requests=tasks.map(async t=>{try{const json=await load(t.path);return (json.entries||[]).map(e=>record(t.book,t.ed,e))}catch(e){console.warn(t.path,e.message);return []}});
+  const studyRequests=["V514","V554"].flatMap(ed=>["61-90","91-120"].map(range=>({edition:ed,path:"data/commentary/estudio-preliminar-"+ed.toLowerCase()+"-"+range+".json"})));
+  for(const task of studyRequests)requests.push(load(task.path).then(doc=>(doc.pages||[]).map(page=>study(task.edition,page,doc))).catch(e=>{console.warn(task.path,e.message);return []}));
   const results=await Promise.all([...requests,load("data/critical-notes.json").then(j=>(j.entries||[]).filter(e=>["recensio-es","recensio-fr"].includes(e.edition)).map(note))]);
   all=results.flat();const url=new URLSearchParams(location.search);
   if(url.get("q"))$("ic-search").value=url.get("q").slice(0,200);
