@@ -54,6 +54,14 @@ assert.match(bridge,/#apparatus-catalog-results .ac-ficha mark/);
 assert.match(bridge,/VitruviusLexicalCard/);
 assert.match(bridge,/event\.key!=="Enter"/);
 assert.match(apparatus,/const ref=reference\(e,editionMetadata.get\(e.edition\),pdfLink\)/);
+assert.match(apparatus,/Autor antiguo: Marco Vitruvio Polión/);
+assert.match(apparatus,/editionInfo\.editorial_role/);
+assert.match(apparatus,/editionInfo\.publication_place/);
+assert.match(apparatus,/editionInfo\.isbn_note/);
+assert.match(apparatus,/ref\.grade\.display/);
+assert.match(apparatus,/ref\.locus\.reliable/);
+assert.match(apparatus,/doiLink\.href='https:\/\/doi\.org\/'\+ref\.doi/);
+
 assert.match(apparatus,/interventions\(e\)/);
 assert.match(apparatus,/const copy=document\.createElement\('button'\)/);
 assert.match(apparatus,/if\(readLocus&&!ref\.locus\.reliable\)/);
