@@ -19,7 +19,7 @@ import sys
 import tempfile
 import urllib.request
 
-ROSE = "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"
+ROSE = "https://archive.org/download/vitruviidearchi00pollgoog/vitruviidearchi00pollgoog.pdf"
 KROHN = pathlib.Path("documents/krohn-1912.pdf")
 BASE = os.getenv("R2_PUBLIC_BASE", "https://libros.vitruvius-digital-library.org").rstrip("/")
 BUCKET = os.getenv("R2_BUCKET_NAME", os.getenv("R2_BUCKET", ""))
@@ -28,8 +28,8 @@ EDITIONS = {
   "key": "rose-1899", "title": "Vitruvii De architectura libri decem",
   "author": "Marcus Vitruvius Pollio", "editor": "Valentin Rose",
   "date": "1899", "language": "la",
-  "source": "https://archive.org/details/vitruviidearchit00vitr_0",
-  "holding": "Getty Research Institute (Internet Archive digital copy)",
+  "source": "https://archive.org/details/vitruviidearchi00pollgoog",
+  "holding": "University of Michigan · digitized by Google · Internet Archive",
   "rights": "Historical public-domain edition; scan provenance credited to the holding institution."
  },
  "krohn": {
