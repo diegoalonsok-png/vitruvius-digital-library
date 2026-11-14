@@ -279,7 +279,7 @@ function renderCriticalAuthority(dest,w,d){
  row(dest,"Identificadores TLG/PHI (candidatos; no constituyen una URN de edición)",(A.candidateWorkCodes||[]).join(" · ")||"No acreditados");
  row(dest,"CTS de edición acreditada",A.ctsEditionUrn||"Sin URN CTS de edición verificada; no se construye por conjetura");
  section(dest,"Integridad de la obra y cobertura del original");
- const statusLabel={not_indexed:"Original pendiente de indexación",modern_manifestation:"Edición o estudio moderno, distinto de la obra clásica",partial_index:"Original indexado parcialmente",ancient_fragmentary:"Obra antigua transmitida fragmentariamente",original_greek_fragmentary:"Original griego perdido en parte; transmisión latina diferenciada",witness_partial:"Testigo más antiguo aquí documentado incompleto",collection_selected:"Colección seleccionada, sin cotejo global",books_present_not_collated:"Libros registrados; integridad ecdótica sin verificar",scope_unverified:"Integridad de la indexación no acreditada"};
+ const statusLabel={not_indexed:"Original pendiente de indexación",modern_manifestation:"Edición o estudio moderno, distinto de la obra clásica",partial_index:"Original indexado parcialmente",ancient_fragmentary:"Obra antigua transmitida fragmentariamente",original_greek_fragmentary:"Original griego perdido en parte; transmisión latina diferenciada",witness_partial:"Testigo más antiguo aquí documentado incompleto",collection_selected:"Colección seleccionada, sin cotejo global",books_present_not_collated:"Libros registrados; sin cotejo ecdótico integral documentado",scope_unverified:"Alcance de indexación aún no delimitado documentalmente"};
  row(dest,"Estado documentado",statusLabel[I.status]||I.status);
  row(dest,"Alcance textual",I.description);
  row(dest,"Lugar de indexación",I.indexed?(I.storage==="auxiliary_branch"?"Índice auxiliar fuera de GitHub Pages":"Corpus local del repositorio"):"No consta original indexado");
@@ -514,7 +514,7 @@ function renderInto(target,id,opts={}){
   row(head,"ID estable del catálogo",w.id);
   const authority=d.audit.get(w.id);
   if(authority?.candidateWorkCodes?.length)row(head,"Nomenclatura PHI/TLG candidata (código de obra, no URN CTS de edición)",authority.candidateWorkCodes.join(" · "));
-  if(authority)row(head,"Identificador CTS de edición",authority.ctsEditionUrn||"No verificado; no se genera automáticamente a partir de un código PHI/TLG");
+  if(authority)row(head,"Identificador CTS de edición",authority.ctsEditionUrn||"URN CTS de edición no documentada; los códigos PHI/TLG identifican obras, no ediciones");
   const permalink=new URL("classics-work-record.html",location.href);permalink.searchParams.set("work",w.id);
   const tools=html("p","cwd-links");
   addA(tools,"Ficha permanente de la obra ↗",permalink.href);
