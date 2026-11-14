@@ -1,5 +1,5 @@
 const form=document.querySelector('#search'),query=document.querySelector('#q'),status=document.querySelector('#status'),out=document.querySelector('#results');
-const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'documents/krohn-1912.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'},'perrault-1673':{id:'perrault-1673',index:'data/text/perrault-1673.json',pdf:'https://www.e-rara.ch/download/pdf/16797458.pdf',label:'Perrault (1673)',pages:371},
+const sources={'krohn-1912':{id:'krohn-1912',index:'data/text/krohn-1912.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf',label:'Krohn (1912)'},'rose-1899':{id:'rose-1899',index:'data/text/rose-1899.json',pdf:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf',label:'Rose (1899)'},'perrault-1673':{id:'perrault-1673',index:'data/text/perrault-1673.json',pdf:'https://www.e-rara.ch/download/pdf/16797458.pdf',label:'Perrault (1673)',pages:371},
  'ortiz-1787':{id:'ortiz-1787',index:'data/text/ortiz-1787.json',pdf:'https://archive.org/download/A065112/A065112.pdf',label:'Ortiz y Sanz (1787)',pages:370},
  'cesariano-1521':{id:'cesariano-1521',index:'data/text/cesariano-1521.json',pdf:null,viewer:n=>'cesariano-1521.html?image='+n,label:'Cesariano (1521)',pages:378},
  'recensio-es':{id:'recensio-es',index:'data/text/recensio-es.json',pdf:'documents/kurilo-recensio-es.pdf',label:'Kurilo V514 · Latín–Castellano (2026)',pages:1157},
@@ -172,7 +172,7 @@ function selectHistoricalEdition(){
  const pageLabel=document.querySelector('#pdf-page-number'),ocr=document.querySelector('#ocr-page');
  const pdfjs=document.querySelector('#pdfjs-viewer');
  const editionInfo={
-   'krohn-1912':{label:'Krohn 1912',url:'documents/krohn-1912.pdf#page=1',ocr:true},
+   'krohn-1912':{label:'Krohn 1912',url:'https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf#page=1',ocr:true},
    'rose-1899':{label:'Rose 1899',url:'https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page=1',ocr:true},
    'perrault-1673':{label:'Perrault 1673',url:'https://www.e-rara.ch/download/pdf/16797458.pdf#page=1',ocr:true}
  };
