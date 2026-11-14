@@ -137,7 +137,7 @@ function applySelection(){
  }
 }
 erase.addEventListener("click",()=>{
- const chosen=selection();if(!chosen){feedback.textContent="Selecciona el texto marcado que querés borrar.";return}
+ const chosen=selection();if(!chosen){feedback.textContent="Selecciona el texto marcado que quieres borrar.";return}
  if(save(read().filter(x=>x.b<=chosen.a||x.a>=chosen.b))){
   redraw();feedback.textContent="Marcas seleccionadas eliminadas.";
  }
