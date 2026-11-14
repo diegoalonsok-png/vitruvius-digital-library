@@ -45,11 +45,21 @@ async function browserTranslation(text,source,target){
  const translator=await API.create({sourceLanguage:source,targetLanguage:target});
  try{
   const result=await translator.translate(text.slice(0,MAX_INPUT));
-  return result?.trim()?{text:result.trim(),provider:"Traducción automática local del navegador",
+  return result?.trim()&&!translationLooksUnchanged(text,result,source,target)?{text:result.trim(),provider:"Traducción automática local del navegador",
    partial:text.length>MAX_INPUT}:null;
  }finally{translator.destroy?.()}
 }
 /* Two network routes, bounded per passage. Neither produces a citable edition. */
+function translationLooksUnchanged(original,translated,source,target){
+ const a=String(original||"").trim().normalize("NFKC"),b=String(translated||"").trim().normalize("NFKC");
+ if(!b||a===b)return true;
+ if(["grc","el"].includes(source)&&["es","en","fr"].includes(target)){
+  const greek=(b.match(/[α-ωΑ-Ωά-ώἀ-῿]/g)||[]).length;
+  const letters=(b.match(/[A-Za-zÀ-ÿα-ωΑ-Ωά-ώἀ-῿]/g)||[]).length;
+  if(letters>20&&greek/letters>0.22)return true;
+ }
+ return false;
+}
 async function providerMyMemory(fragment,source,target){
  const lang=source==="grc"?"el":source==="hbo"?"he":source;
  const query=new URLSearchParams({q:fragment,langpair:lang+"|"+target,mt:"1"});
@@ -63,6 +73,7 @@ async function providerMyMemory(fragment,source,target){
   if(Number(data?.responseStatus)!==200||typeof value!=="string"||!value.trim()||
    /QUERY LENGTH LIMIT|MYMEMORY WARNING|DAILY LIMIT|INVALID LANGUAGE|YOU HAVE USED ALL/i.test(value))
     throw Error("Proveedor no entregó traducción");
+  if(translationLooksUnchanged(fragment,value,source,target))throw Error("El proveedor devolvió el original sin traducir");
   return {text:value.trim(),provider:"MyMemory / Translated"};
  }finally{clearTimeout(timer)}
 }
@@ -78,7 +89,7 @@ async function providerAlternate(fragment,source,target){
   const data=await response.json();
   const value=Array.isArray(data?.[0])?
     data[0].map(part=>Array.isArray(part)?String(part[0]||""):"").join(""):"";
-  if(!value.trim())throw Error("Proveedor alternativo no disponible");
+  if(!value.trim()||translationLooksUnchanged(fragment,value,source,target))throw Error("Proveedor alternativo devolvió texto sin traducir");
   return {text:value.trim(),provider:"Traducción automática externa alternativa"};
  }finally{clearTimeout(timer)}
 }
@@ -172,7 +183,7 @@ async function translate(text,source,target){
  let result=null;
  try{result=await browserTranslation(original,source,target)}catch(_){result=null}
  if(!result)result=await externalTranslation(original,source,target,true);
- if(!result||!result.text)throw Error("El proveedor no entregó texto");
+ if(!result||!result.text||translationLooksUnchanged(original,result.text,source,target))throw Error("El proveedor no entregó una traducción válida");
  cache.set(key,result);return result;
 }
 window.VitruviaInlineTranslation=Object.freeze({attach,translate,chunkForTest:chunks,bytesForTest:utfBytes});
