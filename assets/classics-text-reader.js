@@ -7,7 +7,7 @@ const allowed={"apuleius-metamorphoses":"Apuleyo · Metamorphoses (Asinus aureus
 const LEX=window.ClassicalLexicon;
 if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no identificada en este lector";return}
 const base="data/classics-corpus/"+work+"-";
-const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0;
+const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0,searchIndex=null,searchMeta="",suggestions=[];
 // Deep links from documented concordances require literal evidence, not heuristic synonyms.
 const exactConcordance=p.get("semantic")!=="1";
 /* A trusted same-origin parallel reader may request ordinal passage navigation.
@@ -167,38 +167,112 @@ function limitedDistance(a,b,limit){
  }
  return prev[b.length];
 }
+const semanticResourceCache=new Map();
+function loadSearchResources(language){
+ const key=work+":"+language;
+ if(!semanticResourceCache.has(key)){
+  const safeWork=/^[a-z0-9-]{3,60}$/.test(work);
+  const glossary=safeWork?fetch("data/classics-lexicon/"+work+"-"+language+".json")
+   .then(r=>r.ok?r.json():null).catch(()=>null):Promise.resolve(null);
+  const concepts=fetch("data/lexicon/conceptus.json")
+   .then(r=>r.ok?r.json():null).catch(()=>null);
+  const promise=Promise.all([glossary,concepts]).then(([glossary,conceptus])=>{
+   const formToLemmas=new Map(),lemmasByRoman=new Map();
+   if(glossary?.forms&&glossary?.lemmas){
+    for(const [lemma,value] of Object.entries(glossary.lemmas)){
+     const key=romanKey(lemma,language);
+     if(!lemmasByRoman.has(key))lemmasByRoman.set(key,new Set());
+     lemmasByRoman.get(key).add(lemma);
+    }
+    for(const [form,analysis] of Object.entries(glossary.forms)){
+     const candidates=(Array.isArray(analysis)?analysis:[])
+       .map(x=>Array.isArray(x)?x[0]:x).filter(x=>typeof x==="string");
+     formToLemmas.set(fold(form),new Set(candidates.map(fold)));
+    }
+   }
+   return {glossary,concepts:conceptus?.concepts||[],formToLemmas,lemmasByRoman};
+  });
+  semanticResourceCache.set(key,promise);
+ }
+ return semanticResourceCache.get(key);
+}
 function editionTokens(){
  if(!data)return[];
  if(data._tokens)return data._tokens;
  data._tokens=data.passages.map(r=>{
-  const words=[];for(const m of r.text.matchAll(WORD_TOKEN)){
+  const words=[];
+  for(const m of r.text.matchAll(WORD_TOKEN)){
    const word=m[0].replace(/['’ʼ-]+$/u,"");
    if(word.length<2)continue;
-   words.push({start:m.index,end:m.index+word.length,original:word,key:romanKey(word,data.language)});
+   words.push({start:m.index,end:m.index+word.length,original:word,key:romanKey(word,data.language),lemmaSet:searchIndex?.formToLemmas.get(fold(word))||new Set()});
   }
   return words;
  });
  return data._tokens;
 }
-function locateQuery(query,approx=false){
- // Each returned match is grounded in an actual word and character range.
- const tokens=editionTokens(),q=String(query||"").trim(),key=romanKey(q,data.language);
+function interpretQuery(query){
+ const q=String(query||"").trim(),key=romanKey(q,data.language),targets=new Set(),explanations=[];
+ const glossary=searchIndex?.glossary,concepts=searchIndex?.concepts||[];
+ if(glossary?.lemmas){
+  for(const lemma of searchIndex.lemmasByRoman.get(key)||[])targets.add(fold(lemma));
+ }
+ const matchedConcepts=concepts.filter(concept=>{
+  const variants=[concept.id,...Object.values(concept.modern||{}).flat(),...(concept.grc||[]),...(concept.la||[])];
+  return variants.some(v=>typeof v==="string"&&(fold(v)===fold(q)||romanKey(v,data.language)===key));
+ });
+ for(const concept of matchedConcepts){
+  for(const term of concept[data.language]||[]){
+   const termKey=romanKey(term,data.language);
+   for(const lemma of searchIndex?.lemmasByRoman.get(termKey)||[])targets.add(fold(lemma));
+   if(!glossary)targets.add(fold(term));
+  }
+  explanations.push(concept.id);
+ }
+ // For English words not present in Conceptus, find exact words in the
+ // documented LSJ glossary. This is a lexicographic lead, not a translation.
+ if(!targets.size&&glossary?.lemmas&&/^[a-z]+(?:[ -][a-z]+)*$/i.test(q)&&q.length>=3){
+  const norm=s=>String(s).toLowerCase().replace(/[^a-z]+/g," ").trim();
+  const needle=" "+norm(q)+" ";
+  const hits=[];
+  for(const [lemma,item] of Object.entries(glossary.lemmas)){
+   const g=" "+norm(item?.g||"")+" ";
+   if(g.includes(needle))hits.push(lemma);
+  }
+  // Avoid silently treating a highly ambiguous English gloss as a verified lemma.
+  if(hits.length>0&&hits.length<=8){
+   hits.forEach(l=>targets.add(fold(l)));
+   explanations.push("glosa inglesa LSJ: correspondencia orientativa");
+  }
+ }
+ const explicitLemma=[...targets].map(k=>Object.keys(glossary?.lemmas||{}).find(l=>fold(l)===k)||k);
+ const label=explicitLemma.slice(0,7).join(", ");
+ return {key,targets,label,concepts:explanations};
+}
+function locateQuery(query){
+ const tokens=editionTokens(),q=String(query||"").trim(),key=romanKey(q,data.language),meaning=interpretQuery(q);
  if(!key||key.length<2)return [];
- const fuzzyMax=approx?(key.length>=7?2:key.length>=4?1:0):0;
- return tokens.map((words,i)=>{
+ const result=tokens.map((words,i)=>{
   const locations=[],forms=new Set();
   for(const token of words){
-   const distance=token.key===key?0:(fuzzyMax?limitedDistance(token.key,key,fuzzyMax):fuzzyMax+1);
-   if(distance>fuzzyMax)continue;
+   const literal=token.key===key;
+   const lemmatized=[...token.lemmaSet].some(l=>meaning.targets.has(l));
+   // Matching a source-language lemma without a glossary is explicitly literal.
+   if(!literal&&!lemmatized)continue;
    locations.push([token.start,token.end]);forms.add(token.original);
   }
-  return {i,r:data.passages[i],locations,forms:[...forms],approx};
+  return {i,r:data.passages[i],locations,forms:[...forms],approx:false};
  }).filter(x=>x.locations.length);
-}
-function literalLocations(text,query){
- // Retained for literal concordances, using the same native manuscript letters.
- if(LEX?.find)return LEX.find(text,query,{prefix:false});
- return [];
+ searchMeta=meaning.label?(meaning.concepts.length?"Equivalencias documentadas o glosas: ":"Lema identificado: ")+meaning.label:
+  "Coincidencias de formas textuales; no se presumen equivalencias por parecido ortográfico.";
+ // For unknown/typo queries, show proposals but never put them in concordance.
+ suggestions=[];
+ if(!result.length&&searchIndex?.lemmasByRoman?.size&&key.length>=4){
+  for(const [roman,lemmas] of searchIndex.lemmasByRoman){
+   if(limitedDistance(roman,key,1)===1)for(const lemma of lemmas)suggestions.push({lemma,roman});
+   if(suggestions.length>=7)break;
+  }
+ }
+ return result;
 }
 function makeConcordanceExcerpt(text,from,to){
  const left=Math.max(0,from-95),right=Math.min(text.length,to+150);
@@ -216,19 +290,27 @@ function renderSearch(){
  if(!search){results=[];resultPage=0;if(section)section.hidden=true;return}
  if(section)section.hidden=false;
  // The full indexed edition is scanned; Roman-letter queries transliterate Greek.
- results=locateQuery(search,false);
- let approximate=false;
- if(!results.length&&search.trim().length>=4){results=locateQuery(search,true);approximate=results.length>0;}
+ results=locateQuery(search);
  const literalTotal=results.reduce((n,x)=>n+x.locations.length,0);
  const header=document.createElement("p");header.className="search-summary";
  header.textContent=results.length+" pasajes en toda la edición ("+data.passages.length+" unidades) · "+literalTotal+
-   (approximate?" apariciones aproximadas; revisar grafía y significado.":" apariciones de formas correspondientes a la consulta.");
+   " apariciones de formas documentadas. "+searchMeta;
  target.append(header);
  if(!results.length){
   const no=document.createElement("p");no.className="search-empty";
   no.textContent="No se encontraron pasajes con esta expresión en la edición "+(data.language==="grc"?"griega":data.language==="la"?"latina":"seleccionada")+
-   ". Se admiten letras latinas para transcribir términos griegos y pequeñas erratas; no se inventan equivalencias semánticas. Pruebe otra forma o consulte el diccionario.";
-  target.append(no);return;
+   ". El buscador distingue lemas y equivalencias documentadas. Las erratas se muestran como sugerencias; no como pasajes encontrados.";
+  target.append(no);
+  if(suggestions.length){
+   const label=document.createElement("p");label.className="search-empty";label.textContent="Posibles correcciones (no son resultados): ";target.append(label);
+   for(const suggestion of suggestions.slice(0,6)){
+    const button=document.createElement("button");button.className="lexical-suggestion";
+    button.type="button";button.textContent=suggestion.lemma;
+    button.addEventListener("click",()=>{setQuery(suggestion.lemma);resultPage=0;renderSearch();if(results.length)select(results[0].i);});
+    target.append(button);
+   }
+  }
+  return;
  }
  const start=resultPage*SEARCH_PAGE_SIZE;
  const page=results.slice(start,start+SEARCH_PAGE_SIZE);
@@ -239,7 +321,7 @@ function renderSearch(){
   const title=document.createElement("strong");title.textContent=unitLabel()+" "+r.locus+(r.title?" · "+r.title:"")+
     (locations.length?" · "+locations.length+" "+(locations.length===1?"aparición":"apariciones"):" · coincidencia experimental");
   button.append(title);
-  if(forms?.length){const note=document.createElement("span");note.className="search-passage-more";note.textContent=(approx?"Grafías próximas encontradas: ":"Forma encontrada: ")+forms.slice(0,6).join(", ")+(forms.length>6?"…":"");button.append(note);}
+  if(forms?.length){const note=document.createElement("span");note.className="search-passage-more";note.textContent="Formas documentadas: "+forms.slice(0,6).join(", ")+(forms.length>6?"…":"");button.append(note);}
   if(locations.length){
    for(const [a,b] of locations.slice(0,3)){
     const excerpt=makeConcordanceExcerpt(r.text,a,b);excerpt.lang=data.language;
@@ -332,7 +414,9 @@ async function load(language){
    .finally(()=>clearTimeout(timeout));
  }
 
- data=corpus;active=0;
+ data=corpus;active=0;searchIndex=null;
+ try{searchIndex=await loadSearchResources(language)}catch(err){console.warn("Índice léxico complementario no disponible",err)}
+ // The lexical index is optional; source text and literal search always remain available.
  $("source-title").textContent=corpus.attribution+" · "+corpus.passages.length+" unidades textuales";
  const declaredAlignment=corpus.alignment||"No existe alineación filológica certificada entre este texto, traducciones y manuscritos.";
  const sourceCoverage=indexed?.sourceWorkId?indexed.sourceDescription:"";
