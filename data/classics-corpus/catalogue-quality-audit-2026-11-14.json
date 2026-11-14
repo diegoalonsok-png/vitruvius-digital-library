@@ -2,7 +2,7 @@
   "schema": "vitruvius-catalogue-review-v1",
   "date": "2026-11-14",
   "scope": "271 fichas de obras del catálogo antiguo; no equivale a certificación autóptica ni revisión individual de los sitios externos.",
-  "method": "Cruce de catálogo, índice de textos y registro de testimonios. El estado lectura-local-parcial no acredita integridad ni cotejo textual. Los identificadores de ediciones impresas y traducciones se auditan por separado de los autores antiguos.",
+  "method": "Cruce de catálogo, índice de textos y registro de testimonios. El estado lectura-local-parcial no acredita integridad ni cotejo textual. Los identificadores de ediciones impresas y traducciones se auditan por separado de los autores antiguos. La corrección puntual de Galeno XIV (1827) se apoyó en la bibliografía institucional de Pinakes, sin autopsia del PDF en R2.",
   "totals": {
     "works": 271,
     "indexEntries": 279,
@@ -7965,10 +7965,10 @@
     {
       "id": "galeno-opera-kuhn",
       "author": "Galeno",
-      "title": "Opera omnia (ed. Kühn): volumen adicional",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
-      "dating": "Pendiente de consignar: no se deduce del facsímil.",
-      "genre": "Pendiente de consignar: no se deduce del facsímil.",
+      "dating": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
+      "genre": "Medicina antigua · edición histórica de una colección de tratados",
       "publicStatus": "fuente-externa-identificada",
       "sourceKinds": [],
       "originalTextSources": [],
@@ -7976,7 +7976,7 @@
       "registeredWitnessIds": [],
       "manuscriptRecordCount": 0,
       "hasPDF": true,
-      "pdfSourceRole": null,
+      "pdfSourceRole": "original_greek_and_selected_latin_translations",
       "pdfSourcePages": 801,
       "observations": [
         {
@@ -7986,6 +7986,11 @@
         {
           "code": "no_manuscript_identified_in_local_register",
           "status": "research_pending"
+        },
+        {
+          "code": "duplicate_digital_source",
+          "status": "identified",
+          "detail": "Corrección verificada en Pinakes (IRHT-CNRS) el 14-11-2026: tomus XIV (1827), no volumen I. Dos rutas heredadas remiten a la misma digitalización SHA-256; no son dos impresos distintos."
         }
       ],
       "reviewLevel": "structural_crosscheck_only_not_palaeographic_certification"
@@ -7993,10 +7998,10 @@
     {
       "id": "galeno-kuhn-vol01",
       "author": "Galeno",
-      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
-      "dating": "Pendiente de consignar: no se deduce del facsímil.",
-      "genre": "Pendiente de consignar: no se deduce del facsímil.",
+      "dating": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
+      "genre": "Medicina antigua · edición histórica de una colección de tratados",
       "publicStatus": "fuente-externa-identificada",
       "sourceKinds": [],
       "originalTextSources": [],
@@ -8004,7 +8009,7 @@
       "registeredWitnessIds": [],
       "manuscriptRecordCount": 0,
       "hasPDF": true,
-      "pdfSourceRole": null,
+      "pdfSourceRole": "original_greek_and_selected_latin_translations",
       "pdfSourcePages": 801,
       "observations": [
         {
@@ -8014,6 +8019,11 @@
         {
           "code": "no_manuscript_identified_in_local_register",
           "status": "research_pending"
+        },
+        {
+          "code": "duplicate_digital_source",
+          "status": "identified",
+          "detail": "Corrección verificada en Pinakes (IRHT-CNRS) el 14-11-2026: tomus XIV (1827), no volumen I. Dos rutas heredadas remiten a la misma digitalización SHA-256; no son dos impresos distintos."
         }
       ],
       "reviewLevel": "structural_crosscheck_only_not_palaeographic_certification"
