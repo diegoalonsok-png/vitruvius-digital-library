@@ -1,0 +1,27 @@
+{
+  "schema": "vdl-ocr-reading-assistance-v1",
+  "method": "Correcciones de visualización tipográfica de segmentos OCR de una página impresa. No alteran el OCR de archivo, no son transcripciones diplomáticas ni establecen lecturas propias de los editores. Revisar contra facsímil cuando se requiera una cita textual de Rose o Krohn.",
+  "loci": {
+    "1.1.3": {
+      "rose-1899": {
+        "text": "cum in omnibus enim rebus, tum maxime etiam in architectura haec duo insunt, quod significatur et quod significat. significatur proposita res de qua dicitur, hanc autem significat demonstratio rationibus doctrinarum explicata. quare videtur utraque parte exercitatus esse debere qui se architectum profiteatur, itaque eum etiam ingeniosum oportet esse et ad disciplinam docilem, neque enim ingenium sine disciplina aut disciplina sine ingenio perfectum artificem potest efficere, et ut litteratus sit, peritus graphidos, eruditus geometria, historias complures noverit, philosophos diligenter audierit, musicam scierit, medicinae non sit ignarus, responsa iuris consultorum noverit, astrologiam caelique rationes cognitas habeat",
+        "interventions": [
+          "Se retiraron cifras de línea y barras de corte OCR.",
+          "arcbi- / tectura → architectura (recomposición gráfica).",
+          "baec → haec (error de reconocimiento óptico)."
+        ],
+        "label": "OCR de lectura corregido tipográficamente; consultar la imagen impresa para citar lecturas de Rose."
+      },
+      "krohn-1912": {
+        "text": "cum in omnibus enim rebus, tum maxime etiam in architectura haec duo insunt: quod significatur et quod significat. significatur proposita res, de qua dicitur; hanc autem significat demonstratio rationibus doctrinarum explicata. quare videtur utraque parte exercitatus esse debere, qui se architectum profiteatur. itaque eum etiam ingeniosum oportet esse et ad disciplinam docilem; neque enim ingenium sine disciplina aut disciplina sine ingenio perfectum artificem potest efficere. et ut litteratus sit, peritus graphidos, eruditus geometria, historias complures noverit, philosophos diligenter audierit, musicam scierit, medicinae non sit ignarus, responsa iurisconsultorum noverit, astrologiam caelique rationes cognitas habeat",
+        "interventions": [
+          "Se retiraron numeraciones de línea incorporadas al cuerpo del pasaje.",
+          "Se segregó del cuerpo la columna de aparato y el encabezado DE ARCHITECTURA LIB. I, 1.",
+          "Se recompusieron palabras partidas por numeración OCR: musicam e iurisconsultorum.",
+          "Se eliminaron caracteres espurios como (6 y 3(, sin modificar el sentido del pasaje."
+        ],
+        "label": "Texto continuo de lectura reconstruido a partir de las dos partes OCR del mismo locus; consultar el facsímil para la literalidad de Krohn."
+      }
+    }
+  }
+}
