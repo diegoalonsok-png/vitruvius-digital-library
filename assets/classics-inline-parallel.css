@@ -6,6 +6,8 @@
   gap:0;min-height:64vh;align-items:stretch;border:1px solid #414144;border-radius:7px;overflow:hidden;
   background:#000;color:#e2e2e3}
 .cl-dual-reader[data-split-active=true]{user-select:none}
+.cl-dual-reader.single-source{grid-template-columns:minmax(0,1fr)!important}
+.cl-dual-reader .cl-translation-column[hidden],.cl-dual-reader .cl-pane-splitter[hidden]{display:none!important}
 .cl-source-column,.cl-translation-column{min-width:0;overflow:auto;max-height:min(76vh,1100px);scrollbar-gutter:stable}
 .cl-source-column{padding:17px 18px;background:var(--reader-bg,#000);color:var(--reader-fg,#e2e2e3)}
 .cl-translation-column{padding:16px 19px 22px;background:var(--cl-translation-bg,#151516);color:var(--cl-translation-fg,#ece9e4)}
