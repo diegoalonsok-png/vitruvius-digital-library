@@ -36,6 +36,13 @@
  <h1>Registro ecdótico</h1>
  <p class="re-lead">Busca en todo el aparato del autor de <i>De architectura</i> —decisiones de la <i>collatio codicum</i>, glosas explicativas y notas de las ediciones V514, V554 y V297— y en las lecturas del Codex H tomadas sobre el facsímil. Cada resultado dice qué es, de dónde procede y con qué grado se ha comprobado; debajo se identifica el libro de origen por título completo, autor, edición, ISBN y DOI, o el manuscrito correspondiente sin atribuirle identificadores editoriales ajenos.</p>
 
+ <aside role="note" aria-label="Tipos de evidencia y verificación" style="border:1px solid #988a725e;border-inline-start:3px solid #ac9169;padding:12px 16px;margin:16px 0;font:13px/1.65 system-ui,sans-serif">
+ <strong>Cómo interpretar este registro.</strong> Una nota de autor, una glosa, una entrada del aparato comparativo y una observación de H son objetos distintos. Una etiqueta de «doble fuente» puede indicar coincidencia entre ediciones del autor, no dos manuscritos independientes. Las 37 observaciones H están <strong>pendientes de revisión</strong>.
+ <a href="guia-aparato-digital.html">Guía de las cuatro clases de evidencia</a> · <a href="data/ecdotic-decisions.json">Decisiones individualmente documentadas (registro estricto)</a>.
+ </aside>
+ <nav aria-label="Consultar estratos por separado" style="display:flex;flex-wrap:wrap;gap:8px 18px;font:13px/1.65 system-ui,sans-serif;margin:12px 0 20px">
+ <a href="registro-ecdotico.html?tipo=decision">Aparato editorial</a><a href="registro-ecdotico.html?tipo=glosa">Glosas</a><a href="registro-ecdotico.html?tipo=nota">Notas</a><a href="registro-ecdotico.html?tipo=lectura-h">Observaciones H</a>
+ </nav>
  <form class="re-buscar" id="re-form" role="search" autocomplete="off">
   <label for="re-q" class="re-sr">Buscar en el aparato</label>
   <input id="re-q" type="search" placeholder="Palabra latina, término, sigla o locus: symmetria, fabrica, Pythia, Krohn, 1.2.1…" enterkeyhint="search">
