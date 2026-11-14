@@ -43,7 +43,7 @@ function show(){
    "Identificador no presente en V297; su contenido puede estar integrado en otro locus del capítulo.";
   const btn=document.createElement("button");btn.type="button";btn.textContent="Comparar V514 y V297 en los visores";
   const excerpt=document.createElement("details"),description=document.createElement("summary");description.textContent="Ver comienzo de los textos comparados";
-  const v514=document.createElement("p"),v297=document.createElement("p");v514.textContent="V514 / V554: "+item.preview.v514;
+  const v514=document.createElement("p"),v297=document.createElement("p");v514.lang=v297.lang="la";v514.translate=v297.translate=false;v514.textContent="V514 / V554: "+item.preview.v514;
   v297.textContent="V297: "+(item.preview.v297||"Sin identificador coincidente; consultar el capítulo completo.");excerpt.append(description,v514,v297);
   btn.addEventListener("click",async()=>{
    btn.disabled=true;

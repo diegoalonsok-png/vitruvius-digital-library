@@ -39,6 +39,8 @@ const {dom,w,errors}=await boot('https://vitruvius-digital-library.org/scriptori
 const d=w.document,panes=[...d.querySelectorAll('.script-triple-pane')];
 check(new Set([...d.querySelectorAll('[id]')].map(e=>e.id)).size===d.querySelectorAll('[id]').length,'La página no contiene identificadores DOM duplicados');
 check(panes.length===3&&panes.every(p=>p.querySelector('.script-reference a[href*="doi.org/"]')||p.querySelector('.script-reference a[href*="archive.org/"]')),'Los tres visores cargan su procedencia bibliográfica');
+check(panes.every(p=>p.querySelector('.script-triple-text').getAttribute('translate')==='no'&&p.querySelector('.script-triple-text').lang==='la'),'Los textos latinos están protegidos de la traducción automática de la interfaz');
+check(panes.every(p=>p.querySelector('.script-bibliography').getAttribute('translate')==='no'),'Los títulos bibliográficos conservan su lengua y forma original');
 const firstEdition=panes[0].querySelector('.script-triple-head select');firstEdition.value='fr';firstEdition.dispatchEvent(new w.Event('change'));await new Promise(r=>setTimeout(r,80));
 check(/Kurilo/.test(panes[0].querySelector('h3').textContent)&&!panes[0].querySelector('h3').textContent.includes('Krohn'),'Cambiar a V554 actualiza el encabezado del visor');
 firstEdition.value='krohn';firstEdition.dispatchEvent(new w.Event('change'));await new Promise(r=>setTimeout(r,80));

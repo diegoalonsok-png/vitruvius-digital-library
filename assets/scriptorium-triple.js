@@ -304,7 +304,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  const showText=document.createElement("button");showText.type="button";showText.textContent="Texto OCR / edición";showText.setAttribute("aria-pressed","true");
  const showFacsimile=document.createElement("button");showFacsimile.type="button";showFacsimile.textContent="Ver PDF original";showFacsimile.setAttribute("aria-pressed","false");
  viewBar.append(showText,showFacsimile);panel.append(viewBar);
- const body=document.createElement("div");body.className="script-triple-text";body.tabIndex=0;body.setAttribute("aria-label","Texto del visor "+(slot+1));panel.append(body);
+ const body=document.createElement("div");body.className="script-triple-text notranslate";body.translate=false;body.tabIndex=0;body.setAttribute("aria-label","Texto del visor "+(slot+1));panel.append(body);
  const facsimile=document.createElement("iframe");facsimile.className="script-triple-pdf";facsimile.title="Facsímil PDF de la edición seleccionada";facsimile.loading="lazy";facsimile.hidden=true;panel.append(facsimile);
  const foot=document.createElement("div");foot.className="script-triple-footer";
  const translation=document.createElement("button");translation.type="button";translation.textContent="Mostrar traducción";translation.hidden=true;
@@ -358,6 +358,7 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
  function show(){
   if(!data)return;
   const item=data.pages[index];locus.value=String(index);
+  body.lang=translated?({kurilo:"es",fr:"fr",en:"en"}[edition.value]||"es"):"la";
   title.textContent=["I","II","III"][slot]+" · "+editions[edition.value].name.split(" · ").slice(0,2).join(" · ");
   ficha.textContent=FICHA[edition.value]||"";
   body.textContent=translated?item.translation:(item.text||"Esta página carece de OCR legible. Consultar facsímil.");

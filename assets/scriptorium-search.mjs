@@ -201,9 +201,9 @@ function render(){
  const count=Math.min(shown,live.length);
  for(let i=0;i<count;i++){
   const r=live[i],card=document.createElement('article');card.className='script-result';
-  const h=document.createElement('h3');h.textContent=r.source.label+' · '+r.label;card.append(h);
+  const h=document.createElement('h3');h.textContent=r.source.label+' · '+r.label;h.translate=false;card.append(h);
   if(r.field){const small=document.createElement('small');small.textContent=r.field==='latin'?'Coincidencia en el texto latino':'Coincidencia en la traducción';card.append(small);}
-  card.append(excerpt(r.snippet,r.term));
+  const snippet=excerpt(r.snippet,r.term);snippet.translate=false;snippet.classList.add('notranslate');snippet.lang=r.kind==='ocr'||r.field==='latin'?'la':({'recensio-es':'es','recensio-fr':'fr','theory-en':'en'}[r.id]||'es');card.append(snippet);
   if(r.page){
    addButton(card,(r.kind==='ocr'?'Abrir PDF':r.source.label.split(' · ')[0]+' · PDF')+' pág. '+r.page,()=>{
     document.dispatchEvent(new CustomEvent('scriptorium:open-search-result',{detail:{source:r.source.pdf,page:r.page,term:r.term||'',locus:r.p?.locus||null}}));

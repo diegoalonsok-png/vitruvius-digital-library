@@ -52,7 +52,7 @@
   return parts.join(" · ");
  }
  function bibliography(r){
-  return [r.author+".",r.title+".",r.editor&&r.author!=="Kurilo, Diego A."?(r.role+": "+r.editor+"."):"",r.statement?r.statement+".":r.version?r.version+".":"",[r.place,r.publisher].filter(Boolean).join(": ")+(r.year?", "+r.year:"")+".",r.doi?"https://doi.org/"+r.doi+".":""].filter(v=>v&&v!==".").join(" ");
+  return [r.author+(r.author.endsWith('.')?'':'.'),r.title+".",r.editor&&r.author!=="Kurilo, Diego A."?(r.role+": "+r.editor+"."):"",r.statement?r.statement+".":r.version?r.version+".":"",[r.place,r.publisher].filter(Boolean).join(": ")+(r.year?", "+r.year:"")+".",r.doi?"https://doi.org/"+r.doi+".":""].filter(v=>v&&v!==".").join(" ");
  }
  function citation(r,c={}){
   return [bibliography(r),r.isbn?"ISBN declarado: "+r.isbn+".":"",locationText(c)?"Pasaje consultado: "+locationText(c)+".":"",c.translation?"Cita de la traducción editorial.":"",r.historical?"Texto de búsqueda procedente de OCR sin corregir; verificar la lectura en el facsímil.":"",passageURL({...c,editionId:r.id}),r.isbn&&!r.isbnVerified?r.isbnNote:"",r.partial?r.status:""].filter(Boolean).join("\n");
@@ -102,8 +102,8 @@
   async function refresh(){const context=getContext(),id=resolveId(context.editionId);if(last===id&&current)return;last=id;const request=++seq;host.replaceChildren(el("small","Consultando ficha bibliográfica…"));
    let data;try{data=await catalog()}catch{data={}}
    if(request!==seq||!host.isConnected)return;current=record(id,data);host.replaceChildren();
-   const line=el("p",bibliography(current));line.className="script-bibliography";host.append(line);
-   const ids=el("div");ids.className="script-identifiers";
+   const line=el("p",bibliography(current));line.className="script-bibliography notranslate";line.translate=false;host.append(line);
+   const ids=el("div");ids.className="script-identifiers notranslate";ids.translate=false;
    if(current.doi){const a=el("a","DOI "+current.doi);a.href="https://doi.org/"+current.doi;a.target="_blank";a.rel="noopener noreferrer";ids.append(a)}else ids.append(el("span","DOI de esta edición no documentado"));
    ids.append(el("span",current.isbn?"ISBN declarado "+current.isbn:"ISBN no documentado"));host.append(ids);
    const details=el("details"),summary=el("summary","Procedencia, identificadores y derechos");details.append(summary,el("p",current.status));
