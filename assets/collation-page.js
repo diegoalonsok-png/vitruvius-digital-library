@@ -119,6 +119,22 @@ async function show(locus){
  document.title="Colación · Vitr. "+label(locus)+" · Vitruvius Digital Library";
  const root=$("#coll-body");root.replaceChildren();
  const head=el("h2",null,"Vitr., De arch. "+label(locus));root.append(head);
+ // Evidence links follow the same canonical locus without implying that
+ // a manuscript observation exists (or is independently verified) for it.
+ const evidenceNav=el("nav","coll-evidence-nav");
+ evidenceNav.setAttribute("aria-label","Documentación crítica del locus");
+ const registerLink=el("a",null,"Aparato editorial y glosas de este locus");
+ registerLink.href="registro-ecdotico.html?q="+encodeURIComponent(locus);
+ const hLink=el("a",null,"Buscar observaciones de H (si existen; pendientes de revisión)");
+ hLink.href="registro-ecdotico.html?tipo=lectura-h&q="+encodeURIComponent(locus);
+ const methodLink=el("a",null,"Alcance del cotejo");
+ methodLink.href="guia-aparato-digital.html";
+ for(const a of [registerLink,hLink,methodLink]){
+  a.style.marginRight="16px";
+  evidenceNav.append(a);
+ }
+ evidenceNav.style.cssText="display:flex;flex-wrap:wrap;gap:6px 4px;margin:7px 0 16px;font:13px/1.6 system-ui,sans-serif";
+ root.append(evidenceNav);
  const base=words(P.latin);
  const baseBox=el("section","coll-row coll-base");baseBox.append(el("h3",null,"V514 · texto latino de la edición de Diego Kurilo (base)"));
  const baseFlags=new Set();const rows=[];
