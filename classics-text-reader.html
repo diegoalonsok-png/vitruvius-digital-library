@@ -140,6 +140,12 @@ html[data-parallel-view="true"] .reader-toolbar{gap:8px;margin-bottom:10px}
 .search-passage-jump .search-excerpt-hit{background:#ffdf54!important;color:#17212c!important;padding:1px 2px;border-radius:2px;font-weight:700}
 .search-passage-jump .search-passage-more{display:block;margin-top:8px;font:12px/1.4 system-ui,sans-serif;color:#e6c88b}
 html[data-theme="light"] .search-passage-jump .search-excerpt-hit{background:#ffe16b!important;color:#17212c!important}
+.search-mode-choices{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px;border:1px solid var(--line);border-radius:7px;padding:3px;background:var(--panel)}
+.search-mode-choices select[hidden]{display:none!important}
+.tools .search-mode-choices button{min-height:34px;padding:7px 11px;border:1px solid transparent;border-radius:5px;white-space:nowrap;background:transparent;font-weight:500}
+.tools .search-mode-choices button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg);font-weight:700}
+.tools .search-mode-choices button:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+@media(max-width:700px){.search-mode-choices{width:100%}.search-mode-choices button{flex:1}}
 </style>
 <link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1">
 <link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v3">
@@ -156,7 +162,11 @@ html[data-theme="light"] .search-passage-jump .search-excerpt-hit{background:#ff
 <div class="tools">
 <label for="language">Idioma</label><select id="language"><option value="grc">Griego original</option><option value="la">Latín original</option><option value="es">Castellano histórico</option><option value="en">English historical</option><option value="fr">Français · traduction historique</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select>
 <label for="query" style="position:absolute;left:-10000px">Buscar palabra o frase</label><input id="query" type="search" placeholder="Buscar en español, inglés, francés, latín o griego: casa, house, maison, logos…">
-<select id="search-mode" aria-label="Modo de búsqueda"><option value="lexical">Palabra, lema y equivalencias</option><option value="literal">Solo texto literal</option></select>
+<div class="search-mode-choices" role="group" aria-label="Alcance de la búsqueda filológica">
+<button id="mode-exact" type="button" aria-pressed="true" title="Busca solo la palabra o secuencia atestiguada, sin sinónimos">Búsqueda exacta</button>
+<button id="mode-expanded" type="button" aria-pressed="false" title="Añade formas del lema y equivalencias léxicas orientativas">Búsqueda ampliada</button>
+<select id="search-mode" hidden aria-hidden="true" tabindex="-1"><option value="literal">Exacta</option><option value="lexical">Ampliada</option></select>
+</div>
 <button id="find" type="button">Buscar en esta edición</button>
 <button id="clear" type="button">Borrar</button>
 <button id="print" type="button">Imprimir</button>
@@ -198,7 +208,7 @@ html[data-theme="light"] .search-passage-jump .search-excerpt-hit{background:#ff
 <script defer src="assets/academic-inline-translation.js?v=20261110-passage-translation-v1"></script>
 <script defer src="assets/classical-lexicon.js?v=20261112-externo"></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261114-word-click-v2"></script>
-<script defer src="assets/classics-text-reader.js?v=20261114-logos-passages-v7"></script>
+<script defer src="assets/classics-text-reader.js?v=20261114-search-modes-v8"></script>
 <script defer src="assets/classics-inline-parallel.js?v=20261114-v1"></script>
 <script defer src="assets/classics-reader-annotations.js?v=20261114-source-v3"></script>
 <script defer src="assets/classics-translation-annotations.js?v=20261114-v3"></script>
