@@ -177,6 +177,7 @@ function irA(){
  const base=states.find(st=>st.data?.ed.format==="structured");
  if(!base){syncStatus.textContent="Ningún visor tiene cargada una edición por loci (Kurilo V514, V554 o V297).";return}
  const q=irPalabra.value.trim();
+ highlightTerm=q;
  let locus=irLocus.value;
  if(q){
   const f=fold(q).replace(/j/g,"i").replace(/v/g,"u"),r=f.length>6?f.replace(/(ae|am|as|um|us|is|es|em|a|e|i|o)$/,""):f;
@@ -364,11 +365,24 @@ function changeZoom(delta){pdfZoom=Math.max(50,Math.min(250,pdfZoom+delta));zoom
 pdfMinus.addEventListener("click",()=>changeZoom(-25));pdfPlus.addEventListener("click",()=>changeZoom(25));
 function underlineTerm(){
  if(!highlightTerm||translated||!data)return;
- const plain=body.textContent,folded=plain.normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/v/g,"u").replace(/j/g,"i");
- const term=highlightTerm.toLowerCase().replace(/v/g,"u").replace(/j/g,"i"),start=folded.indexOf(term);
- if(start<0)return;
- const end=start+highlightTerm.length,mark=document.createElement("mark");mark.className="script-triple-search-hit";mark.textContent=plain.slice(start,end);
- body.replaceChildren(document.createTextNode(plain.slice(0,start)),mark,document.createTextNode(plain.slice(end)));
+ const term=highlightTerm.trim().toLowerCase().replace(/[vj]/g,c=>c==="v"?"u":"i");
+ if(term.length<3)return;
+ const walker=document.createTreeWalker(body,NodeFilter.SHOW_TEXT);
+ const nodes=[];while(walker.nextNode())if(walker.currentNode.parentElement?.tagName!=="MARK")nodes.push(walker.currentNode);
+ let total=0;
+ for(const node of nodes){
+  if(total>=100)break;
+  const value=node.textContent,normalized=value.toLowerCase().replace(/[vj]/g,c=>c==="v"?"u":"i");
+  let cursor=0,index=normalized.indexOf(term),found=false;
+  if(index<0)continue;
+  const frag=document.createDocumentFragment();
+  while(index>=0&&total<100){
+   frag.append(document.createTextNode(value.slice(cursor,index)));
+   const mark=document.createElement("mark");mark.className="script-triple-search-hit";mark.textContent=value.slice(index,index+term.length);mark.title="Coincidencia literal de búsqueda; no equivale a cotejo ecdótico";
+   frag.append(mark);cursor=index+term.length;total++;found=true;index=normalized.indexOf(term,cursor);
+  }
+  if(found){frag.append(document.createTextNode(value.slice(cursor)));node.replaceWith(frag)}
+ }
 }
  const reference=document.createElement("div");reference.className="script-reference";panel.append(reference);
  let referenceUI=null;
@@ -500,8 +514,8 @@ const mainSource=document.getElementById("source");
 if(mainSource)mainSource.addEventListener("change",()=>{
  const key={"pdf:krohn":"krohn","pdf:rose-1899":"rose"}[mainSource.value];
  if(!key)return;
- const slot=key==="krohn"?0:2;
- states[slot]?.selectEdition(key);
+ const matching=states.find(st=>st.editionId()===key);
+ (matching||states[key==="krohn"?0:2])?.selectEdition(key);
 });
 window.ScriptTripleCompare={
  async compareEditorialLocus(locus){
