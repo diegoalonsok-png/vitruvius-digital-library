@@ -88,6 +88,14 @@ async function ready(){
   const data=await API.data(),selected=$("record-work");
   selected.replaceChildren(new Option("Elegir una obra del repertorio",""));
   for(const work of data.docs.values())selected.append(new Option(work.author+" · "+work.title,work.id));
+  // A modern critical edition is a valid selection, not an ancient manuscript.
+  // Explicit options are necessary: setting select.value on an absent option
+  // silently clears the valid query parameter.
+  for(const [id,title] of [
+   ["vitruvio-v514-pdf","Diego Kurilo · De architectura · V514 · castellano"],
+   ["vitruvio-v554-pdf","Diego Kurilo · De architectura · V554 · francés"],
+   ["theory-v297-pdf","Diego Kurilo · De architectura · V297 · inglés"]
+  ])if(![...selected.options].some(o=>o.value===id))selected.append(new Option(title,id));
   selected.append(new Option("Diego A. Kurilo · Vitruvius Digital Library · DOI del proyecto","vitruvius-digital-library"));
   function show(){
    const id=selected.value;
