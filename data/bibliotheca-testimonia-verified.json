@@ -1,8 +1,8 @@
 {
  "schema": 1,
- "updated": "2026-11-10",
- "scope": "Testimonios conservados de obras compuestas aprox. siglos II-I a. C. y I-II d. C.; los manuscritos conservados suelen ser muy posteriores. Ampliación: tres manuscritos institucionalmente documentados con cobertura particular y límites de acceso.",
- "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto. Tanda latina de fuentes institucionales: los enlaces no acreditan prioridad cronológica global ni completitud textual; distinción expresa entre visor publicado y catálogo sin imágenes. Se incorpora Or. 9271 como versión copta indirecta de la Didaché: puede ser más antiguo que H, pero no se colaciona carácter por carácter como griego sin retroversión filológica.",
+ "updated": "2026-11-14",
+ "scope": "Repertorio de testimonios manuscritos individualizados para Bibliotheca Graeca et Latina; incluye registros procedentes de catálogos institucionales o bibliografía especializada, con nivel de verificación por testimonio.",
+ "method": "Cada signatura es un testimonio histórico, no un autógrafo. Texto original, manuscrito, edición impresa y traducciones son capas independientes. Se respetan derechos de reproducción institucional. Tanda Didaché: se distingue el testimonio griego fragmentario del siglo IV (P. Oxy. XV 1782), el códice griego completo de 1056 (H) y el apógrafo griego completo del siglo XVI (Elbasan 82). Un catálogo sin imágenes no se anuncia como visor. Accesos alternativos por testigo: distinguir enlace a imagen directa, visor de institución, catálogo y bibliografía; los enlaces de colección no verifican por sí solos un manuscrito concreto. Tanda latina de fuentes institucionales: los enlaces no acreditan prioridad cronológica global ni completitud textual; distinción expresa entre visor publicado y catálogo sin imágenes. Se incorpora Or. 9271 como versión copta indirecta de la Didaché: puede ser más antiguo que H, pero no se colaciona carácter por carácter como griego sin retroversión filológica. Actualización 2026-11-14: BnF Grec 1662 (Diodoro, libros XI–XV), Laurenziana Plut.73.1 (Celso, datación agregada a distinguir del catálogo descriptivo), Parisinus gr. 2722 (Pseudo-Apolodoro; referencia secundaria, visor Gallica no inspeccionado directamente).",
  "rights": "Las imágenes del Vaticano no se reproducen ni almacenan en GitHub; se enlaza a su visor oficial.",
  "records": [
   {
@@ -3009,6 +3009,73 @@
    "dateStart": 1401,
    "dateEnd": 1500,
    "dateEvidence": "Datación por siglo según la ficha de la institución o el repertorio; los años son los extremos del siglo, no una datación precisa del códice."
+  },
+  {
+   "id": "diodorus-bnf-grec1662",
+   "workIds": [
+    "diodorus"
+   ],
+   "title": "Diodoro Sículo, Bibliotheca historica, libros XI–XV",
+   "library": "París, Bibliothèque nationale de France, Département des manuscrits",
+   "shelfmark": "Grec 1662",
+   "date": "Siglo XV (según catálogo agregado Biblissima/BnF)",
+   "dateStart": 1401,
+   "language": "grc",
+   "material": "Papel",
+   "extent": "180 folios; formato medio (descripción de catálogo)",
+   "coverage": "Libros XI–XV de la Bibliotheca historica. No abarca la obra íntegra ni puede presentarse como códice completo del texto.",
+   "provenance": "Mediceo-Regius 2539 (referencia histórica de catálogo).",
+   "record": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc21791s",
+   "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b107233799",
+   "manifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b107233799/manifest.json",
+   "verification": "Biblissima, ficha IIIF Grec 1662; datos bibliográficos proporcionados por Gallica/BnF (consultados 2026-11-14).",
+   "verificationUrl": "https://iiif.biblissima.fr/collections/manifest/6220da196da903186783d68759600922d860ff1a",
+   "verificationLevel": "institutional_aggregator_metadata_checked_2026-11-14",
+   "collationStatus": "Sin colación de lecturas ni asignación de variantes a loci individuales.",
+   "rights": "BnF/Gallica: consultar condiciones institucionales para reutilización de imágenes."
+  },
+  {
+   "id": "celsus-laurenziana-plut73-1",
+   "workIds": [
+    "celsus"
+   ],
+   "title": "Celso, De medicina, en códice médico misceláneo",
+   "library": "Florencia, Biblioteca Medicea Laurenziana",
+   "shelfmark": "Plut. 73.1",
+   "date": "1101–1110 en el registro agregado Biblissima; la descripción transmitida contiene «datazione non espressa». Atribución cronológica sujeta a comprobación del catálogo original.",
+   "dateStart": 1101,
+   "language": "la",
+   "material": "Pergamino (membrana)",
+   "extent": "220 folios; 235 × 295 mm (según descripción de catálogo)",
+   "coverage": "Testimonio de obras médicas atribuidas a Cornelio Celso, junto con tratados de otros autores. Extensión por obra y correspondencia por folios sin establecer.",
+   "record": "https://iiif.biblissima.fr/collections/manifest/794d5cc06ca503067ec24d2fd04883549c2117af",
+   "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/1221382",
+   "manifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:1221382/manifest.json",
+   "verification": "Biblissima / Teca digitale de la Biblioteca Medicea Laurenziana, Plut.73.1; verificación por metadatos institucionales agregados (2026-11-14).",
+   "verificationUrl": "https://iiif.biblissima.fr/collections/manifest/794d5cc06ca503067ec24d2fd04883549c2117af",
+   "verificationLevel": "institutional_aggregator_metadata_checked_2026-11-14",
+   "collationStatus": "No se han cotejado lecturas ni reconstruido cuadernos; datación agregada y ficha descriptiva discrepan en precisión.",
+   "rights": "Consultar condiciones de acceso de la Biblioteca Medicea Laurenziana; enlace al visor de la institución."
+  },
+  {
+   "id": "pseudo-apollodorus-parisinus2722",
+   "workIds": [
+    "pseudo-apollodorus-bibliotheca"
+   ],
+   "title": "Pseudo-Apolodoro, Bibliotheca (testimonio R, Parisinus graecus 2722)",
+   "library": "París, Bibliothèque nationale de France",
+   "shelfmark": "Parisinus graecus 2722 (siglum R en la bibliografía consultada)",
+   "date": "Siglo XIV según Crane et al. (2026); requiere contraste directo de datación paleográfica con BnF.",
+   "dateStart": 1301,
+   "language": "grc",
+   "coverage": "Testimonio fragmentario: el texto conservado termina en 3.16.2 según el estudio de Crane et al. La obra no se conserva íntegra en este códice; no se deduce de ello un número de folios autópticamente cotejado.",
+   "record": "https://gallica.bnf.fr/ark:/12148/btv1b525238520",
+   "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525238520",
+   "verification": "Crane et al., «Towards a Smart Edition of Apollodorus’ Library», Digital Classics Online 12.1 (2026), tabla de testigos. Gallica enlazada en el estudio; acceso directo al visor no comprobado en esta sesión.",
+   "verificationUrl": "https://journals.ub.uni-heidelberg.de/index.php/dco/article/download/114797/110950",
+   "verificationLevel": "secondary_specialist_reference_2026-11-14",
+   "collationStatus": "Siglum R bibliográfico, no asignado por colación propia. Stemma discutido: ver Eugenio Villa, Lexis 43 (2025), DOI 10.30687/Lexis/2724-1564/2025/01/006.",
+   "rights": "BnF/Gallica: respetar condiciones de uso de la digitalización."
   }
  ],
  "editions": [
