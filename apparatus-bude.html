@@ -86,6 +86,7 @@ function load(locus){
  const edition=$("#edition").value,roseText=collation?.loci?.[locus]?.["rose-1899"]?.text;
  set("#latin",edition==="rose"?(roseText||"No existe un fragmento OCR asignado a este locus. Consultar el facsímil."):passage.latin||"Texto latino no documentado");
  set("#translation",passage.translation||"Traducción no documentada");
+ document.querySelector(".ab-leaf[lang=es] .ab-edition").textContent="TRADUCCIÓN KURILO · V514 · NO TRADUCCIÓN DE ROSE";
  document.querySelector(".ab-leaf[lang=la] .ab-edition").textContent=edition==="rose"?"ROSE 1899 · OCR HISTÓRICO NO REVISADO":"RECENSIO V514 · PROVISORIA";
  set("#minor-heading",edition==="rose"?"Apparatus criticus · Rose 1899 (OCR)":"Apparatus criticus minor · V514");
  const pdf=comp?.loci?.find(v=>v.locus===locus)?.["rose-1899"]?.pdf||"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf";
@@ -97,15 +98,15 @@ function load(locus){
    const first=document.createElement("span");first.textContent=v.aparato;item.append(first);
    const meta=document.createElement("span");meta.className="ab-meta";meta.textContent="V514 · p. "+(v.pagina||"sin localizar")+" · "+(v.grado||"estado no especificado")+" · entrada editorial pendiente de revisión individual";item.append(meta);minor.append(item);count++;
  }
- if(edition==="rose"&&mode!=="v514"){
+ if(edition==="rose"&&mode!=="source"){
    for(const e of (d?.["rose-1899"]?.entradas||[])){const item=document.createElement("div");item.className="ab-entry";item.textContent=e.texto||"";const meta=document.createElement("span");meta.className="ab-meta";meta.textContent="Rose 1899 · OCR candidato, p. "+(e.pagina||d["rose-1899"].pagina||"sin identificar")+" · cotejar con facsímil";item.append(meta);minor.append(item);count++}
  }
  if(!count){const p=document.createElement("p");p.className="ab-none";p.textContent=edition==="rose"?"No hay entrada OCR de Rose atribuida a este locus; ello no demuestra ausencia de variantes.":mode==="source"?"Modo documental: consultar los aparatos históricos desplegables.":"No hay una entrada V514 apta para presentar como variante breve en este locus. La ausencia de entradas no significa unanimidad manuscrita.";minor.append(p)}
- if(mode==="v514"){$(".ab-documentation").querySelectorAll("details").forEach(x=>x.open=false)}
+ if(mode==="v514"&&edition!=="rose"){$(".ab-documentation").querySelectorAll("details").forEach(x=>x.open=false)}
  source("#rose",d?.["rose-1899"],"Rose 1899");source("#krohn",d?.["krohn-1912"],"Krohn 1912");
  $("#reader-link").href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);
  $("#notes-link").href="inventario-aparato-autoral.html?locus="+encodeURIComponent(locus);
- set("#status","Locus "+format(locus)+" · V514 · "+count+" entradas editoriales con texto de aparato · "+((d?.["rose-1899"]?.entradas||[]).length)+" fragmentos OCR Rose · "+((d?.["krohn-1912"]?.entradas||[]).length)+" fragmentos OCR Krohn. Estas cifras no acreditan variantes revisadas.");
+ set("#status","Locus "+format(locus)+" · "+(edition==="rose"?"Rose 1899 (OCR no cotejado)":"Kurilo V514")+" · "+count+" entradas mostradas en aparato · "+((d?.["rose-1899"]?.entradas||[]).length)+" fragmentos OCR Rose · "+((d?.["krohn-1912"]?.entradas||[]).length)+" fragmentos OCR Krohn. Estas cifras no acreditan variantes revisadas.");
 }
 $("#controls").addEventListener("submit",e=>{e.preventDefault();load($("#locus").value.trim().toLowerCase())});
 $("#mode").addEventListener("change",()=>current&&load(current));
