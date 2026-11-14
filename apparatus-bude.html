@@ -37,6 +37,19 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 .ab-actions button,.ab-actions a{font:13px system-ui;border:1px solid var(--ab-rule);padding:9px 13px;background:transparent;color:inherit;cursor:pointer;text-decoration:none;border-radius:3px}
 @media(max-width:760px){.ab-leaves{grid-template-columns:1fr}.ab-leaf{min-height:unset;padding:22px}.ab-latin{font-size:19px}}
 @media print{body{background:white}.ab-nav,.ab-tools,.ab-actions,.ab-documentation{display:none!important}main{padding:0}.ab-leaves{border:0}.ab-leaf{padding:15mm;min-height:250mm}.ab-notice{font-size:10px}}
+
+.ab-compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:17px 0 25px}
+.ab-compare article{background:var(--ab-paper);border:1px solid var(--ab-rule);padding:16px;min-width:0}
+.ab-compare h3{font:600 14px system-ui;margin:0 0 8px}
+.ab-compare .ab-text{font-size:15px;line-height:1.75;max-height:350px;overflow:auto}
+.ab-compare small{display:block;font:11px/1.5 system-ui;color:var(--ab-muted);margin:8px 0}
+.ab-entry .lemma{font-style:italic;font-weight:600}
+.ab-entry .divider-lemma{padding:0 .4em;color:var(--ab-accent)}
+.ab-reference{font:12px/1.6 system-ui}
+.ab-text mark.ab-proposal{background:rgba(197,162,90,.19);border-bottom:2px dotted #96754e;color:inherit;cursor:help}
+.ab-warning{font:12px/1.65 system-ui;color:#755228}
+@media(max-width:900px){.ab-compare{grid-template-columns:1fr}.ab-compare .ab-text{max-height:230px}}
+@media print{.ab-compare{page-break-inside:avoid}}
 </style></head><body><main>
 <nav class="ab-nav" aria-label="Navegación académica"><a href="index.html">Biblioteca</a><a href="aparato-critico.html">Aparato autoral</a><a href="aparato-comparativo.html">Aparato comparativo</a><a href="scriptorium.html">Scriptorium</a><a href="como-citar.html">Cómo citar</a></nav>
 <header><div class="ab-eyebrow">VITRVVIVS · DE ARCHITECTVRA · EDITIO DIGITALIS</div><h1>Apparatus criticus</h1>
@@ -47,11 +60,20 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <button type="submit">Consultar pasaje</button>
 <button type="button" id="prev">Anterior</button><button type="button" id="next">Siguiente</button>
 <label>Edición latina de referencia<select id="edition"><option value="v514">Kurilo V514 · texto estructurado</option><option value="rose">Valentin Rose 1899 · OCR histórico</option></select></label>
+<label>Traducción (Kurilo)<select id="translation-edition"><option value="es">Castellano · V514</option><option value="fr">Francés · V554</option><option value="en">Inglés · V297</option></select></label>
 <label>Visualización<select id="mode"><option value="all">Texto y aparato</option><option value="v514">Solo decisiones V514</option><option value="source">Comparación documental</option></select></label>
 </form>
 <p id="status" class="ab-status" role="status" aria-live="polite">Cargando los datos existentes…</p>
-<section class="ab-leaves" aria-label="Texto y traducción en páginas enfrentadas">
-<article class="ab-leaf" lang="es"><header class="ab-leaf-head"><span class="ab-locus" id="left-locus">—</span><h2>Traducción castellana</h2><span class="ab-edition">KURILO · V514 · 2026</span></header><div id="translation" class="ab-text"></div><div class="ab-apparatus"><h3>Nota editorial</h3><p class="ab-none">La traducción se reproduce de V514. Las notas interpretativas se consultan por separado en el inventario de aparato autoral.</p><a id="notes-link" href="inventario-aparato-autoral.html">Consultar notas del autor →</a></div></article>
+<section aria-labelledby="triple-title">
+<h2 id="triple-title">Collatio textuum · Rose, Krohn, Kurilo</h2>
+<p class="ab-sub">Tres textos latinos alineados por <i>locus</i>. Los textos de Rose y Krohn son segmentos OCR históricos, no transcripciones revisadas. Las diferencias de OCR no se consideran variantes críticas verificadas.</p>
+<div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
+<article><h3>Rose · 1899</h3><small>Texto latino OCR · cotejo pendiente</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
+<article><h3>Krohn · 1912</h3><small>Texto latino OCR · cotejo pendiente</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
+<article><h3>Kurilo · V514</h3><small>Texto latino de la recensio provisional</small><div class="ab-text" lang="la" id="compare-kurilo"></div><small>Fuente: V514, pasaje estructurado.</small><a id="compare-kurilo-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Lector de Kurilo</a></article>
+</div></section>
+<section class="ab-leaves" aria-label="Texto latino y traducción de Kurilo">
+<article class="ab-leaf" lang="es"><header class="ab-leaf-head"><span class="ab-locus" id="left-locus">—</span><h2 id="translation-heading">Traducción castellana</h2><span class="ab-edition">KURILO · V514 · 2026</span></header><div id="translation" class="ab-text"></div><div class="ab-apparatus"><h3>Nota editorial</h3><p class="ab-none">La traducción se reproduce de V514. Las notas interpretativas se consultan por separado en el inventario de aparato autoral.</p><a id="notes-link" href="inventario-aparato-autoral.html">Consultar notas del autor →</a></div></article>
 <article class="ab-leaf" lang="la"><header class="ab-leaf-head"><span class="ab-locus" id="right-locus">—</span><h2>Textus Latinus</h2><span class="ab-edition">RECENSIO V514 · PROVISORIA</span></header><div id="latin" class="ab-text ab-latin"></div>
 <section class="ab-apparatus" aria-label="Aparato conciso"><h3 id="minor-heading">Apparatus criticus minor · V514</h3><div id="minor"></div></section></article>
 </section>
@@ -61,6 +83,18 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <details open><summary>Rose 1899 · aparato histórico OCR</summary><div id="rose"></div></details>
 <details id="rose-facsimile"><summary>Rose 1899 · facsímil de la página impresa</summary><p>Imagen de la edición de Valentin Rose, <i>Vitruvii De architectura libri decem</i>, Leipzig: Teubner, 1899. La correspondencia de página procede de la alineación automática y requiere comprobación.</p><p><a id="rose-pdf-link" target="_blank" rel="noopener noreferrer" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf">Abrir PDF histórico de Rose</a></p><iframe id="rose-pdf-frame" loading="lazy" title="Fascímil histórico de Rose 1899" style="display:block;width:100%;height:min(70vh,690px);border:1px solid var(--ab-rule)"></iframe><p class="ab-none">Si el archivo externo impide su visualización incrustada, usar el enlace al PDF original.</p></details>
 <details><summary>Krohn 1912 · aparato histórico OCR</summary><div id="krohn"></div></details>
+<details open><summary>Notae criticae · convenciones del aparato</summary>
+<table><thead><tr><th>Notación</th><th>Significado</th></tr></thead><tbody>
+<tr><td><i>lemma</i> ] lectura</td><td>Lectura establecida seguida de la lectura alternativa atribuida a su fuente</td></tr>
+<tr><td><i>om.</i></td><td><i>omisit / omiserunt</i>: omisión</td></tr>
+<tr><td><i>add.</i></td><td><i>addidit / addiderunt</i>: adición</td></tr>
+<tr><td><i>corr.</i>, <i>ante corr.</i>, <i>post corr.</i></td><td>Corrección; estados anteriores y posteriores de la mano</td></tr>
+<tr><td><i>coni.</i></td><td><i>coniecit</i>: conjetura editorial</td></tr>
+<tr><td><i>suppl.</i></td><td><i>supplevit</i>: suplemento editorial</td></tr>
+<tr><td><i>secl.</i>, <i>transp.</i></td><td>Expunción o transposición editorial</td></tr>
+<tr><td><i>codd.</i>, <i>edd.</i></td><td>Manuscritos y ediciones, respectivamente; se atribuyen solo con documentación</td></tr>
+</tbody></table>
+<p class="ab-warning">Estas abreviaturas siguen usos comunes de la ecdótica latina, compatibles con la tradición editorial Budé. No constituyen una nomenclatura exclusiva o uniforme de todos sus volúmenes. No se asignan automáticamente a diferencias OCR.</p></details>
 <details><summary>Conspectus siglorum · identificación de testimonios</summary><dl id="sigla"></dl><p>Las referencias de los editores históricos no implican autopsia digital ni lectura directa realizada por este proyecto.</p></details>
 <details><summary>Criterios ecdóticos de esta presentación</summary><p>El texto V514, las lecturas propuestas en su aparato y los extractos OCR históricos permanecen diferenciados. Un lema con corchete editorial no es una lectura diplomática; una coincidencia de búsqueda no demuestra una variante. El estado “comprobada en V514 y V554” remite a concordancia interna de ediciones, no a lectura manuscrita verificada. Los aparatos originales se deben cotejar en los facsímiles enlazados.</p></details>
 <div class="ab-actions"><button type="button" id="copy">Copiar referencia</button><button type="button" id="print">Imprimir ficha</button><a id="reader-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Abrir lector completo</a><a href="protocolo-verificacion-cientifica.html">Protocolo científico</a></div>
@@ -70,7 +104,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 (()=>{"use strict";
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
 const pUrl=new URL(location.href),params=new URLSearchParams(pUrl.search);
-let data=null,comp=null,collation=null,rows=[],current="";
+let data=null,comp=null,collation=null,translations={es:null,fr:null,en:null},rows=[],current="";
 function source(div,record,name){
  const host=$(div);host.replaceChildren();
  const entries=record?.entradas||[];if(!entries.length){const p=document.createElement("p");p.className="ab-none";p.textContent="Sin entradas extraídas para este locus.";host.append(p);return}
@@ -81,12 +115,24 @@ function source(div,record,name){
 }
 function load(locus){
  const passage=rows.find(p=>p.locus===locus);if(!passage){set("#status","El locus no figura en la edición estructurada V514. Compruebe su numeración.");return}
- current=locus;$("#locus").value=locus;params.set("locus",locus);params.set("edition",$("#edition").value);history.replaceState(null,"",location.pathname+"?"+params.toString());
+ current=locus;$("#locus").value=locus;params.set("locus",locus);params.set("edition",$("#edition").value);params.set("translation",$("#translation-edition").value);history.replaceState(null,"",location.pathname+"?"+params.toString());
  set("#left-locus",format(locus));set("#right-locus",format(locus));
  const edition=$("#edition").value,roseText=collation?.loci?.[locus]?.["rose-1899"]?.text;
  set("#latin",edition==="rose"?(roseText||"No existe un fragmento OCR asignado a este locus. Consultar el facsímil."):passage.latin||"Texto latino no documentado");
- set("#translation",passage.translation||"Traducción no documentada");
- document.querySelector(".ab-leaf[lang=es] .ab-edition").textContent="TRADUCCIÓN KURILO · V514 · NO TRADUCCIÓN DE ROSE";
+ const lang=$("#translation-edition").value,trow=translations[lang]?.passages?.find(x=>x.locus===locus);
+ set("#translation",trow?.translation||"Traducción no disponible para este locus en la versión seleccionada.");
+ const trMeta={es:["Traducción castellana","KURILO · V514"],fr:["Traduction française","KURILO · V554"],en:["English translation","KURILO · V297"]}[lang];
+ set("#translation-heading",trMeta[0]);document.querySelector(".ab-leaf:first-child").lang=lang;
+ document.querySelector(".ab-leaf:first-child .ab-edition").textContent=trMeta[1]+" · traducción independiente de Rose y Krohn";
+ const c=collation?.loci?.[locus]||{};
+ set("#compare-rose",c["rose-1899"]?.text||"No hay segmento OCR alineado para el locus.");set("#compare-krohn",c["krohn-1912"]?.text||"No hay segmento OCR alineado para el locus.");
+ set("#compare-kurilo",passage.latin||"Sin texto latino estructurado.");
+ for(const [name,id,defaultPdf] of [["rose-1899","rose","https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"],["krohn-1912","krohn","documents/krohn-1912.pdf"]]){
+   const item=c[name];set("#compare-"+id+"-status",item?"Coincidencia automática de alineación "+Math.round((item.score||0)*100)+" % · página digital "+item.page:"Sin correspondencia automática documentada");
+   const pdf=comp?.loci?.find(v=>v.locus===locus)?.[name]?.pdf||defaultPdf;
+   $("#compare-"+id+"-link").href=pdf;
+ }
+ $("#compare-kurilo-link").href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);
  document.querySelector(".ab-leaf[lang=la] .ab-edition").textContent=edition==="rose"?"ROSE 1899 · OCR HISTÓRICO NO REVISADO":"RECENSIO V514 · PROVISORIA";
  set("#minor-heading",edition==="rose"?"Apparatus criticus · Rose 1899 (OCR)":"Apparatus criticus minor · V514");
  const pdf=comp?.loci?.find(v=>v.locus===locus)?.["rose-1899"]?.pdf||"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf";
@@ -95,7 +141,11 @@ function load(locus){
  if(d&&mode!=="source"&&edition!=="rose")for(const v of (d.v514||[])){
    if(!v.lema||!v.aparato?.trim())continue;
    const item=document.createElement("div");item.className="ab-entry";
-   const first=document.createElement("span");first.textContent=v.aparato;item.append(first);
+   const first=document.createElement("span");
+   const raw=v.aparato.trim(),pos=raw.indexOf(" ] ");
+   if(pos>=0){const lemma=document.createElement("span");lemma.className="lemma";lemma.textContent=raw.slice(0,pos);const sep=document.createElement("span");sep.className="divider-lemma";sep.textContent=" ] ";const reading=document.createElement("span");reading.textContent=raw.slice(pos+3);first.append(lemma,sep,reading)}
+   else{first.textContent=raw}
+   item.append(first);
    const meta=document.createElement("span");meta.className="ab-meta";meta.textContent="V514 · p. "+(v.pagina||"sin localizar")+" · "+(v.grado||"estado no especificado")+" · entrada editorial pendiente de revisión individual";item.append(meta);minor.append(item);count++;
  }
  if(edition==="rose"&&mode!=="source"){
@@ -111,6 +161,7 @@ function load(locus){
 $("#controls").addEventListener("submit",e=>{e.preventDefault();load($("#locus").value.trim().toLowerCase())});
 $("#mode").addEventListener("change",()=>current&&load(current));
 $("#edition").addEventListener("change",()=>current&&load(current));
+$("#translation-edition").addEventListener("change",()=>current&&load(current));
 for(const [id,offset] of [["#prev",-1],["#next",1]])$(id).addEventListener("click",()=>{const i=rows.findIndex(p=>p.locus===current);if(i>=0&&rows[i+offset])load(rows[i+offset].locus)});
 $("#print").addEventListener("click",()=>window.print());
 $("#copy").addEventListener("click",async()=>{
@@ -121,8 +172,13 @@ $("#copy").addEventListener("click",async()=>{
  try{const urls=["data/structured/recensio-es.json","data/apparatus/aparato-comparativo.json","data/collation-loci.json"];
  const resp=await Promise.all(urls.map(u=>fetch(u,{headers:{Accept:"application/json"}})));for(let i=0;i<resp.length;i++)if(!resp[i].ok)throw Error(urls[i]+": HTTP "+resp[i].status);
  [data,comp,collation]=await Promise.all(resp.map(r=>r.json()));if(!Array.isArray(data.passages)||!Array.isArray(comp.loci)||!collation.loci)throw Error("Estructura de datos no reconocida");
- rows=data.passages;const sig=$("#sigla");for(const [k,v] of Object.entries(comp.testimonios||{})){const dt=document.createElement("dt");dt.textContent=k;const dd=document.createElement("dd");dd.textContent=v;sig.append(dt,dd)}
- if(params.get("edition")==="rose")$("#edition").value="rose";load(params.get("locus")||"1.1.1");
+ rows=data.passages;translations.es=data;
+ const additional=[["fr","data/structured/recensio-fr.json"],["en","data/structured/theory-en.json"]];
+ await Promise.all(additional.map(async ([key,url])=>{try{const r=await fetch(url);if(!r.ok)throw Error("HTTP "+r.status);const obj=await r.json();if(!Array.isArray(obj.passages))throw Error("Sin pasajes");translations[key]=obj}catch(e){translations[key]={passages:[]};console.warn("Traducción "+key+" no disponible: "+e.message)}}));
+ const sig=$("#sigla");for(const [k,v] of Object.entries(comp.testimonios||{})){const dt=document.createElement("dt");dt.textContent=k;const dd=document.createElement("dd");dd.textContent=v;sig.append(dt,dd)}
+ if(params.get("edition")==="rose")$("#edition").value="rose";
+ if(["es","fr","en"].includes(params.get("translation")))$("#translation-edition").value=params.get("translation");
+ load(params.get("locus")||"1.1.1");
  }catch(e){set("#status","No se pudo cargar el aparato: "+e.message+". El lector no sustituye los datos que faltan por lecturas supuestas.")}
 })();
 })();
