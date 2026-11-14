@@ -2,7 +2,7 @@
   "schema": "vitruvius-bibliotheca-source-gap-audit-v1",
   "date": "2026-11-14",
   "scope": "271 obras del catálogo principal y 279 entradas del registro de búsqueda; no se inspeccionaron visualmente todos los folios ni los PDF alojados en R2",
-  "method": "Original local indexado = al menos una entrada del registro con workId y lengua original coincidentes, excluyendo formatos de OCR histórico. No equivale a texto completo ni a cotejo ecdótico. Testimonio documentado = registro con signatura o enlace específico, no un enlace genérico de búsqueda. Estado de derechos y legibilidad deben comprobarse para cada reproducción.",
+  "method": "Original local indexado = al menos una entrada del registro con workId y lengua original coincidentes, excluyendo formatos de OCR histórico. No equivale a texto completo ni a cotejo ecdótico. Testimonio documentado = registro con signatura o enlace específico, no un enlace genérico de búsqueda. Estado de derechos y legibilidad deben comprobarse para cada reproducción. Se han deduplicado las referencias de un mismo manuscrito físico bajo una signatura única.",
   "counts": {
     "catalogued": 271,
     "indexedVersions": 279,
@@ -5756,5 +5756,6 @@
       "needsManuscriptAuthority": true,
       "needsSourceEditionOrReader": false
     }
-  ]
+  ],
+  "authorityControlUpdate": "Dioscorides BnF Grec 2179 merged with existing catalogue record dioscorides-paris; physical codex counts once."
 }
