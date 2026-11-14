@@ -65,7 +65,63 @@ html[data-theme] body.vitruvius-secondary-controls main .reader-tools .reader-ac
  color:var(--fac-paper)!important;
 }
 
-</style><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261113-grc-visor"></head><body><header><h1>Facsímiles clásicos · lector de folios</h1><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></header><main><p class="warning">El folio original es la fuente principal de lectura. El OCR se muestra como ayuda de búsqueda y puede contener errores de reconocimiento, especialmente en impresos antiguos, griego, latín y abreviaturas. La página digital del PDF no equivale a un locus filológico verificado.</p><div class="form"><label>Edición<select id="edition"><option>Cargando...</option></select></label><label>Buscar en las páginas<input id="term" type="search" placeholder="Término o frase"></label><button id="go">Buscar</button><button id="read" type="button">Leer página a página</button></div><div id="cita" class="cita" hidden></div><div id="pager" class="pager" hidden><button id="prev" type="button">← Anterior</button><label>Página digital <input id="pageno" type="number" min="1" step="1" value="1"></label><button id="next" type="button">Siguiente →</button><a id="facsimil" href="#" target="_blank" rel="noopener">Abrir página en PDF</a></div><section id="reader-shell" class="reader-shell" hidden aria-label="Lector de facsímil y transcripción OCR">
+
+/* Isolated color pairs: the global secondary toolbar switches the theme, but
+ * this reader owns every text/surface pair to prevent low-contrast mixtures. */
+html[data-theme="light"] body.facsimile-classic-reader {
+ --fcr-bg:#f4f1eb;--fcr-panel:#ffffff;--fcr-soft:#f8f3e9;
+ --fcr-fg:#192e40;--fcr-secondary:#3e5261;--fcr-link:#124b75;
+ --fcr-edge:#b7aa99;--fcr-button:#233f55;--fcr-button-text:#ffffff;
+}
+html[data-theme="dark"] body.facsimile-classic-reader {
+ --fcr-bg:#10151b;--fcr-panel:#1d2730;--fcr-soft:#27343e;
+ --fcr-fg:#f4f6f8;--fcr-secondary:#d8e0e5;--fcr-link:#9edaff;
+ --fcr-edge:#71818d;--fcr-button:#d6e8f5;--fcr-button-text:#172734;
+}
+html[data-theme] body.facsimile-classic-reader{
+ background:var(--fcr-bg)!important;color:var(--fcr-fg)!important;
+}
+html[data-theme] body.facsimile-classic-reader > header{
+ background:#203749!important;color:#fff!important;
+}
+html[data-theme] body.facsimile-classic-reader > header :is(h1,a,a:visited){
+ color:#fff!important;
+}
+html[data-theme] body.facsimile-classic-reader main{
+ background:var(--fcr-bg)!important;color:var(--fcr-fg)!important;
+}
+html[data-theme] body.facsimile-classic-reader main :is(.warning,.cita,.pager,.reader-column,.reader-head,.reader-note,.folio,article,#results article){
+ background:var(--fcr-panel)!important;color:var(--fcr-fg)!important;
+ border-color:var(--fcr-edge)!important;
+}
+html[data-theme] body.facsimile-classic-reader main :is(.warning,.reader-head,.reader-note){
+ background:var(--fcr-soft)!important;color:var(--fcr-fg)!important;
+}
+html[data-theme] body.facsimile-classic-reader main :is(.warning,.cita,.pager,.reader-column,.reader-head,.reader-note,.folio,article,#results article) :is(*):not(button):not(input):not(select):not(a){
+ color:var(--fcr-fg)!important;
+}
+html[data-theme] body.facsimile-classic-reader main :is(.form,.pager,.reader-column,.reader-head,.reader-note,.cita,article,.folio,.warning,#status) :is(label,p,h2,strong,b,small,span,em){
+ color:var(--fcr-fg)!important;
+}
+html[data-theme] body.facsimile-classic-reader main :is(a,a:visited){
+ color:var(--fcr-link)!important;text-decoration:underline;
+}
+html[data-theme] body.facsimile-classic-reader main :is(input,select,textarea){
+ background:var(--fcr-panel)!important;color:var(--fcr-fg)!important;
+ border-color:var(--fcr-edge)!important;
+}
+html[data-theme] body.facsimile-classic-reader main input::placeholder{
+ color:var(--fcr-secondary)!important;opacity:1!important;
+}
+html[data-theme] body.facsimile-classic-reader main button{
+ background:var(--fcr-button)!important;color:var(--fcr-button-text)!important;
+ border:1px solid var(--fcr-edge)!important;
+}
+html[data-theme] body.facsimile-classic-reader main :is(button,input,select,a):focus-visible{
+ outline:3px solid var(--fcr-link)!important;outline-offset:2px;
+}
+/* Do not recolor the PDF iframe; it is the original archival document. */
+</style><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261113-grc-visor"></head><body class="facsimile-classic-reader"><header><h1>Facsímiles clásicos · lector de folios</h1><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></header><main><p class="warning">El folio original es la fuente principal de lectura. El OCR se muestra como ayuda de búsqueda y puede contener errores de reconocimiento, especialmente en impresos antiguos, griego, latín y abreviaturas. La página digital del PDF no equivale a un locus filológico verificado.</p><div class="form"><label>Edición<select id="edition"><option>Cargando...</option></select></label><label>Buscar en las páginas<input id="term" type="search" placeholder="Término o frase"></label><button id="go">Buscar</button><button id="read" type="button">Leer página a página</button></div><div id="cita" class="cita" hidden></div><div id="pager" class="pager" hidden><button id="prev" type="button">← Anterior</button><label>Página digital <input id="pageno" type="number" min="1" step="1" value="1"></label><button id="next" type="button">Siguiente →</button><a id="facsimil" href="#" target="_blank" rel="noopener">Abrir página en PDF</a></div><section id="reader-shell" class="reader-shell" hidden aria-label="Lector de facsímil y transcripción OCR">
 <div class="reader-column"><div class="reader-head"><h2>Folio original</h2><div class="reader-tools">
 <button id="invert" type="button" aria-pressed="false">Invertir colores</button>
 <button id="toggle-ocr" type="button" aria-pressed="true">Ocultar OCR</button>
