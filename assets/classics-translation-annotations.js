@@ -18,6 +18,7 @@ underline.type=highlight.type="button";
 underline.setAttribute("aria-pressed","true");highlight.setAttribute("aria-pressed","false");
 bar.append(underline,highlight);
 const colors=make("span","cl-annotation-palette");bar.append(colors);
+const apply=make("button",null,"Aplicar marca");apply.type="button";bar.append(apply);
 const erase=make("button",null,"Borrar selección"),clear=make("button",null,"Limpiar pasaje");
 erase.type=clear.type="button";bar.append(erase,clear);
 const appearance=make("span","cl-annotation-appearance");bar.append(appearance);
@@ -36,8 +37,8 @@ function selectMode(next){
  underline.setAttribute("aria-pressed",String(next==="underline"));
  highlight.setAttribute("aria-pressed",String(next==="highlight"));
 }
-underline.addEventListener("click",()=>selectMode("underline"));
-highlight.addEventListener("click",()=>selectMode("highlight"));
+underline.addEventListener("click",()=>{selectMode("underline");if(selection())applySelection()});
+highlight.addEventListener("click",()=>{selectMode("highlight");if(selection())applySelection()});
 for(const [name,hex] of Object.entries(palette)){
  const b=make("button","cl-annotation-dot");
  b.type="button";b.dataset.color=name;
@@ -136,6 +137,7 @@ function applySelection(){
   }
  }
 }
+apply.addEventListener("click",applySelection);
 erase.addEventListener("click",()=>{
  const chosen=selection();if(!chosen){feedback.textContent="Selecciona el texto marcado que quieres borrar.";return}
  if(save(read().filter(x=>x.b<=chosen.a||x.a>=chosen.b))){
