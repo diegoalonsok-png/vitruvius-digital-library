@@ -84,7 +84,7 @@ assert.equal(good.requests.length,4,"Must inspect local inventory, two manifests
 assert.match(good.values.method,/NO certifica/);
 const drift=await render({mutate:docs=>{docs[0].entries[0].passages++}});
 assert.equal(drift.state,"unavailable","A conflicting source may never be called verified");
-assert.equal(drift.values.remote,"Sin certificar");
+assert.equal(drift.values.remote,"Sin datos conciliados");
 const offline=await render({unavailable:true});
 assert.equal(offline.state,"remote-unavailable","Offline remote source must not be counted as verified");
 assert.equal(offline.values.remote,"No verificado");
