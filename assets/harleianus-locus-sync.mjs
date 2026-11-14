@@ -60,7 +60,85 @@ function highlightSource(text){
  }
  span.append(document.createTextNode(text.slice(last)));return span;
 }
+/* Plaque codicologique: kept immediately over the image. Distinguishes a
+   confirmed H-map/IIIF label from an unverified sequence-derived folio. */
+function folioFromIIIFLabel(label){
+ const v=String(label||"").trim();
+ let m=v.match(/^(?:f(?:ol(?:io)?)?\.?\s*)?(\d{1,3})\s*([rv])$/i);
+ if(!m)m=v.match(/(?:^|[\s,;:(])f(?:ol(?:io)?)?\.?\s*(\d{1,3})\s*([rv])(?=$|[\s,;:)])/i);
+ return m?Number(m[1])+m[2].toLowerCase():null;
+}
+function expectedFolioBySequence(image){
+ // Observed 9=f.1r ... 332=f.162v in the published H mapping.
+ // Outside individually corroborated entries, this is *only* a finding aid.
+ if(!Number.isInteger(image)||image<9||image>332)return null;
+ const n=Math.floor((image-9)/2)+1;
+ return n+(image%2===1?"r":"v");
+}
+function folioOrdinal(raw){
+ const m=/^(\d{1,3})([rv])$/.exec(String(raw||""));
+ return m?(Number(m[1])-1)*2+(m[2]==="v"?1:0):null;
+}
+function locusCitation(locus){
+ const s=String(locus||"").split("."),roman=ROM[Number(s[0])]||s[0];
+ return "Vitr. "+roman+"."+s.slice(1).join(".").replace(/^praef\./,"praef. ");
+}
+const manuscriptStatus={
+ visual_rubric:"rúbrica cotejada en imagen",
+ visual_text:"lectura identificada en imagen",
+ collatio_autoral:"referencia registrada en la colación",
+ catalogue:"dato de catálogo",
+ provisional:"correspondencia editorial provisional",
+ lectura:"lectura registrada"
+};
+function updateActiveFolioPlate(){
+ const plate=$("h-active-folio-plate");if(!plate)return;
+ const image=Number($("page")?.value);
+ if(!Number.isInteger(image)||image<1)return;
+ const digital=$("current-image")?.textContent?.trim();
+ $("h-active-image").textContent=(digital&&digital!=="—")?digital:String(image);
+ const exact=folioMap?.entries?.filter(e=>e.image_number===image)||[];
+ const institutional=folioFromIIIFLabel($("current-label")?.textContent);
+ const mapped=exact[0]?.folio||null;
+ const derived=expectedFolioBySequence(image);
+ const folio=mapped||institutional||derived;
+ let basis=mapped?"map":institutional?"iiif":derived?"sequence":"none";
+ let certainty;
+ if(mapped&&institutional&&institutional!==mapped){
+  certainty="Advertencia: la etiqueta IIIF («f. "+institutional+"») difiere de la tabla H («f. "+mapped+"»). Verifique ambas referencias.";
+ }else if(mapped){
+  certainty="Foliación según el mapa codicológico de H. Grado de evidencia del vínculo: "+
+   [...new Set(exact.map(x=>manuscriptStatus[x.folio_status]||x.folio_status))].join("; ")+".";
+ }else if(institutional){
+  certainty="Foliación según la etiqueta del manifiesto IIIF. Sin correspondencia editorial directa registrada para esta imagen.";
+ }else if(derived){
+  certainty="Foliación orientativa por secuencia digital; no verificada individualmente sobre la imagen. No debe citarse como identificación confirmada.";
+ }else certainty="Imagen sin folio histórico determinado en el índice consultado.";
+ const rectoVerso=folio?folio.endsWith("r")?"recto":"verso":"";
+ $("h-active-folio").textContent=folio?"H, f. "+folio+" · "+rectoVerso+(basis==="sequence"?" (orientativo)":""):"H · folio no identificado";
+ $("h-active-certainty").textContent=certainty;
+ $("h-active-certainty").dataset.verification=basis;
+ const bookChoices=[];
+ const position=folioOrdinal(folio);
+ if(position!==null&&folioMap?.books){
+  for(const b of folioMap.books){
+   const a=folioOrdinal(b.start),z=folioOrdinal(b.end);
+   if(a!==null&&z!==null&&position>=a&&position<=z)bookChoices.push(ROM[b.book]||String(b.book));
+  }
+ }
+ $("h-active-book").textContent=bookChoices.length?"De architectura · "+(bookChoices.length>1?"Libros ":"Libro ")+bookChoices.join(" / "):"De architectura · identificación en curso";
+ const loci=exact.flatMap(x=>x.loci||[]).map(x=>x.locus);
+ const unique=[...new Set(loci)];
+ $("h-active-loci").textContent=unique.length?
+  "Loci editoriales asociados: "+unique.slice(0,4).map(locusCitation).join(" · ")+(unique.length>4?" · …":""):
+  "Sin locus editorial directamente vinculado a esta imagen";
+ const current=$("current-folio");
+ if(current&&mapped&&(!current.textContent||/Sin folio identificado|^—$/.test(current.textContent))){
+  current.textContent="f. "+mapped+" (mapa H)";
+ }
+}
 function renderContext(){
+ updateActiveFolioPlate();
  const img=Number($("page")?.value),current=++renderToken;
  if(!context||!Number.isInteger(img)||!folioMap)return;
  context.replaceChildren(element("h3",null,"Sincronización del folio y el texto editorial"));
@@ -81,7 +159,7 @@ function renderContext(){
   return;
  }
  const number=img>=9?Math.floor((img-9)/2)+1:null,folio=number?number+(img%2===1?"r":"v"):null;
- context.append(element("p","h-sync-warning",folio?"Imagen "+img+" · f. "+folio+": sin locus directamente documentado.":"No hay foliación histórica asignada a esta imagen."));
+ context.append(element("p","h-sync-warning",folio?"Imagen "+img+" · posible f. "+folio+" (secuencia digital, pendiente de cotejo): sin locus directamente documentado.":"No hay foliación histórica asignada a esta imagen."));
  if(!folio)return;
  C.forFolio(folio).then(info=>{
   if(current!==renderToken)return;
