@@ -109,6 +109,9 @@ function eligible(target){
 }
 
 function lookupAt(event){
+ // La selección libre de fragmentos no debe abrir una ficha que la sustituya.
+ const selection=window.getSelection?.();
+ if(selection&&!selection.isCollapsed&&selection.toString().trim())return;
  const context=eligible(event.target);
  if(!context)return;
  const lexicon=window.ClassicalLexicon;
