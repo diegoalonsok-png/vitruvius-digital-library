@@ -43,3 +43,44 @@
 #bibliotheca-work-search .bws-actions{font-size:13px}
 #bibliotheca-work-search .bws-help{font-size:12px}
 @media(max-width:680px){#bibliotheca-work-search{padding:16px 13px}#bibliotheca-work-search input[type=search]{height:52px;font-size:16px}}
+
+/* Bibliotheca claro: componente completo con contraste AA.
+   El tema general establece reglas !important para títulos y spans;
+   se resuelven aquí en el alcance del buscador, sin afectar otros lectores. */
+html[data-theme="light"] body #bibliotheca-work-search{
+ background:#fffefa!important;color:#22313e!important;border-color:#b4bfc5!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search :is(h3,.bws-intro,label,.bws-count,.bws-heading,.bws-heading strong,.bws-heading span,.bws-meta,.bws-help,.bws-empty,li,p,span,strong){
+ color:#24333f!important;opacity:1!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search .bws-item{border-color:#d3dadd!important}
+html[data-theme="light"] body #bibliotheca-work-search .bws-results{
+ scrollbar-color:#8797a3 #eef1f1!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search input[type="search"]{
+ background:#fff!important;color:#1c2d39!important;border-color:#8298a7!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search input[type="search"]::placeholder{
+ color:#586c79!important;opacity:1!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search .bws-row>button{
+ background:#d5b072!important;color:#192a34!important;border-color:#ab8649!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search .bws-row>button:hover{
+ background:#e7c58a!important;color:#15232c!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search :is(.bws-actions a,.bws-help a,.bws-actions a:visited,.bws-help a:visited){
+ color:#195478!important;text-decoration-color:#447894!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search :is(.bws-actions a:hover,.bws-help a:hover){
+ color:#103c59!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search .bws-more{
+ background:#f3f5f4!important;color:#21475f!important;border-color:#8fa1a9!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search .bws-more:hover{
+ background:#e6ecee!important;color:#173d55!important;
+}
+html[data-theme="light"] body #bibliotheca-work-search :is(input,button,a):focus-visible{
+ outline:3px solid #23638b!important;outline-offset:2px!important;
+}
