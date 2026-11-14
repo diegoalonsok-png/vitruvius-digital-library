@@ -294,7 +294,11 @@ function ensureWorker(){
   if(data.type==='results'){
    results=data.results;alignedGroups=groupMatchesByLocus(results);countSummary=data.countSummary||null;shown=0;translationRevision++;$('#search-results').replaceChildren();renderCountSummary(countSummary);
    $('#search-status').textContent=(countSummary?countSummary.total.toLocaleString('es-AR')+' apariciones en '+countSummary.passages+' pasajes de las ediciones seleccionadas.':results.length?results.length.toLocaleString('es-AR')+(results.length===1?' coincidencia':' coincidencias')+' con libro, capítulo y sección para «'+lastQuery+'».':'Palabra, frase o locus no encontrado: «'+lastQuery+'» en esta selección. Revisa los filtros o la grafía. Algunas secciones inglesas se conservan agrupadas como en el original.')+(data.warnings?.length?' '+data.warnings.join('. '):'');
-   if(results.length&&alignedGroups.length!==results.length)$('#search-status').textContent+=' Vista comparada: '+alignedGroups.length+' loci distintos (las coincidencias por edición se conservan en CSV y PDF).';renderMore();$('#export-tools').hidden=!results.length;
+   if(results.length){
+    const uniqueLoci=new Set(alignedGroups.map(g=>g.locus)).size;
+    const editions=new Set(alignedGroups.flatMap(g=>g.hits.map(h=>h.edition))).size;
+    $('#search-status').textContent+=' Concordancia por edición: '+alignedGroups.length+' pasajes editoriales de '+editions+' ediciones; '+uniqueLoci+' loci distintos en el tratado. Cada edición conserva su original latino y traducción enfrentada.';
+   }renderMore();$('#export-tools').hidden=!results.length;
   }
  };
  worker.onerror=()=>{$('#search-status').textContent='No se pudo iniciar el buscador. Vuelve a buscar para reintentarlo.';$('#search-button').disabled=false;$('#search-button').textContent='Buscar →';worker.terminate();worker=null;};
@@ -371,14 +375,21 @@ function syncTranslationWithSearchSelection(){
  const lang=translationLanguageForSelection();
  if(lang&&lang!==selectedTranslationLanguage){
   selectedTranslationLanguage=lang;
+  for(const article of document.querySelectorAll('#search-results .result-parallel')){
+   const selector=article.querySelector('.parallel-language');
+   if(selector)selector.value=lang;
+  }
   refreshRightTranslations();
  }
 }
 function groupMatchesByLocus(hits){
  const groups=new Map();
  for(const hit of hits){
-  const key=[hit.book,hit.chapter,hit.section].every(v=>v!==undefined&&v!==null)
+  const locusKey=[hit.book,hit.chapter,hit.section].every(v=>v!==undefined&&v!==null)
    ?[hit.book,hit.chapter,hit.section].join('.'):String(hit.locus||'');
+  // Edition-specific grouping is deliberate. The same source locus appears
+  // separately in V514, V554 and V297 so every language has its own citation.
+  const key=String(hit.edition||'')+'|'+locusKey;
   if(!groups.has(key))groups.set(key,{key,locus:hit.locus,book:hit.book,chapter:hit.chapter,section:hit.section,hits:[]});
   groups.get(key).hits.push(hit);
  }
@@ -424,7 +435,7 @@ function searchExcerpt(text,max=1700){
  return (begin?'… ':'')+text.slice(begin,end)+(end<text.length?' …':'');
 }
 async function renderRightTranslation(article,group){
- const lang=selectedTranslationLanguage,revision=translationRevision;
+ const lang=article.querySelector('.parallel-language')?.value||selectedTranslationLanguage,revision=translationRevision;
  const holder=$('.parallel-translation-text',article),
  source=$('.parallel-translation-source',article);
  const ed=edition(translationEditionIds[lang]);
@@ -533,14 +544,16 @@ function renderMore(){
  for(let i=0;i<next.length;i++){
   const group=next[i],r=preferredLatinHit(group),e=edition(r.edition);
   if(!e)continue;
+  const editionLang=({'recensio-es':'es','recensio-fr':'fr','theory-en':'en'})[r.edition]||'es';
+  const rowLanguage=translationLanguageForSelection()||editionLang;
   const article=document.createElement('article');
   article.className='result result-parallel';
   article.dataset.groupIndex=String(shown+i);
-  const word=group.hits.length===1?'coincidencia documentada':'coincidencias documentadas';
+  const word=group.hits.length===1?'resultado documentado':'resultados documentados';
   const pdfpage=group.hits.find(x=>x.edition===r.edition&&x.language==='la')?.page;
   const latinParagraph=parallelExcerpt(r.latin,{query:lastQuery,lang:'la',latin:r.latin,max:1700});
   article.innerHTML=
-   '<div class="result-meta">VITRUVIO · '+escapeHTML(group.hits.length)+' '+word+' en '+escapeHTML([...new Set(group.hits.map(h=>edition(h.edition)?.version||h.edition))].join(' · '))+'</div>'+
+   '<div class="result-meta">VITRUVIO · '+escapeHTML(e.version)+' · latín / '+escapeHTML(languages[editionLang]||editionLang)+' · '+escapeHTML(group.hits.length)+' '+word+' de esta edición</div>'+
    '<h3>'+escapeHTML(citation(r))+'</h3>'+
    '<p class="result-locus">Libro '+roman(r.book)+' · '+(r.chapter==='praef'?'Prólogo':'Capítulo '+escapeHTML(r.chapter))+' · Sección '+escapeHTML(r.section)+'</p>'+
    '<div class="parallel-columns">'+
@@ -560,14 +573,14 @@ function renderMore(){
        '<p class="parallel-small">Alineación por libro, capítulo y sección. Los resaltados traducidos son equivalencias léxicas orientativas, no cotejo palabra por palabra.</p>'+
      '</section></div>'+
    '<div class="result-actions"><a href="'+escapeHTML(readerURL(e.id,group.locus))+'">Leer el latín →</a>'+
-     '<a class="parallel-open-translation" href="'+escapeHTML(readerURL(translationEditionIds[selectedTranslationLanguage],group.locus))+'">Leer traducción en contexto →</a>'+
+     '<a class="parallel-open-translation" href="'+escapeHTML(readerURL(translationEditionIds[rowLanguage],group.locus))+'">Leer traducción en contexto →</a>'+
      '<a href="aparato-critico.html?locus='+encodeURIComponent(group.locus)+'">Aparato crítico →</a>'+
    '</div>';
   const selector=$('.parallel-language',article);
-  selector.value=selectedTranslationLanguage;
-  selector.addEventListener('change',event=>{
-   selectedTranslationLanguage=event.target.value;
-   refreshRightTranslations();
+  selector.value=rowLanguage;
+  selector.addEventListener('change',()=>{
+   // One reader's language choice must not silently switch other editions.
+   translationRevision++;refreshRightTranslations();
   });
   const toggle=$('.parallel-equivalent-toggle',article);
   toggle.addEventListener('click',()=>{
