@@ -15,6 +15,27 @@ try{
  for(const path of ['index.html','scriptorium.html','facsimiles.html','bibliografia.html','ediciones-historicas.html','concordancia-historica.html','estudios.html','harleianus.html']){
   await test('Carga '+path,async()=>{const page=await pageFor(path);await page.waitForTimeout(1500);await page.close()});
  }
+ await test('Controles: Aa y selector de idioma nunca quedan sueltos bajo el pie',async()=>{
+  for(const file of ['index.html','bibliografia.html','estudios.html','harleianus.html']){
+   const page=await pageFor(file);
+   await page.waitForTimeout(1200);
+   const misplaced=await page.evaluate(()=>{
+    const footer=document.querySelector('footer');
+    const controls=[...document.querySelectorAll('#site-typeface-toggle,#vitruvius-secondary-toolbar')];
+    return controls.filter(el=>{
+     const rect=el.getBoundingClientRect();
+     if(!rect.width||!rect.height)return false;
+     const position=getComputedStyle(el).position;
+     const isToolbar=el.id==='vitruvius-secondary-toolbar';
+     const insideFooter=footer?.contains(el)||false;
+     const bottomInDocument=rect.top+window.scrollY>document.documentElement.scrollHeight-180;
+     return insideFooter||(isToolbar&&position!=='fixed'&&!el.closest('.indices-navtools'))||(!isToolbar&&bottomInDocument);
+    }).map(el=>({id:el.id,html:el.outerHTML.slice(0,180)}));
+   });
+   assert.deepEqual(misplaced,[],'Controles mal ubicados en '+file+': '+JSON.stringify(misplaced));
+   await page.close();
+  }
+ });
  await test('Portada: etiquetas ES/EN/FR y restauración de idioma',async()=>{
   const page=await pageFor('index.html');
   const select=page.locator('.header-languages select').first();
