@@ -276,6 +276,19 @@ try{
      assert.equal(latinHeadings.filter(t=>t.includes('EDICIÓN '+version)).length,1,
        version+' must have one original Latin witness and facing translation');
    }
+   // Each edition must initially show its own corresponding translation.
+   await page.waitForFunction(()=>{
+     const rows=[...document.querySelectorAll('#search-results .result-parallel')];
+     return rows.length===3 && rows.every(row=>{
+       const version=row.querySelector('.parallel-latin .parallel-heading span')?.textContent?.match(/V(?:514|554|297)/)?.[0];
+       const language={V514:'es',V554:'fr',V297:'en'}[version];
+       const selector=row.querySelector('.parallel-language');
+       const credit=row.querySelector('.parallel-translation-source')?.textContent||'';
+       const passage=row.querySelector('.parallel-translation-text')?.textContent||'';
+       return language && selector?.value===language && credit.includes(version)
+         && passage.length>80 && !/Cargando traducción|No se pudo cargar/.test(passage);
+     });
+   },null,{timeout:25000});
    assert.match(await first.locator('.parallel-latin').innerText(),/Sed haec|haec omnia/i,'No aparece el latín de II.7.2');
    const latinBefore=await first.locator('.parallel-latin .parallel-passage').innerText();
    const translated=first.locator('.parallel-translation-text');
