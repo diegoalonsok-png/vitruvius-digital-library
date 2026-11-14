@@ -207,6 +207,8 @@ targetRoot.addEventListener("click",event=>{
  // dictionary popup used by highlighted search hits, also inside parallel iframes.
  // Do not intercept navigation, inline translation controls or other widgets.
  const mark=markOf(event.target);
+ const selection=window.getSelection?.();
+ if(selection&&!selection.isCollapsed&&selection.toString().trim())return;
  if(!mark && passages && targetRoot.contains(event.target)){
   if(event.target.closest?.("a,button,input,select,textarea,summary,[data-no-dictionary],.cl-ui,.cl-dict"))return;
   if(!supported.has(langCode(passages)))return;
