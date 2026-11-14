@@ -167,6 +167,13 @@ html[data-reading-mode="simple"] .reader-toolbar{max-width:78ch;margin:auto;bord
 .simple-reading-actions a:hover{background:#38383c}
 html[data-parallel-view="true"] .simple-reading-actions{display:none!important}
 @media print{.simple-reading-actions{display:none!important}}
+
+/* Acceso discreto al visor simplificado, sin modificar navegación o búsqueda. */
+.reader-nav-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.reader-nav-actions #simple-pair-inline{display:inline-flex;align-items:center;min-height:36px;padding:6px 13px;color:#f2f2f3;background:#29292b;border:1px solid #56565a;border-radius:6px;text-decoration:none;font:600 13px/1.4 system-ui,sans-serif}
+.reader-nav-actions #simple-pair-inline:hover{background:#3d3d41}
+html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
+@media print{#simple-pair-inline{display:none!important}}
 </style>
 <link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1">
 <link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v3">
@@ -223,7 +230,7 @@ html[data-parallel-view="true"] .simple-reading-actions{display:none!important}
 <div class="reader-grid">
 <aside><strong id="toc-title">Capítulos / unidades editoriales</strong><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc" aria-label="Índice de loci y unidades textuales"></ol></aside>
 <article class="reader">
-<div class="reader-toolbar"><button id="prev" type="button">← Anterior</button><strong id="current-locus" aria-live="polite" aria-atomic="true"></strong><button id="next" type="button">Siguiente →</button></div>
+<div class="reader-toolbar"><button id="prev" type="button">← Anterior</button><strong id="current-locus" aria-live="polite" aria-atomic="true"></strong><div class="reader-nav-actions"><a id="simple-pair-inline" href="classics-simple-parallel.html">Visor simple</a><button id="next" type="button">Siguiente →</button></div></div>
 
 <div id="hit-nav" class="hit-nav" hidden><button id="hit-prev" type="button" aria-label="Coincidencia anterior">↑</button><span id="hit-count"></span><button id="hit-next" type="button" aria-label="Coincidencia siguiente">↓</button></div>
 <div id="passages" class="passages" lang="la" aria-label="Texto de la unidad editorial seleccionada"></div>
@@ -272,6 +279,23 @@ html[data-parallel-view="true"] .simple-reading-actions{display:none!important}
   if(link)link.href=url(true);if(back)back.href=url(false);
  });
  observer.observe(document.getElementById("current-locus"),{childList:true,subtree:true,characterData:true});
+})();
+</script>
+<script>
+/* Vínculo al visor simplificado, preservando obra, lengua y locus actual. */
+(()=>{
+ const link=document.getElementById("simple-pair-inline");if(!link)return;
+ const refresh=()=>{
+  const q=new URLSearchParams(location.search),url=new URL("classics-simple-parallel.html",location.href);
+  url.searchParams.set("work",q.get("work")||"didache");
+  const lang=document.getElementById("language")?.value||q.get("lang")||"la";
+  url.searchParams.set("left",["la","grc"].includes(lang)?lang:"la");
+  const to=q.get("to");url.searchParams.set("right",to&&["es","en","fr"].includes(to)?"auto-"+to:"auto-es");
+  if(q.get("locus"))url.searchParams.set("locus",q.get("locus"));
+  link.href=url.pathname+url.search;
+ };
+ refresh();link.addEventListener("click",refresh);
+ document.addEventListener("vitruvia:classics-passage",refresh);
 })();
 </script>
 <script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body>
