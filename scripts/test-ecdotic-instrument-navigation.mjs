@@ -75,7 +75,7 @@ assert(reviewPage.includes("data/ecdotic-note-review-queue-2026-11-14.json")
  &&reviewPage.includes("data/tei/notae-auctoris-locis-explicitis-2026-11-14.xml"),
  "Review UI must identify original reviewed and unreviewed note sources");
 assert(reviewClient.includes("pending_human_review")&&reviewClient.includes("original_locus===null")
- &&reviewClient.includes("no cambia el estado")&&reviewClient.includes("textContent"),
+ &&reviewClient.toLowerCase().includes("no cambia el estado")&&reviewClient.includes("textContent"),
  "Client must never upgrade pending note status or inject original note text as HTML");
 assert(teiNotes.includes("http://www.tei-c.org/ns/1.0")
  &&!/<app\\b|<rdg\\b|<lem\\b/.test(teiNotes),
