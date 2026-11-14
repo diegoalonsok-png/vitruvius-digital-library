@@ -131,42 +131,73 @@ function select(i){
  }
 }
 const SEARCH_PAGE_SIZE=18;
-function snippet(text,query){
- const normalized=fold(text),needle=fold(query),pos=needle?normalized.indexOf(needle):-1;
- // Truncate only the summary: original passage remains intact in the reader.
- if(text.length<=260)return text;
- if(pos<0)return text.slice(0,260).trim()+"…";
- // Unicode normalization can shift offsets: locate a conservative nearby window.
- const start=Math.max(0,pos-75),stop=Math.min(text.length,start+300);
- return (start?"…":"")+text.slice(start,stop).trim()+(stop<text.length?"…":"");
+function literalLocations(text,query){
+ // La lista y el subrayado comparten exactamente el mismo algoritmo de concordancia.
+ // Así evitamos que un resultado diga "coincidencia" cuando la palabra no aparece.
+ if(LEX?.find)return LEX.find(text,query,{prefix:false});
+ const source=fold(text),needle=fold(query);if(!needle)return[];
+ const spans=[];let at=0;
+ while((at=source.indexOf(needle,at))!==-1){
+  const before=source[at-1]||"",after=source[at+needle.length]||"";
+  if(!/[\\p{L}]/u.test(before)&&!/[\\p{L}]/u.test(after))spans.push([at,at+needle.length]);
+  at+=Math.max(needle.length,1);
+ }
+ return spans;
+}
+function makeConcordanceExcerpt(text,from,to){
+ const left=Math.max(0,from-95),right=Math.min(text.length,to+150);
+ const node=document.createElement("span");node.className="search-passage-excerpt";
+ if(left)node.append(document.createTextNode("…"));
+ node.append(document.createTextNode(text.slice(left,from)));
+ const mark=document.createElement("mark");mark.className="search-excerpt-hit";mark.textContent=text.slice(from,to);
+ node.append(mark,document.createTextNode(text.slice(to,right)));
+ if(right<text.length)node.append(document.createTextNode("…"));
+ return node;
 }
 function renderSearch(){
  const target=$("results");target.replaceChildren();
  const section=$("search-results-section");
  if(!search){results=[];resultPage=0;if(section)section.hidden=true;return}
  if(section)section.hidden=false;
- // Search EVERY recorded passage, not only the current chapter.
- results=data.passages.map((r,i)=>({i,r})).filter(x=>match(x.r.text,search,!exactConcordance));
+ // Se examina el corpus cargado COMPLETO; no solamente el locus abierto.
+ results=data.passages.map((r,i)=>{
+  const locations=literalLocations(r.text,search);
+  return {i,r,locations};
+ }).filter(x=>exactConcordance?x.locations.length>0:match(x.r.text,search,true));
+ const literalTotal=results.reduce((n,x)=>n+x.locations.length,0);
  const header=document.createElement("p");header.className="search-summary";
- header.textContent=results.length+" pasajes encontrados en toda la edición ("+data.passages.length+" unidades). "+
-  (exactConcordance?"Búsqueda literal del texto editado.":"Expansión léxica experimental; coincidencias no equivalen a traducciones.");
+ header.textContent=results.length+" pasajes encontrados entre "+data.passages.length+" unidades de toda la edición"+
+  (exactConcordance?" · "+literalTotal+" apariciones literales documentadas.":" · expansión experimental; compruebe las equivalencias antes de citarlas.");
  target.append(header);
  if(!results.length){
   const no=document.createElement("p");no.className="search-empty";
-  no.textContent="No hay coincidencias en esta edición "+(data.language==="grc"?"griega":data.language==="la"?"latina":"seleccionada")+
-   ". La búsqueda no traduce automáticamente términos de otro idioma. Pruebe una forma de la lengua del texto o consulte Lexicon para estudiar posibles equivalentes.";
+  no.textContent="No se encontraron pasajes con esta expresión en la edición "+(data.language==="grc"?"griega":data.language==="la"?"latina":"seleccionada")+
+   ". Las palabras latinas no se convierten automáticamente en palabras griegas (ni a la inversa). Consulte el diccionario para determinar una forma equivalente y vuelva a buscarla.";
   target.append(no);return;
  }
  const start=resultPage*SEARCH_PAGE_SIZE;
  const page=results.slice(start,start+SEARCH_PAGE_SIZE);
  const list=document.createElement("ol");list.className="search-passage-list";list.start=start+1;
- for(const {i,r} of page){
+ for(const {i,r,locations} of page){
   const li=document.createElement("li"),button=document.createElement("button");
   button.type="button";button.className="search-passage-jump";
-  const title=document.createElement("strong");title.textContent=unitLabel()+" "+r.locus+(r.title?" · "+r.title:"");
-  const excerpt=document.createElement("span");excerpt.className="search-passage-excerpt";excerpt.textContent=snippet(r.text,search);
-  excerpt.lang=data.language;
-  button.append(title,excerpt);
+  const title=document.createElement("strong");title.textContent=unitLabel()+" "+r.locus+(r.title?" · "+r.title:"")+
+    (locations.length?" · "+locations.length+" "+(locations.length===1?"aparición":"apariciones"):" · coincidencia experimental");
+  button.append(title);
+  if(locations.length){
+   for(const [a,b] of locations.slice(0,3)){
+    const excerpt=makeConcordanceExcerpt(r.text,a,b);excerpt.lang=data.language;
+    button.append(excerpt);
+   }
+   if(locations.length>3){
+    const more=document.createElement("span");more.className="search-passage-more";
+    more.textContent="+"+(locations.length-3)+" apariciones más en este pasaje";button.append(more);
+   }
+  }else{
+   const excerpt=document.createElement("span");excerpt.className="search-passage-excerpt";
+   excerpt.textContent=r.text.slice(0,300)+(r.text.length>300?"…":"");excerpt.lang=data.language;
+   button.append(excerpt);
+  }
   button.addEventListener("click",()=>{
    select(i);
    $("passages").scrollIntoView({block:"start",behavior:"smooth"});
