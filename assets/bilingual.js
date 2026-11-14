@@ -129,7 +129,7 @@ function render(){
  $('citation-status').textContent='';
  $('provenance-text').textContent=p?'Fuente: edición '+(data?.version||lang)+', '+citation(p)+'. La correspondencia digital se estableció a partir del texto autorizado de la edición; los identificadores internos de preparación editorial se mantienen fuera de la cita pública.':'La referencia latina procede de V514; no se atribuye una traducción inglesa al pasaje.';
  const url=new URL(location.href);url.searchParams.set('edition',editionIds[lang]);url.searchParams.set('locus',locus);if(query)url.searchParams.set('q',query);else url.searchParams.delete('q');history.replaceState(null,'',url);
- document.dispatchEvent(new CustomEvent('vitruvius:passage-rendered',{detail:{locus,edition:editionIds[lang],version:ed?.version||'',source:'structured-edition',status:'locus-alignment-not-manuscript-collation'}}));
+ document.dispatchEvent(new CustomEvent('vitruvius:passage-rendered',{detail:{locus,edition:editionIds[lang],version:ed?.version||'',source:'structured-edition',status:'locus-alignment-not-manuscript-collation',hasAlignedTranslation:Boolean(p?.translation),pdfPages:p?.pdf_pages||null}}));
 }
 function openLocus(value){
  const ref=parseLocus(value);if(!ref){clearReading(ui('Formato de referencia no reconocido. Usa III.1.2, VIII.1 o I.praef.1.','Reference format not recognised. Use III.1.2, VIII.1 or I.praef.1.','Format de référence non reconnu. Utilisez III.1.2, VIII.1 ou I.praef.1.'));return;}
