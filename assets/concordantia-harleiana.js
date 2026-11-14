@@ -1,0 +1,6 @@
+(()=>{"use strict";const root=document.getElementById("h-rows"),status=document.getElementById("h-state");if(!root)return;
+fetch("data/commentary/codex-h-illustrations.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(j=>{
+ root.replaceChildren();for(const x of j.records||[]){const tr=document.createElement("tr");const cell=(txt)=>{const t=document.createElement("td");t.textContent=txt;tr.append(t);return t};
+ cell(x.folio||"—");cell((x.locus_from||"—")+(x.locus_to&&x.locus_from!==x.locus_to?" – "+x.locus_to:""));cell((x.caption||"")+" · Fuente: "+(x.source_edition||"V514"));
+ const actions=cell(""),a=document.createElement("a");a.href=j.iiif_viewer;a.textContent="Ver códice IIIF";a.target="_blank";a.rel="noopener noreferrer";actions.append(a);
+ root.append(tr)}status.textContent=(j.records||[]).length+" correspondencias documentales. Los canvas IIIF individuales requieren cotejo."}).catch(e=>{status.textContent="No fue posible cargar el inventario: "+e.message})})();
