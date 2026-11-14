@@ -26856,16 +26856,18 @@
     {
       "id": "galeno-opera-kuhn",
       "author": "Galeno",
-      "title": "Opera omnia (ed. Kühn): volumen adicional",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "language": "grc",
       "genre": "Pendiente de consignar: no se deduce del facsímil.",
-      "dating": "Pendiente de consignar: no se deduce del facsímil.",
+      "dating": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
       "aliases": [
-        "Opera omnia (ed. Kühn): volumen adicional"
+        "Opera omnia (ed. Kühn): volumen adicional",
+        "Galeni opera omnia, vol. XIV",
+        "Kühn vol. 14"
       ],
       "reading": {
         "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-opera-kuhn.pdf",
-        "status": "Facsímil de dominio público alojado por la biblioteca en Cloudflare R2: Galeni opera omnia / vol. 14 (1821). Leipzig : Car. Cnoblochii. Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive. Volumen en lengua original; sin traducción en el mismo volumen. Se lee página a página en el visor del sitio. El texto por página proviene del OCR de Internet Archive y no está revisado: localiza la página del facsímil, no constituye locus verificado ni edición crítica."
+        "status": "Facsímil de la edición impresa Claudii Galeni opera omnia, tomus XIV, preparada por Karl Gottlob Kühn (Leipzig: Car. Cnoblochii, 1827), NO tomo I ni códice medieval. Contiene textos griegos, algunos con traducción latina, según la bibliografía de Pinakes. OCR sin revisión; no constituye transcripción crítica ni permite inferir loci manuscritos."
       },
       "manuscript": {
         "manifest": null,
@@ -26885,10 +26887,10 @@
       },
       "pdf": {
         "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-opera-kuhn.pdf",
-        "status": "Alojado en libros.vitruvius-digital-library.org (Cloudflare R2); no se copia al repositorio."
+        "status": "Facsímil de impreso científico de 1827 alojado en Cloudflare R2; registro de procedencia BIUSante_45674x14. El mismo objeto digital figura con dos identificadores de acceso del catálogo."
       },
       "translation": {
-        "status": "Sin traducción alojada en el sitio para esta obra."
+        "status": "La edición impresa reúne textos en griego y algunas traducciones latinas; no se acredita aquí traducción moderna enfrentada."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -26909,7 +26911,19 @@
         "pagesWithTextLayer": 800,
         "ocrReviewed": false,
         "evidenceStatus": "catalogue_inventory_only",
-        "reviewStatus": "not_externally_verified"
+        "reviewStatus": "not_externally_verified",
+        "volume": 14,
+        "imprintYear": 1827,
+        "editor": "Karl Gottlob Kühn",
+        "sourceLanguage": "grc+la",
+        "sourceRole": "original_greek_and_selected_latin_translations",
+        "bibliographicVerification": {
+          "status": "bibliography_record_checked",
+          "source": "https://pinakes.irht.cnrs.fr/notices/bibliographie/378APGFQ/",
+          "date": "2026-11-14"
+        },
+        "duplicateAccessOf": null,
+        "identityNote": "Entrada canónica para este facsímil del tomo XIV; la ruta vol01 conserva compatibilidad con enlaces anteriores."
       },
       "witnessLookup": {
         "status": "sin testimonio catalogado en el sitio",
@@ -26923,21 +26937,28 @@
       },
       "derivedFields": {
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
+      },
+      "bibliography": {
+        "editionCitation": "Galen. Claudii Galeni opera omnia. Edited by Karl Gottlob Kühn. Vol. 14. Leipzig: Car. Cnoblochii, 1827.",
+        "institutionalReference": "https://pinakes.irht.cnrs.fr/notices/bibliographie/378APGFQ/",
+        "sourceStatus": "Referencia bibliográfica externa consultada; no equivale a cotejo de todos los folios del facsímil."
       }
     },
     {
       "id": "galeno-kuhn-vol01",
       "author": "Galeno",
-      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "language": "grc",
       "genre": "Pendiente de consignar: no se deduce del facsímil.",
-      "dating": "Pendiente de consignar: no se deduce del facsímil.",
+      "dating": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
       "aliases": [
-        "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)"
+        "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+        "Galeni opera omnia, vol. XIV",
+        "Kühn vol. 14"
       ],
       "reading": {
         "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol01.pdf",
-        "status": "Facsímil de dominio público alojado por la biblioteca en Cloudflare R2: Galeni opera omnia / vol. 14 (1821). Leipzig : Car. Cnoblochii. Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive. Volumen en lengua original; sin traducción en el mismo volumen. Se lee página a página en el visor del sitio. El texto por página proviene del OCR de Internet Archive y no está revisado: localiza la página del facsímil, no constituye locus verificado ni edición crítica."
+        "status": "Facsímil de la edición impresa Claudii Galeni opera omnia, tomus XIV, preparada por Karl Gottlob Kühn (Leipzig: Car. Cnoblochii, 1827), NO tomo I ni códice medieval. Contiene textos griegos, algunos con traducción latina, según la bibliografía de Pinakes. OCR sin revisión; no constituye transcripción crítica ni permite inferir loci manuscritos."
       },
       "manuscript": {
         "manifest": null,
@@ -26957,10 +26978,10 @@
       },
       "pdf": {
         "url": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol01.pdf",
-        "status": "Alojado en libros.vitruvius-digital-library.org (Cloudflare R2); no se copia al repositorio."
+        "status": "Facsímil de impreso científico de 1827 alojado en Cloudflare R2; registro de procedencia BIUSante_45674x14. El mismo objeto digital figura con dos identificadores de acceso del catálogo."
       },
       "translation": {
-        "status": "Sin traducción alojada en el sitio para esta obra."
+        "status": "La edición impresa reúne textos en griego y algunas traducciones latinas; no se acredita aquí traducción moderna enfrentada."
       },
       "links": {
         "scaife": "https://scaife.perseus.org/library/",
@@ -26981,7 +27002,19 @@
         "pagesWithTextLayer": 800,
         "ocrReviewed": false,
         "evidenceStatus": "catalogue_inventory_only",
-        "reviewStatus": "not_externally_verified"
+        "reviewStatus": "not_externally_verified",
+        "volume": 14,
+        "imprintYear": 1827,
+        "editor": "Karl Gottlob Kühn",
+        "sourceLanguage": "grc+la",
+        "sourceRole": "original_greek_and_selected_latin_translations",
+        "bibliographicVerification": {
+          "status": "bibliography_record_checked",
+          "source": "https://pinakes.irht.cnrs.fr/notices/bibliographie/378APGFQ/",
+          "date": "2026-11-14"
+        },
+        "duplicateAccessOf": "galeno-opera-kuhn",
+        "identityNote": "El slug legado vol01 es incorrecto: la copia enlazada es el tomo XIV; acceso duplicado del mismo PDF SHA-256."
       },
       "witnessLookup": {
         "status": "sin testimonio catalogado en el sitio",
@@ -26995,6 +27028,11 @@
       },
       "derivedFields": {
         "witnessLookup": "enlaces de búsqueda generados a partir del título"
+      },
+      "bibliography": {
+        "editionCitation": "Galen. Claudii Galeni opera omnia. Edited by Karl Gottlob Kühn. Vol. 14. Leipzig: Car. Cnoblochii, 1827.",
+        "institutionalReference": "https://pinakes.irht.cnrs.fr/notices/bibliographie/378APGFQ/",
+        "sourceStatus": "Referencia bibliográfica externa consultada; no equivale a cotejo de todos los folios del facsímil."
       }
     },
     {
