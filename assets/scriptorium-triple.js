@@ -15,7 +15,7 @@ const requestedEditions=(initialParams.get("readers")||"").split(",");
 const primaryKey=keyFor(initialParams.get("edition"));
 let stateReady=false,urlTimer=0;
 const editions={
- krohn:{name:"Krohn · 1912 · OCR latín",file:"data/text/krohn-1912.json",format:"ocr",pdf:"https://archive.org/download/vitruviidearchit00vitr/vitruviidearchit00vitr.pdf"},
+ krohn:{name:"Krohn · 1912 · OCR latín",file:"data/text/krohn-1912.json",format:"ocr",pdf:"https://archive.org/download/vitruviidearchit00vitr_1/vitruviidearchit00vitr_1.pdf"},
  kurilo:{name:"Kurilo · V514 · Latín y castellano",file:"data/structured/recensio-es.json",format:"structured",pdf:"documents/kurilo-recensio-es.pdf"},
  rose:{name:"Rose · 1899 · OCR latín",file:"data/text/rose-1899.json",format:"ocr",pdf:"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"},
  fr:{name:"Kurilo · V554 · Latín y francés",file:"data/structured/recensio-fr.json",format:"structured",pdf:"documents/kurilo-recensio-fr.pdf"},
