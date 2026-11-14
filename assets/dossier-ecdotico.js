@@ -205,7 +205,7 @@ async function openLocus(locus,scroll=true){
   const header=el("header",null,"dl-head");
   add(header,el("h2","Dossier de "+viewLocus(id)),el("p","Texto y traducción · colación impresa · Rose / Krohn · Codex H · comentario de autor","dl-muted"));
   const actions=el("div",null,"dl-actions");
-  link(actions,"Copiar enlace del locus","cobertura-aparato-critico.html?locus="+encodeURIComponent(id)+"#dossier");
+  link(actions,"Enlace permanente al locus","cobertura-aparato-critico.html?locus="+encodeURIComponent(id)+"#dossier");
   link(actions,"Lectura estilo Budé","apparatus-bude.html?locus="+encodeURIComponent(id));
   link(actions,"Registro ecdótico","registro-ecdotico.html?locus="+encodeURIComponent(id));
   link(actions,"Apparatus criticus","apparatus-criticus.html?locus="+encodeURIComponent(id));
