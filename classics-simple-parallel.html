@@ -136,6 +136,16 @@ for(const side of ["left","right"]){
 }
 function linkBack(){const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",leftLang||"grc");u.searchParams.set("right",q.get("right")||rightLang||"auto-es");if(source[pos]?.locus)u.searchParams.set("locus",source[pos].locus);el("academic").href=u.href;}
 const automaticCache=new Map(),historicalCache=new Map();
+function translationValid(original,result,source,target){
+ const text=String(result||"").trim(),raw=String(original||"").trim();
+ if(!text||text.normalize("NFKC")===raw.normalize("NFKC"))return false;
+ if(["grc","el"].includes(source)&&["es","en","fr"].includes(target)){
+  const greek=(text.match(/[α-ωΑ-Ωά-ώἀ-῿]/g)||[]).length;
+  const letters=(text.match(/[A-Za-zÀ-ÿα-ωΑ-Ωά-ώἀ-῿]/g)||[]).length;
+  if(letters>20&&greek/letters>0.22)return false;
+ }
+ return true;
+}
 async function alternateAutomatic(text,source,target){
  const parts=[];for(let i=0;i<text.length;i+=380)parts.push(text.slice(i,i+380));
  const rendered=[];
@@ -148,7 +158,7 @@ async function alternateAutomatic(text,source,target){
    if(!response.ok)throw Error("HTTP "+response.status);
    const json=await response.json();
    const value=Array.isArray(json?.[0])?json[0].map(item=>Array.isArray(item)?String(item[0]||""):"").join(""):"";
-   if(!value.trim())throw Error("Traducción no disponible");
+   if(!translationValid(fragment,value,source,target))throw Error("El proveedor devolvió el original o una traducción inválida");
    rendered.push(value.trim());
   }finally{clearTimeout(timer)}
  }
@@ -182,10 +192,10 @@ async function translateCurrent(token){
     if(!window.VitruviaInlineTranslation?.translate)throw Error("Servicio principal no cargado");
     result=await window.VitruviaInlineTranslation.translate(record.text,leftLang,target);
    }catch(_){result=await alternateAutomatic(record.text,leftLang,target);}
-   if(result?.text)automaticCache.set(id,result);
+   if(result?.text&&translationValid(record.text,result.text,leftLang,target))automaticCache.set(id,result);
   }
   if(token!==renderToken)return;
-  if(!result?.text)throw Error("No hay traducción");
+  if(!result?.text||!translationValid(record.text,result.text,leftLang,target))throw Error("No hay traducción válida");
   paragraph("right-text",result.text);
   el("right-head").textContent="TRADUCCIÓN AUTOMÁTICA · "+(LANG[target]||target.toUpperCase())+" · "+record.locus;
   status("Traducción automática orientativa · "+result.provider+(result.partial?" · Traducción parcial.":"")+
