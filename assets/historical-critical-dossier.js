@@ -102,7 +102,7 @@ async function render(locus){
   const button=$("button","ch-copy","Copiar referencia y URL");button.type="button";
   button.addEventListener("click",async()=>{
    try{await navigator.clipboard.writeText(citation(p,data.catalog));status.textContent="Referencia bibliográfica copiada."}
-   catch{status.textContent="No se pudo copiar automáticamente; seleccioná el texto de la ficha."}
+   catch{status.textContent="No se pudo copiar automáticamente; selecciona el texto de la ficha."}
   });actions.append(button);result.append(actions);
   status.textContent="Locus "+locus+" · registro V514 y "+Object.values(row).filter(v=>v?.page).length+" correspondencias históricas de OCR consultadas.";
   const url=new URL(location.href);url.searchParams.set("locus",locus);history.replaceState(null,"",url);
