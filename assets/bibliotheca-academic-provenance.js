@@ -29,11 +29,11 @@ function draw(){
  const heading=txt("h3",w.author+" · "+w.title);
  if(w.language==="grc")heading.lang="grc";
  box.append(txt("p","FICHA DE FUENTE · NOMBRE ANTIGUO Y TESTIMONIOS","status"),heading);
- line("Cronología editorial:",w.dating||"datación no verificada");
+ line("Cronología editorial:",w.dating||"sin datación consignada");
  if(w.bibliography?.editionCitation){
   line("Edición documentada (revisar según Chicago 18):",w.bibliography.editionCitation);
  }else{
-  line("Cita bibliográfica:", "pendiente de normalización completa Chicago 18; no se asignan editor, fecha o manuscrito por conjetura");
+  line("Cita bibliográfica:", "Ficha bibliográfica incompleta; no se atribuyen datos ausentes");
  }
  const ms=w.manuscript||{},old=ms.oldest||{};
  if(old.record&&/^https:/.test(old.record)){
