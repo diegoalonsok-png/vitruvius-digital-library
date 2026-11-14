@@ -46,6 +46,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 .cwd-head .cwd-row strong,.classic-work-dossier .cwd-row strong{font:600 11px/1.5 system-ui,Arial,sans-serif!important;letter-spacing:.06em;text-transform:uppercase;opacity:.72;margin-right:4px;font-style:normal!important}
 </style>
 <script defer src="assets/editorial-work-records.js?v=20261111-identifiers-v1"></script>
+<script defer src="assets/r2-work-records.js?v=20261114-r2-scholarly-v1"></script>
 <script defer src="assets/classics-work-dossier.js?v=20261114-codicology-v2"></script>
 <script defer src="assets/analytics-config.js?v=20261110-shared-v1"></script>
 <script defer src="assets/analytics.js?v=20261110-shared-v1"></script>
@@ -72,7 +73,7 @@ footer{border-top:1px solid var(--line);font-size:12px;color:#bbb;margin-top:30p
 <select id="record-work"><option value="">Cargando <span data-cifra="obras">227</span> registros…</option></select>
 <button id="print-record" type="button">Imprimir / guardar PDF</button>
 <button id="copy-record" type="button">Copiar ficha y procedencia</button>
-<button id="bibliotheca-download-xlsx" type="button" title="Descargar 227 obras, códices, ecdótica, ediciones, fuentes y bibliografía en un libro Excel">Descargar Excel · <span data-cifra="obras">227</span> obras y ecdótica</button></div>
+<button id="bibliotheca-download-xlsx" type="button" title="Descargar 227 obras, códices, ecdótica, ediciones, fuentes y bibliografía en un libro Excel">Descargar Excel · <span data-cifra="obras">271</span> fichas y ecdótica</button></div>
 <p id="bibliotheca-xlsx-status" role="status" aria-live="polite" class="intro"></p>
 <p id="work-record-status" role="status" aria-live="polite">Consultando el catálogo académico…</p>
 <article id="work-record"></article></main>
@@ -88,6 +89,9 @@ async function ready(){
   const data=await API.data(),selected=$("record-work");
   selected.replaceChildren(new Option("Elegir una obra del repertorio",""));
   for(const work of data.docs.values())selected.append(new Option(work.author+" · "+work.title,work.id));
+  let r2Records=[];
+  try{r2Records=await window.R2WorkRecords?.load()||[]}catch(e){console.warn("Fichas adicionales R2 no disponibles",e)}
+  for(const work of r2Records)if(!data.docs.has(work.r2))selected.append(new Option(work.autor+" · "+work.obra+" (edición R2)",work.r2));
   // A modern critical edition is a valid selection, not an ancient manuscript.
   // Explicit options are necessary: setting select.value on an absent option
   // silently clears the valid query parameter.
@@ -104,9 +108,10 @@ async function ready(){
    history.replaceState(null,"",url);
    if(!id){$("work-record").replaceChildren();$("work-record-status").textContent="Seleccione una obra para consultar su ficha.";return}
    $("work-record-status").textContent="Obra: "+id+" · testimonios del registro local y citas con estado documental.";
-   void API.render($("work-record"),id);
+   if(r2Records.some(r=>r.r2===id))void window.R2WorkRecords.render($("work-record"),id);
+   else void API.render($("work-record"),id);
   }
-  selected.value=data.docs.has(requested)||window.EditorialWorkRecords?.has(requested)?requested:"";
+  selected.value=data.docs.has(requested)||r2Records.some(r=>r.r2===requested)||window.EditorialWorkRecords?.has(requested)?requested:"";
   if(!selected.value){$("work-record-status").textContent="Elija una de las "+data.count+" obras catalogadas."; }
   selected.addEventListener("change",show);
   $("print-record").addEventListener("click",()=>window.print());
