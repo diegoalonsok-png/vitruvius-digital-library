@@ -7,6 +7,9 @@ on:
       - 'scripts/test-codicological-source-consistency.mjs'
       - 'data/academic-integrity.json'
       - 'assets/apparatus-ecdotics.mjs'
+      - 'assets/concordancia-kwic.js'
+      - 'assets/scholarly-passage-citation.js'
+      - 'scripts/test-kwic-citability.mjs'
       - 'assets/apparatus-catalog.mjs'
       - 'assets/critical-lexical-bridge.js'
       - 'assets/apparatus-edition-bibliography.js'
@@ -41,6 +44,9 @@ on:
       - 'scripts/test-codicological-source-consistency.mjs'
       - 'data/academic-integrity.json'
       - 'assets/apparatus-ecdotics.mjs'
+      - 'assets/concordancia-kwic.js'
+      - 'assets/scholarly-passage-citation.js'
+      - 'scripts/test-kwic-citability.mjs'
       - 'assets/apparatus-catalog.mjs'
       - 'assets/critical-lexical-bridge.js'
       - 'assets/apparatus-edition-bibliography.js'
@@ -90,6 +96,11 @@ jobs:
         run: |
           npm install --no-save --no-audit --no-fund jsdom@31
           node scripts/test-apparatus-dictionary-click.mjs
+      - name: Verify KWIC editorial citation and bounded context sorting
+        run: |
+          node --check assets/concordancia-kwic.js
+          node --check assets/scholarly-passage-citation.js
+          node scripts/test-kwic-citability.mjs
       - name: Confirm published integrity data matches current immutable sources
         run: node scripts/academic-integrity.mjs --check
       - name: Verify codicological dossier fields and British Library references
