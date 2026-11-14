@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"><meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cobertura ecdótica por locus · De architectura · Vitruvius Digital Library</title>
+<title>Mapa y dossier ecdótico por locus · Rose, Krohn, Codex H · Vitruvius Digital Library</title>
 <meta name="description" content="Mapa verificable de la cobertura del aparato crítico de De architectura: colaciones documentadas, notas, glosas y comentarios editoriales de Diego A. Kurilo por locus. Distingue evidencia manuscrita y comentario.">
 <link rel="canonical" href="https://vitruvius-digital-library.org/cobertura-aparato-critico">
-<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/dossier-ecdotico.css?v=20261114">
 <style>
 :root{color-scheme:light}
 body{background:#f8f6f0;color:#28251f;margin:0;font-family:system-ui,sans-serif}
@@ -43,8 +43,8 @@ td small{display:block;color:#635d54;font:12px/1.5 system-ui}
 </head>
 <body><main>
 <nav aria-label="Navegación académica"><a href="index.html">Biblioteca</a><a href="registro-ecdotico.html">Registro ecdótico</a><a href="apparatus-criticus.html">Apparatus criticus</a><a href="colacion.html">Colación</a><a href="indice-commentariorum.html">Comentarios</a><a href="conspectus-testimoniorum.html">Testimonios</a><a href="como-citar.html">Cómo citar</a></nav>
-<header><p class="eyebrow">VITRVVIVS · DE ARCHITECTVRA · RATIO COLlationIS</p><h1>Cobertura del aparato por locus</h1>
-<p class="lead">Inventario automático y reproducible de las entradas de colación, las glosas, las notas al pie, las secciones de comentario y el diccionario del autor presentes en las ediciones V514, V554 y V297 de Diego A. Kurilo. Una entrada registrada no equivale necesariamente a una variante manuscrita comprobada.</p></header>
+<header><p class="eyebrow">VITRVVIVS · DE ARCHITECTVRA · RATIO COLlationIS</p><h1>Mapa ecdótico y aparato comparativo</h1>
+<p class="lead">Inventario automático y reproducible de las entradas de colación, las glosas, las notas al pie, las secciones de comentario y el diccionario del autor presentes en las ediciones V514, V554 y V297 de Diego A. Kurilo. Seleccione un locus para comparar el texto latino y las traducciones con Rose, Krohn, el códice H y sus comentarios. Una entrada registrada no equivale necesariamente a una variante manuscrita comprobada.</p></header>
 <div id="status" role="status" aria-live="polite">Cargando los documentos editoriales…</div>
 <section class="metrics" id="metrics" aria-label="Cobertura"></section>
 <p class="note"><strong>Alcance académico.</strong> Los registros de colación proceden principalmente del aparato impreso en las ediciones modernas; las coincidencias entre V514 y V554 son controles de extracción del mismo trabajo autoral, no testigos independientes. Los loci sin entradas de colación pueden contener texto, traducción y comentario. Las glosas, las notas y el diccionario no se cuentan como variantes críticas. Este mapa no declara una nueva recensio completa ni autopsia de todos los códices.</p>
@@ -55,6 +55,7 @@ td small{display:block;color:#635d54;font:12px/1.5 system-ui}
 <p id="detailCount"></p>
 <div class="table-wrap"><table><thead><tr><th>Locus y lectura</th><th>Estado documental</th><th>Material editorial asociado</th></tr></thead><tbody id="byLocus"></tbody></table></div>
 <p class="small" id="limitInfo"></p>
+<section id="dossier" hidden aria-live="polite" aria-label="Dossier ecdótico y comparativo del locus"></section>
 <h2>Procedencia y reproducibilidad</h2>
 <p class="lead">Los datos se leen directamente de <a href="data/academic-integrity.json">referencias canónicas</a>, <a href="data/apparatus/collatio-validada.json">colación extraída y clasificada</a>, <a href="data/apparatus/aparato-autoral.json">comentarios y diccionario</a> y <a href="data/critical-notes.json">notas originales de los DOCX</a>. Los estados se calculan sobre los archivos disponibles en esta publicación. Las cifras no deben citarse como cobertura manuscrita integral; para el texto de una lectura debe abrirse siempre su edición y página original.</p>
 </main>
@@ -97,7 +98,8 @@ function renderLoci(){
  const tbody=$('byLocus');tbody.replaceChildren();
  for(const r of shown.slice(0,150)){
  const tr=create('tr'),first=create('td'),a=create('a','Vitr. '+r.locus);a.href='registro-ecdotico.html?locus='+encodeURIComponent(r.locus);first.append(a);
- first.append(create('small','Abrir el registro por locus'));tr.append(first);
+ first.append(create('small','Abrir el registro por locus'));
+ const dossier=create('a','Comparar texto, Rose, Krohn y H','dl-open');dossier.href='cobertura-aparato-critico.html?locus='+encodeURIComponent(r.locus)+'#dossier';dossier.setAttribute('data-dossier',r.locus);first.append(dossier);tr.append(first);
  const status=create('td');
  if(r.coll.length){status.append(create('span',r.coll.length+' entradas del aparato impreso','badge'));if(r.high.length)status.append(create('span',r.high.length+' con extracción controlada','badge strong'))}
  else status.append(create('span','Sin colación registrada','badge pending'));
@@ -128,6 +130,8 @@ async function init(){
  extend(map,appar.secciones||[],'sections',e=>e.locus);
  extend(map,appar.diccionario||[],'dictionary',e=>e.seccion);
  records=[...map.values()];
+ window.VDL_ECDOTIC_COVERAGE=records;
+ document.dispatchEvent(new CustomEvent('vdl:coverage-ready',{detail:{loci:records.length}}));
  $('status').textContent='Datos editoriales cargados · '+records.length+' loci examinados · los recuentos se calculan desde las fuentes publicadas.';
  render();
  }catch(err){$('status').setAttribute('role','alert');$('status').textContent='No fue posible calcular la cobertura: '+err.message+'. No se muestran cifras supuestas.'}
@@ -137,4 +141,5 @@ $('csv').addEventListener('click',csv);
 init();
 })();
 </script>
+<script defer src="assets/dossier-ecdotico.js?v=20261114"></script>
 </body></html>
