@@ -19,16 +19,14 @@ jobs:
       - name: Verificar disponibilidad de credenciales R2
         id: credentials
         env:
-          ACCOUNT: ${{ secrets.R2_ACCOUNT_ID }}
           ACCESS: ${{ secrets.R2_ACCESS_KEY_ID }}
           SECRET: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          BUCKET: ${{ secrets.R2_BUCKET_NAME }}
         run: |
-          if [[ -n "$ACCOUNT" && -n "$ACCESS" && -n "$SECRET" && -n "$BUCKET" ]]; then
+          if [[ -n "$ACCESS" && -n "$SECRET" ]]; then
             echo 'available=true' >> "$GITHUB_OUTPUT"
           else
             echo 'available=false' >> "$GITHUB_OUTPUT"
-            echo '::warning::Faltan credenciales R2 para publicar folios: revisar R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME. No se publica un índice ficticio.'
+            echo '::warning::Faltan credenciales R2 para publicar folios: revisar R2_ACCESS_KEY_ID y R2_SECRET_ACCESS_KEY. No se publica un índice ficticio.'
           fi
       - name: Instalar conversor de PDF e interfaz R2
         if: steps.credentials.outputs.available == 'true'
