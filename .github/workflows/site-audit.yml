@@ -14,6 +14,8 @@ on:
       - 'data/catalog.json'
       - 'data/critical-notes.json'
       - 'data/commentary/**'
+      - 'concordantia-harleiana.html'
+      - 'scripts/test-philological-integrity.mjs'
       - 'data/errata-editionum.json'
       - 'scripts/test-historical.mjs'
       - '.github/workflows/site-audit.yml'
@@ -41,6 +43,7 @@ jobs:
           node --check assets/latin-suggest.js
           node --check assets/philological-core.mjs
           node --check assets/quaestio-philologica.mjs
+          node --check assets/concordantia-harleiana.js
           node --check scripts/test-philological-integrity.mjs
           node --check assets/perrault-iiif.mjs
           node --check assets/scriptorium.mjs
