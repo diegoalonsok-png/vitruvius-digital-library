@@ -7,7 +7,7 @@ const allowed={"apuleius-metamorphoses":"Apuleyo · Metamorphoses (Asinus aureus
 const LEX=window.ClassicalLexicon;
 if(!/^[a-z0-9-]{3,60}$/.test(work)){$("source-title").textContent="Obra no identificada en este lector";return}
 const base="data/classics-corpus/"+work+"-";
-const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[];
+const langSelect=$("language"),input=$("query");let data,active=0,results=[],search="",hostedEditions=[],resultPage=0;
 // Deep links from documented concordances require literal evidence, not heuristic synonyms.
 const exactConcordance=p.get("literal")==="1";
 /* A trusted same-origin parallel reader may request ordinal passage navigation.
@@ -130,21 +130,62 @@ function select(i){
   window.parent.postMessage({type:"vitruvia-parallel-position",work,lang:data.language,index:active,locus:rec.locus},location.origin);
  }
 }
+const SEARCH_PAGE_SIZE=18;
+function snippet(text,query){
+ const normalized=fold(text),needle=fold(query),pos=needle?normalized.indexOf(needle):-1;
+ // Truncate only the summary: original passage remains intact in the reader.
+ if(text.length<=260)return text;
+ if(pos<0)return text.slice(0,260).trim()+"…";
+ // Unicode normalization can shift offsets: locate a conservative nearby window.
+ const start=Math.max(0,pos-75),stop=Math.min(text.length,start+300);
+ return (start?"…":"")+text.slice(start,stop).trim()+(stop<text.length?"…":"");
+}
 function renderSearch(){
  const target=$("results");target.replaceChildren();
- if(!search){target.textContent="Ingresa una palabra o frase para localizar coincidencias en esta edición.";return}
+ const section=$("search-results-section");
+ if(!search){results=[];resultPage=0;if(section)section.hidden=true;return}
+ if(section)section.hidden=false;
+ // Search EVERY recorded passage, not only the current chapter.
  results=data.passages.map((r,i)=>({i,r})).filter(x=>match(x.r.text,search,!exactConcordance));
- const lead=document.createElement("strong");
- lead.textContent=results.length+" secciones coincidentes · "+(exactConcordance?"concordancia literal documentada":"búsqueda literal + expansión léxica experimental");
- target.append(lead);
- results.slice(0,45).forEach(({i,r})=>{
-  const a=document.createElement("a");a.href="#passages";const n=LEX?LEX.find(r.text,search).length:0;a.textContent="§ "+r.locus+(n?" ("+n+")":"");
-  a.addEventListener("click",e=>{e.preventDefault();select(i);$("passages").scrollIntoView({block:"start",behavior:"smooth"})});
-  target.append(a);
- });
- if(results.length>45)target.append(document.createTextNode("… "+(results.length-45)+" más"));
- if(!results.length)target.append(document.createTextNode(" · No se encontraron coincidencias en el texto editado. Esto no equivale a búsqueda OCR del códice."));
+ const header=document.createElement("p");header.className="search-summary";
+ header.textContent=results.length+" pasajes encontrados en toda la edición ("+data.passages.length+" unidades). "+
+  (exactConcordance?"Búsqueda literal del texto editado.":"Expansión léxica experimental; coincidencias no equivalen a traducciones.");
+ target.append(header);
+ if(!results.length){
+  const no=document.createElement("p");no.className="search-empty";
+  no.textContent="No hay coincidencias en esta edición "+(data.language==="grc"?"griega":data.language==="la"?"latina":"seleccionada")+
+   ". La búsqueda no traduce automáticamente términos de otro idioma. Pruebe una forma de la lengua del texto o consulte Lexicon para estudiar posibles equivalentes.";
+  target.append(no);return;
+ }
+ const start=resultPage*SEARCH_PAGE_SIZE;
+ const page=results.slice(start,start+SEARCH_PAGE_SIZE);
+ const list=document.createElement("ol");list.className="search-passage-list";list.start=start+1;
+ for(const {i,r} of page){
+  const li=document.createElement("li"),button=document.createElement("button");
+  button.type="button";button.className="search-passage-jump";
+  const title=document.createElement("strong");title.textContent=unitLabel()+" "+r.locus+(r.title?" · "+r.title:"");
+  const excerpt=document.createElement("span");excerpt.className="search-passage-excerpt";excerpt.textContent=snippet(r.text,search);
+  excerpt.lang=data.language;
+  button.append(title,excerpt);
+  button.addEventListener("click",()=>{
+   select(i);
+   $("passages").scrollIntoView({block:"start",behavior:"smooth"});
+  });
+  li.append(button);list.append(li);
+ }
+ target.append(list);
+ const pages=Math.ceil(results.length/SEARCH_PAGE_SIZE);
+ if(pages>1){
+  const nav=document.createElement("div");nav.className="search-pagination";
+  const previous=document.createElement("button");previous.type="button";previous.textContent="← Resultados anteriores";previous.disabled=resultPage===0;
+  const label=document.createElement("span");label.textContent="Resultados "+(start+1)+"–"+Math.min(start+SEARCH_PAGE_SIZE,results.length)+" de "+results.length;
+  const next=document.createElement("button");next.type="button";next.textContent="Más resultados →";next.disabled=resultPage>=pages-1;
+  previous.addEventListener("click",()=>{resultPage--;renderSearch()});
+  next.addEventListener("click",()=>{resultPage++;renderSearch()});
+  nav.append(previous,label,next);target.append(nav);
+ }
 }
+
 function morphology(token){
  const t=fold(token),x=t.toLowerCase();let possibilities=[];
  if(/(nt|ntur|mus|tis|tur|tur|bat|bant|bit|bunt|avit|ebat|erat|erunt|isse|are|ere|ire)$/.test(x))
@@ -223,19 +264,19 @@ async function load(language){
 async function swap(lang){try{await load(lang)}catch(err){console.error("Classics reader failed to load",work,lang,err);$("source-title").textContent=err.message;data=null;$("passages").textContent="No se puede mostrar esta traducción sin un archivo local acreditado."}}
 const setTitle=t=>{$("work-title").textContent=t;document.title=t+" · Bibliotheca Graeca et Latina"};if(allowed[work])setTitle(allowed[work]);$("codex-link").href="bibliotheca-graeca-latina.html?work="+work+"&view=triplecodex";
 $("language").addEventListener("change",e=>swap(e.target.value));
-$("find").addEventListener("click",()=>{if(!data)return;setQuery(input.value);renderSearch();if(results.length)select(results[0].i)});
+$("find").addEventListener("click",()=>{if(!data)return;setQuery(input.value);resultPage=0;renderSearch();if(results.length)select(results[0].i)});
 /* Same-origin parallel study: independent literal queries and amber highlights. */
 window.addEventListener("message",event=>{
  if(event.origin!==location.origin||event.source!==window.parent||window.parent===window)return;
  const cmd=event.data;
  if(!cmd||cmd.type!=="vitruvia-parallel-find"||cmd.work!==work||cmd.lang!==data?.language||typeof cmd.query!=="string")return;
- setQuery(cmd.query.slice(0,120));renderSearch();
+ setQuery(cmd.query.slice(0,120));resultPage=0;renderSearch();
  if(results.length)select(results[0].i);else select(active);
  window.parent.postMessage({type:"vitruvia-parallel-search-result",work,lang:data.language,sections:results.length},location.origin);
 });
 input.addEventListener("keydown",e=>{if(e.key==="Enter"){$("find").click()}});
 $("hit-prev")?.addEventListener("click",()=>focusHit(-1));$("hit-next")?.addEventListener("click",()=>focusHit(1));
-$("clear").addEventListener("click",()=>{setQuery("");renderSearch();if(data)select(active)});
+$("clear").addEventListener("click",()=>{setQuery("");resultPage=0;renderSearch();if(data)select(active)});
 $("print").addEventListener("click",()=>window.print());
 // Apariencia funcional: variables CSS compartidas por lector independiente y panel comparado.
 const READER_STYLE_KEY="vitruvia.classic.appearance.v3."+work;
