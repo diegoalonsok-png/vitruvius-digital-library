@@ -6,6 +6,10 @@ on:
       - 'classics-text-reader.html'
       - 'assets/classics-text-reader.js'
       - 'scripts/test-parallel-two-versions.mjs'
+      - 'scripts/test-classics-reader-search.mjs'
+      - 'data/lexicon/conceptus.json'
+      - 'data/lexicon/forms-la.json'
+      - 'data/lexicon/forms-grc.json'
       - '.github/workflows/parallel-two-versions.yml'
   pull_request:
     paths:
@@ -13,6 +17,10 @@ on:
       - 'classics-text-reader.html'
       - 'assets/classics-text-reader.js'
       - 'scripts/test-parallel-two-versions.mjs'
+      - 'scripts/test-classics-reader-search.mjs'
+      - 'data/lexicon/conceptus.json'
+      - 'data/lexicon/forms-la.json'
+      - 'data/lexicon/forms-grc.json'
       - '.github/workflows/parallel-two-versions.yml'
 permissions:
   contents: read
@@ -27,3 +35,6 @@ jobs:
           node-version: '22'
       - run: node --check assets/classics-text-reader.js
       - run: node scripts/test-parallel-two-versions.mjs
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Búsquedas reales de Agustín, equivalencias y resaltado fiel
+        run: node scripts/test-classics-reader-search.mjs
