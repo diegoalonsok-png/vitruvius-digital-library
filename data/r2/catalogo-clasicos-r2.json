@@ -775,7 +775,7 @@
     {
       "id": "galeno-scripta-minora",
       "autor": "Galeno",
-      "obra": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "obra": "Scripta minora de Galeno — volumen III",
       "lengua": "grc",
       "idiomaEdicion": "s/d",
       "tanda": 1,
@@ -797,7 +797,9 @@
       "sha256": "5ed136b94094f135026eadb7c4cfd4348be662eda90ab710c606c0d4e93fcf48",
       "paginas": 271,
       "paginasConTexto": 268,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "alcance": "Volumen III de Scripta minora, según el título de la reproducción; no es la serie completa.",
+      "incidenciaCatalografica": "No ofrecer como colección íntegra de Scripta minora sin comprobar los otros tomos."
     },
     {
       "id": "galeno-facultades-naturales",
@@ -1155,7 +1157,7 @@
     {
       "id": "luciano-obras",
       "autor": "Luciano de Samósata",
-      "obra": "Obras",
+      "obra": "Obras de Luciano — volumen I de la edición inglesa",
       "lengua": "grc",
       "tituloEdicion": "Lucian with an English Translation - Volume 1",
       "anio": 1913,
@@ -1172,7 +1174,9 @@
       "sha256": "05306db7c6d1034ba977324f4ad34b46d97729d7dcd892d5ed8dca11e5e4f38c",
       "paginas": 496,
       "paginasConTexto": 461,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "alcance": "Volumen I de la edición Lucian with an English Translation; no equivale a las obras completas.",
+      "incidenciaCatalografica": "No presentar este PDF como las obras completas de Luciano."
     },
     {
       "id": "menandro-comedias",
@@ -1332,7 +1336,7 @@
     {
       "id": "platon-protagoras",
       "autor": "Platón",
-      "obra": "Laques, Protágoras, Menón, Eutidemo",
+      "obra": "Protágoras de Platón (edición individual)",
       "lengua": "grc",
       "idiomaEdicion": "s/d",
       "tanda": 2,
@@ -1351,7 +1355,9 @@
       "sha256": "d0ee2068de6dab624c5d54d153ee53ad99e79d0505562ae9069467959988fec3",
       "paginas": 256,
       "paginasConTexto": 236,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "alcance": "Solo Protágoras según el título de la edición catalogada; no se acredita que este PDF contenga Laques, Menón o Eutidemo.",
+      "incidenciaCatalografica": "La descripción anterior incluía otras obras platónicas no acreditadas por el título del PDF; no anunciar el volumen como reunión de cuatro diálogos."
     },
     {
       "id": "platon-leyes",
@@ -1378,7 +1384,7 @@
     {
       "id": "platon-teeteto-sofista",
       "autor": "Platón",
-      "obra": "Teeteto y Sofista",
+      "obra": "Teeteto de Platón — edición con traducción y notas",
       "lengua": "grc",
       "idiomaEdicion": "s/d",
       "tanda": 2,
@@ -1400,7 +1406,9 @@
       "sha256": "038f00525e53f8dc4a9af9885832d4fec151ecc3c7a03f5b9b3c9c04879f5783",
       "paginas": 276,
       "paginasConTexto": 258,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "alcance": "Teeteto (Theaetetus) según la edición catalogada; Sofista no está acreditado en el título ni en los metadatos disponibles.",
+      "incidenciaCatalografica": "No presentar como Teeteto y Sofista hasta comprobar el interior de la digitalización."
     },
     {
       "id": "platon-timeo",
@@ -1838,7 +1846,7 @@
     {
       "id": "serlio-architettura",
       "autor": "Sebastiano Serlio",
-      "obra": "Tutte l'opere d'architettura",
+      "obra": "Regole generali di architettura (Serlio) — edición individual",
       "lengua": "it",
       "coleccion": "recepcion-vitruviana",
       "idiomaEdicion": "s/d",
@@ -1858,7 +1866,9 @@
       "sha256": "efffcd734fbfe86c9d2659fd28e1b49a211bd9eaebe0efa9c35ebbbd74da452a",
       "paginas": 154,
       "paginasConTexto": 94,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "alcance": "Regole generali di architettura sobre los cinco órdenes; el PDF no se acredita como colección completa de Tutte l'opere.",
+      "incidenciaCatalografica": "El título del libro digitalizado refiere a Regole generali, no a la recopilación integral de obras de Serlio."
     },
     {
       "id": "scamozzi-idea-architettura",
@@ -2429,7 +2439,7 @@
     {
       "id": "higino-fabulas",
       "autor": "Higino",
-      "obra": "Fábulas y Astronomía poética",
+      "obra": "Fabulae de Higino",
       "lengua": "la",
       "idiomaEdicion": "s/d",
       "tanda": 2,
@@ -2452,7 +2462,9 @@
       "sha256": "105726b54dc2a1a069365b0101e9d7e28772e8c07f1356db24436c61073f8a83",
       "paginas": 233,
       "paginasConTexto": 222,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "alcance": "Fábulas (Fabulae); Astronomía poética no acreditada como parte de este PDF.",
+      "incidenciaCatalografica": "El registro de edición se titula Hygini Fabulae, por lo que Poética astronómica no debe anunciarse como contenido verificado."
     },
     {
       "id": "hyginus-gromaticus",
@@ -2487,7 +2499,7 @@
     {
       "id": "isidoro-etymologiae",
       "autor": "Isidoro de Sevilla",
-      "obra": "Etymologiae sive Origines",
+      "obra": "Etymologiae / Origines de Isidoro — volumen I",
       "lengua": "la",
       "coleccion": "Antigüedad tardía y Edad Media",
       "idiomaEdicion": "s/d",
@@ -2510,7 +2522,9 @@
       "sha256": "af1a52b27b3b54782a9bce98f39cbc5d39b76301c801dc7f62531d58af017a57",
       "paginas": 884,
       "paginasConTexto": 862,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "alcance": "Volumen I de la edición impresa; no se acredita la presencia de los veinte libros completos en este archivo.",
+      "incidenciaCatalografica": "El título bibliográfico indica Volume 1; no confundir la obra antigua de veinte libros con este ejemplar parcial."
     },
     {
       "id": "juvenal-persio-satiras",
@@ -2751,7 +2765,7 @@
     {
       "id": "paladio-opus-agriculturae",
       "autor": "Paladio",
-      "obra": "Opus agriculturae",
+      "obra": "Traducción medieval inglesa de De re rustica de Paladio — parte I",
       "lengua": "la",
       "idiomaEdicion": "bilingue-en",
       "tanda": 1,
@@ -2770,7 +2784,9 @@
       "sha256": "e43a5a93b6a499500311c95d5cb63353e8deb9abbe17f30c448a655800e85a84",
       "paginas": 308,
       "paginasConTexto": 293,
-      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas"
+      "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
+      "alcance": "Primera parte de una traducción en inglés medio, no el texto original latino íntegro.",
+      "incidenciaCatalografica": "El ejemplar declara The Middle-English translation, Pt. 1. No corresponde a una edición latina original íntegra."
     },
     {
       "id": "petronio-satiricon",
