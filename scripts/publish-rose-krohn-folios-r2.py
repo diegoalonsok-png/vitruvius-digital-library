@@ -183,7 +183,8 @@ def publish(edition: str, pdf: pathlib.Path, s3, dpi: int, force: bool, dry_run:
    "schema": "vdl-folios-obra-1", "obra": slug, "titulo": info["title"],
    "autor": info["author"], "editor": info["editor"], "edicion": info["date"],
    "lengua": info["language"], "fuente": info["source"], "custodia": info["holding"],
-   "derechos": info["rights"], "imagenes": count, "folios": entries,\n   "calidad": quality, "dpi_exportacion": dpi, "jpeg_calidad":92,
+   "derechos": info["rights"], "imagenes": count, "folios": entries,
+   "calidad": quality, "dpi_exportacion": dpi, "jpeg_calidad":92,
    "criterio": "One scanned PDF page per image; image number is NOT printed pagination or manuscript foliation.",
    "estadoOCR": "Texto OCR e índice de loci separados; todavía sin coordenadas verificadas sobre cada imagen."
   }
