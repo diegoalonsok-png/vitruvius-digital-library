@@ -216,7 +216,7 @@ for(const [label,value] of [["Praefatio I","1.praef.1"],["symmetria","symmetria"
 const layoutStatus=document.createElement("span");layoutStatus.className="script-triple-arrangement";layoutStatus.setAttribute("role","status");
 layoutStatus.textContent="Ordenar columnas con ← →; anchuras ajustables.";
 toolbar.append(irBox,quick,syncLabel,candidateLabel,syncStatus,layoutStatus);grid.before(toolbar);
-let highlightTerm="",widths=[1,1,1];
+let highlightTerm=(initialParams.get("q")||"").trim().slice(0,80),widths=[1,1,1];
 function applyWidths(){grid.style.gridTemplateColumns=widths.map(v=>"minmax(0,"+v+"fr)").join(" ")}
 function movePane(st,to){
  const from=states.indexOf(st);if(from<0||to<0||to>=states.length||from===to)return;
@@ -350,6 +350,18 @@ for(const [slot,defaultKey] of ["krohn","kurilo","rose"].entries()){
    editorialIds.replaceChildren();
    if(record.doi){const a=document.createElement("a");a.href="https://doi.org/"+record.doi;a.textContent="DOI "+record.doi;a.target="_blank";a.rel="noopener noreferrer";editorialIds.append(a)}
    if(record.isbn){const label=document.createElement("span");label.textContent="ISBN declarado "+record.isbn+" · compartido por V514/V554/V297";label.title=record.isbnNote||"";editorialIds.append(label)}
+   if(["kurilo","fr","en"].includes(key)){
+    const raw=catalog.editions?.find(e=>e.id===({"kurilo":"recensio-es","fr":"recensio-fr","en":"theory-en"}[key]))||{};
+    const chicago=document.createElement("p");chicago.className="script-triple-chicago";
+    const title=raw.bibliographic_title||raw.title||record.title;
+    const italic=document.createElement("i");italic.textContent=title;
+    chicago.append(document.createTextNode("Chicago 18 · bibliografía: Kurilo, Diego A. "),italic,
+      document.createTextNode(". "+(raw.edition_statement||raw.version||"Edición digital")+". Buenos Aires: "+(raw.publisher||"Sophia Lux")+", "+(raw.year||"2026")+". https://doi.org/"+(raw.doi||record.doi)+"."));
+    editorialIds.append(chicago);
+    const distinction=document.createElement("small");distinction.className="script-triple-edition-role";
+    distinction.textContent="Edición, traducción y comentario de Diego A. Kurilo · "+(raw.version||"")+". ISBN compartido declarado por el editor; no es una asignación independiente de esta versión.";
+    editorialIds.append(distinction);
+   }
    if(!record.doi&&!record.isbn){const link=document.createElement("a");link.href=record.reference||"#";link.textContent="Edición histórica · "+(record.year||"")+" · ficha de procedencia";if(record.reference){link.target="_blank";link.rel="noopener noreferrer"}editorialIds.append(link)}
   }catch{editorialIds.textContent="Identificación editorial accesible en la ficha de cita"}
  }
@@ -399,6 +411,13 @@ const zoomLabel=document.createElement("output");zoomLabel.textContent="100%";
 optics.append(palette,rulerToggle,invert,contrast,pdfMinus,pdfPlus,zoomLabel);panel.append(optics);
  const body=document.createElement("div");body.className="script-triple-text notranslate";body.translate=false;body.tabIndex=0;body.setAttribute("aria-label","Texto del visor "+(slot+1));panel.append(body);
  const facsimile=document.createElement("iframe");facsimile.className="script-triple-pdf";facsimile.title="Facsímil PDF de la edición seleccionada";facsimile.loading="lazy";facsimile.hidden=true;panel.append(facsimile);
+const pdfOverlay=document.createElement("section");pdfOverlay.className="script-triple-pdf-layer";pdfOverlay.hidden=true;pdfOverlay.setAttribute("aria-label","Página PDF con resaltado amarillo basado en texto digital");
+const pdfViewport=document.createElement("div");pdfViewport.className="script-triple-pdf-viewport";
+const pdfCanvas=document.createElement("canvas");const pdfMarks=document.createElement("div");pdfMarks.className="script-triple-pdf-marks";
+pdfViewport.append(pdfCanvas,pdfMarks);const pdfStatus=document.createElement("p");pdfStatus.className="script-triple-pdf-status";pdfStatus.setAttribute("role","status");
+pdfOverlay.append(pdfViewport,pdfStatus);panel.append(pdfOverlay);
+const searchInPdf=document.createElement("button");searchInPdf.type="button";searchInPdf.className="script-triple-pdf-highlight-btn";searchInPdf.textContent="Resaltar término en PDF · amarillo";searchInPdf.title="Solo si el PDF posee capa textual con coordenadas";viewBar.append(searchInPdf);
+const pdfEvidence=document.createElement("p");pdfEvidence.className="script-triple-pdf-evidence";pdfEvidence.hidden=true;panel.append(pdfEvidence);
 const ocrCompanion=document.createElement("section");ocrCompanion.className="script-triple-ocr-companion";ocrCompanion.hidden=true;
 const ocrHeading=document.createElement("h4");ocrHeading.textContent="OCR de la misma página digital · texto buscable";
 const ocrNote=document.createElement("p");ocrNote.className="script-triple-ocr-note";ocrNote.textContent="Transcripción automática de la página mostrada arriba; su marcado no se superpone a los píxeles del PDF ni sustituye la comprobación del facsímil.";
@@ -408,7 +427,66 @@ ocrCompanion.append(ocrHeading,ocrNote,ocrText);panel.append(ocrCompanion);
  const translation=document.createElement("button");translation.type="button";translation.textContent="Mostrar traducción";translation.hidden=true;
  const pdf=document.createElement("a");pdf.target="_blank";pdf.rel="noopener noreferrer";pdf.textContent="Abrir PDF de esta edición ↗";
  foot.append(translation,pdf);panel.append(foot);
- let data=null,index=0,token=0,translated=false,size=18,view="text",resalte=null,pdfZoom=100;
+ let data=null,index=0,token=0,translated=false,size=18,view="text",resalte=null,pdfZoom=100,pdfRenderSerial=0;
+let pdfjsPromise=null;const pdfDocumentCache=new Map();
+function getPdfjs(){if(!pdfjsPromise)pdfjsPromise=import("https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.mjs").then(lib=>{lib.GlobalWorkerOptions.workerSrc="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.mjs";return lib});return pdfjsPromise;}
+async function renderPdfHighlight(){
+ const my=++pdfRenderSerial;
+ const q=(highlightTerm||search.value||"").trim();
+ if(view!=="pdf"||!data||!q||q.length<3){pdfOverlay.hidden=true;facsimile.hidden=view!=="pdf";pdfEvidence.hidden=true;return;}
+ const pageIndex=Number(pageFor(data.pages[index]));
+ if(!Number.isInteger(pageIndex)||pageIndex<1){pdfOverlay.hidden=true;facsimile.hidden=false;pdfEvidence.hidden=false;pdfEvidence.textContent="El locus no tiene una página PDF asociada. El OCR textual sigue disponible cuando existe.";return}
+ pdfStatus.textContent="Buscando «"+q+"» en la capa textual del PDF…";
+ pdfEvidence.hidden=false;pdfEvidence.textContent="La transcripción OCR se resalta por separado. Las marcas sobre la imagen requieren coordenadas textuales del PDF.";
+ try{
+  const lib=await getPdfjs();if(my!==pdfRenderSerial)return;
+  const source=new URL(data.ed.pdf,location.href).href;
+  if(!pdfDocumentCache.has(source))pdfDocumentCache.set(source,lib.getDocument(source).promise.catch(error=>{pdfDocumentCache.delete(source);throw error}));
+  const doc=await pdfDocumentCache.get(source);if(my!==pdfRenderSerial)return;
+  const page=await doc.getPage(pageIndex);const words=await page.getTextContent();if(my!==pdfRenderSerial)return;
+  const target=fold(q).replace(/[vj]/g,c=>c==="v"?"u":"i").replace(/[^a-z]/g,"");
+  const stem=target.length>7?target.replace(/(arum|orum|ibus|ae|am|as|um|us|is|es|em|a|e|i|o)$/,""):target;
+  const matches=[];
+  for(const item of words.items){
+   if(!item.str||!item.transform||!item.width)continue;
+   const normal=fold(item.str).replace(/[vj]/g,c=>c==="v"?"u":"i");
+   const tokens=[...normal.matchAll(/[a-z]+/g)];
+   for(const word of tokens)if(word[0]===target||(stem.length>=5&&word[0].startsWith(stem))){
+    matches.push({item,start:word.index,end:word.index+word[0].length});
+   }
+  }
+  if(!matches.length){pdfOverlay.hidden=true;facsimile.hidden=false;
+   pdfEvidence.textContent=words.items.some(x=>x.str?.trim())?"El texto digital del PDF no contiene «"+q+"» en esta página. Verificá la forma buscada en el OCR adjunto.":"Este PDF es una imagen sin capa textual posicionada. El OCR amarillo aparece debajo del facsímil; no se inventan coordenadas sobre el impreso.";
+   return;
+  }
+  const base=page.getViewport({scale:1});const width=Math.max(220,panel.clientWidth-30);
+  const viewport=page.getViewport({scale:width/base.width*pdfZoom/100});const ratio=Math.min(window.devicePixelRatio||1,2);
+  pdfCanvas.width=Math.ceil(viewport.width*ratio);pdfCanvas.height=Math.ceil(viewport.height*ratio);
+  pdfCanvas.style.width=viewport.width+"px";pdfCanvas.style.height=viewport.height+"px";
+  pdfMarks.style.width=viewport.width+"px";pdfMarks.style.height=viewport.height+"px";pdfMarks.replaceChildren();
+  const context=pdfCanvas.getContext("2d");await page.render({canvasContext:context,viewport,transform:[ratio,0,0,ratio,0,0]}).promise;if(my!==pdfRenderSerial)return;
+  for(const match of matches){
+   const item=match.item,t=lib.Util.transform(viewport.transform,item.transform);
+   const height=Math.max(7,Math.abs((item.height||0)*viewport.scale)||Math.hypot(t[2],t[3]));
+   const extent=Math.max(1,item.width*viewport.scale),length=Math.max(1,item.str.length);
+   const rect=document.createElement("span");rect.className="script-triple-pdf-highlight";
+   rect.style.left=t[4]+extent*match.start/length+"px";
+   rect.style.top=t[5]-height+"px";
+   rect.style.width=extent*(match.end-match.start)/length+"px";
+   rect.style.height=height+"px";
+   rect.title="Coincidencia localizable en la capa textual del PDF";
+   pdfMarks.append(rect);
+  }
+  pdfStatus.textContent=matches.length+" marca(s) amarillas localizadas en la capa de texto PDF (coordenadas aproximadas de caracteres).";
+  pdfEvidence.textContent="Resaltado visual calculado desde la capa PDF. Comprobar la correspondencia con la letra impresa: no constituye una lectura ecdótica.";
+  pdfOverlay.hidden=false;facsimile.hidden=true;
+ }catch(error){
+  if(my!==pdfRenderSerial)return;
+  pdfOverlay.hidden=true;facsimile.hidden=false;pdfEvidence.hidden=false;
+  pdfEvidence.textContent="No se pudo examinar la capa textual del PDF ("+(error.message||"restricción de acceso")+"). El facsímil permanece disponible y la coincidencia OCR se muestra debajo.";
+ }
+}
+searchInPdf.addEventListener("click",()=>{if(view!=="pdf")setView("pdf");void renderPdfHighlight();});
 const ruler=document.createElement("div");ruler.className="script-triple-ruler";ruler.hidden=true;ruler.setAttribute("aria-hidden","true");
 const surface=document.createElement("div");surface.className="script-triple-reading-surface";body.before(surface);surface.append(body,ruler);
 palette.addEventListener("change",()=>{panel.dataset.palette=palette.value});
@@ -457,11 +535,11 @@ function underlineTerm(){
  let referenceUI=null;
  const pageFor=item=>data?.ed.format==="ocr"?item.page:translated?(item.translationPage||null):(item.latinPage||null);
  function setView(next){
-  view=next;body.hidden=next==="pdf";facsimile.hidden=next!=="pdf";
+  view=next;body.hidden=next==="pdf";facsimile.hidden=next!=="pdf";pdfOverlay.hidden=true;pdfEvidence.hidden=next!=="pdf";if(next!=="pdf")++pdfRenderSerial;
  ocrCompanion.hidden=next!=="pdf"||data?.ed.format!=="ocr";
   showText.setAttribute("aria-pressed",String(next==="text"));
   showFacsimile.setAttribute("aria-pressed",String(next==="pdf"));
-  if(next==="pdf")updatePdf();savePosition();
+  if(next==="pdf"){updatePdf();if(highlightTerm)void renderPdfHighlight()}savePosition();
  }
  function updatePdf(){
   if(!data||view!=="pdf")return;
@@ -469,7 +547,7 @@ function underlineTerm(){
   const page=Number(pageFor(item))||null;
   const source=new URL(data.ed.pdf,location.href).href;
   const url=source+"#"+(page?"page="+page+"&":"")+"zoom="+pdfZoom;
-  if(facsimile.dataset.currentPdf!==url){facsimile.src=url;facsimile.dataset.currentPdf=url;}
+  if(facsimile.dataset.currentPdf!==url){facsimile.src=url;facsimile.dataset.currentPdf=url;pdfOverlay.hidden=true;facsimile.hidden=false;if(highlightTerm)void renderPdfHighlight();}
  }
  showText.addEventListener("click",()=>setView("text"));
  showFacsimile.addEventListener("click",()=>setView("pdf"));
@@ -515,6 +593,7 @@ function underlineTerm(){
    if(r){body.innerHTML=esc(item.text.slice(0,r.a))+'<mark class="st-pasaje" title="Tramo que el cotejo atribuye al locus · '+esc(gradoConcordancia(resalte.score).texto)+'">'+esc(item.text.slice(r.a,r.b))+'</mark>'+esc(item.text.slice(r.b));marca=body.querySelector(".st-pasaje")}
   }
   underlineTerm();
+  if(view==="pdf"&&highlightTerm)void renderPdfHighlight();
   message.textContent=(data.ed.format==="ocr"?"Página digital ":"Locus ")+item.locus+" · "+(index+1)+" / "+data.pages.length+
    (data.ed.format==="ocr"?" · OCR no corregido"+(resalte?.index===index&&resalte.pageEnd?" · pasaje candidato continúa hasta página digital "+resalte.pageEnd:""):" · Edición indexada por loci"+(pageFor(item)?" · página digital "+pageFor(item):" · sin página PDF vinculada a este texto"));
   showFacsimile.textContent=pageFor(item)?"Ver esta página en PDF":"Ver PDF completo";
