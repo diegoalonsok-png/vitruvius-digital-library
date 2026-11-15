@@ -41,9 +41,19 @@ for(const [id,targets] of Object.entries(map)){
  if(!pdfIds.has(id))issues.push("Vínculo R2 sin PDF catalogado: "+id);
  for(const target of targets)if(!works.has(target))critical.push("Vínculo a ficha inexistente: "+id+" → "+target);
 }
-const unlinked=pdf.filter(x=>!Object.hasOwn(map,x.id)&&!works.has(x.id)).map(x=>x.id);
 const newWorks=links.obrasNuevas||[];
-if(newWorks.some(x=>works.has(x.r2)))critical.push("Obra adicional duplicada en repertorio principal");
+const additionalIds=ids(newWorks,x=>x.r2,"Obra adicional");
+for(const row of newWorks){
+ if(works.has(row.r2))critical.push("Obra adicional duplicada en repertorio principal: "+row.r2);
+ if(!pdfIds.has(row.r2))critical.push("Obra adicional sin edición R2: "+row.r2);
+ if(!row.autor||!row.obra||!row.lengua)critical.push("Obra adicional sin ficha bibliográfica mínima: "+row.r2);
+}
+// Una clave mapa presente pero vacía NO equivale a un vínculo de obra.
+// Las obras adicionales (Palladio, Alberti, etc.) no son ediciones huérfanas.
+const unlinked=pdf.filter(x=>{
+ const mapped=map[x.id];
+ return !(Array.isArray(mapped)&&mapped.length)&&!works.has(x.id)&&!additionalIds.has(x.id);
+}).map(x=>x.id);
 if(semantic.obras!==pdf.length)issues.push("Índice facsimilar declara "+semantic.obras+" obras frente a "+pdf.length+" registros PDF; identificar la diferencia en fragmentos.json");
 if(orphans.length)issues.push(orphans.length+" transcripciones locales sin indexar");
 if(unlinked.length)issues.push(unlinked.length+" ediciones R2 con vínculo pendiente");
@@ -55,6 +65,7 @@ const summary={masterWorks:cat.length,additionalWorks:newWorks.length,totalWorks
  textVersions:reg.length,localTextFiles:indexedLocalFiles.size,remoteTextFilesDeclared:indexedRemoteFiles.size,
  indexedWorks:indexedWorks.size,indexedOriginalWorks:indexedOriginals.size,
  worksWithoutAnyText:missing.length,worksWithoutOriginal:missingOriginal.length,uncataloguedLocalTexts:orphans.length,
+ r2AdditionalEditionRecords:additionalIds.size,r2PendingEditionRecords:unlinked.length,
  unlinkedR2Editions:unlinked.length,candidateEditionsNotInR2:pending.length,
  externalMetadataPending:quality.totals.externalMetadataPending,liveR2ObjectCheck:false};
 const result={schema:"vdl-bibliotheca-federated-status-v1",generated:new Date().toISOString(),
