@@ -127,6 +127,9 @@ function showWorks(root,works,valid){
   'Notices récupérées : '+works.length+'. Classées par date qualifiée (conception, ouverture ou publication) ; notices non datées en dernier. Catalogue non exhaustif.')));
  const stack=el('div','web-dossier-stack cultural-work-stack');root.append(stack);
  const cards=new Map();let expanded=true;
+ // First architectural drawing is expanded for the earliest documented
+ // building, not for an unrelated painting or book in the same catalogue.
+ let architecturalPreviewUsed=false;
  const limit=works.length;
  for(const work of works){
   let item;
@@ -142,7 +145,8 @@ function showWorks(root,works,valid){
      ' · '+L('sin referencia de origen en el dato','no cited source in this claim','sans source citée dans la déclaration'))));
    if(work.notable)item.append(el('span','cultural-notable',L('Obra destacada','Notable work','Œuvre notable')));
    item.append(link('Wikidata ↗','https://www.wikidata.org/wiki/'+work.id));stack.append(item);
-   window.VitruviaArchitectVisuals?.enhance(item,{...work,previewDrawings:cards.size===0});
+   window.VitruviaArchitectVisuals?.enhance(item,{...work,previewDrawings:!architecturalPreviewUsed});
+   architecturalPreviewUsed=true;
   }else{
    item=el('article','web-dossier-card cultural-work');const body=el('div','web-dossier-card-body');
    body.append(link(work.title+' ↗',work.href));
