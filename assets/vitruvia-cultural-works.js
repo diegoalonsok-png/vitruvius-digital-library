@@ -187,7 +187,20 @@ function showWorks(root,works,valid){
    if(!groupWorks?.length)continue;
    const section=el('section','cultural-medium-group');
    section.append(el('h5','context-section-title',labels[key]+' · '+groupWorks.length));
-   for(const work of groupWorks)section.append(cards.get(work.id));
+   // Progressive reveal: show a documented chronological (or prominence)
+   // first set, then expand on demand. Offscreen covers stay lazy-loaded.
+   let visible=0;
+   const batch=8;
+   const reveal=()=>{
+    const end=Math.min(groupWorks.length,visible+batch);
+    for(;visible<end;visible++)section.append(cards.get(groupWorks[visible].id));
+    if(more){more.hidden=visible>=groupWorks.length;
+     more.textContent=L('Mostrar más obras','Show more works','Afficher plus d’œuvres')+' · '+(groupWorks.length-visible);}
+   };
+   const more=groupWorks.length>batch?el('button','cultural-show-more'):null;
+   if(more){more.type='button';more.addEventListener('click',reveal)}
+   reveal();
+   if(more)section.append(more);
    stack.append(section);
   }
  }
