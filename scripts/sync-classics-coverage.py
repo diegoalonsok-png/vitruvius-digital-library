@@ -94,6 +94,9 @@ def main():
     for row in audit["works"]:
         work_id = row["id"]
         row["catalogueStatus"] = by_id[work_id]["publicStatus"]
+        row["title"] = by_id[work_id]["title"]
+        row["author"] = by_id[work_id]["author"]
+        row["originalLanguage"] = by_id[work_id]["language"]
         row["indexedTextLanguages"] = sorted(indexed.get(work_id, set()))
         row["indexedTextFiles"] = sorted({e["path"] for e in registry["entries"] if e["workId"] == work_id})
         row["manuscriptRecords"] = sum(work_id in r.get("workIds", []) for r in witnesses)
