@@ -67,6 +67,22 @@ function mount(root,queryInput){
   finally{if(id===current)go.disabled=false}
  }
  form.addEventListener("submit",run);
+ const globalForm=document.getElementById("search-form");
+ const globalInput=document.getElementById("classic-query")||document.getElementById("query");
+ if(globalForm&&globalInput){
+  globalForm.addEventListener("submit",()=>{
+   const value=globalInput.value.trim();
+   if(fold(value).length<2)return;
+   input.value=value;
+   void run();
+  });
+ }
+ const advancedForm=document.getElementById("bws-query")?.closest("form");
+ if(advancedForm)advancedForm.addEventListener("submit",()=>{
+  const value=document.getElementById("bws-query").value.trim();
+  if(fold(value).length<2)return;
+  input.value=value;void run();
+ });
  const main=document.querySelector("body");
  if(main?.classList.contains("vitruvia")){} // no dependencies on theme
  const params=new URLSearchParams(location.search);
