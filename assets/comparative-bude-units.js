@@ -54,13 +54,24 @@ async function render(query){
   }
  }
  if(ext.children.length===1)ext.append(E("p","Sin entradas selectivas para este locus."));
- const verified=section("Apparatus selectivus · cotejos documentales V514/V554");
+ const verified=section("Apparatus criticus selectivus · forma Budé, testimonios y ediciones");
+ verified.append(E("p","Convención: ‖ locus lectio recepta + sigla : varia lectio + sigla ‖. H = codex Harleianus; Kr. = Krohn; Rose = Rose; Kur. = ediciones Kurilo. «sec. Kur.» indica atribución editorial y «ex imagine» lectura directa de la fotografía. Las demás entradas conservan su carácter documental.","bude-note"));
  const selected=data.curated.entries.filter(x=>x.locus===locus);
  for(const e of selected){
   const sourceRefs=(e.sources||[]).join(" · ");
-  item(verified,"Kur. : "+e.lemma+" ] "+e.reading+" "+e.siglum,
-       e.note,"H, f. "+e.folio+" · "+e.status+" · registros: "+sourceRefs,
-       hViewerLink(e.folio,locus));
+  if(e.criticalUnit){
+   const u=E("div",null,"bude-unit");
+   const heading=E("div",e.criticalUnit.display,"bude-critical-line");
+   heading.lang="la";u.append(heading);
+   u.append(E("small","Apparatus positivus selectivus · "+e.criticalUnit.caution));
+   u.append(E("div",e.note,"bude-note"));
+   u.append(A("Examinar H f. "+e.folio+" en el visor",hViewerLink(e.folio,locus)));
+   verified.append(u);
+  }else{
+   item(verified,"Kur. · cotejo documental: "+e.lemma+" ] "+e.reading+" "+e.siglum,
+        e.note,"H, f. "+e.folio+" · "+e.status+" · registros: "+sourceRefs,
+        hViewerLink(e.folio,locus));
+  }
   const provenance=E("p",null,"bude-note");provenance.append("Fuentes editoriales: ");
   const sourceRows=(e.sources||[]).map(id=>data.appendix.entradas.find(row=>row.id===id)).filter(Boolean);
   if(sourceRows.length){
@@ -77,7 +88,7 @@ async function render(query){
   if(e.comparison){
    const compar=E("div",null,"bude-grid");
    const texts=[["Kur. V514 · latín",e.comparison.kurilo_latin],
-    ["H f. "+e.folio+" · borrador semidiplomático",e.comparison.h_transcription],
+    ["H f. "+e.folio+(e.visualEvidence?" · cotejo visual":" · atribución editorial pendiente"),e.comparison.h_transcription],
     ["Rose 1899 · OCR de aparato (p. "+e.comparison.rose_page+")",e.comparison.rose_apparatus_ocr],
     ["Kr. 1912 · OCR de aparato (p. "+e.comparison.krohn_page+")",e.comparison.krohn_apparatus_ocr]];
    for(const [title,body] of texts)compar.append(card(title,body,"la"));
