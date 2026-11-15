@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "generated": "2026-11-14",
+  "generated": "2026-11-15",
   "scope": "Integridad del índice y trazabilidad editorial; no certifica cotejo filológico, calidad de traducción ni disponibilidad de servidores externos.",
   "sourceFingerprint": "4674319ac6bb0a4acb1aaf12d44cca9dab41786e96b9cefe6f2df398d5469654",
   "sourceFingerprintMethod": "SHA-256 de JSON.stringify([recensio-es, recensio-fr, theory-en]); sin dependencia de espacios o saltos de línea.",
@@ -801,8 +801,8 @@
   "catalogue": {
     "records": 271,
     "declaredLocalReadings": 184,
-    "declaredCompleteLocalReadings": 32,
-    "declaredPartialLocalReadings": 152,
+    "declaredCompleteLocalReadings": 31,
+    "declaredPartialLocalReadings": 153,
     "withLocalTranslation": 53,
     "withExplicitEditionCitation": 22,
     "caveat": "El estado público de lectura es un dato de catálogo; no equivale a verificar el texto completo contra una edición crítica."
