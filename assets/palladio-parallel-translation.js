@@ -31,7 +31,7 @@ function update(f){
  $("palladio-origen-transcripcion").textContent=getDraft(imageNumber)?"Borrador local introducido por el lector para la imagen "+imageNumber+". No verificado contra la edición impresa.":"Sin transcripción italiana verificada vinculada a esta imagen. No se reutiliza OCR de otra edición.";
  resetTranslation();
  const frame=host.querySelector('iframe[data-src]');
- if(frame&&!frame.src)frame.src=frame.dataset.src;
+ if(frame&&!frame.getAttribute("src"))frame.src=frame.dataset.src;
 }
 async function translate(){
  const text=$("palladio-italiano").value.trim(),target=$("palladio-idioma-traduccion").value;
