@@ -177,7 +177,7 @@ async function runTranslation(source,lang,key){
 }
 $('parallel-translate').onclick=()=>{automatic=true;sequence++;machineKey='';$('parallel-reading').value='automatic';updateURL();render();};
 $('parallel-stop').onclick=()=>{automatic=false;sequence++;machineKey='';output.removeAttribute('aria-busy');render();};
-for(const name of ['parallel-reading','parallel-language'])$(name).onchange=()=>{sequence++;machineKey='';updateURL();render();};
+for(const name of ['parallel-reading','parallel-language'])$(name).onchange=()=>{if($('parallel-reading').value==='krohn')$('parallel-language').value='la';sequence++;machineKey='';updateURL();render();};
 $('compare-edition').onchange=()=>{const u=new URL(location.href);u.searchParams.set('edition',$('compare-edition').value);u.searchParams.delete('image');if(!focusLocus)u.searchParams.delete('locus');else u.searchParams.set('locus',focusLocus);location.href=u.href;};
 document.addEventListener('vdl:edition-text',event=>{
  const d=event.detail;if(d?.edition!==edition||!Number.isInteger(d.image))return;
