@@ -71,6 +71,22 @@ a{color:var(--tinta)}
 .visor-aviso{padding:9px 18px 13px;margin:0;color:var(--gris);font:12px/1.55 Arial,Helvetica,sans-serif}
 @media(max-width:760px){.visor-edicion-cabecera{flex-direction:column;align-items:flex-start}.visor-edicion iframe{height:65vh;min-height:470px}}
 
+
+.palladio-doble-lectura{margin-top:22px;padding:17px;background:#f5f1e8;border:1px solid var(--borde);border-radius:8px}
+.palladio-doble-lectura[hidden]{display:none!important}
+.palladio-doble-lectura>h2{font:400 23px/1.3 Georgia,serif;margin:0 0 8px}
+.doble-visores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:12px 0}
+.doble-panel{background:#fff;border:1px solid var(--borde);border-radius:7px;padding:14px;min-width:0;display:flex;flex-direction:column;gap:9px}
+.doble-panel h3{font:400 19px/1.3 Georgia,serif;margin:0}
+.doble-panel iframe{width:100%;height:365px;border:1px solid #ccc;background:#eee}
+.doble-panel textarea{display:block;width:100%;min-height:162px;resize:vertical;cursor:text;padding:11px;font:15px/1.6 Georgia,serif;color:var(--tinta);border:1px solid #b9b6ae}
+.doble-field{font:600 12px/1.5 Arial,Helvetica,sans-serif;color:var(--tinta);text-transform:none;letter-spacing:0}
+.doble-resultado{min-height:126px;max-height:290px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:11px;border:1px solid #d6cec0;border-radius:5px;background:#fcfbf8;font:16px/1.65 Georgia,serif}
+.doble-aviso{font:12px/1.6 Arial,Helvetica,sans-serif;color:#536273;margin:0}
+.doble-actions{display:flex;align-items:center;flex-wrap:wrap;gap:7px}.doble-actions button{min-height:37px}
+.doble-panel #palladio-traductor-externo[hidden]{display:none}
+@media(max-width:750px){.doble-visores{grid-template-columns:1fr}.doble-panel iframe{height:380px}}
+
 footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:12px/1.6 Arial,Helvetica,sans-serif;color:var(--gris)}
 </style>
 <script defer src="assets/academic-image-ruler.js?v=20261113-1"></script></head>
@@ -123,6 +139,34 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
     <div class="marcas" id="marcas"></div>
    </div>
    <p id="estado">Cargando el índice de folios…</p>
+   <section class="palladio-doble-lectura" id="palladio-doble-lectura" aria-labelledby="palladio-doble-titulo" hidden>
+    <h2 id="palladio-doble-titulo">Lecturas y traducciones de Palladio</h2>
+    <p class="doble-aviso" id="palladio-doble-contexto" role="status" aria-live="polite">Correspondencia por imagen pendiente de cotejo.</p>
+    <div class="doble-visores">
+     <article class="doble-panel">
+      <h3>01 · Inglés histórico · Isaac Ware, 1738</h3>
+      <p class="doble-aviso">Edición inglesa completa (cuatro libros). Consulta independiente: <strong>la página no está sincronizada</strong> con el folio italiano de 1570.</p>
+      <iframe title="Palladio en inglés, traducción histórica de Isaac Ware (1738)" data-src="https://archive.org/embed/gri_33125011569684/page/n1/mode/1up" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <p class="doble-aviso"><a href="https://archive.org/details/gri_33125011569684" target="_blank" rel="noopener noreferrer">Abrir la edición inglesa original</a> · Getty Research Institute / Internet Archive</p>
+     </article>
+     <article class="doble-panel">
+      <h3>02 · Traducción automática del italiano</h3>
+      <p class="doble-aviso">Se traduce <strong>únicamente el texto italiano introducido o cotejado</strong>. La biblioteca conserva otro OCR de una edición de 1581, que no se presenta como transcripción del folio de 1570.</p>
+      <label class="doble-field" for="palladio-italiano">Transcripción italiana de esta imagen (editable)</label>
+      <textarea id="palladio-italiano" lang="it" spellcheck="false" rows="7" placeholder="Todavía no hay una transcripción verificada para esta imagen. Podés escribir o pegar el italiano del facsímil."></textarea>
+      <div class="doble-actions">
+       <label for="palladio-idioma-traduccion">Traducir a <select id="palladio-idioma-traduccion"><option value="es">Español</option><option value="en">Inglés</option><option value="fr">Francés</option></select></label>
+       <button id="palladio-traducir" type="button">Traducir texto</button>
+       <button id="palladio-limpiar" type="button">Limpiar</button>
+      </div>
+      <p class="doble-aviso" id="palladio-origen-transcripcion">Sin transcripción italiana verificada y vinculada a esta imagen.</p>
+      <div class="doble-resultado" id="palladio-resultado-traduccion" lang="es" role="status" aria-live="polite">La traducción aparecerá aquí cuando haya texto italiano y un traductor disponible.</div>
+      <p class="doble-aviso" id="palladio-estado-traduccion"></p>
+      <a id="palladio-traductor-externo" href="https://translate.google.com/" target="_blank" rel="noopener noreferrer" hidden>Abrir traducción externa con el texto introducido</a>
+     </article>
+    </div>
+    <p class="doble-aviso">Protocolo: la imagen digital no constituye por sí sola una transcripción; traducción histórica, OCR, transcripción y traducción automática son recursos distintos. No se atribuye una correspondencia entre ediciones sin cotejo.</p>
+   </section>
   </div>
 
   <aside>
@@ -230,6 +274,7 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
 <script defer src="assets/vitruvia-philology.js?v=20261113-obras"></script>
 <script defer src="assets/r2-clasicos-busqueda.js?v=20261113-obras"></script>
+<script defer src="assets/palladio-parallel-translation.js?v=20261115-parallel-v1"></script>
 <script defer src="assets/obras-notables-visor.js?v=20261113-creditos-procedencia-v10"></script>
 </body>
 </html>
