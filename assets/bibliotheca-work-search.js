@@ -92,7 +92,7 @@ function render(){
   const genre=model.genreFilter.value,century=model.centuryFilter.value,language=model.languageFilter.value,letter=model.letter;
   const group=ancientGenre(w.genre);
   const key=norm(model.sortFilter.value==="title"?w.title:w.author).trim();
-  return (!author||fold(w.author).includes(author))&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
+  return (!author||[w.author,...w.forms].some(x=>fold(x).includes(author)))&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
  });
  list.replaceChildren();more.hidden=true;
  if(!q){
@@ -146,9 +146,9 @@ function render(){
  if(found.length>limit){more.hidden=false;more.textContent="Mostrar más ("+(found.length-limit)+" restantes)"}
 }
 function mount(parent,data){
- if(model||!parent||!Array.isArray(data?.road?.items)||!Array.isArray(data?.registry?.entries))return;
+ if(model||!parent||!Array.isArray(data?.catalog?.works)||!Array.isArray(data?.registry?.entries))return;
  const index=new Map();
- for(const w of data.road.items)index.set(w.id,{
+ for(const w of data.catalog.works)index.set(w.id,{
   id:w.id,title:w.title,author:w.author,genre:w.genre||"",dating:w.dating||"",forms:[w.title,w.id.replaceAll("-"," ")],
   versions:[],facsimile:null,newWork:false
  });
@@ -259,4 +259,19 @@ function addFacsimiles(v,cat){
  render();
 }
 window.BibliothecaWorkSearch={mount,addFacsimiles};
+async function bootstrap(){
+ const parent=document.querySelector(".searcharea");
+ if(!parent||document.getElementById("bibliotheca-work-search"))return;
+ try{
+  const [catalogRes,registryRes]=await Promise.all([
+   fetch("data/bibliotheca-graeca-latina-I-bce-I-ce.json"),
+   fetch("data/classics-corpus/search-registry.json")
+  ]);
+  if(!catalogRes.ok||!registryRes.ok)throw Error("Catalog or registry unavailable");
+  const [catalog,registry]=await Promise.all([catalogRes.json(),registryRes.json()]);
+  mount(parent,{catalog,registry});
+ }catch(error){console.warn("Catálogo alfabético no disponible:",error);}
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",bootstrap,{once:true});
+else bootstrap();
 })();
