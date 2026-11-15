@@ -50,10 +50,20 @@ const note=el("p","cl-translation-meta","La traducción es automática y orienta
 translation.append(translationHeading,controls,label,output,note);
 root.append(original,separator,translation);
 const layout=el("div","cl-edition-layout");
-const orderButton=el("button",null,"Disposición Budé");orderButton.type="button";orderButton.setAttribute("aria-pressed","true");
+const orderButton=el("button",null,"⇄ Intercambiar columnas");orderButton.type="button";orderButton.setAttribute("aria-pressed","false");
+orderButton.setAttribute("aria-label","Cambiar de lugar el latín o griego y la traducción");
+orderButton.title="Mover el texto original a la derecha o devolverlo a la izquierda sin cambiar el locus.";
 const published=el("a",null,"Traducciones publicadas ↗");published.href="classics-parallel-reader.html?work="+encodeURIComponent(work);
-layout.append(orderButton,published);article.append(layout,root);root.classList.add("translation-first");
-orderButton.addEventListener("click",()=>{const active=root.classList.toggle("translation-first");orderButton.setAttribute("aria-pressed",String(active));setWidth(width)});
+layout.append(orderButton,published);article.append(layout,root);
+// Conventional arrangement: source (Latin or Greek) left, translation right.
+root.classList.remove("translation-first");
+orderButton.addEventListener("click",()=>{
+ const reversed=root.classList.toggle("translation-first");
+ orderButton.setAttribute("aria-pressed",String(reversed));
+ orderButton.textContent=reversed?"⇄ Original a la izquierda":"⇄ Intercambiar columnas";
+ orderButton.setAttribute("aria-label",reversed?"Mover el texto original a la izquierda":"Mover el texto original a la derecha");
+ setWidth(width);
+});
 const modeRow=el("label","cl-pane-options","Lectura enfrentada "),mode=el("select");mode.setAttribute("aria-label","Contenido de la lectura enfrentada");
 for(const [value,name] of [["translation","Traducción automática"],["pdf","PDF de lectura enfrentada"]]){const o=el("option",null,name);o.value=value;mode.append(o)}
 modeRow.append(mode);translationHeading.after(modeRow);
