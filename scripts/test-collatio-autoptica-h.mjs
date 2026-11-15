@@ -31,7 +31,7 @@ for(const e of d.entries){
  assert.ok(e.facsimileUrl.endsWith(e.folio));
  assert.ok(e.inspectionMethod.includes("digital"));
  assert.ok(e.editorialIntervention.includes("conservar"));
- if(e.rose)assert.ok(e.rose.kind.includes("no"));
+ if(e.rose)assert.ok(/no |pendiente/i.test(e.rose.kind));
  if(e.krohn)assert.ok(e.krohn.kind.includes("OCR"));
 }
 const viewer=read("assets/collatio-autoptica.js"),dossier=read("assets/dossier-ecdotico.js"),html=read("collatio-autoptica.html"),map=read("cobertura-aparato-critico.html");
