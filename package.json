@@ -44,7 +44,9 @@
     "check:collatio-autoptica": "node scripts/test-collatio-autoptica-h.mjs",
     "audit:bibliotheca-r2": "node scripts/audit-bibliotheca-r2-sync.mjs --remote",
     "check:r2-outages": "node scripts/test-r2-search-failures.mjs",
-    "check:public-bibliotheca": "node scripts/smoke-bibliotheca-public.mjs"
+    "check:public-bibliotheca": "node scripts/smoke-bibliotheca-public.mjs",
+    "check:study-actions": "node scripts/test-classics-study-actions.mjs",
+    "check:public-downloads": "node scripts/test-classics-public-downloads.mjs"
   },
   "devDependencies": {
     "jsdom": "^31.0.0"
