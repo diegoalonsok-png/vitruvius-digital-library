@@ -75,6 +75,31 @@ def main():
    "status":"read_from_R2"}
   result["counts"].update(indexedEditionsManifest=len(ids),
       editionsNotInRemoteIndex=len(catalogIds-ids),indexEntriesWithoutCatalogue=len(ids-catalogIds))
+  # Los registros sobrantes del índice son candidatos a reconciliar, no
+  # incorporaciones automáticas: falta acreditar portada, edición y procedencia.
+  extras={e.get("id"):e for e in index.get("obras",[]) if e.get("id") in ids-catalogIds}
+  orphanProbes=[]
+  for orphan_id,record in sorted(extras.items()):
+   pdf_url=record.get("pdf","")
+   parsed=urllib.parse.urlparse(pdf_url)
+   pdf_key=parsed.path.lstrip("/") if parsed.scheme=="https" and parsed.hostname==HOST else "clasicos/pdf/"+orphan_id+".pdf"
+   text_key="clasicos/texto/"+orphan_id+".json"
+   checks={}
+   for role,key in (("pdf",pdf_key),("ocr",text_key)):
+    try:
+     metadata=client.head_object(Bucket=BUCKET,Key=key)
+     checks[role]={"status":"exists","bytes":metadata["ContentLength"],"key":key}
+    except Exception as exc:
+     code=getattr(exc,"response",{}).get("Error",{}).get("Code","unknown")
+     checks[role]={"status":"absent" if str(code) in ("404","NoSuchKey","NotFound") else "unverified_error",
+                   "errorCode":str(code),"key":key}
+   orphanProbes.append({"id":orphan_id,"indexedTitle":record.get("obra"),
+                        "indexedAuthor":record.get("autor"),"yearClaim":record.get("anio"),
+                        "checks":checks,"catalogueStatus":"identity_pending_not_added"})
+  result["indexManifest"]["orphanIndexEntries"]=orphanProbes
+  result["counts"]["orphanIndexEntriesWithPdfAndOcr"]=sum(
+    all(e["checks"][k]["status"]=="exists" for k in ("pdf","ocr")) for e in orphanProbes)
+
  except Exception as exc:
   result["indexManifest"]={"status":"not_verified","error":str(exc)[:300]}
   result["counts"]["indexManifestVerified"]=False
