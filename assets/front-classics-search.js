@@ -91,6 +91,16 @@ function init(){
    else li.append(mk("strong","Referencia sin enlace verificable"));
    li.append(mk("p",["Texto original: "+(x.language==="grc"?"griego":"latín"),x.edition?"Edición: "+x.edition:"",x.term?"Forma: "+x.term:"",x.source?"Fuente: "+x.source:""].filter(Boolean).join(" · "),"front-classics-meta"));
    if(x.excerpt)li.append(mk("p",x.excerpt,"front-classics-excerpt"));
+   const research=new URL("vitruvia-lexicon.html",location.href);
+   const term=query.value.trim()||x.term||"";
+   research.searchParams.set("q",term);
+   research.searchParams.set("mode",term.split(/\\s+/).length>1?"frase":"palabra");
+   if(["la","grc"].includes(x.language))research.searchParams.set("lang",x.language);
+   if(x.workId)research.searchParams.set("work",x.workId);
+   if(x.locus)research.searchParams.set("locus",x.locus);
+   const study=mk("a",term.split(/\\s+/).length>1?"Analizar frase en Lexicon":"Estudiar término en Lexicon");
+   study.href=research.href;study.title="Consultar lemas, análisis y concordancias disponibles";
+   li.append(study);
    result.append(li);
   }
   count+=next.length;more.hidden=count>=items.length;
