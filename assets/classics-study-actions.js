@@ -75,7 +75,7 @@ action("Analizar palabra",()=>{
  const selection=clean(window.getSelection()?.toString());
  const input=isSimple?document.getElementById("word-query"):document.getElementById("term");
  const term=(selection.split(/\s+/)[0]||input?.value||"").slice(0,80);
- if(!term){status.textContent="Seleccioná una palabra del texto o escribila en el buscador.";return}
+ if(!term){status.textContent="Selecciona una palabra del texto o escribila en el buscador.";return}
  const u=new URL("vitruvia-lexicon.html",location.href);
  u.searchParams.set("q",term);u.searchParams.set("mode","palabra");location.assign(u.href);
 });
