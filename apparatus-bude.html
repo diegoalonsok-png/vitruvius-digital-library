@@ -54,7 +54,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 .ab-compare article{background:var(--ab-paper);border:1px solid var(--ab-rule);padding:16px;min-width:0}
 .ab-compare-appearance{display:flex;gap:10px;align-items:end;flex-wrap:wrap;border:1px solid var(--ab-rule);padding:12px;font:12px system-ui;margin:12px 0}.ab-compare-appearance label{display:grid;gap:4px}.ab-compare-appearance button,.ab-compare-appearance select{padding:6px;border:1px solid var(--ab-rule);background:var(--ab-paper);color:var(--ab-ink)}.ab-compare{--compare-font:"Gentium Book Plus",Georgia,serif;--compare-size:19px;--compare-ink:#29251e;--compare-paper:#fffefa}.ab-compare article{background:var(--compare-paper);color:var(--compare-ink)}.ab-compare .ab-text{font-family:var(--compare-font);font-size:var(--compare-size)}.ab-compare h3{font:600 14px system-ui;margin:0 0 8px}
 .ab-compare .ab-text{line-height:1.75;max-height:350px;overflow:auto}
-.ab-compare small{display:block;font:11px/1.5 system-ui;color:var(--ab-muted);margin:8px 0}.ab-krohn-footnote{font:12px/1.6 system-ui;margin:13px 0 6px;padding:9px 11px;border-left:3px solid var(--ab-accent);background:rgba(180,146,85,.09);color:var(--compare-ink,var(--ab-ink))}.ab-krohn-footnote[hidden]{display:none}
+.ab-compare small{display:block;font:11px/1.5 system-ui;color:var(--ab-muted);margin:8px 0}.ab-compare .ab-text{max-height:var(--compare-height,350px)}.ab-compare .ab-latin-match{background:var(--compare-mark,#ffe28a);color:#171717}.ab-compare-appearance .ab-compare-presets{display:inline-flex;align-items:center;gap:5px}.ab-compare-appearance input[type=color]{width:46px;height:36px;min-height:36px;padding:2px;cursor:pointer}.ab-compare-appearance input[type=range]{width:120px}.ab-compare-appearance button{min-height:34px;border-radius:5px;cursor:pointer}.ab-compare-appearance{border-radius:8px;background:var(--ab-paper);align-items:center}.ab-compare article{border-radius:7px}.ab-compare h3{color:var(--compare-ink)}.ab-compare .ab-text:focus-visible{outline:2px solid var(--ab-accent)}.ab-krohn-footnote{font:12px/1.6 system-ui;margin:13px 0 6px;padding:9px 11px;border-left:3px solid var(--ab-accent);background:rgba(180,146,85,.09);color:var(--compare-ink,var(--ab-ink))}.ab-krohn-footnote[hidden]{display:none}
 .ab-entry .lemma{font-style:italic;font-weight:600}
 .ab-entry .divider-lemma{padding:0 .4em;color:var(--ab-accent)}
 .ab-reference{font:12px/1.6 system-ui}
@@ -133,7 +133,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <h2 id="triple-title">Collatio textuum · Rose, Krohn, Kurilo</h2>
 <p id="ab-comparison-highlight-status" role="status" aria-live="polite" class="ab-status"></p>
 <p class="ab-sub">Tres textos latinos sincronizados por <i>locus</i>: Rose 1899 (OCR histórico provisional), Krohn 1912 (transcripción digital independiente de Perseus) y Kurilo V514 (texto estructurado). Para los loci ausentes de Krohn se presenta V514 como suplido editorial explícito. El ruido OCR no es una variante crítica.</p>
-<div class="ab-compare-appearance" role="group" aria-label="Personalizar los tres textos latinos"><label>Letra <select id="ab-compare-font"><option value="gentium">Gentium</option><option value="georgia">Georgia</option><option value="serif">Serif</option><option value="sans">Sin serif</option></select></label><label>Tamaño <input id="ab-compare-size" type="range" min="14" max="27" value="19"></label><label>Color de texto <input id="ab-compare-ink" type="color" value="#29251e"></label><label>Color de papel <input id="ab-compare-paper" type="color" value="#fffefa"></label><button id="ab-compare-reset" type="button">Restablecer</button><span id="ab-index-status" role="status" aria-live="polite"></span></div><div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
+<div class="ab-compare-appearance" role="group" aria-label="Personalizar los tres textos latinos"><label>Letra <select id="ab-compare-font"><option value="gentium">Gentium</option><option value="georgia">Georgia</option><option value="serif">Serif</option><option value="sans">Sin serif</option></select></label><label>Tamaño <input id="ab-compare-size" type="range" min="14" max="27" value="19"></label><label>Color de texto <input id="ab-compare-ink" type="color" value="#29251e"></label><label>Color de papel <input id="ab-compare-paper" type="color" value="#fffefa"></label><label>Resaltado <input id="ab-compare-mark" type="color" value="#ffe28a"></label><label>Altura de lectura <select id="ab-compare-height"><option value="350">Normal</option><option value="600">Amplia</option><option value="0">Sin límite</option></select></label><span class="ab-compare-presets" role="group" aria-label="Paletas de lectura"><button type="button" data-ab-preset="paper">Papel</button><button type="button" data-ab-preset="sepia">Sepia</button><button type="button" data-ab-preset="night">Nocturno</button></span><button id="ab-compare-reset" type="button">Restablecer</button><span id="ab-index-status" role="status" aria-live="polite"></span></div><div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
 <article><h3>Rose · 1899</h3><small id="compare-rose-source">Comprobando transcripción digital…</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><details id="compare-rose-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-rose-changes"></p><div class="ab-text" id="compare-rose-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
 <article><h3>Krohn · 1912</h3><small id="compare-krohn-source">Comprobando transcripción digital…</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><p class="ab-krohn-footnote" id="compare-krohn-footnote" role="note" hidden></p><details id="compare-krohn-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-krohn-changes"></p><div class="ab-text" id="compare-krohn-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
 <article><h3>Kurilo · V514</h3><small>Texto latino de la edición académica V514</small><div class="ab-text" lang="la" id="compare-kurilo"></div><small>Fuente: V514, pasaje estructurado.</small><a id="compare-kurilo-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Lector de Kurilo</a></article>
@@ -383,13 +383,39 @@ $("#copy").addEventListener("click",async()=>{
  const t=$("#edition").value==="rose"?"Vitruvius, De architectura, "+format(current)+", ed. Valentin Rose, Vitruvii De architectura libri decem, Leipzig: Teubner, 1899 (2.ª ed.); facsímil: "+$("#rose-pdf-link").href+". El texto presentado en este lector es OCR provisional, no transcripción revisada.":"Vitruvio, De architectura, "+format(current)+", ed. y trad. Diego A. Kurilo, V514 (2026), DOI: 10.5281/zenodo.23884757; https://vitruvius-digital-library.org/apparatus-bude?locus="+encodeURIComponent(current)+". Aparato histórico: Rose (1899) y Krohn (1912), OCR pendiente de cotejo.";
  try{await navigator.clipboard.writeText(t);set("#status","Referencia copiada; comprobar los datos bibliográficos antes de publicarla.")}catch{window.prompt("Copiar referencia:",t)}
 });
-// Ajustes visuales exclusivamente para los tres visores latinos.
+// Barra de lectura inspirada en Lexicon: controles de los tres visores.
 (()=>{
-const host=document.querySelector(".ab-compare"),font=$("#ab-compare-font"),size=$("#ab-compare-size"),ink=$("#ab-compare-ink"),paper=$("#ab-compare-paper");
+const host=document.querySelector(".ab-compare"),font=$("#ab-compare-font"),size=$("#ab-compare-size"),ink=$("#ab-compare-ink"),paper=$("#ab-compare-paper"),mark=$("#ab-compare-mark"),height=$("#ab-compare-height");
+const key="vdl:apparatus:triple-appearance-v1";
 const families={gentium:'"Gentium Book Plus",Georgia,serif',georgia:'Georgia,serif',serif:'"Times New Roman",serif',sans:'system-ui,sans-serif'};
-const apply=()=>{host.style.setProperty("--compare-font",families[font.value]||families.gentium);host.style.setProperty("--compare-size",size.value+"px");host.style.setProperty("--compare-ink",ink.value);host.style.setProperty("--compare-paper",paper.value)};
-for(const el of [font,size,ink,paper])el.addEventListener("input",apply);
-$("#ab-compare-reset").addEventListener("click",()=>{font.value="gentium";size.value="19";ink.value="#29251e";paper.value="#fffefa";apply()});apply();
+const defaults={font:"gentium",size:"19",ink:"#29251e",paper:"#fffefa",mark:"#ffe28a",height:"350"};
+const presets={paper:{ink:"#29251e",paper:"#fffefa",mark:"#ffe28a"},sepia:{ink:"#3a2c1c",paper:"#efe1c5",mark:"#f4c96a"},night:{ink:"#e5e9ef",paper:"#1d232b",mark:"#e0c268"}};
+const validColor=v=>/^#[a-f0-9]{6}$/i.test(v);
+const apply=()=>{
+ const s=Number(size.value),h=Number(height.value);
+ if(!families[font.value])font.value=defaults.font;
+ if(!Number.isInteger(s)||s<14||s>27)size.value=defaults.size;
+ if(!["0","350","600"].includes(height.value))height.value=defaults.height;
+ for(const [el,k] of [[ink,"ink"],[paper,"paper"],[mark,"mark"]])if(!validColor(el.value))el.value=defaults[k];
+ host.style.setProperty("--compare-font",families[font.value]);
+ host.style.setProperty("--compare-size",size.value+"px");
+ host.style.setProperty("--compare-ink",ink.value);
+ host.style.setProperty("--compare-paper",paper.value);
+ host.style.setProperty("--compare-mark",mark.value);
+ host.style.setProperty("--compare-height",h===0?"none":height.value+"px");
+ try{localStorage.setItem(key,JSON.stringify({font:font.value,size:size.value,ink:ink.value,paper:paper.value,mark:mark.value,height:height.value}))}catch{}
+};
+try{
+ const saved=JSON.parse(localStorage.getItem(key)||"null");
+ if(saved&&typeof saved==="object")for(const [name,el] of Object.entries({font,size,ink,paper,mark,height}))if(typeof saved[name]==="string")el.value=saved[name];
+}catch{}
+for(const el of [font,size,ink,paper,mark,height])el.addEventListener("input",apply);
+document.querySelectorAll("[data-ab-preset]").forEach(button=>button.addEventListener("click",()=>{
+ const colors=presets[button.dataset.abPreset];if(!colors)return;
+ for(const [k,v] of Object.entries(colors))({ink,paper,mark})[k].value=v;apply();
+}));
+$("#ab-compare-reset").addEventListener("click",()=>{for(const [name,el] of Object.entries({font,size,ink,paper,mark,height}))el.value=defaults[name];apply()});
+apply();
 })();
 (async()=>{
  try{const urls=["data/structured/recensio-es.json","data/apparatus/aparato-comparativo.json","data/collation-loci.json"];
