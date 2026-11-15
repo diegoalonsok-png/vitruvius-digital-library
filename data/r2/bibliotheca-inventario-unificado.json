@@ -1,33 +1,199 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-15T03:42:52.481903+00:00",
-  "method": "One work per master catalogue ID; R2 facsimiles are editions, not additional works. Local texts verified by file existence; R2 object URLs declared, not live-verified. Unresolved editions flagged without automatic merging.",
+  "generated": "2026-11-15T03:51:45.488706+00:00",
+  "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 271,
+    "additionalWorks": 10,
+    "totalDeclaredWorks": 281,
     "r2EditionRecords": 117,
-    "r2LinkedEditionRecords": 109,
-    "r2UnlinkedEditionRecords": 16,
+    "r2LinkedEditionRecords": 101,
+    "r2WorkEditionRelations": 109,
+    "r2AdditionalEditionRecords": 10,
+    "r2UnlinkedEditionRecords": 6,
     "worksWithR2Edition": 109,
     "worksWithLocalIndexedText": 182,
     "worksWithDeclaredRemoteIndex": 32
   },
   "unlinkedR2EditionIds": [
-    "alberti-de-re-aedificatoria",
     "apolonio-argonauticas",
-    "beda-de-temporum-ratione",
-    "isidoro-etymologiae",
     "isocrates-discursos",
     "lisias-discursos",
     "longino-sublime",
     "longo-dafnis-es",
-    "palladio-quattro-libri",
-    "petrarca-africa",
-    "petrarca-secretum",
-    "scamozzi-idea-architettura",
-    "serlio-architettura",
-    "teocrito-bucolicos",
-    "vasari-vite",
-    "vignola-cinque-ordini"
+    "teocrito-bucolicos"
+  ],
+  "additionalWorks": [
+    {
+      "id": "palladio-quattro-libri",
+      "author": "Andrea Palladio",
+      "title": "I quattro libri dell'architettura",
+      "language": "it",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "palladio-quattro-libri",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/palladio-quattro-libri.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/palladio-quattro-libri.json",
+          "year": 1581,
+          "sha256": "25a72957e8bbc1948b1e2739387ddaa6d0b604becdfad2f6a6b544d60767becc",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "vignola-cinque-ordini",
+      "author": "Giacomo Barozzi da Vignola",
+      "title": "Regola delli cinque ordini d’architettura",
+      "language": "it",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "vignola-cinque-ordini",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/vignola-cinque-ordini.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/vignola-cinque-ordini.json",
+          "year": 1635,
+          "sha256": "8d322e3003829f0fe2b25feb63e6bede00b4e5ee0547f28e9204c5026540e9e5",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "vasari-vite",
+      "author": "Giorgio Vasari",
+      "title": "Le vite de’ più eccellenti pittori, scultori e architettori",
+      "language": "it",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "vasari-vite",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/vasari-vite.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/vasari-vite.json",
+          "year": 1568,
+          "sha256": "b12800b8df8da07f392f1e2ecf4a6146544469f97d2467a7edbd20d23504c403",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "serlio-architettura",
+      "author": "Sebastiano Serlio",
+      "title": "Tutte l'opere d'architettura",
+      "language": "it",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "serlio-architettura",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/serlio-architettura.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/serlio-architettura.json",
+          "year": 1551,
+          "sha256": "efffcd734fbfe86c9d2659fd28e1b49a211bd9eaebe0efa9c35ebbbd74da452a",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "scamozzi-idea-architettura",
+      "author": "Vincenzo Scamozzi",
+      "title": "L'idea della architettura universale",
+      "language": "it",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "scamozzi-idea-architettura",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/scamozzi-idea-architettura.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/scamozzi-idea-architettura.json",
+          "year": 1714,
+          "sha256": "be72819392020a6e4874ad24d6028a4962611001500a402a6dd25257646d7b93",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "beda-de-temporum-ratione",
+      "author": "Beda el Venerable",
+      "title": "De temporum ratione",
+      "language": "la",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "beda-de-temporum-ratione",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/beda-de-temporum-ratione.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/beda-de-temporum-ratione.json",
+          "year": 1537,
+          "sha256": "803321de2624a5482610f1dd211e08d6b68f590058e0e7f8cfcf7216a117473d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "petrarca-africa",
+      "author": "Francesco Petrarca",
+      "title": "Africa",
+      "language": "la",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "petrarca-africa",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-africa.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/petrarca-africa.json",
+          "year": 1872,
+          "sha256": "db6b450b97e2f5d79476961e9a8d35b1c1a0208a1eb8cc019f457292be908b49",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "petrarca-secretum",
+      "author": "Francesco Petrarca",
+      "title": "Secretum meum",
+      "language": "la",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "petrarca-secretum",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-secretum.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/petrarca-secretum.json",
+          "year": 1649,
+          "sha256": "632668cf61b52ae03d15f39d94b840bce9743c2c1a1787ce9796793f06b30f9d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "isidoro-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae sive Origines",
+      "language": "la",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "isidoro-etymologiae",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/isidoro-etymologiae.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/isidoro-etymologiae.json",
+          "year": 1911,
+          "sha256": "af1a52b27b3b54782a9bce98f39cbc5d39b76301c801dc7f62531d58af017a57",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "alberti-de-re-aedificatoria",
+      "author": "Leon Battista Alberti",
+      "title": "De re aedificatoria",
+      "language": "la",
+      "catalogue": "r2-additional-work",
+      "r2FacsimileEditions": [
+        {
+          "editionId": "alberti-de-re-aedificatoria",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/alberti-de-re-aedificatoria.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/alberti-de-re-aedificatoria.json",
+          "year": 1541,
+          "sha256": "5da311d34b101b954658b7da34733854c7637f3ade2bf315dfeeb0e0a41e7fdb",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    }
   ],
   "works": [
     {

@@ -1,0 +1,2136 @@
+{
+  "schema": "vdl-r2-live-integrity-v1",
+  "generated": "2026-11-15T03:51:47.529575+00:00",
+  "status": "verified_with_findings",
+  "counts": {
+    "editionsInGithubCatalogue": 117,
+    "objectsChecked": 234,
+    "objectsPresent": 234,
+    "objectsMissing": 0,
+    "metadataHashMismatches": 0,
+    "objectsNotVerified": 0,
+    "indexedEditionsManifest": 119,
+    "editionsNotInRemoteIndex": 0,
+    "indexEntriesWithoutCatalogue": 2
+  },
+  "notes": "El listado GitHub no es inventario físico. Objetos R2 examinados con HEAD y manifiesto de índice por GET si hay credenciales.",
+  "objects": [
+    {
+      "id": "antologia-griega",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/antologia-griega.pdf",
+      "bytes": 11993200,
+      "metadataSha256": "a22d8732ac209633cbb3d6d6a8ac7a55ba218bf4e84c37aa4f7fe6027c8477b1",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "antologia-griega",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/antologia-griega.json",
+      "bytes": 474653,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/apollodorus-poliorcetics.pdf",
+      "bytes": 18950660,
+      "metadataSha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/apollodorus-poliorcetics.json",
+      "bytes": 1237122,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "apolonio-argonauticas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/apolonio-argonauticas.pdf",
+      "bytes": 13638205,
+      "metadataSha256": "646c875f7113a337ac27df8c9e4338e4714f081950a245d9906c6ec11c787259",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "apolonio-argonauticas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/apolonio-argonauticas.json",
+      "bytes": 990720,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aquiles-tacio-leucipa",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/aquiles-tacio-leucipa.pdf",
+      "bytes": 23294452,
+      "metadataSha256": "8d8f3de44a594ccc3390e95c21347b9c2bfb8f3743b4533f0d62bcbf3af95196",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aquiles-tacio-leucipa",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/aquiles-tacio-leucipa.json",
+      "bytes": 1056057,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristofanes-comedias",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/aristofanes-comedias.pdf",
+      "bytes": 20003451,
+      "metadataSha256": "9ac919ab8d495657cf74e5edf04f2a927a3b638a9b23d54083fb7c35d1e932bf",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristofanes-comedias",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/aristofanes-comedias.json",
+      "bytes": 821056,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-del-cielo",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/aristoteles-del-cielo.pdf",
+      "bytes": 23101203,
+      "metadataSha256": "a82a02a9745e1638b510370d5348afa9318f631435cf8c388e503fc235665cae",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-del-cielo",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/aristoteles-del-cielo.json",
+      "bytes": 605484,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-historia-animales",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/aristoteles-historia-animales.pdf",
+      "bytes": 35031874,
+      "metadataSha256": "d33b73f26bd482b6db86efc9bbc7ccbce76f2c3230c0b2958d79726a209d8ebd",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-historia-animales",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/aristoteles-historia-animales.json",
+      "bytes": 1242086,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-metafisica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/aristoteles-metafisica.pdf",
+      "bytes": 33659554,
+      "metadataSha256": "181c45920373c2be910752d500c1efe4db63297c5f8213e5f9735d60d58062f6",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-metafisica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/aristoteles-metafisica.json",
+      "bytes": 1532881,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-politica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/aristoteles-politica.pdf",
+      "bytes": 15427000,
+      "metadataSha256": "c53a9dd54be9b7e845e460030f5904408d466f4a22a478f4b8353eea1fad941a",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-politica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/aristoteles-politica.json",
+      "bytes": 718313,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/aristoteles-meteorologica.pdf",
+      "bytes": 26179676,
+      "metadataSha256": "62e10515b65e2bafda70676dc53aa7bbc4024df4f2cc78721dcc2af16cfb58aa",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/aristoteles-meteorologica.json",
+      "bytes": 1074428,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "arquimedes-obras",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/arquimedes-obras.pdf",
+      "bytes": 25032933,
+      "metadataSha256": "146476e580719fa8388194da7ecbbeb8be23170e00960ff4e8d2858e56a82a7e",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "arquimedes-obras",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/arquimedes-obras.json",
+      "bytes": 839555,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/athenaeus-mechanicus.pdf",
+      "bytes": 18950660,
+      "metadataSha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/athenaeus-mechanicus.json",
+      "bytes": 1237118,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "baquilides-poemas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/baquilides-poemas.pdf",
+      "bytes": 21937180,
+      "metadataSha256": "6d17c0a92fc68f7275dd33ef7e998500eb0101262abff10d84d1527139406896",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "baquilides-poemas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/baquilides-poemas.json",
+      "bytes": 1629784,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "biton-kataskeuai",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/biton-kataskeuai.pdf",
+      "bytes": 18950660,
+      "metadataSha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "biton-kataskeuai",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/biton-kataskeuai.json",
+      "bytes": 1237114,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "calimaco-himnos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/calimaco-himnos.pdf",
+      "bytes": 36027087,
+      "metadataSha256": "c4ca30a2bec15144dca1c609fad69331fbe07dd06f8cec5d8979dbc75cd5fe62",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "calimaco-himnos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/calimaco-himnos.json",
+      "bytes": 1311837,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ptolemy-geographia",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/ptolemy-geographia.pdf",
+      "bytes": 49480321,
+      "metadataSha256": "e11aeb07ac9065430ff4f64b3a78a636b16650851929ee76a591aa5147de4758",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ptolemy-geographia",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/ptolemy-geographia.json",
+      "bytes": 902943,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "demostenes-discursos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/demostenes-discursos.pdf",
+      "bytes": 23264926,
+      "metadataSha256": "fc94d52ae41bdb20e1cd10aea514cd68f53ee6612ec8d4cb7a7d4662c48d7118",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "demostenes-discursos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/demostenes-discursos.json",
+      "bytes": 684754,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "diogenes-laercio-vidas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/diogenes-laercio-vidas.pdf",
+      "bytes": 31672153,
+      "metadataSha256": "90989d3226ed85baa54727903e1eb8a6600a6df078073c35cbfef300c23bf564",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "diogenes-laercio-vidas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/diogenes-laercio-vidas.json",
+      "bytes": 1210444,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "epicuro-restos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/epicuro-restos.pdf",
+      "bytes": 86891738,
+      "metadataSha256": "1f832ed7e490d9af52f8d4884a3ba2caaad6cc159854cf5ebb8d34ab7b0fbfe8",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "epicuro-restos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/epicuro-restos.json",
+      "bytes": 1221290,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "esquilo-tragedias",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/esquilo-tragedias.pdf",
+      "bytes": 9457478,
+      "metadataSha256": "375b8d43e963dbd0e980095efa30eb2ba3308eb1b873f32765e11c223d5f7019",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "esquilo-tragedias",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/esquilo-tragedias.json",
+      "bytes": 390293,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "esquines-discursos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/esquines-discursos.pdf",
+      "bytes": 26814830,
+      "metadataSha256": "e049c4f6a544f09f7d374dad35d96b17e14d34b65f5a3c97537cfb428da87401",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "esquines-discursos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/esquines-discursos.json",
+      "bytes": 1222878,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "estrabon-geografia",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/estrabon-geografia.pdf",
+      "bytes": 35082064,
+      "metadataSha256": "f277c1fe29e18cc1c339045cd0fae9662d791e60462a28f34a3b92f622bc17e4",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "estrabon-geografia",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/estrabon-geografia.json",
+      "bytes": 1223279,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "euclides-elementos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/euclides-elementos.pdf",
+      "bytes": 11646228,
+      "metadataSha256": "a20e6c0091936d526ea96962c925b32a07176f5d47deb62677ea1893055e9f6e",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "euclides-elementos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/euclides-elementos.json",
+      "bytes": 191754,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "euripides-tragedias",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/euripides-tragedias.pdf",
+      "bytes": 31864042,
+      "metadataSha256": "01966fc2e98c14ce490f51cc0ea17d52cef1d9115150bffb7836d3b91dcb7c8e",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "euripides-tragedias",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/euripides-tragedias.json",
+      "bytes": 1053513,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "philo-belopoeica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/philo-belopoeica.pdf",
+      "bytes": 18950660,
+      "metadataSha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "philo-belopoeica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/philo-belopoeica.json",
+      "bytes": 1237114,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "filostrato-apolonio",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/filostrato-apolonio.pdf",
+      "bytes": 21906553,
+      "metadataSha256": "6b8e9c07ff6278093c6b1c34345709dec659688d518595e7ebf0b46a07e0fef9",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "filostrato-apolonio",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/filostrato-apolonio.json",
+      "bytes": 1114511,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/galeno-opera-kuhn.pdf",
+      "bytes": 39731986,
+      "metadataSha256": "11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/galeno-opera-kuhn.json",
+      "bytes": 1676168,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/galeno-kuhn-vol01.pdf",
+      "bytes": 39731986,
+      "metadataSha256": "11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/galeno-kuhn-vol01.json",
+      "bytes": 1676168,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/galeno-kuhn-vol19.pdf",
+      "bytes": 56378160,
+      "metadataSha256": "6a0900dd5592eeda90acd260e8f55c475acfa96e1c38491d328e4704971d9461",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/galeno-kuhn-vol19.json",
+      "bytes": 2124359,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/galeno-scripta-minora.pdf",
+      "bytes": 12072173,
+      "metadataSha256": "5ed136b94094f135026eadb7c4cfd4348be662eda90ab710c606c0d4e93fcf48",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/galeno-scripta-minora.json",
+      "bytes": 828423,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-facultades-naturales",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/galeno-facultades-naturales.pdf",
+      "bytes": 16393178,
+      "metadataSha256": "1d9985df3848474999ed78270e0eacec684e178206ca7402ff474daa439f930c",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "galeno-facultades-naturales",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/galeno-facultades-naturales.json",
+      "bytes": 831792,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "herodoto-historias",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/herodoto-historias.pdf",
+      "bytes": 20905137,
+      "metadataSha256": "613a66f742f158a80395d8811b8f1034f01a907d70efc25da33eb489551e6038",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "herodoto-historias",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/herodoto-historias.json",
+      "bytes": 713936,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "hipocrates-obras",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/hipocrates-obras.pdf",
+      "bytes": 14109382,
+      "metadataSha256": "349f57ff0b2daeaceeb83718c72ff9832ff433df26c2a3ae367f17aed481dd8a",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "hipocrates-obras",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/hipocrates-obras.json",
+      "bytes": 851800,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "iseo-discursos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/iseo-discursos.pdf",
+      "bytes": 22341248,
+      "metadataSha256": "fc49b854d43fd90e4923a9a54a279e1d5d0002630f280b07fa44578f6db1d691",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "iseo-discursos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/iseo-discursos.json",
+      "bytes": 765119,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "isocrates-discursos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/isocrates-discursos.pdf",
+      "bytes": 14005092,
+      "metadataSha256": "53533d699b39306984f5a94b580850b5c43fcf3831f967cf86ab3fa311fa8196",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "isocrates-discursos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/isocrates-discursos.json",
+      "bytes": 891777,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jenofonte-anabasis",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/jenofonte-anabasis.pdf",
+      "bytes": 31724184,
+      "metadataSha256": "9a46a9244d3095962e6f1c6cfe4b0e2392c6647a58fd9914c7d1ec6b9a00da59",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jenofonte-anabasis",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/jenofonte-anabasis.json",
+      "bytes": 1582242,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jenofonte-ciropedia",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/jenofonte-ciropedia.pdf",
+      "bytes": 16782991,
+      "metadataSha256": "1db603e8045888c8e641c3f60dbe1f59a2f2d81bb1617cbd4df9725c7507f11e",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jenofonte-ciropedia",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/jenofonte-ciropedia.json",
+      "bytes": 864442,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jenofonte-economico",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/jenofonte-economico.pdf",
+      "bytes": 8691249,
+      "metadataSha256": "17aef0a4385e8837794e9c2eaa29fd7740a67dffba363e48c531a2ac32e1d2ee",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jenofonte-economico",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/jenofonte-economico.json",
+      "bytes": 430868,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jenofonte-memorabilia",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/jenofonte-memorabilia.pdf",
+      "bytes": 26935916,
+      "metadataSha256": "b112a648aa11ab350fb4442d3c1ac7a07080ec247780eaef5456853907d1ccb7",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jenofonte-memorabilia",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/jenofonte-memorabilia.json",
+      "bytes": 1494856,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/jamblico-vida-pitagorica.pdf",
+      "bytes": 187634259,
+      "metadataSha256": "ac9da3085b675b2fcd0a303e5fdd9be1f07b7b694644d26693b27b3923097f9b",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/jamblico-vida-pitagorica.json",
+      "bytes": 1573162,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "lisias-discursos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/lisias-discursos.pdf",
+      "bytes": 24954885,
+      "metadataSha256": "a3fdc740efc581502f37587442dfba52343db5a5242c1bf1148918607b52465b",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "lisias-discursos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/lisias-discursos.json",
+      "bytes": 1080297,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "longo-dafnis-cloe",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/longo-dafnis-cloe.pdf",
+      "bytes": 16901124,
+      "metadataSha256": "243d4d4bc1b9131da898b7c0f9be64e33a41a7024560dc5dc8d03d073f93c25f",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "longo-dafnis-cloe",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/longo-dafnis-cloe.json",
+      "bytes": 664284,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "longo-dafnis-es",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/longo-dafnis-es.pdf",
+      "bytes": 14380141,
+      "metadataSha256": "74d8c964f4e9e90ce6e1ca4ff823429b0a1fc353bd2d1b894fb6e37b50dd8782",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "longo-dafnis-es",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/longo-dafnis-es.json",
+      "bytes": 282475,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "luciano-obras",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/luciano-obras.pdf",
+      "bytes": 16126831,
+      "metadataSha256": "05306db7c6d1034ba977324f4ad34b46d97729d7dcd892d5ed8dca11e5e4f38c",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "luciano-obras",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/luciano-obras.json",
+      "bytes": 701847,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "menandro-comedias",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/menandro-comedias.pdf",
+      "bytes": 21100064,
+      "metadataSha256": "41605c1c49e127b2ea7c9bf7cdc92f3d27303d76420d70795e1e17152437089a",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "menandro-comedias",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/menandro-comedias.json",
+      "bytes": 833392,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "origenes",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/origenes.pdf",
+      "bytes": 30604112,
+      "metadataSha256": "7dfb216e769f1e362e3f1ae54d0e4cc17d7067e788eb7604905f33fde79fb7b3",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "origenes",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/origenes.json",
+      "bytes": 1110464,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "pausanias-descripcion",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/pausanias-descripcion.pdf",
+      "bytes": 53813391,
+      "metadataSha256": "76ea6497c4c967f26ac0ddfab56c5353763a8aa075dbea3bd6d95ad5c4c82a6b",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "pausanias-descripcion",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/pausanias-descripcion.json",
+      "bytes": 2177295,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-banquete",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/platon-banquete.pdf",
+      "bytes": 16470692,
+      "metadataSha256": "a76fb0597ccae4be59df05b8e5b27fbb309a6aacad069beeaee950d4ad4cb64a",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-banquete",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/platon-banquete.json",
+      "bytes": 777389,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-cratilo-parmenides",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/platon-cratilo-parmenides.pdf",
+      "bytes": 26978855,
+      "metadataSha256": "755188bd152820a93afc60d282d2a0bf93d0203e9d2525e07b6ebf4eab6dede6",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-cratilo-parmenides",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/platon-cratilo-parmenides.json",
+      "bytes": 1064890,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-fedon",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/platon-fedon.pdf",
+      "bytes": 7784094,
+      "metadataSha256": "bce9d90c64fe2f2c469e3967782806fb6464fbb6fdd72655567491f2ca3e5777",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-fedon",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/platon-fedon.json",
+      "bytes": 445585,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-protagoras",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/platon-protagoras.pdf",
+      "bytes": 18023222,
+      "metadataSha256": "d0ee2068de6dab624c5d54d153ee53ad99e79d0505562ae9069467959988fec3",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-protagoras",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/platon-protagoras.json",
+      "bytes": 567413,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-leyes",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/platon-leyes.pdf",
+      "bytes": 20428737,
+      "metadataSha256": "c79934baf17a467450fd31967740c17f4791d99cd7db67b1e5fded18e441e7ce",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-leyes",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/platon-leyes.json",
+      "bytes": 981687,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-teeteto-sofista",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/platon-teeteto-sofista.pdf",
+      "bytes": 8889531,
+      "metadataSha256": "038f00525e53f8dc4a9af9885832d4fec151ecc3c7a03f5b9b3c9c04879f5783",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-teeteto-sofista",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/platon-teeteto-sofista.json",
+      "bytes": 624555,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-timeo",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/platon-timeo.pdf",
+      "bytes": 28604001,
+      "metadataSha256": "6ccb14e2c828792009cdc317c0482c3dd9663af6daa4b2715c5e714fe3e6786f",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-timeo",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/platon-timeo.json",
+      "bytes": 1364821,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "plotino-eneadas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/plotino-eneadas.pdf",
+      "bytes": 22969059,
+      "metadataSha256": "077bc07d9c12774102db966effccf1e0f2bb6c2b5d20ca8196d6f533bfe961ec",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "plotino-eneadas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/plotino-eneadas.json",
+      "bytes": 683313,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "plutarco-vidas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/plutarco-vidas.pdf",
+      "bytes": 35901877,
+      "metadataSha256": "5cd48b51033e3f029cedf9bdd4173c3a74a366ca1e611c09c15f9fb86af0200d",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "plutarco-vidas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/plutarco-vidas.json",
+      "bytes": 1422966,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "lyra-graeca",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/lyra-graeca.pdf",
+      "bytes": 32180736,
+      "metadataSha256": "accae2cc3a9c44c22d99def8cae05c55f50b4592e001d38453326f7fab210ffe",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "lyra-graeca",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/lyra-graeca.json",
+      "bytes": 1181087,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "polibio-historias",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/polibio-historias.pdf",
+      "bytes": 23481185,
+      "metadataSha256": "2d011bd78f73569d6addd78534f609e459a2dfdbea8a7128f7a9b560514f636d",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "polibio-historias",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/polibio-historias.json",
+      "bytes": 1267675,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/proclo-comentario-euclides.pdf",
+      "bytes": 31516957,
+      "metadataSha256": "8c8c9822f349e499fbd072f3764b827791047563781b1051a3a5fbf028523d97",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/proclo-comentario-euclides.json",
+      "bytes": 930289,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "longino-sublime",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/longino-sublime.pdf",
+      "bytes": 20347796,
+      "metadataSha256": "63f3a202e936b3331bc0e7bf391984d4370d7bbd6b8c7184ece1e654c7bd176e",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "longino-sublime",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/longino-sublime.json",
+      "bytes": 677397,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "quinto-esmirna-posthomericas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/quinto-esmirna-posthomericas.pdf",
+      "bytes": 36539024,
+      "metadataSha256": "cef7d4fab612c9c072b7b446eb29b483f2972bd00e5e2e79f5112a97d904c17e",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "quinto-esmirna-posthomericas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/quinto-esmirna-posthomericas.json",
+      "bytes": 1397490,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/sexto-empirico-obras.pdf",
+      "bytes": 80598697,
+      "metadataSha256": "c88e587da2442237df0c6f56639ca9b5d242550096114df4a33593d029b8cec7",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/sexto-empirico-obras.json",
+      "bytes": 3085589,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "sofocles-tragedias",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/sofocles-tragedias.pdf",
+      "bytes": 16562527,
+      "metadataSha256": "6a450386d07f6059b64dfaa2ba737ff30bc3f07d9d9978e309ff3e6f2c4ec8bb",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "sofocles-tragedias",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/sofocles-tragedias.json",
+      "bytes": 655473,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "teofrasto-historia-plantas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/teofrasto-historia-plantas.pdf",
+      "bytes": 29539492,
+      "metadataSha256": "2d1cd6f98aedb58fa47a30823e85cc5f8d8bad504cf48a5260c233e38395a294",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "teofrasto-historia-plantas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/teofrasto-historia-plantas.json",
+      "bytes": 940252,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "teocrito-bucolicos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/teocrito-bucolicos.pdf",
+      "bytes": 26809046,
+      "metadataSha256": "13322ac3de07d027d8c4ddc054d327aebdc98da8de7fa0f3e16a0a2e2daf832b",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "teocrito-bucolicos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/teocrito-bucolicos.json",
+      "bytes": 860357,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/teon-esmirna-expositio.pdf",
+      "bytes": 16123748,
+      "metadataSha256": "b1e415ec730414d383404e97561a86fe7e2d36c2257fd7eea323e784b343fa75",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/teon-esmirna-expositio.json",
+      "bytes": 490041,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "tucidides-historia",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/tucidides-historia.pdf",
+      "bytes": 23786931,
+      "metadataSha256": "1c834323b17e640d2e62f3c7f3f10f03088d8af620e3abf36462cfc05f5f10b8",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "tucidides-historia",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/tucidides-historia.json",
+      "bytes": 872157,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "palladio-quattro-libri",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/palladio-quattro-libri.pdf",
+      "bytes": 39263004,
+      "metadataSha256": "25a72957e8bbc1948b1e2739387ddaa6d0b604becdfad2f6a6b544d60767becc",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "palladio-quattro-libri",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/palladio-quattro-libri.json",
+      "bytes": 393268,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "vignola-cinque-ordini",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/vignola-cinque-ordini.pdf",
+      "bytes": 12510108,
+      "metadataSha256": "8d322e3003829f0fe2b25feb63e6bede00b4e5ee0547f28e9204c5026540e9e5",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "vignola-cinque-ordini",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/vignola-cinque-ordini.json",
+      "bytes": 55142,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "vasari-vite",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/vasari-vite.pdf",
+      "bytes": 57668734,
+      "metadataSha256": "b12800b8df8da07f392f1e2ecf4a6146544469f97d2467a7edbd20d23504c403",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "vasari-vite",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/vasari-vite.json",
+      "bytes": 1839116,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "serlio-architettura",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/serlio-architettura.pdf",
+      "bytes": 24254939,
+      "metadataSha256": "efffcd734fbfe86c9d2659fd28e1b49a211bd9eaebe0efa9c35ebbbd74da452a",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "serlio-architettura",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/serlio-architettura.json",
+      "bytes": 249879,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "scamozzi-idea-architettura",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/scamozzi-idea-architettura.pdf",
+      "bytes": 103825260,
+      "metadataSha256": "be72819392020a6e4874ad24d6028a4962611001500a402a6dd25257646d7b93",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "scamozzi-idea-architettura",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/scamozzi-idea-architettura.json",
+      "bytes": 4112507,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "accius-fragmenta",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/accius-fragmenta.pdf",
+      "bytes": 36779078,
+      "metadataSha256": "da46cbcfba01bd8beab0b9f7024aef90feb294fa5a2b695531b8022158f8660d",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "accius-fragmenta",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/accius-fragmenta.json",
+      "bytes": 1141242,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "agustin-confesiones",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/agustin-confesiones.pdf",
+      "bytes": 26030642,
+      "metadataSha256": "5651a90c889763ea238d5ebf3f2fd6d27fa10221bd2686cd831b29e1687df18e",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "agustin-confesiones",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/agustin-confesiones.json",
+      "bytes": 781035,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "amiano-marcelino-es",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/amiano-marcelino-es.pdf",
+      "bytes": 109695359,
+      "metadataSha256": "c2492279bf45a36c4b79a30ac925718b4ef1eedeae95976372a51c99405937ce",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "amiano-marcelino-es",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/amiano-marcelino-es.json",
+      "bytes": 788405,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "anthologia-latina",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/anthologia-latina.pdf",
+      "bytes": 43529530,
+      "metadataSha256": "e0f994b10b08af3c2973c03cde42e82e6a451069a72d8dfc7fc16e915d67bc79",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "anthologia-latina",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/anthologia-latina.json",
+      "bytes": 1507994,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "apuleyo-metamorfosis",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/apuleyo-metamorfosis.pdf",
+      "bytes": 28131906,
+      "metadataSha256": "c3ca28f6f87b0c8694a3079cbc89cb93b720fd26ff59d207f6f6c22649d7dd2e",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "apuleyo-metamorfosis",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/apuleyo-metamorfosis.json",
+      "bytes": 1168086,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aulo-gelio-noches",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/aulo-gelio-noches.pdf",
+      "bytes": 19338495,
+      "metadataSha256": "a30961a4f8b8f35cea0cf6ee0224a676286ed28585a1c9688426779d756c2453",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "aulo-gelio-noches",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/aulo-gelio-noches.json",
+      "bytes": 900063,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ausonio-obras",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/ausonio-obras.pdf",
+      "bytes": 20792352,
+      "metadataSha256": "34a91e49e74636d23475a53db748e7b04047d3d4c9aa4a543eb181feb2771ece",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ausonio-obras",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/ausonio-obras.json",
+      "bytes": 690228,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "beda-de-temporum-ratione",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/beda-de-temporum-ratione.pdf",
+      "bytes": 16864450,
+      "metadataSha256": "803321de2624a5482610f1dd211e08d6b68f590058e0e7f8cfcf7216a117473d",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "beda-de-temporum-ratione",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/beda-de-temporum-ratione.json",
+      "bytes": 917801,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "boecio-consolacion",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/boecio-consolacion.pdf",
+      "bytes": 17370811,
+      "metadataSha256": "fbbf092b1b0713bf33eb3c42647e79c58b0daefb188137a829652736b50e9a99",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "boecio-consolacion",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/boecio-consolacion.json",
+      "bytes": 775994,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "casiodoro-variae",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/casiodoro-variae.pdf",
+      "bytes": 59133795,
+      "metadataSha256": "f5876a7035f72121d4c553b42c671467f027f1ab16bd3ea497d2ad40fb3b776f",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "casiodoro-variae",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/casiodoro-variae.json",
+      "bytes": 3118374,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "celso-de-medicina",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/celso-de-medicina.pdf",
+      "bytes": 14584016,
+      "metadataSha256": "a43ac7555831c6037930756edd71e3a642bbd6fe45000ddfc3c535942e29df59",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "celso-de-medicina",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/celso-de-medicina.json",
+      "bytes": 1197002,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ciceron-de-oratore",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/ciceron-de-oratore.pdf",
+      "bytes": 5409293,
+      "metadataSha256": "9b96e03443f8268fb39ebb47ace7ea047aa99f3ccde300ee1d7b1c1fe483be63",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ciceron-de-oratore",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/ciceron-de-oratore.json",
+      "bytes": 217057,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ciceron-de-re-publica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/ciceron-de-re-publica.pdf",
+      "bytes": 18792790,
+      "metadataSha256": "f8f5c58976776db48129ace86a42a4f2bba67b0e979977698ed570dc6eed8aa1",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ciceron-de-re-publica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/ciceron-de-re-publica.json",
+      "bytes": 991385,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ciceron-tusculanas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/ciceron-tusculanas.pdf",
+      "bytes": 16419229,
+      "metadataSha256": "9912c1e146d3582436e05b87be2206a75ca28beb5625c43c4fb57235b29eaccf",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ciceron-tusculanas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/ciceron-tusculanas.json",
+      "bytes": 561910,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "claudiano-poemas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/claudiano-poemas.pdf",
+      "bytes": 17483903,
+      "metadataSha256": "5e5e070ce9cd59b7115df007578eb61b927eb406f3fe06d13c7406bdf82a3bd0",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "claudiano-poemas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/claudiano-poemas.json",
+      "bytes": 725534,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "columela-de-re-rustica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/columela-de-re-rustica.pdf",
+      "bytes": 862925,
+      "metadataSha256": "726ab7c7cd4e514d799e4019cad67bb68a4a6e700f9b9e49b64e4f8a45607389",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "columela-de-re-rustica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/columela-de-re-rustica.json",
+      "bytes": 79323,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "cesar-guerra-civil",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/cesar-guerra-civil.pdf",
+      "bytes": 17087971,
+      "metadataSha256": "50de9393bbf1912b7634b1c8bee946c1f39005a52bc5809aa3e05afa9f38966f",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "cesar-guerra-civil",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/cesar-guerra-civil.json",
+      "bytes": 709468,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/festo-verborum-significatu.pdf",
+      "bytes": 23661364,
+      "metadataSha256": "00e01ad423a5c3c68d3c17a4f48200a27816b5c31e380a299a75bf41865e4701",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/festo-verborum-significatu.json",
+      "bytes": 775111,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "petrarca-africa",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/petrarca-africa.pdf",
+      "bytes": 18265657,
+      "metadataSha256": "db6b450b97e2f5d79476961e9a8d35b1c1a0208a1eb8cc019f457292be908b49",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "petrarca-africa",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/petrarca-africa.json",
+      "bytes": 574010,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "petrarca-secretum",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/petrarca-secretum.pdf",
+      "bytes": 40877598,
+      "metadataSha256": "632668cf61b52ae03d15f39d94b840bce9743c2c1a1787ce9796793f06b30f9d",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "petrarca-secretum",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/petrarca-secretum.json",
+      "bytes": 1486485,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "frontino-de-aquis",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/frontino-de-aquis.pdf",
+      "bytes": 18776762,
+      "metadataSha256": "7092be6431d7f79e6108fef3c920b3673519237937e3b718e2e76fd35c589a33",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "frontino-de-aquis",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/frontino-de-aquis.json",
+      "bytes": 836800,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "higino-fabulas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/higino-fabulas.pdf",
+      "bytes": 10639586,
+      "metadataSha256": "105726b54dc2a1a069365b0101e9d7e28772e8c07f1356db24436c61073f8a83",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "higino-fabulas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/higino-fabulas.json",
+      "bytes": 509923,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/hyginus-gromaticus.pdf",
+      "bytes": 41269090,
+      "metadataSha256": "a6f2340323d68b8e15838f4cae6db872782f91856b51b8bb386918c9475e1b50",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/hyginus-gromaticus.json",
+      "bytes": 1135347,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "isidoro-etymologiae",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/isidoro-etymologiae.pdf",
+      "bytes": 56611475,
+      "metadataSha256": "af1a52b27b3b54782a9bce98f39cbc5d39b76301c801dc7f62531d58af017a57",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "isidoro-etymologiae",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/isidoro-etymologiae.json",
+      "bytes": 2347842,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "juvenal-persio-satiras",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/juvenal-persio-satiras.pdf",
+      "bytes": 20005121,
+      "metadataSha256": "7db781a98cc077a8a7e14fed529b870c8a07d5087053316be5782519b4fce25a",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "juvenal-persio-satiras",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/juvenal-persio-satiras.json",
+      "bytes": 883559,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "alberti-de-re-aedificatoria",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/alberti-de-re-aedificatoria.pdf",
+      "bytes": 29682982,
+      "metadataSha256": "5da311d34b101b954658b7da34733854c7637f3ade2bf315dfeeb0e0a41e7fdb",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "alberti-de-re-aedificatoria",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/alberti-de-re-aedificatoria.json",
+      "bytes": 975234,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "lucano-farsalia",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/lucano-farsalia.pdf",
+      "bytes": 33123367,
+      "metadataSha256": "237954acffc884160eda7cbc820f699d12ac94d677b3c5bc098c992402b8b071",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "lucano-farsalia",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/lucano-farsalia.json",
+      "bytes": 1530263,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "manilio-astronomica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/manilio-astronomica.pdf",
+      "bytes": 26709779,
+      "metadataSha256": "71d60921f701e9ab7d95c64abca253e4585cdf77f39e900304babef748df5842",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "manilio-astronomica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/manilio-astronomica.json",
+      "bytes": 1032014,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "marcial-epigramas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/marcial-epigramas.pdf",
+      "bytes": 20334183,
+      "metadataSha256": "8bde59909d5f4f00efc7a957f1eb606f1f2886876ebd802be10e32c995ee2bde",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "marcial-epigramas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/marcial-epigramas.json",
+      "bytes": 864702,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/marciano-capela-nuptiis.pdf",
+      "bytes": 59623545,
+      "metadataSha256": "35e477c3698672bc1a124b5dee5c2ce21c61eed9cce1cdfa2eb5bd890b8d6551",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/marciano-capela-nuptiis.json",
+      "bytes": 2874874,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "minucio-felix-octavio",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/minucio-felix-octavio.pdf",
+      "bytes": 11767489,
+      "metadataSha256": "1355d1667e33b0cd70cf93e748d30c59cb63f8cc737ad1594c4547fcc3ca1f7d",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "minucio-felix-octavio",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/minucio-felix-octavio.json",
+      "bytes": 637505,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/nonio-marcelo-doctrina.pdf",
+      "bytes": 46927493,
+      "metadataSha256": "a367027861ff209fc53b820cbdeccffb052dfca3bc8925b494227efd0d30c71c",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/nonio-marcelo-doctrina.json",
+      "bytes": 2058906,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ovidio-fastos",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/ovidio-fastos.pdf",
+      "bytes": 24511837,
+      "metadataSha256": "09f1f39ef6f6f4de711372ef1454283117dd284f5d7ab332d6b908448e3f6091",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "ovidio-fastos",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/ovidio-fastos.json",
+      "bytes": 840450,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/paladio-opus-agriculturae.pdf",
+      "bytes": 7853253,
+      "metadataSha256": "e43a5a93b6a499500311c95d5cb63353e8deb9abbe17f30c448a655800e85a84",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/paladio-opus-agriculturae.json",
+      "bytes": 517871,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "petronio-satiricon",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/petronio-satiricon.pdf",
+      "bytes": 9832531,
+      "metadataSha256": "6f31a691dcadd61dfa38bca760ea14d6acdf023a3e0c2d6e345d6a44060d1aa9",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "petronio-satiricon",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/petronio-satiricon.json",
+      "bytes": 357341,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "plinio-joven-cartas",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/plinio-joven-cartas.pdf",
+      "bytes": 16865321,
+      "metadataSha256": "c490b9c16ecd9e2f6b3e97774cfa67a4cf3670d447764852a41f8302e6b13c84",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "plinio-joven-cartas",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/plinio-joven-cartas.json",
+      "bytes": 675729,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "plinio-historia-natural",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/plinio-historia-natural.pdf",
+      "bytes": 65173407,
+      "metadataSha256": "eb4f4b3f47d4283c7bd4ca873a5f7fd310a936a61bde45f8e1a44f58a30d902b",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "plinio-historia-natural",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/plinio-historia-natural.json",
+      "bytes": 1747090,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "propercio-elegias",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/propercio-elegias.pdf",
+      "bytes": 15238777,
+      "metadataSha256": "52fcd6138024fafdbfc71f3c551f8b5d8e289af6c570652043f51e91dda5befc",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "propercio-elegias",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/propercio-elegias.json",
+      "bytes": 636411,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "quintiliano-institutio",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/quintiliano-institutio.pdf",
+      "bytes": 25690996,
+      "metadataSha256": "002a5d84fa3cc16f8857f2b335c4db8e95dc22c7c724dc17f2c990c3f2d54d7d",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "quintiliano-institutio",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/quintiliano-institutio.json",
+      "bytes": 1082718,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "salustio-obras",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/salustio-obras.pdf",
+      "bytes": 16185481,
+      "metadataSha256": "36f596f5808e3b7daa96009404c5aa22ca2d7fbb95e11d0a15b449950c8dfc25",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "salustio-obras",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/salustio-obras.json",
+      "bytes": 512475,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "seneca-tragedias",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/seneca-tragedias.pdf",
+      "bytes": 18868479,
+      "metadataSha256": "38a3b322f33e4cf797a82373efad0950588d5c95d3e2ac608774ca4c918a29a8",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "seneca-tragedias",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/seneca-tragedias.json",
+      "bytes": 880307,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "tito-livio-historia",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/tito-livio-historia.pdf",
+      "bytes": 25033324,
+      "metadataSha256": "2a78e867d67d4822ffd3e85a87224d8f63ab718dd0329ad47e4c81d16e49e572",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "tito-livio-historia",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/tito-livio-historia.json",
+      "bytes": 877197,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "rose-vitruvius-1899",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/rose-vitruvius-1899.pdf",
+      "bytes": 21598636,
+      "metadataSha256": "39706ad0b49e94d5c7f58f3ae8e8d033c751b607b24d1424a73a65b04909dbd6",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "rose-vitruvius-1899",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/rose-vitruvius-1899.json",
+      "bytes": 917607,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "valerio-flaco-argonautica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/valerio-flaco-argonautica.pdf",
+      "bytes": 7596487,
+      "metadataSha256": "f1c13e204a0104eb2eab28e24a624e65d7d6a9176efc89deeb0aa8365f1090bb",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "valerio-flaco-argonautica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/valerio-flaco-argonautica.json",
+      "bytes": 296163,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "varron-de-re-rustica",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/varron-de-re-rustica.pdf",
+      "bytes": 17657443,
+      "metadataSha256": "118329dc7ebc55d0b5b1e0b8ff328d9523c3bbd48366e7a7a520759351f72d90",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "varron-de-re-rustica",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/varron-de-re-rustica.json",
+      "bytes": 759392,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    }
+  ],
+  "indexManifest": {
+    "indexedEditionIds": 119,
+    "catalogueEditionIds": 117,
+    "catalogueIdsAbsentFromInvertedIndex": [],
+    "indexedIdsAbsentFromGithubCatalogue": [
+      "boecio-institutione-musica",
+      "historia-augusta"
+    ],
+    "fragmentCount": 2510,
+    "status": "read_from_R2"
+  }
+}
