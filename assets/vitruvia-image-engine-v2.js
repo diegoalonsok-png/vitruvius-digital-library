@@ -226,10 +226,34 @@ function displayGroups(items,topic){
  grid.hidden=false;
  grid.hidden=false;section.hidden=false;
  grid.replaceChildren();let previous=null;
- for(const item of items){
-  if(item.group!==previous){groupTitle(groupLabel(item.group));previous=item.group}
-  displayItem(item);
+ // First paint: only eight documentary thumbnails. Remaining cards (and
+ // their image URLs) are created on demand; no hidden eager downloads.
+ let rendered=0;
+ const firstBatch=8,followingBatch=12;
+ const renderNext=()=>{
+  const limit=Math.min(items.length,rendered+(rendered?followingBatch:firstBatch));
+  for(;rendered<limit;rendered++){
+   const item=items[rendered];
+   if(item.group!==previous){groupTitle(groupLabel(item.group));previous=item.group}
+   displayItem(item);
+  }
+  if(moreButton){
+   moreButton.textContent=locale("Mostrar más imágenes","Show more images","Afficher plus d’images")+" · "+(items.length-rendered);
+   moreButton.hidden=rendered>=items.length;
+  }
+ };
+ const moreButton=items.length>firstBatch?create(grid,"button","vitruvia-gallery-more"):null;
+ if(moreButton){
+  moreButton.type="button";
+  moreButton.style.gridColumn="1/-1";
+  moreButton.addEventListener("click",()=>{
+   moreButton.remove();
+   renderNext();
+   if(rendered<items.length)grid.append(moreButton);
+  });
  }
+ renderNext();
+ if(moreButton&&rendered<items.length)grid.append(moreButton);
  const quick=document.getElementById("vitruvia-quick-images");
  if(quick){
   quick.replaceChildren();
