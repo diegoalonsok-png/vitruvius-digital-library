@@ -21,7 +21,7 @@ async function run(site,c){
  const errors=[],bad=[];
  page.on("pageerror",e=>errors.push(e.message.slice(0,140)));
  page.on("response",r=>{if(r.status()>=400&&r.url().startsWith(new URL(site.url).origin))bad.push({status:r.status(),url:r.url().slice(0,150)})});
- const t=Date.now(),record={site:site.site,url:site.url,query:c.query,kind:c.label,status:null,ttfbMs:null,domReadyMs:null,firstResultMs:null,observedResults:null,transferredKb:null,errors:[],httpFailures:[],failure:null};
+ const t=Date.now(),record={site:site.site,url:site.url,query:c.query,kind:c.label,status:null,ttfbMs:null,domReadyMs:null,firstContentMs:null,observedResults:null,transferredKb:null,errors:[],httpFailures:[],failure:null};
  try{
   const url=site.url+"?q="+encodeURIComponent(c.query)+"&mode=all";
   const response=await page.goto(url,{waitUntil:"domcontentloaded",timeout:18000});
@@ -39,7 +39,7 @@ async function run(site,c){
     const article=document.querySelector("#article-body")?.textContent?.trim()||"";
     return cards>0||article.length>=120;
    },null,{timeout:11000,polling:100});
-   record.firstResultMs=Date.now()-t;
+   record.firstContentMs=Date.now()-t;
   }catch{record.failure="No visible result within 11s after DOM ready";}
   record.observedResults=await page.locator("#result-list .result-card").count();
   const bytes=await page.evaluate(()=>performance.getEntriesByType("resource").reduce((a,x)=>a+(x.transferSize||0),0));
@@ -56,9 +56,9 @@ try{
   for(const r of rows)console.log("SPEED "+JSON.stringify(r));
  }
 }finally{await browser.close()}
-const good=results.filter(r=>r.firstResultMs!==null);
+const good=results.filter(r=>r.firstContentMs!==null);
 const percentile=(xs,p)=>xs.length?xs.slice().sort((a,b)=>a-b)[Math.min(xs.length-1,Math.ceil(p*xs.length)-1)]:null;
-const summary={total:results.length,measured:good.length,unavailable:results.length-good.length,firstResultP50Ms:percentile(good.map(r=>r.firstResultMs),.5),firstResultMaxMs:good.length?Math.max(...good.map(r=>r.firstResultMs)):null,firstResultsOverTenSeconds:good.filter(r=>r.firstResultMs>10000).length};
+const summary={total:results.length,measured:good.length,unavailable:results.length-good.length,firstContentP50Ms:percentile(good.map(r=>r.firstContentMs),.5),firstContentMaxMs:good.length?Math.max(...good.map(r=>r.firstContentMs)):null,firstContentOverTenSeconds:good.filter(r=>r.firstContentMs>10000).length};
 console.log("SPEED_SUMMARY "+JSON.stringify(summary));
-writeFileSync("reports/vitruvia-live-speed.json",JSON.stringify({schema:"vitruvia-live-speed-v1",description:"Six Chromium cold navigations; timings are runner observations, not user RUM nor global benchmark.",summary,results},null,2)+"\n");
-if(results.some(r=>r.status!==200||r.firstResultMs===null))process.exitCode=1;
+writeFileSync("reports/vitruvia-live-speed.json",JSON.stringify({schema:"vitruvia-live-speed-v2",description:"Six Chromium cold navigations. firstContentMs measures first article content (>120 chars) OR a result card; observedResults reports separate result cards. It does not certify a matching passage. Runner observations, not user RUM nor global benchmark.",summary,results},null,2)+"\n");
+if(results.some(r=>r.status!==200||r.firstContentMs===null))process.exitCode=1;
