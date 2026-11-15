@@ -26,7 +26,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 .ab-latin-search input{width:100%;box-sizing:border-box}
 .ab-latin-search .ab-search-terms{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
 .ab-latin-search .ab-search-terms button{min-height:34px;padding:6px 10px;cursor:pointer}
-.ab-latin-match{background:#ffe28a;color:#211a0f;border-radius:2px;padding:0 1px}.ab-search-hit{border-top:1px solid var(--ab-rule);padding:11px 0}
+.ab-latin-match{background:#ffe28a;color:#211a0f;border-radius:2px;padding:0 1px}.ab-search-hit mark.ab-search-highlight{background:#ffdf45;color:#211a0f;border-radius:2px;padding:0 2px;font-weight:700;box-decoration-break:clone}.ab-search-hit{border-top:1px solid var(--ab-rule);padding:11px 0}
 .ab-search-hit p{font:16px/1.6 Georgia,serif;margin:7px 0}
 .ab-search-hit button{cursor:pointer;font-weight:600}
 #ab-search-status{font:13px/1.6 system-ui;color:var(--ab-muted);margin:10px 0}.ab-tools .ab-locus-picker{display:flex;flex-wrap:wrap;gap:8px;align-items:end}.ab-tools .ab-locus-picker select{min-width:92px}.ab-tools #pick-chapter{min-width:115px}.ab-tools button{cursor:pointer}.ab-tools button:hover{background:#eee6d8}.ab-status{font:13px/1.55 system-ui;min-height:20px;color:var(--ab-muted);margin:12px 0}
@@ -179,7 +179,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 </section>
 <section id="vdl-edition-references" aria-label="Referencias bibliográficas de las ediciones de Diego Kurilo"></section>
 </main>
-<script src="assets/apparatus-locus-search.js?v=20261115-sync-v3"></script>
+<script src="assets/apparatus-locus-search.js?v=20261115-highlights-v4"></script>
 <script>
 (()=>{"use strict";
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
