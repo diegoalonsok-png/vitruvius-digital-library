@@ -435,7 +435,7 @@ function renderBibliography(dest,w){
   dest.append(html("p","cwd-muted","Cita bibliográfica completa de edición pendiente: el catálogo aún no acredita todos los elementos editoriales necesarios para Chicago 18. No se suponen editor, traductor, año, lugar ni editorial."));
  }
  const c=html("div","cwd-citation");
- const citation=[w.author,title(w,d.critical.get(w.id)?.authority).title||w.title,N(w.dating),w.id].filter(Boolean).join(" · ");
+ const citation=[w.author,title(w).title||w.title,N(w.dating),w.id].filter(Boolean).join(" · ");
  c.append(html("strong",null,"Identificación normalizada de obra (no sustituye la cita de una edición): "),
   document.createTextNode(citation));
  dest.append(c);
