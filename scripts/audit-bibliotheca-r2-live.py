@@ -71,7 +71,10 @@ def main():
             args["ContinuationToken"] = response["NextContinuationToken"]
     expected_pdf = {key(row["pdf"]) for row in pdfs}
     expected_ocr = {key(row["texto"]) for row in pdfs}
-    expected_index = {"clasicos/indice-obras/" + row["id"] + ".json" for row in pdfs}
+    # Índices por edición: los libros antiguos del catálogo pueden tener índice
+    # global invertido sin un objeto individual. Solo se exige un índice
+    # por obra si el registro editorial declara explícitamente su URL.
+    expected_index = {key(row["indiceLectura"]) for row in pdfs if row.get("indiceLectura")}
     expected_corpus = {remote["base"].removeprefix(BASE) + e["archivo"] for e in remote["obras"]}
     expected = {
         "pdf": expected_pdf, "ocr": expected_ocr, "editionIndex": expected_index,
@@ -96,10 +99,20 @@ def main():
         )
         result["count"]["indexListedWorks"] = len(r2_index_ids)
         result["count"]["indexListedFragments"] = len(listed_fragments)
+    # Mostrar los objetos no catalogados en una sección separada. No
+    # eliminarlos: pueden ser ingresos interrumpidos pendientes de reconciliar.
+    result["uncataloguedObjects"] = {
+        "pdf": sorted(k for k in objects if k.startswith("clasicos/pdf/") and k.endswith(".pdf") and k not in expected_pdf),
+        "ocr": sorted(k for k in objects if k.startswith("clasicos/texto/") and k.endswith(".json") and k not in expected_ocr),
+    }
+    if any(result["uncataloguedObjects"].values()):
+        result["issues"].append("Hay objetos PDF/OCR en R2 sin ficha en el catálogo actual. No borrarlos: revisar su procedencia.")
     result["count"].update({
         "r2ObjectsScanned": len(objects), "pdfExpected": len(expected_pdf),
         "pdfPresent": len(expected_pdf & objects),
         "ocrExpected": len(expected_ocr), "ocrPresent": len(expected_ocr & objects),
+        "editionIndexesExpected": len(expected_index),
+        "editionIndexesNotDeclared": len(pdfs) - sum(bool(row.get("indiceLectura")) for row in pdfs),
         "editionIndexesPresent": len(expected_index & objects),
         "corpusOriginalsPresent": len(expected_corpus & objects),
     })
