@@ -113,7 +113,7 @@ const backlogDocument={
  },entries:backlog
 };
 mkdirSync("data/classics-corpus",{recursive:true});
-writeFileSync("data/classics-corpus/unindexed-backlog.json",JSON.stringify(backlogDocument,null,2)+"\\n");
+writeFileSync("data/classics-corpus/unindexed-backlog.json",JSON.stringify(backlogDocument,null,2)+"\n");
 const cataloguedIndexedIds=new Set(registry.map(e=>e.workId));
 const remoteManifestIds=new Set(remote.map(e=>e.workId+"|"+e.language));
 for(const e of registry.filter(e=>(e.path||"").startsWith("https://libros.vitruvius-digital-library.org/corpus/"))){
