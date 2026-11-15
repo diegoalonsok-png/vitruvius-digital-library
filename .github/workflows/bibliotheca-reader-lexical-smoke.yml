@@ -27,7 +27,7 @@ permissions:
   contents: read
 concurrency:
   group: bibliotheca-reader-smoke-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   lexical-reader:
     runs-on: ubuntu-24.04
