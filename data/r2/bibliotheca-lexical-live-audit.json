@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-lexical-live-v1",
-  "generated": "2026-11-15T04:12:21.628Z",
+  "generated": "2026-11-15T04:14:00.064Z",
   "method": "GET de OCR en R2, GET de fragmentos invertidos R2; comparación de palabras atestiguadas y páginas digitales con el mismo normalizador del visor",
   "limitations": "El modo --full verifica tres raíces del OCR por edición catalogada; no implica validación total de todas las raíces ni lematización filológica, ni exactitud paleográfica del OCR.",
   "cataloguedEditions": 117,
@@ -4118,11 +4118,88 @@
       "url": "https://diegoalonsok-png.github.io/vitruvius-digital-library/buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus",
       "status": "html-loaded",
       "httpStatus": 200
+    },
+    {
+      "url": "https://vitruvius-digital-library.org/lector-bilingue.html?edition=recensio-es",
+      "status": "html-loaded",
+      "httpStatus": 200
+    },
+    {
+      "url": "https://vitruvius-digital-library.org/lector-bilingue.html?edition=recensio-fr",
+      "status": "html-loaded",
+      "httpStatus": 200
+    },
+    {
+      "url": "https://vitruvius-digital-library.org/lector-bilingue.html?edition=theory-en",
+      "status": "html-loaded",
+      "httpStatus": 200
+    },
+    {
+      "url": "https://vitruvius-digital-library.org/classics-text-reader.html?work=virgil-aeneid&lang=la",
+      "status": "html-loaded",
+      "httpStatus": 200
     }
   ],
   "unexpectedIndexedIds": [
     "boecio-institutione-musica",
     "historia-augusta"
+  ],
+  "lexicalQueries": [
+    {
+      "term": "symmetria",
+      "status": "found",
+      "indexedEditions": 3,
+      "validatedPage": {
+        "editionId": "scamozzi-idea-architettura",
+        "page": 28,
+        "viewer": "buscador-facsimiles-clasicos.html?obra=scamozzi-idea-architettura&pagina=28&q=symmetria"
+      },
+      "root": "symmetri"
+    },
+    {
+      "term": "firmitas",
+      "status": "found",
+      "indexedEditions": 20,
+      "validatedPage": {
+        "editionId": "beda-de-temporum-ratione",
+        "page": 248,
+        "viewer": "buscador-facsimiles-clasicos.html?obra=beda-de-temporum-ratione&pagina=248&q=firmitas"
+      },
+      "root": "firmit"
+    },
+    {
+      "term": "decor",
+      "status": "found",
+      "indexedEditions": 57,
+      "validatedPage": {
+        "editionId": "beda-de-temporum-ratione",
+        "page": 146,
+        "viewer": "buscador-facsimiles-clasicos.html?obra=beda-de-temporum-ratione&pagina=146&q=decor"
+      },
+      "root": "decor"
+    },
+    {
+      "term": "λόγος",
+      "status": "found",
+      "indexedEditions": 32,
+      "validatedPage": {
+        "editionId": "apollodorus-poliorcetics",
+        "page": 27,
+        "viewer": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics&pagina=27&q=%CE%BB%CF%8C%CE%B3%CE%BF%CF%82"
+      },
+      "root": "λογ"
+    },
+    {
+      "term": "συμμετρία",
+      "status": "found",
+      "indexedEditions": 7,
+      "validatedPage": {
+        "editionId": "galeno-kuhn-vol19",
+        "page": 220,
+        "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol19&pagina=220&q=%CF%83%CF%85%CE%BC%CE%BC%CE%B5%CF%84%CF%81%CE%AF%CE%B1"
+      },
+      "root": "συμμετρι"
+    }
   ],
   "errors": [],
   "warnings": [
@@ -4144,6 +4221,8 @@
     "errors": 0,
     "warnings": 2,
     "indexEditions": 119,
-    "indexFragments": 2510
+    "indexFragments": 2510,
+    "explicitLexicalQueries": 5,
+    "lexicalQueriesWithHits": 5
   }
 }
