@@ -1601,13 +1601,13 @@ async function search(){
     "Identidad documentada · ampliando fuentes");
   }).catch(()=>{});
  }
+ // Initial search does not wait for the large catalogue.
+ // Primary holdings merge after vitruvia:catalogue-core, without restarting external providers.
  if(researchReady){
   await researchReady;
   if(id!==S.searchId||searchSignal.aborted)return;
   S.cardCache.clear(); // Source classifications are now available to early cards.
  }
- // Initial search does not wait for the large catalogue.
- // Primary holdings merge after vitruvia:catalogue-core, without restarting external providers.
  // Voz griega con equivalente latino documentado en el léxico (εὐρυθμία → eurythmia): se busca también la forma latina.
  if(/[\u0370-\u03ff\u1f00-\u1fff]/.test(q)&&q.split(/\s+/).length<=3){try{S.lexiconPromise=S.lexiconPromise||((window.VitruviaData?window.VitruviaData.json("data/latin-lexicon.json"):fetch("data/latin-lexicon.json").then(r=>r.json())).then(d=>d.entries||[]).catch(e=>{S.lexiconPromise=null;throw e}));S.lexicon=S.lexicon||await S.lexiconPromise;if(searchSignal.aborted||id!==S.searchId)return;
   const fg=x=>String(x||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ");const hit=S.lexicon.find(e=>e.greek&&fg(e.greek)===fg(q));if(hit&&!q.includes(hit.lemma))q=q+" "+hit.lemma}catch{}}

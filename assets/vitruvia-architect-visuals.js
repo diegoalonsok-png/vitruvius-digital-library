@@ -67,8 +67,8 @@ async function drawings(target,work){
   const matched=terms.filter(term=>words(title).includes(term)).length>=Math.min(2,terms.length);
   return terms.length&&matched&&(type.test(title)||/HABS.*sheet|measured drawing/i.test(title+' '+description))&&technical&&!mapOnly&&/^image\/(jpeg|png|webp|gif|svg\+xml)$/.test(String(info?.mime||''))&&
    /^https:\/\//.test(info?.thumburl||'')&&/^https:\/\/commons\.wikimedia\.org\//.test(info?.descriptionurl||'')
-   ?{title,preview:info.thumburl,href:info.descriptionurl}:null;
- }).filter(Boolean).slice(0,6);
+   ?{title,preview:info.thumburl,href:info.descriptionurl,kind:/floor.?plan|ground.?floor|upper.?floor|grundriss|pianta|planta|planimetr/i.test(title+' '+description)?'plan':/section|seccion|corte|schnitt|coupe|sezione/i.test(title+' '+description)?'section':'elevation'}:null;
+ }).filter(Boolean).sort((a,b)=>({plan:0,section:1,elevation:2}[a.kind]-{plan:0,section:1,elevation:2}[b.kind])||a.title.localeCompare(b.title)).slice(0,6);
  for(const x of items){
   const plate=element('figure','architecture-plate');
   const source=a('',x.href),img=element('img');img.src=x.preview;img.loading='lazy';img.alt=x.title;source.append(img);plate.append(source);

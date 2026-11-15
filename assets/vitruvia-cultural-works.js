@@ -127,6 +127,9 @@ function showWorks(root,works,valid){
   'Notices récupérées : '+works.length+'. Classées par date qualifiée (conception, ouverture ou publication) ; notices non datées en dernier. Catalogue non exhaustif.')));
  const stack=el('div','web-dossier-stack cultural-work-stack');root.append(stack);
  const cards=new Map();let expanded=true;
+ // First architectural drawing is expanded for the earliest documented
+ // building, not for an unrelated painting or book in the same catalogue.
+ let architecturalPreviewUsed=false;
  const limit=works.length;
  for(const work of works){
   let item;
@@ -142,7 +145,8 @@ function showWorks(root,works,valid){
      ' · '+L('sin referencia de origen en el dato','no cited source in this claim','sans source citée dans la déclaration'))));
    if(work.notable)item.append(el('span','cultural-notable',L('Obra destacada','Notable work','Œuvre notable')));
    item.append(link('Wikidata ↗','https://www.wikidata.org/wiki/'+work.id));stack.append(item);
-   window.VitruviaArchitectVisuals?.enhance(item,{...work,previewDrawings:cards.size===0});
+   window.VitruviaArchitectVisuals?.enhance(item,{...work,previewDrawings:!architecturalPreviewUsed});
+   architecturalPreviewUsed=true;
   }else{
    item=el('article','web-dossier-card cultural-work');const body=el('div','web-dossier-card-body');
    body.append(link(work.title+' ↗',work.href));
@@ -187,7 +191,20 @@ function showWorks(root,works,valid){
    if(!groupWorks?.length)continue;
    const section=el('section','cultural-medium-group');
    section.append(el('h5','context-section-title',labels[key]+' · '+groupWorks.length));
-   for(const work of groupWorks)section.append(cards.get(work.id));
+   // Progressive reveal: show a documented chronological (or prominence)
+   // first set, then expand on demand. Offscreen covers stay lazy-loaded.
+   let visible=0;
+   const batch=8;
+   const reveal=()=>{
+    const end=Math.min(groupWorks.length,visible+batch);
+    for(;visible<end;visible++)section.append(cards.get(groupWorks[visible].id));
+    if(more){more.hidden=visible>=groupWorks.length;
+     more.textContent=L('Mostrar más obras','Show more works','Afficher plus d’œuvres')+' · '+(groupWorks.length-visible);}
+   };
+   const more=groupWorks.length>batch?el('button','cultural-show-more'):null;
+   if(more){more.type='button';more.addEventListener('click',reveal)}
+   reveal();
+   if(more)section.append(more);
    stack.append(section);
   }
  }
