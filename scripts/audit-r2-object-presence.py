@@ -10,7 +10,7 @@ OUT=ROOT/"reports/bibliotheca/r2-live-integrity.json"
 PUBLIC=ROOT/"data/r2/r2-object-status.json"
 CAT=ROOT/"data/r2/catalogo-clasicos-r2.json"
 BUCKET=os.environ.get("R2_BUCKET") or "vitruvius-bibliotheca"
-ACCOUNT=os.environ.get("R2_ACCOUNT_ID","4e936bf2c4f185a87075ca506de93e69")
+ACCOUNT=os.environ.get("R2_ACCOUNT_ID") or "4e936bf2c4f185a87075ca506de93e69"
 HOST="libros.vitruvius-digital-library.org"
 REQUIRED="--required" in sys.argv
 def save(obj):
