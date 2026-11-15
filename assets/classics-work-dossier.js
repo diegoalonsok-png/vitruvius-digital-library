@@ -357,6 +357,30 @@ function renderEditions(dest,w,d){
  if(w.localEdition?.source)row(dest,"Procedencia de la edición local",w.localEdition.source);
  for(const pdf of w.pdfEditions||[]){const rowPdf=html("p","cwd-links");addA(rowPdf,(pdf.label||"Edición histórica en PDF")+" ↗",pdf.url);if(rowPdf.childNodes.length)dest.append(rowPdf);if(pdf.status)row(dest,"Descripción del PDF",pdf.status)}
  if(w.translation?.status)row(dest,"Traducciones",w.translation.status);
+ const originals=editions.filter(e=>e.language===w.language&&["grc","la"].includes(e.language));
+ const translations=editions.filter(e=>["es","fr","en"].includes(e.language));
+ row(dest,"Original disponible para lectura enfrentada",
+  originals.length?
+  "Se registran "+originals.length+" transcripción(es) o edición(es) del original "+(langLabel[w.language]||w.language)+". El locus y la integridad se deben cotejar con la edición fuente.":
+  "No consta una transcripción indexada del original para esta obra en el registro cargado; una ficha o un PDF no prueban que el texto griego/latino se pueda leer digitalmente.");
+ row(dest,"Traducciones humanas indexadas",
+  translations.length?
+  [...new Set(translations.map(e=>langLabel[e.language]||e.language))].join(", ")+
+  ". Comprobar autor, edición y rango antes de considerarlas versiones académicas enfrentables.":
+  "No constan versiones humanas castellanas, francesas o inglesas alojadas en este registro. La ausencia aquí no demuestra inexistencia bibliográfica.");
+ row(dest,"PDF / DOCX y extracción textual",
+  "Solo se abre como texto original cuando el contenido lingüístico y la extracción OCR o DOCX están acreditados para esa edición. El año del impreso, la página PDF y el folio del códice se describen por separado.");
+ row(dest,"Traducción automática y rigor",
+  "Disponible como lectura auxiliar en lectores que cuentan con texto indexado u OCR. La salida no revisada no constituye traducción académica ni collatio; el griego antiguo puede ser procesado por proveedores de griego moderno. Revisar voces técnicas, negaciones, nombres, lagunas y límites de los loci.");
+ if(originals.length){
+  const links=html("p","cwd-links");
+  const original=originals[0];
+  if(original.reader){
+   const separator=original.reader.includes("?")?"&":"?";
+   addA(links,"Leer "+(langLabel[original.language]||original.language)+" y solicitar traducción automática ↗",original.reader+separator+"to=es");
+  }
+  if(links.childNodes.length)dest.append(links);
+ }
 }
 function renderBibliography(dest,w){
  section(dest,"Ediciones y referencias · Chicago 18");
