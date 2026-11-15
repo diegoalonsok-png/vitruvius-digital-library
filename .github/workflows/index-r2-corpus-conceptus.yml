@@ -1,0 +1,65 @@
+name: R2 · indexación Conceptus del corpus remoto
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/index-r2-corpus-conceptus.yml"
+      - "scripts/index-r2-corpus-conceptus.py"
+      - "scripts/build_classics_semantic_index.py"
+      - "data/r2/corpus-manifest.json"
+      - "data/classics-corpus/search-registry.json"
+      - "data/lexicon/conceptus.json"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vdl-classics-publication-main
+  cancel-in-progress: false
+jobs:
+  index:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verificar código e instalar cliente S3
+        run: |
+          python -m py_compile scripts/index-r2-corpus-conceptus.py scripts/build_classics_semantic_index.py
+          python -m pip install --quiet "boto3>=1.36,<2"
+      - name: Leer todos los originales R2, validar SHA256 y publicar índice de conceptos
+        run: python scripts/index-r2-corpus-conceptus.py
+      - name: Publicar manifiesto liviano sin transportar originales a Pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/r2/corpus-conceptus-manifest.json
+          if git diff --cached --quiet; then
+            echo "El manifiesto de Conceptus ya está actualizado"
+            exit 0
+          fi
+          git commit -m "Registrar índice Conceptus comprobado sobre 32 textos R2"
+          git fetch origin main
+          if ! git merge-base --is-ancestor origin/main HEAD; then
+            git pull --rebase origin main
+          fi
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          m=json.loads(Path("data/r2/corpus-conceptus-manifest.json").read_text())
+          assert hashlib.sha256(Path("data/r2/corpus-manifest.json").read_bytes()).hexdigest()==m["sourceManifestSha256"], "Manifiesto R2 cambió durante la publicación"
+          assert hashlib.sha256(Path("data/lexicon/conceptus.json").read_bytes()).hexdigest()==m["dictionarySha256"], "Conceptus cambió durante la publicación"
+          PY
+          git push origin HEAD:main
