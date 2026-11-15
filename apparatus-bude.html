@@ -307,8 +307,21 @@ function load(locus){
  const roseSupplement=id==="krohn"&&!indexed&&!supplied&&Boolean(ocrFixes.loci?.[locus]?.["rose-1899"]?.text||c["rose-1899"]?.text);
  set("#compare-"+id+"-status",indexed?"Krohn 1912 · transcripción digital Perseus (no OCR) · cotejo impreso pendiente":supplied?"Suplido editorial V514 · no es lectura independiente de Krohn":roseSupplement?"Suplido desde Rose 1899 · OCR provisional, no es lectura de Krohn":item?(clean?"Lectura OCR depurada para consulta, con original y cambios disponibles · ":"OCR de archivo · ")+"alineación "+Math.round((item.score||0)*100)+" % · página digital "+item.page:"Sin correspondencia automática documentada");
  if(id==="krohn"){
-  const foot=$("#compare-krohn-footnote");foot.hidden=Boolean(indexed)||(!supplied&&!roseSupplement);
-  foot.textContent=indexed?"":supplied?"Nota editorial · "+locus+": falta transcripción digital independiente de Krohn 1912 para este locus. Se reproduce provisionalmente el texto latino de Kurilo V514, sin atribuirlo a Krohn. Pendiente de cotejo con el impreso.":roseSupplement?"Nota editorial · "+locus+": falta transcripción digital de Krohn y texto V514 utilizable. Se ofrece provisionalmente OCR de Rose 1899, que NO representa la lectura de Krohn. Pendiente de cotejo con ambos impresos.":"";
+  const foot=$("#compare-krohn-footnote");
+  const greekLoci=new Set(["8.3.21","8.3.22","8.3.23"]);
+  const segmentationLoci=new Set(["5.4.8","5.4.9"]);
+  // Editorial warnings belong under the Krohn reader, not inside a witness reading.
+  // Divergence is NOT evidence of OCR error or an emendation.
+  const note=supplied
+   ?"Nota editorial · "+locus+": falta transcripción digital independiente de Krohn 1912 para este locus. Se reproduce provisionalmente el texto latino de Kurilo V514, sin atribuirlo a Krohn. Pendiente de cotejo con el impreso."
+   :roseSupplement
+    ?"Nota editorial · "+locus+": falta transcripción digital de Krohn y texto V514 utilizable. Se ofrece provisionalmente OCR de Rose 1899, que NO representa la lectura de Krohn. Pendiente de cotejo con ambos impresos."
+    :greekLoci.has(locus)
+     ?"Advertencia de cotejo · "+locus+": la transcripción digital de Krohn contiene versos griegos, mientras V514 ofrece un pasaje latino explicativo. La similitud léxica automática entre lenguas no es interpretable como errata OCR ni como variante; revisar segmentación y facsímil antes de emitir juicio."
+     :segmentationLoci.has(locus)
+      ?"Advertencia de cotejo · "+locus+": concordancia léxica inferior a la habitual entre la transcripción digital de Krohn y V514. Examinar límites del locus, transmisión y aparato crítico; no se ha demostrado error de OCR ni errata editorial."
+      :"";
+  foot.hidden=!note;foot.textContent=note;
  }
    const pdf=comp?.loci?.find(v=>v.locus===locus)?.[name]?.pdf||defaultPdf;
    $("#compare-"+id+"-link").href=pdf;
