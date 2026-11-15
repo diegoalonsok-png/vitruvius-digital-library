@@ -154,7 +154,18 @@ async function openMark(mark,explicitWord){
  const slot=el("div",null,"cl-popup-dictionary");
  const status=el("p","Cargando la ficha del diccionario local…","cl-popup-note");
  // Paint a useful panel synchronously, even while large lexica load.
- contents.replaceChildren(slot,status,historicalMedia(word),linksFor(word,lang));
+ // Cuenta solo la forma superficial en el pasaje original actual:
+ // no atribuirla al lema ni al corpus completo.
+ const phraseRoot=mark?.closest?.("[data-locus],.cl-passage,.cl-passage-text,p")||
+  (passages||classicalOriginal);
+ const passageText=phraseRoot?.innerText||phraseRoot?.textContent||"";
+ const foldedWord=fold(word);
+ const occurrences=(passageText.match(/[\\p{L}\\p{M}ʼ’'-]+/gu)||[])
+  .filter(token=>fold(token)===foldedWord).length;
+ const frequency=el("p","Forma «"+word+"»: "+occurrences+
+  (occurrences===1?" aparición":" apariciones")+
+  " en el fragmento visible. Frecuencia literal, no recuento lematizado del corpus.","cl-popup-note");
+ contents.replaceChildren(slot,status,frequency,historicalMedia(word),linksFor(word,lang));
  if(!root.open)root.showModal();
  close.focus();
  try{
