@@ -10,6 +10,16 @@ let localIndex=null,estimates=new Map();
 let map,passages=[],passageByLocus=new Map(),alignment,corpora={},canvases=[],imageIssue='',manifestLoading=true,selection={kind:'folio',value:'1r'},query='';
 const reader=(l,language='es')=>'lector-bilingue.html?edition='+({es:'recensio-es',en:'theory-en',fr:'recensio-fr'}[language]||'recensio-es')+'&locus='+encodeURIComponent(l);
 let lecturas={};
+const lecturaFolioCache=new Map();
+function leerFolioH(folio){
+ if(!folio||!lecturas[folio])return Promise.resolve(null);
+ if(!lecturaFolioCache.has(folio))lecturaFolioCache.set(folio,
+  fetch('data/codex-h/lecturas/'+encodeURIComponent(folio)+'.json').then(r=>{
+   if(!r.ok)throw Error('HTTP '+r.status);
+   return r.json();
+  }).catch(e=>({error:e.message})));
+ return lecturaFolioCache.get(folio);
+}
 function getInfo(locus){for(const entry of map.entries){const record=entry.loci.find(p=>p.locus===locus);if(record)return {entry,record};}
  // Folios leídos sobre la imagen: el cotejo con V514 fija qué loci contienen.
  for(const [folio,l] of Object.entries(lecturas)){if((l.loci||[]).includes(locus)){
@@ -85,7 +95,22 @@ async function render(){
   $('f-reader').hidden=true;$('f-parallel').hidden=true;announce();return;
  }
  const relevant=entries.filter(x=>selection.kind==='folio'||x.locus===selection.value);
- const otherMap=await loadTranslation(lang);
+ const [otherMap,lecturaH]=await Promise.all([loadTranslation(lang),leerFolioH(chosen?.folio)]);
+ // Transcripción de H presente solo en los folios con lectura documental.
+ // Texto V514 y traducciones editoriales se conservan separados.
+ if(Array.isArray(lecturaH?.lines)&&lecturaH.lines.length){
+  const details=document.createElement('details');details.open=true;
+  const summary=document.createElement('summary');summary.textContent='H, f. '+chosen.folio+' · lectura semidiplomática provisional';
+  const caution=document.createElement('p');
+  caution.textContent='Lectura del folio completo todavía sin segmentación diplomática por locus. Abreviaturas, límites y grafías se deben cotejar en la fotografía: NO es el texto editorial V514.';
+  const pre=document.createElement('pre');pre.textContent=lecturaH.lines.join('\n');pre.style.whiteSpace='pre-wrap';pre.style.overflowWrap='anywhere';
+  details.append(summary,caution,pre);latin.append(details);
+ }else if(lecturaH?.error){
+  const message=document.createElement('p');message.className='message';
+  message.textContent='Lectura semidiplomática de H temporalmente inaccesible ('+lecturaH.error+'); se mantiene el texto editorial separado.';
+  latin.append(message);
+ }
+ if(lecturaH?.lines?.length){const header=document.createElement('h3');header.textContent='Texto editorial latino V514 · comparación';latin.append(header);}
  for(const item of relevant){
   const p=passageByLocus.get(item.locus);
   if(!p)continue;
@@ -102,7 +127,7 @@ async function render(){
   }
   addParagraph(translation,item.locus,trans,false);
  }
- $('f-latin-status').textContent=(selection.kind==='folio'?'Folio '+selection.value:'Locus '+selection.value)+' · '+(chosen?.folio_status==='provisional'?'correspondencia semidiplomática provisional':'texto latino editorial V514')+' · '+relevant.map(x=>x.locus).join(' / ');
+ $('f-latin-status').textContent=(selection.kind==='folio'?'Folio '+selection.value:'Locus '+selection.value)+' · '+(lecturaH?.lines?.length?'H: lectura semidiplomática provisional; V514: texto editorial separado':'texto latino editorial V514; sin transcripción semidiplomática disponible de H para este folio')+' · '+relevant.map(x=>x.locus).join(' / ');
  $('f-translation-status').textContent=chosen?.folio==='1r'?(lang==='fr'?'Français V554: no hay corte validado por folio':'Traducción editorial fragmentada por límite aproximado de 1r'):('Traducción editorial · '+$('f-lang').selectedOptions[0].textContent);
  const loc=selection.kind==='locus'?selection.value:relevant[0]?.locus;
  $('f-reader').hidden=!loc;$('f-parallel').hidden=!loc;
