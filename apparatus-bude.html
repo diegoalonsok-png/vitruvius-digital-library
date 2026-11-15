@@ -63,13 +63,15 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 @media(max-width:900px){.ab-compare{grid-template-columns:1fr}.ab-compare .ab-text{max-height:230px}}
 @media print{.ab-compare{page-break-inside:avoid}}
 .ab-autor-note{border-bottom:1px solid var(--ab-rule);padding:15px 5px}.ab-autor-note h3{font:600 14px/1.5 system-ui;margin:0 0 5px}.ab-autor-note .ab-autor-body{font:16px/1.7 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}.ab-autor-level,.ab-autor-detail{font:12px/1.6 system-ui;color:var(--ab-muted)}.ab-autor-links{display:flex;gap:14px;flex-wrap:wrap;font:12px system-ui}.ab-autor-note details{padding:5px 0}.ab-autor-note summary{cursor:pointer;font:12px system-ui}
+
+.ab-source-entry{padding:14px 0;border-bottom:1px solid var(--ab-rule)}.ab-source-entry h4{font:600 14px/1.6 system-ui;margin:0}.ab-critical-reading{font:18px/1.7 Georgia,serif;overflow-wrap:anywhere}.ab-source-links{font:13px/1.6 system-ui}
 </style><link rel="stylesheet" href="assets/edition-references.css?v=20261114-1">  <script src="assets/analytics-config.js" defer></script>
   <script src="assets/analytics.js" defer></script>
 </head><body><main>
 <nav class="ab-nav" aria-label="Navegación académica"><a href="index.html">Biblioteca</a><a href="aparato-critico.html">Aparato autoral</a><a href="aparato-comparativo.html#bude-unit">Aparato comparativo selectivo · H/Krohn/Rose/Kurilo</a><a href="cobertura-aparato-critico.html">Mapa y dossier por locus</a><a href="scriptorium.html">Scriptorium</a><a href="como-citar.html">Cómo citar</a></nav>
 <header><div class="ab-eyebrow">VITRVVIVS · DE ARCHITECTVRA · EDITIO DIGITALIS</div><h1>Apparatus criticus</h1>
 <p class="ab-sub">Lectura bilingüe y aparato textual de presentación concisa, <strong>inspirada en la disposición editorial de la Collection Budé</strong>. Esta interfaz es una adaptación independiente de Vitruvius Digital Library; no reproduce una edición Budé ni representa una colaboración o aval de Les Belles Lettres.</p></header>
-<div class="ab-notice">El texto latino y la traducción proceden de V514 (edición académica bilingüe). Las entradas de V514 conservan su estado declarado; Rose (1899) y Krohn (1912) se muestran como <strong>transcripciones OCR candidatas</strong> con enlace a la página impresa. No equivalen a una nueva colación de H, G, E o S. No se muestran lecturas ni decisiones de una edición Budé sin fuente comprobada.</div>
+<div class="ab-notice">El texto latino y la traducción proceden de las ediciones Kurilo identificadas en el lector. Sus notas y aparatos conservan su procedencia. El registro de Rose distingue las entradas cotejadas con el impreso de las pendientes; los extractos OCR históricos de Rose y Krohn conservan su estado de candidatos. Las lecturas manuscritas citadas por esos editores son testimonios indirectos y se distinguen del cotejo directo de H.</div>
 <form id="controls" class="ab-tools">
 <div class="ab-locus-picker" role="group" aria-label="Elegir locus por libro, capítulo y sección">
 <label>Libro<select id="pick-book" aria-label="Libro de Vitruvio"></select></label>
@@ -112,6 +114,21 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 </section>
 <p id="status" class="ab-status" role="status" aria-live="polite">Cargando los datos existentes…</p>
 <div id="ab-textual-status" role="status" aria-live="polite" style="padding:12px 16px;border:1px solid var(--ab-rule);font:13px/1.65 system-ui;margin:0 0 20px"></div>
+<section id="source-critical-register" aria-labelledby="source-critical-title" class="ab-documentation">
+<h2 id="source-critical-title">Apparatus criticus · lecturas y fuentes</h2>
+<p id="source-critical-coverage" class="ab-sub">Consultando la cobertura de los diez libros…</p>
+<p class="ab-sub"><a href="docs/protocolo-aparato-critico.md">Protocolo de cotejo y nomenclatura</a> · El OCR sirve para localizar. Las entradas pendientes no se acreditan como lecturas verificadas.</p>
+<p class="ab-sub">Las lecturas se citan <i>secundum Rose</i>. El cotejo de la página impresa y la lectura de un códice <i>ex imagine</i> tienen registros propios. Las notas de Kurilo y los extractos OCR se consultan en los apartados siguientes.</p>
+<div class="ab-tools">
+<label>Ámbito<select id="source-critical-range"><option value="locus">Locus actual</option><option value="book">Libro actual</option></select></label>
+<label>Evidencia<select id="source-critical-evidence"><option value="print">Impreso cotejado</option><option value="documentary">Registro documental completo</option></select></label>
+<label>Buscar en las lecturas<input id="source-critical-query" type="search" placeholder="lemma · siglum · coniectura"></label>
+</div>
+<p id="source-critical-status" role="status" class="ab-status">Cargando fuentes críticas…</p>
+<div id="source-critical-comparison"></div>
+<div id="source-critical-entries"></div><button id="source-critical-more" type="button" hidden>Mostrar más entradas</button>
+<details><summary>Conspectus siglorum de la edición fuente</summary><p id="source-critical-conspectus" lang="la"></p><a id="source-critical-conspectus-link" target="_blank" rel="noopener noreferrer">Consultar el conspectus original</a><p class="ab-sub">La datación y las relaciones del conspectus se citan como afirmaciones de Rose; no sustituyen la catalogación institucional actual. Las siglas se interpretan dentro de cada edición.</p></details>
+</section>
 <section aria-labelledby="triple-title">
 <h2 id="triple-title">Collatio textuum · Rose, Krohn, Kurilo</h2>
 <p id="ab-comparison-highlight-status" role="status" aria-live="polite" class="ab-status"></p>
@@ -356,4 +373,4 @@ $("#copy").addEventListener("click",async()=>{
  }catch(e){set("#status","No se pudo cargar el aparato: "+e.message+". El lector no sustituye los datos que faltan por lecturas supuestas.")}
 })();
 })();
-</script><script defer src="assets/apparatus-bude-authorial.js?v=20261113-loci-concepts-v1"></script><script defer src="assets/edition-references.js?v=20261114-1"></script><script defer src="assets/codex-h-concordance.js?v=20261114-bude-h"></script><script defer src="assets/apparatus-bude-h.js?v=20261114-1"></script></body></html>
+</script><script defer src="assets/apparatus-bude-authorial.js?v=20261113-loci-concepts-v1"></script><script defer src="assets/edition-references.js?v=20261114-1"></script><script defer src="assets/codex-h-concordance.js?v=20261114-bude-h"></script><script defer src="assets/apparatus-bude-h.js?v=20261114-1"></script><script defer src="assets/source-critical-register.js?v=20261115-source-checks"></script></body></html>

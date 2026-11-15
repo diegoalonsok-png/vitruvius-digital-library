@@ -9,7 +9,10 @@ import {readFileSync} from "node:fs";
 import {createHash} from "node:crypto";
 
 const json=path=>JSON.parse(readFileSync(path,"utf8"));
-const file="data/corpus-snapshot-2026-11-14.json";
+const current=json("data/corpus-snapshot-current.json");
+assert.equal(current.schema,"vdl-current-corpus-snapshot-v1");
+assert.match(current.path,/^data\/corpus-snapshot-\d{4}-\d{2}-\d{2}\.json$/);
+const file=current.path;
 const snapshot=json(file);
 const source=json("data/structured/manifest.json");
 const integrity=json("data/academic-integrity.json");

@@ -9,7 +9,7 @@
         {
           "id": "V514-8.1.6-quae",
           "version": "V514",
-          "locus_or_page": "8.1.6 · edición latina; DOCX p. 3396",
+          "locus_or_page": "8.1.6 · edición latina; DOCX, párr. 3396",
           "kind": "lapsus_grammatical",
           "reading_printed": "et, qua supra scripta sunt, signa",
           "reading_corrected": "et, quae supra scripta sunt, signa",
@@ -34,7 +34,7 @@
         {
           "id": "V297-8.1.6-quae",
           "version": "V297",
-          "locus_or_page": "8.1.6 · latín; DOCX p. 4188",
+          "locus_or_page": "8.1.6 · latín; DOCX, párr. 4188",
           "kind": "lapsus_grammatical",
           "reading_printed": "et, qua supra scripta sunt, signa",
           "reading_corrected": "et, quae supra scripta sunt, signa",
@@ -48,7 +48,7 @@
         {
           "id": "V297-9.8.15-VIII",
           "version": "V297",
-          "locus_or_page": "9.8.15 · latín; DOCX p. 4605",
+          "locus_or_page": "9.8.15 · latín; DOCX, párr. 4605",
           "kind": "lapsus_numerico",
           "reading_printed": "ad capricorni partem VII",
           "reading_corrected": "ad capricorni partem VIII",
@@ -62,7 +62,7 @@
         {
           "id": "V297-9praef1-Pythia",
           "version": "V297",
-          "locus_or_page": "9.praef.1 · traducción; DOCX p. 4345 · PDF físico p. 780",
+          "locus_or_page": "9.praef.1 · traducción; DOCX, párr. 4345 · PDF físico p. 780",
           "kind": "omision_de_nombre",
           "reading_printed": "won Olympia, Isthmia, and Nemea",
           "reading_corrected": "won Olympia, Pythia, Isthmia, and Nemea",
@@ -72,6 +72,34 @@
           "amended_in_version": "solo fe de erratas; no se altera el texto publicado",
           "status": "errata_publicada_sin_modificar_pdf",
           "severity": "menor"
+        },
+        {
+          "id": "V297-1.4.3-exsugendo-commentary",
+          "version": "V297",
+          "locus_or_page": "I.4.3 · nota explicativa; DOCX, párr. 2107 (índice desde cero); PDF físico p. 299, impresa 287",
+          "kind": "confusion_lexica_en_comentario",
+          "reading_printed": "vaporibus fervidis eripit exsurgendo; exsurgendo (a gerund indicating the action of rising)",
+          "reading_corrected": "vaporibus fervidis eripit exsugendo. Exsugendo is the ablative gerund of exsugere, to suck or draw out, not exsurgere, to rise. Heat, acting through hot vapours, strips materials of their natural properties by drawing them out.",
+          "rationale": "El latín de V297, párr. 2100, dice exsugendo. La nota introduce exsurgendo y explica otro verbo. Se corrige el comentario; no se atribuye una variante inexistente al manuscrito.",
+          "evidence": "DOCX V297 SHA-256 5812cbc7c9c246db46a2e66d9e9291307afc03d6a7d3349eeb7ab80260b11c99, párrs. 2100 y 2107; PDF V297 p. 299. Rose 1899, p. 15 (PDF 51), y Krohn 1912, p. 14 (PDF 32): texto exsugendo, comprobado en ambas imágenes impresas el 2026-11-15.",
+          "date": "2026-11-15",
+          "amended_in_version": "corrección publicada en la fe de erratas; DOCX/PDF originales conservados",
+          "status": "errata_publicada_sin_modificar_pdf",
+          "severity": "moderado"
+        },
+        {
+          "id": "V297-1.4.4-refrigerationibus",
+          "version": "V297",
+          "locus_or_page": "I.4.4 · traducciones y comentario; DOCX, párrs. 2113, 2115 y 2119 (índices desde cero)",
+          "kind": "omision_de_clausula_y_confusion_de_construcciones",
+          "reading_printed": "For this reason, when bodies are transferred from cold to warm ones ... / This is because, when bodies acclimatized to the cold move to warm regions ...; nota a refrigerationibus... in calidas",
+          "reading_corrected": "... even the most unhealthy regions become healthy, because bodies are made firm by cooling. Likewise, bodies transferred from cold regions to warm ones cannot endure, but are weakened ... . En la nota, a refrigerationibus depende de solidantur y pertenece a la explicación anterior; ab frigidis regionibus ... in calidas pertenece a la oración siguiente.",
+          "rationale": "Ambas traducciones inglesas omiten la acción expresada por solidantur y conectan la explicación causal con la oración siguiente. La nota 2119 fusiona dos construcciones distintas. El latín de V297 sí conserva ideo quod a refrigerationibus solidantur. Se restituye esa cláusula y se distingue el comentario gramatical de una variante textual.",
+          "evidence": "DOCX V297 SHA-256 5812cbc7c9c246db46a2e66d9e9291307afc03d6a7d3349eeb7ab80260b11c99, párrs. 2112–2119. Cotejo visual del latín: Rose 1899, p. 15, ll. 17–20 (PDF 51); Krohn 1912, p. 14, ll. 14–17 (PDF 32), el 2026-11-15. La redacción inglesa se comprobó directamente en OOXML, no mediante OCR.",
+          "date": "2026-11-15",
+          "amended_in_version": "corrección publicada en la fe de erratas; fuente histórica conservada para una emisión revisada identificada",
+          "status": "errata_publicada_sin_modificar_pdf",
+          "severity": "moderado"
         }
       ]
     }
@@ -90,7 +118,7 @@
     "status",
     "severity"
   ],
-  "note": "4 erratas de libro documentadas contra originales en V514 y V297; 2 casos en revisión separados, incluido uno importante. V554 no se declara exento de errores. No se han modificado los PDF publicados.",
+  "note": "6 erratas de libro documentadas, 3 casos de revisión y 6 correcciones digitales separadas. Los originales publicados se conservan y los cambios digitales requieren comprobación de publicación.",
   "review_queue": [
     {
       "id": "V297-9.2.1-duplicacion",
@@ -112,6 +140,67 @@
       "finding": "Índice estructurado francés ya contiene quae; no se dispone en esta comprobación del DOCX V554 original para determinar si el impreso conservó qua.",
       "next_action": "Cotejar versión publicada antes de atribuir una errata a V554.",
       "pdf_modified": false
+    },
+    {
+      "id": "AUTO-CLEMENT2-1.2",
+      "version": "Traducción automática de clásicos",
+      "locus": "Clemente II 1.2",
+      "severity": "moderado",
+      "category": "traduccion_automatica_no_verificada",
+      "finding": "La salida observada cambió el sujeto en la cláusula sobre lo que Jesucristo soportó padecer. La separación de notas se corrige; la exactitud semántica de cada salida automática sigue requiriendo cotejo.",
+      "evidence": "Griego First1KGreek tlg1271.tlg002, 1.2; observación de la salida del proveedor en la auditoría del 15 de noviembre.",
+      "next_action": "Priorizar traducción publicada cuando exista y revisar la salida antes de uso académico; no presentar la traducción automática como cotejada.",
+      "pdf_modified": false
+    }
+  ],
+  "digital_corrections": [
+    {
+      "id": "SITE-20261115-simple-source-notes",
+      "title": "Separación del original y las notas en el lector simple",
+      "correction": "El lector simple aplica la separación documentada por huella de fuente que ya utiliza el lector académico. Conserva las notas y el texto importado íntegro; la traducción recibe el texto de lectura.",
+      "status": "corregido_en_codigo",
+      "date": "2026-11-15",
+      "evidence": "Clemente II, 1.2: nota en Beta Code separada del griego; prueba de entrada de traducción y conservación de fuente."
+    },
+    {
+      "id": "SITE-20261115-remote-coverage",
+      "title": "Control de ediciones remotas y fragmentos por locus",
+      "correction": "Las direcciones R2 se comprueban por HTTPS, identidad y SHA-256 del manifiesto. Los fragmentos consecutivos diferentes se conservan como partes de un mismo locus. Se rechazan duplicaciones idénticas o no consecutivas.",
+      "status": "corregido_en_codigo",
+      "date": "2026-11-15",
+      "evidence": "32 fuentes R2; 1.668 grupos de fragmentos en 34 archivos; pruebas específicas de rechazo de fuente alterada y de duplicaciones."
+    },
+    {
+      "id": "SITE-20261115-reader-language",
+      "title": "Lengua explícita en los enlaces de lectura R2",
+      "correction": "Se añade lang al enlace de las 32 ediciones R2 y al generador, para que el lector y el control identifiquen la edición solicitada.",
+      "status": "corregido_en_codigo",
+      "date": "2026-11-15",
+      "evidence": "Registro de búsqueda y scripts/indexar-perseus-lote.py."
+    },
+    {
+      "id": "SITE-20261115-snapshot",
+      "title": "Instantánea actual de procedencia del corpus",
+      "correction": "Nueva instantánea del 15 de noviembre con las huellas actuales de los tres JSON. La instantánea del 14 se conserva como documento histórico.",
+      "status": "corregido_en_codigo",
+      "date": "2026-11-15",
+      "evidence": "data/corpus-snapshot-2026-11-15.json; test-corpus-snapshot.mjs."
+    },
+    {
+      "id": "SITE-20261115-syntax-link",
+      "title": "Acceso al modo de sintaxis de Lexicon",
+      "correction": "El enlace del laboratorio abre el modo sintaxis y un ancla existente.",
+      "status": "corregido_en_codigo",
+      "date": "2026-11-15",
+      "evidence": "laboratorio-humanidades.html → vitruvia-lexicon.html?mode=sintaxis#main-content."
+    },
+    {
+      "id": "FRONT-UNIFIED-SCRIPT-PRINT",
+      "title": "Arranque de la portada y búsqueda de libros",
+      "date": "2026-11-15",
+      "status": "corregido_en_codigo",
+      "correction": "Se traslada la carga del buscador unificado fuera de la cadena de impresión. El cierre de script y el salto de línea incrustados rompían el JavaScript de la portada.",
+      "evidence": "Fallo de arranque reproducido con test-page-boot.mjs sobre la base dc4b79b7; corregido sin retirar la búsqueda unificada ni la impresión."
     }
   ]
 }

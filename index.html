@@ -621,7 +621,7 @@ html[data-theme=light] #front-classics-search .front-classics-item .front-classi
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:16px 0;font:13px/1.65 system-ui,sans-serif">
           <div><strong>Bibliotheca Graeca et Latina</strong><p style="margin:4px 0">El repertorio principal tiene <strong data-cifra="obras">271</strong> obras; <strong data-cifra="obrasConTextoIndexado">214</strong> cuentan con texto registrado para búsqueda. La biblioteca reúne <strong data-cifra="obrasTotalesDeclaradas">281</strong> obras declaradas al incluir las <strong data-cifra="obrasAdicionales">10</strong> incorporaciones de R2. Las versiones, ediciones PDF y fuentes remotas no se suman como obras nuevas; su disponibilidad se comprueba por separado.</p></div>
           <div><strong>De architectura · tres ediciones</strong><p style="margin:4px 0"><strong>731 loci</strong> cubiertos por la estructura de V514, V554 y V297. V297 conserva agrupaciones de pasajes; la coincidencia de locus no certifica cotejo manuscrito independiente.</p></div>
-          <div><strong>Fuentes y labor editorial</strong><p style="margin:4px 0">V514, V554 y V297 son ediciones de Diego Kurilo; los códices y facsímiles son testimonios conservados por sus respectivas bibliotecas. <a href="status-textus.html">Alcance de la verificación</a> · <a href="data/corpus-snapshot-2026-11-14.json">versión documental fechada</a>.</p></div>
+          <div><strong>Fuentes y labor editorial</strong><p style="margin:4px 0">V514, V554 y V297 son ediciones de Diego Kurilo; los códices y facsímiles son testimonios conservados por sus respectivas bibliotecas. <a href="status-textus.html">Alcance de la verificación</a> · <a href="data/corpus-snapshot-2026-11-15.json">versión documental fechada</a>.</p></div>
         </div>
         <nav aria-label="Ejemplo de investigación en cuatro pasos" style="font:13px/1.65 system-ui,sans-serif;border-top:1px solid #7775;padding-top:12px"><strong>Ejemplo de consulta:</strong>
           <a href="vitruvia.html?q=symmetria&amp;mode=all">1. Buscar symmetria</a> →
@@ -845,8 +845,7 @@ html[data-theme=light] #front-classics-search .front-classics-item .front-classi
   const escapeText=value=>String(value).replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
   const printWindow=window.open('','_blank');
   if(!printWindow){inform('Permite las ventanas emergentes para abrir la vista imprimible.');return}
-  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer><script defer src="assets/unified-books-discovery.js?v=20261115-unified-all-books-v3"></script>
-</body></html>';
+  const doc='<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Vitruvius · Selección</title><style>@page{size:A4;margin:20mm}body{font:13pt/1.65 Georgia,serif;color:#111}h1{font:22pt Georgia,serif}small{font:10pt Arial,sans-serif;overflow-wrap:anywhere}main{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:15mm}footer{font:9pt Arial,sans-serif;border-top:1px solid #aaa;margin-top:15mm;padding-top:5mm}</style></head><body><h1>Vitruvius Digital Library</h1><small>Selección textual · Fuente: '+escapeText(location.href)+'</small><main>'+escapeText(selection)+'</main><footer>Fragmento seleccionado por el lector. Respetar atribuciones y derechos de la fuente original.</footer></body></html>';
   printWindow.document.open();printWindow.document.write(doc);printWindow.document.close();
   printWindow.focus();printWindow.print();
  });
@@ -902,7 +901,8 @@ button.addEventListener("click",async()=>{
  catch{window.prompt("Copiar cita de biblioteca:",cite);}
 });
 })();
-</script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/collapse-empty-regions.js?v=20261111-vacio-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/cifra-obras.js?v=20261115-front-catalogue-281"></script></body>
+</script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/collapse-empty-regions.js?v=20261111-vacio-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/cifra-obras.js?v=20261115-front-catalogue-281"></script><script defer src="assets/unified-books-discovery.js?v=20261115-unified-all-books-v3"></script>
+</body>
 </html>
 
 
