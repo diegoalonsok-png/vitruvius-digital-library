@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice. Control visual de H ff. 1v y 4v en las secuencias ea nascitur & fabrica y uti fuerit Aristarchus: las siglas de aparato histórico se mantienen diferenciadas del testimonio directo del códice.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -14,15 +14,28 @@
         "V554-T-p1103-210"
       ],
       "note": "El texto editado presenta ex fabrica; el Apéndice T registra para H una lectura tentativa con & (ut vid.). El signo de lectura debe comprobarse directamente en el folio.",
-      "status": "contexto de H localizado; lectura variante pendiente de certificar por ampliación",
-      "imageInspection": {
+      "status": "lectura puntual contrastada con fotografía H; colación integral y facsímiles editoriales pendientes",
+      "verifiedAutopsy": true,
+      "evidenceClass": "visual_folio_reading",
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
         "folio": "1v",
         "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_010_f-1v.jpg",
-        "inspection": "fotografía local de alta resolución abierta y examinada",
-        "warning": "Comienzo del capítulo I, rúbrica De architectis instituendis y frase sobre fabrica y ratiocinatio localizados; lectura precisa de ex frente a & no certificada."
+        "observedReading": "ea nascitur & fabrica",
+        "verification": "inspección directa de la imagen original archivada",
+        "note": "En la fotografía del comienzo de I.1.1 se lee un signo de conjunción («&») delante de fabrica; la expansión diplomática del signo se registra como et y requiere conservar la forma gráfica en la transcripción."
       },
-      "verifiedAutopsy": false,
-      "evidenceClass": "visual_context_not_lemma"
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "1.1.1",
+        "selected": "Ea nascitur ex fabrica",
+        "selectedAttribution": "Kur. V514 (texto latino indexado)",
+        "variant": "ea nascitur & fabrica",
+        "variantAttribution": "H (ex imagine)",
+        "folio": "1v",
+        "display": "‖ I.1.1 ea nascitur ex fabrica Kur. : ea nascitur & fabrica H (f. 1v, ex imagine) ‖",
+        "caution": "Lectura del signo copulativo visualmente comprobada en H. El texto editado V514 presenta ex; no se presume todavía el apoyo textual de Rose ni Krohn para este lema."
+      }
     },
     {
       "locus": "1.1.5",
@@ -103,15 +116,28 @@
         "V554-T-p1110-220"
       ],
       "note": "Las dos ediciones mantienen la lección editorial frente a la lectura atribuida a H, cuya identificación visual debe comprobarse.",
-      "status": "contexto de H localizado; lectura variante pendiente de certificar por ampliación",
-      "imageInspection": {
+      "status": "lectura puntual contrastada con fotografía H; colación integral y facsímiles editoriales pendientes",
+      "verifiedAutopsy": true,
+      "evidenceClass": "visual_folio_reading",
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
         "folio": "4v",
         "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_016_f-4v.jpg",
-        "inspection": "fotografía local de alta resolución abierta y examinada",
-        "warning": "Se identificó el pasaje en el que se menciona a Aristarchus, pero la desinencia de fuerat/fuerit todavía no se da por certificada."
+        "observedReading": "uti fuerit Aristarchus",
+        "verification": "inspección directa de la imagen original archivada",
+        "note": "En f. 4v, junto al nombre Aristarchus, se lee fuerit. Los aparatos OCR de Rose y Krohn presentan «fuerat : fuerit x», concordando en la oposición de lecturas; la sigla colectiva x de los editores no debe sustituirse por H sin la lectura directa."
       },
-      "verifiedAutopsy": false,
-      "evidenceClass": "visual_context_not_lemma"
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "1.1.13",
+        "selected": "uti fuerat Aristarchus",
+        "selectedAttribution": "Kur. V514 (texto latino indexado)",
+        "variant": "uti fuerit Aristarchus",
+        "variantAttribution": "H (ex imagine)",
+        "folio": "4v",
+        "display": "‖ I.1.13 uti fuerat Aristarchus Kur. (cf. Rose, Kr., OCR) : uti fuerit Aristarchus H (f. 4v, ex imagine) ‖",
+        "caution": "La terminación fuerit de H fue revisada visualmente. Los aparatos de Rose y Krohn se citan como OCR aún pendiente de control impreso, no como una nueva autopsia."
+      }
     },
     {
       "locus": "1.1.17",
