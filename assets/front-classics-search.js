@@ -12,14 +12,14 @@ function init(){
  const head=mk("h3","Ampliar la búsqueda al corpus clásico griego y latino");
  const explain=mk("p","El buscador principal mantiene sus tres ediciones de Vitruvio. Esta capa adicional busca pasajes en otras obras de la Bibliotheca y distingue resultados textuales de fichas bibliográficas. No equivale a una búsqueda morfológica por lema.");
  const row=mk("div",null,"front-classics-controls");
- const active=mk("input");active.type="checkbox";active.id="front-classics-enabled";active.checked=false;
+ const active=mk("input");active.type="checkbox";active.id="front-classics-enabled";active.checked=true;
  const label=mk("label");label.htmlFor=active.id;label.append(active,document.createTextNode(" Incluir textos originales de Bibliotheca en la próxima búsqueda"));
  const lang=mk("select");lang.id="front-classics-lang";lang.setAttribute("aria-label","Lengua del corpus");
  for(const [val,t] of [["","Latín y griego"],["la","Solo latín"],["grc","Solo griego"]])lang.append(new Option(t,val));
  const work=mk("select");work.id="front-classics-work";work.setAttribute("aria-label","Obra del corpus");work.append(new Option("Todas las obras indexadas",""));
  const launch=mk("button","Buscar en la Bibliotheca");launch.type="button";
  row.append(label,lang,work,launch);
- const status=mk("p","Búsqueda adicional opcional: active la casilla o pulse «Buscar en la Bibliotheca».","front-classics-status");
+ const status=mk("p","Búsqueda ampliada activada: el próximo envío buscará en Vitruvio y en las transcripciones clásicas; puede desactivar esta opción para una consulta rápida.","front-classics-status");
  status.setAttribute("role","status");status.setAttribute("aria-live","polite");
  const result=mk("ol",null,"front-classics-results");
  const more=mk("button","Mostrar otros pasajes");more.type="button";more.hidden=true;
