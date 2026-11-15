@@ -429,7 +429,9 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
 <script defer src="assets/bibliotheca-offsite-greek.js?v=20261110-plutarch-greek-v1"></script>
 <script defer src="assets/bibliotheca-offsite-latin.js?v=20261110-macrobius-7books-v4"></script>
 <link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261114-light-contrast-fix">
+<script defer src="assets/bibliotheca-corpus-search.js?v=20261115-front-corpus-v1"></script>
 <script defer src="assets/bibliotheca-work-search.js?v=20261114-unified-search"></script>
+<script defer src="assets/front-classics-search.js?v=20261115-front-corpus-v1"></script>
 <script defer src="assets/classics-corpus-counts.js?v=20261114-unified-search"></script>
 <script defer src="assets/classics-audited-coverage.js?v=20261110-manifest-28-wikisource-v4"></script>
 <style id="reference-editions-inline-doi-pdf">
@@ -474,6 +476,33 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
   #search-results mark.search-hit,
   #reader-text mark.search-hit {print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
+</style>
+
+<style id="front-classics-search-style">
+#front-classics-search{margin:17px 0 24px;padding:18px;border:1px solid #7e8289;border-radius:10px;background:#192027;color:#f3f0e8}
+#front-classics-search h3{font:500 clamp(20px,2.3vw,26px)/1.3 Georgia,serif;margin:0 0 9px;color:inherit}
+#front-classics-search p{font:14px/1.65 system-ui,sans-serif}
+#front-classics-search .front-classics-controls{display:grid;grid-template-columns:minmax(220px,1.4fr) minmax(140px,.7fr) minmax(190px,1fr) auto;gap:8px;align-items:center;margin:14px 0}
+#front-classics-search .front-classics-controls label{display:flex;gap:9px;align-items:center;font:500 14px/1.4 system-ui,sans-serif}
+#front-classics-search .front-classics-controls input[type=checkbox]{width:20px;height:20px;flex:none}
+#front-classics-search :is(select,button){min-height:43px;min-width:0;padding:8px 9px;border:1px solid #8a8c8c;border-radius:6px;font:500 14px system-ui,sans-serif}
+#front-classics-search select{width:100%;background:#0e151b;color:#fff}
+#front-classics-search button{background:#dfbb7c;color:#17222d;font-weight:700;cursor:pointer}
+#front-classics-search button:disabled{opacity:.6}
+#front-classics-search .front-classics-results{max-height:60vh;overflow:auto;padding-left:25px}
+#front-classics-search .front-classics-item{padding:11px 5px;border-top:1px solid #555e66}
+#front-classics-search .front-classics-item a{font:600 18px/1.4 Georgia,serif;color:#efd09a;text-decoration:underline}
+#front-classics-search .front-classics-item .front-classics-excerpt{font:17px/1.65 Georgia,serif}
+#front-classics-search .front-classics-item .front-classics-meta{font-size:12px;color:#cbd2d4}
+#front-classics-search .front-classics-method{font-size:12px;color:#cdd0d1}
+#front-classics-search a{color:#efd09a}
+#front-classics-search :is(a,input,select,button):focus-visible{outline:3px solid #f0d099;outline-offset:2px}
+html[data-theme=light] #front-classics-search{background:#f7f6f2;color:#182a34}
+html[data-theme=light] #front-classics-search select{background:#fff;color:#182a34}
+html[data-theme=light] #front-classics-search a{color:#17557b}
+html[data-theme=light] #front-classics-search .front-classics-item .front-classics-meta,html[data-theme=light] #front-classics-search .front-classics-method{color:#485866}
+@media(max-width:1040px){#front-classics-search .front-classics-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){#front-classics-search{padding:13px}#front-classics-search .front-classics-controls{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
