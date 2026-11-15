@@ -69,6 +69,22 @@ async function render(query){
  $("bude-open-h").href="harleianus.html?locus="+encodeURIComponent(locus);
  const u=new URL(location.href);u.searchParams.set("locus",locus);history.replaceState(null,"",u);
  root.replaceChildren();status.textContent="Consultando "+fmt(locus)+"…";
+ const evidence=data.coverage?.loci?.find(x=>x.locus===locus);
+ const indicator=$("bude-cobertura");
+ if(indicator&&evidence){
+  indicator.replaceChildren(E("strong","Expediente "+fmt(locus)+" · "));
+  indicator.append("fuentes documentales localizadas (cobertura 731/731; no es cotejo paleográfico completo).");
+  const grid=E("div",null,"bude-evidence-grid");
+  const statusList=[
+   ["Kurilo V514",evidence.kurilo.estado==="texto_estructurado"?"Latín estructurado":"Texto no disponible","lector-bilingue.html?locus="+encodeURIComponent(locus)],
+   ["Rose 1899",evidence.rose.estado==="ocr_alineado_candidato"?"OCR candidato · imagen "+evidence.rose.pagina_digital:"Sin OCR","rose-1899.html"],
+   ["Krohn 1912",evidence.krohn.estado==="transcripcion_perseus_candidata"?"Perseus + OCR · imagen "+evidence.krohn.pagina_digital:evidence.krohn.estado==="solo_ocr_historico"?"Solo OCR histórico · imagen "+evidence.krohn.pagina_digital:"Sin transcripción","krohn-1912.html"],
+   ["Codex H",evidence.codex_h.anclas.length?evidence.codex_h.anclas.length+" vínculo(s) del mapa; verificar grado":"Sin ancla material exacta; localización estimada posible","harleianus.html?locus="+encodeURIComponent(locus)]
+  ];
+  for(const [edition,description,url] of statusList){const card=E("div",null,"bude-evidence-unit");card.append(E("b",edition),E("small",description),A("Consultar",url));grid.append(card)}
+  indicator.append(grid,E("small",(evidence.aparato.estado==="entradas_documentales"?"Aparato con entradas OCR/editoriales documentadas.":"Sin entrada crítica registrada; cotejo pendiente.")+" Diferencias digitales candidatas: "+evidence.aparato.diferencias_digitales_candidatas+". La ubicación de H y los segmentos OCR no son lecturas verificadas."));
+ }
+
  const p=data.es.passages.find(x=>x.locus===locus);
  const grid=E("div",null,"bude-grid");grid.append(card("Textus Latinus · Kur. V514",p?.latin,"la"));
  for(const [id,title,lang] of [["es","Interpretatio Hispanica · V514","es"],["fr","Interpretatio Gallica · V554","fr"],["en","Interpretatio Anglica · V297","en"]]){
@@ -217,8 +233,8 @@ async function render(query){
 }
 (async()=>{try{
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
- const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json"].map(json));
- data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants};loci=es.passages.map(p=>p.locus);
+ const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json","data/apparatus/cobertura-testimonial-731.json"].map(json));
+ data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage};loci=es.passages.map(p=>p.locus);
  syncNavigator=setupNavigator();
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
