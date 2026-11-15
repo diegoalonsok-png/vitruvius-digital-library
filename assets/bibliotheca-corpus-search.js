@@ -201,16 +201,33 @@ async function semanticPostings(){
 let remoteConceptusTask=null;
 async function remoteConceptusPostings(){
  if(!remoteConceptusTask)remoteConceptusTask=(async()=>{
+  // Never use a negative remote posting without cryptographically proving
+  // that the current dictionary, corpus manifest and index match each other.
+  // On browsers without SubtleCrypto we search the original texts directly.
+  if(!globalThis.crypto?.subtle)return null;
   const get=async url=>{const r=await fetch(url,{cache:"no-cache"});if(!r.ok)throw Error("HTTP "+r.status);return r.json()};
-  const [meta,source]=await Promise.all([
+  const getVerified=async url=>{
+   const r=await fetch(url,{cache:"no-cache"});if(!r.ok)throw Error("HTTP "+r.status);
+   const body=await r.arrayBuffer();
+   const digest=await globalThis.crypto.subtle.digest("SHA-256",body);
+   const sha256=[...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("");
+   return {doc:JSON.parse(new TextDecoder("utf-8").decode(body)),sha256};
+  };
+  const [meta,sourceFile,dictionaryFile]=await Promise.all([
    get("data/r2/corpus-conceptus-manifest.json"),
-   get("data/r2/corpus-manifest.json")
+   getVerified("data/r2/corpus-manifest.json"),
+   getVerified("data/lexicon/conceptus.json")
   ]);
+  const source=sourceFile.doc;
+  if(sourceFile.sha256!==meta.sourceManifestSha256||
+     dictionaryFile.sha256!==meta.dictionarySha256)return null;
   const approved="https://libros.vitruvius-digital-library.org/corpus/indice/semantic-conceptus-v1.json";
   if(meta.schema!=="vdl-r2-corpus-conceptus-manifest-v1"||
      meta.url!==approved||!Array.isArray(source.obras)||source.base!=="https://libros.vitruvius-digital-library.org/corpus/")
    return null;
-  const index=await get(meta.url);
+  const indexFile=await getVerified(meta.url);
+  if(indexFile.sha256!==meta.sha256)return null;
+  const index=indexFile.doc;
   if(index.schema!=="vdl-r2-corpus-conceptus-index-v1"||
      index.sourceManifestSha256!==meta.sourceManifestSha256||
      index.dictionarySha256!==meta.dictionarySha256||
