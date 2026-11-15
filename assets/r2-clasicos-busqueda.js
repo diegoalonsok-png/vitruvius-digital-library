@@ -71,10 +71,18 @@ async function lookup(consulta){
  porRaiz.sort((a,b)=>Object.keys(a.entradas).length-Object.keys(b.entradas).length);
  const comunes=Object.keys(porRaiz[0].entradas).filter(id=>porRaiz.every(x=>x.entradas[id]));
  if(!comunes.length)return {raices,obras:[],motivo:"ninguna obra reúne todas las palabras"};
- const catalogo=await leer(CATALOGO).catch(()=>({items:[]}));
- const porId=new Map((catalogo.items||[]).map(x=>[x.id,x]));
- const obras=comunes.map(id=>{
-  const ficha=porId.get(id)||{};
+ // El índice remoto puede conservar publicaciones anteriores a una ingesta
+ // interrumpida: NUNCA mostrar sus IDs como obras avaladas sin ficha GitHub.
+ // Si el catálogo no está disponible, el resultado queda sin certificar.
+ const catalogo=await leer(CATALOGO).catch(()=>null);
+ if(!catalogo||!Array.isArray(catalogo.items))
+  return {raices,obras:[],motivo:"No se pudo verificar el catálogo bibliográfico; no se muestran identificadores huérfanos"};
+ const porId=new Map(catalogo.items.filter(x=>x&&x.id&&x.pdf&&x.texto).map(x=>[x.id,x]));
+ const autorizadas=comunes.filter(id=>porId.has(id));
+ if(!autorizadas.length)
+  return {raices,obras:[],motivo:"El índice contiene resultados no reconciliados con las fichas académicas"};
+ const obras=autorizadas.map(id=>{
+  const ficha=porId.get(id);
   const propia=porRaiz[0].entradas[id];
   return {
    id,autor:ficha.autor||id,obra:ficha.obra||"",lengua:ficha.lengua||"",anio:ficha.anio||null,
