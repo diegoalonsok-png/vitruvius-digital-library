@@ -39,6 +39,15 @@ async function render(query){
   }
  }
  if(ext.children.length===1)ext.append(E("p","Sin entradas selectivas para este locus."));
+ const verified=section("Apparatus selectivus · cotejos documentales V514/V554");
+ const selected=data.curated.entries.filter(x=>x.locus===locus);
+ for(const e of selected){
+  const sourceRefs=(e.sources||[]).join(" · ");
+  item(verified,"Kur. : "+e.lemma+" ] "+e.reading+" "+e.siglum,
+       e.note,"H, f. "+e.folio+" · "+e.status+" · registros: "+sourceRefs,
+       "codex-h-folios-local.html?folio="+encodeURIComponent(e.folio)+"&locus="+encodeURIComponent(locus));
+ }
+ if(!selected.length)verified.append(E("p","Sin unidad selectiva cotejada entre ambas publicaciones en este locus; no implica inexistencia de otras variantes."));
  const appendix=section("Collatio selectiva · Apéndice T (V514/V554)");
  const entries=data.appendix.entradas.filter(x=>x.locus===locus);
  for(const ent of entries.slice(0,30)){
@@ -58,12 +67,12 @@ async function render(query){
   else if(v?.estimate)item(h,"H · estimación",v.estimate.folio+" ("+v.estimate.from+"–"+v.estimate.to+")","Localización proporcional, no prueba codicológica.","codex-h-folios-local.html?folio="+encodeURIComponent(v.estimate.folio)+"&locus="+encodeURIComponent(locus));
   else h.append(E("p","Sin folio vinculado en el mapa actual."));
  }catch(e){h.append(E("p","Concordancia H no disponible: "+e.message))}
- status.textContent="Vitr. "+fmt(locus)+" · "+(c?.v514?.length||0)+" entradas del índice V514; "+entries.length+" registros del Apéndice T; "+glosas.length+" glosas ancladas. Selectivo, no exhaustivo.";
+ status.textContent="Vitr. "+fmt(locus)+" · "+selected.length+" unidades selectivas cotejadas entre V514 y V554; "+(c?.v514?.length||0)+" entradas del índice V514; "+entries.length+" registros del Apéndice T; "+glosas.length+" glosas ancladas. Selectivo, no exhaustivo.";
 }
 (async()=>{try{
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
- const [es,fr,en,comparison,appendix,author]=await Promise.all(paths.map(json));
- data={es,fr,en,comparison,appendix,author};loci=es.passages.map(p=>p.locus);
+ const [es,fr,en,comparison,appendix,author,curated]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json"].map(json));
+ data={es,fr,en,comparison,appendix,author,curated};loci=es.passages.map(p=>p.locus);
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
  // Unify the legacy tabular finder with the locus-specific apparatus.
