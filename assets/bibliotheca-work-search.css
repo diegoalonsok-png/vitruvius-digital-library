@@ -128,3 +128,27 @@ html[data-theme="light"] body #bibliotheca-entity-search :is(p,h3,strong,li){col
 html[data-theme="light"] body #bibliotheca-entity-search :is(input,select){background:white!important;color:#22313e!important}
 html[data-theme="light"] body #bibliotheca-entity-search a{color:#16567d!important}
 @media(max-width:720px){#bibliotheca-entity-search .bws-entity-controls{grid-template-columns:1fr}#bibliotheca-entity-search{padding:15px}}
+
+
+/* Concordancia académica por loci: vista propia, no copia gráfica de Perseus. */
+#bibliotheca-concordance{margin:22px 0 32px;padding:22px;border:1px solid #8c816d;border-radius:10px;background:#161f25;color:#f4efe8}
+#bibliotheca-concordance h3{font:500 clamp(22px,2.6vw,29px)/1.35 Georgia,serif;margin:0 0 10px}
+#bibliotheca-concordance p{line-height:1.55}
+#bibliotheca-concordance .bws-concordance-controls{display:grid;grid-template-columns:minmax(220px,1.5fr) minmax(140px,0.6fr) minmax(200px,1fr) auto;gap:9px;margin:16px 0}
+#bibliotheca-concordance :is(input,select,button){min-height:44px;padding:8px 10px;font:500 15px system-ui;border:1px solid #8f9b98;border-radius:6px}
+#bibliotheca-concordance :is(input,select){min-width:0;width:100%;background:#0a1119;color:#f5f3ef}
+#bibliotheca-concordance button{background:#d4b47f;color:#19252d;font-weight:650;cursor:pointer}
+#bibliotheca-concordance button:disabled{opacity:.65;cursor:wait}
+#bibliotheca-concordance .bws-concordance-hits{max-height:70vh;overflow:auto;list-style:decimal;padding-left:27px}
+#bibliotheca-concordance .bws-concordance-hit{border-bottom:1px solid #54616a;padding:14px 5px}
+#bibliotheca-concordance .bws-concordance-hit a{font:600 18px/1.45 Georgia,serif;color:#f3d39c}
+#bibliotheca-concordance .bws-concordance-excerpt{font:17px/1.7 Georgia,serif;overflow-wrap:anywhere}
+#bibliotheca-concordance .bws-concordance-meta{font-size:13px;color:#ccd3d3}
+#bibliotheca-concordance .bws-concordance-hit button{min-height:32px;padding:5px 10px;font-size:12px}
+#bibliotheca-concordance :is(input,select,button,a):focus-visible{outline:3px solid #f0d49a;outline-offset:2px}
+html[data-theme="light"] body #bibliotheca-concordance{background:#faf8f3!important;color:#1c2931!important}
+html[data-theme="light"] body #bibliotheca-concordance :is(input,select){background:white!important;color:#24333f!important}
+html[data-theme="light"] body #bibliotheca-concordance .bws-concordance-hit a{color:#17567b!important}
+html[data-theme="light"] body #bibliotheca-concordance .bws-concordance-meta{color:#485761!important}
+@media(max-width:900px){#bibliotheca-concordance .bws-concordance-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){#bibliotheca-concordance{padding:14px}#bibliotheca-concordance .bws-concordance-controls{grid-template-columns:1fr}}
