@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-lexical-live-v1",
-  "generated": "2026-11-15T04:10:43.770Z",
+  "generated": "2026-11-15T04:12:21.628Z",
   "method": "GET de OCR en R2, GET de fragmentos invertidos R2; comparación de palabras atestiguadas y páginas digitales con el mismo normalizador del visor",
   "limitations": "El modo --full verifica tres raíces del OCR por edición catalogada; no implica validación total de todas las raíces ni lematización filológica, ni exactitud paleográfica del OCR.",
   "cataloguedEditions": 117,
@@ -155,6 +155,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -188,6 +189,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 12101,
       "originalScriptProbes": 1
     },
     {
@@ -221,6 +223,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 8200,
       "originalScriptProbes": 3
     },
     {
@@ -254,6 +257,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 6756,
       "originalScriptProbes": 2
     },
     {
@@ -287,6 +291,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 6156,
       "originalScriptProbes": 3
     },
     {
@@ -320,6 +325,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 300,
       "originalScriptProbes": 2
     },
     {
@@ -353,6 +359,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -386,6 +393,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -419,6 +427,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -452,6 +461,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -485,6 +495,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 806,
       "originalScriptProbes": 2
     },
     {
@@ -518,6 +529,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 12101,
       "originalScriptProbes": 1
     },
     {
@@ -551,6 +563,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 6669,
       "originalScriptProbes": 2
     },
     {
@@ -584,6 +597,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 12101,
       "originalScriptProbes": 1
     },
     {
@@ -617,6 +631,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 9852,
       "originalScriptProbes": 1
     },
     {
@@ -650,6 +665,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -683,6 +699,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -716,6 +733,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -749,6 +767,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -782,6 +801,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -815,6 +835,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 6993,
       "originalScriptProbes": 3
     },
     {
@@ -848,6 +869,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 6336,
       "originalScriptProbes": 2
     },
     {
@@ -881,6 +903,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -914,6 +937,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -947,6 +971,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 12101,
       "originalScriptProbes": 1
     },
     {
@@ -980,6 +1005,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1013,6 +1039,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1046,6 +1073,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1071,15 +1099,16 @@
           "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol19&pagina=9&q=corpus"
         },
         {
-          "word": "ratio",
-          "root": "rati",
-          "page": 17,
-          "indexedOccurrences": 22,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol19&pagina=17&q=ratio"
+          "word": "αθανασια",
+          "root": "αθανασι",
+          "page": 11,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol19&pagina=11&q=%CE%B1%CE%B8%CE%B1%CE%BD%CE%B1%CF%83%CE%B9%CE%B1"
         }
       ],
       "errors": [],
-      "originalScriptProbes": 0
+      "greekRootsDetected": 16568,
+      "originalScriptProbes": 1
     },
     {
       "id": "galeno-scripta-minora",
@@ -1112,6 +1141,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 7410,
       "originalScriptProbes": 2
     },
     {
@@ -1145,6 +1175,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 4239,
       "originalScriptProbes": 2
     },
     {
@@ -1178,6 +1209,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1211,6 +1243,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 4887,
       "originalScriptProbes": 2
     },
     {
@@ -1244,6 +1277,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1277,6 +1311,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 5292,
       "originalScriptProbes": 2
     },
     {
@@ -1310,6 +1345,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1343,6 +1379,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 5372,
       "originalScriptProbes": 3
     },
     {
@@ -1376,6 +1413,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1401,15 +1439,16 @@
           "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-memorabilia&pagina=274&q=corpus"
         },
         {
-          "word": "ratio",
-          "root": "rati",
-          "page": 303,
-          "indexedOccurrences": 2,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-memorabilia&pagina=303&q=ratio"
+          "word": "μεμοβαβιπια",
+          "root": "μεμοβαβιπι",
+          "page": 13,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-memorabilia&pagina=13&q=%CE%BC%CE%B5%CE%BC%CE%BF%CE%B2%CE%B1%CE%B2%CE%B9%CF%80%CE%B9%CE%B1"
         }
       ],
       "errors": [],
-      "originalScriptProbes": 0
+      "greekRootsDetected": 5935,
+      "originalScriptProbes": 1
     },
     {
       "id": "jamblico-vida-pitagorica",
@@ -1442,6 +1481,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 12112,
       "originalScriptProbes": 1
     },
     {
@@ -1475,6 +1515,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1508,6 +1549,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1533,15 +1575,16 @@
           "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=109&q=natura"
         },
         {
-          "word": "ratio",
-          "root": "rati",
-          "page": 238,
+          "word": "ζζζζζζζ",
+          "root": "ζζζζζζζ",
+          "page": 13,
           "indexedOccurrences": 1,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=238&q=ratio"
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=13&q=%CE%B6%CE%B6%CE%B6%CE%B6%CE%B6%CE%B6%CE%B6"
         }
       ],
       "errors": [],
-      "originalScriptProbes": 0
+      "greekRootsDetected": 135,
+      "originalScriptProbes": 1
     },
     {
       "id": "luciano-obras",
@@ -1574,6 +1617,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1607,6 +1651,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 4630,
       "originalScriptProbes": 2
     },
     {
@@ -1640,6 +1685,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1673,6 +1719,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 1862,
       "originalScriptProbes": 3
     },
     {
@@ -1706,6 +1753,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1739,6 +1787,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1772,6 +1821,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1805,6 +1855,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1838,6 +1889,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1871,6 +1923,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 3168,
       "originalScriptProbes": 2
     },
     {
@@ -1904,6 +1957,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 5201,
       "originalScriptProbes": 2
     },
     {
@@ -1937,6 +1991,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -1970,6 +2025,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 9873,
       "originalScriptProbes": 3
     },
     {
@@ -2003,6 +2059,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -2036,6 +2093,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 8056,
       "originalScriptProbes": 3
     },
     {
@@ -2069,6 +2127,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -2102,6 +2161,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -2135,6 +2195,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 8309,
       "originalScriptProbes": 3
     },
     {
@@ -2168,6 +2229,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 20986,
       "originalScriptProbes": 3
     },
     {
@@ -2201,6 +2263,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 5112,
       "originalScriptProbes": 3
     },
     {
@@ -2234,6 +2297,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -2267,6 +2331,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 6965,
       "originalScriptProbes": 3
     },
     {
@@ -2300,6 +2365,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -2333,6 +2399,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 0
     },
     {
@@ -2366,6 +2433,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2399,6 +2467,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2432,6 +2501,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2465,6 +2535,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2498,6 +2569,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2531,6 +2603,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2564,6 +2637,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2597,6 +2671,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2630,6 +2705,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2663,6 +2739,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2696,6 +2773,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2729,6 +2807,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2762,6 +2841,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2795,6 +2875,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2828,6 +2909,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2861,6 +2943,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2894,6 +2977,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2927,6 +3011,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2960,6 +3045,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -2993,6 +3079,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3026,6 +3113,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3059,6 +3147,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3092,6 +3181,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3125,6 +3215,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3158,6 +3249,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3191,6 +3283,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3224,6 +3317,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 399,
       "originalScriptProbes": 3
     },
     {
@@ -3257,6 +3351,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3290,6 +3385,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3323,6 +3419,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3356,6 +3453,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3389,6 +3487,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3422,6 +3521,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3455,6 +3555,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3488,6 +3589,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3521,6 +3623,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3554,6 +3657,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3587,6 +3691,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3620,6 +3725,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3653,6 +3759,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3686,6 +3793,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3719,6 +3827,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3752,6 +3861,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3785,6 +3895,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3818,6 +3929,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3851,6 +3963,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3884,6 +3997,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3917,6 +4031,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3950,6 +4065,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     },
     {
@@ -3983,6 +4099,7 @@
         }
       ],
       "errors": [],
+      "greekRootsDetected": 0,
       "originalScriptProbes": 3
     }
   ],
@@ -4009,19 +4126,23 @@
   ],
   "errors": [],
   "warnings": [
-    "El índice contiene IDs sin ficha editorial: boecio-institutione-musica, historia-augusta"
+    "El índice contiene IDs sin ficha editorial: boecio-institutione-musica, historia-augusta",
+    "35 ediciones atribuidas a obras griegas no tienen raíces en escritura griega detectadas por el OCR; verificar lengua editorial o renovar OCR griego antes de declarar búsqueda griega."
   ],
   "status": "verified-sample-with-reservations",
   "indexEntries": 119,
   "indexFragments": 2510,
   "counts": {
+    "greekAttributedEditions": 67,
+    "greekWithOcrGreekRoots": 32,
+    "greekWithoutOcrGreekRoots": 35,
     "cataloguedEditions": 117,
     "fullCoverageRequested": true,
     "testedEditions": 117,
     "testedWords": 351,
     "locatedPages": 351,
     "errors": 0,
-    "warnings": 1,
+    "warnings": 2,
     "indexEditions": 119,
     "indexFragments": 2510
   }
