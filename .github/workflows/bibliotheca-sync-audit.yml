@@ -9,6 +9,9 @@ on:
       - "scripts/audit-bibliotheca-r2-live.py"
       - "scripts/audit-r2-object-presence.py"
       - "scripts/audit-r2-orphan-ingestions.py"
+      - "scripts/build-bibliotheca-ocr-coverage.py"
+      - "scripts/audit-bibliotheca-lexical-live.mjs"
+      - "assets/r2-clasicos-busqueda.js"
       - "scripts/sync-classics-coverage.py"
       - "data/classics-corpus/early-witness-links-2026-11.json"
       - "scripts/test-early-witness-reading.mjs"
@@ -61,6 +64,10 @@ jobs:
         run: python scripts/audit-r2-object-presence.py --required
       - name: Examinar la procedencia de PDF y OCR todavía no catalogados
         run: python scripts/audit-r2-orphan-ingestions.py --required
+      - name: Catalogar cobertura de OCR, sin confundirla con texto crítico
+        run: python scripts/build-bibliotheca-ocr-coverage.py
+      - name: Cotejar palabras y páginas reales del índice R2 y abrir visores
+        run: node scripts/audit-bibliotheca-lexical-live.mjs --required
       - name: Integridad de lectura y fusión semántica
         run: |
           node scripts/test-r2-indice-fusion.mjs
@@ -72,7 +79,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/r2/bibliotheca-panel-sync.json data/r2/bibliotheca-r2-live-audit.json data/r2/bibliotheca-inventario-unificado.json data/r2/r2-object-status.json data/cifras-corpus.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/r2-orphan-reconciliation.json reports/bibliotheca/r2-live-integrity.json
+          git add data/r2/bibliotheca-panel-sync.json data/r2/bibliotheca-r2-live-audit.json data/r2/bibliotheca-inventario-unificado.json data/r2/r2-object-status.json data/cifras-corpus.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/r2-orphan-reconciliation.json data/r2/bibliotheca-ocr-coverage.json data/r2/bibliotheca-lexical-live-audit.json reports/bibliotheca/r2-live-integrity.json
           if git diff --cached --quiet; then echo "Sin cambios en el panel"; exit 0; fi
           git commit -m "Bibliotheca: sincronizar inventario y prueba R2"
           pushed=false
@@ -97,6 +104,8 @@ jobs:
             data/r2/bibliotheca-inventario-unificado.json
             data/r2/r2-object-status.json
             data/r2/r2-orphan-reconciliation.json
+            data/r2/bibliotheca-ocr-coverage.json
+            data/r2/bibliotheca-lexical-live-audit.json
             data/classics-corpus/coverage-audit.json
             reports/bibliotheca/r2-live-integrity.json
           if-no-files-found: ignore
