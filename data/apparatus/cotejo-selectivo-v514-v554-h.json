@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -207,6 +207,119 @@
       },
       "evidenceClass": "candidate_cross_source",
       "verifiedAutopsy": false
+    },
+    {
+      "locus": "1.1.12",
+      "lemma": "hominis posse",
+      "reading": "hominibus posse",
+      "siglum": "H (referido); x apud Kr. (OCR)",
+      "folio": "4v",
+      "sources": [
+        "V514-T-p1101-21",
+        "Krohn 1912, aparato OCR, I.1.12",
+        "Rose 1899, índice OCR, I.1.12"
+      ],
+      "note": "V514 contrapone hominis/hominibus en una secuencia más extensa; Krohn OCR: «hominis Mar: hominibus x». La entrada OCR de Rose en el mismo locus no prueba esta variante. No se desglosa la lectura de H de la de la consensio codicum sin examinar el impreso y el folio.",
+      "status": "lecturas reportadas en V514 y Krohn OCR; H no comprobado directamente",
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false,
+      "comparison": {
+        "kurilo_latin": "At fortasse … inperitis, hominis posse (lema de V514)",
+        "h_transcription": "Ac fortasse … imperitis hominibus posse (H según Apéndice T de V514)",
+        "rose_apparatus_ocr": "qui a: quia x (quia Gc). [otra variante del mismo locus; no atribuir hominibus a Rose]",
+        "krohn_apparatus_ocr": "hominis Mar: hominibus x"
+      }
+    },
+    {
+      "locus": "3.3.8",
+      "lemma": "columnarum XXXIV",
+      "reading": "XXXVIII",
+      "siglum": "H (referido por Kur.)",
+      "folio": "41v",
+      "sources": [
+        "V514-T-p1104-58",
+        "V554-T-p1113-255",
+        "Rose 1899 aparato OCR IΙI.3.8",
+        "Krohn 1912 aparato OCR III.3.8"
+      ],
+      "note": "Los dos apéndices del autor registran XXXVIII para H y comentan la enmienda XXXIV de Krohn y la explicación arquitectónica del número de columnas. Los extractos OCR de aparato de Rose/Krohn asociados al locus se refieren a otras lecciones y no prueban por sí solos esta cifra. Verificar folio y texto latino efectivo de cada edición antes de decidir la lectio constituenda.",
+      "status": "cotejo de apéndices V514/V554; cifras de H y Krohn pendientes de comprobación sobre fuentes primarias",
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false,
+      "comparison": {
+        "kurilo_latin": "columnarum XXXIV (V435) [como lema en la tabla del Apéndice T]; comentario autoral menciona «scripsi XXXVIII»",
+        "h_transcription": "XXXVIII (H según V514/V554)",
+        "rose_apparatus_ocr": "primus HS: primus invenit G. [otra variante del mismo locus]",
+        "krohn_apparatus_ocr": "invenit G: om. HS ... [otra variante del mismo locus]"
+      }
+    },
+    {
+      "locus": "5.4.2",
+      "lemma": "†sed quod ex acuta",
+      "reading": "sed quod ex acuta facta est gravis",
+      "siglum": "H (referido por Kur.)",
+      "folio": "63v",
+      "sources": [
+        "V514-T-p1105-68",
+        "V554-T-p1114-265",
+        "Rose 1899, aparato OCR V.4.2",
+        "Krohn 1912, aparato OCR V.4.2"
+      ],
+      "note": "V514/V554 citan para H la frase sin crux; el texto de referencia conserva una crux editorial asociada a Krohn, en espera del cotejo de G. Rose OCR al mismo locus menciona gravis, pero no permite identificar por sí solo toda la frase. La coherencia gramatical debe discutirse con imagen de H y edición impresa.",
+      "status": "aparato autoral bilingüe contrastado documentalmente; autopsia de H pendiente",
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false,
+      "comparison": {
+        "kurilo_latin": "†sed quod ex acuta (Apéndice T V514/V554)",
+        "h_transcription": "sed quod ex acuta facta est gravis (H según V514/V554)",
+        "rose_apparatus_ocr": "gravis et (&) ex {sic) x.",
+        "krohn_apparatus_ocr": "fit rec: fiat x [otra variante del locus]"
+      }
+    },
+    {
+      "locus": "5.4.2",
+      "lemma": "⟨non⟩ constans apparet",
+      "reading": "om. non",
+      "siglum": "H (referido por Kur.)",
+      "folio": "63v",
+      "sources": [
+        "V514-T-p1105-69",
+        "V554-T-p1114-266",
+        "Krohn 1912, aparato OCR V.4.2"
+      ],
+      "note": "Ambas ediciones califican non de suplemento de Krohn necesario por el sentido y reportan omisión de H; el OCR de Krohn asociado al locus no aporta una correspondencia inequívoca de este lema, por lo que se conserva como evidencia autoral pendiente de autopsia.",
+      "status": "acuerdo entre aparatos autorales; lectura directa de H pendiente",
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false,
+      "comparison": {
+        "kurilo_latin": "⟨non⟩ constans apparet",
+        "h_transcription": "om. non (H según V514/V554)",
+        "rose_apparatus_ocr": "Sin cita inequívoca de «non» en entradas OCR de este locus",
+        "krohn_apparatus_ocr": "fit rec: fiat x [otra entrada en el locus]"
+      }
+    },
+    {
+      "locus": "5.5.1",
+      "lemma": "diapente ⟨et⟩ ex ordine",
+      "reading": "om. et",
+      "siglum": "H (referido por Kur.)",
+      "folio": "65v",
+      "sources": [
+        "V514-T-p1105-72",
+        "V554-T-p1114-269",
+        "Rose 1899, aparato OCR V.5.1",
+        "Krohn 1912, aparato OCR V.5.1"
+      ],
+      "note": "Ambas ediciones identifican et como suplemento de Krohn y atribuyen su omisión a H. Las entradas OCR históricas asociadas al locus documentan otras cuestiones y no permiten certificar esta atribución de manuscrito.",
+      "status": "acuerdo editorial V514/V554; cotejo directo de H/Krohn pendiente",
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false,
+      "comparison": {
+        "kurilo_latin": "diapente ⟨et⟩ ex ordine",
+        "h_transcription": "om. et (H según V514/V554)",
+        "rose_apparatus_ocr": "locum — (12) habeant bis scripta in H ... [otra unidad]",
+        "krohn_apparatus_ocr": "locum — habeant bis ponit H ... [otra unidad]"
+      }
     }
   ]
 }
