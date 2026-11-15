@@ -46,6 +46,16 @@ async function render(query){
   item(verified,"Kur. : "+e.lemma+" ] "+e.reading+" "+e.siglum,
        e.note,"H, f. "+e.folio+" · "+e.status+" · registros: "+sourceRefs,
        "codex-h-folios-local.html?folio="+encodeURIComponent(e.folio)+"&locus="+encodeURIComponent(locus));
+  if(e.comparison){
+   const compar=E("div",null,"bude-grid");
+   const texts=[["Kur. V514 · latín",e.comparison.kurilo_latin],
+    ["H f. "+e.folio+" · borrador semidiplomático",e.comparison.h_transcription],
+    ["Rose 1899 · OCR de aparato (p. "+e.comparison.rose_page+")",e.comparison.rose_apparatus_ocr],
+    ["Kr. 1912 · OCR de aparato (p. "+e.comparison.krohn_page+")",e.comparison.krohn_apparatus_ocr]];
+   for(const [title,body] of texts)compar.append(card(title,body,"la"));
+   verified.append(compar);
+   verified.append(E("p","Las siglas de Rose y Krohn se conservan como OCR documental, sin restitución ni atribución paleográfica automática.","bude-note"));
+  }
  }
  if(!selected.length)verified.append(E("p","Sin unidad selectiva cotejada entre ambas publicaciones en este locus; no implica inexistencia de otras variantes."));
  const appendix=section("Collatio selectiva · Apéndice T (V514/V554)");
