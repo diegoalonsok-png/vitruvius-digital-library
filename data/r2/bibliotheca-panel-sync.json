@@ -1,0 +1,944 @@
+{
+  "schema": "vdl-bibliotheca-federated-status-v1",
+  "generated": "2026-11-15",
+  "methodology": "Cruce de catálogo de cobertura GitHub, registro textual y manifiestos R2; no prueba S3/HTTP ni cotejo autóptico. Índice léxico por raíces y coincidencia de conceptos, no validación semántica completa.",
+  "summary": {
+    "masterWorks": 271,
+    "additionalWorks": 10,
+    "totalWorksDeclared": 281,
+    "r2PdfEditions": 117,
+    "r2IndexWorksDeclared": 119,
+    "r2IndexPagesDeclared": 56241,
+    "textVersions": 279,
+    "localTextFiles": 246,
+    "remoteTextFilesDeclared": 32,
+    "indexedWorks": 214,
+    "indexedOriginalWorks": 214,
+    "worksWithoutAnyText": 57,
+    "worksWithoutOriginal": 57,
+    "uncataloguedLocalTexts": 0,
+    "unlinkedR2Editions": 0,
+    "candidateEditionsNotInR2": 44,
+    "externalMetadataPending": 49,
+    "liveR2ObjectCheck": false
+  },
+  "critical": [],
+  "issues": [
+    "Índice facsimilar registra 119 obras vs 117 ediciones PDF, verificar IDs.",
+    "49 fichas con metadatos externos pendientes según auditoría de catálogo."
+  ],
+  "pending": {
+    "uncataloguedLocalTexts": [],
+    "unlinkedR2Edits": [],
+    "withoutText": [
+      {
+        "id": "seneca-naturales",
+        "author": "Séneca",
+        "title": "Naturales quaestiones",
+        "language": "la"
+      },
+      {
+        "id": "plutarch-lives",
+        "author": "Plutarco",
+        "title": "Βίοι Παράλληλοι · Vidas paralelas",
+        "language": "grc"
+      },
+      {
+        "id": "apollodorus-poliorcetics",
+        "author": "Apolodoro de Damasco (atribución tradicional)",
+        "title": "Πολιορκητικά · Poliorketika",
+        "language": "grc"
+      },
+      {
+        "id": "athenaeus-mechanicus",
+        "author": "Ateneo Mecánico",
+        "title": "Περὶ μηχανημάτων · De machinis",
+        "language": "grc"
+      },
+      {
+        "id": "vitruvio-v514-pdf",
+        "author": "Vitruvio · edición de Diego A. Kurilo",
+        "title": "De architectura · Recensio V514 (latín–castellano)",
+        "language": "la"
+      },
+      {
+        "id": "vitruvio-v554-pdf",
+        "author": "Vitruvio · edición de Diego A. Kurilo",
+        "title": "De architectura · Recensio V554 (latín–francés)",
+        "language": "la"
+      },
+      {
+        "id": "theory-v297-pdf",
+        "author": "Diego A. Kurilo · sobre Vitruvio",
+        "title": "The Architect of Theory · V297 (inglés)",
+        "language": "la"
+      },
+      {
+        "id": "velleius-historia",
+        "author": "Veleyo Patérculo",
+        "title": "Historia Romana",
+        "language": "la"
+      },
+      {
+        "id": "plutarch-moralia",
+        "author": "Plutarco",
+        "title": "Ἠθικά (Moralia)",
+        "language": "grc"
+      },
+      {
+        "id": "ptolemy-geographia",
+        "author": "Claudio Ptolomeo",
+        "title": "Γεωγραφικὴ ὑφήγησις",
+        "language": "grc"
+      },
+      {
+        "id": "thucydides-war",
+        "author": "Tucídides",
+        "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+        "language": "grc"
+      },
+      {
+        "id": "cassius-dio-historia",
+        "author": "Dión Casio",
+        "title": "Ῥωμαϊκὴ ἱστορία",
+        "language": "grc"
+      },
+      {
+        "id": "athenaeus-deipnosophistae",
+        "author": "Ateneo de Náucratis",
+        "title": "Δειπνοσοφισταί",
+        "language": "grc"
+      },
+      {
+        "id": "theophrastus-historia-plantarum",
+        "author": "Teofrasto",
+        "title": "Περὶ φυτῶν ἱστορίας",
+        "language": "grc"
+      },
+      {
+        "id": "seneca-de-ira",
+        "author": "Séneca",
+        "title": "De ira",
+        "language": "la"
+      },
+      {
+        "id": "seneca-de-tranquillitate",
+        "author": "Séneca",
+        "title": "De tranquillitate animi",
+        "language": "la"
+      },
+      {
+        "id": "apuleius-de-deo-socratis",
+        "author": "Apuleyo",
+        "title": "De deo Socratis",
+        "language": "la"
+      },
+      {
+        "id": "vegetius-epitoma",
+        "author": "Vegecio",
+        "title": "Epitoma rei militaris",
+        "language": "la"
+      },
+      {
+        "id": "macrobius-saturnalia",
+        "author": "Macrobio",
+        "title": "Saturnalia",
+        "language": "la"
+      },
+      {
+        "id": "archimedes-fluitantibus",
+        "author": "Arquímedes",
+        "title": "Περὶ τῶν ὀχουμένων",
+        "language": "grc"
+      },
+      {
+        "id": "ennius-annales",
+        "author": "Ennio",
+        "title": "Annales (fragmenta)",
+        "language": "la"
+      },
+      {
+        "id": "accius-fragmenta",
+        "author": "Accio",
+        "title": "Tragoediae (fragmenta)",
+        "language": "la"
+      },
+      {
+        "id": "ps-aristotle-mechanica",
+        "author": "Pseudo-Aristóteles (escuela peripatética)",
+        "title": "Μηχανικὰ προβλήματα",
+        "language": "grc"
+      },
+      {
+        "id": "procopius-aedificiis",
+        "author": "Procopio de Cesarea",
+        "title": "Περὶ κτισμάτων",
+        "language": "grc"
+      },
+      {
+        "id": "isidore-etymologiae",
+        "author": "Isidoro de Sevilla",
+        "title": "Etymologiae",
+        "language": "la"
+      },
+      {
+        "id": "censorinus-die-natali",
+        "author": "Censorino",
+        "title": "De die natali",
+        "language": "la"
+      },
+      {
+        "id": "euclid-optica",
+        "author": "Euclides",
+        "title": "Ὀπτικά · Optica",
+        "language": "grc"
+      },
+      {
+        "id": "euclid-phaenomena",
+        "author": "Euclides",
+        "title": "Φαινόμενα · Phaenomena y escritos musicales",
+        "language": "grc"
+      },
+      {
+        "id": "cleonides-harmonica",
+        "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+        "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+        "language": "grc"
+      },
+      {
+        "id": "hero-belopoeica",
+        "author": "Herón de Alejandría",
+        "title": "Βελοποιικά · Belopoeica",
+        "language": "grc"
+      },
+      {
+        "id": "philo-belopoeica",
+        "author": "Filón de Bizancio",
+        "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+        "language": "grc"
+      },
+      {
+        "id": "biton-kataskeuai",
+        "author": "Bitón",
+        "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+        "language": "grc"
+      },
+      {
+        "id": "geminus-isagoge",
+        "author": "Gémino",
+        "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+        "language": "grc"
+      },
+      {
+        "id": "aristarchus-magnitudines",
+        "author": "Aristarco de Samos",
+        "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+        "language": "grc"
+      },
+      {
+        "id": "apollonius-conica",
+        "author": "Apolonio de Perge",
+        "title": "Κωνικά · Conica",
+        "language": "grc"
+      },
+      {
+        "id": "pappus-synagoge",
+        "author": "Papo de Alejandría",
+        "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+        "language": "grc"
+      },
+      {
+        "id": "hyginus-gromaticus",
+        "author": "Higino Gromático",
+        "title": "Constitutio limitum",
+        "language": "la"
+      },
+      {
+        "id": "frontinus-gromatica",
+        "author": "Frontino",
+        "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+        "language": "la"
+      },
+      {
+        "id": "siculus-flaccus",
+        "author": "Sículo Flaco",
+        "title": "De condicionibus agrorum",
+        "language": "la"
+      },
+      {
+        "id": "lyra-graeca",
+        "author": "Poetas líricos griegos",
+        "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+        "language": "grc"
+      },
+      {
+        "id": "higino-fabulas",
+        "author": "Higino",
+        "title": "Fabulae · Astronomica poetica",
+        "language": "la"
+      },
+      {
+        "id": "manilio-astronomica",
+        "author": "Manilio",
+        "title": "Astronomica",
+        "language": "la"
+      },
+      {
+        "id": "aristoteles-meteorologica",
+        "author": "Aristóteles",
+        "title": "Μετεωρολογικά · Meteorologica",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-opera-kuhn",
+        "author": "Galeno",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-kuhn-vol01",
+        "author": "Galeno",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-kuhn-vol19",
+        "author": "Galeno",
+        "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-scripta-minora",
+        "author": "Galeno",
+        "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+        "language": "grc"
+      },
+      {
+        "id": "jamblico-vida-pitagorica",
+        "author": "Jámblico",
+        "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+        "language": "grc"
+      },
+      {
+        "id": "proclo-comentario-euclides",
+        "author": "Proclo",
+        "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+        "language": "grc"
+      },
+      {
+        "id": "sexto-empirico-obras",
+        "author": "Sexto Empírico",
+        "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+        "language": "grc"
+      },
+      {
+        "id": "teon-esmirna-expositio",
+        "author": "Teón de Esmirna",
+        "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+        "language": "grc"
+      },
+      {
+        "id": "anthologia-latina",
+        "author": "Antología latina",
+        "title": "Anthologia Latina",
+        "language": "la"
+      },
+      {
+        "id": "casiodoro-variae",
+        "author": "Casiodoro",
+        "title": "Variae",
+        "language": "la"
+      },
+      {
+        "id": "festo-verborum-significatu",
+        "author": "Festo (y Verrio Flaco)",
+        "title": "De verborum significatu",
+        "language": "la"
+      },
+      {
+        "id": "marciano-capela-nuptiis",
+        "author": "Marciano Capela",
+        "title": "De nuptiis Philologiae et Mercurii",
+        "language": "la"
+      },
+      {
+        "id": "nonio-marcelo-doctrina",
+        "author": "Nonio Marcelo",
+        "title": "De compendiosa doctrina",
+        "language": "la"
+      },
+      {
+        "id": "paladio-opus-agriculturae",
+        "author": "Paladio",
+        "title": "Opus agriculturae",
+        "language": "la"
+      }
+    ],
+    "withoutOriginal": [
+      {
+        "id": "seneca-naturales",
+        "author": "Séneca",
+        "title": "Naturales quaestiones",
+        "language": "la"
+      },
+      {
+        "id": "plutarch-lives",
+        "author": "Plutarco",
+        "title": "Βίοι Παράλληλοι · Vidas paralelas",
+        "language": "grc"
+      },
+      {
+        "id": "apollodorus-poliorcetics",
+        "author": "Apolodoro de Damasco (atribución tradicional)",
+        "title": "Πολιορκητικά · Poliorketika",
+        "language": "grc"
+      },
+      {
+        "id": "athenaeus-mechanicus",
+        "author": "Ateneo Mecánico",
+        "title": "Περὶ μηχανημάτων · De machinis",
+        "language": "grc"
+      },
+      {
+        "id": "vitruvio-v514-pdf",
+        "author": "Vitruvio · edición de Diego A. Kurilo",
+        "title": "De architectura · Recensio V514 (latín–castellano)",
+        "language": "la"
+      },
+      {
+        "id": "vitruvio-v554-pdf",
+        "author": "Vitruvio · edición de Diego A. Kurilo",
+        "title": "De architectura · Recensio V554 (latín–francés)",
+        "language": "la"
+      },
+      {
+        "id": "theory-v297-pdf",
+        "author": "Diego A. Kurilo · sobre Vitruvio",
+        "title": "The Architect of Theory · V297 (inglés)",
+        "language": "la"
+      },
+      {
+        "id": "velleius-historia",
+        "author": "Veleyo Patérculo",
+        "title": "Historia Romana",
+        "language": "la"
+      },
+      {
+        "id": "plutarch-moralia",
+        "author": "Plutarco",
+        "title": "Ἠθικά (Moralia)",
+        "language": "grc"
+      },
+      {
+        "id": "ptolemy-geographia",
+        "author": "Claudio Ptolomeo",
+        "title": "Γεωγραφικὴ ὑφήγησις",
+        "language": "grc"
+      },
+      {
+        "id": "thucydides-war",
+        "author": "Tucídides",
+        "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+        "language": "grc"
+      },
+      {
+        "id": "cassius-dio-historia",
+        "author": "Dión Casio",
+        "title": "Ῥωμαϊκὴ ἱστορία",
+        "language": "grc"
+      },
+      {
+        "id": "athenaeus-deipnosophistae",
+        "author": "Ateneo de Náucratis",
+        "title": "Δειπνοσοφισταί",
+        "language": "grc"
+      },
+      {
+        "id": "theophrastus-historia-plantarum",
+        "author": "Teofrasto",
+        "title": "Περὶ φυτῶν ἱστορίας",
+        "language": "grc"
+      },
+      {
+        "id": "seneca-de-ira",
+        "author": "Séneca",
+        "title": "De ira",
+        "language": "la"
+      },
+      {
+        "id": "seneca-de-tranquillitate",
+        "author": "Séneca",
+        "title": "De tranquillitate animi",
+        "language": "la"
+      },
+      {
+        "id": "apuleius-de-deo-socratis",
+        "author": "Apuleyo",
+        "title": "De deo Socratis",
+        "language": "la"
+      },
+      {
+        "id": "vegetius-epitoma",
+        "author": "Vegecio",
+        "title": "Epitoma rei militaris",
+        "language": "la"
+      },
+      {
+        "id": "macrobius-saturnalia",
+        "author": "Macrobio",
+        "title": "Saturnalia",
+        "language": "la"
+      },
+      {
+        "id": "archimedes-fluitantibus",
+        "author": "Arquímedes",
+        "title": "Περὶ τῶν ὀχουμένων",
+        "language": "grc"
+      },
+      {
+        "id": "ennius-annales",
+        "author": "Ennio",
+        "title": "Annales (fragmenta)",
+        "language": "la"
+      },
+      {
+        "id": "accius-fragmenta",
+        "author": "Accio",
+        "title": "Tragoediae (fragmenta)",
+        "language": "la"
+      },
+      {
+        "id": "ps-aristotle-mechanica",
+        "author": "Pseudo-Aristóteles (escuela peripatética)",
+        "title": "Μηχανικὰ προβλήματα",
+        "language": "grc"
+      },
+      {
+        "id": "procopius-aedificiis",
+        "author": "Procopio de Cesarea",
+        "title": "Περὶ κτισμάτων",
+        "language": "grc"
+      },
+      {
+        "id": "isidore-etymologiae",
+        "author": "Isidoro de Sevilla",
+        "title": "Etymologiae",
+        "language": "la"
+      },
+      {
+        "id": "censorinus-die-natali",
+        "author": "Censorino",
+        "title": "De die natali",
+        "language": "la"
+      },
+      {
+        "id": "euclid-optica",
+        "author": "Euclides",
+        "title": "Ὀπτικά · Optica",
+        "language": "grc"
+      },
+      {
+        "id": "euclid-phaenomena",
+        "author": "Euclides",
+        "title": "Φαινόμενα · Phaenomena y escritos musicales",
+        "language": "grc"
+      },
+      {
+        "id": "cleonides-harmonica",
+        "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+        "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+        "language": "grc"
+      },
+      {
+        "id": "hero-belopoeica",
+        "author": "Herón de Alejandría",
+        "title": "Βελοποιικά · Belopoeica",
+        "language": "grc"
+      },
+      {
+        "id": "philo-belopoeica",
+        "author": "Filón de Bizancio",
+        "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+        "language": "grc"
+      },
+      {
+        "id": "biton-kataskeuai",
+        "author": "Bitón",
+        "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+        "language": "grc"
+      },
+      {
+        "id": "geminus-isagoge",
+        "author": "Gémino",
+        "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+        "language": "grc"
+      },
+      {
+        "id": "aristarchus-magnitudines",
+        "author": "Aristarco de Samos",
+        "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+        "language": "grc"
+      },
+      {
+        "id": "apollonius-conica",
+        "author": "Apolonio de Perge",
+        "title": "Κωνικά · Conica",
+        "language": "grc"
+      },
+      {
+        "id": "pappus-synagoge",
+        "author": "Papo de Alejandría",
+        "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+        "language": "grc"
+      },
+      {
+        "id": "hyginus-gromaticus",
+        "author": "Higino Gromático",
+        "title": "Constitutio limitum",
+        "language": "la"
+      },
+      {
+        "id": "frontinus-gromatica",
+        "author": "Frontino",
+        "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+        "language": "la"
+      },
+      {
+        "id": "siculus-flaccus",
+        "author": "Sículo Flaco",
+        "title": "De condicionibus agrorum",
+        "language": "la"
+      },
+      {
+        "id": "lyra-graeca",
+        "author": "Poetas líricos griegos",
+        "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+        "language": "grc"
+      },
+      {
+        "id": "higino-fabulas",
+        "author": "Higino",
+        "title": "Fabulae · Astronomica poetica",
+        "language": "la"
+      },
+      {
+        "id": "manilio-astronomica",
+        "author": "Manilio",
+        "title": "Astronomica",
+        "language": "la"
+      },
+      {
+        "id": "aristoteles-meteorologica",
+        "author": "Aristóteles",
+        "title": "Μετεωρολογικά · Meteorologica",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-opera-kuhn",
+        "author": "Galeno",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-kuhn-vol01",
+        "author": "Galeno",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-kuhn-vol19",
+        "author": "Galeno",
+        "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-scripta-minora",
+        "author": "Galeno",
+        "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+        "language": "grc"
+      },
+      {
+        "id": "jamblico-vida-pitagorica",
+        "author": "Jámblico",
+        "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+        "language": "grc"
+      },
+      {
+        "id": "proclo-comentario-euclides",
+        "author": "Proclo",
+        "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+        "language": "grc"
+      },
+      {
+        "id": "sexto-empirico-obras",
+        "author": "Sexto Empírico",
+        "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+        "language": "grc"
+      },
+      {
+        "id": "teon-esmirna-expositio",
+        "author": "Teón de Esmirna",
+        "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+        "language": "grc"
+      },
+      {
+        "id": "anthologia-latina",
+        "author": "Antología latina",
+        "title": "Anthologia Latina",
+        "language": "la"
+      },
+      {
+        "id": "casiodoro-variae",
+        "author": "Casiodoro",
+        "title": "Variae",
+        "language": "la"
+      },
+      {
+        "id": "festo-verborum-significatu",
+        "author": "Festo (y Verrio Flaco)",
+        "title": "De verborum significatu",
+        "language": "la"
+      },
+      {
+        "id": "marciano-capela-nuptiis",
+        "author": "Marciano Capela",
+        "title": "De nuptiis Philologiae et Mercurii",
+        "language": "la"
+      },
+      {
+        "id": "nonio-marcelo-doctrina",
+        "author": "Nonio Marcelo",
+        "title": "De compendiosa doctrina",
+        "language": "la"
+      },
+      {
+        "id": "paladio-opus-agriculturae",
+        "author": "Paladio",
+        "title": "Opus agriculturae",
+        "language": "la"
+      }
+    ],
+    "candidatesNotInR2": [
+      {
+        "id": "heron-metrica-dioptra",
+        "title": "Μετρικά · Περὶ διόπτρας · Metrica y Dioptra",
+        "language": "grc"
+      },
+      {
+        "id": "procopius-aedificiis",
+        "title": "Περὶ κτισμάτων",
+        "language": "grc"
+      },
+      {
+        "id": "heron-mechanica",
+        "title": "Μηχανικά · Mechanica (transmitida en árabe)",
+        "language": "grc"
+      },
+      {
+        "id": "ptolomeo-harmonica",
+        "title": "Ἁρμονικά · Harmonica",
+        "language": "grc"
+      },
+      {
+        "id": "nicomaco-aritmetica",
+        "title": "Introducción a la aritmética",
+        "language": "grc"
+      },
+      {
+        "id": "aristoteles-problemata",
+        "title": "Προβλήματα · Problemata",
+        "language": "grc"
+      },
+      {
+        "id": "boecio-institutione-musica",
+        "title": "De institutione musica",
+        "language": "la"
+      },
+      {
+        "id": "aristides-quintiliano-musica",
+        "title": "Περὶ μουσικῆς · De musica",
+        "language": "grc"
+      },
+      {
+        "id": "nicomaco-armonia",
+        "title": "Ἁρμονικὸν ἐγχειρίδιον · Manual de armónica",
+        "language": "grc"
+      },
+      {
+        "id": "porfirio-vida-pitagoras",
+        "title": "Πυθαγόρου βίος · Vita Pythagorae",
+        "language": "grc"
+      },
+      {
+        "id": "historia-augusta",
+        "title": "Scriptores Historiae Augustae",
+        "language": "la"
+      },
+      {
+        "id": "heliodoro-etiopicas",
+        "title": "Etiópicas",
+        "language": "grc"
+      },
+      {
+        "id": "juliano-obras",
+        "title": "Obras",
+        "language": "grc"
+      },
+      {
+        "id": "prudencio-poemas",
+        "title": "Poemas",
+        "language": "la"
+      },
+      {
+        "id": "lactancio-instituciones",
+        "title": "Instituciones divinas",
+        "language": "la"
+      },
+      {
+        "id": "isidoro-de-natura-rerum",
+        "title": "De natura rerum",
+        "language": "la"
+      },
+      {
+        "id": "sacrobosco-de-sphaera",
+        "title": "De sphaera mundi",
+        "language": "la"
+      },
+      {
+        "id": "valturio-de-re-militari",
+        "title": "De re militari",
+        "language": "la"
+      },
+      {
+        "id": "valturio-de-re-militari",
+        "title": "De re militari",
+        "language": "la"
+      },
+      {
+        "id": "taccola-de-machinis",
+        "title": "De machinis",
+        "language": "la"
+      },
+      {
+        "id": "taccola-de-ingeneis",
+        "title": "De ingeneis",
+        "language": "la"
+      },
+      {
+        "id": "petrarca-de-viris-illustribus",
+        "title": "De viris illustribus",
+        "language": "la"
+      },
+      {
+        "id": "rabano-de-universo",
+        "title": "De universo sive De rerum naturis",
+        "language": "la"
+      },
+      {
+        "id": "nicolas-cusa-docta-ignorantia",
+        "title": "De docta ignorantia",
+        "language": "la"
+      },
+      {
+        "id": "estacio-obras",
+        "title": "Silvas y Tebaida",
+        "language": "la"
+      },
+      {
+        "id": "curcio-alejandro-es",
+        "title": "Historia de Alejandro Magno (trad. castellana)",
+        "language": "la"
+      },
+      {
+        "id": "floro-epitome-es",
+        "title": "Compendio de la historia romana (trad. castellana)",
+        "language": "la"
+      },
+      {
+        "id": "justino-trogo-es",
+        "title": "Epítome de las Historias filípicas de Trogo (trad. castellana)",
+        "language": "la"
+      },
+      {
+        "id": "eutropio-es",
+        "title": "Compendio de la historia romana (trad. castellana)",
+        "language": "la"
+      },
+      {
+        "id": "plauto-comedias-es",
+        "title": "Comedias (trad. castellana)",
+        "language": "la"
+      },
+      {
+        "id": "pomponio-mela-es",
+        "title": "Compendio de geografía (trad. castellana)",
+        "language": "la"
+      },
+      {
+        "id": "heliodoro-es",
+        "title": "Historia etiópica de los amores de Teágenes y Cariclea (trad. castellana)",
+        "language": "grc"
+      },
+      {
+        "id": "perrault-vitruve-1673",
+        "title": "Les dix livres d’architecture de Vitruve",
+        "language": "fr"
+      },
+      {
+        "id": "philandrier-annotationes",
+        "title": "In decem libros M. Vitruvii Pollionis annotationes",
+        "language": "la"
+      },
+      {
+        "id": "barbaro-dieci-libri",
+        "title": "I dieci libri dell'architettura di M. Vitruvio",
+        "language": "it"
+      },
+      {
+        "id": "rusconi-architettura-1590",
+        "title": "Della architettura",
+        "language": "it"
+      },
+      {
+        "id": "choisy-art-de-batir",
+        "title": "L'art de bâtir chez les Romains",
+        "language": "fr"
+      },
+      {
+        "id": "laugier-essai",
+        "title": "Essai sur l'architecture",
+        "language": "fr"
+      },
+      {
+        "id": "viollet-le-duc-dictionnaire",
+        "title": "Dictionnaire raisonné de l'architecture française",
+        "language": "fr"
+      },
+      {
+        "id": "palladio-quattro-libri-en",
+        "title": "The Four Books of Architecture (trad. Leoni/Ware)",
+        "language": "en"
+      },
+      {
+        "id": "palladio-quattro-libri-fr",
+        "title": "Les quatre livres de l'architecture (trad. Fréart de Chambray)",
+        "language": "fr"
+      },
+      {
+        "id": "palladio-quattro-libri-es",
+        "title": "Los cuatro libros de arquitectura (trad. Ortiz y Sanz, 1797)",
+        "language": "es"
+      },
+      {
+        "id": "alberti-de-re-aedificatoria-en",
+        "title": "Ten Books on Architecture (trad. Leoni, 1726)",
+        "language": "en"
+      },
+      {
+        "id": "alberti-de-re-aedificatoria-fr",
+        "title": "L'architecture et art de bien bastir (trad. Jean Martin, 1553)",
+        "language": "fr"
+      }
+    ]
+  }
+}
