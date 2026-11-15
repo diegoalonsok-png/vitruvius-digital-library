@@ -115,10 +115,37 @@ const backlogDocument={
 mkdirSync("data/classics-corpus",{recursive:true});
 writeFileSync("data/classics-corpus/unindexed-backlog.json",JSON.stringify(backlogDocument,null,2)+"\n");
 const cataloguedIndexedIds=new Set(registry.map(e=>e.workId));
+// Legacy R2 corpus and new content-addressed TEI expansion have separate
+// manifests. Both must be reconciled with the registry before issuing a
+// missing-source finding; never add candidates to the public catalogue.
+const expansionFile="data/r2/classics-expansion-manifest.json";
+const expansion=existsSync(expansionFile)?read(expansionFile):{editions:[]};
+const expansionEditions=Array.isArray(expansion.editions)?expansion.editions:[];
+const expansionIndexFile="data/r2/classics-expansion-index.json";
+const expansionIndex=existsSync(expansionIndexFile)?read(expansionIndexFile):null;
 const remoteManifestIds=new Set(remote.map(e=>e.workId+"|"+e.language));
-for(const e of registry.filter(e=>(e.path||"").startsWith("https://libros.vitruvius-digital-library.org/corpus/"))){
- if(!remoteManifestIds.has(e.workId+"|"+e.language))add("error","remote_registry_without_manifest",e.workId,e.path);
+const expansionIds=new Set();
+for(const edition of expansionEditions){
+ const id=edition.workId+"|"+edition.language;
+ if(expansionIds.has(id))add("error","duplicate_expansion_edition",edition.workId,id);
+ expansionIds.add(id);
+ const matches=registry.filter(e=>e.workId===edition.workId&&e.language===edition.language);
+ if(!matches.some(e=>e.path===edition.url))
+   add("error","expansion_without_exact_registry_url",edition.workId,edition.url||"Sin URL");
+ if(!/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\//.test(edition.url||""))
+   add("error","expansion_invalid_public_url",edition.workId,edition.url||"Sin URL");
+ if(!/^[0-9a-f]{64}$/i.test(edition.sha256||""))
+   add("error","expansion_invalid_sha256",edition.workId,"Falta SHA-256 verificable de edición");
 }
+for(const e of registry.filter(e=>(e.path||"").startsWith("https://libros.vitruvius-digital-library.org/corpus/"))){
+ if(!remoteManifestIds.has(e.workId+"|"+e.language)&&!expansionIds.has(e.workId+"|"+e.language))
+   add("error","remote_registry_without_manifest",e.workId,e.path);
+}
+const indexedExpansionPassages=expansionEditions.reduce((sum,e)=>sum+(Number.isInteger(e.passages)?e.passages:0),0);
+if(expansionIndex?.url&&
+ (expansionIndex.works!==expansionEditions.length||expansionIndex.passages!==indexedExpansionPassages))
+ add("review","expansion_index_manifest_counts_disagree","R2",
+ "Índice TEI ampliado y manifiesto no coinciden en cantidad de obras o pasajes; comprobar revisiones antes de regenerar.");
 if(manifest.obras!==r2.length)add("review","index_catalogue_count_divergence","R2","Índice declara "+manifest.obras+" ediciones, catálogo R2 registra "+r2.length+". No modificar el índice por suposición.");
 const report={
  schema:"vdl-bibliotheca-indexation-control-v1",
@@ -128,7 +155,9 @@ const report={
    catalogueWorks:catalog.length,additionalR2Works:additional.length,combinedCataloguedWorks:catalog.length+additional.length,r2EditionRecords:r2.length,
    registeredTextVersions:registry.length,registeredDistinctWorks:cataloguedIndexedIds.size,
    verifiedLocalSourceWorkIds:local.size,declaredRemoteSourceWorkIds:remoteDeclared.size,
-   r2TextManifestVersions:remote.length,r2InvertedIndexDeclaredEditions:manifest.obras,
+   r2TextManifestVersions:new Set([...remoteManifestIds,...expansionIds]).size,
+   r2ExpansionIndexedEditions:expansionEditions.length,r2ExpansionIndexedPassages:indexedExpansionPassages,
+   r2InvertedIndexDeclaredEditions:manifest.obras,
    unindexedCatalogueWorks:unindexed.length,unindexedAncientWorks:backlogDocument.summary.ancientWorksWithoutRegisteredText,unindexedEditorialManifestations:backlogDocument.summary.modernEditionManifestationsWithoutOwnRegistry,worksMissingRegisteredOriginal:missingOriginal.length,
    greekTitleNeedsIndividualReview:greekTitleReview.length,r2UnlinkedEditions:r2Unlinked.length,
    duplicateR2BinaryGroups:hashes.length,
@@ -136,6 +165,7 @@ const report={
    editorialReviewItems:issues.filter(x=>x.severity==="review").length
  },
  scope:{
+  r2Expansion:{manifestFile:expansionFile,indexFile:expansionIndexFile,editionIds:[...expansionIds].sort(),indexUrl:expansionIndex?.url||null},
   greekTitleReview,missingOriginal,unindexed,r2Unlinked,duplicateR2Hashes:hashes,
   catalogueVsEditionTitles:editionTitleReview
  },
