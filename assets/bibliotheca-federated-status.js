@@ -51,6 +51,9 @@ if(ocr?.alreadyIndexedAsStructuredEdition?.length){
 }
 if(lexical?.schema==="vdl-bibliotheca-lexical-live-v1"){
  const n=lexical.counts||{};
+ details.append(el("p","Indexación en grafía griega: "+fmt(n.greekWithOcrGreekRoots)+" de "+
+  fmt(n.greekAttributedEditions)+" ediciones de obras griegas contienen raíces griegas detectables; "+
+  fmt(n.greekWithoutOcrGreekRoots)+" requieren revisar la lengua de la edición o el reconocimiento OCR antes de declarar búsqueda en griego.","bfs-note"));
  details.append(el("p","Prueba léxica real: "+fmt(n.testedEditions)+" ediciones · "+fmt(n.testedWords)+" palabras cotejadas contra páginas OCR y fragmentos R2 · "+fmt(n.errors)+" errores; "+
   (lexical.generated||"fecha no declarada")+". La muestra no certifica el corpus completo.","bfs-note"));
 }
