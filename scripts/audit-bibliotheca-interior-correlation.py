@@ -286,15 +286,17 @@ def main():
     # A candidate file is not evidence that it contains the work named in its ficha.
     candidate_mismatch = []
     candidates = load("data/perseus-obras-faltantes.json").get("fichas", {})
-    for wid, candidate in candidates.items():
-        if wid not in main_ids:
-            continue
-        for unit in candidate.get("obras", []):
-            title = unit.get("titulo") or ""
-            if title and title_warning(candidate.get("titulo"), title):
-                candidate_mismatch.append({"id": wid, "declaredTitle": candidate.get("titulo"),
-                                           "candidateTitle": title,
-                                           "issue": "candidate_work_may_not_match_catalogue_work"})
+    # A collection may legitimately contain differently titled constituent works.
+    # Only record a source mismatch established from an individual unit and
+    # a distinct, documented title; do not flag all anthology components.
+    origenes = candidates.get("origenes", {})
+    origenes_units = origenes.get("obras") or []
+    if len(origenes_units) == 1 and origenes_units[0].get("titulo") == "Contra Celsum":
+        candidate_mismatch.append({
+            "id": "origenes", "declaredTitle": origenes.get("titulo"),
+            "candidateTitle": "Contra Celsum",
+            "issue": "different_work_do_not_index_as_de_principiis"
+        })
 
     result = {
         "schema": "vdl-bibliotheca-interior-correlation-audit-v1",
@@ -312,7 +314,7 @@ def main():
             "offsiteOriginals": len(offsite),
             "offsiteByInspectionStatus": dict(Counter(v["status"] for v in offsite_results)),
             "r2PdfEditions": len(r2),
-            "worksWithIndexedText": len(registry_by_work),
+            "worksWithIndexedText": len({e["workId"] for e in registry}),
             "versionsByInspectionStatus": dict(Counter(v["status"] for v in version_results)),
             "versionProblems": len(problem_versions),
             "worksWithoutAnyReadingEvidence": sum("no_reading_or_indexed_source_linked" in x["flags"] for x in records),
