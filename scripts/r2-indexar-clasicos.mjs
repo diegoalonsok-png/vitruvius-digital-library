@@ -44,6 +44,9 @@ const GRIEGO=/[\u0370-\u03ff\u1f00-\u1fff]/;
 const catalogo=JSON.parse(readFileSync(CATALOGO,"utf8"));
 const seleccionadas=SOLO.length?catalogo.items.filter(o=>SOLO.includes(o.id)):catalogo.items;
 const obras=LIMITE?seleccionadas.slice(0,LIMITE):seleccionadas;
+const desconocidas=SOLO.filter(id=>!catalogo.items.some(o=>o.id===id));
+if(desconocidas.length)throw Error("La tanda intenta indexar ediciones no catalogadas: "+desconocidas.join(", "));
+const habiaManifiesto=existsSync(MANIFIESTO);
 if(existsSync(SALIDA))rmSync(SALIDA,{recursive:true,force:true});
 mkdirSync(SALIDA+"/crudo",{recursive:true});
 
@@ -58,11 +61,13 @@ const cerrar=()=>Promise.all([...flujos.values()].map(f=>new Promise(r=>f.end(r)
 const resumen=[];let raicesTotales=0,paginasTotales=0,bytesTexto=0;
 for(const obra of obras){
  const respuesta=await fetch(obra.texto);
- if(!respuesta.ok){console.error("FALLA",obra.id,respuesta.status);continue}
+ if(!respuesta.ok)throw Error("No se publica índice incompleto: "+obra.id+" HTTP "+respuesta.status);
  const cuerpo=await respuesta.text();
  bytesTexto+=cuerpo.length;
  const documento=JSON.parse(cuerpo);
  const paginas=documento.paginas||[];
+ if(documento.obra&&documento.obra!==obra.id)throw Error("OCR corresponde a otra edición: "+obra.id);
+ if(!Array.isArray(paginas)||!paginas.length||paginas.some(x=>typeof x!=="string"))throw Error("OCR sin páginas válidas: "+obra.id);
  /* La lengua del volumen no decide la regla: los Loeb y las ediciones comentadas
     traen el griego y su traducción en la misma página, de modo que cada palabra
     se recorta según la escritura en que está escrita. */
@@ -102,11 +107,21 @@ await cerrar();
    memoria no crece con el corpus entero. */
 mkdirSync(SALIDA+"/indice",{recursive:true});
 const fragmentos=[];
-const reindexadas=new Set(obras.map(o=>o.id));
-async function publicado(nombre){
- if(!FUSIONAR)return null;
- try{const r=await fetch(BASE_PUBLICA+nombre);if(!r.ok)return null;return await r.json()}
+const reindexadas=new Set(resumen.map(o=>o.id));
+const previoListado=FUSIONAR?await (async()=>{
+ try{const r=await fetch(BASE_PUBLICA+"fragmentos.json");return r.ok?await r.json():null}
  catch{return null}
+})():null;
+if(FUSIONAR&&habiaManifiesto&&!previoListado)
+ throw Error("Índice remoto no disponible: no se sobreescriben fragmentos sin fusionar el inventario anterior");
+const nombresAnteriores=new Set((previoListado?.fragmentos||[]).map(f=>f.f));
+async function publicado(nombre){
+ if(!FUSIONAR||!nombresAnteriores.has(nombre))return null;
+ const r=await fetch(BASE_PUBLICA+nombre);
+ if(!r.ok)throw Error("No se puede recuperar fragmento previo "+nombre+": HTTP "+r.status);
+ const data=await r.json();
+ if(data.schema!=="vdl-r2-indice-clasicos-1"||!data.raices)throw Error("Fragmento remoto inválido: "+nombre);
+ return data;
 }
 for(const archivo of readdirSync(SALIDA+"/crudo")){
  const key=archivo.replace(/\.jsonl$/,"");
@@ -132,7 +147,6 @@ for(const archivo of readdirSync(SALIDA+"/crudo")){
 }
 rmSync(SALIDA+"/crudo",{recursive:true,force:true});
 /* El listado y el manifiesto describen el índice completo, no sólo la tanda. */
-const previoListado=FUSIONAR?await (async()=>{try{const r=await fetch(BASE_PUBLICA+"fragmentos.json");return r.ok?await r.json():null}catch{return null}})():null;
 if(previoListado){
  const porId=new Map((previoListado.obras||[]).map(o=>[o.id,o]));
  for(const o of resumen)porId.set(o.id,o);
@@ -144,7 +158,7 @@ if(previoListado){
  raicesTotales=resumen.reduce((n,o)=>n+(o.raices||0),0);
 }
 fragmentos.sort((a,b)=>a.k.localeCompare(b.k));
-const bytes=fragmentos.reduce((n,f)=>n+f.bytes,0);
+const bytes=fragmentos.some(f=>!Number.isFinite(f.bytes)||f.bytes===0)?null:fragmentos.reduce((n,f)=>n+f.bytes,0);
 const indice={schema:"vdl-r2-indice-clasicos-fragmentos-1",generado:new Date().toISOString().slice(0,10),
  obras:resumen,fragmentos:fragmentos.map(f=>({k:f.k,f:f.f,n:f.raices}))};
 writeFileSync(SALIDA+"/indice/fragmentos.json",JSON.stringify(indice));
@@ -159,7 +173,7 @@ const manifiesto={
  raicesPorObra:raicesTotales,
  fragmentos:fragmentos.length,
  bytes,
- mayorFragmento:fragmentos.slice().sort((a,b)=>b.bytes-a.bytes)[0]?.bytes||0,
+ mayorFragmento:bytes===null?null:(fragmentos.slice().sort((a,b)=>b.bytes-a.bytes)[0]?.bytes||0),
  nota:"Los fragmentos viven en R2, no en el repositorio. Aquí sólo quedan las cifras y la ruta pública."
 };
 writeFileSync(MANIFIESTO,JSON.stringify(manifiesto,null,1)+"\n");
