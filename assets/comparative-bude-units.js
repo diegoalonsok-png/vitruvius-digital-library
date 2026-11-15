@@ -66,7 +66,7 @@ async function render(query){
  const summarySearch=$("q");if(summarySearch&&summarySearch.value!==locus){summarySearch.value=locus;summarySearch.dispatchEvent(new Event("input",{bubbles:true}));}
  $("bude-prev").disabled=position===0;$("bude-next").disabled=position===loci.length-1;
  $("bude-open-reader").href="apparatus-bude.html?locus="+encodeURIComponent(locus);
- $("bude-open-h").href="harleianus.html?locus="+encodeURIComponent(locus);
+ $("bude-open-h").href="concordancia-folios.html?locus="+encodeURIComponent(locus);
  const u=new URL(location.href);u.searchParams.set("locus",locus);history.replaceState(null,"",u);
  root.replaceChildren();status.textContent="Consultando "+fmt(locus)+"…";
  const evidence=data.coverage?.loci?.find(x=>x.locus===locus);
@@ -79,7 +79,7 @@ async function render(query){
    ["Kurilo V514",evidence.kurilo.estado==="texto_estructurado"?"Latín estructurado":"Texto no disponible","lector-bilingue.html?locus="+encodeURIComponent(locus)],
    ["Rose 1899",evidence.rose.estado==="ocr_alineado_candidato"?"OCR candidato · imagen "+evidence.rose.pagina_digital:"Sin OCR","rose-1899.html"],
    ["Krohn 1912",evidence.krohn.estado==="transcripcion_perseus_candidata"?"Perseus + OCR · imagen "+evidence.krohn.pagina_digital:evidence.krohn.estado==="solo_ocr_historico"?"Solo OCR histórico · imagen "+evidence.krohn.pagina_digital:"Sin transcripción","krohn-1912.html"],
-   ["Codex H",evidence.codex_h.anclas.length?evidence.codex_h.anclas.length+" vínculo(s) del mapa; verificar grado":"Sin ancla material exacta; localización estimada posible","harleianus.html?locus="+encodeURIComponent(locus)]
+   ["Codex H",evidence.codex_h.anclas.length?evidence.codex_h.anclas.length+" vínculo(s) del mapa; verificar grado":"Sin ancla material exacta; localización estimada posible","concordancia-folios.html?locus="+encodeURIComponent(locus)]
   ];
   for(const [edition,description,url] of statusList){const card=E("div",null,"bude-evidence-unit");card.append(E("b",edition),E("small",description),A("Consultar",url));grid.append(card)}
   indicator.append(grid,E("small",(evidence.aparato.estado==="entradas_documentales"?"Aparato con entradas OCR/editoriales documentadas.":"Sin entrada crítica registrada; cotejo pendiente.")+" Diferencias digitales candidatas: "+evidence.aparato.diferencias_digitales_candidatas+". La ubicación de H y los segmentos OCR no son lecturas verificadas."));
@@ -134,6 +134,24 @@ async function render(query){
   const links=E("p",null,"bude-note");
   links.append(A("Abrir Krohn 1912 en facsímil","krohn-1912.html")," · ",A("Abrir registro ecdótico V514","registro-ecdotico.html?locus="+encodeURIComponent(locus)));
   diff.append(links);
+ }
+ const pending=data.pendingH?.loci?.find(x=>x.locus===locus);
+ if(pending){
+  const triage=section("Status quaestionis · cotejo de H pendiente");
+  triage.append(E("p","Este locus no tiene una entrada crítica registrada en el aparato comparativo. Sí posee textos editoriales y OCR atribuidos a Rose y Krohn. La falta de aparato no significa ausencia de variante.","bude-note"));
+  const material=pending.h.lecturas_parciales||[];
+  for(const row of material){
+   const u=E("div",null,"bude-unit");
+   u.append(E("strong","H f. "+row.folio+" · lectura semidiplomática parcial localizada"),E("div","El índice de lectura vincula este folio con "+fmt(locus)+". Coincidencia automática orientativa: "+Math.round(row.coincidencia_algoritmica*100)+" %. No constituye una lectura de variante verificada."),A("Abrir imagen y texto en Concordancia de folios","concordancia-folios.html?locus="+encodeURIComponent(locus)));
+   triage.append(u);
+  }
+  for(const f of pending.h.anclas||[]){
+   const u=E("div",null,"bude-unit");
+   u.append(E("strong","H f. "+f.folio+" · "+f.estado),E("div",f.nota||"Vínculo de folio localizado; lectura por verificar."),A("Examinar folio en Concordancia","concordancia-folios.html?locus="+encodeURIComponent(locus)));
+   triage.append(u);
+  }
+  if(!material.length&&!pending.h.anclas?.length)triage.append(E("p","No consta una localización explícita de H para este locus. La concordancia ofrece una estimación por libro, señalada como tal; se requiere cotejo directo de la imagen.","bude-note"));
+  triage.append(A("Consultar H y cotejar este locus","concordancia-folios.html?locus="+encodeURIComponent(locus)));
  }
  const h=section("Testimonium H · primer testimonio: inspección de folios");
  h.append(E("p","Harley MS 2767 (British Library, ca. 800–824): la fuente manuscrita más antigua conservada de De architectura. El cotejo debe comenzar con la imagen del folio, no con una transcripción derivada. Los enlaces de locus estimado no demuestran la lectura.","bude-note"));
@@ -233,8 +251,8 @@ async function render(query){
 }
 (async()=>{try{
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
- const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json","data/apparatus/cobertura-testimonial-731.json"].map(json));
- data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage};loci=es.passages.map(p=>p.locus);
+ const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage,pendingH]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json","data/apparatus/cobertura-testimonial-731.json","data/apparatus/cotejo-h-pendientes-24.json"].map(json));
+ data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage,pendingH};loci=es.passages.map(p=>p.locus);
  syncNavigator=setupNavigator();
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
