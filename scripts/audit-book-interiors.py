@@ -8,7 +8,7 @@ from datetime import datetime, timezone
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-MAX_BYTES=85*1024*1024
+MAX_BYTES=256*1024*1024  # incluyen tres facsimiles de 104-188 MB; descarga por bloques
 def fold(x):
  s=unicodedata.normalize("NFKD",str(x or "").casefold())
  return "".join(ch for ch in s if not unicodedata.combining(ch))
@@ -117,5 +117,8 @@ def main():
          "results":results}
  output=pathlib.Path(opts.output);output.parent.mkdir(parents=True,exist_ok=True)
  output.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf8")
- print(json.dumps({"results":dict(Counter(x["status"] for x in results)),"output":str(output)},ensure_ascii=False))
+ print(json.dumps({"results":dict(Counter(x["status"] for x in results)),
+                   "unavailable":[{"id":x["id"],"reason":x.get("reason")} for x in results if x["status"]=="could_not_inspect"],
+                   "binaryDiscrepancies":[x["id"] for x in results if x["status"]=="binary_discrepancy"],
+                   "output":str(output)},ensure_ascii=False))
 if __name__=="__main__":main()
