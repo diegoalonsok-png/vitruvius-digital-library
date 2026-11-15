@@ -133,7 +133,7 @@ async function runTranslation(){
    (entry.language==="grc"?" · Griego antiguo procesado como griego moderno; cotejar con el original.":"")+
    " · Traducción automática no verificada.");
   output.append(caution);
-  note.textContent="Locus "+entry.locus+" · "+(entry.number||"")+" de "+(entry.total||"")+" · Texto fuente conservado íntegro a la izquierda.";
+  note.textContent="Locus "+(window.ClassicsAcademicReader?.shortLocus(entry.locus)||entry.locus)+" · "+(entry.number||"")+" de "+(entry.total||"")+" · Texto fuente íntegro en el panel original.";
  }catch(error){
   if(stamp!==sequence||!enabled||mode.value==="pdf")return;
   output.textContent="No fue posible traducir el pasaje. Pulsa «Reintentar» para volver a consultar el proveedor.";
