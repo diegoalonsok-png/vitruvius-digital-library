@@ -21,7 +21,7 @@ on:
         default: false
 
 concurrency:
-  group: r2-biblioteca-diaria
+  group: vdl-classics-publication-main
   cancel-in-progress: false
 
 permissions:
@@ -29,10 +29,15 @@ permissions:
 
 jobs:
   tanda:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
+      - name: Sincronizar base de trabajo desde main
+        run: |
+          git fetch --quiet origin main
+          git checkout -B vdl-publication origin/main
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -164,7 +169,13 @@ jobs:
           git add data/r2 data/cifras-corpus.json data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus data/perseus-provenance-audit.json reports
           if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
           git commit -m "Biblioteca clásica: tanda diaria incorporada, indexada y contada"
-          for i in 1 2 3 4 5; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 8; done
+          for i in 1 2 3 4 5; do
+            if git pull --rebase -q origin main && git push -q origin HEAD:main; then exit 0; fi
+            if test -d .git/rebase-merge || test -d .git/rebase-apply; then git rebase --abort; exit 1; fi
+            sleep 8
+          done
+          echo "::error::No se pudo publicar el inventario; R2 puede tener una tanda pendiente de sincronizar."
+          exit 1
 
       - if: always()
         uses: actions/upload-artifact@v4
