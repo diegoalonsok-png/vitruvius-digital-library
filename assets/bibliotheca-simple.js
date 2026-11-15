@@ -307,7 +307,7 @@ function switchLanguage(k){
 }
 function updateLexicon(){
  const q=input.value.trim();bar.hidden=!q;
- if(q){const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",q);u.searchParams.set("mode","palabra");lex.href=u.href;lex.textContent=dict[locale].lexicon+" · "+q;lex.setAttribute("aria-label",dict[locale].lexicon+": "+q);}
+ if(q){const u=new URL("vitruvia-lexicon.html",location.href);u.searchParams.set("q",q);u.searchParams.set("mode",q.trim().split(/\\s+/).length>1?"frase":"palabra");if(work.value)u.searchParams.set("work",editionAliases[work.value]?.workId||work.value);lex.href=u.href;lex.textContent=dict[locale].lexicon+" · "+q;lex.setAttribute("aria-label",dict[locale].lexicon+": "+q);}
 }
 const metadata=Promise.all([
  fetch(CATALOG).then(r=>{if(!r.ok)throw Error("catalogue");return r.json()}),
@@ -392,7 +392,18 @@ function passageActions(record,workInfo,passageNode){
    window.prompt("Referencia bibliográfica para copiar:",text);
   }
  });
- actions.append(pdf,mail,whats,cite);return actions;
+ const lexUrl=new URL("vitruvia-lexicon.html",location.href);
+ const searched=String(input.value||"").trim();
+ const isPhrase=searched.split(/\\s+/).filter(Boolean).length>1;
+ lexUrl.searchParams.set("q",searched||record.term||"");
+ lexUrl.searchParams.set("mode",isPhrase?"frase":"palabra");
+ if(["la","grc"].includes(record.language))lexUrl.searchParams.set("lang",record.language);
+ if(record.workId)lexUrl.searchParams.set("work",record.workId);
+ if(record.locus)lexUrl.searchParams.set("locus",record.locus);
+ const continueLex=el("a","passage-action",isPhrase?"Continuar frase en Lexicon":"Continuar en Lexicon");
+ continueLex.href=lexUrl.href;
+ continueLex.title="Continúa la consulta con lemas, morfología, concordancias y paralelos de la cobertura Lexicon disponible";
+ actions.append(pdf,mail,whats,cite,continueLex);return actions;
 }
 /* Diccionario contextual: emplea únicamente fichas editoriales verificables del Lexicon. */
 let etymTask=null;
