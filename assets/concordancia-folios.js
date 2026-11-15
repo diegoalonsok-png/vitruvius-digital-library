@@ -106,7 +106,8 @@ async function render(){
  $('f-translation-status').textContent=chosen?.folio==='1r'?(lang==='fr'?'Français V554: no hay corte validado por folio':'Traducción editorial fragmentada por límite aproximado de 1r'):('Traducción editorial · '+$('f-lang').selectedOptions[0].textContent);
  const loc=selection.kind==='locus'?selection.value:relevant[0]?.locus;
  $('f-reader').hidden=!loc;$('f-parallel').hidden=!loc;
- if(loc){$('f-reader').href=reader(loc,'es');$('f-parallel').href=reader(loc,lang)}
+ const criticalLink=$('f-critical-locus');if(criticalLink)criticalLink.hidden=!loc;
+ if(loc){$('f-reader').href=reader(loc,'es');$('f-parallel').href=reader(loc,lang);if(criticalLink)criticalLink.href='aparato-comparativo.html?locus='+encodeURIComponent(loc)}
  announce();
 }
 /* Rótulos del buscador, en el idioma de la interfaz. Los visores no se traducen:
