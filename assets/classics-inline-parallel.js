@@ -15,18 +15,18 @@ const root=el("div","cl-dual-reader"),original=el("section","cl-source-column"),
 root.setAttribute("aria-label","Texto original y traducción automática");
 original.setAttribute("aria-label","Texto griego o latino original");
 translation.setAttribute("aria-label","Traducción automática orientativa");
-const originalHeading=el("p","cl-pane-title","01 · Texto original");
+const originalHeading=el("p","cl-pane-title","Texto original");
 original.prepend(originalHeading);
 if(hitnav)original.append(hitnav);
 original.append(passages,lexicon);
 const separator=el("div","cl-pane-splitter");
 separator.tabIndex=0;separator.role="separator";separator.setAttribute("aria-label","Arrastrar para modificar el ancho de los dos lectores");
 separator.setAttribute("aria-orientation","vertical");separator.setAttribute("aria-valuemin","25");separator.setAttribute("aria-valuemax","75");
-const translationHeading=el("p","cl-pane-title","02 · Traducción automática");
+const translationHeading=el("p","cl-pane-title","Traducción");
 const controls=el("div","cl-translation-tools");
 const languageLabel=el("label",null,"Idioma ");
 const select=el("select");
-select.setAttribute("aria-label","Idioma de la traducción automática");
+select.setAttribute("aria-label","Idioma de la traducción automática");select.dataset.contentLanguage="true";
 for(const [value,name] of [["es","Castellano"],["en","English"],["fr","Français"]]){
  const o=el("option",null,name);o.value=value;select.append(o);
 }
@@ -49,7 +49,21 @@ output.setAttribute("role","status");output.setAttribute("aria-live","polite");
 const note=el("p","cl-translation-meta","La traducción es automática y orientativa, no una edición académica. El original permanece intacto. No se envía texto a terceros hasta activar la traducción.");
 translation.append(translationHeading,controls,label,output,note);
 root.append(original,separator,translation);
-article.append(root);
+const layout=el("div","cl-edition-layout");
+const orderButton=el("button",null,"Disposición Budé");orderButton.type="button";orderButton.setAttribute("aria-pressed","true");
+const published=el("a",null,"Traducciones publicadas ↗");published.href="classics-parallel-reader.html?work="+encodeURIComponent(work);
+layout.append(orderButton,published);article.append(layout,root);root.classList.add("translation-first");
+orderButton.addEventListener("click",()=>{const active=root.classList.toggle("translation-first");orderButton.setAttribute("aria-pressed",String(active));setWidth(width)});
+const modeRow=el("label","cl-pane-options","Lectura enfrentada "),mode=el("select");mode.setAttribute("aria-label","Contenido de la lectura enfrentada");
+for(const [value,name] of [["translation","Traducción automática"],["pdf","PDF de lectura enfrentada"]]){const o=el("option",null,name);o.value=value;mode.append(o)}
+modeRow.append(mode);translationHeading.after(modeRow);
+let pdfPane=null;
+mode.addEventListener("change",()=>{
+ const showPdf=mode.value==="pdf";translation.classList.toggle("cl-pdf-mode",showPdf);
+ if(showPdf&&!pdfPane){pdfPane=window.ClassicsAcademicReader?.pdfPanel(work);if(pdfPane)translation.append(pdfPane)}
+ if(pdfPane)pdfPane.hidden=!showPdf;
+ if(showPdf){sequence++;output.removeAttribute("aria-busy")}else showState();
+});
 let enabled=["es","en","fr"].includes(new URLSearchParams(location.search).get("to"))&&new URLSearchParams(location.search).get("parallel")!=="1",current=null,sequence=0,translateSize=20,width=50;
 try{const stored=Number(localStorage.getItem(key));if(stored>=25&&stored<=75)width=stored}catch{}
 function setWidth(value){
@@ -63,7 +77,7 @@ function resize(event){
  if(event.pointerType==="mouse"&&event.buttons!==1)return;
  const box=root.getBoundingClientRect();
  if(window.matchMedia("(max-width: 900px)").matches)return;
- setWidth(100*(event.clientX-box.left)/box.width);
+ const percent=100*(event.clientX-box.left)/box.width;setWidth(root.classList.contains("translation-first")?100-percent:percent);
 }
 separator.addEventListener("pointerdown",event=>{
  if(window.matchMedia("(max-width: 900px)").matches)return;
@@ -76,31 +90,34 @@ separator.addEventListener("pointerup",endDrag);separator.addEventListener("poin
 separator.addEventListener("keydown",event=>{
  if(event.key==="ArrowLeft"||event.key==="ArrowRight"||event.key==="Home"||event.key==="End"){
   event.preventDefault();
-  setWidth(event.key==="Home"?25:event.key==="End"?75:width+(event.key==="ArrowLeft"?-5:5));
+  setWidth(event.key==="Home"?25:event.key==="End"?75:width+(event.key==="ArrowLeft"?-5:5)*(root.classList.contains("translation-first")?-1:1));
   try{localStorage.setItem(key,String(width))}catch{}
  }
 });
 function updateLang(){
  const source=current?.language;
  const isOriginal=source==="la"||source==="grc";
- root.classList.toggle("single-source",!isOriginal);
- translation.hidden=!isOriginal;
- separator.hidden=!isOriginal;
- originalHeading.textContent=isOriginal?"01 · Texto original · "+(source==="grc"?"griego antiguo":"latín"):"Texto de la edición seleccionada";
+ const embedded=new URLSearchParams(location.search).get("parallel")==="1";
+ root.classList.toggle("single-source",!isOriginal||embedded);
+ translation.hidden=!isOriginal||embedded;
+ separator.hidden=!isOriginal||embedded;
+ layout.hidden=embedded;
+ originalHeading.textContent=isOriginal?"Texto original · "+(source==="grc"?"griego antiguo":"latín"):"Texto de la edición seleccionada";
  if(!isOriginal)output.textContent="La traducción automática está disponible para textos griegos y latinos.";
  return isOriginal;
 }
 function showState(){
  const ok=updateLang();
  if(!ok)return;
- label.textContent="Locus "+(current?.locus||"—")+(current?.title?" · "+current.title:"");
+ label.textContent="Locus "+(window.ClassicsAcademicReader?.shortLocus(current?.locus)||current?.locus||"—")+(current?.title?" · "+current.title:"");
+ if(mode.value==="pdf")return;
  if(!enabled){output.textContent="Elige castellano, inglés o francés y activa la traducción automática.";return}
  if(!current?.text){output.textContent="El pasaje todavía no está disponible.";return}
  runTranslation();
 }
 async function runTranslation(){
  const stamp=++sequence,entry=current,target=select.value;
- if(!enabled||!entry||!["la","grc"].includes(entry.language))return;
+ if(mode.value==="pdf"||!enabled||!entry||!["la","grc"].includes(entry.language))return;
  output.replaceChildren();output.setAttribute("aria-busy","true");
  output.textContent="Traduciendo automáticamente el pasaje "+entry.locus+"…";
  note.textContent="Versión generada por un servicio de traducción automática externo. No constituye traducción filológica.";
@@ -108,7 +125,7 @@ async function runTranslation(){
   const translateAPI=window.VitruviaInlineTranslation?.translate;
   if(typeof translateAPI!=="function")throw Error("Servicio de traducción no disponible.");
   const result=await translateAPI(entry.text,entry.language,target);
-  if(stamp!==sequence||!enabled)return;
+  if(stamp!==sequence||!enabled||mode.value==="pdf")return;
   output.replaceChildren();
   const para=el("p",null,result.text);para.lang=target;output.append(para);
   const caution=el("p","cl-caution",result.provider+
@@ -116,9 +133,9 @@ async function runTranslation(){
    (entry.language==="grc"?" · Griego antiguo procesado como griego moderno; cotejar con el original.":"")+
    " · Traducción automática no verificada.");
   output.append(caution);
-  note.textContent="Locus "+entry.locus+" · "+(entry.number||"")+" de "+(entry.total||"")+" · Texto fuente conservado íntegro a la izquierda.";
+  note.textContent="Locus "+(window.ClassicsAcademicReader?.shortLocus(entry.locus)||entry.locus)+" · "+(entry.number||"")+" de "+(entry.total||"")+" · Texto fuente íntegro en el panel original.";
  }catch(error){
-  if(stamp!==sequence||!enabled)return;
+  if(stamp!==sequence||!enabled||mode.value==="pdf")return;
   output.textContent="No fue posible traducir el pasaje. Pulsa «Reintentar» para volver a consultar el proveedor.";
   note.textContent="Error del proveedor de traducción: "+(error?.message||"Servicio no disponible")+". No se inventa una traducción."; translate.hidden=false;translate.textContent="Reintentar traducción";
  }finally{if(stamp===sequence)output.removeAttribute("aria-busy")}
@@ -139,7 +156,12 @@ larger.addEventListener("click",()=>{translateSize=Math.min(36,translateSize+2);
 document.addEventListener("vitruvia:classics-passage",event=>{
  const info=event.detail;
  if(!info||info.work!==work||typeof info.text!=="string")return;
- current=info;sequence++;showState();
+ current=info;sequence++;
+ const u=new URL("classics-parallel-reader.html",location.href);u.searchParams.set("work",work);u.searchParams.set("left",info.language);u.searchParams.set("locus",info.locus);
+ const editorial=(info.editions||[]).find(e=>["es","fr","en"].includes(e.language));
+ u.searchParams.set("right",editorial?.language||"auto-"+select.value);published.href=u.pathname+u.search;
+ published.textContent=editorial?"Traducciones publicadas ↗":"Comparar otras versiones ↗";
+ showState();
 });
 /* Fallback for a passage loaded before this script: only source text from
  * the actual reader is used, never its inline notes or glossary. */

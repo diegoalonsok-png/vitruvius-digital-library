@@ -141,13 +141,13 @@ async function search(q,{limit=8,isCancelled=()=>false}={}){
  // Do not fetch Latin/English texts and misreport absence in an unindexed language.
  const targets=all.filter(e=>bibliothecaLanguagePolicy(e)&&(semitic?["he","arc"].includes(e.language):grec?e.language==="grc":e.language!=="grc")&&
    (e.format!=="remote-json-passages"||(e.language==="grc"?grec&&window.ClassicsOffsiteGreek?.mightContain(e,[q]):e.language==="la"?!grec&&window.ClassicsOffsiteLatin?.mightContain(e,[q]):false)));
- const rows=[];let loaded=0,failed=0;
+ const rows=[];let loaded=0,failed=0,localFailed=0,remoteFailed=0;const failedSources=[];
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=8){
   await Promise.all(targets.slice(offset,offset+8).map(async e=>{
    const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
    if(isCancelled())return;
-   if(!d?.passages?.length){failed++;return}loaded++;
+   if(!d?.passages?.length){failed++;const remote=/^https?:/.test(e.path)||e.format==="remote-json-passages";if(remote)remoteFailed++;else localFailed++;failedSources.push({workId:e.workId,path:e.path,remote});return}loaded++;
    let total=0,units=0,first=null;
    for(const p of d.passages){
     if(!p||typeof p.text!=="string")continue;
@@ -170,7 +170,7 @@ async function search(q,{limit=8,isCancelled=()=>false}={}){
     count:total,units});
   }));
  }
- lastDiagnostics={mode:registered===LEGACY?"fallback":"registry",targeted:targets.length,loaded,failed};
+ lastDiagnostics={mode:registered===LEGACY?"fallback":"registry",targeted:targets.length,loaded,failed,localFailed,remoteFailed,failedSources};
  return rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title)).slice(0,Math.max(1,Math.min(50,limit)));
 }
 /* Semantic retrieval uses ONLY editorial mappings already recorded in Conceptus.
@@ -218,13 +218,14 @@ async function semanticSearch(q,{limit=6}={}){
  // Rebuilding the static index will naturally fold it into the snapshot.
  const onDemandAdditions=registeredAll.filter(e=>e.workId==="faventinus"&&e.language==="la"&&
   e.format==="json-passages"&&e.path==="data/classics-corpus/faventinus-la.json"&&!posted.has(indexKey(e)));
+ const externalExcluded=new Set((staticIndex?.notIndexedFormats||[]).filter(x=>/^https?:/.test(x.path||"")).map(x=>x.path));
  const indexValid=Boolean(staticIndex&&registeredAll.length&&
    staticIndex.registryEditionCount===registeredAll.length-onDemandAdditions.length&&
    staticIndex.indexedEditions===staticIndex.versions.length&&
-   staticIndex.indexedEditions+unanchored.size===staticIndex.eligibleEditions&&
+   staticIndex.indexedEditions+unanchored.size+externalExcluded.size===staticIndex.eligibleEditions&&
    !staticIndex.errors?.length&&
    registeredAll.filter(e=>eligible.has(e.format)&&!onDemandAdditions.includes(e))
-     .every(e=>posted.has(indexKey(e))||(e.format==="html-text"&&unanchored.has(e.path))));
+     .every(e=>posted.has(indexKey(e))||externalExcluded.has(e.path)||(e.format==="html-text"&&unanchored.has(e.path))));
  const indexed=new Map(indexValid?staticIndex.versions.map(v=>[
   [v.workId,v.language,v.source,v.edition||""].join("|"),v
  ]):[]);
@@ -237,7 +238,7 @@ async function semanticSearch(q,{limit=6}={}){
   const candidates=(language==="la"||language==="grc")?(concept[language]||[]):(concept.modern?.[language]||[]);
   byLanguage[language]=candidates.filter(v=>typeof v==="string"&&v.trim().length>1);
  }
- let loaded=0,failed=0,examined=0;
+ let loaded=0,failed=0,examined=0,localFailed=0,remoteFailed=0;const failedSources=[];
  // A semantic result must always be supported by an actual textual match,
  // not merely the presence of a concept in the editorial dictionary.
 
@@ -253,7 +254,7 @@ async function semanticSearch(q,{limit=6}={}){
    }
    examined++;
    const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
-   if(!d?.passages?.length){failed++;return}
+   if(!d?.passages?.length){failed++;const remote=/^https?:/.test(e.path)||e.format==="remote-json-passages";if(remote)remoteFailed++;else localFailed++;failedSources.push({workId:e.workId,path:e.path,remote});return}
    loaded++;
    let first=null,total=0,units=0;
    for(const passage of d.passages){
@@ -290,7 +291,7 @@ async function semanticSearch(q,{limit=6}={}){
     rating:48+Math.min(total,20),link,source:"Conceptus · "+e.path,count:total,units,conceptId:concept.id,matchedTerm:first.term});
   }));
  }
- lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,matchedEditions:rows.length,staticIndexUsed:Boolean(indexValid),skippedNoHit};
+ lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,localFailed,remoteFailed,failedSources,matchedEditions:rows.length,staticIndexUsed:Boolean(indexValid),skippedNoHit};
  const sorted=rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title));
  // Preserve at least one attested result from each ancient source language,
  // when available, before ranking the rest by match strength.
@@ -442,7 +443,7 @@ async function searchPassages(terms,{limit=600,workId="",allowedWorkIds=null,lan
  }
  if(isCancelled())return [];
  lastDiagnostics={mode:"passages",registrySource:registered===LEGACY?"fallback":"verified-registry",
-  targeted:targets.length,loaded,failed,failures,matchedPassages:rows.length};
+  targeted:targets.length,loaded,failed,localFailed:failures.filter(e=>!/^https?:/.test(e.path)).length,remoteFailed:failures.filter(e=>/^https?:/.test(e.path)).length,failedSources:failures.map(e=>({...e,remote:/^https?:/.test(e.path)})),failures,matchedPassages:rows.length};
  // Add real parallel translations only for Vitruvius' indexed, attested loci.
  // Do not require the Latin query to occur literally in the translation.
  const latinLoci=new Set(rows.filter(r=>r.workId==="vitruvius"&&r.language==="la").map(r=>r.locus));

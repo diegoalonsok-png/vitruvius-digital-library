@@ -24,6 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from build_classics_semantic_index import dictionary, tokens  # noqa: E402
+from classics_ingestion_bundle import pdf_pages, pdf_bundle, json_bytes
 
 CAND = ROOT / "data/r2/clasicos-candidatos.json"
 CATALOGO = ROOT / "data/r2/catalogo-clasicos-r2.json"
@@ -137,25 +138,33 @@ def procesar(o, ctx):
             if sha in ctx["shas"]:
                 raise ValueError("PDF idéntico ya presente en la biblioteca")
             pdf = fitz.open(stream=datos, filetype="pdf")
-            paginas = [p.get_text("text") for p in pdf]
+            paginas, methods = pdf_pages(pdf, o["lengua"], o.get("idioma", ""))
             if len(paginas) < 20:
                 raise ValueError(f"solo {len(paginas)} páginas")
             con_texto = sum(1 for t in paginas if len(t.strip()) > 200)
             if con_texto < len(paginas) * 0.4:
-                raise ValueError("sin capa de texto suficiente")
+                raise ValueError("Texto insuficiente después de extracción y OCR; requiere revisión antes de declararlo indexable")
             portada = fold(" ".join(paginas[:20]))
             if not any(fold(c).split()[0] in portada for c in o["creador"].split("|")):
                 raise ValueError("el autor no aparece en las primeras páginas")
             clave_pdf = f"clasicos/pdf/{o['id']}.pdf"
             clave_txt = f"clasicos/texto/{o['id']}.json"
-            texto = json.dumps({"schema": "vdl-r2-texto-paginas-1", "obra": o["id"], "fuente": ident,
-                                "aviso": "OCR de Internet Archive sin revisar", "paginas": paginas},
-                               ensure_ascii=False).encode()
+            digital, indice = pdf_bundle(o["id"], paginas, methods, sha, ctx["concepts"], ident)
+            texto = json_bytes(digital)
+            index_data = json_bytes(indice)
+            clave_indice = f"clasicos/indice-obras/{o['id']}.json"
             s3 = ctx["s3"]
             s3.put_object(Bucket=BUCKET, Key=clave_pdf, Body=datos, ContentType="application/pdf",
                           CacheControl="public, max-age=31536000", Metadata={"sha256": sha, "ia": ident})
             s3.put_object(Bucket=BUCKET, Key=clave_txt, Body=texto, ContentType="application/json; charset=utf-8",
                           CacheControl="public, max-age=86400")
+            s3.put_object(Bucket=BUCKET, Key=clave_indice, Body=index_data, ContentType="application/json; charset=utf-8",
+                          CacheControl="public, max-age=86400")
+            # A catalogue entry is ready only when PDF, full text AND both indexes are public.
+            for key, payload in [(clave_txt, texto), (clave_indice, index_data)]:
+                verified = get(PUBLICO + "/" + key, binario=True)
+                if hashlib.sha256(verified).digest() != hashlib.sha256(payload).digest():
+                    raise ValueError("Public text/index SHA-256 mismatch: " + key)
             publico = get(PUBLICO + "/" + clave_pdf, binario=True, timeout=600)
             if hashlib.sha256(publico).hexdigest() != sha:
                 raise ValueError("SHA-256 del objeto público distinto")
@@ -172,6 +181,12 @@ def procesar(o, ctx):
                 "derechos": "Dominio público (publicación anterior a 1929); verificado en metadatos de Internet Archive",
                 "pdf": PUBLICO + "/" + clave_pdf, "texto": PUBLICO + "/" + clave_txt,
                 "bytes": len(datos), "sha256": sha, "paginas": len(paginas), "paginasConTexto": con_texto,
+                "indiceLectura": PUBLICO + "/" + clave_indice,
+                "indexacion": {"estado": "texto-e-indices-verificados", "literal": True, "semantica": "Conceptus multilingüe por página",
+                               "textSha256": hashlib.sha256(texto).hexdigest(), "indexSha256": hashlib.sha256(index_data).hexdigest(),
+                               "paginasOCR": sum("Tesseract OCR" in m["method"] for m in methods),
+                               "paginasSinTexto": sum(not p.strip() for p in paginas),
+                               "incidenciasOCR": sum(bool(m.get("issue")) for m in methods)},
                 "verificado": "SHA-256 del objeto público idéntico; autor presente en las primeras páginas",
             }
             return ficha, paginas, rechazos
@@ -182,7 +197,7 @@ def procesar(o, ctx):
 
 def postings(ficha, paginas, lex):
     out = defaultdict(list)
-    langs = {ficha["lengua"], "en", "la", "grc"}
+    langs = {ficha["lengua"], "en", "la", "grc", "fr", "es"}
     for n, texto in enumerate(paginas, 1):
         tk = tokens(texto)
         hall = set()
@@ -202,7 +217,8 @@ def main():
     hechos = {x["id"] for x in cat["items"]}
     shas = {x["sha256"] for x in json.loads(MANIFIESTO.read_text(encoding="utf-8"))["items"]}
     shas |= {x["sha256"] for x in cat["items"]}
-    lex = dictionary(json.loads(CONCEPTS.read_text(encoding="utf-8"))["concepts"])
+    concepts = json.loads(CONCEPTS.read_text(encoding="utf-8"))["concepts"]
+    lex = dictionary(concepts)
     con = json.loads(CONCEPTUS_OUT.read_text(encoding="utf-8")) if CONCEPTUS_OUT.exists() else {"postings": {}}
 
     import boto3
@@ -213,7 +229,7 @@ def main():
                       config=Config(retries={"max_attempts": 8, "mode": "adaptive"},
                                     request_checksum_calculation="when_required",
                                     response_checksum_validation="when_required"))
-    ctx = {"s3": s3, "shas": shas, "anio_max": cand["limites"]["anioMaximo"],
+    ctx = {"s3": s3, "shas": shas, "concepts": concepts, "anio_max": cand["limites"]["anioMaximo"],
            "max_bytes": cand["limites"]["maxMiB"] * 1048576}
     pendientes = [o for o in cand["obras"] if o["id"] not in hechos]
 

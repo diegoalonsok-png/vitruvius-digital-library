@@ -178,23 +178,27 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <link rel="stylesheet" href="assets/lexicon-reader-scrollbars.css?v=20261110-grey-grip-v1">
 <link rel="stylesheet" href="assets/classics-lexical-popup.css?v=20261110-highlight-word-v3">
 <link rel="stylesheet" href="assets/classics-inline-parallel.css?v=20261114-v3">
+<link rel="stylesheet" href="assets/classics-academic-reader.css?v=20261114-bude-1">
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/app-icons/apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vitruvius"><script defer src="assets/pwa.js?v=20261105-pwa-v1"></script>
 <script defer src="assets/site-bar.js?v=20261113-aa-en-linea"></script><link rel="canonical" href="https://vitruvius-digital-library.org/classics-text-reader">
 <meta name="citation_title" content="Texto griego o latino y traducciones · Bibliotheca Graeca et Latina"><meta name="citation_author" content="Kurilo, Diego"><meta name="citation_publication_date" content="2026"><meta name="citation_publisher" content="Vitruvius Digital Library"><meta name="citation_language" content="es"><meta name="citation_public_url" content="https://vitruvius-digital-library.org/classics-text-reader"><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script><script defer src="assets/analytics.js?v=20261106-ga4-1"></script><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261111-griego-politonico-v1"></head>
-<body>
+<body class="academic-reader">
 <header><span class="brand">Vitruvius Digital Library · Bibliotheca Graeca et Latina</span><nav><a href="bibliotheca-graeca-latina.html">Bibliotheca</a><a href="vitruvia.html">Buscar en Vitruvia</a><a id="index-locorum-link" href="index-locorum.html">Index locorum</a><a href="vitruvia-lexicon.html">Lexicon</a><a id="codex-link" href="bibliotheca-graeca-latina.html">Catálogo y testimonios</a><a id="parallel-link" href="classics-parallel-reader.html">Lectura lado a lado</a><a href="metodologia-filologica.html">Método filológico</a><a href="auditoria-academica.html">Auditoría</a></nav></header>
 <main>
 <div class="simple-reading-actions"><a id="simple-reading-link" href="?view=simple">◫ Lectura simple</a><a id="full-reading-link" href="?">Vista académica</a></div>
+<p class="academic-kicker">Bibliotheca · texto, traducción y aparato</p>
 <h1 id="work-title">Edición filológica</h1>
 <p class="sub" id="source-title">Cargando texto y procedencia…</p>
+<details class="academic-records"><summary>Edición, procedencia textual y testimonios manuscritos</summary>
 <section id="reader-source-identification" class="notice" aria-label="Identificación de la edición y traducción" style="margin:10px 0 12px" aria-live="polite"></section>
 <section id="reader-manuscripts" class="notice" aria-label="Testimonios manuscritos y bibliotecas custodias" style="margin:10px 0 12px" aria-live="polite">
 <strong>Manuscritos y bibliotecas custodias</strong>
 <p>Consultando el registro de testimonios documentados…</p>
 </section>
+</details>
 <p class="notice" id="method-note">Las formas y la sintaxis indicadas son estimaciones heurísticas. El texto latino editado procede de TEI; no constituye OCR ni transcripción diplomática del manuscrito.</p>
 <div class="tools">
-<label for="language">Idioma</label><select id="language"><option value="grc">Griego original</option><option value="la">Latín original</option><option value="es">Castellano histórico</option><option value="en">English historical</option><option value="fr">Français · traduction historique</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select>
+<label for="language">Idioma</label><select id="language" data-content-language="true"><option value="grc">Griego original</option><option value="la">Latín original</option><option value="es">Castellano histórico</option><option value="en">English historical</option><option value="fr">Français · traduction historique</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="pt">Português</option></select>
 <label for="query" style="position:absolute;left:-10000px">Buscar palabra o frase</label><input id="query" type="search" placeholder="Buscar en español, inglés, francés, latín o griego: casa, house, maison, logos…">
 <div class="search-mode-choices" role="group" aria-label="Alcance de la búsqueda filológica">
 <button id="mode-exact" type="button" aria-pressed="true" title="Busca solo la palabra o secuencia atestiguada, sin sinónimos">Búsqueda exacta</button>
@@ -230,8 +234,9 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <div class="reader-grid">
 <aside><strong id="toc-title">Capítulos / unidades editoriales</strong><p class="sub" id="toc-help">Los loci pertenecen a esta edición; no equivalen a folios manuscritos.</p><ol id="toc" aria-label="Índice de loci y unidades textuales"></ol></aside>
 <article class="reader">
-<div class="reader-toolbar"><button id="prev" type="button">← Anterior</button><strong id="current-locus" aria-live="polite" aria-atomic="true"></strong><div class="reader-nav-actions"><a id="simple-pair-inline" href="classics-simple-parallel.html">Lectura simple</a><button id="next" type="button">Siguiente →</button></div></div>
+<div class="reader-toolbar"><form id="locus-form" class="academic-locus-form"><label for="locus-query">Ir a locus</label><input id="locus-query" placeholder="1.1 o URN CTS" autocomplete="off"><button type="submit">Ir</button><output id="locus-status" role="status"></output></form><button id="prev" type="button">← Anterior</button><strong id="current-locus" aria-live="polite" aria-atomic="true"></strong><div class="reader-nav-actions"><a id="simple-pair-inline" href="classics-simple-parallel.html">Lectura simple</a><button id="next" type="button">Siguiente →</button></div></div>
 
+<p id="reading-reference" class="cl-document-note" aria-live="polite"></p>
 <div id="hit-nav" class="hit-nav" hidden><button id="hit-prev" type="button" aria-label="Coincidencia anterior">↑</button><span id="hit-count"></span><button id="hit-next" type="button" aria-label="Coincidencia siguiente">↓</button></div>
 <div id="passages" class="passages" lang="la" aria-label="Texto de la unidad editorial seleccionada"></div>
 <div id="lexicon" role="status">Haz clic en cualquier palabra griega o latina del pasaje para abrir una ficha con su lema, significado y fuentes. Si no hay glosa comprobada, se mostrarán enlaces lexicográficos.</div>
@@ -242,10 +247,11 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 <script defer src="assets/academic-inline-translation.js?v=20261114-machine-pivot-v3"></script>
 <script defer src="assets/classical-lexicon.js?v=20261112-externo"></script><script defer src="assets/dictionary-everywhere.js?v=20261111-diccionario-v1"></script>
 <script defer src="assets/classics-lexical-popup.js?v=20261114-word-click-v2"></script>
-<script defer src="assets/classics-text-reader.js?v=20261114-reader-navigation-v8"></script>
-<script defer src="assets/classics-inline-parallel.js?v=20261114-autostart-v2"></script>
+<script defer src="assets/classics-academic-reader.js?v=20261114-bude-1"></script>
+<script defer src="assets/classics-text-reader.js?v=20261114-bude-reader-v9"></script>
+<script defer src="assets/classics-inline-parallel.js?v=20261114-bude-facing-v3"></script>
 <script defer src="assets/classics-reader-annotations.js?v=20261114-source-v3"></script>
-<script defer src="assets/classics-translation-annotations.js?v=20261114-v3"></script>
+<script defer src="assets/classics-translation-annotations.js?v=20261114-bude-1"></script>
 <script>
 (()=>{"use strict";
  const now=new URLSearchParams(location.search);
@@ -298,5 +304,5 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
  document.addEventListener("vitruvia:classics-passage",refresh);
 })();
 </script>
-<script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body>
+<script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261114-content-languages"></script></body>
 </html>

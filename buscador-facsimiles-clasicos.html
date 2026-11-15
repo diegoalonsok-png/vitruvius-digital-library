@@ -121,7 +121,7 @@ html[data-theme] body.facsimile-classic-reader main :is(button,input,select,a):f
  outline:3px solid var(--fcr-link)!important;outline-offset:2px;
 }
 /* Do not recolor the PDF iframe; it is the original archival document. */
-</style><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261113-grc-visor"><link rel="stylesheet" href="assets/facsimile-facing-reader.css?v=20261114-1"></head><body class="facsimile-classic-reader"><header><h1>Facsímiles clásicos · lector de folios</h1><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></header><main><p class="warning">El folio original es la fuente principal de lectura. El OCR se muestra como ayuda de búsqueda y puede contener errores de reconocimiento, especialmente en impresos antiguos, griego, latín y abreviaturas. La página digital del PDF no equivale a un locus filológico verificado.</p><div class="form"><label>Edición<select id="edition"><option>Cargando...</option></select></label><label>Buscar en las páginas<input id="term" type="search" placeholder="Término o frase"></label><button id="go">Buscar</button><button id="read" type="button">Leer página a página</button></div><div id="cita" class="cita" hidden></div><div id="pager" class="pager" hidden><button id="prev" type="button">← Anterior</button><label>Página digital <input id="pageno" type="number" min="1" step="1" value="1"></label><button id="next" type="button">Siguiente →</button><a id="facsimil" href="#" target="_blank" rel="noopener">Abrir página en PDF</a></div><section id="reader-shell" class="reader-shell" hidden aria-label="Lector de facsímil y transcripción OCR">
+</style><link rel="stylesheet" href="assets/fonts-ancient.css?v=20261113-grc-visor"><link rel="stylesheet" href="assets/facsimile-facing-reader.css?v=20261114-academic-2"><link rel="stylesheet" href="assets/classics-academic-reader.css?v=20261114-bude-1"><style>#reader-shell[hidden],#pager[hidden],#cita[hidden]{display:none!important}.facsimile-classic-reader main{max-width:1780px}.facsimile-classic-reader .cl-edition-footnotes{padding:15px;color:inherit}.facsimile-classic-reader .cl-pdf-panel{padding:14px}.facsimile-classic-reader .cl-pdf-panel iframe{height:70vh}.facsimile-ocr-editor textarea{width:100%;padding:12px;font:16px/1.7 Georgia,serif}.facsimile-ocr-editor{padding:10px;font-size:12px}.facsimile-ocr-editor summary{cursor:pointer}</style></head><body class="facsimile-classic-reader"><header><h1>Facsímiles clásicos · lector de folios</h1><a href="bibliotheca-graeca-latina.html">← Bibliotheca</a> · <a href="bibliotheca-ampliada.html">Bibliotheca ampliada</a></header><main><p class="warning">El folio original es la fuente principal de lectura. El OCR se muestra como ayuda de búsqueda y puede contener errores de reconocimiento, especialmente en impresos antiguos, griego, latín y abreviaturas. La página digital del PDF no equivale a un locus filológico verificado.</p><div class="form"><label>Edición<select id="edition"><option>Cargando...</option></select></label><label>Buscar en las páginas<input id="term" type="search" placeholder="Término o frase"></label><label>Tipo de búsqueda<select id="page-search-mode"><option value="literal">Palabra o frase exacta</option><option value="concept">Concepto ES · FR · EN · latín · griego</option></select></label><button id="go">Buscar</button><button id="read" type="button">Leer página a página</button><label>Locus o referencia impresa<input id="printed-locus" type="search" placeholder="I.1, 1.1, prefacio…"></label><button id="find-printed-locus" type="button">Localizar referencia en OCR</button></div><p class="cl-document-note">La referencia impresa se busca literalmente en el OCR; una página digital no equivale por sí sola a un locus textual.</p><div id="cita" class="cita" hidden></div><div id="pager" class="pager" hidden><button id="prev" type="button">← Anterior</button><label>Página digital <input id="pageno" type="number" min="1" step="1" value="1"></label><button id="next" type="button">Siguiente →</button><a id="facsimil" href="#" target="_blank" rel="noopener">Abrir página en PDF</a></div><section id="reader-shell" class="reader-shell" hidden aria-label="Lector de facsímil y transcripción OCR">
 <div class="reader-column"><div class="reader-head"><h2>Folio original</h2><div class="reader-tools">
 <button id="invert" type="button" aria-pressed="false">Invertir colores</button>
 <button id="toggle-ocr" type="button" aria-pressed="true">Ocultar lectura</button><button type="button" id="pdf-zoom-out" aria-label="Reducir el facsímil">−</button><button type="button" id="pdf-zoom-in" aria-label="Ampliar el facsímil">+</button><button type="button" id="pdf-zoom-fit">Ajustar ancho</button>
@@ -130,13 +130,13 @@ html[data-theme] body.facsimile-classic-reader main :is(button,input,select,a):f
 <div id="reader-frame" class="reader-frame"><canvas id="facsimile-canvas" role="img" aria-label="Hoja PDF sincronizada con la traducción" hidden></canvas><iframe hidden id="pdf-viewer" title="Facsímil PDF de la edición seleccionada" loading="eager"></iframe></div>
 <p id="pdf-render-status" class="reader-note" role="status">Imagen del impreso histórico. La numeración corresponde a las páginas digitales del PDF, no necesariamente a los folios originales.</p></div>
 <div class="reader-column reader-ocr"><div class="reader-head"><h2>Traducción de esta página</h2><small id="translation-page-label">Sincronizada con el PDF</small></div>
-<div class="facing-controls"><label>Lectura<select id="facing-mode"><option value="translation">Traducción</option><option value="ocr">Texto OCR original</option><option value="both">OCR y traducción</option></select></label><label>Traducir a<select id="facing-target"><option value="es">Castellano</option><option value="fr">Français</option><option value="en">English</option></select></label><label>Idioma de la hoja<select id="facing-source"><option value="la">Latín</option><option value="grc">Griego antiguo</option><option value="en">English</option><option value="fr">Français</option><option value="es">Castellano</option></select></label><label class="facing-auto"><input type="checkbox" id="facing-auto" checked> Traducir al cambiar de página</label><button id="facing-retry" type="button">Traducir de nuevo</button><button id="facing-smaller" type="button" aria-label="Reducir letra de la lectura">A−</button><button id="facing-larger" type="button" aria-label="Ampliar letra de la lectura">A+</button></div><p id="translation-status" class="reader-note" role="status">La traducción automática de la hoja se mostrará aquí.</p><div class="facing-texts"><section id="ocr-section" hidden><h3>OCR de la misma hoja</h3><div id="folio" class="folio" translate="no" aria-live="polite"></div></section><section id="translation-section"><h3 id="facing-target-title">Traducción automática · castellano</h3><div id="facing-translation" class="folio" translate="no" lang="es" aria-live="polite"></div></section></div><p class="reader-note">Versión automática no revisada, obtenida del OCR íntegro de esta hoja. El OCR puede incluir prólogo, aparato u otros contenidos del volumen. Puede enviarse el texto a los servicios externos MyMemory o Google Translate; desactive la traducción automática para detener nuevas consultas.</p></div></section><p id="status" role="status">Cargando cobertura...</p><div id="results"></div></main><script>
+<div class="facing-controls"><label>Lectura<select id="facing-mode"><option value="translation">Traducción</option><option value="ocr">Texto OCR original</option><option value="both">OCR y traducción</option><option value="pdf">Enfrentar otro PDF</option></select></label><label>Traducir a<select id="facing-target" data-content-language="true"><option value="es">Castellano</option><option value="fr">Français</option><option value="en">English</option></select></label><label>Idioma de la hoja<select id="facing-source" data-content-language="true"><option value="la">Latín</option><option value="grc">Griego antiguo</option><option value="en">English</option><option value="fr">Français</option><option value="es">Castellano</option></select></label><label class="facing-auto"><input type="checkbox" id="facing-auto" checked> Traducir al cambiar de página</label><button id="facing-retry" type="button">Traducir de nuevo</button><button id="facing-smaller" type="button" aria-label="Reducir letra de la lectura">A−</button><button id="facing-larger" type="button" aria-label="Ampliar letra de la lectura">A+</button></div><p id="translation-status" class="reader-note" role="status">La traducción automática de la hoja se mostrará aquí.</p><details class="facsimile-ocr-editor"><summary>Corregir OCR para esta traducción</summary><textarea id="facing-editable-ocr" rows="5" aria-label="OCR corregible para la traducción"></textarea><button id="facing-use-edited" type="button">Traducir el texto corregido</button></details><div class="facing-texts"><section id="ocr-section" hidden><h3>OCR de la misma hoja</h3><div id="folio" class="folio" translate="no" aria-live="polite"></div></section><section id="translation-section"><h3 id="facing-target-title">Traducción automática · castellano</h3><div id="facing-translation" class="folio" translate="no" lang="es" aria-live="polite"></div></section></div><p class="reader-note">Versión automática no revisada, obtenida del OCR íntegro de esta hoja. El OCR puede incluir prólogo, aparato u otros contenidos del volumen. Puede enviarse el texto a los servicios externos MyMemory o Google Translate; desactive la traducción automática para detener nuevas consultas.</p></div></section><p id="status" role="status">Cargando cobertura...</p><div id="results"></div></main><script>
 (async()=>{const $=x=>document.getElementById(x);
 const params=new URLSearchParams(location.search);
-const cache=new Map();let locales=[],r2=[],actual=null,datos=null,pagina=1;
+const cache=new Map();let locales=[],r2=[],actual=null,datos=null,pagina=1,loadSequence=0;
 const pedir=async(u,o)=>{const r=await fetch(u,o||{});if(!r.ok)throw Error(u.split("/").pop()+" HTTP "+r.status);return r.json()};
 const [cov,cat]=await Promise.all([
- pedir("data/classics-historical-pages/coverage.json").catch(()=>null),
+ pedir("data/index/classics-pdf/coverage.json").catch(()=>pedir("data/classics-historical-pages/coverage.json")).catch(()=>null),
  pedir("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).catch(()=>null)]);
 locales=((cov&&cov.records)||[]).filter(x=>x.index||x.status==="unchanged");
 r2=((cat&&cat.items)||[]);
@@ -150,13 +150,13 @@ if(locales.length){const g=grupo("Facsímiles del repositorio ("+locales.length+
 if(!sel.options.length){$("status").textContent="No hay ediciones con índice documental disponible";return}
 $("status").textContent=r2.length+" ediciones en R2 y "+locales.length+" facsímiles del repositorio con texto por página";
 const ficha=v=>v.startsWith("r2:")?r2.find(x=>x.id===v.slice(3)):locales.find(x=>x.path===v.slice(6));
-async function cargar(v){const f=ficha(v);if(!f)throw Error("Edición no identificada");
+async function cargar(v){const request=++loadSequence;const f=ficha(v);if(!f)throw Error("Edición no identificada");
  if(v.startsWith("r2:")){
   if(!cache.has(v)){
    let pages=[],ocrError="";
    try{const j=await pedir(f.texto);
     if(j.schema!=="vdl-r2-texto-paginas-1"||j.obra!==f.id||!Array.isArray(j.paginas)||j.paginas.some(x=>typeof x!=="string"))throw Error("El OCR no pertenece a esta edición");
-    pages=j.paginas.map((text,i)=>({page:i+1,text,method:"OCR de Internet Archive sin revisar"}));
+    pages=j.paginas.map((text,i)=>({page:i+1,text,method:j.metodosPagina?.[i]?.method||"OCR de Internet Archive sin revisar"}));
    }catch(error){ocrError=error.message;}
    if(!pages.length)pages=Array.from({length:Math.max(1,Number(f.paginas)||1)},(_,i)=>({page:i+1,text:"",method:"Capa de texto del PDF por consultar"}));
    cache.set(v,{paginas:pages,pdf:f.pdf,ficha:f,remoto:true,ocrError});}
@@ -165,7 +165,7 @@ async function cargar(v){const f=ficha(v);if(!f)throw Error("Edición no identif
    const j=await pedir(src);
    cache.set(v,{paginas:(j.pages||[]).map(x=>({page:x.page,text:x.text||"",method:x.method||"OCR"})),pdf:f.path,ficha:f,remoto:false})}
  }
- actual=v;datos=cache.get(v);const requested=Number(params.get("pagina"));
+ if(request!==loadSequence)return null;actual=v;datos=cache.get(v);const requested=Number(params.get("pagina"));
  const readable=datos.paginas.find(p=>p.text.trim().length>160)||datos.paginas.find(p=>p.text.trim().length>12);
  pagina=params.get("obra")===v.slice(3)&&Number.isInteger(requested)&&requested>=1&&requested<=datos.paginas.length?requested:(readable?.page||1);cita();return datos}
 function cita(){const c=$("cita");const f=datos.ficha;
@@ -185,7 +185,7 @@ function cita(){const c=$("cita");const f=datos.ficha;
   enl.append(a1,document.createTextNode(" · "),a2,document.createTextNode(" · "),a3);
   c.append(b,linea,der,evidence,enl);
  }else{c.hidden=false;c.textContent="Facsímil del repositorio: "+f.path.split("/").pop()}}
-function pintarFolio(){const p=datos.paginas.find(x=>x.page===pagina)||datos.paginas[0];if(!p)return;
+function pintarFolio(){if(!datos)return;const p=datos.paginas.find(x=>x.page===pagina)||datos.paginas[0];if(!p)return;
  pagina=p.page;$("pageno").value=pagina;$("pageno").max=datos.paginas.length;
  $("reader-shell").hidden=false;$("pager").hidden=false;$("results").replaceChildren();
  const lenguaFicha=(datos.ficha&&datos.ficha.lengua)||"";
@@ -197,21 +197,33 @@ function pintarFolio(){const p=datos.paginas.find(x=>x.page===pagina)||datos.pag
  $("pdf-completo").href=datos.pdf;
  $("facsimil").href=datos.pdf+"#page="+pagina;
  $("status").textContent="Página "+pagina+" de "+datos.paginas.length+" · "+p.method;
- const pageState={edition:actual,page:pagina,total:datos.paginas.length,text:p.text,pdf:datos.pdf,language:datos.ficha.idiomaEdicion||datos.ficha.lengua||"la",originalLanguage:datos.ficha.lengua||"la",method:p.method};
+ const pageState={edition:actual,page:pagina,total:datos.paginas.length,text:p.text,pdf:datos.pdf,language:datos.ficha.idiomaEdicion||datos.ficha.lengua||"la",originalLanguage:datos.ficha.lengua||"la",method:p.method,id:datos.ficha.id||"",title:datos.ficha.tituloEdicion||datos.ficha.path||"Facsímil",note:datos.ficha.notaFilologica||datos.ficha.alcance||""};
  window.VDLFacsimilePage=pageState;document.dispatchEvent(new CustomEvent("vdl:facsimile-page",{detail:pageState}));
  const url=new URL(location.href);if(actual.startsWith("r2:"))url.searchParams.set("obra",actual.slice(3));url.searchParams.set("pagina",pagina);history.replaceState(null,"",url);
 }
 async function leer(){try{$("status").textContent="Cargando el texto por páginas…";
- if(actual!==$("edition").value||!datos)await cargar($("edition").value);
+ if(actual!==$("edition").value||!datos){if(!await cargar($("edition").value))return}
  pintarFolio()}catch(e){$("status").textContent=e.message}}
-async function buscar(){try{const needle=$("term").value.trim().toLocaleLowerCase();
+const foldText=value=>String(value||"").normalize("NFD").replace(/\p{M}/gu,"").toLocaleLowerCase().replace(/[ςϲ]/g,"σ").replace(/j/g,"i").replace(/v/g,"u").replace(/\s+/g," ").trim();
+let conceptsPromise=null;
+async function conceptTerms(query){
+ if(!conceptsPromise)conceptsPromise=pedir("data/lexicon/conceptus.json").catch(()=>null);
+ const dictionary=await conceptsPromise,needle=foldText(query),terms=new Set([needle]);
+ for(const c of dictionary?.concepts||[]){
+  const words=[c.id,...(c.la||[]),...(c.grc||[]),...Object.values(c.modern||{}).flat()].filter(x=>typeof x==="string");
+  if(words.some(t=>foldText(t)===needle))for(const word of words)terms.add(foldText(word));
+ }
+ return [...terms].filter(Boolean);
+}
+async function buscar(){try{const needle=foldText($("term").value);
  if(!needle){return leer()}
  $("status").textContent="Buscando…";
- if(actual!==$("edition").value||!datos)await cargar($("edition").value);
+ if(actual!==$("edition").value||!datos){if(!await cargar($("edition").value))return}
  $("reader-shell").hidden=true;$("pager").hidden=true;
- const hits=datos.paginas.filter(p=>p.text.toLocaleLowerCase().includes(needle));
+ const expanded=$("page-search-mode").value==="concept",terms=expanded?await conceptTerms(needle):[needle];
+ const hits=datos.paginas.filter(p=>{const text=foldText(p.text);return terms.some(term=>text.includes(term))});
  $("results").replaceChildren();
- $("status").textContent=hits.length+" páginas coincidentes de "+datos.paginas.length;
+ $("status").textContent=hits.length+" páginas coincidentes de "+datos.paginas.length+(expanded?" · Conceptus: "+terms.join(" · "):" · búsqueda literal con normalización de acentos, i/j y u/v");
  for(const p of hits.slice(0,80)){const a=document.createElement("article"),h=document.createElement("strong"),
   excerpt=document.createElement("p"),acciones=document.createElement("div"),
   link=document.createElement("a"),leerAqui=document.createElement("button");
@@ -226,6 +238,8 @@ async function buscar(){try{const needle=$("term").value.trim().toLocaleLowerCas
   a.append(h,excerpt,acciones);$("results").append(a)}
 }catch(e){$("status").textContent=e.message}}
 $("go").addEventListener("click",buscar);
+$("find-printed-locus").addEventListener("click",()=>{$("term").value=$("printed-locus").value;buscar()});
+$("printed-locus").addEventListener("keydown",e=>{if(e.key==="Enter")$("find-printed-locus").click()});
 $("read").addEventListener("click",leer);
 $("invert").addEventListener("click",()=>{const active=$("reader-frame").classList.toggle("inverted");$("invert").setAttribute("aria-pressed",String(active));});
 $("toggle-ocr").addEventListener("click",()=>{const hidden=$("reader-shell").classList.toggle("ocr-hidden");$("toggle-ocr").textContent=hidden?"Mostrar lectura":"Ocultar lectura";$("toggle-ocr").setAttribute("aria-pressed",String(!hidden));});
@@ -234,14 +248,14 @@ $("next").addEventListener("click",()=>{if(datos&&pagina<datos.paginas.length){p
 $("pageno").addEventListener("change",()=>{const n=parseInt($("pageno").value,10);
  if(datos&&n>=1&&n<=datos.paginas.length){pagina=n;pintarFolio()}});
 $("term").addEventListener("keydown",e=>{if(e.key==="Enter")buscar()});
-$("edition").addEventListener("change",()=>{datos=null;actual=null;$("reader-shell").hidden=true;$("pager").hidden=true;$("cita").hidden=true;$("results").replaceChildren()});
-const obra=params.get("obra");
-if(obra&&r2.some(x=>x.id===obra)){$("edition").value="r2:"+obra;
+$("edition").addEventListener("change",()=>{loadSequence++;window.VDLFacsimilePage=null;document.dispatchEvent(new CustomEvent("vdl:facsimile-reset"));datos=null;actual=null;$("reader-shell").hidden=true;$("pager").hidden=true;$("cita").hidden=true;$("results").replaceChildren()});
+const obra=params.get("obra"),edicion=params.get("edicion");
+if((obra&&r2.some(x=>x.id===obra))||(edicion&&[...sel.options].some(o=>o.value===edicion))){$("edition").value=edicion&&[...sel.options].some(o=>o.value===edicion)?edicion:"r2:"+obra;
  const q=params.get("q");if(q)$("term").value=q;
  const pg=parseInt(params.get("pagina")||"0",10);
  await (q?buscar():leer());
  if(pg>0&&datos&&pg<=datos.paginas.length&&!q){pagina=pg;pintarFolio()}}
 })();
-</script><script defer src="assets/academic-inline-translation.js?v=20261114-audit-v2"></script><script type="module" src="assets/facsimile-facing-reader.mjs?v=20261114-1"></script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
+</script><script defer src="assets/academic-inline-translation.js?v=20261114-machine-pivot-v3"></script><script defer src="assets/classics-academic-reader.js?v=20261114-bude-1"></script><script type="module" src="assets/facsimile-facing-reader.mjs?v=20261114-academic-2"></script><script defer src="assets/analytics-config.js?v=20261106-ga4-1"></script>
 <script defer src="assets/analytics.js?v=20261106-ga4-1"></script>
-<script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script></body></html>
+<script defer src="assets/secondary-reader-controls.js?v=20261110-unified-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/ui-idioma.js?v=20261114-content-languages"></script></body></html>

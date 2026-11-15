@@ -1,0 +1,891 @@
+{
+  "schema": "vdl-source-reading-notes-manifest-v1",
+  "entries": [
+    {
+      "workId": "apuleius-apologia",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/apuleius-apologia-la.json",
+      "passagesWithNotes": 4,
+      "notes": 4,
+      "sourceSha256": "c870b4f14dc190a60cf67bc87a9ee2f5672ddc7521a7265da56b5704e7844375"
+    },
+    {
+      "workId": "aristotle-de-anima",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/aristotle-de-anima-grc.json",
+      "passagesWithNotes": 27,
+      "notes": 29,
+      "sourceSha256": "ed8e8daed9f9d5139952052574cd8de06631ffeb648253b080ee5e08c595d8fa"
+    },
+    {
+      "workId": "aristotle-physics",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/aristotle-physics-grc.json",
+      "passagesWithNotes": 70,
+      "notes": 75,
+      "sourceSha256": "bf5ed935bb5ee53cd3461e9cb1aa2adc70bb7d8c6959a752a487b8582126d8df"
+    },
+    {
+      "workId": "aristoxenus-harmonica",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/aristoxenus-harmonica-grc.json",
+      "passagesWithNotes": 64,
+      "notes": 65,
+      "sourceSha256": "8006feeb3ac1365ef6603d2998c7a3199002c7250582612cd9b4e265e4e7eaa7"
+    },
+    {
+      "workId": "aulus-gellius-noctes",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/aulus-gellius-noctes-la.json",
+      "passagesWithNotes": 654,
+      "notes": 812,
+      "sourceSha256": "7d3e5ce510df0ca330018a5ca333a24e7cb74ad6ee7bd875c795c10d1869ce61"
+    },
+    {
+      "workId": "boethius-consolatio",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/boethius-consolatio-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "2e43b9833fbf0a467d0f8f1d7958830512c040d830f7fba549db3a551f91399b"
+    },
+    {
+      "workId": "cato-agri-cultura",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cato-agri-cultura-la.json",
+      "passagesWithNotes": 1,
+      "notes": 1,
+      "sourceSha256": "b7bc1a8fd2a20beb2da99e9ea42fcfefd5f6abde72d96c8d83e96510fc34c2ec"
+    },
+    {
+      "workId": "cebes-tabula",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/cebes-tabula-grc.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "175583b652576c87987caf9220fb732d7d0d156cbb2e22fd982bad78a3b11da6"
+    },
+    {
+      "workId": "celsus",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/celsus-la.json",
+      "passagesWithNotes": 1,
+      "notes": 4,
+      "sourceSha256": "5a0d5e3f85f635abe2292d7d5c5defb429ee82ff58c7280acf3f8802e750a89a"
+    },
+    {
+      "workId": "cicero-brutus",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-brutus-la.json",
+      "passagesWithNotes": 287,
+      "notes": 690,
+      "sourceSha256": "28c26d36ee5b3888799beea5c962cf0c45f87bceedf3e973af8afe6a242ce0f7"
+    },
+    {
+      "workId": "cicero-catilinariae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-catilinariae-la.json",
+      "passagesWithNotes": 110,
+      "notes": 482,
+      "sourceSha256": "3e0f7f8d3d12c1bb43b2b27838a51bc81c32427e71dcc207ef7c8c8b2e5e91aa"
+    },
+    {
+      "workId": "cicero-de-amicitia",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-de-amicitia-la.json",
+      "passagesWithNotes": 16,
+      "notes": 16,
+      "sourceSha256": "72b06bbc51124747f047ab7bd376bb20bac10a260a413c6359ff25aa7b7d3f52"
+    },
+    {
+      "workId": "cicero-de-divinatione",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-de-divinatione-la.json",
+      "passagesWithNotes": 33,
+      "notes": 35,
+      "sourceSha256": "3142d6ca280b7e5f7c993fb58e7bb369bdd1396a98bd864d9853f0d035994700"
+    },
+    {
+      "workId": "cicero-de-finibus",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-de-finibus-la.json",
+      "passagesWithNotes": 432,
+      "notes": 1828,
+      "sourceSha256": "169e1c52a51692a7af4e1c74217973f063544392946365c45ea8e1c95988e863"
+    },
+    {
+      "workId": "cicero-de-natura-deorum",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-de-natura-deorum-la.json",
+      "passagesWithNotes": 1,
+      "notes": 3,
+      "sourceSha256": "7c093bd889c24c235fd29b3d385075e10c53e39394585c00a374ab36ed64bcce"
+    },
+    {
+      "workId": "cicero-de-senectute",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-de-senectute-la.json",
+      "passagesWithNotes": 27,
+      "notes": 33,
+      "sourceSha256": "9c05be8471cec3abc50f0b0166ff4ebbaaff43c804251d3ff2cc19ce9c18fda1"
+    },
+    {
+      "workId": "cicero-oratore",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-oratore-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "057aef5553eeb2f3e30eb17b57466d5195599e5204158df1a54ea3a10322fc6a"
+    },
+    {
+      "workId": "cicero-philippicae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-philippicae-la.json",
+      "passagesWithNotes": 530,
+      "notes": 2489,
+      "sourceSha256": "726ea765f077de0b86742656239fb0eb08ed3c17df80a6833e4d51a319110b01"
+    },
+    {
+      "workId": "cicero-republica",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-republica-la.json",
+      "passagesWithNotes": 59,
+      "notes": 114,
+      "sourceSha256": "c0bdd9af55f18d14af1a4b80d35dbfcbecc2a1b247b34f92f5bada0a724973ad"
+    },
+    {
+      "workId": "cicero-tusculanae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/cicero-tusculanae-la.json",
+      "passagesWithNotes": 475,
+      "notes": 4173,
+      "sourceSha256": "cd01991ba300b9c84e638ad51ae9c6857d4644dc9a23d0199c587f81ad9cd84a"
+    },
+    {
+      "workId": "clement",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/clement-grc.json",
+      "passagesWithNotes": 150,
+      "notes": 203,
+      "sourceSha256": "235c325ceb7460d093f1ae01d0490ba897028e26e931993a25b8073d39041035"
+    },
+    {
+      "workId": "clement-2",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/clement-2-grc.json",
+      "passagesWithNotes": 41,
+      "notes": 50,
+      "sourceSha256": "37f652d71c183037e9dc84f1325f41450f0752f658bd8ffc508f8e3e3dc33843"
+    },
+    {
+      "workId": "columella",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/columella-la.json",
+      "passagesWithNotes": 470,
+      "notes": 2999,
+      "sourceSha256": "73f4d1e0f41ba6b20a276699a444ae2d5a49d54f388f4af0727a5350d4ea3ff4"
+    },
+    {
+      "workId": "diognetus",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/diognetus-grc.json",
+      "passagesWithNotes": 30,
+      "notes": 35,
+      "sourceSha256": "c9aff0733398334ec5ca0fb628269d4ff67734ff2478057d18fc531748b99fd5"
+    },
+    {
+      "workId": "dioscorides",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/dioscorides-grc.json",
+      "passagesWithNotes": 293,
+      "notes": 1706,
+      "sourceSha256": "e2a2175c5ca1c1a2313c5816bc79c7fa1c9103766fcad193356d0c13ce6746bc"
+    },
+    {
+      "workId": "galen-ars-medica",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/galen-ars-medica-grc.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "26582d8908adccfbc257aaaf7b4a1cd79271328a09a364d92da3a3d5aeaba756"
+    },
+    {
+      "workId": "galen-de-usu-partium",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/galen-de-usu-partium-grc.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "c88d5b0a58305fc8454e93b2a4448f683d121fb44305b8858e1e68e6556b19c9"
+    },
+    {
+      "workId": "hero-automata",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/hero-automata-grc.json",
+      "passagesWithNotes": 27,
+      "notes": 65,
+      "sourceSha256": "bf647276b5f6e3bfa577f3462aa12982f488177c93f590edad2df6c7d640dc34"
+    },
+    {
+      "workId": "hero-pneumatica",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/hero-pneumatica-grc.json",
+      "passagesWithNotes": 58,
+      "notes": 215,
+      "sourceSha256": "0a5d7e2ea2f2a39ad97439d01755f7b2721c0f76b29e36c4f686eed1f726f25c"
+    },
+    {
+      "workId": "horace-ars-poetica",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/horace-ars-poetica-la.json",
+      "passagesWithNotes": 1,
+      "notes": 1,
+      "sourceSha256": "bb1648af0ec8a8a64dee8a26c74defee9226eeac62edfc1a3397f6fad2e447d5"
+    },
+    {
+      "workId": "horace-epistulae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/horace-epistulae-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "803a3f31c2a9520583318e69f5baec603083f92fd5daa4ec076d90faf96fb2ed"
+    },
+    {
+      "workId": "horace-epodi",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/horace-epodi-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "e94d55384e838e8e0e5bf36a9636e155b924fb329f375d80edd53554a0193f4b"
+    },
+    {
+      "workId": "horace-odes",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/horace-odes-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "ddac1805d6120b78db476ac94c4d88b066b1fcd7676cd520e6abd927360655dc"
+    },
+    {
+      "workId": "horace-sermones",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/horace-sermones-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "7c5273536472bb9226caae8927ad873513cb75cbc6916721152e5b96528964dd"
+    },
+    {
+      "workId": "ignatius",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/ignatius-grc.json",
+      "passagesWithNotes": 103,
+      "notes": 141,
+      "sourceSha256": "407480ff3171bc805d165869aa317d54b51818a47f42f8fe30a09db7ba9f585d"
+    },
+    {
+      "workId": "irenaeus",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/irenaeus-grc.json",
+      "passagesWithNotes": 87,
+      "notes": 349,
+      "sourceSha256": "bbbc779f0d9d2372ac3fcd088750dc3fce78c10d913d5cda9e2e71e01a0ac29f"
+    },
+    {
+      "workId": "justin",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/justin-grc.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "d89772ab0d12a0a293c299652ddf4a5d69ccbd6cced5c4f9181ae887bde074bf"
+    },
+    {
+      "workId": "juvenal-saturae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/juvenal-saturae-la.json",
+      "passagesWithNotes": 156,
+      "notes": 191,
+      "sourceSha256": "7539945f88afb4c33b121c5a1b43e572d5a12a67b5ef68b297b6c8b43c287e3a"
+    },
+    {
+      "workId": "livy",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/livy-la.json",
+      "passagesWithNotes": 1424,
+      "notes": 1424,
+      "sourceSha256": "c5f0922a96df71f27486052c9718ec3713e5ac785b266c37049da5a0efd9382d"
+    },
+    {
+      "workId": "lucan",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/lucan-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "19cc0df789097cff3293f32d47c4b31a2ecee214f416b092248a5a86a89e34c3"
+    },
+    {
+      "workId": "martial",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/martial-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "ed25741b55fb4d7ded9fd6b1429b355db28396d963abf6e342d4e8d948268b71"
+    },
+    {
+      "workId": "ovid-ars-amatoria",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/ovid-ars-amatoria-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "5df7213234bc78b78020614e47b956b5da57f9a493378e16e2a9c5b2f64149f3"
+    },
+    {
+      "workId": "ovid-ex-ponto",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/ovid-ex-ponto-la.json",
+      "passagesWithNotes": 204,
+      "notes": 307,
+      "sourceSha256": "2f32a463fc23d6262699969baf6e1d87dd0e0a863b2201128631ebfd7c4973f4"
+    },
+    {
+      "workId": "ovid-fasti",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/ovid-fasti-la.json",
+      "passagesWithNotes": 39,
+      "notes": 54,
+      "sourceSha256": "5e1de37b36682fde85fc99cd1005029611d083d61d3d62264a73e5791f0db567"
+    },
+    {
+      "workId": "ovid-heroides",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/ovid-heroides-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "a50d1ccf4a668633b7dc76540ace1ac4852c9b633b9ff8b2c9adaa03cccadb18"
+    },
+    {
+      "workId": "ovid-remedia-amoris",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/ovid-remedia-amoris-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "6145fb95cd2f6518184c0fefc71560afa587409bf7a3388a68b674212e567ae8"
+    },
+    {
+      "workId": "ovid-tristia",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/ovid-tristia-la.json",
+      "passagesWithNotes": 237,
+      "notes": 346,
+      "sourceSha256": "fac018274ae76cd3d0528e10841d3ee600bb4f8c663007af66434d68be18669d"
+    },
+    {
+      "workId": "pastor-hermas",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/pastor-hermas-grc.json",
+      "passagesWithNotes": 249,
+      "notes": 326,
+      "sourceSha256": "347ef6f5013ee2703713e06eb540c052f7e7c4a1772f22d533a1956b5fa802cc"
+    },
+    {
+      "workId": "philo",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/philo-grc.json",
+      "passagesWithNotes": 56,
+      "notes": 88,
+      "sourceSha256": "93dcbd16b852ef66753ddaa56a2b27a0c2bfde82860d1cfecdcd9b58ea57cd6b"
+    },
+    {
+      "workId": "philo-de-vita-mosis",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/philo-de-vita-mosis-grc.json",
+      "passagesWithNotes": 132,
+      "notes": 219,
+      "sourceSha256": "b999f4a73a6ae94100541239fb6880dceaf297d7fbcc597e77cb86035842a1fa"
+    },
+    {
+      "workId": "philo-legum-allegoriae",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/philo-legum-allegoriae-grc.json",
+      "passagesWithNotes": 104,
+      "notes": 142,
+      "sourceSha256": "ef558dad43615bc7a146b087c92790a654433fa267aed2180c9ee8d5732376d9"
+    },
+    {
+      "workId": "plautus-amphitruo",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/plautus-amphitruo-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "5b1140542ef8de3829344c62a6d8aa28de45d29210455d3c191cefce14f3eaa9"
+    },
+    {
+      "workId": "plautus-aulularia",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/plautus-aulularia-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "e54209827093e98686764ac931f44c9b5a4943d1cd891268ad2da593171bbd6f"
+    },
+    {
+      "workId": "pliny-younger-epistulae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/pliny-younger-epistulae-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "530b450161dab7d8e2bd7a319ef9e03d5198e1a68f77a295b28a7de05577afa6"
+    },
+    {
+      "workId": "polycarp",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/polycarp-grc.json",
+      "passagesWithNotes": 30,
+      "notes": 59,
+      "sourceSha256": "3e4115e6c7026136ccede52edbab85fefc4b90cf4096b7cb008fa07613e0a317"
+    },
+    {
+      "workId": "propertius-elegiae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/propertius-elegiae-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "36db8975bad90a5ce73967b54025dad7fa2811f1dd71ad7a14c44e7121188a10"
+    },
+    {
+      "workId": "ptolemy-almagest",
+      "language": "grc",
+      "path": "data/classics-corpus/reading-notes/ptolemy-almagest-grc.json",
+      "passagesWithNotes": 118,
+      "notes": 415,
+      "sourceSha256": "3a5736d0922b99b81044be8be0c233f05f53e5b45bdcb922df386feffbe8cee2"
+    },
+    {
+      "workId": "quintilian",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/quintilian-la.json",
+      "passagesWithNotes": 509,
+      "notes": 629,
+      "sourceSha256": "d4b1a8b6bfa7faaecdca5ecc04020549000bd1942ff44a67c02c8268b99780ef"
+    },
+    {
+      "workId": "seneca-de-clementia",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/seneca-de-clementia-la.json",
+      "passagesWithNotes": 18,
+      "notes": 18,
+      "sourceSha256": "a170840d8fc46990dc0d5de06f3702562baa09ebd7bb0e55e639d24c2a547a6a"
+    },
+    {
+      "workId": "seneca-epistulae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/seneca-epistulae-la.json",
+      "passagesWithNotes": 13,
+      "notes": 15,
+      "sourceSha256": "079db8ee6c09bd08233441a06d7fc5a1c15331f28d868257dcc97910dd7fb74d"
+    },
+    {
+      "workId": "silius-punica",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/silius-punica-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "18f4c9c01231a83cceaa57dd6fb7e61b652cb6d0ac779dd16f18139c52460fad"
+    },
+    {
+      "workId": "statius-thebais",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/statius-thebais-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "4e1606ad870fabd24c87f47179fb9bac538f43275ee76850c32ff493e063e679"
+    },
+    {
+      "workId": "tacitus-agricola",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/tacitus-agricola-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "c6ed0dbc08ef63e3291468445fa3e489356b66faf3dfa9018ee5471228210676"
+    },
+    {
+      "workId": "tacitus-annales",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/tacitus-annales-la.json",
+      "passagesWithNotes": 1,
+      "notes": 1,
+      "sourceSha256": "667f319b16fb24f3ce529679917d865b68f1763db82e54b2675c6d7187fdc0af"
+    },
+    {
+      "workId": "tacitus-dialogus",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/tacitus-dialogus-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "311b7e221a81103d10438c5d583b9baecf8217895d869b6e48ea6ff13c77cc3b"
+    },
+    {
+      "workId": "tacitus-germania",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/tacitus-germania-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "ecc70d87e3f8d6ef00ed30e8bf41ecd85841fcc8852b8e1884cb979b7f9f74a1"
+    },
+    {
+      "workId": "tacitus-historiae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/tacitus-historiae-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "a1aaf3ad531abe5c517b6de03aefc1348cd142a0580fd17899f8313b609c6ceb"
+    },
+    {
+      "workId": "terentius-andria",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/terentius-andria-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "3899939756b4df773ace40c870a3e9ff139971f08ecf2d2c42f05819e510935a"
+    },
+    {
+      "workId": "terentius-heautontimorumenos",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/terentius-heautontimorumenos-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "f606ae6e891594514effeb9f2bb8d3514bddcc3579483760a73b9e6ca17d202d"
+    },
+    {
+      "workId": "tertullian",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/tertullian-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "af87b4023e542638edb49bb93a0345e75a15f6ee323ab4c804748dc445511fbf"
+    },
+    {
+      "workId": "tibullus-elegiae",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/tibullus-elegiae-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "bcbec6571f86a3f34717cb88f039432af72495d1270ac39fcf239a1ed39b97b8"
+    },
+    {
+      "workId": "valerius-maximus-facta",
+      "language": "la",
+      "path": "data/classics-corpus/reading-notes/valerius-maximus-facta-la.json",
+      "passagesWithNotes": 0,
+      "notes": 0,
+      "sourceSha256": "41029b45593ca6e24b11b240051dcaeb33e03af2962201c01ad116f1f44f4b7d"
+    }
+  ],
+  "unavailable": [
+    {
+      "file": "aeschylus-persae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "appian-romaika-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aeschylus-suppliants-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aeschylus-oresteia-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aeneas-tacticus-poliorketika-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aeschylus-prometheus-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aeschylus-seven-thebes-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristophanes-acharnenses-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristophanes-aves-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristophanes-clouds-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristophanes-ranae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristophanes-vespae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristophanes-lysistrata-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristophanes-pax-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aratus-phaenomena-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristotle-rhetoric-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristotle-politics-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristotle-metaphysics-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "arrian-anabasis-alexandri-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "aristotle-nicomachean-ethics-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "barnabas-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "cicero-pro-archia-la.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "demosthenes-philippicae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "diodorus-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "demosthenes-de-corona-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "euripides-alcestis-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "euclid-elementa-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "epictetus-discourses-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "dionysius-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "euripides-bacchae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "diogenes-laertius-vitae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "euripides-hippolytus-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "euripides-medea-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "euripides-hecuba-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "euripides-electra-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "euripides-iphigenia-aulid-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "euripides-troades-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "eusebio-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "hippocrates-aphorisms-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "hesiod-theogony-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "hesiod-works-days-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "homeric-hymns-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "herodotus-historiae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "josephus-antiquities-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "lucian-verae-historiae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "marcus-aurelius-meditations-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "lucian-dialogi-mortuorum-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "josephus-war-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "mark-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "nepos-la.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "pindar-pythian-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "pindar-olympian-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "pausanias-periegesis-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "plato-phaedrus-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "plato-laws-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "plato-meno-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "plato-phaedo-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "plato-crito-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "plato-gorgias-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "plato-symposium-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "plato-republic-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "plato-timaeus-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "pseudo-apollodorus-bibliotheca-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "polybius-historiae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "sophocles-ajax-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "seneca-tragoediae-la.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "sophocles-antigone-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "sophocles-oedipus-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "sophocles-philoctetes-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "sophocles-oedipus-colonus-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "sophocles-electra-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "sophocles-trachiniae-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "suetonius-caesares-la.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "strabo-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "xenophon-anabasis-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "xenophon-memorabilia-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    },
+    {
+      "file": "xenophon-hellenica-grc.json",
+      "reason": "Source SHA-256 differs; no notes published"
+    }
+  ]
+}

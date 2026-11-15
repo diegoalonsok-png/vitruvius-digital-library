@@ -29,7 +29,8 @@ function fallbackPdf(target,source,title){
  target.append(el("p","classic-ref",tr("El lector avanzado no está disponible; se utiliza el visor PDF del navegador.","Advanced reader unavailable; using the browser's native PDF reader.","Lecteur avancé indisponible ; affichage PDF natif.")));
  const frame=el("iframe","classical-native-pdf");frame.src=source+"#toolbar=1&navpanes=0";frame.title="PDF · "+title;frame.loading="lazy";target.append(frame);
  const links=el("div","classic-linkline");addLink(links,source,tr("Abrir PDF completo ↗","Open full PDF ↗","Ouvrir PDF complet ↗"));
- addLink(links,source,tr("Descargar PDF","Download PDF","Télécharger le PDF"),true);target.append(links);
+ addLink(links,source,tr("Descargar PDF","Download PDF","Télécharger le PDF"),true);
+ if(isLocalPDF(source))addLink(links,"buscador-facsimiles-clasicos.html?edicion="+encodeURIComponent("local:"+source),tr("Traducir y enfrentar PDF","Translate and compare PDF","Traduire et comparer le PDF"));target.append(links);
 }
 async function mountPdf(target,item){
  const token=++session;
@@ -48,6 +49,7 @@ async function mountPdf(target,item){
  const links=el("div","classical-pdf-external");
  addLink(links,src,tr("Abrir PDF ↗","Open PDF ↗","Ouvrir le PDF ↗"));
  addLink(links,src,tr("Descargar PDF","Download PDF","Télécharger PDF"),true);
+ const studyLink=addLink(links,"buscador-facsimiles-clasicos.html?edicion="+encodeURIComponent("local:"+src),tr("Traducir y enfrentar PDF","Translate and compare PDF","Traduire et comparer le PDF"));
  let pdf=null,pageNumber=1,scale=1,turn=0,contrast=false,inverted=false,renderTask=null,taskSerial=0,activeSearch=0,hlTerm="",pageItems=[];
  const pager=el("div","classical-pdf-pager");
  const prev=addButton(pager,"←",tr("Página anterior","Previous page","Page précédente"),()=>loadPage(pageNumber-1));
@@ -84,7 +86,7 @@ async function mountPdf(target,item){
  function setZoom(value){scale=Math.max(0.6,Math.min(3.5,value));zoomOutput.textContent=Math.round(scale*100)+" %";minus.disabled=scale<=.6;render()}
  function loadPage(page){
   if(!pdf)return;const n=Math.max(1,Math.min(pdf.numPages,Math.floor(Number(page)||1)));
-  pageNumber=n;pageInput.value=String(n);prev.disabled=n<=1;next.disabled=n>=pdf.numPages;render()
+  pageNumber=n;if(studyLink)studyLink.href="buscador-facsimiles-clasicos.html?edicion="+encodeURIComponent("local:"+src)+"&pagina="+n;pageInput.value=String(n);prev.disabled=n<=1;next.disabled=n>=pdf.numPages;render()
  }
  async function render(){
   if(!pdf||token!==session||!target.isConnected)return;

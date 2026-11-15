@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'scripts/index-classical-historical-pdfs.py'
+      - 'scripts/classics_ingestion_bundle.py'
+      - 'documents/classics/*.pdf'
       - 'scripts/build-classical-navigation.py'
       - '.github/workflows/index-classical-historical-pdfs.yml'
 permissions:
@@ -25,7 +27,7 @@ jobs:
       - name: Instalar extractor y OCR griego-latino
         run: |
           sudo apt-get update
-          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng tesseract-ocr-lat tesseract-ocr-ell
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng tesseract-ocr-lat tesseract-ocr-grc tesseract-ocr-fra tesseract-ocr-spa
           python -m pip install --disable-pip-version-check pymupdf
       - name: Construir enlaces conservadores entre originales y traducciones
         run: python scripts/build-classical-navigation.py
@@ -37,8 +39,8 @@ jobs:
           import json
           from pathlib import Path
           root=Path("data/classics-historical-pages")
-          coverage=json.loads((root/"coverage.json").read_text(encoding="utf8"))
-          assert len(coverage["records"])==10
+          coverage=json.loads(Path("data/index/classics-pdf/coverage.json").read_text(encoding="utf8"))
+          assert len(coverage["records"])>=10
           assert all(r["status"] in ("unchanged","page-index-created") for r in coverage["records"])
           for r in coverage["records"]:
               index=root/(Path(r["path"]).stem+".json")
@@ -54,7 +56,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/classics-historical-pages/ data/classics-alignment/
+          git add data/index/classics-pdf/ data/classics-historical-pages/ data/classics-alignment/
           if ! git diff --cached --quiet; then
             git commit -m "Publish page-level historical OCR and conservative classical navigation indexes"
             git pull --rebase origin main

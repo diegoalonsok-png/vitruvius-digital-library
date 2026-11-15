@@ -12,18 +12,21 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+from classics_ingestion_bundle import reading_index
+
 ROOT = Path(__file__).resolve().parents[1]
 INVENTORY = ROOT / "data/classics-corpus/pdf-inventory.json"
 OUT = ROOT / "data/classics-historical-pages"
+READING_OUT = ROOT / "data/index/classics-pdf"
 LANG_HINTS = {
-    "aristotle-poetics-greek-christ-1893": "ell+eng",
+    "aristotle-poetics-greek-christ-1893": "grc+eng",
     "aristotle-poetics-english-1819": "eng",
     "caesar-de-bello-gallico-smith-1842": "lat+eng",
     "cicero-de-officiis-miller-1913": "lat+eng",
-    "epictetus-theophrastus-greek-1870": "ell+lat",
+    "epictetus-theophrastus-greek-1870": "grc+lat",
     "lucretius-de-rerum-natura-latin-1813": "lat",
     "lucretius-on-nature-things-1880": "eng",
-    "plato-apologia-socratis-adam-1891": "ell+lat",
+    "plato-apologia-socratis-adam-1891": "grc+lat",
     "virgil-aeneid-book-i-walpole-1893": "lat+eng",
     "virgil-georgica-latin-forbiger-1849": "lat",
 }
@@ -41,12 +44,27 @@ def ocr_page(page, languages, dpi):
             raise RuntimeError(result.stderr.strip()[:250] or "tesseract error")
         return result.stdout
 
+def write_reading_index(document, name):
+    concepts = json.loads((ROOT / "data/lexicon/conceptus.json").read_text())["concepts"]
+    result = reading_index(name, [(p["page"], p["text"]) for p in document["pages"]], concepts, document["sourceSha256"])
+    result["textSource"] = "data/classics-historical-pages/" + name + ".json"
+    READING_OUT.mkdir(parents=True, exist_ok=True)
+    target = READING_OUT / (name + "-reading-index.json")
+    target.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")) + "\n")
+    return target.relative_to(ROOT).as_posix()
+
+
 def build(*, do_ocr=False, dpi=170, min_chars=90):
     import fitz
     inventory = json.loads(INVENTORY.read_text(encoding="utf-8"))
     OUT.mkdir(parents=True, exist_ok=True)
     reports = []
-    for entry in inventory["files"]:
+    entries = {e["path"]: e for e in inventory["files"]}
+    # Discover a newly downloaded PDF immediately, before a separate inventory audit.
+    for path in (ROOT / "documents/classics").glob("*.pdf"):
+        rel = path.relative_to(ROOT).as_posix()
+        entries.setdefault(rel, {"path": rel})
+    for entry in entries.values():
         rel = entry["path"]
         path = ROOT / rel
         name = path.stem
@@ -59,7 +77,8 @@ def build(*, do_ocr=False, dpi=170, min_chars=90):
             try:
                 prev = json.loads(target.read_text(encoding="utf-8"))
                 if prev.get("sourceSha256") == fingerprint and (not do_ocr or prev.get("ocrAttempted")):
-                    reports.append({"path": rel, "status": "unchanged", "pages": len(prev["pages"]),
+                    index_path = write_reading_index(prev, name)
+                    reports.append({"path": rel, "status": "unchanged", "readingIndex": index_path, "pages": len(prev["pages"]),
                                     "ocrPages": sum(x["method"] == "ocr" for x in prev["pages"])})
                     continue
             except (ValueError, KeyError, TypeError):
@@ -100,8 +119,9 @@ def build(*, do_ocr=False, dpi=170, min_chars=90):
             "pages": page_records,
         }
         target.write_text(json.dumps(output, ensure_ascii=False, separators=(",", ":"))+"\n", encoding="utf-8")
+        index_path = write_reading_index(output, name)
         reports.append({
-            "path": rel, "index": target.relative_to(ROOT).as_posix(),
+            "path": rel, "index": target.relative_to(ROOT).as_posix(), "readingIndex": index_path,
             "status": "page-index-created", "pages": len(page_records),
             "textLayerPages": sum(x["method"] == "pdf-text-layer" for x in page_records),
             "ocrPages": sum(x["method"] == "ocr" for x in page_records),
@@ -113,7 +133,7 @@ def build(*, do_ocr=False, dpi=170, min_chars=90):
         "ocrRequested": bool(do_ocr),
         "records": reports,
     }
-    (OUT / "coverage.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    (READING_OUT / "coverage.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if any(r["status"] == "missing-file" for r in reports):
         raise RuntimeError("Some inventoried PDFs are missing")

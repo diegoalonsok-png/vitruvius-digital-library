@@ -17,7 +17,7 @@ function iniciar(){
  // Un selector propio de la página (aunque sus opciones se llenen después) evita
  // montar una segunda pastilla: se comprueba tras la carga, por opciones o por nombre.
  const tieneSelector=()=>[...document.querySelectorAll("select")].some(s=>{
-  if(s.id==="lang"||s.closest("#vitruvius-secondary-toolbar"))return false;
+  if(s.hasAttribute("data-content-language")||s.id==="lang"||s.closest("#vitruvius-secondary-toolbar"))return false;
   const v=[...s.options].map(o=>o.value.toLowerCase());
   return (v.includes("en")&&v.includes("fr")&&v.includes("es"))||/idioma|language|langue|ui-lang|-language$/i.test(s.id+" "+(s.getAttribute("aria-label")||""));
  });
@@ -35,7 +35,7 @@ function iniciar(){
  document.addEventListener("vitruvius:language-changed",e=>{const l=e.detail?.language;if(["es","en","fr"].includes(l)){document.documentElement.lang=l;try{localStorage.setItem(KEY,l)}catch{}}});
  // Selectores propios de una página (atlas, iconografía…): avisan al resto del sitio.
  document.addEventListener("change",e=>{
-  const s=e.target;if(!(s instanceof HTMLSelectElement)||s.closest("#lang"))return;
+  const s=e.target;if(!(s instanceof HTMLSelectElement)||s.hasAttribute("data-content-language")||s.closest("#lang"))return;
   const v=[...s.options].map(o=>o.value.toLowerCase());if(!(v.includes("en")&&v.includes("fr")&&v.includes("es")))return;
   const l=s.value.toLowerCase().slice(0,2);
   if(["es","en","fr"].includes(l)&&document.documentElement.lang!==l)document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:l,origin:"ui-idioma"}}));
@@ -46,7 +46,7 @@ function iniciar(){
     idioma propios de la página se ocultan pero siguen funcionando: la pastilla
     los mueve a la vez, y su traductor propio hace el trabajo de siempre. */
  const ajenos=()=>[...document.querySelectorAll("select")].filter(s=>{
-  if(s.id==="lang"||s.id==="secondary-language"||s.closest("#vitruvius-secondary-toolbar,form,.script-triple-pane"))return false;
+  if(s.hasAttribute("data-content-language")||s.id==="lang"||s.id==="secondary-language"||s.closest("#vitruvius-secondary-toolbar,form,.script-triple-pane"))return false;
   const v=[...s.options].map(o=>o.value.toLowerCase());
   return v.includes("en")&&v.includes("fr")&&v.includes("es");
  });

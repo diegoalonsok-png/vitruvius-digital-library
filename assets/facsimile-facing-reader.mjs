@@ -3,8 +3,8 @@
 import {translationPieces} from './modern-edition-parallel-core.mjs';
 const $=id=>document.getElementById(id),LANG={es:'castellano',fr:'français',en:'English'};
 const output=$('facing-translation'),canvas=$('facsimile-canvas'),frame=$('reader-frame');
-let current=null,generation=0,pdfSerial=0,renderTask=null,zoom=1,font=19;
-const translations=new Map(),documents=new Map();let enginePromise;
+let current=null,generation=0,pdfSerial=0,renderTask=null,zoom=1,font=19,sourceChosen=false;
+const translations=new Map(),documents=new Map();let enginePromise,comparedPdf=null,comparedEdition="",documentNotes=null;
 function engine(){
  if(window.pdfjsLib)return Promise.resolve(window.pdfjsLib);
  if(!enginePromise)enginePromise=new Promise((resolve,reject)=>{
@@ -50,14 +50,20 @@ async function renderPDF(){
  }
 }
 function mode(){
- const value=$('facing-mode').value;$('ocr-section').hidden=value==='translation';$('translation-section').hidden=value==='ocr';
+ const value=$('facing-mode').value,isPdf=value==='pdf';
+ $('ocr-section').hidden=value==='translation'||isPdf;$('translation-section').hidden=value==='ocr'||isPdf;
+ document.querySelector('.facing-texts').hidden=isPdf;
+ if(isPdf&&window.ClassicsAcademicReader){
+  if(!comparedPdf||comparedEdition!==current?.edition){if(comparedPdf)comparedPdf.remove();comparedPdf=window.ClassicsAcademicReader.pdfPanel(current?.id||'');comparedEdition=current?.edition||'';document.querySelector('.reader-ocr').append(comparedPdf)}
+ }
+ if(comparedPdf)comparedPdf.hidden=!isPdf;
 }
-function textSource(){return current?.text?.trim()||'';}
+function textSource(){return String(current?.workingText??current?.text??'').trim();}
 function key(){return JSON.stringify([current?.edition,current?.page,$('facing-source').value,$('facing-target').value,textSource()]);}
 async function translate(force=false){
  const text=textSource(),source=$('facing-source').value,target=$('facing-target').value,token=++generation;
  output.lang=target;$('facing-target-title').textContent='Traducción automática · '+LANG[target];
- if(!current)return;
+ if(!current||$('facing-mode').value==='pdf')return;
  if(!text){output.textContent='Esta hoja no contiene texto OCR utilizable. Avance a una hoja con texto para leer su traducción.';$('translation-status').textContent='Sin texto fuente en esta hoja; se conserva el facsímil completo.';return;}
  if(source===target){output.textContent=text;$('translation-status').textContent='La hoja ya está en el idioma elegido; se muestra su texto OCR.';return;}
  const cacheKey=key();
@@ -85,16 +91,32 @@ function show(){
  if(!current)return;generation++;output.removeAttribute('aria-busy');$('facing-retry').disabled=false;
  $('translation-page-label').textContent='Página digital '+current.page+' / '+current.total;
  $('folio').lang=$('facing-source').value;$('folio').textContent=current.text||'Esta hoja no tiene texto OCR disponible.';
- mode();if($('facing-mode').value!=='ocr')void translate();
+ if($('facing-editable-ocr'))$('facing-editable-ocr').value=textSource();
+ if(!documentNotes){documentNotes=document.createElement('section');documentNotes.className='cl-edition-footnotes';documentNotes.setAttribute('aria-label','Notas documentales de esta página');document.querySelector('.reader-ocr').append(documentNotes)}
+ documentNotes.replaceChildren();const h=document.createElement('h3');h.textContent='Notas documentales · página '+current.page;const p=document.createElement('p');p.textContent=[current.title,current.note,'Transcripción de la página: '+(current.method||'OCR no revisado')+'. Las notas impresas pueden formar parte del OCR; la traducción automática no constituye un aparato crítico.'].filter(Boolean).join(' · ');documentNotes.append(h,p);
+ mode();if(!['ocr','pdf'].includes($('facing-mode').value))void translate();
+}
+function detectLanguage(state){
+ const text=state.text||'';
+ if((text.match(/[\u0370-\u03ff\u1f00-\u1fff]/g)||[]).length>15)return 'grc';
+ const raw=String(state.language==='s/d'?state.originalLanguage:state.language||'').replace(/^bilingue-/,'');
+ if(String(state.language).startsWith('bilingue-')&&raw==='en'){
+  const en=(text.match(/\b(the|and|of|that|with|from|this|which)\b/gi)||[]).length;
+  const la=(text.match(/\b(et|non|est|qui|quod|autem|sunt|enim)\b/gi)||[]).length;
+  if(la>en&&la>2)return 'la';
+ }
+ const lang=({eng:'en',fre:'fr',fra:'fr',spa:'es',lat:'la'})[raw]||raw;
+ return ['la','grc','es','en','fr'].includes(lang)?lang:(['la','grc'].includes(state.originalLanguage)?state.originalLanguage:'la');
 }
 function receive(state){
  if(!state||!Number.isInteger(state.page))return;
  const changedEdition=current?.edition!==state.edition;current=state;
- if(changedEdition){const lang=state.language==='s/d'?state.originalLanguage:state.language;
-  $('facing-source').value=['la','grc','es','en','fr'].includes(lang)?lang:(['la','grc'].includes(state.originalLanguage)?state.originalLanguage:'la');zoom=1;}
+ if(changedEdition){sourceChosen=false;zoom=1;}
+ if(!sourceChosen)$('facing-source').value=detectLanguage(state);
  show();void renderPDF();
 }
-$('facing-mode').onchange=show;$('facing-source').onchange=show;$('facing-target').onchange=show;
+if($('facing-use-edited'))$('facing-use-edited').onclick=()=>{if(!current)return;current={...current,workingText:$('facing-editable-ocr').value};void translate(true)};
+$('facing-mode').onchange=show;$('facing-source').onchange=()=>{sourceChosen=true;show()};$('facing-target').onchange=show;
 $('facing-auto').onchange=()=>{generation++;show();};$('facing-retry').onclick=()=>void translate(true);
 $('facing-smaller').onclick=()=>{font=Math.max(14,font-2);document.querySelector('.facing-texts').style.setProperty('--facing-font',font+'px');};
 $('facing-larger').onclick=()=>{font=Math.min(36,font+2);document.querySelector('.facing-texts').style.setProperty('--facing-font',font+'px');};
@@ -102,3 +124,5 @@ for(const [id,action] of [['pdf-zoom-in',()=>zoom=Math.min(4,zoom+.25)],['pdf-zo
 let resized;window.addEventListener('resize',()=>{clearTimeout(resized);resized=setTimeout(()=>void renderPDF(),120);});
 document.addEventListener('vdl:facsimile-page',e=>receive(e.detail));
 if(window.VDLFacsimilePage)receive(window.VDLFacsimilePage);
+
+document.addEventListener('vdl:facsimile-reset',()=>{generation++;pdfSerial++;current=null;output.replaceChildren();output.removeAttribute('aria-busy');if(comparedPdf){comparedPdf.remove();comparedPdf=null}if(documentNotes)documentNotes.replaceChildren();});
