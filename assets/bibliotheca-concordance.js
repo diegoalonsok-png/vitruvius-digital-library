@@ -97,7 +97,7 @@ function init(){
   setState("Listo: "+names.size+" obras y "+versions.length+" versiones originales registradas. Busque por palabra, frase, obra y lengua.");
   const params=new URLSearchParams(location.search);
   const initQ=params.get("concordance");
-  if(initQ){q.value=initQ;if(["la","grc"].includes(params.get("c-lang")))lang.value=params.get("c-lang");if(names.has(params.get("c-work")))works.value=params.get("c-work");void search()}
+  if(initQ){q.value=initQ;if(["la","grc"].includes(params.get("c-lang")))lang.value=params.get("c-lang");if(names.has(params.get("c-work")))works.value=params.get("c-work");void search();if(location.hash==="#bibliotheca-concordance")requestAnimationFrame(()=>pane.scrollIntoView({block:"start"}))}
  }).catch(()=>setState("No se pudo comprobar el registro. No se presentan falsos resultados."));
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
