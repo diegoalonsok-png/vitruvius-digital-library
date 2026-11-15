@@ -1,0 +1,26 @@
+name: Validate Krohn digital reading
+on:
+  push:
+    paths:
+      - 'assets/modern-edition-parallel.mjs'
+      - 'lectura-comparada.html'
+      - 'krohn-1912.html'
+      - 'data/text/krohn-1912-perseus-loci-candidate.json'
+      - 'scripts/test-krohn-digital-reading.mjs'
+      - '.github/workflows/test-krohn-digital-reading.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax
+        run: node --check assets/modern-edition-parallel.mjs
+      - name: Verify digital Latin and locus links
+        run: node scripts/test-krohn-digital-reading.mjs
