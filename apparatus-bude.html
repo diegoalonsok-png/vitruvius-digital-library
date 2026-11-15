@@ -231,9 +231,16 @@ function configureLocusPicker(){
   for(const v of entries)add(sections,v,"§ "+v);
   if(selected&&entries.includes(selected))sections.value=selected;
  }
- books.addEventListener("change",()=>chaptersFor(books.value));
- chapters.addEventListener("change",()=>sectionsFor(books.value,chapters.value));
- $("#pick-go").addEventListener("click",()=>{const locus=[books.value,chapters.value,sections.value].join(".");if(rows.some(p=>p.locus===locus))load(locus)});
+ // Los tres selectores son navegadores reales, no filtros que requieran otro clic.
+ // load() actualiza los tres textos, el aparato, la traducción, la URL y el locus activo.
+ const goSelected=()=>{
+  const locus=[books.value,chapters.value,sections.value].join(".");
+  if(rows.some(p=>p.locus===locus))load(locus);
+ };
+ books.addEventListener("change",()=>{chaptersFor(books.value);goSelected()});
+ chapters.addEventListener("change",()=>{sectionsFor(books.value,chapters.value);goSelected()});
+ sections.addEventListener("change",goSelected);
+ $("#pick-go").addEventListener("click",goSelected);
  const sync=locus=>{const [book,chapter,section]=String(locus).split(".");
   if(!lookup.has(book))return;books.value=book;chaptersFor(book,chapter);sectionsFor(book,chapter,section);
  };
