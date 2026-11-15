@@ -1,0 +1,27 @@
+name: Probar sincronización del aparato Rose Krohn Kurilo
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apparatus-bude.html'
+      - 'assets/apparatus-locus-search.js'
+      - 'scripts/test-apparatus-sync-playwright.mjs'
+      - '.github/workflows/test-apparatus-sync-playwright.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - name: Start test server
+        run: python3 -m http.server 8766 --bind 127.0.0.1 >/tmp/apparatus-http.log 2>&1 &
+      - name: Check sync, search, highlights and URL
+        run: node scripts/test-apparatus-sync-playwright.mjs
