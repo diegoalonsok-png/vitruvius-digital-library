@@ -73,6 +73,47 @@ for(const e of r2){
 for(const id of Object.keys(map))if(!editions.has(id))add("error","orphan_r2_mapping",id,"Relación sin edición en catálogo R2");
 if(mainR2Linked.size+additionalIds.size+r2Unlinked.length!==r2.length)
  add("error","nonpartitioned_r2_edition_categories","R2","Una edición aparece en varias categorías o sin contar; no se puede publicar el total como conciliado");
+/* Cola reproducible: una edición impresa no se convierte en obra clásica nueva.
+   La prioridad de trabajo no acredita derechos, exactitud del PDF ni disponibilidad HTTP. */
+const editorialManifestations=new Set(["vitruvio-v514-pdf","vitruvio-v554-pdf","theory-v297-pdf"]);
+const priority=new Set([
+ "procopius-aedificiis","ps-aristotle-mechanica","athenaeus-mechanicus",
+ "apollodorus-poliorcetics","archimedes-fluitantibus","euclid-optica",
+ "euclid-phaenomena","cleonides-harmonica","hero-belopoeica",
+ "philo-belopoeica","biton-kataskeuai","geminus-isagoge",
+ "aristarchus-magnitudines","apollonius-conica","pappus-synagoge",
+ "hyginus-gromaticus","frontinus-gromatica","siculus-flaccus",
+ "ptolemy-geographia","thucydides-war","athenaeus-deipnosophistae",
+ "cassius-dio-historia","theophrastus-historia-plantarum"
+]);
+const backlog=unindexed.map(w=>{
+ const r2Ids=r2.filter(e=>(map[e.id]||[]).includes(w.id)||e.id===w.id).map(e=>e.id);
+ return {
+  id:w.id,author:w.author,title:w.title,language:w.language,
+  classification:editorialManifestations.has(w.id)?"modern_edition_of_existing_work":"ancient_work",
+  priority:priority.has(w.id)?"alta":"normal",
+  r2EditionsDeclared:r2Ids,
+  sourceStatus:"No hay versión indexada con este ID en search-registry.json",
+  nextStep:editorialManifestations.has(w.id)?
+   "Vincular como manifestación de Vitruvio; no contar ni reindexar como nueva obra antigua.":
+   r2Ids.length?"Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.":
+   "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
+  indexed:false
+ };
+}).sort((a,b)=>(a.classification!==b.classification?(a.classification==="ancient_work"?-1:1):a.priority!==b.priority?(a.priority==="alta"?-1:1):a.id.localeCompare(b.id)));
+const backlogDocument={
+ schema:"vdl-bibliotheca-unindexed-backlog-v1",
+ generated:new Date().toISOString(),
+ method:"Cruce de 271 fichas y versiones efectivamente declaradas en search-registry; ninguna ausencia se presenta como texto indexado. Ediciones modernas distinguidas de obras antiguas.",
+ summary:{
+  missingRegistryEntries:backlog.length,
+  ancientWorksWithoutRegisteredText:backlog.filter(e=>e.classification==="ancient_work").length,
+  modernEditionManifestationsWithoutOwnRegistry:backlog.filter(e=>e.classification==="modern_edition_of_existing_work").length,
+  highPriorityAncient:backlog.filter(e=>e.priority==="alta"&&e.classification==="ancient_work").length
+ },entries:backlog
+};
+mkdirSync("data/classics-corpus",{recursive:true});
+writeFileSync("data/classics-corpus/unindexed-backlog.json",JSON.stringify(backlogDocument,null,2)+"\\n");
 const cataloguedIndexedIds=new Set(registry.map(e=>e.workId));
 const remoteManifestIds=new Set(remote.map(e=>e.workId+"|"+e.language));
 for(const e of registry.filter(e=>(e.path||"").startsWith("https://libros.vitruvius-digital-library.org/corpus/"))){
@@ -88,7 +129,7 @@ const report={
    registeredTextVersions:registry.length,registeredDistinctWorks:cataloguedIndexedIds.size,
    verifiedLocalSourceWorkIds:local.size,declaredRemoteSourceWorkIds:remoteDeclared.size,
    r2TextManifestVersions:remote.length,r2InvertedIndexDeclaredEditions:manifest.obras,
-   unindexedCatalogueWorks:unindexed.length,worksMissingRegisteredOriginal:missingOriginal.length,
+   unindexedCatalogueWorks:unindexed.length,unindexedAncientWorks:backlogDocument.summary.ancientWorksWithoutRegisteredText,unindexedEditorialManifestations:backlogDocument.summary.modernEditionManifestationsWithoutOwnRegistry,worksMissingRegisteredOriginal:missingOriginal.length,
    greekTitleNeedsIndividualReview:greekTitleReview.length,r2UnlinkedEditions:r2Unlinked.length,
    duplicateR2BinaryGroups:hashes.length,
    structuralErrors:issues.filter(x=>x.severity==="error").length,
