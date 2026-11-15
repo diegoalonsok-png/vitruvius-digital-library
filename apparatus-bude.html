@@ -599,7 +599,10 @@ apply();
  const resp=await Promise.all(urls.map(u=>fetch(u,{headers:{Accept:"application/json"}})));for(let i=0;i<resp.length;i++)if(!resp[i].ok)throw Error(urls[i]+": HTTP "+resp[i].status);
  [data,comp,collation]=await Promise.all(resp.map(r=>r.json()));
  const loadIndexed=async url=>{try{const r=await fetch(url,{headers:{Accept:"application/json"}});if(!r.ok)return null;const j=await r.json();return Array.isArray(j.passages)?new Map(j.passages.filter(p=>p.locus&&p.latin).map(p=>[p.locus,p.latin])):null}catch{return null}};
- [krohnDigital,roseDigital]=await Promise.all([loadIndexed("data/text/krohn-1912-perseus-loci-candidate.json"),loadIndexed("data/text/rose-1899-loci-candidate.json")]);
+ // Rose has historical OCR and page-level candidates, but no verified locus-level digital file yet.
+ // Do not request a nonexistent file or present OCR as a diplomatic transcription.
+ krohnDigital=await loadIndexed("data/text/krohn-1912-perseus-loci-candidate.json");
+ roseDigital=null;
  set("#compare-krohn-source",krohnDigital?"Transcripción digital Perseus por locus · cotejo pendiente":"OCR provisional · índice no OCR no disponible");
  set("#compare-rose-source","OCR histórico provisional · cotejar con el facsímil");
  set("#ab-index-status","Krohn "+(krohnDigital?.size||0)+" loci digitales · Rose OCR histórico · Kurilo V514");
