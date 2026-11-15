@@ -16,12 +16,12 @@ $('status').textContent='Cargando las páginas de '+work.label+'…';
 $('parallel-query').value=params.get('q')||params.get('locus')||'';
 $('parallel-find').open=!!params.get('q');
 if(['la','es','fr'].includes(params.get('lang')))$('parallel-language').value=params.get('lang');
-if(['edition','ocr','automatic'].includes(params.get('reading')))$('parallel-reading').value=params.get('reading');
+if(['edition','krohn','ocr','automatic'].includes(params.get('reading')))$('parallel-reading').value=params.get('reading');
 if(['concept','phrase','words'].includes(params.get('match')))$('parallel-match').value=params.get('match');
 if(['all','la','es','fr'].includes(params.get('scope')))$('parallel-scope').value=params.get('scope');
 const make=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const output=$('parallel-text'),viewport=$('parallel-text-viewport'),workspace=$('parallel-workspace'),splitter=$('parallel-splitter');
-let rows=[],map=null,searchIndex=null,current={edition,image:0,total:0,text:'',terms:[]},focusLocus=params.get('locus')||'',query='',queryMode='concept',searchHits=[],shown=0;
+let rows=[],map=null,searchIndex=null,krohnLoci=null,current={edition,image:0,total:0,text:'',terms:[]},focusLocus=params.get('locus')||'',query='',queryMode='concept',searchHits=[],shown=0;
 let sequence=0,automatic=false,lastSelection=null,lastEventKey='',machineKey='',scrollKey='';
 const translated=new Map(),translatedPending=new Map();
 const defaults={width:52,stacked:false,reversed:false,font:20,bg:'#fffdf8',fg:'#172b3c',mark:'#ffe45a'};
@@ -86,7 +86,32 @@ function render(){
  machineLabel.hidden=mode!=='automatic';$('parallel-stop').hidden=!automatic;
  $('parallel-translate').textContent=automatic?'Traducción automática activada':'Activar traducción automática';$('parallel-translate').disabled=automatic;
  output.replaceChildren();output.removeAttribute('aria-busy');lastSelection=null;
- if(mode==='edition'&&links.length){
+ if(mode==='krohn'){
+  output.lang='la';
+  if(edition!=='krohn-1912'){
+   output.append(make('p','Seleccione el facsímil de Krohn (1912) para leer su latín digital.','parallel-context'));
+   $('parallel-source-note').textContent='Texto digital de Krohn 1912 · Perseus.';
+  }else if(!krohnLoci){
+   output.append(make('p','No está disponible el texto digital de Krohn. No se sustituirá por OCR.','parallel-context'));
+   $('parallel-source-note').textContent='Falta corpus latino independiente.';
+  }else{
+   const selected=new Map();
+   for(const row of links){const original=krohnLoci.get(row.locus);if(original)selected.set(row.locus,{row,original});}
+   const explicit=focusLocus&&krohnLoci.get(focusLocus);
+   if(explicit&&!selected.has(focusLocus))selected.set(focusLocus,{row:null,original:explicit});
+   for(const [locus,{row,original}] of selected){
+    const article=make('article');article.dataset.locus=locus;
+    if(locus===focusLocus)article.classList.add('parallel-current');
+    article.append(make('h3','Vitr. '+locusLabel(locus)+' · Krohn 1912'));
+    if(row?.status==='ambiguous_textual_candidate')article.append(make('p','Imagen vinculada provisionalmente; cotejar facsímil.','parallel-context'));
+    if(!row)article.append(make('p','Imagen del locus no confirmada.','parallel-context'));
+    const p=make('p');p.lang='la';p.append(markText(original.latin,query?parallelTerms(query,queryMode).la:[]));article.append(p);output.append(article);
+   }
+   if(!selected.size)output.append(make('p','Sin locus asociado a esta imagen. Busque un locus específico. No se mostrará OCR como texto crítico.','parallel-context'));
+   $('parallel-source-note').textContent='Krohn 1912 · Perseus (no OCR) · '+selected.size+' loci · correspondencia con imagen provisional.';
+  }
+  $('parallel-translation-status').textContent='Lectura de Krohn preservada; cotejo facsimilar pendiente.';
+ }else if(mode==='edition'&&links.length){
   const terms=query?parallelTerms(query,queryMode)[lang]:lang==='la'?current.terms||KEY_TERMS:[];
   output.lang=lang;
   for(const row of links){
@@ -200,6 +225,13 @@ async function initialize(){
   const [es,fr,index]=await Promise.all([readJSON('data/structured/recensio-es.json'),readJSON('data/structured/recensio-fr.json'),readJSON('data/r2/folios/'+edition+'-parallel.json')]);
   if(index.schema!=='vdl-edition-parallel-1'||index.edition!==edition||!Array.isArray(index.pages))throw Error('Índice de otra edición');
   rows=combineEditions(es,fr);map=index;searchIndex=createParallelSearch(rows,map);
+   if(edition==='krohn-1912'){
+    try{
+     const source=await readJSON('data/text/krohn-1912-perseus-loci-candidate.json');
+     if(source.schema!=='vdl-krohn-perseus-transcription-candidate-v1'||!Array.isArray(source.passages)||source.passages.length<700)throw Error('Corpus incompleto');
+     krohnLoci=new Map(source.passages.filter(p=>typeof p.locus==='string'&&typeof p.latin==='string'&&p.latin.trim()).map(p=>[p.locus,p]));
+    }catch(error){console.warn('Krohn digital no disponible:',error);krohnLoci=null;}
+   }
   $('parallel-search-status').textContent=rows.length+' loci indexados en latín, castellano y francés · edición de Diego Kurilo.';render();
   if(params.get('q'))queueMicrotask(runSearch);
   if(!params.has('image')&&params.get('locus')){
