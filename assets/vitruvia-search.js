@@ -1625,7 +1625,7 @@ async function search(){
  // An explicit De architectura locus is a documentary address, not a
  // generic Internet keyword ("locus" also means genetic locus). Keep
  // original corpus/edition retrieval, skip unrelated web providers.
- const exactLocusRequest=!!intent?.locus&&/^(?:(?:locus|loci|loc\.?)\s*:?\s*)?(?:10|[1-9]|x|ix|viii|vii|vi|iv|iii|ii|i)[.:/][1-9]\d?[.:/][1-9]\d{0,2}$/i.test(q);
+ const exactLocusRequest=internal&&!!intent?.locus&&/^(?:(?:locus|loci|loc\.?)\s*:?\s*)?(?:10|[1-9]|x|ix|viii|vii|vi|iv|iii|ii|i)[.:/][1-9]\d?[.:/][1-9]\d{0,2}$/i.test(q);
  const wikiEnabled=(["all","wiki","external","ai"].includes(mode)||!!person)&&!exactLocusRequest;
  const academicEnabled=["all","external","ai"].includes(mode)&&!exactLocusRequest;
  $("results-heading").textContent=T().heading;$("result-state").textContent=T().waiting;
