@@ -30,7 +30,7 @@ const report={schema:"vdl-bibliotheca-lexical-live-v1",generated:new Date().toIS
  method:"GET de OCR en R2, GET de fragmentos invertidos R2; comparación de palabras atestiguadas y páginas digitales con el mismo normalizador del visor",
  limitations:"El modo --full verifica tres raíces del OCR por edición catalogada; no implica validación total de todas las raíces ni lematización filológica, ni exactitud paleográfica del OCR.",
  cataloguedEditions:cat.items.length,sampledEditionIds:refs,records:[],readerEndpoints:[],
- unexpectedIndexedIds:[],errors:[],warnings:[],status:"checking"};
+ unexpectedIndexedIds:[],lexicalQueries:[],errors:[],warnings:[],status:"checking"};
 let index=null;
 try{
  index=await (await read(BASE+"fragmentos.json")).json();
@@ -106,16 +106,45 @@ if(index){
   if(item.errors.length)report.errors.push(id+": "+item.errors.join(" | "));
  }
 }
+// Consultas léxicas explícitas sobre los fragmentos reales de R2.
+for(const term of ["symmetria","firmitas","decor","λόγος","συμμετρία"]){
+ const query={term,status:"not-checked",indexedEditions:0,validatedPage:null};
+ try{
+  const word=P.fold(term).split(" ").find(Boolean);
+  const root=stem(word),indexFragment=await fragment(root);
+  const entries=indexFragment.raices?.[root]||{};
+  const inCatalogue=Object.keys(entries).filter(id=>rows.has(id));
+  query.root=root;query.indexedEditions=inCatalogue.length;
+  query.status=inCatalogue.length?"found":"no-attested-match-in-index";
+  if(inCatalogue.length){
+   const id=inCatalogue[0],page=entries[id]?.[1]?.[0];
+   if(Number.isInteger(page)&&page>0){
+    const document=await (await read(rows.get(id).texto)).json();
+    const pageText=document.paginas?.[page-1]||"";
+    if(!P.fold(pageText).split(" ").some(w=>stem(w)===root))
+     throw Error("La página devuelta no contiene la raíz "+root);
+    query.validatedPage={editionId:id,page,viewer:"buscador-facsimiles-clasicos.html?obra="+id+"&pagina="+page+"&q="+encodeURIComponent(term)};
+   }else throw Error("La entrada no contiene página digital válida");
+  }
+ }catch(e){query.status="error";query.error=e.message;report.errors.push("Consulta "+term+": "+e.message)}
+ report.lexicalQueries.push(query);
+}
 const endpoints=[
  "https://vitruvius-digital-library.org/bibliotheca-graeca-latina.html",
  "https://vitruvius-digital-library.org/buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics",
- "https://diegoalonsok-png.github.io/vitruvius-digital-library/buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus"
+ "https://diegoalonsok-png.github.io/vitruvius-digital-library/buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus",
+ "https://vitruvius-digital-library.org/lector-bilingue.html?edition=recensio-es",
+ "https://vitruvius-digital-library.org/lector-bilingue.html?edition=recensio-fr",
+ "https://vitruvius-digital-library.org/lector-bilingue.html?edition=theory-en",
+ "https://vitruvius-digital-library.org/classics-text-reader.html?work=virgil-aeneid&lang=la"
 ];
 for(const url of endpoints){
  const row={url,status:"not-checked"};
  try{
   const res=await read(url);const html=await res.text();
-  row.status=html.includes("id=\"edition\"")||html.includes("Bibliotheca")?"html-loaded":"html-unexpected";
+  row.status=html.includes("id=\"edition\"")||html.includes("Bibliotheca")||
+    html.includes("De architectura")||html.includes("Vitruvius")||
+    html.includes("lector-bilingue")?"html-loaded":"html-unexpected";
   row.httpStatus=res.status;
   if(row.status!=="html-loaded")report.warnings.push("HTML inesperado en visor: "+url);
  }catch(e){row.status="unreachable";row.error=e.message;
@@ -129,7 +158,9 @@ report.counts={greekAttributedEditions:greekRows.length,
  cataloguedEditions:cat.items.length,fullCoverageRequested:FULL,testedEditions:report.records.length,testedWords:report.records.reduce((n,r)=>n+r.lexicalTokensTested,0),
  locatedPages:report.records.reduce((n,r)=>n+r.lexicalMatches.length,0),
  errors:report.errors.length,warnings:report.warnings.length,
- indexEditions:report.indexEntries||0,indexFragments:report.indexFragments||0};
+ indexEditions:report.indexEntries||0,indexFragments:report.indexFragments||0,
+ explicitLexicalQueries:report.lexicalQueries.length,
+ lexicalQueriesWithHits:report.lexicalQueries.filter(q=>q.status==="found").length};
 if(report.counts.greekWithoutOcrGreekRoots)
  report.warnings.push(report.counts.greekWithoutOcrGreekRoots+
   " ediciones atribuidas a obras griegas no tienen raíces en escritura griega detectadas por el OCR; verificar lengua editorial o renovar OCR griego antes de declarar búsqueda griega.");
