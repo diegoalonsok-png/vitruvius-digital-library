@@ -18,6 +18,7 @@ mount.append(el("p","Corte documental: "+(data.generated||"no declarado")+" · L
 const metrics=[["Total de obras declaradas",s.totalWorksDeclared],["Obras del repertorio",s.masterWorks],["Adiciones declaradas",s.additionalWorks],["Versiones textuales",s.textVersions],["Obras con texto",s.indexedWorks],["Obras sin texto",s.worksWithoutAnyText],["PDF R2 catalogados",s.r2PdfEditions],["Textos remotos declarados",s.remoteTextFilesDeclared],["Entradas del índice R2",s.r2IndexWorksDeclared]];
 if(ocr?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
  metrics.push(["Sin transcripción, pero con búsqueda OCR R2",ocr.counts.withoutTextButWithR2OcrIndex]);
+ metrics.push(["Ediciones ya indexadas bajo Vitruvio",ocr.counts.withoutOwnRegistryButWithLinkedStructuredEdition]);
  metrics.push(["Pendientes de transcripción o facsímil indexable",ocr.counts.withoutTextOrLinkedR2OcrIndex]);
 }
 const dl=el("dl",undefined,"bfs-grid");
@@ -37,6 +38,14 @@ if(ocr?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
   const reader=work.facsimileReaders?.[0]?.reader;
   if(reader){a.href=reader;li.append(a);}else li.append(el("span",work.title));
   ul.append(li);
+ }
+ section.append(ul);details.append(section);
+}
+if(ocr?.alreadyIndexedAsStructuredEdition?.length){
+ const section=el("details");section.append(el("summary","Ediciones V514, V554 y V297 ya indexadas"));
+ const ul=el("ul");
+ for(const edition of ocr.alreadyIndexedAsStructuredEdition){
+  const li=el("li"),a=el("a",edition.title);a.href=edition.reader;li.append(a);ul.append(li);
  }
  section.append(ul);details.append(section);
 }
