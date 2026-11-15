@@ -151,11 +151,13 @@ jobs:
           sudo apt-get install -y tesseract-ocr tesseract-ocr-grc tesseract-ocr-lat tesseract-ocr-eng tesseract-ocr-fra tesseract-ocr-spa
           python -m pip install --disable-pip-version-check pymupdf
           python scripts/index-classical-historical-pdfs.py --ocr
+      - name: Conciliar estados de lectura e inventario académico derivado
+        run: python scripts/sync-classics-coverage.py
       - name: Commit only real verified PDF files and the matching catalogue records
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/index/classics-pdf/ data/classics-historical-pages/ documents/classics/*.pdf data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-testimonia-verified.json
+          git add data/index/classics-pdf/ data/classics-historical-pages/ documents/classics/*.pdf data/bibliotheca-graeca-latina-I-bce-I-ce.json data/bibliotheca-testimonia-verified.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json
           if git diff --cached --quiet; then
             echo "No new verified editions were available."
           else
