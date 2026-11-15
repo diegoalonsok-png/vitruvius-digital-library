@@ -301,6 +301,8 @@ function mount(parent,data){
  standards.append("Criterios editoriales: datación de composición documentada; género descriptivo y revisable; título original y variantes identificados; referencias Chicago 18 (notas y bibliografía). ");
  addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
  const advanced=make("details");advanced.className="bws-advanced";
+  // Keep scholarly period/century/language controls visible in the Bibliotheca catalogue.
+  if(parent.classList.contains("searcharea"))advanced.open=true;
  const summary=make("summary","Filtros avanzados · género, siglo, período, idioma y alfabeto");
  advanced.append(summary,filters,alphabet,historicalHint,originalHint,dateClarifier,standards);
  section.append(title,subtitle,form,advanced,region,help);
