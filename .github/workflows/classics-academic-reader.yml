@@ -1,10 +1,10 @@
 name: Lectura clásica, notas y digitalización de PDF
 on:
   pull_request:
-    paths: ['assets/classics-*.js', 'assets/classics-*.css', 'assets/ui-idioma.js', 'classics-text-reader.html', 'buscador-facsimiles-clasicos.html', 'scripts/*classics*', 'scripts/classics_ingestion_bundle.py', 'data/classics-corpus/reading-notes/**', 'data/classics-historical-pages/**', '.github/workflows/classics-academic-reader.yml']
+    paths: ['assets/classics-*.js', 'assets/classics-*.css', 'assets/ui-idioma.js', 'classics-text-reader.html', 'buscador-facsimiles-clasicos.html', 'scripts/*classics*', 'scripts/classics_ingestion_bundle.py', 'data/classics-corpus/reading-notes/**', 'data/classics-historical-pages/**', 'data/index/classics-pdf/**', '.github/workflows/classics-academic-reader.yml']
   push:
     branches: [main]
-    paths: ['assets/classics-*.js', 'assets/classics-*.css', 'assets/ui-idioma.js', 'classics-text-reader.html', 'buscador-facsimiles-clasicos.html', 'scripts/*classics*', 'scripts/classics_ingestion_bundle.py', 'data/classics-corpus/reading-notes/**', 'data/classics-historical-pages/**', '.github/workflows/classics-academic-reader.yml']
+    paths: ['assets/classics-*.js', 'assets/classics-*.css', 'assets/ui-idioma.js', 'classics-text-reader.html', 'buscador-facsimiles-clasicos.html', 'scripts/*classics*', 'scripts/classics_ingestion_bundle.py', 'data/classics-corpus/reading-notes/**', 'data/classics-historical-pages/**', 'data/index/classics-pdf/**', '.github/workflows/classics-academic-reader.yml']
   workflow_dispatch:
 permissions:
   contents: read

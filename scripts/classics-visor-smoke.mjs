@@ -171,6 +171,7 @@ try{
    assert.equal(await p.locator('#language-toggle').evaluate(e=>getComputedStyle(e).borderColor),
     'rgb(146, 146, 149)','The focused language control must visibly acknowledge the interaction');
    assert.match(state.coverage,/222|obras catalogadas/);
+   await p.locator('#classic-order').selectOption('date');
    const chronology=await p.locator('#classic-work option').evaluateAll(els=>els.map(e=>e.value));
    const positions=['homer-iliad','sophocles-oedipus','cicero-catilinariae','vitruvius']
     .map(id=>chronology.indexOf(id));
@@ -326,7 +327,7 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    assert.match(check.catullus,/corpus\/catullus-carmina-la\.html\?q=/,'Catullus verses are not indexed');
    assert.match(check.lucretius,/corpus\/lucretius-de-rerum-natura-la\.html\?q=/,'Lucretius Latin poem not indexed');
    assert.match(check.translation,/classics-text-reader\.html\?work=apuleius-metamorphoses&lang=en/,'English version not indexed');
-   assert.equal(check.diagnostics.localFailed??check.diagnostics.failed,0,'A registered local text failed to load');
+   assert.equal(check.diagnostics.localFailed??check.diagnostics.failed,0,'A registered local text failed to load: '+JSON.stringify(check.diagnostics.failedSources));
   }finally{await p.close()}
  });
  await check('Vitruvius original and three translations are searchable by structured locus',async()=>{
@@ -343,7 +344,7 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
    assert.deepEqual(result.structured.sort(),['en','es','fr','la']);
    assert.match(result.latin,/lector-bilingue\.html\?edition=recensio-es.*locus=/,
      'Vitruvius Latin locus must open its existing bilingual reader');
-   assert.equal(result.indexStatus.localFailed??result.indexStatus.failed,0,'All local structured classical texts should load');
+   assert.equal(result.indexStatus.localFailed??result.indexStatus.failed,0,'All local structured classical texts should load: '+JSON.stringify(result.indexStatus.failedSources));
   }finally{await p.close()}
  });
  await check('Public classical corpus audit lists all works and distinguishes indexed originals from PDF records',async()=>{
@@ -368,7 +369,7 @@ await check('Shared Latin originals reuse Lexicon sources; Pliny is explicitly p
   }finally{await p.close()}
  });
  await check('Theophrastus Greek text: word search highlights in yellow and the dictionary answers',async()=>{
-  const p=await open('classics-text-reader.html?work=theophrastus-characters&q='+encodeURIComponent('κολακεία'));
+  const p=await open('classics-text-reader.html?work=theophrastus-characters&q='+encodeURIComponent('κολακείαν'));
   try{
    await p.waitForFunction(()=>document.querySelectorAll('#passages mark.cl-hit').length>=1,{timeout:20000});
    const bg=await p.locator('#passages mark.cl-hit').first().evaluate(m=>getComputedStyle(m).backgroundColor);
