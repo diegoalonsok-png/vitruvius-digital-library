@@ -61,6 +61,51 @@ function centuryOf(raw){
  // Corpus antiguo: nunca clasificar como composición los años de una edición moderna.
  return centuries.length===1&&centuries[0]<=14?era+":"+centuries[0]:"";
 }
+
+/* Periodización histórica general orientativa. No representa una datación editorial
+ * precisa ni reemplaza la ficha filológica. Solo se asigna si el intervalo de
+ * composición queda completamente dentro del período. */
+const historicalPeriods=[
+ ["grc:archaic","Grecia · época arcaica (c. 800–480 a. C.)",-800,-481,"grc"],
+ ["grc:classical","Grecia · época clásica (480–323 a. C.)",-480,-324,"grc"],
+ ["grc:hellenistic","Grecia · época helenística (323–31 a. C.)",-323,-31,"grc"],
+ ["grc:roman","Literatura griega de época romana (30 a. C.–284 d. C.)",-30,284,"grc"],
+ ["grc:late","Literatura griega · Antigüedad tardía (285–700 d. C.)",285,700,"grc"],
+ ["la:regal","Roma · época monárquica (753–509 a. C.)",-753,-510,"la"],
+ ["la:republic","Roma · República (509–27 a. C.)",-509,-28,"la"],
+ ["la:principate","Roma · Principado (27 a. C.–284 d. C.)",-27,284,"la"],
+ ["la:late","Literatura latina · Antigüedad tardía (285–700 d. C.)",285,700,"la"]
+];
+function compositionSpan(raw){
+ const s=normal(raw);
+ if(!s||/debatid|indeterminad|inciert|uncertain|disput|atribucion|edicion|edition|recensio|imprenta|publicacion|manuscrito|manuscript|codex|codice|facsimil|rose|krohn/.test(s))return null;
+ const before=/\b(?:a c|a e c|bce|bc|antes de cristo)\b/.test(s);
+ const after=/\b(?:d c|ce|ad|despues de cristo)\b/.test(s);
+ if(before===after)return null;
+ const sign=before?-1:1;
+ const cs=s.match(/\b(?:siglo|siglos|century|centuries|s)\s+([ivxlcdm]+)\b/);
+ if(cs){
+  if(/\b(?:siglos|centuries)\b/.test(cs[0])&&/\b(?:y|and|et)\b/.test(s))return null;
+  const remainder=s.slice(cs.index+cs[0].length).replace(/\b(?:a c|a e c|bce|bc|d c|ce|ad)\b/g,"").trim();
+  if(/^[ivxlcdm]+\b/.test(remainder))return null;
+  const n=romanNumber(cs[1]);if(n<1||n>14)return null;
+  return sign<0?[-100*n,-100*(n-1)-1]:[100*(n-1)+1,100*n];
+ }
+ const years=[...s.matchAll(/\b(\d{1,4})\b/g)].map(x=>Number(x[1])).filter(n=>n>0);
+ if(!years.length||years.length>2||years.some(n=>n>1400))return null;
+ const bounds=years.map(y=>sign*y);
+ return [Math.min(...bounds),Math.max(...bounds)];
+}
+function periodOfWork(w){
+ const span=compositionSpan(w.dating);
+ if(!span)return "";
+ const tongues=new Set(w.versions.filter(v=>["grc","la"].includes(v.language)).map(v=>v.language));
+ // Unoriginal-language entry is not enough to infer a historical tradition.
+ if(tongues.size!==1)return "";
+ const language=[...tongues][0];
+ return historicalPeriods.find(([id,label,from,to,lang])=>lang===language&&span[0]>=from&&span[1]<=to)?.[0]||"";
+}
+
 const make=(tag,text,cls)=>{
  const el=document.createElement(tag);if(text!=null)el.textContent=String(text);if(cls)el.className=cls;return el;
 };
@@ -102,10 +147,10 @@ function render(){
  const {input,list,count,more,limit}=model,q=input.value.trim();
  const items=model.items.filter(w=>{
   const author=fold(model.authorFilter.value.trim());
-  const genre=model.genreFilter.value,century=model.centuryFilter.value,language=model.languageFilter.value,letter=model.letter;
+  const genre=model.genreFilter.value,century=model.centuryFilter.value,period=model.periodFilter.value,language=model.languageFilter.value,letter=model.letter;
   const group=ancientGenre(w.genre);
   const key=norm(model.sortFilter.value==="title"?w.title:w.author).trim();
-  return (!author||[w.author,...w.forms].some(x=>fold(x).includes(author)))&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
+  return (!author||[w.author,...w.forms].some(x=>fold(x).includes(author)))&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!period||periodOfWork(w)===period)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
  });
  list.replaceChildren();more.hidden=true;
  if(!q){
@@ -177,7 +222,7 @@ function mount(parent,data){
  const label=make("label","Obra o autor");label.htmlFor="bws-query";
  const row=make("div",null,"bws-row");
  const input=make("input");input.id="bws-query";input.type="search";input.autocomplete="off";input.spellcheck=false;
- input.placeholder="De architectura · Ἰλιάς · Iliad · La República · Énéide";
+ input.placeholder="De architectura · Περὶ ποιητικῆς · Ἰλιάς · Iliad · La République";
  input.setAttribute("aria-controls","bws-results");
  const submit=make("button","Buscar obra");submit.type="submit";
  row.append(input,submit);form.append(label,row);
@@ -203,26 +248,32 @@ function mount(parent,data){
   const roman=(num)=>{let out="";for(const [v,t] of [[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]])while(num>=v){out+=t;num-=v}return out};
   centuryFilter.append(new Option("Siglo "+roman(n)+(era==="bce"?" a. C.":" d. C."),key));
  }
+ const periodFilter=make("select");periodFilter.setAttribute("aria-label","Período histórico de Grecia o Roma");
+ periodFilter.append(new Option("Todos los períodos históricos",""));
+ const existingPeriods=new Set([...index.values()].map(w=>periodOfWork(w)).filter(Boolean));
+ for(const [id,label] of historicalPeriods)if(existingPeriods.has(id))periodFilter.append(new Option(label,id));
  const languageFilter=make("select");languageFilter.setAttribute("aria-label","Lengua de texto disponible");
  [["","Todas las lenguas"],["grc","Griego"],["la","Latín"],["es","Castellano"],["en","Inglés"],["fr","Francés"]].forEach(([v,t])=>languageFilter.append(new Option(t,v)));
  const sortFilter=make("select");sortFilter.setAttribute("aria-label","Orden alfabético");
  [["author","Orden por autor A–Z"],["title","Orden por título A–Z"]].forEach(([v,t])=>sortFilter.append(new Option(t,v)));
- filters.append(authorFilter,genreFilter,centuryFilter,languageFilter,sortFilter);
+ filters.append(authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter);
  const alphabet=make("nav",null,"bws-alphabet");alphabet.setAttribute("aria-label","Índice alfabético por autor o título");
  for(const l of ["Todos",..."ABCDEFGHIJKLMNOPQRSTUVWXYZ",..."ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"]){
   const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
   b.addEventListener("click",()=>{model.letter=l==="Todos"?"":l;model.limit=40;alphabet.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});alphabet.append(b);
  }
+ const originalHint=make("p",null,"bws-help");
+ originalHint.textContent="Puede escribir el título directamente en griego politónico o en latín; también buscar por transliteraciones o equivalencias documentadas. La periodización histórica solo se asigna cuando la fecha y la tradición lingüística acreditadas lo permiten.";
  const dateClarifier=make("p",null,"bws-help");
  dateClarifier.textContent="Cronología: el siglo corresponde a la composición antigua, nunca al año de la edición crítica (Rose 1899; Krohn 1912), del facsímil ni de la copia manuscrita. Fechas discutidas quedan sin asignación automática.";
  const standards=make("p",null,"bws-help");
  standards.append("Criterios editoriales: datación de composición documentada; género descriptivo y revisable; título original y variantes identificados; referencias Chicago 18 (notas y bibliografía). ");
  addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
- section.append(title,subtitle,form,filters,alphabet,dateClarifier,standards,region,help);
+ section.append(title,subtitle,form,filters,alphabet,originalHint,dateClarifier,standards,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
- model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,languageFilter,sortFilter,letter:"",limit:40};
- for(const el of [authorFilter,genreFilter,centuryFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
+ model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:40};
+ for(const el of [authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
  list.tabIndex=0;list.setAttribute("aria-label","Obras: use las flechas arriba y abajo, Intro para abrir el enlace");
  list.addEventListener("keydown",e=>{
   if(!["ArrowDown","ArrowUp","Home","End"].includes(e.key))return;
