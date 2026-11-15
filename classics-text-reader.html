@@ -274,9 +274,34 @@ html[data-parallel-view="true"] #simple-pair-inline{display:none!important}
 (()=>{
  const q=new URLSearchParams(location.search);
  const simple=q.get("view")==="simple" && q.get("parallel")!=="1";
+ // Legacy ?view=simple is a route alias, not a separate stripped-down
+ // version of the academic reader. Preserve work, language and locus.
+ if(simple){
+   const dest=new URL("classics-simple-parallel.html",location.href);
+   dest.searchParams.set("work",q.get("work")||"didache");
+   dest.searchParams.set("left",q.get("lang")||"la");
+   dest.searchParams.set("right","auto-"+(["es","en","fr"].includes(q.get("to"))?q.get("to"):"es"));
+   if(q.get("locus"))dest.searchParams.set("locus",q.get("locus"));
+   if(q.get("q"))dest.searchParams.set("q",q.get("q"));
+   location.replace(dest.href);return;
+ }
+
  if(simple)document.documentElement.dataset.readingMode="simple";
  const link=document.getElementById("simple-reading-link"),back=document.getElementById("full-reading-link");
- function url(mode){const u=new URL(location.href);if(mode)u.searchParams.set("view","simple");else u.searchParams.delete("view");return u.pathname+u.search+u.hash;}
+ function url(mode){
+  const u=new URL(location.href);
+  if(mode){
+    const v=new URL("classics-simple-parallel.html",location.href);
+    v.searchParams.set("work",u.searchParams.get("work")||"didache");
+    v.searchParams.set("left",u.searchParams.get("lang")||"la");
+    v.searchParams.set("right","auto-"+(["es","en","fr"].includes(u.searchParams.get("to"))?u.searchParams.get("to"):"es"));
+    if(u.searchParams.get("locus"))v.searchParams.set("locus",u.searchParams.get("locus"));
+    if(u.searchParams.get("q"))v.searchParams.set("q",u.searchParams.get("q"));
+    return v.pathname+v.search+v.hash;
+  }
+  u.searchParams.delete("view");
+  return u.pathname+u.search+u.hash;
+}
  if(link)link.href=url(true);if(back)back.href=url(false);
  if(link)link.hidden=simple;if(back)back.hidden=!simple;
  const observer=new MutationObserver(()=>{
