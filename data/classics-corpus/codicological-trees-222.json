@@ -1,8 +1,8 @@
 {
   "schema": "vitruvius-codicological-trees-222-v1",
   "count": 271,
-  "physicalWitnessCount": 96,
-  "textualWitnessRecordCount": 103,
+  "physicalWitnessCount": 99,
+  "textualWitnessRecordCount": 106,
   "interpretation": "Work-to-manuscript links are attestations; ancestry is explicit and source-backed. No unidentified archetypes are invented.",
   "method": "Physical witness IDs are stable across works; recensiones require scholarship.",
   "records": [
@@ -1100,6 +1100,20 @@
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/",
           "sourceStatus": "institutional_catalogue_checked_2026-11-10",
           "siglum": null
+        },
+        {
+          "id": "diodorus-bnf-grec1662",
+          "canonicalPhysicalId": "codex-diodorus-bnf-grec1662",
+          "type": "physical_witness",
+          "label": "Grec 1662",
+          "repository": "París, Bibliothèque nationale de France, Département des manuscrits",
+          "dating": "Siglo XV (según catálogo agregado Biblissima/BnF)",
+          "material": "Papel",
+          "folioRange": null,
+          "coverage": "Libros XI–XV de la Bibliotheca historica. No abarca la obra íntegra ni puede presentarse como códice completo del texto.",
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc21791s",
+          "sourceStatus": "institutional_aggregator_metadata_checked_2026-11-14",
+          "siglum": null
         }
       ],
       "links": [
@@ -1110,6 +1124,14 @@
           "certainty": "catalogued",
           "interpretation": "An index relation, not a stemmatic ancestry claim",
           "sourceUrl": "https://pinakes.irht.cnrs.fr/notices/cote/51265/"
+        },
+        {
+          "source": "diodorus",
+          "target": "diodorus-bnf-grec1662",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc21791s"
         }
       ],
       "documentedFiliation": [],
@@ -1446,13 +1468,13 @@
           "canonicalPhysicalId": "codex-dioscorides-paris",
           "type": "physical_witness",
           "label": "Grec 2179",
-          "repository": "París, Bibliothèque nationale de France",
-          "dating": "siglo IX",
+          "repository": "París, Bibliothèque nationale de France, Département des manuscrits",
+          "dating": "siglo IX, según INHA y BnF",
           "material": null,
-          "folioRange": null,
-          "coverage": "Testimonio griego digitalizado de textos de Dioscórides; cotejar la extensión y su relación con la obra en la ficha de Gallica.",
-          "sourceUrl": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
-          "sourceStatus": "needs_review",
+          "folioRange": "ff. 1r–171v para De materia medica, según el repertorio de la Berlin-Brandenburgische Akademie der Wissenschaften",
+          "coverage": "De materia medica, en manuscrito griego ilustrado. Los límites por folio documentados se refieren a esta obra dentro del códice, no a un cotejo por capítulo.",
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j",
+          "sourceStatus": "institutional_catalogue_plus_research_academy_2026-11-14",
           "siglum": null
         }
       ],
@@ -1471,7 +1493,7 @@
           "relation": "attests_work",
           "certainty": "catalogued",
           "interpretation": "An index relation, not a stemmatic ancestry claim",
-          "sourceUrl": "https://gallica.bnf.fr/ark:/12148/btv1b525002505"
+          "sourceUrl": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j"
         }
       ],
       "documentedFiliation": [],
@@ -2543,8 +2565,32 @@
         "type": "classical_work",
         "label": "Aulo Cornelio Celso · De medicina"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "celsus-laurenziana-plut73-1",
+          "canonicalPhysicalId": "codex-celsus-laurenziana-plut73-1",
+          "type": "physical_witness",
+          "label": "Plut. 73.1",
+          "repository": "Florencia, Biblioteca Medicea Laurenziana",
+          "dating": "1101–1110 en el registro agregado Biblissima; la descripción transmitida contiene «datazione non espressa». Atribución cronológica sujeta a comprobación del catálogo original.",
+          "material": "Pergamino (membrana)",
+          "folioRange": null,
+          "coverage": "Testimonio de obras médicas atribuidas a Cornelio Celso, junto con tratados de otros autores. Extensión por obra y correspondencia por folios sin establecer.",
+          "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/794d5cc06ca503067ec24d2fd04883549c2117af",
+          "sourceStatus": "institutional_aggregator_metadata_checked_2026-11-14",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "celsus",
+          "target": "celsus-laurenziana-plut73-1",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://iiif.biblissima.fr/collections/manifest/794d5cc06ca503067ec24d2fd04883549c2117af"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -2553,7 +2599,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -4052,8 +4098,32 @@
         "type": "classical_work",
         "label": "Pseudo-Apolodoro · Βιβλιοθήκη (Bibliotheca)"
       },
-      "witnesses": [],
-      "links": [],
+      "witnesses": [
+        {
+          "id": "pseudo-apollodorus-parisinus2722",
+          "canonicalPhysicalId": "codex-pseudo-apollodorus-parisinus2722",
+          "type": "physical_witness",
+          "label": "Parisinus graecus 2722 (siglum R en la bibliografía consultada)",
+          "repository": "París, Bibliothèque nationale de France",
+          "dating": "Siglo XIV según Crane et al. (2026); requiere contraste directo de datación paleográfica con BnF.",
+          "material": null,
+          "folioRange": null,
+          "coverage": "Testimonio fragmentario: el texto conservado termina en 3.16.2 según el estudio de Crane et al. La obra no se conserva íntegra en este códice; no se deduce de ello un número de folios autópticamente cotejado.",
+          "sourceUrl": "https://gallica.bnf.fr/ark:/12148/btv1b525238520",
+          "sourceStatus": "secondary_specialist_reference_2026-11-14",
+          "siglum": null
+        }
+      ],
+      "links": [
+        {
+          "source": "pseudo-apollodorus-bibliotheca",
+          "target": "pseudo-apollodorus-parisinus2722",
+          "relation": "attests_work",
+          "certainty": "catalogued",
+          "interpretation": "An index relation, not a stemmatic ancestry claim",
+          "sourceUrl": "https://gallica.bnf.fr/ark:/12148/btv1b525238520"
+        }
+      ],
       "documentedFiliation": [],
       "archetype": null,
       "subarchetypes": [],
@@ -4062,7 +4132,7 @@
       "openOrClosedTradition": null,
       "stemmaStatus": "not_established",
       "gaps": {
-        "witnessesPending": true,
+        "witnessesPending": false,
         "criticalFamilyClassificationPending": true,
         "collationPending": true,
         "apographsRequiresEditionCitation": true
@@ -10840,12 +10910,12 @@
     },
     {
       "workId": "galeno-opera-kuhn",
-      "title": "Opera omnia (ed. Kühn): volumen adicional",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "galeno-opera-kuhn",
         "type": "classical_work",
-        "label": "Galeno · Opera omnia (ed. Kühn): volumen adicional"
+        "label": "Galeno · Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)"
       },
       "witnesses": [],
       "links": [],
@@ -10865,12 +10935,12 @@
     },
     {
       "workId": "galeno-kuhn-vol01",
-      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "kind": "documentary_witness_tree_not_stemma",
       "root": {
         "id": "galeno-kuhn-vol01",
         "type": "classical_work",
-        "label": "Galeno · Opera omnia, vol. I (ed. Kühn, Leipzig 1821)"
+        "label": "Galeno · Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)"
       },
       "witnesses": [],
       "links": [],

@@ -1,20 +1,29 @@
 {
   "schema": "vdl-bibliotheca-indexation-control-v1",
-  "generated": "2026-11-15",
-  "basis": "Cruce de documentos GitHub: catálogo de calidad 2026-11-14, registro de índices 2026-11-11 y manifiesto invertido 2026-11-14. Esta instantánea no ejecutó la auditoría de objetos R2.",
+  "generated": "2026-11-15T17:33:51.890Z",
+  "basis": "Control del repositorio; los objetos y fragmentos de R2 no fueron verificados en línea por este programa.",
   "counts": {
     "catalogueWorks": 271,
+    "additionalR2Works": 10,
+    "combinedCataloguedWorks": 281,
     "r2EditionRecords": 117,
     "registeredTextVersions": 279,
     "registeredDistinctWorks": 214,
     "verifiedLocalSourceWorkIds": 182,
     "declaredRemoteSourceWorkIds": 32,
+    "r2TextManifestVersions": 32,
     "r2InvertedIndexDeclaredEditions": 119,
     "unindexedCatalogueWorks": 57,
-    "worksMissingRegisteredOriginal": 57,
-    "greekTitleNeedsIndividualReview": 7
+    "unindexedAncientWorks": 54,
+    "unindexedEditorialManifestations": 3,
+    "worksMissingRegisteredOriginal": 0,
+    "greekTitleNeedsIndividualReview": 7,
+    "r2UnlinkedEditions": 0,
+    "duplicateR2BinaryGroups": 2,
+    "structuralErrors": 0,
+    "editorialReviewItems": 67
   },
-  "integrity": "revisión documental preliminar; pendiente ejecutar auditoría integral",
-  "semanticIndex": "Índice por raíces de palabras y equivalencias Conceptus; no es análisis semántico desambiguado validado por latinistas",
-  "remaining": "57 obras sin versión textual declarada. Hay 7 fichas de lengua griega cuyos títulos están expresados en latín o como colecciones modernas y requieren clasificación individual. El índice invertido declara 119 ediciones frente a 117 del catálogo R2: no se corrige sin comprobar objetos."
+  "integrity": "estructura sin errores detectados",
+  "semanticIndex": "Índice invertido por raíces y Conceptus; NO desambiguación semántica filológica acreditada",
+  "remaining": "Consultar reports/bibliotheca/indexation-control.json para las incidencias por obra."
 }

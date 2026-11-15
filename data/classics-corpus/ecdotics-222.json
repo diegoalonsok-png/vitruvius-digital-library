@@ -2383,6 +2383,53 @@
             "evidenceStatus": "institutional_catalogue_checked_2026-11-10",
             "criticalEditionChicago18": null
           }
+        },
+        {
+          "witnessId": "diodorus-bnf-grec1662",
+          "canonicalPhysicalId": "codex-diodorus-bnf-grec1662",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "París, Bibliothèque nationale de France, Département des manuscrits",
+            "shelfmark": "Grec 1662",
+            "paleographicDate": "Siglo XV (según catálogo agregado Biblissima/BnF)",
+            "support": "Papel",
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": "Mediceo-Regius 2539 (referencia histórica de catálogo).",
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Libros XI–XV de la Bibliotheca historica. No abarca la obra íntegra ni puede presentarse como códice completo del texto.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc21791s",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b107233799",
+            "iiifManifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b107233799/manifest.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/6220da196da903186783d68759600922d860ff1a",
+            "evidenceStatus": "institutional_aggregator_metadata_checked_2026-11-14",
+            "criticalEditionChicago18": null
+          }
         }
       ],
       "digitalEdition": {
@@ -2406,7 +2453,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 1,
+        "candidateWitnessCount": 2,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -3141,9 +3188,9 @@
             "indirectSourceType": null
           },
           "codicology": {
-            "repository": "París, Bibliothèque nationale de France",
+            "repository": "París, Bibliothèque nationale de France, Département des manuscrits",
             "shelfmark": "Grec 2179",
-            "paleographicDate": "siglo IX",
+            "paleographicDate": "siglo IX, según INHA y BnF",
             "support": null,
             "script": null,
             "hands": null,
@@ -3151,12 +3198,12 @@
             "scholia": null,
             "interlinearGlosses": null,
             "subscriptiones": null,
-            "origin": null,
+            "origin": "Sinaí o Palestina según registro INHA; atribuición geográfica a contrastar en la bibliografía paleográfica especializada.",
             "provenance": null,
-            "foliation": null
+            "foliation": "ff. 1r–171v para De materia medica, según el repertorio de la Berlin-Brandenburgische Akademie der Wissenschaften"
           },
           "textualIntegrity": {
-            "coverage": "Testimonio griego digitalizado de textos de Dioscórides; cotejar la extensión y su relación con la obra en la ficha de Gallica.",
+            "coverage": "De materia medica, en manuscrito griego ilustrado. Los límites por folio documentados se refieren a esta obra dentro del códice, no a un cotejo por capítulo.",
             "lacunae": null,
             "acephalus": null,
             "mutilus": null,
@@ -3165,11 +3212,11 @@
             "criticalReviewStatus": "pending"
           },
           "sources": {
-            "catalogue": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
-            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505",
+            "catalogue": "https://archivesetmanuscrits.bnf.fr/ark:/12148/cc22288j",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525002505/f1.item",
             "iiifManifest": null,
-            "verification": null,
-            "evidenceStatus": "not_reviewed",
+            "verification": "https://cmg.bbaw.de/en/homepage/resources/catalogues/dioscurides/",
+            "evidenceStatus": "institutional_catalogue_plus_research_academy_2026-11-14",
             "criticalEditionChicago18": null
           }
         }
@@ -5494,7 +5541,55 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "celsus-laurenziana-plut73-1",
+          "canonicalPhysicalId": "codex-celsus-laurenziana-plut73-1",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "Florencia, Biblioteca Medicea Laurenziana",
+            "shelfmark": "Plut. 73.1",
+            "paleographicDate": "1101–1110 en el registro agregado Biblissima; la descripción transmitida contiene «datazione non espressa». Atribución cronológica sujeta a comprobación del catálogo original.",
+            "support": "Pergamino (membrana)",
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Testimonio de obras médicas atribuidas a Cornelio Celso, junto con tratados de otros autores. Extensión por obra y correspondencia por folios sin establecer.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://iiif.biblissima.fr/collections/manifest/794d5cc06ca503067ec24d2fd04883549c2117af",
+            "viewer": "https://tecabml.contentdm.oclc.org/digital/collection/plutei/id/1221382",
+            "iiifManifest": "https://cdm21059.contentdm.oclc.org/iiif/plutei:1221382/manifest.json",
+            "verification": "https://iiif.biblissima.fr/collections/manifest/794d5cc06ca503067ec24d2fd04883549c2117af",
+            "evidenceStatus": "institutional_aggregator_metadata_checked_2026-11-14",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -5516,7 +5611,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -8872,7 +8967,55 @@
           "edges": []
         }
       },
-      "witnesses": [],
+      "witnesses": [
+        {
+          "witnessId": "pseudo-apollodorus-parisinus2722",
+          "canonicalPhysicalId": "codex-pseudo-apollodorus-parisinus2722",
+          "transmission": {
+            "type": "undetermined",
+            "classificationBasis": null,
+            "family": null,
+            "recension": null,
+            "editorialSiglum": null,
+            "siglumSourceEdition": null,
+            "stemmaPosition": null,
+            "copyOf": null,
+            "indirectSourceType": null
+          },
+          "codicology": {
+            "repository": "París, Bibliothèque nationale de France",
+            "shelfmark": "Parisinus graecus 2722 (siglum R en la bibliografía consultada)",
+            "paleographicDate": "Siglo XIV según Crane et al. (2026); requiere contraste directo de datación paleográfica con BnF.",
+            "support": null,
+            "script": null,
+            "hands": null,
+            "correctors": null,
+            "scholia": null,
+            "interlinearGlosses": null,
+            "subscriptiones": null,
+            "origin": null,
+            "provenance": null,
+            "foliation": null
+          },
+          "textualIntegrity": {
+            "coverage": "Testimonio fragmentario: el texto conservado termina en 3.16.2 según el estudio de Crane et al. La obra no se conserva íntegra en este códice; no se deduce de ello un número de folios autópticamente cotejado.",
+            "lacunae": null,
+            "acephalus": null,
+            "mutilus": null,
+            "transposedFolios": null,
+            "interpolations": null,
+            "criticalReviewStatus": "pending"
+          },
+          "sources": {
+            "catalogue": "https://gallica.bnf.fr/ark:/12148/btv1b525238520",
+            "viewer": "https://gallica.bnf.fr/ark:/12148/btv1b525238520",
+            "iiifManifest": null,
+            "verification": "https://journals.ub.uni-heidelberg.de/index.php/dco/article/download/114797/110950",
+            "evidenceStatus": "secondary_specialist_reference_2026-11-14",
+            "criticalEditionChicago18": null
+          }
+        }
+      ],
       "digitalEdition": {
         "baseEdition": null,
         "editionType": "not_verified",
@@ -8894,7 +9037,7 @@
         "level": 0,
         "levelName": "pending_ecdotic_baseline",
         "requirements": "Cumulative L1: verified edition CTS + Chicago18; L2: cited critical siglum + source + manuscript; L3: documented direct/indirect traditions and stemma.",
-        "candidateWitnessCount": 0,
+        "candidateWitnessCount": 1,
         "isManuscriptAgePriorityProven": false
       }
     },
@@ -23671,10 +23814,10 @@
       "workId": "galeno-opera-kuhn",
       "work": {
         "author": "Galeno",
-        "title": "Opera omnia (ed. Kühn): volumen adicional",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
+        "genre": "Medicina antigua · edición histórica de una colección de tratados"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],
@@ -23726,10 +23869,10 @@
       "workId": "galeno-kuhn-vol01",
       "work": {
         "author": "Galeno",
-        "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
         "originalLanguage": "grc",
-        "compositionDate": "Pendiente de consignar: no se deduce del facsímil.",
-        "genre": "Pendiente de consignar: no se deduce del facsímil."
+        "compositionDate": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
+        "genre": "Medicina antigua · edición histórica de una colección de tratados"
       },
       "canonicalIdentifiers": {
         "candidateTLGPHI": [],

@@ -1,6 +1,6 @@
 # Fichas de las obras clásicas · lo que falta
 
-Generado por `scripts/enrich-classical-records.mjs` el 2026-11-14.
+Generado por `scripts/enrich-classical-records.mjs` el 2026-11-15.
 
 Las doce columnas básicas de las 271 fichas están completas. Este informe
 recoge lo que no se puede derivar de los datos del repositorio y necesita trabajo
@@ -10,8 +10,8 @@ editorial o investigación en catálogos.
 
 | Campo | Fichas completadas |
 | --- | --- |
-| Siglo (`century`) | 0 |
-| Período (`period`) | 0 |
+| Siglo (`century`) | 2 |
+| Período (`period`) | 2 |
 | Archivos de corpus (`corpusFiles`) | 0 |
 | Recuentos del índice léxico (`lexicalIndex`) | 0 |
 | Testimonios manuscritos (`witnessRecords`) | 0 |
@@ -31,7 +31,7 @@ lleva enlaces de búsqueda y no afirma nada.
 
 | Campo | Fichas sin dato |
 | --- | --- |
-| Bibliografía | 238 |
+| Bibliografía | 233 |
 | Loci vitruvianos | 205 |
 | Nota codicológica | 264 |
 | Ficha enciclopédica | 270 |

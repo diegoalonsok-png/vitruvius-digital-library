@@ -1,7 +1,7 @@
 {
   "schema": "vdl-bibliotheca-unindexed-backlog-v1",
-  "generated": "2026-11-15",
-  "method": "Inventario provisional contrastado con auditoría de las 271 obras, registro de índices y enlaces R2. No certifica ausencia física de archivos ni derechos de reproducción.",
+  "generated": "2026-11-15T17:33:51.889Z",
+  "method": "Cruce de 271 fichas y versiones efectivamente declaradas en search-registry; ninguna ausencia se presenta como texto indexado. Ediciones modernas distinguidas de obras antiguas.",
   "summary": {
     "missingRegistryEntries": 57,
     "ancientWorksWithoutRegisteredText": 54,
@@ -19,8 +19,8 @@
       "r2EditionsDeclared": [
         "apollodorus-poliorcetics"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -31,8 +31,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -45,8 +45,8 @@
       "r2EditionsDeclared": [
         "arquimedes-obras"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -57,8 +57,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -69,8 +69,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -83,8 +83,8 @@
       "r2EditionsDeclared": [
         "athenaeus-mechanicus"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -97,8 +97,8 @@
       "r2EditionsDeclared": [
         "biton-kataskeuai"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -109,8 +109,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -121,8 +121,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -133,8 +133,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -145,8 +145,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -157,8 +157,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -169,8 +169,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -181,8 +181,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -195,8 +195,8 @@
       "r2EditionsDeclared": [
         "hyginus-gromaticus"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -207,8 +207,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -221,8 +221,8 @@
       "r2EditionsDeclared": [
         "philo-belopoeica"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -233,8 +233,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -245,8 +245,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -259,8 +259,8 @@
       "r2EditionsDeclared": [
         "ptolemy-geographia"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -271,8 +271,8 @@
       "classification": "ancient_work",
       "priority": "alta",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -285,8 +285,8 @@
       "r2EditionsDeclared": [
         "teofrasto-historia-plantas"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -299,8 +299,8 @@
       "r2EditionsDeclared": [
         "tucidides-historia"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -313,8 +313,8 @@
       "r2EditionsDeclared": [
         "accius-fragmenta"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -327,8 +327,8 @@
       "r2EditionsDeclared": [
         "anthologia-latina"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -339,8 +339,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -353,8 +353,8 @@
       "r2EditionsDeclared": [
         "aristoteles-meteorologica"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -367,8 +367,8 @@
       "r2EditionsDeclared": [
         "casiodoro-variae"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -379,8 +379,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -391,8 +391,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -405,8 +405,8 @@
       "r2EditionsDeclared": [
         "festo-verborum-significatu"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -419,8 +419,8 @@
       "r2EditionsDeclared": [
         "galeno-kuhn-vol01"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -433,8 +433,8 @@
       "r2EditionsDeclared": [
         "galeno-kuhn-vol19"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -447,8 +447,8 @@
       "r2EditionsDeclared": [
         "galeno-opera-kuhn"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -461,8 +461,8 @@
       "r2EditionsDeclared": [
         "galeno-scripta-minora"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -475,8 +475,8 @@
       "r2EditionsDeclared": [
         "higino-fabulas"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -487,8 +487,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -501,8 +501,8 @@
       "r2EditionsDeclared": [
         "jamblico-vida-pitagorica"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -515,8 +515,8 @@
       "r2EditionsDeclared": [
         "lyra-graeca"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -527,8 +527,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -541,8 +541,8 @@
       "r2EditionsDeclared": [
         "manilio-astronomica"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -555,8 +555,8 @@
       "r2EditionsDeclared": [
         "marciano-capela-nuptiis"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -569,8 +569,8 @@
       "r2EditionsDeclared": [
         "nonio-marcelo-doctrina"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -583,8 +583,8 @@
       "r2EditionsDeclared": [
         "paladio-opus-agriculturae"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -597,8 +597,8 @@
       "r2EditionsDeclared": [
         "plutarco-vidas"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -609,8 +609,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -623,8 +623,8 @@
       "r2EditionsDeclared": [
         "proclo-comentario-euclides"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -635,8 +635,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -647,8 +647,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -659,8 +659,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -673,8 +673,8 @@
       "r2EditionsDeclared": [
         "sexto-empirico-obras"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -687,8 +687,8 @@
       "r2EditionsDeclared": [
         "teon-esmirna-expositio"
       ],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -699,8 +699,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -711,8 +711,8 @@
       "classification": "ancient_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {
@@ -723,8 +723,8 @@
       "classification": "modern_edition_of_existing_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Vincular como edición de Vitruvio, sin contar como obra antigua independiente.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Vincular como manifestación de Vitruvio; no contar ni reindexar como nueva obra antigua.",
       "indexed": false
     },
     {
@@ -735,8 +735,8 @@
       "classification": "modern_edition_of_existing_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Vincular como edición de Vitruvio, sin contar como obra antigua independiente.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Vincular como manifestación de Vitruvio; no contar ni reindexar como nueva obra antigua.",
       "indexed": false
     },
     {
@@ -747,8 +747,8 @@
       "classification": "modern_edition_of_existing_work",
       "priority": "normal",
       "r2EditionsDeclared": [],
-      "sourceStatus": "Sin versión textual registrada para este ID",
-      "nextStep": "Vincular como edición de Vitruvio, sin contar como obra antigua independiente.",
+      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
+      "nextStep": "Vincular como manifestación de Vitruvio; no contar ni reindexar como nueva obra antigua.",
       "indexed": false
     }
   ]

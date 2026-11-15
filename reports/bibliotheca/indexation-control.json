@@ -1,0 +1,859 @@
+{
+  "schema": "vdl-bibliotheca-indexation-control-v1",
+  "generated": "2026-11-15T17:33:51.890Z",
+  "methodology": "Auditoría documental reproducible de GitHub. Los índices del catálogo y los registros remotos son declaraciones; no sustituyen GET/HEAD de R2, cotejo del interior del PDF ni recensio manuscrita. Una obra sin índice NO se marca indexada automáticamente.",
+  "counts": {
+    "catalogueWorks": 271,
+    "additionalR2Works": 10,
+    "combinedCataloguedWorks": 281,
+    "r2EditionRecords": 117,
+    "registeredTextVersions": 279,
+    "registeredDistinctWorks": 214,
+    "verifiedLocalSourceWorkIds": 182,
+    "declaredRemoteSourceWorkIds": 32,
+    "r2TextManifestVersions": 32,
+    "r2InvertedIndexDeclaredEditions": 119,
+    "unindexedCatalogueWorks": 57,
+    "unindexedAncientWorks": 54,
+    "unindexedEditorialManifestations": 3,
+    "worksMissingRegisteredOriginal": 0,
+    "greekTitleNeedsIndividualReview": 7,
+    "r2UnlinkedEditions": 0,
+    "duplicateR2BinaryGroups": 2,
+    "structuralErrors": 0,
+    "editorialReviewItems": 67
+  },
+  "scope": {
+    "greekTitleReview": [
+      {
+        "id": "philo",
+        "title": "De opificio mundi"
+      },
+      {
+        "id": "hipocrates-obras",
+        "title": "Corpus Hippocraticum (selección)"
+      },
+      {
+        "id": "lyra-graeca",
+        "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)"
+      },
+      {
+        "id": "galeno-opera-kuhn",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)"
+      },
+      {
+        "id": "galeno-kuhn-vol01",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)"
+      },
+      {
+        "id": "galeno-kuhn-vol19",
+        "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)"
+      },
+      {
+        "id": "galeno-scripta-minora",
+        "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)"
+      }
+    ],
+    "missingOriginal": [],
+    "unindexed": [
+      {
+        "id": "seneca-naturales",
+        "author": "Séneca",
+        "title": "Naturales quaestiones",
+        "language": "la"
+      },
+      {
+        "id": "plutarch-lives",
+        "author": "Plutarco",
+        "title": "Βίοι Παράλληλοι · Vidas paralelas",
+        "language": "grc"
+      },
+      {
+        "id": "apollodorus-poliorcetics",
+        "author": "Apolodoro de Damasco (atribución tradicional)",
+        "title": "Πολιορκητικά · Poliorketika",
+        "language": "grc"
+      },
+      {
+        "id": "athenaeus-mechanicus",
+        "author": "Ateneo Mecánico",
+        "title": "Περὶ μηχανημάτων · De machinis",
+        "language": "grc"
+      },
+      {
+        "id": "vitruvio-v514-pdf",
+        "author": "Vitruvio · edición de Diego A. Kurilo",
+        "title": "De architectura · Recensio V514 (latín–castellano)",
+        "language": "la"
+      },
+      {
+        "id": "vitruvio-v554-pdf",
+        "author": "Vitruvio · edición de Diego A. Kurilo",
+        "title": "De architectura · Recensio V554 (latín–francés)",
+        "language": "la"
+      },
+      {
+        "id": "theory-v297-pdf",
+        "author": "Diego A. Kurilo · sobre Vitruvio",
+        "title": "The Architect of Theory · V297 (inglés)",
+        "language": "la"
+      },
+      {
+        "id": "velleius-historia",
+        "author": "Veleyo Patérculo",
+        "title": "Historia Romana",
+        "language": "la"
+      },
+      {
+        "id": "plutarch-moralia",
+        "author": "Plutarco",
+        "title": "Ἠθικά (Moralia)",
+        "language": "grc"
+      },
+      {
+        "id": "ptolemy-geographia",
+        "author": "Claudio Ptolomeo",
+        "title": "Γεωγραφικὴ ὑφήγησις",
+        "language": "grc"
+      },
+      {
+        "id": "thucydides-war",
+        "author": "Tucídides",
+        "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+        "language": "grc"
+      },
+      {
+        "id": "cassius-dio-historia",
+        "author": "Dión Casio",
+        "title": "Ῥωμαϊκὴ ἱστορία",
+        "language": "grc"
+      },
+      {
+        "id": "athenaeus-deipnosophistae",
+        "author": "Ateneo de Náucratis",
+        "title": "Δειπνοσοφισταί",
+        "language": "grc"
+      },
+      {
+        "id": "theophrastus-historia-plantarum",
+        "author": "Teofrasto",
+        "title": "Περὶ φυτῶν ἱστορίας",
+        "language": "grc"
+      },
+      {
+        "id": "seneca-de-ira",
+        "author": "Séneca",
+        "title": "De ira",
+        "language": "la"
+      },
+      {
+        "id": "seneca-de-tranquillitate",
+        "author": "Séneca",
+        "title": "De tranquillitate animi",
+        "language": "la"
+      },
+      {
+        "id": "apuleius-de-deo-socratis",
+        "author": "Apuleyo",
+        "title": "De deo Socratis",
+        "language": "la"
+      },
+      {
+        "id": "vegetius-epitoma",
+        "author": "Vegecio",
+        "title": "Epitoma rei militaris",
+        "language": "la"
+      },
+      {
+        "id": "macrobius-saturnalia",
+        "author": "Macrobio",
+        "title": "Saturnalia",
+        "language": "la"
+      },
+      {
+        "id": "archimedes-fluitantibus",
+        "author": "Arquímedes",
+        "title": "Περὶ τῶν ὀχουμένων",
+        "language": "grc"
+      },
+      {
+        "id": "ennius-annales",
+        "author": "Ennio",
+        "title": "Annales (fragmenta)",
+        "language": "la"
+      },
+      {
+        "id": "accius-fragmenta",
+        "author": "Accio",
+        "title": "Tragoediae (fragmenta)",
+        "language": "la"
+      },
+      {
+        "id": "ps-aristotle-mechanica",
+        "author": "Pseudo-Aristóteles (escuela peripatética)",
+        "title": "Μηχανικὰ προβλήματα",
+        "language": "grc"
+      },
+      {
+        "id": "procopius-aedificiis",
+        "author": "Procopio de Cesarea",
+        "title": "Περὶ κτισμάτων",
+        "language": "grc"
+      },
+      {
+        "id": "isidore-etymologiae",
+        "author": "Isidoro de Sevilla",
+        "title": "Etymologiae",
+        "language": "la"
+      },
+      {
+        "id": "censorinus-die-natali",
+        "author": "Censorino",
+        "title": "De die natali",
+        "language": "la"
+      },
+      {
+        "id": "euclid-optica",
+        "author": "Euclides",
+        "title": "Ὀπτικά · Optica",
+        "language": "grc"
+      },
+      {
+        "id": "euclid-phaenomena",
+        "author": "Euclides",
+        "title": "Φαινόμενα · Phaenomena y escritos musicales",
+        "language": "grc"
+      },
+      {
+        "id": "cleonides-harmonica",
+        "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+        "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+        "language": "grc"
+      },
+      {
+        "id": "hero-belopoeica",
+        "author": "Herón de Alejandría",
+        "title": "Βελοποιικά · Belopoeica",
+        "language": "grc"
+      },
+      {
+        "id": "philo-belopoeica",
+        "author": "Filón de Bizancio",
+        "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+        "language": "grc"
+      },
+      {
+        "id": "biton-kataskeuai",
+        "author": "Bitón",
+        "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+        "language": "grc"
+      },
+      {
+        "id": "geminus-isagoge",
+        "author": "Gémino",
+        "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+        "language": "grc"
+      },
+      {
+        "id": "aristarchus-magnitudines",
+        "author": "Aristarco de Samos",
+        "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+        "language": "grc"
+      },
+      {
+        "id": "apollonius-conica",
+        "author": "Apolonio de Perge",
+        "title": "Κωνικά · Conica",
+        "language": "grc"
+      },
+      {
+        "id": "pappus-synagoge",
+        "author": "Papo de Alejandría",
+        "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+        "language": "grc"
+      },
+      {
+        "id": "hyginus-gromaticus",
+        "author": "Higino Gromático",
+        "title": "Constitutio limitum",
+        "language": "la"
+      },
+      {
+        "id": "frontinus-gromatica",
+        "author": "Frontino",
+        "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+        "language": "la"
+      },
+      {
+        "id": "siculus-flaccus",
+        "author": "Sículo Flaco",
+        "title": "De condicionibus agrorum",
+        "language": "la"
+      },
+      {
+        "id": "lyra-graeca",
+        "author": "Poetas líricos griegos",
+        "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+        "language": "grc"
+      },
+      {
+        "id": "higino-fabulas",
+        "author": "Higino",
+        "title": "Fabulae · Astronomica poetica",
+        "language": "la"
+      },
+      {
+        "id": "manilio-astronomica",
+        "author": "Manilio",
+        "title": "Astronomica",
+        "language": "la"
+      },
+      {
+        "id": "aristoteles-meteorologica",
+        "author": "Aristóteles",
+        "title": "Μετεωρολογικά · Meteorologica",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-opera-kuhn",
+        "author": "Galeno",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-kuhn-vol01",
+        "author": "Galeno",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-kuhn-vol19",
+        "author": "Galeno",
+        "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+        "language": "grc"
+      },
+      {
+        "id": "galeno-scripta-minora",
+        "author": "Galeno",
+        "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+        "language": "grc"
+      },
+      {
+        "id": "jamblico-vida-pitagorica",
+        "author": "Jámblico",
+        "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+        "language": "grc"
+      },
+      {
+        "id": "proclo-comentario-euclides",
+        "author": "Proclo",
+        "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+        "language": "grc"
+      },
+      {
+        "id": "sexto-empirico-obras",
+        "author": "Sexto Empírico",
+        "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+        "language": "grc"
+      },
+      {
+        "id": "teon-esmirna-expositio",
+        "author": "Teón de Esmirna",
+        "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+        "language": "grc"
+      },
+      {
+        "id": "anthologia-latina",
+        "author": "Antología latina",
+        "title": "Anthologia Latina",
+        "language": "la"
+      },
+      {
+        "id": "casiodoro-variae",
+        "author": "Casiodoro",
+        "title": "Variae",
+        "language": "la"
+      },
+      {
+        "id": "festo-verborum-significatu",
+        "author": "Festo (y Verrio Flaco)",
+        "title": "De verborum significatu",
+        "language": "la"
+      },
+      {
+        "id": "marciano-capela-nuptiis",
+        "author": "Marciano Capela",
+        "title": "De nuptiis Philologiae et Mercurii",
+        "language": "la"
+      },
+      {
+        "id": "nonio-marcelo-doctrina",
+        "author": "Nonio Marcelo",
+        "title": "De compendiosa doctrina",
+        "language": "la"
+      },
+      {
+        "id": "paladio-opus-agriculturae",
+        "author": "Paladio",
+        "title": "Opus agriculturae",
+        "language": "la"
+      }
+    ],
+    "r2Unlinked": [],
+    "duplicateR2Hashes": [
+      {
+        "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+        "ids": [
+          "apollodorus-poliorcetics",
+          "athenaeus-mechanicus",
+          "biton-kataskeuai",
+          "philo-belopoeica"
+        ]
+      },
+      {
+        "sha256": "11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942",
+        "ids": [
+          "galeno-opera-kuhn",
+          "galeno-kuhn-vol01"
+        ]
+      }
+    ],
+    "catalogueVsEditionTitles": [
+      {
+        "id": "vitruvius",
+        "catalogue": "De architectura libri decem",
+        "registeredEdition": "De architectura · latín V514"
+      },
+      {
+        "id": "didache",
+        "catalogue": "Διδαχή · Didaché",
+        "registeredEdition": "Διδαχὴ τῶν δώδεκα ἀποστόλων"
+      },
+      {
+        "id": "faventinus",
+        "catalogue": "Artis architectonicae privatis usibus adbreviatus liber",
+        "registeredEdition": "Liber artis architectonicae"
+      },
+      {
+        "id": "krohn-1912-pdf",
+        "catalogue": "Vitruvii De architectura libri decem · Krohn 1912",
+        "registeredEdition": "De architectura (1912), OCR no corregido"
+      },
+      {
+        "id": "phraedrus-fabulae",
+        "catalogue": "Fabulae",
+        "registeredEdition": "Fabulae Aesopiae"
+      },
+      {
+        "id": "sulpicia-elegiae",
+        "catalogue": "Elegiae · Corpus Tibullianum 3.13–18",
+        "registeredEdition": "Elegiae (Corpus Tibullianum 3.13–18)"
+      }
+    ]
+  },
+  "issues": [
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "philo",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "seneca-naturales",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "plutarch-lives",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "apollodorus-poliorcetics",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "athenaeus-mechanicus",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "vitruvio-v514-pdf",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "vitruvio-v554-pdf",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "theory-v297-pdf",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "velleius-historia",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "plutarch-moralia",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "ptolemy-geographia",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "thucydides-war",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "cassius-dio-historia",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "athenaeus-deipnosophistae",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "theophrastus-historia-plantarum",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "seneca-de-ira",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "seneca-de-tranquillitate",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "apuleius-de-deo-socratis",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "vegetius-epitoma",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "macrobius-saturnalia",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "archimedes-fluitantibus",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "ennius-annales",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "accius-fragmenta",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "ps-aristotle-mechanica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "procopius-aedificiis",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "isidore-etymologiae",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "censorinus-die-natali",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "euclid-optica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "euclid-phaenomena",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "cleonides-harmonica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "hero-belopoeica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "philo-belopoeica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "biton-kataskeuai",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "geminus-isagoge",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "aristarchus-magnitudines",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "apollonius-conica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "pappus-synagoge",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "hyginus-gromaticus",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "frontinus-gromatica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "siculus-flaccus",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "hipocrates-obras",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "lyra-graeca",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "lyra-graeca",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "higino-fabulas",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "manilio-astronomica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "aristoteles-meteorologica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "galeno-opera-kuhn",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "galeno-opera-kuhn",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "galeno-kuhn-vol01",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "galeno-kuhn-vol01",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "galeno-kuhn-vol19",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "galeno-kuhn-vol19",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "galeno-scripta-minora",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "greek_title_not_documented",
+      "id": "galeno-scripta-minora",
+      "description": "La ficha no contiene denominación griega acreditada; podría ser una colección o edición"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "jamblico-vida-pitagorica",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "proclo-comentario-euclides",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "sexto-empirico-obras",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "teon-esmirna-expositio",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "anthologia-latina",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "casiodoro-variae",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "festo-verborum-significatu",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "marciano-capela-nuptiis",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "nonio-marcelo-doctrina",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "work_not_text_indexed",
+      "id": "paladio-opus-agriculturae",
+      "description": "Ficha presente sin versión textual en registry"
+    },
+    {
+      "severity": "review",
+      "code": "same_pdf_multiple_editions",
+      "id": "apollodorus-poliorcetics,athenaeus-mechanicus,biton-kataskeuai,philo-belopoeica",
+      "description": "Misma huella: comprobar si es edición ómnibus o duplicación"
+    },
+    {
+      "severity": "review",
+      "code": "same_pdf_multiple_editions",
+      "id": "galeno-opera-kuhn,galeno-kuhn-vol01",
+      "description": "Misma huella: comprobar si es edición ómnibus o duplicación"
+    },
+    {
+      "severity": "review",
+      "code": "index_catalogue_count_divergence",
+      "id": "R2",
+      "description": "Índice declara 119 ediciones, catálogo R2 registra 117. No modificar el índice por suposición."
+    }
+  ],
+  "workflow": "Una ficha sin fuente comprobada queda repertoriada; texto recuperado con licencia y fuente se importa a staging; solo después de control de identidad, OCR/TEI, loci e índice se promueve a lectura pública."
+}

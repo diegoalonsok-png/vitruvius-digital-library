@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-15T04:21:30.708013+00:00",
+  "generated": "2026-11-15T17:33:51.943567+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 271,
@@ -71,7 +71,7 @@
     {
       "id": "serlio-architettura",
       "author": "Sebastiano Serlio",
-      "title": "Tutte l'opere d'architettura",
+      "title": "Regole generali di architettura (Serlio) — edición individual",
       "language": "it",
       "catalogue": "r2-additional-work",
       "r2FacsimileEditions": [
@@ -139,7 +139,7 @@
     {
       "id": "petrarca-secretum",
       "author": "Francesco Petrarca",
-      "title": "Secretum meum",
+      "title": "Secretum de Petrarca — texto dentro de volumen colectivo",
       "language": "la",
       "catalogue": "r2-additional-work",
       "r2FacsimileEditions": [
@@ -156,7 +156,7 @@
     {
       "id": "isidoro-etymologiae",
       "author": "Isidoro de Sevilla",
-      "title": "Etymologiae sive Origines",
+      "title": "Etymologiae / Origines de Isidoro — volumen I",
       "language": "la",
       "catalogue": "r2-additional-work",
       "r2FacsimileEditions": [

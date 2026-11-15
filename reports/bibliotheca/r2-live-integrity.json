@@ -1,6 +1,6 @@
 {
   "schema": "vdl-r2-live-integrity-v1",
-  "generated": "2026-11-15T04:21:33.915083+00:00",
+  "generated": "2026-11-15T17:33:52.102610+00:00",
   "status": "verified_with_findings",
   "counts": {
     "editionsInGithubCatalogue": 117,
@@ -917,24 +917,6 @@
       "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
     },
     {
-      "id": "platon-protagoras",
-      "kind": "pdf",
-      "status": "exists",
-      "key": "clasicos/pdf/platon-protagoras.pdf",
-      "bytes": 18023222,
-      "metadataSha256": "d0ee2068de6dab624c5d54d153ee53ad99e79d0505562ae9069467959988fec3",
-      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
-    },
-    {
-      "id": "platon-protagoras",
-      "kind": "texto",
-      "status": "exists",
-      "key": "clasicos/texto/platon-protagoras.json",
-      "bytes": 567413,
-      "metadataSha256": null,
-      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
-    },
-    {
       "id": "platon-leyes",
       "kind": "pdf",
       "status": "exists",
@@ -949,6 +931,24 @@
       "status": "exists",
       "key": "clasicos/texto/platon-leyes.json",
       "bytes": 981687,
+      "metadataSha256": null,
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-protagoras",
+      "kind": "pdf",
+      "status": "exists",
+      "key": "clasicos/pdf/platon-protagoras.pdf",
+      "bytes": 18023222,
+      "metadataSha256": "d0ee2068de6dab624c5d54d153ee53ad99e79d0505562ae9069467959988fec3",
+      "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
+    },
+    {
+      "id": "platon-protagoras",
+      "kind": "texto",
+      "status": "exists",
+      "key": "clasicos/texto/platon-protagoras.json",
+      "bytes": 567413,
       "metadataSha256": null,
       "checksumLimit": "HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"
     },
