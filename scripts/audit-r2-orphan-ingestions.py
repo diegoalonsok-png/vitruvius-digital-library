@@ -93,7 +93,7 @@ def main():
                 body = s3.get_object(Bucket=bucket, Key=ocr_key,
                     Range="bytes=0-16383")["Body"].read().decode("utf-8", "replace")
                 for field, target in (("sourceSha256", "ocrSourceSha256"), ("fuente", "ocrSourceIdentifier")):
-                    match = re.search(r'"' + re.escape(field) + r'"\\s*:\\s*"([^"]+)"', body)
+                    match = re.search(r'"' + re.escape(field) + r'"\s*:\s*"([^"]+)"', body)
                     if match:
                         row[target] = match.group(1)
             if row["sourceSha256Metadata"] and row["ocrSourceSha256"]:
