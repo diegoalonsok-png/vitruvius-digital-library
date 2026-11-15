@@ -13,8 +13,29 @@ Promise.all([
 ]).then(([data,live,ocr,lexical])=>{
 if(data.schema!=="vdl-bibliotheca-federated-status-v1"||!data.summary)throw Error("Inventario incompatible");
 const s=data.summary;mount.replaceChildren();
+const ageHours=date=>{
+ const t=Date.parse(date||"");
+ return Number.isFinite(t)?(Date.now()-t)/3600000:null;
+};
+const staleHours=48;
+const age=ageHours(live?.generated);
+const r2Verified=live&&["verified_structurally","verified_with_findings"].includes(live.status);
+const r2Current=r2Verified&&age!==null&&age>=0&&age<=staleHours;
+
 mount.append(el("h2","Bibliotheca · estado del catálogo e índices"));
 mount.append(el("p","Corte documental: "+(data.generated||"no declarado")+" · Las obras, ediciones PDF, transcripciones e índices son categorías independientes.","bfs-note"));
+const pendingIssues=Array.isArray(data.issues)?data.issues.filter(Boolean):[];
+const integrityNote=el("p",r2Current?
+ "Última comprobación física R2: "+live.generated+" · "+(live.counts?.objectsPresent??"—")+" objetos comprobados · "+(live.counts?.objectsMissing??"—")+" faltantes. Los demás datos son inventarios documentales.":
+ "Comprobación física R2 "+(r2Verified?"desactualizada (más de 48 horas)":"no confirmada")+"; las cifras del catálogo no acreditan disponibilidad actual.","bfs-note");
+integrityNote.setAttribute("role","status");mount.append(integrityNote);
+if(pendingIssues.length){
+ const warning=el("div",undefined,"bfs-issues");
+ const heading=el("strong",pendingIssues.length+" incidencias documentales pendientes");
+ const list=el("ul");
+ for(const issue of pendingIssues){const item=el("li",issue);list.append(item)}
+ warning.append(heading,list);mount.append(warning);
+}
 const metrics=[["Total de obras declaradas",s.totalWorksDeclared],["Obras del repertorio",s.masterWorks],["Adiciones declaradas",s.additionalWorks],["Versiones textuales",s.textVersions],["Obras con texto",s.indexedWorks],["Obras sin texto",s.worksWithoutAnyText],["PDF R2 catalogados",s.r2PdfEditions],["Textos remotos declarados",s.remoteTextFilesDeclared],["Entradas del índice R2",s.r2IndexWorksDeclared]];
 if(ocr?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
  metrics.push(["Sin transcripción, pero con búsqueda OCR R2",ocr.counts.withoutTextButWithR2OcrIndex]);
@@ -26,7 +47,7 @@ for(const [label,n] of metrics){const cell=el("div");cell.append(el("dt",label),
 const details=el("details");details.append(el("summary","Controles documentales y discrepancias"));
 details.append(el("p","El índice utiliza raíces y Conceptus: es un índice léxico/conceptual, no una edición filológica revisada ni una representación semántica integral del corpus.","bfs-note"));
 details.append(el("p","Pendientes: "+fmt(s.worksWithoutAnyText)+" obras sin texto registrado, "+fmt(s.candidateEditionsNotInR2)+" candidatos PDF no incorporados y "+fmt(s.externalMetadataPending)+" fichas con datos externos por confirmar.","bfs-note"));
-const verified=live&&["verified_structurally","verified_with_findings"].includes(live.status);
+const verified=r2Current;
 details.append(el("p",verified?"Objetos R2 comprobados con HEAD: "+live.status+" · "+live.generated+". El control de identidad textual es independiente.":"Disponibilidad de los objetos R2 no certificada en esta instantánea; las URL del inventario no son una prueba física.","bfs-note"));
 if(ocr?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
  const r=ocr.ocrSearchableWithoutTranscription||[];
@@ -70,6 +91,8 @@ style.textContent=[
 "#bibliotheca-federated-status dt{font:12px/1.3 system-ui;opacity:.8}",
 "#bibliotheca-federated-status dd{margin:4px 0 0;font:normal 25px/1.2 Georgia,serif}",
 "#bibliotheca-federated-status .bfs-note{font:13px/1.65 system-ui;opacity:.85}",
+"#bibliotheca-federated-status .bfs-issues{border:1px solid #c68d5566;padding:10px 13px;margin:12px 0;font:13px/1.6 system-ui}",
+"#bibliotheca-federated-status .bfs-issues ul{margin:5px 0 0;padding-left:19px}",
 "#bibliotheca-federated-status details summary{font:600 13px system-ui;cursor:pointer;padding:7px 0}"
 ].join("\n");
 document.head.append(style);
