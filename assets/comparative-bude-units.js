@@ -18,6 +18,15 @@ function hViewerLink(folio,locus){
  else if(folio)q.set("folio",folio);
  return "harleianus.html?"+q.toString();
 }
+function evidenceFacsimile(file,folio,locus){
+ const det=E("details",null,"bude-manuscript");const sum=E("summary","Ampliar fotografía de H · f. "+folio);det.append(sum);
+ const p=E("p","Fuente: fotografía local conservada en el archivo maestro. La ubicación por locus y su grado de comprobación se indican en la ficha crítica.","bude-note");det.append(p);
+ const img=E("img");img.loading="lazy";img.decoding="async";img.alt="British Library, Harley MS 2767, f. "+folio+"; fotografía para cotejo de "+locus;
+ img.src=file;img.style.cssText="display:block;width:100%;max-width:780px;height:auto;cursor:zoom-in;border:1px solid #a8a099";
+ const a=A("Abrir fotografía en tamaño original",file);a.target="_blank";a.rel="noopener";a.append(img);det.append(a);
+ const note=E("p",null,"bude-note");note.append(A("Herramientas de lupa y contraste",hViewerLink(folio,locus)));det.append(note);
+ return det;
+}
 function section(title){const s=E("section");s.append(E("h3",title));root.append(s);return s}
 async function render(query){
  const locus=norm(query),position=loci.indexOf(locus),token=++sequence;
@@ -84,6 +93,7 @@ async function render(query){
    observed.append(A("Examinar fotografía en GitHub","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/"+e.imageInspection.file));
    if(e.imageInspection.observed)observed.append(E("span"," Contexto localizado: "+e.imageInspection.observed)); 
    verified.append(observed);
+   verified.append(evidenceFacsimile(e.imageInspection.file,e.imageInspection.folio,locus));
    if(e.imageInspection.adjacent?.length){
     const links=E("p",null,"bude-note");links.append("Folios contiguos cotejados: ");
     e.imageInspection.adjacent.forEach((f,i)=>{if(i)links.append(" · ");links.append(A("H f. "+f.folio,hViewerLink(f.folio,locus)));});
@@ -96,6 +106,7 @@ async function render(query){
    proof.append(A("Ver fotografía original conservada en GitHub","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/"+e.visualEvidence.file));
    proof.append(". "+e.visualEvidence.note);
    verified.append(proof);
+   verified.append(evidenceFacsimile(e.visualEvidence.file,e.visualEvidence.folio,locus));
   }
   if(e.comparison){
    const compar=E("div",null,"bude-grid");
