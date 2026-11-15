@@ -13,7 +13,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: vdl-classics-publication-main
+  group: r2-conceptus-index-publication
   cancel-in-progress: false
 jobs:
   index:
