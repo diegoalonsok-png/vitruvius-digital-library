@@ -4,14 +4,15 @@
 Requiere R2_ACCESS_KEY_ID/R2_SECRET_ACCESS_KEY. Sin credenciales informa
 no-verificado; nunca rebaja ni borra los registros del catálogo.
 """
-import concurrent.futures, datetime, json, os, pathlib, urllib.parse
+import concurrent.futures, datetime, json, os, pathlib, sys, urllib.parse
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 OUT=ROOT/"reports/bibliotheca/r2-live-integrity.json"
 PUBLIC=ROOT/"data/r2/r2-object-status.json"
 CAT=ROOT/"data/r2/catalogo-clasicos-r2.json"
-BUCKET=os.environ.get("R2_BUCKET","vitruvius-bibliotheca")
+BUCKET=os.environ.get("R2_BUCKET") or "vitruvius-bibliotheca"
 ACCOUNT=os.environ.get("R2_ACCOUNT_ID","4e936bf2c4f185a87075ca506de93e69")
 HOST="libros.vitruvius-digital-library.org"
+REQUIRED="--required" in sys.argv
 def save(obj):
  OUT.parent.mkdir(parents=True,exist_ok=True);PUBLIC.parent.mkdir(parents=True,exist_ok=True)
  OUT.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
@@ -24,7 +25,9 @@ def main():
          "notes":"El listado GitHub no es inventario físico. Objetos R2 examinados con HEAD y manifiesto de índice por GET si hay credenciales.",
          "objects":[],"indexManifest":None}
  if not all(os.environ.get(k) for k in ("R2_ACCESS_KEY_ID","R2_SECRET_ACCESS_KEY")):
-  result["notes"]+=" Faltan credenciales de lectura R2; no hay comprobación física.";save(result);return
+  result["notes"]+=" Faltan credenciales de lectura R2; no hay comprobación física.";save(result)
+  if REQUIRED:raise SystemExit("Faltan credenciales R2; auditoría física obligatoria")
+  return
  import boto3
  from botocore.config import Config
  client=boto3.client("s3",endpoint_url="https://"+ACCOUNT+".r2.cloudflarestorage.com",
@@ -78,6 +81,8 @@ def main():
  result["status"]="verified_with_findings" if missing or result["indexManifest"].get("status")!="read_from_R2" or result["counts"].get("editionsNotInRemoteIndex") or result["counts"].get("indexEntriesWithoutCatalogue") else "verified_structurally"
  save(result)
  print(json.dumps({k:result[k] for k in ("status","counts","indexManifest")},ensure_ascii=False,indent=2))
- if any(x["status"] in ("absent","metadata_sha_mismatch") for x in missing):
-  raise SystemExit("Faltan objetos anunciados como accesibles en el catálogo R2")
+ if any(x["status"] != "exists" for x in missing):
+  raise SystemExit("Objetos R2 ausentes, con metadatos discordantes o cuya presencia no se pudo verificar")
+ if REQUIRED and result["indexManifest"].get("status") != "read_from_R2":
+  raise SystemExit("No se pudo verificar el manifiesto invertido de R2")
 if __name__=="__main__":main()
