@@ -39,14 +39,24 @@ function ancientGenre(raw){
 }
 function romanNumber(x){let n=0,last=0;for(const c of [...String(x).toUpperCase()].reverse()){const v={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}[c]||0;n+=v<last?-v:v;last=v}return n}
 function centuryOf(raw){
- const s=normal(raw).replace(/a c|a e c|bce|bc|antes de cristo/g," bce ").replace(/d c|ce|ad|despues de cristo/g," ce ");
+ const s=normal(raw);
  if(!s||/debatid|indeterminad|inciert|uncertain|disput|atribucion|composicion y atribuciones/.test(s))return "";
- const centuries=s.match(/(?:siglo|siglos|century|centuries|s)\s+([ivxlcdm]+)\b/);
- const era=/\bbce\b/.test(s)?"bce":/\bce\b/.test(s)?"ce":"";
- if(centuries&&era){const n=romanNumber(centuries[1]);return n>=1&&n<=30?era+":"+n:"";}
- const dated=s.match(/\b(\d{1,4})\s*(?:[-–]\s*\d{1,4})?\s*(bce|ce)\b/);
- if(dated){const n=Number(dated[1]);return n>0?(dated[2]+":"+Math.ceil(n/100)):"";}
- return "";
+ const before=/\b(?:a c|a e c|bce|bc|antes de cristo)\b/.test(s);
+ const after=/\b(?:d c|ce|ad|despues de cristo)\b/.test(s);
+ if(before===after)return "";
+ const era=before?"bce":"ce";
+ const c=s.match(/\b(?:siglo|siglos|century|centuries|s)\s+([ivxlcdm]+)\b/);
+ if(c){
+  const all=[...s.matchAll(/\b(?:siglo|siglos|century|centuries|s)\s+([ivxlcdm]+)\b/g)];
+  if(all.length!==1)return "";
+  const tail=s.slice(c.index+c[0].length).trim().replace(/^(?:a c|a e c|bce|bc|d c|ce|ad)\b/,"").trim();
+  if(/^[ivxlcdm]+\b/.test(tail)||/\b(?:y|and|et)\s+[ivxlcdm]+\b/.test(tail))return "";
+  const n=romanNumber(c[1]);return n>=1&&n<=30?era+":"+n:"";
+ }
+ const years=[...s.matchAll(/\b(\d{1,4})\b/g)].map(x=>Number(x[1])).filter(n=>n>0);
+ if(!years.length||years.length>2)return "";
+ const centuries=[...new Set(years.map(n=>Math.ceil(n/100)))];
+ return centuries.length===1?era+":"+centuries[0]:"";
 }
 const make=(tag,text,cls)=>{
  const el=document.createElement(tag);if(text!=null)el.textContent=String(text);if(cls)el.className=cls;return el;
