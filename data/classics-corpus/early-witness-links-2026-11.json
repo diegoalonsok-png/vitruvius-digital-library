@@ -1,0 +1,153 @@
+{
+  "schema": "vdl-early-witness-links-v1",
+  "updated": "2026-11-15",
+  "scope": "Enlaces de testimonios manuscritos documentados para siete incorporaciones clásicas prioritarias; no acreditan disponibilidad de PDF/TEI en R2 ni cotejo autóptico.",
+  "editorialPolicy": "No afirmar el más antiguo sin recensio de todos los testigos; distinguir original, traducción indirecta, folio, libro e imagen; no inventar enlaces a digitalización.",
+  "entries": [
+    {
+      "id": "heron-metrica-dioptra",
+      "author": "Herón de Alejandría",
+      "work": "Μετρικά / Περὶ διόπτρας · Metrica / Dioptra",
+      "language": "grc",
+      "note": "Son dos tratados diferentes. El códice de Metrica no es automáticamente testimonio de Dioptra. Deben catalogarse por separado dentro del volumen de edición moderna.",
+      "witnesses": [
+        {
+          "workPart": "Metrica",
+          "institution": "Topkapı Sarayı Müzesi Kütüphanesi, Estambul",
+          "shelfmark": "Gayri İslami Eserler (G.İ.) 001",
+          "folios": "ff. 67r–110v",
+          "date": "s. X med.",
+          "type": "testimonio griego directo; codex unicus documentado",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/33946/",
+          "linkType": "ficha de códice (no visor de folios confirmado)",
+          "note": "Pinakes; edición de Acerbi y Vitrac (2014). La copia es un testimonio manuscrito, no la edición impresa."
+        },
+        {
+          "workPart": "Dioptra",
+          "institution": "Bibliothèque nationale de France, París",
+          "shelfmark": "Supplément grec 607",
+          "folios": "ff. 62r–80v y 82r–82v (según Pinakes)",
+          "date": "s. X (sección pertinente)",
+          "type": "testimonio griego directo temprano",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/53341/",
+          "linkType": "ficha de códice; Pinakes registra digitalización en Gallica",
+          "note": "El volumen es compuesto; no equiparar la fecha de todas sus secciones."
+        }
+      ]
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "work": "Περὶ κτισμάτων · De aedificiis",
+      "language": "grc",
+      "note": "La ficha principal del repertorio cita un testimonio florentino tardío; este registro añade uno anterior. No afirmar prioridad absoluta de toda la tradición sin recensio.",
+      "witnesses": [
+        {
+          "institution": "Biblioteca Apostolica Vaticana, Ciudad del Vaticano",
+          "shelfmark": "Vat. gr. 1065",
+          "folios": "ff. 22r–93v (ff. 22r–28r: índice inicial)",
+          "date": "s. XI ex.",
+          "type": "testimonio griego directo, libros I–VI",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/67696/",
+          "linkType": "ficha codicológica Pinakes; referencia a digitalización vaticana",
+          "note": "Desglose de libros y folios documentado en Pinakes; la datación del códice no es la de composición de la obra."
+        }
+      ]
+    },
+    {
+      "id": "heron-mechanica",
+      "author": "Herón de Alejandría",
+      "work": "Μηχανικά · Mechanica",
+      "language": "grc (fragmentaria); ar (tradición indirecta)",
+      "note": "No existe una versión griega íntegra conservada que pueda enfrentarse como original completo; la transmisión extensa procede del árabe. No retrotraducir del árabe y presentarlo como griego.",
+      "witnesses": [
+        {
+          "institution": "British Library, Londres",
+          "shelfmark": "Add MS 23390",
+          "folios": "ff. 3r–50r",
+          "date": "s. XVII",
+          "type": "traducción árabe antigua de la obra griega; testimonio indirecto, NO el más antiguo acreditado",
+          "url": "https://searcharchives.bl.uk/catalog/040-002621534",
+          "linkType": "catálogo institucional de manuscritos",
+          "note": "La fecha corresponde a esta copia concreta; la tradición y el origen de la traducción son anteriores."
+        }
+      ]
+    },
+    {
+      "id": "ptolomeo-harmonica",
+      "author": "Claudio Ptolomeo",
+      "work": "Ἁρμονικά · Harmonica",
+      "language": "grc",
+      "note": "Testimonio temprano, no declaración de prioridad global entre todos los manuscritos de Harmonica.",
+      "witnesses": [
+        {
+          "institution": "Biblioteca Nazionale Marciana, Venecia",
+          "shelfmark": "gr. VI.010 (coll. 1300)",
+          "folios": "ff. 1r–60r",
+          "date": "s. XII ex.",
+          "type": "testimonio griego directo",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/70516/",
+          "linkType": "ficha Pinakes; identifica un registro de digitalización veneciana",
+          "note": "El mismo códice conserva obras de Porfirio y Aristides Quintiliano; mantener distintas las obras y los folios."
+        }
+      ]
+    },
+    {
+      "id": "nicomaco-aritmetica",
+      "author": "Nicómaco de Gerasa",
+      "work": "Ἀριθμητικὴ εἰσαγωγή · Introductio arithmetica",
+      "language": "grc",
+      "note": "Testimonio antiguo conservado; no adjudicarle sin revisión el rango de archetypus ni el de manuscrito más antiguo de todos.",
+      "witnesses": [
+        {
+          "institution": "Biblioteca Nacional de España, Madrid",
+          "shelfmark": "Mss/4678",
+          "folios": "ff. 4r–57v",
+          "date": "s. XI (ff. 4r–8v suplidos a finales del s. XIII)",
+          "type": "testimonio griego directo con escolios y figuras; copia compuesta",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/40155/",
+          "linkType": "ficha codicológica Pinakes",
+          "note": "La restitución posterior de los folios iniciales afecta el estado textual y debe consignarse."
+        }
+      ]
+    },
+    {
+      "id": "aristoteles-problemata",
+      "author": "Pseudo-Aristóteles / corpus aristotélico",
+      "work": "Προβλήματα · Problemata",
+      "language": "grc",
+      "note": "La atribución aristotélica es tradicional y la obra presenta carácter compilatorio. No confundirla con los Mechanica problemata pseudoaristotélicos.",
+      "witnesses": [
+        {
+          "institution": "Bibliothèque nationale de France, París",
+          "shelfmark": "Grec 2036",
+          "folios": "ff. 1r–178v",
+          "date": "s. X",
+          "type": "testimonio griego directo temprano",
+          "url": "https://pinakes.irht.cnrs.fr/notices/cote/51663/",
+          "linkType": "ficha codicológica Pinakes",
+          "note": "El mismo manuscrito también contiene De sublimitate atribuido a Pseudo-Longino, en ff. 178v–207v."
+        }
+      ]
+    },
+    {
+      "id": "boecio-institutione-musica",
+      "author": "Anicio Manlio Severino Boecio",
+      "work": "De institutione musica",
+      "language": "la",
+      "note": "Códice carolingio temprano con testimonio latino del tratado; no confundirlo con el De consolatione philosophiae.",
+      "witnesses": [
+        {
+          "institution": "Bibliothèque nationale de France, París",
+          "shelfmark": "Lat. 7200",
+          "folios": "ff. 1r–93v",
+          "date": "s. IX med. (atribución paleográfica en repertorios musicológicos)",
+          "type": "testimonio latino directo, con glosas",
+          "url": "https://gallica.bnf.fr/ark:/12148/btv1b9067035b",
+          "linkType": "facsímil digital Gallica (BnF)",
+          "note": "La edición y el testimonio manuscrito son objetos distintos; datos de datación cotejados con RISM y repertorios de manuscritos musicales."
+        }
+      ]
+    }
+  ]
+}
