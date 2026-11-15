@@ -22,21 +22,32 @@ code{overflow-wrap:anywhere}footer{border-top:1px solid #777;font-size:12px}</st
 <p id="timestamp" role="status">Consultando controles publicados…</p>
 <div class="grid" id="summary"></div>
 <h2>Verificación física en Cloudflare R2</h2><p id="remote">No hay informe físico publicado todavía.</p>
+<h2>Búsqueda léxica por OCR y pruebas de apertura</h2>
+<p id="lexical-audit">Consultando pruebas de búsqueda por página, raíz y visor…</p>
+<details><summary>Obras sin transcripción que sí admiten búsqueda OCR</summary>
+<p>El OCR ofrece localización por página; no es una edición crítica ni está alineado necesariamente por loci.</p>
+<ul id="ocr-index-books"></ul></details>
+<p id="ocr-pending">Comprobando obras que requieren una fuente textual verificable…</p>
 <h2>Límites y tareas pendientes</h2><p id="notes">La auditoría local no puede acreditar por sí sola que los enlaces remotos respondan o que un título haya sido cotejado con el interior de un libro.</p>
 <p><a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/workflows/bibliotheca-indexation-r2-audit.yml">Consultar auditorías automáticas y sus informes en GitHub</a></p>
 </main><footer>Vitruvius Digital Library · Transparencia de evidencia documental y ecdótica</footer>
 <script>
 (()=>{"use strict";
 const summary=document.getElementById("summary"),timestamp=document.getElementById("timestamp"),remote=document.getElementById("remote"),notes=document.getElementById("notes");
+const lexical=document.getElementById("lexical-audit"),pending=document.getElementById("ocr-pending"),ocrList=document.getElementById("ocr-index-books");
 const read=async path=>{const r=await fetch(path+"?v="+Date.now(),{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);return r.json()};
 const add=(name,value)=>{const card=document.createElement("article"),number=document.createElement("strong"),label=document.createElement("small");
  number.textContent=String(value);label.textContent=name;card.append(number,label);summary.append(card)};
 Promise.allSettled([
  read("data/r2/bibliotheca-indexation-status.json"),
- read("data/r2/r2-object-status.json")
+ read("data/r2/r2-object-status.json"),
+ read("data/r2/bibliotheca-ocr-coverage.json"),
+ read("data/r2/bibliotheca-lexical-live-audit.json")
 ]).then(results=>{
  const a=results[0].status==="fulfilled"?results[0].value:null;
  const b=results[1].status==="fulfilled"?results[1].value:null;
+ const o=results[2].status==="fulfilled"?results[2].value:null;
+ const l=results[3].status==="fulfilled"?results[3].value:null;
  if(a){
   const c=a.counts||{};
   timestamp.textContent="Último informe de catálogo: "+a.generated+" · "+(a.integrity||"sin dictamen");
@@ -49,6 +60,31 @@ Promise.allSettled([
   const c=b.counts||{};
   remote.textContent="Estado: "+b.status+" · objetos examinados: "+(c.objectsChecked??"no verificado")+" · presentes: "+(c.objectsPresent??"no verificado")+" · ausentes: "+(c.objectsMissing??"no verificado")+" · ediciones ausentes del índice: "+(c.editionsNotInRemoteIndex??"no verificado")+". "+(b.notes||"");
  }else remote.textContent="Aún no hay reporte físico de R2. La existencia de los objetos no ha sido certificada en este panel.";
+ if(o?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
+  const c=o.counts||{};
+  add("Sin transcripción, pero con índice OCR R2",c.withoutTextButWithR2OcrIndex??"—");
+  add("Sin transcripción ni índice OCR vinculado",c.withoutTextOrLinkedR2OcrIndex??"—");
+  for(const entry of o.ocrSearchableWithoutTranscription||[]){
+   const a=document.createElement("a"),li=document.createElement("li");
+   const reader=entry.facsimileReaders?.[0]?.reader;
+   if(!reader)continue;
+   a.href=reader;a.textContent=entry.author+" · "+entry.title;
+   li.append(a);ocrList.append(li);
+  }
+  pending.textContent="Faltan transcripciones verificadas en "+(c.withoutRegisteredText??"—")+
+   " fichas; "+(c.withoutTextButWithR2OcrIndex??"—")+" pueden buscarse por página OCR de R2 y "+
+   (c.withoutTextOrLinkedR2OcrIndex??"—")+" requieren incorporar texto o facsímil indexable.";
+ }else pending.textContent="Cobertura de OCR aún no publicada o no verificable.";
+ if(l?.schema==="vdl-bibliotheca-lexical-live-v1"){
+  const c=l.counts||{};
+  lexical.textContent="Control real: "+(c.testedEditions??"—")+" ediciones y "+
+   (c.testedWords??"—")+" palabras examinadas; "+(c.locatedPages??"—")+
+   " páginas localizadas; "+(c.errors??"—")+" errores; "+
+   (l.generated||"sin fecha")+". Estado: "+l.status+
+   ". Se trata de una muestra de raíces y páginas, no de lematización filológica completa.";
+  const link=document.createElement("a");link.href="data/r2/bibliotheca-lexical-live-audit.json";
+  link.textContent=" Ver informe y ediciones comprobadas";lexical.append(link);
+ }else lexical.textContent="Aún no existe una auditoría léxica de R2 publicada.";
 });
 })();
 </script></body></html>
