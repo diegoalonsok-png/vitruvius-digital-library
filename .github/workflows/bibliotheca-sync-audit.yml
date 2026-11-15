@@ -15,10 +15,11 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: bibliotheca-federada
+  group: vdl-classics-publication-main
   cancel-in-progress: false
 jobs:
   audit:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
@@ -28,6 +29,10 @@ jobs:
       R2_BUCKET: ${{ secrets.R2_BUCKET }}
     steps:
       - uses: actions/checkout@v4
+      - name: Sincronizar base de trabajo desde main
+        run: |
+          git fetch --quiet origin main
+          git checkout -B vdl-publication origin/main
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -59,7 +64,11 @@ jobs:
           pushed=false
           for i in 1 2 3 4 5; do
             if git pull --rebase -q origin main && git push -q origin HEAD:main; then pushed=true; break; fi
-            git rebase --abort || true
+            if test -d .git/rebase-merge || test -d .git/rebase-apply; then
+              git rebase --abort
+              echo "::error::Conflicto de publicación: no se sobrescriben metadatos de otra ejecución."
+              exit 1
+            fi
             sleep 6
           done
           test "$pushed" = true
