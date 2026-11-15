@@ -4,6 +4,8 @@ on:
     paths:
       - ".github/workflows/bibliotheca-sync-audit.yml"
       - "scripts/audit-bibliotheca-federada.mjs"
+      - "scripts/sync-bibliotheca-github-r2.py"
+      - "data/r2/vinculos-repertorio.json"
       - "scripts/audit-bibliotheca-r2-live.py"
       - "scripts/audit-r2-object-presence.py"
       - "scripts/sync-classics-coverage.py"
@@ -53,7 +55,7 @@ jobs:
           python scripts/cifras-corpus.py
           python scripts/sync-classics-coverage.py
       - name: Comprobar claves de objetos e IDs del índice R2
-        run: python scripts/audit-bibliotheca-r2-live.py
+        run: python scripts/audit-bibliotheca-r2-live.py --required
       - name: Verificar cada PDF y OCR catalogado por HEAD, SHA declarado y manifiesto
         run: python scripts/audit-r2-object-presence.py --required
       - name: Integridad de lectura y fusión semántica
