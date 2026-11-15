@@ -6,6 +6,7 @@ on:
       - '.github/workflows/import-rose-gutenberg-clean.yml'
       - 'scripts/import-rose-gutenberg-clean.py'
       - 'scripts/align-rose-clean-loci.py'
+      - 'scripts/audit-rose-dual-source.py'
 permissions:
   contents: write
 jobs:
@@ -21,11 +22,13 @@ jobs:
         run: python scripts/import-rose-gutenberg-clean.py
       - name: Align independent Rose transcription by locus and build semantic index
         run: python scripts/align-rose-clean-loci.py
+      - name: Compare independent Rose transcription against historical OCR without altering either
+        run: python scripts/audit-rose-dual-source.py
       - name: Commit new scholarly candidate data only
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/text/rose-1899-gutenberg-clean-candidate.json data/index/cotejo-rose-1899-gutenberg-v514-candidate.json data/text/rose-1899-loci-candidate.json data/index/rose-1899-semantic-candidate.json data/index/rose-1899-loci-alignment-audit.json
+          git add data/text/rose-1899-gutenberg-clean-candidate.json data/index/cotejo-rose-1899-gutenberg-v514-candidate.json data/text/rose-1899-loci-candidate.json data/index/rose-1899-semantic-candidate.json data/index/rose-1899-loci-alignment-audit.json data/index/rose-1899-dual-source-review.json
           if ! git diff --staged --quiet; then
             git commit -m "Add independent clean Rose 1899 corpus and preliminary V514 audit"
             git push
