@@ -245,12 +245,22 @@ def run():
         return
     indexed = {(e["workId"], e["language"]) for e in reg["entries"]}
     eligible = []
+    unresolved_mappings = []
+    urn_pattern = re.compile(
+        r"^(?:phi\\d{4}|tlg\\d{4}|stoa\\d{4})\\.(?:phi\\d{3}|tlg\\d{3}|stoa\\d{3}|abo\\d{3})$"
+    )
     for w in catalog["works"]:
         wid, lang = w["id"], w.get("language")
         links = mapping.get(wid, [])
         if lang not in ORIG or (wid, lang) in indexed:
             continue
         urns = tuple(link["obra"] for link in links)
+        if urns and not all(urn_pattern.fullmatch(urn) for urn in urns):
+            unresolved_mappings.append({
+                "workId": wid, "language": lang, "sourceUrns": list(urns),
+                "reason": "Identificador bibliográfico local o URN no normalizado; requiere identificación de edición TEI"
+            })
+            continue
         if len(urns) == 1 or (wid in COMPOSITE_WORKS and urns == COMPOSITE_WORKS[wid]):
             eligible.append((w, lang, urns))
     # Los títulos compuestos son una sola ficha, pero deben incorporar
@@ -431,6 +441,7 @@ def run():
             "indexedDistinctWorksNow": len({e["workId"] for e in reg["entries"]}) + (
                 len({x["workId"] for x in created}) if args.dry_run else 0),
             "sourceMissingOrIncompatible": unavailable_tei,
+            "sourceMappingsNeedingReview": unresolved_mappings,
             "extractionAndCapacityErrors": errors,
             "policy": "No publicar TEI incompleto, traducciones inventadas, OCR sin validar ni colaciones inferidas.",
         })
@@ -439,6 +450,8 @@ def run():
         "bytes": total_bytes, "siteBytesBefore": site_bytes, "availableBytes": capacity,
         "newTitles": [e["workId"] for e in created],
         "unavailableSourceCount": len(unavailable_tei),
+        "unresolvedMappingCount": len(unresolved_mappings),
+        "unresolvedMappingExamples": unresolved_mappings[:8],
         "unavailableSourceExamples": unavailable_tei[:10],
         "errors": errors[:20], "dryRun": args.dry_run,
     }, ensure_ascii=False))
