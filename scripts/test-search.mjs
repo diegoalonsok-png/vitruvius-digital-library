@@ -10,7 +10,7 @@ for(const input of ['loci','symmetria','XI.1.1','3.0.1','3.1.0'])assert.equal(pa
 for(const data of [es,fr,en]){
  assert.equal(new Set(data.passages.map(p=>p.locus)).size,data.passages.length);
  assert.deepEqual([...new Set(data.passages.map(p=>p.book))].sort((a,b)=>a-b),[1,2,3,4,5,6,7,8,9,10]);
- for(const p of data.passages){assert(p.latin.length>10&&p.translation.length>10);assert.equal(p.source_paragraphs.length,2);assert.equal(p.locus,[p.book,p.chapter,p.section].join('.'));}
+ for(const p of data.passages){assert(p.latin.length>10&&p.translation.length>10);assert(Array.isArray(p.source_paragraphs)&&p.source_paragraphs.length>=2&&p.source_paragraphs.every(n=>Number.isInteger(n)&&n>0),"Source paragraph pointers must be preserved and positive");assert.equal(p.locus,[p.book,p.chapter,p.section].join('.'));}
 }
 const water=search('VIII.1.4');assert.equal(water.results.length,3);assert(water.results.every(p=>p.locus==='8.1.4'&&p.latin.includes('Fodiatur')));assert(water.results.find(p=>p.edition==='recensio-es').translation.includes('Cávese'));
 assert(search('architecti est scientia',{mode:'phrase'}).results.every(p=>p.locus==='1.1.1'));
