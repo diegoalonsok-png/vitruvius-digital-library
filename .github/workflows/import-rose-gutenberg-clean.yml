@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/import-rose-gutenberg-clean.yml'
+      - 'scripts/import-rose-gutenberg-clean.py'
 permissions:
   contents: write
 jobs:
