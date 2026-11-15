@@ -29,6 +29,11 @@ def main():
     r2_by_id = {x["id"]: x for x in r2}
     assert len(r2_by_id) == len(r2), "Repeated R2 edition ID"
     mapping = links.get("mapa", {})
+    additional = links.get("obrasNuevas", [])
+    additional_ids = {r["r2"] for r in additional}
+    assert len(additional_ids) == len(additional), "Repeated additional work ID"
+    assert not (additional_ids & set(catalog_by_id)), "Additional work already exists in master catalogue"
+    assert additional_ids <= set(r2_by_id), "Additional work without R2 catalogue edition"
     unknown = sorted({w for ids in mapping.values() for w in ids} - set(catalog_by_id))
     assert not unknown, f"Unresolved R2 catalogue relations: {unknown[:12]}"
     dangling = sorted(set(mapping) - set(r2_by_id))
@@ -46,6 +51,7 @@ def main():
             local_by_work.setdefault(e["workId"], []).append({"language":e["language"],"path":e["path"]})
     by_work = {w:[] for w in catalog_by_id}
     unlinked = []
+    linked_edition_ids = set()
     for edition in r2:
         rid = edition["id"]
         relations = mapping.get(rid)
@@ -54,8 +60,11 @@ def main():
         if relations is None and edition.get("traduccionDe") in catalog_by_id:
             relations = [edition["traduccionDe"]]
         if not relations:
-            unlinked.append(rid)
+            # An additional catalogue work is not an orphaned edition.
+            if rid not in additional_ids:
+                unlinked.append(rid)
             continue
+        linked_edition_ids.add(rid)
         for work_id in relations:
             by_work[work_id].append({
                 "editionId":rid,
@@ -67,20 +76,39 @@ def main():
                 "sha256":edition.get("sha256"),
                 "objectStatus":"declared-in-r2-catalogue-not-live-probed",
             })
+    assert len(linked_edition_ids) + len(additional_ids) + len(unlinked) == len(r2), (
+        "R2 edition categories do not reconcile"
+    )
     inventory = {
         "schema":"vdl-federated-bibliotheca-inventory-v1",
         "generated":datetime.now(timezone.utc).isoformat(),
-        "method":"One work per master catalogue ID; R2 facsimiles are editions, not additional works. Local texts verified by file existence; R2 object URLs declared, not live-verified. Unresolved editions flagged without automatic merging.",
+        "method":"Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
         "counts":{
             "cataloguedWorks":len(catalog),
+            "additionalWorks":len(additional),
+            "totalDeclaredWorks":len(catalog)+len(additional),
             "r2EditionRecords":len(r2),
-            "r2LinkedEditionRecords":sum(len(v) for v in by_work.values()),
+            "r2LinkedEditionRecords":len(linked_edition_ids),
+            "r2WorkEditionRelations":sum(len(v) for v in by_work.values()),
+            "r2AdditionalEditionRecords":len(additional_ids),
             "r2UnlinkedEditionRecords":len(unlinked),
             "worksWithR2Edition":sum(bool(v) for v in by_work.values()),
             "worksWithLocalIndexedText":len(local_by_work),
             "worksWithDeclaredRemoteIndex":len(remote_by_work),
         },
         "unlinkedR2EditionIds":sorted(unlinked),
+        "additionalWorks":[{
+            "id":row["r2"],"author":row.get("autor"),"title":row.get("obra"),
+            "language":row.get("lengua"),"catalogue":"r2-additional-work",
+            "r2FacsimileEditions":[{
+                "editionId":row["r2"],
+                "pdf":r2_by_id[row["r2"]].get("pdf"),
+                "text":r2_by_id[row["r2"]].get("texto"),
+                "year":r2_by_id[row["r2"]].get("anio"),
+                "sha256":r2_by_id[row["r2"]].get("sha256"),
+                "objectStatus":"declared-in-r2-catalogue-not-live-probed"
+            }]
+        } for row in additional],
         "works":[{
             "id":w["id"],"author":w.get("author"),"title":w.get("title"),
             "catalogue":"github",
