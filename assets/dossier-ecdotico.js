@@ -37,11 +37,20 @@ function fPDF(meta,id){
  "recensio-fr":"documents/kurilo-recensio-fr.pdf","theory-en":"documents/kurilo-theory-en.pdf"})[id]
 }
 function passage(record,locus){return record?.passages?.find(x=>x.locus===locus)||null}
+const groupedV297={
+ "7.7.2":{anchor:"7.7.1",range:"7.7.1–7.7.3"},
+ "7.7.3":{anchor:"7.7.1",range:"7.7.1–7.7.3"},
+ "7.7.5":{anchor:"7.7.4",range:"7.7.4–7.7.5"}
+};
 function passagePanel(root,source,meta,locus,list){
  const grid=el("div",null,"dl-grid");
  for(let i=0;i<EDITIONS.length;i++){
-  const [id,heading,lang]=EDITIONS[i],record=source[i],row=passage(record,locus),article=el("article",null,"dl-source");
+  const [id,heading,lang]=EDITIONS[i],record=source[i],direct=passage(record,locus);
+  const group=!direct&&id==="theory-en"?groupedV297[locus]:null;
+  const row=direct||(group?passage(record,group.anchor):null);
+  const article=el("article",null,"dl-source");
   article.append(el("h4",heading));
+  if(group)article.append(el("p","Locus "+locus+" integrado en el bloque "+group.range+" de V297. Se muestra el pasaje completo del bloque; la división individual no figura en el DOCX original.","dl-muted"));
   if(row){
    const p=el("p",row.latin||"Sin latín digitalizado","dl-latin");p.lang="la";add(article,el("h5","Textus Latinus"),p);
    if(row.latin)list.push([heading+" · latín",row.latin]);
@@ -50,6 +59,8 @@ function passagePanel(root,source,meta,locus,list){
    if(row.translation)list.push([heading+" · traducción",row.translation]);
    const page=Object.entries(row.pdf_pages||{}).map(([key,val])=>key+" "+val).join(" · ");
    if(page)field(article,"Páginas en índice",page);
+   if(row.index_revision)field(article,"Reparación documental del índice",(row.index_revision.note||"")+(row.source_paragraphs?.length?" DOCX párrafos "+row.source_paragraphs.join(", "):""));
+   if((id==="theory-en"&&["8.1.6","9.8.15","9.praef.1","9.2.1"].includes(locus))||(id==="recensio-es"&&locus==="8.1.6"))link(article,"Consultar erratas y casos en revisión","errata-editionum.html#errata-list");
   }else article.append(el("p","Sin pasaje separado en el índice de esta edición.","dl-muted"));
   const ed=meta.editions?.find(x=>x.id===id);
   if(ed?.doi)link(article,"DOI "+ed.doi,"https://doi.org/"+ed.doi);
