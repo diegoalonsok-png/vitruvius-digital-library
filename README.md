@@ -76,8 +76,8 @@ Each of Diego A. Kurilo's three editorial works has a distinct, crawlable biblio
 
 | Edition | Academic record with PDF | Persistent identifier |
 | --- | --- | --- |
-| V514 · Latin–Spanish provisional recension | [Bibliographic record](documents/edicion-v514.html) | [DOI 10.5281/zenodo.23884757](https://doi.org/10.5281/zenodo.23884757) |
-| V554 · Latin–French provisional recension | [Notice bibliographique](documents/edicion-v554.html) | [DOI 10.5281/zenodo.23885110](https://doi.org/10.5281/zenodo.23885110) |
+| V514 · Latin–Spanish academic bilingual edition | [Bibliographic record](documents/edicion-v514.html) | [DOI 10.5281/zenodo.23884757](https://doi.org/10.5281/zenodo.23884757) |
+| V554 · Latin–French academic bilingual edition | [Notice bibliographique](documents/edicion-v554.html) | [DOI 10.5281/zenodo.23885110](https://doi.org/10.5281/zenodo.23885110) |
 | V297 · English-language reading and research edition | [Bibliographic record](documents/edicion-v297.html) | [DOI 10.5281/zenodo.23885404](https://doi.org/10.5281/zenodo.23885404) |
 
 **Project DOI:** [10.5281/zenodo.23868911](https://doi.org/10.5281/zenodo.23868911).
@@ -126,7 +126,7 @@ The Vitruvius Digital Library brings together a catalogue of manuscript witnesse
 
 The current searchable corpus includes three editions by Diego Kurilo (Latin–Spanish V514, Latin–French V554 and Latin–English V297). Historical facsimiles are identified with their holding institutions and source links. Catalogue inclusion must **not** be interpreted as a new manuscript collation, a verified transcription of every historical witness, or institutional endorsement.
 
-**Editorial approach:** the editor describes his work as a bilingual reading edition with a **selective** critical apparatus. The Latin base text follows Fritz Krohn (1912), with Rose (1899) and other scholarship consulted as described in the editorial principles. Automated indexing and text alignment are research aids, not substitutes for manuscript verification or peer review.
+**Editorial approach:** the editions provide bilingual scholarly texts, commentary and a critical apparatus. The Latin base text follows Fritz Krohn (1912), with Rose (1899) and other scholarship consulted as described in the editorial principles. Automated indexing and text alignment are research aids, not substitutes for manuscript verification or peer review.
 
 **Current limitations (November 2026):**
 - Exhaustive end-to-end browser testing of all search, PDF/IIIF and export workflows remains outstanding.
@@ -145,7 +145,7 @@ Biblioteca digital académica independiente de acceso gratuito, dedicada a los m
 
 Su corpus indexado incluye tres ediciones de Diego A. Kurilo (V514, V554 y V297), con búsquedas por términos y *loci*. Los facsímiles históricos conservan la atribución de procedencia. La presencia de un documento en el catálogo **no certifica** una colación directa de manuscritos ni supone el aval de las instituciones depositarias.
 
-El autor caracteriza sus ediciones como **ediciones bilingües de lectura con aparato crítico selectivo**, no como nuevas recensiones exhaustivas de toda la tradición manuscrita. Las alineaciones automáticas y los índices deben verificarse antes de utilizarse como prueba de variantes textuales.
+Las ediciones V514 y V554 presentan **texto latino, traducción bilingüe, comentarios y aparato crítico**. El alcance documental de cada cotejo se identifica en los registros y pasajes correspondientes. Las alineaciones automáticas y los índices deben verificarse antes de utilizarse como prueba de variantes textuales.
 
 **Pendientes conocidos:** pruebas integrales de los buscadores y visores; finalización y evaluación de la búsqueda semántica multilingüe; revisión de fichas bibliográficas y asociaciones de notas críticas; verificación de metadatos editoriales e ISBN de cada edición.
 
