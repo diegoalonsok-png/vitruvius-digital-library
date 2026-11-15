@@ -111,7 +111,7 @@ body.ab-custom-type main :is(p,li,blockquote,dd,dt,td,th,.ab-autor-body):not([la
 </div>
 <header><div class="ab-eyebrow">VITRVVIVS · DE ARCHITECTVRA · EDITIO DIGITALIS</div><h1>Apparatus criticus</h1>
 <p class="ab-sub">Lectura bilingüe y aparato textual de presentación concisa, <strong>inspirada en la disposición editorial de la Collection Budé</strong>. Esta interfaz es una adaptación independiente de Vitruvius Digital Library; no reproduce una edición Budé ni representa una colaboración o aval de Les Belles Lettres.</p></header>
-<div class="ab-notice">El texto latino y la traducción proceden de las ediciones Kurilo identificadas en el lector. Sus notas y aparatos conservan su procedencia. El registro de Rose distingue las entradas cotejadas con el impreso de las pendientes; los extractos OCR históricos de Rose y Krohn conservan su estado de candidatos. Las lecturas manuscritas citadas por esos editores son testimonios indirectos y se distinguen del cotejo directo de H.</div>
+<div class="ab-notice"><strong>Filiación textual de las tres ediciones Kurilo:</strong> V514 (castellano), V554 (francés) y V297 (inglés) están basadas principalmente en la edición crítica latina de Fritz Krohn (1912) y parcialmente en la de Valentin Rose (1899). Las traducciones, notas y decisiones editoriales pertenecen a Diego Kurilo. Esta declaración de fuentes no equivale a un cotejo paleográfico directo.<br><br>El texto latino y la traducción proceden de las ediciones Kurilo identificadas en el lector. Sus notas y aparatos conservan su procedencia. El registro de Rose distingue las entradas cotejadas con el impreso de las pendientes; los extractos OCR históricos de Rose y Krohn conservan su estado de candidatos. Las lecturas manuscritas citadas por esos editores son testimonios indirectos y se distinguen del cotejo directo de H.</div>
 <form id="controls" class="ab-tools">
 <div class="ab-locus-picker" role="group" aria-label="Elegir locus por libro, capítulo y sección">
 <label>Libro<select id="pick-book" aria-label="Libro de Vitruvio"></select></label>
@@ -237,6 +237,7 @@ body.ab-custom-type main :is(p,li,blockquote,dd,dt,td,th,.ab-autor-body):not([la
 <div class="ab-actions"><button type="button" id="copy">Copiar referencia</button><button type="button" id="print">Imprimir ficha</button><a id="reader-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Abrir lector completo</a><a href="protocolo-verificacion-cientifica.html">Protocolo científico</a></div>
 </section>
 <section id="vdl-edition-references" aria-label="Referencias bibliográficas de las ediciones de Diego Kurilo"></section>
+<section id="vdl-apparatus-cite" aria-label="Datos bibliográficos y citas por locus"></section>
 </main>
 <script defer src="assets/apparatus-reading-order.js?v=20261115-latin-first-v1"></script>
 <script src="assets/apparatus-locus-search.js?v=20261115-latin-v7"></script>
@@ -618,4 +619,4 @@ apply();
  }catch(e){set("#status","No se pudo cargar el aparato: "+e.message+". El lector no sustituye los datos que faltan por lecturas supuestas.")}
 })();
 })();
-</script><script defer src="assets/global-language.js?v=20261115-apparatus-locale"></script><script defer src="assets/page-autotranslate.js?v=20261115-apparatus-locale"></script><script defer src="assets/apparatus-bude-authorial.js?v=20261113-loci-concepts-v1"></script><script defer src="assets/edition-references.js?v=20261114-1"></script><script defer src="assets/codex-h-concordance.js?v=20261114-bude-h"></script><script defer src="assets/apparatus-bude-h.js?v=20261115-h-collatio-v4"></script><script defer src="assets/source-critical-register.js?v=20261115-source-checks"></script></body></html>
+</script><script defer src="assets/global-language.js?v=20261115-apparatus-locale"></script><script defer src="assets/page-autotranslate.js?v=20261115-apparatus-locale"></script><script defer src="assets/apparatus-bude-authorial.js?v=20261113-loci-concepts-v1"></script><script defer src="assets/edition-references.js?v=20261114-1"></script><script defer src="assets/codex-h-concordance.js?v=20261114-bude-h"></script><script defer src="assets/apparatus-bude-h.js?v=20261115-h-collatio-v4"></script><script defer src="assets/source-critical-register.js?v=20261115-source-checks"></script><script defer src="assets/apparatus-cite-tools.js?v=20261115-1"></script></body></html>
