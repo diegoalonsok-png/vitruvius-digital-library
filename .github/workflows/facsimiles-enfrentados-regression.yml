@@ -1,0 +1,45 @@
+name: Visor de facsímiles enfrentados · regresión
+on:
+  pull_request:
+    paths:
+      - 'buscador-facsimiles-clasicos.html'
+      - 'assets/facsimile-facing-reader.mjs'
+      - 'assets/facsimile-facing-reader.css'
+      - 'assets/academic-inline-translation.js'
+      - 'assets/modern-edition-parallel-core.mjs'
+      - 'scripts/test-facsimile-facing-reader.mjs'
+      - 'scripts/test-visor-facsimiles-r2.mjs'
+      - '.github/workflows/facsimiles-enfrentados-regression.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'buscador-facsimiles-clasicos.html'
+      - 'assets/facsimile-facing-reader.mjs'
+      - 'assets/facsimile-facing-reader.css'
+      - 'assets/academic-inline-translation.js'
+      - 'assets/modern-edition-parallel-core.mjs'
+      - 'scripts/test-facsimile-facing-reader.mjs'
+      - '.github/workflows/facsimiles-enfrentados-regression.yml'
+permissions:
+  contents: read
+jobs:
+  visor:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar dependencias del validador local
+        run: npm install --ignore-scripts --no-package-lock
+      - name: Sintaxis de los módulos y prueba
+        run: |
+          node --check assets/facsimile-facing-reader.mjs
+          node --check scripts/test-facsimile-facing-reader.mjs
+      - name: Verificar identidad PDF/OCR, traducción y sincronización
+        run: node scripts/test-facsimile-facing-reader.mjs
+      - name: Preservar lectura y búsqueda de facsímiles R2
+        run: node scripts/test-visor-facsimiles-r2.mjs
