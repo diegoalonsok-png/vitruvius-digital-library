@@ -65,10 +65,40 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 .ab-autor-note{border-bottom:1px solid var(--ab-rule);padding:15px 5px}.ab-autor-note h3{font:600 14px/1.5 system-ui;margin:0 0 5px}.ab-autor-note .ab-autor-body{font:16px/1.7 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}.ab-autor-level,.ab-autor-detail{font:12px/1.6 system-ui;color:var(--ab-muted)}.ab-autor-links{display:flex;gap:14px;flex-wrap:wrap;font:12px system-ui}.ab-autor-note details{padding:5px 0}.ab-autor-note summary{cursor:pointer;font:12px system-ui}
 
 .ab-source-entry{padding:14px 0;border-bottom:1px solid var(--ab-rule)}.ab-source-entry h4{font:600 14px/1.6 system-ui;margin:0}.ab-critical-reading{font:18px/1.7 Georgia,serif;overflow-wrap:anywhere}.ab-source-links{font:13px/1.6 system-ui}
+
+/* Lexicon top-right controls for the entire scholarly page, not the comparison panels. */
+.ab-top-controls{position:relative;display:flex;justify-content:flex-end;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 15px;z-index:101;font:600 14px system-ui}
+.ab-top-controls>button,.ab-top-controls>select,.ab-top-controls>details>summary{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;box-sizing:border-box;padding:9px 14px;background:#26282d;color:#f7f7f8;border:2px solid #757982;border-radius:15px;font:600 15px system-ui;cursor:pointer;white-space:nowrap}
+.ab-top-controls>button:hover,.ab-top-controls>select:hover,.ab-top-controls>details>summary:hover{background:#363941}
+.ab-top-controls select{min-width:91px}.ab-top-controls details{position:relative}.ab-top-controls details>summary{list-style:none}.ab-top-controls details>summary::-webkit-details-marker{display:none}
+.ab-top-controls :is(button,select,summary,input):focus-visible{outline:3px solid #d6ac5e;outline-offset:2px}
+.ab-top-panel{position:absolute;top:56px;right:0;width:235px;padding:14px;background:#26282d;border:1px solid #858995;border-radius:12px;box-shadow:0 12px 32px #0005;color:#f7f7f8;z-index:104}
+.ab-top-panel .ab-swatch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:8px 0 12px}
+.ab-top-panel button{height:39px;width:39px;border-radius:50%;border:2px solid #b2b4bb;cursor:pointer}.ab-top-panel button[aria-pressed=true]{outline:3px solid #f0cd75;outline-offset:2px}
+.ab-top-panel label{display:flex;gap:8px;align-items:center;margin:8px 0;font-size:13px}.ab-top-panel input[type=color]{width:45px;height:34px;border:0;background:none;cursor:pointer}
+.ab-top-controls .ab-type-panel{width:205px}.ab-top-controls .ab-type-panel select{width:100%;padding:8px;margin-top:6px}
+body.ab-page-dark{--ab-bg:#171b22;--ab-paper:#242a33;--ab-ink:#ebedf0;--ab-muted:#c2c6ce;--ab-rule:#64707d;--ab-accent:#d2b27a}
+body.ab-page-dark .ab-notice{background:#2b3039}body.ab-page-dark :is(.ab-tools input,.ab-tools select,.ab-tools button,.ab-compare-appearance,.ab-latin-search,.ab-compare-appearance button,.ab-compare-appearance select){background:#242a33;color:#ebedf0;border-color:#657080}
+body.ab-page-dark .ab-compare article{background:var(--compare-paper);color:var(--compare-ink)}
+body.ab-page-dark a{color:#b8d7ff}
+body.ab-page-tint{background:var(--ab-bg)!important}
+body.ab-page-tint main{background:transparent}
+body.ab-page-tint .ab-notice{background:var(--ab-paper)}
+body.ab-page-tint :is(.ab-leaf,.ab-latin-search,.ab-compare-appearance){background:var(--ab-paper)}
+body.ab-page-tint :is(.ab-tools input,.ab-tools select,.ab-tools button){background:var(--ab-paper);color:var(--ab-ink)}
+body.ab-page-tint .ab-compare article{background:var(--compare-paper)}
+body.ab-custom-type main :is(p,li,blockquote,dd,dt,td,th,.ab-autor-body):not([lang=la]):not([lang=grc]){font-family:var(--ab-page-font)!important}
+@media(max-width:700px){.ab-top-controls{gap:5px}.ab-top-controls>button,.ab-top-controls>select,.ab-top-controls>details>summary{padding:8px;min-height:41px;border-radius:10px;font-size:13px}.ab-top-panel{right:-5px}}
 </style><link rel="stylesheet" href="assets/edition-references.css?v=20261114-1">  <script src="assets/analytics-config.js" defer></script>
   <script src="assets/analytics.js" defer></script>
 </head><body><main>
 <nav class="ab-nav" aria-label="Navegación académica"><a href="index.html">Biblioteca</a><a href="aparato-critico.html">Aparato autoral</a><a href="aparato-comparativo.html#bude-unit">Aparato comparativo selectivo · H/Krohn/Rose/Kurilo</a><a href="cobertura-aparato-critico.html">Mapa y dossier por locus</a><a href="scriptorium.html">Scriptorium</a><a href="indices-locorum.html?index=greek">Index Graecus · buscar pasajes griegos</a><a href="como-citar.html">Cómo citar</a></nav>
+<div class="ab-top-controls" role="toolbar" aria-label="Lexicon · controles de página">
+<details id="ab-page-palette"><summary aria-label="Cambiar color de fondo" title="Cambiar color de fondo">◉ <span id="ab-bg-label">Background</span></summary><div class="ab-top-panel"><strong id="ab-bg-panel-label">Color de fondo</strong><div class="ab-swatch-grid" id="ab-bg-swatches"></div><label><span id="ab-custom-color-label">Color personalizado</span><input type="color" id="ab-bg-custom" value="#f8f6f0"></label><button type="button" id="ab-bg-reset" style="width:auto;height:auto;border-radius:8px;padding:7px 12px">Restablecer</button></div></details>
+<select id="ui-language" aria-label="Idioma de la interfaz"><option value="es">ES</option><option value="en">EN</option><option value="fr">FR</option></select>
+<button type="button" id="ab-page-theme" aria-label="Alternar tema claro y oscuro" title="Tema claro y oscuro">☼</button>
+<details id="ab-page-type"><summary aria-label="Tipografía de la página" title="Tipografía de la página">Aa</summary><div class="ab-top-panel ab-type-panel"><label><span id="ab-type-label">Tipografía</span><select id="ab-page-font"><option value="original">Original</option><option value="georgia">Georgia</option><option value="palatino">Palatino</option><option value="arial">Arial</option></select></label></div></details>
+</div>
 <header><div class="ab-eyebrow">VITRVVIVS · DE ARCHITECTVRA · EDITIO DIGITALIS</div><h1>Apparatus criticus</h1>
 <p class="ab-sub">Lectura bilingüe y aparato textual de presentación concisa, <strong>inspirada en la disposición editorial de la Collection Budé</strong>. Esta interfaz es una adaptación independiente de Vitruvius Digital Library; no reproduce una edición Budé ni representa una colaboración o aval de Les Belles Lettres.</p></header>
 <div class="ab-notice">El texto latino y la traducción proceden de las ediciones Kurilo identificadas en el lector. Sus notas y aparatos conservan su procedencia. El registro de Rose distingue las entradas cotejadas con el impreso de las pendientes; los extractos OCR históricos de Rose y Krohn conservan su estado de candidatos. Las lecturas manuscritas citadas por esos editores son testimonios indirectos y se distinguen del cotejo directo de H.</div>
@@ -201,6 +231,62 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <script defer src="assets/apparatus-reading-order.js?v=20261115-latin-first-v1"></script>
 <script src="assets/apparatus-locus-search.js?v=20261115-latin-v7"></script>
 <script>
+
+// Top-right Lexicon toolbar: page-wide background, locale, day/night and typography.
+(()=>{
+const root=document.body,lang=document.querySelector("#ui-language"),dark=document.querySelector("#ab-page-theme"),font=document.querySelector("#ab-page-font"),custom=document.querySelector("#ab-bg-custom"),swatches=document.querySelector("#ab-bg-swatches");
+const key="vdl:apparatus:page-appearance-v2",langKey="vitruvius-ui-lang";
+const colors=["#f8f6f0","#ffffff","#f1e3ca","#e1eaf4","#d8e7e5","#dfe1ec","#f3e7e7","#242a33"];
+const fonts={original:"",georgia:"Georgia,serif",palatino:"Palatino,Georgia,serif",arial:"Arial,system-ui,sans-serif"};
+let state={color:"#f8f6f0",theme:"light",font:"original"};
+try{const a=JSON.parse(localStorage.getItem(key)||"null");if(a&&typeof a==="object")state={...state,...a}}catch{}
+try{const selected=localStorage.getItem(langKey);if(["es","en","fr"].includes(selected))lang.value=selected}catch{}
+const hex=v=>/^#[a-f0-9]{6}$/i.test(v);
+function render(){
+ if(!hex(state.color))state.color="#f8f6f0";
+ if(!["light","dark"].includes(state.theme))state.theme="light";
+ if(!(state.font in fonts))state.font="original";
+ root.classList.toggle("ab-page-dark",state.theme==="dark");
+ root.classList.add("ab-page-tint");
+ root.style.setProperty("--ab-bg",state.theme==="dark"?"#171b22":state.color);
+ root.style.setProperty("--ab-paper",state.theme==="dark"?"#242a33":state.color);
+ root.style.setProperty("--ab-ink",state.theme==="dark"?"#ebedf0":"#29251e");
+ root.style.setProperty("--ab-muted",state.theme==="dark"?"#c2c6ce":"#655f53");
+ root.style.setProperty("--ab-rule",state.theme==="dark"?"#64707d":"#b8af9e");
+ root.style.setProperty("--ab-accent",state.theme==="dark"?"#d2b27a":"#775d3b");
+ root.classList.toggle("ab-custom-type",state.font!=="original");
+ root.style.setProperty("--ab-page-font",fonts[state.font]||"Georgia,serif");
+ document.documentElement.dataset.theme=state.theme;
+ custom.value=state.color;font.value=state.font;
+ dark.textContent=state.theme==="dark"?"☾":"☼";
+ for(const el of swatches.children)el.setAttribute("aria-pressed",String(el.dataset.color===state.color));
+ try{localStorage.setItem(key,JSON.stringify(state))}catch{}
+}
+for(const color of colors){
+ const b=document.createElement("button");b.type="button";b.style.backgroundColor=color;b.dataset.color=color;b.title=color;b.setAttribute("aria-label","Fondo "+color);
+ b.addEventListener("click",()=>{state.color=color;state.theme=color==="#242a33"?"dark":"light";render()});
+ swatches.append(b);
+}
+custom.addEventListener("input",()=>{state.color=custom.value;state.theme="light";render()});
+dark.addEventListener("click",()=>{state.theme=state.theme==="light"?"dark":"light";render()});
+font.addEventListener("change",()=>{state.font=font.value;render()});
+document.querySelector("#ab-bg-reset").addEventListener("click",()=>{state.color="#f8f6f0";state.theme="light";render()});
+const title={es:["Color de fondo","Color personalizado","Restablecer","Tipografía"],en:["Background color","Custom color","Reset","Typeface"],fr:["Couleur de fond","Couleur personnalisée","Réinitialiser","Typographie"]};
+const locale=code=>{
+ const words=title[code]||title.es;
+ document.querySelector("#ab-bg-panel-label").textContent=words[0];
+ document.querySelector("#ab-custom-color-label").textContent=words[1];
+ document.querySelector("#ab-bg-reset").textContent=words[2];
+ document.querySelector("#ab-type-label").textContent=words[3];
+ document.documentElement.lang=code;
+ try{localStorage.setItem(langKey,code)}catch{}
+ document.dispatchEvent(new CustomEvent("vitruvius:language-changed",{detail:{language:code,origin:"apparatus-top-controls"}}));
+};
+lang.addEventListener("change",()=>locale(lang.value));
+document.addEventListener("vitruvius:language-changed",e=>{if(e.detail?.origin!=="apparatus-top-controls"&&["es","en","fr"].includes(e.detail?.language))lang.value=e.detail.language});
+render();locale(lang.value);
+})();
+
 (()=>{"use strict";
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
 const pUrl=new URL(location.href),params=new URLSearchParams(pUrl.search);
@@ -456,4 +542,4 @@ apply();
  }catch(e){set("#status","No se pudo cargar el aparato: "+e.message+". El lector no sustituye los datos que faltan por lecturas supuestas.")}
 })();
 })();
-</script><script defer src="assets/apparatus-bude-authorial.js?v=20261113-loci-concepts-v1"></script><script defer src="assets/edition-references.js?v=20261114-1"></script><script defer src="assets/codex-h-concordance.js?v=20261114-bude-h"></script><script defer src="assets/apparatus-bude-h.js?v=20261114-1"></script><script defer src="assets/source-critical-register.js?v=20261115-source-checks"></script></body></html>
+</script><script defer src="assets/global-language.js?v=20261115-apparatus-locale"></script><script defer src="assets/page-autotranslate.js?v=20261115-apparatus-locale"></script><script defer src="assets/apparatus-bude-authorial.js?v=20261113-loci-concepts-v1"></script><script defer src="assets/edition-references.js?v=20261114-1"></script><script defer src="assets/codex-h-concordance.js?v=20261114-bude-h"></script><script defer src="assets/apparatus-bude-h.js?v=20261114-1"></script><script defer src="assets/source-critical-register.js?v=20261115-source-checks"></script></body></html>
