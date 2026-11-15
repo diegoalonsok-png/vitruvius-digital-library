@@ -1,0 +1,75 @@
+name: Bibliotheca — sincronización y auditoría GitHub / R2
+on:
+  push:
+    paths:
+      - ".github/workflows/bibliotheca-sync-audit.yml"
+      - "scripts/audit-bibliotheca-federada.mjs"
+      - "scripts/audit-bibliotheca-r2-live.py"
+      - "data/r2/catalogo-clasicos-r2.json"
+      - "data/r2/corpus-manifest.json"
+      - "data/classics-corpus/search-registry.json"
+      - "data/bibliotheca-graeca-latina-I-bce-I-ce.json"
+  schedule:
+    - cron: "35 10 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: bibliotheca-federada
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar cliente de almacenamiento
+        run: python -m pip install --quiet "boto3>=1.36"
+      - name: Identidad catalográfica y sincronización de obras y versiones
+        run: |
+          node scripts/audit-bibliotheca-federada.mjs --strict
+          python scripts/sync-bibliotheca-github-r2.py
+          python scripts/cifras-corpus.py
+      - name: Comprobar claves de objetos e IDs del índice R2
+        run: python scripts/audit-bibliotheca-r2-live.py
+      - name: Integridad de lectura y fusión semántica
+        run: |
+          node scripts/test-r2-indice-fusion.mjs
+          node scripts/test-r2-indice-clasicos.mjs
+          node scripts/test-classics-integration.mjs
+          node scripts/test-early-witness-reading.mjs
+      - name: Publicar el panel de estado con evidencias
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/r2/bibliotheca-panel-sync.json data/r2/bibliotheca-r2-live-audit.json data/r2/bibliotheca-inventario-unificado.json data/cifras-corpus.json
+          if git diff --cached --quiet; then echo "Sin cambios en el panel"; exit 0; fi
+          git commit -m "Bibliotheca: sincronizar inventario y prueba R2"
+          pushed=false
+          for i in 1 2 3 4 5; do
+            if git pull --rebase -q origin main && git push -q origin HEAD:main; then pushed=true; break; fi
+            git rebase --abort || true
+            sleep 6
+          done
+          test "$pushed" = true
+      - name: Archivar diagnóstico
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-auditoria-federada
+          path: |
+            data/r2/bibliotheca-panel-sync.json
+            data/r2/bibliotheca-r2-live-audit.json
+            data/r2/bibliotheca-inventario-unificado.json
+          if-no-files-found: ignore
