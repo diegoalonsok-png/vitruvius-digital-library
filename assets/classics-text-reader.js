@@ -575,6 +575,12 @@ async function load(language,requestId){
  const chosen=at>=0?at:0;setQuery(input.value||"");
  if(search){renderSearch();const first=results[0]?.i;const anchored=results.some(x=>x.i===at);select(anchored?at:Number.isInteger(first)?first:chosen)}
  else{renderSearch();select(chosen)}
+ if(locus&&at<0){
+  // Do not silently present the first passage as the requested citation.
+  const message="El locus solicitado no coincide con una unidad única de esta edición: "+locus+". Se muestra el primer pasaje disponible; compruebe el índice y la referencia CTS.";
+  if($("locus-status"))$("locus-status").textContent=message;
+  if($("method-note"))$("method-note").textContent=message;
+ }
  if(window.parent!==window)window.parent.postMessage({type:"vitruvia-parallel-ready",work,lang:language,count:data.passages.length},"*");
 }
 async function swap(lang){
