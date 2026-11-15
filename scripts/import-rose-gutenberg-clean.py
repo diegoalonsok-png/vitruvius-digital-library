@@ -24,12 +24,12 @@ def main():
     # The Gutenberg file contains the original page-and-apparatus layout first,
     # then the independent uninterrupted plain-text edition, followed by Faventinus.
     # NEVER ingest the first apparatus-bearing printing or the later Faventinus text.
-    normalized=source.replace("\\r\\n","\\n")
-    anchors=list(re.finditer(r"(?m)^VITRUVII DE ARCHITECTURA\\s*\\nLIBER PRIMUS\\.\\s*$",normalized))
+    normalized=source.replace("\r\n","\n")
+    anchors=list(re.finditer(r"(?m)^VITRUVII DE ARCHITECTURA[ \t]*\nLIBER PRIMUS\\.[ \t]*$",normalized))
     anchor=anchors[-1] if anchors else None
     if not anchor:raise ValueError("Plain-text Rose section start not found")
     vitruvius=normalized[anchor.start():]
-    boundary=re.search(r"(?m)^M\\. CETI FAVENTINI\\s*$",vitruvius)
+    boundary=re.search(r"(?m)^M\\. CETI FAVENTINI[ \t]*$",vitruvius)
     if not boundary:raise ValueError("Faventinus boundary not found; refusing mixed corpus")
     source=vitruvius[:boundary.start()]
     pattern=re.compile(r"(?m)^LIBER\s+("+"|".join(NUMERALS)+r")\.$",re.I)
