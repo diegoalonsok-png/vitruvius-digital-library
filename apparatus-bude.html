@@ -106,6 +106,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 </div>
 <p class="ab-sub">Lista de pasajes donde aparece el término en el latín V514, con formas latinas equivalentes controladas. Cada resultado abre directamente su locus. Las coincidencias no constituyen variantes críticas.</p>
 <p id="ab-search-status" role="status" aria-live="polite">Preparando índice latino…</p>
+<p id="ab-synchronized-locus" role="status" aria-live="polite" style="font:600 14px/1.6 system-ui;margin:7px 0"></p>
 <div id="ab-search-results"></div>
 <button type="button" id="ab-search-more" hidden>Mostrar más resultados</button>
 </section>
@@ -179,7 +180,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 </section>
 <section id="vdl-edition-references" aria-label="Referencias bibliográficas de las ediciones de Diego Kurilo"></section>
 </main>
-<script src="assets/apparatus-locus-search.js?v=20261115-highlights-v4"></script>
+<script src="assets/apparatus-locus-search.js?v=20261115-sync-v5"></script>
 <script>
 (()=>{"use strict";
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
