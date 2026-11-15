@@ -152,3 +152,19 @@ html[data-theme="light"] body #bibliotheca-concordance .bws-concordance-hit a{co
 html[data-theme="light"] body #bibliotheca-concordance .bws-concordance-meta{color:#485761!important}
 @media(max-width:900px){#bibliotheca-concordance .bws-concordance-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){#bibliotheca-concordance{padding:14px}#bibliotheca-concordance .bws-concordance-controls{grid-template-columns:1fr}}
+
+
+/* Compact academic catalogue. Advanced choices remain accessible by disclosure. */
+#bibliotheca-work-search .bws-advanced{margin:7px 0 6px;border:1px solid #686b70;border-radius:6px}
+#bibliotheca-work-search .bws-advanced>summary{cursor:pointer;padding:9px 12px;color:#e1c38c;font:600 12px/1.5 system-ui,sans-serif}
+#bibliotheca-work-search .bws-advanced[open]{padding-bottom:10px}
+#bibliotheca-work-search .bws-advanced> :not(summary){margin-left:11px;margin-right:11px}
+#bibliotheca-work-search .bws-alphabet{margin-top:8px;margin-bottom:8px}
+#bibliotheca-work-search .bws-intro{margin:0 0 8px}
+#front-classical-works{width:100%;margin:12px auto}
+#front-classical-works #bibliotheca-work-search{margin:8px 0;padding:13px 16px;border-radius:9px}
+#front-classical-works #bibliotheca-work-search .bws-intro{font-size:12px;line-height:1.5}
+#front-classical-works #bibliotheca-work-search .bws-results{max-height:300px}
+#front-classical-works #bibliotheca-work-search .bws-help:last-child{display:none}
+#bibliotheca-work-search .bws-advanced :is(select,input){font-size:14px}
+@media(max-width:600px){#front-classical-works #bibliotheca-work-search{padding:12px}#bibliotheca-work-search .bws-advanced>summary{font-size:12px}}
