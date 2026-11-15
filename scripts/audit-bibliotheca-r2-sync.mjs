@@ -25,9 +25,15 @@ const result={
   pdfOcrMissing:status.counts?.objectsMissing??null,
   claimedPublishedIndex:indexed.publicado||null,
   remoteChecked:false,
+  cachedEvidenceGenerated:panel.r2LiveEvidence?.generated||null,
+  cachedIndexWithoutCatalogue:Array.isArray(panel.r2LiveEvidence?.indexExtraIds)?[...new Set(panel.r2LiveEvidence.indexExtraIds)].sort():[],
   warnings:[]
 };
 if(duplicateIds.length)result.warnings.push("IDs repetidos en catálogo: "+duplicateIds.join(", "));
+if(result.cachedIndexWithoutCatalogue.length){
+ result.warnings.push("Índice sin ficha según última evidencia guardada ("+(result.cachedEvidenceGenerated||"sin fecha")+"): "+result.cachedIndexWithoutCatalogue.join(", "));
+ result.warnings.push("Esta evidencia guardada NO equivale a comprobación remota en esta ejecución");
+}
 if(panel.summary?.r2PdfEditions!==ids.size)result.warnings.push("Panel desactualizado respecto al catálogo GitHub");
 if(indexed.obras!==ids.size)result.warnings.push("Diferencia entre índice R2 y catálogo: "+indexed.obras+" frente a "+ids.size);
 if(status.counts?.objectsMissing>0)result.warnings.push("El último control R2 registra objetos faltantes");
@@ -44,6 +50,7 @@ if(process.argv.includes("--remote")){
   result.indexedWithoutCatalogue=[...remoteIds].filter(id=>!ids.has(id)).sort();
   result.catalogueWithoutIndex=[...ids].filter(id=>!remoteIds.has(id)).sort();
   result.remoteChecked=true;
+  result.cachedIndexWithoutCatalogue=result.cachedIndexWithoutCatalogue.filter(id=>!remoteIds.has(id)||!ids.has(id));
   if(result.duplicateRemoteIds.length)result.warnings.push("IDs repetidos dentro del índice R2: "+[...new Set(result.duplicateRemoteIds)].join(", "));
   if(result.indexedWithoutCatalogue.length)result.warnings.push("Índice sin ficha: "+result.indexedWithoutCatalogue.join(", "));
   if(result.catalogueWithoutIndex.length)result.warnings.push("Ficha sin índice: "+result.catalogueWithoutIndex.join(", "));
@@ -53,6 +60,6 @@ if(process.argv.includes("--remote")){
 console.log(JSON.stringify(result,null,2));
 // Un índice huérfano no es una obra inexistente: informar y exigir revisión,
  // sin intentar borrar entradas automáticamente.
-if(duplicateIds.length||result.duplicateRemoteIds?.length||
+if(duplicateIds.length||result.cachedIndexWithoutCatalogue.length||result.duplicateRemoteIds?.length||
  result.catalogueWithoutIndex.length||result.indexedWithoutCatalogue.length||
  result.pdfOcrMissing>0)process.exitCode=1;
