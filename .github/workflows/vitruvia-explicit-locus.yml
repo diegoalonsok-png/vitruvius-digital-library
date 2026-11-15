@@ -1,0 +1,34 @@
+name: Vitruvia · exactitud de loci explícitos
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-research-engine.js'
+      - 'assets/vitruvia-search.js'
+      - 'scripts/test-vitruvia-prefixed-locus.mjs'
+      - '.github/workflows/vitruvia-explicit-locus.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/vitruvia-research-engine.js'
+      - 'assets/vitruvia-search.js'
+      - 'scripts/test-vitruvia-prefixed-locus.mjs'
+      - '.github/workflows/vitruvia-explicit-locus.yml'
+permissions:
+  contents: read
+jobs:
+  locus:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax
+        run: |
+          node --check assets/vitruvia-research-engine.js
+          node --check assets/vitruvia-search.js
+          node --check scripts/test-vitruvia-prefixed-locus.mjs
+      - name: Verificar loci reales, versiones y bloqueo de ruido web
+        run: node scripts/test-vitruvia-prefixed-locus.mjs
