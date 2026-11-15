@@ -7,16 +7,21 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: import-classics-verified-batch
+  group: vdl-classics-publication-main
   cancel-in-progress: false
 jobs:
   import:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+      - name: Trabajar sobre el último main antes de generar resultados
+        run: |
+          git fetch --quiet origin main
+          git checkout -B vdl-publication origin/main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -156,5 +161,5 @@ jobs:
           else
             git commit -m "Incorporate validated public-domain Greek and Latin PDFs with bibliographic provenance"
             git pull --rebase origin main
-            git push
+            git push origin HEAD:main
           fi
