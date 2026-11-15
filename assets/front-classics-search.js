@@ -53,7 +53,7 @@ function init(){
   return !b||a===b||a.startsWith(b+".");
  };
  panel.append(head,explain,ownSearch,row,status,titles,result,more,catalog,caveat);
- form.insertAdjacentElement("afterend",panel);
+ const destination=$("front-classics-suite");if(destination){destination.replaceChildren(panel);}else{form.insertAdjacentElement("afterend",panel);}
  let versions=[],current=0,items=[],count=0,loaded=false;
  const foldTitle=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").replace(/[^a-z0-9\u0370-\u03ff\u1f00-\u1fff]+/gi," ").toLowerCase().trim();
  const aliases={"julio cesar":"caesar","julius caesar":"caesar","jules cesar":"caesar","gaius iulius caesar":"caesar","homero":"homer","homer":"homer","homere":"homer","aristoteles":"aristotle","aristotle":"aristotle","aristote":"aristotle","virgilio":"virgil","virgil":"virgil","virgile":"virgil","ciceron":"cicero"};
