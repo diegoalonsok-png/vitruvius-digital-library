@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-lexical-live-v1",
-  "generated": "2026-11-15T04:21:43.246Z",
+  "generated": "2026-11-15T19:10:28.204Z",
   "method": "GET de OCR en R2, GET de fragmentos invertidos R2; comparación de palabras atestiguadas y páginas digitales con el mismo normalizador del visor",
   "limitations": "El modo --full verifica tres raíces del OCR por edición catalogada; no implica validación total de todas las raíces ni lematización filológica, ni exactitud paleográfica del OCR.",
   "cataloguedEditions": 117,
@@ -55,8 +55,8 @@
     "platon-banquete",
     "platon-cratilo-parmenides",
     "platon-fedon",
-    "platon-protagoras",
     "platon-leyes",
+    "platon-protagoras",
     "platon-teeteto-sofista",
     "platon-timeo",
     "plotino-eneadas",
@@ -1825,40 +1825,6 @@
       "originalScriptProbes": 0
     },
     {
-      "id": "platon-protagoras",
-      "sourceLanguage": "grc",
-      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-protagoras.json",
-      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-protagoras.pdf",
-      "ocrPages": 256,
-      "lexicalTokensTested": 3,
-      "lexicalMatches": [
-        {
-          "word": "sometime",
-          "root": "sometim",
-          "page": 9,
-          "indexedOccurrences": 7,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-protagoras&pagina=9&q=sometime"
-        },
-        {
-          "word": "college",
-          "root": "colleg",
-          "page": 9,
-          "indexedOccurrences": 2,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-protagoras&pagina=9&q=college"
-        },
-        {
-          "word": "cambridge",
-          "root": "cambridg",
-          "page": 9,
-          "indexedOccurrences": 1,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-protagoras&pagina=9&q=cambridge"
-        }
-      ],
-      "errors": [],
-      "greekRootsDetected": 0,
-      "originalScriptProbes": 0
-    },
-    {
       "id": "platon-leyes",
       "sourceLanguage": "grc",
       "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-leyes.json",
@@ -1886,6 +1852,40 @@
           "page": 9,
           "indexedOccurrences": 5,
           "viewer": "buscador-facsimiles-clasicos.html?obra=platon-leyes&pagina=9&q=translation"
+        }
+      ],
+      "errors": [],
+      "greekRootsDetected": 0,
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "platon-protagoras",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-protagoras.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-protagoras.pdf",
+      "ocrPages": 256,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "sometime",
+          "root": "sometim",
+          "page": 9,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-protagoras&pagina=9&q=sometime"
+        },
+        {
+          "word": "college",
+          "root": "colleg",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-protagoras&pagina=9&q=college"
+        },
+        {
+          "word": "cambridge",
+          "root": "cambridg",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-protagoras&pagina=9&q=cambridge"
         }
       ],
       "errors": [],
