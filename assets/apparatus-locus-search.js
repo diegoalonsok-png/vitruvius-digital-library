@@ -73,7 +73,7 @@ function init(rows,openLocus,syncTerm){
  function run(){
   const original=query.value.trim();
   list.replaceChildren();found=[];shown=0;more.hidden=true;
-  if(!original){status.textContent="Escribí una palabra, frase o concepto.";return}
+  if(!original){status.textContent="Escribe una palabra, frase o concepto.";return}
   const tokens=words(original);
   const canonical=aliasKeys.get(tokens.join(" "))||aliasKeys.get(tokens[0])||conceptKeys.get(tokens[0])||tokens[0];
   const variants=mode.value==="concept"?(concepts[canonical]||[canonical]):tokens;
@@ -90,7 +90,7 @@ function init(rows,openLocus,syncTerm){
   draw();
  }
  $("#ab-search-form").addEventListener("submit",e=>{e.preventDefault();run()});
- $("#ab-search-reset").addEventListener("click",()=>{query.value="";syncTerm?.([]);if(synchronized)synchronized.textContent="";found=[];shown=0;list.replaceChildren();more.hidden=true;status.textContent="Búsqueda limpia. Introducí otro término."});
+ $("#ab-search-reset").addEventListener("click",()=>{query.value="";syncTerm?.([]);if(synchronized)synchronized.textContent="";found=[];shown=0;list.replaceChildren();more.hidden=true;status.textContent="Búsqueda limpia. Introduce otro término."});
  more.addEventListener("click",draw);
  document.querySelectorAll("[data-ab-term]").forEach(btn=>btn.addEventListener("click",()=>{query.value=btn.dataset.abTerm;mode.value="concept";run()}));
  status.textContent=corpus.length+" loci disponibles para búsqueda de texto latino y conceptos.";
