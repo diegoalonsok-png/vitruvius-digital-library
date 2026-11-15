@@ -1,0 +1,5002 @@
+{
+  "schema": "vdl-federated-bibliotheca-inventory-v1",
+  "generated": "2026-11-15T03:42:08.174626+00:00",
+  "method": "One work per master catalogue ID; R2 facsimiles are editions, not additional works. Local texts verified by file existence; R2 object URLs declared, not live-verified. Unresolved editions flagged without automatic merging.",
+  "counts": {
+    "cataloguedWorks": 271,
+    "r2EditionRecords": 117,
+    "r2LinkedEditionRecords": 109,
+    "r2UnlinkedEditionRecords": 16,
+    "worksWithR2Edition": 109,
+    "worksWithLocalIndexedText": 182,
+    "worksWithDeclaredRemoteIndex": 32
+  },
+  "unlinkedR2EditionIds": [
+    "alberti-de-re-aedificatoria",
+    "apolonio-argonauticas",
+    "beda-de-temporum-ratione",
+    "isidoro-etymologiae",
+    "isocrates-discursos",
+    "lisias-discursos",
+    "longino-sublime",
+    "longo-dafnis-es",
+    "palladio-quattro-libri",
+    "petrarca-africa",
+    "petrarca-secretum",
+    "scamozzi-idea-architettura",
+    "serlio-architettura",
+    "teocrito-bucolicos",
+    "vasari-vite",
+    "vignola-cinque-ordini"
+  ],
+  "works": [
+    {
+      "id": "vitruvius",
+      "author": "Marco Vitruvio Polión",
+      "title": "De architectura libri decem",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/structured/theory-en.json"
+        },
+        {
+          "language": "es",
+          "path": "data/structured/recensio-es.json"
+        },
+        {
+          "language": "fr",
+          "path": "data/structured/recensio-fr.json"
+        },
+        {
+          "language": "la",
+          "path": "data/structured/recensio-es.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "rose-vitruvius-1899",
+          "title": "De architectura libri decem;",
+          "year": 1867,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/rose-vitruvius-1899.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/rose-vitruvius-1899.json",
+          "sha256": "39706ad0b49e94d5c7f58f3ae8e8d033c751b607b24d1424a73a65b04909dbd6",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "cicero-officiis",
+      "author": "Cicerón",
+      "title": "De officiis",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "corpus/cicero-de-officiis-en.html"
+        },
+        {
+          "language": "la",
+          "path": "corpus/cicero-de-officiis-la.html"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cicero-oratore",
+      "author": "Cicerón",
+      "title": "De oratore",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-oratore-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "ciceron-de-oratore",
+          "title": "De oratore, book 1. Translated into English with an introd. by E.N.P. Moor",
+          "year": 1892,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ciceron-de-oratore.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/ciceron-de-oratore.json",
+          "sha256": "9b96e03443f8268fb39ebb47ace7ea047aa99f3ccde300ee1d7b1c1fe483be63",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "cicero-republica",
+      "author": "Cicerón",
+      "title": "De re publica",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-republica-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "ciceron-de-re-publica",
+          "title": "De re publica, De legibus",
+          "year": 1928,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ciceron-de-re-publica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/ciceron-de-re-publica.json",
+          "sha256": "f8f5c58976776db48129ace86a42a4f2bba67b0e979977698ed570dc6eed8aa1",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "caesar-gallico",
+      "author": "Julio César",
+      "title": "Commentarii de bello Gallico",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/caesar-gallico-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/caesar-gallico-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "caesar-civili",
+      "author": "Julio César",
+      "title": "Commentarii de bello civili",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/caesar-civili-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/caesar-civili-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "cesar-guerra-civil",
+          "title": "The civil wars; with an English translation by A.G. Peskett",
+          "year": 1921,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/cesar-guerra-civil.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/cesar-guerra-civil.json",
+          "sha256": "50de9393bbf1912b7634b1c8bee946c1f39005a52bc5809aa3e05afa9f38966f",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "sallust-catiline",
+      "author": "Salustio",
+      "title": "Bellum Catilinae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sallust-catiline-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/sallust-catiline-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "salustio-obras",
+          "title": "The Catiline and Jugurtha of Sallust. Translated into English by Alfred W. Pollard",
+          "year": 1882,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/salustio-obras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/salustio-obras.json",
+          "sha256": "36f596f5808e3b7daa96009404c5aa22ca2d7fbb95e11d0a15b449950c8dfc25",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "sallust-iugurtha",
+      "author": "Salustio",
+      "title": "Bellum Iugurthinum",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sallust-iugurtha-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/sallust-iugurtha-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "salustio-obras",
+          "title": "The Catiline and Jugurtha of Sallust. Translated into English by Alfred W. Pollard",
+          "year": 1882,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/salustio-obras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/salustio-obras.json",
+          "sha256": "36f596f5808e3b7daa96009404c5aa22ca2d7fbb95e11d0a15b449950c8dfc25",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "varro-rustica",
+      "author": "Varrón",
+      "title": "Rerum rusticarum libri tres",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/lexicon/fontes/varro-rustica-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "varron-de-re-rustica",
+          "title": "Varro on farming = M. Terenti Varronis Rerum rusticarum libri tres",
+          "year": 1912,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/varron-de-re-rustica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/varron-de-re-rustica.json",
+          "sha256": "118329dc7ebc55d0b5b1e0b8ff328d9523c3bbd48366e7a7a520759351f72d90",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "lucretius",
+      "author": "Lucrecio",
+      "title": "De rerum natura",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "corpus/lucretius-de-rerum-natura-en.html"
+        },
+        {
+          "language": "es",
+          "path": "corpus/lucretius-de-rerum-natura-es.html"
+        },
+        {
+          "language": "la",
+          "path": "corpus/lucretius-de-rerum-natura-la.html"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "virgil-aeneid",
+      "author": "Virgilio",
+      "title": "Aeneis",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/virgil-aeneid-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/virgil-aeneid-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "virgil-georgica",
+      "author": "Virgilio",
+      "title": "Georgica",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/virgil-georgica-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/virgil-georgica-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "horace-odes",
+      "author": "Horacio",
+      "title": "Carmina",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-odes-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "livy",
+      "author": "Tito Livio",
+      "title": "Ab urbe condita",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/livy-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "tito-livio-historia",
+          "title": "Livy : with an English translation",
+          "year": 1919,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/tito-livio-historia.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/tito-livio-historia.json",
+          "sha256": "2a78e867d67d4822ffd3e85a87224d8f63ab718dd0329ad47e4c81d16e49e572",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "ovid",
+      "author": "Ovidio",
+      "title": "Metamorphoses",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ovid-fasti",
+      "author": "Ovidio",
+      "title": "Fasti",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-fasti-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "ovidio-fastos",
+          "title": "I Fasti;",
+          "year": 1811,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ovidio-fastos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/ovidio-fastos.json",
+          "sha256": "09f1f39ef6f6f4de711372ef1454283117dd284f5d7ab332d6b908448e3f6091",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "nepos",
+      "author": "Cornelio Nepote",
+      "title": "De viris illustribus",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/nepos-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "diodorus",
+      "author": "Diodoro Sículo",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/diodorus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "dionysius",
+      "author": "Dionisio de Halicarnaso",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/dionysius-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "strabo",
+      "author": "Estrabón",
+      "title": "Γεωγραφικά",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/strabo-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "estrabon-geografia",
+          "title": "The geography of Strabo. With an English translation by Horace Leonard Jones. Based in part upon the unfinished version of John Robert Sitlington Sterrett",
+          "year": 1917,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/estrabon-geografia.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/estrabon-geografia.json",
+          "sha256": "f277c1fe29e18cc1c339045cd0fae9662d791e60462a28f34a3b92f622bc17e4",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "philo",
+      "author": "Filón de Alejandría",
+      "title": "De opificio mundi",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/philo-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/philo-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "seneca-epistulae",
+      "author": "Séneca",
+      "title": "Epistulae morales ad Lucilium",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-epistulae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucan",
+      "author": "Lucano",
+      "title": "Bellum civile",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/lucan-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "lucano-farsalia",
+          "title": "Pharsalia. Edited with English notes by C.E. Haskins. With an introd. by W.E. Heitland",
+          "year": 1887,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lucano-farsalia.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/lucano-farsalia.json",
+          "sha256": "237954acffc884160eda7cbc820f699d12ac94d677b3c5bc098c992402b8b071",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "pliny",
+      "author": "Plinio el Viejo",
+      "title": "Naturalis historia",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/lexicon/fontes/pliny-naturalis-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "plinio-historia-natural",
+          "title": "Pliny's Natural history. In thirty-seven books",
+          "year": 1847,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plinio-historia-natural.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/plinio-historia-natural.json",
+          "sha256": "eb4f4b3f47d4283c7bd4ca873a5f7fd310a936a61bde45f8e1a44f58a30d902b",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "dioscorides",
+      "author": "Dioscórides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/dioscorides-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "josephus-war",
+      "author": "Flavio Josefo",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/josephus-war-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "josephus-antiquities",
+      "author": "Flavio Josefo",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/josephus-antiquities-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "quintilian",
+      "author": "Quintiliano",
+      "title": "Institutio oratoria",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/quintilian-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "quintiliano-institutio",
+          "title": "The Institutio oratoria of Quintilian",
+          "year": 1920,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/quintiliano-institutio.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/quintiliano-institutio.json",
+          "sha256": "002a5d84fa3cc16f8857f2b335c4db8e95dc22c7c724dc17f2c990c3f2d54d7d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "martial",
+      "author": "Marcial",
+      "title": "Epigrammata",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/martial-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "marcial-epigramas",
+          "title": "Epigrams : with an English translation",
+          "year": 1920,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/marcial-epigramas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/marcial-epigramas.json",
+          "sha256": "8bde59909d5f4f00efc7a957f1eb606f1f2886876ebd802be10e32c995ee2bde",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "tacitus-agricola",
+      "author": "Tácito",
+      "title": "Agricola",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/tacitus-agricola-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-agricola-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "tacitus-germania",
+      "author": "Tácito",
+      "title": "Germania",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-germania-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "frontinus",
+      "author": "Frontino",
+      "title": "De aquaeductu urbis Romae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/lexicon/fontes/frontinus-aquaeductu-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "frontino-de-aquis",
+          "title": "Frontinus: The stratagems, and, the aqueducts of Rome",
+          "year": 1925,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/frontino-de-aquis.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/frontino-de-aquis.json",
+          "sha256": "7092be6431d7f79e6108fef3c920b3673519237937e3b718e2e76fd35c589a33",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "mark",
+      "author": "Evangelio según Marcos",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/mark-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "clement",
+      "author": "Primera carta de Clemente",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/clement-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "didache",
+      "author": "Anónimo",
+      "title": "Διδαχή · Didaché",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/didache-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/didache-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "pastor-hermas",
+      "author": "Hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pastor-hermas-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "faventinus",
+      "author": "Marco Cetio Faventino",
+      "title": "Artis architectonicae privatis usibus adbreviatus liber",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/faventinus-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "barnabas",
+      "author": "Anónimo",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/barnabas-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ignatius",
+      "author": "Ignacio de Antioquía",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/ignatius-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "polycarp",
+      "author": "Policarpo de Esmirna",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/polycarp-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "clement-2",
+      "author": "Anónimo",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/clement-2-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "diognetus",
+      "author": "Anónimo",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/diognetus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "justin",
+      "author": "Justino Mártir",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/justin-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "irenaeus",
+      "author": "Ireneo de Lyon",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/irenaeus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "tertullian",
+      "author": "Tertuliano",
+      "title": "Apologeticum",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tertullian-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "origenes",
+      "author": "Orígenes",
+      "title": "Περὶ ἀρχῶν · De principiis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/origenes-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "origenes",
+          "title": "De Principiis",
+          "year": 1836,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/origenes.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/origenes.json",
+          "sha256": "7dfb216e769f1e362e3f1ae54d0e4cc17d7067e788eb7604905f33fde79fb7b3",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "eusebio",
+      "author": "Eusebio de Cesarea",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/eusebio-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "columella",
+      "author": "Columela",
+      "title": "De re rustica",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/columella-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "columela-de-re-rustica",
+          "title": "Columella la cultura de' giardini traduzione di Massimiliano Pelagatti",
+          "year": 1839,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/columela-de-re-rustica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/columela-de-re-rustica.json",
+          "sha256": "726ab7c7cd4e514d799e4019cad67bb68a4a6e700f9b9e49b64e4f8a45607389",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "celsus",
+      "author": "Aulo Cornelio Celso",
+      "title": "De medicina",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/celsus-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "celso-de-medicina",
+          "title": "A literal interlineal translation of the first four books of Celsus De medicina, with \"Ordo\" and text : translated from the text selected for the examination of candidates at Apothecaries' Hall, and other public boards; in which the elliptical constructions are completed by supplying the suppressed words, shewing the relations and concords of the different words with each other : with an introduction, explanatory of the more obscure and difficult grammatical constructions, and rules for reducing to the English parallels and equivalents",
+          "year": 1837,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/celso-de-medicina.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/celso-de-medicina.json",
+          "sha256": "a43ac7555831c6037930756edd71e3a642bbd6fe45000ddfc3c535942e29df59",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "frontinus-strategemata",
+      "author": "Frontino",
+      "title": "Strategemata",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/frontinus-strategemata-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "frontino-de-aquis",
+          "title": "Frontinus: The stratagems, and, the aqueducts of Rome",
+          "year": 1925,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/frontino-de-aquis.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/frontino-de-aquis.json",
+          "sha256": "7092be6431d7f79e6108fef3c920b3673519237937e3b718e2e76fd35c589a33",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "plutarco-vidas",
+          "title": "Lives. With an English translation by Bernadotte Perrin",
+          "year": 1914,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plutarco-vidas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/plutarco-vidas.json",
+          "sha256": "5cd48b51033e3f029cedf9bdd4173c3a74a366ca1e611c09c15f9fb86af0200d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "apollodorus-poliorcetics",
+          "title": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+          "year": 1867,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apollodorus-poliorcetics.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/apollodorus-poliorcetics.json",
+          "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "hero-pneumatica",
+      "author": "Herón de Alejandría",
+      "title": "Πνευματικά · Pneumatica",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hero-pneumatica-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "hero-automata",
+      "author": "Herón de Alejandría",
+      "title": "Αὐτοματοποιητική · Automata",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hero-automata-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "athenaeus-mechanicus",
+          "title": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+          "year": 1867,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/athenaeus-mechanicus.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/athenaeus-mechanicus.json",
+          "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "krohn-1912-pdf",
+      "author": "Vitruvio · edición de Fritz Krohn",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/text/krohn-1912.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plautus-amphitruo",
+      "author": "Plauto",
+      "title": "Amphitruo",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/plautus-amphitruo-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plautus-aulularia",
+      "author": "Plauto",
+      "title": "Aulularia",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/plautus-aulularia-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "terentius-andria",
+      "author": "Terencio",
+      "title": "Andria",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/terentius-andria-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "terentius-heautontimorumenos",
+      "author": "Terencio",
+      "title": "Heautontimorumenos",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/terentius-heautontimorumenos-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cato-agri-cultura",
+      "author": "Catón el Viejo",
+      "title": "De agri cultura",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cato-agri-cultura-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cicero-catilinariae",
+      "author": "Cicerón",
+      "title": "In Catilinam (Orationes Catilinariae)",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/cicero-catilinariae-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-catilinariae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "catullus-carmina",
+      "author": "Catulo",
+      "title": "Carmina",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/catullus-carmina-en.json"
+        },
+        {
+          "language": "la",
+          "path": "corpus/catullus-carmina-la.html"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "horace-sermones",
+      "author": "Horacio",
+      "title": "Sermones (Satirae)",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-sermones-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "horace-ars-poetica",
+      "author": "Horacio",
+      "title": "Ars poetica",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-ars-poetica-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ovid-ars-amatoria",
+      "author": "Ovidio",
+      "title": "Ars amatoria",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-ars-amatoria-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "seneca-tragoediae",
+      "author": "Séneca (atribuciones individuales por cotejar)",
+      "title": "Tragoediae (colección)",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-tragoediae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "seneca-tragedias",
+          "title": "Tragedies. With an English translation by Frank Justus Miller",
+          "year": 1917,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/seneca-tragedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/seneca-tragedias.json",
+          "sha256": "38a3b322f33e4cf797a82373efad0950588d5c95d3e2ac608774ca4c918a29a8",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "petronius-satyrica",
+      "author": "Petronio (atribución tradicional)",
+      "title": "Satyrica",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/petronius-satyrica-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/petronius-satyrica-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "petronio-satiricon",
+          "title": "The Bellum civile of Petronius;",
+          "year": 1911,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petronio-satiricon.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/petronio-satiricon.json",
+          "sha256": "6f31a691dcadd61dfa38bca760ea14d6acdf023a3e0c2d6e345d6a44060d1aa9",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "tacitus-annales",
+      "author": "Tácito",
+      "title": "Annales",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-annales-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "tacitus-historiae",
+      "author": "Tácito",
+      "title": "Historiae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-historiae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "suetonius-caesares",
+      "author": "Suetonio",
+      "title": "De vita Caesarum",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/suetonius-caesares-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "juvenal-saturae",
+      "author": "Juvenal",
+      "title": "Saturae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/juvenal-saturae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "juvenal-persio-satiras",
+          "title": "Juvenal and Persius. With an English translation by G.G. Ramsay",
+          "year": 1920,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/juvenal-persio-satiras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/juvenal-persio-satiras.json",
+          "sha256": "7db781a98cc077a8a7e14fed529b870c8a07d5087053316be5782519b4fce25a",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "apuleius-metamorphoses",
+      "author": "Apuleyo",
+      "title": "Metamorphoses (Asinus aureus)",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/apuleius-metamorphoses-en.json"
+        },
+        {
+          "language": "es",
+          "path": "data/classics-corpus/apuleius-metamorphoses-es.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/apuleius-metamorphoses-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "apuleyo-metamorfosis",
+          "title": "The golden ass : being the metamorphoses of Lucius Apuleius",
+          "year": 1922,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apuleyo-metamorfosis.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/apuleyo-metamorfosis.json",
+          "sha256": "c3ca28f6f87b0c8694a3079cbc89cb93b720fd26ff59d207f6f6c22649d7dd2e",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "varro-de-lingua-latina",
+      "author": "Varrón",
+      "title": "De lingua Latina",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/varro-de-lingua-latina-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "tibullus-elegiae",
+      "author": "Tibulo",
+      "title": "Elegiae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tibullus-elegiae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "propertius-elegiae",
+      "author": "Propercio",
+      "title": "Elegiae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/propertius-elegiae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "propercio-elegias",
+          "title": "Propertius. With an English translation by H.E. Butler",
+          "year": 1912,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/propercio-elegias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/propercio-elegias.json",
+          "sha256": "52fcd6138024fafdbfc71f3c551f8b5d8e289af6c570652043f51e91dda5befc",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "phraedrus-fabulae",
+      "author": "Fedro",
+      "title": "Fabulae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/phraedrus-fabulae-en.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/phraedrus-fabulae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "statius-thebais",
+      "author": "Estacio",
+      "title": "Thebais",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/statius-thebais-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "pliny-younger-epistulae",
+      "author": "Plinio el Joven",
+      "title": "Epistulae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/pliny-younger-epistulae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "plinio-joven-cartas",
+          "title": "Letters. With an English translation by William Melmoth, rev. by W.M.L. Hutchinson",
+          "year": 1915,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plinio-joven-cartas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/plinio-joven-cartas.json",
+          "sha256": "c490b9c16ecd9e2f6b3e97774cfa67a4cf3670d447764852a41f8302e6b13c84",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aulus-gellius-noctes",
+      "author": "Aulo Gelio",
+      "title": "Noctes Atticae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/aulus-gellius-noctes-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aulo-gelio-noches",
+          "title": "The Attic nights of Aulus Gellius",
+          "year": 1927,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aulo-gelio-noches.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aulo-gelio-noches.json",
+          "sha256": "a30961a4f8b8f35cea0cf6ee0224a676286ed28585a1c9688426779d756c2453",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "valerius-maximus-facta",
+      "author": "Valerio Máximo",
+      "title": "Facta et dicta memorabilia",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/valerius-maximus-facta-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "silius-punica",
+      "author": "Silio Itálico",
+      "title": "Punica",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/silius-punica-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "polybius-historiae",
+      "author": "Polibio",
+      "title": "Ἱστορίαι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/polybius-historiae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "polibio-historias",
+          "title": "The histories, with an English translation by W.R. Paton. In six volumes",
+          "year": 1922,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/polibio-historias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/polibio-historias.json",
+          "sha256": "2d011bd78f73569d6addd78534f609e459a2dfdbea8a7128f7a9b560514f636d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "pseudo-apollodorus-bibliotheca",
+      "author": "Pseudo-Apolodoro",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "philo-legum-allegoriae",
+      "author": "Filón de Alejandría",
+      "title": "Νόμων ἱερῶν ἀλληγορίαι (Legum allegoriae)",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/philo-legum-allegoriae-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/philo-legum-allegoriae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "philo-de-vita-mosis",
+      "author": "Filón de Alejandría",
+      "title": "Περὶ τοῦ βίου Μωυσέως (De vita Mosis)",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/philo-de-vita-mosis-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/philo-de-vita-mosis-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-dialogi-mortuorum",
+      "author": "Luciano de Samósata",
+      "title": "Νεκρικοὶ διάλογοι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lucian-verae-historiae",
+      "author": "Luciano de Samósata",
+      "title": "Ἀληθῆ διηγήματα",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/lucian-verae-historiae-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/lucian-verae-historiae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "luciano-obras",
+          "title": "Lucian with an English Translation - Volume 1",
+          "year": 1913,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/luciano-obras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/luciano-obras.json",
+          "sha256": "05306db7c6d1034ba977324f4ad34b46d97729d7dcd892d5ed8dca11e5e4f38c",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "pausanias-periegesis",
+      "author": "Pausanias",
+      "title": "Ἑλλάδος περιήγησις",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pausanias-periegesis-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "pausanias-descripcion",
+          "title": "Pausanias's Description of Greece, tr. with a commentary by J.G. Frazer",
+          "year": 1898,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/pausanias-descripcion.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/pausanias-descripcion.json",
+          "sha256": "76ea6497c4c967f26ac0ddfab56c5353763a8aa075dbea3bd6d95ad5c4c82a6b",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "galen-ars-medica",
+      "author": "Galeno",
+      "title": "Τέχνη ἰατρική",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/galen-ars-medica-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "galen-de-usu-partium",
+      "author": "Galeno",
+      "title": "Περὶ χρείας μορίων",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/galen-de-usu-partium-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ptolemy-almagest",
+      "author": "Claudio Ptolomeo",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/ptolemy-almagest-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "ptolemy-geographia",
+          "title": "Geographia uniuersalis : uetus et noua, complectens Claudii Ptoloemaei Alexandrini enarrationis libros VIII",
+          "year": 1540,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ptolemy-geographia.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/ptolemy-geographia.json",
+          "sha256": "e11aeb07ac9065430ff4f64b3a78a636b16650851929ee76a591aa5147de4758",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "appian-romaika",
+      "author": "Apiano",
+      "title": "Ῥωμαϊκά",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/appian-romaika-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "marcus-aurelius-meditations",
+      "author": "Marco Aurelio",
+      "title": "Τὰ εἰς ἑαυτόν",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/marcus-aurelius-meditations-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/marcus-aurelius-meditations-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "homer-iliad",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ἰλιάς",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/homer-iliad-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/homer-iliad-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "homer-odyssey",
+      "author": "Homero (autoría tradicional)",
+      "title": "Ὀδύσσεια",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/homer-odyssey-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/homer-odyssey-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "hesiod-theogony",
+      "author": "Hesíodo",
+      "title": "Θεογονία",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/hesiod-theogony-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hesiod-theogony-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "hesiod-works-days",
+      "author": "Hesíodo",
+      "title": "Ἔργα καὶ Ἡμέραι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/hesiod-works-days-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hesiod-works-days-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aeschylus-oresteia",
+      "author": "Esquilo",
+      "title": "Ὀρέστεια",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-oresteia-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "esquilo-tragedias",
+          "title": "The Oresteia of Aeschylus",
+          "year": 1900,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/esquilo-tragedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/esquilo-tragedias.json",
+          "sha256": "375b8d43e963dbd0e980095efa30eb2ba3308eb1b873f32765e11c223d5f7019",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "sophocles-oedipus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους Τύραννος",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-oedipus-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-oedipus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "sofocles-tragedias",
+          "title": "Sophocles; with an English translation",
+          "year": 1912,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/sofocles-tragedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/sofocles-tragedias.json",
+          "sha256": "6a450386d07f6059b64dfaa2ba737ff30bc3f07d9d9978e309ff3e6f2c4ec8bb",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "euripides-medea",
+      "author": "Eurípides",
+      "title": "Μήδεια",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-medea-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-medea-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristophanes-clouds",
+      "author": "Aristófanes",
+      "title": "Νεφέλαι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristophanes-clouds-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-clouds-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "herodotus-historiae",
+      "author": "Heródoto",
+      "title": "Ἱστορίαι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/herodotus-historiae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "herodoto-historias",
+          "title": "Herodotus. With an English translation by A.D. Godley",
+          "year": 1921,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/herodoto-historias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/herodoto-historias.json",
+          "sha256": "613a66f742f158a80395d8811b8f1034f01a907d70efc25da33eb489551e6038",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "tucidides-historia",
+          "title": "Thucydides. With an English translation by Charles Forster Smith",
+          "year": 1919,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/tucidides-historia.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/tucidides-historia.json",
+          "sha256": "1c834323b17e640d2e62f3c7f3f10f03088d8af620e3abf36462cfc05f5f10b8",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "xenophon-anabasis",
+      "author": "Jenofonte",
+      "title": "Ἀνάβασις",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-anabasis-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "jenofonte-anabasis",
+          "title": "The Anabasis of Xenophon : with English notes, critical and explanatory ...",
+          "year": 1876,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-anabasis.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/jenofonte-anabasis.json",
+          "sha256": "9a46a9244d3095962e6f1c6cfe4b0e2392c6647a58fd9914c7d1ec6b9a00da59",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "plato-republic",
+      "author": "Platón",
+      "title": "Πολιτεία",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-republic-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-apology",
+      "author": "Platón",
+      "title": "Ἀπολογία Σωκράτους",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-apology-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-apology-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "platon-fedon",
+          "title": "The trial and death of Socrates : being the Euthyphron, Apology, Crito, and Phaedo of Plato",
+          "year": 1895,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-fedon.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-fedon.json",
+          "sha256": "bce9d90c64fe2f2c469e3967782806fb6464fbb6fdd72655567491f2ca3e5777",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aristotle-poetics",
+      "author": "Aristóteles",
+      "title": "Περὶ ποιητικῆς",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristotle-poetics-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-poetics-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristotle-politics",
+      "author": "Aristóteles",
+      "title": "Πολιτικά",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristotle-politics-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-politics-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aristoteles-politica",
+          "title": "Aristotle's Politics",
+          "year": 1905,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-politica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-politica.json",
+          "sha256": "c53a9dd54be9b7e845e460030f5904408d466f4a22a478f4b8353eea1fad941a",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "hippocrates-aphorisms",
+      "author": "Corpus hipocrático",
+      "title": "Ἀφορισμοί",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/hippocrates-aphorisms-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/hippocrates-aphorisms-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "epictetus-discourses",
+      "author": "Epicteto (recopilación de Arriano)",
+      "title": "Διατριβαί",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/epictetus-discourses-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "arrian-anabasis-alexandri",
+      "author": "Arriano",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aeschylus-persae",
+      "author": "Esquilo",
+      "title": "Πέρσαι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aeschylus-persae-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-persae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aeschylus-seven-thebes",
+      "author": "Esquilo",
+      "title": "Ἑπτὰ ἐπὶ Θήβας",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aeschylus-seven-thebes-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-seven-thebes-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aeschylus-suppliants",
+      "author": "Esquilo",
+      "title": "Ἱκέτιδες",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aeschylus-suppliants-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-suppliants-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aeschylus-prometheus",
+      "author": "Esquilo (atribución debatida)",
+      "title": "Προμηθεὺς Δεσμώτης",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aeschylus-prometheus-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeschylus-prometheus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "sophocles-antigone",
+      "author": "Sófocles",
+      "title": "Ἀντιγόνη",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-antigone-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-antigone-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "sofocles-tragedias",
+          "title": "Sophocles; with an English translation",
+          "year": 1912,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/sofocles-tragedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/sofocles-tragedias.json",
+          "sha256": "6a450386d07f6059b64dfaa2ba737ff30bc3f07d9d9978e309ff3e6f2c4ec8bb",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "sophocles-ajax",
+      "author": "Sófocles",
+      "title": "Αἴας",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-ajax-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "sophocles-electra",
+      "author": "Sófocles",
+      "title": "Ἠλέκτρα",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-electra-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-electra-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "sophocles-philoctetes",
+      "author": "Sófocles",
+      "title": "Φιλοκτήτης",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-philoctetes-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-philoctetes-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "sophocles-oedipus-colonus",
+      "author": "Sófocles",
+      "title": "Οἰδίπους ἐπὶ Κολωνῷ",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/sophocles-oedipus-colonus-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-oedipus-colonus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "sofocles-tragedias",
+          "title": "Sophocles; with an English translation",
+          "year": 1912,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/sofocles-tragedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/sofocles-tragedias.json",
+          "sha256": "6a450386d07f6059b64dfaa2ba737ff30bc3f07d9d9978e309ff3e6f2c4ec8bb",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "sophocles-trachiniae",
+      "author": "Sófocles",
+      "title": "Τραχίνιαι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/sophocles-trachiniae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-bacchae",
+      "author": "Eurípides",
+      "title": "Βάκχαι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-bacchae-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-bacchae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-hippolytus",
+      "author": "Eurípides",
+      "title": "Ἱππόλυτος",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-hippolytus-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-hippolytus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-alcestis",
+      "author": "Eurípides",
+      "title": "Ἄλκηστις",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-alcestis-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-alcestis-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-electra",
+      "author": "Eurípides",
+      "title": "Ἠλέκτρα",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-electra-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-electra-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "euripides-tragedias",
+          "title": "Euripides, with an English translation",
+          "year": 1912,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/euripides-tragedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/euripides-tragedias.json",
+          "sha256": "01966fc2e98c14ce490f51cc0ea17d52cef1d9115150bffb7836d3b91dcb7c8e",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "euripides-troades",
+      "author": "Eurípides",
+      "title": "Τρῳάδες",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-troades-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-troades-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-hecuba",
+      "author": "Eurípides",
+      "title": "Ἑκάβη",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-hecuba-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-hecuba-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euripides-iphigenia-aulid",
+      "author": "Eurípides",
+      "title": "Ἰφιγένεια ἐν Αὐλίδι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/euripides-iphigenia-aulid-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euripides-iphigenia-aulid-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristophanes-aves",
+      "author": "Aristófanes",
+      "title": "Ὄρνιθες",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-aves-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aristofanes-comedias",
+          "title": "Aristophanes Vol Ii",
+          "year": 1924,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristofanes-comedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristofanes-comedias.json",
+          "sha256": "9ac919ab8d495657cf74e5edf04f2a927a3b638a9b23d54083fb7c35d1e932bf",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aristophanes-ranae",
+      "author": "Aristófanes",
+      "title": "Βάτραχοι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-ranae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aristofanes-comedias",
+          "title": "Aristophanes Vol Ii",
+          "year": 1924,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristofanes-comedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristofanes-comedias.json",
+          "sha256": "9ac919ab8d495657cf74e5edf04f2a927a3b638a9b23d54083fb7c35d1e932bf",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aristophanes-lysistrata",
+      "author": "Aristófanes",
+      "title": "Λυσιστράτη",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-lysistrata-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristophanes-vespae",
+      "author": "Aristófanes",
+      "title": "Σφῆκες",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-vespae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristophanes-pax",
+      "author": "Aristófanes",
+      "title": "Εἰρήνη",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-pax-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aristofanes-comedias",
+          "title": "Aristophanes Vol Ii",
+          "year": 1924,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristofanes-comedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristofanes-comedias.json",
+          "sha256": "9ac919ab8d495657cf74e5edf04f2a927a3b638a9b23d54083fb7c35d1e932bf",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aristophanes-acharnenses",
+      "author": "Aristófanes",
+      "title": "Ἀχαρνῆς",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristophanes-acharnenses-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-symposium",
+      "author": "Platón",
+      "title": "Συμπόσιον",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-symposium-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-symposium-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "platon-banquete",
+          "title": "The Symposium of Plato,",
+          "year": 1909,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-banquete.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-banquete.json",
+          "sha256": "a76fb0597ccae4be59df05b8e5b27fbb309a6aacad069beeaee950d4ad4cb64a",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "plato-phaedo",
+      "author": "Platón",
+      "title": "Φαίδων",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-phaedo-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-phaedo-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "platon-fedon",
+          "title": "The trial and death of Socrates : being the Euthyphron, Apology, Crito, and Phaedo of Plato",
+          "year": 1895,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-fedon.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-fedon.json",
+          "sha256": "bce9d90c64fe2f2c469e3967782806fb6464fbb6fdd72655567491f2ca3e5777",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "plato-gorgias",
+      "author": "Platón",
+      "title": "Γοργίας",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-gorgias-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-gorgias-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-timaeus",
+      "author": "Platón",
+      "title": "Τίμαιος",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-timaeus-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-timaeus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "platon-timeo",
+          "title": "The Timaeus of Plato",
+          "year": 1888,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-timeo.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-timeo.json",
+          "sha256": "6ccb14e2c828792009cdc317c0482c3dd9663af6daa4b2715c5e714fe3e6786f",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "plato-meno",
+      "author": "Platón",
+      "title": "Μένων",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-meno-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-meno-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-phaedrus",
+      "author": "Platón",
+      "title": "Φαῖδρος",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-phaedrus-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-phaedrus-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "plato-laws",
+      "author": "Platón",
+      "title": "Νόμοι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-laws-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "platon-leyes",
+          "title": "Plato : with an English Translation Laws",
+          "year": 1926,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-leyes.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-leyes.json",
+          "sha256": "c79934baf17a467450fd31967740c17f4791d99cd7db67b1e5fded18e441e7ce",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "plato-crito",
+      "author": "Platón",
+      "title": "Κρίτων",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/plato-crito-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/plato-crito-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "platon-fedon",
+          "title": "The trial and death of Socrates : being the Euthyphron, Apology, Crito, and Phaedo of Plato",
+          "year": 1895,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-fedon.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-fedon.json",
+          "sha256": "bce9d90c64fe2f2c469e3967782806fb6464fbb6fdd72655567491f2ca3e5777",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aristotle-nicomachean-ethics",
+      "author": "Aristóteles",
+      "title": "Ἠθικὰ Νικομάχεια",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/aristotle-nicomachean-ethics-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-nicomachean-ethics-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristotle-metaphysics",
+      "author": "Aristóteles",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-metaphysics-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aristoteles-metafisica",
+          "title": "The metaphysics of Aristotle : translated from the Greek with copious notes in which the Pythagoric and Platonic dogmas respecting numbers and ideas are unfolded from antient sources ; to which is added a dissertation on nullities and diverging series, in which the conclusions of the greatest modern mathematicians on this subject are shown to be erroneous, the nature of infinitely small quantities is explained, and the to 'en, or The One of the Pythagoræans and Platonists, so often alluded to by Aristotle in this work, is elucidated",
+          "year": 1801,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-metafisica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-metafisica.json",
+          "sha256": "181c45920373c2be910752d500c1efe4db63297c5f8213e5f9735d60d58062f6",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aristotle-physics",
+      "author": "Aristóteles",
+      "title": "Φυσικὴ ἀκρόασις",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-physics-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristotle-rhetoric",
+      "author": "Aristóteles",
+      "title": "Ῥητορική",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-rhetoric-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristotle-de-anima",
+      "author": "Aristóteles",
+      "title": "Περὶ ψυχῆς",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristotle-de-anima-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "xenophon-memorabilia",
+      "author": "Jenofonte",
+      "title": "Ἀπομνημονεύματα",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-memorabilia-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "jenofonte-memorabilia",
+          "title": "Xenophon's Memorabilia of Socrates : with English notes, critical and explanatory, the Prolegomena of Kühner, Wiggers' Life of Socrates, etc.",
+          "year": 1870,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-memorabilia.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/jenofonte-memorabilia.json",
+          "sha256": "b112a648aa11ab350fb4442d3c1ac7a07080ec247780eaef5456853907d1ccb7",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "xenophon-hellenica",
+      "author": "Jenofonte",
+      "title": "Ἑλληνικά",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/xenophon-hellenica-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "demosthenes-de-corona",
+      "author": "Demóstenes",
+      "title": "Περὶ τοῦ στεφάνου",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/demosthenes-de-corona-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "demostenes-discursos",
+          "title": "The oration of Demosthenes on the crown : with an English translation, introd., notes and indices",
+          "year": 1882,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/demostenes-discursos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/demostenes-discursos.json",
+          "sha256": "fc94d52ae41bdb20e1cd10aea514cd68f53ee6612ec8d4cb7a7d4662c48d7118",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "demosthenes-philippicae",
+      "author": "Demóstenes",
+      "title": "Φιλιππικοί",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/demosthenes-philippicae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "pindar-olympian",
+      "author": "Píndaro",
+      "title": "Ὀλυμπιόνικοι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pindar-olympian-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "pindar-pythian",
+      "author": "Píndaro",
+      "title": "Πυθιόνικοι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/pindar-pythian-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "homeric-hymns",
+      "author": "Anónimo (atribución antigua a Homero)",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/homeric-hymns-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "theophrastus-characters",
+      "author": "Teofrasto",
+      "title": "Ἠθικοὶ χαρακτῆρες",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/theophrastus-characters-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/theophrastus-characters-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "teofrasto-historia-plantas",
+          "title": "Enquiry into plants and minor works on odours and weather signs, with an English translation by Sir Arthur Hort, bart",
+          "year": 1916,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teofrasto-historia-plantas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/teofrasto-historia-plantas.json",
+          "sha256": "2d1cd6f98aedb58fa47a30823e85cc5f8d8bad504cf48a5260c233e38395a294",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "diogenes-laertius-vitae",
+      "author": "Diógenes Laercio",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/diogenes-laertius-vitae-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "diogenes-laercio-vidas",
+          "title": "The lives and opinions of eminent philosophers",
+          "year": 1853,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/diogenes-laercio-vidas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/diogenes-laercio-vidas.json",
+          "sha256": "90989d3226ed85baa54727903e1eb8a6600a6df078073c35cbfef300c23bf564",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "cicero-pro-archia",
+      "author": "Cicerón",
+      "title": "Pro Archia poeta",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-pro-archia-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cicero-de-finibus",
+      "author": "Cicerón",
+      "title": "De finibus bonorum et malorum",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-finibus-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cicero-tusculanae",
+      "author": "Cicerón",
+      "title": "Tusculanae disputationes",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-tusculanae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "ciceron-tusculanas",
+          "title": "Cicero's Tusculan disputations ..",
+          "year": 1886,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ciceron-tusculanas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/ciceron-tusculanas.json",
+          "sha256": "9912c1e146d3582436e05b87be2206a75ca28beb5625c43c4fb57235b29eaccf",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "cicero-de-natura-deorum",
+      "author": "Cicerón",
+      "title": "De natura deorum",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-natura-deorum-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cicero-de-amicitia",
+      "author": "Cicerón",
+      "title": "Laelius de amicitia",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-amicitia-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cicero-de-senectute",
+      "author": "Cicerón",
+      "title": "Cato Maior de senectute",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-senectute-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cicero-de-divinatione",
+      "author": "Cicerón",
+      "title": "De divinatione",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-de-divinatione-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cicero-brutus",
+      "author": "Cicerón",
+      "title": "Brutus",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-brutus-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cicero-philippicae",
+      "author": "Cicerón",
+      "title": "Philippicae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/cicero-philippicae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "seneca-de-brevitate",
+      "author": "Séneca",
+      "title": "De brevitate vitae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/seneca-de-brevitate-en.json"
+        },
+        {
+          "language": "es",
+          "path": "data/classics-corpus/seneca-de-brevitate-es.json"
+        },
+        {
+          "language": "fr",
+          "path": "data/classics-corpus/seneca-de-brevitate-fr.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-de-brevitate-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "seneca-de-clementia",
+      "author": "Séneca",
+      "title": "De clementia",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/seneca-de-clementia-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "horace-epodi",
+      "author": "Horacio",
+      "title": "Epodi",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-epodi-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "horace-epistulae",
+      "author": "Horacio",
+      "title": "Epistulae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/horace-epistulae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ovid-tristia",
+      "author": "Ovidio",
+      "title": "Tristia",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-tristia-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ovid-heroides",
+      "author": "Ovidio",
+      "title": "Heroides",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-heroides-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ovid-remedia-amoris",
+      "author": "Ovidio",
+      "title": "Remedia amoris",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-remedia-amoris-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ovid-ex-ponto",
+      "author": "Ovidio",
+      "title": "Epistulae ex Ponto",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/ovid-ex-ponto-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "tacitus-dialogus",
+      "author": "Tácito (atribución tradicional)",
+      "title": "Dialogus de oratoribus",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/tacitus-dialogus-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "apuleius-apologia",
+      "author": "Apuleyo",
+      "title": "Apologia",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/apuleius-apologia-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "vegetius-epitoma",
+      "author": "Vegecio",
+      "title": "Epitoma rei militaris",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "augustine-confessiones",
+      "author": "Agustín de Hipona",
+      "title": "Confessiones",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/augustine-confessiones-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "agustin-confesiones",
+          "title": "Confessions. With an English translation by William Watts. 1631",
+          "year": 1919,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/agustin-confesiones.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/agustin-confesiones.json",
+          "sha256": "5651a90c889763ea238d5ebf3f2fd6d27fa10221bd2686cd831b29e1687df18e",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "augustine-civitate-dei",
+      "author": "Agustín de Hipona",
+      "title": "De civitate Dei",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/augustine-civitate-dei-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "boethius-consolatio",
+      "author": "Boecio",
+      "title": "De consolatione philosophiae",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/boethius-consolatio-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "boecio-consolacion",
+          "title": "The theological tractates, with an English translation by H.F. Stewart and E.K. Rand. The consolation of philosophy, with the English translation of \"I.T.\" (1609) rev. by H.F. Stewart",
+          "year": 1918,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/boecio-consolacion.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/boecio-consolacion.json",
+          "sha256": "fbbf092b1b0713bf33eb3c42647e79c58b0daefb188137a829652736b50e9a99",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "epictetus-enchiridion",
+      "author": "Epicteto (transmitido por Arriano)",
+      "title": "Ἐγχειρίδιον · Enchiridion",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "en",
+          "path": "data/classics-corpus/epictetus-enchiridion-en.json"
+        },
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/epictetus-enchiridion-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cebes-tabula",
+      "author": "Pseudo-Cebes (atribución tradicional)",
+      "title": "Πίναξ · Tabula Cebetis",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/cebes-tabula-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristoxenus-harmonica",
+      "author": "Aristóxeno de Tarento",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aristoxenus-harmonica-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "arquimedes-obras",
+          "title": "The works of Archimedes",
+          "year": 1897,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/arquimedes-obras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/arquimedes-obras.json",
+          "sha256": "146476e580719fa8388194da7ecbbeb8be23170e00960ff4e8d2858e56a82a7e",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aratus-phaenomena",
+      "author": "Arato de Solos",
+      "title": "Φαινόμενα",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aratus-phaenomena-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "accius-fragmenta",
+          "title": "Tragicorum Romanorum fragmenta",
+          "year": 1871,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/accius-fragmenta.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/accius-fragmenta.json",
+          "sha256": "da46cbcfba01bd8beab0b9f7024aef90feb294fa5a2b695531b8022158f8660d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aeneas-tacticus-poliorketika",
+      "author": "Eneas el Táctico",
+      "title": "Πολιορκητικά",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "augustus-res-gestae",
+      "author": "Augusto",
+      "title": "Res gestae divi Augusti",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "la",
+          "path": "data/classics-corpus/augustus-res-gestae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euclid-elementa",
+      "author": "Euclides",
+      "title": "Στοιχεῖα · Elementa",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "grc",
+          "path": "data/classics-corpus/euclid-elementa-grc.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "euclides-elementos",
+          "title": "The first six books of the Elements of Euclid, in which coloured diagrams and symbols are used instead of letters ..",
+          "year": 1847,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/euclides-elementos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/euclides-elementos.json",
+          "sha256": "a20e6c0091936d526ea96962c925b32a07176f5d47deb62677ea1893055e9f6e",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "philo-belopoeica",
+          "title": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+          "year": 1867,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/philo-belopoeica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/philo-belopoeica.json",
+          "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "biton-kataskeuai",
+          "title": "Poliorktika kai poliorkiai diaphorn polen = Poliorcétique des Grecs : traités thoriques, récits historiques ; ouvrage publié par l'Imprimerie impériale ;",
+          "year": 1867,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/biton-kataskeuai.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/biton-kataskeuai.json",
+          "sha256": "cea9ced8736203b9003970fcc58bdb41bc51c87d9463aeb1615bcab94c6f3457",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "hyginus-gromaticus",
+          "title": "Gromatici veteres ex recensione Caroli Lachmanni. Diagrammata edidit A. Rudorffius. (Die Schriften der römischen Feldmesser",
+          "year": 1848,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/hyginus-gromaticus.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/hyginus-gromaticus.json",
+          "sha256": "a6f2340323d68b8e15838f4cae6db872782f91856b51b8bb386918c9475e1b50",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "sulpicia-elegiae",
+      "author": "Sulpicia",
+      "title": "Elegiae · Corpus Tibullianum 3.13–18",
+      "catalogue": "github",
+      "locallyIndexedText": [
+        {
+          "language": "es",
+          "path": "data/classics-corpus/sulpicia-elegiae-es.json"
+        },
+        {
+          "language": "la",
+          "path": "data/classics-corpus/sulpicia-elegiae-la.json"
+        }
+      ],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "apolonio-argonauticas",
+      "author": "Apolonio de Rodas",
+      "title": "Ἀργοναυτικά · Argonautica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "isocrates-discursos",
+      "author": "Isócrates",
+      "title": "Λόγοι · Discursos (Πρὸς Δημόνικον, Πανηγυρικός)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "lisias-discursos",
+      "author": "Lisias",
+      "title": "Λόγοι · Discursos",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "longino-sublime",
+      "author": "Pseudo-Longino",
+      "title": "Περὶ ὕψους · De sublimitate",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "teocrito-bucolicos",
+      "author": "Teócrito, Bión y Mosco",
+      "title": "Εἰδύλλια · Idilios",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": []
+    },
+    {
+      "id": "antologia-griega",
+      "author": "Antología griega",
+      "title": "Ἀνθολογία Ἑλληνική · Anthologia Graeca (Palatina)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/antologia-griega-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "antologia-griega",
+          "title": "The Greek Anthology in Five Volumes, Vol 5 [only]. With an English Translation by W R Paton.",
+          "year": 1918,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/antologia-griega.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/antologia-griega.json",
+          "sha256": "a22d8732ac209633cbb3d6d6a8ac7a55ba218bf4e84c37aa4f7fe6027c8477b1",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aquiles-tacio-leucipa",
+      "author": "Aquiles Tacio",
+      "title": "Τὰ κατὰ Λευκίππην καὶ Κλειτοφῶντα · Leucipa y Clitofonte",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aquiles-tacio-leucipa-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aquiles-tacio-leucipa",
+          "title": "Achilles Tatius",
+          "year": 1917,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aquiles-tacio-leucipa.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aquiles-tacio-leucipa.json",
+          "sha256": "8d8f3de44a594ccc3390e95c21347b9c2bfb8f3743b4533f0d62bcbf3af95196",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aristoteles-del-cielo",
+      "author": "Aristóteles",
+      "title": "Περὶ οὐρανοῦ · De caelo",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-del-cielo-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aristoteles-del-cielo",
+          "title": "De caelo",
+          "year": 1922,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-del-cielo.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-del-cielo.json",
+          "sha256": "a82a02a9745e1638b510370d5348afa9318f631435cf8c388e503fc235665cae",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aristoteles-historia-animales",
+      "author": "Aristóteles",
+      "title": "Περὶ τὰ ζῷα ἱστορίαι · Historia animalium",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/aristoteles-historia-animales-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aristoteles-historia-animales",
+          "title": "Historia animalium",
+          "year": 1910,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-historia-animales.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-historia-animales.json",
+          "sha256": "d33b73f26bd482b6db86efc9bbc7ccbce76f2c3230c0b2958d79726a209d8ebd",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "baquilides-poemas",
+      "author": "Baquílides",
+      "title": "Ἐπίνικοι καὶ διθύραμβοι · Epinicios y ditirambos",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/baquilides-poemas-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "baquilides-poemas",
+          "title": "Bacchylides : the poems and fragments",
+          "year": 1905,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/baquilides-poemas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/baquilides-poemas.json",
+          "sha256": "6d17c0a92fc68f7275dd33ef7e998500eb0101262abff10d84d1527139406896",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "calimaco-himnos",
+      "author": "Calímaco y Licofrón",
+      "title": "Ὕμνοι καὶ ἐπιγράμματα · Himnos y epigramas (con la Ἀλεξάνδρα de Licofrón)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/calimaco-himnos-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "calimaco-himnos",
+          "title": "Callimachus and Lycophron",
+          "year": 1921,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/calimaco-himnos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/calimaco-himnos.json",
+          "sha256": "c4ca30a2bec15144dca1c609fad69331fbe07dd06f8cec5d8979dbc75cd5fe62",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "epicuro-restos",
+      "author": "Epicuro",
+      "title": "Ἐπιστολαὶ καὶ Κύριαι δόξαι · Cartas y Máximas capitales",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/epicuro-restos-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "epicuro-restos",
+          "title": "Epicurus The Extant Remains Bailey Oxford 1926",
+          "year": 1926,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/epicuro-restos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/epicuro-restos.json",
+          "sha256": "1f832ed7e490d9af52f8d4884a3ba2caaad6cc159854cf5ebb8d34ab7b0fbfe8",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "esquines-discursos",
+      "author": "Esquines",
+      "title": "Λόγοι · Discursos",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/esquines-discursos-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "esquines-discursos",
+          "title": "The speeches of Aeschines : against Timarchus, on the embassy, against Ctesiphon",
+          "year": 1919,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/esquines-discursos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/esquines-discursos.json",
+          "sha256": "e049c4f6a544f09f7d374dad35d96b17e14d34b65f5a3c97537cfb428da87401",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "filostrato-apolonio",
+      "author": "Filóstrato",
+      "title": "Τὰ ἐς τὸν Τυανέα Ἀπολλώνιον · Vida de Apolonio de Tiana",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/filostrato-apolonio-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "filostrato-apolonio",
+          "title": "The life of Apollonius of Tyana, the Epistles of Apollonius and the Treatise of Eusebius; with an English translation by F.C. Conybeare",
+          "year": 1912,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/filostrato-apolonio.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/filostrato-apolonio.json",
+          "sha256": "6b8e9c07ff6278093c6b1c34345709dec659688d518595e7ebf0b46a07e0fef9",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "galeno-facultades-naturales",
+      "author": "Galeno",
+      "title": "Περὶ φυσικῶν δυνάμεων · De naturalibus facultatibus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/galeno-facultades-naturales-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "galeno-facultades-naturales",
+          "title": "Galen On the natural faculties",
+          "year": 1916,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-facultades-naturales.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-facultades-naturales.json",
+          "sha256": "1d9985df3848474999ed78270e0eacec684e178206ca7402ff474daa439f930c",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "hipocrates-obras",
+      "author": "Hipócrates",
+      "title": "Corpus Hippocraticum (selección)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/hipocrates-obras-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "hipocrates-obras",
+          "title": "Hippocrates, with an English translation",
+          "year": 1923,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/hipocrates-obras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/hipocrates-obras.json",
+          "sha256": "349f57ff0b2daeaceeb83718c72ff9832ff433df26c2a3ae367f17aed481dd8a",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "iseo-discursos",
+      "author": "Iseo",
+      "title": "Λόγοι · Discursos",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/iseo-discursos-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "iseo-discursos",
+          "title": "Isaeus",
+          "year": 1927,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/iseo-discursos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/iseo-discursos.json",
+          "sha256": "fc49b854d43fd90e4923a9a54a279e1d5d0002630f280b07fa44578f6db1d691",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "jenofonte-ciropedia",
+      "author": "Jenofonte",
+      "title": "Κύρου παιδεία · Cyropaedia",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-ciropedia-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "jenofonte-ciropedia",
+          "title": "Cyropaedia, with an English translation by Walter Miller",
+          "year": 1914,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-ciropedia.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/jenofonte-ciropedia.json",
+          "sha256": "1db603e8045888c8e641c3f60dbe1f59a2f2d81bb1617cbd4df9725c7507f11e",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "jenofonte-economico",
+      "author": "Jenofonte",
+      "title": "Οἰκονομικός · Oeconomicus",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/jenofonte-economico-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "jenofonte-economico",
+          "title": "The Oeconomicus of Xenophon",
+          "year": 1895,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-economico.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/jenofonte-economico.json",
+          "sha256": "17aef0a4385e8837794e9c2eaa29fd7740a67dffba363e48c531a2ac32e1d2ee",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "longo-dafnis-cloe",
+      "author": "Longo",
+      "title": "Δάφνις καὶ Χλόη · Poimeniká",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/longo-dafnis-cloe-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "longo-dafnis-cloe",
+          "title": "Daphnis & Chloe. With the English translation of George Thornley, rev. and augm. by J.M. Edmonds. The love romances of Parthenius and other fragments. With an English translation by S. Gaselee",
+          "year": 1916,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longo-dafnis-cloe.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/longo-dafnis-cloe.json",
+          "sha256": "243d4d4bc1b9131da898b7c0f9be64e33a41a7024560dc5dc8d03d073f93c25f",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "menandro-comedias",
+      "author": "Menandro",
+      "title": "Κωμῳδίαι · Comedias (fragmentos papiráceos)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/menandro-comedias-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "menandro-comedias",
+          "title": "Menander, the principal fragments",
+          "year": 1921,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/menandro-comedias.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/menandro-comedias.json",
+          "sha256": "41605c1c49e127b2ea7c9bf7cdc92f3d27303d76420d70795e1e17152437089a",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "platon-cratilo-parmenides",
+      "author": "Platón",
+      "title": "Κρατύλος · Παρμενίδης · Crátilo y Parménides (con Fedón y Timeo, trad. de Th. Taylor)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/platon-cratilo-parmenides-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "platon-cratilo-parmenides",
+          "title": "The Cratylus, Phaedo, Parmenides, and Timaeus ...",
+          "year": 1793,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-cratilo-parmenides.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-cratilo-parmenides.json",
+          "sha256": "755188bd152820a93afc60d282d2a0bf93d0203e9d2525e07b6ebf4eab6dede6",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "platon-protagoras",
+      "author": "Platón",
+      "title": "Λάχης · Πρωταγόρας · Μένων · Εὐθύδημος",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/platon-protagoras-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "platon-protagoras",
+          "title": "The Protagoras of Plato",
+          "year": 1891,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-protagoras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-protagoras.json",
+          "sha256": "d0ee2068de6dab624c5d54d153ee53ad99e79d0505562ae9069467959988fec3",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "platon-teeteto-sofista",
+      "author": "Platón",
+      "title": "Θεαίτητος · Σοφιστής · Teeteto y Sofista",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/platon-teeteto-sofista-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "platon-teeteto-sofista",
+          "title": "The Theaetetus of Plato : with translation and notes",
+          "year": 1881,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-teeteto-sofista.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-teeteto-sofista.json",
+          "sha256": "038f00525e53f8dc4a9af9885832d4fec151ecc3c7a03f5b9b3c9c04879f5783",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "plotino-eneadas",
+      "author": "Plotino",
+      "title": "Ἐννεάδες · Enneades",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/plotino-eneadas-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "plotino-eneadas",
+          "title": "Enneades : Praemisso Porphyrii De vita Plotini deque ordine librorum eius libello",
+          "year": 1883,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plotino-eneadas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/plotino-eneadas.json",
+          "sha256": "077bc07d9c12774102db966effccf1e0f2bb6c2b5d20ca8196d6f533bfe961ec",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "lyra-graeca",
+      "author": "Poetas líricos griegos",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "lyra-graeca",
+          "title": "Lyra Graeca; being the remains of all the Greek lyrik poets from Eumelus to Timotheus excepting Pindar",
+          "year": 1922,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lyra-graeca.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/lyra-graeca.json",
+          "sha256": "accae2cc3a9c44c22d99def8cae05c55f50b4592e001d38453326f7fab210ffe",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "quinto-esmirna-posthomericas",
+      "author": "Quinto de Esmirna",
+      "title": "Τὰ μεθ' Ὅμηρον · Posthomerica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/quinto-esmirna-posthomericas-grc.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "quinto-esmirna-posthomericas",
+          "title": "The fall of Troy; with an English translation by Arthur S. Way",
+          "year": 1913,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/quinto-esmirna-posthomericas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/quinto-esmirna-posthomericas.json",
+          "sha256": "cef7d4fab612c9c072b7b446eb29b483f2972bd00e5e2e79f5112a97d904c17e",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "amiano-marcelino-es",
+      "author": "Amiano Marcelino",
+      "title": "Res gestae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/amiano-marcelino-es-la.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "amiano-marcelino-es",
+          "title": "Historia del Imperio Romano : desde el año 350 al 378 de la Era Cristiana T.2",
+          "year": 1896,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/amiano-marcelino-es.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/amiano-marcelino-es.json",
+          "sha256": "c2492279bf45a36c4b79a30ac925718b4ef1eedeae95976372a51c99405937ce",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "ausonio-obras",
+      "author": "Ausonio",
+      "title": "Opuscula · Obras",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/ausonio-obras-la.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "ausonio-obras",
+          "title": "Ausonius, with an English translation",
+          "year": 1919,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ausonio-obras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/ausonio-obras.json",
+          "sha256": "34a91e49e74636d23475a53db748e7b04047d3d4c9aa4a543eb181feb2771ece",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "claudiano-poemas",
+      "author": "Claudiano",
+      "title": "Carmina · Poemas",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/claudiano-poemas-la.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "claudiano-poemas",
+          "title": "Claudian, with an English translation by Maurice Platnauer",
+          "year": 1922,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/claudiano-poemas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/claudiano-poemas.json",
+          "sha256": "5e5e070ce9cd59b7115df007578eb61b927eb406f3fe06d13c7406bdf82a3bd0",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "higino-fabulas",
+      "author": "Higino",
+      "title": "Fabulae · Astronomica poetica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "higino-fabulas",
+          "title": "Hygini Fabulae",
+          "year": 1872,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/higino-fabulas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/higino-fabulas.json",
+          "sha256": "105726b54dc2a1a069365b0101e9d7e28772e8c07f1356db24436c61073f8a83",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "manilio-astronomica",
+      "author": "Manilio",
+      "title": "Astronomica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "manilio-astronomica",
+          "title": "Astronomica. Hrsg. von Theodorus Breiter",
+          "year": 1907,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/manilio-astronomica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/manilio-astronomica.json",
+          "sha256": "71d60921f701e9ab7d95c64abca253e4585cdf77f39e900304babef748df5842",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "minucio-felix-octavio",
+      "author": "Minucio Félix",
+      "title": "Octavius",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/minucio-felix-octavio-la.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "minucio-felix-octavio",
+          "title": "Octavius. Par J.P. Waltzing. [Text in Latin, commentary in French.]",
+          "year": 1909,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/minucio-felix-octavio.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/minucio-felix-octavio.json",
+          "sha256": "1355d1667e33b0cd70cf93e748d30c59cb63f8cc737ad1594c4547fcc3ca1f7d",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "valerio-flaco-argonautica",
+      "author": "Valerio Flaco",
+      "title": "Argonautica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "la",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/valerio-flaco-argonautica-la.json"
+        }
+      ],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "valerio-flaco-argonautica",
+          "title": "The Argonautica, Book 1;",
+          "year": 1916,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/valerio-flaco-argonautica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/valerio-flaco-argonautica.json",
+          "sha256": "f1c13e204a0104eb2eab28e24a624e65d7d6a9176efc89deeb0aa8365f1090bb",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "author": "Aristóteles",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "aristoteles-meteorologica",
+          "title": "Meteorologica",
+          "year": 1923,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-meteorologica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-meteorologica.json",
+          "sha256": "62e10515b65e2bafda70676dc53aa7bbc4024df4f2cc78721dcc2af16cfb58aa",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "galeno-opera-kuhn",
+          "title": "Galeni opera omnia / vol. 14",
+          "year": 1821,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-opera-kuhn.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-opera-kuhn.json",
+          "sha256": "11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "galeno-kuhn-vol01",
+          "title": "Galeni opera omnia / vol. 14",
+          "year": 1821,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol01.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-kuhn-vol01.json",
+          "sha256": "11e93b0bd7a3afcdf772b925e121734a2b0032de79f29df7d9864eb813c03942",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "author": "Galeno",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "galeno-kuhn-vol19",
+          "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+          "year": 1821,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol19.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-kuhn-vol19.json",
+          "sha256": "6a0900dd5592eeda90acd260e8f55c475acfa96e1c38491d328e4704971d9461",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "author": "Galeno",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "galeno-scripta-minora",
+          "title": "Claudii Galeni Pergameni Scripta Minora, VoL III",
+          "year": 1903,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-scripta-minora.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-scripta-minora.json",
+          "sha256": "5ed136b94094f135026eadb7c4cfd4348be662eda90ab710c606c0d4e93fcf48",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "author": "Jámblico",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "jamblico-vida-pitagorica",
+          "title": "Περί βίου πυθαγορικού λόγος : De vita Pythagorica liber",
+          "year": 1707,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jamblico-vida-pitagorica.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/jamblico-vida-pitagorica.json",
+          "sha256": "ac9da3085b675b2fcd0a303e5fdd9be1f07b7b694644d26693b27b3923097f9b",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "author": "Proclo",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "proclo-comentario-euclides",
+          "title": "Procli Diadochi in primum Euclidis Elementorum librum commentarii",
+          "year": 1873,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/proclo-comentario-euclides.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/proclo-comentario-euclides.json",
+          "sha256": "8c8c9822f349e499fbd072f3764b827791047563781b1051a3a5fbf028523d97",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "author": "Sexto Empírico",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "sexto-empirico-obras",
+          "title": "Sextus Empiricus",
+          "year": 1842,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/sexto-empirico-obras.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/sexto-empirico-obras.json",
+          "sha256": "c88e587da2442237df0c6f56639ca9b5d242550096114df4a33593d029b8cec7",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "author": "Teón de Esmirna",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "teon-esmirna-expositio",
+          "title": "Specimen academicum inaugurale, exhibens Theonis Smyrnaei Arithmeticam, Bullialdi versione, lectionis diversitate et annotatione auctam, quod ... submittet Janus Jacobus de Gelder",
+          "year": 1827,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teon-esmirna-expositio.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/teon-esmirna-expositio.json",
+          "sha256": "b1e415ec730414d383404e97561a86fe7e2d36c2257fd7eea323e784b343fa75",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "anthologia-latina",
+      "author": "Antología latina",
+      "title": "Anthologia Latina",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "anthologia-latina",
+          "title": "Anthologia latina sive poesis latinae supplementum, ediderunt Franciscus Buecheler et Alexander Riese",
+          "year": 1869,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/anthologia-latina.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/anthologia-latina.json",
+          "sha256": "e0f994b10b08af3c2973c03cde42e82e6a451069a72d8dfc7fc16e915d67bc79",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "casiodoro-variae",
+      "author": "Casiodoro",
+      "title": "Variae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "casiodoro-variae",
+          "title": "Cassiodori Senatoris Variae",
+          "year": 1894,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/casiodoro-variae.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/casiodoro-variae.json",
+          "sha256": "f5876a7035f72121d4c553b42c671467f027f1ab16bd3ea497d2ad40fb3b776f",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "author": "Festo (y Verrio Flaco)",
+      "title": "De verborum significatu",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "festo-verborum-significatu",
+          "title": "De verborum significatu quae supersunt com Pauli epitome. Edidit Aemilius Thewrewk de Ponor. Pars 1",
+          "year": 1889,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/festo-verborum-significatu.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/festo-verborum-significatu.json",
+          "sha256": "00e01ad423a5c3c68d3c17a4f48200a27816b5c31e380a299a75bf41865e4701",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "author": "Marciano Capela",
+      "title": "De nuptiis Philologiae et Mercurii",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "marciano-capela-nuptiis",
+          "title": "De nuptiis philologiae, et Mercurii, et de septem artibus liberalibus libri novem. Ad codicum manuscriptorum fidem cum notis Bon. Vulcanii, Hug. Grotii, Casp. Barthii, Cl. Salmasii, H.J. Arntzenii, Corn. Vonckii, P. Bondami, L. Walthardi, Jo. Ad. Goezii, Henr. Susii, Marc Meibonii aliorumque. Partim integris partim selectis et commentario perpetuo edidit Ulricus Fridericus Martianus Capella. De nuptiis philologiae, et Mercurii, et de septem artibus liberalibus libri novem Kopp",
+          "year": 1836,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/marciano-capela-nuptiis.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/marciano-capela-nuptiis.json",
+          "sha256": "35e477c3698672bc1a124b5dee5c2ce21c61eed9cce1cdfa2eb5bd890b8d6551",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "author": "Nonio Marcelo",
+      "title": "De compendiosa doctrina",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "nonio-marcelo-doctrina",
+          "title": "Compendiosa doctrina;",
+          "year": 1888,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/nonio-marcelo-doctrina.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/nonio-marcelo-doctrina.json",
+          "sha256": "a367027861ff209fc53b820cbdeccffb052dfca3bc8925b494227efd0d30c71c",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "author": "Paladio",
+      "title": "Opus agriculturae",
+      "catalogue": "github",
+      "locallyIndexedText": [],
+      "declaredRemoteIndexedText": [],
+      "r2FacsimileEditions": [
+        {
+          "editionId": "paladio-opus-agriculturae",
+          "title": "The Middle-English translation of Palladius De re rustica. Pt. 1. Text",
+          "year": 1896,
+          "language": "la",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/paladio-opus-agriculturae.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/paladio-opus-agriculturae.json",
+          "sha256": "e43a5a93b6a499500311c95d5cb63353e8deb9abbe17f30c448a655800e85a84",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
+    }
+  ]
+}

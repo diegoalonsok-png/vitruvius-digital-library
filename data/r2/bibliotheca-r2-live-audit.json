@@ -1,12 +1,53 @@
 {
   "schema": "vdl-bibliotheca-r2-object-audit-v1",
-  "generated": null,
-  "status": "not-checked",
-  "objectIdentityCheck": "not-run",
-  "count": {},
-  "missing": {},
-  "indexedExtraIds": [],
+  "generated": "2026-11-15T03:42:08.266308+00:00",
+  "status": "checked-with-discrepancies",
+  "objectIdentityCheck": "metadata only, no full PDF SHA re-download",
+  "count": {
+    "indexListedWorks": 119,
+    "indexListedFragments": 2510,
+    "r2ObjectsScanned": 2809,
+    "pdfExpected": 117,
+    "pdfPresent": 117,
+    "ocrExpected": 117,
+    "ocrPresent": 117,
+    "editionIndexesExpected": 0,
+    "editionIndexesNotDeclared": 117,
+    "editionIndexesPresent": 0,
+    "corpusOriginalsPresent": 32
+  },
+  "missing": {
+    "pdf": [],
+    "ocr": [],
+    "editionIndex": [],
+    "originalText": [],
+    "indexFragments": []
+  },
+  "indexedExtraIds": [
+    "boecio-institutione-musica",
+    "historia-augusta"
+  ],
   "issues": [
-    "La auditoría S3 de objetos no se ejecutó todavía para este reporte. No hay certificación de disponibilidad."
-  ]
+    "Hay objetos PDF/OCR en R2 sin ficha en el catálogo actual. No borrarlos: revisar su procedencia.",
+    "El índice menciona 2 ID(s) sin entrada PDF actual; revisar antes de eliminar o fusionar."
+  ],
+  "missingIndexIds": [],
+  "uncataloguedObjects": {
+    "pdf": [
+      "clasicos/pdf/boecio-institutione-musica.pdf",
+      "clasicos/pdf/estacio-obras.pdf",
+      "clasicos/pdf/historia-augusta.pdf",
+      "clasicos/pdf/juliano-obras.pdf",
+      "clasicos/pdf/justino-trogo-es.pdf",
+      "clasicos/pdf/prudencio-poemas.pdf"
+    ],
+    "ocr": [
+      "clasicos/texto/boecio-institutione-musica.json",
+      "clasicos/texto/estacio-obras.json",
+      "clasicos/texto/historia-augusta.json",
+      "clasicos/texto/juliano-obras.json",
+      "clasicos/texto/justino-trogo-es.json",
+      "clasicos/texto/prudencio-poemas.json"
+    ]
+  }
 }

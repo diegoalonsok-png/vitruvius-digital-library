@@ -1,7 +1,7 @@
 {
   "schema": "vdl-bibliotheca-federated-status-v1",
-  "generated": "2026-11-15",
-  "methodology": "Cruce de catálogo de cobertura GitHub, registro textual y manifiestos R2; no prueba S3/HTTP ni cotejo autóptico. Índice léxico por raíces y coincidencia de conceptos, no validación semántica completa.",
+  "generated": "2026-11-15T03:42:08.125Z",
+  "methodology": "Cruce de archivos GitHub y manifiestos R2. No acredita disponibilidad HTTP ni cotejo autóptico. El índice es léxico por raíces/conceptos, no semántica editorial validada.",
   "summary": {
     "masterWorks": 271,
     "additionalWorks": 10,
@@ -20,12 +20,16 @@
     "unlinkedR2Editions": 0,
     "candidateEditionsNotInR2": 44,
     "externalMetadataPending": 49,
-    "liveR2ObjectCheck": false
+    "liveR2ObjectCheck": true,
+    "r2ObjectsScanned": 2809,
+    "r2PdfObjectsPresent": 117,
+    "r2CorpusTextsPresent": 32
   },
   "critical": [],
   "issues": [
-    "Índice facsimilar registra 119 obras vs 117 ediciones PDF, verificar IDs.",
-    "49 fichas con metadatos externos pendientes según auditoría de catálogo."
+    "Índice facsimilar declara 119 obras frente a 117 registros PDF; identificar la diferencia en fragmentos.json",
+    "Hay objetos PDF/OCR en R2 sin ficha en el catálogo actual. No borrarlos: revisar su procedencia.",
+    "El índice menciona 2 ID(s) sin entrada PDF actual; revisar antes de eliminar o fusionar."
   ],
   "pending": {
     "uncataloguedLocalTexts": [],
@@ -940,5 +944,14 @@
         "language": "fr"
       }
     ]
+  },
+  "r2LiveEvidence": {
+    "generated": "2026-11-15T03:42:08.266308+00:00",
+    "status": "checked-with-discrepancies",
+    "indexExtraIds": [
+      "boecio-institutione-musica",
+      "historia-augusta"
+    ],
+    "missing": {}
   }
 }
