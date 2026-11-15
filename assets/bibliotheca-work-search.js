@@ -114,6 +114,7 @@ const safeReader=s=>typeof s==="string"&&(
  /^corpus\/[a-z0-9/_-]+\.html$/i.test(s))?s:null;
 const workLink=id=>"classics-work-record.html?work="+encodeURIComponent(id);
 const facLink=id=>"buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(id);
+const periodLabel=w=>historicalPeriods.find(([id])=>id===periodOfWork(w))?.[1]||"";
 let model=null,loadedAliases={};
 function rank(w,query){
  const qs=[normal(query),roman(query)],fields=w.forms||[];
@@ -161,7 +162,7 @@ function render(){
    const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");
    heading.append(make("strong",w.title),make("span"," · "+w.author));li.append(heading);
    const meta=make("p",null,"bws-meta"),languages=[...new Set(w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language))];
-   meta.textContent=[w.genre||"",w.dating||"",languages.length?"Textos con acceso: "+languages.join(", "):w.facsimile?"Facsímil disponible · OCR automático":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
+   meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),languages.length?"Textos con acceso: "+languages.join(", "):w.facsimile?"Facsímil disponible · OCR automático":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
    const actions=make("nav",null,"bws-actions");
    const o=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader)),t=w.versions.find(v=>!["la","grc"].includes(v.language)&&safeReader(v.reader));
    if(o)addLink(actions,"Leer original",safeReader(o.reader));
@@ -188,7 +189,7 @@ function render(){
   const meta=make("p",null,"bws-meta");
   const langs=w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language);
   const avail=[...new Set(langs)];
-  meta.textContent=[w.genre||"",w.dating||""].filter(Boolean).join(" · ")+(w.genre||w.dating?" · ":"")+
+  meta.textContent=[w.genre||"",w.dating||"",periodLabel(w)].filter(Boolean).join(" · ")+(w.genre||w.dating?" · ":"")+
    (avail.length?"Textos con acceso: "+avail.join(", "):w.facsimile?"Facsímil localizado; OCR no cotejado":"Ficha catalográfica; texto no disponible en este índice");
   item.append(meta);
   const actions=make("nav",null,"bws-actions");actions.setAttribute("aria-label","Acciones de "+w.title);
@@ -262,6 +263,9 @@ function mount(parent,data){
   const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
   b.addEventListener("click",()=>{model.letter=l==="Todos"?"":l;model.limit=40;alphabet.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});alphabet.append(b);
  }
+ const historicalHint=make("p",null,"bws-help");
+ historicalHint.append("Sistemas de datación de las fuentes: en Roma, magistraturas consulares y, en algunas cronografías, ab urbe condita (AUC); en Grecia, arcontes, éforos, Olimpiadas y eras locales. Son referencias históricas distintas de la cronología moderna y no se convierten automáticamente sin testimonio documental. ");
+ addLink(historicalHint,"Criterios cronológicos","metodologia-catalogo-clasico.html#cronologia-antigua");
  const originalHint=make("p",null,"bws-help");
  originalHint.textContent="Puede escribir el título directamente en griego politónico o en latín; también buscar por transliteraciones o equivalencias documentadas. La periodización histórica solo se asigna cuando la fecha y la tradición lingüística acreditadas lo permiten.";
  const dateClarifier=make("p",null,"bws-help");
@@ -269,7 +273,7 @@ function mount(parent,data){
  const standards=make("p",null,"bws-help");
  standards.append("Criterios editoriales: datación de composición documentada; género descriptivo y revisable; título original y variantes identificados; referencias Chicago 18 (notas y bibliografía). ");
  addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
- section.append(title,subtitle,form,filters,alphabet,originalHint,dateClarifier,standards,region,help);
+ section.append(title,subtitle,form,filters,alphabet,historicalHint,originalHint,dateClarifier,standards,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
  model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,periodFilter,languageFilter,sortFilter,letter:"",limit:40};
