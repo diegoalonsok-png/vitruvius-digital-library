@@ -10,7 +10,8 @@ const readJSON=async url=>{const response=await fetch(url,{headers:{Accept:"appl
 // The historical witness records are independent from the folio/locus navigation.
 const sourcesPromise=Promise.allSettled([
   readJSON("data/apparatus/collatio-autoptica-h.json"),
-  readJSON("data/codex-h/lecturas/index.json")
+  readJSON("data/codex-h/lecturas/index.json"),
+  readJSON("data/codex-h/cotejo-aparato-h.json")
 ]);
 const folioCache=new Map();
 function readingFor(folio){
@@ -36,6 +37,7 @@ async function render(locus){
     mount.replaceChildren();
     const autoptic=settled[0].status==="fulfilled"?settled[0].value:null;
     const readingIndex=settled[1].status==="fulfilled"?settled[1].value:null;
+    const priorRegister=settled[2].status==="fulfilled"?settled[2].value:null;
     const entries=Array.isArray(autoptic?.entries)?autoptic.entries.filter(e=>e.locus===locus):[];
     // Only the apparatus units already documented in the source register are printed.
     // The source register uses the very same H, om., suppl., lemma ] lectio conventions.
@@ -53,6 +55,33 @@ async function render(locus){
       }
       section.append(ul);
       mount.append(section);
+    }
+    // Prior visual notes are a separate working record, never ratified manuscript readings.
+    // Preserve their existing wording and do not fabricate critical lemmata or sigla.
+    const prior=Array.isArray(priorRegister?.cotejos)?priorRegister.cotejos.filter(e=>e.locus===locus):[];
+    if(prior.length){
+      const section=make("section");
+      section.append(make("h3","H · cotejos anotados anteriormente"));
+      section.append(make("p","Observaciones del registro de trabajo de "+(priorRegister.fecha||"fecha no indicada")+
+        ". Su calificación «confirma» o «precisa» es la del registro original y no supone ratificación editorial ni nueva autopsia en esta consulta."));
+      const ul=make("ul");
+      for(const note of prior){
+        const li=make("li");
+        li.append(make("span","f. "+(note.folio||"sin folio")+" · "+(note.resultado||"pendiente")+" · H: "+(note.H||"sin lectura consignada")));
+        if(note.lecturaEnImagen){
+          const detail=make("details");
+          detail.append(make("summary","Nota de lectura registrada"));
+          detail.append(make("p",note.lecturaEnImagen));
+          li.append(detail);
+        }
+        if(note.folio){
+          li.append(" · ");
+          li.append(link("Comprobar folio","codex-h-folios-local.html?folio="+
+            encodeURIComponent(note.folio.split("–")[0])+"&locus="+encodeURIComponent(locus)));
+        }
+        ul.append(li);
+      }
+      section.append(ul);mount.append(section);
     }
     // Existing folio-to-locus concordance is kept, including honest estimates.
     const list=record.exact||[];
@@ -90,11 +119,22 @@ async function render(locus){
         pre.style.whiteSpace="pre-wrap";
         pre.style.overflowWrap="anywhere";
         details.append(pre);
+        const discrepancies=(reading.lecturasARevisar||[]).filter(item=>item.locus===locus);
+        if(discrepancies.length){
+          details.append(make("p","Diferencias detectadas en la lectura provisional: sólo orientan el examen de la imagen; no constituyen variantes incorporadas al aparato."));
+          const list=make("ul");
+          for(const candidate of discrepancies){
+            const li=make("li",candidate.op+": H (lectura provisional) «"+(candidate.H||"∅")+
+              "»; V514 «"+(candidate.V514||"∅")+"».");
+            list.append(li);
+          }
+          details.append(list);
+        }
         if(reading.method)details.append(make("p","Método consignado: "+reading.method));
       }else details.append(make("p","No se pudo recuperar la lectura semidiplomática de este folio; consultar la fotografía."));
       mount.append(details);
     }
-    if(!autoptic||!readingIndex){
+    if(!autoptic||!readingIndex||!priorRegister){
       mount.append(make("p","Uno de los registros de H no pudo consultarse. Se conservan los enlaces materiales, sin suplir lecturas ausentes."));
     }
     appendReferences(locus);
