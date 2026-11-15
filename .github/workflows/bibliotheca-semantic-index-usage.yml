@@ -4,12 +4,16 @@ on:
     paths:
       - 'assets/bibliotheca-corpus-search.js'
       - 'scripts/test-bibliotheca-semantic-index-usage.mjs'
+      - 'scripts/test-bibliotheca-remote-conceptus.mjs'
+      - 'data/r2/corpus-conceptus-manifest.json'
       - '.github/workflows/bibliotheca-semantic-index-usage.yml'
   push:
     branches: [main]
     paths:
       - 'assets/bibliotheca-corpus-search.js'
       - 'scripts/test-bibliotheca-semantic-index-usage.mjs'
+      - 'scripts/test-bibliotheca-remote-conceptus.mjs'
+      - 'data/r2/corpus-conceptus-manifest.json'
       - '.github/workflows/bibliotheca-semantic-index-usage.yml'
   workflow_dispatch:
 permissions:
@@ -27,3 +31,5 @@ jobs:
         run: node --check assets/bibliotheca-corpus-search.js
       - name: Verify filtered registry and safe fallback
         run: node scripts/test-bibliotheca-semantic-index-usage.mjs
+      - name: Check SHA-based R2 Conceptus filter, positive passages and safe fallback
+        run: node scripts/test-bibliotheca-remote-conceptus.mjs
