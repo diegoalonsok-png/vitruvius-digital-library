@@ -23,6 +23,7 @@ FUENTES = {
     "r2": ROOT / "data/r2/catalogo-clasicos-r2.json",
     "indice": ROOT / "data/r2/indice-semantico-manifest.json",
     "registro": ROOT / "data/classics-corpus/search-registry.json",
+    "vinculos": ROOT / "data/r2/vinculos-repertorio.json",
 }
 
 
@@ -35,6 +36,7 @@ def main():
     r2 = leer(FUENTES["r2"])
     indice = leer(FUENTES["indice"])
     registro = leer(FUENTES["registro"])
+    vinculos = leer(FUENTES["vinculos"])
     if not repertorio:
         raise SystemExit("Falta el catálogo maestro")
 
@@ -44,6 +46,19 @@ def main():
         "obras": len(repertorio["works"]),
         "nota": "Obras del repertorio grecolatino. Facsímiles y páginas indexadas se alojan en Cloudflare R2.",
     }
+    if vinculos:
+        adicionales = vinculos.get("obrasNuevas") or []
+        ids = [row["r2"] for row in adicionales]
+        if len(set(ids)) != len(ids):
+            raise SystemExit("Obras adicionales duplicadas en vinculos-repertorio")
+        if r2 and not set(ids) <= {row["id"] for row in r2["items"]}:
+            raise SystemExit("Obra adicional sin facsímil declarado en R2")
+        if set(ids) & {row["id"] for row in repertorio["works"]}:
+            raise SystemExit("Obra adicional ya contada en el repertorio principal")
+        cifras["obrasAdicionales"] = len(ids)
+        cifras["obrasTotalesDeclaradas"] = cifras["obras"] + len(ids)
+        cifras["notaTotal"] = ("Obras declaradas: repertorio principal más incorporaciones "
+            "adicionales documentadas; no contar ediciones ni traducciones como nuevas obras.")
     if r2:
         propios = [x for x in r2["items"] if not x.get("coleccion")]
         recepcion = [x for x in r2["items"] if x.get("coleccion") == "recepcion-vitruviana"]
