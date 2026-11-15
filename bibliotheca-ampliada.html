@@ -32,6 +32,13 @@ h2{font:400 25px/1.3 Georgia,serif;margin-top:34px}
 <p class="intro">Ediciones griegas y latinas de <strong>dominio público</strong> que no estaban entre los PDF de la biblioteca: historiadores, filósofos, trágicos, oradores, novelistas, geógrafos, matemáticos y agrónomos. Se prefieren los volúmenes <strong>bilingües Loeb</strong> (texto griego o latino frente a la traducción inglesa), las ediciones con el <strong>texto griego</strong> y las <strong>traducciones castellanas</strong> anteriores a 1929. Cada libro trae su PDF, el texto de cada página y un índice de conceptos que lo conecta con el resto de la biblioteca.</p></header>
 <p class="small"><a href="classics-r2-parallel.html">Abrir dos visores de facsímiles en paralelo</a> · <a href="classics-parallel-reader.html">Comparación textual por pasajes</a></p>
 <p id="estado" class="small" role="status">Cargando el catálogo…</p>
+<section id="bibliotheca-sync-panel" aria-labelledby="bib-sync-title" style="border:1px solid rgba(128,128,128,.45);padding:14px 18px;margin:16px 0">
+<h2 id="bib-sync-title" style="font-size:21px;margin:0 0 7px">Estado de catalogación e indexación · GitHub y R2</h2>
+<p id="bib-sync-summary" class="small" role="status">Consultando el inventario federado…</p>
+<p id="bib-sync-limits" class="small">La indexación léxica por raíces y conceptos sobre OCR no equivale a una edición crítica ni acredita alineación de traducciones.</p>
+<details class="small"><summary>Incidencias y documentos pendientes de cotejo</summary><ul id="bib-sync-issues"></ul></details>
+<p class="cita"><a href="data/r2/bibliotheca-panel-sync.json">Informe del catálogo e índices (JSON)</a> · <a href="data/r2/bibliotheca-r2-live-audit.json">Auditoría del almacenamiento R2 (si está publicada)</a></p>
+</section>
 
 <div class="controles">
 <label>Buscar autor u obra<input id="q" type="search" placeholder="Platón, geografía, Loeb…"></label>
@@ -114,6 +121,30 @@ Promise.all([
  ["#q","#lengua","#concepto","#edicion"].forEach(s=>$(s).addEventListener("input",pintar));
  pintar();
 }).catch(e=>{$("#estado").textContent="No se pudo cargar el catálogo: "+e.message});
+})();
+</script>
+<script>
+(()=>{
+ const main=document.getElementById("bib-sync-summary"),limits=document.getElementById("bib-sync-limits"),issues=document.getElementById("bib-sync-issues");
+ if(!main)return;
+ fetch("data/r2/bibliotheca-panel-sync.json",{cache:"no-cache"})
+  .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+  .then(doc=>{
+   if(doc.schema!=="vdl-bibliotheca-federated-status-v1")throw Error("Esquema incompatible");
+   const s=doc.summary||{},num=x=>Number(x||0).toLocaleString("es-AR");
+   main.textContent=num(s.masterWorks)+" obras del repertorio + "+num(s.additionalWorks)+" obras adicionales · "+
+    num(s.r2PdfEditions)+" ediciones PDF R2 · "+num(s.textVersions)+" versiones textuales · "+
+    num(s.indexedWorks)+" obras con texto registrado · "+num(s.worksWithoutAnyText)+" sin texto registrado.";
+   const verification=s.liveR2ObjectCheck?"Comprobación de inventario R2 por claves S3 realizada.":"Objetos R2 no comprobados directamente en esta instantánea; los enlaces del catálogo son declarativos.";
+   const diff=s.r2IndexWorksDeclared!==s.r2PdfEditions?" Índice de facsímiles: "+num(s.r2IndexWorksDeclared)+" obras declaradas frente a "+num(s.r2PdfEditions)+" registros PDF (requiere revisión).":"";
+   limits.textContent=verification+diff+" Búsqueda léxica/por conceptos sobre OCR: no es colación filológica ni alineación certificada.";
+   issues.replaceChildren();
+   for(const value of [...(doc.critical||[]),...(doc.issues||[])].slice(0,30)){
+    const li=document.createElement("li");li.textContent=value;issues.append(li);
+   }
+   if(!issues.children.length){const li=document.createElement("li");li.textContent="Sin incidencias declaradas en el corte del inventario; comprobación académica individual todavía necesaria.";issues.append(li);}
+  })
+  .catch(error=>{main.textContent="No se pudo verificar la sincronización del inventario: "+error.message;});
 })();
 </script>
 <script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script>
