@@ -4,7 +4,7 @@ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
 const page=await browser.newPage();
 try{
  await page.goto('http://127.0.0.1:8766/apparatus-bude.html?locus=1.1.1&edition=v514&translation=es',{waitUntil:'domcontentloaded'});
- await page.locator('#ab-search-status').getByText(/loci disponibles/).waitFor({timeout:30000});
+ await page.waitForFunction(()=>document.querySelector('#ab-search-status')?.textContent.includes('loci disponibles'),{timeout:30000});
  const cases=[
   ['simmetria','1.1.4',/symmetr/i],
   ['symmetria','1.1.4',/symmetr/i],
