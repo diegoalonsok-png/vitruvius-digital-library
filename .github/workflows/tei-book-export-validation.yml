@@ -1,0 +1,45 @@
+name: TEI · verificar las 30 exportaciones documentales
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'assets/tei-book-export.mjs'
+      - 'scripts/test-tei-book-export.mjs'
+      - 'scripts/validate-tei-book-exports.py'
+      - 'data/structured/**'
+      - 'data/catalog.json'
+      - '.github/workflows/tei-book-export-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/tei-book-export.mjs'
+      - 'scripts/test-tei-book-export.mjs'
+      - 'scripts/validate-tei-book-exports.py'
+      - 'data/structured/**'
+      - 'data/catalog.json'
+      - '.github/workflows/tei-book-export-validation.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ejecutar el exportador real en las 30 combinaciones
+        run: node scripts/test-tei-book-export.mjs
+      - name: Validar XML y fidelidad al corpus estructurado
+        run: python scripts/validate-tei-book-exports.py
+      - name: Conservar los XML de prueba
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tei-export-validation
+          path: reports/tei-export-validation/*.xml
+          if-no-files-found: warn
