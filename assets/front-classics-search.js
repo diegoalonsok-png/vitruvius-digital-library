@@ -7,13 +7,17 @@ const $=id=>document.getElementById(id),mk=(tag,text,cls)=>{const el=document.cr
 const safe=s=>{try{const u=new URL(String(s||""),location.href);return u.origin===location.origin&&/\/[a-z0-9/_-]+\.html$/i.test(u.pathname)?u.pathname+u.search+u.hash:""}catch{return ""}};
 const normalize=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ").trim();
 function init(){
- const form=$("search-form"),query=$("query");if(!form||!query||$("front-classics-search"))return;
+ const form=$("search-form");if(!form||$("front-classics-search"))return;
  const panel=mk("section",null,"front-classics-search");panel.id="front-classics-search";
  const head=mk("h3","Ampliar la búsqueda al corpus clásico griego y latino");
  const explain=mk("p","El buscador principal mantiene sus tres ediciones de Vitruvio. Esta capa adicional busca pasajes en otras obras de la Bibliotheca y distingue resultados textuales de fichas bibliográficas. No equivale a una búsqueda morfológica por lema.");
  const row=mk("div",null,"front-classics-controls");
- const active=mk("input");active.type="checkbox";active.id="front-classics-enabled";active.checked=true;
- const label=mk("label");label.htmlFor=active.id;label.append(active,document.createTextNode(" Incluir textos originales de Bibliotheca en la próxima búsqueda"));
+ const query=mk("input");query.id="front-classics-query";query.type="search";query.maxLength=200;
+ query.placeholder="Buscar en clásicos: λόγος, domus, architectura…";
+ query.setAttribute("aria-label","Buscar en Bibliotheca Graeca et Latina");
+ query.style.cssText="width:100%;min-height:43px;padding:10px;background:#0e151b;color:#fff;border:1px solid #8a8c8c;border-radius:6px";
+ const ownSearch=mk("label");ownSearch.style.cssText="display:block;font:13px system-ui";
+ ownSearch.append(mk("span","Buscar en las obras clásicas"),query);
  const lang=mk("select");lang.id="front-classics-lang";lang.setAttribute("aria-label","Lengua del corpus");
  for(const [val,t] of [["","Latín y griego"],["la","Solo latín"],["grc","Solo griego"]])lang.append(new Option(t,val));
  const work=mk("select");work.id="front-classics-work";work.setAttribute("aria-label","Obra del corpus");work.append(new Option("Todas las obras indexadas",""));
@@ -21,8 +25,8 @@ function init(){
  for(const [value,name] of [["literal","Texto literal"],["lemma","Lema y formas conocidas"],["concept","Conceptus multilingüe"],["passage","Párrafos y loci"]])mode.append(new Option(name,value));
  const locus=mk("input");locus.id="front-classics-locus";locus.type="search";locus.maxLength=150;locus.placeholder="Locus (opcional)";locus.setAttribute("aria-label","Referencia de locus para filtrar");
  const launch=mk("button","Buscar en la Bibliotheca");launch.type="button";
- row.append(label,lang,work,mode,locus,launch);
- const status=mk("p","Búsqueda ampliada activada: el próximo envío buscará en Vitruvio y en las transcripciones clásicas; puede desactivar esta opción para una consulta rápida.","front-classics-status");
+ row.append(lang,work,mode,locus,launch);
+ const status=mk("p","Buscador independiente de obras griegas y latinas: escribí un término y pulsá Buscar en la Bibliotheca.","front-classics-status");
  status.setAttribute("role","status");status.setAttribute("aria-live","polite");
  const titles=mk("div",null,"front-classics-titles");
  const result=mk("ol",null,"front-classics-results");
@@ -48,7 +52,7 @@ function init(){
   const a=foldRef(ref),b=foldRef(wanted);
   return !b||a===b||a.startsWith(b+".");
  };
- panel.append(head,explain,row,status,titles,result,more,catalog,caveat);
+ panel.append(head,explain,ownSearch,row,status,titles,result,more,catalog,caveat);
  form.insertAdjacentElement("afterend",panel);
  let versions=[],current=0,items=[],count=0,loaded=false;
  const foldTitle=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").replace(/[^a-z0-9\u0370-\u03ff\u1f00-\u1fff]+/gi," ").toLowerCase().trim();
@@ -133,7 +137,8 @@ function init(){
   finally{if(id===current)launch.disabled=false}
  }
  launch.addEventListener("click",search);
- form.addEventListener("submit",()=>{if(active.checked)void search();else {current++;items=[];result.replaceChildren();titles.replaceChildren();more.hidden=true;status.textContent="Búsqueda limitada a Vitruvio. Active el corpus o use el botón de Bibliotheca."}});
+ query.addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();void search()}});
+ const initial=new URLSearchParams(location.search).get("biblioQ");if(initial)query.value=initial;
  for(const select of [lang,work,mode,locus])select.addEventListener("change",()=>{current++;items=[];result.replaceChildren();more.hidden=true;status.textContent="Filtros modificados. Ejecute la búsqueda del corpus."});
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
