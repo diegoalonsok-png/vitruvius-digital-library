@@ -11,7 +11,8 @@ const readJSON=async url=>{const response=await fetch(url,{headers:{Accept:"appl
 const sourcesPromise=Promise.allSettled([
   readJSON("data/apparatus/collatio-autoptica-h.json"),
   readJSON("data/codex-h/lecturas/index.json"),
-  readJSON("data/codex-h/cotejo-aparato-h.json")
+  readJSON("data/codex-h/cotejo-aparato-h.json"),
+  readJSON("data/apparatus/cotejo-selectivo-v514-v554-h.json")
 ]);
 const folioCache=new Map();
 function readingFor(folio){
@@ -38,6 +39,7 @@ async function render(locus){
     const autoptic=settled[0].status==="fulfilled"?settled[0].value:null;
     const readingIndex=settled[1].status==="fulfilled"?settled[1].value:null;
     const priorRegister=settled[2].status==="fulfilled"?settled[2].value:null;
+    const authorialH=settled[3].status==="fulfilled"?settled[3].value:null;
     const entries=Array.isArray(autoptic?.entries)?autoptic.entries.filter(e=>e.locus===locus):[];
     // Only the apparatus units already documented in the source register are printed.
     // The source register uses the very same H, om., suppl., lemma ] lectio conventions.
@@ -55,6 +57,33 @@ async function render(locus){
       }
       section.append(ul);
       mount.append(section);
+    }
+    // V514/V554 authorial collation is selective. Reuse ONLY its existing Budé-style units;
+    // do not promote a proposed cross-source reading to photographic autopsy.
+    const authorialEntries=Array.isArray(authorialH?.entries)?authorialH.entries.filter(e=>e.locus===locus):[];
+    if(authorialEntries.length){
+      const section=make("section");
+      section.append(make("h3","H · cotejo selectivo de V514 y V554"));
+      section.append(make("p","Estas entradas proceden del cotejo selectivo ya documentado en las ediciones. Una entrada no acredita la colación integral del locus, del folio ni del libro."));
+      const ul=make("ul");
+      for(const item of authorialEntries){
+        const li=make("li");
+        const unit=item.criticalUnit?.display;
+        if(unit)li.append(make("code",unit));
+        else li.append(make("span",String(item.lemma||"Lema no establecido")+" · "+String(item.reading||"lectura sin registrar")));
+        li.append(make("p",item.verifiedAutopsy===true?
+          "Cotejo visual puntual registrado; la lectura permanece sujeta a la cautela editorial de la fuente.":
+          "Lectura candidata o cotejo parcial; no atribuida aquí a autopsia visual del lema."));
+        if(item.criticalUnit?.caution)li.append(make("p",item.criticalUnit.caution));
+        if(item.note)li.append(make("p",item.note));
+        if(item.sources?.length)li.append(make("p","Referencias del aparato de origen: "+item.sources.join(", ")));
+        if(item.folio){
+          li.append(link("Consultar H, f. "+item.folio,
+            "codex-h-folios-local.html?folio="+encodeURIComponent(item.folio.split("–")[0])+"&locus="+encodeURIComponent(locus)));
+        }
+        ul.append(li);
+      }
+      section.append(ul);mount.append(section);
     }
     // Prior visual notes are a separate working record, never ratified manuscript readings.
     // Preserve their existing wording and do not fabricate critical lemmata or sigla.
@@ -134,7 +163,7 @@ async function render(locus){
       }else details.append(make("p","No se pudo recuperar la lectura semidiplomática de este folio; consultar la fotografía."));
       mount.append(details);
     }
-    if(!autoptic||!readingIndex||!priorRegister){
+    if(!autoptic||!readingIndex||!priorRegister||!authorialH){
       mount.append(make("p","Uno de los registros de H no pudo consultarse. Se conservan los enlaces materiales, sin suplir lecturas ausentes."));
     }
     appendReferences(locus);
