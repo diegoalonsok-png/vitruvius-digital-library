@@ -65,7 +65,7 @@ try {
   const page=await open("classics-text-reader.html?work=augustine-civitate-dei&lang=la&locus=11.24&q=logos&expanded=1");
   try{
    await page.locator("#passages p").first().waitFor({timeout:16000});
-   await page.waitForFunction(()=>/[1-9]\\d* pasajes/.test(document.querySelector(".search-summary")?.textContent||""),null,{timeout:16000});
+   await page.waitForFunction(()=>/[1-9][0-9]* pasajes/.test(document.querySelector(".search-summary")?.textContent||""),null,{timeout:16000});
    const mode=await page.locator("#search-mode").inputValue();
    assert.equal(mode,"lexical","La URL debe mantener el modo ampliado");
    const summary=await page.locator(".search-summary").innerText();
