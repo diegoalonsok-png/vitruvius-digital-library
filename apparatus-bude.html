@@ -17,7 +17,19 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 .ab-sub{max-width:88ch;line-height:1.65;font-size:15px}.ab-notice{border-left:3px solid var(--ab-accent);padding:11px 15px;background:#eee9de;font:13px/1.65 system-ui;margin:20px 0}
 .ab-tools{display:flex;flex-wrap:wrap;gap:12px;align-items:end;border-top:1px solid var(--ab-rule);border-bottom:1px solid var(--ab-rule);padding:16px 0;margin:22px 0}
 .ab-tools label{display:grid;gap:5px;font:600 12px system-ui}.ab-tools select,.ab-tools input,.ab-tools button{padding:10px 12px;min-height:43px;background:var(--ab-paper);color:var(--ab-ink);border:1px solid #9f9684;border-radius:3px;font:14px system-ui}
-.ab-tools input{width:160px}.ab-tools .ab-locus-picker{display:flex;flex-wrap:wrap;gap:8px;align-items:end}.ab-tools .ab-locus-picker select{min-width:92px}.ab-tools #pick-chapter{min-width:115px}.ab-tools button{cursor:pointer}.ab-tools button:hover{background:#eee6d8}.ab-status{font:13px/1.55 system-ui;min-height:20px;color:var(--ab-muted);margin:12px 0}
+.ab-tools input{width:160px}
+.ab-latin-search{border:1px solid var(--ab-rule);background:var(--ab-paper);padding:16px 18px;margin:0 0 22px}
+.ab-latin-search h2{font:normal 22px Georgia,serif;margin:0 0 12px}
+.ab-latin-search form{display:flex;gap:10px;align-items:end;flex-wrap:wrap}
+.ab-latin-search label{display:grid;gap:5px;font:600 12px system-ui;flex:1 1 240px}
+.ab-latin-search input,.ab-latin-search select,.ab-latin-search button{padding:10px 12px;min-height:42px;background:var(--ab-paper);color:var(--ab-ink);border:1px solid #9f9684;border-radius:3px;font:14px system-ui}
+.ab-latin-search input{width:100%;box-sizing:border-box}
+.ab-latin-search .ab-search-terms{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.ab-latin-search .ab-search-terms button{min-height:34px;padding:6px 10px;cursor:pointer}
+.ab-search-hit{border-top:1px solid var(--ab-rule);padding:11px 0}
+.ab-search-hit p{font:16px/1.6 Georgia,serif;margin:7px 0}
+.ab-search-hit button{cursor:pointer;font-weight:600}
+#ab-search-status{font:13px/1.6 system-ui;color:var(--ab-muted);margin:10px 0}.ab-tools .ab-locus-picker{display:flex;flex-wrap:wrap;gap:8px;align-items:end}.ab-tools .ab-locus-picker select{min-width:92px}.ab-tools #pick-chapter{min-width:115px}.ab-tools button{cursor:pointer}.ab-tools button:hover{background:#eee6d8}.ab-status{font:13px/1.55 system-ui;min-height:20px;color:var(--ab-muted);margin:12px 0}
 .ab-leaves{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ab-rule);border:1px solid var(--ab-rule)}
 .ab-leaf{min-width:0;background:var(--ab-paper);padding:clamp(20px,3vw,42px);display:flex;flex-direction:column;min-height:500px}
 .ab-leaf-head{text-align:center;padding:0 0 18px;border-bottom:1px solid var(--ab-rule);margin-bottom:24px}
@@ -72,6 +84,31 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <label>Traducción (Kurilo)<select id="translation-edition"><option value="es">Castellano · V514</option><option value="fr">Francés · V554</option><option value="en">Inglés · V297</option></select></label>
 <label>Visualización<select id="mode"><option value="all">Texto y aparato</option><option value="v514">Solo decisiones V514</option><option value="source">Comparación documental</option></select></label>
 </form>
+<section class="ab-latin-search" aria-labelledby="ab-search-heading">
+<h2 id="ab-search-heading">Buscar palabras y conceptos en Vitruvio</h2>
+<form id="ab-search-form" role="search">
+<label>Palabra o concepto, en latín, español o inglés<input id="ab-search-query" type="search" maxlength="180" placeholder="arquitecto · architect · architectus · symmetria · decor" autocomplete="off"></label>
+<label>Tipo de búsqueda<select id="ab-search-mode"><option value="concept">Conceptos y formas latinas</option><option value="phrase">Frase literal</option><option value="all">Todas las palabras</option></select></label>
+<button type="submit">Buscar loci</button>
+<button type="button" id="ab-search-reset">Limpiar</button>
+</form>
+<div class="ab-search-terms" role="group" aria-label="Búsquedas latinas frecuentes">
+<button type="button" data-ab-term="arquitecto">arquitecto / architectus</button>
+<button type="button" data-ab-term="arquitectura">architectura</button>
+<button type="button" data-ab-term="symmetria">symmetria</button>
+<button type="button" data-ab-term="decor">decor</button>
+<button type="button" data-ab-term="firmitas">firmitas</button>
+<button type="button" data-ab-term="utilitas">utilitas</button>
+<button type="button" data-ab-term="venustas">venustas</button>
+<button type="button" data-ab-term="eurythmia">eurythmia</button>
+<button type="button" data-ab-term="ordinatio">ordinatio</button>
+<button type="button" data-ab-term="dispositio">dispositio</button>
+</div>
+<p class="ab-sub">Lista de pasajes donde aparece el término en el latín V514, con formas latinas equivalentes controladas. Cada resultado abre directamente su locus. Las coincidencias no constituyen variantes críticas.</p>
+<p id="ab-search-status" role="status" aria-live="polite">Preparando índice latino…</p>
+<div id="ab-search-results"></div>
+<button type="button" id="ab-search-more" hidden>Mostrar más resultados</button>
+</section>
 <p id="status" class="ab-status" role="status" aria-live="polite">Cargando los datos existentes…</p>
 <div id="ab-textual-status" role="status" aria-live="polite" style="padding:12px 16px;border:1px solid var(--ab-rule);font:13px/1.65 system-ui;margin:0 0 20px"></div>
 <section aria-labelledby="triple-title">
@@ -141,6 +178,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 </section>
 <section id="vdl-edition-references" aria-label="Referencias bibliográficas de las ediciones de Diego Kurilo"></section>
 </main>
+<script src="assets/apparatus-locus-search.js?v=20261115-1"></script>
 <script>
 (()=>{"use strict";
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
@@ -277,7 +315,7 @@ $("#copy").addEventListener("click",async()=>{
  [data,comp,collation]=await Promise.all(resp.map(r=>r.json()));
  try{const fixResponse=await fetch("data/apparatus/ocr-reading-corrections.json",{headers:{Accept:"application/json"}});if(fixResponse.ok){const candidate=await fixResponse.json();if(candidate&&candidate.loci)ocrFixes=candidate}}catch(e){console.warn("No se pudieron cargar los ajustes de lectura OCR",e)}
  if(!Array.isArray(data.passages)||!Array.isArray(comp.loci)||!collation.loci)throw Error("Estructura de datos no reconocida");
- rows=data.passages;translations.es=data;configureLocusPicker();
+ rows=data.passages;translations.es=data;configureLocusPicker();window.VDLApparatusLocusSearch?.init(rows,load);
  const additional=[["fr","data/structured/recensio-fr.json"],["en","data/structured/theory-en.json"]];
  await Promise.all(additional.map(async ([key,url])=>{try{const r=await fetch(url);if(!r.ok)throw Error("HTTP "+r.status);const obj=await r.json();if(!Array.isArray(obj.passages))throw Error("Sin pasajes");translations[key]=obj}catch(e){translations[key]={passages:[]};console.warn("Traducción "+key+" no disponible: "+e.message)}}));
  const sig=$("#sigla");for(const [k,v] of Object.entries(comp.testimonios||{})){const dt=document.createElement("dt");dt.textContent=k;const dd=document.createElement("dd");dd.textContent=v;sig.append(dt,dd)}
