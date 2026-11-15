@@ -15,7 +15,7 @@ if(data.schema!=="vdl-bibliotheca-federated-status-v1"||!data.summary)throw Erro
 const s=data.summary;mount.replaceChildren();
 mount.append(el("h2","Bibliotheca · estado del catálogo e índices"));
 mount.append(el("p","Corte documental: "+(data.generated||"no declarado")+" · Las obras, ediciones PDF, transcripciones e índices son categorías independientes.","bfs-note"));
-const metrics=[["Obras del repertorio",s.masterWorks],["Adiciones declaradas",s.additionalWorks],["Versiones textuales",s.textVersions],["Obras con texto",s.indexedWorks],["Obras sin texto",s.worksWithoutAnyText],["PDF R2 catalogados",s.r2PdfEditions],["Textos remotos declarados",s.remoteTextFilesDeclared],["Entradas del índice R2",s.r2IndexWorksDeclared]];
+const metrics=[["Total de obras declaradas",s.totalWorksDeclared],["Obras del repertorio",s.masterWorks],["Adiciones declaradas",s.additionalWorks],["Versiones textuales",s.textVersions],["Obras con texto",s.indexedWorks],["Obras sin texto",s.worksWithoutAnyText],["PDF R2 catalogados",s.r2PdfEditions],["Textos remotos declarados",s.remoteTextFilesDeclared],["Entradas del índice R2",s.r2IndexWorksDeclared]];
 if(ocr?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
  metrics.push(["Sin transcripción, pero con búsqueda OCR R2",ocr.counts.withoutTextButWithR2OcrIndex]);
  metrics.push(["Pendientes de transcripción o facsímil indexable",ocr.counts.withoutTextOrLinkedR2OcrIndex]);
