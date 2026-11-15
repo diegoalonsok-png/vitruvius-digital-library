@@ -17,7 +17,7 @@ const aliases={
  arquitecto:"architectus",arquitectos:"architectus",architect:"architectus",architects:"architectus",
  arquitecta:"architectus",arquitectas:"architectus",
  arquitectura:"architectura",architecture:"architectura",
- simetria:"symmetria",symmetry:"symmetria",proporcion:"symmetria",
+ simetria:"symmetria",simmetria:"symmetria",symetria:"symmetria",simetría:"symmetria",symmetry:"symmetria",proporcion:"symmetria",
  decoro:"decor",decorum:"decor",propriety:"decor",
  firmeza:"firmitas",solidez:"firmitas",strength:"firmitas",
  utilidad:"utilitas",utility:"utilitas",
@@ -30,7 +30,7 @@ const fold=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLo
 const words=s=>fold(s).match(/[a-z]+/g)||[];
 const $=s=>document.querySelector(s);
 function init(rows,openLocus,syncTerm){
- const query=$("#ab-search-query"),mode=$("#ab-search-mode"),status=$("#ab-search-status"),list=$("#ab-search-results"),more=$("#ab-search-more");
+ const query=$("#ab-search-query"),mode=$("#ab-search-mode"),status=$("#ab-search-status"),list=$("#ab-search-results"),more=$("#ab-search-more"),synchronized=$("#ab-synchronized-locus");
  if(!query||!Array.isArray(rows))return;
  const corpus=rows.filter(p=>typeof p.latin==="string"&&p.locus).map(p=>({...p,normalizedWords:words(p.latin)}));
  let found=[],shown=0,needle=[];
@@ -41,7 +41,7 @@ function init(rows,openLocus,syncTerm){
   for(const hit of found.slice(shown,shown+20)){
    const item=document.createElement("article");item.className="ab-search-hit";
    const button=document.createElement("button");button.type="button";button.textContent="Vitruvio "+display(hit.locus)+" · abrir pasaje";
-   button.addEventListener("click",()=>{syncTerm?.(needle);openLocus(hit.locus);$("#triple-title")?.scrollIntoView({behavior:"smooth",block:"start"})});
+   button.addEventListener("click",()=>{syncTerm?.(needle);openLocus(hit.locus);if(synchronized)synchronized.textContent="Locus sincronizado: "+display(hit.locus)+" · Rose, Krohn y Kurilo";$("#triple-title")?.scrollIntoView({behavior:"smooth",block:"start"})});
    const p=document.createElement("p");p.lang="la";
    const raw=hit.latin;
    // Use actual word offsets in the original Latin, never the folded-text offsets.
@@ -81,12 +81,12 @@ function init(rows,openLocus,syncTerm){
    return mode.value==="all"?needle.every(t=>present.has(t)):needle.some(t=>present.has(t));
   });
   syncTerm?.(needle);
-  if(found.length)openLocus(found[0].locus);
+  if(found.length){openLocus(found[0].locus);if(synchronized)synchronized.textContent="Locus sincronizado: "+display(found[0].locus)+" · Rose, Krohn y Kurilo";}else if(synchronized)synchronized.textContent="Sin locus encontrado para sincronizar.";
   status.textContent=found.length+" loci encontrados en el latín V514"+(canonical!==tokens[0]?" · concepto latino: "+canonical:"")+". Ordenados por libro y pasaje. No se incluyen coincidencias OCR.";
   draw();
  }
  $("#ab-search-form").addEventListener("submit",e=>{e.preventDefault();run()});
- $("#ab-search-reset").addEventListener("click",()=>{query.value="";syncTerm?.([]);found=[];shown=0;list.replaceChildren();more.hidden=true;status.textContent="Búsqueda limpia. Introducí otro término."});
+ $("#ab-search-reset").addEventListener("click",()=>{query.value="";syncTerm?.([]);if(synchronized)synchronized.textContent="";found=[];shown=0;list.replaceChildren();more.hidden=true;status.textContent="Búsqueda limpia. Introducí otro término."});
  more.addEventListener("click",draw);
  document.querySelectorAll("[data-ab-term]").forEach(btn=>btn.addEventListener("click",()=>{query.value=btn.dataset.abTerm;mode.value="concept";run()}));
  status.textContent=corpus.length+" loci disponibles para búsqueda de texto latino y conceptos.";
