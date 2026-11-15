@@ -7,7 +7,7 @@ import vm from "node:vm";
 
 const js=readFileSync("assets/bibliotheca-corpus-search.js","utf8");
 const BASE="https://libros.vitruvius-digital-library.org/corpus/";
-const URL=BASE+"indice/semantic-conceptus-v1.json";
+const REMOTE_INDEX_URL=BASE+"indice/semantic-conceptus-v1.json";
 const remote=BASE+"roman-la.json";
 const sha="a".repeat(64),manifestSha="b".repeat(64),dictionarySha="c".repeat(64);
 const entries=[
@@ -16,7 +16,7 @@ const entries=[
  ...Array.from({length:12},(_,i)=>({workId:"extra-"+i,language:"en",format:"json-passages",path:"data/classics-corpus/extra-"+i+"-en.json",reader:"classics-text-reader.html?work=extra-"+i+"&lang=en"}))
 ];
 const source={schema:"vdl-corpus-r2-1",base:BASE,obras:[{archivo:"roman-la.json",workId:"roman",language:"la",pasajes:1,sha256:sha}]};
-const meta={schema:"vdl-r2-corpus-conceptus-manifest-v1",url:URL,editionCount:1,sourceManifestSha256:manifestSha,dictionarySha};
+const meta={schema:"vdl-r2-corpus-conceptus-manifest-v1",url:REMOTE_INDEX_URL,editionCount:1,sourceManifestSha256:manifestSha,dictionarySha};
 const index=(concepts={})=>({schema:"vdl-r2-corpus-conceptus-index-v1",editionCount:1,
  sourceManifestSha256:manifestSha,dictionarySha,documents:[{
   path:remote,workId:"roman",language:"la",sha256:sha,passages:1,concepts
@@ -31,7 +31,7 @@ const data={
 };
 async function run(remoteIndex,metaOverride=null){
  const requested=[];
- const documentData={...data,[URL]:remoteIndex};
+ const documentData={...data,[REMOTE_INDEX_URL]:remoteIndex};
  if(metaOverride)documentData["data/r2/corpus-conceptus-manifest.json"]=metaOverride;
  const fetch=async url=>{
   requested.push(String(url));
