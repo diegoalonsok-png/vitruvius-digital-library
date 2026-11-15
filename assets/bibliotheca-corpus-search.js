@@ -195,12 +195,48 @@ async function semanticPostings(){
   .catch(()=>null);
  return semanticPostingTask;
 }
+/* Index of Conceptus attestations in the 32 R2 corpus originals.
+   Optional speed-up only: if absent/stale, live source verification remains.
+   No postings are treated as proof without re-reading the attested passage. */
+let remoteConceptusTask=null;
+async function remoteConceptusPostings(){
+ if(!remoteConceptusTask)remoteConceptusTask=(async()=>{
+  const get=async url=>{const r=await fetch(url,{cache:"no-cache"});if(!r.ok)throw Error("HTTP "+r.status);return r.json()};
+  const [meta,source]=await Promise.all([
+   get("data/r2/corpus-conceptus-manifest.json"),
+   get("data/r2/corpus-manifest.json")
+  ]);
+  const approved="https://libros.vitruvius-digital-library.org/corpus/indice/semantic-conceptus-v1.json";
+  if(meta.schema!=="vdl-r2-corpus-conceptus-manifest-v1"||
+     meta.url!==approved||!Array.isArray(source.obras)||source.base!=="https://libros.vitruvius-digital-library.org/corpus/")
+   return null;
+  const index=await get(meta.url);
+  if(index.schema!=="vdl-r2-corpus-conceptus-index-v1"||
+     index.sourceManifestSha256!==meta.sourceManifestSha256||
+     index.dictionarySha256!==meta.dictionarySha256||
+     index.editionCount!==meta.editionCount||
+     index.editionCount!==index.documents?.length||
+     source.obras.length!==meta.editionCount)return null;
+  const sourceByUrl=new Map(source.obras.map(e=>[source.base+e.archivo,e]));
+  const byUrl=new Map(index.documents.map(d=>[d.path,d]));
+  const declared=registeredAll.filter(e=>e.path?.startsWith(source.base));
+  if(declared.length!==meta.editionCount||byUrl.size!==declared.length||sourceByUrl.size!==declared.length)return null;
+  for(const entry of declared){
+   const doc=byUrl.get(entry.path),original=sourceByUrl.get(entry.path);
+   if(!doc||!original||doc.workId!==entry.workId||doc.language!==entry.language||
+      doc.sha256!==original.sha256||doc.passages!==original.pasajes||
+      !doc.concepts||typeof doc.concepts!=="object")return null;
+  }
+  return byUrl;
+ })().catch(()=>null);
+ return remoteConceptusTask;
+}
 async function semanticSearch(q,{limit=6}={}){
  q=String(q||"").trim();
  if(q.length<3||q.length>80||q.split(/\s+/).length>4)return[];
  const concept=await semanticConcept(q);if(!concept)return[];
  const entries=await registry(),rows=[];
- const staticIndex=await semanticPostings();
+ const [staticIndex,remoteIndex]=await Promise.all([semanticPostings(),remoteConceptusPostings()]);
  // Optional static inverted index: skip JSON editions with no attested hit,
  // but search original HTML sources live. If the index is absent or stale,
  // keep the existing live search fully operational.
@@ -248,6 +284,13 @@ async function semanticSearch(q,{limit=6}={}){
    const terms=[...new Set((byLanguage[e.language]||[]).map(t=>t.trim()).filter(t=>fold(t).length>=3))].slice(0,8);
    if(!terms.length||e.format==="historical-ocr-pages"||
     e.format==="remote-json-passages"&&!(e.language==="grc"?window.ClassicsOffsiteGreek?.mightContain(e,terms):e.language==="la"?window.ClassicsOffsiteLatin?.mightContain(e,terms):false))return;
+   // The R2 Conceptus index is accepted only if every source hash, edition
+   // identity and path matches the published corpus manifest. A positive hit
+   // still requires an actual literal match in the original text below.
+   if(remoteIndex&&e.path?.startsWith("https://libros.vitruvius-digital-library.org/corpus/")){
+    const remoteDoc=remoteIndex.get(e.path);
+    if(remoteDoc&&!Object.hasOwn(remoteDoc.concepts,concept.id)){skippedNoHit++;return}
+   }
    if(indexValid&&["json-passages","structured-bilingual"].includes(e.format)){
     const version=indexed.get([e.workId,e.language,e.path,e.edition||""].join("|"));
     if(version&&!version.concepts.some(c=>c.concept===concept.id)){skippedNoHit++;return}
