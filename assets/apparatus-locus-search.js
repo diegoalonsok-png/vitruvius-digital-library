@@ -43,9 +43,24 @@ function init(rows,openLocus,syncTerm){
    const button=document.createElement("button");button.type="button";button.textContent="Vitruvio "+display(hit.locus)+" · abrir pasaje";
    button.addEventListener("click",()=>{syncTerm?.(needle);openLocus(hit.locus);$("#triple-title")?.scrollIntoView({behavior:"smooth",block:"start"})});
    const p=document.createElement("p");p.lang="la";
-   const raw=hit.latin;const match=needle.map(n=>({n,at:fold(raw).search(new RegExp("\\b"+n+"\\b"))})).find(x=>x.at>=0);
-   const at=match?.at??0,lo=Math.max(0,at-75),hi=Math.min(raw.length,at+230);
-   p.textContent=(lo?"…":"")+raw.slice(lo,hi)+(hi<raw.length?"…":"");
+   const raw=hit.latin;
+   // Use actual word offsets in the original Latin, never the folded-text offsets.
+   const matches=[...raw.matchAll(/[A-Za-zÀ-ÿ]+/g)].filter(m=>needle.includes(fold(m[0])));
+   const at=matches[0]?.index??0;
+   let lo=Math.max(0,at-75),hi=Math.min(raw.length,at+230);
+   if(lo>0){const next=raw.slice(lo).search(/\\s/);if(next>=0&&lo+next<at)lo+=next+1}
+   if(hi<raw.length){const next=raw.slice(hi).search(/\\s/);if(next>=0&&next<45)hi+=next}
+   if(lo)p.append(document.createTextNode("…"));
+   let cursor=lo;
+   for(const match of matches){
+    const start=match.index,end=start+match[0].length;
+    if(start<lo||end>hi)continue;
+    p.append(document.createTextNode(raw.slice(cursor,start)));
+    const mark=document.createElement("mark");mark.className="ab-search-highlight";mark.textContent=match[0];
+    p.append(mark);cursor=end;
+   }
+   p.append(document.createTextNode(raw.slice(cursor,hi)));
+   if(hi<raw.length)p.append(document.createTextNode("…"));
    item.append(button,p);fragment.append(item);
   }
   list.append(fragment);shown=Math.min(found.length,shown+20);
