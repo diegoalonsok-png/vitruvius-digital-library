@@ -1622,8 +1622,12 @@ async function search(){
  // Una signatura, un manuscrito identificado o un locus exacto se resuelven
  // antes que las coincidencias externas de vocabulario general.
  const focused=!!(intent?.harley||intent?.vitruvian||intent?.locus||intent?.preface);
- const wikiEnabled=["all","wiki","external","ai"].includes(mode)||!!person;
- const academicEnabled=["all","external","ai"].includes(mode);
+ // An explicit De architectura locus is a documentary address, not a
+ // generic Internet keyword ("locus" also means genetic locus). Keep
+ // original corpus/edition retrieval, skip unrelated web providers.
+ const exactLocusRequest=internal&&!!intent?.locus&&/^(?:(?:locus|loci|loc\.?)\s*:?\s*)?(?:10|[1-9]|x|ix|viii|vii|vi|iv|iii|ii|i)[.:/][1-9]\d?[.:/][1-9]\d{0,2}$/i.test(q);
+ const wikiEnabled=(["all","wiki","external","ai"].includes(mode)||!!person)&&!exactLocusRequest;
+ const academicEnabled=["all","external","ai"].includes(mode)&&!exactLocusRequest;
  $("results-heading").textContent=T().heading;$("result-state").textContent=T().waiting;
   delete $("result-state").dataset.firstResultMs;delete $("result-state").dataset.completeMs;
   $("result-list").setAttribute("aria-busy","true");
