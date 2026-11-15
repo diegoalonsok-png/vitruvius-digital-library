@@ -8,6 +8,36 @@ const romans=["","I","II","III","IV","V","VI","VII","VIII","IX","X"];
 const norm=s=>{s=String(s||"").trim().toLowerCase().replace(/\s+/g,"");const m=s.match(/^([ivx]+)\./);if(m){let n=0,p=0;for(const ch of m[1].split("").reverse()){const v={i:1,v:5,x:10}[ch];n+=v<p?-v:v;p=v}s=n+s.slice(m[1].length)}return s.replace(/\.praefatio\./g,".praef.").replace(/\.preface\./g,".praef.")};
 const fmt=s=>{const p=String(s).split(".");return (romans[+p[0]]||p[0])+"."+p.slice(1).join(".")};
 let data=null,loci=[],sequence=0;
+const chapters=new Map();
+const cmpParts=(a,b)=>a==="praef"?-1:b==="praef"?1:Number(a)-Number(b);
+const addOptions=(select,values,makeLabel)=>{select.replaceChildren();for(const value of values){const o=document.createElement("option");o.value=String(value);o.textContent=makeLabel(value);select.append(o)}};
+function setupNavigator(){
+ for(const locus of loci){const [book,chapter,section]=locus.split(".");if(!chapters.has(book))chapters.set(book,new Map());if(!chapters.get(book).has(chapter))chapters.get(book).set(chapter,[]);chapters.get(book).get(chapter).push(section)}
+ const book=$("bude-book"),chapter=$("bude-chapter"),section=$("bude-section");
+ addOptions(book,[...chapters.keys()],x=>"Libro "+x);
+ const updateChapter=(prefer)=>{
+  const cs=[...(chapters.get(book.value)||new Map()).keys()].sort(cmpParts);
+  addOptions(chapter,cs,x=>x==="praef"?"Prefacio":"Capítulo "+x);
+  chapter.value=cs.includes(prefer)?prefer:cs[0]||"";
+ };
+ const updateSection=(prefer)=>{
+  const ss=(chapters.get(book.value)?.get(chapter.value)||[]).slice().sort((a,b)=>Number(a)-Number(b));
+  addOptions(section,ss,x=>"§ "+x);
+  section.value=ss.includes(prefer)?prefer:ss[0]||"";
+ };
+ const sync=locus=>{
+  const [b,c,n]=String(locus).split(".");
+  if(!chapters.has(b))return;
+  book.value=b;updateChapter(c);updateSection(n);
+ };
+ const go=()=>{const locus=[book.value,chapter.value,section.value].join(".");if(loci.includes(locus))render(locus)};
+ book.addEventListener("change",()=>{updateChapter();updateSection();go()});
+ chapter.addEventListener("change",()=>{updateSection();go()});
+ section.addEventListener("change",go);
+ window.addEventListener("vdl:comparative-locus-select",e=>{const locus=e.detail?.locus;if(loci.includes(locus))render(locus)});
+ return sync;
+}
+let syncNavigator=null;
 function card(title,body,lang){const c=E("article",null,"bude-card");c.append(E("h3",title));const p=E("p",body||"Sin texto indexado para este locus.");if(lang)p.lang=lang;c.append(p);return c}
 function item(container,title,text,meta,url){const d=E("div",null,"bude-unit");d.append(E("strong",title),E("div","‖ "+String(text||"Sin texto recuperado")+" ‖"));if(meta)d.append(E("small",meta));if(url){const p=E("div");p.append(A("Comprobar fuente",url));d.append(p)}container.append(d)}
 const json=async url=>{const r=await fetch(url);if(!r.ok)throw Error(url+" HTTP "+r.status);return r.json()};
@@ -30,8 +60,9 @@ function evidenceFacsimile(file,folio,locus){
 function section(title){const s=E("section");s.append(E("h3",title));root.append(s);return s}
 async function render(query){
  const locus=norm(query),position=loci.indexOf(locus),token=++sequence;
- if(position<0){status.textContent="Locus no indexado: "+query;return}
+ if(position<0){status.textContent="Locus no indexado: "+query+"; comprobá la numeración.";return}
  $("bude-locus").value=fmt(locus);
+ syncNavigator?.(locus);
  const summarySearch=$("q");if(summarySearch&&summarySearch.value!==locus){summarySearch.value=locus;summarySearch.dispatchEvent(new Event("input",{bubbles:true}));}
  $("bude-prev").disabled=position===0;$("bude-next").disabled=position===loci.length-1;
  $("bude-open-reader").href="apparatus-bude.html?locus="+encodeURIComponent(locus);
@@ -162,6 +193,7 @@ async function render(query){
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
  const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json"].map(json));
  data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr};loci=es.passages.map(p=>p.locus);
+ syncNavigator=setupNavigator();
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
  // Unify the legacy tabular finder with the locus-specific apparatus.
