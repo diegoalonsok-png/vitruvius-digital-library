@@ -1,0 +1,41 @@
+name: Bibliotheca - originales externos y objetos R2 sin ficha
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/audit-bibliotheca-external-originals.py"
+      - ".github/workflows/audit-bibliotheca-external-originals.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validar auditor
+        run: python -m py_compile scripts/audit-bibliotheca-external-originals.py
+      - name: Abrir los 28 originales externos y 6 OCR huerfanos con procedencia
+        run: python scripts/audit-bibliotheca-external-originals.py
+      - name: Informe académico de solo lectura
+        run: |
+          python - <<'PY'
+          import json,os
+          d=json.load(open("reports/bibliotheca/external-originals-and-orphans.json",encoding="utf-8"))
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as out:
+              out.write("## Textos externos y objetos sin ficha\n\n")
+              for k,v in d["counts"].items():out.write(f"- {k}: {v}\n")
+              out.write("\nTodos los huérfanos permanecen en cuarentena. No se renombra ni se elimina ninguna obra.\n")
+          PY
+      - name: Guardar resultados reproducibles
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-originals-and-orphans-${{ github.run_id }}
+          path: reports/bibliotheca/external-originals-and-orphans.json
+          if-no-files-found: warn
+          retention-days: 90
