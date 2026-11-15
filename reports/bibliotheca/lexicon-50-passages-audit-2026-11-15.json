@@ -1,0 +1,1066 @@
+{
+  "schema": "vitruvius-50-passage-search-audit-v1",
+  "date": "2026-11-15",
+  "method": "Direct exact or diacritic-folded phrase lookup within ten registered Greek/Latin JSON passage sources fetched from GitHub; concepts expanded exclusively via the editorial Conceptus mapping. No browser session, neural embeddings, morphology or hosted deployment was tested. Locus labels inherit the source editorial status, including generated segments.",
+  "sourceFiles": [
+    "data/classics-corpus/aristotle-poetics-grc.json",
+    "data/classics-corpus/aeschylus-persae-grc.json",
+    "data/classics-corpus/aristoxenus-harmonica-grc.json",
+    "data/classics-corpus/apuleius-apologia-la.json",
+    "data/classics-corpus/apuleius-metamorphoses-la.json",
+    "data/classics-corpus/aeneas-tacticus-poliorketika-grc.json",
+    "data/classics-corpus/aratus-phaenomena-grc.json",
+    "data/classics-corpus/aristotle-politics-grc.json",
+    "data/classics-corpus/aristotle-de-anima-grc.json",
+    "data/classics-corpus/aristotle-metaphysics-grc.json"
+  ],
+  "conceptsSource": "data/lexicon/conceptus.json",
+  "counts": {
+    "total": 50,
+    "found": 49,
+    "uniquePassages": 48,
+    "byType": {
+      "literal": {
+        "total": 30,
+        "found": 30
+      },
+      "exact_phrase": {
+        "total": 10,
+        "found": 10
+      },
+      "documented_concept": {
+        "total": 10,
+        "found": 9
+      }
+    }
+  },
+  "results": [
+    {
+      "number": 1,
+      "query": "philosophia",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "philosophia"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "16.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "philosophia",
+        "preview": "uideturne uobis debere philosophia haec omnia uestigare et inquirere et cuncta specula, uel uda uel suda soli, uidere? quibus praeter ista quae dixi etiam illa ratiocinat"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=philosophia&mode=palabra&lang=la&work=apuleius-apologia&locus=16.segment-1"
+    },
+    {
+      "number": 2,
+      "query": "magia",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "magia"
+      ],
+      "passageMatches": 9,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "25.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "magia",
+        "preview": "Nonne uos puditum est haec crimina tali uiro audiente tam adseuerate obiectare, friuola et inter se repugnantia simul promere et utraque tamen reprehendere? at non contra"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=magia&mode=palabra&lang=la&work=apuleius-apologia&locus=25.segment-1"
+    },
+    {
+      "number": 3,
+      "query": "veritas",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "veritas"
+      ],
+      "passageMatches": 3,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "83.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "veritas",
+        "preview": "At tu, Aemiliane, recognosce, an et haec mecum testato descripseris: βουλομένην γάρ με δι᾽ ἃς εἶπον αἰτίας γαμηθῆναι, αὐτὸς ἔπεισας τοῦτον ἀντὶ πάντων αἱρεῖσθαι, θαυμάζων"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=veritas&mode=palabra&lang=la&work=apuleius-apologia&locus=83.segment-1"
+    },
+    {
+      "number": 4,
+      "query": "deus",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "deus"
+      ],
+      "passageMatches": 14,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "22.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "deus",
+        "preview": "Proinde gratum habui, cum ad contumeliam diceretis rem familiarem mihi peram et baculum fuisse. quod utinam tantus animi forem, ut praeter eam supellectilem nihil quicqua"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=deus&mode=palabra&lang=la&work=apuleius-apologia&locus=22.segment-1"
+    },
+    {
+      "number": 5,
+      "query": "natura",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "natura"
+      ],
+      "passageMatches": 7,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "11.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "natura",
+        "preview": "Sed sumne ego ineptus, qui haec etiam in iudicio? an uos potius calumniosi, qui etiam haec in accusatione, quasi ullum specimen morum sit uersibus ludere? Catullum ita re"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=natura&mode=palabra&lang=la&work=apuleius-apologia&locus=11.segment-1"
+    },
+    {
+      "number": 6,
+      "query": "ratio",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "ratio"
+      ],
+      "passageMatches": 7,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "8.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "ratio",
+        "preview": "uelim igitur censor meus Aemilianus respondeat, unquamne ipse soleat pedes lauare; uel, si id non negat, contendat maiorem curam munditiarum pedibus quam dentibus inperti"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=ratio&mode=palabra&lang=la&work=apuleius-apologia&locus=8.segment-1"
+    },
+    {
+      "number": 7,
+      "query": "homo",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "homo"
+      ],
+      "passageMatches": 7,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "4.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "homo",
+        "preview": "Audisti ergo paulo prius in principio accusationis ita dici: accusamus apud te philosophum formonsum et tam Graece quam Latine —pro nefas— disertissimum. nisi fallor enim"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=homo&mode=palabra&lang=la&work=apuleius-apologia&locus=4.segment-1"
+    },
+    {
+      "number": 8,
+      "query": "domus",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "domus"
+      ],
+      "passageMatches": 38,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "57.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "domus",
+        "preview": "Vt puto, Maxime, satis uideor cuiuis uel iniquissimo animum explesse et, quod ad sudarium pertineat, omnem criminis maculam detersisse, ac bono iam periculo ad testimoniu"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=domus&mode=palabra&lang=la&work=apuleius-apologia&locus=57.segment-1"
+    },
+    {
+      "number": 9,
+      "query": "anima",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "anima"
+      ],
+      "passageMatches": 2,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-metamorphoses",
+        "language": "la",
+        "locus": "4.20",
+        "locusKind": "editorial",
+        "hit": "anima",
+        "preview": "Tunc ego, sensim gliscente adhuc illo tumultu, retrogradi fuga domo facesso sed plane Thrasyleonem mire canibus repugnantem, latens pone ianuam ipse, prospicio: quamquam "
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=anima&mode=palabra&lang=la&work=apuleius-metamorphoses&locus=4.20"
+    },
+    {
+      "number": 10,
+      "query": "corpus",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "corpus"
+      ],
+      "passageMatches": 21,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-metamorphoses",
+        "language": "la",
+        "locus": "1.13",
+        "locusKind": "editorial",
+        "hit": "corpus",
+        "preview": "Haec ego ut accepi, sudore frigido miser perfluo tremore viscera quatior, ut grabatulus etiam succussu meo inquietus super dorsum meum palpitando saltaret. At bona Panthi"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=corpus&mode=palabra&lang=la&work=apuleius-metamorphoses&locus=1.13"
+    },
+    {
+      "number": 11,
+      "query": "amor",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "amor"
+      ],
+      "passageMatches": 3,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "30.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "amor",
+        "preview": "'Pisces' inquit quaeris. nolo negare. sed, oro te, qui pisces quaerit, magus est? equidem non magis arbitror quam si lepores quaererem uel apros uel altilia. an soli pisc"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=amor&mode=palabra&lang=la&work=apuleius-apologia&locus=30.segment-1"
+    },
+    {
+      "number": 12,
+      "query": "fides",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "fides"
+      ],
+      "passageMatches": 6,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "31.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "fides",
+        "preview": "haec et alia quaesisse me potius quam pisces longe uerisimilius confinxisses (his etenim fortasse per famam peruulgatam fides fuisset), si tibi ulla eruditio adfuisset; e"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=fides&mode=palabra&lang=la&work=apuleius-apologia&locus=31.segment-1"
+    },
+    {
+      "number": 13,
+      "query": "tempus",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "tempus"
+      ],
+      "passageMatches": 7,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "38.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "tempus",
+        "preview": "Audisti, Maxime, quorum pleraque scilicet legeras apud antiquos philosophorum. et memento de solis piscibus haec uolumina a me conscripta, qui eorum coitu progignantur, q"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=tempus&mode=palabra&lang=la&work=apuleius-apologia&locus=38.segment-1"
+    },
+    {
+      "number": 14,
+      "query": "imperium",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "imperium"
+      ],
+      "passageMatches": 2,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "18.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "imperium",
+        "preview": "Idem mihi etiam paupertatem obprobrauit, acceptum philosopho crimen et ultro profitendum. enim paupertas olim philosophiae uernacula est, frugi, sobria, paruo potens, aem"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=imperium&mode=palabra&lang=la&work=apuleius-apologia&locus=18.segment-1"
+    },
+    {
+      "number": 15,
+      "query": "rex",
+      "kind": "literal",
+      "language": "la",
+      "candidateForms": [
+        "rex"
+      ],
+      "passageMatches": 3,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-metamorphoses",
+        "language": "la",
+        "locus": "4.28",
+        "locusKind": "editorial",
+        "hit": "rex",
+        "preview": "“Erant in quadam civitate rex et regina: hi tres numero filias forma conspicuas habuere, sed maiores quidem natu, quamvis gratissima specie, idonee tamen celebrari posse "
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=rex&mode=palabra&lang=la&work=apuleius-metamorphoses&locus=4.28"
+    },
+    {
+      "number": 16,
+      "query": "λόγος",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "λόγος"
+      ],
+      "passageMatches": 162,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "4",
+        "locusKind": "editorial",
+        "hit": "λόγος",
+        "preview": "ἐοίκασι δὲ γεννῆσαι μὲν ὅλως τὴν ποιητικὴν αἰτίαι [5] δύο τινὲς καὶ αὗται φυσικαί. τό τε γὰρ μιμεῖσθαι σύμφυτον τοῖς ἀνθρώποις ἐκ παίδων ἐστὶ καὶ τούτῳ διαφέρουσι τῶν ἄλλ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%BB%CF%8C%CE%B3%CE%BF%CF%82&mode=palabra&lang=grc&work=aristotle-poetics&locus=4"
+    },
+    {
+      "number": 17,
+      "query": "τέχνη",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "τέχνη"
+      ],
+      "passageMatches": 18,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "6",
+        "locusKind": "editorial",
+        "hit": "τέχνη",
+        "preview": "περὶ μὲν οὖν τῆς ἐν ἑξαμέτροις μιμητικῆς καὶ περὶ κωμῳδίας ὕστερον ἐροῦμεν· περὶ δὲ τραγῳδίας λέγωμεν ἀναλαβόντες αὐτῆς ἐκ τῶν εἰρημένων τὸν γινόμενον ὅρον τῆς οὐσίας. ἔσ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CF%84%CE%AD%CF%87%CE%BD%CE%B7&mode=palabra&lang=grc&work=aristotle-poetics&locus=6"
+    },
+    {
+      "number": 18,
+      "query": "φύσις",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "φύσις"
+      ],
+      "passageMatches": 76,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "24",
+        "locusKind": "editorial",
+        "hit": "φύσις",
+        "preview": "ἔτι δὲ τὰ εἴδη ταὐτὰ δεῖ ἔχειν τὴν ἐποποιίαν τῇ τραγῳδίᾳ, ἢ γὰρ ἁπλῆν ἢ πεπλεγμένην ἢ ἠθικὴν ἢ [10] παθητικήν· καὶ τὰ μέρη ἔξω μελοποιίας καὶ ὄψεως ταὐτά· καὶ γὰρ περιπετ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CF%86%CF%8D%CF%83%CE%B9%CF%82&mode=palabra&lang=grc&work=aristotle-poetics&locus=24"
+    },
+    {
+      "number": 19,
+      "query": "πόλις",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "πόλις"
+      ],
+      "passageMatches": 60,
+      "matched": true,
+      "chosen": {
+        "workId": "aeschylus-persae",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2:5.115-125",
+        "locusKind": "TEI verse numbers",
+        "hit": "πόλις",
+        "preview": "ταῦτά μοι μελαγχίτων φρὴν ἀμύσσεται φόβῳ, ὀᾶ, Περσικοῦ στρατεύματος τοῦδε, μὴ πόλις πύθη- ται κένανδρον μέγʼ ἄστυ Σουσίδος, καὶ τὸ Κισσίων πόλισμʼ ἀντίδουπον ᾄσεται, ὀᾶ, "
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CF%80%CF%8C%CE%BB%CE%B9%CF%82&mode=palabra&lang=grc&work=aeschylus-persae&locus=urn%3Acts%3AgreekLit%3Atlg0085.tlg002.perseus-grc2%3A5.115-125"
+    },
+    {
+      "number": 20,
+      "query": "οἶκος",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "οἶκος"
+      ],
+      "passageMatches": 2,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-politics",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0086.tlg035.perseus-grc2:1.1252b",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "οἶκος",
+        "preview": "φύσει μὲν οὖν διώρισται τὸ θῆλυ καὶ τὸ δοῦλον (οὐθὲν γὰρ ἡ φύσις ποιεῖ τοιοῦτον οἷον οἱ χαλκοτύποι τὴν Δελφικὴν μάχαιραν, πενιχρῶς, ἀλλʼ ἓν πρὸς ἕν· οὕτω γὰρ ἂν ἀποτελοῖτ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%BF%E1%BC%B6%CE%BA%CE%BF%CF%82&mode=palabra&lang=grc&work=aristotle-politics&locus=urn%3Acts%3AgreekLit%3Atlg0086.tlg035.perseus-grc2%3A1.1252b"
+    },
+    {
+      "number": 21,
+      "query": "κόσμος",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "κόσμος"
+      ],
+      "passageMatches": 5,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "21",
+        "locusKind": "editorial",
+        "hit": "κόσμος",
+        "preview": "ὀνόματος δὲ εἴδη τὸ μὲν ἁπλοῦν, ἁπλοῦν δὲ λέγω ὃ μὴ ἐκ σημαινόντων σύγκειται, οἷον γῆ, τὸ δὲ διπλοῦν· τούτου δὲ τὸ μὲν ἐκ σημαίνοντος καὶ ἀσήμου, πλὴν οὐκ ἐν τῷ [33a] ὀνό"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%BA%CF%8C%CF%83%CE%BC%CE%BF%CF%82&mode=palabra&lang=grc&work=aristotle-poetics&locus=21"
+    },
+    {
+      "number": 22,
+      "query": "ψυχή",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "ψυχή"
+      ],
+      "passageMatches": 68,
+      "matched": true,
+      "chosen": {
+        "workId": "aeschylus-persae",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2:839-848",
+        "locusKind": "TEI verse numbers",
+        "hit": "ψυχή",
+        "preview": "ἐγὼ δʼ ἄπειμι γῆς ὑπὸ ζόφον κάτω. ὑμεῖς δέ, πρέσβεις, χαίρετʼ, ἐν κακοῖς ὅμως ψυχῇ διδόντες ἡδονὴν καθʼ ἡμέραν, ὡς τοῖς θανοῦσι πλοῦτος οὐδὲν ὠφελεῖ. ἦ πολλὰ καὶ παρόντα "
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CF%88%CF%85%CF%87%CE%AE&mode=palabra&lang=grc&work=aeschylus-persae&locus=urn%3Acts%3AgreekLit%3Atlg0085.tlg002.perseus-grc2%3A839-848"
+    },
+    {
+      "number": 23,
+      "query": "θεός",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "θεός"
+      ],
+      "passageMatches": 19,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "17",
+        "locusKind": "editorial",
+        "hit": "θεός",
+        "preview": "δεῖ δὲ τοὺς μύθους συνιστάναι καὶ τῇ λέξει συναπεργάζεσθαι ὅτι μάλιστα πρὸ ὀμμάτων τιθέμενον· οὕτω γὰρ ἂν ἐναργέστατα ὁ ὁρῶν ὥσπερ παρ’ αὐτοῖς γιγνόμενος τοῖς [25] πραττο"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%B8%CE%B5%CF%8C%CF%82&mode=palabra&lang=grc&work=aristotle-poetics&locus=17"
+    },
+    {
+      "number": 24,
+      "query": "ἄνθρωπος",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "ἄνθρωπος"
+      ],
+      "passageMatches": 99,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "20",
+        "locusKind": "editorial",
+        "hit": "ἄνθρωπος",
+        "preview": "[20] τῆς δὲ λέξεως ἁπάσης τάδ’ ἐστὶ τὰ μέρη, στοιχεῖον συλλαβὴ σύνδεσμος ὄνομα ῥῆμα ἄρθρον πτῶσις λόγος. στοιχεῖον μὲν οὖν ἐστιν φωνὴ ἀδιαίρετος, οὐ πᾶσα δὲ ἀλλ’ ἐξ ἧς πέ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%E1%BC%84%CE%BD%CE%B8%CF%81%CF%89%CF%80%CE%BF%CF%82&mode=palabra&lang=grc&work=aristotle-poetics&locus=20"
+    },
+    {
+      "number": 25,
+      "query": "ἀριθμός",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "ἀριθμός"
+      ],
+      "passageMatches": 62,
+      "matched": true,
+      "chosen": {
+        "workId": "aeschylus-persae",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2:330-339",
+        "locusKind": "TEI verse numbers",
+        "hit": "ἀριθμός",
+        "preview": "πολλῶν παρόντων δʼ ὀλίγʼ ἀπαγγέλλω κακά. αἰαῖ, κακῶν ὕψιστα δὴ κλύω τάδε, αἴσχη τε Πέρσαις καὶ λιγέα κωκύματα. ἀτὰρ φράσον μοι τοῦτʼ ἀναστρέψας πάλιν· πόσον δὲ πλῆθος ἦν "
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%E1%BC%80%CF%81%CE%B9%CE%B8%CE%BC%CF%8C%CF%82&mode=palabra&lang=grc&work=aeschylus-persae&locus=urn%3Acts%3AgreekLit%3Atlg0085.tlg002.perseus-grc2%3A330-339"
+    },
+    {
+      "number": 26,
+      "query": "ἁρμονία",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "ἁρμονία"
+      ],
+      "passageMatches": 13,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "1",
+        "locusKind": "editorial",
+        "hit": "ἁρμονία",
+        "preview": "[8] περὶ ποιητικῆς αὐτῆς τε καὶ τῶν εἰδῶν αὐτῆς, ἥν τινα δύναμιν ἕκαστον ἔχει, καὶ πῶς δεῖ συνίστασθαι τοὺς μύθους [10] εἰ μέλλει καλῶς ἕξειν ἡ ποίησις, ἔτι δὲ ἐκ πόσων κ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%E1%BC%81%CF%81%CE%BC%CE%BF%CE%BD%CE%AF%CE%B1&mode=palabra&lang=grc&work=aristotle-poetics&locus=1"
+    },
+    {
+      "number": 27,
+      "query": "μέτρον",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "μέτρον"
+      ],
+      "passageMatches": 22,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "5",
+        "locusKind": "editorial",
+        "hit": "μέτρον",
+        "preview": "ἡ δὲ κωμῳδία ἐστὶν ὥσπερ εἴπομεν μίμησις φαυλοτέρων μέν, οὐ μέντοι κατὰ πᾶσαν κακίαν, ἀλλὰ τοῦ αἰσχροῦ ἐστι τὸ γελοῖον μόριον. τὸ γὰρ γελοῖόν ἐστιν [35] ἁμάρτημά τι καὶ α"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%BC%CE%AD%CF%84%CF%81%CE%BF%CE%BD&mode=palabra&lang=grc&work=aristotle-poetics&locus=5"
+    },
+    {
+      "number": 28,
+      "query": "μουσική",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "μουσική"
+      ],
+      "passageMatches": 12,
+      "matched": true,
+      "chosen": {
+        "workId": "aristoxenus-harmonica",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0088.tlg001.1st1K-grc1:2.31",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "μουσική",
+        "preview": "ἐστιν ἕν, παντελῶς οἶμαι παράδο|| ξόν τι ἐφαίνετο αὐτοῖς· εἶθ᾿ οἱ μὲν ὑποκατεφρόνουν τοῦ πράγματος οἱ δὲ κατεμέμφοντο. Τί οὖν τὸ σἴτιον; οὐ προήδεσαν, ἀλλʼ ὥσπερ οἱ ἐριστ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%BC%CE%BF%CF%85%CF%83%CE%B9%CE%BA%CE%AE&mode=palabra&lang=grc&work=aristoxenus-harmonica&locus=urn%3Acts%3AgreekLit%3Atlg0088.tlg001.1st1K-grc1%3A2.31"
+    },
+    {
+      "number": 29,
+      "query": "ἀρχή",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "ἀρχή"
+      ],
+      "passageMatches": 141,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "7",
+        "locusKind": "editorial",
+        "hit": "ἀρχή",
+        "preview": "διωρισμένων δὲ τούτων, λέγωμεν μετὰ ταῦτα ποίαν τινὰ δεῖ τὴν σύστασιν εἶναι τῶν πραγμάτων, ἐπειδὴ τοῦτο καὶ πρῶτον καὶ μέγιστον τῆς τραγῳδίας ἐστίν. κεῖται δὴ ἡμῖν τὴν τρ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%E1%BC%80%CF%81%CF%87%CE%AE&mode=palabra&lang=grc&work=aristotle-poetics&locus=7"
+    },
+    {
+      "number": 30,
+      "query": "μίμησιν",
+      "kind": "literal",
+      "language": "grc",
+      "candidateForms": [
+        "μίμησιν"
+      ],
+      "passageMatches": 8,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "9",
+        "locusKind": "editorial",
+        "hit": "μίμησιν",
+        "preview": "φανερὸν δὲ ἐκ τῶν εἰρημένων καὶ ὅτι οὐ τὸ τὰ γενόμενα λέγειν, τοῦτο ποιητοῦ ἔργον ἐστίν, ἀλλ’ οἷα ἂν γένοιτο καὶ τὰ δυνατὰ κατὰ τὸ εἰκὸς ἢ τὸ ἀναγκαῖον. ὁ γὰρ [1] ἱστορικ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%BC%CE%AF%CE%BC%CE%B7%CF%83%CE%B9%CE%BD&mode=palabra&lang=grc&work=aristotle-poetics&locus=9"
+    },
+    {
+      "number": 31,
+      "query": "τῶν εἰδῶν αὐτῆς",
+      "kind": "exact_phrase",
+      "language": "grc",
+      "candidateForms": [
+        "τῶν εἰδῶν αὐτῆς"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "1",
+        "locusKind": "editorial",
+        "hit": "τῶν εἰδῶν αὐτῆς",
+        "preview": "[8] περὶ ποιητικῆς αὐτῆς τε καὶ τῶν εἰδῶν αὐτῆς, ἥν τινα δύναμιν ἕκαστον ἔχει, καὶ πῶς δεῖ συνίστασθαι τοὺς μύθους [10] εἰ μέλλει καλῶς ἕξειν ἡ ποίησις, ἔτι δὲ ἐκ πόσων κ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CF%84%E1%BF%B6%CE%BD%20%CE%B5%E1%BC%B0%CE%B4%E1%BF%B6%CE%BD%20%CE%B1%E1%BD%90%CF%84%E1%BF%86%CF%82&mode=frase&lang=grc&work=aristotle-poetics&locus=1"
+    },
+    {
+      "number": 32,
+      "query": "Ἑλλάδʼ ἐς αἶαν",
+      "kind": "exact_phrase",
+      "language": "grc",
+      "candidateForms": [
+        "Ἑλλάδʼ ἐς αἶαν"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "aeschylus-persae",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2:1-10",
+        "locusKind": "TEI verse numbers",
+        "hit": "Ἑλλάδʼ ἐς αἶαν",
+        "preview": "Τάδε μὲν Περσῶν τῶν οἰχομένων Ἑλλάδʼ ἐς αἶαν πιστὰ καλεῖται, καὶ τῶν ἀφνεῶν καὶ πολυχρύσων ἑδράνων φύλακες, κατὰ πρεσβείαν οὓς αὐτὸς ἄναξ Ξέρξης βασιλεὺς Δαρειογενὴς εἵλε"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%E1%BC%99%CE%BB%CE%BB%CE%AC%CE%B4%CA%BC%20%E1%BC%90%CF%82%20%CE%B1%E1%BC%B6%CE%B1%CE%BD&mode=frase&lang=grc&work=aeschylus-persae&locus=urn%3Acts%3AgreekLit%3Atlg0085.tlg002.perseus-grc2%3A1-10"
+    },
+    {
+      "number": 33,
+      "query": "οὔσης καὶ διῃρμένης",
+      "kind": "exact_phrase",
+      "language": "grc",
+      "candidateForms": [
+        "οὔσης καὶ διῃρμένης"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "aristoxenus-harmonica",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0088.tlg001.1st1K-grc1:1.1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "οὔσης καὶ διῃρμένης",
+        "preview": "Γῆς περὶ μέλους ἐπιστήμης πολυμεροῦς οὔσης καὶ διῃρμένης Meibom. εἰς πλείους ἰδέας μίαν τινὰ αὐτῶν | ὑπολαβεῖν δεῖ τὴν I, ἁ ρμονικὴν καλουμένην εἶναι πραγματείαν, τῇ τε τ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%BF%E1%BD%94%CF%83%CE%B7%CF%82%20%CE%BA%CE%B1%E1%BD%B6%20%CE%B4%CE%B9%E1%BF%83%CF%81%CE%BC%CE%AD%CE%BD%CE%B7%CF%82&mode=frase&lang=grc&work=aristoxenus-harmonica&locus=urn%3Acts%3AgreekLit%3Atlg0088.tlg001.1st1K-grc1%3A1.1"
+    },
+    {
+      "number": 34,
+      "query": "notissimae temeritatis accusationem mei",
+      "kind": "exact_phrase",
+      "language": "la",
+      "candidateForms": [
+        "notissimae temeritatis accusationem mei"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "1.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "notissimae temeritatis accusationem mei",
+        "preview": "Certus equidem eram proque uero obtinebam, Maxime Cl(audi) quique in consilio estis, Sicinium Aemilianum, senem notissimae temeritatis, accusationem mei prius apud te coe"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=notissimae%20temeritatis%20accusationem%20mei&mode=frase&lang=la&work=apuleius-apologia&locus=1.segment-1"
+    },
+    {
+      "number": 35,
+      "query": "Milesio varias fabulas",
+      "kind": "exact_phrase",
+      "language": "la",
+      "candidateForms": [
+        "Milesio varias fabulas"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-metamorphoses",
+        "language": "la",
+        "locus": "1.1",
+        "locusKind": "editorial",
+        "hit": "Milesio varias fabulas",
+        "preview": "At ego tibi sermone isto Milesio varias fabulas conseram auresque tuas benivolas lepido susurro permulceam, modo si papyrum Aegyptiam argutia Nilotici calami inscriptam n"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=Milesio%20varias%20fabulas&mode=frase&lang=la&work=apuleius-metamorphoses&locus=1.1"
+    },
+    {
+      "number": 36,
+      "query": "αὑτῶν ὁρμωμένοις χώρας",
+      "kind": "exact_phrase",
+      "language": "grc",
+      "candidateForms": [
+        "αὑτῶν ὁρμωμένοις χώρας"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "aeneas-tacticus-poliorketika",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0058.tlg001.perseus-grc2:praef.1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "αὑτῶν ὁρμωμένοις χώρας",
+        "preview": "Ὅσοις τῶν ἀνθρώπων ἐκ τῆς αὑτῶν ὁρμωμένοις χώρας ὑπερόριοί τε ἀγῶνες καὶ κίνδυνοι συμβαίνουσιν, ἄν τι σφάλμα γένηται κατὰ γῆν ἢ κατὰ θάλασσαν, ὑπολείπεται τοῖς περιγιγνομ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%B1%E1%BD%91%CF%84%E1%BF%B6%CE%BD%20%E1%BD%81%CF%81%CE%BC%CF%89%CE%BC%CE%AD%CE%BD%CE%BF%CE%B9%CF%82%20%CF%87%CF%8E%CF%81%CE%B1%CF%82&mode=frase&lang=grc&work=aeneas-tacticus-poliorketika&locus=urn%3Acts%3AgreekLit%3Atlg0058.tlg001.perseus-grc2%3Apraef.1"
+    },
+    {
+      "number": 37,
+      "query": "ἀνθρώπων ἀγοραί μεστὴ",
+      "kind": "exact_phrase",
+      "language": "grc",
+      "candidateForms": [
+        "ἀνθρώπων ἀγοραί μεστὴ"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "aratus-phaenomena",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0653.tlg001.perseus-grc2:1-10",
+        "locusKind": "TEI verse numbers",
+        "hit": "ἀνθρώπων ἀγοραί μεστὴ",
+        "preview": "ἐκ Διὸς ἀρχώμεσθα, τὸν οὐδέποτʼ ἄνδρες ἐῶμεν ἄρρητον· μεσταὶ δὲ Διὸς πᾶσαι μὲν ἀγυιαί, πᾶσαι δʼ ἀνθρώπων ἀγοραί, μεστὴ δὲ θάλασσα καὶ λιμένες· πάντη δὲ Διὸς κεχρήμεθα πάν"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%E1%BC%80%CE%BD%CE%B8%CF%81%CF%8E%CF%80%CF%89%CE%BD%20%E1%BC%80%CE%B3%CE%BF%CF%81%CE%B1%CE%AF%20%CE%BC%CE%B5%CF%83%CF%84%E1%BD%B4&mode=frase&lang=grc&work=aratus-phaenomena&locus=urn%3Acts%3AgreekLit%3Atlg0653.tlg001.perseus-grc2%3A1-10"
+    },
+    {
+      "number": 38,
+      "query": "εἶναι δοκοῦντος ἀγαθοῦ χάριν",
+      "kind": "exact_phrase",
+      "language": "grc",
+      "candidateForms": [
+        "εἶναι δοκοῦντος ἀγαθοῦ χάριν"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-politics",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0086.tlg035.perseus-grc2:1.1252a",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "εἶναι δοκοῦντος ἀγαθοῦ χάριν",
+        "preview": "ἐπειδὴ πᾶσαν πόλιν ὁρῶμεν κοινωνίαν τινὰ οὖσαν καὶ πᾶσαν κοινωνίαν ἀγαθοῦ τινος ἕνεκεν συνεστηκυῖαν (τοῦ γὰρ εἶναι δοκοῦντος ἀγαθοῦ χάριν πάντα πράττουσι πάντες), δῆλον ὡ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%B5%E1%BC%B6%CE%BD%CE%B1%CE%B9%20%CE%B4%CE%BF%CE%BA%CE%BF%E1%BF%A6%CE%BD%CF%84%CE%BF%CF%82%20%E1%BC%80%CE%B3%CE%B1%CE%B8%CE%BF%E1%BF%A6%20%CF%87%CE%AC%CF%81%CE%B9%CE%BD&mode=frase&lang=grc&work=aristotle-politics&locus=urn%3Acts%3AgreekLit%3Atlg0086.tlg035.perseus-grc2%3A1.1252a"
+    },
+    {
+      "number": 39,
+      "query": "εἴδησιν ὑπολαμβάνοντες μᾶλλον",
+      "kind": "exact_phrase",
+      "language": "grc",
+      "candidateForms": [
+        "εἴδησιν ὑπολαμβάνοντες μᾶλλον"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-de-anima",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0086.tlg002.1st1K-grc2:1.1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "εἴδησιν ὑπολαμβάνοντες μᾶλλον",
+        "preview": "Τῶν καλῶν καὶ τιμίων τὴν εἴδησιν ὑπολαμβάνοντες, μᾶλλον 402a δʼ ἑτέραν ἑτέρας ἢ κατʼ ἀκρίβειαν ἢ τῷ βελτιόνων τε καὶ θαυμασιωτέρων εἶναι, διʼ ἀμφότερα ταῦτα τὴν περὶ τῆς "
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%B5%E1%BC%B4%CE%B4%CE%B7%CF%83%CE%B9%CE%BD%20%E1%BD%91%CF%80%CE%BF%CE%BB%CE%B1%CE%BC%CE%B2%CE%AC%CE%BD%CE%BF%CE%BD%CF%84%CE%B5%CF%82%20%CE%BC%E1%BE%B6%CE%BB%CE%BB%CE%BF%CE%BD&mode=frase&lang=grc&work=aristotle-de-anima&locus=urn%3Acts%3AgreekLit%3Atlg0086.tlg002.1st1K-grc2%3A1.1"
+    },
+    {
+      "number": 40,
+      "query": "χρείας ἀγαπῶνται διʼ αὑτάς",
+      "kind": "exact_phrase",
+      "language": "grc",
+      "candidateForms": [
+        "χρείας ἀγαπῶνται διʼ αὑτάς"
+      ],
+      "passageMatches": 1,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-metaphysics",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0086.tlg025.perseus-grc2:1.1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "χρείας ἀγαπῶνται διʼ αὑτάς",
+        "preview": "πάντες ἄνθρωποι τοῦ εἰδέναι ὀρέγονται φύσει. σημεῖον δʼ ἡ τῶν αἰσθήσεων ἀγάπησις· καὶ γὰρ χωρὶς τῆς χρείας ἀγαπῶνται διʼ αὑτάς, καὶ μάλιστα τῶν ἄλλων ἡ διὰ τῶν ὀμμάτων. ο"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CF%87%CF%81%CE%B5%CE%AF%CE%B1%CF%82%20%E1%BC%80%CE%B3%CE%B1%CF%80%E1%BF%B6%CE%BD%CF%84%CE%B1%CE%B9%20%CE%B4%CE%B9%CA%BC%20%CE%B1%E1%BD%91%CF%84%CE%AC%CF%82&mode=frase&lang=grc&work=aristotle-metaphysics&locus=urn%3Acts%3AgreekLit%3Atlg0086.tlg025.perseus-grc2%3A1.1"
+    },
+    {
+      "number": 41,
+      "query": "arquitectura",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "architectura",
+        "ἀρχιτεκτονική",
+        "ἀρχιτεκτονία"
+      ],
+      "passageMatches": 0,
+      "matched": false,
+      "chosen": null,
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=arquitectura&mode=palabra"
+    },
+    {
+      "number": 42,
+      "query": "casa",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "domus",
+        "aedes",
+        "οἶκος",
+        "δόμος"
+      ],
+      "passageMatches": 42,
+      "matched": true,
+      "chosen": {
+        "workId": "aeschylus-persae",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2:2.576-583",
+        "locusKind": "TEI verse numbers",
+        "hit": "δόμος",
+        "preview": "γναπτόμενοι δὲ δίνᾳ, φεῦ, σκύλλονται πρὸς ἀναύδων, ἠέ, παίδων τᾶς ἀμιάντου, ὀᾶ. πενθεῖ δʼ ἄνδρα δόμος στερη- θείς τοκέες τʼ ἄπαιδες δαιμόνιʼ ἄχη, ὀᾶ, δυρόμενοι γέροντες τ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%B4%CF%8C%CE%BC%CE%BF%CF%82&mode=palabra&lang=grc&work=aeschylus-persae&locus=urn%3Acts%3AgreekLit%3Atlg0085.tlg002.perseus-grc2%3A2.576-583"
+    },
+    {
+      "number": 43,
+      "query": "alma",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "anima",
+        "animus",
+        "ψυχή"
+      ],
+      "passageMatches": 73,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "43.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "animus",
+        "preview": "Haec et alia apud plerosque de magiis et pueris lego equidem, sed dubius sententiae sum, dicamne fieri posse an negem, quamquam Platoni credam inter deos atque homines na"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=animus&mode=palabra&lang=la&work=apuleius-apologia&locus=43.segment-1"
+    },
+    {
+      "number": 44,
+      "query": "arte",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "ars",
+        "τέχνη"
+      ],
+      "passageMatches": 20,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "26",
+        "locusKind": "editorial",
+        "hit": "τέχνη",
+        "preview": "πότερον δὲ βελτίων ἡ ἐποποιικὴ μίμησις ἢ ἡ τραγική, διαπορήσειεν ἄν τις. εἰ γὰρ ἡ ἧττον φορτικὴ βελτίων, τοιαύτη δ’ ἡ πρὸς βελτίους θεατάς ἐστιν ἀεί, λίαν δῆλον ὅτι ἡ ἅπα"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CF%84%CE%AD%CF%87%CE%BD%CE%B7&mode=palabra&lang=grc&work=aristotle-poetics&locus=26"
+    },
+    {
+      "number": 45,
+      "query": "medida",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "mensura",
+        "modulus",
+        "proportio",
+        "symmetria",
+        "μέτρον",
+        "συμμετρία",
+        "ἀναλογία"
+      ],
+      "passageMatches": 30,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "22",
+        "locusKind": "editorial",
+        "hit": "μέτρον",
+        "preview": "λέξεως δὲ ἀρετὴ σαφῆ καὶ μὴ ταπεινὴν εἶναι. σαφεστάτη μὲν οὖν ἐστιν ἡ ἐκ τῶν κυρίων ὀνομάτων, ἀλλὰ [20] ταπεινή· παράδειγμα δὲ ἡ Κλεοφῶντος ποίησις καὶ ἡ Σθενέλου. σεμνὴ "
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%BC%CE%AD%CF%84%CF%81%CE%BF%CE%BD&mode=palabra&lang=grc&work=aristotle-poetics&locus=22"
+    },
+    {
+      "number": 46,
+      "query": "ciudad",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "urbs",
+        "civitas",
+        "oppidum",
+        "πόλις",
+        "ἄστυ"
+      ],
+      "passageMatches": 82,
+      "matched": true,
+      "chosen": {
+        "workId": "aeschylus-persae",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2:9-18",
+        "locusKind": "TEI verse numbers",
+        "hit": "ἄστυ",
+        "preview": "καὶ πολυχρύσου στρατιᾶς ἤδη κακόμαντις ἄγαν ὀρσολοπεῖται θυμὸς ἔσωθεν. πᾶσα γὰρ ἰσχὺς Ἀσιατογενὴς ᾤχωκε, νέον δʼ ἄνδρα βαΰζει, κοὔτε τις ἄγγελος οὔτε τις ἱππεὺς ἄστυ τὸ Π"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%E1%BC%84%CF%83%CF%84%CF%85&mode=palabra&lang=grc&work=aeschylus-persae&locus=urn%3Acts%3AgreekLit%3Atlg0085.tlg002.perseus-grc2%3A9-18"
+    },
+    {
+      "number": 47,
+      "query": "dios",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "deus",
+        "numen",
+        "θεός"
+      ],
+      "passageMatches": 44,
+      "matched": true,
+      "chosen": {
+        "workId": "aeschylus-persae",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0085.tlg002.perseus-grc2:450-459",
+        "locusKind": "TEI verse numbers",
+        "hit": "θεός",
+        "preview": "ἐνταῦθα πέμπει τούσδʼ, ὅπως, ὅταν νεῶν φθαρέντες ἐχθροὶ νῆσον ἐκσῳζοίατο, κτείνοιεν εὐχείρωτον Ἑλλήνων στρατόν, φίλους δʼ ὑπεκσῴζοιεν ἐναλίων πόρων, κακῶς τὸ μέλλον ἱστορ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%B8%CE%B5%CF%8C%CF%82&mode=palabra&lang=grc&work=aeschylus-persae&locus=urn%3Acts%3AgreekLit%3Atlg0085.tlg002.perseus-grc2%3A450-459"
+    },
+    {
+      "number": 48,
+      "query": "armonía",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "proportio",
+        "symmetria",
+        "commodulatio",
+        "modulus",
+        "ratio",
+        "ἀναλογία",
+        "συμμετρία",
+        "ἁρμονία",
+        "ἐμβάτης"
+      ],
+      "passageMatches": 26,
+      "matched": true,
+      "chosen": {
+        "workId": "aristoxenus-harmonica",
+        "language": "grc",
+        "locus": "urn:cts:greekLit:tlg0088.tlg001.1st1K-grc1:2.44",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "ἁρμονία",
+        "preview": "αὐτοῖς τῶν τε προτέρων καὶ τῶν ὑστέρων ὀρθῶς, τρίτον δὲ τοῦ συμβαίνοντός τε καὶ ὁμολογουμένου κατὰ τρόπον συνοφθέντος· Ἐπεὶ δὲ πάσης ἐπιστήμης, ῇ τις ἐκ προέλῃ |μάτων πλε"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%E1%BC%81%CF%81%CE%BC%CE%BF%CE%BD%CE%AF%CE%B1&mode=palabra&lang=grc&work=aristoxenus-harmonica&locus=urn%3Acts%3AgreekLit%3Atlg0088.tlg001.1st1K-grc1%3A2.44"
+    },
+    {
+      "number": 49,
+      "query": "guerra",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "bellum",
+        "πόλεμος"
+      ],
+      "passageMatches": 7,
+      "matched": true,
+      "chosen": {
+        "workId": "apuleius-apologia",
+        "language": "la",
+        "locus": "44.segment-1",
+        "locusKind": "generated segment, not a critical edition locus",
+        "hit": "bellum",
+        "preview": "eum tamen uos carminibus meis subuersum dixistis, quod forte me coram semel decidit. conserui eius plerique adsunt, quos ex h iberi denuntiastis. possunt dicere omnes, qu"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=bellum&mode=palabra&lang=la&work=apuleius-apologia&locus=44.segment-1"
+    },
+    {
+      "number": 50,
+      "query": "música",
+      "kind": "documented_concept",
+      "language": "auto",
+      "candidateForms": [
+        "musica",
+        "cantus",
+        "melodia",
+        "μουσική",
+        "μέλος",
+        "ᾠδή"
+      ],
+      "passageMatches": 33,
+      "matched": true,
+      "chosen": {
+        "workId": "aristotle-poetics",
+        "language": "grc",
+        "locus": "12",
+        "locusKind": "editorial",
+        "hit": "μέλος",
+        "preview": "μέρη δὲ τραγῳδίας οἷς μὲν ὡς εἴδεσι δεῖ χρῆσθαι [15] πρότερον εἴπομεν, κατὰ δὲ τὸ ποσὸν καὶ εἰς ἃ διαιρεῖται κεχωρισμένα τάδε ἐστίν, πρόλογος ἐπεισόδιον ἔξοδος χορικόν, κ"
+      },
+      "lexiconUrl": "https://vitruvius-digital-library.org/vitruvia-lexicon.html?q=%CE%BC%CE%AD%CE%BB%CE%BF%CF%82&mode=palabra&lang=grc&work=aristotle-poetics&locus=12"
+    }
+  ]
+}
