@@ -55,15 +55,25 @@ for(const e of r2){
 const hashes=[...byHash].filter(([k,v])=>v.length>1).map(([sha,ids])=>({sha256:sha,ids}));
 for(const x of hashes)add("review","same_pdf_multiple_editions",x.ids.join(","),"Misma huella: comprobar si es edición ómnibus o duplicación");
 const map=linked.mapa||{};
+const additional=linked.obrasNuevas||[];
+const additionalIds=new Set(additional.map(e=>e.r2));
+if(additional.length!==additionalIds.size)add("error","duplicate_additional_work","catalog","Obras adicionales repetidas");
+for(const e of additional){
+ if(!editions.has(e.r2))add("error","additional_work_missing_r2_edition",e.r2,"Obra nueva sin edición R2 registrada");
+ if(canon.has(e.r2))add("error","additional_work_repeats_main_catalogue",e.r2,"Ya pertenece a las 271 fichas principales");
+}
 const r2Unlinked=[];
+const mainR2Linked=new Set();
 for(const e of r2){
- const relations=map[e.id]||((canon.has(e.id))?[e.id]:[]);
- if(!relations.length)r2Unlinked.push(e.id);
+ const relations=map[e.id]?.length?map[e.id]:(canon.has(e.id)?[e.id]:(canon.has(e.traduccionDe)?[e.traduccionDe]:[]));
+ if(!relations.length&&!additionalIds.has(e.id))r2Unlinked.push(e.id);
+ if(relations.length)mainR2Linked.add(e.id);
  for(const id of relations)if(!canon.has(id))add("error","r2_link_to_unknown_work",e.id,id);
 }
 for(const id of Object.keys(map))if(!editions.has(id))add("error","orphan_r2_mapping",id,"Relación sin edición en catálogo R2");
+if(mainR2Linked.size+additionalIds.size+r2Unlinked.length!==r2.length)
+ add("error","nonpartitioned_r2_edition_categories","R2","Una edición aparece en varias categorías o sin contar; no se puede publicar el total como conciliado");
 const cataloguedIndexedIds=new Set(registry.map(e=>e.workId));
-const remoteIndexed=remote.filter(e=>/^https?:\/\//.test("https://libros.vitruvius-digital-library.org/corpus/"+e.archivo));
 const remoteManifestIds=new Set(remote.map(e=>e.workId+"|"+e.language));
 for(const e of registry.filter(e=>(e.path||"").startsWith("https://libros.vitruvius-digital-library.org/corpus/"))){
  if(!remoteManifestIds.has(e.workId+"|"+e.language))add("error","remote_registry_without_manifest",e.workId,e.path);
@@ -74,7 +84,7 @@ const report={
  generated:new Date().toISOString(),
  methodology:"Auditoría documental reproducible de GitHub. Los índices del catálogo y los registros remotos son declaraciones; no sustituyen GET/HEAD de R2, cotejo del interior del PDF ni recensio manuscrita. Una obra sin índice NO se marca indexada automáticamente.",
  counts:{
-   catalogueWorks:catalog.length,r2EditionRecords:r2.length,
+   catalogueWorks:catalog.length,additionalR2Works:additional.length,combinedCataloguedWorks:catalog.length+additional.length,r2EditionRecords:r2.length,
    registeredTextVersions:registry.length,registeredDistinctWorks:cataloguedIndexedIds.size,
    verifiedLocalSourceWorkIds:local.size,declaredRemoteSourceWorkIds:remoteDeclared.size,
    r2TextManifestVersions:remote.length,r2InvertedIndexDeclaredEditions:manifest.obras,
