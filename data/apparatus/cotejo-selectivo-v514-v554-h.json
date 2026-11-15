@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Selección de correspondencias del Apéndice T cotejadas entre V514 y V554. No constituye transcripción diplomática de H; los testimonios deben verificarse en los folios originales. V297 aporta traducción y glosas cuando están indexadas, pero no se presupone que repita estas entradas. Se añaden candidatos derivados de la comparación H semidiplomático ↔ latín Kurilo ↔ aparatos OCR de Rose/Krohn; mantienen el estado no verificado hasta control de imagen.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -115,6 +115,95 @@
         "krohn_apparatus_ocr": "constitutione SG'^: -nem J3\\\", -ne G",
         "rose_page": 37,
         "krohn_page": 19
+      },
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false
+    },
+    {
+      "locus": "1.1.10",
+      "lemma": "aedificiis ⟨locis⟩ communibus",
+      "reading": "om. locis",
+      "siglum": "H",
+      "folio": "4r",
+      "sources": [
+        "V514-T-p1101",
+        "Krohn 1912 p. locus 1.1.10 (OCR)"
+      ],
+      "note": "El Apéndice T V514 registra que H omite locis, mientras el aparato OCR de Krohn dice «locis add. Kr». Rose conserva «communibus» en el segmento indexado, sin asignación inequívoca de locis desde ese OCR. Suplemento editorial; falta verificación visual.",
+      "status": "documentación V514 + OCR de Krohn; fotografía H pendiente",
+      "comparison": {
+        "kurilo_latin": "aedificiis ⟨locis⟩ communibus",
+        "h_transcription": "om. locis (H según V514, no transcripción autóptica)",
+        "rose_apparatus_ocr": "communibus x.",
+        "krohn_apparatus_ocr": "locis add. Kr {cf. 25, 15)"
+      },
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false
+    },
+    {
+      "locus": "2.6.6",
+      "lemma": "inciso tras genere materiae",
+      "reading": "inciso al final del parágrafo",
+      "siglum": "H",
+      "folio": "26r",
+      "sources": [
+        "V514-T-p1103",
+        "V554-T-p1112",
+        "Krohn 1912, aparato OCR al locus"
+      ],
+      "note": "V514 y V554 refieren que el inciso en H (y según las notas también G) se ubica al final del párrafo; atribuyen a Krohn una transposición. El OCR de Krohn registra «post materiae ... transp. Kr». Rose menciona palabras del contexto pero su OCR no establece por sí mismo la transposición. Hay que cotejar los límites del inciso en ambos impresos y la disposición material de H.",
+      "status": "cotejo concordante V514/V554; autopsia de H pendiente",
+      "comparison": {
+        "kurilo_latin": "inciso tras genere materiae (referencia editorial; no pasaje íntegro)",
+        "h_transcription": "inciso al final del parágrafo (H según V514/V554)",
+        "rose_apparatus_ocr": "uti campania (in om.) HG, ubi S Itaque in campania ...",
+        "krohn_apparatus_ocr": "post materiae perturhato ordine sententiae leguntur ... {transp. Kr)"
+      },
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false
+    },
+    {
+      "locus": "4.1.8",
+      "lemma": "Subtilitate et ornatu symmetriaque sunt mutuati. posteri vero elegantia",
+      "reading": "om. (salto)",
+      "siglum": "H",
+      "folio": "49r",
+      "sources": [
+        "V514-T-p1105",
+        "V554-T-p1114",
+        "Rose 1899 aparato OCR",
+        "Krohn 1912 aparato OCR"
+      ],
+      "note": "V514 y V554 describen una omisión por salto. El OCR de Rose y el de Krohn coinciden en atribuir «om. HS» a un segmento del entorno «subtilitate ... elegantia», mientras G conserva la secuencia. La extensión exacta del segmento y sus límites se deben controlar en los impresos y el folio de H antes de establecer el lema diplomático.",
+      "status": "coincidencia documental entre cuatro fuentes; extensión paleográfica pendiente",
+      "comparison": {
+        "kurilo_latin": "Subtilitate et ornatu symmetriaque sunt mutuati. posteri vero elegantia",
+        "h_transcription": "om. (salto), según aparato de V514/V554",
+        "rose_apparatus_ocr": "subtilitate — (14) eligantia G: om. HS.",
+        "krohn_apparatus_ocr": "subtilitate — elegantia G: om. HS"
+      },
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false
+    },
+    {
+      "locus": "6.3.4",
+      "lemma": "spatio tribuatur",
+      "reading": "ratio habeatur",
+      "siglum": "H",
+      "folio": "81v",
+      "sources": [
+        "V514-T-p1106",
+        "V554-T-p1115",
+        "Krohn 1912, aparato OCR al locus",
+        "Rose 1899, aparato OCR al locus"
+      ],
+      "note": "El aparato de Krohn registra «spatio tribuatur ... Kr : ratio habeatur x»; V514 y V554 atribuyen ratio habeatur a la tradición y consignan H, G y Rose en su comentario. El registro automático Rose de este locus no contiene inequívocamente ese lema: no se atribuye a su OCR una lectura inexistente. La restitución textual y la asignación de H están documentadas editorialmente, pero sin autopsia folio-por-folio propia.",
+      "status": "decisión editorial documentada en V514/V554; lectura H directa pendiente",
+      "comparison": {
+        "kurilo_latin": "ratio habeatur (decisión reportada en apéndice; verificar contra pasaje V514)",
+        "h_transcription": "ratio habeatur (H según V514/V554)",
+        "rose_apparatus_ocr": "Las entradas OCR asociadas al locus no contienen el lema ratio habeatur; Rose se cita en el comentario V514/V554.",
+        "krohn_apparatus_ocr": "spatio tribuatur ... Kr: ratio habeatur x"
       },
       "evidenceClass": "candidate_cross_source",
       "verifiedAutopsy": false
