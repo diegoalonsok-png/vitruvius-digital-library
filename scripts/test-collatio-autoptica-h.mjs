@@ -1,0 +1,47 @@
+/* Prueba no destructiva: cotejos visuales H y estado honesto de Rose / Krohn. */
+import fs from "node:fs";
+import assert from "node:assert/strict";
+import vm from "node:vm";
+const read=p=>fs.readFileSync(p,"utf8"),json=p=>JSON.parse(read(p));
+const d=json("data/apparatus/collatio-autoptica-h.json");
+const idx=json("images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/indice-folios.json");
+const canon=new Set(json("data/academic-integrity.json").canonicalReferences);
+const decisions=json("data/ecdotic-decisions.json");
+const images=new Map(idx.imagenes.map(x=>[x.archivo,x]));
+assert.equal(d.schema,"vdl-collatio-autoptica-h-v1");
+assert.equal(d.entries.length,6);
+assert.equal(new Set(d.entries.map(e=>e.id)).size,6);
+assert.equal(new Set(d.entries.map(e=>e.locus)).size,4);
+assert.equal(new Set(d.entries.map(e=>e.folio)).size,4);
+assert.equal(d.counts.rosePageImagesVerified,0);
+assert.equal(d.counts.krohnPageImagesVerified,0);
+assert.equal(d.counts.editorialDecisionsRatified,0);
+assert.equal(decisions.decisions.length,0,"Los registros visuales no se convierten sin aprobación en decisiones editoriales ratificadas");
+for(const e of d.entries){
+ assert.ok(canon.has(e.locus),"Locus canónico: "+e.id);
+ assert.equal(e.witness,"H");
+ assert.equal(e.shelfmark,"Harley MS 2767");
+ assert.equal(e.visualStatus,"confrontado_con_fotografia");
+ assert.equal(e.editorialStatus,"pendiente_de_ratificacion_editorial");
+ const im=images.get(e.archivalFilename);assert.ok(im,e.archivalFilename+" existe");
+ assert.equal(im.sha256,e.archivalSHA256,"Huella del folio "+e.folio);
+ assert.equal(im.numeroImagen,e.imageNumber,"Número de imagen "+e.folio);
+ assert.ok(fs.existsSync("images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/"+e.archivalFilename));
+ assert.ok(e.iiifCanvas===im.canvasId);
+ assert.ok(e.facsimileUrl.endsWith(e.folio));
+ assert.ok(e.inspectionMethod.includes("digital"));
+ assert.ok(e.editorialIntervention.includes("conservar"));
+ if(e.rose)assert.ok(/no |pendiente/i.test(e.rose.kind));
+ if(e.krohn)assert.ok(e.krohn.kind.includes("OCR"));
+}
+const viewer=read("assets/collatio-autoptica.js"),dossier=read("assets/dossier-ecdotico.js"),html=read("collatio-autoptica.html"),map=read("cobertura-aparato-critico.html");
+new vm.Script(viewer);new vm.Script(dossier);
+assert.match(html,/id="records"/);
+assert.match(html,/paginaci[oó]n/);
+assert.match(map,/collatio-autoptica\.html/);
+assert.match(read("index.html"),/collatio-autoptica\.html/);
+assert.match(dossier,/collatio-autoptica-h\.json/);
+assert.match(dossier,/witnessPanel\(core,id,folioMap,hobs,autoptic\)/);
+assert.match(dossier,/Ratificaci[oó]n|ratificaci[oó]n/);
+console.log("PASS: 6 cotejos visuales en 4 loci y 4 folios H, referencias de imagen íntegras");
+console.log("PASS: Rose/Krohn permanecen sin certificado autóptico, 0 decisiones editoriales ratificadas, PDF/DOCX intactos");

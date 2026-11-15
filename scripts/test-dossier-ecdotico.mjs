@@ -31,7 +31,8 @@ for(const u of ["assets/dossier-ecdotico.js","assets/dossier-ecdotico.css",
  "data/structured/recensio-es.json","data/structured/recensio-fr.json",
  "data/structured/theory-en.json","data/collation-loci.json",
  "data/apparatus/aparato-comparativo.json","data/codex-h/folio-locus-map.json",
- "data/codex-h/observaciones-h.json"])assert.ok(fs.existsSync(u),u+" debe existir");
+ "data/codex-h/observaciones-h.json",
+ "data/apparatus/collatio-autoptica-h.json"])assert.ok(fs.existsSync(u),u+" debe existir");
 assert.match(html,/id="dossier"/);
 assert.match(html,/data-dossier/);
 assert.match(html,/vdl:coverage-ready/);
@@ -42,6 +43,8 @@ assert.match(js,/OCR/);
 assert.match(js,/No hay entrada del Apéndice T/);
 assert.match(js,/No hay entradas de aparato histórico/);
 assert.match(js,/Harley MS 2767/);
+assert.match(js,/collatio-autoptica-h\.json/);
+assert.match(js,/witnessPanel\(core,id,folioMap,hobs,autoptic\)/);
 assert.match(js,/latinComparatio\(core,es,fr,en,id,ocr\)/,"El dossier debe integrar la comparación del latín de las cinco ediciones");
 assert.match(js,/Diferencia textual o de extensión/,"Una divergencia no se califica automáticamente de errata");
 assert.match(js,/Concordancia léxica normalizada/);
