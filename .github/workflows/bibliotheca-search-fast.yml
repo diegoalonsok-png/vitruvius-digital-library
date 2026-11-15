@@ -9,6 +9,7 @@ on:
       - 'assets/bibliotheca-corpus-search.js'
       - 'bibliotheca-graeca-latina.html'
       - 'scripts/test-bibliotheca-fast-index.mjs'
+      - 'scripts/test-bibliotheca-remote-conceptus.mjs'
       - '.github/workflows/bibliotheca-search-fast.yml'
   pull_request:
     paths:
@@ -18,6 +19,7 @@ on:
       - 'assets/bibliotheca-corpus-search.js'
       - 'bibliotheca-graeca-latina.html'
       - 'scripts/test-bibliotheca-fast-index.mjs'
+      - 'scripts/test-bibliotheca-remote-conceptus.mjs'
 permissions:
   contents: read
 concurrency:
@@ -39,4 +41,6 @@ jobs:
           node --check assets/classics-lexical-index.js
           node --check assets/bibliotheca-corpus-search.js
       - name: Verify real lexical index without downloading full editions
-        run: node scripts/test-bibliotheca-fast-index.mjs
+        run: |
+          node scripts/test-bibliotheca-fast-index.mjs
+          node scripts/test-bibliotheca-remote-conceptus.mjs
