@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice. Control visual de H ff. 1v y 4v en las secuencias ea nascitur & fabrica y uti fuerit Aristarchus: las siglas de aparato histórico se mantienen diferenciadas del testimonio directo del códice. Observación visual adicional de H f. 2v, «civitate declarata», cotejada con V514/V554 y el extracto OCR del aparato de Krohn, manteniendo estado independiente para el impreso. Se han cotejado visualmente las secuencias de H ff. 4r, 5v y 7r de I.1.11, I.1.17 e I.2.4, anotadas como aparatos positivos parciales con omisiones distinguidas de suplementos editoriales.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice. Control visual de H ff. 1v y 4v en las secuencias ea nascitur & fabrica y uti fuerit Aristarchus: las siglas de aparato histórico se mantienen diferenciadas del testimonio directo del códice. Observación visual adicional de H f. 2v, «civitate declarata», cotejada con V514/V554 y el extracto OCR del aparato de Krohn, manteniendo estado independiente para el impreso. Se han cotejado visualmente las secuencias de H ff. 4r, 5v y 7r de I.1.11, I.1.17 e I.2.4, anotadas como aparatos positivos parciales con omisiones distinguidas de suplementos editoriales. Inspección directa de H f. 49r (poculis, lectura editorial adoptada) y f. 6r (taxis/diathesin, nota graphica). No equiparar variantes sustantivas a transliteraciones. El OCR de Rose/Krohn se considera secundario, sin atribución autóptica.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -583,6 +583,82 @@
         "folio": "65v",
         "display": "‖ V.5.1 diapente ⟨et⟩ ex ordine Kur. (suppl. Kr. sec. Kur.) : diapente ex ordine H (f. 65v, ex imagine) ‖",
         "caution": "El signo ⟨ ⟩ indica suplemento; en el folio H se observa diapente ex ordine sin et. La atribución del suplemento a Krohn proviene del Apéndice T y debe cotejarse con Krohn impreso."
+      }
+    },
+    {
+      "locus": "4.1.9",
+      "lemma": "poculis",
+      "reading": "poculis",
+      "siglum": "H",
+      "folio": "49r",
+      "sources": [
+        "V514-T-p1105-63",
+        "V554-T-p1114-260",
+        "V514-T-p1110-114",
+        "V554-T-p1119-311"
+      ],
+      "note": "La imagen de H f. 49r muestra poculis en el relato del cesto sobre la tumba de la joven corintia. V514/V554 señalan su adopción frente a pupulis atribuido a Krohn y la vinculan con Gros (Budé) y Loeb. El índice OCR Rose contiene «pauculis : poculis x», donde no debe confundirse el lema de Rose con la lectura del códice.",
+      "status": "lectura H comprobada visualmente; atribuciones Kr./Rose y Budé reportadas en ediciones del autor, impresos pendientes de comprobación",
+      "evidenceClass": "visual_folio_reading",
+      "verifiedAutopsy": true,
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "49r",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_105_f-49r.jpg",
+        "observedReading": "poculis",
+        "verification": "lectura visual de la fotografía del f. 49r, línea del pasaje «quibus ea virgo viva poculis delectabatur»",
+        "note": "Palabra visible en el texto del episodio del capitel corintio; cotejo de fuentes impresas de Kr. y Rose sigue pendiente."
+      },
+      "comparison": {
+        "kurilo_latin": "quibus ea virgo viva poculis delectabatur",
+        "h_transcription": "... quibus ea virgo viva poculis delectabatur ...",
+        "rose_apparatus_ocr": "pauculis: poculis x (ioculis Salmas. = ital. giocoli).",
+        "krohn_apparatus_ocr": "El extracto OCR asociado al locus no contiene pupulis; la atribución a Krohn proviene del Apéndice T V514/V554."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "IV.1.9",
+        "selected": "poculis",
+        "selectedAttribution": "Kur. V514/V554",
+        "variant": "pupulis",
+        "variantAttribution": "Kr. (sec. Kur.)",
+        "folio": "49r",
+        "display": "‖ IV.1.9 poculis Kur., H (f. 49r, ex imagine) : pupulis Kr. (sec. Kur., insp. pend.) ‖",
+        "caution": "Unidad positiva parcial: concordancia directa H y Kur. en poculis; Kr. se atribuye según notas autorales, no mediante inspección de su facsímil. Rose, según OCR, presenta otra oposición pauculis / poculis."
+      }
+    },
+    {
+      "locus": "1.2.2",
+      "lemma": "τάξις; διάθεσις (transcripción editorial)",
+      "reading": "taxis; diathesin (transliteración manuscrita)",
+      "siglum": "H",
+      "folio": "6r",
+      "sources": [
+        "V514-T-p1101-29",
+        "V554-T-p1110-226"
+      ],
+      "note": "Al final de f. 6r el manuscrito escribe las expresiones graece taxis dicitur y hanc autem graeci diathesin vocitant con letras latinas. Las ediciones del autor consignan los términos normalizados en alfabeto griego. No se trata de una omisión textual: es diferencia de escritura y forma flexiva, útil para la ficha filológica.",
+      "status": "observación de grafía paleográfica documentada en H; no variante sustantiva ni corrección ecdótica",
+      "evidenceClass": "visual_orthography",
+      "verifiedAutopsy": true,
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "6r",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_019_f-6r.jpg",
+        "observedReading": "taxis ... diathesin",
+        "verification": "inspección visual de las líneas siguientes a la rúbrica «Ex quibus rebus architectura constat»",
+        "note": "Términos de origen griego transcritos con caracteres latinos; se debe preservar en el registro de grafía, no fingir una variante semántica."
+      },
+      "criticalUnit": {
+        "form": "nota_graphica",
+        "location": "I.2.2",
+        "selected": "τάξις; διάθεσις",
+        "selectedAttribution": "Kur. (forma griega editorial)",
+        "variant": "taxis; diathesin",
+        "variantAttribution": "H (f. 6r)",
+        "folio": "6r",
+        "display": "‖ I.2.2 τάξις, διάθεσις Kur. : taxis, diathesin H (f. 6r, ex imagine; litteris Latinis) ‖",
+        "caution": "Nota graphica, no sustitución de texto constitutivo: la forma diathesin es acusativo en el contexto latino («vocitant»)."
       }
     }
   ],
