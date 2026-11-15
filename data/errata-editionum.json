@@ -1,11 +1,26 @@
 {
   "schema": "vdl-errata-editionum-v1",
-  "policy": "Registro de erratas y correcciones de ediciones publicadas, no declaración de provisionalidad editorial. Nunca se inventarán erratas ni lecturas de manuscritos. Cada entrada requiere locus o página, lectura previa, corrección y fundamento, versión y fecha.",
+  "policy": "Errata de publicaciones V514/V554/V297: solo hechos confirmados contra los DOCX/PDF originales. Las erratas menores se anotan sin alterar PDF; el índice digital puede corregir sus propios errores. Los errores graves exigen nueva versión editorial de DOCX/PDF y cotejo de pruebas antes de republicar; jamás sustitución silenciosa. El umbral <3 % es objetivo medible solo sobre una muestra o corpus revisado con denominador y criterios definidos.",
   "editions": [
     {
       "id": "V514",
       "catalog_id": "recensio-es",
-      "entries": []
+      "entries": [
+        {
+          "id": "V514-8.1.6-quae",
+          "version": "V514",
+          "locus_or_page": "8.1.6 · edición latina; DOCX p. 3396",
+          "kind": "lapsus_grammatical",
+          "reading_printed": "et, qua supra scripta sunt, signa",
+          "reading_corrected": "et, quae supra scripta sunt, signa",
+          "rationale": "El relativo concuerda con signa (neutro plural); lectura quae atestiguada en Rose y Krohn, según auditoría editorial. Se conserva la impresión original.",
+          "evidence": "DOCX maestro Vitruvio_V514_ESPANOL_MASTER_IMPRENTA_2026-10-02(3).docx (párrafo 3396); índice estructurado V514 ya contiene quae.",
+          "date": "2026-11-14",
+          "amended_in_version": "índice digital corregido; DOCX/PDF fuente conservados",
+          "status": "errata_publicada_sin_modificar_pdf",
+          "severity": "menor"
+        }
+      ]
     },
     {
       "id": "V554",
@@ -15,7 +30,50 @@
     {
       "id": "V297",
       "catalog_id": "theory-en",
-      "entries": []
+      "entries": [
+        {
+          "id": "V297-8.1.6-quae",
+          "version": "V297",
+          "locus_or_page": "8.1.6 · latín; DOCX p. 4188",
+          "kind": "lapsus_grammatical",
+          "reading_printed": "et, qua supra scripta sunt, signa",
+          "reading_corrected": "et, quae supra scripta sunt, signa",
+          "rationale": "Regularización morfológica verificada por comparación con otras ediciones; no transforma una variante manuscrita.",
+          "evidence": "DOCX maestro The_Architect_of_Theory_V297_EN_156x234(1).docx (párrafo 4188); índice estructurado V297 ya tiene quae.",
+          "date": "2026-11-14",
+          "amended_in_version": "índice digital corregido; DOCX/PDF fuente conservados",
+          "status": "errata_publicada_sin_modificar_pdf",
+          "severity": "menor"
+        },
+        {
+          "id": "V297-9.8.15-VIII",
+          "version": "V297",
+          "locus_or_page": "9.8.15 · latín; DOCX p. 4605",
+          "kind": "lapsus_numerico",
+          "reading_printed": "ad capricorni partem VII",
+          "reading_corrected": "ad capricorni partem VIII",
+          "rationale": "El latín de V514, Rose y Krohn presenta VIII y la traducción inglesa del mismo pasaje dice eighth. La cifra impresa VII altera el valor, pero se limita a un locus claramente identificable.",
+          "evidence": "DOCX maestro The_Architect_of_Theory_V297_EN_156x234(1).docx (párrafo 4605); comparación con 9.8.15 de V514 y V297 digital y erratas-ediciones.html.",
+          "date": "2026-11-14",
+          "amended_in_version": "índice digital corregido; original se conserva para futura emisión revisada",
+          "status": "errata_publicada_sin_modificar_pdf",
+          "severity": "moderado"
+        },
+        {
+          "id": "V297-9praef1-Pythia",
+          "version": "V297",
+          "locus_or_page": "9.praef.1 · traducción; DOCX p. 4345 · PDF físico p. 780",
+          "kind": "omision_de_nombre",
+          "reading_printed": "won Olympia, Isthmia, and Nemea",
+          "reading_corrected": "won Olympia, Pythia, Isthmia, and Nemea",
+          "rationale": "La traducción omite Pythia, presente expresamente en el latín de la propia edición y en las traducciones española y francesa.",
+          "evidence": "DOCX maestro The_Architect_of_Theory_V297_EN_156x234(1).docx (párrafos 4344–4345); PDF V297 p. 780; latín y traducciones V514/V554.",
+          "date": "2026-11-14",
+          "amended_in_version": "solo fe de erratas; no se altera el texto publicado",
+          "status": "errata_publicada_sin_modificar_pdf",
+          "severity": "menor"
+        }
+      ]
     }
   ],
   "entry_fields": [
@@ -28,7 +86,32 @@
     "rationale",
     "evidence",
     "date",
-    "amended_in_version"
+    "amended_in_version",
+    "status",
+    "severity"
   ],
-  "note": "La ausencia de registros en este fichero no certifica que una edición carezca de errores, ni convierte notas ecdóticas o variantes legítimas en erratas."
+  "note": "4 erratas de libro documentadas contra originales en V514 y V297; 2 casos en revisión separados, incluido uno importante. V554 no se declara exento de errores. No se han modificado los PDF publicados.",
+  "review_queue": [
+    {
+      "id": "V297-9.2.1-duplicacion",
+      "version": "V297",
+      "locus": "9.2.1",
+      "severity": "importante",
+      "category": "duplicacion_y_distorsion_semantica",
+      "finding": "El PDF p. 810 (número impreso 798) presenta dos versiones inglesas sucesivas del mismo pasaje; la segunda emplea «I rebuked it» para el latino «eam ... corripi», transformando indebidamente una construcción pasiva en primera persona.",
+      "evidence": "DOCX V297 párrafos 4463–4467; PDF original página física 810, folio impreso 798, examinado visualmente.",
+      "next_action": "Revisar una sola traducción integral fiel al latín y producir una nueva versión editorial identificada y cotejada antes de sustituir DOCX/PDF. No corregir por simple reemplazo ciego.",
+      "pdf_modified": false
+    },
+    {
+      "id": "V554-8.1.6-comprobacion",
+      "version": "V554",
+      "locus": "8.1.6",
+      "severity": "menor",
+      "category": "verificar_facsímil",
+      "finding": "Índice estructurado francés ya contiene quae; no se dispone en esta comprobación del DOCX V554 original para determinar si el impreso conservó qua.",
+      "next_action": "Cotejar versión publicada antes de atribuir una errata a V554.",
+      "pdf_modified": false
+    }
+  ]
 }
