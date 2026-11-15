@@ -83,7 +83,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/r2/bibliotheca-panel-sync.json data/r2/bibliotheca-r2-live-audit.json data/r2/bibliotheca-inventario-unificado.json data/r2/r2-object-status.json data/cifras-corpus.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/r2-orphan-reconciliation.json data/r2/bibliotheca-ocr-coverage.json data/r2/bibliotheca-lexical-live-audit.json reports/bibliotheca/r2-live-integrity.json
+          git add data/r2/bibliotheca-panel-sync.json data/r2/bibliotheca-r2-live-audit.json data/r2/bibliotheca-inventario-unificado.json data/r2/r2-object-status.json data/cifras-corpus.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/r2-orphan-reconciliation.json data/r2/bibliotheca-ocr-coverage.json data/r2/bibliotheca-lexical-live-audit.json data/r2/bibliotheca-greek-ocr-triage.json reports/bibliotheca/r2-live-integrity.json
           if git diff --cached --quiet; then echo "Sin cambios en el panel"; exit 0; fi
           git commit -m "Bibliotheca: sincronizar inventario y prueba R2"
           pushed=false
