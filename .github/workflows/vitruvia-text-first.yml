@@ -1,0 +1,37 @@
+name: Vitruvia · búsqueda textual sin imágenes automáticas
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'assets/vitruvia-features.js'
+      - 'assets/vitruvia-search.js'
+      - 'scripts/test-vitruvia-text-first.mjs'
+      - '.github/workflows/vitruvia-text-first.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'assets/vitruvia-features.js'
+      - 'assets/vitruvia-search.js'
+      - 'scripts/test-vitruvia-text-first.mjs'
+      - '.github/workflows/vitruvia-text-first.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source syntax
+        run: |
+          node --check assets/vitruvia-search.js
+          node --check assets/vitruvia-features.js
+      - name: Run text-first image-loading regression
+        run: node scripts/test-vitruvia-text-first.mjs
+      - name: Run search and routing contract tests
+        run: |
+          node scripts/test-vitruvia-search-contract.mjs
+          node scripts/test-vitruvia-web-routing.mjs
