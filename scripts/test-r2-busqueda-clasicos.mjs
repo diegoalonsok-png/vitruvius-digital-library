@@ -61,6 +61,13 @@ await check("dos palabras exigen que la obra contenga las dos",async()=>{
  assert.equal(r.obras[0].id,latina.id);
  assert.deepEqual(r.obras[0].paginas,[88,211],"debe localizar por la palabra menos frecuente");
 });
+await check("un ID huérfano en fragmentos R2 no aparece como edición pública",async()=>{
+ sembrar("symmetria","boecio-institutione-musica",200,[2,3,4]);
+ const r=await R2.lookup("symmetria");
+ assert.ok(!r.obras.some(o=>o.id==="boecio-institutione-musica"),
+  "El buscador no debe promocionar objetos R2 fuera del catálogo académico");
+ assert.equal(r.obras.length,2,"Los dos resultados catalogados se conservan");
+});
 await check("una palabra ausente no inventa resultados",async()=>{
  const r=await R2.lookup("zzzqwerty");
  assert.equal(r.obras.length,0);
