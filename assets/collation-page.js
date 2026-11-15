@@ -206,7 +206,6 @@ async function show(locus){
   a.target="_blank";a.rel="noopener";
   box.append(a);witnesses.append(box);
  }
- if(witnesses.childElementCount)root.append(witnesses);
  // Codex Harleianus
  const hBox=el("section","coll-row");hBox.append(el("h3",null,"Codex Harleianus (H) · British Library, Harley MS 2767"));
  try{const c=await window.CodexHConcordance?.locate(locus);
@@ -214,7 +213,13 @@ async function show(locus){
    const p=el("p",null,ex?("Folio "+ex.folio+" · "+(window.CodexHConcordance.label?.(ex.status)||ex.status||"verificado")):(c.estimate?("Folio estimado "+c.estimate.folio+" (entre "+c.estimate.from+" y "+c.estimate.to+"; estimación proporcional dentro del libro)"):"Sin folio asignado."));hBox.append(p);
    if(f){const a=el("a",null,"Ver el folio en el visor del Codex H →");a.href="codex-h-folios-local.html?locus="+encodeURIComponent(locus);hBox.append(a)}}
  }catch{hBox.append(el("p","coll-meta","Concordancia de folios no disponible."))}
- root.append(hBox);
+ hBox.append(el("p","coll-warning","H es un testimonio manuscrito, no una edición impresa. La identificación de un folio, incluso materialmente comprobada, no certifica la lectura de cada palabra. No se generan variantes automáticas a partir de una localización estimada."));
+ const hEvidence=el("a",null,"Lecturas de H documentadas para este locus · grado de verificación →");
+ hEvidence.href="registro-ecdotico.html?tipo=lectura-h&q="+encodeURIComponent(locus);
+ hEvidence.style.display="block";hEvidence.style.marginTop="10px";hBox.append(hEvidence);
+ witnesses.append(hBox);
+ witnesses.setAttribute("aria-label","Colación comparativa: Rose, Krohn y Codex Harleianus H");
+ if(witnesses.childElementCount)root.append(witnesses);
  // Aparato crítico de las ediciones Kurilo
  const apBox=el("section","coll-row");apBox.append(el("h3",null,"Aparato crítico · ediciones de Diego Kurilo (V514 · V554 · V297)"));
  try{const hits=await window.KuriloApparatus.forLocus(locus,{lang:"es",limit:10});
