@@ -112,3 +112,29 @@ html body .cl-translation-column .cl-translation-output > p:not(.cl-caution){
 @media print{
  .cl-translation-annotations,.cl-source-column .vdl-annotation-bar{display:none!important}
 }
+
+/* Reading-column order: original language first unless the reader swaps it.
+ * Use grid areas rather than DOM moves to preserve locus, listeners and translation state. */
+.cl-dual-reader:not(.single-source){grid-template-areas:"source separator translation"}
+.cl-dual-reader>.cl-source-column{grid-area:source}
+.cl-dual-reader>.cl-pane-splitter{grid-area:separator}
+.cl-dual-reader>.cl-translation-column{grid-area:translation}
+.cl-dual-reader.translation-first:not(.single-source){grid-template-areas:"translation separator source"}
+@media(min-width:901px){
+ .cl-dual-reader.translation-first:not(.single-source){
+  grid-template-columns:minmax(0,1fr) 12px minmax(0,var(--cl-source-percent,50%))
+ }
+}
+@media(max-width:900px){
+ .cl-dual-reader:not(.single-source){grid-template-areas:"source" "separator" "translation"}
+ .cl-dual-reader.translation-first:not(.single-source){grid-template-areas:"translation" "separator" "source"}
+}
+.cl-edition-layout button:focus-visible{outline:3px solid #e6c88c;outline-offset:3px}
+@media print{
+ .cl-dual-reader:not(.single-source){grid-template-areas:"source separator translation"}
+ .cl-dual-reader.translation-first:not(.single-source){grid-template-areas:"translation separator source"}
+ .cl-dual-reader>.cl-pane-splitter{display:none!important}
+ .cl-dual-reader{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+ .cl-dual-reader:not(.single-source){grid-template-areas:"source translation"}
+ .cl-dual-reader.translation-first:not(.single-source){grid-template-areas:"translation source"}
+}
