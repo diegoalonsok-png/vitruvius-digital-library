@@ -125,6 +125,19 @@ jobs:
           node scripts/test-cifra-obras.mjs
           node scripts/test-export-xlsx-datos.mjs
 
+      - name: Auditar títulos, índices, pasajes y sincronización documental
+        run: |
+          node scripts/audit-bibliotheca-indexation.mjs --strict
+          python scripts/sync-bibliotheca-github-r2.py
+
+      - name: Verificar objetos físicos de R2 y manifiesto de indexación
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: vitruvius-bibliotheca
+        run: python scripts/audit-r2-object-presence.py
+
       - name: Guardar catálogos, fichas y manifiestos (solo archivos livianos)
         run: |
           git config user.name "github-actions[bot]"
