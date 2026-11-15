@@ -1,0 +1,46 @@
+name: Bibliotheca · catalogue growth integrity
+on:
+  pull_request:
+    paths:
+      - 'data/classics-corpus/**'
+      - 'data/bibliotheca-graeca-latina-I-bce-I-ce.json'
+      - 'data/bibliotheca-testimonia-verified.json'
+      - 'scripts/check-bibliotheca-growth-gate.py'
+      - 'scripts/audit-classics-original-titles.py'
+      - 'scripts/audit-bibliotheca-provenance.py'
+      - '.github/workflows/bibliotheca-growth-gate.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '17 10 * * 1'
+permissions:
+  contents: read
+jobs:
+  catalogue-consistency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Enforce structural invariants and non-regression baseline
+        run: python3 scripts/check-bibliotheca-growth-gate.py
+      - name: Build original title verification queue
+        if: always()
+        run: |
+          python3 scripts/audit-classics-original-titles.py --json > title-provenance-audit.json || true
+      - name: Build provenance verification queue
+        if: always()
+        run: |
+          python3 scripts/audit-bibliotheca-provenance.py --json > declared-index-audit.json || true
+      - name: Save reports without editing catalogue
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-growth-audit
+          path: |
+            reports/bibliotheca/growth-gate.json
+            title-provenance-audit.json
+            declared-index-audit.json
+          if-no-files-found: warn
+          retention-days: 30

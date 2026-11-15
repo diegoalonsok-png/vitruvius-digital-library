@@ -40,7 +40,20 @@ function dating(w){
  return Infinity;
 }
 function eraOf(w){const y=dating(w);if(!Number.isFinite(y))return "uncertain";if(y< -500)return "archaic";if(y< -322)return "classical";if(y< -30)return "hellenistic";if(y<=284)return "imperial";if(y<=700)return "late";return "later"}
-let works=[],registry=[],remoteTranslations=[];
+let works=[],registry=[],remoteTranslations=[],remoteOriginals=new Map();
+/* La reconciliación documental sólo identifica índices remotos. No se
+   confunden con textos alojados, traducciones ni cotejos codicológicos. */
+function recordedRemoteOriginals(data){
+ const rows=Array.isArray(data?.remoteEntries)?data.remoteEntries:[];
+ const next=new Map();
+ for(const e of rows){
+  if(typeof e.workId!=="string"||!["la","grc"].includes(e.language)||
+     !/^[a-f0-9]{64}$/.test(e.sourceSha256||"")||
+     !/^[a-z0-9-]+$/.test(e.workId))continue;
+  next.set(e.workId,e);
+ }
+ return next;
+}
 const trustedTranslationHosts=new Set(["penelope.uchicago.edu","www.gutenberg.org","archive.org","adfonteslibrary.org"]);
 function verifiedExternalTranslation(entry){try{const u=new URL(entry.url);return u.protocol==="https:"&&trustedTranslationHosts.has(u.hostname)&&entry.status==="external-only"&&entry.access==="external-reading-index"?u.href:null}catch{return null}}
 const languageTitles={la:"Latín",grc:"Griego",es:"Castellano",en:"Inglés",fr:"Francés",it:"Italiano",de:"Alemán",pt:"Portugués"};
@@ -114,6 +127,20 @@ function render(){
    }
    info.append(editions);
   }
+  const remoteOriginal=remoteOriginals.get(w.id);
+  if(remoteOriginal&&!versions.original){
+   const originalBox=document.createElement("div");originalBox.className="genre-work-editions";
+   const a=document.createElement("a");a.className="genre-work-version";
+   a.href="classics-remote-text-reader.html?work="+encodeURIComponent(w.id);
+   a.textContent=(language==="en"?"Indexed original · remote":language==="fr"?"Original indexé · distant":"Original indexado · repositorio externo")+" · "+(languageTitles[remoteOriginal.language]||remoteOriginal.language);
+   a.title="Índice externo documentado; no constituye texto alojado localmente ni cotejo autóptico.";
+   originalBox.append(a);
+   const source=document.createElement("a");source.className="genre-work-version";
+   source.href=remoteOriginal.sourceUrl;source.target="_blank";source.rel="noopener noreferrer";
+   source.textContent=language==="en"?"Source edition":language==="fr"?"Édition source":"Edición fuente";
+   originalBox.append(source);
+   info.append(originalBox);
+  }
   const remote=remoteTranslations.filter(e=>e.workId===w.id).map(e=>({entry:e,url:verifiedExternalTranslation(e)})).filter(e=>e.url);
   if(remote.length){
    const sources=document.createElement("div");sources.className="genre-work-editions";
@@ -147,7 +174,7 @@ window.addEventListener("bibliotheca:filters-ready",render);
 window.addEventListener("bibliotheca:order-changed",render);
 for(const id of ["classic-genre","classic-era"])$(id)?.addEventListener("change",render);
 $("language-toggle")?.addEventListener("click",()=>queueMicrotask(render));
-Promise.all([fetch(CATALOG).then(r=>{if(!r.ok)throw Error("catalog");return r.json()}),fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("registry");return r.json()}),fetch("data/classics-corpus/remote-translations.json").then(r=>r.ok?r.json():null).catch(()=>null)])
-.then(([catalog,index,remote])=>{if(!Array.isArray(catalog.works)||!Array.isArray(index.entries))throw Error("invalid");works=catalog.works;registry=index.entries;remoteTranslations=remote?.schema==="vitruvius-classics-remote-translations-v1"&&Array.isArray(remote.entries)?remote.entries:[];render()})
+Promise.all([fetch(CATALOG).then(r=>{if(!r.ok)throw Error("catalog");return r.json()}),fetch(REGISTRY).then(r=>{if(!r.ok)throw Error("registry");return r.json()}),fetch("data/classics-corpus/remote-translations.json").then(r=>r.ok?r.json():null).catch(()=>null),fetch("data/classics-corpus/external-index-reconciliation.json").then(r=>r.ok?r.json():null).catch(()=>null)])
+.then(([catalog,index,remote,remoteIndexes])=>{if(!Array.isArray(catalog.works)||!Array.isArray(index.entries))throw Error("invalid");works=catalog.works;registry=index.entries;remoteTranslations=remote?.schema==="vitruvius-classics-remote-translations-v1"&&Array.isArray(remote.entries)?remote.entries:[];remoteOriginals=recordedRemoteOriginals(remoteIndexes);render()})
 .catch(()=>{panel.hidden=false;heading.textContent=(tr[document.documentElement.lang]||tr.es).error;note.textContent="";});
 })();
