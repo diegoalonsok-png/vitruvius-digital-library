@@ -12,13 +12,18 @@ function addSource(parent,label,url){const a=E('a',label);a.href=url;a.target='_
 function draw(){
  if(!manifest||!bookData)return;
  host.hidden=document.getElementById('mode')?.value==='v514';
+ const compatible=checks.transcriptionSourceSha256===manifest.source.sha256;
+ const proof=new Map((checks.readings||[]).map(x=>[x.id,x]));
+ const currentRows=new Map(bookData.entries.map(x=>[x.id,x]));
+ const agrees=id=>{const expected=proof.get(id),row=currentRows.get(id);return compatible&&expected&&row&&['source','printedPage','printedLine','printedLineEnd','sourceText'].every(k=>expected[k]===row[k])&&JSON.stringify(expected.loci)===JSON.stringify(row.loci);};
+ const verified=new Map(checks.entries.filter(x=>x.source==='Rose1899'&&x.status==='checked_against_print').flatMap(x=>(x.entryIds||[]).filter(agrees).map(id=>[id,x])));
  const comparison=$('source-critical-comparison');comparison.replaceChildren();
- for(const item of checks.comparisons||[])if(item.locus===current){
+ for(const item of checks.comparisons||[])if(item.locus===current&&compatible&&(item.sourceNoteIds||[]).every(id=>verified.has(id))){
   comparison.append(E('h3','Comparación cotejada · '+fmt(current)),E('p',item.criticalLine,'ab-critical-reading'),E('p',item.evidence,'ab-meta'));
   if(item.errataUrl)addSource(comparison,'Corrección del comentario de V297',item.errataUrl);
  }
  const range=$('source-critical-range').value,query=$('source-critical-query').value.trim().toLocaleLowerCase();
- const level=$('source-critical-evidence').value,verified=new Map(checks.entries.filter(x=>x.source==='Rose1899'&&x.status==='checked_against_print').flatMap(x=>(x.entryIds||[]).map(id=>[id,x])));
+ const level=$('source-critical-evidence').value;
  let rows=bookData.entries.filter(x=>(range==='book'||x.loci.includes(current))&&(!query||x.sourceText.toLocaleLowerCase().includes(query)));
  if(level==='print')rows=rows.filter(x=>verified.has(x.id)&&x.locusMapping==='printed_source_line');
  const root=$('source-critical-entries');root.replaceChildren();
@@ -61,10 +66,10 @@ window.addEventListener('vitruvius:bude-locus',e=>{if(e.detail?.locus)void selec
 for(const id of ['source-critical-range','source-critical-evidence'])$(id).addEventListener('change',()=>{shown=30;draw();});
 $('source-critical-query').addEventListener('input',()=>{shown=30;draw();});
 $('source-critical-more').addEventListener('click',()=>{shown+=30;draw();});
-Promise.all([get('data/apparatus/rose-1899-critical-register.json'),get('data/apparatus/source-print-checks.json')]).then(([m,c])=>{
+Promise.all([get('data/apparatus/rose-1899-critical-register.json'),get('data/apparatus/source-print-checks.json?v=20261115-proof-2')]).then(([m,c])=>{
  if(m.schema!=='vdl-systematic-critical-register-v1')throw Error('Registro no reconocido');
  manifest=m;checks=c;
- const checkedCount=new Set(c.entries.filter(x=>x.source==='Rose1899'&&x.status==='checked_against_print').flatMap(x=>x.entryIds||[])).size;
+ const checkedCount=c.transcriptionSourceSha256===m.source.sha256?new Set((c.readings||[]).map(x=>x.id)).size:0;
  $('source-critical-coverage').textContent=m.counts.apparatusEntries+' entradas históricas de Rose registradas en '+m.counts.lociWithApparatus+' loci de los diez libros; '+checkedCount+' entradas cotejadas con el impreso. '+m.counts.sourceAnchoredLoci+' referencias tienen ancla de sección en esa edición. La vinculación automática de las demás entradas sigue pendiente de cotejo. Estas cifras miden documentación, no colación independiente de los códices.';
  $('source-critical-conspectus').textContent=m.conspectusSource.text||'';
  const a=$('source-critical-conspectus-link');a.href=m.conspectusSource.url;

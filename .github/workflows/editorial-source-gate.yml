@@ -10,6 +10,16 @@ on:
       - 'assets/errata-editionum.js'
       - 'errata-editionum.html'
       - 'scripts/test-source-errata.mjs'
+      - 'data/apparatus/**'
+      - 'data/classics-corpus/reading-notes/**'
+      - 'assets/source-critical-register.js'
+      - 'assets/classics-academic-reader.js'
+      - 'classics-simple-parallel.html'
+      - 'scripts/test-source-critical-register.mjs'
+      - 'scripts/test-simple-source-notes.mjs'
+      - 'scripts/test-source-resolution.py'
+      - 'scripts/audit-classics-coverage.py'
+      - 'scripts/indexar-perseus-lote.py'
       - '.github/workflows/editorial-source-gate.yml'
   push:
     branches: [main]
@@ -19,6 +29,16 @@ on:
       - 'data/errata-editionum.json'
       - 'assets/dossier-ecdotico.js'
       - 'scripts/test-source-errata.mjs'
+      - 'data/apparatus/**'
+      - 'data/classics-corpus/reading-notes/**'
+      - 'assets/source-critical-register.js'
+      - 'assets/classics-academic-reader.js'
+      - 'classics-simple-parallel.html'
+      - 'scripts/test-source-critical-register.mjs'
+      - 'scripts/test-simple-source-notes.mjs'
+      - 'scripts/test-source-resolution.py'
+      - 'scripts/audit-classics-coverage.py'
+      - 'scripts/indexar-perseus-lote.py'
       - '.github/workflows/editorial-source-gate.yml'
 
 permissions:
@@ -32,7 +52,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: npm install --ignore-scripts --no-package-lock
       - name: Verify original corpus references, translations, SHA-256 and errata
         run: npm run check:source-errata
       - name: Verify ecdotic dossier and witness coverage
         run: npm run check:dossier
+      - name: Verify printed readings remain bound to their exact source and loci
+        run: node scripts/test-source-critical-register.mjs
+      - name: Verify simple reader preserves source notes and translation input
+        run: node scripts/test-simple-source-notes.mjs
+      - name: Verify remote source integrity and consecutive source fragments
+        run: python3 scripts/test-source-resolution.py
