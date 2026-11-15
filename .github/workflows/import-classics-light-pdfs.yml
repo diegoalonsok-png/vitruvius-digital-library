@@ -7,16 +7,21 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: import-classics-light-pdfs
+  group: vdl-classics-publication-main
   cancel-in-progress: false
 jobs:
   import:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+      - name: Trabajar sobre el último main antes de generar resultados
+        run: |
+          git fetch --quiet origin main
+          git checkout -B vdl-publication origin/main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -111,5 +116,6 @@ jobs:
             echo "No new validated PDFs were downloaded."
           else
             git commit -m "Archive verified lightweight Greek and Latin classical PDF editions"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
