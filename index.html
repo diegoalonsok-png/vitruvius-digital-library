@@ -589,7 +589,7 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
           <p style="font:12px/1.5 system-ui,sans-serif;margin:0">Inventario: <time data-cifra-fecha datetime="2026-11-13">13 de noviembre de 2026</time> · <a href="auditoria-academica.html">ver auditoría</a></p>
         </header>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:16px 0;font:13px/1.65 system-ui,sans-serif">
-          <div><strong>Bibliotheca Graeca et Latina</strong><p style="margin:4px 0"><strong data-cifra="obrasConTextoIndexado">214</strong> de <strong data-cifra="obras">271</strong> obras catalogadas figuran con índice de búsqueda en el registro. El total incluye fuentes remotas R2 declaradas, cuya disponibilidad debe comprobarse por separado; no todas tienen el original alojado localmente.</p></div>
+          <div><strong>Bibliotheca Graeca et Latina</strong><p style="margin:4px 0">El repertorio principal tiene <strong data-cifra="obras">271</strong> obras; <strong data-cifra="obrasConTextoIndexado">214</strong> cuentan con texto registrado para búsqueda. La biblioteca reúne <strong data-cifra="obrasTotalesDeclaradas">281</strong> obras declaradas al incluir las <strong data-cifra="obrasAdicionales">10</strong> incorporaciones de R2. Las versiones, ediciones PDF y fuentes remotas no se suman como obras nuevas; su disponibilidad se comprueba por separado.</p></div>
           <div><strong>De architectura · tres ediciones</strong><p style="margin:4px 0"><strong>731 loci</strong> cubiertos por la estructura de V514, V554 y V297. V297 conserva agrupaciones de pasajes; la coincidencia de locus no certifica cotejo manuscrito independiente.</p></div>
           <div><strong>Fuentes y labor editorial</strong><p style="margin:4px 0">V514, V554 y V297 son ediciones de Diego Kurilo; los códices y facsímiles son testimonios conservados por sus respectivas bibliotecas. <a href="status-textus.html">Alcance de la verificación</a> · <a href="data/corpus-snapshot-2026-11-14.json">versión documental fechada</a>.</p></div>
         </div>
@@ -648,17 +648,32 @@ html[data-theme="dark"].front-color-light .research-nav-controls>.research-print
         </aside>
       </div>
     </section>
-    <section class="stats-band" aria-label="La colección en cifras"><div class="wrap stats-inner"><p><strong id="stat-records">175</strong><span>fichas en tres repertorios documentales</span></p><p><strong id="stat-indexed-editions">3</strong><span>ediciones de Diego Kurilo con índice textual</span></p><p><strong id="stat-pages">3.379</strong><span>páginas declaradas en esas tres ediciones</span></p><p><strong id="stat-languages">4</strong><span>idiomas en las ediciones catalogadas</span></p></div>
-<div class="wrap stat-audit-detail">
-<p><strong>Desglose verificable:</strong> <strong id="stat-main-records">28</strong> fichas del <a href="#coleccion">catálogo principal</a> · <strong id="stat-inventory-records">78</strong> referencias del <a href="index-codicum.html">inventario de códices y ediciones</a> · <strong id="stat-studies-records">69</strong> <a href="estudios.html">estudios académicos</a>. <strong id="stat-passages">2.190</strong> pasajes textuales indexados por locus.</p>
-<details class="stats-academic-breakdown">
-<summary>Desplegar repertorios y referencias académicas</summary>
-<div class="stats-academic-breakdown-grid">
-<section><strong>175 fichas documentales</strong><p>Se distribuyen en tres repertorios que pueden contener referencias repetidas.</p><ol><li><a href="#coleccion">28 fichas del catálogo principal</a></li><li><a href="index-codicum.html">78 referencias del inventario de códices y ediciones</a></li><li><a href="estudios.html">69 estudios académicos</a></li></ol></section>
-<section><strong>3 ediciones indexadas · 3.379 páginas declaradas</strong><ol><li><a href="lector-bilingue.html?edition=recensio-es"><i>Vitruvio. De architectura</i> · V514</a> — 1.157 páginas</li><li><a href="lector-bilingue.html?edition=recensio-fr"><i>Vitruve. De architectura</i> · V554</a> — 1.166 páginas</li><li><a href="lector-bilingue.html?edition=theory-en"><i>The Architect of Theory</i> · V297</a> — 1.056 páginas</li></ol></section>
-<section><strong>4 idiomas representados</strong><ol><li>Latín (LA)</li><li>Castellano (ES)</li><li>Francés (FR)</li><li>Inglés (EN)</li></ol><p>El número de idiomas no equivale a cuatro traducciones completas por cada obra.</p></section>
-</div></details>
-<p class="stat-audit-caveat">Cifras auditadas el <span id="stat-audit-date">2 de noviembre de 2026</span>. Las fichas pueden repetirse entre repertorios: 175 no significa 175 obras únicas. Las 3.379 páginas son la suma de extensiones editoriales declaradas, no páginas indexadas individualmente.</p></div></section>
+    <section class="stats-band" aria-label="Bibliotheca Graeca et Latina · colección en cifras">
+      <div class="wrap" style="padding-bottom:10px">
+        <p class="eyebrow" style="margin:0 0 8px">BIBLIOTHECA GRAECA ET LATINA · INVENTARIO UNIFICADO GITHUB / R2</p>
+      </div>
+      <div class="wrap stats-inner">
+        <p><strong id="stat-bibliotheca-total" data-cifra="obrasTotalesDeclaradas">281</strong><span>obras declaradas en la biblioteca</span></p>
+        <p><strong id="stat-bibliotheca-main" data-cifra="obras">271</strong><span>obras del repertorio principal</span></p>
+        <p><strong id="stat-bibliotheca-additional" data-cifra="obrasAdicionales">10</strong><span>obras adicionales incorporadas</span></p>
+        <p><strong id="stat-bibliotheca-indexed" data-cifra="obrasConTextoIndexado">214</strong><span>obras del repertorio principal con texto indexado</span></p>
+        <p><strong id="stat-bibliotheca-r2">117</strong><span>ediciones PDF catalogadas en R2</span></p>
+        <p><strong id="stat-bibliotheca-versions" data-cifra="versionesTextuales">279</strong><span>versiones textuales registradas</span></p>
+      </div>
+      <div class="wrap stat-audit-detail">
+        <p class="stat-audit-caveat">Inventario del <time data-cifra-fecha datetime="2026-11-15">15 de noviembre de 2026</time>. Total: 271 fichas principales + 10 obras adicionales, sin sumar las ediciones o traducciones como nuevas obras. Los 214 textos corresponden al repertorio principal; 117 son ediciones PDF del catálogo R2, no el total de libros del sitio. <a href="bibliotheca-graeca-latina.html">Abrir Bibliotheca</a> · <a href="data/r2/bibliotheca-inventario-unificado.json">Inventario federado</a>.</p>
+        <details class="stats-academic-breakdown">
+          <summary>Ver por separado las cifras documentales y las tres ediciones de Vitruvio</summary>
+          <p><strong id="stat-records">175</strong> fichas en tres repertorios documentales de Vitruvio (con posibles referencias repetidas): <strong id="stat-main-records">28</strong> fichas del <a href="#coleccion">catálogo principal vitruviano</a> · <strong id="stat-inventory-records">78</strong> referencias del <a href="index-codicum.html">inventario de códices y ediciones</a> · <strong id="stat-studies-records">69</strong> <a href="estudios.html">estudios académicos</a>.</p>
+          <div class="stats-academic-breakdown-grid">
+            <section><strong id="stat-indexed-editions">3</strong> ediciones de Diego Kurilo con índice textual: <a href="lector-bilingue.html?edition=recensio-es">V514</a>, <a href="lector-bilingue.html?edition=recensio-fr">V554</a> y <a href="lector-bilingue.html?edition=theory-en">V297</a>.</section>
+            <section><strong id="stat-pages">3.379</strong> páginas declaradas de esas tres ediciones, no páginas OCR de toda Bibliotheca.</section>
+            <section><strong id="stat-languages">4</strong> idiomas en esas ediciones; <strong id="stat-passages">2.190</strong> pasajes estructurados indexados por locus.</section>
+          </div>
+          <p class="stat-audit-caveat">Inventario vitruviano: corte documental <span id="stat-audit-date">2 de noviembre de 2026</span>. Sus fichas y páginas no deben confundirse con las obras del repertorio grecolatino.</p>
+        </details>
+      </div>
+    </section>
     <div class="wrap"><section id="classics-audit-coverage" aria-label="Cobertura verificable de la Bibliotheca Graeca et Latina" style="padding:20px 0;border-top:1px solid #6664;border-bottom:1px solid #6664;margin:14px 0">
  <h2 style="font:400 clamp(19px,2.1vw,26px)/1.3 Georgia,serif;margin:0 0 12px">Bibliotheca · cobertura de textos clásicos</h2>
  <div style="display:flex;gap:12px 25px;flex-wrap:wrap;font:13px/1.6 system-ui,sans-serif">
@@ -856,7 +871,7 @@ button.addEventListener("click",async()=>{
  catch{window.prompt("Copiar cita de biblioteca:",cite);}
 });
 })();
-</script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/collapse-empty-regions.js?v=20261111-vacio-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/cifra-obras.js?v=20261114-status-corpus"></script></body>
+</script><script defer src="assets/scholarly-query-tools.js?v=20261109-university-v1"></script><script defer src="assets/button-press-feedback.js?v=20261111-pulsacion-v1"></script><script defer src="assets/collapse-empty-regions.js?v=20261111-vacio-v1"></script><script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script><script defer src="assets/bibliotheca-r2-facsimiles.js?v=20261113-r2-1"></script><script defer src="assets/cifra-obras.js?v=20261115-front-catalogue-281"></script></body>
 </html>
 
 
