@@ -5,6 +5,7 @@ on:
     paths:
       - 'assets/analytics.js'
       - 'assets/analytics-config.js'
+      - '**/*.html'
       - 'index.html'
       - 'vitruvia.html'
       - 'bibliotheca-graeca-latina.html'
@@ -18,6 +19,7 @@ on:
     paths:
       - 'assets/analytics.js'
       - 'assets/analytics-config.js'
+      - '**/*.html'
       - 'index.html'
       - 'vitruvia.html'
       - 'bibliotheca-graeca-latina.html'
