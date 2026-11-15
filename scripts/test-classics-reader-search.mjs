@@ -57,6 +57,10 @@ assert.equal(page.d.querySelector("#passages p>span:not(.locus)").textContent,or
 const romanSummary=page.d.querySelector(".search-summary").textContent;
 assert.match(romanSummary,/0 textuales, 0 por formas indexadas y [1-9]\d* por equivalencias/);
 assert.equal(page.find("λόγος"),romanSummary,"Greek and transliterated queries must resolve the same Latin equivalents");
+assert.match(page.d.querySelector("#current-locus").textContent,/11\.24/,
+ "The reader must preserve the active locus when that locus contains the requested equivalent");
+assert(page.marks().some(x=>/verbum/i.test(x)),
+ "Interactive expanded lookup must keep the attested Latin equivalent highlighted at XI.24");
 assert.equal(page.find("λόγος"),romanSummary,"Greek accent variants must work");
 assert.match(page.find("logos","literal"),/^0 pasajes/);
 assert.deepEqual(page.marks(),[],"A failed new query must clear the previous highlights");
