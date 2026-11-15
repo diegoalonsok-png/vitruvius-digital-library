@@ -54,6 +54,9 @@ jobs:
           node scripts/test-early-witness-reading.mjs
           node scripts/test-r2-busqueda-clasicos.mjs
 
+      - name: Auditoría inicial de fichas, textos y raíces indexadas
+        run: node scripts/audit-bibliotheca-federada.mjs --check --strict
+
       - name: Estado de la biblioteca antes de la tanda
         run: python scripts/r2-duplicados.py
 
@@ -71,27 +74,27 @@ jobs:
         run: python scripts/r2-importar-clasicos.py
 
       - name: Ficha de repertorio para las obras nuevas
-        if: always()
+        # No publicar contadores, fichas ni índices si falló un paso anterior.
         run: python scripts/r2-fichas-obras-nuevas.py
 
       - name: Generar aparato académico y control de evidencia de cada edición R2
-        if: always()
+        # No publicar contadores, fichas ni índices si falló un paso anterior.
         run: python scripts/r2-aparato-academico.py
 
       - name: Vincular facsímiles con el repertorio
-        if: always()
+        # No publicar contadores, fichas ni índices si falló un paso anterior.
         run: python scripts/r2-vincular-repertorio.py
 
       - name: Sincronizar inventario académico GitHub y R2
-        if: always()
+        # No publicar contadores, fichas ni índices si falló un paso anterior.
         run: python scripts/sync-bibliotheca-github-r2.py
 
       - name: Completar los campos derivados de las fichas
-        if: always()
+        # No publicar contadores, fichas ni índices si falló un paso anterior.
         run: node scripts/enrich-classical-records.mjs
 
       - name: Rehacer los datos derivados del repertorio
-        if: always()
+        # No publicar contadores, fichas ni índices si falló un paso anterior.
         run: |
           python scripts/build_ecdotics_222.py --write
           python scripts/build_codicological_trees_222.py --write
@@ -101,7 +104,7 @@ jobs:
           python scripts/cifras-corpus.py
 
       - name: Indexar las obras de la tanda y subir el índice a R2
-        if: always()
+        # No publicar contadores, fichas ni índices si falló un paso anterior.
         env:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -111,6 +114,16 @@ jobs:
           echo "Indexando: $NUEVAS"
           node scripts/r2-indexar-clasicos.mjs --salida /tmp/indice-r2 --obras "$NUEVAS"
           python scripts/r2-subir-indice.py --origen /tmp/indice-r2/indice
+
+      - name: Reconstruir panel federado y auditar objetos reales de R2
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: |
+          node scripts/audit-bibliotheca-federada.mjs --strict
+          python scripts/audit-bibliotheca-r2-live.py --required
 
       - name: Comprobar el visor, la búsqueda y la fusión del índice
         run: |
@@ -122,6 +135,8 @@ jobs:
           node scripts/test-visor-facsimiles-r2.mjs
           node scripts/test-r2-busqueda-clasicos.mjs
           node scripts/test-r2-indice-fusion.mjs
+          node scripts/test-r2-indice-clasicos.mjs
+          node scripts/test-classics-integration.mjs
           node scripts/test-cifra-obras.mjs
           node scripts/test-export-xlsx-datos.mjs
 
