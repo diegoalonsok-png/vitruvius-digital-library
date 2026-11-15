@@ -1,0 +1,58 @@
+name: Bibliotheca · abrir obras y verificar búsquedas léxicas
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bibliotheca-reader-lexical-smoke.yml'
+      - 'scripts/smoke-bibliotheca-lexical.mjs'
+      - 'scripts/test-classics-reader-search.mjs'
+      - 'scripts/test-classics-lexical-index.mjs'
+      - 'assets/classics-text-reader.js'
+      - 'assets/classics-lexical-index.js'
+      - 'assets/bibliotheca-federated-status.js'
+      - 'assets/bibliotheca-simple.js'
+      - 'classics-text-reader.html'
+      - 'bibliotheca-graeca-latina.html'
+      - 'data/classics-corpus/**'
+      - 'data/index/classics/**'
+      - 'data/r2/bibliotheca-panel-sync.json'
+  pull_request:
+    paths:
+      - '.github/workflows/bibliotheca-reader-lexical-smoke.yml'
+      - 'scripts/smoke-bibliotheca-lexical.mjs'
+      - 'assets/classics-text-reader.js'
+      - 'assets/bibliotheca-federated-status.js'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bibliotheca-reader-smoke-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  lexical-reader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar entorno de lector y Chromium
+        run: |
+          npm install --ignore-scripts --no-package-lock --no-audit --no-fund
+          npm install --no-save --ignore-scripts --no-package-lock --no-audit --no-fund playwright@1.56.1
+          npx playwright install chromium
+      - name: Buscador indexado, diccionario y pasajes reales
+        run: |
+          node scripts/test-bibliotheca-fast-index.mjs
+          node scripts/test-classics-lexical-index.mjs
+          node scripts/test-r2-busqueda-clasicos.mjs
+          node scripts/test-bibliotheca-semantic-index-usage.mjs
+          node scripts/test-classics-reader-search.mjs
+      - name: Navegar obras y ejecutar búsquedas latinas y griegas en Chromium
+        run: node scripts/smoke-bibliotheca-lexical.mjs
