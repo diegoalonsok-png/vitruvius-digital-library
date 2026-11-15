@@ -8,10 +8,23 @@ import {createHash} from "node:crypto";
 const require=createRequire(import.meta.url),P=require("../assets/vitruvia-philology.js");
 const folder=process.argv[2];
 if(!folder)throw Error("Expected prepared expansion folder");
+// Conceptus is an editorial vocabulary of candidate semantic equivalents.
+// It is NOT an automatically verified translation or contextual sense tag.
+const conceptSource="data/lexicon/conceptus.json";
+const conceptRaw=readFileSync(conceptSource,"utf8");
+const conceptus=JSON.parse(conceptRaw);
+if(conceptus.schema!=="vitruvia-lexicon-conceptus-v1"||!Array.isArray(conceptus.concepts))throw Error("Conceptus schema changed");
+const conceptSha256=createHash("sha256").update(conceptRaw).digest("hex");
 const report=JSON.parse(readFileSync(join(folder,"prepared.json"),"utf8"));
 const rows=report.published.length?report.published:report.prepared;
 function build(rows,out){
-const works=[],index=new Map(),stemCache=new Map();let totalTokens=0,totalPassages=0;
+const works=[],index=new Map(),forms=new Map(),stemCache=new Map();let totalTokens=0,totalPassages=0;
+function post(map,key,workIndex,passageIndex){
+ if(!map.has(key))map.set(key,new Map());
+ const byWork=map.get(key);if(!byWork.has(workIndex))byWork.set(workIndex,[0,[]]);
+ const entry=byWork.get(workIndex);entry[0]++;
+ if(entry[1].length<12&&entry[1].at(-1)!==passageIndex)entry[1].push(passageIndex);
+}
 for(const row of rows){
  const raw=JSON.parse(readFileSync(join(folder,"corpus",row.filename),"utf8"));
  if(raw.workId!==row.workId||raw.language!==row.language||raw.passages.length!==row.passages)throw Error("Corpus identity mismatch");
@@ -24,10 +37,11 @@ for(const row of rows){
    if(!stemCache.has(key))stemCache.set(key,P.stem(word,script));
    const stem=stemCache.get(key);if(!stem||stem.length<2)continue;
    const k=row.language+"|"+stem;
-   if(!index.has(k))index.set(k,new Map());
-   const map=index.get(k);if(!map.has(i))map.set(i,[0,[]]);
-   const entry=map.get(i);entry[0]++;
-   if(entry[1].length<12&&entry[1].at(-1)!==pi)entry[1].push(pi);
+   post(index,k,i,pi);
+   // A separate orthographic-form index allows ranking precise forms over
+   // aggressive stem candidates, without changing legacy stem postings.
+   const exact=row.language==="la"?P.foldLatin(word):word;
+   if(exact.length>=2)post(forms,row.language+"|"+exact,i,pi);
   }
  });
  totalTokens+=tokens;totalPassages+=raw.passages.length;
@@ -37,9 +51,9 @@ for(const row of rows){
 }
 mkdirSync(out,{recursive:true});
 const languages=[];
-for(const lang of [...new Set(works.map(w=>w.lang))]){
+function shardSet(dictionary,lang,directory){
  const buckets=new Map();
- for(const [k,byWork] of index){
+ for(const [k,byWork] of dictionary){
   if(!k.startsWith(lang+"|"))continue;
   const stem=k.slice(lang.length+1),prefix=[...stem].slice(0,2).join("");
   if(!buckets.has(prefix))buckets.set(prefix,{});
@@ -59,15 +73,52 @@ for(const lang of [...new Set(works.map(w=>w.lang))]){
  }
  function write(prefix,payload){
   const file="s-"+[...prefix].map(c=>c.codePointAt(0).toString(16)).join("-")+".json",raw=JSON.stringify(payload);
-  mkdirSync(join(out,lang),{recursive:true});writeFileSync(join(out,lang,file),raw);
+  mkdirSync(directory,{recursive:true});writeFileSync(join(directory,file),raw);
   shards.push({k:prefix,f:file,n:Object.keys(payload).length});bytes+=Buffer.byteLength(raw);
  }
  for(const [key,payload] of buckets)emit(key,payload);
- writeFileSync(join(out,lang,"shards.json"),JSON.stringify({language:lang,shards}));
- languages.push({language:lang,shards:shards.length,bytes});
+ mkdirSync(directory,{recursive:true});
+ writeFileSync(join(directory,"shards.json"),JSON.stringify({language:lang,shards}));
+ return {shards:shards.length,bytes};
 }
+for(const lang of [...new Set(works.map(w=>w.lang))]){
+ const stem=shardSet(index,lang,join(out,lang));
+ const exact=shardSet(forms,lang,join(out,lang,"forms"));
+ languages.push({language:lang,shards:stem.shards,bytes:stem.bytes,formShards:exact.shards,formBytes:exact.bytes});
+}
+// Additive conceptual candidate layer. The exact form is authoritative for
+// matching a token; stemming is offered only when the cited form is absent.
+// Conceptus cross-language labels are candidate senses, not translations.
+const semantic=[];
+for(const concept of conceptus.concepts){
+ if(!concept||typeof concept.id!=="string")continue;
+ const hits=[];
+ for(const lang of ["la","grc"]){
+  const words=Array.isArray(concept[lang])?concept[lang]:[];
+  for(const term of words){
+   if(typeof term!=="string")continue;
+   const normalized=lang==="la"?P.foldLatin(term):P.fold(term);
+   if(!normalized||normalized.includes(" "))continue;
+   const observed=forms.get(lang+"|"+normalized);
+   const stem=P.stem(term,lang==="grc"?"greek":"latin");
+   const candidates=observed||index.get(lang+"|"+stem);
+   if(!candidates)continue;
+   for(const [work,details] of candidates){
+    hits.push({work,language:lang,term,normalized,match:observed?"orthographic_form":"stem_candidate",count:details[0],passages:details[1]});
+   }
+  }
+ }
+ if(hits.length)semantic.push({id:concept.id,modern:concept.modern||{},la:concept.la||[],grc:concept.grc||[],hits});
+}
+writeFileSync(join(out,"concepts.json"),JSON.stringify({
+ schema:"vdl-classics-concept-candidates-v1",source:conceptSource,sourceSha256:conceptSha256,
+ method:"Candidatos por vocabulario Conceptus: forma ortográfica atestiguada o raíz heurística. Los pasajes, la acepción contextual y la equivalencia en traducción requieren comprobación humana; no equivale a lematización ni traducción académica.",
+ concepts:semantic
+}));
 const manifest={schema:"vitruvia-classics-lexical-index-v1",generated:new Date().toISOString(),
- method:"Índice de candidatos por raíces gráficas sobre ediciones TEI verificadas en R2; sin lematización ni colación independiente. La concordancia se comprueba contra el texto de la edición.",
+ method:"Índice acumulativo de raíces gráficas y formas ortográficas sobre ediciones TEI verificadas en R2; vínculos semánticos Conceptus como candidatos. No es lematización contextual ni colación independiente.",
+ formsIndex:{directory:"{language}/forms/",normalization:"Greek accents folded; Latin i/j and u/v folded",rank:"Prefer exact orthographic form before heuristic stem"},
+ conceptCandidateLayer:{file:"concepts.json",source:conceptSource,sourceSha256:conceptSha256,concepts:semantic.length,status:"candidate_only_not_contextually_disambiguated"},
  limits:"Doce pasajes candidatos por raíz y edición; los recuentos abarcan todos los pasajes. Los bloques documentales no son loci canónicos.",
  works:works.length,passages:totalPassages,tokens:totalTokens,languages,index:works};
 writeFileSync(join(out,"manifest.json"),JSON.stringify(manifest));
