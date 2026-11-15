@@ -79,7 +79,15 @@ if(index){
         +(i>=8?20:0)+(word.length>=7?5:0)});
     }
    }
-   const probes=[...firstOccurrences.values()].sort((a,b)=>b.score-a.score).slice(0,3);
+   const best=[...firstOccurrences.values()].sort((a,b)=>b.score-a.score);
+   item.greekRootsDetected=best.filter(p=>greek.test(p.word)).length;
+   let probes=best.slice(0,3);
+   // Un término de una traducción no demuestra disponibilidad en griego.
+   // Si el OCR contiene escritura griega, comprobar al menos una raíz griega.
+   if(e.lengua==="grc"&&!probes.some(p=>greek.test(p.word))){
+    const greekCandidate=best.find(p=>greek.test(p.word));
+    if(greekCandidate)probes=[...probes.slice(0,2),greekCandidate];
+   }
    item.originalScriptProbes=probes.filter(p=>e.lengua==="grc"?greek.test(p.word):!greek.test(p.word)).length;
    if(probes.length<2)throw Error("OCR sin vocabulario suficiente para cotejar");
    for(const probe of probes){
@@ -114,10 +122,18 @@ for(const url of endpoints){
   report.warnings.push("No se pudo abrir visor público: "+url+" · "+e.message)}
  report.readerEndpoints.push(row);
 }
-report.counts={cataloguedEditions:cat.items.length,fullCoverageRequested:FULL,testedEditions:report.records.length,testedWords:report.records.reduce((n,r)=>n+r.lexicalTokensTested,0),
+const greekRows=report.records.filter(r=>r.sourceLanguage==="grc");
+report.counts={greekAttributedEditions:greekRows.length,
+ greekWithOcrGreekRoots:greekRows.filter(r=>r.greekRootsDetected>0).length,
+ greekWithoutOcrGreekRoots:greekRows.filter(r=>r.greekRootsDetected===0).length,
+ cataloguedEditions:cat.items.length,fullCoverageRequested:FULL,testedEditions:report.records.length,testedWords:report.records.reduce((n,r)=>n+r.lexicalTokensTested,0),
  locatedPages:report.records.reduce((n,r)=>n+r.lexicalMatches.length,0),
  errors:report.errors.length,warnings:report.warnings.length,
  indexEditions:report.indexEntries||0,indexFragments:report.indexFragments||0};
+if(report.counts.greekWithoutOcrGreekRoots)
+ report.warnings.push(report.counts.greekWithoutOcrGreekRoots+
+  " ediciones atribuidas a obras griegas no tienen raíces en escritura griega detectadas por el OCR; verificar lengua editorial o renovar OCR griego antes de declarar búsqueda griega.");
+report.counts.warnings=report.warnings.length;
 report.status=report.errors.length?"errors-detected":report.warnings.length?"verified-sample-with-reservations":"verified-sample";
 writeFileSync("data/r2/bibliotheca-lexical-live-audit.json",JSON.stringify(report,null,2)+"\n","utf8");
 console.log(JSON.stringify({status:report.status,counts:report.counts,readerEndpoints:report.readerEndpoints,
