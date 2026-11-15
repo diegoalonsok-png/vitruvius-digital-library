@@ -132,7 +132,7 @@ async function render(){
  const loc=selection.kind==='locus'?selection.value:relevant[0]?.locus;
  $('f-reader').hidden=!loc;$('f-parallel').hidden=!loc;
  const criticalLink=$('f-critical-locus');if(criticalLink)criticalLink.hidden=!loc;
- if(loc){$('f-reader').href=reader(loc,'es');$('f-parallel').href=reader(loc,lang);if(criticalLink)criticalLink.href='aparato-comparativo.html?locus='+encodeURIComponent(loc)}
+ if(loc){$('f-reader').href=reader(loc,'es');$('f-parallel').href=reader(loc,lang);if(criticalLink)criticalLink.href='apparatus-bude.html?locus='+encodeURIComponent(loc)}
  announce();
 }
 /* Rótulos del buscador, en el idioma de la interfaz. Los visores no se traducen:
