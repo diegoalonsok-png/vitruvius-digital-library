@@ -107,3 +107,24 @@ html[data-theme="light"] body #bibliotheca-work-search .bws-alphabet button[aria
 /* Seis filtros combinables: autor, género, siglo, periodo histórico, idioma y orden. */
 @media(min-width:1100px){#bibliotheca-work-search .bws-library-filters{grid-template-columns:minmax(220px,1.6fr) repeat(3,minmax(140px,1fr))}#bibliotheca-work-search .bws-library-filters select:nth-of-type(4){grid-column:auto}}
 #bibliotheca-work-search .bws-library-filters select{font-size:16px;min-width:0}
+
+
+/* Multilingual onomastics: evidence links and keyboard-friendly accessible search. */
+#bibliotheca-entity-search{margin:26px 0;padding:22px;border:1px solid #85755c;border-radius:11px;background:#1b2027;color:#f2ebde}
+#bibliotheca-entity-search h3{font:600 clamp(21px,2.5vw,28px)/1.3 Georgia,serif;margin:0 0 10px}
+#bibliotheca-entity-search p{font-size:15px;line-height:1.6}
+#bibliotheca-entity-search .bws-entity-controls{display:grid;grid-template-columns:minmax(240px,1fr) minmax(160px,220px) auto;gap:10px;margin:12px 0}
+#bibliotheca-entity-search :is(input,select,button){min-height:45px;border:1px solid #918674;border-radius:6px;padding:9px 12px;font:500 16px system-ui}
+#bibliotheca-entity-search :is(input,select){width:100%;min-width:0;background:#101721;color:#f1f0ec}
+#bibliotheca-entity-search button{background:#d5b072;color:#101820;font-weight:700;cursor:pointer}
+#bibliotheca-entity-search .bws-entity-identity{border-top:1px solid #6c6b68;padding:12px 0}
+#bibliotheca-entity-search .bws-entity-identity strong{font-size:18px}
+#bibliotheca-entity-search .bws-entity-results{max-height:500px;overflow:auto}
+#bibliotheca-entity-search .bws-entity-results li{border-top:1px solid #565e61;padding:12px 6px}
+#bibliotheca-entity-search a{color:#e5c58b;text-decoration:underline}
+#bibliotheca-entity-search :is(button,input,select,a):focus-visible{outline:3px solid #f4d796;outline-offset:2px}
+html[data-theme="light"] body #bibliotheca-entity-search{background:#faf8f3!important;color:#22313e!important}
+html[data-theme="light"] body #bibliotheca-entity-search :is(p,h3,strong,li){color:#22313e!important}
+html[data-theme="light"] body #bibliotheca-entity-search :is(input,select){background:white!important;color:#22313e!important}
+html[data-theme="light"] body #bibliotheca-entity-search a{color:#16567d!important}
+@media(max-width:720px){#bibliotheca-entity-search .bws-entity-controls{grid-template-columns:1fr}#bibliotheca-entity-search{padding:15px}}
