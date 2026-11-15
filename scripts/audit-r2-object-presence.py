@@ -35,17 +35,20 @@ def main():
  for e in items:
   for kind in ("pdf","texto"):
    uri=e.get(kind)
-   if not uri:tasks.append((e["id"],kind,None));continue
+   if not uri:tasks.append((e["id"],kind,None,e.get("sha256") if kind=="pdf" else None));continue
    u=urllib.parse.urlparse(uri)
    key=u.path.lstrip("/") if u.scheme=="https" and u.hostname==HOST else None
-   tasks.append((e["id"],kind,key))
+   tasks.append((e["id"],kind,key,e.get("sha256") if kind=="pdf" else None))
  def probe(task):
-  ident,kind,key=task
+  ident,kind,key,expected=task
   if not key:return {"id":ident,"kind":kind,"status":"invalid_url"}
   try:
    h=client.head_object(Bucket=BUCKET,Key=key)
+   metadata=h.get("Metadata",{}).get("sha256")
+   if expected and metadata and metadata.lower()!=expected.lower():
+    return {"id":ident,"kind":kind,"status":"metadata_sha_mismatch","key":key,"expectedSha256":expected,"metadataSha256":metadata}
    return {"id":ident,"kind":kind,"status":"exists","key":key,"bytes":h["ContentLength"],
-    "metadataSha256":h.get("Metadata",{}).get("sha256")}
+    "metadataSha256":metadata,"checksumLimit":"HEAD metadata no sustituye SHA-256 recalculado de los bytes completos"}
   except Exception as exc:
    code=getattr(exc,"response",{}).get("Error",{}).get("Code","unknown")
    return {"id":ident,"kind":kind,"status":"absent" if str(code) in ("404","NoSuchKey","NotFound") else "unverified_error","key":key,"errorCode":str(code)}
@@ -54,6 +57,7 @@ def main():
  missing=[x for x in result["objects"] if x["status"]!="exists"]
  result["counts"].update(objectsChecked=len(tasks),objectsPresent=len(tasks)-len(missing),
                            objectsMissing=sum(x["status"]=="absent" for x in missing),
+                           metadataHashMismatches=sum(x["status"]=="metadata_sha_mismatch" for x in missing),
                            objectsNotVerified=sum(x["status"] not in ("exists","absent") for x in missing))
  try:
   body=client.get_object(Bucket=BUCKET,Key="clasicos/indice/fragmentos.json")["Body"].read()
@@ -71,9 +75,9 @@ def main():
  except Exception as exc:
   result["indexManifest"]={"status":"not_verified","error":str(exc)[:300]}
   result["counts"]["indexManifestVerified"]=False
- result["status"]="verified_with_findings" if missing or result["indexManifest"].get("status")!="read_from_R2" or result["counts"].get("editionsNotInRemoteIndex") else "verified_structurally"
+ result["status"]="verified_with_findings" if missing or result["indexManifest"].get("status")!="read_from_R2" or result["counts"].get("editionsNotInRemoteIndex") or result["counts"].get("indexEntriesWithoutCatalogue") else "verified_structurally"
  save(result)
  print(json.dumps({k:result[k] for k in ("status","counts","indexManifest")},ensure_ascii=False,indent=2))
- if any(x["status"]=="absent" for x in missing):
+ if any(x["status"] in ("absent","metadata_sha_mismatch") for x in missing):
   raise SystemExit("Faltan objetos anunciados como accesibles en el catálogo R2")
 if __name__=="__main__":main()
