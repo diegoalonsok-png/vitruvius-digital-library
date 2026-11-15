@@ -94,6 +94,16 @@ async function ready(){
   let r2Records=[];
   try{r2Records=await window.R2WorkRecords?.load()||[]}catch(e){console.warn("Fichas adicionales R2 no disponibles",e)}
   for(const work of r2Records)if(!data.docs.has(work.r2))selected.append(new Option(work.autor+" · "+work.obra+" (edición R2)",work.r2));
+  let earlyRecords=[];
+  try{
+    const response=await fetch("data/classics-corpus/early-witness-links-2026-11.json",{cache:"no-cache"});
+    if(response.ok)earlyRecords=(await response.json()).entries||[];
+  }catch(error){console.warn("Fichas codicológicas prioritarias no disponibles",error)}
+  for(const work of earlyRecords){
+    if(!data.docs.has(work.id)&&!r2Records.some(r=>r.r2===work.id)){
+      selected.append(new Option(work.author+" · "+work.work+" (testimonio manuscrito)",work.id));
+    }
+  }
   // A modern critical edition is a valid selection, not an ancient manuscript.
   // Explicit options are necessary: setting select.value on an absent option
   // silently clears the valid query parameter.
@@ -111,9 +121,15 @@ async function ready(){
    if(!id){$("work-record").replaceChildren();$("work-record-status").textContent="Seleccione una obra para consultar su ficha.";return}
    $("work-record-status").textContent="Obra: "+id+" · testimonios del registro local y citas con estado documental.";
    if(r2Records.some(r=>r.r2===id))void window.R2WorkRecords.render($("work-record"),id);
-   else void API.render($("work-record"),id);
+   else if(earlyRecords.some(r=>r.id===id)&&!data.docs.has(id)){
+     const w=earlyRecords.find(r=>r.id===id);
+     $("work-record").replaceChildren();
+     const h=document.createElement("h2");h.textContent=w.author+" · "+w.work;
+     const p=document.createElement("p");p.textContent="Ficha de transmisión manuscrita. El texto original y la edición PDF/DOCX se identifican según disponibilidad efectiva en los registros de lectura; no se presume que exista una edición crítica local.";
+     $("work-record").append(h,p);
+   }else void API.render($("work-record"),id);
   }
-  selected.value=data.docs.has(requested)||r2Records.some(r=>r.r2===requested)||window.EditorialWorkRecords?.has(requested)?requested:"";
+  selected.value=data.docs.has(requested)||r2Records.some(r=>r.r2===requested)||earlyRecords.some(r=>r.id===requested)||window.EditorialWorkRecords?.has(requested)?requested:"";
   if(!selected.value){$("work-record-status").textContent="Elija una de las "+data.count+" obras catalogadas."; }
   selected.addEventListener("change",show);
   $("print-record").addEventListener("click",()=>window.print());
