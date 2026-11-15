@@ -62,15 +62,16 @@ try {
   });
  }
  await check("Agustín · logos ampliado encuentra verbum sin inventar coincidencia literal",async()=>{
-  const page=await open("classics-text-reader.html?work=augustine-civitate-dei&lang=la&locus=11.24");
+  const page=await open("classics-text-reader.html?work=augustine-civitate-dei&lang=la&locus=11.24&q=logos&expanded=1");
   try{
    await page.locator("#passages p").first().waitFor({timeout:16000});
-   await page.locator("#mode-expanded").click();
-   await page.locator("#query").fill("logos");
-   await page.locator("#find").click();
-   await page.waitForFunction(()=>/equivalencias/.test(document.querySelector(".search-summary")?.textContent||""),null,{timeout:15000});
-   await page.waitForFunction(()=>[...document.querySelectorAll("#passages mark.cl-hit")].some(x=>/verbum/i.test(x.textContent||"")),null,{timeout:15000});
-   assert((await page.locator("#passages mark.cl-hit").allTextContents()).some(x=>/verbum/i.test(x)),"No se destacó Verbum en latín");
+   await page.waitForFunction(()=>/[1-9]\\d* pasajes/.test(document.querySelector(".search-summary")?.textContent||""),null,{timeout:16000});
+   const mode=await page.locator("#search-mode").inputValue();
+   assert.equal(mode,"lexical","La URL debe mantener el modo ampliado");
+   const summary=await page.locator(".search-summary").innerText();
+   assert.match(summary,/equivalencias léxicas/,"La concordancia debe diferenciar equivalencias de coincidencias literales");
+   const marks=await page.locator("#passages mark.cl-hit").allTextContents();
+   assert(marks.some(x=>/verbum/i.test(x)),"No se destacó Verbum en latín: "+JSON.stringify(marks.slice(0,6)));
   }finally{await page.close()}
  });
  await check("Consultas sin resultados: no quedan marcas ni pasajes ficticios",async()=>{
