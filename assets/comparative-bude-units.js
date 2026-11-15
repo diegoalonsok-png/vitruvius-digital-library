@@ -101,6 +101,7 @@ async function render(query){
   diff.append(E("p","No existe en este locus una transcripción independiente de Krohn utilizable. La falta de transcripción no equivale a laguna del texto original.","bude-note"));
  }else{
   diff.append(E("p","Comparación mecánica de palabras latinas normalizadas; minúsculas, i/j y u/v se consideran equivalentes. La edición de Krohn digital procede de Perseus, pendiente de cotejo con el impreso. Porcentaje de coincidencia léxica orientativo: "+(candidate.porcentaje??"—")+" %. No es un índice de autenticidad ni una lectura manuscrita.","bude-note"));
+  const classes=candidate.unidades.reduce((m,x)=>(m[x.clasificacion]=(m[x.clasificacion]||0)+1,m),{});diff.append(E("p","Clasificación editorial preliminar: "+(classes.segmentacion_grafica||0)+" divisiones gráficas · "+(classes.fragmento_aislado||0)+" fragmentos sospechosos · "+(classes.cotejo_pendiente||0)+" diferencias por cotejar. Nomenclatura según uso Budé; no es aparato de testigos verificados.","bude-note"));
   if(!candidate.unidadesTotales)diff.append(E("p","Sin diferencias léxicas detectadas tras normalización entre las dos transcripciones para este locus; no demuestra ausencia de variantes en los manuscritos."));
   else{
    const overview=E("p",candidate.unidadesTotales+" unidades candidatas detectadas, "+candidate.unidades.length+" mostradas. Las omisiones detectadas pueden ser artefactos de transcripción, incluidos corchetes editoriales.","bude-note");diff.append(overview);
@@ -110,7 +111,7 @@ async function render(query){
     const left=E("em",entry.kurilo);left.lang="la";
     const right=E("em",entry.krohn);right.lang="la";
     summary.append("Kur. V514: ",left," ] Kr. (transcr. digital): ",right," · ",entry.tipo);
-    unit.append(summary,E("small","COLLATIO COMPUTATRALIS · candidata; cotejo ex editione impressa pendiente · no atribuir a H, G, E ni S"));
+    unit.append(summary,E("small","COLLATIO COMPUTATRALIS · "+({segmentacion_grafica:"divisio verborum / grafía",fragmento_aislado:"fragmentum suspectum",cotejo_pendiente:"lectio examinanda"}[entry.clasificacion]||"candidata")+" · "+(entry.nota_ecdótica||"Lectura por verificar")+" · ex editione impressa comprobanda · no atribuir a H, G, E ni S"));
     diff.append(unit);
    }
   }
