@@ -115,7 +115,7 @@ for(const term of ["symmetria","firmitas","decor","λόγος","συμμετρί
   let indexFragment=null;
   try{indexFragment=await fragment(root)}
   catch(e){
-   if(/HTTP 404\\b/.test(e.message)){
+   if(e.message.includes("HTTP 404 en ")){
     query.root=root;query.status="no-attested-match-in-index";
     report.lexicalQueries.push(query);continue;
    }
