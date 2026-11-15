@@ -212,6 +212,7 @@ function morphologicalForms(q){
  const record=attestedParadigms.find(p=>p.forms.some(form=>fold(form)===key));
  return record?record.forms.filter(form=>fold(form)!==key):[];
 }
+const advancedMode=$("classic-search-mode"),advancedLocus=$("classic-locus-filter");
 const input=$("classic-query"),work=$("classic-work"),coverage=$("catalogue-status"),status=$("search-status"),
  root=$("result"),list=$("classic-results"),lex=$("lexicon-link"),bar=$("lexicon-bar");
 
@@ -499,7 +500,25 @@ function attestedLexeme(row,q){
  }
  return row.term||q;
 }
+function restrictByLocus(rows){
+ const ref=(advancedLocus?.value||"").trim();if(!ref)return rows;
+ const norm=s=>String(s||"").toLowerCase().replace(/^urn:cts:[^:]+:[^:]+:/,"").replace(/[^a-z0-9.]/g,"");
+ const expected=norm(ref);
+ return rows.filter(row=>{const loc=norm(row.locus);return loc===expected||loc.startsWith(expected+".")});
+}
+let conceptusPromise=null;
+async function conceptualForms(text){
+ if(!conceptusPromise)conceptusPromise=fetch("data/lexicon/conceptus.json")
+  .then(r=>{if(!r.ok)throw Error("Conceptus HTTP "+r.status);return r.json()})
+  .catch(e=>{conceptusPromise=null;throw e});
+ const data=await conceptusPromise,key=fold(text).trim();
+ const match=(data.concepts||[]).filter(c=>[c.id,...(c.la||[]),...(c.grc||[]),...Object.values(c.modern||{}).flat()]
+  .some(x=>typeof x==="string"&&fold(x).trim()===key));
+ return [...new Set(match.slice(0,3).flatMap(c=>[...(c.la||[]),...(c.grc||[])]))]
+  .filter(x=>typeof x==="string"&&fold(x).trim()!==key).slice(0,12);
+}
 function render(rows,q,details){
+ rows=restrictByLocus(rows);
  previous=rows;current=q;diag=details||{};
  $("results-heading").textContent=locale==="en"?"Passages checked against digital editions":
   locale==="fr"?"Passages vérifiés dans les éditions numériques":
@@ -759,6 +778,7 @@ async function showFastIndex(query,searchId,allowedWorkIds){
 }
 async function search(updateHistory=true,options={}){
  const id=++serial,q=input.value.trim();
+ const mode=advancedMode?.value||"literal",locusCriterion=advancedLocus?.value.trim()||"";
  window.ClassicsCorpusSearch?.cancelPendingSearches?.();
  previous=[];current="";diag={};
  updateLexicon();root.hidden=true;list.replaceChildren();
@@ -814,7 +834,7 @@ async function search(updateHistory=true,options={}){
    status.after(extra);extra.dataset.extraSearch=String(id);
   }
   if(typeof window.ClassicsCorpusSearch?.searchPassages!=="function")throw Error("engine unavailable");
-  if(!workId&&!options.exhaustive){
+  if(!workId&&!options.exhaustive&&mode==="literal"&&!locusCriterion){
    await showFastIndex(q,id,allowedWorkIds);
    return;
   }
@@ -822,6 +842,9 @@ async function search(updateHistory=true,options={}){
   if(exportBar)exportBar.style.removeProperty("display");
   const transliterations=await attestedGreekForms(q); // Solo la misma voz griega transliterada; no conceptos relacionados.
   if(id!==serial)return;
+  let conceptual=[];
+  if(mode==="concept"){try{conceptual=await conceptualForms(q)}catch{status.textContent="Conceptus no disponible; se utilizará búsqueda literal."}
+   if(id!==serial)return}
   let lastPaint=0,painted=false;
   const onProgress=(partial,progress)=>{
    const now=Date.now();if(!progress.complete&&progress.examined>4&&now-lastPaint<600)return;
@@ -838,9 +861,14 @@ async function search(updateHistory=true,options={}){
     (progress.failed?" · "+progress.failed+" fuentes no disponibles":"")+
     (!progress.complete?" · buscando…":"");
   };
-  const hits=await window.ClassicsCorpusSearch.searchPassages([q,...transliterations,...(morphCheckbox.checked?morphologicalForms(q):[])],{workId,allowedWorkIds,allMatches:false,maxPerEdition:workId?200:70,limit:600,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress,isCancelled:()=>id!==serial});
+  const terms=[...new Set([q,...transliterations,...(morphCheckbox.checked||mode==="lemma"?morphologicalForms(q):[]),...conceptual])].slice(0,20);
+  const hits=await window.ClassicsCorpusSearch.searchPassages(terms,{workId,allowedWorkIds,allMatches:false,maxPerEdition:workId?200:70,limit:600,includeFullText:true,includeOCR:false,edition:alias?.edition||"",onProgress,isCancelled:()=>id!==serial});
   if(id!==serial)return;
-  const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations};render(hits,q,details);
+  const details={...(window.ClassicsCorpusSearch.diagnostics?.()||{}),transliterations,mode,conceptual};
+  render(hits,q,details);
+  if(mode==="lemma")status.textContent+=" · Formas documentadas, cobertura morfológica parcial.";
+  if(mode==="concept")status.textContent+=" · "+conceptual.length+" equivalencias Conceptus; no embeddings.";
+  if(locusCriterion)status.textContent+=" · Referencia filtrada sobre hasta 600 pasajes recuperados.";
   if(options.exhaustive&&!workId)status.textContent+=" · MUESTRA AMPLIADA (máx. 600 pasajes, 70 por edición; no es concordancia exhaustiva).";
   const url=new URL(location.href);url.searchParams.set("q",q);
   if(selectedWork)url.searchParams.set("work",selectedWork);else url.searchParams.delete("work");
