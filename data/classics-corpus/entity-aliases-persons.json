@@ -1,0 +1,171 @@
+{
+  "schema": "bibliotheca-entity-aliases-v1",
+  "method": "Registro de equivalencias onomásticas de consulta, no prueba de aparición en un texto. Cada ocurrencia debe verificarse en pasajes indexados; formas flexionadas tienen sentido en latín o griego según contexto.",
+  "persons": [
+    {
+      "id": "caesar",
+      "label": "Julio César",
+      "aliases": [
+        "Julio César",
+        "Julius Caesar",
+        "Jules César",
+        "Caius Iulius Caesar",
+        "Gaius Julius Caesar",
+        "César",
+        "Caesar"
+      ],
+      "forms": {
+        "la": [
+          "Caesar",
+          "Caesaris",
+          "Caesarem",
+          "Iulius",
+          "Iulium"
+        ],
+        "grc": [
+          "Καῖσαρ",
+          "Καίσαρος"
+        ]
+      }
+    },
+    {
+      "id": "cicero",
+      "label": "Cicerón",
+      "aliases": [
+        "Cicerón",
+        "Cicero",
+        "Cicéron",
+        "Marcus Tullius Cicero",
+        "Marco Tulio Cicerón"
+      ],
+      "forms": {
+        "la": [
+          "Cicero",
+          "Ciceronis",
+          "Ciceronem",
+          "Tullius"
+        ],
+        "grc": [
+          "Κικέρων",
+          "Κικέρωνος"
+        ]
+      }
+    },
+    {
+      "id": "achilles",
+      "label": "Aquiles",
+      "aliases": [
+        "Aquiles",
+        "Achilles",
+        "Achille",
+        "Ἀχιλλεύς",
+        "Achilleus"
+      ],
+      "forms": {
+        "la": [
+          "Achilles",
+          "Achillis",
+          "Achillem"
+        ],
+        "grc": [
+          "Ἀχιλλεύς",
+          "Ἀχιλλῆος",
+          "Ἀχιλλῆα",
+          "Ἀχιλλέως"
+        ]
+      }
+    },
+    {
+      "id": "odysseus",
+      "label": "Odiseo / Ulises",
+      "aliases": [
+        "Odiseo",
+        "Ulises",
+        "Odysseus",
+        "Ulysses",
+        "Ulysse",
+        "Ὀδυσσεύς"
+      ],
+      "forms": {
+        "la": [
+          "Ulixes",
+          "Ulixis",
+          "Ulysses"
+        ],
+        "grc": [
+          "Ὀδυσσεύς",
+          "Ὀδυσσῆος",
+          "Ὀδυσσέα"
+        ]
+      }
+    },
+    {
+      "id": "alexander",
+      "label": "Alejandro Magno",
+      "aliases": [
+        "Alejandro Magno",
+        "Alexander the Great",
+        "Alexandre le Grand",
+        "Alexander Magnus",
+        "Ἀλέξανδρος"
+      ],
+      "forms": {
+        "la": [
+          "Alexander",
+          "Alexandri",
+          "Alexandrum"
+        ],
+        "grc": [
+          "Ἀλέξανδρος",
+          "Ἀλεξάνδρου",
+          "Ἀλέξανδρον"
+        ]
+      }
+    },
+    {
+      "id": "augustus",
+      "label": "Augusto",
+      "aliases": [
+        "Augusto",
+        "Augustus",
+        "Auguste",
+        "Octaviano",
+        "Octavian",
+        "Octavien"
+      ],
+      "forms": {
+        "la": [
+          "Augustus",
+          "Augusti",
+          "Augustum",
+          "Octavianus"
+        ],
+        "grc": [
+          "Αὔγουστος",
+          "Σεβαστός"
+        ]
+      }
+    },
+    {
+      "id": "cleopatra",
+      "label": "Cleopatra VII",
+      "aliases": [
+        "Cleopatra",
+        "Cleopatra VII",
+        "Cléopâtre",
+        "Cleópatra",
+        "Κλεοπάτρα"
+      ],
+      "forms": {
+        "la": [
+          "Cleopatra",
+          "Cleopatrae"
+        ],
+        "grc": [
+          "Κλεοπάτρα",
+          "Κλεοπάτρας"
+        ]
+      }
+    }
+  ]
+}
