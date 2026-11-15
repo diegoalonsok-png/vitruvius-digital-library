@@ -45,14 +45,17 @@ for(const loc of ["7.7.2","7.7.3","7.7.5"]){
 const j=read("assets/dossier-ecdotico.js");
 assert.match(j,/groupedV297/);assert.match(j,/"7\.7\.5"/);new vm.Script(j);
 const counts=errata.editions.map(ed=>({id:ed.id,count:ed.entries.length}));
-assert.deepEqual(counts,[{id:"V514",count:1},{id:"V554",count:0},{id:"V297",count:3}]);
+assert.deepEqual(counts,[{id:"V514",count:1},{id:"V554",count:0},{id:"V297",count:5}]);
 for(const ed of errata.editions)for(const item of ed.entries){
  assert.ok(item.evidence&&item.reading_printed&&item.reading_corrected&&item.date);
  assert.ok(item.severity&&item.status==="errata_publicada_sin_modificar_pdf");
 }
+const englishErrata=errata.editions.find(e=>e.id==="V297").entries;
+assert.match(englishErrata.find(e=>e.id==="V297-1.4.3-exsugendo-commentary").evidence,/Rose 1899, p. 15.*Krohn 1912, p. 14/);
+assert.match(englishErrata.find(e=>e.id==="V297-1.4.4-refrigerationibus").reading_corrected,/made firm by cooling/);
 assert.ok(errata.review_queue.some(x=>x.id==="V297-9.2.1-duplicacion"&&x.severity==="importante"));
 assert.ok(errata.review_queue.some(x=>x.id==="V554-8.1.6-comprobacion"));
 assert.match(read("errata-editionum.html"),/errata-review/);
 new vm.Script(read("assets/errata-editionum.js"));
 console.log("PASS · Índice V297 reparado desde DOCX, 4 loci; 3 bloques agrupados conservados; huella SHA-256 coherente");
-console.log("PASS · 4 erratas con fuente, 2 casos pendientes de cotejo; ningún PDF modificado");
+console.log("PASS · 6 erratas con fuente, 3 casos pendientes de cotejo; ningún PDF modificado");

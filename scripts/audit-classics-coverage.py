@@ -6,13 +6,68 @@ Run: python scripts/audit-classics-coverage.py
 """
 import argparse
 from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from html.parser import HTMLParser
+import hashlib
 import json
 from pathlib import Path
+import urllib.request
 from urllib.parse import parse_qs, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "data/classics-corpus/search-registry.json"
+
+def source_bytes(entry, manifest, offline=False):
+    """Read an edition without interpreting HTTPS as a local pathname.
+
+    Remote access is restricted to exact objects in the published R2 manifest.
+    Its binary fingerprint is checked before parsing or counting the text.
+    Offline mode records the declaration without claiming a successful read.
+    """
+    path = entry["path"]
+    url = urlsplit(path)
+    if url.scheme:
+        if url.scheme != "https" or url.hostname != "libros.vitruvius-digital-library.org" or url.username or url.password or url.query or url.fragment:
+            raise ValueError("Unapproved remote source: " + path)
+        record = next((r for r in manifest.get("obras", [])
+                       if manifest.get("base", "") + r["archivo"] == path
+                       and r.get("workId") == entry["workId"]
+                       and r.get("language") == entry["language"]), None)
+        if not record or not record.get("sha256"):
+            raise ValueError("Remote source absent from the edition manifest: " + path)
+        if offline:
+            return None, "remote_declared_unchecked"
+        request = urllib.request.Request(path, headers={"User-Agent": "Vitruvius-corpus-coverage/1.0"})
+        with urllib.request.urlopen(request, timeout=25) as response:
+            raw = response.read()
+        if hashlib.sha256(raw).hexdigest() != record["sha256"]:
+            raise ValueError("Remote source fingerprint changed: " + path)
+        return raw, "remote_verified"
+    local = (ROOT / path).resolve()
+    if not local.is_relative_to(ROOT.resolve()) or not local.is_file():
+        raise ValueError("Missing local source: " + path)
+    return local.read_bytes(), "local_file"
+
+def locus_segments(passages, field):
+    """Repeated consecutive loci may be distinct fragments of one unit.
+
+    Preserve every fragment. Reject non-consecutive reuse or repeated identical
+    text, rather than silently deleting or renumbering an editorial source.
+    """
+    positions = defaultdict(list)
+    for i, passage in enumerate(passages):
+        positions[str(passage.get("locus", "")).strip()].append(i)
+    grouped, invalid = [], []
+    for locus, indices in positions.items():
+        if len(indices) < 2:
+            continue
+        texts = [str(passages[i].get(field, "")).strip() for i in indices]
+        consecutive = all(b == a + 1 for a, b in zip(indices, indices[1:]))
+        if not locus or not consecutive or not all(texts) or len(set(texts)) != len(texts):
+            invalid.append(locus)
+        else:
+            grouped.append({"locus": locus, "segments": len(indices)})
+    return grouped, invalid
 
 class IdParser(HTMLParser):
     def __init__(self):
@@ -27,8 +82,18 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--strict", action="store_true")
     parser.add_argument("--out", default="reports/classics-corpus-coverage.json")
+    parser.add_argument("--offline", action="store_true", help="Keep remote declarations explicit without certifying their availability")
     args = parser.parse_args()
     entries = json.loads(REGISTRY.read_text(encoding="utf-8"))["entries"]
+    manifest = json.loads((ROOT / "data/r2/corpus-manifest.json").read_text(encoding="utf-8"))
+    remote_sources = {}
+    def prepare_remote(entry):
+        try:
+            return entry["path"], source_bytes(entry, manifest, args.offline)
+        except Exception as exc:
+            return entry["path"], exc
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        remote_sources.update(pool.map(prepare_remote, [e for e in entries if urlsplit(e["path"]).scheme]))
     rows, errors, warnings = [], [], []
     loci_by_work = defaultdict(dict)
     seen = set()
@@ -41,13 +106,24 @@ def main():
         if key in seen:
             errors.append(f"Duplicate edition registry key: {work}/{language}")
         seen.add(key)
-        if not path.is_file():
-            errors.append(f"Missing source: {e['path']}")
+        try:
+            result = remote_sources.get(e["path"])
+            if isinstance(result, Exception):
+                raise result
+            raw, access = result if result is not None else source_bytes(e, manifest, args.offline)
+            row["source_access"] = access
+        except Exception as exc:
+            errors.append(str(exc))
             row["status"] = "missing"
             rows.append(row)
             continue
+        if raw is None:
+            row["status"] = "remote_declared_unchecked"
+            warnings.append(f"Remote declaration not checked offline: {e['path']}")
+            rows.append(row)
+            continue
         if kind == "html-text":
-            body = path.read_text(encoding="utf-8")
+            body = raw.decode("utf-8")
             ids = IdParser()
             ids.feed(body)
             row["characters"] = len(body)
@@ -56,12 +132,12 @@ def main():
                 warnings.append(f"Unresolved HTML anchor: {work}/{language}")
             warnings.append(f"HTML source needs manual block-level completeness review: {work}/{language}")
         elif kind == "historical-ocr-pages":
-            pages = json.loads(path.read_text(encoding="utf-8"))
+            pages = json.loads(raw)
             row["passages"] = len(pages)
             row["characters"] = sum(len(p.get("text","")) for p in pages)
             row["locator"] = "pdf-page-only; unverified OCR"
         else:
-            data = json.loads(path.read_text(encoding="utf-8"))
+            data = json.loads(raw)
             passages = data.get("passages", [])
             if not isinstance(passages,list) or not passages:
                 errors.append(f"Empty or malformed passages: {e['path']}")
@@ -76,9 +152,10 @@ def main():
                 if data.get("workId") != e.get("sourceWorkId", work) or data.get("language") != language:
                     errors.append(f"Identity mismatch: {e['path']}")
             loci = [str(p.get("locus","")).strip() for p in passages]
-            duplicates = [loc for loc,n in Counter(loci).items() if n>1]
+            grouped, duplicates = locus_segments(passages, field)
+            row["contiguous_locus_groups"] = grouped
             if duplicates:
-                errors.append(f"Duplicate loci in {e['path']}: {duplicates[:5]}")
+                errors.append(f"Non-consecutive or identical duplicate segments in {e['path']}: {duplicates[:5]}")
             if not all(loci):
                 errors.append(f"Missing loci in {e['path']}")
             row["passages"] = len(passages)

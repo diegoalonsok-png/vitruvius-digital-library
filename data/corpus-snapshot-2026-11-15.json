@@ -1,0 +1,55 @@
+{
+  "schema": "vdl-corpus-snapshot-metadata-v1",
+  "title": "Vitruvius Digital Library — registro de procedencia de las ediciones V514, V554 y V297",
+  "recorded_on": "2026-11-15",
+  "status": "instantanea_documental",
+  "scope": "Corpus estructurado de De architectura para los lectores y búsquedas del proyecto",
+  "source_commit": "f01fbd3beda5abda4af3ba6718243a357463fd24",
+  "source_repository": "https://github.com/diegoalonsok-png/vitruvius-digital-library",
+  "source_fingerprint_sha256": "4674319ac6bb0a4acb1aaf12d44cca9dab41786e96b9cefe6f2df398d5469654",
+  "fingerprint_method": "SHA-256 de JSON.stringify([recensio-es, recensio-fr, theory-en]); véase data/academic-integrity.json",
+  "canonical_loci": 731,
+  "records": [
+    {
+      "edition": "V514",
+      "language": "es",
+      "path": "data/structured/recensio-es.json",
+      "git_blob_sha1": "c343187fbadc0ce4c29f357cb16f38e11d4d68e4",
+      "source_docx_sha256": "a41458f70810d323f1cc9cb1b47cdc8c47988961a798b18dbfb97316d1669b87",
+      "passage_blocks": 731,
+      "canonical_loci": 731,
+      "doi": "10.5281/zenodo.23884757"
+    },
+    {
+      "edition": "V554",
+      "language": "fr",
+      "path": "data/structured/recensio-fr.json",
+      "git_blob_sha1": "1b49a8da0cdc18f5a45dd07bf5e0f25a5a7acaf3",
+      "source_docx_sha256": "6713489fe15991b1b438591f9045b241929fa1007529ea0fc13869f49cddc27b",
+      "passage_blocks": 731,
+      "canonical_loci": 731,
+      "doi": "10.5281/zenodo.23885110"
+    },
+    {
+      "edition": "V297",
+      "language": "en",
+      "path": "data/structured/theory-en.json",
+      "git_blob_sha1": "171986ec4b2134384dbafbb84a4baf34a10bc386",
+      "source_docx_sha256": "5812cbc7c9c246db46a2e66d9e9291307afc03d6a7d3349eeb7ab80260b11c99",
+      "passage_blocks": 728,
+      "canonical_loci": 731,
+      "doi": "10.5281/zenodo.23885404",
+      "note": "Tres loci están agrupados en bloques con intervalo; no equivale a pérdida de los 731 loci"
+    }
+  ],
+  "editorial_records": {
+    "integrity": "data/academic-integrity.json",
+    "errata": "data/errata-editionum.json",
+    "ecdotic_decisions": "data/ecdotic-decisions.json",
+    "structured_corpus_manifest": "data/structured/manifest.json"
+  },
+  "interpretation": "Registro fechado de hashes, referencias y cobertura; no pretende que cada lectura fue cotejada con manuscritos originales ni que exista una revisión externa por pares.",
+  "archival_limitations": "Este archivo registra los identificadores de fuentes y el commit de GitHub. No es por sí mismo un depósito inmutable o un DOI de versión del corpus; las ediciones mantienen sus DOI bibliográficos propios.",
+  "citation": "Kurilo, Diego. Vitruvius Digital Library: registro de procedencia y versiones del corpus (2026-11-15), commit f01fbd3beda5abda4af3ba6718243a357463fd24.",
+  "previous_snapshot": "data/corpus-snapshot-2026-11-14.json"
+}

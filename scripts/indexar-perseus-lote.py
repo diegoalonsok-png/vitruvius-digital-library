@@ -11,6 +11,7 @@ título y el URN de la obra de la que viene, sin fundir las citas.
 Uso: python3 scripts/indexar-perseus-lote.py [ficha ...] [--limite N]
 """
 import hashlib, json, pathlib, re, sys, urllib.request
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 import xml.etree.ElementTree as ET
 
 TEI = "{http://www.tei-c.org/ns/1.0}"
@@ -19,6 +20,16 @@ FUENTES = RAIZ / "data/perseus-obras-faltantes.json"
 DESTINO = RAIZ / "data/classics-corpus"
 REGISTRO = DESTINO / "search-registry.json"
 MIN_PASAJES, MIN_CARACTERES = 3, 1200
+
+def lector_edicion(reader, work, language):
+    """Keep a supplied locator while identifying the exact indexed edition."""
+    parts = urlsplit(reader or "classics-text-reader.html")
+    if parts.path.endswith("classics-text-reader.html"):
+        query = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
+                 if k not in ("work", "lang")]
+        query.extend((("work", work), ("lang", language)))
+        return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(query), parts.fragment))
+    return reader
 
 def limpiar(t):
     return re.sub(r"\s+", " ", (t or "")).strip()
@@ -143,7 +154,7 @@ def main():
         salida.write_text(json.dumps(datos, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         entrada = {"workId": wid, "language": lengua, "title": ficha["titulo"],
                    "author": ficha["autor"], "path": (base + f"{wid}-{lengua}.json") if base else f"data/classics-corpus/{wid}-{lengua}.json",
-                   "format": "json-passages", "reader": ficha.get("reader", f"classics-text-reader.html?work={wid}"),
+                   "format": "json-passages", "reader": lector_edicion(ficha.get("reader"), wid, lengua),
                    "sourceDescription": ficha.get("procedencia", "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática")}
         por_id[(wid, lengua)] = entrada
         nuevas.append(f"{wid}: {len(pasajes)} pasajes · {caracteres} caracteres · {len(fuentes_usadas)} fuentes")

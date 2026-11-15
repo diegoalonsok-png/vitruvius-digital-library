@@ -66,7 +66,7 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
  <p class="bude-method">Aparato informativo de lectura inspirado en la tradición de ediciones bilingües. Solo se presentan notas y datos documentados; no se infieren variantes manuscritas. La traducción automática se identifica y no constituye edición crítica cotejada.</p>
 </section>
 <p class="note" id="note" role="status">Se utilizan las ediciones existentes en la Bibliotheca. Un locus compartido no demuestra identidad textual de las versiones.</p>
-</main><script src="assets/academic-inline-translation.js?v=20261114-machine-pivot-v3"></script><script>
+</main><script src="assets/classics-academic-reader.js?v=20261115-preserve-notes"></script><script src="assets/academic-inline-translation.js?v=20261114-machine-pivot-v3"></script><script>
 (()=>{"use strict";
 const q=new URLSearchParams(location.search),work=q.get("work")||"didache";
 const LANG={grc:"GRIEGO",la:"LATÍN",es:"CASTELLANO",en:"INGLÉS",fr:"FRANCÉS",it:"ITALIANO",de:"ALEMÁN",pt:"PORTUGUÉS"};
@@ -285,7 +285,7 @@ function budeRows(id,values){
 function budeComments(record){
  const container=el("bude-comments-body");container.replaceChildren();
  const notes=[];
- for(const prop of ["notes","footnotes","commentary","comments","scholia","editorialNotes"]){
+ for(const prop of ["readingNotes","notes","footnotes","commentary","comments","scholia","editorialNotes"]){
   const value=record?.[prop];
   if(typeof value==="string"&&value.trim())notes.push(value.trim());
   if(Array.isArray(value))for(const row of value){
@@ -302,6 +302,11 @@ function budeComments(record){
   const p=document.createElement("p");
   p.textContent="Esta edición no contiene comentarios filológicos vinculados a este locus en el registro consultado. La ficha académica ofrece la procedencia y los testimonios documentados de la obra.";
   container.append(p);
+ }
+ if(record?.importedText){
+  const details=document.createElement("details"),summary=document.createElement("summary"),raw=document.createElement("p");
+  summary.textContent="Ver texto importado íntegro, antes de separar las notas";
+  raw.textContent=record.importedText;details.append(summary,raw);container.append(details);
  }
 }
 function budeUpdate(kind="pending",versionLanguage=""){
@@ -356,7 +361,10 @@ function draw(){
 async function getEdition(entry,lang){
  if(!entry||!(/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||"")||/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(entry.path||"")))return [];
  const r=await fetch(entry.path);if(!r.ok)throw Error("No se pudo abrir la edición "+lang);
- const data=await r.json();if(!Array.isArray(data.passages))return [];
+ let data=await r.json();if(!Array.isArray(data.passages))return [];
+ // Apply the same source-fingerprinted reading/notes separation as the full
+ // reader. The imported text remains available; only reading text is translated.
+ if(window.ClassicsAcademicReader?.prepare)data=await window.ClassicsAcademicReader.prepare(data);
  editionMetadata.set(lang,{
   sourceType:data.sourceType||"",editorialStatus:data.editorialStatus||"",
   source:data.source||"",attribution:data.attribution||"",license:data.license||"",

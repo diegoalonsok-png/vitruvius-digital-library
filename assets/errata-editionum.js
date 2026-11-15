@@ -27,6 +27,17 @@
    }
   }
   status.textContent=total+" erratas documentadas en originales. Sus PDF publicados no se modificaron por este registro.";
+  const digital=document.getElementById("errata-digital");
+  if(digital){
+   digital.replaceChildren();const rows=d.digital_corrections||[];
+   el("h2","Correcciones del sitio y de sus índices ("+rows.length+")",digital);
+   el("p","Estos registros documentan reparaciones digitales. No se suman como erratas de los libros impresos.",digital,"method");
+   for(const item of rows){
+    const article=el("article",null,digital,"errata-review-item");
+    el("h3",item.title,article);el("p",item.correction,article);
+    el("p","Estado: "+item.status+" · "+item.date+" · "+item.evidence,article,"method");
+   }
+  }
   if(review){
    review.replaceChildren();
    const q=d.review_queue||[];

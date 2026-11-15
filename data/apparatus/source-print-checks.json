@@ -1,0 +1,183 @@
+{
+  "schema": "vdl-source-print-checks-v1",
+  "updated": "2026-11-15",
+  "method": "Cotejo visual de las entradas indicadas con la página impresa digitalizada. La comprobación se limita a entryIds o textLoci expresamente enumerados; no certifica el resto de la página ni una autopsia de los códices citados. ^c y [a supra b] son representaciones textuales declaradas de superíndices y signos superpuestos.",
+  "sources": [
+    {
+      "id": "Rose1899",
+      "facsimileUrl": "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf",
+      "sha256": "d3c45b5c9518da45b946706ad2f56587c4bdd14a439bd95f68a123d3a2ff3435"
+    },
+    {
+      "id": "Krohn1912",
+      "facsimileUrl": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/krohn-1912.pdf",
+      "sha256": "f3732dab6579a40b9ab2b135a27a71066649a566320f16d0a5044dc4d49ee066"
+    }
+  ],
+  "entries": [
+    {
+      "id": "Rose1899-print-p1-20261115",
+      "source": "Rose1899",
+      "status": "checked_against_print",
+      "checkedOn": "2026-11-15",
+      "printedPage": 1,
+      "digitalPage": 37,
+      "facsimileUrl": "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page=37",
+      "entryIds": [
+        "Rose1899-p1-n3",
+        "Rose1899-p1-n4"
+      ],
+      "textLoci": [],
+      "scope": "Texto de las notas enumeradas, coordenadas impresas y asociación al locus; no comprobación independiente del manuscrito.",
+      "imageSha256": "f54836ea67631fb9883239e41ffcdbef3f88b67053edaac75928cad4de74e2a4"
+    },
+    {
+      "id": "Rose1899-print-p2-20261115",
+      "source": "Rose1899",
+      "status": "checked_against_print",
+      "checkedOn": "2026-11-15",
+      "printedPage": 2,
+      "digitalPage": 38,
+      "facsimileUrl": "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page=38",
+      "entryIds": [
+        "Rose1899-p2-n9",
+        "Rose1899-p2-n10",
+        "Rose1899-p2-n11",
+        "Rose1899-p2-n12"
+      ],
+      "textLoci": [],
+      "scope": "Texto de las notas enumeradas, coordenadas impresas y asociación al locus; no comprobación independiente del manuscrito.",
+      "imageSha256": "6f1f27a408d6a1a4eeb35aa63221a53a4ae8589e314be54b3baa2628fcf08168"
+    },
+    {
+      "id": "Rose1899-print-p15-20261115",
+      "source": "Rose1899",
+      "status": "checked_against_print",
+      "checkedOn": "2026-11-15",
+      "printedPage": 15,
+      "digitalPage": 51,
+      "facsimileUrl": "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page=51",
+      "entryIds": [
+        "Rose1899-p15-n3",
+        "Rose1899-p15-n4",
+        "Rose1899-p15-n6",
+        "Rose1899-p15-n7",
+        "Rose1899-p15-n8",
+        "Rose1899-p15-n9",
+        "Rose1899-p15-n11"
+      ],
+      "textLoci": [
+        "1.4.3",
+        "1.4.4",
+        "1.4.5"
+      ],
+      "scope": "Texto de las notas enumeradas, coordenadas impresas y asociación al locus; no comprobación independiente del manuscrito. I.4.5 se completa en la página siguiente.",
+      "imageSha256": "0d5afe3a99fcac2b5202c0ef6331d490621c2ebeda9b08a418927f69608649c5"
+    },
+    {
+      "id": "Krohn1912-print-I-4-3-20261115",
+      "source": "Krohn1912",
+      "status": "checked_against_print",
+      "checkedOn": "2026-11-15",
+      "printedPage": 14,
+      "digitalPage": 32,
+      "facsimileUrl": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/krohn-1912.pdf#page=32",
+      "entryIds": [],
+      "textLoci": [
+        "1.4.3",
+        "1.4.4",
+        "1.4.5"
+      ],
+      "scope": "Texto latino de I.4.3–5 y notas de las líneas 19 y 23 de I.4.4–5. Comienzo de I.4.6 con nota de la línea 27; se completa en la página 15.",
+      "imageSha256": "a161b60c9adf0d2728461b3036ee68771f813688d2a812792c7d3ae333627716"
+    },
+    {
+      "id": "Rose1899-print-p16-20261115",
+      "source": "Rose1899",
+      "status": "checked_against_print",
+      "checkedOn": "2026-11-15",
+      "printedPage": 16,
+      "digitalPage": 52,
+      "facsimileUrl": "https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page=52",
+      "entryIds": [
+        "Rose1899-p16-n1",
+        "Rose1899-p16-n2",
+        "Rose1899-p16-n3",
+        "Rose1899-p16-n4",
+        "Rose1899-p16-n5"
+      ],
+      "textLoci": [
+        "1.4.5",
+        "1.4.6"
+      ],
+      "scope": "Final de I.4.5, texto de I.4.6 y notas 1–13 enumeradas; cotejo del impreso, no autopsia de H/G/S.",
+      "imageSha256": "971dbd64317673aa8e28277cc22a005d2708e83e85ef10c73df3f803f6b574b7"
+    },
+    {
+      "id": "Krohn1912-print-p15-20261115",
+      "source": "Krohn1912",
+      "status": "checked_against_print",
+      "checkedOn": "2026-11-15",
+      "printedPage": 15,
+      "digitalPage": 33,
+      "facsimileUrl": "https://diegoalonsok-png.github.io/vitruvius-digital-library/documents/krohn-1912.pdf#page=33",
+      "entryIds": [],
+      "textLoci": [
+        "1.4.6"
+      ],
+      "scope": "Final del texto latino de I.4.6 y nota de línea 1: liquido Kr.; ut aliquida H, ut liquida G, aut aliquida S. El comienzo del pasaje y quibusvis están en p. 14.",
+      "imageSha256": "86bfa4f8d0e1f87f23701beeb6a1b9bf63db698c58b39d2eca9d0f059a72865e"
+    }
+  ],
+  "comparisons": [
+    {
+      "locus": "1.4.3",
+      "lemma": "exsugendo",
+      "criticalLine": "exsugendo G Sᶜ Rose Kr. Kur. (V297) ] exugendo H S Gᶜ (testimonia sec. Rose).",
+      "evidence": "Rose 1899, p. 15, l. 7 y aparato; Krohn 1912, p. 14, l. 4; V297, DOCX párr. 2100: exsugendo. Las lecturas y manos de H, S y G se citan indirectamente según Rose; no se acredita una nueva autopsia de esos códices. La nota inglesa del párr. 2107 introduce por error exsurgendo.",
+      "printCheckIds": [
+        "Rose1899-print-p15-20261115",
+        "Krohn1912-print-I-4-3-20261115"
+      ],
+      "editorialDecision": false,
+      "errataId": "V297-1.4.3-exsugendo-commentary",
+      "errataUrl": "errata-editionum.html"
+    },
+    {
+      "locus": "1.4.4",
+      "lemma": "valetudinibus",
+      "criticalLine": "valetudinibus Rose Kr. Kur. (V297) ] valitudinibus x (sec. Rose et Kr.).",
+      "evidence": "Rose p. 15, l. 22 y aparato; Krohn p. 14, l. 19 y aparato; V297, DOCX párr. 2112. La divergencia se registra como ortográfica. Las siglas se citan indirectamente según los editores.",
+      "printCheckIds": [
+        "Rose1899-print-p15-20261115",
+        "Krohn1912-print-I-4-3-20261115"
+      ],
+      "editorialDecision": false,
+      "errataId": "V297-1.4.4-refrigerationibus",
+      "errataUrl": "errata-editionum.html"
+    },
+    {
+      "locus": "1.4.5",
+      "lemma": "e principiis",
+      "criticalLine": "e Rose Kr. Kur. (V297) ] om. x (sec. Rose et Kr.); add. rec. (sec. Kr.).",
+      "evidence": "Rose pp. 15–16, nota de p. 15, l. 26; Krohn p. 14, l. 23: ⟨e⟩ y nota e add. rec.: om. x; V297, DOCX párr. 2125, e sin corchetes. La diferencia de corchetes declara la intervención editorial; no se interpreta como otro vocablo ni como testimonio manuscrito nuevo.",
+      "printCheckIds": [
+        "Rose1899-print-p15-20261115",
+        "Krohn1912-print-I-4-3-20261115"
+      ],
+      "editorialDecision": false
+    },
+    {
+      "locus": "1.4.6",
+      "lemma": "quibusvis; liquido",
+      "criticalLine": "quibus⟨vis⟩ corporibus cum Kr. Kur. (V297) ] quibus corporibus cumque Rose (cumque coni. Nohl, sec. Rose) | liquido Kr. Kur. (V297) ] ut a liquido Rose; ut aliquida H, ut liquida G, aut aliquida S (testimonia sec. Rose et Kr.).",
+      "evidence": "Rose p. 16, ll. 2 y 8 y aparato; Krohn p. 14, l. 27 y p. 15, l. 1 y aparatos; V297, DOCX párr. 2136, encabezado 6. Ambos impresos han sido examinados. Las lecturas de los códices siguen siendo atribuciones indirectas. La coincidencia de V297 con Krohn no es una comprobación autóptica de H.",
+      "printCheckIds": [
+        "Rose1899-print-p16-20261115",
+        "Krohn1912-print-I-4-3-20261115",
+        "Krohn1912-print-p15-20261115"
+      ],
+      "editorialDecision": false
+    }
+  ]
+}
