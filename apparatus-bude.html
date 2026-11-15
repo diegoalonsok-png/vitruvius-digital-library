@@ -384,12 +384,12 @@ function load(locus){
  const c=collation?.loci?.[locus]||{};
  // Visible ecdotic labels must follow the locus, independent of saved scroll positions.
  // Alignment percentages are machine measurements, not verified manuscript readings.
- const locusLabel="Locus "+format(locus)+" · "+locus;
+ const locusLabel="Locus de cotejo "+format(locus)+" · "+locus;
  const roseRecord=c["rose-1899"],krohnRecord=c["krohn-1912"];
  const krohnIndependent=Boolean(krohnDigital?.get(locus));
  const roseStatus=roseRecord?.text?.trim()?"OCR histórico provisional, no cotejado íntegramente":"Sin segmento OCR atribuido a este locus";
  const krohnStatus=krohnIndependent?"Transcripción digital Perseus · cotejo con impreso pendiente":passage.latin?.trim()?"Texto suplido de Kurilo V514 · NO es lectura de Krohn":"Texto provisional; comprobar fuentes";
- const meta=(edition,source,page,status)=>edition+" · "+source+"\n"+(page?"Referencia de página digital: "+page+" · ":"")+"Estado: "+status;
+ const meta=(edition,source,page,status)=>edition+" · "+source+"\n"+(page?"Página digital asociada: "+page+" · ":"")+"Estado: "+status+"\n"+(edition==="Kurilo V514"?"Locus de la propia edición V514":"Correspondencia por locus con V514; corroborar división y página en el impreso");
  set("#compare-rose-locus",locusLabel);
  set("#compare-krohn-locus",locusLabel);
  set("#compare-kurilo-locus",locusLabel);
