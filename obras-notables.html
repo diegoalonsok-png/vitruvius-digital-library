@@ -108,7 +108,7 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
    <div class="barra" role="group" aria-label="Herramientas de lectura">
     <button id="menos" class="lupa-folio" type="button" title="Lupa: alejar el folio" aria-label="Lupa alejar"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21M7.5 10.5h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Alejar</span></button>
     <button id="mas" class="lupa-folio" type="button" title="Lupa: acercar el folio" aria-label="Lupa acercar"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21M7.5 10.5h6M10.5 7.5v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Acercar</span></button>
-    <a class="button-traducciones" id="ir-traducciones" href="#palladio-visores">Leer traducciones ES / EN ↓</a>
+    <a class="button-traducciones" id="ir-traducciones" href="#palladio-visores">Leer traducciones ES / EN / FR ↓</a>
     <button id="ajustar" type="button" title="Volver a mostrar el folio completo">Ajustar a la caja</button>
     <button id="invertir" type="button" aria-pressed="false" title="Invertir colores del folio">◐ Invertir colores</button>
     <label>Visualización <select id="modo"><option value="original">Original</option><option value="gris">Blanco y negro</option><option value="negativo">Negativo · letras claras</option></select></label>
@@ -166,7 +166,7 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
    </section>
    <section id="palladio-traducciones" hidden>
     <h2>Traducciones históricas de Palladio</h2>
-    <p class="aviso">Castellano de Ortiz y Sanz (1797): solo libros I y II; el tomo II nunca se publicó. Inglés de Isaac Ware (1738): los cuatro libros. Los visores adicionales están más abajo; no existe todavía sincronización editorial por capítulo.</p>
+    <p class="aviso">Castellano de Ortiz y Sanz (1797): solo libros I y II; el tomo II nunca se publicó. Inglés de Isaac Ware (1738): los cuatro libros. Francés de Fréart de Chambray (1650): los cuatro libros. Los visores adicionales están más abajo; no existe todavía sincronización editorial por capítulo.</p>
     <dl>
      <dt>Castellano · Ortiz y Sanz, 1797</dt>
      <dd><a href="https://www.sedhc.es/bibliotecaD/1797_Andrea_Palladio_Los_cuatro_libros_de_arquitectura.pdf" target="_blank" rel="noopener noreferrer">Consultar tomo castellano I–II (PDF)</a></dd>
@@ -202,22 +202,37 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
  </div>
  <section id="palladio-visores" class="traducciones-lectura" aria-labelledby="traducciones-titulo" hidden>
   <h2 id="traducciones-titulo">Palladio · traducciones históricas en lectura directa</h2>
-  <p class="traducciones-nota">Lectores adicionales debajo del facsímil italiano de 1570. La edición castellana de Ortiz y Sanz (1797) comprende únicamente los libros I y II; la inglesa de Isaac Ware (1738), los cuatro. Cada visor tiene navegación independiente: las páginas y los folios todavía no están sincronizados entre ediciones.</p>
-  <article class="visor-edicion" id="palladio-visor-castellano">
+  <p class="traducciones-nota">Lectores independientes por idioma debajo del facsímil italiano de 1570. La edición castellana de Ortiz y Sanz (1797) comprende únicamente los libros I y II; las ediciones inglesa de Isaac Ware (1738) y francesa de Fréart de Chambray (1650), los cuatro. Cada visor tiene navegación independiente: las páginas y los folios todavía no están sincronizados entre ediciones.</p>
+  <nav aria-label="Ediciones traducidas de Palladio" class="traducciones-idiomas" style="display:flex;flex-wrap:wrap;gap:12px;margin:18px 0">
+   <a href="#palladio-visor-castellano" lang="es">Castellano · 1797</a>
+   <a href="#palladio-visor-ingles" lang="en">English · 1738</a>
+   <a href="#palladio-visor-frances" lang="fr">Français · 1650</a>
+  </nav>
+  <article class="visor-edicion" id="palladio-visor-castellano" lang="es">
    <div class="visor-edicion-cabecera">
     <div><h3>01 · Castellano · Ortiz y Sanz, 1797</h3><p>Los quatro libros de arquitectura · tomo publicado: libros I y II · Imprenta Real, Madrid. Reproducción difundida por la Sociedad Española de Historia de la Construcción.</p></div>
     <a href="https://www.sedhc.es/bibliotecaD/1797_Andrea_Palladio_Los_cuatro_libros_de_arquitectura.pdf" target="_blank" rel="noopener noreferrer">Abrir PDF original</a>
    </div>
+   <div class="folio-r2" data-edition="es1797"><p role="status">Comprobando folios alojados en R2…</p></div>
    <iframe title="Lector de la traducción castellana de Palladio por Ortiz y Sanz de 1797, libros I y II" data-src="https://www.sedhc.es/bibliotecaD/1797_Andrea_Palladio_Los_cuatro_libros_de_arquitectura.pdf#page=1&amp;view=FitH" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
    <p class="visor-aviso"><strong>Crédito institucional:</strong> reproducción difundida por la <a href="https://sedhc.es/tratados/" target="_blank" rel="noopener noreferrer">Sociedad Española de Historia de la Construcción (SEdHC)</a>, cuya Biblioteca Digital se desarrolla en colaboración con el <strong>Instituto Juan de Herrera</strong>. La propia SEdHC declara que difunde tratados libres de derechos de autor por su antigüedad. Texto histórico de 1797 en dominio público; la titularidad del ejemplar físico empleado para este PDF no está documentada en la ficha consultada. Respetar la atribución de procedencia y las condiciones de la fuente digital. El PDF se consulta desde su servidor, sin atribuir a Vitruvius derechos ni titularidad sobre el material. Si el navegador impide visualizarlo, abre el PDF original.</p>
   </article>
-  <article class="visor-edicion" id="palladio-visor-ingles">
+  <article class="visor-edicion" id="palladio-visor-ingles" lang="en">
    <div class="visor-edicion-cabecera">
     <div><h3>02 · Inglés · Isaac Ware, 1738</h3><p>The four books of architecture · traducción de los cuatro libros. Ejemplar digitalizado del Getty Research Institute, disponible mediante Internet Archive.</p></div>
     <a href="https://archive.org/details/gri_33125011569684" target="_blank" rel="noopener noreferrer">Abrir edición original</a>
    </div>
+   <div class="folio-r2" data-edition="en1738"><p role="status">Comprobando folios alojados en R2…</p></div>
    <iframe title="Lector de The Four Books of Architecture traducidos por Isaac Ware en 1738" data-src="https://archive.org/embed/gri_33125011569684/page/n1/mode/1up" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
    <p class="visor-aviso"><strong>Crédito institucional:</strong> digitalización incorporada a la colección del <strong>Getty Research Institute</strong>, consultable en <a href="https://archive.org/details/gri_33125011569684" target="_blank" rel="noopener noreferrer">Internet Archive · gri_33125011569684</a>. Traducción inglesa de Isaac Ware (1738) en dominio público por antigüedad; el archivo figura como tal en <a href="https://commons.wikimedia.org/wiki/File:The_four_books_of_architecture_(IA_gri_33125011569684).pdf" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>. Consultar las <a href="https://www.getty.edu/research-conservation/library/reproductions-permissions/" target="_blank" rel="noopener noreferrer">condiciones de Getty Library</a> para reproducción y reutilización del material de sus fondos. Esta atribución no supone que Vitruvius sea titular del ejemplar ni de su digitalización. La navegación es independiente del original de 1570; las equivalencias por capítulo requieren cotejo.</p>
+  </article>
+  <article class="visor-edicion" id="palladio-visor-frances" lang="fr">
+   <div class="visor-edicion-cabecera">
+    <div><h3>03 · Français · Roland Fréart de Chambray, 1650</h3><p><em>Les quatre livres de l'architecture d'André Palladio</em> · Paris, Edme Martin, 1650. Édition historique des quatre livres.</p></div>
+    <a href="https://architectura.univ-tours.fr/livres-consultation/cesr_4045consult/" target="_blank" rel="noopener noreferrer">Consulter la source universitaire</a>
+   </div>
+   <div class="folio-r2" data-edition="fr1650"><p role="status">Comprobando folios alojados en R2…</p></div>
+   <p class="visor-aviso"><strong>Crédit scientifique :</strong> <a href="https://architectura.univ-tours.fr/livres-consultation/cesr_4045consult/" target="_blank" rel="noopener noreferrer">Architectura, Centre d'Études Supérieures de la Renaissance, Université de Tours</a>. Le texte ancien est dans le domaine public; les conditions de réutilisation des reproductions numériques doivent être vérifiées avant leur réhébergement.</p>
   </article>
  </section>
 </div>
@@ -231,5 +246,6 @@ footer{border-top:1px solid var(--borde);margin-top:24px;padding:16px 18px;font:
 <script defer src="assets/vitruvia-philology.js?v=20261113-obras"></script>
 <script defer src="assets/r2-clasicos-busqueda.js?v=20261113-obras"></script>
 <script defer src="assets/obras-notables-visor.js?v=20261113-creditos-procedencia-v10"></script>
+<script defer src="assets/palladio-ediciones-r2.js?v=20261115"></script>
 </body>
 </html>
