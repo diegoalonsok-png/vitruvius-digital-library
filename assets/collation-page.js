@@ -211,7 +211,9 @@ async function show(locus){
  try{const c=await window.CodexHConcordance?.locate(locus);
   if(c){const ex=c.exact?.[0];const f=ex?ex.folio:c.estimate?.folio;
    const p=el("p",null,ex?("Folio "+ex.folio+" · "+(window.CodexHConcordance.label?.(ex.status)||ex.status||"verificado")):(c.estimate?("Folio estimado "+c.estimate.folio+" (entre "+c.estimate.from+" y "+c.estimate.to+"; estimación proporcional dentro del libro)"):"Sin folio asignado."));hBox.append(p);
-   if(f){const a=el("a",null,"Ver el folio en el visor del Codex H →");a.href="codex-h-folios-local.html?locus="+encodeURIComponent(locus);hBox.append(a)}}
+   if(f){const a=el("a",null,(ex?"Examinar folio "+f+" en alta definición →":"Examinar folio aproximado "+f+" en alta definición →"));a.href="codex-h-folios-local.html?folio="+encodeURIComponent(f)+"&locus="+encodeURIComponent(locus);hBox.append(a);
+   const src=el("a",null,"Catálogo y manifest IIIF · British Library →");src.href="https://searcharchives.bl.uk/catalog/040-002048598";src.target="_blank";src.rel="noopener noreferrer";src.style.display="block";src.style.marginTop="8px";hBox.append(src);
+   const desc=el("p","coll-meta",ex?"Correspondencia material registrada: "+(ex.note||"el locus se vincula con este folio; comprobar lectura letra a letra."):"Ubicación orientativa por interpolación: no afirmar el folio como comprobado.");hBox.append(desc)}}
  }catch{hBox.append(el("p","coll-meta","Concordancia de folios no disponible."))}
  hBox.append(el("p","coll-warning","H es un testimonio manuscrito, no una edición impresa. La identificación de un folio, incluso materialmente comprobada, no certifica la lectura de cada palabra. No se generan variantes automáticas a partir de una localización estimada."));
  const hEvidence=el("a",null,"Lecturas de H documentadas para este locus · grado de verificación →");
