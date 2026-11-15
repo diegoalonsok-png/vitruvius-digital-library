@@ -29,7 +29,7 @@ const aliases={
 const fold=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
 const words=s=>fold(s).match(/[a-z]+/g)||[];
 const $=s=>document.querySelector(s);
-function init(rows,openLocus){
+function init(rows,openLocus,syncTerm){
  const query=$("#ab-search-query"),mode=$("#ab-search-mode"),status=$("#ab-search-status"),list=$("#ab-search-results"),more=$("#ab-search-more");
  if(!query||!Array.isArray(rows))return;
  const corpus=rows.filter(p=>typeof p.latin==="string"&&p.locus).map(p=>({...p,normalizedWords:words(p.latin)}));
@@ -41,7 +41,7 @@ function init(rows,openLocus){
   for(const hit of found.slice(shown,shown+20)){
    const item=document.createElement("article");item.className="ab-search-hit";
    const button=document.createElement("button");button.type="button";button.textContent="Vitruvio "+display(hit.locus)+" · abrir pasaje";
-   button.addEventListener("click",()=>{openLocus(hit.locus);$("#status")?.scrollIntoView({behavior:"smooth",block:"start"})});
+   button.addEventListener("click",()=>{syncTerm?.(needle);openLocus(hit.locus);$("#triple-title")?.scrollIntoView({behavior:"smooth",block:"start"})});
    const p=document.createElement("p");p.lang="la";
    const raw=hit.latin;const match=needle.map(n=>({n,at:fold(raw).search(new RegExp("\\b"+n+"\\b"))})).find(x=>x.at>=0);
    const at=match?.at??0,lo=Math.max(0,at-75),hi=Math.min(raw.length,at+230);
@@ -65,11 +65,13 @@ function init(rows,openLocus){
    const present=new Set(p.normalizedWords);
    return mode.value==="all"?needle.every(t=>present.has(t)):needle.some(t=>present.has(t));
   });
+  syncTerm?.(needle);
+  if(found.length){openLocus(found[0].locus);$("#triple-title")?.scrollIntoView({behavior:"smooth",block:"start"})}
   status.textContent=found.length+" loci encontrados en el latín V514"+(canonical!==tokens[0]?" · concepto latino: "+canonical:"")+". Ordenados por libro y pasaje. No se incluyen coincidencias OCR.";
   draw();
  }
  $("#ab-search-form").addEventListener("submit",e=>{e.preventDefault();run()});
- $("#ab-search-reset").addEventListener("click",()=>{query.value="";found=[];shown=0;list.replaceChildren();more.hidden=true;status.textContent="Búsqueda limpia. Introducí otro término."});
+ $("#ab-search-reset").addEventListener("click",()=>{query.value="";syncTerm?.([]);found=[];shown=0;list.replaceChildren();more.hidden=true;status.textContent="Búsqueda limpia. Introducí otro término."});
  more.addEventListener("click",draw);
  document.querySelectorAll("[data-ab-term]").forEach(btn=>btn.addEventListener("click",()=>{query.value=btn.dataset.abTerm;mode.value="concept";run()}));
  status.textContent=corpus.length+" loci disponibles para búsqueda de texto latino y conceptos.";
