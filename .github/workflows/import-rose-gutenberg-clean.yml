@@ -1,0 +1,28 @@
+name: Import Rose 1899 clean Latin candidate
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import-rose-gutenberg-clean.yml'
+permissions:
+  contents: write
+jobs:
+  import-rose-clean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extract independently transcribed Latin and compare with V514
+        run: python scripts/import-rose-gutenberg-clean.py
+      - name: Commit new scholarly candidate data only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/text/rose-1899-gutenberg-clean-candidate.json data/index/cotejo-rose-1899-gutenberg-v514-candidate.json
+          if ! git diff --staged --quiet; then
+            git commit -m "Add independent clean Rose 1899 corpus and preliminary V514 audit"
+            git push
+          fi
