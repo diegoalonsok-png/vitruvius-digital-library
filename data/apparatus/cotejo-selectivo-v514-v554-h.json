@@ -56,15 +56,34 @@
         "V554-T-p1110-215"
       ],
       "note": "El comentario autoral relaciona la exclusión de nota con la decisión editorial de Krohn. Los corchetes identifican intervención editorial, no omisión automáticamente comprobada en H.",
-      "status": "contexto de H localizado; lectura variante pendiente de certificar por ampliación",
+      "status": "lectura de presencia de nota comprobada en fotografía local de H f. 2v; intervención editorial en corchetes se documenta separadamente",
       "imageInspection": {
         "folio": "2v",
         "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_012_f-2v.jpg",
         "inspection": "fotografía local de alta resolución abierta y examinada",
         "warning": "Se localizan en el folio las menciones de la civitas y de «posteris nota poena». La lectura de deflagrata/declarata exige ampliación para fijar la secuencia exacta."
       },
-      "verifiedAutopsy": false,
-      "evidenceClass": "visual_context_not_lemma"
+      "verifiedAutopsy": true,
+      "evidenceClass": "visual_folio_reading",
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "2v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_012_f-2v.jpg",
+        "observedReading": "posteris nota poena",
+        "verification": "inspección visual directa del tercio inferior de f. 2v",
+        "note": "La fotografía muestra la secuencia posteris nota poena, concordante con el Apéndice T de V514 y V554. La seclusión editorial de nota es distinta del hecho de que la palabra esté presente en el manuscrito."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "I.1.5",
+        "selected": "posteris [nota] poena",
+        "selectedAttribution": "Kur. (seclus. sec. Kr., según Apéndice T)",
+        "variant": "posteris nota poena",
+        "variantAttribution": "H",
+        "folio": "2v",
+        "display": "‖ I.1.5 posteris [nota] poena Kur. (seclus. sec. Kr., app. T) : posteris nota poena H (f. 2v, ex imagine) ‖",
+        "caution": "La presencia de nota se comprueba en la fotografía de H. Los corchetes señalan una decisión editorial; su atribución a Kr. proviene del apéndice de Kurilo, no del impreso de Krohn cotejado aquí."
+      }
     },
     {
       "locus": "1.1.11",
