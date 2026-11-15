@@ -16,15 +16,53 @@
     "krohn": "Nota de aparato OCR de indexación local; no autopsia de página, pendiente verificación"
   },
   "counts": {
-    "manuscriptFolios": 3,
-    "variantRecords": 5,
-    "distinctLoci": 3,
-    "facsimileImagesExamined": 3,
+    "manuscriptFolios": 4,
+    "variantRecords": 6,
+    "distinctLoci": 4,
+    "facsimileImagesExamined": 4,
     "rosePageImagesVerified": 0,
     "krohnPageImagesVerified": 0,
     "editorialDecisionsRatified": 0
   },
   "entries": [
+    {
+      "id": "COL-H-I.PRAEF.2-CONSTITUTIONEM-006",
+      "locus": "1.praef.2",
+      "folio": "1r",
+      "lemma": "publicaeque rei constitutione",
+      "adoptedReading": "publicaeque rei constitutione habere",
+      "witnessReading": "publicaeq; rei constitutionem habere",
+      "apparatus": "constitutione] constitutionem H",
+      "evidenceNote": "En el primer tercio del folio, tras omnium curam publicaeq; rei, se distingue constitutionem seguido de habere. La diferencia de caso respecto de la edición impresa está también consignada en el aparato de Rose.",
+      "rose": {
+        "pdfPage": 37,
+        "printedPage": 1,
+        "transcribedNote": "constitutione S(Gc): constitutionem H (-nē) G.",
+        "transcriptionUrl": "https://www.gutenberg.org/files/51812/51812-h/51812-h.htm",
+        "kind": "edición histórica transcrita; cotejo visual del impreso Rose pendiente"
+      },
+      "krohn": {
+        "pdfPage": 19,
+        "ocrNote": "constitutione SG'^: -nem J3\", -ne G",
+        "kind": "OCR local con sigla inestable; no adoptar atribuciones sin examinar página"
+      },
+      "visualConfidence": "alta",
+      "witness": "H",
+      "institution": "The British Library",
+      "shelfmark": "Harley MS 2767",
+      "imageNumber": 9,
+      "archivalFilename": "H_009_f-1r.jpg",
+      "archivalSHA256": "cc92a3fff044742bd171a490f3bd6328bc97b603850f62faf29c9120659cedf5",
+      "sourceManifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100056038850.0x000001",
+      "iiifCanvas": "https://bl.digirati.io/images/ark:/81055/vdc_100056038853.0x000009/canvas/c/9",
+      "facsimileUrl": "codex-h-folios-local.html?folio=1r",
+      "inspectedOn": "2026-11-14",
+      "inspectionMethod": "lectura visual manual de fotografía digital local procedente del IIIF institucional, no consulta física del manuscrito ni OCR",
+      "visualStatus": "confrontado_con_fotografia",
+      "editorialStatus": "pendiente_de_ratificacion_editorial",
+      "editorialIntervention": "ninguna; conservar texto y paginación del DOCX/PDF publicados",
+      "sourcesIndependent": "H = un testigo; Rose y Krohn son editores, no códices adicionales"
+    },
     {
       "id": "COL-H-I.1.1-OM-001",
       "locus": "1.1.1",
