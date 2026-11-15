@@ -27,7 +27,7 @@ td.l{white-space:nowrap;font:600 13px system-ui}
 .matrix td,.matrix th{text-align:center;font:13px system-ui}
 .wits dt{font:600 14px system-ui;margin-top:8px}.wits dd{margin:2px 0 0 0;font:14px/1.5 Georgia,serif}
 #mas{margin:14px 0;font:14px system-ui;padding:8px 14px;cursor:pointer;background:transparent;color:inherit;border:1px solid rgba(128,128,128,.6);border-radius:4px}
-</style></head><body><main>
+.bude-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:15px 0}.bude-card{padding:17px;border:1px solid rgba(128,128,128,.45);background:rgba(140,120,80,.045);min-width:0}.bude-card h3{font:600 15px/1.4 system-ui;margin:0 0 8px}.bude-card p{font:16px/1.7 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}.bude-unit{font:16px/1.7 Georgia,serif;margin:12px 0;padding:9px 0;border-bottom:1px solid rgba(128,128,128,.25)}.bude-unit small{display:block;font:12px/1.6 system-ui;opacity:.8;margin-top:4px}.bude-unit a{font:12px/1.5 system-ui}.bude-note{font:13px/1.6 system-ui;opacity:.86}.bude-label{font:600 12px/1.5 system-ui;letter-spacing:.07em;text-transform:uppercase}.bude-card a{overflow-wrap:anywhere}#bude-form button{cursor:pointer;padding:9px 13px;background:transparent;color:inherit;border:1px solid rgba(128,128,128,.6)}@media print{.bar,#mas{display:none!important}}</style></head><body><main>
 <p class="small"><a href="index.html">← Inicio</a> · <a href="registro-ecdotico.html">Registro ecdótico</a> · <a href="erratas-ediciones.html">Erratas</a> · <a href="scriptorium.html">Scriptorium</a> · <a href="apparatus-bude.html?locus=1.1.1">Aparato estilo Budé</a> · <a href="codex-h-folios-local.html">Codex H</a> · <a href="auditoria-academica.html">Auditoría</a></p>
 <header><h1>Aparato crítico comparativo</h1>
 <p class="intro">Para cada locus de <i>De architectura</i> se reúnen tres aparatos: las decisiones de <strong>V514</strong>, el de <strong>Rose (1899)</strong> y el de <strong>Krohn (1912)</strong>, con las lecturas de los testimonios principales: <strong>H</strong> (Harley 2767), <strong>G</strong> y <strong>E</strong> (Gudiani de Wolfenbüttel) y <strong>S</strong> (Sélestat). Las entradas de Rose y Krohn proceden del OCR de la página impresa y se enlazan a ella para su comprobación: este aparato reúne testimonios ya publicados y no sustituye la colación directa de G, E y S.</p></header>
@@ -52,6 +52,14 @@ td.l{white-space:nowrap;font:600 13px system-ui}
 <button id="mas" type="button" hidden>Mostrar más</button>
 </section>
 
+<section id="bude-unit" aria-labelledby="bude-unit-title">
+<h2 id="bude-unit-title">Apparatus comparativus per locum · disposición Budé</h2>
+<p class="intro">Unidad crítica por locus: texto latino, traducciones y entradas atribuidas a cada fuente. Siglas codicológicas <b>H G E S</b> distintas de las abreviaturas de edición <b>Kr.</b>, <b>Rose</b> y <b>Kur.</b>. Las entradas OCR se identifican como candidatas, no como variantes comprobadas; el símbolo <code>‖</code> delimita entradas documentales, no certifica su lectura.</p>
+<form id="bude-form" class="bar" role="search"><label for="bude-locus">Locus</label><input id="bude-locus" name="locus" value="1.1.1" placeholder="I.1.1 · 1.praef.1" required><button type="submit">Cotejar locus</button><button id="bude-prev" type="button">Anterior</button><button id="bude-next" type="button">Siguiente</button></form>
+<p id="bude-state" class="small" role="status" aria-live="polite">Cargando testimonios…</p>
+<div id="bude-content"></div>
+<p class="small"><a id="bude-open-reader" href="apparatus-bude.html?locus=1.1.1">Abrir lectura enfrentada y notas del autor</a> · <a id="bude-open-h" href="codex-h-folios-local.html?locus=1.1.1">Visor del Codex H</a> · <a id="bude-open-errata" href="erratas-ediciones.html">Errata et corrigenda</a></p>
+</section>
 <section aria-labelledby="t4"><h2 id="t4">Método</h2>
 <p class="small" id="metodo" style="white-space:pre-line;max-width:95ch"></p>
 <p class="small">Datos: <a href="data/apparatus/aparato-comparativo.json">aparato-comparativo.json</a> · Script: <code>scripts/build-aparato-comparativo.py</code>.</p>
@@ -93,5 +101,7 @@ fetch("data/apparatus/aparato-comparativo.json",{cache:"no-cache"}).then(r=>r.js
 }).catch(e=>{$("#estado").textContent="No se pudo cargar el aparato: "+e.message});
 })();
 </script>
+<script defer src="assets/codex-h-concordance.js?v=20261114-bude-h"></script>
+<script defer src="assets/comparative-bude-units.js?v=20261114-bude-1"></script>
 <script defer src="assets/ui-idioma.js?v=20261112-sitio3"></script>
 </body></html>
