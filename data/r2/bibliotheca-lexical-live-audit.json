@@ -1,0 +1,444 @@
+{
+  "schema": "vdl-bibliotheca-lexical-live-v1",
+  "generated": "2026-11-15T04:06:21.829Z",
+  "method": "GET de OCR en R2, GET de fragmentos invertidos R2; comparación de palabras atestiguadas y páginas digitales con el mismo normalizador del visor",
+  "limitations": "Muestra selectiva de obras y raíces; no acredita todos los 2.510 fragmentos, ni lematización filológica, ni exactitud paleográfica del OCR.",
+  "cataloguedEditions": 117,
+  "sampledEditionIds": [
+    "apollodorus-poliorcetics",
+    "athenaeus-mechanicus",
+    "ptolemy-geographia",
+    "plutarco-vidas",
+    "tucidides-historia",
+    "teofrasto-historia-plantas",
+    "arquimedes-obras",
+    "accius-fragmenta",
+    "longino-sublime",
+    "longo-dafnis-es",
+    "rose-vitruvius-1899",
+    "antologia-griega"
+  ],
+  "records": [
+    {
+      "id": "apollodorus-poliorcetics",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/apollodorus-poliorcetics.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apollodorus-poliorcetics.pdf",
+      "ocrPages": 446,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "rraten",
+          "root": "rraten",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics&pagina=1&q=rraten"
+        },
+        {
+          "word": "pates",
+          "root": "pate",
+          "page": 1,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics&pagina=1&q=pates"
+        },
+        {
+          "word": "aenti",
+          "root": "aent",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics&pagina=1&q=aenti"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/athenaeus-mechanicus.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/athenaeus-mechanicus.pdf",
+      "ocrPages": 446,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "rraten",
+          "root": "rraten",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus&pagina=1&q=rraten"
+        },
+        {
+          "word": "pates",
+          "root": "pate",
+          "page": 1,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus&pagina=1&q=pates"
+        },
+        {
+          "word": "aenti",
+          "root": "aent",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus&pagina=1&q=aenti"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "ptolemy-geographia",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/ptolemy-geographia.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ptolemy-geographia.pdf",
+      "ocrPages": 456,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "digitized",
+          "root": "digitized",
+          "page": 6,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia&pagina=6&q=digitized"
+        },
+        {
+          "word": "internet",
+          "root": "intern",
+          "page": 6,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia&pagina=6&q=internet"
+        },
+        {
+          "word": "archive",
+          "root": "archiu",
+          "page": 6,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia&pagina=6&q=archive"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "plutarco-vidas",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/plutarco-vidas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plutarco-vidas.pdf",
+      "ocrPages": 656,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "teeta",
+          "root": "teet",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas&pagina=1&q=teeta"
+        },
+        {
+          "word": "digitized",
+          "root": "digitized",
+          "page": 3,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas&pagina=3&q=digitized"
+        },
+        {
+          "word": "internet",
+          "root": "intern",
+          "page": 3,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas&pagina=3&q=internet"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "tucidides-historia",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/tucidides-historia.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/tucidides-historia.pdf",
+      "ocrPages": 512,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "99rv0",
+          "root": "99ru0",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=tucidides-historia&pagina=1&q=99rv0"
+        },
+        {
+          "word": "digitized",
+          "root": "digitized",
+          "page": 5,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=tucidides-historia&pagina=5&q=digitized"
+        },
+        {
+          "word": "internet",
+          "root": "intern",
+          "page": 5,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=tucidides-historia&pagina=5&q=internet"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "teofrasto-historia-plantas",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/teofrasto-historia-plantas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teofrasto-historia-plantas.pdf",
+      "ocrPages": 520,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ersity",
+          "root": "ersity",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas&pagina=1&q=ersity"
+        },
+        {
+          "word": "classical",
+          "root": "classical",
+          "page": 7,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas&pagina=7&q=classical"
+        },
+        {
+          "word": "library",
+          "root": "library",
+          "page": 7,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas&pagina=7&q=library"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "arquimedes-obras",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/arquimedes-obras.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/arquimedes-obras.pdf",
+      "ocrPages": 524,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "byatt",
+          "root": "byatt",
+          "page": 1,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=arquimedes-obras&pagina=1&q=byatt"
+        },
+        {
+          "word": "sseee",
+          "root": "ssee",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=arquimedes-obras&pagina=1&q=sseee"
+        },
+        {
+          "word": "library",
+          "root": "library",
+          "page": 2,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=arquimedes-obras&pagina=2&q=library"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "accius-fragmenta",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/accius-fragmenta.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/accius-fragmenta.pdf",
+      "ocrPages": 456,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "koninklijke",
+          "root": "koninkliik",
+          "page": 2,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=accius-fragmenta&pagina=2&q=koninklijke"
+        },
+        {
+          "word": "bibliotheek",
+          "root": "bibliotheek",
+          "page": 2,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=accius-fragmenta&pagina=2&q=bibliotheek"
+        },
+        {
+          "word": "digitized",
+          "root": "digitized",
+          "page": 3,
+          "indexedOccurrences": 268,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=accius-fragmenta&pagina=3&q=digitized"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "longino-sublime",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/longino-sublime.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longino-sublime.pdf",
+      "ocrPages": 309,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "author",
+          "root": "auth",
+          "page": 2,
+          "indexedOccurrences": 148,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longino-sublime&pagina=2&q=author"
+        },
+        {
+          "word": "ancient",
+          "root": "anci",
+          "page": 2,
+          "indexedOccurrences": 14,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longino-sublime&pagina=2&q=ancient"
+        },
+        {
+          "word": "boeotians",
+          "root": "boeoti",
+          "page": 2,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longino-sublime&pagina=2&q=boeotians"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "longo-dafnis-es",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/longo-dafnis-es.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longo-dafnis-es.pdf",
+      "ocrPages": 264,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "πινρινι",
+          "root": "πινριν",
+          "page": 2,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=2&q=%CF%80%CE%B9%CE%BD%CF%81%CE%B9%CE%BD%CE%B9"
+        },
+        {
+          "word": "library",
+          "root": "library",
+          "page": 2,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=2&q=library"
+        },
+        {
+          "word": "unibersity",
+          "root": "unibersity",
+          "page": 2,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=2&q=unibersity"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "rose-vitruvius-1899",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/rose-vitruvius-1899.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/rose-vitruvius-1899.pdf",
+      "ocrPages": 344,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "vitruvii",
+          "root": "uitruui",
+          "page": 7,
+          "indexedOccurrences": 145,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=rose-vitruvius-1899&pagina=7&q=vitruvii"
+        },
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 7,
+          "indexedOccurrences": 122,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=rose-vitruvius-1899&pagina=7&q=architectura"
+        },
+        {
+          "word": "libri",
+          "root": "libr",
+          "page": 7,
+          "indexedOccurrences": 81,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=rose-vitruvius-1899&pagina=7&q=libri"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "antologia-griega",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/antologia-griega.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/antologia-griega.pdf",
+      "ocrPages": 424,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ecetate",
+          "root": "ecetat",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=antologia-griega&pagina=1&q=ecetate"
+        },
+        {
+          "word": "fateletes",
+          "root": "fatelet",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=antologia-griega&pagina=1&q=fateletes"
+        },
+        {
+          "word": "spiele",
+          "root": "spiel",
+          "page": 1,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=antologia-griega&pagina=1&q=spiele"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "readerEndpoints": [
+    {
+      "url": "https://vitruvius-digital-library.org/bibliotheca-graeca-latina.html",
+      "status": "html-loaded",
+      "httpStatus": 200
+    },
+    {
+      "url": "https://vitruvius-digital-library.org/buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics",
+      "status": "html-loaded",
+      "httpStatus": 200
+    },
+    {
+      "url": "https://diegoalonsok-png.github.io/vitruvius-digital-library/buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus",
+      "status": "html-loaded",
+      "httpStatus": 200
+    }
+  ],
+  "unexpectedIndexedIds": [
+    "boecio-institutione-musica",
+    "historia-augusta"
+  ],
+  "errors": [],
+  "warnings": [
+    "El índice contiene IDs sin ficha editorial: boecio-institutione-musica, historia-augusta"
+  ],
+  "status": "verified-sample-with-reservations",
+  "indexEntries": 119,
+  "indexFragments": 2510,
+  "counts": {
+    "testedEditions": 12,
+    "testedWords": 36,
+    "locatedPages": 36,
+    "errors": 0,
+    "warnings": 1,
+    "indexEditions": 119,
+    "indexFragments": 2510
+  }
+}

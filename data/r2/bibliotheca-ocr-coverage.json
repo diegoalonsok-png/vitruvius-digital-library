@@ -1,0 +1,707 @@
+{
+  "schema": "vdl-bibliotheca-ocr-coverage-v1",
+  "generated": "2026-11-15T04:06:21.784299+00:00",
+  "source": "Catálogo maestro, registro de versiones, inventario federado e índice S3 auditado",
+  "limits": "Índice por raíces sobre OCR no revisado, no traducción, no lematización morfológica, ni correspondencia certificada con loci. La presencia en el listado no prueba que cada palabra tenga una localización correcta; consultar auditoría léxica en vivo.",
+  "counts": {
+    "masterWorks": 271,
+    "withRegisteredText": 214,
+    "withoutRegisteredText": 57,
+    "withoutTextButWithR2OcrIndex": 29,
+    "withoutTextOrLinkedR2OcrIndex": 28
+  },
+  "ocrSearchableWithoutTranscription": [
+    {
+      "id": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "plutarco-vidas",
+          "reader": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "apollodorus-poliorcetics",
+          "reader": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "athenaeus-mechanicus",
+          "reader": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "ptolemy-geographia",
+          "reader": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "tucidides-historia",
+          "reader": "buscador-facsimiles-clasicos.html?obra=tucidides-historia",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "teofrasto-historia-plantas",
+          "reader": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "arquimedes-obras",
+          "reader": "buscador-facsimiles-clasicos.html?obra=arquimedes-obras",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "accius-fragmenta",
+          "reader": "buscador-facsimiles-clasicos.html?obra=accius-fragmenta",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "philo-belopoeica",
+          "reader": "buscador-facsimiles-clasicos.html?obra=philo-belopoeica",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "biton-kataskeuai",
+          "reader": "buscador-facsimiles-clasicos.html?obra=biton-kataskeuai",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "hyginus-gromaticus",
+          "reader": "buscador-facsimiles-clasicos.html?obra=hyginus-gromaticus",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "lyra-graeca",
+      "author": "Poetas líricos griegos",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "lyra-graeca",
+          "reader": "buscador-facsimiles-clasicos.html?obra=lyra-graeca",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "higino-fabulas",
+      "author": "Higino",
+      "title": "Fabulae · Astronomica poetica",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "higino-fabulas",
+          "reader": "buscador-facsimiles-clasicos.html?obra=higino-fabulas",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "manilio-astronomica",
+      "author": "Manilio",
+      "title": "Astronomica",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "manilio-astronomica",
+          "reader": "buscador-facsimiles-clasicos.html?obra=manilio-astronomica",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "author": "Aristóteles",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "aristoteles-meteorologica",
+          "reader": "buscador-facsimiles-clasicos.html?obra=aristoteles-meteorologica",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "galeno-opera-kuhn",
+          "reader": "buscador-facsimiles-clasicos.html?obra=galeno-opera-kuhn",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "galeno-kuhn-vol01",
+          "reader": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol01",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "author": "Galeno",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "galeno-kuhn-vol19",
+          "reader": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol19",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "author": "Galeno",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "galeno-scripta-minora",
+          "reader": "buscador-facsimiles-clasicos.html?obra=galeno-scripta-minora",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "author": "Jámblico",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "jamblico-vida-pitagorica",
+          "reader": "buscador-facsimiles-clasicos.html?obra=jamblico-vida-pitagorica",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "author": "Proclo",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "proclo-comentario-euclides",
+          "reader": "buscador-facsimiles-clasicos.html?obra=proclo-comentario-euclides",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "author": "Sexto Empírico",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "sexto-empirico-obras",
+          "reader": "buscador-facsimiles-clasicos.html?obra=sexto-empirico-obras",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "author": "Teón de Esmirna",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "teon-esmirna-expositio",
+          "reader": "buscador-facsimiles-clasicos.html?obra=teon-esmirna-expositio",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "anthologia-latina",
+      "author": "Antología latina",
+      "title": "Anthologia Latina",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "anthologia-latina",
+          "reader": "buscador-facsimiles-clasicos.html?obra=anthologia-latina",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "casiodoro-variae",
+      "author": "Casiodoro",
+      "title": "Variae",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "casiodoro-variae",
+          "reader": "buscador-facsimiles-clasicos.html?obra=casiodoro-variae",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "author": "Festo (y Verrio Flaco)",
+      "title": "De verborum significatu",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "festo-verborum-significatu",
+          "reader": "buscador-facsimiles-clasicos.html?obra=festo-verborum-significatu",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "author": "Marciano Capela",
+      "title": "De nuptiis Philologiae et Mercurii",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "marciano-capela-nuptiis",
+          "reader": "buscador-facsimiles-clasicos.html?obra=marciano-capela-nuptiis",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "author": "Nonio Marcelo",
+      "title": "De compendiosa doctrina",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "nonio-marcelo-doctrina",
+          "reader": "buscador-facsimiles-clasicos.html?obra=nonio-marcelo-doctrina",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "author": "Paladio",
+      "title": "Opus agriculturae",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "índice invertido R2 declarado; OCR no revisado",
+      "facsimileReaders": [
+        {
+          "editionId": "paladio-opus-agriculturae",
+          "reader": "buscador-facsimiles-clasicos.html?obra=paladio-opus-agriculturae",
+          "textKind": "OCR por página, sin cotejo filológico",
+          "bibliographicIdentity": "metadatos del catálogo de ediciones R2"
+        }
+      ]
+    }
+  ],
+  "needsTextOrVerifiableFacsimile": [
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "vegetius-epitoma",
+      "author": "Vegecio",
+      "title": "Epitoma rei militaris",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "originalLanguage": "grc",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    },
+    {
+      "id": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "originalLanguage": "la",
+      "editionSearchStatus": "sin transcripción textual registrada",
+      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+    }
+  ],
+  "r2IndexAuditTimestamp": "2026-11-15T04:06:16.355038+00:00",
+  "r2IndexDeclared": true
+}
