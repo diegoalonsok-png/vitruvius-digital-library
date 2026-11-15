@@ -87,6 +87,13 @@ async function render(query){
    sourceRows.forEach((row,i)=>{if(i)provenance.append(" · ");provenance.append(A(row.version+" · Apéndice T, p. "+row.page,row.pdf));});
   }else provenance.append("Referencias textuales indicadas arriba; revisar identificadores en el Apéndice T.");
   verified.append(provenance);
+  if(e.anchorEvidence){
+   const anchorLine=E("p",null,"bude-note");
+   anchorLine.append("LECTURA CONTEXTUAL LOCALIZADA EN H, f. "+e.anchorEvidence.folio+": ");
+   const fragment=E("i",e.anchorEvidence.fragment);fragment.lang="la";anchorLine.append(fragment);
+   anchorLine.append(". "+e.anchorEvidence.interpretation);
+   verified.append(anchorLine);
+  }
   if(e.imageInspection){
    const observed=E("p",null,"bude-note");
    observed.append("FOLIO EXAMINADO · SIN LECTURA CERTIFICADA: "+e.imageInspection.warning+" ");
