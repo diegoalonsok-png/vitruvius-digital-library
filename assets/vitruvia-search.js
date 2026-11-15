@@ -223,12 +223,12 @@ function liveManuscripts(q){
  }
  for(const ms of S.witnesses){
   const titles=(ms.workIds||[]).map(id=>S.works.find(w=>w.id===id)).filter(Boolean);
-  const description=[ms.title,ms.shelfmark,ms.library,ms.date,ms.coverage,...titles.flatMap(w=>[w.title,w.author,...(w.aliases||[])])].join(" ");
+  const description=[ms.title,ms.shelfmark,ms.library,ms.date,ms.coverage,...(ms.id==="vitruvius-h"?["Codex H","Codex H Vitruvio","Codex H Vitruvius","Codex Harleianus","Harley 2767"]:[]),...titles.flatMap(w=>[w.title,w.author,...(w.aliases||[])])].join(" ");
   const belongs=(ms.workIds||[]).some(id=>workIds.has(id));
   const rating=score(description,q,false)+(belongs?80:0),nameRating=score(ms.title+" "+ms.shelfmark,q,false);
   if(rating<3)continue;
   const target=titles.find(w=>workIds.has(w.id))||titles[0];
-  const exact=norm(ms.shelfmark)===norm(q)||norm(ms.title)===norm(q);
+  const exact=norm(ms.shelfmark)===norm(q)||norm(ms.title)===norm(q)||(ms.id==="vitruvius-h"&&/^(?:codex|codice|códice)\s+h(?:\s+(?:vitruvio|vitruvius))?$/i.test(q.trim()));
   const primary=belongs&&(ms.workIds||[]).some(id=>earliest.get(id)?.id===ms.id);
   out.push({type:"manuscript",workIds:ms.workIds||[],title:ms.title+" · "+ms.shelfmark,author:ms.library,excerpt:ms.coverage,
    meta:"TESTIMONIO MANUSCRITO · "+(ms.date||"sin fecha documentada")+" · "+(ms.shelfmark||"sin signatura")+" · "+(ms.manifest?"IIIF":"visor institucional"),
