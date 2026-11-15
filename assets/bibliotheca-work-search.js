@@ -122,11 +122,14 @@ const heritageLink=raw=>{
 };
 const periodLabel=w=>historicalPeriods.find(([id])=>id===periodOfWork(w))?.[1]||"";
 let model=null,loadedAliases={};
+const optionalArticles=/^(?:el|la|los|las|le|les|l|the|a|an|der|die|das|il|lo|gli|i|un|una|uno)\s+/;
+const titleKey=value=>normal(value).replace(optionalArticles,"");
+const dedupQuery=query=>[...new Set([normal(query),titleKey(query),roman(query),titleKey(roman(query))].filter(Boolean))];
 function rank(w,query){
- const qs=[normal(query),roman(query)],fields=w.forms||[];
+ const qs=dedupQuery(query),fields=[...(w.forms||[]),w.title||""];
  let best=0;
  for(const field of fields){
-  for(const txt of [normal(field),roman(field)]){
+  for(const txt of [normal(field),titleKey(field),roman(field),titleKey(roman(field))]){
    if(!txt)continue;
    for(const q of qs){
     if(!q)continue;
@@ -177,7 +180,7 @@ function render(){
    if(t)addLink(actions,"Leer traducción · "+(lang[t.language]||t.language),safeReader(t.reader));
    if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
-   if(!w.newWork)addLink(actions,"Ficha académica",workLink(w.id));
+   if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
    li.append(actions);list.append(li);
   }
   if(all.length>limit){more.hidden=false;more.textContent="Mostrar más obras ("+(all.length-limit)+" restantes)"}
@@ -208,7 +211,7 @@ function render(){
   if(translation)addLink(actions,"Leer traducción · "+(lang[translation.language]||translation.language),safeReader(translation.reader));
   if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
   if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
-  if(!w.newWork)addLink(actions,"Ficha académica",workLink(w.id));
+  if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
   item.append(actions);list.append(item);
  }
  if(found.length>limit){more.hidden=false;more.textContent="Mostrar más ("+(found.length-limit)+" restantes)"}
@@ -221,8 +224,17 @@ function mount(parent,data){
   versions:[],facsimile:null,newWork:false
  });
  for(const e of data.registry.entries){
-  const w=index.get(e.workId);if(!w)continue;
-  w.forms.push(e.title||"");if(safeReader(e.reader))w.versions.push(e);
+  let w=index.get(e.workId);
+  if(!w){
+   // Cataloguing may lag behind a readable transcription: never hide it.
+   if(!/^[a-z0-9-]+$/.test(e.workId||"")||!e.title||!e.author)continue;
+   w={id:e.workId,title:e.title,author:e.author,genre:"",dating:"",
+     forms:[e.title,e.author,e.workId.replaceAll("-"," ")],
+     versions:[],facsimile:null,newWork:false,registryOnly:true};
+   index.set(e.workId,w);
+  }
+  w.forms.push(e.title||"",e.author||"");
+  if(safeReader(e.reader)&&!w.versions.some(v=>v.language===e.language&&v.reader===e.reader))w.versions.push(e);
  }
  const section=make("section",null,"bws");section.id="bibliotheca-work-search";
  section.setAttribute("aria-labelledby","bws-title");
