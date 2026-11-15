@@ -8,6 +8,7 @@ const require=createRequire(import.meta.url);
 const P=require("../assets/vitruvia-philology.js");
 const cat=JSON.parse(readFileSync("data/r2/catalogo-clasicos-r2.json","utf8"));
 const REQUIRED=process.argv.includes("--required");
+const FULL=process.argv.includes("--full");
 const BASE="https://libros.vitruvius-digital-library.org/clasicos/indice/";
 const WANTED=[
  "apollodorus-poliorcetics","athenaeus-mechanicus","ptolemy-geographia",
@@ -16,7 +17,7 @@ const WANTED=[
  "rose-vitruvius-1899","antologia-griega"
 ];
 const rows=new Map(cat.items.map(e=>[e.id,e]));
-const refs=WANTED.filter(id=>rows.has(id));
+const refs=FULL?[...rows.keys()]:WANTED.filter(id=>rows.has(id));
 const greek=/[\u0370-\u03ff\u1f00-\u1fff]/u;
 const codepoints=s=>[...s].map(c=>c.codePointAt(0).toString(16)).join("-");
 const stem=word=>P.stem(word,greek.test(word)?"greek":"latin");
@@ -27,7 +28,7 @@ const read=async(url)=>{
 };
 const report={schema:"vdl-bibliotheca-lexical-live-v1",generated:new Date().toISOString(),
  method:"GET de OCR en R2, GET de fragmentos invertidos R2; comparación de palabras atestiguadas y páginas digitales con el mismo normalizador del visor",
- limitations:"Muestra selectiva de obras y raíces; no acredita todos los 2.510 fragmentos, ni lematización filológica, ni exactitud paleográfica del OCR.",
+ limitations:"El modo --full verifica tres raíces del OCR por edición catalogada; no implica validación total de todas las raíces ni lematización filológica, ni exactitud paleográfica del OCR.",
  cataloguedEditions:cat.items.length,sampledEditionIds:refs,records:[],readerEndpoints:[],
  unexpectedIndexedIds:[],errors:[],warnings:[],status:"checking"};
 let index=null;
@@ -59,18 +60,29 @@ if(index){
    if(ocr.obra!==id||!Array.isArray(ocr.paginas))throw Error("OCR no corresponde a ID de obra o carece de páginas");
    item.ocrPages=ocr.paginas.length;
    if(e.paginas && e.paginas!==ocr.paginas.length)throw Error("Cantidad de páginas OCR difiere del catálogo");
-   const probes=new Map();
-   for(let i=0;i<Math.min(ocr.paginas.length,18)&&probes.size<3;i++){
-    const words=P.fold(ocr.paginas[i]||"").split(" ").filter(w=>w.length>=5&&w.length<=30);
-    for(const word of words){
+   // La primera aparición de cada raíz queda siempre entre las 24 páginas
+   // indexadas para dicha raíz. Se prefiere cuerpo del volumen, no portadas.
+   const firstOccurrences=new Map();
+   const priority=new Set(["symmetria","architectura","natura","corpus","templum","tempus",
+    "opus","aedificium","musica","philosophia","logos","theoria","ratio",
+    "λογος","λογου","θεος","ναος","πολις","μετρον","τεχνη","φιλια"]);
+   const boilerplate=new Set(["digitized","google","internet","archive","library",
+    "copyright","university","scanner","scanning","original","books","volume","printed"]);
+   const scanned=FULL?ocr.paginas.length:Math.min(ocr.paginas.length,150);
+   for(let i=0;i<scanned;i++){
+    for(const word of P.fold(ocr.paginas[i]||"").split(" ")){
+     if(word.length<5||word.length>30||boilerplate.has(word))continue;
      const root=stem(word);
-     if(!root||root.length<3||probes.has(root))continue;
-     probes.set(root,{word,root,page:i+1});
-     if(probes.size>=3)break;
+     if(!root||root.length<4||firstOccurrences.has(root))continue;
+     firstOccurrences.set(root,{word,root,page:i+1,
+      score:(priority.has(word)?100:0)+(e.lengua==="grc"&&greek.test(word)?55:0)
+        +(i>=8?20:0)+(word.length>=7?5:0)});
     }
    }
-   if(probes.size<2)throw Error("OCR sin vocabulario suficiente en las primeras 18 páginas");
-   for(const probe of probes.values()){
+   const probes=[...firstOccurrences.values()].sort((a,b)=>b.score-a.score).slice(0,3);
+   item.originalScriptProbes=probes.filter(p=>e.lengua==="grc"?greek.test(p.word):!greek.test(p.word)).length;
+   if(probes.length<2)throw Error("OCR sin vocabulario suficiente para cotejar");
+   for(const probe of probes){
     item.lexicalTokensTested++;
     try{
      const f=await fragment(probe.root);
@@ -102,7 +114,7 @@ for(const url of endpoints){
   report.warnings.push("No se pudo abrir visor público: "+url+" · "+e.message)}
  report.readerEndpoints.push(row);
 }
-report.counts={testedEditions:report.records.length,testedWords:report.records.reduce((n,r)=>n+r.lexicalTokensTested,0),
+report.counts={cataloguedEditions:cat.items.length,fullCoverageRequested:FULL,testedEditions:report.records.length,testedWords:report.records.reduce((n,r)=>n+r.lexicalTokensTested,0),
  locatedPages:report.records.reduce((n,r)=>n+r.lexicalMatches.length,0),
  errors:report.errors.length,warnings:report.warnings.length,
  indexEditions:report.indexEntries||0,indexFragments:report.indexFragments||0};
