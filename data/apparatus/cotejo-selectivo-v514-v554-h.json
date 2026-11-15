@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice. Control visual de H ff. 1v y 4v en las secuencias ea nascitur & fabrica y uti fuerit Aristarchus: las siglas de aparato histórico se mantienen diferenciadas del testimonio directo del códice. Observación visual adicional de H f. 2v, «civitate declarata», cotejada con V514/V554 y el extracto OCR del aparato de Krohn, manteniendo estado independiente para el impreso.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice. Control visual de H ff. 1v y 4v en las secuencias ea nascitur & fabrica y uti fuerit Aristarchus: las siglas de aparato histórico se mantienen diferenciadas del testimonio directo del códice. Observación visual adicional de H f. 2v, «civitate declarata», cotejada con V514/V554 y el extracto OCR del aparato de Krohn, manteniendo estado independiente para el impreso. Se han cotejado visualmente las secuencias de H ff. 4r, 5v y 7r de I.1.11, I.1.17 e I.2.4, anotadas como aparatos positivos parciales con omisiones distinguidas de suplementos editoriales.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -116,7 +116,28 @@
         "V554-T-p1110-217"
       ],
       "note": "El Apéndice T describe se como suplemento transmitido en el texto editado y ausente según la lectura reportada de H; requiere inspección del folio.",
-      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+      "status": "secuencia de H cotejada visualmente sobre fotografía local; aparatos históricos pendientes de control de facsímil",
+      "verifiedAutopsy": true,
+      "evidenceClass": "visual_folio_reading",
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "4r",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_015_f-4r.jpg",
+        "observedReading": "non puto posse iuste repente profiteri architectos",
+        "verification": "lectura visual puntual de la fotografía local del folio",
+        "note": "En f. 4r se reconoce «non puto posse iuste repente profiteri architectos», sin se entre posse e iuste. Los corchetes angulares identifican suplemento editorial en V514. La identificación de quien lo introdujo requiere control adicional."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "1.1.11",
+        "selected": "posse ⟨se⟩ iuste",
+        "selectedAttribution": "Kur. (edición V514)",
+        "variant": "non puto posse iuste repente profiteri architectos",
+        "variantAttribution": "H (ex imagine)",
+        "folio": "4r",
+        "display": "‖ I.1.11 posse ⟨se⟩ iuste Kur. (suppl., sec. app. T) : posse iuste H (f. 4r, ex imagine; om. se) ‖",
+        "caution": "Lectura visual puntual de la secuencia posse iuste; se no figura en ese tramo. No se atribuye suplemento a Kr. sin evidencia específica."
+      }
     },
     {
       "locus": "1.1.13",
@@ -163,7 +184,28 @@
         "V554-T-p1110-223"
       ],
       "note": "El suplemento mechanicas es consignado en ambos aparatos; no se debe convertir la omisión reportada en lectura autóptica sin inspección.",
-      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+      "status": "secuencia de H cotejada visualmente sobre fotografía local; aparatos históricos pendientes de control de facsímil",
+      "verifiedAutopsy": true,
+      "evidenceClass": "visual_folio_reading",
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "5v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_018_f-5v.jpg",
+        "observedReading": "multas res organicas gnomonicas",
+        "verification": "lectura visual puntual de la fotografía local del folio",
+        "note": "En las últimas líneas de f. 5v se lee «multas res organicas gnomonicas» sin mechanicas. Rose OCR del mismo locus refiere «organicas gnomonicas» en distintos testimonios y correcciones, pero no respalda automáticamente la atribución de este suplemento."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "1.1.17",
+        "selected": "multas res ⟨mechanicas,⟩ organicas",
+        "selectedAttribution": "Kur. (edición V514)",
+        "variant": "multas res organicas gnomonicas",
+        "variantAttribution": "H (ex imagine)",
+        "folio": "5v",
+        "display": "‖ I.1.17 multas res ⟨mechanicas,⟩ organicas Kur. (suppl., sec. app. T) : multas res organicas H (f. 5v, ex imagine; om. mechanicas) ‖",
+        "caution": "La ausencia de mechanicas en la secuencia localizada de H está comprobada puntualmente; cotejo del aparato impreso de Rose pendiente."
+      }
     },
     {
       "locus": "1.2.4",
@@ -176,7 +218,28 @@
         "V554-T-p1110-227"
       ],
       "note": "Las ediciones identifican capituli como suplemento editorial frente a omisión atribuida a H. La forma del suplemento se registra sin normalizar silenciosamente.",
-      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+      "status": "secuencia de H cotejada visualmente sobre fotografía local; aparatos históricos pendientes de control de facsímil",
+      "verifiedAutopsy": true,
+      "evidenceClass": "visual_folio_reading",
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "7r",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_021_f-7r.jpg",
+        "observedReading": "ballista e foramine quod Graeci peritreton vocitant",
+        "verification": "lectura visual puntual de la fotografía local del folio",
+        "note": "En f. 7r se lee «ballista e foramine quod Graeci …» sin capituli entre foramine y quod. Krohn OCR: «capituli add. Kr», y V514/V554 atribuyen la omisión de H; la lectura del impreso todavía requiere control."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "1.2.4",
+        "selected": "ballista e foramine ⟨capituli⟩",
+        "selectedAttribution": "Kur. (edición V514)",
+        "variant": "ballista e foramine quod Graeci peritreton vocitant",
+        "variantAttribution": "H (ex imagine)",
+        "folio": "7r",
+        "display": "‖ I.2.4 ballista e foramine ⟨capituli⟩ Kur. (suppl. Kr., sec. app. T; cf. Kr. OCR) : ballista e foramine quod H (f. 7r, ex imagine; om. capituli) ‖",
+        "caution": "Ausencia de capituli verificada sobre imagen H. Atribución de añadido a Krohn reportada en V514/V554 y en OCR, no certificada desde el facsímil impreso."
+      }
     },
     {
       "locus": "1.praef.2",
