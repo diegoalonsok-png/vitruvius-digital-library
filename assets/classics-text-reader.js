@@ -593,7 +593,14 @@ $("locus-form")?.addEventListener("submit",event=>{
  select(i);$("passages").scrollIntoView({block:"nearest"});
 });
 $("language").addEventListener("change",e=>swap(e.target.value));
-$("find").addEventListener("click",()=>{if(!data)return;setQuery(input.value);resultPage=0;renderSearch();select(results.length?results[0].i:active)});
+$("find").addEventListener("click",()=>{
+ if(!data)return;
+ setQuery(input.value);resultPage=0;renderSearch();
+ // Stay on the selected locus when it contains a real match. Jump to the
+ // first occurrence only if the current passage has no matching form.
+ const selected=results.some(row=>row.i===active)?active:results.length?results[0].i:active;
+ select(selected);
+});
 function syncSearchModeButtons(){
  for(const [mode,id] of [["literal","mode-exact"],["lexical","mode-expanded"]]){
   $(id)?.setAttribute("aria-pressed",String(searchMode?.value===mode));
