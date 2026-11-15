@@ -1,6 +1,6 @@
 {
   "schema": "vdl-r2-orphan-ingestions-audit-v1",
-  "generated": "2026-11-15T04:06:19.840670+00:00",
+  "generated": "2026-11-15T04:08:23.999486+00:00",
   "status": "checked-with-pending-editorial-review",
   "method": "S3 LIST + HEAD + primeros 16 KiB del OCR, sin descarga del PDF",
   "limitations": "Metadatos S3 y prefijo OCR no comprueban identidad bibliográfica, integridad SHA real ni derechos. Ningún objeto se borra ni se incorpora automáticamente al catálogo.",
