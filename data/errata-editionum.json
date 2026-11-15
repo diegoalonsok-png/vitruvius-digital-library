@@ -118,7 +118,7 @@
     "status",
     "severity"
   ],
-  "note": "6 erratas de libro documentadas, 3 casos de revisión y 6 correcciones digitales separadas. Los originales publicados se conservan y los cambios digitales requieren comprobación de publicación.",
+  "note": "6 erratas de libro documentadas, 3 casos de revisión y 8 correcciones digitales separadas. Los originales publicados se conservan.",
   "review_queue": [
     {
       "id": "V297-9.2.1-duplicacion",
@@ -201,6 +201,22 @@
       "status": "corregido_en_codigo",
       "correction": "Se traslada la carga del buscador unificado fuera de la cadena de impresión. El cierre de script y el salto de línea incrustados rompían el JavaScript de la portada.",
       "evidence": "Fallo de arranque reproducido con test-page-boot.mjs sobre la base dc4b79b7; corregido sin retirar la búsqueda unificada ni la impresión."
+    },
+    {
+      "id": "APPARATUS-VENUSTAS-INFLECTIONS",
+      "title": "Búsqueda de venustas y sus formas",
+      "date": "2026-11-15",
+      "status": "corregido_en_codigo",
+      "correction": "La normalización v/u se aplica también al catálogo de lemas. venustas, uenustas, belleza y beauty recuperan venustatis y sincronizan I.3.2.",
+      "evidence": "Fallo reproducido en GitHub Actions 43750772040; siete casos de sincronización y cuatro variantes de entrada comprobados contra el corpus real."
+    },
+    {
+      "id": "METHODOLOGY-SHARED-ANALYTICS",
+      "title": "Configuración compartida de la página metodológica",
+      "date": "2026-11-15",
+      "status": "corregido_en_codigo",
+      "correction": "La metodología del catálogo incorpora una sola configuración y un solo cargador de medición compartidos, que conservan las preferencias de privacidad existentes.",
+      "evidence": "Fallo de cobertura reproducido en GitHub Actions 43750771992, sin cambiar la política de privacidad ni el destino de medición."
     }
   ]
 }
