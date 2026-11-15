@@ -183,6 +183,25 @@ function cita(){const c=$("cita");const f=datos.ficha;
   const a2=document.createElement("a");a2.href=f.fuente;a2.target="_blank";a2.rel="noopener";a2.textContent="Internet Archive";
   const a3=document.createElement("a");a3.href="bibliotheca-ampliada.html?q="+encodeURIComponent(f.autor);a3.textContent="Ficha en Bibliotheca ampliada";
   enl.append(a1,document.createTextNode(" · "),a2,document.createTextNode(" · "),a3);
+  // Los links de descarga sólo aparecen en ediciones catalogadas como dominio público.
+  // El navegador puede abrir el PDF en otra pestaña si el servidor remoto no fuerza descarga.
+  const libre=/dominio p[úu]blico/i.test(String(f.derechos||""));
+  const permitido=url=>{try{const u=new URL(url,location.href);
+   return u.protocol==="https:"&&(u.hostname==="libros.vitruvius-digital-library.org"||u.origin===location.origin)}
+   catch{return false}};
+  if(libre&&permitido(f.pdf)){
+   const descargar=document.createElement("a");
+   descargar.href=f.pdf;descargar.download=f.id+".pdf";descargar.target="_blank";
+   descargar.rel="noopener noreferrer";descargar.textContent="Descargar PDF libre";
+   enl.append(document.createTextNode(" · "),descargar);
+  }
+  if(libre&&permitido(f.texto)){
+   const descargar=document.createElement("a");
+   descargar.href=f.texto;descargar.download=f.id+"-ocr.json";descargar.target="_blank";
+   descargar.rel="noopener noreferrer";descargar.textContent="Descargar texto OCR (JSON)";
+   enl.append(document.createTextNode(" · "),descargar);
+  }
+
   c.append(b,linea,der,evidence,enl);
  }else{c.hidden=false;c.textContent="Facsímil del repositorio: "+f.path.split("/").pop()}}
 function pintarFolio(){if(!datos)return;const p=datos.paginas.find(x=>x.page===pagina)||datos.paginas[0];if(!p)return;
