@@ -15,7 +15,9 @@ function section(title){const s=E("section");s.append(E("h3",title));root.append
 async function render(query){
  const locus=norm(query),position=loci.indexOf(locus),token=++sequence;
  if(position<0){status.textContent="Locus no indexado: "+query;return}
- $("bude-locus").value=fmt(locus);$("bude-prev").disabled=position===0;$("bude-next").disabled=position===loci.length-1;
+ $("bude-locus").value=fmt(locus);
+ const summarySearch=$("q");if(summarySearch&&summarySearch.value!==locus){summarySearch.value=locus;summarySearch.dispatchEvent(new Event("input",{bubbles:true}));}
+ $("bude-prev").disabled=position===0;$("bude-next").disabled=position===loci.length-1;
  $("bude-open-reader").href="apparatus-bude.html?locus="+encodeURIComponent(locus);
  $("bude-open-h").href="codex-h-folios-local.html?locus="+encodeURIComponent(locus);
  const u=new URL(location.href);u.searchParams.set("locus",locus);history.replaceState(null,"",u);
@@ -64,6 +66,9 @@ async function render(query){
  data={es,fr,en,comparison,appendix,author};loci=es.passages.map(p=>p.locus);
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
+ // Unify the legacy tabular finder with the locus-specific apparatus.
+ $("q")?.addEventListener("change",()=>{const q=norm($("q").value);if(loci.includes(q))render(q)});
+
  $("bude-prev").addEventListener("click",()=>{const i=loci.indexOf(norm($("bude-locus").value));if(i>0)render(loci[i-1])});
  $("bude-next").addEventListener("click",()=>{const i=loci.indexOf(norm($("bude-locus").value));if(i>=0&&i+1<loci.length)render(loci[i+1])});
 }catch(e){status.textContent="No se pudo cargar el aparato comparativo: "+e.message}})();
