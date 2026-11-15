@@ -6,14 +6,19 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: bibliotheca-audit-index-github-r2
+  group: vdl-classics-publication-main
   cancel-in-progress: false
 jobs:
   audit:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
+      - name: Sincronizar base de trabajo desde main
+        run: |
+          git fetch --quiet origin main
+          git checkout -B vdl-publication origin/main
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
@@ -41,7 +46,8 @@ jobs:
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Bibliotheca: conciliación diaria de índices GitHub/R2"
           for i in 1 2 3 4 5; do
-            git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0
+            if git pull --rebase -q origin main && git push -q origin HEAD:main; then exit 0; fi
+            if test -d .git/rebase-merge || test -d .git/rebase-apply; then git rebase --abort; exit 1; fi
             sleep 8
           done
           exit 1
