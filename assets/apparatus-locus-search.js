@@ -81,7 +81,7 @@ function init(rows,openLocus,syncTerm){
    return mode.value==="all"?needle.every(t=>present.has(t)):needle.some(t=>present.has(t));
   });
   syncTerm?.(needle);
-  if(found.length){openLocus(found[0].locus);$("#triple-title")?.scrollIntoView({behavior:"smooth",block:"start"})}
+  if(found.length)openLocus(found[0].locus);
   status.textContent=found.length+" loci encontrados en el latín V514"+(canonical!==tokens[0]?" · concepto latino: "+canonical:"")+". Ordenados por libro y pasaje. No se incluyen coincidencias OCR.";
   draw();
  }
