@@ -42,7 +42,8 @@
     "check:source-errata": "node scripts/test-source-errata.mjs",
     "check:latin-cotejo": "node scripts/test-latin-five-sources.mjs",
     "check:collatio-autoptica": "node scripts/test-collatio-autoptica-h.mjs",
-    "audit:bibliotheca-r2": "node scripts/audit-bibliotheca-r2-sync.mjs --remote"
+    "audit:bibliotheca-r2": "node scripts/audit-bibliotheca-r2-sync.mjs --remote",
+    "check:r2-outages": "node scripts/test-r2-search-failures.mjs"
   },
   "devDependencies": {
     "jsdom": "^31.0.0"
