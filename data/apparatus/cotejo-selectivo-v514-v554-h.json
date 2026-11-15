@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -14,7 +14,15 @@
         "V554-T-p1103-210"
       ],
       "note": "El texto editado presenta ex fabrica; el Apéndice T registra para H una lectura tentativa con & (ut vid.). El signo de lectura debe comprobarse directamente en el folio.",
-      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+      "status": "contexto de H localizado; lectura variante pendiente de certificar por ampliación",
+      "imageInspection": {
+        "folio": "1v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_010_f-1v.jpg",
+        "inspection": "fotografía local de alta resolución abierta y examinada",
+        "warning": "Comienzo del capítulo I, rúbrica De architectis instituendis y frase sobre fabrica y ratiocinatio localizados; lectura precisa de ex frente a & no certificada."
+      },
+      "verifiedAutopsy": false,
+      "evidenceClass": "visual_context_not_lemma"
     },
     {
       "locus": "1.1.5",
@@ -27,7 +35,15 @@
         "V554-T-p1110-214"
       ],
       "note": "Ambas ediciones consignan esta divergencia y mantienen deflagrata por coherencia contextual. La atribución paleográfica de declarata es tentativa.",
-      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+      "status": "contexto de H localizado; lectura variante pendiente de certificar por ampliación",
+      "imageInspection": {
+        "folio": "2v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_012_f-2v.jpg",
+        "inspection": "fotografía local de alta resolución abierta y examinada",
+        "warning": "Se localizan en el folio las menciones de la civitas y de «posteris nota poena». La lectura de deflagrata/declarata exige ampliación para fijar la secuencia exacta."
+      },
+      "verifiedAutopsy": false,
+      "evidenceClass": "visual_context_not_lemma"
     },
     {
       "locus": "1.1.5",
@@ -40,7 +56,15 @@
         "V554-T-p1110-215"
       ],
       "note": "El comentario autoral relaciona la exclusión de nota con la decisión editorial de Krohn. Los corchetes identifican intervención editorial, no omisión automáticamente comprobada en H.",
-      "status": "cotejo editorial bilingüe; interpretación editorial"
+      "status": "contexto de H localizado; lectura variante pendiente de certificar por ampliación",
+      "imageInspection": {
+        "folio": "2v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_012_f-2v.jpg",
+        "inspection": "fotografía local de alta resolución abierta y examinada",
+        "warning": "Se localizan en el folio las menciones de la civitas y de «posteris nota poena». La lectura de deflagrata/declarata exige ampliación para fijar la secuencia exacta."
+      },
+      "verifiedAutopsy": false,
+      "evidenceClass": "visual_context_not_lemma"
     },
     {
       "locus": "1.1.11",
@@ -66,7 +90,15 @@
         "V554-T-p1110-220"
       ],
       "note": "Las dos ediciones mantienen la lección editorial frente a la lectura atribuida a H, cuya identificación visual debe comprobarse.",
-      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+      "status": "contexto de H localizado; lectura variante pendiente de certificar por ampliación",
+      "imageInspection": {
+        "folio": "4v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_016_f-4v.jpg",
+        "inspection": "fotografía local de alta resolución abierta y examinada",
+        "warning": "Se identificó el pasaje en el que se menciona a Aristarchus, pero la desinencia de fuerat/fuerit todavía no se da por certificada."
+      },
+      "verifiedAutopsy": false,
+      "evidenceClass": "visual_context_not_lemma"
     },
     {
       "locus": "1.1.17",
