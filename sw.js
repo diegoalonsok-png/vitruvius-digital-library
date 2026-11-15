@@ -6,7 +6,7 @@
    - Datos del Lexicon con huella (?v=): caché primero (inmutables hasta que cambia la huella).
    - JS/CSS versionados (?v=): caché primero. Imágenes y PDF: caché primero con límite.
    - Recursos de otros dominios: no se interceptan. */
-const VERSION="vdl-20261114-audit-readers-r52";
+const VERSION="vdl-20261115-apparatus-refresh-r53";
 const SHELL="shell-"+VERSION,PAGES="pages-"+VERSION,DATA="data-"+VERSION,LEXDATA="lexdata-"+VERSION,STATIC="static-"+VERSION,MEDIA="media-"+VERSION;
 const CORE=["./","index.html","offline.html","vitruvia.html","lector-bilingue.html","bibliotheca-graeca-latina.html","classics-text-reader.html","termino.html","laboratorio-humanidades.html","mapa-general.html",
  "manifest.webmanifest","vitruvia.webmanifest","instalar-apps.html","assets/app-icons/vitruvia-192.png","assets/app-icons/vitruvia-512.png","assets/app-icons/vitruvia-apple-touch-icon.png","assets/favicon.svg","assets/app-icons/icon-192.png","assets/app-icons/icon-512.png","assets/pwa.js"];
@@ -91,7 +91,7 @@ async function pageResponse(event){
  const page=name.endsWith('.html')?name:name+'.html';
  const livePages=new Set(['vitruvia.html','vitruvia-lexicon.html','bibliotheca-graeca-latina.html',
   'classics-text-reader.html','classics-parallel-reader.html','classics-simple-parallel.html',
-  'lector-bilingue.html','lectura-comparada.html','rose-1899.html','krohn-1912.html',
+  'lector-bilingue.html','lectura-comparada.html','apparatus-bude.html','rose-1899.html','krohn-1912.html',
   'harleianus.html','codex-h-folios-local.html','buscador-facsimiles-clasicos.html']);
  if(livePages.has(page)){
   try{
