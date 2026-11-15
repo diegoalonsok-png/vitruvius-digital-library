@@ -111,7 +111,16 @@ for(const term of ["symmetria","firmitas","decor","λόγος","συμμετρί
  const query={term,status:"not-checked",indexedEditions:0,validatedPage:null};
  try{
   const word=P.fold(term).split(" ").find(Boolean);
-  const root=stem(word),indexFragment=await fragment(root);
+  const root=stem(word);
+  let indexFragment=null;
+  try{indexFragment=await fragment(root)}
+  catch(e){
+   if(/HTTP 404\\b/.test(e.message)){
+    query.root=root;query.status="no-attested-match-in-index";
+    report.lexicalQueries.push(query);continue;
+   }
+   throw e;
+  }
   const entries=indexFragment.raices?.[root]||{};
   const inCatalogue=Object.keys(entries).filter(id=>rows.has(id));
   query.root=root;query.indexedEditions=inCatalogue.length;
