@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-federated-status-v1",
-  "generated": "2026-11-15T03:53:37.422Z",
+  "generated": "2026-11-15T03:54:21.497Z",
   "methodology": "Cruce de archivos GitHub y manifiestos R2. No acredita disponibilidad HTTP ni cotejo autóptico. El índice es léxico por raíces/conceptos, no semántica editorial validada.",
   "summary": {
     "masterWorks": 271,
@@ -18,8 +18,8 @@
     "worksWithoutOriginal": 57,
     "uncataloguedLocalTexts": 0,
     "r2AdditionalEditionRecords": 10,
-    "r2PendingEditionRecords": 1,
-    "unlinkedR2Editions": 1,
+    "r2PendingEditionRecords": 0,
+    "unlinkedR2Editions": 0,
     "candidateEditionsNotInR2": 44,
     "externalMetadataPending": 49,
     "liveR2ObjectCheck": true,
@@ -30,15 +30,12 @@
   "critical": [],
   "issues": [
     "Índice facsimilar declara 119 obras frente a 117 registros PDF; identificar la diferencia en fragmentos.json",
-    "1 ediciones R2 con vínculo pendiente",
     "Hay objetos PDF/OCR en R2 sin ficha en el catálogo actual. No borrarlos: revisar su procedencia.",
     "El índice menciona 2 ID(s) sin entrada PDF actual; revisar antes de eliminar o fusionar."
   ],
   "pending": {
     "uncataloguedLocalTexts": [],
-    "unlinkedR2Edits": [
-      "longo-dafnis-es"
-    ],
+    "unlinkedR2Edits": [],
     "withoutText": [
       {
         "id": "seneca-naturales",
@@ -951,7 +948,7 @@
     ]
   },
   "r2LiveEvidence": {
-    "generated": "2026-11-15T03:53:37.629910+00:00",
+    "generated": "2026-11-15T03:54:21.654144+00:00",
     "status": "checked-with-discrepancies",
     "indexExtraIds": [
       "boecio-institutione-musica",
