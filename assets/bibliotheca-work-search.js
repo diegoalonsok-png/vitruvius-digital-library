@@ -159,7 +159,7 @@ function mount(parent,data){
  const section=make("section",null,"bws");section.id="bibliotheca-work-search";
  section.setAttribute("aria-labelledby","bws-title");
  const title=make("h3","Buscar obras clásicas");title.id="bws-title";
- const subtitle=make("p","Encuentre obras por autor o título, en griego, latín, castellano, inglés o francés. Búsqueda en el catálogo, no dentro de los pasajes.","bws-intro");
+ const subtitle=make("p","Índice académico por autor, título, género antiguo y siglo de composición (a. C. / d. C.). Los filtros no confunden la fecha de la obra con la del manuscrito o edición. Los datos no determinados permanecen sin atribución cronológica.","bws-intro");
  const form=make("form");form.setAttribute("role","search");form.setAttribute("aria-label","Búsqueda de obras clásicas");
  const label=make("label","Obra o autor");label.htmlFor="bws-query";
  const row=make("div",null,"bws-row");
@@ -200,7 +200,10 @@ function mount(parent,data){
   const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
   b.addEventListener("click",()=>{model.letter=l==="Todos"?"":l;model.limit=40;alphabet.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});alphabet.append(b);
  }
- section.append(title,subtitle,form,filters,alphabet,region,help);
+ const standards=make("p",null,"bws-help");
+ standards.append("Criterios editoriales: datación de composición documentada; género descriptivo y revisable; título original y variantes identificados; referencias Chicago 18 (notas y bibliografía). ");
+ addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
+ section.append(title,subtitle,form,filters,alphabet,standards,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
  model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,languageFilter,sortFilter,letter:"",limit:40};
