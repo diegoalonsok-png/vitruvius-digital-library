@@ -71,18 +71,58 @@ const sources=(w)=>{const out=[];const push=(label,v)=>{if(typeof v==="string"&&
  for(const e of w.localVersions||[])push("Versión "+(langLabel[e.language]||e.language||""),e.citationChicago18);
  return out;
 };
-function title(w){
- const t=N(w.title);
- if(modern.test(w.id))return {title:t,description:"Edición editorial moderna; no se cataloga como composición antigua independiente"};
- if(w.language==="grc"){
-  const h=t.split(/\s+·\s+/)[0].trim();
-  return greek.test(h)?{title:h,description:"Título griego de referencia; cotejar variantes de la tradición editorial"}:
-   {title:null,description:"Título griego pendiente de acreditación; no se retrotraduce el título latino"};
+/* Preferir grafía original documentada. Nunca presentar la etiqueta
+   castellana como título latino ni fabricar una retrotraducción griega.
+   Los títulos uniformes son convenciones bibliográficas, no incipits. */
+const HEBREW=/[\u0590-\u05ff]/u;
+const LATIN_TITLE_BY_WORK={
+ "vitruvius":"De architectura libri decem",
+ "cicero-officiis":"De officiis",
+ "cicero-oratore":"De oratore",
+ "cicero-republica":"De re publica",
+ "caesar-gallico":"Commentarii de bello Gallico",
+ "lucretius":"De rerum natura",
+ "virgil-aeneid":"Aeneis",
+ "virgil-georgica":"Georgica",
+ "augustine-confessiones":"Confessiones",
+ "augustine-civitate-dei":"De civitate Dei",
+ "tacitus-annales":"Annales"
+};
+const GREEK_TITLE_BY_WORK={
+ "homer-iliad":"Ἰλιάς",
+ "homer-odyssey":"Ὀδύσσεια",
+ "homeric-hymns":"Ὁμηρικοὶ ὕμνοι",
+ "plato-republic":"Πολιτεία",
+ "aristotle-poetics":"Περὶ ποιητικῆς",
+ "euclid-elementa":"Στοιχεῖα",
+ "ptolemy-geographia":"Γεωγραφικὴ ὑφήγησις",
+ "athenaeus-deipnosophistae":"Δειπνοσοφισταί",
+ "apolonio-argonauticas":"Ἀργοναυτικά"
+};
+function title(w,authority){
+ const t=N(w.title),language=w.originalLanguage||w.language;
+ if(modern.test(w.id))return {title:t,language:"la",description:"Manifestación editorial moderna, no una obra antigua adicional."};
+ const candidate=N(w.bibliography?.originalTitle||w.bibliography?.titleOriginal||w.originalTitle||
+  (language==="grc"?GREEK_TITLE_BY_WORK[w.id]:language==="la"?LATIN_TITLE_BY_WORK[w.id]:null));
+ const uniform=N(authority?.uniformTitle);
+ const candidates=[candidate,uniform,t.split(/\s+·\s+/)[0].trim()].filter(Boolean);
+ if(language==="he"||language==="hbo"){
+  const found=candidates.find(x=>HEBREW.test(x));
+  return found?{title:found,language:"he",description:"Título hebreo documentado en el registro; transliteración y tradición editorial se consignan por separado."}:
+   {title:null,language:"he",description:"Denominación hebrea no acreditada por el registro consultado; no se reconstruye."};
  }
- if(w.language==="la"){
-  return {title:t.split(/\s+·\s+/)[0].trim(),description:"Título latino convencional; las rúbricas manuscritas pueden diferir"};
+ if(language==="grc"){
+  const found=candidates.find(x=>greek.test(x));
+  return found?{title:found,language:"grc",description:"Título griego uniforme documentado; puede diferir de las rúbricas manuscritas."}:
+   {title:null,language:"grc",description:"Denominación griega no documentada en las fuentes vinculadas; requiere identificación de edición."};
  }
- return {title:null,description:"Lengua original no acreditada"};
+ if(language==="la"){
+  const isLatin=s=>/^[A-Za-zÀ-ÿ\s,;:'().-]+$/.test(s)&&!/[áéíóúñ¿¡]/i.test(s);
+  const found=candidates.find(x=>isLatin(x));
+  return found?{title:found,language:"la",description:"Título latino uniforme de referencia; no se atribuye como rúbrica del manuscrito."}:
+   {title:null,language:"la",description:"Título latino no documentado de modo suficiente en este registro."};
+ }
+ return {title:null,language,description:"Lengua de composición o título original sin acreditación documental."};
 }
 function makeContext(w){
  return HIST[w.id]||("Obra clasificada como "+N(w.genre||"literatura antigua")+
@@ -295,7 +335,7 @@ function renderCriticalAuthority(dest,w,d){
  row(dest,"Alcance textual",I.description);
  row(dest,"Lugar de indexación",I.indexed?(I.storage==="auxiliary_branch"?"Índice auxiliar fuera de GitHub Pages":"Corpus local del repositorio"):"No consta original indexado");
  if(Number.isInteger(I.offsitePassages))row(dest,"Pasajes del índice auxiliar",I.offsitePassages);
- row(dest,"Trabajo ecdótico pendiente",I.action);
+ if(I.action)row(dest,"Alcance de la documentación ecdótica",I.action);
  section(dest,"Códices y testimonio más temprano acreditado");
  const first=M.earliestInVerifiedRegister;
  if(first){
@@ -395,7 +435,7 @@ function renderBibliography(dest,w){
   dest.append(html("p","cwd-muted","Cita bibliográfica completa de edición pendiente: el catálogo aún no acredita todos los elementos editoriales necesarios para Chicago 18. No se suponen editor, traductor, año, lugar ni editorial."));
  }
  const c=html("div","cwd-citation");
- const citation=[w.author,title(w).title||w.title,N(w.dating),w.id].filter(Boolean).join(" · ");
+ const citation=[w.author,title(w,d.critical.get(w.id)?.authority).title||w.title,N(w.dating),w.id].filter(Boolean).join(" · ");
  c.append(html("strong",null,"Identificación normalizada de obra (no sustituye la cita de una edición): "),
   document.createTextNode(citation));
  dest.append(c);
@@ -618,13 +658,13 @@ function renderInto(target,id,opts={}){
   target.classList.add("classic-work-dossier");target.dataset.workId=id;
   const head=html("header","cwd-head");
   head.append(html("p","cwd-kicker","BIBLIOTHECA · FICHA CRÍTICA · CHICAGO 18 · TRADICIÓN MANUSCRITA"));
-  const h=html("h2",null,w.title);h.lang=w.language==="grc"?"grc":"la";head.append(h);
+  const h=html("h2",null,w.title);h.lang=w.language==="grc"?"grc":w.language==="he"?"he":"la";head.append(h);
   row(head,"Autor del catálogo",w.author);
   const originalAuthor=w.bibliography?.originalAuthor||AUTHOR[w.author];
   if(originalAuthor){const r=html("p","cwd-row cwd-authority-name");r.append(html("strong",null,"Nombre antiguo normalizado: "));const name=html("span",null,originalAuthor);name.lang=greek.test(originalAuthor)?"grc":"la";r.append(name);head.append(r)}
-  const form=title(w);
-  if(form.title){const r=html("p","cwd-row");r.append(html("strong",null,"Título en lengua original / título uniforme: "));const span=html("i","cwd-original",form.title);span.lang=w.language==="grc"?"grc":"la";r.append(span);head.append(r)}
-  else row(head,"Título original",form.description);
+  const form=title(w,d.critical.get(w.id)?.authority);
+  if(form.title){const r=html("p","cwd-row");r.append(html("strong",null,"Título en lengua original / título uniforme: "));const span=html("i","cwd-original",form.title);span.lang=form.language||"und";r.append(span);head.append(r)}
+  else row(head,"Estado de la denominación original",form.description);
   head.append(html("p","cwd-muted",form.description));
   row(head,"Lengua",[langLabel[w.language]||w.language,w.genre].filter(Boolean).join(" · "));
   row(head,"Datación de composición",w.dating||"Sin datación consignada");
