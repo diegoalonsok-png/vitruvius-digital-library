@@ -143,14 +143,16 @@ for L in orden:
                 for a2, b2 in itertools.combinations(sorted(set(g) - {"x"}), 2):
                     acuerdo[(wid, a2, b2)] += 1
     n = len(fila.get("rose-1899", {}).get("entradas", [])) + len(fila.get("krohn-1912", {}).get("entradas", []))
-    if n or fila["v514"]:
-        fila["testigos"] = sorted({s for k in ("rose-1899", "krohn-1912") for en in fila.get(k, {}).get("entradas", []) for s in en["sigla"]}
-                                  | {s for d in fila["v514"] for s in d["sigla"] if s in ("H", "G", "E", "S")})
-        out.append(fila)
+    # Exhaustividad de navegación: todos los loci de V514, incluso sin variante documentada.
+    # Un locus sin entrada NO representa una lectura colacionada ni una ausencia de variante.
+    fila["testigos"] = sorted({s for k in ("rose-1899", "krohn-1912") for en in fila.get(k, {}).get("entradas", []) for s in en["sigla"]}
+                              | {s for d in fila["v514"] for s in d["sigla"] if s in ("H", "G", "E", "S")})
+    fila["estado"] = "entradas_documentales" if n or fila["v514"] or fila["v514SinLema"] else "sin_entrada_registrada_cotejo_pendiente"
+    out.append(fila)
 
 res = {
     "schema": "vdl-aparato-comparativo-1",
-    "fecha": "2026-11-12",
+    "fecha": "2026-11-15",
     "metodo": __doc__.strip(),
     "testimonios": {
         "H": "London, British Library, Harley MS 2767 (s. IX¹; leído folio a folio en este sitio)",
@@ -166,7 +168,9 @@ res = {
         "S": "https://bhnumerique.ville-selestat.fr/",
     },
     "recuentos": {
-        "lociConMaterial": len(out),
+        "lociConMaterial": sum(1 for f in out if f["estado"] == "entradas_documentales"),
+        "lociNavegables": len(out),
+        "lociPendientesSinEntrada": sum(1 for f in out if f["estado"] != "entradas_documentales"),
         "lociConDecisionV514": sum(1 for f in out if f["v514"] or f["v514SinLema"]),
         "entradasRose": sum(len(f.get("rose-1899", {}).get("entradas", [])) for f in out),
         "entradasKrohn": sum(len(f.get("krohn-1912", {}).get("entradas", [])) for f in out),
