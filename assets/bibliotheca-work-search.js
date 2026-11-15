@@ -45,12 +45,19 @@ function addLink(parent,text,href){
 }
 function render(){
  if(!model)return;
- const {input,list,count,more,items,limit}=model,q=input.value.trim();
+ const {input,list,count,more,limit}=model,q=input.value.trim();
+ const items=model.items.filter(w=>{
+  const author=fold(model.authorFilter.value.trim());
+  const genre=model.genreFilter.value,language=model.languageFilter.value,letter=model.letter;
+  const group=String(w.genre||"").trim();
+  const key=norm(model.sortFilter.value==="title"?w.title:w.author).trim();
+  return (!author||fold(w.author).includes(author))&&(!genre||group===genre)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
+ });
  list.replaceChildren();more.hidden=true;
  if(!q){
   model.region.hidden=false;
   count.textContent="Catálogo completo · "+items.length+" obras. Escriba para filtrar por título o autor.";
-  const all=[...items].sort((a,b)=>a.author.localeCompare(b.author,"es",{sensitivity:"base"})||a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
+  const all=[...items].sort((a,b)=>model.sortFilter.value==="title"?a.title.localeCompare(b.title,"es",{sensitivity:"base"}):a.author.localeCompare(b.author,"es",{sensitivity:"base"})||a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
   for(const w of all.slice(0,limit)){
    const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");
    heading.append(make("strong",w.title),make("span"," · "+w.author));li.append(heading);
@@ -101,7 +108,7 @@ function mount(parent,data){
  if(model||!parent||!Array.isArray(data?.road?.items)||!Array.isArray(data?.registry?.entries))return;
  const index=new Map();
  for(const w of data.road.items)index.set(w.id,{
-  id:w.id,title:w.title,author:w.author,dating:w.dating||"",forms:[w.title,w.id.replaceAll("-"," ")],
+  id:w.id,title:w.title,author:w.author,genre:w.genre||"",dating:w.dating||"",forms:[w.title,w.id.replaceAll("-"," ")],
   versions:[],facsimile:null,newWork:false
  });
  for(const e of data.registry.entries){
@@ -128,11 +135,40 @@ function mount(parent,data){
  const help=make("p",null,"bws-help");
  help.append("Para buscar palabras y pasajes dentro de las ediciones, consulte ");
  addLink(help,"Vitruvia","vitruvia.html");help.append(" o ");addLink(help,"Lexicon","vitruvia-lexicon.html");help.append(".");
- section.append(title,subtitle,form,region,help);
+ const filters=make("div",null,"bws-library-filters");
+ const authorFilter=make("input");authorFilter.type="search";authorFilter.placeholder="Filtrar por autor · Ὅμηρος / Homero / Homer";authorFilter.setAttribute("aria-label","Filtrar por autor en cualquier idioma");
+ const genreFilter=make("select");genreFilter.setAttribute("aria-label","Tipo de obra");genreFilter.append(new Option("Todos los tipos de obras",""));
+ const genreNames=[...new Set([...index.values()].map(w=>w.genre).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));
+ genreNames.forEach(g=>genreFilter.append(new Option(g,g)));
+ const languageFilter=make("select");languageFilter.setAttribute("aria-label","Lengua de texto disponible");
+ [["","Todas las lenguas"],["grc","Griego"],["la","Latín"],["es","Castellano"],["en","Inglés"],["fr","Francés"]].forEach(([v,t])=>languageFilter.append(new Option(t,v)));
+ const sortFilter=make("select");sortFilter.setAttribute("aria-label","Orden alfabético");
+ [["author","Orden por autor A–Z"],["title","Orden por título A–Z"]].forEach(([v,t])=>sortFilter.append(new Option(t,v)));
+ filters.append(authorFilter,genreFilter,languageFilter,sortFilter);
+ const alphabet=make("nav",null,"bws-alphabet");alphabet.setAttribute("aria-label","Índice alfabético por autor o título");
+ for(const l of ["Todos",..."ABCDEFGHIJKLMNOPQRSTUVWXYZ",..."ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"]){
+  const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
+  b.addEventListener("click",()=>{model.letter=l==="Todos"?"":l;model.limit=40;alphabet.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});alphabet.append(b);
+ }
+ section.append(title,subtitle,form,filters,alphabet,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
- model={items:[...index.values()],index,input,list,count,more,region,limit:10};
- form.addEventListener("submit",e=>{e.preventDefault();model.limit=10;render()});
+ model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,languageFilter,sortFilter,letter:"",limit:40};
+ for(const el of [authorFilter,genreFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
+ list.tabIndex=0;list.setAttribute("aria-label","Obras: use las flechas arriba y abajo, Intro para abrir el enlace");
+ list.addEventListener("keydown",e=>{
+  if(!["ArrowDown","ArrowUp","Home","End"].includes(e.key))return;
+  const anchors=[...list.querySelectorAll("a")];if(!anchors.length)return;
+  e.preventDefault();const ix=anchors.indexOf(document.activeElement);
+  const next=e.key==="Home"?0:e.key==="End"?anchors.length-1:e.key==="ArrowUp"?Math.max(0,ix-1):Math.min(anchors.length-1,ix+1);
+  anchors[next].focus();
+ });
+ document.addEventListener("keydown",e=>{
+  if(!list.contains(document.activeElement)||!["ArrowDown","ArrowUp"].includes(e.key))return;
+  const anchors=[...list.querySelectorAll("a")],ix=anchors.indexOf(document.activeElement);
+  if(ix<0)return;e.preventDefault();anchors[Math.max(0,Math.min(anchors.length-1,ix+(e.key==="ArrowDown"?1:-1)))].focus();
+ });
+ form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render()});
  input.addEventListener("input",()=>{model.limit=10;render()});
  more.addEventListener("click",()=>{model.limit+=20;render()});
  render();
@@ -163,7 +199,7 @@ function addFacsimiles(v,cat){
  }
  for(const entry of v?.obrasNuevas||[]){
   if(model.index.has(entry.r2))continue;
-  const w={id:entry.r2,title:entry.obra,author:entry.autor,dating:"",forms:[entry.obra,entry.r2.replaceAll("-"," "),...(loadedAliases[entry.r2]||[])],
+  const w={id:entry.r2,title:entry.obra,author:entry.autor,genre:"",dating:"",forms:[entry.obra,entry.r2.replaceAll("-"," "),...(loadedAliases[entry.r2]||[])],
    versions:[],facsimile:entry.r2,newWork:true};
   model.index.set(w.id,w);model.items.push(w);
  }
