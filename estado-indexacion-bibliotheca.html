@@ -27,6 +27,7 @@ code{overflow-wrap:anywhere}footer{border-top:1px solid #777;font-size:12px}</st
 <details><summary>Obras sin transcripción que sí admiten búsqueda OCR</summary>
 <p>El OCR ofrece localización por página; no es una edición crítica ni está alineado necesariamente por loci.</p>
 <ul id="ocr-index-books"></ul></details>
+<details><summary>Ediciones V514, V554 y V297 con índice estructurado existente</summary><ul id="structured-editions"></ul></details>
 <p id="ocr-pending">Comprobando obras que requieren una fuente textual verificable…</p>
 <h2>Límites y tareas pendientes</h2><p id="notes">La auditoría local no puede acreditar por sí sola que los enlaces remotos respondan o que un título haya sido cotejado con el interior de un libro.</p>
 <p><a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/workflows/bibliotheca-indexation-r2-audit.yml">Consultar auditorías automáticas y sus informes en GitHub</a></p>
@@ -34,7 +35,7 @@ code{overflow-wrap:anywhere}footer{border-top:1px solid #777;font-size:12px}</st
 <script>
 (()=>{"use strict";
 const summary=document.getElementById("summary"),timestamp=document.getElementById("timestamp"),remote=document.getElementById("remote"),notes=document.getElementById("notes");
-const lexical=document.getElementById("lexical-audit"),pending=document.getElementById("ocr-pending"),ocrList=document.getElementById("ocr-index-books");
+const lexical=document.getElementById("lexical-audit"),pending=document.getElementById("ocr-pending"),ocrList=document.getElementById("ocr-index-books"),structuredList=document.getElementById("structured-editions");
 const read=async path=>{const r=await fetch(path+"?v="+Date.now(),{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);return r.json()};
 const add=(name,value)=>{const card=document.createElement("article"),number=document.createElement("strong"),label=document.createElement("small");
  number.textContent=String(value);label.textContent=name;card.append(number,label);summary.append(card)};
@@ -63,6 +64,7 @@ Promise.allSettled([
  if(o?.schema==="vdl-bibliotheca-ocr-coverage-v1"){
   const c=o.counts||{};
   add("Sin transcripción, pero con índice OCR R2",c.withoutTextButWithR2OcrIndex??"—");
+  add("Ediciones con texto ya indexado bajo Vitruvio",c.withoutOwnRegistryButWithLinkedStructuredEdition??"—");
   add("Sin transcripción ni índice OCR vinculado",c.withoutTextOrLinkedR2OcrIndex??"—");
   for(const entry of o.ocrSearchableWithoutTranscription||[]){
    const a=document.createElement("a"),li=document.createElement("li");
@@ -71,8 +73,14 @@ Promise.allSettled([
    a.href=reader;a.textContent=entry.author+" · "+entry.title;
    li.append(a);ocrList.append(li);
   }
-  pending.textContent="Faltan transcripciones verificadas en "+(c.withoutRegisteredText??"—")+
-   " fichas; "+(c.withoutTextButWithR2OcrIndex??"—")+" pueden buscarse por página OCR de R2 y "+
+  for(const entry of o.alreadyIndexedAsStructuredEdition||[]){
+   const a=document.createElement("a"),li=document.createElement("li");
+   a.href=entry.reader;a.textContent=entry.title+" · "+entry.edition;
+   li.append(a);structuredList.append(li);
+  }
+  pending.textContent="De "+(c.withoutRegisteredText??"—")+" fichas sin registro textual propio, "+
+   (c.withoutTextButWithR2OcrIndex??"—")+" cuentan con búsqueda OCR en R2, "+
+   (c.withoutOwnRegistryButWithLinkedStructuredEdition??"—")+" utilizan una edición estructurada ya indexada, y "+
    (c.withoutTextOrLinkedR2OcrIndex??"—")+" requieren incorporar texto o facsímil indexable.";
  }else pending.textContent="Cobertura de OCR aún no publicada o no verificable.";
  if(l?.schema==="vdl-bibliotheca-lexical-live-v1"){
