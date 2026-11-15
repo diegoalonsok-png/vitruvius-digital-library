@@ -8,6 +8,7 @@ No escribe ni modifica textos, PDF, códices, traducciones ni índices.
 """
 import argparse
 from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import json
 from pathlib import Path
@@ -34,14 +35,17 @@ def norm(value):
     return "".join(ch for ch in value if not unicodedata.combining(ch))
 
 def title_warning(canonical, declared):
-    """Only detect candidate discrepancies, never confirm a misattribution."""
+    """Compare shared scripts only; a warning is never proof of misattribution."""
     if not canonical or not declared:
         return False
-    if GREEK.search(canonical) != GREEK.search(declared):
-        return False  # Transliteration or translated title cannot be compared literally
-    a = {w for w in re.findall(r"[^\W\d_]{4,}", norm(canonical), re.UNICODE) if w not in STOP}
-    b = {w for w in re.findall(r"[^\W\d_]{4,}", norm(declared), re.UNICODE) if w not in STOP}
-    return bool(a and b and not (a & b))
+    def tokens(value, greek):
+        words = re.findall(r"[^\W\d_]{4,}", norm(value), re.UNICODE)
+        return {w for w in words if w not in STOP and bool(GREEK.search(w)) == greek}
+    for script in (False, True):
+        a, b = tokens(canonical, script), tokens(declared, script)
+        if a and b:
+            return not bool(a & b)
+    return False
 
 def get_source(path, online):
     if path.startswith("https://"):
@@ -190,8 +194,20 @@ def main():
         for wid in ids:
             r2_by_work[wid].append(edition["id"])
 
-    version_results = [inspect_version(e, args.online) for e in registry]
-    problem_versions = [v for v in version_results if v["status"] in
+    # Include the 28 documented originals in separate branches as well as
+    # 279 registered versions, keeping their provenance and counts separate.
+    offsite_entries = [
+        {"workId": x["workId"], "language": x["language"],
+         "title": next((w.get("title") for w in works if w["id"] == x["workId"]), ""),
+         "format": "json-passages",
+         "path": "https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/"
+                 + x["branch"] + "/" + x["textPath"]}
+        for x in offsite
+    ]
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        version_results = list(pool.map(lambda e: inspect_version(e, args.online), registry))
+        offsite_results = list(pool.map(lambda e: inspect_version(e, args.online), offsite_entries))
+    problem_versions = [v for v in version_results + offsite_results if v["status"] in
                         {"identity_or_content_problem", "unavailable", "could_not_inspect", "invalid_html"}]
 
     records = []
@@ -294,6 +310,7 @@ def main():
             "localVersionRecords": sum(not e.get("path", "").startswith("https://") for e in registry),
             "remoteVersionRecords": sum(e.get("path", "").startswith("https://") for e in registry),
             "offsiteOriginals": len(offsite),
+            "offsiteByInspectionStatus": dict(Counter(v["status"] for v in offsite_results)),
             "r2PdfEditions": len(r2),
             "worksWithIndexedText": len(registry_by_work),
             "versionsByInspectionStatus": dict(Counter(v["status"] for v in version_results)),
@@ -304,6 +321,7 @@ def main():
         },
         "catalogue": records,
         "versionInspection": version_results,
+        "offsiteOriginalInspection": offsite_results,
         "r2EditionWarnings": edition_flags,
         "candidateTitleWarnings": candidate_mismatch,
         "separatePublications": [{"id": x.get("id"), "title": x.get("title"),
