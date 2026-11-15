@@ -72,6 +72,33 @@ const q=new URLSearchParams(location.search),work=q.get("work")||"didache";
 const LANG={grc:"GRIEGO",la:"LATÍN",es:"CASTELLANO",en:"INGLÉS",fr:"FRANCÉS",it:"ITALIANO",de:"ALEMÁN",pt:"PORTUGUÉS"};
 const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;let searchTerm="",targetLang="en",renderToken=0;let availableEditions=new Map(),loadingVersion=0;const editionMetadata=new Map();
 const key=v=>String(v??"").trim().toLowerCase().replace(/\s+/g,"");
+function locusParts(value){
+ const raw=key(value);
+ if(!raw)return null;
+ if(raw.startsWith("urn:cts:")){
+  const found=raw.match(/^urn:cts:[^:]+:([^:]+?)(?::|\.)(\d+(?:\.\d+)*)$/);
+  if(!found)return {raw,work:null,ref:null};
+  const id=found[1].match(/^(tlg\d+\.tlg\d+|phi\d+\.phi\d+)/);
+  return {raw,work:id?.[1]||found[1],ref:found[2]};
+ }
+ const simple=raw.match(/^(\d+(?:\.\d+)*)$/);
+ return {raw,work:null,ref:simple?.[1]||null};
+}
+function findLocusIndex(passages,requested){
+ if(!requested||!Array.isArray(passages))return -1;
+ const exact=passages.findIndex(item=>item.locus===requested);
+ if(exact>=0)return exact;
+ const target=locusParts(requested);
+ if(!target)return -1;
+ const matches=[];
+ passages.forEach((item,index)=>{
+  const candidate=locusParts(item.locus);
+  if(!candidate)return;
+  if(target.ref&&target.ref===candidate.ref&&(!target.work||!candidate.work||target.work===candidate.work))matches.push(index);
+  else if(!target.ref&&target.raw===candidate.raw)matches.push(index);
+ });
+ return matches.length===1?matches[0]:-1;
+}
 const status=msg=>el("note").textContent=msg;
 const highlightSets={left:new Map(),right:new Map()},visibleText={left:"",right:""};
 function currentHighlightKey(side){return work+"|"+side+"|"+(source[pos]?.locus||"");}
@@ -192,7 +219,7 @@ async function availableHistorical(locus){
  const lang=["en","fr","es","it","pt","de"].find(k=>k!==leftLang&&availableEditions.has(k));
  if(!lang)return null;
  if(!historicalCache.has(lang))historicalCache.set(lang,getEdition(availableEditions.get(lang),lang).catch(()=>[]));
- const edition=await historicalCache.get(lang),record=edition.find(x=>key(x.locus)===key(locus));
+ const edition=await historicalCache.get(lang),i=findLocusIndex(edition,locus),record=i>=0?edition[i]:null;
  return record?{text:record.text,language:lang}:null;
 }
 async function translateCurrent(token){
@@ -318,7 +345,7 @@ function draw(){
  el("title").textContent=title.toUpperCase()+" · "+locus;
  el("left-head").textContent=(LANG[leftLang]||leftLang.toUpperCase())+" · "+locus;
  paragraph("left-text",a?.text);
- const exact=translation.find(p=>key(p.locus)===key(locus));
+ const match=findLocusIndex(translation,locus);const exact=match>=0?translation[match]:null;
  el("right-head").textContent=(exact?"EDICIÓN ALOJADA · ":"TRADUCCIÓN AUTOMÁTICA · ")+(LANG[exact?rightLang:targetLang]||"TRADUCCIÓN")+" · "+locus;
  if(exact){paragraph("right-text",exact.text);status("Traducción histórica alojada; verificar procedencia editorial y equivalencia del locus.");budeUpdate("indexed",rightLang);}
  else {budeUpdate("pending");void translateCurrent(token);}
@@ -327,7 +354,7 @@ function draw(){
  linkBack();
 }
 async function getEdition(entry,lang){
- if(!entry||!/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||""))return [];
+ if(!entry||!(/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(entry.path||"")||/^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(entry.path||"")))return [];
  const r=await fetch(entry.path);if(!r.ok)throw Error("No se pudo abrir la edición "+lang);
  const data=await r.json();if(!Array.isArray(data.passages))return [];
  editionMetadata.set(lang,{
@@ -374,7 +401,8 @@ async function load(){
  el("translation-lang").value=requested?.startsWith("auto-")?requested:(requested&&entries.has(requested)?requested:(rightLang&&entries.has(rightLang)?rightLang:"auto-es"));
  if(!el("translation-lang").value)el("translation-lang").value="auto-es";
 
- const wanted=q.get("locus");const found=source.findIndex(p=>key(p.locus)===key(wanted));pos=found<0?0:found;draw();
+ const wanted=q.get("locus");const found=findLocusIndex(source,wanted);pos=found<0?0:found;draw();
+ if(wanted&&found<0)status("El locus solicitado no coincide con una unidad única de esta edición. Se muestra la primera unidad disponible; compruebe la referencia CTS.");
 }
 async function changeVersion(side,value){
  const stamp=++loadingVersion,previousLocus=source[pos]?.locus||q.get("locus")||"";
@@ -394,7 +422,7 @@ async function changeVersion(side,value){
   if(stamp!==loadingVersion)return;
   translation=updated;rightLang=choice;targetLang=["es","en","fr"].includes(choice)?choice:"es";q.set("right",choice);
  }
- const found=source.findIndex(p=>key(p.locus)===key(previousLocus));
+ const found=findLocusIndex(source,previousLocus);
  pos=found>=0?found:0;draw();
 }
 el("original-lang").addEventListener("change",e=>{void changeVersion("left",e.target.value);});
@@ -435,7 +463,7 @@ function appearance(){cards.style.setProperty("--body-size",fontSize+"px");
 el("smaller").onclick=()=>{fontSize=Math.max(17,fontSize-2);appearance();};
 el("larger").onclick=()=>{fontSize=Math.min(44,fontSize+2);appearance();};
 el("palette").onchange=appearance;
-el("go-button").onclick=()=>{const wanted=key(el("go-locus").value);const i=source.findIndex(p=>key(p.locus)===wanted);if(i<0){status("No se encontró ese locus en esta edición.");return;}pos=i;draw();};el("go-locus").addEventListener("keydown",e=>{if(e.key==="Enter")el("go-button").click();});
+el("go-button").onclick=()=>{const wanted=el("go-locus").value;const i=findLocusIndex(source,wanted);if(i<0){status("No se encontró ese locus en esta edición.");return;}pos=i;draw();};el("go-locus").addEventListener("keydown",e=>{if(e.key==="Enter")el("go-button").click();});
 const lexiconLink=el("lexicon-link");document.addEventListener("selectionchange",()=>{
  const selection=window.getSelection(),word=selection?.toString().trim()||"";
  if(!word||word.length>80||/\\s/.test(word))return;
