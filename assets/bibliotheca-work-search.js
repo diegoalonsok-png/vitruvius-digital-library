@@ -114,6 +114,12 @@ const safeReader=s=>typeof s==="string"&&(
  /^corpus\/[a-z0-9/_-]+\.html$/i.test(s))?s:null;
 const workLink=id=>"classics-work-record.html?work="+encodeURIComponent(id);
 const facLink=id=>"buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(id);
+const heritageLink=raw=>{
+ try{
+  const u=new URL(String(raw||""),location.href);
+  return u.origin===location.origin&&/\/[-a-z0-9]+\.html$/i.test(u.pathname)?u.pathname+u.search+u.hash:"";
+ }catch{return ""}
+};
 const periodLabel=w=>historicalPeriods.find(([id])=>id===periodOfWork(w))?.[1]||"";
 let model=null,loadedAliases={};
 function rank(w,query){
@@ -162,12 +168,13 @@ function render(){
    const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");
    heading.append(make("strong",w.title),make("span"," · "+w.author));li.append(heading);
    const meta=make("p",null,"bws-meta"),languages=[...new Set(w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language))];
-   meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),languages.length?"Textos con acceso: "+languages.join(", "):w.facsimile?"Facsímil disponible · OCR automático":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
+   meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),languages.length?"Textos con acceso: "+languages.join(", "):w.heritageReader?"Edición histórica · visor de facsímiles":w.facsimile?"Facsímil disponible · OCR por comprobar":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
    const actions=make("nav",null,"bws-actions");
    const o=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader)),t=w.versions.find(v=>!["la","grc"].includes(v.language)&&safeReader(v.reader));
    if(o)addLink(actions,"Leer original",safeReader(o.reader));
    if(o){const u=new URL("classics-simple-parallel.html",location.href);u.searchParams.set("work",w.id);u.searchParams.set("left",o.language);u.searchParams.set("right","auto-es");addLink(actions,"Lectura simplificada",u.pathname+u.search);}
    if(t)addLink(actions,"Leer traducción · "+(lang[t.language]||t.language),safeReader(t.reader));
+   if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
    if(!w.newWork)addLink(actions,"Ficha académica",workLink(w.id));
    li.append(actions);list.append(li);
@@ -190,7 +197,7 @@ function render(){
   const langs=w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language);
   const avail=[...new Set(langs)];
   meta.textContent=[w.genre||"",w.dating||"",periodLabel(w)].filter(Boolean).join(" · ")+(w.genre||w.dating?" · ":"")+
-   (avail.length?"Textos con acceso: "+avail.join(", "):w.facsimile?"Facsímil localizado; OCR no cotejado":"Ficha catalográfica; texto no disponible en este índice");
+   (avail.length?"Textos con acceso: "+avail.join(", "):w.heritageReader?"Edición histórica · visor disponible":w.facsimile?"Facsímil localizado; OCR no cotejado":"Ficha catalográfica; texto no disponible en este índice");
   item.append(meta);
   const actions=make("nav",null,"bws-actions");actions.setAttribute("aria-label","Acciones de "+w.title);
   const original=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
@@ -198,6 +205,7 @@ function render(){
   if(original)addLink(actions,"Leer original",safeReader(original.reader));
   if(original){const u=new URL("classics-simple-parallel.html",location.href);u.searchParams.set("work",w.id);u.searchParams.set("left",original.language);u.searchParams.set("right","auto-es");addLink(actions,"Lectura simplificada",u.pathname+u.search);}
   if(translation)addLink(actions,"Leer traducción · "+(lang[translation.language]||translation.language),safeReader(translation.reader));
+  if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
   if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
   if(!w.newWork)addLink(actions,"Ficha académica",workLink(w.id));
   item.append(actions);list.append(item);
@@ -303,6 +311,20 @@ function mount(parent,data){
   render();
  }).catch(()=>{/* Original-language catalogue remains searchable. */});
 }
+function addHistoricalViewers(records){
+ if(!model||!Array.isArray(records))return;
+ for(const e of records){
+  const href=heritageLink(e.reader),id="historic-"+String(e.id||"");
+  if(!href||!/^historic-[a-z0-9-]+$/.test(id)||!e.author||!e.title)continue;
+  if(model.index.has(id))continue;
+  const w={id,title:e.title,author:e.author,genre:"Edición histórica de arquitectura",
+   dating:"",forms:[e.title,e.author,...(Array.isArray(e.aliases)?e.aliases:[])],
+   versions:[],facsimile:null,heritageReader:href,heritageYear:e.year||"",
+   newWork:true};
+  model.index.set(id,w);model.items.push(w);
+ }
+ render();
+}
 function addFacsimiles(v,cat){
  if(!model||!Array.isArray(cat?.items))return;
  const byEdition=new Map(cat.items.map(e=>[e.id,e]));
@@ -328,7 +350,7 @@ function addFacsimiles(v,cat){
  }
  render();
 }
-window.BibliothecaWorkSearch={mount,addFacsimiles};
+window.BibliothecaWorkSearch={mount,addFacsimiles,addHistoricalViewers};
 async function bootstrap(){
  const parent=document.querySelector(".searcharea");
  if(!parent||document.getElementById("bibliotheca-work-search"))return;
@@ -340,6 +362,10 @@ async function bootstrap(){
   if(!catalogRes.ok||!registryRes.ok)throw Error("Catalog or registry unavailable");
   const [catalog,registry]=await Promise.all([catalogRes.json(),registryRes.json()]);
   mount(parent,{catalog,registry});
+  fetch("data/architecture-heritage-search.json",{cache:"no-cache"})
+   .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
+   .then(j=>addHistoricalViewers(j.records))
+   .catch(error=>console.warn("Ediciones históricas no indexadas:",error));
  }catch(error){console.warn("Catálogo alfabético no disponible:",error);}
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",bootstrap,{once:true});
