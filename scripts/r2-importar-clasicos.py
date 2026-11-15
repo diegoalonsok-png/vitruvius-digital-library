@@ -154,6 +154,19 @@ def procesar(o, ctx):
             index_data = json_bytes(indice)
             clave_indice = f"clasicos/indice-obras/{o['id']}.json"
             s3 = ctx["s3"]
+            # Nunca sobrescribir un objeto preexistente sin ficha (ingesta
+            # interrumpida): puede ser otra edición o una copia aún en revisión.
+            # La reconciliación editorial de huérfanos es un proceso separado.
+            from botocore.exceptions import ClientError
+            for existing_key in (clave_pdf, clave_txt, clave_indice):
+                try:
+                    s3.head_object(Bucket=BUCKET, Key=existing_key)
+                except ClientError as exc:
+                    code = str(exc.response.get("Error", {}).get("Code", ""))
+                    if code not in ("404", "NotFound", "NoSuchKey"):
+                        raise RuntimeError("No se puede confirmar ausencia en R2: " + existing_key) from exc
+                else:
+                    raise ValueError("Objeto existente sin ficha GitHub; no sobrescribir: " + existing_key)
             s3.put_object(Bucket=BUCKET, Key=clave_pdf, Body=datos, ContentType="application/pdf",
                           CacheControl="public, max-age=31536000", Metadata={"sha256": sha, "ia": ident})
             s3.put_object(Bucket=BUCKET, Key=clave_txt, Body=texto, ContentType="application/json; charset=utf-8",
