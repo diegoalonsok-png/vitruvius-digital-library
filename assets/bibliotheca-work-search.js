@@ -234,6 +234,12 @@ function mount(parent,data){
    index.set(e.workId,w);
   }
   w.forms.push(e.title||"",e.author||"");
+  // Essential multilingual aliases must work even when the optional alias fetch is delayed.
+  const essentials={"homer-iliad":["Ilíada","Iliada","La Ilíada","Iliad","The Iliad","L'Iliade","Ilias"],
+   "homer-odyssey":["Odisea","La Odisea","Odyssey","The Odyssey","L'Odyssée"],
+   "caesar-gallico":["Guerra de las Galias","La guerra de las Galias"],
+   "caesar-civili":["Guerra civil","La guerra civil"]};
+  if(essentials[e.workId])w.forms.push(...essentials[e.workId]);
   if(safeReader(e.reader)&&!w.versions.some(v=>v.language===e.language&&v.reader===e.reader))w.versions.push(e);
  }
  const section=make("section",null,"bws");section.id="bibliotheca-work-search";
