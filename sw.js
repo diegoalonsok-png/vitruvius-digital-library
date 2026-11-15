@@ -6,7 +6,7 @@
    - Datos del Lexicon con huella (?v=): caché primero (inmutables hasta que cambia la huella).
    - JS/CSS versionados (?v=): caché primero. Imágenes y PDF: caché primero con límite.
    - Recursos de otros dominios: no se interceptan. */
-const VERSION="vdl-20261114-classics-logos-r51";
+const VERSION="vdl-20261114-audit-readers-r52";
 const SHELL="shell-"+VERSION,PAGES="pages-"+VERSION,DATA="data-"+VERSION,LEXDATA="lexdata-"+VERSION,STATIC="static-"+VERSION,MEDIA="media-"+VERSION;
 const CORE=["./","index.html","offline.html","vitruvia.html","lector-bilingue.html","bibliotheca-graeca-latina.html","classics-text-reader.html","termino.html","laboratorio-humanidades.html","mapa-general.html",
  "manifest.webmanifest","vitruvia.webmanifest","instalar-apps.html","assets/app-icons/vitruvia-192.png","assets/app-icons/vitruvia-512.png","assets/app-icons/vitruvia-apple-touch-icon.png","assets/favicon.svg","assets/app-icons/icon-192.png","assets/app-icons/icon-512.png","assets/pwa.js"];
@@ -83,12 +83,17 @@ async function pageResponse(event){
  if(new URL(event.request.url).searchParams.get("source")==="install"){
   try{return await updatePage(event.request,cache)}catch{return hit||(await caches.match("offline.html"))||Response.error()}
  }
- // All three search interfaces must use the current HTML. Returning cached HTML
- // document after only 1.2 seconds made repaired layouts look unchanged.
+ // Search and reading interfaces must use the current HTML on both route forms.
+ // A 1.2-second cache fallback can keep old inline reader logic after a repair.
  // Always await a fresh navigation when online, even for query-string URLs.
- if(new URL(event.request.url).pathname.endsWith("/vitruvia.html")||
-    new URL(event.request.url).pathname.endsWith("/vitruvia-lexicon.html")||
-    new URL(event.request.url).pathname.endsWith("/bibliotheca-graeca-latina.html")){
+ const path=new URL(event.request.url).pathname;
+ const name=path.split('/').pop()||'index.html';
+ const page=name.endsWith('.html')?name:name+'.html';
+ const livePages=new Set(['vitruvia.html','vitruvia-lexicon.html','bibliotheca-graeca-latina.html',
+  'classics-text-reader.html','classics-parallel-reader.html','classics-simple-parallel.html',
+  'lector-bilingue.html','lectura-comparada.html','rose-1899.html','krohn-1912.html',
+  'harleianus.html','codex-h-folios-local.html','buscador-facsimiles-clasicos.html']);
+ if(livePages.has(page)){
   try{
    const fresh=await updatePage(new Request(event.request,{cache:"no-store"}),cache);
    return fresh.ok?fresh:hit||fresh;

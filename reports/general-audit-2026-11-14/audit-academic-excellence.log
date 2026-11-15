@@ -1,0 +1,79 @@
+{
+  "scope": {
+    "cataloguedWorks": 271,
+    "indexedVersions": 279,
+    "indexedWorks": 214,
+    "indexedOriginals": 182,
+    "unindexedOriginals": 89,
+    "worksWithHostedTranslations": 59,
+    "worksWithoutHostedTranslations": 212
+  },
+  "provenance": {
+    "localVersions": 59,
+    "explicitChicago18VersionCitations": 36,
+    "versionsWithWorkLevelEditionCitation": 8,
+    "versionCitationsPending": 15,
+    "manuscriptWitnesses": 106,
+    "incompleteWitnesses": 0,
+    "originalDocumentFingerprintsVerified": 30,
+    "documentCount": 30
+  },
+  "apparatus": {
+    "notes": 811,
+    "explicitNotes": 41,
+    "candidateNotes": 519,
+    "unlocatedNotes": 251,
+    "notesWithoutSource": 0,
+    "ecdoticDecisions": 0,
+    "certifiedDecisions": 0
+  },
+  "lexicon": {
+    "etymologicalEntries": 115,
+    "withoutBibliographicReferences": 0,
+    "withoutLocalLoci": 47
+  },
+  "alignment": {
+    "pairs": 16,
+    "notVerifiedWithSource": 16
+  },
+  "failures": [],
+  "advisories": [
+    {
+      "code": "originals",
+      "detail": "89 obras no tienen original indexado localmente (incluidos registros con URL remota)"
+    },
+    {
+      "code": "remote-index-verification",
+      "detail": "32 versiones apuntan a objetos R2 declarados; esta prueba no certifica su disponibilidad HTTP ni su cotejo filológico"
+    },
+    {
+      "code": "translations",
+      "detail": "212 obras carecen de traducción local registrada"
+    },
+    {
+      "code": "bibliography",
+      "detail": "15 versiones locales necesitan ficha de edición específica"
+    },
+    {
+      "code": "candidate-notes",
+      "detail": "519 notas del autor tienen locus candidato pendiente de revisión"
+    },
+    {
+      "code": "unlocated-notes",
+      "detail": "251 notas auténticas aún no están localizadas por locus"
+    },
+    {
+      "code": "lexicon-loci",
+      "detail": "47 voces etimológicas no citan un locus local"
+    },
+    {
+      "code": "aligned-texts",
+      "detail": "16 pares de traducción/original no están certificados por colación"
+    },
+    {
+      "code": "ecdotic-review",
+      "detail": "El registro aún no certifica ninguna decisión de variante manuscrita; no extrapolar resultados automáticos"
+    }
+  ]
+}
+PASS: academic evidence consistent; editorial backlog remains explicit and never counts as verified.

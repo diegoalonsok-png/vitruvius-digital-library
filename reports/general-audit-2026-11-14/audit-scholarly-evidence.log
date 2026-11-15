@@ -1,0 +1,48 @@
+{
+  "counts": {
+    "cataloguedWorks": 271,
+    "localOriginalWorks": 182,
+    "missingLocalOriginals": 89,
+    "hostedTranslationWorks": 59,
+    "originalOnlyWorks": 123,
+    "effectiveOriginalWorks": 210,
+    "missingEffectiveOriginals": 61,
+    "externalOriginalsIndexed": 28,
+    "textVersions": 279,
+    "remoteR2RegisteredWorks": 32,
+    "registeredWitnesses": 106,
+    "conceptEntries": 74,
+    "ecdoticNotesExtracted": 811,
+    "notesExplicitLocus": 41,
+    "notesCandidateLocus": 519,
+    "notesUnlocated": 251,
+    "verifiedTextualDecisions": 0
+  },
+  "semantic": {
+    "method": "Conceptus: correspondencias editoriales, no embeddings neuronales",
+    "status": "validación individual de postulaciones semánticas no acreditada por este control"
+  },
+  "failures": [],
+  "advisories": [
+    {
+      "code": "remote-r2-availability",
+      "detail": "32 obras poseen versiones declaradas en R2; su accesibilidad no se certifica en este control."
+    },
+    {
+      "code": "ecdotic-backlog",
+      "detail": "No existen decisiones de variantes verificadas en este registro; 811 notas extraídas no constituyen 811 colaciones."
+    },
+    {
+      "code": "originals-pending",
+      "detail": "61 registros aún no tienen índice original local ni externo reconocido."
+    },
+    {
+      "code": "translations-pending",
+      "detail": "212 obras carecen de traducción local, no necesariamente de traducción externa."
+    },
+    {
+      "code": "semantic-review",
+      "detail": "Los resultados Conceptus necesitan pruebas de cobertura y relevancia separadas."
+    }
+  ]
+}

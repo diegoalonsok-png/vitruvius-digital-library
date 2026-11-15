@@ -1,23 +1,23 @@
 {
   "schema": "vitruvius-scholarly-citation-transparency-v1",
-  "generated": "2026-11-13T16:14:59.461Z",
+  "generated": "2026-11-15T01:57:08.292Z",
   "method": "Static metadata consistency check. Paths checked for existence, not textual accuracy, copyright status, editorial collation or external URL availability.",
   "counts": {
     "cataloguedWorks": 271,
     "indexedTextVersions": 279,
     "worksWithAtLeastOneIndexedVersion": 214,
-    "catalogueWorksWithStructuredEditionCitation": 59,
-    "catalogueWorksWithoutStructuredEditionCitation": 212,
-    "localReadingClaims": 145,
-    "localReadingClaimsWithoutStructuredEditionCitation": 101,
+    "catalogueWorksWithStructuredEditionCitation": 64,
+    "catalogueWorksWithoutStructuredEditionCitation": 207,
+    "localReadingClaims": 184,
+    "localReadingClaimsWithoutStructuredEditionCitation": 126,
     "catalogueWorksWithPartialBibliography": 10,
-    "manuscriptWitnesses": 103,
+    "manuscriptWitnesses": 106,
     "historicalEditions": 63,
     "historicalEditionUrls": 63,
     "extractedUploadedDocuments": 30,
     "uploadedDocumentParagraphs": 25794,
     "hostedTranslationWorks": 59,
-    "worksWithoutHostedTranslation": 214
+    "worksWithoutHostedTranslation": 212
   },
   "priorityEditorialReview": [
     {
@@ -300,20 +300,6 @@
       "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
     },
     {
-      "workId": "diodorus",
-      "title": "Βιβλιοθήκη ἱστορική",
-      "author": "Diodoro Sículo",
-      "publicStatus": "lectura-local-parcial",
-      "indexedVersions": [
-        {
-          "language": "grc",
-          "format": "json-passages",
-          "path": "data/classics-corpus/diodorus-grc.json"
-        }
-      ],
-      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
-    },
-    {
       "workId": "dionysius",
       "title": "Ῥωμαϊκὴ ἀρχαιολογία",
       "author": "Dionisio de Halicarnaso",
@@ -337,6 +323,62 @@
           "language": "la",
           "format": "json-passages",
           "path": "data/classics-corpus/lucan-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "pliny",
+      "title": "Naturalis historia",
+      "author": "Plinio el Viejo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/lexicon/fontes/pliny-naturalis-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "dioscorides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "author": "Dioscórides",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/dioscorides-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "josephus-war",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "author": "Flavio Josefo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/josephus-war-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "josephus-antiquities",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "author": "Flavio Josefo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/josephus-antiquities-grc.json"
         }
       ],
       "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
@@ -384,6 +426,34 @@
       "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
     },
     {
+      "workId": "mark",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "author": "Evangelio según Marcos",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/mark-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "clement",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "author": "Primera carta de Clemente",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/clement-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
       "workId": "didache",
       "title": "Διδαχή · Didaché",
       "author": "Anónimo",
@@ -398,6 +468,146 @@
           "language": "grc",
           "format": "json-passages",
           "path": "data/classics-corpus/didache-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "pastor-hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "author": "Hermas",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/pastor-hermas-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "barnabas",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "author": "Anónimo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/barnabas-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "ignatius",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "author": "Ignacio de Antioquía",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/ignatius-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "polycarp",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "author": "Policarpo de Esmirna",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/polycarp-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "clement-2",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "author": "Anónimo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/clement-2-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "diognetus",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "author": "Anónimo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/diognetus-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "justin",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "author": "Justino Mártir",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/justin-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "irenaeus",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "author": "Ireneo de Lyon",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/irenaeus-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "tertullian",
+      "title": "Apologeticum",
+      "author": "Tertuliano",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "la",
+          "format": "json-passages",
+          "path": "data/classics-corpus/tertullian-la.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "eusebio",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "author": "Eusebio de Cesarea",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/eusebio-grc.json"
         }
       ],
       "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
@@ -815,6 +1025,90 @@
       "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
     },
     {
+      "workId": "pseudo-apollodorus-bibliotheca",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "author": "Pseudo-Apolodoro",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/pseudo-apollodorus-bibliotheca-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "lucian-dialogi-mortuorum",
+      "title": "Νεκρικοὶ διάλογοι",
+      "author": "Luciano de Samósata",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/lucian-dialogi-mortuorum-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "pausanias-periegesis",
+      "title": "Ἑλλάδος περιήγησις",
+      "author": "Pausanias",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/pausanias-periegesis-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "galen-ars-medica",
+      "title": "Τέχνη ἰατρική",
+      "author": "Galeno",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/galen-ars-medica-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "galen-de-usu-partium",
+      "title": "Περὶ χρείας μορίων",
+      "author": "Galeno",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/galen-de-usu-partium-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "ptolemy-almagest",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "author": "Claudio Ptolomeo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/ptolemy-almagest-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
       "workId": "appian-romaika",
       "title": "Ῥωμαϊκά",
       "author": "Apiano",
@@ -867,6 +1161,34 @@
       "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
     },
     {
+      "workId": "aeschylus-oresteia",
+      "title": "Ὀρέστεια",
+      "author": "Esquilo",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/aeschylus-oresteia-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "xenophon-anabasis",
+      "title": "Ἀνάβασις",
+      "author": "Jenofonte",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/xenophon-anabasis-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
       "workId": "plato-republic",
       "title": "Πολιτεία",
       "author": "Platón",
@@ -914,6 +1236,34 @@
           "language": "grc",
           "format": "json-passages",
           "path": "data/classics-corpus/aristotle-poetics-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "epictetus-discourses",
+      "title": "Διατριβαί",
+      "author": "Epicteto (recopilación de Arriano)",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/epictetus-discourses-grc.json"
+        }
+      ],
+      "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
+    },
+    {
+      "workId": "arrian-anabasis-alexandri",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "author": "Arriano",
+      "publicStatus": "lectura-local-parcial",
+      "indexedVersions": [
+        {
+          "language": "grc",
+          "format": "json-passages",
+          "path": "data/classics-corpus/arrian-anabasis-alexandri-grc.json"
         }
       ],
       "remedy": "Find and verify the exact editor/translation, edition date, publisher or institutional URI and responsible reviewer. Do not infer from ancient composition dating."
@@ -1664,24 +2014,10 @@
       "indexedVersions": 1
     },
     {
-      "workId": "diodorus",
-      "title": "Βιβλιοθήκη ἱστορική",
-      "author": "Diodoro Sículo",
-      "status": "lectura-local-parcial",
-      "indexedVersions": 1
-    },
-    {
       "workId": "dionysius",
       "title": "Ῥωμαϊκὴ ἀρχαιολογία",
       "author": "Dionisio de Halicarnaso",
       "status": "lectura-local-parcial",
-      "indexedVersions": 1
-    },
-    {
-      "workId": "strabo",
-      "title": "Γεωγραφικά",
-      "author": "Estrabón",
-      "status": "pendiente-de-incorporar",
       "indexedVersions": 1
     },
     {
@@ -1702,28 +2038,28 @@
       "workId": "pliny",
       "title": "Naturalis historia",
       "author": "Plinio el Viejo",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "dioscorides",
       "title": "Περὶ ὕλης ἰατρικῆς",
       "author": "Dioscórides",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "josephus-war",
       "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
       "author": "Flavio Josefo",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "josephus-antiquities",
       "title": "Ἰουδαϊκὴ ἀρχαιολογία",
       "author": "Flavio Josefo",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
@@ -1751,14 +2087,14 @@
       "workId": "mark",
       "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
       "author": "Evangelio según Marcos",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "clement",
       "title": "Πρὸς Κορινθίους Αʹ",
       "author": "Primera carta de Clemente",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
@@ -1772,63 +2108,63 @@
       "workId": "pastor-hermas",
       "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
       "author": "Hermas",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "barnabas",
       "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
       "author": "Anónimo",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "ignatius",
       "title": "Ἐπιστολαί · Cartas de Ignacio",
       "author": "Ignacio de Antioquía",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "polycarp",
       "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
       "author": "Policarpo de Esmirna",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "clement-2",
       "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
       "author": "Anónimo",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "diognetus",
       "title": "Πρὸς Διόγνητον · Carta a Diogneto",
       "author": "Anónimo",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "justin",
       "title": "Ἀπολογία πρώτη · Primera Apología",
       "author": "Justino Mártir",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "irenaeus",
       "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
       "author": "Ireneo de Lyon",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "tertullian",
       "title": "Apologeticum",
       "author": "Tertuliano",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
@@ -1842,7 +2178,7 @@
       "workId": "eusebio",
       "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
       "author": "Eusebio de Cesarea",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
@@ -2066,7 +2402,7 @@
       "workId": "pseudo-apollodorus-bibliotheca",
       "title": "Βιβλιοθήκη (Bibliotheca)",
       "author": "Pseudo-Apolodoro",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
@@ -2080,35 +2416,35 @@
       "workId": "lucian-dialogi-mortuorum",
       "title": "Νεκρικοὶ διάλογοι",
       "author": "Luciano de Samósata",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "pausanias-periegesis",
       "title": "Ἑλλάδος περιήγησις",
       "author": "Pausanias",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "galen-ars-medica",
       "title": "Τέχνη ἰατρική",
       "author": "Galeno",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "galen-de-usu-partium",
       "title": "Περὶ χρείας μορίων",
       "author": "Galeno",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "ptolemy-almagest",
       "title": "Μαθηματικὴ σύνταξις (Almagestum)",
       "author": "Claudio Ptolomeo",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
@@ -2143,7 +2479,7 @@
       "workId": "aeschylus-oresteia",
       "title": "Ὀρέστεια",
       "author": "Esquilo",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
@@ -2157,7 +2493,7 @@
       "workId": "xenophon-anabasis",
       "title": "Ἀνάβασις",
       "author": "Jenofonte",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
@@ -2185,14 +2521,14 @@
       "workId": "epictetus-discourses",
       "title": "Διατριβαί",
       "author": "Epicteto (recopilación de Arriano)",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
       "workId": "arrian-anabasis-alexandri",
       "title": "Ἀλεξάνδρου Ἀνάβασις",
       "author": "Arriano",
-      "status": "pendiente-de-incorporar",
+      "status": "lectura-local-parcial",
       "indexedVersions": 1
     },
     {
@@ -2938,20 +3274,6 @@
       "indexedVersions": 0
     },
     {
-      "workId": "galeno-opera-kuhn",
-      "title": "Opera omnia (ed. Kühn): volumen adicional",
-      "author": "Galeno",
-      "status": "fuente-externa-identificada",
-      "indexedVersions": 0
-    },
-    {
-      "workId": "galeno-kuhn-vol01",
-      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
-      "author": "Galeno",
-      "status": "fuente-externa-identificada",
-      "indexedVersions": 0
-    },
-    {
       "workId": "galeno-kuhn-vol19",
       "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
       "author": "Galeno",
@@ -3025,13 +3347,6 @@
       "workId": "nonio-marcelo-doctrina",
       "title": "De compendiosa doctrina",
       "author": "Nonio Marcelo",
-      "status": "fuente-externa-identificada",
-      "indexedVersions": 0
-    },
-    {
-      "workId": "paladio-opus-agriculturae",
-      "title": "Opus agriculturae",
-      "author": "Paladio",
       "status": "fuente-externa-identificada",
       "indexedVersions": 0
     }
@@ -3167,11 +3482,11 @@
     },
     {
       "id": "local-bibliography",
-      "message": "101 works labelled locally readable do not yet have a structured edition citation in the work catalogue/localVersions; other reader-level sources may exist."
+      "message": "126 works labelled locally readable do not yet have a structured edition citation in the work catalogue/localVersions; other reader-level sources may exist."
     },
     {
       "id": "bibliography-backlog",
-      "message": "212 catalogue records lack a work-level or local-version structured edition citation; do not fabricate one."
+      "message": "207 catalogue records lack a work-level or local-version structured edition citation; do not fabricate one."
     }
   ],
   "failures": [],

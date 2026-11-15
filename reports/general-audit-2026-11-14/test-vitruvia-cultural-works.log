@@ -1,0 +1,18 @@
+✔ Madonna resolves to the singer, while historical aliases still beat obscure namesakes (20.233345ms)
+✔ creator catalogues accept actual HTTP Wikidata result URIs, remove duplicates and exclude people (5.932406ms)
+✔ notable works remain available when the reverse catalogue fails (2.270114ms)
+✔ culture classification uses the identified subject instead of incidental biography words (4.803204ms)
+✔ spelling tolerance covers omissions, substitutions and transpositions without admitting unrelated names (3.367272ms)
+✔ Wikipedia spelling suggestions recover Borges and an unrelated first result is rejected (4.800681ms)
+✔ a late-loading cultural panel replays the active search and ignores results from an older query (3.586612ms)
+✔ an early sparse batch cannot turn Radiohed into a dictionary word while the band is resolving (1.361811ms)
+✔ an architect cannot be replaced by an unrelated building named after that architect (1.975325ms)
+✔ institutional author dossiers use canonical Wikidata identities and documented cross-disciplinary categories (0.495105ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55.48779

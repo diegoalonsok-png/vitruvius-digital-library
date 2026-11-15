@@ -13,6 +13,7 @@ for(const [locus,folio] of pref){
     {url,runScripts:"outside-only",pretendToBeVisual:true});
   const {window}=dom;
   window.matchMedia=q=>({matches:false,media:q,addEventListener(){},removeEventListener(){},addListener(){},removeListener(){}});
+  window.HTMLElement.prototype.scrollIntoView=()=>{};
   window.fetch=async u=>{const p=String(u).split("?")[0].replace(/^https?:\/\/[^/]+\//,"");
     return existsSync(p)?{ok:true,status:200,json:async()=>JSON.parse(readFileSync(p,"utf8"))}
                         :{ok:false,status:404,json:async()=>({})}};
@@ -30,5 +31,7 @@ for(const [locus,folio] of pref){
   const ok=abierto.replace(/\s/g,"")===folio;
   if(!ok)fallos++;
   console.log(`  ${ok?"✓":"✗"} ${locus.padEnd(12)} enlace ?folio=f.${folio.padEnd(5)} → abre «${etiqueta.trim()||"(sin folio)"}»`);
+  dom.window.close();
 }
 console.log(fallos?`\n${fallos} de ${pref.length} prefacios NO abren su folio`:`\nlos ${pref.length} prefacios abren su folio`);
+if(fallos)process.exitCode=1;

@@ -45,8 +45,8 @@ assert.ok(!originalContextStyles.includes("grid-template-columns:190px"),
  "Legacy three-column context stylesheet must not reappear");
 assert.ok(!editorialStyles.includes("max-width:77ch!important"),
  "A narrow encyclopaedia-width cap must not return");
-assert.ok(serviceWorker.includes('pathname.endsWith("/vitruvia.html")'),
- "Vitruvia navigations should fetch current HTML rather than stale cached markup");
+// Exercise network freshness and offline fallback instead of matching a source-code spelling.
+await import("./test-pwa-reader-freshness.mjs");
 
 for(const [label,html] of [["Vitruvia",vitruviaHTML],["Bibliotheca",bibliothecaHTML]]){
  // Solo JavaScript ejecutable: se excluyen JSON-LD y otros tipos de datos.

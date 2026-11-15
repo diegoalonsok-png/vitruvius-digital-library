@@ -1,25 +1,25 @@
 {
   "schema": "vitruvius-academic-evidence-matrix-v1",
-  "generated": "2026-11-13T15:26:23.627Z",
+  "generated": "2026-11-15T01:57:17.944Z",
   "purpose": "Auditoría reproducible de metadatos y trazabilidad; NO equivale a evaluación universitaria ni asigna nota 9,75/10.",
   "limitations": "No certifica lectura humana, traducciones, derechos, sitios externos ni colación autóptica. No modifica el material de Vitruvio.",
   "scope": {
-    "cataloguedWorks": 256,
-    "indexedVersions": 247,
-    "indexedWorks": 182,
+    "cataloguedWorks": 271,
+    "indexedVersions": 279,
+    "indexedWorks": 214,
     "indexedOriginals": 182,
-    "unindexedOriginals": 74,
+    "unindexedOriginals": 89,
     "worksWithHostedTranslations": 59,
-    "worksWithoutHostedTranslations": 197
+    "worksWithoutHostedTranslations": 212
   },
-  "originalCoveragePercent": 71.09,
-  "hostedTranslationCoveragePercent": 23.05,
+  "originalCoveragePercent": 67.16,
+  "hostedTranslationCoveragePercent": 21.77,
   "provenance": {
     "localVersions": 59,
     "explicitChicago18VersionCitations": 36,
     "versionsWithWorkLevelEditionCitation": 8,
     "versionCitationsPending": 15,
-    "manuscriptWitnesses": 103,
+    "manuscriptWitnesses": 106,
     "incompleteWitnesses": 0,
     "originalDocumentFingerprintsVerified": 30,
     "documentCount": 30
@@ -339,6 +339,66 @@
       {
         "id": "valerio-flaco-argonautica",
         "title": "Argonautica"
+      },
+      {
+        "id": "aristoteles-meteorologica",
+        "title": "Μετεωρολογικά · Meteorologica"
+      },
+      {
+        "id": "galeno-opera-kuhn",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)"
+      },
+      {
+        "id": "galeno-kuhn-vol01",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)"
+      },
+      {
+        "id": "galeno-kuhn-vol19",
+        "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)"
+      },
+      {
+        "id": "galeno-scripta-minora",
+        "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)"
+      },
+      {
+        "id": "jamblico-vida-pitagorica",
+        "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica"
+      },
+      {
+        "id": "proclo-comentario-euclides",
+        "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii"
+      },
+      {
+        "id": "sexto-empirico-obras",
+        "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos"
+      },
+      {
+        "id": "teon-esmirna-expositio",
+        "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum"
+      },
+      {
+        "id": "anthologia-latina",
+        "title": "Anthologia Latina"
+      },
+      {
+        "id": "casiodoro-variae",
+        "title": "Variae"
+      },
+      {
+        "id": "festo-verborum-significatu",
+        "title": "De verborum significatu"
+      },
+      {
+        "id": "marciano-capela-nuptiis",
+        "title": "De nuptiis Philologiae et Mercurii"
+      },
+      {
+        "id": "nonio-marcelo-doctrina",
+        "title": "De compendiosa doctrina"
+      },
+      {
+        "id": "paladio-opus-agriculturae",
+        "title": "Opus agriculturae"
       }
     ],
     "missingTranslations": [
@@ -1129,6 +1189,66 @@
       {
         "id": "valerio-flaco-argonautica",
         "title": "Argonautica"
+      },
+      {
+        "id": "aristoteles-meteorologica",
+        "title": "Μετεωρολογικά · Meteorologica"
+      },
+      {
+        "id": "galeno-opera-kuhn",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)"
+      },
+      {
+        "id": "galeno-kuhn-vol01",
+        "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)"
+      },
+      {
+        "id": "galeno-kuhn-vol19",
+        "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)"
+      },
+      {
+        "id": "galeno-scripta-minora",
+        "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)"
+      },
+      {
+        "id": "jamblico-vida-pitagorica",
+        "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica"
+      },
+      {
+        "id": "proclo-comentario-euclides",
+        "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii"
+      },
+      {
+        "id": "sexto-empirico-obras",
+        "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos"
+      },
+      {
+        "id": "teon-esmirna-expositio",
+        "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum"
+      },
+      {
+        "id": "anthologia-latina",
+        "title": "Anthologia Latina"
+      },
+      {
+        "id": "casiodoro-variae",
+        "title": "Variae"
+      },
+      {
+        "id": "festo-verborum-significatu",
+        "title": "De verborum significatu"
+      },
+      {
+        "id": "marciano-capela-nuptiis",
+        "title": "De nuptiis Philologiae et Mercurii"
+      },
+      {
+        "id": "nonio-marcelo-doctrina",
+        "title": "De compendiosa doctrina"
+      },
+      {
+        "id": "paladio-opus-agriculturae",
+        "title": "Opus agriculturae"
       }
     ],
     "editionCitationsPending": [
@@ -1239,20 +1359,19 @@
       }
     ]
   },
-  "failures": [
-    {
-      "code": "original-coverage-total",
-      "detail": "Originales indexados y pendientes no suman el catálogo"
-    }
-  ],
+  "failures": [],
   "advisories": [
     {
       "code": "originals",
-      "detail": "74 obras están catalogadas pero no cuentan con original indexado en el registro principal"
+      "detail": "89 obras no tienen original indexado localmente (incluidos registros con URL remota)"
+    },
+    {
+      "code": "remote-index-verification",
+      "detail": "32 versiones apuntan a objetos R2 declarados; esta prueba no certifica su disponibilidad HTTP ni su cotejo filológico"
     },
     {
       "code": "translations",
-      "detail": "197 obras carecen de traducción local registrada"
+      "detail": "212 obras carecen de traducción local registrada"
     },
     {
       "code": "bibliography",

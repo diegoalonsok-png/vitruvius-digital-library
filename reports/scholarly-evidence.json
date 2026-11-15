@@ -1,6 +1,6 @@
 {
   "schema": "vitruvius-scholarly-evidence-v1",
-  "generated": "2026-11-12T14:50:13.887Z",
+  "generated": "2026-11-15T01:57:18.017Z",
   "purpose": "Integridad verificable de inventarios y grados de evidencia; no certifica calidad filológica ni vinculación con universidades.",
   "sourcePaths": [
     "data/classics-corpus/indexation-roadmap-222.json",
@@ -11,16 +11,17 @@
     "data/classics-corpus/semantic-conceptus-postings.json"
   ],
   "counts": {
-    "cataloguedWorks": 222,
+    "cataloguedWorks": 271,
     "localOriginalWorks": 182,
-    "missingLocalOriginals": 40,
+    "missingLocalOriginals": 89,
     "hostedTranslationWorks": 59,
     "originalOnlyWorks": 123,
     "effectiveOriginalWorks": 210,
-    "missingEffectiveOriginals": 12,
+    "missingEffectiveOriginals": 61,
     "externalOriginalsIndexed": 28,
-    "textVersions": 247,
-    "registeredWitnesses": 100,
+    "textVersions": 279,
+    "remoteR2RegisteredWorks": 32,
+    "registeredWitnesses": 106,
     "conceptEntries": 74,
     "ecdoticNotesExtracted": 811,
     "notesExplicitLocus": 41,
@@ -35,7 +36,7 @@
   "sourceReadiness": {
     "correspondencia_bibliografica_ambigua": 3,
     "requiere_fuente_no_canonica_o_edicion_especifica": 7,
-    "sin_fuente_en_mapa_perseus": 15,
+    "sin_fuente_en_mapa_perseus": 64,
     "tei_perseus_candidato_por_verificar": 15
   },
   "evidentiaryLimits": [
@@ -47,16 +48,20 @@
   "failures": [],
   "advisories": [
     {
+      "code": "remote-r2-availability",
+      "detail": "32 obras poseen versiones declaradas en R2; su accesibilidad no se certifica en este control."
+    },
+    {
       "code": "ecdotic-backlog",
       "detail": "No existen decisiones de variantes verificadas en este registro; 811 notas extraídas no constituyen 811 colaciones."
     },
     {
       "code": "originals-pending",
-      "detail": "12 registros aún no tienen índice original local ni externo reconocido."
+      "detail": "61 registros aún no tienen índice original local ni externo reconocido."
     },
     {
       "code": "translations-pending",
-      "detail": "163 obras carecen de traducción local, no necesariamente de traducción externa."
+      "detail": "212 obras carecen de traducción local, no necesariamente de traducción externa."
     },
     {
       "code": "semantic-review",
