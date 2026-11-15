@@ -86,6 +86,24 @@ for(const item of records){
   problems.push(item.label+": "+error.message);
  }
 }
+// Google Dataset structured data: isPartOf must identify a parent Dataset,
+// not the CollectionPage representing the project website.
+try {
+ const nodes=schemaFor(read("index.html").split(/<\/head>/i)[0],"index.html");
+ const datasets=nodes.filter(node=>[node["@type"]].flat().includes("Dataset"));
+ assert(datasets.length>0,"Homepage must describe its historical-editions dataset");
+ for(const dataset of datasets){
+  if(typeof dataset.isPartOf==="string"){
+   assert.notEqual(dataset.isPartOf,origin+"/",
+    "Dataset isPartOf cannot identify the project CollectionPage as a parent dataset");
+  }else if(dataset.isPartOf){
+   assert([dataset.isPartOf["@type"]].flat().includes("Dataset"),
+    "Dataset isPartOf must contain a parent Dataset object");
+  }
+ }
+ console.log("OK Dataset: no invalid CollectionPage parent");
+}catch(error){problems.push("Dataset relationship: "+error.message);}
+
 if(problems.length){
  for(const error of problems)console.error("FAIL "+error);
  process.exitCode=1;
