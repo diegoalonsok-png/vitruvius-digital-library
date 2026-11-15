@@ -1,0 +1,53 @@
+{
+  "schema": "vitruvius-staged-classics-source-batch-v1",
+  "updated": "2026-11-15",
+  "policy": "Estas fuentes no modifican recuentos ni acreditan indexación pública. Una obra antigua cuenta una sola vez; las versiones digitales alternativas se comparan por edición.",
+  "entries": [
+    {
+      "workId": "manilio-astronomica",
+      "originalTitle": "Astronomica",
+      "language": "la",
+      "role": "new-original-transcription",
+      "path": "data/classics-corpus/manilio-astronomica-la.json",
+      "source": "https://github.com/cltk/lat_text_latin_library",
+      "status": "staged_not_registered_in_public_search",
+      "scope": "Libros I–V, 362 segmentos digitales no canónicos",
+      "required": [
+        "verificar extensión e incipit/explicit",
+        "verificar correspondencia con edición crítica",
+        "regenerar índice y probar visor",
+        "revisar derechos y metadatos de procedencia"
+      ]
+    },
+    {
+      "workId": "minucio-felix-octavio",
+      "originalTitle": "Octavius",
+      "language": "la",
+      "role": "alternative-to-R2-registered-text",
+      "path": "data/classics-sources/minucio-felix-octavio-cltk-la.json",
+      "source": "https://github.com/cltk/lat_text_latin_library",
+      "status": "comparison_only_no_new_work",
+      "scope": "40 capítulos numerados digitalmente",
+      "required": [
+        "comparar con texto R2",
+        "identificar variantes y edición base",
+        "no duplicar original en búsqueda"
+      ]
+    },
+    {
+      "workId": "valerio-flaco-argonautica",
+      "originalTitle": "Argonautica",
+      "language": "la",
+      "role": "alternative-to-R2-registered-text",
+      "path": "data/classics-sources/valerio-flaco-argonautica-cltk-la.json",
+      "source": "https://github.com/cltk/lat_text_latin_library",
+      "status": "comparison_only_no_new_work",
+      "scope": "8 libros, 470 segmentos digitales no canónicos",
+      "required": [
+        "comparar con texto R2",
+        "confirmar numeración de versos",
+        "no duplicar original en búsqueda"
+      ]
+    }
+  ]
+}
