@@ -55,9 +55,11 @@ def main():
     for edition in r2:
         rid = edition["id"]
         relations = mapping.get(rid)
-        if relations is None and rid in catalog_by_id:
+        # Un mapa vacío no anula una coincidencia exacta de identidad con
+        # el catálogo principal; cinco ediciones históricas usan esa forma.
+        if not relations and rid in catalog_by_id:
             relations = [rid]
-        if relations is None and edition.get("traduccionDe") in catalog_by_id:
+        if not relations and edition.get("traduccionDe") in catalog_by_id:
             relations = [edition["traduccionDe"]]
         if not relations:
             # An additional catalogue work is not an orphaned edition.
