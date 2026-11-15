@@ -1,0 +1,98 @@
+{
+  "schema": "vitruvius-apparatus-selectivus/1",
+  "date": "2026-11-14",
+  "method": "Selección de correspondencias del Apéndice T cotejadas entre V514 y V554. No constituye transcripción diplomática de H; los testimonios deben verificarse en los folios originales. V297 aporta traducción y glosas cuando están indexadas, pero no se presupone que repita estas entradas.",
+  "entries": [
+    {
+      "locus": "1.1.1",
+      "lemma": "Ea nascitur ex fabrica",
+      "reading": "ea nascitur & fabrica (ut vid.)",
+      "siglum": "H",
+      "folio": "1v",
+      "sources": [
+        "V514-T-p1094-13",
+        "V554-T-p1103-210"
+      ],
+      "note": "El texto editado presenta ex fabrica; el Apéndice T registra para H una lectura tentativa con & (ut vid.). El signo de lectura debe comprobarse directamente en el folio.",
+      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+    },
+    {
+      "locus": "1.1.5",
+      "lemma": "civitate deflagrata",
+      "reading": "declarata (ut vid.)",
+      "siglum": "H",
+      "folio": "2v",
+      "sources": [
+        "V514-T-p1101-17",
+        "V554-T-p1110-214"
+      ],
+      "note": "Ambas ediciones consignan esta divergencia y mantienen deflagrata por coherencia contextual. La atribución paleográfica de declarata es tentativa.",
+      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+    },
+    {
+      "locus": "1.1.5",
+      "lemma": "posteris [nota] poena",
+      "reading": "nota poena",
+      "siglum": "H",
+      "folio": "2v",
+      "sources": [
+        "V514-T-p1101-18",
+        "V554-T-p1110-215"
+      ],
+      "note": "El comentario autoral relaciona la exclusión de nota con la decisión editorial de Krohn. Los corchetes identifican intervención editorial, no omisión automáticamente comprobada en H.",
+      "status": "cotejo editorial bilingüe; interpretación editorial"
+    },
+    {
+      "locus": "1.1.11",
+      "lemma": "posse ⟨se⟩ iuste",
+      "reading": "om. se",
+      "siglum": "H",
+      "folio": "4r",
+      "sources": [
+        "V514-T-p1101-20",
+        "V554-T-p1110-217"
+      ],
+      "note": "El Apéndice T describe se como suplemento transmitido en el texto editado y ausente según la lectura reportada de H; requiere inspección del folio.",
+      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+    },
+    {
+      "locus": "1.1.13",
+      "lemma": "uti fuerat Aristarchus",
+      "reading": "fuerit",
+      "siglum": "H",
+      "folio": "4v",
+      "sources": [
+        "V514-T-p1101-23",
+        "V554-T-p1110-220"
+      ],
+      "note": "Las dos ediciones mantienen la lección editorial frente a la lectura atribuida a H, cuya identificación visual debe comprobarse.",
+      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+    },
+    {
+      "locus": "1.1.17",
+      "lemma": "multas res ⟨mechanicas,⟩ organicas",
+      "reading": "om. mechanicas",
+      "siglum": "H",
+      "folio": "5v",
+      "sources": [
+        "V514-T-p1101-26",
+        "V554-T-p1110-223"
+      ],
+      "note": "El suplemento mechanicas es consignado en ambos aparatos; no se debe convertir la omisión reportada en lectura autóptica sin inspección.",
+      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+    },
+    {
+      "locus": "1.2.4",
+      "lemma": "ballista e foramine ⟨capituli⟩",
+      "reading": "om. capituli",
+      "siglum": "H",
+      "folio": "7r",
+      "sources": [
+        "V514-T-p1101-30",
+        "V554-T-p1110-227"
+      ],
+      "note": "Las ediciones identifican capituli como suplemento editorial frente a omisión atribuida a H. La forma del suplemento se registra sin normalizar silenciosamente.",
+      "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+    }
+  ]
+}
