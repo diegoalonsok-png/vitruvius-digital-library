@@ -17,15 +17,37 @@ function init(){
  const lang=mk("select");lang.id="front-classics-lang";lang.setAttribute("aria-label","Lengua del corpus");
  for(const [val,t] of [["","Latín y griego"],["la","Solo latín"],["grc","Solo griego"]])lang.append(new Option(t,val));
  const work=mk("select");work.id="front-classics-work";work.setAttribute("aria-label","Obra del corpus");work.append(new Option("Todas las obras indexadas",""));
+ const mode=mk("select");mode.id="front-classics-mode";mode.setAttribute("aria-label","Tipo de búsqueda académica");
+ for(const [value,name] of [["literal","Texto literal"],["lemma","Lema y formas conocidas"],["concept","Conceptus multilingüe"],["passage","Párrafos y loci"]])mode.append(new Option(name,value));
+ const locus=mk("input");locus.id="front-classics-locus";locus.type="search";locus.maxLength=150;locus.placeholder="Locus (opcional)";locus.setAttribute("aria-label","Referencia de locus para filtrar");
  const launch=mk("button","Buscar en la Bibliotheca");launch.type="button";
- row.append(label,lang,work,launch);
+ row.append(label,lang,work,mode,locus,launch);
  const status=mk("p","Búsqueda ampliada activada: el próximo envío buscará en Vitruvio y en las transcripciones clásicas; puede desactivar esta opción para una consulta rápida.","front-classics-status");
  status.setAttribute("role","status");status.setAttribute("aria-live","polite");
  const titles=mk("div",null,"front-classics-titles");
  const result=mk("ol",null,"front-classics-results");
  const more=mk("button","Mostrar otros pasajes");more.type="button";more.hidden=true;
  const catalog=mk("p");const link=mk("a","Explorar todas las obras y sus ediciones");link.href="bibliotheca-graeca-latina.html";catalog.append(link);
- const caveat=mk("p","Para no bloquear la portada, los textos se solicitan únicamente al ejecutar una búsqueda en el corpus. La ausencia de resultados no demuestra ausencia en facsímiles o ediciones no indexadas. El cotejo manuscrito se consulta en otra sección.","front-classics-method");
+ const caveat=mk("p","Lema: se consultan formas conocidas, no toda la morfología posible. Conceptus: equivalencias documentadas, no embeddings neuronales. La búsqueda por locus filtra pasajes recuperados; la falta de resultados no demuestra ausencia en textos sin indexar.","front-classics-method");
+ let conceptsPromise=null;
+ const conceptTerms=async term=>{
+  if(!conceptsPromise)conceptsPromise=fetch("data/lexicon/conceptus.json").then(r=>{if(!r.ok)throw Error("Conceptus HTTP "+r.status);return r.json()}).catch(e=>{conceptsPromise=null;throw e});
+  const data=await conceptsPromise,key=normalize(term);
+  const found=(data.concepts||[]).filter(x=>[x.id,...(x.la||[]),...(x.grc||[]),...Object.values(x.modern||{}).flat()].some(y=>typeof y==="string"&&normalize(y)===key));
+  return [...new Set(found.slice(0,3).flatMap(x=>[...(x.la||[]),...(x.grc||[])]))].filter(x=>normalize(x)!==key).slice(0,12);
+ };
+ const knownForms={
+  architectura:["architectura","architecturae","architecturam","architecturas","architecturis","architecturarum"],
+  domus:["domus","domum","domui","domo","domos","domorum","domibus"],
+  aedifico:["aedifico","aedificas","aedificat","aedificare","aedificavit","aedificandi","aedificanda"],
+  λόγος:["λόγος","λόγου","λόγον","λόγῳ","λόγοι","λόγων","λόγοις","λόγους"]
+ };
+ const lemmaTerms=term=>Object.values(knownForms).find(forms=>forms.some(x=>normalize(x)===normalize(term)))||[term];
+ const matchLocus=(ref,wanted)=>{
+  const foldRef=x=>String(x||"").toLowerCase().replace(/^urn:cts:[^:]+:[^:]+:/,"").replace(/[^a-z0-9.]/g,"");
+  const a=foldRef(ref),b=foldRef(wanted);
+  return !b||a===b||a.startsWith(b+".");
+ };
  panel.append(head,explain,row,status,titles,result,more,catalog,caveat);
  form.insertAdjacentElement("afterend",panel);
  let versions=[],current=0,items=[],count=0,loaded=false;
@@ -92,13 +114,19 @@ function init(){
    if(!valid.length){status.textContent="Sin versiones originales registradas para esos filtros.";return}
    const byEntry=new Set(valid.map(v=>[v.workId,v.language,v.path].join("|")));
    const corpus=window.ClassicsCorpusSearch;
-   const hits=await corpus.searchPassages([q],{allowedWorkIds:[...new Set(valid.map(v=>v.workId))],language:lang.value,limit:150,maxPerEdition:35,includeOCR:false,isCancelled:()=>id!==current,
+   let words=[q];
+   if(mode.value==="lemma")words=lemmaTerms(q);
+   if(mode.value==="concept"){
+    try{words=[q,...await conceptTerms(q)]}
+    catch{status.textContent="Conceptus no disponible: buscando la expresión original."}
+   }
+   const hits=await corpus.searchPassages([...new Set(words)].slice(0,20),{allowedWorkIds:[...new Set(valid.map(v=>v.workId))],language:lang.value,limit:150,maxPerEdition:35,includeOCR:false,isCancelled:()=>id!==current,
     onProgress:(_,p)=>{if(id===current)status.textContent="Verificando pasajes · ediciones examinadas: "+p.examined+"/"+p.targeted}});
    if(id!==current)return;
-   items=hits.filter(x=>["la","grc"].includes(x.language)&&!x.ocr&&byEntry.has([x.workId,x.language,x.source].join("|")));
+   items=hits.filter(x=>["la","grc"].includes(x.language)&&!x.ocr&&byEntry.has([x.workId,x.language,x.source].join("|"))&&matchLocus(x.locus,locus.value));
    const diag=corpus.diagnostics?.()||{};
    const fail=Number(diag.failed||0);
-   status.textContent=workMatches+" obras localizadas · "+items.length+" pasajes recuperados"+(fail?" · "+fail+" ediciones no pudieron leerse: resultado parcial":"")+" · máximo 150 registros, no un recuento exhaustivo.";
+   status.textContent=workMatches+" obras localizadas · "+items.length+" pasajes recuperados"+(fail?" · "+fail+" ediciones no pudieron leerse: resultado parcial":"")+" · máximo 150 registros; "+(mode.value==="concept"?"equivalencias documentadas, no embeddings":mode.value==="lemma"?"paradigmas parciales":"búsqueda documental")+(locus.value?" · filtrado por locus tras recuperar pasajes":"")+". ";
    if(!items.length)result.append(mk("li","No se recuperaron pasajes en las ediciones disponibles. Puede probar otra forma o seleccionar una obra."));
    draw();
   }catch(err){if(id===current)status.textContent="No se pudo verificar el corpus clásico. El buscador principal de Vitruvio sigue disponible."}
@@ -106,7 +134,7 @@ function init(){
  }
  launch.addEventListener("click",search);
  form.addEventListener("submit",()=>{if(active.checked)void search();else {current++;items=[];result.replaceChildren();titles.replaceChildren();more.hidden=true;status.textContent="Búsqueda limitada a Vitruvio. Active el corpus o use el botón de Bibliotheca."}});
- for(const select of [lang,work])select.addEventListener("change",()=>{current++;items=[];result.replaceChildren();more.hidden=true;status.textContent="Filtros modificados. Ejecute la búsqueda del corpus."});
+ for(const select of [lang,work,mode,locus])select.addEventListener("change",()=>{current++;items=[];result.replaceChildren();more.hidden=true;status.textContent="Filtros modificados. Ejecute la búsqueda del corpus."});
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
