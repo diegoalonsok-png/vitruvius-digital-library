@@ -51,7 +51,7 @@ try {
     await page.locator("#mode-exact").click();
     await page.locator("#query").fill(sample.term);
     await page.locator("#find").click();
-    await page.waitForFunction(()=>/[1-9]\\d* pasajes/.test(document.querySelector(".search-summary")?.textContent||""),null,{timeout:15000});
+    await page.waitForFunction(()=>/[1-9]\d* pasajes/.test(document.querySelector(".search-summary")?.textContent||""),null,{timeout:15000});
     const marks=await page.locator("#passages mark.cl-hit").allTextContents();
     assert(marks.some(s=>sample.expect.test(s)),"La búsqueda no destacó su forma textual: "+JSON.stringify(marks.slice(0,5)));
     const source=await page.locator("#source-title").innerText();
@@ -69,6 +69,7 @@ try {
    await page.locator("#query").fill("logos");
    await page.locator("#find").click();
    await page.waitForFunction(()=>/equivalencias/.test(document.querySelector(".search-summary")?.textContent||""),null,{timeout:15000});
+   await page.waitForFunction(()=>[...document.querySelectorAll("#passages mark.cl-hit")].some(x=>/verbum/i.test(x.textContent||"")),null,{timeout:15000});
    assert((await page.locator("#passages mark.cl-hit").allTextContents()).some(x=>/verbum/i.test(x)),"No se destacó Verbum en latín");
   }finally{await page.close()}
  });
