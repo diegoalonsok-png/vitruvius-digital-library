@@ -180,7 +180,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 </section>
 <section id="vdl-edition-references" aria-label="Referencias bibliográficas de las ediciones de Diego Kurilo"></section>
 </main>
-<script src="assets/apparatus-locus-search.js?v=20261115-sync-v5"></script>
+<script src="assets/apparatus-locus-search.js?v=20261115-latin-v6"></script>
 <script>
 (()=>{"use strict";
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
@@ -222,7 +222,7 @@ function configureLocusPicker(){
 }
 let activeLatinSearchTerms=[];
 function markComparisonTerms(){
- const targets=["#compare-rose","#compare-krohn","#compare-kurilo"];
+ const targets=["#compare-rose","#compare-krohn","#compare-kurilo","#latin"];
  const terms=new Set(activeLatinSearchTerms);
  for(const selector of targets){
   const host=$(selector);if(!host)continue;
@@ -242,7 +242,7 @@ function markComparisonTerms(){
  }
  const count=targets.map(x=>$(x)?.querySelectorAll("mark.ab-latin-match").length||0);
  const label=$("#ab-comparison-highlight-status");
- if(label)label.textContent=terms.size?(count.some(Boolean)?"Coincidencias destacadas: Rose "+count[0]+" · Krohn "+count[1]+" · Kurilo "+count[2]+". Todos los lectores muestran el mismo locus.":"Locus sincronizado; no hay coincidencia textual literal en las tres transcripciones. Los OCR pueden contener errores."):"";
+ if(label)label.textContent=terms.size?(count.some(Boolean)?"Coincidencias destacadas: Rose "+count[0]+" · Krohn "+count[1]+" · Kurilo "+count[2]+" · Textus Latinus "+count[3]+". Los lectores muestran el mismo locus.":"Locus sincronizado; no hay coincidencia textual literal en las tres transcripciones. Los OCR pueden contener errores."):"";
 }
 function setComparisonTerms(terms){
  activeLatinSearchTerms=Array.isArray(terms)?terms:[];
