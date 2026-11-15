@@ -1,14 +1,15 @@
 {
   "schema": "vdl-bibliotheca-ocr-coverage-v1",
-  "generated": "2026-11-15T04:09:30.232176+00:00",
+  "generated": "2026-11-15T04:10:43.734084+00:00",
   "source": "Catálogo maestro, registro de versiones, inventario federado e índice S3 auditado",
   "limits": "Índice por raíces sobre OCR no revisado, no traducción, no lematización morfológica, ni correspondencia certificada con loci. La presencia en el listado no prueba que cada palabra tenga una localización correcta; consultar auditoría léxica en vivo.",
   "counts": {
     "masterWorks": 271,
     "withRegisteredText": 214,
-    "withoutRegisteredText": 57,
+    "withoutRegisteredText": 54,
     "withoutTextButWithR2OcrIndex": 29,
-    "withoutTextOrLinkedR2OcrIndex": 28
+    "withoutOwnRegistryButWithLinkedStructuredEdition": 3,
+    "withoutTextOrLinkedR2OcrIndex": 25
   },
   "ocrSearchableWithoutTranscription": [
     {
@@ -476,35 +477,43 @@
       ]
     }
   ],
-  "needsTextOrVerifiableFacsimile": [
-    {
-      "id": "seneca-naturales",
-      "author": "Séneca",
-      "title": "Naturales quaestiones",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
-    },
+  "alreadyIndexedAsStructuredEdition": [
     {
       "id": "vitruvio-v514-pdf",
       "author": "Vitruvio · edición de Diego A. Kurilo",
       "title": "De architectura · Recensio V514 (latín–castellano)",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+      "status": "versión ya indexada bajo la ficha editorial de Vitruvio",
+      "edition": "recensio-es",
+      "reader": "lector-bilingue.html?edition=recensio-es",
+      "indexedPath": "data/structured/recensio-es.json",
+      "indexedUnderWorkId": "vitruvius"
     },
     {
       "id": "vitruvio-v554-pdf",
       "author": "Vitruvio · edición de Diego A. Kurilo",
       "title": "De architectura · Recensio V554 (latín–francés)",
-      "originalLanguage": "la",
-      "editionSearchStatus": "sin transcripción textual registrada",
-      "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
+      "status": "versión ya indexada bajo la ficha editorial de Vitruvio",
+      "edition": "recensio-fr",
+      "reader": "lector-bilingue.html?edition=recensio-fr",
+      "indexedPath": "data/structured/recensio-fr.json",
+      "indexedUnderWorkId": "vitruvius"
     },
     {
       "id": "theory-v297-pdf",
       "author": "Diego A. Kurilo · sobre Vitruvio",
       "title": "The Architect of Theory · V297 (inglés)",
+      "status": "versión ya indexada bajo la ficha editorial de Vitruvio",
+      "edition": "theory-en",
+      "reader": "lector-bilingue.html?edition=theory-en",
+      "indexedPath": "data/structured/theory-en.json",
+      "indexedUnderWorkId": "vitruvius"
+    }
+  ],
+  "needsTextOrVerifiableFacsimile": [
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
       "originalLanguage": "la",
       "editionSearchStatus": "sin transcripción textual registrada",
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
@@ -702,6 +711,6 @@
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     }
   ],
-  "r2IndexAuditTimestamp": "2026-11-15T04:09:25.243303+00:00",
+  "r2IndexAuditTimestamp": "2026-11-15T04:10:35.375268+00:00",
   "r2IndexDeclared": true
 }
