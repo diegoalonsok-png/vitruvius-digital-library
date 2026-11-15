@@ -1,6 +1,6 @@
 {
   "schema": "vdl-r2-live-integrity-v1",
-  "generated": "2026-11-15T04:16:08.312404+00:00",
+  "generated": "2026-11-15T04:18:11.412131+00:00",
   "status": "verified_with_findings",
   "counts": {
     "editionsInGithubCatalogue": 117,
@@ -11,7 +11,8 @@
     "objectsNotVerified": 0,
     "indexedEditionsManifest": 119,
     "editionsNotInRemoteIndex": 0,
-    "indexEntriesWithoutCatalogue": 2
+    "indexEntriesWithoutCatalogue": 2,
+    "orphanIndexEntriesWithPdfAndOcr": 2
   },
   "notes": "El listado GitHub no es inventario físico. Objetos R2 examinados con HEAD y manifiesto de índice por GET si hay credenciales.",
   "objects": [
@@ -2131,6 +2132,46 @@
       "historia-augusta"
     ],
     "fragmentCount": 2510,
-    "status": "read_from_R2"
+    "status": "read_from_R2",
+    "orphanIndexEntries": [
+      {
+        "id": "boecio-institutione-musica",
+        "indexedTitle": "De institutione musica",
+        "indexedAuthor": "Boecio",
+        "yearClaim": 1867,
+        "checks": {
+          "pdf": {
+            "status": "exists",
+            "bytes": 35964908,
+            "key": "clasicos/pdf/boecio-institutione-musica.pdf"
+          },
+          "ocr": {
+            "status": "exists",
+            "bytes": 1055273,
+            "key": "clasicos/texto/boecio-institutione-musica.json"
+          }
+        },
+        "catalogueStatus": "identity_pending_not_added"
+      },
+      {
+        "id": "historia-augusta",
+        "indexedTitle": "Scriptores Historiae Augustae",
+        "indexedAuthor": "Escritores de la Historia Augusta",
+        "yearClaim": 1884,
+        "checks": {
+          "pdf": {
+            "status": "exists",
+            "bytes": 3278947,
+            "key": "clasicos/pdf/historia-augusta.pdf"
+          },
+          "ocr": {
+            "status": "exists",
+            "bytes": 99961,
+            "key": "clasicos/texto/historia-augusta.json"
+          }
+        },
+        "catalogueStatus": "identity_pending_not_added"
+      }
+    ]
   }
 }
