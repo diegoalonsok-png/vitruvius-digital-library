@@ -1,28 +1,21 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-15T03:52:40.678316+00:00",
+  "generated": "2026-11-15T03:53:37.471973+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 271,
     "additionalWorks": 10,
     "totalDeclaredWorks": 281,
     "r2EditionRecords": 117,
-    "r2LinkedEditionRecords": 101,
-    "r2WorkEditionRelations": 109,
+    "r2LinkedEditionRecords": 107,
+    "r2WorkEditionRelations": 115,
     "r2AdditionalEditionRecords": 10,
-    "r2UnlinkedEditionRecords": 6,
-    "worksWithR2Edition": 109,
+    "r2UnlinkedEditionRecords": 0,
+    "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 182,
     "worksWithDeclaredRemoteIndex": 32
   },
-  "unlinkedR2EditionIds": [
-    "apolonio-argonauticas",
-    "isocrates-discursos",
-    "lisias-discursos",
-    "longino-sublime",
-    "longo-dafnis-es",
-    "teocrito-bucolicos"
-  ],
+  "unlinkedR2EditionIds": [],
   "additionalWorks": [
     {
       "id": "palladio-quattro-libri",
@@ -4096,7 +4089,18 @@
           "url": "https://libros.vitruvius-digital-library.org/corpus/apolonio-argonauticas-grc.json"
         }
       ],
-      "r2FacsimileEditions": []
+      "r2FacsimileEditions": [
+        {
+          "editionId": "apolonio-argonauticas",
+          "title": "The Argonautica; with an English translation by R.C. Seaton",
+          "year": 1912,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apolonio-argonauticas.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/apolonio-argonauticas.json",
+          "sha256": "646c875f7113a337ac27df8c9e4338e4714f081950a245d9906c6ec11c787259",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
     },
     {
       "id": "isocrates-discursos",
@@ -4110,7 +4114,18 @@
           "url": "https://libros.vitruvius-digital-library.org/corpus/isocrates-discursos-grc.json"
         }
       ],
-      "r2FacsimileEditions": []
+      "r2FacsimileEditions": [
+        {
+          "editionId": "isocrates-discursos",
+          "title": "Ad demonicum et Panegyricus Isocrates",
+          "year": 1868,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/isocrates-discursos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/isocrates-discursos.json",
+          "sha256": "53533d699b39306984f5a94b580850b5c43fcf3831f967cf86ab3fa311fa8196",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
     },
     {
       "id": "lisias-discursos",
@@ -4124,7 +4139,18 @@
           "url": "https://libros.vitruvius-digital-library.org/corpus/lisias-discursos-grc.json"
         }
       ],
-      "r2FacsimileEditions": []
+      "r2FacsimileEditions": [
+        {
+          "editionId": "lisias-discursos",
+          "title": "Selections from The Attic orators: Antiphon, Andokides, Lysias, Isokrates, Isaeos;",
+          "year": 1880,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lisias-discursos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/lisias-discursos.json",
+          "sha256": "a3fdc740efc581502f37587442dfba52343db5a5242c1bf1148918607b52465b",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
     },
     {
       "id": "longino-sublime",
@@ -4138,7 +4164,18 @@
           "url": "https://libros.vitruvius-digital-library.org/corpus/longino-sublime-grc.json"
         }
       ],
-      "r2FacsimileEditions": []
+      "r2FacsimileEditions": [
+        {
+          "editionId": "longino-sublime",
+          "title": "Longinus on the sublime: the Greek text edited after the Paris manuscript with introduction, translation, facsimiles and appendices by W. Rhys Roberts",
+          "year": 1907,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longino-sublime.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/longino-sublime.json",
+          "sha256": "63f3a202e936b3331bc0e7bf391984d4370d7bbd6b8c7184ece1e654c7bd176e",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
     },
     {
       "id": "teocrito-bucolicos",
@@ -4152,7 +4189,18 @@
           "url": "https://libros.vitruvius-digital-library.org/corpus/teocrito-bucolicos-grc.json"
         }
       ],
-      "r2FacsimileEditions": []
+      "r2FacsimileEditions": [
+        {
+          "editionId": "teocrito-bucolicos",
+          "title": "The Greek bucolic poets",
+          "year": 1916,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teocrito-bucolicos.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/teocrito-bucolicos.json",
+          "sha256": "13322ac3de07d027d8c4ddc054d327aebdc98da8de7fa0f3e16a0a2e2daf832b",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        }
+      ]
     },
     {
       "id": "antologia-griega",
@@ -4525,6 +4573,16 @@
           "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longo-dafnis-cloe.pdf",
           "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/longo-dafnis-cloe.json",
           "sha256": "243d4d4bc1b9131da898b7c0f9be64e33a41a7024560dc5dc8d03d073f93c25f",
+          "objectStatus": "declared-in-r2-catalogue-not-live-probed"
+        },
+        {
+          "editionId": "longo-dafnis-es",
+          "title": "Dafnis y Cloe : o Las pastorales de Longo",
+          "year": 1927,
+          "language": "grc",
+          "pdf": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longo-dafnis-es.pdf",
+          "text": "https://libros.vitruvius-digital-library.org/clasicos/texto/longo-dafnis-es.json",
+          "sha256": "74d8c964f4e9e90ce6e1ca4ff823429b0a1fc353bd2d1b894fb6e37b50dd8782",
           "objectStatus": "declared-in-r2-catalogue-not-live-probed"
         }
       ]
