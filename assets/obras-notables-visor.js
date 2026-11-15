@@ -180,6 +180,8 @@ function mostrar(n) {
  img.src = f.imagen;
  img.onerror = () => { $("estado").textContent = "No se pudo cargar la imagen "+actual+". Intenta otro folio."; };
  nomenclatura(f);
+ // Refrescar los dos visores de Palladio con la imagen actual; no atribuirles un folio histórico equivalente.
+ window.PalladioParallel?.update(f);
  filtros();
  pintarMarcas();
  for (const ficha of document.querySelectorAll(".ficha-folio"))
