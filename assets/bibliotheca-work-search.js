@@ -302,7 +302,7 @@ function mount(parent,data){
  addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
  const advanced=make("details");advanced.className="bws-advanced";
   // Keep scholarly period/century/language controls visible in the Bibliotheca catalogue.
-  if(parent.classList.contains("searcharea"))advanced.open=true;
+  if(parent.classList.contains("searcharea")||parent.id==="front-classical-works")advanced.open=true;
  const summary=make("summary","Filtros avanzados · género, siglo, período, idioma y alfabeto");
  advanced.append(summary,filters,alphabet,historicalHint,originalHint,dateClarifier,standards);
  section.append(title,subtitle,form,advanced,region,help);
@@ -392,7 +392,8 @@ async function bootstrap(){
   ]);
   if(!catalogRes.ok||!registryRes.ok)throw Error("Catalog or registry unavailable");
   const [catalog,registry]=await Promise.all([catalogRes.json(),registryRes.json()]);
-  mount(parent,{catalog,registry});
+  if(parent.id==="front-classical-works")parent.replaceChildren();
+   mount(parent,{catalog,registry});
   fetch("data/architecture-heritage-search.json",{cache:"no-cache"})
    .then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})
    .then(j=>addHistoricalViewers(j.records))
