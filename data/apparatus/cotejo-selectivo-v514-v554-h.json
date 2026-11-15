@@ -728,6 +728,74 @@
         "display": "‖ II.8.10 [civibus ad requiescendum aetatis otio] Kur. (seclus., sec. app. T) : civibus ad requiescendum aetatis otio H (f. 29r, ex imagine) ‖",
         "caution": "La conservación material del inciso en H está comprobada; no confundir los corchetes de seclusión editorial con omisión del testigo ni atribuir la decisión sin examinar la fuente."
       }
+    },
+    {
+      "locus": "2.1.4",
+      "lemma": "ad extremos ⟨angulos⟩ transtra",
+      "reading": "ad extremos transtra",
+      "siglum": "H",
+      "folio": "20r",
+      "sources": [
+        "V514-T-p1103-50",
+        "V554-T-p1112-247"
+      ],
+      "note": "La secuencia al final de H f. 20r transmite «recidentes ad extremos transtra traiciunt gradatim» sin angulos. Los apéndices V514 y V554 atribuyen a Krohn el suplemento ⟨angulos⟩. La atribución exacta a Kr. debe comprobarse sobre su impreso.",
+      "status": "omisión de angulos verificada directamente en H f.20r; atribución editorial a Krohn según V514/V554",
+      "evidenceClass": "visual_folio_reading",
+      "verifiedAutopsy": true,
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "20r",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_047_f-20r.jpg",
+        "observedReading": "recidentes ad extremos transtra traiciunt gradatim",
+        "verification": "lectura visual directa del tramo inferior de H f. 20r",
+        "note": "La fotografía confirma la ausencia de angulos entre extremos y transtra; no se extrapola el apoyo de otros manuscritos."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "II.1.4",
+        "selected": "ad extremos ⟨angulos⟩ transtra",
+        "selectedAttribution": "Kur. (suppl. Kr. sec. app. T)",
+        "variant": "ad extremos transtra",
+        "variantAttribution": "H (ex imagine)",
+        "folio": "20r",
+        "display": "‖ II.1.4 ad extremos ⟨angulos⟩ transtra Kur. (suppl. Kr. sec. app. T) : ad extremos transtra H (f. 20r, ex imagine; om. angulos) ‖",
+        "caution": "El suplemento procede del comentario editorial y la omisión está comprobada en H; no se presenta como cotejo directo del impreso de Krohn."
+      }
+    },
+    {
+      "locus": "3.3.10",
+      "lemma": "in novem partes ... et dimidiam partem",
+      "reading": "in novem partibus ... et dimidiam partem",
+      "siglum": "H",
+      "folio": "42r",
+      "sources": [
+        "V514-T-p1104-59",
+        "V554-T-p1113-256"
+      ],
+      "note": "H f. 42r presenta la proporción de nueve partes y media del éustilo; se confirma la cifra transmitida que los apéndices destacan. El cambio de flexión partes/partibus se registra como observación gráfica/gramatical y no como alteración de la proporción 9½.",
+      "status": "proporción nueve y media comprobada en H; nota contextual, sin variante cuantitativa sustantiva frente a V514",
+      "evidenceClass": "visual_context_reading",
+      "verifiedAutopsy": true,
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "42r",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_091_f-42r.jpg",
+        "observedReading": "in novem partibus ... et dimidiam partem",
+        "verification": "inspección visual de los renglones centrales de H f. 42r",
+        "note": "La cifra del éustilo es 9½, como en V514/V554. El texto de Rose/Krohn requiere control puntual de facsímil."
+      },
+      "criticalUnit": {
+        "form": "nota_graphica",
+        "location": "III.3.10",
+        "selected": "in novem partes ... et dimidiam partem",
+        "selectedAttribution": "Kur.",
+        "variant": "in novem partibus ... et dimidiam partem",
+        "variantAttribution": "H",
+        "folio": "42r",
+        "display": "‖ III.3.10 in novem partes ... et dimidiam partem Kur. : in novem partibus ... et dimidiam partem H (f. 42r, ex imagine; ratio 9½ constat) ‖",
+        "caution": "Nota gramatical y de concordancia numérica. No presenta el acuerdo en 9½ como divergencia sustantiva."
+      }
     }
   ],
   "apparatusConventions": {
