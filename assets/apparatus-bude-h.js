@@ -23,6 +23,8 @@ function readingFor(folio){
 }
 function appendReferences(locus){
   const nav=make("p");
+  nav.append(link("Comparar H, latín V514 y traducción en tres visores","concordancia-folios.html?locus="+encodeURIComponent(locus)));
+  nav.append(" · ");
   nav.append(link("Registro ecdótico: observaciones H","registro-ecdotico.html?tipo=lectura-h&q="+encodeURIComponent(locus)));
   nav.append(" · ");
   nav.append(link("Catálogo institucional de Harley MS 2767","https://searcharchives.bl.uk/catalog/040-002048598"));
