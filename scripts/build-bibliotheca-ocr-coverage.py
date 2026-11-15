@@ -75,7 +75,7 @@ def main():
         "limits": "Índice por raíces sobre OCR no revisado, no traducción, no lematización morfológica, ni correspondencia certificada con loci. La presencia en el listado no prueba que cada palabra tenga una localización correcta; consultar auditoría léxica en vivo.",
         "counts": {
             "masterWorks": len(master), "withRegisteredText": len(indexed),
-            "withoutRegisteredText": len(rows) + len(no_ocr),
+            "withoutRegisteredText": len(rows) + len(no_ocr) + len(existing_structured),
             "withoutTextButWithR2OcrIndex": len(rows),
             "withoutOwnRegistryButWithLinkedStructuredEdition": len(existing_structured),
             "withoutTextOrLinkedR2OcrIndex": len(no_ocr)
