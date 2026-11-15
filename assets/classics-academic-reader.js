@@ -14,12 +14,37 @@ function shortLocus(value){
  const text=String(value||"");
  return text.replace(/urn:cts:[^:]+:[^:]+:/gi,"").replace(/^(tlg\d+\.tlg\d+):/,"$1 · ");
 }
-const locusKey=v=>shortLocus(v).trim().toLowerCase().replace(/^(?:locus|cap[íi]tulo|§)\s*/u,"").replace(/\s+/g,"");
+/* Normalize the two attested CTS locus spellings:
+   urn:cts:greekLit:tlg0532.tlg001.perseus-grc2:1.1.1
+   urn:cts:greekLit:tlg0532.tlg001.perseus-grc2.1.1.1
+   and their unqualified passage coordinates. Never match a different work. */
+function locusParts(value){
+ const raw=String(value||"").trim().toLowerCase().replace(/^(?:locus|cap[íi]tulo|§)\s*/u,"").replace(/\s+/g,"");
+ if(!raw)return null;
+ const isCts=raw.startsWith("urn:cts:");
+ if(isCts){
+  const v=raw.match(/^urn:cts:[^:]+:([^:]+?)(?::|\.)(\d+(?:\.\d+)*)$/);
+  if(!v)return {raw,work:null,ref:null};
+  const workMatch=v[1].match(/^(tlg\d+\.tlg\d+|phi\d+\.phi\d+)/);
+  return {raw,work:workMatch?.[1]||v[1],ref:v[2]};
+ }
+ const local=raw.match(/^(\d+(?:\.\d+)*)$/);
+ if(local)return {raw,work:null,ref:local[1]};
+ return {raw,work:null,ref:null};
+}
 function findLocus(passages,value){
+ if(!Array.isArray(passages)||!value)return -1;
  const exact=passages.findIndex(p=>p.locus===value);if(exact>=0)return exact;
- const key=locusKey(value),found=[];
- passages.forEach((p,i)=>{if(locusKey(p.locus)===key)found.push(i)});
- return found.length===1?found[0]:-1;
+ const wanted=locusParts(value);
+ if(!wanted)return -1;
+ const matches=[];
+ passages.forEach((passage,index)=>{
+  const candidate=locusParts(passage.locus);
+  if(!candidate)return;
+  if(wanted.ref&&candidate.ref===wanted.ref&&(!wanted.work||!candidate.work||wanted.work===candidate.work))matches.push(index);
+  else if(!wanted.ref&&wanted.raw===candidate.raw)matches.push(index);
+ });
+ return matches.length===1?matches[0]:-1;
 }
 async function prepare(corpus){
  const manifest=await json("data/classics-corpus/reading-notes/manifest.json?v=20261114-bude-1");
