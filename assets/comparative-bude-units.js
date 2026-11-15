@@ -82,7 +82,13 @@ async function render(query){
    const observed=E("p",null,"bude-note");
    observed.append("FOLIO EXAMINADO · SIN LECTURA CERTIFICADA: "+e.imageInspection.warning+" ");
    observed.append(A("Examinar fotografía en GitHub","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/"+e.imageInspection.file));
+   if(e.imageInspection.observed)observed.append(E("span"," Contexto localizado: "+e.imageInspection.observed)); 
    verified.append(observed);
+   if(e.imageInspection.adjacent?.length){
+    const links=E("p",null,"bude-note");links.append("Folios contiguos cotejados: ");
+    e.imageInspection.adjacent.forEach((f,i)=>{if(i)links.append(" · ");links.append(A("H f. "+f.folio,hViewerLink(f.folio,locus)));});
+    verified.append(links);
+   }
   }
   if(e.visualEvidence){
    const proof=E("p",null,"bude-note");
