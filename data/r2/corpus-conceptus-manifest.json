@@ -1,0 +1,12 @@
+{
+  "schema": "vdl-r2-corpus-conceptus-manifest-v1",
+  "generated": "2026-11-15T04:12:37.067252+00:00",
+  "url": "https://libros.vitruvius-digital-library.org/corpus/indice/semantic-conceptus-v1.json",
+  "sha256": "f079ce22b05f7c633aca9373837c82a49d75e18b2dda4dc3303f07e6773d91e4",
+  "sourceManifestSha256": "5b5921806171f0c6ae40313ceac9ec6dd45e22b8cf6eeedc21e16ee2c01bb43a",
+  "dictionarySha256": "921a185b7af4c0c194cd3874e7440f754d6ca14cf2e2cae5c45fe1af752e1b4c",
+  "editionCount": 32,
+  "distinctWorks": 32,
+  "methods": "Términos Conceptus realmente atestiguados en textos R2, sin lematización, equivalencias inventadas ni cotejo crítico",
+  "verification": "SHA256 completo de los 32 originales, respuesta S3 y lectura pública del índice; los pasajes no están cotejados con manuscritos"
+}
