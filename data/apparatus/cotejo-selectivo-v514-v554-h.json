@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -183,20 +183,33 @@
         "Krohn 1912 aparato OCR"
       ],
       "note": "V514 y V554 describen una omisión por salto. El OCR de Rose y el de Krohn coinciden en atribuir «om. HS» a un segmento del entorno «subtilitate ... elegantia», mientras G conserva la secuencia. La extensión exacta del segmento y sus límites se deben controlar en los impresos y el folio de H antes de establecer el lema diplomático.",
-      "status": "imagen inspeccionada; lectura específica y límites del locus pendientes",
+      "status": "folio principal y vecinos examinados; tramo contextual localizado, variante crítica aún no certificada",
       "comparison": {
         "kurilo_latin": "Subtilitate et ornatu symmetriaque sunt mutuati. posteri vero elegantia",
         "h_transcription": "om. (salto), según aparato de V514/V554",
         "rose_apparatus_ocr": "subtilitate — (14) eligantia G: om. HS.",
         "krohn_apparatus_ocr": "subtilitate — elegantia G: om. HS"
       },
-      "evidenceClass": "candidate_cross_source",
+      "evidenceClass": "visual_context_not_lemma",
       "verifiedAutopsy": false,
       "imageInspection": {
         "folio": "49r",
         "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_105_f-49r.jpg",
-        "inspection": "fotografía abierta y observada; pasaje específico pendiente",
-        "warning": "Se abrió f. 49r; la ausencia de un tramo largo no puede establecerse sin fijar límites entre 48v y 49r y contrastar con G y los impresos."
+        "adjacent": [
+          {
+            "folio": "48v",
+            "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_104_f-48v.jpg",
+            "image": 104
+          },
+          {
+            "folio": "49v",
+            "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_106_f-49v.jpg",
+            "image": 106
+          }
+        ],
+        "inspection": "fotografías f. 48v, 49r y 49v abiertas y comparadas con el texto de V514 y las referencias OCR de Rose/Krohn",
+        "observed": "En f. 49r se reconoce el contexto de los órdenes jónico y corintio; la omisión larga «subtilitate ... elegantia» se atribuye a HS en los dos aparatos impresos transcritos por OCR, pero no se declara aquí su alcance exacto verificado directamente.",
+        "warning": "Delimitación manuscrita y alcance de la omisión requieren transcripción renglón a renglón y control del aparato impreso; no etiquetar autopsia plena."
       }
     },
     {
@@ -212,20 +225,33 @@
         "Rose 1899, aparato OCR al locus"
       ],
       "note": "El aparato de Krohn registra «spatio tribuatur ... Kr : ratio habeatur x»; V514 y V554 atribuyen ratio habeatur a la tradición y consignan H, G y Rose en su comentario. El registro automático Rose de este locus no contiene inequívocamente ese lema: no se atribuye a su OCR una lectura inexistente. La restitución textual y la asignación de H están documentadas editorialmente, pero sin autopsia folio-por-folio propia.",
-      "status": "imagen inspeccionada; lectura específica y límites del locus pendientes",
+      "status": "folio principal y vecinos examinados; tramo contextual localizado, variante crítica aún no certificada",
       "comparison": {
         "kurilo_latin": "ratio habeatur (decisión reportada en apéndice; verificar contra pasaje V514)",
         "h_transcription": "ratio habeatur (H según V514/V554)",
         "rose_apparatus_ocr": "Las entradas OCR asociadas al locus no contienen el lema ratio habeatur; Rose se cita en el comentario V514/V554.",
         "krohn_apparatus_ocr": "spatio tribuatur ... Kr: ratio habeatur x"
       },
-      "evidenceClass": "candidate_cross_source",
+      "evidenceClass": "visual_context_not_lemma",
       "verifiedAutopsy": false,
       "imageInspection": {
         "folio": "81v",
         "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_170_f-81v.jpg",
-        "inspection": "fotografía abierta y observada; pasaje específico pendiente",
-        "warning": "Se abrió f. 81v; el sintagma ratio habeatur / spatio tribuatur no queda identificado con seguridad en esa imagen. Verificar folios contiguos antes de atribuirlo a H."
+        "adjacent": [
+          {
+            "folio": "81r",
+            "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_169_f-81r.jpg",
+            "image": 169
+          },
+          {
+            "folio": "82r",
+            "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_171_f-82r.jpg",
+            "image": 171
+          }
+        ],
+        "inspection": "fotografías f. 81r, 81v y 82r abiertas; cotejo del contexto de V514 VI.3.3–5",
+        "observed": "El final de f. 81v contiene el comienzo del pasaje «Altitudo eorum ... sub trabes ...» de VI.3.4; en f. 82r continúa el desarrollo de las dimensiones y empieza el párrafo siguiente («Cum autem ab XL ...», «Non enim atria minora ...»).",
+        "warning": "La lectura exacta «ratio habeatur» frente a «spatio tribuatur» sigue pendiente de verificación letra por letra en una ampliación del tercio inferior de 81v; el enlace al folio y el contexto sí quedan confirmados."
       }
     },
     {
