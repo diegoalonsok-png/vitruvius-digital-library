@@ -1,24 +1,162 @@
 {
   "schema": "vdl-bibliotheca-lexical-live-v1",
-  "generated": "2026-11-15T04:08:27.290Z",
+  "generated": "2026-11-15T04:09:30.280Z",
   "method": "GET de OCR en R2, GET de fragmentos invertidos R2; comparación de palabras atestiguadas y páginas digitales con el mismo normalizador del visor",
   "limitations": "El modo --full verifica tres raíces del OCR por edición catalogada; no implica validación total de todas las raíces ni lematización filológica, ni exactitud paleográfica del OCR.",
   "cataloguedEditions": 117,
   "sampledEditionIds": [
+    "antologia-griega",
     "apollodorus-poliorcetics",
-    "athenaeus-mechanicus",
-    "ptolemy-geographia",
-    "plutarco-vidas",
-    "tucidides-historia",
-    "teofrasto-historia-plantas",
+    "apolonio-argonauticas",
+    "aquiles-tacio-leucipa",
+    "aristofanes-comedias",
+    "aristoteles-del-cielo",
+    "aristoteles-historia-animales",
+    "aristoteles-metafisica",
+    "aristoteles-politica",
+    "aristoteles-meteorologica",
     "arquimedes-obras",
-    "accius-fragmenta",
-    "longino-sublime",
+    "athenaeus-mechanicus",
+    "baquilides-poemas",
+    "biton-kataskeuai",
+    "calimaco-himnos",
+    "ptolemy-geographia",
+    "demostenes-discursos",
+    "diogenes-laercio-vidas",
+    "epicuro-restos",
+    "esquilo-tragedias",
+    "esquines-discursos",
+    "estrabon-geografia",
+    "euclides-elementos",
+    "euripides-tragedias",
+    "philo-belopoeica",
+    "filostrato-apolonio",
+    "galeno-opera-kuhn",
+    "galeno-kuhn-vol01",
+    "galeno-kuhn-vol19",
+    "galeno-scripta-minora",
+    "galeno-facultades-naturales",
+    "herodoto-historias",
+    "hipocrates-obras",
+    "iseo-discursos",
+    "isocrates-discursos",
+    "jenofonte-anabasis",
+    "jenofonte-ciropedia",
+    "jenofonte-economico",
+    "jenofonte-memorabilia",
+    "jamblico-vida-pitagorica",
+    "lisias-discursos",
+    "longo-dafnis-cloe",
     "longo-dafnis-es",
+    "luciano-obras",
+    "menandro-comedias",
+    "origenes",
+    "pausanias-descripcion",
+    "platon-banquete",
+    "platon-cratilo-parmenides",
+    "platon-fedon",
+    "platon-protagoras",
+    "platon-leyes",
+    "platon-teeteto-sofista",
+    "platon-timeo",
+    "plotino-eneadas",
+    "plutarco-vidas",
+    "lyra-graeca",
+    "polibio-historias",
+    "proclo-comentario-euclides",
+    "longino-sublime",
+    "quinto-esmirna-posthomericas",
+    "sexto-empirico-obras",
+    "sofocles-tragedias",
+    "teofrasto-historia-plantas",
+    "teocrito-bucolicos",
+    "teon-esmirna-expositio",
+    "tucidides-historia",
+    "palladio-quattro-libri",
+    "vignola-cinque-ordini",
+    "vasari-vite",
+    "serlio-architettura",
+    "scamozzi-idea-architettura",
+    "accius-fragmenta",
+    "agustin-confesiones",
+    "amiano-marcelino-es",
+    "anthologia-latina",
+    "apuleyo-metamorfosis",
+    "aulo-gelio-noches",
+    "ausonio-obras",
+    "beda-de-temporum-ratione",
+    "boecio-consolacion",
+    "casiodoro-variae",
+    "celso-de-medicina",
+    "ciceron-de-oratore",
+    "ciceron-de-re-publica",
+    "ciceron-tusculanas",
+    "claudiano-poemas",
+    "columela-de-re-rustica",
+    "cesar-guerra-civil",
+    "festo-verborum-significatu",
+    "petrarca-africa",
+    "petrarca-secretum",
+    "frontino-de-aquis",
+    "higino-fabulas",
+    "hyginus-gromaticus",
+    "isidoro-etymologiae",
+    "juvenal-persio-satiras",
+    "alberti-de-re-aedificatoria",
+    "lucano-farsalia",
+    "manilio-astronomica",
+    "marcial-epigramas",
+    "marciano-capela-nuptiis",
+    "minucio-felix-octavio",
+    "nonio-marcelo-doctrina",
+    "ovidio-fastos",
+    "paladio-opus-agriculturae",
+    "petronio-satiricon",
+    "plinio-joven-cartas",
+    "plinio-historia-natural",
+    "propercio-elegias",
+    "quintiliano-institutio",
+    "salustio-obras",
+    "seneca-tragedias",
+    "tito-livio-historia",
     "rose-vitruvius-1899",
-    "antologia-griega"
+    "valerio-flaco-argonautica",
+    "varron-de-re-rustica"
   ],
   "records": [
+    {
+      "id": "antologia-griega",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/antologia-griega.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/antologia-griega.pdf",
+      "ocrPages": 424,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "contents",
+          "root": "content",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=antologia-griega&pagina=9&q=contents"
+        },
+        {
+          "word": "various",
+          "root": "uario",
+          "page": 9,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=antologia-griega&pagina=9&q=various"
+        },
+        {
+          "word": "arithmetical",
+          "root": "arithmetical",
+          "page": 9,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=antologia-griega&pagina=9&q=arithmetical"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
     {
       "id": "apollodorus-poliorcetics",
       "sourceLanguage": "grc",
@@ -35,183 +173,282 @@
           "viewer": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics&pagina=21&q=corpus"
         },
         {
+          "word": "ratio",
+          "root": "rati",
+          "page": 397,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics&pagina=397&q=ratio"
+        },
+        {
           "word": "γανικοσ",
           "root": "γανικ",
           "page": 19,
           "indexedOccurrences": 2,
           "viewer": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics&pagina=19&q=%CE%B3%CE%B1%CE%BD%CE%B9%CE%BA%CE%BF%CF%83"
-        },
-        {
-          "word": "χελωναι",
-          "root": "χελων",
-          "page": 20,
-          "indexedOccurrences": 83,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics&pagina=20&q=%CF%87%CE%B5%CE%BB%CF%89%CE%BD%CE%B1%CE%B9"
         }
       ],
       "errors": [],
-      "originalScriptProbes": 2
+      "originalScriptProbes": 1
     },
     {
-      "id": "athenaeus-mechanicus",
+      "id": "apolonio-argonauticas",
       "sourceLanguage": "grc",
-      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/athenaeus-mechanicus.json",
-      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/athenaeus-mechanicus.pdf",
-      "ocrPages": 446,
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/apolonio-argonauticas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apolonio-argonauticas.pdf",
+      "ocrPages": 466,
       "lexicalTokensTested": 3,
       "lexicalMatches": [
         {
-          "word": "corpus",
-          "root": "corp",
-          "page": 21,
-          "indexedOccurrences": 7,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus&pagina=21&q=corpus"
-        },
-        {
-          "word": "γανικοσ",
-          "root": "γανικ",
-          "page": 19,
-          "indexedOccurrences": 2,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus&pagina=19&q=%CE%B3%CE%B1%CE%BD%CE%B9%CE%BA%CE%BF%CF%83"
-        },
-        {
-          "word": "χελωναι",
-          "root": "χελων",
-          "page": 20,
-          "indexedOccurrences": 83,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus&pagina=20&q=%CF%87%CE%B5%CE%BB%CF%89%CE%BD%CE%B1%CE%B9"
-        }
-      ],
-      "errors": [],
-      "originalScriptProbes": 2
-    },
-    {
-      "id": "ptolemy-geographia",
-      "sourceLanguage": "grc",
-      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/ptolemy-geographia.json",
-      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ptolemy-geographia.pdf",
-      "ocrPages": 456,
-      "lexicalTokensTested": 3,
-      "lexicalMatches": [
-        {
-          "word": "templum",
-          "root": "templ",
-          "page": 15,
-          "indexedOccurrences": 24,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia&pagina=15&q=templum"
-        },
-        {
-          "word": "ratio",
-          "root": "rati",
-          "page": 29,
-          "indexedOccurrences": 21,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia&pagina=29&q=ratio"
-        },
-        {
-          "word": "tempus",
-          "root": "temp",
-          "page": 32,
-          "indexedOccurrences": 8,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia&pagina=32&q=tempus"
-        }
-      ],
-      "errors": [],
-      "originalScriptProbes": 0
-    },
-    {
-      "id": "plutarco-vidas",
-      "sourceLanguage": "grc",
-      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/plutarco-vidas.json",
-      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plutarco-vidas.pdf",
-      "ocrPages": 656,
-      "lexicalTokensTested": 3,
-      "lexicalMatches": [
-        {
-          "word": "φιλια",
-          "root": "φιλι",
-          "page": 76,
-          "indexedOccurrences": 8,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas&pagina=76&q=%CF%86%CE%B9%CE%BB%CE%B9%CE%B1"
-        },
-        {
-          "word": "πρβεεατοβυ",
-          "root": "πρβεεατοβ",
-          "page": 15,
+          "word": "βιβλιοθηκων",
+          "root": "βιβλιοθηκ",
+          "page": 12,
           "indexedOccurrences": 1,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas&pagina=15&q=%CF%80%CF%81%CE%B2%CE%B5%CE%B5%CE%B1%CF%84%CE%BF%CE%B2%CF%85"
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apolonio-argonauticas&pagina=12&q=%CE%B2%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%B7%CE%BA%CF%89%CE%BD"
         },
         {
-          "word": "δημοσθενησ",
-          "root": "δημοσθεν",
-          "page": 20,
-          "indexedOccurrences": 71,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas&pagina=20&q=%CE%B4%CE%B7%CE%BC%CE%BF%CF%83%CE%B8%CE%B5%CE%BD%CE%B7%CF%83"
+          "word": "μουσειου",
+          "root": "μουσει",
+          "page": 12,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apolonio-argonauticas&pagina=12&q=%CE%BC%CE%BF%CF%85%CF%83%CE%B5%CE%B9%CE%BF%CF%85"
+        },
+        {
+          "word": "αξιωθηναι",
+          "root": "αξιωθ",
+          "page": 12,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apolonio-argonauticas&pagina=12&q=%CE%B1%CE%BE%CE%B9%CF%89%CE%B8%CE%B7%CE%BD%CE%B1%CE%B9"
         }
       ],
       "errors": [],
       "originalScriptProbes": 3
     },
     {
-      "id": "tucidides-historia",
+      "id": "aquiles-tacio-leucipa",
       "sourceLanguage": "grc",
-      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/tucidides-historia.json",
-      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/tucidides-historia.pdf",
-      "ocrPages": 512,
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/aquiles-tacio-leucipa.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aquiles-tacio-leucipa.pdf",
+      "ocrPages": 488,
       "lexicalTokensTested": 3,
       "lexicalMatches": [
         {
-          "word": "portrait",
-          "root": "portra",
-          "page": 10,
-          "indexedOccurrences": 2,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=tucidides-historia&pagina=10&q=portrait"
+          "word": "corpus",
+          "root": "corp",
+          "page": 149,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aquiles-tacio-leucipa&pagina=149&q=corpus"
         },
         {
-          "word": "perikles",
-          "root": "perikl",
+          "word": "ατριαρχου",
+          "root": "ατριαρχ",
+          "page": 14,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aquiles-tacio-leucipa&pagina=14&q=%CE%B1%CF%84%CF%81%CE%B9%CE%B1%CF%81%CF%87%CE%BF%CF%85"
+        },
+        {
+          "word": "ικωνσταντινουπολεωσ",
+          "root": "ικωνσταντινουπολ",
+          "page": 14,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aquiles-tacio-leucipa&pagina=14&q=%CE%B9%CE%BA%CF%89%CE%BD%CF%83%CF%84%CE%B1%CE%BD%CF%84%CE%B9%CE%BD%CE%BF%CF%85%CF%80%CE%BF%CE%BB%CE%B5%CF%89%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "aristofanes-comedias",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristofanes-comedias.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristofanes-comedias.pdf",
+      "ocrPages": 457,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "προσωμα",
+          "root": "προσωμ",
+          "page": 13,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristofanes-comedias&pagina=13&q=%CF%80%CF%81%CE%BF%CF%83%CF%89%CE%BC%CE%B1"
+        },
+        {
+          "word": "τρυγαιου",
+          "root": "τρυγαι",
+          "page": 13,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristofanes-comedias&pagina=13&q=%CF%84%CF%81%CF%85%CE%B3%CE%B1%CE%B9%CE%BF%CF%85"
+        },
+        {
+          "word": "θυγατερεσ",
+          "root": "θυγατερ",
+          "page": 13,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristofanes-comedias&pagina=13&q=%CE%B8%CF%85%CE%B3%CE%B1%CF%84%CE%B5%CF%81%CE%B5%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "aristoteles-del-cielo",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-del-cielo.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-del-cielo.pdf",
+      "ocrPages": 250,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "φιλια",
+          "root": "φιλι",
+          "page": 48,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-del-cielo&pagina=48&q=%CF%86%CE%B9%CE%BB%CE%B9%CE%B1"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 31,
+          "indexedOccurrences": 22,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-del-cielo&pagina=31&q=ratio"
+        },
+        {
+          "word": "πυοδδδθησ",
+          "root": "πυοδδδθ",
+          "page": 11,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-del-cielo&pagina=11&q=%CF%80%CF%85%CE%BF%CE%B4%CE%B4%CE%B4%CE%B8%CE%B7%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "aristoteles-historia-animales",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-historia-animales.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-historia-animales.pdf",
+      "ocrPages": 508,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 100,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-historia-animales&pagina=100&q=corpus"
+        },
+        {
+          "word": "henrico",
+          "root": "henric",
           "page": 10,
           "indexedOccurrences": 1,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=tucidides-historia&pagina=10&q=perikles"
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-historia-animales&pagina=10&q=henrico"
         },
         {
-          "word": "british",
-          "root": "british",
+          "word": "jackson",
+          "root": "iackson",
           "page": 10,
-          "indexedOccurrences": 2,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=tucidides-historia&pagina=10&q=british"
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-historia-animales&pagina=10&q=jackson"
         }
       ],
       "errors": [],
       "originalScriptProbes": 0
     },
     {
-      "id": "teofrasto-historia-plantas",
+      "id": "aristoteles-metafisica",
       "sourceLanguage": "grc",
-      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/teofrasto-historia-plantas.json",
-      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teofrasto-historia-plantas.pdf",
-      "ocrPages": 520,
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-metafisica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-metafisica.pdf",
+      "ocrPages": 536,
       "lexicalTokensTested": 3,
       "lexicalMatches": [
         {
-          "word": "weather",
-          "root": "weath",
-          "page": 9,
-          "indexedOccurrences": 92,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas&pagina=9&q=weather"
+          "word": "ratio",
+          "root": "rati",
+          "page": 45,
+          "indexedOccurrences": 22,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-metafisica&pagina=45&q=ratio"
         },
         {
-          "word": "english",
-          "root": "english",
+          "word": "introduction",
+          "root": "introduction",
+          "page": 9,
+          "indexedOccurrences": 51,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-metafisica&pagina=9&q=introduction"
+        },
+        {
+          "word": "prodigies",
+          "root": "prodigi",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-metafisica&pagina=9&q=prodigies"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "aristoteles-politica",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-politica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-politica.pdf",
+      "ocrPages": 372,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 134,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-politica&pagina=134&q=ratio"
+        },
+        {
+          "word": "illustrates",
+          "root": "illustrat",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-politica&pagina=9&q=illustrates"
+        },
+        {
+          "word": "treatise",
+          "root": "treatis",
+          "page": 9,
+          "indexedOccurrences": 10,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-politica&pagina=9&q=treatise"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/aristoteles-meteorologica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aristoteles-meteorologica.pdf",
+      "ocrPages": 474,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 40,
+          "indexedOccurrences": 78,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-meteorologica&pagina=40&q=ratio"
+        },
+        {
+          "word": "preface",
+          "root": "prefac",
           "page": 9,
           "indexedOccurrences": 8,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas&pagina=9&q=english"
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-meteorologica&pagina=9&q=preface"
         },
         {
           "word": "translation",
           "root": "translation",
           "page": 9,
-          "indexedOccurrences": 4,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas&pagina=9&q=translation"
+          "indexedOccurrences": 37,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aristoteles-meteorologica&pagina=9&q=translation"
         }
       ],
       "errors": [],
@@ -251,6 +488,2019 @@
       "originalScriptProbes": 2
     },
     {
+      "id": "athenaeus-mechanicus",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/athenaeus-mechanicus.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/athenaeus-mechanicus.pdf",
+      "ocrPages": 446,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 21,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus&pagina=21&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 397,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus&pagina=397&q=ratio"
+        },
+        {
+          "word": "γανικοσ",
+          "root": "γανικ",
+          "page": 19,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus&pagina=19&q=%CE%B3%CE%B1%CE%BD%CE%B9%CE%BA%CE%BF%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 1
+    },
+    {
+      "id": "baquilides-poemas",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/baquilides-poemas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/baquilides-poemas.pdf",
+      "ocrPages": 558,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 109,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=baquilides-poemas&pagina=109&q=ratio"
+        },
+        {
+          "word": "συρακοσιων",
+          "root": "συρακοσι",
+          "page": 10,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=baquilides-poemas&pagina=10&q=%CF%83%CF%85%CF%81%CE%B1%CE%BA%CE%BF%CF%83%CE%B9%CF%89%CE%BD"
+        },
+        {
+          "word": "ιπποδινατων",
+          "root": "ιπποδιν",
+          "page": 10,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=baquilides-poemas&pagina=10&q=%CE%B9%CF%80%CF%80%CE%BF%CE%B4%CE%B9%CE%BD%CE%B1%CF%84%CF%89%CE%BD"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "biton-kataskeuai",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/biton-kataskeuai.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/biton-kataskeuai.pdf",
+      "ocrPages": 446,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 21,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=biton-kataskeuai&pagina=21&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 397,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=biton-kataskeuai&pagina=397&q=ratio"
+        },
+        {
+          "word": "γανικοσ",
+          "root": "γανικ",
+          "page": 19,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=biton-kataskeuai&pagina=19&q=%CE%B3%CE%B1%CE%BD%CE%B9%CE%BA%CE%BF%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 1
+    },
+    {
+      "id": "calimaco-himnos",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/calimaco-himnos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/calimaco-himnos.pdf",
+      "ocrPages": 668,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "τεχνη",
+          "root": "τεχν",
+          "page": 64,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=calimaco-himnos&pagina=64&q=%CF%84%CE%B5%CF%87%CE%BD%CE%B7"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 378,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=calimaco-himnos&pagina=378&q=ratio"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 396,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=calimaco-himnos&pagina=396&q=corpus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 1
+    },
+    {
+      "id": "ptolemy-geographia",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/ptolemy-geographia.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ptolemy-geographia.pdf",
+      "ocrPages": 456,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "templum",
+          "root": "templ",
+          "page": 15,
+          "indexedOccurrences": 24,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia&pagina=15&q=templum"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 29,
+          "indexedOccurrences": 21,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia&pagina=29&q=ratio"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 32,
+          "indexedOccurrences": 8,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia&pagina=32&q=tempus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "demostenes-discursos",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/demostenes-discursos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/demostenes-discursos.pdf",
+      "ocrPages": 380,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 368,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=demostenes-discursos&pagina=368&q=corpus"
+        },
+        {
+          "word": "oration",
+          "root": "oration",
+          "page": 9,
+          "indexedOccurrences": 19,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=demostenes-discursos&pagina=9&q=oration"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 15,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=demostenes-discursos&pagina=9&q=english"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "diogenes-laercio-vidas",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/diogenes-laercio-vidas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/diogenes-laercio-vidas.pdf",
+      "ocrPages": 524,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=diogenes-laercio-vidas&pagina=9&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 320,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=diogenes-laercio-vidas&pagina=320&q=ratio"
+        },
+        {
+          "word": "latinonnn",
+          "root": "latinonnn",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=diogenes-laercio-vidas&pagina=9&q=latinonnn"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "epicuro-restos",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/epicuro-restos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/epicuro-restos.pdf",
+      "ocrPages": 432,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 180,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=epicuro-restos&pagina=180&q=corpus"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 241,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=epicuro-restos&pagina=241&q=tempus"
+        },
+        {
+          "word": "parisinus",
+          "root": "parisin",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=epicuro-restos&pagina=9&q=parisinus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "esquilo-tragedias",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/esquilo-tragedias.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/esquilo-tragedias.pdf",
+      "ocrPages": 310,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "translated",
+          "root": "translated",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=esquilo-tragedias&pagina=9&q=translated"
+        },
+        {
+          "word": "explained",
+          "root": "explained",
+          "page": 9,
+          "indexedOccurrences": 8,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=esquilo-tragedias&pagina=9&q=explained"
+        },
+        {
+          "word": "trinity",
+          "root": "trinity",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=esquilo-tragedias&pagina=9&q=trinity"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "esquines-discursos",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/esquines-discursos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/esquines-discursos.pdf",
+      "ocrPages": 560,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "δεβοηινεβ",
+          "root": "δεβοηινεβ",
+          "page": 11,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=esquines-discursos&pagina=11&q=%CE%B4%CE%B5%CE%B2%CE%BF%CE%B7%CE%B9%CE%BD%CE%B5%CE%B2"
+        },
+        {
+          "word": "πολιτων",
+          "root": "πολιτ",
+          "page": 32,
+          "indexedOccurrences": 35,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=esquines-discursos&pagina=32&q=%CF%80%CE%BF%CE%BB%CE%B9%CF%84%CF%89%CE%BD"
+        },
+        {
+          "word": "γραψαμενοσ",
+          "root": "γραψα",
+          "page": 32,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=esquines-discursos&pagina=32&q=%CE%B3%CF%81%CE%B1%CF%88%CE%B1%CE%BC%CE%B5%CE%BD%CE%BF%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "estrabon-geografia",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/estrabon-geografia.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/estrabon-geografia.pdf",
+      "ocrPages": 596,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "μετρον",
+          "root": "μετρ",
+          "page": 86,
+          "indexedOccurrences": 14,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=estrabon-geografia&pagina=86&q=%CE%BC%CE%B5%CF%84%CF%81%CE%BF%CE%BD"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 415,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=estrabon-geografia&pagina=415&q=ratio"
+        },
+        {
+          "word": "σουσοισ",
+          "root": "σουσοι",
+          "page": 12,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=estrabon-geografia&pagina=12&q=%CF%83%CE%BF%CF%85%CF%83%CE%BF%CE%B9%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "euclides-elementos",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/euclides-elementos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/euclides-elementos.pdf",
+      "ocrPages": 306,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 31,
+          "indexedOccurrences": 237,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=euclides-elementos&pagina=31&q=ratio"
+        },
+        {
+          "word": "honourable",
+          "root": "honourabl",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=euclides-elementos&pagina=9&q=honourable"
+        },
+        {
+          "word": "fitzwilliam",
+          "root": "fitzwill",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=euclides-elementos&pagina=9&q=fitzwilliam"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "euripides-tragedias",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/euripides-tragedias.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/euripides-tragedias.pdf",
+      "ocrPages": 520,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "translated",
+          "root": "translated",
+          "page": 9,
+          "indexedOccurrences": 134,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=euripides-tragedias&pagina=9&q=translated"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 40,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=euripides-tragedias&pagina=9&q=english"
+        },
+        {
+          "word": "coleridge",
+          "root": "coleridg",
+          "page": 9,
+          "indexedOccurrences": 11,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=euripides-tragedias&pagina=9&q=coleridge"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "philo-belopoeica",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/philo-belopoeica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/philo-belopoeica.pdf",
+      "ocrPages": 446,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 21,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=philo-belopoeica&pagina=21&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 397,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=philo-belopoeica&pagina=397&q=ratio"
+        },
+        {
+          "word": "γανικοσ",
+          "root": "γανικ",
+          "page": 19,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=philo-belopoeica&pagina=19&q=%CE%B3%CE%B1%CE%BD%CE%B9%CE%BA%CE%BF%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 1
+    },
+    {
+      "id": "filostrato-apolonio",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/filostrato-apolonio.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/filostrato-apolonio.pdf",
+      "ocrPages": 640,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "apollonius",
+          "root": "apollon",
+          "page": 9,
+          "indexedOccurrences": 893,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=filostrato-apolonio&pagina=9&q=apollonius"
+        },
+        {
+          "word": "episttes",
+          "root": "epistt",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=filostrato-apolonio&pagina=9&q=episttes"
+        },
+        {
+          "word": "treatise",
+          "root": "treatis",
+          "page": 9,
+          "indexedOccurrences": 76,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=filostrato-apolonio&pagina=9&q=treatise"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-opera-kuhn.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-opera-kuhn.pdf",
+      "ocrPages": 801,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 16,
+          "indexedOccurrences": 36,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-opera-kuhn&pagina=16&q=tempus"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 21,
+          "indexedOccurrences": 52,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-opera-kuhn&pagina=21&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 71,
+          "indexedOccurrences": 18,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-opera-kuhn&pagina=71&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-kuhn-vol01.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol01.pdf",
+      "ocrPages": 801,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 16,
+          "indexedOccurrences": 36,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol01&pagina=16&q=tempus"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 21,
+          "indexedOccurrences": 52,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol01&pagina=21&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 71,
+          "indexedOccurrences": 18,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol01&pagina=71&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-kuhn-vol19.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-kuhn-vol19.pdf",
+      "ocrPages": 802,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "templum",
+          "root": "templ",
+          "page": 35,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol19&pagina=35&q=templum"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 9,
+          "indexedOccurrences": 153,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol19&pagina=9&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 17,
+          "indexedOccurrences": 22,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol19&pagina=17&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-scripta-minora.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-scripta-minora.pdf",
+      "ocrPages": 271,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 8,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-scripta-minora&pagina=8&q=natura"
+        },
+        {
+          "word": "δυναμεων",
+          "root": "δυναμ",
+          "page": 9,
+          "indexedOccurrences": 149,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-scripta-minora&pagina=9&q=%CE%B4%CF%85%CE%BD%CE%B1%CE%BC%CE%B5%CF%89%CE%BD"
+        },
+        {
+          "word": "εατρικη",
+          "root": "εατρικ",
+          "page": 9,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-scripta-minora&pagina=9&q=%CE%B5%CE%B1%CF%84%CF%81%CE%B9%CE%BA%CE%B7"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "galeno-facultades-naturales",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/galeno-facultades-naturales.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/galeno-facultades-naturales.pdf",
+      "ocrPages": 416,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "τεχνη",
+          "root": "τεχν",
+          "page": 34,
+          "indexedOccurrences": 11,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-facultades-naturales&pagina=34&q=%CF%84%CE%B5%CF%87%CE%BD%CE%B7"
+        },
+        {
+          "word": "logos",
+          "root": "logo",
+          "page": 286,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-facultades-naturales&pagina=286&q=logos"
+        },
+        {
+          "word": "εκεινων",
+          "root": "εκειν",
+          "page": 18,
+          "indexedOccurrences": 89,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=galeno-facultades-naturales&pagina=18&q=%CE%B5%CE%BA%CE%B5%CE%B9%CE%BD%CF%89%CE%BD"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "herodoto-historias",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/herodoto-historias.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/herodoto-historias.pdf",
+      "ocrPages": 452,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 446,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=herodoto-historias&pagina=446&q=architectura"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=herodoto-historias&pagina=9&q=english"
+        },
+        {
+          "word": "translation",
+          "root": "translation",
+          "page": 9,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=herodoto-historias&pagina=9&q=translation"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "hipocrates-obras",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/hipocrates-obras.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/hipocrates-obras.pdf",
+      "ocrPages": 440,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 18,
+          "indexedOccurrences": 9,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=hipocrates-obras&pagina=18&q=corpus"
+        },
+        {
+          "word": "ιπποκρατησ",
+          "root": "ιπποκρατ",
+          "page": 18,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=hipocrates-obras&pagina=18&q=%CE%B9%CF%80%CF%80%CE%BF%CE%BA%CF%81%CE%B1%CF%84%CE%B7%CF%83"
+        },
+        {
+          "word": "ψευδωνυμωσ",
+          "root": "ψευδωνυμω",
+          "page": 18,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=hipocrates-obras&pagina=18&q=%CF%88%CE%B5%CF%85%CE%B4%CF%89%CE%BD%CF%85%CE%BC%CF%89%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "iseo-discursos",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/iseo-discursos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/iseo-discursos.pdf",
+      "ocrPages": 520,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 16,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=iseo-discursos&pagina=16&q=corpus"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=iseo-discursos&pagina=9&q=english"
+        },
+        {
+          "word": "translation",
+          "root": "translation",
+          "page": 9,
+          "indexedOccurrences": 10,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=iseo-discursos&pagina=9&q=translation"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "isocrates-discursos",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/isocrates-discursos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/isocrates-discursos.pdf",
+      "ocrPages": 251,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "τεχνη",
+          "root": "τεχν",
+          "page": 37,
+          "indexedOccurrences": 11,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=isocrates-discursos&pagina=37&q=%CF%84%CE%B5%CF%87%CE%BD%CE%B7"
+        },
+        {
+          "word": "μετρον",
+          "root": "μετρ",
+          "page": 55,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=isocrates-discursos&pagina=55&q=%CE%BC%CE%B5%CF%84%CF%81%CE%BF%CE%BD"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 58,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=isocrates-discursos&pagina=58&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "jenofonte-anabasis",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/jenofonte-anabasis.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-anabasis.pdf",
+      "ocrPages": 660,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 296,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-anabasis&pagina=296&q=ratio"
+        },
+        {
+          "word": "minerals",
+          "root": "mineral",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-anabasis&pagina=9&q=minerals"
+        },
+        {
+          "word": "watching",
+          "root": "watching",
+          "page": 9,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-anabasis&pagina=9&q=watching"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "jenofonte-ciropedia",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/jenofonte-ciropedia.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-ciropedia.pdf",
+      "ocrPages": 432,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "μετρον",
+          "root": "μετρ",
+          "page": 62,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-ciropedia&pagina=62&q=%CE%BC%CE%B5%CF%84%CF%81%CE%BF%CE%BD"
+        },
+        {
+          "word": "φιλια",
+          "root": "φιλι",
+          "page": 114,
+          "indexedOccurrences": 9,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-ciropedia&pagina=114&q=%CF%86%CE%B9%CE%BB%CE%B9%CE%B1"
+        },
+        {
+          "word": "χενορηον",
+          "root": "χενορη",
+          "page": 11,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-ciropedia&pagina=11&q=%CF%87%CE%B5%CE%BD%CE%BF%CF%81%CE%B7%CE%BF%CE%BD"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "jenofonte-economico",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/jenofonte-economico.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-economico.pdf",
+      "ocrPages": 455,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "stereotyped",
+          "root": "stereotyped",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-economico&pagina=9&q=stereotyped"
+        },
+        {
+          "word": "cambridge",
+          "root": "cambridg",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-economico&pagina=9&q=cambridge"
+        },
+        {
+          "word": "impression",
+          "root": "impression",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-economico&pagina=9&q=impression"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "jenofonte-memorabilia",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/jenofonte-memorabilia.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jenofonte-memorabilia.pdf",
+      "ocrPages": 512,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "philosophia",
+          "root": "philosophi",
+          "page": 29,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-memorabilia&pagina=29&q=philosophia"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 274,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-memorabilia&pagina=274&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 303,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jenofonte-memorabilia&pagina=303&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/jamblico-vida-pitagorica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/jamblico-vida-pitagorica.pdf",
+      "ocrPages": 423,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "τεχνη",
+          "root": "τεχν",
+          "page": 90,
+          "indexedOccurrences": 12,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jamblico-vida-pitagorica&pagina=90&q=%CF%84%CE%B5%CF%87%CE%BD%CE%B7"
+        },
+        {
+          "word": "templum",
+          "root": "templ",
+          "page": 19,
+          "indexedOccurrences": 53,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jamblico-vida-pitagorica&pagina=19&q=templum"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 18,
+          "indexedOccurrences": 52,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=jamblico-vida-pitagorica&pagina=18&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 1
+    },
+    {
+      "id": "lisias-discursos",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/lisias-discursos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lisias-discursos.pdf",
+      "ocrPages": 456,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "aniiphon",
+          "root": "aniiphon",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=lisias-discursos&pagina=9&q=aniiphon"
+        },
+        {
+          "word": "andokides",
+          "root": "andokid",
+          "page": 9,
+          "indexedOccurrences": 46,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=lisias-discursos&pagina=9&q=andokides"
+        },
+        {
+          "word": "tsokkrales",
+          "root": "tsokkral",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=lisias-discursos&pagina=9&q=tsokkrales"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "longo-dafnis-cloe",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/longo-dafnis-cloe.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longo-dafnis-cloe.pdf",
+      "ocrPages": 458,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 181,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-cloe&pagina=181&q=tempus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 193,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-cloe&pagina=193&q=ratio"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 283,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-cloe&pagina=283&q=corpus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "longo-dafnis-es",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/longo-dafnis-es.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longo-dafnis-es.pdf",
+      "ocrPages": 264,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "musica",
+          "root": "music",
+          "page": 70,
+          "indexedOccurrences": 11,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=70&q=musica"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 109,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=109&q=natura"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 238,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=238&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "luciano-obras",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/luciano-obras.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/luciano-obras.pdf",
+      "ocrPages": 496,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 431,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=luciano-obras&pagina=431&q=corpus"
+        },
+        {
+          "word": "contents",
+          "root": "content",
+          "page": 9,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=luciano-obras&pagina=9&q=contents"
+        },
+        {
+          "word": "hippias",
+          "root": "hippi",
+          "page": 9,
+          "indexedOccurrences": 15,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=luciano-obras&pagina=9&q=hippias"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "menandro-comedias",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/menandro-comedias.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/menandro-comedias.pdf",
+      "ocrPages": 588,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "τεχνη",
+          "root": "τεχν",
+          "page": 254,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=menandro-comedias&pagina=254&q=%CF%84%CE%B5%CF%87%CE%BD%CE%B7"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 17,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=menandro-comedias&pagina=17&q=corpus"
+        },
+        {
+          "word": "οουμοκιλοιε",
+          "root": "οουμοκιλοι",
+          "page": 11,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=menandro-comedias&pagina=11&q=%CE%BF%CE%BF%CF%85%CE%BC%CE%BF%CE%BA%CE%B9%CE%BB%CE%BF%CE%B9%CE%B5"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "origenes",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/origenes.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/origenes.pdf",
+      "ocrPages": 458,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "templum",
+          "root": "templ",
+          "page": 157,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=origenes&pagina=157&q=templum"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 10,
+          "indexedOccurrences": 38,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=origenes&pagina=10&q=tempus"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 21,
+          "indexedOccurrences": 271,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=origenes&pagina=21&q=natura"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "pausanias-descripcion",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/pausanias-descripcion.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/pausanias-descripcion.pdf",
+      "ocrPages": 724,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "μετρον",
+          "root": "μετρ",
+          "page": 700,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=pausanias-descripcion&pagina=700&q=%CE%BC%CE%B5%CF%84%CF%81%CE%BF%CE%BD"
+        },
+        {
+          "word": "δελτιον",
+          "root": "δελτι",
+          "page": 18,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=pausanias-descripcion&pagina=18&q=%CE%B4%CE%B5%CE%BB%CF%84%CE%B9%CE%BF%CE%BD"
+        },
+        {
+          "word": "αρχαιολογικον",
+          "root": "αρχαιολογικ",
+          "page": 18,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=pausanias-descripcion&pagina=18&q=%CE%B1%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CE%BF%CE%BD"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "platon-banquete",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-banquete.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-banquete.pdf",
+      "ocrPages": 262,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 205,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-banquete&pagina=205&q=ratio"
+        },
+        {
+          "word": "preface",
+          "root": "prefac",
+          "page": 9,
+          "indexedOccurrences": 8,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-banquete&pagina=9&q=preface"
+        },
+        {
+          "word": "undeniably",
+          "root": "undeniably",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-banquete&pagina=9&q=undeniably"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "platon-cratilo-parmenides",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-cratilo-parmenides.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-cratilo-parmenides.pdf",
+      "ocrPages": 594,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 437,
+          "indexedOccurrences": 20,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-cratilo-parmenides&pagina=437&q=ratio"
+        },
+        {
+          "word": "mirable",
+          "root": "mirabl",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-cratilo-parmenides&pagina=9&q=mirable"
+        },
+        {
+          "word": "compofition",
+          "root": "compofition",
+          "page": 9,
+          "indexedOccurrences": 45,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-cratilo-parmenides&pagina=9&q=compofition"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "platon-fedon",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-fedon.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-fedon.pdf",
+      "ocrPages": 316,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 47,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-fedon&pagina=47&q=ratio"
+        },
+        {
+          "word": "preface",
+          "root": "prefac",
+          "page": 11,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-fedon&pagina=11&q=preface"
+        },
+        {
+          "word": "intended",
+          "root": "intended",
+          "page": 11,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-fedon&pagina=11&q=intended"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "platon-protagoras",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-protagoras.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-protagoras.pdf",
+      "ocrPages": 256,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "sometime",
+          "root": "sometim",
+          "page": 9,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-protagoras&pagina=9&q=sometime"
+        },
+        {
+          "word": "college",
+          "root": "colleg",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-protagoras&pagina=9&q=college"
+        },
+        {
+          "word": "cambridge",
+          "root": "cambridg",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-protagoras&pagina=9&q=cambridge"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "platon-leyes",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-leyes.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-leyes.pdf",
+      "ocrPages": 608,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "volumes",
+          "root": "uolum",
+          "page": 9,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-leyes&pagina=9&q=volumes"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-leyes&pagina=9&q=english"
+        },
+        {
+          "word": "translation",
+          "root": "translation",
+          "page": 9,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-leyes&pagina=9&q=translation"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "platon-teeteto-sofista",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-teeteto-sofista.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-teeteto-sofista.pdf",
+      "ocrPages": 276,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "μετρον",
+          "root": "μετρ",
+          "page": 36,
+          "indexedOccurrences": 19,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-teeteto-sofista&pagina=36&q=%CE%BC%CE%B5%CF%84%CF%81%CE%BF%CE%BD"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 270,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-teeteto-sofista&pagina=270&q=corpus"
+        },
+        {
+          "word": "αξιωτατη",
+          "root": "αξιωτατ",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-teeteto-sofista&pagina=9&q=%CE%B1%CE%BE%CE%B9%CF%89%CF%84%CE%B1%CF%84%CE%B7"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "platon-timeo",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/platon-timeo.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/platon-timeo.pdf",
+      "ocrPages": 376,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "μετρον",
+          "root": "μετρ",
+          "page": 25,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-timeo&pagina=25&q=%CE%BC%CE%B5%CF%84%CF%81%CE%BF%CE%BD"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 116,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-timeo&pagina=116&q=corpus"
+        },
+        {
+          "word": "ταπιπτει",
+          "root": "ταπιπτ",
+          "page": 17,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=platon-timeo&pagina=17&q=%CF%84%CE%B1%CF%80%CE%B9%CF%80%CF%84%CE%B5%CE%B9"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 2
+    },
+    {
+      "id": "plotino-eneadas",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/plotino-eneadas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plotino-eneadas.pdf",
+      "ocrPages": 396,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 29,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plotino-eneadas&pagina=29&q=corpus"
+        },
+        {
+          "word": "praefatio",
+          "root": "praefati",
+          "page": 9,
+          "indexedOccurrences": 33,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plotino-eneadas&pagina=9&q=praefatio"
+        },
+        {
+          "word": "lectores",
+          "root": "lector",
+          "page": 9,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plotino-eneadas&pagina=9&q=lectores"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "plutarco-vidas",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/plutarco-vidas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plutarco-vidas.pdf",
+      "ocrPages": 656,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "φιλια",
+          "root": "φιλι",
+          "page": 76,
+          "indexedOccurrences": 8,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas&pagina=76&q=%CF%86%CE%B9%CE%BB%CE%B9%CE%B1"
+        },
+        {
+          "word": "πρβεεατοβυ",
+          "root": "πρβεεατοβ",
+          "page": 15,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas&pagina=15&q=%CF%80%CF%81%CE%B2%CE%B5%CE%B5%CE%B1%CF%84%CE%BF%CE%B2%CF%85"
+        },
+        {
+          "word": "δημοσθενησ",
+          "root": "δημοσθεν",
+          "page": 20,
+          "indexedOccurrences": 71,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plutarco-vidas&pagina=20&q=%CE%B4%CE%B7%CE%BC%CE%BF%CF%83%CE%B8%CE%B5%CE%BD%CE%B7%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "lyra-graeca",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/lyra-graeca.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lyra-graeca.pdf",
+      "ocrPages": 744,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 740,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=lyra-graeca&pagina=740&q=architectura"
+        },
+        {
+          "word": "preface",
+          "root": "prefac",
+          "page": 9,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=lyra-graeca&pagina=9&q=preface"
+        },
+        {
+          "word": "collection",
+          "root": "collection",
+          "page": 9,
+          "indexedOccurrences": 25,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=lyra-graeca&pagina=9&q=collection"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "polibio-historias",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/polibio-historias.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/polibio-historias.pdf",
+      "ocrPages": 576,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "πολυβιου",
+          "root": "πολυβι",
+          "page": 12,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=polibio-historias&pagina=12&q=%CF%80%CE%BF%CE%BB%CF%85%CE%B2%CE%B9%CE%BF%CF%85"
+        },
+        {
+          "word": "ιστοριων",
+          "root": "ιστορι",
+          "page": 12,
+          "indexedOccurrences": 13,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=polibio-historias&pagina=12&q=%CE%B9%CF%83%CF%84%CE%BF%CF%81%CE%B9%CF%89%CE%BD"
+        },
+        {
+          "word": "νεωτερου",
+          "root": "νεωτερ",
+          "page": 12,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=polibio-historias&pagina=12&q=%CE%BD%CE%B5%CF%89%CF%84%CE%B5%CF%81%CE%BF%CF%85"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/proclo-comentario-euclides.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/proclo-comentario-euclides.pdf",
+      "ocrPages": 528,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "praefatio",
+          "root": "praefati",
+          "page": 9,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=proclo-comentario-euclides&pagina=9&q=praefatio"
+        },
+        {
+          "word": "operaene",
+          "root": "operaen",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=proclo-comentario-euclides&pagina=9&q=operaene"
+        },
+        {
+          "word": "pretium",
+          "root": "pret",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=proclo-comentario-euclides&pagina=9&q=pretium"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "longino-sublime",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/longino-sublime.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longino-sublime.pdf",
+      "ocrPages": 309,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 266,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longino-sublime&pagina=266&q=ratio"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 303,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longino-sublime&pagina=303&q=corpus"
+        },
+        {
+          "word": "preface",
+          "root": "prefac",
+          "page": 10,
+          "indexedOccurrences": 12,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=longino-sublime&pagina=10&q=preface"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "quinto-esmirna-posthomericas",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/quinto-esmirna-posthomericas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/quinto-esmirna-posthomericas.pdf",
+      "ocrPages": 650,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "τεχνη",
+          "root": "τεχν",
+          "page": 116,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=quinto-esmirna-posthomericas&pagina=116&q=%CF%84%CE%B5%CF%87%CE%BD%CE%B7"
+        },
+        {
+          "word": "πηλειωνι",
+          "root": "πηλειων",
+          "page": 18,
+          "indexedOccurrences": 15,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=quinto-esmirna-posthomericas&pagina=18&q=%CF%80%CE%B7%CE%BB%CE%B5%CE%B9%CF%89%CE%BD%CE%B9"
+        },
+        {
+          "word": "θεοεικελοσ",
+          "root": "θεοεικελ",
+          "page": 18,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=quinto-esmirna-posthomericas&pagina=18&q=%CE%B8%CE%B5%CE%BF%CE%B5%CE%B9%CE%BA%CE%B5%CE%BB%CE%BF%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/sexto-empirico-obras.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/sexto-empirico-obras.pdf",
+      "ocrPages": 834,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "μετρον",
+          "root": "μετρ",
+          "page": 57,
+          "indexedOccurrences": 31,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=sexto-empirico-obras&pagina=57&q=%CE%BC%CE%B5%CF%84%CF%81%CE%BF%CE%BD"
+        },
+        {
+          "word": "πυρρωνειων",
+          "root": "πυρρωνει",
+          "page": 11,
+          "indexedOccurrences": 16,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=sexto-empirico-obras&pagina=11&q=%CF%80%CF%85%CF%81%CF%81%CF%89%CE%BD%CE%B5%CE%B9%CF%89%CE%BD"
+        },
+        {
+          "word": "ζητουσι",
+          "root": "ζητουσ",
+          "page": 11,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=sexto-empirico-obras&pagina=11&q=%CE%B6%CE%B7%CF%84%CE%BF%CF%85%CF%83%CE%B9"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "sofocles-tragedias",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/sofocles-tragedias.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/sofocles-tragedias.pdf",
+      "ocrPages": 450,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ελληνοταμιαι",
+          "root": "ελληνοταμι",
+          "page": 14,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=sofocles-tragedias&pagina=14&q=%CE%B5%CE%BB%CE%BB%CE%B7%CE%BD%CE%BF%CF%84%CE%B1%CE%BC%CE%B9%CE%B1%CE%B9"
+        },
+        {
+          "word": "προβουλοι",
+          "root": "προβουλ",
+          "page": 15,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=sofocles-tragedias&pagina=15&q=%CF%80%CF%81%CE%BF%CE%B2%CE%BF%CF%85%CE%BB%CE%BF%CE%B9"
+        },
+        {
+          "word": "ευκολοσ",
+          "root": "ευκολ",
+          "page": 15,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=sofocles-tragedias&pagina=15&q=%CE%B5%CF%85%CE%BA%CE%BF%CE%BB%CE%BF%CF%83"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "teofrasto-historia-plantas",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/teofrasto-historia-plantas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teofrasto-historia-plantas.pdf",
+      "ocrPages": 520,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 247,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas&pagina=247&q=tempus"
+        },
+        {
+          "word": "weather",
+          "root": "weath",
+          "page": 9,
+          "indexedOccurrences": 92,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas&pagina=9&q=weather"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 8,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas&pagina=9&q=english"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "teocrito-bucolicos",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/teocrito-bucolicos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teocrito-bucolicos.pdf",
+      "ocrPages": 568,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "λειπεται",
+          "root": "λειπετ",
+          "page": 14,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teocrito-bucolicos&pagina=14&q=%CE%BB%CE%B5%CE%B9%CF%80%CE%B5%CF%84%CE%B1%CE%B9"
+        },
+        {
+          "word": "χρησιμα",
+          "root": "χρησιμ",
+          "page": 14,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teocrito-bucolicos&pagina=14&q=%CF%87%CF%81%CE%B7%CF%83%CE%B9%CE%BC%CE%B1"
+        },
+        {
+          "word": "νομευσι",
+          "root": "νομευσ",
+          "page": 14,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teocrito-bucolicos&pagina=14&q=%CE%BD%CE%BF%CE%BC%CE%B5%CF%85%CF%83%CE%B9"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/teon-esmirna-expositio.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/teon-esmirna-expositio.pdf",
+      "ocrPages": 294,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 27,
+          "indexedOccurrences": 34,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teon-esmirna-expositio&pagina=27&q=ratio"
+        },
+        {
+          "word": "clarissimo",
+          "root": "clarissim",
+          "page": 9,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teon-esmirna-expositio&pagina=9&q=clarissimo"
+        },
+        {
+          "word": "matheseos",
+          "root": "mathese",
+          "page": 9,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=teon-esmirna-expositio&pagina=9&q=matheseos"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "tucidides-historia",
+      "sourceLanguage": "grc",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/tucidides-historia.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/tucidides-historia.pdf",
+      "ocrPages": 512,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "portrait",
+          "root": "portra",
+          "page": 10,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=tucidides-historia&pagina=10&q=portrait"
+        },
+        {
+          "word": "perikles",
+          "root": "perikl",
+          "page": 10,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=tucidides-historia&pagina=10&q=perikles"
+        },
+        {
+          "word": "british",
+          "root": "british",
+          "page": 10,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=tucidides-historia&pagina=10&q=british"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 0
+    },
+    {
+      "id": "palladio-quattro-libri",
+      "sourceLanguage": "it",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/palladio-quattro-libri.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/palladio-quattro-libri.pdf",
+      "ocrPages": 330,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 7,
+          "indexedOccurrences": 17,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=palladio-quattro-libri&pagina=7&q=natura"
+        },
+        {
+          "word": "adoperano",
+          "root": "adoperan",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=palladio-quattro-libri&pagina=9&q=adoperano"
+        },
+        {
+          "word": "cardini",
+          "root": "cardin",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=palladio-quattro-libri&pagina=9&q=cardini"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "vignola-cinque-ordini",
+      "sourceLanguage": "it",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/vignola-cinque-ordini.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/vignola-cinque-ordini.pdf",
+      "ocrPages": 98,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "rimaralizal",
+          "root": "rimaralizal",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=vignola-cinque-ordini&pagina=9&q=rimaralizal"
+        },
+        {
+          "word": "sticiaminemim",
+          "root": "sticiaminem",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=vignola-cinque-ordini&pagina=9&q=sticiaminemim"
+        },
+        {
+          "word": "asierdinrpinsifioi",
+          "root": "asierdinrpinsifio",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=vignola-cinque-ordini&pagina=9&q=asierdinrpinsifioi"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "vasari-vite",
+      "sourceLanguage": "it",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/vasari-vite.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/vasari-vite.pdf",
+      "ocrPages": 628,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 22,
+          "indexedOccurrences": 125,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=vasari-vite&pagina=22&q=natura"
+        },
+        {
+          "word": "ipyevtifieme",
+          "root": "ipyeutifiem",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=vasari-vite&pagina=9&q=ipyevtifieme"
+        },
+        {
+          "word": "qiielli",
+          "root": "qiiell",
+          "page": 9,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=vasari-vite&pagina=9&q=qiielli"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "serlio-architettura",
+      "sourceLanguage": "it",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/serlio-architettura.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/serlio-architettura.pdf",
+      "ocrPages": 154,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 7,
+          "indexedOccurrences": 12,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=serlio-architettura&pagina=7&q=natura"
+        },
+        {
+          "word": "thoscana",
+          "root": "thoscan",
+          "page": 10,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=serlio-architettura&pagina=10&q=thoscana"
+        },
+        {
+          "word": "douerft",
+          "root": "douerft",
+          "page": 10,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=serlio-architettura&pagina=10&q=douerft"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "scamozzi-idea-architettura",
+      "sourceLanguage": "it",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/scamozzi-idea-architettura.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/scamozzi-idea-architettura.pdf",
+      "ocrPages": 828,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "symmetria",
+          "root": "symmetri",
+          "page": 28,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=scamozzi-idea-architettura&pagina=28&q=symmetria"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 11,
+          "indexedOccurrences": 452,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=scamozzi-idea-architettura&pagina=11&q=natura"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 428,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=scamozzi-idea-architettura&pagina=428&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
       "id": "accius-fragmenta",
       "sourceLanguage": "la",
       "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/accius-fragmenta.json",
@@ -284,70 +2534,1357 @@
       "originalScriptProbes": 3
     },
     {
-      "id": "longino-sublime",
-      "sourceLanguage": "grc",
-      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/longino-sublime.json",
-      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longino-sublime.pdf",
-      "ocrPages": 309,
+      "id": "agustin-confesiones",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/agustin-confesiones.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/agustin-confesiones.pdf",
+      "ocrPages": 488,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 32,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=agustin-confesiones&pagina=32&q=ratio"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 34,
+          "indexedOccurrences": 28,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=agustin-confesiones&pagina=34&q=corpus"
+        },
+        {
+          "word": "preface",
+          "root": "prefac",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=agustin-confesiones&pagina=9&q=preface"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "amiano-marcelino-es",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/amiano-marcelino-es.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/amiano-marcelino-es.pdf",
+      "ocrPages": 417,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 186,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=amiano-marcelino-es&pagina=186&q=natura"
+        },
+        {
+          "word": "colocaron",
+          "root": "colocaron",
+          "page": 9,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=amiano-marcelino-es&pagina=9&q=colocaron"
+        },
+        {
+          "word": "solidos",
+          "root": "solid",
+          "page": 9,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=amiano-marcelino-es&pagina=9&q=solidos"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "anthologia-latina",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/anthologia-latina.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/anthologia-latina.pdf",
+      "ocrPages": 840,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "philosophia",
+          "root": "philosophi",
+          "page": 263,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=anthologia-latina&pagina=263&q=philosophia"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 11,
+          "indexedOccurrences": 84,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=anthologia-latina&pagina=11&q=natura"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 11,
+          "indexedOccurrences": 53,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=anthologia-latina&pagina=11&q=corpus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "apuleyo-metamorfosis",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/apuleyo-metamorfosis.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/apuleyo-metamorfosis.pdf",
+      "ocrPages": 632,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 38,
+          "indexedOccurrences": 23,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apuleyo-metamorfosis&pagina=38&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 68,
+          "indexedOccurrences": 9,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apuleyo-metamorfosis&pagina=68&q=ratio"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 11,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=apuleyo-metamorfosis&pagina=9&q=english"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "aulo-gelio-noches",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/aulo-gelio-noches.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/aulo-gelio-noches.pdf",
+      "ocrPages": 584,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 28,
+          "indexedOccurrences": 23,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aulo-gelio-noches&pagina=28&q=ratio"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 128,
+          "indexedOccurrences": 13,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aulo-gelio-noches&pagina=128&q=tempus"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=aulo-gelio-noches&pagina=9&q=english"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "ausonio-obras",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/ausonio-obras.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ausonio-obras.pdf",
+      "ocrPages": 460,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 56,
+          "indexedOccurrences": 16,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ausonio-obras&pagina=56&q=tempus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 180,
+          "indexedOccurrences": 10,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ausonio-obras&pagina=180&q=ratio"
+        },
+        {
+          "word": "logos",
+          "root": "logo",
+          "page": 420,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ausonio-obras&pagina=420&q=logos"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "beda-de-temporum-ratione",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/beda-de-temporum-ratione.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/beda-de-temporum-ratione.pdf",
+      "ocrPages": 307,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 10,
+          "indexedOccurrences": 31,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=beda-de-temporum-ratione&pagina=10&q=ratio"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 10,
+          "indexedOccurrences": 17,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=beda-de-temporum-ratione&pagina=10&q=corpus"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 2,
+          "indexedOccurrences": 106,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=beda-de-temporum-ratione&pagina=2&q=natura"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "boecio-consolacion",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/boecio-consolacion.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/boecio-consolacion.pdf",
+      "ocrPages": 448,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 440,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=boecio-consolacion&pagina=440&q=architectura"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 12,
+          "indexedOccurrences": 28,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=boecio-consolacion&pagina=12&q=ratio"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 36,
+          "indexedOccurrences": 13,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=boecio-consolacion&pagina=36&q=tempus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "casiodoro-variae",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/casiodoro-variae.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/casiodoro-variae.pdf",
+      "ocrPages": 798,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "templum",
+          "root": "templ",
+          "page": 80,
+          "indexedOccurrences": 23,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=casiodoro-variae&pagina=80&q=templum"
+        },
+        {
+          "word": "aedificium",
+          "root": "aedific",
+          "page": 329,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=casiodoro-variae&pagina=329&q=aedificium"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 14,
+          "indexedOccurrences": 111,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=casiodoro-variae&pagina=14&q=tempus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "celso-de-medicina",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/celso-de-medicina.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/celso-de-medicina.pdf",
+      "ocrPages": 326,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 9,
+          "indexedOccurrences": 40,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=celso-de-medicina&pagina=9&q=ratio"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 13,
+          "indexedOccurrences": 75,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=celso-de-medicina&pagina=13&q=tempus"
+        },
+        {
+          "word": "ratione",
+          "root": "ration",
+          "page": 9,
+          "indexedOccurrences": 89,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=celso-de-medicina&pagina=9&q=ratione"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "ciceron-de-oratore",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/ciceron-de-oratore.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ciceron-de-oratore.pdf",
+      "ocrPages": 140,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "written",
+          "root": "written",
+          "page": 9,
+          "indexedOccurrences": 15,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ciceron-de-oratore&pagina=9&q=written"
+        },
+        {
+          "word": "increasing",
+          "root": "increasing",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ciceron-de-oratore&pagina=9&q=increasing"
+        },
+        {
+          "word": "triumvirs",
+          "root": "triumuir",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ciceron-de-oratore&pagina=9&q=triumvirs"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "ciceron-de-re-publica",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/ciceron-de-re-publica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ciceron-de-re-publica.pdf",
+      "ocrPages": 556,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "philosophia",
+          "root": "philosophi",
+          "page": 326,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ciceron-de-re-publica&pagina=326&q=philosophia"
+        },
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 550,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ciceron-de-re-publica&pagina=550&q=architectura"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 21,
+          "indexedOccurrences": 10,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ciceron-de-re-publica&pagina=21&q=corpus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "ciceron-tusculanas",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/ciceron-tusculanas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ciceron-tusculanas.pdf",
+      "ocrPages": 366,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "philosophia",
+          "root": "philosophi",
+          "page": 121,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ciceron-tusculanas&pagina=121&q=philosophia"
+        },
+        {
+          "word": "vstiony",
+          "root": "ustiony",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ciceron-tusculanas&pagina=9&q=vstiony"
+        },
+        {
+          "word": "synopsis",
+          "root": "synops",
+          "page": 9,
+          "indexedOccurrences": 10,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ciceron-tusculanas&pagina=9&q=synopsis"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "claudiano-poemas",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/claudiano-poemas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/claudiano-poemas.pdf",
+      "ocrPages": 430,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 20,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=claudiano-poemas&pagina=20&q=corpus"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 22,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=claudiano-poemas&pagina=22&q=tempus"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 32,
+          "indexedOccurrences": 69,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=claudiano-poemas&pagina=32&q=natura"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "columela-de-re-rustica",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/columela-de-re-rustica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/columela-de-re-rustica.pdf",
+      "ocrPages": 64,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 29,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=columela-de-re-rustica&pagina=29&q=ratio"
+        },
+        {
+          "word": "musica",
+          "root": "music",
+          "page": 6,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=columela-de-re-rustica&pagina=6&q=musica"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 6,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=columela-de-re-rustica&pagina=6&q=natura"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "cesar-guerra-civil",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/cesar-guerra-civil.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/cesar-guerra-civil.pdf",
+      "ocrPages": 404,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 58,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=cesar-guerra-civil&pagina=58&q=ratio"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 80,
+          "indexedOccurrences": 33,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=cesar-guerra-civil&pagina=80&q=natura"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 96,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=cesar-guerra-civil&pagina=96&q=corpus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/festo-verborum-significatu.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/festo-verborum-significatu.pdf",
+      "ocrPages": 652,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "templum",
+          "root": "templ",
+          "page": 38,
+          "indexedOccurrences": 29,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=festo-verborum-significatu&pagina=38&q=templum"
+        },
+        {
+          "word": "aedificium",
+          "root": "aedific",
+          "page": 448,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=festo-verborum-significatu&pagina=448&q=aedificium"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 20,
+          "indexedOccurrences": 8,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=festo-verborum-significatu&pagina=20&q=corpus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "petrarca-africa",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/petrarca-africa.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-africa.pdf",
+      "ocrPages": 418,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "philosophia",
+          "root": "philosophi",
+          "page": 37,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=petrarca-africa&pagina=37&q=philosophia"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 20,
+          "indexedOccurrences": 31,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=petrarca-africa&pagina=20&q=tempus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 21,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=petrarca-africa&pagina=21&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "petrarca-secretum",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/petrarca-secretum.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petrarca-secretum.pdf",
+      "ocrPages": 891,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "templum",
+          "root": "templ",
+          "page": 78,
+          "indexedOccurrences": 20,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=petrarca-secretum&pagina=78&q=templum"
+        },
+        {
+          "word": "aedificium",
+          "root": "aedific",
+          "page": 700,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=petrarca-secretum&pagina=700&q=aedificium"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 13,
+          "indexedOccurrences": 166,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=petrarca-secretum&pagina=13&q=natura"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "frontino-de-aquis",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/frontino-de-aquis.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/frontino-de-aquis.pdf",
+      "ocrPages": 544,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 46,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=frontino-de-aquis&pagina=46&q=corpus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 266,
+          "indexedOccurrences": 18,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=frontino-de-aquis&pagina=266&q=ratio"
+        },
+        {
+          "word": "stratagems",
+          "root": "stratagem",
+          "page": 9,
+          "indexedOccurrences": 180,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=frontino-de-aquis&pagina=9&q=stratagems"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "higino-fabulas",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/higino-fabulas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/higino-fabulas.pdf",
+      "ocrPages": 233,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 14,
+          "indexedOccurrences": 8,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=higino-fabulas&pagina=14&q=tempus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 7,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=higino-fabulas&pagina=7&q=ratio"
+        },
+        {
+          "word": "posteriore",
+          "root": "posterior",
+          "page": 9,
+          "indexedOccurrences": 4,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=higino-fabulas&pagina=9&q=posteriore"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/hyginus-gromaticus.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/hyginus-gromaticus.pdf",
+      "ocrPages": 552,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 26,
+          "indexedOccurrences": 10,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=hyginus-gromaticus&pagina=26&q=tempus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 50,
+          "indexedOccurrences": 14,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=hyginus-gromaticus&pagina=50&q=ratio"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 162,
+          "indexedOccurrences": 17,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=hyginus-gromaticus&pagina=162&q=corpus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "isidoro-etymologiae",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/isidoro-etymologiae.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/isidoro-etymologiae.pdf",
+      "ocrPages": 884,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 11,
+          "indexedOccurrences": 186,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=isidoro-etymologiae&pagina=11&q=natura"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 20,
+          "indexedOccurrences": 108,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=isidoro-etymologiae&pagina=20&q=tempus"
+        },
+        {
+          "word": "musica",
+          "root": "music",
+          "page": 27,
+          "indexedOccurrences": 55,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=isidoro-etymologiae&pagina=27&q=musica"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "juvenal-persio-satiras",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/juvenal-persio-satiras.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/juvenal-persio-satiras.pdf",
+      "ocrPages": 510,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "philosophia",
+          "root": "philosophi",
+          "page": 45,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=juvenal-persio-satiras&pagina=45&q=philosophia"
+        },
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 506,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=juvenal-persio-satiras&pagina=506&q=architectura"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 22,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=juvenal-persio-satiras&pagina=22&q=tempus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "alberti-de-re-aedificatoria",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/alberti-de-re-aedificatoria.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/alberti-de-re-aedificatoria.pdf",
+      "ocrPages": 356,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 10,
+          "indexedOccurrences": 52,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=alberti-de-re-aedificatoria&pagina=10&q=ratio"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 11,
+          "indexedOccurrences": 137,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=alberti-de-re-aedificatoria&pagina=11&q=natura"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 11,
+          "indexedOccurrences": 13,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=alberti-de-re-aedificatoria&pagina=11&q=tempus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "lucano-farsalia",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/lucano-farsalia.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/lucano-farsalia.pdf",
+      "ocrPages": 562,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 29,
+          "indexedOccurrences": 40,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=lucano-farsalia&pagina=29&q=corpus"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 58,
+          "indexedOccurrences": 32,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=lucano-farsalia&pagina=58&q=tempus"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 50,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=lucano-farsalia&pagina=9&q=english"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "manilio-astronomica",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/manilio-astronomica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/manilio-astronomica.pdf",
+      "ocrPages": 394,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 20,
+          "indexedOccurrences": 144,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=manilio-astronomica&pagina=20&q=natura"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 26,
+          "indexedOccurrences": 62,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=manilio-astronomica&pagina=26&q=ratio"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 27,
+          "indexedOccurrences": 33,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=manilio-astronomica&pagina=27&q=corpus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "marcial-epigramas",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/marcial-epigramas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/marcial-epigramas.pdf",
+      "ocrPages": 592,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 64,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=marcial-epigramas&pagina=64&q=corpus"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 64,
+          "indexedOccurrences": 14,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=marcial-epigramas&pagina=64&q=natura"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 374,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=marcial-epigramas&pagina=374&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/marciano-capela-nuptiis.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/marciano-capela-nuptiis.pdf",
+      "ocrPages": 876,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 30,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=marciano-capela-nuptiis&pagina=30&q=architectura"
+        },
+        {
+          "word": "philosophia",
+          "root": "philosophi",
+          "page": 166,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=marciano-capela-nuptiis&pagina=166&q=philosophia"
+        },
+        {
+          "word": "musica",
+          "root": "music",
+          "page": 17,
+          "indexedOccurrences": 67,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=marciano-capela-nuptiis&pagina=17&q=musica"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "minucio-felix-octavio",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/minucio-felix-octavio.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/minucio-felix-octavio.pdf",
+      "ocrPages": 244,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 25,
+          "indexedOccurrences": 52,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=minucio-felix-octavio&pagina=25&q=natura"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 45,
+          "indexedOccurrences": 30,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=minucio-felix-octavio&pagina=45&q=ratio"
+        },
+        {
+          "word": "deuxieme",
+          "root": "deuxiem",
+          "page": 9,
+          "indexedOccurrences": 6,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=minucio-felix-octavio&pagina=9&q=deuxieme"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/nonio-marcelo-doctrina.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/nonio-marcelo-doctrina.pdf",
+      "ocrPages": 724,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "templum",
+          "root": "templ",
+          "page": 118,
+          "indexedOccurrences": 14,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=nonio-marcelo-doctrina&pagina=118&q=templum"
+        },
+        {
+          "word": "philosophia",
+          "root": "philosophi",
+          "page": 133,
+          "indexedOccurrences": 16,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=nonio-marcelo-doctrina&pagina=133&q=philosophia"
+        },
+        {
+          "word": "aedificium",
+          "root": "aedific",
+          "page": 255,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=nonio-marcelo-doctrina&pagina=255&q=aedificium"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "ovidio-fastos",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/ovidio-fastos.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/ovidio-fastos.pdf",
+      "ocrPages": 490,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 9,
+          "indexedOccurrences": 12,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ovidio-fastos&pagina=9&q=natura"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 24,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ovidio-fastos&pagina=24&q=ratio"
+        },
+        {
+          "word": "certamente",
+          "root": "certament",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=ovidio-fastos&pagina=9&q=certamente"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/paladio-opus-agriculturae.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/paladio-opus-agriculturae.pdf",
+      "ocrPages": 308,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "teachek",
+          "root": "teachek",
+          "page": 9,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=paladio-opus-agriculturae&pagina=9&q=teachek"
+        },
+        {
+          "word": "temporary",
+          "root": "temporary",
+          "page": 11,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=paladio-opus-agriculturae&pagina=11&q=temporary"
+        },
+        {
+          "word": "preface",
+          "root": "prefac",
+          "page": 11,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=paladio-opus-agriculturae&pagina=11&q=preface"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "petronio-satiricon",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/petronio-satiricon.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/petronio-satiricon.pdf",
+      "ocrPages": 282,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "templum",
+          "root": "templ",
+          "page": 104,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=petronio-satiricon&pagina=104&q=templum"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 55,
+          "indexedOccurrences": 11,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=petronio-satiricon&pagina=55&q=corpus"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 90,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=petronio-satiricon&pagina=90&q=tempus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "plinio-joven-cartas",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/plinio-joven-cartas.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plinio-joven-cartas.pdf",
+      "ocrPages": 462,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 456,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plinio-joven-cartas&pagina=456&q=architectura"
+        },
+        {
+          "word": "natura",
+          "root": "natur",
+          "page": 14,
+          "indexedOccurrences": 40,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plinio-joven-cartas&pagina=14&q=natura"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 18,
+          "indexedOccurrences": 34,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plinio-joven-cartas&pagina=18&q=tempus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "plinio-historia-natural",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/plinio-historia-natural.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/plinio-historia-natural.pdf",
+      "ocrPages": 720,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 383,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plinio-historia-natural&pagina=383&q=ratio"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 402,
+          "indexedOccurrences": 5,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plinio-historia-natural&pagina=402&q=tempus"
+        },
+        {
+          "word": "natural",
+          "root": "natural",
+          "page": 9,
+          "indexedOccurrences": 61,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=plinio-historia-natural&pagina=9&q=natural"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "propercio-elegias",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/propercio-elegias.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/propercio-elegias.pdf",
+      "ocrPages": 394,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 390,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=propercio-elegias&pagina=390&q=architectura"
+        },
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 14,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=propercio-elegias&pagina=14&q=corpus"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 92,
+          "indexedOccurrences": 8,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=propercio-elegias&pagina=92&q=tempus"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "quintiliano-institutio",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/quintiliano-institutio.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/quintiliano-institutio.pdf",
+      "ocrPages": 620,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "philosophia",
+          "root": "philosophi",
+          "page": 528,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=quintiliano-institutio&pagina=528&q=philosophia"
+        },
+        {
+          "word": "architectura",
+          "root": "architectur",
+          "page": 612,
+          "indexedOccurrences": 1,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=quintiliano-institutio&pagina=612&q=architectura"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 24,
+          "indexedOccurrences": 46,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=quintiliano-institutio&pagina=24&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "salustio-obras",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/salustio-obras.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/salustio-obras.pdf",
+      "ocrPages": 312,
       "lexicalTokensTested": 3,
       "lexicalMatches": [
         {
           "word": "preface",
           "root": "prefac",
-          "page": 10,
-          "indexedOccurrences": 12,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=longino-sublime&pagina=10&q=preface"
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=salustio-obras&pagina=9&q=preface"
         },
         {
-          "word": "publication",
-          "root": "publication",
-          "page": 10,
-          "indexedOccurrences": 7,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=longino-sublime&pagina=10&q=publication"
+          "word": "translation",
+          "root": "translation",
+          "page": 9,
+          "indexedOccurrences": 10,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=salustio-obras&pagina=9&q=translation"
         },
         {
-          "word": "subli1ne",
-          "root": "subli1n",
-          "page": 10,
-          "indexedOccurrences": 4,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=longino-sublime&pagina=10&q=subli1ne"
+          "word": "dietschs",
+          "root": "dietsch",
+          "page": 9,
+          "indexedOccurrences": 8,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=salustio-obras&pagina=9&q=dietschs"
         }
       ],
       "errors": [],
-      "originalScriptProbes": 0
+      "originalScriptProbes": 3
     },
     {
-      "id": "longo-dafnis-es",
-      "sourceLanguage": "grc",
-      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/longo-dafnis-es.json",
-      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/longo-dafnis-es.pdf",
-      "ocrPages": 264,
+      "id": "seneca-tragedias",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/seneca-tragedias.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/seneca-tragedias.pdf",
+      "ocrPages": 566,
       "lexicalTokensTested": 3,
       "lexicalMatches": [
         {
-          "word": "musica",
-          "root": "music",
-          "page": 70,
-          "indexedOccurrences": 11,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=70&q=musica"
+          "word": "corpus",
+          "root": "corp",
+          "page": 16,
+          "indexedOccurrences": 18,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=seneca-tragedias&pagina=16&q=corpus"
         },
         {
           "word": "natura",
           "root": "natur",
-          "page": 109,
-          "indexedOccurrences": 1,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=109&q=natura"
+          "page": 18,
+          "indexedOccurrences": 35,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=seneca-tragedias&pagina=18&q=natura"
         },
         {
-          "word": "ζζζζζζζ",
-          "root": "ζζζζζζζ",
-          "page": 13,
-          "indexedOccurrences": 1,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-es&pagina=13&q=%CE%B6%CE%B6%CE%B6%CE%B6%CE%B6%CE%B6%CE%B6"
+          "word": "tempus",
+          "root": "temp",
+          "page": 24,
+          "indexedOccurrences": 11,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=seneca-tragedias&pagina=24&q=tempus"
         }
       ],
       "errors": [],
-      "originalScriptProbes": 1
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "tito-livio-historia",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/tito-livio-historia.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/tito-livio-historia.pdf",
+      "ocrPages": 488,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 16,
+          "indexedOccurrences": 13,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=tito-livio-historia&pagina=16&q=corpus"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 36,
+          "indexedOccurrences": 31,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=tito-livio-historia&pagina=36&q=tempus"
+        },
+        {
+          "word": "english",
+          "root": "english",
+          "page": 9,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=tito-livio-historia&pagina=9&q=english"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
     },
     {
       "id": "rose-vitruvius-1899",
@@ -383,37 +3920,70 @@
       "originalScriptProbes": 3
     },
     {
-      "id": "antologia-griega",
-      "sourceLanguage": "grc",
-      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/antologia-griega.json",
-      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/antologia-griega.pdf",
-      "ocrPages": 424,
+      "id": "valerio-flaco-argonautica",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/valerio-flaco-argonautica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/valerio-flaco-argonautica.pdf",
+      "ocrPages": 154,
       "lexicalTokensTested": 3,
       "lexicalMatches": [
         {
-          "word": "contents",
-          "root": "content",
+          "word": "candido",
+          "root": "candid",
+          "page": 9,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=valerio-flaco-argonautica&pagina=9&q=candido"
+        },
+        {
+          "word": "lectori",
+          "root": "lector",
           "page": 9,
           "indexedOccurrences": 2,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=antologia-griega&pagina=9&q=contents"
+          "viewer": "buscador-facsimiles-clasicos.html?obra=valerio-flaco-argonautica&pagina=9&q=lectori"
         },
         {
-          "word": "various",
-          "root": "uario",
+          "word": "carried",
+          "root": "carried",
           "page": 9,
           "indexedOccurrences": 5,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=antologia-griega&pagina=9&q=various"
-        },
-        {
-          "word": "arithmetical",
-          "root": "arithmetical",
-          "page": 9,
-          "indexedOccurrences": 6,
-          "viewer": "buscador-facsimiles-clasicos.html?obra=antologia-griega&pagina=9&q=arithmetical"
+          "viewer": "buscador-facsimiles-clasicos.html?obra=valerio-flaco-argonautica&pagina=9&q=carried"
         }
       ],
       "errors": [],
-      "originalScriptProbes": 0
+      "originalScriptProbes": 3
+    },
+    {
+      "id": "varron-de-re-rustica",
+      "sourceLanguage": "la",
+      "ocrUrl": "https://libros.vitruvius-digital-library.org/clasicos/texto/varron-de-re-rustica.json",
+      "pdfUrl": "https://libros.vitruvius-digital-library.org/clasicos/pdf/varron-de-re-rustica.pdf",
+      "ocrPages": 416,
+      "lexicalTokensTested": 3,
+      "lexicalMatches": [
+        {
+          "word": "corpus",
+          "root": "corp",
+          "page": 94,
+          "indexedOccurrences": 3,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=varron-de-re-rustica&pagina=94&q=corpus"
+        },
+        {
+          "word": "tempus",
+          "root": "temp",
+          "page": 241,
+          "indexedOccurrences": 7,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=varron-de-re-rustica&pagina=241&q=tempus"
+        },
+        {
+          "word": "ratio",
+          "root": "rati",
+          "page": 244,
+          "indexedOccurrences": 2,
+          "viewer": "buscador-facsimiles-clasicos.html?obra=varron-de-re-rustica&pagina=244&q=ratio"
+        }
+      ],
+      "errors": [],
+      "originalScriptProbes": 3
     }
   ],
   "readerEndpoints": [
@@ -446,10 +4016,10 @@
   "indexFragments": 2510,
   "counts": {
     "cataloguedEditions": 117,
-    "fullCoverageRequested": false,
-    "testedEditions": 12,
-    "testedWords": 36,
-    "locatedPages": 36,
+    "fullCoverageRequested": true,
+    "testedEditions": 117,
+    "testedWords": 351,
+    "locatedPages": 351,
     "errors": 0,
     "warnings": 1,
     "indexEditions": 119,
