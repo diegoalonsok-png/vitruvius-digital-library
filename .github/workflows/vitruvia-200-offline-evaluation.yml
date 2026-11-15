@@ -1,0 +1,38 @@
+name: Vitruvia · evaluar 200 consultas declaradas (resolución local)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'data/qa/vitruvia-regression-200.json'
+      - 'assets/vitruvia-entity-resolver.js'
+      - 'scripts/evaluate-vitruvia-200-offline.mjs'
+      - '.github/workflows/vitruvia-200-offline-evaluation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/qa/vitruvia-regression-200.json'
+      - 'assets/vitruvia-entity-resolver.js'
+      - 'scripts/evaluate-vitruvia-200-offline.mjs'
+      - '.github/workflows/vitruvia-200-offline-evaluation.yml'
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Examinar sintaxis de la evaluación
+        run: node --check scripts/evaluate-vitruvia-200-offline.mjs
+      - name: Evaluar los 200 casos y registrar discrepancias
+        run: node scripts/evaluate-vitruvia-200-offline.mjs
+      - name: Conservar resultados con los 200 IDs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitruvia-200-offline-evaluation
+          path: reports/vitruvia-200-offline-evaluation.json
+          if-no-files-found: warn
