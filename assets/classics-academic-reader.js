@@ -49,7 +49,7 @@ function safePdf(value){
  try{const u=new URL(value,location.href);return u.protocol==="https:"&&!u.username&&!u.password?u.href:null}catch{return null}
 }
 async function pdfsFor(work){
- const [catalog,links,coverage]=await Promise.all([json("data/r2/catalogo-clasicos-r2.json"),json("data/r2/vinculos-repertorio.json"),json("data/classics-historical-pages/coverage.json")]);
+ const [catalog,links,coverage]=await Promise.all([json("data/r2/catalogo-clasicos-r2.json"),json("data/r2/vinculos-repertorio.json"),json("data/index/classics-pdf/coverage.json").then(v=>v||json("data/classics-historical-pages/coverage.json"))]);
  const ids=new Set((links?.porObra?.[work]||[]).map(e=>e.r2));ids.add(work);
  const rows=(catalog?.items||[]).map(e=>({id:e.id,url:e.pdf,title:e.autor+" · "+(e.tituloEdicion||e.obra)+" · "+e.anio,related:ids.has(e.id),pages:e.paginas}));
  const localWork={"aristotle-poetics":"aristotle-poetics","lucretius":"lucretius","caesar-gallico":"caesar-de-bello-gallico","plato-apology":"plato-apologia","virgil-aeneid":"virgil-aeneid","virgil-georgica":"virgil-georgica","cicero-officiis":"cicero-de-officiis","epictetus-enchiridion":"epictetus-theophrastus"};

@@ -136,7 +136,7 @@ const params=new URLSearchParams(location.search);
 const cache=new Map();let locales=[],r2=[],actual=null,datos=null,pagina=1,loadSequence=0;
 const pedir=async(u,o)=>{const r=await fetch(u,o||{});if(!r.ok)throw Error(u.split("/").pop()+" HTTP "+r.status);return r.json()};
 const [cov,cat]=await Promise.all([
- pedir("data/classics-historical-pages/coverage.json").catch(()=>null),
+ pedir("data/index/classics-pdf/coverage.json").catch(()=>pedir("data/classics-historical-pages/coverage.json")).catch(()=>null),
  pedir("data/r2/catalogo-clasicos-r2.json",{cache:"no-cache"}).catch(()=>null)]);
 locales=((cov&&cov.records)||[]).filter(x=>x.index||x.status==="unchanged");
 r2=((cat&&cat.items)||[]);

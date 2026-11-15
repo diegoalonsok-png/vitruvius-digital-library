@@ -17,6 +17,7 @@ from classics_ingestion_bundle import reading_index
 ROOT = Path(__file__).resolve().parents[1]
 INVENTORY = ROOT / "data/classics-corpus/pdf-inventory.json"
 OUT = ROOT / "data/classics-historical-pages"
+READING_OUT = ROOT / "data/index/classics-pdf"
 LANG_HINTS = {
     "aristotle-poetics-greek-christ-1893": "grc+eng",
     "aristotle-poetics-english-1819": "eng",
@@ -47,7 +48,8 @@ def write_reading_index(document, name):
     concepts = json.loads((ROOT / "data/lexicon/conceptus.json").read_text())["concepts"]
     result = reading_index(name, [(p["page"], p["text"]) for p in document["pages"]], concepts, document["sourceSha256"])
     result["textSource"] = "data/classics-historical-pages/" + name + ".json"
-    target = OUT / (name + "-reading-index.json")
+    READING_OUT.mkdir(parents=True, exist_ok=True)
+    target = READING_OUT / (name + "-reading-index.json")
     target.write_text(json.dumps(result, ensure_ascii=False, separators=(",", ":")) + "\n")
     return target.relative_to(ROOT).as_posix()
 
@@ -131,7 +133,7 @@ def build(*, do_ocr=False, dpi=170, min_chars=90):
         "ocrRequested": bool(do_ocr),
         "records": reports,
     }
-    (OUT / "coverage.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    (READING_OUT / "coverage.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if any(r["status"] == "missing-file" for r in reports):
         raise RuntimeError("Some inventoried PDFs are missing")

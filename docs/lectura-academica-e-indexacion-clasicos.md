@@ -53,3 +53,5 @@ atribuyen automáticamente a un archivo introducido por el usuario.
 La disponibilidad remota y los fallos de fuentes locales tienen diagnósticos
 separados. Las exclusiones externas expresas del índice Conceptus no invalidan el
 índice local; tampoco se consideran prueba de que el objeto remoto esté accesible.
+
+Los índices derivados de los PDF y su informe de cobertura se publican en `data/index/classics-pdf/`. Se conservan intactos los PDF, las transcripciones por página y el informe histórico original.

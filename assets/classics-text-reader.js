@@ -589,7 +589,7 @@ $("locus-form")?.addEventListener("submit",event=>{
  event.preventDefault();if(!data)return;
  const value=$("locus-query").value.trim();
  const i=ACADEMIC?ACADEMIC.findLocus(data.passages,value):data.passages.findIndex(x=>x.locus===value);
- if(i<0){$("locus-status").textContent="No se encontró un locus único en esta edición. Elegí una unidad del índice.";return}
+ if(i<0){$("locus-status").textContent="No se encontró un locus único en esta edición. Seleccione una unidad del índice.";return}
  select(i);$("passages").scrollIntoView({block:"nearest"});
 });
 $("language").addEventListener("change",e=>swap(e.target.value));
