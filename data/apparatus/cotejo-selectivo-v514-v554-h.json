@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Selección de correspondencias del Apéndice T cotejadas entre V514 y V554. No constituye transcripción diplomática de H; los testimonios deben verificarse en los folios originales. V297 aporta traducción y glosas cuando están indexadas, pero no se presupone que repita estas entradas.",
+  "method": "Selección de correspondencias del Apéndice T cotejadas entre V514 y V554. No constituye transcripción diplomática de H; los testimonios deben verificarse en los folios originales. V297 aporta traducción y glosas cuando están indexadas, pero no se presupone que repita estas entradas. Se añaden candidatos derivados de la comparación H semidiplomático ↔ latín Kurilo ↔ aparatos OCR de Rose/Krohn; mantienen el estado no verificado hasta control de imagen.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -93,6 +93,31 @@
       ],
       "note": "Las ediciones identifican capituli como suplemento editorial frente a omisión atribuida a H. La forma del suplemento se registra sin normalizar silenciosamente.",
       "status": "cotejo editorial bilingüe; autopsia paleográfica pendiente"
+    },
+    {
+      "locus": "1.praef.2",
+      "lemma": "publicaeque rei constitutione habere",
+      "reading": "publicaeq; rei constitutionem habere (lectura semidiplomática de H)",
+      "siglum": "H",
+      "folio": "1r",
+      "sources": [
+        "data/codex-h/folio-1r.json",
+        "data/codex-h/aligned-1r.json",
+        "data/structured/recensio-es.json",
+        "data/apparatus/aparato-comparativo.json"
+      ],
+      "note": "Diferencia de terminación: Kurilo V514 registra constitutione, mientras el borrador semidiplomático de H f. 1r registra constitutionem. Rose (1899) consigna en su aparato constitutione y constitutionem entre testimonios; el segmento OCR de Krohn también registra ambas terminaciones, pero con siglas parcialmente corruptas. La atribución de cada lectura exige cotejo directo sobre facsímil de H y páginas impresas de ambos editores.",
+      "status": "discrepancia documental localizada; cotejo de facsímiles y lectura paleográfica pendiente",
+      "comparison": {
+        "kurilo_latin": "publicaeque rei constitutione habere",
+        "h_transcription": "publicaeq; rei constitutionem habere",
+        "rose_apparatus_ocr": "constitutione S(GC ): constitutionem H (-ne) G.",
+        "krohn_apparatus_ocr": "constitutione SG'^: -nem J3\\\", -ne G",
+        "rose_page": 37,
+        "krohn_page": 19
+      },
+      "evidenceClass": "candidate_cross_source",
+      "verifiedAutopsy": false
     }
   ]
 }
