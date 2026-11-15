@@ -67,6 +67,13 @@ async function render(query){
    sourceRows.forEach((row,i)=>{if(i)provenance.append(" · ");provenance.append(A(row.version+" · Apéndice T, p. "+row.page,row.pdf));});
   }else provenance.append("Referencias textuales indicadas arriba; revisar identificadores en el Apéndice T.");
   verified.append(provenance);
+  if(e.visualEvidence){
+   const proof=E("p",null,"bude-note");
+   proof.append("LECTURA DIRECTA DE H: "+e.visualEvidence.observedReading+" · f. "+e.visualEvidence.folio+". ");
+   proof.append(A("Ver fotografía original conservada en GitHub","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/"+e.visualEvidence.file));
+   proof.append(". "+e.visualEvidence.note);
+   verified.append(proof);
+  }
   if(e.comparison){
    const compar=E("div",null,"bude-grid");
    const texts=[["Kur. V514 · latín",e.comparison.kurilo_latin],
