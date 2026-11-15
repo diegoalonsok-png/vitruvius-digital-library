@@ -39,7 +39,8 @@
     "check:site": "node scripts/site-check.mjs",
     "check:visor-r2": "node scripts/test-visor-facsimiles-r2.mjs",
     "check:vitruvia-100": "node scripts/check-vitruvia-100-subjects.mjs",
-    "check:source-errata": "node scripts/test-source-errata.mjs"
+    "check:source-errata": "node scripts/test-source-errata.mjs",
+    "check:latin-cotejo": "node scripts/test-latin-five-sources.mjs"
   },
   "devDependencies": {
     "jsdom": "^31.0.0"

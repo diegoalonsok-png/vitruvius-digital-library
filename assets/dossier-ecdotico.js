@@ -70,6 +70,34 @@ function passagePanel(root,source,meta,locus,list){
  const s=box("I · Textus et interpretationes","Tres versiones editoriales; su latín procede de los libros originales. Diferencias entre V514, V554 y V297 no constituyen por sí mismas variantes manuscritas.");
  s.append(grid);root.append(s)
 }
+
+/* Cotejo del texto latino de cinco ediciones, no inferencia de variantes manuscritas. */
+function latinKey(t){return String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ")}
+function latinComparatio(root,es,fr,en,locus,ocr){
+ const a=passage(es,locus),b=passage(fr,locus),c=passage(en,locus);
+ const group=!c?groupedV297[locus]:null,sourceC=c||(group?passage(en,group.anchor):null);
+ const s=box("I bis · Collatio Latina · V514, V554, V297, Rose y Krohn",
+  "Comparación léxica normalizada entre las ediciones de Kurilo, más referencias OCR de Rose y Krohn. Una divergencia entre ediciones no prueba errata ni constituye automáticamente variante manuscrita.");
+ if(!a||!b){s.append(el("p","No consta un texto latino individual de V514/V554 en este locus.","dl-muted"));root.append(s);return}
+ const same=latinKey(a.latin)===latinKey(b.latin);
+ field(s,"V514 / V554",same?"Concordancia léxica normalizada":"Lecturas digitales diferentes; requiere comprobación en ambas ediciones");
+ if(c)field(s,"V297 / V514",latinKey(a.latin)===latinKey(c.latin)?"Coinciden tras normalización de grafías y puntuación":"Diferencia textual o de extensión: verificar el locus y el aparato antes de atribuir error");
+ else if(group)field(s,"V297", "Incluido en el pasaje compuesto "+group.range+"; el cotejo automático palabra por palabra de este locus queda suspendido");
+ else field(s,"V297","No se localiza pasaje autónomo: revisar la indexación");
+ const loc=ocr.loci?.[locus];
+ for(const [id,label] of [["rose-1899","Rose (1899)"],["krohn-1912","Krohn (1912)"]]){
+  const item=loc?.[id];
+  if(item)field(s,label,"OCR alineado, página "+(item.page??"sin referencia")+(typeof item.score==="number"?" · semejanza computacional "+item.score.toFixed(3):"")+"; exige comprobar el impreso");
+  else field(s,label,"Sin correspondencia OCR registrada");
+ }
+ const links=el("div",null,"dl-actions");
+ link(links,"Fe de erratas y 125 diferencias clasificadas","erratas-ediciones.html");
+ link(links,"Erratas documentadas por edición","errata-editionum.html");
+ link(links,"Colación y testigos manuscritos","colacion.html?locus="+encodeURIComponent(locus));
+ s.append(links);
+ root.append(s)
+}
+
 function ocrPanel(root,locus,ocr,list){
  const s=box("II · Collatio editorum · Rose y Krohn","Pasajes latinos localizados mediante OCR y alineación automática: la semejanza numérica es una medida computacional, no certeza paleográfica. Consulte el impreso antes de adoptar una variante.");
  const item=ocr.loci?.[locus];
@@ -223,6 +251,7 @@ async function openLocus(locus,scroll=true){
   header.append(actions);
   const core=el("div",null,"dl-body");
   passagePanel(core,[es,fr,en],catalog,id,sources);
+  latinComparatio(core,es,fr,en,id,ocr);
   ocrPanel(core,id,ocr,sources);
   collationPanel(core,r);
   historicalPanel(core,id,historical,sources);
