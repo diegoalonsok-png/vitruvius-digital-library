@@ -93,6 +93,31 @@ async function render(query){
  ku.append(E("small","Texto autoral V514; las elecciones editoriales de latín y griego se conservan."));
  tgrid.append(k,ro,ku);texts.append(tgrid);
  texts.append(E("p","H (Harley MS 2767) se documenta por su imagen y los cotejos expresamente verificados, en el apartado siguiente. No se publica una lectura diplomática reconstruida sin cotejo. La unidad por locus es una alineación editorial y no implica paginación idéntica en Rose y Krohn.","bude-note"));
+ // Candidate lexical differences from the two independently attributed digital editions.
+ // NEVER elevate these to manuscript variants or attest H to them without autopsy.
+ const diff=section("Collatio textualis digitalis · Kr. 1912 / Kur. V514");
+ const candidate=data.variants?.loci?.find(x=>x.locus===locus);
+ if(!candidate||candidate.estado==="sin_transcripcion_independiente"){
+  diff.append(E("p","No existe en este locus una transcripción independiente de Krohn utilizable. La falta de transcripción no equivale a laguna del texto original.","bude-note"));
+ }else{
+  diff.append(E("p","Comparación mecánica de palabras latinas normalizadas; minúsculas, i/j y u/v se consideran equivalentes. La edición de Krohn digital procede de Perseus, pendiente de cotejo con el impreso. Porcentaje de coincidencia léxica orientativo: "+(candidate.porcentaje??"—")+" %. No es un índice de autenticidad ni una lectura manuscrita.","bude-note"));
+  if(!candidate.unidadesTotales)diff.append(E("p","Sin diferencias léxicas detectadas tras normalización entre las dos transcripciones para este locus; no demuestra ausencia de variantes en los manuscritos."));
+  else{
+   const overview=E("p",candidate.unidadesTotales+" unidades candidatas detectadas, "+candidate.unidades.length+" mostradas. Las omisiones detectadas pueden ser artefactos de transcripción, incluidos corchetes editoriales.","bude-note");diff.append(overview);
+   for(const entry of candidate.unidades){
+    const unit=E("div",null,"bude-unit");
+    const summary=E("div",null,"bude-critical-line");
+    const left=E("em",entry.kurilo);left.lang="la";
+    const right=E("em",entry.krohn);right.lang="la";
+    summary.append("Kur. V514: ",left," ] Kr. (transcr. digital): ",right," · ",entry.tipo);
+    unit.append(summary,E("small","COLLATIO COMPUTATRALIS · candidata; cotejo ex editione impressa pendiente · no atribuir a H, G, E ni S"));
+    diff.append(unit);
+   }
+  }
+  const links=E("p",null,"bude-note");
+  links.append(A("Abrir Krohn 1912 en facsímil","krohn-1912.html")," · ",A("Abrir registro ecdótico V514","registro-ecdotico.html?locus="+encodeURIComponent(locus)));
+  diff.append(links);
+ }
  const h=section("Testimonium H · primer testimonio: inspección de folios");
  h.append(E("p","Harley MS 2767 (British Library, ca. 800–824): la fuente manuscrita más antigua conservada de De architectura. El cotejo debe comenzar con la imagen del folio, no con una transcripción derivada. Los enlaces de locus estimado no demuestran la lectura.","bude-note"));
  try{
@@ -191,8 +216,8 @@ async function render(query){
 }
 (async()=>{try{
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
- const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json"].map(json));
- data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr};loci=es.passages.map(p=>p.locus);
+ const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json"].map(json));
+ data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants};loci=es.passages.map(p=>p.locus);
  syncNavigator=setupNavigator();
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
