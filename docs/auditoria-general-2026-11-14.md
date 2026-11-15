@@ -48,7 +48,9 @@ Los 210 originales de la conciliación histórica y los 242 registrados incluyen
 
 Durante la fase inicial se comprobaron en el navegador la portada, la Bibliotheca, la búsqueda `numen` del Lexicon y H `f.18r` (imagen 43 de 341). La inspección visual del lector nuevo quedó bloqueada por la revisión automática del navegador debido a un límite de uso. No se presenta como comprobada visualmente su traducción en producción. Los despliegues y las pruebas de sincronización se verificaron por separado; la disponibilidad de los proveedores de traducción sigue siendo externa.
 
-El flujo adicional «Workers Builds» también falla en la rama principal de referencia, mientras Cloudflare Pages y GitHub Pages despliegan correctamente. No se confunde ese estado con un fallo de ambos sitios. Otros controles históricos de navegador deben revisarse separadamente cuando difieren de las pruebas locales actuales.
+El flujo adicional «Workers Builds» también falla en la rama principal de referencia, mientras Cloudflare Pages y GitHub Pages despliegan correctamente. Su configuración requiere revisión independiente.
+
+Quedan cinco casos fallidos del ensayo histórico `scripts/classics-visor-smoke.mjs`: el control que espera una sola caja de búsqueda cuenta dos; el ensayo semántico informa de 32 fuentes que no se cargaron; dos ensayos de consulta textual informan de cinco fuentes que no se cargaron; y la consulta de Teofrasto con el fragmento `κολακ` no produce el resaltado esperado. Se necesitan rutas de fallo identificadas y comprobación individual del origen y de CORS para distinguir disponibilidad externa y supuestos antiguos del ensayo. El lector actual busca palabras completas o formas indexadas; la prueba del fragmento griego debe cotejarse con ese contrato. Estos fallos no se ocultan bajo los 56 programas locales satisfactorios. El caso adicional que confundía el filtro de registros R2 con el de originales exclusivamente locales se corrigió y se cubrió con una prueba funcional de la tabla.
 
 ## Tareas académicas pendientes
 
