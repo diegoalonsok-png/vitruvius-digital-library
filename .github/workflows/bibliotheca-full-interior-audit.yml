@@ -1,0 +1,110 @@
+name: Bibliotheca - cotejo integral de titulos e interiores (solo lectura)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/audit-bibliotheca-full-integrity.py"
+      - ".github/workflows/bibliotheca-full-interior-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bibliotheca-content-verification-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  catalogue-and-originals:
+    name: 281 fichas y todas las versiones textuales del registro
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sintaxis del auditor
+        run: python -m py_compile scripts/audit-bibliotheca-full-integrity.py
+      - name: Conciliar obras, manifestaciones, duplicados y huerfanos
+        run: python scripts/audit-bibliotheca-full-integrity.py --mode inventory --output reports/bibliotheca/full-integrity-inventory.json
+      - name: Abrir y comprobar todas las versiones de texto buscable
+        run: python scripts/audit-bibliotheca-full-integrity.py --mode texts --output reports/bibliotheca/full-integrity-texts.json
+      - name: Anotar resultados y controles pendientes
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,os,pathlib
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as out:
+              out.write("## Cotejo de la Bibliotheca: obra, titulo, original y estructura\n\n")
+              for name in ("inventory","texts"):
+                  path=pathlib.Path(f"reports/bibliotheca/full-integrity-{name}.json")
+                  if not path.exists():
+                      out.write(f"- {name}: no se genero un informe integro.\n")
+                      continue
+                  doc=json.loads(path.read_text(encoding="utf-8"))
+                  out.write(f"- {name}: {doc['counts']}\n\n")
+              out.write("\nNo se ha certificado la integridad de ninguna obra por un mero control automatico.\n")
+          PY
+      - name: Conservar evidencias para revision academica
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-281-works-originals-${{ github.run_id }}
+          path: reports/bibliotheca/full-integrity-*.json
+          if-no-files-found: warn
+          retention-days: 90
+
+  printed-editions:
+    name: PDF y OCR R2 (ediciones desde ${{ matrix.start }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        start: [0, 30, 60, 90]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependencia para verificar PDFs realmente descargados
+        run: python -m pip install --disable-pip-version-check "pymupdf>=1.24,<2"
+      - name: Examinar OCR de todas las paginas por edicion
+        run: |
+          python scripts/audit-bibliotheca-full-integrity.py \
+            --mode ocr --start ${{ matrix.start }} --limit 30 \
+            --output reports/bibliotheca/full-integrity-ocr-${{ matrix.start }}.json
+      - name: Descargar y cotejar PDF con portada, ultimos folios, paginas intermedias, hash y cantidad de paginas
+        run: |
+          python scripts/audit-book-interiors.py \
+            --start ${{ matrix.start }} --limit 30 \
+            --output reports/bibliotheca/full-integrity-pdf-${{ matrix.start }}.json
+      - name: Publicar incidencias del lote en GitHub Actions
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,os,pathlib,collections
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as out:
+              out.write("## Correspondencia titulo / interior de PDF y OCR\n\n")
+              for kind in ("ocr","pdf"):
+                  p=pathlib.Path("reports/bibliotheca/full-integrity-"+kind+"-${{ matrix.start }}.json")
+                  if not p.exists():
+                      out.write(f"{kind}: informe no disponible.\n");continue
+                  doc=json.loads(p.read_text(encoding="utf-8"))
+                  total=collections.Counter(x.get("status") for x in doc.get("results",[]))
+                  out.write(f"- {kind}: {len(doc.get('results',[]))} ediciones examinadas - {dict(total)}\n")
+              out.write("\nLos casos dudosos permanecen abiertos. No se modifican libros, codices, folios, traducciones ni registros originales.\n")
+          PY
+      - name: Archivar resultados individuales
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-117-editions-${{ matrix.start }}-${{ github.run_id }}
+          path: reports/bibliotheca/full-integrity-*.json
+          if-no-files-found: warn
+          retention-days: 90
