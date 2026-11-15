@@ -139,6 +139,25 @@ async function render(query){
  if(pending){
   const triage=section("Status quaestionis · cotejo de H pendiente");
   triage.append(E("p","Este locus no tiene una entrada crítica registrada en el aparato comparativo. Sí posee textos editoriales y OCR atribuidos a Rose y Krohn. La falta de aparato no significa ausencia de variante.","bude-note"));
+  const d=pending.cotejo_digital;
+  if(d){
+   const u=E("div",null,"bude-unit");
+   u.append(E("strong","Collatio Kr. / Kur. · cribado digital completado"));
+   u.append(E("div",d.porcentaje===100&&d.unidades_candidatas===0?"Kr. 1912 (transcripción Perseus) = Kur. V514 tras normalización léxica · 100 % de coincidencia digital; sin diferencia computacional detectada.":"Coincidencia normalizada: "+d.porcentaje+" %; diferencias digitales candidatas: "+d.unidades_candidatas+"."));
+   u.append(E("small","No se certifica consensus codicum. i/j y u/v normalizadas; posible divergencia editorial, ortográfica o paleográfica aún por cotejar."));
+   triage.append(u);
+  }
+  const imp=pending.cotejo_impresos;
+  if(imp){
+   for(const [name,record] of [["Rose 1899",imp.rose],["Krohn 1912",imp.krohn]]){
+    const u=E("div",null,"bude-unit");
+    u.append(E("strong","Ex editione impressa · "+name+" · imagen digital "+(record.pagina_digital??"—")));
+    u.append(E("div","OCR candidato asociado: "+(record.extracto_ocr||"sin texto")+(record.extracto_ocr?.length>=320?"…":"")));
+    u.append(E("small","Alineación automática "+(typeof record.grado_alineacion_ocr==="number"?Math.round(record.grado_alineacion_ocr*100)+" %":"no cuantificada")+" · no es porcentaje de fiabilidad de la lectura · cotejo del impreso pendiente."));
+    if(record.url)u.append(A("Examinar página original",record.url));
+    triage.append(u);
+   }
+  }
   const material=pending.h.lecturas_parciales||[];
   for(const row of material){
    const u=E("div",null,"bude-unit");
