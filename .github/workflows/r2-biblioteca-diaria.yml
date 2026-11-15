@@ -41,6 +41,18 @@ jobs:
           python-version: "3.12"
       - run: pip install --quiet "boto3>=1.36" pymupdf
 
+      # La tanda siguiente se bloquea si el lector, la búsqueda semántica o
+      # la integración de traducción fallan en las pruebas reproducibles.
+      # La prueba de traducción usa un proveedor simulado; no certifica
+      # la disponibilidad del servicio externo en producción.
+      - name: Verificar búsqueda semántica, lectores y traducción antes de descargar más
+        run: |
+          npm install --no-save jsdom
+          node scripts/test-classics-source-diagnostics.mjs
+          node scripts/test-classics-reader-search.mjs
+          node scripts/test-classics-academic-reader.mjs
+          node scripts/test-r2-busqueda-clasicos.mjs
+
       - name: Estado de la biblioteca antes de la tanda
         run: python scripts/r2-duplicados.py
 
@@ -100,9 +112,11 @@ jobs:
           python scripts/r2-subir-indice.py --origen /tmp/indice-r2/indice
 
       - name: Comprobar el visor, la búsqueda y la fusión del índice
-        if: always()
         run: |
           npm install --no-save jsdom
+          node scripts/test-classics-source-diagnostics.mjs
+          node scripts/test-classics-reader-search.mjs
+          node scripts/test-classics-academic-reader.mjs
           node scripts/test-visor-facsimiles-r2.mjs
           node scripts/test-r2-busqueda-clasicos.mjs
           node scripts/test-r2-indice-fusion.mjs
