@@ -54,6 +54,12 @@ async function render(query){
   item(verified,"Kur. : "+e.lemma+" ] "+e.reading+" "+e.siglum,
        e.note,"H, f. "+e.folio+" · "+e.status+" · registros: "+sourceRefs,
        "codex-h-folios-local.html?folio="+encodeURIComponent(e.folio)+"&locus="+encodeURIComponent(locus));
+  const provenance=E("p",null,"bude-note");provenance.append("Fuentes editoriales: ");
+  const sourceRows=(e.sources||[]).map(id=>data.appendix.entradas.find(row=>row.id===id)).filter(Boolean);
+  if(sourceRows.length){
+   sourceRows.forEach((row,i)=>{if(i)provenance.append(" · ");provenance.append(A(row.version+" · Apéndice T, p. "+row.page,row.pdf));});
+  }else provenance.append("Referencias textuales indicadas arriba; revisar identificadores en el Apéndice T.");
+  verified.append(provenance);
   if(e.comparison){
    const compar=E("div",null,"bude-grid");
    const texts=[["Kur. V514 · latín",e.comparison.kurilo_latin],
