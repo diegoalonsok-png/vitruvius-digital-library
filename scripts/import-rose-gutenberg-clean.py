@@ -25,7 +25,8 @@ def main():
     # then the independent uninterrupted plain-text edition, followed by Faventinus.
     # NEVER ingest the first apparatus-bearing printing or the later Faventinus text.
     normalized=source.replace("\\r\\n","\\n")
-    anchors=list(re.finditer(r"(?m)^VITRUVII DE ARCHITECTURA\\s*\\nLIBER PRIMUS\\.\\s*$",normalized))\n    anchor=anchors[-1] if anchors else None
+    anchors=list(re.finditer(r"(?m)^VITRUVII DE ARCHITECTURA\\s*\\nLIBER PRIMUS\\.\\s*$",normalized))
+    anchor=anchors[-1] if anchors else None
     if not anchor:raise ValueError("Plain-text Rose section start not found")
     vitruvius=normalized[anchor.start():]
     boundary=re.search(r"(?m)^M\\. CETI FAVENTINI\\s*$",vitruvius)
