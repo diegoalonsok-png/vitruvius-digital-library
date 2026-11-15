@@ -60,6 +60,7 @@ def main():
         cifras["notaTotal"] = ("Obras declaradas: repertorio principal más incorporaciones "
             "adicionales documentadas; no contar ediciones ni traducciones como nuevas obras.")
     if r2:
+        cifras["edicionesPdfR2"] = len(r2["items"])
         propios = [x for x in r2["items"] if not x.get("coleccion")]
         recepcion = [x for x in r2["items"] if x.get("coleccion") == "recepcion-vitruviana"]
         cifras["facsimiles"] = len(propios)
