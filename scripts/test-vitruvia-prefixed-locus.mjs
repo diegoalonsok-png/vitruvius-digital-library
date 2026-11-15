@@ -25,6 +25,7 @@ assert.match(rows[0].title,/De architectura 1\.1\.1/);
 assert(rows[0].links.some(x=>x.url.includes("locus=1.1.1")),"A source passage needs a direct reader link");
 const core=fs.readFileSync("assets/vitruvia-search.js","utf8");
 assert(core.includes("const exactLocusRequest="));
+assert(core.includes("const exactLocusRequest=internal&&"),"Externally selected web-only searches must remain available");
 assert.match(core,/const wikiEnabled=.*!exactLocusRequest/);
 assert.match(core,/const academicEnabled=.*!exactLocusRequest/);
 console.log("PASS: explicit loci 1.1.1 and prefixed forms resolve to indexed De architectura, with direct reader link and no unrelated web providers.");
