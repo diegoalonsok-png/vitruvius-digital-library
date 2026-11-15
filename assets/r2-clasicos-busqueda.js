@@ -63,8 +63,11 @@ async function lookup(consulta){
  const porRaiz=[];
  for(const raiz of raices){
   let fragmento=null;
-  try{fragmento=await fragmentoDe(raiz)}catch{fragmento=null}
-  const entradas=fragmento&&fragmento.raices?fragmento.raices[raiz]:null;
+  try{fragmento=await fragmentoDe(raiz)}
+  catch(e){return {raices,obras:[],motivo:"El índice R2 no está disponible para «"+raiz+"»: "+(e?.message||"error de red"),errorTecnico:true}}
+  if(!fragmento||!fragmento.raices||typeof fragmento.raices!=="object")
+   return {raices,obras:[],motivo:"Fragmento R2 inválido para «"+raiz+"»",errorTecnico:true};
+  const entradas=fragmento.raices[raiz];
   if(!entradas)return {raices,obras:[],motivo:"ninguna obra contiene «"+raiz+"»"};
   porRaiz.push({raiz,entradas});
  }
@@ -76,7 +79,7 @@ async function lookup(consulta){
  // Si el catálogo no está disponible, el resultado queda sin certificar.
  const catalogo=await leer(CATALOGO).catch(()=>null);
  if(!catalogo||!Array.isArray(catalogo.items))
-  return {raices,obras:[],motivo:"No se pudo verificar el catálogo bibliográfico; no se muestran identificadores huérfanos"};
+  return {raices,obras:[],motivo:"No se pudo verificar el catálogo bibliográfico; no se muestran identificadores huérfanos",errorTecnico:true};
  const porId=new Map(catalogo.items.filter(x=>x&&x.id&&x.pdf&&x.texto).map(x=>[x.id,x]));
  const autorizadas=comunes.filter(id=>porId.has(id));
  if(!autorizadas.length)
@@ -118,8 +121,16 @@ function estilo(){
 function pintar(anfitrion,consulta,resultado){
  estilo();
  document.getElementById("r2-clasicos-hallazgos")?.remove();
- if(!resultado.obras.length)return;
+ if(!resultado.obras.length&&!resultado.errorTecnico)return;
  const caja=document.createElement("section");caja.id="r2-clasicos-hallazgos";
+ if(resultado.errorTecnico){
+  caja.setAttribute("role","status");
+  const aviso=document.createElement("p");
+  aviso.textContent="Búsqueda en R2 no disponible: "+resultado.motivo+". No significa que la palabra no exista en los textos.";
+  caja.append(aviso);
+  anfitrion.insertAdjacentElement("afterend",caja);
+  return;
+ }
  const h=document.createElement("h3");h.textContent="Clásicos en facsímil · páginas con «"+consulta.trim()+"»";
  const nota=document.createElement("p");
  nota.textContent=resultado.obras.length+" ediciones de dominio público alojadas en la biblioteca. Raíz consultada: "+
