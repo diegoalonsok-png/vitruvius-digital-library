@@ -54,7 +54,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 .ab-compare article{background:var(--ab-paper);border:1px solid var(--ab-rule);padding:16px;min-width:0}
 .ab-compare-appearance{display:flex;gap:10px;align-items:end;flex-wrap:wrap;border:1px solid var(--ab-rule);padding:12px;font:12px system-ui;margin:12px 0}.ab-compare-appearance label{display:grid;gap:4px}.ab-compare-appearance button,.ab-compare-appearance select{padding:6px;border:1px solid var(--ab-rule);background:var(--ab-paper);color:var(--ab-ink)}.ab-compare{--compare-font:"Gentium Book Plus",Georgia,serif;--compare-size:19px;--compare-ink:#29251e;--compare-paper:#fffefa}.ab-compare article{background:var(--compare-paper);color:var(--compare-ink)}.ab-compare .ab-text{font-family:var(--compare-font);font-size:var(--compare-size)}.ab-compare h3{font:600 14px system-ui;margin:0 0 8px}
 .ab-compare .ab-text{line-height:1.75;max-height:350px;overflow:auto}
-.ab-compare small{display:block;font:11px/1.5 system-ui;color:var(--ab-muted);margin:8px 0}
+.ab-compare small{display:block;font:11px/1.5 system-ui;color:var(--ab-muted);margin:8px 0}.ab-krohn-footnote{font:12px/1.6 system-ui;margin:13px 0 6px;padding:9px 11px;border-left:3px solid var(--ab-accent);background:rgba(180,146,85,.09);color:var(--compare-ink,var(--ab-ink))}.ab-krohn-footnote[hidden]{display:none}
 .ab-entry .lemma{font-style:italic;font-weight:600}
 .ab-entry .divider-lemma{padding:0 .4em;color:var(--ab-accent)}
 .ab-reference{font:12px/1.6 system-ui}
@@ -135,7 +135,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <p class="ab-sub">Tres textos latinos sincronizados por <i>locus</i>: Rose 1899 (OCR histórico provisional), Krohn 1912 (transcripción digital independiente de Perseus) y Kurilo V514 (texto estructurado). Para los loci ausentes de Krohn se presenta V514 como suplido editorial explícito. El ruido OCR no es una variante crítica.</p>
 <div class="ab-compare-appearance" role="group" aria-label="Personalizar los tres textos latinos"><label>Letra <select id="ab-compare-font"><option value="gentium">Gentium</option><option value="georgia">Georgia</option><option value="serif">Serif</option><option value="sans">Sin serif</option></select></label><label>Tamaño <input id="ab-compare-size" type="range" min="14" max="27" value="19"></label><label>Color de texto <input id="ab-compare-ink" type="color" value="#29251e"></label><label>Color de papel <input id="ab-compare-paper" type="color" value="#fffefa"></label><button id="ab-compare-reset" type="button">Restablecer</button><span id="ab-index-status" role="status" aria-live="polite"></span></div><div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
 <article><h3>Rose · 1899</h3><small id="compare-rose-source">Comprobando transcripción digital…</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><details id="compare-rose-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-rose-changes"></p><div class="ab-text" id="compare-rose-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
-<article><h3>Krohn · 1912</h3><small id="compare-krohn-source">Comprobando transcripción digital…</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><details id="compare-krohn-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-krohn-changes"></p><div class="ab-text" id="compare-krohn-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
+<article><h3>Krohn · 1912</h3><small id="compare-krohn-source">Comprobando transcripción digital…</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><p class="ab-krohn-footnote" id="compare-krohn-footnote" role="note" hidden></p><details id="compare-krohn-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-krohn-changes"></p><div class="ab-text" id="compare-krohn-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
 <article><h3>Kurilo · V514</h3><small>Texto latino de la edición académica V514</small><div class="ab-text" lang="la" id="compare-kurilo"></div><small>Fuente: V514, pasaje estructurado.</small><a id="compare-kurilo-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Lector de Kurilo</a></article>
 </div></section>
 <section aria-labelledby="ab-h-title" class="ab-documentation" id="ab-h-evidence">
@@ -291,8 +291,9 @@ function load(locus){
  for(const [source,id] of [["rose-1899","rose"],["krohn-1912","krohn"]]){
  const candidate=ocrFixes.loci?.[locus]?.[source],raw=c[source]?.text;
  const indexed=id==="krohn"?krohnDigital?.get(locus):null;
- const supplied=id==="krohn"&&!indexed?passage.latin:null;
- set("#compare-"+id,indexed||supplied||candidate?.text||raw||"No hay texto alineado a este locus.");
+ const supplied=id==="krohn"&&!indexed?(passage.latin?.trim()||null):null;
+ const roseSupplement=id==="krohn"&&!indexed&&!supplied?(ocrFixes.loci?.[locus]?.["rose-1899"]?.text||c["rose-1899"]?.text||null):null;
+ set("#compare-"+id,indexed||supplied||roseSupplement||(id==="rose"?(candidate?.text||raw):null)||"No hay texto alineado a este locus.");
  $("#compare-"+id+"-ocr-detail").hidden=!candidate;
  $("#compare-"+id+"-ocr-detail").open=false;
  set("#compare-"+id+"-changes",candidate?.interventions?.join(" · ")||"");
@@ -302,8 +303,13 @@ function load(locus){
  for(const [name,id,defaultPdf] of [["rose-1899","rose","https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"],["krohn-1912","krohn","documents/krohn-1912.pdf"]]){
    const item=c[name],clean=ocrFixes.loci?.[locus]?.[name];
  const indexed=id==="krohn"?krohnDigital?.get(locus):null;
- const supplied=id==="krohn"&&!indexed&&passage.latin;
- set("#compare-"+id+"-status",indexed?"Krohn 1912 · transcripción digital Perseus (no OCR) · cotejo impreso pendiente":supplied?"SUPLIDO EDITORIAL: Kurilo V514, no transcripción de Krohn · cotejo pendiente":item?(clean?"Lectura OCR depurada para consulta, con original y cambios disponibles · ":"OCR de archivo · ")+"alineación "+Math.round((item.score||0)*100)+" % · página digital "+item.page:"Sin correspondencia automática documentada");
+ const supplied=id==="krohn"&&!indexed&&Boolean(passage.latin?.trim());
+ const roseSupplement=id==="krohn"&&!indexed&&!supplied&&Boolean(ocrFixes.loci?.[locus]?.["rose-1899"]?.text||c["rose-1899"]?.text);
+ set("#compare-"+id+"-status",indexed?"Krohn 1912 · transcripción digital Perseus (no OCR) · cotejo impreso pendiente":supplied?"Suplido editorial V514 · no es lectura independiente de Krohn":roseSupplement?"Suplido desde Rose 1899 · OCR provisional, no es lectura de Krohn":item?(clean?"Lectura OCR depurada para consulta, con original y cambios disponibles · ":"OCR de archivo · ")+"alineación "+Math.round((item.score||0)*100)+" % · página digital "+item.page:"Sin correspondencia automática documentada");
+ if(id==="krohn"){
+  const foot=$("#compare-krohn-footnote");foot.hidden=Boolean(indexed)||(!supplied&&!roseSupplement);
+  foot.textContent=indexed?"":supplied?"Nota editorial · "+locus+": falta transcripción digital independiente de Krohn 1912 para este locus. Se reproduce provisionalmente el texto latino de Kurilo V514, sin atribuirlo a Krohn. Pendiente de cotejo con el impreso.":roseSupplement?"Nota editorial · "+locus+": falta transcripción digital de Krohn y texto V514 utilizable. Se ofrece provisionalmente OCR de Rose 1899, que NO representa la lectura de Krohn. Pendiente de cotejo con ambos impresos.":"";
+ }
    const pdf=comp?.loci?.find(v=>v.locus===locus)?.[name]?.pdf||defaultPdf;
    $("#compare-"+id+"-link").href=pdf;
  }
