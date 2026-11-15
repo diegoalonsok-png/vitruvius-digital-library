@@ -259,6 +259,17 @@
         "observedReading": "columnarum XXXVIII",
         "verification": "lectura visual directa de la fotografía conservada en GitHub",
         "note": "En la fotografía de H f. 41v se lee la cifra XXXVIII junto a columnarum; concuerda con la lectura reportada por V514/V554. La comparación exacta del texto constitutivo de Krohn/Rose aún requiere facsímil de ambas ediciones."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "III.3.8",
+        "selected": "XXXIV",
+        "selectedAttribution": "Kr. (sec. Kur.; textus Kr. nondum inspectus)",
+        "variant": "XXXVIII",
+        "variantAttribution": "H",
+        "folio": "41v",
+        "display": "‖ III.3.8 XXXIV Kr. (sec. Kur., insp. pend.) : XXXVIII H (f. 41v, ex imagine) ‖",
+        "caution": "Lectura XXXVIII comprobada visualmente en H; XXXIV se atribuye a Krohn según comentario autoral, no se comprobó aún en impreso. Forma positiva parcial: no se presume apoyo del resto de códices."
       }
     },
     {
@@ -290,6 +301,17 @@
         "observedReading": "sed quod ex acuta facta est gravis",
         "verification": "lectura visual directa de la fotografía conservada en GitHub",
         "note": "La secuencia sed quod ex acuta facta est gravis es visible en la fotografía H f. 63v y concuerda con lo reportado en V514/V554. La calificación de crux sigue siendo decisión editorial, no marca manuscrita."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "V.4.2",
+        "selected": "†sed quod ex acuta†",
+        "selectedAttribution": "Kur. (crux editorial; locus citado en Apéndice T)",
+        "variant": "sed quod ex acuta facta est gravis",
+        "variantAttribution": "H",
+        "folio": "63v",
+        "display": "‖ V.4.2 †sed quod ex acuta† Kur. (sec. app. T) : sed quod ex acuta facta est gravis H (f. 63v, ex imagine) ‖",
+        "caution": "El lema con crux es una cita parcial del Apéndice T. No afirmar que el segmento recortado constituye la totalidad del texto establecido."
       }
     },
     {
@@ -343,7 +365,33 @@
         "observedReading": "diapente ex ordine",
         "verification": "lectura visual directa de la fotografía conservada en GitHub",
         "note": "La fotografía H f. 65v muestra diapente ex ordine sin et intermedio; concuerda con la omisión referida por V514/V554. La lectura de los signos periféricos y la colación integral del párrafo siguen pendientes."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "V.5.1",
+        "selected": "diapente ⟨et⟩ ex ordine",
+        "selectedAttribution": "Kur. (suppl. Kr. sec. Kur.)",
+        "variant": "diapente ex ordine",
+        "variantAttribution": "H",
+        "folio": "65v",
+        "display": "‖ V.5.1 diapente ⟨et⟩ ex ordine Kur. (suppl. Kr. sec. Kur.) : diapente ex ordine H (f. 65v, ex imagine) ‖",
+        "caution": "El signo ⟨ ⟩ indica suplemento; en el folio H se observa diapente ex ordine sin et. La atribución del suplemento a Krohn proviene del Apéndice T y debe cotejarse con Krohn impreso."
       }
     }
-  ]
+  ],
+  "apparatusConventions": {
+    "model": "Collection Budé / CUF, aparato positivo selectivo: ‖ locus lectura adoptada testimonio : variante testimonio ‖",
+    "witnessSigla": {
+      "H": "Harley MS 2767",
+      "G": "Gudianus 69",
+      "E": "Gudianus 132",
+      "S": "Sélestat"
+    },
+    "editorialSigla": {
+      "Kr.": "Friedrich Krohn (1912)",
+      "Rose": "Valentin Rose (1899)",
+      "Kur.": "Diego Kurilo (V514/V554/V297)"
+    },
+    "warning": "Sigla de edición no equivale a sigla codicológica. «sec. Kur.» = atribución citada por Kurilo; «ex imagine» = lectura visual sobre fotografía; «insp. pend.» = impreso aún no comprobado. La notación positiva es parcial mientras falten los demás testimonios."
+  }
 }
