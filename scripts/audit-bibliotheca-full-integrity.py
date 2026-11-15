@@ -143,8 +143,8 @@ def collect_inventory():
     "status":"quarantine_pending_pdf_title_and_contents_review","warning":note})
  stats={"mainCatalogueWorks":len(main),"additionalR2WorkRecords":len(extra),"declaredUniqueWorks":len(results),
   "shortfallAgainst300UnverifiedTarget":max(0,300-len(results)),"r2EditionRecords":len(editions),
-  "registeredTextVersions":len(registry),"registeredTextWorkIds":len(reg_by_work),
-  "externalIndexedOriginalWorkIds":len(ext_by_work),"quarantinedR2UncataloguedPDFs":len(quarantined),
+  "registeredTextVersions":len(registry),"registeredTextWorkIds":sum(bool(v) for v in reg_by_work.values()),
+  "externalIndexedOriginalWorkIds":sum(bool(v) for v in ext_by_work.values()),"quarantinedR2UncataloguedPDFs":len(quarantined),
   "worksWithoutAnySearchableSource":sum(x["indexStatus"]=="no_registered_content" for x in results),
   "identityAndCompletenessCertified":0}
  return {"schema":"vdl-bibliotheca-complete-content-audit-v1","mode":"inventory",
@@ -192,20 +192,29 @@ def inspect_registry(start,limit):
     if obj.get("language")!=e["language"]:flags.append("LANGUAGE_CONTENT_CONFLICT")
     passages=obj.get("passages")
     if not isinstance(passages,list):raise ValueError("JSON without passages")
-    count=len(passages);seen=set();book_nums=set()
-    for p in passages:
+    count=len(passages);book_nums=set();locus_occurrences=collections.defaultdict(list);segmented_loci=0
+    for position,p in enumerate(passages):
      if not isinstance(p,dict) or not isinstance(p.get("text"),str) or not p["text"].strip() or not str(p.get("locus") or "").strip():
       flags.append("EMPTY_OR_MALFORMED_PASSAGE");break
      locus=str(p["locus"])
-     if locus in seen:flags.append("DUPLICATE_LOCUS");break
-     seen.add(locus);v=parse_book_prefix(locus)
+     locus_occurrences[locus].append((position,p["text"]))
+     v=parse_book_prefix(locus)
      if v is not None:book_nums.add(v)
+    for locus,segments in locus_occurrences.items():
+     if len(segments)<2:continue
+     positions=[pos for pos,_ in segments]
+     contents=[body for _,body in segments]
+     if all(b==a+1 for a,b in zip(positions,positions[1:])) and len(set(contents))==len(contents):
+      segmented_loci+=1
+     else:
+      flags.append("NONCONTIGUOUS_OR_IDENTICAL_LOCUS_REUSE")
     chars=sum(len(p.get("text","")) for p in passages if isinstance(p,dict) and isinstance(p.get("text"),str))
     known=names.get(e["workId"],{})
     source_title=obj.get("title") or obj.get("sourceTitle") or ""
     # Indicio, nunca constatación de título falso: variantes y traducciones existen.
-    comparison=excerpt_matches(known.get("title"),source_title)
-    if source_title and known.get("title") and comparison["tokens"] and not comparison["matched"]:
+    title_variants=[known.get("title"),*(known.get("aliases") or [])]
+    checks=[excerpt_matches(v,source_title) for v in title_variants if isinstance(v,str) and v.strip()]
+    if source_title and checks and any(c["tokens"] for c in checks) and not any(c["matched"] for c in checks):
      flags.append("CATALOGUE_SOURCE_TITLE_NEEDS_COMPARISON")
     expected_parts=EXPECTED_BOOKS.get(e["workId"])
     if expected_parts and book_nums and len(book_nums)>=2:
@@ -215,7 +224,8 @@ def inspect_registry(start,limit):
     if not expected_parts:missing=[]
    if count==0 or chars<350:flags.append("NO_SUBSTANTIVE_TEXT")
    status="needs_review" if flags else "structurally_readable_not_philologically_verified"
-   extra={"sourceTitle":obj.get("title") or obj.get("sourceTitle") if isinstance(obj,dict) else None,
+   extra={"segmentedLocusGroups":segmented_loci if kind not in ("structured-bilingual","historical-ocr-pages") else 0,
+          "sourceTitle":obj.get("title") or obj.get("sourceTitle") if isinstance(obj,dict) else None,
           "bookNumbersDetected":sorted(book_nums) if kind not in ("structured-bilingual","historical-ocr-pages") else [],
           "candidateMissingBooks":missing if kind not in ("structured-bilingual","historical-ocr-pages") else []}
    rows.append({"workId":e["workId"],"language":e["language"],"path":path,"format":kind,
@@ -226,7 +236,7 @@ def inspect_registry(start,limit):
      "status":"could_not_inspect","reason":type(exc).__name__+": "+str(exc)[:220],
      "identityAndCompletenessCertified":False})
  return {"schema":"vdl-bibliotheca-complete-content-audit-v1","mode":"texts",
-  "method":"Abrir cada original/traducción registrado, comprobar identificación de obra y lengua, integridad de pasajes y loci. Las partes faltantes se consideran hipótesis si la numeración digital lo permite.",
+  "method":"Abrir cada original/traducción registrado, comprobar identificación de obra y lengua, integridad de pasajes y loci. Un locus puede distribuirse en fragmentos consecutivos distintos: no se declara duplicación textual por la misma etiqueta. Las partes faltantes se consideran hipótesis si la numeración digital lo permite.",
   "limits":"Ni la validación JSON ni los números de libros prueban edición íntegra, fidelidad manuscrita o cotejo editorial. Traducciones sin correspondencia por locus permanecen separadas.",
   "scope":{"start":start,"limit":len(selected),"total":len(registry)},
   "counts":dict(collections.Counter(x["status"] for x in rows)),"results":rows}
