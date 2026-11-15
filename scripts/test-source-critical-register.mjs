@@ -21,9 +21,12 @@ for(const e of entries.values()){
  assert.equal(e.sourceUrl.endsWith('#Page_'+e.printedPage),true);
 }
 const verified=new Set();
+assert.equal(checks.transcriptionSourceSha256,m.source.sha256);
+const proof=new Map(checks.readings.map(e=>[e.id,e]));
 for(const c of checks.entries.filter(c=>c.source==='Rose1899'))for(const id of c.entryIds){
  const e=entries.get(id);assert(e);assert.equal(e.printedPage,c.printedPage);
  assert.equal(e.locusMapping,'printed_source_line');verified.add(id);
+ assert.equal(proof.get(id).sourceText,e.sourceText);assert.deepEqual(proof.get(id).loci,e.loci);
 }
 assert(verified.size>0&&verified.size<entries.size,'An imported note is not automatically a printed check');
 assert(!verified.has('Rose1899-p1-n2'),'Checking one note must not certify the whole page');
@@ -51,4 +54,14 @@ assert(rows().length>2);assert(rows().some(e=>e.textContent.includes('cotejo del
 const last=m.loci.find(l=>l.locus.startsWith('10.')&&l.entries.length);locus(last.locus);
 await until(()=>requested.some(p=>p.endsWith('liber-10.json'))&&rows().some(e=>e.querySelector('h4').textContent.startsWith('X.')));
 assert.deepEqual(errors,[]);w.close();
+// A changed OCR/import must not inherit a prior visual-check label or its
+// comparative entry just because it retained the old record identifier.
+const changed=new JSDOM(read('apparatus-bude.html'),{url:'https://example.org/apparatus-bude.html?locus=1.4.3',runScripts:'outside-only'});
+changed.window.fetch=async url=>{const path=String(url).split('?')[0],data=json(path);if(path.endsWith('liber-01.json'))data.entries.find(e=>e.id==='Rose1899-p15-n4').sourceText+=' CORRUPTED';return {ok:true,json:async()=>data}};
+changed.window.eval(read('assets/source-critical-register.js'));
+await until(()=>changed.window.document.querySelectorAll('.ab-source-entry').length===2);
+assert.equal(changed.window.document.getElementById('source-critical-comparison').textContent,'');
+const filter=changed.window.document.getElementById('source-critical-evidence');filter.value='documentary';filter.dispatchEvent(new changed.window.Event('change'));
+const bad=[...changed.window.document.querySelectorAll('.ab-source-entry')].find(e=>e.textContent.includes('CORRUPTED'));
+assert(bad);assert.match(bad.textContent,/cotejo del impreso pendiente/);changed.window.close();
 console.log(`PASS: ${entries.size} attributed Rose reports, ${m.counts.lociWithApparatus} documentary loci, ${verified.size} individually checked notes; evidence filter and lazy book navigation.`);

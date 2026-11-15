@@ -141,7 +141,10 @@
       ],
       "editorialDecision": false,
       "errataId": "V297-1.4.3-exsugendo-commentary",
-      "errataUrl": "errata-editionum.html"
+      "errataUrl": "errata-editionum.html",
+      "sourceNoteIds": [
+        "Rose1899-p15-n4"
+      ]
     },
     {
       "locus": "1.4.4",
@@ -154,7 +157,10 @@
       ],
       "editorialDecision": false,
       "errataId": "V297-1.4.4-refrigerationibus",
-      "errataUrl": "errata-editionum.html"
+      "errataUrl": "errata-editionum.html",
+      "sourceNoteIds": [
+        "Rose1899-p15-n7"
+      ]
     },
     {
       "locus": "1.4.5",
@@ -165,7 +171,10 @@
         "Rose1899-print-p15-20261115",
         "Krohn1912-print-I-4-3-20261115"
       ],
-      "editorialDecision": false
+      "editorialDecision": false,
+      "sourceNoteIds": [
+        "Rose1899-p15-n9"
+      ]
     },
     {
       "locus": "1.4.6",
@@ -177,7 +186,213 @@
         "Krohn1912-print-I-4-3-20261115",
         "Krohn1912-print-p15-20261115"
       ],
-      "editorialDecision": false
+      "editorialDecision": false,
+      "sourceNoteIds": [
+        "Rose1899-p16-n2",
+        "Rose1899-p16-n4"
+      ]
     }
-  ]
+  ],
+  "transcriptionSourceSha256": "2a84c09c9f06a05a25d0bf5e68994eb82dc32f84e0d606a8c64fd5c387e281e3",
+  "readings": [
+    {
+      "id": "Rose1899-p1-n3",
+      "source": "Rose1899",
+      "printedPage": 1,
+      "printedLine": 11,
+      "printedLineEnd": 11,
+      "loci": [
+        "1.praef.2"
+      ],
+      "sourceText": "constitutione S(G^c): constitutionem H (-nē) G."
+    },
+    {
+      "id": "Rose1899-p1-n4",
+      "source": "Rose1899",
+      "printedPage": 1,
+      "printedLine": 17,
+      "printedLineEnd": 17,
+      "loci": [
+        "1.praef.2"
+      ],
+      "sourceText": "(virtutis) erat add. S."
+    },
+    {
+      "id": "Rose1899-p2-n9",
+      "source": "Rose1899",
+      "printedPage": 2,
+      "printedLine": 17,
+      "printedLineEnd": 17,
+      "loci": [
+        "1.1.1"
+      ],
+      "sourceText": "cuius iudicio probantur omnia GS (cf. p. 132, 24): om. H."
+    },
+    {
+      "id": "Rose1899-p2-n10",
+      "source": "Rose1899",
+      "printedPage": 2,
+      "printedLine": 18,
+      "printedLineEnd": 18,
+      "loci": [
+        "1.1.1"
+      ],
+      "sourceText": "ex GS: & (et) H."
+    },
+    {
+      "id": "Rose1899-p2-n11",
+      "source": "Rose1899",
+      "printedPage": 2,
+      "printedLine": 20,
+      "printedLineEnd": 20,
+      "loci": [
+        "1.1.1"
+      ],
+      "sourceText": "quae (quę SG) x. | cuius cumque HG: unius cuiusque S (unius ante cuius cumque add. G^c)."
+    },
+    {
+      "id": "Rose1899-p2-n12",
+      "source": "Rose1899",
+      "printedPage": 2,
+      "printedLine": 22,
+      "printedLineEnd": 22,
+      "loci": [
+        "1.1.1"
+      ],
+      "sourceText": "quaerés (sic, cum apice, ut mox p. 3, 2. 6 etc.) H. | sollertiae (-tię GS) ac rationis proportione x (cf. p. 65, 6. 10, 18)."
+    },
+    {
+      "id": "Rose1899-p15-n3",
+      "source": "Rose1899",
+      "printedPage": 15,
+      "printedLine": 6,
+      "printedLineEnd": 6,
+      "loci": [
+        "1.4.3"
+      ],
+      "sourceText": "e rebus: aeribus x."
+    },
+    {
+      "id": "Rose1899-p15-n4",
+      "source": "Rose1899",
+      "printedPage": 15,
+      "printedLine": 7,
+      "printedLineEnd": 7,
+      "loci": [
+        "1.4.3"
+      ],
+      "sourceText": "exugendo HSG^c (exsugendo GS^c)."
+    },
+    {
+      "id": "Rose1899-p15-n6",
+      "source": "Rose1899",
+      "printedPage": 15,
+      "printedLine": 13,
+      "printedLineEnd": 13,
+      "loci": [
+        "1.4.3"
+      ],
+      "sourceText": "redurescat et restituatur x."
+    },
+    {
+      "id": "Rose1899-p15-n7",
+      "source": "Rose1899",
+      "printedPage": 15,
+      "printedLine": 22,
+      "printedLineEnd": 22,
+      "loci": [
+        "1.4.4"
+      ],
+      "sourceText": "valitudinibus (hic) x (sed val&udo solus H 32, 23 ubi valit. SLP vlchEG)."
+    },
+    {
+      "id": "Rose1899-p15-n8",
+      "source": "Rose1899",
+      "printedPage": 15,
+      "printedLine": 24,
+      "printedLineEnd": 24,
+      "loci": [
+        "1.4.5"
+      ],
+      "sourceText": "is: his x. | quae caloribus (sic) x (a cal. L)."
+    },
+    {
+      "id": "Rose1899-p15-n9",
+      "source": "Rose1899",
+      "printedPage": 15,
+      "printedLine": 26,
+      "printedLineEnd": 26,
+      "loci": [
+        "1.4.5"
+      ],
+      "sourceText": "e (princ.) om. x. | stoechia x."
+    },
+    {
+      "id": "Rose1899-p15-n11",
+      "source": "Rose1899",
+      "printedPage": 15,
+      "printedLine": 28,
+      "printedLineEnd": 28,
+      "loci": [
+        "1.4.5"
+      ],
+      "sourceText": "ita: & ita x (eṭ del. G^c)."
+    },
+    {
+      "id": "Rose1899-p16-n1",
+      "source": "Rose1899",
+      "printedPage": 16,
+      "printedLine": 1,
+      "printedLineEnd": 1,
+      "loci": [
+        "1.4.5"
+      ],
+      "sourceText": "qualitatis ante corr. H."
+    },
+    {
+      "id": "Rose1899-p16-n2",
+      "source": "Rose1899",
+      "printedPage": 16,
+      "printedLine": 2,
+      "printedLineEnd": 2,
+      "loci": [
+        "1.4.6"
+      ],
+      "sourceText": "cumque Nohl: cum x (cf. p. 232, 21). | exuperatae H = exsuperat e GS."
+    },
+    {
+      "id": "Rose1899-p16-n3",
+      "source": "Rose1899",
+      "printedPage": 16,
+      "printedLine": 4,
+      "printedLineEnd": 4,
+      "loci": [
+        "1.4.6"
+      ],
+      "sourceText": "certis: cae(ę GS)teris x."
+    },
+    {
+      "id": "Rose1899-p16-n4",
+      "source": "Rose1899",
+      "printedPage": 16,
+      "printedLine": 8,
+      "printedLineEnd": 8,
+      "loci": [
+        "1.4.6"
+      ],
+      "sourceText": "ut aliquida H, ut liquida G, aut aliquida S. | con (m GS)positionibus (-ibꝰ) sic x."
+    },
+    {
+      "id": "Rose1899-p16-n5",
+      "source": "Rose1899",
+      "printedPage": 16,
+      "printedLine": 13,
+      "printedLineEnd": 13,
+      "loci": [
+        "1.4.6"
+      ],
+      "sourceText": "terrena x."
+    }
+  ],
+  "verificationRule": "Solo se conserva el estado de cotejo si coinciden la huella de la transcripción fuente y el texto, página, línea y loci exactos de la entrada comprobada."
 }
