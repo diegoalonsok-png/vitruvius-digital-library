@@ -1,0 +1,755 @@
+{
+  "schema": "vdl-bibliotheca-unindexed-backlog-v1",
+  "generated": "2026-11-15",
+  "method": "Inventario provisional contrastado con auditoría de las 271 obras, registro de índices y enlaces R2. No certifica ausencia física de archivos ni derechos de reproducción.",
+  "summary": {
+    "missingRegistryEntries": 57,
+    "ancientWorksWithoutRegisteredText": 54,
+    "modernEditionManifestationsWithoutOwnRegistry": 3,
+    "highPriorityAncient": 23
+  },
+  "entries": [
+    {
+      "id": "apollodorus-poliorcetics",
+      "author": "Apolodoro de Damasco (atribución tradicional)",
+      "title": "Πολιορκητικά · Poliorketika",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [
+        "apollodorus-poliorcetics"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "apollonius-conica",
+      "author": "Apolonio de Perge",
+      "title": "Κωνικά · Conica",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "archimedes-fluitantibus",
+      "author": "Arquímedes",
+      "title": "Περὶ τῶν ὀχουμένων",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [
+        "arquimedes-obras"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "author": "Aristarco de Samos",
+      "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "athenaeus-deipnosophistae",
+      "author": "Ateneo de Náucratis",
+      "title": "Δειπνοσοφισταί",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "author": "Ateneo Mecánico",
+      "title": "Περὶ μηχανημάτων · De machinis",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [
+        "athenaeus-mechanicus"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "biton-kataskeuai",
+      "author": "Bitón",
+      "title": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [
+        "biton-kataskeuai"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "cassius-dio-historia",
+      "author": "Dión Casio",
+      "title": "Ῥωμαϊκὴ ἱστορία",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "cleonides-harmonica",
+      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "euclid-optica",
+      "author": "Euclides",
+      "title": "Ὀπτικά · Optica",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "euclid-phaenomena",
+      "author": "Euclides",
+      "title": "Φαινόμενα · Phaenomena y escritos musicales",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "frontinus-gromatica",
+      "author": "Frontino",
+      "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "geminus-isagoge",
+      "author": "Gémino",
+      "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "hero-belopoeica",
+      "author": "Herón de Alejandría",
+      "title": "Βελοποιικά · Belopoeica",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "author": "Higino Gromático",
+      "title": "Constitutio limitum",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [
+        "hyginus-gromaticus"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "pappus-synagoge",
+      "author": "Papo de Alejandría",
+      "title": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "philo-belopoeica",
+      "author": "Filón de Bizancio",
+      "title": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [
+        "philo-belopoeica"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "procopius-aedificiis",
+      "author": "Procopio de Cesarea",
+      "title": "Περὶ κτισμάτων",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "ps-aristotle-mechanica",
+      "author": "Pseudo-Aristóteles (escuela peripatética)",
+      "title": "Μηχανικὰ προβλήματα",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "ptolemy-geographia",
+      "author": "Claudio Ptolomeo",
+      "title": "Γεωγραφικὴ ὑφήγησις",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [
+        "ptolemy-geographia"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "siculus-flaccus",
+      "author": "Sículo Flaco",
+      "title": "De condicionibus agrorum",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "theophrastus-historia-plantarum",
+      "author": "Teofrasto",
+      "title": "Περὶ φυτῶν ἱστορίας",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [
+        "teofrasto-historia-plantas"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "thucydides-war",
+      "author": "Tucídides",
+      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "alta",
+      "r2EditionsDeclared": [
+        "tucidides-historia"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "accius-fragmenta",
+      "author": "Accio",
+      "title": "Tragoediae (fragmenta)",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "accius-fragmenta"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "anthologia-latina",
+      "author": "Antología latina",
+      "title": "Anthologia Latina",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "anthologia-latina"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "author": "Apuleyo",
+      "title": "De deo Socratis",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "author": "Aristóteles",
+      "title": "Μετεωρολογικά · Meteorologica",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "aristoteles-meteorologica"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "casiodoro-variae",
+      "author": "Casiodoro",
+      "title": "Variae",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "casiodoro-variae"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "censorinus-die-natali",
+      "author": "Censorino",
+      "title": "De die natali",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "ennius-annales",
+      "author": "Ennio",
+      "title": "Annales (fragmenta)",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "author": "Festo (y Verrio Flaco)",
+      "title": "De verborum significatu",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "festo-verborum-significatu"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "galeno-kuhn-vol01"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "author": "Galeno",
+      "title": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "galeno-kuhn-vol19"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "author": "Galeno",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "galeno-opera-kuhn"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "author": "Galeno",
+      "title": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "galeno-scripta-minora"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "higino-fabulas",
+      "author": "Higino",
+      "title": "Fabulae · Astronomica poetica",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "higino-fabulas"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "isidore-etymologiae",
+      "author": "Isidoro de Sevilla",
+      "title": "Etymologiae",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "author": "Jámblico",
+      "title": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "jamblico-vida-pitagorica"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "lyra-graeca",
+      "author": "Poetas líricos griegos",
+      "title": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "lyra-graeca"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "author": "Macrobio",
+      "title": "Saturnalia",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "manilio-astronomica",
+      "author": "Manilio",
+      "title": "Astronomica",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "manilio-astronomica"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "author": "Marciano Capela",
+      "title": "De nuptiis Philologiae et Mercurii",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "marciano-capela-nuptiis"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "author": "Nonio Marcelo",
+      "title": "De compendiosa doctrina",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "nonio-marcelo-doctrina"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "author": "Paladio",
+      "title": "Opus agriculturae",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "paladio-opus-agriculturae"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "plutarch-lives",
+      "author": "Plutarco",
+      "title": "Βίοι Παράλληλοι · Vidas paralelas",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "plutarco-vidas"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "plutarch-moralia",
+      "author": "Plutarco",
+      "title": "Ἠθικά (Moralia)",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "author": "Proclo",
+      "title": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "proclo-comentario-euclides"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "seneca-de-ira",
+      "author": "Séneca",
+      "title": "De ira",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "author": "Séneca",
+      "title": "De tranquillitate animi",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "seneca-naturales",
+      "author": "Séneca",
+      "title": "Naturales quaestiones",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "author": "Sexto Empírico",
+      "title": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "sexto-empirico-obras"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "author": "Teón de Esmirna",
+      "title": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "language": "grc",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [
+        "teon-esmirna-expositio"
+      ],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Cotejar PDF/OCR, edición, licencia y loci antes de indexar.",
+      "indexed": false
+    },
+    {
+      "id": "vegetius-epitoma",
+      "author": "Vegecio",
+      "title": "Epitoma rei militaris",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "velleius-historia",
+      "author": "Veleyo Patérculo",
+      "title": "Historia Romana",
+      "language": "la",
+      "classification": "ancient_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Obtener fuente textual acreditada, cotejar identidad y registrar procedencia.",
+      "indexed": false
+    },
+    {
+      "id": "theory-v297-pdf",
+      "author": "Diego A. Kurilo · sobre Vitruvio",
+      "title": "The Architect of Theory · V297 (inglés)",
+      "language": "la",
+      "classification": "modern_edition_of_existing_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Vincular como edición de Vitruvio, sin contar como obra antigua independiente.",
+      "indexed": false
+    },
+    {
+      "id": "vitruvio-v514-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V514 (latín–castellano)",
+      "language": "la",
+      "classification": "modern_edition_of_existing_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Vincular como edición de Vitruvio, sin contar como obra antigua independiente.",
+      "indexed": false
+    },
+    {
+      "id": "vitruvio-v554-pdf",
+      "author": "Vitruvio · edición de Diego A. Kurilo",
+      "title": "De architectura · Recensio V554 (latín–francés)",
+      "language": "la",
+      "classification": "modern_edition_of_existing_work",
+      "priority": "normal",
+      "r2EditionsDeclared": [],
+      "sourceStatus": "Sin versión textual registrada para este ID",
+      "nextStep": "Vincular como edición de Vitruvio, sin contar como obra antigua independiente.",
+      "indexed": false
+    }
+  ]
+}
