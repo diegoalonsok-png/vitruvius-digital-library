@@ -76,9 +76,9 @@ function mount(root,queryInput){
 }
 function init(){
  const bibliography=document.querySelector(".searcharea");
- const vitruvia=document.getElementById("article-body");
+ const mainSearch=document.getElementById("search-form");
  if(bibliography)mount(bibliography,null);
- else if(vitruvia)mount(vitruvia,null);
+ else if(mainSearch){const host=maker("div");host.id="vdl-all-books-host";mainSearch.insertAdjacentElement("afterend",host);mount(host,null);}
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
