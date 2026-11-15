@@ -72,7 +72,7 @@ async function render(query){
    const u=E("div",null,"bude-unit");
    const heading=E("div",e.criticalUnit.display,"bude-critical-line");
    heading.lang="la";u.append(heading);
-   u.append(E("small","Apparatus positivus selectivus · "+e.criticalUnit.caution));
+   u.append(E("small",(e.criticalUnit.form==="nota_graphica"?"Nota graphica · ":"Apparatus positivus selectivus · ")+e.criticalUnit.caution));
    u.append(E("div",e.note,"bude-note"));
    u.append(A("Examinar H f. "+e.folio+" en el visor",hViewerLink(e.folio,locus)));
    verified.append(u);
