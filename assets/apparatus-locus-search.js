@@ -48,8 +48,8 @@ function init(rows,openLocus,syncTerm){
    const matches=[...raw.matchAll(/[A-Za-zÀ-ÿ]+/g)].filter(m=>needle.includes(fold(m[0])));
    const at=matches[0]?.index??0;
    let lo=Math.max(0,at-75),hi=Math.min(raw.length,at+230);
-   if(lo>0){const next=raw.slice(lo).search(/\\s/);if(next>=0&&lo+next<at)lo+=next+1}
-   if(hi<raw.length){const next=raw.slice(hi).search(/\\s/);if(next>=0&&next<45)hi+=next}
+   if(lo>0){const next=raw.slice(lo).search(/\s/);if(next>=0&&lo+next<at)lo+=next+1}
+   if(hi<raw.length){const next=raw.slice(hi).search(/\s/);if(next>=0&&next<45)hi+=next}
    if(lo)p.append(document.createTextNode("…"));
    let cursor=lo;
    for(const match of matches){
