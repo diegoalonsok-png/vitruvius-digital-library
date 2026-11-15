@@ -29,6 +29,11 @@ code{overflow-wrap:anywhere}footer{border-top:1px solid #777;font-size:12px}</st
 <ul id="ocr-index-books"></ul></details>
 <details><summary>Ediciones V514, V554 y V297 con índice estructurado existente</summary><ul id="structured-editions"></ul></details>
 <p id="ocr-pending">Comprobando obras que requieren una fuente textual verificable…</p>
+<h2>Cola editorial de textos sin índice estructurado</h2>
+<p class="notice">Estas obras se mantienen visibles como pendientes; no se declara una transcripción griega o latina cuando solo hay OCR de una edición. El orden da prioridad a los textos antiguos técnicos, y distingue las tres ediciones modernas de Vitruvio.</p>
+<details><summary id="backlog-count">Consultar obras que requieren indexación</summary>
+<ol id="index-backlog"><li>Consultando registros de GitHub…</li></ol>
+</details>
 <h2>Límites y tareas pendientes</h2><p id="notes">La auditoría local no puede acreditar por sí sola que los enlaces remotos respondan o que un título haya sido cotejado con el interior de un libro.</p>
 <p><a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/workflows/bibliotheca-indexation-r2-audit.yml">Consultar auditorías automáticas y sus informes en GitHub</a></p>
 </main><footer>Vitruvius Digital Library · Transparencia de evidencia documental y ecdótica</footer>
@@ -43,12 +48,38 @@ Promise.allSettled([
  read("data/r2/bibliotheca-indexation-status.json"),
  read("data/r2/r2-object-status.json"),
  read("data/r2/bibliotheca-ocr-coverage.json"),
- read("data/r2/bibliotheca-lexical-live-audit.json")
+ read("data/r2/bibliotheca-lexical-live-audit.json"),
+ read("data/classics-corpus/unindexed-backlog.json")
 ]).then(results=>{
  const a=results[0].status==="fulfilled"?results[0].value:null;
  const b=results[1].status==="fulfilled"?results[1].value:null;
  const o=results[2].status==="fulfilled"?results[2].value:null;
  const l=results[3].status==="fulfilled"?results[3].value:null;
+ const backlog=results[4].status==="fulfilled"?results[4].value:null;
+ if(backlog?.schema==="vdl-bibliotheca-unindexed-backlog-v1"){
+  const list=document.getElementById("index-backlog");
+  list.replaceChildren();
+  const tally=backlog.summary||{};
+  document.getElementById("backlog-count").textContent=
+   "Consultar "+(tally.ancientWorksWithoutRegisteredText??"—")+" obras antiguas sin texto indexado y "+
+   (tally.modernEditionManifestationsWithoutOwnRegistry??"—")+" ediciones modernas con vínculo propio pendiente";
+  for(const item of backlog.entries||[]){
+   const li=document.createElement("li"),label=document.createElement("strong");
+   label.style.cssText="font-size:14px;display:inline";
+   label.textContent=item.author+" · "+item.title;
+   li.append(label,document.createTextNode(" — "+(item.priority==="alta"?"prioridad alta · ":"")+
+    (item.classification==="ancient_work"?"obra antigua":"manifestación editorial")+". "));
+   const a=document.createElement("a");a.href="classics-work-record.html?work="+encodeURIComponent(item.id);
+   a.textContent="Ficha académica";li.append(a);
+   const pdfs=item.r2EditionsDeclared||[];
+   if(pdfs.length){
+    const reader=document.createElement("a");
+    reader.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(pdfs[0]);
+    reader.textContent=" · Consultar OCR del facsímil";li.append(reader);
+   }
+   list.append(li);
+  }
+ }
  if(a){
   const c=a.counts||{};
   timestamp.textContent="Último informe de catálogo: "+a.generated+" · "+(a.integrity||"sin dictamen");
