@@ -35,6 +35,9 @@ async function boot(origin,mode='normal'){
   return {ok:value!==null,status:value===null?404:200,json:async()=>value};
  };
  for(const path of ['assets/collation-page.js','assets/collation-facsimile-readers.js','assets/collation-parallel-readers.js'])w.eval(read(path));
+ // The global interface toolbar must not hide or drive a text-language control.
+ w.eval(read('assets/ui-idioma.js'));
+ const toolbar=w.document.createElement('div');toolbar.id='vitruvius-secondary-toolbar';w.document.body.append(toolbar);
  await pause();return {dom,w,requests,card:id=>w.document.querySelector('[data-edition="'+id+'"]')};
 }
 
@@ -50,6 +53,13 @@ for(const origin of ['https://vitruvius-digital-library.org','https://diegoalons
   assert.equal(c.querySelector('details').open,false,'Raw OCR must remain an optional finding aid');
   assert.equal(c.querySelector('iframe').hasAttribute('src'),false,'Do not load an external book embed or the entire PDF by default');
   assert.ok(c.querySelector('.coll-parallel-content').textContent.includes('Que unas estrellas'));
+  const language=c.querySelector('.coll-parallel-tools select');
+  assert.equal(language.hidden,false,'The interface language toolbar must preserve the independent reading selector');
+  language.value='la';language.dispatchEvent(new w.Event('change',{bubbles:true}));
+  assert.match(c.querySelector('.coll-parallel-content').textContent,/Esse autem alias stellas/);
+  w.document.dispatchEvent(new w.CustomEvent('vitruvius:language-changed',{detail:{language:'en'}}));
+  assert.equal(language.value,'la','Changing interface language must not replace the Latin reading');
+  language.value='es';language.dispatchEvent(new w.Event('change',{bubbles:true}));
   assert.ok(!c.querySelector('.coll-parallel-note').textContent.includes('no está sincronizado'));
   assert.match(c.querySelector('.coll-facsimile-status').textContent,/imagen digital/i);
   const [previous,next,go,zoom]=c.querySelectorAll(':scope > .coll-facsimile-controls button');

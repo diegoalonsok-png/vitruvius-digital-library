@@ -83,6 +83,7 @@ function build(card,n){
  const header=make("div","coll-parallel-header");header.append(make("h4",null,"Texto paralelo por locus · De architectura"));
  const controls=make("div","coll-parallel-tools"),lang=make("select"),minus=make("button",null,"A−"),plus=make("button",null,"A+");
  lang.setAttribute("aria-label","Idioma de lectura");
+ lang.setAttribute("data-content-language","true");
  for(const e of editions){const o=make("option",null,e.label);o.value=e.lang;lang.append(o)}
  const colors=make("input");colors.type="color";colors.value="#202023";colors.title="Color de fondo";
  const ink=make("input");ink.type="color";ink.value="#f5f2ec";ink.title="Color del texto";
