@@ -56,7 +56,7 @@ async function translate(){
   }finally{translator.destroy?.()}
  }catch(error){
   if(r!==revision)return;
-  $("palladio-resultado-traduccion").textContent="El traductor local del navegador no está disponible. Usá el enlace externo si querés traducir este texto.";
+  $("palladio-resultado-traduccion").textContent="El traductor local del navegador no está disponible. Usa el enlace externo si querés traducir este texto.";
   $("palladio-estado-traduccion").textContent="No se generó una traducción en este visor. La consulta externa se abre solo al pulsar su enlace.";
   externalLink(text,target);
  }
