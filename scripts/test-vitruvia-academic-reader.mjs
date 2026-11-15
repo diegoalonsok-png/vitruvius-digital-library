@@ -23,6 +23,10 @@ assert.equal(match(text,'').length,0,'Empty query must not create marks');
 assert.equal(match('Roma Roma Roma','roma',2).length,2,'Find count must remain bounded');
 const editorial='Códice: Αἰθήρ. Manuscritos y ediciones.';
 assert.equal(editorial.slice(...match(editorial,'codice')[0]),'Códice');
+// OCR and scholarly imports may preserve accents as decomposed combining marks.
+const decomposed='Cafe\u0301 y Α\u0313θηνα';
+assert.equal(decomposed.slice(...match(decomposed,'café')[0]),'Cafe\u0301','Accent mark must stay inside the highlighted match');
+assert.equal(decomposed.slice(...match(decomposed,'αθηνα')[0]),'Α\u0313θηνα','Greek combining mark must stay inside the highlighted match');
 const html=load('vitruvia.html');
 // Los scripts se siguen enlazando uno a uno y se exigen tal cual.
 for(const suffix of ['vitruvia-academic-reader.js','vitruvia-floating-reader.js'])
