@@ -26,7 +26,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 .ab-latin-search input{width:100%;box-sizing:border-box}
 .ab-latin-search .ab-search-terms{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
 .ab-latin-search .ab-search-terms button{min-height:34px;padding:6px 10px;cursor:pointer}
-.ab-search-hit{border-top:1px solid var(--ab-rule);padding:11px 0}
+.ab-latin-match{background:#ffe28a;color:#211a0f;border-radius:2px;padding:0 1px}.ab-search-hit{border-top:1px solid var(--ab-rule);padding:11px 0}
 .ab-search-hit p{font:16px/1.6 Georgia,serif;margin:7px 0}
 .ab-search-hit button{cursor:pointer;font-weight:600}
 #ab-search-status{font:13px/1.6 system-ui;color:var(--ab-muted);margin:10px 0}.ab-tools .ab-locus-picker{display:flex;flex-wrap:wrap;gap:8px;align-items:end}.ab-tools .ab-locus-picker select{min-width:92px}.ab-tools #pick-chapter{min-width:115px}.ab-tools button{cursor:pointer}.ab-tools button:hover{background:#eee6d8}.ab-status{font:13px/1.55 system-ui;min-height:20px;color:var(--ab-muted);margin:12px 0}
@@ -113,6 +113,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <div id="ab-textual-status" role="status" aria-live="polite" style="padding:12px 16px;border:1px solid var(--ab-rule);font:13px/1.65 system-ui;margin:0 0 20px"></div>
 <section aria-labelledby="triple-title">
 <h2 id="triple-title">Collatio textuum · Rose, Krohn, Kurilo</h2>
+<p id="ab-comparison-highlight-status" role="status" aria-live="polite" class="ab-status"></p>
 <p class="ab-sub">Tres textos latinos alineados por <i>locus</i>. Los textos de Rose y Krohn son segmentos OCR históricos alineados automáticamente. Se pueden leer y comparar por locus, independientemente de la verificación paleográfica de variantes manuscritas. El ruido OCR no se considera variante crítica.</p>
 <div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
 <article><h3>Rose · 1899</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><details id="compare-rose-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-rose-changes"></p><div class="ab-text" id="compare-rose-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
@@ -178,7 +179,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 </section>
 <section id="vdl-edition-references" aria-label="Referencias bibliográficas de las ediciones de Diego Kurilo"></section>
 </main>
-<script src="assets/apparatus-locus-search.js?v=20261115-search-v2"></script>
+<script src="assets/apparatus-locus-search.js?v=20261115-sync-v3"></script>
 <script>
 (()=>{"use strict";
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
@@ -217,6 +218,34 @@ function configureLocusPicker(){
   if(!lookup.has(book))return;books.value=book;chaptersFor(book,chapter);sectionsFor(book,chapter,section);
  };
  window.__vdlSyncApparatusPicker=sync;
+}
+let activeLatinSearchTerms=[];
+function markComparisonTerms(){
+ const targets=["#compare-rose","#compare-krohn","#compare-kurilo"];
+ const terms=new Set(activeLatinSearchTerms);
+ for(const selector of targets){
+  const host=$(selector);if(!host)continue;
+  const original=host.textContent||"";
+  if(!terms.size){host.replaceChildren(document.createTextNode(original));continue}
+  const fragment=document.createDocumentFragment();
+  let cursor=0,hasMatches=false;
+  const foldLatin=w=>w.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/j/g,"i").replace(/v/g,"u");
+  for(const m of original.matchAll(/[A-Za-zÀ-ÿ]+/g)){
+   if(!terms.has(foldLatin(m[0])))continue;
+   fragment.append(document.createTextNode(original.slice(cursor,m.index)));
+   const mark=document.createElement("mark");mark.className="ab-latin-match";mark.textContent=m[0];fragment.append(mark);
+   cursor=m.index+m[0].length;hasMatches=true;
+  }
+  if(hasMatches){fragment.append(document.createTextNode(original.slice(cursor)));host.replaceChildren(fragment)}
+  else host.replaceChildren(document.createTextNode(original));
+ }
+ const count=targets.map(x=>$(x)?.querySelectorAll("mark.ab-latin-match").length||0);
+ const label=$("#ab-comparison-highlight-status");
+ if(label)label.textContent=terms.size?(count.some(Boolean)?"Coincidencias destacadas: Rose "+count[0]+" · Krohn "+count[1]+" · Kurilo "+count[2]+". Todos los lectores muestran el mismo locus.":"Locus sincronizado; no hay coincidencia textual literal en las tres transcripciones. Los OCR pueden contener errores."):"";
+}
+function setComparisonTerms(terms){
+ activeLatinSearchTerms=Array.isArray(terms)?terms:[];
+ markComparisonTerms();
 }
 function load(locus){
  const passage=rows.find(p=>p.locus===locus);if(!passage){set("#status","El locus no figura en la edición estructurada V514. Compruebe su numeración.");return}
@@ -298,6 +327,7 @@ function load(locus){
  $("#reader-link").href="lector-bilingue.html?edition=recensio-es&locus="+encodeURIComponent(locus);
  $("#notes-link").href="inventario-aparato-autoral.html?locus="+encodeURIComponent(locus);
  set("#status","Locus "+format(locus)+" · "+(edition==="rose"?"Rose 1899 (OCR histórico)":"Kurilo V514")+" · "+count+" entradas mostradas en aparato · "+((d?.["rose-1899"]?.entradas||[]).length)+" fragmentos OCR Rose · "+((d?.["krohn-1912"]?.entradas||[]).length)+" fragmentos OCR Krohn. Las lecturas editoriales se documentan por su fuente; la verificación paleográfica se registra solo para las variantes pertinentes.");
+markComparisonTerms();
 }
 $("#controls").addEventListener("submit",e=>{e.preventDefault();load($("#locus").value.trim().toLowerCase())});
 $("#mode").addEventListener("change",()=>current&&load(current));
@@ -315,7 +345,7 @@ $("#copy").addEventListener("click",async()=>{
  [data,comp,collation]=await Promise.all(resp.map(r=>r.json()));
  try{const fixResponse=await fetch("data/apparatus/ocr-reading-corrections.json",{headers:{Accept:"application/json"}});if(fixResponse.ok){const candidate=await fixResponse.json();if(candidate&&candidate.loci)ocrFixes=candidate}}catch(e){console.warn("No se pudieron cargar los ajustes de lectura OCR",e)}
  if(!Array.isArray(data.passages)||!Array.isArray(comp.loci)||!collation.loci)throw Error("Estructura de datos no reconocida");
- rows=data.passages;translations.es=data;configureLocusPicker();window.VDLApparatusLocusSearch?.init(rows,load);
+ rows=data.passages;translations.es=data;configureLocusPicker();window.VDLApparatusLocusSearch?.init(rows,load,setComparisonTerms);
  const additional=[["fr","data/structured/recensio-fr.json"],["en","data/structured/theory-en.json"]];
  await Promise.all(additional.map(async ([key,url])=>{try{const r=await fetch(url);if(!r.ok)throw Error("HTTP "+r.status);const obj=await r.json();if(!Array.isArray(obj.passages))throw Error("Sin pasajes");translations[key]=obj}catch(e){translations[key]={passages:[]};console.warn("Traducción "+key+" no disponible: "+e.message)}}));
  const sig=$("#sigla");for(const [k,v] of Object.entries(comp.testimonios||{})){const dt=document.createElement("dt");dt.textContent=k;const dd=document.createElement("dd");dd.textContent=v;sig.append(dt,dd)}
