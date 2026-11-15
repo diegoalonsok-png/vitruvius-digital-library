@@ -1,0 +1,26 @@
+{
+  "schema": "vdl-general-audit-summary-2",
+  "userDate": "2026-11-14",
+  "baseCommit": "7e439890c4cc85b548c7f9ab883ee1236b68fe71",
+  "programs": 56,
+  "passed": 56,
+  "failed": 0,
+  "syntax": {
+    "sourceFiles": 540,
+    "syntaxErrors": [],
+    "dataJsonFiles": 10541,
+    "invalidJson": []
+  },
+  "sourceTextsModified": false,
+  "localOriginals": 182,
+  "declaredR2Originals": 32,
+  "offsiteOriginals": 28,
+  "combinedIncludingDeclaredR2": 242,
+  "witnesses": 106,
+  "facsimileImplementationCommit": "d8ca5e069afe6464e29b346ecf4aedcc38225783",
+  "visualProductionVerification": {
+    "status": "blocked",
+    "reason": "Automatic browser approval review could not complete because of a usage limit"
+  },
+  "report": "docs/auditoria-general-2026-11-14.md"
+}

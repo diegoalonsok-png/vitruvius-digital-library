@@ -1,0 +1,18 @@
+✓ Syntax: assets/vitruvia-image-engine-v2.js
+✓ Syntax: assets/vitruvia-entity-resolver.js
+✓ Syntax: assets/vitruvia-context-guard.js
+✓ Syntax: assets/vitruvia-search.js
+✓ Syntax: assets/vitruvia-article.js
+✓ Syntax: assets/vitruvia-reading.js
+✓ Syntax: assets/bibliotheca-graeca-latina.js
+PASS: fresh reading/search HTML for extensionless and .html routes in both deployments, slow-network protection and offline fallback
+✓ Inline scripts: Vitruvia
+✓ Inline scripts: Bibliotheca
+✓ Universal subject: pinturas de Leonardo da Vinci → Leonardo da Vinci
+✓ Universal subject: fotos de Penélope Cruz → Penélope Cruz
+✓ Universal subject: biografía de María Antonieta → María Antonieta
+✓ Universal subject: obras de Cicerón → Cicerón
+✓ Universal subject: Ramsés II → Ramsés II
+✓ Modern/classical context gate: named people, modern works, original-language passages, comparison queries
+✓ Universal search, image source attribution and accessibility hooks present
+PASS: Vitruvia offline regression checks. Live API/browser checks remain separate.

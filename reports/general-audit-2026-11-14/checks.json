@@ -1,0 +1,402 @@
+{
+  "schema": "vdl-general-audit-check-execution-1",
+  "generatedAt": "2026-11-15T01:57:20.274949+00:00",
+  "baseCommit": "7e439890c4cc85b548c7f9ab883ee1236b68fe71",
+  "method": "Existing independent checks against an isolated source checkout; logs retain warnings, failures and checkout limitations. Browser checks run separately on the published site.",
+  "workingTreeModified": true,
+  "checks": [
+    {
+      "check": "audit-site-cross-data",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.26,
+      "log": "reports/general-audit-2026-11-14/audit-site-cross-data.log"
+    },
+    {
+      "check": "audit-site-links",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.24,
+      "log": "reports/general-audit-2026-11-14/audit-site-links.log"
+    },
+    {
+      "check": "audit-scholarly-integrity",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.17,
+      "log": "reports/general-audit-2026-11-14/audit-scholarly-integrity.log"
+    },
+    {
+      "check": "audit-scholarly-citations",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.14,
+      "log": "reports/general-audit-2026-11-14/audit-scholarly-citations.log"
+    },
+    {
+      "check": "audit-academic-readiness",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.06,
+      "log": "reports/general-audit-2026-11-14/audit-academic-readiness.log"
+    },
+    {
+      "check": "audit-vitruvius-trilingual-alignment",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.18,
+      "log": "reports/general-audit-2026-11-14/audit-vitruvius-trilingual-alignment.log"
+    },
+    {
+      "check": "audit-classical-corpus",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.98,
+      "log": "reports/general-audit-2026-11-14/audit-classical-corpus.log"
+    },
+    {
+      "check": "audit-classical-translation-coverage",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.08,
+      "log": "reports/general-audit-2026-11-14/audit-classical-translation-coverage.log"
+    },
+    {
+      "check": "audit-apparatus-provenance",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.12,
+      "log": "reports/general-audit-2026-11-14/audit-apparatus-provenance.log"
+    },
+    {
+      "check": "security-audit",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.13,
+      "log": "reports/general-audit-2026-11-14/security-audit.log"
+    },
+    {
+      "check": "test-no-voseo",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.39,
+      "log": "reports/general-audit-2026-11-14/test-no-voseo.log"
+    },
+    {
+      "check": "test-front-inline-scripts",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.11,
+      "log": "reports/general-audit-2026-11-14/test-front-inline-scripts.log"
+    },
+    {
+      "check": "test-history",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.11,
+      "log": "reports/general-audit-2026-11-14/test-history.log"
+    },
+    {
+      "check": "test-citations",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.54,
+      "log": "reports/general-audit-2026-11-14/test-citations.log"
+    },
+    {
+      "check": "test-navigation",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 1.58,
+      "log": "reports/general-audit-2026-11-14/test-navigation.log"
+    },
+    {
+      "check": "test-pwa",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.06,
+      "log": "reports/general-audit-2026-11-14/test-pwa.log"
+    },
+    {
+      "check": "test-privacy-analytics",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.12,
+      "log": "reports/general-audit-2026-11-14/test-privacy-analytics.log"
+    },
+    {
+      "check": "test-search",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 1.27,
+      "log": "reports/general-audit-2026-11-14/test-search.log"
+    },
+    {
+      "check": "test-philological-integrity",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.12,
+      "log": "reports/general-audit-2026-11-14/test-philological-integrity.log"
+    },
+    {
+      "check": "test-classical-catalogue-integrity",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.35,
+      "log": "reports/general-audit-2026-11-14/test-classical-catalogue-integrity.log"
+    },
+    {
+      "check": "test-public-site-integrity",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.7,
+      "log": "reports/general-audit-2026-11-14/test-public-site-integrity.log"
+    },
+    {
+      "check": "test-classics-integration",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.85,
+      "log": "reports/general-audit-2026-11-14/test-classics-integration.log"
+    },
+    {
+      "check": "test-classics-corpus-counters",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.06,
+      "log": "reports/general-audit-2026-11-14/test-classics-corpus-counters.log"
+    },
+    {
+      "check": "test-classics-reader-search",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 5.05,
+      "log": "reports/general-audit-2026-11-14/test-classics-reader-search.log"
+    },
+    {
+      "check": "test-lexicon-query-contract",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.08,
+      "log": "reports/general-audit-2026-11-14/test-lexicon-query-contract.log"
+    },
+    {
+      "check": "test-lexicon-literal-exact",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/test-lexicon-literal-exact.log"
+    },
+    {
+      "check": "test-lexicon-orthography",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.06,
+      "log": "reports/general-audit-2026-11-14/test-lexicon-orthography.log"
+    },
+    {
+      "check": "test-lexicon-integrated-dictionaries",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.22,
+      "log": "reports/general-audit-2026-11-14/test-lexicon-integrated-dictionaries.log"
+    },
+    {
+      "check": "test-lexicon-meaning-search",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.09,
+      "log": "reports/general-audit-2026-11-14/test-lexicon-meaning-search.log"
+    },
+    {
+      "check": "test-shared-semantic-index-usage",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/test-shared-semantic-index-usage.log"
+    },
+    {
+      "check": "test-search-url-contract",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/test-search-url-contract.log"
+    },
+    {
+      "check": "test-vitruvia-resilience",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/test-vitruvia-resilience.log"
+    },
+    {
+      "check": "test-vitruvia-performance",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.9,
+      "log": "reports/general-audit-2026-11-14/test-vitruvia-performance.log"
+    },
+    {
+      "check": "test-vitruvia-author-reading",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.16,
+      "log": "reports/general-audit-2026-11-14/test-vitruvia-author-reading.log"
+    },
+    {
+      "check": "test-vitruvia-cultural-works",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.12,
+      "log": "reports/general-audit-2026-11-14/test-vitruvia-cultural-works.log"
+    },
+    {
+      "check": "test-modern-edition-reader",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.88,
+      "log": "reports/general-audit-2026-11-14/test-modern-edition-reader.log"
+    },
+    {
+      "check": "test-modern-edition-parallel",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 1.74,
+      "log": "reports/general-audit-2026-11-14/test-modern-edition-parallel.log"
+    },
+    {
+      "check": "test-modern-edition-search",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 1.37,
+      "log": "reports/general-audit-2026-11-14/test-modern-edition-search.log"
+    },
+    {
+      "check": "test-krohn-locus-sync",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.51,
+      "log": "reports/general-audit-2026-11-14/test-krohn-locus-sync.log"
+    },
+    {
+      "check": "test-harleianus-locus-sync",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/test-harleianus-locus-sync.log"
+    },
+    {
+      "check": "test-prefacios-folio",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 6.31,
+      "log": "reports/general-audit-2026-11-14/test-prefacios-folio.log"
+    },
+    {
+      "check": "test-obras-notables-visor",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 1.11,
+      "log": "reports/general-audit-2026-11-14/test-obras-notables-visor.log"
+    },
+    {
+      "check": "test-scriptorium-sync",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 1.12,
+      "log": "reports/general-audit-2026-11-14/test-scriptorium-sync.log"
+    },
+    {
+      "check": "test-scriptorium-scholar",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 2.2,
+      "log": "reports/general-audit-2026-11-14/test-scriptorium-scholar.log"
+    },
+    {
+      "check": "test-parallel-two-versions",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/test-parallel-two-versions.log"
+    },
+    {
+      "check": "test-three-way-classics-navigation",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.05,
+      "log": "reports/general-audit-2026-11-14/test-three-way-classics-navigation.log"
+    },
+    {
+      "check": "test-responsive-literal",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.26,
+      "log": "reports/general-audit-2026-11-14/test-responsive-literal.log"
+    },
+    {
+      "check": "test-codicological-source-consistency",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/test-codicological-source-consistency.log"
+    },
+    {
+      "check": "test-perseus-provenance",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/test-perseus-provenance.log"
+    },
+    {
+      "check": "test-cross-site-academic-transparency",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.06,
+      "log": "reports/general-audit-2026-11-14/test-cross-site-academic-transparency.log"
+    },
+    {
+      "check": "test-coverage-snapshot",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/test-coverage-snapshot.log"
+    },
+    {
+      "check": "test-pwa-reader-freshness",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.1,
+      "log": "reports/general-audit-2026-11-14/test-pwa-reader-freshness.log"
+    },
+    {
+      "check": "test-facsimile-facing-reader",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.9,
+      "log": "reports/general-audit-2026-11-14/test-facsimile-facing-reader.log"
+    },
+    {
+      "check": "audit-academic-excellence",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.1,
+      "log": "reports/general-audit-2026-11-14/audit-academic-excellence.log"
+    },
+    {
+      "check": "audit-scholarly-evidence",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.07,
+      "log": "reports/general-audit-2026-11-14/audit-scholarly-evidence.log"
+    },
+    {
+      "check": "vitruvia-regression-check",
+      "status": "pass",
+      "exitCode": 0,
+      "seconds": 0.11,
+      "log": "reports/general-audit-2026-11-14/vitruvia-regression-check.log"
+    }
+  ],
+  "completedAt": "2026-11-15T01:58:04.232156+00:00"
+}

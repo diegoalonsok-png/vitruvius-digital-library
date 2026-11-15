@@ -1,0 +1,742 @@
+{
+  "generatedFrom": "GitHub repository JSON; metadata coverage, not critical collation",
+  "catalogueWorks": 271,
+  "locallyIndexedWorks": 182,
+  "indexedVersions": 279,
+  "locallyIndexedOriginalWorks": 182,
+  "locallyIndexedOriginalsWithoutIndexedEnEsFr": [
+    {
+      "id": "cicero-oratore",
+      "title": "De oratore",
+      "language": "la"
+    },
+    {
+      "id": "cicero-republica",
+      "title": "De re publica",
+      "language": "la"
+    },
+    {
+      "id": "varro-rustica",
+      "title": "Rerum rusticarum libri tres",
+      "language": "la"
+    },
+    {
+      "id": "horace-odes",
+      "title": "Carmina",
+      "language": "la"
+    },
+    {
+      "id": "livy",
+      "title": "Ab urbe condita",
+      "language": "la"
+    },
+    {
+      "id": "ovid",
+      "title": "Metamorphoses",
+      "language": "la"
+    },
+    {
+      "id": "ovid-fasti",
+      "title": "Fasti",
+      "language": "la"
+    },
+    {
+      "id": "nepos",
+      "title": "De viris illustribus",
+      "language": "la"
+    },
+    {
+      "id": "diodorus",
+      "title": "Βιβλιοθήκη ἱστορική",
+      "language": "grc"
+    },
+    {
+      "id": "dionysius",
+      "title": "Ῥωμαϊκὴ ἀρχαιολογία",
+      "language": "grc"
+    },
+    {
+      "id": "strabo",
+      "title": "Γεωγραφικά",
+      "language": "grc"
+    },
+    {
+      "id": "seneca-epistulae",
+      "title": "Epistulae morales ad Lucilium",
+      "language": "la"
+    },
+    {
+      "id": "lucan",
+      "title": "Bellum civile",
+      "language": "la"
+    },
+    {
+      "id": "pliny",
+      "title": "Naturalis historia",
+      "language": "la"
+    },
+    {
+      "id": "dioscorides",
+      "title": "Περὶ ὕλης ἰατρικῆς",
+      "language": "grc"
+    },
+    {
+      "id": "josephus-war",
+      "title": "Περὶ τοῦ Ἰουδαϊκοῦ πολέμου",
+      "language": "grc"
+    },
+    {
+      "id": "josephus-antiquities",
+      "title": "Ἰουδαϊκὴ ἀρχαιολογία",
+      "language": "grc"
+    },
+    {
+      "id": "quintilian",
+      "title": "Institutio oratoria",
+      "language": "la"
+    },
+    {
+      "id": "martial",
+      "title": "Epigrammata",
+      "language": "la"
+    },
+    {
+      "id": "tacitus-germania",
+      "title": "Germania",
+      "language": "la"
+    },
+    {
+      "id": "frontinus",
+      "title": "De aquaeductu urbis Romae",
+      "language": "la"
+    },
+    {
+      "id": "mark",
+      "title": "Εὐαγγέλιον κατὰ Μᾶρκον",
+      "language": "grc"
+    },
+    {
+      "id": "clement",
+      "title": "Πρὸς Κορινθίους Αʹ",
+      "language": "grc"
+    },
+    {
+      "id": "pastor-hermas",
+      "title": "Ποιμὴν Ἑρμᾶ · Pastor de Hermas",
+      "language": "grc"
+    },
+    {
+      "id": "faventinus",
+      "title": "Artis architectonicae privatis usibus adbreviatus liber",
+      "language": "la"
+    },
+    {
+      "id": "barnabas",
+      "title": "Ἐπιστολὴ Βαρνάβα · Epistula Barnabae",
+      "language": "grc"
+    },
+    {
+      "id": "ignatius",
+      "title": "Ἐπιστολαί · Cartas de Ignacio",
+      "language": "grc"
+    },
+    {
+      "id": "polycarp",
+      "title": "Πρὸς Φιλιππησίους · Carta a los Filipenses",
+      "language": "grc"
+    },
+    {
+      "id": "clement-2",
+      "title": "Δευτέρα Κλήμεντος · Segunda carta de Clemente",
+      "language": "grc"
+    },
+    {
+      "id": "diognetus",
+      "title": "Πρὸς Διόγνητον · Carta a Diogneto",
+      "language": "grc"
+    },
+    {
+      "id": "justin",
+      "title": "Ἀπολογία πρώτη · Primera Apología",
+      "language": "grc"
+    },
+    {
+      "id": "irenaeus",
+      "title": "Ἔλεγχος καὶ ἀνατροπὴ τῆς ψευδωνύμου γνώσεως · Adversus haereses",
+      "language": "grc"
+    },
+    {
+      "id": "tertullian",
+      "title": "Apologeticum",
+      "language": "la"
+    },
+    {
+      "id": "eusebio",
+      "title": "Ἐκκλησιαστικὴ ἱστορία · Historia eclesiástica",
+      "language": "grc"
+    },
+    {
+      "id": "columella",
+      "title": "De re rustica",
+      "language": "la"
+    },
+    {
+      "id": "celsus",
+      "title": "De medicina",
+      "language": "la"
+    },
+    {
+      "id": "frontinus-strategemata",
+      "title": "Strategemata",
+      "language": "la"
+    },
+    {
+      "id": "hero-pneumatica",
+      "title": "Πνευματικά · Pneumatica",
+      "language": "grc"
+    },
+    {
+      "id": "hero-automata",
+      "title": "Αὐτοματοποιητική · Automata",
+      "language": "grc"
+    },
+    {
+      "id": "krohn-1912-pdf",
+      "title": "Vitruvii De architectura libri decem · Krohn 1912",
+      "language": "la"
+    },
+    {
+      "id": "plautus-amphitruo",
+      "title": "Amphitruo",
+      "language": "la"
+    },
+    {
+      "id": "plautus-aulularia",
+      "title": "Aulularia",
+      "language": "la"
+    },
+    {
+      "id": "terentius-andria",
+      "title": "Andria",
+      "language": "la"
+    },
+    {
+      "id": "terentius-heautontimorumenos",
+      "title": "Heautontimorumenos",
+      "language": "la"
+    },
+    {
+      "id": "cato-agri-cultura",
+      "title": "De agri cultura",
+      "language": "la"
+    },
+    {
+      "id": "horace-sermones",
+      "title": "Sermones (Satirae)",
+      "language": "la"
+    },
+    {
+      "id": "horace-ars-poetica",
+      "title": "Ars poetica",
+      "language": "la"
+    },
+    {
+      "id": "ovid-ars-amatoria",
+      "title": "Ars amatoria",
+      "language": "la"
+    },
+    {
+      "id": "seneca-tragoediae",
+      "title": "Tragoediae (colección)",
+      "language": "la"
+    },
+    {
+      "id": "tacitus-annales",
+      "title": "Annales",
+      "language": "la"
+    },
+    {
+      "id": "tacitus-historiae",
+      "title": "Historiae",
+      "language": "la"
+    },
+    {
+      "id": "suetonius-caesares",
+      "title": "De vita Caesarum",
+      "language": "la"
+    },
+    {
+      "id": "juvenal-saturae",
+      "title": "Saturae",
+      "language": "la"
+    },
+    {
+      "id": "varro-de-lingua-latina",
+      "title": "De lingua Latina",
+      "language": "la"
+    },
+    {
+      "id": "tibullus-elegiae",
+      "title": "Elegiae",
+      "language": "la"
+    },
+    {
+      "id": "propertius-elegiae",
+      "title": "Elegiae",
+      "language": "la"
+    },
+    {
+      "id": "statius-thebais",
+      "title": "Thebais",
+      "language": "la"
+    },
+    {
+      "id": "pliny-younger-epistulae",
+      "title": "Epistulae",
+      "language": "la"
+    },
+    {
+      "id": "aulus-gellius-noctes",
+      "title": "Noctes Atticae",
+      "language": "la"
+    },
+    {
+      "id": "valerius-maximus-facta",
+      "title": "Facta et dicta memorabilia",
+      "language": "la"
+    },
+    {
+      "id": "silius-punica",
+      "title": "Punica",
+      "language": "la"
+    },
+    {
+      "id": "polybius-historiae",
+      "title": "Ἱστορίαι",
+      "language": "grc"
+    },
+    {
+      "id": "pseudo-apollodorus-bibliotheca",
+      "title": "Βιβλιοθήκη (Bibliotheca)",
+      "language": "grc"
+    },
+    {
+      "id": "lucian-dialogi-mortuorum",
+      "title": "Νεκρικοὶ διάλογοι",
+      "language": "grc"
+    },
+    {
+      "id": "pausanias-periegesis",
+      "title": "Ἑλλάδος περιήγησις",
+      "language": "grc"
+    },
+    {
+      "id": "galen-ars-medica",
+      "title": "Τέχνη ἰατρική",
+      "language": "grc"
+    },
+    {
+      "id": "galen-de-usu-partium",
+      "title": "Περὶ χρείας μορίων",
+      "language": "grc"
+    },
+    {
+      "id": "ptolemy-almagest",
+      "title": "Μαθηματικὴ σύνταξις (Almagestum)",
+      "language": "grc"
+    },
+    {
+      "id": "appian-romaika",
+      "title": "Ῥωμαϊκά",
+      "language": "grc"
+    },
+    {
+      "id": "aeschylus-oresteia",
+      "title": "Ὀρέστεια",
+      "language": "grc"
+    },
+    {
+      "id": "herodotus-historiae",
+      "title": "Ἱστορίαι",
+      "language": "grc"
+    },
+    {
+      "id": "xenophon-anabasis",
+      "title": "Ἀνάβασις",
+      "language": "grc"
+    },
+    {
+      "id": "plato-republic",
+      "title": "Πολιτεία",
+      "language": "grc"
+    },
+    {
+      "id": "epictetus-discourses",
+      "title": "Διατριβαί",
+      "language": "grc"
+    },
+    {
+      "id": "arrian-anabasis-alexandri",
+      "title": "Ἀλεξάνδρου Ἀνάβασις",
+      "language": "grc"
+    },
+    {
+      "id": "sophocles-ajax",
+      "title": "Αἴας",
+      "language": "grc"
+    },
+    {
+      "id": "sophocles-trachiniae",
+      "title": "Τραχίνιαι",
+      "language": "grc"
+    },
+    {
+      "id": "aristophanes-aves",
+      "title": "Ὄρνιθες",
+      "language": "grc"
+    },
+    {
+      "id": "aristophanes-ranae",
+      "title": "Βάτραχοι",
+      "language": "grc"
+    },
+    {
+      "id": "aristophanes-lysistrata",
+      "title": "Λυσιστράτη",
+      "language": "grc"
+    },
+    {
+      "id": "aristophanes-vespae",
+      "title": "Σφῆκες",
+      "language": "grc"
+    },
+    {
+      "id": "aristophanes-pax",
+      "title": "Εἰρήνη",
+      "language": "grc"
+    },
+    {
+      "id": "aristophanes-acharnenses",
+      "title": "Ἀχαρνῆς",
+      "language": "grc"
+    },
+    {
+      "id": "plato-laws",
+      "title": "Νόμοι",
+      "language": "grc"
+    },
+    {
+      "id": "aristotle-metaphysics",
+      "title": "Τὰ μετὰ τὰ φυσικά",
+      "language": "grc"
+    },
+    {
+      "id": "aristotle-physics",
+      "title": "Φυσικὴ ἀκρόασις",
+      "language": "grc"
+    },
+    {
+      "id": "aristotle-rhetoric",
+      "title": "Ῥητορική",
+      "language": "grc"
+    },
+    {
+      "id": "aristotle-de-anima",
+      "title": "Περὶ ψυχῆς",
+      "language": "grc"
+    },
+    {
+      "id": "xenophon-memorabilia",
+      "title": "Ἀπομνημονεύματα",
+      "language": "grc"
+    },
+    {
+      "id": "xenophon-hellenica",
+      "title": "Ἑλληνικά",
+      "language": "grc"
+    },
+    {
+      "id": "demosthenes-de-corona",
+      "title": "Περὶ τοῦ στεφάνου",
+      "language": "grc"
+    },
+    {
+      "id": "demosthenes-philippicae",
+      "title": "Φιλιππικοί",
+      "language": "grc"
+    },
+    {
+      "id": "pindar-olympian",
+      "title": "Ὀλυμπιόνικοι",
+      "language": "grc"
+    },
+    {
+      "id": "pindar-pythian",
+      "title": "Πυθιόνικοι",
+      "language": "grc"
+    },
+    {
+      "id": "homeric-hymns",
+      "title": "Ὁμηρικοὶ ὕμνοι",
+      "language": "grc"
+    },
+    {
+      "id": "diogenes-laertius-vitae",
+      "title": "Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων",
+      "language": "grc"
+    },
+    {
+      "id": "cicero-pro-archia",
+      "title": "Pro Archia poeta",
+      "language": "la"
+    },
+    {
+      "id": "cicero-de-finibus",
+      "title": "De finibus bonorum et malorum",
+      "language": "la"
+    },
+    {
+      "id": "cicero-tusculanae",
+      "title": "Tusculanae disputationes",
+      "language": "la"
+    },
+    {
+      "id": "cicero-de-natura-deorum",
+      "title": "De natura deorum",
+      "language": "la"
+    },
+    {
+      "id": "cicero-de-amicitia",
+      "title": "Laelius de amicitia",
+      "language": "la"
+    },
+    {
+      "id": "cicero-de-senectute",
+      "title": "Cato Maior de senectute",
+      "language": "la"
+    },
+    {
+      "id": "cicero-de-divinatione",
+      "title": "De divinatione",
+      "language": "la"
+    },
+    {
+      "id": "cicero-brutus",
+      "title": "Brutus",
+      "language": "la"
+    },
+    {
+      "id": "cicero-philippicae",
+      "title": "Philippicae",
+      "language": "la"
+    },
+    {
+      "id": "seneca-de-clementia",
+      "title": "De clementia",
+      "language": "la"
+    },
+    {
+      "id": "horace-epodi",
+      "title": "Epodi",
+      "language": "la"
+    },
+    {
+      "id": "horace-epistulae",
+      "title": "Epistulae",
+      "language": "la"
+    },
+    {
+      "id": "ovid-tristia",
+      "title": "Tristia",
+      "language": "la"
+    },
+    {
+      "id": "ovid-heroides",
+      "title": "Heroides",
+      "language": "la"
+    },
+    {
+      "id": "ovid-remedia-amoris",
+      "title": "Remedia amoris",
+      "language": "la"
+    },
+    {
+      "id": "ovid-ex-ponto",
+      "title": "Epistulae ex Ponto",
+      "language": "la"
+    },
+    {
+      "id": "tacitus-dialogus",
+      "title": "Dialogus de oratoribus",
+      "language": "la"
+    },
+    {
+      "id": "apuleius-apologia",
+      "title": "Apologia",
+      "language": "la"
+    },
+    {
+      "id": "augustine-confessiones",
+      "title": "Confessiones",
+      "language": "la"
+    },
+    {
+      "id": "augustine-civitate-dei",
+      "title": "De civitate Dei",
+      "language": "la"
+    },
+    {
+      "id": "boethius-consolatio",
+      "title": "De consolatione philosophiae",
+      "language": "la"
+    },
+    {
+      "id": "cebes-tabula",
+      "title": "Πίναξ · Tabula Cebetis",
+      "language": "grc"
+    },
+    {
+      "id": "aristoxenus-harmonica",
+      "title": "Ἁρμονικὰ στοιχεῖα",
+      "language": "grc"
+    },
+    {
+      "id": "aratus-phaenomena",
+      "title": "Φαινόμενα",
+      "language": "grc"
+    },
+    {
+      "id": "aeneas-tacticus-poliorketika",
+      "title": "Πολιορκητικά",
+      "language": "grc"
+    },
+    {
+      "id": "augustus-res-gestae",
+      "title": "Res gestae divi Augusti",
+      "language": "la"
+    },
+    {
+      "id": "euclid-elementa",
+      "title": "Στοιχεῖα · Elementa",
+      "language": "grc"
+    }
+  ],
+  "externalGreekLatinRecords": 1627,
+  "externalRecordsWithDeclaredEnEsFr": 439,
+  "externalRecordsWithoutDeclaredEnEsFr": 1188,
+  "priorityExternalWithoutTranslation": [
+    {
+      "id": "tlg0656.tlg001",
+      "author": "Dioscórides",
+      "title": "De materia medica"
+    },
+    {
+      "id": "tlg0645.tlg001",
+      "author": "Justino Mártir",
+      "title": "Apologia I"
+    },
+    {
+      "id": "tlg1447.tlg001",
+      "author": "Ireneo de Lyon",
+      "title": "Libros quinque adversus haereses"
+    },
+    {
+      "id": "stoa0275.stoa009",
+      "author": "Tertuliano",
+      "title": "Apologeticum"
+    },
+    {
+      "id": "tlg0559.tlg001",
+      "author": "Herón de Alejandría",
+      "title": "Pneumatica"
+    },
+    {
+      "id": "tlg0559.tlg002",
+      "author": "Herón de Alejandría",
+      "title": "De automatis"
+    },
+    {
+      "id": "tlg0007.tlg146",
+      "author": "Plutarco",
+      "title": "Παροιμίαι αἷς Ἀλεξανδρεῖς ἐχρῶντο"
+    },
+    {
+      "id": "tlg0007.tlg147",
+      "author": "Plutarco",
+      "title": "Ἐκλογὴ περὶ τῶν ἀδυνάτων"
+    },
+    {
+      "id": "tlg0057.tlg007",
+      "author": "Galeno",
+      "title": "Ars Medica"
+    },
+    {
+      "id": "tlg0057.tlg017",
+      "author": "Galeno",
+      "title": "De usu partium corporis humani I-XI"
+    },
+    {
+      "id": "tlg0363.tlg001",
+      "author": "Claudio Ptolomeo",
+      "title": "Syntaxis mathematica"
+    },
+    {
+      "id": "tlg0385.tlg001",
+      "author": "Dión Casio",
+      "title": "Historia Romana"
+    },
+    {
+      "id": "tlg0019.tlg009",
+      "author": "Aristófanes",
+      "title": "Frogs"
+    },
+    {
+      "id": "tlg0019.tlg007",
+      "author": "Aristófanes",
+      "title": "Lysistrata"
+    },
+    {
+      "id": "tlg0019.tlg004",
+      "author": "Aristófanes",
+      "title": "Wasps"
+    },
+    {
+      "id": "tlg0019.tlg005",
+      "author": "Aristófanes",
+      "title": "Peace"
+    },
+    {
+      "id": "tlg0019.tlg001",
+      "author": "Aristófanes",
+      "title": "Acharnians"
+    },
+    {
+      "id": "tlg0086.tlg031",
+      "author": "Aristóteles",
+      "title": "Physica"
+    },
+    {
+      "id": "tlg0086.tlg002",
+      "author": "Aristóteles",
+      "title": "De anima"
+    },
+    {
+      "id": "tlg0093.tlg001",
+      "author": "Teofrasto",
+      "title": "Enquiry into Plants"
+    }
+  ],
+  "semanticConcepts": 74,
+  "ancientSemanticForms": 354,
+  "modernSemanticForms": 752,
+  "scopedHistoricSources": [
+    {
+      "workId": "apuleius-metamorphoses",
+      "language": "es",
+      "first": 22,
+      "last": 245
+    }
+  ],
+  "limitations": "Links and translation metadata are not validation of file access, copyright, complete text, chapter-level alignment, or word-by-word equivalence."
+}
+PASS: local translation coverage and semantic source structurally checked; R2 sources are declared but availability is not verified; missing translations remain explicit.

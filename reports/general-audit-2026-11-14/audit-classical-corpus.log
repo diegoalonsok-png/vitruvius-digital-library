@@ -1,0 +1,383 @@
+{
+  "parallelLocusCoverage": [
+    {
+      "work": "caesar-gallico",
+      "original": "la",
+      "translation": "en",
+      "originalLoci": 404,
+      "translatedLoci": 404,
+      "sharedLoci": 404
+    },
+    {
+      "work": "caesar-civili",
+      "original": "la",
+      "translation": "en",
+      "originalLoci": 243,
+      "translatedLoci": 243,
+      "sharedLoci": 243
+    },
+    {
+      "work": "sallust-catiline",
+      "original": "la",
+      "translation": "en",
+      "originalLoci": 61,
+      "translatedLoci": 59,
+      "sharedLoci": 59
+    },
+    {
+      "work": "sallust-iugurtha",
+      "original": "la",
+      "translation": "en",
+      "originalLoci": 114,
+      "translatedLoci": 114,
+      "sharedLoci": 114
+    },
+    {
+      "work": "virgil-aeneid",
+      "original": "la",
+      "translation": "en",
+      "originalLoci": 392,
+      "translatedLoci": 327,
+      "sharedLoci": 324
+    },
+    {
+      "work": "virgil-georgica",
+      "original": "la",
+      "translation": "en",
+      "originalLoci": 84,
+      "translatedLoci": 84,
+      "sharedLoci": 83
+    },
+    {
+      "work": "didache",
+      "original": "grc",
+      "translation": "en",
+      "originalLoci": 16,
+      "translatedLoci": 16,
+      "sharedLoci": 16
+    },
+    {
+      "work": "phraedrus-fabulae",
+      "original": "la",
+      "translation": "en",
+      "originalLoci": 132,
+      "translatedLoci": 91,
+      "sharedLoci": 91
+    },
+    {
+      "work": "homer-iliad",
+      "original": "grc",
+      "translation": "en",
+      "originalLoci": 425,
+      "translatedLoci": 190,
+      "sharedLoci": 59
+    },
+    {
+      "work": "homer-odyssey",
+      "original": "grc",
+      "translation": "en",
+      "originalLoci": 288,
+      "translatedLoci": 267,
+      "sharedLoci": 72
+    },
+    {
+      "work": "plato-apology",
+      "original": "grc",
+      "translation": "en",
+      "originalLoci": 26,
+      "translatedLoci": 26,
+      "sharedLoci": 26
+    },
+    {
+      "work": "aristotle-poetics",
+      "original": "grc",
+      "translation": "en",
+      "originalLoci": 26,
+      "translatedLoci": 26,
+      "sharedLoci": 26
+    },
+    {
+      "work": "theophrastus-characters",
+      "original": "grc",
+      "translation": "en",
+      "originalLoci": 31,
+      "translatedLoci": 30,
+      "sharedLoci": 30
+    },
+    {
+      "work": "seneca-de-brevitate",
+      "original": "la",
+      "translation": "en",
+      "originalLoci": 20,
+      "translatedLoci": 20,
+      "sharedLoci": 20
+    },
+    {
+      "work": "seneca-de-brevitate",
+      "original": "la",
+      "translation": "es",
+      "originalLoci": 20,
+      "translatedLoci": 21,
+      "sharedLoci": 20
+    },
+    {
+      "work": "seneca-de-brevitate",
+      "original": "la",
+      "translation": "fr",
+      "originalLoci": 20,
+      "translatedLoci": 20,
+      "sharedLoci": 20
+    },
+    {
+      "work": "epictetus-enchiridion",
+      "original": "grc",
+      "translation": "en",
+      "originalLoci": 53,
+      "translatedLoci": 53,
+      "sharedLoci": 53
+    },
+    {
+      "work": "sulpicia-elegiae",
+      "original": "la",
+      "translation": "es",
+      "originalLoci": 6,
+      "translatedLoci": 6,
+      "sharedLoci": 6
+    }
+  ],
+  "explicitlyUnalignedTranslations": [
+    {
+      "work": "philo",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "tacitus-agricola",
+      "translation": "en",
+      "reason": "No alineado con el original: las unidades de traducción corresponden exclusivamente al TEI en inglés; no equivalencias por locus, folio, capítulo o verso certificadas."
+    },
+    {
+      "work": "cicero-catilinariae",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "petronius-satyrica",
+      "translation": "en",
+      "reason": "Segmentos de lectura consecutivos, NO equivalencias con los capítulos del texto latino"
+    },
+    {
+      "work": "apuleius-metamorphoses",
+      "translation": "en",
+      "reason": "Segmentos de lectura consecutivos, NO equivalencias con los capítulos del texto latino"
+    },
+    {
+      "work": "apuleius-metamorphoses",
+      "translation": "es",
+      "reason": "Segmentos de lectura consecutivos, NO equivalencias con los capítulos del texto latino"
+    },
+    {
+      "work": "philo-legum-allegoriae",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "philo-de-vita-mosis",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "lucian-verae-historiae",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "marcus-aurelius-meditations",
+      "translation": "en",
+      "reason": "No alineado con la edición griega: los loci de lectura libro.segmento-N son unidades editoriales propias de la traducción de George Long; no hay equivalencias certificadas por locus, párrafo, frase o folio. Ambas versiones se conservan íntegramente y se consultan de forma independiente."
+    },
+    {
+      "work": "hesiod-theogony",
+      "translation": "en",
+      "reason": "No alineado con el original: las unidades de traducción corresponden exclusivamente al TEI en inglés; no equivalencias por locus, folio, capítulo o verso certificadas."
+    },
+    {
+      "work": "hesiod-works-days",
+      "translation": "en",
+      "reason": "No alineado con el original: las unidades de traducción corresponden exclusivamente al TEI en inglés; no equivalencias por locus, folio, capítulo o verso certificadas."
+    },
+    {
+      "work": "sophocles-oedipus",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "euripides-medea",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "aristophanes-clouds",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "aristotle-politics",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "hippocrates-aphorisms",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "aeschylus-persae",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "aeschylus-seven-thebes",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "aeschylus-suppliants",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "aeschylus-prometheus",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "sophocles-antigone",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "sophocles-electra",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "sophocles-philoctetes",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "sophocles-oedipus-colonus",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "euripides-bacchae",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "euripides-hippolytus",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "euripides-alcestis",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "euripides-electra",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "euripides-troades",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "euripides-hecuba",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "euripides-iphigenia-aulid",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "plato-symposium",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "plato-phaedo",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "plato-gorgias",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "plato-timaeus",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "plato-meno",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "plato-phaedrus",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "plato-crito",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    },
+    {
+      "work": "aristotle-nicomachean-ethics",
+      "translation": "en",
+      "reason": "No alineado por equivalencia verbal con el original; loci propios de esta traducción TEI."
+    }
+  ],
+  "cataloguedWorks": 271,
+  "distinctAuthorLabels": 158,
+  "status": {
+    "lectura-local-completa": 32,
+    "lectura-local-parcial": 152,
+    "fuente-externa-identificada": 65,
+    "repertoriado-busqueda-externa": 18,
+    "pendiente-de-incorporar": 4
+  },
+  "localReadingRecords": 184,
+  "checkedFileReferences": 347,
+  "fulltextSearchWorks": 214,
+  "fulltextSearchVersions": 279,
+  "languages": {
+    "grc": 101,
+    "en": 58,
+    "la": 81,
+    "es": 5,
+    "fr": 2
+  },
+  "formats": {
+    "json-passages": 236,
+    "html-text": 6,
+    "historical-ocr-pages": 1,
+    "structured-bilingual": 4
+  },
+  "unindexedHtml": [
+    "cicero-de-officiis-la-en.html"
+  ],
+  "classicPDF": 10,
+  "vitruviusPageTextIndexes": 15,
+  "note": "Binary PDFs were checked for repository presence, not OCR completeness or browser rendering. Unknown works worldwide cannot be counted from this local catalogue."
+}
+PASS: classical corpus references and per-language source search registry are internally consistent.
