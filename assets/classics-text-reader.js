@@ -510,7 +510,8 @@ async function load(language,requestId){
    })).filter(item=>item.locus&&typeof item.text==="string"&&item.text.trim())
   };
  }
- if(corpus.workId!==(indexed?.sourceWorkId||work)||corpus.language!==language||!Array.isArray(corpus.passages)||!corpus.passages.length||corpus.passages.reduce((n,p)=>n+(typeof p.text==="string"?p.text.trim().length:0),0)<350)throw Error("El documento no pasó validación de integridad");
+ const minimumText=indexed?.sha256&&indexed.passages>0?12:350;
+ if(corpus.workId!==(indexed?.sourceWorkId||work)||corpus.language!==language||!Array.isArray(corpus.passages)||!corpus.passages.length||corpus.passages.reduce((n,p)=>n+(typeof p.text==="string"?p.text.trim().length:0),0)<minimumText)throw Error("El documento no pasó validación de integridad");
  const editionSearchIndex=await resourceRequest;
  // Only the most recent selection may replace the visible edition and index.
  if(requestId!==editionRequest)return;

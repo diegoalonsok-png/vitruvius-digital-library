@@ -143,10 +143,11 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <p class="ab-sub">Testimonio manuscrito de la British Library. Los folios digitalizados permiten la comprobación autóptica; la localización por <i>locus</i> puede ser material o estimada. Una imagen disponible no equivale a una lectura diplomática comprobada.</p>
 <div id="ab-h-reading" role="status" aria-live="polite">Consultando concordancia de folios…</div>
 </section>
-<section class="ab-leaves" aria-label="Texto latino y traducción de Kurilo">
-<article class="ab-leaf" lang="es"><header class="ab-leaf-head"><span class="ab-locus" id="left-locus">—</span><h2 id="translation-heading">Traducción castellana</h2><span class="ab-edition">KURILO · V514 · 2026</span></header><div id="translation" class="ab-text"></div><div class="ab-apparatus"><h3>Nota editorial</h3><p class="ab-none">La traducción se reproduce de V514. Las notas interpretativas se consultan por separado en el inventario de aparato autoral.</p><a id="notes-link" href="inventario-aparato-autoral.html">Consultar notas del autor →</a></div></article>
-<article class="ab-leaf" lang="la"><header class="ab-leaf-head"><span class="ab-locus" id="right-locus">—</span><h2>Textus Latinus</h2><span class="ab-edition">RECENSIO V514 · EDITIO ACADEMICA</span></header><div id="latin" class="ab-text ab-latin"></div>
+<div class="ab-tools ab-reading-order" role="group" aria-label="Orden de los visores"><button type="button" id="ab-swap-readers" aria-controls="ab-reading-leaves" aria-pressed="false">⇄ Invertir visores</button><span id="ab-reading-order-status" role="status" aria-live="polite">Latín primero · traducción después</span></div>
+<section class="ab-leaves" id="ab-reading-leaves" aria-label="Texto latino y traducción de Kurilo">
+<article class="ab-leaf" id="latin-leaf" lang="la"><header class="ab-leaf-head"><span class="ab-locus" id="right-locus">—</span><h2>Textus Latinus</h2><span class="ab-edition">RECENSIO V514 · EDITIO ACADEMICA</span></header><div id="latin" class="ab-text ab-latin"></div>
 <section class="ab-apparatus" aria-label="Aparato conciso"><h3 id="minor-heading">Apparatus criticus minor · V514</h3><div id="minor"></div></section></article>
+<article class="ab-leaf" id="translation-leaf" lang="es"><header class="ab-leaf-head"><span class="ab-locus" id="left-locus">—</span><h2 id="translation-heading">Traducción castellana</h2><span class="ab-edition">KURILO · V514 · 2026</span></header><div id="translation" class="ab-text"></div><div class="ab-apparatus"><h3>Nota editorial</h3><p class="ab-none">La traducción se reproduce de V514. Las notas interpretativas se consultan por separado en el inventario de aparato autoral.</p><a id="notes-link" href="inventario-aparato-autoral.html">Consultar notas del autor →</a></div></article>
 </section>
 <section id="ab-autor" aria-labelledby="ab-autor-title" style="margin:30px 0;border-top:1px solid var(--ab-rule);padding-top:22px">
 <h2 id="ab-autor-title">Apparatus auctoris · V514 et V554</h2>
@@ -197,6 +198,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 </section>
 <section id="vdl-edition-references" aria-label="Referencias bibliográficas de las ediciones de Diego Kurilo"></section>
 </main>
+<script defer src="assets/apparatus-reading-order.js?v=20261115-latin-first-v1"></script>
 <script src="assets/apparatus-locus-search.js?v=20261115-latin-v7"></script>
 <script>
 (()=>{"use strict";
@@ -274,8 +276,8 @@ function load(locus){
  const lang=$("#translation-edition").value,trow=translations[lang]?.passages?.find(x=>x.locus===locus);
  set("#translation",trow?.translation||"Traducción no disponible para este locus en la versión seleccionada.");
  const trMeta={es:["Traducción castellana","KURILO · V514"],fr:["Traduction française","KURILO · V554"],en:["English translation","KURILO · V297"]}[lang];
- set("#translation-heading",trMeta[0]);document.querySelector(".ab-leaf:first-child").lang=lang;
- document.querySelector(".ab-leaf:first-child .ab-edition").textContent=trMeta[1]+" · traducción independiente de Rose y Krohn";
+ set("#translation-heading",trMeta[0]);document.querySelector("#translation-leaf").lang=lang;
+ document.querySelector("#translation-leaf .ab-edition").textContent=trMeta[1]+" · traducción independiente de Rose y Krohn";
  const c=collation?.loci?.[locus]||{};
  const availability=[
    "Kurilo V514: "+(passage.latin?.trim()?"texto latino existente y consultable":"sin texto latino para este locus"),

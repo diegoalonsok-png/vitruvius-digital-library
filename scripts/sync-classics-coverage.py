@@ -41,6 +41,13 @@ def main():
     assert set(indexed) <= set(by_id), "Uncatalogued local edition"
     rows = {w["id"]: w for w in coverage["works"]}
     assert len(rows) == len(coverage["works"]), "Duplicated coverage identifiers"
+    assert set(rows) <= set(by_id), "Coverage contains an unknown work"
+    for work_id, work in by_id.items():
+        if work_id not in rows:
+            row = {"id": work_id, "author": work["author"], "title": work["title"],
+                   "originalLanguage": work["language"], "translationLanguages": [],
+                   "localEditionLanguages": [], "notes": "Edición TEI incorporada en R2; sin traducción humana ni colación independiente acreditadas."}
+            coverage["works"].append(row); rows[work_id] = row
     assert set(rows) == set(by_id), "Coverage rows and catalog must match"
     for work_id, item in rows.items():
         languages = indexed.get(work_id, set())
@@ -90,6 +97,10 @@ def main():
     COVERAGE.write_text(json.dumps(coverage, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     audit_path = ROOT / "data/classics-corpus/coverage-audit.json"
     audit = load(audit_path)
+    audit_ids = {row["id"] for row in audit["works"]}
+    for w in catalog:
+        if w["id"] not in audit_ids:
+            audit["works"].append({"id": w["id"]})
     witnesses = load(ROOT / "data/bibliotheca-testimonia-verified.json")["records"]
     for row in audit["works"]:
         work_id = row["id"]

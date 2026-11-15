@@ -16,6 +16,9 @@ assert.equal(coverage.works.length,coverage.totals.cataloguedWorks);
 const byId=new Map(coverage.works.map(w=>[w.id,w]));
 assert.equal(byId.size,coverage.works.length,"Duplicate works in coverage");
 const manifiestoR2=fs.existsSync(path.join(root,"data/r2/corpus-manifest.json"))?JSON.parse(read("data/r2/corpus-manifest.json")).obras:[];
+if(fs.existsSync(path.join(root,"data/r2/classics-expansion-manifest.json")))
+ for(const row of JSON.parse(read("data/r2/classics-expansion-manifest.json")).editions||[])
+  manifiestoR2.push({archivo:row.filename,workId:row.workId,language:row.language,pasajes:row.passages});
 const seen=new Set(),seenWorks=new Set(),errors=[];
 const fileCache=new Map();
 for(const e of registry.entries){

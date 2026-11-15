@@ -344,13 +344,15 @@ async function semanticSearch(q,{limit=6}={}){
   const candidates=(language==="la"||language==="grc")?(concept[language]||[]):(concept.modern?.[language]||[]);
   byLanguage[language]=candidates.filter(v=>typeof v==="string"&&v.trim().length>1);
  }
+ const semanticGate=await indexGate([...new Set(Object.values(byLanguage).flat())]);
+ const semanticTargets=boundTargets(semanticGate,entries.filter(e=>throughGate(semanticGate,e)),Math.max(12,limit*3));
  let loaded=0,failed=0,examined=0,localFailed=0,remoteFailed=0;const failedSources=[];
  // A semantic result must always be supported by an actual textual match,
  // not merely the presence of a concept in the editorial dictionary.
 
  // Strictly bounded vocabulary, exact surface matching; never fabricate a locus.
- for(let offset=0;offset<entries.length;offset+=4){
-  await Promise.all(entries.slice(offset,offset+4).map(async e=>{
+ for(let offset=0;offset<semanticTargets.length;offset+=4){
+  await Promise.all(semanticTargets.slice(offset,offset+4).map(async e=>{
    const terms=[...new Set((byLanguage[e.language]||[]).map(t=>t.trim()).filter(t=>fold(t).length>=3))].slice(0,8);
    if(!terms.length||e.format==="historical-ocr-pages"||
     e.format==="remote-json-passages"&&!(e.language==="grc"?window.ClassicsOffsiteGreek?.mightContain(e,terms):e.language==="la"?window.ClassicsOffsiteLatin?.mightContain(e,terms):false))return;
@@ -397,7 +399,7 @@ async function semanticSearch(q,{limit=6}={}){
     rating:48+Math.min(total,20),link,source:"Conceptus · "+e.path,count:total,units,conceptId:concept.id,matchedTerm:first.term});
   }));
  }
- lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,localFailed,remoteFailed,failedSources,matchedEditions:rows.length,staticIndexUsed:Boolean(indexValid),skippedNoHit};
+ lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,localFailed,remoteFailed,failedSources,matchedEditions:rows.length,staticIndexUsed:Boolean(indexValid),skippedNoHit,indexGate:semanticGate?"activa":"no disponible",editionsSkipped:entries.length-semanticTargets.length};
  const sorted=rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title));
  // Preserve at least one attested result from each ancient source language,
  // when available, before ranking the rest by match strength.

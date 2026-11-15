@@ -126,8 +126,12 @@ for(const w of works){
  const originals=entries.filter(e=>["la","grc"].includes(e.language));
  const translations=entries.filter(e=>["en","es","fr"].includes(e.language));
  if(!originals.length||!translations.length)continue;
+ // Remote editions have their own SHA256/public-access publication gate.
+ // A filesystem-only audit must not open a public URL as a local filename.
+ if(/^https:/.test(originals[0].path))continue;
  const original=read(originals[0].path);
  for(const translation of translations){
+  if(/^https:/.test(translation.path))continue;
   const target=read(translation.path);
   const ol=new Set(original.passages.map(p=>String(p.locus)));
   const tl=new Set(target.passages.map(p=>String(p.locus)));

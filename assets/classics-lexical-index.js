@@ -44,7 +44,53 @@ async function load(path){
  catch(error){cache.delete(path);throw error}
 }
 
-const manifest=()=>load(BASE+"manifest.json");
+// R2 expansion supplements the original GitHub index. Keep both sources;
+// overlapping catalogue identities are counted once, with GitHub first.
+let cataloguesTask=null,manifestTask=null;
+function catalogues(){
+ if(!cataloguesTask)cataloguesTask=(async()=>{
+  const local=await load(BASE+"manifest.json");
+  const out=[{base:BASE,info:local}];
+  try{
+   const descriptor=await load("data/r2/classics-expansion-index.json");
+   if(descriptor?.schema==="vdl-classics-expansion-index-v1"&&
+    /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/indice\/ampliacion\/[a-f0-9]{24}\/manifest\.json$/.test(descriptor.url||"")){
+    const extra=await load(descriptor.url);
+    if(extra.works!==descriptor.works)throw Error("Índice ampliado discordante");
+    const remoteBase=descriptor.url.replace(/manifest\.json$/,"");
+    if(extra.schema==="vdl-classics-index-segments-v1"&&Array.isArray(extra.segments)){
+     const segments=await Promise.all(extra.segments.map(async segment=>{
+      if(!/^segment-\d{4}\/manifest\.json$/.test(segment.file))throw Error("Ruta de índice inválida");
+      const info=await load(remoteBase+segment.file);
+      if(info.schema!=="vitruvia-classics-lexical-index-v1"||!Array.isArray(info.index)||info.index.length!==segment.works)throw Error("Segmento discordante");
+      return {base:remoteBase+segment.file.replace(/manifest\.json$/,""),info};
+     }));
+     if(segments.reduce((n,s)=>n+s.info.works,0)!==extra.works)throw Error("Cobertura segmentada discordante");
+     out.push(...segments);
+    }else{
+     if(extra.schema!=="vitruvia-classics-lexical-index-v1"||!Array.isArray(extra.index)||extra.works!==extra.index.length)throw Error("Índice ampliado discordante");
+     out.push({base:remoteBase,info:extra});
+    }
+   }
+  }catch{/* The original index remains usable if the optional expansion is offline. */}
+  return out;
+ })();
+ return cataloguesTask;
+}
+function manifest(){
+ if(!manifestTask)manifestTask=catalogues().then(sources=>{
+  const first=sources[0].info,index=[],seen=new Set();
+  for(const {base,info} of sources)for(const [sourceIndex,work] of info.index.entries()){
+   const key=work.id+"|"+work.lang;
+   if(seen.has(key))continue;seen.add(key);
+   index.push({...work,i:index.length,indexSource:base,indexSourceIndex:sourceIndex});
+  }
+  return {...first,index,works:index.length,passages:sources.reduce((n,s)=>n+(s.info.passages||0),0),tokens:sources.reduce((n,s)=>n+(s.info.tokens||0),0),
+   sourceCount:sources.length,generated:sources.map(s=>s.info.generated).sort().at(-1),
+   method:first.method+" La ampliación R2 se consulta por fragmentos y conserva la procedencia de cada edición."};
+ });
+ return manifestTask;
+}
 
 /* Lengua de la consulta. El griego se reconoce por su alfabeto; para el
    alfabeto latino se consulta el latín y, si se piden, las traducciones. */
@@ -61,14 +107,14 @@ function languagesFor(query,options){
 
 /* El catálogo de fragmentos permite elegir el prefijo más largo que coincida
    con la raíz: así «περ» y «περι» conviven sin ambigüedad. */
-async function shardFor(language,stem){
- const catalogue=await load(BASE+language+"/shards.json");
+async function shardFor(language,stem,base=BASE){
+ const catalogue=await load(base+language+"/shards.json");
  let best=null;
  for(const shard of catalogue.shards||[]){
   if(stem.startsWith(shard.k)&&(!best||shard.k.length>best.k.length))best=shard;
  }
  if(!best)return null;
- return load(BASE+language+"/"+best.f);
+ return load(base+language+"/"+best.f);
 }
 
 /* Entrada principal: cuántas veces aparece la raíz de la consulta en cada
@@ -83,9 +129,11 @@ async function lookup(query,options){
  const languages=languagesFor(raw,settings);
  const hits=[];
  let total=0;
- for(const language of languages){
+ const sourceWorks=new Map(info.index.map(w=>[w.indexSource+"|"+w.indexSourceIndex,w]));
+ for(const {base,info:sourceInfo} of await catalogues())for(const language of languages){
+  if(Array.isArray(sourceInfo.languages)&&!sourceInfo.languages.some(l=>l.language===language))continue;
   let shard=null;
-  try{shard=await shardFor(language,stem)}catch{continue}
+  try{shard=await shardFor(language,stem,base)}catch{continue}
   const entry=shard&&shard[stem];
   if(!entry)continue;
   /* El fragmento guarda «obra:recuento:pasajes», separadas por barra. */
@@ -94,7 +142,7 @@ async function lookup(query,options){
    return [Number(work),Number(count),passages?passages.split(",").map(Number):[]];
   }).filter(row=>Number.isInteger(row[0])&&row[1]>0);
   for(const [workIndex,count,passages] of decoded){
-   const work=info.index[workIndex];
+   const work=sourceWorks.get(base+"|"+workIndex);
    if(!work)continue;
    total+=count;
    hits.push({

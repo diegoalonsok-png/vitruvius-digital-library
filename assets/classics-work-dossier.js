@@ -73,6 +73,10 @@ const sources=(w)=>{const out=[];const push=(label,v)=>{if(typeof v==="string"&&
 };
 function title(w){
  const t=N(w.title);
+ if(w.indexedEdition?.sources?.length){
+  const source=w.indexedEdition.sources[0];
+  if(w.language==="grc"&&!greek.test(t))return {title:t,description:"Título documentado en el catálogo y la cabecera de edición; no se presenta como una retrotraducción al griego"};
+ }
  if(modern.test(w.id))return {title:t,description:"Edición editorial moderna; no se cataloga como composición antigua independiente"};
  if(w.language==="grc"){
   const h=t.split(/\s+·\s+/)[0].trim();
@@ -382,6 +386,49 @@ function renderEditions(dest,w,d){
   if(links.childNodes.length)dest.append(links);
  }
 }
+function renderIndexedEdition(dest,w){
+ const record=w.indexedEdition;
+ if(!record?.sources?.length)return;
+ const sec=html("section","cwd-indexed-edition");
+ section(sec,"Texto disponible · edición y procedencia");
+ row(sec,"Acceso",(langLabel[w.language]||w.language)+" · "+record.passages.toLocaleString("es")+" unidades de lectura · búsqueda en el texto");
+ sec.append(html("p","cwd-muted","La edición textual, el impreso que reproduce y los testimonios manuscritos tienen identificaciones independientes. La traducción automática es una ayuda de lectura y se solicita para cada pasaje."));
+ const actions=html("p","cwd-links");
+ const reader="classics-text-reader.html?work="+encodeURIComponent(w.id)+"&lang="+encodeURIComponent(w.language);
+ addA(actions,"Leer original y traducir un pasaje",reader+"&to=es");
+ addA(actions,"Buscar dentro de esta obra","bibliotheca-graeca-latina.html?work="+encodeURIComponent(w.id));
+ addA(actions,"Texto íntegro estructurado (JSON)",record.url);
+ sec.append(actions);
+ const citations=[];
+ for(const [i,source] of record.sources.entries()){
+  const item=html("article","cwd-ms");
+  const citation=[source.author,source.title,source.editors?.length?"Ed. "+source.editors.join(", "):"",[source.publicationPlace,source.publisher,source.publicationYear].filter(Boolean).join(": ")].filter(Boolean).join(". ")+".";
+  item.append(html("h4",null,source.title),html("p","cwd-citation-text",citation));
+  row(item,"CTS de esta edición",source.editionUrn);
+  const links=html("p","cwd-links");
+  addA(links,"TEI de procedencia",source.sourceUrl);
+  addA(links,"Copia preservada del TEI",source.archivedSource);
+  for(const licence of source.licences||[])addA(links,"Licencia de reutilización",licence.url);
+  item.append(links);
+  const details=html("details");details.append(html("summary",null,"Referencia de la fuente y control de integridad"));
+  row(details,"Bibliografía transcrita de la cabecera TEI",source.bibliography);
+  row(details,"SHA256 del original",source.sourceSha256);
+  row(details,"Alcance del control","Identidad de la edición, licencia, bytes preservados y extracción del cuerpo textual comprobados. No acredita colación de manuscritos ni corrección filológica integral.");
+  item.append(details);sec.append(item);
+  const csl={id:source.editionUrn,type:"book",title:source.title,author:[{literal:source.author}],
+   editor:(source.editors||[]).map(literal=>({literal})),URL:source.sourceUrl,
+   ...(source.publisher?{publisher:source.publisher}:{}),
+   ...(source.publicationPlace?{"publisher-place":source.publicationPlace}:{}),
+   ...(source.publicationYear?{note:"Fecha transcrita de la edición fuente: "+source.publicationYear}:{}),
+   language:w.language};
+  citations.push(csl);
+ }
+ const exportButton=html("button","cwd-cite-button","Descargar referencias CSL JSON");exportButton.type="button";
+ exportButton.addEventListener("click",()=>{
+  const url=URL.createObjectURL(new Blob([JSON.stringify(citations,null,2)],{type:"application/vnd.citationstyles.csl+json"}));
+  const link=document.createElement("a");link.href=url;link.download=w.id+"-ediciones.csl.json";link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ });sec.append(exportButton);dest.append(sec);
+}
 function renderBibliography(dest,w){
  section(dest,"Ediciones y referencias · Chicago 18");
  const bibliography=sources(w);
@@ -650,6 +697,7 @@ function renderInto(target,id,opts={}){
   // documentary/ecdotic audit accessible without displaying numerous unresolved
   // fields as if they were independent, validated catalogue facts.
   renderAcademicSummary(target,w,d);
+  renderIndexedEdition(target,w);
   renderWitness(target,w,d);
   renderEditions(target,w,d);
   renderBibliography(target,w);

@@ -8,11 +8,16 @@ const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase()
 function mount(root,work){
  root.replaceChildren();
  const files=Object.entries(work.corpusFiles||{}).filter(([language,path])=>
-  languageNames[language]&&/^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path)&&
-  path===("data/classics-corpus/"+work.id+"-"+language+".json"));
+  languageNames[language]&&(
+   /^data\/classics-corpus\/[a-z0-9-]+\.json$/.test(path)&&path===("data/classics-corpus/"+work.id+"-"+language+".json")||
+   /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9-]+\.json$/.test(path)));
  const intro=document.createElement("p");intro.className="classic-ref";
  intro.textContent="Lectura textual ligera: original y traducciones en columnas independientes. No se descargan PDF ni facsímiles; los loci iguales no certifican alineación filológica.";
  root.append(intro);
+ const fullReader=document.createElement("a");
+ fullReader.href="classics-text-reader.html?work="+encodeURIComponent(work.id)+"&lang="+encodeURIComponent(work.language)+"&to=es";
+ fullReader.textContent="Leer original, buscar pasajes y solicitar traducción automática";
+ root.append(fullReader);
  if(!files.length){const p=document.createElement("p");p.textContent="Solo existe ficha bibliográfica; no hay transcripciones verificadas disponibles.";root.append(p);return}
  const all=Object.fromEntries(files);
  const original=files.find(([l])=>l==="grc"||l==="la")?.[0]||files[0][0];
@@ -42,7 +47,7 @@ function mount(root,work){
   }
  }
 
- const open=document.createElement("a");open.href="lector-textual-rapido.html?work="+encodeURIComponent(work.id);
+ const open=document.createElement("a");open.href=fullReader.href;
  open.textContent="Abrir lector independiente en pantalla completa";
  open.style.cssText="display:inline-block;margin:10px 0;padding:9px;border:1px solid #ad9674";
  root.append(open);

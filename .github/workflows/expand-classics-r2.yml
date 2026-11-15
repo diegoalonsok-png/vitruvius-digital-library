@@ -1,0 +1,75 @@
+name: Ampliar clásicos griegos y latinos en R2 sin borrar GitHub
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/expand-classics-r2.yml'
+      - 'scripts/expand-classics-r2.py'
+      - 'scripts/build-r2-expansion-index.mjs'
+      - 'scripts/publish-r2-expansion-index.py'
+permissions:
+  contents: write
+concurrency:
+  group: vdl-classics-expansion-r2
+  cancel-in-progress: false
+jobs:
+  expand:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    env:
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install --quiet 'boto3>=1.36,<2'
+      - name: Probar extracción, licencias y preservación
+        run: python scripts/test-expand-classics-r2.py
+      - name: Incorporar todo original admisible y preservar textos de GitHub
+        run: python -u scripts/expand-classics-r2.py --publish --workers 8
+      - name: Construir y comprobar índice de pasajes en R2
+        run: |
+          node --max-old-space-size=11000 scripts/build-r2-expansion-index.mjs /tmp/vdl-classics-expansion
+          python scripts/publish-r2-expansion-index.py /tmp/vdl-classics-expansion
+      - name: Actualizar desde el catálogo más reciente y publicar sólo referencias verificadas
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git pull --ff-only origin main
+            python scripts/expand-classics-r2.py --finalize
+            python scripts/sync-classics-coverage.py
+            python scripts/sync-bibliotheca-github-r2.py
+            node scripts/audit-classical-corpus.mjs
+            git add data/bibliotheca-graeca-latina-I-bce-I-ce.json data/classics-corpus/search-registry.json data/r2/classics-expansion-index.json data/r2/classics-expansion-manifest.json data/classics-corpus/coverage-audit.json data/classics-corpus/translation-availability-222.json data/r2/bibliotheca-inventario-unificado.json
+            if git diff --cached --quiet; then break; fi
+            git commit -m 'Incorporar originales TEI en R2 con índices, procedencia y preservación de GitHub'
+            if git push origin HEAD:main; then break; fi
+            # Preserve the attempted commit; resolve against current main by
+            # checking it out separately, then regenerate from verified objects.
+            git fetch origin main
+            git checkout -B "expansion-retry-$attempt" origin/main
+            if [ "$attempt" -eq 5 ]; then exit 1; fi
+          done
+      - name: Conservar diagnóstico y diferencias pendientes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: classics-expansion-verification
+          path: |
+            /tmp/vdl-classics-expansion/prepared.json
+            /tmp/vdl-classics-expansion/index-descriptor.json
+          retention-days: 30
