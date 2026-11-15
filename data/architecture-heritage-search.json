@@ -1,0 +1,80 @@
+{
+  "schema": "vitruvia-architecture-heritage-index-v1",
+  "description": "Índice complementario de visores históricos comprobados en el repositorio. No se confunden las ediciones de Vitruvio con obras originales de sus editores. La presencia del visor no demuestra OCR íntegro.",
+  "records": [
+    {
+      "id": "cesariano-1521",
+      "author": "Cesare Cesariano",
+      "title": "Di Lucio Vitruvio Pollione de architectura libri dece",
+      "year": 1521,
+      "kind": "Edición histórica ilustrada y comentada",
+      "aliases": [
+        "Cesariano",
+        "Cesare Cesariano",
+        "Cesarin",
+        "Cesarin(o)",
+        "Cesarino",
+        "Caesarianus",
+        "Vitruvio Cesariano 1521",
+        "Caes."
+      ],
+      "reader": "cesariano-1521.html"
+    },
+    {
+      "id": "giocondo-1511",
+      "author": "Fra Giovanni Giocondo",
+      "title": "Vitruvius, De architectura (edición de Giocondo)",
+      "year": 1511,
+      "kind": "Edición histórica",
+      "aliases": [
+        "Giocondo",
+        "Fra Giocondo",
+        "Iucundus",
+        "Giovanni Giocondo"
+      ],
+      "reader": "giocondo-1511.html"
+    },
+    {
+      "id": "barbaro-1567",
+      "author": "Daniele Barbaro",
+      "title": "I dieci libri dell'architettura di M. Vitruvio",
+      "year": 1567,
+      "kind": "Edición histórica comentada",
+      "aliases": [
+        "Barbaro",
+        "Daniele Barbaro",
+        "Daniel Barbarus"
+      ],
+      "reader": "barbaro-1567.html"
+    },
+    {
+      "id": "palladio-1570",
+      "author": "Andrea Palladio",
+      "title": "I quattro libri dell'architettura",
+      "year": 1570,
+      "kind": "Tratado histórico en facsímil",
+      "aliases": [
+        "Palladio",
+        "Quattro libri",
+        "Four Books of Architecture",
+        "Cuatro libros de arquitectura"
+      ],
+      "reader": "obras-notables.html?obra=palladio-quattro-libri"
+    },
+    {
+      "id": "alberti-1582",
+      "author": "Leon Battista Alberti",
+      "title": "Los diez libros de Architectura (edición castellana, 1582)",
+      "year": 1582,
+      "kind": "Traducción histórica en facsímil",
+      "aliases": [
+        "Alberti",
+        "Leon Battista Alberti",
+        "Los diez libros de arquitectura",
+        "De re aedificatoria",
+        "De re aedificatoria Alberti"
+      ],
+      "reader": "obras-notables.html?obra=alberti-de-re-aedificatoria"
+    }
+  ]
+}
