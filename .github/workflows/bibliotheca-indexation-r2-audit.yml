@@ -1,0 +1,57 @@
+name: Bibliotheca — auditoría y conciliación de índices GitHub/R2
+on:
+  schedule:
+    - cron: "45 10 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: bibliotheca-audit-index-github-r2
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar cliente de R2
+        run: python -m pip install --quiet "boto3>=1.36"
+      - name: Auditar los 271 registros y el índice de textos
+        run: node scripts/audit-bibliotheca-indexation.mjs --strict
+      - name: Conciliar inventario federado sin inventar relaciones
+        run: python scripts/sync-bibliotheca-github-r2.py
+      - name: Comprobar R2 real y manifiesto de índices
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: vitruvius-bibliotheca
+        run: python scripts/audit-r2-object-presence.py
+      - name: Publicar solo resúmenes reproducibles y panel de estado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/r2/bibliotheca-indexation-status.json data/r2/r2-object-status.json data/r2/bibliotheca-inventario-unificado.json reports/bibliotheca/indexation-control.json reports/bibliotheca/r2-live-integrity.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Bibliotheca: conciliación diaria de índices GitHub/R2"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -q origin main && git push -q origin HEAD:main && exit 0
+            sleep 8
+          done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bibliotheca-indexation-audit
+          path: |
+            reports/bibliotheca/indexation-control.json
+            reports/bibliotheca/r2-live-integrity.json
+            data/r2/bibliotheca-indexation-status.json
+            data/r2/r2-object-status.json
+          if-no-files-found: ignore
