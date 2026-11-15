@@ -29,6 +29,14 @@ async function render(query){
   grid.append(card(title,/^\s*(apparatus criticus|critical apparatus)\s*\(/i.test(t)?"Entrada de aparato; no traducción alineada.":t,lang));
  }
  root.append(E("h3","Vitr., De architectura "+fmt(locus)));root.append(grid);
+ const h=section("Testimonium H · primer testimonio: inspección de folios");
+ h.append(E("p","Harley MS 2767 (British Library, ca. 800–824): la fuente manuscrita más antigua conservada de De architectura. El cotejo debe comenzar con la imagen del folio, no con una transcripción derivada. Los enlaces de locus estimado no demuestran la lectura.","bude-note"));
+ try{
+  const v=await window.CodexHConcordance?.locate(locus);if(token!==sequence)return;
+  if(v?.exact?.length)for(const f of v.exact){item(h,"H f. "+f.folio, f.note||"Correspondencia del folio registrada.", "Estado del enlace: "+f.status+"; cotejo diplomático no presumido.","codex-h-folios-local.html?folio="+encodeURIComponent(f.folio)+"&locus="+encodeURIComponent(locus))}
+  else if(v?.estimate)item(h,"H · estimación",v.estimate.folio+" ("+v.estimate.from+"–"+v.estimate.to+")","Localización proporcional, no prueba codicológica.","codex-h-folios-local.html?folio="+encodeURIComponent(v.estimate.folio)+"&locus="+encodeURIComponent(locus));
+  else h.append(E("p","Sin folio vinculado en el mapa actual."));
+ }catch(e){h.append(E("p","Concordancia H no disponible: "+e.message))}
  const c=data.comparison.loci.find(x=>x.locus===locus);
  const ext=section("Apparatus comparativus · Rose, Kr., Kur.");
  if(c){
@@ -70,13 +78,6 @@ async function render(query){
  for(const n of glosas.slice(0,20))item(notes,n.version+" · "+(n.lemma||"glosa"),n.glosa,"p. "+n.page+" · anclaje "+n.grado+" · nota autoral; no variante manuscrita.",n.pdf);
  if(!glosas.length)notes.append(E("p","Sin glosas de locus explícito o lematizado único. Los comentarios sin anclaje se conservan en el inventario general."));
  notes.append(A("Inventario completo de notas, incluidas las no localizadas","inventario-aparato-autoral.html"));
- const h=section("Testimonium H · folio y nivel de evidencia");
- try{
-  const v=await window.CodexHConcordance?.locate(locus);if(token!==sequence)return;
-  if(v?.exact?.length)for(const f of v.exact){item(h,"H f. "+f.folio, f.note||"Correspondencia del folio registrada.", "Estado del enlace: "+f.status+"; cotejo diplomático no presumido.","codex-h-folios-local.html?folio="+encodeURIComponent(f.folio)+"&locus="+encodeURIComponent(locus))}
-  else if(v?.estimate)item(h,"H · estimación",v.estimate.folio+" ("+v.estimate.from+"–"+v.estimate.to+")","Localización proporcional, no prueba codicológica.","codex-h-folios-local.html?folio="+encodeURIComponent(v.estimate.folio)+"&locus="+encodeURIComponent(locus));
-  else h.append(E("p","Sin folio vinculado en el mapa actual."));
- }catch(e){h.append(E("p","Concordancia H no disponible: "+e.message))}
  status.textContent="Vitr. "+fmt(locus)+" · "+selected.length+" unidades selectivas cotejadas entre V514 y V554; "+(c?.v514?.length||0)+" entradas del índice V514; "+entries.length+" registros del Apéndice T; "+glosas.length+" glosas ancladas. Selectivo, no exhaustivo.";
 }
 (async()=>{try{
