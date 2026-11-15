@@ -79,7 +79,7 @@
       "id": "heron-mechanica",
       "author": "Herón de Alejandría",
       "work": "Μηχανικά · Mechanica",
-      "language": "grc (fragmentaria); ar (tradición indirecta)",
+      "language": "grc",
       "note": "No existe una versión griega íntegra conservada que pueda enfrentarse como original completo; la transmisión extensa procede del árabe. No retrotraducir del árabe y presentarlo como griego.",
       "witnesses": [
         {
@@ -104,7 +104,13 @@
           "url": "https://searcharchives.bl.uk/catalog/040-002621534",
           "access": "referencia bibliográfica señalada por British Library; texto íntegro no alojado"
         }
-      ]
+      ],
+      "transmission": {
+        "originalLanguage": "grc",
+        "survivingGreek": "fragmentary",
+        "indirectLanguage": "ar",
+        "caution": "La obra griega íntegra no se conserva; la versión árabe constituye tradición indirecta. El código grc identifica la lengua de composición, no la de todos los testimonios."
+      }
     },
     {
       "id": "ptolomeo-harmonica",
