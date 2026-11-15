@@ -10,6 +10,7 @@ on:
       - "scripts/audit-r2-object-presence.py"
       - "scripts/audit-r2-orphan-ingestions.py"
       - "scripts/build-bibliotheca-ocr-coverage.py"
+      - "scripts/test-bibliotheca-ocr-coverage.mjs"
       - "scripts/audit-bibliotheca-lexical-live.mjs"
       - "assets/r2-clasicos-busqueda.js"
       - "scripts/sync-classics-coverage.py"
@@ -65,7 +66,9 @@ jobs:
       - name: Examinar la procedencia de PDF y OCR todavía no catalogados
         run: python scripts/audit-r2-orphan-ingestions.py --required
       - name: Catalogar cobertura de OCR, sin confundirla con texto crítico
-        run: python scripts/build-bibliotheca-ocr-coverage.py
+        run: |
+          python scripts/build-bibliotheca-ocr-coverage.py
+          node scripts/test-bibliotheca-ocr-coverage.mjs
       - name: Cotejar palabras y páginas reales del índice R2 y abrir visores
         run: node scripts/audit-bibliotheca-lexical-live.mjs --required --full
       - name: Integridad de lectura y fusión semántica
