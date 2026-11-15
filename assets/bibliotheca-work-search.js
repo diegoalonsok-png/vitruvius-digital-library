@@ -41,6 +41,8 @@ function romanNumber(x){let n=0,last=0;for(const c of [...String(x).toUpperCase(
 function centuryOf(raw){
  const s=normal(raw);
  if(!s||/debatid|indeterminad|inciert|uncertain|disput|atribucion|composicion y atribuciones/.test(s))return "";
+ // Las fechas editoriales y de testimonios no son fechas de composición.
+ if(/\b(?:edicion|edition|recensio|impresion|imprenta|publicacion|publicado|published|manuscrito|manuscript|codex|codice|copia|copiado|transcripcion|facsimil|rose|krohn)\b/.test(s))return "";
  const before=/\b(?:a c|a e c|bce|bc|antes de cristo)\b/.test(s);
  const after=/\b(?:d c|ce|ad|despues de cristo)\b/.test(s);
  if(before===after)return "";
@@ -51,12 +53,13 @@ function centuryOf(raw){
   if(all.length!==1)return "";
   const tail=s.slice(c.index+c[0].length).trim().replace(/^(?:a c|a e c|bce|bc|d c|ce|ad)\b/,"").trim();
   if(/^[ivxlcdm]+\b/.test(tail)||/\b(?:y|and|et)\s+[ivxlcdm]+\b/.test(tail))return "";
-  const n=romanNumber(c[1]);return n>=1&&n<=30?era+":"+n:"";
+  const n=romanNumber(c[1]);return n>=1&&n<=14?era+":"+n:"";
  }
  const years=[...s.matchAll(/\b(\d{1,4})\b/g)].map(x=>Number(x[1])).filter(n=>n>0);
  if(!years.length||years.length>2)return "";
  const centuries=[...new Set(years.map(n=>Math.ceil(n/100)))];
- return centuries.length===1?era+":"+centuries[0]:"";
+ // Corpus antiguo: nunca clasificar como composición los años de una edición moderna.
+ return centuries.length===1&&centuries[0]<=14?era+":"+centuries[0]:"";
 }
 const make=(tag,text,cls)=>{
  const el=document.createElement(tag);if(text!=null)el.textContent=String(text);if(cls)el.className=cls;return el;
@@ -192,7 +195,7 @@ function mount(parent,data){
  const presentGenres=new Set([...index.values()].map(w=>ancientGenre(w.genre)).filter(Boolean));
  ancientGenres.filter(([key])=>presentGenres.has(key)).forEach(([key,label])=>genreFilter.append(new Option(label,key)));
  const centuryFilter=make("select");centuryFilter.setAttribute("aria-label","Siglo de composición");
- centuryFilter.append(new Option("Todas las épocas y siglos",""));
+ centuryFilter.append(new Option("Todos los siglos de composición",""));
  const centuries=new Set([...index.values()].map(w=>centuryOf(w.dating)).filter(Boolean));
  for(const era of ["bce","ce"])for(let n=30;n>=1;n--){
   if(era==="ce"&&n>21)continue;
@@ -210,10 +213,12 @@ function mount(parent,data){
   const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
   b.addEventListener("click",()=>{model.letter=l==="Todos"?"":l;model.limit=40;alphabet.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));render()});alphabet.append(b);
  }
+ const dateClarifier=make("p",null,"bws-help");
+ dateClarifier.textContent="Cronología: el siglo corresponde a la composición antigua, nunca al año de la edición crítica (Rose 1899; Krohn 1912), del facsímil ni de la copia manuscrita. Fechas discutidas quedan sin asignación automática.";
  const standards=make("p",null,"bws-help");
  standards.append("Criterios editoriales: datación de composición documentada; género descriptivo y revisable; título original y variantes identificados; referencias Chicago 18 (notas y bibliografía). ");
  addLink(standards,"Metodología académica del índice","metodologia-catalogo-clasico.html");
- section.append(title,subtitle,form,filters,alphabet,standards,region,help);
+ section.append(title,subtitle,form,filters,alphabet,dateClarifier,standards,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
  model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,languageFilter,sortFilter,letter:"",limit:40};
