@@ -175,6 +175,31 @@ if(report.counts.greekWithoutOcrGreekRoots)
   " ediciones atribuidas a obras griegas no tienen raíces en escritura griega detectadas por el OCR; verificar lengua editorial o renovar OCR griego antes de declarar búsqueda griega.");
 report.counts.warnings=report.warnings.length;
 report.status=report.errors.length?"errors-detected":report.warnings.length?"verified-sample-with-reservations":"verified-sample";
+/* La lista de ediciones sin raíces griegas se deriva de cada auditoría,
+   nunca se mantiene a mano. «Sin raíces» no significa ausencia de griego
+   en el PDF; puede ser traducción sola o fallo del OCR. */
+const greekDeficits=report.records.filter(r=>r.sourceLanguage==="grc"&&r.greekRootsDetected===0)
+ .map(r=>{
+  const ed=rows.get(r.id)||{};
+  return {
+   editionId:r.id,work:ed.obra||r.id,
+   editionTitle:ed.tituloEdicion||"",
+   editionLanguageClaim:ed.idiomaEdicion||"",
+   pages:r.ocrPages,greekRootsDetected:0,
+   status:"requires_content_language_check",
+   reader:"buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(r.id),
+   note:"La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
+  };
+ });
+const languageTriage={
+ schema:"vdl-greek-ocr-triage-v1",
+ generated:report.generated,
+ source:"Auditoría léxica R2 sobre "+report.records.length+" ediciones; no sustituye comprobación de portada o folio.",
+ summary:{greekWorkEdits:greekRows.length,
+ noGreekRootsDetected:greekDeficits.length,editionsToCheck:greekDeficits.length},
+ editions:greekDeficits
+};
+writeFileSync("data/r2/bibliotheca-greek-ocr-triage.json",JSON.stringify(languageTriage,null,2)+"\n","utf8");
 writeFileSync("data/r2/bibliotheca-lexical-live-audit.json",JSON.stringify(report,null,2)+"\n","utf8");
 console.log(JSON.stringify({status:report.status,counts:report.counts,readerEndpoints:report.readerEndpoints,
  errors:report.errors,warnings:report.warnings},null,2));
