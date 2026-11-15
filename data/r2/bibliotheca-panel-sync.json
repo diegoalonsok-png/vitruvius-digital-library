@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-federated-status-v1",
-  "generated": "2026-11-15T19:10:21.187Z",
+  "generated": "2026-11-15T19:28:48.656Z",
   "methodology": "Cruce de archivos GitHub y manifiestos R2. No acredita disponibilidad HTTP ni cotejo autóptico. El índice es léxico por raíces/conceptos, no semántica editorial validada.",
   "summary": {
     "masterWorks": 271,
@@ -23,7 +23,7 @@
     "candidateEditionsNotInR2": 44,
     "externalMetadataPending": 49,
     "liveR2ObjectCheck": true,
-    "r2ObjectsScanned": 2810,
+    "r2ObjectsScanned": 2929,
     "r2PdfObjectsPresent": 117,
     "r2CorpusTextsPresent": 32
   },
@@ -948,7 +948,7 @@
     ]
   },
   "r2LiveEvidence": {
-    "generated": "2026-11-15T19:10:21.418941+00:00",
+    "generated": "2026-11-15T19:28:48.834336+00:00",
     "status": "checked-with-discrepancies",
     "indexExtraIds": [
       "boecio-institutione-musica",
