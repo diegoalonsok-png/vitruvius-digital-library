@@ -10,7 +10,8 @@ const required=[
  "data/structured/recensio-es.json","data/structured/recensio-fr.json",
  "data/structured/theory-en.json","data/collation-loci.json",
  "data/apparatus/aparato-comparativo.json",
- "data/codex-h/folio-locus-map.json","data/codex-h/observaciones-h.json","data/catalog.json"
+ "data/codex-h/folio-locus-map.json","data/codex-h/observaciones-h.json","data/catalog.json",
+ "data/apparatus/collatio-autoptica-h.json"
 ];
 let cached=null,token=0,lastLocus=null;
 function el(tag,text,cls){const x=document.createElement(tag);if(text!==undefined&&text!==null)x.textContent=String(text);if(cls)x.className=cls;return x}
@@ -156,11 +157,12 @@ function historicalPanel(root,locus,historical,list){
  }
  root.append(s)
 }
-function witnessPanel(root,locus,folioMap,hobs){
+function witnessPanel(root,locus,folioMap,hobs,autoptic){
  const s=box("V · Codex H · Harley MS 2767","Folio de alta resolución y notas de inspección. La localización de un pasaje o de una rúbrica no implica lectura diplomática completa del folio.");
  const loci=(folioMap.entries||[]).flatMap(e=>(e.loci||[]).filter(q=>q.locus===locus).map(q=>({folio:e.folio,status:q.status,note:q.note})));
  const observations=(hobs.observaciones||[]).filter(x=>x.locus===locus);
- if(!(loci.length||observations.length))s.append(el("p","Sin correspondencia verificada en este registro de folios. Consultar el repertorio general de H.","dl-muted"));
+ const direct=(autoptic?.entries||[]).filter(x=>x.locus===locus);
+ if(!(loci.length||observations.length||direct.length))s.append(el("p","Sin correspondencia verificada en este registro de folios. Consultar el repertorio general de H.","dl-muted"));
  for(const x of loci){
   const d=el("article",null,"dl-entry");field(d,"Folio",x.folio);field(d,"Estado del alineamiento",x.status);field(d,"Nota",x.note);
   link(d,"Abrir el folio "+x.folio,"codex-h-folios-local.html?folio="+encodeURIComponent(x.folio));s.append(d);
@@ -170,6 +172,20 @@ function witnessPanel(root,locus,folioMap,hobs){
   field(d,"Aparato propuesto",x.aparato);field(d,"Lectura anotada en H",x.H);field(d,"Detalle",x.detalle);
   field(d,"Estado",x.estado||"a revisar");
   link(d,"Ver facsímil H f. "+x.folio,"codex-h-folios-local.html?folio="+encodeURIComponent(x.folio));s.append(d)
+ }
+ if(direct.length){
+  const d=el("section",null,"dl-entry");d.append(el("h4","Collatio autoptica H · "+direct.length+" lecturas"));
+  d.append(el("p","Las lecturas se han cotejado visualmente en fotografías digitales de H. La ratificación de la decisión editorial está pendiente. Rose aparece en transcripción independiente y Krohn en OCR: no se califican como autopsias de sus páginas impresas.","dl-muted"));
+  for(const x of direct){
+   const c=el("article",null,"dl-entry");
+   field(c,"H · folio",x.folio);field(c,"Lemma de la edición",x.lemma);
+   field(c,"Lectura visible en H",x.witnessReading);field(c,"Fórmula propuesta para el aparato",x.apparatus);
+   field(c,"Observación visual",x.evidenceNote);
+   field(c,"Confianza de lectura",x.visualConfidence);
+   field(c,"Estado editorial","Pendiente de ratificación; sin cambios en DOCX ni PDF");
+   link(c,"Imagen H · f. "+x.folio,x.facsimileUrl);d.append(c)
+  }
+  link(d,"Registro completo de colación visual","collatio-autoptica.html?locus="+encodeURIComponent(locus));s.append(d)
  }
  link(s,"Concordancia de todos los folios","concordancia-folios.html?locus="+encodeURIComponent(locus));
  root.append(s)
@@ -238,7 +254,7 @@ async function openLocus(locus,scroll=true){
  lastLocus=id;wrap.hidden=false;wrap.replaceChildren(el("p","Reuniendo los testimonios y el comentario del locus "+id+"…","dl-muted"));
  if(scroll)wrap.scrollIntoView({behavior:"smooth",block:"start"});
  try{
-  const [es,fr,en,ocr,historical,folioMap,hobs,catalog]=await getData();
+  const [es,fr,en,ocr,historical,folioMap,hobs,catalog,autoptic]=await getData();
   if(request!==token)return;
   const r=last.find(x=>x.locus===id),sources=[];
   const header=el("header",null,"dl-head");
@@ -255,7 +271,7 @@ async function openLocus(locus,scroll=true){
   ocrPanel(core,id,ocr,sources);
   collationPanel(core,r);
   historicalPanel(core,id,historical,sources);
-  witnessPanel(core,id,folioMap,hobs);
+  witnessPanel(core,id,folioMap,hobs,autoptic);
   commentaryPanel(core,r,sources);
   searchPanel(core,sources);
   wrap.replaceChildren(header,core);
