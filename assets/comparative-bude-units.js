@@ -45,6 +45,23 @@ async function render(query){
   grid.append(card(title,/^\s*(apparatus criticus|critical apparatus)\s*\(/i.test(t)?"Entrada de aparato; no traducción alineada.":t,lang));
  }
  root.append(E("h3","Vitr., De architectura "+fmt(locus)));root.append(grid);
+ // Comparación textual completa para cada locus, independiente del aparato de variantes.
+ // El texto H no se suple con V514 ni se deduce del OCR de los editores impresos.
+ const texts=section("Textus comparati · Kr. 1912 / Rose 1899 / Kur. V514");
+ const tgrid=E("div",null,"bude-grid");
+ const krohn=data.krohn?.passages?.find(x=>x.locus===locus);
+ const rose=data.ocr?.loci?.[locus]?.["rose-1899"];
+ const krohnOcr=data.ocr?.loci?.[locus]?.["krohn-1912"];
+ const k=card("Kr. 1912 · "+fmt(locus),krohn?.latin||"No hay transcripción digital independiente de Krohn alineada a este locus.","la");
+ k.append(E("small",krohn?"Transcripción Perseus, cotejo con el impreso pendiente.":"Sin transcripción de Krohn: no se sustituye por Kurilo."));
+ if(krohnOcr?.page){const p=E("p",null,"bude-note");p.append(A("Ver página OCR histórica de Krohn · imagen "+krohnOcr.page,"krohn-1912.html"));k.append(p)}
+ const ro=card("Rose 1899 · "+fmt(locus),rose?.text||"Sin segmento OCR identificado para este locus.","la");
+ ro.append(E("small",rose?"OCR histórico de la edición impresa; contiene posibles notas, números y segmentación automática; no equivale a lectura crítica verificada.":"Sin segmentación documental disponible."));
+ if(rose?.page){const p=E("p",null,"bude-note");p.append(A("Consultar facsímil de Rose · imagen digital "+rose.page,"https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf#page="+rose.page));ro.append(p)}
+ const ku=card("Kur. V514 · "+fmt(locus),p?.latin||"Sin texto estructurado.","la");
+ ku.append(E("small","Texto autoral V514; las elecciones editoriales de latín y griego se conservan."));
+ tgrid.append(k,ro,ku);texts.append(tgrid);
+ texts.append(E("p","H (Harley MS 2767) se documenta por su imagen y los cotejos expresamente verificados, en el apartado siguiente. No se publica una lectura diplomática reconstruida sin cotejo. La unidad por locus es una alineación editorial y no implica paginación idéntica en Rose y Krohn.","bude-note"));
  const h=section("Testimonium H · primer testimonio: inspección de folios");
  h.append(E("p","Harley MS 2767 (British Library, ca. 800–824): la fuente manuscrita más antigua conservada de De architectura. El cotejo debe comenzar con la imagen del folio, no con una transcripción derivada. Los enlaces de locus estimado no demuestran la lectura.","bude-note"));
  try{
@@ -56,13 +73,13 @@ async function render(query){
  const c=data.comparison.loci.find(x=>x.locus===locus);
  const ext=section("Apparatus comparativus · Rose, Kr., Kur.");
  if(c){
-  if(c.v514?.length)for(const v of c.v514.slice(0,20)){item(ext,"Kur. V514 · entrada selectiva",v.aparato||v.lema||"Entrada editorial",v.grado||"Procedencia editorial","registro-ecdotico.html?locus="+encodeURIComponent(locus))}
+  if(c.v514?.length)for(const v of c.v514){item(ext,"Kur. V514 · entrada selectiva",v.aparato||v.lema||"Entrada editorial",v.grado||"Procedencia editorial","registro-ecdotico.html?locus="+encodeURIComponent(locus))}
   for(const [key,title] of [["rose-1899","Rose 1899"],["krohn-1912","Kr. 1912"]]){
    const witness=c[key];if(!witness)continue;
-   for(const entry of (witness.entradas||[]).slice(0,35))item(ext,title+" · OCR candidato",entry.texto,"Página impresa "+entry.pagina+"; línea OCR "+entry.linea+"; siglas extraídas: "+(entry.sigla||[]).join(", ")+". Lectura pendiente de verificar con facsímil.",witness.pdf);
+   for(const entry of (witness.entradas||[]))item(ext,title+" · OCR candidato",entry.texto,"Página impresa "+entry.pagina+"; línea OCR "+entry.linea+"; siglas extraídas: "+(entry.sigla||[]).join(", ")+". Lectura pendiente de verificar con facsímil.",witness.pdf);
   }
  }
- if(ext.children.length===1)ext.append(E("p","Sin entradas selectivas para este locus."));
+ if(ext.children.length===1)ext.append(E("p","Sin entrada crítica registrada en Rose/Krohn/Kurilo para este locus; la consulta y colación de testimonios queda abierta."));
  const verified=section("Apparatus criticus selectivus · forma Budé, testimonios y ediciones");
  verified.append(E("p","Convención: ‖ locus lectio recepta + sigla : varia lectio + sigla ‖. H = codex Harleianus; Kr. = Krohn; Rose = Rose; Kur. = ediciones Kurilo. «sec. Kur.» indica atribución editorial y «ex imagine» lectura directa de la fotografía. Las demás entradas conservan su carácter documental.","bude-note"));
  const selected=data.curated.entries.filter(x=>x.locus===locus);
@@ -126,25 +143,25 @@ async function render(query){
    verified.append(E("p","Las siglas de Rose y Krohn se conservan como OCR documental, sin restitución ni atribución paleográfica automática.","bude-note"));
   }
  }
- if(!selected.length)verified.append(E("p","Sin unidad selectiva cotejada entre ambas publicaciones en este locus; no implica inexistencia de otras variantes."));
+ if(!selected.length)verified.append(E("p","Sin unidad cotejada publicada en este locus: el aparato se mantiene abierto y no se infiere ausencia de variantes."));
  const appendix=section("Collatio selectiva · Apéndice T (V514/V554)");
  const entries=data.appendix.entradas.filter(x=>x.locus===locus);
- for(const ent of entries.slice(0,30)){
+ for(const ent of entries){
   const fields=Object.entries(ent.campos||{}).map(([k,v])=>k+": "+v).join(" · ");
   item(appendix,ent.version+" · "+ent.grado,fields,"Apéndice T, p. "+ent.page+"; folios citados: "+(ent.folios||[]).join(", ")+". Concordancia entre publicaciones no significa autopsia manuscrita.",ent.pdf);
  }
  if(!entries.length)appendix.append(E("p","El Apéndice T no ofrece una entrada registrada en este locus."));
  const notes=section("Notae explicativae · selección de los libros de Kurilo");
  const glosas=data.author.glosas.filter(x=>x.locus===locus&&String(x.glosa||"").trim());
- for(const n of glosas.slice(0,20))item(notes,n.version+" · "+(n.lemma||"glosa"),n.glosa,"p. "+n.page+" · anclaje "+n.grado+" · nota autoral; no variante manuscrita.",n.pdf);
+ for(const n of glosas)item(notes,n.version+" · "+(n.lemma||"glosa"),n.glosa,"p. "+n.page+" · anclaje "+n.grado+" · nota autoral; no variante manuscrita.",n.pdf);
  if(!glosas.length)notes.append(E("p","Sin glosas de locus explícito o lematizado único. Los comentarios sin anclaje se conservan en el inventario general."));
  notes.append(A("Inventario completo de notas, incluidas las no localizadas","inventario-aparato-autoral.html"));
- status.textContent="Vitr. "+fmt(locus)+" · "+selected.length+" unidades selectivas cotejadas entre V514 y V554; "+(c?.v514?.length||0)+" entradas del índice V514; "+entries.length+" registros del Apéndice T; "+glosas.length+" glosas ancladas. Selectivo, no exhaustivo.";
+ status.textContent="Vitr. "+fmt(locus)+" · cobertura por locus: 731/731 · "+selected.length+" unidades verificadas selectivas · "+(c?.v514?.length||0)+" entradas V514 · "+entries.length+" registros del Apéndice T · "+glosas.length+" glosas. La colación de manuscritos sigue siendo parcial.";
 }
 (async()=>{try{
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
- const [es,fr,en,comparison,appendix,author,curated,hmap]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json"].map(json));
- data={es,fr,en,comparison,appendix,author,curated,hmap};loci=es.passages.map(p=>p.locus);
+ const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json"].map(json));
+ data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr};loci=es.passages.map(p=>p.locus);
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
  // Unify the legacy tabular finder with the locus-specific apparatus.
