@@ -30,7 +30,7 @@ td.l{white-space:nowrap;font:600 13px system-ui}
 .bude-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:15px 0}.bude-card{padding:17px;border:1px solid rgba(128,128,128,.45);background:rgba(140,120,80,.045);min-width:0}.bude-card h3{font:600 15px/1.4 system-ui;margin:0 0 8px}.bude-card p{font:16px/1.7 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}.bude-unit{font:16px/1.7 Georgia,serif;margin:12px 0;padding:9px 0;border-bottom:1px solid rgba(128,128,128,.25)}.bude-unit small{display:block;font:12px/1.6 system-ui;opacity:.8;margin-top:4px}.bude-unit a{font:12px/1.5 system-ui}.bude-note{font:13px/1.6 system-ui;opacity:.86}.bude-label{font:600 12px/1.5 system-ui;letter-spacing:.07em;text-transform:uppercase}.bude-card a{overflow-wrap:anywhere}#bude-form button{cursor:pointer;padding:9px 13px;background:transparent;color:inherit;border:1px solid rgba(128,128,128,.6)}@media print{.bar,#mas{display:none!important}}</style></head><body><main>
 <p class="small"><a href="index.html">← Inicio</a> · <a href="registro-ecdotico.html">Registro ecdótico</a> · <a href="erratas-ediciones.html">Erratas</a> · <a href="scriptorium.html">Scriptorium</a> · <a href="apparatus-bude.html?locus=1.1.1">Aparato estilo Budé</a> · <a href="codex-h-folios-local.html">Codex H</a> · <a href="auditoria-academica.html">Auditoría</a></p>
 <header><h1>Aparato crítico comparativo</h1>
-<p class="intro">Para cada locus de <i>De architectura</i> se reúnen tres aparatos: las decisiones de <strong>V514</strong>, el de <strong>Rose (1899)</strong> y el de <strong>Krohn (1912)</strong>, con las lecturas de los testimonios principales: <strong>H</strong> (Harley 2767), <strong>G</strong> y <strong>E</strong> (Gudiani de Wolfenbüttel) y <strong>S</strong> (Sélestat). Las entradas de Rose y Krohn proceden del OCR de la página impresa y se enlazan a ella para su comprobación: este aparato reúne testimonios ya publicados y no sustituye la colación directa de G, E y S.</p></header>
+<p class="intro">Para los 731 loci de <i>De architectura</i> se presenta un expediente documental, aun cuando no exista una entrada de variante registrada. Se reúnen tres aparatos: las decisiones de <strong>V514</strong>, el de <strong>Rose (1899)</strong> y el de <strong>Krohn (1912)</strong>, con las lecturas de los testimonios principales: <strong>H</strong> (Harley 2767), <strong>G</strong> y <strong>E</strong> (Gudiani de Wolfenbüttel) y <strong>S</strong> (Sélestat). Las entradas de Rose y Krohn proceden del OCR de la página impresa y se enlazan a ella para su comprobación: este aparato reúne testimonios ya publicados y no sustituye la colación directa de G, E y S.</p></header>
 <p id="estado" class="small" role="status">Cargando…</p>
 
 <section aria-labelledby="t1"><h2 id="t1">Testimonios</h2>
@@ -54,7 +54,7 @@ td.l{white-space:nowrap;font:600 13px system-ui}
 
 <section id="bude-unit" aria-labelledby="bude-unit-title">
 <h2 id="bude-unit-title">Apparatus comparativus per locum · disposición Budé</h2>
-<p class="intro">Unidad crítica por locus: texto latino, traducciones y entradas atribuidas a cada fuente. Siglas codicológicas <b>H G E S</b> distintas de las abreviaturas de edición <b>Kr.</b>, <b>Rose</b> y <b>Kur.</b>. Las entradas OCR se identifican como candidatas, no como variantes comprobadas; el símbolo <code>‖</code> delimita entradas documentales, no certifica su lectura.</p><p class="intro"><strong>Notae criticae:</strong> <code>⟨…⟩</code> = <i>suppl.</i> (suplemento editorial); <code>[…]</code> = <i>secl.</i> (texto transmitido pero excluido editorialmente); <i>om.</i> = omisión de un testimonio; <i>ex imagine</i> = lectura observada directamente en fotografía. Estas marcas se aplican exclusivamente a las entradas documentadas y no presuponen cotejo de los demás códices.</p>
+<p class="intro">Unidad crítica para los 731 loci: texto latino, traducciones y entradas atribuidas a cada fuente. Una ficha vacía señala colación pendiente, no la inexistencia de variantes. Siglas codicológicas <b>H G E S</b> distintas de las abreviaturas de edición <b>Kr.</b>, <b>Rose</b> y <b>Kur.</b>. Las entradas OCR se identifican como candidatas, no como variantes comprobadas; el símbolo <code>‖</code> delimita entradas documentales, no certifica su lectura.</p><p class="intro"><strong>Notae criticae:</strong> <code>⟨…⟩</code> = <i>suppl.</i> (suplemento editorial); <code>[…]</code> = <i>secl.</i> (texto transmitido pero excluido editorialmente); <i>om.</i> = omisión de un testimonio; <i>ex imagine</i> = lectura observada directamente en fotografía. Estas marcas se aplican exclusivamente a las entradas documentadas y no presuponen cotejo de los demás códices.</p>
 <form id="bude-form" class="bar" role="search"><label for="bude-locus">Locus</label><input id="bude-locus" name="locus" value="1.1.1" placeholder="I.1.1 · 1.praef.1" required><button type="submit">Cotejar locus</button><button id="bude-prev" type="button">Anterior</button><button id="bude-next" type="button">Siguiente</button></form>
 <p id="bude-state" class="small" role="status" aria-live="polite">Cargando testimonios…</p>
 <div id="bude-content"></div>
@@ -71,7 +71,7 @@ const $=s=>document.querySelector(s);
 const el=(t,txt,cls)=>{const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e};
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/v/g,"u").replace(/j/g,"i");
 let D,vis=[],shown=0;const PASO=60;
-function celdaAp(f,k){const td=document.createElement("td");const a=f[k];if(!a){td.textContent="—";return td}
+function celdaAp(f,k){const td=document.createElement("td");const a=f[k];if(!a){td.textContent="Sin entrada documentada · cotejo pendiente";return td}
  if(!a.entradas.length){td.append(el("span","sin entrada para este pasaje","g"))}
  a.entradas.forEach(e=>{const s=el("span",null,"e");s.append(e.texto);s.append(el("span","l. "+e.linea,"src"));td.append(s)});
  const ln=el("a","p. "+a.pagina+" ↗","small");ln.href=a.pdf;ln.target="_blank";ln.rel="noopener";td.append(ln);return td}
@@ -79,13 +79,13 @@ function fila(f){const tr=document.createElement("tr");
  const l=el("td",null,"l");const a=el("a",f.locus);a.href="apparatus-bude.html?locus="+encodeURIComponent(f.locus);a.title="Abrir pasaje en el lector crítico integrado";l.append(a);const traditional=el("a"," · lector bilingüe","src");traditional.href="lector-bilingue.html?locus="+encodeURIComponent(f.locus);l.append(traditional);
  if(f.testigos?.length){l.append(document.createElement("br"));f.testigos.forEach(s=>l.append(el("span",s,"sig")))}tr.append(l);
  const v=document.createElement("td");
- if(!f.v514.length&&!f.v514SinLema)v.append(el("span","—","g"));
+ if(!f.v514.length&&!f.v514SinLema)v.append(el("span","Sin decisión registrada; no equivale a consenso textual","g"));
  if(f.v514SinLema){const r=el("a",f.v514SinLema+" decisión(es) sin lema extraído · ver registro","src");r.href="registro-ecdotico.html?locus="+encodeURIComponent(f.locus);v.append(r)}
  f.v514.forEach(d=>{const s=el("span",null,"e");s.append(d.aparato||d.lema||"(decisión sin lema)");const h=d.testimonios&&d.testimonios.H;if(h){s.append(" · H: "+h)}s.append(el("span",d.grado||"","src"));v.append(s)});
  tr.append(v,celdaAp(f,"rose-1899"),celdaAp(f,"krohn-1912"));return tr}
 function pintar(reset){const tb=$("#filas");if(reset){tb.textContent="";shown=0}
  vis.slice(shown,shown+PASO).forEach(f=>tb.append(fila(f)));shown=Math.min(vis.length,shown+PASO);$("#mas").hidden=shown>=vis.length;
- $("#estado").textContent=vis.length+" loci con material de aparato · "+D.recuentos.entradasRose+" entradas de Rose y "+D.recuentos.entradasKrohn+" de Krohn localizadas · "+D.recuentos.lociConDecisionV514+" loci con decisiones de V514."}
+ $("#estado").textContent=vis.length+" loci mostrados de "+D.recuentos.lociNavegables+" del corpus · "+D.recuentos.lociConMaterial+" con material documental · "+D.recuentos.lociPendientesSinEntrada+" sin entrada crítica registrada · "+D.recuentos.entradasRose+" entradas Rose y "+D.recuentos.entradasKrohn+" Krohn (OCR candidato)."}
 function filtrar(){const q=fold($("#q").value.trim()),w=$("#wit").value;
  vis=D.loci.filter(f=>{if(w==="v514"&&!f.v514.length&&!f.v514SinLema)return false;if(w&&w!=="v514"&&!(f.testigos||[]).includes(w))return false;
   if(!q)return true;if(/^\d/.test(q))return f.locus===q||f.locus.startsWith(q+".");
