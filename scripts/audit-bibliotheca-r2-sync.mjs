@@ -38,14 +38,21 @@ if(process.argv.includes("--remote")){
   if(!r.ok)throw Error("HTTP "+r.status);
   const manifest=await r.json();
   if(!Array.isArray(manifest.obras))throw Error("Faltan obras[] en fragmentos.json");
-  const remoteIds=new Set(manifest.obras.map(e=>e.id));
+  const indexIds=manifest.obras.map(e=>e.id).filter(Boolean);
+  const remoteIds=new Set(indexIds);
+  result.duplicateRemoteIds=indexIds.filter((id,i)=>indexIds.indexOf(id)!==i);
   result.indexedWithoutCatalogue=[...remoteIds].filter(id=>!ids.has(id)).sort();
   result.catalogueWithoutIndex=[...ids].filter(id=>!remoteIds.has(id)).sort();
   result.remoteChecked=true;
+  if(result.duplicateRemoteIds.length)result.warnings.push("IDs repetidos dentro del índice R2: "+[...new Set(result.duplicateRemoteIds)].join(", "));
   if(result.indexedWithoutCatalogue.length)result.warnings.push("Índice sin ficha: "+result.indexedWithoutCatalogue.join(", "));
   if(result.catalogueWithoutIndex.length)result.warnings.push("Ficha sin índice: "+result.catalogueWithoutIndex.join(", "));
   if(remoteIds.size!==indexed.obras)result.warnings.push("El índice público no coincide con el manifiesto GitHub");
  }catch(e){result.warnings.push("No se pudo verificar R2 en vivo: "+e.message)}
 }
 console.log(JSON.stringify(result,null,2));
-if(duplicateIds.length||result.catalogueWithoutIndex.length||result.pdfOcrMissing>0)process.exitCode=1;
+// Un índice huérfano no es una obra inexistente: informar y exigir revisión,
+ // sin intentar borrar entradas automáticamente.
+if(duplicateIds.length||result.duplicateRemoteIds?.length||
+ result.catalogueWithoutIndex.length||result.indexedWithoutCatalogue.length||
+ result.pdfOcrMissing>0)process.exitCode=1;
