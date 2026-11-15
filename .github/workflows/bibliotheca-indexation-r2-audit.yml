@@ -42,7 +42,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/r2/bibliotheca-indexation-status.json data/r2/r2-object-status.json data/r2/bibliotheca-inventario-unificado.json reports/bibliotheca/indexation-control.json reports/bibliotheca/r2-live-integrity.json
+          git add data/classics-corpus/unindexed-backlog.json data/r2/bibliotheca-indexation-status.json data/r2/r2-object-status.json data/r2/bibliotheca-inventario-unificado.json reports/bibliotheca/indexation-control.json reports/bibliotheca/r2-live-integrity.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Bibliotheca: conciliación diaria de índices GitHub/R2"
           for i in 1 2 3 4 5; do
