@@ -24,6 +24,7 @@ for(const explicitCover of [false,true]){
   else if(path===item.texto)data={schema:'vdl-r2-texto-paginas-1',obra:item.id,paginas:pages};
   return{ok:!!data,status:data?200:404,json:async()=>data};
  };
+ w.eval(readFileSync('assets/classics-academic-reader.js','utf8'));
  w.eval('(()=>{'+ui+'})()');
  const reader=[...w.document.querySelectorAll('script:not([src])')].map(s=>s.textContent).find(s=>s.includes('const cache=new Map();let locales='));assert(reader);
  w.eval('window.readerReady='+reader);await w.readerReady;await settle();
@@ -40,6 +41,9 @@ for(const explicitCover of [false,true]){
  emit(5,'LATIN B');await settle();pendingA({text:'OLD PAGE A',provider:'Test',partial:false});await settle();assert.match($('facing-translation').textContent,/LATIN B/);assert.doesNotMatch($('facing-translation').textContent,/OLD PAGE A/);
  $('facing-auto').checked=false;$('facing-auto').dispatchEvent(new w.Event('change'));const before=calls.length;emit(6,'LATIN C');await settle();assert.equal(calls.length,before,'Stopping automatic mode prevents new requests');
  $('facing-mode').value='ocr';$('facing-mode').dispatchEvent(new w.Event('change'));assert.equal($('ocr-section').hidden,false);assert.equal($('folio').textContent,'LATIN C');assert.equal($('folio').getAttribute('translate'),'no');
+ $('facing-mode').value='pdf';$('facing-mode').dispatchEvent(new w.Event('change'));assert(w.document.querySelector('.cl-pdf-panel'),'PDF comparison is available beside the original');
+ $('facing-mode').value='translation';$('facing-mode').dispatchEvent(new w.Event('change'));
+ $('facing-editable-ocr').value='Corrected Latin text';$('facing-use-edited').click();await settle();assert.match($('facing-translation').textContent,/Corrected Latin text/);assert.equal($('folio').textContent,'LATIN C','OCR edits must not overwrite the imported original');
  dom.window.close();
 }
 console.log('PASS: Accius PDF/OCR identity, useful initial page, explicit covers, default facing translation, complete long-page translation, matching PDF leaf, page sync, late-response protection and stopping requests');

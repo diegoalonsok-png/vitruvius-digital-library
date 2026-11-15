@@ -67,7 +67,7 @@ Promise.all([
    if(!eds||!eds.length||link.closest("[data-r2-box]"))return;
    const frag=document.createDocumentFragment();
    eds.forEach(e=>{const x=document.createElement("a");x.href=e.pdf;x.rel="noopener";x.className=link.className||"genre-work-version";
-    const info=editionLine(e);x.textContent=label(e)+(Number.isFinite(info.record.paginas)?" · "+info.record.paginas+" págs.":"")+(info.record.incidenciaCatalografica?" · revisar ficha":"");x.title=info.detail||e.edicion;x.dataset.r2Pdf="";x.style.marginLeft="8px";frag.append(x)});
+    const info=editionLine(e);x.textContent=label(e)+(Number.isFinite(info.record.paginas)?" · "+info.record.paginas+" págs.":"")+(info.record.incidenciaCatalografica?" · revisar ficha":"");x.title=info.detail||e.edicion;x.dataset.r2Pdf="";x.style.marginLeft="8px";frag.append(x);const study=document.createElement("a");study.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(e.r2);study.textContent=lang==="en"?"Read and translate":lang==="fr"?"Lire et traduire":"Leer y traducir";study.className=x.className;study.style.marginLeft="8px";frag.append(study)});
    link.after(frag);
   });
  };
@@ -94,7 +94,7 @@ Promise.all([
    figure.append(a,cap);box.append(figure);
   }
   const ul=document.createElement("ul");ul.style.margin="6px 0";
-  v.porObra[work].forEach(e=>{const li=document.createElement("li");const a=document.createElement("a");a.href=e.pdf;a.rel="noopener";a.textContent=e.edicion+" ("+e.anio+(e.volumen?", "+T.vol+" "+e.volumen:"")+")";li.append(a);
+  v.porObra[work].forEach(e=>{const li=document.createElement("li");const a=document.createElement("a");a.href=e.pdf;a.rel="noopener";a.textContent=e.edicion+" ("+e.anio+(e.volumen?", "+T.vol+" "+e.volumen:"")+")";li.append(a);const study=document.createElement("a");study.href="buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(e.r2);study.textContent=" · Leer, traducir y enfrentar PDF";li.append(study);
    const info=editionLine(e);
    if(info.detail){const d=document.createElement("p");d.style.cssText="margin:3px 0 12px;font:12px/1.55 system-ui";d.textContent=info.detail;li.append(d)}
    if(info.record.fuente){const src=document.createElement("a");src.href=info.record.fuente;src.rel="noopener";src.textContent="Registro de la edición y procedencia ↗";li.append(src)}

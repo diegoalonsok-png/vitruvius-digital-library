@@ -2,6 +2,8 @@
 (()=>{
 "use strict";
 const $=id=>document.getElementById(id);
+const ACADEMIC=window.ClassicsAcademicReader;
+const displayLocus=value=>ACADEMIC?.shortLocus(value)||value;
 const p=new URLSearchParams(location.search),work=p.get("work")||"apuleius-metamorphoses";
 const allowed={"apuleius-metamorphoses":"Apuleyo · Metamorphoses (Asinus aureus)","petronius-satyrica":"Petronio · Satyrica / Satyricon","theophrastus-characters":"Teofrasto · Ἠθικοὶ χαρακτῆρες (Caracteres)"};
 const LEX=window.ClassicalLexicon;
@@ -108,7 +110,7 @@ function renderToc(){
  tocButtons=[];selectedTocButton=null;
  data.passages.forEach((v,i)=>{
   const li=document.createElement("li"),btn=document.createElement("button");btn.type="button";
-  btn.textContent=(data.language==="la"?"§ ":"")+v.locus+(v.title?" · "+v.title:"");if(v.title)btn.lang=data.language;
+  btn.title=v.locus;btn.textContent=(data.language==="la"?"§ ":"")+displayLocus(v.locus)+(v.title?" · "+v.title:"");if(v.title)btn.lang=data.language;
   btn.setAttribute("aria-current",String(i===active));btn.addEventListener("click",()=>select(i));
   tocButtons.push(btn);if(i===active)selectedTocButton=btn;
   li.append(btn);fragment.append(li);
@@ -119,17 +121,16 @@ function select(i){
  if(!data)return;
  active=Math.max(0,Math.min(data.passages.length-1,i));
  const rec=data.passages[active];
- $("current-locus").textContent=unitLabel()+" "+rec.locus+(rec.title?" · "+rec.title:"")+" · "+(active+1)+"/"+data.passages.length;
+ if($("locus-query"))$("locus-query").value=displayLocus(rec.locus);
+ if($("locus-status"))$("locus-status").textContent="";
+ $("current-locus").textContent=unitLabel()+" "+displayLocus(rec.locus)+(rec.title?" · "+rec.title:"")+" · "+(active+1)+"/"+data.passages.length;
  $("prev").disabled=active===0;$("next").disabled=active>=data.passages.length-1;
  const target=$("passages"),p1=document.createElement("p"),label=document.createElement("span");
- label.className="locus";label.textContent=unitLabel()+" "+rec.locus+(rec.title?" · "+rec.title:"");
+ label.className="locus";label.textContent=unitLabel()+" "+displayLocus(rec.locus)+(rec.title?" · "+rec.title:"");
  p1.append(label);const txt=document.createElement("span");const matches=results.find(x=>x.i===active);
  hitMarks=markText(txt,rec.text,search,matches?.locations||[])||[];hitAt=-1;p1.append(txt);
  target.replaceChildren(p1);target.setAttribute("lang",data.language);
- document.dispatchEvent(new CustomEvent("vitruvia:classics-passage",{
-  detail:{work,language:data.language,locus:rec.locus,title:rec.title||"",text:rec.text,
-   number:active+1,total:data.passages.length}
- }));
+
  // Original-only editions: on-demand machine translation of ONE selected passage.
  // Never replace the source or count generated output as an accredited translation.
  const localTranslationAvailable=hostedEditions.some(e=>e.workId===work&&["es","en","fr","it","de","pt"].includes(e.language));
@@ -148,6 +149,18 @@ function select(i){
  const u=new URL(location.href);u.searchParams.set("locus",rec.locus);if(search)u.searchParams.set("q",search);else u.searchParams.delete("q");
  if(searchMode?.value==="literal"){u.searchParams.set("literal","1");u.searchParams.delete("expanded")}else{u.searchParams.delete("literal");u.searchParams.set("expanded","1")};
  history.replaceState(null,"",u);
+ document.dispatchEvent(new CustomEvent("vitruvia:classics-passage",{
+  detail:{work,language:data.language,locus:rec.locus,title:rec.title||"",text:rec.text,
+   importedText:rec.importedText||"",notes:rec.readingNotes||[],locusKind:rec.locusKind||"",
+   source:data.source,metadata:data.readingMetadata||{},editions:hostedEditions,
+   number:active+1,total:data.passages.length}
+ }));
+ if(rec.readingNotes?.length){
+  const marks=document.createElement("nav");marks.className="cl-note-markers";marks.setAttribute("aria-label","Notas al pie del pasaje");
+  marks.append(document.createTextNode("Notas: "));
+  rec.readingNotes.forEach((n,j)=>{const a=document.createElement("a");a.href="#edition-note-"+(j+1);a.textContent=String(j+1);marks.append(a)});
+  target.append(marks);
+ }
  if(p.get("parallel")==="1"&&window.parent!==window){
   window.parent.postMessage({type:"vitruvia-parallel-position",work,lang:data.language,index:active,locus:rec.locus},location.origin);
  }
@@ -375,7 +388,7 @@ function renderSearch(){
  for(const {i,r,locations,forms,literalCount,indexedCount,equivalentCount} of page){
   const li=document.createElement("li"),button=document.createElement("button");
   button.type="button";button.className="search-passage-jump";
-  const title=document.createElement("strong");title.textContent=unitLabel()+" "+r.locus+(r.title?" · "+r.title:"")+
+  const title=document.createElement("strong");title.textContent=unitLabel()+" "+displayLocus(r.locus)+(r.title?" · "+r.title:"")+
     (locations.length?" · "+locations.length+" "+(locations.length===1?"aparición":"apariciones"):" · coincidencia experimental");
   button.append(title);
   const kind=document.createElement("span");kind.className="search-passage-more";
@@ -522,6 +535,8 @@ async function load(language,requestId){
    .finally(()=>clearTimeout(timeout));
  }
 
+ if(ACADEMIC)corpus=await ACADEMIC.prepare(corpus);
+ if(requestId!==editionRequest)return;
  data=corpus;active=0;resultPage=0;searchIndex=editionSearchIndex;
  void showHoldingLibraries();
  // The lexical index is optional; source text and literal search always remain available.
@@ -538,9 +553,9 @@ async function load(language,requestId){
    "Traducción al "+({en:"inglés",es:"castellano",fr:"francés",it:"italiano",de:"alemán",pt:"portugués"}[language]||language)+"."));
   const add=(label,value)=>{if(value){const row=mk("p",label+": "+value);row.style.margin="4px 0";sourceBox.append(row)}};
   add("Fuente declarada por el archivo",corpus.attribution||indexed?.sourceDescription||corpus.source);
-  add("Edición o referencia bibliográfica",corpus.chicago18Bibliography||indexed?.editionCitation||"No identificada inequívocamente en los metadatos de esta versión");
+  add("Edición o referencia bibliográfica",corpus.chicago18Bibliography||indexed?.editionCitation||[corpus.readingMetadata?.title,corpus.readingMetadata?.volume?"vol. "+corpus.readingMetadata.volume:null,corpus.readingMetadata?.place,corpus.readingMetadata?.publisher,corpus.readingMetadata?.date].filter(Boolean).join(" · ")||"Consultar el registro editorial de la fuente");
   if(!original)add("Traductor",corpus.translator||indexed?.translator||"No acreditado para este archivo; no se atribuye automáticamente");
-  else add("Editor del texto",corpus.editor||indexed?.editor||"La fuente debe identificarse desde el archivo y su registro editorial");
+  else add("Editor del texto",corpus.editor||indexed?.editor||corpus.readingMetadata?.editor||"Consultar el registro editorial de la fuente");
   add("Versión/URN",corpus.ctsUrn||corpus.sourceUrn||indexed?.sourceUrn||indexed?.urn||"Sin identificador de edición acreditado");
   if(work==="homer-odyssey"){
    const ref=mk("p","Referencia editorial externa: Perseus/Scaife documenta la edición griega de A. T. Murray (1919) y su traducción inglesa. No se atribuye automáticamente a este archivo sin cotejar sus metadatos.");
@@ -556,7 +571,7 @@ async function load(language,requestId){
  const u=new URL(location.href);u.searchParams.set("lang",language);history.replaceState(null,"",u);
  renderToc();
  const locus=new URLSearchParams(location.search).get("locus");
- const at=data.passages.findIndex(x=>x.locus===locus);
+ const at=ACADEMIC?ACADEMIC.findLocus(data.passages,locus):data.passages.findIndex(x=>x.locus===locus);
  const chosen=at>=0?at:0;setQuery(input.value||"");
  if(search){renderSearch();const first=results[0]?.i;const anchored=results.some(x=>x.i===at);select(anchored?at:Number.isInteger(first)?first:chosen)}
  else{renderSearch();select(chosen)}
@@ -570,6 +585,13 @@ async function swap(lang){
  }
 }
 const setTitle=t=>{$("work-title").textContent=t;document.title=t+" · Bibliotheca Graeca et Latina"};if(allowed[work])setTitle(allowed[work]);$("codex-link").href="bibliotheca-graeca-latina.html?work="+work+"&view=triplecodex";
+$("locus-form")?.addEventListener("submit",event=>{
+ event.preventDefault();if(!data)return;
+ const value=$("locus-query").value.trim();
+ const i=ACADEMIC?ACADEMIC.findLocus(data.passages,value):data.passages.findIndex(x=>x.locus===value);
+ if(i<0){$("locus-status").textContent="No se encontró un locus único en esta edición. Elegí una unidad del índice.";return}
+ select(i);$("passages").scrollIntoView({block:"nearest"});
+});
 $("language").addEventListener("change",e=>swap(e.target.value));
 $("find").addEventListener("click",()=>{if(!data)return;setQuery(input.value);resultPage=0;renderSearch();select(results.length?results[0].i:active)});
 function syncSearchModeButtons(){
@@ -602,7 +624,7 @@ $("print").addEventListener("click",()=>window.print());
 // Apariencia funcional: variables CSS compartidas por lector independiente y panel comparado.
 const READER_STYLE_KEY="vitruvia.classic.appearance.v3."+work;
 const OLD_COLOR_KEY="vitruvia.classic.colors."+work;
-const APPEARANCE_DEFAULTS=Object.freeze({background:"#000000",foreground:"#e2e2e3",font:"serif",size:20,italic:false,align:"justify"});
+const APPEARANCE_DEFAULTS=Object.freeze({background:"#fffdf7",foreground:"#202b35",font:"serif",size:20,italic:false,align:"justify"});
 const appearance={...APPEARANCE_DEFAULTS};
 const validHex=x=>typeof x==="string"&&/^#[0-9a-f]{6}$/i.test(x);
 const invertHex=x=>"#"+[1,3,5].map(i=>(255-parseInt(x.slice(i,i+2),16)).toString(16).padStart(2,"0")).join("");

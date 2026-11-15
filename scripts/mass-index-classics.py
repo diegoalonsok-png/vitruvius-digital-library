@@ -336,6 +336,13 @@ def run():
                 errors.append(w["id"] + ": existe archivo no registrado; revisión manual")
                 continue
             if not args.dry_run:
+                if len(urns) == 1:
+                    # Reuse the downloaded TEI bytes for notes; no second request.
+                    import importlib.util
+                    note_spec = importlib.util.spec_from_file_location("reading_notes", ROOT / "scripts/build-classics-reading-notes.py")
+                    note_module = importlib.util.module_from_spec(note_spec)
+                    note_spec.loader.exec_module(note_module)
+                    note_module.write_verified_notes(data, raw)
                 (ROOT / target).write_bytes(encoded)
                 w.setdefault("corpusFiles", {})[lang] = target
                 reg["entries"].append({

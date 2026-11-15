@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'scripts/index-classical-historical-pdfs.py'
+      - 'scripts/classics_ingestion_bundle.py'
+      - 'documents/classics/*.pdf'
       - 'scripts/build-classical-navigation.py'
       - '.github/workflows/index-classical-historical-pdfs.yml'
 permissions:
@@ -25,7 +27,7 @@ jobs:
       - name: Instalar extractor y OCR griego-latino
         run: |
           sudo apt-get update
-          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng tesseract-ocr-lat tesseract-ocr-ell
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-eng tesseract-ocr-lat tesseract-ocr-grc tesseract-ocr-fra tesseract-ocr-spa
           python -m pip install --disable-pip-version-check pymupdf
       - name: Construir enlaces conservadores entre originales y traducciones
         run: python scripts/build-classical-navigation.py
@@ -38,7 +40,7 @@ jobs:
           from pathlib import Path
           root=Path("data/classics-historical-pages")
           coverage=json.loads((root/"coverage.json").read_text(encoding="utf8"))
-          assert len(coverage["records"])==10
+          assert len(coverage["records"])>=10
           assert all(r["status"] in ("unchanged","page-index-created") for r in coverage["records"])
           for r in coverage["records"]:
               index=root/(Path(r["path"]).stem+".json")

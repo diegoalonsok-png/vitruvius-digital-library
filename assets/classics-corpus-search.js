@@ -211,12 +211,12 @@ async function search(q,{limit=8}={}){
   (e.format!=="remote-json-passages"||(e.language==="grc"?grec&&window.ClassicsOffsiteGreek?.mightContain(e,[q]):e.language==="la"?!grec&&window.ClassicsOffsiteLatin?.mightContain(e,[q]):false))&&
   throughGate(gate,e));
  const targets=boundTargets(gate,eligible,limit);
- const rows=[];let loaded=0,failed=0;
+ const rows=[];let loaded=0,failed=0,localFailed=0,remoteFailed=0;const failedSources=[];
  // Bounded parallelism avoids a sudden 20-file burst for every first search.
  for(let offset=0;offset<targets.length;offset+=4){
   await Promise.all(targets.slice(offset,offset+4).map(async e=>{
    const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
-   if(!d?.passages?.length){failed++;return}loaded++;
+   if(!d?.passages?.length){failed++;const remote=/^https?:/.test(e.path)||e.format==="remote-json-passages";if(remote)remoteFailed++;else localFailed++;failedSources.push({workId:e.workId,path:e.path,remote});return}loaded++;
    let total=0,units=0,first=null;
    for(const p of d.passages){
     if(!p||typeof p.text!=="string")continue;
@@ -239,7 +239,7 @@ async function search(q,{limit=8}={}){
     count:total,units});
   }));
  }
- lastDiagnostics={mode:registered===LEGACY?"fallback":"registry",targeted:targets.length,loaded,failed,indexGate:gate?"activa":"no disponible",indexCandidates:gate?gate.present.size:null,editionsEligible:eligible.length,editionsSkipped:gate?all.length-targets.length:0};
+ lastDiagnostics={mode:registered===LEGACY?"fallback":"registry",targeted:targets.length,loaded,failed,localFailed,remoteFailed,failedSources,indexGate:gate?"activa":"no disponible",indexCandidates:gate?gate.present.size:null,editionsEligible:eligible.length,editionsSkipped:gate?all.length-targets.length:0};
  return rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title)).slice(0,Math.max(1,Math.min(50,limit)));
 }
 /* Resumen inmediato desde el índice, sin descargar ninguna edición.
@@ -324,13 +324,14 @@ async function semanticSearch(q,{limit=6}={}){
  const unanchored=new Set((staticIndex?.notIndexedFormats||[])
    .filter(x=>x.format==="html-text"&&/no stable passage anchor/i.test(x.reason||""))
    .map(x=>x.path));
+ const externalExcluded=new Set((staticIndex?.notIndexedFormats||[]).filter(x=>/^https?:/.test(x.path||"")).map(x=>x.path));
  const indexValid=Boolean(staticIndex&&hosted.length&&
    staticIndex.registryEditionCount===hosted.length&&
    staticIndex.indexedEditions===staticIndex.versions.length&&
-   staticIndex.indexedEditions+unanchored.size===staticIndex.eligibleEditions&&
+   staticIndex.indexedEditions+unanchored.size+externalExcluded.size===staticIndex.eligibleEditions&&
    !staticIndex.errors?.length&&
    hosted.filter(e=>eligible.has(e.format)).every(e=>
-     posted.has(indexKey(e))||(e.format==="html-text"&&unanchored.has(e.path))));
+     posted.has(indexKey(e))||externalExcluded.has(e.path)||(e.format==="html-text"&&unanchored.has(e.path))));
  const indexed=new Map(indexValid?staticIndex.versions.map(v=>[
   [v.workId,v.language,v.source,v.edition||""].join("|"),v
  ]):[]);
@@ -343,7 +344,7 @@ async function semanticSearch(q,{limit=6}={}){
   const candidates=(language==="la"||language==="grc")?(concept[language]||[]):(concept.modern?.[language]||[]);
   byLanguage[language]=candidates.filter(v=>typeof v==="string"&&v.trim().length>1);
  }
- let loaded=0,failed=0,examined=0;
+ let loaded=0,failed=0,examined=0,localFailed=0,remoteFailed=0;const failedSources=[];
  // A semantic result must always be supported by an actual textual match,
  // not merely the presence of a concept in the editorial dictionary.
 
@@ -359,7 +360,7 @@ async function semanticSearch(q,{limit=6}={}){
    }
    examined++;
    const d=e.format==="html-text"?await loadHtml(e):e.format==="structured-bilingual"?await loadStructured(e):e.format==="historical-ocr-pages"?await loadHistoricalOcr(e):await loadJson(e);
-   if(!d?.passages?.length){failed++;return}
+   if(!d?.passages?.length){failed++;const remote=/^https?:/.test(e.path)||e.format==="remote-json-passages";if(remote)remoteFailed++;else localFailed++;failedSources.push({workId:e.workId,path:e.path,remote});return}
    loaded++;
    let first=null,total=0,units=0;
    for(const passage of d.passages){
@@ -396,7 +397,7 @@ async function semanticSearch(q,{limit=6}={}){
     rating:48+Math.min(total,20),link,source:"Conceptus · "+e.path,count:total,units,conceptId:concept.id,matchedTerm:first.term});
   }));
  }
- lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,matchedEditions:rows.length,staticIndexUsed:Boolean(indexValid),skippedNoHit};
+ lastDiagnostics={mode:"semantic-conceptus",concept:concept.id,targeted:examined,loaded,failed,localFailed,remoteFailed,failedSources,matchedEditions:rows.length,staticIndexUsed:Boolean(indexValid),skippedNoHit};
  const sorted=rows.sort((a,b)=>b.rating-a.rating||a.title.localeCompare(b.title));
  // Preserve at least one attested result from each ancient source language,
  // when available, before ranking the rest by match strength.

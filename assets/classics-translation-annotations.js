@@ -57,7 +57,7 @@ for(const [name,hex] of Object.entries(palette)){
  });
 }
 const appearanceKey="vdl.classics.translation.appearance.v1."+work;
-let fg="#ece9e4",bg="#151516",align="justify";
+let fg="#202b35",bg="#fffdf7",align="justify";
 try{const saved=JSON.parse(localStorage.getItem(appearanceKey)||"null");
  if(/^#[0-9a-f]{6}$/i.test(saved?.bg))bg=saved.bg;
  if(/^#[0-9a-f]{6}$/i.test(saved?.fg))fg=saved.fg;

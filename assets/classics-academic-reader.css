@@ -1,0 +1,50 @@
+/* Academic reading surface; respects independently chosen pane colours. */
+.academic-reader main{max-width:1840px}
+.academic-kicker{font:600 11px/1.6 system-ui;letter-spacing:.14em;text-transform:uppercase;color:#c7b793;margin:0 0 7px}
+.academic-reader h1{font-family:"Gentium Book Plus",Georgia,serif;font-size:clamp(26px,2.7vw,39px)}
+.academic-reader .academic-records{margin:8px 0;border-bottom:1px solid #46423b}
+.academic-records>summary{cursor:pointer;padding:10px 0;color:#d9c7a5;font:600 12px/1.5 system-ui}
+.academic-records .notice{margin:8px 0}
+.academic-reader #method-note{font-size:11px;padding:6px 12px;margin:10px 0}
+.academic-reader .reader-appearance{margin:8px 0;padding:8px}
+.academic-reader .reader-toolbar{font:12px/1.5 system-ui;gap:8px;align-items:center}
+.academic-reader #current-locus{overflow-wrap:anywhere}
+.academic-locus-form{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.academic-locus-form input{width:150px;min-height:33px;border:1px solid #66615a;background:#1e1e20;color:#eee;border-radius:4px;padding:6px 9px}
+.academic-locus-form output{font-size:11px;max-width:260px;color:#e0c9a3}
+.cl-edition-layout{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 0;font:12px/1.5 system-ui}
+.cl-edition-layout button,.cl-edition-layout a{border:1px solid #67605a;border-radius:4px;padding:6px 10px;background:#252526;color:#ede7dc;text-decoration:none;font:inherit;cursor:pointer}
+.cl-edition-layout [aria-pressed=true]{border-color:#ddc599;background:#453b2e}
+.academic-reader .cl-dual-reader{border-radius:2px;border-color:#736959}
+.cl-dual-reader.translation-first .cl-translation-column{order:0}
+.cl-dual-reader.translation-first .cl-pane-splitter{order:1}
+.cl-dual-reader.translation-first .cl-source-column{order:2}
+@media(min-width:901px){.cl-dual-reader.translation-first{grid-template-columns:minmax(0,1fr) 12px minmax(0,var(--cl-source-percent,50%))}}
+.academic-reader .cl-pane-title{padding-bottom:10px;border-bottom:1px solid currentColor;letter-spacing:.12em;font:600 11px/1.6 system-ui;text-transform:uppercase}
+.academic-reader .cl-source-column,.academic-reader .cl-translation-column{padding:22px clamp(16px,2vw,32px);max-height:79vh;min-height:460px}
+.academic-reader .cl-source-column #passages,.academic-reader .cl-translation-output{font-family:"Gentium Book Plus",Georgia,serif;line-height:1.9}
+.cl-pane-options{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:12px system-ui;margin-bottom:12px}
+.cl-pane-options select{background:#262629;border:1px solid #6c665d;color:#eee;padding:7px;max-width:100%}
+.cl-edition-footnotes{border-top:1px solid currentColor;margin-top:32px;padding-top:12px;font:13px/1.75 "Gentium Book Plus",Georgia,serif;overflow-wrap:anywhere;color:inherit}
+.cl-edition-footnotes h3{font:600 11px/1.5 system-ui;text-transform:uppercase;letter-spacing:.06em;margin:0 0 12px;color:inherit}
+.cl-edition-footnotes ol{padding-left:22px}.cl-edition-footnotes li{margin:8px 0}
+.cl-note-source{font:11px/1.7 system-ui;opacity:.85}
+.cl-imported-source summary{cursor:pointer;font:11px/1.6 system-ui}
+.cl-imported-source p{white-space:pre-wrap;font-size:14px}
+.cl-note-markers{display:flex;gap:7px;font:11px/1.5 system-ui;margin-top:-12px;margin-bottom:18px}
+.cl-pdf-panel{min-width:0}.cl-pdf-panel[hidden]{display:none!important}
+.cl-pdf-tools{display:flex;flex-wrap:wrap;align-items:center;gap:7px;font:12px/1.4 system-ui}
+.cl-pdf-tools :is(select,input,button){min-height:34px;padding:6px 8px;max-width:100%;border:1px solid #81745e;border-radius:3px;background:#fffdf7;color:#26333d;font:inherit}
+.cl-pdf-tools select{width:100%}.cl-pdf-tools input[type=url]{flex:1;min-width:160px}.cl-pdf-tools input[type=number]{width:65px}.cl-pdf-tools input[type=file]{width:100%;font-size:11px}.cl-pdf-tools button{cursor:pointer}
+.cl-pdf-panel iframe{width:100%;height:64vh;min-height:380px;border:1px solid #81745e;background:#fff;display:block}
+.cl-pdf-panel iframe[hidden]{display:none}
+.cl-document-note{font:12px/1.6 system-ui;opacity:.85;overflow-wrap:anywhere}
+.cl-translation-column.cl-pdf-mode>.cl-translation-tools,.cl-translation-column.cl-pdf-mode>.cl-translation-annotations,.cl-translation-column.cl-pdf-mode>.cl-translation-label,.cl-translation-column.cl-pdf-mode>.cl-translation-output,.cl-translation-column.cl-pdf-mode>.cl-translation-meta{display:none!important}
+.academic-reader .cl-source-column #lexicon{font-size:11px;margin-top:18px}
+.academic-reader #toc li button{font-size:12px;padding:8px 10px}
+@media(max-width:900px){.academic-reader .cl-source-column,.academic-reader .cl-translation-column{max-height:none;min-height:0}.cl-dual-reader.translation-first .cl-source-column{order:0}.cl-dual-reader.translation-first .cl-pane-splitter{order:1}.cl-dual-reader.translation-first .cl-translation-column{order:2}.academic-reader .cl-pane-splitter{display:none}.academic-reader .cl-dual-reader{grid-template-rows:auto auto}.academic-reader main{padding:16px 12px}.academic-locus-form{width:100%}}
+@media print{.academic-records,.academic-kicker,.cl-edition-layout,.academic-locus-form,.cl-pane-options,.cl-pdf-tools,.cl-pdf-panel{display:none!important}.cl-edition-footnotes,.cl-edition-footnotes h3,.cl-note-source{color:#111!important}.academic-reader .cl-source-column,.academic-reader .cl-translation-column{background:white!important;color:#111!important;overflow:visible!important;max-height:none!important;min-height:0}.cl-edition-footnotes{break-inside:avoid}.academic-reader .cl-dual-reader.translation-first{grid-template-columns:1fr 1fr}.cl-imported-source{display:none}}
+
+.cl-personal-tools{margin:0 0 14px;font:11px/1.5 system-ui}.cl-personal-tools>summary{cursor:pointer;padding:7px 0;opacity:.85}.cl-personal-tools[open]{margin-bottom:16px}@media print{.cl-personal-tools{display:none!important}}
+
+html[data-reading-mode=simple] .academic-records,html[data-parallel-view=true] .academic-records,html[data-parallel-view=true] .academic-kicker{display:none!important}.cl-edition-layout[hidden]{display:none!important}
