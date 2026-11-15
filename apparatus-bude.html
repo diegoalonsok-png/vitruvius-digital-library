@@ -54,6 +54,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 .ab-compare article{background:var(--ab-paper);border:1px solid var(--ab-rule);padding:16px;min-width:0}
 .ab-compare-appearance{display:flex;gap:10px;align-items:end;flex-wrap:wrap;border:1px solid var(--ab-rule);padding:12px;font:12px system-ui;margin:12px 0}.ab-compare-appearance label{display:grid;gap:4px}.ab-compare-appearance button,.ab-compare-appearance select{padding:6px;border:1px solid var(--ab-rule);background:var(--ab-paper);color:var(--ab-ink)}.ab-compare{--compare-font:"Gentium Book Plus",Georgia,serif;--compare-size:19px;--compare-ink:#29251e;--compare-paper:#fffefa}.ab-compare article{background:var(--compare-paper);color:var(--compare-ink)}.ab-compare .ab-text{font-family:var(--compare-font);font-size:var(--compare-size)}.ab-compare h3{font:600 14px system-ui;margin:0 0 8px}
 .ab-compare .ab-text{line-height:1.75;max-height:350px;overflow:auto}
+.ab-triple-similarity{font:12px/1.5 system-ui;margin:-12px 0 23px;padding:7px 11px;border-top:1px solid var(--ab-rule);color:var(--ab-muted);font-variant-numeric:tabular-nums}.ab-triple-similarity strong{color:var(--ab-ink);font-weight:650}
 .ab-compare .ab-witness-locus{font:700 17px/1.4 system-ui;margin:8px 0 5px;padding:8px 11px;border:1px solid var(--ab-rule);border-left:4px solid var(--ab-accent);border-radius:5px;background:var(--compare-paper);color:var(--compare-ink)}.ab-compare .ab-witness-meta{font:12px/1.55 system-ui;margin:0 0 12px;min-height:40px;color:var(--compare-ink);opacity:.92;white-space:pre-line}.ab-compare article{scroll-margin-top:70px}.ab-compare small{display:block;font:11px/1.5 system-ui;color:var(--ab-muted);margin:8px 0}.ab-compare .ab-text{max-height:var(--compare-height,350px)}.ab-compare .ab-latin-match{background:var(--compare-mark,#ffe28a);color:#171717}.ab-compare-appearance .ab-compare-presets{display:inline-flex;align-items:center;gap:5px}.ab-compare-appearance .ab-tool-title{font:700 11px/1.25 system-ui;letter-spacing:.08em;margin-right:4px}.ab-compare-appearance>button{font:700 14px system-ui;min-width:38px}.ab-compare:fullscreen{padding:20px;box-sizing:border-box;overflow:auto;background:var(--compare-paper);align-content:start}.ab-compare:fullscreen .ab-text{max-height:calc(100vh - 155px)}.ab-compare-appearance :is(button,select,input):focus-visible{outline:2px solid var(--ab-accent);outline-offset:2px}.ab-compare-appearance input[type=color]{width:46px;height:36px;min-height:36px;padding:2px;cursor:pointer}.ab-compare-appearance input[type=range]{width:120px}.ab-compare-appearance button{min-height:34px;border-radius:5px;cursor:pointer}.ab-compare-appearance{border-radius:8px;background:var(--ab-paper);align-items:center}.ab-compare article{border-radius:7px}.ab-compare h3{color:var(--compare-ink)}.ab-compare .ab-text:focus-visible{outline:2px solid var(--ab-accent)}.ab-krohn-footnote{font:12px/1.6 system-ui;margin:13px 0 6px;padding:9px 11px;border-left:3px solid var(--ab-accent);background:rgba(180,146,85,.09);color:var(--compare-ink,var(--ab-ink))}.ab-krohn-footnote[hidden]{display:none}
 .ab-entry .lemma{font-style:italic;font-weight:600}
 .ab-entry .divider-lemma{padding:0 .4em;color:var(--ab-accent)}
@@ -176,7 +177,7 @@ body.ab-custom-type main :is(p,li,blockquote,dd,dt,td,th,.ab-autor-body):not([la
 <article><h3>Rose · 1899</h3><div class="ab-witness-locus" id="compare-rose-locus" aria-live="polite">Locus —</div><div class="ab-witness-meta" id="compare-rose-meta">Identificación ecdótica pendiente de carga</div><small id="compare-rose-source">Comprobando transcripción digital…</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><details id="compare-rose-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-rose-changes"></p><div class="ab-text" id="compare-rose-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
 <article><h3>Krohn · 1912</h3><div class="ab-witness-locus" id="compare-krohn-locus" aria-live="polite">Locus —</div><div class="ab-witness-meta" id="compare-krohn-meta">Identificación ecdótica pendiente de carga</div><small id="compare-krohn-source">Comprobando transcripción digital…</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><p class="ab-krohn-footnote" id="compare-krohn-footnote" role="note" hidden></p><details id="compare-krohn-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-krohn-changes"></p><div class="ab-text" id="compare-krohn-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
 <article><h3>Kurilo · V514</h3><div class="ab-witness-locus" id="compare-kurilo-locus" aria-live="polite">Locus —</div><div class="ab-witness-meta" id="compare-kurilo-meta">Identificación ecdótica pendiente de carga</div><small>Texto latino de la edición académica V514</small><div class="ab-text" lang="la" id="compare-kurilo"></div><small>Fuente: V514, pasaje estructurado.</small><a id="compare-kurilo-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Lector de Kurilo</a></article>
-</div></section>
+</div><p id="ab-triple-similarity" class="ab-triple-similarity" role="status" aria-live="polite">Similitud textual del locus: calculando…</p></section>
 <section aria-labelledby="ab-h-title" class="ab-documentation" id="ab-h-evidence">
 <h2 id="ab-h-title">Testimonium H · Harleianus 2767</h2>
 <p class="ab-sub">Testimonio manuscrito de la British Library. Los folios digitalizados permiten la comprobación autóptica; la localización por <i>locus</i> puede ser material o estimada. Una imagen disponible no equivale a una lectura diplomática comprobada.</p>
@@ -370,6 +371,34 @@ function setComparisonTerms(terms){
  activeLatinSearchTerms=Array.isArray(terms)?terms:[];
  markComparisonTerms();
 }
+// Indicador orientativo por locus: Dice de multiconjunto de palabras normalizadas.
+// No certifica fidelidad al impreso ni variantes manuscritas. Evitar autocomparar suplidos V514.
+function similarityTokens(raw){
+ return (String(raw||"").normalize("NFD").toLocaleLowerCase().replace(/[\u0300-\u036f]/g,"").replace(/j/g,"i").replace(/v/g,"u").match(/[a-z\u0370-\u03ff\u1f00-\u1fff]+/g)||[]);
+}
+function locusSimilarity(left,right){
+ const a=similarityTokens(left),b=similarityTokens(right);
+ if(!a.length||!b.length)return null;
+ const counts=new Map();
+ for(const w of a)counts.set(w,(counts.get(w)||0)+1);
+ let common=0;
+ for(const w of b){const n=counts.get(w)||0;if(n>0){common++;counts.set(w,n-1)}}
+ return Math.round(200*common/(a.length+b.length));
+}
+function updateTripleSimilarity(locus,latin,rose,krohn,independentKrohn){
+ const pairs=[
+  ["Rose–Krohn",independentKrohn?locusSimilarity(rose,krohn):null],
+  ["Rose–Kurilo",locusSimilarity(rose,latin)],
+  ["Krohn–Kurilo",independentKrohn?locusSimilarity(krohn,latin):null]
+ ];
+ const target=$("#ab-triple-similarity");target.replaceChildren();
+ target.append(document.createTextNode("Similitud léxica · "+locus+" · "));
+ for(let i=0;i<pairs.length;i++){
+  if(i)target.append(document.createTextNode(" · "));
+  const bold=document.createElement("strong");bold.textContent=pairs[i][0]+" "+(pairs[i][1]===null?"—":pairs[i][1]+" %");target.append(bold);
+ }
+ target.append(document.createTextNode(" · Cálculo automático normalizado; Rose: OCR provisional. "+(independentKrohn?"":"Krohn: texto suplido; comparación independiente no disponible. ")+"No indica concordancia crítica."));
+}
 function load(locus){
  const passage=rows.find(p=>p.locus===locus);if(!passage){set("#status","El locus no figura en la edición estructurada V514. Compruebe su numeración.");return}
  current=locus;window.__vdlSyncApparatusPicker?.(locus);window.dispatchEvent(new CustomEvent("vitruvius:bude-locus",{detail:{locus}}));$("#locus").value=locus;params.set("locus",locus);params.set("edition",$("#edition").value);params.set("translation",$("#translation-edition").value);history.replaceState(null,"",location.pathname+"?"+params.toString());
@@ -418,6 +447,10 @@ function load(locus){
  set("#compare-"+id+"-original",raw||"No hay OCR original para este pasaje.");
  }
  set("#compare-kurilo",passage.latin||"Sin texto latino estructurado.");
+ const roseComparison=ocrFixes.loci?.[locus]?.["rose-1899"]?.text||c["rose-1899"]?.text||"";
+ const krohnComparison=krohnDigital?.get(locus)||"";
+ updateTripleSimilarity(locus,passage.latin||"",roseComparison,krohnComparison,Boolean(krohnComparison));
+
  for(const [name,id,defaultPdf] of [["rose-1899","rose","https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"],["krohn-1912","krohn","documents/krohn-1912.pdf"]]){
    const item=c[name],clean=ocrFixes.loci?.[locus]?.[name];
  const indexed=id==="krohn"?krohnDigital?.get(locus):null;
