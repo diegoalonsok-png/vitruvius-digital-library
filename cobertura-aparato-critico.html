@@ -37,6 +37,27 @@ td small{display:block;color:#635d54;font:12px/1.5 system-ui}
 .badge.pending{background:#f7eee0;border-color:#d9bd92}
 #detailCount{font:13px system-ui}
 @media(max-width:650px){th,td{padding:9px 8px;font-size:12px}.metric strong{font-size:28px}}
+
+
+/* Contraste específico: dossier y cobertura en modo oscuro.
+   No altera transcripciones, enlaces, loci ni archivos ecdóticos. */
+html[data-theme="dark"]{color-scheme:dark}
+html[data-theme="dark"] body{background:#111921;color:#f0ede6}
+html[data-theme="dark"] main :is(h1,h2,h3,h4,h5,th,strong,summary){color:#f3eee5}
+html[data-theme="dark"] main :is(a,a:visited){color:#e5cb92}
+html[data-theme="dark"] main :is(.eyebrow,.small,.dl-muted,td small,.metric span){color:#c9c5bd}
+html[data-theme="dark"] main :is(.metric,.note,.dl-source,.dl-entry,.dl-actions a,.dl-state,.dl-ocr,.dl-result,.table-wrap){background:#202e38;color:#f1ede5;border-color:#697782}
+html[data-theme="dark"] main :is(.dl-source,.dl-entry,.metric,.note,.dl-state,.dl-ocr,.dl-actions a) :is(p,span,strong,h3,h4,h5,small,summary){color:#f0ede6}
+html[data-theme="dark"] main :is(.dl-latin,.dl-translation,.dl-field,.dl-detail,.dl-result){color:#f5f1e9}
+html[data-theme="dark"] main :is(.dl-section,.dl-head,.dl-detail){border-color:#77818a}
+html[data-theme="dark"] main table{background:#202e38;color:#f0ede6}
+html[data-theme="dark"] main th{background:#293b48;color:#f4efe5}
+html[data-theme="dark"] main td{color:#eee9e0;border-color:#5c6973}
+html[data-theme="dark"] main :is(.controls input,.controls select,.controls button,.dl-input){background:#263945;color:#fff3dc;border-color:#91a2ac;color-scheme:dark}
+html[data-theme="dark"] main :is(.controls input,.dl-input)::placeholder{color:#d0c9bc}
+html[data-theme="dark"] main :is(.badge,.badge.strong,.badge.pending){background:#334451;color:#f7eddb;border-color:#91a2ac}
+html[data-theme="dark"] main :is(.dl-error,#status[role="alert"]){background:#51332f;color:#ffe3dc}
+html[data-theme="dark"] main :is(a:hover,a:focus-visible){color:#fff2cd;text-decoration:underline}
 </style>
 <script defer src="assets/site-bar.js"></script>
 <script defer src="assets/analytics-config.js"></script><script defer src="assets/analytics.js"></script>
