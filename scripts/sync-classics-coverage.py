@@ -93,6 +93,13 @@ def main():
     witnesses = load(ROOT / "data/bibliotheca-testimonia-verified.json")["records"]
     for row in audit["works"]:
         work_id = row["id"]
+        if work_id not in by_id:
+            raise ValueError("Public coverage references unknown work: " + work_id)
+        # Refresh every catalogue identity field, not only status. A renamed
+        # work must not leave a stale public report or an unjustified CI failure.
+        row["author"] = by_id[work_id]["author"]
+        row["title"] = by_id[work_id]["title"]
+        row["originalLanguage"] = by_id[work_id]["language"]
         row["catalogueStatus"] = by_id[work_id]["publicStatus"]
         row["title"] = by_id[work_id]["title"]
         row["author"] = by_id[work_id]["author"]
