@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es" translate="no">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estado de indexación · Bibliotheca · Vitruvius Digital Library</title>
+<link rel="canonical" href="https://vitruvius-digital-library.org/estado-indexacion-bibliotheca">
+<style>:root{color-scheme:dark}body{background:#111214;color:#efefef;font:15px/1.65 system-ui;margin:0}
+header,main,footer{max-width:1100px;margin:auto;padding:22px clamp(18px,4vw,38px)}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:15px;border-bottom:1px solid #666}
+a{color:#f0d5a3}h1,h2{font:normal 29px Georgia,serif}h2{font-size:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+article{border:1px solid #666;border-radius:7px;padding:16px;min-height:90px}
+strong{font-size:25px;display:block}small{opacity:.76}.notice{max-width:92ch}
+code{overflow-wrap:anywhere}footer{border-top:1px solid #777;font-size:12px}</style>
+</head>
+<body>
+<header><strong>Bibliotheca · control académico</strong><a href="bibliotheca-graeca-latina.html">Volver a la biblioteca</a>
+<a href="codices-clasicos-prioritarios.html">Testimonios antiguos</a></header>
+<main><h1>Indexación textual y sincronización GitHub / R2</h1>
+<p class="notice">Las cifras separan obras, ediciones de facsímil y versiones de texto. La presencia de un PDF en R2 no acredita que el texto esté indexado ni que su OCR sea una edición crítica. Los campos «declarado» y «verificado» nunca son intercambiables.</p>
+<p id="timestamp" role="status">Consultando controles publicados…</p>
+<div class="grid" id="summary"></div>
+<h2>Verificación física en Cloudflare R2</h2><p id="remote">No hay informe físico publicado todavía.</p>
+<h2>Límites y tareas pendientes</h2><p id="notes">La auditoría local no puede acreditar por sí sola que los enlaces remotos respondan o que un título haya sido cotejado con el interior de un libro.</p>
+<p><a href="https://github.com/diegoalonsok-png/vitruvius-digital-library/actions/workflows/bibliotheca-indexation-r2-audit.yml">Consultar auditorías automáticas y sus informes en GitHub</a></p>
+</main><footer>Vitruvius Digital Library · Transparencia de evidencia documental y ecdótica</footer>
+<script>
+(()=>{"use strict";
+const summary=document.getElementById("summary"),timestamp=document.getElementById("timestamp"),remote=document.getElementById("remote"),notes=document.getElementById("notes");
+const read=async path=>{const r=await fetch(path+"?v="+Date.now(),{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);return r.json()};
+const add=(name,value)=>{const card=document.createElement("article"),number=document.createElement("strong"),label=document.createElement("small");
+ number.textContent=String(value);label.textContent=name;card.append(number,label);summary.append(card)};
+Promise.allSettled([
+ read("data/r2/bibliotheca-indexation-status.json"),
+ read("data/r2/r2-object-status.json")
+]).then(results=>{
+ const a=results[0].status==="fulfilled"?results[0].value:null;
+ const b=results[1].status==="fulfilled"?results[1].value:null;
+ if(a){
+  const c=a.counts||{};
+  timestamp.textContent="Último informe de catálogo: "+a.generated+" · "+(a.integrity||"sin dictamen");
+  for(const [name,key] of [["Obras catalogadas","catalogueWorks"],["Versiones textuales registradas","registeredTextVersions"],["Obras con índice declarado","registeredDistinctWorks"],["Obras sin texto indexado","unindexedCatalogueWorks"],["Ediciones PDF R2 registradas","r2EditionRecords"],["Ediciones del índice invertido R2 (declaradas)","r2InvertedIndexDeclaredEditions"],["Títulos griegos para revisar","greekTitleNeedsIndividualReview"],["Incidencias estructurales","structuralErrors"]]){
+   if(Number.isFinite(c[key]))add(name,c[key]);
+  }
+  notes.textContent=a.semanticIndex+" · "+a.remaining;
+ }else timestamp.textContent="Todavía no existe un informe auditado publicado. No se muestran cifras supuestas.";
+ if(b){
+  const c=b.counts||{};
+  remote.textContent="Estado: "+b.status+" · objetos examinados: "+(c.objectsChecked??"no verificado")+" · presentes: "+(c.objectsPresent??"no verificado")+" · ausentes: "+(c.objectsMissing??"no verificado")+" · ediciones ausentes del índice: "+(c.editionsNotInRemoteIndex??"no verificado")+". "+(b.notes||"");
+ }else remote.textContent="Aún no hay reporte físico de R2. La existencia de los objetos no ha sido certificada en este panel.";
+});
+})();
+</script></body></html>
