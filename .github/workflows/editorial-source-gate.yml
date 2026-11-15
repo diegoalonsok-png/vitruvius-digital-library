@@ -1,0 +1,38 @@
+name: Editorial source and errata integrity
+
+on:
+  pull_request:
+    paths:
+      - 'data/structured/**'
+      - 'data/academic-integrity.json'
+      - 'data/errata-editionum.json'
+      - 'assets/dossier-ecdotico.js'
+      - 'assets/errata-editionum.js'
+      - 'errata-editionum.html'
+      - 'scripts/test-source-errata.mjs'
+      - '.github/workflows/editorial-source-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/structured/**'
+      - 'data/academic-integrity.json'
+      - 'data/errata-editionum.json'
+      - 'assets/dossier-ecdotico.js'
+      - 'scripts/test-source-errata.mjs'
+      - '.github/workflows/editorial-source-gate.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  documentary-index-and-errata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify original corpus references, translations, SHA-256 and errata
+        run: npm run check:source-errata
+      - name: Verify ecdotic dossier and witness coverage
+        run: npm run check:dossier
