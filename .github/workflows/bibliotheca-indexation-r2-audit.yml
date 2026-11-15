@@ -3,6 +3,14 @@ on:
   schedule:
     - cron: "45 10 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bibliotheca-indexation-r2-audit.yml'
+      - 'scripts/audit-bibliotheca-indexation.mjs'
+      - 'data/r2/classics-expansion-manifest.json'
+      - 'data/r2/classics-expansion-index.json'
+      - 'data/classics-corpus/search-registry.json'
 permissions:
   contents: write
 concurrency:
@@ -27,7 +35,7 @@ jobs:
           python-version: "3.12"
       - name: Instalar cliente de R2
         run: python -m pip install --quiet "boto3>=1.36"
-      - name: Auditar los 271 registros y el índice de textos
+      - name: Conciliar todas las obras registradas y los índices TEI de GitHub y R2
         run: node scripts/audit-bibliotheca-indexation.mjs --strict
       - name: Conciliar inventario federado sin inventar relaciones
         run: python scripts/sync-bibliotheca-github-r2.py
