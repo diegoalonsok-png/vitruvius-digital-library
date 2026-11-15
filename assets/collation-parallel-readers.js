@@ -19,7 +19,7 @@ const styles=make("style");styles.textContent=`
 #coll-facsimile-readers .coll-facsimile-card>.coll-facsimile-controls{grid-column:1}
 #coll-facsimile-readers .coll-facsimile-card>.coll-facsimile-frame{grid-column:1;min-height:540px}
 #coll-facsimile-readers .coll-facsimile-card>.coll-facsimile-ocr{grid-column:1}
-.coll-parallel{grid-column:2;grid-row:2/span 3;min-width:0;display:flex;flex-direction:column;border-left:1px solid #434349;background:var(--parallel-bg,#202023);color:var(--parallel-fg,#f5f2ec)}
+.coll-parallel{grid-column:2;grid-row:2/span 4;min-width:0;display:flex;flex-direction:column;border-left:1px solid #434349;background:var(--parallel-bg,#202023);color:var(--parallel-fg,#f5f2ec)}
 .coll-parallel-header{padding:12px 14px;border-bottom:1px solid #454549}
 .coll-parallel-header h4{margin:0 0 7px;font:500 15px Georgia,serif}
 .coll-parallel-tools{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
@@ -75,7 +75,7 @@ function render(cardId){
   }
  }
  x.note.textContent=(record?"Pasaje indexado por locus "+current+". ":"Sin pasaje alineado para "+current+". ")+
- "Texto editorial de Diego Kurilo, no traducción de Rose ni Krohn. El PDF histórico no está sincronizado automáticamente con una página digital.";
+ "Texto editorial de Diego Kurilo. La imagen del facsímil se propone mediante el índice de ese mismo PDF. Al recorrer imágenes manualmente, este texto conserva el locus seleccionado.";
 }
 function build(card,n){
  const id=n===0?"rose-1899":"krohn-1912";

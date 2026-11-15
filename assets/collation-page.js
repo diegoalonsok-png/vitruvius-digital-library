@@ -187,7 +187,7 @@ async function show(locus){
  };
  for(const {w,rec} of rows){
   const box=el("section","coll-row");
-  box.append(el("h3",null,w.label+" · p. "+rec.page+(rec.pageEnd?"–"+rec.pageEnd:"")+" · facsímil"));
+  box.append(el("h3",null,w.label+" · imagen digital "+rec.page+(rec.pageEnd?"–"+rec.pageEnd:"")+" · facsímil"));
   box.append(el("p","coll-cite",w.citation));
   // The opening of Book I is noticeably cleaner than Book X, but still
   // contains minor OCR mistakes. Show only this narrowly verified sample
@@ -202,7 +202,7 @@ async function show(locus){
    box.append(el("p","coll-warning","Edición crítica histórica identificada. La transcripción OCR empleada para localizar este pasaje puede incluir erratas o notas editoriales; consulta el facsímil para comprobar la lectura antes de citar una variante."));
   }
   const a=el("a",null,"Consultar la edición original (facsímil) ↗");
-  a.href=historicalSources[w.id]||"bibliotheca-graeca-latina.html";
+  a.href=historicalSources[w.id]?historicalSources[w.id]+"?image="+rec.page+"&locus="+encodeURIComponent(locus):"bibliotheca-graeca-latina.html";
   a.target="_blank";a.rel="noopener";
   box.append(a);witnesses.append(box);
  }
@@ -227,7 +227,7 @@ async function show(locus){
  try{const hits=await window.KuriloApparatus.forLocus(locus,{lang:"es",limit:10});
   if(!hits.length)apBox.append(el("p","coll-meta","No hay notas del aparato vinculadas a este locus."));
   for(const e of hits){const d=el("div","coll-note");d.append(el("p","coll-meta",[e.version,e.label||window.KuriloApparatus.kindLabel(e.kind,"es"),"p. "+e.page,window.KuriloApparatus.relationLabel?.(e.relation,"es")||e.relation].filter(Boolean).join(" · ")));
-   d.append(el("p",null,window.KuriloApparatus.excerpt?window.KuriloApparatus.excerpt(e,locus):String(e.text).slice(0,600)));
+   d.append(el("p",null,window.KuriloApparatus.excerpt?window.KuriloApparatus.excerpt(e.text,locus):String(e.text).slice(0,600)));
    if(e.pdf){const a=el("a",null,"Abrir la página de la edición ↗");a.href=e.pdf;a.target="_blank";a.rel="noopener";d.append(a)}apBox.append(d)}
  }catch{apBox.append(el("p","coll-meta","Aparato no disponible."))}
  root.append(apBox);

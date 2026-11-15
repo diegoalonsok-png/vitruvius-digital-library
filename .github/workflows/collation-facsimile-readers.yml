@@ -1,0 +1,35 @@
+name: Colación · facsímiles conservados
+on:
+  push:
+    paths:
+      - 'colacion.html'
+      - 'assets/collation-*.js'
+      - 'data/r2/folios/rose-1899*.json'
+      - 'data/r2/folios/krohn-1912*.json'
+      - 'scripts/test-collation-facsimile-readers.mjs'
+      - '.github/workflows/collation-facsimile-readers.yml'
+  pull_request:
+    paths:
+      - 'colacion.html'
+      - 'assets/collation-*.js'
+      - 'data/r2/folios/rose-1899*.json'
+      - 'data/r2/folios/krohn-1912*.json'
+      - 'scripts/test-collation-facsimile-readers.mjs'
+      - '.github/workflows/collation-facsimile-readers.yml'
+permissions:
+  contents: read
+jobs:
+  readers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --ignore-scripts --no-package-lock
+      - name: Verificar colación, imágenes y lectura paralela
+        run: |
+          node --check assets/collation-facsimile-readers.js
+          node --check assets/collation-parallel-readers.js
+          node --check assets/collation-page.js
+          node scripts/test-collation-facsimile-readers.mjs
