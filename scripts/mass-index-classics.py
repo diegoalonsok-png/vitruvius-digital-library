@@ -247,7 +247,7 @@ def run():
     eligible = []
     unresolved_mappings = []
     urn_pattern = re.compile(
-        r"^(?:phi\\d{4}|tlg\\d{4}|stoa\\d{4})\\.(?:phi\\d{3}|tlg\\d{3}|stoa\\d{3}|abo\\d{3})$"
+        r"^(?:phi\d{4}|tlg\d{4}|stoa\d{4})\.(?:phi\d{3}|tlg\d{3}|stoa\d{3}|abo\d{3})$"
     )
     for w in catalog["works"]:
         wid, lang = w["id"], w.get("language")
