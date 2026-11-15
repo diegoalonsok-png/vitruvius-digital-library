@@ -107,6 +107,7 @@ jobs:
           python scripts/audit-classics-222-roadmap.py
           python scripts/sincronizar-reconciliacion.py
           python scripts/cifras-corpus.py
+          python scripts/sync-classics-coverage.py
 
       - name: Indexar las obras de la tanda y subir el índice a R2
         # No publicar contadores, fichas ni índices si falló un paso anterior.
