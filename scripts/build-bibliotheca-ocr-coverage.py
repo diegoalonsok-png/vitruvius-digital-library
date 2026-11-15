@@ -25,9 +25,25 @@ def main():
     catalogued = {x["id"] for x in catalog["items"]}
     index_missing = set(index.get("missingIndexIds", []))
     listed_index_ids = catalogued - index_missing if index.get("status", "").startswith("checked") else set()
-    rows, no_ocr = [], []
+    editions_by_work = {}
+    for entry in registry:
+        if entry.get("workId") == "vitruvius" and entry.get("format") == "structured-bilingual":
+            editions_by_work[entry.get("edition")] = entry
+    alias_ids = {"vitruvio-v514-pdf": "recensio-es",
+                 "vitruvio-v554-pdf": "recensio-fr",
+                 "theory-v297-pdf": "theory-en"}
+    rows, no_ocr, existing_structured = [], [], []
     for work in master:
         if work["id"] in indexed:
+            continue
+        alias = editions_by_work.get(alias_ids.get(work["id"]))
+        if alias:
+            existing_structured.append({
+                "id": work["id"], "author": work.get("author"), "title": work.get("title"),
+                "status": "versión ya indexada bajo la ficha editorial de Vitruvio",
+                "edition": alias["edition"], "reader": alias["reader"],
+                "indexedPath": alias["path"], "indexedUnderWorkId": "vitruvius"
+            })
             continue
         editions = linked.get(work["id"], {}).get("r2FacsimileEditions", [])
         available = []
@@ -50,7 +66,7 @@ def main():
         else:
             item["ocrSearchStatus"] = "sin facsímil con índice R2 vinculado"
             no_ocr.append(item)
-    assert len(rows) + len(no_ocr) == len(master) - len(indexed)
+    assert len(rows) + len(no_ocr) + len(existing_structured) == len(master) - len(indexed)
     assert len(catalogued) == len(catalog["items"]), "ID R2 duplicados"
     result = {
         "schema": "vdl-bibliotheca-ocr-coverage-v1",
@@ -61,9 +77,11 @@ def main():
             "masterWorks": len(master), "withRegisteredText": len(indexed),
             "withoutRegisteredText": len(rows) + len(no_ocr),
             "withoutTextButWithR2OcrIndex": len(rows),
+            "withoutOwnRegistryButWithLinkedStructuredEdition": len(existing_structured),
             "withoutTextOrLinkedR2OcrIndex": len(no_ocr)
         },
         "ocrSearchableWithoutTranscription": rows,
+        "alreadyIndexedAsStructuredEdition": existing_structured,
         "needsTextOrVerifiableFacsimile": no_ocr,
         "r2IndexAuditTimestamp": index.get("generated"),
         "r2IndexDeclared": bool(listed_index_ids)
