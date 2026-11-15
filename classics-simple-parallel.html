@@ -71,17 +71,17 @@ mark.simple-match{background:#d8a442;color:#161616;border-radius:2px}
 const q=new URLSearchParams(location.search),work=q.get("work")||"didache";
 const LANG={grc:"GRIEGO",la:"LATÍN",es:"CASTELLANO",en:"INGLÉS",fr:"FRANCÉS",it:"ITALIANO",de:"ALEMÁN",pt:"PORTUGUÉS"};
 const el=id=>document.getElementById(id);let source=[],translation=[],pos=0,leftLang="",rightLang="",title=work;let searchTerm="",targetLang="en",renderToken=0;let availableEditions=new Map(),loadingVersion=0;const editionMetadata=new Map();
-const key=v=>String(v??"").trim().toLowerCase().replace(/\\s+/g,"");
+const key=v=>String(v??"").trim().toLowerCase().replace(/\s+/g,"");
 function locusParts(value){
  const raw=key(value);
  if(!raw)return null;
  if(raw.startsWith("urn:cts:")){
-  const found=raw.match(/^urn:cts:[^:]+:([^:]+?)(?::|\\.)(\\d+(?:\\.\\d+)*)$/);
+  const found=raw.match(/^urn:cts:[^:]+:([^:]+?)(?::|\.)(\d+(?:\.\d+)*)$/);
   if(!found)return {raw,work:null,ref:null};
-  const id=found[1].match(/^(tlg\\d+\\.tlg\\d+|phi\\d+\\.phi\\d+)/);
+  const id=found[1].match(/^(tlg\d+\.tlg\d+|phi\d+\.phi\d+)/);
   return {raw,work:id?.[1]||found[1],ref:found[2]};
  }
- const simple=raw.match(/^(\\d+(?:\\.\\d+)*)$/);
+ const simple=raw.match(/^(\d+(?:\.\d+)*)$/);
  return {raw,work:null,ref:simple?.[1]||null};
 }
 function findLocusIndex(passages,requested){
