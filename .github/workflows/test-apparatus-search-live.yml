@@ -1,0 +1,29 @@
+name: Verificar buscador semántico del aparato en producción
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apparatus-bude.html'
+      - 'assets/apparatus-locus-search.js'
+      - 'scripts/test-apparatus-search-live.py'
+      - '.github/workflows/test-apparatus-search-live.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Confirm both deployed hosts show the search interface
+        run: python scripts/test-apparatus-search-live.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apparatus-search-deployment-report
+          path: reports/deployment/apparatus-search-live.json
+          if-no-files-found: warn
