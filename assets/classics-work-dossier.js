@@ -106,7 +106,7 @@ function title(w,authority){
   (language==="grc"?GREEK_TITLE_BY_WORK[w.id]:language==="la"?LATIN_TITLE_BY_WORK[w.id]:null));
  const uniform=N(authority?.uniformTitle);
  const candidates=[candidate,uniform,t.split(/\s+·\s+/)[0].trim()].filter(Boolean);
- if(language==="he"||language==="hbo"){
+ if(language==="he"||language==="hbo"||language==="heb"){
   const found=candidates.find(x=>HEBREW.test(x));
   return found?{title:found,language:"he",description:"Título hebreo documentado en el registro; transliteración y tradición editorial se consignan por separado."}:
    {title:null,language:"he",description:"Denominación hebrea no acreditada por el registro consultado; no se reconstruye."};
@@ -658,7 +658,7 @@ function renderInto(target,id,opts={}){
   target.classList.add("classic-work-dossier");target.dataset.workId=id;
   const head=html("header","cwd-head");
   head.append(html("p","cwd-kicker","BIBLIOTHECA · FICHA CRÍTICA · CHICAGO 18 · TRADICIÓN MANUSCRITA"));
-  const h=html("h2",null,w.title);h.lang=w.language==="grc"?"grc":w.language==="he"?"he":"la";head.append(h);
+  const h=html("h2",null,w.title);h.lang=HEBREW.test(w.title)?"he":greek.test(w.title)?"grc":"und";head.append(h);
   row(head,"Autor del catálogo",w.author);
   const originalAuthor=w.bibliography?.originalAuthor||AUTHOR[w.author];
   if(originalAuthor){const r=html("p","cwd-row cwd-authority-name");r.append(html("strong",null,"Nombre antiguo normalizado: "));const name=html("span",null,originalAuthor);name.lang=greek.test(originalAuthor)?"grc":"la";r.append(name);head.append(r)}
