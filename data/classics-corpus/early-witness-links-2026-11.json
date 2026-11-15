@@ -33,6 +33,17 @@
           "linkType": "ficha de códice; Pinakes registra digitalización en Gallica",
           "note": "El volumen es compuesto; no equiparar la fecha de todas sus secciones."
         }
+      ],
+      "academicTranslations": [
+        {
+          "workPart": "Metrica",
+          "lang": "fr",
+          "editor": "Fabio Acerbi; Bernard Vitrac",
+          "year": 2014,
+          "citation": "Héron d'Alexandrie, Metrica, éd., trad. française et commentaire de F. Acerbi et B. Vitrac, Mathematica Graeca Antiqua 4, Pisa/Roma, Fabrizio Serra, 2014",
+          "url": "https://pinakes.irht.cnrs.fr/notices/bibliographie/TI2JVNIK/",
+          "access": "referencia bibliográfica, sin texto francés alojado ni permiso acreditado para redistribución"
+        }
       ]
     },
     {
@@ -52,6 +63,16 @@
           "linkType": "ficha codicológica Pinakes; referencia a digitalización vaticana",
           "note": "Desglose de libros y folios documentado en Pinakes; la datación del códice no es la de composición de la obra."
         }
+      ],
+      "academicTranslations": [
+        {
+          "lang": "en",
+          "editor": "H. B. Dewing",
+          "year": 1940,
+          "citation": "Procopius, Buildings (De aedificiis), ed. and English transl. H. B. Dewing, Loeb Classical Library, 1940",
+          "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Buildings/home.html",
+          "access": "lectura externa con texto griego y traducción inglesa; sin alineación local acreditada"
+        }
       ]
     },
     {
@@ -69,7 +90,19 @@
           "type": "traducción árabe antigua de la obra griega; testimonio indirecto, NO el más antiguo acreditado",
           "url": "https://searcharchives.bl.uk/catalog/040-002621534",
           "linkType": "catálogo institucional de manuscritos",
-          "note": "La fecha corresponde a esta copia concreta; la tradición y el origen de la traducción son anteriores."
+          "note": "La fecha corresponde a esta copia concreta; la tradición y el origen de la traducción son anteriores. La British Library identifica un ejemplar defectuoso en el comienzo; texto griego original conservado solo parcialmente.",
+          "viewUrl": "https://www.qdl.qa/en/archive/81055/vdc_100022551545.0x000001",
+          "viewType": "reproducción digital de la traducción árabe (Qatar Digital Library / British Library)"
+        }
+      ],
+      "academicTranslations": [
+        {
+          "lang": "fr",
+          "editor": "B. Carra de Vaux",
+          "year": 1988,
+          "citation": "Héron d'Alexandrie, Les mécaniques, texte arabe de Qusṭā ibn Lūqā, éd. et trad. B. Carra de Vaux, Les Belles Lettres, 1988",
+          "url": "https://searcharchives.bl.uk/catalog/040-002621534",
+          "access": "referencia bibliográfica señalada por British Library; texto íntegro no alojado"
         }
       ]
     },
@@ -147,7 +180,22 @@
           "linkType": "facsímil digital Gallica (BnF)",
           "note": "La edición y el testimonio manuscrito son objetos distintos; datos de datación cotejados con RISM y repertorios de manuscritos musicales."
         }
+      ],
+      "academicTranslations": [
+        {
+          "lang": "fr",
+          "editor": "Christian Meyer",
+          "year": 2004,
+          "citation": "Boèce, Traité de la musique (De institutione musica), introduction, traduction et notes par Christian Meyer, Turnhout, Brepols, 2004",
+          "url": "https://catalogue.bnf.fr/ark:/12148/cb39273477t",
+          "access": "registro de edición latina y francesa enfrentadas; no implica licencia de descarga"
+        }
       ]
     }
-  ]
+  ],
+  "methodology": {
+    "manuscript": "Cada testimonio lleva signatura, folios, datación y tipo de acceso; sin cotejo autóptico no se atribuye siglum editorial nuevo, familia stemmatica ni rango de manuscrito más antiguo universal.",
+    "reading": "El PDF o DOCX solo es un soporte: leer como griego o latín exige constatar el idioma real de su texto y una extracción utilizable. Facsímil, OCR y texto estructurado se identifican por separado. El idioma antiguo de composición no prueba que la edición descargada contenga ese original.",
+    "translation": "Preferir versiones humanas documentadas con editor, traductor, año y locus. La traducción automática desde OCR es auxiliar, no revisada y nunca se cita como versión académica. Si hay más de una versión, enfrentarlas por el mismo locus tras verificación de alineación; una página PDF no garantiza correspondencia."
+  }
 }
