@@ -67,6 +67,11 @@ html[data-theme="dark"] main :is(.controls input,.dl-input)::placeholder{color:#
 html[data-theme="dark"] main :is(.badge,.badge.strong,.badge.pending){background:#334451;color:#f7eddb;border-color:#91a2ac}
 html[data-theme="dark"] main :is(.dl-error,#status[role="alert"]){background:#51332f;color:#ffe3dc}
 html[data-theme="dark"] main :is(a:hover,a:focus-visible){color:#fff2cd;text-decoration:underline}
+/* Precedencia sobre reglas de superficies del dossier: indicadores transparentes. */
+html[data-theme="dark"] main #metrics .metric{background:transparent!important;border-top:0;border-bottom:0;border-left:0;border-right:1px solid #69717a;border-radius:0;box-shadow:none}
+html[data-theme="dark"] main #metrics .metric:last-child{border-right:0}
+html[data-theme="dark"] main #metrics .metric strong{color:#f5efe4}
+html[data-theme="dark"] main #metrics .metric span{color:#d9d3c8}
 </style>
 <script defer src="assets/site-bar.js"></script>
 <script defer src="assets/analytics-config.js"></script><script defer src="assets/analytics.js"></script>
