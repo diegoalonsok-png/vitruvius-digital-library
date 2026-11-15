@@ -40,7 +40,10 @@ function parseReference(value){
  let input=String(value??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
   .replace(/[–—−]/g,'-').replace(/\s+/g,' ').trim()
   .replace(/^(?:vitruvio|vitruvius|vitruve|vitr\.?)\s*[,;:]?\s*(?:de\s+arch(?:itectura)?\.?\s*)?/,'')
-  .replace(/^de\s+arch(?:itectura)?\.?\s*/,'').trim();
+  .replace(/^de\s+arch(?:itectura)?\.?\s*/,'').trim()
+  // Explicit ecdotic search intent: "locus 1.1.1" must resolve to the
+  // same canonical locus as "1.1.1" and never to an unrelated web noun.
+  .replace(/^(?:locus|loci|loc\.?)[\s:]+(?=(?:10|[1-9]|x|ix|viii|vii|vi|iv|iii|ii|i)[.:/])/i,'');
 
  // Treat an appended author credit as context, not part of the locus.
  input=input.replace(/\s+(?:(?:de|del|por|by|of|di|da|do)\s+)?(?:marco\s+)?(?:marcus\s+)?vitruvi(?:o|us|i|e)(?:\s+pol(?:l)?io?n?)?\s*\.?$/i,'').trim();
