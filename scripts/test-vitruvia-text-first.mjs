@@ -34,5 +34,6 @@ for(const q of ['retratos de Cicerón','imagenes de Vitruvio','Palladio','foto m
  assert.equal(win.VitruviaSearchPreferences.textOnlyQuery(q),false,q);
 }
 emit('retratos de Cicerón');
+await Promise.resolve(); // asynchronous feature loading dispatches on a microtask
 assert.equal(imageLoads,1,'Visual queries must load image bundle');
 console.log('PASS: text-only Vitruvia queries skip automatic image bundle; visual query loads it');
