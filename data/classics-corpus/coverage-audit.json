@@ -7,14 +7,14 @@
     "cataloguedWorks": 271,
     "catalogueStatuses": {
       "lectura-local-completa": 31,
-      "lectura-local-parcial": 153,
-      "fuente-externa-identificada": 65,
-      "repertoriado-busqueda-externa": 18,
-      "pendiente-de-incorporar": 4
+      "lectura-local-parcial": 165,
+      "fuente-externa-identificada": 61,
+      "repertoriado-busqueda-externa": 12,
+      "pendiente-de-incorporar": 2
     },
-    "locallyReadableClaims": 184,
-    "indexedTextVersions": 279,
-    "indexedDistinctWorks": 214,
+    "locallyReadableClaims": 196,
+    "indexedTextVersions": 291,
+    "indexedDistinctWorks": 226,
     "manuscriptWitnesses": 106
   },
   "works": [
@@ -1175,9 +1175,13 @@
       "originalLanguage": "grc",
       "genre": "Biografía e historia",
       "dating": "Finales del siglo I – comienzos del II d. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/plutarch-lives-grc-58cbbdaf742a60cf.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -2043,9 +2047,13 @@
       "originalLanguage": "grc",
       "genre": "Filosofía moral",
       "dating": "siglos I–II d. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/plutarch-moralia-grc-544c57706b559b70.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -2471,9 +2479,13 @@
       "originalLanguage": "grc",
       "genre": "Historia",
       "dating": "siglo V a. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/thucydides-war-grc-6090ade6c2c92022.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -2673,9 +2685,13 @@
       "originalLanguage": "grc",
       "genre": "Historiografía",
       "dating": "siglos II–III d. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cassius-dio-historia-grc-43482d9b45cf2bea.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -2691,9 +2707,13 @@
       "originalLanguage": "grc",
       "genre": "Erudición y simposio",
       "dating": "siglos II–III d. C.",
-      "catalogueStatus": "pendiente-de-incorporar",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -3725,9 +3745,13 @@
       "originalLanguage": "grc",
       "genre": "Botánica",
       "dating": "siglo IV–III a. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/theophrastus-historia-plantarum-grc-66c50429684fcbc3.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4413,9 +4437,13 @@
       "originalLanguage": "grc",
       "genre": "Matemáticas y mecánica",
       "dating": "siglo III a. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/archimedes-fluitantibus-grc-334fea209f231138.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4489,9 +4517,13 @@
       "originalLanguage": "grc",
       "genre": "Matemáticas y mecánica",
       "dating": "siglos IV–III a. C.",
-      "catalogueStatus": "repertoriado-busqueda-externa",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/ps-aristotle-mechanica-grc-4f7a5f316207eca0.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4627,9 +4659,13 @@
       "originalLanguage": "grc",
       "genre": "Matemáticas y mecánica",
       "dating": "c. 300 a. C.",
-      "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/euclid-optica-grc-6cc3f8b109b782a4.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4645,9 +4681,13 @@
       "originalLanguage": "grc",
       "genre": "Astronomía y música",
       "dating": "c. 300 a. C.",
-      "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/euclid-phaenomena-grc-4e4a3c1b1b3eda93.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4663,9 +4703,13 @@
       "originalLanguage": "grc",
       "genre": "Teoría musical",
       "dating": "s. II d. C. (datación debatida)",
-      "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/cleonides-harmonica-grc-a7f8f1e13c9508a5.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,
@@ -4681,9 +4725,13 @@
       "originalLanguage": "grc",
       "genre": "Ingeniería y arte militar",
       "dating": "s. I d. C. (datación del autor debatida)",
-      "catalogueStatus": "fuente-externa-identificada",
-      "indexedTextLanguages": [],
-      "indexedTextFiles": [],
+      "catalogueStatus": "lectura-local-parcial",
+      "indexedTextLanguages": [
+        "grc"
+      ],
+      "indexedTextFiles": [
+        "https://libros.vitruvius-digital-library.org/corpus/hero-belopoeica-grc-fbb7bea5f038c2f6.json"
+      ],
       "localPDF": null,
       "hasStructuredVitruviusReader": false,
       "hasDedicatedReader": false,

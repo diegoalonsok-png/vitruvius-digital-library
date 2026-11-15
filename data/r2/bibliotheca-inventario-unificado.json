@@ -1,6 +1,6 @@
 {
   "schema": "vdl-federated-bibliotheca-inventory-v1",
-  "generated": "2026-11-15T20:54:51.234773+00:00",
+  "generated": "2026-11-15T21:58:35.906293+00:00",
   "method": "Master works and additional R2 works counted separately; edition relations can be many-to-many. Remote text URLs are declared, not live-verified. Unresolved editions are never merged automatically.",
   "counts": {
     "cataloguedWorks": 271,
@@ -13,7 +13,7 @@
     "r2UnlinkedEditionRecords": 0,
     "worksWithR2Edition": 114,
     "worksWithLocalIndexedText": 182,
-    "worksWithDeclaredRemoteIndex": 32
+    "worksWithDeclaredRemoteIndex": 44
   },
   "unlinkedR2EditionIds": [],
   "additionalWorks": [
@@ -1173,7 +1173,12 @@
       "title": "Βίοι Παράλληλοι · Vidas paralelas",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/plutarch-lives-grc-58cbbdaf742a60cf.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "plutarco-vidas",
@@ -1851,7 +1856,12 @@
       "title": "Ἠθικά (Moralia)",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/plutarch-moralia-grc-544c57706b559b70.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -2209,7 +2219,12 @@
       "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/thucydides-war-grc-6090ade6c2c92022.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "tucidides-historia",
@@ -2390,7 +2405,12 @@
       "title": "Ῥωμαϊκὴ ἱστορία",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cassius-dio-historia-grc-43482d9b45cf2bea.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -2399,7 +2419,12 @@
       "title": "Δειπνοσοφισταί",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3274,7 +3299,12 @@
       "title": "Περὶ φυτῶν ἱστορίας",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/theophrastus-historia-plantarum-grc-66c50429684fcbc3.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "teofrasto-historia-plantas",
@@ -3763,7 +3793,12 @@
       "title": "Περὶ τῶν ὀχουμένων",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/archimedes-fluitantibus-grc-334fea209f231138.json"
+        }
+      ],
       "r2FacsimileEditions": [
         {
           "editionId": "arquimedes-obras",
@@ -3826,7 +3861,12 @@
       "title": "Μηχανικὰ προβλήματα",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/ps-aristotle-mechanica-grc-4f7a5f316207eca0.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3915,7 +3955,12 @@
       "title": "Ὀπτικά · Optica",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euclid-optica-grc-6cc3f8b109b782a4.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3924,7 +3969,12 @@
       "title": "Φαινόμενα · Phaenomena y escritos musicales",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/euclid-phaenomena-grc-4e4a3c1b1b3eda93.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3933,7 +3983,12 @@
       "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/cleonides-harmonica-grc-a7f8f1e13c9508a5.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {
@@ -3942,7 +3997,12 @@
       "title": "Βελοποιικά · Belopoeica",
       "catalogue": "github",
       "locallyIndexedText": [],
-      "declaredRemoteIndexedText": [],
+      "declaredRemoteIndexedText": [
+        {
+          "language": "grc",
+          "url": "https://libros.vitruvius-digital-library.org/corpus/hero-belopoeica-grc-fbb7bea5f038c2f6.json"
+        }
+      ],
       "r2FacsimileEditions": []
     },
     {

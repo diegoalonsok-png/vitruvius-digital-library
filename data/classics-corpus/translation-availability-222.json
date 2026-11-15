@@ -5,7 +5,7 @@
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
     "cataloguedWorks": 271,
-    "locallyIndexedWorks": 214,
+    "locallyIndexedWorks": 226,
     "translatedWorksLocal": 59,
     "worksWithoutHostedTranslation": 212,
     "localTranslationLanguages": {
@@ -16,10 +16,10 @@
     "originalTextIndexed": 182,
     "originalTextNotIndexed": 89,
     "verifiedLocalFileWorks": 182,
-    "declaredRemoteOnlyWorks": 32,
-    "declaredR2OriginalWorks": 32,
-    "registeredOriginalWorks": 214,
-    "registeredTextVersions": 279,
+    "declaredRemoteOnlyWorks": 44,
+    "declaredR2OriginalWorks": 44,
+    "registeredOriginalWorks": 226,
+    "registeredTextVersions": 291,
     "verifiedLocalTextVersions": 247,
     "verifiedLocalOriginalTextIndexed": 182
   },
@@ -1387,16 +1387,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -2384,16 +2390,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -2892,16 +2904,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -3133,16 +3151,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -3152,16 +3176,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -4395,16 +4425,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -5177,16 +5213,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -5259,16 +5301,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -5410,16 +5458,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción latina de Heiberg en la misma edición.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -5429,16 +5483,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -5448,16 +5508,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {
@@ -5467,16 +5533,22 @@
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
-      "localEditionLanguages": [],
+      "localEditionLanguages": [
+        "grc"
+      ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción alemana de Diels y Schramm en la misma edición.",
       "translationRegisteredButNotHosted": true,
       "indexed": false,
-      "originalR2Registered": false,
-      "registeredOriginal": false,
-      "registeredEditionLanguages": [],
-      "remoteEditionLanguages": [],
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
       "verifiedLocalEditionLanguages": []
     },
     {

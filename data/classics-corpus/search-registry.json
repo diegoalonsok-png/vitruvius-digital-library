@@ -1,9 +1,9 @@
 {
  "schema": "vitruvia-classics-search-registry-v1",
- "updated": "2026-11-11",
+ "updated": "2026-11-15",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 279,
- "works": 214,
+ "count": 291,
+ "works": 226,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -204,6 +204,18 @@
    "path": "data/classics-corpus/aratus-phaenomena-grc.json",
    "reader": "classics-text-reader.html?work=aratus-phaenomena&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "archimedes-fluitantibus",
+   "author": "Arquímedes",
+   "title": "Περὶ τῶν ὀχουμένων",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/archimedes-fluitantibus-grc-334fea209f231138.json",
+   "reader": "classics-text-reader.html?work=archimedes-fluitantibus&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "334fea209f231138f31e8c4dddf8b188945c81f397b29601c7e9c67b17f04b4d",
+   "passages": 106
   },
   {
    "workId": "aristophanes-acharnenses",
@@ -426,6 +438,18 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "athenaeus-deipnosophistae",
+   "author": "Ateneo de Náucratis",
+   "title": "Δειπνοσοφισταί",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/athenaeus-deipnosophistae-grc-c11adda328eca994.json",
+   "reader": "classics-text-reader.html?work=athenaeus-deipnosophistae&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "c11adda328eca994ac905d54b877341cd63ec7e983b8506a2689e387e34b6902",
+   "passages": 1412
+  },
+  {
    "workId": "augustine-civitate-dei",
    "author": "Agustín de Hipona",
    "title": "De civitate Dei",
@@ -554,6 +578,18 @@
    "format": "json-passages",
    "reader": "classics-text-reader.html?work=calimaco-himnos&lang=grc",
    "sourceDescription": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "cassius-dio-historia",
+   "author": "Dión Casio",
+   "title": "Ῥωμαϊκὴ ἱστορία",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cassius-dio-historia-grc-43482d9b45cf2bea.json",
+   "reader": "classics-text-reader.html?work=cassius-dio-historia&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "43482d9b45cf2bea13bbf944fbe3d029647bf086517073be16cc608775c7dd43",
+   "passages": 4679
   },
   {
    "workId": "cato-agri-cultura",
@@ -786,6 +822,18 @@
    "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
   },
   {
+   "workId": "cleonides-harmonica",
+   "author": "Cleónides (transmitido bajo el nombre de Euclides)",
+   "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/cleonides-harmonica-grc-a7f8f1e13c9508a5.json",
+   "reader": "classics-text-reader.html?work=cleonides-harmonica&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "a7f8f1e13c9508a5e5f78b1bb61b37440ce741fd5a94a57d552f2bcc880ca214",
+   "passages": 59
+  },
+  {
    "workId": "columella",
    "author": "Columela",
    "title": "De re rustica",
@@ -944,6 +992,30 @@
    "path": "data/classics-corpus/euclid-elementa-grc.json",
    "reader": "classics-text-reader.html?work=euclid-elementa&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "euclid-optica",
+   "author": "Euclides",
+   "title": "Ὀπτικά · Optica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euclid-optica-grc-6cc3f8b109b782a4.json",
+   "reader": "classics-text-reader.html?work=euclid-optica&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "6cc3f8b109b782a43e43bbee8063a278efad6405a45a96453d8096bd940cb9ec",
+   "passages": 217
+  },
+  {
+   "workId": "euclid-phaenomena",
+   "author": "Euclides",
+   "title": "Φαινόμενα · Phaenomena y escritos musicales",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/euclid-phaenomena-grc-4e4a3c1b1b3eda93.json",
+   "reader": "classics-text-reader.html?work=euclid-phaenomena&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "4e4a3c1b1b3eda939ed9cdc283b195b5099c75ace9c08d9edbe9f6c5643ad70b",
+   "passages": 200
   },
   {
    "workId": "euripides-alcestis",
@@ -1195,6 +1267,18 @@
    "path": "data/classics-corpus/hero-automata-grc.json",
    "reader": "classics-text-reader.html?work=hero-automata&lang=grc",
    "sourceDescription": "OpenGreekAndLatin First1KGreek TEI · fuente editada documentada, sin colación automática"
+  },
+  {
+   "workId": "hero-belopoeica",
+   "author": "Herón de Alejandría",
+   "title": "Βελοποιικά · Belopoeica",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/hero-belopoeica-grc-fbb7bea5f038c2f6.json",
+   "reader": "classics-text-reader.html?work=hero-belopoeica&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "fbb7bea5f038c2f6e9fae37990e3a72cca1a35face1201151fef26ef59e84b60",
+   "passages": 83
   },
   {
    "workId": "hero-pneumatica",
@@ -2158,6 +2242,30 @@
    "sourceDescription": "Perseus/First1KGreek TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "plutarch-lives",
+   "author": "Plutarco",
+   "title": "Βίοι Παράλληλοι · Vidas paralelas",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plutarch-lives-grc-58cbbdaf742a60cf.json",
+   "reader": "classics-text-reader.html?work=plutarch-lives&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "58cbbdaf742a60cf0be49bcc6f7fb428cf69822f562820a1f62457a9cf935bab",
+   "passages": 9961
+  },
+  {
+   "workId": "plutarch-moralia",
+   "author": "Plutarco",
+   "title": "Ἠθικά (Moralia)",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/plutarch-moralia-grc-544c57706b559b70.json",
+   "reader": "classics-text-reader.html?work=plutarch-moralia&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "544c57706b559b702a1e8dfa713de10819941656fbfd178e2a025898da626eb2",
+   "passages": 3522
+  },
+  {
    "workId": "polybius-historiae",
    "author": "Polibio",
    "title": "Ἱστορίαι",
@@ -2186,6 +2294,18 @@
    "path": "data/classics-corpus/propertius-elegiae-la.json",
    "reader": "classics-text-reader.html?work=propertius-elegiae&lang=la",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "ps-aristotle-mechanica",
+   "author": "Pseudo-Aristóteles (escuela peripatética)",
+   "title": "Μηχανικὰ προβλήματα",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/ps-aristotle-mechanica-grc-4f7a5f316207eca0.json",
+   "reader": "classics-text-reader.html?work=ps-aristotle-mechanica&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "4f7a5f316207eca03df439db86eb792514b03c7171a7cf1cdba7608c2231fa27",
+   "passages": 158
   },
   {
    "workId": "pseudo-apollodorus-bibliotheca",
@@ -2636,6 +2756,30 @@
    "path": "data/classics-corpus/theophrastus-characters-grc.json",
    "reader": "classics-text-reader.html?work=theophrastus-characters&lang=grc",
    "sourceDescription": "La fuente y la atribución se muestran dentro del JSON y del lector; las traducciones no equivalen a alineación por loci."
+  },
+  {
+   "workId": "theophrastus-historia-plantarum",
+   "author": "Teofrasto",
+   "title": "Περὶ φυτῶν ἱστορίας",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/theophrastus-historia-plantarum-grc-66c50429684fcbc3.json",
+   "reader": "classics-text-reader.html?work=theophrastus-historia-plantarum&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "66c50429684fcbc310917a14c056d58a3d1f0a070ac8aea64304e2a1e82ee673",
+   "passages": 919
+  },
+  {
+   "workId": "thucydides-war",
+   "author": "Tucídides",
+   "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "https://libros.vitruvius-digital-library.org/corpus/thucydides-war-grc-6090ade6c2c92022.json",
+   "reader": "classics-text-reader.html?work=thucydides-war&lang=grc",
+   "sourceDescription": "Edición TEI con licencia, URN, SHA256 y cobertura técnica comprobados; sin colación independiente",
+   "sha256": "6090ade6c2c92022de55e8b32bb46ccef6adff1f3fd735c44e96c8e86ac9e35d",
+   "passages": 3588
   },
   {
    "workId": "tibullus-elegiae",
