@@ -7,6 +7,47 @@ const lang={la:"latín",grc:"griego",es:"castellano",en:"inglés",fr:"francés",
 const greek={α:"a",β:"b",γ:"g",δ:"d",ε:"e",ζ:"z",η:"e",θ:"th",ι:"i",κ:"k",λ:"l",μ:"m",ν:"n",ξ:"x",ο:"o",π:"p",ρ:"r",σ:"s",τ:"t",υ:"y",φ:"ph",χ:"ch",ψ:"ps",ω:"o"};
 const normal=s=>String(s||"").normalize("NFKD").replace(/[\u0300-\u036f\u1dc0-\u1dff]/g,"").toLowerCase().replace(/ς/g,"σ").replace(/æ/g,"ae").replace(/œ/g,"oe").replace(/[^\p{L}\p{N}]+/gu," ").trim().replace(/\s+/g," ");
 const roman=s=>normal(s).replace(/[α-ω]/g,c=>greek[c]||c);
+const fold=s=>normal(s);const norm=s=>normal(s);
+const ancientGenres=[
+ ["epic","Épica"],["lyric","Poesía lírica"],["tragedy","Tragedia"],["comedy","Comedia"],
+ ["history","Historiografía"],["biography","Biografía"],["philosophy","Filosofía"],
+ ["rhetoric","Retórica y oratoria"],["dialogue","Diálogo"],["satire","Sátira"],
+ ["novel","Novela antigua"],["letters","Epistolografía"],["religion","Religión y exégesis"],
+ ["medicine","Medicina"],["science","Ciencias y matemáticas"],["geography","Geografía"],
+ ["architecture","Arquitectura y técnica"],["agriculture","Agronomía"],["law","Derecho"],
+ ["grammar","Gramática y filología"],["other","Otros géneros registrados"]
+];
+const genrePatterns={
+ epic:/epic|epop|epope|hom[eé]ric/,lyric:/liric|lyric|elegia|elegiac|oda|poesia amorosa/,
+ tragedy:/traged|tragic/,comedy:/comed|comic/,
+ history:/historiograf|historia|historical|cronica|annal/,
+ biography:/biograf|vidas|vitae|life of/,philosophy:/filosof|philosoph|estoic|platon|aristotel|sapiencial|etica/,
+ rhetoric:/retoric|rhetoric|oratoria|orat[oó]r|discurso|eloquenc/,
+ dialogue:/dialog/,satire:/satir/,novel:/novela|romance|narrativa de ficcion/,
+ letters:/epistolog|epistol|cartas|correspondencia/,
+ religion:/cristian|religion|exeges|teolog|patrist|himno|hymn|mitolog|mitograf/,
+ medicine:/medicin|farmacolog|medical/,science:/matemat|astronom|fisic|ciencia|naturalis|natural history/,
+ geography:/geograf|cartograf|etnograf|periplo/,
+ architecture:/arquitect|ingenier|agrimens|hidraul|mecanic|tecnic/,
+ agriculture:/agricult|agronom|botanic/,law:/juridic|derecho|leyes|legal/,
+ grammar:/gramat|linguist|filolog|erudic|lexic/
+};
+function ancientGenre(raw){
+ const g=normal(raw);if(!g)return "";
+ for(const [key] of ancientGenres)if(key!=="other"&&genrePatterns[key].test(g))return key;
+ return "other";
+}
+function romanNumber(x){let n=0,last=0;for(const c of [...String(x).toUpperCase()].reverse()){const v={I:1,V:5,X:10,L:50,C:100,D:500,M:1000}[c]||0;n+=v<last?-v:v;last=v}return n}
+function centuryOf(raw){
+ const s=normal(raw).replace(/a c|a e c|bce|bc|antes de cristo/g," bce ").replace(/d c|ce|ad|despues de cristo/g," ce ");
+ if(!s||/debatid|indeterminad|inciert|uncertain|disput|atribucion|composicion y atribuciones/.test(s))return "";
+ const centuries=s.match(/(?:siglo|siglos|century|centuries|s)\s+([ivxlcdm]+)\b/);
+ const era=/\bbce\b/.test(s)?"bce":/\bce\b/.test(s)?"ce":"";
+ if(centuries&&era){const n=romanNumber(centuries[1]);return n>=1&&n<=30?era+":"+n:"";}
+ const dated=s.match(/\b(\d{1,4})\s*(?:[-–]\s*\d{1,4})?\s*(bce|ce)\b/);
+ if(dated){const n=Number(dated[1]);return n>0?(dated[2]+":"+Math.ceil(n/100)):"";}
+ return "";
+}
 const make=(tag,text,cls)=>{
  const el=document.createElement(tag);if(text!=null)el.textContent=String(text);if(cls)el.className=cls;return el;
 };
@@ -48,10 +89,10 @@ function render(){
  const {input,list,count,more,limit}=model,q=input.value.trim();
  const items=model.items.filter(w=>{
   const author=fold(model.authorFilter.value.trim());
-  const genre=model.genreFilter.value,language=model.languageFilter.value,letter=model.letter;
-  const group=String(w.genre||"").trim();
+  const genre=model.genreFilter.value,century=model.centuryFilter.value,language=model.languageFilter.value,letter=model.letter;
+  const group=ancientGenre(w.genre);
   const key=norm(model.sortFilter.value==="title"?w.title:w.author).trim();
-  return (!author||fold(w.author).includes(author))&&(!genre||group===genre)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
+  return (!author||fold(w.author).includes(author))&&(!genre||group===genre)&&(!century||centuryOf(w.dating)===century)&&(!language||w.versions.some(v=>v.language===language))&&(!letter||key.startsWith(norm(letter)));
  });
  list.replaceChildren();more.hidden=true;
  if(!q){
@@ -62,7 +103,7 @@ function render(){
    const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");
    heading.append(make("strong",w.title),make("span"," · "+w.author));li.append(heading);
    const meta=make("p",null,"bws-meta"),languages=[...new Set(w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language))];
-   meta.textContent=languages.length?"Textos con acceso: "+languages.join(", "):w.facsimile?"Facsímil disponible · OCR automático":"Ficha catalográfica; texto no alojado";li.append(meta);
+   meta.textContent=[w.genre||"",w.dating||"",languages.length?"Textos con acceso: "+languages.join(", "):w.facsimile?"Facsímil disponible · OCR automático":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
    const actions=make("nav",null,"bws-actions");
    const o=w.versions.find(v=>["la","grc"].includes(v.language)&&safeReader(v.reader)),t=w.versions.find(v=>!["la","grc"].includes(v.language)&&safeReader(v.reader));
    if(o)addLink(actions,"Leer original",safeReader(o.reader));
@@ -89,7 +130,7 @@ function render(){
   const meta=make("p",null,"bws-meta");
   const langs=w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language);
   const avail=[...new Set(langs)];
-  meta.textContent=(w.dating?w.dating+" · ":"")+
+  meta.textContent=[w.genre||"",w.dating||""].filter(Boolean).join(" · ")+(w.genre||w.dating?" · ":"")+
    (avail.length?"Textos con acceso: "+avail.join(", "):w.facsimile?"Facsímil localizado; OCR no cotejado":"Ficha catalográfica; texto no disponible en este índice");
   item.append(meta);
   const actions=make("nav",null,"bws-actions");actions.setAttribute("aria-label","Acciones de "+w.title);
@@ -138,13 +179,22 @@ function mount(parent,data){
  const filters=make("div",null,"bws-library-filters");
  const authorFilter=make("input");authorFilter.type="search";authorFilter.placeholder="Filtrar por autor · Ὅμηρος / Homero / Homer";authorFilter.setAttribute("aria-label","Filtrar por autor en cualquier idioma");
  const genreFilter=make("select");genreFilter.setAttribute("aria-label","Tipo de obra");genreFilter.append(new Option("Todos los tipos de obras",""));
- const genreNames=[...new Set([...index.values()].map(w=>w.genre).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));
- genreNames.forEach(g=>genreFilter.append(new Option(g,g)));
+ const presentGenres=new Set([...index.values()].map(w=>ancientGenre(w.genre)).filter(Boolean));
+ ancientGenres.filter(([key])=>presentGenres.has(key)).forEach(([key,label])=>genreFilter.append(new Option(label,key)));
+ const centuryFilter=make("select");centuryFilter.setAttribute("aria-label","Siglo de composición");
+ centuryFilter.append(new Option("Todas las épocas y siglos",""));
+ const centuries=new Set([...index.values()].map(w=>centuryOf(w.dating)).filter(Boolean));
+ for(const era of ["bce","ce"])for(let n=30;n>=1;n--){
+  if(era==="ce"&&n>21)continue;
+  const key=era+":"+n;if(!centuries.has(key))continue;
+  const roman=(num)=>{let out="";for(const [v,t] of [[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]])while(num>=v){out+=t;num-=v}return out};
+  centuryFilter.append(new Option("Siglo "+roman(n)+(era==="bce"?" a. C.":" d. C."),key));
+ }
  const languageFilter=make("select");languageFilter.setAttribute("aria-label","Lengua de texto disponible");
  [["","Todas las lenguas"],["grc","Griego"],["la","Latín"],["es","Castellano"],["en","Inglés"],["fr","Francés"]].forEach(([v,t])=>languageFilter.append(new Option(t,v)));
  const sortFilter=make("select");sortFilter.setAttribute("aria-label","Orden alfabético");
  [["author","Orden por autor A–Z"],["title","Orden por título A–Z"]].forEach(([v,t])=>sortFilter.append(new Option(t,v)));
- filters.append(authorFilter,genreFilter,languageFilter,sortFilter);
+ filters.append(authorFilter,genreFilter,centuryFilter,languageFilter,sortFilter);
  const alphabet=make("nav",null,"bws-alphabet");alphabet.setAttribute("aria-label","Índice alfabético por autor o título");
  for(const l of ["Todos",..."ABCDEFGHIJKLMNOPQRSTUVWXYZ",..."ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ"]){
   const b=make("button",l);b.type="button";b.setAttribute("aria-pressed",l==="Todos"?"true":"false");
@@ -153,8 +203,8 @@ function mount(parent,data){
  section.append(title,subtitle,form,filters,alphabet,region,help);
  const metric=parent.querySelector(":scope > dl");
  if(metric)metric.insertAdjacentElement("beforebegin",section);else parent.prepend(section);
- model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,languageFilter,sortFilter,letter:"",limit:40};
- for(const el of [authorFilter,genreFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
+ model={items:[...index.values()],index,input,list,count,more,region,authorFilter,genreFilter,centuryFilter,languageFilter,sortFilter,letter:"",limit:40};
+ for(const el of [authorFilter,genreFilter,centuryFilter,languageFilter,sortFilter])el.addEventListener("input",()=>{model.limit=40;render()});
  list.tabIndex=0;list.setAttribute("aria-label","Obras: use las flechas arriba y abajo, Intro para abrir el enlace");
  list.addEventListener("keydown",e=>{
   if(!["ArrowDown","ArrowUp","Home","End"].includes(e.key))return;
@@ -169,7 +219,7 @@ function mount(parent,data){
   if(ix<0)return;e.preventDefault();anchors[Math.max(0,Math.min(anchors.length-1,ix+(e.key==="ArrowDown"?1:-1)))].focus();
  });
  form.addEventListener("submit",e=>{e.preventDefault();model.limit=40;render()});
- input.addEventListener("input",()=>{model.limit=10;render()});
+ input.addEventListener("input",()=>{model.limit=40;render()});
  more.addEventListener("click",()=>{model.limit+=20;render()});
  render();
  fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("aliases unavailable");return r.json()}).then(j=>{
