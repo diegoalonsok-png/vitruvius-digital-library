@@ -138,3 +138,6 @@ html body .cl-translation-column .cl-translation-output > p:not(.cl-caution){
  .cl-dual-reader:not(.single-source){grid-template-areas:"source translation"}
  .cl-dual-reader.translation-first:not(.single-source){grid-template-areas:"translation source"}
 }
+
+/* When no translation column is available, keep the original as one full-width pane. */
+.cl-dual-reader.single-source{grid-template-areas:"source"!important;grid-template-columns:minmax(0,1fr)!important}
