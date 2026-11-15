@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {JSDOM} from 'jsdom';
 const read=p=>JSON.parse(readFileSync(p,'utf8'));
 const catalog=read('data/bibliotheca-graeca-latina-I-bce-I-ce.json').works;
 const registry=read('data/classics-corpus/search-registry.json').entries;
@@ -31,4 +32,20 @@ for(const e of registry.filter(e=>e.path.startsWith('https:'))){
  const source=manifest.obras.find(x=>x.workId===e.workId&&x.language===e.language&&e.path===manifest.base+x.archivo);
  assert(source&&source.pasajes>0&&/^[a-f0-9]{64}$/.test(source.sha256),'Declared R2 text needs its recorded object identity');
 }
-console.log('PASS: current catalog, witnesses, translations, local originals, declared R2 texts and external sources agree without promoting declarations to live verification');
+// Exercise the published inventory table, including its distinction between
+// local files and remote declarations after derived metadata is refreshed.
+const dom=new JSDOM(readFileSync('auditoria-textos-clasicos.html','utf8'),{url:'https://example.org/auditoria-textos-clasicos',runScripts:'outside-only'});
+const w=dom.window;
+w.fetch=async url=>({ok:true,json:async()=>read(String(url).split('?')[0])});
+w.eval([...w.document.querySelectorAll('script:not([src])')].map(s=>s.textContent).find(s=>s.includes('let all=[],remoteIndexedIds=')));
+for(let i=0;i<5;i++)await new Promise(resolve=>setImmediate(resolve));
+const filter=w.document.getElementById('audit-filter');filter.value='indexed';filter.dispatchEvent(new w.Event('change'));
+assert.equal(w.document.querySelectorAll('#audit-rows tr').length,new Set(registry.map(e=>e.workId)).size);
+const remoteRow=w.document.querySelector('a[href$="work=apolonio-argonauticas"]').closest('tr');
+assert.match(remoteRow.cells[2].textContent,/^R2 · registro declarado/);
+assert.equal(w.document.getElementById('audit-local-originals').textContent,String(local.size));
+assert.equal(w.document.getElementById('audit-r2-originals').textContent,String(r2.size));
+filter.value='local';filter.dispatchEvent(new w.Event('change'));
+assert.equal(w.document.querySelectorAll('#audit-rows tr').length,coverage.counts.locallyReadableClaims);
+w.close();
+console.log('PASS: current catalog, witnesses, translations, local originals, declared R2 texts, external sources and public table agree without promoting declarations to live verification');

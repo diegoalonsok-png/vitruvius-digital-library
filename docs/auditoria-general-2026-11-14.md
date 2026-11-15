@@ -19,7 +19,7 @@ Si falla la carga del JSON OCR, el lector intenta la capa textual de esa misma p
 ## Correcciones de esta revisión final
 
 - Los lectores y buscadores esperan el HTML actualizado de red en rutas con y sin `.html`, incluido el subdirectorio de GitHub Pages. Conservan lectura en caché sin conexión. La prueba de regresión ahora verifica este comportamiento en vez de exigir una forma concreta del código.
-- Se actualizaron las copias de estados del catálogo y el recuento de testimonios, que aún mostraba 23 frente a los 106 registrados.
+- Se actualizaron las copias de estados del catálogo y el recuento de testimonios, que aún mostraba 23 frente a los 106 registrados. La tabla pública distingue las filas R2 de los archivos locales; su filtro de búsqueda incluye correctamente ambos grupos y sus cifras se calculan desde el registro.
 - La sincronización conserva la distinción vigente del sitio: **original local**, **original declarado en R2** e **índice externo**. Los campos de compatibilidad utilizados por los lectores permanecen estables; se añaden campos explícitos para archivos locales y objetos R2. Regenerar los datos no convierte una declaración remota en una verificación de disponibilidad.
 - Se completaron los estados CTS no verificados de 49 registros y se actualizó el generador. El contador estático de procedencia muestra las 271 obras actuales. No se atribuye afiliación a Perseus ni resolución CTS sin evidencia.
 - La prueba de los diez prefacios del códice H cierra sus ventanas, concluye normalmente y devuelve error si falla algún folio.
