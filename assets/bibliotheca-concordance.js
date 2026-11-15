@@ -3,7 +3,7 @@
    Los candidatos morfológicos no se presentan como lemas verificados. */
 (()=>{"use strict";
 const node=(tag,txt,cls)=>{const n=document.createElement(tag);if(txt!==undefined&&txt!==null)n.textContent=String(txt);if(cls)n.className=cls;return n};
-const safeLink=s=>{try{const u=new URL(String(s||""),location.href);return u.origin===location.origin&&/\.html(?:$|[?#])/.test(u.pathname+u.search)?u.pathname+u.search+u.hash:""}catch{return ""}};
+const safeLink=s=>{try{const u=new URL(String(s||""),location.href);return u.origin===location.origin&&/\/([a-z0-9-]+\/)*[a-z0-9-]+\.html$/i.test(u.pathname)?u.pathname+u.search+u.hash:""}catch{return ""}};
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ").trim();
 let token=0,versions=[];
 function init(){
@@ -11,6 +11,8 @@ function init(){
  if(!parent||document.getElementById("bibliotheca-concordance"))return;
  const pane=node("section",null,"bws-concordance");pane.id="bibliotheca-concordance";
  const h=node("h3","Concordancia filológica de obras y pasajes");
+ const permalink=node("a","Copiar enlace de esta consulta");permalink.href="#bibliotheca-concordance";permalink.className="bws-concordance-permalink";permalink.hidden=true;
+ permalink.addEventListener("click",async e=>{e.preventDefault();try{await navigator.clipboard.writeText(permalink.href);permalink.textContent="Enlace copiado"}catch{location.href=permalink.href}});
  const p=node("p","Búsqueda literal en textos efectivamente indexados (griego y latín). Cada resultado conserva obra, edición, locus y un enlace al pasaje. Las formas flexionadas solo se buscan si se escriben; esto no es lematización académica automática.");
  const form=node("form");form.setAttribute("role","search");form.setAttribute("aria-label","Concordancia académica");
  const q=node("input");q.type="search";q.placeholder="architectura · symmetria · Ἀχιλλεύς · πόλις";q.required=true;q.maxLength=120;q.setAttribute("aria-label","Palabra o frase exacta, griega o latina");
@@ -23,7 +25,7 @@ function init(){
  const results=node("ol",null,"bws-concordance-hits");
  const more=node("button","Mostrar más loci");more.type="button";more.hidden=true;
  const method=node("p","Método: búsqueda literal sobre transcripciones con pasajes identificados; el resultado no certifica manuscritos ni establece un aparato crítico. Los manuscritos OCR y las traducciones quedan excluidos de este filtro. Los loci proceden de los registros originales; no se generan numeraciones nuevas.","bws-help");
- pane.append(h,p,form,count,results,more,method);
+ pane.append(h,p,form,permalink,count,results,more,method);
  const workPanel=document.getElementById("bibliotheca-work-search");
  if(workPanel)workPanel.insertAdjacentElement("afterend",pane);else parent.append(pane);
  let hits=[],display=0,searching=false;
@@ -45,7 +47,7 @@ function init(){
    li.append(meta,node("p",x.excerpt||"","bws-concordance-excerpt"));
    const cite=node("button","Copiar referencia");cite.type="button";
    cite.addEventListener("click",async()=>{
-    const value=[x.author,x.title,x.locus,x.edition,x.source,location.origin+url].filter(Boolean).join(" · ");
+    const value=[x.author,x.title,x.locus,"Lengua: "+x.language,x.edition?"Edición: "+x.edition:"",x.attribution?"Procedencia: "+x.attribution:"",x.source?"Archivo: "+x.source:"",url?location.origin+url:""].filter(Boolean).join(" · ");
     try{await navigator.clipboard.writeText(value);cite.textContent="Referencia copiada"}
     catch{cite.textContent="Seleccione el enlace para copiar la referencia"}
    });
@@ -62,6 +64,10 @@ function init(){
   const engine=window.ClassicsCorpusSearch;
   if(!engine?.searchPassages){setState("La búsqueda de pasajes no está disponible; el catálogo de títulos sigue funcionando.");return}
   const matches=versions.filter(v=>(!lang.value||v.language===lang.value)&&(!works.value||v.workId===works.value));
+  const share=new URL(location.href);share.searchParams.set("concordance",term);
+  if(lang.value)share.searchParams.set("c-lang",lang.value);else share.searchParams.delete("c-lang");
+  if(works.value)share.searchParams.set("c-work",works.value);else share.searchParams.delete("c-work");
+  share.hash="bibliotheca-concordance";permalink.href=share.href;permalink.hidden=false;permalink.textContent="Copiar enlace de esta consulta";
   if(!matches.length){setState("No hay transcripciones originales registradas con esos filtros.");return}
   searching=true;go.disabled=true;
   setState("Examinando textos y loci de las ediciones seleccionadas…");
@@ -78,7 +84,11 @@ function init(){
    hits=list.filter(x=>["la","grc"].includes(x.language)&&!x.ocr&&
     (!works.value||x.workId===works.value)&&(!lang.value||x.language===lang.value)&&
     allowed.has([x.workId,x.language,x.source].join("|")));
-   setState(hits.length+" loci recuperados de las versiones originales registradas. Resultado limitado a un máximo de 250; no equivale al recuento total de ocurrencias.");
+   const diag=engine.diagnostics?.()||{};
+   const failures=Number(diag.failed||0);
+   const examined=Number(diag.loaded||0);
+   const suffix=failures?" · Advertencia: "+failures+" edición(es) no pudieron leerse; el resultado es incompleto.":"";
+   setState(hits.length+" loci recuperados · "+examined+" ediciones textuales leídas"+suffix+". Máximo 250 registros; no es un recuento exhaustivo.");
    if(!hits.length)results.append(node("li","Sin testimonios recuperados en este ámbito. No implica ausencia en otras ediciones."));
    render();
   }catch(error){if(my===token)setState("Falló la consulta de pasajes. No se puede afirmar que el término esté ausente.")}
