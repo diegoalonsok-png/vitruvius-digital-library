@@ -103,3 +103,7 @@ html[data-theme="light"] body #bibliotheca-work-search .bws-alphabet button{back
 html[data-theme="light"] body #bibliotheca-work-search .bws-alphabet button[aria-pressed="true"]{background:#d5b072!important;color:#192a34!important}
 @media(max-width:950px){#bibliotheca-work-search .bws-library-filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:580px){#bibliotheca-work-search .bws-library-filters{grid-template-columns:minmax(0,1fr)}#bibliotheca-work-search .bws-results{max-height:65vh}}
+
+/* Seis filtros combinables: autor, género, siglo, periodo histórico, idioma y orden. */
+@media(min-width:1100px){#bibliotheca-work-search .bws-library-filters{grid-template-columns:minmax(220px,1.6fr) repeat(3,minmax(140px,1fr))}#bibliotheca-work-search .bws-library-filters select:nth-of-type(4){grid-column:auto}}
+#bibliotheca-work-search .bws-library-filters select{font-size:16px;min-width:0}
