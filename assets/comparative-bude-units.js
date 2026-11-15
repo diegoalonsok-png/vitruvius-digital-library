@@ -78,6 +78,12 @@ async function render(query){
    sourceRows.forEach((row,i)=>{if(i)provenance.append(" · ");provenance.append(A(row.version+" · Apéndice T, p. "+row.page,row.pdf));});
   }else provenance.append("Referencias textuales indicadas arriba; revisar identificadores en el Apéndice T.");
   verified.append(provenance);
+  if(e.imageInspection){
+   const observed=E("p",null,"bude-note");
+   observed.append("FOLIO EXAMINADO · SIN LECTURA CERTIFICADA: "+e.imageInspection.warning+" ");
+   observed.append(A("Examinar fotografía en GitHub","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/"+e.imageInspection.file));
+   verified.append(observed);
+  }
   if(e.visualEvidence){
    const proof=E("p",null,"bude-note");
    proof.append("LECTURA DIRECTA DE H: "+e.visualEvidence.observedReading+" · f. "+e.visualEvidence.folio+". ");
