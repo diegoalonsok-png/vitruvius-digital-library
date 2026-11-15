@@ -21,13 +21,41 @@ function init(){
  row.append(label,lang,work,launch);
  const status=mk("p","Búsqueda ampliada activada: el próximo envío buscará en Vitruvio y en las transcripciones clásicas; puede desactivar esta opción para una consulta rápida.","front-classics-status");
  status.setAttribute("role","status");status.setAttribute("aria-live","polite");
+ const titles=mk("div",null,"front-classics-titles");
  const result=mk("ol",null,"front-classics-results");
  const more=mk("button","Mostrar otros pasajes");more.type="button";more.hidden=true;
  const catalog=mk("p");const link=mk("a","Explorar todas las obras y sus ediciones");link.href="bibliotheca-graeca-latina.html";catalog.append(link);
  const caveat=mk("p","Para no bloquear la portada, los textos se solicitan únicamente al ejecutar una búsqueda en el corpus. La ausencia de resultados no demuestra ausencia en facsímiles o ediciones no indexadas. El cotejo manuscrito se consulta en otra sección.","front-classics-method");
- panel.append(head,explain,row,status,result,more,catalog,caveat);
+ panel.append(head,explain,row,status,titles,result,more,catalog,caveat);
  form.insertAdjacentElement("afterend",panel);
  let versions=[],current=0,items=[],count=0,loaded=false;
+ const foldTitle=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").replace(/[^a-z0-9\u0370-\u03ff\u1f00-\u1fff]+/gi," ").toLowerCase().trim();
+ const aliases={"julio cesar":"caesar","julius caesar":"caesar","jules cesar":"caesar","gaius iulius caesar":"caesar","homero":"homer","homer":"homer","homere":"homer","aristoteles":"aristotle","aristotle":"aristotle","aristote":"aristotle","virgilio":"virgil","virgil":"virgil","virgile":"virgil","ciceron":"cicero"};
+ const renderTitles=q=>{
+  titles.replaceChildren();const key=foldTitle(q),alias=aliases[key];if(key.length<2)return 0;
+  const found=new Map();
+  for(const v of versions){
+   const id=foldTitle(v.workId.replace(/-/g," ")),title=foldTitle(v.title),author=foldTitle(v.author);
+   if(!(title.includes(key)||author.includes(key)||id.includes(key)||(alias&&id.startsWith(alias+" "))))continue;
+   if(!found.has(v.workId))found.set(v.workId,[]);
+   found.get(v.workId).push(v);
+  }
+  if(found.size)titles.append(mk("h4","Obras localizadas por autor o título · registros bibliográficos"));
+  for(const [id,editions] of [...found].slice(0,12)){
+   const card=mk("article",null,"front-classics-title-card"),e=editions[0],nav=mk("nav");
+   card.append(mk("strong",[e.author,e.title].filter(Boolean).join(" · ")));
+   const langs=new Set();
+   for(const item of editions){
+    const url=safe(item.reader);if(!url||langs.has(item.language))continue;
+    langs.add(item.language);
+    const link=mk("a","Leer "+(item.language==="la"?"latín":"griego"));link.href=url;nav.append(link);
+   }
+   const ref=mk("a","Ficha académica");ref.href="classics-work-record.html?work="+encodeURIComponent(id);nav.append(ref);
+   card.append(nav);titles.append(card);
+  }
+  if(found.size>12)titles.append(mk("p","Se muestran 12 obras; refine el nombre para encontrar otras."));
+  return found.size;
+ };
  const draw=()=>{
   const next=items.slice(count,count+20);
   for(const x of next){
@@ -54,11 +82,12 @@ function init(){
   loaded=true;
  }
  async function search(){
-  const id=++current,q=query.value.trim();result.replaceChildren();more.hidden=true;items=[];count=0;
+  const id=++current,q=query.value.trim();result.replaceChildren();titles.replaceChildren();more.hidden=true;items=[];count=0;
   if(normalize(q).length<2){status.textContent="Escriba por lo menos dos caracteres en la búsqueda principal.";return}
   launch.disabled=true;status.textContent="Preparando el índice de textos originales…";
   try{
    await getWorks();if(id!==current)return;
+   const workMatches=renderTitles(q);
    const valid=versions.filter(v=>(!lang.value||v.language===lang.value)&&(!work.value||v.workId===work.value));
    if(!valid.length){status.textContent="Sin versiones originales registradas para esos filtros.";return}
    const byEntry=new Set(valid.map(v=>[v.workId,v.language,v.path].join("|")));
@@ -69,14 +98,14 @@ function init(){
    items=hits.filter(x=>["la","grc"].includes(x.language)&&!x.ocr&&byEntry.has([x.workId,x.language,x.source].join("|")));
    const diag=corpus.diagnostics?.()||{};
    const fail=Number(diag.failed||0);
-   status.textContent=items.length+" pasajes recuperados"+(fail?" · "+fail+" ediciones no pudieron leerse: resultado parcial":"")+" · máximo 150 registros, no un recuento exhaustivo.";
+   status.textContent=workMatches+" obras localizadas · "+items.length+" pasajes recuperados"+(fail?" · "+fail+" ediciones no pudieron leerse: resultado parcial":"")+" · máximo 150 registros, no un recuento exhaustivo.";
    if(!items.length)result.append(mk("li","No se recuperaron pasajes en las ediciones disponibles. Puede probar otra forma o seleccionar una obra."));
    draw();
   }catch(err){if(id===current)status.textContent="No se pudo verificar el corpus clásico. El buscador principal de Vitruvio sigue disponible."}
   finally{if(id===current)launch.disabled=false}
  }
  launch.addEventListener("click",search);
- form.addEventListener("submit",()=>{if(active.checked)void search();else {current++;items=[];result.replaceChildren();more.hidden=true;status.textContent="Búsqueda limitada a Vitruvio. Active el corpus o use el botón de Bibliotheca."}});
+ form.addEventListener("submit",()=>{if(active.checked)void search();else {current++;items=[];result.replaceChildren();titles.replaceChildren();more.hidden=true;status.textContent="Búsqueda limitada a Vitruvio. Active el corpus o use el botón de Bibliotheca."}});
  for(const select of [lang,work])select.addEventListener("change",()=>{current++;items=[];result.replaceChildren();more.hidden=true;status.textContent="Filtros modificados. Ejecute la búsqueda del corpus."});
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
