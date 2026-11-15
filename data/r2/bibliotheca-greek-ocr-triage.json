@@ -1,7 +1,7 @@
 {
   "schema": "vdl-greek-ocr-triage-v1",
-  "generated": "2026-11-15T04:16:12.826Z",
-  "source": "Auditoría léxica de R2 del 15-11-2026, muestreo de 117 ediciones; datos derivados sin reapertura de PDF",
+  "generated": "2026-11-15T04:21:43.246Z",
+  "source": "Auditoría léxica R2 sobre 117 ediciones; no sustituye comprobación de portada o folio.",
   "summary": {
     "greekWorkEdits": 67,
     "noGreekRootsDetected": 35,
@@ -17,7 +17,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=antologia-griega",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "aristoteles-historia-animales",
@@ -28,7 +28,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=aristoteles-historia-animales",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "aristoteles-metafisica",
@@ -39,7 +39,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=aristoteles-metafisica",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "aristoteles-politica",
@@ -50,7 +50,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=aristoteles-politica",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "aristoteles-meteorologica",
@@ -61,7 +61,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=aristoteles-meteorologica",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "ptolemy-geographia",
@@ -72,7 +72,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "demostenes-discursos",
@@ -83,7 +83,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=demostenes-discursos",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "diogenes-laercio-vidas",
@@ -94,7 +94,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=diogenes-laercio-vidas",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "epicuro-restos",
@@ -105,7 +105,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=epicuro-restos",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "esquilo-tragedias",
@@ -116,7 +116,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=esquilo-tragedias",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "euclides-elementos",
@@ -127,7 +127,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=euclides-elementos",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "euripides-tragedias",
@@ -138,7 +138,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=euripides-tragedias",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "filostrato-apolonio",
@@ -149,7 +149,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=filostrato-apolonio",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "galeno-opera-kuhn",
@@ -160,7 +160,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=galeno-opera-kuhn",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "galeno-kuhn-vol01",
@@ -171,7 +171,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol01",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "herodoto-historias",
@@ -182,7 +182,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=herodoto-historias",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "iseo-discursos",
@@ -193,7 +193,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=iseo-discursos",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "jenofonte-anabasis",
@@ -204,7 +204,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=jenofonte-anabasis",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "jenofonte-economico",
@@ -215,7 +215,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=jenofonte-economico",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "lisias-discursos",
@@ -226,7 +226,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=lisias-discursos",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "longo-dafnis-cloe",
@@ -237,7 +237,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=longo-dafnis-cloe",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "luciano-obras",
@@ -248,7 +248,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=luciano-obras",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "origenes",
@@ -259,7 +259,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=origenes",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "platon-banquete",
@@ -270,7 +270,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=platon-banquete",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "platon-cratilo-parmenides",
@@ -281,7 +281,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=platon-cratilo-parmenides",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "platon-fedon",
@@ -292,7 +292,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=platon-fedon",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "platon-protagoras",
@@ -303,7 +303,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=platon-protagoras",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "platon-leyes",
@@ -314,7 +314,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=platon-leyes",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "plotino-eneadas",
@@ -325,7 +325,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=plotino-eneadas",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "lyra-graeca",
@@ -336,7 +336,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=lyra-graeca",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "proclo-comentario-euclides",
@@ -347,7 +347,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=proclo-comentario-euclides",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "longino-sublime",
@@ -358,7 +358,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=longino-sublime",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "teofrasto-historia-plantas",
@@ -369,7 +369,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=teofrasto-historia-plantas",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "teon-esmirna-expositio",
@@ -380,7 +380,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=teon-esmirna-expositio",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     },
     {
       "editionId": "tucidides-historia",
@@ -391,7 +391,7 @@
       "greekRootsDetected": 0,
       "status": "requires_content_language_check",
       "reader": "buscador-facsimiles-clasicos.html?obra=tucidides-historia",
-      "note": "Sin raíces griegas detectadas en OCR. Puede tratarse de edición de traducción sola, falta de reconocimiento del alfabeto o datos bibliográficos erróneos. No equivale a ausencia del griego en el PDF."
+      "note": "La búsqueda por OCR no ha detectado raíces griegas. Verificar idioma de la edición, páginas interiores y OCR antes de declarar disponible el original griego."
     }
   ]
 }
