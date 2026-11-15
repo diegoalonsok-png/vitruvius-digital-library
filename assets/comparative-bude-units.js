@@ -172,6 +172,19 @@ async function render(query){
   if(!material.length&&!pending.h.anclas?.length)triage.append(E("p","No consta una localización explícita de H para este locus. La concordancia ofrece una estimación por libro, señalada como tal; se requiere cotejo directo de la imagen.","bude-note"));
   triage.append(A("Consultar H y cotejar este locus","concordancia-folios.html?locus="+encodeURIComponent(locus)));
  }
+ const books=data.kuriloBooks?.loci?.find(x=>x.locus===locus);
+ if(books){
+  const ed=section("Editiones Kurilo · V514 / V554 / V297");
+  const similarity=books.latin.similitud_normalizada_v514_v297;
+  ed.append(E("p","V514: latín y castellano estructurados · V297: "+(books.latin.v297==="disponible"?"latín e inglés estructurados":"locus sin texto estructurado")+" · V554: lectura no comprobable en esta consulta (archivo francés no recuperable).","bude-note"));
+  ed.append(E("p","Similitud digital V514/V297: "+(similarity==null?"no disponible":similarity+" %")+". "+(books.latin.identidad_secuencial_normalizada===true?"Secuencia normalizada coincidente.":books.latin.identidad_secuencial_normalizada===false?"Secuencia normalizada distinta; cotejo editorial pendiente.":"Comparación incompleta.")+" No atribuir a códices manuscritos.","bude-note"));
+  for(const [title,entries,kind] of [["Apéndice T de las ediciones",books.apendice_t,"appendix"],["Notas y glosas de tus libros",books.notas_autorales,"notes"]]){
+   if(!entries?.length)continue;
+   const details=E("details");details.append(E("summary",title+" · "+entries.length+" registros"));
+   for(const x of entries){const p=E("p",null,"bude-note");p.append((x.version||"Edición")+" · "+(kind==="appendix"?(x.grado+" · p. "+x.page+" · folios "+(x.folios||[]).join(", ")):(x.lemma||"sin lema")+" · "+(x.glosa||""))+" · ",A("Fuente",x.pdf));details.append(p)}
+   ed.append(details);
+  }
+ }
  const h=section("Testimonium H · primer testimonio: inspección de folios");
  h.append(E("p","Harley MS 2767 (British Library, ca. 800–824): la fuente manuscrita más antigua conservada de De architectura. El cotejo debe comenzar con la imagen del folio, no con una transcripción derivada. Los enlaces de locus estimado no demuestran la lectura.","bude-note"));
  try{
@@ -270,8 +283,8 @@ async function render(query){
 }
 (async()=>{try{
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
- const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage,pendingH]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json","data/apparatus/cobertura-testimonial-731.json","data/apparatus/cotejo-h-pendientes-24.json"].map(json));
- data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage,pendingH};loci=es.passages.map(p=>p.locus);
+ const [es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage,pendingH,kuriloBooks]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json","data/text/krohn-1912-perseus-loci-candidate.json","data/collation-loci.json","data/apparatus/krohn-kurilo-variantes-candidatas.json","data/apparatus/cobertura-testimonial-731.json","data/apparatus/cotejo-h-pendientes-24.json","data/apparatus/cotejo-ediciones-kurilo-731.json"].map((url)=>url==="data/structured/recensio-fr.json"?json(url).catch(()=>({passages:[]})):json(url)));
+ data={es,fr,en,comparison,appendix,author,curated,hmap,krohn,ocr,variants,coverage,pendingH,kuriloBooks};loci=es.passages.map(p=>p.locus);
  syncNavigator=setupNavigator();
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
