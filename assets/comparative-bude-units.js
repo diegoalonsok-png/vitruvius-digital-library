@@ -60,7 +60,7 @@ function evidenceFacsimile(file,folio,locus){
 function section(title){const s=E("section");s.append(E("h3",title));root.append(s);return s}
 async function render(query){
  const locus=norm(query),position=loci.indexOf(locus),token=++sequence;
- if(position<0){status.textContent="Locus no indexado: "+query+"; comprobá la numeración.";return}
+ if(position<0){status.textContent="Locus no indexado: "+query+"; comprueba la numeración.";return}
  $("bude-locus").value=fmt(locus);
  syncNavigator?.(locus);
  const summarySearch=$("q");if(summarySearch&&summarySearch.value!==locus){summarySearch.value=locus;summarySearch.dispatchEvent(new Event("input",{bubbles:true}));}
