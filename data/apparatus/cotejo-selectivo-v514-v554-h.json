@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice. Control visual de H ff. 1v y 4v en las secuencias ea nascitur & fabrica y uti fuerit Aristarchus: las siglas de aparato histórico se mantienen diferenciadas del testimonio directo del códice.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice. Control visual de H ff. 1v y 4v en las secuencias ea nascitur & fabrica y uti fuerit Aristarchus: las siglas de aparato histórico se mantienen diferenciadas del testimonio directo del códice. Observación visual adicional de H f. 2v, «civitate declarata», cotejada con V514/V554 y el extracto OCR del aparato de Krohn, manteniendo estado independiente para el impreso.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -48,15 +48,28 @@
         "V554-T-p1110-214"
       ],
       "note": "Ambas ediciones consignan esta divergencia y mantienen deflagrata por coherencia contextual. La atribución paleográfica de declarata es tentativa.",
-      "status": "contexto de H localizado; lectura variante pendiente de certificar por ampliación",
-      "imageInspection": {
+      "status": "lectura declarata contrastada en imagen H f. 2v; cotejo impreso de Krohn/Rose pendiente",
+      "verifiedAutopsy": true,
+      "evidenceClass": "visual_folio_reading",
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
         "folio": "2v",
         "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_012_f-2v.jpg",
-        "inspection": "fotografía local de alta resolución abierta y examinada",
-        "warning": "Se localizan en el folio las menciones de la civitas y de «posteris nota poena». La lectura de deflagrata/declarata exige ampliación para fijar la secuencia exacta."
+        "observedReading": "civitate declarata",
+        "verification": "inspección visual directa de la imagen local; grafía expandida/normalizada",
+        "note": "La secuencia aparece en el cuerpo de la narración de Carya. La interpretación declarata concuerda con el Apéndice T V514/V554; para certificar los trazos individualizados de las letras aún cabe utilizar lupa IIIF. Krohn OCR reporta «deflagrata Kr : declarata x»."
       },
-      "verifiedAutopsy": false,
-      "evidenceClass": "visual_context_not_lemma"
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "I.1.5",
+        "selected": "civitate deflagrata",
+        "selectedAttribution": "Kur. V514 (lectio recepta; cf. Kr. OCR)",
+        "variant": "civitate declarata",
+        "variantAttribution": "H (ex imagine)",
+        "folio": "2v",
+        "display": "‖ I.1.5 civitate deflagrata Kur. (cf. Kr. ex OCR) : civitate declarata H (f. 2v, ex imagine) ‖",
+        "caution": "H transmite una forma leída como declarata, cotejada contra imagen y concordante con apéndices autorales. El aparato de Kr. obtenido por OCR informa la oposición, pero su impreso debe controlarse antes de certificarse como lectura propia del editor."
+      }
     },
     {
       "locus": "1.1.5",
