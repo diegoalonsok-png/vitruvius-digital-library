@@ -67,7 +67,7 @@ jobs:
       - name: Catalogar cobertura de OCR, sin confundirla con texto crítico
         run: python scripts/build-bibliotheca-ocr-coverage.py
       - name: Cotejar palabras y páginas reales del índice R2 y abrir visores
-        run: node scripts/audit-bibliotheca-lexical-live.mjs --required
+        run: node scripts/audit-bibliotheca-lexical-live.mjs --required --full
       - name: Integridad de lectura y fusión semántica
         run: |
           node scripts/test-r2-indice-fusion.mjs
