@@ -52,8 +52,8 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 
 .ab-compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:17px 0 25px}
 .ab-compare article{background:var(--ab-paper);border:1px solid var(--ab-rule);padding:16px;min-width:0}
-.ab-compare h3{font:600 14px system-ui;margin:0 0 8px}
-.ab-compare .ab-text{font-size:15px;line-height:1.75;max-height:350px;overflow:auto}
+.ab-compare-appearance{display:flex;gap:10px;align-items:end;flex-wrap:wrap;border:1px solid var(--ab-rule);padding:12px;font:12px system-ui;margin:12px 0}.ab-compare-appearance label{display:grid;gap:4px}.ab-compare-appearance button,.ab-compare-appearance select{padding:6px;border:1px solid var(--ab-rule);background:var(--ab-paper);color:var(--ab-ink)}.ab-compare{--compare-font:"Gentium Book Plus",Georgia,serif;--compare-size:19px;--compare-ink:#29251e;--compare-paper:#fffefa}.ab-compare article{background:var(--compare-paper);color:var(--compare-ink)}.ab-compare .ab-text{font-family:var(--compare-font);font-size:var(--compare-size)}.ab-compare h3{font:600 14px system-ui;margin:0 0 8px}
+.ab-compare .ab-text{line-height:1.75;max-height:350px;overflow:auto}
 .ab-compare small{display:block;font:11px/1.5 system-ui;color:var(--ab-muted);margin:8px 0}
 .ab-entry .lemma{font-style:italic;font-weight:600}
 .ab-entry .divider-lemma{padding:0 .4em;color:var(--ab-accent)}
@@ -133,9 +133,9 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 <h2 id="triple-title">Collatio textuum · Rose, Krohn, Kurilo</h2>
 <p id="ab-comparison-highlight-status" role="status" aria-live="polite" class="ab-status"></p>
 <p class="ab-sub">Tres textos latinos alineados por <i>locus</i>. Los textos de Rose y Krohn son segmentos OCR históricos alineados automáticamente. Se pueden leer y comparar por locus, independientemente de la verificación paleográfica de variantes manuscritas. El ruido OCR no se considera variante crítica.</p>
-<div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
-<article><h3>Rose · 1899</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><details id="compare-rose-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-rose-changes"></p><div class="ab-text" id="compare-rose-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
-<article><h3>Krohn · 1912</h3><small>Texto latino disponible por OCR · lectura comparativa</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><details id="compare-krohn-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-krohn-changes"></p><div class="ab-text" id="compare-krohn-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
+<div class="ab-compare-appearance" role="group" aria-label="Personalizar los tres textos latinos"><label>Letra <select id="ab-compare-font"><option value="gentium">Gentium</option><option value="georgia">Georgia</option><option value="serif">Serif</option><option value="sans">Sin serif</option></select></label><label>Tamaño <input id="ab-compare-size" type="range" min="14" max="27" value="19"></label><label>Color de texto <input id="ab-compare-ink" type="color" value="#29251e"></label><label>Color de papel <input id="ab-compare-paper" type="color" value="#fffefa"></label><button id="ab-compare-reset" type="button">Restablecer</button><span id="ab-index-status" role="status" aria-live="polite"></span></div><div class="ab-compare" role="group" aria-label="Tres textos latinos enfrentados">
+<article><h3>Rose · 1899</h3><small id="compare-rose-source">Comprobando transcripción digital…</small><div class="ab-text" lang="la" id="compare-rose"></div><small id="compare-rose-status"></small><details id="compare-rose-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-rose-changes"></p><div class="ab-text" id="compare-rose-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-rose-link" href="https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf" target="_blank" rel="noopener noreferrer">Folio impreso de Rose</a></article>
+<article><h3>Krohn · 1912</h3><small id="compare-krohn-source">Comprobando transcripción digital…</small><div class="ab-text" lang="la" id="compare-krohn"></div><small id="compare-krohn-status"></small><details id="compare-krohn-ocr-detail" hidden><summary>Ver OCR original y ajustes de lectura</summary><p class="ab-none" id="compare-krohn-changes"></p><div class="ab-text" id="compare-krohn-original" lang="la" style="font-size:13px;line-height:1.6"></div></details><a id="compare-krohn-link" href="documents/krohn-1912.pdf" target="_blank" rel="noopener noreferrer">Página impresa de Krohn</a></article>
 <article><h3>Kurilo · V514</h3><small>Texto latino de la edición académica V514</small><div class="ab-text" lang="la" id="compare-kurilo"></div><small>Fuente: V514, pasaje estructurado.</small><a id="compare-kurilo-link" href="lector-bilingue.html?edition=recensio-es&amp;locus=1.1.1">Lector de Kurilo</a></article>
 </div></section>
 <section aria-labelledby="ab-h-title" class="ab-documentation" id="ab-h-evidence">
@@ -205,6 +205,7 @@ h1{font:400 clamp(29px,3.5vw,46px)/1.2 Georgia,serif;margin:10px 0}h2{font:400 2
 const $=s=>document.querySelector(s),set=(s,v)=>{$(s).textContent=v==null?"":String(v)},format=l=>String(l||"").replace(/^([0-9]+)\./,(_,n)=>({1:"I",2:"II",3:"III",4:"IV",5:"V",6:"VI",7:"VII",8:"VIII",9:"IX",10:"X"}[n]||n)+".");
 const pUrl=new URL(location.href),params=new URLSearchParams(pUrl.search);
 let data=null,comp=null,collation=null,ocrFixes={loci:{}},translations={es:null,fr:null,en:null},rows=[],current="";
+let krohnDigital=null,roseDigital=null;
 function source(div,record,name){
  const host=$(div);host.replaceChildren();
  const entries=record?.entradas||[];if(!entries.length){const p=document.createElement("p");p.className="ab-none";p.textContent="Sin entradas extraídas para este locus.";host.append(p);return}
@@ -289,7 +290,8 @@ function load(locus){
  set("#ab-textual-status",availability.join(" · "));
  for(const [source,id] of [["rose-1899","rose"],["krohn-1912","krohn"]]){
  const candidate=ocrFixes.loci?.[locus]?.[source],raw=c[source]?.text;
- set("#compare-"+id,candidate?.text||raw||"No hay segmento OCR alineado para el locus.");
+ const indexed=id==="krohn"?krohnDigital?.get(locus):roseDigital?.get(locus);
+ set("#compare-"+id,indexed||candidate?.text||raw||"No hay texto alineado a este locus.");
  $("#compare-"+id+"-ocr-detail").hidden=!candidate;
  $("#compare-"+id+"-ocr-detail").open=false;
  set("#compare-"+id+"-changes",candidate?.interventions?.join(" · ")||"");
@@ -298,7 +300,8 @@ function load(locus){
  set("#compare-kurilo",passage.latin||"Sin texto latino estructurado.");
  for(const [name,id,defaultPdf] of [["rose-1899","rose","https://archive.org/download/vitruviidearchit00vitr_0/vitruviidearchit00vitr_0.pdf"],["krohn-1912","krohn","documents/krohn-1912.pdf"]]){
    const item=c[name],clean=ocrFixes.loci?.[locus]?.[name];
- set("#compare-"+id+"-status",item?(clean?"Lectura OCR depurada para consulta, con original y cambios disponibles · ":"OCR de archivo · ")+"alineación "+Math.round((item.score||0)*100)+" % · página digital "+item.page:"Sin correspondencia automática documentada");
+ const indexed=id==="krohn"?krohnDigital?.get(locus):roseDigital?.get(locus);
+ set("#compare-"+id+"-status",indexed?"Transcripción digital independiente · cotejo del impreso pendiente":item?(clean?"Lectura OCR depurada para consulta, con original y cambios disponibles · ":"OCR de archivo · ")+"alineación "+Math.round((item.score||0)*100)+" % · página digital "+item.page:"Sin correspondencia automática documentada");
    const pdf=comp?.loci?.find(v=>v.locus===locus)?.[name]?.pdf||defaultPdf;
    $("#compare-"+id+"-link").href=pdf;
  }
@@ -359,10 +362,23 @@ $("#copy").addEventListener("click",async()=>{
  const t=$("#edition").value==="rose"?"Vitruvius, De architectura, "+format(current)+", ed. Valentin Rose, Vitruvii De architectura libri decem, Leipzig: Teubner, 1899 (2.ª ed.); facsímil: "+$("#rose-pdf-link").href+". El texto presentado en este lector es OCR provisional, no transcripción revisada.":"Vitruvio, De architectura, "+format(current)+", ed. y trad. Diego A. Kurilo, V514 (2026), DOI: 10.5281/zenodo.23884757; https://vitruvius-digital-library.org/apparatus-bude?locus="+encodeURIComponent(current)+". Aparato histórico: Rose (1899) y Krohn (1912), OCR pendiente de cotejo.";
  try{await navigator.clipboard.writeText(t);set("#status","Referencia copiada; comprobar los datos bibliográficos antes de publicarla.")}catch{window.prompt("Copiar referencia:",t)}
 });
+// Ajustes visuales exclusivamente para los tres visores latinos.
+(()=>{
+const host=document.querySelector(".ab-compare"),font=$("#ab-compare-font"),size=$("#ab-compare-size"),ink=$("#ab-compare-ink"),paper=$("#ab-compare-paper");
+const families={gentium:'"Gentium Book Plus",Georgia,serif',georgia:'Georgia,serif',serif:'"Times New Roman",serif',sans:'system-ui,sans-serif'};
+const apply=()=>{host.style.setProperty("--compare-font",families[font.value]||families.gentium);host.style.setProperty("--compare-size",size.value+"px");host.style.setProperty("--compare-ink",ink.value);host.style.setProperty("--compare-paper",paper.value)};
+for(const el of [font,size,ink,paper])el.addEventListener("input",apply);
+$("#ab-compare-reset").addEventListener("click",()=>{font.value="gentium";size.value="19";ink.value="#29251e";paper.value="#fffefa";apply()});apply();
+})();
 (async()=>{
  try{const urls=["data/structured/recensio-es.json","data/apparatus/aparato-comparativo.json","data/collation-loci.json"];
  const resp=await Promise.all(urls.map(u=>fetch(u,{headers:{Accept:"application/json"}})));for(let i=0;i<resp.length;i++)if(!resp[i].ok)throw Error(urls[i]+": HTTP "+resp[i].status);
  [data,comp,collation]=await Promise.all(resp.map(r=>r.json()));
+ const loadIndexed=async url=>{try{const r=await fetch(url,{headers:{Accept:"application/json"}});if(!r.ok)return null;const j=await r.json();return Array.isArray(j.passages)?new Map(j.passages.filter(p=>p.locus&&p.latin).map(p=>[p.locus,p.latin])):null}catch{return null}};
+ [krohnDigital,roseDigital]=await Promise.all([loadIndexed("data/text/krohn-1912-perseus-loci-candidate.json"),loadIndexed("data/text/rose-1899-loci-candidate.json")]);
+ set("#compare-krohn-source",krohnDigital?"Transcripción digital Perseus por locus · cotejo pendiente":"OCR provisional · índice no OCR no disponible");
+ set("#compare-rose-source",roseDigital?"Transcripción digital por locus · cotejo pendiente":"OCR provisional · texto no OCR por locus pendiente");
+ set("#ab-index-status","Krohn "+(krohnDigital?.size||0)+" loci indexados · Rose "+(roseDigital?.size||0)+" loci indexados");
  try{const fixResponse=await fetch("data/apparatus/ocr-reading-corrections.json",{headers:{Accept:"application/json"}});if(fixResponse.ok){const candidate=await fixResponse.json();if(candidate&&candidate.loci)ocrFixes=candidate}}catch(e){console.warn("No se pudieron cargar los ajustes de lectura OCR",e)}
  if(!Array.isArray(data.passages)||!Array.isArray(comp.loci)||!collation.loci)throw Error("Estructura de datos no reconocida");
  rows=data.passages;translations.es=data;configureLocusPicker();window.VDLApparatusLocusSearch?.init(rows,load,setComparisonTerms);
