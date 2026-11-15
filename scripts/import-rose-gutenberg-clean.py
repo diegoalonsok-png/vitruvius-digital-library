@@ -7,7 +7,7 @@ from collections import Counter
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-URL="https://www.gutenberg.org/cache/epub/51812/pg51812.txt"
+URL="https://www.gutenberg.org/files/51812/51812-0.txt"
 NUMERALS=("PRIMUS","SECUNDUS","TERTIUS","QUARTUS","QUINTUS","SEXTUS","SEPTIMUS","OCTAVUS","NONUS","DECIMUS")
 
 def words(s):
@@ -21,10 +21,16 @@ def main():
     with urllib.request.urlopen(req,timeout=80) as response: raw=response.read()
     if len(raw)<100000:raise ValueError("Source appears truncated")
     source=raw.decode("utf-8-sig")
-    start=re.findall(r"(?m)^VITRUVII DE ARCHITECTURA\s*\nLIBER PRIMUS\.\s*$",source)
-    if len(start)!=1:raise ValueError("Expected exactly one separated clean-text heading")
-    source=source[source.index("VITRUVII DE ARCHITECTURA\nLIBER PRIMUS."):]
-    source=source.split("End of Project Gutenberg",1)[0]
+    # The Gutenberg file contains the original page-and-apparatus layout first,
+    # then the independent uninterrupted plain-text edition, followed by Faventinus.
+    # NEVER ingest the first apparatus-bearing printing or the later Faventinus text.
+    normalized=source.replace("\\r\\n","\\n")
+    anchor=re.search(r"(?m)^VITRUVII DE ARCHITECTURA\\s*\\nLIBER PRIMUS\\.\\s*$",normalized)
+    if not anchor:raise ValueError("Plain-text Rose section start not found")
+    vitruvius=normalized[anchor.start():]
+    boundary=re.search(r"(?m)^M\\. CETI FAVENTINI\\s*$",vitruvius)
+    if not boundary:raise ValueError("Faventinus boundary not found; refusing mixed corpus")
+    source=vitruvius[:boundary.start()]
     pattern=re.compile(r"(?m)^LIBER\s+("+"|".join(NUMERALS)+r")\.$",re.I)
     matches=list(pattern.finditer(source))
     if len(matches)!=10 or [m.group(1).upper() for m in matches]!=list(NUMERALS):
