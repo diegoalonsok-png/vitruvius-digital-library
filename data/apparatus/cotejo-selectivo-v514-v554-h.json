@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice. Control visual de H ff. 1v y 4v en las secuencias ea nascitur & fabrica y uti fuerit Aristarchus: las siglas de aparato histórico se mantienen diferenciadas del testimonio directo del códice. Observación visual adicional de H f. 2v, «civitate declarata», cotejada con V514/V554 y el extracto OCR del aparato de Krohn, manteniendo estado independiente para el impreso. Se han cotejado visualmente las secuencias de H ff. 4r, 5v y 7r de I.1.11, I.1.17 e I.2.4, anotadas como aparatos positivos parciales con omisiones distinguidas de suplementos editoriales. Inspección directa de H f. 49r (poculis, lectura editorial adoptada) y f. 6r (taxis/diathesin, nota graphica). No equiparar variantes sustantivas a transliteraciones. El OCR de Rose/Krohn se considera secundario, sin atribución autóptica.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente. Lecturas visuales de ff. 1v, 2v y 4v distinguen locus localizado de variante comprobada; no se acepta automáticamente una nota OCR como lectura del códice. Control visual de H ff. 1v y 4v en las secuencias ea nascitur & fabrica y uti fuerit Aristarchus: las siglas de aparato histórico se mantienen diferenciadas del testimonio directo del códice. Observación visual adicional de H f. 2v, «civitate declarata», cotejada con V514/V554 y el extracto OCR del aparato de Krohn, manteniendo estado independiente para el impreso. Se han cotejado visualmente las secuencias de H ff. 4r, 5v y 7r de I.1.11, I.1.17 e I.2.4, anotadas como aparatos positivos parciales con omisiones distinguidas de suplementos editoriales. Inspección directa de H f. 49r (poculis, lectura editorial adoptada) y f. 6r (taxis/diathesin, nota graphica). No equiparar variantes sustantivas a transliteraciones. El OCR de Rose/Krohn se considera secundario, sin atribución autóptica. Nueva autopsia puntual de H f. 28v e II.8.8 (sin pro rata) y f. 29r e II.8.10 (inciso transmitido). Convención de Budé: ⟨...⟩ supplementum; [...] seclusio; ambas intervenciones editoriales, no rasgos gráficos del códice.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -659,6 +659,74 @@
         "folio": "6r",
         "display": "‖ I.2.2 τάξις, διάθεσις Kur. : taxis, diathesin H (f. 6r, ex imagine; litteris Latinis) ‖",
         "caution": "Nota graphica, no sustitución de texto constitutivo: la forma diathesin es acusativo en el contexto latino («vocitant»)."
+      }
+    },
+    {
+      "locus": "2.8.8",
+      "lemma": "ex reliqua summa ⟨pro rata⟩ parte",
+      "reading": "ex reliqua summa parte",
+      "siglum": "H",
+      "folio": "28v",
+      "sources": [
+        "V514-T-p1103-53",
+        "V554-T-p1112-250"
+      ],
+      "note": "La fotografía H f. 28v presenta la secuencia «ex reliqua summa parte reddi pro his parietibus», sin el suplemento pro rata. Las dos ediciones autorales identifican ⟨pro rata⟩ como intervención de Krohn. La entrada correspondiente del OCR histórico de Rose/Krohn no establece por sí sola este suplemento; cotejo impreso pendiente.",
+      "status": "omisión del suplemento comprobada directamente en H; atribución a Kr. respaldada documentalmente por V514/V554",
+      "evidenceClass": "visual_folio_reading",
+      "verifiedAutopsy": true,
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "28v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_064_f-28v.jpg",
+        "observedReading": "ex reliqua summa parte reddi pro his parietibus",
+        "verification": "inspección visual de las líneas medias de H f. 28v",
+        "note": "«pro rata» no figura entre summa y parte; una afirmación sobre el carácter original del texto exige comparar los demás testigos."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "II.8.8",
+        "selected": "ex reliqua summa ⟨pro rata⟩ parte",
+        "selectedAttribution": "Kur. V514/V554 (suppl. Kr., sec. Kur.)",
+        "variant": "ex reliqua summa parte",
+        "variantAttribution": "H",
+        "folio": "28v",
+        "display": "‖ II.8.8 ex reliqua summa ⟨pro rata⟩ parte Kur. (suppl. Kr., sec. app. T) : ex reliqua summa parte H (f. 28v, ex imagine; om. pro rata) ‖",
+        "caution": "Lectura literal y ausencia de pro rata observadas en H. «suppl. Kr.» se mantiene como atribución de los Apéndices T, no como lectura directa del impreso de 1912."
+      }
+    },
+    {
+      "locus": "2.8.10",
+      "lemma": "Croesi domus, quam Sardiani [civibus ad requiescendum aetatis otio] seniorum collegio",
+      "reading": "civibus ad requiescendum aetatis otio",
+      "siglum": "H",
+      "folio": "29r",
+      "sources": [
+        "V514-T-p1103-54",
+        "V554-T-p1112-251"
+      ],
+      "note": "La primera parte del f. 29r conserva el inciso referido a los habitantes y el descanso de la vejez. El latín V514 contiene el pasaje entre corchetes de seclusión, mientras H lo transmite en el cuerpo del texto. El OCR de Rose en II.8.10 registra «otio H et (in ras.) S : octo G», pero esa es otra unidad, de variante léxica, no prueba independiente de la seclusión.",
+      "status": "presencia del inciso en fotografía H verificada; motivo y autor de seclusión editorial requieren comprobación en impresos",
+      "evidenceClass": "visual_folio_reading",
+      "verifiedAutopsy": true,
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "29r",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_065_f-29r.jpg",
+        "observedReading": "civibus ad requiescendum aetatis otio seniorum collegio",
+        "verification": "inspección visual de las líneas superiores de H f. 29r",
+        "note": "El inciso es continuo en H; la decisión de encerrarlo en corchetes pertenece al texto editorial, no al manuscrito."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "II.8.10",
+        "selected": "[civibus ad requiescendum aetatis otio]",
+        "selectedAttribution": "Kur. V514/V554 (seclus., sec. app. T)",
+        "variant": "civibus ad requiescendum aetatis otio",
+        "variantAttribution": "H",
+        "folio": "29r",
+        "display": "‖ II.8.10 [civibus ad requiescendum aetatis otio] Kur. (seclus., sec. app. T) : civibus ad requiescendum aetatis otio H (f. 29r, ex imagine) ‖",
+        "caution": "La conservación material del inciso en H está comprobada; no confundir los corchetes de seclusión editorial con omisión del testigo ni atribuir la decisión sin examinar la fuente."
       }
     }
   ],
