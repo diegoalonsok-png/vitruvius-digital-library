@@ -1,12 +1,12 @@
 {
   "schema": "vdl-bibliotheca-unindexed-backlog-v1",
-  "generated": "2026-11-15T17:34:35.883Z",
+  "generated": "2026-11-15T22:12:47.420Z",
   "method": "Cruce de 271 fichas y versiones efectivamente declaradas en search-registry; ninguna ausencia se presenta como texto indexado. Ediciones modernas distinguidas de obras antiguas.",
   "summary": {
-    "missingRegistryEntries": 57,
-    "ancientWorksWithoutRegisteredText": 54,
+    "missingRegistryEntries": 45,
+    "ancientWorksWithoutRegisteredText": 42,
     "modernEditionManifestationsWithoutOwnRegistry": 3,
-    "highPriorityAncient": 23
+    "highPriorityAncient": 13
   },
   "entries": [
     {
@@ -36,35 +36,9 @@
       "indexed": false
     },
     {
-      "id": "archimedes-fluitantibus",
-      "author": "Arquímedes",
-      "title": "Περὶ τῶν ὀχουμένων",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [
-        "arquimedes-obras"
-      ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
-    },
-    {
       "id": "aristarchus-magnitudines",
       "author": "Aristarco de Samos",
       "title": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "athenaeus-deipnosophistae",
-      "author": "Ateneo de Náucratis",
-      "title": "Δειπνοσοφισταί",
       "language": "grc",
       "classification": "ancient_work",
       "priority": "alta",
@@ -102,54 +76,6 @@
       "indexed": false
     },
     {
-      "id": "cassius-dio-historia",
-      "author": "Dión Casio",
-      "title": "Ῥωμαϊκὴ ἱστορία",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "cleonides-harmonica",
-      "author": "Cleónides (transmitido bajo el nombre de Euclides)",
-      "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "euclid-optica",
-      "author": "Euclides",
-      "title": "Ὀπτικά · Optica",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "euclid-phaenomena",
-      "author": "Euclides",
-      "title": "Φαινόμενα · Phaenomena y escritos musicales",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
       "id": "frontinus-gromatica",
       "author": "Frontino",
       "title": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
@@ -165,18 +91,6 @@
       "id": "geminus-isagoge",
       "author": "Gémino",
       "title": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "hero-belopoeica",
-      "author": "Herón de Alejandría",
-      "title": "Βελοποιικά · Belopoeica",
       "language": "grc",
       "classification": "ancient_work",
       "priority": "alta",
@@ -238,18 +152,6 @@
       "indexed": false
     },
     {
-      "id": "ps-aristotle-mechanica",
-      "author": "Pseudo-Aristóteles (escuela peripatética)",
-      "title": "Μηχανικὰ προβλήματα",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
       "id": "ptolemy-geographia",
       "author": "Claudio Ptolomeo",
       "title": "Γεωγραφικὴ ὑφήγησις",
@@ -273,34 +175,6 @@
       "r2EditionsDeclared": [],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
-      "indexed": false
-    },
-    {
-      "id": "theophrastus-historia-plantarum",
-      "author": "Teofrasto",
-      "title": "Περὶ φυτῶν ἱστορίας",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [
-        "teofrasto-historia-plantas"
-      ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
-    },
-    {
-      "id": "thucydides-war",
-      "author": "Tucídides",
-      "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "alta",
-      "r2EditionsDeclared": [
-        "tucidides-historia"
-      ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
       "indexed": false
     },
     {
@@ -585,32 +459,6 @@
       ],
       "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
       "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
-    },
-    {
-      "id": "plutarch-lives",
-      "author": "Plutarco",
-      "title": "Βίοι Παράλληλοι · Vidas paralelas",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [
-        "plutarco-vidas"
-      ],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Comprobar el PDF/OCR existente, el título de portada, edición y derechos; producir texto por locus si la fuente lo permite.",
-      "indexed": false
-    },
-    {
-      "id": "plutarch-moralia",
-      "author": "Plutarco",
-      "title": "Ἠθικά (Moralia)",
-      "language": "grc",
-      "classification": "ancient_work",
-      "priority": "normal",
-      "r2EditionsDeclared": [],
-      "sourceStatus": "No hay versión indexada con este ID en search-registry.json",
-      "nextStep": "Identificar edición grecolatina acreditada y lícita; importar texto verificable antes de indexar.",
       "indexed": false
     },
     {

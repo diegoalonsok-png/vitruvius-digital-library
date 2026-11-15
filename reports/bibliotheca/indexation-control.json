@@ -1,29 +1,50 @@
 {
   "schema": "vdl-bibliotheca-indexation-control-v1",
-  "generated": "2026-11-15T17:34:35.884Z",
+  "generated": "2026-11-15T22:12:47.422Z",
   "methodology": "Auditoría documental reproducible de GitHub. Los índices del catálogo y los registros remotos son declaraciones; no sustituyen GET/HEAD de R2, cotejo del interior del PDF ni recensio manuscrita. Una obra sin índice NO se marca indexada automáticamente.",
   "counts": {
     "catalogueWorks": 271,
     "additionalR2Works": 10,
     "combinedCataloguedWorks": 281,
     "r2EditionRecords": 117,
-    "registeredTextVersions": 279,
-    "registeredDistinctWorks": 214,
+    "registeredTextVersions": 291,
+    "registeredDistinctWorks": 226,
     "verifiedLocalSourceWorkIds": 182,
-    "declaredRemoteSourceWorkIds": 32,
-    "r2TextManifestVersions": 32,
+    "declaredRemoteSourceWorkIds": 44,
+    "r2TextManifestVersions": 44,
+    "r2ExpansionIndexedEditions": 12,
+    "r2ExpansionIndexedPassages": 24904,
     "r2InvertedIndexDeclaredEditions": 119,
-    "unindexedCatalogueWorks": 57,
-    "unindexedAncientWorks": 54,
+    "unindexedCatalogueWorks": 45,
+    "unindexedAncientWorks": 42,
     "unindexedEditorialManifestations": 3,
     "worksMissingRegisteredOriginal": 0,
     "greekTitleNeedsIndividualReview": 7,
     "r2UnlinkedEditions": 0,
     "duplicateR2BinaryGroups": 2,
     "structuralErrors": 0,
-    "editorialReviewItems": 67
+    "editorialReviewItems": 55
   },
   "scope": {
+    "r2Expansion": {
+      "manifestFile": "data/r2/classics-expansion-manifest.json",
+      "indexFile": "data/r2/classics-expansion-index.json",
+      "editionIds": [
+        "archimedes-fluitantibus|grc",
+        "athenaeus-deipnosophistae|grc",
+        "cassius-dio-historia|grc",
+        "cleonides-harmonica|grc",
+        "euclid-optica|grc",
+        "euclid-phaenomena|grc",
+        "hero-belopoeica|grc",
+        "plutarch-lives|grc",
+        "plutarch-moralia|grc",
+        "ps-aristotle-mechanica|grc",
+        "theophrastus-historia-plantarum|grc",
+        "thucydides-war|grc"
+      ],
+      "indexUrl": "https://libros.vitruvius-digital-library.org/corpus/indice/ampliacion/8f69aeed3d50b2a8c3644f53/manifest.json"
+    },
     "greekTitleReview": [
       {
         "id": "philo",
@@ -63,12 +84,6 @@
         "language": "la"
       },
       {
-        "id": "plutarch-lives",
-        "author": "Plutarco",
-        "title": "Βίοι Παράλληλοι · Vidas paralelas",
-        "language": "grc"
-      },
-      {
         "id": "apollodorus-poliorcetics",
         "author": "Apolodoro de Damasco (atribución tradicional)",
         "title": "Πολιορκητικά · Poliorketika",
@@ -105,39 +120,9 @@
         "language": "la"
       },
       {
-        "id": "plutarch-moralia",
-        "author": "Plutarco",
-        "title": "Ἠθικά (Moralia)",
-        "language": "grc"
-      },
-      {
         "id": "ptolemy-geographia",
         "author": "Claudio Ptolomeo",
         "title": "Γεωγραφικὴ ὑφήγησις",
-        "language": "grc"
-      },
-      {
-        "id": "thucydides-war",
-        "author": "Tucídides",
-        "title": "Ἱστορία τοῦ Πελοποννησιακοῦ πολέμου",
-        "language": "grc"
-      },
-      {
-        "id": "cassius-dio-historia",
-        "author": "Dión Casio",
-        "title": "Ῥωμαϊκὴ ἱστορία",
-        "language": "grc"
-      },
-      {
-        "id": "athenaeus-deipnosophistae",
-        "author": "Ateneo de Náucratis",
-        "title": "Δειπνοσοφισταί",
-        "language": "grc"
-      },
-      {
-        "id": "theophrastus-historia-plantarum",
-        "author": "Teofrasto",
-        "title": "Περὶ φυτῶν ἱστορίας",
         "language": "grc"
       },
       {
@@ -171,12 +156,6 @@
         "language": "la"
       },
       {
-        "id": "archimedes-fluitantibus",
-        "author": "Arquímedes",
-        "title": "Περὶ τῶν ὀχουμένων",
-        "language": "grc"
-      },
-      {
         "id": "ennius-annales",
         "author": "Ennio",
         "title": "Annales (fragmenta)",
@@ -187,12 +166,6 @@
         "author": "Accio",
         "title": "Tragoediae (fragmenta)",
         "language": "la"
-      },
-      {
-        "id": "ps-aristotle-mechanica",
-        "author": "Pseudo-Aristóteles (escuela peripatética)",
-        "title": "Μηχανικὰ προβλήματα",
-        "language": "grc"
       },
       {
         "id": "procopius-aedificiis",
@@ -211,30 +184,6 @@
         "author": "Censorino",
         "title": "De die natali",
         "language": "la"
-      },
-      {
-        "id": "euclid-optica",
-        "author": "Euclides",
-        "title": "Ὀπτικά · Optica",
-        "language": "grc"
-      },
-      {
-        "id": "euclid-phaenomena",
-        "author": "Euclides",
-        "title": "Φαινόμενα · Phaenomena y escritos musicales",
-        "language": "grc"
-      },
-      {
-        "id": "cleonides-harmonica",
-        "author": "Cleónides (transmitido bajo el nombre de Euclides)",
-        "title": "Εἰσαγωγὴ ἁρμονική · Introductio harmonica",
-        "language": "grc"
-      },
-      {
-        "id": "hero-belopoeica",
-        "author": "Herón de Alejandría",
-        "title": "Βελοποιικά · Belopoeica",
-        "language": "grc"
       },
       {
         "id": "philo-belopoeica",
@@ -467,12 +416,6 @@
     {
       "severity": "review",
       "code": "work_not_text_indexed",
-      "id": "plutarch-lives",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
       "id": "apollodorus-poliorcetics",
       "description": "Ficha presente sin versión textual en registry"
     },
@@ -509,37 +452,7 @@
     {
       "severity": "review",
       "code": "work_not_text_indexed",
-      "id": "plutarch-moralia",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
       "id": "ptolemy-geographia",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "thucydides-war",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "cassius-dio-historia",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "athenaeus-deipnosophistae",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "theophrastus-historia-plantarum",
       "description": "Ficha presente sin versión textual en registry"
     },
     {
@@ -575,12 +488,6 @@
     {
       "severity": "review",
       "code": "work_not_text_indexed",
-      "id": "archimedes-fluitantibus",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
       "id": "ennius-annales",
       "description": "Ficha presente sin versión textual en registry"
     },
@@ -588,12 +495,6 @@
       "severity": "review",
       "code": "work_not_text_indexed",
       "id": "accius-fragmenta",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "ps-aristotle-mechanica",
       "description": "Ficha presente sin versión textual en registry"
     },
     {
@@ -612,30 +513,6 @@
       "severity": "review",
       "code": "work_not_text_indexed",
       "id": "censorinus-die-natali",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "euclid-optica",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "euclid-phaenomena",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "cleonides-harmonica",
-      "description": "Ficha presente sin versión textual en registry"
-    },
-    {
-      "severity": "review",
-      "code": "work_not_text_indexed",
-      "id": "hero-belopoeica",
       "description": "Ficha presente sin versión textual en registry"
     },
     {
