@@ -1,0 +1,436 @@
+{
+  "schema": "vitruvius-apparatus-provenance-audit/1",
+  "indexSchema": "vitruvius-apparatus-index/1",
+  "totals": {
+    "entries": 3220,
+    "notes": 811,
+    "blocks": 1250,
+    "glosses": 803,
+    "glossary": 356,
+    "decisions": 0
+  },
+  "byEdition": {
+    "recensio-es": 1254,
+    "recensio-fr": 1171,
+    "theory-en": 795
+  },
+  "byLocationState": {
+    "contexto de página": 746,
+    "sin locus en la página": 504,
+    "sin locus": 579,
+    "locus explícito": 41,
+    "locus candidato sin verificar": 519,
+    "locus verificado por el lema": 567,
+    "lema no localizado en el texto latino": 104,
+    "lema en varios loci, sin desambiguar": 80,
+    "locus verificado por el lema y la sección de comentario": 19,
+    "locus verificado por el lema y la página": 33,
+    "locus citado en la definición": 28
+  },
+  "errorCount": 0,
+  "warningCount": 2201,
+  "errors": [],
+  "warningExamples": [
+    {
+      "id": "V514-p202-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p216-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p216-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p219-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p219-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p219-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p219-5",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p232-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p232-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p232-4",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p235-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p238-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p239-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p242-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p242-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p242-4",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p242-5",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p242-6",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p242-9",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p252-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p252-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p252-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p252-4",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p252-5",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p252-6",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p253-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p253-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p254-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p254-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p254-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p255-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p255-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p256-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p256-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p257-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p257-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p258-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p266-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p266-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p266-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p266-4",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p266-6",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p267-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p267-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p268-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p269-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p269-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p269-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p270-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p282-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p283-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p283-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p283-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p283-4",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p283-6",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p284-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p284-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p285-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p285-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p286-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p286-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p287-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p287-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p288-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p289-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p289-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p289-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p289-4",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p292-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p292-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p292-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p292-5",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p293-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p294-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p300-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p300-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p301-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p301-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p302-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p302-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p303-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p313-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p313-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p313-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p313-5",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p314-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p314-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p315-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p315-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p317-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p320-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p320-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p320-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p320-4",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p320-5",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p326-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p326-2",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p326-3",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p326-4",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    },
+    {
+      "id": "V514-p332-1",
+      "message": "Locus contextual o ausente: no equivale a asignación ecdótica"
+    }
+  ],
+  "limitation": "La validación controla procedencia y rótulos. No certifica variantes ni sustituye la colación de manuscritos."
+}

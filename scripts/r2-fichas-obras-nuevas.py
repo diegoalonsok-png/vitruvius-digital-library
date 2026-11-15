@@ -215,6 +215,9 @@ def registro_proveniencia(obra, meta):
         "versions": [],
         "perseusSourceClaim": False,
         "verifiedEditionUrn": None,
+        "perseusAffiliation": False,
+        "ctsEditionUrn": None,
+        "ctsStatus": "not_verified",
         "note": "La biblioteca aloja el facsímil de una edición impresa de dominio público; no hay texto TEI ni atribución a Perseus.",
     }
 

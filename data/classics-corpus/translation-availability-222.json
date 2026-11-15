@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-translation-availability-v1",
-  "generated": "2026-11-14",
-  "basis": "Cálculo a partir de works[] y search-registry.json. El campo de compatibilidad locallyIndexedWorks cuenta identificadores registrados (incluidos 32 índices remotos en R2), NO solo archivos locales ni fuentes cotejadas; la disponibilidad remota requiere prueba aparte. originalIndexed solo indica original local.",
+  "generated": "2026-11-15",
+  "basis": "Cálculo a partir de works[] y search-registry.json. Los campos de compatibilidad locallyIndexedWorks y localEditionLanguages incluyen índices registrados en R2. originalIndexed y verifiedLocalEditionLanguages solo cuentan archivos locales. originalR2Registered identifica declaraciones remotas; no certifica disponibilidad HTTP ni cotejo.",
   "scope": "271 obras del repertorio grecolatino; originales locales, índices remotos declarados y traducciones alojadas ES/EN/FR",
   "totals": {
     "cataloguedWorks": 271,
@@ -14,7 +14,14 @@
       "fr": 2
     },
     "originalTextIndexed": 182,
-    "originalTextNotIndexed": 89
+    "originalTextNotIndexed": 89,
+    "verifiedLocalFileWorks": 182,
+    "declaredRemoteOnlyWorks": 32,
+    "declaredR2OriginalWorks": 32,
+    "registeredOriginalWorks": 214,
+    "registeredTextVersions": 279,
+    "verifiedLocalTextVersions": 247,
+    "verifiedLocalOriginalTextIndexed": 182
   },
   "works": [
     {
@@ -24,8 +31,8 @@
       "originalLanguage": "la",
       "originalIndexed": true,
       "translationLanguages": [
-        "es",
         "en",
+        "es",
         "fr"
       ],
       "localEditionLanguages": [
@@ -38,7 +45,22 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Texto latino y traducciones españolas e inglesas disponibles para lectura paralela desde ediciones editoriales almacenadas en GitHub.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "es",
+        "fr",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "es",
+        "fr",
+        "la"
+      ]
     },
     {
       "id": "cicero-officiis",
@@ -57,7 +79,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: Walter Miller (1913), disponible; castellano y francés: traducciones completas pendientes de identificar, cotejar y alojar.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "cicero-oratore",
@@ -70,10 +103,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-republica",
@@ -86,10 +128,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "caesar-gallico",
@@ -108,7 +159,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: W. A. McDevitte y W. S. Bohn (1870–72), 8 libros, edición TEI Perseus. Libro VIII de Aulo Hircio; cotejo por capítulo, no palabra por palabra.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "caesar-civili",
@@ -127,7 +189,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "sallust-catiline",
@@ -139,8 +212,8 @@
         "en"
       ],
       "localEditionLanguages": [
-        "la",
-        "en"
+        "en",
+        "la"
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "lectura-local-completa",
@@ -158,7 +231,18 @@
           ],
           "attribution": "J. S. Watson (1899), PerseusDL TEI"
         }
-      }
+      },
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "sallust-iugurtha",
@@ -177,7 +261,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "varro-rustica",
@@ -190,10 +285,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "lucretius",
@@ -202,8 +306,8 @@
       "originalLanguage": "la",
       "originalIndexed": true,
       "translationLanguages": [
-        "es",
-        "en"
+        "en",
+        "es"
       ],
       "localEditionLanguages": [
         "en",
@@ -214,7 +318,20 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: William Ellery Leonard (1916), disponible; castellano: Manuel Rodríguez-Navas (prosa), disponible; francés: edición completa pendiente de identificar, cotejar y alojar.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "es",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "es",
+        "la"
+      ]
     },
     {
       "id": "virgil-aeneid",
@@ -233,7 +350,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción inglesa histórica de Theodore C. Williams (1910), 327 fragmentos de la transcripción TEI Perseus. 324 loci iniciales coinciden con las divisiones latinas; alineación parcial, no verso a verso.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "virgil-georgica",
@@ -252,7 +380,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción inglesa histórica de James Rhoades (1921), 84 fragmentos de la transcripción TEI Perseus. 83 loci iniciales coinciden con las divisiones latinas; alineación parcial, no verso a verso.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "horace-odes",
@@ -265,10 +404,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "livy",
@@ -281,10 +429,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "ovid",
@@ -300,7 +457,16 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción inglesa Brookes More enlazada externamente; no alojada. Latín completo alojado: Hugo Magnus, TEI Perseus CC BY-SA 4.0.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "ovid-fasti",
@@ -313,10 +479,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "nepos",
@@ -329,10 +504,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "diodorus",
@@ -345,10 +529,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "dionysius",
@@ -361,10 +554,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "strabo",
@@ -377,10 +579,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "philo",
@@ -396,10 +607,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1854), texto completo de la fuente TEI OpenGreekAndLatin First1KGreek con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "seneca-epistulae",
@@ -412,10 +634,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "seneca-naturales",
@@ -429,7 +660,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "lucan",
@@ -442,10 +678,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "pliny",
@@ -458,10 +703,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "dioscorides",
@@ -474,10 +728,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "josephus-war",
@@ -490,10 +753,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "josephus-antiquities",
@@ -506,10 +778,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "quintilian",
@@ -522,10 +803,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "martial",
@@ -538,10 +828,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "tacitus-agricola",
@@ -557,10 +856,21 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: Alfred John Church y William Jackson Brodribb (1877), edición histórica documentada e indexada desde Perseus TEI. No alineada automáticamente al original. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "tacitus-germania",
@@ -573,10 +883,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "frontinus",
@@ -589,10 +908,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "mark",
@@ -605,10 +933,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "clement",
@@ -621,10 +958,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Sin traducción individual vinculada todavía; consultar las disponibles en la fuente",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "didache",
@@ -643,7 +989,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción inglesa de Lightfoot (1891) disponible e indexada. Las otras lenguas continúan pendientes de una edición reutilizable acreditada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "pastor-hermas",
@@ -656,10 +1013,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "faventinus",
@@ -678,7 +1044,16 @@
       "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Ediciones con traducción: M.-T. Cam, Cetius Faventinus, Abrégé d'architecture privée (CUF, 2001; texto latino y traducción francesa) y H. Plommer, Vitruvius and Later Roman Building Manuals (Cambridge, 1973; texto latino y traducción inglesa). Texto original latino local: Rose 1899 / Project Gutenberg 51812; no se alojan traducciones de Plommer/Cam.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "barnabas",
@@ -691,10 +1066,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "ignatius",
@@ -707,10 +1091,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "polycarp",
@@ -723,10 +1116,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "clement-2",
@@ -739,10 +1141,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "diognetus",
@@ -755,10 +1166,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "justin",
@@ -771,10 +1191,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "irenaeus",
@@ -787,10 +1216,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "tertullian",
@@ -803,10 +1241,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "origenes",
@@ -822,7 +1269,16 @@
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "eusebio",
@@ -835,10 +1291,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "columella",
@@ -851,10 +1316,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "celsus",
@@ -867,10 +1341,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "frontinus-strategemata",
@@ -886,7 +1369,16 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "plutarch-lives",
@@ -900,7 +1392,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "apollodorus-poliorcetics",
@@ -914,7 +1411,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "hero-pneumatica",
@@ -927,10 +1429,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción alemana de Schmidt en la misma edición.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "hero-automata",
@@ -943,10 +1454,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción alemana de Schmidt en la misma edición.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "athenaeus-mechanicus",
@@ -960,7 +1480,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción no vinculada aún; identificar traductor y edición",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "vitruvio-v514-pdf",
@@ -974,7 +1499,12 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Consultar la información bibliográfica y el documento PDF.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "vitruvio-v554-pdf",
@@ -988,7 +1518,12 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Consultar la información bibliográfica y el documento PDF.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "theory-v297-pdf",
@@ -1002,7 +1537,12 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Consultar la información bibliográfica y el documento PDF.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "krohn-1912-pdf",
@@ -1018,7 +1558,16 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Consultar la información bibliográfica y el documento PDF.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "plautus-amphitruo",
@@ -1031,10 +1580,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "plautus-aulularia",
@@ -1047,10 +1605,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "terentius-andria",
@@ -1063,10 +1630,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "terentius-heautontimorumenos",
@@ -1079,10 +1655,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cato-agri-cultura",
@@ -1095,10 +1680,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-catilinariae",
@@ -1114,10 +1708,21 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1856), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "catullus-carmina",
@@ -1136,7 +1741,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés histórico de Leonard C. Smithers (1894), TEI de Perseus DL (CC BY-SA 4.0), 112 poemas con texto legible e indexado; los números XVIII–XX remiten a Anthologia Latina y no contienen traducción, y falta el poema 67. Comparación por número de poema, no por versos, con el latín Ellis (1904) que conserva su propio aparato crítico. La edición de F. W. Cornish revisada por G. P. Goold se mantiene solo como referencia externa, no alojada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "horace-sermones",
@@ -1149,10 +1765,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "horace-ars-poetica",
@@ -1165,10 +1790,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "ovid-ars-amatoria",
@@ -1181,10 +1815,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "seneca-tragoediae",
@@ -1197,10 +1840,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "petronius-satyrica",
@@ -1219,7 +1871,18 @@
       "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico y castellano externo en Wikisource. Traducciones NO cotejadas locus por locus con el texto latino.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "tacitus-annales",
@@ -1232,10 +1895,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "tacitus-historiae",
@@ -1248,10 +1920,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "suetonius-caesares",
@@ -1264,10 +1945,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "juvenal-saturae",
@@ -1280,10 +1970,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "apuleius-metamorphoses",
@@ -1292,8 +1991,8 @@
       "originalLanguage": "la",
       "originalIndexed": true,
       "translationLanguages": [
-        "es",
-        "en"
+        "en",
+        "es"
       ],
       "localEditionLanguages": [
         "en",
@@ -1304,7 +2003,20 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés histórico y castellano histórico, ambos disponibles localmente. Traducciones NO cotejadas locus por locus con el texto latino.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "es",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "es",
+        "la"
+      ]
     },
     {
       "id": "varro-de-lingua-latina",
@@ -1320,7 +2032,16 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "tibullus-elegiae",
@@ -1333,10 +2054,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "propertius-elegiae",
@@ -1349,10 +2079,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "phraedrus-fabulae",
@@ -1371,7 +2110,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: Christopher Smart (1913), TEI Perseus, 91 pasajes; 10 marcados no traducidos. Latín: Müller (1876). Sin alineación.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "la"
+      ]
     },
     {
       "id": "statius-thebais",
@@ -1384,10 +2134,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "pliny-younger-epistulae",
@@ -1400,10 +2159,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "aulus-gellius-noctes",
@@ -1416,10 +2184,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "valerius-maximus-facta",
@@ -1432,10 +2209,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "velleius-historia",
@@ -1449,7 +2235,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "silius-punica",
@@ -1462,10 +2253,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "polybius-historiae",
@@ -1478,10 +2278,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "pseudo-apollodorus-bibliotheca",
@@ -1494,10 +2303,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "philo-legum-allegoriae",
@@ -1513,10 +2331,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1854), texto completo de la fuente TEI OpenGreekAndLatin First1KGreek con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "philo-de-vita-mosis",
@@ -1532,10 +2361,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Charles Duke Yonge (1855), texto completo de la fuente TEI OpenGreekAndLatin First1KGreek con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plutarch-moralia",
@@ -1549,7 +2389,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "lucian-dialogi-mortuorum",
@@ -1562,10 +2407,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "lucian-verae-historiae",
@@ -1581,10 +2435,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Austin Morris Harmon (1913), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "pausanias-periegesis",
@@ -1597,10 +2462,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "galen-ars-medica",
@@ -1613,10 +2487,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "galen-de-usu-partium",
@@ -1629,10 +2512,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "ptolemy-almagest",
@@ -1645,10 +2537,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "ptolemy-geographia",
@@ -1662,7 +2563,12 @@
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "appian-romaika",
@@ -1675,10 +2581,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "marcus-aurelius-meditations",
@@ -1694,10 +2609,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "texto griego indexado; inglés histórico indexado; cotejo y alineación pendientes",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "EN: George Long (1862), transcripción digital Standard Ebooks indexada localmente; Haines/Loeb (1916) solo referencia bibliográfica externa. ES/FR pendientes de fuentes verificadas.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "homer-iliad",
@@ -1716,7 +2642,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción inglesa histórica en prosa de Samuel Butler (1898), revisada por Timothy Power y Gregory Nagy para Perseus; 24 cantos, 190 segmentos de lectura indexados. Comparación comprobada por canto, no alineación automática por verso o frase. Licencia digital Perseus CC BY-SA 4.0 salvo excepciones (ver archivo de procedencia).",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "homer-odyssey",
@@ -1735,7 +2672,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: Samuel Butler, The Odyssey (1900, edición histórica de fecha aproximada), revisada por Timothy Power y Gregory Nagy en la transcripción TEI de Perseus. 24 libros, 267 secciones; correspondencia orientativa por comienzos de pasajes, sin afirmar equivalencia verso a verso.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "hesiod-theogony",
@@ -1751,10 +2699,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: Hugh G. Evelyn-White (1914), edición histórica documentada e indexada desde Perseus TEI. No alineada automáticamente al original. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "hesiod-works-days",
@@ -1770,10 +2729,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: Hugh G. Evelyn-White (1914), edición histórica documentada e indexada desde Perseus TEI. No alineada automáticamente al original. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aeschylus-oresteia",
@@ -1786,10 +2756,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "sophocles-oedipus",
@@ -1805,10 +2784,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Richard Jebb (1887), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-medea",
@@ -1824,10 +2814,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-clouds",
@@ -1843,10 +2844,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: William James Hickie (1853), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "herodotus-historiae",
@@ -1859,10 +2871,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "thucydides-war",
@@ -1876,7 +2897,12 @@
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "xenophon-anabasis",
@@ -1889,10 +2915,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "plato-republic",
@@ -1907,10 +2942,19 @@
       "externalTranslationUnverified": [
         "en"
       ],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Paul Shorey (inglés; Perseus/Scaife). Enlace documentado en la pestaña «Edición y traducción». No está alojada ni cotejada localmente.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "plato-apology",
@@ -1929,7 +2973,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés: traducción histórica de Harold North Fowler (1914), TEI Perseus; lector original griego y traducción inglesa por unidad Stephanus general, cotejo fino pendiente. Castellano/francés pendientes.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aristotle-poetics",
@@ -1948,7 +3003,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción inglesa W. Hamilton Fyfe (1939), codificación TEI Perseus CC BY-SA 4.0, lectura por 26 capítulos; cotejo por líneas Bekker pendiente. Castellano/francés pendientes.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aristotle-politics",
@@ -1964,10 +3030,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Harris Rackham (1944), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "hippocrates-aphorisms",
@@ -1983,10 +3060,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Francis Adams (1886), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "epictetus-discourses",
@@ -1999,10 +3087,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "arrian-anabasis-alexandri",
@@ -2015,10 +3112,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "pendiente-de-incorporar",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "cassius-dio-historia",
@@ -2032,7 +3138,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "athenaeus-deipnosophistae",
@@ -2046,7 +3157,12 @@
       "readingStatus": "pendiente-de-incorporar",
       "translationSourceDescription": "Traducciones EN/ES/FR pendientes de verificar, cotejar y comprobar derechos.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "aeschylus-persae",
@@ -2062,10 +3178,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aeschylus-seven-thebes",
@@ -2081,10 +3208,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aeschylus-suppliants",
@@ -2100,10 +3238,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aeschylus-prometheus",
@@ -2119,10 +3268,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Herbert Weir Smyth (1922), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "sophocles-antigone",
@@ -2138,10 +3298,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Richard Jebb (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "sophocles-ajax",
@@ -2154,10 +3325,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "sophocles-electra",
@@ -2173,10 +3353,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Richard Jebb (1894), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "sophocles-philoctetes",
@@ -2192,10 +3383,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Richard Jebb (1898), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "sophocles-oedipus-colonus",
@@ -2211,10 +3413,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Richard Jebb (1889), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "sophocles-trachiniae",
@@ -2227,10 +3440,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "euripides-bacchae",
@@ -2246,10 +3468,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: T. A. Buckley (1850), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-hippolytus",
@@ -2265,10 +3498,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-alcestis",
@@ -2284,10 +3528,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-electra",
@@ -2303,10 +3558,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-troades",
@@ -2322,10 +3588,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1906), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-hecuba",
@@ -2341,10 +3618,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "euripides-iphigenia-aulid",
@@ -2360,10 +3648,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Edward P. Coleridge (1891), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-aves",
@@ -2376,10 +3675,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-ranae",
@@ -2392,10 +3700,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-lysistrata",
@@ -2408,10 +3725,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-vespae",
@@ -2424,10 +3750,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-pax",
@@ -2440,10 +3775,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristophanes-acharnenses",
@@ -2456,10 +3800,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "plato-symposium",
@@ -2475,10 +3828,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1925), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-phaedo",
@@ -2494,10 +3858,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Harold North Fowler (1914), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-gorgias",
@@ -2513,10 +3888,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1925), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-timaeus",
@@ -2534,10 +3920,21 @@
       "externalTranslationUnverified": [
         "en"
       ],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Robert Gregg Bury (1929), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-meno",
@@ -2553,10 +3950,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Walter Rangeley Maitland Lamb (1924), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-phaedrus",
@@ -2572,10 +3980,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Harold North Fowler (1914), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "plato-laws",
@@ -2590,10 +4009,19 @@
       "externalTranslationUnverified": [
         "en"
       ],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "R. G. Bury (inglés; Perseus/Scaife). Enlace en «Edición y traducción». Sin alineación local con los folios.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "plato-crito",
@@ -2609,10 +4037,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Harold North Fowler (1914), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aristotle-nicomachean-ethics",
@@ -2628,10 +4067,21 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés histórico: Harris Rackham (1926), texto completo de la fuente TEI Perseus con procedencia por SHA; sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "aristotle-metaphysics",
@@ -2644,10 +4094,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristotle-physics",
@@ -2660,10 +4119,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristotle-rhetoric",
@@ -2676,10 +4144,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristotle-de-anima",
@@ -2692,10 +4169,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "xenophon-memorabilia",
@@ -2708,10 +4194,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "xenophon-hellenica",
@@ -2724,10 +4219,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "demosthenes-de-corona",
@@ -2740,10 +4244,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "demosthenes-philippicae",
@@ -2756,10 +4269,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "pindar-olympian",
@@ -2772,10 +4294,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "pindar-pythian",
@@ -2788,10 +4319,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "homeric-hymns",
@@ -2804,10 +4344,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "theophrastus-characters",
@@ -2826,7 +4375,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Inglés histórico de Charles E. Bennett y William A. Hammond (1902): 30 capítulos indexados para consulta, con correspondencia por capítulo respecto al texto griego editado. No implica cotejo por párrafo o frase; los traductores reconocen omisiones e inserciones. Fuente: Project Gutenberg 58242.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "theophrastus-historia-plantarum",
@@ -2840,7 +4400,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "diogenes-laertius-vitae",
@@ -2853,10 +4418,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "cicero-pro-archia",
@@ -2869,10 +4443,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-de-finibus",
@@ -2885,10 +4468,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-tusculanae",
@@ -2901,10 +4493,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-de-natura-deorum",
@@ -2917,10 +4518,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-de-amicitia",
@@ -2933,10 +4543,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-de-senectute",
@@ -2949,10 +4568,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-de-divinatione",
@@ -2965,10 +4593,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-brutus",
@@ -2981,10 +4618,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "cicero-philippicae",
@@ -2997,10 +4643,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "seneca-de-brevitate",
@@ -3023,7 +4678,22 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "ES histórica (21 unidades); FR Joseph Baillard (20 capítulos); EN Aubrey Stewart (1889, XX capítulos) desde Standard Ebooks, indexadas. Sin alineación textual certificada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "es",
+        "fr",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "es",
+        "fr",
+        "la"
+      ]
     },
     {
       "id": "seneca-de-ira",
@@ -3037,7 +4707,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "seneca-de-clementia",
@@ -3050,10 +4725,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "seneca-de-tranquillitate",
@@ -3067,7 +4751,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "horace-epodi",
@@ -3080,10 +4769,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "horace-epistulae",
@@ -3096,10 +4794,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "ovid-tristia",
@@ -3112,10 +4819,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "ovid-heroides",
@@ -3128,10 +4844,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "ovid-remedia-amoris",
@@ -3144,10 +4869,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "ovid-ex-ponto",
@@ -3160,10 +4894,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "tacitus-dialogus",
@@ -3176,10 +4919,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "apuleius-apologia",
@@ -3192,10 +4944,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "apuleius-de-deo-socratis",
@@ -3209,7 +4970,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "vegetius-epitoma",
@@ -3223,7 +4989,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "augustine-confessiones",
@@ -3239,7 +5010,16 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "augustine-civitate-dei",
@@ -3255,7 +5035,16 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "boethius-consolatio",
@@ -3268,10 +5057,19 @@
         "la"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "macrobius-saturnalia",
@@ -3285,7 +5083,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "epictetus-enchiridion",
@@ -3304,7 +5107,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Griego editado y traducción inglesa histórica de Thomas Wentworth Higginson (1890), 53 capítulos, ambos alojados y disponibles en lector; comparación por capítulo, no alineación frase a frase. Castellano/francés pendientes.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "en",
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "en",
+        "grc"
+      ]
     },
     {
       "id": "cebes-tabula",
@@ -3320,7 +5134,16 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Texto griego en edición impresa de 1870. Atribución y cronología debatidas; traducciones pendientes de verificación.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "aristoxenus-harmonica",
@@ -3333,10 +5156,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "archimedes-fluitantibus",
@@ -3350,7 +5182,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "aratus-phaenomena",
@@ -3363,10 +5200,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "ennius-annales",
@@ -3380,7 +5226,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "accius-fragmenta",
@@ -3394,7 +5245,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "ps-aristotle-mechanica",
@@ -3408,7 +5264,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "aeneas-tacticus-poliorketika",
@@ -3421,10 +5282,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "repertoriado-busqueda-externa",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "procopius-aedificiis",
@@ -3438,7 +5308,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Inglés: traducción de la edición Loeb (dominio público) en LacusCurtius, enlace externo verificado. Castellano y francés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "isidore-etymologiae",
@@ -3452,7 +5327,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Traducción no incorporada ni alineada con una edición identificada.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "censorinus-die-natali",
@@ -3466,7 +5346,12 @@
       "readingStatus": "repertoriado-busqueda-externa",
       "translationSourceDescription": "Francés: traducción con texto latino en LacusCurtius, enlace externo verificado. Castellano e inglés pendientes.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "augustus-res-gestae",
@@ -3482,7 +5367,16 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Castellano, inglés y francés pendientes de traducciones históricas de autor conocido, derechos y segmentación verificados.",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "la"
+      ]
     },
     {
       "id": "euclid-elementa",
@@ -3495,10 +5389,19 @@
         "grc"
       ],
       "externalTranslationUnverified": [],
-      "readingStatus": "fuente-externa-identificada",
+      "readingStatus": "lectura-local-parcial",
       "translationSourceDescription": "Traducción latina de Heiberg en la misma edición (página enfrentada).",
       "translationRegisteredButNotHosted": true,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "grc"
+      ]
     },
     {
       "id": "euclid-optica",
@@ -3512,7 +5415,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción latina de Heiberg en la misma edición.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "euclid-phaenomena",
@@ -3526,7 +5434,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "cleonides-harmonica",
@@ -3540,7 +5453,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "hero-belopoeica",
@@ -3554,7 +5472,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción alemana de Diels y Schramm en la misma edición.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "philo-belopoeica",
@@ -3568,7 +5491,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción alemana de Diels y Schramm en la misma edición.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "biton-kataskeuai",
@@ -3582,7 +5510,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "geminus-isagoge",
@@ -3596,7 +5529,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción alemana de Manitius en la misma edición.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "aristarchus-magnitudines",
@@ -3612,7 +5550,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción inglesa de Heath en la misma edición.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "apollonius-conica",
@@ -3626,7 +5569,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción latina de Heiberg en la misma edición.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "pappus-synagoge",
@@ -3640,7 +5588,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción latina de Hultsch en la misma edición.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "hyginus-gromaticus",
@@ -3654,7 +5607,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "frontinus-gromatica",
@@ -3668,7 +5626,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "siculus-flaccus",
@@ -3682,7 +5645,12 @@
       "readingStatus": "fuente-externa-identificada",
       "translationSourceDescription": "Traducción moderna no vinculada aún.",
       "translationRegisteredButNotHosted": true,
-      "indexed": false
+      "indexed": false,
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "sulpicia-elegiae",
@@ -3701,7 +5669,18 @@
       "readingStatus": "lectura-local-completa",
       "translationSourceDescription": "Traducción castellana de Casasús (1904–1905) disponible e indexada. Las otras lenguas continúan pendientes de una edición reutilizable acreditada.",
       "translationRegisteredButNotHosted": false,
-      "indexed": true
+      "indexed": true,
+      "originalR2Registered": false,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "es",
+        "la"
+      ],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": [
+        "es",
+        "la"
+      ]
     },
     {
       "id": "apolonio-argonauticas",
@@ -3715,7 +5694,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "isocrates-discursos",
@@ -3729,7 +5717,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "lisias-discursos",
@@ -3743,7 +5740,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "longino-sublime",
@@ -3757,7 +5763,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "teocrito-bucolicos",
@@ -3771,7 +5786,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "antologia-griega",
@@ -3785,7 +5809,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "aquiles-tacio-leucipa",
@@ -3799,7 +5832,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "aristoteles-del-cielo",
@@ -3813,7 +5855,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "aristoteles-historia-animales",
@@ -3827,7 +5878,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "baquilides-poemas",
@@ -3841,7 +5901,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "calimaco-himnos",
@@ -3855,7 +5924,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "epicuro-restos",
@@ -3869,7 +5947,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "esquines-discursos",
@@ -3883,7 +5970,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "filostrato-apolonio",
@@ -3897,7 +5993,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "galeno-facultades-naturales",
@@ -3911,7 +6016,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "hipocrates-obras",
@@ -3925,7 +6039,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "iseo-discursos",
@@ -3939,7 +6062,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "jenofonte-ciropedia",
@@ -3953,7 +6085,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "jenofonte-economico",
@@ -3967,7 +6108,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "longo-dafnis-cloe",
@@ -3981,7 +6131,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "menandro-comedias",
@@ -3995,7 +6154,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "platon-cratilo-parmenides",
@@ -4009,7 +6177,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "platon-protagoras",
@@ -4023,7 +6200,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "platon-teeteto-sofista",
@@ -4037,7 +6223,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "plotino-eneadas",
@@ -4051,7 +6246,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "lyra-graeca",
@@ -4063,7 +6267,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "quinto-esmirna-posthomericas",
@@ -4077,7 +6286,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "grc"
+      ],
+      "remoteEditionLanguages": [
+        "grc"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "amiano-marcelino-es",
@@ -4091,7 +6309,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "ausonio-obras",
@@ -4105,7 +6332,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "claudiano-poemas",
@@ -4119,7 +6355,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. El volumen trae la traducción inglesa enfrentada (Loeb), que no está indexada como texto aparte.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "higino-fabulas",
@@ -4131,7 +6376,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "manilio-astronomica",
@@ -4143,7 +6393,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "minucio-felix-octavio",
@@ -4157,7 +6412,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "valerio-flaco-argonautica",
@@ -4171,7 +6435,16 @@
       ],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": true,
+      "registeredOriginal": true,
+      "registeredEditionLanguages": [
+        "la"
+      ],
+      "remoteEditionLanguages": [
+        "la"
+      ],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "aristoteles-meteorologica",
@@ -4183,31 +6456,46 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "galeno-opera-kuhn",
       "author": "Galeno",
-      "title": "Opera omnia (ed. Kühn): volumen adicional",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "galeno-kuhn-vol01",
       "author": "Galeno",
-      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
       "originalIndexed": false,
       "translationLanguages": [],
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "galeno-kuhn-vol19",
@@ -4219,7 +6507,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "galeno-scripta-minora",
@@ -4231,7 +6524,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "jamblico-vida-pitagorica",
@@ -4243,7 +6541,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "proclo-comentario-euclides",
@@ -4255,7 +6558,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "sexto-empirico-obras",
@@ -4267,7 +6575,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "teon-esmirna-expositio",
@@ -4279,7 +6592,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "anthologia-latina",
@@ -4291,7 +6609,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "casiodoro-variae",
@@ -4303,7 +6626,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "festo-verborum-significatu",
@@ -4315,7 +6643,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "marciano-capela-nuptiis",
@@ -4327,7 +6660,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "nonio-marcelo-doctrina",
@@ -4339,7 +6677,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     },
     {
       "id": "paladio-opus-agriculturae",
@@ -4351,7 +6694,12 @@
       "localEditionLanguages": [],
       "externalTranslationUnverified": [],
       "readingStatus": "fuente-externa-identificada",
-      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público."
+      "translationSourceDescription": "Facsímil de dominio público alojado en R2. Sin traducción alojada; pendiente de localizar una traducción de dominio público.",
+      "originalR2Registered": false,
+      "registeredOriginal": false,
+      "registeredEditionLanguages": [],
+      "remoteEditionLanguages": [],
+      "verifiedLocalEditionLanguages": []
     }
   ]
 }

@@ -6,7 +6,7 @@ import {JSDOM} from "jsdom";
 const read=path=>readFileSync(path,"utf8");
 const corpus=JSON.parse(read("data/classics-corpus/augustine-civitate-dei-la.json"));
 const jsonCache=new Map();
-async function open({query="logos",locus="11.24",literal=false,noIndexes=false,fixture=null,work="augustine-civitate-dei",language="la"}={}){
+async function open({query="logos",locus="11.24",literal=false,noIndexes=false,fixture=null,work="augustine-civitate-dei",language="la",resources={}}={}){
  const errors=[],requested=[],gates=new Map();
  const dom=new JSDOM(read("classics-text-reader.html"),{
   url:"https://example.org/classics-text-reader?work="+work+"&lang="+language+"&locus="+locus+"&q="+encodeURIComponent(query)+(literal?"&literal=1":"&expanded=1"),
@@ -18,6 +18,7 @@ async function open({query="logos",locus="11.24",literal=false,noIndexes=false,f
  w.fetch=async url=>{
   const path=String(url).split("?")[0];requested.push(path);
   if(gates.has(path))await gates.get(path);
+  if(Object.hasOwn(resources,path))return {ok:true,status:200,json:async()=>structuredClone(resources[path])};
   const unavailable=noIndexes&&/lexicon\//.test(path);
   if(unavailable||!existsSync(path))return {ok:false,status:404,json:async()=>null};
   if(!jsonCache.has(path))jsonCache.set(path,JSON.parse(read(path)));
@@ -76,6 +77,13 @@ page.d.getElementById("clear").click();
 assert(page.d.getElementById("search-results-section").hidden);
 assert.equal(new URL(page.w.location.href).searchParams.has("q"),false);
 page.close();
+
+const remoteWork="amiano-marcelino-es";
+const remotePath="https://libros.vitruvius-digital-library.org/corpus/"+remoteWork+"-la.json";
+const remote=await open({work:remoteWork,query:"domus",literal:true,resources:{[remotePath]:{...corpus,workId:remoteWork}}});
+assert(remote.requested.includes(remotePath),"The approved R2 edition in the real registry must be requested");
+assert(remote.marks().length>0,"An available R2 edition must support the same literal reader search");
+remote.close();
 
 const fixture=[{locus:"1",text:"A Latin paragraph with Greek quotation: λόγος καὶ λόγος, and Latin Verbum. "+"Textus integer servatur. ".repeat(20)}];
 const mixed=await open({literal:true,fixture,locus:"1"});

@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-apparatus-selectivus/1",
   "date": "2026-11-14",
-  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H.",
+  "method": "Corpus de comparación selectiva por locus, basado en V514/V554/V297 y control documental de Rose/Krohn/H. Los testimonios de H aún no inspeccionados directamente se identifican como reportados, no como autopsia. Concordancia de ediciones del mismo autor no equivale a dos testigos independientes. En cada registro se distingue la atribución del aparato impreso, el OCR y la fotografía del manuscrito. Los cotejos añadidos se basan en citas documentadas de los apéndices del autor y en los extractos de los aparatos históricos. Cuando el OCR de Rose o Krohn corresponde a otra variante del mismo locus se declara expresamente; ninguna referencia se convierte por inferencia en lectura comprobada de H. Inspección visual adicional de H ff. 4r, 49r y 81v: un folio abierto no implica comprobación del lema; las omisiones y transposiciones requieren cotejar los folios limítrofes y el texto contextual. Segunda revisión de folios contiguos: IV.1.8, H ff. 48v–49v; VI.3.4, H ff. 81r–82r. Ubicación del contexto no equivale a constatación de la variante. Se registran rutas de imagen y estado independiente.",
   "entries": [
     {
       "locus": "1.1.1",
@@ -130,15 +130,23 @@
         "Krohn 1912 p. locus 1.1.10 (OCR)"
       ],
       "note": "El Apéndice T V514 registra que H omite locis, mientras el aparato OCR de Krohn dice «locis add. Kr». Rose conserva «communibus» en el segmento indexado, sin asignación inequívoca de locis desde ese OCR. Suplemento editorial; falta verificación visual.",
-      "status": "documentación V514 + OCR de Krohn; fotografía H pendiente",
+      "status": "folio examinado; lema de locis no localizado con certeza; omisión no verificada",
       "comparison": {
         "kurilo_latin": "aedificiis ⟨locis⟩ communibus",
         "h_transcription": "om. locis (H según V514, no transcripción autóptica)",
         "rose_apparatus_ocr": "communibus x.",
         "krohn_apparatus_ocr": "locis add. Kr {cf. 25, 15)"
       },
-      "evidenceClass": "candidate_cross_source",
-      "verifiedAutopsy": false
+      "evidenceClass": "visual_context_not_lemma",
+      "verifiedAutopsy": false,
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "4r",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_015_f-4r.jpg",
+        "observedReading": "caveant qua instruant aedificia ne contra uentos ... (sin locis en el tramo visible)",
+        "verification": "inspección visual puntual del contexto, no colación íntegra del locus",
+        "note": "En f. 4r se reconoce el tramo «caveant qua instruant aedificia ne contra uentos...» sin locis visible; sin embargo la fórmula del lema «aedificiis ⟨locis⟩ communibus» no ha sido identificada literalmente en este punto. Debe comprobarse la ubicación exacta del lema antes de certificar su omisión."
+      }
     },
     {
       "locus": "2.6.6",
@@ -175,15 +183,34 @@
         "Krohn 1912 aparato OCR"
       ],
       "note": "V514 y V554 describen una omisión por salto. El OCR de Rose y el de Krohn coinciden en atribuir «om. HS» a un segmento del entorno «subtilitate ... elegantia», mientras G conserva la secuencia. La extensión exacta del segmento y sus límites se deben controlar en los impresos y el folio de H antes de establecer el lema diplomático.",
-      "status": "coincidencia documental entre cuatro fuentes; extensión paleográfica pendiente",
+      "status": "folio principal y vecinos examinados; tramo contextual localizado, variante crítica aún no certificada",
       "comparison": {
         "kurilo_latin": "Subtilitate et ornatu symmetriaque sunt mutuati. posteri vero elegantia",
         "h_transcription": "om. (salto), según aparato de V514/V554",
         "rose_apparatus_ocr": "subtilitate — (14) eligantia G: om. HS.",
         "krohn_apparatus_ocr": "subtilitate — elegantia G: om. HS"
       },
-      "evidenceClass": "candidate_cross_source",
-      "verifiedAutopsy": false
+      "evidenceClass": "visual_context_not_lemma",
+      "verifiedAutopsy": false,
+      "imageInspection": {
+        "folio": "49r",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_105_f-49r.jpg",
+        "adjacent": [
+          {
+            "folio": "48v",
+            "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_104_f-48v.jpg",
+            "image": 104
+          },
+          {
+            "folio": "49v",
+            "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_106_f-49v.jpg",
+            "image": 106
+          }
+        ],
+        "inspection": "fotografías f. 48v, 49r y 49v abiertas y comparadas con el texto de V514 y las referencias OCR de Rose/Krohn",
+        "observed": "En f. 49r se reconoce el contexto de los órdenes jónico y corintio; la omisión larga «subtilitate ... elegantia» se atribuye a HS en los dos aparatos impresos transcritos por OCR, pero no se declara aquí su alcance exacto verificado directamente.",
+        "warning": "Delimitación manuscrita y alcance de la omisión requieren transcripción renglón a renglón y control del aparato impreso; no etiquetar autopsia plena."
+      }
     },
     {
       "locus": "6.3.4",
@@ -198,15 +225,34 @@
         "Rose 1899, aparato OCR al locus"
       ],
       "note": "El aparato de Krohn registra «spatio tribuatur ... Kr : ratio habeatur x»; V514 y V554 atribuyen ratio habeatur a la tradición y consignan H, G y Rose en su comentario. El registro automático Rose de este locus no contiene inequívocamente ese lema: no se atribuye a su OCR una lectura inexistente. La restitución textual y la asignación de H están documentadas editorialmente, pero sin autopsia folio-por-folio propia.",
-      "status": "decisión editorial documentada en V514/V554; lectura H directa pendiente",
+      "status": "folio principal y vecinos examinados; tramo contextual localizado, variante crítica aún no certificada",
       "comparison": {
         "kurilo_latin": "ratio habeatur (decisión reportada en apéndice; verificar contra pasaje V514)",
         "h_transcription": "ratio habeatur (H según V514/V554)",
         "rose_apparatus_ocr": "Las entradas OCR asociadas al locus no contienen el lema ratio habeatur; Rose se cita en el comentario V514/V554.",
         "krohn_apparatus_ocr": "spatio tribuatur ... Kr: ratio habeatur x"
       },
-      "evidenceClass": "candidate_cross_source",
-      "verifiedAutopsy": false
+      "evidenceClass": "visual_context_not_lemma",
+      "verifiedAutopsy": false,
+      "imageInspection": {
+        "folio": "81v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_170_f-81v.jpg",
+        "adjacent": [
+          {
+            "folio": "81r",
+            "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_169_f-81r.jpg",
+            "image": 169
+          },
+          {
+            "folio": "82r",
+            "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_171_f-82r.jpg",
+            "image": 171
+          }
+        ],
+        "inspection": "fotografías f. 81r, 81v y 82r abiertas; cotejo del contexto de V514 VI.3.3–5",
+        "observed": "El final de f. 81v contiene el comienzo del pasaje «Altitudo eorum ... sub trabes ...» de VI.3.4; en f. 82r continúa el desarrollo de las dimensiones y empieza el párrafo siguiente («Cum autem ab XL ...», «Non enim atria minora ...»).",
+        "warning": "La lectura exacta «ratio habeatur» frente a «spatio tribuatur» sigue pendiente de verificación letra por letra en una ampliación del tercio inferior de 81v; el enlace al folio y el contexto sí quedan confirmados."
+      }
     },
     {
       "locus": "1.1.12",
@@ -242,15 +288,34 @@
         "Rose 1899 aparato OCR IΙI.3.8",
         "Krohn 1912 aparato OCR III.3.8"
       ],
-      "note": "Los dos apéndices del autor registran XXXVIII para H y comentan la enmienda XXXIV de Krohn y la explicación arquitectónica del número de columnas. Los extractos OCR de aparato de Rose/Krohn asociados al locus se refieren a otras lecciones y no prueban por sí solos esta cifra. Verificar folio y texto latino efectivo de cada edición antes de decidir la lectio constituenda.",
-      "status": "cotejo de apéndices V514/V554; cifras de H y Krohn pendientes de comprobación sobre fuentes primarias",
-      "evidenceClass": "candidate_cross_source",
-      "verifiedAutopsy": false,
+      "note": "Los dos apéndices del autor registran XXXVIII para H y comentan la enmienda XXXIV de Krohn y la explicación arquitectónica del número de columnas. Los extractos OCR de aparato de Rose/Krohn asociados al locus se refieren a otras lecciones y no prueban por sí solos esta cifra. Verificar folio y texto latino efectivo de cada edición antes de decidir la lectio constituenda. En la fotografía de H f. 41v se lee la cifra XXXVIII junto a columnarum; concuerda con la lectura reportada por V514/V554. La comparación exacta del texto constitutivo de Krohn/Rose aún requiere facsímil de ambas ediciones.",
+      "status": "lectura puntual cotejada visualmente en fotografía local de H; otros testimonios todavía pendientes",
+      "evidenceClass": "visual_folio_reading",
+      "verifiedAutopsy": true,
       "comparison": {
         "kurilo_latin": "columnarum XXXIV (V435) [como lema en la tabla del Apéndice T]; comentario autoral menciona «scripsi XXXVIII»",
         "h_transcription": "XXXVIII (H según V514/V554)",
         "rose_apparatus_ocr": "primus HS: primus invenit G. [otra variante del mismo locus]",
         "krohn_apparatus_ocr": "invenit G: om. HS ... [otra variante del mismo locus]"
+      },
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "41v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_090_f-41v.jpg",
+        "observedReading": "columnarum XXXVIII",
+        "verification": "lectura visual directa de la fotografía conservada en GitHub",
+        "note": "En la fotografía de H f. 41v se lee la cifra XXXVIII junto a columnarum; concuerda con la lectura reportada por V514/V554. La comparación exacta del texto constitutivo de Krohn/Rose aún requiere facsímil de ambas ediciones."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "III.3.8",
+        "selected": "XXXIV",
+        "selectedAttribution": "Kr. (sec. Kur.; textus Kr. nondum inspectus)",
+        "variant": "XXXVIII",
+        "variantAttribution": "H",
+        "folio": "41v",
+        "display": "‖ III.3.8 XXXIV Kr. (sec. Kur., insp. pend.) : XXXVIII H (f. 41v, ex imagine) ‖",
+        "caution": "Lectura XXXVIII comprobada visualmente en H; XXXIV se atribuye a Krohn según comentario autoral, no se comprobó aún en impreso. Forma positiva parcial: no se presume apoyo del resto de códices."
       }
     },
     {
@@ -265,15 +330,34 @@
         "Rose 1899, aparato OCR V.4.2",
         "Krohn 1912, aparato OCR V.4.2"
       ],
-      "note": "V514/V554 citan para H la frase sin crux; el texto de referencia conserva una crux editorial asociada a Krohn, en espera del cotejo de G. Rose OCR al mismo locus menciona gravis, pero no permite identificar por sí solo toda la frase. La coherencia gramatical debe discutirse con imagen de H y edición impresa.",
-      "status": "aparato autoral bilingüe contrastado documentalmente; autopsia de H pendiente",
-      "evidenceClass": "candidate_cross_source",
-      "verifiedAutopsy": false,
+      "note": "V514/V554 citan para H la frase sin crux; el texto de referencia conserva una crux editorial asociada a Krohn, en espera del cotejo de G. Rose OCR al mismo locus menciona gravis, pero no permite identificar por sí solo toda la frase. La coherencia gramatical debe discutirse con imagen de H y edición impresa. La secuencia sed quod ex acuta facta est gravis es visible en la fotografía H f. 63v y concuerda con lo reportado en V514/V554. La calificación de crux sigue siendo decisión editorial, no marca manuscrita.",
+      "status": "lectura puntual cotejada visualmente en fotografía local de H; otros testimonios todavía pendientes",
+      "evidenceClass": "visual_folio_reading",
+      "verifiedAutopsy": true,
       "comparison": {
         "kurilo_latin": "†sed quod ex acuta (Apéndice T V514/V554)",
         "h_transcription": "sed quod ex acuta facta est gravis (H según V514/V554)",
         "rose_apparatus_ocr": "gravis et (&) ex {sic) x.",
         "krohn_apparatus_ocr": "fit rec: fiat x [otra variante del locus]"
+      },
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "63v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_134_f-63v.jpg",
+        "observedReading": "sed quod ex acuta facta est gravis",
+        "verification": "lectura visual directa de la fotografía conservada en GitHub",
+        "note": "La secuencia sed quod ex acuta facta est gravis es visible en la fotografía H f. 63v y concuerda con lo reportado en V514/V554. La calificación de crux sigue siendo decisión editorial, no marca manuscrita."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "V.4.2",
+        "selected": "†sed quod ex acuta†",
+        "selectedAttribution": "Kur. (crux editorial; locus citado en Apéndice T)",
+        "variant": "sed quod ex acuta facta est gravis",
+        "variantAttribution": "H",
+        "folio": "63v",
+        "display": "‖ V.4.2 †sed quod ex acuta† Kur. (sec. app. T) : sed quod ex acuta facta est gravis H (f. 63v, ex imagine) ‖",
+        "caution": "El lema con crux es una cita parcial del Apéndice T. No afirmar que el segmento recortado constituye la totalidad del texto establecido."
       }
     },
     {
@@ -310,16 +394,50 @@
         "Rose 1899, aparato OCR V.5.1",
         "Krohn 1912, aparato OCR V.5.1"
       ],
-      "note": "Ambas ediciones identifican et como suplemento de Krohn y atribuyen su omisión a H. Las entradas OCR históricas asociadas al locus documentan otras cuestiones y no permiten certificar esta atribución de manuscrito.",
-      "status": "acuerdo editorial V514/V554; cotejo directo de H/Krohn pendiente",
-      "evidenceClass": "candidate_cross_source",
-      "verifiedAutopsy": false,
+      "note": "Ambas ediciones identifican et como suplemento de Krohn y atribuyen su omisión a H. Las entradas OCR históricas asociadas al locus documentan otras cuestiones y no permiten certificar esta atribución de manuscrito. La fotografía H f. 65v muestra diapente ex ordine sin et intermedio; concuerda con la omisión referida por V514/V554. La lectura de los signos periféricos y la colación integral del párrafo siguen pendientes.",
+      "status": "lectura puntual cotejada visualmente en fotografía local de H; otros testimonios todavía pendientes",
+      "evidenceClass": "visual_folio_reading",
+      "verifiedAutopsy": true,
       "comparison": {
         "kurilo_latin": "diapente ⟨et⟩ ex ordine",
         "h_transcription": "om. et (H según V514/V554)",
         "rose_apparatus_ocr": "locum — (12) habeant bis scripta in H ... [otra unidad]",
         "krohn_apparatus_ocr": "locum — habeant bis ponit H ... [otra unidad]"
+      },
+      "visualEvidence": {
+        "manuscript": "British Library, Harley MS 2767",
+        "folio": "65v",
+        "file": "images/CODEX_H_HARLEY_2767_ARCHIVO_MAESTRO_NO_BORRAR/H_138_f-65v.jpg",
+        "observedReading": "diapente ex ordine",
+        "verification": "lectura visual directa de la fotografía conservada en GitHub",
+        "note": "La fotografía H f. 65v muestra diapente ex ordine sin et intermedio; concuerda con la omisión referida por V514/V554. La lectura de los signos periféricos y la colación integral del párrafo siguen pendientes."
+      },
+      "criticalUnit": {
+        "form": "positivus_partialis",
+        "location": "V.5.1",
+        "selected": "diapente ⟨et⟩ ex ordine",
+        "selectedAttribution": "Kur. (suppl. Kr. sec. Kur.)",
+        "variant": "diapente ex ordine",
+        "variantAttribution": "H",
+        "folio": "65v",
+        "display": "‖ V.5.1 diapente ⟨et⟩ ex ordine Kur. (suppl. Kr. sec. Kur.) : diapente ex ordine H (f. 65v, ex imagine) ‖",
+        "caution": "El signo ⟨ ⟩ indica suplemento; en el folio H se observa diapente ex ordine sin et. La atribución del suplemento a Krohn proviene del Apéndice T y debe cotejarse con Krohn impreso."
       }
     }
-  ]
+  ],
+  "apparatusConventions": {
+    "model": "Collection Budé / CUF, aparato positivo selectivo: ‖ locus lectura adoptada testimonio : variante testimonio ‖",
+    "witnessSigla": {
+      "H": "Harley MS 2767",
+      "G": "Gudianus 69",
+      "E": "Gudianus 132",
+      "S": "Sélestat"
+    },
+    "editorialSigla": {
+      "Kr.": "Friedrich Krohn (1912)",
+      "Rose": "Valentin Rose (1899)",
+      "Kur.": "Diego Kurilo (V514/V554/V297)"
+    },
+    "warning": "Sigla de edición no equivale a sigla codicológica. «sec. Kur.» = atribución citada por Kurilo; «ex imagine» = lectura visual sobre fotografía; «insp. pend.» = impreso aún no comprobado. La notación positiva es parcial mientras falten los demás testimonios."
+  }
 }

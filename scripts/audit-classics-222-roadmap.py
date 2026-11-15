@@ -62,12 +62,15 @@ def main():
     mapping = read("data/bibliotheca-perseus.json")["links"]
     source_coverage = read("data/classics-corpus/translation-availability-222.json")
     langs_by_id = {}
+    remote_langs_by_id = {}
     for e in registry:
-        langs_by_id.setdefault(e["workId"], set()).add(e["language"])
+        target = remote_langs_by_id if e["path"].startswith(("https://", "http://")) else langs_by_id
+        target.setdefault(e["workId"], set()).add(e["language"])
     ids = {w["id"] for w in catalog}
     assert len(ids) == len(catalog), "Catalog has duplicate work ids"
     total_works = len(catalog)
     assert set(langs_by_id) <= ids, "Search registry has an unlisted work"
+    assert set(remote_langs_by_id) <= ids, "Remote registry has an unlisted work"
     entries = [classify(w, mapping, langs_by_id.get(w["id"], set())) for w in catalog]
     # Reconciliar los índices externos ya publicados sin contarlos como alojamiento
     # local ni sobrescribir las transcripciones existentes.
@@ -81,6 +84,8 @@ def main():
                for x in remote_rows), "Remote original does not match catalogue"
     for w in entries:
         record = remote_by_id.get(w["id"])
+        w["originalR2Registered"] = w["originalLanguage"] in remote_langs_by_id.get(w["id"], set())
+        w["registeredOriginalIndexed"] = bool(w["originalIndexed"] or w["originalR2Registered"] or record)
         w["offsiteOriginalIndexed"] = bool(record)
         w["effectiveOriginalIndexed"] = bool(w["originalIndexed"] or record)
         if record:
@@ -104,14 +109,19 @@ def main():
         "method": ("Counts from hosted edition paths only. A catalogue entry or external Perseus "
                    "mapping never counts as indexed text or a hosted translation. "
                    "No AI-supplied passages, unverified OCR, or assumed cross-language alignment. "
-                 "Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot."),
+                 "Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. "
+                 "Registered R2 originals are separate declarations; HTTP availability is not verified here."),
         "targetWorks": total_works,
         "counts": {
             "originalsIndexed": indexed,
             "originalsMissing": len(entries)-indexed,
             "worksWithHostedTranslation": translated,
             "worksMissingTranslation": len(entries)-translated,
-            "textVersions": len(registry),
+            "textVersions": sum(not e["path"].startswith(("https://", "http://")) for e in registry),
+            "registeredTextVersions": len(registry),
+            "declaredR2OriginalWorks": sum(w["originalR2Registered"] for w in entries),
+            "registeredProjectOriginalWorks": sum(w["originalIndexed"] or w["originalR2Registered"] for w in entries),
+            "registeredOriginalsWithExternal": sum(w["registeredOriginalIndexed"] for w in entries),
             "offsiteOriginalsIndexed": remote_only,
             "effectiveOriginalsIndexed": effective_indexed,
             "effectiveOriginalsMissing": total_works - effective_indexed,

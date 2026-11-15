@@ -52,7 +52,7 @@
 <div class="audit-table-wrap"><table class="audit-table"><thead><tr><th>Autor y obra</th><th>Estado del catálogo</th><th>Texto indexado</th><th>PDF alojado</th><th>Testimonio manuscrito</th></tr></thead><tbody id="audit-rows"></tbody></table></div>
 <section aria-labelledby="audit-method"><h2 id="audit-method">Método y limitaciones</h2>
 <p>Los datos se obtienen del catálogo de obras, del inventario de testimonios y del registro de archivos textuales que existen en GitHub. Se puede buscar dentro de las ediciones JSON y HTML registradas; para un PDF escaneado sin texto extraíble es necesaria una transcripción u OCR, siempre identificando edición, folio o página y condiciones de reutilización.</p>
-<p>La tabla contabiliza 181 obras con originales indexados en el registro local. Otros 23 originales están registrados en los manifiestos externos griego y latino, sujetos a disponibilidad y validación por separado: por eso la cifra global puede alcanzar 204. Estas magnitudes no certifican textos completos ni colación de manuscritos. El conjunto de Vitruvio dispone de otros índices históricos de páginas y loci que no se contabilizan dentro del buscador específico de clásicos. Los manuscritos no se consideran transcritos por el mero hecho de disponer de facsímiles. Esta auditoría no reemplaza la consulta del catálogo de cada biblioteca ni el cotejo filológico.</p>
+<p>La tabla incluye <span id="audit-registered">214</span> obras del registro de búsqueda: <span id="audit-local-originals">182</span> con original en archivos del repositorio y <span id="audit-r2-originals">32</span> con original declarado en R2. Otros índices externos documentados se contabilizan por separado en la conciliación. Una declaración R2 no certifica disponibilidad HTTP, texto completo ni colación. El conjunto de Vitruvio dispone de otros índices históricos de páginas y loci. Los manuscritos no se consideran transcritos por disponer de facsímiles; se conserva la consulta del catálogo institucional y el cotejo filológico.</p>
 <p><a href="data/classics-corpus/coverage-audit.json">Datos completos de auditoría (JSON)</a> · <a href="data/classics-corpus/search-registry.json">Textos efectivamente registrados para la búsqueda</a> · <a href="data/classics-corpus/pdf-inventory.json">Inventario y estado OCR de los 10 PDF</a> · <a href="bibliotheca-graeca-latina.html">Volver a los lectores</a></p></section>
 </main>
 <script>
@@ -86,7 +86,8 @@ function render(){
   a.href="bibliotheca-graeca-latina.html?work="+encodeURIComponent(w.id);text(a,w.title);
   text(small,w.author+" · "+(w.originalLanguage==="grc"?"Griego":"Latín"));td.append(a,small);tr.append(td);
   cell(tr,statusLabel[w.catalogueStatus]||w.catalogueStatus||"Sin estado");
-  cell(tr,w.indexedTextLanguages?.length?"Local · "+w.indexedTextLanguages.join(", "):(remoteIndexedIds.has(w.id)?"R2 · registro declarado; acceso pendiente de comprobación":(w.hasStructuredVitruviusReader?"Índice de Vitruvio separado":"No en el buscador textual")));
+  const localFile=w.indexedTextFiles?.some(path=>!/^https?:\/\//i.test(path));
+  cell(tr,remoteIndexedIds.has(w.id)?(localFile?"Local y R2 · ":"R2 · ")+"registro declarado; acceso remoto pendiente de comprobación":(w.indexedTextLanguages?.length?"Local · "+w.indexedTextLanguages.join(", "):(w.hasStructuredVitruviusReader?"Índice de Vitruvio separado":"No en el buscador textual")));
   const pdf=cell(tr,w.localPDF?"PDF local":"—");
   if(w.localPDF){pdf.replaceChildren();const link=document.createElement("a");link.href=w.localPDF;link.textContent="Abrir PDF";link.rel="noopener";pdf.append(link)}
   cell(tr,w.manuscriptRecords?.length?w.manuscriptRecords.map(x=>x.shelfmark).join("; "):(w.hasManuscriptRecord?"En ficha":"—"));
@@ -97,6 +98,10 @@ function render(){
 Promise.all(["data/classics-corpus/coverage-audit.json?v=20261113-status","data/classics-corpus/search-registry.json"].map(url=>fetch(url).then(r=>{if(!r.ok)throw Error("HTTP "+r.status+" "+url);return r.json()}))).then(([d,registry])=>{
  if(!Array.isArray(registry.entries))throw Error("Registro de textos incompleto");
  remoteIndexedIds=new Set(registry.entries.filter(e=>typeof e.path==="string"&&e.path.startsWith("https://libros.vitruvius-digital-library.org/corpus/")).map(e=>e.workId));
+ const localOriginals=new Set(registry.entries.filter(e=>["la","grc"].includes(e.language)&&!/^https?:\/\//i.test(e.path)).map(e=>e.workId));
+ const r2Originals=new Set(registry.entries.filter(e=>["la","grc"].includes(e.language)&&remoteIndexedIds.has(e.workId)).map(e=>e.workId));
+ $("audit-registered").textContent=new Set(registry.entries.map(e=>e.workId)).size;
+ $("audit-local-originals").textContent=localOriginals.size;$("audit-r2-originals").textContent=r2Originals.size;
  if(d.schema!=="vitruvia-classics-coverage-audit-v1"||!Array.isArray(d.works))throw Error("Formato incorrecto");
  all=d.works;countStats(d);all.sort((a,b)=>norm(a.author).localeCompare(norm(b.author),"es")||norm(a.title).localeCompare(norm(b.title),"es"));
  for(const id of ["audit-query","audit-filter","audit-language"])$(id).addEventListener(id==="audit-query"?"input":"change",render);

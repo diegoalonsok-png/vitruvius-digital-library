@@ -81,12 +81,12 @@ def extract(corpus, raw):
                 raise ValueError("Annotation span differs from imported passage")
             pieces.append(original[cursor:a])
             cursor = b
-            notes.append({k: note[k] for k in ("kind", "text", "number", "sourceTag")})
+            notes.append({**{k: note[k] for k in ("kind", "text", "number", "sourceTag")}, "start": len(original[:a].encode("utf-16-le")) // 2, "end": len(original[:b].encode("utf-16-le")) // 2})
         pieces.append(original[cursor:])
         text = re.sub(r"\s+", " ", "".join(pieces)).strip()
         if not text:
             continue
-        passages[item["locus"]] = {"importedText": original, "text": text, "notes": notes}
+        passages[item["locus"]] = {"sourceLength": len(original.encode("utf-16-le")) // 2, "sourceTextSha256": hashlib.sha256(original.encode()).hexdigest(), "notes": notes}
     monogr = root.find(".//t:sourceDesc//t:monogr", NS)
     header = root.find(".//t:titleStmt", NS)
     metadata = {}
@@ -97,7 +97,7 @@ def extract(corpus, raw):
             metadata[key] = plain(monogr.find(path, NS))
         metadata["publisher"] = "; ".join(plain(n) for n in monogr.findall("t:imprint/t:publisher", NS))
         metadata["place"] = "; ".join(plain(n) for n in monogr.findall("t:imprint/t:pubPlace", NS))
-    return {"schema": "vdl-source-reading-notes-v1", "workId": corpus["workId"],
+    return {"schema": "vdl-source-reading-notes-v2", "workId": corpus["workId"],
             "language": corpus["language"], "source": corpus["source"],
             "sourceSha256": observed, "metadata": metadata,
             "policy": "Notes transcribed from explicit TEI markup; no new collation or supplied readings. Imported text retained verbatim.",

@@ -1,5 +1,6 @@
 /* Source-preserving notes, navigation, translation and PDF comparison, offline. */
 import assert from "node:assert/strict";
+import {createHash} from "node:crypto";
 import {readFileSync,existsSync} from "node:fs";
 import {JSDOM} from "jsdom";
 const read=p=>readFileSync(p,"utf8"),load=p=>JSON.parse(read(p));
@@ -12,9 +13,9 @@ for(const e of manifest.entries){
  assert.equal(notes.sourceSha256,corpus.sourceSha256);
  const passages=corpus.passages;
  for(const [locus,n] of Object.entries(notes.passages)){
-  assert(passages.some(p=>p.locus===locus&&p.text===n.importedText),"Exact imported text retained at "+e.workId+":"+locus);
-  assert(n.text.trim());assert(n.notes.length);
-  for(const note of n.notes){assert(n.importedText.includes(note.text));assert(["reference","editorial","textual"].includes(note.kind));checked++;}
+  const original=passages.find(p=>p.locus===locus&&(n.importedText?p.text===n.importedText:createHash("sha256").update(p.text).digest("hex")===n.sourceTextSha256));
+  assert(original,"Exact imported text retained at "+e.workId+":"+locus);assert(n.notes.length);
+  for(const note of n.notes){assert(n.importedText?original.text.includes(note.text):original.text.slice(note.start,note.end)===note.text);assert(["reference","editorial","textual"].includes(note.kind));checked++;}
  }
 }
 assert(checked>20000);

@@ -700,7 +700,8 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
   const hosted=(registry.entries||[]).filter(e=>e.workId===work&&
    ["json-passages","structured-bilingual"].includes(e.format)&&
    ["grc","la","es","en","fr","it","de","pt"].includes(e.language)&&
-   /^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(e.path||""));
+   (/^data\/(?:classics-corpus|structured|lexicon\/fontes)\/[a-z0-9/_-]+\.json$/.test(e.path||"")||
+    /^https:\/\/libros\.vitruvius-digital-library\.org\/corpus\/[a-z0-9_-]+\.json$/.test(e.path||"")));
   if(!hosted.length)throw Error("Esta obra no tiene una edición JSON disponible para este lector.");
    hostedEditions=hosted;
   if(!allowed[work])setTitle((record?.author||hosted[0].author)+" · "+(record?.title||hosted[0].title));
@@ -709,6 +710,6 @@ $("prev").addEventListener("click",()=>select(active-1));$("next").addEventListe
   if(![...langSelect.options].some(o=>o.value===p.get("lang")))langSelect.value=available.has("grc")?"grc":available.has("la")?"la":langSelect.options[0]?.value||"en";
   else langSelect.value=p.get("lang");
   await swap(langSelect.value);
- }catch(err){$("source-title").textContent=err.message;$("method-note").textContent="Se conserva el acceso al códice de la institución; no se publica aquí un texto latino incompleto."}
+ }catch(err){$("source-title").textContent=err.message;$("method-note").textContent="No se pudo cargar esta edición. Consulte la ficha de la obra y sus fuentes; el error de acceso no indica que el texto falte en el catálogo."}
 })();
 })();

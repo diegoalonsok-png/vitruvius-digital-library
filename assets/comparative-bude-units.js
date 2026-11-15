@@ -11,6 +11,13 @@ let data=null,loci=[],sequence=0;
 function card(title,body,lang){const c=E("article",null,"bude-card");c.append(E("h3",title));const p=E("p",body||"Sin texto indexado para este locus.");if(lang)p.lang=lang;c.append(p);return c}
 function item(container,title,text,meta,url){const d=E("div",null,"bude-unit");d.append(E("strong",title),E("div","‖ "+String(text||"Sin texto recuperado")+" ‖"));if(meta)d.append(E("small",meta));if(url){const p=E("div");p.append(A("Comprobar fuente",url));d.append(p)}container.append(d)}
 const json=async url=>{const r=await fetch(url);if(!r.ok)throw Error(url+" HTTP "+r.status);return r.json()};
+function hViewerLink(folio,locus){
+ const row=data?.hmap?.entries?.find(x=>x.folio===folio);
+ const q=new URLSearchParams({locus});
+ if(Number.isInteger(row?.image_number)&&row.image_number>0)q.set("image",String(row.image_number));
+ else if(folio)q.set("folio",folio);
+ return "harleianus.html?"+q.toString();
+}
 function section(title){const s=E("section");s.append(E("h3",title));root.append(s);return s}
 async function render(query){
  const locus=norm(query),position=loci.indexOf(locus),token=++sequence;
@@ -19,7 +26,7 @@ async function render(query){
  const summarySearch=$("q");if(summarySearch&&summarySearch.value!==locus){summarySearch.value=locus;summarySearch.dispatchEvent(new Event("input",{bubbles:true}));}
  $("bude-prev").disabled=position===0;$("bude-next").disabled=position===loci.length-1;
  $("bude-open-reader").href="apparatus-bude.html?locus="+encodeURIComponent(locus);
- $("bude-open-h").href="codex-h-folios-local.html?locus="+encodeURIComponent(locus);
+ $("bude-open-h").href="harleianus.html?locus="+encodeURIComponent(locus);
  const u=new URL(location.href);u.searchParams.set("locus",locus);history.replaceState(null,"",u);
  root.replaceChildren();status.textContent="Consultando "+fmt(locus)+"…";
  const p=data.es.passages.find(x=>x.locus===locus);
@@ -33,8 +40,8 @@ async function render(query){
  h.append(E("p","Harley MS 2767 (British Library, ca. 800–824): la fuente manuscrita más antigua conservada de De architectura. El cotejo debe comenzar con la imagen del folio, no con una transcripción derivada. Los enlaces de locus estimado no demuestran la lectura.","bude-note"));
  try{
   const v=await window.CodexHConcordance?.locate(locus);if(token!==sequence)return;
-  if(v?.exact?.length)for(const f of v.exact){item(h,"H f. "+f.folio, f.note||"Correspondencia del folio registrada.", "Estado del enlace: "+f.status+"; cotejo diplomático no presumido.","codex-h-folios-local.html?folio="+encodeURIComponent(f.folio)+"&locus="+encodeURIComponent(locus))}
-  else if(v?.estimate)item(h,"H · estimación",v.estimate.folio+" ("+v.estimate.from+"–"+v.estimate.to+")","Localización proporcional, no prueba codicológica.","codex-h-folios-local.html?folio="+encodeURIComponent(v.estimate.folio)+"&locus="+encodeURIComponent(locus));
+  if(v?.exact?.length)for(const f of v.exact){item(h,"H f. "+f.folio, f.note||"Correspondencia del folio registrada.", "Estado del enlace: "+f.status+"; cotejo diplomático no presumido.",hViewerLink(f.folio,locus))}
+  else if(v?.estimate)item(h,"H · estimación",v.estimate.folio+" ("+v.estimate.from+"–"+v.estimate.to+")","Localización proporcional, no prueba codicológica.",hViewerLink(v.estimate.folio,locus));
   else h.append(E("p","Sin folio vinculado en el mapa actual."));
  }catch(e){h.append(E("p","Concordancia H no disponible: "+e.message))}
  const c=data.comparison.loci.find(x=>x.locus===locus);
@@ -47,23 +54,53 @@ async function render(query){
   }
  }
  if(ext.children.length===1)ext.append(E("p","Sin entradas selectivas para este locus."));
- const verified=section("Apparatus selectivus · cotejos documentales V514/V554");
+ const verified=section("Apparatus criticus selectivus · forma Budé, testimonios y ediciones");
+ verified.append(E("p","Convención: ‖ locus lectio recepta + sigla : varia lectio + sigla ‖. H = codex Harleianus; Kr. = Krohn; Rose = Rose; Kur. = ediciones Kurilo. «sec. Kur.» indica atribución editorial y «ex imagine» lectura directa de la fotografía. Las demás entradas conservan su carácter documental.","bude-note"));
  const selected=data.curated.entries.filter(x=>x.locus===locus);
  for(const e of selected){
   const sourceRefs=(e.sources||[]).join(" · ");
-  item(verified,"Kur. : "+e.lemma+" ] "+e.reading+" "+e.siglum,
-       e.note,"H, f. "+e.folio+" · "+e.status+" · registros: "+sourceRefs,
-       "codex-h-folios-local.html?folio="+encodeURIComponent(e.folio)+"&locus="+encodeURIComponent(locus));
+  if(e.criticalUnit){
+   const u=E("div",null,"bude-unit");
+   const heading=E("div",e.criticalUnit.display,"bude-critical-line");
+   heading.lang="la";u.append(heading);
+   u.append(E("small","Apparatus positivus selectivus · "+e.criticalUnit.caution));
+   u.append(E("div",e.note,"bude-note"));
+   u.append(A("Examinar H f. "+e.folio+" en el visor",hViewerLink(e.folio,locus)));
+   verified.append(u);
+  }else{
+   item(verified,"Kur. · cotejo documental: "+e.lemma+" ] "+e.reading+" "+e.siglum,
+        e.note,"H, f. "+e.folio+" · "+e.status+" · registros: "+sourceRefs,
+        hViewerLink(e.folio,locus));
+  }
   const provenance=E("p",null,"bude-note");provenance.append("Fuentes editoriales: ");
   const sourceRows=(e.sources||[]).map(id=>data.appendix.entradas.find(row=>row.id===id)).filter(Boolean);
   if(sourceRows.length){
    sourceRows.forEach((row,i)=>{if(i)provenance.append(" · ");provenance.append(A(row.version+" · Apéndice T, p. "+row.page,row.pdf));});
   }else provenance.append("Referencias textuales indicadas arriba; revisar identificadores en el Apéndice T.");
   verified.append(provenance);
+  if(e.imageInspection){
+   const observed=E("p",null,"bude-note");
+   observed.append("FOLIO EXAMINADO · SIN LECTURA CERTIFICADA: "+e.imageInspection.warning+" ");
+   observed.append(A("Examinar fotografía en GitHub","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/"+e.imageInspection.file));
+   if(e.imageInspection.observed)observed.append(E("span"," Contexto localizado: "+e.imageInspection.observed)); 
+   verified.append(observed);
+   if(e.imageInspection.adjacent?.length){
+    const links=E("p",null,"bude-note");links.append("Folios contiguos cotejados: ");
+    e.imageInspection.adjacent.forEach((f,i)=>{if(i)links.append(" · ");links.append(A("H f. "+f.folio,hViewerLink(f.folio,locus)));});
+    verified.append(links);
+   }
+  }
+  if(e.visualEvidence){
+   const proof=E("p",null,"bude-note");
+   proof.append("LECTURA DIRECTA DE H: "+e.visualEvidence.observedReading+" · f. "+e.visualEvidence.folio+". ");
+   proof.append(A("Ver fotografía original conservada en GitHub","https://github.com/diegoalonsok-png/vitruvius-digital-library/blob/main/"+e.visualEvidence.file));
+   proof.append(". "+e.visualEvidence.note);
+   verified.append(proof);
+  }
   if(e.comparison){
    const compar=E("div",null,"bude-grid");
    const texts=[["Kur. V514 · latín",e.comparison.kurilo_latin],
-    ["H f. "+e.folio+" · borrador semidiplomático",e.comparison.h_transcription],
+    ["H f. "+e.folio+(e.visualEvidence?" · cotejo visual":" · atribución editorial pendiente"),e.comparison.h_transcription],
     ["Rose 1899 · OCR de aparato (p. "+e.comparison.rose_page+")",e.comparison.rose_apparatus_ocr],
     ["Kr. 1912 · OCR de aparato (p. "+e.comparison.krohn_page+")",e.comparison.krohn_apparatus_ocr]];
    for(const [title,body] of texts)compar.append(card(title,body,"la"));
@@ -88,8 +125,8 @@ async function render(query){
 }
 (async()=>{try{
  const paths=["data/structured/recensio-es.json","data/structured/recensio-fr.json","data/structured/theory-en.json","data/apparatus/aparato-comparativo.json","data/apparatus/collatio-validada.json","data/apparatus/aparato-autoral.json"];
- const [es,fr,en,comparison,appendix,author,curated]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json"].map(json));
- data={es,fr,en,comparison,appendix,author,curated};loci=es.passages.map(p=>p.locus);
+ const [es,fr,en,comparison,appendix,author,curated,hmap]=await Promise.all([...paths,"data/apparatus/cotejo-selectivo-v514-v554-h.json","data/codex-h/folio-locus-map.json"].map(json));
+ data={es,fr,en,comparison,appendix,author,curated,hmap};loci=es.passages.map(p=>p.locus);
  const q=new URLSearchParams(location.search).get("locus")||"1.1.1";render(q);
  $("bude-form").addEventListener("submit",e=>{e.preventDefault();render($("bude-locus").value)});
  // Unify the legacy tabular finder with the locus-specific apparatus.

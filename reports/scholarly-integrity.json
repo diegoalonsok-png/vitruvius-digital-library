@@ -1,0 +1,70 @@
+{
+  "schema": "vitruvius-philological-quality-audit-v1",
+  "description": "Integridad documental de textos y loci; no es una colación ni una evaluación de calidad de las traducciones.",
+  "date": "2026-11-15T01:57:08.078Z",
+  "editions": [
+    {
+      "id": "recensio-es",
+      "version": "V514",
+      "language": "es",
+      "source": "Vitruvio_V514_ESPANOL_MASTER_IMPRENTA_2026-10-02(2).docx",
+      "sourceSha256": "a41458f70810d323f1cc9cb1b47cdc8c47988961a798b18dbfb97316d1669b87",
+      "total": 731,
+      "latin": 731,
+      "translations": 731,
+      "invalidLoci": 0,
+      "duplicateLoci": 0
+    },
+    {
+      "id": "recensio-fr",
+      "version": "V554",
+      "language": "fr",
+      "source": "Vitruvio_V554_FRANCAIS_MASTER_IMPRESSION_2026-10-02(2).docx",
+      "sourceSha256": "6713489fe15991b1b438591f9045b241929fa1007529ea0fc13869f49cddc27b",
+      "total": 731,
+      "latin": 731,
+      "translations": 731,
+      "invalidLoci": 0,
+      "duplicateLoci": 0
+    },
+    {
+      "id": "theory-en",
+      "version": "V297",
+      "language": "en",
+      "source": "The_Architect_of_Theory_V297_EN_156x234(1).docx",
+      "sourceSha256": "5812cbc7c9c246db46a2e66d9e9291307afc03d6a7d3349eeb7ab80260b11c99",
+      "total": 728,
+      "latin": 728,
+      "translations": 728,
+      "invalidLoci": 0,
+      "duplicateLoci": 0
+    }
+  ],
+  "concordance": {
+    "distinctLoci": 731,
+    "availableInAllThreeEdtions": 728,
+    "differingLatinStringsWithinSameLocus": 619,
+    "note": "Las diferencias de cadenas latinas entre ediciones son señales para cotejo editorial; no son variantes manuscritas certificadas."
+  },
+  "notes": {
+    "total": 811,
+    "provenanceDocumentAndParagraph": 811,
+    "withText": 811,
+    "byMappingStatus": {
+      "explicit_in_anchor": 41,
+      "requires_locus_review": 770,
+      "other": 0
+    },
+    "explicitWithoutLocus": 0,
+    "explicitNotFoundInMatchingEdition": 0,
+    "unresolvedExamples": [],
+    "editorialNote": "Las notas con locus candidato o ausente son evidencia documental, no aparato adjudicado automáticamente a un párrafo."
+  },
+  "ecdoticDecisions": {
+    "total": 0,
+    "certified": 0,
+    "invalidCertified": 0
+  },
+  "errors": [],
+  "warnings": []
+}

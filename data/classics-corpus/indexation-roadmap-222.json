@@ -1,7 +1,7 @@
 {
   "schema": "vitruvius-classics-indexation-roadmap-v1",
-  "updated": "2026-11-13",
-  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot.",
+  "updated": "2026-11-14",
+  "method": "Counts from hosted edition paths only. A catalogue entry or external Perseus mapping never counts as indexed text or a hosted translation. No AI-supplied passages, unverified OCR, or assumed cross-language alignment. Offsite JSON indexes are counted separately from hosted texts using an evidence snapshot. Registered R2 originals are separate declarations; HTTP availability is not verified here.",
   "targetWorks": 271,
   "counts": {
     "originalsIndexed": 182,
@@ -9,6 +9,10 @@
     "worksWithHostedTranslation": 59,
     "worksMissingTranslation": 212,
     "textVersions": 247,
+    "registeredTextVersions": 279,
+    "declaredR2OriginalWorks": 32,
+    "registeredProjectOriginalWorks": 214,
+    "registeredOriginalsWithExternal": 242,
     "offsiteOriginalsIndexed": 28,
     "effectiveOriginalsIndexed": 210,
     "effectiveOriginalsMissing": 61,
@@ -47,6 +51,8 @@
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -68,6 +74,8 @@
         "phi0474.phi055"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -88,6 +96,8 @@
         "phi0474.phi037"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -108,6 +118,8 @@
         "phi0474.phi043"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -129,6 +141,8 @@
         "phi0448.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -150,6 +164,8 @@
         "phi0448.phi002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -171,6 +187,8 @@
         "phi0631.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -192,6 +210,8 @@
         "phi0631.phi002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -212,6 +232,8 @@
         "ll.varro-rustica"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -234,6 +256,8 @@
         "phi0550.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -255,6 +279,8 @@
         "phi0690.phi003"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -276,6 +302,8 @@
         "phi0690.phi002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -296,6 +324,8 @@
         "phi0893.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -316,6 +346,8 @@
         "phi0914.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -336,6 +368,8 @@
         "phi0959.phi006"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -356,6 +390,8 @@
         "phi0959.phi007"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -400,6 +436,8 @@
         "phi0588.abo025"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -420,6 +458,8 @@
         "tlg0060.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -440,6 +480,8 @@
         "tlg0081.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -460,6 +502,8 @@
         "tlg0099.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -481,6 +525,8 @@
         "tlg0018.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -501,6 +547,8 @@
         "phi1017.phi015"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -519,6 +567,8 @@
         "ll.seneca-naturales"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -544,6 +594,8 @@
         "phi0917.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -564,6 +616,8 @@
         "phi0978.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -584,6 +638,8 @@
         "tlg0656.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -604,6 +660,8 @@
         "tlg0526.tlg004"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -624,6 +682,8 @@
         "tlg0526.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -644,6 +704,8 @@
         "phi1002.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -664,6 +726,8 @@
         "phi1294.phi002"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -685,6 +749,8 @@
         "phi1351.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -705,6 +771,8 @@
         "phi1351.phi002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -725,6 +793,8 @@
         "ll.frontinus"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -745,6 +815,8 @@
         "tlg0031.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -765,6 +837,8 @@
         "tlg1271.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -786,6 +860,8 @@
         "tlg1311.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -806,6 +882,8 @@
         "tlg1419.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -824,6 +902,8 @@
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -844,6 +924,8 @@
         "tlg1216.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -864,6 +946,8 @@
         "tlg1443.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -884,6 +968,8 @@
         "tlg1622.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -904,6 +990,8 @@
         "tlg1271.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -924,6 +1012,8 @@
         "tlg0646.tlg004"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -944,6 +1034,8 @@
         "tlg0645.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -964,6 +1056,8 @@
         "tlg1447.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -984,6 +1078,8 @@
         "stoa0275.stoa009"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1000,6 +1096,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -1020,6 +1118,8 @@
         "tlg2018.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1040,6 +1140,8 @@
         "phi0845.phi002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1060,6 +1162,8 @@
         "phi0836.phi002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1080,6 +1184,8 @@
         "ll.frontinus-strategemata"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1163,6 +1269,8 @@
         "tlg0007.tlg066"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -1184,6 +1292,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -1204,6 +1314,8 @@
         "tlg0559.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1224,6 +1336,8 @@
         "tlg0559.tlg002"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1240,6 +1354,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -1256,6 +1372,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -1272,6 +1390,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -1288,6 +1408,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -1306,6 +1428,8 @@
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1326,6 +1450,8 @@
         "phi0119.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1346,6 +1472,8 @@
         "phi0119.phi003"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1366,6 +1494,8 @@
         "phi0134.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1386,6 +1516,8 @@
         "phi0134.phi002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1406,6 +1538,8 @@
         "stoa0079.stoa001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1427,6 +1561,8 @@
         "phi0474.phi013"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1448,6 +1584,8 @@
         "phi0472.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1468,6 +1606,8 @@
         "phi0893.phi004"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1488,6 +1628,8 @@
         "phi0893.phi006"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1508,6 +1650,8 @@
         "phi0959.phi004"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1537,6 +1681,8 @@
         "phi1017.phi010"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1558,6 +1704,8 @@
         "ll.petronius-satyrica"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1578,6 +1726,8 @@
         "phi1351.phi005"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1598,6 +1748,8 @@
         "phi1351.phi004"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1629,6 +1781,8 @@
         "phi1348.abo022"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1649,6 +1803,8 @@
         "phi1276.phi001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1671,6 +1827,8 @@
         "phi1212.phi002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1691,6 +1849,8 @@
         "ll.varro-de-lingua-latina"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1711,6 +1871,8 @@
         "phi0660.phi001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1731,6 +1893,8 @@
         "phi0620.phi001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1752,6 +1916,8 @@
         "ll.phraedrus-fabulae"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1772,6 +1938,8 @@
         "phi1020.phi001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1792,6 +1960,8 @@
         "phi1318.phi001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1812,6 +1982,8 @@
         "phi1254.phi001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1832,6 +2004,8 @@
         "phi1038.phi001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1850,6 +2024,8 @@
         "ll.velleius-historia"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -1875,6 +2051,8 @@
         "phi1345.phi001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1895,6 +2073,8 @@
         "tlg0543.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1916,6 +2096,8 @@
         "tlg0548.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1937,6 +2119,8 @@
         "tlg0018.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -1958,6 +2142,8 @@
         "tlg0018.tlg022"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2054,6 +2240,8 @@
         "tlg0007.tlg147"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -2079,6 +2267,8 @@
         "tlg0062.tlg066"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2100,6 +2290,8 @@
         "tlg0062.tlg012"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2120,6 +2312,8 @@
         "tlg0525.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2140,6 +2334,8 @@
         "tlg0057.tlg007"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2160,6 +2356,8 @@
         "tlg0057.tlg017"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2180,6 +2378,8 @@
         "tlg0363.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2196,6 +2396,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -2229,6 +2431,8 @@
         "tlg0551.tlg017"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2250,6 +2454,8 @@
         "tlg0562.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2271,6 +2477,8 @@
         "tlg0012.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2292,6 +2500,8 @@
         "tlg0012.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2313,6 +2523,8 @@
         "tlg0020.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2334,6 +2546,8 @@
         "tlg0020.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2356,6 +2570,8 @@
         "tlg0085.tlg007"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2377,6 +2593,8 @@
         "tlg0011.tlg004"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2398,6 +2616,8 @@
         "tlg0006.tlg003"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2419,6 +2639,8 @@
         "tlg0019.tlg003"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2439,6 +2661,8 @@
         "tlg0016.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2457,6 +2681,8 @@
         "tlg0003.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -2482,6 +2708,8 @@
         "tlg0032.tlg006"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2502,6 +2730,8 @@
         "tlg0059.tlg030"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2523,6 +2753,8 @@
         "tlg0059.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2544,6 +2776,8 @@
         "tlg0086.tlg034"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2565,6 +2799,8 @@
         "tlg0086.tlg035"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2586,6 +2822,8 @@
         "tlg0627.tlg012"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2606,6 +2844,8 @@
         "tlg0557.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2626,6 +2866,8 @@
         "tlg0074.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2644,6 +2886,8 @@
         "tlg0385.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -2667,6 +2911,8 @@
         "tlg0008.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -2693,6 +2939,8 @@
         "tlg0085.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2714,6 +2962,8 @@
         "tlg0085.tlg004"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2735,6 +2985,8 @@
         "tlg0085.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2756,6 +3008,8 @@
         "tlg0085.tlg003"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2777,6 +3031,8 @@
         "tlg0011.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2797,6 +3053,8 @@
         "tlg0011.tlg003"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2818,6 +3076,8 @@
         "tlg0011.tlg005"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2839,6 +3099,8 @@
         "tlg0011.tlg006"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2860,6 +3122,8 @@
         "tlg0011.tlg007"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2880,6 +3144,8 @@
         "tlg0011.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2901,6 +3167,8 @@
         "tlg0006.tlg017"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2922,6 +3190,8 @@
         "tlg0006.tlg005"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2943,6 +3213,8 @@
         "tlg0006.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2964,6 +3236,8 @@
         "tlg0006.tlg012"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -2985,6 +3259,8 @@
         "tlg0006.tlg011"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3006,6 +3282,8 @@
         "tlg0006.tlg007"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3027,6 +3305,8 @@
         "tlg0006.tlg018"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3047,6 +3327,8 @@
         "tlg0019.tlg006"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3067,6 +3349,8 @@
         "tlg0019.tlg009"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3087,6 +3371,8 @@
         "tlg0019.tlg007"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3107,6 +3393,8 @@
         "tlg0019.tlg004"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3127,6 +3415,8 @@
         "tlg0019.tlg005"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3147,6 +3437,8 @@
         "tlg0019.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3168,6 +3460,8 @@
         "tlg0059.tlg011"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3189,6 +3483,8 @@
         "tlg0059.tlg004"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3210,6 +3506,8 @@
         "tlg0059.tlg023"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3231,6 +3529,8 @@
         "tlg0059.tlg031"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3252,6 +3552,8 @@
         "tlg0059.tlg024"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3273,6 +3575,8 @@
         "tlg0059.tlg012"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3293,6 +3597,8 @@
         "tlg0059.tlg034"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3314,6 +3620,8 @@
         "tlg0059.tlg003"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3335,6 +3643,8 @@
         "tlg0086.tlg010"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3355,6 +3665,8 @@
         "tlg0086.tlg025"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3375,6 +3687,8 @@
         "tlg0086.tlg031"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3395,6 +3709,8 @@
         "tlg0086.tlg038"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3415,6 +3731,8 @@
         "tlg0086.tlg002"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3435,6 +3753,8 @@
         "tlg0032.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3455,6 +3775,8 @@
         "tlg0032.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3475,6 +3797,8 @@
         "tlg0014.tlg018"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3498,6 +3822,8 @@
         "tlg0014.tlg010"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3518,6 +3844,8 @@
         "tlg0033.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3538,6 +3866,8 @@
         "tlg0033.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3590,6 +3920,8 @@
         "tlg0013.tlg033"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3611,6 +3943,8 @@
         "tlg0093.tlg009"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3629,6 +3963,8 @@
         "tlg0093.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -3654,6 +3990,8 @@
         "tlg0004.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3674,6 +4012,8 @@
         "phi0474.phi016"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3694,6 +4034,8 @@
         "phi0474.phi048"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3714,6 +4056,8 @@
         "phi0474.phi049"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3734,6 +4078,8 @@
         "phi0474.phi050"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3754,6 +4100,8 @@
         "phi0474.phi052"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3774,6 +4122,8 @@
         "phi0474.phi051"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3794,6 +4144,8 @@
         "phi0474.phi053"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3814,6 +4166,8 @@
         "phi0474.phi039"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3834,6 +4188,8 @@
         "phi0474.phi035"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3857,6 +4213,8 @@
         "ll.seneca-de-brevitate"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3875,6 +4233,8 @@
         "stoa0255.stoa010"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -3900,6 +4260,8 @@
         "phi1017.phi014"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3918,6 +4280,8 @@
         "stoa0255.stoa013"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -3943,6 +4307,8 @@
         "phi0893.phi003"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3963,6 +4329,8 @@
         "phi0893.phi005"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -3983,6 +4351,8 @@
         "phi0959.phi008"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4003,6 +4373,8 @@
         "phi0959.phi002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4023,6 +4395,8 @@
         "phi0959.phi005"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4043,6 +4417,8 @@
         "phi0959.phi009"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4063,6 +4439,8 @@
         "phi1351.phi003"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4083,6 +4461,8 @@
         "phi1212.phi001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4101,6 +4481,8 @@
         "ll.apuleius-de-deo-socratis"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4124,6 +4506,8 @@
         "ll.vegetius-epitoma"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4149,6 +4533,8 @@
         "ll.augustine-confessiones"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4169,6 +4555,8 @@
         "ll.augustine-civitate-dei"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4189,6 +4577,8 @@
         "stoa0058.stoa001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4205,6 +4595,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4231,6 +4623,8 @@
         "tlg0557.tlg002"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4251,6 +4645,8 @@
         "tlg1247.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4271,6 +4667,8 @@
         "tlg0088.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4289,6 +4687,8 @@
         "tlg0552.tlg008"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4314,6 +4714,8 @@
         "tlg0653.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4330,6 +4732,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4351,6 +4755,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4369,6 +4775,8 @@
         "tlg0086.tlg023"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4394,6 +4802,8 @@
         "tlg0058.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4410,6 +4820,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4428,6 +4840,8 @@
         "ll.isidore-etymologiae"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4451,6 +4865,8 @@
         "ll.censorinus-die-natali"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4476,6 +4892,8 @@
         "ll.augustus-res-gestae"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4496,6 +4914,8 @@
         "tlg1799.tlg001"
       ],
       "translationSourceClaim": true,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4514,6 +4934,8 @@
         "tlg1799.tlg009"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4538,6 +4960,8 @@
         "tlg1799.tlg015"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4561,6 +4985,8 @@
         "tlg0361.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4584,6 +5010,8 @@
         "tlg0559.tlg012"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4605,6 +5033,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4621,6 +5051,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4639,6 +5071,8 @@
         "tlg1383.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4662,6 +5096,8 @@
         "tlg1181.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4685,6 +5121,8 @@
         "tlg0550.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4708,6 +5146,8 @@
         "tlg2032.tlg001"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4729,6 +5169,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4747,6 +5189,8 @@
         "ll.frontinus-gromatica"
       ],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4768,6 +5212,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": true,
       "effectiveOriginalIndexed": true,
       "offsiteIndex": {
@@ -4792,6 +5238,8 @@
       "sourceReadiness": "original_local_documentado",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": true
     },
@@ -4808,6 +5256,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4824,6 +5274,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4840,6 +5292,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4856,6 +5310,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4872,6 +5328,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4888,6 +5346,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4904,6 +5364,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4920,6 +5382,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4936,6 +5400,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4952,6 +5418,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4968,6 +5436,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -4984,6 +5454,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5000,6 +5472,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5016,6 +5490,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5032,6 +5508,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5048,6 +5526,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5064,6 +5544,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5080,6 +5562,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5096,6 +5580,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5112,6 +5598,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5128,6 +5616,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5144,6 +5634,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5160,6 +5652,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5176,6 +5670,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5192,6 +5688,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5208,6 +5706,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5224,6 +5724,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5240,6 +5742,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5256,6 +5760,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5272,6 +5778,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5288,6 +5796,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5304,6 +5814,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5320,6 +5832,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5336,6 +5850,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": true,
+      "registeredOriginalIndexed": true,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5352,15 +5868,17 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
     {
       "id": "galeno-opera-kuhn",
       "author": "Galeno",
-      "title": "Opera omnia (ed. Kühn): volumen adicional",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
-      "dating": "Pendiente de consignar: no se deduce del facsímil.",
+      "dating": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
       "indexedLanguages": [],
       "originalIndexed": false,
       "translationHosted": false,
@@ -5368,15 +5886,17 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
     {
       "id": "galeno-kuhn-vol01",
       "author": "Galeno",
-      "title": "Opera omnia, vol. I (ed. Kühn, Leipzig 1821)",
+      "title": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
       "originalLanguage": "grc",
-      "dating": "Pendiente de consignar: no se deduce del facsímil.",
+      "dating": "Colección de tratados antiguos de Galeno y textos atribuidos; edición impresa del tomo XIV publicada en 1827.",
       "indexedLanguages": [],
       "originalIndexed": false,
       "translationHosted": false,
@@ -5384,6 +5904,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5400,6 +5922,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5416,6 +5940,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5432,6 +5958,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5448,6 +5976,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5464,6 +5994,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5480,6 +6012,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5496,6 +6030,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5512,6 +6048,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5528,6 +6066,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5544,6 +6084,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5560,6 +6102,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     },
@@ -5576,6 +6120,8 @@
       "sourceReadiness": "sin_fuente_en_mapa_perseus",
       "bibliographyCandidateUrns": [],
       "translationSourceClaim": false,
+      "originalR2Registered": false,
+      "registeredOriginalIndexed": false,
       "offsiteOriginalIndexed": false,
       "effectiveOriginalIndexed": false
     }

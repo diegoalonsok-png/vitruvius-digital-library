@@ -27,11 +27,23 @@ async function prepare(corpus){
  if(!entry||!/^data\/classics-corpus\/reading-notes\/[a-z0-9-]+\.json$/.test(entry.path))return corpus;
  const notes=await json(entry.path);
  if(notes?.sourceSha256!==corpus.sourceSha256||notes?.workId!==corpus.workId||notes?.language!==corpus.language)return corpus;
- return {...corpus,readingMetadata:notes.metadata,passages:corpus.passages.map(p=>{
+ return {...corpus,readingMetadata:notes.metadata,passages:await Promise.all(corpus.passages.map(async p=>{
   const n=notes.passages?.[p.locus];
-  return n?.importedText===p.text&&typeof n.text==="string"&&Array.isArray(n.notes)
-   ?{...p,text:n.text,importedText:p.text,readingNotes:n.notes}:p;
- })};
+  if(n?.importedText===p.text&&typeof n.text==="string"&&Array.isArray(n.notes))return {...p,text:n.text,importedText:p.text,readingNotes:n.notes};
+  if(n?.sourceLength!==p.text.length||!Array.isArray(n.notes)||!n.notes.length)return p;
+  if(window.crypto?.subtle){
+   const digest=await window.crypto.subtle.digest("SHA-256",new TextEncoder().encode(p.text));
+   const sha=[...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,"0")).join("");
+   if(sha!==n.sourceTextSha256)return p;
+  }
+  let cursor=0;const pieces=[];
+  for(const note of n.notes){
+   if(!Number.isInteger(note.start)||!Number.isInteger(note.end)||note.start<cursor||note.end<=note.start||p.text.slice(note.start,note.end)!==note.text)return p;
+   pieces.push(p.text.slice(cursor,note.start));cursor=note.end;
+  }
+  pieces.push(p.text.slice(cursor));
+  return {...p,text:pieces.join("").replace(/\s+/g," ").trim(),importedText:p.text,readingNotes:n.notes};
+ }))};
 }
 function safePdf(value){
  try{const u=new URL(value,location.href);return u.protocol==="https:"&&!u.username&&!u.password?u.href:null}catch{return null}
