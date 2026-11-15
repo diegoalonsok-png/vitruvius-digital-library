@@ -51,6 +51,7 @@ jobs:
           node scripts/test-classics-source-diagnostics.mjs
           node scripts/test-classics-reader-search.mjs
           node scripts/test-classics-academic-reader.mjs
+          node scripts/test-early-witness-reading.mjs
           node scripts/test-r2-busqueda-clasicos.mjs
 
       - name: Estado de la biblioteca antes de la tanda
@@ -117,6 +118,7 @@ jobs:
           node scripts/test-classics-source-diagnostics.mjs
           node scripts/test-classics-reader-search.mjs
           node scripts/test-classics-academic-reader.mjs
+          node scripts/test-early-witness-reading.mjs
           node scripts/test-visor-facsimiles-r2.mjs
           node scripts/test-r2-busqueda-clasicos.mjs
           node scripts/test-r2-indice-fusion.mjs
