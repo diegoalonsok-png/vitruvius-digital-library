@@ -57,7 +57,7 @@
 <script defer src="assets/bibliotheca-corpus-search.js?v=20261114-source-diagnostics"></script>
 <script defer src="assets/bibliotheca-uploaded-docx.js?v=20261111-responsive-literal-v1"></script>
 <script defer src="assets/academic-inline-translation.js?v=20261114-machine-pivot-v3"></script><script defer src="assets/scholarly-passage-citation.js?v=20261113-citable-1"></script>
-<script defer src="assets/bibliotheca-simple.js?v=20261114-academic-order-v1"></script>
+<script defer src="assets/bibliotheca-simple.js?v=20261115-to-lexicon-v2"></script>
 <script defer src="assets/bibliotheca-genre-work-list.js?v=20261114-academic-order-v1"></script>
 <link rel="stylesheet" href="assets/bibliotheca-work-search.css?v=20261115-compact-v8"><script defer src="assets/bibliotheca-work-search.js?v=20261115-iliada-search-fix-v9"></script>
 <script defer src="assets/bibliotheca-entity-search.js?v=20261115-onomastics-v1"></script>
@@ -149,10 +149,10 @@ header.hero{padding:25px 0 18px}
 <p id="intro" class="intro">Busca una palabra o frase en todos los libros indexados, o selecciona una obra. Consulta cuántas veces aparece en cada libro y dónde se encuentra.</p>
 </header>
 
-<section class="searcharea" aria-label="Buscar palabras y frases en libros clásicos">
+<section class="searcharea" aria-label="Enviar palabras y frases al análisis de Lexicon">
 <form id="search-form" class="searchform" role="search">
 <input id="classic-query" name="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Una palabra o frase, por ejemplo: domus" aria-label="Palabra o frase">
-<button id="search-submit" type="submit">Buscar</button>
+<button id="search-submit" type="submit">Buscar en Lexicon</button>
 </form>
 <div class="bibliotheca-search-shortcuts" role="group" aria-label="Accesos directos a filtros de búsqueda" style="display:flex;gap:9px;flex-wrap:wrap;margin:12px 0 4px">
  <button type="button" data-biblio-quick="greek-phrase">Frase griega · búsqueda literal</button>
@@ -161,7 +161,7 @@ header.hero{padding:25px 0 18px}
  <button type="button" data-biblio-quick="period">Buscar por período histórico</button>
  <button type="button" data-biblio-quick="bibliography">Autor, título, siglo e idioma</button>
 </div>
-<p class="filter-method" id="bibliotheca-shortcut-note">Las frases griegas se buscan en los textos originales indexados. Los filtros cronológicos corresponden a fechas aproximadas de composición; las obras sin texto indexado no producen concordancias.</p>
+<p class="filter-method" id="bibliotheca-shortcut-note">La consulta de palabras y frases continúa en Lexicon para latín, griego, castellano, francés e inglés. Bibliotheca conserva los filtros por autor, obra, época y género; Lexicon presenta únicamente los análisis respaldados por sus índices.</p>
 <style>.bibliotheca-search-shortcuts button{border:1px solid #9f9482;background:transparent;color:inherit;border-radius:7px;padding:9px 13px;font:600 12px/1.4 system-ui;cursor:pointer;min-height:39px}.bibliotheca-search-shortcuts button:hover,.bibliotheca-search-shortcuts button:focus-visible{background:#c9a66a;color:#171b20;outline-offset:2px}</style>
 <div class="bibliotheca-advanced-controls" role="group" aria-label="Modos filológicos y localización de pasajes" style="display:flex;align-items:end;gap:12px;flex-wrap:wrap;padding:12px 0;font:13px/1.5 system-ui,sans-serif">
  <label style="display:grid;gap:5px">Tipo de consulta
