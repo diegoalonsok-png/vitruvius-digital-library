@@ -38,5 +38,31 @@ function updateSourceLinks(locus){
  for(const [id,prefix] of map){const el=document.getElementById(id);if(el)el.href=prefix+encodeURIComponent(locus);}
 }
 async function show(){results.replaceChildren();status.textContent='Consultando las ediciones…';const locus=norm(field.value);updateSourceLinks(locus);try{const editions=await load;let found=false;const latin=editions[0].passages.find(p=>p.locus.toLowerCase()===locus);if(latin){panel('Texto latino · '+locus,latin.latin,'lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(locus));found=true;}for(const edition of editions){const p=edition.passages.find(x=>x.locus.toLowerCase()===locus);if(p){panel(edition.label,p.translation,'lector-bilingue.html?edition='+edition.id+'&locus='+encodeURIComponent(locus),edition.id,locus);found=true;}}status.textContent=found?'Textos alineados por '+locus+'.':'No hay textos indexados para «'+field.value+'». Revisa el locus.';history.replaceState(null,'','?locus='+encodeURIComponent(locus));}catch(e){status.textContent='No se pudieron cargar los índices: '+e.message;}}
-form.addEventListener('submit',e=>{e.preventDefault();show()});const url=new URLSearchParams(location.search).get('locus');if(url)field.value=url;show();
+async function populateLoci(){
+ try{
+  const editions=await load;
+  const canonical=new Set(editions.flatMap(e=>e.passages.map(p=>norm(p.locus)).filter(Boolean)));
+  const sortKey=l=>l.split(".").map((part,i)=>part==="praef"||part==="pr"?-1:Number(part)||0);
+  const compare=(a,b)=>{const x=sortKey(a),y=sortKey(b);for(let i=0;i<Math.max(x.length,y.length);i++){const d=(x[i]??0)-(y[i]??0);if(d)return d}return a.localeCompare(b)};
+  const loci=[...canonical].sort(compare);
+  const requested=norm(new URLSearchParams(location.search).get("locus")||field.value||"3.1.1");
+  field.replaceChildren();
+  let currentBook="";
+  let group;
+  for(const locus of loci){
+   const book=locus.split(".")[0];
+   if(book!==currentBook){currentBook=book;group=document.createElement("optgroup");group.label="Libro "+roman(book);field.append(group)}
+   const option=document.createElement("option");option.value=locus;option.textContent=locus.replace(/^([0-9]+)\./,(_,n)=>roman(n)+".");
+   group.append(option);
+  }
+  field.value=canonical.has(requested)?requested:(canonical.has("3.1.1")?"3.1.1":loci[0]||"");
+  field.disabled=!loci.length;
+  field.setAttribute("aria-label","Elegir locus de De architectura · "+loci.length+" loci disponibles");
+  if(loci.length!==731)status.textContent="Índice de loci parcialmente disponible: "+loci.length+" registros. Se muestran únicamente los loci cargados.";
+  await show();
+ }catch(e){status.textContent="No se pudieron cargar los loci: "+e.message}
+}
+form.addEventListener('submit',e=>{e.preventDefault();show()});
+field.addEventListener('change',()=>{void show()});
+void populateLoci();
 })();
