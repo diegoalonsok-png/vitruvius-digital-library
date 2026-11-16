@@ -30,7 +30,14 @@ on:
       - "data/bibliotheca-expansion-publicada-2026-11-16.json"
       - "scripts/test-bibliotheca-expansion-2026-11.mjs"
       - "data/index/classics/manifest.json"
+      - "data/classics-corpus/**-grc.json"
+      - "data/classics-corpus/**-la.json"
+      - "scripts/build-classics-lexical-index.mjs"
+      - "scripts/build-r2-classics-lexical-index.mjs"
+  # 02:50 UTC = 23:50 del día anterior en Buenos Aires (UTC-3).
+  # Se conserva el control matutino de 07:35 hora argentina.
   schedule:
+    - cron: "50 2 * * *"
     - cron: "35 10 * * *"
   workflow_dispatch:
 permissions:
@@ -108,6 +115,36 @@ jobs:
             sleep 6
           done
           test "$pushed" = true
+      - name: Publicar resumen de cierre diario — sin afirmar éxito si hay fallos
+        if: always()
+        shell: bash
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          python - <<'PY'
+          import os, json, pathlib, datetime
+          now=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3)))
+          report=pathlib.Path("data/r2/bibliotheca-r2-live-audit.json")
+          objects=pathlib.Path("data/r2/r2-object-status.json")
+          rows=["### Bibliotheca · cierre y sincronización GitHub ↔ R2",
+                f"**Fecha y hora argentina:** {now:%Y-%m-%d %H:%M} (UTC-3)",
+                f"**Estado del trabajo:** {os.environ['JOB_STATUS']}",
+                "**Política:** sin borrado ni sobreescritura automática de libros; los objetos no identificados permanecen preservados."]
+          if report.is_file():
+              d=json.loads(report.read_text())
+              rows += [f"**Auditoría R2:** {d.get('status','desconocido')}",
+                       f"**Índice facsimilar:** {d.get('count',{}).get('indexListedWorks','sin dato')} entradas",
+                       f"**Incidencias registradas:** {len(d.get('issues',[]))}"]
+          if objects.is_file():
+              d=json.loads(objects.read_text())
+              c=d.get('counts',{})
+              rows += [f"**PDF/OCR verificados:** {c.get('objectsPresent','sin dato')} / {c.get('objectsChecked','sin dato')}",
+                       f"**Objetos faltantes:** {c.get('objectsMissing','sin dato')}"]
+          if os.environ['JOB_STATUS'] != 'success':
+              rows.append("**Atención:** la ejecución no certifica sincronización completa; revisar el registro de errores.")
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:
+              f.write("\n\n".join(rows)+"\n")
+          PY
       - name: Archivar diagnóstico
         if: always()
         uses: actions/upload-artifact@v4
