@@ -1,7 +1,11 @@
 /* Fichas bibliográficas para obras declaradas únicamente en el inventario R2.
    Nunca atribuye códices, traductores o DOI individuales por inferencia. */
 (()=>{"use strict";
-let task;
+let task,academicTask;
+function academicRecord(id){
+ if(!academicTask)academicTask=fetch("data/classics-corpus/bibliotheca-academic-audit-281.json").then(r=>{if(!r.ok)throw Error("Auditoría académica no disponible");return r.json()}).then(j=>new Map((j.records||[]).map(x=>[x.id,x]))).catch(()=>new Map());
+ return academicTask.then(m=>m.get(id)||null);
+}
 function load(){
  if(!task)task=Promise.all([
   fetch("data/r2/vinculos-repertorio.json").then(r=>{if(!r.ok)throw Error("Vínculos R2");return r.json()}),
@@ -22,6 +26,7 @@ async function render(root,id){
   const record=(await load()).find(w=>w.r2===id);
   if(!record)throw Error("Edición no vinculada");
   const e=record.edition;
+  const academic=await academicRecord(id);
   root.replaceChildren();root.classList.add("classic-work-dossier");root.dataset.workId=id;
   root.append(el("p","BIBLIOTHECA · FICHA DE OBRA Y EDICIÓN HISTÓRICA","cwd-kicker"),el("h2",record.obra));
   field(root,"Autor de la obra",record.autor);
@@ -39,6 +44,15 @@ async function render(root,id){
   field(root,"Alcance textual",e.alcance||"El alcance preciso debe comprobarse en el índice del ejemplar digital");
   if(e.notaFilologica)field(root,"Nota filológica",e.notaFilologica);
   if(e.incidenciaCatalografica)field(root,"Incidencia bibliográfica",e.incidenciaCatalografica);
+  if(academic){
+   field(root,"Título uniforme registrado",academic.uniformTitle);
+   field(root,"Estado del texto original",academic.originalLanguageSourceStatus==="source_not_indexed"?"Sin transcripción original indexada acreditada":"Fuente textual registrada; comprobar alcance");
+   field(root,"Integridad y límites de la edición",academic.integrityExplanation);
+   field(root,"Estado de conservación/indexación",academic.editorialIntegrityStatus);
+   field(root,"Reserva académica",academic.academicCaveat);
+   field(root,"URN CTS de edición",academic.ctsEditionUrn||"No acreditada para este ejemplar");
+   field(root,"Testigos manuscritos individualizados",academic.manuscriptWitnessCount+" en el registro, sin inferir prioridad cronológica");
+  }
   const cover=e.identificadorIA;
   if(/^[a-zA-Z0-9_-]+$/.test(cover||"")){
    const img=el("img");img.src="https://archive.org/services/img/"+encodeURIComponent(cover);img.alt="Miniatura del ejemplar digital de "+e.tituloEdicion;img.loading="lazy";img.style.cssText="width:125px;max-width:32%;height:auto;float:right;margin:8px 0 10px 20px";img.onerror=()=>img.remove();root.insertBefore(img,root.children[2]||null);
