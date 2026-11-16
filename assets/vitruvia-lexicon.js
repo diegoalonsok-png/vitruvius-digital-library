@@ -294,6 +294,7 @@ function el(tag,attrs={},...kids){const e=document.createElement(tag);for(const 
 
 /* ---------- Idioma de la interfaz (ES · EN · FR), compartido con el sitio ---------- */
 const I18N={
+ "Reportar errata · pasaje":["Report an issue · passage","Signaler une erreur · passage"],
  "Lema por contexto":["Lemma by context","Lemme selon le contexte"],"descartados":["ruled out","écartés"],
  "Elegido por el analizador Stanza según el contexto, entre los lemas posibles de la forma. Análisis automático: verifíquese en el pasaje.":["Chosen by the Stanza analyser from the context, among the possible lemmas of the form. Automatic analysis: check it in the passage.","Choisi par l'analyseur Stanza selon le contexte, parmi les lemmes possibles de la forme. Analyse automatique : à vérifier dans le passage."],
  "coincidencias descartadas: el análisis contextual (Stanza) asigna allí otro lema.":["matches ruled out: the contextual analysis (Stanza) assigns another lemma there.","occurrences écartées : l'analyse contextuelle (Stanza) y attribue un autre lemme."],
@@ -514,6 +515,57 @@ function vitruviusWitnessLine(){
    "Texto digital y traducciones: ediciones modernas de Diego A. Kurilo (V514 · castellano; V554 · francés; V297 · inglés). Las fechas de estas ediciones no corresponden a la composición de la obra antigua."));
  return section;
 }
+/* Scaife-inspired editorial feedback linked to the exact indexed passage.
+ * A prefilled GitHub issue is a DRAFT until a researcher explicitly submits it.
+ * The scholarly reading and corpus index are never modified by this action. */
+function passageIssueURL(details){
+ const safe=(v,n=180)=>String(v||"").replace(/\s+/g," ").trim().slice(0,n);
+ const cleanInline=v=>safe(v).replace(/[`\\]/g,"");
+ const work=safe(details.work,100),locus=safe(details.locus,150),language=safe(details.language,8);
+ const version=safe(details.version,90);
+ const edition=cleanInline(details.edition)||"No especificada en la ficha del índice";
+ const cts=safe(details.cts,200);
+ const excerpt=safe(details.excerpt,300);
+ const passage=safe(details.passageURL,450);
+ const indexFile=language==="grc"?"data/lexicon/corpus-grc.json":"data/lexicon/corpus-la.json";
+ const title="Lexicon · revisar "+work+" · "+locus;
+ const body=[
+  "## Incidencia académica — pasaje indexado",
+  "",
+  "- Obra: "+cleanInline(details.author)+" — "+cleanInline(details.title),
+  "- Identificador de obra: `"+work+"`",
+  "- Locus: `"+locus+"`",
+  "- Idioma del texto: `"+language+"`",
+  "- Edición declarada: "+edition,
+  ...(cts?["- Referencia CTS registrada: `"+cts+"`"]:[]),
+  ...(version?["- Versión del índice Lexicon: `"+version+"`"]:[]),
+  "- Archivo de índice digital: `"+indexFile+"`",
+  "- Enlace al pasaje: "+passage,
+  "",
+  "## Fragmento de contexto (texto indexado; no cotejo manuscrito)",
+  "",
+  "> "+excerpt.replace(/\n/g," "),
+  "",
+  "## Motivo de revisión (marcar lo que corresponda)",
+  "",
+  "- [ ] Transcripción / ortografía del texto digital",
+  "- [ ] Referencia de obra o locus",
+  "- [ ] Análisis morfológico / lema",
+  "- [ ] Traducción o alineación",
+  "- [ ] Metadatos, edición o procedencia",
+  "- [ ] Otro problema verificable",
+  "",
+  "## Evidencia: fuente, página, enlace y corrección propuesta",
+  "",
+  "(Completar aquí; indicar si se verificó una edición impresa o un manuscrito.)",
+  "",
+  "**Nota editorial:** un aviso no equivale a una variante manuscrita verificada. No modificar directamente el texto autoral."
+ ].join("\n");
+ const u=new URL("https://github.com/diegoalonsok-png/vitruvius-digital-library/issues/new");
+ u.searchParams.set("title",title);
+ u.searchParams.set("body",body);
+ return u.toString();
+}
 function hitCard(D,h){
  const p=D.corpus.passages[h.i],w=work(D,p[0]);const text=p[2];const cite=citeOf(D,p,h.spans[0][0]);
  const k=kwic(text,h.spans);
@@ -565,6 +617,16 @@ function hitCard(D,h){
  actions.append(el("button",{type:"button",onclick:()=>addToNotebook({cite,text,lang:D.l,tr:p[4]||""})},"Al cuaderno exegético"));
  actions.append(el("button",{type:"button",onclick:e=>{const u=new URL(PAGE);u.searchParams.set("work",p[0]);u.searchParams.set("locus",p[1]);if(S.q)u.searchParams.set("q",S.q);copy(u.toString(),e.target)}},"Enlace al locus"));
  actions.append(el("a",{href:`vitruvia.html?q=${encodeURIComponent((S.q||"").replace(/^[@=#√]|["\[\]]/g,"").trim()||text.slice(h.spans[0][0],h.spans[0][1]))}`,target:"_blank",rel:"noopener",title:T("Buscar en Vitruvia sin perder este lugar de lectura")},T("En Vitruvia")+" ↗"));
+ // Perseus-style issue link: source, edition, language and locus are supplied
+ // without presenting a reported reading as established or changing the corpus.
+ const reportURL=passageIssueURL({
+  work:p[0],locus:p[1],language:D.l,author:w.author,title:w.title,
+  edition:w.edition,cts:ctsUrn(p),version:DATA_VER,passageURL:permalink(p),
+  excerpt:text.slice(Math.max(0,h.spans[0][0]-90),Math.min(text.length,h.spans[0][1]+150))
+ });
+ actions.append(el("a",{href:reportURL,target:"_blank",rel:"noopener noreferrer",
+  title:"Notificar una posible errata con obra, locus, edición y enlace de consulta"},
+  T("Reportar errata · pasaje")));
  actions.append(citeMenu(D,p,cite,text.slice(k.a,k.b)));
  card.append(coins(D,p));
  card.append(actions);
