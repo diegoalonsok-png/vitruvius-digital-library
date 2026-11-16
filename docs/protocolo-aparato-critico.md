@@ -39,3 +39,16 @@ Las erratas de los libros se distinguen de los fallos del visor y de la traducci
 Las correcciones graves que afecten a los libros requieren una edición nueva de DOCX y PDF, conservando los originales y verificando su composición. El porcentaje global de errores no se estima a partir de una muestra pequeña ni se usa para minimizar un error que cambie el sentido de un pasaje.
 
 Se cotejaron individualmente 18 notas de Rose y se construyeron comparaciones atribuidas de I.4.3–6, con imágenes de Rose pp. 15–16 y Krohn pp. 14–15. En V297, I.4.4 se documenta además la omisión de la cláusula `a refrigerationibus solidantur` en ambas versiones inglesas y la fusión incorrecta de dos construcciones en su comentario. El encabezado `6.` de los párrafos 2136–2137 del DOCX permite localizar I.4.6; no se considera un pasaje ausente por no llevar el prefijo completo `1.4.6`.
+
+
+## Decisiones editoriales de Rose, Krohn y Kurilo
+
+Las lecturas impresas diferentes en Rose (1899), Krohn (1912) y Kurilo (V514/V554/V297 según corresponda) deben analizarse ante todo como **opciones de constitución del texto** de cada editor, y nunca reducirse sin prueba a «errores». Una sola letra, una abreviatura, la segmentación de una palabra o un suplemento pueden modificar la sintaxis y el sentido de un pasaje.
+
+Se distinguen estrictamente:
+- **Lectura editorial comprobada:** una forma cotejada con la edición histórica impresa, atribuible a su editor, con página/línea y contexto.
+- **Interpretación paleográfica atribuida:** propuesta de lectura de un grafema o pasaje de un códice concreto, con folio, imagen y atribución precisa cuando exista prueba; las afirmaciones de Rose y Krohn sobre H son testimonios indirectos hasta examen directo.
+- **Decisión ecdótica argumentada:** elección editorial entre lecturas o intervención `coni.`, `suppl.`, `secl.`, `corr.`, etc., con justificación o fuente explícita.
+- **Diferencia computacional pendiente:** resultado de comparar los originales digitales; no prueba por sí sola que los editores hayan tomado decisiones distintas. No debe exponerse como decisión editorial comprobada.
+
+El análisis por locus debe conservar `lemma ] lectio`, las siglas y el *conspectus siglorum* ya establecidos, sin imponer convenciones ajenas al volumen Budé pertinente. La nota puede precisar el cambio semántico, sintáctico o paleográfico, pero **no inventará el motivo de la decisión** cuando el editor no lo haya explicado. Registrar explícitamente «motivo no documentado» es preferible a conjeturarlo.
