@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-16",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 302,
- "works": 237,
+ "count": 305,
+ "works": 240,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -1112,6 +1112,16 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "euripides-andromache",
+   "author": "Eurípides",
+   "title": "Ἀνδρομάχη",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/euripides-andromache-grc.json",
+   "reader": "classics-text-reader.html?work=euripides-andromache&lang=grc",
+   "sourceDescription": "Perseus Digital Library · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg006.perseus-grc2 · CC BY-SA 4.0; sin colación filológica propia"
+  },
+  {
    "workId": "euripides-bacchae",
    "author": "Eurípides",
    "title": "Βάκχαι",
@@ -1192,6 +1202,16 @@
    "sourceDescription": "Perseus Digital Library TEI · Gilbert Murray · CC BY-SA 4.0; cotejo crítico independiente pendiente"
   },
   {
+   "workId": "euripides-heracleidae",
+   "author": "Eurípides",
+   "title": "Ἡρακλεῖδαι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/euripides-heracleidae-grc.json",
+   "reader": "classics-text-reader.html?work=euripides-heracleidae&lang=grc",
+   "sourceDescription": "Perseus Digital Library · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg004.perseus-grc2 · CC BY-SA 4.0; sin colación filológica propia"
+  },
+  {
    "workId": "euripides-hippolytus",
    "author": "Eurípides",
    "title": "Ἱππόλυτος",
@@ -1260,6 +1280,16 @@
    "path": "data/classics-corpus/euripides-medea-grc.json",
    "reader": "classics-text-reader.html?work=euripides-medea&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "euripides-suppliants",
+   "author": "Eurípides",
+   "title": "Ἱκέτιδες",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/euripides-suppliants-grc.json",
+   "reader": "classics-text-reader.html?work=euripides-suppliants&lang=grc",
+   "sourceDescription": "Perseus Digital Library · Gilbert Murray · urn:cts:greekLit:tlg0006.tlg008.perseus-grc2 · CC BY-SA 4.0; sin colación filológica propia"
   },
   {
    "workId": "euripides-troades",
