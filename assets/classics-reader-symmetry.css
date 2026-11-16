@@ -95,3 +95,49 @@ html[data-theme="dark"] .cl-reading-height-control{background:#232d35;color:#f0e
  .cl-dual-reader>.cl-source-column,.cl-dual-reader>.cl-translation-column{height:auto!important;max-height:none!important;overflow:visible!important}
  .cl-dual-reader #passages,.cl-dual-reader .cl-translation-output{margin-top:0!important}
 }
+
+/* Shared top toolbar: all study controls stay ABOVE the two reading surfaces.
+   The original, translation and their individual reading annotations remain below. */
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-edition-layout .cl-unified-reading-actions{
+ display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;
+ width:100%;min-width:0;
+ padding:10px 12px;border:1px solid #b9ae9d;border-radius:6px;
+ background:#eee8dd;color:#253746;
+ font:12px/1.4 system-ui,sans-serif;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-unified-reading-actions>.cl-pane-options{
+ display:inline-flex;align-items:center;flex-wrap:wrap;gap:7px;
+ margin:0;padding:0;white-space:nowrap;
+ font:600 12px/1.4 system-ui,sans-serif;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-unified-reading-actions>.cl-translation-tools{
+ display:flex;align-items:center;flex-wrap:wrap;gap:6px;
+ padding:0;margin:0;border:0;border-radius:0;background:transparent;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-unified-reading-actions :is(button,a,select){
+ display:inline-flex;align-items:center;justify-content:center;
+ min-height:36px;padding:7px 10px;border-radius:5px;
+ background:#fff!important;color:#223645!important;
+ border:1px solid #aea392!important;
+ box-sizing:border-box;
+ font:600 12px/1.35 system-ui,sans-serif!important;
+ text-decoration:none;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-unified-reading-actions button:disabled{
+ opacity:.55;cursor:not-allowed
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-unified-reading-actions select{max-width:220px}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-unified-reading-actions :is(button,a,select):focus-visible{
+ outline:2px solid #be9455;outline-offset:2px
+}
+html[data-theme="dark"] .cl-unified-reading-actions{
+ background:#24282d!important;color:#f1eee7!important;border-color:#666!important
+}
+html[data-theme="dark"] .cl-unified-reading-actions :is(button,a,select){
+ background:#30343a!important;color:#f7f2e7!important;border-color:#78736a!important
+}
+@media(max-width:900px){
+ html:not([data-parallel-view="true"]) .cl-unified-reading-actions>*{flex:0 1 auto}
+ html:not([data-parallel-view="true"]) .cl-unified-reading-actions>.cl-translation-tools{flex:1 1 100%}
+}
+@media print{.cl-unified-reading-actions{display:none!important}}
