@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - ".github/workflows/build-r2-lexical-index.yml"
+      - "scripts/build-r2-classics-lexical-index.mjs"
+      - "scripts/build-classics-lexical-index.mjs"
+      - "data/r2/corpus-manifest.json"
 
 permissions:
   contents: write
