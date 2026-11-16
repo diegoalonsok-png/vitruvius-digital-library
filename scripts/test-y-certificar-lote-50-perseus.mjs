@@ -31,7 +31,7 @@ for(const w of manifest.works){
   assert.equal(data.sourceUrn,w.sourceUrn);
   assert.equal(data.source,w.sourceXml);
   assert.equal(data.sourceRevision,manifest.sourceRevision);
-  assert.equal(data.license,"CC BY-SA 4.0");
+  assert.match(data.license,/^CC BY-SA 4\.0(?:$|\s|\()/,"Original source must explicitly credit CC BY-SA 4.0");
   assert.match(data.sourceSha256,/^[0-9a-f]{64}$/);
   assert.ok(Array.isArray(data.passages)&&data.passages.length>=5,"Missing numbered passages "+w.id);
   assert.ok(data.passages.every(p=>p.locus.startsWith(w.sourceUrn+":")&&typeof p.text==="string"&&p.text.length>2),"Bad passage/locus "+w.id);
