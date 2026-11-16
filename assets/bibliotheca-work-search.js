@@ -202,7 +202,7 @@ function render(){
   const all=[...items].sort((a,b)=>model.sortFilter.value==="title"?a.title.localeCompare(b.title,"es",{sensitivity:"base"}):a.author.localeCompare(b.author,"es",{sensitivity:"base"})||a.title.localeCompare(b.title,"es",{sensitivity:"base"}));
   for(const w of all.slice(0,limit)){
    const li=make("li",null,"bws-item"),heading=make("div",null,"bws-heading");
-   heading.append(make("strong",w.title),make("span"," · "+w.author));li.append(heading);
+   heading.append(make("strong",w.title),make("span"," · "+w.author));li.append(heading);if(window.BibliothecaCoverMiniatures)li.prepend(window.BibliothecaCoverMiniatures.create(w));
    const meta=make("p",null,"bws-meta"),languages=[...new Set(w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language))];
    meta.textContent=[w.genre||"",w.dating||"",periodLabel(w),languages.length?(w.r2Original?"Original R2 registrado · ":"Ediciones registradas · ")+languages.join(", "):w.heritageReader?"Edición histórica · visor de facsímiles":w.facsimile?"Facsímil disponible · OCR por comprobar":"Ficha catalográfica; texto no alojado"].filter(Boolean).join(" · ");li.append(meta);
    const actions=make("nav",null,"bws-actions");
@@ -230,7 +230,7 @@ function render(){
  for(const {w} of found.slice(0,limit)){
   const item=make("li",null,"bws-item");
   const heading=make("div",null,"bws-heading");
-  heading.append(make("strong",w.title),make("span"," · "+w.author));item.append(heading);
+  heading.append(make("strong",w.title),make("span"," · "+w.author));item.append(heading);if(window.BibliothecaCoverMiniatures)item.prepend(window.BibliothecaCoverMiniatures.create(w));
   const meta=make("p",null,"bws-meta");
   const langs=w.versions.filter(v=>safeReader(v.reader)).map(v=>lang[v.language]||v.language);
   const avail=[...new Set(langs)];
