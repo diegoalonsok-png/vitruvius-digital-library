@@ -1,0 +1,39 @@
+{
+  "schema": "vdl-latin-page-transcription-v1",
+  "edition": "rose-1899",
+  "image_number": 37,
+  "latin_txt": "data/critical-editions/plaintext/rose-1899/latin-0037.txt",
+  "source_ocr": "data/r2/folios/rose-1899-ocr.json",
+  "status": "source-text-checked-not-facsimile-verified",
+  "method": "PDF text layer, independently matched against repository OCR; not image inspected",
+  "source": "Wikimedia Commons 1899 Rose PDF text layer",
+  "modifications": [
+    [
+      "divina tna",
+      "divina tua"
+    ],
+    [
+      "populus- 5 que",
+      "populusque"
+    ],
+    [
+      "tem- pore",
+      "tempore"
+    ],
+    [
+      "oppor- tunitate",
+      "opportunitate"
+    ],
+    [
+      "auctori- 15 tates",
+      "auctoritates"
+    ],
+    [
+      "in |mortalitatis",
+      "inmortalitatis"
+    ]
+  ],
+  "facsimile_checked": false,
+  "exclusions": "Page header, running numbers, margin numerals and printed critical apparatus excluded. Only Latin base text retained. Physical visual collation remains pending.",
+  "note": "Text ends at the printed page break; does not represent a complete locus."
+}
