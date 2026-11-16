@@ -1,0 +1,453 @@
+{
+  "schema": "vdl-classics-indexing-backlog-44-v1",
+  "generated": "2026-11-16",
+  "purpose": "Cola documental trazable para completar la indexación textual sin duplicar obra, edición, OCR ni PDF",
+  "basis": [
+    "data/r2/bibliotheca-ocr-coverage.json",
+    "data/classics-corpus/search-registry.json"
+  ],
+  "definition": "Una obra con OCR por página no equivale a transcripción filológica verificada ni indexación semántica por lemas; tres registros editoriales ya cuentan con texto estructurado asociado a Vitruvio.",
+  "counts": {
+    "total": 44,
+    "structuredExisting": 3,
+    "ocrSearchableUnverified": 25,
+    "withoutDocumentedText": 16,
+    "newFullyVerifiedTextIndexesCreatedInThisOperation": 0
+  },
+  "safeguards": [
+    "No alterar contador 227 ni total 281 por esta cola.",
+    "No contabilizar 3 ediciones Kurilo como tres obras adicionales.",
+    "No indexar como original griego páginas de paratexto o traducciones modernas.",
+    "No crear un índice aparentemente completo a partir de títulos o fichas sin contenido.",
+    "Preservar el facsímil, procedencia y advertencia de OCR sin revisar."
+  ],
+  "records": [
+    {
+      "id": "vitruvio-v514-pdf",
+      "autor": "Vitruvio · edición de Diego A. Kurilo",
+      "titulo": "De architectura · Recensio V514 (latín–castellano)",
+      "grupo": "texto_estructurado_existente",
+      "estado": "indexado_bajo_vitruvius_no_duplicar",
+      "indice": "data/structured/recensio-es.json",
+      "lector": "lector-bilingue.html?edition=recensio-es",
+      "workId": "vitruvius",
+      "proximaAccion": "Conservar y enlazar al registro maestro; no contabilizar como nueva obra ni repetir textos"
+    },
+    {
+      "id": "vitruvio-v554-pdf",
+      "autor": "Vitruvio · edición de Diego A. Kurilo",
+      "titulo": "De architectura · Recensio V554 (latín–francés)",
+      "grupo": "texto_estructurado_existente",
+      "estado": "indexado_bajo_vitruvius_no_duplicar",
+      "indice": "data/structured/recensio-fr.json",
+      "lector": "lector-bilingue.html?edition=recensio-fr",
+      "workId": "vitruvius",
+      "proximaAccion": "Conservar y enlazar al registro maestro; no contabilizar como nueva obra ni repetir textos"
+    },
+    {
+      "id": "theory-v297-pdf",
+      "autor": "Diego A. Kurilo · sobre Vitruvio",
+      "titulo": "The Architect of Theory · V297 (inglés)",
+      "grupo": "texto_estructurado_existente",
+      "estado": "indexado_bajo_vitruvius_no_duplicar",
+      "indice": "data/structured/theory-en.json",
+      "lector": "lector-bilingue.html?edition=theory-en",
+      "workId": "vitruvius",
+      "proximaAccion": "Conservar y enlazar al registro maestro; no contabilizar como nueva obra ni repetir textos"
+    },
+    {
+      "id": "apollodorus-poliorcetics",
+      "autor": "Apolodoro de Damasco (atribución tradicional)",
+      "titulo": "Πολιορκητικά · Poliorketika",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=apollodorus-poliorcetics",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "athenaeus-mechanicus",
+      "autor": "Ateneo Mecánico",
+      "titulo": "Περὶ μηχανημάτων · De machinis",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=athenaeus-mechanicus",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "ptolemy-geographia",
+      "autor": "Claudio Ptolomeo",
+      "titulo": "Γεωγραφικὴ ὑφήγησις",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=ptolemy-geographia",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "accius-fragmenta",
+      "autor": "Accio",
+      "titulo": "Tragoediae (fragmenta)",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=accius-fragmenta",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "philo-belopoeica",
+      "autor": "Filón de Bizancio",
+      "titulo": "Βελοποιικά · Belopoeica (Mechanike syntaxis IV)",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=philo-belopoeica",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "biton-kataskeuai",
+      "autor": "Bitón",
+      "titulo": "Κατασκευαὶ πολεμικῶν ὀργάνων καὶ καταπαλτικῶν",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=biton-kataskeuai",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "hyginus-gromaticus",
+      "autor": "Higino Gromático",
+      "titulo": "Constitutio limitum",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=hyginus-gromaticus",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "lyra-graeca",
+      "autor": "Poetas líricos griegos",
+      "titulo": "Lyra Graeca · Líricos monódicos (Safo, Alceo, Anacreonte y otros)",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=lyra-graeca",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "higino-fabulas",
+      "autor": "Higino",
+      "titulo": "Fabulae · Astronomica poetica",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=higino-fabulas",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "manilio-astronomica",
+      "autor": "Manilio",
+      "titulo": "Astronomica",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=manilio-astronomica",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "aristoteles-meteorologica",
+      "autor": "Aristóteles",
+      "titulo": "Μετεωρολογικά · Meteorologica",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=aristoteles-meteorologica",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "galeno-opera-kuhn",
+      "autor": "Galeno",
+      "titulo": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=galeno-opera-kuhn",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "galeno-kuhn-vol01",
+      "autor": "Galeno",
+      "titulo": "Claudii Galeni opera omnia · Tomus XIV (ed. Kühn, Leipzig 1827)",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol01",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "galeno-kuhn-vol19",
+      "autor": "Galeno",
+      "titulo": "Opera omnia, vol. XIX (ed. Kühn, Leipzig 1830)",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=galeno-kuhn-vol19",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "galeno-scripta-minora",
+      "autor": "Galeno",
+      "titulo": "Scripta minora (ed. Marquardt, Müller y Helmreich, Leipzig 1884–1893)",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=galeno-scripta-minora",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "jamblico-vida-pitagorica",
+      "autor": "Jámblico",
+      "titulo": "Περὶ τοῦ Πυθαγορείου βίου · De vita pythagorica",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=jamblico-vida-pitagorica",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "proclo-comentario-euclides",
+      "autor": "Proclo",
+      "titulo": "Εἰς τὸ πρῶτον τῶν Εὐκλείδου Στοιχείων · In primum Euclidis Elementorum librum commentarii",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=proclo-comentario-euclides",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "sexto-empirico-obras",
+      "autor": "Sexto Empírico",
+      "titulo": "Πρὸς μαθηματικούς · Adversus mathematicos y Esbozos pirrónicos",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=sexto-empirico-obras",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "teon-esmirna-expositio",
+      "autor": "Teón de Esmirna",
+      "titulo": "Τὰ κατὰ μαθηματικὴν χρήσιμα εἰς τὴν Πλάτωνος ἀνάγνωσιν · Expositio rerum mathematicarum",
+      "idiomaOriginal": "grc",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=teon-esmirna-expositio",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "anthologia-latina",
+      "autor": "Antología latina",
+      "titulo": "Anthologia Latina",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=anthologia-latina",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "casiodoro-variae",
+      "autor": "Casiodoro",
+      "titulo": "Variae",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=casiodoro-variae",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "festo-verborum-significatu",
+      "autor": "Festo (y Verrio Flaco)",
+      "titulo": "De verborum significatu",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=festo-verborum-significatu",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "marciano-capela-nuptiis",
+      "autor": "Marciano Capela",
+      "titulo": "De nuptiis Philologiae et Mercurii",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=marciano-capela-nuptiis",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "nonio-marcelo-doctrina",
+      "autor": "Nonio Marcelo",
+      "titulo": "De compendiosa doctrina",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=nonio-marcelo-doctrina",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "paladio-opus-agriculturae",
+      "autor": "Paladio",
+      "titulo": "Opus agriculturae",
+      "idiomaOriginal": "la",
+      "grupo": "ocr_r2_buscable",
+      "estado": "indice_ocr_no_revisado",
+      "lector": "buscador-facsimiles-clasicos.html?obra=paladio-opus-agriculturae",
+      "proximaAccion": "Validar edición y páginas, corregir OCR, distinguir lengua del original de paratextos y producir transcripción trazable; después registrar texto estructurado"
+    },
+    {
+      "id": "seneca-naturales",
+      "autor": "Séneca",
+      "titulo": "Naturales quaestiones",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "velleius-historia",
+      "autor": "Veleyo Patérculo",
+      "titulo": "Historia Romana",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "seneca-de-ira",
+      "autor": "Séneca",
+      "titulo": "De ira",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "seneca-de-tranquillitate",
+      "autor": "Séneca",
+      "titulo": "De tranquillitate animi",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "apuleius-de-deo-socratis",
+      "autor": "Apuleyo",
+      "titulo": "De deo Socratis",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "macrobius-saturnalia",
+      "autor": "Macrobio",
+      "titulo": "Saturnalia",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "ennius-annales",
+      "autor": "Ennio",
+      "titulo": "Annales (fragmenta)",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "procopius-aedificiis",
+      "autor": "Procopio de Cesarea",
+      "titulo": "Περὶ κτισμάτων",
+      "idiomaOriginal": "grc",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "isidore-etymologiae",
+      "autor": "Isidoro de Sevilla",
+      "titulo": "Etymologiae",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "censorinus-die-natali",
+      "autor": "Censorino",
+      "titulo": "De die natali",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "geminus-isagoge",
+      "autor": "Gémino",
+      "titulo": "Εἰσαγωγὴ εἰς τὰ φαινόμενα · Elementa astronomiae",
+      "idiomaOriginal": "grc",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "aristarchus-magnitudines",
+      "autor": "Aristarco de Samos",
+      "titulo": "Περὶ μεγεθῶν καὶ ἀποστημάτων ἡλίου καὶ σελήνης",
+      "idiomaOriginal": "grc",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "apollonius-conica",
+      "autor": "Apolonio de Perge",
+      "titulo": "Κωνικά · Conica",
+      "idiomaOriginal": "grc",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "pappus-synagoge",
+      "autor": "Papo de Alejandría",
+      "titulo": "Συναγωγή · Collectio (libro VIII: mecánica)",
+      "idiomaOriginal": "grc",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "frontinus-gromatica",
+      "autor": "Frontino",
+      "titulo": "Opuscula gromatica (De agrorum qualitate, De controversiis, De limitibus)",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    },
+    {
+      "id": "siculus-flaccus",
+      "autor": "Sículo Flaco",
+      "titulo": "De condicionibus agrorum",
+      "idiomaOriginal": "la",
+      "grupo": "fuente_textual_pendiente",
+      "estado": "sin_texto_indexable_documentado",
+      "proximaAccion": "Localizar una fuente pública con procedencia, verificar cobertura y derechos, adquirir texto original legible y estructurarlo por obra/libro/pasaje antes de indexar"
+    }
+  ]
+}
