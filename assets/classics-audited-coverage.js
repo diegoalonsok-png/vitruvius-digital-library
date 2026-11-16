@@ -24,7 +24,7 @@ async function remote(spec,known,local){
    throw Error("Manifiesto remoto inválido");
  const seen=new Map();
  for(const e of doc.entries){
-  if(!e||!known.has(e.workId)||local.has(e.workId)||seen.has(e.workId)||
+  if(!e||!known.has(e.workId)||seen.has(e.workId)||
      e.language!==spec.language||e.path!==spec.prefix+e.workId+spec.suffix||
      !/^[0-9a-f]{64}$/.test(e.sourceSha256||"")||
      typeof e.source!=="string"||
@@ -78,14 +78,15 @@ async function remote(spec,known,local){
   }
   const claims=snapshot.remoteEntries;
   const expected=new Map(claims.map(e=>[e.workId,e]));
+  const additional=[...external.keys()].filter(id=>!local.has(id)).length;
   if(expected.size!==claims.length||external.size!==claims.length||
-    j.counts.offsiteOriginalsIndexed!==external.size||
-    j.counts.effectiveOriginalsIndexed!==local.size+external.size||
-    j.counts.effectiveOriginalsMissing!==j.targetWorks-local.size-external.size||
+    j.counts.offsiteOriginalsIndexed!==additional||
+    j.counts.effectiveOriginalsIndexed!==local.size+additional||
+    j.counts.effectiveOriginalsMissing!==j.targetWorks-local.size-additional||
     snapshot.counts.hostedOriginalsIndexed!==local.size||
-    snapshot.counts.remoteOriginalsIndexed!==external.size||
-    snapshot.counts.combinedOriginalsIndexed!==local.size+external.size||
-    snapshot.counts.originalsStillWithoutIndex!==j.targetWorks-local.size-external.size)
+    snapshot.counts.remoteOriginalsIndexed!==additional||
+    snapshot.counts.combinedOriginalsIndexed!==local.size+additional||
+    snapshot.counts.originalsStillWithoutIndex!==j.targetWorks-local.size-additional)
     throw Error("Diferencia entre inventario, conciliación y manifiestos externos");
   for(const [id,entry] of external){
    const claim=expected.get(id);
@@ -94,9 +95,9 @@ async function remote(spec,known,local){
       claim.passages!==entry.passages)
     throw Error("Fuente remota discrepante: "+id);
   }
-  set("remote",fmt(external.size));
-  set("searchable",fmt(local.size+external.size));
-  set("pending",fmt(j.targetWorks-local.size-external.size));
+  set("remote",fmt(additional));
+  set("searchable",fmt(local.size+additional));
+  set("pending",fmt(j.targetWorks-local.size-additional));
   set("method","Cobertura documental: índices locales y dos manifiestos externos contrastados con la conciliación editorial. Los textos externos no están alojados en Pages. La coincidencia de metadatos NO certifica integridad, lectura en navegador, traducción ni colación de manuscritos.");
   host.dataset.state="verified";
  }catch(error){
