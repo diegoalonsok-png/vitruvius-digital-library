@@ -3,6 +3,9 @@ on:
   push:
     paths:
       - 'assets/classics-study-actions.js'
+      - 'assets/classics-lexical-popup.js'
+      - 'scripts/test-classics-lexical-context.mjs'
+      - 'classics-text-reader.html'
       - 'assets/vitruvia-lexicon.js'
       - 'scripts/test-classics-study-actions.mjs'
       - 'scripts/test-lexicon-continuation.mjs'
@@ -16,6 +19,9 @@ on:
   pull_request:
     paths:
       - 'assets/classics-study-actions.js'
+      - 'assets/classics-lexical-popup.js'
+      - 'scripts/test-classics-lexical-context.mjs'
+      - 'classics-text-reader.html'
       - 'assets/vitruvia-lexicon.js'
       - 'scripts/test-classics-study-actions.mjs'
       - 'scripts/test-lexicon-continuation.mjs'
@@ -43,3 +49,4 @@ jobs:
       - run: node scripts/test-lexicon-source-language.mjs
       - run: node scripts/test-lexicon-passage-issues.mjs
       - run: node scripts/test-notebook-bibliotheca-itinerary.mjs
+      - run: node scripts/test-classics-lexical-context.mjs
