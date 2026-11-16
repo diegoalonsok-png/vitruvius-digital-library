@@ -327,6 +327,17 @@ def main():
         fiche["textStatus"] = "registered-pending-lexical-index"
         fiche["publicStatus"] = "registered-not-indexed"
         fiche["status"] = "Original griego y ficha incorporados; comprobación del índice léxico pendiente"
+        for record in old["entries"]:
+            if record.get("workId") != id_ or record.get("language") != "grc":
+                continue
+            if record.get("sourceUrn") and record["sourceUrn"] != row["sourceUrn"]:
+                raise SystemExit(f"Conflicting registry CTS work: {id_}")
+            if record.get("sourceSha256") and record["sourceSha256"] != data["sourceSha256"]:
+                raise SystemExit(f"Conflicting registry source SHA256: {id_}")
+            record["sourceUrn"] = row["sourceUrn"]
+            record["sourceSha256"] = data["sourceSha256"]
+            record["path"] = corpus_path
+            record["reader"] = f"classics-text-reader.html?work={id_}&lang=grc"
     old["entries"].sort(key=lambda x: (x["workId"], x["language"]))
     old["count"] = len(old["entries"])
     old["works"] = len({e["workId"] for e in old["entries"]})
