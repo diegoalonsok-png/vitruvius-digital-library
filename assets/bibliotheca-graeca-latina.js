@@ -296,7 +296,7 @@ function compositionYear(work){
 const compareAuthorTitle=(a,b)=>a.author.localeCompare(b.author,"es",{sensitivity:"base"})||
  a.title.localeCompare(b.title,"es",{sensitivity:"base"});
 function filters(){
- const q="",lang=$("classic-language").value,genre=$("classic-genre").value,
+ const q=($("classic-query")?.value||"").trim(),lang=$("classic-language").value,genre=$("classic-genre").value,
        availability=$("classic-availability")?.value||"",period=$("classic-period")?.value||"";
  const selectedSort=$("classic-sort")?.value||"composition";
  return works.filter(w=>(period!=="focus"||periodFocus(w))&&(!lang||w.language===lang)&&(!genre||w.genre===genre)
@@ -413,7 +413,7 @@ function initBookSuggestions(){
  const field=$("classic-query"),list=$("classic-search-suggestions");if(!field||!list)return;
  field.addEventListener("focus",showBookSuggestions);
  field.addEventListener("click",showBookSuggestions);
- field.addEventListener("input",()=>{showBookSuggestions()});
+ field.addEventListener("input",()=>{render();showBookSuggestions()});
  field.addEventListener("keydown",event=>{
   if(event.key==="Escape"){hideBookSuggestions();return}
   if(event.key==="ArrowDown"||event.key==="ArrowUp"){
