@@ -1,4 +1,4 @@
-name: Indexar lote griego 2026-11-16
+name: Bibliotheca — indexación automática de obras griegas y latinas
 on:
   push:
     branches: [main]
@@ -19,11 +19,16 @@ on:
       - 'data/classics-corpus/search-registry.json'
       - 'data/bibliotheca-expansion-publicada-2026-11-16.json'
       - 'scripts/test-bibliotheca-expansion-2026-11.mjs'
+  # Reparación periódica de desajustes: si GitHub omite o cancela un evento push,
+  # los índices se reconstruyen desde la última versión íntegra del repositorio.
+  # 03:20 y 12:20 UTC = 00:20 y 09:20 en Buenos Aires.
+  schedule:
+    - cron: '20 3,12 * * *'
   workflow_dispatch:
 permissions:
   contents: write
 concurrency:
-  group: index-new-greek-classics-2026-11-16
+  group: vdl-classics-publication-main
   cancel-in-progress: false
 jobs:
   rebuild:
