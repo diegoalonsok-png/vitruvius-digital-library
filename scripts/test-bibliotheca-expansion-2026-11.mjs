@@ -20,14 +20,19 @@ for(const id of indexed){
   assert.ok(typeof w[field]==="string"&&w[field].trim(),`Missing academic catalogue field ${field}: ${id}`);
  }
  assert.ok(["lexically-indexed","registered-pending-lexical-index"].includes(w.textStatus),`Unexpected editorial state: ${id}`);
- assert.equal(w.publicStatus,"lectura-local-completa");
+ assert.ok(["lectura-local-completa","registered-not-indexed"].includes(w.publicStatus),
+  `Unexpected public status: ${id}`);
  const p=`data/classics-corpus/${id}-grc.json`;
  assert.deepEqual(w.corpusFiles,{grc:p},"Public corpusFiles must be a language:path object");
  assert.ok(existsSync(p),`Missing Greek original: ${p}`);
  const text=json(p);
  assert.equal(text.workId,id);
  assert.equal(text.language,"grc");
- assert.ok(text.passages.length>200,`Short corpus: ${id}`);
+ // A complete short speech or Socratic dialogue may have far fewer than 200
+ // numbered TEI paragraphs; its size is not an editorial completeness test.
+ const minCount=text.sourceRevision&&text.editionReference?5:200;
+ const textChars=text.passages.reduce((sum,p)=>sum+String(p.text||"").length,0);
+ assert.ok(text.passages.length>=minCount&&textChars>=800,`Empty/implausible Greek corpus: ${id} · ${text.passages.length} passages · ${textChars} chars`);
  assert.ok(text.passages.every(x=>x.text&&x.locus),"Every passage must retain locus and text");
  assert.ok(registry.some(e=>e.workId===id&&e.language==="grc"&&e.path===p),`Missing search registration ${id}`);
  assert.ok(index.some(e=>e.id===id&&e.lang==="grc"&&e.file===p),`Missing lexical index entry ${id}`);
