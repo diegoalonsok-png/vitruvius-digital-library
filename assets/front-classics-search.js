@@ -7,6 +7,8 @@ const $=id=>document.getElementById(id),mk=(tag,text,cls)=>{const el=document.cr
 const safe=s=>{try{const u=new URL(String(s||""),location.href);return u.origin===location.origin&&/\/[a-z0-9/_-]+\.html$/i.test(u.pathname)?u.pathname+u.search+u.hash:""}catch{return ""}};
 const normalize=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/ς/g,"σ").trim();
 function init(){
+ // La portada solo conserva el buscador vitruviano; el corpus clásico se consulta en Bibliotheca.
+ if(location.pathname==="/"||/\/(?:index\.html)?$/i.test(location.pathname))return;
  const form=$("search-form");if(!form||$("front-classics-search"))return;
  const panel=mk("section",null,"front-classics-search");panel.id="front-classics-search";
  const head=mk("h3","Ampliar la búsqueda al corpus clásico griego y latino");
