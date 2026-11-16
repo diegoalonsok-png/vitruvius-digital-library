@@ -27,3 +27,11 @@
 `node scripts/audit-apparatus-critical-review.mjs` produce `reports/apparatus-critical-review-queue.json` como informe derivado. El informe no cambia `data/text`, `data/apparatus`, índices, testimonios, corpus, PDFs o R2.
 
 **Condición de cierre:** para cada entrada corregida, incluir referencia a imagen de la página o folio, transcripción revisada y diferencia verificable. Sin ese soporte, no se declara resuelta.
+
+## Rectificación esencial de procedencia (16 de noviembre)
+
+- **V514, V554 y V297 son ediciones autorales de Diego Kurilo, NO reproducciones OCR.** Su latín editorial sigue principalmente la tradición textual de Krohn (1912), con lecturas de Rose (1899) y decisiones propias que deben respetarse y atribuirse.
+- **Krohn:** `data/critical-editions/krohn-1912-tei-loci.json`, transcripción TEI de Perseus, 731 loci. La procedencia declara extracción TEI, no OCR, aunque no afirma cotejo exhaustivo con el impreso.
+- **Rose:** `data/critical-editions/rose-1899-transcribed-loci.json`, transcripción textual de Project Gutenberg, 731 loci, 26 alineaciones ambiguas según su manifiesto. No es OCR.
+- **Solo determinadas notas históricas del aparato comparativo** provienen todavía de `data/text/krohn-1912.json` y `data/text/rose-1899.json` mediante extracción OCR, según `scripts/build-aparato-comparativo.py`.
+- **Regla de auditoría:** no identificar problemas en una extracción digital con erratas de los libros del autor. Los textos latinos reindexados son la base del cotejo textual; el aparato crítico impreso se coteja separadamente con sus fuentes. Ninguna decisión editorial se sustituye automáticamente por la lectura de otra edición.
