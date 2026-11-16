@@ -54,8 +54,8 @@ assert.match(html,/id="classic-work"/);
 assert.doesNotMatch(html,/assets\/classics-study-tools\.js\?v=/);
 assert.doesNotMatch(html,/<iframe\b|type="color"/);
 // Extra morphological forms are optional; retain at least the literal query and attested transliterations.
-assert.match(read("assets/bibliotheca-simple.js"),/searchPassages\(\[q,\.\.\.transliterations/);
-assert.match(read("assets/bibliotheca-simple.js"),/if\(!workId&&!options\.exhaustive\)/);
+assert.match(read("assets/bibliotheca-simple.js"),/searchPassages\(terms,/);
+assert.match(read("assets/bibliotheca-simple.js"),/if\(!workId&&!options\.exhaustive&&mode==="literal"&&!locusCriterion\)/);
 assert.match(read("assets/bibliotheca-simple.js"),/maxPerEdition:workId\?200:70,limit:600,includeFullText:true,includeOCR:false/);
 assert.match(read("assets/bibliotheca-simple.js"),/vitruvia-lexicon\.html/);
 assert.match(old,/location\.replace\(dest\.href\)/);
