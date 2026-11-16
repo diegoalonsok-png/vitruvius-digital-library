@@ -11,7 +11,7 @@ const norm=s=>{
  if(m){let n=0,p=0;for(const ch of [...m[1]].reverse()){const v={i:1,v:5,x:10}[ch];n+=v<p?-v:v;p=v}s=n+s.slice(m[1].length)}
  return s.replace(/\.praefatio\./g,".praef.").replace(/\.preface\./g,".praef.");
 };
-let data=null,current="1.1.1",selection="all",checked=new Map();
+let data=null,current="1.1.1",selection="all",checked=new Map(),relations=new Map();
 const getLocus=()=>norm(new URLSearchParams(location.search).get("locus")||q("bude-locus")?.value||current);
 function sources(locus){
  const qp=encodeURIComponent(locus);
@@ -40,6 +40,13 @@ function render(locus){
  if(verified){const documentary=document.createElement("section");documentary.className="triad-printed-evidence";const h=document.createElement("h4");h.textContent="Cotejo documentado de ediciones impresas · "+current;documentary.append(h);for(const entry of verified){const p=document.createElement("p");p.lang="la";const strong=document.createElement("strong");strong.textContent=entry.lemma+" — ";p.append(strong,document.createTextNode(entry.criticalLine));documentary.append(p);const note=document.createElement("p");note.className="triad-proof";note.textContent=entry.evidence+" · Cotejos: "+(entry.printCheckIds||[]).join(", ")+". Estado: lectura editorial contrastada en los impresos indicados; atribuciones manuscritas sólo secundum editores.";documentary.append(note);}root.append(documentary)}
  if(!row){const p=document.createElement("p");p.textContent="Sin datos para el locus "+current;root.append(p);return}
  const heading=document.createElement("h4");heading.textContent="Collatio digitalis · "+current;root.append(heading);
+ const rel=relations.get(current);
+ if(rel){const info=document.createElement("p");info.className="triad-relationship";const names={
+ coincidencia_triple_normalizada:"Coincidencia textual normalizada de las tres ediciones",
+ kurilo_sigue_krohn_rose_difiere:"Kurilo y Krohn coinciden; Rose presenta otra lectura digital",
+ kurilo_sigue_rose_krohn_difiere:"Kurilo y Rose coinciden; Krohn presenta otra lectura digital",
+ kurilo_difiere_de_ambos:"Kurilo difiere de ambas transcripciones digitales"
+ };info.textContent="Relación editorial observada: "+(names[rel.category]||rel.category)+". "+(rel.printed_comparison_checked?"Hay cotejo documental de impresos para este locus.":"Causa paleográfica y decisión editorial todavía no verificadas.");root.append(info)}
  const introductory=document.createElement("p");introductory.className="triad-explainer";
  introductory.textContent="Lema: Kur. V514. A continuación figuran diferencias calculadas entre transcripciones digitales, únicamente para orientar la revisión. No son decisiones ecdóticas atribuidas a los editores, ni variantes manuscritas verificadas. Una divergencia gráfica o de segmentación puede carecer de valor crítico.";
  root.append(introductory);
@@ -61,9 +68,10 @@ function init(){
  // The main navigator also changes via form and prev/next.
  ["bude-go","bude-prev","bude-next"].forEach(id=>q(id)?.addEventListener("click",()=>setTimeout(()=>render(getLocus()),50)));
  ["bude-book","bude-chapter","bude-section"].forEach(id=>q(id)?.addEventListener("change",()=>setTimeout(()=>render(getLocus()),50)));
- Promise.all([url,"data/apparatus/source-print-checks.json"].map(path=>fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json()}))).then(([obj,print])=>{
+ Promise.all([url,"data/apparatus/source-print-checks.json","data/apparatus/relaciones-editoriales-731.json"].map(path=>fetch(path,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json()}))).then(([obj,print,relationship])=>{
   if(!Array.isArray(obj.loci)||obj.loci.length!==731||!obj.summary)throw Error("Índice incompleto");
   data=new Map(obj.loci.map(p=>[p.locus,p]));
+  relations=new Map((relationship.loci||[]).map(p=>[p.locus,p]));
   checked=new Map();for(const row of print.comparisons||[]){const list=checked.get(row.locus)||[];list.push(row);checked.set(row.locus,list)}
   const s=obj.summary;
   q("vdl-triad-status").textContent="731 loci indexados · "+s.loci_with_candidate_differences+" loci con diferencias normalizadas · "+s.total_candidate_chunks_krohn+" grupos frente a Krohn y "+s.total_candidate_chunks_rose+" frente a Rose. Candidatos pendientes de cotejo impreso.";
