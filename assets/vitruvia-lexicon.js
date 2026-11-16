@@ -732,7 +732,7 @@ function ngramTable(heading,items,D,l,A,limit){
  const body=el("tbody",{});
  for(const row of items.slice(0,limit)){
   const source=el("a",{href:ngramLocusURL(row.phrase,l,A,row.locus),
-   title:"Abrir la primera atestiguación localizada en el índice léxico"},row.phrase);
+   title:"Abrir un pasaje indexado donde aparece esta expresión"},row.phrase);
   body.append(el("tr",{},
    el("td",{},source),el("td",{},row.a.toLocaleString("es")),
    el("td",{},row.rateA.toFixed(2)),el("td",{},row.b.toLocaleString("es")),
