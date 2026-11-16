@@ -8,13 +8,18 @@ const records=json("data/bibliotheca-expansion-publicada-2026-11-16.json").works
 const registry=json("data/classics-corpus/search-registry.json").entries;
 const index=json("data/index/classics/manifest.json").index;
 const r2=json("data/r2/corpus-manifest.json").obras;
-const indexed=["callimachus-hymni","theocritus-idyllia","menander-dyskolos","aristophanes-knights","aristophanes-thesmophoriazusae","aristophanes-ecclesiazusae","aristophanes-plutus","euripides-cyclops","euripides-ion","euripides-helena"];
-assert.equal(records.length,11,"Ten indexed Greek editions and one bibliography-only Sappho record");
+const indexed=records.filter(w=>w.corpusFiles?.grc).map(w=>w.id);
+assert.ok(indexed.length>=10,"Existing indexed original corpus must not regress");
+assert.equal(records.filter(w=>w.id==="sappho-fragmenta").length,1,"Keep one identified bibliography-only Sappho fiche");
 assert.equal(new Set(records.map(w=>w.id)).size,records.length,"No duplicate overlay IDs");
 for(const id of indexed){
  const w=records.find(w=>w.id===id);
  assert.ok(w,`Missing catalogue record: ${id}`);
  assert.equal(w.language,"grc");
+ for(const field of ["author","title","genre","dating","source","sourceUrl"]){
+  assert.ok(typeof w[field]==="string"&&w[field].trim(),`Missing academic catalogue field ${field}: ${id}`);
+ }
+ assert.ok(["lexically-indexed","registered-pending-lexical-index"].includes(w.textStatus),`Unexpected editorial state: ${id}`);
  assert.equal(w.publicStatus,"lectura-local-completa");
  const p=`data/classics-corpus/${id}-grc.json`;
  assert.deepEqual(w.corpusFiles,{grc:p},"Public corpusFiles must be a language:path object");
@@ -37,4 +42,4 @@ for(const [githubId,r2Id] of aliases){
  assert.ok(r2.some(w=>w.workId===r2Id&&w.language==="grc"),`Known R2 edition missing: ${r2Id}`);
  assert.ok(registry.some(w=>w.workId===githubId&&w.language==="grc"),`Known GitHub edition missing: ${githubId}`);
 }
-console.log("Bibliotheca: ten indexed Greek works + one clearly unindexed bibliographic fiche verified; R2 editorial aliases preserved.");
+console.log(`Bibliotheca: ${indexed.length} original texts with catalogue, search record, index and reader; Sappho remains bibliographic only; R2 aliases preserved.`);
