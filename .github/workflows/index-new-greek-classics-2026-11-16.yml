@@ -52,7 +52,7 @@ jobs:
           for(const id of names){
             const f='data/classics-corpus/'+id+'-grc.json';
             const data=JSON.parse(fs.readFileSync(f,'utf8'));
-            if(data.workId!==id||data.language!=='grc'||data.passages.length<200)throw Error('Corpus no válido: '+id);
+            if(data.workId!==id||data.language!=='grc'||data.passages.length<(data.sourceRevision&&data.sourceSha256?5:200)||data.passages.reduce((n,p)=>n+String(p.text||'').length,0)<800)throw Error('Corpus no válido: '+id);
             if(!registry.entries.some(e=>e.workId===id&&e.language==='grc'&&e.path===f))throw Error('No registrado: '+id);
           }
           JS
