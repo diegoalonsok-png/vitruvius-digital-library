@@ -48,7 +48,7 @@ async function prepareCorpus(){
   const {source,data}=result.value;if(!Array.isArray(data.passages))continue;
   works.push(source.workTitle+" · "+(source.edition||data.version));
   for(const passage of data.passages){
-   const original=asString(passage.latin||passage.original||passage.greek||"");
+   const original=asString(passage.latin||passage.original||passage.greek||passage.text||"");
    const translation=asString(passage.translation||"");
    const textChunks=sliceIntoChunks(original+" "+translation);
    for(let chunk=0;chunk<textChunks.length;chunk++){
