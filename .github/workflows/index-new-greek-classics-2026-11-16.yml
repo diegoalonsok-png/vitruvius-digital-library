@@ -28,7 +28,9 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: vdl-classics-publication-main
+  # Publicador aislado: otros controles R2 no cancelan la indexación entrante.
+  # Los conflictos al actualizar main se resuelven reconstruyendo desde HEAD actual.
+  group: bibliotheca-classics-lexical-publisher
   cancel-in-progress: false
 jobs:
   rebuild:
