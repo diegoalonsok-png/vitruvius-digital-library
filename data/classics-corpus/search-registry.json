@@ -1,9 +1,9 @@
 {
  "schema": "vitruvia-classics-search-registry-v1",
- "updated": "2026-11-15",
+ "updated": "2026-11-16",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 291,
- "works": 226,
+ "count": 292,
+ "works": 227,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -2831,6 +2831,16 @@
    "path": "data/lexicon/fontes/varro-rustica-la.json",
    "reader": "classics-text-reader.html?work=varro-rustica&lang=la",
    "sourceDescription": "Fuente local compartida con Lexicon sin duplicación. Los tres libros están conservados en la fuente digital local (97 loci); edición no cotejada independientemente."
+  },
+  {
+   "workId": "vegetius-epitoma",
+   "author": "Flavio Vegecio Renato",
+   "title": "Epitoma rei militaris",
+   "language": "la",
+   "format": "json-passages",
+   "path": "data/classics-corpus/vegetius-epitoma-la.json",
+   "reader": "classics-text-reader.html?work=vegetius-epitoma&lang=la",
+   "sourceDescription": "CLTK Latin Library, libros I–IV · Public Domain Mark 1.0 · transcripción digital sin cotejo impreso; segmentos técnicos"
   },
   {
    "workId": "virgil-aeneid",
