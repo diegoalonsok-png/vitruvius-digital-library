@@ -71,12 +71,18 @@ jobs:
         run: python -m pip install --quiet "boto3>=1.36"
       - name: Identidad catalográfica y sincronización de obras y versiones
         run: |
-          node scripts/test-bibliotheca-expansion-2026-11.mjs
           node scripts/test-r2-reconciliation-integrity.mjs
           node scripts/audit-bibliotheca-federada.mjs --strict
           python scripts/sync-bibliotheca-github-r2.py
           python scripts/cifras-corpus.py
           python scripts/sync-classics-coverage.py
+      # A new GitHub work may be recorded minutes before its lexical shards
+      # are published by the independent indexer. Never skip R2 verification
+      # because of this temporary local index lag.
+      - name: Detectar atraso del índice local sin bloquear la auditoría R2
+        id: lexical_parity
+        continue-on-error: true
+        run: node scripts/test-bibliotheca-expansion-2026-11.mjs
       - name: Comprobar claves de objetos e IDs del índice R2
         run: python scripts/audit-bibliotheca-r2-live.py --required
       - name: Verificar cada PDF y OCR catalogado por HEAD, SHA declarado y manifiesto
@@ -120,6 +126,7 @@ jobs:
         shell: bash
         env:
           JOB_STATUS: ${{ job.status }}
+          LEXICAL_OUTCOME: ${{ steps.lexical_parity.outcome }}
         run: |
           python - <<'PY'
           import os, json, pathlib, datetime
@@ -140,6 +147,9 @@ jobs:
               c=d.get('counts',{})
               rows += [f"**PDF/OCR verificados:** {c.get('objectsPresent','sin dato')} / {c.get('objectsChecked','sin dato')}",
                        f"**Objetos faltantes:** {c.get('objectsMissing','sin dato')}"]
+          rows.append("**Paridad léxica local:** "+os.environ.get('LEXICAL_OUTCOME','sin comprobar'))
+          if os.environ.get('LEXICAL_OUTCOME') == 'failure':
+              rows.append("**Atención:** hay una entrada local registrada sin índice publicado; se conservó y auditó R2 igualmente.")
           if os.environ['JOB_STATUS'] != 'success':
               rows.append("**Atención:** la ejecución no certifica sincronización completa; revisar el registro de errores.")
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a',encoding='utf-8') as f:
@@ -161,3 +171,9 @@ jobs:
             data/classics-corpus/coverage-audit.json
             reports/bibliotheca/r2-live-integrity.json
           if-no-files-found: ignore
+
+      - name: Declarar índice local pendiente sin invalidar las comprobaciones R2
+        if: steps.lexical_parity.outcome == 'failure'
+        run: |
+          echo "::error::El catálogo contiene alguna edición cuyo índice local aún no está publicado. Se verificó R2 independientemente; revisar el flujo de indexación."
+          exit 1
