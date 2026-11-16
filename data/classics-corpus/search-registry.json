@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-16",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 299,
- "works": 234,
+ "count": 302,
+ "works": 237,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -1132,6 +1132,16 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "euripides-cyclops",
+   "author": "Eurípides",
+   "title": "Κύκλωψ",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/euripides-cyclops-grc.json",
+   "reader": "classics-text-reader.html?work=euripides-cyclops&lang=grc",
+   "sourceDescription": "Perseus Digital Library TEI · Gilbert Murray · CC BY-SA 4.0; cotejo crítico independiente pendiente"
+  },
+  {
    "workId": "euripides-electra",
    "author": "Eurípides",
    "title": "Ἠλέκτρα",
@@ -1172,6 +1182,16 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "euripides-helena",
+   "author": "Eurípides",
+   "title": "Ἑλένη",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/euripides-helena-grc.json",
+   "reader": "classics-text-reader.html?work=euripides-helena&lang=grc",
+   "sourceDescription": "Perseus Digital Library TEI · Gilbert Murray · CC BY-SA 4.0; cotejo crítico independiente pendiente"
+  },
+  {
    "workId": "euripides-hippolytus",
    "author": "Eurípides",
    "title": "Ἱππόλυτος",
@@ -1190,6 +1210,16 @@
    "path": "data/classics-corpus/euripides-hippolytus-grc.json",
    "reader": "classics-text-reader.html?work=euripides-hippolytus&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "euripides-ion",
+   "author": "Eurípides",
+   "title": "Ἴων",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/euripides-ion-grc.json",
+   "reader": "classics-text-reader.html?work=euripides-ion&lang=grc",
+   "sourceDescription": "Perseus Digital Library TEI · Gilbert Murray · CC BY-SA 4.0; cotejo crítico independiente pendiente"
   },
   {
    "workId": "euripides-iphigenia-aulid",
