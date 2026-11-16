@@ -12,6 +12,7 @@ function findLocus(){
 function show(locus){
  if(!source)return;const root=$(id+"-body");if(!root)return;
  const resolved=norm(locus||findLocus());if(resolved===current&&root.childNodes.length)return;current=resolved;root.replaceChildren();
+ const note=source.locus_alignment_notes?.[resolved];if(note){const n=document.createElement("p");n.textContent="Correspondencia de segmentación: "+note+". No es una omisión del texto ni una variante ecdótica.";root.append(n)}
  const row=rows.get(resolved);if(!row){root.textContent="Locus no disponible en el cotejo de cinco ediciones.";return}
  const h=document.createElement("h4");h.textContent="Locus "+resolved;root.append(h);
  const table=document.createElement("table");table.style.cssText="width:100%;border-collapse:collapse;font:13px/1.55 system-ui";
@@ -30,7 +31,7 @@ function init(){
  fetch("data/apparatus/cotejo-cinco-ediciones-latinas-731.json").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
   if(!Array.isArray(d.loci)||d.loci.length!==731)throw Error("Cobertura inesperada");
   source=d;rows=new Map(d.loci.map(p=>[p.locus,p]));
-  $(id+"-state").textContent="731 loci base · V554: 731 · V297: 728 (no indexados por separado: VII.7.2, VII.7.3, VII.7.5) · Krohn: 731 · Rose: 731.";
+  $(id+"-state").textContent="731 loci base · V554: 731 · V297: 728 entradas (tres loci fusionados con entradas vecinas: VII.7.2, VII.7.3, VII.7.5) · Krohn: 731 · Rose: 731.";
   show(findLocus());
  }).catch(e=>{$(id+"-state").textContent="No se pudo recuperar el índice: "+e.message});
 }
