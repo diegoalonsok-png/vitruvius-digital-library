@@ -211,3 +211,44 @@ html.cl-biblio-expanded:not([data-parallel-view="true"]):not([data-reading-mode=
 @media print{
  html.cl-biblio-expanded .reader-grid{position:static!important;height:auto!important;overflow:visible!important}
 }
+
+/* Keep source and translation opening lines level. Original-only annotation
+   controls are available in a single fold ABOVE the two reading columns. */
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-edition-layout>.cl-annotation-tools-fold{
+ flex:1 1 100%;width:100%;
+ border:1px solid #a9a398;border-radius:5px;
+ background:#282f37;color:#f0eee8;
+ font:600 12px/1.45 system-ui,sans-serif;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-annotation-tools-fold>summary{
+ padding:9px 12px;cursor:pointer;list-style:revert;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-annotation-tools-content{
+ border-top:1px solid #7d7971;padding:8px 10px;
+ display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-annotation-tools-content .vdl-annotation-bar,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-annotation-tools-content .cl-translation-annotations{
+ flex:1 1 260px;margin:0!important;max-width:100%;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-annotation-tools-content #hit-nav{
+ flex:0 1 auto;margin:0;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) #passages .locus{
+ display:none!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-translation-label{
+ display:none!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader #passages,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-translation-output{
+ margin-top:0!important;padding-top:0!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader #passages>p,
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-translation-output>p:first-child{
+ margin-top:0!important;
+}
+html:not([data-parallel-view="true"]):not([data-reading-mode="simple"]) .cl-dual-reader .cl-pane-title{
+ display:flex;align-items:center;min-height:45px;
+}
+@media print{.cl-annotation-tools-fold{display:none!important}}
