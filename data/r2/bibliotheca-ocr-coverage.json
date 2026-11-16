@@ -1,6 +1,6 @@
 {
   "schema": "vdl-bibliotheca-ocr-coverage-v1",
-  "generated": "2026-11-16T12:54:50.934236+00:00",
+  "generated": "2026-11-16T18:17:36.294033+00:00",
   "source": "Catálogo maestro, registro de versiones, inventario federado e índice S3 auditado",
   "limits": "Índice por raíces sobre OCR no revisado, no traducción, no lematización morfológica, ni correspondencia certificada con loci. La presencia en el listado no prueba que cada palabra tenga una localización correcta; consultar auditoría léxica en vivo.",
   "counts": {
@@ -575,6 +575,6 @@
       "ocrSearchStatus": "sin facsímil con índice R2 vinculado"
     }
   ],
-  "r2IndexAuditTimestamp": "2026-11-16T12:54:32.329119+00:00",
+  "r2IndexAuditTimestamp": "2026-11-16T18:17:14.097374+00:00",
   "r2IndexDeclared": true
 }
