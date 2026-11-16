@@ -62,6 +62,70 @@
       "corpusFiles": [
         "data/classics-corpus/menander-dyskolos-grc.json"
       ]
+    },
+    {
+      "id": "aristophanes-knights",
+      "author": "Aristófanes",
+      "title": "Ἱππῆς · Los caballeros",
+      "language": "grc",
+      "genre": "Comedia ática",
+      "dating": "424 a. C.",
+      "source": "Perseus Digital Library · F. W. Hall y W. M. Geldart (1906)",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0019/tlg002",
+      "textStatus": "registered-not-yet-lexically-indexed",
+      "status": "texto griego incorporado; indexación léxica en proceso",
+      "corpusFiles": [
+        "data/classics-corpus/aristophanes-knights-grc.json"
+      ],
+      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático."
+    },
+    {
+      "id": "aristophanes-thesmophoriazusae",
+      "author": "Aristófanes",
+      "title": "Θεσμοφοριάζουσαι · Las tesmoforiantes",
+      "language": "grc",
+      "genre": "Comedia ática",
+      "dating": "411 a. C.",
+      "source": "Perseus Digital Library · F. W. Hall y W. M. Geldart (1907)",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0019/tlg008",
+      "textStatus": "registered-not-yet-lexically-indexed",
+      "status": "texto griego incorporado; indexación léxica en proceso",
+      "corpusFiles": [
+        "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json"
+      ],
+      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático."
+    },
+    {
+      "id": "aristophanes-ecclesiazusae",
+      "author": "Aristófanes",
+      "title": "Ἐκκλησιάζουσαι · Las asambleístas",
+      "language": "grc",
+      "genre": "Comedia ática",
+      "dating": "c. 392 a. C.",
+      "source": "Perseus Digital Library · F. W. Hall y W. M. Geldart (1907)",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0019/tlg010",
+      "textStatus": "registered-not-yet-lexically-indexed",
+      "status": "texto griego incorporado; indexación léxica en proceso",
+      "corpusFiles": [
+        "data/classics-corpus/aristophanes-ecclesiazusae-grc.json"
+      ],
+      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático."
+    },
+    {
+      "id": "aristophanes-plutus",
+      "author": "Aristófanes",
+      "title": "Πλοῦτος · Pluto",
+      "language": "grc",
+      "genre": "Comedia ática",
+      "dating": "388 a. C.",
+      "source": "Perseus Digital Library · F. W. Hall y W. M. Geldart (1907)",
+      "sourceUrl": "https://github.com/PerseusDL/canonical-greekLit/tree/master/data/tlg0019/tlg011",
+      "textStatus": "registered-not-yet-lexically-indexed",
+      "status": "texto griego incorporado; indexación léxica en proceso",
+      "corpusFiles": [
+        "data/classics-corpus/aristophanes-plutus-grc.json"
+      ],
+      "description": "Texto griego en TEI de Perseus; no es nueva recensio ni cotejo diplomático."
     }
   ]
 }
