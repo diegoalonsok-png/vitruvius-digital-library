@@ -23,7 +23,7 @@ assert.equal(snapshot.counts.hostedOriginalsIndexed,roadmap.counts.originalsInde
 assert.equal(snapshot.counts.remoteOriginalsIndexed,roadmap.counts.offsiteOriginalsIndexed);
 assert.equal(snapshot.counts.combinedOriginalsIndexed,roadmap.counts.effectiveOriginalsIndexed);
 assert.equal(snapshot.counts.originalsStillWithoutIndex,roadmap.counts.effectiveOriginalsMissing);
-assert.equal(snapshot.remoteEntries.length,snapshot.counts.remoteOriginalsIndexed);
+assert.equal(snapshot.remoteEntries.filter(x=>!roadmap.items.some(w=>w.id===x.workId&&w.originalIndexed)).length,snapshot.counts.remoteOriginalsIndexed);
 const known=new Set(roadmap.items.map(x=>x.id));
 const local=new Set(roadmap.items.filter(x=>x.originalIndexed).map(x=>x.id));
 const remoteIds=new Set(snapshot.remoteEntries.map(x=>x.workId));
@@ -32,12 +32,13 @@ assert.equal(local.size,roadmap.counts.originalsIndexed);
 assert.equal(remoteIds.size,snapshot.remoteEntries.length,"Duplicate external work identity");
 for(const entry of snapshot.remoteEntries){
  assert(known.has(entry.workId),"Remote work not catalogued: "+entry.workId);
- assert(!local.has(entry.workId),"Remote work counted twice: "+entry.workId);
+ // A remote edition may also have a locally indexed copy; count the work only once.
  assert(/^[0-9a-f]{64}$/.test(entry.sourceSha256),"Remote source hash missing: "+entry.workId);
  assert(Number.isInteger(entry.passages)&&entry.passages>0,"Invalid passage count: "+entry.workId);
  assert(entry.sourceUrl?.startsWith("https://"),"Source URL missing: "+entry.workId);
 }
-assert.equal(local.size+remoteIds.size+roadmap.counts.effectiveOriginalsMissing,roadmap.targetWorks);
+const addedRemote=new Set([...remoteIds].filter(id=>!local.has(id)));
+assert.equal(local.size+addedRemote.size+roadmap.counts.effectiveOriginalsMissing,roadmap.targetWorks);
 const base="https://raw.githubusercontent.com/diegoalonsok-png/vitruvius-digital-library/";
 const urls=specs.map(s=>base+s.branch+"/"+s.path);
 const fixtures=specs.map(s=>{
@@ -75,8 +76,8 @@ const good=await render();
 assert.equal(good.state,"verified","Metadata agreement should be visible, not called peer review");
 assert.equal(good.values.catalog,String(roadmap.targetWorks));
 assert.equal(good.values.local,String(local.size));
-assert.equal(good.values.remote,String(remoteIds.size));
-assert.equal(good.values.searchable,String(local.size+remoteIds.size));
+assert.equal(good.values.remote,String(addedRemote.size));
+assert.equal(good.values.searchable,String(local.size+addedRemote.size));
 assert.equal(good.values.pending,String(roadmap.counts.effectiveOriginalsMissing));
 assert.equal(good.values.translations,String(roadmap.counts.worksWithHostedTranslation));
 assert.equal(good.values.versions,String(roadmap.counts.textVersions));
@@ -93,6 +94,6 @@ for(const file of ["index.html","bibliotheca-graeca-latina.html"]){
  assert(html.includes('id="classics-audit-coverage"'),file+" missing counter");
  assert(html.includes("assets/classics-audited-coverage.js"),file+" missing linked script");
 }
-console.log("PASS: local "+local.size+", documented remote "+remoteIds.size+
- ", combined "+(local.size+remoteIds.size)+", pending "+roadmap.counts.effectiveOriginalsMissing+
+console.log("PASS: local "+local.size+", documented remote "+addedRemote.size+
+ ", combined "+(local.size+addedRemote.size)+", pending "+roadmap.counts.effectiveOriginalsMissing+
  "; tested drift and offline safeguards. Metadata only; no textual certification.");
