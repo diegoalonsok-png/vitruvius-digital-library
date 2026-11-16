@@ -42,10 +42,12 @@ async function prepareCorpus(){
  const manifest=await requestJSON("./data/ai-corpora.json");
  if(!Array.isArray(manifest.sources)||!manifest.sources.length)throw Error("Catálogo de textos vacío");
  const settled=await Promise.allSettled(manifest.sources.map(async source=>({source,data:await requestJSON("./"+source.url)})));
- const works=[],documents=[];
- for(const result of settled){
-  if(result.status!=="fulfilled")continue;
-  const {source,data}=result.value;if(!Array.isArray(data.passages))continue;
+ const works=[],documents=[],unavailable=[];
+ for(let i=0;i<settled.length;i++){
+  const result=settled[i];
+  if(result.status!=="fulfilled"){unavailable.push(manifest.sources[i].workId||manifest.sources[i].url);continue}
+  const {source,data}=result.value;
+  if(!Array.isArray(data.passages)){unavailable.push(source.workId||source.url);continue}
   works.push(source.workTitle+" · "+(source.edition||data.version));
   for(const passage of data.passages){
    const original=asString(passage.latin||passage.original||passage.greek||passage.text||"");
@@ -71,7 +73,7 @@ async function prepareCorpus(){
  const df=new Map();
  for(const doc of documents)for(const word of doc.tf.keys())df.set(word,(df.get(word)||0)+1);
  const avgLength=documents.reduce((sum,doc)=>sum+doc.length,0)/documents.length;
- return {documents,df,avgLength,works};
+ return {documents,df,avgLength,works,unavailable,declaredSources:manifest.sources.length};
 }
 function corpus(){if(!corpusPromise)corpusPromise=prepareCorpus().catch(e=>{corpusPromise=null;throw e});return corpusPromise}
 function lexicalRanking(q,data){
@@ -170,14 +172,15 @@ async function search(query,{method="neural"}={}){
  const q=asString(query);if(!q)return {rows:[],mode:"empty"};
  notify("Indexando los textos disponibles y calculando coincidencias exactas…");
  const data=await corpus(),ranked=lexicalRanking(q,data);
+ const coverageNotice=data.unavailable.length?"Fuentes no cargadas: "+data.unavailable.join(", ")+". Cobertura parcial.":"";
  const candidates=diversity(ranked);
  if(!candidates.length)return {rows:[],mode:"empty",stats:{chunks:data.documents.length,works:data.works}};
  const fallback=candidates.filter(x=>x.score>0).slice(0,35).map(x=>renderRow(x.doc,q,x.score*25));
  if(method==="bm25"||prefersReducedData()){
-  const warning=method==="bm25"?"Motor BM25 elegido: búsqueda textual indexada, sin descarga E5 ni similitud neuronal.":"Ahorro de datos activo: se omite la descarga del modelo E5; resultados BM25 sobre textos indexados, sin afirmar análisis neuronal.";
+  const warning=(method==="bm25"?"Motor BM25 elegido: búsqueda textual indexada, sin descarga E5 ni similitud neuronal.":"Ahorro de datos activo: se omite la descarga del modelo E5; resultados BM25 sobre textos indexados, sin afirmar análisis neuronal.")+(coverageNotice?" "+coverageNotice:"");
   notify(warning,"fallback");
   return {rows:fallback,mode:"bm25-fallback",
-   stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works},warning,method:"bm25"};
+   stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning,method:"bm25"};
  }
  try{
   const model=await getModel();
@@ -194,8 +197,8 @@ async function search(query,{method="neural"}={}){
    const fused=1/(60+l)+1/(60+s)+(entry.score>=75?.011:0);
    return {...entry,score:fused*16000};
   }).sort((a,b)=>b.score-a.score).slice(0,35);
-  notify("IA semántica activa · "+data.documents.length+" fragmentos disponibles; "+candidates.length+" cotejados con embeddings.","success");
-  return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",method:"e5",stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works}};
+  notify("IA semántica activa · "+data.documents.length+" fragmentos disponibles; "+candidates.length+" cotejados con embeddings."+(coverageNotice?" "+coverageNotice:""),coverageNotice?"fallback":"success");
+  return {rows:combined.map(x=>renderRow(x.doc,q,x.score,true)),mode:"neural",method:"e5",stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works,declaredSources:data.declaredSources,loadedSources:data.works.length,unavailable:data.unavailable},warning:coverageNotice||undefined};
  }catch(e){
   notify("No se pudo cargar el modelo ("+String(e.message||"error").slice(0,90)+"). Se muestran coincidencias BM25, sin afirmar IA semántica.","fallback");
   return {rows:fallback,mode:"bm25-fallback",stats:{chunks:data.documents.length,candidates:candidates.length,works:data.works},warning:String(e.message||e)};
