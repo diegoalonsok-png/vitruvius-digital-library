@@ -1,24 +1,27 @@
 (()=>{
-const ids=[['recensio-es','V514 · castellano'],['recensio-fr','V554 · français'],['theory-en','V297 · English']];
+const ids=[['recensio-es','Edición española'],['recensio-fr','Édition française'],['theory-en','English edition']];
 const form=document.getElementById('compare-form'),field=document.getElementById('compare-locus'),status=document.getElementById('compare-status'),results=document.getElementById('compare-results');
 const load=Promise.all(ids.map(async ([id,label])=>{const r=await fetch('data/structured/'+id+'.json');if(!r.ok)throw Error('No se pudo cargar '+label);const data=await r.json();return{id,label,passages:data.passages}}));
 function norm(s){return String(s||'').trim().replace(/^([IVX]+)\./i,(m,x)=>[...x.toUpperCase()].reduce((a,c,i,arr)=>a+({I:1,V:5,X:10}[c]<({I:1,V:5,X:10}[arr[i+1]]||0)?-{I:1,V:5,X:10}[c]:{I:1,V:5,X:10}[c]),0)+'.').toLowerCase();}
-const record={
- "recensio-es":{title:"Vitruvio. De architectura. Nueva recensio académica bilingüe",doi:"10.5281/zenodo.23884757",version:"V514"},
- "recensio-fr":{title:"Vitruve. De architectura. Nouvelle recensio académique bilingue",doi:"10.5281/zenodo.23885110",version:"V554"},
- "theory-en":{title:"The Architect of Theory: Vitruvius and the Intellectual World of Roman Antiquity",doi:"10.5281/zenodo.23885404",version:"V297"}
-};
+let record={};
+const catalogLoad=fetch('data/catalog.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Catálogo bibliográfico inaccesible');return r.json()}).then(c=>{
+ record=Object.fromEntries(ids.map(([id])=>[id,(c.editions||[]).find(e=>e.id===id)]));
+ if(ids.some(([id])=>!record[id]))throw Error('Metadatos editoriales incompletos');
+});
 const roman=n=>{let v=Number(n);return v>0&&v<=10?["","I","II","III","IV","V","VI","VII","VIII","IX","X"][v]:String(n)};
 function formats(id,locus){
- const data=record[id];if(!data)return null;
- const locusDisplay=locus.replace(/^([0-9]+)\./,(_,v)=>roman(v)+".");
- const url=new URL(location.href);url.searchParams.set("locus",locus);
- const cited="Vitr., De arch. "+locusDisplay;
- const chicago="Kurilo, Diego A. "+data.title+". Version "+data.version+" (2026). "+cited+". https://doi.org/"+data.doi+". Locus: "+url.href;
- const mla="Kurilo, Diego A. "+data.title+". Version "+data.version+", 2026. "+cited+", doi:"+data.doi+".";
- const key="Kurilo2026"+data.version.replace(/[^A-Za-z0-9]/g,"");
- const bibtex="@book{"+key+",\n  author = {Kurilo, Diego A.},\n  title = {"+data.title+"},\n  year = {2026},\n  note = {Version "+data.version+"; "+cited+"},\n  doi = {"+data.doi+"},\n  url = {https://doi.org/"+data.doi+"}\n}";
- const ris="TY  - BOOK\nAU  - Kurilo, Diego A.\nTI  - "+data.title+"\nPY  - 2026\nDO  - "+data.doi+"\nN1  - Version "+data.version+"; "+cited+"\nUR  - https://doi.org/"+data.doi+"\nER  - ";
+ const b=record[id];if(!b)return null;
+ const author=b.bibliographic_author||b.author||'Kurilo, Diego',title=b.bibliographic_title||b.title;
+ const place=b.publication_place||'Lugar no consignado',publisher=b.publisher||'Editorial no consignada';
+ const edition=b.edition_statement||'',year=b.year||'s. f.',doi=b.doi||'',isbn=b.isbn||'';
+ const cited='Vitr., De arch. '+locus.replace(/^([0-9]+)\./,(_,n)=>roman(n)+'.');
+ const url=new URL(location.href);url.searchParams.set('locus',locus);
+ const note=b.isbn_status==='publisher-declared-shared'?'ISBN común declarado por la editorial; asignación individual pendiente de verificación.':'';
+ const chicago=author+'. '+title+'. '+edition+'. '+place+': '+publisher+', '+year+'. '+(doi?'https://doi.org/'+doi+'. ':'')+cited+'. '+url.href+(isbn?' ISBN editorial declarado: '+isbn+'.':'')+(note?' '+note:'');
+ const mla=author+'. '+title+'. '+edition+', '+publisher+', '+year+'. '+cited+'. '+(doi?'doi:'+doi+'. ':'')+(isbn?'ISBN editorial declarado: '+isbn+'.':'');
+ const key='Kurilo'+String(year)+String(b.version||id).replace(/[^a-z0-9]/gi,'');
+ const bibtex='@book{'+key+',\n  author = {'+author+'},\n  title = {'+title+'},\n  publisher = {'+publisher+'},\n  address = {'+place+'},\n  year = {'+year+'},\n  doi = {'+doi+'},\n  isbn = {'+isbn+'},\n  note = {'+cited+(note?'; '+note:'')+'}\n}';
+ const ris='TY  - BOOK\nAU  - '+author+'\nTI  - '+title+'\nCY  - '+place+'\nPB  - '+publisher+'\nPY  - '+year+'\nDO  - '+doi+'\nSN  - '+isbn+'\nN1  - '+cited+(note?'; '+note:'')+'\nER  - ';
  return {chicago,mla,bibtex,ris};
 }
 function citationTools(section,id,locus){
@@ -32,12 +35,23 @@ function citationTools(section,id,locus){
  }
  section.append(wrap);
 }
-function panel(heading,body,href,editionId,locus){const section=document.createElement('article');section.className='compare-panel';const h=document.createElement('h2');h.textContent=heading;const p=document.createElement('p');p.textContent=body||'Pasaje no disponible en esta edición.';section.append(h,p);if(href){const a=document.createElement('a');a.href=href;a.textContent='Leer en la edición →';section.append(a)}if(editionId&&locus)citationTools(section,editionId,locus);results.append(section);}
+function panel(heading,body,href,editionId,locus){const section=document.createElement('article');section.className='compare-panel';const h=document.createElement('h2');h.textContent=heading;const p=document.createElement('p');p.textContent=body||'Pasaje no disponible en esta edición.';section.append(h,p);if(href){const a=document.createElement('a');a.href=href;a.textContent='Leer en la edición →';section.append(a)}if(editionId&&locus){
+ const b=record[editionId];
+ if(b){
+  const meta=document.createElement('div');meta.className='compare-panel-editorial';meta.style.cssText='font:11px/1.5 system-ui;margin:10px 0;padding:8px 0;border-top:1px solid #9996;overflow-wrap:anywhere';
+  const author=document.createElement('strong');author.textContent='Diego Kurilo · Arquitecto · '+(b.editorial_role||'edición editorial');meta.append(author);
+  meta.append(document.createTextNode(' · '+(b.publication_place||'Buenos Aires')+': '+(b.publisher||'')+', '+(b.year||'')+' · '));
+  if(b.doi){const link=document.createElement('a');link.href='https://doi.org/'+b.doi;link.textContent='DOI '+b.doi;link.rel='noopener noreferrer';meta.append(link)}
+  if(b.isbn)meta.append(document.createTextNode(' · ISBN editorial '+b.isbn+(b.isbn_status==='publisher-declared-shared'?' (compartido, por verificar individualmente)':'')));
+  section.append(meta);
+ }
+ citationTools(section,editionId,locus);
+}results.append(section);}
 function updateSourceLinks(locus){
  const map=[['compare-colacion','colacion.html?locus='],['compare-bude','apparatus-bude.html?locus='],['compare-registro','registro-ecdotico.html?locus=']];
  for(const [id,prefix] of map){const el=document.getElementById(id);if(el)el.href=prefix+encodeURIComponent(locus);}
 }
-async function show(){results.replaceChildren();status.textContent='Consultando las ediciones…';const locus=norm(field.value);updateSourceLinks(locus);try{const editions=await load;let found=false;const latin=editions[0].passages.find(p=>p.locus.toLowerCase()===locus);if(latin){panel('Texto latino · '+locus,latin.latin,'lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(locus));found=true;}for(const edition of editions){const p=edition.passages.find(x=>x.locus.toLowerCase()===locus);if(p){panel(edition.label,p.translation,'lector-bilingue.html?edition='+edition.id+'&locus='+encodeURIComponent(locus),edition.id,locus);found=true;}}status.textContent=found?'Textos alineados por '+locus+'.':'No hay textos indexados para «'+field.value+'». Revisa el locus.';history.replaceState(null,'','?locus='+encodeURIComponent(locus));}catch(e){status.textContent='No se pudieron cargar los índices: '+e.message;}}
+async function show(){results.replaceChildren();status.textContent='Consultando las ediciones…';const locus=norm(field.value);updateSourceLinks(locus);try{const [editions]=await Promise.all([load,catalogLoad]);let found=false;const latin=editions[0].passages.find(p=>p.locus.toLowerCase()===locus);if(latin){panel('Texto latino · '+locus,latin.latin,'lector-bilingue.html?edition=recensio-es&locus='+encodeURIComponent(locus));found=true;}for(const edition of editions){const p=edition.passages.find(x=>x.locus.toLowerCase()===locus);if(p){panel((record[edition.id]?.bibliographic_title||edition.label)+' · '+(record[edition.id]?.version||''),p.translation,'lector-bilingue.html?edition='+edition.id+'&locus='+encodeURIComponent(locus),edition.id,locus);found=true;}}status.textContent=found?'Textos alineados por '+locus+'.':'No hay textos indexados para «'+field.value+'». Revisa el locus.';history.replaceState(null,'','?locus='+encodeURIComponent(locus));}catch(e){status.textContent='No se pudieron cargar los índices: '+e.message;}}
 async function populateLoci(){
  try{
   const editions=await load;
