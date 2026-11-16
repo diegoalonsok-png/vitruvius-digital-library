@@ -80,12 +80,49 @@ jobs:
           }
           fs.writeFileSync(path,JSON.stringify(d,null,2)+'\n');
           JS
-      - name: Publicar índice y fichas certificadas
+      - name: Publicar índice desde el último main sin fusionar fragmentos generados
+        shell: bash
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/index/classics/ data/bibliotheca-expansion-publicada-2026-11-16.json
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'index: update Greek classics lexical shards'
-          git pull --rebase origin main
-          git push origin HEAD:main
+          # Este repositorio cambia con frecuencia. Nunca hacer rebase/merge de
+          # miles de fragmentos léxicos calculados sobre commits diferentes.
+          # El reset opera SOLO dentro del runner efímero, no en el GitHub remoto.
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet origin main
+            git checkout -B vdl-lexical-publication origin/main
+            echo "Reconstrucción sobre main vigente; intento $attempt"
+            node scripts/build-classics-lexical-index.mjs
+            node scripts/test-bibliotheca-expansion-2026-11.mjs
+            node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          const file='data/bibliotheca-expansion-publicada-2026-11-16.json';
+          const d=JSON.parse(fs.readFileSync(file,'utf8'));
+          const m=JSON.parse(fs.readFileSync('data/index/classics/manifest.json','utf8'));
+          const indexed=new Set(m.index.filter(x=>x.lang==='grc').map(x=>x.id));
+          for(const w of d.works){
+            if(!w.corpusFiles?.grc)continue;
+            if(!indexed.has(w.id))throw Error('No publicar edición sin indexar: '+w.id);
+            w.textStatus='lexically-indexed';
+            w.status='Texto griego incorporado, registrado e indexado léxicamente; sin cotejo crítico independiente';
+          }
+          fs.writeFileSync(file,JSON.stringify(d,null,2)+'\n');
+          JS
+            git add data/index/classics/ data/bibliotheca-expansion-publicada-2026-11-16.json
+            if git diff --cached --quiet; then
+              echo "Sin cambios: índice y fichas ya coinciden."
+              exit 0
+            fi
+            git commit -qm "index: publish validated classical lexical index and academic fiches"
+            if git push origin HEAD:main; then
+              echo "Índice publicado y fichas certificadas desde main vigente."
+              exit 0
+            fi
+            echo "::warning::Main avanzó durante la publicación; reconstruir sin rebase ni sobreescritura."
+            sleep 5
+          done
+          echo "::error::No se publicó el índice por modificaciones concurrentes; los archivos remotos permanecen intactos."
+          exit 1
