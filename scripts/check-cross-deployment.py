@@ -21,6 +21,7 @@ ASSETS = (
     "assets/site-bar.js",
     "assets/classics-study-actions.js",
     "assets/vitruvia-lexicon.js",
+    "assets/lexicon-ngram-engine.js",
     "assets/classics-lexical-popup.js",
     "assets/secondary-reader-controls.js",
     "assets/secondary-reader-controls.css",

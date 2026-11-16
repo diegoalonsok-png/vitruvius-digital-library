@@ -691,10 +691,14 @@ function workStats(D,id){
 }
 function griesDP(D,st,hs){const parts=Object.keys(st.books);if(parts.length<2||hs.length<2)return null;const obs={};for(const h of hs){const b=String(D.corpus.passages[h.i][1]).split(".")[0];obs[b]=(obs[b]||0)+1}return .5*parts.reduce((a,b)=>a+Math.abs((obs[b]||0)/hs.length-st.books[b]/st.total),0)}
 /* Comparación de dos obras o de una obra frente al resto del corpus (palabras clave, keyness). */
+function ensureComparatioSelectors(D,l){
+ const sa=$("#comp-a"),sb=$("#comp-b");
+ if(sa.dataset.l!==l){const opts=Object.entries(D.corpus.works).sort((a,b)=>(CHRONO[a[0]]??0)-(CHRONO[b[0]]??0));sa.replaceChildren(...opts.map(([id,w])=>el("option",{value:id},`${w.author} · ${w.title}`)));sb.replaceChildren(el("option",{value:""},T("Resto del corpus")),...opts.map(([id,w])=>el("option",{value:id},`${w.author} · ${w.title}`)));sa.dataset.l=l;if(l==="la"&&D.corpus.works.vitruvius)sa.value="vitruvius";if(l==="grc"&&D.corpus.works["euclid-elements"])sa.value="euclid-elements"}
+ return {sa,sb};
+}
 async function renderComparatio(){
  const box=$("#comp-out");if(!box)return;const l=$("#comp-lang").value;const D=await lang(l,true);
- const sa=$("#comp-a"),sb=$("#comp-b");
- if(sa.dataset.l!==l){const opts=Object.entries(D.corpus.works).sort((a,b)=>(CHRONO[a[0]]??0)-(CHRONO[b[0]]??0));sa.replaceChildren(...opts.map(([id,w])=>el("option",{value:id},`${w.author} · ${w.title}`)));sb.replaceChildren(el("option",{value:""},T("Resto del corpus")),...opts.map(([id,w])=>el("option",{value:id},`${w.author} · ${w.title}`)));sa.dataset.l=l;if(l==="la")sa.value="vitruvius";if(l==="grc")sa.value="euclid-elements"}
+ const {sa,sb}=ensureComparatioSelectors(D,l);
  const A=sa.value,B=sb.value;if(!A||A===B){box.replaceChildren(el("p",{class:"lx-small"},T("Elija dos obras distintas.")));return}
  const lem=$("#comp-lemma").checked;const c1=new Map(),c2=new Map();let n1=0,n2=0;const stop=STOP[l];
  const keyOf=k=>lem?(analyses(D,k)[0]?.[0]||k):k;
@@ -708,6 +712,97 @@ async function renderComparatio(){
  box.replaceChildren(el("p",{class:"lx-small"},`${wa.author}, ${wa.title}: ${n1.toLocaleString("es")} ${T("palabras")} · ${wb.author}${wb.title?", "+wb.title:""}: ${n2.toLocaleString("es")} ${T("palabras")}. ${T("Entre paréntesis, frecuencia por 10 000 palabras. G² de Dunning: * p < 0,05 · ** p < 0,01 · *** p < 0,001 · **** p < 0,0001. log₂ ratio: tamaño del efecto (1 = el doble).")}`),
   table(rows,`${T("Sobrerrepresentadas en")} ${wa.author}, ${wa.title}`),table(neg,`${T("Sobrerrepresentadas en")} ${wb.author}${wb.title?", "+wb.title:""}`));
 }
+/* N-gramas en Comparatio: reutiliza exactamente los mismos selectores de
+ * idioma y obras. Las secuencias son formas normalizadas de texto real y
+ * nunca se presentan como lemas, traducciones alineadas ni datos manuscritos. */
+let ngramRevision=0;
+function ngramLocusURL(phrase,langCode,workId,locus){
+ const u=new URL("vitruvia-lexicon.html",location.href);
+ u.searchParams.set("q",phrase);
+ u.searchParams.set("mode","frase");
+ u.searchParams.set("lang",langCode);
+ u.searchParams.set("work",workId);
+ if(locus)u.searchParams.set("locus",locus);
+ return u.href;
+}
+function ngramTable(heading,items,D,l,A,limit){
+ const table=el("table",{class:"lx-table"});
+ const head=el("thead",{},el("tr",{},
+  ...["Expresión atestiguada","En obra A","A / 10.000","En obra B","B / 10.000","log₂ razón"].map(h=>el("th",{},h))));
+ const body=el("tbody",{});
+ for(const row of items.slice(0,limit)){
+  const source=el("a",{href:ngramLocusURL(row.phrase,l,A,row.locus),
+   title:"Abrir un pasaje indexado donde aparece esta expresión"},row.phrase);
+  body.append(el("tr",{},
+   el("td",{},source),el("td",{},row.a.toLocaleString("es")),
+   el("td",{},row.rateA.toFixed(2)),el("td",{},row.b.toLocaleString("es")),
+   el("td",{},row.rateB.toFixed(2)),el("td",{},row.log2ratio.toFixed(2))));
+ }
+ table.append(head,body);
+ return el("section",{},el("h4",{},heading),el("div",{style:"overflow-x:auto"},table));
+}
+async function renderNgramComparatio(){
+ const box=$("#ng-out"),btn=$("#ng-go");
+ if(!box||!btn)return;
+ const revision=++ngramRevision,l=$("#comp-lang").value;
+ btn.disabled=true;box.replaceChildren(el("p",{class:"lx-small",role:"status"},
+  "Preparando las frecuencias del corpus "+(l==="grc"?"griego":"latino")+"…"));
+ try{
+  const D=await lang(l,true);
+  if(revision!==ngramRevision)return;
+  const {sa,sb}=ensureComparatioSelectors(D,l);
+  const A=sa.value,B=sb.value;
+  if(!A||A===B)throw new Error("Seleccioná una obra y, si corresponde, una segunda obra diferente.");
+  const size=Number($("#ng-size").value);
+  const engine=window.VitruviaNgramEngine;
+  if(!engine?.compare)throw new Error("No se pudo cargar el motor de expresiones.");
+  box.replaceChildren(el("p",{class:"lx-small",role:"status"},
+    "Contando expresiones documentadas de "+size+" palabras…"));
+  const result=await engine.compare(D.corpus.passages,{workA:A,workB:B,size,minHits:2});
+  if(revision!==ngramRevision)return;
+  const wa=work(D,A),wb=B?work(D,B):null;
+  const datedA=DATING[A]||"cronología no consignada en la tabla";
+  const datedB=B?(DATING[B]||"cronología no consignada en la tabla"):"conjunto de obras de épocas diferentes";
+  const summary=el("p",{class:"lx-small"},
+    "A: "+wa.author+", "+wa.title+" ("+datedA+"), "+result.tokensA.toLocaleString("es")+
+    " palabras en "+result.passagesA.toLocaleString("es")+" loci; B: "+
+    (wb?wb.author+", "+wb.title:"resto del corpus")+" ("+datedB+"), "+
+    result.tokensB.toLocaleString("es")+" palabras en "+result.passagesB.toLocaleString("es")+
+    " loci. Se muestran secuencias con al menos dos apariciones en A.");
+  const method=el("p",{class:"lx-small"},
+    "Método: formas superficiales normalizadas (mayúsculas, diacríticos, i/j y u/v). "+
+    "Frecuencia por 10.000 palabras del texto indexado; log₂ razón descriptiva con suavizado de 0,5. "+
+    "No se atraviesan límites de oración ni de locus. El corpus no representa todas las obras conservadas "+
+    "y no se infiere transmisión textual, autoría compartida ni variantes manuscritas.");
+  const sections=[summary,method];
+  if(!result.rows.length){
+   sections.push(el("p",{},"No se encontraron expresiones repetidas de esa longitud en la obra seleccionada."));
+  }else{
+   sections.push(ngramTable("Expresiones más frecuentes en la obra seleccionada",
+     result.rows,D,l,A,20));
+   sections.push(ngramTable("Expresiones relativamente más frecuentes en A que en B",
+     result.distinctive,D,l,A,15));
+   const file="comparatio-ngrams-"+A+"-"+size+".csv";
+   const exportButton=el("button",{type:"button",class:"lx-btn",onclick:()=>{
+    const data=[["obraA","obraB","lengua","n","expresion","locusA","ocurrenciasA",
+     "tokensA","por10000A","ocurrenciasB","tokensB","por10000B","log2razon","versionDeDatos"]];
+    for(const row of result.rows)data.push([A,B||"resto",l,size,row.phrase,row.locus,row.a,
+     result.tokensA,row.rateA.toFixed(4),row.b,result.tokensB,row.rateB.toFixed(4),
+     row.log2ratio.toFixed(4),DATA_VER||"no declarada"]);
+    download(file,toCSV(data),"text/csv");
+   }},"Exportar resultados CSV");
+   sections.push(el("div",{class:"actions"},exportButton));
+  }
+  box.replaceChildren(...sections);
+ }catch(err){
+  if(revision===ngramRevision)
+   box.replaceChildren(el("p",{class:"lx-small",role:"alert"},
+    "No se pudo completar la comparación: "+(err?.message||String(err))));
+ }finally{
+  if(revision===ngramRevision)btn.disabled=false;
+ }
+}
+
 /* ---------- Ficha léxica ---------- */
 /* Atestiguaciones entre lenguas. Fecha del autor ≠ fecha del soporte.
    Una equivalencia semántica no demuestra cognación etimológica. */
@@ -2820,6 +2915,17 @@ async function init(){
   console.info("Vitruvia Lexicon editorial metadata ready in "+Math.round(performance.now()-t0)+" ms");
  })();
  if($("#comp-go")){$("#comp-go").addEventListener("click",()=>renderComparatio().catch(e=>$("#comp-out").replaceChildren(el("p",{},e.message))));$("#comp-lang").addEventListener("change",()=>{$("#comp-a").dataset.l="";renderComparatio()})}
+ if($("#ng-go")){
+  $("#ng-go").addEventListener("click",()=>{void renderNgramComparatio()});
+  for(const id of ["comp-lang","comp-a","comp-b","ng-size"]){
+   $("#"+id)?.addEventListener("change",()=>{
+    ngramRevision++;
+    $("#ng-go").disabled=false;
+    $("#ng-out").replaceChildren(el("p",{class:"lx-small"},
+     "Seleccioná «Comparar expresiones» para calcular con los nuevos parámetros."));
+   });
+  }
+ }
  /* No automatic full-corpus indexing on idle: it can freeze the landing page.
     An explicit search loads the required corpus, yielding between batches. */
  renderNotebook();renderQueryBuilder();applyUI();

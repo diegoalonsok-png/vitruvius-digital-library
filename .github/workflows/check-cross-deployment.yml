@@ -5,6 +5,8 @@ on:
     paths:
       - 'assets/classics-study-actions.js'
       - 'assets/vitruvia-lexicon.js'
+      - 'assets/lexicon-ngram-engine.js'
+      - 'vitruvia-lexicon.html'
       - 'assets/classics-lexical-popup.js'
       - 'scripts/check-cross-deployment.py'
       - '.github/workflows/check-cross-deployment.yml'

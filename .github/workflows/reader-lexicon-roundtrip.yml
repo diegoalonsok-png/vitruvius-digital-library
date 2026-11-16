@@ -7,6 +7,8 @@ on:
       - 'scripts/test-classics-lexical-context.mjs'
       - 'classics-text-reader.html'
       - 'assets/vitruvia-lexicon.js'
+      - 'assets/lexicon-ngram-engine.js'
+      - 'scripts/test-lexicon-ngrams.mjs'
       - 'scripts/test-classics-study-actions.mjs'
       - 'scripts/test-lexicon-continuation.mjs'
       - 'scripts/test-lexicon-source-language.mjs'
@@ -23,6 +25,8 @@ on:
       - 'scripts/test-classics-lexical-context.mjs'
       - 'classics-text-reader.html'
       - 'assets/vitruvia-lexicon.js'
+      - 'assets/lexicon-ngram-engine.js'
+      - 'scripts/test-lexicon-ngrams.mjs'
       - 'scripts/test-classics-study-actions.mjs'
       - 'scripts/test-lexicon-continuation.mjs'
       - 'scripts/test-lexicon-source-language.mjs'
@@ -50,3 +54,4 @@ jobs:
       - run: node scripts/test-lexicon-passage-issues.mjs
       - run: node scripts/test-notebook-bibliotheca-itinerary.mjs
       - run: node scripts/test-classics-lexical-context.mjs
+      - run: node scripts/test-lexicon-ngrams.mjs
