@@ -16,4 +16,9 @@ assert.ok(inline.includes('searchParams.set("locus"')&&inline.includes('Continua
 const lexicon=readFileSync("assets/vitruvia-lexicon.js","utf8");
 for(const param of ['p.get("mode")','p.get("lang")','p.get("work")','p.get("locus")','p.get("q")'])
  assert.ok(lexicon.includes(param),"Lexicon URL receiver missing "+param);
-console.log("PASS: syntax and query/mode/work/locus continuation in three classical search surfaces");
+// A direct locus card in Lexicon must offer a reader round trip without
+// claiming the lexical index is a manuscript-level collation.
+for(const item of ['"classics-text-reader.html"','"lector-bilingue.html"','reader.searchParams.set("locus",p[1])','"Volver al pasaje en el lector"']){
+ assert.ok(lexicon.includes(item),"Lexicon return to cited passage missing: "+item);
+}
+console.log("PASS: syntax, contextual query/mode/work/locus, and reader return links");
