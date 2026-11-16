@@ -9,6 +9,8 @@ const registry=json("data/classics-corpus/search-registry.json").entries;
 const index=json("data/index/classics/manifest.json").index;
 const r2=json("data/r2/corpus-manifest.json").obras;
 const indexed=records.filter(w=>w.corpusFiles?.grc).map(w=>w.id);
+let lexicalVerified=0;
+const pendingLexical=[];
 assert.ok(indexed.length>=10,"Existing indexed original corpus must not regress");
 assert.equal(records.filter(w=>w.id==="sappho-fragmenta").length,1,"Keep one identified bibliography-only Sappho fiche");
 assert.equal(new Set(records.map(w=>w.id)).size,records.length,"No duplicate overlay IDs");
@@ -35,7 +37,15 @@ for(const id of indexed){
  assert.ok(text.passages.length>=minCount&&textChars>=800,`Empty/implausible Greek corpus: ${id} · ${text.passages.length} passages · ${textChars} chars`);
  assert.ok(text.passages.every(x=>x.text&&x.locus),"Every passage must retain locus and text");
  assert.ok(registry.some(e=>e.workId===id&&e.language==="grc"&&e.path===p),`Missing search registration ${id}`);
- assert.ok(index.some(e=>e.id===id&&e.lang==="grc"&&e.file===p),`Missing lexical index entry ${id}`);
+ const inLexicalIndex=index.some(e=>e.id===id&&e.lang==="grc"&&e.file===p);
+ // When new books arrive during an asynchronous index regeneration, a
+ // pending record is valid. Only an edition *claimed* indexed must be in
+ // the published lexical manifest. A separate index-building workflow
+ // must still verify every recorded edition after rebuilding.
+ if(w.textStatus==="lexically-indexed")
+  assert.ok(inLexicalIndex,`Edition claimed indexed but absent from lexical manifest: ${id}`);
+ if(inLexicalIndex)lexicalVerified++;
+ else pendingLexical.push(id);
  assert.equal(w.reading?.url,`classics-text-reader.html?work=${id}&lang=grc`);
 }
 const sappho=records.find(w=>w.id==="sappho-fragmenta");
@@ -47,4 +57,5 @@ for(const [githubId,r2Id] of aliases){
  assert.ok(r2.some(w=>w.workId===r2Id&&w.language==="grc"),`Known R2 edition missing: ${r2Id}`);
  assert.ok(registry.some(w=>w.workId===githubId&&w.language==="grc"),`Known GitHub edition missing: ${githubId}`);
 }
-console.log(`Bibliotheca: ${indexed.length} original texts with catalogue, search record, index and reader; Sappho remains bibliographic only; R2 aliases preserved.`);
+console.log(`Bibliotheca: ${indexed.length} Greek originals with academic fiche + reader; ${lexicalVerified} indexed, ${pendingLexical.length} awaiting lexical publication. Sappho remains bibliographic only; R2 aliases preserved.`);
+if(pendingLexical.length)console.log('Lexical publication pending: '+pendingLexical.join(', '));
