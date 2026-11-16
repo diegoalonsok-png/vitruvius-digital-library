@@ -73,7 +73,14 @@ async function init(){
    updateMeta("citation_title",title);
    updateMeta("citation_author",selectedEdition.bibliographic_author||"Kurilo, Diego");
    if(selectedEdition.doi)updateMeta("citation_doi",selectedEdition.doi);
-   if(selectedEdition.isbn)updateMeta("citation_isbn",selectedEdition.isbn);
+   // Do not export an ISBN shared between editions as a verified edition-specific ISBN.
+   // Citation metadata is consumed by Zotero/Google Scholar; a declared, unverified
+   // common ISBN must remain a visibly qualified editorial statement.
+   if(selectedEdition.isbn&&selectedEdition.isbn_status!=="publisher-declared-shared"){
+    updateMeta("citation_isbn",selectedEdition.isbn);
+   }else{
+    document.querySelector('meta[name="citation_isbn"]')?.remove();
+   }
   }
   for(const b of editions){
    const row=make("span",null,list,"vdl-identity-item");if(b.id===selected)row.classList.add("vdl-identity-selected");
@@ -81,7 +88,7 @@ async function init(){
    make("cite",b.bibliographic_title||b.title,row);
    row.append(" · ");
    if(b.doi){const a=make("a","DOI "+b.doi,row);a.href="https://doi.org/"+b.doi;a.rel="noopener noreferrer";}
-   if(b.isbn)row.append(" · ISBN "+b.isbn+"*");
+   if(b.isbn)row.append(" · ISBN editorial declarado "+b.isbn+(b.isbn_status==="publisher-declared-shared"?"*":""));
    const note=make("p",null,method);
    const author=b.bibliographic_author||"Kurilo, Diego";
    note.append(author+". ");
