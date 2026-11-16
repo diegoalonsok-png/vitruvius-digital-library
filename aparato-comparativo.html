@@ -50,9 +50,9 @@ td.l{white-space:nowrap;font:600 13px system-ui}
 <p class="small">Rose (1899, praefatio) considera a H y G los testimonios principales y hace depender a S y E de un antepasado común con G; la crítica posterior (Ruffel y Soubiran, 1960; Chausserie-Laprée, 1969; Reynolds, <i>Texts and Transmission</i>, 1983) discute y matiza ese stemma.</p>
 </section>
 
-<section aria-labelledby="t2"><h2 id="t2">Concordancias entre testimonios</h2>
-<p class="small">Veces que dos testimonios comparten la misma lectura dentro de una entrada del aparato (excluida la consensio <i>x</i>). Es el material con el que se discute un stemma, no una prueba por sí sola: el recuento depende de qué variantes eligió registrar cada editor.</p>
-<table class="matrix"><thead><tr><th>Par</th><th>Rose 1899</th><th>Krohn 1912</th></tr></thead><tbody id="matriz"></tbody></table>
+<section aria-labelledby="t2"><h2 id="t2">Coapariciones de siglas en OCR · no son concordancias verificadas</h2>
+<p class="small">Recuento automático de siglas asociadas dentro de grupos extraídos de los aparatos impresos mediante OCR. <strong>La coincidencia de siglas no demuestra una lectura compartida ni una relación estemática.</strong> Puede incluir errores de reconocimiento, desplazamiento entre líneas y atribución incorrecta de testigos. Estos valores solo sirven para priorizar el cotejo directo con las páginas impresas.</p>
+<table class="matrix"><thead><tr><th>Siglas juntas (candidatas)</th><th>Rose 1899 · OCR</th><th>Krohn 1912 · OCR</th></tr></thead><tbody id="matriz"></tbody></table>
 </section>
 
 <section aria-labelledby="t3"><h2 id="t3">Aparato por locus</h2>
@@ -77,13 +77,13 @@ const $=s=>document.querySelector(s);
 const el=(t,txt,cls)=>{const e=document.createElement(t);if(txt!=null)e.textContent=txt;if(cls)e.className=cls;return e};
 const fold=s=>String(s||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/v/g,"u").replace(/j/g,"i");
 let D,vis=[],shown=0;const PASO=60;
-function celdaAp(f,k){const td=document.createElement("td");const a=f[k];if(!a){td.textContent="Sin entrada documentada · cotejo pendiente";return td}
+function celdaAp(f,k){const td=document.createElement("td");const a=f[k];if(!a){td.textContent="Sin entrada OCR localizada · cotejo pendiente";return td}
  if(!a.entradas.length){td.append(el("span","sin entrada para este pasaje","g"))}
- a.entradas.forEach(e=>{const s=el("span",null,"e");s.append(e.texto);s.append(el("span","l. "+e.linea,"src"));td.append(s)});
+ a.entradas.forEach(e=>{const s=el("span",null,"e");s.append(e.texto);s.append(el("span","l. "+e.linea+" · OCR candidato, no cotejado","src"));td.append(s)});
  const ln=el("a","p. "+a.pagina+" ↗","small");ln.href=a.pdf;ln.target="_blank";ln.rel="noopener";td.append(ln);return td}
 function fila(f){const tr=document.createElement("tr");
  const l=el("td",null,"l");const a=el("a",f.locus);a.href="apparatus-bude.html?locus="+encodeURIComponent(f.locus);a.title="Abrir pasaje en el lector crítico integrado";l.append(a);a.addEventListener("click",event=>{event.preventDefault();window.dispatchEvent(new CustomEvent("vdl:comparative-locus-select",{detail:{locus:f.locus}}));document.getElementById("bude-unit")?.scrollIntoView({behavior:"smooth",block:"start"})});const traditional=el("a"," · lector bilingüe","src");traditional.href="lector-bilingue.html?locus="+encodeURIComponent(f.locus);l.append(traditional);
- if(f.testigos?.length){l.append(document.createElement("br"));f.testigos.forEach(s=>l.append(el("span",s,"sig")))}tr.append(l);
+ if(f.testigos?.length){l.append(document.createElement("br"));l.append(el("span","Siglas detectadas por extracción automática: ","src"));f.testigos.forEach(s=>l.append(el("span",s,"sig")))}tr.append(l);
  const v=document.createElement("td");
  if(!f.v514.length&&!f.v514SinLema)v.append(el("span","Sin decisión registrada; no equivale a consenso textual","g"));
  if(f.v514SinLema){const r=el("a",f.v514SinLema+" decisión(es) sin lema extraído · ver registro","src");r.href="registro-ecdotico.html?locus="+encodeURIComponent(f.locus);v.append(r)}
