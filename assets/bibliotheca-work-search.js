@@ -380,6 +380,8 @@ function addFacsimiles(v,cat){
 }
 window.BibliothecaWorkSearch={mount,addFacsimiles,addHistoricalViewers};
 async function bootstrap(){
+ // No montar el catálogo avanzado en la portada: se ofrece desde Bibliotheca.
+ if(location.pathname==="/"||/\/(?:index\.html)?$/i.test(location.pathname))return;
  let parent=document.querySelector(".searcharea");
  if(!parent){
   const original=document.getElementById("search-form");
