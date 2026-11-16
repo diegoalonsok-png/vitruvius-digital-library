@@ -1,0 +1,116 @@
+name: Bibliotheca — 50 originales griegos, ficha e índice
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ingestar-50-clasicos-perseus-2026-11-16.yml'
+      - 'data/classics-corpus/lote-50-fuentes-academicas-2026-11-16.json'
+      - 'scripts/ingestar-lote-50-perseus.py'
+      - 'scripts/test-y-certificar-lote-50-perseus.mjs'
+  schedule:
+    # Reintento conservador 01:07 hora argentina. No se sobrescriben
+    # fuentes ya incorporadas ni se reimportan los originales existentes.
+    - cron: '07 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Comparte la cola con el índice léxico general: no publicar índices
+# construidos simultáneamente desde distintas versiones del catálogo.
+concurrency:
+  group: bibliotheca-classics-lexical-publisher
+  cancel-in-progress: false
+
+jobs:
+  import-index-catalogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verificar código y referencias editoriales
+        run: |
+          python -m py_compile scripts/ingestar-lote-50-perseus.py
+          node --check scripts/test-y-certificar-lote-50-perseus.mjs
+          node --check scripts/build-classics-lexical-index.mjs
+
+      - name: Descargar y conservar los 50 originales, catalogar, indexar y publicar
+        shell: bash
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            # El checkout se descarta SOLO dentro del runner. No modifica
+            # ni fuerza ninguna rama remota ni elimina objetos de R2.
+            git fetch --quiet origin main
+            git checkout -B vdl-bibliotheca-50 origin/main
+            echo "Reconstruyendo desde la revisión actual, intento $attempt"
+            python scripts/ingestar-lote-50-perseus.py
+            node scripts/build-classics-lexical-index.mjs
+            node scripts/test-y-certificar-lote-50-perseus.mjs --write
+            node scripts/test-y-certificar-lote-50-perseus.mjs
+            node scripts/test-bibliotheca-expansion-2026-11.mjs
+            node scripts/audit-bibliotheca-federada.mjs --check --strict
+            python scripts/sync-bibliotheca-github-r2.py
+            git add data/classics-corpus/ data/classics-corpus/search-registry.json
+            git add data/bibliotheca-expansion-publicada-2026-11-16.json
+            git add data/index/classics/ data/r2/bibliotheca-inventario-unificado.json
+            if git diff --cached --quiet; then
+              echo "Las 50 fuentes, sus fichas, lectores e índices ya coinciden."
+              exit 0
+            fi
+            git commit -qm 'catalog: publish 50 Perseus Greek classics with scholarly fiches and lexical indexes'
+            if git push origin HEAD:main; then
+              echo "Publicación académica de las 50 obras confirmada."
+              exit 0
+            fi
+            echo "::warning::Main avanzó: se reconstituirán fichas e índices sin rebase ni push forzado."
+            sleep 8
+          done
+          echo "::error::No se completó la publicación; se conserva main y R2 sin modificación destructiva."
+          exit 1
+
+      - name: Informe de la tanda y estado de los índices
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, pathlib, os
+          p=pathlib.Path('data/classics-corpus/lote-50-ingestion-audit.json')
+          lines=['### Bibliotheca · lote de 50 clásicos']
+          if p.is_file():
+            d=json.loads(p.read_text())
+            lines += [f"Fuentes cotejadas por identificador CTS y SHA256: **{d.get('batchCount','?')}**",
+                      f"Estado: **{d.get('status','sin certificar')}**"]
+            if 'indexedCount' in d:
+              lines.append(f"Obras comprobadas en el índice: **{d['indexedCount']}**")
+          else:
+            lines.append('No hay certificado de importación: la tanda NO se considera publicada.')
+          lines.append('Sin eliminación ni sobrescritura automática de textos existentes o de objetos R2.')
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+            f.write('\n\n'.join(lines)+'\n')
+          PY
+      - name: Guardar evidencias de la ejecución
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bibliotheca-cincuenta-fuentes-indexacion
+          if-no-files-found: ignore
+          retention-days: 21
+          path: |
+            data/classics-corpus/lote-50-ingestion-audit.json
+            data/classics-corpus/lote-50-fuentes-academicas-2026-11-16.json
+            data/index/classics/manifest.json
