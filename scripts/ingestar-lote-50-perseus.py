@@ -248,7 +248,7 @@ def main():
                     + " · CC BY-SA 4.0; original sin cotejo independiente",
             })
         if id_ not in recorded:
-            source = data["sourceXml"]
+            source = data["source"]
             # Preserve author/work/edition distinctions, instead of using
             # automatic transliteration as a scholarly attribution claim.
             supplement["works"].append({
