@@ -2,8 +2,8 @@
  "schema": "vitruvia-classics-search-registry-v1",
  "updated": "2026-11-16",
  "description": "Registro verificable de transcripciones HTML y textos JSON existentes que admiten búsqueda literal de contenido. No incluye automáticamente PDF escaneados, facsímiles ni fichas sin texto. Los índices auxiliares por locus y el aparato crítico se declaran por separado; no se suman a versiones textuales originales ni implican colación autóptica.",
- "count": 295,
- "works": 230,
+ "count": 299,
+ "works": 234,
  "entries": [
   {
    "workId": "aeneas-tacticus-poliorketika",
@@ -266,6 +266,26 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "aristophanes-ecclesiazusae",
+   "author": "Aristófanes",
+   "title": "Ἐκκλησιάζουσαι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/aristophanes-ecclesiazusae-grc.json",
+   "reader": "classics-text-reader.html?work=aristophanes-ecclesiazusae&lang=grc",
+   "sourceDescription": "Perseus Digital Library TEI · Hall y Geldart (1907) · CC BY-SA 4.0; sin colación filológica propia"
+  },
+  {
+   "workId": "aristophanes-knights",
+   "author": "Aristófanes",
+   "title": "Ἱππῆς",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/aristophanes-knights-grc.json",
+   "reader": "classics-text-reader.html?work=aristophanes-knights&lang=grc",
+   "sourceDescription": "Perseus Digital Library TEI · Hall y Geldart (1906) · CC BY-SA 4.0; sin colación filológica propia"
+  },
+  {
    "workId": "aristophanes-lysistrata",
    "author": "Aristófanes",
    "title": "Λυσιστράτη",
@@ -286,6 +306,16 @@
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
   },
   {
+   "workId": "aristophanes-plutus",
+   "author": "Aristófanes",
+   "title": "Πλοῦτος",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/aristophanes-plutus-grc.json",
+   "reader": "classics-text-reader.html?work=aristophanes-plutus&lang=grc",
+   "sourceDescription": "Perseus Digital Library TEI · Hall y Geldart (1907) · CC BY-SA 4.0; sin colación filológica propia"
+  },
+  {
    "workId": "aristophanes-ranae",
    "author": "Aristófanes",
    "title": "Βάτραχοι",
@@ -294,6 +324,16 @@
    "path": "data/classics-corpus/aristophanes-ranae-grc.json",
    "reader": "classics-text-reader.html?work=aristophanes-ranae&lang=grc",
    "sourceDescription": "Perseus TEI · edición atribuida en el archivo · sin cotejo ni alineación automática"
+  },
+  {
+   "workId": "aristophanes-thesmophoriazusae",
+   "author": "Aristófanes",
+   "title": "Θεσμοφοριάζουσαι",
+   "language": "grc",
+   "format": "json-passages",
+   "path": "data/classics-corpus/aristophanes-thesmophoriazusae-grc.json",
+   "reader": "classics-text-reader.html?work=aristophanes-thesmophoriazusae&lang=grc",
+   "sourceDescription": "Perseus Digital Library TEI · Hall y Geldart (1907) · CC BY-SA 4.0; sin colación filológica propia"
   },
   {
    "workId": "aristophanes-vespae",
