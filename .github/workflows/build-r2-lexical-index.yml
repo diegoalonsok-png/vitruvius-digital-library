@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/build-r2-lexical-index.yml"
       - "scripts/build-r2-classics-lexical-index.mjs"
+      - "scripts/write-r2-sync-status.mjs"
       - "scripts/build-classics-lexical-index.mjs"
       - "data/r2/corpus-manifest.json"
 
@@ -38,11 +39,13 @@ jobs:
           node --input-type=module -e 'import fs from "node:fs"; import assert from "node:assert/strict"; const m=JSON.parse(fs.readFileSync("data/r2/corpus-manifest.json")); const i=JSON.parse(fs.readFileSync("data/index/classics-r2/manifest.json")); assert.equal(i.works,m.obras.length); assert.equal(i.r2VerifiedEditions,m.obras.length); assert.equal(i.passages,m.obras.reduce((n,x)=>n+x.pasajes,0)); console.log("R2 original editions indexed:",i.works,"passages:",i.passages)'
       - name: Validate index identity and deduplication
         run: node scripts/test-r2-classics-lexical-coverage.mjs
-      - name: Commit generated index only
+      - name: Publish source-index synchronization certificate
+        run: node scripts/write-r2-sync-status.mjs
+      - name: Commit generated index and verified certificate only
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/index/classics-r2/
+          git add data/index/classics-r2/ data/r2/classics-sync-status.json
           if git diff --cached --quiet; then
             echo "Index unchanged."
           else
