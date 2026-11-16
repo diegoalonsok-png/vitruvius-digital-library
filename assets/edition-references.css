@@ -11,3 +11,7 @@
 .vdl-editions .vdl-linkrow{font:12px/1.7 system-ui,sans-serif;margin-top:13px}
 .vdl-editions .vdl-linkrow a+a{margin-left:14px}
 @media print{.vdl-editions{break-inside:avoid;background:transparent}}
+
+.vdl-editions .vdl-cite-button{display:inline-block;margin:7px 0 5px 12px;padding:6px 10px;border:1px solid currentColor;border-radius:6px;background:transparent;color:inherit;cursor:pointer;font:600 12px system-ui,sans-serif}
+.vdl-editions .vdl-cite-button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.vdl-editions textarea{display:block;width:min(100%,650px);min-height:90px}
