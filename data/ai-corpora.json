@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated": "2026-11-04",
-  "description": "Public texts searchable by the generic lexical and optional semantic engines. Only verified nonempty sources are listed; additions require bibliographic metadata and working source links.",
+  "updated": "2026-11-16",
+  "description": "Corpus explícito del motor BM25/E5: textos identificados; la búsqueda semántica no implica exhaustividad o colación filológica. Las obras deben mantener su atribución y licencia.",
   "sources": [
     {
       "url": "data/structured/recensio-es.json",
@@ -43,6 +43,28 @@
       "source": "Perseus Digital Library · Tufts University · CC BY-SA 4.0",
       "license": "CC BY-SA 4.0",
       "reader": "bibliotheca-graeca-latina.html?work=homer-iliad"
+    },
+    {
+      "url": "data/classics-corpus/galen-ars-medica-grc.json",
+      "workId": "galen-ars-medica",
+      "workTitle": "Τέχνη ἰατρική · Ars Medica",
+      "author": "Galeno",
+      "edition": "First1KGreek · edición documentada",
+      "language": "grc",
+      "reader": "classics-text-reader.html?work=galen-ars-medica&lang=grc",
+      "source": "OpenGreekAndLatin First1KGreek · TEI editado; sin cotejo independiente",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "url": "data/classics-corpus/galen-de-usu-partium-grc.json",
+      "workId": "galen-de-usu-partium",
+      "workTitle": "Περὶ χρείας μορίων · De usu partium",
+      "author": "Galeno",
+      "edition": "First1KGreek · edición documentada",
+      "language": "grc",
+      "reader": "classics-text-reader.html?work=galen-de-usu-partium&lang=grc",
+      "source": "OpenGreekAndLatin First1KGreek · TEI editado; sin cotejo independiente",
+      "license": "CC BY-SA 4.0"
     }
   ]
 }
