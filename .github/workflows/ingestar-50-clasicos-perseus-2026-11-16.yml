@@ -8,6 +8,7 @@ on:
       - 'data/classics-corpus/lote-50-fuentes-academicas-2026-11-16.json'
       - 'scripts/ingestar-lote-50-perseus.py'
       - 'scripts/test-y-certificar-lote-50-perseus.mjs'
+      - 'scripts/test-bibliotheca-expansion-2026-11.mjs'
   schedule:
     # Reintento conservador 01:07 hora argentina. No se sobrescriben
     # fuentes ya incorporadas ni se reimportan los originales existentes.
