@@ -1,0 +1,206 @@
+{
+  "schema": "vdl-translation-apparatus-comparative-v1",
+  "updated": "2026-11-16",
+  "method": "Interpretación contrastiva de traducciones castellana, francesa e inglesa alineadas por locus con el latín Kurilo, Krohn y Rose. Distinción explícita entre variante textual y opción de traducción.",
+  "count": 11,
+  "records": [
+    {
+      "locus": "1.praef.3",
+      "criticalLine": "traderentur Kur. Kr. ] tradantur Rose",
+      "focus": "matiz temporal y equivalencia entre lenguas",
+      "analysis": "La traducción castellana «se transmitieran» mantiene el matiz temporal retrospectivo de traderentur; el francés «soient transmis» y el inglés «might be handed down» expresan finalidad, sin reproducir necesariamente la misma oposición temporal del latín. No se han indexado traducciones históricas de Rose y Krohn en este cotejo.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.1.2",
+      "criticalLine": "fuerunt Kur. Kr. ] fuerant Rose",
+      "focus": "tiempo verbal neutralizado en traducción",
+      "analysis": "Las tres traducciones dicen que quienes se fiaron de la teoría siguieron una sombra, pero no diferencian explícitamente el pluscuamperfecto fuerant de Rose respecto del perfecto fuerunt de Krohn/Kurilo. La correspondencia semántica general no elimina la divergencia verbal latina.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.1.6",
+      "criticalLine": "Agesilae Kur. Kr. ] Agesipolidos Rose",
+      "focus": "identificación histórica preservada",
+      "analysis": "Las tres traducciones conservan «hijo de Agesilao / fils d’Agésilas / son of Agesilaus», coherentes con el latín adoptado por Kurilo y Krohn. Rose presenta Agesipolidos en la transcripción digital, otra filiación histórica que no se refleja en las tres traducciones del autor. Causa editorial histórica no verificada.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.1.16",
+      "criticalLine": "[divisus] Kur. / divisus Kr. ] de visu Rose",
+      "focus": "explicitación exegética inglesa",
+      "analysis": "Castellano y francés mantienen la referencia al λόγος ὀπτικός sin traducirla de modo explícito; el inglés la interpreta como «the theory of sight». Esta es una explicitación exegética de la traducción inglesa: no prueba que el latín V297 adopte «de visu» de Rose.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.2.2",
+      "criticalLine": "effectui Kur. Kr. ] effectus Rose",
+      "focus": "equivalencia gramatical y reformulación",
+      "analysis": "Castellano («que convenga al efecto de la obra entera») y francés («qui convienne à l’effet de l’ouvrage entier») explicitan una relación de conveniencia al efecto, acorde con effectui. El inglés («producing the harmonious and fitting effect») reordena la sintaxis para mayor fluidez y no permite inferir por sí solo qué caso latino adoptó su fuente.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.2.5",
+      "criticalLine": "fontium nymphis Kur. Kr. ] Fonti Lumphis Rose",
+      "focus": "divergencia interpretativa entre traducciones",
+      "analysis": "Castellano «ninfas de las fuentes» y francés «nymphes des sources» siguen el sentido de fontium nymphis de Krohn/Kurilo. La traducción inglesa incorpora «the Spring (Fons), and the Water-Nymphs (Lymphae)», interpretación más próxima a la enumeración de Rose «Fonti Lumphis». Esta diferencia traductológica no se atribuye automáticamente a una modificación del latín inglés.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.2.9",
+      "criticalLine": "et; apte Kur. Kr. ] aut; aliter Rose",
+      "focus": "matiz distributivo y coordinación",
+      "analysis": "Las versiones castellana y francesa traducen «adecuadamente / convenablement» y la inglesa «to suit», preservando la adecuación funcional de apte en Krohn/Kurilo; las tres traducen el argumento de distributio. La opción aliter de Rose en esa posición enfatizaría «de otra manera», y su lectura aut cambia la relación coordinativa; ninguna de estas dos diferencias se afirma como decisión traductora de Rose sin su traducción.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.4.6",
+      "criticalLine": "quibus⟨vis⟩ ... liquido Kur. Kr. ] quibus ... cumque ... ut a liquido Rose",
+      "focus": "literalidad relativa de la explicación humoral",
+      "analysis": "Castellano «en cualesquiera cuerpos» y francés «dans quelque corps que ce soit» reflejan quibusvis. La versión inglesa «In any body» simplifica la misma generalidad. En la explicación del líquido, inglés reformula «as though diluted» mientras castellano y francés hablan de «corrompidos por el líquido / corrompus par le liquide». Se distingue el cambio de estilo de una variante latina distinta.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.5.2",
+      "criticalLine": "vulnerentur; circinationibus Kur. Kr. ] vulneretur; circumitionibus Rose",
+      "focus": "concordancia gramatical y geometría militar",
+      "analysis": "Aunque el latín Kurilo/Krohn usa vulnerentur plural, castellano «sea herido», francés «il soit blessé» e inglés «he may be wounded» traducen al enemigo como sujeto colectivo singular por el antecedente hostis. Las traducciones describen además trazado circular/redondeado, acorde con circinationibus; Rose digital registra circumitionibus. La traducción singular no acredita que V514 haya adoptado vulneretur.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.6.11",
+      "criticalLine": "praeurens; impetu Kur. Kr. ] profundens; spiritu Rose",
+      "focus": "imagen verbal reducida en inglés",
+      "analysis": "Castellano «quemándola antes» y francés «la brûlant d’avance» reflejan el matiz de praeurens; la versión inglesa omite la imagen de quemar y ofrece «rising with force, draws out», interpretación menos literal. El inglés no debe atribuirse por ello a la lectura profundens de Rose sin comprobar su fuente.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    },
+    {
+      "locus": "1.7.2",
+      "criticalLine": "non quolibet nomine; cum religione; debet Kur. Kr. ] non omnes; cum religiose; debeat Rose",
+      "focus": "restricción cultual y paráfrasis inglesa",
+      "analysis": "Castellano y francés expresan la restricción de acceso al santuario de Ceres por cualquier motivo; inglés la reformula «for any ordinary reason, but only for sacrifice». Las traducciones reflejan el sentido de non quolibet ... excepto los sacrificios y no constituyen pruebas independientes del texto latino de Rose.",
+      "evidence_level": "interpretation_based_on_indexed_author_translations",
+      "source_editions": [
+        "Kurilo V514 (es)",
+        "Kurilo V554 (fr)",
+        "Kurilo V297 (en)"
+      ],
+      "sources": [
+        "data/structured/recensio-es.json",
+        "data/structured/recensio-fr.json",
+        "data/structured/theory-en.json"
+      ],
+      "warning": "Las traducciones cotejadas son las tres del autor; Rose y Krohn son referencias latinas, no traducciones históricas cotejadas aquí."
+    }
+  ]
+}
