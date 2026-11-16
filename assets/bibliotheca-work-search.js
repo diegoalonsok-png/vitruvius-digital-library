@@ -114,6 +114,11 @@ const safeReader=s=>typeof s==="string"&&(
  /^corpus\/[a-z0-9/_-]+\.html$/i.test(s))?s:null;
 const workLink=id=>"classics-work-record.html?work="+encodeURIComponent(id);
 const facLink=id=>"buscador-facsimiles-clasicos.html?obra="+encodeURIComponent(id);
+const safeR2Pdf=url=>typeof url==="string"&&/^https:\/\/libros\.vitruvius-digital-library\.org\/clasicos\/pdf\/[a-z0-9-]+\.pdf$/.test(url)?url:"";
+function addRecordedEditions(actions,w){
+ for(const ed of (w.pdfEditions||[]))addLink(actions,
+  "Leer PDF R2 · "+(ed.title||ed.id||"edición histórica").slice(0,84),ed.url);
+}
 // Align only registered, distinct textual languages. An OCR/PDF alone is not a collated edition.
 const compareLink=w=>{
  const originals=w.versions.filter(v=>["la","grc"].includes(v.language)&&safeReader(v.reader));
@@ -201,6 +206,7 @@ function render(){
    if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
    const parallel=compareLink(w);if(parallel)addLink(actions,"Cotejar versiones registradas",parallel);
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
+    addRecordedEditions(actions,w);
    if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
    li.append(actions);list.append(li);
   }
@@ -233,6 +239,7 @@ function render(){
   if(w.heritageReader)addLink(actions,"Abrir edición histórica · "+w.heritageYear,heritageLink(w.heritageReader));
   const parallel=compareLink(w);if(parallel)addLink(actions,"Cotejar versiones registradas",parallel);
    if(w.facsimile)addLink(actions,"Ver facsímil",facLink(w.facsimile));
+    addRecordedEditions(actions,w);
   if(!w.newWork&&!w.registryOnly)addLink(actions,"Ficha académica",workLink(w.id));
   item.append(actions);list.append(item);
  }
@@ -393,24 +400,37 @@ function addHistoricalViewers(records){
 function addFacsimiles(v,cat){
  if(!model||!Array.isArray(cat?.items))return;
  const byEdition=new Map(cat.items.map(e=>[e.id,e]));
+ const attachEdition=(work,edition)=>{
+  if(!work||!edition)return;
+  const url=safeR2Pdf(edition.pdf);
+  if(!url)return;
+  work.pdfEditions ||= [];
+  if(!work.pdfEditions.some(x=>x.url===url))work.pdfEditions.push({
+   id:edition.id,url,title:edition.tituloEdicion||edition.obra||edition.id,
+   scopeNote:edition.notaFilologica||""
+  });
+ };
  // R2 edition IDs need not match the ancient-work catalogue ID.
  // Use the existing audited work-to-edition concordance.
  for(const [workId,editions] of Object.entries(v?.porObra||{})){
   const w=model.index.get(workId);if(!w)continue;
   for(const ed of editions){
    const fac=byEdition.get(ed.r2);
-   w.facsimile ||= ed.r2;
-   w.forms.push(ed.edicion||"",fac?.obra||"",fac?.tituloEdicion||"");
+   if(!fac)continue;
+   w.facsimile ||= fac.id;
+   attachEdition(w,fac);
+   w.forms.push(ed.edicion||"",fac.obra||"",fac.tituloEdicion||"");
   }
  }
  for(const e of cat.items){
   const w=model.index.get(e.id);
-  if(w){w.facsimile ||= e.id;w.forms.push(e.obra||"",e.tituloEdicion||"");}
+  if(w){w.facsimile ||= e.id;attachEdition(w,e);w.forms.push(e.obra||"",e.tituloEdicion||"");}
  }
  for(const entry of v?.obrasNuevas||[]){
   if(model.index.has(entry.r2))continue;
   const w={id:entry.r2,title:entry.obra,author:entry.autor,genre:"",dating:"",forms:[entry.obra,entry.r2.replaceAll("-"," "),...(loadedAliases[entry.r2]||[])],
-   versions:[],facsimile:entry.r2,newWork:true};
+   versions:[],facsimile:entry.r2,newWork:true,pdfEditions:[]};
+  attachEdition(w,byEdition.get(entry.r2));
   model.index.set(w.id,w);model.items.push(w);
  }
  render();
