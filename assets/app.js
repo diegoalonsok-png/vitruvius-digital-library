@@ -664,12 +664,15 @@ function addSearchControls(){
 
 async function initialize(){
   addSearchControls();
+  // Bind the primary search immediately: catalog rendering or optional metadata
+  // must never leave the front-page search form without a submit handler.
+  $('#search-form').addEventListener('submit',event=>{event.preventDefault();startSearch();});
   $('#internet-form').addEventListener('submit',event=>{
     event.preventDefault();
     searchInternet($('#internet-query').value,$('#internet-provider').value,$('#internet-vitruvio').checked);
   });
   const loads=await Promise.allSettled([fetchJSON('data/catalog.json?v=20261110-repo-pdfs-v1'),fetchJSON('data/historical.json'),fetchJSON('data/supplements.json'),fetchJSON('data/site-metrics.json?v=20261102-audit')]);
-  if(loads[0].status!=='fulfilled'){showError($('#catalog-status'),'No se pudo cargar el catálogo. Recarga la página para intentarlo de nuevo.');return;}
+  if(loads[0].status!=='fulfilled'){showError($('#catalog-status'),'No se pudo cargar el catálogo. Recarga la página para intentarlo de nuevo.');$('#search-status').textContent='No se pudo cargar el índice editorial necesario para buscar. Recarga la página para reintentar.';return;}
   catalog=loads[0].value;records=[...catalog.editions,...(loads[1].status==='fulfilled'?loads[1].value:[])];
   for(const e of records)if(e.id.startsWith('gudianus'))e.category='manuscripts';
   // Audited statistics distinguish repertory records from distinct works
@@ -734,7 +737,7 @@ async function initialize(){
   if(!supplements.length)$('#investigacion').hidden=true;
   $('#scope').addEventListener('change',syncTranslationWithSearchSelection);
    $('#text-language').addEventListener('change',syncTranslationWithSearchSelection);
-   $('#search-form').addEventListener('submit',event=>{event.preventDefault();startSearch();});
+   // Primary submit handler is registered before asynchronous catalog loads.
   $$('[data-search-web]').forEach(button=>button.addEventListener('click',()=>{const query=$('#query').value.trim();if(!query){$('#query').reportValidity();return;}searchInternet(query,button.dataset.searchWeb);$('#search-status').textContent='Se abrió la consulta en el buscador externo.';}));
   $$('[data-query]').forEach(b=>b.addEventListener('click',()=>{$('#query').value=b.dataset.query;$('#search-kind').value='words';$('#search-kind').dispatchEvent(new Event('change'));$('#search-mode').value='words';const target=b.dataset.scope;if(target&&[...$('#scope').options].some(o=>o.value===target&&!o.disabled))$('#scope').value=target;else $('#scope').value='all';startSearch();document.getElementById('search-status').scrollIntoView({block:'nearest',behavior:'smooth'});}));
   $$('.catalog-tabs button').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;$('#catalog-filter').value='';$$('.catalog-tabs button').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));renderCatalog();}));
