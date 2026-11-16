@@ -1433,25 +1433,64 @@ async function renderConcept(word){
  setState(`Concepto «${word}»: ${cur.length} fichas editoriales, ${lh.length} lemas latinos y ${gh.length} griegos. Ordenados por posición de la acepción en el diccionario y por frecuencia en el corpus: la coincidencia de significado no implica parentesco etimológico.`);
 }
 /* Enlace permanente a un locus: vitruvia-lexicon.html?work=vitruvius&locus=1.2.1&q=symmetria */
-async function openLocus(workId,locus,q){
- const l=["herodotus-histories","euclid-elements","homer-iliad","homer-odyssey","plato-apology","aristotle-poetics","theophrastus-characters","epictetus-enchiridion"].includes(workId)?"grc":"la";
- const D=await lang(l,true);let i=D.corpus.passages.findIndex(p=>p[0]===workId&&p[1]===locus);
+/* Resuelve los loci sin una lista cerrada de autores griegos.
+ * Bibliotheca envía lang=la/grc; respetamos la fuente cuando se indica.
+ * Los enlaces antiguos sin idioma consultan ambos índices locales. */
+function sourceLanguagesForLocus(requestedLanguage){
+ return ["la","grc"].includes(requestedLanguage)?[requestedLanguage]:["la","grc"];
+}
+function findLocusIndex(D,workId,locus){
+ let i=D.corpus.passages.findIndex(p=>p[0]===workId&&p[1]===locus);
  if(i<0)i=D.corpus.passages.findIndex(p=>p[0]===workId&&String(p[1]).startsWith(locus+"."));
- if(i<0){const [b,v]=locus.split(".");i=D.corpus.passages.findIndex((p,j)=>{if(p[0]!==workId)return false;const nx=D.corpus.passages[j+1];return p[1].split(".")[0]===b&&+p[1].split(".").pop()<=+v&&(!nx||nx[0]!==workId||nx[1].split(".")[0]!==b||+nx[1].split(".").pop()>+v)})}
- if(i<0){setState(`No se encontró el locus ${locus} en el corpus local.`);return}
- const p=D.corpus.passages[i];const spans=[];if(q){const ks=new Set(fold(q).split(/\s+/));for(const m of p[2].matchAll(TOKEN))if(ks.has(fold(m[0])))spans.push([m.index,m.index+m[0].length])}
- const card=hitCard(D,{i,spans:spans.length?spans:[[0,0]],tok:0});card.classList.add("lx-locus-direct");const full=card.querySelector(".lx-full");full.hidden=false;
- const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(p[2],spans));full.append(t);if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));
- // Perseus-style round trip: a cited locus must lead back to its reader.
- // This is a navigation link, NOT a claim that the source has been collated.
- const reader=new URL(workId==="vitruvius"?"lector-bilingue.html":"classics-text-reader.html",location.href);
- if(workId==="vitruvius")reader.searchParams.set("edition","recensio-es");
- else {reader.searchParams.set("work",workId);reader.searchParams.set("lang",l)}
- reader.searchParams.set("locus",p[1]);
+ if(i<0&&/^\\d+(?:\\.\\d+)+$/.test(locus)){
+  const [b,v]=locus.split(".");
+  i=D.corpus.passages.findIndex((p,j)=>{
+   if(p[0]!==workId)return false;
+   const nx=D.corpus.passages[j+1];
+   const part=String(p[1]).split(".");
+   return part[0]===b&&+part[part.length-1]<=+v&&(!nx||nx[0]!==workId||String(nx[1]).split(".")[0]!==b||+String(nx[1]).split(".").pop()>+v);
+  });
+ }
+ return i;
+}
+function locusReaderURL(workId,locus,language){
+ const url=new URL(workId==="vitruvius"?"lector-bilingue.html":"classics-text-reader.html",location.href);
+ if(workId==="vitruvius")url.searchParams.set("edition","recensio-es");
+ else {url.searchParams.set("work",workId);if(["la","grc"].includes(language))url.searchParams.set("lang",language)}
+ url.searchParams.set("locus",locus);
+ return url;
+}
+async function openLocus(workId,locus,q,requestedLanguage){
+ let D=null,i=-1,unavailable=false;
+ for(const language of sourceLanguagesForLocus(requestedLanguage)){
+  try{
+   const candidate=await lang(language,true);
+   const at=findLocusIndex(candidate,workId,locus);
+   if(at>=0){D=candidate;i=at;break}
+  }catch{unavailable=true}
+ }
+ if(!D){
+  const link=el("a",{href:locusReaderURL(workId,locus,requestedLanguage).href,class:"lx-reader-return"},"Abrir locus en el lector");
+  $("#lx-results").prepend(el("p",{class:"lx-person-banner"},
+   unavailable?"No fue posible consultar todo el índice léxico local. ":"",
+   "El locus solicitado no está localizado en el corpus léxico disponible. ",
+   link));
+  setState("El locus "+locus+" no se ha podido localizar en el índice léxico local.");
+  return;
+ }
+ const p=D.corpus.passages[i],spans=[];
+ if(q){const ks=new Set(fold(q).split(/\\s+/));for(const m of p[2].matchAll(TOKEN))if(ks.has(fold(m[0])))spans.push([m.index,m.index+m[0].length])}
+ const card=hitCard(D,{i,spans:spans.length?spans:[[0,0]],tok:0});
+ card.classList.add("lx-locus-direct");
+ const full=card.querySelector(".lx-full");full.hidden=false;
+ const t=el("p",{class:"lx-passage",lang:D.l});t.append(linkWords(p[2],spans));full.append(t);
+ if(p[4])full.append(el("p",{class:"lx-tr"},el("b",{},"Traducción (Kurilo, V514): "),p[4]));
+ const reader=locusReaderURL(workId,p[1],D.l);
  const back=el("a",{href:reader.href,class:"lx-reader-return"},"Volver al pasaje en el lector");
  back.setAttribute("aria-label","Abrir "+workId+" en locus "+p[1]);
  full.append(el("p",{class:"lx-src"},back));
- $("#lx-results").prepend(el("h3",{class:"lx-group-h"},"Locus citado"),card);card.scrollIntoView({behavior:"smooth",block:"center"});
+ $("#lx-results").prepend(el("h3",{class:"lx-group-h"},"Locus citado"),card);
+ card.scrollIntoView({behavior:"smooth",block:"center"});
 }
 
 /* ---------- Raíz semántica: de la palabra moderna a las lenguas antiguas ---------- */
@@ -2516,7 +2555,7 @@ async function applyLexiconLocation(){
   if(q)await run(false);
   if(rev!==routeRevision)return;
   const token=runRevision;
-  await openLocus(p.get("work"),p.get("locus"),q);
+  await openLocus(p.get("work"),p.get("locus"),q,p.get("lang"));
   if(rev!==routeRevision||token!==runRevision)return;
   const dv=p.get("dv");
   if(dv&&DATA_VER&&dv!==DATA_VER)
